@@ -5459,6 +5459,12 @@
         - [VkNativeBufferPropertiesOHOS](reference/native-lib/_vk_native_buffer_properties_o_h_o_s.md)
         - [VkNativeBufferUsageOHOS](reference/native-lib/_vk_native_buffer_usage_o_h_o_s.md)
         - [VkSurfaceCreateInfoOHOS](reference/native-lib/_vk_surface_create_info_o_h_o_s.md)
+    - EAWorker
+        - [EAWorker 独占线程任务执行器（ArkTS）](reference/native-lib/eaworker_managed.md)
+        - [EAWorker 独占线程任务执行器（C/C++）](reference/native-lib/eaworker_native.md)
+        - [Job](reference/native-lib/job.md)
+        - [Message 消息单元](reference/native-lib/message.md)
+        - [MessageHandler 消息处理器](reference/native-lib/message_handler.md)
     - 附录<!--appendixes-->
       - [libc中没有导出的符号列表](reference/native-lib/musl-peculiar-symbol.md)
       - [NDK musl-libc接口受权限影响的说明](reference/native-lib/guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
