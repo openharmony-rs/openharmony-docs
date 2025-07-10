@@ -28,6 +28,9 @@
   - [分布式音频播放(仅对系统应用开放)](distributed-audio-playback.md)
   <!--DelEnd-->
   - [音频工作组管理](audio-workgroup.md)
+  <!--Del-->
+  - [移动全景声播放(仅对系统应用开放)]()
+  <!--DelEnd-->
 - 音频录制<!--audio-recording-->
   - [音频录制开发概述](audio-recording-overview.md)
   - [使用AudioCapturer开发音频录制功能](using-audiocapturer-for-recording.md)
