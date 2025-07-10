@@ -26,7 +26,7 @@
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    let isCollaborativeSupported: boolean = audioCollaborativeManager.isSpatializationSupported();
+    let isCollaborativeSupported: boolean = audioCollaborativeManager.isCollaborativePlaybackSupported();
     console.info(`AudioCollaborativeManager isCollaborativeSupported: ${isCollaborativeSupported}`);
   } catch (err) {
     let error = err as BusinessError;
