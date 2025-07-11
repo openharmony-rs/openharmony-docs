@@ -4048,6 +4048,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 | ------- | --------------------------------------------|
 | 201     | Permission denied.                          |
 | 6800101 | Parameter verification failed.              |
+| 801     | Capability not supported                    |
 
 **示例：**
 
