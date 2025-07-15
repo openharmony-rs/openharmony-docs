@@ -293,6 +293,7 @@
       - [内容修改器 (ContentModifier)](arkts-common-attributes-content-modifier.md)
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
+  - [UI国际化](arkts-mirroring-display.md)
   - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
     - [支持无障碍](arkts-universal-attributes-accessibility.md)
     - [支持适老化](arkui-support-for-aging-adaptation.md)
