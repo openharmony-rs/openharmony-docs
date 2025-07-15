@@ -3942,7 +3942,11 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 
 ## AudioCollaborativeManager<sup>20+</sup>
 
-移动全景声管理器。在使用AudioCollaborativeManager的接口前，需要使用[getCollaborativeManager](#getcollaborativemanager20)获取AudioCollaborativeManager实例。
+移动全景声管理器。在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](#getcollaborativemanager20)获取AudioCollaborativeManager实例。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 ### getCollaborativeManager<sup>20+</sup>
 
@@ -3990,7 +3994,7 @@ isCollaborativePlaybackSupported(): boolean
 
 | 类型    | 必填 | 说明                                                    |
 | ------- |------|------------------------------------------------------- |
-| boolean |  是  | 返回系统是否支持移动全景声能力，true为支持，false为不支持。 |
+| boolean |  是  | 返回系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
 
 **错误码：**
 
@@ -4021,7 +4025,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
-根据输入指令，开启/关闭指定设备移动全景声。使用Promise异步回调。
+根据输入指令，开启/关闭指定设备移动全景声。使用Promise异步回调。当前只有A2DP设备支持移动全景声。开启移动全景声后，指定A2DP设备和本地扬声器将同时播放音频。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4029,25 +4033,25 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 **参数：**
 
-| 参数名            | 类型                                                                 | 必填 | 说明              |
+| 参数名            | 类型                                                                 | 必填 | 说明             |
 | ----------       | -------------------------------------------------------------------- | ---- |------------------|
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 是   | 指定设备的描述。   |
-| enabled          | boolean                                                              | 是   | 表示开启/关闭移动全景声。true为开启，false为关闭。 |
+| enabled          | boolean                                                              | 是   | 表示是否开启/关闭移动全景声。true表示开启，false表示关闭。 |
 
 **返回值：**
 
-| 类型                | 说明                          |
-| ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。        |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 201     | Permission denied.                          |
-| 6800101 | Parameter verification failed.              |
+| 6800101 | Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 | 801     | Capability not supported                    |
 
 **示例：**
@@ -4099,15 +4103,15 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 
 | 类型    | 必填 | 说明                                                    |
 | ------- |------|------------------------------------------------------- |
-| boolean |  是  | 返回指定设备移动全景声状态查询，true为开启，false为关闭。   |
+| boolean |  是  | 返回指定设备移动全景声是否开启/关闭，true表示开启，false表示关闭。   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202     | Not system App.                             |
+| 202     | Not system application.                     |
 | 6800101 | Parameter verification failed.              |
 
 **示例：**
