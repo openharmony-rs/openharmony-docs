@@ -4025,6 +4025,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
+根据输入指令，开启/关闭指定设备移动全景声。使用Promise异步回调。
+
 当前只有A2DP设备支持移动全景声。开启移动全景声后，指定A2DP设备和本地扬声器将同时播放音频。
 
 **系统接口：** 该接口为系统接口。
@@ -4051,7 +4053,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 201     | Not system application.                     |
-| 6800101 | Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
+| 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 | 801     | Capability not supported.                   |
 
 **示例：**
@@ -4112,7 +4114,7 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 202     | Not system application.                     |
-| 6800101 | Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
+| 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 
 **示例：**
 
