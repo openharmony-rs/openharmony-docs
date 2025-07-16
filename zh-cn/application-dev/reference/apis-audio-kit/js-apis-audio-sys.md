@@ -3970,7 +3970,7 @@ getCollaborativeManager(): AudioCollaborativeManager
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202     | Not system App.                             |
+| 202     | Not system application.                     |
 
 **示例：**
 
@@ -4002,7 +4002,7 @@ isCollaborativePlaybackSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202     | Not system App.                             |
+| 202     | Not system application.                     |
 
 **示例：**
 
@@ -4025,7 +4025,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
-根据输入指令，开启/关闭指定设备移动全景声。使用Promise异步回调。当前只有A2DP设备支持移动全景声。开启移动全景声后，指定A2DP设备和本地扬声器将同时播放音频。
+当前只有A2DP设备支持移动全景声。开启移动全景声后，指定A2DP设备和本地扬声器将同时播放音频。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4036,7 +4036,7 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 | 参数名            | 类型                                                                 | 必填 | 说明             |
 | ----------       | -------------------------------------------------------------------- | ---- |------------------|
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 是   | 指定设备的描述。   |
-| enabled          | boolean                                                              | 是   | 表示是否开启/关闭移动全景声。true表示开启，false表示关闭。 |
+| enabled          | boolean                                                              | 是   | 表示开启/关闭移动全景声。true表示开启，false表示关闭。|
 
 **返回值：**
 
@@ -4050,9 +4050,9 @@ setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied.                          |
+| 201     | Not system application.                     |
 | 6800101 | Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
-| 801     | Capability not supported                    |
+| 801     | Capability not supported.                   |
 
 **示例：**
 
@@ -4112,7 +4112,7 @@ isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor)
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 202     | Not system application.                     |
-| 6800101 | Parameter verification failed.              |
+| 6800101 | Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 
 **示例：**
 
