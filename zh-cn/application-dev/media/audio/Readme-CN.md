@@ -29,7 +29,7 @@
   <!--DelEnd-->
   - [音频工作组管理](audio-workgroup.md)
   <!--Del-->
-  - [移动全景声播放（仅对系统应用开放）](audio-collaborative-management.md)
+  - [移动全景声管理（仅对系统应用开放）](audio-collaborative-management.md)
   <!--DelEnd-->
 - 音频录制<!--audio-recording-->
   - [音频录制开发概述](audio-recording-overview.md)

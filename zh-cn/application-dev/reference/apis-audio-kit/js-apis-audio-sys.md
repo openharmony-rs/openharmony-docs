@@ -3977,6 +3977,7 @@ getCollaborativeManager(): AudioCollaborativeManager
 ```ts
 import { audio } from '@kit.AudioKit';
 
+let audioManager: audio.AudioManager = audio.getAudioManager();
 let audioCollaborativeManager: audio.AudioCollaborativeManager = audioManager.getCollaborativeManager();
 ```
 
@@ -4010,15 +4011,13 @@ isCollaborativePlaybackSupported(): boolean
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let isCollaborativeSupported: boolean = audioCollaborativeManager.isCollaborativePlaybackSupported();
-    console.info(`AudioCollaborativeManager isCollaborativeSupported: ${isCollaborativeSupported}`);
-  } catch (err) {
-    let error = err as BusinessError;
-    console.error(`ERROR: ${error}`);
-  }
+try {
+  let isCollaborativeSupported: boolean = audioCollaborativeManager.isCollaborativePlaybackSupported();
+  console.info(`AudioCollaborativeManager isCollaborativeSupported: ${isCollaborativeSupported}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
 ```
 
 ### setCollaborativePlaybackEnabledForDevice<sup>20+</sup>
