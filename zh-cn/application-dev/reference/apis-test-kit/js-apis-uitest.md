@@ -17,7 +17,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 > - 本模块接口适用于手机、平板、PC/2in1、智能穿戴设备、智慧屏、车机。
-> - ArkTS1.2中，本模块接口调用前需调用loadAndSetupUiTest接口初始化测试环境。
+> - ArkTS1.2中，本模块接口调用前需调用loadAndSetUpUiTest接口初始化测试环境。
 
 ## 导入模块
 
@@ -28,12 +28,12 @@ import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPatter
 
 ArkTS1.2: 
 ```ts
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, loadAndSetupUiTest } from '@kit.TestKit';
+import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, loadAndSetUpUiTest } from '@kit.TestKit';
 ```
 
-## loadAndSetupUiTest<sup>20+</sup>
+## loadAndSetUpUiTest<sup>20+</sup>
 
-loadAndSetupUiTest(): void
+loadAndSetUpUiTest(): void
 
 初始化测试环境，ArkTS1.2测试启动前必须调用一次。
 
@@ -54,11 +54,11 @@ loadAndSetupUiTest(): void
 **示例：**
 
 ```ts
-import { loadAndSetupUiTest } from '@kit.TestKit';
+import { loadAndSetUpUiTest } from '@kit.TestKit';
 
 async function demo() {
   try {
-    loadAndSetupUiTest();
+    loadAndSetUpUiTest();
     console.info("uitestDemo loadup over!!!!!")
   } catch(error: Error) {
     console.error(`uitestDemo, start abilityFailed: ${JSON.stringify(error)}`);
