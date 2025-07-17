@@ -1847,6 +1847,7 @@ ArkTS1.1:
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
+
 ArkTS1.2: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
@@ -1905,6 +1906,7 @@ ArkTS1.1:
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
+
 ArkTS1.2: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
@@ -2428,6 +2430,7 @@ ArkTS1.1:
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
+
 ArkTS1.2: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
@@ -2460,6 +2463,7 @@ async function demo() {
 ArkTS1.1: findComponents(on: On): Promise\<Array\<Component>>
 
 ArkTS1.2: findComponents(on: On): Promise\<Array\<Component> \| null>
+
 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -2478,6 +2482,7 @@ ArkTS1.1:
 | 类型                                       | 说明                                    |
 | ------------------------------------------ | --------------------------------------- |
 | Promise\<Array\<[Component](#component9)>> | Promise对象，返回控件对象的列表。 |
+
 ArkTS1.2: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
@@ -2510,6 +2515,7 @@ async function demo() {
 ArkTS1.1: findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 ArkTS1.2: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
+
 通过指定窗口的属性来查找目标窗口，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -2528,6 +2534,7 @@ ArkTS1.1:
 | 类型                             | 说明                                  |
 | -------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9)> | Promise对象，返回目标窗口对象。 |
+
 ArkTS1.2: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
@@ -2580,6 +2587,7 @@ ArkTS1.1:
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
+
 ArkTS1.2: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
@@ -4777,8 +4785,8 @@ ArkTS1.2: touchPadMultiFingerSwipe(fingers: int, direction: UiDirection, options
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | ArkTS1.1: number  <br />ArkTS1.2: int                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
-| direction | [UiDirection](#uidirection10)                 | 是  | 触摸板多指滑动的方向。           |
+| fingers      | ArkTS1.1: number  <br />ArkTS1.2: int | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
+| direction | [UiDirection](#uidirection10)  | 是  | 触摸板多指滑动的方向。           |
 | options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项。        |
 
 **返回值：**
@@ -4865,7 +4873,7 @@ ArkTS1.2: penLongClick(point: Point, pressure?: double): Promise\<void>
 | 参数名 | 类型                                            | 必填 | 说明                            |
 | ------ |-----------------------------------------------|----|-------------------------------|
 | point      | [Point](#point9) | 是  | 长按的坐标点。                       |
-| pressure      | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure   | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
 
 **返回值：**
 
