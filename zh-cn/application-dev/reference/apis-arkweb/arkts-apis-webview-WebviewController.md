@@ -2526,7 +2526,9 @@ struct WebComponent {
 
 ## getWebId
 
-getWebId(): number
+ArkTS1.1: getWebId(): number
+
+ArkTS1.2: getWebId(): int
 
 获取当前Web组件的索引值，用于多个Web组件的管理。
 
@@ -2536,7 +2538,7 @@ getWebId(): number
 
 | 类型   | 说明                  |
 | ------ | --------------------- |
-| number | 当前Web组件的索引值。 |
+| ArkTS1.1: number <br> ArkTS1.2: int | 当前Web组件的索引值。 |
 
 **错误码：**
 
