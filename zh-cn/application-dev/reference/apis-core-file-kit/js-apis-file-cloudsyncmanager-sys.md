@@ -198,7 +198,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
-notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
+ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;<br>ArkTS1.2: notifyDataChange(userId: int, extraData: ExtraData): Promise&lt;void&gt;
 
 异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
 
@@ -210,7 +210,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| userId | number | 是   | 用户Id。|
+| userId | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
 
 **返回值：**
@@ -232,6 +232,8 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS1.1示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
@@ -243,9 +245,22 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
   });
   ```
 
+ArkTS1.2示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let userId: int = 100;
+  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+  cloudSyncManager.notifyDataChange(userId, extraData).then<void>((): void => {
+    console.info("notifyDataChange successfully");
+  }).catch((err: BusinessError<void>): void => {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  });
+  ```
+
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
-notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
+ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void<br>ArkTS1.2: notifyDataChange(userId: int, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void 
 
 异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
 
@@ -257,7 +272,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| userId | number | 是   | 用户Id。|
+| userId | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
 | callback | AsyncCallback&lt;void&gt; | 是   | 异步通知端云服务应用的云数据变更之后的回调。 |
 
@@ -274,12 +289,29 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS1.1示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
   cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
     if (err) {
+      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+    } else {
+      console.info("notifyDataChange successfully");
+    }
+  });
+  ```
+
+ArkTS1.2示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let userId: int = 100;
+  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+  cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError<void> | null): void => {
+    if (err && err.code) {
       console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("notifyDataChange successfully");

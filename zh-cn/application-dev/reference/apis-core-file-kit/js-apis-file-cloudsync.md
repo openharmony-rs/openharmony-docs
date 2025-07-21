@@ -89,8 +89,8 @@ import { cloudSync } from '@kit.CoreFileKit';
 | 名称     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | state | [State](#state11) | 是   | 枚举值，云文件下载状态。|
-| processed | number | 是   | 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。|
-| size | number | 是   | 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。|
+| processed | ArkTS1.1: number<br>ArkTS1.2: long | 是   | 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。|
+| size | ArkTS1.1: number<br>ArkTS1.2: long | 是   | 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。|
 | uri | string | 是   | 当前云文件URI。|
 | error | [DownloadErrorType](#downloaderrortype11) | 是   | 下载的错误类型。|
 
@@ -361,7 +361,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 ### getLastSyncTime<sup>12+</sup>
 
-getLastSyncTime(): Promise&lt;number&gt;
+ArkTS1.1: getLastSyncTime(): Promise&lt;number&gt;<br>ArkTS1.2: getLastSyncTime(): Promise&lt;long&gt;
 
 异步方法获取上次同步时间，以promise形式返回结果。
 
@@ -371,7 +371,7 @@ getLastSyncTime(): Promise&lt;number&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;number&gt; | 使用Promise形式返回上次同步时间。 |
+| ArkTS1.1: Promise&lt;number&gt;<br>ArkTS1.2: Promise&lt;long&gt; | 使用Promise形式返回上次同步时间。 |
 
 **错误码：**
 
@@ -383,6 +383,8 @@ getLastSyncTime(): Promise&lt;number&gt;
 | 13600001  | IPC error. |
 
 **示例：**
+
+ArkTS1.1示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -397,9 +399,24 @@ getLastSyncTime(): Promise&lt;number&gt;
 
   ```
 
+ArkTS1.2示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let fileSync = new cloudSync.FileSync();
+
+  fileSync.getLastSyncTime().then<long>((timeStamp: long): void => {
+    let date = new Date(timeStamp);
+    console.info("get last sync time successfully:"+ date);
+  }).catch((err: BusinessError<void>): void => {
+    console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
+  });
+
+  ```
+
 ### getLastSyncTime<sup>12+</sup>
 
-getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
+ArkTS1.1: getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void<br>ArkTS1.2: getLastSyncTime(callback: AsyncCallback&lt;long&gt;): void
 
 异步方法获取上次同步时间，以callback形式返回结果。
 
@@ -409,7 +426,7 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 异步获取上次同步时间的回调。|
+| callback | ArkTS1.1: AsyncCallback&lt;number&gt;<br>ArkTS1.2: AsyncCallback&lt;long&gt; | 是   | 异步获取上次同步时间的回调。|
 
 **错误码：**
 
@@ -422,6 +439,8 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS1.1示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let fileSync = new cloudSync.FileSync();
@@ -430,6 +449,26 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
     if (err) {
       console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
     } else {
+      let date = new Date(timeStamp);
+      console.info("get last sync time successfully:"+ date);
+    }
+  });
+  ```
+
+ArkTS1.2示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let fileSync = new cloudSync.FileSync();
+
+  fileSync.getLastSyncTime((err: BusinessError<void> | null, timeStamp: long | undefined): void => {
+    if (err && err.code) {
+      console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
+    } else {
+      if (timeStamp == undefined) {
+        console.error("get last sync time successfully, but timeStamp is undefined.");
+        return;
+      }
       let date = new Date(timeStamp);
       console.info("get last sync time successfully:"+ date);
     }
