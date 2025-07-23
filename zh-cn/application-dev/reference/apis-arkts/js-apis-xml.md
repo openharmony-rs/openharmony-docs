@@ -639,7 +639,7 @@ startElement(name: string): void
 
 > **说明：**
 >
->- 调用该接口后须调用[endElement](#endelement)写入元素结束标记，以确保节点正确闭合。
+>- 调用该接口后须调用[endElement](#endelement20)写入元素结束标记，以确保节点正确闭合。
 >
 >- 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
 
@@ -685,7 +685,7 @@ endElement(): void
 
 > **说明：**
 >
-> 调用该接口前必须先调用[startElement](#startelement)接口写入元素开始标记。
+> 调用该接口前必须先调用[startElement](#startelement20)接口写入元素开始标记。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
