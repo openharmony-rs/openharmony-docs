@@ -51,6 +51,7 @@
     - [ArkTS1.2语法迁移规则](arkts-v1.1-v1.2-migration-rules.md)
     - [ArkTS1.2并发迁移规则](arkts-v1.1-v1.2-concurrency-rules.md)
     - [ArkTS1.2builtin迁移规则](arkts-v1.1-v1.2-builtin-rules.md)
+    - [ArkTS1.2SDK迁移规则](arkts-v1.1-v1.2-sdk-rules.md)
     - [ArkTS1.2与ArkTS1.1互操作迁移规则](arkts-v1.1-v1.2-interop-rules.md)
     - [ArkTS1.2互操作概述](arkts-interop-overview.md)
     - [ArkTS1.2互操作类型映射规则](arkts-interop-type-mapping.md)
