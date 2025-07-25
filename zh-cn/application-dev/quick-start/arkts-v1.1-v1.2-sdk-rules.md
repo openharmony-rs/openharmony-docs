@@ -215,5 +215,5 @@ declare class DatabaseQuery<T> {
 }
 
 // ArkTS1.2应用代码
-const userQuery = new DatabaseQuery<User>(createInstence);
+const userQuery = new DatabaseQuery<User>(createInstence());
 ```
