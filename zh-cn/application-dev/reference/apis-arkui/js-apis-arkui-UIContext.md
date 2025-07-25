@@ -3022,6 +3022,64 @@ onWindowStageCreate(windowStage: window.WindowStage) {
     });
   }
 ```
+
+### getFocusedUIContext<sup>20+</sup>
+
+static getFocusedUIContext(): UIContext | undefined
+
+全局接口用于获取当前焦点窗口的UI实例上下文。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：**  该接口仅适用于ArkTS1.2。
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| [UIContext](#uicontext) \| undefined | 获取当前焦点窗口的UI实例上下文，获取失败时返回`undefined`。 |
+
+**示例：**
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+
+import {
+  Text,
+  TextAttribute,
+  Column,
+  Component,
+  Button,
+  ButtonAttribute,
+  ClickEvent,
+  UserView
+} from '@ohos.arkui.component';
+
+import { State, MutableState, stateOf, observableProxy } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import { UIContext } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct MyStateSample {
+  build() {
+    Column(undefined) {
+      Button("MyButton").backgroundColor("#FFFF00FF")
+        .onClick((e: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', 'On Click');
+          let uicontext = UIContext.getFocusedUIContext()
+          if (uicontext) {
+            console.log("MyButton nodeType:" + uicontext.getFrameNodeById('MyButton')?.getNodeType());
+          } else {
+            console.log("uicontext fail:");
+          }
+        }).id("MyButton")
+    }
+  }
+}
+```
+
 ## Font
 
 以下API需先使用UIContext中的[getFont()](#getfont)方法获取到Font对象，再通过该对象调用对应方法。
