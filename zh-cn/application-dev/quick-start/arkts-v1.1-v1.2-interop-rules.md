@@ -1,4 +1,4 @@
-# ArkTS1.2与ArkTS1.1互操作规范
+# ArkTS1.2与ArkTS1.1互操作迁移规则
 
 ## ArkTS1.1中使用ArkTS1.2
 

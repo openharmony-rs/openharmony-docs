@@ -46,6 +46,17 @@
       - [ArkTS语法适配背景](quick-start/arkts-migration-background.md)
       - [从TypeScript到ArkTS的适配规则](quick-start/typescript-to-arkts-migration-guide.md)
       - [适配指导案例](quick-start/arkts-more-cases.md)
+    - 从ArkTS1.1到ArkTS1.2的适配指导<!--arkts1.1-to-arkts1.2-migration-->
+      - [ArkTS1.2用户指导](quick-start/arkts-v1.2-user-guide.md)
+      - [ArkTS1.2迁移工具使用指导](quick-start/introduction-to-migration-helper.md)
+      - [ArkTS1.2语法迁移规则](quick-start/arkts-v1.1-v1.2-migration-rules.md)
+      - [ArkTS1.2并发迁移规则](quick-start/arkts-v1.1-v1.2-concurrency-rules.md)
+      - [ArkTS1.2builtin迁移规则](quick-start/arkts-v1.1-v1.2-builtin-rules.md)
+      - [ArkTS1.2与ArkTS1.1互操作迁移规则](quick-start/arkts-v1.1-v1.2-interop-rules.md)
+      - [ArkTS1.2互操作概述](quick-start/arkts-interop-overview.md)
+      - [ArkTS1.2互操作类型映射规则](quick-start/arkts-interop-type-mapping.md)
+      - [ArkTS1.2互操作场景](quick-start/arkts-interop-more.md)
+      - [ArkTS1.2互操作特性规范](quick-start/arkts-interop-spec.md)      
     - [ArkTS高性能编程实践](quick-start/arkts-high-performance-programming.md)
     - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
       - [从Java到ArkTS的迁移指导](quick-start/getting-started-with-arkts-for-java-programmers.md)
