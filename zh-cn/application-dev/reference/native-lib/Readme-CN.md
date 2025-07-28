@@ -41,6 +41,7 @@
     - [Uint16Array](arkts-builtin-api-Uint16Array.md)
     - [Uint32Array](arkts-builtin-api-Uint32Array.md)
     - [Uint8ClampedArray](arkts-builtin-api-Uint8ClampedArray.md)
+    - [jsonx](arkts1.2-jsonx.md)
 - 附录<!--appendixes-->
   - [libc中没有导出的符号列表](musl-peculiar-symbol.md)
   - [NDK musl-libc接口受权限影响的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)

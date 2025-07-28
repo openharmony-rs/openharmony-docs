@@ -7,6 +7,7 @@
 - [RegExpMatchArray](#regexpmatcharray)
 - [TypedPropertyDescriptor](#typedpropertydescriptor)
 - [TemplateStringsArray](#templatestringsarray)
+- [RuntimeDebug](#runtimedebug)
 
 ## PropertyDescriptor
 
@@ -614,3 +615,34 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 **适配建议：** 
   不使用模板字符串标签函数。
 
+## RuntimeDebug
+
+### countInstancesOfClass
+
+countInstancesOfClass(kclass: ClassType): int
+
+统计类的没有被释放的对象数量。
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| kclass | ClassType | 是 | 要统计的类别类型。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 返回入参classType对应创建出来的class实例的数量。 |
+
+**示例：**
+  ```typescript
+    let keepAlive: object[] = [];
+    class TestClass{}
+
+    let type = Type.from<TestClass>() as ClassType;
+    let init = RuntimeDebug.countInstancesOfClass(type);
+    console.info("init = " + init); // init = 0
+    keepAlive.push(new TestClass());
+    keepAlive.push(new TestClass());
+    let count = RuntimeDebug.countInstancesOfClass(type);
+    console.info("count = " + count); // count = 2
+  ```
