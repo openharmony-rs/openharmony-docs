@@ -395,6 +395,21 @@
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
+    - 自定义组件装饰器
+      - @Component
+      - @ComponentV2
+      - @Entry
+    - 组件扩展装饰器
+      - @AnimatableExtend
+      - @Builder
+      - @BuilderParam
+      - @CustomLayout（ArkTS-ST）
+      - @Extend（ArkTS-DT）
+      - @LocalBuilder（ArkTS-DT）
+      - @Require
+      - @Reusable
+      - @ReusableV2
+      - @Styles（ArkTS-DT）
   - 互操作
     - [compatibleComponent (ArkTS1.2)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
     - [compatibleWrappedBuilder (ArkTS1.2)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
@@ -437,6 +452,30 @@
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
+    - 状态管理V1装饰器 
+      - @Consume
+      - @Link
+      - @LocalStorageLink
+      - @LocalStorageProp
+      - @ObjectLink
+      - @Observed
+      - @Prop（ArkTS-DT）
+      - @PropRef（ArkTS-ST）
+      - @Provide
+      - [@State](arkui-ts/ts-state-management-state.md)
+      - @StorageLink
+      - @StorageProp
+      - @Watch
+    - 状态管理V2装饰器
+      - @Computed
+      - @Consumer
+      - @Event
+      - @Local
+      - @Monitor
+      - @Once
+      - @Param
+      - @Provider
+      - @Type（ArkTS-DT）
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
