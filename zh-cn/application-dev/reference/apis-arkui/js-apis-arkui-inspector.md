@@ -159,53 +159,102 @@ off(type: 'drawChildren', callback?: Callback\<void\>): void
 >
 > 推荐通过使用[UIContext](./js-apis-arkui-UIContext.md#uicontext)中的[getUIInspector](./js-apis-arkui-UIContext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](./js-apis-arkui-UIContext.md#uiinspector)对象。
 
-  ```ts
-  import { inspector } from '@kit.ArkUI'
+ArkTS1.1示例：
 
-  @Entry
-  @Component
-  struct ImageExample {
-    build() {
-      Column() {
-        Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-          Row({ space: 5 }) {
-            Image($r('app.media.app_icon'))
-              .width(110)
-              .height(110)
-              .border({ width: 1 })
-              .id('IMAGE_ID')
-          }
+```ts
+import { inspector } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
         }
-      }.height(320).width(360).padding({ right: 10, top: 10 })
-    }
-
-    listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
-
-    aboutToAppear() {
-      let onLayoutComplete:()=>void=():void=>{
-          // do something here
       }
-      let onDrawComplete:()=>void=():void=>{
-          // do something here
-      }
-      let onDrawChildrenComplete:()=>void=():void=>{
-          // do something here
-      }
-      let FuncLayout = onLayoutComplete // bind current js instance
-      let FuncDraw = onDrawComplete // bind current js instance
-      let FuncDrawChildren = onDrawChildrenComplete // bind current js instance
-      let OffFuncLayout = onLayoutComplete // bind current js instance
-      let OffFuncDraw = onDrawComplete // bind current js instance
-      let OffFuncDrawChildren = onDrawChildrenComplete // bind current js instance
-
-      this.listener.on('layout', FuncLayout)
-      this.listener.on('draw', FuncDraw)
-      this.listener.on('drawChildren', FuncDrawChildren)
-      
-      // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-      // this.listener.off('layout', OffFuncLayout)
-      // this.listener.off('draw', OffFuncDraw)
-      // this.listener.off('drawChildren', OffFuncDrawChildren)
-    }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
   }
-  ```
+
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+
+  aboutToAppear() {
+    let onLayoutComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let onDrawComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let onDrawChildrenComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let FuncLayout = onLayoutComplete // 绑定当前js对象
+    let FuncDraw = onDrawComplete // 绑定当前js对象
+    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
+    let OffFuncDraw = onDrawComplete // 绑定当前js对象
+    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+
+    this.listener.on('layout', FuncLayout)
+    this.listener.on('draw', FuncDraw)
+    this.listener.on('drawChildren', FuncDrawChildren)
+    
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+    // this.listener.off('drawChildren', OffFuncDrawChildren)
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+import { inspector } from '@ohos.arkui.inspector'
+import { Column, Row, Image, Flex, FlexDirection, 
+ItemAlign, Image, $r, Text, Component, Entry} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row() {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+      }
+    }.height(320).width(360)
+  }
+
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+
+  aboutToAppear() {
+    let onLayoutComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let onDrawComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let FuncLayout = onLayoutComplete // 绑定当前js对象
+    let FuncDraw = onDrawComplete // 绑定当前js对象
+    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
+    let OffFuncDraw = onDrawComplete // 绑定当前js对象
+
+    this.listener.on('layout', FuncLayout)
+    this.listener.on('draw', FuncDraw)
+    
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+  }
+}
