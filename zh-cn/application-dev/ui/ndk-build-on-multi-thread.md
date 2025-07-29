@@ -159,18 +159,18 @@ struct CAPIComponent {
   private rootSlot = new NodeContent();
 
   aboutToAppear(): void {
-    // 调用Native接口进行组件创建
+    // 调用Native接口进行组件创建。
     entry.CreateNodeTreeOnMultiThread(this.rootSlot, this.getUIContext());
   }
 
   aboutToDisappear(): void {
-    // 释放已创建的Native组件
+    // 释放已创建的Native组件。
     entry.DisposeNodeTreeOnMultiThread(this.rootSlot);
   }
 
   build() {
     Column() {
-      // Native组件挂载点
+      // Native组件挂载点。
       ContentSlot(this.rootSlot)
     }
   }
@@ -299,17 +299,20 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 #include <arkui/native_node_napi.h>
 
 namespace NativeModule {
-#define CHILD_NODE_TREE_NUMBER 10 //多线程创建组件树的数量
+#define FRAMEWORK_NODE_TREE_NUMBER 4 // 在框架线程创建组件树的数量。
+#define USER_NODE_TREE_NUMBER 3 // 在开发者线程创建组件树的数量。
 struct AsyncData {
     napi_env env;
     std::shared_ptr<ArkUINode> parent = nullptr;
     std::shared_ptr<ArkUINode> child = nullptr;
+    std::string label = "";
 };
 
 // 保存ArkTs侧NodeContent指针与Native侧节点树根节点的对应关系。
 std::map<ArkUI_NodeContentHandle, std::shared_ptr<ArkUIBaseNode>> g_nodeMap;
+ArkUI_ContextHandle g_contextHandle = nullptr;
 
-//多线程创建组件
+// 创建组件树。
 void CreateNodeTree(void *asyncUITaskData) {
     auto asyncData = static_cast<AsyncData*>(asyncUITaskData);
     if (!asyncData) {
@@ -319,7 +322,7 @@ void CreateNodeTree(void *asyncUITaskData) {
     asyncData->child = rowNode;
     
     auto buttonNode1 = std::make_shared<ArkUIButtonNode>();
-    ArkUI_AttributeItem label_item = { .string = "button1" };
+    ArkUI_AttributeItem label_item = { .string = asyncData->label.c_str() };
     int32_t result = buttonNode1->SetLabel(label_item);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "Button SetLabel Failed %{public}d", result);
@@ -330,9 +333,10 @@ void CreateNodeTree(void *asyncUITaskData) {
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "Button SetMargin Failed %{public}d", result);
     }
+    buttonNode1->SetWidth(150);
    
     auto buttonNode2 = std::make_shared<ArkUIButtonNode>();
-    ArkUI_AttributeItem label_item2 = { .string = "button2" };
+    ArkUI_AttributeItem label_item2 = { .string = asyncData->label.c_str() };
     result = buttonNode2->SetLabel(label_item2);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "Button SetLabel Failed %{public}d", result);
@@ -343,12 +347,13 @@ void CreateNodeTree(void *asyncUITaskData) {
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "Button SetMargin Failed %{public}d", result);
     }
+    buttonNode2->SetWidth(150);
 
     rowNode->AddChild(buttonNode1);
     rowNode->AddChild(buttonNode2);
 }
 
-// 组件多线程创建完成后，回到UI线程挂载到UI树上
+// 把组件树挂载到UI主树上。
 void MountNodeTree(void *asyncUITaskData) {
     auto asyncData = static_cast<AsyncData*>(asyncUITaskData);
     if (!asyncData) {
@@ -358,6 +363,65 @@ void MountNodeTree(void *asyncUITaskData) {
     auto child = asyncData->child;
     parent->AddChild(child);
     delete asyncData;
+}
+
+void CreateNodeOnFrameworkThread(ArkUI_ContextHandle contextHandle, std::shared_ptr<ArkUIColumnNode> parent) {
+    for (int i = 0; i < FRAMEWORK_NODE_TREE_NUMBER; i++) {
+        // UI线程创建子树根节点，保证scroll的子节点顺序。
+        auto columnItem = std::make_shared<ArkUIColumnNode>();
+        parent->AddChild(columnItem);
+        AsyncData* asyncData = new AsyncData();
+        asyncData->parent = columnItem;
+        asyncData->label = "OnFwkThread";
+        // 使用框架提供的非UI线程创建组件树，创建完成后回到UI线程挂载到主树上。
+        int32_t result = OH_ArkUI_PostAsyncUITask(contextHandle, asyncData, CreateNodeTree, MountNodeTree);
+        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+            OH_LOG_ERROR(LOG_APP, "OH_ArkUI_PostAsyncUITask Failed %{public}d", result);
+            delete asyncData;
+        }
+    }
+}
+
+void CreateNodeOnUserThread(ArkUI_ContextHandle contextHandle, std::shared_ptr<ArkUIColumnNode> parent) {
+    auto columnItem = std::make_shared<ArkUIColumnNode>();
+    parent->AddChild(columnItem);
+    // 在开发者创建的非UI线程上创建组件树。
+    std::thread userThread([columnItem, contextHandle]() {
+        for (int i = 0; i < USER_NODE_TREE_NUMBER; i++) {
+            AsyncData* asyncData = new AsyncData();
+            asyncData->parent = columnItem;
+            asyncData->label = "OnUserThread1";
+            CreateNodeTree(asyncData);
+            // 组件树创建完成后回到UI线程挂载到主树上。
+            int32_t result = OH_ArkUI_PostUITask(contextHandle, asyncData, MountNodeTree);
+            if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+                OH_LOG_ERROR(LOG_APP, "OH_ArkUI_PostUITask Failed %{public}d", result);
+                delete asyncData;
+            }
+        }
+    });
+    userThread.detach();
+}
+
+void CreateNodeOnUserThreadAndWait(ArkUI_ContextHandle contextHandle, std::shared_ptr<ArkUIColumnNode> parent) {
+    auto columnItem = std::make_shared<ArkUIColumnNode>();
+    parent->AddChild(columnItem);
+    // 在开发者创建的非UI线程上创建组件树。
+    std::thread userThread([columnItem, contextHandle]() {
+        for (int i = 0; i < USER_NODE_TREE_NUMBER; i++) {
+            AsyncData* asyncData = new AsyncData();
+            asyncData->parent = columnItem;
+            asyncData->label = "OnUserThread2";
+            CreateNodeTree(asyncData);
+            // 组件树创建完成后回到UI线程挂载到主树上，等待挂载完成后继续创建剩余组件。
+            int32_t result = OH_ArkUI_PostUITaskAndWait(contextHandle, asyncData, MountNodeTree);
+            if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+                OH_LOG_ERROR(LOG_APP, "OH_ArkUI_PostUITask Failed %{public}d", result);
+                delete asyncData;
+            }
+        }
+    });
+    userThread.detach();
 }
 
 napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
@@ -371,11 +435,15 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
         OH_LOG_ERROR(LOG_APP, "OH_ArkUI_GetNodeContentFromNapiValue Failed %{public}d", result);
         return nullptr;
     }
-    ArkUI_ContextHandle contextHandle;
-    result = OH_ArkUI_GetContextFromNapiValue(env, args[1], &contextHandle);
-    if (result != ARKUI_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "OH_ArkUI_GetContextFromNapiValue Failed %{public}d", result);
-        return nullptr;
+    
+    if (!g_contextHandle) {
+        result = OH_ArkUI_GetContextFromNapiValue(env, args[1], &g_contextHandle);
+        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+            OH_LOG_ERROR(LOG_APP, "OH_ArkUI_GetContextFromNapiValue Failed %{public}d", result);
+            delete g_contextHandle;
+            g_contextHandle = nullptr;
+            return nullptr;
+        }
     }
     
     auto scrollNode = std::make_shared<ArkUIScrollNode>();
@@ -388,19 +456,9 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
     
     auto columnNode = std::make_shared<ArkUIColumnNode>();
     scrollNode->AddChild(columnNode);
-    for (int i = 0; i < CHILD_NODE_TREE_NUMBER; i++) {
-        //UI线程创建子树根节点，保证scroll的子节点顺序
-        auto columnItem = std::make_shared<ArkUIColumnNode>();
-        columnNode->AddChild(columnItem);
-        AsyncData* asyncData = new AsyncData();
-        asyncData->parent = columnItem;
-        // 在非UI线程创建组件树，创建完成后回到主线程挂载到主树上
-        result = OH_ArkUI_PostAsyncUITask(contextHandle, asyncData, CreateNodeTree, MountNodeTree);
-        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
-            OH_LOG_ERROR(LOG_APP, "OH_ArkUI_PostAsyncUITask Failed %{public}d", result);
-            delete asyncData;
-        }
-    }
+    CreateNodeOnFrameworkThread(g_contextHandle,columnNode);
+    CreateNodeOnUserThread(g_contextHandle,columnNode);
+    CreateNodeOnUserThreadAndWait(g_contextHandle,columnNode);
     return nullptr;
 }
 
