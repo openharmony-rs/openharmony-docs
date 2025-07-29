@@ -311,13 +311,13 @@ function testFunc(array: Array<TestClass>) {
 let testInstance: TestClass = new TestClass();
 let array1 = new Array<TestClass>();
 array1.push(testInstance);
-// 以拷贝语义传递数组，testFunc内的修改不会作用到array对象上
+// 以拷贝语义传递数组，testFunc内的修改不会作用到array1对象上
 let task1 = new taskpool.Task(testFunc, Array.from(array1));
 taskpool.execute(task1).then((res: Any):void => {
   console.info('task1 res is: ' + res);
   console.info('array1 length: ' + array1.length);
 });
-// 使用引用传递数组，testFunc内的修改会作用到array对象上
+// 使用引用传递数组，testFunc内的修改会作用到array2对象上
 let array2 = new Array<TestClass>();
 array2.push(testInstance);
 let task2 = new taskpool.Task(testFunc, array2);
@@ -327,9 +327,9 @@ taskpool.execute(task2).then((res: Any):void => {
 });
 // 执行结果为：
 // task1 res is: TestClass
-// arr1 length: 1
+// array1 length: 1
 // task2 res is: TestClass
-// arr2 length: 2
+// array2 length: 2
 ```
 
 ## 移除taskpool setTransferList接口
