@@ -1121,7 +1121,7 @@ stopOptimizeSpace(): void
 | 名称     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | state | [OptimizeState](#optimizestate17) | 是   | 枚举值，优化空间状态。|
-| progress | number | 是   | 优化进度百分比，范围[0,100]。|
+| progress | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 优化进度百分比，范围[0,100]。|
 
 ## OptimizeSpaceParam<sup>17+</sup>
 
@@ -1133,5 +1133,5 @@ stopOptimizeSpace(): void
 
 | 名称     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| totalSize | number | 是   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
-| agingDays | number | 是   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频。|
+| totalSize | ArkTS1.1: number<br>ArkTS1.2: long | 是   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
+| agingDays | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频。|
