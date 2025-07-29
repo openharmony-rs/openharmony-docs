@@ -6,8 +6,6 @@
 
 **规则：** `arkui-modular-interface`
 
-**级别：** error
-
 在ArkTS1.2中，使用UI接口前必须先导入。
 
 **ArkTS1.1**
@@ -49,8 +47,6 @@ struct Index {
 ## 不支持`this.value!!`形式的双向绑定
 
 **规则：** `arkui-no-!!-bidirectional-data-binding`
-
-**级别：** error
 
 ### 系统组件参数双向绑定
 
@@ -200,8 +196,6 @@ struct Star {
 
 **规则：** `arkui-no-$$-bidirectional-data-binding`
 
-**级别：** error
-
 在ArkTS1.2中，不支持`$$this.value`形式的双向绑定，应改为`$$(this.value)`的形式。
 
 **ArkTS1.1**
@@ -254,8 +248,6 @@ struct Index {
 ## 不支持`$value`形式的数据绑定
 
 **规则：** `arkui-link-decorator-passing`
-
-**级别：** error
 
 在ArkTS1.2中，不支持`$value`形式的数据绑定，要变更为`this.value`的形式。
 
@@ -353,8 +345,6 @@ struct MyCounter {
 
 **规则：** `arkui-no-extend-decorator`
 
-**级别：** error
-
 在ArkTS1.2中，不支持`@Extend`装饰器，使用`@Extend`装饰的函数需要进行修改。
 
 **ArkTS1.1**
@@ -411,8 +401,6 @@ struct Index {
 ## `@AnimatableExtend`装饰器使用方式变更
 
 **规则：** `arkui-animatableextend-use-receiver`
-
-**级别：** error
 
 在ArkTS1.2中，使用`@AnimatableExtend`装饰器装饰的函数需要进行修改。
 
@@ -491,8 +479,6 @@ struct Index {
 ## 不支持`@Styles`装饰器
 
 **规则：** `arkui-no-styles-decorator`
-
-**级别：** error
 
 在ArkTS1.2中，不支持`@Styles`装饰器。使用`@Styles`装饰器装饰的函数需要进行修改。
 
@@ -619,8 +605,6 @@ struct Index {
 
 **规则：** `arkui-statestyles-block-need-arrow-func`
 
-**级别：** error
-
 在ArkTS1.2中，传递给`stateStyles`的匿名代码块必须是箭头函数。
 
 **ArkTS1.1**
@@ -682,8 +666,6 @@ struct Index {
 ## 数据监听需要增加`@Observed`装饰器
 
 **规则：** `arkui-data-observation`
-
-**级别：** error
 
 在ArkTS1.2中，被特定装饰器装饰的状态变量，如果要实现数据监听，需要为状态变量所属的类添加`@Observed`装饰器。
 
@@ -764,8 +746,6 @@ struct Index {
 
 **规则：** `arkui-entry-annotation`
 
-**级别：** error
-
 在ArkTS1.2中，`@Entry`装饰器不支持传入动态参数，只能接受基础类型的常量。若`@Entry`装饰器没有入参，则不需要进行修改。
 
 ### 参数类型为`LocalStorage`
@@ -845,8 +825,6 @@ struct Index {
 ## `@Provide`装饰器不支持传入联合类型的参数
 
 **规则：** `arkui-provide-annotation`
-
-**级别：** error
 
 ArkTS1.2的`@Provide`装饰器不支持传入联合类型参数，仅接受基础类型常量。若`@Provide`装饰器没有入参，无需修改。
 
@@ -934,8 +912,6 @@ struct Index {
 
 **规则：** `arkui-custombuilder-passing`
 
-**级别：** error
-
 在ArkTS1.2中，`CustomBuilder`类型的参数接收被`@Builder`装饰器装饰的调用函数时，需用匿名箭头函数包裹。
 
 **ArkTS1.1**
@@ -998,8 +974,6 @@ struct Index {
 ## 被`@Builder`装饰器装饰的函数的执行上下文需要在声明时确定
 
 **规则：** `arkui-buildparam-passing`
-
-**级别：** error
 
 在ArkTS1.1中，回调函数的执行上下文在调用时指定。
 
@@ -1126,8 +1100,6 @@ struct TestBuilderParam1 {
 
 **规则：** `arkui-no-update-in-build`
 
-**级别：** error
-
 在ArkTS1.2中，禁止在UI渲染过程中修改状态变量。如果在自定义组件的`build`方法中修改了状态变量，会导致编译报错。
 
 **ArkTS1.1**
@@ -1153,8 +1125,6 @@ struct Index {
 ## `AppStorage`中的值发生改变时会触发界面更新
 
 **规则：** `arkui-stateful-appstorage`
-
-**级别：** error
 
 在ArkTS1.2中，如果在自定义组件的`build`方法中调用`AppStorage`的`get`、`has`、`keys`或`size`接口，会和组件建立依赖关系。当`AppStorage`中对应的值发生改变时，会触发界面更新。
 
@@ -1183,8 +1153,6 @@ ArkTS1.2的处理方式是能力增强，因此仅提示开发者上述情况可
 ## 不支持`@Prop`、`@StorageProp`和`@LocalStorageProp`装饰器
 
 **规则：** `arkui-no-prop-decorator`、`arkui-no-storageprop-decorator`、`arkui-no-localstorageprop-decorator`
-
-**级别：** error
 
 在ArkTS1.2中，不支持`@Prop`、`@StorageProp`和`@LocalStrorageProp`装饰器，要分别用`@PropRef`、`@StoragePropRef`和`@LocalStroragePropRef`装饰器替代。
 
@@ -1262,8 +1230,6 @@ struct ChildComponent {
 
 **规则：** `arkui-no-localbuilder-decorator`
 
-**级别：** error
-
 在ArkTS1.2中，`@LocalBuilder`装饰器和`@Builder`装饰器的作用相同，因此废弃`@LocalBuilder`装饰器，用`@Builder`装饰器替代。
 
 **ArkTS1.1**
@@ -1327,8 +1293,6 @@ struct Index {
 ## 自定义组件需要加上`@CustomLayout`装饰器以获得自定义布局能力
 
 **规则：** `arkui-custom-layout-need-add-decorator`
-
-**级别：** error
 
 在ArkTS1.2中，自定义组件需要组件加上`@CustomLayout`装饰器，才能获得自定义布局能力。
 
@@ -1483,8 +1447,6 @@ struct MyComponent {
 ## `Repeat`禁用默认的懒加载
 
 **规则：** `arkui-repeat-disable-default-virtualscroll`
-
-**级别：** error
 
 在ArkTS1.1中，`Repate`默认渲染全部子组件。
 

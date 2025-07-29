@@ -6,8 +6,6 @@
 
 **规则：** arkts-limited-stdlib-no-sendable-decorator
 
-**级别：** error
-
 新增对象天然共享特性，不再依赖Sendable特性，无需添加@Sendable装饰器。
 
 **ArkTS1.1**
@@ -25,8 +23,6 @@ class A {}
 
 **规则：** arkts-limited-stdlib-no-concurrent-decorator
 
-**级别：** error
-
 新增对象天然共享特性，不再依赖Concurrent特性，无需添加@Concurrent装饰器。
 
 **ArkTS1.1**
@@ -43,8 +39,6 @@ function func() {}
 ## 不支持Worker
 
 **规则：** arkts-no-need-stdlib-worker
-
-**级别：** error
 
 内存天然共享，不需要基于Actor模型实现ThreadWorker。使用ArkTS1.2提供的新线程api-EAWorker。
 
@@ -69,8 +63,6 @@ eaw.join();
 
 **规则：** arkts-limited-stdlib-no-use-shared
 
-**级别：** error
-
 新增对象天然共享特性，无需添加use shared。
 
 **ArkTS1.1**
@@ -91,8 +83,6 @@ export let num = 1;
 
 **规则：** arkts-limited-stdlib-no-use-concurrent
 
-**级别：** error
-
 新增对象天然共享特性，无需添加use concurrent。
 
 **ArkTS1.1**
@@ -111,8 +101,6 @@ function func() {}
 
 **规则：** arkts-no-need-stdlib-sendable-containers
 
-**级别：** error
-
 新增对象天然共享特性，不再依赖Sendable特性。可直接使用ArkTS1.2原生容器，删除collections.前缀。
 
 **ArkTS1.1**
@@ -130,8 +118,6 @@ let array = new Array<number>();
 ## 内存默认共享，不提供ASON
 
 **规则：** arkts-no-need-stdlib-ason
-
-**级别：** error
 
 新增对象天然共享特性，不再依赖Sendable特性，ASON.stringify()方法调用可直接更改为JSON.stringify()，且删除ArkTSUtils.前缀。
 
@@ -155,8 +141,6 @@ console.info(str);
 
 **规则：** arkts-no-need-stdlib-sharedArrayBuffer
 
-**级别：** error
-
 新增对象天然共享特性，ArrayBuffer默认共享，不需要SharedArrayBuffer。
 
 **ArkTS1.1**
@@ -175,8 +159,6 @@ let int32 = new Int32Array(sab);
 
 **规则：** arkts-limited-stdlib-no-support-isConcurrent
 
-**级别：** error
-
 新增对象天然共享特性，所有函数都是共享的，不需要提供isConcurrent。
 
 **ArkTS1.1**
@@ -193,8 +175,6 @@ let result: Boolean = taskpool.isConcurrent(test);
 ## taskpool不需要import
 
 **规则：** arkts-limited-stdlib-no-import-concurrency
-
-**级别：** error
 
 taskpool实现基于ArkTS提供，不依赖其他模块，不再需要import。
 
@@ -219,8 +199,6 @@ taskpool.execute(test);
 
 **规则：** arkts-limited-stdlib-no-import-concurrency
 
-**级别：** error
-
 AsyncLock实现基于ArkTS提供，不依赖其他模块，不再需要import，且不需要添加ArkTSUtils.locks.前缀。
 
 **ArkTS1.1**
@@ -238,8 +216,6 @@ let lock: AsyncLock = new AsyncLock();
 ## process更名为StdProcess，且不需要import
 
 **规则：** arkts-change-process-to-StdProcess
-
-**级别：** error
 
 StdProcess实现基于ArkTS提供，不依赖其他模块，不再需要import。为避免占用process关键字，更名为StdProcess。
 
@@ -262,8 +238,6 @@ let pres = pro.getUidForName('tool');
 ## 移除taskpool setCloneList接口
 
 **规则：** arkts-limited-stdlib-no-setCloneList
-
-**级别：** error
 
 内存默认共享，不需要提供setCloneList来拷贝传递对象。如果仍然需要以拷贝语义使用数组对象，可以调用Array.from()方法手动拷贝。
 
@@ -335,8 +309,6 @@ taskpool.execute(task2).then((res: Any):void => {
 ## 移除taskpool setTransferList接口
 
 **规则：** arkts-limited-stdlib-no-setTransferList
-
-**级别：** error
 
 内存默认共享，不需要提供setTransferList来跨线程传递ArrayBuffer对象。
 
@@ -420,8 +392,6 @@ view1 = new Uint8Array(0);
 
 **规则：** arkts-no-need-stdlib-ISendable
 
-**级别：** error
-
 新增对象天然共享特性，无需实现ISendable接口。
 
 **ArkTS1.1**
@@ -455,8 +425,6 @@ class CustomData {
 
 **规则：** arkts-no-need-stdlib-isSendable
 
-**级别：** error
-
 新增对象天然共享特性，无需判断是否为Sendable数据类型。
 
 **ArkTS1.1**
@@ -481,8 +449,6 @@ if (ArkTSUtils.isSendable(sendableFunc)) {
 ## taskpool.execute()返回类型由Promise\<Object>变更为Promise\<NullishType>
 
 **规则：** arkts-taskpool-execute-generic-type-object-to-nullishtype
-
-**级别：** error
 
 ArkTS1.1中taskpool execute返回值声明为Promise\<Object>，但实际可以返回值为undefined的Promise。ArkTS1.2中undefined和Object为不同类型，相互之间无法进行类型转换。
 
@@ -540,8 +506,6 @@ async function test2() {
 
 **规则：** arkts-limited-stdlib-promise-reject-type-error
 
-**级别：** error
-
 ArkTS1.2中加强类型限制，有以下规格限制：
 
 1. throw只能抛出Error及其子类。
@@ -569,8 +533,6 @@ Promise.reject(new Error("error"));
 ## Promise的then和catch方法的onrejected回调参数类型只能标注为Error或其父类类型
 
 **规则：** arkts-limited-stdlib-promise-onrejected-type-error
-
-**级别：** error
 
 ArkTS1.2中加强类型限制，且类型转换具有运行时语义。为了保证类型安全，规格中限制函数间赋值遵循逆变原则，子类型入参回调无法赋值给父类型入参回调。
 
@@ -607,8 +569,6 @@ p.catch((e: Error) => {
 
 **规则：** arkts-not-support-PromiseSettledResult-customization
 
-**级别：** error
-
 ArkTS1.2不支持用户自定义声明PromiseFulfilledResult、PromiseRejectedResult、PromiseSettledResult。
 
 **ArkTS1.1**
@@ -634,8 +594,6 @@ type PromiseSettledResult\<T> = PromiseFulfilledResult\<T> | PromiseRejectedResu
 ## 不支持编译阶段根据PromiseSettledResult的status值确定其实际类型
 
 **规则：** arkts-not-support-PromiseSettledResult-smartcast
-
-**级别：** error
 
 arkts1.2中不支持对类的成员变量进行智能转换（智能类型差异arkts-no-ts-like-smart-type）。
 
@@ -677,8 +635,6 @@ Promise.allSettled<string>([f1])
 
 **规则：** arkts-no-support-nested-promise
 
-**级别：** error
-
 静态类型导致回调运行时类型转换失败，回调无法执行。
 
 **ArkTS1.1**
@@ -696,8 +652,6 @@ p.then((res: number) => { console.info(res)})
 ## Task的function属性改名为taskFunction
 
 **规则：** arkts-change-taskpool-Task-to-taskFunction
-
-**级别：** error
 
 function在ArkTS1.2中为关键字，不能作为类属性（限定关键字(arkts-invalid-identifier)）。
 
@@ -726,8 +680,6 @@ let func = task.taskFunction;
 
 **规则：** arkts-not-supprot-genericstask
 
-**级别：** error
-
  1. arkts1.2中不支持以泛型数组的形式对回调参数类型进行校验。
 
  2. arkts1.2不支持将非可变参数类型回调赋值给可变参数函数。
@@ -753,8 +705,6 @@ function testWithThreeParams(a: number, b: string, c: number): string {
 
 **规则：** arkts-not-support-global-async-call
 
-**级别：** error
-
 根据ArkTS1.2规格，全局初始化阶段不可以调用异步函数，否则会导致初始化结果难以推导。
 
 **ArkTS1.1**
@@ -778,8 +728,6 @@ function main() {
 ## Promise\<void>构造器中只支持使用resolve(undefined)
 
 **规则：** arkts-promise-with-void-type-need-undefined-as-resolve-arg
-
-**级别：** error
 
 ArkTS1.2中void不能作为变量类型声明；作为泛型时，在类实例化时会自动转换为undefined。
 **ArkTS1.1**
