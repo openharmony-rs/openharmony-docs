@@ -369,6 +369,9 @@ UIExtensionComponent组件使用分为使用方和提供方。本示例仅展示
 **组件使用方**
 
 使用方入口界面Index.ets内容如下:
+
+ArkTS1.1示例:
+
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 class Params {
@@ -468,6 +471,56 @@ function syncRegisterCallback1(proxy: UIExtensionProxy) {
 
 function syncRegisterCallback2(proxy: UIExtensionProxy) {
   console.info("on invoke for test, syncRegisterCallback2, type is syncReceiverRegister");
+}
+```
+
+ArkTS1.2示例:
+
+```ts
+import { Entry, Text, Row, Column, Component, Button, ClickEvent, UIExtensionComponent, UIExtensionOptions, UIExtensionProxy, TerminationInfo, DpiFollowStrategy } from '@ohos.arkui.component';
+import { Callback, ErrorCallback, BusinessError } from '@ohos.base';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Second {
+  @State message1: string = 'Hello World 1';
+  @State wid: number = 300;
+  @State hei: number = 300;
+  @State isTransferringCaller: boolean = false;
+
+  build() {
+    Row(undefined) {
+      Column(undefined) {
+        Text(this.message1).fontSize(30)
+        UIExtensionComponent({
+          bundleName : "com.example.newdemo",
+          abilityName: "UIExtensionProvider",
+          parameters: {
+            "ability.want.params.uiExtensionType": "sys/commonUI"
+          } as Record<String, Object>},
+          {
+            isTransferringCaller: this.isTransferringCaller
+          })
+          .width(this.wid)
+          .height(this.hei)
+          .onReceive((data: Record<string, Object>) : void => {
+            console.info('onReceive, data = ' + data?.['key'])
+          })
+          .onTerminated((info: TerminationInfo) : void => {
+            console.info('onTerminated: code =' + info?.code + ', want = ' + info?.want);
+          })
+          .onError((err: BusinessError) : void => {
+            console.info('onError: code =' + err?.code + ', message = ' + err?.message);
+          })
+          .onRemoteReady((proxy: UIExtensionProxy) : void => {
+            console.info('onRemoteReady, for test')
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }
 ```
 **组件提供方**

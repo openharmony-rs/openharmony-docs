@@ -934,6 +934,24 @@ Incorrect encoding format, only support utf-8.
 
 修改编码格式为utf-8。
 
+## 10200067 转换错误
+
+**错误信息**
+
+Transfer Error. The input name is not supported!
+
+**错误描述**
+
+不支持该转换方法。
+
+**可能原因**
+
+转换对象的key值填写不正确。
+
+**处理步骤**
+
+参照[key值列表](js-apis-transfer.md#转换对象key值列表)检查传入的key值是否正确。
+
 ## 10200068 引用已释放或分离的ArrayBuffer
 
 **错误信息**
