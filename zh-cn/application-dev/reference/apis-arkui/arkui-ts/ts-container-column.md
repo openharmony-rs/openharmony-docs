@@ -46,6 +46,8 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -189,6 +191,8 @@ reverse(isReversed: Optional\<boolean\>)
 }
 ```
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -242,6 +246,60 @@ struct ColumnExample {
         Column().width('90%').height(30).backgroundColor(0x00FFFF)
       }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
     }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Column, ColumnOptions, Padding, Margin, HorizontalAlign, FlexAlign, $r } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ColumnExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      // 设置子元素垂直方向间距为5
+      Text('space').width('90%')
+      Column({ space: 5 } as ColumnOptions) {
+        Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('100%').height(30).backgroundColor(0x00FFFF)
+      }.width('90%').height(100).border({ width: 1 })
+
+      // 设置子元素水平方向对齐方式
+      Text('alignItems(Start)').width('90%')
+      Column() {
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
+
+      Text('alignItems(End)').width('90%')
+      Column() {
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
+
+      Text('alignItems(Center)').width('90%')
+      Column() {
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
+
+      // 设置子元素垂直方向的对齐方式
+      Text('justifyContent(Center)').width('90%')
+      Column() {
+        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('90%').height(30).backgroundColor(0x00FFFF)
+      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.Center)
+
+      Text('justifyContent(End)').width('90%')
+      Column() {
+        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('90%').height(30).backgroundColor(0x00FFFF)
+      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
+    }.width('100%').padding({ top: 5 } as Padding)
   }
 }
 ```

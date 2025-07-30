@@ -170,6 +170,8 @@ reverse(isReversed: Optional\<boolean\>)
 }
 ```
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -190,6 +192,61 @@ struct RowExample {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').height(107).border({ width: 1 })
+
+      // 设置子元素垂直方向对齐方式
+      Text('alignItems(Bottom)').width('90%')
+      Row() {
+        Row().width('30%').height(50).backgroundColor(0xAFEEEE)
+        Row().width('30%').height(50).backgroundColor(0x00FFFF)
+      }.width('90%').alignItems(VerticalAlign.Bottom).height('15%').border({ width: 1 })
+
+      Text('alignItems(Center)').width('90%')
+      Row() {
+        Row().width('30%').height(50).backgroundColor(0xAFEEEE)
+        Row().width('30%').height(50).backgroundColor(0x00FFFF)
+      }.width('90%').alignItems(VerticalAlign.Center).height('15%').border({ width: 1 })
+
+      // 设置子元素水平方向对齐方式
+      Text('justifyContent(End)').width('90%')
+      Row() {
+        Row().width('30%').height(50).backgroundColor(0xAFEEEE)
+        Row().width('30%').height(50).backgroundColor(0x00FFFF)
+      }.width('90%').border({ width: 1 }).justifyContent(FlexAlign.End)
+
+      Text('justifyContent(Center)').width('90%')
+      Row() {
+        Row().width('30%').height(50).backgroundColor(0xAFEEEE)
+        Row().width('30%').height(50).backgroundColor(0x00FFFF)
+      }.width('90%').border({ width: 1 }).justifyContent(FlexAlign.Center)
+    }.width('100%')
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Column, ColumnOptions, Row, RowOptions, Padding, Margin, VerticalAlign, FlexAlign, $r } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct RowExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      // 设置子组件水平方向的间距为5
+      Text('space').width('90%')
+      Row({ space: 5 } as RowOptions) {
+        Row().width('30%').height(50).backgroundColor(0xAFEEEE)
+        Row().width('30%').height(50).backgroundColor(0x00FFFF)
+      }.width('90%').height(107).border({ width: 1 })
+
+      // // 通过资源引用方式设置子组件水平方向的间距
+      // Text('Resource space').width('90%')
+      // Row({ space: $r("app.string.stringSpace") } as RowOptions) {
+      //   Row().width('30%').height(50).backgroundColor(0xAFEEEE)
+      //   Row().width('30%').height(50).backgroundColor(0x00FFFF)
+      // }.width('90%').height(107).border({ width: 1 })
 
       // 设置子元素垂直方向对齐方式
       Text('alignItems(Bottom)').width('90%')

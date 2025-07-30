@@ -82,6 +82,8 @@ divider(value: ColumnSplitDividerStyle | null)
 
 ColumnSplit的基本用法：设置可拖动的纵向布局子组件。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -90,6 +92,33 @@ struct ColumnSplitExample {
   build() {
     Column(){
       Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      ColumnSplit() {
+        Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .borderWidth(1)
+      .resizeable(true) // 可拖动
+      .width('90%').height('60%')
+    }.width('100%')
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Column, ColumnSplit, TextAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ColumnSplitExample {
+  build() {
+    Column(){
+      Text('The secant line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
       ColumnSplit() {
         Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
         Text('2').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)

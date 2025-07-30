@@ -348,6 +348,8 @@ chainWeight(chainWeight: ChainWeightOptions): T
 
 设置内容在元素内的对齐方式和子元素在父容器主轴方向上的布局。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -394,11 +396,62 @@ struct PositionExample1 {
 }
 ```
 
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, ColumnOptions, FlexDirection, TextAlign, Alignment, Direction, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct PositionExample1 {
+  build() {
+    Column() {
+      Column({ space: 10 } as ColumnOptions) {
+        // 元素内容<元素宽高，设置内容在与元素内的对齐方式
+        Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Stack() {
+          Text('First show in bottom end').height('65%').backgroundColor(0xD2B48C)
+          Text('Second show in bottom end').backgroundColor(0xF5DEB3).opacity(0.9)
+        }.width('90%').height(50).margin({ top: 5 } as Margin).backgroundColor(0xFFE4C4)
+        .align(Alignment.BottomEnd)
+        Stack() {
+          Text('top start')
+        }.width('90%').height(50).margin({ top: 5 } as Margin).backgroundColor(0xFFE4C4)
+        .align(Alignment.TopStart)
+
+        // 父容器设置direction为Direction.Ltr，子元素从左到右排列
+        Text('direction').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+        }
+        .width('90%')
+        .direction(Direction.Ltr)
+        // 父容器设置direction为Direction.Rtl，子元素从右到左排列
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+        }
+        .width('90%')
+        .direction(Direction.Rtl)
+      }
+    }
+    .width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![align.png](figures/align.png)
 
 ### 示例2（位置偏移）
 
 基于父组件、相对定位、锚点作出位置偏移。
+
+**ArkTS1.1示例：**
 
 ```ts
 // xxx.ets
@@ -483,11 +536,99 @@ struct PositionExample2 {
 }
 ```
 
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, ColumnOptions, FlexDirection, TextAlign, Alignment, Direction, Margin, Color, BorderStyle, Position } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct PositionExample2 {
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      // 设置子组件左上角相对于父组件左上角的偏移位置
+      Text('position').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 position(30, 10)')
+          .size({ width: '60%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .position({ x: 30, y: 10 } as Position)
+        Text('3').size({ width: '45%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 position(50%, 70%)')
+          .size({ width: '50%', height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .position({ x: '50%', y: '70%' } as Position)
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+      // 相对于起点偏移，其中x为最终定位点距离起点水平方向间距，x>0往左，反之向右。
+      // y为最终定位点距离起点垂直方向间距，y>0向上，反之向下
+      Text('markAnchor').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Stack({ alignContent: Alignment.TopStart }) {
+        Row()
+          .size({ width: '100', height: '100' })
+          .backgroundColor(0xdeb887)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: 25 } as Position)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: -100, y: -25 } as Position)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: -25 } as Position)
+      }.margin({ top: 25 } as Margin).border({ width: 1, style: BorderStyle.Dashed })
+
+      // 相对定位，x>0向右偏移，反之向左，y>0向下偏移，反之向上
+      Text('offset').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2  offset(15, 30)')
+          .size({ width: 120, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .offset({ x: 15, y: 30 } as Position)
+        Text('3').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 offset(-5%, 20%)')
+          .size({ width: 100, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .offset({ x: '-5%', y: '20%' } as Position)
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+    }
+    .width('100%').margin({ top: 25 } as Margin)
+  }
+}
+```
+
 ![position.png](figures/position.png)
 
 ### 示例3（绝对定位和相对偏移）
 
 使用position设置绝对定位，确定子组件相对父组件的位置。使用offset设置相对偏移，组件相对原本的布局位置进行偏移。
+
+**ArkTS1.1示例：**
 
 ```ts
 // xxx.ets
@@ -525,11 +666,52 @@ struct Example3 {
 }
 ```
 
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, ColumnOptions, FlexDirection, TextAlign, Alignment, Direction, Margin, Color, BorderStyle, Edges } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Example3 {
+  build() {
+    Column({ space: 20 } as ColumnOptions){
+      Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('bottom:0, right:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({bottom: 0, right: 0} as Edges)
+        Text('top:0, left:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({top: 0, left: 0} as Edges)
+        Text('top:10%, left:50%').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({ top: '10%', left: '50%' } as Edges)
+        Text('bottom:0, left:30').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({ bottom: 0, left: 30 } as Edges)
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+
+      Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 top:30, left:0').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).offset({top: 30, left: 0} as Edges)
+        Text('3').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(12)
+          .textAlign(TextAlign.Center).offset({bottom: 10, right: 30} as Edges)
+      }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
+    }.width('100%').margin({ top: 25 } as Margin)
+  }
+}
+```
+
 ![position.png](figures/position2.jpeg)
 
 ### 示例4（镜像效果）
 
 通用布局属性支持镜像能力。从上到下依次通过position，offset，markAnchor实现镜像效果。浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
+
+**ArkTS1.1示例：**
 
 ```ts
 // xxx.ets
@@ -591,6 +773,94 @@ struct Example4 {
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+            }
+            .backgroundColor(Color.White)
+            .padding(50)
+            .margin(50)
+          }
+        }
+        .width('100%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
+          Text()
+            .width(20)
+            .height(100)
+            .borderRadius(10)
+            .backgroundColor('#C0C0C0')
+        }.width(20).backgroundColor('#ededed')
+      }
+    }.height('90%')
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, Flex, ScrollBar, Scroller, Scroll, RelativeContainer, ScrollBarDirection, ScrollDirection, FlexDirection,
+  BarState, TextAlign, Alignment, Direction, Margin, Color, BorderStyle, Position, Edges, LengthMetrics, LocalizedEdges, LocalizedPosition } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Example4 {
+  private scroller: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      Stack({ alignContent: Alignment.End }) {
+        Scroll(this.scroller) {
+          Flex({ direction: FlexDirection.Column }) {
+            RelativeContainer() {
+              Row() {
+              }
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) } as LocalizedEdges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor(Color.Pink)
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .position({ left:'200px', top: '100px' } as Edges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor(Color.Yellow)
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) } as LocalizedEdges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor(Color.Pink)
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .offset({ left: 100, top: 200  } as Edges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor(Color.Yellow)
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) } as LocalizedPosition)
+              .width("30%")
+              .height("20%")
+              .backgroundColor(Color.Pink)
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .markAnchor({ x: '100fp', y: '-350fp' } as Position)
+              .width("30%")
+              .height("20%")
+              .backgroundColor(Color.Yellow)
               .padding(50)
               .margin(50)
             }

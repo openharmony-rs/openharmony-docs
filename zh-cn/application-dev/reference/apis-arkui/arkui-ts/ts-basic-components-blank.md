@@ -65,6 +65,8 @@ color(value: ResourceColor)
 
 Blank组件在横竖屏占满空余空间效果。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -82,6 +84,27 @@ struct BlankExample {
 }
 ```
 
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Toggle, Column, Row, Blank, ToggleType, Margin, Padding } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BlankExample {
+  build() {
+    Column() {
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        Blank()
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 } as Margin)
+      }.width('100%').backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 } as Padding)
+    }.backgroundColor(0xEFEFEF).padding(20)
+  }
+}
+```
+
 竖屏状态
 
 ![zh-cn_image_0000001219662649](figures/zh-cn_image_0000001219662649.gif)
@@ -94,6 +117,8 @@ struct BlankExample {
 ### 示例2（填充固定宽度）
 
 Blank组件的父组件未设置宽度时，min参数的使用效果。
+
+**ArkTS1.1示例：**
 
 ```ts
 // xxx.ets
@@ -120,6 +145,37 @@ struct BlankExample {
   }
 }
 ```
+
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Toggle, Column, Row, Blank, ColumnOptions, ToggleType, Margin, Padding, Color } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BlankExample {
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      // Blank父组件不设置宽度时，Blank失效，可以通过设置min最小宽度填充固定宽度
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        Blank().color(Color.Yellow)
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 } as Margin)
+      }.backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 } as Padding)
+
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        // 设置最小宽度为160
+        Blank('160').color(Color.Yellow)
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 } as Margin)
+      }.backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 } as Padding)
+
+    }.backgroundColor(0xEFEFEF).padding(20).width('100%')
+  }
+}
+```
+
 Blank父组件未设置宽度时，子组件间无空白填充，使用min参数设置填充尺寸
 
 ![blankmin](figures/blankmin.png)

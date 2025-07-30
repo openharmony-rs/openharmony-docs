@@ -172,6 +172,8 @@ struct SafeAreaExample1 {
 
 该示例展示了同时设置固定宽高和expandSafeArea属性的效果。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -185,6 +187,35 @@ struct SafeAreaExample2 {
       TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
         .placeholderFont({ size: 14, weight: 400 })
         .width(320).height(40).offset({y: 120})
+        .fontSize(14).fontColor(Color.Black)
+        .backgroundColor(Color.White)
+    }
+    .height('780')
+    .width('100%')
+    .backgroundColor('rgb(179,217,235)')
+    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Row, Column, TextInput, TextInputController, SafeAreaType, SafeAreaEdge, ImageSize, Color, Position, $r } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SafeAreaExample2 {
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderFont({ size: 14, weight: 400 })
+        .width(320).height(40).offset({y: 120} as Position)
         .fontSize(14).fontColor(Color.Black)
         .backgroundColor(Color.White)
     }

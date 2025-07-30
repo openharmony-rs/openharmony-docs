@@ -328,6 +328,8 @@ constraintSize(value: ConstraintSizeOptions): T
 
 设置组件的宽度、高度、内边距及外边距。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -398,11 +400,71 @@ struct SizeExample {
 }
 ```
 
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Row, Button, Flex, ColumnOptions, RowOptions, ForEach, FlexAlign, TextAlign, Margin, Padding, Color, FontWeight } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct SizeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('margin and padding:').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        // 宽度80 ,高度80 ,外边距20(蓝色区域），上下左右的内边距分别为5、15、10、20（白色区域）
+        Row() {
+          Row().size({ width: '100%', height: '100%' }).backgroundColor(Color.Yellow)
+        }
+        .width(80)
+        .height(80)
+        .padding({ top: 5, left: 10, bottom: 15, right: 20 } as Padding)
+        .margin(20)
+        .backgroundColor(Color.White)
+      }.backgroundColor(Color.Blue)
+
+      Text('constraintSize').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Text('this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text.this is a Text')
+        .width('90%')
+        .constraintSize({ maxWidth: 200 })
+
+      Text('layoutWeight').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      // 父容器尺寸确定时，设置了layoutWeight的子元素在主轴布局尺寸按照权重进行分配，忽略本身尺寸设置。
+      Row() {
+        // 权重1，占主轴剩余空间1/3
+        Text('layoutWeight(1)')
+          .size({ width: '30%', height: 110 }).backgroundColor(0xFFEFD5).textAlign(TextAlign.Center)
+          .layoutWeight(1)
+        // 权重2，占主轴剩余空间2/3
+        Text('layoutWeight(2)')
+          .size({ width: '30%', height: 110 }).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+          .layoutWeight(2)
+        // 未设置layoutWeight属性，组件按照自身尺寸渲染
+        Text('no layoutWeight')
+          .size({ width: '30%', height: 110 }).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+      }.size({ width: '90%', height: 140 }).backgroundColor(0xAFEEEE)
+      // calc计算特性
+      Text('calc:').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Text('calc test')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .backgroundColor(0xFFFAF0)
+        .textAlign(TextAlign.Center)
+        .margin('calc(25vp*2)')
+        // width和height设置百分比时，以父容器的width和height作为基础值。
+        .size({ width: 'calc(90%)', height: 'calc(50vp + 10%)' })
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![size](figures/size.png)
 
 ### 示例2（LocalizedPadding和LocalizedMargin类型的使用）
 
 使用LocalizedPadding类型和LocalizedMargin类型定义padding和margin属性。
+
+**ArkTS1.1示例：**
 
 ```ts
 // xxx.ets
@@ -444,6 +506,43 @@ struct SizeExample {
     }
     .width('100%')
     .margin({ top: 5 })
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Row, ColumnOptions, Margin, Padding, Color, LengthMetrics, LocalizedPadding, LocalizedMargin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct SizeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('margin and padding:').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        // 宽度80 ,高度80 ,上下开始结束的外边距40、20、30、10(蓝色区域），上下开始结束的内边距分别为5、15、10、20（白色区域）
+        Row() {
+          Row().size({ width: '100%', height: '100%' }).backgroundColor(Color.Yellow)
+        }
+        .width(80)
+        .height(80)
+        .padding({
+          top: LengthMetrics.vp(5),
+          bottom: LengthMetrics.vp(15),
+          start: LengthMetrics.vp(10),
+          end: LengthMetrics.vp(20)
+        } as LocalizedPadding)
+        .margin({
+          top: LengthMetrics.vp(40),
+          bottom: LengthMetrics.vp(20),
+          start: LengthMetrics.vp(30),
+          end: LengthMetrics.vp(10)
+        } as LocalizedMargin)
+        .backgroundColor(Color.White)
+      }.backgroundColor(Color.Blue)
+    }.width('100%').margin({ top: 5 } as Margin)
   }
 }
 ```
