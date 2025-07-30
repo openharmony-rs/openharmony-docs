@@ -3210,14 +3210,76 @@ createComponentObserver(id: string): inspector.ComponentObserver
 | ------------------------------------------------------------ | -------------------------------------------------- |
 | [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
-**示例：**
+**ArkTS1.2 示例:**
 
 <!--code_no_check-->
 ```ts
-import { UIInspector } from '@kit.ArkUI';
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement'
+import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
 
-let inspector: UIInspector = uiContext.getUIInspector();
-let listener = inspector.createComponentObserver('COMPONENT_ID');
+@Component
+struct MyStateSample {
+  private listener: inspector.ComponentObserver|undefined = undefined;
+  build() {
+    Row() {
+      Column() {
+        Text("hello")
+          .width('70%')
+          .height('70%')
+          .id("TEXT1")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
+            }
+          )
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+
+  aboutToAppear() {
+    this.listener = this.getUIContext().getUIInspector().createComponentObserver("TEXT1")
+    let onLayoutComplete:()=>void=():void=>{
+      hilog.info(0x0000, 'testTag', "TEXT1 layout complete");
+    }
+    let onDrawComplete:()=>void=():void=>{
+      hilog.info(0x0000, 'testTag', "TEXT1 draw complete");
+    }
+
+    if (this.listener != undefined) {
+      this.listener!.on('layout', onLayoutComplete)
+      this.listener!.on('draw', onDrawComplete)
+      // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+      // this.listener.off('layout', onLayoutComplete)
+      // this.listener.off('draw', onDrawComplete)
+    } else {
+      hilog.error(0x0000, 'testTag', "listener is undefined");
+    }
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () => {
+      hilog.info(0x0000, 'testTag', 'MyStateSample');
+      MyStateSample(undefined)
+    }
+    return wrapper
+  }
+}
 ```
 
 ## PageInfo<sup>12+</sup>

@@ -78,7 +78,64 @@ getInspectorByKey(id: string): string
 
 | 类型        | 说明             |
 | -------| -------------- |
-| string | 组件属性列表的JSON字符串。<br />**说明**：<br /> 字符串信息包含组件的tag、id、位置信息(相对于窗口左上角的坐标)以及用于测试检查的组件所包含的相关属性信息。 |
+| string | 组件属性列表的JSON字符串。<br />**说明**：<br /> 字符串信息包含组件的tag、id、位置信息(相对于窗口左上角的坐标)以及用于测试检查的组件所包含的相关属性信息。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+
+**ArkTS1.2 示例:**
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+
+@Component
+struct MyStateSample {
+  private listener: inspector.ComponentObserver|undefined = undefined;
+  build() {
+    Row() {
+      Column() {
+        Text("hello")
+          .width('70%')
+          .height('70%')
+          .id("TEXT1")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
+            }
+          )
+      }
+      .width('100%')
+      .height('100%')
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin getInspectorByKey");
+          let res = inspector.getInspectorByKey("TEXT1");
+          hilog.info(0x0000, 'testTag', res);
+        }
+      )
+    }
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () => {
+      hilog.info(0x0000, 'testTag', 'MyStateSample');
+      MyStateSample(undefined)
+    }
+    return wrapper
+  }
+}
+```
 
 ### getInspectorTree<sup>9+</sup>
 
@@ -94,7 +151,64 @@ getInspectorTree(): Object
 
 | 类型     | 说明                            |
 | ------ | --------------------------- |
-| Object | 组件树及组件属性列表的JSON对象。 |
+| Object | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+
+**ArkTS1.2 示例:**
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+
+@Component
+struct MyStateSample {
+  private listener: inspector.ComponentObserver|undefined = undefined;
+  build() {
+    Row() {
+      Column() {
+        Text("hello")
+          .width('70%')
+          .height('70%')
+          .id("TEXT1")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
+            }
+          )
+      }
+      .width('100%')
+      .height('100%')
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin getInspectorTree");
+          let res = inspector.getInspectorTree() as string;
+          hilog.info(0x0000, 'testTag', res);
+        }
+      )
+    }
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () => {
+      hilog.info(0x0000, 'testTag', 'MyStateSample');
+      MyStateSample(undefined)
+    }
+    return wrapper
+  }
+}
+```
 
 ### sendEventByKey<sup>9+</sup>
 
@@ -119,6 +233,63 @@ sendEventByKey(id: string, action: number, params: string): boolean
 | 类型          | 说明                         |
 | -------- | --------------------------|
 | boolean  | 找不到指定id的组件时返回false，其余情况返回true。 |
+
+**ArkTS1.2 示例:**
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+
+@Component
+struct MyStateSample {
+  private listener: inspector.ComponentObserver|undefined = undefined;
+  build() {
+    Row() {
+      Column() {
+        Text("hello")
+          .width('70%')
+          .height('70%')
+          .id("TEXT1")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
+            }
+          )
+      }
+      .width('100%')
+      .height('100%')
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin sendEventByKey");
+          // TEXT1 is clicked 会被打印。
+          inspector.sendEventByKey("TEXT1", 10, "");
+        }
+      )
+    }
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () => {
+      hilog.info(0x0000, 'testTag', 'MyStateSample');
+      MyStateSample(undefined)
+    }
+    return wrapper
+  }
+}
+```
 
 ### sendTouchEvent<sup>9+</sup>
 
