@@ -14,7 +14,7 @@ inspector针对UI组件的布局或绘制送显完成，还提供了注册与取
 
 3. 不支持获取组件的方法、事件。
 
-## UIContext查询组件树和组件信息能力
+## UIContext查询组件树和组件信息能力(ArkTS1.1)
 
 ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)获取组件树及组件属性，通过[getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)获取指定的组件及其子组件的属性。支持设置过滤条件进行查询。
 
@@ -82,25 +82,27 @@ struct ComponentPage {
 
 下述示例，展示了布局回调的基本用法。
 
-```ts
-import { inspector } from '@kit.ArkUI'
+ArkTS1.1示例：
 
-@Entry
-@Component
-struct ImageExample {
-  build() {
-    Column() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-        Row({ space: 5 }) {
-          Image($r('app.media.app_icon'))
-            .width(110)
-            .height(110)
-            .border({ width: 1 })
-            .id('IMAGE_ID')
-        }
-      }
-    }.height(320).width(360).padding({ right: 10, top: 10 })
-  }
+```ts
+import { inspector } from '@kit.ArkUI'	
+
+@Entry	
+@Component	
+struct ImageExample {	
+  build() {	
+    Column() {	
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {	
+        Row() {	
+          Image($r('app.media.app_icon'))	
+            .width(110)	
+            .height(110)	
+            .border({ width: 1 })	
+            .id('IMAGE_ID')	
+        }	
+      }	
+    }.height(320).width(360)
+  }	
 
   listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
 
@@ -112,7 +114,7 @@ struct ImageExample {
       // 补充待实现的功能
     }
     let onDrawChildrenComplete:()=>void=():void=>{
-      // 补充待实现的功能
+        // 补充待实现的功能
     }
     let FuncLayout = onLayoutComplete // 绑定当前js对象
     let FuncDraw = onDrawComplete // 绑定当前js对象
@@ -124,11 +126,59 @@ struct ImageExample {
     this.listener.on('layout', FuncLayout)
     this.listener.on('draw', FuncDraw)
     this.listener.on('drawChildren', FuncDrawChildren)
-
+    
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
     // this.listener.off('layout', OffFuncLayout)
     // this.listener.off('draw', OffFuncDraw)
     // this.listener.off('drawChildren', OffFuncDrawChildren)
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+import { inspector } from '@ohos.arkui.inspector'
+import { Column, Row, Image, Flex, FlexDirection, 
+ItemAlign, Image, $r, Text, Component, Entry} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row() {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+      }
+    }.height(320).width(360)
+  }
+
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+
+  aboutToAppear() {
+    let onLayoutComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let onDrawComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let FuncLayout = onLayoutComplete // 绑定当前js对象
+    let FuncDraw = onDrawComplete // 绑定当前js对象
+    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
+    let OffFuncDraw = onDrawComplete // 绑定当前js对象
+
+    this.listener.on('layout', FuncLayout)
+    this.listener.on('draw', FuncDraw)
+    
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
   }
 }
 ```
@@ -142,32 +192,134 @@ struct ImageExample {
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
 
-```ts
-@Entry
-@Component
-struct ComponentPage {
-  build() {
-    Column() {
-      Text("Hello World")
-        .fontSize(20)
-        .id("TEXT")
-        .onClick(() => {
-          console.info(`Text is clicked`);
-        })
-      Button('getInspectorByKey').onClick(() => {
-        let result = getInspectorByKey("TEXT");
-        console.info(`result is ${result}`);
-      })
-      Button('getInspectorTree').onClick(() => {
-        let result = getInspectorTree();
-        console.info(`result is ${JSON.stringify(result)}`);
-      })
-      Button('sendEventByKey').onClick(() => {
-        sendEventByKey("TEXT", 10, "");
-      })
-    }
+ArkTS1.1示例：
+
+```ts	
+@Entry	
+@Component	
+struct ComponentPage {	
+  build() {	
+    Column() {	
+      Text("Hello World")	
+        .fontSize(20)	
+        .id("TEXT")	
+        .onClick(() => {	
+          console.info(`Text is clicked`);	
+        })	
+      Button('getInspectorByKey').onClick(() => {	
+        let result = getInspectorByKey("TEXT");	
+        console.info(`result is ${result}`);	
+      })	
+      Button('getInspectorTree').onClick(() => {	
+        let result = getInspectorTree();	
+        console.info(`result is ${JSON.stringify(result)}`);	
+      })	
+      Button('sendEventByKey').onClick(() => {	
+        sendEventByKey("TEXT", 10, "");	
+      })	
+    }	
     .width('100%')
+    .height('100%')	
+  }	
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import {
+  Text,
+  Column,
+  Component,
+  ClickEvent,
+  UserView,
+  $r,
+  memo,
+  Row,
+  Builder
+} from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+
+@Component
+struct MyStateSample {
+  private listener: inspector.ComponentObserver | undefined = undefined;
+
+  build() {
+    Row() {
+      Column() {
+        Text("hello getInspectorByKey")
+          .id("TEXT1")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
+            }
+          )
+      }
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin getInspectorByKey");
+          let res = inspector.getInspectorByKey("TEXT1");
+          hilog.info(0x0000, 'testTag', res);
+        }
+      )
+
+      Column() {
+        Text("hello getInspectorTree")
+          .id("TEXT2")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT2 is clicked");
+            }
+          )
+      }
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin getInspectorTree");
+          let res = inspector.getInspectorTree() as string;
+          hilog.info(0x0000, 'testTag', res);
+        }
+      )
+
+      Column() {
+        Text("hello sendEventByKey")
+          .id("TEXT3")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT3 is clicked");
+            }
+          )
+      }
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin sendEventByKey");
+          // TEXT3 is clicked 会被打印。
+          inspector.sendEventByKey("TEXT3", 10, "");
+        }
+      )
+    }
     .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () =>
+    {
+      hilog.info(0x0000, 'testTag', 'MyStateSample');
+      MyStateSample(undefined)
+    }
+    return wrapper
   }
 }
 ```
