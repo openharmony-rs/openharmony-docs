@@ -6,8 +6,6 @@ ArkTS1.2在引入了静态类型系统、增强的并发能力的同时，也引
 
 **规则：** `arkts-invalid-identifier`
 
-**级别：** error
-
 ArkTS1.2中对关键字和保留字做了严格定义。代码中不能使用这些关键字作为变量名称。
 
 **ArkTS1.1**
@@ -25,8 +23,6 @@ const abstract1: string = "abstract";
 ## 数值类型语义变化
 
 **规则：** `arkts-numeric-semantic`
-
-**级别：** error
 
 在ArkTS1.2中，为了获得更好的执行效率，整型数字字面量默认是int类型。
 
@@ -85,8 +81,6 @@ identity(42 as number);
 
 **规则：** `arkts-limited-void-type`
 
-**级别：** error
-
 ArkTS1.1中，void可以在多个场景中使用。
 
 ArkTS1.2中，void只能使用在返回类型的场景，且void类型没有实体。
@@ -138,8 +132,6 @@ execute(foo);
 
 **规则：** `arkts-no-void-operator`
 
-**级别：** error
-
 在ArkTS1.2中，undefined作为关键字不能作为变量名称，因此不需要通过void操作符获取undefined。
 
 **ArkTS1.1**
@@ -182,8 +174,6 @@ let fn = () => undefined;  // 直接返回 `undefined`
 ## 限定使用字面量类型
 
 **规则：** `arkts-limited-literal-types`
-
-**级别：** error
 
 ArkTS1.2不支持数字字面量类型，布尔字面量类型。
 
@@ -245,8 +235,6 @@ interface Config {
 
 **规则：** `arkts-no-arguments-obj`
 
-**级别：** error
-
 ArkTS1.2对函数调用进行严格的参数检查，参数个数不符时编译报错，因此不需要在函数体内通过arguments机制获取参数。
 
 **ArkTS1.1**
@@ -300,8 +288,6 @@ function test() {
 
 **规则：**`arkts-array-index-expr-type`
 
-**级别：error**
-
 ArkTS1.2支持数值类型的细化，为了实现数组更快的访问，数组索引表达式必须是整数类型。
 
 **ArkTS1.1**
@@ -344,8 +330,6 @@ for (let i: int = 0; i < array.length; i++) { // 改为 `int`
 
 **规则：**`arkts-array-index-negative`
 
-**级别：error**
-
 ArkTS1.2不支持使用负整数访问数组元素。
 
 **ArkTS1.1**
@@ -383,8 +367,6 @@ function getElement(arr: number[], index: int) {
 
 **规则：**`arkts-runtime-array-check`
 
-**级别：error**
-
 为了保证类型安全，在访问数组元素时，ArkTS1.2会对索引的合法性进行校验。
 
 **ArkTS1.1**
@@ -406,8 +388,6 @@ if (100 < a.length) {
 ## arkts-no-tuples-arrays
 
 **规则：**`arkts-no-tuples-arrays`
-
-**级别：error**
 
 ArkTS1.2中数组和元组是不同的类型，运行时使用元组类型可以获得更好的性能。
 
@@ -448,8 +428,6 @@ const p: Point = [3, 5, true];
 ## 函数类型
 
 **规则：**`arkts-incompatible-function-types`
-
-**级别：error**
 
 TypeScript允许对函数类型的变量进行更宽松的赋值，而在ArkTS1.2中，将对函数类型的赋值进行更严格的检查。函数类型转换时，参数遵循逆变(Contravariance)规则，返回类型遵循协变(Covariance)规则。
 
@@ -497,8 +475,6 @@ let f: FuncType = (dog: Dog) => {}; // 参数类型严格匹配
 
 **规则：**`arkts-no-exponent-op`
 
-**级别：error**
-
 ArkTS1.2不支持指数运算符（`**`和`**=`），采用语言基础库。
 
 **ArkTS1.1**
@@ -541,8 +517,6 @@ let squared = values.map(v => Math.pow(v, 2)); // 使用 `Math.pow()`
 
 **规则：**`arkts-no-regexp-literals`
 
-**级别：error**
-
 ArkTS1.2不支持正则表达式字面量。
 
 **ArkTS1.1**
@@ -582,8 +556,6 @@ let items = "apple,banana, cherry".split(regex);
 
 **规则：**`arkts-no-enum-mixed-types`
 
-**级别：error**
-
 enum用来表示一组离散的数据，使用浮点数据不符合enum的设计理念。使用浮点数据可能造成精度损失的问题。因此，ArkTS1.2中enum的值必须为整型数据。
 
 **ArkTS1.1**
@@ -609,8 +581,6 @@ enum Size{
 ## 不支持为函数增加属性
 
 **规则：**`arkts-no-func-props`
-
-**级别：error**
 
 ArkTS1.2上不支持在函数上动态添加属性。
 
@@ -692,8 +662,6 @@ console.log(Counter.increment());
 
 **规则：**`arkts-no-ts-decorators`
 
-**级别：error**
-
 ArkTS1.2中不支持将类作为对象，不能通过装饰器中对类做动态改变。
 
 **ArkTS1.1**
@@ -727,8 +695,6 @@ class PersonHelper {
 ## 类实现接口时，不能用类方法替代对应interface属性
 
 **规则：**`arkts-no-method-overriding-field`
-
-**级别：error**
 
 ArkTS1.2不支持structural type，属性和方法不能互相转换。
 
@@ -775,8 +741,6 @@ class StringTransformer implements Transformer<string> {
 ## 限定switch语句中case语句类型
 
 **规则：**`arkts-switch-expr`
-
-**级别：error**
 
 ArkTS1.2的switch表达式类型只能为number，string，enum。
 
@@ -831,8 +795,6 @@ switch (arrValue) {
 ## 不支持重复case语句
 
 **规则：**`arkts-case-expr`
-
-**级别：error**
 
 ArkTS1.2不支持Switch语句的中case重复，便于提高代码可读性。
 
@@ -891,8 +853,6 @@ switch (state) {
 
 **规则：**`arkts-no-lazy-import`
 
-**级别：error**
-
 ArkTS1.2支持默认懒加载，无需lazy关键字。
 
 **ArkTS1.1**
@@ -914,8 +874,6 @@ import { c } from 'module2';
 ## 不支持动态import
 
 **规则：**`arkts-no-dynamic-import`
-
-**级别：error**
 
 ArkTS1.2中模块加载默认支持懒加载。
 
@@ -963,8 +921,6 @@ function getModule() {
 
 **规则：**`arkts-no-side-effect-import`
 
-**级别：error**
-
 ArkTS1.2中模块加载默认支持懒加载，无法实现导入副作用的功能。
 
 **ArkTS1.1**
@@ -989,8 +945,6 @@ console.log("Main program running...");
 ## 不支持globalThis
 
 **规则：**`arkts-no-globalthis`
-
-**级别：error**
 
 由于ArkTS1.2不支持动态更改对象的布局，因此不支持全局作用域和globalThis。
 
@@ -1019,8 +973,6 @@ let x = M.abc;
 ## 不支持Funcion.bind方法
 
 **规则：**`arkts-no-func-bind`
-
-**级别：error**
 
 ArkTS不允许使用标准库函数Function.bind。标准库使用这些函数来显式设置被调用函数的this参数。
 
@@ -1060,8 +1012,6 @@ boundGreet(); // Hello, my name is Alice
 
 **规则：**`arkts-no-classes-as-obj`
 
-**级别：error**
-
 在ArkTS中，class声明的是一个新的类型，不是一个值。因此，不支持将class用作对象（例如将class赋值给一个变量）。
 
 **ArkTS1.1**
@@ -1091,8 +1041,6 @@ let classType: ClassType | undefined = linker.getType(className) as ClassType;
 
 **规则：**`arkts-limited-stdlib`
 
-**级别：error**
-
 由于TypeScript或JavaScript标准库中的大部分接口与动态特性有关，所以在ArkTS中禁止使用以下接口：
 
 Object: getPrototypeOf
@@ -1100,8 +1048,6 @@ Object: getPrototypeOf
 ## 不支持structural typing
 
 **规则：**`arkts-no-structural-typing`
-
-**级别：error**
 
 ArkTS1.2不支持structural typing，编译器无法比较两种类型的publicAPI并决定它们是否相同。使用其他机制，例如继承、接口或类型别名。
 
@@ -1198,8 +1144,6 @@ let b: C<A> = new C<A>(); // 使用相同的泛型类型
 
 **规则：**`arkts-no-extends-expression`
 
-**级别：error**
-
 ArkTS1.2中规范了类的继承，类不能作为对象来继承一个表达式。
 
 **ArkTS1.1**
@@ -1284,8 +1228,6 @@ class B extends A { // 直接继承类
 
 **规则：**`arkts-no-ts-overload`
 
-**级别：error**
-
 ArkTS1.2不支持TS-like的重载，使用不同的函数体可以提高执行效率。
 
 **ArkTS1.1**
@@ -1338,8 +1280,6 @@ function fooNumber(x: number): number {  // 独立实现
 
 **规则：**`arkts-identifiers-as-prop-names`
 
-**级别：error**
-
 ArkTS1.2不支持将字符串作为class、interface、enum等属性或元素的名称，需要使用标识符来表示。
 
 **ArkTS1.1**
@@ -1361,8 +1301,6 @@ enum A{
 ## 创建泛型实例需要类型实参
 
 **规则：**`arkts-no-inferred-generic-params`
-
-**级别：error**
 
 ArkTS1.2中，创建泛型实例时需要类型实参。
 
@@ -1396,8 +1334,6 @@ let box = new Box<number>(42); // 明确指定类型
 ## 不支持[]访问对象属性
 
 **规则：**`arkts-no-props-by-index`
-
-**级别：error**
 
 在ArkTS1.2中，对象结构在编译时已确定。为避免运行时出现错误和更好地提升性能，在ArkTS1.2中不能使用[]的方式动态访问object类型对象的属性。
 
@@ -1434,8 +1370,6 @@ console.log(data.name); // 直接使用点访问符
 ## 对象字面量只包含属性不包含方法
 
 **规则：**`arkts-obj-literal-props`
-
-**级别：error**
 
 ArkTS1.2中不支持在对象字面量中定义方法。因为静态语言中类的方法被所有实例所共享，无法通过对象字面量重新定义方法。
 
@@ -1507,8 +1441,6 @@ let handler: Handler = {
 
 **规则：**`arkts-obj-literal-generate-class-instance`
 
-**级别：error**
-
 ArkTS1.2中对象字面量会生成类的实例。
 
 **ArkTS1.1**
@@ -1573,8 +1505,6 @@ console.log(Object.getPrototypeOf(a) === A.prototype); // true
 
 **规则：**`arkts-common-union-member-access`
 
-**级别：error**
-
 在ArkTS1.2中，对象的结构在编译时就确定了。为了避免访问联合类型后出现运行时错误，ArkTS1.2在编译时会对联合类型的同名属性进行编译检查，要求同名属性具有相同的类型。
 
 **ArkTS1.1**
@@ -1617,8 +1547,6 @@ function foo(a: B) {
 ## 类的静态属性需要有初始值
 
 **规则：**`arkts-class-static-initialization`
-
-**级别：error**
 
 ArkTS1.2遵循null-safety，需要为属性赋上初始值。
 
@@ -1676,8 +1604,6 @@ class A {
 
 **规则：**`arkts-no-ts-like-function-call`
 
-**级别：error**
-
 ArkTS1.2会对函数类型进行更严格的编译器检查。函数返回类型需要严格定义来保证类型安全，因此不支持TS-like`Function`类型。
 
 **ArkTS1.1**
@@ -1727,8 +1653,6 @@ function getFunction(): () => void { // 明确返回类型
 
 **规则：**`arkts-optional-methods`
 
-**级别：error**
-
 ArkTS1.2中类的方法被所有类的实例所共享，增加可选方法的支持会增加开发者判断空值的成本，影响性能。
 
 **ArkTS1.1**
@@ -1756,8 +1680,6 @@ class ClassA {
 ## 实例方法当作对象时会绑定this
 
 **规则：**`arkts-instance-method-bind-this`
-
-**级别：error**
 
 在ArkTS1.1中，`this`的指向取决于函数的调用方式。示例中，当`a.foo1`被赋值给变量后变成了一个独立函数，调用时不再与`a`实例关联，导致方法中的`this`指向`undefined`。<br>可用`a.foo2`的箭头函数来解决这个问题。箭头函数在类中作为方法定义时，会捕获类实例的上下文，确保`this`始终指向实例。
 
@@ -1794,8 +1716,6 @@ method()   // 输出: 'a'
 ## namespace内方法不能重名
 
 **规则：**`arkts-no-duplicate-function-name`
-
-**级别：error**
 
 由于ArkTS1.2中会将多个名称相同的namespace合并成一个namespace，所以namespace内方法不能重名，否则会导致冲突。
 
@@ -1835,8 +1755,6 @@ namespace A {
 ## arkts-no-ctor-prop-decls
 
 **规则：**`arkts-no-ctor-prop-decls`
-
-**级别：error**
 
 ArkTS1.2不支持在constructor中声明类字段。在class中声明这些字段。
 
@@ -1886,8 +1804,6 @@ class A extends Base {
 ## 不支持tagged templates
 
 **规则：**`arkts-no-tagged-templates`
-
-**级别：error**
 
 ArkTS1.2规范函数调用方式，支持字符串相加的用法，不支持Tagged templates（标签模板字符串）。
 
@@ -1940,8 +1856,6 @@ console.log(result);
 
 **规则：**`arkts-no-definite-assignment`
 
-**级别：error**
-
 ArkTS1.2不支持确定赋值断言。改为在声明变量的同时为变量赋值。
 
 **ArkTS1.1**
@@ -1974,8 +1888,6 @@ console.log('x = ' + x);
 
 **规则：**`arkts-record-add-runtime-type`
 
-**级别：error**
-
 ArkTS1.2中对象字面量会生成类的实例。
 
 **ArkTS1.1**
@@ -1996,8 +1908,6 @@ a['v'];
 ## as具有运行时语义
 
 **规则：**`arkts-no-ts-like-as`
-
-**级别：error**
 
 ArkTS1.1中的`as`只在编译时提供类型信息，如果类型断言失败，报错时机取决于后续的代码操作。
 
@@ -2047,8 +1957,6 @@ if (i instanceof B) {
 
 **规则：**`arkts-no-ts-like-catch-type`
 
-**级别：error**
-
 在ArkTS1.1上catch语句中的e是any类型。因此，编译器不会对catch语句中的异常进行编译时类型检查。当ArkTS1.1上限制throw时，只能抛出Error类型。
 
 在ArkTS1.2的静态模式中，类型必须明确，同时需考虑与ArkTS1.1的兼容性。对于catch(e)的语法，默认e为Error类型。
@@ -2079,8 +1987,6 @@ try {
 
 **规则：**`arkts-unsupport-operator`
 
-**级别：error**
-
 1. 当前暂不支持&&=, ||=, ??=逻辑赋值运算符，通过迁移工具提示开发者修改源码，不提供自动修复能力。
 
 **ArkTS1.1**
@@ -2105,8 +2011,6 @@ a = a ?? 4;   // 结果: 2
 
 **规则：**`arkts-only-support-decimal-bigint-literal`
 
-**级别：error**
-
  当前暂不支持非十进制bigint字面量，通过迁移工具提示开发者修改源码，不提供自动修复能力。
 
 **ArkTS1.1**
@@ -2128,8 +2032,6 @@ let a3: bigint = BigInt(0b101);
 ## 数值类型和bigint类型的比较
 
 **规则：**`arkts-numeric-bigint-compare`
-
-**级别：error**
 
  当前暂不支持数值类型和bigint类型的比较，迁移工具将提示开发者修改源码，不提供自动修复能力。
 
@@ -2159,8 +2061,6 @@ BigInt(n1) >= n2;
 
 **规则：**`arkts-primitive-type-normalization`
 
-**级别：error**
-
 1. 在ArkTS1.2中primitive type和boxed type是相同的类型，这样可以提高语言一致性和性能。
    比较Number/Boolean/String时比较的是值而不是对象。
 
@@ -2187,8 +2087,6 @@ if (new Boolean(false)) {}      // 在if语句中new Boolean(false)为false
 
 **规则：**`arkts-no-enum-prop-as-type`
 
-**级别：error**
-
 ArkTS1.1上的枚举是编译时概念，在运行时仍是普通对象。ArkTS1.2遵循静态类型，需要在运行时为enum提供类型。因此，ArkTS1.2上枚举的每个元素是枚举类的实例（在运行时才确定），无法成为编译时的静态类型信息。这与ArkTS1.2整体类型设计上不支持实例类型相违背。
 
 **ArkTS1.1**
@@ -2212,8 +2110,6 @@ function foo(a: A) {}
 ## 不支持debugger 
 
 **规则：**`arkts-no-debugger`
-
-**级别：error**
 
 1. 静态类型语言具备编译时检查和强类型约束，调试通常由IDE完成，已具备较强大的调试机制。
 
@@ -2241,8 +2137,6 @@ debugger;
 
 **规则：**`arkts-no-sparse-array`
 
-**级别：error**
-
 1. ArkTS1.2遵循静态类型，空数组需要能根据上下文推导出数组元素的类型，否则会有编译错误。
 
 2. ArkTS1.2的数组是连续存储的，空位（如 [1, , , 2]）会浪费内存。‌
@@ -2267,8 +2161,6 @@ let b = [1, undefined, undefined, 2];
 ## 智能类型差异
 
 **规则：**`arkts-no-ts-like-smart-type`
-
-**级别：error**
 
 在ArkTS1.1中，由于对象不是线程间共享的，编译器在做类型推导和分析时无需考虑并发场景。
 
@@ -2309,8 +2201,6 @@ class AA {
 
 **规则：**`arkts-array-type-immutable`
 
-**级别：error**
-
 ArkTS1.2上数组在继承关系中遵循不变性原则，可以通过编译时检查保证类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，从而提高执行性能。
 
 **ArkTS1.1**
@@ -2349,8 +2239,6 @@ let arr2: [ A | B ] = arr1;       // 需要相同类型的元组
 
 **规则：**`arkts-default-args-behind-required-args`
 
-**级别：error**
-
 默认参数放在必选参数之前没有意义，ArkTS1.1上调用该接口时仍须传递每个默认参数。
 
 **ArkTS1.1**
@@ -2372,8 +2260,6 @@ function add(left: number, right: number) {
 ## class的懒加载
 
 **规则：**`arkts-class-lazy-import`
-
-**级别：error**
 
 ArkTS1.2的类在使用时进行加载或初始化，以提升启动性能，减少内存占用。
 
@@ -2400,8 +2286,6 @@ console.info('init');
 ## 方法继承/实现参数遵循逆变原则，返回类型遵循协变原则
 
 **规则：**`arkts-method-inherit-rule`
-
-**级别：error**
 
 ArkTS1.2子类方法覆写父类方法，参数类型须遵循逆变原则，可以通过编译时检查保证类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，无需运行时检查，从而提高执行性能。
 
@@ -2459,8 +2343,6 @@ class Derived extends Base {
 
 **规则：**`arkts-enum-no-props-by-index`
 
-**级别：error**
-
 1. ArkTS1.1上已对索引访问元素的语法做了限制，ArkTS1.2对枚举场景增强约束。具体内容请参考[不支持通过索引访问字段](typescript-to-arkts-migration-guide.md#不支持通过索引访问字段)。
 
 2. ArkTS1.1上枚举是动态对象，ArkTS1.2是静态类型，枚举具有运行时类型。为获得更高的性能，对[]访问做了限制。
@@ -2495,8 +2377,6 @@ TEST.A.getName();  // 使用enum对应的方法获取enum的key
 
 **规则：**`arkts-obj-no-constructor`
 
-**级别：error**
-
 ArkTS1.2支持天然共享的能力，运行时需要确定类型信息。实现上不再基于原型的语言，而是基于class的语言。
 
 **ArkTS1.1**
@@ -2517,8 +2397,6 @@ let cls = Type.of(a);
 ## 子类有参构造函数需要显式定义，且必须调用父类的构造函数
 
 **规则：**`arkts-subclass-must-call-super-constructor-with-args`
-
-**级别：error**
 
 1. ArkTS1.1在运行时没有对函数调用的检查，同时利用arguments机制获取所有参数（ArkTS1.2上不支持这个特性）并传入父类构造函数。ArkTS1.2对函数参数的个数和类型会进行编译时检查，确保程序的安全和正确性，因此ArkTS1.2上不支持这种写法。
 
@@ -2552,8 +2430,6 @@ let b = new B(123);
 
 **规则：**`arkts-no-optional-tuple`
 
-**级别：error**
-
 ArkTS1.2不支持可选元组类型。通过编译时检查保证类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，从而提高执行性能。
 
 **ArkTS1.1**
@@ -2573,8 +2449,6 @@ let t1: [number, boolean] | [number] = t;
 ## 不支持超大数字字面量
 
 **规则：**`arkts-no-big-numeric-literal`
-
-**级别：error**
 
 1. ArkTS1.2支持更多数值类型细化，可以获得更好的性能。超出int/long/double范围的数字字面量会有编译错误。
 
@@ -2599,8 +2473,6 @@ let t = Infinity;                                // ok，值为Infinity
 ## class/interface的变量名称需要是合法标识符
 
 **规则：**`arkts-identifier-as-prop-names`
-
-**级别：error**
 
 1. ArkTS1.1上已经进行约束，ArkTS1.2对边界场景增强约束。详细内容请参考[对象的属性名必须是合法的标识符](typescript-to-arkts-migration-guide.md#对象的属性名必须是合法的标识符)。
 
@@ -2627,8 +2499,6 @@ class A {
 ## 子类不可以声明和父类的方法同名的lamada类型的属性
 
 **规则：**`arkts-no-subclass-lamada-prop-name-same-as-superclass-method`
-
-**级别：error**
 
 不同于ArkTS1.1上的动态对象（属性和方法一致），ArkTS1.2上的属性与方法有本质区别。属性用以保存类实例的状态，是可变的。方法定义类对象的行为或功能，被类的所有实例所共有，不能被改变。
 
@@ -2670,8 +2540,6 @@ class B extends A {
 
 **规则：**`arkts-no-super-call-in-static-context`
 
-**级别：error**
-
 1. ArkTS1.2不再基于原型实现继承。没有原型/构造函数的概念，无法实现动态替换原型，因此无需通过super动态访问父类。
 
 2. super定义在子类的静态上下文中，容易混淆super的指向，与在实例方法中super指向父类实例相冲突，造成开发者的混用。使用类名的方式访问静态成员更清晰、可维护，易于开发者理解。
@@ -2712,8 +2580,6 @@ class B extends A {
 
 **规则：**`arkts-class-implement-interface-prop-getter-setter`
 
-**级别：error**
-
 ArkTS1.2遵循严格的类型检查，可以通过编译时检查保证类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，从而提高执行性能。
 
 **ArkTS1.1**
@@ -2748,8 +2614,6 @@ class A implements I {
 
 **规则：**`arkts-out-of-enum-index`
 
-**级别：error**
-
 ArkTS1.2上枚举类型是类型安全的，编译器会进行严格检查，避免应用中的非预期行为或错误。同时，枚举的值是编译时确定的，如果在运行时赋值超出范围的值，会对开发者造成困惑，降低易用性（TS在新版本上也增强了枚举场景的编译检查）。
 
 **ArkTS1.1**
@@ -2776,8 +2640,6 @@ let t3: T = num;
 
 **规则：**`arkts-no-unfixed-len-tuple`
 
-**级别：error**
-
 ArkTS1.2上不支持可变元组，可以通过编译时检查保证类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，从而提高执行性能。
 
 **ArkTS1.1**
@@ -2795,8 +2657,6 @@ const s: (string | boolean)[] =['', true];
 ## 类实例不支持关系表达式
 
 **规则：**`arkts-no-class-instance-relational-expression`
-
-**级别：error**
 
 1. ArkTS1.2中遵循类型安全，为避免隐式转化行为，关系表达式的操作符必须是数值类型、字符串类型、布尔类型、枚举类型。同时，支持隐式转化可能引发非预期的异常。
 
@@ -2846,8 +2706,6 @@ console.info(a.valueOf() < b.valueOf());
 
 **规则：**`arkts-no-instanceof-func`
 
-**级别：error**
-
 ArkTS1.2上不再基于原型实现继承，没有原型/构造函数的概念，不能通过任意函数创建对象。因此instanceof的目标类型不能是函数。
 
 **ArkTS1.1**
@@ -2869,8 +2727,6 @@ console.info('obj instanceof foo :', obj instanceof string);
 ## 静态加载包内模块某一文件时ohmurl路径变更
 
 **规则：**`arkts-ohmurl-path-change`
-
-**级别：error**
 
 ArkTS1.2中在静态加载包内模块某一文件时ohmurl路径必须写全，不可省略路径中的"src/main"。
 
