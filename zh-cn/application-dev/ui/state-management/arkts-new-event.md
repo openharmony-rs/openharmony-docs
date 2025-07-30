@@ -28,7 +28,7 @@
 | \@Event属性装饰器 | 说明 |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数 | 无。 |
-| 允许装饰的变量类型 | 回调方法，例如()=>void、(x:number)=>boolean等。回调方法是否含有参数以及返回值由开发者决定。 |
+| 允许装饰的变量类型 | 回调方法，例如() => void、(x: number) => boolean等。回调方法是否含有参数以及返回值由开发者决定。 |
 | 允许传入的函数类型 | 箭头函数。 |
 
 ## 限制条件
@@ -38,12 +38,12 @@
   ```ts
   @ComponentV2
   struct Index {
-    @Event changeFactory: ()=>void = ()=>{}; //正确用法
+    @Event changeFactory: () => void = () => {}; //正确用法
     @Event message: string = "abcd"; // 错误用法，装饰非函数类型变量，@Event无作用
   }
   @Component
   struct Index {
-    @Event changeFactory: ()=>void = ()=>{}; // 错误用法，编译时报错
+    @Event changeFactory: () => void = () => {}; // 错误用法，编译时报错
   }
   ```
 
