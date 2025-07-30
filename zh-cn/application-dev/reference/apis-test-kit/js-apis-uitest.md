@@ -1792,6 +1792,7 @@ async function demo() {
 ### scrollSearch<sup>9+</sup>
 
 ArkTS1.1: scrollSearch(on: On): Promise\<Component>
+
 ArkTS1.2: scrollSearch(on: On): Promise\<Component | null>
 
 在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
@@ -2377,6 +2378,7 @@ async function demo() {
 ArkTS1.1: findComponent(on: On): Promise\<Component>
 
 ArkTS1.2: findComponent(on: On): Promise\<Component \| null>
+
 根据给出的目标控件属性要求查找目标控件，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -3897,7 +3899,6 @@ async function demo() {
 ArkTS1.1: fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 
 ArkTS1.2: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<void>
-
 
 模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
