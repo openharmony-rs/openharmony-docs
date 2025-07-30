@@ -17,7 +17,6 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 > - 本模块接口适用于手机、平板、PC/2in1、智能穿戴设备、智慧屏、车机。
-> - ArkTS1.2中，本模块接口调用前需调用loadAndSetUpUiTest接口初始化测试环境。
 
 ## 导入模块
 
@@ -28,42 +27,7 @@ import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPatter
 
 ArkTS1.2: 
 ```ts
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, loadAndSetUpUiTest } from '@kit.TestKit';
-```
-
-## loadAndSetUpUiTest<sup>20+</sup>
-
-loadAndSetUpUiTest(): void
-
-初始化测试环境，ArkTS1.2测试启动前必须调用一次。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Test.UiTest
-
-**ArkTS版本**：该接口仅适用于ArkTS1.2。
-
-**错误码：**
-
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
-
-| 错误码ID | 错误信息                               |
-| -------- | ---------------------------------------- |
-| 17000001 | Initialization failed. |
-
-**示例：**
-
-```ts
-import { loadAndSetUpUiTest } from '@kit.TestKit';
-
-async function demo() {
-  try {
-    loadAndSetUpUiTest();
-    console.info("uitestDemo loadup over!!!!!")
-  } catch(error: Error) {
-    console.error(`uitestDemo, start abilityFailed: ${JSON.stringify(error)}`);
-  }
-}
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -80,6 +44,7 @@ async function demo() {
 | ENDS_WITH             | 3 | 以给定值结束。 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | REG_EXP<sup>18+</sup> | 4 | 正则表达式匹配。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
 | REG_EXP_ICASE<sup>18+</sup>          | 5 | 正则表达式匹配，忽略大小写。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+
 ## ResizeDirection<sup>9+</sup>
 
 窗口调整大小的方向。
