@@ -8,6 +8,7 @@
       - [像素单位转换](arkts-v1.2-deprecated-ts-pixel-units-apis.md)
       - [页面上下文](arkts-v1.2-deprecated-ts-context-apis.md)
       - [绘制组件](arkts-v1.2-deprecated-drawing-apis.md)
+      - [Picker类组件](arkts-v1.2-deprecated-picker-apis.md)
       - [渲染控制](arkts-v1.2-deprecated-rendering-control-apis.md)
       - [弹窗类组件](arkts-v1.2-deprecated-dialog-apis.md)
       - [表单类组件](arkts-v1.2-deprecated-form-apis.md)
