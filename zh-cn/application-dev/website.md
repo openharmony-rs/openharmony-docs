@@ -398,6 +398,7 @@
             - [弹窗类组件](ui/arkts-v1.2-deprecated-dialog-apis.md)
             - [表单类组件](ui/arkts-v1.2-deprecated-form-apis.md)
             - [文本类组件](ui/arkts-v1.2-deprecated-text-apis.md)
+            - [布局类组件](arkts-v1.2-deprecated-layout-apis.md)
             - [布局回调](ui/arkts-v1.2-deprecated-inspector.md)
             - [路由和导航类接口](ui/arkts-v1.2-deprecated-router-navigation.md)
             - [动效类接口](ui/arkts-v1.2-deprecated-animation.md)
