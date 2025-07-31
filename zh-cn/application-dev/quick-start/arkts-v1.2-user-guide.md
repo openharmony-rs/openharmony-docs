@@ -21,6 +21,7 @@ ArkTS1.2版本引入了多项重要特性，例如：
 - 了解与其他系统交互的规则变更：[ArkTS互操作规则变更](./arkts-v1.1-v1.2-interop-rules.md)。
 - 了解builtin的语法和规则变更：[builtin规则变更](./arkts-v1.1-v1.2-builtin-rules.md)。
 - 了解ArkUI的语法和接口变更：[ArkUI迁移规则](./arkts-v1.1-v1.2-ui.md)
+- 了解SDK的语法和规则变更：[SDK规则变更](./arkts-v1.1-v1.2-sdk-rules.md)。
 
 ## ArkTS1.2与ArkTS1.1文件区分方式
 
