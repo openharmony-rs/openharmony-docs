@@ -54,6 +54,8 @@ pixelRound(value: PixelRoundPolicy): T
 
 当父组件出现1px的缝隙时，应利用pixelRound来指导布局调整。
 
+**ArkTS1.1示例：**
+
 ```ts
 @Entry
 @Component
@@ -97,6 +99,58 @@ struct PixelRoundExample {
         .height('100%')
         .backgroundColor('#ffe5e5e5')
     }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Blank, Column, Row, Button, Color, PixelRoundCalcPolicy  } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct PixelRoundExample {
+  @State curWidth : number = 300;
+
+  build() {
+    Column() {
+      Button(""){
+        Text(this.curWidth.toString())
+      }
+      .onClick((): void => {
+        this.curWidth += 0.1;
+        console.log("sqf:curWidth:",  this.curWidth )
+      })
+      .height(200)
+      .width(200)
+      .backgroundColor('rgb(213, 213, 213)')
+
+      Blank().height(20)
+
+      Row() {
+        Row() {
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Yellow)
+        .pixelRound({
+          start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+          end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+        })
+      }
+      .width(this.curWidth.toString() + 'px')
+      .height('300.6px')
+      .backgroundColor(Color.Red)
+      .pixelRound({
+        start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+        end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+      })
+    }
+    .width("100%")
+    .height('100%')
+    .backgroundColor('#ffe5e5e5')
+  }
 }
 ```
 

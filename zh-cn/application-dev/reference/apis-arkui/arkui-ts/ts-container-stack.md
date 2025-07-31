@@ -74,6 +74,8 @@ alignContent(value: Alignment)
 
 Stack的alignContent设置为Alignment.Bottom条件下子组件显示效果。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -84,6 +86,24 @@ struct StackExample {
       Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
       Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
     }.width('100%').height(150).margin({ top: 5 })
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Stack, Alignment, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct StackExample {
+  build() {
+    Stack({ alignContent: Alignment.Bottom }) {
+      Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
+      Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
+    }.width('100%').height(150).margin({ top: 5 } as Margin)
   }
 }
 ```

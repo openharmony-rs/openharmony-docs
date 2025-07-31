@@ -229,6 +229,8 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 
 栅格布局的基本用法。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -256,6 +258,42 @@ struct GridRowExample {
         this.currentBp = breakpoint
       })
     }.width('80%').margin({ left: 10, top: 5, bottom: 5 }).height(200)
+    .border({ color: '#880606', width: 2 })
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, GridRow, GridCol, Column, Row,  GridRowDirection, BreakpointsReference, Margin, Color, ForEach} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+@Entry
+@Component
+struct GridRowExample {
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    Column() {
+      GridRow({
+        columns: 5,
+        gutter: { x: 5, y: 10 },
+        breakpoints: { value: ["400vp", "600vp", "800vp"],
+          reference: BreakpointsReference.WindowSize },
+        direction: GridRowDirection.Row
+      }) {
+        ForEach(this.bgColors, (color: Color) => {
+          GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 }, offset: 0, order: 0 }) {
+            Row().width("100%").height("20vp")
+          }.borderColor(color).borderWidth(2)
+        })
+      }.width("100%").height("100%")
+      .onBreakpointChange((breakpoint: string): void  => {
+        this.currentBp = breakpoint
+      })
+    }.width('80%').margin({ left: 10, top: 5, bottom: 5 } as Margin).height(200)
     .border({ color: '#880606', width: 2 })
   }
 }

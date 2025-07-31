@@ -379,6 +379,9 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 
 ### 示例1（自定义布局代码示例）
 自定义布局代码示例。
+
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -423,6 +426,75 @@ struct CustomLayout {
       child.layout({ x: pos, y: pos })
     })
   }
+
+  onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
+    let size = 100;
+    children.forEach((child) => {
+      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
+      size += result.width / 2
+      ;
+    })
+    this.result.width = 100;
+    this.result.height = 400;
+    return this.result;
+  }
+
+  build() {
+    this.builder()
+  }
+}
+```
+
+**ArkTS1.2示例：**
+```ts
+import { Text, Column, Component, Position, Entry, Builder, BuilderParam, ForEach, SizeResult, GeometryInfo, Layoutable, ConstraintSizeOptions, Measurable, MeasureResult, CustomLayout} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct MyStateSample {
+  build() {
+    Column() {
+      Custom1({ builder: ColumnChildren })
+    }
+  }
+}
+
+@Builder
+function ColumnChildren() {
+  ForEach([1, 2, 3], (item: Int, index: number) => { // 暂不支持lazyForEach的写法
+    Text('S' + item)
+      .fontSize(30)
+      .width(100)
+      .height(100)
+      .borderWidth(2)
+      .offset({ x: 10, y: 20 } as Position)
+  })
+
+}
+@CustomLayout
+@Component
+struct Custom1 {
+
+  @Builder
+  doNothingBuilder() {
+  };
+
+  @BuilderParam builder: () => void = this.doNothingBuilder;
+  @State startSize: number = 100;
+  result: SizeResult = {
+    width: 0,
+    height: 0
+  } as SizeResult;
+
+  onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
+    let startPos = 300;
+    children.forEach((child) => {
+      let pos = startPos - child.measureResult.height;
+      child.layout({ x: pos, y: pos })
+    })
+  }
+
 
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;

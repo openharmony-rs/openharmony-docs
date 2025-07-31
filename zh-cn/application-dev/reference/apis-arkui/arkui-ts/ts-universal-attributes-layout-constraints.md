@@ -65,6 +65,8 @@ displayPriority(value: number): T
 
 通过aspectRatio设置不同的宽高比。
 
+**ArkTS1.1示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -118,6 +120,61 @@ struct AspectRatioExample {
 }
 ```
 
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Row, Grid, GridItem, ColumnOptions, RowOptions, ForEach } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct AspectRatioExample {
+  private children: string[] = ['1', '2', '3', '4', '5', '6'];
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Text('using container: row').fontSize(14).fontColor(0xCCCCCC).width('100%')
+      Row({ space: 10 } as RowOptions) {
+        ForEach(this.children, (item:string) => {
+          // 组件宽度 = 组件高度*1.5 = 90
+          Text(item)
+            .backgroundColor(0xbbb2cb)
+            .fontSize(20)
+            .aspectRatio(1.5)
+            .height(60)
+          // 组件高度 = 组件宽度/1.5 = 60/1.5 = 40
+          Text(item)
+            .backgroundColor(0xbbb2cb)
+            .fontSize(20)
+            .aspectRatio(1.5)
+            .width(60)
+        }, (item:string) => item)
+      }
+      .size({ width: "100%", height: 100 })
+      .backgroundColor(0xd2cab3)
+      .clip(true)
+
+      // grid子元素width/height=3/2
+      Text('using container: grid').fontSize(14).fontColor(0xCCCCCC).width('100%')
+      Grid() {
+        ForEach(this.children, (item:string) => {
+          GridItem() {
+            Text(item)
+              .backgroundColor(0xbbb2cb)
+              .fontSize(40)
+              .width('100%')
+              .aspectRatio(1.5)
+          }
+        }, (item:string) => item)
+      }
+      .columnsTemplate('1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .size({ width: "100%", height: 165 })
+      .backgroundColor(0xd2cab3)
+    }.padding(10)
+  }
+}
+```
 **图1** 竖屏显示<br>
 ![zh-cn_image_0000001219744205](figures/zh-cn_image_0000001219744205.PNG)
 
@@ -127,6 +184,8 @@ struct AspectRatioExample {
 ### 示例2（设置组件显示优先级）
 
 使用displayPriority为子组件设置显示优先级。
+
+**ArkTS1.1示例：**
 
 ```ts
 class ContainerInfo {
@@ -180,6 +239,67 @@ struct DisplayPriorityExample {
       .width(this.container[this.currentIndex].size)
       .backgroundColor(0xd2cab3)
     }.width("100%").margin({ top: 50 })
+  }
+}
+```
+
+**ArkTS1.2示例：**
+
+```ts
+import { Entry, Component, Text, Column, Row, Button, Flex, ColumnOptions, RowOptions, ForEach, FlexAlign, TextAlign, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+class ContainerInfo {
+  label: string = '';
+  size: string = '';
+}
+
+class ChildInfo {
+  text: string = '';
+  priority: number = 0;
+}
+
+@Entry
+@Component
+struct DisplayPriorityExample {
+  // 显示容器大小
+  private container: ContainerInfo[] = [
+    { label: 'Big container', size: '90%' } as ContainerInfo,
+    { label: 'Middle container', size: '50%' } as ContainerInfo,
+    { label: 'Small container', size: '30%' } as ContainerInfo
+  ]
+  private children: ChildInfo[] = [
+    { text: '1\n(priority:2)', priority: 2 } as ChildInfo,
+    { text: '2\n(priority:1)', priority: 1 } as ChildInfo,
+    { text: '3\n(priority:3)', priority: 3 } as ChildInfo,
+    { text: '4\n(priority:1)', priority: 1 } as ChildInfo,
+    { text: '5\n(priority:2)', priority: 2 } as ChildInfo
+  ]
+  @State currentIndex: number = 0;
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      // 切换父级容器大小
+      Button(this.container[this.currentIndex].label).backgroundColor(0x317aff)
+        .onClick((): void => {
+          this.currentIndex = (this.currentIndex + 1) % this.container.length;
+        })
+      // 通过变量设置Flex父容器宽度
+      Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+        ForEach(this.children, (item:ChildInfo) => {
+          // 使用displayPriority给子组件绑定显示优先级
+          Text(item.text)
+            .width(120)
+            .height(60)
+            .fontSize(24)
+            .textAlign(TextAlign.Center)
+            .backgroundColor(0xbbb2cb)
+            .displayPriority(item.priority)
+        }, (item:ChildInfo) => item.text)
+      }
+      .width(this.container[this.currentIndex].size)
+      .backgroundColor(0xd2cab3)
+    }.width("100%").margin({ top: 50 } as Margin)
   }
 }
 ```
