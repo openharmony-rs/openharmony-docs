@@ -9,6 +9,7 @@
 ## 子组件
 
 可以包含单个子组件。
+
 ## 接口
 
 GridCol(option?: GridColOptions)
