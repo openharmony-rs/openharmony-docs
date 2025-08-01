@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[createComponentObserver(id: string): ComponentObserver](
 
 替代的ArkTS1.2接口声明：[createComponentObserver(id: string): inspector.ComponentObserver](../reference/apis-arkui/js-apis-arkui-UIContext.md#createcomponentobserver)
 
-适配方法如下：
+
 
 ArkTS1.1
 

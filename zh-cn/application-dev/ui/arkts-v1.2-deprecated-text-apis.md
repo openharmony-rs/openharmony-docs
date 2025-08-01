@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[onEditChanged(callback: (isEditing:boolean) => void)](..
 
 替代的ArkTS1.2接口声明：[onEditChange(callback: Callback<boolean>)](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#oneditchange8)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -34,7 +34,7 @@ ArkTS1.1接口声明：[measureTextSize(options: MeasureOptions): SizeOptions](.
 
 替代的ArkTS1.2接口声明：[measureTextSize(options: MeasureOptions): SizeOptions](../reference/apis-arkui/js-apis-arkui-UIContext.md#measuretextsize12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -64,7 +64,7 @@ ArkTS1.1接口声明：[measureText(options: MeasureOptions): number](../referen
 
 替代的ArkTS1.2接口声明：[measureText(options: MeasureOptions): number](../reference/apis-arkui/js-apis-arkui-UIContext.md#measuretext12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -94,7 +94,7 @@ ArkTS1.1接口声明：[getFontByName(fontName: string): FontInfo](../reference/
 
 替代的ArkTS1.2接口声明：[getFontByName(fontName: string): font.FontInfo](../reference/apis-arkui/js-apis-arkui-UIContext.md#getfontbyname)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -121,7 +121,7 @@ ArkTS1.1接口声明：[getSystemFontList(): Array<string>](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[getSystemFontList(): Array<string>](../reference/apis-arkui/js-apis-arkui-UIContext.md#getsystemfontlist)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -147,7 +147,7 @@ ArkTS1.1接口声明：[registerFont(options: FontOptions): void](../reference/a
 
 替代的ArkTS1.2接口声明：[registerFont(options: font.FontOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#registerfont)
 
-适配方法如下：
+
 
 ArkTS1.1
 

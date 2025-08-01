@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[AbilityComponent(value: {want: Want})](../reference/apis
 
 替代的ArkTS1.2接口声明：[UIExtensionComponent(want: Want, options?: UIExtensionOptions)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#接口)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -59,7 +59,7 @@ ArkTS1.1接口声明：[onConnect(callback:()&nbsp;=&gt;&nbsp;void)](../referenc
 
 替代的ArkTS1.2接口声明：[onRemoteReady(callback: Callback\<UIExtensionProxy>)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onremoteready)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -116,7 +116,7 @@ ArkTS1.1接口声明：[onRelease(callback: Callback\<number>)](../reference/api
 
 替代的ArkTS1.2接口声明：[onTerminated(callback: Callback&lt;TerminationInfo&gt;)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onterminated12)或者[onError(callback:ErrorCallback)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onerror)
 
-适配方法如下：
+
 
 ArkTS1.1
 

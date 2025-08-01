@@ -16,7 +16,7 @@ ArkTS1.1接口声明：[maxLabel(value: string)](../reference/apis-arkui/arkui-t
 
 替代的ArkTS1.2接口声明：[max?: number](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions对象说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 

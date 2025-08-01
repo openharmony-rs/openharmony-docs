@@ -9,7 +9,7 @@ ArkTS1.1接口声明：[static create(options: AnimatorOptions): AnimatorResult]
 
 替代的ArkTS1.2接口声明：[createAnimator(options: AnimatorOptions): AnimatorResult](../reference/apis-arkui/js-apis-arkui-UIContext.md#createanimator)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -29,7 +29,7 @@ ArkTS1.1接口声明：[static createAnimator(options: AnimatorOptions): Animato
 
 替代的ArkTS1.2接口声明：[createAnimator(options: AnimatorOptions): AnimatorResult](../reference/apis-arkui/js-apis-arkui-UIContext.md#createanimator)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -49,7 +49,7 @@ ArkTS1.1接口声明：[animateTo(value: AnimateParam, event: () => void): void]
 
 替代的ArkTS1.2接口声明：[animateTo(value: AnimateParam, event: () => void): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#animateto)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -71,7 +71,7 @@ ArkTS1.1接口声明：[update(options: AnimatorOptions): void](../reference/api
 
 替代的ArkTS1.2接口声明：[reset(options: AnimatorOptions): void](../reference/apis-arkui/js-apis-animator.md#reset9)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -93,7 +93,7 @@ ArkTS1.1接口声明：[onrepeat: () => void](../reference/apis-arkui/js-apis-an
 
 替代的ArkTS1.2接口声明：[onRepeat: () => void](../reference/apis-arkui/js-apis-animator.md#onrepeat12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -119,7 +119,7 @@ ArkTS1.1接口声明：[oncancel: () => void](../reference/apis-arkui/js-apis-an
 
 替代的ArkTS1.2接口声明：[onCancel: () => void](../reference/apis-arkui/js-apis-animator.md#oncancel12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -145,7 +145,7 @@ ArkTS1.1接口声明：[onfinish: () => void](../reference/apis-arkui/js-apis-an
 
 替代的ArkTS1.2接口声明：[onFinish: () => void](../reference/apis-arkui/js-apis-animator.md#onfinish12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -171,7 +171,7 @@ ArkTS1.1接口声明：[onframe: (progress: number) => void](../reference/apis-a
 
 替代的ArkTS1.2接口声明：[onFrame: (progress: number) => void](../reference/apis-arkui/js-apis-animator.md#onframe12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -199,7 +199,7 @@ ArkTS1.1接口声明：[cubicBezier(x1: number, y1: number, x2: number, y2: numb
 
 替代的ArkTS1.2接口声明：[cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurve](../reference/apis-arkui/js-apis-curve.md#curvescubicbeziercurve9)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -219,7 +219,7 @@ ArkTS1.1接口声明：[steps(count: number, end: boolean): string](../reference
 
 替代的ArkTS1.2接口声明：[stepsCurve(count: number, end: boolean): ICurve](../reference/apis-arkui/js-apis-curve.md#curvesstepscurve9)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -239,7 +239,7 @@ ArkTS1.1接口声明：[spring(velocity: number, mass: number, stiffness: number
 
 替代的ArkTS1.2接口声明：[springCurve(velocity: number, mass: number, stiffness: number, damping: number): ICurve](../reference/apis-arkui/js-apis-curve.md#curvesspringcurve9)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -259,7 +259,7 @@ ArkTS1.1接口声明：[init(curve?: Curve): string](../reference/apis-arkui/js-
 
 替代的ArkTS1.2接口声明： [initCurve(curve?: Curve): ICurve](../reference/apis-arkui/js-apis-curve.md#curvesinitcurve9)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -281,7 +281,7 @@ ArkTS1.1接口声明：[interface TransitionOptions](../reference/apis-arkui/ark
 
 替代的ArkTS1.2接口声明：[class TransitionEffect<Type extends keyof TransitionEffects = keyof TransitionEffects, Effect extends TransitionEffects[Type] = TransitionEffects[Type]>](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -301,7 +301,7 @@ ArkTS1.1接口声明：[opacity?: number](../reference/apis-arkui/arkui-ts/ts-tr
 
 替代的ArkTS1.2接口声明：[static opacity(alpha: number): TransitionEffect<"opacity">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -321,7 +321,7 @@ ArkTS1.1接口声明：[rotate?: RotateOptions](../reference/apis-arkui/arkui-ts
 
 替代的ArkTS1.2接口声明：[static rotate(options: RotateOptions): TransitionEffect<"rotate">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -341,7 +341,7 @@ ArkTS1.1接口声明：[scale?: ScaleOptions](../reference/apis-arkui/arkui-ts/t
 
 替代的ArkTS1.2接口声明：[static scale(options: ScaleOptions): TransitionEffect<"scale">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -361,7 +361,7 @@ ArkTS1.1接口声明：[translate?: TranslateOptions](../reference/apis-arkui/ar
 
 替代的ArkTS1.2接口声明：[static translate(options: TranslateOptions): TransitionEffect<"translate">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -381,7 +381,7 @@ ArkTS1.1接口声明：[type?: TransitionType](../reference/apis-arkui/arkui-ts/
 
 替代的ArkTS1.2接口声明：[static asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect<"asymmetric">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
