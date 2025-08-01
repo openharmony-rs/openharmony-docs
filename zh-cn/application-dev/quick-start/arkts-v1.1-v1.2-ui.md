@@ -1100,9 +1100,11 @@ struct TestBuilderParam1 {
 
 **规则：** `arkui-no-update-in-build`
 
-在ArkTS1.2中，禁止在UI渲染过程中修改状态变量。如果在自定义组件的`build`方法中修改了状态变量，会导致编译报错。
+在ArkTS1.2中，禁止在UI渲染过程中修改状态变量。此类行为会导致运行时异常。
 
 **ArkTS1.1**
+
+在ArkTS1.1中，在UI渲染过程中修改状态变量的行为会导致告警，但代码可以正常运行。
 
 ```typescript
 @Entry
@@ -1111,16 +1113,44 @@ struct Index {
   @State count: number = 1;
 
   build() {
-    // ArkTS1.1：在build方法中修改状态变量的行为仅触发告警
-    // ArkTS1.2：在build方法中修改状态变量的行为会导致编译报错
-    Text(`${++this.count}`)
+    Column() {
+      // ArkTS1.1：在UI渲染过程中修改状态变量的行为会导致告警
+      // ArkTS1.2：在UI渲染过程中修改状态变量的行为会导致运行时异常
+      Text(`${this.count++}`)
+    }
   }
 }
 ```
 
 **ArkTS1.2**
 
-在ArkTS1.2中，自定义组件的`build`方法中修改状态变量会导致编译报错，因此禁止该类行为，不提供修改建议。
+在ArkTS1.2中，禁止在UI渲染过程中修改状态变量。此类行为会导致运行时异常。
+
+建议删除相关代码，从而避免运行时异常。
+
+```typescript
+'use static'
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  Text,
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State count: number = 1;
+
+  build() {
+    Column() {
+      // 删除在UI渲染过程中修改状态变量的代码
+      Text(`${this.count}`)
+    }
+  }
+}
+```
 
 ## `AppStorage`中的值发生改变时会触发界面更新
 
@@ -1148,7 +1178,7 @@ struct MyComponent {
 
 **ArkTS1.2**
 
-ArkTS1.2的处理方式是能力增强，因此仅提示开发者上述情况可能产生的差异，而不提供具体的修改建议。
+ArkTS1.2的处理方式是能力增强，因此仅提示开发者上述情况可能产生的差异。
 
 ## 不支持`@Prop`、`@StorageProp`和`@LocalStorageProp`装饰器
 
