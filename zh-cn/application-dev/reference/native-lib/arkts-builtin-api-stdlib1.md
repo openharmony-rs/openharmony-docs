@@ -13,13 +13,14 @@
 - [Date](#date)
 
 ## Map
-### 变更梗概
+**变更梗概**
+
 - [Map-Symbol.iterator变更](#map-symboliterator变更)
 - [Map-forEach方法签名变更](#map-foreach方法签名变更)
 
-### 变更详情
+**变更详情**
 
-#### Map-Symbol.iterator变更
+### Map-Symbol.iterator变更
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<[K, V]>`
 
@@ -52,7 +53,7 @@
   建议仅使用for...of访问迭代器。
 
 
-#### Map-forEach方法签名变更
+### Map-forEach方法签名变更
 **ArkTS1.1版本签名：**  
   `forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void`
 
@@ -112,7 +113,7 @@ callbackfn函数参数说明：
 
 ## WeakMap
 - 参数类型any变更为Object | null | undefined。
-#### WeakMap构造签名变更
+### WeakMap构造签名变更
 **ArkTS1.1版本签名：**  
   `constructor<K extends object = object, V = any>(entries?: readonly [K, V][] | null): WeakMap<K, V>`
 
@@ -191,13 +192,14 @@ callbackfn函数参数说明：
 
 ## Set
 
-### 变更梗概
+**变更梗概**
+
 - [Set-Symbol.iterator变更](#set-symboliterator变更)
 - [Set-forEach方法签名变更](#set-foreach方法签名变更)
 
-### 变更详情
+**变更详情**
 
-#### Set-Symbol.iterator变更
+### Set-Symbol.iterator变更
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<T>`
 
@@ -229,7 +231,7 @@ callbackfn函数参数说明：
 **适配建议：** 
   使用for...of进行迭代。
 
-#### Set-forEach方法签名变更
+### Set-forEach方法签名变更
 **ArkTS1.1版本签名：**  
   `forEach(callbackfn: (value: T, value2: T, set: Set<T>) => void, thisArg?: any): void`
 
@@ -283,16 +285,17 @@ callbackfn函数参数说明：
 
 ## String
 
-### 变更梗概
+**变更梗概**
+
 - [String-Symbol.iterator变更](#string-symboliterator变更)
 - [String-raw方法变更](#string-raw方法变更)
 - [String-replace方法变更](#string-replace方法变更)
 - [String-replaceAll方法变更](#string-replaceall方法变更)
 - [String-构造函数变更为invoke方法](#string-构造函数变更为invoke方法)
 
-### 变更详情
+**变更详情**
 
-#### String-Symbol.iterator变更
+### String-Symbol.iterator变更
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<string>`
 
@@ -324,7 +327,7 @@ callbackfn函数参数说明：
 **适配建议：** 
   使用for...of遍历字符串。
 
-#### String-raw方法变更
+### String-raw方法变更
 **ArkTS1.1版本签名：**  
   `static raw(template: { raw: readonly string[] | ArrayLike<string>}, ...substitutions: any[]): string`
 
@@ -344,13 +347,13 @@ callbackfn函数参数说明：
   let a = String.raw`a\nb\nc`;
   ```
 
-**ArkTS1.2版本签名：**  
-  ArkTs1.2 没有String.raw
+**ArkTS1.2版本签名：**
+  ArkTS1.2没有String.raw。
 
 **适配建议：** 
   使用普通字符串替代。
 
-#### String-replace方法变更
+### String-replace方法变更
 - 参数类型any变更为Object。
 
 **ArkTS1.1版本签名：**  
@@ -379,13 +382,12 @@ replacer返回值说明：
   | string | 一个新的字符串。 |
 
 **示例：**
-```typescript**示例：**
 ```typescript
 const str = "apple, orange, apple, banana";
 const result = str.replaceAll("apple", "kiwi");
 
 console.log(result); // "kiwi, orange, kiwi, banana"
-```
+
 const str = "apple, orange, apple, banana";
 const result1 = str.replace("apple", "kiwi");
 console.log(result1); // "kiwi, orange, apple, banana"
@@ -433,7 +435,7 @@ console.log(result2); // "kiwi, orange, kiwi, banana"
 **适配建议：** 
   ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
 
-#### String-replaceAll方法变更
+### String-replaceAll方法变更
 - 参数类型any变更为Object。
 
 **ArkTS1.1版本签名：**  
@@ -504,7 +506,7 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 **适配建议：** 
   ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
 
-#### String-构造函数变更为invoke方法
+### String-构造函数变更为invoke方法
 **ArkTS1.1版本签名：**  
   `(value?: any): string`
 
@@ -548,12 +550,13 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 
 ## Symbol
 
-### 变更梗概
+**变更梗概**
+
 - [iterator符号属性移除](#iterator符号属性移除)
 
-### 变更详情
+**变更详情**
 
-#### iterator符号属性移除
+### iterator符号属性移除
 **ArkTS1.1版本签名：**  
   `static readonly iterator: unique symbol`
 
@@ -570,7 +573,8 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 
 ## Object
 
-### 变更梗概
+**变更梗概**
+
 - [Object-getOwnPropertyNames方法变更](#object-getownpropertynames方法变更)
 - [Object-构造函数变更](#object-构造函数变更)
 - [Object-entries变更](#object-entries变更)
@@ -579,9 +583,9 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 - [ObjectConstructor无参调用变更](#objectconstructor无参调用变更)
 - [ObjectConstructor带参调用变更](#objectconstructor带参调用变更)
 
-### 变更详情
+**变更详情**
 
-#### Object-getOwnPropertyNames方法变更
+### Object-getOwnPropertyNames方法变更
 **ArkTS1.1版本签名：**  
   `static getOwnPropertyNames(o: any): string[]`
 
@@ -611,7 +615,7 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 **适配建议：** 
   使用`Object.keys`代替。
 
-#### Object-构造函数变更
+### Object-构造函数变更
 **ArkTS1.1版本签名：**  
   `constructor(value?: any): Object`
 
@@ -646,7 +650,7 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 **适配建议：** 
   使用具体类型替代泛型Object。
 
-#### Object-entries变更
+### Object-entries变更
 - 返回值any类型改为Object | null | undefined联合类型。
 
 **ArkTS1.1版本签名：**  
@@ -704,7 +708,7 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 **适配建议：** 
   返回值类型由any改为联合类型NullishEntryType，使用时需判断。
 
-#### Object-values变更
+### Object-values变更
 - 返回值any类型改为Object | null | undefined。
 
 **ArkTS1.1版本签名：**  
@@ -760,7 +764,7 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 **适配建议：** 
   ArkTS1.2版本any类型变为(Object | null | undefined)，使用需指定类型。
 
-#### Object-valueOf变更
+### Object-valueOf变更
 **ArkTS1.1版本签名：**  
   `valueOf(): Object`
 
@@ -776,12 +780,12 @@ console.log(result); // "kiwi, orange, kiwi, banana"
   ```
 
 **ArkTS1.2版本签名：**  
-  ArkTs1.2 没有valueOf()接口
+  ArkTS1.2没有valueOf()接口。
 
 **适配建议：** 
   直接使用对象本身，不需要调用valueOf。
 
-#### ObjectConstructor无参调用变更
+### ObjectConstructor无参调用变更
 **ArkTS1.1版本签名：**  
   `(): any`
 
@@ -796,13 +800,13 @@ console.log(result); // "kiwi, orange, kiwi, banana"
   ```
 
 **ArkTS1.2版本签名：**  
-  ArkTs1.2 不支持泛型Object
+  ArkTS1.2不支持泛型Object。
 
 **适配建议：** 
   使用具体类型替代泛型Object。
 
 
-#### ObjectConstructor带参调用变更
+### ObjectConstructor带参调用变更
 **ArkTS1.1版本签名：**  
   `(value: any): any`
 
@@ -822,24 +826,25 @@ console.log(result); // "kiwi, orange, kiwi, banana"
   ```
 
 **ArkTS1.2版本签名：**  
-  ArkTs1.2 不支持泛型Object
+  ArkTS1.2不支持泛型Object。
  
 **适配建议：** 
   使用具体类型替代泛型Object。
 
 ## Number
 
-### 变更梗概
+**变更梗概**
+
 - [Number-构造函数变更](#number-构造函数变更)
+- [Number-isNaN方法变更](#number-isnan方法变更)
 - [Number-isFinite方法变更](#number-isfinite方法变更)
 - [Number-isInteger方法变更](#number-isinteger方法变更) 
-- [Number-isNaN方法变更](#number-isnan方法变更)
 - [Number-isSafeInteger方法变更](#number-issafeinteger方法变更)
 - [Number-调用签名变更为invoke方法](#number-调用签名变更为invoke方法)
 
-### 变更详情
+**变更详情**
 
-#### Number-构造函数变更
+### Number-构造函数变更
 **ArkTS1.1版本签名：**  
   `constructor(value?: any): Number`
 
@@ -879,167 +884,267 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 **适配建议：** 
   仅使用String、Number或BigInt类型创建Number对象。
 
-#### Number-isFinite方法变更
-**ArkTS1.1版本签名：**  
-  `static isFinite(number: unknown): boolean`
+### Number-isNaN方法变更
+**ArkTS1.1版本签名：**
+```ts
+isNaN(number: unknown): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | number | unknown | 是 | 待检测的值。 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|number|unknown|是|待判断的数值。|
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为有限数，true表示是有限数，false表示不是有限数。 |
+|类型|说明|
+|---|---|
+|boolean|是否为NaN。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isFinite(true);
-  ```
+**示例：**
+```ts
+console.info(String(Number.isNaN("0"))); // 返回false
+console.info(String(Number.isNaN(0))); // 返回false
+console.info(String(Number.isNaN(Number.NaN))); // 返回true
+```
 
-**ArkTS1.2版本签名：**  
-  `static isFinite(n: number): boolean`
+**ArkTS1.2版本签名：**
+
+```ts
+static isNaN(v: float): boolean
+static isNaN() : boolean
+static isNaN(v: double): boolean 
+static isNaN(): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | n | number | 是 | 待检测的数字 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|v|double, float|否|待判断的数值。默认判断对象的`value`属性。|
+
+当`isNaN`接口接收到空参数时，会判断对象的`value`属性是否为NaN。
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为有限数，true表示是有限数，false表示不是有限数。 |
+|类型|说明|
+|---|---|
+|boolean|是否为NaN。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isFinite(1);
-  ```
- 
-**适配建议：** 
-  只对数字类型使用isFinite检查。
+**示例：**
 
-#### Number-isInteger方法变更
-**ArkTS1.1版本签名：**  
-  `static isInteger(number: unknown): boolean`
+```ts
+console.info(String(Number.isNaN("0"))); // 编译失败
+console.info(String(Number.isNaN(0))); // 返回false
+console.info(String(Number.isNaN(Number.NaN))); // 返回true
+```
+
+**适配建议：**
+
+```ts
+// ArkTS1.1代码
+let value: unknown = get_value();
+let result: boolean = Number.isNaN(value);
+
+// ArkTS1.2仅支持（可隐式转换为）float和double类型的参数
+let value = get_value();
+if (value instanceof Number) {
+	/**
+	 * ArkTS1.2规定typeof byte/short/int/long/float/double都返回'number'
+	 * 且byte/short/int/long可以隐式转换为float/double
+	*/
+	let result: boolean = Number.isNaN(Double(value));
+} else if (value instanceof String) {
+	result = Number.isNaN(parseFloat(String(value)));
+} else {
+	result = false;
+}
+```
+
+### Number-isFinite方法变更
+**ArkTS1.1版本签名：**
+```ts
+isFinite(number: unknown): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | number | unknown | 是 | 待检测的值。 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|number|unknown|是|待判断的数值。|
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为整数，true表示是整数，false表示不是整数。 |
+|类型|说明|
+|---|---|
+|boolean|是否为有限值。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isInteger(true);
-  ```
+**示例：**
+```ts
+console.info(String(Number.isFinite("0"))); // 返回false
+console.info(String(Number.isFinite(0))); // 返回true
+console.info(String(Number.isFinite(Number.POSITIVE_INFINITY))); // 返回false
+console.info(String(Number.isFinite(Number.NEGATIVE_INFINITY))); // 返回false
+```
 
-**ArkTS1.2版本签名：**  
-  `static isInteger(n: number): boolean`
+**ArkTS1.2版本签名：**
+
+```ts
+static isFinite(v: float): boolean
+static isFinite() : boolean
+static isFinite(v: double): boolean 
+static isFinite(): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | n | number | 是 | 待检测的数字。 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|v|double, float|否|待判断的数值。默认判断对象的`value`属性。|
+
+当`isFinite`接口接收到空参数时，判断对象的`value`属性是否为有限值。
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为整数，true表示是整数，false表示不是整数。 |
+|类型|说明|
+|---|---|
+|boolean|是否为有限值。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isInteger(1);
-  ```
- 
-**适配建议：** 
-  只对数字类型使用isInteger检查。
+**示例：**
+```ts
+console.info(String(Number.isFinite("0"))); // 编译失败
+console.info(String(Number.isFinite(0))); // 返回true
+console.info(String(Number.isFinite(Number.POSITIVE_INFINITY))); // 返回false
+console.info(String(Number.isFinite(Number.NEGATIVE_INFINITY))); // 返回false
+```
 
-#### Number-isNaN方法变更
-**ArkTS1.1版本签名：**  
-  `static isNaN(number: unknown): boolean`
+**适配建议：**
+
+与`isNaN`方法类似，`isFinite`方法也需要根据输入参数的类型分别处理。
+
+### Number-isInteger方法变更
+**ArkTS1.1版本签名：**
+```ts
+isInteger(number: unknown): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | number | unknown | 是 | 待检测的值。 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|number|unknown|是|待判断的数值。|
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为NaN，true表示是，false表示不是NaN。 |
+|类型|说明|
+|---|---|
+|boolean|是否为整数值。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isNaN(true);
-  ```
+**示例：**
+```ts
+console.info(String(Number.isInteger("0"))); // 返回false
+console.info(String(Number.isInteger(1))); // 返回true
+console.info(String(Number.isInteger(1 + Number.EPSILON))); // 返回false
+```
 
-**ArkTS1.2版本签名：**  
-  `static isNaN(number: number): boolean`
+**ArkTS1.2版本签名：**
+
+```ts
+static isInteger(v: float): boolean
+static isInteger() : boolean
+static isInteger(v: double): boolean 
+static isInteger(): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | number | number | 是 | 待检测的数字。 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|v|double, float|否|待判断的数值。默认判断对象的`value`属性。|
+
+当`isInteger`接口接收到空参数时，判断对象的`value`属性是否为整数。
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为NaN，true表示是，false表示不是NaN。 |
+|类型|说明|
+|---|---|
+|boolean|是否为整数值。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isNaN(1);
-  ```
- 
-**适配建议：** 
-  只对数字类型使用isNaN检查。
+**示例：**
+```ts
+console.info(String(Number.isInteger("0"))); // 编译失败
+console.info(String(Number.isInteger(1))); // 返回true
+console.info(String(Number.isInteger(1 + Number.EPSILON))); // 返回false
+```
 
-#### Number-isSafeInteger方法变更
-**ArkTS1.1版本签名：**  
-  `static isSafeInteger(number: unknown): boolean`
+**适配建议：**
+
+```ts
+// ArkTS1.1代码
+let value: unknown = get_value();
+let result: boolean = Number.isInteger(value);
+
+// ArkTS1.2仅支持（可隐式转换为）float和double类型的参数
+let value = get_value();
+if (value instanceof Number) {
+	let result: boolean = Number.isInteger(Double(value));
+} else if (value instanceof String) {
+	result = Number.isInteger(parseInt(String(value)));
+} else {
+	result = false;
+}
+```
+
+
+### Number-isSafeInteger方法变更
+**ArkTS1.1版本签名：**
+```ts
+isSafeInteger(number: unknown): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | number | unknown | 是 | 待检测的值。 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|number|unknown|是|待判断的数值。|
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为安全整数，true表示是，false表示不是安全整数。 |
+|类型|说明|
+|---|---|
+|boolean|是否为安全整数值。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isSafeInteger(true);
-  ```
+**示例：**
+```ts
+console.info(String(Number.isSafeInteger("0"))); // 返回false
+console.info(String(Number.isSafeInteger(Number.MAX_SAFE_INTEGER))); // 返回true
+console.info(String(Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1))); // 返回false
+console.info(String(Number.isSafeInteger(Number.MIN_SAFE_INTEGER))); // 返回true
+console.info(String(Number.isSafeInteger(Number.MIN_SAFE_INTEGER - 1))); // 返回false
+```
 
-**ArkTS1.2版本签名：**  
-  `static isSafeInteger(n: number): boolean`
+**ArkTS1.2版本签名：**
+
+```ts
+static isSafeInteger(v: float): boolean
+static isSafeInteger() : boolean
+static isSafeInteger(v: double): boolean 
+static isSafeInteger(): boolean
+```
 
 **参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | n | number | 是 | 待检测的数字。 |
+|参数名|类型|必填|说明|
+|---|---|---|---|
+|v|double, float|否|待判断的数值。|
+
+当`isSafeInteger`接口接收到空参数时，判断对象的`value`属性是否为安全整数。
 
 **返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否为安全整数，true表示是安全整数，false表示不是安全整数。 |
+|类型|说明|
+|---|---|
+|boolean|是否为安全整数值。true表示是，false表示不是。|
 
-**示例：**  
-  ```typescript
-  Number.isSafeInteger(1);
-  ```
- 
-**适配建议：** 
-  只对数字类型使用isSafeInteger检查。
+**示例：**
+```ts
+console.info(String(Number.isSafeInteger("0"))); // 编译失败
+console.info(String(Number.isSafeInteger(Number.MAX_SAFE_INTEGER))); // 返回true
+console.info(String(Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1))); // 返回false
+console.info(String(Number.isSafeInteger(Number.MIN_SAFE_INTEGER))); // 返回true
+console.info(String(Number.isSafeInteger(Number.MIN_SAFE_INTEGER - 1))); // 返回false
+```
 
-#### Number-调用签名变更为invoke方法
+**适配建议：**
+
+与`isInteger`方法类似，`isSafeInteger`方法也需要根据输入参数的类型分别处理。
+
+### Number-调用签名变更为invoke方法
 **ArkTS1.1版本签名：**  
   `(value?: any): number`
 
@@ -1080,18 +1185,20 @@ console.log(result); // "kiwi, orange, kiwi, banana"
   仅使用String/Number/BigInt类型作为参数。
 
 ## JSON
-### 变更梗概
+**变更梗概**
+
 - [JSON-parse签名变更](#json-parse签名变更)
 - [JSON-stringify签名变更](#json-stringify签名变更)
 
 ## JSON-parse签名变更
-### 变更梗概
+**变更梗概**
+
 - [JSON-parse未传入可选参数reviver](#json-parse未传入可选参数reviver)
 - [JSON-parse传入可选参数reviver](#json-parse传入可选参数reviver)
 
-### 变更详情
+**变更详情**
 
-#### JSON-parse未传入可选参数reviver
+### JSON-parse未传入可选参数reviver
 **ArkTS1.1版本签名：**  
   `parse(text: string, reviver?: (this: any, key: string, value: any) => any, options?: ParseOptions): Object|null`
 
@@ -1157,7 +1264,7 @@ reviver函数返回值说明：
 **适配建议：** 
   需要提供泛型T和入参type。
 
-#### JSON-parse传入可选参数reviver
+### JSON-parse传入可选参数reviver
 **ArkTS1.1版本签名：**  
   `parse(text: string, reviver?: (this: any, key: string, value: any) => any, options?: ParseOptions): Object|null`
 
@@ -1249,13 +1356,14 @@ reviver函数返回值说明：
   ArkTS1.1的JSON.parse返回一个any对象，该any对象可以为任何值，但ArkTS1.2无法生成一个any对象，并向里面动态添加属性。
 
 ## JSON-stringify签名变更
-### 变更梗概
+**变更梗概**
+
 - [JSON-stringify入参为replacer数组any类型变更](#json-stringify入参为replacer数组any类型变更)
 - [JSON-stringify入参为replacer函数any类型变更](#json-stringify入参为replacer函数any类型变更)
 
-### 变更详情
+**变更详情**
 
-#### JSON-stringify入参为replacer数组any类型变更
+### JSON-stringify入参为replacer数组any类型变更
 - 参数类型any变更为Object | null | undefined。
 
 **ArkTS1.1版本签名：**  
@@ -1292,7 +1400,7 @@ reviver函数返回值说明：
 **适配建议：** 
   ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
 
-#### JSON-stringify入参为replacer函数any类型变更
+### JSON-stringify入参为replacer函数any类型变更
 **ArkTS1.1版本签名：**  
   `stringify(value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string`
 
@@ -1422,9 +1530,9 @@ replacer函数返回值说明：
   ArkTS1.2相比较于ArkTS1.1，类型any转为Object|null|undefined，在使用时需要先判断。
 
 ## ALL
-### 变更详情
+**变更详情**
 
-#### ArkTS1.2部分builtin class标注final，无法被继承使用。
+### ArkTS1.2部分builtin class标注final，无法被继承使用。
 **ArkTS1.1版本签名：**  
   `class xxx`
 
@@ -1466,9 +1574,9 @@ replacer函数返回值说明：
   ```
 
 ## Date
-### 变更详情
+**变更详情**
 
-#### Date-toJSON方法变更
+### Date-toJSON方法变更
 **ArkTS1.1版本签名：**  
   `toJSON(key?: any): string`
 
