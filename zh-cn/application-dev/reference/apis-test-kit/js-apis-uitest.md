@@ -18,11 +18,16 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 > - 本模块接口不支持并发调用。
 > - 本模块接口适用于手机、平板、PC/2in1、智能穿戴设备、智慧屏、车机。
 
-
 ## 导入模块
 
+ArkTS1.1: 
 ```ts
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+```
+
+ArkTS1.2: 
+```ts
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -39,6 +44,7 @@ import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPatter
 | ENDS_WITH             | 3 | 以给定值结束。 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | REG_EXP<sup>18+</sup> | 4 | 正则表达式匹配。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
 | REG_EXP_ICASE<sup>18+</sup>          | 5 | 正则表达式匹配，忽略大小写。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+
 ## ResizeDirection<sup>9+</sup>
 
 窗口调整大小的方向。
@@ -66,8 +72,8 @@ import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPatter
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | number |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| y    | number |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
+| x    | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| y    | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
 | displayId<sup>20+</sup>    | number | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## Rect<sup>9+</sup>
@@ -78,10 +84,10 @@ import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPatter
 
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | number |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | number |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| right  | number |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| bottom | number |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| left   | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| top    | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| right  | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| bottom | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
 | displayId<sup>20+</sup> | number |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 
 ## WindowMode<sup>9+</sup>
@@ -184,7 +190,7 @@ UI事件的相关信息。
 | 名称       | 类型   | 只读 | 可选 | 说明                                                     |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | 否  | 是  | 触摸板多指滑动结束是否停留1s后再抬起，默认为false（不停留1s），true：停留，false：不停留。 |
-| speed       | number | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。  |
+| speed       | ArkTS1.1: number  <br />ArkTS1.2: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。  |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -1014,8 +1020,10 @@ click(): Promise\<void>
 import { Driver, ON, Component } from '@kit.TestKit';
 async function demo() {
   let driver:Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  await button.click();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    await button.click();
+  }
 }
 ```
 
@@ -1050,8 +1058,10 @@ doubleClick(): Promise\<void>
 import {Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  await button.doubleClick();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    await button.doubleClick();
+  }
 }
 ```
 
@@ -1086,8 +1096,10 @@ longClick(): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  await button.longClick();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    await button.longClick();
+  }
 }
 ```
 
@@ -1122,8 +1134,10 @@ getId(): Promise\<string>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  let id = await button.getId();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    let id = await button.getId();
+  }
 }
 ```
 
@@ -1162,8 +1176,10 @@ getText(): Promise\<string>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  let text = await button.getText();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    let text = await button.getText();
+  }
 }
 ```
 
@@ -1198,8 +1214,10 @@ getType(): Promise\<string>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  let type = await button.getType();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    let type = await button.getType();
+  }
 }
 ```
 
@@ -1234,8 +1252,10 @@ getBounds(): Promise\<Rect>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  let rect = await button.getBounds();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    let rect = await button.getBounds();
+  }
 }
 ```
 
@@ -1270,8 +1290,10 @@ getBoundsCenter(): Promise\<Point>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  let point = await button.getBoundsCenter();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    let point = await button.getBoundsCenter();
+  }
 }
 ```
 
@@ -1306,8 +1328,8 @@ isClickable(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isClickable()) {
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button && await button.isClickable()) {
     console.info('This button can be Clicked');
   } else {
     console.info('This button can not be Clicked');
@@ -1346,8 +1368,8 @@ isLongClickable(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isLongClickable()) {
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button && await button.isLongClickable()) {
     console.info('This button can longClick');
   } else {
     console.info('This button can not longClick');
@@ -1386,8 +1408,8 @@ isChecked(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isChecked()) {
+  let checkBox: Component | null = await driver.findComponent(ON.type('Checkbox'));
+  if (checkBox && await checkBox.isChecked()) {
     console.info('This checkBox is checked');
   } else {
     console.info('This checkBox is not checked');
@@ -1426,8 +1448,8 @@ isCheckable(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isCheckable()) {
+  let checkBox: Component | null = await driver.findComponent(ON.type('Checkbox'));
+  if (checkBox && await checkBox.isCheckable()) {
     console.info('This checkBox is checkable');
   } else {
     console.info('This checkBox is not checkable');
@@ -1466,8 +1488,8 @@ isScrollable(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let scrollBar: Component = await driver.findComponent(ON.scrollable(true));
-  if(await scrollBar.isScrollable()) {
+  let scrollBar: Component | null = await driver.findComponent(ON.scrollable(true));
+  if (scrollBar && await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
     console.info('This scrollBar can not be operated');
@@ -1507,8 +1529,8 @@ isEnabled(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isEnabled()) {
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button && await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
     console.info('This button can not be operated');
@@ -1547,8 +1569,8 @@ isFocused(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isFocused()) {
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button && await button.isFocused()) {
     console.info('This button is focused');
   } else {
     console.info('This button is not focused');
@@ -1587,8 +1609,8 @@ isSelected(): Promise\<boolean>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isSelected()) {
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button && await button.isSelected()) {
     console.info('This button is selected');
   } else {
     console.info('This button is not selected');
@@ -1634,8 +1656,10 @@ inputText(text: string): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let text: Component = await driver.findComponent(ON.text('hello world'));
-  await text.inputText('123');
+  let text: Component | null = await driver.findComponent(ON.text('hello world'));
+  if (text) {
+    await text.inputText('123');
+  }
 }
 ```
 
@@ -1715,14 +1739,18 @@ clearText(): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let text: Component = await driver.findComponent(ON.text('hello world'));
-  await text.clearText();
+  let text: Component | null = await driver.findComponent(ON.text('hello world'));
+  if (text) {
+    await text.clearText();
+  }
 }
 ```
 
 ### scrollSearch<sup>9+</sup>
 
-scrollSearch(on: On): Promise\<Component>
+ArkTS1.1: scrollSearch(on: On): Promise\<Component>
+
+ArkTS1.2: scrollSearch(on: On): Promise\<Component | null>
 
 在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
 
@@ -1738,9 +1766,15 @@ scrollSearch(on: On): Promise\<Component>
 
 **返回值：**
 
+ArkTS1.1: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
+
+ArkTS1.2: 
+| 类型                               | 说明                                  |
+| ---------------------------------- | ------------------------------------- |
+| Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
 
 **错误码：**
 
@@ -1759,14 +1793,21 @@ import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+  let scrollBar: Component | null = await driver.findComponent(ON.type('Scroll'));
+  if (scrollBar) {
   let button = await scrollBar.scrollSearch(ON.text('next page'));
+    if (button) {
+      await button.click();
+    }
+  }
 }
 ```
 
 ### scrollSearch<sup>18+</sup>
 
-scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
+ArkTS1.1: scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
+
+ArkTS1.2: scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Component | null>
 
 在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
 
@@ -1780,13 +1821,19 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 |------------------------| ---------- | ---- |-----------------------------------|
 | on                     | [On](#on9) | 是   | 目标控件的属性要求。                        |
 | vertical |    boolean | 否 | 默认为true，表示查找方向是纵向。false表示查找方向为横向。 |
-| offset   | number| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。    |
+| offset   | ArkTS1.1: number  <br />ArkTS1.2: int| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。    |
 
 **返回值：**
 
+ArkTS1.1: 
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
+
+ArkTS1.2: 
+| 类型                               | 说明                                  |
+| ---------------------------------- | ------------------------------------- |
+| Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
 
 **错误码：**
 
@@ -1804,14 +1851,21 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+  let scrollBar: Component | null = await driver.findComponent(ON.type('Scroll'));
+  if (scrollBar) {
   let button = await scrollBar.scrollSearch(ON.text('next page'));
+    if (button) {
+      await button.click();
+    }
+  }
 }
 ```
 
 ### scrollToTop<sup>9+</sup>
 
-scrollToTop(speed?: number): Promise\<void>
+ArkTS1.1: scrollToTop(speed?: number): Promise\<void>
+
+ArkTS1.2: scrollToTop(speed?: int): Promise\<void>
 
 在控件上滑动到顶部（适用支持滑动的控件），使用Promise异步回调。
 
@@ -1823,7 +1877,7 @@ scrollToTop(speed?: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -1847,14 +1901,18 @@ scrollToTop(speed?: number): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-  await scrollBar.scrollToTop();
+  let scrollBar: Component | null = await driver.findComponent(ON.type('Scroll'));
+  if (scrollBar) {
+    await scrollBar.scrollToTop();
+  }
 }
 ```
 
 ### scrollToBottom<sup>9+</sup>
 
-scrollToBottom(speed?: number): Promise\<void>
+ArkTS1.1: scrollToBottom(speed?: number): Promise\<void>
+
+ArkTS1.2: scrollToBottom(speed?: int): Promise\<void>
 
 在控件上滑动到底部（适用支持滑动的控件），使用Promise异步回调。
 
@@ -1866,7 +1924,7 @@ scrollToBottom(speed?: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -1937,15 +1995,19 @@ dragTo(target: Component): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  let text: Component = await driver.findComponent(ON.text('hello world'));
-  await button.dragTo(text);
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  let text: Component | null = await driver.findComponent(ON.text('hello world'));
+  if (button && text) {
+    await button.dragTo(text);
+  }
 }
 ```
 
 ### pinchOut<sup>9+</sup>
 
-pinchOut(scale: number): Promise\<void>
+ArkTS1.1: pinchOut(scale: number): Promise\<void>
+
+ArkTS1.2: pinchOut(scale: double): Promise\<void>
 
 将控件按指定的比例进行捏合放大，使用Promise异步回调。
 
@@ -1957,7 +2019,7 @@ pinchOut(scale: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | number | 是   | 指定放大的比例。取值范围大于1。 |
+| scale  | ArkTS1.1: number  <br />ArkTS1.2: double | 是   | 指定放大的比例。取值范围大于1。 |
 
 **返回值：**
 
@@ -1981,14 +2043,18 @@ pinchOut(scale: number): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let image: Component = await driver.findComponent(ON.type('Image'));
-  await image.pinchOut(1.5);
+  let image: Component | null = await driver.findComponent(ON.type('Image'));
+  if (image) {
+    await image.pinchOut(1.5);
+  }
 }
 ```
 
 ### pinchIn<sup>9+</sup>
 
-pinchIn(scale: number): Promise\<void>
+ArkTS1.1: pinchIn(scale: number): Promise\<void>
+
+ArkTS1.2: pinchIn(scale: double): Promise\<void>
 
 将控件按指定的比例进行捏合缩小，使用Promise异步回调。
 
@@ -2000,7 +2066,7 @@ pinchIn(scale: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | number | 是   | 指定缩小的比例。取值范围为0~1。 |
+| scale  | ArkTS1.1: number  <br />ArkTS1.2: double | 是   | 指定缩小的比例。取值范围为0~1。 |
 
 **返回值：**
 
@@ -2024,8 +2090,10 @@ pinchIn(scale: number): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let image: Component = await driver.findComponent(ON.type('Image'));
-  await image.pinchIn(0.5);
+  let image: Component | null = await driver.findComponent(ON.type('Image'));
+  if (image) {
+    await image.pinchIn(0.5);
+  }
 }
 ```
 
@@ -2060,8 +2128,10 @@ getDescription(): Promise\<string>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  let description = await button.getDescription();
+  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  if (button) {
+    let description = await button.getDescription();
+  }
 }
 ```
 ### getHint<sup>18+</sup>
@@ -2095,8 +2165,10 @@ getHint(): Promise\<string>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('TextInput'));
-  let hints = await button.getHint();
+  let button: Component | null = await driver.findComponent(ON.type('TextInput'));
+  if (button) {
+    let hints = await button.getHint();
+  }
 }
 ```
 ### getDisplayId<sup>20+</sup>
@@ -2176,7 +2248,9 @@ async function demo() {
 
 ### delayMs<sup>9+</sup>
 
-delayMs(duration: number): Promise\<void>
+ArkTS1.1: delayMs(duration: number): Promise\<void>
+
+ArkTS1.2: delayMs(duration: int): Promise\<void>
 
 在给定的时间内延时，使用Promise异步回调。
 
@@ -2188,7 +2262,7 @@ delayMs(duration: number): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| duration | number | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
+| duration | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -2217,7 +2291,9 @@ async function demo() {
 
 ### findComponent<sup>9+</sup>
 
-findComponent(on: On): Promise\<Component>
+ArkTS1.1: findComponent(on: On): Promise\<Component>
+
+ArkTS1.2: findComponent(on: On): Promise\<Component \| null>
 
 根据给出的目标控件属性要求查找目标控件，使用Promise异步回调。
 
@@ -2233,9 +2309,15 @@ findComponent(on: On): Promise\<Component>
 
 **返回值：**
 
+ArkTS1.1: 
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
+
+ArkTS1.2: 
+| 类型                               | 说明                                  |
+| ---------------------------------- | ------------------------------------- |
+| Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
 
 **错误码：**
 
@@ -2252,13 +2334,18 @@ findComponent(on: On): Promise\<Component>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.text('next page'));
+  let button: Component | null = await driver.findComponent(ON.text('next page'));
+  if (button) {
+    await button.click();
+  }
 }
 ```
 
 ### findComponents<sup>9+</sup>
 
-findComponents(on: On): Promise\<Array\<Component>>
+ArkTS1.1: findComponents(on: On): Promise\<Array\<Component>>
+
+ArkTS1.2: findComponents(on: On): Promise\<Array\<Component> \| null>
 
 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存，使用Promise异步回调。
 
@@ -2274,9 +2361,15 @@ findComponents(on: On): Promise\<Array\<Component>>
 
 **返回值：**
 
+ArkTS1.1: 
 | 类型                                       | 说明                                    |
 | ------------------------------------------ | --------------------------------------- |
 | Promise\<Array\<[Component](#component9)>> | Promise对象，返回控件对象的列表。 |
+
+ArkTS1.2: 
+| 类型                               | 说明                                  |
+| ---------------------------------- | ------------------------------------- |
+| Promise\<Array\<[Component](#component9)>\|null\> |  Promise对象，返回找到的控件对象的列表。在未找到目标对象时以Promise形式返回null。 |
 
 **错误码：**
 
@@ -2293,13 +2386,18 @@ findComponents(on: On): Promise\<Array\<Component>>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
+  let buttonList: Array<Component> | null = await driver.findComponents(ON.text('next page'));
+  if (buttonList) {
+    await buttonList[0].click();
+  }
 }
 ```
 
 ### findWindow<sup>9+</sup>
 
-findWindow(filter: WindowFilter): Promise\<UiWindow>
+ArkTS1.1: findWindow(filter: WindowFilter): Promise\<UiWindow>
+
+ArkTS1.2: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
 
 通过指定窗口的属性来查找目标窗口，使用Promise异步回调。
 
@@ -2315,9 +2413,15 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 **返回值：**
 
+ArkTS1.1: 
 | 类型                             | 说明                                  |
 | -------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9)> | Promise对象，返回目标窗口对象。 |
+
+ArkTS1.2: 
+| 类型                               | 说明                                  |
+| ---------------------------------- | ------------------------------------- |
+| Promise\<[UiWindow](#uiwindow9) \| null> | Promise对象，返回找到的目标窗口对象，在未找到目标窗口对象时以Promise形式返回null。 |
 
 **错误码：**
 
@@ -2334,13 +2438,18 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let name: string = await window.getBundleName();
+  }
 }
 ```
 
 ### waitForComponent<sup>9+</sup>
 
-waitForComponent(on: On, time: number): Promise\<Component>
+ArkTS1.1: waitForComponent(on: On, time: number): Promise\<Component>
+
+ArkTS1.2: waitForComponent(on: On, time: int): Promise\<Component | null>
 
 在用户给定的时间内，持续查找满足控件属性要求的目标控件，使用Promise异步回调。
 
@@ -2353,13 +2462,19 @@ waitForComponent(on: On, time: number): Promise\<Component>
 | 参数名 | 类型       | 必填 | 说明                                      |
 | ------ | ---------- | ---- | ----------------------------------------- |
 | on    | [On](#on9) | 是   | 目标控件的属性要求。                      |
-| time   | number     | 是   | 查找目标控件的持续时间。单位ms，取值范围：大于等于0的整数。 |
+| time   | ArkTS1.1: number  <br />ArkTS1.2: int     | 是   | 查找目标控件的持续时间。单位ms，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
+ArkTS1.1: 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
+
+ArkTS1.2: 
+| 类型                               | 说明                                  |
+| ---------------------------------- | ------------------------------------- |
+| Promise\<[Component](#component9) \| null> | Promise对象，返回找到的控件对象，在未找到目标对象时以Promise形式返回null。 |
 
 **错误码：**
 
@@ -2376,7 +2491,10 @@ waitForComponent(on: On, time: number): Promise\<Component>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.waitForComponent(ON.text('next page'),500);
+  let button: Component | null = await driver.waitForComponent(ON.text('next page'),500);
+  if (button) {
+    let buttonId: string = await button.getId();
+  }
 }
 ```
 
@@ -2499,7 +2617,9 @@ async function demo() {
 
 ### triggerKey<sup>9+</sup>
 
-triggerKey(keyCode: number): Promise\<void>
+ArkTS1.1: triggerKey(keyCode: number): Promise\<void>
+
+ArkTS1.2: triggerKey(keyCode: int): Promise\<void>
 
 传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
 
@@ -2511,7 +2631,7 @@ triggerKey(keyCode: number): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
@@ -2583,7 +2703,9 @@ async function demo() {
 
 ### triggerCombineKeys<sup>9+</sup>
 
-triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
+ArkTS1.1: triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
+
+ArkTS1.2: triggerCombineKeys(key0: int, key1: int, key2?: int): Promise\<void> 
 
 通过给定的key值，找到对应组合键并点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如ctrl+c。
 
@@ -2595,9 +2717,9 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | number | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | number | 否   | 指定的第三个key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key0   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 指定的第三个key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -2671,7 +2793,9 @@ async function demo() {
 
 ### click<sup>9+</sup>
 
-click(x: number, y: number): Promise\<void>
+ArkTS1.1: click(x: number, y: number): Promise\<void>
+
+ArkTS1.2: click(x: int, y: int): Promise\<void>
 
 在目标坐标点单击，使用Promise异步回调。
 
@@ -2683,8 +2807,8 @@ click(x: number, y: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -2755,7 +2879,9 @@ async function demo() {
 
 ### doubleClick<sup>9+</sup>
 
-doubleClick(x: number, y: number): Promise\<void>
+ArkTS1.1: doubleClick(x: number, y: number): Promise\<void>
+
+ArkTS1.2: doubleClick(x: int, y: int): Promise\<void>
 
 在目标坐标点双击，使用Promise异步回调。
 
@@ -2767,8 +2893,8 @@ doubleClick(x: number, y: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -2839,7 +2965,10 @@ async function demo() {
 
 ### longClick<sup>9+</sup>
 
-longClick(x: number, y: number): Promise\<void>
+
+ArkTS1.1: longClick(x: number, y: number): Promise\<void>
+
+ArkTS1.2: longClick(x: int, y: int): Promise\<void>
 
 在目标坐标点长按，使用Promise异步回调。
 
@@ -2851,8 +2980,8 @@ longClick(x: number, y: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -2881,7 +3010,9 @@ async function demo() {
 
 ### longClickAt<sup>20+</sup>
 
-longClickAt(point: Point, duration?: number): Promise\<void>
+ArkTS1.1: longClickAt(point: Point, duration?: number): Promise\<void>
+
+ArkTS1.2: longClickAt(point: Point, duration?: int): Promise\<void>
 
 长按目标坐标点，支持指定长按时长，使用Promise异步回调。
 
@@ -2894,7 +3025,7 @@ longClickAt(point: Point, duration?: number): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
 | point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -2924,7 +3055,9 @@ async function demo() {
 
 ### swipe<sup>9+</sup>
 
-swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+ArkTS1.1: swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+
+ArkTS1.2: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
 
 从起始坐标点滑向目的坐标点，使用Promise异步回调。
 
@@ -2936,11 +3069,11 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| startx | number | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。                       |
-| starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
-| endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| startx | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。                       |
+| starty | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
+| endx   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
+| endy   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
+| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3013,7 +3146,9 @@ async function demo() {
 
 ### drag<sup>9+</sup>
 
-drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+ArkTS1.1: drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+
+ArkTS1.2: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
 
 从起始坐标点拖拽至目的坐标点，使用Promise异步回调。
 
@@ -3029,11 +3164,11 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | number | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
-| starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
-| endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
-| endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| startx | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
+| starty | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
+| endx   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
+| endy   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
+| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
 
 **返回值：**
 
@@ -3633,7 +3768,9 @@ async function demo() {
 
 ### waitForIdle<sup>9+</sup>
 
-waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
+ArkTS1.1: waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
+
+ArkTS1.2: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 判断当前界面的所有控件是否已经空闲，使用Promise异步回调。
 
@@ -3645,8 +3782,8 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| idleTime | number | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
-| timeout  | number | 是   | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。                    |
+| idleTime | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
+| timeout  | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。                    |
 
 **返回值：**
 
@@ -3675,7 +3812,9 @@ async function demo() {
 
 ### fling<sup>9+</sup>
 
-fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
+ArkTS1.1: fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
+
+ArkTS1.2: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<void>
 
 模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
@@ -3689,8 +3828,8 @@ fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 | ------- | ---------------- | ---- |------------------------------------------------------|
 | from    | [Point](#point9) | 是   | 手指接触屏幕的起始点坐标。                                        |
 | to      | [Point](#point9) | 是   | 手指离开屏幕时的坐标点。                                         |
-| stepLen | number           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
-| speed   | number           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| stepLen | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
+| speed   | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3720,7 +3859,9 @@ async function demo() {
 
 ### injectMultiPointerAction<sup>9+</sup>
 
-injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
+ArkTS1.1: injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
+
+ArkTS1.2: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promise\<boolean>
 
 向设备注入多指操作，使用Promise异步回调。
 
@@ -3733,7 +3874,7 @@ injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<bool
 | 参数名   | 类型                             | 必填 | 说明                                                     |
 | -------- | -------------------------------- | ---- |--------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。                                  |
-| speed    | number                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed    | ArkTS1.1: number  <br />ArkTS1.2: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3774,7 +3915,9 @@ async function demo() {
 
 ### fling<sup>10+</sup>
 
-fling(direction: UiDirection, speed: number): Promise\<void>;
+ArkTS1.1: fling(direction: UiDirection, speed: number): Promise\<void>;
+
+ArkTS1.2: fling(direction: UiDirection, speed: int): Promise\<void>;
 
 指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
@@ -3787,7 +3930,7 @@ fling(direction: UiDirection, speed: number): Promise\<void>;
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed     | ArkTS1.1: number  <br />ArkTS1.2: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3829,7 +3972,7 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | number                        | 是   | 滑动速率，取值范围为200-40000，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed     | number       | 是   | 滑动速率，取值范围为200-40000，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 | displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
@@ -3902,7 +4045,9 @@ async function demo() {
 
 ### mouseClick<sup>10+</sup>
 
-mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+ArkTS1.1: mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+
+ArkTS1.2: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>;
 
 在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标点击动作。
 
@@ -3916,8 +4061,8 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标点击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -3946,7 +4091,9 @@ async function demo() {
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+ArkTS1.1: mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+
+ArkTS1.2: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int): Promise\<void>;
 
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标滚轮滑动动作。
 
@@ -3960,9 +4107,9 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 | ------ | ---------------- | ---- | ----------------------------------------------------------- |
 | p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                            |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。 |
-| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。         |
-| key1   | number           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
-| key2   | number           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| d      | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。         |
+| key1   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| key2   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
 
 **返回值：**
 
@@ -4069,7 +4216,9 @@ async function demo() {
 
 ### mouseScroll<sup>11+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
+ArkTS1.1: mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
+
+ArkTS1.2: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, speed?: int): Promise\<void>
 
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度，使用Promise异步回调。
 
@@ -4083,10 +4232,10 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, sp
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
 | p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                             |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。  |
-| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
-| key1   | number           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| key2   | number           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| speed  | number           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
+| d      | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
+| key1   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| key2   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| speed  | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
 
 **返回值：**
 
@@ -4116,7 +4265,9 @@ async function demo() {
 
 ### mouseDoubleClick<sup>11+</sup>
 
-mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
+ArkTS1.1: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
+
+ArkTS1.2: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>
 
 在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标双击动作。
 
@@ -4130,8 +4281,8 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标双击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key1   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key2   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
 
 **返回值：**
 
@@ -4160,7 +4311,9 @@ async function demo() {
 
 ### mouseLongClick<sup>11+</sup>
 
-mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
+ArkTS1.1: mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
+
+ArkTS1.2: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>
 
 在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标长按动作。
 
@@ -4174,8 +4327,8 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -4218,8 +4371,8 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId    | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1     | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2     | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1     | number | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2     | number | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 | duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
@@ -4250,7 +4403,9 @@ async function demo() {
 
 ### mouseMoveWithTrack<sup>11+</sup>
 
-mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
+ArkTS1.1: mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
+
+ArkTS1.2: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<void>
 
 鼠标从起始坐标点滑向终点坐标点，使用Promise异步回调。
 
@@ -4264,7 +4419,7 @@ mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to     | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -4294,7 +4449,9 @@ async function demo() {
 
 ### mouseDrag<sup>11+</sup>
 
-mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
+ArkTS1.1: mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
+
+ArkTS1.2: mouseDrag(from: Point, to: Point, speed?: int): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，使用Promise异步回调。
 
@@ -4312,7 +4469,7 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to     | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | ArkTS1.1: number  <br />ArkTS1.2: int    | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -4360,8 +4517,8 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed     | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
-| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| speed     |  number     | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| duration  |  number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -4427,9 +4584,11 @@ inputText(p: Point, text: string): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 async function demo() {
   let driver:Driver = Driver.create();
-  let text: Component = await driver.findComponent(ON.type('TextInput'));
-  let point = await text.getBoundsCenter();
-  await driver.inputText(point, '123');
+  let text: Component | null = await driver.findComponent(ON.type('TextInput'));
+  if (text) {
+    let point = await text.getBoundsCenter();
+    await driver.inputText(point, '123');
+  }
 }
 ```
 
@@ -4490,7 +4649,9 @@ async function demo_Chinese() {
 
 ### touchPadMultiFingerSwipe<sup>18+</sup>
 
-touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
+ArkTS1.1: touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
+
+ArkTS1.2: touchPadMultiFingerSwipe(fingers: int, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
 
 模拟触摸板多指滑动手势，使用Promise异步回调。
 
@@ -4506,8 +4667,8 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | number                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
-| direction | [UiDirection](#uidirection10)                 | 是  | 触摸板多指滑动的方向。           |
+| fingers      | ArkTS1.1: number  <br />ArkTS1.2: int | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
+| direction | [UiDirection](#uidirection10)  | 是  | 触摸板多指滑动的方向。           |
 | options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项。        |
 
 **返回值：**
@@ -4579,7 +4740,9 @@ async function demo() {
 
 ### penLongClick<sup>18+</sup>
 
-penLongClick(point: Point, pressure?: number): Promise\<void>
+ArkTS1.1: penLongClick(point: Point, pressure?: number): Promise\<void>
+
+ArkTS1.2: penLongClick(point: Point, pressure?: double): Promise\<void>
 
 模拟手写笔长按操作，使用Promise异步回调。
 
@@ -4592,7 +4755,7 @@ penLongClick(point: Point, pressure?: number): Promise\<void>
 | 参数名 | 类型                                            | 必填 | 说明                            |
 | ------ |-----------------------------------------------|----|-------------------------------|
 | point      | [Point](#point9) | 是  | 长按的坐标点。                       |
-| pressure      | number | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure   | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
 
 **返回值：**
 
@@ -4663,7 +4826,9 @@ async function demo() {
 
 ### penSwipe<sup>18+</sup>
 
-penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
+ArkTS1.1: penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
+
+ArkTS1.2: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: double): Promise\<void>
 
 模拟手写笔的滑动操作，使用Promise异步回调。
 
@@ -4677,8 +4842,8 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 | ------ |-----------------------------------------------|----|--------------------------------------------------------|
 | startPoint      | [Point](#point9) | 是  | 起始位置的坐标点。                                              |
 | endPoint      | [Point](#point9) | 是  | 结束位置的坐标点。                                              |
-| speed      | number | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
-| pressure      | number | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
+| speed      | ArkTS1.1: number  <br />ArkTS1.2: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| pressure      | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
 
 **返回值：**
 
@@ -4707,7 +4872,9 @@ async function demo() {
 
 ### injectPenPointerAction<sup>18+</sup>
 
-injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
+ArkTS1.1: injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
+
+ArkTS1.2: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure?: double): Promise\<void>
 
 模拟手写笔多点连续注入操作，使用Promise异步回调。
 
@@ -4720,8 +4887,8 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
-| speed      | number| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
-| pressure      | number | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
+| speed      | ArkTS1.1: number  <br />ArkTS1.2: int| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
+| pressure      | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
 
 **返回值：**
@@ -4808,7 +4975,9 @@ async function demo() {
 
 ### create<sup>9+</sup>
 
-static create(fingers: number, steps: number): PointerMatrix
+ArkTS1.1: static create(fingers: number, steps: number): PointerMatrix
+
+ArkTS1.2: static create(fingers: int, steps: int): PointerMatrix
 
 静态方法，构造一个PointerMatrix对象，并返回该对象。
 
@@ -4820,8 +4989,8 @@ static create(fingers: number, steps: number): PointerMatrix
 
 | 参数名  | 类型   | 必填 | 说明                                       |
 | ------- | ------ | ---- | ------------------------------------------ |
-| fingers | number | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
-| steps   | number | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+| fingers | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
+| steps   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
 
 **返回值：**
 
@@ -4849,7 +5018,9 @@ async function demo() {
 
 ### setPoint<sup>9+</sup>
 
-setPoint(finger: number, step: number, point: Point): void
+ArkTS1.1: setPoint(finger: number, step: number, point: Point): void
+
+ArkTS1.2: setPoint(finger: int, step: int, point: Point): void
 
 设置PointerMatrix对象中指定手指和步骤对应动作的坐标点。
 
@@ -4861,8 +5032,8 @@ setPoint(finger: number, step: number, point: Point): void
 
 | 参数名 | 类型             | 必填 | 说明                                                       |
 | ------ | ---------------- | ---- | ---------------------------------------------------------- |
-| finger | number           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
-| step   | number           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
+| finger | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
+| step   | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
 | point  | [Point](#point9) | 是   | 该行为的坐标点。建议相邻的坐标点距离在10px至80px范围内。 |
 
 **错误码：**
@@ -4930,8 +5101,10 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  let name: string = await window.getBundleName();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let name: string = await window.getBundleName();
+  }
 }
 ```
 
@@ -4966,8 +5139,10 @@ getBounds(): Promise\<Rect>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  let rect = await window.getBounds();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let rect = await window.getBounds();
+  }
 }
 ```
 
@@ -5002,8 +5177,10 @@ getTitle(): Promise\<string>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  let rect = await window.getTitle();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let rect = await window.getTitle();
+  }
 }
 ```
 
@@ -5038,8 +5215,10 @@ getWindowMode(): Promise\<WindowMode>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  let mode = await window.getWindowMode();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let mode = await window.getWindowMode();
+  }
 }
 ```
 
@@ -5074,8 +5253,10 @@ isFocused(): Promise\<boolean>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  let focused = await window.isFocused();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let focused = await window.isFocused();
+  }
 }
 ```
 
@@ -5146,14 +5327,18 @@ focus(): Promise\<void>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.focus();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.focus();
+  }
 }
 ```
 
 ### moveTo<sup>9+</sup>
 
-moveTo(x: number, y: number): Promise\<void>
+ArkTS1.1: moveTo(x: number, y: number): Promise\<void>
+
+ArkTS1.2: moveTo(x: int, y: int): Promise\<void>
 
 将窗口移动到目标点，使用Promise异步回调。适用于支持移动的窗口。
 
@@ -5165,8 +5350,8 @@ moveTo(x: number, y: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -5191,14 +5376,18 @@ moveTo(x: number, y: number): Promise\<void>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.moveTo(100, 100);
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.moveTo(100, 100);
+  }
 }
 ```
 
 ### resize<sup>9+</sup>
 
-resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
+ArkTS1.1: resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
+
+ArkTS1.2: resize(wide: int, height: int, direction: ResizeDirection): Promise\<void>
 
 根据传入的宽、高和调整方向来调整窗口的大小，使用Promise异步回调。适用于支持调整大小的窗口。
 
@@ -5210,8 +5399,8 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 | 参数名    | 类型                                 | 必填 | 说明                                                         |
 | --------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| wide      | number                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
-| height    | number                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
+| wide      | ArkTS1.1: number  <br />ArkTS1.2: int                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
+| height    | ArkTS1.1: number  <br />ArkTS1.2: int                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
 | direction | [ResizeDirection](#resizedirection9) | 是   | 以[ResizeDirection](#resizedirection9)的形式传入窗口调整的方向。 |
 
 **返回值：**
@@ -5237,8 +5426,10 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.resize(100, 100, ResizeDirection.LEFT);
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.resize(100, 100, ResizeDirection.LEFT);
+  }
 }
 ```
 
@@ -5278,8 +5469,10 @@ split(): Promise\<void>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.split();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.split();
+  }
 }
 ```
 
@@ -5319,8 +5512,10 @@ maximize(): Promise\<void>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.maximize();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.maximize();
+  }
 }
 ```
 
@@ -5360,8 +5555,10 @@ minimize(): Promise\<void>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.minimize();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.minimize();
+  }
 }
 ```
 
@@ -5401,8 +5598,10 @@ resume(): Promise\<void>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.resume();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.resume();
+  }
 }
 ```
 
@@ -5442,8 +5641,10 @@ close(): Promise\<void>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver:Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  await window.close();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    await window.close();
+  }
 }
 ```
 
@@ -5478,8 +5679,10 @@ isActive(): Promise\<boolean>
 import { Driver, UiWindow } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
-  let focused = await window.isActive();
+  let window: UiWindow | null = await driver.findWindow({active: true});
+  if (window) {
+    let focused = await window.isActive();
+  }
 }
 ```
 
