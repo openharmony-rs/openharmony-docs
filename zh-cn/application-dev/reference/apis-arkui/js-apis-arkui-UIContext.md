@@ -1405,12 +1405,11 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
 
 **示例：**
-
 <!--code_no_check-->
 ```ts
 uiContext.getFilteredInspectorTree(['id', 'src', 'content']);
 ```
-
+ArkTS1.1示例：
 <!--code_no_check-->
 ```ts
 // xxx.ets
@@ -1473,6 +1472,78 @@ InsTree ---| type: Column, ID: 15
 InsTree ----| type: Button, ID: 16
 InsTree ----| type: Button, ID: 18
 ```
+ArkTS1.2示例：
+<!--code_no_check-->
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+import { jsonx } from "std/core"
+
+@Component
+struct ComponentPage {
+  loopConsole(inspectorStr: string, i: string) {
+    let arr: Array<jsonx.JsonElement> = JSON.parseJsonElement(inspectorStr)['$children'].asArray();
+    let child: jsonx.JsonElement = arr[0];
+    console.log(`first child of InsTree : ${JSON.stringifyJsonElement(child)}`);
+  }
+
+  build() {
+    Column() {
+      Button('content').onClick((ev: ClickEvent) => {
+        let inspectorStr = this.getUIContext().getFilteredInspectorTree(['content']);
+        console.log(`InsTree : ${inspectorStr}`);
+        inspectorStr = JSON.stringifyJsonElement(JSON.parseJsonElement(inspectorStr));
+        this.loopConsole(inspectorStr, '-');
+      })
+      Button('isLayoutInspector').onClick((ev: ClickEvent) => {
+        let inspectorStr = this.getUIContext().getFilteredInspectorTree(['isLayoutInspector', 'content']);
+        console.log(`InsTree : ${inspectorStr}`);
+        inspectorStr = JSON.stringifyJsonElement(JSON.parseJsonElement(inspectorStr)['content']);
+        this.loopConsole(inspectorStr, '-');
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () => {
+      hilog.info(0x0000, 'testTag', 'ComponentPage');
+      ComponentPage(undefined)
+    }
+    return wrapper
+  }
+}
+```
+
+当传入"content"过滤字段时，返回的JSON字符串结构如下：
+
+<!--code_no_check-->
+```ts
+InsTree : {"$type":"root","width":"1260.000000","height":"2720.000000","$resolution":"3.250000","$children":[{"$type":"Column","$ID":4,"type":"build-in","$rect":"[0.00, 123.00],[1260.00,2629.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$children":[{"$type":"Button","$ID":5,"type":"build-in","$rect":"[485.00, 123.00],[775.00,253.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10003]},{"$type":"Button","$ID":6,"type":"build-in","$rect":"[363.00, 253.00],[898.00,383.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10004]}]}]}
+first child of InsTree : {"$type":"Column","$ID":4,"type":"build-in","$rect":"[0.00, 123.00],[1260.00,2629.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$children":[{"$type":"Button","$ID":5,"type":"build-in","$rect":"[485.00, 123.00],[775.00,253.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10003]},{"$type":"Button","$ID":6,"type":"build-in","$rect":"[363.00, 253.00],[898.00,383.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10004]}]}
+```
+
+从API version 20开始，当传入"isLayoutInspector"过滤字段时，返回的JSON字符串结构新增外层结构"type"与"content"，其中"content"包含未增加该字段时的原有JSON字符串结构；同时，返回值结构中增添自定义组件。返回的JSON字符串结构如下：
+
+<!--code_no_check-->
+```ts
+InsTree : {"type":"root","content":{"$type":"root","width":"1260.000000","height":"2720.000000","$resolution":"3.250000","$children":[{"$type":"JsView","$ID":2,"type":"custom","state":{"viewinfo":{"componentName":"entry.src.main.ets.pages.Index.ComponentPage","isV2":false},"observedPropertiesInfo":[]},"$rect":"[0.00, 123.00],[1260.00,2629.00]","$debugLine":"{\"$line\":\"(0:0)\"}","viewTag":"","$attrs":{},"$children":[{"$type":"Column","$ID":4,"type":"build-in","$rect":"[0.00, 123.00],[1260.00,2629.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$children":[{"$type":"Button","$ID":5,"type":"build-in","$rect":"[485.00, 123.00],[775.00,253.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10003]},{"$type":"Button","$ID":6,"type":"build-in","$rect":"[363.00, 253.00],[898.00,383.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10004]}]}]}]},"VsyncID":3791,"ProcessID":33774,"WindowID":42}
+first child of InsTree : {"$type":"JsView","$ID":2,"type":"custom","state":{"viewinfo":{"componentName":"entry.src.main.ets.pages.Index.ComponentPage","isV2":false},"observedPropertiesInfo":[]},"$rect":"[0.00, 123.00],[1260.00,2629.00]","$debugLine":"{\"$line\":\"(0:0)\"}","viewTag":"","$attrs":{},"$children":[{"$type":"Column","$ID":4,"type":"build-in","$rect":"[0.00, 123.00],[1260.00,2629.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$children":[{"$type":"Button","$ID":5,"type":"build-in","$rect":"[485.00, 123.00],[775.00,253.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10003]},{"$type":"Button","$ID":6,"type":"build-in","$rect":"[363.00, 253.00],[898.00,383.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true},"$INTERNAL_IDS":[10004]}]}]}
+```
 
 ### getFilteredInspectorTreeById<sup>12+</sup>
 
@@ -1513,7 +1584,7 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 ```ts
 uiContext.getFilteredInspectorTreeById('testId', 0, ['id', 'src', 'content']);
 ```
-
+ArkTS1.1示例：
 <!--code_no_check-->
 ```ts
 import { UIContext } from '@kit.ArkUI';
@@ -1528,12 +1599,15 @@ struct ComponentPage {
       Button('getFilteredInspectorTreeById').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         try {
-          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1);
-          console.log(`result1: ${inspectorStr}`);
+          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["id", "src"]);
+          console.info(`result1: ${inspectorStr}`);
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          console.log(`result2: ${inspectorStr}`);
+          console.info(`result2: ${inspectorStr}`);
+          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["src"]);
+          inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
+          console.info(`result3: ${inspectorStr}`);
         } catch(e) {
-          console.log(`getFilteredInspectorTreeById error: ${e}`);
+          console.info(`getFilteredInspectorTreeById error: ${e}`);
         }
       })
     }
@@ -1542,13 +1616,71 @@ struct ComponentPage {
   }
 }
 ```
+ArkTS1.2示例：
+<!--code_no_check-->
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+import { jsonx } from "std/core"
+
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Text("Hello World")
+        .fontSize(20)
+        .id("TEXT")
+      Button('getFilteredInspectorTreeById').onClick((ev: ClickEvent) => {
+        try {
+          let inspectorStr = this.getUIContext().getFilteredInspectorTreeById('TEXT', 1, ["id", "src"]);
+          console.info(`result1: ${inspectorStr}`);
+          let arr: Array<jsonx.JsonElement> = JSON.parseJsonElement(inspectorStr)['$children'].asArray();
+          let child: jsonx.JsonElement = arr[0];
+          console.info(`result2: ${JSON.stringifyJsonElement(child)}`);
+          inspectorStr = this.getUIContext().getFilteredInspectorTreeById('TEXT', 1, ["src"]);
+          arr = JSON.parseJsonElement(inspectorStr)['$children'].asArray();
+          child = arr[0];
+          console.info(`result3: ${JSON.stringifyJsonElement(child)}`);
+        } catch(e) {
+          console.info(`getFilteredInspectorTreeById error: ${e}`);
+        }
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () => {
+      hilog.info(0x0000, 'testTag', 'ComponentPage');
+      ComponentPage(undefined)
+    }
+    return wrapper
+  }
+}
+```
 返回的JSON字符串结构如下：
 <!--code_no_check-->
 ```ts
-result1: {"$type":"root","width":"1260.000000","height":"2720.000000","$resolution":"3.250000","$children":[{"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"borderStyle":"BorderStyle.Solid","borderColor":"#FF000000","borderWidth":"0.00vp","borderRadius":{"topLeft":"0.00vp","topRight":"0.00vp","bottomLeft":"0.00vp","bottomRight":"0.00vp"}}}]}
-result2: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"borderStyle":"BorderStyle.Solid","borderColor":"#FF000000","borderWidth":"0.00vp","borderRadius":{"topLeft":"0.00vp","topRight":"0.00vp","bottomLeft":"0.00vp","bottomRight":"0.00vp"}}}
+result1: {"$type":"root","width":"1260.000000","height":"2720.000000","$resolution":"3.250000","$children":[{"$type":"Text","$ID":5,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true}}]}
+result2: {"$type":"Text","$ID":5,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true}}
+result3: {"$type":"Text","$ID":5,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":true}}
+
 ```
-若需获取getFilteredInspectorTreeById方法中首个参数id指定的组件，须参照示例代码将getFilteredInspectorTreeById方法结果先转换为json对象，随后提取$children数组的首项。
+若需获取getFilteredInspectorTreeById方法中首个参数id指定的组件，须参照示例代码将getFilteredInspectorTreeById方法结果先转换为json对象，随后提取$children数组的首项。通过result2和result3的结果对比可知，如果filters参数由["id", "src"]改为["src"]，获取到的$attrs属性将缺少"id"这一key。
 
 
 ### getCursorController<sup>12+</sup>
