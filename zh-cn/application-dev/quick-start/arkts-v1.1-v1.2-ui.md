@@ -1096,15 +1096,15 @@ struct TestBuilderParam1 {
 }
 ```
 
-## 禁止在UI渲染过程中修改状态变量
+## 禁止在`build`函数中修改状态变量
 
 **规则：** `arkui-no-update-in-build`
 
-在ArkTS1.2中，禁止在UI渲染过程中修改状态变量。此类行为会导致运行时异常。
+在ArkTS1.2中，禁止在`build`函数中修改状态变量。此类行为会导致运行时异常。
 
 **ArkTS1.1**
 
-在ArkTS1.1中，在UI渲染过程中修改状态变量的行为会导致告警，但代码可以正常运行。
+在ArkTS1.1中，在`build`函数中修改状态变量的行为会导致告警，但代码可以正常运行。
 
 ```typescript
 @Entry
@@ -1114,8 +1114,8 @@ struct Index {
 
   build() {
     Column() {
-      // ArkTS1.1：在UI渲染过程中修改状态变量的行为会导致告警
-      // ArkTS1.2：在UI渲染过程中修改状态变量的行为会导致运行时异常
+      // ArkTS1.1：在build函数中修改状态变量的行为会导致告警
+      // ArkTS1.2：在build函数中修改状态变量的行为会导致运行时异常
       Text(`${this.count++}`)
     }
   }
@@ -1124,9 +1124,9 @@ struct Index {
 
 **ArkTS1.2**
 
-在ArkTS1.2中，禁止在UI渲染过程中修改状态变量。此类行为会导致运行时异常。
+在ArkTS1.2中，禁止在`build`函数中修改状态变量。此类行为会导致运行时异常。
 
-建议删除相关代码，从而避免运行时异常。
+建议把修改状态变量的代码移动到`aboutToAppear`函数中，以避免运行时异常。
 
 ```typescript
 'use static'
@@ -1143,9 +1143,13 @@ import {
 struct Index {
   @State count: number = 1;
 
+  // 把修改状态变量的代码移动到aboutToAppear函数中
+  aboutToAppear(): void {
+    this.count ++;
+  }
+
   build() {
     Column() {
-      // 删除在UI渲染过程中修改状态变量的代码
       Text(`${this.count}`)
     }
   }
