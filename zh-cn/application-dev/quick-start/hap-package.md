@@ -1,6 +1,6 @@
 # HAP
 
-HAP（Harmony Ability Package）是应用安装和运行的基本单元。HAP包是由代码、资源、第三方库、配置文件等打包生成的模块包，其主要分为两种类型：entry和feature。
+HAP（Harmony Ability Package）是应用安装和运行的基本单元。HAP包是由代码、资源、第三方库、配置文件等打包生成的模块包，分为两种类型：entry和feature。
 
 - entry：应用的主模块，作为应用的入口，提供了应用的基础功能。
 - feature：应用的动态特性模块，作为应用能力的扩展，可以根据用户的需求和设备类型进行选择性安装。
@@ -61,12 +61,15 @@ HAP（Harmony Ability Package）是应用安装和运行的基本单元。HAP包
       ```shell
       # 安装、更新，多HAP可以指定多个文件路径
       hdc install entry.hap feature.hap
-      # 执行结果
-      install bundle successfully.
+      # 成功后执行结果
+      [Info]App install path:entry.hap, queuesize:1, msg:install bundle successfully.
+      [Info]App install path:feature.hap, queuesize:0, msg:install bundle successfully.
+      AppMod finish.
       # 卸载
       hdc uninstall com.example.myapplication
-      # 执行结果
-      uninstall bundle successfully.
+      # 成功后执行结果
+      [Info]App uninstall path: msg:uninstall bundle successfully.
+      AppMod finish.
       ```
 
    - 先执行hdc shell，再使用bm工具安装、更新HAP。
@@ -78,11 +81,11 @@ HAP（Harmony Ability Package）是应用安装和运行的基本单元。HAP包
       hdc shell
       # 安装、更新，多HAP可以指定多个文件路径
       bm install -p /data/app/entry.hap /data/app/feature.hap
-      # 执行结果
+      # 成功后执行结果
       install bundle successfully.
       # 卸载
       bm uninstall -n com.example.myapplication
-      # 执行结果
+      # 成功后执行结果
       uninstall bundle successfully.
       ```
 
