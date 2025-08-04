@@ -1010,7 +1010,9 @@ struct WebComponent {
 
 ## registerJavaScriptProxy
 
-registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
+ArkTS1.1: registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
+
+ArkTS1.2: registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
 registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的交互能力。
 <br>注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refresh)接口生效。
@@ -8376,7 +8378,9 @@ body.appendChild(element);
 
 ## enableBackForwardCache<sup>12+</sup>
 
-static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
+ArkTS1.1: static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
+
+ArkTS1.2: static enableBackForwardCache(features?: BackForwardCacheSupportedFeatures): void
 
 开启Web组件前进后退缓存功能，通过参数指定是否允许使用特定的页面进入前进后退缓存。
 
@@ -8386,9 +8390,15 @@ static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
 
 **参数：**
 
+ArkTS1.1:
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
 | features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | 是   | 允许使用特定的页面进入前进后退缓存中。|
+
+ArkTS1.2:
+| 参数名          | 类型    |  必填  | 说明                                            |
+| ---------------| ------- | ---- | ------------- |
+| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | 否   | 允许使用特定的页面进入前进后退缓存中。入参为空时会设置为false。|
 
 **示例：**
 
@@ -8415,7 +8425,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setBackForwardCacheOptions<sup>12+</sup>
 
-setBackForwardCacheOptions(options: BackForwardCacheOptions): void
+ArkTS1.1: setBackForwardCacheOptions(options: BackForwardCacheOptions): void
+
+ArkTS1.2: setBackForwardCacheOptions(options?: BackForwardCacheOptions): void
 
 可以设置Web组件中前进后退缓存的相关选项。
 
@@ -8423,9 +8435,15 @@ setBackForwardCacheOptions(options: BackForwardCacheOptions): void
 
 **参数：**
 
+ArkTS1.1:
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
 | options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | 是   | 用来控制Web组件前进后退缓存相关选项。|
+
+ArkTS1.2:
+| 参数名          | 类型    |  必填  | 说明                                            |
+| ---------------| ------- | ---- | ------------- |
+| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | 否   | 用来控制Web组件前进后退缓存相关选项。入参为空时将设置默认值。|
 
 **错误码：**
 
