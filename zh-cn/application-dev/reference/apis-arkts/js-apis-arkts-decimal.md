@@ -44,6 +44,34 @@ type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 
 **系统能力**：SystemCapability.Utils.Lang
 
+**ArkTS版本**：该type类型仅适用于ArkTS1.1。
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| 0    | 向远离零的方向舍入。与[Decimal.ROUND_UP](#常量)一致。        |
+| 1    | 向靠近零的方向舍入。与[Decimal.ROUND_DOWN](#常量)一致。      |
+| 2    | 向正无穷方向舍入。与[Decimal.ROUND_CEILING](#常量)一致。     |
+| 3    | 向负无穷方向舍入。与[Decimal.ROUND_FLOOR](#常量)一致。       |
+| 4    | 向最近的邻值舍入。如果距离相等，则远离零方向舍入。与[Decimal.ROUND_HALF_UP](#常量)一致。 |
+| 5    | 向最近的邻值舍入。如果距离相等，则靠近零方向舍入。与[Decimal.ROUND_HALF_DOWN](#常量)一致。 |
+| 6    | 向最近的邻值舍入。如果距离相等，则向偶数邻值舍入。与[Decimal.ROUND_HALF_EVEN](#常量)一致。 |
+| 7    | 向最近的邻值舍入。如果距离相等，则向正无穷方向舍入。与[Decimal.ROUND_HALF_CEILING](#常量)一致。 |
+| 8    | 向最近的邻值舍入。如果距离相等，则向负无穷方向舍入。与[Decimal.ROUND_HALF_FLOOR](#常量)一致。 |
+
+## Rounding<sup>20+</sup>
+
+type Rounding = int
+
+表示可设置的舍入类型。
+
+取值类型为下列类型中的并集。
+
+**原子化服务API**：从API version 20 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Utils.Lang
+
+**ArkTS版本**：该type类型仅适用于ArkTS1.2。
+
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | 0    | 向远离零的方向舍入。与[Decimal.ROUND_UP](#常量)一致。        |
@@ -68,10 +96,31 @@ type Modulo = Rounding | 9
 
 **系统能力**：SystemCapability.Utils.Lang
 
+**ArkTS版本**：该type类型仅适用于ArkTS1.1。
+
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
 | [Rounding](#rounding) | 模运算下的舍入类型。与[Rounding](#常量)表示的舍入模式相同。  |
 | 9                      | 余模运算下，余数始终为正。欧几里得除法。与[Decimal.EUCLIDEAN](#常量)一致。 |
+
+## Modulo<sup>20+</sup>
+
+type Modulo = int
+
+表示可设置的取模方法舍入类型。
+
+取值类型为下列类型中的并集。
+
+**原子化服务API**：从API version 20 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Utils.Lang
+
+**ArkTS版本**：该type类型仅适用于ArkTS1.2。
+
+| 类型                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| [Rounding](#rounding20) | 模运算下的舍入类型。与[Rounding](#常量)表示的舍入模式相同。  |
+| 9                      | 余模运算下，余数始终为正。欧几里得除法。与[Decimal.EUCLID](#常量)一致。 |
 
 ## DecimalConfig
 
@@ -107,9 +156,9 @@ type Modulo = Rounding | 9
 
 | 名称 | 类型     | 只读 | 必填 | 说明                                      |
 | ---- | -------- | ---- | ---- | ----------------------------------------- |
-| d    | number[] | 是   | 是   | digits：表示Decimal数整数部分和小数部分。 |
-| e    | number   | 是   | 是   | exponent：表示Decimal数的十进制指数。 |
-| s    | number   | 是   | 是   | sign：表示Decimal数的符号位。             |
+| d    | ArkTS1.1: number[] <br> ArkTS1.2: Array\<number\> \| null | 是   | 否   | digits：表示Decimal数整数部分和小数部分。 |
+| e    | number   | 是   | 否   | exponent：表示Decimal数的十进制指数。 |
+| s    | number   | 是   | 否   | sign：表示Decimal数的符号位。             |
 
 ### 常量
 
@@ -291,8 +340,6 @@ clamp(min: Value, max: Value): Decimal
 let data: Decimal = new Decimal(10.1).clamp(0, 10);
 console.info("test Decimal clamp:" + data.toString()); // 'test Decimal clamp:10'
 ```
-
-
 
 ### add
 
