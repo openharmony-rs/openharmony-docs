@@ -2168,6 +2168,44 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 请参考[动画创建与取消示例](#动画创建与取消示例)。
 
+### isTransferred<sup>20+</sup>
+isTransferred(): boolean
+
+判断FrameNode是否通过[transfer.transferStatic](../apis-arkts/js-apis-transfer.md#transfertransferstatic)或者[transfer.transferDynamic](../apis-arkts/js-apis-transfer.md#transfertransferdynamic)方法创建。如果通过上述两个接口创建，则不支持以下方法：
+[getCustomProperty](#getcustomproperty12)，[commonAttribute](#commonattribute12)，[commonEvent](#commonevent12)，[gestureEvent](#gestureevent14)，[setMeasuredSize](#setmeasuredsize12)，
+[setLayoutPosition](#setlayoutposition12)，[measure](#measure12)，[layout](#layout12)，[setNeedsLayout](#setneedslayout12)，[invalidate](#invalidate12)，
+[addComponentContent](#addcomponentcontent12)，[onDraw](#ondraw12)，
+[onMeasure](#onmeasure12)和[onLayout](#onlayout12)。未通过上述两个接口创建的FrameNode支持FrameNode中所有方法。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                | 说明                                                                    |
+| ------------------ | ----------------------------------------------------------------------- |
+| boolean | 返回FrameNode是否通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>true：FrameNode通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>false：FrameNode不通过transfer.transferStatic或transfer.transferDynamic方法创建。|
+
+**示例：** 
+
+关于transfer的具体用法，请参阅[@ohos.transfer (系统对象转换工具)](../apis-arkts/js-apis-transfer.md)。以下示例介绍isTransferred方法的使用。
+
+```ts
+// TransferTest.ets
+
+import transfer from '@ohos.transfer';
+import { FrameNode } from '@ohos.arkui.frameNode';
+
+export function frameNodeTrans(frameNode:Object) {
+  // 在ArkTS1.1环境中创建的frameNode节点，通过调用transfer.transferStatic方法转换为ArkTS1.2节点。
+  let frameNodeStatic = transfer.transferStatic(frameNode, 'ArkUI.FrameNode') as FrameNode;
+  // 打印frameNodeStatic.isTransferred()为true。
+  console.log('frameNodeStatic isTransferred value is '+frameNodeStatic.isTransferred());
+}
+
+```
+
 ## TypedFrameNode<sup>12+</sup>
 
 TypedFrameNode继承自[FrameNode](#framenode)，用于声明具体类型的FrameNode。
