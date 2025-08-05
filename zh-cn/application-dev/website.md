@@ -613,6 +613,7 @@
             - [自定义组件节点 (FrameNode)](ui/arkts-user-defined-arktsNode-frameNode.md)
             - [自定义渲染节点 (RenderNode)](ui/arkts-user-defined-arktsNode-renderNode.md)
             - [自定义声明式节点 (BuilderNode)](ui/arkts-user-defined-arktsNode-builderNode.md)
+            - [自定义声明式节点 (BuilderNode)（ArkTS1.2）](ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)
           - 自定义绘制<!--arkts-draw-->
             - [使用画布绘制自定义图形 (Canvas)](ui/arkts-drawing-customization-on-canvas.md)
             - [自定义绘制修改器 (DrawModifier)](ui/arkts-user-defined-extension-drawModifier.md)
@@ -2668,7 +2669,10 @@
           <!--DelEnd-->
           - arkui<!--ui-interface-arkui-->
             - [BuilderNode](reference/apis-arkui/js-apis-arkui-builderNode.md)
+            - [BuilderNode(ArkTS1.2)](reference/apis-arkui/js-apis-arkui-v1.2-builderNode.md)
             - [ComponentContent](reference/apis-arkui/js-apis-arkui-ComponentContent.md)
+            - [ComponentContent(ArkTS1.2)](reference/apis-arkui/js-apis-arkui-v1.2-ComponentContent.md)
+            - [ComponentContentBase(ArkTS1.2)](reference/apis-arkui/js-apis-arkui-v1.2-ComponentContentBase.md)
             - [FrameNode](reference/apis-arkui/js-apis-arkui-frameNode.md)
             - [Graphics](reference/apis-arkui/js-apis-arkui-graphics.md)
             - [NodeController](reference/apis-arkui/js-apis-arkui-nodeController.md)
