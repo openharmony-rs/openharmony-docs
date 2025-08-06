@@ -104,15 +104,15 @@ struct ParentComponent {
 
   > **说明：**
   >
-  > ArkTS1.1 @ComponentV2装饰器从API version 12开始支持。
+  > 从API version 12开始，@ComponentV2装饰器支持在ArkTS1.1中使用。
   >
-  > ArkTS1.2 @ComponentV2装饰器从API version 20开始支持
+  > 从API version 20开始，@ComponentV2装饰器支持在ArkTS1.2 中使用。
   >
   > - 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括\@Local、\@Param、\@Once、\@Event、\@Provider、\@Consumer等。
   >
   > - \@ComponentV2装饰的自定义组件暂不支持LocalStorage等现有自定义组件的能力。
   > - 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。
-  > - \@ComponentV2支持一个可选的boolean类型参数freezeWhenInactive，来实现[组件冻结功能](arkts-custom-components-freezeV2.md)。
+  > - \@ComponentV2支持一个可选的boolean类型参数freezeWhenInactive，来实现[自定义组件冻结功能](arkts-custom-components-freezeV2.md)。
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
   ```ts
   // ArkTS1.2 @ComponentV2装饰器需要import。
@@ -505,4 +505,4 @@ struct MyComponent {
 > ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的Button组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
 
 ## 限制条件
-在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，可参考[混用文档](./arkts-custom-component-mixed-scenarios.md)。
+在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，可参考[自定义组件混用场景指导](./arkts-custom-component-mixed-scenarios.md)。
