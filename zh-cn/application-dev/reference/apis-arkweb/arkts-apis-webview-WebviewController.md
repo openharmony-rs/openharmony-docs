@@ -1010,9 +1010,7 @@ struct WebComponent {
 
 ## registerJavaScriptProxy
 
-ArkTS1.1: registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
-
-ArkTS1.2: registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
+registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
 registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的交互能力。
 <br>注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refresh)接口生效。
@@ -8398,7 +8396,7 @@ ArkTS1.1:
 ArkTS1.2:
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | 否   | 允许使用特定的页面进入前进后退缓存中。入参为空时会设置为false。|
+| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | 否   | 允许使用特定的页面进入前进后退缓存中。<br>若入参为空，默认设置为false。|
 
 **示例：**
 
@@ -8443,7 +8441,7 @@ ArkTS1.1:
 ArkTS1.2:
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | 否   | 用来控制Web组件前进后退缓存相关选项。入参为空时将设置默认值。|
+| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | 否   | 用来控制Web组件前进后退缓存相关选项。<br>若入参为空，默认设置size为1，timeToLive为600。|
 
 **错误码：**
 
