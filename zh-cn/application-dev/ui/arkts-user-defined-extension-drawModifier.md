@@ -5,7 +5,7 @@
 当某些组件本身的绘制内容不满足需求时，可使用组件自定义绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。组件自定义绘制提供了自定义绘制修改器DrawModifier，来实现更自由的组件绘制。
 
 ## 使用DrawModifier接口
-
+ArkTS1.1：
 ```ts
 declare class DrawModifier {
 
@@ -16,6 +16,21 @@ declare class DrawModifier {
   drawFront?(drawContext: DrawContext): void;
 
   drawForeground?(drawContext: DrawContext): void;
+
+  invalidate(): void;
+}
+```
+ArkTS1.2：
+```ts
+declare class DrawModifier {
+
+  drawBehind(drawContext: DrawContext): void;
+
+  drawContent(drawContext: DrawContext): void;
+
+  drawFront(drawContext: DrawContext): void;
+
+  drawForeground(drawContext: DrawContext): void;
 
   invalidate(): void;
 }
@@ -180,7 +195,7 @@ struct DrawModifierExample {
           .height(100)
           .margin(10)
           .backgroundColor(Color.Gray)
-          .onClick(() => {
+          .onClick((e: ClickEvent) => {
             // 修改当前绘制大小
             const tempModifier = this.modifier as MyFullDrawModifier | MyFrontDrawModifier;
             tempModifier.scaleX -= 0.1;
@@ -196,7 +211,7 @@ struct DrawModifierExample {
           .height(100)
           .margin(10)
           .backgroundColor(0xFF2787D9)
-          .onClick(() => {
+          .onClick((e: ClickEvent) => {
             // 创建动画
             this.create();
           })
@@ -205,7 +220,7 @@ struct DrawModifierExample {
           .height(100)
           .margin(10)
           .backgroundColor(0xFF2787D9)
-          .onClick(() => {
+          .onClick((e: ClickEvent) => {
             // 播放动画
             if (this.drawAnimator) {
               this.drawAnimator.play();
@@ -216,7 +231,7 @@ struct DrawModifierExample {
           .height(100)
           .margin(10)
           .backgroundColor(0xFF2787D9)
-          .onClick(() => {
+          .onClick((e: ClickEvent) => {
             // 切换modifier
             this.count += 1;
             if (this.count % 2 === 1) {

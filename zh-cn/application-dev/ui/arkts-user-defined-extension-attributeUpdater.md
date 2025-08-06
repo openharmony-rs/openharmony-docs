@@ -9,7 +9,7 @@
 由于`AttributeUpdater`提供了较高的灵活性，无法限制“单一数据源”的规则，因此在与状态变量同时更新同一属性时，存在相互覆盖的情况。这要求开发者必须确保属性设置的合理性。
 
 ## 接口定义
-
+ArkTS1.1：
 ```ts
 export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T> {
 
@@ -20,6 +20,19 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
   get attribute(): T | undefined;
 
   updateConstructorParams: C;
+}
+```
+ArkTS1.2：
+```ts
+export declare class AttributeUpdater<T> implements AttributeModifier<T> {
+  
+  get attribute(): T | undefined;
+  
+  initializeModifier(instance: T): void;
+  
+  get updateConstructorParams(): Initializer<T>;
+  
+  onComponentChanged(component: T): void;
 }
 ```
 
@@ -77,7 +90,7 @@ struct updaterDemo {
 ## 通过modifier更新组件的构造参数
 
 可以通过`AttributeUpdater`实例的`updateConstructorParams`方法，直接更新组件的构造参数。
-
+ArkTS1.1示例：
 ```ts
 import { AttributeUpdater } from '@ohos.arkui.modifier'
 
@@ -105,6 +118,48 @@ struct updaterDemo {
           .height(50)
           .backgroundColor('#2787D9')
           .onClick(() => {
+            // 调用updateConstructorParams方法，直接更新组件的构造参数
+            this.modifier.updateConstructorParams('Update');
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+ArkTS1.2示例：
+```ts
+// index.ets
+
+import { Entry, Text, Column, Row, Component, Button, ClickEvent, TextAttribute,Color, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { AttributeUpdater } from '@ohos.arkui.modifier';
+
+class MyTextModifier extends AttributeUpdater<TextAttribute> {
+  initializeModifier(instance: TextAttribute): void {
+  }
+}
+
+@Entry
+@Component
+struct MyStateSample {
+
+  modifier: MyTextModifier = new MyTextModifier();
+  build() {
+    Row() {
+      Column() {
+        Text("Text")
+          .attributeModifier(this.modifier)
+          .fontColor(Color.White)
+          .fontSize(14)
+          .border({ width: 1 })
+          .textAlign(TextAlign.Center)
+          .lineHeight(20)
+          .width(200)
+          .height(50)
+          .backgroundColor('#2787D9')
+          .onClick((e: ClickEvent) => {
             // 调用updateConstructorParams方法，直接更新组件的构造参数
             this.modifier.updateConstructorParams('Update');
           })
