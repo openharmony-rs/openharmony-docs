@@ -87,7 +87,7 @@ struct ParentComponent {
   > 
   > 从API version 11开始，\@Component可以接受一个可选的boolean类型参数。
   >
-  > 从API version 20开始，支持在ArkTS1.2中@Component装饰器。
+  > 从API version 20开始，支持在ArkTS1.2中使用@Component装饰器。
   
   ```ts
   // ArkTS1.2 @Component装饰器需要import。
