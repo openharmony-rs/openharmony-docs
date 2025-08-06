@@ -686,6 +686,60 @@ struct ReusableChildTwoPage {
 
 ![arkts-builder-usage-scenario7](figures/arkts-builder-usage-scenario7.gif)
 
+### \@Builder支持函数泛型
+
+Builder函数可以支持泛型声明。
+
+```ts
+import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign } from '@ohos.arkui.component';
+
+type ItemBuilder<T> = @Builder (item: T) => void;
+
+@Builder
+function forEachWithType<T>(arrayList: T[], closer: ItemBuilder<T>) {
+  Column() {
+    ForEach(arrayList, (item: T) => {
+      Row() {
+        closer(item)
+      }
+    })
+  }
+}
+
+class ClassA {
+  stringData: string = "Hello";
+}
+
+@Entry
+@Component
+export struct ExampleOne {
+  array: ClassA[] = [new ClassA(), new ClassA(), new ClassA()];
+
+  @Builder
+  componentCloser(data: ClassA) {
+    Text(`${data.stringData} genericBuilderFunc`)
+      .width(230)
+      .height(40)
+      .margin(12)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    Row() {
+      Column() {
+        forEachWithType<ClassA>(this.array, this.componentCloser)
+      }
+    }
+  }
+}
+```
+示例效果图
+
+![arkts-builder-usage-scenario9](figures/arkts-builder-usage-scenario9.png)
+
 ## 常见问题
 
 ### 在\@Builder装饰的函数内部修改入参内容
