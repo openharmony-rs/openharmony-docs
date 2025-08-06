@@ -90,7 +90,7 @@
         .width(100)
         .height(100)
         .draggable(true)
-        .onDragStart((event) => {
+        .onDragStart((event: DragEvent) => {
             let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
             data.imageUri = 'common/pic/img.png';
             let unifiedData = new unifiedDataChannel.UnifiedData(data);
@@ -108,7 +108,7 @@
    手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下。
 
     ```ts
-    .parallelGesture(LongPressGesture().onAction(() => {
+    .parallelGesture(LongPressGesture().onAction((event: GestureEvent) => {
        this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Long press gesture trigger' });
     }))
     ```
@@ -185,7 +185,7 @@
    在实现onDrop回调的情况下，还可以通过在onDragMove中设置[DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标显示。如下代码将移动时的角标强制设置为“MOVE”。
 
     ```ts
-    .onDragMove((event) => {
+    .onDragMove((event: DragEvent) => {
         event.setResult(DragResult.DROP_ENABLED);
         event.dragBehavior = DragBehavior.MOVE;
     })
@@ -246,7 +246,7 @@
     ```ts
     import { promptAction } from '@kit.ArkUI';
 
-    .onDragEnd((event) => {
+    .onDragEnd((event: DragEvent) => {
         // onDragEnd里取到的result值在接收方onDrop设置
       if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
         this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
@@ -344,10 +344,10 @@ struct Index {
             .margin({ left: 15 })
             .visibility(this.imgState)
             // 绑定平行手势，可同时触发应用自定义长按手势
-            .parallelGesture(LongPressGesture().onAction(() => {
+            .parallelGesture(LongPressGesture().onAction((event: GestureEvent) => {
               this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Long press gesture trigger' });
             }))
-            .onDragStart((event) => {
+            .onDragStart((event: DragEvent) => {
               let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
               data.imageUri = 'common/pic/img.png';
               let unifiedData = new unifiedDataChannel.UnifiedData(data);
@@ -363,7 +363,7 @@ struct Index {
             .onPreDrag((status: PreDragStatus) => {
               this.PreDragChange(status);
             })
-            .onDragEnd((event) => {
+            .onDragEnd((event: DragEvent) => {
               // onDragEnd里取到的result值在接收方onDrop设置
               if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
                 this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
@@ -387,7 +387,7 @@ struct Index {
             .margin({ left: 15 })
             .border({ color: Color.Black, width: 1 })
             // 控制角标显示类型为MOVE，即不显示角标
-            .onDragMove((event) => {
+            .onDragMove((event: DragEvent) => {
               event.setResult(DragResult.DROP_ENABLED)
               event.dragBehavior = DragBehavior.MOVE
             })
@@ -438,7 +438,7 @@ struct Index {
             .opacity(1.0)
             .id('grid'+idx)
         }
-        .onDragStart(()=>{})
+        .onDragStart((event: DragEvent)=>{})
         .selectable(true)
       }, (idx: string) => idx)
     }
@@ -454,7 +454,7 @@ struct Index {
 
     ```ts
     .selected(this.isSelectedGrid[idx])
-    .onClick(()=>{
+    .onClick((event: ClickEvent)=>{
         this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
     })
     ```
@@ -474,7 +474,7 @@ struct Index {
     ```ts
     @State previewData: DragItemInfo[] = []
     @State isSelectedGrid: boolean[] = []
-    .onClick(()=>{
+    .onClick((event: ClickEvent)=>{
         this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
         if (this.isSelectedGrid[idx]) {
             let gridItemName = 'grid' + idx
@@ -516,7 +516,7 @@ struct Index {
     ```ts
     @State numberBadge: number = 0;
 
-    .onClick(()=>{
+    .onClick((event: ClickEvent)=>{
         this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
         if (this.isSelectedGrid[idx]) {
           this.numberBadge++;
@@ -590,7 +590,7 @@ struct GridEts {
             normal : this.normalStyles,
             selected: this.selectStyles
           })
-          .onClick(()=>{
+          .onClick((event: ClickEvent)=>{
             this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
             if (this.isSelectedGrid[idx]) {
               this.numberBadge++;
@@ -608,7 +608,7 @@ struct GridEts {
           })
           // 使能多选拖拽，右上角数量角标需要应用设置numberBadge参数
           .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
-          .onDragStart(()=>{
+          .onDragStart((event: DragEvent)=>{
           })
         }, (idx: string) => idx)
       }
@@ -635,8 +635,8 @@ struct GridEts {
       .draggable(true)
       .margin({ left: 15 ,top: 40})
       .visibility(this.imgState)
-      .onDragStart((event) => {})
-      .onDragEnd((event) => {})
+      .onDragStart((event: DragEvent) => {})
+      .onDragEnd((event: DragEvent) => {})
     ```
 2. 设置自定义动效。
 
@@ -710,9 +710,9 @@ struct DropAnimationExample {
           .draggable(true)
           .margin({ left: 15 ,top: 40})
           .visibility(this.imgState)
-          .onDragStart((event) => {
+          .onDragStart((event: DragEvent) => {
           })
-          .onDragEnd((event) => {
+          .onDragEnd((event: DragEvent) => {
             if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
               console.log('Drag Success');
             } else if (event.getResult() === DragResult.DRAG_FAILED) {
@@ -786,7 +786,7 @@ struct DropAnimationExample {
           normal : this.normalStyles,
           selected: this.selectStyles
         })
-        .onClick(() => {
+        .onClick((event: ClickEvent) => {
           this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
         })
       }, (idx: string) => idx)
@@ -810,7 +810,7 @@ struct DropAnimationExample {
    当数据量较大时，建议在选择数据时通过[addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
 
     ```ts
-    .onClick(()=>{
+    .onClick((event: ClickEvent)=>{
       this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
       if (this.isSelectedGrid[idx]) {
         let data: UDC.Image = new UDC.Image();
@@ -934,7 +934,7 @@ struct GridEts {
   build() {
     Column({ space: 5 }) {
       Button('全选')
-        .onClick(() => {
+        .onClick((event: ClickEvent) => {
           for (let i=0;i<this.isSelectedGrid.length;i++) {
             if (this.isSelectedGrid[i] === false) {
               this.numberBadge++;
@@ -974,7 +974,7 @@ struct GridEts {
             normal : this.normalStyles,
             selected: this.selectStyles
           })
-          .onClick(()=>{
+          .onClick((event: ClickEvent)=>{
             this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
             if (this.isSelectedGrid[idx]) {
               let data: UDC.Image = new UDC.Image();
@@ -1026,7 +1026,7 @@ struct GridEts {
               event.setData(this.unifiedData);
             }
           })
-          .onDragEnd(() => {
+          .onDragEnd((event: DragEvent) => {
             this.finished = false;
           })
           .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
@@ -1189,11 +1189,11 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   为了达到提醒效果，为目标组件也增加`onDragEnter`和`onDragLeave`的处理。当用户拖拽文字进入到组件范围时，变化背景色，以提醒用户在此处停留。
 
   ```typescript
-    .onDragEnter(()=>{
+    .onDragEnter((event: DragEvent)=>{
       // 当用户拖拽进入按钮范围，即提醒用户，此处可处理数据
       this.buttonBackgroundColor = this.reminderColor
     })
-    .onDragLeave(()=>{
+    .onDragLeave((event: DragEvent)=>{
       // 当用户拖拽离开按钮范围，恢复UI
       this.buttonBackgroundColor = this.normalColor
     })
@@ -1339,11 +1339,11 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
           })
           .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
           .backgroundColor(this.buttonBackgroundColor)
-          .onDragEnter(()=>{
+          .onDragEnter((event: DragEvent)=>{
             // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
             this.buttonBackgroundColor = this.reminderColor
           })
-          .onDragLeave(()=>{
+          .onDragLeave((event: DragEvent)=>{
             // 当用户拖拽离开按钮范围，恢复UI
             this.buttonBackgroundColor = this.normalColor
           })
