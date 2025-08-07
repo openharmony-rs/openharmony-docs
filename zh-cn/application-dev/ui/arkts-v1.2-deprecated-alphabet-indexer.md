@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[onSelected(callback: (index: number) => void)](../refere
 
 替代的ArkTS1.2接口声明：[onSelect(callback: (index: number) => void)](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#onselect8)
 
-适配方法如下：
+
 
 ArkTS1.1
 

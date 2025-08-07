@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[onDataAdded(index: number): void](../reference/apis-arku
 
 替代的ArkTS1.2接口声明：[onDataAdd(index: number): void](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondataadd8)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -28,7 +28,7 @@ ArkTS1.1接口声明：[onDataMoved(from: number, to: number): void](../referenc
 
 替代的ArkTS1.2接口声明：[onDataMove(from: number, to: number): void](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatamove8)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -48,7 +48,7 @@ ArkTS1.1接口声明：[onDataDeleted(index: number): void](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[onDataDelete(index: number): void](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatadelete8)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -68,7 +68,7 @@ ArkTS1.1接口声明：[onDataChanged(index: number): void](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[onDataChange(index: number): void](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatachange8)
 
-适配方法如下：
+
 
 ArkTS1.1
 

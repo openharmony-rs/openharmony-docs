@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[onResult(callback: Callback\<{code: number; want?: Want}
 
 替代的ArkTS1.2接口声明：[onTerminated(callback: Callback&lt;TerminationInfo&gt;)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onterminated12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -47,7 +47,7 @@ ArkTS1.1接口声明：[onRelease(callback: Callback\<number>)](../reference/api
 
 替代的ArkTS1.2接口声明：[onTerminated(callback: Callback&lt;TerminationInfo&gt;)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onterminated12)或者[onError(callback:ErrorCallback)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onerror)
 
-适配方法如下：
+
 
 ArkTS1.1
 

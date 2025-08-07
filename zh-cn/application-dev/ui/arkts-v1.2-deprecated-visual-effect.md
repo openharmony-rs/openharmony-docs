@@ -9,7 +9,7 @@ ArkTS1.1接口声明：[clip(value: boolean | CircleAttribute | EllipseAttribute
 
 替代的ArkTS1.2接口声明：[clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -29,7 +29,7 @@ ArkTS1.1接口声明：[mask(value: CircleAttribute | EllipseAttribute | PathAtt
 
 替代的ArkTS1.2接口声明：[maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -52,7 +52,7 @@ ArkTS1.1接口声明：[invert(): Matrix4Transit](../reference/apis-arkui/js-api
 
 替代的ArkTS1.2接口声明：[invert(): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#invert)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -73,7 +73,7 @@ ArkTS1.1接口声明：[scale(options: ScaleOption): Matrix4Transit](../referenc
 
 替代的ArkTS1.2接口声明：[scale(options: ScaleOption): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#scale)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -94,7 +94,7 @@ ArkTS1.1接口声明：[rotate(options: RotateOption): Matrix4Transit](../refere
 
 替代的ArkTS1.2接口声明：[rotate(options: RotateOption): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#scale)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -115,7 +115,7 @@ ArkTS1.1接口声明：[translate(options: TranslateOption): Matrix4Transit](../
 
 替代的ArkTS1.2接口声明：[translate(options: TranslateOption): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#translate)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -136,7 +136,7 @@ ArkTS1.1接口声明：[transformPoint(options: [number, number]): [number, numb
 
 替代的ArkTS1.2接口声明：[transformPoint(options: [number, number]): [number, number]](../reference/apis-arkui/js-apis-matrix4.md#transformpoint)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -157,7 +157,7 @@ ArkTS1.1接口声明：[combine(options: Matrix4Transit): Matrix4Transit](../ref
 
 替代的ArkTS1.2接口声明：[combine(options: Matrix4Transit): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#combine)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -177,7 +177,7 @@ ArkTS1.1接口声明：[copy(): Matrix4Transit](../reference/apis-arkui/js-apis-
 
 替代的ArkTS1.2接口声明：[copy(): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#copy)
 
-适配方法如下：
+
 
 ArkTS1.1
 

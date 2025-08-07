@@ -10,7 +10,7 @@ ArkTS1.1接口声明：[static Clear(): boolean](../reference/apis-arkui/arkui-t
 
 替代的ArkTS1.2接口声明：[static clear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#clear10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -30,7 +30,7 @@ ArkTS1.1接口声明：[static Delete(propName: string): boolean](../reference/a
 
 替代的ArkTS1.2接口声明：[static delete(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#delete10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -50,7 +50,7 @@ ArkTS1.1接口声明：[static Get<T>(propName: string): T | undefined](../refer
 
 替代的ArkTS1.2接口声明：[static get<T>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#get10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -70,7 +70,7 @@ ArkTS1.1接口声明：[static Has(propName: string): boolean](../reference/apis
 
 替代的ArkTS1.2接口声明：[static has(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#has10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -90,7 +90,7 @@ ArkTS1.1接口声明：[static IsMutable(propName: string): boolean](../referenc
 
 ArkTS1.2未提供该接口。
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -110,7 +110,7 @@ ArkTS1.1接口声明：[static Keys(): IterableIterator<string>](../reference/ap
 
 替代的ArkTS1.2接口声明：[static keys(): IterableIterator<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -130,7 +130,7 @@ ArkTS1.1接口声明：[static Link(propName: string): any](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[static link<T>(propName: string): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#link10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -150,7 +150,7 @@ ArkTS1.1接口声明：[static Set<T>(propName: string, newValue: T): boolean](.
 
 替代的ArkTS1.2接口声明：[static set<T>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#set10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -170,7 +170,7 @@ ArkTS1.1接口声明：[static SetAndLink<T>(propName: string, defaultValue: T):
 
 替代的ArkTS1.2接口声明：[static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandlink10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -192,7 +192,7 @@ ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景
 
 替代的ArkTS1.2接口声明：[static setAndRef<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -212,7 +212,7 @@ ArkTS1.1接口声明：[static SetOrCreate<T>(propName: string, newValue: T): vo
 
 替代的ArkTS1.2接口声明：[static setOrCreate<T>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#setorcreate10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -234,7 +234,7 @@ ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景
 
 替代的ArkTS1.2接口声明：[static ref<T>(propName: string): AbstractProperty<T> | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -256,7 +256,7 @@ ArkTS1.1接口声明：[static Size(): number](../reference/apis-arkui/arkui-ts/
 
 替代的ArkTS1.2接口声明：[static size(): number](../reference/apis-arkui/arkui-ts/ts-state-management.md#size10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -276,7 +276,7 @@ ArkTS1.1接口声明：[static staticClear(): boolean](../reference/apis-arkui/a
 
 替代的ArkTS1.2接口声明：[static clear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#clear10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -298,7 +298,7 @@ ArkTS1.1接口声明：[static EnvProp<T>(key: string, value: T): boolean](../re
 
 替代的ArkTS1.2接口声明：[static envProp<T>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -318,7 +318,7 @@ ArkTS1.1接口声明：[static EnvProps<T>(props: {key: string; defaultValue: an
 
 替代的ArkTS1.2接口声明：[static envProps<T>(props: EnvPropsOptions[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprops10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -346,7 +346,7 @@ ArkTS1.1接口声明：[static Keys(): Array<string>](../reference/apis-arkui/ar
 
 替代的ArkTS1.2接口声明：[static keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -370,7 +370,7 @@ ArkTS1.2中，可以通过使用UIContext中的getSharedLocalStorage来获取当
 
 替代的ArkTS1.2接口声明：[getSharedLocalStorage(): LocalStorage | undefined](../reference/apis-arkui/js-apis-arkui-UIContext.md#getsharedlocalstorage12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -394,7 +394,7 @@ ArkTS1.2中，可以通过使用UIContext中的getSharedLocalStorage来获取当
 
 替代的ArkTS1.2接口声明：[getSharedLocalStorage(): LocalStorage | undefined](../reference/apis-arkui/js-apis-arkui-UIContext.md#getsharedlocalstorage12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -418,7 +418,7 @@ ArkTS1.1接口声明：[static DeleteProp(key: string): void](../reference/apis-
 
 替代的ArkTS1.2接口声明：[static deleteProp(key: string): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#deleteprop10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -438,7 +438,7 @@ ArkTS1.1接口声明：[static Keys(): Array<string>](../reference/apis-arkui/ar
 
 替代的ArkTS1.2接口声明：[static keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -458,7 +458,7 @@ ArkTS1.1接口声明：[static PersistProp<T>(key: string, defaultValue: T): voi
 
 替代的ArkTS1.2接口声明：[static persistProp<T>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -478,7 +478,7 @@ ArkTS1.1接口声明：[static PersistProps(properties: {key: string; defaultVal
 
 替代的ArkTS1.2接口声明：[static persistProp<T>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
 
-适配方法如下：
+
 
 ArkTS1.1
 

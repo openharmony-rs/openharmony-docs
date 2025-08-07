@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[setXComponentSurfaceSize(value: {surfaceWidth: number, s
 
 替代的ArkTS1.2接口声明：[setXComponentSurfaceRect(rect: SurfaceRect): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -60,7 +60,7 @@ ArkTS1.1接口声明：[XComponent(value: {id: string, type: string, libraryname
 
 替代的ArkTS1.2接口声明：[XComponent(options: XComponentOptions)](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponent12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -104,7 +104,7 @@ ArkTS1.1接口声明：[XComponentType.COMPONENT](../reference/apis-arkui/arkui-
 
 替代的ArkTS1.2接口声明：[Column(options?: ColumnOptions)](../reference/apis-arkui/arkui-ts/ts-container-column.md#column-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -144,7 +144,7 @@ ArkTS1.1接口声明：[XComponentType.NODE](../reference/apis-arkui/arkui-ts/ts
 
 替代的ArkTS1.2接口声明：[ArkTS侧接口：ContentSlot(content: Content)](state-management/arkts-rendering-control-contentslot.md#arkts侧接口)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -188,7 +188,7 @@ ArkTS1.1接口声明：[constructor(uiContext: UIContext, options: RenderOptions
 
 替代的ArkTS1.2接口声明：[createNode(context: UIContext, nodeType: 'XComponent'): XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodexcomponent12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -230,7 +230,7 @@ ArkTS1.1接口声明：[onCreate(event?: Object): void](../reference/apis-arkui/
 
 替代的ArkTS1.2接口声明：[onSurfaceCreated(surfaceId: string): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#onsurfacecreated12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -281,7 +281,7 @@ ArkTS1.1接口声明：[onDestroy(): void](../reference/apis-arkui/js-apis-arkui
 
 替代的ArkTS1.2接口声明：[onDestroy(event: VoidCallback): XComponentAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#ondestroy)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -329,7 +329,7 @@ ArkTS1.1接口声明：[changeRenderType(type: NodeRenderType): boolean](../refe
 
 替代的ArkTS1.2接口声明：[constructor(uiContext: UIContext, options?: RenderOptions)](../reference/apis-arkui/js-apis-arkui-builderNode.md#constructor)
 
-适配方法如下：
+
 
 ArkTS1.1
 

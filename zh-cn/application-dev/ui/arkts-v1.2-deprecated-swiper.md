@@ -9,7 +9,7 @@ ArkTS1.1接口声明：[indicatorStyle(value?: IndicatorStyle): SwiperAttribute]
 
 替代的ArkTS1.2接口声明：[indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicator)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -30,7 +30,7 @@ ArkTS1.1接口声明：[declare interface IndicatorStyle](../reference/apis-arku
 
 替代的ArkTS1.2接口声明：[declare class DotIndicator extends Indicator<DotIndicator>](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -50,7 +50,7 @@ ArkTS1.1接口声明：[IndicatorStyle.color?: ResourceColor](../reference/apis-
 
 替代的ArkTS1.2接口声明：[color(value: ResourceColor): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -70,7 +70,7 @@ ArkTS1.1接口声明：[IndicatorStyle.right?: Length](../reference/apis-arkui/a
 
 替代的ArkTS1.2接口声明：[right(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -90,7 +90,7 @@ ArkTS1.1接口声明：[IndicatorStyle.left?: Length](../reference/apis-arkui/ar
 
 替代的ArkTS1.2接口声明：[left(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -110,7 +110,7 @@ ArkTS1.1接口声明：[IndicatorStyle.top?: Length](../reference/apis-arkui/ark
 
 替代的ArkTS1.2接口声明：[top(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -130,7 +130,7 @@ ArkTS1.1接口声明：[IndicatorStyle.bottom?: Length](../reference/apis-arkui/
 
 替代的ArkTS1.2接口声明：[bottom(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -150,7 +150,7 @@ ArkTS1.1接口声明：[IndicatorStyle.selectedColor?: ResourceColor](../referen
 
 替代的ArkTS1.2接口声明：[selectedColor(value: ResourceColor): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -170,7 +170,7 @@ ArkTS1.1接口声明：[IndicatorStyle.mask?: boolean](../reference/apis-arkui/a
 
 替代的ArkTS1.2接口声明：[mask(value: boolean): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -190,7 +190,7 @@ ArkTS1.1接口声明：[IndicatorStyle.size?: Length](../reference/apis-arkui/ar
 
 替代的ArkTS1.2接口声明：[itemWidth(value: Length): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -212,7 +212,7 @@ ArkTS1.1接口声明：[SwiperDisplayMode.Stretch](../reference/apis-arkui/arkui
 
 替代的ArkTS1.2接口声明：[SwiperDisplayMode.STRETCH](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#swiperdisplaymode枚举说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 

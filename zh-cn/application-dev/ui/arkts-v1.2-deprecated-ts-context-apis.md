@@ -8,7 +8,7 @@ ArkTS1.1接口声明：[getContext(component?: Object):Context](../reference/api
 
 替代的ArkTS1.2接口声明：[getHostContext(): Context | undefined](../reference/apis-arkui/js-apis-arkui-UIContext.md#getHostContext12)
 
-适配方法如下：
+
 
 ArkTS1.1
 

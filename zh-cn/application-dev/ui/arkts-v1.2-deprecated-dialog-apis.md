@@ -10,7 +10,7 @@ ArkTS1.1接口声明：[placementOnTop?: boolean](../reference/apis-arkui/arkui-
 
 替代的ArkTS1.2接口声明：[placement?: Placement](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -52,7 +52,7 @@ ArkTS1.1接口声明：[maskColor?: Resource | string | number | Color](../refer
 
 替代的ArkTS1.2接口声明：[mask?: boolean | PopupMaskType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -113,7 +113,7 @@ ArkTS1.1接口声明：[fontSize(value: Length)](../reference/apis-arkui/arkui-t
 
 替代的ArkTS1.2接口声明：[font(value: Font)](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md#font10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -185,7 +185,7 @@ ArkTS1.1接口声明：
 
 [引用@ohos.arkui.UIContext的showToast(options: promptAction.ShowToastOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showtoast)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -283,7 +283,7 @@ ArkTS1.1接口声明：[static show(value: ActionSheetOptions)](../reference/api
 
 替代的ArkTS1.2接口声明：[showActionSheet(value: ActionSheetOptions): void)](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionsheet)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -429,7 +429,7 @@ ArkTS1.1接口声明：[static show(value: AlertDialogParamWithConfirm | AlertDi
 
 替代的ArkTS1.2接口声明：[showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertdialog)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -745,7 +745,7 @@ ArkTS1.1接口声明：
 
 [showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<promptAction.ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenu11)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -843,7 +843,7 @@ ArkTS1.1接口声明：
 
 引用@ohos.arkui.UIContext的[showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<promptAction.ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenu11)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -987,7 +987,7 @@ ArkTS1.1接口声明：
 
 引用@ohos.arkui.UIContext的[showActionMenu(options: promptAction.ActionMenuOptions): Promise<promptAction.ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenu)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1117,7 +1117,7 @@ ArkTS1.1接口声明：
 
 引用@ohos.arkui.UIContext的[showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<promptAction.ShowDialogSuccessResponse>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdialog)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1264,7 +1264,7 @@ ArkTS1.1接口声明：
 
 引用@ohos.arkui.UIContext的[showDialog(options: promptAction.ShowDialogOptions): Promise<promptAction.ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdialog-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1395,7 +1395,7 @@ ArkTS1.1接口声明：
 
 引用@ohos.arkui.UIContext的[openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1500,7 +1500,7 @@ ArkTS1.1接口声明：
 
 引用@ohos.arkui.UIContext的[closeCustomDialog(dialogId: number): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#closecustomdialog12-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 

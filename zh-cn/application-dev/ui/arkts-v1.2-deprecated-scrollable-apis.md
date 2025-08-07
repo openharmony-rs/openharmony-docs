@@ -10,7 +10,7 @@ ArkTS1.1接口声明：[onScroll(event: (scrollOffset: number, scrollState: Scro
 
 替代的ArkTS1.2接口声明：[onDidScroll(handler: OnScrollCallback): T](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -70,7 +70,7 @@ ArkTS1.1接口声明：[ListItem(value?: string)](../reference/apis-arkui/arkui-
 
 替代的ArkTS1.2接口声明：[ListItem(value?: ListItemOptions)](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#listitem10)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -182,7 +182,7 @@ ArkTS1.1接口声明：[sticky(value: Sticky)](../reference/apis-arkui/arkui-ts/
 
 替代的ArkTS1.2接口声明：[sticky(value: StickyStyle)](../reference/apis-arkui/arkui-ts/ts-container-list.md#sticky9)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -303,7 +303,7 @@ ArkTS1.1接口声明：[Sticky](../reference/apis-arkui/arkui-ts/ts-container-li
 
 替代的ArkTS1.2接口声明：[StickyStyle](../reference/apis-arkui/arkui-ts/ts-container-list.md#stickystyle9枚举说明)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -332,7 +332,7 @@ ArkTS1.1接口声明：[onScroll(event: (scrollOffset: number, scrollState: Scro
 
 替代的ArkTS1.2接口声明：[onDidScroll(handler: OnScrollCallback): T](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -388,7 +388,7 @@ ArkTS1.1接口声明：[scrollPage(value: { next: boolean, direction?: Axis })](
 
 替代的ArkTS1.2接口声明：[scrollPage(value: ScrollPageOptions)](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollpage9)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -492,7 +492,7 @@ ArkTS1.1接口声明：[onScrollEnd(event: () => void)](../reference/apis-arkui/
 
 替代的ArkTS1.2接口声明：[onScrollStop(event: VoidCallback)](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollstop9)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -583,7 +583,7 @@ ArkTS1.1接口声明：[onScroll(event: (xOffset: number, yOffset: number) => vo
 
 替代的ArkTS1.2接口声明：[onWillScroll(handler: ScrollOnWillScrollCallback)](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onwillscroll12)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -682,7 +682,7 @@ ArkTS1.1接口声明：[RefreshOptions-friction](../reference/apis-arkui/arkui-t
 
 替代的ArkTS1.2接口声明：[pullDownRatio(ratio: Optional<number>)](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#pulldownratio12)
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->
@@ -729,7 +729,7 @@ Scroll组件的onScroll事件在布局之前触发，建议使用[onWillScroll](
 
 List、Grid和WaterFlow组件的onScroll事件在布局之后触发，建议使用[onDidScroll](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)。
 
-适配方法如下：
+
 
 ArkTS1.1
 <!--code_no_check-->

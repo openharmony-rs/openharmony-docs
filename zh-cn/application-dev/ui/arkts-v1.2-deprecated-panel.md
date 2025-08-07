@@ -6,7 +6,7 @@ ArkTS1.1组件声明：[Panel](../reference/apis-arkui/arkui-ts/ts-container-pan
 
 替代的ArkTS1.2接口声明：[bindSheet(isShow: Optional<boolean>, builder: CustomBuilder, options?: SheetOptions): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)
 
-适配方法如下：
+
 
 ArkTS1.1
 

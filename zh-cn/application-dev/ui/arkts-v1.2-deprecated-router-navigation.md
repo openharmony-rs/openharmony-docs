@@ -9,7 +9,7 @@ ArkTS1.1接口声明：[push(options: RouterOptions): void](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -29,7 +29,7 @@ ArkTS1.1接口声明：[pushUrl(options: RouterOptions): Promise<void>](../refer
 
 替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -49,7 +49,7 @@ ArkTS1.1接口声明：[pushUrl(options: RouterOptions, callback: AsyncCallback<
 
 替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -69,7 +69,7 @@ ArkTS1.1接口声明：[pushUrl(options: RouterOptions, mode: RouterMode): Promi
 
 替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-2)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -89,7 +89,7 @@ ArkTS1.1接口声明：[pushUrl(options: RouterOptions, mode: RouterMode, callba
 
 替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-3)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -109,7 +109,7 @@ ArkTS1.1接口声明：[back(options?: RouterOptions):void](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[back(options?: router.RouterOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -128,7 +128,7 @@ ArkTS1.1接口声明：[back(index: number, params?: Object): void](../reference
 
 替代的ArkTS1.2接口声明：[back(index: number, params?: Object): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -148,7 +148,7 @@ ArkTS1.1接口声明：[replace(options: RouterOptions): void](../reference/apis
 
 替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -168,7 +168,7 @@ ArkTS1.1接口声明：[replaceUrl(options: RouterOptions): Promise<void>](../re
 
 替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -188,7 +188,7 @@ ArkTS1.1接口声明：[replaceUrl(options: RouterOptions, callback: AsyncCallba
 
 替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -208,7 +208,7 @@ ArkTS1.1接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode): Pr
 
 替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-2)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -228,7 +228,7 @@ ArkTS1.1接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode, cal
 
 替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-3)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -248,7 +248,7 @@ ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions): Promise<voi
 
 替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -268,7 +268,7 @@ ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions, callback: As
 
 替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -288,7 +288,7 @@ ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: Router
 
 替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-2)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -308,7 +308,7 @@ ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: Router
 
 替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-3)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -328,7 +328,7 @@ ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions): Promise<
 
 替代的ArkTS1.2接口声明：[replaceNamedRoute(options: router.NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -348,7 +348,7 @@ ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions, callback:
 
 替代的ArkTS1.2接口声明：[replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -368,7 +368,7 @@ ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: Rou
 
 替代的ArkTS1.2接口声明：[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-2)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -388,7 +388,7 @@ ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: Rou
 
 替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-3)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -408,7 +408,7 @@ ArkTS1.1接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-rou
 
 替代的ArkTS1.2接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-arkui-UIContext.md#getparams)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -428,7 +428,7 @@ ArkTS1.1接口声明：[getStateByUrl(url: string): Array<RouterState>](../refer
 
 替代的ArkTS1.2接口声明：[getStateByUrl(url: string): Array<router.RouterState>](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstatebyurl12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -448,7 +448,7 @@ ArkTS1.1接口声明：[getStateByIndex(index: number): RouterState | undefined]
 
 替代的ArkTS1.2接口声明：[getStateByIndex(index: number): router.RouterState | undefined](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstatebyindex12)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -468,7 +468,7 @@ ArkTS1.1接口声明：[getState():RouterState](../reference/apis-arkui/js-apis-
 
 替代的ArkTS1.2接口声明：[getState(): router.RouterState](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstate)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -488,7 +488,7 @@ ArkTS1.1接口声明：[getLength():string](../reference/apis-arkui/js-apis-rout
 
 替代的ArkTS1.2接口声明：[getLength(): string](../reference/apis-arkui/js-apis-arkui-UIContext.md#getlength)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -508,7 +508,7 @@ ArkTS1.1接口声明：[clear():void](../reference/apis-arkui/js-apis-router.md#
 
 替代的ArkTS1.2接口声明：[clear(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#clear)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -528,7 +528,7 @@ ArkTS1.1接口声明：[enableAlertBeforeBackPage(options: EnableAlertOptions): 
 
 替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -548,7 +548,7 @@ ArkTS1.1接口声明：[showAlertBeforeBackPage(options: EnableAlertOptions):voi
 
 替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -567,7 +567,7 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
 ArkTS1.1接口声明：[disableAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-router.md#routerdisablealertbeforebackpagedeprecated)
 替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -587,7 +587,7 @@ ArkTS1.1接口声明：[hideAlertBeforeBackPage():void](../reference/apis-arkui/
 
 替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -609,7 +609,7 @@ ArkTS1.1接口声明：[export default class Router](../reference/apis-arkui/js-
 
 替代的ArkTS1.2接口声明：[export class Router](../reference/apis-arkui/js-apis-arkui-UIContext.md#router)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -629,7 +629,7 @@ ArkTS1.1接口声明：[static push(options: RouterOptions): void](../reference/
 
 替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -649,7 +649,7 @@ ArkTS1.1接口声明：[static back(options?: BackRouterOptions): void](../refer
 
 替代的ArkTS1.2接口声明：[back(options?: router.RouterOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -669,7 +669,7 @@ ArkTS1.1接口声明：[static replace(options: RouterOptions): void](../referen
 
 替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceUrl-1)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -689,7 +689,7 @@ ArkTS1.1接口声明：[static clear(): void](../reference/apis-arkui/js-apis-sy
 
 替代的ArkTS1.2接口声明：[clear(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#clear)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -709,7 +709,7 @@ ArkTS1.1接口声明：[static enableAlertBeforeBackPage(options: EnableAlertBef
 
 替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -729,7 +729,7 @@ ArkTS1.1接口声明：[static disableAlertBeforeBackPage(options?: DisableAlert
 
 替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -749,7 +749,7 @@ ArkTS1.1接口声明：[static getLength(): string](../reference/apis-arkui/js-a
 
 替代的ArkTS1.2接口声明：[getLength(): string](../reference/apis-arkui/js-apis-arkui-UIContext.md#getlength)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -769,7 +769,7 @@ ArkTS1.1接口声明：[static getParams(): ParamsInterface](../reference/apis-a
 
 替代的ArkTS1.2接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-arkui-UIContext.md#getparams)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -789,7 +789,7 @@ ArkTS1.1接口声明：[static getState(): RouterState](../reference/apis-arkui/
 
 替代的ArkTS1.2接口声明：[getState(): router.RouterState](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstate)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -811,7 +811,7 @@ ArkTS1.1接口声明：[export interface BackRouterOptions](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -831,7 +831,7 @@ ArkTS1.1接口声明：[uri: string ](../reference/apis-arkui/js-apis-system-rou
 
 替代的ArkTS1.2接口声明：[url: string ](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -851,7 +851,7 @@ ArkTS1.1接口声明：[params?: Object](../reference/apis-arkui/js-apis-system-
 
 替代的ArkTS1.2接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -873,7 +873,7 @@ ArkTS1.1接口声明：[export interface RouterOptions](../reference/apis-arkui/
 
 替代的ArkTS1.2接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -893,7 +893,7 @@ ArkTS1.1接口声明：[uri: string](/reference/apis-arkui/js-apis-system-router
 
 替代的ArkTS1.2接口声明：[url: string](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -913,7 +913,7 @@ ArkTS1.1接口声明：[params?: Object](/reference/apis-arkui/js-apis-system-ro
 
 替代的ArkTS1.2接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -935,7 +935,7 @@ ArkTS1.1接口声明：[export interface RouterState](../reference/apis-arkui/js
 
 替代的ArkTS1.2接口声明：[interface RouterState](../reference/apis-arkui/js-apis-router.md#routerstate)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -955,7 +955,7 @@ ArkTS1.1接口声明：[index: number](../reference/apis-arkui/js-apis-system-ro
 
 替代的ArkTS1.2接口声明：[index: number](../reference/apis-arkui/js-apis-router.md#routerstate)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -977,7 +977,7 @@ ArkTS1.1接口声明：[name: string](../reference/apis-arkui/js-apis-system-rou
 
 替代的ArkTS1.2接口声明：[name: string](../reference/apis-arkui/js-apis-router.md#routerstate)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -999,7 +999,7 @@ ArkTS1.1接口声明：[path: string](../reference/apis-arkui/js-apis-system-rou
 
 替代的ArkTS1.2接口声明：[path: string](../reference/apis-arkui/js-apis-router.md#routerstate)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1023,7 +1023,7 @@ ArkTS1.1接口声明：[export interface EnableAlertBeforeBackPageOptions](../re
 
 替代的ArkTS1.2接口声明：[interface EnableAlertOptions](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1043,7 +1043,7 @@ ArkTS1.1接口声明：[message: string ](../reference/apis-arkui/js-apis-system
 
 替代的ArkTS1.2接口声明：[message: string ](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1063,7 +1063,7 @@ ArkTS1.1接口声明：[success?: (errMsg: string) => void](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1083,7 +1083,7 @@ ArkTS1.1接口声明：[cancel?: (errMsg: string) => void](../reference/apis-ark
 
 替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1103,7 +1103,7 @@ ArkTS1.1接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-s
 
 替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1125,7 +1125,7 @@ ArkTS1.1接口声明：[export interface DisableAlertBeforeBackPageOptions](../r
 
 替代的ArkTS1.2接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1145,7 +1145,7 @@ ArkTS1.1接口声明：[success?: (errMsg: string) => void](../reference/apis-ar
 
 替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1165,7 +1165,7 @@ ArkTS1.1接口声明：[cancel?: (errMsg: string) => void](../reference/apis-ark
 
 替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1185,7 +1185,7 @@ ArkTS1.1接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-s
 
 替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1207,7 +1207,7 @@ ArkTS1.1接口声明：type ParamsInterface = {[key: string]: Object}
 
 替代的ArkTS1.2接口声明：interface Object
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1230,7 +1230,7 @@ ArkTS1.1接口声明：[toolBar(value: object | CustomBuilder): NavigationAttrib
 
 替代的ArkTS1.2接口声明：[toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1263,7 +1263,7 @@ ArkTS1.1接口声明：[subTitle(value: string): NavigationAttribute](../referen
 
 替代的ArkTS1.2接口声明：[title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1283,7 +1283,7 @@ ArkTS1.1接口声明：[Navigator(value?: {target: string, type?: NavigationType
 
 替代的ArkTS1.2接口声明：[export class Router](../reference/apis-arkui/js-apis-arkui-UIContext.md#router)
 
-适配方法如下：
+
 
 ArkTS1.1
 
@@ -1320,7 +1320,7 @@ ArkTS1.1接口声明：[NavRouter()](../reference/apis-arkui/arkui-ts/ts-basic-c
 
 替代的ArkTS1.2接口声明：[Navigation(pathInfos: NavPathStack)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation10)
 
-适配方法如下：
+
 
 ArkTS1.1
 
