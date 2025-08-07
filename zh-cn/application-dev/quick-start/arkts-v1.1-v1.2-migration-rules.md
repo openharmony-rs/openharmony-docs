@@ -1270,11 +1270,11 @@ boundGreet();
 
 ```typescript
 class MyClass {
-  constructor(public name: string) {}
-
-  greet() {
-    console.log(`Hello, my name is ${this.name}`);
-  }
+    name: string;
+    constructor(name: string) { this.name = name; }
+    greet() {
+        console.log(`Hello, my name is ${this.name}`);
+    }
 }
 
 const instance = new MyClass("Alice");
@@ -1629,15 +1629,20 @@ console.log(data['name']); // 违反规则
 
 ```typescript
 function foo(m: Map<string, Object>) {
-  m.get('key') // 使用 `Map`
+    m.get('key') // 使用 `Map`
 }
 
+interface Person {
+    name: string;
+    age: number;
+}
+const person: Person = {name: 'John',age: 30};
 console.log(person.name); // 直接使用 `.` 访问
 
-interface UserData {
-  name: string;
+class UserData {
+    name?: string;
 }
-const data: UserData = JSON.parse('{ "name": "Alice" }');
+const data =  JSON.parse<UserData>('{ "name": "Alice" }', Type.from<UserData>())!;
 console.log(data.name); // 直接使用点访问符
 ```
 
