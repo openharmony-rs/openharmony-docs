@@ -1,21 +1,21 @@
-# ArkTS1.2 EAWorker迁移指导 
+# ArkTS1.2 EAWorker迁移指导
 ## 为什么需要迁移到EAWorker
 ArkTS1.1运行时为单线程，并发模型以Worker API基础。OHOS Worker API继承于W3C的Web worker标准，适用于Web场景。Worker API将线程分为宿主线程和Worker线程。ArkTS1.2支持共享并发，继续使用这套API不利于开发者理解和使用多线程环境。因此，ArkTS1.2引入了新的API，EAWorker。EAWorker是Exclusive ArkTS Worker的缩写，表示在多线程环境中独占一个线程的Worker。EAWorker和Worker一样，独占一个线程并且隐式绑定一个事件循环用于处理异步任务。不同的是，EAWorker API中线程间的语义一致，没有宿主线程和Worker线程的区分；同时，EAWorker的生命周期管理类似Java Thread。
 Worker API的使用场景是在后台线程中运行脚本，以执行耗时操作，避免计算密集型或高延迟任务阻塞宿主线程。EAWorker的使用场景与Worker API相同。
 
-## EAWorker简介
+## EAWorker介绍
 EAWorker的作用和使用场景和Worker API一样，主要作用是为应用程序提供一个多线程的运行环境，在后台线程中运行一个任务进行耗时操作，极大避免类似于计算密集型或高延迟的任务阻塞宿主线程的运行。
 
-### EAWorker的运作机制
 为了兼容ArkTS 1.1基于事件循环的异步能力（如`setTimeout`、`setInterval`、`async/await` 和`Promise`），EAWorker API必须同时包含线程、事件循环和消息发送处理的 API。与 Worker API类似，EAWorker API中的线程API语言类似于Java Thread。在典型场景下，开发者创建一个EAWorker实例，并在创建时给构造器传递一个EAWorker需要执行的线程任务。EAWorker实例启动后，事件循环也随之启动，因此EAWorker无法像普通线程一样直接调用`join`退出，而需要调用`quit`或`quitSafely`方法结束事件循环后才能退出（`quit`和`quitSafely`的实现中会隐式调用`join`）。开发者通过`MessageHandler`定义消息的处理逻辑，一个事件循环可以绑定多个`MessageHandler`来处理不同类型和来源的消息。消息的发送也通过调用`MessageHandler`的API来完成，因此不同的消息可以绑定不同的消息处理逻辑。
 
 EAWorker API中宿主线程和Worker线程的API没有区分，只有一种EAWorker API。所有EAWorker线程共享一个ArkTS 1.2运行时，除了EAWorker本身的开销外，不需要像Worker API一样创建独立的运行时。EAWorker线程之间的通信既可以通过消息传递，也可以利用ArkTS 1.2的共享内存特性。
 
 
-## Worker API -> EAWorker API迁移
-### ThreadWorker
+## ThreadWorker API迁移
 
-#### constructor
+下面针对每个ArkTS1.1 ThreadWorker API，
+
+### constructor
 
 constructor(scriptURL: string, options?: WorkerOptions)
 
@@ -36,7 +36,7 @@ const workerInstance = new EAWorker("WorkerThread", ()=>{console.info("等价wor
 workerInstance.start();
 ```
 
-#### postMessage
+### postMessage
 
 postMessage(message: Object, transfer: ArrayBuffer[]): void
 
@@ -175,7 +175,7 @@ struct Index {
 }
 ```
 
-#### postMessage
+### postMessage
 
 postMessage(message: Object, options?: PostMessageOptions): void
 
@@ -206,7 +206,7 @@ workerHandler.sendMessage(workerMessage);
 ```
 
 
-#### postMessageWithSharedSendable
+### postMessageWithSharedSendable
 
 postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 
@@ -285,7 +285,7 @@ workerHandler.sendMessage(workerMessage);
 ```
 
 
-#### on
+### on
 
 on(type: string, listener: WorkerEventListener): void
 
@@ -296,7 +296,7 @@ on(type: string, listener: WorkerEventListener): void
 
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
-#### once
+### once
 
 once(type: string, listener: WorkerEventListener): void
 
@@ -306,7 +306,7 @@ once(type: string, listener: WorkerEventListener): void
 
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
-#### off
+### off
 
 off(type: string, listener?: WorkerEventListener): void
 
@@ -317,7 +317,7 @@ off(type: string, listener?: WorkerEventListener): void
 
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
-#### registerGlobalCallObject
+### registerGlobalCallObject
 
 registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 
@@ -415,7 +415,7 @@ workerHandler.sendMessage(workerMessage);
 ```
 
 
-#### unregisterGlobalCallObject
+### unregisterGlobalCallObject
 
 unregisterGlobalCallObject(instanceName?: string): void
 
@@ -446,7 +446,7 @@ workerInstance.postMessage("start worker")
 
 ArkTS1.1中使用`registerGlobalCallObject`/`unregisterGlobalCallObject`进行同步跨线程调用对象方法。ArkTS1.2中，可以直接跨线程调用对象方法，无需特殊API。
 
-#### terminate
+### terminate
 
 terminate(): void
 
@@ -469,7 +469,7 @@ workerInstance.quitSafely();
 // workerInstance.quit();
 ```
 
-#### onexit
+### onexit
 
 onexit?: (code: number) =&gt; void
 
@@ -502,7 +502,7 @@ console.info("onexit");
 workerInstance.quitSafely();
 ```
 
-#### onerror
+### onerror
 
 onerror?: (err: ErrorEvent) =&gt; void
 
@@ -527,7 +527,7 @@ workerInstance.setUnCaughtExceptionHandler((err: Error) => {
 })
 ```
 
-#### onAllErrors
+### onAllErrors
 
 onAllErrors?: ErrorCallback
 
@@ -554,7 +554,7 @@ workerInstance.setUnCaughtExceptionHandler((err: Error) => {
   console.info("onAllErrors" + err.message);
 ```
 
-#### onmessage
+### onmessage
 
 onmessage?: (event: MessageEvents) =&gt; void
 
@@ -582,7 +582,7 @@ const currentCB = (msg: concurrency.Message) => {
 let currentHandler = new concurrency.MessageHandler(currentCB, currentworker);
 ```
 
-#### onmessageerror
+### onmessageerror
 
 onmessageerror?: (event: MessageEvents) =&gt; void
 
@@ -603,7 +603,7 @@ workerInstance.onmessageerror = (err: MessageEvents) => {
 
 ArkTS1.2中没有`onmessageerror`的使用场景。ArkTS1.2基于共享内存运行时，因此消息传递过程不设计序列化。
 
-#### addEventListener
+### addEventListener
 
 addEventListener(type: string, listener: WorkerEventListener): void
 
@@ -614,7 +614,7 @@ addEventListener(type: string, listener: WorkerEventListener): void
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
 
-#### removeEventListener
+### removeEventListener
 
 removeEventListener(type: string, callback?: WorkerEventListener): void
 
@@ -625,7 +625,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
 
-#### dispatchEvent
+### dispatchEvent
 
 dispatchEvent(event: Event): boolean
 
@@ -636,7 +636,7 @@ dispatchEvent(event: Event): boolean
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
 
-#### removeAllListener
+### removeAllListener
 
 removeAllListener(): void
 
@@ -646,18 +646,18 @@ removeAllListener(): void
 
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
-### WorkerEventTarget
+## WorkerEventTarget API迁移
 
 **ArkTS1.2**
 
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
 
-### ThreadWorkerGlobalScope
+## ThreadWorkerGlobalScope API迁移
 
 Worker线程用于与宿主线程通信的类，通过postMessage接口发送消息给宿主线程、close接口销毁Worker线程。ThreadWorkerGlobalScope类继承[GlobalScope](#globalscope)。
 
-#### postMessage
+### postMessage
 
 postMessage(message: Object, transfer: ArrayBuffer[]): void
 
@@ -713,7 +713,7 @@ let workerMessage = new concurrency.Message(1, str, workerHandler);
 workerMessage.sendToTarget();
 ```
 
-#### postMessage
+### postMessage
 
 postMessage(messageObject: Object, options?: PostMessageOptions): void
 
@@ -768,7 +768,7 @@ let workerMessage = new concurrency.Message(1, str, workerHandler);
 workerMessage.sendToTarget();
 ```
 
-#### postMessageWithSharedSendable
+### postMessageWithSharedSendable
 
 postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 
@@ -850,7 +850,7 @@ workerHandler.sendMessage(workerMessage);
 ```
 
 
-#### callGlobalCallObjectMethod
+### callGlobalCallObjectMethod
 
 callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: number, ...args: Object[]): Object
 
@@ -946,7 +946,7 @@ workerHandler.sendMessage(workerMessage);
 ```
 
 
-#### close
+### close
 
 close(): void
 
@@ -975,7 +975,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 ArkTS1.2不提供类似ArkTS1.1 `workerPort.close()` API和`onexit`事件监听。这种让线程自销毁的方式，容易造成锁等全局共享状态的不一致，从而导致错误。建议开发者使用EAWorker的`quit`/`quitSafely`方法来退出。
 
-#### onmessage
+### onmessage
 
 onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) =&gt; void
 
@@ -1017,7 +1017,7 @@ let workerMessage = new concurrency.Message(1, str, workerHandler);
 workerMessage.sendToTarget();
 ```
 
-#### onmessageerror
+### onmessageerror
 
 onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) =&gt; void
 
@@ -1047,7 +1047,7 @@ workerPort.onmessageerror = (err: MessageEvents) => {
 
 ArkTS1.2基于共享内存运行时，消息传递过程不涉及序列化，因此ArkTS1.2中没有`onmessageerror`的使用场景。
 
-### WorkerEventListener
+## WorkerEventListener API迁移
 
 事件监听类。
 
@@ -1055,11 +1055,11 @@ ArkTS1.2基于共享内存运行时，消息传递过程不涉及序列化，因
 
 请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
 
-### GlobalScope
+## GlobalScope API迁移
 
 Worker线程自身的运行环境，GlobalScope类继承[WorkerEventTarget](#workereventtarget)。
 
-#### onerror
+### onerror
 
 onerror?: (ev: ErrorEvent) =&gt; void
 
@@ -1097,15 +1097,15 @@ workerPort.onerror = (err: ErrorEvent) => {
 }
 ```
 
-### MessageEvents
+## MessageEvents API迁移
 
 消息类，持有Worker线程间传递的数据。
 
 **ArkTS1.2**
  
-参考[onmessage](#onmessage)的迁移方式
+参考[onmessage](#onmessage)的迁移方式。
 
-### MessageType
+## MessageType API迁移
 
 type MessageType = 'message' | 'messageerror';
 
@@ -1113,9 +1113,9 @@ type MessageType = 'message' | 'messageerror';
 
 **ArkTS1.2**
 
-参考[onmessage](#onmessage)的迁移方式
+参考[onmessage](#onmessage)的迁移方式。
 
-### ErrorCallback
+## ErrorCallback API迁移
 
 type ErrorCallback = (err: ErrorEvent) => void
 
@@ -1123,16 +1123,17 @@ type ErrorCallback = (err: ErrorEvent) => void
 
 **ArkTS1.2**
 
-参考[onAllErrors](#onAllErrors)的迁移方式
-
+参考[onAllErrors](#onAllErrors)的迁移方式。
 
 ## FAQ
 ### 为何没有单独提供类似Java/C++的线程接口
 ArkTS1.2兼容ArkTS1.1基于事件循环的异步语义，如果允许单独的线程API，那程序将存在语言异步语义无法提供的状态，这是无法接受的。
 
 ### 如何延迟发送消息
-建议使用[setTimeout()](../reference/common/js-apis-timer.md#settimeout)
+建议使用[setTimeout()](../reference/common/js-apis-timer.md#settimeout)来延迟发送消息。
+
 ### 如何进行异常处理
 ArkTS1.1中由于内存隔离的限制，Worker发生异常时，会向宿主线程发送一个异常信息的消息，而不能通过运行时定义的try/catch机制进行异常处理。ArkTS1.2中没有了内存隔离的限制后，可以直接使用语言定义的异常处理来处理EAWorker异常退出的场景。
+
 ### 如何管理EAWorker的生命周期
 EAWorker的线程和事件循环生命周期一致，不需要像Android那样对线程和事件循环分别定义退出的API（Android Thread: join/stop; Android Looper: quit/quitSafely)。EAWorker提供quit和quitSafely接口来退出事件循环并结束线程的执行。
