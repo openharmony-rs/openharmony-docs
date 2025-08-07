@@ -180,7 +180,51 @@ Column() {
 
 其中，对于该组件的无障碍文本的内容，在既拥有文本属性又拥有无障碍文本属性的情况下，当组件被选中时，仅播报无障碍文本内容。
 
+ArkTS1.1示例：
+
 ```ts
+@Entry
+@Component
+struct Index {
+
+  @Builder customAccessibilityNode() {
+    Column() {
+      Text(`virtual node`)
+    }
+    .width(10)
+    .height(10)
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text("文本1")
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Text("文本2")
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+      .accessibilityGroup(true)
+      .accessibilityLevel("yes")
+      .accessibilityText("分组")
+      .accessibilityDescription("Column组件可以被选中，播报的内容是“分组”")
+      .accessibilityVirtualNode(this.customAccessibilityNode)
+      .accessibilityChecked(true)
+      .accessibilitySelected(undefined)
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+    Column() {
+import { Entry, Component, Builder, Column, Text, Builder, FontWeight } from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct Index {
