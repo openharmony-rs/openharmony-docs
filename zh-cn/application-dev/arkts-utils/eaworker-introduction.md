@@ -2,7 +2,7 @@
 
 EAWorker主要作用是为应用程序提供一个多线程的运行环境，可满足应用程序在执行过程中与宿主线程分离，在后台线程中运行一个脚本进行耗时操作，极大避免类似于计算密集型或高延迟的任务阻塞宿主线程的运行。
 
-ArkTS1.1 运行时为单线程，并发模型基于 Worker API。OHOS Worker API 继承于 W3C 的 Web Worker 标准，是围绕 Web 场景设计的 API。Worker API 将线程分为宿主线程和 Worker 线程。ArkTS1.2 天然支持共享并发，继续使用这套 Web 场景的 API 不利于开发者理解和使用 ArkTS1.2 的多线程环境。因此，ArkTS1.2 添加了一套新的 EAWorker API。EAWorker 代表在多线程环境中独占一个线程的 Worker。EAWorker 和 Worker 一样都独占一个线程，并且隐式绑定一个事件循环用于处理异步任务。EAWorker 和 Worker 的不同点在于，EAWorker API 中线程间的语义一致，宿主线程和 Worker 线程的 API 完全相同。同时，EAWorker 作为运行时管理的线程资源，其生命周期管理类似于 Java Thread。
+ArkTS1.1运行时为单线程，并发模型基于Worker API。OHOS Worker API继承于W3C的Web Worker标准，是围绕Web场景设计的API。Worker API将线程分为宿主线程和Worker线程。ArkTS1.2天然支持共享并发，继续使用这套Web场景的API不利于开发者理解和使用ArkTS1.2的多线程环境。因此，ArkTS1.2添加了一套新的EAWorker API。EAWorker代表在多线程环境中独占一个线程的Worker。EAWorker和Worker一样都独占一个线程，并且隐式绑定一个事件循环用于处理异步任务。EAWorker和Worker的不同点在于，EAWorker API中线程间的语义一致，宿主线程和Worker线程的API完全相同。同时，EAWorker作为运行时管理的线程资源，其生命周期管理类似于Java Thread。
 
 
 ## EAWorker运作机制
