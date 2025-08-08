@@ -1,6 +1,11 @@
 # ArkTS1.2 EAWorker迁移指导
 ## 为什么需要迁移到EAWorker
-ArkTS1.1运行时为单线程，并发模型以Worker API基础。OHOS Worker API继承于W3C的Web worker标准，适用于Web场景。Worker API将线程分为宿主线程和Worker线程。ArkTS1.2支持共享并发，继续使用这套API不利于开发者理解和使用多线程环境。因此，ArkTS1.2引入了新的API，EAWorker。EAWorker是Exclusive ArkTS Worker的缩写，表示在多线程环境中独占一个线程的Worker。EAWorker和Worker一样，独占一个线程并且隐式绑定一个事件循环用于处理异步任务。不同的是，EAWorker API中线程间的语义一致，没有宿主线程和Worker线程的区分；同时，EAWorker的生命周期管理类似Java Thread。
+ArkTS 1.1 运行时采用单线程架构，其并发模型基于 Worker API 构建。该 API 继承自 W3C 的 Web Worker 标准，原本主要适用于 Web 场景，核心是将线程划分为宿主线程与 Worker 线程两种角色。随着 ArkTS 1.2 引入共享并发特性，原有 Worker API 的局限性逐渐显现 —— 其基于 Web 场景设计的线程角色划分，在多线程环境下会增加开发者的理解难度和使用门槛。为此，ArkTS 1.2 推出了全新的并发 API：EAWorker。EAWorker 是 "Exclusive ArkTS Worker" 的缩写，顾名思义，它在多线程环境中依然保持线程独占性，与传统 Worker 一样隐式绑定事件循环以处理异步任务。但相比之下，EAWorker 有两处关键改进：
+
+1. 统一线程语义：取消了宿主线程与 Worker 线程的角色区分，所有线程通过一致的语义交互，简化了多线程编程模型。
+1. 贴近传统线程的生命周期管理：借鉴 C++ 或 Java 中 Thread 的设计思路，提供更符合开发者直觉的生命周期控制方式，让线程管理更直观易用。
+
+这一升级使 ArkTS 在支持共享并发的同时，大幅降低了多线程编程的理解与使用成本。
 Worker API的使用场景是在后台线程中运行脚本，以执行耗时操作，避免计算密集型或高延迟任务阻塞宿主线程。EAWorker的使用场景与Worker API相同。
 
 ## EAWorker介绍
