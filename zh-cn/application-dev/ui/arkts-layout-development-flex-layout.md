@@ -61,6 +61,10 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ```ts
+  
+  ```
+
   ![zh-cn_image_0000001511900464](figures/zh-cn_image_0000001511900464.png)
 
 - FlexDirection.Column：主轴为垂直方向，子元素从起始端沿着垂直方向开始排布。
