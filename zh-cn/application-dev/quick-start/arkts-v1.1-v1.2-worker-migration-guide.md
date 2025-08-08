@@ -297,7 +297,7 @@ on(type: string, listener: WorkerEventListener): void
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 ### once
 
@@ -307,7 +307,7 @@ once(type: string, listener: WorkerEventListener): void
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 ### off
 
@@ -318,7 +318,7 @@ off(type: string, listener?: WorkerEventListener): void
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 ### registerGlobalCallObject
 
@@ -614,7 +614,7 @@ addEventListener(type: string, listener: WorkerEventListener): void
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 
 ### removeEventListener
@@ -625,7 +625,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 
 ### dispatchEvent
@@ -636,7 +636,7 @@ dispatchEvent(event: Event): boolean
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 
 ### removeAllListener
@@ -647,13 +647,13 @@ removeAllListener(): void
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 ## WorkerEventTarget API迁移
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 
 ## ThreadWorkerGlobalScope API迁移
@@ -1056,7 +1056,7 @@ ArkTS1.2基于共享内存运行时，消息传递过程不涉及序列化，因
 
 **ArkTS1.2**
 
-请迁移到[@ohos.events.emitter](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-emitter.md)
+请迁移到[@ohos.events.emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)。
 
 ## GlobalScope API迁移
 
