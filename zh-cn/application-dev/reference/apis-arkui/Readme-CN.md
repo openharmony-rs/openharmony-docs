@@ -28,6 +28,7 @@
     - [@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)
     - [getContext](js-apis-getContext.md)
     - [postCardAction](js-apis-postCardAction.md)
+    - [@ohos.arkui.Parallelize (UI并行化创建)](js-apis-arkui-Parallelize.md)
     <!--Del-->
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](js-apis-arkui-drawableDescriptor-sys.md)
     - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)  
