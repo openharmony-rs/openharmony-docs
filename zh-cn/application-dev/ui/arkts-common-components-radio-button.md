@@ -6,8 +6,7 @@ Radio是单选框组件，通常用于提供相应的用户交互选择项，同
 
 ## 创建单选框
 
-Radio通过调用[RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions对象说明)来创建，以RadioOptions中的value和group为例：
-
+在ArkTS1.1上Radio通过调用[RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions对象说明)来创建，以RadioOptions中的value和group为例：
 
 ```ts
 Radio(options: {value: string, group: string})
@@ -24,9 +23,14 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
   .checked(true)
 ```
 
-
 ![zh-cn_image_0000001562820821](figures/zh-cn_image_0000001562820821.png)
 
+在ArkTS1.2上创建该组件时，需先导入Radio以及用来指定参数类型的RadioOptions：
+
+```ts
+import { Radio， RadioOptions } from '@ohos.arkui.component';
+Radio({ value: 'Radio1', group: 'radioGroup' } as RadioOptions)
+```
 
 ## 添加事件
 

@@ -16,8 +16,7 @@ Toggle(options: { type: ToggleType, isOn?: boolean })
 
 API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
-接口调用有以下两种形式：
-
+在ArkTS1.1上，创建Toggle有以下两种形式：
 
 - 创建不包含子组件的Toggle。
   当ToggleType为Checkbox或者Switch时，用于创建不包含子组件的Toggle：
@@ -56,6 +55,12 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
     ![zh-cn_image_0000001511900404](figures/zh-cn_image_0000001511900404.png)
 
+在ArkTS1.2上创建Toggle时，需先导入Toggle和ToggleType，以及用来指定参数类型的ToggleOptions：
+
+```ts
+import { Toggle, ToggleType, ToggleOptions } from '@ohos.arkui.component';
+Toggle({ type: ToggleType.Switch, isOn: false } as ToggleOptions)
+```
 
 ## 自定义样式
 
