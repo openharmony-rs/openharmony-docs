@@ -169,14 +169,12 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)
-  - 列表与宫格<!--arkts-list-and-grid-->
-    - [列表与宫格概述](arkts-list-grid-development-overview.md)
+  - 列表与网格<!--arkts-list-and-grid-->
+    - [列表与网格概述](arkts-list-grid-development-overview.md)
     - [创建列表 (List)](arkts-layout-development-create-list.md)
     - [创建弧形列表 (ArcList)](arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
     - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)
     - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)
-  - 添加组件<!--arkts-add-component-->
-    - [自定义渲染 (XComponent)](napi-xcomponent-guidelines.md)
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)
@@ -190,14 +188,15 @@
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
     - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）
-  - 信息展示<!--arkts-information-display-->
-    - [进度条 (Progress)](arkts-common-components-progress-indicator.md)
   - 表单选择<!--arkts-form-selection-->
     - [表单与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
     - [弧形按钮 (ArcButton)](arkts-advanced-components-arcbutton.md)（圆形屏幕推荐使用）
     - [单选框 (Radio)](arkts-common-components-radio-button.md)
     - [切换按钮 (Toggle)](arkts-common-components-switch.md)
+  - 添加组件<!--arkts-add-component-->
+    - [自定义渲染 (XComponent)](napi-xcomponent-guidelines.md)
+    - [进度条 (Progress)](arkts-common-components-progress-indicator.md)
   - 使用弹窗<!--arkts-use-dialog-->
      - [弹窗概述](arkts-dialog-overview.md)
      - 使用弹出框 (Dialog)<!--arkts-use-dialogs-->
@@ -270,8 +269,6 @@
       - [阴影](arkts-shadow-effect.md)
       - [色彩](arkts-color-effect.md)
     - [帧动画（ohos.animator）](arkts-animator.md)
-  - Modifier机制<!--arkts-modifier-mechanism-->
-    - [ContentModifier (内容修改器)](arkts-common-attributes-content-modifier.md)
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
     - [自定义组合](arkts-user-defined-composition.md)
@@ -281,12 +278,14 @@
       - [自定义组件节点 (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
-    - 自定义扩展<!--arkts-modifier-->
+    - 自定义绘制<!--arkts-draw-->
+      - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
+      - [自定义绘制修改器 (DrawModifier)](arkts-user-defined-extension-drawModifier.md)
+    - Modifier机制<!--arkts-modifier-->
       - [自定义扩展概述](arkts-user-defined-modifier.md)
+      - [内容修改器 (ContentModifier)](arkts-common-attributes-content-modifier.md)
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
-      - [自定义绘制修改器 (DrawModifier)](arkts-user-defined-extension-drawModifier.md)
-  - [使用镜像能力](arkts-mirroring-display.md)
   - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
     - [支持无障碍](arkts-universal-attributes-accessibility.md)
     - [支持适老化](arkui-support-for-aging-adaptation.md)
@@ -334,8 +333,7 @@
     - [ArkTS1.2与ArkTS1.1应用间状态存储互操作](interop-storages.md)
     - [ArkTS1.2使用ArkTS1.1全局自定义构建函数](interop-compatible-builder.md)
     - [ArkTS1.2使用ArkTS1.1 WrappedBuilder对象](interop-compatible-WrappedBuilder.md)
-- UI高性能开发<!--ui-performance-->
-  - [UI性能优化概览](ui-performance-overview.md)
+- [UI高性能开发](ui-performance-overview.md)
 
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
