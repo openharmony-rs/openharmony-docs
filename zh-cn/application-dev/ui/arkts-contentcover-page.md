@@ -25,6 +25,8 @@
 
 详见[模态转场](arkts-modal-transition.md#使用bindcontentcover构建全屏模态转场效果)章节，了解使用bindContentCover构建全屏模态转场效果。
 
+ArkTS1.1示例：
+
 ```ts
 import { curves } from '@kit.ArkUI';
 
@@ -208,6 +210,206 @@ struct BindContentCoverDemo {
       })
       // 第一步：定义半模态转场效果
       .bindSheet($$this.isSheetShow, this.MySheetBuilder(), {
+        height: SheetSize.MEDIUM,
+        title: {title: "确认订单"},
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#30aaaaaa')
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+import { Entry, Component, Column, Builder, Row, Text, ForEach, Color, Margin, TextAlign, Padding, HorizontalAlign, ClickEvent,
+  $$, BorderOptions, ShadowOptions, SheetSize, EdgeWidths, ContentCoverOptions, FontWeight, TransitionEffect
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import curves from '@ohos.curves';
+
+interface PersonList {
+  name: string,
+  cardNum: string
+}
+
+@Entry
+@Component
+struct BindContentCoverDemo {
+  private personList: Array<PersonList> = [
+    { name: '王**', cardNum: '1234***********789' } as PersonList,
+    { name: '宋*', cardNum: '2345***********789' } as PersonList,
+    { name: '许**', cardNum: '3456***********789' } as PersonList,
+    { name: '唐*', cardNum: '4567***********789' } as PersonList
+  ];
+  // 半模态转场控制变量
+  @State isSheetShow: boolean = false;
+  // 全模态转场控制变量
+  @State isPresent: boolean = false;
+
+  @Builder
+  MyContentCoverBuilder() {
+    Column() {
+      Row() {
+        Text('选择乘车人')
+          .fontSize(20)
+          .fontColor(Color.White)
+          .width('100%')
+          .textAlign(TextAlign.Center)
+          .padding({ top: 30, bottom: 15 } as Padding)
+      }
+      .backgroundColor(0x007dfe)
+
+      Row() {
+        Text('+ 添加乘车人')
+          .fontSize(16)
+          .fontColor(0x333333)
+          .margin({ top: 10 } as Margin)
+          .padding({ top: 20, bottom: 20 } as Padding)
+          .width('92%')
+          .borderRadius(10)
+          .textAlign(TextAlign.Center)
+          .backgroundColor(Color.White)
+      }
+
+      Column() {
+        ForEach(this.personList, (item: PersonList, index: number) => {
+          Row() {
+            Column() {
+              if (index % 2 == 0) {
+                Column()
+                  .width(20)
+                  .height(20)
+                  .border({ width: 1, color: 0x007dfe })
+                  .backgroundColor(0x007dfe)
+              } else {
+                Column()
+                  .width(20)
+                  .height(20)
+                  .border({ width: 1, color: 0x007dfe })
+              }
+            }
+            .width('20%')
+
+            Column() {
+              Text(item.name)
+                .fontColor(0x333333)
+                .fontSize(18)
+              Text(item.cardNum)
+                .fontColor(0x666666)
+                .fontSize(14)
+            }
+            .width('60%')
+            .alignItems(HorizontalAlign.Start)
+
+            Column() {
+              Text('编辑')
+                .fontColor(0x007dfe)
+                .fontSize(16)
+            }
+            .width('20%')
+          }
+          .padding({ top: 10, bottom: 10 } as Padding)
+          .border({ width: { bottom: 1 } as EdgeWidths, color: 0xf1f1f1 } as BorderOptions)
+          .width('92%')
+          .backgroundColor(Color.White)
+        })
+      }
+      .padding({ top: 20, bottom: 20 } as Padding)
+
+      Text('确认')
+        .width('90%')
+        .height(40)
+        .textAlign(TextAlign.Center)
+        .borderRadius(10)
+        .fontColor(Color.White)
+        .backgroundColor(0x007dfe)
+        .onClick((e: ClickEvent) => {
+          this.isPresent = !this.isPresent;
+        })
+    }
+    .size({ width: '100%', height: '100%' })
+    .backgroundColor(0xf5f5f5)
+  }
+
+  @Builder
+  TripInfo() {
+    Row() {
+      Column() {
+        Text('00:25')
+        Text('始发站')
+      }
+      .width('25%')
+
+      Column() {
+        Text('G1234')
+        Text('8时1分')
+      }
+      .width('25%')
+
+      Column() {
+        Text('08:26')
+        Text('终点站')
+      }
+      .width('25%')
+    }
+  }
+
+  // 第二步：定义半模态展示界面
+  // 通过@Builder构建模态展示界面
+  @Builder
+  MySheetBuilder() {
+    Column() {
+      Column() {
+        this.TripInfo()
+      }
+      .width('92%')
+      .margin(15)
+      .backgroundColor(Color.White)
+      .shadow({ radius: 30, color: '#aaaaaa' } as ShadowOptions)
+      .borderRadius(10)
+
+      Column() {
+        Text('+ 选择乘车人')
+          .fontSize(18)
+          .fontColor(Color.Orange)
+          .fontWeight(FontWeight.Bold)
+          .padding({ top: 10, bottom: 10 } as Padding)
+          .width('60%')
+          .textAlign(TextAlign.Center)
+          .borderRadius(15)
+          .onClick((e: ClickEvent) => {
+            // 第三步：通过全模态接口调起全模态展示界面，新拉起的模态面板默认显示在最上层
+            this.isPresent = !this.isPresent;
+          })
+            // 通过全模态接口，绑定模态展示界面MyContentCoverBuilder。transition属性支持自定义转场效果，此处定义了x轴横向入场
+          .bindContentCover($$(this.isPresent), this.MyContentCoverBuilder, {
+            transition: TransitionEffect.translate({ x: 500 }).animation({ curve: curves.springMotion(0.6, 0.8) })
+          } as ContentCoverOptions)
+      }
+      .padding({ top: 60 } as Padding)
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        this.TripInfo()
+        Text('有票')
+          .fontColor(Color.Blue)
+          .width('25%')
+      }
+      .width('100%')
+      .margin({top: 200, bottom: 30} as Margin)
+      .borderRadius(10)
+      .backgroundColor(Color.White)
+      .onClick((e: ClickEvent)=>{
+        this.isSheetShow = !this.isSheetShow;
+      })
+      // 第一步：定义半模态转场效果
+      .bindSheet($$(this.isSheetShow), this.MySheetBuilder, {
         height: SheetSize.MEDIUM,
         title: {title: "确认订单"},
       })
