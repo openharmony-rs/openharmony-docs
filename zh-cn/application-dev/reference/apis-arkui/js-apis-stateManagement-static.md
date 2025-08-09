@@ -6,7 +6,7 @@
 >
 >本模块首批接口从API version 20开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->本模块仅适用于ArkTS1.2。
+>本模块仅适用于ArkTS静态上下文中使用。
 
 ## 导入模块
 
@@ -44,7 +44,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 ```ts
 import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-import { State, UIUtils } from '@ohos.arkui.stateManagement';
+import { UIUtils } from '@ohos.arkui.stateManagement';
 interface Info {
   name: string,
   age: number
@@ -52,8 +52,7 @@ interface Info {
 @Entry
 @Component
 struct Index {
-  // 装饰字面量
-  @State info: Info = UIUtils.makeObserved({ name: 'Jack', age: 25} as Info) as Info;
+  info: Info = UIUtils.makeObserved({ name: 'Jack', age: 25} as Info) as Info;
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
