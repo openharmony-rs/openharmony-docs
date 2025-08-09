@@ -6,10 +6,22 @@ Radio是单选框组件，通常用于提供相应的用户交互选择项，同
 
 ## 创建单选框
 
-在ArkTS1.1上Radio通过调用[RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions对象说明)来创建，以RadioOptions中的value和group为例：
+Radio通过调用[RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions对象说明)来创建，以RadioOptions中的value和group为例：
+
+ArkTS-Dyn示例：
 
 ```ts
 Radio(options: {value: string, group: string})
+```
+
+ArkTS-Sta示例：
+
+在ArkTS-Sta上创建该组件时，需先导入Radio以及用来指定参数类型的RadioOptions。
+
+```ts
+import { Radio， RadioOptions } from '@ohos.arkui.component';
+
+Radio({ value: 'Radio1', group: 'radioGroup' } as RadioOptions)
 ```
 
 其中，value是单选框的名称，group是单选框的所属群组名称。checked属性可以设置单选框的状态，状态分别为false和true，设置为true时表示单选框被选中。
@@ -24,13 +36,6 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 ```
 
 ![zh-cn_image_0000001562820821](figures/zh-cn_image_0000001562820821.png)
-
-在ArkTS1.2上创建该组件时，需先导入Radio以及用来指定参数类型的RadioOptions：
-
-```ts
-import { Radio， RadioOptions } from '@ohos.arkui.component';
-Radio({ value: 'Radio1', group: 'radioGroup' } as RadioOptions)
-```
 
 ## 添加事件
 
@@ -55,7 +60,6 @@ Radio({ value: 'Radio1', group: 'radioGroup' } as RadioOptions)
 ## 场景示例
 
 通过点击Radio切换声音模式。
-
 
 ```ts
 // xxx.ets
@@ -113,5 +117,6 @@ struct RadioExample {
 }
 ```
 
-
 ![zh-cn_image_0000001562700457](figures/zh-cn_image_0000001562700457.gif)
+
+
