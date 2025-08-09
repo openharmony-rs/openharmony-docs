@@ -1,12 +1,18 @@
 # @LocalStorageLink
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--SE: @s10021109-->
+<!--TSE: @TerryTsao-->
+
 > **说明：**
 >
 > 从API version 20开始，支持该装饰器。
 
 @LocalStorageLink用于状态管理V1中，与LocalStorage中给定属性建立双向同步关系。
 
-在静态语言上下文中使用时，开发指南参考：[LocalStorage：页面级UI状态存储（ArkTS-ST）](../../../ui/state-management/arkts-static-localstorage.md)。
+在静态语言上下文中使用时，开发指南参考：[LocalStorage：页面级UI状态存储（ArkTS-ST）](../../../ui/state-management-static/arkts-static-localstorage.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

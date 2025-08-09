@@ -110,14 +110,14 @@
     - 静态ArkTS的状态管理<!--arkts-state-management-v1-static-->
       - 状态管理（V1）<!--arkts-state-management-v1-->
         - 管理组件拥有的状态<!--arkts-component-state-management-->
-          - \@State装饰器：组件内状态
-          - \@PropRef装饰器：父子单向同步
-          - \@Link装饰器：父子双向同步
-          - \@Provide装饰器和\@Consume装饰器：与后代组件双向同步
-          - \@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化
-          - \@Watch装饰器：状态变量更改通知
+          - [\@State装饰器：组件内状态](state-management-static/arkts-static-state.md)
+          - [\@PropRef装饰器：父子单向同步](state-management-static/arkts-static-propref.md)
+          - [\@Link装饰器：父子双向同步](state-management-static/arkts-static-link.md)
+          - [\@Provide装饰器和\@Consume装饰器：与后代组件双向同步](state-management-static/arkts-static-provide-and-consume.md)
+          - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management-static/arkts-static-observed-and-objectlink.md)
+          - [\@Watch装饰器：状态变量更改通知](state-management-static/arkts-static-watch.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
-          - \@Observed装饰器和\@Track装饰器：class对象属性级更新
+          - [\@Observed装饰器和\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-->
           - LocalStorage：页面级UI状态存储
           - AppStorage：应用全局的UI状态存储
@@ -125,21 +125,21 @@
           - Environment：设备环境查询
       - 状态管理（V2）<!--arkts-state-management-v2-->
         - 管理组件拥有的状态<!--arkts-component-state-management-v2-->
-          - \@Local装饰器：组件内部状态
-          - \@Param装饰器：组件外部输入
-            - \@Once装饰器：初始化同步一次
-          - \@Event装饰器：组件输出
-          - \@Provider和\@Consumer装饰器：跨组件层级双向同步
+          - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
+          - [\@Param装饰器：组件外部输入](state-management-static/arkts-static-new-param.md)
+            - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
+          - [\@Event装饰器：组件输出](state-management-static/arkts-static-new-event.md)
+          - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
-          - \@ObservedV2装饰器和\@Trace装饰器：类属性变化观测
-          - \@Monitor装饰器：状态变量修改监听
-          - \@Computed装饰器：计算属性
+          - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
+          - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
+          - [\@Computed装饰器：计算属性](state-management-static/arkts-static-new-computed.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-v2-->
           - AppStorageV2: 应用全局UI状态存储
           - PersistenceV2: 持久化存储UI状态
         - 辅助接口<!--arkts-new-other-state-mgmt-->
-          - getTarget接口：获取状态管理框架代理前的原始对象
-          - makeObserved接口：将非观察数据变为可观察数据
+          - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
+          - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
           - addMonitor/clearMonitor接口：动态添加/取消监听
       - 状态管理V1和V2对比<!--arkts-state-management-v1-v2-compare-->
       - 状态管理V1向V2迁移指导

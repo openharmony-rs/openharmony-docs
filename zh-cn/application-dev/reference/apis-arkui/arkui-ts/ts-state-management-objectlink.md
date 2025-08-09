@@ -1,5 +1,11 @@
 # @ObjectLink
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--SE: @s10021109-->
+<!--TSE: @TerryTsao-->
+
 > **说明：**
 >
 > 从API version 7开始，支持该装饰器。
