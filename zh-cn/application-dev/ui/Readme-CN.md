@@ -410,5 +410,7 @@
         - [动画帧](ui-js-animate-frame.md)
   - [自定义组件](ui-js-custom-components.md)
   - [WebGL](../webgl/Readme-CN.md)
+- UI开发调试调优<!--ui-debug-optimize-->
+  - [UI调优(ArkTs1.2)](ui-inspector-profiler-static.md)
 - [窗口管理](../windowmanager/Readme-CN.md)
 - [屏幕管理](../displaymanager/Readme-CN.md)
