@@ -33,7 +33,7 @@
    ```ts
    Image($r('sys.media.ohos_app_icon'))
      .draggable(true)
-     .onDragStart(()=>{
+     .onDragStart((event: DragEvent)=>{
        promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" });
      })
      .width('200vp').height('200vp')
@@ -95,7 +95,7 @@
              // Stack的下半区是绑定了拖动手势的图像区域。
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
-               .onDragStart(()=>{
+               .onDragStart((event: DragEvent)=>{
                  this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" });
                })
                .width('200vp').height('200vp')
@@ -626,27 +626,27 @@ struct Index {
       GestureGroup(GestureMode.Exclusive,
         PanGesture({ direction: PanDirection.Vertical, distance: 10 })
           .tag('pan_for_brightness_control')
-          .onActionStart((event) => {
+          .onActionStart((event: GestureEvent) => {
             this.updateBrightness(true, event)
           })
-          .onActionUpdate((event) => {
+          .onActionUpdate((event: GestureEvent) => {
             this.updateBrightness(false, event)
           }),
         PanGesture({ direction: PanDirection.Horizontal, distance: 10 })
           .tag('pan_for_play_progress_control')
-          .onActionStart((event) => {
+          .onActionStart((event: GestureEvent) => {
             this.updateProgress(true, event)
           })
-          .onActionUpdate((event) => {
+          .onActionUpdate((event: GestureEvent) => {
             this.updateProgress(false, event)
           }),
 
         LongPressGesture()
           .tag('long_press_for_fast_forward_control')
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.doFastForward(true) // 开始快进
           })
-          .onActionEnd(() => {
+          .onActionEnd((event: GestureEvent) => {
             this.doFastForward(false) // 停止快进
           })
           .onActionCancel(() => {
@@ -655,13 +655,13 @@ struct Index {
 
         TapGesture({ count: 2 })
           .tag('double_tap_on_video')
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.toggleFullScreenState()
           }),
 
         TapGesture()
           .tag('single_tap_on_video')
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.togglePlayAndPause()
           })
       )

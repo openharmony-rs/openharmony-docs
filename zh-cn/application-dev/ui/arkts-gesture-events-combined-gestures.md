@@ -50,7 +50,7 @@ struct Index {
         // 该组合手势第一个触发的手势为长按手势，且长按手势可多次响应
         LongPressGesture({ repeat: true })
           // 当长按手势识别成功，增加Text组件上显示的count次数
-          .onAction((event: GestureEvent|undefined) => {
+          .onAction((event: GestureEvent) => {
             if(event){
               if (event.repeat) {
                 this.count++;
@@ -58,24 +58,24 @@ struct Index {
             }
             console.info('LongPress onAction');
           })
-          .onActionEnd(() => {
+          .onActionEnd((event: GestureEvent) => {
             console.info('LongPress end');
           }),
         // 当长按之后进行拖动，PanGesture手势被触发
         PanGesture()
-          .onActionStart(() => {
+          .onActionStart((event: GestureEvent) => {
             this.borderStyles = BorderStyle.Dashed;
             console.info('pan start');
           })
             // 当该手势被触发时，根据回调获得拖动的距离，修改该组件的位移距离从而实现组件的移动
-          .onActionUpdate((event: GestureEvent|undefined) => {
+          .onActionUpdate((event: GestureEvent) => {
             if(event){
               this.offsetX = (this.positionX + event.offsetX);
               this.offsetY = this.positionY + event.offsetY;
             }
             console.info('pan update');
           })
-          .onActionEnd(() => {
+          .onActionEnd((event: GestureEvent) => {
             this.positionX = this.offsetX;
             this.positionY = this.offsetY;
             this.borderStyles = BorderStyle.Solid;
@@ -123,11 +123,11 @@ struct Index {
     .gesture(
       GestureGroup(GestureMode.Parallel,
         TapGesture({ count: 1 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.count1++;
           }),
         TapGesture({ count: 2 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.count2++;
           })
       )
@@ -176,11 +176,11 @@ struct Index {
     .gesture(
       GestureGroup(GestureMode.Exclusive,
         TapGesture({ count: 1 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.count1++;
           }),
         TapGesture({ count: 2 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.count2++;
           })
       )

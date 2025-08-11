@@ -30,7 +30,7 @@ TapGesture(value?:{count?:number, fingers?:number})
           .gesture(
             // 绑定count为2的TapGesture
             TapGesture({ count: 2 })
-              .onAction((event: GestureEvent|undefined) => {
+              .onAction((event: GestureEvent) => {
               if(event){
                 this.value = JSON.stringify(event.fingerList[0]);
               }
@@ -84,14 +84,14 @@ struct Index {
         .gesture(
           // 绑定可以重复触发的LongPressGesture
           LongPressGesture({ repeat: true })
-           .onAction((event: GestureEvent|undefined) => {
+           .onAction((event: GestureEvent) => {
               if(event){
                 if (event.repeat) {
                   this.count++;
                 }
               }
             })
-            .onActionEnd(() => {
+            .onActionEnd((event: GestureEvent) => {
               this.count = 0;
             })
         )
@@ -234,18 +234,18 @@ struct Index {
       .gesture(
         // 在组件上绑定三指触发的捏合手势
         PinchGesture({ fingers: 3 })
-          .onActionStart((event: GestureEvent|undefined) => {
+          .onActionStart((event: GestureEvent) => {
             console.info('Pinch start');
           })
             // 当捏合手势触发时，可以通过回调函数获取缩放比例，从而修改组件的缩放比例
-          .onActionUpdate((event: GestureEvent|undefined) => {
+          .onActionUpdate((event: GestureEvent) => {
             if(event){
               this.scaleValue = this.pinchValue * event.scale;
               this.pinchX = event.pinchCenterX;
               this.pinchY = event.pinchCenterY;
             }
           })
-          .onActionEnd(() => {
+          .onActionEnd((event: GestureEvent) => {
             this.pinchValue = this.scaleValue;
             console.info('Pinch end');
           })
@@ -294,18 +294,18 @@ struct Index {
         .rotate({ angle: this.angle })
         .gesture(
           RotationGesture()
-           .onActionStart((event: GestureEvent|undefined) => {
+           .onActionStart((event: GestureEvent) => {
               console.info('RotationGesture is onActionStart');
             })
               // 当旋转手势生效时，通过旋转手势的回调函数获取旋转角度，从而修改组件的旋转角度
-            .onActionUpdate((event: GestureEvent|undefined) => {
+            .onActionUpdate((event: GestureEvent) => {
               if(event){
                 this.angle = this.rotateValue + event.angle;
               }
               console.info('RotationGesture is onActionEnd');
             })
               // 当旋转结束抬手时，固定组件在旋转结束时的角度
-            .onActionEnd(() => {
+            .onActionEnd((event: GestureEvent) => {
               this.rotateValue = this.angle;
               console.info('RotationGesture is onActionEnd');
             })
@@ -373,7 +373,7 @@ struct Index {
         // 绑定滑动手势且限制仅在竖直方向滑动时触发
         SwipeGesture({ direction: SwipeDirection.Vertical })
           // 当滑动手势触发时，获取滑动的速度和角度，实现对组件的布局参数的修改
-          .onAction((event: GestureEvent|undefined) => {
+          .onAction((event: GestureEvent) => {
             if(event){
               this.speed = event.speed;
               this.rotateAngle = event.angle;

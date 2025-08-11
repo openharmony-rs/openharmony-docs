@@ -27,7 +27,7 @@ struct Index {
         // 采用gesture手势绑定方法绑定TapGesture
         .gesture(
           TapGesture()
-            .onAction(() => {
+            .onAction((event: GestureEvent) => {
               console.info('TapGesture is onAction');
             }))
     }
@@ -65,7 +65,7 @@ struct Index {
       Text('Gesture').fontSize(28)
         .gesture(
           TapGesture()
-            .onAction(() => {
+            .onAction((event: GestureEvent) => {
               console.info('Text TapGesture is onAction');
             }))
     }
@@ -74,7 +74,7 @@ struct Index {
     // 设置为priorityGesture时，点击文本区域会忽略Text组件的TapGesture手势事件，优先响应父组件Column的TapGesture手势事件
     .priorityGesture(
       TapGesture()
-        .onAction(() => {
+        .onAction((event: GestureEvent) => {
           console.info('Column TapGesture is onAction');
         }), GestureMask.IgnoreInternal)
   }
@@ -105,7 +105,7 @@ struct Index {
       Text('Gesture').fontSize(28)
         .gesture(
           TapGesture()
-            .onAction(() => {
+            .onAction((event: GestureEvent) => {
               console.info('Text TapGesture is onAction');
             }))
     }
@@ -114,7 +114,7 @@ struct Index {
     // 设置为parallelGesture时，点击文本区域会同时响应父组件Column和子组件Text的TapGesture手势事件
     .parallelGesture(
       TapGesture()
-        .onAction(() => {
+        .onAction((event: GestureEvent) => {
           console.info('Column TapGesture is onAction');
         }), GestureMask.Normal)
   }

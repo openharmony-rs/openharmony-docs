@@ -25,10 +25,10 @@
 struct FocusActiveExample {
   build() {
     Column() {
-      Button('Set Active').width(140).height(45).margin(5).onClick(() => {
+      Button('Set Active').width(140).height(45).margin(5).onClick((event: ClickEvent) => {
         this.getUIContext().getFocusController().activate(true, true);
       })
-      Button('Set Not Active').width(140).height(45).margin(5).onClick(() => {
+      Button('Set Not Active').width(140).height(45).margin(5).onClick((event: ClickEvent) => {
         this.getUIContext().getFocusController().activate(false, true);
       })
     }.width('100%')
@@ -515,13 +515,13 @@ struct FocusableExample {
 
       Divider()
     }.width('100%').justifyContent(FlexAlign.Center)
-    .onKeyEvent((e) => {
+    .onKeyEvent((event: KeyEvent) => {
       // 绑定onKeyEvent，在该Column组件获焦时，按下'F'键，可将第二个Text的focusable置反
-      if (e.keyCode === 2022 && e.type === KeyType.Down) {
+      if (event.keyCode === 2022 && event.type === KeyType.Down) {
         this.textFocusable = !this.textFocusable;
       }
       // 绑定onKeyEvent，在该Column组件获焦时，按下'G'键，可将第三个Text的enabled置反
-      if (e.keyCode === 2023 && e.type === KeyType.Down) {
+      if (event.keyCode === 2023 && event.type === KeyType.Down) {
         this.textEnabled = !this.textEnabled;
       }
     })
@@ -567,7 +567,7 @@ struct ScopeFocusExample {
       .width('80%')
       .height(50)
       .margin({ top: 5, bottom: 5 })
-      .onClick(() => {
+      .onClick((event: ClickEvent) => {
       })
       .focusable(this.scopeFocusState)
 
@@ -575,7 +575,7 @@ struct ScopeFocusExample {
         .width(140)
         .height(45)
         .margin(5)
-        .onClick(() => {
+        .onClick((event: ClickEvent) => {
           this.scopeFocusState = !this.scopeFocusState;
           console.log("Button1 onFocus");
         })
@@ -886,21 +886,21 @@ struct RequestExample {
 
         Button('FocusController.requestFocus')
           .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
+          .onClick((event: ClickEvent) => {
             this.getUIContext().getFocusController().requestFocus("testButton")
           })
           .backgroundColor('#ff2787d9')
 
         Button("focusControl.requestFocus")
           .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
+          .onClick((event: ClickEvent) => {
             focusControl.requestFocus("testButton2")
           })
           .backgroundColor('#ff2787d9')
 
         Button("clearFocus")
           .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
+          .onClick((event: ClickEvent) => {
             this.getUIContext().getFocusController().clearFocus()
           })
           .backgroundColor('#ff2787d9')
@@ -1245,7 +1245,7 @@ struct FocusOnclickExample {
     Column() {
       Button(this.name)
         .fontSize(30)
-        .onClick(() => {
+        .onClick((event: ClickEvent) => {
           this.count++
           if (this.count <= 0) {
             this.name = "count is negative number"
