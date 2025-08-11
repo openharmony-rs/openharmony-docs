@@ -50,6 +50,7 @@
     - [ArkTS1.2迁移工具(EasyTrans)用户手册](arkts-easytrans-userguide.md)
     - [ArkTS1.2语法迁移规则](arkts-v1.1-v1.2-migration-rules.md)
     - [ArkTS1.2并发迁移规则](arkts-v1.1-v1.2-concurrency-rules.md)
+    - [ArkTS1.2EAWorker迁移指导](arkts-v1.1-v1.2-worker-migration-guide.md)
     - [ArkTS1.2builtin迁移规则](arkts-v1.1-v1.2-builtin-rules.md)
     - [ArkTS1.2SDK迁移规则](arkts-v1.1-v1.2-sdk-rules.md)
     - [ArkTS1.2与ArkTS1.1互操作迁移规则](arkts-v1.1-v1.2-interop-rules.md)
