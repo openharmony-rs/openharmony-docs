@@ -12,7 +12,7 @@
   import { UIUtils } from '@ohos.arkui.stateManagement';
   ```
 
-- 状态管理V1和V2会给状态变量装饰器（如@State、@Local）装饰的Date、Map、Set、Array、interface字面量添加一层包装类用于观察属性变化与API调用，使用getTarget接口可以获取这些包装对象的原始对象。
+- 状态管理V1和V2会给状态变量装饰器（如[@State](arkts-static-state.md)、[@Local](arkts-static-new-local.md)）装饰或[makeObserved接口](arkts-static-new-makeObserved.md)转换后的Date、Map、Set、Array、interface字面量添加一层包装类用于观察属性变化与API调用，使用getTarget接口可以获取这些包装对象的原始对象。
 
 - 传入其他类型（如class类型）时，将不做处理。
 
@@ -62,7 +62,7 @@
   @Component
   struct Index {
     @State info: Info = { name: 'Tom' } as Info;
-
+  
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
