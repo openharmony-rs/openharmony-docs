@@ -504,8 +504,8 @@
             - [相对布局 (RelativeContainer)](ui/arkts-layout-development-relative-layout.md)
             - [栅格布局 (GridRow/GridCol)](ui/arkts-layout-development-grid-layout.md)
             - [选项卡 (Tabs)](ui/arkts-navigation-tabs.md)
-        - 列表与宫格<!--arkts-list-and-grid-->
-          - [列表与宫格概述](ui/arkts-list-grid-development-overview.md)
+        - 列表与网格<!--arkts-list-and-grid-->
+          - [列表与网格概述](ui/arkts-list-grid-development-overview.md)
           - [创建列表 (List)](ui/arkts-layout-development-create-list.md)
           - [创建弧形列表 (ArcList)](ui/arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
           - [创建网格 (Grid/GridItem)](ui/arkts-layout-development-create-grid.md)
@@ -562,7 +562,6 @@
           - [几何图形绘制概述](ui/arkts-shape-overview.md)
           - [绘制几何图形 (Shape)](ui/arkts-geometric-shape-drawing.md)
           - [形状裁剪 (clipShape)](ui/arkts-clip-shape.md)
-          - [使用画布绘制自定义图形 (Canvas)](ui/arkts-drawing-customization-on-canvas.md)
         - [添加交互响应](ui/arkts-interaction-development-guide-overview.md)
           - [交互响应概述](ui/arkts-interaction-capability-overview.md)
           - [交互基础机制说明](ui/arkts-interaction-basic-principles.md)
@@ -605,8 +604,6 @@
             - [阴影](ui/arkts-shadow-effect.md)
             - [色彩](ui/arkts-color-effect.md)
           - [帧动画（ohos.animator）](ui/arkts-animator.md)
-        - Modifier机制<!--arkts-modifier-mechanism-->
-          - [ContentModifier (内容修改器)](ui/arkts-common-attributes-content-modifier.md)
         - 使用自定义能力<!--arkts-user-defined-capabilities-->
           - [自定义能力概述](ui/arkts-user-defined.md)
           - [自定义组合](ui/arkts-user-defined-composition.md)
@@ -616,11 +613,14 @@
             - [自定义组件节点 (FrameNode)](ui/arkts-user-defined-arktsNode-frameNode.md)
             - [自定义渲染节点 (RenderNode)](ui/arkts-user-defined-arktsNode-renderNode.md)
             - [自定义声明式节点 (BuilderNode)](ui/arkts-user-defined-arktsNode-builderNode.md)
-          - 自定义扩展<!--arkts-modifier-->
+          - 自定义绘制<!--arkts-draw-->
+            - [使用画布绘制自定义图形 (Canvas)](ui/arkts-drawing-customization-on-canvas.md)
+            - [自定义绘制修改器 (DrawModifier)](ui/arkts-user-defined-extension-drawModifier.md)
+          - Modifier机制<!--arkts-modifier-->
             - [自定义扩展概述](ui/arkts-user-defined-modifier.md)
+            - [内容修改器 (ContentModifier)](ui/arkts-common-attributes-content-modifier.md)
             - [属性修改器 (AttributeModifier)](ui/arkts-user-defined-extension-attributeModifier.md)
             - [属性更新器 (AttributeUpdater)](ui/arkts-user-defined-extension-attributeUpdater.md)
-            - [自定义绘制修改器 (DrawModifier)](ui/arkts-user-defined-extension-drawModifier.md)
         - [使用镜像能力](ui/arkts-mirroring-display.md)
         - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
           - [支持无障碍](ui/arkts-universal-attributes-accessibility.md)
@@ -640,32 +640,31 @@
           - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](ui/arkts-ui-extension-components.md)
           - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)(ArkTS1.1)](ui/arkts-isolated-components.md)
           <!--DelEnd-->
-        - 使用NDK接口构建UI<!--arkts-use-ndk-->
-          - [NDK接口概述](ui/ndk-build-ui-overview.md)
-          - [接入ArkTS页面](ui/ndk-access-the-arkts-page.md)
-          - 添加交互事件<!--arkts-add-event-->
-            - [监听组件事件](ui/ndk-listen-to-component-events.md)
-            - [绑定手势事件](ui/ndk-bind-gesture-events.md)
-            - [拖拽事件](ui/ndk-drag-event.md)
-            - [监听组件布局和绘制送显事件](ui/ndk-inspector-component-observer.md)
-          - [使用动画](ui/ndk-use-animation.md)
-          - 构建布局<!--arkts-build-layout-ndk-->
-            - [使用列表](ui/ndk-loading-long-list.md)
-            - [使用瀑布流](ui/ndk-waterflow.md)
-          - 使用文本<!--arkts-build-text-ndk-->
-            - [Text组件的文本绘制与显示](ui/ndk-styled-string.md)
-            - [输入框文本事件监听](ui/ndk-textarea-event.md)
-          - [构建弹窗](ui/ndk-build-pop-up-window.md)
-          - [构建自定义组件](ui/ndk-build-custom-components.md)
-          - [嵌入ArkTS组件](ui/ndk-embed-arkts-components.md)
-          - [通过XComponent接入无障碍](ui/ndk-accessibility-xcomponent.md)
-          - [自定义绘制](ui/arkts-user-defined-draw.md)
-          - [查询和操作自定义节点](ui/ndk-node-query-operate.md)
-          - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ui/ndk-embedded-component.md)
-          - [在NDK中保证多实例场景功能正常](ui/ndk-scope-task.md)
-          - [NDK支持多线程创建组件](ui/ndk-build-on-multi-thread.md)
-      - UI高性能开发<!--ui-performance-->
-        - [UI性能优化概览](ui/ui-performance-overview.md)
+      - 使用NDK接口构建UI<!--arkts-use-ndk-->
+        - [NDK接口概述](ui/ndk-build-ui-overview.md)
+        - [接入ArkTS页面](ui/ndk-access-the-arkts-page.md)
+        - 添加交互事件<!--arkts-add-event-->
+          - [监听组件事件](ui/ndk-listen-to-component-events.md)
+          - [绑定手势事件](ui/ndk-bind-gesture-events.md)
+          - [拖拽事件](ui/ndk-drag-event.md)
+          - [监听组件布局和绘制送显事件](ui/ndk-inspector-component-observer.md)
+        - [使用动画](ui/ndk-use-animation.md)
+        - 构建布局<!--arkts-build-layout-ndk-->
+          - [使用列表](ui/ndk-loading-long-list.md)
+          - [使用瀑布流](ui/ndk-waterflow.md)
+        - 使用文本<!--arkts-build-text-ndk-->
+          - [Text组件的文本绘制与显示](ui/ndk-styled-string.md)
+          - [输入框文本事件监听](ui/ndk-textarea-event.md)
+        - [构建弹窗](ui/ndk-build-pop-up-window.md)
+        - [构建自定义组件](ui/ndk-build-custom-components.md)
+        - [嵌入ArkTS组件](ui/ndk-embed-arkts-components.md)
+        - [通过XComponent接入无障碍](ui/ndk-accessibility-xcomponent.md)
+        - [自定义绘制](ui/arkts-user-defined-draw.md)
+        - [查询和操作自定义节点](ui/ndk-node-query-operate.md)
+        - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ui/ndk-embedded-component.md)
+        - [在NDK中保证多实例场景功能正常](ui/ndk-scope-task.md)
+        - [NDK支持多线程创建组件](ui/ndk-build-on-multi-thread.md)
+      - [UI高性能开发](ui/ui-performance-overview.md)
       - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
         - [UI开发 (兼容JS的类Web开发范式)概述](ui/ui-js-overview.md)
         - 框架说明<!--js-framework-overview-->
