@@ -101,7 +101,7 @@ build() {
         parameters: {
           "ability.want.params.uiExtensionType": "sys/commonUI"
         }
-      })
+      } as Record<String, Object>)
       .onRemoteReady((proxy) => {
         console.info('onRemoteReady, for test');
       })
@@ -112,7 +112,7 @@ build() {
 
 ## onDisConnect
 
-ArkTS1.1接口声明：[onRelease(callback: Callback\<number>)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onreleasedeprecated)
+ArkTS1.1接口声明：[onDisConnect(callback:()&nbsp;=&gt;&nbsp;void)](../reference/apis-arkui/arkui-ts/ts-container-ability-component-sys.md#ondisconnect)
 
 替代的ArkTS1.2接口声明：[onTerminated(callback: Callback&lt;TerminationInfo&gt;)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onterminated12)或者[onError(callback:ErrorCallback)](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onerror)
 
@@ -158,7 +158,7 @@ build() {
         parameters: {
           "ability.want.params.uiExtensionType": "sys/commonUI"
         }
-      })
+      } as Record<String, Object>)
       .onRelease((info) => {
         console.info('onRelease: releaseCode =' + JSON.stringify(info));
       })

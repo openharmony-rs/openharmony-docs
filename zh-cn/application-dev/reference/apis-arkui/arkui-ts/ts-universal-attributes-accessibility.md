@@ -592,8 +592,52 @@ accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
 
 该示例主要演示accessibilityText无障碍文本和accessibilityDescription无障碍说明的播报内容。
 
+ArkTS1.1示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct Index {
+
+  @Builder customAccessibilityNode() {
+    Column() {
+      Text(`virtual node`)
+    }
+    .width(10)
+    .height(10)
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text("文本1")
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Text("文本2")
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+      .accessibilityGroup(true)
+      .accessibilityLevel("yes")
+      .accessibilityText("分组") // 无障碍文本的内容，若组件既拥有文本属性又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。
+      .accessibilityDescription("Column组件可以被选中，播报的内容是“分组”")
+      .accessibilityVirtualNode(this.customAccessibilityNode)
+      .accessibilityChecked(true)
+      .accessibilitySelected(undefined)
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Builder, Column, Row, Text, FontWeight } from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct Index {
@@ -634,13 +678,15 @@ struct Index {
 
 该示例主要演示优先使用子组件的无障碍文本进行朗读。
 
+ArkTS1.1示例：
+
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Focus {
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Text('123456')
         .focusable(true)
         .borderRadius(5)
@@ -660,9 +706,41 @@ struct Focus {
 }
 ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Button } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Focus {
+  build() {
+    Column() {
+      Text('123456')
+        .focusable(true)
+        .borderRadius(5)
+        .accessibilityText("有accessibility有text优先读accessibility")
+        .accessibilityLevel("yes")
+      // Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
+      Button("无accessibility有text 读text").accessibilityLevel("yes")
+      // Button()
+      Button('btn123').accessibilityText("有accessibility有text btn123").accessibilityLevel("yes")
+      Button('btn123').accessibilityLevel("yes")
+    }
+    .accessibilityGroup(true, { accessibilityPreferred: true })
+    .borderWidth(5)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 示例3（设置首焦点和组件的下一个焦点）
 
 该示例主要演示accessibilityDefaultFocus屏幕朗读当前页默认首焦点和accessibilityNextFocusId走焦过程中组件的下一个焦点。
+
+ArkTS1.1示例：
 
 ```ts
 // xxx.ets
@@ -670,7 +748,44 @@ struct Focus {
 @Component
 struct Index {
   build() {
-    Column({ space: 20 }) {
+    Column() {
+      Text('Text Demo 1')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+        .accessibilityNextFocusId('text3')
+      Text('Text Demo 2')
+        .id('text2')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+        .accessibilityDefaultFocus(true)  // 设置该组件为屏幕朗读当前页默认首焦点
+        .accessibilityNextFocusId('text4')
+      Text('Text Demo 3')
+        .id('text3')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+        .accessibilityNextFocusId('text2')
+      Text('Text Demo 4')
+        .id('text4')
+        .fontSize(50)
+        .accessibilityLevel('yes')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
       Text('Text Demo 1')
         .fontSize(50)
         .accessibilityLevel('yes')
@@ -701,6 +816,8 @@ struct Index {
 
 该示例主要演示accessibilityRole无障碍组件类型和accessibilityTextHint供无障碍辅助应用查询的组件的文本提示信息。
 
+ArkTS1.1示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -710,7 +827,7 @@ struct Index {
   @State hintStr: string = '点击开始下载';
 
   build() {
-    Column({ space: 20 }) {
+    Column() {
       Button(this.isDownloading ? '下载中' : '点击下载')
         .accessibilityLevel('yes')
         .accessibilityTextHint(this.hintStr)
@@ -734,9 +851,50 @@ struct Index {
 }
 ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Button, AccessibilityRoleType, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+
+@Entry
+@Component
+struct Index {
+  @State isDownloading: boolean = false;
+  @State hintStr: string = '点击开始下载';
+
+  build() {
+    Column() {
+      Button(this.isDownloading ? '下载中' : '点击下载')
+        .accessibilityLevel('yes')
+        .accessibilityTextHint(this.hintStr)
+        .onClick((e: ClickEvent) => {
+          this.isDownloading = !this.isDownloading;
+          this.hintStr = this.isDownloading ? '状态变为下载中' : '状态变为暂停下载';
+        })
+      // TextInput({ placeholder: '请输入手机号码' })
+      //   .accessibilityLevel('yes')
+      //   .accessibilityTextHint('请输入11位手机号码')
+      //   .width('80%')
+      Text('按照按钮类型播报')
+        .accessibilityLevel('yes')
+        .accessibilityRole(AccessibilityRoleType.BUTTON)
+        .accessibilityTextHint('屏幕朗读播报时，该组件将按照按钮类型进行播报')
+        .fontSize(30)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### 示例5（设置无障碍屏幕朗读滚动和焦点绿框绘制）
 
 该示例主要演示accessibilityScrollTriggerable设置无障碍节点是否支持屏幕朗读滚动、accessibilityFocusDrawLevel设置无障碍焦点绿框的绘制层级和accessibilityUseSamePage设置跨进程嵌入式显示的组件,如[EmbeddedComponent](ts-container-embedded-component.md)的accessibilityUseSamePage属性。
+
+ArkTS1.1示例：
 
 ```ts
 // xxx.ets
@@ -825,6 +983,109 @@ struct Index {
                 .fontWeight(FontWeight.Medium)
             }
             .margin({ top: 15 })
+          }
+          .width('100%')
+        }
+      }
+      .accessibilityScrollTriggerable(false)
+      .width('100%')
+    }
+    .height('100%')
+    .backgroundColor('#F7F9FC')
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Row, Stack, FontWeight, Text, List, ListItem, $r,
+  EmbeddedComponent, EmbeddedType, FocusDrawLevel, AccessibilitySamePageMode, Margin, Padding } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Message: ';
+
+  build() {
+    Row() {
+      List() {
+        ListItem() {
+          Column() {
+            Text(this.message)
+              .fontSize(18)
+              .fontColor('#2D2D2D')
+              .fontWeight(FontWeight.Medium)
+            Column() {
+              EmbeddedComponent({
+                bundleName: 'com.example.embeddeddemo',
+                abilityName: 'ExampleEmbeddedAbility'}, 
+                EmbeddedType.EMBEDDED_UI_EXTENSION)
+                .width('100%')
+                .height('90%')
+                .onTerminated((info) => {
+                  this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
+                })
+                .onError((error) => {
+                  this.message = 'Error: code = ' + error.code;
+                })
+                .accessibilityUseSamePage(AccessibilitySamePageMode.FULL_SILENT)
+                .width('90%')
+                .height('50%')
+                .backgroundColor('#F0F0F0')
+                .borderRadius(8)
+                .borderWidth(1)
+                .borderColor('#D9D9D9')
+
+              Stack() {
+                Column() {
+                  Text('文本1')
+                    .fontSize(18)
+                    .fontColor('#2D2D2D')
+                    .fontWeight(FontWeight.Medium)
+                  Text('文本1')
+                    .fontSize(18)
+                    .fontColor('#2D2D2D')
+                    .fontWeight(FontWeight.Medium)
+                    .accessibilityFocusDrawLevel(FocusDrawLevel.TOP)
+                }
+                .padding({ top: 8, bottom: 8 } as Padding)
+
+                Column() {
+                  Text('文本2')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .fontWeight(FontWeight.Medium)
+                  Text('文本2')
+                    .fontSize(18)
+                    .fontColor('#FFFFFF')
+                    .fontWeight(FontWeight.Medium)
+                }
+                .backgroundColor('#4A90E2')
+                .padding({
+                  left: 12,
+                  right: 12,
+                  top: 10,
+                  bottom: 10
+                } as Padding)
+                .borderRadius(6)
+              }
+              .width('100%')
+              .margin({ top: 10, bottom: 10 } as Margin)
+            }
+            .width('100%')
+            .height('100%')
+            .margin({ top: 15 } as Margin)
+            .accessibilityText($r('app.string.app_name'))
+            .accessibilityDescription($r('app.string.module_desc'))
+            Column() {
+              Text('文本4')
+                .fontSize(18)
+                .fontWeight(FontWeight.Medium)
+            }
+            .margin({ top: 15 } as Margin)
           }
           .width('100%')
         }

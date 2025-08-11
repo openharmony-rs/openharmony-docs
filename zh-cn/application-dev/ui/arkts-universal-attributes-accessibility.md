@@ -222,7 +222,7 @@ struct Index {
 ArkTS1.2示例：
 
 ```ts
-import { Entry, Component, Builder, Column, Text, Row, Builder, FontWeight } from '@ohos.arkui.component';
+import { Entry, Component, Builder, Column, Text, Row, FontWeight } from '@ohos.arkui.component';
 
 @Entry
 @Component
