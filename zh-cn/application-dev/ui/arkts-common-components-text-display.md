@@ -12,11 +12,15 @@ Text可通过以下两种方式来创建：
 
 
 - string字符串。
-
+  ArkTS1.1示例：
   ```ts
   Text('我是一段文本')
   ```
-
+  ArkTS1.2示例：
+  ```ts
+  import { Text } from '@ohos.arkui.component';
+  Text('我是一段文本')
+  ```
 
 ![zh-cn_image_0000001563060685](figures/zh-cn_image_0000001563060685.png)
 
@@ -36,7 +40,19 @@ Text可通过以下两种方式来创建：
   }
   ```
 
+  ArkTS1.1示例：
   ```ts
+  Text($r('app.string.module_desc'))
+    .baselineOffset(0)
+    .fontSize(30)
+    .border({ width: 1 })
+    .padding(10)
+    .width(300)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text } from '@ohos.arkui.component';
+  import { $r, $rawfile } from 'arkui.component.common';
   Text($r('app.string.module_desc'))
     .baselineOffset(0)
     .fontSize(30)
@@ -57,7 +73,17 @@ Text可通过以下两种方式来创建：
   Span组件需嵌入在Text组件中才能显示，单独使用时不会显示任何内容。Text与Span同时配置文本内容时，Span内容将覆盖Text内容。
 
 
+  ArkTS1.1示例：
   ```ts
+  Text('我是Text') {
+    Span('我是Span')
+  }
+  .padding(10)
+  .borderWidth(1)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, Span } from '@ohos.arkui.component';
   Text('我是Text') {
     Span('我是Span')
   }
@@ -72,6 +98,7 @@ Text可通过以下两种方式来创建：
   通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration)设置文本装饰线及颜色。
 
 
+  ArkTS1.1示例：
   ```ts
   Text() {
     Span('我是Span1，').fontSize(16).fontColor(Color.Grey)
@@ -85,12 +112,38 @@ Text可通过以下两种方式来创建：
   .borderWidth(1)
   .padding(10)
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, Span, TextDecorationType, FontStyle, Color, DecorationStyleInterface } from '@ohos.arkui.component';
+  Text() {
+    Span('我是Span1，').fontSize(16).fontColor(Color.Grey)
+      .decoration({ type: TextDecorationType.LineThrough, color: Color.Red } as DecorationStyleInterface)
+    Span('我是Span2').fontColor(Color.Blue).fontSize(16)
+      .fontStyle(FontStyle.Italic)
+      .decoration({ type: TextDecorationType.Underline, color: Color.Black } as DecorationStyleInterface)
+    Span('，我是Span3').fontSize(16).fontColor(Color.Grey)
+      .decoration({ type: TextDecorationType.Overline, color: Color.Green } as DecorationStyleInterface)
+  }
+  .borderWidth(1)
+  .padding(10)
+  ```
 
   ![zh-cn_image_0000001562700437](figures/zh-cn_image_0000001562700437.png)
 
 - 通过[textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase)设置文字一直保持大写或者小写状态。
 
+  ArkTS1.1示例：
   ```ts
+  Text() {
+    Span('I am Upper-span').fontSize(12)
+      .textCase(TextCase.UpperCase)
+  }
+  .borderWidth(1)
+  .padding(10)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, Span, TextCase } from '@ohos.arkui.component';
   Text() {
     Span('I am Upper-span').fontSize(12)
       .textCase(TextCase.UpperCase)
@@ -106,6 +159,7 @@ Text可通过以下两种方式来创建：
   由于Span组件无尺寸信息，仅支持添加点击事件[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、悬浮事件[onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)。
 
 
+  ArkTS1.1示例：
   ```ts
   // xxx.ets
   @Entry
@@ -142,6 +196,46 @@ Text可通过以下两种方式来创建：
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Row, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { Text, Span, TextCase, HoverEvent } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    @State textStr1: string = '';
+    @State textStr2: string = '';
+
+    build() {
+      Row() {
+        Column() {
+          Text() {
+            Span('I am Upper-span')
+              .fontSize(12)
+              .textCase(TextCase.UpperCase)
+              .fontSize(30)
+              .onClick((event: ClickEvent) => {
+                console.info('Span onClick is triggering');
+                this.textStr1 = 'Span onClick is triggering';
+              })
+              .onHover((isHover: boolean, event: HoverEvent) => {
+                console.info('Span onHover is triggering');
+                this.textStr2 = 'Span onHover is triggering';
+              })
+          }
+
+          Text('onClick：' + this.textStr1)
+            .fontSize(20)
+          Text('onHover：' + this.textStr2)
+            .fontSize(20)
+        }.width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
 
   ![span_event](figures/span_event.gif)
 
@@ -149,7 +243,27 @@ Text可通过以下两种方式来创建：
 
 - 通过[textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign)属性设置文本对齐样式。
 
+  ArkTS1.1示例：
   ```ts
+  Text('左对齐')
+    .width(300)
+    .textAlign(TextAlign.Start)
+    .border({ width: 1 })
+    .padding(10)
+  Text('中间对齐')
+    .width(300)
+    .textAlign(TextAlign.Center)
+    .border({ width: 1 })
+    .padding(10)
+  Text('右对齐')
+    .width(300)
+    .textAlign(TextAlign.End)
+    .border({ width: 1 })
+    .padding(10)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, TextAlign } from '@ohos.arkui.component';
   Text('左对齐')
     .width(300)
     .textAlign(TextAlign.Start)
@@ -171,6 +285,7 @@ Text可通过以下两种方式来创建：
 
 - 通过[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性控制文本超长处理，textOverflow需配合[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)一起使用（默认情况下文本自动折行）。从API version 18开始，文本超长时设置跑马灯的方式展示时，支持设置跑马灯的配置项，比如开关、步长、循环次数、方向等。
 
+  ArkTS1.1示例：
   ```ts
   Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
     .width(250)
@@ -208,14 +323,65 @@ Text可通过以下两种方式来创建：
       delay: 0,
       fadeout: false,
       marqueeStartPolicy: MarqueeStartPolicy.DEFAULT
-    })                      
+    })
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, TextOverflow, MarqueeStartPolicy } from '@ohos.arkui.component';
+  Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.None })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+  Text('我是超长文本，超出的部分显示省略号。I am an extra long text, with ellipses displayed for any excess.')
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.Ellipsis })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+  Text('当文本溢出其尺寸时，文本将滚动显示。When the text overflows its dimensions, the text will scroll for displaying.')
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.MARQUEE })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+  Text('当文本溢出其尺寸时，文本将滚动显示，支持设置跑马灯配置项。When the text overflows its dimensions, the text will scroll for displaying.')
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.MARQUEE })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .marqueeOptions({
+      start: true,
+      fromStart: true,
+      step: 6,
+      loop: -1,
+      delay: 0,
+      fadeout: false,
+      marqueeStartPolicy: MarqueeStartPolicy.DEFAULT
+    })
   ```
 
   ![zh-cn_image_0000001563060701](figures/zh-cn_image_0000001563060701.gif)
 
 - 通过[lineHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight)属性设置文本行高。
 
+  ArkTS1.1示例：
   ```ts
+  Text('This is the text with the line height set. This is the text with the line height set.')
+    .width(300).fontSize(12).border({ width: 1 }).padding(10)
+  Text('This is the text with the line height set. This is the text with the line height set.')
+    .width(300).fontSize(12).border({ width: 1 }).padding(10)
+    .lineHeight(20)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text } from '@ohos.arkui.component';
   Text('This is the text with the line height set. This is the text with the line height set.')
     .width(300).fontSize(12).border({ width: 1 }).padding(10)
   Text('This is the text with the line height set. This is the text with the line height set.')
@@ -225,8 +391,9 @@ Text可通过以下两种方式来创建：
 
   ![zh-cn_image_0000001511740480](figures/zh-cn_image_0000001511740480.png)
 
-- 通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration)属性设置文本装饰线样式、颜色及其粗细。
+- 通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration)属性设置文本装饰线样式、颜色及其粗细。目前仅ArkTS1.1支持粗细设置。
 
+  ArkTS1.1示例：
   ```ts
   Text('This is the text')
     .decoration({
@@ -276,12 +443,88 @@ Text可通过以下两种方式来创建：
     })
     .borderWidth(1).padding(15).margin(5)
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, TextDecorationType, Color, TextDecorationStyle } from '@ohos.arkui.component';
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.LineThrough,
+      color: Color.Red
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Overline,
+      color: Color.Red
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Red
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.DASHED
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.DOTTED
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.DOUBLE
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.WAVY
+    })
+    .borderWidth(1).padding(15).margin(5)
+  ```
 
   ![Text_decoration](figures/Text_decoration.jpg)
 
 - 通过[baselineOffset](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#baselineoffset)属性设置文本基线的偏移量。
 
+  ArkTS1.1示例：
   ```ts
+  Text('This is the text content with baselineOffset 0.')
+    .baselineOffset(0)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  Text('This is the text content with baselineOffset 30.')
+    .baselineOffset(30)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  Text('This is the text content with baselineOffset -20.')
+    .baselineOffset(-20)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text } from '@ohos.arkui.component';
   Text('This is the text content with baselineOffset 0.')
     .baselineOffset(0)
     .fontSize(12)
@@ -309,7 +552,33 @@ Text可通过以下两种方式来创建：
 
 - 通过[letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing)属性设置文本字符间距。
 
+  ArkTS1.1示例：
   ```ts
+  Text('This is the text content with letterSpacing 0.')
+    .letterSpacing(0)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  Text('This is the text content with letterSpacing 3.')
+    .letterSpacing(3)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  Text('This is the text content with letterSpacing -1.')
+    .letterSpacing(-1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text } from '@ohos.arkui.component';
   Text('This is the text content with letterSpacing 0.')
     .letterSpacing(0)
     .fontSize(12)
@@ -339,7 +608,44 @@ Text可通过以下两种方式来创建：
 
   minFontSize用于设置文本的最小显示字号，maxFontSize用于设置文本的最大显示字号。这两个属性必须同时设置才能生效，并且需要与[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性或布局大小限制配合使用，单独设置任一属性将不会产生效果。
 
+  ArkTS1.1示例：
   ```ts
+  Text('我的最大字号为30，最小字号为5，宽度为250，maxLines为1')
+    .width(250)
+    .maxLines(1)
+    .maxFontSize(30)
+    .minFontSize(5)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  Text('我的最大字号为30，最小字号为5，宽度为250，maxLines为2')
+    .width(250)
+    .maxLines(2)
+    .maxFontSize(30)
+    .minFontSize(5)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  Text('我的最大字号为30，最小字号为15，宽度为250,高度为50')
+    .width(250)
+    .height(50)
+    .maxFontSize(30)
+    .minFontSize(15)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  Text('我的最大字号为30，最小字号为15，宽度为250,高度为100')
+    .width(250)
+    .height(100)
+    .maxFontSize(30)
+    .minFontSize(15)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text } from '@ohos.arkui.component';
   Text('我的最大字号为30，最小字号为5，宽度为250，maxLines为1')
     .width(250)
     .maxLines(1)
@@ -378,7 +684,30 @@ Text可通过以下两种方式来创建：
 
 - 通过[textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcase)属性设置文本大小写。
 
+  ArkTS1.1示例：
   ```ts
+  Text('This is the text content with textCase set to Normal.')
+    .textCase(TextCase.Normal)
+    .padding(10)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  // 文本全小写展示
+  Text('This is the text content with textCase set to LowerCase.')
+    .textCase(TextCase.LowerCase)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  // 文本全大写展示
+  Text('This is the text content with textCase set to UpperCase.')
+    .textCase(TextCase.UpperCase)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, TextCase } from '@ohos.arkui.component';
   Text('This is the text content with textCase set to Normal.')
     .textCase(TextCase.Normal)
     .padding(10)
@@ -403,7 +732,15 @@ Text可通过以下两种方式来创建：
 
 - 通过[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性设置文本是否可复制粘贴。
 
+  ArkTS1.1示例：
   ```ts
+  Text("这是一段可复制文本")
+    .fontSize(30)
+    .copyOption(CopyOptions.InApp)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, CopyOptions } from '@ohos.arkui.component';
   Text("这是一段可复制文本")
     .fontSize(30)
     .copyOption(CopyOptions.InApp)
@@ -413,7 +750,15 @@ Text可通过以下两种方式来创建：
 
 - 通过[fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily)属性设置字体列表。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../reference/apis-arkui/js-apis-font.md)。
 
+  ArkTS1.1示例：
   ```ts
+  Text("This is the text content with fontFamily")
+    .fontSize(30)
+    .fontFamily('HarmonyOS Sans')
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text } from '@ohos.arkui.component';
   Text("This is the text content with fontFamily")
     .fontSize(30)
     .fontFamily('HarmonyOS Sans')
@@ -422,6 +767,7 @@ Text可通过以下两种方式来创建：
   ![Text_font_family](figures/Text_font_family.png)
 
 - 从API version 20开始，支持通过[optimizeTrailingSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#optimizetrailingspace20)设置是否在文本布局过程中优化每行末尾的空格，可解决行尾空格影响对齐显示效果问题。
+  ArkTS1.2不支持此设置。
 
   ```ts
   Column() {
@@ -444,7 +790,9 @@ Text可通过以下两种方式来创建：
   ![Text_optimize_trailing_space](figures/Text_optimize_trailing_space.jpg)
 
 - 从API version 20开始，支持通过[lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20)设置文本的行间距。当不配置[LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20对象说明)时，首行上方和尾行下方默认会有行间距，当onlyBetweenLines设置为true时，行间距仅适用于行与行之间，首行上方无额外的行间距。
+  ArkTS1.2不支持onlyBetweenLines设置。
 
+  ArkTS1.1示例：
   ```ts
   function style() {
   .width(250)
@@ -458,9 +806,21 @@ Text可通过以下两种方式来创建：
    .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
    .style()
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, LengthMetrics } from '@ohos.arkui.component';
+  Text('The line spacing of this context is set to 20_px, and the spacing is effective only between the lines.')
+    .lineSpacing(LengthMetrics.px(20))
+    .width(250)
+    .height(100)
+    .maxFontSize(30)
+    .minFontSize(15)
+    .border({ width: 1 })
+  ```
   ![Text_line_spacing](figures/Text_line_spacing.jpg)
 
 - 从API version 20开始，支持通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enableautospacing20)设置是否开启中文与西文的自动间距。
+  ArkTS1.2不支持此设置。
 
   ```ts
   @Entry
@@ -507,6 +867,7 @@ Text可通过以下两种方式来创建：
   ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - 从API version 20开始，支持通过[ShaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
+  ArkTS1.2不支持此设置。
 
   ```ts
   @State message: string = 'Hello World';
@@ -533,6 +894,7 @@ Text可通过以下两种方式来创建：
 
 Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
 
+ArkTS1.1示例：
 ```ts
 // xxx.ets
 @Entry
@@ -564,12 +926,48 @@ struct Index {
   }
 }
 ```
+ArkTS1.2示例：
+```ts
+import { Entry, Column, Row, Component, Button, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { Text, TouchEvent } from '@ohos.arkui.component';
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State textStr1: string = '';
+  @State textStr2: string = '';
+
+  build() {
+    Row() {
+      Column() {
+        Text('This is a text component.')
+          .fontSize(30)
+          .onClick((event: ClickEvent) => {
+            console.info('Text onClick is triggering');
+            this.textStr1 = 'Text onClick is triggering';
+          })
+          .onTouch((event: TouchEvent) => {
+            console.info('Text onTouch is triggering');
+            this.textStr2 = 'Text onTouch is triggering';
+          })
+        Text('onClick：' + this.textStr1)
+          .fontSize(20)
+        Text('onTouch：' + this.textStr2)
+          .fontSize(20)
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ![text_event](figures/text_event.gif)
 
 ## 设置垂直居中
 
 从API version 20开始，Text组件支持通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性实现文本段落在垂直方向的对齐。
+ArkTS1.2不支持此设置。
 
   - 以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
 
@@ -595,7 +993,15 @@ struct Index {
 
     Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性才可以被选中。
 
+    ArkTS1.1示例：
     ```ts
+    Text("这是一段文本，用来展示选中菜单")
+      .fontSize(30)
+      .copyOption(CopyOptions.InApp)
+    ```
+    ArkTS1.2示例：
+    ```ts
+    import { Text, CopyOptions } from '@ohos.arkui.component';
     Text("这是一段文本，用来展示选中菜单")
       .fontSize(30)
       .copyOption(CopyOptions.InApp)
@@ -604,6 +1010,7 @@ struct Index {
 
   - Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)属性绑定自定义选择菜单。
 
+    ArkTS1.1示例：
     ```ts
     Text("这是一段文本，用来展示选中菜单", this.options)
       .fontSize(30)
@@ -637,10 +1044,49 @@ struct Index {
       }
     }
     ```
+    ArkTS1.2示例：
+    ```ts
+    import { Entry, Column, Row, Component, Button, ClickEvent, Builder } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { Text, CopyOptions, TextSpanType, TextResponseType, TextController, Menu, MenuItem, MenuItemGroup, MenuItemOptions } from '@ohos.arkui.component';
+    import { $r, $rawfile } from 'arkui.component.common';
+    Text("这是一段文本，用来展示选中菜单")
+      .fontSize(30)
+      .copyOption(CopyOptions.InApp)
+      .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
+        onAppear: (start: number, end: number) => {
+          console.info('自定义选择菜单弹出时触发该回调');
+        },
+        onDisappear: () => {
+          console.info('自定义选择菜单关闭时触发该回调');
+        }
+      })
+    ```
+
+    ```ts
+    // 定义菜单项
+    @Builder
+    RightClickTextCustomMenu() {
+      Column() {
+        Menu() {
+          MenuItemGroup() {
+            MenuItem({ startIcon: $r('app.media.app_icon'), content: "CustomMenu One", labelInfo: "" } as MenuItemOptions)
+              .onClick((click: ClickEvent) => {
+                // 使用closeSelectionMenu接口关闭菜单
+                this.controller.closeSelectionMenu();
+              })
+            MenuItem({ startIcon: $r('app.media.app_icon'), content: "CustomMenu Two", labelInfo: "" } as MenuItemOptions)
+            MenuItem({ startIcon: $r('app.media.app_icon'), content: "CustomMenu Three", labelInfo: "" } as MenuItemOptions)
+          }
+        }.backgroundColor('#F0F0F0')
+      }
+    }
+    ```
     ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
 
   - Text组件通过设置[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)属性扩展自定义选择菜单，可以设置扩展项的文本内容、图标以及回调方法。
 
+    ArkTS1.1示例：
     ```ts
     Text('这是一段文本，用来展示选中菜单')
       .fontSize(20)
@@ -684,6 +1130,47 @@ struct Index {
       return false;
     };
     ```
+    ArkTS1.2示例：
+    ```ts
+    import { Text, CopyOptions, TextMenuItem, TextMenuItemId, TextRange, EditMenuOptions } from '@ohos.arkui.component';
+    import { $r, $rawfile } from 'arkui.component.common';
+    Text('这是一段文本，用来展示选中菜单')
+      .fontSize(20)
+      .copyOption(CopyOptions.LocalDevice)
+      .editMenuOptions({
+        onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+          let item1: TextMenuItem = {
+            content: 'customMenu1',
+            icon: $r('app.media.app_icon'),
+            id: TextMenuItemId.of('customMenu1'),
+          };
+          let item2: TextMenuItem = {
+            content: 'customMenu2',
+            id: TextMenuItemId.of('customMenu2'),
+            icon: $r('app.media.app_icon'),
+          };
+          menuItems.push(item1);
+          menuItems.unshift(item2);
+          return menuItems;
+        },
+        onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+          if (menuItem.id.equals(TextMenuItemId.of("customMenu2"))) {
+            console.log("拦截 id: customMenu2 start:" + textRange.start + "; end:" + textRange.end);
+            return true;
+          }
+          if (menuItem.id.equals(TextMenuItemId.COPY)) {
+            console.log("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
+            return true;
+          }
+          if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+            console.log("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+            return false;
+          }
+          return false;
+        }
+      } as EditMenuOptions)
+    ```
+
     ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
 ### 关闭选中菜单
@@ -693,6 +1180,7 @@ struct Index {
   - 在Text组件区域内点击空白处，会正常关闭选中态和菜单；
   - 在Text组件区域外点击空白处，前提是Text组件设置[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)属性，具体示例如下：
 
+    ArkTS1.1示例：
     ```ts
     // xxx.ets
     @Entry
@@ -729,10 +1217,52 @@ struct Index {
       }
     }
     ```
+    ArkTS1.2示例：
+    ```ts
+    import { Entry, Column, Row, Component, Button, ClickEvent } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { Text, CopyOptions, Flex, FlexDirection, ItemAlign, FlexAlign } from '@ohos.arkui.component';
+    import { $r, $rawfile } from 'arkui.component.common';
+    // xxx.ets
+    @Entry
+    @Component
+    struct Index {
+      @State text: string =
+        'This is set selection to Selection text content This is set selection to Selection text content.';
+      @State start: number = 0;
+      @State end: number = 20;
+
+      build() {
+        Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
+          Text(this.text)
+            .fontSize(12)
+            .border({ width: 1 })
+            .lineHeight(20)
+            .margin(30)
+            .copyOption(CopyOptions.InApp)
+            .selection(this.start, this.end)
+            .onTextSelectionChange((selectionStart, selectionEnd) => {
+              // 更新选中态位置
+              this.start = selectionStart;
+              this.end = selectionEnd;
+            })
+        }
+        .height(600)
+        .width(335)
+        .borderWidth(1)
+        .onClick((click: ClickEvent) => {
+          // 监听父组件的点击事件，将选中首尾位置均设置为-1，即可清除选中
+          this.start = -1;
+          this.end = -1;
+        })
+      }
+    }
+    ```
  
 ### 屏蔽系统服务类菜单
 
 - 从API version 20开始，支持通过[disableSystemServiceMenuItems](../reference/apis-arkui/js-apis-arkui-UIContext.md#disablesystemservicemenuitems20)屏蔽文本选择菜单内所有系统服务菜单项。
+  ArkTS1.2不支持此设置。
 
   ```ts
   import { TextMenuController } from '@kit.ArkUI';
@@ -778,6 +1308,7 @@ struct Index {
   ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
 
 - 从API version 20开始，支持通过[disableMenuItems](../reference/apis-arkui/js-apis-arkui-UIContext.md#disablemenuitems20)屏蔽文本选择菜单内指定的系统服务菜单项。
+  ArkTS1.2不支持此设置。
 
   ```ts
   import { TextMenuController } from '@kit.ArkUI';
@@ -825,6 +1356,7 @@ struct Index {
 ### 默认菜单支持自定义刷新能力
 
 从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#onpreparemenu20)回调，可在该回调中进行菜单数据设置。
+ArkTS1.2不支持此设置。
 
 ```ts
 // xxx.ets
@@ -913,7 +1445,29 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 
 - 如果需要单击AI实体弹出菜单的实体识别选项，可以配置[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11)为true。
 - 如果在单击的交互方式之外，还需要文本选择菜单与鼠标右键菜单中显示的实体识别选项，可以配置[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11)为true，且[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)设置为CopyOptions.LocalDevice，具体示例如下所示：
+  ArkTS1.1示例：
   ```ts
+  Text(
+    '电话号码：' + '(86) (755) ********' + '\n' +
+      '链接：' + 'www.********.com' + '\n' +
+      '邮箱：' + '***@example.com' + '\n' +
+      '地址：' + 'XX省XX市XX区XXXX' + '\n' +
+      '时间：' + 'XX年XX月XX日XXXX'
+  )
+    .fontSize(16)
+    .copyOption(CopyOptions.LocalDevice)
+    .enableDataDetector(true)// 使能实体识别
+    .dataDetectorConfig({
+      // 配置识别样式
+      // types可支持PHONE_NUMBER电话号码、URL链接、EMAIL邮箱、ADDRESS地址、DATE_TIME时间
+      // types设置为null或者[]时，识别所有类型的实体
+      types: [], onDetectResultUpdate: (result: string) => {
+      }
+    })
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { Text, CopyOptions } from '@ohos.arkui.component';
   Text(
     '电话号码：' + '(86) (755) ********' + '\n' +
       '链接：' + 'www.********.com' + '\n' +
@@ -940,6 +1494,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 
 该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
 
+ArkTS1.1示例：
 ```ts
 // xxx.ets
 @Entry
@@ -1023,6 +1578,93 @@ struct TextExample {
   }
 }
 
+```
+ArkTS1.2示例：
+```ts
+import { Entry, Column, Row, Component, Button, ClickEvent, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { Text, TextOverflow, Color, TextAlign, Margin } from '@ohos.arkui.component';
+import { $r, $rawfile } from 'arkui.component.common';
+@Entry
+@Component
+struct TextExample {
+  build() {
+    Column() {
+      Row() {
+        Text("1").fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 } as Margin)
+        Text("我是热搜词条1")
+          .fontSize(12)
+          .fontColor(Color.Blue)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .fontWeight(300)
+        Text("爆")
+          .margin({ left: 6 } as Margin)
+          .textAlign(TextAlign.Center)
+          .fontSize(10)
+          .fontColor(Color.White)
+          .fontWeight(600)
+          .backgroundColor(0x770100)
+          .borderRadius(5)
+          .width(15)
+          .height(14)
+      }.width('100%').margin(5)
+
+      Row() {
+        Text("2").fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 } as Margin)
+        Text("我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2")
+          .fontSize(12)
+          .fontColor(Color.Blue)
+          .fontWeight(300)
+          .constraintSize({ maxWidth: 200 })
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+        Text("热")
+          .margin({ left: 6 } as Margin)
+          .textAlign(TextAlign.Center)
+          .fontSize(10)
+          .fontColor(Color.White)
+          .fontWeight(600)
+          .backgroundColor(0xCC5500)
+          .borderRadius(5)
+          .width(15)
+          .height(14)
+      }.width('100%').margin(5)
+
+      Row() {
+        Text("3").fontSize(14).fontColor(Color.Orange).margin({ left: 10, right: 10 } as Margin)
+        Text("我是热搜词条3")
+          .fontSize(12)
+          .fontColor(Color.Blue)
+          .fontWeight(300)
+          .maxLines(1)
+          .constraintSize({ maxWidth: 200 })
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+        Text("热")
+          .margin({ left: 6 } as Margin)
+          .textAlign(TextAlign.Center)
+          .fontSize(10)
+          .fontColor(Color.White)
+          .fontWeight(600)
+          .backgroundColor(0xCC5500)
+          .borderRadius(5)
+          .width(15)
+          .height(14)
+      }.width('100%').margin(5)
+
+      Row() {
+        Text("4").fontSize(14).fontColor(Color.Grey).margin({ left: 10, right: 10 } as Margin)
+        Text("我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4")
+          .fontSize(12)
+          .fontColor(Color.Blue)
+          .fontWeight(300)
+          .constraintSize({ maxWidth: 200 })
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+      }.width('100%').margin(5)
+    }.width('100%')
+  }
+}
 ```
 
 ![zh-cn_image_0000001562820805](figures/zh-cn_image_0000001562820805.png)

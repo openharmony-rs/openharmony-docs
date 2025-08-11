@@ -7,12 +7,14 @@
 ## 创建并应用StyledString和MutableStyledString
 
   可以通过TextController提供的[setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12)方法，将属性字符串附加到文本组件，并推荐在[onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或者文本组件的[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)回调中触发绑定。
+  ArkTS1.2不支持onPageShow和aboutToAppear回调中触发绑定。
   > **说明：**
   >
   > 在aboutToAppear中调用setStyledString方法时，由于该方法运行阶段组件尚未完成创建并成功挂载节点树，因此无法在页面初始化时显示属性字符串。
   >
   > 从API version 15开始，在aboutToAppear中调用setStyledString方法，页面初始化时可以显示属性字符串。
 
+  ArkTS1.1示例：
   ```ts
   @Entry
   @Component
@@ -41,6 +43,36 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { StyledString, MutableStyledString, TextController, Text } from '@ohos.arkui.component';
+  @Entry
+  @Component
+  struct styled_string_demo1 {
+    styledString1: StyledString = new StyledString("运动45分钟");
+    mutableStyledString1: MutableStyledString = new MutableStyledString("运动35分钟");
+    controller1: TextController = new TextController();
+    controller2: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller1 })
+          .onAppear(() => {
+            // 在组件onAppear回调中绑定属性字符串
+            this.controller1.setStyledString(this.styledString1);
+          })
+        Text(undefined, { controller: this.controller2 })
+          .onAppear(() => {
+            // 在组件onAppear回调中绑定属性字符串
+            this.controller2.setStyledString(this.mutableStyledString1);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   ![StyledString_Init](figures/span_string_init.png)
 
 ## 设置文本样式
@@ -49,6 +81,7 @@
 
 - 创建及应用文本字体样式对象（TextStyle）
 
+  ArkTS1.1示例：
   ```ts
   import { LengthMetrics } from '@kit.ArkUI';
 
@@ -88,10 +121,51 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ArkTS1.2不支持设置TextStyle的strokeWidth、strokeColor以及superscript。
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { TextStyle, MutableStyledString, TextController, Text, FontWeight, FontStyle, StyledStringKey, Color, TextStyleInterface, Margin } from '@ohos.arkui.component';
+  import { LengthMetrics } from '@kit.ArkUI';
+  @Entry
+  @Component
+  struct styled_string_demo2 {
+    textStyleAttrs: TextStyle =
+      new TextStyle({ fontWeight: FontWeight.Bolder, fontSize: LengthMetrics.vp(24), fontStyle: FontStyle.Italic });
+    mutableStyledString: MutableStyledString = new MutableStyledString("运动45分钟 目标达成", [
+      {
+        start: 2,
+        length: 2,
+        styledKey: StyledStringKey.FONT,
+        styledValue: this.textStyleAttrs
+      },
+      {
+        start: 7,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontColor: Color.Orange, fontSize: LengthMetrics.vp(12)})
+      }
+    ]);
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .margin({ top: 10 } as Margin)
+          .onAppear(()=>{
+            this.controller.setStyledString(this.mutableStyledString);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   ![StyledString_TextStyle](figures/StyledString_TextStyle.png)
 
 - 创建及应用文本阴影对象（TextShadowStyle）
 
+  ArkTS1.1示例：
   ```ts
   // xxx.ets
   @Entry
@@ -126,10 +200,47 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { MutableStyledString, TextController, Text, StyledStringKey, Color, TextShadowStyle, ShadowType, ShadowOptions } from '@ohos.arkui.component';
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo3 {
+    mutableStyledString: MutableStyledString = new MutableStyledString("运动35分钟", [
+      {
+        start: 0,
+        length: 3,
+        styledKey: StyledStringKey.TEXT_SHADOW,
+        styledValue: new TextShadowStyle({
+          radius: 5,
+          type: ShadowType.COLOR,
+          color: Color.Red,
+          offsetX: 10,
+          offsetY: 10
+        } as ShadowOptions)
+      }
+    ]);
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .onAppear(()=>{
+            this.controller.setStyledString(this.mutableStyledString);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   ![StyledString_TextShadow](figures/styled_string_text_shadow.png)
 
 - 创建及应用文本装饰线对象（DecorationStyle）
 
+  ArkTS1.1示例：
   ```ts
   // xxx.ets
   @Entry
@@ -186,10 +297,62 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ArkTS1.2不支持设置多装饰线与装饰线粗细。
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { MutableStyledString, TextController, Text, StyledStringKey, DecorationStyle, TextDecorationType, Color } from '@ohos.arkui.component';
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo4 {
+    mutableStyledString: MutableStyledString = new MutableStyledString("运动35分钟", [
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle({ type: TextDecorationType.LineThrough, color: Color.Red })
+      },
+      {
+        start: 4,
+        length: 2,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.Underline,
+          }
+        )
+      },
+      {
+        start: 4,
+        length: 2,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.LineThrough,
+          }
+        )
+      },
+    ]);
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .onAppear(()=>{
+            this.controller.setStyledString(this.mutableStyledString);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   ![StyledString_Decoration](figures/styled_string_decoration.jpg)
 
 - 创建及应用文本基线偏移量对象（BaselineOffsetStyle）
 
+  ArkTS1.1示例：
   ```ts
   import { LengthMetrics } from '@kit.ArkUI';
 
@@ -220,10 +383,42 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { MutableStyledString, TextController, Text, StyledStringKey, BaselineOffsetStyle } from '@ohos.arkui.component';
+  import { LengthMetrics } from '@kit.ArkUI';
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo5 {
+    mutableStyledString: MutableStyledString = new MutableStyledString("运动35分钟", [
+      {
+        start: 0,
+        length: 3,
+        styledKey: StyledStringKey.BASELINE_OFFSET,
+        styledValue: new BaselineOffsetStyle(LengthMetrics.px(20))
+      }
+    ]);
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .onAppear(()=>{
+            this.controller.setStyledString(this.mutableStyledString);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   ![StyledString_Baseline](figures/styled_string_baselineoffset.png)
 
 - 创建及应用文本行高对象（LineHeightStyle）
 
+  ArkTS1.1示例：
   ```ts
   import { LengthMetrics } from '@kit.ArkUI';
 
@@ -255,10 +450,43 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { MutableStyledString, TextController, Text, StyledStringKey, LineHeightStyle, Margin } from '@ohos.arkui.component';
+  import { LengthMetrics } from '@kit.ArkUI';
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo6 {
+    mutableStyledString: MutableStyledString = new MutableStyledString("运动35分钟\n顶顶顶\n得到", [
+      {
+        start: 8,
+        length: 3,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: new LineHeightStyle(LengthMetrics.vp(50))
+      }
+    ]);
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .onAppear(()=>{
+            this.controller.setStyledString(this.mutableStyledString);
+          })
+      }
+      .width('100%')
+      .margin({ top: 10 } as Margin)
+    }
+  }
+  ```
   ![StyledString_lineHeight](figures/styled_string_lineHeight.png)
 
 - 创建及应用文本字符间距对象（LetterSpacingStyle）
 
+  ArkTS1.1示例：
   ```ts
   import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
 
@@ -289,6 +517,37 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { MutableStyledString, TextController, Text, StyledStringKey, LetterSpacingStyle } from '@ohos.arkui.component';
+  import { LengthUnit, LengthMetrics } from 'arkui.Graphics';
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo7 {
+    mutableStyledString: MutableStyledString = new MutableStyledString("运动35分钟", [
+      {
+        start: 0,
+        length: 2,
+        styledKey: StyledStringKey.LETTER_SPACING,
+        styledValue: new LetterSpacingStyle(new LengthMetrics(20, LengthUnit.VP))
+      }
+    ]);
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .onAppear(()=>{
+            this.controller.setStyledString(this.mutableStyledString);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   ![StyledString_letterSpacing](figures/styled_string_letterspacing.png)
 
 ## 设置段落样式
@@ -299,6 +558,7 @@
 
 以下代码示例展示了如何创建ParagraphStyle并应用。如果将ParagraphStyle附加到段落开头、末尾或之间的任何位置，均会应用样式，非段落区间内则不会应用样式。
 
+  ArkTS1.1示例：
   ```ts
   import { LengthMetrics} from '@kit.ArkUI';
 
@@ -359,11 +619,73 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { MutableStyledString, TextController, Text, StyledStringKey, ParagraphStyle, LineHeightStyle, FontWeight, TextAlign, TextStyle } from '@ohos.arkui.component';
+  import { LengthUnit, LengthMetrics } from 'arkui.Graphics';
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
+    // 段落首行缩进15vp
+    paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(15) });
+    // 行高样式对象
+    lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
+    // 创建含段落样式的对象paragraphStyledString1
+    paragraphStyledString1: MutableStyledString =
+      new MutableStyledString("段落标题\n正文第一段落开始0123456789正文第一段落结束。", [
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.titleParagraphStyleAttr
+        },
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: new LineHeightStyle(new LengthMetrics(50))
+        }, {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(24), fontWeight: FontWeight.Bolder })
+      },
+        {
+          start: 5,
+          length: 3,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyleAttr1
+        },
+        {
+          start: 5,
+          length: 20,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: this.lineHeightStyle1
+        }
+      ]);
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .onAppear(()=>{
+            this.controller.setStyledString(this.paragraphStyledString1);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   
   ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
   
   除了可以在创建属性字符串时就预设样式，也可以后续通过[replaceStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#replacestyle)清空原样式替换新样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
+  ArkTS1.1示例：
   ```ts
   import { LengthMetrics } from '@kit.ArkUI';
 
@@ -440,6 +762,83 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { MutableStyledString, TextController, Text, StyledStringKey, ParagraphStyle, LineHeightStyle, FontWeight, TextAlign, TextStyle, WordBreak, TextOverflow } from '@ohos.arkui.component';
+  import { LengthUnit, LengthMetrics } from 'arkui.Graphics';
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
+    // 段落首行缩进15vp
+    paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(15) });
+    // 行高样式对象
+    lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
+    // 创建含段落样式的对象paragraphStyledString1
+    paragraphStyledString1: MutableStyledString =
+      new MutableStyledString("段落标题\n正文第一段落开始0123456789正文第一段落结束，通过replaceStyle清空原样式替换新样式。", [
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.titleParagraphStyleAttr
+        },
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: new LineHeightStyle(new LengthMetrics(50))
+        }, {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(24), fontWeight: FontWeight.Bolder })
+      },
+        {
+          start: 5,
+          length: 3,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyleAttr1
+        },
+        {
+          start: 5,
+          length: 20,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: this.lineHeightStyle1
+        }
+      ]);
+    paragraphStyleAttr3: ParagraphStyle = new ParagraphStyle({
+      textAlign: TextAlign.End,
+      maxLines: 1,
+      wordBreak: WordBreak.BREAK_ALL,
+      overflow: TextOverflow.Ellipsis
+    });
+    controller: TextController = new TextController();
+
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller }).width(300)
+          .onAppear(()=>{
+            this.controller.setStyledString(this.paragraphStyledString1);
+          })
+        Button('替换段落样式')
+          .onClick((click: ClickEvent) => {
+            this.paragraphStyledString1.replaceStyle({
+              start: 5,
+              length: 3,
+              styledKey: StyledStringKey.PARAGRAPH_STYLE,
+              styledValue: this.paragraphStyleAttr3
+            });
+            this.controller.setStyledString(this.paragraphStyledString1);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
   
   ![styled_string_paragraph2](figures/styled_string_paragraph2.gif)
 
@@ -449,6 +848,7 @@
 
 以下示例展示了如何将图片和文本附加到同一个MutableStyledString对象上，并实现图文混排。
 
+  ArkTS1.1示例：
   ```ts
   // xxx.ets
   import { image } from '@kit.ImageKit';
@@ -600,6 +1000,131 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ArkTS1.2不支持异步操作且getPixmapFromMedia接口未支持，此示例同步加载图片。
+  ```ts
+  import { Entry, Column, Scroll, Row, Component, Button, ClickEvent, Color } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { MutableStyledString, TextController, Text, StyledStringKey, CopyOptions, ParagraphStyle, LineHeightStyle,
+    TextStyle, FontWeight, ImageSpanAlignment, ImageAttachment, ImageFit, ColumnOptions, ResourceImageAttachmentOptions } from '@ohos.arkui.component';
+  import { $r, $rawfile } from 'arkui.component.common';
+  import { LengthUnit, LengthMetrics } from 'arkui.Graphics';
+  import { image } from '@kit.ImageKit';
+  @Entry
+  @Component
+  struct styled_string_demo4 {
+    @State message: string = 'Hello World';
+    mutableStr: MutableStyledString = new MutableStyledString('123');
+    controller: TextController = new TextController();
+
+    leadingMarginValue: ParagraphStyle = new ParagraphStyle({ leadingMargin: LengthMetrics.vp(5)});
+    // 行高样式对象
+    lineHeightStyle1: LineHeightStyle= new LineHeightStyle(new LengthMetrics(24));
+    // Bold样式
+    boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
+    // 创建含段落样式的对象paragraphStyledString1
+    paragraphStyledString1: MutableStyledString = new MutableStyledString("\n品牌相纸 高清冲印30张\n限时直降5.15元 限量增送", [
+      {
+        start: 0,
+        length: 28,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.leadingMarginValue
+      },
+      {
+        start: 14,
+        length: 9,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(14), fontColor: '#B22222' })
+      },
+      {
+        start: 24,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(14), fontWeight: FontWeight.Lighter })
+      },
+      {
+        start: 11,
+        length: 4,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: this.lineHeightStyle1
+      }
+    ]);
+    paragraphStyledString2: MutableStyledString = new MutableStyledString("\n￥16.21 3000+人好评", [
+      {
+        start: 0,
+        length: 5,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.leadingMarginValue
+      },
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: new LineHeightStyle(new LengthMetrics(60))
+      },
+      {
+        start: 0,
+        length: 7,
+        styledKey: StyledStringKey.FONT,
+        styledValue: this.boldTextStyle
+      },
+      {
+        start: 1,
+        length: 1,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(18) })
+      },
+      {
+        start: 2,
+        length: 2,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(36) })
+      },
+      {
+        start: 4,
+        length: 3,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) })
+      },
+      {
+        start: 7,
+        length: 9,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14)})
+      }
+    ]);
+
+    build() {
+      Row() {
+        Column({ space: 10 } as ColumnOptions) {
+          Text(undefined, { controller: this.controller })
+            .copyOption(CopyOptions.InApp)
+            .draggable(true)
+            .backgroundColor('#FFFFFF')
+            .borderRadius(5)
+
+          Button('点击查看商品卡片')
+            .onClick((click: ClickEvent) => {
+              this.mutableStr = new MutableStyledString(new ImageAttachment(
+                {
+                  resourceValue: $r('app.media.startIcon'),
+                  size: { width: 180, height: 160 },
+                  verticalAlign: ImageSpanAlignment.BASELINE,
+                  objectFit: ImageFit.Fill
+                } as ResourceImageAttachmentOptions
+              ));
+              this.paragraphStyledString1.appendStyledString(this.paragraphStyledString2);
+              this.mutableStr.appendStyledString(this.paragraphStyledString1);
+              this.controller.setStyledString(this.mutableStr);
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+      .backgroundColor('#F8F8FF')
+    }
+  }
+  ```
   ![StyledString_ImageAttachment](figures/StyledStringImageAttachment.png)
 
 ## 设置事件
@@ -608,6 +1133,7 @@
 
 除了初始化属性字符串对象即初始样式对象，亦可通过[setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle)接口再叠加新样式或更新已有样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
+  ArkTS1.1示例：
   ```ts
   import { drawing } from '@kit.ArkGraphics2D';
 
@@ -744,6 +1270,55 @@
     }
   }
   ```
+  ArkTS1.2示例：
+  ArkTS1.2图形接口未完全适配，customSpan的部分略去。
+  ```ts
+  import { Entry, Column, Scroll, Row, Component, Button, ClickEvent, Color } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { MutableStyledString, TextController, Text, StyledStringKey, ResourceColor, GestureStyle, CopyOptions } from '@ohos.arkui.component';
+  @Entry
+  @Component
+  struct styled_string_demo6 {
+    spanStyledString: MutableStyledString = new MutableStyledString("MutableStyledString");
+    textController: TextController = new TextController();
+    isPageShow: boolean = true;
+    @State backgroundColor1: ResourceColor | undefined = undefined;
+    gestureStyleAttr: GestureStyle = new GestureStyle({
+      onClick: () => {
+        this.backgroundColor1 = Color.Green;
+      },
+      onLongPress: () => {
+        this.backgroundColor1 = Color.Grey;
+      }
+    });
+
+    build() {
+      Row() {
+        Column() {
+          Button("响应属性字符串事件改变背景色").backgroundColor(this.backgroundColor1).width('80%').margin(10)
+          Text(undefined, { controller: this.textController })
+            .copyOption(CopyOptions.InApp)
+            .fontSize(30)
+            .onAppear(()=>{
+              if (!this.isPageShow) {
+                return;
+              }
+              this.isPageShow = false;
+              this.spanStyledString.setStyle({
+                start: 0,
+                length: 19,
+                styledKey: StyledStringKey.GESTURE,
+                styledValue: this.gestureStyleAttr
+              })
+              this.textController.setStyledString(this.spanStyledString);
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
   ![styled_string_event](figures/styled_string_event.gif)
 
 ## 格式转换
@@ -751,6 +1326,7 @@
 可以通过[toHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#tohtml14)、[fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml)接口实现属性字符串与HTML格式字符串的相关转换，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>。
 
 - 以下示例展示了如何将属性字符串转换成HTML格式，并展示了如何从HTML格式转换回属性字符串。
+ArkTS1.1示例：
 ```ts
 // xxx.ets
 import { image } from '@kit.ImageKit';
@@ -821,10 +1397,66 @@ struct styled_string_demo8 {
   }
 }
 ```
+ArkTS1.2示例：
+```ts
+import { Entry, Column, Scroll, Row, Component, Button, ClickEvent, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { MutableStyledString, TextController, Text, StyledStringKey, TextStyle,
+  ImageAttachment, StyledString, UIContext, ResourceImageAttachmentOptions } from '@ohos.arkui.component';
+import { $r, $rawfile } from 'arkui.component.common';
+import { LengthUnit, LengthMetrics } from 'arkui.Graphics';
+@Entry
+@Component
+struct styled_string_demo8 {
+  @State html: string = "";
+  @State styledString: StyledString = new StyledString("");
+  controller1: TextController = new TextController;
+  controller2: TextController = new TextController;
+  private uiContext: UIContext = this.getUIContext();
+
+  async fromHtmlCallback(): Promise<void> {
+    let styledString = await StyledString.fromHtml(this.html);
+    this.controller2.setStyledString(styledString);
+  }
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.controller1 }).height(100)
+      Row() {
+        Button("添加属性字符串").onClick((click: ClickEvent) => {
+          let mutableStyledString1: MutableStyledString = new MutableStyledString("属性字符串", [{
+            start: 0,
+            length: 6,
+            styledKey: StyledStringKey.FONT,
+            styledValue: new TextStyle({ fontColor: Color.Green, fontSize: LengthMetrics.px(50) })
+          }]);
+          let mutableStyledString2 = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.startIcon'),
+            size: { width: 50, height: 50 },
+          } as ResourceImageAttachmentOptions));
+          mutableStyledString1.appendStyledString(mutableStyledString2);
+          this.styledString = mutableStyledString1;
+          this.controller1.setStyledString(mutableStyledString1);
+        }).margin(5)
+        Button("toHtml").onClick((click: ClickEvent) => {
+          this.html = StyledString.toHtml(this.styledString);
+        }).margin(5)
+        Button("fromHtml").onClick((click: ClickEvent) => {
+          this.fromHtmlCallback()
+        }).margin(5)
+      }
+
+      Text(undefined, { controller: this.controller2 }).height(100)
+      Text(this.html)
+    }.width("100%")
+  }
+}
+```
 
 ![](figures/styled_string_html.gif)
 
 - 将HTML中\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>标签及其style属性中的background-color转换为属性字符串并转回HTML。
+  ArkTS1.1示例：
   ```ts
   // xxx.ets
   @Entry
@@ -887,6 +1519,80 @@ struct styled_string_demo8 {
     }
   }
   ```
+  ArkTS1.2示例：
+  ```ts
+  import { Entry, Column, Scroll, Row, Component, Button, ClickEvent, Color } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { MutableStyledString, TextController, Text, StyledStringKey, TextStyle, StyledString, TextArea } from '@ohos.arkui.component';
+  // xxx.ets
+  @Entry
+  @Component
+  struct HtmlSpanStringDemo {
+    @State html: string =
+      "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style =   \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span   style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
+    @State spanString: StyledString = new StyledString("");
+    @State resultText: string = ""; // 保存结果文本的状态
+    controller: TextController = new TextController;
+
+    async fromHtmlCallback1(): Promise<void> {
+      this.spanString = await StyledString.fromHtml(this.html);
+      this.controller.setStyledString(this.spanString);
+      this.resultText = "Converted HTML to SpanString successfully.";
+    }
+
+    async fromHtmlCallback2(): Promise<void> {
+      this.spanString = await StyledString.fromHtml(this.html);
+      this.controller.setStyledString(this.spanString);
+      this.resultText = "Converted HTML back to SpanString successfully.";
+    }
+
+    build() {
+      Column() {
+        // 显示转换后的spanString
+        Text(undefined, { controller: this.controller }).height(100)
+
+        // TextArea显示每个步骤的结果
+        TextArea({ text: this.html })
+          .width("100%")
+          .height(100)
+          .margin(5)
+
+        // 按钮1:将HTML转换为SpanString
+        Button("Converted HTML to SpanString").onClick((click: ClickEvent) => {
+          this.fromHtmlCallback1()
+        }).margin(5)
+
+        // 按钮2:将SpanString转换为HTML
+        Button("Converted SpanString to HTML").onClick((click: ClickEvent) => {
+          if (this.spanString) {
+            // 将spanString转换为HTML并替换当前的HTML状态
+            const newHtml = StyledString.toHtml(this.spanString);
+            if (newHtml !== this.html) { // 通过检查内容是否已经相同来防止重复
+              this.html = newHtml;
+            }
+            this.resultText = "Converted SpanString to HTML successfully.";
+          } else {
+            this.resultText = "SpanString is undefined.";
+          }
+        }).margin(5)
+
+        // 按钮3:将HTML转换回SpanString
+        Button("Converted HTML back to SpanString").onClick((click: ClickEvent) => {
+          this.fromHtmlCallback2()
+        }).margin(5)
+
+        // 重置：重置HTML和SpanString
+        Button("Reset").onClick((click: ClickEvent) => {
+          this.html =
+            "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span   style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span   style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
+          this.spanString = new StyledString("");
+          this.controller.setStyledString(new StyledString("")); // 使用空的StyledString实例
+          this.resultText = "Reset HTML and SpanString successfully.";
+        }).margin(5)
+      }.width("100%").padding(20)
+    }
+  }
+  ```
 
   ![styled_string_html_2](figures/styled_string_html_2.gif)
 
@@ -894,6 +1600,7 @@ struct styled_string_demo8 {
 
 该示例通过ParagraphStyle、LineHeightStyle、TextStyle对象展示了会员过期提示的效果。
 
+ArkTS1.1示例：
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
 
@@ -1033,6 +1740,153 @@ struct Index {
       }
       .borderWidth(1).borderColor('#FFDEAD')
       .margin({ left: 10 })
+    }
+    .height('60%')
+  }
+}
+```
+ArkTS1.2示例：
+```ts
+import { Entry, Column, Scroll, Row, Component, Button, ClickEvent, Color } from '@ohos.arkui.component';
+import { MutableStyledString, TextController, Text, StyledStringKey, TextStyle, StyledString, ParagraphStyle,
+  LineHeightStyle, FontWeight, TextAlign, DecorationStyle, TextDecorationType, CopyOptions, ColumnOptions, Margin } from '@ohos.arkui.component';
+import { LengthUnit, LengthMetrics } from 'arkui.Graphics';
+@Entry
+@Component
+struct Index {
+  alignCenterParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
+  // 行高样式对象
+  lineHeightStyle1: LineHeightStyle = new LineHeightStyle(LengthMetrics.vp(24));
+  // Bold样式
+  boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
+  // 创建含段落样式的对象paragraphStyledString1
+  paragraphStyledString1: MutableStyledString =
+    new MutableStyledString("您的豪华钻石已过期1天\n续费可继续享受会员专属权益", [
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.alignCenterParagraphStyleAttr
+      },
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: new LineHeightStyle(LengthMetrics.vp(40))
+      },
+      {
+        start: 11,
+        length: 14,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(14), fontColor: Color.Grey })
+      },
+      {
+        start: 11,
+        length: 4,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.alignCenterParagraphStyleAttr
+      },
+      {
+        start: 11,
+        length: 4,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: this.lineHeightStyle1
+      }
+    ]);
+  paragraphStyledString2: MutableStyledString = new MutableStyledString("\n￥4.88￥15", [
+    {
+      start: 0,
+      length: 4,
+      styledKey: StyledStringKey.PARAGRAPH_STYLE,
+      styledValue: this.alignCenterParagraphStyleAttr
+    },
+    {
+      start: 0,
+      length: 4,
+      styledKey: StyledStringKey.LINE_HEIGHT,
+      styledValue: new LineHeightStyle(LengthMetrics.vp(60))
+    },
+    {
+      start: 0,
+      length: 6,
+      styledKey: StyledStringKey.FONT,
+      styledValue: this.boldTextStyle
+    },
+    {
+      start: 1,
+      length: 1,
+      styledKey: StyledStringKey.FONT,
+      styledValue: new TextStyle({ fontSize: LengthMetrics.vp(18) })
+    },
+    {
+      start: 2,
+      length: 4,
+      styledKey: StyledStringKey.FONT,
+      styledValue: new TextStyle({ fontSize: LengthMetrics.vp(40) })
+    },
+    {
+      start: 6,
+      length: 3,
+      styledKey: StyledStringKey.FONT,
+      styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14) })
+    },
+    {
+      start: 6,
+      length: 3,
+      styledKey: StyledStringKey.DECORATION,
+      styledValue: new DecorationStyle({ type: TextDecorationType.LineThrough, color: Color.Grey })
+    }
+  ]);
+  paragraphStyledString3: MutableStyledString = new MutableStyledString("\n02时06分后将失去该优惠", [
+    {
+      start: 0,
+      length: 4,
+      styledKey: StyledStringKey.PARAGRAPH_STYLE,
+      styledValue: this.alignCenterParagraphStyleAttr
+    },
+    {
+      start: 0,
+      length: 4,
+      styledKey: StyledStringKey.LINE_HEIGHT,
+      styledValue: new LineHeightStyle(LengthMetrics.vp(30))
+    },
+    {
+      start: 1,
+      length: 2,
+      styledKey: StyledStringKey.FONT,
+      styledValue: new TextStyle({ fontColor: '#FFD700', fontWeight: FontWeight.Bold })
+    },
+    {
+      start: 4,
+      length: 2,
+      styledKey: StyledStringKey.FONT,
+      styledValue: new TextStyle({ fontColor: '#FFD700', fontWeight: FontWeight.Bold })
+    }
+  ]);
+  controller: TextController = new TextController();
+
+  build() {
+    Row() {
+      Column({ space: 5 } as ColumnOptions) {
+        Text(undefined, { controller: this.controller })
+          .width(240)
+          .copyOption(CopyOptions.InApp)
+          .draggable(true)
+          .onAppear(() => {
+            this.paragraphStyledString2.appendStyledString(this.paragraphStyledString3);
+            this.paragraphStyledString1.appendStyledString(this.paragraphStyledString2);
+            this.controller.setStyledString(this.paragraphStyledString1);
+          })
+
+        Button("限时4.88元 立即续费")
+          .width(200)
+          .fontColor(Color.White)
+          .fontSize(18)
+          .backgroundColor('#3CB371')
+          .margin({ bottom: 10 } as Margin)
+      }
+      .borderWidth(1).borderColor('#FFDEAD')
+      .margin({ left: 10 } as Margin)
     }
     .height('60%')
   }
