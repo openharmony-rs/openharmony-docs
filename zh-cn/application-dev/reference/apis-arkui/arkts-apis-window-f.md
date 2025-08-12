@@ -1247,7 +1247,7 @@ export default class EntryAbility extends UIAbility {
 
 getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
-获取指定屏幕上的全部主窗信息，包含窗口id，窗口label，使用Promise异步回调。
+获取全部主窗口信息，使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
