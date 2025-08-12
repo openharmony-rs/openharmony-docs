@@ -1260,6 +1260,71 @@ struct ChildComponent {
 }
 ```
 
+## 不支持`LocalStorage.prop`、`LocalStorage.setAndProp`、`AppStorage.prop`和`AppStorage.setAndProp`接口
+
+**规则：** `arkui-no-prop-function`、`arkui-no-setandprop-function`
+
+**级别：** error
+
+在ArkTS1.2中，由于`LocalStorage.prop`、`LocalStorage.setAndProp`、`AppStorage.prop`和`AppStorage.setAndProp`接口被废弃，所以需使用`LocalStorage.ref`、`LocalStorage.setAndRef`、`AppStorage.ref`和`AppStorage.setAndRef`接口替代。
+
+**ArkTS1.1**
+
+```typescript
+AppStorage.setOrCreate('PropA', 47);
+let prop1: SubscribedAbstractProperty<number> = AppStorage.setAndProp<number>('PropA', 48);
+let prop2: SubscribedAbstractProperty<number> = AppStorage.prop<number>('PropA');
+
+let storage: LocalStorage = new LocalStorage();
+storage.setOrCreate('PropB', 17);
+let prop3: SubscribedAbstractProperty<number> = storage.setAndProp<number>('PropB', 18);
+let prop4: SubscribedAbstractProperty<number> = storage.prop<number>('PropB');
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Test')
+    }
+  }
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+'use static'
+import {
+  AppStorage,
+  AbstractProperty,
+  LocalStorage,
+  Entry,
+  Component,
+  Column,
+  Text,
+} from '@kit.ArkUI';
+
+AppStorage.setOrCreate('PropA', 47);
+let prop1: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 48);
+let prop2: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
+
+let storage: LocalStorage = new LocalStorage();
+storage.setOrCreate('PropB', 17);
+let prop3: AbstractProperty<number> = storage.setAndRef<number>('PropB', 18);
+let prop4: AbstractProperty<number> | undefined = storage.ref<number>('PropB');
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Test')
+    }
+  }
+}
+```
+
 ## 不支持`@LocalBuilder`装饰器
 
 **规则：** `arkui-no-localbuilder-decorator`
@@ -1560,6 +1625,426 @@ struct Index {
       .height('70%')
       .border({ width: 1.0 })
     }
+  }
+}
+```
+
+## 使用`WrappedBuilder`时，需添加参数为箭头函数的泛型
+
+**规则：** `arkui-wrappedbuilder-require-arrow-func-generic`
+
+**级别：** error
+
+在ArkTS1.2中，使用`WrappedBuilder`时，必须添加泛型，且泛型的参数必须为箭头函数。
+
+**ArkTS1.1**
+
+```typescript
+@Builder
+function MyBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size);
+}
+
+const wrappedBuilder1: WrappedBuilder<[string, number]> = new WrappedBuilder(MyBuilder);
+const wrappedBuilder2: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(MyBuilder);
+
+@Entry
+@Component
+struct TestWrappedBuilder1 {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        wrappedBuilder1.builder(this.message, 50);
+        wrappedBuilder2.builder(this.message, 50);
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+'use static'
+import {
+  Builder,
+  Text,
+  WrappedBuilder,
+  Entry,
+  Component,
+  State,
+  Row,
+  Column,
+} from '@kit.ArkUI';
+
+@Builder
+function MyBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size);
+}
+
+const wrappedBuilder1: WrappedBuilder<@Builder (arg1: string, arg2: number) => void> = new WrappedBuilder<@Builder (arg1: string, arg2: number) => void>(MyBuilder);
+const wrappedBuilder2: WrappedBuilder<@Builder (arg1: string, arg2: number) => void> = new WrappedBuilder<@Builder (arg1: string, arg2: number) => void>(MyBuilder);
+
+@Entry
+@Component
+struct TestWrappedBuilder1 {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        wrappedBuilder1.builder(this.message, 50.0);
+        wrappedBuilder2.builder(this.message, 50.0);
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## 使用`wrappBuilder`时，泛型参数必须为箭头函数
+
+**规则：** `arkui-wrapbuilder-require-arrow-func-generic`
+
+**级别：** error
+
+在ArkTS1.2中，`wrapBuilder`的泛型是可选的。如果指定了泛型，则其参数必须为箭头函数。
+
+**ArkTS1.1**
+ 
+```typescript
+@Builder
+function MyBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size);
+}
+
+const wrappedBuilder1: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
+const wrappedBuilder2: WrappedBuilder<[string, number]> = wrapBuilder<[string, number]>(MyBuilder);
+
+@Entry
+@Component
+struct TestWrappedBuilder1 {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        wrappedBuilder1.builder(this.message, 50);
+        wrappedBuilder2.builder(this.message, 50);
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+'use static'
+import {
+  Builder,
+  Text,
+  WrappedBuilder,
+  wrapBuilder,
+  Entry,
+  Component,
+  State,
+  Row,
+  Column,
+} from '@kit.ArkUI';
+
+@Builder
+function MyBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size);
+}
+
+const wrappedBuilder1: WrappedBuilder<@Builder (arg1: string, arg2: number) => void> = wrapBuilder(MyBuilder);
+const wrappedBuilder2: WrappedBuilder<@Builder (arg1: string, arg2: number) => void> = wrapBuilder<@Builder (arg1: string, arg2: number) => void>(MyBuilder);
+
+@Entry
+@Component
+struct TestWrappedBuilder1 {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        wrappedBuilder1.builder(this.message, 50.0);
+        wrappedBuilder2.builder(this.message, 50.0);
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## `BuilderNode`的泛型参数不能为元组
+
+**规则：** `arkui-buildernode-generic-no-tuple`
+
+**级别：** error
+
+在ArkTS1.2中，`BuilderNode`的泛型参数不能为元组，需要进行修改。
+
+**ArkTS1.1**
+
+```typescript
+import { BuilderNode, NodeController, FrameNode } from '@kit.ArkUI';
+
+class Params {
+  item: string = '';
+
+  constructor(item: string) {
+    this.item = item;
+  }
+}
+
+class MyNodeController extends NodeController {
+  public builderNode1: BuilderNode<[]> | null = null;
+  public builderNode2: BuilderNode<[Params]> | null = null;
+  public frameNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.builderNode1 == null || this.builderNode2 == null) {
+      this.builderNode1 = new BuilderNode(uiContext, { selfIdealSize : { width: 300, height: 200} });
+      this.builderNode2 = new BuilderNode<[Params]>(uiContext, { selfIdealSize: { width: 300, height: 200} });
+    }
+    return this.frameNode;
+  }
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+'use static'
+import { UIContext } from '@kit.ArkUI';
+
+import { BuilderNode, NodeController, FrameNode } from '@kit.ArkUI';
+
+class Params {
+  item: string = '';
+
+  constructor(item: string) {
+    this.item = item;
+  }
+}
+
+class MyNodeController extends NodeController {
+  public builderNode1: BuilderNode | null = null;
+  public builderNode2: BuilderNode<Params> | null = null;
+  public frameNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.builderNode1 == null || this.builderNode2 == null) {
+      this.builderNode1 = new BuilderNode(uiContext, { selfIdealSize : { width: 300.0, height: 200.0} });
+      this.builderNode2 = new BuilderNode<Params>(uiContext, { selfIdealSize: { width: 300.0, height: 200.0} });
+    }
+    return this.frameNode;
+  }
+}
+```
+
+## `BuilderNode`的`update`接口的入参不能是字面量
+
+**规则：** `arkui-buildernode-update-no-literal`
+
+**级别：** error
+
+在ArkTS1.2中，`BuilderNode`的`update`接口的入参不能是字面量。需要将字面量替换为新建`BuilderNode`节点时泛型中指定的类的实例，并确保该实例具有和字面量相同的字段值。
+
+**ArkTS1.1**
+
+```typescript
+import { NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
+
+class Params {
+  item: string = '';
+
+  constructor(item: string) {
+    this.item = item;
+  }
+}
+
+interface CustomInterface {
+  item: string;
+}
+
+class MyNodeController extends NodeController {
+  public builderNode1: BuilderNode<[Params]> | null = null;
+  public builderNode2: BuilderNode<[Params]> | null = null;
+  public builderNode3: BuilderNode<[Params]> | null = null;
+  public frameNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.builderNode1 == null || this.builderNode2 == null || this.builderNode3 == null) {
+      this.builderNode1 = new BuilderNode<[Params]>(uiContext, { selfIdealSize : { width: 300, height: 200} });
+      this.builderNode2 = new BuilderNode<[Params]>(uiContext, { selfIdealSize : { width: 300, height: 200} });
+      this.builderNode3 = new BuilderNode<[Params]>(uiContext, { selfIdealSize : { width: 300, height: 200} });
+    }
+
+    return this.frameNode;
+  }
+
+  updateItem(item: string, customParam: boolean): void {
+    if (this.builderNode1 && this.builderNode2 && this.builderNode3) {
+      if (customParam) {
+        const customInterfaceParams: CustomInterface = { item: 'C' };
+        this.builderNode1!.update(customInterfaceParams);
+        this.builderNode2!.update({ item: 'C' });
+        this.builderNode3!.update({ item: item });
+      } else {
+      }
+    }
+  }
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+'use static'
+import { UIContext } from '@kit.ArkUI';
+
+import { NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
+
+class Params {
+  item: string = '';
+
+  constructor(item: string) {
+    this.item = item;
+  }
+}
+
+interface CustomInterface {
+  item: string;
+}
+
+class MyNodeController extends NodeController {
+  public builderNode1: BuilderNode<Params> | null = null;
+  public builderNode2: BuilderNode<Params> | null = null;
+  public builderNode3: BuilderNode<Params> | null = null;
+  public frameNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.builderNode1 == null || this.builderNode2 == null || this.builderNode3 == null) {
+      this.builderNode1 = new BuilderNode<Params>(uiContext, { selfIdealSize : { width: 300.0, height: 200.0} });
+      this.builderNode2 = new BuilderNode<Params>(uiContext, { selfIdealSize : { width: 300.0, height: 200.0} });
+      this.builderNode3 = new BuilderNode<Params>(uiContext, { selfIdealSize : { width: 300.0, height: 200.0} });
+    }
+
+    return this.frameNode;
+  }
+
+  updateItem(item: string, customParam: boolean): void {
+    if (this.builderNode1 && this.builderNode2 && this.builderNode3) {
+      if (customParam) {
+        const customInterfaceParams: CustomInterface = { item: 'C' };
+        this.builderNode1!.update(new Params(customInterfaceParams.item));
+        this.builderNode2!.update(new Params('C'));
+        this.builderNode3!.update(new Params(item));
+      } else {
+      }
+    }
+  }
+}
+```
+
+## 不支持`nestingBuilderSupported`属性
+
+**规则：** `arkui-buildernode-no-nestingbuildersupported`
+
+**级别：** error
+
+在ArkTS1.2中，不支持`nestingBuilderSupported`属性。如果`BuilderNode`中`build`接口的入参中包含该属性，需要按照示例进行修改。
+
+**ArkTS1.1**
+
+```typescript
+import { NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
+
+class Params {
+  item: string = '';
+
+  constructor(item: string) {
+    this.item = item;
+  }
+}
+
+@Builder
+function buildNode(param: Params) {}
+
+class MyNodeController extends NodeController {
+  public builderNode1: BuilderNode<[Params]> | null = null;
+  public builderNode2: BuilderNode<[Params]> | null = null;
+  public frameNode: FrameNode | null = null;
+  public item: string = "";
+  public flag: boolean = true;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.builderNode1 == null || this.builderNode2 == null) {
+      this.builderNode1 = new BuilderNode<[Params]>(uiContext, { selfIdealSize : { width: 300, height: 200} });
+      this.builderNode2 = new BuilderNode<[Params]>(uiContext, { selfIdealSize : { width: 300, height: 200} });
+      this.builderNode1!.build(wrapBuilder(buildNode), new Params(this.item), { nestingBuilderSupported: false });
+      this.builderNode2!.build(wrapBuilder(buildNode), new Params(this.item), { nestingBuilderSupported: this.flag });
+    }
+
+    return this.frameNode;
+  }
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+'use static'
+import {
+  Builder,
+  UIContext,
+  wrapBuilder,
+} from '@kit.ArkUI';
+
+import { NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
+
+class Params {
+  item: string = '';
+
+  constructor(item: string) {
+    this.item = item;
+  }
+}
+
+@Builder
+function buildNode(param: Params) {}
+
+class MyNodeController extends NodeController {
+  public builderNode1: BuilderNode<Params> | null = null;
+  public builderNode2: BuilderNode<Params> | null = null;
+  public frameNode: FrameNode | null = null;
+  public item: string = "";
+  public flag: boolean = true;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.builderNode1 == null || this.builderNode2 == null) {
+      this.builderNode1 = new BuilderNode<Params>(uiContext, { selfIdealSize : { width: 300.0, height: 200.0} });
+      this.builderNode2 = new BuilderNode<Params>(uiContext, { selfIdealSize : { width: 300.0, height: 200.0} });
+      this.builderNode1!.build(wrapBuilder(buildNode), new Params(this.item), {});
+      this.builderNode2!.build(this.flag ? wrapBuilder(buildNode) : wrapBuilder(buildNode), new Params(this.item), {});
+    }
+
+    return this.frameNode;
   }
 }
 ```
