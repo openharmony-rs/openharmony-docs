@@ -93,7 +93,7 @@ struct Index {
 ArkTS1.2示例：
 
 ```ts
-import { Entry, Component, Button, NodeContainer, ClickEvent, Row, NodeController, FrameNode, RenderNode, UIContext } from '@kit.ArkUI'
+import { Entry, Component, Button, NodeContainer, ClickEvent, Row, NodeController, FrameNode, RenderNode, UIContext } from '@kit.ArkUI';
 
 const TEST_TAG: string = "RenderNode";
 const renderNode = new RenderNode();
@@ -348,7 +348,7 @@ ArkTS1.2示例：
 import {
   Entry, Column, Component, Button, ClickEvent, NodeContainer, BorderStyle, Flex, FlexDirection, ItemAlign,
   FlexAlign, Padding, UIContext, NodeController, FrameNode, RenderNode, ShapeMask, ShapeClip
-} from '@kit.ArkUI'
+} from '@kit.ArkUI';
 
 const TEST_TAG: string = "RenderNode";
 const mask = new ShapeMask();
@@ -616,7 +616,7 @@ struct Index {
 ArkTS1.2示例：
 
 ```ts
-import { Entry, Column, Component, Button, ClickEvent, NodeContainer, NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+import { Entry, Column, Component, Button, ClickEvent, NodeContainer, NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI';
 
 class MyRenderNode extends RenderNode {
   width: number = 200;
@@ -887,7 +887,7 @@ struct Index {
 ArkTS1.2示例：
 
 ```ts
-import { Entry, Column, Component, NodeContainer, Color, UIContext, NodeController, FrameNode, RenderNode } from '@kit.ArkUI'
+import { Entry, Column, Component, NodeContainer, Color, UIContext, NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
