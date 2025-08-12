@@ -1939,7 +1939,7 @@ getMainWindowSnapshot(windowId: Array<number>, options: WindowSnapshotOptions): 
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)&gt;&gt; | 返回主窗信息列表。 |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)&gt;&gt; | 截图PixelMap的列表，按照传入的窗口id数组的顺序排列。 |
 
 **错误码：**
 
