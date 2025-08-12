@@ -465,3 +465,30 @@
 | distance | number | 否 | 是 | 设置关键帧布局切换的拖拽距离间隔，单位为px，默认值为1000。取值为0或正整数，浮点数向下取整。设置为0时，忽略拖拽距离因素。与interval判断为或的关系：满足其一即开始布局切换。|
 | animationDuration | number | 否 | 是 | 设置关键帧布局的动效切换时间，单位为毫秒，默认值为100。取值为0或正整数，浮点数向下取整。 |
 | animationDelay | number | 否 | 是 | 设置关键帧布局切换动效延迟时间，单位为毫秒，默认值为100。取值为0或正整数，浮点数向下取整。 |
+
+## MainWindowInfo<sup>21+</sup>
+
+主窗口信息。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| displayId | number   | 否   | 否   | 窗口的显示id。  |
+| windowId  | number   | 否   | 否   | 窗口id。        |
+| showing   | boolean  | 否   | 否   | 显示窗口的状态。 |
+| label     | string   | 否   | 否   | 窗口标签。      |
+
+## WindowSnapshotOptions<sup>21+</sup>
+
+窗口截图的配置项。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| useCache | boolean   | 否   | 是   | 是否使用已有的窗口截图，默认为是。  |
