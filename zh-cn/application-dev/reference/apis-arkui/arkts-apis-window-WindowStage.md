@@ -1907,7 +1907,7 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 202      | Permission verification failed. |
+| 201      | Permission verification failed. |
 | 801      | Capability not supported on this device. |
 | 1300003  | This window manager service works abnormally. |
 
@@ -1947,7 +1947,7 @@ getMainWindowSnapshot(windowId: Array<number>, options: WindowSnapshotOptions): 
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 202      | Permission verification failed. |
+| 201      | Permission verification failed. |
 | 801      | Capability not supported on this device. |
 | 1300003  | This window manager service works abnormally. |
 
