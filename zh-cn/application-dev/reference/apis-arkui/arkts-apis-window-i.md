@@ -472,8 +472,6 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
-
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
 | displayId | number   | 否   | 否   | 窗口的显示id。  |
@@ -486,8 +484,6 @@
 窗口截图的配置项。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
