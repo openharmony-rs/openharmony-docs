@@ -16,7 +16,7 @@ constructor()
 **示例：**
 
 ```ts
-// 创建无初始化的WorkerLocal
+// 创建无初始化函数的WorkerLocal
 let wl = new WorkerLocal<int>();
 ```
 
@@ -38,9 +38,27 @@ constructor(init: () => T)
 let str = 'workerLocal';
 let wl = new WorkerLocal<string>(() => str);
 
-console.log("Main Thread initial value: ", wl.get()); //应输出'workerLocal'
+// 主线程
+console.info("Main thread initial value: ", wl.get()); // 应输出'workerLocal'
 wl.set('main');
-console.log("Main Thread's value after set: ", wl.get()); // 应输出'main'
+console.info("Main thread's value after set: ", wl.get()); // 应输出'main'
+
+//工作线程
+taskpool.execute(() =>{
+    console.info("Worker thread initial value: ", wl.get()); // 应输出'workerLocal'
+    wl.set('subWorker');
+    console.info("Worker thread after set: ", wl.get()); // 应输出'subWorker'
+})
+
+// 验证主线程不受影响
+console.info("Main thread final value: ", wl.get());  // 应输出'main'
+
+// 运行结果
+// Main thread initial value: workerLocal
+// Main thread's value after set: main
+// Worker thread initial value: workerLocal
+// Worker thread after set: subWorker
+// Main thread final value: main
 ```
 
 ## get
@@ -58,23 +76,57 @@ get(): T
 **示例：**
 
 ```ts
-let str = 'workerLocal';
-let wl = new WorkerLocal<string>(() => str);
+async function getTest(){
+    let wl = new WorkerLocal<number>();
 
-// 主线程
-console.log("Main thread initial value: ", wl.get()); // 应输出'workerLocal'
-wl.set('main');
-console.log("Main thread's value after set: ", wl.get()); // 应输出'main'
+    // 主线程操作
+    try {
+        wl.get();
+        console.error("Call get() before set() without \'init'\ should throw an error.");
+    } catch (err) {
+        console.info("Main thread: WorkerLocal value not initialized. Call set() first or provide an init function.");
+    }
 
-//工作线程
-taskpool.execute(() =>{
-    console.log("Worker thread initial value: ", wl.get()); // 应输出'workerLocal'
-    wl.set('subWorker');
-    console.log("Worker thread after set: ", wl.get()); // 应输出'subWorker'
-})
+    wl.set(1);
+    console.info("Main thread after first set: ", wl.get()); // 应输出1
+    wl.set(wl.get() + 1);
+    console.info("Main thread after second set: ", wl.get()); // 应输出2
 
-// 验证主线程不受影响
-console.log("Main thread final value: ", wl.get());  // 应输出'main'
+    // 工作线程操作
+    await taskpool.execute(() => {
+        try {
+            wl.get();
+            console.error("Call get() before set() without \'init'\ should throw an error.");
+        } catch (err) {
+            console.info("Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.");
+        }
+        wl.set(1);
+        console.info("Worker thread after first set: ", wl.get()); // 应输出1
+        wl.set(wl.get() + 1);
+        console.info("Worker thread after second set: ", wl.get()); // 应输出2
+        wl.delete();
+        try {
+            wl.get();
+            console.error("Call get() after delete() without \'init'\ should throw an error.");
+        } catch (err){
+            console.info("Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.");
+        }
+    })
+
+    //验证主线程值不受工作线程操作的影响
+    console.info("Main thread final value: ", wl.get()); // 应输出2
+}
+
+// 运行结果
+// Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.
+// Main thread after first set: 1
+// Main thread after second set: 2
+// Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.
+// Worker thread after first set: 1
+// Worker thread after second set: 2
+// Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.
+// Main thread final value: 2
+// 
 ```
 
 ## set
@@ -96,9 +148,13 @@ let str = 'workerLocal';
 let wl = new WorkerLocal<string>(() => str);
 
 // 主线程
-console.log("Main thread initial value: ", wl.get()); // 应输出'workerLocal'
+console.info("Main thread initial value: ", wl.get()); // 应输出'workerLocal'
 wl.set('main');
-console.log("Main thread's value after set: ", wl.get()); // 应输出'main'
+console.info("Main thread's value after set: ", wl.get()); // 应输出'main'
+
+// 运行结果
+// Main thread initial value: workerLocal
+// Main thread's value after set: main
 ```
 
 ## delete
@@ -114,66 +170,27 @@ let str = 'workerLocal';
 let wl = new WorkerLocal<string>(() => str);
 
 // 主线程
-console.log("Main thread initial value: ", wl.get()); // 应输出'workerLocal'
+console.info("Main thread initial value: ", wl.get()); // 应输出'workerLocal'
 wl.set('main');
-console.log("Main thread's value after set: ", wl.get()); // 应输出'main'
+console.info("Main thread's value after set: ", wl.get()); // 应输出'main'
 
 //工作线程
 taskpool.execute(() =>{
-    console.log("Worker thread initial value: ", wl.get()); // 应输出'workerLocal'
+    console.info("Worker thread initial value: ", wl.get()); // 应输出'workerLocal'
     wl.set('subWorker');
-    console.log("Worker thread after set: ", wl.get()); // 应输出'subWorker'
+    console.info("Worker thread after set: ", wl.get()); // 应输出'subWorker'
     wl.delete();
-    console.log("Worker thread after delete: ", wl.get()); // 应再次输出'workerLocal'
+    console.info("Worker thread after delete: ", wl.get()); // 应再次输出'workerLocal'
 })
 
 // 验证主线程不受影响
-console.log("Main thread final value: ", wl.get());  // 应输出'main'
-```
+console.info("Main thread final value: ", wl.get());  // 应输出'main'
 
-## 其他说明
-
-### 简单使用
-
-**示例一：**
-
-```ts
-let wl = new WorkerLocal<number>();
-
-// 主线程操作
-try {
-    wl.get();
-    console.error("Call get() before set() without \'init'\ should throw an error.");
-} catch (err) {
-    console.log("Main thread: WorkerLocal value not initialized. Call set() first or provide an init function.");
-}
-
-wl.set(1);
-console.log("Main thread after first set:", wl.get()); // 应输出1
-wl.set(wl.get() + 1);
-console.log("Main thread after second set:", wl.get()); // 应输出2
-
-// 工作线程操作
-await taskpool.execute(() => {
-    try {
-        wl.get();
-        console.error("Call get() before set() without \'init'\ should throw an error.");
-    } catch (err) {
-        console.log("Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.");
-    }
-    wl.set(1);
-    console.log("Worker thread after first set:", wl.get()); // 应输出1
-    wl.set(wl.get() + 1);
-    console.log("Worker thread after second set:", wl.get()); // 应输出2
-    wl.delete();
-    try {
-        wl.get();
-        console.error("Call get() after delete() without \'init'\ should throw an error.");
-    } catch (err){
-        console.log("Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.");
-    }
-})
-
-//验证主线程值不受工作线程操作的影响
-console.log("Main thread final value: ", wl.get()); // 应输出2
+// 运行结果
+// Main thread initial value: workerLocal
+// Main thread's value after set: main
+// Worker thread initial value: workerLocal
+// Worker thread after set: subWorker
+// Worker thread after delete: workerLocal
+// Main thread final value: main
 ```
