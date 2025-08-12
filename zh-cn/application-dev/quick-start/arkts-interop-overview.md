@@ -56,6 +56,9 @@ ESValue  -|- (static) load(path: string): ESValue                            // 
   - 没有自身属性（own property）。
   - 对象和对象的属性都是密封的（sealed）。
 - ArkTS1.2和JS的交互，需要开发者显式调用API来进行交互。
+> **说明：**
+>
+> ArkTS1.2的对象在动态上下文中没有自身属性，导致在动态上下文中使用JSON.stringify获取ArkTS1.2对象的json字符串时，不能得到预期的结果。
 
 ```javascript
 // file1.js
