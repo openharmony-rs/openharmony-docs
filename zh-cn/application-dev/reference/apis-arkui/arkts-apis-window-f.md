@@ -1249,8 +1249,6 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
 获取全部主窗口信息，使用Promise异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
@@ -1298,8 +1296,6 @@ export default class EntryAbility extends UIAbility {
 getMainWindowSnapshot(windowId: Array<number>, options: WindowSnapshotOptions): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
 获取指定主窗截图，使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
