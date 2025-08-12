@@ -479,7 +479,7 @@
 | showing   | boolean  | 否   | 否   | 显示窗口的状态。 |
 | label     | string   | 否   | 否   | 窗口标签。      |
 
-## WindowSnapshotOptions<sup>21+</sup>
+## WindowSnapshotConfiguration<sup>21+</sup>
 
 窗口截图的配置项。
 
