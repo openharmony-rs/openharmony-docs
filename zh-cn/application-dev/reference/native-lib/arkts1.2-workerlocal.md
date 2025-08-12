@@ -1,6 +1,6 @@
-# WorkerLocal（工作线程本地存储）
+# WorkerLocal (工作线程本地存储)
 
-WorkerLocal为多线程环境提供了线程本地存储机制，允许每个工作线程拥有自己的独立数据副本，无需担心线程安全问题。可以使用WorkerLocal API创建线程本地变量，这些变量在每个线程中都是独立存在的，互不干扰。WorkerLocal适用于需要在多线程环境中维护线程特定状态的场景。
+WorkerLocal为多线程环境提供了线程本地存储机制，允许每个工作线程拥有自己的独立数据副本，无需担心线程安全问题。可以使用WorkerLocal API创建线程在本地的变量，这些变量在每个线程中都是独立存在的，互不干扰。WorkerLocal适用于需要在多线程环境中维护线程特定状态的场景。
 
 > **说明：**
 >
@@ -24,13 +24,13 @@ let wl = new WorkerLocal<int>();
 
 constructor(init: () => T)
 
-创建一个有初始化函数的WorkerLocal对象，在不同线程首次调用get函数时，会触发该初始化函数，将WorkerLocal在该线程的值置为初始化函数的返回值。
+创建一个有初始化函数的WorkerLocal对象，在不同线程首次调用[get](#get)函数时，会触发该初始化函数，将WorkerLocal在该线程的值置为初始化函数的返回值。
 
 **参数：**
 
 | 参数名     | 类型     | 必填     | 说明     |
 | ---------- | --------- | --------- | --------- | 
-| init       | () => T   | 否        |初始化函数，在不同线程首次调用get()时会触发该函数初始化线程本地值。如不提供，则必须手动调用set()设置初始值。|
+| init       | () => T   | 是        |初始化函数，在不同线程首次调用get()时会触发该函数初始化线程本地值。如不提供，则必须手动调用set()设置初始值。|
 
 **示例：**
 
@@ -65,13 +65,13 @@ console.info("Main thread final value: ", wl.get());  // 应输出'main'
 
 get(): T
 
-获取当前WorkerLocal对象在调用的线程的值。未提供初始化函数且未调用过set函数设置值时，会抛出初始化异常。
+获取WorkerLocal对象在当前线程的值。未提供初始化函数且未调用过[set](#set)函数设置值时，会抛出初始化异常。
 
 **返回值：**
 
 | 类型      | 说明      |
 | ----------| ----------|
-| T| 当前线程的WorkerLocal值 |
+| T| WorkerLocal对象在当前线程的值。 |
 
 **示例：**
 
@@ -126,20 +126,19 @@ async function getTest(){
 // Worker thread after second set: 2
 // Worker thread: WorkerLocal value not initialized. Call set() first or provide an init function.
 // Main thread final value: 2
-// 
 ```
 
 ## set
 
 set(value: T): void
 
-设置WorkerLocal对象在调用线程的值。
+设置WorkerLocal对象在当前线程的值。
 
 **参数：**
 
 | 参数名     | 类型     | 必填     | 说明     |
 | ---------- | -------- | --------| ---------|
-| value      | T        | 是      | 要设置的线程本地值 |
+| value      | T        | 是      | 要设置的WorkerLocal对象在当前线程的值。 |
 
 **示例：**
 
@@ -161,7 +160,7 @@ console.info("Main thread's value after set: ", wl.get()); // 应输出'main'
 
 delete(): void
 
-删除WorkerLocal对象在调用线程的值。用户可在线程退出前调用，以清理不必要的内存占用。
+删除WorkerLocal对象在当前线程的值。用户可在退出线程前调用，以清理不必要的内存占用。
 
 **示例：**
 
