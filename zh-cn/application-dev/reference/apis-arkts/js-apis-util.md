@@ -133,6 +133,8 @@ errnoToString(errno: number): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本**：该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -189,6 +191,8 @@ callbackWrapper(original: Function): (err: Object, value: Object )=&gt;void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本**：该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -3944,6 +3948,8 @@ isArgumentsObject(value: Object): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本**：该接口仅适用于ArkTS1.1。
 
 **参数：**
 
