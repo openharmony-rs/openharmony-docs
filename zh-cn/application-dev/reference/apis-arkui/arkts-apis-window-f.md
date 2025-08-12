@@ -1243,7 +1243,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## getAllMainWindowInfo<sup>21+</sup>
+## window.getAllMainWindowInfo<sup>21+</sup>
 
 getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
@@ -1293,7 +1293,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## getMainWindowSnapshot<sup>21+</sup>
+## window.getMainWindowSnapshot<sup>21+</sup>
 
 getMainWindowSnapshot(windowId: Array<number>, options: WindowSnapshotOptions): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
