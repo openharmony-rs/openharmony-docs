@@ -1242,3 +1242,114 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+## getAllMainWindowInfo<sup>21+</sup>
+
+getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
+
+获取指定屏幕上的全部主窗信息，包含窗口id，窗口label，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | 返回主窗信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported on this device. |
+| 1300003  | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage:window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      let promise = window.getAllMainWindowInfo();
+      promise.then((data) => {
+        console.info('Succeeded in getting all main window info. Data: ' + JSON.stringify(data));
+      }).catch((error: BusinessError) => {
+        console.error(`Failed to get all main window info. Error code: ${error.code}, message: ${error.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to get all main window info. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+## getMainWindowSnapshot<sup>21+</sup>
+
+getMainWindowSnapshot(windowId: Array<number>, options: WindowSnapshotOptions): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
+
+获取指定主窗截图，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名    | 类型    | 必填 | 说明                                          |
+| --------- | ------- | ---- | --------------------------------------------- |
+| windowId | Array&lt;number&gt; | 是   | 需要获取的主窗口id列表。|
+| options | [WindowSnapshotOptions](arkts-apis-window-i.md#windowsnapshotoptions21) | 是 | 获取主窗口截图的配置项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)&gt;&gt; | 截图PixelMap的列表，按照传入的窗口id数组的顺序排列。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported on this device. |
+| 1300003  | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage:window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      let windowId: number[] = {1, 2, 3};
+      let opts: window.WindowSnapshotOptions = {
+        useCache: false
+      }
+      let promise = window.getMainWindowSnapshot(windowId, opts);
+      promise.then((data) => {
+        console.info('Succeeded in getting main window snapshot.');
+      }).catch((error: BusinessError) => {
+        console.error(`Failed to get main window snapshot. Error code: ${error.code}, message: ${error.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to get main window snapshot. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
