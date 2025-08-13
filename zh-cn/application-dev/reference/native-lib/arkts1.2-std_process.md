@@ -6,21 +6,63 @@
 >
 > ArkTS版本：该标准库接口仅适用于ArkTS1.2。
 
-## process
+## StdProcess.uid
 
-进程控制核心类，提供进程信息查询接口。
+uid(): int
 
-### 属性
+获取进程的用户标识符，用于标识创建当前线程的用户的id。
 
-| 名称             | 类型   | 只读  | 可选 | 说明                 |
-| ---------------- | ------ | ---- | ---- | ------------------ |
-| uid              | number | 是   | 否   | 进程的用户标识。     |
-| pid              | number | 是   | 否   | 当前进程的pid。      |
-| tid              | number | 是   | 否   | 当前线程的tid。      |
+**返回值：**
 
-### is64Bit
+| 类型 | 说明                           |
+| ---- | ----------------------------- |
+| int | 返回进程的用户标识符，大于0的整数。 |
 
-static is64Bit(): boolean
+**示例：**
+
+```js
+let uid = StdProcess.uid();
+```
+
+## StdProcess.pid
+
+pid(): int
+
+获取进程的唯一标识符，用于标识当前进程的id。
+
+**返回值：**
+
+| 类型 | 说明                           |
+| ---- | ----------------------------- |
+| int | 返回当前进程的进程id，大于0的整数。 |
+
+**示例：**
+
+```js
+let pid = StdProcess.pid();
+```
+
+## StdProcess.tid
+
+tid(): int
+
+获取线程的唯一标识符，用于标识当前线程的id。
+
+**返回值：**
+
+| 类型 | 说明                           |
+| ---- | ----------------------------- |
+| int | 返回当前线程的线程id，大于0的整数。 |
+
+**示例：**
+
+```js
+let tid = StdProcess.tid();
+```
+
+## StdProcess.is64Bit
+
+is64Bit(): boolean
 
 检查运行环境是否为64位。
 
@@ -33,12 +75,12 @@ static is64Bit(): boolean
 **示例：**
 
 ```js
-let result = StdProcess.process.is64Bit();
+let result = StdProcess.is64Bit();
 ```
 
-### getStartRealtime
+## StdProcess.getStartRealtime
 
-static getStartRealtime(): number
+getStartRealtime(): long
 
 获取系统启动到进程启动的实时时间（以毫秒为单位）。
 
@@ -46,17 +88,17 @@ static getStartRealtime(): number
 
 | 类型   | 说明                           |
 | ------ | ----------------------------- |
-| number | 返回经过的实时时间。单位：毫秒。 |
+| long  | 返回经过的实时时间。单位：毫秒。 |
 
 **示例：**
 
 ```js
-let realtime = StdProcess.process.getStartRealtime();
+let realtime = StdProcess.getStartRealtime();
 ```
 
-### getPastCpuTime
+## StdProcess.getPastCpuTime
 
-static getPastCpuTime(): number
+getPastCpuTime(): long
 
 获取进程启动到当前时间的CPU时间（以毫秒为单位）。
 
@@ -64,29 +106,29 @@ static getPastCpuTime(): number
 
 | 类型   | 说明                          |
 | ------ | ----------------------------- |
-| number | 返回经过的CPU时间。单位：毫秒。 |
+| long | 返回经过的CPU时间。单位：毫秒。 |
 
 **示例：**
 
 ```js
-let result = StdProcess.process.getPastCpuTime();
+let result = StdProcess.getPastCpuTime();
 ```
 
-### abort
+## StdProcess.abort
 
-static abort(): void
+abort(): void
 
 该方法会导致进程立即退出并生成一个核心文件，谨慎使用。
 
 **示例：**
 
 ```js
-StdProcess.process.abort();
+StdProcess.abort();
 ```
 
-### uptime
+## StdProcess.uptime
 
-static uptime(): number
+uptime(): long
 
 获取当前系统已运行的时间（以秒为单位）。
 
@@ -94,12 +136,12 @@ static uptime(): number
 
 | 类型   | 说明                          |
 | ------ | ---------------------------- |
-| number | 当前系统已运行的时间。单位：秒。|
+| long | 当前系统已运行的时间。单位：秒。|
 
 **示例：**
 
 ```js
-let time = StdProcess.process.uptime();
+let time = StdProcess.uptime();
 ```
 
 ## ProcessManager
@@ -108,7 +150,7 @@ let time = StdProcess.process.uptime();
 
 ### getUidForName
 
-static getUidForName(v: string): number
+getUidForName(v: string): int
 
 根据指定的用户名，从系统的用户数据库中获取该用户uid。
 
@@ -122,17 +164,18 @@ static getUidForName(v: string): number
 
 | 类型   | 说明                               |
 | ------ | --------------------------------- |
-| number | 获取用户uid，如果用户不存在则返回-1。|
+| int    | 获取用户uid，如果用户不存在则返回-1。|
 
 **示例：**
 
 ```js
-let pres = StdProcess.ProcessManager.getUidForName("tool");
+let processManager = new StdProcess.ProcessManager();
+let uid = processManager.getUidForName("tool");
 ```
 
 ### getThreadPriority
 
-static getThreadPriority(v: number): number
+getThreadPriority(v: int): int
 
 根据指定的tid获取线程优先级。
 
@@ -140,24 +183,25 @@ static getThreadPriority(v: number): number
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ----------------------------- |
-| v      | number | 是   | 指定的线程tid。大于等于0的整数。 |
+| v      | int | 是   | 指定的线程tid。大于等于0的整数。 |
 
 **返回值：**
 
 | 类型   | 说明                                          |
 | ------ | -------------------------------------------- |
-| number | 返回线程的优先级。优先级顺序取决于当前操作系统。 |
+| int    | 返回线程的优先级。优先级顺序取决于当前操作系统。 |
 
 **示例：**
 
 ```js
-let tid = StdProcess.process.tid;
-let pres = StdProcess.ProcessManager.getThreadPriority(tid);
+let processManager = new StdProcess.ProcessManager();
+let tid = StdProcess.tid();
+let pres = processManager.getThreadPriority(tid);
 ```
 
 ### getSystemConfig
 
-static getSystemConfig(name: number): number
+getSystemConfig(name: int): long
 
 获取系统配置信息。
 
@@ -165,24 +209,25 @@ static getSystemConfig(name: number): number
 
 | 参数名  | 类型   | 必填  | 说明                          |
 | ------ | ------ | ---- | ------------------------------ |
-| name   | number | 是   | 指定系统配置参数名。大于0的整数。 |
+| name   | int | 是   | 指定系统配置参数名。大于0的整数。 |
 
 **返回值：**
 
 | 类型   | 说明                                    |
 | ------ | -------------------------------------  |
-| number | 返回系统配置信息。如果配置不存在，返回-1。 |
+| long   | 返回系统配置信息。如果配置不存在，返回-1。 |
 
 **示例：**
 
 ```js
+let processManager = new StdProcess.ProcessManager();
 let _SC_ARG_MAX = 0;
-let pres = StdProcess.ProcessManager.getSystemConfig(_SC_ARG_MAX);
+let pres = processManager.getSystemConfig(_SC_ARG_MAX);
 ```
 
 ### getEnvironmentVar
 
-static getEnvironmentVar(name: string): string
+getEnvironmentVar(name: string): string
 
 获取环境变量对应的值，如果值不存在，返回空字符串。
 
@@ -201,12 +246,13 @@ static getEnvironmentVar(name: string): string
 **示例：**
 
 ```js
-let pres = StdProcess.ProcessManager.getEnvironmentVar("PATH");
+let processManager = new StdProcess.ProcessManager();
+let pres = processManager.getEnvironmentVar("PATH");
 ```
 
 ### exit
 
-static exit(code: number): void
+exit(code: int): void
 
 终止程序。
 
@@ -216,17 +262,18 @@ static exit(code: number): void
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | ------------- |
-| code   | number | 是   | 进程的退出码。0~255的整数。 |
+| code   | int | 是   | 进程的退出码。0~255的整数。 |
 
 **示例：**
 
 ```js
-StdProcess.ProcessManager.exit(0);
+let processManager = new StdProcess.ProcessManager();
+processManager.exit(0);
 ```
 
 ### kill
 
-static kill(signal: number, pid: number): boolean
+kill(signal: int, pid: int): boolean
 
 发送signal到指定的进程，结束指定进程。
 
@@ -234,8 +281,8 @@ static kill(signal: number, pid: number): boolean
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| signal | number | 是   | 发送特定的信号给目标进程。1~64的整数。|
-| pid    | number | 是   | 进程的id。大于0的整数。              |
+| signal | int | 是   | 发送特定的信号给目标进程。1~64的整数。|
+| pid    | int | 是   | 进程的id。大于0的整数。              |
 
 **返回值：**
 
@@ -246,6 +293,7 @@ static kill(signal: number, pid: number): boolean
 **示例：**
 
 ```js
-let pres = StdProcess.process.pid;
-let result = StdProcess.ProcessManager.kill(28, pres);
+let processManager = new StdProcess.ProcessManager();
+let pres = StdProcess.pid();
+let result = processManager.kill(28, pres);
 ```

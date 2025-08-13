@@ -21,7 +21,7 @@ ConcurrentSet的构造函数，创建一个空的ConcurrentSet\<T>实例。
 **示例：**
 
 ```typescript
-let concurrentSet: ConcurrentSet<number> = new ConcurrentSet<number>();
+let concurrentSet: containers.ConcurrentSet<number> = new containers.ConcurrentSet<number>();
 ```
 
 ## constructor
@@ -40,7 +40,7 @@ ConcurrentSet的构造函数，传入一个实现了ArrayLike\<T>接口的数组
 
 ```typescript
 let array = new Array<number>(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-let concurrentSet: ConcurrentSet<number> = new ConcurrentSet<number>(array);
+let concurrentSet: containers.ConcurrentSet<number> = new containers.ConcurrentSet<number>(array);
 ```
 
 ## constructor
@@ -63,7 +63,7 @@ for (let i = 0; i < 10; i++) {
   set.add(i);
 }
 let iter: Iterable<number> = set.keys();
-let concurrentSet: ConcurrentSet<number> = new ConcurrentSet<number>(iter);
+let concurrentSet: containers.ConcurrentSet<number> = new containers.ConcurrentSet<number>(iter);
 ```
 
 ## constructor
@@ -85,7 +85,7 @@ let set = new Set<number>();
 for (let i = 0; i < 10; i++) {
   set.add(i);
 }
-let concurrentSet: ConcurrentSet<number> = new ConcurrentSet<number>(set);
+let concurrentSet: containers.ConcurrentSet<number> = new containers.ConcurrentSet<number>(set);
 ```
 
 ## add
@@ -112,7 +112,7 @@ add(val: T): this
 
 ```typescript
 let arrValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-let concurrentSet: ConcurrentSet<string> = new ConcurrentSet<string>();
+let concurrentSet: containers.ConcurrentSet<string> = new containers.ConcurrentSet<string>();
 for (let i = 0; i < 10; i++) {
   concurrentSet.add(arrValues[i]);
 }
@@ -141,7 +141,7 @@ has(val: T): boolean
 **示例：**
 
 ```typescript
-let concurrentSet: ConcurrentSet<int> = new ConcurrentSet<int>();
+let concurrentSet: containers.ConcurrentSet<int> = new containers.ConcurrentSet<int>();
 for (let i = 0; i < 10; i++) {
   concurrentSet.add(i);
 }
@@ -172,7 +172,7 @@ delete(val: T): boolean
 **示例：**
 
 ```typescript
-let concurrentSet: ConcurrentSet<number> = new ConcurrentSet<number>();
+let concurrentSet: containers.ConcurrentSet<number> = new containers.ConcurrentSet<number>();
 concurrentSet.add(0);
 let res = concurrentSet.delete(0); // true
 res = concurrentSet.delete(0); // false
@@ -190,7 +190,7 @@ clear(): void
 
 ```typescript
 let arrValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-let concurrentSet: ConcurrentSet<string> = new ConcurrentSet<string>();
+let concurrentSet: containers.ConcurrentSet<string> = new containers.ConcurrentSet<string>();
 let beforeClearSize = concurrentSet.size; //10
 concurrentSet.clear();
 let afterClearSize = concurrentSet.size; //0
@@ -213,7 +213,7 @@ keys(): IterableIterator\<T>
 **示例：**
 
 ```typescript
-let concurrentSet: ConcurrentSet<int> = new ConcurrentSet<int>();
+let concurrentSet: containers.ConcurrentSet<int> = new containers.ConcurrentSet<int>();
 for (let i = 0; i < 5; i++) {
   concurrentSet.add(i);
 }
@@ -250,7 +250,7 @@ values(): IterableIterator\<T>
 **示例：**
 
 ```typescript
-let concurrentSet: ConcurrentSet<int> = new ConcurrentSet<int>();
+let concurrentSet: containers.ConcurrentSet<int> = new containers.ConcurrentSet<int>();
 for (let i = 0; i < 5; i++) {
   concurrentSet.add(i);
 }
@@ -287,7 +287,7 @@ value: 4
 **示例：**
 
 ```typescript
-let concurrentSet: ConcurrentSet<int> = new ConcurrentSet<int>();
+let concurrentSet: containers.ConcurrentSet<int> = new containers.ConcurrentSet<int>();
 for (let i = 0; i < 5; i++) {
   concurrentSet.add(i);
 }
@@ -324,7 +324,7 @@ entries(): IterableIterator\<[T, T]>
 **示例：**
 
 ```typescript
-let concurrentSet: ConcurrentSet<int> = new ConcurrentSet<int>();
+let concurrentSet: containers.ConcurrentSet<int> = new containers.ConcurrentSet<int>();
 for (let i: int = 0; i < 5; i++) {
   concurrentSet.add(i);
 }
@@ -371,9 +371,9 @@ callbackfn的参数说明：
 
 ```typescript
 let arrKeys = new Array<number>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-let ConcurrentSet: ConcurrentSet<number> = new ConcurrentSet<number>(arrKeys);
+let ConcurrentSet: containers.ConcurrentSet<number> = new containers.ConcurrentSet<number>(arrKeys);
 let count = 0;
-ConcurrentSet.forEach((k: number, v: number, set: ConcurrentSet<number>) => {
+ConcurrentSet.forEach((k: number, v: number, set: containers.ConcurrentSet<number>) => {
   if (k % 2 == 0) {
     count++;
   }

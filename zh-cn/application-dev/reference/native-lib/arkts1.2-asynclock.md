@@ -2,7 +2,7 @@
 
 ArkTS1.2支持并发与内存共享，为了解决多并发实例间的数据竞争问题，引入异步锁能力。由于ArkTS1.2支持异步操作，阻塞锁容易产生死锁问题，因此我们在ArkTS1.2中仅支持异步锁（非阻塞式锁）。
 
-使用异步锁的方法需要标记为async，调用方需要await修饰调用，才能保证时序正确。因此会导致外层调用函数全部标记成async。
+使用异步锁的方法必须标记为async，调用时需用await修饰，以确保时序正确。这将导致外层调用函数也需标记为async。
 
 > **说明：**
 >
@@ -46,7 +46,7 @@ let lock = new AsyncLock();
 
 static request(name: string): AsyncLock
 
-使用指定的名称查找或创建（如果未找到）异步锁实例。
+使用指定的名称查找或创建异步锁实例（如果未找到，则创建）。
 
 **参数：**
 
@@ -102,7 +102,7 @@ let held: AsyncLockInfo[] = state.held;
 
 static queryAll(): AsyncLockState[]
 
-查询所有现有锁的信息。
+查询所有异步锁实例的信息。该方法用于获取所有现有锁的详细信息。
 
 **返回值：**
 
@@ -113,10 +113,13 @@ static queryAll(): AsyncLockState[]
 **示例：**
 
 ```ts
+let lock = AsyncLock.request('lock');
 let states: AsyncLockState[] = AsyncLock.queryAll();
 if (states.length === 0) {
   throw new Error("测试失败：期望至少有1个状态，但得到的是 " + states.length);
 }
+console.info(JSON.stringify(states));
+// 运行结果 [{"held":[],"pending":[]}]
 ```
 
 ### lockAsync
@@ -261,7 +264,7 @@ lock.lockAsync(async () => {
 | ----------- | ------------------------------------- | ---- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | isAvailable | boolean                               | 否   | 否   | 当前锁是否可用。取值为true，则只有在尚未持有锁定请求时才会授予该锁定请求；为false则表示将等待当前锁被释放。默认为 false。                                            |
 | signal      | [AbortSignal\<T>](#abortsignalt) \| null | 否   | 否   | 用于中止异步操作的对象。当signal.aborted 为true时，锁请求将被丢弃；当signal.aborted为false时，请求会继续等待获取锁；当signal为null时，请求正常排队运行。默认为null。 |
-| timeout     | number                                | 否   | 否   | 锁操作的超时时间（毫秒）。如果该值大于零，且运行超过该时间，[lockAsync](#lockasync)将返回被拒绝的 Promise。默认为0。                                                 |
+| timeout     | int                                | 否   | 否   | 锁操作的超时时间（毫秒）。如果该值大于零，且运行超过该时间，[lockAsync](#lockasync)将返回被拒绝的Promise。默认为0。                                                 |
 
 ### constructor
 
@@ -280,7 +283,7 @@ options.signal = s;
 
 ### constructor
 
-constructor(isAvailable: boolean, signal: AbortSignal\<T> | null, timeout: number)
+constructor(isAvailable: boolean, signal: AbortSignal\<T> | null, timeout: int)
 
 有参构造函数。根据输入参数创建异步锁配置项实例。
 
@@ -290,7 +293,7 @@ constructor(isAvailable: boolean, signal: AbortSignal\<T> | null, timeout: numbe
 | ----------- | --------------------------------------- | ---- | ------------------------ |
 | isAvailable | boolean                                 | 是   | 当前锁是否可用。取值为true，则只有在尚未持有锁定请求时才会授予该锁定请求；为false则表示将等待当前锁被释放。           |
 | signal      | [AbortSignal\<T>](#abortsignalt) \| null | 是   | 用于中止异步操作的对象。当signal.aborted 为true时，锁请求将被丢弃；当signal.aborted为false时，请求会继续等待获取锁；当signal为null时，请求正常排队运行。   |
-| timeout     | number                                  | 是   | 锁操作的超时时间（毫秒）。如果该值大于零，且运行超过该时间，[lockAsync](#lockasync)将返回被拒绝的 Promise。 |
+| timeout     | int                                  | 是   | 锁操作的超时时间（毫秒）。如果该值大于零，且运行超过该时间，[lockAsync](#lockasync)将返回被拒绝的Promise。 |
 
 **示例：**
 
@@ -320,7 +323,7 @@ let options = new AsyncLockOptions<string>(false, s, 0);
 | --------- | ------------------------------- | ---- | ---- | ---------------------------------------------------------------------- |
 | name      | string                          | 是   | 否   | 锁的名称。                                                             |
 | mode      | [AsyncLockMode](#asynclockmode) | 是   | 否   | 锁的模式。                                                             |
-| contextId | number                          | 是   | 否   | [AsyncLockMode](#asynclockmode)调用者的执行上下文标识符。大于0的整数。 |
+| contextId | int                          | 是   | 否   | [AsyncLockMode](#asynclockmode)调用者的执行上下文标识符。大于0的整数。 |
 
 ## AbortSignal\<T>
 
@@ -331,4 +334,4 @@ let options = new AsyncLockOptions<string>(false, s, 0);
 | 名称    | 类型    | 只读 | 可选 | 说明                                                                          |
 | ------- | ------- | ---- | ---- | --------------------------------------------------------------------------- |
 | aborted | boolean | 否   | 否   | 锁请求终止标志。设置为true时，锁请求将被丢弃；设置为false时，请求会继续等待获取锁。|
-| reason  | T       | 否   | 否   | 中止的原因。此值将用于拒绝[lockAsync](#lockasync)返回的Promise。               |
+| reason  | T       | 否   | 否   | 中止的原因。此值将用于拒绝[lockAsync](#lockasync)返回的Promise。                |
