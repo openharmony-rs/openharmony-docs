@@ -1293,7 +1293,7 @@ export default class EntryAbility extends UIAbility {
 
 ## window.getMainWindowSnapshot<sup>21+</sup>
 
-getMainWindowSnapshot(windowId: Array<number>, options: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
+getMainWindowSnapshot(windowId: Array<number>, configs: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
 获取指定主窗截图，使用Promise异步回调。
 
@@ -1304,7 +1304,7 @@ getMainWindowSnapshot(windowId: Array<number>, options: WindowSnapshotConfigurat
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
 | windowId | Array&lt;number&gt; | 是   | 需要获取的主窗口id列表。|
-| options | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取主窗口截图的配置项。 |
+| configs | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取主窗口截图的配置项。 |
 
 **返回值：**
 
