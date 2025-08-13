@@ -2669,10 +2669,9 @@
           <!--DelEnd-->
           - arkui<!--ui-interface-arkui-->
             - [BuilderNode](reference/apis-arkui/js-apis-arkui-builderNode.md)
-            - [BuilderNode(ArkTS1.2)](reference/apis-arkui/js-apis-arkui-v1.2-builderNode.md)
+            - [BuilderNode.static](reference/apis-arkui/js-apis-arkui-builderNode-static.md)
             - [ComponentContent](reference/apis-arkui/js-apis-arkui-ComponentContent.md)
-            - [ComponentContent(ArkTS1.2)](reference/apis-arkui/js-apis-arkui-v1.2-ComponentContent.md)
-            - [ComponentContentBase(ArkTS1.2)](reference/apis-arkui/js-apis-arkui-v1.2-ComponentContentBase.md)
+            - [ComponentContent.static](reference/apis-arkui/js-apis-arkui-ComponentContent-static.md)
             - [FrameNode](reference/apis-arkui/js-apis-arkui-frameNode.md)
             - [Graphics](reference/apis-arkui/js-apis-arkui-graphics.md)
             - [NodeController](reference/apis-arkui/js-apis-arkui-nodeController.md)

@@ -42,10 +42,9 @@
     <!--DelEnd-->
     - arkui<!--ui-interface-arkui-->
       - [BuilderNode](js-apis-arkui-builderNode.md)
-      - [BuilderNode(ArkTS1.2)](js-apis-arkui-v1.2-builderNode.md)
+      - [BuilderNode.static](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
-      - [ComponentContent(ArkTS1.2)](js-apis-arkui-v1.2-ComponentContent.md)
-      - [ComponentContentBase(ArkTS1.2)](js-apis-arkui-v1.2-ComponentContentBase.md)
+      - [ComponentContent.static](js-apis-arkui-ComponentContent-static.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
       - [NodeController](js-apis-arkui-nodeController.md)

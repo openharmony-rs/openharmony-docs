@@ -1,4 +1,4 @@
-# BuilderNode（ArkTS1.2）
+# BuilderNode.static
 
 提供能够挂载系统组件的自定义节点BuilderNode。BuilderNode只能用作没有子节点的叶节点。
 
@@ -28,6 +28,8 @@ BuilderNode支持通过无状态的UI方法[@Builder（ArkTS1.2）](../../ui/sta
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
 ### constructor
 
 constructor(uiContext: UIContext, options?: RenderOptions)
@@ -37,6 +39,8 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
 
 **参数：**
 
@@ -53,7 +57,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 build(builder: WrappedBuilder\<@Builder (t: T)=>void >, arg: T): void
 
-依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-wrapBuilder.md)最多拥有一个根节点。
+依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)最多拥有一个根节点。
 支持自定义组件。
 
 > **说明**
@@ -67,6 +71,8 @@ build(builder: WrappedBuilder\<@Builder (t: T)=>void >, arg: T): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
 
 **参数：**
 
@@ -92,11 +98,13 @@ build(builder: WrappedBuilder\<<@Builder (t: T)=>void>, arg: T , options: BuildO
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
 **参数：**
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| builder |[WrappedBuilder\<@Builder (t: T)=>void>](../../ui/state-management/arkts-v1.2-wrapBuilder.md) | 是   | 用于构建对应节点树的无状态UI方法[@Builder（ArkTS1.2）](../../quick-start/arkts-builder.md)。   |
+| builder |[WrappedBuilder\<@Builder (t: T)=>void>](../../ui/state-management/arkts-v1.2-wrapBuilder.md) | 是   | 用于构建对应节点树的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)。   |
 | arg     |T                                           | 是   | builder的入参。                                                            |
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | 是   | 该值无效，默认支持@Builder参数不一致，且行为与@Builder的行为保持一致。                                        |
 
@@ -116,6 +124,8 @@ build(builder: WrappedBuilder\<<@Builder (t: T)=>void>, arg: T , options: BuildO
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
 **参数：**
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
@@ -124,7 +134,7 @@ build(builder: WrappedBuilder\<<@Builder (t: T)=>void>, arg: T , options: BuildO
 
 **示例**
 
-请参考[示例2（使用无参的build方法创建BuilderNode示例）](#示例2使用无参的build方法创建buildernode示例)
+请参考[示例2（使用无参的build方法创建BuilderNode）](#示例2使用无参的build方法创建buildernode)。
 
 ### getFrameNode
 
@@ -135,6 +145,8 @@ getFrameNode(): FrameNode | null
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
 
 **返回值：**
 
@@ -160,6 +172,8 @@ update(arg: T): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
@@ -184,6 +198,8 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
 **示例**
 
 请参考[示例7（buildernode与后端节点解除引用关系）](#示例7buildernode与后端节点解除引用关系)。
@@ -197,6 +213,8 @@ updateConfiguration(): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
 
 > **说明：**
 >
