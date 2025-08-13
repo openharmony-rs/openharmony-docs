@@ -57,6 +57,8 @@
 
 完整示例代码如下：
 
+ArkTS1.1示例：
+
 ```ts
 @Entry
 @Component
@@ -111,6 +113,67 @@ struct SheetDemo {
 }
 ```
 
+ArkTS1.2示例：
+
+```ts
+import { Entry, Component, Builder, Text, List, ListItem, FontWeight, Margin, NestedScrollMode, ClickEvent, SheetSize, SheetType,
+  Button, FlexAlign, Column, Color, TextAlign, Alignment, ForEach, ListItemAlign, SheetOptions, TripleLengthDetents, $$
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SheetDemo {
+  @State isShowSheet: boolean = false;
+  @State items: Array<string> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+  @Builder
+  SheetBuilder() {
+    Column() {
+      // 第一步：自定义滚动容器
+      List({ space: '10vp' }) {
+        ForEach(this.items, (item: string) => {
+          ListItem() {
+            Text(String(item)).fontSize(16).fontWeight(FontWeight.Bold)
+          }.width('90%').height('80vp').backgroundColor('#ff53ecd9').borderRadius(10)
+        }, (item: string):string => item)
+      }
+      .alignListItem(ListItemAlign.Center)
+      .margin({ top: '10vp' } as Margin)
+      .width('100%')
+      .height('900px')
+      // 第二步：设置滚动组件的嵌套滚动属性
+      .nestedScroll({
+        scrollForward: NestedScrollMode.PARENT_FIRST,
+        scrollBackward: NestedScrollMode.SELF_FIRST,
+      })
+
+      Text("非滚动区域")
+        .width('100%')
+        .backgroundColor(Color.Gray)
+        .layoutWeight(1)
+        .textAlign(TextAlign.Center)
+        .align(Alignment.Top)
+    }.width('100%').height('100%')
+  }
+
+  build() {
+    Column() {
+      Button('Open Sheet').width('90%').height('80vp')
+        .onClick((e: ClickEvent) => {
+          this.isShowSheet = !this.isShowSheet;
+        })
+        .bindSheet($$(this.isShowSheet), this.SheetBuilder, {
+          detents: [SheetSize.MEDIUM, SheetSize.LARGE, "600"] as TripleLengthDetents,
+          preferType: SheetType.BOTTOM,
+          title: { title: '嵌套滚动场景' },
+        } as SheetOptions)
+    }.width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## 二次确认能力
 
 推荐使用onWillDismiss接口，此接口支持在回调中处理二次确认，或自定义关闭行为。
@@ -118,6 +181,8 @@ struct SheetDemo {
 > **说明：** 
 >
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
+
+ArkTS1.1示例：
 
 ```ts
 // 第一步：声明onWillDismiss回调
@@ -156,12 +221,65 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 })
 ```
 
+ArkTS1.2示例：
+
+```ts
+import { AlertDialogParamWithButtons, DialogAlignment, DialogButtonStyle, DismissSheetAction } from '@ohos.arkui.component';
+// 第一步：声明onWillDismiss回调
+onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
+// 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
+  this.getUIContext().showAlertDialog(
+    {
+      message: '是否选择关闭半模态',
+      autoCancel: true,
+      alignment: DialogAlignment.Bottom,
+      gridCount: 4,
+      offset: { dx: 0, dy: -20 },
+      primaryButton: {
+        value: 'cancel',
+        action: () => {
+          console.info('Callback when the cancel button is clicked');
+        }
+      },
+      secondaryButton: {
+        enabled: true,
+        defaultFocus: true,
+        style: DialogButtonStyle.HIGHLIGHT,
+        value: 'ok',
+        // 第三步：确认关闭半模态逻辑所在，此处为AlertDialog的Button回调
+        action: () => {
+          // 第四步：上述第三步逻辑触发的时候，调用dismiss()关闭半模态
+          DismissSheetAction.dismiss();
+          console.info('Callback when the ok button is clicked');
+        }
+      },
+      cancel: () => {
+        console.info('AlertDialog Closed callbacks');
+      }
+    } as AlertDialogParamWithButtons)
+})
+```
+
 ## 屏蔽部分关闭行为
 
 由于声明了onWillDismiss接口，半模态的关闭行为都需要dismiss处理。可以通过if等逻辑自定义处理关闭逻辑。
 下述示例显示半模态页面只在下滑的时候关闭。
 
+ArkTS1.1示例：
+
 ```ts
+onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
+  if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
+    DismissSheetAction.dismiss(); //注册dismiss行为
+  }
+}),
+```
+
+ArkTS1.2示例：
+
+```ts
+import { DismissSheetAction, DismissReason } from '@ohos.arkui.component';
+
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
     DismissSheetAction.dismiss(); //注册dismiss行为
@@ -174,7 +292,25 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 
 具体代码如下，在半模态下滑的时候无需回弹。
 
+ArkTS1.1示例：
+
 ```ts
+onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
+  if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
+    DismissSheetAction.dismiss(); //注册dismiss行为
+  }
+}),
+
+onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
+ //没有注册springBack，下拉半模态页面无回弹行为
+}),
+```
+
+ArkTS1.2示例：
+
+```ts
+import { DismissSheetAction, DismissReason, SpringBackAction } from '@ohos.arkui.component';
+
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
     DismissSheetAction.dismiss(); //注册dismiss行为
@@ -194,6 +330,8 @@ onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
 - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
 完整示例代码如下：
+
+ArkTS1.1示例：
 
 ```ts
 @Entry
@@ -247,6 +385,73 @@ struct SheetTransitionExample {
           enableHoverMode: this.enableHoverMode,
           hoverModeArea: this.hoverModeArea
         })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+import { Entry, Component, Builder, ClickEvent, SheetType, HoverModeAreaType, Button, FlexAlign,
+  Column, Color, SheetOptions, $$
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SheetTransitionExample {
+  @State isShow: boolean = false;
+  @State enableHoverMode: boolean = true;
+  @State hoverModeArea: HoverModeAreaType = HoverModeAreaType.TOP_SCREEN;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button("enableHoverMode切换")
+        .margin(10)
+        .fontSize(20)
+        .onClick((e: ClickEvent) => {
+          this.enableHoverMode = !this.enableHoverMode;
+        })
+
+      Button("hoverModeArea切换")
+        .margin(10)
+        .fontSize(20)
+        .onClick((e: ClickEvent) => {
+          this.hoverModeArea = this.hoverModeArea === HoverModeAreaType.TOP_SCREEN ?
+          HoverModeAreaType.BOTTOM_SCREEN : HoverModeAreaType.TOP_SCREEN;
+        })
+
+      Button("close modal")
+        .margin(10)
+        .fontSize(20)
+        .onClick((e: ClickEvent) => {
+          this.isShow = false;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Column() {
+      Button("拉起半模态")
+        .onClick((e: ClickEvent) => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$(this.isShow), this.myBuilder, {
+          height: 300,
+          backgroundColor: Color.Green,
+          preferType: SheetType.CENTER,
+          enableHoverMode: this.enableHoverMode,
+          hoverModeArea: this.hoverModeArea
+        } as SheetOptions)
     }
     .justifyContent(FlexAlign.Center)
     .width('100%')
