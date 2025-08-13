@@ -442,7 +442,7 @@ ArkTS1.2示例：
 //ArkTS1.2不支持
 ```
 
-SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，本地位图路径设置为跟SVG图源同级的相对路径：
+Svg图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，本地位图路径设置为跟Svg图源同级的相对路径：
 
 ```
 <svg width="200" height="200">

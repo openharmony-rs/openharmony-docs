@@ -1,9 +1,5 @@
 # 进度条 (Progress)
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--SE: @weixin_52725220-->
-<!--TSE: @xiong0104-->
+
 
 Progress是进度条显示组件，显示内容通常为目标操作的当前进度。具体用法请参考[Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)。
 
@@ -50,14 +46,14 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
   > 从API version 9开始，组件高度大于宽度时，自适应垂直显示；组件高度等于宽度时，保持水平显示。
 
 
-ArkTS1.1示例：
+  ArkTS1.1示例：
 
   ```ts
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(200).height(50)
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(50).height(200)
   ```
 
-ArkTS1.2示例：
+  ArkTS1.2示例：
 
   ```ts
   import {
@@ -72,7 +68,7 @@ ArkTS1.2示例：
 
 - 环形无刻度样式进度条
 
-ArkTS1.1示例：
+  ArkTS1.1示例：
 
   ```ts
   // 从左往右，1号环形进度条，默认前景色为蓝色渐变，默认strokeWidth进度条宽度为2.0vp
@@ -83,7 +79,7 @@ ArkTS1.1示例：
       .style({ strokeWidth: 15})	// 设置strokeWidth进度条宽度为15.0vp
   ```
 
-ArkTS1.2示例：
+  ArkTS1.2示例：
 
   ```ts
   import {
@@ -104,7 +100,7 @@ ArkTS1.2示例：
 
 - 环形有刻度样式进度条
 
-ArkTS1.1示例：
+  ArkTS1.1示例：
 
   ```ts
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
@@ -118,7 +114,7 @@ ArkTS1.1示例：
       .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })	// 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为3vp
   ```
 
-ArkTS1.2示例：
+  ArkTS1.2示例：
 
   ```ts
   import {
@@ -142,7 +138,7 @@ ArkTS1.2示例：
 
 - 圆形样式进度条
 
-ArkTS1.1示例：
+  ArkTS1.1示例：
 
   ```ts
   // 从左往右，1号圆形进度条，默认前景色为蓝色
@@ -151,7 +147,7 @@ ArkTS1.1示例：
   Progress({ value: 20, total: 150, type: ProgressType.Eclipse }).color(Color.Grey).width(100).height(100)
   ```
 
-ArkTS1.2示例：
+  ArkTS1.2示例：
 
   ```ts
   import {
@@ -175,7 +171,7 @@ ArkTS1.2示例：
   >
   >-  组件高度大于宽度时，自适应垂直显示。
 
-ArkTS1.1示例：
+  ArkTS1.1示例：
 
   ```ts
   Progress({ value: 10, total: 150, type: ProgressType.Capsule }).width(100).height(50)
@@ -183,7 +179,7 @@ ArkTS1.1示例：
   Progress({ value: 50, total: 150, type: ProgressType.Capsule }).width(50).height(100).color(Color.Blue).backgroundColor(Color.Black)
   ```
 
-ArkTS1.2示例：
+  ArkTS1.2示例：
 
   ```ts
   import {
