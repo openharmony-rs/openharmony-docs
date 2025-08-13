@@ -2,9 +2,7 @@
 
 ## 可选方法已弃用
 
-**规则：** `optional-methods-deprecated`
-
-**级别：** error
+**规则：** `sdk-optional-methods`
 
 请使用可选属性替代可选方法。
 
@@ -46,9 +44,7 @@ const player1 = new MediaPlayer(defaultResumePlayer);
 
 ## void类型已弃用
 
-**规则：** `void-type-deprecated`
-
-**级别：** error
+**规则：** `sdk-limited-void-type`
 
 ArkTS1.2中void类型已弃用，请用undefined代替。
  
@@ -78,9 +74,7 @@ const syncFunction: AsyncOrVoidMethod = () => {
 
 ## API路径已更改
 
-**规则：** `api-path-changed`
-
-**级别：** error
+**规则：** `sdk-no-decl-with-duplicate-name`
 
 在ArkTS1.2中，所有对象不再作为全局对象，而是置于各自的模块中。开发者需通过import语句引入后使用。
 
@@ -114,9 +108,7 @@ const lg2: LinearGradientClass = new LinearGradientClass();
 
 ## 不必要类型参数
 
-**规则：** `unnecessary-type-argument`
-
-**级别：** error
+**规则：** `sdk-no-props-by-index`
 
 ArkTS1.2中，`attributeValue`方法不再需要传入泛型参数。
 
@@ -148,9 +140,7 @@ attributeValue(true);
 
 ## 带引号的连字符属性已弃用
 
-**规则：** `quoted-hyphen-props-deprecated`
-
-**级别：** error
+**规则：** `sdk-no-literal-as-property-name`
 
 在ArkTS1.2中，对象的属性名称必须是有效标识符，不支持使用单引号和连字符。当属性值为字符串或数字时，应将其名称修改为小驼峰格式。
 
@@ -188,9 +178,7 @@ const headers: RequestHeaders = {
 
 ## 构造类型已弃用
 
-**规则：** `constructor-types-deprecated`
-
-**级别：** error
+**规则：** `sdk-constructor-funcs`
 
 ArkTS1.2不支持构造函数类型，需要将使用构造函数类型的地方改为lambda函数。
 
