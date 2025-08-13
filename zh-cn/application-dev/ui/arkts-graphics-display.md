@@ -6,19 +6,10 @@
 
 Image通过调用接口来创建，接口调用形式如下：
 
-ArkTS1.1示例：
-
 ```ts
 Image(src: PixelMap | ResourceStr | DrawableDescriptor)
 ```
 
-ArkTS1.2示例：
-
-```ts
-import { DrawableDescriptor } from "@ohos.arkui.drawableDescriptor"
-import { PixelMap, ResourceStr, Image } from '@ohos.arkui.component'
-Image(src: PixelMap | ResourceStr | DrawableDescriptor)
-```
 
 该接口通过图片数据源获取图片，支持本地图片和网络图片的渲染展示。其中，src是图片的数据源，加载方式请参考[加载图片资源](#加载图片资源)。
 
@@ -76,7 +67,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   ArkTS1.2示例：
 
   ```ts
-  import { Image } from '@ohos.arkui.component'
+  import { Image } from '@ohos.arkui.component';
   Image('https://www.example.com/example.JPG') // 实际使用时请替换为真实地址
   ```
 
@@ -99,7 +90,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   ArkTS1.2示例：
 
   ```
-  import { $r, Image } from '@ohos.arkui.component'
+  import { $r, Image } from '@ohos.arkui.component';
   Image($r('app.media.icon'))
   ```
 
@@ -120,7 +111,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   ArkTS1.2示例：
 
   ```
-  import { $rawfile, Image } from '@ohos.arkui.component'
+  import { $rawfile, Image } from '@ohos.arkui.component';
   Image($rawfile('example1.png'))
   ```
 
@@ -198,7 +189,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
       ArkTS1.2示例：
 
       ```ts
-      import { Image } from '@ohos.arkui.component'
+      import { Image } from '@ohos.arkui.component';
       Image('file://media/Photos/5')
       .width(200)
       ```
@@ -417,7 +408,7 @@ Image($r('app.media.cloud'))
 ArkTS1.2示例：
 
 ```ts
-import { Color, $r, Image } from '@ohos.arkui.component'
+import { Color, $r, Image } from '@ohos.arkui.component';
 Image($r('app.media.cloud'))
   .width(50)
   .fillColor(Color.Blue) 
@@ -554,7 +545,7 @@ import {
   Component,
   Column,
   Image
-} from '@ohos.arkui.component'
+} from '@ohos.arkui.component';
 
 
 @Entry
@@ -688,7 +679,7 @@ import {
   FlexAlign,
   ImageInterpolation,
   Image
-} from '@ohos.arkui.component'
+} from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -792,7 +783,7 @@ import {
   ColumnOptions,
   RowOptions,
   Image
-} from '@ohos.arkui.component'
+} from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -880,7 +871,7 @@ import {
   ColumnOptions,
   RowOptions,Padding,
   Image
-} from '@ohos.arkui.component'
+} from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -962,10 +953,11 @@ import {
   Row,
   Component,
   Column,
-  ImageSourceSize,ImageFit,
+  ImageSourceSize,
+  ImageFit,
   RowOptions,
   Image
-} from '@ohos.arkui.component'
+} from '@ohos.arkui.component';
 @Entry
 @Component
 struct Index {
@@ -976,7 +968,7 @@ struct Index {
           .sourceSize({
             width: 40,
             height: 40
-          })
+          } as ImageSourceSize)
           .objectFit(ImageFit.ScaleDown)
           .aspectRatio(1)
           .width('25%')
@@ -1042,7 +1034,7 @@ import {
   Component,FlexAlign,
   Column,
   Image
-} from '@ohos.arkui.component'
+} from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -1084,7 +1076,7 @@ Image($r('app.media.icon'))
 ArkTS1.2示例：
 
 ```ts
-import { $r,Image } from '@ohos.arkui.component'
+import { $r,Image } from '@ohos.arkui.component';
 Image($r('app.media.icon'))
   .syncLoad(true)
 ```
@@ -1148,9 +1140,9 @@ import {
   ImageOnCompleteCallback,
   ImageErrorCallback,
   ImageError
-} from '@ohos.arkui.component'
+} from '@ohos.arkui.component';
 
-import { State } from '@ohos.arkui.stateManagement'
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
