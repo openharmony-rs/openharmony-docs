@@ -35,7 +35,7 @@ UIExtensionComponent({
                 parameters: {
                   "ability.want.params.uiExtensionType": "sys/commonUI"
                 }
-})
+} as Record<String, Object>)
 .onTerminated((info) => {
     console.info('onTerminated: code =' + info.code + ', want = ' + JSON.stringify(info.want));
 })
@@ -74,7 +74,7 @@ UIExtensionComponent({
                 parameters: {
                   "ability.want.params.uiExtensionType": "sys/commonUI"
                 }
-})
+} as Record<String, Object>)
 .onError((err) => {
     console.error('onError: code =' + err.code + ', name = ' + err.name + ', message = ' + err.message);
     console.error('onError: ' + JSON.stringify(err));

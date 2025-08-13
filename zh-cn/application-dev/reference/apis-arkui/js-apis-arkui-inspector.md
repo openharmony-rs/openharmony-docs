@@ -53,7 +53,9 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ### on('layout')
 
-on(type: 'layout', callback: () => void): void
+ArkTS1.1: on(type: 'layout', callback: () => void): void
+
+ArkTS1.2: on(type: 'layout', callback: Callback\<void>): void
 
 通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
 
@@ -66,11 +68,13 @@ on(type: 'layout', callback: () => void): void
 | 参数名   | 类型   | 必填 | 说明|
 | -------- | ------ | ---- | -------------------------------------|
 | type     | string | 是   | 必须填写字符串'layout'。<br>layout: 组件布局完成。|
-| callback | () => void   | 是   | 监听layout的回调。|
+| callback | ArkTS1.1: () => void <br>ArkTS1.2: [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 是   | 监听layout的回调。|
 
 ### off('layout')
 
-off(type: 'layout', callback?: () => void): void
+ArkTS1.1: off(type: 'layout', callback?: () => void): void
+
+ArkTS1.2: off(type: 'layout', callback?: Callback\<void>): void
 
 通过句柄向对应的查询条件取消注册回调，当组件布局完成时不再触发指定的回调。
 
@@ -83,11 +87,13 @@ off(type: 'layout', callback?: () => void): void
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | -------------------------------------------- |
 | type     | string | 是   | 必须填写字符串'layout'。<br>layout: 组件布局完成。|
-| callback | () => void   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('layout')](#onlayout)方法中的callback为相同对象时才能取消回调成功。|
+| callback | ArkTS1.1: () => void <br>ArkTS1.2: [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('layout')](#onlayout)方法中的callback为相同对象时才能取消回调成功。|
 
 ### on('draw')
 
-on(type: 'draw', callback: () => void): void
+ArkTS1.1: on(type: 'draw', callback: () => void): void
+
+ArkTS1.2: on(type: 'draw', callback: Callback\<void>): void
 
 通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
 
@@ -100,11 +106,13 @@ on(type: 'draw', callback: () => void): void
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
-| callback | () => void   | 是   | 监听draw的回调。                                     |
+| callback | ArkTS1.1: () => void <br>ArkTS1.2: [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 是   | 监听draw的回调。                                     |
 
 ### off('draw')
 
-off(type: 'draw', callback?: () => void): void
+ArkTS1.1: off(type: 'draw', callback?: () => void): void
+
+ArkTS1.2: off(type: 'draw', callback?: Callback\<void>): void
 
 通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
 
@@ -117,7 +125,7 @@ off(type: 'draw', callback?: () => void): void
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
-| callback | () => void   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('draw')](#ondraw)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | ArkTS1.1: () => void <br>ArkTS1.2: [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('draw')](#ondraw)方法中的callback为相同对象时才能取消回调成功。 |
 
 ### on('drawChildren')<sup>20+<sup>
 

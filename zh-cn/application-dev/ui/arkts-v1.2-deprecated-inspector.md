@@ -20,9 +20,8 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 ArkTS1.2
 <!--code_no_check-->
 ```ts
-import { UIInspector } from '@kit.ArkUI';
+import { inspector } from '@ohos.arkui.inspector';
 
-let inspector: UIInspector = uiContext.getUIInspector();
 // 监听id为COMPONENT_ID的组件回调事件
-let listener = inspector.createComponentObserver('COMPONENT_ID');
+let listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('COMPONENT_ID');
 ```
