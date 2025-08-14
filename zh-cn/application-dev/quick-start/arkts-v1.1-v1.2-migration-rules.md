@@ -6,7 +6,28 @@ ArkTS1.2在引入了静态类型系统、增强的并发能力的同时，也引
 
 **规则：** `arkts-invalid-identifier`
 
-ArkTS1.2中对关键字和保留字做了严格定义。代码中不能使用这些关键字作为变量名称。
+**规则解释：**
+
+ArkTS1.2中不能使用关键字或保留字作为变量、函数或类型的名称。
+
+**变更原因：**
+
+ArkTS1.2严格定义了关键字和保留字，代码中不能将其用作变量、函数或类型的名称。
+
+以下关键字不能用作变量或函数的名称：
+```
+abstract else internal static as enum launch switch async export let super await extends native this break false new throw case final null true class for override try const function package undefined constructor if private while continue implements protected default import public do interface return boolean double number Boolean Double Number byte float object Byte Float Object bigint int short Bigint Int Short char long string Char Long String void
+```
+以下关键字不能用作类型的名称：
+```
+Awaited NoInfer Pick ConstructorParameters NonNullable ReturnType Exclude Omit ThisParameterType Extract OmitThisParameter ThisType InstanceType Parameters Capitalize Uncapitalize Lowercase Uppercase ArrayBufferTypes Function Proxy AsyncGenerator Generator ProxyHandler AsyncGeneratorFunction GeneratorFunction Symbol AsyncIterable IArguments TemplateStringsArray AsyncIterableIterator IteratorYieldResult TypedPropertyDescriptor AsyncIterator NewableFunction CallableFunction PropertyDescriptor
+```
+
+**适配建议：**
+
+请将用到关键字或保留字的变量、函数或类型重命名。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -24,12 +45,26 @@ const abstract1: string = "abstract";
 
 **规则：** `arkts-numeric-semantic`
 
-在ArkTS1.2中，为了获得更好的执行效率，整型数字字面量默认是int类型。
+**规则解释：**
+
+ArkTS1.2中整型数字字面量默认是int类型。
+
+**变更原因：**
+
+在ArkTS1.1中只有一个数字基础类型number，不区分整型字面量或是浮点型字面量。
+
+在ArkTS1.2中，整型数字字面量默认是int类型，以提高执行效率。
+
+**适配建议：**
+
+建议开发者为数值类型变量添加明确的类型标注。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
 let n = 1;
-console.log(n / 2)  // output: 0.5
+console.log(String(n / 2))  // 0.5
 
 let arr = [1, 2, 3];
 
@@ -81,9 +116,21 @@ identity(42 as number);
 
 **规则：** `arkts-limited-void-type`
 
-ArkTS1.1中，void可以在多个场景中使用。
+**规则解释：**
 
-ArkTS1.2中，void只能使用在返回类型的场景，且void类型没有实体。
+在ArkTS1.1中，`void`是一个类型。在ArkTS1.2中，`void`不再是类型，它没有实体，只能用作函数、方法和lambda表达式的返回类型，表示不返回任何值。
+
+**变更原因：**
+
+在ArkTS1.1中，void类型可以在多个场景中使用。
+
+在ArkTS1.2中，void只能使用在返回类型的场景，且void类型没有实体。
+
+**适配建议：**
+
+不要在函数返回类型之外的场景下使用void。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -119,9 +166,11 @@ function foo(): void{};
 
 **ArkTS1.2**
 ```typescript
+// 函数返回类型-普通函数
 function foo(): void {}
 foo();
 
+// 函数返回类型-箭头函数
 function execute(callback: () => void) {
   callback();
 }
@@ -132,7 +181,19 @@ execute(foo);
 
 **规则：** `arkts-no-void-operator`
 
-在ArkTS1.2中，undefined作为关键字不能作为变量名称，因此不需要通过void操作符获取undefined。
+**规则解释：**
+
+ArkTS1.2不支持void操作符获取undefined。
+
+**变更原因：**
+ 
+在ArkTS1.2中，undefined是关键字，不能用作变量名称，因此无需使用void操作符获取undefined。
+
+**适配建议：**
+
+使用IIFE（立即执行函数表达式）来执行运算符的表达式，并返回undefined。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -175,9 +236,19 @@ let fn = () => undefined;  // 直接返回 `undefined`
 
 **规则：** `arkts-limited-literal-types`
 
-ArkTS1.2不支持数字字面量类型，布尔字面量类型。
+**规则解释：**
 
-ArkTS1.2提供了更多细化的数值类型供开发者选择，更关注数值的范围而非某个特定的数字值，同时，为了更好的代码简洁性和避免引入歧义，不引入复杂的数值字面量类型语法。
+ArkTS1.2不支持数字字面量类型和布尔字面量类型。
+
+**变更原因：**
+
+ArkTS1.2提供更细化的数值类型供开发者选择，关注数值范围而非特定数字值，同时简化代码，避免歧义，不引入复杂数值字面量类型语法。
+ 
+**适配建议：**
+
+请使用number和boolean类型替代字面量类型。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -235,7 +306,19 @@ interface Config {
 
 **规则：** `arkts-no-arguments-obj`
 
-ArkTS1.2对函数调用进行严格的参数检查，参数个数不符时编译报错，因此不需要在函数体内通过arguments机制获取参数。
+**规则解释：**
+
+ArkTS1.2不支持通过arguments对象获取参数。
+
+**变更原因：**
+
+ArkTS1.2对函数调用进行严格参数检查，参数个数不符时编译报错，因此无需使用arguments机制。
+ 
+**适配建议：**
+
+请使用具体形参代替arguments对象获取参数。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -258,7 +341,7 @@ function sum() {
 }
 
 function test() {
-  console.log(arguments.callee);
+  console.log(String(arguments.callee));
 }
 ```
 
@@ -288,7 +371,19 @@ function test() {
 
 **规则：**`arkts-array-index-expr-type`
 
-ArkTS1.2支持数值类型的细化，为了实现数组更快的访问，数组索引表达式必须是整数类型。
+**规则解释：**
+
+数组索引必须为整数类型。当索引由其他模块或第三方库传递时，迁移工具可能无法解析其类型，导致数组索引处报错。请开发者确认变量类型是否为整数，并决定如何修改代码。
+
+**变更原因：**
+
+为了实现数组更快的访问，ArkTS1.2支持数值类型的细化，并要求数组索引表达式必须是整数类型。
+ 
+**适配建议：**
+
+请将索引改为整数类型。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -330,7 +425,19 @@ for (let i: int = 0; i < array.length; i++) { // 改为 `int`
 
 **规则：**`arkts-array-index-negative`
 
-ArkTS1.2不支持使用负整数访问数组元素。
+**规则解释：**
+
+ArkTS1.2不支持使用负整数访问数组元素。当数组索引由其他模块或第三方库传递的变量决定时，这些变量的值需要在运行时确定。迁移工具无法判断索引值是否为负，因此会发出警报，请开发者确认索引值是否为负数，并进行相应修改。
+
+**变更原因：**
+
+在ArkTS1.1中，使用负数索引访问数组时，实际上是访问属性名为该负数的属性。如果数组不存在此属性，返回值为`undefined`。如果向负数索引写入值，实际上是为数组对象动态增加一个属性名为该负数的属性并赋值。ArkTS1.2是静态类型语言，无法动态为数组对象增加属性，因此不支持使用负数索引访问数组元素。
+
+**适配建议：**
+
+请使用非负整数来访问数组元素。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -367,7 +474,19 @@ function getElement(arr: number[], index: int) {
 
 **规则：**`arkts-runtime-array-check`
 
-为了保证类型安全，在访问数组元素时，ArkTS1.2会对索引的合法性进行校验。
+**规则解释：**
+
+ArkTS1.2会对数组索引的合法性进行运行时检查。
+
+**变更原因：**
+
+为了保证类型安全，ArkTS1.2在校验索引的合法性后访问数组元素。
+ 
+**适配建议：**
+
+在访问数组前，必须对索引值进行校验。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -385,11 +504,23 @@ if (100 < a.length) {
 }
 ```
 
-## arkts-no-tuples-arrays
+## 元组和数组是两种不同类型
 
 **规则：**`arkts-no-tuples-arrays`
 
-ArkTS1.2中数组和元组是不同的类型，运行时使用元组类型可以获得更好的性能。
+**规则解释：**
+
+ArkTS1.2中数组和元组是不同的类型。
+
+**变更原因：**
+ 
+ArkTS1.2中数组和元组是不同的类型。运行时使用元组类型可以获得更好的性能。
+
+**适配建议：**
+
+不要使用数组类型标注元组，而应正确使用对象类型。
+
+**示例：**
 
 **ArkTS1.1**
 
