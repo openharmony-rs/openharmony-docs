@@ -149,7 +149,7 @@
     - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
   - 渲染控制<!--arkts-rendering-control-->
       - [渲染控制概述](state-management/arkts-rendering-control-overview.md)
-      - [ArkTS1.2 渲染控制组件迁移规范](state-management/arkts-v1.2-new-rendering-control-repeat.md)
+      - [ArkTS1.2 渲染控制组件迁移规范](state-management/arkts-v1.2-rendering-control.md)
       - [if/else：条件渲染](state-management/arkts-rendering-control-ifelse.md)
       - [ForEach：循环渲染](state-management/arkts-rendering-control-foreach.md)
       - [LazyForEach：数据懒加载](state-management/arkts-rendering-control-lazyforeach.md)
