@@ -476,7 +476,7 @@ function getElement(arr: number[], index: int) {
 
 **规则解释：**
 
-ArkTS1.2会对数组索引的合法性进行运行时检查。
+ArkTS1.2会对数组索引的合法性进行运行时检查。请开发者自行确认索引的合法性，决定如何修改代码。
 
 **变更原因：**
 
@@ -556,11 +556,23 @@ type Point = [number, number, boolean];  // 使用元组
 const p: Point = [3, 5, true];
 ```
 
-## 函数类型
+## 函数类型转换及兼容原则
 
 **规则：**`arkts-incompatible-function-types`
 
-TypeScript允许对函数类型的变量进行更宽松的赋值，而在ArkTS1.2中，将对函数类型的赋值进行更严格的检查。函数类型转换时，参数遵循逆变(Contravariance)规则，返回类型遵循协变(Covariance)规则。
+**规则解释：**
+
+ArkTS1.2函数类型转换时，参数遵循[逆变](#逆变协变)规则，返回类型遵循[协变](#逆变协变)规则。
+
+**变更原因：**
+ 
+ArkTS1.1允许对函数类型的变量进行更宽松的赋值，而在ArkTS1.2中，将对函数类型的赋值进行更严格的检查。函数类型转换时，参数遵循[逆变](#逆变协变)规则，返回类型遵循[协变](#逆变协变)规则。
+
+**适配建议：**
+
+在外部包裹一层类型相同的箭头函数或者改为正确的类型。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -568,45 +580,41 @@ TypeScript允许对函数类型的变量进行更宽松的赋值，而在ArkTS1.
 type FuncType = (p: string) => void;
 let f1: FuncType =
     (p: string): number => {
-        return 0
+        return 0;
     }
 let f2: FuncType = (p: any): void => {};
-
-class Animal {}
-class Dog extends Animal {}
-type FuncType = () => Animal;
-let f: FuncType = (): Dog => new Dog(); // 在 TypeScript 允许，但在 ArkTS 可能不允许
-
-type FuncType2 = (dog: Dog) => void;
-let f: FuncType2 = (animal: Animal) => {}; // 违反规则
 ```
 
 **ArkTS1.2**
 
 ```typescript
-type FuncType = (p: string) => void
+type FuncType = (p: string) => void;
 let f1: FuncType =
   	(p: string) => {
         ((p: string): number => {
-            return 0
+            return 0;
         })(p) 
     }
 let f2: FuncType = (p: string): void => {};
-
-class Animal {}
-class Dog extends Animal {}
-type FuncType = () => Animal;
-let f: FuncType = (): Animal => new Animal();// 返回 `Animal`
-
-type FuncType2 = (dog: Dog) => void;
-let f: FuncType = (dog: Dog) => {}; // 参数类型严格匹配
 ```
 
 ## 不支持指数操作符
 
 **规则：**`arkts-no-exponent-op`
 
+**规则解释：**
+
+ArkTS1.2不支持指数运算符（`**`和`**=`）。
+
+**变更原因：**
+ 
 ArkTS1.2不支持指数运算符（`**`和`**=`），采用语言基础库。
+
+**适配建议：**
+
+使用Math库中的pow方法来代替指数运算符。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -644,11 +652,23 @@ let values = [1, 2, 3];
 let squared = values.map(v => Math.pow(v, 2)); // 使用 `Math.pow()`
 ```
 
-## 不支持正则表达式
+## 不支持正则表达式字面量
 
 **规则：**`arkts-no-regexp-literals`
 
+**规则解释：**
+
 ArkTS1.2不支持正则表达式字面量。
+
+**变更原因：**
+ 
+ArkTS1.2不支持正则表达式字面量。
+
+**适配建议：**
+
+使用RegExp类代替正则表达式字面量。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -668,7 +688,7 @@ let items = "apple,banana, cherry".split(/\s*,\s*/); // 违反规则
 **ArkTS1.2**
 
 ```typescript
-let regex: RegExp =  new RegExp('bc*d');
+let regex: RegExp = new RegExp('bc*d');
 let regex = new RegExp('\\d{2,4}-\\w+', 'g'); // 使用 `RegExp` 类
 function matchPattern(str: string) {
   let regex = new RegExp('hello\\s+world', 'i'); // 使用 `RegExp`
@@ -683,11 +703,23 @@ let regex = new RegExp('\\s*,\\s*'); // 使用 `RegExp`
 let items = "apple,banana, cherry".split(regex);
 ```
 
-## enum中不支持成员为不同类型数据
+## enum中当前语法不支持浮点数值
 
 **规则：**`arkts-no-enum-mixed-types`
 
-enum用来表示一组离散的数据，使用浮点数据不符合enum的设计理念。使用浮点数据可能造成精度损失的问题。因此，ArkTS1.2中enum的值必须为整型数据。
+**规则解释：**
+
+ArkTS1.2中enum当前语法不支持浮点数值。
+
+**变更原因：**
+ 
+enum表示一组离散的数据，使用浮点数据不符合设计理念，可能造成精度损失。因此，ArkTS1.2中enum的值必须为整型。
+
+**适配建议：**
+
+定义enum类型时，需显式声明number类型，以支持浮点数值。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -702,10 +734,10 @@ enum Size {
 **ArkTS1.2**
 
 ```typescript
-enum Size{ 
-  UP = 1,
-  MIDDLE = 2,
-  DOWN = 3
+enum Size: number{ 
+  UP = 1.5,
+  MIDDLE = 1,
+  DOWN = 0.75
 }
 ```
 
@@ -713,7 +745,19 @@ enum Size{
 
 **规则：**`arkts-no-func-props`
 
-ArkTS1.2上不支持在函数上动态添加属性。
+**规则解释：**
+
+ArkTS1.2不支持在函数上动态添加属性。
+
+**变更原因：**
+ 
+ArkTS1.2是静态类型语言，不支持在函数，方法上动态增加属性。
+
+**适配建议：**
+
+使用类来封装函数和属性。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -793,7 +837,17 @@ console.log(Counter.increment());
 
 **规则：**`arkts-no-ts-decorators`
 
-ArkTS1.2不支持通过自定义装饰器动态改变类、方法、属性或函数参数。替代方案见示例。
+**规则解释：**
+
+ArkTS1.2不支持通过自定义装饰器动态改变类、方法、属性或函数参数。
+
+**变更原因：**
+ 
+由于自定义装饰器需要动态改变类、方法、属性，而ArkTS1.2是静态类型语言，所以不支持自定义装饰器。
+
+**适配建议：**
+
+请参考以下示例修改代码。
 
 **示例1：日志追踪装饰器**
 ```typescript
@@ -1097,11 +1151,23 @@ struct Settings {
 }
 ```
 
-## 类实现接口时，不能用类方法替代对应interface属性
+## 属性和方法不能交叉重写
 
 **规则：**`arkts-no-method-overriding-field`
 
-ArkTS1.2不支持structural type，属性和方法不能互相转换。
+**规则解释：**
+
+在ArkTS1.2中，子类继承父类或实现接口时，属性和方法不能交叉重写，即方法不能重写属性，属性不能重写方法。
+
+**变更原因：**
+ 
+ArkTS1.1是动态类型语言，类的属性和方法本质上都是对象，因此在继承或实现时，方法和属性可以交叉重写。但是ArkTS1.2是静态类型语言，方法和属性不能交叉重写。
+
+**适配建议：**
+
+明确区分方法和属性，不要交叉重写。统一方法的声明方式。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1147,7 +1213,19 @@ class StringTransformer implements Transformer<string> {
 
 **规则：**`arkts-switch-expr`
 
-ArkTS1.2的switch表达式类型只能为number，string，enum。
+**规则解释：**
+
+ArkTS1.2的switch表达式类型只能为number、string、enum。
+
+**变更原因：**
+ 
+提高代码可读性和执行性能。
+
+**适配建议：**
+
+使用number、string、enum作为switch表达式类型。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1201,7 +1279,19 @@ switch (arrValue) {
 
 **规则：**`arkts-case-expr`
 
-ArkTS1.2不支持Switch语句的中case重复，便于提高代码可读性。
+**规则解释：**
+
+ArkTS1.2不支持Switch语句的中case重复。
+
+**变更原因：**
+ 
+提高代码的可读性。
+
+**适配建议：**
+
+避免出现重复的case。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1258,22 +1348,46 @@ switch (state) {
 
 **规则：**`arkts-no-lazy-import`
 
-ArkTS1.2支持默认懒加载，无需lazy关键字。
+**规则解释：**
+
+ArkTS1.2不需要lazy关键字。
+
+**变更原因：**
+ 
+ArkTS1.2默认支持懒加载，无需使用lazy关键字。
+
+**适配建议：**
+
+移除lazy关键字。
+
+**示例：**
 
 **ArkTS1.1**
 
 ```typescript
-import lazy { m } from 'module'
-import lazy { a, b } from 'module1'; // 违反规则
-import { c } from 'module2';
+// file1.ets
+let a='a';
+let b='b';
+let c='c';
+export {a,b,c};
+
+// file2.ets
+import lazy { a } from './file1';
+import lazy { b, c } from './file1'; // 违反规则
 ```
 
 **ArkTS1.2**
 
 ```typescript
-import { m } from 'module'
-import { a, b } from 'module1'; // 移除 lazy
-import { c } from 'module2';
+// file1.ets
+let a='a';
+let b='b';
+let c='c';
+export {a,b,c};
+
+// file2.ets
+import { a } from './file1';
+import { b, c } from './file1'; // 移除lazy
 ```
 
 ## 不支持动态import
@@ -2701,9 +2815,9 @@ ArkTS1.2子类方法覆写父类方法，参数类型须遵循逆变原则，可
 
 **逆变/协变：** 用来描述类型转换后的继承关系，如果A、B表示类型，f()表示类型转换，≤表示继承关系（A≤B表示A是由B派生出来的子类），则有：
 
-- f()为逆变时，当A≤B时有f(B)≤f(A)成立。
+- 当f()为逆变时，当A≤B时有f(B)≤f(A)成立。
 
-- f()为协变时，当A≤B时有f(A)≤f(B)成立。
+- 当f()为协变时，当A≤B时有f(A)≤f(B)成立。
 
 **ArkTS1.1**
 
@@ -3153,3 +3267,13 @@ import { MainPage } from 'library/ets/components/MainPage'
 // library/ets/components/Index.ets
 import { MainPage } from 'library/src/main/ets/components/MainPage'
 ```
+
+## 逆变/协变
+用来描述类型转换后的继承关系，如果A、B表示类型，f()表示类型转换，≤表示继承关系（A≤B表示A是由B派生出来的子类），则有：
+
+- 当f()为逆变时，当A≤B时有f(B)≤f(A)成立。
+
+- 当f()为协变时，当A≤B时有f(A)≤f(B)成立。
+
+## 智能转换
+编译器在特定场景（例如instanceof检查、null检查、上下文类型推导）下能自动识别对象的具体类型，实现变量的自动转换，无需手动操作。
