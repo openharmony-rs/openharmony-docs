@@ -330,6 +330,7 @@
     - [NDK支持多线程创建组件](ndk-build-on-multi-thread.md)
   - 使用互操作功能构建UI<!--arkts-use-interop-ui-->
     - [ArkTS1.2使用ArkTS1.1自定义组件](interop-compatible-component.md)
+    - [ArkTS1.2使用ArkTS1.1状态管理互操作](interop-compatible-statemanagement.md)
     - [ArkTS1.2与ArkTS1.1应用间状态存储互操作](interop-storages.md)
     - [ArkTS1.2使用ArkTS1.1全局自定义构建函数](interop-compatible-builder.md)
     - [ArkTS1.2使用ArkTS1.1 WrappedBuilder对象](interop-compatible-WrappedBuilder.md)
