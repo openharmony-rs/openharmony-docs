@@ -98,7 +98,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
-  AlignRuleOption, Margin, BorderOptions } from '@ohos.arkui.component';
+  AlignRuleOption, BorderOptions } from '@ohos.arkui.component';
 
 let AlignRus: AlignRuleOption = {
   top: { 'anchor': '__container__', 'align': VerticalAlign.Top },
@@ -196,7 +196,7 @@ struct Index {
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
-  AlignRuleOption, Margin, BorderOptions } from '@ohos.arkui.component';
+  AlignRuleOption, BorderOptions } from '@ohos.arkui.component';
 
 let AlignRus: AlignRuleOption = {
   top: { anchor: '__container__', align: VerticalAlign.Top },
@@ -303,7 +303,7 @@ struct Index {
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
-  AlignRuleOption, Margin, BorderOptions } from '@ohos.arkui.component';
+  AlignRuleOption, BorderOptions } from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -497,7 +497,7 @@ struct Index {
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
-  AlignRuleOption, Margin, BorderOptions, Position, Alignment, ImageSize } from '@ohos.arkui.component';
+  AlignRuleOption, BorderOptions, Position, Alignment, ImageSize } from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -696,7 +696,7 @@ struct Index {
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
-  AlignRuleOption, Margin, BorderOptions, Position, Alignment, Column, Flex, Stack, FlexDirection } from '@ohos.arkui.component';
+  AlignRuleOption, BorderOptions, Position, Alignment, Column, Flex, Stack, FlexDirection } from '@ohos.arkui.component';
 import { State } from "@ohos.arkui.stateManagement"
 
 @Entry
@@ -880,7 +880,7 @@ struct Index {
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
-  AlignRuleOption, Margin, BorderOptions, ImageSize, Alignment } from '@ohos.arkui.component';
+  AlignRuleOption, BorderOptions, ImageSize, Alignment } from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -1137,7 +1137,7 @@ struct Index {
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
-  AlignRuleOption, Margin, BorderOptions, Axis, ChainStyle } from '@ohos.arkui.component';
+  AlignRuleOption, BorderOptions, Axis, ChainStyle } from '@ohos.arkui.component';
 
 @Entry
 @Component
