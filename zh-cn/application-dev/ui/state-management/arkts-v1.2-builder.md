@@ -740,6 +740,109 @@ export struct ExampleOne {
 
 ![arkts-builder-usage-scenario9](figures/arkts-builder-usage-scenario9.png)
 
+### @Builder支持状态变量的刷新
+
+开发者可以使用UIUtils.makeBinding()函数、Binding类和MutableBinding类来实现@Builder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/js-apis-stateManagement-static.md#makebinding)。
+
+```ts
+import {
+  Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod,
+  Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles
+} from '@ohos.arkui.component';
+import { UIUtils, Binding, MutableBinding, State, ObservedV2, Prop, Trace, Local } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class ClassA {
+  @Trace props: string = 'Hello';
+}
+
+function textStyles(this: TextAttribute): this {
+  this.fontColor('#e6000000');
+  this.textAlign(TextAlign.Center);
+  this.width(300);
+  this.height(40);
+  this.margin(10);
+  this.backgroundColor('#0d000000');
+  this.borderRadius(20);
+  return this;
+}
+
+@Builder
+function CustomButton(num1: Binding<number>, num2: MutableBinding<number>) {
+  Row() {
+    Column() {
+      Text(`number1 === ${num1.value},  number2 === ${num2.value}`)
+        .textStyles()
+
+      Button(`only change number2`)
+        .onClick((e) => {
+          num2.value += 1;
+        })
+    }
+  }
+}
+
+@Builder
+function CustomButtonObj(obj1: MutableBinding<ClassA>) {
+  Row() {
+    Column() {
+      Text(`props === ${obj1.value.props}`)
+        .textStyles()
+
+      Button(`change props`)
+        .onClick((e) => {
+          obj1.value.props += 'Hi';
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Single {
+  @Local number1: number = 5;
+  @Local number2: number = 12;
+  @Local classA: ClassA = new ClassA();
+
+  build() {
+    Column() {
+      Button(`change both number1 and number2`)
+        .onClick((e) => {
+          this.number1 += 1;
+          this.number2 += 2;
+        })
+      Text(`number1 === ${this.number1}`)
+        .textStyles()
+      Text(`number2 === ${this.number2}`)
+        .textStyles()
+      CustomButton(
+        UIUtils.makeBinding<number>(() => this.number1),
+        UIUtils.makeBinding<number>(
+          () => this.number2,
+          (val: number) => {
+            this.number2 = val;
+          })
+      )
+      Text(`classA.props === ${this.classA.props}`)
+        .textStyles()
+      CustomButtonObj(
+        UIUtils.makeBinding<ClassA>(
+          () => this.classA,
+          (val: ClassA) => {
+            this.classA = val;
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![arkts-builder-refresh](figures/arkts-builder-refresh.gif)
+
 ## 常见问题
 
 ### 在\@Builder装饰的函数内部修改入参内容
