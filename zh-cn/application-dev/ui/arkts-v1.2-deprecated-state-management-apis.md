@@ -46,9 +46,9 @@ let res: boolean = AppStorage.delete('PropA');
 
 ### Get
 
-ArkTS1.1接口声明：[static Get<T>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#getdeprecated)
+ArkTS1.1接口声明：[static Get\<T\>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#getdeprecated)
 
-替代的ArkTS1.2接口声明：[static get<T>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#get10)
+替代的ArkTS1.2接口声明：[static get\<T\>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#get10)
 
 
 
@@ -106,9 +106,9 @@ let mutable: boolean = true;
 
 ### Keys
 
-ArkTS1.1接口声明：[static Keys(): IterableIterator<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated)
+ArkTS1.1接口声明：[static Keys(): IterableIterator\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated)
 
-替代的ArkTS1.2接口声明：[static keys(): IterableIterator<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10)
+替代的ArkTS1.2接口声明：[static keys(): IterableIterator\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10)
 
 
 
@@ -128,7 +128,7 @@ let keys: IterableIterator<string> = AppStorage.keys();
 
 ArkTS1.1接口声明：[static Link(propName: string): any](../reference/apis-arkui/arkui-ts/ts-state-management.md#linkdeprecated)
 
-替代的ArkTS1.2接口声明：[static link<T>(propName: string): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#link10)
+替代的ArkTS1.2接口声明：[static link\<T\>(propName: string): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#link10)
 
 
 
@@ -144,11 +144,35 @@ ArkTS1.2
 let linkToPropA1: SubscribedAbstractProperty<number> = AppStorage.link<number>('PropA');
 ```
 
+### Prop
+
+ArkTS1.1接口声明：[static Prop(propName: string): any](../reference/apis-arkui/arkui-ts/ts-state-management.md#propdeprecated)
+
+ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
+
+替代的ArkTS1.2接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\> | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
+
+
+
+ArkTS1.1
+
+```ts
+let prop: SubscribedAbstractProperty<number> = AppStorage.Prop('PropA');
+prop.set(48);
+```
+
+ArkTS1.2
+
+```ts
+let ref: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
+ref?.set(48);
+```
+
 ### Set
 
-ArkTS1.1接口声明：[static Set<T>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#setdeprecated)
+ArkTS1.1接口声明：[static Set\<T\>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#setdeprecated)
 
-替代的ArkTS1.2接口声明：[static set<T>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#set10)
+替代的ArkTS1.2接口声明：[static set\<T\>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#set10)
 
 
 
@@ -166,9 +190,9 @@ let res: boolean = AppStorage.set('PropA', 47);
 
 ### SetAndLink
 
-ArkTS1.1接口声明：[static SetAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandlinkdeprecated)
+ArkTS1.1接口声明：[static SetAndLink\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandlinkdeprecated)
 
-替代的ArkTS1.2接口声明：[static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandlink10)
+替代的ArkTS1.2接口声明：[static setAndLink\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandlink10)
 
 
 
@@ -186,11 +210,11 @@ let link: SubscribedAbstractProperty<Int> = AppStorage.setAndLink('PropA', 49);
 
 ### SetAndProp
 
-ArkTS1.1接口声明：[static SetAndProp<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandpropdeprecated)
+ArkTS1.1接口声明：[static SetAndProp\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandpropdeprecated)
 
 ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS1.2接口声明：[static setAndRef<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+替代的ArkTS1.2接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
 
 
 
@@ -208,9 +232,9 @@ let ref: AbstractProperty<Int> = AppStorage.setAndRef('PropA', 49);
 
 ### SetOrCreate
 
-ArkTS1.1接口声明：[static SetOrCreate<T>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#setorcreatedeprecated)
+ArkTS1.1接口声明：[static SetOrCreate\<T\>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#setorcreatedeprecated)
 
-替代的ArkTS1.2接口声明：[static setOrCreate<T>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#setorcreate10)
+替代的ArkTS1.2接口声明：[static setOrCreate\<T\>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#setorcreate10)
 
 
 
@@ -224,30 +248,6 @@ ArkTS1.2
 
 ```ts
 AppStorage.setOrCreate('simpleProp', 121);
-```
-
-### Prop
-
-ArkTS1.1接口声明：[static Prop(propName: string): any](../reference/apis-arkui/arkui-ts/ts-state-management.md#propdeprecated)
-
-ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
-
-替代的ArkTS1.2接口声明：[static ref<T>(propName: string): AbstractProperty<T> | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
-
-
-
-ArkTS1.1
-
-```ts
-let prop: SubscribedAbstractProperty<number> = AppStorage.Prop('PropA');
-prop.set(48);
-```
-
-ArkTS1.2
-
-```ts
-let ref: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
-ref?.set(48);
 ```
 
 ### Size
@@ -268,6 +268,48 @@ ArkTS1.2
 
 ```ts
 let res: number = AppStorage.size();
+```
+
+### prop
+
+ArkTS1.1接口声明: [static prop\<T\>(propName: string): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#prop10)
+
+ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
+
+替代的ArkTS1.2接口声明：[static ref\<T\>(propName: string): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
+
+ArkTS1.1
+
+```ts
+let prop: SubscribedAbstractProperty<number> = AppStorage.prop('PropA');
+prop.set(48);
+```
+
+ArkTS1.2
+
+```ts
+let ref: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
+ref?.set(48);
+```
+
+### setAndProp
+
+ArkTS1.1接口声明：[static setAndProp\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandprop10)
+
+ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
+
+替代的ArkTS1.2接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+
+ArkTS1.1
+
+```ts
+let prop: SubscribedAbstractProperty<number> = AppStorage.setAndProp('PropA', 49);
+```
+
+ArkTS1.2
+
+```ts
+let ref: AbstractProperty<Int> = AppStorage.setAndRef('PropA', 49);
 ```
 
 ### staticClear
@@ -294,9 +336,9 @@ let res = AppStorage.clear();
 
 ### EnvProp
 
-ArkTS1.1接口声明：[static EnvProp<T>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropdeprecated)
+ArkTS1.1接口声明：[static EnvProp\<T\>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropdeprecated)
 
-替代的ArkTS1.2接口声明：[static envProp<T>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
+替代的ArkTS1.2接口声明：[static envProp\<T\>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
 
 
 
@@ -314,9 +356,9 @@ Environment.envProp('accessibilityEnabled', 'default');
 
 ### EnvProps
 
-ArkTS1.1接口声明：[static EnvProps<T>(props: {key: string; defaultValue: any; }[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropsdeprecated)
+ArkTS1.1接口声明：[static EnvProps\<T\>(props: {key: string; defaultValue: any; }[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropsdeprecated)
 
-替代的ArkTS1.2接口声明：[static envProps<T>(props: EnvPropsOptions[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprops10)
+替代的ArkTS1.2接口声明：[static envProps\<T\>(props: EnvPropsOptions[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprops10)
 
 
 
@@ -410,6 +452,52 @@ struct SharedLocalStorage {
 }
 ```
 
+### prop
+
+ArkTS1.1接口声明: [static prop\<S\>(propName: string): SubscribedAbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#prop9)
+
+ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
+
+替代的ArkTS1.2接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12-1)
+
+ArkTS1.1
+
+```ts
+let stoarge: LocalStorage = new LocalStorage();
+let prop: SubscribedAbstractProperty<number> = storage.prop('PropA');
+prop.set(48);
+```
+
+ArkTS1.2
+
+```ts
+let stoarge: LocalStorage = new LocalStorage();
+let ref: AbstractProperty<number> | undefined = storage.ref<number>('PropA');
+ref?.set(48);
+```
+
+### setAndProp
+
+ArkTS1.1接口声明：[static setAndProp\<S\>(propName: string, defaultValue: S): SubscribedAbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandprop9)
+
+ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
+
+替代的ArkTS1.2接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12-1)
+
+ArkTS1.1
+
+```ts
+let storage: LocalStorage = new LocalStorage();
+let prop: SubscribedAbstractProperty<number> = storage.setAndProp('PropA', 49);
+```
+
+ArkTS1.2
+
+```ts
+let storage: LocalStorage = new LocalStorage();
+let ref: AbstractProperty<Int> = storage.setAndRef('PropA', 49);
+```
+
 ## PersistentStorage
 
 ### DeleteProp
@@ -434,9 +522,9 @@ PersistentStorage.deleteProp('highScore');
 
 ### Keys
 
-ArkTS1.1接口声明：[static Keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated-1)
+ArkTS1.1接口声明：[static Keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated-1)
 
-替代的ArkTS1.2接口声明：[static keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-1)
+替代的ArkTS1.2接口声明：[static keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-1)
 
 
 
@@ -454,9 +542,9 @@ let keys: Array<string> = PersistentStorage.keys();
 
 ### PersistProp
 
-ArkTS1.1接口声明：[static PersistProp<T>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)
+ArkTS1.1接口声明：[static PersistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)
 
-替代的ArkTS1.2接口声明：[static persistProp<T>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
+替代的ArkTS1.2接口声明：[static persistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
 
 
 
@@ -476,7 +564,7 @@ PersistentStorage.persistProp('highScore', '0');
 
 ArkTS1.1接口声明：[static PersistProps(properties: {key: string; defaultValue: any;}[])](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropsdeprecated)
 
-替代的ArkTS1.2接口声明：[static persistProp<T>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
+替代的ArkTS1.2接口声明：[static persistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
 
 
 
