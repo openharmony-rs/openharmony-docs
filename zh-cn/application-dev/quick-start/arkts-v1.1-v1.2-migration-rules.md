@@ -1394,7 +1394,19 @@ import { b, c } from './file1'; // 移除lazy
 
 **规则：**`arkts-no-dynamic-import`
 
-ArkTS1.2中模块加载默认支持懒加载。
+**规则解释：**
+
+在ArkTS1.2中，不支持动态import。
+
+**变更原因：**
+ 
+ArkTS1.2中模块加载默认支持懒加载，无需动态import。
+
+**适配建议：**
+
+将动态import改为静态import。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1440,7 +1452,19 @@ function getModule() {
 
 **规则：**`arkts-no-side-effect-import`
 
-ArkTS1.2中模块加载默认支持懒加载，无法实现导入副作用的功能。
+**规则解释：**
+
+ArkTS1.2不支持副作用导入的功能。
+
+**变更原因：**
+ 
+ArkTS1.2中模块加载支持懒加载，不支持副作用导入的功能。
+
+**适配建议：**
+
+将导入文件中的执行逻辑移到本文件中。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1465,7 +1489,19 @@ console.log("Main program running...");
 
 **规则：**`arkts-no-globalthis`
 
-由于ArkTS1.2不支持动态更改对象的布局，因此不支持全局作用域和globalThis。
+**规则解释：**
+
+ArkTS1.2不支持globalThis。
+
+**变更原因：**
+ 
+ArkTS1.2不支持动态更改对象布局，因此不支持全局作用域和globalThis。
+
+**适配建议：**
+
+按示例修改。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1489,11 +1525,23 @@ import * as M from 'file1'
 let x = M.abc;
 ```
 
-## 不支持Funcion.bind方法
+## 不支持Function.bind方法
 
 **规则：**`arkts-no-func-bind`
 
-ArkTS不允许使用标准库函数Function.bind。标准库使用这些函数来显式设置被调用函数的this参数。
+**规则解释：**
+
+ArkTS1.2不支持标准库函数Function.bind。
+
+**变更原因：**
+ 
+ArkTS1.2中的方法会自动捕获上下文中的`this`，因此无需使用`Function.bind`显式绑定`this`。
+
+**适配建议：**
+
+使用“=”（等号）将函数赋值给变量。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1531,7 +1579,19 @@ boundGreet(); // Hello, my name is Alice
 
 **规则：**`arkts-no-classes-as-obj`
 
-在ArkTS中，class声明的是一个新的类型，不是一个值。因此，不支持将class用作对象（例如将class赋值给一个变量）。
+**规则解释：**
+
+在ArkTS1.2中，不支持将class用作对象。
+
+**变更原因：**
+ 
+在ArkTS1.2中，class声明的是一个新的类型，而不是一个值。因此，不支持将class用作对象，例如赋值给变量。
+
+**适配建议：**
+
+通过反射来实现。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1560,15 +1620,43 @@ let classType: ClassType | undefined = linker.getType(className) as ClassType;
 
 **规则：**`arkts-limited-stdlib`
 
-由于TypeScript或JavaScript标准库中的大部分接口与动态特性有关，所以在ArkTS中禁止使用以下接口：
+**规则解释：**
 
-Object: getPrototypeOf
+ArkTS1.2中禁止使用以下接口：
+
+- 全局对象的属性和方法：`eval`
+
+- Object： `__proto__`、`__defineGetter__`、`__defineSetter__`、`__lookupGetter__`、`__lookupSetter__`、`assign`、`create`、`defineProperties`、`defineProperty`、`freeze`、`fromEntries`、`getOwnPropertyDescriptor`、`getOwnPropertyDescriptors`、`getOwnPropertySymbols`、`getPrototypeOf`、`hasOwnProperty`、`is`、`isExtensible`、`isFrozen`、`isPrototypeOf`、`isSealed`、`preventExtensions`、`propertyIsEnumerable`、`seal`、`setPrototypeOf`
+
+- Reflect：`apply`、`construct`、`defineProperty`、`deleteProperty`、`getOwnPropertyDescriptor`、`getPrototypeOf`、`isExtensible`、`preventExtensions`、`setPrototypeOf`
+
+- Proxy：`handler.apply()`、`handler.construct()`、`handler.defineProperty()`、`handler.deleteProperty()`、`handler.get()`、`handler.getOwnPropertyDescriptor()`、`handler.getPrototypeOf()`、`handler.has()`、`handler.isExtensible()`、`handler.ownKeys()`、`handler.preventExtensions()`、`handler.set()`、`handler.setPrototypeOf()`
+
+**变更原因：**
+ 
+ArkTS1.2不允许使用TypeScript或JavaScript标准库中的这些接口，这些接口大多与动态特性相关。
+
+**适配建议：**
+
+NA
 
 ## 不支持structural typing
 
 **规则：**`arkts-no-structural-typing`
 
-ArkTS1.2不支持structural typing，编译器无法比较两种类型的publicAPI并决定它们是否相同。使用其他机制，例如继承、接口或类型别名。
+**规则解释：**
+ 
+ArkTS1.2不支持structural typing。
+
+**变更原因：**
+ 
+支持structural typing是重要特性，需在语言规范、编译器和运行时充分考虑并仔细实现。ArkTS 1.2使用静态类型，为支持此特性，运行时会增加额外性能开销。
+
+**适配建议：**
+
+使用其他机制，例如继承、接口或类型别名。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1663,7 +1751,19 @@ let b: C<A> = new C<A>(); // 使用相同的泛型类型
 
 **规则：**`arkts-no-extends-expression`
 
-ArkTS1.2中规范了类的继承，类不能作为对象来继承一个表达式。
+**规则解释：**
+
+ArkTS1.2禁止extends/implements表达式。
+
+**变更原因：**
+ 
+ArkTS1.2中规范了类的继承规则：类不能作为对象使用，且在继承时无法继承表达式。
+
+**适配建议：**
+
+直接使用class的类型。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1747,7 +1847,19 @@ class B extends A { // 直接继承类
 
 **规则：**`arkts-no-ts-overload`
 
-ArkTS1.2不支持TS-like的重载，使用不同的函数体可以提高执行效率。
+**规则解释：**
+
+ArkTS1.2不支持TS-like的重载。
+
+**变更原因：**
+ 
+重载时使用不同的函数体可以提高执行效率。
+
+**适配建议：**
+
+重载时分别使用不同的函数体。
+
+**示例：**
 
 **ArkTS1.1**
 
