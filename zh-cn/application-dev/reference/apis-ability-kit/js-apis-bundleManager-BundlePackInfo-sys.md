@@ -6,6 +6,8 @@
 >
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > 本模块为系统接口。
 
 ## 导入模块
@@ -124,7 +126,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | type                | string         | 是   | 否   | 表示forms的类型。                                            |
 | updateEnabled       | boolean        | 是   | 否   | 表示该卡片是否支持定时刷新，true表示卡片支持定时刷新，false表示不支持。 |
 | scheduledUpdateTime | string         | 是   | 否   | 表示卡片定点刷新的时间，采用24小时计数，精确到分钟。         |
-| updateDuration      | number         | 是   | 否   | 表示卡片定时刷新的更新频率，单位为30分钟，取值为30的倍数值。卡片的最高频率为每30分钟刷新一次，和定点刷新二选一，二者都配置的情况下，定时优先。 |
+| updateDuration      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 表示卡片定时刷新的更新频率，单位为30分钟，取值为30的倍数值。卡片的最高频率为每30分钟刷新一次，和定点刷新二选一，二者都配置的情况下，定时优先。 |
 | supportDimensions   | Array\<string> | 是   | 否   | 表示卡片外观规格，取值为“1\*2”，“2\*2”，“2\*4”，“4\*4”，定义卡片时至少要指定一个卡片规格。 |
 | defaultDimension    | string         | 是   | 否   | 表示卡片默认外观规格，取值必须在supportDimensions配置的列表中。 |
 
@@ -137,8 +139,8 @@ import { freeInstall } from '@kit.AbilityKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                 |
 | ----------- | ------ | ---- | ---- | -------------------- |
 | releaseType | string | 是   | 否   | 版本的名称。         |
-| compatible  | number | 是   | 否   | 版本的最小兼容代码。 |
-| target      | number | 是   | 否   | 目标版本号。         |
+| compatible  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 版本的最小兼容代码。 |
+| target      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 目标版本号。         |
 
 ## Version
 
@@ -148,6 +150,6 @@ import { freeInstall } from '@kit.AbilityKit';
 
 | 名称                     | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| minCompatibleVersionCode | number | 是   | 否   | 能够兼容的最低历史版本号，用于跨设备兼容性判断。该值为32位整型数值，非负整数。 |
+| minCompatibleVersionCode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 能够兼容的最低历史版本号，用于跨设备兼容性判断。该值为32位整型数值，非负整数。 |
 | name                     | string | 是   | 否   | 标识版本号的文字描述，用于向用户展示。                       |
-| code                     | number | 是   | 否   | 标识应用的版本号，值为32位非负整数。此数字仅用于确定某个版本是否比另一个版本更新，数值越大表示版本越高。 |
+| code                     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 标识应用的版本号，值为32位非负整数。此数字仅用于确定某个版本是否比另一个版本更新，数值越大表示版本越高。 |

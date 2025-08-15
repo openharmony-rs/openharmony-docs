@@ -6,6 +6,8 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > 本模块为系统接口。
 
 ## 导入模块
@@ -23,8 +25,8 @@ import bundleMonitor from '@ohos.bundle.bundleMonitor';
 | 名称       | 类型   | 只读 | 可选 | 说明                       |
 | ---------- | ------ | ---- | ---- | -------------------------- |
 | bundleName | string | 是   | 否   | 应用状态发生变化的应用Bundle名称。 |
-| userId     | number | 是   | 否   | 应用状态发生变化的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。   |
-| appIndex<sup>12+</sup>   | number | 是   | 否   |  应用状态发生变化的应用分身索引。  |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用状态发生变化的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。   |
+| appIndex<sup>12+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   |  应用状态发生变化的应用分身索引。  |
 
 ## BundleChangedEvent
 
