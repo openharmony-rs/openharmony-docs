@@ -31,7 +31,7 @@
 
 - FlexDirection.Row（默认值）：主轴为水平方向，子元素从起始端沿着水平方向开始排布。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ direction: FlexDirection.Row }) {
@@ -45,7 +45,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -72,7 +72,7 @@ struct FlexExample{
 
 - FlexDirection.RowReverse：主轴为水平方向，子元素从终点端沿着FlexDirection. Row相反的方向开始排布。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ direction: FlexDirection.RowReverse }) {
@@ -86,7 +86,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -113,7 +113,7 @@ struct FlexExample{
 
 - FlexDirection.Column：主轴为垂直方向，子元素从起始端沿着垂直方向开始排布。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ direction: FlexDirection.Column }) {
@@ -127,7 +127,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -154,7 +154,7 @@ struct FlexExample{
 
 - FlexDirection.ColumnReverse：主轴为垂直方向，子元素从终点端沿着FlexDirection. Column相反的方向开始排布。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ direction: FlexDirection.ColumnReverse }) {
@@ -168,7 +168,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -200,7 +200,7 @@ struct FlexExample{
 
 - FlexWrap. NoWrap（默认值）：不换行。如果子元素的宽度总和大于父元素的宽度，则子元素会被压缩宽度。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ wrap: FlexWrap.NoWrap }) {
@@ -213,7 +213,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -239,7 +239,7 @@ struct FlexExample{
 
 - FlexWrap. Wrap：换行，每一行子元素按照主轴方向排列。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ wrap: FlexWrap.Wrap }) {
@@ -252,7 +252,8 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
+
 ```ts
 // xxx.ets
 import { Entry, Component, Flex, Text, FlexWrap } from '@ohos.arkui.component';
@@ -277,7 +278,7 @@ struct FlexExample{
 
 - FlexWrap. WrapReverse：换行，每一行子元素按照主轴反方向排列。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ wrap: FlexWrap.WrapReverse}) {
@@ -290,7 +291,8 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
+
 ```ts
 // xxx.ets
 import { Entry, Component, Flex, Text, FlexWrap } from '@ohos.arkui.component';
@@ -323,7 +325,7 @@ struct FlexExample{
 
 - FlexAlign.Start（默认值）：子元素在主轴方向起始端对齐， 第一个子元素与父元素边沿对齐，其他元素与前一个元素对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.Start }) {  
@@ -336,7 +338,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -361,7 +363,7 @@ struct FlexExample{
 
 - FlexAlign.Center：子元素在主轴方向居中对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.Center }) {  
@@ -374,7 +376,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -399,7 +401,7 @@ struct FlexExample{
 
 - FlexAlign.End：子元素在主轴方向终点端对齐，最后一个子元素与父元素边沿对齐，其他元素与后一个元素对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.End }) {  
@@ -412,7 +414,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -438,7 +440,7 @@ struct FlexExample{
 
 - FlexAlign.SpaceBetween：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素和最后一个子元素与父元素边沿对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceBetween }) {  
@@ -451,7 +453,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -477,7 +479,7 @@ struct FlexExample{
 
 - FlexAlign.SpaceAround：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素到主轴起始端的距离和最后一个子元素到主轴终点端的距离是相邻元素之间距离的一半。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceAround }) {  
@@ -490,7 +492,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -516,7 +518,7 @@ struct FlexExample{
 
 - FlexAlign.SpaceEvenly：Flex主轴方向元素等间距布局，相邻子元素之间的间距、第一个子元素与主轴起始端的间距、最后一个子元素到主轴终点端的间距均相等。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceEvenly }) {  
@@ -529,7 +531,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -566,7 +568,7 @@ struct FlexExample{
 
 - ItemAlign.Auto：使用Flex容器中默认配置。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ alignItems: ItemAlign.Auto }) {  
@@ -579,7 +581,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -605,7 +607,7 @@ struct FlexExample{
 
 - ItemAlign.Start：交叉轴方向首部对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ alignItems: ItemAlign.Start }) {  
@@ -618,7 +620,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -644,7 +646,7 @@ struct FlexExample{
 
 - ItemAlign.Center：交叉轴方向居中对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ alignItems: ItemAlign.Center }) {  
@@ -657,7 +659,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -683,7 +685,7 @@ struct FlexExample{
 
 - ItemAlign.End：交叉轴方向底部对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ alignItems: ItemAlign.End }) {  
@@ -696,7 +698,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -722,7 +724,7 @@ struct FlexExample{
 
 - ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ alignItems: ItemAlign.Stretch }) {  
@@ -735,7 +737,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -761,7 +763,7 @@ struct FlexExample{
 
 - ItemAlign. Baseline：交叉轴方向文本基线对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ alignItems: ItemAlign.Baseline }) {  
@@ -774,7 +776,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -803,7 +805,7 @@ struct FlexExample{
 
 子元素的[alignSelf](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#alignself)属性也可以设置子元素在父容器交叉轴的对齐方式，且会覆盖Flex布局容器中alignItems配置。如下例所示：
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器组件设置子元素居中
@@ -826,7 +828,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 }.width('90%').height(220).backgroundColor('#AFEEEE')
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -870,7 +872,7 @@ struct FlexExample{
 
 - FlexAlign.Start：子元素各行与交叉轴起点对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Start }) {
@@ -885,7 +887,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')          
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -913,7 +915,7 @@ struct FlexExample{
 
 - FlexAlign.Center：子元素各行在交叉轴方向居中对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Center }) {
@@ -928,7 +930,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')          
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -956,7 +958,7 @@ struct FlexExample{
 
 - FlexAlign.End：子元素各行与交叉轴终点对齐。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
@@ -971,7 +973,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')          
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -999,7 +1001,7 @@ struct FlexExample{
 
 - FlexAlign.SpaceBetween：子元素各行与交叉轴两端对齐，各行间垂直间距平均分布。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
@@ -1014,7 +1016,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')          
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -1042,7 +1044,7 @@ struct FlexExample{
 
 - FlexAlign.SpaceAround：子元素各行间距相等，是元素首尾行与交叉轴两端距离的两倍。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceAround }) {
@@ -1057,7 +1059,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')          
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -1085,7 +1087,7 @@ struct FlexExample{
 
 - FlexAlign.SpaceEvenly:  子元素各行间距，子元素首尾行与交叉轴两端距离都相等。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceEvenly }) {
@@ -1100,7 +1102,7 @@ struct FlexExample{
   .backgroundColor('#AFEEEE')          
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -1133,7 +1135,7 @@ struct FlexExample{
 
 - [flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)：设置子元素在父容器主轴方向上的基准尺寸。如果设置了该属性，则子项占用的空间为该属性所设置的值；如果没设置该属性，那子项的空间为width/height的值。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex() {
@@ -1160,7 +1162,7 @@ struct FlexExample{
   }.width('90%').height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -1200,7 +1202,7 @@ struct FlexExample{
 
 - [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)：设置父容器的剩余空间分配给此属性所在组件的比例。用于分配父组件的剩余空间。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex() {
@@ -1222,7 +1224,7 @@ struct FlexExample{
   }.width(420).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
   
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -1261,7 +1263,7 @@ struct FlexExample{
   
 - [flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink): 当父容器空间不足时，子元素的压缩比例。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   Flex({ direction: FlexDirection.Row }) {
@@ -1284,7 +1286,7 @@ struct FlexExample{
   }.width(400).height(120).padding(10).backgroundColor('#AFEEEE') 
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -1323,7 +1325,7 @@ struct FlexExample{
 
 使用弹性布局，可以实现子元素沿水平方向排列，两端对齐，子元素间距平分，垂直方向上子元素居中的效果。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 ```ts
 @Entry  
 @Component
@@ -1345,7 +1347,7 @@ struct FlexExample {
 }
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets

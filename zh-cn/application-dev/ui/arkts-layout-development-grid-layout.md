@@ -67,7 +67,7 @@
   例如，通过断点设置将应用宽度分成6个区间，通过columns配置各断点下栅格容器的栅格列数。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   @State bgColors: ResourceColor[] =
@@ -98,13 +98,13 @@
   }                                    
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Column, Margin, Row, Text, ResourceColor, GridRow, BreakpointsReference,
   ForEach, GridCol, BreakPoints } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -153,7 +153,7 @@ GridRow中通过columns设置栅格布局的总列数。
 - API version 20及以后，columns默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
   @State bgColors: ResourceColor[] =
@@ -171,12 +171,12 @@ GridRow中通过columns设置栅格布局的总列数。
     }
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -214,7 +214,7 @@ struct GridExample {
 columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)两种类型, 可按两种方式设置栅格布局的总列数。
 - 当columns类型为number时，栅格布局在任何尺寸设备下都被分为同一列数。下面分别设置栅格布局列数为4和8，子元素占一列，效果如下：
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   @State bgColors: ResourceColor[] =
@@ -255,12 +255,12 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   .width('90%')
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol, BorderOptions } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -311,7 +311,7 @@ struct GridExample {
 
 - 当columns类型为[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   @State bgColors: ResourceColor[] =
@@ -335,12 +335,12 @@ struct GridExample {
   .border({ color: 'rgb(39,135,217)', width: 2 })
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -390,18 +390,18 @@ struct GridExample {
 - 子组件默认从左往右排列。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
     GridRow({ direction: GridRowDirection.Row }){ /* ... */ }
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol, GridRowDirection } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -439,18 +439,18 @@ struct GridExample {
 - 子组件从右往左排列。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
     GridRow({ direction: GridRowDirection.RowReverse }){ /* ... */ }
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol, GridRowDirection } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -492,18 +492,18 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
 - 当gutter类型为number时，同时设置栅格子组件间水平和垂直方向边距且相等。下例中，设置子组件水平与垂直方向距离相邻元素的间距为10。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
     GridRow({ gutter: 10 }){ /* ... */ }
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -541,18 +541,18 @@ struct GridExample {
 - 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
     GridRow({ gutter: { x: 20, y: 50 } }){ /* ... */ }
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -634,7 +634,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当span类型为number时，子组件在所有尺寸设备下占用的列数相同。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
   @State bgColors: ResourceColor[] =
@@ -653,12 +653,12 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     }                
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -688,7 +688,7 @@ struct GridRowExample {
 - 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据[列数补全](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)取默认值。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
   @State bgColors: ResourceColor[] =
@@ -707,12 +707,12 @@ struct GridRowExample {
     }                
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -747,7 +747,7 @@ struct GridRowExample {
 - 当offset类型为number时，子组件偏移相同列数。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
   @State bgColors: ResourceColor[] =
@@ -766,12 +766,12 @@ struct GridRowExample {
     }                
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -803,9 +803,9 @@ struct GridRowExample {
 - 当offset类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
-    ```ts
+  ```ts
   @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -823,14 +823,14 @@ struct GridRowExample {
     }
     .height(200)
     .border({ color: 'rgb(39,135,217)', width: 2 })          
-    ```
+  ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -869,7 +869,7 @@ struct GridRowExample {
 - 当order类型为number时，子组件在任何尺寸下排序次序一致。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
   GridRow({ columns: 12 }) {
@@ -896,7 +896,7 @@ struct GridRowExample {
   }
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -938,7 +938,7 @@ struct GridRowExample {
 - 当order类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件排序次序设置。在xs设备中，子组件排列顺序为1234；sm为2341，md为3412，lg为2431。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
     ```ts
     GridRow({ columns: 12 }) {
@@ -965,7 +965,7 @@ struct GridRowExample {
     }
     ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -1011,7 +1011,7 @@ struct GridRowExample {
 
 以下示例中，栅格把整个空间分为12份。第一层GridRow嵌套GridCol，分为中间大区域以及“footer”区域。第二层GridRow嵌套GridCol，分为“left”和“right”区域。子组件空间按照上一层父组件的空间划分，粉色的区域是屏幕空间的12列，绿色和蓝色的区域是父组件GridCol的12列，依次进行空间的划分。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 @Entry
@@ -1051,7 +1051,7 @@ struct GridRowExample {
 ```
 
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets

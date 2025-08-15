@@ -22,7 +22,7 @@
 
 Stack组件为容器组件，容器内可包含各种子元素。其中子元素默认进行居中堆叠。子元素被约束在Stack下，进行自己的样式定义以及排列。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 // xxx.ets
@@ -43,7 +43,7 @@ struct StackExample {
 }
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -77,7 +77,7 @@ Stack组件通过[alignContent参数](../reference/apis-arkui/arkui-ts/ts-contai
 
 ![zh-cn_image_0000001562940621](figures/zh-cn_image_0000001562940621.png)
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 // xxx.ets
@@ -94,7 +94,7 @@ struct StackExample {
 }
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -119,7 +119,7 @@ Stack容器中兄弟组件显示层级关系可以通过[Z序控制](../referenc
 
   在层叠布局中，如果后面子元素尺寸大于前面子元素尺寸，则前面子元素完全隐藏。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 Stack({ alignContent: Alignment.BottomStart }) {
@@ -137,7 +137,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -169,7 +169,7 @@ struct StackExample {
 上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1，子元素2的zIndex属性后，可以将元素展示出来。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 Stack({ alignContent: Alignment.BottomStart }) {
@@ -187,7 +187,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -222,7 +222,7 @@ struct StackExample {
 使用层叠布局快速搭建页面。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 @Entry
@@ -261,7 +261,7 @@ struct StackSample {
 ```
 
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets

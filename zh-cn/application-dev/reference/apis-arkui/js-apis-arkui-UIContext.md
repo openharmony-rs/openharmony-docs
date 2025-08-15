@@ -5393,7 +5393,7 @@ matchMediaSync(condition: string): mediaQuery.MediaQueryListener
 | ------------------------------------------------------------ | -------------------------------------------- |
 | [mediaQuery.MediaQueryListener](js-apis-mediaquery.md#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 <!--code_no_check-->
 ```ts
@@ -5403,12 +5403,12 @@ let mediaquery: MediaQuery = uiContext.getMediaQuery();
 let listener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 import mediaquery from '@ohos.mediaquery';
 
-listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); //监听横屏事件
+listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 ```
 
 ## Router

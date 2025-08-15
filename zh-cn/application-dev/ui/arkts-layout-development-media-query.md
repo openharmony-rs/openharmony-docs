@@ -17,13 +17,13 @@
 首先导入媒体查询模块。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 import { mediaquery } from '@kit.ArkUI';
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 import mediaquery from '@ohos.mediaquery';
@@ -153,7 +153,7 @@ listener.on('change', onPortrait);
 
 Stage模型下的示例：
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 <!--deprecated_code_no_check-->
 ```ts
@@ -219,12 +219,12 @@ struct MediaQueryExample {
 }
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, Column, ColumnOptions, ClickEvent, Color } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 import mediaquery from '@ohos.mediaquery';
 import common from '@ohos.app.ability.common';
 import window from '@ohos.window';
@@ -291,7 +291,7 @@ struct MediaQueryExample {
 
 FA模型下的示例：
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 <!--deprecated_code_no_check-->
 ```ts
@@ -344,12 +344,12 @@ struct MediaQueryExample {
 }
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, Column, ColumnOptions, ClickEvent, Color } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 import mediaquery from '@ohos.mediaquery';
 import common from '@ohos.app.ability.common';
 import window from '@ohos.window';
@@ -374,7 +374,7 @@ struct MediaQueryExample {
 
   aboutToAppear() {
     // 绑定当前应用实例
-    this.listener.on('change', (mediaQueryResult:mediaquery.MediaQueryResult) => { this.onPortrait(mediaQueryResult) }); //绑定回调函数
+    this.listener.on('change', (mediaQueryResult:mediaquery.MediaQueryResult) => { this.onPortrait(mediaQueryResult) }); // 绑定回调函数
   }
 
   aboutToDisappear() {
@@ -387,18 +387,18 @@ struct MediaQueryExample {
       Text(this.text).fontSize(50).fontColor(this.color)
       Text('Landscape').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick((event: ClickEvent) => {
-          //let context = featureAbility.getContext();
+          // let context = featureAbility.getContext();
           let context:common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          //context.setDisplayOrientation(0); //调用该接口手动改变设备横竖屏状态
+          // context.setDisplayOrientation(0); // 调用该接口手动改变设备横竖屏状态
           window.getLastWindow(context).then((lastWindow) => {
             lastWindow.setPreferredOrientation( window.Orientation.PORTRAIT)
           });
         })
       Text('Portrait').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick((event: ClickEvent) => {
-          //let context = featureAbility.getContext();
+          // let context = featureAbility.getContext();
           let context:common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          //context.setDisplayOrientation(1); //调用该接口手动改变设备横竖屏状态
+          // context.setDisplayOrientation(1); // 调用该接口手动改变设备横竖屏状态
           window.getLastWindow(context).then((lastWindow) => {
             lastWindow.setPreferredOrientation(window.Orientation.LANDSCAPE)
           });

@@ -48,7 +48,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - RelativeContainer父组件为锚点，__container__代表父容器的组件标识（id）。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   let AlignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
@@ -93,7 +93,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -146,7 +146,7 @@ struct Index {
 
 - 以兄弟元素为锚点。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   let AlignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
@@ -191,7 +191,7 @@ struct Index {
   }
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -244,7 +244,7 @@ struct Index {
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
   @Entry
@@ -298,7 +298,7 @@ struct Index {
   }
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -374,7 +374,7 @@ struct Index {
 
 子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了[bias](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#bias对象说明)对象，建议API Version 11及以后的版本使用bias来设置额外偏移。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
 @Entry
@@ -492,7 +492,7 @@ struct Index {
 }
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -620,7 +620,7 @@ struct Index {
 
 Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
   ```ts
 @Entry
@@ -691,18 +691,18 @@ struct Index {
 }
   ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
 import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
   AlignRuleOption, BorderOptions, Position, Alignment, Column, Flex, Stack, FlexDirection } from '@ohos.arkui.component';
-import { State } from "@ohos.arkui.stateManagement"
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
 struct Index {
-  @State value: number = 0
+  @State value: number = 0;
 
   build() {
     Row() {
@@ -779,7 +779,7 @@ struct Index {
 > * 在同一方向上设置两个或更多锚点时，若这些锚点的位置顺序有误，该子组件将被视为大小为0而不予绘制。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 @Entry
@@ -875,7 +875,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
@@ -985,7 +985,7 @@ struct Index {
 * 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[Packed](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[bias](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#bias对象说明)设置超出部分的分布。
 
 
-**ArkTS1.1示例：**
+ArkTS1.1示例：
 
 ```ts
 @Entry
@@ -1132,7 +1132,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2示例：**
+ArkTS1.2示例：
 
 ```ts
 // xxx.ets
