@@ -3175,21 +3175,7 @@ static getFocusedUIContext(): UIContext | undefined
 
 **示例：**
 ```ts
-import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
-
-import {
-  Text,
-  TextAttribute,
-  Column,
-  Component,
-  Button,
-  ButtonAttribute,
-  ClickEvent,
-  UserView
-} from '@ohos.arkui.component';
-
-import { State, MutableState, stateOf, observableProxy } from '@ohos.arkui.stateManagement';
-import hilog from '@ohos.hilog';
+import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { UIContext } from '@ohos.arkui.UIContext';
 
 @Entry
@@ -3199,7 +3185,6 @@ struct MyStateSample {
     Column(undefined) {
       Button("MyButton").backgroundColor("#FFFF00FF")
         .onClick((e: ClickEvent) => {
-          hilog.info(0x0000, 'testTag', 'On Click');
           let uicontext = UIContext.getFocusedUIContext()
           if (uicontext) {
             console.log("MyButton nodeType:" + uicontext.getFrameNodeById('MyButton')?.getNodeType());
