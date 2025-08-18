@@ -2353,7 +2353,19 @@ method()   // 输出: 'a'
 
 **规则：**`arkts-no-duplicate-function-name`
 
-由于ArkTS1.2中会将多个名称相同的namespace合并成一个namespace，所以namespace内方法不能重名，否则会导致冲突。
+**规则解释：**
+
+在ArkTS1.2中，相同namespace中的方法不能重名。
+
+**变更原因：**
+
+由于ArkTS1.2中会将名称相同的namespace合并成一个namespace，同名方法会导致冲突。
+
+**适配建议：**
+
+相同namespace中的方法不能重名。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2376,7 +2388,7 @@ namespace A {
 
 ```typescript
 namespace A {
-  export function foo1() {  // 重命名导出函数
+  export function foo1() {  // 修改函数名称，避免命名冲突
     console.log('test1');
   }
 }
@@ -2388,11 +2400,23 @@ namespace A {
 }
 ```
 
-## arkts-no-ctor-prop-decls
+## 不支持在constructor中声明字段
 
 **规则：**`arkts-no-ctor-prop-decls`
 
-ArkTS1.2不支持在constructor中声明类字段。在class中声明这些字段。
+**规则解释：**
+
+ArkTS1.2不支持在constructor中声明类字段。
+
+**变更原因：**
+
+ArkTS1.2在编译期确定类型布局，运行期不允许修改，以提高性能。
+
+**适配建议：**
+
+改为在class中声明字段。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2441,7 +2465,19 @@ class A extends Base {
 
 **规则：**`arkts-no-tagged-templates`
 
-ArkTS1.2规范函数调用方式，支持字符串相加的用法，不支持Tagged templates（标签模板字符串）。
+**规则解释：**
+
+ArkTS1.2不支持Tagged templates（标签模板字符串）。
+
+**变更原因：**
+
+ArkTS1.2规范函数调用方式，支持字符串相加，但不支持Tagged templates（标签模板字符串）。
+
+**适配建议：**
+
+改为函数调用和字符串加法。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2492,7 +2528,19 @@ console.log(result);
 
 **规则：**`arkts-no-definite-assignment`
 
-ArkTS1.2不支持确定赋值断言。改为在声明变量的同时为变量赋值。
+**规则解释：**
+
+ArkTS1.2不支持确定赋值断言，例如：let v!: T。
+
+**变更原因：**
+
+ArkTS1.2语法层面不支持。
+
+**适配建议：**
+
+修改声明方式。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2524,30 +2572,59 @@ console.log('x = ' + x);
 
 **规则：**`arkts-record-add-runtime-type`
 
-ArkTS1.2中对象字面量会生成类的实例。
+**规则解释：**
+
+在ArkTS1.1中，Record是一个编译时类型，而不是一个运行时构造函数或类。
+
+在ArkTS1.2中，Record对象具有运行时类型。
+
+**变更理由：**
+
+在ArkTS1.2中，对象字面量会生成类的实例。
+
+**适配建议：**
+
+开发者需要将点访问符改为[]访问符。
+
+**示例：**
 
 **ArkTS1.1**
 
 ```typescript
-let a: Record<string, number> = { 'v': 123 };  // Record是编译时类型，运行时仍是动态对象
-a.v;  // 需要使用[]方式访问
+  let a: Record<string, number> = { 'v': 123 };
+  console.log(String(a instanceof Record)) // error
+  console.log(a['v'] + '') // 输出：123
+  console.log(a.v + '') // 输出：123
 ```
 
 **ArkTS1.2**
 
 ```typescript
-let a: Record<string, number> = { 'v': 123 };  // Record是编译时类型，运行时仍是动态对象
-console.info(a instanceof Record) // true
-a['v'];  
+let a: Record<string, number> = { 'v': 123 };
+console.log(String(a instanceof Record)) // 输出：true
+console.log(a['v'] + '') // 输出：123
+console.log(a.v + '') // error
 ```
 
 ## as具有运行时语义
 
 **规则：**`arkts-no-ts-like-as`
 
+**规则解释：**
+
+ArkTS1.2中`as`具有运行时语义。
+
+**变更理由：**
+
 ArkTS1.1中的`as`只在编译时提供类型信息，如果类型断言失败，报错时机取决于后续的代码操作。
 
 ArkTS1.2中的`as`会在运行时进行类型检查和可能的类型转换，如果类型断言失败，会立即抛出错误。
+
+**适配建议：**
+
+修改异常处理逻辑。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2564,8 +2641,8 @@ class B implements I {
 
 let a: A = new A();
 let i: I = a;
-let t: B = i as B; // ArkTS1.1：正常编译运行，ArkTS1.2:运行时异常
-t.n.toString();     // ArkTS1.1：运行时崩溃
+let t: B = i as B; // ArkTS1.1：正常编译运行，ArkTS1.2：运行时异常
+t.n.toString();    // ArkTS1.1：运行时崩溃
 ```
 
 **ArkTS1.2**
@@ -2574,28 +2651,38 @@ t.n.toString();     // ArkTS1.1：运行时崩溃
 // ArkTS1.2
 interface I {}
 class A implements I {
-  m: number = 0;
+    m: number = 0;
 }
 
 class B implements I {
-  n: string = 'a';
+    n: string = 'a';
 }
 
 let a: A = new A();
 let i: I = a;
-if (i instanceof B) {
-  let t: B = i as B;  // ArkTS1.2：运行时正常
-  t.n.toString();     // ArkTS1.2：运行时正常
-}
+let t: B = i as B; // ArkTS1.2：运行时异常
+t.n.toString();
 ```
 
 ## catch语句中是error类型
 
 **规则：**`arkts-no-ts-like-catch-type`
 
-在ArkTS1.1上catch语句中的e是any类型。因此，编译器不会对catch语句中的异常进行编译时类型检查。当ArkTS1.1上限制throw时，只能抛出Error类型。
+**规则解释：**
 
 在ArkTS1.2的静态模式中，类型必须明确，同时需考虑与ArkTS1.1的兼容性。对于catch(e)的语法，默认e为Error类型。
+
+**变更理由：**
+
+在ArkTS1.1上catch语句中的e是any类型。编译器不会对catch语句中的异常进行编译时类型检查。当ArkTS1.1上限制throw时，只能抛出Error类型。
+
+在ArkTS1.2中，类型必须明确。对于catch(e)的语法，默认e为Error类型，以保持与ArkTS1.1的兼容性。
+
+**适配建议：**
+
+开发者需要将catch(e)转换成需要处理的异常类型，例如：`(e as SomeError).prop`。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2623,7 +2710,19 @@ try {
 
 **规则：**`arkts-unsupport-operator`
 
-1. 当前暂不支持&&=, ||=, ??=逻辑赋值运算符，通过迁移工具提示开发者修改源码，不提供自动修复能力。
+**规则解释：**
+
+ArkTS1.2暂不支持`&&=`、`||=`、`??=`这三种逻辑赋值运算符。
+
+**变更理由：**
+
+语言层面暂不支持`&&=`、`||=`、`??=`，但是支持`&=`、`|=`、`?=`这类逻辑赋值运算符。
+
+**适配建议：**
+ 
+开发者自行替换为运算后赋值的写法，如：`x &&= y`替换为`x = x && y`。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2647,7 +2746,19 @@ a = a ?? 4;   // 结果: 2
 
 **规则：**`arkts-only-support-decimal-bigint-literal`
 
- 当前暂不支持非十进制bigint字面量，通过迁移工具提示开发者修改源码，不提供自动修复能力。
+**规则解释：**
+
+ArkTS1.2暂不支持非十进制bigint字面量。
+
+**变更理由：**
+
+语言层面暂不支持。
+
+**适配建议：**
+
+开发者自行替换为BigInt()函数。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2669,7 +2780,19 @@ let a3: bigint = BigInt(0b101);
 
 **规则：**`arkts-numeric-bigint-compare`
 
- 当前暂不支持数值类型和bigint类型的比较，迁移工具将提示开发者修改源码，不提供自动修复能力。
+**规则解释：**
+
+ArkTS1.2暂不支持数值类型和bigint类型的比较。
+
+**变更理由：**
+
+语言层面暂不支持。
+
+**适配建议：**
+
+开发者需将值转换为BigInt类型再进行比较。
+
+**示例：**
 
 **ArkTS1.1**
 
