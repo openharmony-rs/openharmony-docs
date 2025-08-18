@@ -2920,37 +2920,62 @@ BigInt(n1) == n2;
 BigInt(n1) >= n2;
 ```
 
-## new Number/Boolean/String不再是"object"类型
+## 通过new创建的Number/Boolean/String对象不再是object类型
 
 **规则：**`arkts-primitive-type-normalization`
 
-1. 在ArkTS1.2中primitive type和boxed type是相同的类型，这样可以提高语言一致性和性能。
-   比较Number/Boolean/String时比较的是值而不是对象。
+**规则解释：**
 
-2. 在ArkTS1.1上，boxed类型通过new创建。在获取其类型、比较boxed类型对象时会产生意外行为，这是因为对象比较时是通过引用进行比较，而不是值。通常直接使用primitive 
-   type性能更高效，内存占用更少（相比之下对象会占用更多内存）。
+在ArkTS1.2中，在比较Number/Boolean/String对象时会自动拆箱，比较的是它们的值而不是对象。
+
+而在ArkTS1.1中，比较的是对象而不是值。
+
+**变更原因：**
+
+在ArkTS1.2中，基本类型和其对应的包装类型在语言层面是相同的类型，这提高了语言的一致性和性能。
+
+**适配建议：**
+
+请注意，用new创建的Number/Boolean/String对象在操作时可能会表现出与ArkTS1.1不同的行为。
+
+**示例：**
 
 **ArkTS1.1**
 
 ```typescript
-typeof new Number(1) // 结果: "object"
-new Number(1) == new Number(1);  // 结果: false
-if (new Boolean(false)) {} // 在if语句中new Boolean(false)为true
+typeof new Number(1) // 结果："object"
+new Number(1) == new Number(1);  // 结果：false
+// 这里if语句判断的是Boolean对象是否为空，而不是拆箱后的结果，所以结果为true
+if (new Boolean(false)) {}  // 结果：true
 ```
 
 **ArkTS1.2**
 
 ```typescript
-typeof new Number(1)// 结果: "number"
-new Number(1) == new Number(1);  // 结果: true
-if (new Boolean(false)) {}      // 在if语句中new Boolean(false)为false
+typeof new Number(1)// 结果："number"
+new Number(1) == new Number(1);  // 结果：true
+if (new Boolean(false)) {}      // 结果：false
 ```
 
 ## enum的元素不能作为类型
 
 **规则：**`arkts-no-enum-prop-as-type`
 
-ArkTS1.1上的枚举是编译时概念，在运行时仍是普通对象。ArkTS1.2遵循静态类型，需要在运行时为enum提供类型。因此，ArkTS1.2上枚举的每个元素是枚举类的实例（在运行时才确定），无法成为编译时的静态类型信息。这与ArkTS1.2整体类型设计上不支持实例类型相违背。
+**规则解释：**
+
+ArkTS1.2中enum（枚举）的元素不能作为类型使用。
+
+**变更原因：**
+
+ArkTS1.1中的枚举是编译时概念，在运行时仍是普通对象。
+
+ArkTS1.2中枚举的每个元素是枚举类的实例，无法作为类型使用。
+
+**适配建议：**
+
+使用枚举类型/字符串字面量类型。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2963,22 +2988,31 @@ function foo(a: A.E) {}
 
 ```typescript
 enum A { E = 'A' }
-function foo(a: 'A') {}
-
-// ...
-enum A { E = 'A' }
-function foo(a: A) {}
+function foo1(a: 'A') { }
+function foo2(a: A) { }
 ```
 
 ## 不支持debugger 
 
 **规则：**`arkts-no-debugger`
 
-1. 静态类型语言具备编译时检查和强类型约束，调试通常由IDE完成，已具备较强大的调试机制。
+**规则解释：**
 
-2. debugger会侵入式修改源码。
+不支持debugger语句。
 
-3. debugger语句会被优化，造成行为不一致。
+**变更理由：**
+
+1. 静态类型语言具备编译时检查和强类型约束，DevEco Studio已具备完善的调试机制。
+
+2. 使用debugger会侵入式地修改源码。
+
+3. debugger语句会被优化，可能导致行为不一致。
+
+**适配建议：**
+
+使用DevEco Studio断点调试代替debugger语句。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -3000,11 +3034,23 @@ debugger;
 
 **规则：**`arkts-no-sparse-array`
 
-1. ArkTS1.2遵循静态类型，空数组需要能根据上下文推导出数组元素的类型，否则会有编译错误。
+**规则解释：**
 
-2. ArkTS1.2的数组是连续存储的，空位（如 [1, , , 2]）会浪费内存。‌
+ArkTS1.2要求数组元素类型明确（显式声明类型或可通过上下文推导类型），禁止稀疏存储（避免内存浪费），且不允许undefined空位（确保空值安全）。
+
+**变更理由：**
+
+1. ArkTS1.2遵循静态类型。如果空数组无法根据上下文推导出元素类型，会导致编译错误。
+
+2. ArkTS1.2的数组是连续存储的。使用空位（如 [1, , , 2]）会浪费内存。
 
 3. ArkTS1.2遵循空值安全，无法使用默认undefined表示空缺。
+
+**适配建议：**
+
+为数组标注合适的类型，不使用具有空洞的数组。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -3025,11 +3071,19 @@ let b = [1, undefined, undefined, 2];
 
 **规则：**`arkts-no-ts-like-smart-type`
 
-在ArkTS1.1中，由于对象不是线程间共享的，编译器在做类型推导和分析时无需考虑并发场景。
+**规则解释：**
 
-在ArkTS1.2中，由于对象是多线程共享的，编译器在做类型推导和分析时需要考虑并发场景下变量类型/值的变化。
+在ArkTS1.2中，线程共享对象在做[智能转换](#智能转换)时会表现的与ArkTS1.1不一致。
 
-**智能转换：** 编译器会在某些场景下（如instanceof、null检查、上下文推导等）识别出对象的具体类型，自动将变量转换为相应类型，而无需手动转换。
+**变更理由：**
+
+在ArkTS1.2中，由于线程共享对象在多线程中使用，编译器在做类型推导和分析时需要考虑并发场景下变量类型/值的变化。
+
+**适配建议：**
+
+线程共享对象要通过局部变量进行[智能转换](#智能转换)。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -3040,7 +3094,7 @@ class AA {
     if (!AA.instance) {
       return 0;
     }
-    return AA.instance;       // ArkTS1.2编译错误，返回值和返回类型不匹配
+    return AA.instance;
   }
 }
 ```
@@ -3051,7 +3105,7 @@ class AA {
 class AA {
   public static instance?: number;
   getInstance(): number {
-    let a = AA.instance       // ArkTS1.2上，需要通过局部变量做智能转换
+    let a = AA.instance     // 需通过局部变量进行类型转换。
     if (!a) {
       return 0;
     }
@@ -3064,7 +3118,19 @@ class AA {
 
 **规则：**`arkts-array-type-immutable`
 
-ArkTS1.2上数组在继承关系中遵循不变性原则，可以通过编译时检查保证类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，从而提高执行性能。
+**规则解释：**
+
+在ArkTS1.2中，数组在继承关系中遵循不变性原则，会通过编译时检查保证类型安全。
+
+**变更理由：**
+
+在ArkTS1.2中，数组在继承关系中遵循不变性原则，编译时检查确保类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，提高执行性能。
+
+**适配建议：**
+
+避免将不同类型的数组互相赋值。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -3079,7 +3145,7 @@ class B {
 
 // ArkTS1.1 
 let arr1: A[] = [new A()];
-let arr2: (A | B)[] = arr1;      // ArkTS1.2编译错误
+let arr2: (A | B)[] = arr1;   // ArkTS1.2编译错误
 ```
 
 **ArkTS1.2**
@@ -3095,14 +3161,26 @@ class B {
 
 // ArkTS1.2 
 let arr1: [ A | B ] = [new A()];
-let arr2: [ A | B ] = arr1;       // 需要相同类型的元组
+let arr2: [ A | B ] = arr1;  // 需要相同类型的元组
 ```
 
 ## 默认参数必须放在必选参数之后
 
 **规则：**`arkts-default-args-behind-required-args`
 
-默认参数放在必选参数之前没有意义，ArkTS1.1上调用该接口时仍须传递每个默认参数。
+**规则解释：**
+
+在ArkTS1.2中，函数、方法及lambda表达式的默认参数必须放在必选参数之后。
+
+**变更理由：**
+
+将默认参数置于必选参数前没有实际意义，开发者仍需为每个默认参数提供值。
+
+**适配建议：**
+
+默认参数放在必选参数之后。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -3124,7 +3202,19 @@ function add(left: number, right: number) {
 
 **规则：**`arkts-class-lazy-import`
 
-ArkTS1.2的类在使用时进行加载或初始化，以提升启动性能，减少内存占用。
+**规则解释：**
+
+ArkTS1.2的类默认是懒加载的。
+
+**变更理由：**
+
+ArkTS1.2的类默认是懒加载的，这可以提升启动性能并减少内存占用。
+
+**适配建议：**
+
+将类中未执行的初始化逻辑移到外部。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -3146,59 +3236,59 @@ class C {
 console.info('init');
 ```
 
-## 方法继承/实现参数遵循逆变原则，返回类型遵循协变原则
+## 继承/实现方法时参数遵循逆变原则，返回类型遵循协变原则
 
 **规则：**`arkts-method-inherit-rule`
 
-ArkTS1.2子类方法覆写父类方法，参数类型须遵循逆变原则，可以通过编译时检查保证类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，无需运行时检查，从而提高执行性能。
+**规则解释：**
 
-**逆变/协变：** 用来描述类型转换后的继承关系，如果A、B表示类型，f()表示类型转换，≤表示继承关系（A≤B表示A是由B派生出来的子类），则有：
+ArkTS1.2继承或实现方法时，参数类型须遵循[逆变](#逆变协变)原则，返回类型遵循[协变](#逆变协变)原则。
 
-- 当f()为逆变时，当A≤B时有f(B)≤f(A)成立。
+ArkTS1.1则没有这样的限制，参数和返回类型可以逆变或协变。
 
-- 当f()为协变时，当A≤B时有f(A)≤f(B)成立。
+**变更理由：**
+
+参数类型逆变，可以通过编译时检查保证类型安全，提前发现潜在错误，避免运行时失败，提升执行性能。
+
+返回类型协变，可以确保调用方按父类声明操作返回值时，所有父类声明的属性和方法必然存在。这样可以避免运行时出现属性或方法缺失的情况。
+
+**适配建议：**
+
+根据参数类型[逆变](#逆变协变)和返回类型[协变](#逆变协变)的原则修改实现类中的方法。
+
+**示例：**
 
 **ArkTS1.1**
 
 ```typescript
-// ArkTS1.1  
-class A {
-  a: number = 0;
+class A { u = 0 }
+class B { v = 0 }
+class Father {
+  testParam(a: A) { }
+  testReturn(): A | B { return new A() }
 }
-class B {
-  b: number = 0;
-}
-
-class Base {
-  foo(obj: A | B): void {}
-}
-class Derived extends Base {
-  override foo(obj: A): void {      // 可以覆写父类方法，ArkTS1.2编译错误
-    console.info(obj.a.toString());
-  }
+class Son extends Father {
+  // 参数可以协变
+  override testParam(a: A | B) { }
+  // 返回值可以逆变
+  override testReturn(): B { return new B() }
 }
 ```
 
 **ArkTS1.2**
 
 ```typescript
-// ArkTS1.2
-class A {
-  a: number = 0;
+class A { u = 0 }
+class B { v = 0 }
+class Father {
+    testParam(a: A) { }
+    testReturn(): A | B { return new A() }
 }
-class B {
-  b: number = 0;
-}
-
-class Base {
-  foo(obj: A | B): void {}
-}
-class Derived extends Base {
-  override foo(obj: A | B): void {
-    if (obj instanceof A) {
-      console.info(obj.a.toString());
-    }
-  }
+class Son extends Father {
+    // 参数遵循逆变
+    override testParam(a: A | B) { }
+    // 返回值遵循协变
+    override testReturn(): A { return new A(); }
 }
 ```
 
@@ -3206,9 +3296,21 @@ class Derived extends Base {
 
 **规则：**`arkts-enum-no-props-by-index`
 
-1. ArkTS1.1上已对索引访问元素的语法做了限制，ArkTS1.2对枚举场景增强约束。具体内容请参考[不支持通过索引访问字段](typescript-to-arkts-migration-guide.md#不支持通过索引访问字段)。
+**规则解释：**
 
-2. ArkTS1.1上枚举是动态对象，ArkTS1.2是静态类型，枚举具有运行时类型。为获得更高的性能，对[]访问做了限制。
+ArkTS1.2强化枚举静态类型约束（运行时保留类型信息），禁止通过索引访问以替代ArkTS1.1的动态对象行为。
+
+**变更理由：**
+
+1. ArkTS1.1已对索引访问元素的语法做了限制，ArkTS1.2进一步增强了对枚举场景的约束。具体内容请参考[不支持通过索引访问字段](typescript-to-arkts-migration-guide.md#不支持通过索引访问字段)。
+
+2. 在ArkTS1.1上，枚举是动态对象；而在ArkTS1.2上，枚举是静态类型，并具有运行时类型，因此对索引访问做了限制以提高性能。
+
+**适配建议：**
+
+通过枚举的API来实现对应功能。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -3232,7 +3334,7 @@ enum TEST {
   C
 }
 
-TEST.A;          // 使用.操作符或者enum的值
+TEST.A;          // 使用点操作符或者enum的值
 TEST.A.getName();  // 使用enum对应的方法获取enum的key
 ```
 
@@ -3610,9 +3712,27 @@ import { MainPage } from 'library/src/main/ets/components/MainPage'
 ## 逆变/协变
 用来描述类型转换后的继承关系，如果A、B表示类型，f()表示类型转换，≤表示继承关系（A≤B表示A是由B派生出来的子类），则有：
 
-- 当f()为逆变时，当A≤B时有f(B)≤f(A)成立。
+- f()为逆变时，当A≤B时，有f(B)≤f(A)成立。
 
-- 当f()为协变时，当A≤B时有f(A)≤f(B)成立。
+- f()为协变时，当A≤B时，有f(A)≤f(B)成立。
+
+“逆”为相反的意思，即转换关系与继承关系相反，以下面方法`func1`的参数为例，当Son继承Father时，Son的方法`func1`的参数类型反而比Father更宽泛。
+
+“协”为一致的意思，即转换关系与继承关系相同，以下面方法`func2`的参数为例，当Son继承Father时，Son的方法`func2`的参数类型比Father更具体。
+
+```typescript
+class A { }
+class B { }
+class Father {
+    func1(a: A) { }
+    func2(a: A | B) { }
+}
+class Son extends Father {
+    override func1(a: A | B) { }
+    override func2(a: A) { }
+}
+```
+
 
 ## 智能转换
 编译器在特定场景（例如instanceof检查、null检查、上下文类型推导）下能自动识别对象的具体类型，实现变量的自动转换，无需手动操作。
