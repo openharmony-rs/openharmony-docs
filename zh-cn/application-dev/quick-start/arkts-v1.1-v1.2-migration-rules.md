@@ -1411,41 +1411,24 @@ ArkTS1.2中模块加载默认支持懒加载，无需动态import。
 **ArkTS1.1**
 
 ```typescript
-function main(): void {
-  import('./file').then((m) => {
-    console.log(m.Data.name)
-  })
-}
-
-document.getElementById("btn")?.addEventListener("click", async () => {
-  const module = await import('./utils');  // 错误: 在ArkTS中动态`import()`是不支持的.
-  module.doSomething();
-});
-
-function getModule() {
-  return import('./heavyModule')  // 错误: 在ArkTS中动态`import()`是不支持的.
-    .then((m) => m.default);
+// file1.ets
+export const a = 'file1';
+// file2.ets
+import('./file1').then((m) => { // 在ArkTS1.2中动态import是不支持的
+  console.log('success');
+})
+async () => {
+  const module = await import('./file1'); // 在ArkTS1.2中动态import是不支持的
 }
 ```
 
 **ArkTS1.2**
 
 ```typescript
-import { Data } from './file'
-import { doSomething } from './utils';  // 静态import是可以的.
-import heavyModule from './heavyModule';  // 静态import是可以的.
-
-function main(): void {
-  console.log(Data.name)
-}
-
-document.getElementById("btn")?.addEventListener("click", () => {
-  doSomething();
-});
-
-function getModule() {
-  return heavyModule;
-}
+// file1.ets
+export const a = 'file1';
+// file2.ets
+import {a} from './file1'  // 支持静态import
 ```
 
 ## 不支持副作用导入
@@ -1907,11 +1890,23 @@ function fooNumber(x: number): number {  // 独立实现
 }
 ```
 
-## enum的key不能是字符串
+## enum/class/interface的属性/方法名称须使用合法标识符
 
 **规则：**`arkts-identifiers-as-prop-names`
 
-ArkTS1.2不支持将字符串作为class、interface、enum等属性或元素的名称，需要使用标识符来表示。
+**规则解释：**
+
+ArkTS1.2不支持将字符串作为class、interface、enum等属性或元素的名称，仅支持合法标识符作为属性。
+
+**变更原因：**
+ 
+在ArkTS1.2中，为了增强对边界场景的约束，对象的属性名不能使用数字或字符串。
+
+**适配建议：**
+
+将属性名从字符串改为标识符。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1933,7 +1928,19 @@ enum A{
 
 **规则：**`arkts-no-inferred-generic-params`
 
-ArkTS1.2中，创建泛型实例时需要类型实参。
+**规则解释：**
+
+ArkTS1.2中，创建泛型实例时需要指定类型实参。
+
+**变更原因：**
+ 
+ArkTS1.2遵循空安全，未指定泛型类型实参时，创建实例时无法明确元素或属性类型。
+
+**适配建议：**
+
+创建泛型实例时指定类型实参。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -1966,7 +1973,19 @@ let box = new Box<number>(42); // 明确指定类型
 
 **规则：**`arkts-no-props-by-index`
 
-在ArkTS1.2中，对象结构在编译时已确定。为避免运行时出现错误和更好地提升性能，在ArkTS1.2中不能使用[]的方式动态访问object类型对象的属性。
+**规则解释：**
+
+不能使用[]的方式动态访问object类型对象的属性。
+
+**变更原因：**
+ 
+在ArkTS1.2中，对象结构在编译时已确定。为避免运行时错误并提升性能，不能使用[]方式动态访问object类型对象的属性。
+
+**适配建议：**
+
+使用点访问符代替[]。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2007,7 +2026,19 @@ console.log(data.name); // 直接使用点访问符
 
 **规则：**`arkts-obj-literal-props`
 
-ArkTS1.2中不支持在对象字面量中定义方法。因为静态语言中类的方法被所有实例所共享，无法通过对象字面量重新定义方法。
+**规则解释：**
+
+ArkTS1.2中不支持在对象字面量中定义方法。
+
+**变更原因：**
+ 
+静态语言中，类的方法被所有实例共享，无法通过对象字面量重新定义。
+
+**适配建议：**
+
+使用属性赋值方式。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2056,15 +2087,17 @@ let a: A = {
   }
 }
 
+interface Person {
+  sayHello: () => void;
+}
+
 let p: Person = {
   sayHello: () => {  // 使用属性赋值方式
     console.log('Hi');
   }
 };
 
-type Handler = {
-  foo: () => void;  
-};
+type Handler = A;
 
 let handler: Handler = {
   foo: () => {  // 修正方法定义方式
@@ -2077,7 +2110,19 @@ let handler: Handler = {
 
 **规则：**`arkts-obj-literal-generate-class-instance`
 
-ArkTS1.2中对象字面量会生成类的实例。
+**规则解释：**
+
+ArkTS1.2中，对象字面量会生成类的实例。
+
+**变更原因：**
+ 
+ArkTS1.2是静态类型语言，所有的对象都要有对应的类型，因此对象字面量也要生成对应类的实例。
+
+**适配建议：**
+
+不涉及。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2087,53 +2132,52 @@ class A {
 }
 
 let a: A = { v: 123 }
-console.log(a instanceof A)  // false
+console.log('output:'+(a instanceof A));  // 输出：false
 
-class A {
+class B {
   v: number = 0;
   hello() {
     return "Hello";
   }
 }
 
-let a: A = { v: 123 };
-console.log(a.hello()); // 报错，a 没有 hello() 方法
+let b: B = { v: 123 };
+console.log(b.hello()); // 报错，没有hello方法
 
-class A {
+class C {
   v: number = 0;
 }
 
-let a: A = { v: 123 };
-console.log(Object.getPrototypeOf(a) === A.prototype); // false
-
+let c: C = { v: 123 };
+console.log('output:'+(c instanceof C)); // 输出：false
 ```
 
 **ArkTS1.2**
 
 ```typescript
 class A {
-  v: number = 0
+    v: number = 0
 }
 
 let a: A = { v: 123 }
-console.log(a instanceof A)  //  true
+console.log(a instanceof A)  //  输出：true
 
-class A {
-  v: number = 0;
-  hello() {
-    return "Hello";
-  }
+class B {
+    v: number = 0;
+    hello() {
+        return "Hello";
+    }
 }
 
-let a: A = { v: 123 };
-console.log(a.hello()); // 正常执行 "Hello"
+let b: B = { v: 123 };
+console.log(b.hello()); // 输出：Hello
 
-class A {
-  v: number = 0;
+class C {
+    v: number = 0;
 }
 
-let a: A = { v: 123 };
-console.log(Object.getPrototypeOf(a) === A.prototype); // true
+let c: C = { v: 123 };
+console.log(c instanceof C); // 输出：true
 
 ```
 
@@ -2141,7 +2185,19 @@ console.log(Object.getPrototypeOf(a) === A.prototype); // true
 
 **规则：**`arkts-common-union-member-access`
 
-在ArkTS1.2中，对象的结构在编译时就确定了。为了避免访问联合类型后出现运行时错误，ArkTS1.2在编译时会对联合类型的同名属性进行编译检查，要求同名属性具有相同的类型。
+**规则解释：**
+
+ArkTS1.2在编译时会对联合类型的同名属性进行编译检查，要求同名属性具有相同的类型。
+
+**变更原因：**
+
+在ArkTS1.2中，对象的结构在编译时确定。为了避免运行时错误，ArkTS1.2在编译时会检查联合类型的同名属性，确保它们具有相同的类型。
+
+**适配建议：**
+
+避免使用联合类型。在使用联合类型时，可以通过as、重载等方式实现单一类型机制。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2184,7 +2240,19 @@ function foo(a: B) {
 
 **规则：**`arkts-class-static-initialization`
 
-ArkTS1.2遵循null-safety，需要为属性赋上初始值。
+**规则解释：**
+
+在ArkTS1.2中，为了遵循null-safety（空安全），需要为属性赋上初始值。
+
+**变更原因：**
+
+ArkTS1.2遵循null-safety（空安全），需要为类的静态属性赋初始值（具有默认值的类型除外）。
+
+**适配建议：**
+
+为静态属性赋初始值。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2240,7 +2308,19 @@ class A {
 
 **规则：**`arkts-no-ts-like-function-call`
 
-ArkTS1.2会对函数类型进行更严格的编译器检查。函数返回类型需要严格定义来保证类型安全，因此不支持TS-like`Function`类型。
+**规则解释：**
+
+ArkTS1.2中不支持TS-like`Function`类型。
+
+**变更原因：**
+
+ArkTS1.2对函数类型进行更严格的编译器检查。函数返回类型需要严格定义来保证类型安全，因此不支持TS-like`Function`类型。
+
+**适配建议：**
+
+使用func.unsafeCall()代替func()。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2289,7 +2369,19 @@ function getFunction(): () => void { // 明确返回类型
 
 **规则：**`arkts-optional-methods`
 
-ArkTS1.2中类的方法被所有类的实例所共享，增加可选方法的支持会增加开发者判断空值的成本，影响性能。
+**规则解释：**
+
+ArkTS1.2不支持类中的可选方法。
+
+**变更原因：**
+
+ArkTS1.2中，类的方法由所有实例共享。增加可选方法支持会增加开发者判断空值的成本，影响性能。
+
+**适配建议：**
+
+用可选属性代替可选方法。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2317,9 +2409,21 @@ class ClassA {
 
 **规则：**`arkts-instance-method-bind-this`
 
-在ArkTS1.1中，`this`的指向取决于函数的调用方式。示例中，当`a.foo1`被赋值给变量后变成了一个独立函数，调用时不再与`a`实例关联，导致方法中的`this`指向`undefined`。<br>可用`a.foo2`的箭头函数来解决这个问题。箭头函数在类中作为方法定义时，会捕获类实例的上下文，确保`this`始终指向实例。
+**规则解释：**
+
+在ArkTS1.2中，实例方法当作对象时会绑定上下文中的`this`。
+
+**变更原因：**
+
+在ArkTS1.1中，`this`的指向取决于函数的调用方式。示例中，当`a.foo1`被赋值给变量后，变成了一个独立函数，调用时不再与`a`实例关联，导致方法中的`this`指向`undefined`。可以使用`a.foo2`的箭头函数来解决这个问题。箭头函数在类中作为方法定义时，会捕获类实例的上下文，确保`this`始终指向实例。
 
 ArkTS1.2中则不存在这个问题，实例方法和箭头函数都会捕获上下文中的`this`。
+
+**适配建议：**
+
+不涉及。
+
+**示例：**
 
 **ArkTS1.1**
 
@@ -2371,13 +2475,13 @@ method()   // 输出: 'a'
 
 ```typescript
 namespace A {
-  export function foo() {  // 错误：命名空间 'A' 中重复导出函数 'foo'.
+  export function foo() {  // 错误：命名空间 'A' 中重复导出函数 'foo'
     console.log('test1');
   }
 }
 
 namespace A {
-  export function foo() {  // 错误：命名空间 'A' 中重复导出函数 'foo'.
+  export function foo() {  // 错误：命名空间 'A' 中重复导出函数 'foo'
     console.log('test2');
   }
 }
@@ -2830,7 +2934,7 @@ BigInt(n1) >= n2;
 
 ```typescript
 typeof new Number(1) // 结果: "object"
-new Number(1) == new Number(1);  //结果: false
+new Number(1) == new Number(1);  // 结果: false
 if (new Boolean(false)) {} // 在if语句中new Boolean(false)为true
 ```
 
@@ -2838,7 +2942,7 @@ if (new Boolean(false)) {} // 在if语句中new Boolean(false)为true
 
 ```typescript
 typeof new Number(1)// 结果: "number"
-new Number(1) == new Number(1);  //结果: true
+new Number(1) == new Number(1);  // 结果: true
 if (new Boolean(false)) {}      // 在if语句中new Boolean(false)为false
 ```
 
