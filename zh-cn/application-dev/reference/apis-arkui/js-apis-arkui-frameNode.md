@@ -1734,6 +1734,8 @@ addComponentContent\<T>(content: ComponentContent\<T>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
@@ -1773,6 +1775,92 @@ class MyNodeController extends NodeController {
       .borderColor(Color.Black)
       .backgroundColor(Color.Green)
     let component = new ComponentContent<Object>(uiContext, wrapBuilder(buildText))
+    if (row4.isModifiable()) {
+      row4.addComponentContent(component)
+      col.appendChild(row4)
+    }
+    return node
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
+
+### addComponentContent<sup>20+</sup>
+
+addComponentContent\<T extends Object>(content: ComponentContent\<T>): void
+
+支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](#ismodifiable12)的返回值为true，否则抛出异常信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名  | 类型                                                   | 必填 | 说明             |
+| ------- | ------------------------------------------------------ | ---- | ---------------- |
+| content | [ComponentContent](./js-apis-arkui-ComponentContent-static.md#componentcontent)\<T> | 是   | FrameNode节点中显示的组件内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+
+```ts
+import {
+  Entry,
+  Builder,
+  Column,
+  ColumnOptions,
+  Button,
+  Component,
+  NodeContainer,
+  wrapBuilder,
+  Row,
+  Text,
+  UIContext,
+  Color
+} from '@ohos.arkui.component';
+import { NodeController,FrameNode, typeNode,ComponentContent} from '@ohos.arkui.node';
+
+
+@Builder
+function buildText() {
+  Column() {
+    Text('hello')
+      .width(50)
+      .height(50)
+      .backgroundColor(Color.Yellow)
+  }
+}
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext)
+    node.commonAttribute.width(300).height(300).backgroundColor(Color.Red)
+    let col = typeNode.createNode(uiContext, "Column")
+    node.appendChild(col)
+    let row4 = typeNode.createNode(uiContext, "Row")
+    row4.attribute.width(200)
+      .height(200)
+      .borderWidth(1)
+      .borderColor(Color.Black)
+      .backgroundColor(Color.Green)
+    let component = new ComponentContent(uiContext, wrapBuilder(buildText))
     if (row4.isModifiable()) {
       row4.addComponentContent(component)
       col.appendChild(row4)
