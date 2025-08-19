@@ -47,7 +47,7 @@ const abstract1: string = "abstract";
 
 **规则解释：**
 
-ArkTS1.2中整型数字字面量默认是int类型。
+在ArkTS1.2中，整型数字字面量默认是int类型，以提高执行效率。
 
 **变更原因：**
 
@@ -57,60 +57,277 @@ ArkTS1.2中整型数字字面量默认是int类型。
 
 **适配建议：**
 
-建议开发者为数值类型变量添加明确的类型标注。
+在表达式中，若涉及除法操作或其他数值类型推导为number的情况，需将整型字面量显式修改为浮点型字面量，避免类型错误。
 
 **示例：**
 
-**ArkTS1.1**
-```typescript
-let n = 1;
-console.log(String(n / 2))  // 0.5
+- 场景1，适用于直接给变量赋值的情况。如果该变量未曾作为number类型使用，则将传值的变量链上的声明都改为int，字面量保留为整型。否则，变量声明为number，字面量仍保留为整型。
 
-let arr = [1, 2, 3];
+- 场景2，对于字面量参与表达式给变量赋值的情况，需根据表达式具体情况处理。如果表达式中包含除法运算，则应将字面量转换为浮点类型，变量类型为number。用户自定义函数（async函数除外）直接赋值时，仅返回number类型，无需修改。SDK API可能返回int类型，但按第二节返回值场景处理，但由于SDK已处理，此规则无需再执行。
 
-function multiply(x = 2, y = 3) { // 需要明确类型
-  return x * y;
-}
+- 场景3，对于变量或常量被导出的情况，应将其声明为number类型。其他模块默认将变量视为number类型使用，如果将其更改为int类型，可能会导致调用该变量或常量的模块出现编译错误。
 
-function divide(x: number, y: number) {
-  return x / y;
-} // 函数返回值
+- 场景4，所有整型字面量在包含除法的表达式中，应修改为浮点数字面量。无论变量是数组、tuple还是其他容器中的一个值，表达式所赋值的变量都应保留为number类型。
+   ```typescript
+   // ArkTS1.1
+   let a = 1;
+   let b = a;
+   let c = 2;
+   let d = 3;
+   let e = foo(1); // foo的返回值为number，这里foo是开发者自定义函数，不是SDK函数。e要声明为number，因为类型推导会把e推导为number，所以不用改
+   let f:number = 1; // f虽然被声明为number，但是上下文中一直作为int使用，那么应该将f的类型修改为int
+   export g:number = 1; // g被export，需要保留为number
 
-let num = Math.floor(4.8); // num 可能是 int
-let value = parseInt("42"); // value 可能是 int
+   c = 1/2; // 变量c的赋值表达式里有除法，c需要声明为number类型，且表达式中的整型字面量也要修改为浮点型字面量
+   d = 1.0; // 变量d又被赋值了浮点字面量，所以需要声明为number类型
 
-function identity<T>(value: T): T {
-  return value;
-}
-identity(42); // 42 可能推导为 int
-```
+   function foo(a:number): number {
+     return a - 1;
+   }
 
-**ArkTS1.2**
-```typescript
-let n: number = 1;
-console.log(n / 2)  // output: 0.5
+   // ArkTS1.2
+   let a:int = 1;
+   let b:int = a;
+   let c:number = 2;
+   let d:number = 3;
+   let e:number = foo(1);
+   let f:int = 1;
+   export g:number = 1;
 
-let m = 1;
-console.log(m / 2)  // output: 0
+   c = 1.0/2.0;
+   d = 1.0;
+   ```
 
-let arr: number[] = [1, 2, 3];
+- 场景5，tuple的情况。<br>
+   - 不要改number类型，一律保留。
+   - 赋值的情况，如果是整型字面量，不需要修改；如果表达式包含整型字面量和除法操作，需将整型字面量修改为浮点数字面量。
+   ```typescript
+   // ArkTS1.1
+   let a : [number, number, boolean] = [1, 1, true];
+   a = [2, 2, false];
+   a = [2/3, 3/4, false];
 
-function multiply(x: number = 2, y: number = 3): number {
-  return x * y;
-}
+   // ArkTS1.2
+   let a : [number, number, boolean] = [1, 1, true];
+   a = [2, 2, false];
+   a = [2.0/3.0, 3.0/4.0, false]; // 将整型字面量修改成浮点型字面量，否则结果和ArkTS1.1不一致
+   ```
 
-function divide(x: number, y: number): number {
-  return x / y;
-}
+- 场景6，Array的情况。<br>
+   - 不要更改number类型，一律保留。
+   - 赋值的情况，如果是整型字面量，则不需要修改。但是如果是包含整型字面量和除法操作的表达式，则需要将整型字面量修改为浮点数字面量。
+   ```typescript
+   // ArkTS1.1
+   let arr:number[] = [1, 2, 3];
+   arr = [2, 3, 4];
+   arr[0] = 2/3;
+   arr = [1/3, 2/3, 4];
 
-let num: number = Math.floor(4.8);
-let value: number = parseInt("42");
+   // ArkTS1.2
+   let arr:number[] = [1, 2, 3];
+   arr = [2, 3, 4];
+   arr[0] = 2.0/3.0;
+   arr = [1.0/3.0, 2.0/3.0, 4];
+   ```
 
-function identity<T>(value: T): T {
-  return value;
-}
-identity(42 as number);
-```
+- 场景7，Array及相关操作符的使用情况。
+   ```typescript
+   // ArkTS1.1
+   let arr : Array = [1, 2, 3, 4];
+   let arr2:Array = arr??[0];
+   let arr3:Array = [1, 2, 3, 4];
+
+   // ArkTS1.2
+   // 当上下文无法推导时，根据数组元素类型推导。例如，line3的[0] 被推导为int数组，而arr是number数组，因此赋值给arr2时会有错误
+   // arr??[0]的类型是Array|Array的联合类型，和arr2的声明类型不符，所以编译错误。这里就需要把0，改为0.0
+
+   let arr:Array = [1, 2, 3, 4];
+   let arr2:Array = arr??[0.0]; // 这种情况，需要把数组中的整型字面量都修改为浮点型字面量
+   let arr3:Array = [1, 2, 3, 4];
+
+   // 同理三元运算符的情况
+   // ArkTS1.1
+   let b:boolean = true
+   let arr:number[] = [1, 2, 3];
+   let arr1:int[] = [1, 2, 3];
+   let arr2:number[] = b? arr : [0, 1, 2];
+
+   // ArkTS1.2
+   let b:boolean = true;
+   let arr:number[] = [1, 2, 3];
+   let arr1:int[] = [1, 2, 3];
+   let arr2:number[] = b? arr : [0.0, 1.0, 2.0];
+   ```
+
+- 场景8，Enum中的整型字面量无需修复。
+   ```typescript
+   enum A {
+     A1 = 1,
+     A2 = 2,
+     A3 = 3
+   } // 都不要修复成浮点型字面量
+   ```
+
+- 场景9，字面量中的整型字面量，不论是ArkTS1.1还是ArkTS1.2，字面量在赋值时，变量的类型决定了数字字面量的修改方式。此外，SDK API的number类型转换为int已在上一章示例中展示，本章将展示开发者自定义的类型（如class或interface）。
+   ```typescript
+   // 场景9.1类型属性不需要修改number to int的情况
+   // ArkTS1.1用户自定义类型
+   interface A {
+     a : number;
+     b : number;
+   }
+
+   let x:A = {
+     a : 1,
+     b : 2
+   }
+
+   let y:A = {
+     a : 1,
+     b : 1.1
+   }
+
+   let z:A = {
+     a : 1,
+     b : 2/3
+   }
+
+   // ArkTS1.2用户自定义类型
+   interface A {
+     a : number; // 用户自定义类型，一般不主动修改number到int
+     b : number;
+   }
+
+   // 不用修改
+   let x:A = {
+     a : 1,
+     b : 2
+   }
+   // 不用修改
+   let y:A = {
+     a : 1,
+     b : 1.1
+   }
+
+   let z:A = {
+     a : 1,
+     b : 2.0/3 //需要修改
+   }
+
+   // 场景9.2类型属性仍保留为number，但是需要作为int使用，需要调用toInt
+   // ArkTS1.1用户自定义类型
+   interface A {
+     a : number;
+     b : number;
+     c : number;
+   }
+
+   let arr:Array = [1, 2, 3, 4, 5]
+   let x:A = {
+     a : 1.1, // a被赋值为浮点字面量，所以，属性a类型认为number
+     b : 2/3, // b被含除法操作的表达式赋值，所以b还需要作为number使用，且表达式的整型字面量需要改为浮点型字面量
+     c : 3
+   }
+
+   arr[x.a];
+   arr[x.b];
+   x.c/2; // c参与除法操作，所以仍要为number
+
+   // 如果该属性被用作索引或其他需要整数的情况（如SDK的入参），且该属性没有在其他地方被用作数字（例如参与除法操作或被浮点数字面量赋值），则应将属性类型修改为整数。
+   // ArkTS1.2用户自定义类型
+   interface A {
+     a : number;
+     b : number;
+   }
+
+   let arr:Array = [1, 2, 3, 4, 5];
+   let x:A = {
+     a : 1.1,
+     b : 2.0/3
+   }
+
+   arr[x.a.toInt()]; // Array的index必须是整数
+   arr[x.b.toInt()];
+   x.c/2;
+   ```
+
+- 场景10，async函数、方法和lamada表达式必须返回Promise类型的值。如果函数体返回T，编译器会自动推导返回值为Promise。因此，当async函数返回整型字面量时，ArkTS1.1版本返回Promise，而ArkTS1.2版本返回Promise，两者在ArkTS1.2中不兼容。需要将async函数中返回整型字面量的情况修改为返回浮点型字面量。
+   ```typescript
+   // ArkTS1.1
+   async function foo() {
+     return 1; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
+   }
+
+   async function foo1() : Promise{
+     return 1; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
+   }
+
+   let func1 = async ()=> {return 1}; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
+   let func2 = async ():Promise => {return 1}; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
+
+   class A {
+     async method1() {
+       return 1;
+     }
+     async method2():Promise {
+       return 1;
+     }
+   }
+
+   // ArkTS1.2
+   async function foo() {
+     return 1.0;
+   }
+
+   async function foo1() : Promise{
+     return 1.0;
+   }
+
+   let func1 = async ()=> {return 1.0};
+   let func2 = async ():Promise => {return 1.0};
+
+   class A {
+     async method1() {
+       return 1.0;
+     }
+     async method2():Promise {
+       return 1.0;
+     }
+   }
+   ```
+
+- 场景11，在包含除法的复杂运算表达式中，表达式的结果应为number或double类型。
+   ```typescript
+   // ArkTS1.1
+   let a = (1+1)/(2*3);
+
+   // ArkTS1.2
+   let a:number = (1.0+1)/(2*3); // 表达式的第一个字面量如果为整型字面量，修改为浮点型字面量
+   let func1 = () => {return 1}; // 不告警
+   let func2 = () => {return 2}; // 不告警
+   ```
+
+- 场景12，lamada表达式的返回值场景，对于lamada表达式的返回值，在ArkTS1.2中，整型字面量是int类型，int类型可赋值给number类型。lamada表达式返回int类型，与number类型协变，符合ArkTS1.2语法规则。
+   ```typescript
+   // ArkTS1.1
+   let r1 = func1()/func2(); // 在ArkTS1.2中，参与了除法，结果为number/double，这里需要调用toDouble函数。
+   // ArkTS1.2
+   let r1 = func1().toDouble()/func2();
+   ```
+
+- 场景13，enum的整型值参与除法操作。
+   ```typescript
+   enum X {
+     A = 1,
+     B = 2,
+     C = -1
+   }
+
+   // ArkTS1.1
+   let a = X.A/X.B;// ArkTS1.1结果为0.5，ArkTS1.2结果为0
+   // ArkTS1.2
+   let a = X.A.valueOf().toDouble() / X.B; // 先取到X.A的值，然后再转换为number/double
+   ```
 
 ## void类型只能用在返回类型的场景
 
@@ -2350,7 +2567,7 @@ type F1<P, R> = (p:  P) => R
 
 let f: F<void> = () => {}
 
-function run(fn: () => void) {  // 指定返回类型
+function run(fn: () => void) {  // 扫描工具在调用的时候会报错
   fn();
 }
 
