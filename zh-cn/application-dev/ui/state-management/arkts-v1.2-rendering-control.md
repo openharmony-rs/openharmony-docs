@@ -56,7 +56,7 @@ import { DataOperation, DataOperationType, DataAddOperation, DataDeleteOperation
 
 - ArkTS1.2中IDataSource强制要求声明`<T>`类型，
 - 从API version 20开始，删除API中`DataChangeListener`的`onDataAdded()`、`onDataMoved()`、`onDataDeleted()`、`onDataChanged()`方法（从API version 8开始，上述接口被废弃，建议使用`onDataAdd()`、`onDataMove()`、`onDataDelete()`、`onDataChange()`方法）。
-- 使用listener.onDatasetChange()进行批量数据修改时，DataOperation数组中每一项数据需要转换为对应的类型，见[批量数据修改场景](#批量数据修改场景)。
+- 使用`listener.onDatasetChange()`进行批量数据修改时，`DataOperation`数组中每一项数据需要转换为对应的类型，见[批量数据修改场景](#批量数据修改场景)。
 
 ### ArkTS1.2的写法差异示例
 
@@ -237,6 +237,44 @@ struct LazyForEachPage {
 
 ### 批量数据修改场景
 
+开发者在使用`onDatasetChange()`批量修改数据源时，单次`DataOperation`需要转换为具体的类型。见如下代码片段：
+
+```ts
+/** ArkTS1.2 */
+import { LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component';
+// 如果需要使用listener.onDatasetChange()进行批量数据修改，可以按需import下列DataOperation
+import { DataOperation, DataOperationType, DataAddOperation, DataDeleteOperation, DataChangeOperation, DataMoveOperation, DataExchangeOperation, DataReloadOperation } from '@ohos.arkui.component';
+
+/** 省略中间代码 */
+
+class MyDataSource extends BasicDataSource {
+  // ...
+
+  public operateData(): void { // 数组批量操作
+    this.dataArray.splice(4, 0, this.dataArray[1]);
+    this.dataArray.splice(1, 1);
+    let temp = this.dataArray[4];
+    this.dataArray[4] = this.dataArray[6];
+    this.dataArray[6] = temp;
+    this.dataArray.splice(8, 0, 'Hello 1', 'Hello 2');
+    this.dataArray.splice(12, 2);
+    // 数组批量操作结束
+    this.notifyDatasetChange([ // 调用listener方法通知LazyForEach数据变化
+      { type: DataOperationType.MOVE, index: { from: 1, to: 3 } } as DataMoveOperation, // 将单次DataOperation转换为对应的类型，下同
+      { type: DataOperationType.EXCHANGE, index: { start: 4, end: 6 } } as DataExchangeOperation,
+      { type: DataOperationType.ADD, index: 8, count: 2 } as DataAddOperation,
+      { type: DataOperationType.DELETE, index: 10, count: 2 } as DataDeleteOperation
+    ]);
+  }
+
+  public init(): void { // 数组初始化
+    this.dataArray.splice(0, 0, 'Hello a', 'Hello b', 'Hello c', 'Hello d', 'Hello e', 'Hello f', 'Hello g', 'Hello h',
+      'Hello i', 'Hello j', 'Hello k', 'Hello l', 'Hello m', 'Hello n', 'Hello o', 'Hello p', 'Hello q', 'Hello r');
+  }
+}
+
+// ...
+```
 
 ## Repeat迁移规范
 
@@ -249,7 +287,7 @@ import { Repeat, RepeatItem } from '@ohos.arkui.component';
 ```
 
 - ArkTS1.2中Repeat()强制要求声明数组类型`<T>`。
-- 新增API：ArkTS1.1中，当`Repeat.virtualScroll()`属性缺省时，Repeat渲染方式默认为全量加载，需要添加`.virtualScroll()`开启懒加载。ArkTS1.2中，当该属性缺省时，Repeat渲染方式默认为懒加载。需要使用[disableVirtualScroll](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions对象说明)配置项开启懒加载，默认值为false。
+- 新增API：ArkTS1.1中，当`Repeat.virtualScroll()`属性缺省时，Repeat渲染方式默认为全量加载，需要添加`.virtualScroll()`开启懒加载。ArkTS1.2中，当该属性缺省时，Repeat渲染方式默认为懒加载。需要使用[disableVirtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions对象说明)配置项开启懒加载，默认值为false。
 
 ### ArkTS1.2的写法差异示例
 
