@@ -119,10 +119,10 @@
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
           - [\@Observed装饰器和\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-->
-          - LocalStorage：页面级UI状态存储
-          - AppStorage：应用全局的UI状态存储
-          - PersistentStorage：持久化存储UI状态
-          - Environment：设备环境查询
+          - [LocalStorage：页面级UI状态存储](state-management-static/arkts-static-localstorage.md)
+          - [AppStorage：应用全局的UI状态存储](state-management-static/arkts-static-appstorage.md)
+          - [PersistentStorage：持久化存储UI状态](state-management-static/arkts-static-persiststorage.md)
+          - [Environment：设备环境查询](state-management-static/arkts-static-environment.md)
       - 状态管理（V2）<!--arkts-state-management-v2-->
         - 管理组件拥有的状态<!--arkts-component-state-management-v2-->
           - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
