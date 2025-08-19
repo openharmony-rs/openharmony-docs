@@ -932,6 +932,7 @@
 | int32_t [OH_ArkUI_EnableDropDisallowedBadge](#oh_arkui_enabledropdisallowedbadge) ([ArkUI_ContextHandle](#arkui_contexthandle-12) uiContext, bool enabled) | 设置是否可以显示禁用角标。<br />**起始版本：** 20  | 
 | int32_t [OH_ArkUI_NativeModule_GetNodeHandleFromAniValue](#oh_arkui_nativemodule_getnodehandlefromanivalue)  (ani_env* env, ani_object frameNode, [ArkUI_NodeHandle](#arkui_nodehandle) \*handle) | 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。<br />**起始版本：** 20  | 
 | int32_t [OH_ArkUI_NativeModule_GetContextFromAniValue](#oh_arkui_nativemodule_getcontextfromanivalue)  (ani_env* env, ani_object context, [ArkUI_ContextHandle](_ark_u_i___native_module.md#arkui_contexthandle-12) \*handle) | 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。<br />**起始版本：** 20  | 
+| int32_t [OH_ArkUI_NativeModule_GetNodeContentFromAniValue](#oh_arkui_nativemodule_getnodecontentfromanivalue)  (ani_env* env, ani_object nodeContent, [ArkUI_NodeContentHandle](#arkui_nodecontenthandle) \*content) | 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。<br />**起始版本：** 20  | 
 
 
 ## 宏定义说明
@@ -19703,6 +19704,29 @@ int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object co
 | env | ANI的环境指针。  |
 | context | ArkTS侧创建的UIContext对象。  |
 | handle | ArkUI_ContextHandle指针。  |
+
+**返回：**
+
+[ARKUI_ERROR_CODE_NO_ERROR](_ark_u_i___native_module.md#arkui_errorcode) 成功。 [ARKUI_ERROR_CODE_PARAM_INVALID](_ark_u_i___native_module.md#arkui_errorcode) 函数参数异常。
+
+### OH_ArkUI_NativeModule_GetNodeContentFromAniValue()
+
+```
+int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env* env, ani_object nodeContent, ArkUI_NodeContentHandle* content)
+```
+**描述：**
+
+获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。
+
+**起始版本：** 20
+
+**参数:**
+
+| 名称 | 描述 |
+| -------- | -------- |
+| env | ANI的环境指针。  |
+| nodeContent | ArkTS侧创建的NodeContent对象。  |
+| content | ArkUI_NodeContentHandle指针。  |
 
 **返回：**
 
