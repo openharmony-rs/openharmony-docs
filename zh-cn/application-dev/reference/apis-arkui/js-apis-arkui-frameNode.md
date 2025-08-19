@@ -1333,6 +1333,8 @@ getCustomProperty(name: string): Object | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
@@ -1348,6 +1350,30 @@ getCustomProperty(name: string): Object | undefined
 **示例：**
 
 请参考[节点操作示例](#节点操作示例)。
+
+### getCustomProperty<sup>20+</sup>
+
+getCustomProperty(name: string): CustomProperty
+
+通过名称获取组件的自定义属性。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：** 
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                         |
+| ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| name  | string | 是   | 自定义属性的名称。 |
+
+**返回值：**
+
+| 类型                                                           | 说明                                                                  |
+| -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [CustomProperty](./arkui-ts/ts-universal-attributes-custom-property.md#customproperty20) | 自定义属性的值。 |
 
 ### dispose<sup>12+</sup>
 
