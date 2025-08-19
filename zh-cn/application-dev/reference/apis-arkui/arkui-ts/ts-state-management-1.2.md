@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```ts
-import { AppStorage } from '@ohos.arkui.stateManagement';
+import { AppStorage, LocalStorage, PersistentStorage, Environment, LayoutDirection, ColorMode } from '@ohos.arkui.stateManagement';
 ```
 
 ## AppStorage
@@ -365,12 +365,6 @@ let res: number = AppStorage.size(); // 1
 ## LocalStorage
 
 LocalStorage具体UI使用说明，详见[LocalStorage(页面级UI状态存储)](../../../ui/state-management-static/arkts-static-localstorage.md)
-
-## 导入模块
-
-```ts
-import { LocalStorage } from '@ohos.arkui.stateManagement';
-```
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -913,7 +907,7 @@ link.aboutToBeDeleted();
 
 ### info
 
-info(): string;
+info(): string
 
 返回属性名称。
 
@@ -933,7 +927,7 @@ PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储
 
 ### ToJsonType<T>
 
-type ToJsonType<T> = (value: T) => jsonx.JsonElement;
+type ToJsonType<T> = (value: T) => jsonx.JsonElement
 
 >**说明：**
 >
@@ -943,7 +937,7 @@ type ToJsonType<T> = (value: T) => jsonx.JsonElement;
 
 ### FromJsonType<T>
 
-type FromJsonType<T> = (element: jsonx.JsonElement) => T;
+type FromJsonType<T> = (element: jsonx.JsonElement) => T
 
 >**说明：**
 >
@@ -1000,6 +994,7 @@ static deleteProp(key: string): void
 | key  | string | 是    | PersistentStorage中的属性名。 |
 
 **示例：**
+
 ```ts
 import { PersistentStorage } from '@ohos.arkui.stateManagement';
 
@@ -1052,7 +1047,7 @@ Environment具体使用说明，详见[Environment(设备环境查询)](../../..
 
 ### envProp
 
-static envProp&lt;S&gt;(key: string, value: S): boolean
+static envProp&lt;S&gt;(key: string, value: T): boolean
 
 将[Environment](../../../ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
 
@@ -1069,7 +1064,7 @@ static envProp&lt;S&gt;(key: string, value: S): boolean
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | key    | string | 是   | 环境变量名称，支持的范围详见[内置环境变量说明](#内置环境变量说明)。 |
-| value  | S      | 是   | 查询不到环境变量key时，则使用value作为默认值存入AppStorage中。 |
+| value  | T      | 是   | 查询不到环境变量key时，则使用value作为默认值存入AppStorage中。 |
 
 **返回值：**
 
@@ -1122,6 +1117,7 @@ static keys(): Array&lt;string&gt;
 | Array&lt;string&gt; | 返回关联的系统项数组。 |
 
 **示例：**
+
 ```ts
 Environment.envProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
   key: 'languageCode',
@@ -1141,3 +1137,27 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 | fontWeightScale      | number          | 字重比例。                                                   |
 | layoutDirection      | LayoutDirection | 布局方向类型，可选值为：<br/>-&nbsp;LayoutDirection.LTR：从左到右；<br/>-&nbsp;LayoutDirection.RTL：从右到左。<br/>-&nbsp;Auto：跟随系统。 |
 | languageCode         | string          | 当前系统语言，小写字母，例如zh。                             |
+
+### ColorMode
+
+系统当前深浅色模式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值    | 说明      |
+| ----- | -----| ----------|
+| LIGHT | 0    | 浅色模式。 |
+| DARK  | 1    | 深色模式。 |
+
+
+### LayoutDirection
+
+系统的布局方向类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值    | 说明      |
+| ----- | -----| ----------|
+| LTR   | 0    | 从左向右布局。 |
+| RTL   | 1    | 从右向左布局。 |
+| AUTO  | 2    | 自动布局，跟随系统。 |
