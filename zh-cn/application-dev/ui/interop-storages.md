@@ -90,7 +90,7 @@ import { AppStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stateManage
 @Component
 struct MyStateSample {
   // 1.2使用AppStorage，初始化key 'LinkA'
-  linkAFlag: boolean = AppStorage.setOrCreate<string>('LinkA', '333', Type.from<string>());
+  linkAFlag: boolean = AppStorage.setOrCreate<string>('LinkA', '333');
 
   @StorageLink('LinkA') appLink: string = 'staticA';
   @StoragePropRef('LinkA') appProp: string = 'staticA';
@@ -168,9 +168,9 @@ export struct MainPage {
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'har1_1';
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { LocalStorage, IStorageProperties, LocalStorageLink, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
+import { LocalStorage, LocalStorageLink, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
-const para: Record<string, IStorageProperties> = {'LinkA': {value: 'test', ttype: Type.from<string>()}};
+const para: Record<string, Any> = {'LinkA': 'test'};
 const storageInst = (): LocalStorage => new LocalStorage(para);
 
 @Entry({ storage: 'storageInst' })
@@ -258,7 +258,7 @@ import { PersistentStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stat
 @Component
 struct MyStateSample {
   // 1.2使用PersistentStorage，初始化key 'LinkA'
-  persistFlag: boolean = PersistentStorage.persistProp('LinkA', Type.from<string>(), 'hello');
+  persistFlag: boolean = PersistentStorage.persistProp('LinkA', 'hello');
 
   @StorageLink('LinkA') persistLink: string = 'staticB';
   @StoragePropRef('LinkA') persistProp: string = 'staticB';
