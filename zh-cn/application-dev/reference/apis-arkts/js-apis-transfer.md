@@ -58,7 +58,7 @@ transferStatic(input: Any, inputName: string): Object
 import { dyamic2Static } from 'har2';
 let dynamic_obj = new ArrayBuffer(8);
 dyamic2Static(dynamic_obj); // 调用ArkTS1.2环境中的dyamic2Static方法
-    
+
 // ArkTS1.2环境
 import { transfer } from '@kit.ArkTS'
 function dyamic2Static(dynamic_obj: Any) {
@@ -108,7 +108,7 @@ let static_obj = new ArrayBuffer(8);
 let dynamic_obj = transfer.transferDynamic(static_obj, 'InteropTransferHelper')
 // 调用1.0中的har1func方法处理dynamic_obj
 let moduleName = ESValue.load('@nomalized:....');
-let har1func = moduleName.getProperty('har1func');  
+let har1func = moduleName.getProperty('har1func');
 har1func.invoke(ESObject.wrap(dynamic_obj));
 
 
@@ -124,5 +124,6 @@ export function har1func(dynamic_obj: Any) {
 |"InteropTransferHelper" | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md)|
 | "ArkUI.NavDestinationInfo" | [uiObserver.NavDestinationInfo](../apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)|
 | "ArkUI.NavigationInfo" | [uiObserver.NavigationInfo](../apis-arkui/js-apis-arkui-observer.md#navigationinfo12)|
-| "ArkUI.RouterPageInfo" | [uiObserver.RouterPageInfo](../apis-arkui/js-apis-arkui-observer.md#routerpageinfo)| 
-| "AbilityKit.UIAbilityContext" | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)|   
+| "ArkUI.RouterPageInfo" | [uiObserver.RouterPageInfo](../apis-arkui/js-apis-arkui-observer.md#routerpageinfo)|
+| "AbilityKit.UIAbilityContext" | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)|
+| "ArkUI.DrawableDescriptor" | [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor.md) |
