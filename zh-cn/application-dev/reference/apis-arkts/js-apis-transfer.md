@@ -127,3 +127,13 @@ export function har1func(dynamic_obj: Any) {
 | "ArkUI.RouterPageInfo" | [uiObserver.RouterPageInfo](../apis-arkui/js-apis-arkui-observer.md#routerpageinfo)|
 | "AbilityKit.UIAbilityContext" | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)|
 | "ArkUI.DrawableDescriptor" | [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor.md) |
+| "ArkUI.DragEvent" | [DragEvent](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)|
+| "ArkUI.KeyEvent" | [KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)|
+| "ArkUI.TouchEvent" | [TouchEvent](../apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)|
+| "ArkUI.MouseEvent" | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)|
+| "ArkUI.AxisEvent" | [AxisEvent](../apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)|
+| "ArkUI.ClickEvent" | [ClickEvent](../apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent对象说明)|
+| "ArkUI.HoverEvent" | [HoverEvent](../apis-arkui/arkui-ts/ts-universal-events-hover.md#hoverevent10对象说明)|
+| "ArkUI.EventTargetInfo" | [EventTargetInfo](../apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#eventtargetinfo)|
+| "ArkUI.TouchTestInfo" | [TouchTestInfo](../apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md#touchtestinfo)|
+| "ArkUI.ScrollableTargetInfo" | [ScrollableTargetInfo](../apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#scrollabletargetinfo)|
