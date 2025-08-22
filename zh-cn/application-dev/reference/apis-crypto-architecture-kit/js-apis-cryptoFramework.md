@@ -74,7 +74,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
-适用于CBC、CTR、OFB、CFB这些需要iv作为参数的加解密模式。
+适用于CBC、CTR、OFB、CFB、Poly1305这些需要iv作为参数的加解密模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -135,6 +135,28 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 > **说明：**
 >
 > 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
+
+## Poly1305ParamsSpec<sup>22+</sup>
+
+加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+
+适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20)Poly1305模式。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+| 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
+| ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为12字节。                              |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为任意字节。                             |
+| authTag | [DataBlob](#datablob) | 否   | 否   | 指定加解密参数authTag，长度为16字节。 |
+
+> **说明：**
+>
+> 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
+>
+> 在Poly1305模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)末尾提取16字节，作为解密时[init()](#init-1)或[initSync()](#initsync12)方法的参数[Poly1305ParamsSpec](#poly1305paramsspec22)中的authTag。
 
 ## CryptoMode
 
