@@ -251,7 +251,7 @@ const abstract1: string = "abstract";
    x.c/2;
    ```
 
-- 场景10，async函数、方法和lamada表达式必须返回Promise类型的值。如果函数体返回T，编译器会自动推导返回值为Promise。因此，当async函数返回整型字面量时，ArkTS1.1版本返回Promise，而ArkTS1.2版本返回Promise，两者在ArkTS1.2中不兼容。需要将async函数中返回整型字面量的情况修改为返回浮点型字面量。
+- 场景10，async函数、方法和lambda表达式必须返回Promise类型的值。如果函数体返回T，编译器会自动推导返回值为Promise。因此，当async函数返回整型字面量时，ArkTS1.1版本返回Promise，而ArkTS1.2版本返回Promise，两者在ArkTS1.2中不兼容。需要将async函数中返回整型字面量的情况修改为返回浮点型字面量。
    ```typescript
    // ArkTS1.1
    async function foo() {
@@ -307,7 +307,7 @@ const abstract1: string = "abstract";
    let func2 = () => {return 2}; // 不告警
    ```
 
-- 场景12，lamada表达式的返回值场景，对于lamada表达式的返回值，在ArkTS1.2中，整型字面量是int类型，int类型可赋值给number类型。lamada表达式返回int类型，与number类型协变，符合ArkTS1.2语法规则。
+- 场景12，lambda表达式的返回值场景，对于lambda表达式的返回值，在ArkTS1.2中，整型字面量是int类型，int类型可赋值给number类型。lambda表达式返回int类型，与number类型协变，符合ArkTS1.2语法规则。
    ```typescript
    // ArkTS1.1
    let r1 = func1()/func2(); // 在ArkTS1.2中，参与了除法，结果为number/double，这里需要调用toDouble函数。
@@ -351,13 +351,14 @@ const abstract1: string = "abstract";
 
 **ArkTS1.1**
 ```typescript
-// 示例1：void类型变量声明
-let s: void = foo();
+// 示例1：函数返回类型
+function foo(): void {};
 
-// 示例2：void联合类型
+// 示例2：void类型变量声明
+let s: void = foo();
 let t: void | number = foo();
 
-// 示例3：泛型参数中使用void
+// 示例3：泛型参数
 function process<T>(input: T): T {
   return input;
 }
@@ -367,18 +368,17 @@ let result = process<void>(foo());
 type VoidAlias = void;
 
 // 示例5：对象属性
-let { x }: { x: void } = { x: foo() };
-
-// 示例6：void类型参数
-function execute(callback: void) {
-  callback();
+class A {
+  x?: void
 }
 
-// 示例7：类型断言
-let x = fun() as void;
+// 示例6：void类型参数
+function execute(v: void) {
+}
+execute(foo());
 
-// 示例8：函数返回类型
-function foo(): void{};
+// 示例7：类型断言
+let x = foo() as void;
 ```
 
 **ArkTS1.2**
@@ -629,7 +629,7 @@ function foo (index: int) {
 }
 
 function getIndex(): int {
-  return Math.floor(Math.random() * 10);  // 转换为 `int`
+  return Math.floor(Math.random() * 10).toInt();  // 转换为 `int`
 }
 
 let array = [1, 2, 3];
@@ -779,40 +779,44 @@ const p: Point = [3, 5, true];
 
 **规则解释：**
 
-ArkTS1.2函数类型转换时，参数遵循[逆变](#逆变协变)规则，返回类型遵循[协变](#逆变协变)规则。
+当函数类型返回void时，ArkTS1.1可返回任意类型，而ArkTS1.2只能返回void类型。
 
 **变更原因：**
  
-ArkTS1.1允许对函数类型的变量进行更宽松的赋值，而在ArkTS1.2中，将对函数类型的赋值进行更严格的检查。函数类型转换时，参数遵循[逆变](#逆变协变)规则，返回类型遵循[协变](#逆变协变)规则。
+对于函数类型转换，ArkTS1.1和ArkTS1.2都遵循参数逆变和返回类型协变的规则。有关逆变和协变的详细解释，请参见[逆变和协变](#逆变和协变)。
+
+当函数类型返回void时，由于ArkTS1.1与ArkTS1.2中void类型的变化，ArkTS1.2仅支持返回void类型。请参考[void类型只能用在返回类型的场景](#void类型只能用在返回类型的场景)。
 
 **适配建议：**
 
-在外部包裹一层类型相同的箭头函数或者改为正确的类型。
+1. 修改返回类型为void。
+
+2. 在外包裹一层void箭头函数。
 
 **示例：**
 
 **ArkTS1.1**
 
 ```typescript
-type FuncType = (p: string) => void;
-let f1: FuncType =
-    (p: string): number => {
-        return 0;
-    }
-let f2: FuncType = (p: any): void => {};
+type F = () => void;
+// 可返回任意类型
+let f: F = (): number => {
+  return 0;
+}
 ```
 
 **ArkTS1.2**
 
 ```typescript
-type FuncType = (p: string) => void;
-let f1: FuncType =
-  	(p: string) => {
-        ((p: string): number => {
-            return 0;
-        })(p) 
-    }
-let f2: FuncType = (p: string): void => {};
+type F = () => void;
+// 改为相同的返回类型
+let f1: F = (): void => {};
+// 在外包裹一层void箭头函数
+let f2: F = () => {
+  ((): number => {
+    return 0;
+  })()
+}
 ```
 
 ## 不支持指数操作符
@@ -879,7 +883,7 @@ ArkTS1.2不支持正则表达式字面量。
 
 **变更原因：**
  
-ArkTS1.2不支持正则表达式字面量。
+ArkTS1.2是静态类型语言，不支持正则表达式字面量，使用严格的类型来定义正则。
 
 **适配建议：**
 
@@ -1368,21 +1372,23 @@ struct Settings {
 }
 ```
 
-## 属性和方法不能交叉重写
+## 类实现接口时，不能用类方法替代对应interface属性
 
 **规则：**`arkts-no-method-overriding-field`
 
 **规则解释：**
 
-在ArkTS1.2中，子类继承父类或实现接口时，属性和方法不能交叉重写，即方法不能重写属性，属性不能重写方法。
+在ArkTS1.2中，类在实现接口时，lambda属性和方法不能混用。即不能用方法实现属性，也不能用属性实现方法。
 
 **变更原因：**
  
-ArkTS1.1是动态类型语言，类的属性和方法本质上都是对象，因此在继承或实现时，方法和属性可以交叉重写。但是ArkTS1.2是静态类型语言，方法和属性不能交叉重写。
+在ArkTS1.1中，方法类型与函数属性类型兼容，类实现接口时可以混用。
+
+在ArkTS1.2中，属性和方法有本质区别，函数属性类型与方法类型不再兼容，因此不支持这种写法。
 
 **适配建议：**
 
-明确区分方法和属性，不要交叉重写。统一方法的声明方式。
+实现接口时，不要混用lambda属性和方法，确保实现与声明保持一致。
 
 **示例：**
 
@@ -1390,19 +1396,12 @@ ArkTS1.1是动态类型语言，类的属性和方法本质上都是对象，因
 
 ```typescript
 interface Person {
-  cb: () => void
+  cb1: () => void;
+  cb2(): void;
 }
-
-class student implements Person{
-  cb() {}
-} 
-
-interface Transformer<T> {
-  transform: (value: T) => T; // 违反规则
-}
-
-class StringTransformer implements Transformer<string> {
-  transform(value: string) { return value.toUpperCase(); }  // 违反规则
+class Student implements Person {
+  cb1() { }          // 用方法实现lambda属性，ArkTS1.2编译错误
+  cb2(): void { }    // 用lambda属性实现方法，ArkTS1.2编译错误
 }
 ```
 
@@ -1410,19 +1409,12 @@ class StringTransformer implements Transformer<string> {
 
 ```typescript
 interface Person {
-  cb(): void
+  cb1: () => void;
+  cb2();
 }
-
-class student implements Person{
-  cb() {}
-}
-
-interface Transformer<T> {
-  transform(value: T): T;  // 变成方法
-}
-
-class StringTransformer implements Transformer<string> {
-  transform(value: string) { return value.toUpperCase(); }  // 正确
+class Student implements Person {
+  cb1: () => void = () => { }  // 修改为lambda属性，与声明保持一致
+  cb2() { }     // 修改为方法，与声明保持一致
 }
 ```
 
@@ -2465,65 +2457,38 @@ class A {
 
 ```
 
-## 不支持TS-like `Function`类型的调用方式
+## `Function`类型的调用方式与Typescript不同
 
 **规则：**`arkts-no-ts-like-function-call`
 
 **规则解释：**
 
-ArkTS1.2中不支持TS-like`Function`类型。
+ArkTS1.1中`Function`类型可以直接用括号调用。
+
+ArkTS1.2中`Function`类型的调用方式与Typescript不同，需要使用`unsafeCall`方法调用。
 
 **变更原因：**
 
-ArkTS1.2对函数类型进行更严格的编译器检查。函数返回类型需要严格定义来保证类型安全，因此不支持TS-like`Function`类型。
+ArkTS1.2对函数类型进行严格编译期检查，要求函数返回类型严格定义。`Function`对象必须通过`unsafeCall`调用后转换类型，以确保类型安全，替代ArkTS1.1中的括号调用。
 
 **适配建议：**
 
-使用func.unsafeCall()代替func()。
+使用`unsafeCall`方法代替括号调用`Function`类型。
 
 **示例：**
 
 **ArkTS1.1**
 
 ```typescript
-let f: Function = () => {} // 违反规则
-
-function run(fn: Function) {  // 违反规则
-  fn();
-}
-
-let fn: Function = (x: number) => x + 1; // 违反规则
-
-class A {
-  func: Function = () => {}; // 违反规则
-}
-
-function getFunction(): Function { // 违反规则
-  return () => {};
-}
+let fn: Function = (): number => { return 11 };
+let res: number = fn();
 ```
 
 **ArkTS1.2**
 
 ```typescript
-type F<R> = () => R;
-type F1<P, R> = (p:  P) => R
-
-let f: F<void> = () => {}
-
-function run(fn: () => void) {  // 扫描工具在调用的时候会报错
-  fn();
-}
-
-let fn: (x: number) => number = (x) => x + 1; // 明确参数类型
-
-class A {
-  func: () => void = () => {}; // 明确类型
-}
-
-function getFunction(): () => void { // 明确返回类型
-  return () => {};
-}
+let fn: Function = (): number => { return 11 };
+let res: number = fn.unsafeCall() as number;
 ```
 
 ## 不支持可选方法
@@ -3403,9 +3368,11 @@ console.info('init');
 
 **规则解释：**
 
-ArkTS1.2继承或实现方法时，参数类型须遵循[逆变](#逆变协变)原则，返回类型遵循[协变](#逆变协变)原则。
-
-ArkTS1.1则没有这样的限制，参数和返回类型可以逆变或协变。
+ArkTS1.1与ArkTS1.2在继承/实现方法时遵循以下规则。有关逆变和协变的详细解释，请参见[逆变和协变](#逆变和协变)。
+|  类型位置 &nbsp;&nbsp;  |  ArkTS1.1规则   | ArkTS1.2规则  | 
+|  ----  |  ----  | ----  |
+| 参数类型 | 逆变&协变  | 逆变 |
+| 返回类型 | 协变  | 协变 |
 
 **变更理由：**
 
@@ -3415,7 +3382,7 @@ ArkTS1.1则没有这样的限制，参数和返回类型可以逆变或协变。
 
 **适配建议：**
 
-根据参数类型[逆变](#逆变协变)和返回类型[协变](#逆变协变)的原则修改实现类中的方法。
+根据规则修改参数类型协变的代码。
 
 **示例：**
 
@@ -3425,14 +3392,14 @@ ArkTS1.1则没有这样的限制，参数和返回类型可以逆变或协变。
 class A { u = 0 }
 class B { v = 0 }
 class Father {
-  testParam(a: A) { }
-  testReturn(): A | B { return new A() }
+  foo(a: A) { }
+  bar(): A | B { return new A() }
 }
 class Son extends Father {
-  // 参数可以协变
-  override testParam(a: A | B) { }
-  // 返回值可以逆变
-  override testReturn(): B { return new B() }
+  // 参数：逆变&协变
+  override foo(a: A | B) { }
+  // 返回值：协变
+  override bar(): A { return new A() }
 }
 ```
 
@@ -3442,14 +3409,14 @@ class Son extends Father {
 class A { u = 0 }
 class B { v = 0 }
 class Father {
-    testParam(a: A) { }
-    testReturn(): A | B { return new A() }
+    foo(a: A) { }
+    bar(): A | B { return new A() }
 }
 class Son extends Father {
-    // 参数遵循逆变
-    override testParam(a: A | B) { }
-    // 返回值遵循协变
-    override testReturn(): A { return new A(); }
+    // 参数：逆变
+    override foo(a: A | B) { }
+    // 返回值：协变
+    override bar(): A { return new A(); }
 }
 ```
 
@@ -4026,7 +3993,7 @@ import { MainPage } from 'library/ets/components/MainPage'
 import { MainPage } from 'library/src/main/ets/components/MainPage'
 ```
 
-## 逆变/协变
+## 逆变和协变
 用来描述类型转换后的继承关系，如果A、B表示类型，f()表示类型转换，≤表示继承关系（A≤B表示A是由B派生出来的子类），则有：
 
 - f()为逆变时，当A≤B时，有f(B)≤f(A)成立。
