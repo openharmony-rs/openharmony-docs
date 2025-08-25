@@ -586,7 +586,7 @@ function test() {
 
 ## 数组索引必须是整型数据
 
-**规则：**`arkts-array-index-expr-type`
+**规则：** `arkts-array-index-expr-type`
 
 **规则解释：**
 
@@ -640,7 +640,7 @@ for (let i: int = 0; i < array.length; i++) { // 改为 `int`
 
 ## 不支持通过负数访问数组
 
-**规则：**`arkts-array-index-negative`
+**规则：** `arkts-array-index-negative`
 
 **规则解释：**
 
@@ -689,7 +689,7 @@ function getElement(arr: number[], index: int) {
 
 ## 增加数组越界运行时检查
 
-**规则：**`arkts-runtime-array-check`
+**规则：** `arkts-runtime-array-check`
 
 **规则解释：**
 
@@ -723,7 +723,7 @@ if (100 < a.length) {
 
 ## 元组和数组是两种不同类型
 
-**规则：**`arkts-no-tuples-arrays`
+**规则：** `arkts-no-tuples-arrays`
 
 **规则解释：**
 
@@ -775,7 +775,7 @@ const p: Point = [3, 5, true];
 
 ## 函数类型转换及兼容原则
 
-**规则：**`arkts-incompatible-function-types`
+**规则：** `arkts-incompatible-function-types`
 
 **规则解释：**
 
@@ -821,7 +821,7 @@ let f2: F = () => {
 
 ## 不支持指数操作符
 
-**规则：**`arkts-no-exponent-op`
+**规则：** `arkts-no-exponent-op`
 
 **规则解释：**
 
@@ -875,7 +875,7 @@ let squared = values.map(v => Math.pow(v, 2)); // 使用 `Math.pow()`
 
 ## 不支持正则表达式字面量
 
-**规则：**`arkts-no-regexp-literals`
+**规则：** `arkts-no-regexp-literals`
 
 **规则解释：**
 
@@ -926,7 +926,7 @@ let items = "apple,banana, cherry".split(regex);
 
 ## enum中当前语法不支持浮点数值
 
-**规则：**`arkts-no-enum-mixed-types`
+**规则：** `arkts-no-enum-mixed-types`
 
 **规则解释：**
 
@@ -964,7 +964,7 @@ enum Size: number{
 
 ## 不支持为函数增加属性
 
-**规则：**`arkts-no-func-props`
+**规则：** `arkts-no-func-props`
 
 **规则解释：**
 
@@ -1056,7 +1056,7 @@ console.log(Counter.increment());
 
 ## 不支持TS装饰器
 
-**规则：**`arkts-no-ts-decorators`
+**规则：** `arkts-no-ts-decorators`
 
 **规则解释：**
 
@@ -1374,7 +1374,7 @@ struct Settings {
 
 ## 类实现接口时，不能用类方法替代对应interface属性
 
-**规则：**`arkts-no-method-overriding-field`
+**规则：** `arkts-no-method-overriding-field`
 
 **规则解释：**
 
@@ -1420,7 +1420,7 @@ class Student implements Person {
 
 ## 限定switch语句中case语句类型
 
-**规则：**`arkts-switch-expr`
+**规则：** `arkts-switch-expr`
 
 **规则解释：**
 
@@ -1486,7 +1486,7 @@ switch (arrValue) {
 
 ## 不支持重复case语句
 
-**规则：**`arkts-case-expr`
+**规则：** `arkts-case-expr`
 
 **规则解释：**
 
@@ -1555,7 +1555,7 @@ switch (state) {
 
 ## 不支持lazy关键字
 
-**规则：**`arkts-no-lazy-import`
+**规则：** `arkts-no-lazy-import`
 
 **规则解释：**
 
@@ -1601,7 +1601,7 @@ import { b, c } from './file1'; // 移除lazy
 
 ## 不支持动态import
 
-**规则：**`arkts-no-dynamic-import`
+**规则：** `arkts-no-dynamic-import`
 
 **规则解释：**
 
@@ -1642,7 +1642,7 @@ import {a} from './file1'  // 支持静态import
 
 ## 不支持副作用导入
 
-**规则：**`arkts-no-side-effect-import`
+**规则：** `arkts-no-side-effect-import`
 
 **规则解释：**
 
@@ -1679,7 +1679,7 @@ console.log("Main program running...");
 
 ## 不支持globalThis
 
-**规则：**`arkts-no-globalthis`
+**规则：** `arkts-no-globalthis`
 
 **规则解释：**
 
@@ -1719,7 +1719,7 @@ let x = M.abc;
 
 ## 不支持Function.bind方法
 
-**规则：**`arkts-no-func-bind`
+**规则：** `arkts-no-func-bind`
 
 **规则解释：**
 
@@ -1769,7 +1769,7 @@ boundGreet(); // Hello, my name is Alice
 
 ## 不支持将类作为对象
 
-**规则：**`arkts-no-classes-as-obj`
+**规则：** `arkts-no-classes-as-obj`
 
 **规则解释：**
 
@@ -1810,7 +1810,7 @@ let classType: ClassType | undefined = linker.getType(className) as ClassType;
 
 ## arkts-limited-stdlib
 
-**规则：**`arkts-limited-stdlib`
+**规则：** `arkts-limited-stdlib`
 
 **规则解释：**
 
@@ -1834,7 +1834,7 @@ NA
 
 ## 不支持Structural Typing
 
-**规则：**`arkts-no-structural-typing`
+**规则：** `arkts-no-structural-typing`
 
 **规则解释：**
  
@@ -1885,7 +1885,7 @@ NA
 
 ## 禁止对表达式使用extends或implements
 
-**规则：**`arkts-no-extends-expression`
+**规则：** `arkts-no-extends-expression`
 
 **规则解释：**
 
@@ -1981,7 +1981,7 @@ class B extends A { // 直接继承类
 
 ## 不支持类TS重载
 
-**规则：**`arkts-no-ts-overload`
+**规则：** `arkts-no-ts-overload`
 
 **规则解释：**
 
@@ -2045,7 +2045,7 @@ function fooNumber(x: number): number {  // 独立实现
 
 ## enum/class/interface的属性/方法名称须使用合法标识符
 
-**规则：**`arkts-identifiers-as-prop-names`
+**规则：** `arkts-identifiers-as-prop-names`
 
 **规则解释：**
 
@@ -2079,7 +2079,7 @@ enum A{
 
 ## 创建泛型实例需要类型实参
 
-**规则：**`arkts-no-inferred-generic-params`
+**规则：** `arkts-no-inferred-generic-params`
 
 **规则解释：**
 
@@ -2124,7 +2124,7 @@ let box = new Box<number>(42); // 明确指定类型
 
 ## 不支持[]访问对象属性
 
-**规则：**`arkts-no-props-by-index`
+**规则：** `arkts-no-props-by-index`
 
 **规则解释：**
 
@@ -2177,7 +2177,7 @@ console.log(data.name); // 直接使用点访问符
 
 ## 对象字面量只包含属性不包含方法
 
-**规则：**`arkts-obj-literal-props`
+**规则：** `arkts-obj-literal-props`
 
 **规则解释：**
 
@@ -2261,7 +2261,7 @@ let handler: Handler = {
 
 ## 对象字面量生成类的实例
 
-**规则：**`arkts-obj-literal-generate-class-instance`
+**规则：** `arkts-obj-literal-generate-class-instance`
 
 **规则解释：**
 
@@ -2336,7 +2336,7 @@ console.log(c instanceof C); // 输出：true
 
 ## 增强对联合类型属性访问的编译时检查
 
-**规则：**`arkts-common-union-member-access`
+**规则：** `arkts-common-union-member-access`
 
 **规则解释：**
 
@@ -2391,7 +2391,7 @@ function foo(a: B) {
 
 ## 类的静态属性需要有初始值
 
-**规则：**`arkts-class-static-initialization`
+**规则：** `arkts-class-static-initialization`
 
 **规则解释：**
 
@@ -2459,7 +2459,7 @@ class A {
 
 ## `Function`类型的调用方式与Typescript不同
 
-**规则：**`arkts-no-ts-like-function-call`
+**规则：** `arkts-no-ts-like-function-call`
 
 **规则解释：**
 
@@ -2493,7 +2493,7 @@ let res: number = fn.unsafeCall() as number;
 
 ## 不支持可选方法
 
-**规则：**`arkts-optional-methods`
+**规则：** `arkts-optional-methods`
 
 **规则解释：**
 
@@ -2533,7 +2533,7 @@ class ClassA {
 
 ## 实例方法当作对象时会绑定this
 
-**规则：**`arkts-instance-method-bind-this`
+**规则：** `arkts-instance-method-bind-this`
 
 **规则解释：**
 
@@ -2581,7 +2581,7 @@ method()   // 输出: 'a'
 
 ## namespace内方法不能重名
 
-**规则：**`arkts-no-duplicate-function-name`
+**规则：** `arkts-no-duplicate-function-name`
 
 **规则解释：**
 
@@ -2632,7 +2632,7 @@ namespace A {
 
 ## 不支持在constructor中声明字段
 
-**规则：**`arkts-no-ctor-prop-decls`
+**规则：** `arkts-no-ctor-prop-decls`
 
 **规则解释：**
 
@@ -2693,7 +2693,7 @@ class A extends Base {
 
 ## 不支持tagged templates
 
-**规则：**`arkts-no-tagged-templates`
+**规则：** `arkts-no-tagged-templates`
 
 **规则解释：**
 
@@ -2756,7 +2756,7 @@ console.log(result);
 
 ## 不支持确定赋值断言
 
-**规则：**`arkts-no-definite-assignment`
+**规则：** `arkts-no-definite-assignment`
 
 **规则解释：**
 
@@ -2800,7 +2800,7 @@ console.log('x = ' + x);
 
 ## Record增加运行时类型
 
-**规则：**`arkts-record-add-runtime-type`
+**规则：** `arkts-record-add-runtime-type`
 
 **规则解释：**
 
@@ -2808,7 +2808,7 @@ console.log('x = ' + x);
 
 在ArkTS1.2中，Record对象具有运行时类型。
 
-**变更理由：**
+**变更原因：**
 
 在ArkTS1.2中，对象字面量会生成类的实例。
 
@@ -2838,13 +2838,13 @@ console.log(a.v + '') // error
 
 ## as具有运行时语义
 
-**规则：**`arkts-no-ts-like-as`
+**规则：** `arkts-no-ts-like-as`
 
 **规则解释：**
 
 ArkTS1.2中`as`具有运行时语义。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.1中的`as`只在编译时提供类型信息，如果类型断言失败，报错时机取决于后续的代码操作。
 
@@ -2896,13 +2896,13 @@ t.n.toString();
 
 ## catch语句中是error类型
 
-**规则：**`arkts-no-ts-like-catch-type`
+**规则：** `arkts-no-ts-like-catch-type`
 
 **规则解释：**
 
 在ArkTS1.2的静态模式中，类型必须明确，同时需考虑与ArkTS1.1的兼容性。对于catch(e)的语法，默认e为Error类型。
 
-**变更理由：**
+**变更原因：**
 
 在ArkTS1.1上catch语句中的e是any类型。编译器不会对catch语句中的异常进行编译时类型检查。当ArkTS1.1上限制throw时，只能抛出Error类型。
 
@@ -2938,13 +2938,13 @@ try {
 
 ## 不支持逻辑赋值运算
 
-**规则：**`arkts-unsupport-operator`
+**规则：** `arkts-unsupport-operator`
 
 **规则解释：**
 
 ArkTS1.2暂不支持`&&=`、`||=`、`??=`这三种逻辑赋值运算符。
 
-**变更理由：**
+**变更原因：**
 
 语言层面暂不支持`&&=`、`||=`、`??=`，但是支持`&=`、`|=`、`?=`这类逻辑赋值运算符。
 
@@ -2974,13 +2974,13 @@ a = a ?? 4;   // 结果: 2
 
 ## 非十进制bigint字面量
 
-**规则：**`arkts-only-support-decimal-bigint-literal`
+**规则：** `arkts-only-support-decimal-bigint-literal`
 
 **规则解释：**
 
 ArkTS1.2暂不支持非十进制bigint字面量。
 
-**变更理由：**
+**变更原因：**
 
 语言层面暂不支持。
 
@@ -3008,13 +3008,13 @@ let a3: bigint = BigInt(0b101);
 
 ## 数值类型和bigint类型的比较
 
-**规则：**`arkts-numeric-bigint-compare`
+**规则：** `arkts-numeric-bigint-compare`
 
 **规则解释：**
 
 ArkTS1.2暂不支持数值类型和bigint类型的比较。
 
-**变更理由：**
+**变更原因：**
 
 语言层面暂不支持。
 
@@ -3048,7 +3048,7 @@ BigInt(n1) >= n2;
 
 ## 通过new创建的Number/Boolean/String对象不再是object类型
 
-**规则：**`arkts-primitive-type-normalization`
+**规则：** `arkts-primitive-type-normalization`
 
 **规则解释：**
 
@@ -3085,7 +3085,7 @@ if (new Boolean(false)) {}      // 结果：false
 
 ## enum的元素不能作为类型
 
-**规则：**`arkts-no-enum-prop-as-type`
+**规则：** `arkts-no-enum-prop-as-type`
 
 **规则解释：**
 
@@ -3120,13 +3120,13 @@ function foo2(a: A) { }
 
 ## 不支持debugger 
 
-**规则：**`arkts-no-debugger`
+**规则：** `arkts-no-debugger`
 
 **规则解释：**
 
 不支持debugger语句。
 
-**变更理由：**
+**变更原因：**
 
 1. 静态类型语言具备编译时检查和强类型约束，DevEco Studio已具备完善的调试机制。
 
@@ -3158,13 +3158,13 @@ debugger;
 
 ## 不支持空数组/稀疏数组 
 
-**规则：**`arkts-no-sparse-array`
+**规则：** `arkts-no-sparse-array`
 
 **规则解释：**
 
 ArkTS1.2要求数组元素类型明确（显式声明类型或可通过上下文推导类型），禁止稀疏存储（避免内存浪费），且不允许undefined空位（确保空值安全）。
 
-**变更理由：**
+**变更原因：**
 
 1. ArkTS1.2遵循静态类型。如果空数组无法根据上下文推导出元素类型，会导致编译错误。
 
@@ -3195,13 +3195,13 @@ let b = [1, undefined, undefined, 2];
 
 ## 智能类型差异
 
-**规则：**`arkts-no-ts-like-smart-type`
+**规则：** `arkts-no-ts-like-smart-type`
 
 **规则解释：**
 
 在ArkTS1.2中，线程共享对象在做[智能转换](#智能转换)时会表现的与ArkTS1.1不一致。
 
-**变更理由：**
+**变更原因：**
 
 在ArkTS1.2中，由于线程共享对象在多线程中使用，编译器在做类型推导和分析时需要考虑并发场景下变量类型/值的变化。
 
@@ -3242,13 +3242,13 @@ class AA {
 
 ## 数组/元组类型在继承关系中遵循不变性原则
 
-**规则：**`arkts-array-type-immutable`
+**规则：** `arkts-array-type-immutable`
 
 **规则解释：**
 
 在ArkTS1.2中，数组在继承关系中遵循不变性原则，会通过编译时检查保证类型安全。
 
-**变更理由：**
+**变更原因：**
 
 在ArkTS1.2中，数组在继承关系中遵循不变性原则，编译时检查确保类型安全，将潜在的运行时错误提前到编译期，避免运行时失败，提高执行性能。
 
@@ -3292,13 +3292,13 @@ let arr2: [ A | B ] = arr1;  // 需要相同类型的元组
 
 ## 默认参数必须放在必选参数之后
 
-**规则：**`arkts-default-args-behind-required-args`
+**规则：** `arkts-default-args-behind-required-args`
 
 **规则解释：**
 
 在ArkTS1.2中，函数、方法及lambda表达式的默认参数必须放在必选参数之后。
 
-**变更理由：**
+**变更原因：**
 
 将默认参数置于必选参数前没有实际意义，开发者仍需为每个默认参数提供值。
 
@@ -3326,13 +3326,13 @@ function add(left: number, right: number) {
 
 ## class的懒加载
 
-**规则：**`arkts-class-lazy-import`
+**规则：** `arkts-class-lazy-import`
 
 **规则解释：**
 
 ArkTS1.2的类默认是懒加载的。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.2的类默认是懒加载的，这可以提升启动性能并减少内存占用。
 
@@ -3364,7 +3364,7 @@ console.info('init');
 
 ## 继承/实现方法时参数遵循逆变原则，返回类型遵循协变原则
 
-**规则：**`arkts-method-inherit-rule`
+**规则：** `arkts-method-inherit-rule`
 
 **规则解释：**
 
@@ -3374,7 +3374,7 @@ ArkTS1.1与ArkTS1.2在继承/实现方法时遵循以下规则。有关逆变和
 | 参数类型 | 逆变&协变  | 逆变 |
 | 返回类型 | 协变  | 协变 |
 
-**变更理由：**
+**变更原因：**
 
 参数类型逆变，可以通过编译时检查保证类型安全，提前发现潜在错误，避免运行时失败，提升执行性能。
 
@@ -3422,13 +3422,13 @@ class Son extends Father {
 
 ## Enum不可以通过索引访问成员
 
-**规则：**`arkts-enum-no-props-by-index`
+**规则：** `arkts-enum-no-props-by-index`
 
 **规则解释：**
 
 ArkTS1.2强化枚举静态类型约束（运行时保留类型信息），禁止通过索引访问以替代ArkTS1.1的动态对象行为。
 
-**变更理由：**
+**变更原因：**
 
 1. ArkTS1.1已对索引访问元素的语法做了限制，ArkTS1.2进一步增强了对枚举场景的约束。具体内容请参考[不支持通过索引访问字段](typescript-to-arkts-migration-guide.md#不支持通过索引访问字段)。
 
@@ -3468,13 +3468,13 @@ TEST.A.getName();  // 使用enum对应的方法获取enum的key
 
 ## 对象没有constructor
 
-**规则：**`arkts-obj-no-constructor`
+**规则：** `arkts-obj-no-constructor`
 
 **规则解释：**
 
 ArkTS1.2不支持通过constructor获取类型信息。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.2支持天然共享的能力，运行时需要确定类型信息，实现上不再是基于原型的语言，而是基于class的语言。
 
@@ -3501,13 +3501,13 @@ let cls = Type.of(a);
 
 ## 子类有参构造函数需要显式定义，且必须调用父类的构造函数
 
-**规则：**`arkts-subclass-must-call-super-constructor-with-args`
+**规则：** `arkts-subclass-must-call-super-constructor-with-args`
 
 **规则解释：**
 
 ArkTS1.2禁止隐式传递参数，子类有参构造函数需要显式定义，且必须调用父类的构造函数。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.1在运行时不对函数调用进行检查，并使用arguments机制获取所有参数并传入父类构造函数。
 
@@ -3545,13 +3545,13 @@ let b = new B(123);
 
 ## 不支持可选元组类型
 
-**规则：**`arkts-no-optional-tuple`
+**规则：** `arkts-no-optional-tuple`
 
 **规则解释：**
 
 ArkTS1.2不支持可选元组类型。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.2不支持带有可选元素的元组类型。编译时检查确保类型安全，提前发现潜在的运行时错误，从而提高执行性能。
 
@@ -3577,13 +3577,13 @@ let t1: [number, boolean] | [number] = t;
 
 ## 不支持超大数字字面量
 
-**规则：**`arkts-no-big-numeric-literal`
+**规则：** `arkts-no-big-numeric-literal`
 
 **规则解释：**
 
 ArkTS1.2禁止超出int/long/double范围的数字字面量（编译报错），以避免隐式转换的性能损耗和浮点精度损失风险。
 
-**变更理由：**
+**变更原因：**
 
 1. ArkTS1.2支持更多数值类型细化，提高性能。超出int/long/double范围的数字字面量会导致编译错误。
 
@@ -3613,13 +3613,13 @@ let t = Infinity;                                // ok，值为Infinity
 
 ## 对象的属性名必须是合法的标识符
 
-**规则：**`arkts-identifier-as-prop-names`
+**规则：** `arkts-identifier-as-prop-names`
 
 **规则解释：**
 
 ArkTS1.2对象的属性名必须是合法标识符，不能为数字或字符串。
 
-**变更理由：**
+**变更原因：**
 
 1. ArkTS1.1已进行约束，ArkTS1.2增强了边界场景的约束。详情请参考[对象的属性名必须是合法的标识符](typescript-to-arkts-migration-guide.md#对象的属性名必须是合法的标识符)。
 
@@ -3651,13 +3651,13 @@ class A {
 
 ## 子类不可以声明和父类的方法同名的lambda属性
 
-**规则：**`arkts-no-subclass-lamada-prop-name-same-as-superclass-method`
+**规则：** `arkts-no-subclass-lamada-prop-name-same-as-superclass-method`
 
 **规则解释：**
 
 ArkTS1.2中子类不可以声明和父类的方法同名的lambda属性。
 
-**变更理由：**
+**变更原因：**
 
 在ArkTS1.1中，方法类型与函数属性类型是兼容的，因此子类可以用兼容类型的函数属性来覆盖父类方法。
 
@@ -3703,13 +3703,13 @@ class B extends A {
 
 ## 子类不能在static context中调用super
 
-**规则：**`arkts-no-super-call-in-static-context`
+**规则：** `arkts-no-super-call-in-static-context`
 
 **规则解释：**
 
 ArkTS1.2子类不能在静态上下文中使用super访问父类。
 
-**变更理由：**
+**变更原因：**
 
 1. ArkTS1.2不再基于原型实现继承，没有原型或构造函数的概念，无需通过super访问父类。
 
@@ -3755,13 +3755,13 @@ class B extends A {
 
 ## 实现接口时，对于接口中的属性需要实现get/set方法
 
-**规则：**`arkts-class-implement-interface-prop-getter-setter`
+**规则：** `arkts-class-implement-interface-prop-getter-setter`
 
 **规则解释：**
 
 ArkTS1.2中实现接口时，对于接口中的属性需要实现get/set方法。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.2遵循严格的类型检查，通过编译时检查保证类型安全，提前发现潜在错误，提高执行性能。
 
@@ -3801,13 +3801,13 @@ class A implements I {
 
 ## 不能将超出枚举范围的值赋值给枚举类型的变量
 
-**规则：**`arkts-out-of-enum-index`
+**规则：** `arkts-out-of-enum-index`
 
 **规则解释：**
 
 ArkTS1.2中不能将超出枚举范围的值赋值给枚举类型的变量。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.2采用类型安全的枚举设计，编译器执行严格的编译期值域检查，杜绝非法枚举赋值。枚举值为编译期常量，任何运行时越界赋值将触发类型错误，保障代码健壮性。
 
@@ -3839,13 +3839,13 @@ NA
 
 ## 不支持不定长的元组类型
 
-**规则：**`arkts-no-unfixed-len-tuple`
+**规则：** `arkts-no-unfixed-len-tuple`
 
 **规则解释：**
 
 ArkTS1.2上不支持可变元组。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.2不支持可变元组，以保证类型安全和提高执行性能。
 
@@ -3869,13 +3869,13 @@ const s: (string | boolean)[] =['', true];
 
 ## 类实例不支持关系表达式
 
-**规则：**`arkts-no-class-instance-relational-expression`
+**规则：** `arkts-no-class-instance-relational-expression`
 
 **规则解释：**
 
 ArkTS1.2限制关系表达式仅适用于基本类型（数值、字符串、布尔、枚举），不支持对象比较。
 
-**变更理由：**
+**变更原因：**
 
 1. 在ArkTS1.2中，为确保类型安全，关系表达式操作符仅限于数值、字符串、布尔和枚举类型，以避免隐式转换导致的非预期异常。
 
@@ -3929,13 +3929,13 @@ console.info(a.valueOf() < b.valueOf());
 
 ## instanceof的目标类型不能是函数
 
-**规则：**`arkts-no-instanceof-func`
+**规则：** `arkts-no-instanceof-func`
 
 **规则解释：**
 
 ArkTS1.2中instanceof的目标类型不能是函数。
 
-**变更理由：**
+**变更原因：**
 
 ArkTS1.2不再基于原型实现继承，没有原型或构造函数的概念，不能通过任意函数创建对象。
 
@@ -3963,13 +3963,13 @@ console.info('obj instanceof foo :', obj instanceof string);
 
 ## 静态加载包内模块某一文件时ohmurl路径变更
 
-**规则：**`arkts-ohmurl-path-change`
+**规则：** `arkts-ohmurl-path-change`
 
 **规则解释：**
 
 在ArkTS1.2中，静态加载包内模块的某个文件时，ohmurl路径必须完整，不可省略路径中的"src/main"。
 
-**变更理由：**
+**变更原因：**
 
 有助于开发者更准确地定位模块文件位置。
 
