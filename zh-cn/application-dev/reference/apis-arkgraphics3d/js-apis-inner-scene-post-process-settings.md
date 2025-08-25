@@ -29,7 +29,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | type | [ToneMappingType](#tonemappingtype) | 否 | 是 | 色调映射类型，默认值为undefined。 |
-| exposure | number | 否 | 是 | 曝光度，取值大于0，默认值为undefined。 |
+| exposure | ArkTS1.1: number<br>ArkTS1.2: double | 否 | 是 | 曝光度，取值大于0，默认值为undefined。 |
 
 ## BloomSettings<sup>18+</sup>
 泛光设置接口。

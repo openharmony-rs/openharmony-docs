@@ -53,7 +53,6 @@ function layerMask() : void {
 ```
 
 ### setEnabled
-
 setEnabled(index: number, enabled: boolean): void
 
 将特定下标的图层掩码使能。
@@ -362,7 +361,7 @@ function getNode() : void {
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | 是 | 否 | 光源类型。 |
 | color | [Color](js-apis-inner-scene-types.md#color) | 否 | 否 | 颜色。 |
-| intensity | number | 否 | 否 | 光照密度，取值范围是大于0的实数。 |
+| intensity | ArkTS1.1: number<br>ArkTS1.2: double | 否 | 否 | 光照密度，取值范围是大于0的实数。 |
 | shadowEnabled | boolean | 否 | 否 | 是否使能阴影。true表示添加阴影，false表示没有阴影效果。 |
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
