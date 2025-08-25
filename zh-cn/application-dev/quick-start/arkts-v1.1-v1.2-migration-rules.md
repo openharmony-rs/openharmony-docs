@@ -69,6 +69,10 @@ const abstract1: string = "abstract";
 
 - 场景4，所有整型字面量在包含除法的表达式中，应修改为浮点数字面量。无论变量是数组、tuple还是其他容器中的一个值，表达式所赋值的变量都应保留为number类型。
    ```typescript
+   // 公共代码
+   function foo(a:number): number {
+     return a - 1;
+   }
    // ArkTS1.1
    let a = 1;
    let b = a;
@@ -76,14 +80,10 @@ const abstract1: string = "abstract";
    let d = 3;
    let e = foo(1); // foo的返回值为number，这里foo是开发者自定义函数，不是SDK函数。e要声明为number，因为类型推导会把e推导为number，所以不用改
    let f:number = 1; // f虽然被声明为number，但是上下文中一直作为int使用，那么应该将f的类型修改为int
-   export g:number = 1; // g被export，需要保留为number
+   export let g:number = 1; // g被export，需要保留为number
 
    c = 1/2; // 变量c的赋值表达式里有除法，c需要声明为number类型，且表达式中的整型字面量也要修改为浮点型字面量
    d = 1.0; // 变量d又被赋值了浮点字面量，所以需要声明为number类型
-
-   function foo(a:number): number {
-     return a - 1;
-   }
 
    // ArkTS1.2
    let a:int = 1;
@@ -92,7 +92,7 @@ const abstract1: string = "abstract";
    let d:number = 3;
    let e:number = foo(1);
    let f:int = 1;
-   export g:number = 1;
+   export let g:number = 1;
 
    c = 1.0/2.0;
    d = 1.0;
@@ -133,30 +133,31 @@ const abstract1: string = "abstract";
 - 场景7，Array及相关操作符的使用情况。
    ```typescript
    // ArkTS1.1
-   let arr : Array = [1, 2, 3, 4];
-   let arr2:Array = arr??[0];
-   let arr3:Array = [1, 2, 3, 4];
+   let arr:Array<number> = [1, 2, 3, 4];
+   let arr2:Array<number> = arr??[0];
+   let arr3:Array<number> = [1, 2, 3, 4];
 
    // ArkTS1.2
-   // 当上下文无法推导时，根据数组元素类型推导。例如，line3的[0] 被推导为int数组，而arr是number数组，因此赋值给arr2时会有错误
-   // arr??[0]的类型是Array|Array的联合类型，和arr2的声明类型不符，所以编译错误。这里就需要把0，改为0.0
-
-   let arr:Array = [1, 2, 3, 4];
-   let arr2:Array = arr??[0.0]; // 这种情况，需要把数组中的整型字面量都修改为浮点型字面量
-   let arr3:Array = [1, 2, 3, 4];
+   // 在ArkTS1.2中，字面量数组的类型会根据上下文推导。例如，下面的例子中，arr被赋值的字面量数组[1, 2, 3, 4]
+   // 因为arr的声明为Array<number>，所以字面量数组推导为number数组，并可以赋值给arr。
+   // 数组字面量[1, 2, 3, 4]被赋值给arr3，因为arr3的声明为Array<int>，所以该字面量数组被推导为int数组，并可以被赋值给arr3
+   // 当上下文无法推导时，根据数组元素类型进行推导。例如，arr??[0]中的[0]被推导为int数组，这样在将值赋给arr2时会导致错误，因为arr是number数组
+   // arr??[0]的类型是Array<number> | Array<int>的联合类型，与arr2的声明类型不符，因此会导致编译错误，需要将0改为0.0
+   let arr:Array<number> = [1, 2, 3, 4];
+   let arr2:Array<number> = arr??[0.0]; // 将数组中的整型字面量修改为浮点型字面量
+   let arr3:Array<int> = [1, 2, 3, 4];
 
    // 同理三元运算符的情况
    // ArkTS1.1
-   let b:boolean = true
-   let arr:number[] = [1, 2, 3];
-   let arr1:int[] = [1, 2, 3];
-   let arr2:number[] = b? arr : [0, 1, 2];
-
-   // ArkTS1.2
    let b:boolean = true;
    let arr:number[] = [1, 2, 3];
-   let arr1:int[] = [1, 2, 3];
-   let arr2:number[] = b? arr : [0.0, 1.0, 2.0];
+   let arr1:number[] = b? arr : [0, 1, 2];
+
+   //ArkTS1.2
+   let b:boolean = true;
+   let arr:number[] = [1, 2, 3];
+   let arr1:number[] = b? arr : [0.0, 1.0, 2.0];
+   let arr2:int[] = [1, 2, 3];
    ```
 
 - 场景8，Enum中的整型字面量无需修复。
@@ -171,12 +172,12 @@ const abstract1: string = "abstract";
 - 场景9，字面量中的整型字面量，不论是ArkTS1.1还是ArkTS1.2，字面量在赋值时，变量的类型决定了数字字面量的修改方式。此外，SDK API的number类型转换为int已在上一章示例中展示，本章将展示开发者自定义的类型（如class或interface）。
    ```typescript
    // 场景9.1类型属性不需要修改number to int的情况
-   // ArkTS1.1用户自定义类型
+   // 公共代码
    interface A {
      a : number;
      b : number;
    }
-
+   // ArkTS1.1用户自定义类型
    let x:A = {
      a : 1,
      b : 2
@@ -193,11 +194,6 @@ const abstract1: string = "abstract";
    }
 
    // ArkTS1.2用户自定义类型
-   interface A {
-     a : number; // 用户自定义类型，一般不主动修改number到int
-     b : number;
-   }
-
    // 不用修改
    let x:A = {
      a : 1,
@@ -215,35 +211,30 @@ const abstract1: string = "abstract";
    }
 
    // 场景9.2类型属性仍保留为number，但是需要作为int使用，需要调用toInt
-   // ArkTS1.1用户自定义类型
+   // 公共代码
    interface A {
      a : number;
      b : number;
      c : number;
    }
+   let arr:Array<number> = [1, 2, 3, 4, 5]
 
-   let arr:Array = [1, 2, 3, 4, 5]
+   // ArkTS1.1用户自定义类型
    let x:A = {
      a : 1.1, // a被赋值为浮点字面量，所以，属性a类型认为number
      b : 2/3, // b被含除法操作的表达式赋值，所以b还需要作为number使用，且表达式的整型字面量需要改为浮点型字面量
      c : 3
    }
-
    arr[x.a];
    arr[x.b];
    x.c/2; // c参与除法操作，所以仍要为number
 
    // 如果该属性被用作索引或其他需要整数的情况（如SDK的入参），且该属性没有在其他地方被用作数字（例如参与除法操作或被浮点数字面量赋值），则应将属性类型修改为整数。
    // ArkTS1.2用户自定义类型
-   interface A {
-     a : number;
-     b : number;
-   }
-
-   let arr:Array = [1, 2, 3, 4, 5];
    let x:A = {
      a : 1.1,
-     b : 2.0/3
+     b : 2.0/3,
+     c : 3
    }
 
    arr[x.a.toInt()]; // Array的index必须是整数
@@ -251,25 +242,25 @@ const abstract1: string = "abstract";
    x.c/2;
    ```
 
-- 场景10，async函数、方法和lambda表达式必须返回Promise类型的值。如果函数体返回T，编译器会自动推导返回值为Promise。因此，当async函数返回整型字面量时，ArkTS1.1版本返回Promise，而ArkTS1.2版本返回Promise，两者在ArkTS1.2中不兼容。需要将async函数中返回整型字面量的情况修改为返回浮点型字面量。
+- 场景10，async函数、方法和lambda表达式必须返回Promise\<T>类型的值。如果函数体返回T，编译器会自动推导返回值为Promise\<T>。因此，当async函数返回整型字面量时，ArkTS1.1版本返回Promise\<number>，而ArkTS1.2版本返回Promise\<int>，两者在ArkTS1.2中不兼容。需要将async函数中返回整型字面量的情况修改为返回浮点型字面量。
    ```typescript
    // ArkTS1.1
    async function foo() {
-     return 1; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
+     return 1; // 在ArkTS1.1中返回值类型是Promise<number>，在ArkTS1.2中返回值类型是Promise<int>
    }
 
-   async function foo1() : Promise{
-     return 1; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
+   async function foo1() : Promise<number>{
+     return 1; // 在ArkTS1.1中返回值类型是Promise<number>，在ArkTS1.2中返回值类型是Promise<int>
    }
 
-   let func1 = async ()=> {return 1}; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
-   let func2 = async ():Promise => {return 1}; // 在ArkTS1.1中这里返回值是Promise类型，在ArkTS1.2里返回值类型是Promise
+   let func1 = async ()=> {return 1}; // 在ArkTS1.1中返回值类型是Promise<number>，在ArkTS1.2中返回值类型是Promise<int>
+   let func2 = async ():Promise<number> => {return 1}; // 在ArkTS1.1中返回值类型是Promise<number>，在ArkTS1.2中返回值类型是Promise<int>
 
    class A {
      async method1() {
        return 1;
      }
-     async method2():Promise {
+     async method2():Promise<number> {
        return 1;
      }
    }
@@ -279,18 +270,18 @@ const abstract1: string = "abstract";
      return 1.0;
    }
 
-   async function foo1() : Promise{
+   async function foo1() : Promise<number>{
      return 1.0;
    }
 
    let func1 = async ()=> {return 1.0};
-   let func2 = async ():Promise => {return 1.0};
+   let func2 = async ():Promise<number> => {return 1.0};
 
    class A {
      async method1() {
        return 1.0;
      }
-     async method2():Promise {
+     async method2():Promise<number> {
        return 1.0;
      }
    }
@@ -303,12 +294,13 @@ const abstract1: string = "abstract";
 
    // ArkTS1.2
    let a:number = (1.0+1)/(2*3); // 表达式的第一个字面量如果为整型字面量，修改为浮点型字面量
-   let func1 = () => {return 1}; // 不告警
-   let func2 = () => {return 2}; // 不告警
    ```
 
 - 场景12，lambda表达式的返回值场景，对于lambda表达式的返回值，在ArkTS1.2中，整型字面量是int类型，int类型可赋值给number类型。lambda表达式返回int类型，与number类型协变，符合ArkTS1.2语法规则。
    ```typescript
+   // 公共代码
+   let func1 = () => {return 1}; // 不告警
+   let func2 = () => {return 2}; // 不告警
    // ArkTS1.1
    let r1 = func1()/func2(); // 在ArkTS1.2中，参与了除法，结果为number/double，这里需要调用toDouble函数。
    // ArkTS1.2
@@ -317,6 +309,7 @@ const abstract1: string = "abstract";
 
 - 场景13，enum的整型值参与除法操作。
    ```typescript
+   // 公共代码
    enum X {
      A = 1,
      B = 2,
@@ -785,13 +778,11 @@ const p: Point = [3, 5, true];
  
 对于函数类型转换，ArkTS1.1和ArkTS1.2都遵循参数逆变和返回类型协变的规则。有关逆变和协变的详细解释，请参见[逆变和协变](#逆变和协变)。
 
-当函数类型返回void时，由于ArkTS1.1与ArkTS1.2中void类型的变化，ArkTS1.2仅支持返回void类型。请参考[void类型只能用在返回类型的场景](#void类型只能用在返回类型的场景)。
+而当函数类型返回void时，由于ArkTS1.1与ArkTS1.2中void类型的变化，ArkTS1.2仅支持返回void类型。详细情况请参考[void类型只能用在返回类型的场景](#void类型只能用在返回类型的场景)。
 
 **适配建议：**
 
-1. 修改返回类型为void。
-
-2. 在外包裹一层void箭头函数。
+当函数类型返回void时，实现代码也要返回void。
 
 **示例：**
 
@@ -811,12 +802,6 @@ let f: F = (): number => {
 type F = () => void;
 // 改为相同的返回类型
 let f1: F = (): void => {};
-// 在外包裹一层void箭头函数
-let f2: F = () => {
-  ((): number => {
-    return 0;
-  })()
-}
 ```
 
 ## 不支持指数操作符
@@ -1401,7 +1386,7 @@ interface Person {
 }
 class Student implements Person {
   cb1() { }          // 用方法实现lambda属性，ArkTS1.2编译错误
-  cb2(): void { }    // 用lambda属性实现方法，ArkTS1.2编译错误
+  cb2:() => void = () => {}   // 用lambda属性实现方法，ArkTS1.2编译错误
 }
 ```
 
@@ -3392,12 +3377,15 @@ ArkTS1.1与ArkTS1.2在继承/实现方法时遵循以下规则。有关逆变和
 class A { u = 0 }
 class B { v = 0 }
 class Father {
-  foo(a: A) { }
+  foo(a: A | B) { }
+  fun(a: A) { }
   bar(): A | B { return new A() }
 }
 class Son extends Father {
-  // 参数：逆变&协变
-  override foo(a: A | B) { }
+  // 参数：协变
+  override foo(a: A) { }
+  // 参数：逆变
+  override fun(a: A | B) { }
   // 返回值：协变
   override bar(): A { return new A() }
 }
@@ -3413,7 +3401,7 @@ class Father {
     bar(): A | B { return new A() }
 }
 class Son extends Father {
-    // 参数：逆变
+    // 参数：只能为逆变
     override foo(a: A | B) { }
     // 返回值：协变
     override bar(): A { return new A(); }
