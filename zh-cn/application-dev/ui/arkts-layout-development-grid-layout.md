@@ -67,6 +67,8 @@
   例如，通过断点设置将应用宽度分成6个区间，通过columns配置各断点下栅格容器的栅格列数。
 
 
+ArkTS1.1示例：
+
   ```ts
   @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
@@ -96,6 +98,50 @@
   }                                    
   ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Margin, Row, Text, ResourceColor, GridRow, BreakpointsReference,
+  ForEach, GridCol, BreakPoints } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor] ;
+
+  build() {
+    // ...
+    GridRow({
+      columns: {
+        xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
+        sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
+        md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
+        lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
+        xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
+        xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
+      },
+      breakpoints: {
+        value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+        reference: BreakpointsReference.WindowSize
+      } as BreakPoints
+    }) {
+      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined):void => {
+        GridCol({ span: 1 }) { // 所有子组件占一列。
+          Row() {
+            Text(`${index}`)
+          }.width("100%").height('50vp')
+        }.backgroundColor(color)
+      })
+    }
+  }
+}
+```
+
   ![zh-cn_image_0000001511421272](figures/zh-cn_image_0000001511421272.gif)
 
 
@@ -106,6 +152,8 @@ GridRow中通过columns设置栅格布局的总列数。
 - API version 20之前，columns默认值为12，即在未设置columns时，任何断点下，栅格布局均被分成12列。
 - API version 20及以后，columns默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }。
 
+
+ArkTS1.1示例：
 
     ```ts
   @State bgColors: ResourceColor[] =
@@ -123,6 +171,37 @@ GridRow中通过columns设置栅格布局的总列数。
     }
     ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor, 'rgb(213,213,213)' as ResourceColor,
+      'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor, 'rgb(39,135,217)' as ResourceColor];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    GridRow() {
+      ForEach(this.bgColors, (item:ResourceColor, index?:number|undefined) => {
+        GridCol({span: 1}) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50')
+        }.backgroundColor(item)
+      })
+    }
+  }
+}
+```
+
     API version 20之前布局显示：
 
     ![zh-cn_image_0000001563060709](figures/zh-cn_image_0000001563060709.png)
@@ -134,6 +213,8 @@ GridRow中通过columns设置栅格布局的总列数。
 
 columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)两种类型, 可按两种方式设置栅格布局的总列数。
 - 当columns类型为number时，栅格布局在任何尺寸设备下都被分为同一列数。下面分别设置栅格布局列数为4和8，子元素占一列，效果如下：
+
+ArkTS1.1示例：
 
   ```ts
   @State bgColors: ResourceColor[] =
@@ -174,9 +255,63 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   .width('90%')
   ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol, BorderOptions } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    Row() {
+      GridRow({ columns: 4 }) {
+        ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+          GridCol({ span: 1 }) {
+            Row() {
+              Text(`${index}`)
+            }.width('100%').height('50')
+          }.backgroundColor(item)
+        })
+      }
+      .width('100%').height('100%')
+    }
+    .height(160)
+    .border({ color: 'rgb(39,135,217)', width: 2 } as BorderOptions)
+    .width('90%')
+
+    Row() {
+      GridRow({ columns: 8 }) {
+        ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+          GridCol({ span: 1 }) {
+            Row() {
+              Text(`${index}`)
+            }.width('100%').height('50')
+          }.backgroundColor(item)
+        })
+      }
+      .width('100%').height('100%')
+    }
+    .height(160)
+    .border({ color: 'rgb(39,135,217)', width: 2 } as BorderOptions)
+    .width('90%')
+  }
+}
+```
+
     ![zh-cn_image_0000001511421268](figures/zh-cn_image_0000001511421268.png)
 
 - 当columns类型为[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
+
+ArkTS1.1示例：
 
   ```ts
   @State bgColors: ResourceColor[] =
@@ -199,6 +334,44 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   .height(200)
   .border({ color: 'rgb(39,135,217)', width: 2 })
   ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    GridRow({
+      columns: { sm: 4, md: 8 },
+      breakpoints: {
+        value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+      }
+    }) {
+      ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+        GridCol({ span: 1 }) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50')
+        }.backgroundColor(item)
+      })
+    }
+    .height(200)
+    .border({ color: 'rgb(39,135,217)', width: 2 })
+  }
+}
+```
+
     API version 20之前布局显示（xs设备未配置栅格列数，取默认列数12）：
 
     ![zh-cn_image_0000001563060689](figures/zh-cn_image_0000001563060689.gif)
@@ -217,18 +390,98 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 - 子组件默认从左往右排列。
 
 
+ArkTS1.1示例：
+
     ```ts
     GridRow({ direction: GridRowDirection.Row }){ /* ... */ }
     ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol, GridRowDirection } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    GridRow({
+      columns: { sm: 4, md: 8 },
+      breakpoints: {
+        value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+      },
+      direction: GridRowDirection.Row
+    }) {
+      ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+        GridCol({ span: 1 }) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50')
+        }.backgroundColor(item)
+      })
+    }
+    .height(200)
+    .border({ color: 'rgb(39,135,217)', width: 2 })
+  }
+}
+```
 
     ![zh-cn_image_0000001511740488](figures/zh-cn_image_0000001511740488.png)
 
 - 子组件从右往左排列。
 
 
+ArkTS1.1示例：
+
     ```ts
     GridRow({ direction: GridRowDirection.RowReverse }){ /* ... */ }
     ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol, GridRowDirection } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    GridRow({
+      columns: { sm: 4, md: 8 },
+      breakpoints: {
+        value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+      },
+      direction: GridRowDirection.RowReverse
+    }) {
+      ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+        GridCol({ span: 1 }) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50')
+        }.backgroundColor(item)
+      })
+    }
+    .height(200)
+    .border({ color: 'rgb(39,135,217)', width: 2 })
+  }
+}
+```
 
     ![zh-cn_image_0000001562940517](figures/zh-cn_image_0000001562940517.png)
 
@@ -239,19 +492,98 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
 - 当gutter类型为number时，同时设置栅格子组件间水平和垂直方向边距且相等。下例中，设置子组件水平与垂直方向距离相邻元素的间距为10。
 
+ArkTS1.1示例：
 
     ```ts
     GridRow({ gutter: 10 }){ /* ... */ }
     ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    GridRow({
+      columns: { sm: 4, md: 8 },
+      breakpoints: {
+        value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+      },
+      gutter: 10
+    }) {
+      ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+        GridCol({ span: 1 }) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50')
+        }.backgroundColor(item)
+      })
+    }
+    .height(200)
+    .border({ color: 'rgb(39,135,217)', width: 2 })
+  }
+}
+```
 
     ![zh-cn_image_0000001511740476](figures/zh-cn_image_0000001511740476.png)
 
 - 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
 
 
+ArkTS1.1示例：
+
     ```ts
     GridRow({ gutter: { x: 20, y: 50 } }){ /* ... */ }
     ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    GridRow({
+      columns: { sm: 4, md: 8 },
+      breakpoints: {
+        value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+      },
+      gutter: { x: 20, y: 50 }
+    }) {
+      ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+        GridCol({ span: 1 }) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50')
+        }.backgroundColor(item)
+      })
+    }
+    .height(200)
+    .border({ color: 'rgb(39,135,217)', width: 2 })
+  }
+}
+```
 
     ![zh-cn_image_0000001511900456](figures/zh-cn_image_0000001511900456.png)
 
@@ -270,6 +602,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
   GridCol(){}.span(2)
   GridCol(){}.span(Gspan)
     ```
+
 
 - 设置offset。
 
@@ -301,6 +634,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当span类型为number时，子组件在所有尺寸设备下占用的列数相同。
 
 
+ArkTS1.1示例：
+
     ```ts
   @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
@@ -318,10 +653,42 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     }                
     ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridRowExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+
+  build() {
+    GridRow({ columns: 8 }) {
+      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+        GridCol({ span: 2 }) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50vp')
+        }
+        .backgroundColor(color)
+      })
+    }
+  }
+}
+```
+
     ![zh-cn_image_0000001511421264](figures/zh-cn_image_0000001511421264.png)
 
 - 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据[列数补全](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)取默认值。
 
+
+ArkTS1.1示例：
 
     ```ts
   @State bgColors: ResourceColor[] =
@@ -340,6 +707,36 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     }                
     ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridRowExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+
+  build() {
+    GridRow({ columns: 8 }) {
+      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+        GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
+          Row() {
+            Text(`${index}`)
+          }.width('100%').height('50vp')
+        }
+        .backgroundColor(color)
+      })
+    }
+  }
+}
+```
+
     ![zh-cn_image_0000001511740492](figures/zh-cn_image_0000001511740492.gif)
 
 
@@ -349,6 +746,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
 - 当offset类型为number时，子组件偏移相同列数。
 
+
+ArkTS1.1示例：
 
     ```ts
   @State bgColors: ResourceColor[] =
@@ -367,6 +766,36 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     }                
     ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridRowExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+
+  build() {
+    GridRow() {
+      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+        GridCol({ offset: 2, span: 1 }) {
+          Row() {
+            Text('' + index)
+          }.width('100%').height('50vp')
+        }
+        .backgroundColor(color)
+      })
+    }
+  }
+}
+```
+
     ![zh-cn_image_0000001563060705](figures/zh-cn_image_0000001563060705.png)
 
   栅格分成12列，每一个子组件占1列，偏移2列，每个子组件及间距共占3列，1行放4个子组件。
@@ -374,7 +803,9 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当offset类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
 
 
-    ```ts
+ArkTS1.1示例：
+
+  ```ts
   @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -392,7 +823,39 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     }
     .height(200)
     .border({ color: 'rgb(39,135,217)', width: 2 })          
-    ```
+  ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, ResourceColor, GridRow, ForEach, GridCol } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct GridRowExample {
+  @State bgColors: ResourceColor[] =
+    ['rgb(213,213,213)' as ResourceColor, 'rgb(150,150,150)' as ResourceColor, 'rgb(0,74,175)' as ResourceColor,
+      'rgb(39,135,217)' as ResourceColor, 'rgb(61,157,180)' as ResourceColor, 'rgb(23,169,141)' as ResourceColor,
+      'rgb(255,192,0)' as ResourceColor, 'rgb(170,10,33)' as ResourceColor];
+
+  build() {
+    GridRow({ columns: 12 }) {
+      ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+        GridCol({ offset: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }) {
+          Row() {
+            Text('' + index)
+          }.width('100%').height('50vp')
+        }
+        .backgroundColor(color)
+      })
+    }
+    .height(200)
+    .border({ color: 'rgb(39,135,217)', width: 2 })
+  }
+}
+```
 
     ![zh-cn_image_0000001562700433](figures/zh-cn_image_0000001562700433.gif)
 
@@ -405,6 +868,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
 - 当order类型为number时，子组件在任何尺寸下排序次序一致。
 
+
+ArkTS1.1示例：
 
     ```ts
   GridRow({ columns: 12 }) {
@@ -431,10 +896,49 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
   }
     ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, GridRow, GridCol } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct GridRowExample {
+
+  build() {
+    GridRow({ columns: 12 }) {
+      GridCol({ order: 4, span: 1 }) {
+        Row() {
+          Text('1')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(213,213,213)')
+      GridCol({ order: 3, span: 1 }) {
+        Row() {
+          Text('2')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(150,150,150)')
+      GridCol({ order: 2, span: 1 }) {
+        Row() {
+          Text('3')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(0,74,175)')
+      GridCol({ order: 1, span: 1 }) {
+        Row() {
+          Text('4')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(39,135,217)')
+    }
+  }
+}
+```
+
     ![zh-cn_image_0000001511580892](figures/zh-cn_image_0000001511580892.png)
 
 - 当order类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件排序次序设置。在xs设备中，子组件排列顺序为1234；sm为2341，md为3412，lg为2431。
 
+
+ArkTS1.1示例：
 
     ```ts
     GridRow({ columns: 12 }) {
@@ -461,6 +965,43 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     }
     ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, GridRow, GridCol, Color } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct GridRowExample {
+
+  build() {
+    GridRow({ columns: 12 }) {
+      GridCol({ order: { xs:1, sm:5, md:3, lg:7}, span: 1 }) {
+        Row() {
+          Text('1')
+        }.width('100%').height('50vp')
+      }.backgroundColor(Color.Red)
+      GridCol({ order: { xs:2, sm:2, md:6, lg:1}, span:1 }) {
+        Row() {
+          Text('2')
+        }.width('100%').height('50vp')
+      }.backgroundColor(Color.Orange)
+      GridCol({ order: { xs:3, sm:3, md:1, lg:6}, span:1 }) {
+        Row() {
+          Text('3')
+        }.width('100%').height('50vp')
+      }.backgroundColor(Color.Yellow)
+      GridCol({ order: { xs:4, sm:4, md:2, lg:5}, span:1 }) {
+        Row() {
+          Text('4')
+        }.width('100%').height('50vp')
+      }.backgroundColor(Color.Green)
+    }
+  }
+}
+```
+
     ![zh-cn_image_0000001511900444](figures/zh-cn_image_0000001511900444.gif)
 
 
@@ -469,6 +1010,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 栅格组件也可以嵌套使用，完成一些复杂的布局。
 
 以下示例中，栅格把整个空间分为12份。第一层GridRow嵌套GridCol，分为中间大区域以及“footer”区域。第二层GridRow嵌套GridCol，分为“left”和“right”区域。子组件空间按照上一层父组件的空间划分，粉色的区域是屏幕空间的12列，绿色和蓝色的区域是父组件GridCol的12列，依次进行空间的划分。
+
+ArkTS1.1示例：
 
 ```ts
 @Entry
@@ -507,6 +1050,48 @@ struct GridRowExample {
 }
 ```
 
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Text, GridRow, GridCol, Color, TextAlign, FlexAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct GridRowExample {
+  build() {
+    GridRow({ columns: 12 }) {
+      GridCol({ span: 12 }) {
+        GridRow({ columns: 12 }) {
+          GridCol({ span: 2 }) {
+            Row() {
+              Text('left').fontSize(24)
+            }
+            .justifyContent(FlexAlign.Center)
+            .height('90%')
+          }.backgroundColor('#ff41dbaa')
+
+          GridCol({ span: 10 }) {
+            Row() {
+              Text('right').fontSize(24)
+            }
+            .justifyContent(FlexAlign.Center)
+            .height('90%')
+          }.backgroundColor('#ff4168db')
+        }
+        .backgroundColor('#19000000')
+      }
+
+      GridCol({ span: 12 }) {
+        Row() {
+          Text('footer').width('100%').textAlign(TextAlign.Center)
+        }.width('100%').height('10%').backgroundColor(Color.Pink)
+      }
+    }.width('100%').height(300)
+  }
+}
+```
 
 ![zh-cn_image_0000001563060697](figures/zh-cn_image_0000001563060697.png)
 
