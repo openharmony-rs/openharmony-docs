@@ -31,14 +31,16 @@
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](../ui/state-management/arkts-basic-syntax-overview.md)
     - [声明式UI描述](../ui/state-management/arkts-declarative-ui-description.md)
-    - 自定义组件<!--arkts-custom-components-->
+    - 动态自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](../ui/state-management/arkts-create-custom-components.md)
-        - [\@ComponentV2装饰器：自定义组件](state-management/arkts-new-componentV2.md)
       - [自定义组件生命周期](../ui/state-management/arkts-page-custom-components-lifecycle.md)
       - [自定义组件的自定义布局](../ui/state-management/arkts-page-custom-components-layout.md)
       - [自定义组件可见性修饰符](../ui/state-management/arkts-custom-components-access-restrictions.md)
       - [自定义组件冻结](../ui/state-management/arkts-custom-components-v1-v2-freeze.md)
       - [自定义组件复用](../ui/state-management/arkts-custom-components-reuse.md)
+    - 静态自定义组件<!--arkts-static-custom-components-->
+      - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
+      - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
     - UI装饰器
       - [装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
       - 组件扩展<!--arkts-extend-components-->
