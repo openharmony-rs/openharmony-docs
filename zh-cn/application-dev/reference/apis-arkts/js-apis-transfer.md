@@ -137,3 +137,11 @@ export function har1func(dynamic_obj: Any) {
 | "ArkUI.EventTargetInfo" | [EventTargetInfo](../apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#eventtargetinfo)|
 | "ArkUI.TouchTestInfo" | [TouchTestInfo](../apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md#touchtestinfo)|
 | "ArkUI.ScrollableTargetInfo" | [ScrollableTargetInfo](../apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#scrollabletargetinfo)|
+|"ArkUI.FrameNode" | [FrameNode](../apis-arkui/js-apis-arkui-frameNode.md)|
+|"ArkUI.RenderNode" | [RenderNode](../apis-arkui/js-apis-arkui-renderNode.md)|
+|"ArkUI.UIContext" | [UIContext](../apis-arkui/js-apis-arkui-UIContext.md)|
+|"ArkUI.LengthMetrics" | [LengthMetrics](../apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)|
+|"ArkUI.ShapeClip" | [ShapeClip](../apis-arkui/js-apis-arkui-graphics.md#shapeclip12)| 
+|"ArkUI.ColorMetrics" | [ColorMetrics](../apis-arkui/js-apis-arkui-graphics.md#colormetrics12)|   
+|"ArkUI.ShapeMask" | [ShapeMask](../apis-arkui/js-apis-arkui-graphics.md#shapemask12)|
+|"Global.Resource" | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)|
