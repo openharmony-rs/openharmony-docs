@@ -59,6 +59,13 @@
       - [ArkTS1.2互操作场景](quick-start/arkts-interop-more.md)
       - [ArkTS1.2互操作特性规范](quick-start/arkts-interop-spec.md)      
       - [ArkTS1.2UI迁移规则](quick-start/arkts-v1.1-v1.2-ui.md)
+      - ArkTS1.2UI互操作指导
+        - [互操作概述](quick-start/arkts-v1.1-v1.2-ui-interop.md)
+        - [UI构建互操作](quick-start/arkts-v1.2-interop-v1.1-ui-build.md)
+        - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
+        - 状态管理V2互操作
+        - 状态管理V1V2混用互操作
+        - [UI数据互操作](quick-start/arkts-v1.2-interop-v1.1-ui-data.md)
     - [ArkTS高性能编程实践](quick-start/arkts-high-performance-programming.md)
     - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
       - [从Java到ArkTS的迁移指导](quick-start/getting-started-with-arkts-for-java-programmers.md)
