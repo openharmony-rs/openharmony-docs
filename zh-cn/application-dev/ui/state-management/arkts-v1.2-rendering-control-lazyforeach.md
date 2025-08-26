@@ -9,18 +9,17 @@
 ## 迁移说明
 
 - ArkTS1.2需要加入模块导入语句：
-```ts
-import { LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component';
-// 如果使用listener.onDatasetChange()进行批量数据修改，按需import以下DataOperation
-import { DataOperation, DataOperationType, DataAddOperation, DataDeleteOperation, DataChangeOperation, DataMoveOperation, DataExchangeOperation, DataReloadOperation } from '@ohos.arkui.component';
-```
-
+  ```ts
+  import { LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component';
+  // 如果使用listener.onDatasetChange()进行批量数据修改，按需import以下DataOperation
+  import { DataOperation, DataOperationType, DataAddOperation, DataDeleteOperation, DataChangeOperation, DataMoveOperation, DataExchangeOperation, DataReloadOperation } from '@ohos.arkui.component';
+  ```
 - ArkTS1.2中IDataSource强制要求声明`<T>`类型。
 - 使用`listener.onDatasetChange()`进行批量数据修改时，`DataOperation`数组中每一项数据需要转换为对应的类型，见[批量数据修改场景](#批量数据修改场景)。
 
 ## API变更
 
-删除ArkTS1.2中`DataChangeListener`的`onDataAdded()`、`onDataMoved()`、`onDataDeleted()`、`onDataChanged()`方法（从API version 8开始，上述接口被废弃，建议使用`onDataAdd()`、`onDataMove()`、`onDataDelete()`、`onDataChange()`方法）。
+ArkTS1.2中删除`DataChangeListener`的`onDataAdded()`、`onDataMoved()`、`onDataDeleted()`、`onDataChanged()`方法，建议使用`onDataAdd()`、`onDataMove()`、`onDataDelete()`、`onDataChange()`方法（功能一致，仅修改方法名）。
 
 ## 写法变更
 
