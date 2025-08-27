@@ -46,7 +46,7 @@ TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap
 | title                         | [ResourceStr](ts-types.md#resourcestr)                       | 否   | -          | 提示弹出框标题。<br/>  **说明：**  标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                            |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                       | 否   | -          | 提示弹出框内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                           |
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | -          | checkbox的提示内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                     |
-| isChecked                     | boolean                                                      | 否   | \@Prop     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                        |
+| isChecked                     | boolean                                                      | 否   | ArkTS1.1: \@Prop<br>ArkTS1.2: \@PropRef     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。仅ArkTS1.1支持。                                                        |
 | checkAction<sup>12+</sup>     | (isChecked: boolean) => void                                 | 否   | -          | checkbox的选中状态改变事件。isChecked为true时，表示checkbox已选中，isChecked为false时，表示checkbox未选中。现推荐使用onCheckedChange<sup>12+</sup>。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onCheckedChange<sup>12+</sup> | Callback\<boolean>                                           | 否   | -          | checkbox的选中状态改变事件。value为Callback\<true>时，表示checkbox已选中，isChecked为Callback\<false>时，表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                 |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                              | 否   | -          | 提示框左侧按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                           |
@@ -91,7 +91,7 @@ ConfirmDialog({controller: CustomDialogController, title: ResourceStr, content?:
 | title                         | [ResourceStr](ts-types.md#resourcestr)                       | 是   | -          | 确认弹出框标题。<br/>**说明：** 标题超过两行会显示“...”。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                       | 否   | -          | 确认弹出框内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | -          | checkbox的提示内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| isChecked                     | boolean                                                      | 否   | \@Prop     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| isChecked                     | boolean                                                      | 否   | ArkTS1.1: \@Prop<br>ArkTS1.2: \@PropRef     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。仅ArkTS1.1支持。 |
 | onCheckedChange<sup>12+</sup> | Callback\<boolean>                                           | 否   | -          | checkbox的选中状态改变事件。value为Callback\<true>时，表示checkbox已选中，isChecked为Callback\<false>时，表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                              | 否   | -          | 确认框左侧按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | secondaryButton               | [ButtonOptions](#buttonoptions)                              | 否   | -          | 确认框右侧按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -184,7 +184,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | visible | boolean | 是 | \@Link | 跟手弹出框显示状态。value为true时，表示显示弹窗，value为false时，表示隐藏弹窗。<br/>默认值为false，隐藏弹窗。 |
-| popover | [PopoverOptions](#popoveroptions14) | 是 | \@Prop<br/>\@Require | 配置跟手弹窗的参数。 |
+| popover | [PopoverOptions](#popoveroptions14) | 是 | ArkTS1.1:<br/>\@Prop<br/>\@Require<br>ArkTS1.2:<br/>\@PropRef<br/>\@Require | 配置跟手弹窗的参数。<br/>原子化服务仅ArkTS1.1支持。 |
 | targetBuilder | Callback\<void> | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件。 |
 
 

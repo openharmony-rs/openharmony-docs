@@ -4,7 +4,7 @@
 
 ## 共享对象不添加装饰器@Sendable
 
-**规则：** arkts-limited-stdlib-no-sendable-decorator
+**规则：** `arkts-limited-stdlib-no-sendable-decorator`
 
 新增对象天然共享特性，不再依赖Sendable特性，无需添加@Sendable装饰器。
 
@@ -21,7 +21,7 @@ class A {}
 
 ## 共享函数不添加装饰器@Concurrent
 
-**规则：** arkts-limited-stdlib-no-concurrent-decorator
+**规则：** `arkts-limited-stdlib-no-concurrent-decorator`
 
 新增对象天然共享特性，不再依赖Concurrent特性，无需添加@Concurrent装饰器。
 
@@ -38,7 +38,7 @@ function func() {}
 
 ## 不支持Worker
 
-**规则：** arkts-no-need-stdlib-worker
+**规则：** `arkts-no-need-stdlib-worker`
 
 内存天然共享，不需要基于Actor模型实现ThreadWorker。使用ArkTS1.2提供的新线程api-EAWorker。
 
@@ -61,7 +61,7 @@ eaw.join();
 
 ## 共享模块不需要use shared修饰
 
-**规则：** arkts-limited-stdlib-no-use-shared
+**规则：** `arkts-limited-stdlib-no-use-shared`
 
 新增对象天然共享特性，无需添加use shared。
 
@@ -81,7 +81,7 @@ export let num = 1;
 
 ## 共享函数不需要use concurrent修饰
 
-**规则：** arkts-limited-stdlib-no-use-concurrent
+**规则：** `arkts-limited-stdlib-no-use-concurrent`
 
 新增对象天然共享特性，无需添加use concurrent。
 
@@ -99,7 +99,7 @@ function func() {}
 
 ## 原生容器默认共享，不需要Sendable容器
 
-**规则：** arkts-no-need-stdlib-sendable-containers
+**规则：** `arkts-no-need-stdlib-sendable-containers`
 
 新增对象天然共享特性，不再依赖Sendable特性。可直接使用ArkTS1.2原生容器，删除collections.前缀。
 
@@ -117,7 +117,7 @@ let array = new Array<number>();
 
 ## 内存默认共享，不提供ASON
 
-**规则：** arkts-no-need-stdlib-ason
+**规则：** `arkts-no-need-stdlib-ason`
 
 新增对象天然共享特性，不再依赖Sendable特性，ASON.stringify()方法调用可直接更改为JSON.stringify()，且删除ArkTSUtils.前缀。
 
@@ -139,7 +139,7 @@ console.info(str);
 
 ## 内存默认共享，不提供SharedArrayBuffer
 
-**规则：** arkts-no-need-stdlib-sharedArrayBuffer
+**规则：** `arkts-no-need-stdlib-sharedArrayBuffer`
 
 新增对象天然共享特性，ArrayBuffer默认共享，不需要SharedArrayBuffer。
 
@@ -157,7 +157,7 @@ let int32 = new Int32Array(sab);
 
 ## 不提供isConcurrent接口
 
-**规则：** arkts-limited-stdlib-no-support-isConcurrent
+**规则：** `arkts-limited-stdlib-no-support-isConcurrent`
 
 新增对象天然共享特性，所有函数都是共享的，不需要提供isConcurrent。
 
@@ -174,7 +174,7 @@ let result: Boolean = taskpool.isConcurrent(test);
 
 ## taskpool不需要import
 
-**规则：** arkts-limited-stdlib-no-import-concurrency
+**规则：** `arkts-limited-stdlib-no-import-concurrency`
 
 taskpool实现基于ArkTS提供，不依赖其他模块，不再需要import。
 
@@ -197,7 +197,7 @@ taskpool.execute(test);
 
 ## AsyncLock不需要import
 
-**规则：** arkts-limited-stdlib-no-import-concurrency
+**规则：** `arkts-limited-stdlib-no-import-concurrency`
 
 AsyncLock实现基于ArkTS提供，不依赖其他模块，不再需要import，且不需要添加ArkTSUtils.locks.前缀。
 
@@ -215,7 +215,7 @@ let lock: AsyncLock = new AsyncLock();
 
 ## process更名为StdProcess，且不需要import
 
-**规则：** arkts-change-process-to-StdProcess
+**规则：** `arkts-change-process-to-StdProcess`
 
 StdProcess实现基于ArkTS提供，不依赖其他模块，不再需要import。为避免占用process关键字，更名为StdProcess。
 
@@ -237,7 +237,7 @@ let pres = pro.getUidForName('tool');
 
 ## 移除taskpool setCloneList接口
 
-**规则：** arkts-limited-stdlib-no-setCloneList
+**规则：** `arkts-limited-stdlib-no-setCloneList`
 
 内存默认共享，不需要提供setCloneList来拷贝传递对象。如果仍然需要以拷贝语义使用数组对象，可以调用Array.from()方法手动拷贝。
 
@@ -308,7 +308,7 @@ taskpool.execute(task2).then((res: Any):void => {
 
 ## 移除taskpool setTransferList接口
 
-**规则：** arkts-limited-stdlib-no-setTransferList
+**规则：** `arkts-limited-stdlib-no-setTransferList`
 
 内存默认共享，不需要提供setTransferList来跨线程传递ArrayBuffer对象。
 
@@ -390,7 +390,7 @@ view1 = new Uint8Array(0);
 
 ## 删除ISendable接口
 
-**规则：** arkts-no-need-stdlib-ISendable
+**规则：** `arkts-no-need-stdlib-ISendable`
 
 新增对象天然共享特性，无需实现ISendable接口。
 
@@ -423,7 +423,7 @@ class CustomData {
 
 ## 删除isSendable接口
 
-**规则：** arkts-no-need-stdlib-isSendable
+**规则：** `arkts-no-need-stdlib-isSendable`
 
 新增对象天然共享特性，无需判断是否为Sendable数据类型。
 
@@ -448,7 +448,7 @@ if (ArkTSUtils.isSendable(sendableFunc)) {
 
 ## taskpool.execute()返回类型由Promise\<Object>变更为Promise\<NullishType>
 
-**规则：** arkts-taskpool-execute-generic-type-object-to-nullishtype
+**规则：** `arkts-taskpool-execute-generic-type-object-to-nullishtype`
 
 ArkTS1.1中taskpool execute返回值声明为Promise\<Object>，但实际可以返回值为undefined的Promise。ArkTS1.2中undefined和Object为不同类型，相互之间无法进行类型转换。
 
@@ -504,7 +504,7 @@ async function test2() {
 
 ## Promise的reject函数只能接受Error类型作为参数
 
-**规则：** arkts-limited-stdlib-promise-reject-type-error
+**规则：** `arkts-limited-stdlib-promise-reject-type-error`
 
 ArkTS1.2中加强类型限制，有以下规格限制：
 
@@ -532,7 +532,7 @@ Promise.reject(new Error("error"));
 
 ## Promise的then和catch方法的onrejected回调参数类型只能标注为Error或其父类类型
 
-**规则：** arkts-limited-stdlib-promise-onrejected-type-error
+**规则：** `arkts-limited-stdlib-promise-onrejected-type-error`
 
 ArkTS1.2中加强类型限制，且类型转换具有运行时语义。为了保证类型安全，规格中限制函数间赋值遵循逆变原则，子类型入参回调无法赋值给父类型入参回调。
 
@@ -567,7 +567,7 @@ p.catch((e: Error) => {
 
 ## 不支持用户自定义声明PromiseFulfilledResult、PromiseRejectedResult、PromiseSettledResult 
 
-**规则：** arkts-not-support-PromiseSettledResult-customization
+**规则：** `arkts-not-support-PromiseSettledResult-customization`
 
 ArkTS1.2不支持用户自定义声明PromiseFulfilledResult、PromiseRejectedResult、PromiseSettledResult。
 
@@ -593,7 +593,7 @@ type PromiseSettledResult\<T> = PromiseFulfilledResult\<T> | PromiseRejectedResu
 
 ## 不支持编译阶段根据PromiseSettledResult的status值确定其实际类型
 
-**规则：** arkts-not-support-PromiseSettledResult-smartcast
+**规则：** `arkts-not-support-PromiseSettledResult-smartcast`
 
 arkts1.2中不支持对类的成员变量进行智能转换（智能类型差异arkts-no-ts-like-smart-type）。
 
@@ -633,7 +633,7 @@ Promise.allSettled<string>([f1])
 
 ## 不支持Promise\<Promise\<T>>的then方法调用 
 
-**规则：** arkts-no-support-nested-promise
+**规则：** `arkts-no-support-nested-promise`
 
 静态类型导致回调运行时类型转换失败，回调无法执行。
 
@@ -651,7 +651,7 @@ p.then((res: number) => { console.info(res)})
 
 ## Task的function属性改名为taskFunction
 
-**规则：** arkts-change-taskpool-Task-to-taskFunction
+**规则：** `arkts-change-taskpool-Task-to-taskFunction`
 
 function在ArkTS1.2中为关键字，不能作为类属性（限定关键字(arkts-invalid-identifier)）。
 
@@ -678,7 +678,7 @@ let func = task.taskFunction;
 
 ## taskpool不提供GenericsTask
 
-**规则：** arkts-not-supprot-genericstask
+**规则：** `arkts-not-supprot-genericstask`
 
  1. arkts1.2中不支持以泛型数组的形式对回调参数类型进行校验。
 
@@ -703,7 +703,7 @@ function testWithThreeParams(a: number, b: string, c: number): string {
 
 ## 不支持在全局空间直接或间接调用async函数
 
-**规则：** arkts-not-support-global-async-call
+**规则：** `arkts-not-support-global-async-call`
 
 根据ArkTS1.2规格，全局初始化阶段不可以调用异步函数，否则会导致初始化结果难以推导。
 
@@ -727,7 +727,7 @@ function main() {
 
 ## Promise\<void>构造器中只支持使用resolve(undefined)
 
-**规则：** arkts-promise-with-void-type-need-undefined-as-resolve-arg
+**规则：** `arkts-promise-with-void-type-need-undefined-as-resolve-arg`
 
 ArkTS1.2中void不能作为变量类型声明；作为泛型时，在类实例化时会自动转换为undefined。
 **ArkTS1.1**

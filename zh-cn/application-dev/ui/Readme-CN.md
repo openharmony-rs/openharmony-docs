@@ -149,12 +149,14 @@
     - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
   - 渲染控制<!--arkts-rendering-control-->
       - [渲染控制概述](state-management/arkts-rendering-control-overview.md)
-      - [ArkTS1.2 渲染控制组件迁移规范](state-management/arkts-v1.2-rendering-control.md)
       - [if/else：条件渲染](state-management/arkts-rendering-control-ifelse.md)
       - [ForEach：循环渲染](state-management/arkts-rendering-control-foreach.md)
       - [LazyForEach：数据懒加载](state-management/arkts-rendering-control-lazyforeach.md)
       - [Repeat：可复用的循环渲染](state-management/arkts-new-rendering-control-repeat.md)
       - [ContentSlot：混合开发](state-management/arkts-rendering-control-contentslot.md)
+      - [ArkTS1.2 ForEach迁移规范](state-management/arkts-v1.2-rendering-control-foreach.md)
+      - [ArkTS1.2 LazyForEach迁移规范](state-management/arkts-v1.2-rendering-control-lazyforeach.md)
+      - [ArkTS1.2 Repeat迁移规范](state-management/arkts-v1.2-rendering-control-repeat.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - [组件导航(Navigation) (推荐)](arkts-navigation-navigation.md)
