@@ -126,3 +126,10 @@ export function har1func(dynamic_obj: Any) {
 | "ArkUI.NavigationInfo" | [uiObserver.NavigationInfo](../apis-arkui/js-apis-arkui-observer.md#navigationinfo12)|
 | "ArkUI.RouterPageInfo" | [uiObserver.RouterPageInfo](../apis-arkui/js-apis-arkui-observer.md#routerpageinfo)| 
 | "AbilityKit.UIAbilityContext" | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)|   
+| "ImageKit.AuxiliaryPicture" | [AuxiliaryPicture](../apis-image-kit/arkts-apis-image-AuxiliaryPicture.md) |
+| "ImageKit.ImageCreator" | [ImageCreator](../apis-image-kit/arkts-apis-image-ImageCreator.md) |
+| "ImageKit.ImagePacker" | [ImagePacker](../apis-image-kit/arkts-apis-image-ImagePacker.md) |
+| "ImageKit.ImageReceiver" | [ImageReceiver](../apis-image-kit/arkts-apis-image-ImageReceiver.md) |
+| "ImageKit.ImageSource" | [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md) |
+| "ImageKit.Picture" | [Picture](../apis-image-kit/arkts-apis-image-Picture.md) |
+| "ImageKit.PixelMap" | [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |
