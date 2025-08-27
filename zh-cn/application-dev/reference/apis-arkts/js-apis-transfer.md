@@ -145,3 +145,9 @@ export function har1func(dynamic_obj: Any) {
 |"ArkUI.ColorMetrics" | [ColorMetrics](../apis-arkui/js-apis-arkui-graphics.md#colormetrics12)|   
 |"ArkUI.ShapeMask" | [ShapeMask](../apis-arkui/js-apis-arkui-graphics.md#shapemask12)|
 |"Global.Resource" | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)|
+| "ArkGraphics3D.Animation" | [Animation](../apis-arkgraphics3d/js-apis-inner-scene-resources.md#animation)|
+| "ArkGraphics3D.Environment" | [Environment](../apis-arkgraphics3d/js-apis-inner-scene-resources.md#environment)|
+| "ArkGraphics3D.Camera" | [Camera](../apis-arkgraphics3d/js-apis-inner-scene-nodes.md#camera)|
+| "ArkGraphics3D.Node" | [Node](../apis-arkgraphics3d/js-apis-inner-scene-nodes.md#node)|
+| "ArkGraphics3D.Scene" | [Scene](../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1)|
+| "ArkGraphics3D.SceneResourceFactory" | [SceneResourceFactory](../apis-arkgraphics3d/js-apis-inner-scene.md#sceneresourcefactory)|
