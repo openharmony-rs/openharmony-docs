@@ -4,7 +4,19 @@
 
 **规则：** `sdk-optional-methods`
 
-请使用可选属性替代可选方法。
+**规则解释：**
+
+ArkTS1.2不支持类中的可选方法。
+
+**变更原因：**
+
+在ArkTS1.2中，类的方法由所有实例共享。增加可选方法会增加开发者判断空值的成本，从而影响性能。
+
+**适配建议：**
+
+用可选属性代替可选方法。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -16,7 +28,7 @@ interface NativeMediaPlayerBridge {
 // ArkTS1.1应用代码
 import NativeMediaPlayerBridge from 'xxx'
 class MediaPlayer implements NativeMediaPlayerBridge {
-  resumePlayer(): void { // 错误
+  resumePlayer?(): void { // ArkTS1.2中不支持
   }
 }
 const player1 = new MediaPlayer();
@@ -27,26 +39,36 @@ const player1 = new MediaPlayer();
 // ArkTS1.2API定义
 type ResumePlayerFn = () => void;
 interface NativeMediaPlayerBridge {
-  resumePlayer?: ResumePlayerFn;
+    resumePlayer?: ResumePlayerFn;
 }
 
 // ArkTS1.2应用代码
 class MediaPlayer implements NativeMediaPlayerBridge {
-    resumePlayer?: ResumePlayerFn;
-    // 或者resumePlayer: ResumePlayerFn | undefined;
-    constructor(resumePlayer?: ResumePlayerFn) {
-         this.resumePlayer = resumePlayer;
-    }
+    resumePlayer?: ResumePlayerFn;  // 用可选属性代替
+    constructor(resumePlayer?: ResumePlayerFn) {
+        this.resumePlayer = resumePlayer;
+    }
 }
-let defaultResumePlayer: ResumePlayerFn = () => {}
-const player1 = new MediaPlayer(defaultResumePlayer);
+const player1 = new MediaPlayer(() => { });
 ```
 
 ## void类型已弃用
 
 **规则：** `sdk-limited-void-type`
 
-ArkTS1.2中void类型已弃用，请用undefined代替。
+**规则解释：**
+
+在ArkTS1.1中，`void`已弃用。
+
+**变更原因：**
+
+在ArkTS1.1中，`void`是一个类型。在ArkTS1.2中，`void`不再是类型，它没有实体，只能用作函数、方法和lambda表达式的返回类型，表示不返回任何值。
+
+**适配建议：**
+
+请使用undefined代替。
+
+**示例：**
  
 **ArkTS1.1**
 ```typescript
@@ -72,11 +94,23 @@ const syncFunction: AsyncOrVoidMethod = () => {
 };
 ```
 
-## API路径已更改
+## 对象名称不可以重复
 
 **规则：** `sdk-no-decl-with-duplicate-name`
 
-在ArkTS1.2中，所有对象不再作为全局对象，而是置于各自的模块中。开发者需通过import语句引入后使用。
+**规则解释：**
+
+在ArkTS1.2中，所有对象不再作为全局对象，而是置于各自的模块中，对象名称不可以重复。
+
+**变更原因：**
+
+在ArkTS1.2中，模块化开发成为核心特性之一，所有对象不再作为全局对象，而是位于各自的模块中。开发者需要通过import语句显式引入后使用。这一变化提升了代码的可维护性和可扩展性，同时避免了全局命名空间污染。
+
+**适配建议：**
+
+import同名对象时用别名来避免冲突。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -106,11 +140,23 @@ const lg: LinearGradient = {};
 const lg2: LinearGradientClass = new LinearGradientClass();
 ```
 
-## 不必要类型参数
+## `attributeValue`方法不再需要传入泛型参数
 
 **规则：** `sdk-no-props-by-index`
 
+**规则解释：**
+
 ArkTS1.2中，`attributeValue`方法不再需要传入泛型参数。
+
+**变更原因：**
+
+方法签名变更。
+
+**适配建议：**
+
+请删除attributeValue中的泛型参数。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -138,11 +184,23 @@ declare function attributeValue(p: string | boolean): void;
 attributeValue(true);
 ```
 
-## 带引号的连字符属性已弃用
+## 对象的属性名称必须是有效标识符
 
 **规则：** `sdk-no-literal-as-property-name`
 
-在ArkTS1.2中，对象的属性名称必须是有效标识符，不支持使用单引号和连字符。当属性值为字符串或数字时，应将其名称修改为小驼峰格式。
+**规则解释：**
+
+ArkTS1.2中，对象的属性名称必须是有效标识符，不支持使用单引号和连字符。
+
+**变更原因：**
+ 
+在ArkTS1.2中，对象的属性名不能使用数字或字符串，以增强对边界场景的约束。
+
+**适配建议：**
+
+将属性名从字符串改为标识符。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -180,7 +238,20 @@ const headers: RequestHeaders = {
 
 **规则：** `sdk-constructor-funcs`
 
+
+**规则解释：**
+
 ArkTS1.2不支持构造函数类型，需要将使用构造函数类型的地方改为lambda函数。
+
+**变更原因：**
+
+移除构造函数类型主要基于静态类型安全和运行时性能优化考虑。
+
+**适配建议：**
+
+将使用构造函数类型的地方改为lambda函数。
+
+**示例：**
 
 **ArkTS1.1**
 ```typescript
@@ -203,5 +274,5 @@ declare class DatabaseQuery<T> {
 }
 
 // ArkTS1.2应用代码
-const userQuery = new DatabaseQuery<User>(createInstence());
+const userQuery = new DatabaseQuery<User>(createInstence);
 ```
