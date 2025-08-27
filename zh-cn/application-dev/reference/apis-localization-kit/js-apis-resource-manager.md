@@ -201,7 +201,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let systemResourceManager = resourceManager.getSysResourceManager();
-    // 'sys.string.ohos_lab_vibrate'仅作示例，请替换为实际使用的资源
+    // 'ohos_lab_vibrate'仅作示例，请替换为实际使用的资源
     systemResourceManager.getStringByName('ohos_lab_vibrate').then((value: string) => {
         console.info(`systemResourceManager getStringByName success: ${value}`);
     }).catch((error) => {
