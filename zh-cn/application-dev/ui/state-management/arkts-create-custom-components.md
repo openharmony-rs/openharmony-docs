@@ -86,13 +86,7 @@ struct ParentComponent {
   > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
   > 
   > 从API version 11开始，\@Component可以接受一个可选的boolean类型参数。
-  >
-  > 从API version 20开始，支持在ArkTS1.2中使用@Component装饰器。
   
-  ```ts
-  // ArkTS1.2 @Component装饰器需要import。
-  import { Component } from '@ohos.arkui.component';
-  ```
   ```ts
   @Component
   struct MyComponent {
@@ -114,10 +108,6 @@ struct ParentComponent {
   > - 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。
   > - \@ComponentV2支持一个可选的boolean类型参数freezeWhenInactive，来实现[自定义组件冻结功能](arkts-custom-components-freezeV2.md)。
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
-  ```ts
-  // ArkTS1.2 @ComponentV2装饰器需要import。
-  import { ComponentV2 } from '@ohos.arkui.component';
-  ```
   ```ts
   @ComponentV2
   struct MyComponent {
