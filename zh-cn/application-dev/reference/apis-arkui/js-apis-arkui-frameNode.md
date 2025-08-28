@@ -4699,6 +4699,8 @@ isDisposed(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型    | 说明               |
@@ -6126,6 +6128,7 @@ struct Index {
 ```
 ## NodeAdapter使用示例
 
+ArkTS1.1示例：
 ```ts
 import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';
 
@@ -6321,6 +6324,212 @@ struct ListNodeTest {
 
 ```
 
+ArkTS1.2示例：
+
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, NodeContainer, Row, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import { FrameNode, NodeController, NodeAdapter, typeNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+
+class MyNodeAdapter extends NodeAdapter {
+  uiContext: UIContext
+  cachePool: Array<FrameNode> = new Array<FrameNode>();
+  changed: boolean = false
+  reloadTimes: number = 0;
+  data: Array<string> = new Array<string>();
+  hostNode?: FrameNode
+
+  constructor(uiContext: UIContext, count: number) {
+    super();
+    this.uiContext = uiContext;
+    this.totalNodeCount = count;
+    this.loadData();
+  }
+
+  reloadData(count: number): void {
+    this.reloadTimes++;
+    if (this.hostNode) {
+      NodeAdapter.attachNodeAdapter(this, this.hostNode!);
+    }
+    this.totalNodeCount = count;
+    this.loadData();
+    this.reloadAllItems();
+  }
+
+  refreshData(): void {
+    let items = this.getAllAvailableItems()
+    console.info("UINodeAdapter get All items:" + items.length);
+    this.reloadAllItems();
+  }
+
+  detachData(): void {
+    if (this.hostNode) {
+      NodeAdapter.detachNodeAdapter(this.hostNode!);
+    }
+    this.reloadTimes = 0;
+  }
+
+  loadData(): void {
+    this.data = new Array<string>(this.totalNodeCount);
+    for (let i = 0; i < this.totalNodeCount; i++) {
+      this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
+    }
+  }
+
+  changeData(from: number, count: number): void {
+    this.changed = !this.changed;
+    for (let i = 0; i < count; i++) {
+      let index = i + from;
+      this.data[index as Int] =
+        "Adapter ListItem " + (this.changed ? "changed:" : "") + index + " r:" + this.reloadTimes;
+    }
+    this.reloadItem(from, count);
+  }
+
+  insertData(from: number, count: number): void {
+    for (let i = 0; i < count; i++) {
+      let index = i + from;
+      this.data.splice(index, 0, "Adapter ListItem " + from + "-" + i);
+    }
+    this.insertItem(from, count);
+    this.totalNodeCount += count;
+    console.info("UINodeAdapter after insert count:" + this.totalNodeCount);
+  }
+
+  removeData(from: number, count: number): void {
+    let arr = this.data.splice(from, count);
+    this.removeItem(from, count);
+    this.totalNodeCount -= arr.length;
+    console.info("UINodeAdapter after remove count:" + this.totalNodeCount);
+  }
+
+  moveData(from: number, to: number): void {
+    let tmp = this.data.splice(from, 1);
+    this.data.splice(to, 0, tmp[0]);
+    this.moveItem(from, to);
+  }
+
+  onAttachToNode(target: FrameNode): void {
+    console.info("UINodeAdapter onAttachToNode id:" + target.getUniqueId());
+    this.hostNode = target;
+  }
+
+  onDetachFromNode(): void {
+    console.info("UINodeAdapter onDetachFromNode");
+  }
+
+  onGetChildId(index: number): number {
+    console.info("UINodeAdapter onGetChildId:" + index);
+    return index;
+  }
+
+  onCreateChild(index: number): FrameNode {
+    console.info("UINodeAdapter onCreateChild:" + index);
+    if (this.cachePool.length > 0) {
+      let cacheNode = this.cachePool.pop();
+      if (cacheNode !== undefined) {
+        console.info("UINodeAdapter onCreateChild reused id:" + cacheNode.getUniqueId());
+        let text = cacheNode?.getFirstChild();
+        let textNode = text as typeNode.Text;
+        textNode?.initialize(this.data[index as Int]).fontSize(20);
+        return cacheNode;
+      }
+    }
+    console.info("UINodeAdapter onCreateChild createNew");
+    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
+    let textNode = typeNode.createNode(this.uiContext, "Text");
+    textNode.initialize(this.data[index as Int]).fontSize(20);
+    itemNode.appendChild(textNode);
+    return itemNode;
+  }
+
+  onDisposeChild(id: number, node: FrameNode): void {
+    console.info("UINodeAdapter onDisposeChild:" + id);
+    if (this.cachePool.length < 10) {
+      if (!this.cachePool.includes(node)) {
+        console.info("UINodeAdapter caching node id:" + node.getUniqueId());
+        this.cachePool.push(node);
+      }
+    } else {
+      node.dispose();
+    }
+  }
+
+  onUpdateChild(id: number, node: FrameNode): void {
+    let index = id;
+    let text = node.getFirstChild();
+    let textNode = text as typeNode.Text;
+    textNode?.initialize(this.data[index as Int]).fontSize(20);
+  }
+}
+
+class MyNodeAdapterController extends NodeController {
+  rootNode: FrameNode | null = null;
+  nodeAdapter: MyNodeAdapter | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    let listNode = typeNode.createNode(uiContext, "List");
+    listNode.initialize({ space: 3 }).borderWidth(2).borderColor(Color.Black);
+    this.rootNode!.appendChild(listNode!);
+    this.nodeAdapter = new MyNodeAdapter(uiContext, 100);
+    NodeAdapter.attachNodeAdapter(this.nodeAdapter!, listNode);
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct ListNodeTest {
+  adapterController: MyNodeAdapterController = new MyNodeAdapterController();
+
+  build() {
+    Column() {
+      Text("ListNode Adapter");
+      NodeContainer(this.adapterController)
+        .width(300).height(300)
+        .borderWidth(1).borderColor(Color.Black);
+      Row() {
+        Button("Reload")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.reloadData(50);
+          })
+        Button("Change")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.changeData(5, 10)
+          })
+        Button("Insert")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.insertData(10, 10);
+          })
+      }
+
+      Row() {
+        Button("Remove")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.removeData(10, 10);
+          })
+        Button("Move")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.moveData(2, 5);
+          })
+        Button("Refresh")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.refreshData();
+          })
+        Button("Detach")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.detachData();
+          })
+      }
+    }.borderWidth(1)
+    .width("100%")
+  }
+}
+
+```
 ## 节点复用回收使用示例
 
 ```ts
