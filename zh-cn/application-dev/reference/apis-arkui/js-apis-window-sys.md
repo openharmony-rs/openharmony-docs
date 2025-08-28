@@ -241,6 +241,8 @@ minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**设备行为差异：** 该接口在Phone设备、2in1设备、Tablet设备及其他设备类型中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明           |
@@ -294,6 +296,8 @@ minimizeAll(id: number): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：** 该接口在Phone设备、2in1设备、Tablet设备及其他设备类型中返回801错误码。
 
 **参数：**
 
