@@ -158,6 +158,7 @@ function functionName(this: TextAttribute, ...): this { ... }
 > ArkTS-ST去除了扩展组件样式方法只能在当前文件内使用，不支持export的限制。
 
 - 和applyStyles不同，Function-with-Receiver仅支持在全局定义，不支持在组件内部定义。
+- Function-with-Receiver的第一个参数this不支持联合类型。
 
 ## 使用场景
 
