@@ -37,10 +37,26 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+  if (err) {
+    console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getAVPlaybackState : SUCCESS');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getAVPlaybackState((err: BusinessError | null, state: avSession.AVPlaybackState | undefined) => {
   if (err) {
     console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -75,12 +91,26 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('getAVPlaybackState : SUCCESS');
 }).catch((err: BusinessError) => {
+  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+  console.info('getAVPlaybackState : SUCCESS');
+}).catch((err: Error) => {
   console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -111,6 +141,8 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -120,6 +152,21 @@ aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderTyp
     console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
   }
 }).catch((err: BusinessError) => {
+  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
+  console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
+  if (decoderTypes.length > 0 ) {
+    console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
+  }
+}).catch((err: Error) => {
   console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -156,6 +203,8 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -164,6 +213,19 @@ let resolutionLeve = avSession.ResolutionLevel;
 aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve) => {
   console.info('getRecommendedResolutionLevel successfully');
 }).catch((err: BusinessError) => {
+  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
+aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve: avSession.ResolutionLevel) => {
+  console.info('getRecommendedResolutionLevel successfully');
+}).catch((err: Error) => {
   console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -194,6 +256,8 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import type hdrCapability from './@ohos.graphics.hdrCapability';
@@ -208,9 +272,27 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import type hdrCapability from './@ohos.graphics.hdrCapability';
+
+aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
+  console.info(`getSupportedHdrCapabilities : SUCCESS : hdrFormats.length : ${hdrFormats.length}`);
+  if (hdrFormats.length > 0 ) {
+    console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
+  }
+}).catch((err: Error) => {
+  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getSupportedPlaySpeeds<sup>19+</sup>
 
-getSupportedPlaySpeeds(): Promise\<Array\<number>>
+ArkTS-Dyn: getSupportedPlaySpeeds(): Promise\<Array\<number>>
+
+ArkTS-Sta: getSupportedPlaySpeeds(): Promise\<Array\<double>>
 
 获取当前的远端设备所支持倍速播放列表。使用Promise异步回调。
 
@@ -220,9 +302,9 @@ getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
 **返回值：**
 
-| 类型                                                        | 说明                                                         |
-| --------- | ------------------------------------------------------------ |
-| Promise\<Array\<number\>\> | Promise对象。返回远端设备所支持的倍速播放列表。 |
+| 类型                                                         | 说明                                            |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| ArkTS-Dyn: Promise\<Array\<number\>\><br>ArkTS-Sta: Promise\<Array\<double\>\> | Promise对象。返回远端设备所支持的倍速播放列表。 |
 
 **错误码：**
 
@@ -234,6 +316,8 @@ getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -243,6 +327,21 @@ aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
     console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
   }
 }).catch((err: BusinessError) => {
+  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getSupportedPlaySpeeds().then((nums: double[]) => {
+  console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
+  if (nums.length > 0 ) {
+    console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
+  }
+}).catch((err: Error) => {
   console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -283,6 +382,8 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -290,6 +391,19 @@ let avCommand: avSession.AVCastControlCommand = {command:'play'};
 aVCastController.sendControlCommand(avCommand).then(() => {
   console.info('SendControlCommand successfully');
 }).catch((err: BusinessError) => {
+  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avCommand: avSession.AVCastControlCommand = {command:'play'};
+aVCastController.sendControlCommand(avCommand).then(() => {
+  console.info('SendControlCommand successfully');
+}).catch((err: Error) => {
   console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -323,11 +437,28 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
 aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
+  if (err) {
+    console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('SendControlCommand successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avCommand: avSession.AVCastControlCommand = {command:'play'};
+aVCastController.sendControlCommand(avCommand, (err: BusinessError | null) => {
   if (err) {
     console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -363,6 +494,8 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -385,6 +518,38 @@ let playItem: avSession.AVQueueItem = {
 };
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
 aVCastController.prepare(playItem, (err: BusinessError) => {
+  if (err) {
+    console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('prepare successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+// 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
+aVCastController.prepare(playItem, (err: BusinessError | null) => {
   if (err) {
     console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -428,6 +593,8 @@ prepare(item: AVQueueItem): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -452,6 +619,36 @@ let playItem: avSession.AVQueueItem = {
 aVCastController.prepare(playItem).then(() => {
   console.info('prepare successfully');
 }).catch((err: BusinessError) => {
+  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+// 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
+aVCastController.prepare(playItem).then(() => {
+  console.info('prepare successfully');
+}).catch((err: Error) => {
   console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -483,6 +680,8 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -506,6 +705,39 @@ let playItem: avSession.AVQueueItem = {
 
 // 启动播放。
 aVCastController.start(playItem, (err: BusinessError) => {
+  if (err) {
+    console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('start successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+
+// 启动播放。
+aVCastController.start(playItem, (err: BusinessError | null) => {
   if (err) {
     console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -548,6 +780,8 @@ start(item: AVQueueItem): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -576,6 +810,36 @@ aVCastController.start(playItem).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+// 启动播放。
+aVCastController.start(playItem).then(() => {
+  console.info('start successfully');
+}).catch((err: Error) => {
+  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getCurrentItem<sup>10+</sup>
 
 getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
@@ -600,10 +864,26 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
+  if (err) {
+    console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentItem successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getCurrentItem((err: BusinessError | null, value: avSession.AVQueueItem | undefined) => {
   if (err) {
     console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -638,12 +918,26 @@ getCurrentItem(): Promise\<AVQueueItem>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
   console.info('getCurrentItem successfully');
 }).catch((err: BusinessError) => {
+  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
+  console.info('getCurrentItem successfully');
+}).catch((err: Error) => {
   console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -672,10 +966,26 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
+  if (err) {
+    console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getValidCommands successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getValidCommands((err: BusinessError | null, state: avSession.AVCastControlCommandType[] | undefined) => {
   if (err) {
     console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -708,12 +1018,26 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
   console.info('getValidCommands successfully');
 }).catch((err: BusinessError) => {
+  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
+  console.info('getValidCommands successfully');
+}).catch((err: Error) => {
   console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -752,8 +1076,23 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  // 根据assetId获取对应的DRM url。
+  let drmUrl = 'http://license.xxx.xxx.com:8080/drmproxy/getLicense';
+  // 从服务器获取许可证，需要开发者根据实际情况进行赋值。
+  let licenseResponseData: Uint8Array = new Uint8Array();
+  console.info(`Succeeded in get license by ${drmUrl}.`);
+  aVCastController.processMediaKeyResponse(assetId, licenseResponseData);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let keyRequestCallback: avSession.KeyRequestCallback = (assetId: string, requestData: Uint8Array) => {
   // 根据assetId获取对应的DRM url。
   let drmUrl = 'http://license.xxx.xxx.com:8080/drmproxy/getLicense';
   // 从服务器获取许可证，需要开发者根据实际情况进行赋值。
@@ -787,10 +1126,26 @@ release(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.release((err: BusinessError) => {
+  if (err) {
+    console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('release successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.release((err: BusinessError | null) => {
   if (err) {
     console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -825,6 +1180,8 @@ release(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -833,12 +1190,27 @@ aVCastController.release().then(() => {
 }).catch((err: BusinessError) => {
   console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
 });
+```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.release().then(() => {
+  console.info('release successfully');
+}).catch((err: Error) => {
+  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
+ArkTS-Dyn: on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
+
+ArkTS-Sta: on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
+
+设置播放状态变化的监听事件。
 
 设置播放状态变化的监听事件。
 
@@ -851,8 +1223,8 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\> 表示关注Array中的字段变化。 |
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。                      |
+| filter   | ArkTS-Dyn: Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all'<br>ArkTS-Sta: Array\<string\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\> 表示关注Array中的字段变化。 |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void | 是   | 回调函数，参数state是变化后的播放状态。                      |
 
 **错误码：**
 
@@ -865,12 +1237,27 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
 let playbackFilter: Array<keyof avSession.AVPlaybackState> = ['state', 'speed', 'loopMode'];
+aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+  console.info(`on playbackStateChange state : ${playbackState.state}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+  console.info(`on playbackStateChange state : ${playbackState.state}`);
+});
+
+let playbackFilter: Array<string> = ['state', 'speed', 'loopMode'];
 aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
@@ -1116,7 +1503,7 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'requestPlay'`：当请求播放状态变化时，触发该事件。 |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件注册成功，err为undefined，否则返回错误对象。  | 
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件注册成功，err为undefined，否则返回错误对象。  |
 
 **错误码：**
 
@@ -1229,7 +1616,9 @@ aVCastController.off('endOfStream');
 
 ## on('seekDone')<sup>10+</sup>
 
-on(type: 'seekDone', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'seekDone', callback: Callback\<number>): void
+
+ArkTS-Sta: on(type: 'seekDone', callback: Callback\<int>): void
 
 设置seek结束的监听事件。
 
@@ -1239,10 +1628,10 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
-| callback | Callback\<number\>         | 是   | 回调函数，返回seek后播放的位置。                      |
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                                      | 是   | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
+| callback | ArkTS-Dyn: Callback\<number\><br>ArkTS-Sta: Callback\<int\> | 是   | 回调函数，返回seek后播放的位置。                             |
 
 **错误码：**
 
@@ -1255,8 +1644,18 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('seekDone', (pos: number) => {
+  console.info(`on seekDone pos：${pos} `);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.on('seekDone', (pos: int) => {
   console.info(`on seekDone pos：${pos} `);
 });
 ```
@@ -1358,7 +1757,9 @@ aVCastController.off('validCommandChange');
 ```
 
 ## on('videoSizeChange')<sup>12+</sup>
-on(type: 'videoSizeChange', callback: (width: number, height: number) => void): void
+ArkTS-Dyn: on(type: 'videoSizeChange', callback: (width: number, height: number) => void): void
+
+ArkTS-Sta: on(type: 'videoSizeChange', callback: (width: int, height: int) => void): void
 
 媒体控制器监听视频尺寸变化变化的事件。
 
@@ -1369,7 +1770,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: number, height: number) => void   | 是   | 回调函数。                    |
+| callback | ArkTS-Dyn: (width: number, height: number) => void<br>ArkTS-Sta: (width: int, height: int) => void | 是   | 回调函数。                                                   |
 
 **错误码：**
 
@@ -1382,8 +1783,18 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('videoSizeChange', (width: number, height: number) => {
+  console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
+});
+```
+
+ArkTS-Dyn示例：
+
+```ts
+aVCastController.on('videoSizeChange', (width: int, height: int) => {
   console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
 });
 ```
@@ -1524,6 +1935,17 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
+}
+aVCastController.on('keyRequest', keyRequestCallback);
+```
+
+ArkTS-Sta示例：
 
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
