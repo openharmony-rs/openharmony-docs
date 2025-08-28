@@ -98,6 +98,8 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -110,6 +112,25 @@ async function avCastPicker(context: common.Context) {
   avCastPicker.select(avCastPickerOptions).then(() => {
     console.info('select successfully');
   }).catch((err: BusinessError) => {
+    console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPickerOptions : avSession.AVCastPickerOptions = {
+    sessionType : 'video',
+  }
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.select(avCastPickerOptions).then(() => {
+    console.info('select successfully');
+  }).catch((err: Error) => {
     console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
   });
 }
