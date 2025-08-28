@@ -4,6 +4,7 @@
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 管理音频流。
 
@@ -31,6 +32,8 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeI
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -44,6 +47,38 @@ audioStreamManager.getCurrentAudioRendererInfoArray(async (err: BusinessError, A
         let AudioRendererChangeInfo: audio.AudioRendererChangeInfo = AudioRendererChangeInfoArray[i];
         console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
         console.info(`Content ${i} is: ${AudioRendererChangeInfo.rendererInfo.content}`);
+        console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
+        console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);
+        for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
+          console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
+          console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
+          console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
+          console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
+          console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
+          console.info(`SampleRate: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
+          console.info(`ChannelCount: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
+          console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks[0]}`);
+        }
+      }
+    }
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioStreamManager.getCurrentAudioRendererInfoArray((err: BusinessError<void> | null, AudioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray | undefined) => {
+  console.info('getCurrentAudioRendererInfoArray **** Get Callback Called ****');
+  if (err) {
+    console.error(`getCurrentAudioRendererInfoArray :ERROR: ${err}`);
+  } else {
+    if (AudioRendererChangeInfoArray != null) {
+      for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
+        let AudioRendererChangeInfo: audio.AudioRendererChangeInfo = AudioRendererChangeInfoArray[i];
+        console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
         console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
         console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);
         for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
@@ -78,6 +113,8 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -108,6 +145,39 @@ async function getCurrentAudioRendererInfoArray(){
   });
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function getCurrentAudioRendererInfoArray(){
+  await audioStreamManager.getCurrentAudioRendererInfoArray().then((AudioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+    console.info(`getCurrentAudioRendererInfoArray ######### Get Promise is called ##########`);
+    if (AudioRendererChangeInfoArray != null) {
+      for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
+        let AudioRendererChangeInfo: audio.AudioRendererChangeInfo = AudioRendererChangeInfoArray[i];
+        console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
+        console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
+        console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);
+        for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
+          console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
+          console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
+          console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
+          console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
+          console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
+          console.info(`SampleRate: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
+          console.info(`ChannelCount: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
+          console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks[0]}`);
+        }
+      }
+    }
+  }).catch((err: Error) => {
+    console.error(`getCurrentAudioRendererInfoArray :ERROR: ${err}`);
+  });
+}
+```
+
 ## getCurrentAudioRendererInfoArraySync<sup>10+</sup>
 
 getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
@@ -124,6 +194,8 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -135,6 +207,38 @@ try {
       let AudioRendererChangeInfo: audio.AudioRendererChangeInfo = audioRendererChangeInfoArray[i];
       console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
       console.info(`Content ${i} is: ${AudioRendererChangeInfo.rendererInfo.content}`);
+      console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
+      console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);
+      for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
+        console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
+        console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
+        console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
+        console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
+        console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
+        console.info(`SampleRate: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
+        console.info(`ChannelCount: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
+        console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks[0]}`);
+      }
+    }
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getCurrentAudioRendererInfoArraySync :ERROR: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray = audioStreamManager.getCurrentAudioRendererInfoArraySync();
+  console.info(`getCurrentAudioRendererInfoArraySync success.`);
+  if (audioRendererChangeInfoArray != null) {
+    for (let i = 0; i < audioRendererChangeInfoArray.length; i++) {
+      let AudioRendererChangeInfo: audio.AudioRendererChangeInfo = audioRendererChangeInfoArray[i];
+      console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
       console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
       console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);
       for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
@@ -171,10 +275,43 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getCurrentAudioCapturerInfoArray(async (err: BusinessError, AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
+  console.info('getCurrentAudioCapturerInfoArray **** Get Callback Called ****');
+  if (err) {
+    console.error(`getCurrentAudioCapturerInfoArray :ERROR: ${err}`);
+  } else {
+    if (AudioCapturerChangeInfoArray != null) {
+      for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
+        console.info(`StreamId for ${i} is: ${AudioCapturerChangeInfoArray[i].streamId}`);
+        console.info(`Source for ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.source}`);
+        console.info(`Flag  ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+        for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
+          console.info(`Id: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+          console.info(`Type: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+          console.info(`Role: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+          console.info(`Name: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+          console.info(`Address: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+          console.info(`SampleRate: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+          console.info(`ChannelCount: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
+          console.info(`ChannelMask: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks[0]}`);
+        }
+      }
+    }
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioStreamManager.getCurrentAudioCapturerInfoArray((err: BusinessError<void> | null, AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray | undefined) => {
   console.info('getCurrentAudioCapturerInfoArray **** Get Callback Called ****');
   if (err) {
     console.error(`getCurrentAudioCapturerInfoArray :ERROR: ${err}`);
@@ -216,6 +353,8 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -240,6 +379,37 @@ async function getCurrentAudioCapturerInfoArray(){
       }
     }
   }).catch((err: BusinessError) => {
+    console.error(`getCurrentAudioCapturerInfoArray :ERROR: ${err}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function getCurrentAudioCapturerInfoArray(){
+  await audioStreamManager.getCurrentAudioCapturerInfoArray().then((AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
+    console.info('getCurrentAudioCapturerInfoArray **** Get Promise Called ****');
+    if (AudioCapturerChangeInfoArray != null) {
+      for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
+        console.info(`StreamId for ${i} is: ${AudioCapturerChangeInfoArray[i].streamId}`);
+        console.info(`Source for ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.source}`);
+        console.info(`Flag  ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+        for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
+          console.info(`Id: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+          console.info(`Type: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+          console.info(`Role: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+          console.info(`Name: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+          console.info(`Address: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+          console.info(`SampleRate: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+          console.info(`ChannelCount: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
+          console.info(`ChannelMask: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks[0]}`);
+        }
+      }
+    }
+  }).catch((err: Error) => {
     console.error(`getCurrentAudioCapturerInfoArray :ERROR: ${err}`);
   });
 }
@@ -316,6 +486,8 @@ on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArr
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
   for (let i = 0; i < audioRendererChangeInfoArray.length; i++) {
@@ -323,6 +495,30 @@ audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: aud
     console.info(`## RendererChange on is called for ${i} ##`);
     console.info(`StreamId for ${i} is: ${audioRendererChangeInfo.streamId}`);
     console.info(`Content ${i} is: ${audioRendererChangeInfo.rendererInfo.content}`);
+    console.info(`Stream ${i} is: ${audioRendererChangeInfo.rendererInfo.usage}`);
+    console.info(`Flag ${i} is: ${audioRendererChangeInfo.rendererInfo.rendererFlags}`);
+    for (let j = 0;j < audioRendererChangeInfo.deviceDescriptors.length; j++) {
+      console.info(`Id: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].id}`);
+      console.info(`Type: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
+      console.info(`Role: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
+      console.info(`Name: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].name}`);
+      console.info(`Address: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].address}`);
+      console.info(`SampleRate: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
+      console.info(`ChannelCount: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
+      console.info(`ChannelMask: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].channelMasks[0]}`);
+    }
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+  for (let i = 0; i < audioRendererChangeInfoArray.length; i++) {
+    let audioRendererChangeInfo: audio.AudioRendererChangeInfo = audioRendererChangeInfoArray[i];
+    console.info(`## RendererChange on is called for ${i} ##`);
+    console.info(`StreamId for ${i} is: ${audioRendererChangeInfo.streamId}`);
     console.info(`Stream ${i} is: ${audioRendererChangeInfo.rendererInfo.usage}`);
     console.info(`Flag ${i} is: ${audioRendererChangeInfo.rendererInfo.rendererFlags}`);
     for (let j = 0;j < audioRendererChangeInfo.deviceDescriptors.length; j++) {
@@ -364,6 +560,8 @@ off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoA
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // 取消该事件的所有监听。
 audioStreamManager.off('audioRendererChange');
@@ -375,6 +573,38 @@ let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRend
     console.info(`## RendererChange on is called for ${i} ##`);
     console.info(`StreamId for ${i} is: ${audioRendererChangeInfo.streamId}`);
     console.info(`Content ${i} is: ${audioRendererChangeInfo.rendererInfo.content}`);
+    console.info(`Stream ${i} is: ${audioRendererChangeInfo.rendererInfo.usage}`);
+    console.info(`Flag ${i} is: ${audioRendererChangeInfo.rendererInfo.rendererFlags}`);
+    for (let j = 0;j < audioRendererChangeInfo.deviceDescriptors.length; j++) {
+      console.info(`Id: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].id}`);
+      console.info(`Type: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
+      console.info(`Role: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
+      console.info(`Name: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].name}`);
+      console.info(`Address: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].address}`);
+      console.info(`SampleRate: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
+      console.info(`ChannelCount: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
+      console.info(`ChannelMask: ${i} : ${audioRendererChangeInfo.deviceDescriptors[j].channelMasks[0]}`);
+    }
+  }
+};
+
+audioStreamManager.on('audioRendererChange', audioRendererChangeCallback);
+
+audioStreamManager.off('audioRendererChange', audioRendererChangeCallback);
+```
+
+ArkTS-Sta示例：
+
+```ts
+// 取消该事件的所有监听。
+audioStreamManager.off('audioRendererChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+  for (let i = 0; i < audioRendererChangeInfoArray.length; i++) {
+    let audioRendererChangeInfo: audio.AudioRendererChangeInfo = audioRendererChangeInfoArray[i];
+    console.info(`## RendererChange on is called for ${i} ##`);
+    console.info(`StreamId for ${i} is: ${audioRendererChangeInfo.streamId}`);
     console.info(`Stream ${i} is: ${audioRendererChangeInfo.rendererInfo.usage}`);
     console.info(`Flag ${i} is: ${audioRendererChangeInfo.rendererInfo.rendererFlags}`);
     for (let j = 0;j < audioRendererChangeInfo.deviceDescriptors.length; j++) {
@@ -514,10 +744,26 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+if (err) {
+  console.error(`Failed to obtain the active status of the stream. ${err}`);
+  return;
+}
+  console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError<void> | null, value: boolean | undefined) => {
 if (err) {
   console.error(`Failed to obtain the active status of the stream. ${err}`);
   return;
@@ -623,10 +869,28 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback&lt;AudioEffe
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC, async (err: BusinessError, audioEffectInfoArray: audio.AudioEffectInfoArray) => {
+  console.info('getAudioEffectInfoArray **** Get Callback Called ****');
+  if (err) {
+    console.error(`getAudioEffectInfoArray :ERROR: ${err}`);
+    return;
+  } else {
+    console.info(`The effect modes are: ${audioEffectInfoArray}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC, (err: BusinessError<void> | null, audioEffectInfoArray: audio.AudioEffectInfoArray | undefined) => {
   console.info('getAudioEffectInfoArray **** Get Callback Called ****');
   if (err) {
     console.error(`getAudioEffectInfoArray :ERROR: ${err}`);
@@ -668,6 +932,8 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise&lt;AudioEffectInfoArray&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -675,6 +941,17 @@ audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC)
   console.info('getAudioEffectInfoArray ######### Get Promise is called ##########');
   console.info(`The effect modes are: ${audioEffectInfoArray}`);
 }).catch((err: BusinessError) => {
+  console.error(`getAudioEffectInfoArray :ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC).then((audioEffectInfoArray: audio.AudioEffectInfoArray) => {
+  console.info('getAudioEffectInfoArray ######### Get Promise is called ##########');
+  console.info(`The effect modes are: ${audioEffectInfoArray}`);
+}).catch((err: Error) => {
   console.error(`getAudioEffectInfoArray :ERROR: ${err}`);
 });
 ```
@@ -728,6 +1005,8 @@ isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 
 查询指定的source type是否支持回声消除。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -770,6 +1049,8 @@ isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean
 
 查询当前系统是否支持指定的音频返听模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -811,6 +1092,8 @@ try {
 isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean
 
 检查传入的音频采集器信息中音源类型的录制是否可以启动成功。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

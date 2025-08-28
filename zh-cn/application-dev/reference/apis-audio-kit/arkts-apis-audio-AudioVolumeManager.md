@@ -4,6 +4,7 @@
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 音量管理。
 
@@ -17,7 +18,9 @@ import { audio } from '@kit.AudioKit';
 
 ## getVolumeGroupManager<sup>9+</sup>
 
-getVolumeGroupManager(groupId: number, callback: AsyncCallback<AudioVolumeGroupManager\>\): void
+ArkTS-Dyn: getVolumeGroupManager(groupId: number, callback: AsyncCallback<AudioVolumeGroupManager\>\): void
+
+ArkTS-Sta: getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolumeGroupManager\>\): void
 
 获取音频组管理器。使用callback异步回调。
 
@@ -25,12 +28,14 @@ getVolumeGroupManager(groupId: number, callback: AsyncCallback<AudioVolumeGroupM
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明                                                        |
-| ---------- | ------------------------------------------------------------ | ---- |-----------------------------------------------------------|
-| groupId    | number                                    | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。                         |
-| callback   | AsyncCallback&lt;[AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md)&gt; | 是   | 回调函数。当获取音频组管理器成功，err为undefined，data为获取到的音频组管理器对象；否则为错误对象。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| groupId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                            | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。                  |
+| callback | AsyncCallback&lt;[AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md)&gt; | 是   | 回调函数。当获取音频组管理器成功，err为undefined，data为获取到的音频组管理器对象；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -44,12 +49,29 @@ audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: au
   }
   console.info('Callback invoked to indicate that the volume group infos list is obtained.');
 });
+```
 
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let groupId: int = audio.DEFAULT_VOLUME_GROUP_ID;
+
+audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError | null, value: audio.AudioVolumeGroupManager | undefined) => {
+  if (err) {
+    console.error(`Failed to obtain the volume group infos list. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the volume group infos list is obtained.');
+});
 ```
 
 ## getVolumeGroupManager<sup>9+</sup>
 
-getVolumeGroupManager(groupId: number\): Promise<AudioVolumeGroupManager\>
+ArkTS-Dyn: getVolumeGroupManager(groupId: number\): Promise<AudioVolumeGroupManager\>
+
+ArkTS-Sta: getVolumeGroupManager(groupId: int\): Promise<AudioVolumeGroupManager\>
 
 获取音频组管理器。使用Promise异步回调。
 
@@ -59,7 +81,7 @@ getVolumeGroupManager(groupId: number\): Promise<AudioVolumeGroupManager\>
 
 | 参数名     | 类型                                      | 必填 | 说明                               |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| groupId    | number                                   | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
+| groupId    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
 
 **返回值：**
 
@@ -68,6 +90,8 @@ getVolumeGroupManager(groupId: number\): Promise<AudioVolumeGroupManager\>
 | Promise&lt; [AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md) &gt; | Promise对象，返回音量组实例。 |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -81,9 +105,27 @@ async function getVolumeGroupManager(){
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let groupId: int = audio.DEFAULT_VOLUME_GROUP_ID;
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager | undefined = undefined;
+
+async function getVolumeGroupManager(){
+  audioVolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId);
+  console.info('Promise returned to indicate that the volume group infos list is obtained.');
+}
+```
+
 ## getVolumeGroupManagerSync<sup>10+</sup>
 
-getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
+ArkTS-Dyn: getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
+
+ArkTS-Sta: getVolumeGroupManagerSync(groupId: int\): AudioVolumeGroupManager
+
+获取音频组管理器。同步返回结果。
 
 获取音频组管理器。同步返回结果。
 
@@ -93,7 +135,7 @@ getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
 
 | 参数名     | 类型                                      | 必填 | 说明                               |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| groupId    | number                                   | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
+| groupId    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
 
 **返回值：**
 
@@ -126,7 +168,9 @@ try {
 
 ## getAppVolumePercentage<sup>19+</sup>
 
-getAppVolumePercentage(): Promise<number\>
+ArkTS-Dyn: getAppVolumePercentage(): Promise<number\>
+
+ArkTS-Sta: getAppVolumePercentage(): Promise<int\>
 
 获取应用的音量（范围为0到100）。使用Promise异步回调。
 
@@ -136,9 +180,11 @@ getAppVolumePercentage(): Promise<number\>
 
 | 类型                | 说明                 |
 | ------------------- |--------------------|
-| Promise&lt;number&gt; | Promise对象，返回应用的音量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回应用的音量。 |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -148,9 +194,21 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 });
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+audioVolumeManager.getAppVolumePercentage().then((value: int) => {
+  console.info(`app volume is ${value}.`);
+});
+```
+
 ## setAppVolumePercentage<sup>19+</sup>
 
-setAppVolumePercentage(volume: number\): Promise<void\>
+ArkTS-Dyn: setAppVolumePercentage(volume: number\): Promise<void\>
+
+ArkTS-Sta: setAppVolumePercentage(volume: int\): Promise<void\>
 
 设置应用的音量（范围为0到100）。使用Promise异步回调。
 
@@ -160,7 +218,7 @@ setAppVolumePercentage(volume: number\): Promise<void\>
 
 | 参数名     | 类型                                      | 必填 | 说明       |
 | ---------- | ---------------------------------------- | ---- |----------|
-| volume    | number                                   | 是   | 要设置的音量值。 |
+| volume    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要设置的音量值。 |
 
 **返回值：**
 

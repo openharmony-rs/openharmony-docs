@@ -4,8 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 ## 导入模块
 
@@ -60,7 +60,9 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 ### registerSource
 
-registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
+ArkTS-Dyn: registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
+
+ArkTS-Sta: registerSource(audioUri: string, hapticUri: string): Promise&lt;int&gt;
 
 注册音频和振动资源的Uri。使用Promise异步回调。
 
@@ -77,7 +79,7 @@ registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回注册资源的source id。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回注册资源的source id。 |
 
 **错误码：**
 
@@ -88,6 +90,8 @@ registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -104,9 +108,26 @@ audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: numb
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
+let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
+let id = 0;
+
+audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: int) => {
+  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  id = value;
+}).catch ((err: Error) => {
+  console.error(`Failed to register source ${err}`);
+});
+```
+
 ### unregisterSource
 
-unregisterSource(id: number): Promise&lt;void&gt;
+ArkTS-Dyn: unregisterSource(id: number): Promise&lt;void&gt;
+
+ArkTS-Sta: unregisterSource(id: int): Promise&lt;void&gt;
 
 取消注册音频和振动资源。使用Promise异步回调。
 
@@ -116,7 +137,7 @@ unregisterSource(id: number): Promise&lt;void&gt;
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id       | number                                   | 是   | 已注册资源的source id。    |
+| id       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 已注册资源的source id。    |
 
 **返回值：**
 
@@ -133,6 +154,8 @@ unregisterSource(id: number): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -155,9 +178,32 @@ audioHapticManagerInstance.unregisterSource(id).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
+let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
+let id = 0;
+
+audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: int) => {
+  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  id = value;
+}).catch ((err: Error) => {
+  console.error(`Failed to register source ${err}`);
+});
+
+audioHapticManagerInstance.unregisterSource(id).then(() => {
+  console.info(`Promise returned to indicate that unregister source successfully`);
+}).catch ((err: Error) => {
+  console.error(`Failed to unregistere source ${err}`);
+});
+```
+
 ### setAudioLatencyMode
 
-setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
+ArkTS-Dyn: setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
+
+ArkTS-Sta: setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
 
 设置音频时延模式。
 
@@ -167,7 +213,7 @@ setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id          | number                                | 是   | 已注册资源的source id。    |
+| id          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                | 是   | 已注册资源的source id。    |
 | latencyMode | [AudioLatencyMode](#audiolatencymode) | 是   | 音频时延模式。             |
 
 **错误码：**
@@ -180,6 +226,8 @@ setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
 | 5400102 | Operation not allowed.            |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -200,9 +248,30 @@ let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUD
 audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
+let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
+let id = 0;
+
+audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: int) => {
+  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  id = value;
+}).catch ((err: Error) => {
+  console.error(`Failed to register source ${err}`);
+});
+
+let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
+
+audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
+```
+
 ### setStreamUsage
 
-setStreamUsage(id: number, usage: audio.StreamUsage): void
+ArkTS-Dyn: setStreamUsage(id: number, usage: audio.StreamUsage): void
+
+ArkTS-Sta: setStreamUsage(id: int, usage: audio.StreamUsage): void
 
 设置音频流使用类型。
 
@@ -212,7 +281,7 @@ setStreamUsage(id: number, usage: audio.StreamUsage): void
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id       | number                                   | 是   | 已注册资源的source id。    |
+| id       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 已注册资源的source id。    |
 | usage    | [audio.StreamUsage](arkts-apis-audio-e.md#streamusage) | 是   | 音频流使用类型。    |
 
 **错误码：**
@@ -225,6 +294,8 @@ setStreamUsage(id: number, usage: audio.StreamUsage): void
 | 5400102 | Operation not allowed.            |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -246,9 +317,32 @@ let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
 audioHapticManagerInstance.setStreamUsage(id, usage);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
+let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
+let id = 0;
+
+audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: int) => {
+  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  id = value;
+}).catch ((err: Error) => {
+  console.error(`Failed to register source ${err}`);
+});
+
+let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
+
+audioHapticManagerInstance.setStreamUsage(id, usage);
+```
+
 ### createPlayer
 
-createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
+ArkTS-Dyn: createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
+
+ArkTS-Sta: createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
 
 创建音振播放器。使用Promise异步回调。
 
@@ -262,7 +356,7 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHa
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id       | number                                   | 是   | 已注册资源的source id。    |
+| id       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 已注册资源的source id。    |
 | options  | [AudioHapticPlayerOptions](#audiohapticplayeroptions) | 否   | 音振播放器选项。 |
 
 **返回值：**
@@ -285,6 +379,8 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHa
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -306,6 +402,31 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
   audioHapticPlayerInstance = value;
   console.info(`Create the audio haptic player successfully.`);
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to create the audio haptic player. ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
+let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
+let id = 0;
+
+audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: int) => {
+  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  id = value;
+}).catch ((err: Error) => {
+  console.error(`Failed to register source ${err}`);
+});
+
+let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
+let audioHapticPlayerInstance: audioHaptic.AudioHapticPlayer | undefined = undefined;
+
+audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
+  audioHapticPlayerInstance = value;
+  console.info(`Create the audio haptic player successfully.`);
+}).catch ((err: Error) => {
   console.error(`Failed to create the audio haptic player. ${err}`);
 });
 ```
@@ -387,12 +508,24 @@ start(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.start().then(() => {
   console.info(`Promise returned to indicate that start playing successfully.`);
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to start playing. ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioHapticPlayerInstance.start().then(() => {
+  console.info(`Promise returned to indicate that start playing successfully.`);
+}).catch ((err: Error) => {
   console.error(`Failed to start playing. ${err}`);
 });
 ```
@@ -422,12 +555,24 @@ stop(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.stop().then(() => {
   console.info(`Promise returned to indicate that stop playing successfully.`);
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to stop playing. ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioHapticPlayerInstance.stop().then(() => {
+  console.info(`Promise returned to indicate that stop playing successfully.`);
+}).catch ((err: Error) => {
   console.error(`Failed to stop playing. ${err}`);
 });
 ```
@@ -456,12 +601,24 @@ release(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.release().then(() => {
   console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to release the audio haptic player. ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioHapticPlayerInstance.release().then(() => {
+  console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
+}).catch ((err: Error) => {
   console.error(`Failed to release the audio haptic player. ${err}`);
 });
 ```

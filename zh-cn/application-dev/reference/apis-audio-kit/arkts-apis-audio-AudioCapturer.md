@@ -3,6 +3,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 本Interface首批接口从API version 8开始支持。
 
 提供音频采集的相关接口。
@@ -47,6 +48,8 @@ getCapturerInfo(callback: AsyncCallback<AudioCapturerInfo\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -61,6 +64,21 @@ audioCapturer.getCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapt
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.getCapturerInfo((err: BusinessError<void> | null, capturerInfo: audio.AudioCapturerInfo | undefined) => {
+  if (err) {
+    console.error('Failed to get capture info');
+  } else {
+    console.info('Capturer getCapturerInfo:');
+    console.info(`Capturer source: ${capturerInfo!.source}`);
+    console.info(`Capturer flags: ${capturerInfo!.capturerFlags}`);
+  }
+});
+```
 
 ## getCapturerInfo<sup>8+</sup>
 
@@ -78,6 +96,8 @@ getCapturerInfo(): Promise<AudioCapturerInfo\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -91,6 +111,23 @@ audioCapturer.getCapturerInfo().then((audioParamsGet: audio.AudioCapturerInfo) =
     console.info('AudioFrameworkRecLog: audioParams getCapturerInfo are incorrect');
   }
 }).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRecLog: CapturerInfo :ERROR: ${err}`);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.getCapturerInfo().then((audioParamsGet: audio.AudioCapturerInfo) => {
+  if (audioParamsGet != undefined) {
+    console.info('AudioFrameworkRecLog: Capturer CapturerInfo:');
+    console.info(`AudioFrameworkRecLog: Capturer SourceType: ${audioParamsGet.source}`);
+    console.info(`AudioFrameworkRecLog: Capturer capturerFlags: ${audioParamsGet.capturerFlags}`);
+  } else {
+    console.info(`AudioFrameworkRecLog: audioParamsGet is : ${audioParamsGet}`);
+    console.info('AudioFrameworkRecLog: audioParams getCapturerInfo are incorrect');
+  }
+}).catch((err: Error) => {
   console.error(`AudioFrameworkRecLog: CapturerInfo :ERROR: ${err}`);
 })
 ```
@@ -140,6 +177,8 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -152,6 +191,24 @@ audioCapturer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
     console.info(`Capturer channel: ${streamInfo.channels}`);
     console.info(`Capturer format: ${streamInfo.sampleFormat}`);
     console.info(`Capturer encoding type: ${streamInfo.encodingType}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.getStreamInfo((err: BusinessError<void> | null, streamInfo: audio.AudioStreamInfo | undefined) => {
+  if (err) {
+    console.error('Failed to get stream info');
+  } else {
+    console.info('Capturer GetStreamInfo:');
+    console.info(`Capturer sampling rate: ${streamInfo!.samplingRate}`);
+    console.info(`Capturer channel: ${streamInfo!.channels}`);
+    console.info(`Capturer format: ${streamInfo!.sampleFormat}`);
+    console.info(`Capturer encoding type: ${streamInfo!.encodingType}`);
   }
 });
 ```
@@ -172,6 +229,8 @@ getStreamInfo(): Promise<AudioStreamInfo\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -182,6 +241,20 @@ audioCapturer.getStreamInfo().then((audioParamsGet: audio.AudioStreamInfo) => {
   console.info(`channels: ${audioParamsGet.channels}`);
   console.info(`encodingType: ${audioParamsGet.encodingType}`);
 }).catch((err: BusinessError) => {
+  console.error(`getStreamInfo :ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.getStreamInfo().then((audioParamsGet: audio.AudioStreamInfo) => {
+  console.info('getStreamInfo:');
+  console.info(`sampleFormat: ${audioParamsGet.sampleFormat}`);
+  console.info(`samplingRate: ${audioParamsGet.samplingRate}`);
+  console.info(`channels: ${audioParamsGet.channels}`);
+  console.info(`encodingType: ${audioParamsGet.encodingType}`);
+}).catch((err: Error) => {
   console.error(`getStreamInfo :ERROR: ${err}`);
 });
 ```
@@ -219,7 +292,9 @@ try {
 
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getAudioStreamId(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getAudioStreamId(callback: AsyncCallback<long\>): void
 
 获取音频流id。使用callback异步回调。
 
@@ -229,9 +304,11 @@ getAudioStreamId(callback: AsyncCallback<number\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -241,9 +318,21 @@ audioCapturer.getAudioStreamId((err: BusinessError, streamId: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.getAudioStreamId((err: BusinessError<void> | null, streamId: long | undefined) => {
+  console.info(`audioCapturer GetStreamId: ${streamId}`);
+});
+```
+
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(): Promise<number\>
+ArkTS-Dyn: getAudioStreamId(): Promise<number\>
+
+ArkTS-Sta: getAudioStreamId(): Promise<long\>
 
 获取音频流id。使用Promise异步回调。
 
@@ -253,9 +342,11 @@ getAudioStreamId(): Promise<number\>
 
 | 类型             | 说明                   |
 | :----------------| :--------------------- |
-| Promise<number\> | Promise对象，返回音频流id。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回音频流id。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -267,9 +358,21 @@ audioCapturer.getAudioStreamId().then((streamId: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.getAudioStreamId().then((streamId: long) => {
+  console.info(`audioCapturer getAudioStreamId: ${streamId}`);
+}).catch((err: Error) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioStreamIdSync<sup>10+</sup>
 
-getAudioStreamIdSync(): number
+ArkTS-Dyn: getAudioStreamIdSync(): number
+
+ArkTS-Sta: getAudioStreamIdSync(): long
 
 获取音频流id。同步返回结果。
 
@@ -279,15 +382,31 @@ getAudioStreamIdSync(): number
 
 | 类型             | 说明                   |
 | :----------------| :--------------------- |
-| number | 返回音频流id。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回音频流id。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let streamId: number = audioCapturer.getAudioStreamIdSync();
+  console.info(`audioCapturer getAudioStreamIdSync: ${streamId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let streamId: long = audioCapturer.getAudioStreamIdSync();
   console.info(`audioCapturer getAudioStreamIdSync: ${streamId}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -311,6 +430,8 @@ start(callback: AsyncCallback<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -323,6 +444,19 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.start((err: BusinessError<void> | null) => {
+  if (err) {
+    console.error('Capturer start failed.');
+  } else {
+    console.info('Capturer start success.');
+  }
+});
+```
 
 ## start<sup>8+</sup>
 
@@ -340,6 +474,8 @@ start(): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -352,6 +488,22 @@ audioCapturer.start().then(() => {
     console.info('AudioFrameworkRecLog: AudioCapturer is in Running State');
   }
 }).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRecLog: Capturer start :ERROR : ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.start().then(() => {
+  console.info('AudioFrameworkRecLog: ---------START---------');
+  console.info('AudioFrameworkRecLog: Capturer started: SUCCESS');
+  console.info(`AudioFrameworkRecLog: AudioCapturer: STATE: ${audioCapturer.state}`);
+  console.info('AudioFrameworkRecLog: Capturer started: SUCCESS');
+  if ((audioCapturer.state == audio.AudioState.STATE_RUNNING)) {
+    console.info('AudioFrameworkRecLog: AudioCapturer is in Running State');
+  }
+}).catch((err: Error) => {
   console.error(`AudioFrameworkRecLog: Capturer start :ERROR : ${err}`);
 });
 ```
@@ -372,6 +524,8 @@ stop(callback: AsyncCallback<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -384,6 +538,19 @@ audioCapturer.stop((err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.stop((err: BusinessError<void> | null) => {
+  if (err) {
+    console.error('Capturer stop failed');
+  } else {
+    console.info('Capturer stopped.');
+  }
+});
+```
 
 ## stop<sup>8+</sup>
 
@@ -401,6 +568,8 @@ stop(): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -411,6 +580,20 @@ audioCapturer.stop().then(() => {
     console.info('AudioFrameworkRecLog: State is Stopped:');
   }
 }).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.stop().then(() => {
+  console.info('AudioFrameworkRecLog: ---------STOP RECORD---------');
+  console.info('AudioFrameworkRecLog: Capturer stopped: SUCCESS');
+  if ((audioCapturer.state == audio.AudioState.STATE_STOPPED)){
+    console.info('AudioFrameworkRecLog: State is Stopped:');
+  }
+}).catch((err: Error) => {
   console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
 });
 ```
@@ -431,6 +614,8 @@ release(callback: AsyncCallback<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -443,6 +628,19 @@ audioCapturer.release((err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.release((err: BusinessError<void> | null) => {
+  if (err) {
+    console.error('capturer release failed');
+  } else {
+    console.info('capturer released.');
+  }
+});
+```
 
 ## release<sup>8+</sup>
 
@@ -460,6 +658,8 @@ release(): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -472,10 +672,23 @@ audioCapturer.release().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.release().then(() => {
+  console.info('AudioFrameworkRecLog: ---------RELEASE RECORD---------');
+  console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
+  console.info(`AudioFrameworkRecLog: AudioCapturer : STATE : ${audioCapturer.state}`);
+}).catch((err: Error) => {
+  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+});
+```
 
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getAudioTime(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getAudioTime(callback: AsyncCallback<long\>): void
 
 获取当前录制位置的时间戳（从1970年1月1日开始），单位为纳秒。使用callback异步回调。
 
@@ -485,9 +698,11 @@ getAudioTime(callback: AsyncCallback<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                           |
 | :------- | :--------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -497,9 +712,21 @@ audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.getAudioTime((err: BusinessError<void> | null, timestamp: long | undefined) => {
+  console.info(`Current timestamp: ${timestamp}`);
+});
+```
+
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(): Promise<number\>
+ArkTS-Dyn: getAudioTime(): Promise<number\>
+
+ArkTS-Sta: getAudioTime(): Promise<long\>
 
 获取当前录制位置的时间戳（从1970年1月1日开始），单位为纳秒。使用Promise异步回调。
 
@@ -509,9 +736,11 @@ getAudioTime(): Promise<number\>
 
 | 类型             | 说明                          |
 | :--------------- | :---------------------------- |
-| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始），单位为纳秒。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回时间戳（从1970年1月1日开始），单位为纳秒。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -523,9 +752,21 @@ audioCapturer.getAudioTime().then((audioTime: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.getAudioTime().then((audioTime: long) => {
+  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTime : Success ${audioTime}`);
+}).catch((err: Error) => {
+  console.error(`AudioFrameworkRecLog: AudioCapturer Created : ERROR : ${err}`);
+});
+```
+
 ## getAudioTimeSync<sup>10+</sup>
 
-getAudioTimeSync(): number
+ArkTS-Dyn: getAudioTimeSync(): number
+
+ArkTS-Sta: getAudioTimeSync(): long
 
 获取当前录制位置的时间戳（从1970年1月1日开始），单位为纳秒。同步返回结果。
 
@@ -535,15 +776,31 @@ getAudioTimeSync(): number
 
 | 类型             | 说明                          |
 | :--------------- | :---------------------------- |
-| number | 返回时间戳。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回时间戳。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioTime: number = audioCapturer.getAudioTimeSync();
+  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : Success ${audioTime}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : ERROR : ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let audioTime: long = audioCapturer.getAudioTimeSync();
   console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : Success ${audioTime}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -577,12 +834,24 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioCapturer.getAudioTimestampInfo().then((audioTimestampInfo: audio.AudioTimestampInfo) => {
   console.info(`Current timestamp: ${audioTimestampInfo.timestamp}`);
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.getAudioTimestampInfo().then((audioTimestampInfo: audio.AudioTimestampInfo) => {
+  console.info(`Current timestamp: ${audioTimestampInfo.timestamp}`);
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -625,7 +894,9 @@ try {
 
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getBufferSize(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getBufferSize(callback: AsyncCallback<long\>): void
 
 获取采集器合理的最小缓冲区大小。使用callback异步回调。
 
@@ -635,9 +906,11 @@ getBufferSize(callback: AsyncCallback<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                 |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -654,9 +927,25 @@ audioCapturer.getBufferSize((err: BusinessError, bufferSize: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.getBufferSize((err: BusinessError<void> | null, bufferSize: long | undefined) => {
+  if (err) {
+    console.info(`getBufferSize failed : ${err}`);
+  } else {
+    console.info(`BufferSize : ${bufferSize}`);
+  }
+});
+```
+
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(): Promise<number\>
+ArkTS-Dyn: getBufferSize(): Promise<number\>
+
+ArkTS-Sta: getBufferSize(): Promise<long\>
 
 获取采集器合理的最小缓冲区大小。使用Promise异步回调。
 
@@ -666,9 +955,11 @@ getBufferSize(): Promise<number\>
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| Promise<number\> | Promise对象，返回缓冲区大小。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回缓冲区大小。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -683,9 +974,24 @@ audioCapturer.getBufferSize().then((data: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let bufferSize: long = 0;
+
+audioCapturer.getBufferSize().then((data: long) => {
+  console.info(`AudioFrameworkRecLog: getBufferSize :SUCCESS ${data}`);
+  bufferSize = data;
+}).catch((err: Error) => {
+  console.error(`AudioFrameworkRecLog: getBufferSize :ERROR : ${err}`);
+});
+```
+
 ## getBufferSizeSync<sup>10+</sup>
 
-getBufferSizeSync(): number
+ArkTS-Dyn: getBufferSizeSync(): number
+
+ArkTS-Sta: getBufferSizeSync(): long
 
 获取采集器合理的最小缓冲区大小。同步返回结果。
 
@@ -695,14 +1001,32 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| number | 返回缓冲区大小。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回缓冲区大小。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bufferSize: number = 0;
+
+try {
+  bufferSize = audioCapturer.getBufferSizeSync();
+  console.info(`AudioFrameworkRecLog: getBufferSizeSync :SUCCESS ${bufferSize}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`AudioFrameworkRecLog: getBufferSizeSync :ERROR : ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bufferSize: long = 0;
 
 try {
   bufferSize = audioCapturer.getBufferSizeSync();
@@ -729,6 +1053,8 @@ getCurrentInputDevices(): AudioDeviceDescriptors
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let deviceDescriptors: audio.AudioDeviceDescriptors = audioCapturer.getCurrentInputDevices();
 console.info(`Device id: ${deviceDescriptors[0].id}`);
@@ -741,6 +1067,23 @@ console.info(`Device channelcounts: ${deviceDescriptors[0].channelCounts[0]}`);
 console.info(`Device channelmask: ${deviceDescriptors[0].channelMasks[0]}`);
 if (deviceDescriptors[0].encodingTypes) {
   console.info(`Device encodingTypes: ${deviceDescriptors[0].encodingTypes[0]}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let deviceDescriptors: audio.AudioDeviceDescriptors = audioCapturer.getCurrentInputDevices();
+console.info(`Device id: ${deviceDescriptors[0].id}`);
+console.info(`Device type: ${deviceDescriptors[0].deviceType}`);
+console.info(`Device role: ${deviceDescriptors[0].deviceRole}`);
+console.info(`Device name: ${deviceDescriptors[0].name}`);
+console.info(`Device address: ${deviceDescriptors[0].address}`);
+console.info(`Device samplerates: ${deviceDescriptors[0].sampleRates[0]}`);
+console.info(`Device channelcounts: ${deviceDescriptors[0].channelCounts[0]}`);
+console.info(`Device channelmask: ${deviceDescriptors[0].channelMasks[0]}`);
+if (deviceDescriptors[0].encodingTypes) {
+  console.info(`Device encodingTypes: ${deviceDescriptors[0].encodingTypes?.[0]}`);
 }
 ```
 
@@ -760,6 +1103,8 @@ getCurrentAudioCapturerChangeInfo(): AudioCapturerChangeInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let info: audio.AudioCapturerChangeInfo = audioCapturer.getCurrentAudioCapturerChangeInfo();
 console.info(`Info streamId: ${info.streamId}`);
@@ -775,6 +1120,26 @@ console.info(`Info channelcounts: ${info.deviceDescriptors[0].channelCounts[0]}`
 console.info(`Info channelmask: ${info.deviceDescriptors[0].channelMasks[0]}`);
 if (info.deviceDescriptors[0].encodingTypes) {
   console.info(`Device encodingTypes: ${info.deviceDescriptors[0].encodingTypes[0]}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let info: audio.AudioCapturerChangeInfo = audioCapturer.getCurrentAudioCapturerChangeInfo();
+console.info(`Info streamId: ${info.streamId}`);
+console.info(`Info source: ${info.capturerInfo.source}`);
+console.info(`Info capturerFlags: ${info.capturerInfo.capturerFlags}`);
+console.info(`Info muted: ${info.muted}`);
+console.info(`Info type: ${info.deviceDescriptors[0].deviceType}`);
+console.info(`Info role: ${info.deviceDescriptors[0].deviceRole}`);
+console.info(`Info name: ${info.deviceDescriptors[0].name}`);
+console.info(`Info address: ${info.deviceDescriptors[0].address}`);
+console.info(`Info samplerates: ${info.deviceDescriptors[0].sampleRates[0]}`);
+console.info(`Info channelcounts: ${info.deviceDescriptors[0].channelCounts[0]}`);
+console.info(`Info channelmask: ${info.deviceDescriptors[0].channelMasks[0]}`);
+if (info.deviceDescriptors[0].encodingTypes) {
+  console.info(`Device encodingTypes: ${info.deviceDescriptors[0].encodingTypes?.[0]}`);
 }
 ```
 
@@ -985,11 +1350,23 @@ on(type: 'audioCapturerChange', callback: Callback\<AudioCapturerChangeInfo>): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 audioCapturer.on('audioCapturerChange', (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
   console.info(`audioCapturerChange id: ${capturerChangeInfo[0].id}`);
   console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo[0].deviceRole}`);
   console.info(`audioCapturerChange deviceType: ${capturerChangeInfo[0].deviceType}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.on('audioCapturerChange', (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
+  console.info(`audioCapturerChange id: ${capturerChangeInfo.deviceDescriptors[0].id}`);
+  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo.deviceDescriptors[0].deviceRole}`);
+  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo.deviceDescriptors[0].deviceType}`);
 });
 ```
 
@@ -1019,6 +1396,8 @@ off(type: 'audioCapturerChange', callback?: Callback\<AudioCapturerChangeInfo>):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // 取消该事件的所有监听。
 audioCapturer.off('audioCapturerChange');
@@ -1035,9 +1414,29 @@ audioCapturer.on('audioCapturerChange', audioCapturerChangeCallback);
 audioCapturer.off('audioCapturerChange', audioCapturerChangeCallback);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.off('audioCapturerChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioCapturerChangeCallback = (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
+  console.info(`audioCapturerChange id: ${capturerChangeInfo.deviceDescriptors[0].id}`);
+  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo.deviceDescriptors[0].deviceRole}`);
+  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo.deviceDescriptors[0].deviceType}`);
+};
+
+audioCapturer.on('audioCapturerChange', audioCapturerChangeCallback);
+
+audioCapturer.off('audioCapturerChange', audioCapturerChangeCallback);
+```
+
 ## on('markReach')<sup>8+</sup>
 
-on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
+ArkTS-Dyn: on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
+
+ArkTS-Sta: on(type: 'markReach', frame: long, callback: Callback&lt;long&gt;): void
 
 监听标记到达事件（当采集的帧数达到frame参数的值时触发，仅调用一次）。使用callback异步回调。
 
@@ -1050,10 +1449,12 @@ on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
 | 参数名   | 类型                     | 必填 | 说明                                       |
 | :------- | :----------------------  | :--- | :----------------------------------------- |
 | type     | string                   | 是   | 事件回调类型，支持的事件为'markReach'，当采集的帧数达到frame参数的值时，触发该事件。 |
-| frame    | number                   | 是   | 触发事件的帧数。该值必须大于0。           |
-| callback | Callback\<number>         | 是   | 回调函数，返回frame参数的值。 |
+| frame    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 是   | 触发事件的帧数。该值必须大于0。           |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 是   | 回调函数，返回frame参数的值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioCapturer.on('markReach', 1000, (position: number) => {
@@ -1063,9 +1464,21 @@ audioCapturer.on('markReach', 1000, (position: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.on('markReach', 1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
+
 ## off('markReach')<sup>8+</sup>
 
-off(type: 'markReach', callback?: Callback&lt;number&gt;): void
+ArkTS-Dyn: off(type: 'markReach', callback?: Callback&lt;number&gt;): void
+
+ArkTS-Sta: off(type: 'markReach', callback?: Callback&lt;long&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
@@ -1076,9 +1489,11 @@ off(type: 'markReach', callback?: Callback&lt;number&gt;): void
 | 参数名 | 类型   | 必填 | 说明                                              |
 | :----- | :----- | :--- | :------------------------------------------------ |
 | type   | string | 是   | 事件回调类型，支持的事件为'markReach'，当取消监听标记到达事件时，触发该事件。 |
-| callback<sup>18+</sup> | Callback\<number>         | 否  | 回调函数，返回frame参数的值。 |
+| callback<sup>18+</sup> | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 否  | 回调函数，返回frame参数的值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // 取消该事件的所有监听。
@@ -1096,9 +1511,29 @@ audioCapturer.on('markReach', 1000, markReachCallback);
 audioCapturer.off('markReach', markReachCallback);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.off('markReach');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let markReachCallback = (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioCapturer.on('markReach', 1000, markReachCallback);
+
+audioCapturer.off('markReach', markReachCallback);
+```
+
 ## on('periodReach')<sup>8+</sup>
 
-on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
+ArkTS-Dyn: on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
+
+ArkTS-Sta: on(type: 'periodReach', frame: long, callback: Callback&lt;long&gt;): void
 
 监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
@@ -1111,10 +1546,12 @@ on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 | 参数名   | 类型                     | 必填 | 说明                                        |
 | :------- | :----------------------- | :--- | :------------------------------------------ |
 | type     | string                   | 是   | 事件回调类型，支持的事件为'periodReach'，当采集的帧数达到frame参数的值时，触发该事件。 |
-| frame    | number                   | 是   | 触发事件的帧数。该值必须大于0。            |
-| callback | Callback\<number>         | 是   |回调函数，返回frame参数的值。    |
+| frame    | ArkTS-Dyn: number<br>ArkTS-Sta:long                    | 是   | 触发事件的帧数。该值必须大于0。            |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 是   |回调函数，返回frame参数的值。    |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioCapturer.on('periodReach', 1000, (position: number) => {
@@ -1124,9 +1561,21 @@ audioCapturer.on('periodReach', 1000, (position: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.on('periodReach', 1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
+
 ## off('periodReach')<sup>8+</sup>
 
-off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
+ArkTS-Dyn: off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
+
+ArkTS-Sta: off(type: 'periodReach', callback?: Callback&lt;long&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
@@ -1137,9 +1586,11 @@ off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
 | 参数名 | 类型   | 必填 | 说明                                                |
 | :----- | :----- | :--- | :-------------------------------------------------- |
 | type   | string | 是   | 事件回调类型，支持的事件为'periodReach'，当取消监听标记到达事件时，触发该事件。 |
-| callback<sup>18+</sup> | Callback\<number>         | 否  | 回调函数，返回frame参数的值。 |
+| callback<sup>18+</sup> | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 否  | 回调函数，返回frame参数的值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // 取消该事件的所有监听。
@@ -1147,6 +1598,24 @@ audioCapturer.off('periodReach');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let periodReachCallback = (position: number) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioCapturer.on('periodReach', 1000, periodReachCallback);
+
+audioCapturer.off('periodReach', periodReachCallback);
+```
+
+ArkTS-Sta示例：
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.off('periodReach');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let periodReachCallback = (position: long) => {
   if (position == 1000) {
     console.info('ON Triggered successfully');
   }
@@ -1257,6 +1726,8 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -1286,6 +1757,42 @@ let readDataCallback = (buffer: ArrayBuffer) => {
 audioCapturer.on('readData', readDataCallback);
 
 audioCapturer.start((err: BusinessError) => {
+  if (err) {
+    console.error('Capturer start failed.');
+  } else {
+    console.info('Capturer start success.');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI'
+import { WriteOptions } from '@kit.CoreFileKit';
+
+let bufferSize: long = 0;
+// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
+let context = AppStorage.get<common.UIAbilityContext>('context') as commonUIAbilityContext;
+let path = context.cacheDir;
+// 确保该沙箱路径下存在该资源。
+let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+let readDataCallback = (buffer: ArrayBuffer) => {
+  let options: WriteOptions = {
+    offset: bufferSize,
+    length: buffer.byteLength
+  };
+  fs.writeSync(file.fd, buffer, options);
+  bufferSize += buffer.byteLength;
+}
+
+audioCapturer.on('readData', readDataCallback);
+
+audioCapturer.start((err: BusinessError<void> | null) => {
   if (err) {
     console.error('Capturer start failed.');
   } else {
@@ -1336,7 +1843,9 @@ audioCapturer.off('readData', readDataCallback);
 
 ## getOverflowCount<sup>12+</sup>
 
-getOverflowCount(): Promise&lt;number&gt;
+ArkTS-Dyn: getOverflowCount(): Promise&lt;number&gt;
+
+ArkTS-Sta: getOverflowCount(): Promise&lt;long&gt;
 
 获取当前录制音频流的过载音频帧数量。使用Promise异步回调。
 
@@ -1346,9 +1855,11 @@ getOverflowCount(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流的过载音频帧数量。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;| Promise对象，返回音频流的过载音频帧数量。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1360,9 +1871,21 @@ audioCapturer.getOverflowCount().then((value: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioCapturer.getOverflowCount().then((value: long) => {
+  console.info(`Get overflow count Success! ${value}`);
+}).catch((err: Error) => {
+  console.error(`Get overflow count Fail: ${err}`);
+});
+```
+
 ## getOverflowCountSync<sup>12+</sup>
 
-getOverflowCountSync(): number
+ArkTS-Dyn: getOverflowCountSync(): number
+
+ArkTS-Sta: getOverflowCountSync(): long
 
 获取当前录制音频流的过载音频帧数量。同步返回数据。
 
@@ -1372,9 +1895,11 @@ getOverflowCountSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流的过载音频帧数量。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: long| 返回音频流的过载音频帧数量。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1388,11 +1913,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: long = audioCapturer.getOverflowCountSync();
+  console.info(`Get overflow count Success! ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get overflow count Fail: ${error}`);
+}
+```
+
 ## setWillMuteWhenInterrupted<sup>20+</sup>
 
 setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 设置当前录制音频流是否启用[静音打断模式](../../media/audio/using-audiocapturer-for-recording.md#设置静音打断模式)。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

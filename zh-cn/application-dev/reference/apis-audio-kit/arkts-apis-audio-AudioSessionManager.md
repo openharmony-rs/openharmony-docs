@@ -4,6 +4,7 @@
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 音频会话管理。
 
@@ -47,6 +48,8 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -57,6 +60,20 @@ let strategy: audio.AudioSessionStrategy = {
 audioSessionManager.activateAudioSession(strategy).then(() => {
   console.info('activateAudioSession SUCCESS');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+
+audioSessionManager.activateAudioSession(strategy).then(() => {
+  console.info('activateAudioSession SUCCESS');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -85,12 +102,24 @@ deactivateAudioSession(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioSessionManager.deactivateAudioSession().then(() => {
   console.info('deactivateAudioSession SUCCESS');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioSessionManager.deactivateAudioSession().then(() => {
+  console.info('deactivateAudioSession SUCCESS');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```

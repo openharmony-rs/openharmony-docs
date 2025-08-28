@@ -4,6 +4,7 @@
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 管理音频组音量。
 
@@ -17,7 +18,9 @@ import { audio } from '@kit.AudioKit';
 
 ## getVolume<sup>9+</sup>
 
-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: int&gt;): void
 
 获取指定流的音量。使用callback异步回调。
 
@@ -25,12 +28,14 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): v
 
 **参数：**
 
-| 参数名     | 类型                                | 必填 | 说明               |
-| ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。       |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
+| 参数名     | 类型                                                         | 必填 | 说明                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -44,9 +49,25 @@ audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessErr
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError | null, value: int | undefined) => {
+  if (err) {
+    console.error(`Failed to obtain the volume. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the volume is obtained.');
+});
+```
+
 ## getVolume<sup>9+</sup>
 
-getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
+ArkTS-Dyn: getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
+
+ArkTS-Sta: getVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 获取指定流的音量。使用Promise异步回调。
 
@@ -60,11 +81,13 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 **返回值：**
 
-| 类型                  | 说明                      |
-| --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量。指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回指定流的音量。指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
@@ -72,9 +95,19 @@ audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: numb
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: int) => {
+  console.info(`Promise returned to indicate that the volume is obtained ${value}.`);
+});
+```
+
 ## getVolumeSync<sup>10+</sup>
 
-getVolumeSync(volumeType: AudioVolumeType): number
+ArkTS-Dyn: getVolumeSync(volumeType: AudioVolumeType): number
+
+ArkTS-Sta: getVolumeSync(volumeType: AudioVolumeType): int
 
 获取指定流的音量。同步返回结果。
 
@@ -90,7 +123,7 @@ getVolumeSync(volumeType: AudioVolumeType): number
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| number | 返回指定流的音量。指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定流的音量。指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
 
 **错误码：**
 
@@ -102,6 +135,8 @@ getVolumeSync(volumeType: AudioVolumeType): number
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -115,9 +150,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: int = audioVolumeGroupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Indicate that the volume is obtained ${value}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume, error ${error}.`);
+}
+```
+
 ## getMinVolume<sup>9+</sup>
 
-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;int&gt;): void
 
 获取指定流的最小音量。使用callback异步回调。
 
@@ -125,12 +176,14 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 
 **参数：**
 
-| 参数名     | 类型                                | 必填 | 说明               |
-| ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。       |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量；否则为错误对象。 |
+| 参数名     | 类型                                                         | 必填 | 说明                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -144,9 +197,25 @@ audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: Business
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError | null, value: int | undefined) => {
+  if (err) {
+    console.error(`Failed to obtain the minimum volume. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the minimum volume is obtained. ${value}`);
+});
+```
+
 ## getMinVolume<sup>9+</sup>
 
-getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
+ArkTS-Dyn: getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
+
+ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 获取指定流的最小音量。使用Promise异步回调。
 
@@ -162,9 +231,11 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回最小音量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回最小音量。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
@@ -172,9 +243,19 @@ audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: n
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: int) => {
+  console.info(`Promised returned to indicate that the minimum volume is obtained ${value}.`);
+});
+```
+
 ## getMinVolumeSync<sup>10+</sup>
 
-getMinVolumeSync(volumeType: AudioVolumeType): number
+ArkTS-Dyn: getMinVolumeSync(volumeType: AudioVolumeType): number
+
+ArkTS-Sta: getMinVolumeSync(volumeType: AudioVolumeType): int
 
 获取指定流的最小音量。同步返回结果。
 
@@ -190,7 +271,7 @@ getMinVolumeSync(volumeType: AudioVolumeType): number
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| number | 返回最小音量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回最小音量。 |
 
 **错误码：**
 
@@ -202,6 +283,8 @@ getMinVolumeSync(volumeType: AudioVolumeType): number
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -215,9 +298,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: int = audioVolumeGroupManager.getMinVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Indicate that the minimum volume is obtained ${value}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the minimum volume, error ${error}.`);
+}
+```
+
 ## getMaxVolume<sup>9+</sup>
 
-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;int&gt;): void
 
 获取指定流的最大音量。使用callback异步回调。
 
@@ -225,12 +324,14 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 
 **参数：**
 
-| 参数名     | 类型                                | 必填 | 说明                   |
-| ---------- | ----------------------------------- | ---- | ---------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。           |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量；否则为错误对象。 |
+| 参数名     | 类型                                                         | 必填 | 说明                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -244,9 +345,25 @@ audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: Business
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError | null, value: int | undefined) => {
+  if (err) {
+    console.error(`Failed to obtain the maximum volume. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the maximum volume is obtained. ${value}`);
+});
+```
+
 ## getMaxVolume<sup>9+</sup>
 
-getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
+ArkTS-Dyn: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
+
+ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 获取指定流的最大音量。使用Promise异步回调。
 
@@ -262,9 +379,11 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                          |
 | --------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回最大音量大小。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回最大音量大小。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
@@ -272,9 +391,19 @@ audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: nu
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: int) => {
+  console.info('Promised returned to indicate that the maximum volume is obtained.');
+});
+```
+
 ## getMaxVolumeSync<sup>10+</sup>
 
-getMaxVolumeSync(volumeType: AudioVolumeType): number
+ArkTS-Dyn: getMaxVolumeSync(volumeType: AudioVolumeType): number
+
+ArkTS-Sta: getMaxVolumeSync(volumeType: AudioVolumeType): int
 
 获取指定流的最大音量。同步返回结果。
 
@@ -290,7 +419,7 @@ getMaxVolumeSync(volumeType: AudioVolumeType): number
 
 | 类型                  | 说明                          |
 | --------------------- | ----------------------------- |
-| number | 返回最大音量大小。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回最大音量大小。 |
 
 **错误码：**
 
@@ -303,11 +432,27 @@ getMaxVolumeSync(volumeType: AudioVolumeType): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let value: number = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Indicate that the maximum volume is obtained. ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the maximum volume, error ${error}.`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: int = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
   console.info(`Indicate that the maximum volume is obtained. ${value}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -332,10 +477,26 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to obtain the mute status. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the mute status of the stream is obtained ${value}.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError | null, value: boolean | undefined) => {
   if (err) {
     console.error(`Failed to obtain the mute status. ${err}`);
     return;
@@ -431,10 +592,26 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
+  if (err) {
+    console.error(`Failed to obtain the ringer mode. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the ringer mode is obtained ${value}.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getRingerMode((err: BusinessError | null, value: audio.AudioRingMode | undefined) => {
   if (err) {
     console.error(`Failed to obtain the ringer mode. ${err}`);
     return;
@@ -580,10 +757,26 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to obtain the mute status of the microphone. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the mute status of the microphone is obtained ${value}.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMicrophoneMute((err: BusinessError | null, value: boolean | undefined) => {
   if (err) {
     console.error(`Failed to obtain the mute status of the microphone. ${err}`);
     return;
@@ -739,7 +932,9 @@ console.info(`Whether it is volume unadjustable: ${volumeAdjustSwitch}.`);
 
 ## getSystemVolumeInDb<sup>10+</sup>
 
-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType, callback: AsyncCallback&lt;double&gt;): void
 
 获取音量增益dB值。使用callback异步回调。
 
@@ -750,9 +945,9 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
-| volumeLevel | number                         | 是   | 音量等级。                                               |
+| volumeLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音量等级。                                               |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | 是   | 设备类型。                                               |
-| callback   | AsyncCallback&lt;number&gt;           | 是   | 回调函数。当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数。当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。 |
 
 **错误码：**
 
@@ -766,6 +961,8 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -778,9 +975,25 @@ audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audi
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER, (err: BusinessError | null, dB: double | undefined) => {
+  if (err) {
+    console.error(`Failed to get the volume DB. ${err}`);
+  } else {
+    console.info(`Success to get the volume DB. ${dB}`);
+  }
+});
+```
+
 ## getSystemVolumeInDb<sup>10+</sup>
 
-getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType): Promise&lt;number&gt;
+ArkTS-Dyn: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType): Promise&lt;number&gt;
+
+ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): Promise&lt;double&gt;
 
 获取音量增益dB值。使用Promise异步回调。
 
@@ -791,14 +1004,14 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
-| volumeLevel | number                              | 是   | 音量等级。                                             |
+| volumeLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音量等级。                                             |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | 是   | 设备类型。                                               |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回对应的音量增益dB值。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt; | Promise对象，返回对应的音量增益dB值。 |
 
 **错误码：**
 
@@ -812,6 +1025,8 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -822,9 +1037,23 @@ audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audi
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((value: double) => {
+  console.info(`Success to get the volume DB. ${value}`);
+}).catch((error: Error) => {
+  console.error(`Fail to adjust the system volume by step. ${error}`);
+});
+```
+
 ## getSystemVolumeInDbSync<sup>10+</sup>
 
-getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType): number
+ArkTS-Dyn: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device: DeviceType): number
+
+ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): double
 
 获取音量增益dB值。同步返回结果。
 
@@ -835,14 +1064,14 @@ getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
-| volumeLevel | number                              | 是   | 音量等级。                                             |
+| volumeLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音量等级。                                             |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | 是   | 设备类型。                                               |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| number | 返回对应的音量增益dB值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: doube | 返回对应的音量增益dB值。 |
 
 **错误码：**
 
@@ -854,6 +1083,8 @@ getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -867,9 +1098,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: double = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER);
+  console.info(`Success to get the volume DB. ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Fail to adjust the system volume by step. ${error}`);
+}
+```
+
 ## getMaxAmplitudeForInputDevice<sup>12+</sup>
 
-getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;number&gt;
+ArkTS-Dyn: getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;number&gt;
+
+ArkTS-Sta: getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;double&gt;
 
 获取输入设备音频流的最大电平值，取值范围为[0, 1]。使用Promise异步回调。
 
@@ -885,7 +1132,7 @@ getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;nu
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
 
 **错误码：**
 
@@ -898,6 +1145,8 @@ getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;nu
 | 6800301 | System error. Return by promise. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -918,9 +1167,32 @@ audio.getAudioManager().getRoutingManager().getPreferredInputDeviceForCapturerIn
 })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let capturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+audio.getAudioManager().getRoutingManager().getPreferredInputDeviceForCapturerInfo(capturerInfo).then((data: audio.AudioDeviceDescriptors) => {
+  audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((value) => {
+    console.info(`mic volatileume amplitude is: ${value}`);
+  }).catch((err: Error) => {
+    console.error("getMaxAmplitudeForInputDevice error" + JSON.stringify(err));
+  })
+}).catch((err: Error) => {
+  console.error("get outputDeviceId error" + JSON.stringify(err));
+})
+```
+
 ## getMaxAmplitudeForOutputDevice<sup>12+</sup>
 
-getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;number&gt;
+ArkTS-Dyn: getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;number&gt;
+
+ArkTS-Sta: getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;double&gt;
 
 获取输出设备音频流的最大电平值，取值范围为[0, 1]。使用Promise异步回调。
 
@@ -936,7 +1208,7 @@ getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
 
 **错误码：**
 
@@ -949,6 +1221,8 @@ getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;
 | 6800301 | System error. Return by promise. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -968,6 +1242,27 @@ audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo
   console.error("getPreferOutputDeviceForRendererInfo error" + JSON.stringify(err));
 })
 ```
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo(rendererInfo).then((data: audio.AudioDeviceDescriptors) => {
+  audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((value) => {
+    console.info(`mic volatileume amplitude is: ${value}`);
+  }).catch((err: Error) => {
+    console.error("getMaxAmplitudeForOutputDevice error" + JSON.stringify(err));
+  })
+}).catch((err: Error) => {
+  console.error("getPreferOutputDeviceForRendererInfo error" + JSON.stringify(err));
+})
+```
+
 ## setMicrophoneMute<sup>(deprecated)</sup>
 
 setMicrophoneMute(mute: boolean, callback: AsyncCallback&lt;void&gt;): void

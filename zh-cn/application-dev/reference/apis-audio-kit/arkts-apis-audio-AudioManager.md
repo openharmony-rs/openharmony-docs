@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 管理音频音量和设备。
 
@@ -30,10 +31,26 @@ getAudioScene\(callback: AsyncCallback<AudioScene\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getAudioScene((err: BusinessError, value: audio.AudioScene) => {
+  if (err) {
+    console.error(`Failed to obtain the audio scene mode. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the audio scene mode is obtained ${value}.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getAudioScene((err: BusinessError | null, value: audio.AudioScene | undefined) => {
   if (err) {
     console.error(`Failed to obtain the audio scene mode. ${err}`);
     return;
@@ -58,12 +75,26 @@ getAudioScene\(\): Promise<AudioScene\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getAudioScene().then((value: audio.AudioScene) => {
   console.info(`Promise returned to indicate that the audio scene mode is obtained ${value}.`);
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to obtain the audio scene mode ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getAudioScene().then((value: audio.AudioScene) => {
+  console.info(`Promise returned to indicate that the audio scene mode is obtained ${value}.`);
+}).catch ((err: Error) => {
   console.error(`Failed to obtain the audio scene mode ${err}`);
 });
 ```
@@ -102,6 +133,8 @@ on(type: 'audioSceneChange', callback: Callback\<AudioScene\>): void
 
 监听音频场景变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
 **参数：**
@@ -124,6 +157,8 @@ audioManager.on('audioSceneChange', (audioScene: audio.AudioScene) => {
 off(type: 'audioSceneChange', callback?: Callback\<AudioScene\>): void
 
 取消监听音频场景变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 

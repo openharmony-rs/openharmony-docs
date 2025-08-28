@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 ## 导入模块
 
@@ -100,6 +101,8 @@ createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -127,6 +130,38 @@ audio.createAudioRenderer(audioRendererOptions).then((data) => {
   audioRenderer = data;
   console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
 }).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let audioRenderer: audio.AudioRenderer;
+
+audio.createAudioRenderer(audioRendererOptions).then((data) => {
+  audioRenderer = data;
+  console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+}).catch((err: Error) => {
   console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
 });
 ```
@@ -208,6 +243,8 @@ createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -239,6 +276,38 @@ audio.createAudioCapturer(audioCapturerOptions).then((data) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+let audioCapturerOptions:audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioCapturer: audio.AudioCapturer;
+
+audio.createAudioCapturer(audioCapturerOptions).then((data) => {
+  audioCapturer = data;
+  console.info('AudioCapturer Created : SUCCESS');
+}).catch((err: Error) => {
+  console.error(`AudioCapturer Created : ERROR : ${err}`);
+});
+```
+
 ## audio.createAudioLoopback<sup>20+</sup>
 
 createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
@@ -247,6 +316,7 @@ createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
 
 在使用createAudioLoopback接口之前，需先通过[isAudioLoopbackSupported](arkts-apis-audio-AudioStreamManager.md#isaudioloopbacksupported20)查询系统返听能力。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

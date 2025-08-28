@@ -4,6 +4,7 @@
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 8开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 提供音频渲染的相关接口。
 
@@ -47,6 +48,8 @@ getRendererInfo(callback: AsyncCallback<AudioRendererInfo\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -55,6 +58,18 @@ audioRenderer.getRendererInfo((err: BusinessError, rendererInfo: audio.AudioRend
   console.info(`Renderer content: ${rendererInfo.content}`);
   console.info(`Renderer usage: ${rendererInfo.usage}`);
   console.info(`Renderer flags: ${rendererInfo.rendererFlags}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getRendererInfo((err: BusinessError<void> | null, rendererInfo: audio.AudioRendererInfo | undefined) => {
+  console.info('Renderer GetRendererInfo:');
+  console.info(`Renderer usage: ${rendererInfo!.usage}`);
+  console.info(`Renderer flags: ${rendererInfo!.rendererFlags}`);
 });
 ```
 
@@ -74,6 +89,8 @@ getRendererInfo(): Promise<AudioRendererInfo\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -83,6 +100,18 @@ audioRenderer.getRendererInfo().then((rendererInfo: audio.AudioRendererInfo) => 
   console.info(`Renderer usage: ${rendererInfo.usage}`);
   console.info(`Renderer flags: ${rendererInfo.rendererFlags}`)
 }).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRenderLog: RendererInfo :ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.getRendererInfo().then((rendererInfo: audio.AudioRendererInfo) => {
+  console.info('Renderer GetRendererInfo:');
+  console.info(`Renderer usage: ${rendererInfo.usage}`);
+  console.info(`Renderer flags: ${rendererInfo.rendererFlags}`)
+}).catch((err: Error) => {
   console.error(`AudioFrameworkRenderLog: RendererInfo :ERROR: ${err}`);
 });
 ```
@@ -103,12 +132,29 @@ getRendererInfoSync(): AudioRendererInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let rendererInfo: audio.AudioRendererInfo = audioRenderer.getRendererInfoSync();
   console.info(`Renderer content: ${rendererInfo.content}`);
+  console.info(`Renderer usage: ${rendererInfo.usage}`);
+  console.info(`Renderer flags: ${rendererInfo.rendererFlags}`)
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`AudioFrameworkRenderLog: RendererInfo :ERROR: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let rendererInfo: audio.AudioRendererInfo = audioRenderer.getRendererInfoSync();
   console.info(`Renderer usage: ${rendererInfo.usage}`);
   console.info(`Renderer flags: ${rendererInfo.rendererFlags}`)
 } catch (err) {
@@ -133,6 +179,8 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -142,6 +190,20 @@ audioRenderer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
   console.info(`Renderer channel: ${streamInfo.channels}`);
   console.info(`Renderer format: ${streamInfo.sampleFormat}`);
   console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getStreamInfo((err: BusinessError<void> | null, streamInfo: audio.AudioStreamInfo | undefined) => {
+  console.info('Renderer GetStreamInfo:');
+  console.info(`Renderer sampling rate: ${streamInfo!.samplingRate}`);
+  console.info(`Renderer channel: ${streamInfo!.channels}`);
+  console.info(`Renderer format: ${streamInfo!.sampleFormat}`);
+  console.info(`Renderer encoding type: ${streamInfo!.encodingType}`);
 });
 ```
 
@@ -161,6 +223,8 @@ getStreamInfo(): Promise<AudioStreamInfo\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -171,6 +235,22 @@ audioRenderer.getStreamInfo().then((streamInfo: audio.AudioStreamInfo) => {
   console.info(`Renderer format: ${streamInfo.sampleFormat}`);
   console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getStreamInfo().then((streamInfo: audio.AudioStreamInfo) => {
+  console.info('Renderer GetStreamInfo:');
+  console.info(`Renderer sampling rate: ${streamInfo.samplingRate}`);
+  console.info(`Renderer channel: ${streamInfo.channels}`);
+  console.info(`Renderer format: ${streamInfo.sampleFormat}`);
+  console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -208,7 +288,9 @@ try {
 
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getAudioStreamId(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getAudioStreamId(callback: AsyncCallback<long\>): void
 
 获取音频流id。使用callback异步回调。
 
@@ -218,9 +300,11 @@ getAudioStreamId(callback: AsyncCallback<number\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -230,9 +314,21 @@ audioRenderer.getAudioStreamId((err: BusinessError, streamId: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioStreamId((err: BusinessError<void> | null, streamId: long | undefined) => {
+  console.info(`Renderer GetStreamId: ${streamId}`);
+});
+```
+
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(): Promise<number\>
+ArkTS-Dyn: getAudioStreamId(): Promise<number\>
+
+ArkTS-Sta: getAudioStreamId(): Promise<long\>
 
 获取音频流id。使用Promise异步回调。
 
@@ -242,9 +338,11 @@ getAudioStreamId(): Promise<number\>
 
 | 类型                                           | 说明                   |
 | :--------------------------------------------- | :--------------------- |
-| Promise<number\> | Promise对象，返回音频流id。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回音频流id。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -256,9 +354,23 @@ audioRenderer.getAudioStreamId().then((streamId: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioStreamId().then((streamId: long) => {
+  console.info(`Renderer getAudioStreamId: ${streamId}`);
+}).catch((err: Error) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioStreamIdSync<sup>10+</sup>
 
-getAudioStreamIdSync(): number
+ArkTS-Dyn: getAudioStreamIdSync(): number
+
+ArkTS-Sta: getAudioStreamIdSync(): long
 
 获取音频流id。同步返回结果。
 
@@ -268,15 +380,31 @@ getAudioStreamIdSync(): number
 
 | 类型                                           | 说明                   |
 | :--------------------------------------------- | :--------------------- |
-| number | 返回音频流id。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回音频流id。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let streamId: number = audioRenderer.getAudioStreamIdSync();
+  console.info(`Renderer getAudioStreamIdSync: ${streamId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let streamId: long = audioRenderer.getAudioStreamIdSync();
   console.info(`Renderer getAudioStreamIdSync: ${streamId}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -310,10 +438,26 @@ setAudioEffectMode(mode: AudioEffectMode, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: BusinessError) => {
+  if (err) {
+    console.error('Failed to set params');
+  } else {
+    console.info('Callback invoked to indicate a successful audio effect mode setting.');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: BusinessError<void> | null) => {
   if (err) {
     console.error('Failed to set params');
   } else {
@@ -353,12 +497,26 @@ setAudioEffectMode(mode: AudioEffectMode): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT).then(() => {
   console.info('setAudioEffectMode SUCCESS');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT).then(() => {
+  console.info('setAudioEffectMode SUCCESS');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -379,10 +537,26 @@ getAudioEffectMode(callback: AsyncCallback\<AudioEffectMode>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEffectMode) => {
+  if (err) {
+    console.error('Failed to get params');
+  } else {
+    console.info(`getAudioEffectMode: ${effectMode}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioEffectMode((err: BusinessError<void> | null, effectMode: audio.AudioEffectMode | undefined) => {
   if (err) {
     console.error('Failed to get params');
   } else {
@@ -407,12 +581,24 @@ getAudioEffectMode(): Promise\<AudioEffectMode>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
   console.info(`getAudioEffectMode: ${effectMode}`);
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
+  console.info(`getAudioEffectMode: ${effectMode}`);
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -433,10 +619,26 @@ start(callback: AsyncCallback<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.start((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer start failed.');
+  } else {
+    console.info('Renderer start success.');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.start((err: BusinessError<void> | null) => {
   if (err) {
     console.error('Renderer start failed.');
   } else {
@@ -461,12 +663,24 @@ start(): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.start().then(() => {
   console.info('Renderer started');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.start().then(() => {
+  console.info('Renderer started');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -487,10 +701,26 @@ pause(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.pause((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer pause failed');
+  } else {
+    console.info('Renderer paused.');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.pause((err: BusinessError<void> | null) => {
   if (err) {
     console.error('Renderer pause failed');
   } else {
@@ -515,12 +745,24 @@ pause(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.pause().then(() => {
   console.info('Renderer paused');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.pause().then(() => {
+  console.info('Renderer paused');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -541,10 +783,26 @@ drain(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.drain((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer drain failed');
+  } else {
+    console.info('Renderer drained.');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.drain((err: BusinessError<void> | null) => {
   if (err) {
     console.error('Renderer drain failed');
   } else {
@@ -569,12 +827,24 @@ drain(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.drain().then(() => {
   console.info('Renderer drained successfully');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.drain().then(() => {
+  console.info('Renderer drained successfully');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -603,12 +873,24 @@ flush(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.flush().then(() => {
   console.info('Renderer flushed successfully');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.flush().then(() => {
+  console.info('Renderer flushed successfully');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -629,10 +911,26 @@ stop(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.stop((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer stop failed');
+  } else {
+    console.info('Renderer stopped.');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.stop((err: BusinessError<void> | null) => {
   if (err) {
     console.error('Renderer stop failed');
   } else {
@@ -657,12 +955,24 @@ stop(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.stop().then(() => {
   console.info('Renderer stopped successfully');
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.stop().then(() => {
+  console.info('Renderer stopped successfully');
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -683,10 +993,26 @@ release(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.release((err: BusinessError) => {
+  if (err) {
+    console.error('Renderer release failed');
+  } else {
+    console.info('Renderer released.');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.release((err: BusinessError<void> | null) => {
   if (err) {
     console.error('Renderer release failed');
   } else {
@@ -711,6 +1037,8 @@ release(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -721,9 +1049,21 @@ audioRenderer.release().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.release().then(() => {
+  console.info('Renderer released successfully');
+}).catch((err: Error) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getAudioTime(callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: getAudioTime(callback: AsyncCallback\<long>): void
 
 获取当前播放位置的时间戳（从1970年1月1日开始），单位为纳秒。使用callback异步回调。
 
@@ -733,9 +1073,11 @@ getAudioTime(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明             |
 | -------- | ---------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -745,9 +1087,21 @@ audioRenderer.getAudioTime((err: BusinessError, timestamp: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioTime((err: BusinessError<void> | null, timestamp: long | undefined) => {
+  console.info(`Current timestamp: ${timestamp}`);
+});
+```
+
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(): Promise\<number>
+ArkTS-Dyn: getAudioTime(): Promise\<number>
+
+ArkTS-Sta: getAudioTime(): Promise\<long>
 
 获取当前播放位置的时间戳（从1970年1月1日开始），单位为纳秒。使用Promise异步回调。
 
@@ -757,9 +1111,11 @@ getAudioTime(): Promise\<number>
 
 | 类型             | 描述                    |
 | ---------------- | ----------------------- |
-| Promise\<number> | Promise对象，返回时间戳。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回时间戳。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -771,9 +1127,23 @@ audioRenderer.getAudioTime().then((timestamp: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getAudioTime().then((timestamp: long) => {
+  console.info(`Current timestamp: ${timestamp}`);
+}).catch((err: Error) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## getAudioTimeSync<sup>10+</sup>
 
-getAudioTimeSync(): number
+ArkTS-Dyn: getAudioTimeSync(): number
+
+ArkTS-Sta: getAudioTimeSync(): long
 
 获取当前播放位置的时间戳（从1970年1月1日开始），单位为纳秒。同步返回结果。
 
@@ -783,15 +1153,31 @@ getAudioTimeSync(): number
 
 | 类型             | 描述                    |
 | ---------------- | ----------------------- |
-| number | 返回时间戳。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回时间戳。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let timestamp: number = audioRenderer.getAudioTimeSync();
+  console.info(`Current timestamp: ${timestamp}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let timestamp: long = audioRenderer.getAudioTimeSync();
   console.info(`Current timestamp: ${timestamp}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -829,12 +1215,24 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getAudioTimestampInfo().then((audioTimestampInfo: audio.AudioTimestampInfo) => {
   console.info(`Current timestamp: ${audioTimestampInfo.timestamp}`);
 }).catch((err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.getAudioTimestampInfo().then((audioTimestampInfo: audio.AudioTimestampInfo) => {
+  console.info(`Current timestamp: ${audioTimestampInfo.timestamp}`);
+}).catch((err: Error) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -877,7 +1275,9 @@ try {
 
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getBufferSize(callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: getBufferSize(callback: AsyncCallback\<long>): void
 
 获取音频渲染器的最小缓冲区大小。使用callback异步回调。
 
@@ -887,9 +1287,11 @@ getBufferSize(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -906,9 +1308,28 @@ audioRenderer.getBufferSize((err: BusinessError, data: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bufferSize: long | undefined;
+
+audioRenderer.getBufferSize((err: BusinessError<void> | null, data: long | undefined) => {
+  if (err) {
+    console.error('getBufferSize error');
+  } else {
+    console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
+    bufferSize = data;
+  }
+});
+```
+
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(): Promise\<number>
+ArkTS-Dyn: getBufferSize(): Promise\<number>
+
+ArkTS-Sta: getBufferSize(): Promise\<long>
 
 获取音频渲染器的最小缓冲区大小。使用Promise异步回调。
 
@@ -918,9 +1339,11 @@ getBufferSize(): Promise\<number>
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise对象，返回缓冲区大小。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回缓冲区大小。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -935,9 +1358,24 @@ audioRenderer.getBufferSize().then((data: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let bufferSize: long | undefined;
+
+audioRenderer.getBufferSize().then((data: long) => {
+  console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
+  bufferSize = data;
+}).catch((err: Error) => {
+  console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${err}`);
+});
+```
+
 ## getBufferSizeSync<sup>10+</sup>
 
-getBufferSizeSync(): number
+ArkTS-Dyn: getBufferSizeSync(): number
+
+ArkTS-Sta: getBufferSizeSync(): long
 
 获取音频渲染器的最小缓冲区大小。同步返回结果。
 
@@ -947,9 +1385,11 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| number | 返回缓冲区大小。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回缓冲区大小。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -965,9 +1405,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bufferSize: long = 0;
+
+try {
+  bufferSize = audioRenderer.getBufferSizeSync();
+  console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${bufferSize}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${error}`);
+}
+```
+
 ## setSpeed<sup>11+</sup>
 
-setSpeed(speed: number): void
+ArkTS-Dyn: setSpeed(speed: number): void
+
+ArkTS-Sta: setSpeed(speed: double): void
 
 设置播放倍速。
 
@@ -977,7 +1435,7 @@ setSpeed(speed: number): void
 
 | 参数名 | 类型                                     | 必填 | 说明                   |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | 是   | 设置播放的倍速值（倍速范围：0.25-4.0）。 |
+| speed | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 设置播放的倍速值（倍速范围：0.25-4.0）。 |
 
 **错误码：**
 
@@ -996,7 +1454,9 @@ audioRenderer.setSpeed(1.5);
 
 ## getSpeed<sup>11+</sup>
 
-getSpeed(): number
+ArkTS-Dyn: getSpeed(): number
+
+ArkTS-Sta: getSpeed(): double
 
 获取播放倍速。
 
@@ -1006,7 +1466,7 @@ getSpeed(): number
 
 | 类型                                              | 说明        |
 | ------------------------------------------------- |-----------|
-| number | 返回播放的倍速值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回播放的倍速值。 |
 
 **示例：**
 
@@ -1036,6 +1496,8 @@ setInterruptMode(mode: InterruptMode): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1047,6 +1509,17 @@ audioRenderer.setInterruptMode(mode).then(() => {
   console.error(`setInterruptMode Fail: ${err}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.setInterruptMode(audio.InterruptMode.SHARE_MODE).then(() => {
+  console.info('setInterruptMode Success!');
+}).catch((err: Error) => {
+  console.error(`setInterruptMode Fail: ${err}`);
+});
+```
+
 ## setInterruptMode<sup>9+</sup>
 
 setInterruptMode(mode: InterruptMode, callback: AsyncCallback\<void>): void
@@ -1064,12 +1537,27 @@ setInterruptMode(mode: InterruptMode, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mode = 1;
 
 audioRenderer.setInterruptMode(mode, (err: BusinessError) => {
+  if(err){
+    console.error(`setInterruptMode Fail: ${err}`);
+  }
+  console.info('setInterruptMode Success!');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE, (err: BusinessError<void> | null) => {
   if(err){
     console.error(`setInterruptMode Fail: ${err}`);
   }
@@ -1102,6 +1590,8 @@ setInterruptModeSync(mode: InterruptMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1114,9 +1604,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  audioRenderer.setInterruptModeSync(audio.InterruptMode.SHARE_MODE);
+  console.info('setInterruptMode Success!');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setInterruptMode Fail: ${error}`);
+}
+```
+
 ## setVolume<sup>9+</sup>
 
-setVolume(volume: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolume(volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volume: double): Promise&lt;void&gt;
 
 设置音频流的音量。使用Promise异步回调。
 
@@ -1126,7 +1632,7 @@ setVolume(volume: number): Promise&lt;void&gt;
 
 | 参数名     | 类型    | 必填   | 说明                 |
 | ---------- | ------- | ------ | ------------------- |
-| volume     | number  | 是     | 音量值范围为[0.0, 1.0]。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是     | 音量值范围为[0.0, 1.0]。 |
 
 **返回值：**
 
@@ -1135,6 +1641,8 @@ setVolume(volume: number): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1145,9 +1653,22 @@ audioRenderer.setVolume(0.5).then(() => {
   console.error(`setVolume Fail: ${err}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.setVolume(0.5).then(() => {
+  console.info('setVolume Success!');
+}).catch((err: Error) => {
+  console.error(`setVolume Fail: ${err}`);
+});
+```
+
 ## setVolume<sup>9+</sup>
 
-setVolume(volume: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setVolume(volume: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: setVolume(volume: double, callback: AsyncCallback\<void>): void
 
 设置音频流的音量。使用callback异步回调。
 
@@ -1157,10 +1678,12 @@ setVolume(volume: number, callback: AsyncCallback\<void>): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|volume   | number     | 是     | 音量值范围为[0.0, 1.0]。 |
+|volume   | ArkTS-Dyn: number<br>ArkTS-Sta: double     | 是     | 音量值范围为[0.0, 1.0]。 |
 |callback | AsyncCallback\<void> | 是     |回调函数。当设置应用的音量成功，err为undefined，否则为错误对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1173,9 +1696,26 @@ audioRenderer.setVolume(0.5, (err: BusinessError) => {
   console.info('setVolume Success!');
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.setVolume(0.5, (err: BusinessError<void> | null) => {
+  if(err){
+    console.error(`setVolume Fail: ${err}`);
+    return;
+  }
+  console.info('setVolume Success!');
+});
+```
+
 ## getVolume<sup>12+</sup>
 
-getVolume(): number
+ArkTS-Dyn: getVolume(): number
+
+ArkTS-Sta: getVolume(): double
 
 获取音频流的音量。同步返回结果。
 
@@ -1185,9 +1725,11 @@ getVolume(): number
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| number | 返回音量大小，音量值范围为[0.0, 1.0]。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回音量大小，音量值范围为[0.0, 1.0]。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1201,9 +1743,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: double = audioRenderer.getVolume();
+  console.info(`Indicate that the volume is obtained ${value}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume, error ${error}.`);
+}
+```
+
 ## getMinStreamVolume<sup>10+</sup>
 
-getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getMinStreamVolume(callback: AsyncCallback&lt;double&gt;): void
 
 获取音频流的最小音量。使用callback异步回调。
 
@@ -1213,9 +1771,11 @@ getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
+|callback |ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1228,9 +1788,26 @@ audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getMinStreamVolume((err: BusinessError<void> | null, minVolume: double | undefined) => {
+  if (err) {
+    console.error(`getMinStreamVolume error: ${err}`);
+  } else {
+    console.info(`getMinStreamVolume Success! ${minVolume}`);
+  }
+});
+```
+
 ## getMinStreamVolume<sup>10+</sup>
 
-getMinStreamVolume(): Promise&lt;number&gt;
+ArkTS-Dyn: getMinStreamVolume(): Promise&lt;number&gt;
+
+ArkTS-Sta: getMinStreamVolume(): Promise&lt;double&gt;
 
 获取音频流的最小音量。使用Promise异步回调。
 
@@ -1240,9 +1817,11 @@ getMinStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最小音量（音量范围[0, 1]）。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt;| Promise对象，返回音频流最小音量（音量范围[0, 1]）。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1254,9 +1833,21 @@ audioRenderer.getMinStreamVolume().then((value: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.getMinStreamVolume().then((value: double) => {
+  console.info(`Get min stream volume Success! ${value}`);
+}).catch((err: Error) => {
+  console.error(`Get min stream volume Fail: ${err}`);
+});
+```
+
 ## getMinStreamVolumeSync<sup>10+</sup>
 
-getMinStreamVolumeSync(): number
+ArkTS-Dyn: getMinStreamVolumeSync(): number
+
+ArkTS-Sta: getMinStreamVolumeSync(): double
 
 获取音频流的最小音量。同步返回结果。
 
@@ -1266,9 +1857,11 @@ getMinStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最小音量（音量范围[0, 1]）。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double| 返回音频流最小音量（音量范围[0, 1]）。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1282,9 +1875,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: double = audioRenderer.getMinStreamVolumeSync();
+  console.info(`Get min stream volume Success! ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get min stream volume Fail: ${error}`);
+}
+```
+
 ## getMaxStreamVolume<sup>10+</sup>
 
-getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getMaxStreamVolume(callback: AsyncCallback&lt;double&gt;): void
 
 获取音频流的最大音量。使用callback异步回调。
 
@@ -1294,9 +1903,11 @@ getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。|
+|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1309,9 +1920,26 @@ audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getMaxStreamVolume((err: BusinessError<void> | null, maxVolume: double | undefined) => {
+  if (err) {
+    console.error(`getMaxStreamVolume Fail: ${err}`);
+  } else {
+    console.info(`getMaxStreamVolume Success! ${maxVolume}`);
+  }
+});
+```
+
 ## getMaxStreamVolume<sup>10+</sup>
 
-getMaxStreamVolume(): Promise&lt;number&gt;
+ArkTS-Dyn: getMaxStreamVolume(): Promise&lt;number&gt;
+
+ArkTS-Sta: getMaxStreamVolume(): Promise&lt;double&gt;
 
 获取音频流的最大音量。使用Promise异步回调。
 
@@ -1321,9 +1949,11 @@ getMaxStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最大音量（音量范围[0, 1]）。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt;| Promise对象，返回音频流最大音量（音量范围[0, 1]）。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1335,9 +1965,21 @@ audioRenderer.getMaxStreamVolume().then((value: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.getMaxStreamVolume().then((value: double) => {
+  console.info(`Get max stream volume Success! ${value}`);
+}).catch((err: Error) => {
+  console.error(`Get max stream volume Fail: ${err}`);
+});
+```
+
 ## getMaxStreamVolumeSync<sup>10+</sup>
 
-getMaxStreamVolumeSync(): number
+ArkTS-Dyn: getMaxStreamVolumeSync(): number
+
+ArkTS-Sta: getMaxStreamVolumeSync(): double
 
 获取音频流的最大音量。同步返回结果。
 
@@ -1347,9 +1989,11 @@ getMaxStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最大音量（音量范围[0, 1]）。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double| 返回音频流最大音量（音量范围[0, 1]）。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1363,9 +2007,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: double = audioRenderer.getMaxStreamVolumeSync();
+  console.info(`Get max stream volume Success! ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get max stream volume Fail: ${error}`);
+}
+```
+
 ## getUnderflowCount<sup>10+</sup>
 
-getUnderflowCount(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getUnderflowCount(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getUnderflowCount(callback: AsyncCallback&lt;long&gt;): void
 
 获取当前播放音频流的欠载音频帧数量。使用callback异步回调。
 
@@ -1375,9 +2035,11 @@ getUnderflowCount(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取当前播放音频流的欠载音频帧数量成功，err为undefined，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。|
+|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是     |回调函数。当获取当前播放音频流的欠载音频帧数量成功，err为undefined，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1390,9 +2052,26 @@ audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => 
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getUnderflowCount((err: BusinessError<void> | null, underflowCount: long | undefined) => {
+  if (err) {
+    console.error(`getUnderflowCount Fail: ${err}`);
+  } else {
+    console.info(`getUnderflowCount Success! ${underflowCount}`);
+  }
+});
+```
+
 ## getUnderflowCount<sup>10+</sup>
 
-getUnderflowCount(): Promise&lt;number&gt;
+ArkTS-Dyn: getUnderflowCount(): Promise&lt;number&gt;
+
+ArkTS-Sta: getUnderflowCount(): Promise&lt;long&gt;
 
 获取当前播放音频流的欠载音频帧数量。使用Promise异步回调。
 
@@ -1402,9 +2081,11 @@ getUnderflowCount(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流的欠载音频帧数量。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;| Promise对象，返回音频流的欠载音频帧数量。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1416,9 +2097,21 @@ audioRenderer.getUnderflowCount().then((value: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.getUnderflowCount().then((value: long) => {
+  console.info(`Get underflow count Success! ${value}`);
+}).catch((err: Error) => {
+  console.error(`Get underflow count Fail: ${err}`);
+});
+```
+
 ## getUnderflowCountSync<sup>10+</sup>
 
-getUnderflowCountSync(): number
+ArkTS-Dyn: getUnderflowCountSync(): number
+
+ArkTS-Sta: getUnderflowCountSync(): long
 
 获取当前播放音频流的欠载音频帧数量，同步返回数据。
 
@@ -1428,15 +2121,31 @@ getUnderflowCountSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流的欠载音频帧数量。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: long| 返回音频流的欠载音频帧数量。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let value: number = audioRenderer.getUnderflowCountSync();
+  console.info(`Get underflow count Success! ${value}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Get underflow count Fail: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: long = audioRenderer.getUnderflowCountSync();
   console.info(`Get underflow count Success! ${value}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -1460,6 +2169,8 @@ getCurrentOutputDevices(callback: AsyncCallback&lt;AudioDeviceDescriptors&gt;): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1480,6 +2191,30 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getCurrentOutputDevices((err: BusinessError<void> | null, deviceInfo: audio.AudioDeviceDescriptors | undefined) => {
+  if (err) {
+    console.error(`getCurrentOutputDevices Fail: ${err}`);
+  } else {
+    for (let i = 0; i < deviceInfo!.length; i++) {
+      console.info(`DeviceInfo id: ${deviceInfo![i].id}`);
+      console.info(`DeviceInfo type: ${deviceInfo![i].deviceType}`);
+      console.info(`DeviceInfo role: ${deviceInfo![i].deviceRole}`);
+      console.info(`DeviceInfo name: ${deviceInfo![i].name}`);
+      console.info(`DeviceInfo address: ${deviceInfo![i].address}`);
+      console.info(`DeviceInfo samplerate: ${deviceInfo![i].sampleRates[0]}`);
+      console.info(`DeviceInfo channelcount: ${deviceInfo![i].channelCounts[0]}`);
+      console.info(`DeviceInfo channelmask: ${deviceInfo![i].channelMasks[0]}`);
+    }
+  }
+});
+```
+
 ## getCurrentOutputDevices<sup>10+</sup>
 
 getCurrentOutputDevices(): Promise&lt;AudioDeviceDescriptors&gt;
@@ -1496,6 +2231,8 @@ getCurrentOutputDevices(): Promise&lt;AudioDeviceDescriptors&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1511,6 +2248,27 @@ audioRenderer.getCurrentOutputDevices().then((deviceInfo: audio.AudioDeviceDescr
     console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
   }
 }).catch((err: BusinessError) => {
+  console.error(`Get current output devices Fail: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRenderer.getCurrentOutputDevices().then((deviceInfo: audio.AudioDeviceDescriptors) => {
+  for (let i = 0; i < deviceInfo.length; i++) {
+    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
+    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
+    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
+    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
+    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
+    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
+  }
+}).catch((err: Error) => {
   console.error(`Get current output devices Fail: ${err}`);
 });
 ```
@@ -1585,7 +2343,9 @@ console.info(`BlendMode: ${mode}`);
 ```
 ## setVolumeWithRamp<sup>11+</sup>
 
-setVolumeWithRamp(volume: number, duration: number): void
+ArkTS-Dyn: setVolumeWithRamp(volume: number, duration: number): void
+
+ArkTS-Sta: setVolumeWithRamp(volume: double, duration: int): void
 
 在指定时间范围内设置音量渐变模式。同步返回结果。
 
@@ -1595,8 +2355,8 @@ setVolumeWithRamp(volume: number, duration: number): void
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volume     | number | 是   | 渐变目标音量值，音量范围为[0.0, 1.0]。                                             |
-| duration     | number | 是   | 渐变持续时间，单位为ms。                                             |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 渐变目标音量值，音量范围为[0.0, 1.0]。                                             |
+| duration     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 渐变持续时间，单位为ms。                                             |
 
 **错误码：**
 
@@ -1699,6 +2459,8 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1708,6 +2470,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 audioRenderer.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
   console.info('setDefaultOutputDevice Success!');
 }).catch((err: BusinessError) => {
+  console.error(`setDefaultOutputDevice Fail: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+// 本接口允许在AudioRenderer创建以后的任何时间被调用。
+// 未播放时调用，系统会记录应用设置的默认本机内置发声设备，当应用启动播放时从设置的默认本机内置发声设备发声。
+// 正在播放时调用，在没有外接设备如蓝牙耳机/有线耳机，系统会立即切换到设置的默认本机内置发声设备发声；否则系统会先记录应用设置的默认本机内置发声设备，等外接设备移除后再切换到设置的默认本机内置发声设备发声。
+audioRenderer.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+  console.info('setDefaultOutputDevice Success!');
+}).catch((err: Error) => {
   console.error(`setDefaultOutputDevice Fail: ${err}`);
 });
 ```
@@ -1888,7 +2663,9 @@ audioRenderer.off('audioInterrupt', audioInterruptCallback);
 
 ## on('markReach')<sup>8+</sup>
 
-on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
+ArkTS-Dyn: on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
+
+ArkTS-Sta: on(type: 'markReach', frame: long, callback: Callback&lt;long&gt;): void
 
 监听标记到达事件（当渲染的帧数到达frame参数的值时触发，仅调用一次）。使用callback异步回调。
 
@@ -1901,10 +2678,12 @@ on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
 | 参数名   | 类型                     | 必填 | 说明                                      |
 | :------- | :----------------------- | :--- | :---------------------------------------- |
 | type     | string                   | 是   | 事件回调类型，支持的事件为'markReach'，当渲染的帧数到达frame参数的值时，触发该事件。 |
-| frame    | number                   | 是   | 触发事件的帧数。该值必须大于0。         |
-| callback | Callback\<number>         | 是   | 回调函数，返回frame参数的值。 |
+| frame    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 是   | 触发事件的帧数。该值必须大于0。         |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 是   | 回调函数，返回frame参数的值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioRenderer.on('markReach', 1000, (position: number) => {
@@ -1914,10 +2693,21 @@ audioRenderer.on('markReach', 1000, (position: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.on('markReach', 1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
 
 ## off('markReach')<sup>8+</sup>
 
-off(type: 'markReach', callback?: Callback&lt;number&gt;): void
+ArkTS-Dyn: off(type: 'markReach', callback?: Callback&lt;number&gt;): void
+
+ArkTS-Sta: off(type: 'markReach', callback?: Callback&lt;long&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
@@ -1928,9 +2718,11 @@ off(type: 'markReach', callback?: Callback&lt;number&gt;): void
 | 参数名 | 类型   | 必填 | 说明                                              |
 | :----- | :----- | :--- | :------------------------------------------------ |
 | type   | string | 是   | 事件回调类型，支持的事件为'markReach'，当取消监听标记到达事件时，触发该事件。 |
-| callback<sup>18+</sup> | Callback\<number>         | 否  | 回调函数，返回frame参数的值。 |
+| callback<sup>18+</sup> | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 否  | 回调函数，返回frame参数的值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // 取消该事件的所有监听。
@@ -1948,9 +2740,29 @@ audioRenderer.on('markReach', 1000, markReachCallback);
 audioRenderer.off('markReach', markReachCallback);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.off('markReach');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let markReachCallback = (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioRenderer.on('markReach', 1000, markReachCallback);
+
+audioRenderer.off('markReach', markReachCallback);
+```
+
 ## on('periodReach')<sup>8+</sup>
 
-on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
+ArkTS-Dyn: on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
+
+ArkTS-Sta: on(type: 'periodReach', frame: long, callback: Callback&lt;long&gt;): void
 
 监听标记到达事件（每当渲染的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
@@ -1963,10 +2775,12 @@ on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 | 参数名   | 类型                     | 必填 | 说明                                        |
 | :------- | :----------------------- | :--- | :------------------------------------------ |
 | type     | string                   | 是   | 事件回调类型，支持的事件为'periodReach'，当渲染的帧数达到frame参数的值时，触发该事件。 |
-| frame    | number                   | 是   | 触发事件的帧数。该值必须大于 0。           |
-| callback | Callback\<number>         | 是   | 回调函数，返回frame参数的值。 |
+| frame    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 是   | 触发事件的帧数。该值必须大于 0。           |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 是   | 回调函数，返回frame参数的值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioRenderer.on('periodReach', 1000, (position: number) => {
@@ -1976,9 +2790,20 @@ audioRenderer.on('periodReach', 1000, (position: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+audioRenderer.on('periodReach', 1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
 ## off('periodReach')<sup>8+</sup>
 
-off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
+ArkTS-Dyn: off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
+
+ArkTS-Sta: off(type: 'periodReach', callback?: Callback&lt;long&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
@@ -1989,9 +2814,11 @@ off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
 | 参数名 | 类型   | 必填 | 说明                                                |
 | :----- | :----- | :--- | :-------------------------------------------------- |
 | type   | string | 是   | 事件回调类型，支持的事件为'periodReach'，当取消监听标记到达事件时，触发该事件。 |
-| callback<sup>18+</sup> | Callback\<number>         | 否  | 回调函数，返回frame参数的值。 |
+| callback<sup>18+</sup> | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 否  | 回调函数，返回frame参数的值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // 取消该事件的所有监听。
@@ -1999,6 +2826,24 @@ audioRenderer.off('periodReach');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let periodReachCallback = (position: number) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioRenderer.on('periodReach', 1000, periodReachCallback);
+
+audioRenderer.off('periodReach', periodReachCallback);
+```
+
+ArkTS-Sta示例：
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.off('periodReach');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let periodReachCallback = (position: long) => {
   if (position == 1000) {
     console.info('ON Triggered successfully');
   }
@@ -2263,6 +3108,8 @@ on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import {fileIo as fs} from '@kit.CoreFileKit';
@@ -2306,6 +3153,48 @@ audioRenderer.start().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import {fileIo as fs} from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI'
+import { ReadOptions } from '@kit.CoreFileKit';
+
+let bufferSize: long = 0;
+// 请在组件内调用AppStorage.setOrCreate('context',this.context);获context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果UIAbilityContext。
+let context = AppStorage.get<common.UIAbilityContext>('context') ascommon.UIAbilityContext;
+let path = context.cacheDir;
+// 确保该沙箱路径下存在该资源。
+let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+let writeDataCallback = (buffer: ArrayBuffer) => {
+  let options: ReadOptions = {
+    offset: bufferSize,
+    length: buffer.byteLength
+  };
+
+  try {
+    fs.readSync(file.fd, buffer, options);
+    bufferSize += buffer.byteLength;
+    // API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果。
+    return audio.AudioDataCallbackResult.VALID;
+  } catch (error) {
+    console.error('Error reading file:', error);
+    // API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果。
+    return audio.AudioDataCallbackResult.INVALID;
+  }
+};
+
+audioRenderer.on('writeData', writeDataCallback);
+audioRenderer.start().then(() => {
+  console.info('Renderer started');
+}).catch((err: Error) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## off('writeData')<sup>11+</sup>
 
 off(type: 'writeData', callback?: AudioRendererWriteDataCallback): void
@@ -2332,6 +3221,8 @@ off(type: 'writeData', callback?: AudioRendererWriteDataCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // 取消该事件的所有监听。
 audioRenderer.off('writeData');
@@ -2345,6 +3236,24 @@ audioRenderer.on('writeData', writeDataCallback);
 
 audioRenderer.off('writeData', writeDataCallback);
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.off('writeData');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let writeDataCallback = (data: ArrayBuffer) => {
+    console.info(`write data: ${data}`);
+    return audio.AudioDataCallbackResult.VALID;
+};
+
+audioRenderer.on('writeData', writeDataCallback);
+
+audioRenderer.off('writeData', writeDataCallback);
+```
+
 ## write<sup>(deprecated)</sup>
 
 write(buffer: ArrayBuffer, callback: AsyncCallback\<number>): void

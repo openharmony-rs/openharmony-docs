@@ -10,6 +10,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.audio (音频管理)](arkts-apis-audio.md)。
 
 ## 导入模块
@@ -47,6 +48,8 @@ createTonePlayer(options: AudioRendererInfo, callback: AsyncCallback&lt;TonePlay
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 
@@ -55,6 +58,28 @@ let audioRendererInfo: audio.AudioRendererInfo = {
   rendererFlags : 0
 };
 let tonePlayer: audio.TonePlayer;
+
+audio.createTonePlayer(audioRendererInfo, (err, data) => {
+  console.info(`callback call createTonePlayer: audioRendererInfo: ${audioRendererInfo}`);
+  if (err) {
+    console.error(`callback call createTonePlayer return error: ${err.message}`);
+  } else {
+    console.info(`callback call createTonePlayer return data: ${data}`);
+    tonePlayer = data;
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage : audio.StreamUsage.STREAM_USAGE_DTMF,
+  rendererFlags : 0
+};
+let tonePlayer: audio.TonePlayer | undefined;
 
 audio.createTonePlayer(audioRendererInfo, (err, data) => {
   console.info(`callback call createTonePlayer: audioRendererInfo: ${audioRendererInfo}`);
@@ -139,6 +164,8 @@ createAsrProcessingController(audioCapturer: AudioCapturer): AsrProcessingContro
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 
@@ -166,6 +193,40 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
     console.info('AudioCapturer Created : Success : SUCCESS');
     let audioCapturer = data;
     let asrProcessingController = audio.createAsrProcessingController(audioCapturer);
+    console.info('AsrProcessingController Created : Success : SUCCESS');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
+  if (err) {
+    console.error(`AudioCapturer Created : Error: ${err}`);
+  } else {
+    console.info('AudioCapturer Created : Success : SUCCESS');
+    let audioCapturer = data;
+    let asrProcessingController = audio.createAsrProcessingController(audioCapturer as audio.AudioCapturer);
     console.info('AsrProcessingController Created : Success : SUCCESS');
   }
 });
@@ -362,7 +423,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | 名称          | 类型                                                            | 只读 | 可选 | 说明             |
 | --------------| -------------------------------------------------------------- | ---- |---| ---------------- |
 | requestResult | [InterruptRequestResultType](#interruptrequestresulttype9)     | 否 | 否 | 表示音频请求中断类型。 |
-| interruptNode | number                                                         | 否 | 否 | 音频请求中断的节点。 |
+| interruptNode | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                         | 否 | 否 | 音频请求中断的节点。 |
 
 ## VolumeEvent<sup>9+</sup>
 
@@ -374,7 +435,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称       | 类型                                | 只读 | 可选 | 说明                                        |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
-| volumeGroupId | number                           | 否 | 否 | 音量组id，可用于getGroupManager入参。 |
+| volumeGroupId | ArkTS-Dyn: number<br>ArkTS-Sta: int                           | 否 | 否 | 音量组id，可用于getGroupManager入参。 |
 | networkId  | string                              | 否 | 否 | 网络id。 |
 
 ## ConnectType<sup>9+</sup>
@@ -409,8 +470,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | 名称                        | 类型                       | 只读 | 可选 | 说明       |
 | -------------------------- | -------------------------- | ---- | ---- | ---------- |
 | networkId<sup>9+</sup>     | string                     | 是   | 否   | 组网络id。  |
-| groupId<sup>9+</sup>       | number                     | 是   | 否   | 组设备组id。 |
-| mappingId<sup>9+</sup>     | number                     | 是   | 否   | 组映射id。 |
+| groupId<sup>9+</sup>       | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 组设备组id。 |
+| mappingId<sup>9+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 组映射id。 |
 | groupName<sup>9+</sup>     | string                     | 是   | 否   | 组名。 |
 | type<sup>9+</sup>          | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
 
@@ -483,6 +544,8 @@ setExtraParameters(mainKey: string, kvpairs: Record<string, string\>): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -494,6 +557,21 @@ kvpairs = {
 audioManager.setExtraParameters('key_example', kvpairs).then(() => {
   console.info('Promise returned to indicate a successful setting of the extra parameters.');
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to set the audio extra parameters ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let kvpairs = {} as Record<string, string>;
+kvpairs = {
+  'key_example': 'value_example'
+};
+
+audioManager.setExtraParameters('key_example', kvpairs).then(() => {
+  console.info('Promise returned to indicate a successful setting of the extra parameters.');
+}).catch ((err: Error) => {
   console.error(`Failed to set the audio extra parameters ${err}`);
 });
 ```
@@ -533,6 +611,8 @@ getExtraParameters(mainKey: string, subKeys?: Array\<string>): Promise\<Record\<
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -543,6 +623,18 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
   console.error(`Failed to get the audio extra parameters ${err}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+let subKeys: Array<String> = ['key_example'];
+audioManager.getExtraParameters('key_example', subKeys).then((value: Record<string, string>) => {
+  console.info(`Promise returned to indicate that the value of the audio extra parameters is obtained ${value}.`);
+}).catch ((err: Error) => {
+  console.error(`Failed to get the audio extra parameters ${err}`);
+});
+```
+
 
 ### setAudioScene<sup>8+</sup>
 
@@ -563,10 +655,26 @@ setAudioScene\(scene: AudioScene, callback: AsyncCallback<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set the audio scene mode. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate a successful setting of the audio scene mode.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`Failed to set the audio scene mode. ${err}`);
     return;
@@ -599,12 +707,24 @@ setAudioScene\(scene: AudioScene\): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
   console.info('Promise returned to indicate a successful setting of the audio scene mode.');
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to set the audio scene mode ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
+  console.info('Promise returned to indicate a successful setting of the audio scene mode.');
+}).catch ((err: Error) => {
   console.error(`Failed to set the audio scene mode ${err}`);
 });
 ```
@@ -672,12 +792,24 @@ disableSafeMediaVolume(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.disableSafeMediaVolume().then(() => {
   console.info('disableSafeMediaVolume success.');
 }).catch ((err: BusinessError) => {
+  console.error(`disableSafeMediaVolume fail: ${err.code},${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioManager.disableSafeMediaVolume().then(() => {
+  console.info('disableSafeMediaVolume success.');
+}).catch ((err: Error) => {
   console.error(`disableSafeMediaVolume fail: ${err.code},${err.message}`);
 });
 ```
@@ -764,10 +896,27 @@ getVolumeGroupInfos(networkId: string, callback: AsyncCallback<VolumeGroupInfos\
 | callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | 是   | 回调函数。当获取音量组信息列表成功，err为undefined，data为获取到的音量组信息列表；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessError, value: audio.VolumeGroupInfos) => {
+  if (err) {
+    console.error(`Failed to obtain the volume group infos list. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the volume group infos list is obtained.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessError<void> | null, value: audio.VolumeGroupInfos | undefined) => {
   if (err) {
     console.error(`Failed to obtain the volume group infos list. ${err}`);
     return;
@@ -854,7 +1003,9 @@ try {
 
 ### getAppVolumePercentageForUid<sup>19+</sup>
 
-getAppVolumePercentageForUid(uid: number\): Promise<number\>
+ArkTS-Dyn: getAppVolumePercentageForUid(uid: number\): Promise<number\>
+
+ArkTS-Sta: getAppVolumePercentageForUid(uid: int\): Promise<int\>
 
 根据应用ID获取指定应用的音量（范围为0到100）。使用Promise异步回调。
 
@@ -866,13 +1017,13 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 | 参数名     | 类型                                      | 必填 | 说明                               |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| uid    | number                                   | 是   | 表示应用ID。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。 |
 
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回应用的音量（范围为0到100）。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回应用的音量（范围为0到100）。 |
 
 **错误码：**
 
@@ -886,6 +1037,8 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
 
@@ -894,9 +1047,21 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+
+audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: int) => {
+  console.info(`app volume is ${value}.`);
+});
+```
+
 ### setAppVolumePercentageForUid<sup>19+</sup>
 
-setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
+ArkTS-Dyn: setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
+
+ArkTS-Sta: setAppVolumePercentageForUid(uid: int, volume: int\): Promise<void\>
 
 根据应用ID设置指定应用的音量（范围为0到100）。使用Promise异步回调。
 
@@ -908,8 +1073,8 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 | 参数名     | 类型                                      | 必填 | 说明       |
 | ---------- | ---------------------------------------- | ---- |----------|
-| uid    | number                                   | 是   | 表示应用ID。   |
-| volume    | number                                   | 是   | 要设置的音量值。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。   |
+| volume    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 要设置的音量值。 |
 
 **返回值：**
 
@@ -930,6 +1095,8 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
 let volume: number = 20;    // 要设置的音量值。
@@ -939,9 +1106,22 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+let volume: int = 20;    // 要设置的音量值。
+
+audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
+  console.info(`set app volume success.`);
+});
+```
+
 ### isAppVolumeMutedForUid<sup>19+</sup>
 
-isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
+ArkTS-Dyn: isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
+
+ArkTS-Sta: isAppVolumeMutedForUid(uid: int, owned: boolean\): Promise<boolean\>
 
 根据应用ID查询应用音量是否已静音。使用Promise异步回调。
 
@@ -957,7 +1137,7 @@ isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
 
 | 参数名     | 类型                                      | 必填 | 说明                                        |
 | ---------- | ---------------------------------------- | ---- |-------------------------------------------|
-| uid    | number                                   | 是   | 表示应用ID。                                    |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。                                    |
 | owned    | boolean                                   | 是   | 要查询的静音状态。true查询当前调用者的静音状态，false查询应用的静音状态。 |
 
 **返回值：**
@@ -978,6 +1158,8 @@ isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
 
@@ -986,9 +1168,21 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+
+audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
+  console.info(`app muted state is ${value}.`);
+});
+```
+
 ### setAppVolumeMutedForUid<sup>19+</sup>
 
-setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
+ArkTS-Dyn: setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
+
+ArkTS-Sta: setAppVolumeMutedForUid(uid: int, muted: boolean\): Promise<void\>
 
 根据应用ID设置应用静音状态。使用Promise异步回调。
 
@@ -1000,7 +1194,7 @@ setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 | 参数名     | 类型                                      | 必填 | 说明                             |
 | ---------- | ---------------------------------------- | ---- |--------------------------------|
-| uid    | number                                   | 是   | 表示应用ID。                         |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。                         |
 | owned    | boolean                                   | 是   | 设置应用的静音状态。true设置为静音，false解除静音。 |
 
 **返回值：**
@@ -1022,6 +1216,8 @@ setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
 
@@ -1030,9 +1226,22 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+
+audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
+  console.info(`set app mute state success.`);
+});
+```
+
+
 ### on('appVolumeChangeForUid')<sup>19+</sup>
 
-on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>): void
+ArkTS-Dyn: on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>): void
+
+ArkTS-Sta: on(type: 'appVolumeChangeForUid', uid: int, callback: Callback\<VolumeEvent>): void
 
 监听指定应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
@@ -1045,7 +1254,7 @@ on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>)
 | 参数名   | 类型                                   | 必填 | 说明                                |
 | -------- | -------------------------------------- | ---- |-----------------------------------|
 | type     | string                                 | 是   | 事件回调类型，支持的事件为'appVolumeChangeForUid'，当应用级音量发生变化时，触发该事件。 |
-| uid | number |  是   | 表示应用ID。                          |
+| uid | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是   | 表示应用ID。                          |
 | callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。                  |
 
 **错误码：**
@@ -1060,8 +1269,22 @@ on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
+
+audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
 
 audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEvent) => {
   console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
@@ -1099,6 +1322,8 @@ off(type: 'appVolumeChangeForUid', callback?: Callback\<VolumeEvent>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // 取消该事件的所有监听。
 audioVolumeManager.off('appVolumeChangeForUid');
@@ -1111,6 +1336,25 @@ let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
 };
 
 audioVolumeManager.on('appVolumeChangeForUid', appVolumeChangeForUidCallback);
+
+audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+// 取消该事件的所有监听。
+audioVolumeManager.off('appVolumeChangeForUid');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.on('appVolumeChangeForUid', uid, appVolumeChangeForUidCallback);
 
 audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 ```
@@ -1197,7 +1441,9 @@ audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback)
 
 ### setVolume<sup>9+</sup>
 
-setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setVolume(volumeType: AudioVolumeType, volume: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置指定流的音量。使用callback异步回调。
 
@@ -1214,10 +1460,12 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
-| volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
 | callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1231,9 +1479,25 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: Busines
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to set the volume. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate a successful volume setting.');
+});
+```
+
 ### setVolume<sup>9+</sup>
 
-setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volumeType: AudioVolumeType, volume: int): Promise&lt;void&gt;
 
 设置指定流的音量。使用Promise异步回调。
 
@@ -1250,7 +1514,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
-| volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
 
 **返回值：**
 
@@ -1268,7 +1532,9 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
 
 ### setVolumeWithFlag<sup>12+</sup>
 
-setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolumeWithFlag(volumeType: AudioVolumeType, volume: int, flags: int): Promise&lt;void&gt;
 
 设置指定流的音量，同时指定本次修改音量是否要显示系统音量条。使用Promise异步回调。
 
@@ -1285,8 +1551,8 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 | 参数名     | 类型                                | 必填 | 说明                                   |
 | ---------- | ----------------------------------- | ---- |--------------------------------------|
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                               |
-| volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
-| flags      | number                              | 是   | 是否需要显示系统音量条，0为不需要显示，1为需要显示。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
+| flags      | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 是否需要显示系统音量条，0为不需要显示，1为需要显示。 |
 
 **返回值：**
 
@@ -1335,10 +1601,26 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to mute the stream. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the stream is muted.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`Failed to mute the stream. ${err}`);
     return;
@@ -1405,10 +1687,26 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set the ringer mode. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate a successful setting of the ringer mode.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`Failed to set the ringer mode. ${err}`);
     return;
@@ -1528,6 +1826,8 @@ adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1540,6 +1840,22 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (er
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to adjust the volume by step. ${err}`);
+    return;
+  } else {
+    console.info('Success to adjust the volume by step.');
+  }
+});
+```
+
 ### adjustVolumeByStep<sup>10+</sup>
 
 adjustVolumeByStep(adjustType: VolumeAdjustType): Promise&lt;void&gt;
@@ -1579,12 +1895,26 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).then(() => {
   console.info('Success to adjust the volume by step.');
 }).catch((error: BusinessError) => {
+  console.error('Fail to adjust the volume by step.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).then(() => {
+  console.info('Success to adjust the volume by step.');
+}).catch((error: Error) => {
   console.error('Fail to adjust the volume by step.');
 });
 ```
@@ -1624,6 +1954,8 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1635,6 +1967,21 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, audio.VolumeAdjustType.VOLUME_UP, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to adjust the system volume by step ${err}`);
+  } else {
+    console.info('Success to adjust the system volume by step.');
+  }
+});
+```
+
 ### adjustSystemVolumeByStep<sup>10+</sup>
 
 adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType): Promise&lt;void&gt;
@@ -1675,6 +2022,8 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1684,6 +2033,19 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
   console.error('Fail to adjust the system volume by step.');
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, audio.VolumeAdjustType.VOLUME_UP).then(() => {
+  console.info('Success to adjust the system volume by step.');
+}).catch((error: Error) => {
+  console.error('Fail to adjust the system volume by step.');
+});
+```
+
 ## AudioEffectManager<sup>18+</sup>
 
 音频效果管理。在使用AudioEffectManager的接口前，需要使用[getEffectManager](#geteffectmanager18)获取AudioEffectManager实例。
@@ -1719,6 +2081,8 @@ getSupportedAudioEffectProperty(): Array\<AudioEffectProperty>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1731,6 +2095,19 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let propertyArray: Array<audio.AudioEffectProperty> = audioEffectManager.getSupportedAudioEffectProperty();
+  console.info(`The effect modes are: ${propertyArray}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getSupportedAudioEffectProperty ERROR: ${error}`);
+}
+```
 
 ### getAudioEffectProperty<sup>18+</sup>
 
@@ -1762,11 +2139,27 @@ getAudioEffectProperty(): Array\<AudioEffectProperty>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let propertyArray: Array<audio.AudioEffectProperty> = audioStreamManager.getAudioEffectProperty();
+  console.info(`The effect modes are: ${propertyArray}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getAudioEffectProperty ERROR: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let propertyArray: Array<audio.AudioEffectProperty> = audioEffectManager.getAudioEffectProperty();
   console.info(`The effect modes are: ${propertyArray}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -1840,6 +2233,9 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors, callback: AsyncCall
 | callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输入设备成功，err为undefined，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1861,6 +2257,38 @@ let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
 
 async function selectInputDevice(){
   audioRoutingManager.selectInputDevice(inputAudioDeviceDescriptor, (err: BusinessError) => {
+    if (err) {
+      console.error(`Result ERROR: ${err}`);
+    } else {
+      console.info('Select input devices result callback: SUCCESS');
+    }
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.INPUT_DEVICE,
+  deviceType : audio.DeviceType.MIC,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectInputDevice(){
+  audioRoutingManager.selectInputDevice(inputAudioDeviceDescriptor, (err: BusinessError<void> | null) => {
     if (err) {
       console.error(`Result ERROR: ${err}`);
     } else {
@@ -1894,6 +2322,8 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1922,6 +2352,35 @@ async function getRoutingManager(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.INPUT_DEVICE,
+  deviceType : audio.DeviceType.MIC,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function getRoutingManager(){
+  audioRoutingManager.selectInputDevice(inputAudioDeviceDescriptor).then(() => {
+    console.info('Select input devices result promise: SUCCESS');
+  }).catch((err: Error) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
+
 ### selectOutputDevice<sup>9+</sup>
 
 selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback&lt;void&gt;): void
@@ -1940,6 +2399,9 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCa
 | callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1961,6 +2423,37 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
 
 async function selectOutputDevice(){
   audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor, (err: BusinessError) => {
+    if (err) {
+      console.error(`Result ERROR: ${err}`);
+    } else {
+      console.info('Select output devices result callback: SUCCESS'); }
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDevice(){
+  audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor, (err: BusinessError<void> | null) => {
     if (err) {
       console.error(`Result ERROR: ${err}`);
     } else {
@@ -1993,6 +2486,8 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2021,6 +2516,35 @@ async function selectOutputDevice(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDevice(){
+  audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor).then(() => {
+    console.info('Select output devices result promise: SUCCESS');
+  }).catch((err: Error) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
+
 ### selectOutputDeviceByFilter<sup>9+</sup>
 
 selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback&lt;void&gt;): void
@@ -2040,6 +2564,9 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 | callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2078,6 +2605,46 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDeviceByFilter(){
+  audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, (err: BusinessError<void> | null) => {
+    if (err) {
+      console.error(`Result ERROR: ${err}`);
+    } else {
+      console.info('Select output devices by filter result callback: SUCCESS'); }
+  });
+}
+```
+
 ### selectOutputDeviceByFilter<sup>9+</sup>
 
 selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt;
@@ -2102,6 +2669,8 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 | Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -2135,6 +2704,44 @@ async function selectOutputDeviceByFilter(){
   audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor).then(() => {
     console.info('Select output devices by filter result promise: SUCCESS');
   }).catch((err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  })
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDeviceByFilter(){
+  audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor).then(() => {
+    console.info('Select output devices by filter result promise: SUCCESS');
+  }).catch((err: Error) => {
     console.error(`Result ERROR: ${err}`);
   })
 }
@@ -2175,6 +2782,8 @@ selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioD
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2208,6 +2817,45 @@ async function selectInputDeviceByFilter(){
     audioRoutingManager.selectInputDeviceByFilter(inputAudioCapturerFilter, inputAudioDeviceDescriptor).then(() => {
         console.info('Select input devices by filter result promise: SUCCESS');
     }).catch((err: BusinessError) => {
+        console.error(`Result ERROR: ${err}`);
+    })
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let inputAudioCapturerFilter: audio.AudioCapturerFilter = {
+    uid : 20010041,
+    capturerInfo : {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+    }
+};
+
+let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+    deviceRole : audio.DeviceRole.INPUT_DEVICE,
+    deviceType : audio.DeviceType.MIC,
+    id : 1,
+    name : "",
+    address : "",
+    sampleRates : [44100],
+    channelCounts : [2],
+    channelMasks : [0],
+    networkId : audio.LOCAL_NETWORK_ID,
+    interruptGroupId : 1,
+    volumeGroupId : 1,
+    displayName : "",
+}];
+
+async function selectInputDeviceByFilter(){
+    let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
+    let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioManager的方法创建AudioRoutingManager实例。
+    audioRoutingManager.selectInputDeviceByFilter(inputAudioCapturerFilter, inputAudioDeviceDescriptor).then(() => {
+        console.info('Select input devices by filter result promise: SUCCESS');
+    }).catch((err: Error) => {
         console.error(`Result ERROR: ${err}`);
     })
 }
@@ -2360,6 +3008,8 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2387,6 +3037,36 @@ async function excludeOutputDevices(){
     } else {
       console.info('Exclude Output Devices result callback: SUCCESS'); }
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let usage = audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
+let excludedDevices: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 3,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function excludeOutputDevices(){
+  audioRoutingManager.excludeOutputDevices(usage, excludedDevices).then(() => {
+    console.info('Exclude Output Devices result callback: SUCCESS');
+  }).catch((err: Error) => {
+    console.error(`Result ERROR: ${err}`);
+  })
 }
 ```
 
@@ -2427,6 +3107,8 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2454,6 +3136,36 @@ async function unexcludeOutputDevices(){
     } else {
       console.info('Unexclude Output Devices result callback: SUCCESS'); }
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let usage: audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
+let unexcludedDevices: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 3,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function unexcludeOutputDevices(){
+  audioRoutingManager.unexcludeOutputDevices(usage, unexcludedDevices).then(() => {
+    console.info('Unexclude Output Devices result callback: SUCCESS');
+  }).catch((err: Error) => {
+    console.error(`Result ERROR: ${err}`);
+  })
 }
 ```
 
@@ -2493,6 +3205,8 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2503,6 +3217,22 @@ async function unexcludeOutputDevices(){
   audioRoutingManager.unexcludeOutputDevices(usage).then(() => {
     console.info('Unexclude Output Devices result promise: SUCCESS');
   }).catch((err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let usage: audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
+
+async function unexcludeOutputDevices(){
+  audioRoutingManager.unexcludeOutputDevices(usage).then(() => {
+    console.info('Unexclude Output Devices result promise: SUCCESS');
+  }).catch((err: Error) => {
     console.error(`Result ERROR: ${err}`);
   });
 }
@@ -2565,7 +3295,7 @@ async function getExcludedDevices(){
 
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| clientUid          | number                                    | 是   | 否   | 音频渲染器客户端应用程序的Uid。 |
+| clientUid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                    | 是   | 否   | 音频渲染器客户端应用程序的Uid。 |
 | rendererState      | [AudioState](arkts-apis-audio-e.md#audiostate8)                 | 是   | 否   | 音频状态。|
 
 ## AudioCapturerChangeInfo<sup>9+</sup>
@@ -2578,7 +3308,7 @@ async function getExcludedDevices(){
 
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| clientUid          | number                                    | 是   | 否   | 音频采集器客户端应用程序的Uid。 |
+| clientUid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                    | 是   | 否   | 音频采集器客户端应用程序的Uid。 |
 | capturerState      | [AudioState](arkts-apis-audio-e.md#audiostate8)                 | 是   | 否   | 音频状态。|
 
 ## AudioDeviceDescriptor
@@ -2590,9 +3320,9 @@ async function getExcludedDevices(){
 | 名称                          | 类型                       | 只读 | 可选 | 说明       |
 | ----------------------------- | -------------------------- | ---- | ---- | ---------- |
 | networkId<sup>9+</sup>        | string                     | 是   | 否   | 设备组网的ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
-| interruptGroupId<sup>9+</sup> | number                     | 是   | 否   | 设备所处的焦点组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
-| volumeGroupId<sup>9+</sup>    | number                     | 是   | 否   | 设备所处的音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
-| dmDeviceType<sup>18+</sup>    | number                     | 是   | 是 | 设备的子类型ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| interruptGroupId<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 设备所处的焦点组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
+| volumeGroupId<sup>9+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 设备所处的音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
+| dmDeviceType<sup>18+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 是 | 设备的子类型ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 
 ## AudioRendererFilter<sup>9+</sup>
 
@@ -2602,9 +3332,9 @@ async function getExcludedDevices(){
 
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
-| uid          | number                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
-| rendererId   | number                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| rendererId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 
 **示例：**
 
@@ -2629,7 +3359,7 @@ let outputAudioRendererFilter: audio.AudioRendererFilter = {
 
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
-| uid          | number                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | capturerInfo | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8) |  否  | 是 | 表示采集器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Capturer|
 
 **示例：**
@@ -3003,6 +3733,8 @@ setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boole
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3026,6 +3758,34 @@ let enabled: boolean = true;
 audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).then(() => {
   console.info(`setSpatializationEnabled success`);
 }).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+let enabled: boolean = true;
+
+audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).then(() => {
+  console.info(`setSpatializationEnabled success`);
+}).catch((err: Error) => {
   console.error(`Result ERROR: ${err}`);
 });
 ```
@@ -3407,7 +4167,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ### setHeadTrackingEnabled<sup>12+</sup>
 
-setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enable: boolean): Promise&lt;void&gt;
 
 根据输入指令，开启/关闭指定设备的头动跟踪效果。使用Promise异步回调。
 
@@ -3443,6 +4203,8 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3466,6 +4228,34 @@ let enable: boolean = true;
 audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then(() => {
   console.info(`setHeadTrackingEnabled success`);
 }).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+let enable: boolean = true;
+
+audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then(() => {
+  console.info(`setHeadTrackingEnabled success`);
+}).catch((err: Error) => {
   console.error(`Result ERROR: ${err}`);
 });
 ```
@@ -4005,10 +4795,27 @@ load(type: ToneType, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
+  if (err) {
+    console.error(`callback call load failed error: ${err.message}`);
+    return;
+  } else {
+    console.info('callback call load success');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call load failed error: ${err.message}`);
     return;
@@ -4068,10 +4875,27 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.start((err: BusinessError) => {
+  if (err) {
+    console.error(`callback call start failed error: ${err.message}`);
+    return;
+  } else {
+    console.info('callback call start success');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.start((err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call start failed error: ${err.message}`);
     return;
@@ -4125,10 +4949,27 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.stop((err: BusinessError) => {
+  if (err) {
+    console.error(`callback call stop error: ${err.message}`);
+    return;
+  } else {
+    console.error('callback call stop success ');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.stop((err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call stop error: ${err.message}`);
     return;
@@ -4182,10 +5023,27 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.release((err: BusinessError) => {
+  if (err) {
+    console.error(`callback call release failed error: ${err.message}`);
+    return;
+  } else {
+    console.info('callback call release success ');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.release((err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call release failed error: ${err.message}`);
     return;

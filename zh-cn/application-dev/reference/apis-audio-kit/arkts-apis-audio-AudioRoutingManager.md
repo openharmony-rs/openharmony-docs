@@ -4,6 +4,7 @@
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 音频路由管理。
 
@@ -32,10 +33,26 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessError, value: audio.AudioDeviceDescriptors) => {
+  if (err) {
+    console.error(`Failed to obtain the device list. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the device list is obtained.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessError<void> | null, value: audio.AudioDeviceDescriptors | undefined) => {
   if (err) {
     console.error(`Failed to obtain the device list. ${err}`);
     return;
@@ -318,10 +335,26 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER, true, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set the active status of the device. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the device is set to the active status.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER, true, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`Failed to set the active status of the device. ${err}`);
     return;
@@ -502,10 +535,26 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: Async
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.isCommunicationDeviceActive(audio.CommunicationDeviceType.SPEAKER, (err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to obtain the active status of the device. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the active status of the device is obtained.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioRoutingManager.isCommunicationDeviceActive(audio.CommunicationDeviceType.SPEAKER, (err: BusinessError<void> | null, value: boolean | undefined) => {
   if (err) {
     console.error(`Failed to obtain the active status of the device. ${err}`);
     return;
@@ -611,6 +660,9 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: 
 | 6800301 | System error. Return by callback.                |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -622,6 +674,28 @@ let rendererInfo: audio.AudioRendererInfo = {
 
 async function getPreferOutputDevice() {
   audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo, (err: BusinessError, desc: audio.AudioDeviceDescriptors) => {
+    if (err) {
+      console.error(`Result ERROR: ${err}`);
+    } else {
+      console.info(`device descriptor: ${desc}`);
+    }
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+async function getPreferOutputDevice() {
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo, (err: BusinessError<void> | null, desc: audio.AudioDeviceDescriptors | undefined) => {
     if (err) {
       console.error(`Result ERROR: ${err}`);
     } else {
@@ -662,6 +736,8 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -675,6 +751,25 @@ async function getPreferOutputDevice() {
   audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
     console.info(`device descriptor: ${desc}`);
   }).catch((err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  })
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let rendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+async function getPreferOutputDevice() {
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
+    console.info(`device descriptor: ${desc}`);
+  }).catch((err: Error) => {
     console.error(`Result ERROR: ${err}`);
   })
 }
@@ -838,6 +933,9 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback
 | 6800301 | System error. Return by callback. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -848,6 +946,26 @@ let capturerInfo: audio.AudioCapturerInfo = {
 };
 
 audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo, (err: BusinessError, desc: audio.AudioDeviceDescriptors) => {
+  if (err) {
+    console.error(`Result ERROR: ${err}`);
+  } else {
+    console.info(`device descriptor: ${desc}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let capturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo, (err: BusinessError<void> | null, desc: audio.AudioDeviceDescriptors | undefined) => {
   if (err) {
     console.error(`Result ERROR: ${err}`);
   } else {
@@ -888,6 +1006,8 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -900,6 +1020,23 @@ let capturerInfo: audio.AudioCapturerInfo = {
 audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((desc: audio.AudioDeviceDescriptors) => {
   console.info(`device descriptor: ${desc}`);
 }).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let capturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((desc: audio.AudioDeviceDescriptors) => {
+  console.info(`device descriptor: ${desc}`);
+}).catch((err: Error) => {
   console.error(`Result ERROR: ${err}`);
 });
 ```
