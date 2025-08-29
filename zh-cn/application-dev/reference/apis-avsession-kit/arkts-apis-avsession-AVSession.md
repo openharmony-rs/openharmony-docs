@@ -65,6 +65,8 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -96,6 +98,39 @@ currentAVSession.setAVMetadata(metadata).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let metadata: avSession.AVMetadata = {
+  assetId: "121278",
+  title: "lose yourself",
+  artist: "Eminem",
+  author: "ST",
+  album: "Slim shady",
+  writer: "ST",
+  composer: "ST",
+  duration: 2222,
+  mediaImage: "https://www.example.com/example.jpg",
+  subtitle: "8 Mile",
+  description: "Rap",
+  // LRC中有两类元素：一种是时间标签+歌词，一种是ID标签。
+  // 例如：[00:25.44]xxx\r\n[00:26.44]xxx\r\n
+  lyric: "lrc格式歌词内容",
+  // singleLyricText字段存储单条歌词文本，不包含时间戳。
+  // 例如："单条歌词内容"。
+  singleLyricText: "单条歌词内容",
+  previousAssetId: "121277",
+  nextAssetId: "121279"
+};
+currentAVSession.setAVMetadata(metadata).then(() => {
+  console.info('SetAVMetadata successfully');
+}).catch((err: Error) => {
+  console.error(`SetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## setAVMetadata<sup>10+</sup>
 
 setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
@@ -123,6 +158,8 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -148,6 +185,41 @@ let metadata: avSession.AVMetadata = {
   nextAssetId: "121279"
 };
 currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
+  if (err) {
+    console.error(`SetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('SetAVMetadata successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let metadata: avSession.AVMetadata = {
+  assetId: "121278",
+  title: "lose yourself",
+  artist: "Eminem",
+  author: "ST",
+  album: "Slim shady",
+  writer: "ST",
+  composer: "ST",
+  duration: 2222,
+  mediaImage: "https://www.example.com/example.jpg",
+  subtitle: "8 Mile",
+  description: "Rap",
+  // LRC中有两类元素：一种是时间标签+歌词，一种是ID标签。
+  // 例如：[00:25.44]xxx\r\n[00:26.44]xxx\r\n
+  lyric: "lrc格式歌词内容",
+  // singleLyricText字段存储单条歌词文本，不包含时间戳。
+  // 例如："单条歌词内容"。
+  singleLyricText: "单条歌词内容",
+  previousAssetId: "121277",
+  nextAssetId: "121279"
+};
+currentAVSession.setAVMetadata(metadata, (err: BusinessError | null) => {
   if (err) {
     console.error(`SetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -188,6 +260,8 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -204,6 +278,28 @@ let value = await resourceManager.getSystemResourceManager().getRawFileContent('
 currentAVSession.setCallMetadata(calldata).then(() => {
   console.info('setCallMetadata successfully');
 }).catch((err: BusinessError) => {
+  console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+let calldata: avSession.CallMetadata = {
+  name: "xiaoming",
+  phoneNumber: "111xxxxxxxx",
+  avatar: imagePixel
+};
+currentAVSession.setCallMetadata(calldata).then(() => {
+  console.info('setCallMetadata successfully');
+}).catch((err: Error) => {
   console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -235,6 +331,8 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -250,6 +348,32 @@ async function setCallMetadata() {
     avatar: imagePixel
   };
   currentAVSession.setCallMetadata(calldata, (err: BusinessError) => {
+    if (err) {
+      console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('setCallMetadata successfully');
+    }
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function setCallMetadata() {
+  let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+  let imageSource = image.createImageSource(value.buffer);
+  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+  let calldata: avSession.CallMetadata = {
+    name: "xiaoming",
+    phoneNumber: "111xxxxxxxx",
+    avatar: imagePixel
+  };
+  currentAVSession.setCallMetadata(calldata, (err: BusinessError | null) => {
     if (err) {
       console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
     } else {
@@ -291,6 +415,8 @@ setAVCallState(state: AVCallState): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -301,6 +427,22 @@ let calldata: avSession.AVCallState = {
 currentAVSession.setAVCallState(calldata).then(() => {
   console.info('setAVCallState successfully');
 }).catch((err: BusinessError) => {
+  console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let calldata: avSession.AVCallState = {
+  state: avSession.CallState.CALL_STATE_ACTIVE,
+  muted: false
+};
+currentAVSession.setAVCallState(calldata).then(() => {
+  console.info('setAVCallState successfully');
+}).catch((err: Error) => {
   console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -332,6 +474,8 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -340,6 +484,24 @@ let avcalldata: avSession.AVCallState = {
   muted: false
 };
 currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
+  if (err) {
+    console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('setAVCallState successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avcalldata: avSession.AVCallState = {
+  state: avSession.CallState.CALL_STATE_ACTIVE,
+  muted: false
+};
+currentAVSession.setAVCallState(avcalldata, (err: BusinessError | null) => {
   if (err) {
     console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -382,6 +544,8 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -396,6 +560,26 @@ let playbackState: avSession.AVPlaybackState = {
 currentAVSession.setAVPlaybackState(playbackState).then(() => {
   console.info('SetAVPlaybackState successfully');
 }).catch((err: BusinessError) => {
+  console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let playbackState: avSession.AVPlaybackState = {
+  state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+  speed: 1.0,
+  position:{elapsedTime:10, updateTime:(new Date()).getTime() as long},
+  bufferedTime:1000,
+  loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
+  isFavorite:true
+};
+currentAVSession.setAVPlaybackState(playbackState).then(() => {
+  console.info('SetAVPlaybackState successfully');
+}).catch((err: Error) => {
   console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -427,6 +611,8 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -439,6 +625,28 @@ let PlaybackState: avSession.AVPlaybackState = {
   isFavorite:true
 };
 currentAVSession.setAVPlaybackState(PlaybackState, (err: BusinessError) => {
+  if (err) {
+    console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('SetAVPlaybackState successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let PlaybackState: avSession.AVPlaybackState = {
+  state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+  speed: 1.0,
+  position:{elapsedTime:10, updateTime:(new Date()).getTime() as long},
+  bufferedTime:1000,
+  loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
+  isFavorite:true
+};
+currentAVSession.setAVPlaybackState(PlaybackState, (err: BusinessError | null) => {
   if (err) {
     console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -481,6 +689,8 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { wantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -522,6 +732,39 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { wantAgent } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// WantAgentInfo对象。
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: "deviceId",
+      bundleName: "com.example.myapplication",
+      abilityName: "EntryAbility",
+      action: "action1",
+      entities: ["entity1"],
+      type: "MIMETYPE",
+      uri: "key = {true,true,false}",
+    }
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+  actionFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+}
+
+wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
+  currentAVSession.setLaunchAbility(agent).then(() => {
+    console.info('SetLaunchAbility successfully');
+  }).catch((err: Error) => {
+    console.error(`SetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
+  });
+});
+```
+
 ## setLaunchAbility<sup>10+</sup>
 
 setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
@@ -548,6 +791,8 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent } from '@kit.AbilityKit';
@@ -592,9 +837,46 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { wantAgent } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// WantAgentInfo对象。
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: "deviceId",
+      bundleName: "com.example.myapplication",
+      abilityName: "EntryAbility",
+      action: "action1",
+      entities: ["entity1"],
+      type: "MIMETYPE",
+      uri: "key = {true,true,false}",
+    }
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+  actionFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+}
+
+wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
+  currentAVSession.setLaunchAbility(agent, (err: BusinessError | null) => {
+    if (err) {
+      console.error(`SetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('SetLaunchAbility successfully');
+    }
+  });
+});
+```
+
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<void>
+ArkTS-Dyn: dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<void>
+
+ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>): Promise\<void>
 
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容，结果通过Promise异步回调方式返回。
 
@@ -607,7 +889,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的会话事件内容。 |
+| args | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的会话事件内容。 |
 
 > **说明：**
 > 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
@@ -629,6 +911,8 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -669,9 +953,52 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError | null, data: avSession.AVSession | undefined) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            let eventName = "dynamic_lyric";
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {"lyric" : "This is lyric"}).then(() => {
+                console.info('dispatchSessionEvent successfully');
+            }).catch((err: Error) => {
+                console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>, callback: AsyncCallback\<void>): void
 
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容，结果通过callback异步回调方式返回。
 
@@ -682,7 +1009,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的会话事件内容。 |
+| args | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的会话事件内容。 |
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当会话事件设置成功，err为undefined，否则返回错误对象。 |
 
 > **说明：**
@@ -700,6 +1027,8 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -727,6 +1056,47 @@ struct Index {
             let eventName: string = "dynamic_lyric";
             if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
+                if (err) {
+                console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+                }
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError | null, data: avSession.AVSession | undefined) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            let eventName: string = "dynamic_lyric";
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {"lyric" : "This is lyric"}, (err: BusinessError | null) => {
                 if (err) {
                 console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
                 }
@@ -774,6 +1144,8 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -816,6 +1188,48 @@ async function setAVQueueItems() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function setAVQueueItems() {
+  let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+  let imageSource = image.createImageSource(value.buffer);
+  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+  let queueItemDescription_1: avSession.AVMediaDescription = {
+    assetId: '001',
+    title: 'music_name',
+    subtitle: 'music_sub_name',
+    description: 'music_description',
+    mediaImage : imagePixel,
+  };
+  let queueItem_1: avSession.AVQueueItem = {
+    itemId: 1,
+    description: queueItemDescription_1
+  };
+  let queueItemDescription_2: avSession.AVMediaDescription = {
+    assetId: '002',
+    title: 'music_name',
+    subtitle: 'music_sub_name',
+    description: 'music_description',
+    mediaImage: imagePixel,
+  };
+  let queueItem_2: avSession.AVQueueItem = {
+    itemId: 2,
+    description: queueItemDescription_2
+  };
+  let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+  currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
+    console.info('SetAVQueueItems successfully');
+  }).catch((err: Error) => {
+    console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ## setAVQueueItems<sup>10+</sup>
 
 setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): void
@@ -842,6 +1256,8 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { image } from '@kit.ImageKit';
@@ -887,6 +1303,50 @@ async function setAVQueueItems() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function setAVQueueItems() {
+  let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+  let imageSource = image.createImageSource(value.buffer);
+  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+  let queueItemDescription_1: avSession.AVMediaDescription = {
+    assetId: '001',
+    title: 'music_name',
+    subtitle: 'music_sub_name',
+    description: 'music_description',
+    mediaImage : imagePixel,
+  };
+  let queueItem_1: avSession.AVQueueItem = {
+    itemId: 1,
+    description: queueItemDescription_1
+  };
+  let queueItemDescription_2: avSession.AVMediaDescription = {
+    assetId: '002',
+    title: 'music_name',
+    subtitle: 'music_sub_name',
+    description: 'music_description',
+    mediaImage: imagePixel,
+  };
+  let queueItem_2: avSession.AVQueueItem = {
+    itemId: 2,
+    description: queueItemDescription_2
+  };
+  let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+  currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError | null) => {
+    if (err) {
+      console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('SetAVQueueItems successfully');
+    }
+  });
+}
+```
+
 ## setAVQueueTitle<sup>10+</sup>
 
 setAVQueueTitle(title: string): Promise\<void>
@@ -921,6 +1381,8 @@ setAVQueueTitle(title: string): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -928,6 +1390,19 @@ let queueTitle = 'QUEUE_TITLE';
 currentAVSession.setAVQueueTitle(queueTitle).then(() => {
   console.info('SetAVQueueTitle successfully');
 }).catch((err: BusinessError) => {
+  console.error(`SetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let queueTitle = 'QUEUE_TITLE';
+currentAVSession.setAVQueueTitle(queueTitle).then(() => {
+  console.info('SetAVQueueTitle successfully');
+}).catch((err: Error) => {
   console.error(`SetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -959,6 +1434,8 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -972,9 +1449,26 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let queueTitle = 'QUEUE_TITLE';
+currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError | null) => {
+  if (err) {
+    console.error(`SetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('SetAVQueueTitle successfully');
+  }
+});
+```
+
 ## setExtras<sup>10+</sup>
 
-setExtras(extras: {[key: string]: Object}): Promise\<void>
+ArkTS-Dyn: setExtras(extras: {[key: string]: Object}): Promise\<void>
+
+ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 
 媒体提供方设置键值对形式的自定义媒体数据包，结果通过Promise异步回调方式返回。
 
@@ -986,7 +1480,7 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | 是   | 需要传递的自定义媒体数据包键值对。 |
+| extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 |
 
 > **说明：**
 
@@ -1009,6 +1503,8 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1048,9 +1544,51 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError | null, data: avSession.AVSession | undefined) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).setExtras({"extras" : "This is custom media packet"}).then(() => {
+                console.info('setExtras successfully');
+            }).catch((err: Error) => {
+                console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## setExtras<sup>10+</sup>
 
-setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<void>): void
 
 媒体提供方设置键值对形式的自定义媒体数据包，结果通过callback异步回调方式返回。
 
@@ -1060,7 +1598,7 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | 是   | 需要传递的自定义媒体数据包键值对。 |
+| extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 |
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。 |
 
 > **说明：**
@@ -1078,6 +1616,8 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1104,6 +1644,46 @@ struct Index {
             });
             if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
+                if (err) {
+                console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+                }
+            })
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError | null, data: avSession.AVSession | undefined) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).setExtras({"extras" : "This is custom media packet"}, (err: BusinessError | null) => {
                 if (err) {
                 console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
                 }
@@ -1144,6 +1724,8 @@ getController(): Promise\<AVSessionController>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -1163,6 +1745,37 @@ struct Index {
             avsessionController = avcontroller;
             console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
           }).catch((err: BusinessError) => {
+            console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
+          });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async ()=>{
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+          let avsessionController: avSession.AVSessionController;
+          currentAVSession.getController().then(async (avcontroller: avSession.AVSessionController) => {
+            avsessionController = avcontroller;
+            console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+          }).catch((err: Error) => {
             console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
           });
         })
@@ -1198,6 +1811,8 @@ getController(callback: AsyncCallback\<AVSessionController>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1215,6 +1830,40 @@ struct Index {
           let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
           let avsessionController: avSession.AVSessionController;
           currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSessionController) => {
+            if (err) {
+              console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+              avsessionController = avcontroller;
+              console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+            }
+          });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+          let avsessionController: avSession.AVSessionController;
+          currentAVSession.getController((err: BusinessError | null, avcontroller: avSession.AVSessionController | undefined) => {
             if (err) {
               console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
             } else {
@@ -1257,6 +1906,8 @@ getAVCastController(): Promise\<AVCastController>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1265,6 +1916,20 @@ currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastContr
   aVCastController = avcontroller;
   console.info('getAVCastController : SUCCESS');
 }).catch((err: BusinessError) => {
+  console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let aVCastController: avSession.AVCastController;
+currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastController) => {
+  aVCastController = avcontroller;
+  console.info('getAVCastController : SUCCESS');
+}).catch((err: Error) => {
   console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1294,11 +1959,29 @@ getAVCastController(callback: AsyncCallback\<AVCastController>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let aVCastController: avSession.AVCastController;
 currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
+  if (err) {
+    console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    aVCastController = avcontroller;
+    console.info('getAVCastController : SUCCESS');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let aVCastController: avSession.AVCastController;
+currentAVSession.getAVCastController((err: BusinessError | null, avcontroller: avSession.AVCastController | undefined) => {
   if (err) {
     console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -1335,12 +2018,26 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.getOutputDevice().then((outputDeviceInfo: avSession.OutputDeviceInfo) => {
   console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
 }).catch((err: BusinessError) => {
+  console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.getOutputDevice().then((outputDeviceInfo: avSession.OutputDeviceInfo) => {
+  console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
+}).catch((err: Error) => {
   console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1370,10 +2067,26 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSession.OutputDeviceInfo) => {
+  if (err) {
+    console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.getOutputDevice((err: BusinessError | null, outputDeviceInfo: avSession.OutputDeviceInfo | undefined) => {
   if (err) {
     console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -1409,12 +2122,26 @@ activate(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.activate().then(() => {
   console.info('Activate : SUCCESS ');
 }).catch((err: BusinessError) => {
+  console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.activate().then(() => {
+  console.info('Activate : SUCCESS ');
+}).catch((err: Error) => {
   console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1444,10 +2171,26 @@ activate(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.activate((err: BusinessError) => {
+  if (err) {
+    console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Activate : SUCCESS ');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.activate((err: BusinessError | undefined) => {
   if (err) {
     console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -1483,12 +2226,26 @@ deactivate(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.deactivate().then(() => {
   console.info('Deactivate : SUCCESS ');
 }).catch((err: BusinessError) => {
+  console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.deactivate().then(() => {
+  console.info('Deactivate : SUCCESS ');
+}).catch((err: Error) => {
   console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1520,10 +2277,26 @@ deactivate(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.deactivate((err: BusinessError) => {
+  if (err) {
+    console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Deactivate : SUCCESS ');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.deactivate((err: BusinessError | undefined) => {
   if (err) {
     console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -1559,12 +2332,26 @@ destroy(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.destroy().then(() => {
   console.info('Destroy : SUCCESS ');
 }).catch((err: BusinessError) => {
+  console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.destroy().then(() => {
+  console.info('Destroy : SUCCESS ');
+}).catch((err: Error) => {
   console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1594,10 +2381,26 @@ destroy(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.destroy((err: BusinessError) => {
+  if (err) {
+    console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Destroy : SUCCESS ');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.destroy((err: BusinessError | undefined) => {
   if (err) {
     console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -1869,6 +2672,8 @@ on(type:'playWithAssetId', callback: Callback\<string>): void
 
 设置指定资源id进行播放的监听事件。
 
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -1904,6 +2709,8 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 
 取消指定资源id进行播放的事件监听，关闭后，不再进行该事件回调。
 
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -1932,7 +2739,9 @@ currentAVSession.off('playWithAssetId');
 
 ## on('seek')<sup>10+</sup>
 
-on(type: 'seek', callback: (time: number) => void): void
+ArkTS-Dyn: on(type: 'seek', callback: (time: number) => void): void
+
+ArkTS-Sta: on(type: 'seek', callback: (time: long) => void): void
 
 设置跳转节点监听事件。
 
@@ -1945,7 +2754,7 @@ on(type: 'seek', callback: (time: number) => void): void
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | --------- |
 | type     | string                 | 是   | 事件回调类型，支持事件`'seek'`：当跳转节点命令被发送到会话时，触发该事件。 |
-| callback | (time: number) => void | 是   | 回调函数。参数time是时间节点，单位为毫秒。                   |
+| callback | ArkTS-Dyn: (time: number) => void<br>ArkTS-Sta: (time: long) => void | 是   | 回调函数。参数time是时间节点，单位为毫秒。                   |
 
 **错误码：**
 
@@ -1959,15 +2768,27 @@ on(type: 'seek', callback: (time: number) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 currentAVSession.on('seek', (time: number) => {
   console.info(`on seek entry time : ${time}`);
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+currentAVSession.on('seek', (time: long) => {
+  console.info(`on seek entry time : ${time}`);
+});
+```
+
 ## on('setSpeed')<sup>10+</sup>
 
-on(type: 'setSpeed', callback: (speed: number) => void): void
+ArkTS-Dyn: on(type: 'setSpeed', callback: (speed: number) => void): void
+
+ArkTS-Sta: on(type: 'setSpeed', callback: (speed: double) => void): void
 
 设置播放速率的监听事件。
 
@@ -1980,7 +2801,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 | 参数名   | 类型                    | 必填 | 说明     |
 | -------- | ----------------------- | ---- | --------- |
 | type     | string                  | 是   | 事件回调类型，支持事件`'setSpeed'`：当设置播放速率的命令被发送到会话时，触发该事件。 |
-| callback | (speed: number) => void | 是   | 回调函数。参数speed是播放倍速。                              |
+| callback | ArkTS-Dyn: (speed: number) => void<br>ArkTS-Sta: (speed: double) => void | 是   | 回调函数。参数speed是播放倍速。                              |
 
 **错误码：**
 
@@ -1994,8 +2815,18 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 currentAVSession.on('setSpeed', (speed: number) => {
+  console.info(`on setSpeed speed : ${speed}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+currentAVSession.on('setSpeed', (speed: double) => {
   console.info(`on setSpeed speed : ${speed}`);
 });
 ```
@@ -2040,6 +2871,8 @@ currentAVSession.on('setLoopMode', (mode: avSession.LoopMode) => {
 on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
 设置目标循环模式的监听事件。
+
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2106,7 +2939,9 @@ currentAVSession.on('toggleFavorite', (assetId: string) => {
 
 ## on('skipToQueueItem')<sup>10+</sup>
 
-on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
+ArkTS-Dyn: on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
+
+ArkTS-Sta: on(type: 'skipToQueueItem', callback: (itemId: int) => void): void
 
 设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
 
@@ -2119,7 +2954,7 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------ | ---- | ------------------------------------- |
 | type     | string                   | 是   | 事件回调类型，支持事件`'skipToQueueItem'`：当播放列表选中单项的命令被发送到会话时，触发该事件。 |
-| callback | (itemId: number) => void | 是   | 回调函数。参数itemId是选中的播放列表项的ID。                                                |
+| callback | ArkTS-Dyn: (itemId: number) => void<br>ArkTS-Sta: (itemId: int) => void | 是   | 回调函数。参数itemId是选中的播放列表项的ID。                                                |
 
 **错误码：**
 
@@ -2133,8 +2968,18 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 currentAVSession.on('skipToQueueItem', (itemId: number) => {
+  console.info(`on skipToQueueItem id : ${itemId}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+currentAVSession.on('skipToQueueItem', (itemId: int) => {
   console.info(`on skipToQueueItem id : ${itemId}`);
 });
 ```
@@ -2214,7 +3059,9 @@ currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, dev
 
 ## on('commonCommand')<sup>10+</sup>
 
-on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
+ArkTS-Dyn: on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
+
+ArkTS-Sta: on(type: 'commonCommand', callback: (command: string, args: Record<string, Object>) => void): void
 
 设置自定义控制命令变化的监听器。
 
@@ -2227,7 +3074,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: {[key: string]: Object}) => void         | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。          |
+| callback | ArkTS-Dyn: (command: string, args: {[key: string]: Object}) => void<br>ArkTS-Sta: (command: string, args: Record<string, Object>) => void | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。          |
 
 **错误码：**
 
@@ -2240,6 +3087,8 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | 6600102  | The session does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2258,6 +3107,44 @@ struct Index {
             let context: Context = this.getUIContext().getHostContext() as Context;
 
             avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
+            if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+                currentAVSession = data;
+            }
+            });
+            if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
+                console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+            });
+            }
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError | null, data: avSession.AVSession | undefined) => {
             if (err) {
                 console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
             } else {
@@ -2522,7 +3409,9 @@ currentAVSession.off('rewind');
 
 ## off('seek')<sup>10+</sup>
 
-off(type: 'seek', callback?: (time: number) => void): void
+ArkTS-Dyn: off(type: 'seek', callback?: (time: number) => void): void
+
+ArkTS-Sta: off(type: 'seek', callback?: (time: long) => void): void
 
 取消监听跳转节点事件。
 
@@ -2532,10 +3421,10 @@ off(type: 'seek', callback?: (time: number) => void): void
 
 **参数：**
 
-| 参数名   | 类型                   | 必填 | 说明                                          |
-| -------- | ---------------------- | ---- | ----------|
-| type     | string                 | 是   | 关闭对应的监听事件，支持关闭事件`'seek'`。       |
-| callback | (time: number) => void | 否   | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。        |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 关闭对应的监听事件，支持关闭事件`'seek'`。                   |
+| callback | ArkTS-Dyn: (time: number) => void<br>ArkTS-Sta: (time: long) => void | 否   | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2555,7 +3444,9 @@ currentAVSession.off('seek');
 
 ## off('setSpeed')<sup>10+</sup>
 
-off(type: 'setSpeed', callback?: (speed: number) => void): void
+ArkTS-Dyn: off(type: 'setSpeed', callback?: (speed: number) => void): void
+
+ArkTS-Sta: off(type: 'setSpeed', callback?: (speed: double) => void): void
 
 取消监听播放速率变化事件。
 
@@ -2565,10 +3456,10 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 **参数：**
 
-| 参数名   | 类型                    | 必填 | 说明                                           |
-| -------- | ----------------------- | ---- | -------------------------------------------|
-| type     | string                  | 是   | 关闭对应的监听事件，支持关闭事件`'setSpeed'`。    |
-| callback | (speed: number) => void | 否   | 回调函数，参数speed是播放倍速。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 关闭对应的监听事件，支持关闭事件`'setSpeed'`。               |
+| callback | ArkTS-Dyn: (speed: number) => void<br>ArkTS-Sta: (speed: double) => void | 否   | 回调函数，参数speed是播放倍速。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2624,6 +3515,8 @@ currentAVSession.off('setLoopMode');
 off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 取消监听目标循环模式变化事件。
+
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2686,7 +3579,9 @@ currentAVSession.off('toggleFavorite');
 
 ## off('skipToQueueItem')<sup>10+</sup>
 
-off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
+ArkTS-Dyn: off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
+
+ArkTS-Sta: off(type: 'skipToQueueItem', callback?: (itemId: int) => void): void
 
 取消监听播放列表单项选中的事件
 
@@ -2699,7 +3594,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 | 参数名   | 类型                      | 必填 | 说明    |
 | -------- | ------------------------ | ---- | ----------------------|
 | type     | string                   | 是   | 关闭对应的监听事件，支持关闭事件`'skipToQueueItem'`。    |
-| callback | (itemId: number) => void | 否   | 回调函数，参数itemId是播放列表单项ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ArkTS-Dyn: (itemId: number) => void<br>ArkTS-Sta: (itemId: int) => void | 否   | 回调函数，参数itemId是播放列表单项ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2785,7 +3680,9 @@ currentAVSession.off('outputDeviceChange');
 
 ## off('commonCommand')<sup>10+</sup>
 
-off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
+ArkTS-Dyn: off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
+
+ArkTS-Sta: off(type: 'commonCommand', callback?: (command: string, args: Record<string, Object>) => void): void
 
 取消监听自定义控制命令的变化。
 
@@ -2798,7 +3695,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | 参数名   | 类型  |   必填 | 说明  |
 | -------- | --------- | ---- | ----------------------|
 | type     | string    | 是   | 取消对应的监听事件，支持事件`'commonCommand'`。    |
-| callback | (command: string, args: {[key: string]: Object}) => void         | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。                      |
+| callback | ArkTS-Dyn: (command: string, args: {[key: string]: Object}) => void<br>ArkTS-Sta: (command: string, args: Record<string, Object>) => void | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。                      |
 
 **错误码：**
 
@@ -3118,10 +4015,26 @@ stopCasting(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.stopCasting((err: BusinessError) => {
+  if (err) {
+    console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('stopCasting successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.stopCasting((err: BusinessError | null) => {
   if (err) {
     console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -3156,12 +4069,26 @@ stopCasting(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.stopCasting().then(() => {
   console.info('stopCasting successfully');
 }).catch((err: BusinessError) => {
+  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.stopCasting().then(() => {
+  console.info('stopCasting successfully');
+}).catch((err: Error) => {
   console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -3231,6 +4158,8 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3240,6 +4169,21 @@ currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayIn
        castDisplay = data[0];
      }
    }).catch((err: BusinessError) => {
+     console.error(`Failed to getAllCastDisplay. Code: ${err.code}, message: ${err.message}`);
+   });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let castDisplay: avSession.CastDisplayInfo;
+currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayInfo >) => {
+    if (data.length >= 1) {
+       castDisplay = data[0];
+     }
+   }).catch((err: Error) => {
      console.error(`Failed to getAllCastDisplay. Code: ${err.code}, message: ${err.message}`);
    });
 ```
