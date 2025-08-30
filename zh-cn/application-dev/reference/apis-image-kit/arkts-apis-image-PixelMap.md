@@ -891,7 +891,7 @@ ArkTS-Sta: opacity(rate: double, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0,1]。  |
+| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0, 1]。  |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置透明比率成功，err为undefined，否则为错误对象。 |
 
 **ArkTS-Dyn示例：**
@@ -950,7 +950,7 @@ ArkTS-Sta: opacity(rate: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                        |
 | ------ | ------ | ---- | --------------------------- |
-| rate   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0,1]。|
+| rate   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0, 1]。|
 
 **返回值：**
 
@@ -1008,7 +1008,7 @@ ArkTS-Sta: opacitySync(rate: double): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0,1]。   |
+| rate     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 透明比率的值，取值范围是(0, 1]。   |
 
 **错误码：**
 
