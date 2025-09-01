@@ -32,7 +32,9 @@ ConsoleMessage的构造函数。
 
 ## getLineNumber
 
-getLineNumber(): number
+ArkTS-Dyn: getLineNumber(): number
+
+ArkTS-Sta: getLineNumber(): int
 
 获取ConsoleMessage的行数。
 
@@ -42,7 +44,7 @@ getLineNumber(): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回ConsoleMessage的行数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回ConsoleMessage的行数。 |
 
 ## getMessage
 

@@ -335,8 +335,8 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| activeMatchOrdinal | number  | 是 | 当前匹配的查找项的序号（从0开始）。                       |
-| numberOfMatches    | number  | 是 | 所有匹配到的关键词的个数。                            |
+| activeMatchOrdinal | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 当前匹配的查找项的序号（从0开始）。                       |
+| numberOfMatches    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 所有匹配到的关键词的个数。                            |
 | isDoneCounting     | boolean | 是 | 当次页内查找操作是否结束。<br>true表示当次页内查找操作结束，false表示当次页内查找操作未结束。<br>该方法可能会回调多次，直到isDoneCounting为true为止。 |
 
 ## OnScrollEvent<sup>12+</sup>
@@ -389,7 +389,7 @@ Web同层渲染的配置。
 | -------------- | ---- | ---- | ---------------------------------------- |
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 是 | 通知Web组件用户操作行为。  |
 | host     | string                                   | 是 | 请求证书服务器的主机名。    |
-| port     | number                                   | 是 | 请求证书服务器的端口号。    |
+| port     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是 | 请求证书服务器的端口号。    |
 | keyTypes | Array<string\>                           | 是 | 可接受的非对称秘钥类型。    |
 | issuers  | Array<string\>                           | 是 | 与私钥匹配的证书可接受颁发者。 |
 
@@ -532,7 +532,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| newProgress | ArkTS1.1: number<br>ArkTS1.2: int | 是 | 新的加载进度，取值范围为0到100的整数。                       |
+| newProgress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 新的加载进度，取值范围为0到100的整数。                       |
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 

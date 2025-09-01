@@ -85,7 +85,9 @@ struct WebComponent {
 
 ## getCurrentSpeed<sup>11+</sup>
 
-getCurrentSpeed(): number
+ArkTS-Dyn: getCurrentSpeed(): number
+
+ArkTS-Sta: getCurrentSpeed(): int
 
 获取下载的速度，单位：字节每秒。
 
@@ -95,7 +97,7 @@ getCurrentSpeed(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 下载的速度（字节每秒）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 下载的速度（字节每秒）。 |
 
 **示例：**
 
@@ -150,7 +152,9 @@ struct WebComponent {
 
 ## getPercentComplete<sup>11+</sup>
 
-getPercentComplete(): number
+ArkTS-Dyn: getPercentComplete(): number
+
+ArkTS-Sta: getPercentComplete(): int
 
 获取下载的进度，100代表下载完成。
 
@@ -160,7 +164,7 @@ getPercentComplete(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 下载完成的进度，100代表下载完成。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 下载完成的进度，100代表下载完成。 |
 
 **示例：**
 
@@ -215,7 +219,9 @@ struct WebComponent {
 
 ## getTotalBytes<sup>11+</sup>
 
-getTotalBytes(): number
+ArkTS-Dyn: getTotalBytes(): number
+
+ArkTS-Sta: getTotalBytes(): long
 
 获取待下载文件的总长度。
 
@@ -225,7 +231,7 @@ getTotalBytes(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 待下载文件的总长度。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 待下载文件的总长度。 |
 
 **示例：**
 
@@ -671,7 +677,9 @@ struct WebComponent {
 
 ## getReceivedBytes<sup>11+</sup>
 
-getReceivedBytes(): number
+ArkTS-Dyn: getReceivedBytes(): number
+
+ArkTS-Sta: getReceivedBytes(): long
 
 获取已经接收的字节数。
 
@@ -681,7 +689,7 @@ getReceivedBytes(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 已经接收的字节数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 已经接收的字节数。 |
 
 **示例：**
 
