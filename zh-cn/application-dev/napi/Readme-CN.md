@@ -57,6 +57,12 @@
       - [稳定性相关问题汇总](napi-faq-about-stability.md)
       - [内存泄漏相关问题汇总](napi-faq-about-memory-leak.md)
       - [常见基本功能问题汇总](napi-faq-about-common-basic.md)
+  - Node-API迁移到ANI指导<!--migrate-napi-to-ani-->
+    - [Node-API到ANI迁移背景](napi2ani/migration_background.md)
+    - [Node-API模块解耦复用实践指导](napi2ani/decoupling.md)
+    - [Node-API到ANI迁移指南](napi2ani/napi2ani_guide.md)
+    - [Node-API到Taihe迁移指南](napi2ani/napi2taihe.md)
+    - [AKI到Taihe迁移指南](napi2ani/aki2taihe.md)
   - 使用JSVM-API实现JS与C/C++语言交互<!--jsvm-->
     - [JSVM-API简介](jsvm-introduction.md)
     - [JSVM-API支持的数据类型和接口](jsvm-data-types-interfaces.md)
