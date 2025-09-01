@@ -17,8 +17,8 @@
 | 名称   | 类型               | 只读|  可选| 说明                                                         |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
 | pixels | ArrayBuffer        | 否 |   否  | 像素。仅支持BGRA_8888格式的图像像素数据。 |
-| offset | number             | 否 |   否  |  偏移量。单位：字节。                                                     |
-| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。stride >= region.size.width*4。                   |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |   否  | 偏移量。单位：字节。                                                     |
+| stride | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |   否  | 跨距，内存中每行像素所占的空间。stride >= region.size.width * 4。                   |
 | region | [Region](#region8) | 否 |   否  |区域，按照区域读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。 |
 
 ## ImageInfo
@@ -30,8 +30,8 @@
 | 名称 | 类型          | 只读 | 可选 | 说明       |
 | ---- | ------------- | --- |-----|---------- |
 | size<sup>6+</sup> | [Size](#size) | 否 |  否  |图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| density<sup>9+</sup> | number | 否  | 否 |像素密度，单位为ppi。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| density<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否 |像素密度，单位为ppi。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| stride<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否  | 跨距，内存中每行像素所占的空间。stride >= region.size.width * 4。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否  |  否 | 像素格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | 否  |  否  |透明度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。  |
@@ -49,8 +49,8 @@
 
 | 名称   | 类型   | 只读 |  可选  |说明           |
 | ------ | ------ | -- |-----| -------------- |
-| height | number | 否  |  否  |输出图片的高，单位：像素。 |
-| width  | number | 否  |  否 | 输出图片的宽，单位：像素。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |  否  |输出图片的高，单位：像素。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |  否 | 输出图片的宽，单位：像素。 |
 
 ## AuxiliaryPictureInfo<sup>13+</sup>
 
@@ -140,8 +140,8 @@ PixelMap的初始化选项。
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
 | size<sup>7+</sup> | [Size](#size) | 否   | 否   | 区域大小。   |
-| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位：像素。 |
-| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位：像素。 |
+| x<sup>7+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否  | 区域左上角横坐标。单位：像素。 |
+| y<sup>7+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否  | 区域左上角纵坐标。单位：像素。 |
 
 ## PackingOption
 

@@ -271,7 +271,7 @@ function destroy() : void {
 | speed<sup>20+</sup> | number | 否 | 是 | 动画的播放速度因子。默认值为1.0，表示正常速度播放。如果设置为负值，动画将以反向速度播放。 |
 | duration | number | 是 | 否 | 动画持续时间，单位为秒（s），取值范围大于等于0。 |
 | running | boolean | 是 | 否 | 动画运行状态。true表示动画正在播放，false表示动画停止播放。 |
-| progress | number | 是 | 否 | 动画进度状态，取值区间为[0, 1]。 |
+| progress | ArkTS1.1: number<br>ArkTS1.2: double | 是 | 否 | 动画进度状态，取值区间为[0, 1]。 |
 
 ### onFinished
 onFinished(callback: Callback\<void>): void
