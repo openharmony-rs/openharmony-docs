@@ -919,15 +919,28 @@ info(): string
 |---------|-------------|
 |string    |属性名称。    |
 
+## PersistPropsOptions\<T\>
+
+指定持久化属性及其默认值的键值对对象，作为[persistProps](#persistprops)参数传入。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称       | 类型                                  | 只读 | 可选 | 说明                                                     |
+| ------------ | ------------------------------------- | --- | ---- | ------------------------------------------------------------ |
+| key          | string                                | 否 | 否   | 属性名。                                                     |
+| defaultValue | T | 否 | 否 | 当在[PersistentStorage](#PersistentStorage)和[AppStorage](#AppStorage)中未查询到key时，使用defaultValue中。 |
+| toJson       | ToJsonType\<T\> | 否 | 是 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
+| fromJson     | FromJsonType\<T\> | 否 | 是 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
+
 ## PersistentStorage
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储UI状态)](../../../ui/state-management-static/arkts-static-persiststorage.md)
 
-### ToJsonType<T>
+### ToJsonType\<T\>
 
-type ToJsonType<T> = (value: T) => jsonx.JsonElement
+type ToJsonType\<T\> = (value: T) => jsonx.JsonElement
 
 >**说明：**
 >
@@ -935,9 +948,9 @@ type ToJsonType<T> = (value: T) => jsonx.JsonElement
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### FromJsonType<T>
+### FromJsonType\<T\>
 
-type FromJsonType<T> = (element: jsonx.JsonElement) => T
+type FromJsonType\<T\> = (element: jsonx.JsonElement) => T
 
 >**说明：**
 >
@@ -947,7 +960,7 @@ type FromJsonType<T> = (element: jsonx.JsonElement) => T
 
 ### persistProp
 
-static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType<T>, fromJson?: FromJsonType<T>): boolean
+static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T\>, fromJson?: FromJsonType\<T\>): boolean
 
 将[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中key对应的属性持久化到文件中。该接口的调用通常在访问AppStorage之前。
 
@@ -970,9 +983,9 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType<T>
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | key          | string | 是   | 属性名。                                                     |
-| defaultValue | T      | 是   | 在PersistentStorage和AppStorage中未查询到时，则使用默认值进行初始化。 |
-| toJson       | ToJsonType<T> | 否 | 用于序列化,复杂类型开发者必须实现才能序列化成功。|
-| fromJson     | FromJsonType<T> | 否 | 用于反序列化，复杂类型开发者必须实现才能序列化成功。|
+| defaultValue | T      | 是   | 当在[PersistentStorage](#PersistentStorage)和[AppStorage](#AppStorage)中未查询到key时，使用defaultValue中。|
+| toJson       | ToJsonType\<T\> | 否 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
+| fromJson     | FromJsonType\<T\> | 否 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
 
 
 **示例：**
@@ -999,6 +1012,53 @@ static deleteProp(key: string): void
 import { PersistentStorage } from '@ohos.arkui.stateManagement';
 
 PersistentStorage.deleteProp('highScore');
+```
+
+### persistProps
+
+static persistProps(props: PersistPropsOptions\<Any\>[]): void
+
+将[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中key对应的属性持久化到文件中。与[persistProp](#persistprop)的区别在于可以一次性持久化多个数据，适用场景是：应用启动时调用持久化接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名        | 类型                                       | 必填   | 说明                                     |
+| ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| props | [PersistPropsOptions](#persistpropsoptions)[] | 是 | 持久化数组。 |
+
+**示例：**
+```ts
+import { PersistentStorage } from '@ohos.arkui.stateManagement';
+
+PersistentStorage.persistProps([
+  {
+    key: 'intVal',
+    defaultValue: '55',
+  },
+  {
+    key: 'classVal',
+    defaultValue: new Array<string>('1'),
+    toJson: (array: Any): jsonx.JsonElement => {
+      const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+      const arrayEle = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+      (array as Array<string>).forEach((v: string) => {
+        arrayEle.setElement(v, jsonx.JsonElement.createString(v));
+      });
+      root.setElement('array', arrayEle);
+      return root;
+    }, 
+    fromJson: (json: jsonx.JsonElement): Array<string> => {
+      let arrayEle: jsonx.JsonElement = json.getElement('array');
+      const array: Array<string> = new Array<string>();
+      for (let ele of arrayEle) {
+        array.push(ele[1].asString());
+      }
+      return array;
+    }
+  }
+]);
 ```
 
 ### keys
