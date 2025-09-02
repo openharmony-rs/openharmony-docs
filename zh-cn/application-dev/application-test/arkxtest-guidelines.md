@@ -47,7 +47,7 @@ UI 测试构建于单元测试基础之上，额外增加了对 UiTest 接口的
 
 下方示例代码以单元测试脚本为基础，进行UI测试的增量开发，实现的核心步骤为：
 
-1) 调用[程序框架服务](../references/js-apis-inner-application-abilitydelegator)能力，启动目标被测应用，并确认应用运行状态.
+1) 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态.
 
 2) 调用UI测试框架能力，页面中执行点击操作；
 
@@ -545,39 +545,39 @@ hdc shell uitest uiRecord read
 
  ```json
  {
-	 "ABILITY": "com.ohos.launcher.MainAbility", // 前台应用界面
-	 "BUNDLE": "com.ohos.launcher", // 操作应用
-	 "CENTER_X": "", // 预留字段,暂未使用
-	 "CENTER_Y": "", // 预留字段,暂未使用
-	 "EVENT_TYPE": "pointer", //  
-	 "LENGTH": "0", // 总体步长
-	 "OP_TYPE": "click", //事件类型，当前支持点击、双击、长按、拖拽、滑动、抛滑动作录制
-	 "VELO": "0.000000", // 离手速度
-	 "direction.X": "0.000000",// 总体移动X方向
-	 "direction.Y": "0.000000", // 总体移动Y方向
-	 "duration": 33885000.0, // 手势操作持续时间
-	 "fingerList": [{
-		 "LENGTH": "0", // 总体步长
-		 "MAX_VEL": "40000", // 最大速度
-		 "VELO": "0.000000", // 离手速度
-		 "W1_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 起点控件bounds
-		 "W1_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 起点控件hierarchy
-		 "W1_ID": "", // 起点控件id
-		 "W1_Text": "", // 起点控件text
-		 "W1_Type": "Image", // 起点控件类型
-		 "W2_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 终点控件bounds
-		 "W2_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 终点控件hierarchy
-		 "W2_ID": "", // 终点控件id
-		 "W2_Text": "", // 终点控件text
-		 "W2_Type": "Image", // 终点控件类型
-		 "X2_POSI": "47", // 终点X
-		 "X_POSI": "47", // 起点X
-		 "Y2_POSI": "301", // 终点Y
-		 "Y_POSI": "301", // 起点Y
-		 "direction.X": "0.000000", // x方向移动量
-		 "direction.Y": "0.000000" // Y方向移动量
-	 }],
-	 "fingerNumber": "1" //手指数量
+   "ABILITY": "com.ohos.launcher.MainAbility", // 前台应用界面
+   "BUNDLE": "com.ohos.launcher", // 操作应用
+   "CENTER_X": "", // 预留字段,暂未使用
+   "CENTER_Y": "", // 预留字段,暂未使用
+   "EVENT_TYPE": "pointer", //  
+   "LENGTH": "0", // 总体步长
+   "OP_TYPE": "click", //事件类型，当前支持点击、双击、长按、拖拽、滑动、抛滑动作录制
+   "VELO": "0.000000", // 离手速度
+   "direction.X": "0.000000",// 总体移动X方向
+   "direction.Y": "0.000000", // 总体移动Y方向
+   "duration": 33885000.0, // 手势操作持续时间
+   "fingerList": [{
+     "LENGTH": "0", // 总体步长
+     "MAX_VEL": "40000", // 最大速度
+     "VELO": "0.000000", // 离手速度
+     "W1_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 起点控件bounds
+     "W1_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 起点控件hierarchy
+     "W1_ID": "", // 起点控件id
+     "W1_Text": "", // 起点控件text
+     "W1_Type": "Image", // 起点控件类型
+     "W2_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 终点控件bounds
+     "W2_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 终点控件hierarchy
+     "W2_ID": "", // 终点控件id
+     "W2_Text": "", // 终点控件text
+     "W2_Type": "Image", // 终点控件类型
+     "X2_POSI": "47", // 终点X
+     "X_POSI": "47", // 起点X
+     "Y2_POSI": "301", // 终点Y
+     "Y_POSI": "301", // 起点Y
+     "direction.X": "0.000000", // x方向移动量
+     "direction.Y": "0.000000" // Y方向移动量
+   }],
+   "fingerNumber": "1" //手指数量
  }
  ```
 
