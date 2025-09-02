@@ -57,7 +57,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
-由于和UI实例关联，不支持uiextension中实现数据持久化，因此相对于PersistentStorage提供的持久化能力，更建议使用[prefrence](../../database/preferences-guidelines.md)进行数据持久化，对于数据持久化没有诸多限制。
+如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。
 
 ## 使用场景
 
