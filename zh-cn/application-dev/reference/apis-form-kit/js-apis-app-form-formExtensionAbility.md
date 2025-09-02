@@ -39,6 +39,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 | 名称    | 类型                                                         | 可读 | 可写 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 是   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| onStop | 匿名函数 | 是   | 是   | FormExtensionAbility的onStop方法转属性，提供方进程销毁时回调本属性赋值的匿名函数。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ### FormExtensionAbility.onAddForm
 
