@@ -42,7 +42,7 @@ ParallelizeUI(options?: ParallelOption | undefined, content?: CustomBuilder)
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | options  | ParallelOption \| undefined | 否   | 使用ParallelizeUI方法创建组件时的可选参数。<br/>默认值：undefined，默认并行化创建。 |
-| content  | CustomBuilder | 否   | 自定义UI描述，通过尾随闭包"{...}"的形式传入。当未设置时不创建任何内容。 |
+| content  | CustomBuilder | 否   | 自定义UI描述，通过尾随闭包"{...}"的形式传入。当未传入该参数时，不会创建任何UI内容。 |
 
 ## 示例
 
