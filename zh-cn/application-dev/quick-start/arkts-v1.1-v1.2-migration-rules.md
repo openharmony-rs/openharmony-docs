@@ -322,70 +322,69 @@ const abstract1: string = "abstract";
    let a = X.A.valueOf().toDouble() / X.B; // 先取到X.A的值，然后再转换为number/double
    ```
 
-## void类型只能用在返回类型的场景
+## 限制void类型的使用场景
 
 **规则：** `arkts-limited-void-type`
 
 **规则解释：**
 
-在ArkTS1.1中，`void`是一个类型。在ArkTS1.2中，`void`不再是类型，它没有实体，只能用作函数、方法和lambda表达式的返回类型，表示不返回任何值。
+在ArkTS1.1中，`void`类型可用于类型声明、类型断言、函数返回类型、泛型类型等场景。
+
+在ArkTS1.2中，`void`类型只能用作方法的返回类型和泛型类型，并且void类型函数的返回值不能作为值传递。
 
 **变更原因：**
 
-在ArkTS1.1中，void类型可以在多个场景中使用。
-
-在ArkTS1.2中，void只能使用在返回类型的场景，且void类型没有实体。
+ArkTS1.2对`void`类型的语义进行了收紧，限制其使用场景以增强类型安全性。
 
 **适配建议：**
 
-不要在函数返回类型之外的场景下使用void。
+- 场景1，函数返回void类型无需修改；函数返回void联合类型需要改为undefined。
+  ```typescript
+  // ArkTS1.1
+  function foo(): void {};
+  function foo(): void | number {};
+  // ArkTS1.2
+  function foo(): void {};
+  function foo(): undefined | number { return undefined };
+  ```
+- 场景2，void类型变量和类型别名需要改为undefined。
+  ```typescript
+    // ArkTS1.1
+  let s1: void;  // void类型变量
+  let s2: void | number;   // void联合类型
+  type t1 = void;  // void类型别名
+    // ArkTS1.2
+  let s1 = undefined;
+  let s2: undefined | number;
+  type t1 = undefined;
+  ```
+- 场景3，void类型断言，需要改为undefined。
+  ```typescript
+  // ArkTS1.1
+  let a: void | number = undefined;
+  let x1 = a as void;
+  let x2 = a as void | number;
+  // ArkTS1.2
+  let a: undefined | number = undefined;
+  let x1 = a as undefined; 
+  let x2 = a as undefined | number;
+  ```
+- 场景4，void类型函数的返回值不能作为值传递。
+  ```typescript
+  // ArkTS1.1
+  function foo():void{}
+  function execute(v: void) {}
+  // 在参数传递过程中执行foo方法
+  execute(foo());   
 
-**示例：**
-
-**ArkTS1.1**
-```typescript
-// 示例1：函数返回类型
-function foo(): void {};
-
-// 示例2：void类型变量声明
-let s: void = foo();
-let t: void | number = foo();
-
-// 示例3：泛型参数
-function process<T>(input: T): T {
-  return input;
-}
-let result = process<void>(foo());
-
-// 示例4：类型别名
-type VoidAlias = void;
-
-// 示例5：对象属性
-class A {
-  x?: void
-}
-
-// 示例6：void类型参数
-function execute(v: void) {
-}
-execute(foo());
-
-// 示例7：类型断言
-let x = foo() as void;
-```
-
-**ArkTS1.2**
-```typescript
-// 函数返回类型-普通函数
-function foo(): void {}
-foo();
-
-// 函数返回类型-箭头函数
-function execute(callback: () => void) {
-  callback();
-}
-execute(foo);
-```
+  // ArkTS1.2
+  function foo():void{}
+  function execute(v: () => void) {
+    v();
+  }
+  // 改为在execute内部执行foo方法 
+  execute(foo);    
+  ```
 
 ## 不支持void操作符
 
@@ -2080,31 +2079,31 @@ ArkTS1.2遵循空安全，未指定泛型类型实参时，创建实例时无法
 
 **示例：**
 
+```typescript
+// 类型定义
+class A<T> {
+  constructor(value: T) {
+  }
+}
+class B {
+  static get<T>(value:T): string {
+    return 'res';
+  }
+}
+```
+
 **ArkTS1.1**
 
 ```typescript
-new Array() // 违反规则
-
-new Map(); // 违反规则
-
-class Box<T> {
-  value: T;
-  constructor(value: T) {
-    this.value = value;
-  }
-}
-
-let box = new Box(42); // 违反规则
+let a = new A(42); // 可省略泛型类型
+let b = B.get('param');  // 可省略泛型类型
 ```
 
 **ArkTS1.2**
 
 ```typescript
-new Array<SomeType>() // 指定类型
-
-new Map<string, number>(); // 显式指定键值类型
-
-let box = new Box<number>(42); // 明确指定类型
+let a = new A<number>(42); // 需要显式指定类型
+let b = B.get<string>('param');  // 需要显式指定类型
 ```
 
 ## 不支持[]访问对象属性
@@ -2532,7 +2531,7 @@ ArkTS1.2中则不存在这个问题，实例方法和箭头函数都会捕获上
 
 **适配建议：**
 
-不涉及。
+不需要修改。
 
 **示例：**
 
@@ -2541,7 +2540,7 @@ ArkTS1.2中则不存在这个问题，实例方法和箭头函数都会捕获上
 ```typescript
 class A {
   n: string = 'a'
-  foo1() { console.log (this) }
+  foo1() { console.log (String(this)) }
   foo2 = () => { console.log(this.n) }
 }
 
@@ -3377,17 +3376,26 @@ ArkTS1.1与ArkTS1.2在继承/实现方法时遵循以下规则。有关逆变和
 class A { u = 0 }
 class B { v = 0 }
 class Father {
-  foo(a: A | B) { }
-  fun(a: A) { }
-  bar(): A | B { return new A() }
+  fun1(a: A | B) { }
+  fun2(a: A) { }
+  fun3(): A | B { return new A() }
+  async afun1(x: A | B) { }
+  async afun2(x: A) { }
+  async afun3(): Promise<A | B> { return new A() }
 }
 class Son extends Father {
-  // 参数：协变
-  override foo(a: A) { }
-  // 参数：逆变
-  override fun(a: A | B) { }
-  // 返回值：协变
-  override bar(): A { return new A() }
+  // 方法参数类型：协变
+  override fun1(a: A) { }
+  // 方法参数类型：逆变
+  override fun2(a: A | B) { }
+  // 方法返回类型：协变
+  override fun3(): A { return new A() }
+  // async方法参数类型：逆变
+  async afun1(x: A) { }
+  // async方法参数类型：协变
+  async afun2(x: A | B) { }
+  // async方法返回类型：协变
+  async afun3(): Promise<A> { return new A() }
 }
 ```
 
@@ -3397,14 +3405,20 @@ class Son extends Father {
 class A { u = 0 }
 class B { v = 0 }
 class Father {
-    foo(a: A) { }
-    bar(): A | B { return new A() }
+  fun1(a: A) { }
+  fun2(): A | B { return new A() }
+  async afun1(x: A | B) { }
+  async afun2(): Promise<A | B> { return new A() }
 }
 class Son extends Father {
-    // 参数：只能为逆变
-    override foo(a: A | B) { }
-    // 返回值：协变
-    override bar(): A { return new A(); }
+  // 方法参数类型：逆变
+  override fun1(a: A | B) { }
+  // 方法返回类型：协变
+  override fun2(): A { return new A() }
+  // async方法参数类型：协变
+  async afun1(x: A) { }
+  // async方法返回类型：协变
+  async afun2(): Promise<A> { return new A() }
 }
 ```
 
