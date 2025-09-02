@@ -2515,52 +2515,48 @@ class ClassA {
 }
 ```
 
-## 实例方法当作对象时会绑定this
+## 实例方法赋值给对象时会自动绑定this
 
 **规则：** `arkts-instance-method-bind-this`
 
 **规则解释：**
 
-在ArkTS1.2中，实例方法当作对象时会绑定上下文中的`this`。
+在ArkTS1.2中，实例方法被赋值给对象时会自动绑定上下文中的`this`。
 
 **变更原因：**
 
-在ArkTS1.1中，`this`的指向取决于函数的调用方式。示例中，当`a.foo1`被赋值给变量后，变成了一个独立函数，调用时不再与`a`实例关联，导致方法中的`this`指向`undefined`。可以使用`a.foo2`的箭头函数来解决这个问题。箭头函数在类中作为方法定义时，会捕获类实例的上下文，确保`this`始终指向实例。
+在ArkTS1.1中，实例方法的`this`指向取决于调用方式。当实例方法被赋值给对象时，`this`将不再指向实例，而是指向`undefined`。可以使用`bind`方法显式绑定，确保`this`正确指向实例。
 
-ArkTS1.2中则不存在这个问题，实例方法和箭头函数都会捕获上下文中的`this`。
+在ArkTS1.2中，实例方法直接赋值时会自动绑定`this`，确保方法调用时`this`始终指向原始实例，无需额外绑定。
 
 **适配建议：**
 
-不需要修改。
+开发者应移除不必要的bind绑定操作。
 
 **示例：**
+
+```typescript
+// 类型定义
+class A {
+  n: string = 'a'
+  foo() { console.log (this.n) }
+}
+```
 
 **ArkTS1.1**
 
 ```typescript
-class A {
-  n: string = 'a'
-  foo1() { console.log (String(this)) }
-  foo2 = () => { console.log(this.n) }
-}
-
 let a = new A();
-const foo1 = a.foo1;
-const foo2 = a.foo2;
-foo1() // 输出: 'undefined'
-foo2() // 输出: 'a'
+let foo = a.foo.bind(a) as Function;  // 显式绑定this
+foo(); // 输出：'a'
 ```
 
 **ArkTS1.2**
 
 ```typescript
-class A {
-  n: string = 'a'
-  foo() { console.log (this.n) }
-}
-let a = new A()
-const method = a.foo
-method()   // 输出: 'a'
+let a = new A();
+const foo = a.foo;   // 直接赋值，自动绑定this
+foo();   // 输出：'a'
 ```
 
 ## namespace内方法不能重名
@@ -3379,9 +3375,7 @@ class Father {
   fun1(a: A | B) { }
   fun2(a: A) { }
   fun3(): A | B { return new A() }
-  async afun1(x: A | B) { }
-  async afun2(x: A) { }
-  async afun3(): Promise<A | B> { return new A() }
+  fun4(x: A) { }
 }
 class Son extends Father {
   // 方法参数类型：协变
@@ -3390,12 +3384,10 @@ class Son extends Father {
   override fun2(a: A | B) { }
   // 方法返回类型：协变
   override fun3(): A { return new A() }
-  // async方法参数类型：逆变
-  async afun1(x: A) { }
-  // async方法参数类型：协变
-  async afun2(x: A | B) { }
-  // async方法返回类型：协变
-  async afun3(): Promise<A> { return new A() }
+  // 父类是普通函数，子类是异步函数
+  override async fun4(x: A | B) {
+    await new Promise<void>(() => {});
+  }
 }
 ```
 
@@ -3407,18 +3399,20 @@ class B { v = 0 }
 class Father {
   fun1(a: A) { }
   fun2(): A | B { return new A() }
-  async afun1(x: A | B) { }
-  async afun2(): Promise<A | B> { return new A() }
+  fun3(x: A) { }
 }
 class Son extends Father {
   // 方法参数类型：逆变
   override fun1(a: A | B) { }
   // 方法返回类型：协变
   override fun2(): A { return new A() }
-  // async方法参数类型：协变
-  async afun1(x: A) { }
-  // async方法返回类型：协变
-  async afun2(): Promise<A> { return new A() }
+  // 父类是普通函数，子类是异步函数，需要改为普通函数，将异步的部分抽取出来
+  override fun3(x: A | B) {
+    this.asyncFunc();
+  }
+  async asyncFunc() {
+    await new Promise<void>(() => {});
+  }
 }
 ```
 
