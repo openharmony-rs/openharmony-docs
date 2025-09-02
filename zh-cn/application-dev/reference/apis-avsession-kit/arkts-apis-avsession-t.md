@@ -52,7 +52,9 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 
 ## ExtraInfo<sup>18+</sup>
 
-type ExtraInfo = { [key: string]: Object; }
+ArkTS-Dyn: type ExtraInfo = { [key: string]: Object; }
+
+ArkTS-Sta: type ExtraInfo = Record<string, Object>
 
 媒体提供方设置的自定义媒体数据包对象。
 

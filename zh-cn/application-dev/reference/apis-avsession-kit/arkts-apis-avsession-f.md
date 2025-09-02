@@ -45,6 +45,8 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -67,6 +69,40 @@ struct Index {
             sessionId = currentAVSession.sessionId;
             console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
             }).catch((err: BusinessError) => {
+            console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let sessionId: string;  // 供后续函数入参使用。
+
+            avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
+            currentAVSession = data;
+            sessionId = currentAVSession.sessionId;
+            console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
+            }).catch((err: Error) => {
             console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
@@ -104,6 +140,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,3 +175,40 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(()=>{
+          let currentAVSession: avSession.AVSession | undefined;
+          let tag = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          let sessionId: string | undefined;  // 供后续函数入参使用。
+
+          avSession.createAVSession(context, tag, "audio", (err: BusinessError | null, data: avSession.AVSession | undefined) => {
+            if (err) {
+              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+              currentAVSession = data;
+              sessionId = currentAVSession?.sessionId;
+              console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
+            }
+          });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
