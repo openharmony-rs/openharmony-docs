@@ -1,4 +1,4 @@
-# 自动化测试框架使用指导 
+# UI测试框架使用指导 
 
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
@@ -9,519 +9,466 @@
 
 ## 概述
 
-自动化测试框架arkxtest，作为工具集的重要组成部分，支持JS/TS语言的单元测试框架（JsUnit）、UI测试框架（UiTest）及白盒性能测试框架（PerfTest）。<br>JsUnit提供单元测试用例执行能力，提供用例编写基础接口，生成对应报告，用于测试系统或应用接口。<br>UiTest通过简洁易用的API提供查找和操作界面控件能力，支持用户开发基于界面操作的自动化测试脚本。<br>PerfTest提供基于代码段的白盒性能测试能力，支持采集指定代码段执行期间或指定场景发生时的性能数据。<br>本指南介绍了测试框架的主要功能、实现原理、环境准备，以及测试脚本编写和执行方法。同时，以shell命令方式，对外提供了获取截屏、控件树、录制界面操作、便捷注入UI模拟操作等能力，助力开发者更灵活方便测试和验证。
+测试用户交互行为，是保障用户体验的关键环节 —— 通过模拟真实使用场景验证交互逻辑，可有效规避用户操作中可能出现的意外结果，避免不良使用体验。
 
-## 实现原理
+若需验证应用用户界面（UI）的功能完整性与运行稳定性，编写 UI 测试用例是高效且必要的手段。这类测试用例不仅支持快速执行，还能确保测试结果的可靠性，同时可反复运行以覆盖多轮迭代场景，为应用 UI 质量提供保障。
 
-测试框架分为单元测试框架、UI测试框架和白盒性能测试框架。<br>单元测试框架是测试框架的基础底座，提供了最基本的用例识别、调度、执行及结果汇总的能力。<br>UI测试框架主要对外提供了UiTest API供开发人员在对应测试场景调用，而其脚本的运行基础仍是单元测试框架。<br>白盒性能测试框架提供PerfTest API供开发人员在基于代码段的性能测试场景中使用，测试脚本基于单元测试框架开发。
+UI测试框架（UiTest）为开发者提供全方位的UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI 交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者高效搭建可靠的界面自动化测试流程。
 
-### 单元测试框架
+## 功能全景
 
-  图1.单元测试框架主要功能
-
-  ![](figures/UnitTest.PNG)
-
-  图2.脚本基础流程运行图
-
-  ![](figures/TestFlow.PNG)
-
-### UI测试框架
-
-  图3.UI测试框架主要功能
+  图1.UI测试框架主要功能
 
   ![](figures/Uitest.PNG)
 
-### 白盒性能测试框架
+UiTest支持采用ArkTS语言与Shell命令两种方式编写测试脚本，为界面自动化测试提供灵活高效的技术支撑，核心能力如下：
 
-  图4.白盒性能测试框架主要功能
+**ArkTS 脚本开发能力：** 
+提供简洁易用的API接口，可满足各类测试场景需求，核心支持点击、双击、长按、滑动等主流 UI 交互操作，助力用户快速开发基于界面交互逻辑的自动化测试脚本，降低脚本编写门槛。
 
-  <img src="figures/perftest.PNG" alt="perftest" width="760">
+On<sup>9+</sup>：提供控件特征描述能力，用于精准筛选、匹配并查找目标控件，适配 API version 9 及以上版本。
 
-## 基于ArkTS编写和执行测试
+Component<sup>9+</sup>：代表 UI 界面中的指定控件，支持控件属性获取、控件点击、滑动查找、文本注入等核心操作，适配 API version 9 及以上版本。
 
-### 搭建环境
+Driver<sup>9+</sup>：模块入口类，提供控件匹配与查找、模拟操作事件注入、屏幕截图等基础测试能力，适配 API version 9 及以上版本。
 
-DevEco Studio可参考其官网介绍进行[下载](https://developer.huawei.com/consumer/cn/download/)，并进行相关的配置动作。
+UiWindow<sup>9+</sup>：模块入口类，支持窗口属性获取、窗口拖动、窗口大小调整等窗口级操作，适配 API version 9 及以上版本。
 
-### 新建和编写测试脚本
+**Shell 命令测试能力：** 
+支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、导出界面控件树结构、录制界面操作流程、便捷注入UI模拟事件等，帮助开发者灵活开展测试验证工作。
 
-#### 新建测试脚本
+## 使用ArkTS接口进行UI测试
 
-<!--RP2-->
-在DevEco Studio中新建应用开发工程，其中ohos目录即为测试脚本所在的目录。
+本章节将重点讲解 UI 测试框架 ArkTS API 的核心能力与具体使用方法，为开发者开展界面自动化测试提供清晰指引。
 
-在工程目录下打开待测试模块下的ets文件，将光标置于代码中任意位置，单击**右键 > Show Context Actions** **> Create Ohos Test**或快捷键**Alt+enter** **> Create Ohos Test**创建测试类，更多指导请参考DevEco Studio中[指导](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/harmonyos_jnit_jsunit-0000001092459608-V3?catalogVersion=V3#section13366184061415)。
+UI 测试构建于单元测试基础之上，额外增加了对 UiTest 接口的调用，接口的详细定义与参数说明可参考<!--RP1-->具体请参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP1End-->。
 
-<!--RP2End-->
+### UI测试示例
 
-#### 编写单元测试脚本
+下方示例代码以单元测试脚本为基础，进行UI测试的增量开发，实现的核心步骤为：
 
-本章节主要描述单元测试框架支持能力，以及能力的使用方法，具体请参考[单元测试框架功能特性](https://gitee.com/openharmony/testfwk_arkxtest/blob/master/README_zh.md#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7)。
+1) 调用[程序框架服务](../references/js-apis-inner-application-abilitydelegator)能力，启动目标被测应用，并确认应用运行状态.
 
-在单元测试框架，测试脚本需要包含如下基本元素：
+2) 调用UI测试框架能力，页面中执行点击操作；
 
-1. 依赖导包，以便使用依赖的测试接口。
+3) 验证操作后当前页面的实际变化是否与预期结果一致。
 
-2. 测试代码编写，主要编写测试代码的相关逻辑，如接口调用等。
+A. 编写Index.ets页面代码，作为被测示例demo。
+```ts
+@Entry
+@Component
+struct Index {
+    @State message: string = 'Hello World';
 
-3. 断言接口调用，设置测试代码中的检查点，如无检查点，则不可认为一个完整的测试脚本。
+    build() {
+    Row() {
+        Column() {
+        Text(this.message)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        Text("Next")
+            .fontSize(50)
+            .margin({top:20})
+            .fontWeight(FontWeight.Bold)          
+            .onClick((event?: ClickEvent) => {
+                if(event){
+                    this.text = "after click";
+                })
+        }
+        .width('100%')
+    }
+    .height('100%')
+    }
+}
+```
 
-如下示例代码实现的场景是：启动测试页面，检查设备当前显示的页面是否为预期页面。
-
+B. 在ohosTest > ets > test文件夹下.test.ets文件中编写具体测试代码。
 ```ts
 import { describe, it, expect, Level } from '@ohos/hypium';
-import { abilityDelegatorRegistry } from '@kit.TestKit';
+// 导入测试依赖kit
+import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
 
-const delegator = abilityDelegatorRegistry.getAbilityDelegator();
-function sleep(time: number) {
-  return new Promise<void>((resolve: Function) => setTimeout(resolve, time));
-}
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 export default function abilityTest() {
-  describe('ActsAbilityTest', () =>{
+  describe('ActsAbilityTest', () => {
     it('testUiExample',Level.LEVEL3, async (done: Function) => {
-      console.info("uitest: TestUiExample begin");
-      await sleep(1000);
+      console.info("uitest: TestUiExample begin");        
+      // 初始化Driver对象
+      const driver = Driver.create();
       const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-      //start tested ability
+      // 指定被测应用包名、ability名
       const want: Want = {
-        bundleName: bundleName,
-        abilityName: 'EntryAbility'
+          bundleName: bundleName,
+          abilityName: 'EntryAbility'
       }
+      // 拉起被测应用
       await delegator.startAbility(want);
-      await sleep(1000);
-      //check top display ability
+      // 等待应用拉起完成
+      let idled: boolean = await driver.waitForIdle(4000,5000);
+      // 确认当前应用顶部Ability为指定的ability
       const ability: UIAbility = await delegator.getCurrentTopAbility();
       console.info("get top ability");
       expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
+
+      // 依据指定文本“Next”查找目标控件
+      const button = await driver.findComponent(ON.text('Next'));
+      // 点击目标控件
+      await button.click();
+      await driver.delayMs(1000);
+      // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期。
+      await driver.assertComponentExist(ON.text('after click'));
+      await driver.pressBack();
       done();
     })
   })
 }
 ```
 
-#### 编写UI测试脚本
+### 模拟触摸屏手指操作
+以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
 
-本章节主要介绍UI测试框架支持能力，以及对应能力API的使用方法。<br>UI测试基于单元测试，UI测试脚本在单元测试脚本上增加了对UiTest接口，<!--RP1-->具体请参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP1End-->。<br>如下的示例代码是在上面的单元测试脚本基础上增量编写，实现的场景是：在启动的应用页面上进行点击操作，然后检测当前页面变化是否为预期变化。
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, PointerMatrix } from '@kit.TestKit';
 
-1. 编写Index.ets页面代码，作为被测示例demo。
-    ```ts
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'Hello World';
-    
-      build() {
-        Row() {
-          Column() {
-            Text(this.message)
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
-            Text("Next")
-              .fontSize(50)
-              .margin({top:20})
-              .fontWeight(FontWeight.Bold)
-            Text("after click")
-              .fontSize(50)
-              .margin({top:20})
-              .fontWeight(FontWeight.Bold)
-          }
-          .width('100%')
-        }
-        .height('100%')
-      }
-    }
-    ```
-
-2. 在ohosTest > ets > test文件夹下.test.ets文件中编写具体测试代码。
-    ```ts
-    import { describe, it, expect, Level } from '@ohos/hypium';
-    // 导入测试依赖kit
-    import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-    import { UIAbility, Want } from '@kit.AbilityKit';
-    
-    const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-    function sleep(time: number) {
-      return new Promise<void>((resolve: Function) => setTimeout(resolve, time));
-    }
-    export default function abilityTest() {
-      describe('ActsAbilityTest', () => {
-        it('testUiExample',Level.LEVEL3, async (done: Function) => {
-            console.info("uitest: TestUiExample begin");
-            await sleep(1000);
-            const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-            //start tested ability
-            const want: Want = {
-              bundleName: bundleName,
-              abilityName: 'EntryAbility'
-            }
-            await delegator.startAbility(want);
-            await sleep(1000);
-            //check top display ability
-            const ability: UIAbility = await delegator.getCurrentTopAbility();
-            console.info("get top ability");
-            expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
-            //ui test code
-            //init driver
-            const driver = Driver.create();
-            await driver.delayMs(1000);
-            //find button on text 'Next'
-            const button = await driver.findComponent(ON.text('Next'));
-            //click button
-            await button.click();
-            await driver.delayMs(1000);
-            //check text
-            await driver.assertComponentExist(ON.text('after click'));
-            await driver.pressBack();
-            done();
-        })
-      })
-    }
-    ```
-
-#### 编写白盒性能测试脚本
-
-本章节主要介绍白盒性能测试框架支持能力，以及对应能力API的使用方法。<br>白盒性能测试基于单元测试，测试脚本在单元测试脚本上增加了对PerfTest接口的调用。<!--RP5-->具体请参考[API文档](../reference/apis-test-kit/js-apis-perftest.md)<!--RP5End-->。性能测试过程中，可以结合使用UI测试框架接口，对界面进行模拟操作并测试指定场景的性能。<br>如下示例代码实现的场景是：测试函数执行期间的应用性能、测试当前应用内列表滑动帧率。
-
-1.测试函数执行期间的应用性能。
-
-- 在main > ets > utils文件夹下新增PerfUtils.ets文件，在文件中编写自定义的函数。
-
-  ```ts
-  export class PerfUtils {
-    public static CalculateTest() {
-      let num: number = 0
-      for (let index = 0; index < 10000; index++) {
-        num++;
-      }
-    }
-  }
-  ```
-
-- 在ohosTest > ets > test文件夹下.test.ets文件中编写具体测试代码。
-
-  ```ts
-  import { describe, it, expect, Level } from '@ohos/hypium';
-  import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.TestKit';
-  import { PerfUtils } from '../../../main/ets/utils/PerfUtils';
-  
-  export default function PerfTestTest() {
-    describe('PerfTestTest', () => {
-      it('testExample0', Level.LEVEL3, async (done: Function) => {
-        let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE] // 指定被测指标
-        let actionCode = async (finish: Callback<boolean>) => { // 测试代码段中使用uitest进行列表滑动
-          await PerfUtils.CalculateTest()
-          finish(true);
-        };
-        let perfTestStrategy: PerfTestStrategy = {  // 定义测试策略
-          metrics: metrics,
-          actionCode: actionCode,
-        };
-        try {
-          let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 创建测试任务对象PerfTest
-          await perfTest.run(); // 执行测试，异步函数需使用await同步等待完成
-          let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION); // 获取耗时指标的测试结果
-          let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE); // 获取CPU使用率指标的测试结果
-          perfTest.destroy(); // 销毁PerfTest对象
-          expect(res1.average).assertLessOrEqual(1000); // 断言性能测试结果
-          expect(res2.average).assertLessOrEqual(30); // 断言性能测试结果
-        } catch (error) {
-          console.error(`Failed to execute perftest. Cause:${JSON.stringify(error)}`);
-          expect(false).assertTrue()
-        }
-        done();
-      })
+export default function abilityTest() {
+  describe('screenOperationTest', () => {
+    /**
+     * 基于坐标的触摸屏手指操作
+     */
+    it("touchScreenOperation", TestType.FUNCTION, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      // 单击
+      await driver.click(100,100);
+      // 指定屏幕id进行单击
+      await driver.clickAt({ x: 100, y: 100, displayId: 0 });
+      // 滑动
+      await driver.swipe(100, 100, 200, 200, 600);
+      // 指定屏幕id进行滑动
+      await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+      // 抛滑
+      await driver.fling({x: 100, y: 100},{x: 200, y: 200}, 5, 600);
+      // 指定方向的抛滑
+      await driver.fling(UiDirection.DOWN, 10000);
+      // 拖拽
+      await driver.drag(100, 100, 200, 200, 600);
+      // 指定屏幕id和拖拽移动前的长按时间
+      await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500); 
+      // 多指操作，指定使用两根手指，每根手指基于两个坐标点滑动
+      let pointers: PointerMatrix = PointerMatrix.create(2, 2);
+      pointers.setPoint(0, 0, {x: 100, y: 100});
+      pointers.setPoint(0, 1, {x: 200, y: 100});
+      pointers.setPoint(1, 0, {x: 100, y: 200});
+      pointers.setPoint(1, 1, {x: 200, y: 200});
+      await driver.injectMultiPointerAction(pointers);
     })
-  }
-  ```
+  })
+}
 
-2.测试当前应用内列表滑动帧率
+```
+### 控件查找与操作
+以下示例代码演示了如何使用UiTest接口进行控件的查找和操作，根据控件属性或相对位置查找控件，并进行点击、放大等控件级操作。
 
-- 编写Index.ets页面代码，作为被测示例demo。
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, Component, ON, On } from '@kit.TestKit';
 
-  ```ts
-  @Entry
-  @Component
-  struct ListPage {
-    scroller: Scroller = new Scroller()
-    private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    build() {
-      Row() {
-        Column() {
-          Scroll(this.scroller) {
-            Column() {
-              ForEach(this.arr, (item: number) => {
-                Text(item.toString())
-                  .width('90%')
-                  .height('40%')
-                  .fontSize(80)
-                  .textAlign(TextAlign.Center)
-                  .margin({ top: 10 })
-              }, (item: string) => item)
-            }
-          }
-          .width('100%')
-          .height('100%')
-          .scrollable(ScrollDirection.Vertical)
-          .scrollBar(BarState.On)
-          .scrollBarColor(Color.Gray)
-        }
-        .width('100%')
-      }
-      .height('100%')
-    }
-  }
-  ```
-
-- 在ohosTest > ets > test文件夹下.test.ets文件中编写具体测试代码。
-
-  ```ts
-  import { describe, it, expect, Level } from '@ohos/hypium';
-  import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.TestKit';
-  import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-  import { Want } from '@kit.AbilityKit';
-  
-  const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-  export default function PerfTestTest() {
-    describe('PerfTestTest', () => {
-      it('testExample',Level.LEVEL3, async (done: Function) => {
-        let driver = Driver.create();
-        await driver.delayMs(1000);
-        const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-        const want: Want = {
-          bundleName: bundleName,
-          abilityName: 'EntryAbility'
-        };
-        await delegator.startAbility(want); // 打开测试页面
-        await driver.delayMs(1000);
-        let scroll = await driver.findComponent(ON.type('Scroll'));
-        await driver.delayMs(1000);
-        let center = await scroll.getBoundsCenter();  // 获取Scroll可滚动组件坐标
-        await driver.delayMs(1000);
-        let metrics: Array<PerfMetric> = [PerfMetric.LIST_SWIPE_FPS]  // 指定被测指标为列表滑动帧率
-        let actionCode = async (finish: Callback<boolean>) => { // 测试代码段中使用uitest进行列表滑动
-          await driver.fling({x: center.x, y: Math.floor(center.y * 3 / 2)}, {x: center.x, y: Math.floor(center.y / 2)}, 50, 20000);
-          await driver.delayMs(3000);
-          finish(true);
-        };
-        let resetCode = async (finish: Callback<boolean>) => {  // 复位环境，将列表划至顶部
-          await scroll.scrollToTop(40000);
-          await driver.delayMs(1000);
-          finish(true);
-        };
-        let perfTestStrategy: PerfTestStrategy = {  // 定义测试策略
-          metrics: metrics,
-          actionCode: actionCode,
-          resetCode: resetCode,
-          iterations: 5,  // 指定测试迭代次数
-          timeout: 50000, // 指定actionCode和resetCode的超时时间
-        };
-        try {
-          let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 创建测试任务对象PerfTest
-          await perfTest.run(); // 执行测试，异步函数需使用await同步等待完成
-          let res: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.LIST_SWIPE_FPS); // 获取列表滑动帧率指标的测试结果
-          perfTest.destroy(); // 销毁PerfTest对象
-          expect(res.average).assertLargerOrEqual(60);  // 断言性能测试结果
-        } catch (error) {
-          console.error(`Failed to execute perftest. Cause:${JSON.stringify(error)}`);
-        }
-        done();
-      })
+export default function abilityTest() {
+  describe('componentOperationTest', () => {
+    /**
+     * 查找类型为'Button'的控件，并进行控件点击操作
+     */
+    it("componentSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      let button: Component = await driver.findComponent(ON.type('Button'));
+      await button.click();
     })
-  }
-  ```
 
-### 执行测试脚本
+    /**
+     * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
+     */
+    it("relativePositioncomponentSearch", TestType.FUNCTION, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      let on: On = ON.text('123').within(ON.type('Scroll'));
+      let items: Array<Component> = await driver.findComponents(on);
+    })
 
-#### 在DevEco Studio执行
+    /**
+     * 查找类型为'Image'的控件，并进行对其进行双指放大操作。
+     */
+    it("componentPinch", TestType.FUNCTION, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      let image: Component = await driver.findComponent(ON.type('Image'));
+      await image.pinchOut(1.5);
+    })
+  })
+}
 
-脚本执行需要连接硬件设备。通过点击按钮执行，当前支持以下执行方式：
+```
+### 窗口查找与操作
+以下示例代码演示了如何使用UiTest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
 
-1. 测试包级别执行，即执行测试包内的全部用例。
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, Component, ON, On } from '@kit.TestKit';
 
-2. 测试套级别执行，即执行describe方法中定义的全部测试用例。
+export default function abilityTest() {
+  describe('windowOperationTest', () => {
+    /**
+     * 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
+     */
+    it("windowSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
+      let driver = Driver.create();
+      let window = await driver.findWindow({active: true});
+      await window.minimize();
+    })
+  })
+}
+```
 
-3. 测试方法级别执行，即执行指定it方法也就是单条测试用例。
+### 模拟文本输入
+以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
-![](figures/Execute.PNG)
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, ON } from '@kit.TestKit';
 
-**查看测试结果**
+export default function abilityTest() {
+  describe('inputTextTest', () => {
+    /**
+     * 基于控件的文本输入，调用接口会默认清空文本框中内容后输入指定文本
+     */
+    it('componentInputText', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      let input = await driver.findComponent(ON.type('TextInput'));
+      await input.inputText('abc');
+    })
 
-测试执行完毕后可直接在DevEco Studio中查看测试结果，如下图示例所示。
+    /**
+     * 基于坐标的文本输入，点击指定位置使输入框获焦，并在光标处输入指定文本
+     */
+    it('pointInputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create()
+      let input = await driver.findComponent(ON.type('TextInput'))
+      let center = await input.getBoundsCenter()
+      await driver.inputText(center, 'abc')
+    })
+  })
+}
+```
+### 截图
+以下示例代码演示了如何使用UiTest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
 
-![](figures/TestResult.PNG)
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver } from '@kit.TestKit';
+import display from '@ohos.display';
 
-**查看测试用例覆盖率**
+export default function abilityTest() {
+  describe('screenCaptureTest', () => {
+    /**
+     * 截取指定区域的屏幕，并保存到指定路径
+     */
+    it('screenCapture', TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      // 应用沙箱路径，el2为用户级加密区，base为应用在本设备上存放持久化数据的子目录。
+      let savePath = '/data/storage/el2/base/cache/1.png';
+      let res = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100});
+    })
 
-执行完测试用例后可以查看测试用例覆盖率，具体操作请参考[代码测试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-code-test)下各章节内的覆盖率统计模式。
-
-#### 在CMD执行
-
-脚本执行需要连接硬件设备，将应用测试包安装到测试设备上，在cmd窗口中执行aa命令，完成对用例测试。
+    /**
+     * 截取指定屏幕id的屏幕全屏，并保存到指定路径
+     */
+    it('screenCapWithId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // 获取默认屏幕对象
+      let disPlay = display.getDefaultDisplaySync();
+      let savePath = '/data/storage/el2/base/cache/1.png'
+      let res = await driver.screenCap(savePath, disPlay.id)；// 获取默认屏幕ID属性
+    })
+  })
+}
+```
 
 > **说明：**
->
-> 使用cmd的方式，需要配置好hdc相关的环境变量。
+> 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。
+> 2. 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->为system_basic、normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
+> 3. 截屏时，可以调用display模块的接口[获取Display对象](../displaymanager/screenProperty-guideline.md#获取Display对象)，实现[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)。
 
-**aa test命令执行配置参数**
+### UI事件监听
+以下示例代码演示了如何使用UiTest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
 
-| 执行参数全写  | 执行参数缩写 | 执行参数含义                           | 执行参数示例                       |
-| ------------- | ------------ | -------------------------------------- | ---------------------------------- |
-| --bundleName  | -b           | 应用Bundle名称。                       | - b com.test.example               |
-| --packageName | -p           | 应用模块名，适用于FA模型应用。           | - p com.test.example.entry         |
-| --moduleName  | -m           | 应用模块名，适用于STAGE模型应用。        | -m entry                           |
-| NA            | -s           | 特定参数，以<key, value>键值对方式传入。 | - s unittest /ets/testrunner/OpenHarmonyTestRunner |
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, UIElementInfo } from '@kit.TestKit';
 
-框架当前支持多种用例执行方式，通过上表中的-s参数后的配置键值对参数传入触发，如下表所示。
-
-| 配置参数名     | 配置参数含义                                                 | 配置参数取值                                               | 配置参数示例                              |
-| ------------ | -----------------------------------------------------------------------------    | ------------------------------------------------------------ | ----------------------------------------- |
-| unittest     | 用例执行所使用OpenHarmonyTestRunner对象。  | OpenHarmonyTestRunner或用户自定义runner名称                  | - s unittest OpenHarmonyTestRunner        |
-| class        | 指定要执行的测试套或测试用例。                                  | {describeName}#{itName}，{describeName}                      | -s class attributeTest#testAttributeIt    |
-| notClass     | 指定不需要执行的测试套或测试用例。                               | {describeName}#{itName}，{describeName}                      | -s notClass attributeTest#testAttributeIt |
-| itName       | 指定要执行的测试用例。                                         | {itName}                                                     | -s itName testAttributeIt                 |
-| timeout      | 测试用例执行的超时时间。                                        | 正整数（单位ms），如不设置默认为 5000                        | -s timeout 15000                          |
-| breakOnError | 遇错即停模式，当执行用例断言失败或者发生错误时，退出测试执行流程。 | true，false（默认值）                                          | -s breakOnError true                      |
-| random | 测试用例随机顺序执行。                  | true，false（默认值）                                           | -s random true                      |
-| testType     | 指定要执行用例的用例类型。                     | function，performance，power，reliability，security，global，compatibility，user，standard，safety，resilience | -s testType function                      |
-| level        | 指定要执行用例的用例级别。                     | 0, 1, 2, 3, 4                                              | -s level 0                                |
-| size         | 指定要执行用例的用例规模。                     | small，medium，large                                        | -s size small        
-| stress       | 指定要执行用例的执行次数。                     |  正整数                                         | -s stress 1000                            |
-
-**在cmd窗口执行test命令**
-
-> **说明：**
->
->参数配置和命令均是基于Stage模型。
-
-
-示例代码1：执行所有测试用例。
-
-```shell  
- hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner
+export default function abilityTest() {
+  describe('observerTest', () => {
+    /**
+     * 监听toast控件出现。
+     */
+    it("toastObserver", TestType.FUNCTION, async () => {
+      let driver = Driver.create();
+      let observer = driver.createUIEventObserver();
+      let callback = (uiElementInfo : UIElementInfo) => {
+        let bundleName = uiElementInfo.bundleName;
+        let text = uiElementInfo.text;
+        let type = uiElementInfo.type;
+      }
+      observer.once('toastShow', callback);
+    })
+  })
+}
 ```
 
-示例代码2：执行指定的describe测试套用例，指定多个需用逗号隔开。
+### 模拟键鼠操作
+以下示例代码演示了如何使用UiTest接口进行键鼠模拟操作，包括键盘按键、组合键输入操作，鼠标点击、移动、拖拽操作和键鼠组合操作等。
 
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s class s1,s2
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, MouseButton } from '@kit.TestKit';
+import { KeyCode } from '@ohos.multimodalInput.keyCode';
+
+export default function abilityTest() {
+  describe('KeyboardMouseTest', () => {
+    /**
+     * 模拟键盘按键输入、组合键输入。
+     */
+    it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // 键盘按键输入（注入返回键）
+      await driver.triggerKey(KeyCode.KEYCODE_BACK);
+      // 键盘组合键输入（注入保存组合键）
+      await driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT,  KeyCode.KEYCODE_S);
+    })
+
+    /**
+     * 模拟鼠标左键单击、鼠标移动、鼠标拖拽操作。
+     */
+    it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // 鼠标左键单击
+      await driver.mouseClick({x: 100, y: 100}, MouseButton.MOUSE_BUTTON_LEFT); 
+      // 鼠标移动
+      await driver.mouseMoveTo({x: 100, y: 100});
+      // 鼠标拖拽
+      await driver.mouseDrag({x: 100, y: 100}, {x: 200, y: 200}, 600);
+    })
+
+    /**
+     * 模拟键盘、鼠标组合操作。
+     */
+    it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // 按下左CTRL键，同时鼠标滚轮滚动
+      await driver.mouseScroll({x:100, y:100}, true, 30, KeyCode.KEYCODE_CTRL_LEFT);
+      // 按下左CTRL键，同时鼠标左键长按
+      await driver.mouseLongClick({x:100, y:100}, MouseButton.MOUSE_BUTTON_LEFT, KeyCode.KEYCODE_CTRL_LEFT);
+    })
+  })
+}
 ```
 
-示例代码3：执行指定测试套中指定的用例，指定多个需用逗号隔开。
+### 模拟触摸板操作
+以下示例代码演示了如何使用UiTest接口进行触摸板模拟操作，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。
 
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s class testStop#stop_1,testStop1#stop_0
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, UiDirection } from '@kit.TestKit';
+
+export default function abilityTest() {
+  describe('touchPadOperationTest', () => {
+    /**
+     * PC场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作。
+     */
+    it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // 触摸板三指上滑返回桌面。
+      await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+      // 触摸板三指下滑恢复窗口
+      await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+    })
+  })
+}
+
 ```
 
-示例代码4：执行指定除配置以外的所有的用例，设置不执行多个测试套需用逗号隔开。
+### 模拟手写笔操作
+以下示例代码演示了如何使用UiTest接口进行手写笔模拟操作，包括点击、滑动等操作，支持设置操作时的压力值大小。
 
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s notClass testStop
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver } from '@kit.TestKit';
+
+export default function abilityTest() {
+  describe('penOperationTest', () => {
+    /**
+     * 模拟手写笔单击、双击、长按、滑动操作
+     */
+    it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
+      // 手写笔单击
+      await driver.penClick({x: 100, y: 100});
+      // 手写笔双击
+      await driver.penDoubleClick({x: 100, y: 100});
+      // 手写笔长按
+      await driver.penLongClick({x: 100, y: 100}, 0.5);
+      // 手写笔滑动
+      await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+    })
+  })
+}
 ```
 
-示例代码5：执行指定it名称的所有用例，指定多个需用逗号隔开。
+### 模拟表冠操作
+以下示例代码演示了如何使用UiTest接口进行表冠模拟操作，包括表冠的顺/逆时针旋转。
 
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s itName stop_0
+```ts
+/**
+  * 手表场景，模拟表冠顺/逆时针旋转
+  */
+it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+  let driver = Driver.create();
+  // 顺时针旋转50格，旋转速度为30格/秒
+  await driver.crownRotate(50, 30);
+  // 逆时针旋转20格，旋转速度为30格/秒
+  await driver.crownRotate(-20, 30);
+})
 ```
 
-示例代码6：用例执行超时时长配置。
+### 屏幕显示操作
+以下示例代码演示了如何使用UiTest接口进行屏幕显示操作，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。
 
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s timeout 15000
+```ts
+/**
+  * 屏幕属性获取和屏幕操作
+  */
+it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+  let driver = Driver.create();
+  // 获取屏幕大小
+  let size: Point = await driver.getDisplaySize();
+  // 获取屏幕清晰度
+  let density: Point = await driver.getDisplayDensity();
+  // 唤醒屏幕
+  await driver.wakeUpDisplay();
+  // 屏幕顺时针旋转90度
+  await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
+})
 ```
 
-示例代码7：用例以breakOnError模式执行用例。
+## 基于Shell命令进行UI测试
 
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s breakOnError true
-```
-
-示例代码8：执行测试类型匹配的测试用例。
-
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s testType function
-```
-
-示例代码9：执行测试级别匹配的测试用例。
-
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s level 0
-```
-
-示例代码10：执行测试规模匹配的测试用例。
-
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s size small
-```
-
-示例代码11：执行测试用例指定次数。
-
-```shell  
-  hdc shell aa test -b xxx -m xxx -s unittest OpenHarmonyTestRunner -s stress 1000
-```
-
-**查看测试结果**
-
-- cmd模式执行过程，会打印如下相关日志信息。
-
- ```
-  OHOS_REPORT_STATUS: class=testStop
-  OHOS_REPORT_STATUS: current=1
-  OHOS_REPORT_STATUS: id=JS
-  OHOS_REPORT_STATUS: numtests=447
-  OHOS_REPORT_STATUS: stream=
-  OHOS_REPORT_STATUS: test=stop_0
-  OHOS_REPORT_STATUS_CODE: 1
-
-  OHOS_REPORT_STATUS: class=testStop
-  OHOS_REPORT_STATUS: current=1
-  OHOS_REPORT_STATUS: id=JS
-  OHOS_REPORT_STATUS: numtests=447
-  OHOS_REPORT_STATUS: stream=
-  OHOS_REPORT_STATUS: test=stop_0
-  OHOS_REPORT_STATUS_CODE: 0
-  OHOS_REPORT_STATUS: consuming=4
- ```
-
-| 日志输出字段               | 日志输出字段含义       |
-| -------           | -------------------------|
-| OHOS_REPORT_SUM    | 当前测试套用例总数。 |
-| OHOS_REPORT_STATUS: class | 当前执行用例测试套名称。|
-| OHOS_REPORT_STATUS: id | 用例执行语言，默认JS。  |
-| OHOS_REPORT_STATUS: numtests | 测试包中测试用例总数 。|
-| OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
-| OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
-| OHOS_REPORT_STATUS_CODE | 当前用例执行结果状态。0表示通过，1表示错误，2表示失败。|
-| OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
-
-- cmd执行完成后,会打印如下相关日志信息。
-
- ```
-  OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
-  OHOS_REPORT_CODE: 0
-
-  OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
-  OHOS_REPORT_STATUS: taskconsuming=16029
-
- ```
-
-| 日志输出字段               | 日志输出字段含义           |
-| ------------------| -------------------------|
-| run    | 当前测试包用例总数。 |
-| Failure | 当前测试失败用例个数。 |
-| Error | 当前执行用例发生错误用例个数。  |
-| Pass | 当前执行用例通过用例个数。|
-| Ignore | 当前未执行用例个数。 |
-| taskconsuming| 执行当前测试用例总耗时（ms）。 |
-
-> **说明：**
->
-> 当处于breakOnError模式，用例发生错误时，注意查看Ignore以及中断说明。
-
-## 基于shell命令测试
-
-在开发过程中，若需要快速进行截屏、录制界面操作、注入UI模拟操作、获取控件树等操作，可以使用shell命令，更方便完成相应测试。
+在开发阶段，若需快速执行截屏、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可直接借助Shell命令实现，高效完成各类测试验证需求，显著提升操作便捷性与测试效率。
 
 > **说明：**
 >
@@ -532,9 +479,9 @@ export default function abilityTest() {
 |---------------|---------------------------------|---------------------------------|
 | help          | help|  显示uitest工具能够支持的命令信息。            |
 | screenCap       |[-p] | 截屏。非必填。<br>指定存储路径和文件名，只支持存放在/data/local/tmp/下。<br>默认存储路径：/data/local/tmp，文件名：时间戳 + .png。 |
-| dumpLayout      |[-p] \<-i \| -a>|支持在daemon运行时执行获取控件树。<br> **-p** ：指定存储路径和文件名，只支持存放在/data/local/tmp/下。默认存储路径：/data/local/tmp，文件名：时间戳 + .json。<br> **-i** ：不过滤不可见控件，也不做窗口合并。<br> **-a** ：保存 BackgroundColor、 Content、FontColor、FontSize、extraAttrs 属性数据。<br> **默认** ：不保存上述属性数据。<br> **-a和-i** 不可同时使用。 |
-| uiRecord        | uiRecord \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到/data/local/tmp/record.csv，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
-| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入ui模拟操作](#注入ui模拟操作)。                       |
+| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)|
+| uiRecord        | uiRecord \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
+| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入ui模拟操作](#注入ui模拟操作)。                       |
 | --version | --version|获取当前工具版本信息。                     |
 | start-daemon|start-daemon| 拉起uitest测试进程。 |
 
@@ -547,13 +494,29 @@ hdc shell uitest screenCap
 hdc shell uitest screenCap -p /data/local/tmp/1.png
 ```
 
-### 获取控件树使用示例
+### 获取控件树
+| 命令    |   配置参数   | 描述       | 
+|---------|--------------|-----------|
+| **-p** | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .json'。|
+| **-i** | |不过滤不可见控件，也不做窗口合并。|
+| **-a** | |保存 BackgroundColor、 Content、FontColor、FontSize、extraAttrs 属性数据。<br>**说明** ：默认不保存上述属性数据。 <br> **-a和-i不可同时使用** | 
+| **-b** | \<bundleName\> |获取指定包名对应目标窗口的控件树信息。|
+| **-w** | \<windowId\>  |获取指定ID目标窗口的控件树信息。|
+| **-m** | \<true\|false\> |指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
+| **-d** | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。|
 
 ```bash
+# 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest dumpLayout -p /data/local/tmp/1.json
 ```
+**说明**：可通过hidumper工具[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息), 包含应用对应窗口的WinId和DisplayId。
 
-### 用户录制操作
+```bash
+# 指定获取ID为0的屏幕的控件树信息。
+hdc shell uitest dumpLayout -d 0
+```
+
+### 录制界面操作
 >**说明**
 >
 > 录制过程中，需等待当前操作的识别结果在命令行输出后，再进行下一步操作。
@@ -580,7 +543,7 @@ hdc shell uitest uiRecord read
 
 以下举例为：record数据中包含的字段及字段含义，仅供参考。
 
- ```
+ ```json
  {
 	 "ABILITY": "com.ohos.launcher.MainAbility", // 前台应用界面
 	 "BUNDLE": "com.ohos.launcher", // 操作应用
@@ -623,7 +586,7 @@ hdc shell uitest uiRecord read
 | 命令   | 必填 | 描述              | 
 |------|------|-----------------|
 | help   | 是    | uiInput命令相关帮助信息。 |
-| click   | 是    | 模拟单击操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。      | 
+| click   | 是    | 模拟单击操作。具体请参考下方**uiInput-click/doubleClick/longClick使用示例**。      | 
 | doubleClick   | 是    | 模拟双击操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。      | 
 | longClick   | 是    | 模拟长按操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。     | 
 | fling   | 是    | 模拟快滑操作。具体请参考下方**uiInput fling使用示例使用示例**。   | 
@@ -635,7 +598,7 @@ hdc shell uitest uiRecord read
 | keyEvent   | 是    | 模拟实体按键事件（如：键盘，电源键，返回上一级，返回桌面等），以及组合按键操作。具体请参考下方**uiInput keyEvent使用示例**。     | 
 
 
-#### uiInput click/doubleClick/longClick使用示例
+#### uiInput-click/doubleClick/longClick使用示例
 
 | 配置参数    | 必填 | 描述            |
 |---------|------|-----------------|
@@ -661,7 +624,7 @@ hdc shell uitest uiInput longClick 100 100
 | from_y   | 是                | 滑动起点y坐标。 | 
 | to_x   | 是                | 滑动终点x坐标。 |
 | to_y   | 是                | 滑动终点y坐标。 |
-| swipeVelocityPps_   | 否      | 滑动速度，单位：px/s，取值范围：200-40000。<br> 默认值：600。 | 
+| swipeVelocityPps_   | 否      | 滑动速度，单位：px/s，取值范围：200-40000。<br> 默认值：600。取值超出限定范围时，取默认值。 | 
 | stepLength_   | 否 | 滑动步长。默认值：滑动距离/50。<br>  **为实现更好的模拟效果，推荐参数缺省/使用默认值。**  | 
 
 
@@ -678,7 +641,7 @@ hdc shell uitest uiInput fling 10 10 200 200 500
 | from_y   | 是                | 滑动起点y坐标。 |
 | to_x   | 是                | 滑动终点x坐标。 |
 | to_y   | 是                | 滑动终点y坐标。 |
-| swipeVelocityPps_   | 否      | 滑动速度，单位：px/s，取值范围：200-40000。<br> 默认值：600。 |
+| swipeVelocityPps_   | 否      | 滑动速度，单位：px/s，取值范围：200-40000。<br> 默认值：600。取值超出限定范围时，取默认值。 |
 
 ```shell  
 # 执行慢滑操作。
@@ -693,8 +656,8 @@ hdc shell uitest uiInput drag 10 10 100 100 500
 | 配置参数             | 必填       | 描述 |
 |-------------------|-------------|----------|
 | direction         | 否 | 滑动方向，取值范围：[0,1,2,3]，默认值为0。<br> 0代表向左滑动，1代表向右滑动，2代表向上滑动，3代表向下滑动。    | 
-| swipeVelocityPps_ | 否| 滑动速度，单位：px/s，取值范围：200-40000。<br> 默认值: 600。    | 
-| stepLength        | 否        | 滑动步长。<br> 默认值: 滑动距离/50。为更好的模拟效果，推荐参数缺省/使用默认值。 |
+| swipeVelocityPps_ | 否| 滑动速度，单位：px/s，取值范围：200-40000。<br> **默认值**: 600。取值超出限定范围时，取默认值。    | 
+| stepLength        | 否        | 滑动步长。<br> **默认值**: 滑动距离/50。为更好的模拟效果，推荐参数缺省/使用默认值。 |
 
 ```shell  
 # 执行左滑操作。
@@ -713,7 +676,7 @@ hdc shell uitest uiInput dircFling 3
 |------|------------------|----------|
 | point_x   | 是                | 输入框x坐标点。 | 
 | point_y   | 是                | 输入框y坐标点。 |
-| text   | 是                | 输入文本内容。  |
+| text      | 是                | 输入文本内容。  |
 
 ```shell  
 # 执行输入框输入操作。
@@ -723,7 +686,7 @@ hdc shell uitest uiInput inputText 100 100 hello
 #### uiInput text使用示例
 
 | 配置参数             | 必填       | 描述 |       
-|------|------------------|----------|
+|--------|-------------------|----------------|
 | text   | 是                | 输入文本内容。  |
 
 ```shell  
@@ -772,142 +735,50 @@ hdc shell uitest start-daemon
 > 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->需为system_basic、normal。
 
 <!--Del-->
-## 相关实例
 
-### 单元测试脚本实例
 
-#### 单元测试断言功能使用实例
-介绍单元测试框架中支持的断言能力如何使用，具体代码请查看[断言能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/assertExample.test.ets)。
+## UI测试脚本实例
 
-#### 单元测试测试套定义使用实例
-介绍单元测试框架测试套嵌套如何定义，包括嵌套定义能力，具体代码请参考[测试套嵌套示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/coverExampleTest/coverExample.test.ets)。
-
-#### 单元测试测试应用自定义函数使用实例
-介绍针对应用内自定义函数如何使用框架能力进行测试，具体代码请参考[应用自定义函数测试示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/customExampleTest/customExample.test.ets)。
-
-#### 单元测试数据驱动能力使用实例
-介绍测试框架数据驱动能力、脚本重复执行配置功能，具体代码请参考[数据驱动能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/paramExampleTest/paramExample.test.ets)。
-
-### UI测试脚本实例（控件类）
-
-#### 查找指定控件能力实例
+### 查找指定控件能力实例
 介绍通过设置控件属性作为查找条件，在应用界面上查找组件对象，具体代码请参考[控件查找示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/findCommentExample.test.ets)。
 
-#### 模拟点击操作事件能力实例
+### 模拟点击操作事件能力实例
 介绍模拟用户在应用界面上进行点击，长按，双击等事件,具体代码请参考[点击事件示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/clickEvent.test.ets)。
 
-#### 模拟鼠标操作能力实例
+### 模拟鼠标操作能力实例
 介绍模拟鼠标左击、右击、滑轮事件，具体代码请参考[鼠标操作事件示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseEvent.test.ets)。
 
-#### 模拟文本输入能力实例
+### 模拟文本输入能力实例
 介绍模拟输入中文、英文文本内容，仅支持可输入文本的组件进行操作，例如文本框等，具体代码请参考[文本输入能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputEvent.test.ets)。
 
-#### 截图能力实例
+### 截图能力实例
 介绍屏幕截图功能，包括指定区域截图能力，具体代码请参考[截图能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCapEvent.test.ets)。
 
-#### 模拟快滑操作能力实例
+### 模拟快滑操作能力实例
 介绍模拟快滑操作能力，即在可滑动页面上进行滑动，滑动后手指离开屏幕，具体代码请参考[模拟快滑操作能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/FlingEvent.test.ets)。
 
-#### 模拟慢滑操作能力实例
+### 模拟慢滑操作能力实例
 介绍模拟慢滑操作能力，即在可滑动页面上进行滑动，滑动后手指仍停留在屏幕，具体代码请参考[模拟慢滑操作能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/SwipeEvent.test.ets)。
 
-#### 模拟缩放操作能力实例
+### 模拟缩放操作能力实例
 介绍模拟缩放能力，即在支持放大缩小的图片上，模拟双指缩放操作的能力，具体代码请参考[模拟缩放操作能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PinchEvent.test.ets)。
 
-#### 模拟滚动到组件顶端或底端能力实例
+### 模拟滚动到组件顶端或底端能力实例
 介绍模拟针对滑动类组件，可以模拟操作直接滚动到组件顶端或底端，具体代码请参考[模拟滚动到组件顶端或底端示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScrollerEvent.test.ets)。
 
-### UI测试脚本实例（窗口类）
-
-#### 查找指定窗口能力实例
+### 查找指定窗口能力实例
 介绍通过应用包名查找应用窗口，具体代码请参考[查找指定窗口能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/window/findWindowExample.test.ets)。
 
-#### 模拟窗口移动能力实例
+### 模拟窗口移动能力实例
 介绍模拟移动窗口到指定位置能力，具体代码请参考[模拟窗口移动示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/MoveToEvent.test.ets)。
 
-#### 模拟调整窗口大小能力实例
+### 模拟调整窗口大小能力实例
 介绍模拟调整窗口大小能力，并可指定调整的具体方向，具体代码请参考[模拟调整窗口大小能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/ReSizeWindow.test.ets)。
-
-### 白盒性能测试脚本实例
-
-介绍调用PerfTest接口，实现白盒性能测试的能力，具体代码请参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/PerfTest.test.ets)。
-
 <!--DelEnd-->
 
 ## 常见问题
 
-### 单元测试用例常见问题
-
-**1. 用例中增加的打印日志在用例结果之后才打印**
-
-**问题描述**
-
-用例中增加的日志打印信息，没有在用例执行过程中出现，而是在用例执行结束之后才出现。
-
-**可能原因**
-
-此类情况只会存在于用例中有调用异步接口的情况，原则上用例中所有的日志信息均在用例执行结束之前打印。
-
-**解决方法**
-
-当被调用的异步接口多于一个时，建议将接口调用封装成Promise方式调用。
-
-**2. 执行用例时报error：fail to start ability**
-
-**问题描述**
-
-执行测试用例时候，用例执行失败，控制台返回错误：fail to start ability。
-
-**可能原因**
-
-测试包打包过程中出现问题，未将测试框架依赖文件打包在测试包中。
-
-**解决方法**
-
-检查测试包中是否包含OpenHarmonyTestRunner.abc文件，如没有则重新编译打包后再次执行测试。
-
-**3. 执行用例时报用例超时错误**
-
-**问题描述**
-
-用例执行结束，控制台提示execute time XXms错误，即用例执行超时。
-
-**可能原因**
-
-1. 用例执行异步接口，但执行过程中没有执行到done函数，导致用例执行一直没有结束，直到超时结束。
-
-2. 用例调用函数耗时过长，超过用例执行设置的超时时间。
-
-3. 用例调用函数中断言失败，抛出失败异常，导致用例执行一直没有结束，直到超时结束。
-
-**解决方法**
-
-1. 检查用例代码逻辑，确保即使断言失败场景认可走到done函数，保证用例执行结束。
-
-2. 可在DevEco Studio中Run/Debug Configurations中修改用例执行超时配置参数，避免用例执行超时。
-
-3. 检查用例代码逻辑，断言结果，确保断言Pass。
-### UI测试用例常见问题
-
-**1. 失败日志有“Get windows failed/GetRootByWindow failed”错误信息**
-
-**问题描述**
-
-UI测试用例执行失败，查看hilog日志发现日志中有“Get windows failed/GetRootByWindow failed”错误信息。
-
-**可能原因**
-
-系统ArkUI开关未开启，导致被测试界面控件树信息未生成。
-
-**解决方法**
-
-执行如下命令，并重启设备再次执行用例。
-
-```shell
-hdc shell param set persist.ace.testmode.enabled 1
-```
-
-**2. 失败日志有“uitest-api does not allow calling concurrently”错误信息**
+**1. 失败日志有“uitest-api does not allow calling concurrently”错误信息**
 
 **问题描述**
 
@@ -925,7 +796,7 @@ UI测试用例执行失败，查看hilog日志发现日志中有“uitest-api do
 
 2. 避免多进程执行UI测试用例。
 
-**3. 失败日志有“does not exist on current UI! Check if the UI has changed after you got the widget object”错误信息**
+**2. 失败日志有“does not exist on current UI! Check if the UI has changed after you got the widget object”错误信息**
 
 **问题描述** 
 
@@ -937,4 +808,18 @@ UI测试用例执行失败，查看hilog日志发现日志中有“does not exis
 
 **解决方法**
 
-重新执行UI测试用例。
+重新执行UI测试用例，确保进行模拟操作时控件在界面中存在。
+
+**3. 失败日志有“Cannot connect to AAMS, RET_ERR_CONNECTION_EXIST”错误信息**
+
+**问题描述** 
+
+UI测试用例执行失败，查看hilog日志发现日志中有“Cannot connect to AAMS, RET_ERR_CONNECTION_EXIST”错误信息。
+
+**可能原因**
+
+在用例执行的同时使用了其他依赖UI测试框架运行的测试工具，如：DevEco Testing，hypium等。
+
+**解决方法**
+
+关闭依赖UI测试框架运行的测试工具或重启设备。
