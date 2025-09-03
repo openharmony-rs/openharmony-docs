@@ -22,10 +22,10 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 import { FormExtensionAbility } from '@kit.FormKit';
 ```
 
-## OnStopFn
-type OnStopFn = () => void;
+## OnStopFn<sup>20+</sup>
+`type OnStopFn = () => void`
 
-OnStop属性的类型。
+OnStop属性的类型。匿名函数，卡片提供方进程销毁时回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,7 +50,7 @@ OnStop属性的类型。
 | 名称    | 类型                                                         | 可读 | 可写 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 是   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| onStop | ArkTS-Sta: [onStopFn](#OnStopFn) | 是   | 是   | FormExtensionAbility的onStop方法转属性，提供方进程销毁时回调本属性赋值的匿名函数。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| onStop<sup>20+</sup> | [onStopFn](#OnStopFn) | 是   | 是   | 卡片提供方进程销毁时回调的属性。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。|
 
 ### FormExtensionAbility.onAddForm
 
