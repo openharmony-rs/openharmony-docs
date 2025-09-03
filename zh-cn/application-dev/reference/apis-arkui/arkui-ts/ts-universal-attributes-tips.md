@@ -73,6 +73,8 @@ type TipsMessageType = ResourceStr | StyledString
 
 此示例为bindTips通过绑定Button产生悬浮气泡。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -94,10 +96,39 @@ struct TipsExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+
+import { Entry, Component, Flex, FlexDirection, Button,
+  Position, Padding } from '@ohos.arkui.component';
+@Entry
+@Component
+struct TipsExample {
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 250 } as Position)
+    }.width('100%').padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![](figures/tips01.gif)
 ### 示例2（多个悬浮气泡的显示和消失）
 
 此示例展示了如何使用bindTips配置多个悬浮气泡依次显示和消失。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -129,6 +160,46 @@ struct TipsExample {
 
 
     }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+
+import { Entry, Component, Flex, FlexDirection, Button,
+  Position, Padding } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct TipsExample {
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 250 } as Position)
+
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 350 } as Position)
+
+
+    }.width('100%').padding({ top: 5 } as Padding)
   }
 }
 ```

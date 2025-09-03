@@ -6,6 +6,8 @@
 
 通过[openPopup](../reference/apis-arkui/js-apis-arkui-UIContext.md#openpopup18)可以弹出气泡。
    
+ArkTS-Dyn示例：
+
    ```ts
    promptAction.openPopup(contentNode, { id: targetId }, {
      enableArrow: true
@@ -15,6 +17,21 @@
      })
      .catch((err: BusinessError) => {
        console.error('openPopup error: ' + err.code + ' ' + err.message);
+     })
+   ```
+
+ArkTS-Sta示例：
+
+   ```ts
+   import promptAction from '@ohos.promptAction';
+   promptAction.openPopup(contentNode, { id: targetId }, {
+     enableArrow: true
+   })
+     .then(() => {
+       console.info('openPopup success');
+     })
+     .catch((err: Error) => {
+       console.error('openPopup error: ' + err);
      })
    ```
 
@@ -28,12 +45,68 @@
    
    如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
    
+  ArkTS-Dyn示例：
+
    ```ts
    @Builder
    export function buildText(params: Params) {
      Popup({
        // 类型设置图标内容
        icon: {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+         image: $r('app.media.app_icon'),
+         width: 32,
+         height: 32,
+         fillColor: Color.White,
+         borderRadius: 10
+       } as PopupIconOptions,
+       // 设置文字内容
+       title: {
+         text: `This is a Popup title 1`,
+         fontSize: 20,
+         fontColor: Color.Black,
+         fontWeight: FontWeight.Normal
+       } as PopupTextOptions,
+       // 设置文字内容
+       message: {
+         text: `This is a Popup message 1`,
+         fontSize: 15,
+         fontColor: Color.Black
+       } as PopupTextOptions,
+       // 设置按钮内容
+       buttons: [{
+         text: 'confirm',
+         action: () => {
+           console.info('confirm button click');
+         },
+         fontSize: 15,
+         fontColor: Color.Black,
+       },
+         {
+           text: 'cancel',
+           action: () => {
+             console.info('cancel button click');
+           },
+           fontSize: 15,
+           fontColor: Color.Black
+         },] as [PopupButtonOptions?, PopupButtonOptions?]
+     })
+   }
+   
+   let contentNode: ComponentContent<Object> = new ComponentContent(uiContext, wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   import { Component, Builder, wrapBuilder, ComponentContent, PopupButtonOptions, Color, PopupIconOptions, Popup
+    FontWeight, PopupTextOptions} from '@ohos.arkui.component';
+   @Builder
+   export function buildText(params: Params) {
+     Popup({
+       // 类型设置图标内容
+       icon: {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
          image: $r('app.media.app_icon'),
          width: 32,
          height: 32,
