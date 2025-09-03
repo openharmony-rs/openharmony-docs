@@ -3,8 +3,8 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 本Interface首批接口从API version 8开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 提供音频采集的相关接口。
 
@@ -1775,7 +1775,6 @@ import { AppStorage } from '@kit.ArkUI'
 import { WriteOptions } from '@kit.CoreFileKit';
 
 let bufferSize: long = 0;
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as commonUIAbilityContext;
 let path = context.cacheDir;
 // 确保该沙箱路径下存在该资源。
@@ -1932,8 +1931,6 @@ try {
 setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 设置当前录制音频流是否启用[静音打断模式](../../media/audio/using-audiocapturer-for-recording.md#设置静音打断模式)。使用Promise异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

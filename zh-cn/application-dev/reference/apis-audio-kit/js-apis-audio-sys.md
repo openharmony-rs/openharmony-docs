@@ -635,7 +635,6 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
 });
 ```
 
-
 ### setAudioScene<sup>8+</sup>
 
 setAudioScene\(scene: AudioScene, callback: AsyncCallback<void\>\): void
@@ -1235,7 +1234,6 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
   console.info(`set app mute state success.`);
 });
 ```
-
 
 ### on('appVolumeChangeForUid')<sup>19+</sup>
 
@@ -5298,7 +5296,6 @@ setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 let flag = asrProcessingController.setAsrWhisperDetectionMode(audio.AsrWhisperDetectionMode.BYPASS);
 ```
 
-
 ### getAsrWhisperDetectionMode<sup>12+</sup>
 
 getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
@@ -5329,7 +5326,6 @@ getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 ```ts
 let mode = asrProcessingController.getAsrWhisperDetectionMode();
 ```
-
 
 ### setAsrVoiceControlMode<sup>12+</sup>
 

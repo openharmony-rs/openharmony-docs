@@ -26,7 +26,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 2   | 短信铃声类别。 |
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 4   | 通知铃声类别。 |
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long | 8   | 闹钟铃声类别。 |
-| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | 联系人铃声类别。(该值仅适用于ArkTS-Dyn。) |
+| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | ArkTS-Dyn: number | 16  | 联系人铃声类别。 |
 
 ## RingtoneType
 
@@ -883,7 +883,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
@@ -955,7 +954,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 
@@ -1027,7 +1025,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefined;
@@ -1102,7 +1099,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
@@ -1174,7 +1170,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
 
@@ -1246,7 +1241,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
 let systemTonePlayer: systemSoundManager.SystemTonePlayer | undefined = undefined;
@@ -1319,7 +1313,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 
@@ -1390,7 +1383,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 
@@ -1461,7 +1453,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
 
@@ -1532,7 +1523,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
 
@@ -1601,7 +1591,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -1661,7 +1650,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 
@@ -1720,7 +1708,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -1788,7 +1775,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -1861,7 +1847,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 
@@ -1933,7 +1918,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let fd = 50; // 需更改为目标铃声的fd。
 
@@ -2018,7 +2002,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let title = 'test'; // 需更改为实际名称。
 let fileName = 'displayName_test'; // 需更改为实际文件名。
@@ -2118,7 +2101,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let title = 'test'; // 需更改为实际名称。
 let fileName = 'displayName_test'; // 需更改为实际文件名。
@@ -2204,7 +2186,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 
@@ -2276,7 +2257,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsType.CALL_SIM_CARD_0;
 
@@ -2354,7 +2334,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsType.CALL_SIM_CARD_0;
 let toneHapticsSettings: systemSoundManager.ToneHapticsSettings = {
@@ -2429,7 +2408,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -2501,7 +2479,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // 需更改为实际铃音uri。
 
@@ -2576,7 +2553,6 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 import { AppStorage } from '@kit.ArkUI';
 
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获取context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果为UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
 let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // 需更改为目标统铃音的振动的uri。
 

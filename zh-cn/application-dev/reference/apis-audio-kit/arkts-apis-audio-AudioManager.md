@@ -133,8 +133,6 @@ on(type: 'audioSceneChange', callback: Callback\<AudioScene\>): void
 
 监听音频场景变化事件。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
 **参数：**
@@ -157,8 +155,6 @@ audioManager.on('audioSceneChange', (audioScene: audio.AudioScene) => {
 off(type: 'audioSceneChange', callback?: Callback\<AudioScene\>): void
 
 取消监听音频场景变化事件。使用callback异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 

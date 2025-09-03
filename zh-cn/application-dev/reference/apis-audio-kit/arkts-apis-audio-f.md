@@ -316,8 +316,6 @@ createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
 
 在使用createAudioLoopback接口之前，需先通过[isAudioLoopbackSupported](arkts-apis-audio-AudioStreamManager.md#isaudioloopbacksupported20)查询系统返听能力。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **需要权限：** ohos.permission.MICROPHONE

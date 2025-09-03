@@ -1005,8 +1005,6 @@ isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 
 查询指定的source type是否支持回声消除。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -1049,8 +1047,6 @@ isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean
 
 查询当前系统是否支持指定的音频返听模式。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -1092,8 +1088,6 @@ try {
 isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean
 
 检查传入的音频采集器信息中音源类型的录制是否可以启动成功。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

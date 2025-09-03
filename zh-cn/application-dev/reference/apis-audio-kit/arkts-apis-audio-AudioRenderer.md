@@ -3163,7 +3163,6 @@ import { AppStorage } from '@kit.ArkUI'
 import { ReadOptions } from '@kit.CoreFileKit';
 
 let bufferSize: long = 0;
-// 请在组件内调用AppStorage.setOrCreate('context',this.context);获context，确保AppStorage.get<common.UIAbilityContext>('context')返回结果UIAbilityContext。
 let context = AppStorage.get<common.UIAbilityContext>('context') ascommon.UIAbilityContext;
 let path = context.cacheDir;
 // 确保该沙箱路径下存在该资源。
