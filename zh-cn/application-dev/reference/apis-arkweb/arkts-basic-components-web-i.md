@@ -4,6 +4,8 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## WebOptions
@@ -576,7 +578,7 @@ Web同层渲染的配置。
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
 | jsStack      | string | 是  | 网页的javaScript调用栈信息。       |
-| pid | ArkTS1.1: number <br> ArkTS1.2: int | 是   | 网页的进程id。 |
+| pid | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 是   | 触发渲染进程无响应回调的原因。 |
 
 ## FullScreenEnterEvent<sup>12+</sup>
@@ -654,7 +656,7 @@ Web组件进入全屏回调事件的详情。
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 是    | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
-| enterKeyType | ArkTS1.1: number <br> ArkTS1.2: int | 否    | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
+| enterKeyType | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
 | customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否    | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
 
 

@@ -8,6 +8,8 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 导入模块
@@ -24,7 +26,9 @@ constructor(webTag?: string)
 
 > **说明：**
 >
-> 不传参：new webview.WebviewController()表示构造函数为空，不使用C API时不需要传参。
+> ArkTS-Dyn：不传参，new webview.WebviewController()表示构造函数为空，不使用C API时不需要传参。
+> 
+> ArkTS-Sta：不支持不传参，不区分多实例时可传入""或undefined。
 > 
 > 传参且参数是合法字符串：new webview.WebviewController("xxx")，用于开发者区分多实例，并调用对应实例下的方法。
 > 
@@ -42,6 +46,7 @@ constructor(webTag?: string)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -65,6 +70,62 @@ class WebObj {
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController()
+  @State webTestObj: WebObj = new WebObj();
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick(() => {
+          try {
+            this.controller.refresh();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('deleteJavaScriptRegister')
+        .onClick(() => {
+          try {
+            this.controller.deleteJavaScriptRegister("objTestName");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: '', controller: this.controller })
+        .javaScriptAccess(true)
+        .onControllerAttached(() => {
+          this.controller.loadUrl($rawfile("index.html"));
+          this.controller.registerJavaScriptProxy(this.webTestObj, "objTestName", ["webTest", "webString"]);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Web, Button, Column, State, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class WebObj {
+  constructor() {
+  }
+
+  webTest(): string {
+    console.log('Web test');
+    return "Web test";
+  }
+
+  webString(): void {
+    console.log('Web test toString');
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("")
   @State webTestObj: WebObj = new WebObj();
 
   build() {
@@ -789,6 +850,7 @@ onActive(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -798,6 +860,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('onActive')
+        .onClick(() => {
+          try {
+            this.controller.onActive();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
 
   build() {
     Column() {
@@ -835,6 +925,7 @@ onInactive(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -844,6 +935,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('onInactive')
+        .onClick(() => {
+          try {
+            this.controller.onInactive();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
 
   build() {
     Column() {
@@ -2526,9 +2645,9 @@ struct WebComponent {
 
 ## getWebId
 
-ArkTS1.1: getWebId(): number
+ArkTS-Dyn: getWebId(): number
 
-ArkTS1.2: getWebId(): int
+ArkTS-Sta: getWebId(): int
 
 获取当前Web组件的索引值，用于多个Web组件的管理。
 
@@ -2538,7 +2657,7 @@ ArkTS1.2: getWebId(): int
 
 | 类型   | 说明                  |
 | ------ | --------------------- |
-| ArkTS1.1: number <br> ArkTS1.2: int | 当前Web组件的索引值。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前Web组件的索引值。 |
 
 **错误码：**
 
@@ -2550,6 +2669,7 @@ ArkTS1.2: getWebId(): int
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2559,6 +2679,35 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getWebId')
+        .onClick(() => {
+          try {
+            let id = this.controller.getWebId();
+            console.log("id: " + id);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
 
   build() {
     Column() {
