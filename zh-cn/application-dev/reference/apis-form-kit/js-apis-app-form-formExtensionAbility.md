@@ -22,6 +22,17 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 import { FormExtensionAbility } from '@kit.FormKit';
 ```
 
+## OnStopFn
+type OnStopFn = () => void;
+
+OnStop属性的类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
 ## FormExtensionAbility
 
 卡片扩展类。包含卡片提供方接收创建卡片、修改可见性等的通知接口。
@@ -39,7 +50,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 | 名称    | 类型                                                         | 可读 | 可写 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 是   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| onStop | 匿名函数 | 是   | 是   | FormExtensionAbility的onStop方法转属性，提供方进程销毁时回调本属性赋值的匿名函数。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| onStop | ArkTS-Sta: [onStopFn](#OnStopFn) | 是   | 是   | FormExtensionAbility的onStop方法转属性，提供方进程销毁时回调本属性赋值的匿名函数。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ### FormExtensionAbility.onAddForm
 
