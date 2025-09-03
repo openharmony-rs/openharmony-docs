@@ -118,7 +118,7 @@ export default function abilityTest() {
       // 拉起被测应用
       await delegator.startAbility(want);
       // 等待应用拉起完成
-      let idled: boolean = await driver.waitForIdle(4000,5000);
+      await driver.waitForIdle(4000,5000);
       // 确认当前应用顶部Ability为指定的ability
       const ability: UIAbility = await delegator.getCurrentTopAbility();
       console.info("get top ability");
@@ -128,7 +128,7 @@ export default function abilityTest() {
       const button = await driver.findComponent(ON.text('Next'));
       // 点击目标控件
       await button.click();
-      await driver.delayMs(1000);
+      await driver.waitForIdle(4000,5000);
       // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期。
       await driver.assertComponentExist(ON.text('after click'));
       await driver.pressBack();

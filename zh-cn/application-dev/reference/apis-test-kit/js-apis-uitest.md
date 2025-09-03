@@ -3740,7 +3740,7 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled:boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000,5000);
 }
 ```
 
