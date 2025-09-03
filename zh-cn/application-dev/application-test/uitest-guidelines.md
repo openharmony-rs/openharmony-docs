@@ -332,9 +332,9 @@ export default function abilityTest() {
 ```
 
 > **说明：**
-> 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。
+> 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../file-management/app-sandbox-directory.md)。
 > 2. 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->为system_basic、normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
-> 3. 截屏时，可以调用display模块的接口[获取Display对象](../displaymanager/screenProperty-guideline.md#获取Display对象)，实现[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)。
+> 3. 截屏时，可以调用display模块的接口[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)，实现[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)。
 
 ### UI事件监听
 以下示例代码演示了如何使用UiTest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
