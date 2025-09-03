@@ -6,6 +6,8 @@
 >
 > 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > 本模块为系统接口。
 
 ## 导入模块
@@ -39,7 +41,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称          | 类型   | 只读 | 可选 | 说明                       |
 | ------------- | ------ | ---- | ---- | -------------------------- |
 | name          | string | 是   | 否   | 共享包模块名称。           |
-| versionCode   | number | 是   | 否   | 共享包的版本号。           |
+| versionCode   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 共享包的版本号。           |
 | versionName   | string | 是   | 否   | 共享包的版本文本描述信息。 |
 | description   | string | 是   | 否   | 共享包的模块描述信息。     |
-| descriptionId | number | 是   | 否   | 共享包描述的资源id值。     |
+| descriptionId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 共享包描述的资源id值。     |

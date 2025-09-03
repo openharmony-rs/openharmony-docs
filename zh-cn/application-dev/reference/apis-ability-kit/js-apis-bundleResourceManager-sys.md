@@ -8,6 +8,8 @@
 >
 > 本模块从API version 12 开始支持查询被禁用应用和设备上已安装应用(不区用户)的图标和名称资源。
 >
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > 本模块为系统接口。
 
 ## 导入模块
@@ -40,7 +42,8 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 
 ### bundleResourceManager.getBundleResourceInfo
 
-getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
+ArkTS-Dyn: getBundleResourceInfo(bundleName: string, resourceFlags?: number): BundleResourceInfo<br>
+ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int): BundleResourceInfo
 
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的BundleResourceInfo。
 
@@ -55,7 +58,7 @@ getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
 
 **返回值：**
 
@@ -95,7 +98,8 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>
+ArkTS-Dyn: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array<LauncherAbilityResourceInfo><br>
+ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int): Array<LauncherAbilityResourceInfo>
 
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的LauncherAbilityResourceInfo。
 
@@ -110,7 +114,7 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
 
 **返回值：**
 
@@ -149,7 +153,8 @@ try {
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>): void
+ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<BundleResourceInfo>>): void<br>
+ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int, callback: AsyncCallback<Array<BundleResourceInfo>>): void
 
 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用callback异步回调。
 
@@ -163,7 +168,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: Async
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
 | callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleResourceInfo数值；否则为错误对象。 |
 
 **错误码：**
@@ -178,6 +183,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: Async
 
 **示例：**
 
+ArkTS-Dyn: 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
@@ -196,10 +202,30 @@ try {
     hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
+ArkTS-Sta: 
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+    bundleResourceManager.getAllBundleResourceInfo(resourceFlag, (err, data) => {
+        if (err) {
+            hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed. err: %{public}s', err.message);
+            return;
+        }
+        hilog.info(0x0000, 'testTag', 'getAllBundleResourceInfo successfully. Data length: %{public}s', JSON.stringify(data?.length));
+    });
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
+}
+```
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-getAllBundleResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>;
+ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number): Promise<Array<BundleResourceInfo>><br>
+ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int): Promise<Array<BundleResourceInfo>>
 
 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用Promise异步回调。
 
@@ -213,7 +239,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
 
 **返回值：**
 
@@ -233,6 +259,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<
 
 **示例：**
 
+ArkTS-Dyn: 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
@@ -249,10 +276,28 @@ try {
     hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
+ArkTS-Sta: 
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+    bundleResourceManager.getAllBundleResourceInfo(resourceFlag).then((data: Array<bundleResourceManager.BundleResourceInfo>) => {
+        hilog.info(0x0000, 'testTag', 'getAllBundleResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
+    }).catch((err: Error) => {
+        hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed. err: %{public}s', (err as BusinessError).message);
+    })
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
+}
+```
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>>): void
+ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<LauncherAbilityResourceInfo>>): void<br>
+ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int, callback: AsyncCallback<Array<LauncherAbilityResourceInfo>>): void
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用callback异步回调。
 
@@ -266,7 +311,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callba
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
 | callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的LauncherAbilityResourceInfo数值；否则为错误对象。 |
 
 **错误码：**
@@ -281,6 +326,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callba
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
@@ -299,10 +345,30 @@ try {
     hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+    bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag, (err, data) => {
+        if (err) {
+            hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed. err: %{public}s', err.message);
+            return;
+        }
+        hilog.info(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo successfully. Data length: %{public}s', JSON.stringify(data?.length));
+    });
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
+}
+```
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>>
+ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array<LauncherAbilityResourceInfo>><br>
+ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int): Promise<Array<LauncherAbilityResourceInfo>>
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用Promise异步回调。
 
@@ -316,7 +382,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promi
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
 
 **返回值：**
 
@@ -335,6 +401,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promi
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
+ArkTS-Dyn:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
@@ -351,10 +418,28 @@ try {
     hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+    bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag).then((data: Array<bundleResourceManager.LauncherAbilityResourceInfo>) => {
+        hilog.info(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
+    }).catch((err: Error) => {
+        hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed. err: %{public}s', (err as BusinessError).message);
+    })
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
+}
+```
 
 ### bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
 
-getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
+ArkTS-Dyn: getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): BundleResourceInfo<br>
+ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int, appIndex?: number): BundleResourceInfo
 
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用的BundleResourceInfo。
 
@@ -369,8 +454,8 @@ getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
-| appIndex | number | 否   | 指定查询应用分身的ID，默认值为0。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 指定查询应用分身的ID，默认值为0。 |
 
 **返回值：**
 
@@ -412,7 +497,8 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>
+ArkTS-Dyn: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array<LauncherAbilityResourceInfo><br>
+ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int, appIndex?: number): Array<LauncherAbilityResourceInfo>
 
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用的LauncherAbilityResourceInfo。
 
@@ -427,8 +513,8 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
-| appIndex | number | 否   | 指定查询应用分身的ID，默认值为0。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 指定查询应用分身的ID，默认值为0。 |
 
 **返回值：**
 
@@ -468,7 +554,8 @@ try {
 
 ### bundleResourceManager.getExtensionAbilityResourceInfo<sup>20+</sup>
 
-getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: number, appIndex?: number): Array\<LauncherAbilityResourceInfo>
+ArkTS-Dyn: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: number, appIndex?: number): Array\<LauncherAbilityResourceInfo><br>
+ArkTS-Sta: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: int, appIndex?: int): Array\<LauncherAbilityResourceInfo>
 
 根据应用包名、扩展组件类型、资源信息标志、应用分身ID获取应用的扩展组件资源。使用同步方式返回。
 
@@ -484,8 +571,8 @@ getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundle
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 应用包名。 |
 | extensionAbilityType | [bundleManager.ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 应用的扩展组件类型，仅支持ExtensionAbilityType.INPUT_METHOD、ExtensionAbilityType.SHARE、ExtensionAbilityType.ACTION。 |
-| [resourceFlags](#resourceflag) | number | 是   | 资源信息标志，指示需要获取的资源信息的内容。 |
-| appIndex | number | 否   | 应用分身的ID，默认值是0。取值范围0~5，取值为0表示主应用。 |
+| [resourceFlags](#resourceflag) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 资源信息标志，指示需要获取的资源信息的内容。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 应用分身的ID，默认值是0。取值范围0~5，取值为0表示主应用。 |
 
 **返回值：**
 

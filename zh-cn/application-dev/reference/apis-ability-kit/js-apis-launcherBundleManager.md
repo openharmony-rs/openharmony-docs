@@ -5,6 +5,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 ## 导入模块
 
@@ -14,7 +16,8 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 
 ## launcherBundleManager.getLauncherAbilityInfoSync<sup>18+</sup>
 
-getLauncherAbilityInfoSync(bundleName: string, userId: number) : Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>
+ArkTS-Dyn: getLauncherAbilityInfoSync(bundleName: string, userId: number): Array\<LauncherAbilityInfo\><br>
+ArkTS-Sta: getLauncherAbilityInfoSync(bundleName: string, userId: int): Array\<LauncherAbilityInfo\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
@@ -27,7 +30,7 @@ getLauncherAbilityInfoSync(bundleName: string, userId: number) : Array\<[Launche
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 

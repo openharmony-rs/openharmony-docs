@@ -6,6 +6,8 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > 本模块为系统接口。
 
 ## 导入模块
@@ -17,7 +19,8 @@ import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
 
 ## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
 
-getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void<br>
+ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
@@ -32,7 +35,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 | callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | callback形式返回bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。 |
 
 **错误码：**
@@ -50,6 +53,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
 import { BusinessError } from '@ohos.base';
@@ -69,10 +73,31 @@ try {
     console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+ArkTS-Sta:
+```ts
+import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
+import { BusinessError } from '@ohos.base';
+
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+try {
+    launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100, (errData, data) => {
+        if (errData !== null) {
+            console.error(`getLauncherAbilityInfo errData is errCode:${errData.code}  message:${errData.message}`);
+        } else {
+            console.info('getLauncherAbilityInfo data is ' + JSON.stringify(data));
+        }
+    })
+} catch (errData) {
+    let code = (errData as BusinessError).code;
+    let message = (errData as BusinessError).message;
+    console.error(`getLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
+}
+```
 
 ## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
 
-getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\><br>
+ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
@@ -87,7 +112,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -110,6 +135,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
 import { BusinessError } from '@ohos.base';
@@ -127,10 +153,30 @@ try {
     console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+ArkTS-Sta:
+```ts
+import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
+import { BusinessError } from '@ohos.base';
+
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+try {
+    launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
+        .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+        console.info('getLauncherAbilityInfo data is ' + JSON.stringify(data));
+    }).catch ((errData: Error) => {
+        console.error(`getLauncherAbilityInfo errData is errCode:${(errData as BusinessError).code}  message:${(errData as BusinessError).message}`);
+    })
+} catch (errData) {
+    let code = (errData as BusinessError).code;
+    let message = (errData as BusinessError).message;
+    console.error(`getLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
+}
+```
 
 ## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
 
-getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void<br>
+ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
@@ -144,7 +190,7 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 | callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | callback形式返回指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。 |
 
 **错误码：**
@@ -161,6 +207,7 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 
 示例：
 
+ArkTS-Dyn:
 ```ts
 import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
 import { BusinessError } from '@ohos.base';
@@ -180,9 +227,31 @@ try {
     console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+ArkTS-Sta:
+```ts
+import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
+import { BusinessError } from '@ohos.base';
+
+// 代码中使用的useId需为应用实际的用户ID。
+try {
+    launcherBundleManager.getAllLauncherAbilityInfo(100, (errData, data) => {
+        if (errData !== null) {
+            console.error(`getAllLauncherAbilityInfo errData is errCode:${errData.code}  message:${errData.message}`);
+        } else {
+            console.info('getAllLauncherAbilityInfo data is ' + JSON.stringify(data));
+        }
+    });
+} catch (errData) {
+    let code = (errData as BusinessError).code;
+    let message = (errData as BusinessError).message;
+    console.error(`getAllLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
+}
+```
+
 ## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
 
-getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\><br>
+ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
@@ -196,7 +265,7 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -218,6 +287,7 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
 import { BusinessError } from '@ohos.base';
@@ -233,6 +303,25 @@ try {
     let code = (errData as BusinessError).code;
     let message = (errData as BusinessError).message;
     console.error(`errData is errCode:${code}  message:${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
+import { BusinessError } from '@ohos.base';
+
+// 代码中使用的useId需为应用实际的用户ID。
+try {
+    launcherBundleManager.getAllLauncherAbilityInfo(100)
+        .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+        console.info('getAllLauncherAbilityInfo data is ' + JSON.stringify(data));
+    }).catch ((errData: Error) => {
+        console.error(`getAllLauncherAbilityInfo errData is errCode:${(errData as BusinessError).code}  message:${(errData as BusinessError).message}`);
+    });
+} catch (errData) {
+    let code = (errData as BusinessError).code;
+    let message = (errData as BusinessError).message;
+    console.error(`getAllLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -405,7 +494,8 @@ try {
 
 ## launcherBundleManager.getShortcutInfoSync<sup>13+</sup>
 
-getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
+ArkTS-Dyn: getShortcutInfoSync(bundleName: string, userId: number): Array\<ShortcutInfo\><br>
+ArkTS-Sta: getShortcutInfoSync(bundleName: string, userId: int): Array\<ShortcutInfo\>
 
 查询指定用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 
@@ -422,7 +512,7 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
 
 **返回值：**
 
@@ -599,7 +689,8 @@ try {
 
 ## launcherBundleManager.getShortcutInfoByAppIndex<sup>20+</sup>
 
-getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\>
+ArkTS-Dyn: getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\><br>
+ArkTS-Sta: getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array\<ShortcutInfo\>
 
 查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。
 
@@ -616,7 +707,7 @@ getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<Shortcut
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| appIndex | number | 是   | 分身应用的索引。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 分身应用的索引。 |
 
 **返回值：**
 

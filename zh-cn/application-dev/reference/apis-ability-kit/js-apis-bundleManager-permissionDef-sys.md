@@ -6,6 +6,8 @@
 >
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > 本模块为系统接口。
 
 ## 导入模块
@@ -23,6 +25,6 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称           | 类型   | 只读 | 可选 | 说明           |
 | -------------- | ------ | ---- | ---- | -------------- |
 | permissionName | string | 是   | 否   | 用户权限名称。   |
-| grantMode      | number | 是   | 否   | [权限的授予方式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-permission-mgmt-overview#授权方式)。0：表示用户授权，1：表示系统授权。 |
-| labelId        | number | 是   | 否   | 权限的标签ID。   |
-| descriptionId  | number | 是   | 否   | 描述权限的ID。   |
+| grantMode      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | [权限的授予方式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-permission-mgmt-overview#授权方式)。0：表示用户授权，1：表示系统授权。 |
+| labelId        | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 权限的标签ID。   |
+| descriptionId  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 描述权限的ID。   |

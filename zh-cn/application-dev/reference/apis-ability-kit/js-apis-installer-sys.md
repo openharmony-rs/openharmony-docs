@@ -4,6 +4,8 @@
 >
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > 本模块为系统接口。
 
 在设备上安装、升级和卸载应用。
@@ -1372,7 +1374,8 @@ try {
 
 ## BundleInstaller.createAppClone<sup>12+</sup>
 
-createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<number\>;
+ArkTS-Dyn: createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<number\><br>
+ArkTS-Sta: createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise\<int\>
 
 创建应用分身，使用Promise异步回调。
 
@@ -1393,7 +1396,7 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<number\> | Promise对象。返回创建的分身应用索引值。 |
+| ArkTS-Dyn: Promise\<number\><br>ArkTS-Sta: Promise\<int\> | Promise对象。返回创建的分身应用索引值。 |
 
 **错误码：**
 
@@ -1410,6 +1413,7 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 | 17700069 | The app does not support the creation of an appClone instance. |
 
 **示例：**
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
@@ -1436,11 +1440,38 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base';
+
+// 代码中使用的bundleName、appIndex、useId需为应用实际的包名、应用分身索引、用户ID。
+let bundleName = 'com.ohos.camera';
+let createAppCloneParam: installer.CreateAppCloneParam = {
+    userId: 100,
+    appIndex: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.createAppClone(bundleName, createAppCloneParam)
+            .then(() => {
+                console.info('createAppClone successfully.');
+        }).catch((error: Error) => {
+            console.error('createAppClone failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.destroyAppClone<sup>12+</sup>
 
-destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>;
-
+ArkTS-Dyn: destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>
 删除应用分身，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
@@ -1504,7 +1535,7 @@ try {
 
 ## BundleInstaller.destroyAppClone<sup>15+</sup>
 
-destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>;
+ArkTS-Dyn: destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>
 
 删除应用分身，使用Promise异步回调。
 
@@ -1576,9 +1607,101 @@ try {
 }
 ```
 
+## BundleInstaller.destroyAppClone<sup>20+</sup>
+
+ArkTS-Sta: destroyAppClone(bundleName: string, appIndex: int, options?: int | DestroyAppCloneParam): Promise\<void>
+
+删除应用分身，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名        | 类型                          | 必填 | 说明                                                          |
+| ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
+| bundleName   | string                        | 是   | 待删除应用分身的包名。                                         |
+| appIndex     | int                           | 是   | 待删除应用分身的索引。                                         |
+| options      | int \| [DestroyAppCloneParam](#destroyappcloneparam15) | 否   | 指定删除应用分身所属用户ID或者指定删除应用分身所需的其他参数。<br>用户ID可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。<br>其他参数默认值：参照[DestroyAppCloneParam](#destroyappcloneparam15)的默认值。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201 | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 17700001 | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
+| 17700004 | The userId is invalid. |
+| 17700061 | The appIndex is invalid. |
+| 17700062 | Failed to uninstall the app because the app is locked. |
+
+**示例：**
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base';
+
+// 代码中使用的bundleName、appIndex、useId需为应用实际的包名、应用分身索引、用户ID。
+let bundleName = 'com.ohos.camera';
+let index = 1;
+let userId = 100;
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.destroyAppClone(bundleName, index, userId)
+            .then(() => {
+                console.info('destroyAppClone successfully.');
+        }).catch((error: Error) => {
+            console.error('destroyAppClone failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+
+let key = 'ohos.bms.param.verifyUninstallRule';
+let value = 'false';
+let item: installer.Parameters = {key, value};
+let destroyAppCloneOpt: installer.DestroyAppCloneParam = {
+    userId: userId,
+    parameters: [item]
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.destroyAppClone(bundleName, index, destroyAppCloneOpt)
+            .then(() => {
+                console.info('destroyAppClone successfully.');
+        }).catch((error: Error) => {
+            console.error('destroyAppClone failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
 ## BundleInstaller.installPreexistingApp<sup>12+</sup>
 
-installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
+ArkTS-Dyn: installPreexistingApp(bundleName: string, userId?: number): Promise\<void\><br>
+ArkTS-Sta: installPreexistingApp(bundleName: string, userId?: int): Promise\<void\>
 
 安装应用，使用Promise异步回调。
 
@@ -1593,7 +1716,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 | 参数名        | 类型                          | 必填 | 说明                                                          |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | bundleName   | string                        | 是   | 需要安装应用的包名。                                           |
-| userId       | number                        | 否   | 需要安装应用的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，userId需要大于0。默认值：调用方所在用户。   |
+| userId       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 需要安装应用的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，userId需要大于0。默认值：调用方所在用户。   |
 
 **返回值：**
 
@@ -1616,6 +1739,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 | 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users. |
 
 **示例：**
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
@@ -1633,6 +1757,31 @@ try {
         });
     }).catch((error: BusinessError) => {
         console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base';
+
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+let bundleName = 'com.ohos.camera';
+let userId = 100;
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.installPreexistingApp(bundleName, userId)
+            .then(() => {
+                console.info('installPreexistingApp successfully.');
+        }).catch((error: Error) => {
+            console.error('installPreexistingApp failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
     });
 } catch (error) {
     let message = (error as BusinessError).message;
@@ -1808,11 +1957,11 @@ try {
 
 | 名称                        | 类型                           |  只读  |  可选  | 说明               |
 | ------------------------------ | ------------------------------ | ------------------| ------------------ | ------------------ |
-| userId                         | number                         | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[queryOsAccountLocalIdFromProcess](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。 |
-| installFlag                    | number                         | 否                       | 是 | 指示安装标志，枚举值：0x00：应用初次安装，0x01：应用覆盖安装，0x10：应用免安装，默认值为应用初次安装。 |
+| userId                         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[queryOsAccountLocalIdFromProcess](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。 |
+| installFlag                    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否                       | 是 | 指示安装标志，枚举值：0x00：应用初次安装，0x01：应用覆盖安装，0x10：应用免安装，默认值为应用初次安装。 |
 | isKeepData                     | boolean                        | 否                       | 是| 卸载时是否保留数据目录，默认值为false。true表示卸载时保留数据目录，false表示卸载时不保留数据目录。 |
 | hashParams        | Array<[HashParam](#hashparam)> | 否 | 是| 哈希值参数，默认值为空。         |
-| crowdtestDeadline| number                         | 否                       | 是 | 众测活动的截止日期，默认值为-1，表示无截止日期约束。 |
+| crowdtestDeadline | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否                       | 是 | 众测活动的截止日期，默认值为-1，表示无截止日期约束。 |
 | sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。 |
 | specifiedDistributionType<sup>10+</sup> | string | 否 | 是|应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度为128字节。该字段通常由操作系统运营方的应用市场指定。 |
 | additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。 |
@@ -1830,7 +1979,7 @@ try {
 | 名称        | 类型    |  只读  |  可选  | 说明                                                         |
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
 | bundleName  | string | 否 | 否  | 共享包包名。                                                 |
-| versionCode | number | 否 | 是  | 指示共享包的版本号。默认值：如果不填写versionCode，则卸载该包名的所有共享包。 |
+| versionCode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 指示共享包的版本号。默认值：如果不填写versionCode，则卸载该包名的所有共享包。 |
 
 ## VerifyCodeParam<sup>deprecated<sup>
 
@@ -1883,8 +2032,8 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
-| userId      | number | 否 | 是  | 指定创建分身应用所在的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
-| appIndex    | number |  否 | 是   | 指定创建分身应用的索引值。默认值：当前可用的最小索引值。           |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 指定创建分身应用所在的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int |  否 | 是   | 指定创建分身应用的索引值。默认值：当前可用的最小索引值。           |
 
 ## DestroyAppCloneParam<sup>15+</sup>
 
@@ -1896,7 +2045,7 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
 | ----------- | ------ | ----| ---- | ------------------------------------------------------------ |
-| userId      | number | 否 | 是  | 指定删除分身应用所在的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 指定删除分身应用所在的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
 | parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 指定删除分身应用扩展参数，默认值为空。            |
 
 ## PluginParam<sup>19+</sup>
@@ -1909,5 +2058,5 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
-| userId      | number | 否 | 是   | 指定安装、卸载插件程序所在的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 指定安装、卸载插件程序所在的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
 | parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 指定安装、卸载插件程序的扩展参数，默认值为空。            |
