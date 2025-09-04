@@ -25,6 +25,8 @@ getStatus(): Promise<AudioLoopbackStatus\>
 
 获取音频返听状态。使用Promise异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **返回值：**
@@ -50,6 +52,8 @@ audioLoopback.getStatus().then((status: audio.AudioLoopbackStatus) => {
 setVolume(volume: number): Promise&lt;void&gt;
 
 设置音频返听的音量。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -91,6 +95,8 @@ on(type: 'statusChange', callback: Callback<AudioLoopbackStatus\>): void
 
 监听返听状态变化事件（当AudioLoopback的状态发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -129,6 +135,8 @@ audioLoopback.on('statusChange', (status: audio.AudioLoopbackStatus) => {
 off(type: 'statusChange', callback?: Callback&lt;AudioLoopbackStatus&gt;): void
 
 取消监听音频状态事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -176,6 +184,8 @@ audioLoopback.off('statusChange', statusChangeCallback);
 enable(enable: boolean): Promise<boolean\>
 
 启用或禁用音频返听器。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

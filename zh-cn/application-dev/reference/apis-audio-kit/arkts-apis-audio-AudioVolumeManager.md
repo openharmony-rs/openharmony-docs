@@ -31,7 +31,7 @@ ArkTS-Sta: getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolu
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | groupId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                            | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。                  |
-| callback | AsyncCallback&lt;[AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md)&gt; | 是   | 回调函数。当获取音频组管理器成功，err为undefined，data为获取到的音频组管理器对象；否则为错误对象。 |
+| callback | AsyncCallback&lt;[AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md)&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频组管理器成功，err为undefined，data为获取到的音频组管理器对象；否则为错误对象。<br>ArkTS-Sta: 当获取音频组管理器成功，err为null，data为获取到的音频组管理器对象；否则为错误对象。 |
 
 **示例：**
 
@@ -124,8 +124,6 @@ async function getVolumeGroupManager(){
 ArkTS-Dyn: getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
 
 ArkTS-Sta: getVolumeGroupManagerSync(groupId: int\): AudioVolumeGroupManager
-
-获取音频组管理器。同步返回结果。
 
 获取音频组管理器。同步返回结果。
 

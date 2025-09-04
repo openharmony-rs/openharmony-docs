@@ -44,7 +44,7 @@ createTonePlayer(options: AudioRendererInfo, callback: AsyncCallback&lt;TonePlay
 | 参数名   | 类型                                             | 必填 | 说明            |
 | -------- | ----------------------------------------------- | ---- | -------------- |
 | options  | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)        | 是   | 配置音频渲染器信息。|
-| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | 是   | 回调函数。当获取DTMF播放器成功，err为undefined，data为获取到的DTMF播放器对象；否则为错误对象。|
+| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | 是   | 回调函数。<br>ArkTS-Dyn: 当获取DTMF播放器成功，err为undefined，data为获取到的DTMF播放器对象；否则为错误对象。<br>ArkTS-Sta: 当获取DTMF播放器成功，err为null，data为获取到的DTMF播放器对象；否则为错误对象。|
 
 **示例：**
 
@@ -650,7 +650,7 @@ setAudioScene\(scene: AudioScene, callback: AsyncCallback<void\>\): void
 | 参数名   | 类型                                 | 必填 | 说明                 |
 | :------- | :----------------------------------- | :--- | :------------------- |
 | scene    | [AudioScene](arkts-apis-audio-e.md#audioscene8) | 是   | 音频场景模式。       |
-| callback | AsyncCallback<void\>                 | 是   | 回调函数。当设置音频场景模式成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\>                 | 是   | 回调函数。<br>ArkTS-Dyn: 当设置音频场景模式成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当设置音频场景模式成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -892,7 +892,7 @@ getVolumeGroupInfos(networkId: string, callback: AsyncCallback<VolumeGroupInfos\
 | 参数名     | 类型                                                         | 必填 | 说明                 |
 | ---------- | ------------------------------------------------------------ | ---- | -------------------- |
 | networkId | string                                    | 是   | 设备的网络id。本地设备audio.LOCAL_NETWORK_ID。    |
-| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | 是   | 回调函数。当获取音量组信息列表成功，err为undefined，data为获取到的音量组信息列表；否则为错误对象。 |
+| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音量组信息列表成功，err为undefined，data为获取到的音量组信息列表；否则为错误对象。<br>ArkTS-Sta: 当获取音量组信息列表成功，err为null，data为获取到的音量组信息列表；否则为错误对象。 |
 
 **示例：**
 
@@ -1459,7 +1459,7 @@ ArkTS-Sta: setVolume(volumeType: AudioVolumeType, volume: int, callback: AsyncCa
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
 | volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn: 当设置指定流的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当设置指定流的音量成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -1595,7 +1595,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                          |
 | mute       | boolean                             | 是   | 静音状态，true为静音，false为非静音。 |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置指定音量流静音成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn: 当设置指定音量流静音成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当设置指定音量流静音成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -1681,7 +1681,7 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                            | 必填 | 说明                     |
 | -------- | ------------------------------- | ---- | ------------------------ |
 | mode     | [AudioRingMode](arkts-apis-audio-e.md#audioringmode) | 是   | 音频铃声模式。           |
-| callback | AsyncCallback&lt;void&gt;       | 是   | 回调函数。当设置铃声模式成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt;       | 是   | 回调函数。<br>ArkTS-Dyn: 当设置铃声模式成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当设置铃声模式成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -1809,7 +1809,7 @@ adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | 是   | 音量调节方向。                                             |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当调节当前最高优先级的流的音量成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn: 当调节当前最高优先级的流的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当调节当前最高优先级的流的音量成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -1937,7 +1937,7 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | 是   | 音量调节方向。                                       |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当单步设置指定流的音量成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn: 当单步设置指定流的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当单步设置指定流的音量成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -2228,7 +2228,7 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors, callback: AsyncCall
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | inputAudioDevices           | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输入设备类。               |
-| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输入设备成功，err为undefined，否则为错误对象。 |
+| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。<br>ArkTS-Dyn: 当选择音频输入设备成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当选择音频输入设备成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -2394,7 +2394,7 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCa
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备类。               |
-| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
+| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。<br>ArkTS-Dyn: 当选择音频输出设备成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当选择音频输出设备成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -2559,7 +2559,7 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件类。               |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备类。               |
-| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
+| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。<br>ArkTS-Dyn: 当选择音频输出设备成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当选择音频输出设备成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -4789,7 +4789,7 @@ load(type: ToneType, callback: AsyncCallback&lt;void&gt;): void
 | 参数名          | 类型                        | 必填  | 说明                            |
 | :--------------| :-------------------------- | :-----| :------------------------------ |
 | type           | [ToneType](#tonetype9)       | 是    | 配置的音调类型。                 |
-| callback       | AsyncCallback<void\>        | 是    | 回调函数。当加载DTMF音调配置成功，err为undefined，否则为错误对象。 |
+| callback       | AsyncCallback<void\>        | 是    | 回调函数。<br>ArkTS-Dyn: 当加载DTMF音调配置成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当加载DTMF音调配置成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -4869,7 +4869,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当启动DTMF音调播放成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn: 当启动DTMF音调播放成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当启动DTMF音调播放成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -4943,7 +4943,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当停止当前正在播放的音调成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn: 当停止当前正在播放的音调成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当停止当前正在播放的音调成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -5017,7 +5017,7 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                            |
 | :------- | :------------------- | :--- | :---------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当释放与此TonePlayer对象关联的资源成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn: 当释放与此TonePlayer对象关联的资源成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当释放与此TonePlayer对象关联的资源成功，err为null，否则为错误对象。 |
 
 **示例：**
 

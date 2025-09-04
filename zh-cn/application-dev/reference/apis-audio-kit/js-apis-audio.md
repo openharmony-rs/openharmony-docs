@@ -5958,6 +5958,7 @@ audioStreamManager.on('audioRendererChange',  (AudioRendererChangeInfoArray) => 
 });
 ```
 
+
 ## AudioCapturerChangeInfoArray<sup>9+</sup>
 
 type AudioCapturerChangeInfoArray = Array&lt;Readonly&lt;AudioCapturerChangeInfo&gt;&gt;
@@ -8303,6 +8304,7 @@ audioRenderer.on('markReach', 1000, (position: number) => {
 });
 ```
 
+
 ### off('markReach')<sup>8+</sup>
 
 off(type: 'markReach', callback?: Callback&lt;number&gt;): void
@@ -8786,6 +8788,7 @@ audioCapturer.getCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapt
 });
 ```
 
+
 ### getCapturerInfo<sup>8+</sup>
 
 getCapturerInfo(): Promise<AudioCapturerInfo\>
@@ -9047,6 +9050,7 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
+
 ### start<sup>8+</sup>
 
 start(): Promise<void\>
@@ -9107,6 +9111,7 @@ audioCapturer.stop((err: BusinessError) => {
 });
 ```
 
+
 ### stop<sup>8+</sup>
 
 stop(): Promise<void\>
@@ -9164,6 +9169,7 @@ audioCapturer.release((err: BusinessError) => {
   }
 });
 ```
+
 
 ### release<sup>8+</sup>
 
