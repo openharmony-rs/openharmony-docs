@@ -9,43 +9,28 @@
 
 ## 概述
 
-测试用户交互行为，是保障用户体验的关键环节 —— 通过模拟真实使用场景验证交互逻辑，可有效规避用户操作中可能出现的意外结果，避免不良使用体验。
-
-若需验证应用用户界面（UI）的功能完整性与运行稳定性，编写 UI 测试用例是高效且必要的手段。这类测试用例不仅支持快速执行，还能确保测试结果的可靠性，同时可反复运行以覆盖多轮迭代场景，为应用 UI 质量提供保障。
-
 UI测试框架（UiTest）为开发者提供全方位的UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI 交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者高效搭建可靠的界面自动化测试流程。
 
 ## 功能全景
 
-UiTest支持采用ArkTS语言与Shell命令两种方式编写测试脚本，为界面自动化测试提供灵活高效的技术支撑，核心能力如下：
+UiTest支持采用ArkTS API与Shell命令两种方式提供UI测试能力，为界面自动化测试提供灵活高效的技术支撑，核心能力如下：
 
 **ArkTS 脚本开发能力：** 
 提供简洁易用的API接口，可满足各类测试场景需求，核心支持点击、双击、长按、滑动等主流 UI 交互操作，助力用户快速开发基于界面交互逻辑的自动化测试脚本，降低脚本编写门槛。
 
-On<sup>9+</sup>：提供控件特征描述能力，用于精准筛选、匹配并查找目标控件，适配 API version 9 及以上版本。
-
-Component<sup>9+</sup>：代表 UI 界面中的指定控件，支持控件属性获取、控件点击、滑动查找、文本注入等核心操作，适配 API version 9 及以上版本。
-
-Driver<sup>9+</sup>：模块入口类，提供控件匹配与查找、模拟操作事件注入、屏幕截图等基础测试能力，适配 API version 9 及以上版本。
-
-UiWindow<sup>9+</sup>：模块入口类，支持窗口属性获取、窗口拖动、窗口大小调整等窗口级操作，适配 API version 9 及以上版本。
-
 **Shell 命令测试能力：** 
 支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、导出界面控件树结构、录制界面操作流程、便捷注入UI模拟事件等，帮助开发者灵活开展测试验证工作。
 
-  图1.UI测试框架主要功能
+![](figures/Uitest.PNG)
 
-  ![](figures/Uitest.PNG)
+UiTest框架运行分为客户端和服务端。
 
-UiTest框架运行分为客户端和服务端，客户端由测试应用加载，运行在应用进程，服务端以独立进程运行，两端通过IPC进行通信和消息处理。UiTest服务端启动后，通过广播与客户端建立连接，通过IPC通信确保连接不断开。服务端监听客户端进程状态，实现按需启停。
+**· 客户端**包含跨语言通信层、IPC模块等，主要功能为对外导出API，为UI测试框架启动提供入口。客户端由测试应用加载，运行在应用进程。其中，跨语言通信层主要进行接口导出、JSON序列化对象处理、上层ArkTS接口与底层C++接口的转换、参数解析和校验。此外，由于本模块涉及C++层对ArkTS层回调函数的调用，跨语言通信层同时负责ArkTS回调函数的管理和调用。
 
-服务端负责UI测试框架核心逻辑的处理，主要分为以下两部分：
-
+**· 服务端**以独立进程运行，通过IPC与客户端进行通信。服务端启动后，通过广播与客户端建立连接，通过IPC通信确保连接不断开。服务端监听客户端进程状态，实现按需启停。服务端负责UI测试框架核心逻辑的处理，主要分为以下两部分：
 1. 框架运行通用能力：<br> 进行IPC消息处理、进程管理、C++接口和错误码的管理，包括接口调用监听等。
 
 2. UI测试能力：<br> 解析无障碍节点构建页面控件树、控件匹配查找、操作事件构造、多模事件注入、UI事件监听、屏幕显示控制等。
-
-跨语言通信层主要进行接口导出、JSON序列化对象处理、上层ArkTS接口与底层C++接口的转换、参数解析和校验。此外，由于本模块涉及C++层对ArkTS层回调函数的调用，跨语言通信层同时负责ArkTS回调函数的管理和调用。
 
 此外，UiTest运行过程中需依赖部分系统部件，包括元能力、方舟UI框架、无障碍服务、多模子系统、图片框架、公共事件服务、hidumper、TestServer等。
 
@@ -56,10 +41,9 @@ UiTest框架运行分为客户端和服务端，客户端由测试应用加载�
 
 UI 测试构建于单元测试基础之上，额外增加了对 UiTest 接口的调用，接口的详细定义与参数说明可参考<!--RP1-->具体请参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP1End-->。
 
-### UI测试示例
+### UI测试简例
 
 下方示例代码以单元测试脚本为基础，进行UI测试的增量开发，实现的核心步骤为：
-
 1) 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态.
 
 2) 调用UI测试框架能力，页面中执行点击操作；
@@ -139,6 +123,24 @@ export default function abilityTest() {
 ```
 
 ### 模拟触摸屏手指操作
+
+#### 接口说明
+| 接口 | 功能说明 |
+| ----- | ------|
+| click | 基于坐标进行点击操作|
+| clickAt | 基于坐标进行点击操作，支持指定坐标所属屏幕ID |
+| doubleClick | 基于坐标进行双击操作 |
+| doubleClickAt | 基于坐标进行双击操作，支持指定坐标所属屏幕ID |
+| longClick | 基于坐标进行长按操作 |
+| longClickAt | 基于坐标进行长按操作，支持指定坐标所属屏幕ID |
+| swipe | 基于坐标进行滑动操作 |
+| swipeBetween | 基于坐标进行滑动操作，支持指定坐标所属屏幕ID |
+| fling | 模拟手指滑动后脱离屏幕的快速滑动操作，支持指定速度和步长 |
+| fling | 模拟手指滑动后脱离屏幕的快速滑动操作，指定方向和速度 |
+| drag | 基于坐标进行拖拽操作 |
+| dragBetween | 基于坐标进行拖拽操作，支持指定坐标所属屏幕ID|
+| injectMultiPointerAction | 向设备注入多指操作，支持指定手指和步骤对应动作的坐标点、滑动速度 |
+
 以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
 
 ```ts
@@ -182,6 +184,14 @@ export default function abilityTest() {
 
 ```
 ### 控件查找与操作
+
+#### 接口说明
+| 接口 | 功能说明 |
+| ------ | ------|
+| findComponent | 根据给出的目标控件属性要求查找目标控件 |
+| findComponents | 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存 |
+| waitForComponent | 在用户给定的时间内，持续查找满足控件属性要求的目标控件 |
+
 以下示例代码演示了如何使用UiTest接口进行控件的查找和操作，根据控件属性或相对位置查找控件，并进行点击、放大等控件级操作。
 
 ```ts
@@ -221,29 +231,15 @@ export default function abilityTest() {
 }
 
 ```
-### 窗口查找与操作
-以下示例代码演示了如何使用UiTest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
-
-```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, Component, ON, On } from '@kit.TestKit';
-
-export default function abilityTest() {
-  describe('windowOperationTest', () => {
-    /**
-     * 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
-     */
-    it("windowSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
-      let driver = Driver.create();
-      let window = await driver.findWindow({active: true});
-      await window.minimize();
-    })
-  })
-}
-```
 
 ### 模拟文本输入
+
+#### 接口说明
+| 接口 | 功能说明 |
+| ------ | ------|
+| inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>| 在指定坐标点输入文本，支持指定文本输入方式 |
+| inputText(text: string, mode: InputTextMode): Promise\<void>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效 |
+
 以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
 ```ts
@@ -297,6 +293,14 @@ export default function abilityTest() {
 }
 ```
 ### 截图
+
+#### 接口说明
+| 接口 | 功能说明 |
+| ------ | ------|
+| screenCap(savePath: string, displayId: number): Promise\<boolean>| 
+捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中 |
+| screenCapture(savePath: string, rect?: Rect): Promise\<boolean>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效 |
+
 以下示例代码演示了如何使用UiTest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
 
 ```ts
@@ -407,6 +411,28 @@ export default function abilityTest() {
       await driver.mouseScroll({x:100, y:100}, true, 30, KeyCode.KEYCODE_CTRL_LEFT);
       // 按下左CTRL键，同时鼠标左键长按
       await driver.mouseLongClick({x:100, y:100}, MouseButton.MOUSE_BUTTON_LEFT, KeyCode.KEYCODE_CTRL_LEFT);
+    })
+  })
+}
+```
+
+### 窗口查找与操作
+以下示例代码演示了如何使用UiTest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
+
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, Component, ON, On } from '@kit.TestKit';
+
+export default function abilityTest() {
+  describe('windowOperationTest', () => {
+    /**
+     * 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
+     */
+    it("windowSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
+      let driver = Driver.create();
+      let window = await driver.findWindow({active: true});
+      await window.minimize();
     })
   })
 }
