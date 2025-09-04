@@ -1724,9 +1724,85 @@ getContextMenuController(): ContextMenuController
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
-uiContext.getContextMenuController();
+@Entry
+@Component
+struct Index {
+  @Builder
+  MyMenu() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+    }
+  }
+
+  build() {
+    Column(undefined) {
+      Button('OpenContextMenu')
+        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
+          onAppear: () => {
+            setTimeout(()=>{
+              this.getUIContext().getContextMenuController().close();
+            }, 2000)
+          }
+        })
+        .width('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  ButtonType,
+  ResponseType
+} from '@ohos.arkui.component';
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  MyMenu() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+
+  build() {
+    Column(undefined) {
+      Button('OpenContextMenu')
+        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
+          onAppear: () => {
+            setTimeout(()=>{
+              this.getUIContext().getContextMenuController().close();
+            }, 2000)
+          }
+        })
+        .width('100%')
+    }
+  }
+}
 ```
 
 ### getMeasureUtils<sup>12+</sup>
@@ -8524,6 +8600,8 @@ openMenu\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, o
 
 该示例通过调用openMenu接口，展示了弹出Menu的功能。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
 
@@ -8559,6 +8637,77 @@ export function showMenu(context: UIContext, uniqueId: number, contentNode: Comp
 struct Index {
   build() {
     Column() {
+      Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
+        .borderRadius('16lpx')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const contentNode = new ComponentContent(context, wrapBuilder(MyMenu));
+          doSomething(context, this.getUniqueId(), contentNode);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  wrapBuilder,
+  ButtonType
+} from '@ohos.arkui.component';
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  showMenu(context, uniqueId, contentNode);
+}
+
+@Builder
+function MyMenu() {
+  Column() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+  .width('80%')
+  .padding('20lpx')
+}
+
+export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let frameNodeTarget = frameNode?.getFirstChild();
+  frameNodeTarget = frameNodeTarget?.getChild(0);
+  if (frameNodeTarget === null) {
+    return;
+  }
+  let targetId = frameNodeTarget!.getUniqueId();
+  promptAction.openMenu(contentNode, { id: targetId }, {
+    enableArrow: true,
+  });
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
       Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
         .borderRadius('16lpx')
         .width('80%')
@@ -8618,6 +8767,8 @@ updateMenu\<T extends Object>(content: ComponentContent\<T>, options: MenuOption
 
 该示例通过调用updateMenu接口，展示了更新Menu箭头样式的功能。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
 
@@ -8671,6 +8822,81 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  wrapBuilder,
+  ButtonType
+} from '@ohos.arkui.component'
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  showMenu(context, uniqueId, contentNode);
+}
+
+@Builder
+function MyMenu() {
+  Column() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+  .width('80%')
+  .padding('20lpx')
+}
+
+export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let frameNodeTarget = frameNode?.getFirstChild();
+  frameNodeTarget = frameNodeTarget?.getChild(0);
+  if (frameNodeTarget === null) {
+    return;
+  }
+  let targetId = frameNodeTarget!.getUniqueId();
+  promptAction.openMenu(contentNode, { id: targetId }, {
+    enableArrow: true,
+  });
+  setTimeout(() => {
+    promptAction.updateMenu(contentNode, {
+      enableArrow: false,
+    });
+  }, 2000);
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
+      Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
+        .borderRadius('16lpx')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const contentNode = new ComponentContent(context, wrapBuilder(MyMenu));
+          doSomething(context, this.getUniqueId(), contentNode);
+        })
+    }
+  }
+}
+```
 
 ### closeMenu<sup>18+</sup>
 
@@ -8707,6 +8933,8 @@ closeMenu\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt;
 **示例：**
 
 该示例通过调用closeMenu接口，展示了关闭Menu的功能。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
@@ -8760,6 +8988,79 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  wrapBuilder,
+  ButtonType
+} from '@ohos.arkui.component';
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  showMenu(context, uniqueId, contentNode);
+}
+
+@Builder
+function MyMenu() {
+  Column() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+  .width('80%')
+  .padding('20lpx')
+}
+
+export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let frameNodeTarget = frameNode?.getFirstChild();
+  frameNodeTarget = frameNodeTarget?.getChild(0);
+  if (frameNodeTarget === null) {
+    return;
+  }
+  let targetId = frameNodeTarget!.getUniqueId();
+  promptAction.openMenu(contentNode, { id: targetId }, {
+    enableArrow: true,
+  });
+  setTimeout(() => {
+    promptAction.closeMenu(contentNode);
+  }, 2000);
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
+      Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
+        .borderRadius('16lpx')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const contentNode = new ComponentContent(context, wrapBuilder(MyMenu));
+          doSomething(context, this.getUniqueId(), contentNode);
+        })
+    }
+  }
+}
+```
 ## DragController<sup>11+</sup>
 以下API需先使用UIContext中的[getDragController()](js-apis-arkui-UIContext.md#getdragcontroller11)方法获取DragController实例，再通过此实例调用对应方法。
 
