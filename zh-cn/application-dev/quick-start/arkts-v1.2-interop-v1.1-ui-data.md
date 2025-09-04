@@ -14,7 +14,7 @@
 
 针对开发者无法手动从ArkTS1.1对象创建ArkTS1.2对象的情况，ArkUI开发框架通过[transferStatic](../reference/apis-arkts/js-apis-transfer.md)接口提供动静类型转换，如下示例代码展示了相关用法。
 
-- 创建ArkTS1.1子模块dynamic_module，在动态模块中创建并导出自定义组件。有关如何创建子模块的详细信息，请参阅共享包（[HAR](har-package.md)）说明。
+- 创建ArkTS1.1子模块dynamic_module，在动态模块中创建并导出自定义组件。如何创建子模块请参考共享包（[HAR](har-package.md)）说明。
   ```
   @Component
   export struct Child {
@@ -33,7 +33,7 @@
   }
   ```
 
-- 在ArkTS1.2模块中配置相关模块依赖后，导入动态模块。如何导入和使用子模块，请参考共享包（[HAR](har-package.md)）说明。本指南不进行详细阐述。
+- 在ArkTS1.2模块中配置相关模块依赖后，导入动态模块。如何导入和使用子模块请参考共享包（[HAR](har-package.md)）说明。
   ```
   'use static'
   import { Entry, Component, Column, ClickEvent } from '@ohos.arkui.component';

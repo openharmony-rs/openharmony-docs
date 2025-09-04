@@ -15,7 +15,7 @@ ArkUI互操作能力支持静态上下文使用动态模块的自定义组件，
 
 以下示例展示了如何在静态上下文中使用动态模块的自定义组件。
 
-- 创建ArkTS1.1子模块dynamic_module，并在动态模块中创建和导出自定义组件。如何创建子模块可参考共享包（[HAR](har-package.md)）说明，本指南中不详细阐述。
+- 创建ArkTS1.1子模块dynamic_module，并在动态模块中创建和导出自定义组件。如何创建子模块参考共享包（[HAR](har-package.md)）说明。
 
   ```
   @Component
@@ -33,7 +33,7 @@ ArkUI互操作能力支持静态上下文使用动态模块的自定义组件，
   }
   ```
 
-- 在ArkTS1.2主模块中配置相关模块依赖后，导入动态模块的自定义组件。如何导入和使用子模块，请参考共享包（[HAR](har-package.md)）说明。
+- 在ArkTS1.2主模块中配置相关模块依赖后，导入动态模块的自定义组件。如何导入和使用子模块参考共享包（[HAR](har-package.md)）说明。
 
   ```
   'use static'
@@ -70,7 +70,7 @@ ArkUI互操作能力支持静态上下文使用动态模块的自定义组件，
 - 在静态上下文中，不能对动态类型的自定义组件设置通用样式，否则会导致编译错误。
   ```
   'use static'
-  import { Entry, Component, Builder, Column, Divider, BuilderParam } from '@ohos.arkui.component';
+  import { Entry, Component, Stack, Column } from '@ohos.arkui.component';
   import { HelloComponent } from 'dynamic_module'; // 从动态模块中导入
   
   @Entry
@@ -143,7 +143,7 @@ ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函
         Divider()
         this.content()
         Divider()
-        localBuilder()
+        this.localBuilder()
       }
     }
   }
@@ -151,8 +151,7 @@ ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函
 
 ## 使用ArkTS1.1的WrappedBuilder对象
 
-
-由于动静态类型差异，ArkTS1.1的WrappedBuilder对象类型在ArkTS1.2上下文中被转换为了Any类型，UI互操作编译工具无法对Any类型进行编译期适配优化，因此开发者需要显式调用互操作接口进行使用ArkTS1.1的WrappedBuilder对象。
+由于动静态类型差异，ArkTS1.1的WrappedBuilder对象类型在ArkTS1.2上下文中被转换为了Any类型，UI互操作编译工具无法对Any类型进行编译期适配优化，因此开发者需要显式调用互操作接口[compatibleWrappedBuilder](../reference/apis-arkui/arkui-ts/ts-interop-compatible-WrappedBuilder.md)来使用ArkTS1.1的WrappedBuilder对象。
 
 
 以下示例展示了在ArkTS1.2上下文中使用动态WrappedBuilder对象的方法。
@@ -269,7 +268,7 @@ ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函
 
 ### FrameNode和TypedFrameNode自定义节点
 
-针对FrameNode类型，UI框架通过transferStatic接口将ArkTS1.1的FrameNode类型对象转换为ArkTS1.2的FrameNode对象，转换后的FrameNode对象可在ArkTS1.2上下文中使用。
+针对FrameNode和[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)类型，UI框架通过[transferStatic](../reference/apis-arkts/js-apis-transfer.md)接口将ArkTS1.1的基类FrameNode和子类TypedFrameNode对象转换为ArkTS1.2的基类FrameNode对象，转换后的FrameNode对象可在ArkTS1.2上下文中进行树构建。
 
 如下示例代码展示了相关用法。
 
@@ -282,12 +281,12 @@ ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函
   export function createChild(context: Object): Object {
     let parent = new FrameNode(context as UIContext);
     parent.commonAttribute
-      .width("100%")
-      .height("100%");
-    let textTypeNode = typeNode.createNode(context as UIContext, "Text");
-    textTypeNode.initialize("textTypeNode")
+      .width('100%')
+      .height('100%');
+    let textTypeNode = typeNode.createNode(context as UIContext, 'Text');
+    textTypeNode.initialize('textTypeNode')
       .fontSize(25)
-      .id("textTypeNode");
+      .id('textTypeNode');
     parent.appendChild(textTypeNode);
     // 返回通用类型
     return parent;
@@ -321,11 +320,11 @@ ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函
     build() {
       Column() {
         NodeContainer(this.myNodeController)
-          .width("100%")
-          .height("40%")
+          .width('100%')
+          .height('40%')
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
     }
   }
   ```
@@ -343,7 +342,7 @@ ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函
 
   ```
   export class Params {
-    text: string = "";
+    text: string = '';
     constructor(text: string) {
       this.text = text;
     }
@@ -393,11 +392,11 @@ ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函
     build() {
       Column() {
         NodeContainer(this.myNodeController)
-          .width("100%")
-          .height("40%")
+          .width('100%')
+          .height('40%')
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
     }
   }
   ```
@@ -412,7 +411,7 @@ BuilderNode 对象主要用于创建声明式自定义节点封装类，配合 F
   import { BuilderNode, UIContext } from '@kit.ArkUI';
   
   class Params {
-    text: string = "";
+    text: string = '';
     constructor(text: string) {
       this.text = text;
     }
@@ -448,7 +447,7 @@ BuilderNode 对象主要用于创建声明式自定义节点封装类，配合 F
   
   class TextNodeController extends NodeController {
     private textNode?: Any; // 接收ArkTS1.1的通用类型对象。
-    private message: string = "DEFAULT"; // 传递给ArkTS1.1对象的参数数据。
+    private message: string = 'DEFAULT'; // 传递给ArkTS1.1对象的参数数据。
   
     constructor(message: string) {
       super();
