@@ -715,7 +715,7 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**说明：**本模块首批ArkTs-Sta接口从API version 21开始支持。
+**说明：** 本模块首批ArkTs-Sta接口从API version 21开始支持。
 
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | ---- | --------------------------- |
