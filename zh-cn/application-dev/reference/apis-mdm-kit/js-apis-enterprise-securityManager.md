@@ -715,10 +715,12 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**说明：**本模块首批ArkTs-Sta接口从API version 21开始支持。
+
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | ---- | --------------------------- |
 | complexityRegex | string | 否 | 是 | 口令复杂度正则表达式。 |
-| validityPeriod | number | 否 | 是 | 密码有效期（单位：毫秒）。 |
+| validityPeriod | ArkTs-Dyn: number<br>ArkTs-Sta: long | 否 | 是 | 密码有效期（单位：毫秒）。 |
 | additionalDescription | string | 否 | 是 | 描述文本。 |
 
 ## ClipboardPolicy
