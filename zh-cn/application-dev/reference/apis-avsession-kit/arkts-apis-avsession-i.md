@@ -128,11 +128,11 @@
 | isFavorite   | boolean                               | 否   | 是否收藏，true表示收藏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activeItemId<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 正在播放的媒体Id。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | volume<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 正在播放的媒体音量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| maxVolume<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 最大音量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxVolume<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 最大音量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | muted<sup>11+</sup>     | boolean                   | 否   | 当前静音状态，true表示静音。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| duration<sup>11+</sup>     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 当前媒体资源的时长。 |
-| videoWidth<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 媒体资源的视频宽度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| videoHeight<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 媒体资源的视频高度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| duration<sup>11+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 当前媒体资源的时长。 |
+| videoWidth<sup>11+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 媒体资源的视频宽度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| videoHeight<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 媒体资源的视频高度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | extras<sup>10+</sup> | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 否   | 自定义媒体数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## PlaybackPosition<sup>10+</sup>
@@ -145,8 +145,8 @@
 
 | 名称        | 类型   | 必填 | 说明               |
 | ----------- | ------ | ---- | ------------------ |
-| elapsedTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 已用时间，单位毫秒（ms）。 |
-| updateTime  | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 更新时间，单位毫秒（ms）。 |
+| elapsedTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 已用时间，单位毫秒（ms）。 |
+| updateTime  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 更新时间，单位毫秒（ms）。 |
 
 ## CallMetadata<sup>11+</sup>
 
@@ -185,7 +185,7 @@
 | deviceId   | string | 是   | 播放设备的ID。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceName | string | 是   | 播放设备的名称。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceType | DeviceType | 是   | 播放设备的类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| supportedProtocols<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 播放设备支持的协议。默认为TYPE_LOCAL。具体取值参考[ProtocolType](arkts-apis-avsession-e.md#protocoltype11)。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| supportedProtocols<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备支持的协议。默认为TYPE_LOCAL。具体取值参考[ProtocolType](arkts-apis-avsession-e.md#protocoltype11)。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | supportedDrmCapabilities<sup>12+</sup> | Array\<string> | 否   | 播放设备支持的DRM能力。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | manufacturer<sup>13+</sup> | string | 否   | 播放设备生产厂家。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|
 | modelName<sup>13+</sup> | string | 否   | 播放设备型号名称。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|
