@@ -1712,7 +1712,6 @@ struct MenuExample {
 
 该示例为bindContextMenu通过配置preview中hoverScale实现一镜到底过渡动效的基础上, 再配置hoverScaleInterruption控制是否允许长按抬手取消菜单弹出。
 
-ArkTS-Dyn示例：
  ```ts
  // xxx.ets
 @Entry
@@ -1754,96 +1753,6 @@ struct Index {
                   hoverScaleInterruption: true
                 }
               })
-            .onClick(() => {
-              console.info('trigger onClick')
-            })
-        }
-      }.width('100%')
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
- ```ts
- 'use static'
-
-import {
-  Entry,
-  Component,
-  Column,
-  ColumnOptions,
-  Text,
-  Builder,
-  TextAlign,
-  ResponseType,
-  ResourceStr,
-  Menu,
-  MenuItem,
-  MenuItemOptions,
-  $r,
-  Image,
-  Button,
-  Margin,
-  Flex,
-  FlexDirection,
-  FlexAlign,
-  ItemAlign,
-  Divider,
-  TransitionEffect,
-  Curve,
-  Stack,
-  BlurStyle,
-  BackgroundBlurStyleOptions,
-  ThemeColorMode,
-  BlurStyleActivePolicy,
-  AdaptiveColor,
-  MenuElement,
-  ContextMenuOptions,
-  ContextMenuAnimationOptions
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-
- // xxx.ets
-@Entry
-@Component
-struct Index {
-  private iconStr: ResourceStr = $r("app.media.app_icon");
-
-  @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-    }
-  }
-
-  @Builder
-  MyPreview() {
-    Column() {
-      Image($r('app.media.example'))
-        .width(300)
-        .height(200)
-    }
-  }
-
-  build() {
-    Column({ space: 50 } as ColumnOptions) {
-      Column() {
-        Column() {
-          Image($r('app.media.example'))
-            .width(100)
-            .height(100)
-            .margin(100)
-            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
-              {
-                preview: this.MyPreview,
-                previewAnimationOptions: {
-                  hoverScale: [1.0, 0.8],
-                  hoverScaleInterruption: true
-                } as ContextMenuAnimationOptions
-              } as ContextMenuOptions)
             .onClick(() => {
               console.info('trigger onClick')
             })
@@ -1985,7 +1894,6 @@ struct Index {
 
 该示例为bindMenu配置生命周期回调。
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -2054,122 +1962,12 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
- 'use static'
-
-import {
-  Entry,
-  Component,
-  Column,
-  ColumnOptions,
-  Text,
-  Builder,
-  TextAlign,
-  ResponseType,
-  ResourceStr,
-  Menu,
-  MenuItem,
-  MenuItemOptions,
-  $r,
-  Image,
-  Button,
-  Margin,
-  Flex,
-  FlexDirection,
-  FlexAlign,
-  ItemAlign,
-  Divider,
-  TransitionEffect,
-  Curve,
-  Stack,
-  BlurStyle,
-  BackgroundBlurStyleOptions,
-  ThemeColorMode,
-  BlurStyleActivePolicy,
-  AdaptiveColor,
-  MenuElement,
-  ContextMenuOptions,
-  ContextMenuAnimationOptions,
-  MenuPreviewMode,
-  Color
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  private iconStr: ResourceStr = $r("app.media.startIcon")
-  @State isShown: boolean = false
-  @State textColor: Color = Color.Black
-  @State blueColor: Color = Color.Blue
-
-  @State onWillAppear: boolean = false
-  @State onDidAppear: boolean = false
-  @State onWillDisappear: boolean = false
-  @State onDidDisappear: boolean = false
-  @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-    }
-  }
-
-  build() {
-      Column() {
-        Column({ space: 30 } as ColumnOptions) {
-          Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
-          Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
-          Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
-          Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
-          Button('click')
-            .onClick(() => {
-              this.isShown = true;
-            })
-            .width(100)
-            .height(50)
-          Text('callback')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .fontSize(20)
-            .fontColor(this.textColor)
-            .bindMenu(this.isShown, this.MyMenu,
-            {
-              onWillAppear:() => {
-                console.info("menu cycle life onWillAppear");
-                  this.onWillAppear = true;
-                },
-                onDidAppear:() => {
-                  console.info("menu cycle life onDidAppear");
-                  this.onDidAppear = true;
-                },
-                onWillDisappear:() => {
-                  this.isShown = false;
-                  console.info("menu cycle life onWillDisappear");
-                  this.onWillDisappear = true;
-                },
-                onDidDisappear:() => {
-                  console.info("menu cycle life onDidDisappear");
-                  this.onDidDisappear = true;
-                }
-            })
-        }
-      }.width('100%')
-  }
-}
-```
-
 ![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
 
 ### 示例16（设置菜单蒙层）
 
 该示例为bindMenu通过配置mask属性设置菜单蒙层。
 
-ArkTS-Dyn示例：
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
@@ -2200,87 +1998,6 @@ struct Index {
   build() {
     Button('bindMenu')
       .position({ top: 80, left: 80 })
-      .onClick(() => {
-        this.isShow = !this.isShow;
-      })
-      .bindMenu(this.isShow, this.MyMenu, {
-        mask: { color: 'rgba(23,169,141,0.5)', backgroundBlurStyle: BlurStyle.Thin }
-      })
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
- 'use static'
-
-import {
-  Entry,
-  Component,
-  Column,
-  ColumnOptions,
-  Text,
-  Builder,
-  TextAlign,
-  ResponseType,
-  ResourceStr,
-  Menu,
-  MenuItem,
-  MenuItemOptions,
-  $r,
-  Image,
-  Button,
-  Margin,
-  Flex,
-  FlexDirection,
-  FlexAlign,
-  ItemAlign,
-  Divider,
-  TransitionEffect,
-  Curve,
-  Stack,
-  BlurStyle,
-  BackgroundBlurStyleOptions,
-  ThemeColorMode,
-  BlurStyleActivePolicy,
-  AdaptiveColor,
-  MenuElement,
-  ContextMenuOptions,
-  ContextMenuAnimationOptions,
-  MenuPreviewMode,
-  Color,
-  Edges,
-  SymbolGlyphModifier
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-
-@Entry
-@Component
-struct Index {
-  @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
-  @State isShow: boolean = false;
-
-  @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({
-        symbolStartIcon: this.startIconModifier,
-        content: "新建文件夹",
-      } as MenuItemOptions)
-      MenuItem({
-        symbolStartIcon: this.startIconModifier,
-        content: "排序方式",
-      } as MenuItemOptions)
-      MenuItem({
-        symbolStartIcon: this.startIconModifier,
-        content: "查看方式",
-      } as MenuItemOptions)
-    }
-  }
-
-  build() {
-    Button('bindMenu')
-      .position({ top: 80, left: 80 } as Edges)
       .onClick(() => {
         this.isShow = !this.isShow;
       })
