@@ -71,8 +71,6 @@ avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescr
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
   console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
   if (descriptors.length > 0 ) {
@@ -81,7 +79,7 @@ avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescr
     console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
   }
 }).catch((err: Error) => {
-  console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetAllSessionDescriptors Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -211,8 +209,6 @@ avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessi
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
   console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
   if (descriptors.length > 0 ) {
@@ -223,7 +219,7 @@ avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessi
     console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].elementName.bundleName : ${descriptors[0].elementName.bundleName}`);
   }
 }).catch((err: Error) => {
-  console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getHistoricalSessionDescriptors Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -354,12 +350,10 @@ avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueI
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {
   console.info(`getHistoricalAVQueueInfos : SUCCESS : avQueueInfos.length : ${avQueueInfos.length}`);
 }).catch((err: Error) => {
-  console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getHistoricalAVQueueInfos Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -480,14 +474,12 @@ avSession.createController(sessionId).then((avcontroller: avSession.AVSessionCon
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let currentAVcontroller: avSession.AVSessionController | undefined = undefined;
 avSession.createController(sessionId).then((avcontroller: avSession.AVSessionController) => {
   currentAVcontroller = avcontroller;
   console.info('CreateController : SUCCESS ');
 }).catch((err: Error) => {
-  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`CreateController Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -625,7 +617,6 @@ ArkTS-Sta示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
 let audioRoutingManager = audioManager.getRoutingManager();
@@ -634,14 +625,14 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
 }).catch((err: Error) => {
-  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetDevices Error: code: ${err.code}, message: ${err.message}`);
 });
 
 if (audioDevices !== undefined) {
   avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
     console.info('CreateController : SUCCESS');
   }).catch((err: Error) => {
-    console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+    console.error(`CreateController Error: code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -722,7 +713,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
 }).catch((err: Error) => {
-  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetDevices Error: code: ${err.code}, message: ${err.message}`);
 });
 
 if (audioDevices !== undefined) {
@@ -791,12 +782,11 @@ ArkTS-Sta示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('startAVPlayback : SUCCESS');
 }).catch((err: Error) => {
-  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`startAVPlayback Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -852,12 +842,11 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {
   console.info(`getDistributedSessionController : SUCCESS : sessionControllers.length : ${sessionControllers.length}`);
 }).catch((err: Error) => {
-  console.error(`getDistributedSessionController BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getDistributedSessionController Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1368,7 +1357,6 @@ ArkTS-Sta示例：
 ```ts
 import { Key, KeyEvent, Action } from '@ohos.multimodalInput.keyEvent.d.ets';
 import { KeyCode } from '@ohos.multimodalInput.keyCode.d.ets';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: Key = {code:KeyCode.KEYCODE_FN, pressedTime:2, deviceId:0};
 let event: KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:Action.UP, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
@@ -1376,7 +1364,7 @@ let event: KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, a
 avSession.sendSystemAVKeyEvent(event).then(() => {
   console.info('SendSystemAVKeyEvent Successfully');
 }).catch((err: Error) => {
-  console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`SendSystemAVKeyEvent Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1508,8 +1496,6 @@ avSession.sendSystemControlCommand(avcommand).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'pause';
 // let cmd : avSession.AVControlCommandType = 'stop';
@@ -1529,7 +1515,7 @@ let avcommand: avSession.AVControlCommand = {command:cmd};
 avSession.sendSystemControlCommand(avcommand).then(() => {
   console.info('SendSystemControlCommand successfully');
 }).catch((err: Error) => {
-  console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`SendSystemControlCommand Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1715,14 +1701,12 @@ avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let filter = 2;
 let drmSchemes = ['3d5e6d35-9b9a-41e8-b843-dd3c6e72c42c'];
 avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
   console.info('startCastDeviceDiscovery successfully');
 }).catch((err: Error) => {
-  console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`startCastDeviceDiscovery Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1805,12 +1789,10 @@ avSession.stopCastDeviceDiscovery().then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.stopCastDeviceDiscovery().then(() => {
   console.info('stopCastDeviceDiscovery successfully');
 }).catch((err: Error) => {
-  console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`stopCastDeviceDiscovery Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1916,12 +1898,10 @@ avSession.setDiscoverable(true).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.setDiscoverable(true).then(() => {
   console.info('setDiscoverable successfully');
 }).catch((err: Error) => {
-  console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`setDiscoverable Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2246,7 +2226,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -2267,7 +2246,7 @@ struct Index {
             aVCastController = avcontroller;
             console.info('getAVCastController : SUCCESS');
             }).catch((err: Error) => {
-            console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+            console.error(`getAVCastController Error: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -2421,8 +2400,6 @@ if (castDevice !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2435,7 +2412,7 @@ if (castDevice !== undefined) {
   avSession.startCasting(myToken, castDevice as avSession.OutputDeviceInfo).then(() => {
     console.info('startCasting successfully');
   }).catch((err: Error) => {
-    console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+    console.error(`startCasting Error: code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2553,15 +2530,13 @@ avSession.stopCasting(myToken).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
 avSession.stopCasting(myToken).then(() => {
   console.info('stopCasting successfully');
 }).catch((err: Error) => {
-  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`stopCasting Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2621,7 +2596,6 @@ avSession.startDeviceLogging(url, 2048).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
 let file = await fileIo.open("filePath");
@@ -2629,7 +2603,7 @@ let url = file.fd.toString();
 avSession.startDeviceLogging(url, 2048).then(() => {
   console.info('startDeviceLogging successfully');
 }).catch((err: Error) => {
-  console.error(`startDeviceLogging BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`startDeviceLogging Error: code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -2676,12 +2650,10 @@ avSession.stopDeviceLogging().then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.stopDeviceLogging().then(() => {
   console.info('stopCasting successfully');
 }).catch((err: Error) => {
-  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`stopCasting Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 

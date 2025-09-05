@@ -107,12 +107,10 @@ aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) =>
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('getAVPlaybackState : SUCCESS');
 }).catch((err: Error) => {
-  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getAVPlaybackState Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -160,15 +158,13 @@ aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderTyp
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
   console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
   if (decoderTypes.length > 0 ) {
     console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
   }
 }).catch((err: Error) => {
-  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getSupportedDecoders Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -221,13 +217,11 @@ aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
 aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve: avSession.ResolutionLevel) => {
   console.info('getRecommendedResolutionLevel successfully');
 }).catch((err: Error) => {
-  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getRecommendedResolutionLevel Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -276,7 +270,6 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import type hdrCapability from './@ohos.graphics.hdrCapability';
 
 aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
@@ -285,7 +278,7 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
     console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
   }
 }).catch((err: Error) => {
-  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getSupportdHdrCapabilities Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -335,15 +328,13 @@ aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 aVCastController.getSupportedPlaySpeeds().then((nums: double[]) => {
   console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
   if (nums.length > 0 ) {
     console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
   }
 }).catch((err: Error) => {
-  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getSupportedPlaySpeeds Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -399,13 +390,11 @@ aVCastController.sendControlCommand(avCommand).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
 aVCastController.sendControlCommand(avCommand).then(() => {
   console.info('SendControlCommand successfully');
 }).catch((err: Error) => {
-  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`SendControlCommand Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -627,8 +616,6 @@ aVCastController.prepare(playItem).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -650,7 +637,7 @@ let playItem: avSession.AVQueueItem = {
 aVCastController.prepare(playItem).then(() => {
   console.info('prepare successfully');
 }).catch((err: Error) => {
-  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`prepare Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -814,8 +801,6 @@ aVCastController.start(playItem).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -837,7 +822,7 @@ let playItem: avSession.AVQueueItem = {
 aVCastController.start(playItem).then(() => {
   console.info('start successfully');
 }).catch((err: Error) => {
-  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`start Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -934,12 +919,10 @@ aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
   console.info('getCurrentItem successfully');
 }).catch((err: Error) => {
-  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getCurrentItem Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1034,12 +1017,10 @@ aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandT
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
   console.info('getValidCommands successfully');
 }).catch((err: Error) => {
-  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getValidCommands Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1196,12 +1177,10 @@ aVCastController.release().then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 aVCastController.release().then(() => {
   console.info('release successfully');
 }).catch((err: Error) => {
-  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`release Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 

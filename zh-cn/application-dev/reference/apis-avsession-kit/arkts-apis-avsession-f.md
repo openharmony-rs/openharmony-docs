@@ -57,7 +57,7 @@ import { avSession } from '@kit.AVSessionKit';
 struct Index {
   @State message: string = 'hello world';
 
-  build() { 
+  build() {
     Column() {
         Text(this.message)
           .onClick(()=>{
@@ -84,14 +84,13 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {
   @State message: string = 'hello world';
 
-  build() { 
+  build() {
     Column() {
         Text(this.message)
           .onClick(()=>{
@@ -105,7 +104,7 @@ struct Index {
             sessionId = currentAVSession.sessionId;
             console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
             }).catch((err: Error) => {
-            console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            console.error(`CreateAVSession Error: code: ${err.code}, message: ${err.message}`);
             });
           })
       }

@@ -48,7 +48,6 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 let tag: string = "createNewSession";
@@ -60,7 +59,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   AVSessionController = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
 }).catch((err: Error) => {
-  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`CreateController Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -161,12 +160,10 @@ avsessionController.getAVPlaybackState().then((state: avSession.AVPlaybackState)
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('getAVPlaybackState : SUCCESS');
 }).catch((err: Error) => {
-  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getAVPlaybackState Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -213,12 +210,10 @@ avsessionController.getAVMetadata().then((metadata: avSession.AVMetadata) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getAVMetadata().then((metadata: avSession.AVMetadata) => {
   console.info(`GetAVMetadata : SUCCESS : assetId : ${metadata.assetId}`);
 }).catch((err: Error) => {
-  console.error(`GetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetAVMetadata Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -319,12 +314,10 @@ avsessionController.getAVQueueTitle().then((title: string) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getAVQueueTitle().then((title: string) => {
   console.info(`GetAVQueueTitle : SUCCESS : title : ${title}`);
 }).catch((err: Error) => {
-  console.error(`GetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetAVQueueTitle Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -425,12 +418,10 @@ avsessionController.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
   console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
 }).catch((err: Error) => {
-  console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetAVQueueItems Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -541,13 +532,11 @@ avsessionController.skipToQueueItem(queueItemId).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let queueItemId = 0;
 avsessionController.skipToQueueItem(queueItemId).then(() => {
   console.info('SkipToQueueItem successfully');
 }).catch((err: Error) => {
-  console.error(`SkipToQueueItem BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`SkipToQueueItem Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -653,12 +642,10 @@ avsessionController.getOutputDevice().then((deviceInfo: avSession.OutputDeviceIn
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getOutputDevice().then((deviceInfo: avSession.OutputDeviceInfo) => {
   console.info('GetOutputDevice : SUCCESS');
 }).catch((err: Error) => {
-  console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetOutputDevice Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -774,7 +761,6 @@ ArkTS-Sta示例：
 ```ts
 import { Key, KeyEvent, Action } from '@ohos.multimodalInput.keyEvent.d.ets';
 import { KeyCode } from '@ohos.multimodalInput.keyCode.d.ets';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: Key = {code:KeyCode.KEYCODE_FN, pressedTime:2, deviceId:0};
 let event: KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:Action.UP, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
@@ -783,7 +769,7 @@ let event: KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, a
 avsessionController.sendAVKeyEvent(event).then(() => {
   console.info('SendAVKeyEvent Successfully');
 }).catch((err: Error) => {
-  console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`SendAVKeyEvent Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -895,12 +881,10 @@ avsessionController.getLaunchAbility().then((agent: object) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getLaunchAbility().then((agent: object) => {
   console.info(`GetLaunchAbility : SUCCESS : wantAgent : ${agent}`);
 }).catch((err: Error) => {
-  console.error(`GetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetLaunchAbility Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1042,12 +1026,10 @@ avsessionController.isActive().then((isActive: boolean) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.isActive().then((isActive: boolean) => {
   console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
 }).catch((err: Error) => {
-  console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`IsActive Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1147,12 +1129,10 @@ avsessionController.destroy().then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.destroy().then(() => {
   console.info('Destroy : SUCCESS ');
 }).catch((err: Error) => {
-  console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Destroy Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1252,12 +1232,10 @@ avsessionController.getValidCommands().then((validCommands: avSession.AVControlC
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getValidCommands().then((validCommands: avSession.AVControlCommandType[]) => {
   console.info(`GetValidCommands : SUCCESS : size : ${validCommands.length}`);
 }).catch((err: Error) => {
-  console.error(`GetValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`GetValidCommands Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1373,13 +1351,11 @@ avsessionController.sendControlCommand(avCommand).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let avCommand: avSession.AVControlCommand = {command:'play'};
 avsessionController.sendControlCommand(avCommand).then(() => {
   console.info('SendControlCommand successfully');
 }).catch((err: Error) => {
-  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`SendControlCommand Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1522,7 +1498,6 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 let tag: string = "createNewSession";
@@ -1534,14 +1509,14 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
 }).catch((err: Error) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
 });
 let commandName = "my_command";
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).sendCommonCommand(commandName, {"command" : "This is my command"}).then(() => {
     console.info('SendCommonCommand successfully');
   }).catch((err: Error) => {
-    console.error(`SendCommonCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+    console.error(`SendCommonCommand Error: code: ${err.code}, message: ${err.message}`);
   })
 }
 ```
@@ -1588,7 +1563,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-          
+
 let tag: string = "createNewSession";
 let sessionId: string = "";
 let controller:avSession.AVSessionController | undefined = undefined;
@@ -1615,7 +1590,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-          
+
 let tag: string = "createNewSession";
 let sessionId: string = "";
 let controller:avSession.AVSessionController | undefined = undefined;
@@ -1625,7 +1600,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
 }).catch((err: Error) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
 });
 let commandName = "my_command";
 if (controller !== undefined) {
@@ -1675,7 +1650,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-         
+
 let tag: string = "createNewSession";
 let sessionId: string = "";
 let controller:avSession.AVSessionController | undefined = undefined;
@@ -1699,9 +1674,8 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-         
+
 let tag: string = "createNewSession";
 let sessionId: string = "";
 let controller:avSession.AVSessionController | undefined = undefined;
@@ -1711,13 +1685,13 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
 }).catch((err: Error) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).getExtras().then((extras) => {
     console.info(`getExtras : SUCCESS : ${extras}`);
   }).catch((err: Error) => {
-    console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+    console.error(`getExtras Error: code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -1784,7 +1758,6 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 let tag: string = "createNewSession";
@@ -1796,7 +1769,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
 }).catch((err: Error) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).getExtras((err, extras) => {
@@ -1875,8 +1848,6 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let controller: avSession.AVSessionController | ESObject;
 const COMMON_COMMAND_STRING_1 = 'AUDIO_GET_VOLUME';
 const COMMON_COMMAND_STRING_2 = 'AUDIO_GET_AVAILABLE_DEVICES';
@@ -2511,7 +2482,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-       
+
 let tag: string = "createNewSession";
 let sessionId: string = "";
 let controller:avSession.AVSessionController | undefined = undefined;
@@ -2533,9 +2504,8 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-       
+
 let tag: string = "createNewSession";
 let sessionId: string = "";
 let controller:avSession.AVSessionController | undefined = undefined;
@@ -2545,7 +2515,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
 }).catch((err: Error) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).on('sessionEvent', (sessionEvent, args) => {
@@ -2783,7 +2753,6 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 let tag: string = "createNewSession";
@@ -2795,7 +2764,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
 }).catch((err: Error) => {
-  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
+  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).on('extrasChange', (extras) => {
@@ -2957,12 +2926,10 @@ avsessionController.getAVCallState().then((callstate: avSession.AVCallState) => 
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getAVCallState().then((callstate: avSession.AVCallState) => {
   console.info(`getAVCallState : SUCCESS : state : ${callstate.state}`);
 }).catch((err: Error) => {
-  console.error(`getAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getAVCallState Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -3061,12 +3028,10 @@ avsessionController.getCallMetadata().then((calldata: avSession.CallMetadata) =>
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avsessionController.getCallMetadata().then((calldata: avSession.CallMetadata) => {
   console.info(`getCallMetadata : SUCCESS : name : ${calldata.name}`);
 }).catch((err: Error) => {
-  console.error(`getCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getCallMetadata Error: code: ${err.code}, message: ${err.message}`);
 });
 ```
 

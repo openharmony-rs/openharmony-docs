@@ -122,7 +122,6 @@ ArkTS-Sta示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function avCastPicker(context: common.Context) {
   let avCastPickerOptions : avSession.AVCastPickerOptions = {
