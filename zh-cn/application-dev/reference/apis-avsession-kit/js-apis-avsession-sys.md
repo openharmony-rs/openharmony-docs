@@ -2790,10 +2790,10 @@ ArkTS-Sta示例：
 import { media } from '@kit.MediaKit';
 let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
-  avRecorder.getInputSurface((err: BusinessError | null, surfaceId: string | undefined) => {
+  avRecorder!.getInputSurface((err: BusinessError | null, surfaceId: string | undefined) => {
     if (err == null) {
       console.info('getInputSurface success');
-      surfaceID = surfaceId;
+      surfaceID = surfaceId as string;
     } else {
       console.error('getInputSurface failed and error is ' + err.message);
     }
@@ -2865,10 +2865,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
-  avRecorder?.getInputSurface((err: BusinessError | null, surfaceId: string | undefined) => {
+  avRecorder!.getInputSurface((err: BusinessError | null, surfaceId: string | undefined) => {
     if (err == null) {
       console.info('getInputSurface success');
-      surfaceID = surfaceId;
+      surfaceID = surfaceId as string;
     } else {
       console.error('getInputSurface failed and error is ' + err.message);
     }
