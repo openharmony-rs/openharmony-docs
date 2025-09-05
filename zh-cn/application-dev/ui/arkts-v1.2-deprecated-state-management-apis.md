@@ -185,7 +185,7 @@ let res: boolean = AppStorage.Set('PropA', 47);
 ArkTS1.2
 
 ```ts
-let res: boolean = AppStorage.set('PropA', 47);
+let res: boolean = AppStorage.set<number>('PropA', 47);
 ```
 
 ### SetAndLink
@@ -205,7 +205,7 @@ let link: SubscribedAbstractProperty<number> = AppStorage.SetAndLink('PropA', 49
 ArkTS1.2
 
 ```ts
-let link: SubscribedAbstractProperty<Int> = AppStorage.setAndLink('PropA', 49);
+let link: SubscribedAbstractProperty<number> = AppStorage.setAndLink<number>('PropA', 49);
 ```
 
 ### SetAndProp
@@ -227,7 +227,7 @@ let prop: SubscribedAbstractProperty<number> = AppStorage.SetAndProp('PropA', 49
 ArkTS1.2
 
 ```ts
-let ref: AbstractProperty<Int> = AppStorage.setAndRef('PropA', 49);
+let ref: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 49);
 ```
 
 ### SetOrCreate
@@ -247,7 +247,7 @@ AppStorage.SetOrCreate('simpleProp', 121);
 ArkTS1.2
 
 ```ts
-AppStorage.setOrCreate('simpleProp', 121);
+AppStorage.setOrCreate<number>('simpleProp', 121);
 ```
 
 ### Size
@@ -309,7 +309,7 @@ let prop: SubscribedAbstractProperty<number> = AppStorage.setAndProp('PropA', 49
 ArkTS1.2
 
 ```ts
-let ref: AbstractProperty<Int> = AppStorage.setAndRef('PropA', 49);
+let ref: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 49);
 ```
 
 ### staticClear
@@ -351,7 +351,7 @@ Environment.EnvProp('accessibilityEnabled', 'default');
 ArkTS1.2
 
 ```ts
-Environment.envProp('accessibilityEnabled', 'default');
+Environment.envProp<string>('accessibilityEnabled', 'default');
 ```
 
 ### EnvProps
@@ -495,7 +495,7 @@ ArkTS1.2
 
 ```ts
 let storage: LocalStorage = new LocalStorage();
-let ref: AbstractProperty<Int> = storage.setAndRef('PropA', 49);
+let ref: AbstractProperty<number> = storage.setAndRef<number>('PropA', 49);
 ```
 
 ## PersistentStorage
@@ -557,7 +557,7 @@ PersistentStorage.PersistProp('highScore', '0');
 ArkTS1.2
 
 ```ts
-PersistentStorage.persistProp('highScore', '0');
+PersistentStorage.persistProp<string>('highScore', '0');
 ```
 
 ### PersistProps
@@ -580,6 +580,6 @@ PersistentStorage.PersistProps([
 ArkTS1.2
 
 ```ts
-PersistentStorage.persistProp('highScore', '0');
-PersistentStorage.persistProp('wightScore', '1');
+PersistentStorage.persistProp<string>('highScore', '0');
+PersistentStorage.persistProp<string>('wightScore', '1');
 ```
