@@ -148,6 +148,57 @@ try {
 ```
 
 
+## ble.getConnectedBLEDevices<sup>21+</sup>
+
+getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
+
+根据指定的本机设备Profile协议类型，获取和本机设备已连接GATT的BLE设备集合。
+- 若指定本机设备作为client端，则返回与本机设备连接的所有server端设备地址集合。
+- 若指定本机设备作为server端，则返回与本机设备连接的所有client端设备地址集合。
+- 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名     | 类型                                     | 必填   | 说明                                  |
+| ------- | -------------------------------------- | ---- | ----------------------------------- |
+| profile | [BleProfile](#bleprofile21) | 是    | 当前设备的Profile协议类型，表明该设备在GATT链路中的通信角色。<br>- GATT_CLIENT表示指定本机设备为client端角色，与其建立GATT连接的所有对端设备为server端角色。 |
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let result: Array<string> = ble.getConnectedBLEDevices(ble.BleProfile.GATT_CLIENT);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## ble.startBLEScan
 
 startBLEScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): void
@@ -4670,6 +4721,20 @@ BLE扫描的配置参数。
 | CONN_TERMINATE_PEER_USER   | 2    | 对端设备主动断开连接。    |
 | CONN_TERMINATE_LOCAL_HOST   | 3    | 本端设备主动断开连接。    |
 | CONN_UNKNOWN   | 4    | 未知断连原因。    |
+
+## BleProfile<sup>21+</sup>
+
+枚举，指定当前设备的Profile协议类型。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 名称      | 值    | 说明                           |
+| --------  | ---- | ------------------------------ |
+| GATT   | 1    | 当前设备在GATT链路中同时作为client端和server端。       |
+| GATT_CLIENT   | 2    | 当前设备在GATT链路中作为client端。    |
+| GATT_SERVER   | 3    | 当前设备在GATT链路中作为server端。    |
 
 ## ScanReportMode<sup>15+</sup>
 
