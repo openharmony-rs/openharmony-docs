@@ -414,9 +414,10 @@
       - @ReusableV2
       - @Styles（ArkTS-DT）
   - 互操作
-    - [compatibleComponent (ArkTS1.2)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
-    - [compatibleState (ArkTS1.2)(系统接口)](arkui-ts/ts-interop-compatible-state.md)
-    - [compatibleWrappedBuilder (ArkTS1.2)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
+    - [compatibleComponent (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
+    - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)
+    - [transferCompatibleBuilder (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-builder.md)
+    - [compatibleWrappedBuilder (ArkTS-Sta)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
     - [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)
     - [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)
