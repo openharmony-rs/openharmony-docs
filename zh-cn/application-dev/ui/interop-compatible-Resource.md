@@ -1,12 +1,12 @@
 # ArkTS1.2使用ArkTS1.1 FrameNode
 
 ## 概述
-
-[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)对象互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用FrameNode对象的场景。
+// D:\code\oh_code\docs\zh-cn\application-dev\reference\apis-arkui\arkui-ts\ts-types.md
+[Resource](../reference/apis-arkui/arkui-ts/ts-types.md)对象互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用Resource对象的场景。
 
 ## 架构原理
 
-在互操作场景下，支持在ArkTS1.1创建的FrameNode对象传递到ArkTS1.2。
+在互操作场景下，支持在ArkTS1.1创建的Resouece对象传递到ArkTS1.2。
 
 ## 设计理念
 
@@ -20,11 +20,9 @@ FrameNode对象互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS1
 
 - 遵循语言[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)的规范。
 
-- 遵循ArkTS1.1 FrameNode对象的使用[限制条件](../reference/apis-arkui/js-apis-arkui-frameNode.md#istransferred20)。
-
 ## 开发场景
 
-### 在ArkTS1.2引用ArkTS1.1中创建的FrameNode对象。
+### 在ArkTS1.2引用ArkTS1.1中创建的Resource对象。
 
 通过在ArkTS1.2中引用ArkTS1.1创建的FrameNode对象显示Text文本。
 
