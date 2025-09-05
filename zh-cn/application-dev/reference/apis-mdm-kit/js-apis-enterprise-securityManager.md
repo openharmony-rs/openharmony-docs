@@ -6,7 +6,7 @@
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块首批ArkTs-Sta接口从API version 20开始支持。
+> 本模块首批ArkTS-Sta接口从API version 20开始支持。
 >
 > 本模块接口仅可在Stage模型下使用。
 >
@@ -720,7 +720,7 @@ try {
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | ---- | --------------------------- |
 | complexityRegex | string | 否 | 是 | 口令复杂度正则表达式。 |
-| validityPeriod | ArkTs-Dyn: number<br>ArkTs-Sta: long | 否 | 是 | 密码有效期（单位：毫秒）。 |
+| validityPeriod | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 密码有效期（单位：毫秒）。 |
 | additionalDescription | string | 否 | 是 | 描述文本。 |
 
 ## ClipboardPolicy
