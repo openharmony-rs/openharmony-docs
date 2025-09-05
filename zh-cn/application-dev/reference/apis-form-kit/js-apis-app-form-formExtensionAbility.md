@@ -39,7 +39,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 | 名称    | 类型                                                         | 可读 | 可写 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 是   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| onStop<sup>20+</sup> | [onStopFn](#OnStopFn) | 是   | 是   | 卡片提供方进程销毁时回调的属性。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。|
+| onStop<sup>20+</sup> | [onStopFn](#onstopfn20) | 是   | 是   | 当卡片提供方的卡片进程退出时，触发该回调。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。|
 
 ### FormExtensionAbility.onAddForm
 
@@ -370,7 +370,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 ## OnStopFn<sup>20+</sup>
 type OnStopFn = () => void
 
-匿名函数，卡片提供方进程销毁时回调。
+当卡片提供方的卡片进程退出时，触发该回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
