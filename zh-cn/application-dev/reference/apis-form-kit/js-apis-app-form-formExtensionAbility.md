@@ -22,17 +22,6 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 import { FormExtensionAbility } from '@kit.FormKit';
 ```
 
-## OnStopFn<sup>20+</sup>
-`type OnStopFn = () => void`
-
-OnStop属性的类型。匿名函数，卡片提供方进程销毁时回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.Form
-
 ## FormExtensionAbility
 
 卡片扩展类。包含卡片提供方接收创建卡片、修改可见性等的通知接口。
@@ -377,3 +366,16 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 }
 ```
+
+## OnStopFn<sup>20+</sup>
+type OnStopFn = () => void
+
+匿名函数，卡片提供方进程销毁时回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
