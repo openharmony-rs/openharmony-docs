@@ -187,6 +187,7 @@ Menu子菜单展开样式枚举。
 
 该示例通过配置MenuItem中的builder参数实现多级菜单。
 
+ArkTS-Dyn示例：
 ```ts
 @Entry
 @Component
@@ -251,12 +252,123 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode,
+  Color,
+  Edges,
+  SymbolGlyphModifier,
+  MenuItemGroup,
+  Row,
+  FontWeight
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  private iconStr: ResourceStr = $r("app.media.view_list_filled");
+  private iconStr2: ResourceStr = $r("app.media.arrow_right_filled");
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" } as MenuItemOptions)
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" } as MenuItemOptions)
+    }
+  }
+
+  @Builder
+  MyMenu(){
+    Menu() {
+      MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" } as MenuItemOptions)
+        .enabled(false)
+      MenuItem({
+        startIcon: this.iconStr,
+        content: "菜单选项",
+        endIcon: this.iconStr2,
+        builder: ():void=>this.SubMenu()
+      } as MenuItemOptions)
+      MenuItemGroup({ header: '小标题' }) {
+        MenuItem({
+          startIcon: this.iconStr,
+          content: "菜单选项",
+          endIcon: this.iconStr2,
+          builder: ():void=>this.SubMenu()
+        } as MenuItemOptions)
+        MenuItem({
+          startIcon: $r("app.media.app_icon"),
+          content: "菜单选项",
+          endIcon: this.iconStr2,
+          builder: ():void=>this.SubMenu()
+        } as MenuItemOptions)
+      }
+      MenuItem({
+        startIcon: this.iconStr,
+        content: "菜单选项",
+      } as MenuItemOptions)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![menu](figures/menu.png)
 
 ### 示例2（设置symbol类型图标）
 
 该示例通过配置symbolStartIcon、symbolEndIcon实现symbol类型图标的菜单。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -307,6 +419,117 @@ struct Index {
       MenuItem({
         content: "菜单选项",
       }).selected(this.select).selectIcon(this.selectIconModifier)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode,
+  Color,
+  Edges,
+  SymbolGlyphModifier,
+  MenuItemGroup,
+  Row,
+  FontWeight
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+
+@Entry
+@Component
+struct Index {
+  @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_mic')).fontSize('24vp');
+  @State endIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_trash')).fontSize('24vp');
+  @State selectIconModifier: SymbolGlyphModifier =
+    new SymbolGlyphModifier($r('sys.symbol.checkmark')).fontSize('24vp');
+  @State select: boolean = true;
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" } as MenuItemOptions)
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" } as MenuItemOptions)
+    }
+  }
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: "菜单选项" } as MenuItemOptions)
+        .enabled(false)
+      MenuItem({
+        symbolStartIcon: this.startIconModifier,
+        content: "菜单选项",
+        symbolEndIcon: this.endIconModifier,
+        builder: (): void => this.SubMenu()
+      } as MenuItemOptions)
+      MenuItemGroup({ header: '小标题' }) {
+        MenuItem({
+          symbolStartIcon: this.startIconModifier,
+          content: "菜单选项",
+          symbolEndIcon: this.endIconModifier,
+          builder: (): void => this.SubMenu()
+        } as MenuItemOptions)
+        MenuItem({
+          symbolStartIcon: this.startIconModifier,
+          content: "菜单选项",
+          symbolEndIcon: this.endIconModifier,
+          builder: (): void => this.SubMenu()
+        } as MenuItemOptions)
+      }
+      MenuItem({
+        content: "菜单选项",
+      } as MenuItemOptions).selected(this.select).selectIcon(this.selectIconModifier)
     }
   }
 
@@ -396,6 +619,7 @@ struct Index {
 
 该示例通过设置menuItemGroupDivider属性实现分割线样式。
 
+ArkTS-Dyn示例：
 ```ts
 import { LengthMetrics } from '@kit.ArkUI'
 
@@ -431,6 +655,95 @@ struct Index {
     RelativeContainer() {
       Button("show menu")
         .bindMenu(this.MyMenu())
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode,
+  Color,
+  Edges,
+  SymbolGlyphModifier,
+  MenuItemGroup,
+  Row,
+  FontWeight,
+  LengthMetrics,
+  DividerMode,
+  RelativeContainer
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+
+@Entry
+@Component
+struct Index {
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+      MenuItemGroup() {
+        MenuItem({ content: "Group Child" } as MenuItemOptions)
+        MenuItem({ content: "Group Child" } as MenuItemOptions)
+      }
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+    }
+    .menuItemDivider({
+      strokeWidth: LengthMetrics.vp(5),
+      color: '#d5d5d5',
+      mode: DividerMode.EMBEDDED_IN_MENU
+    })
+    .menuItemGroupDivider({
+      strokeWidth: LengthMetrics.vp(5),
+      color: '#707070',
+      mode: DividerMode.EMBEDDED_IN_MENU
+    })
+  }
+
+  build() {
+    RelativeContainer() {
+      Button("show menu")
+        .bindMenu(this.MyMenu)
     }
     .height('100%')
     .width('100%')
