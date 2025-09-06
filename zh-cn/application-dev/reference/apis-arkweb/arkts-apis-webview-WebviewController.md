@@ -1129,7 +1129,7 @@ struct WebComponent {
 
 ## registerJavaScriptProxy
 
-registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
+registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
 registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的交互能力。
 <br>注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refresh)接口生效。
@@ -1149,7 +1149,7 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 
 | 参数名     | 类型       | 必填 | 说明                                        |
 | ---------- | -------------- | ---- | ------------------------------------------------------------ |
-| object     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>方法的参数和返回类型可以为string，number，boolean。<br>方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>方法的返回类型支持Promise，Promise的Callback不能有返回值。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
+| jsObject     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>方法的参数和返回类型可以为string，number，boolean。<br>方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>方法的返回类型支持Promise，Promise的Callback不能有返回值。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 | name       | string         | 是   | 注册对象的名称，与window中调用的对象名一致。注册后window对象可以通过此名字访问应用侧JavaScript对象。 |
 | methodList | Array\<string> | 是   | 参与注册的应用侧JavaScript对象的同步方法。                       |
 | asyncMethodList<sup>12+</sup> | Array\<string> | 否   | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。  |
@@ -8525,7 +8525,9 @@ body.appendChild(element);
 
 ## enableBackForwardCache<sup>12+</sup>
 
-static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
+ArkTS-Dyn: static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
+
+ArkTS-Sta: static enableBackForwardCache(features?: BackForwardCacheSupportedFeatures): void
 
 开启Web组件前进后退缓存功能，通过参数指定是否允许使用特定的页面进入前进后退缓存。
 
@@ -8537,7 +8539,7 @@ static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | 是   | 允许使用特定的页面进入前进后退缓存中。|
+| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否   | 允许使用特定的页面进入前进后退缓存中。<br>ArkTS-Sta: 若入参为空，默认设置为false。|
 
 **示例：**
 
@@ -8564,7 +8566,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setBackForwardCacheOptions<sup>12+</sup>
 
-setBackForwardCacheOptions(options: BackForwardCacheOptions): void
+ArkTS-Dyn: setBackForwardCacheOptions(options: BackForwardCacheOptions): void
+
+ArkTS-Sta: setBackForwardCacheOptions(options?: BackForwardCacheOptions): void
 
 可以设置Web组件中前进后退缓存的相关选项。
 
@@ -8574,7 +8578,8 @@ setBackForwardCacheOptions(options: BackForwardCacheOptions): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | 是   | 用来控制Web组件前进后退缓存相关选项。|
+| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否   | 用来控制Web组件前进后退缓存相关选项。<br>ArkTS-Sta: 若入参为空，默认设置size为1，timeToLive为600。|
+
 
 **错误码：**
 
