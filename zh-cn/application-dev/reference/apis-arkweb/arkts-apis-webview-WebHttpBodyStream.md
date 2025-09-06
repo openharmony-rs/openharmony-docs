@@ -124,7 +124,9 @@ struct WebComponent {
 
 ## read<sup>12+</sup>
 
-read(size: number): Promise\<ArrayBuffer\>
+ArkTS-Dyn: read(size: number): Promise\<ArrayBuffer\>
+
+ArkTS-Sta: read(size: int): Promise\<ArrayBuffer\>
 
 读取WebHttpBodyStream中的数据。
 
@@ -134,7 +136,7 @@ read(size: number): Promise\<ArrayBuffer\>
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  size | number | 是   | 读取WebHttpBodyStream中的字节数。 |
+|  size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 读取WebHttpBodyStream中的字节数。 |
 
 **返回值：**
 
@@ -156,7 +158,9 @@ read(size: number): Promise\<ArrayBuffer\>
 
 ## getSize<sup>12+</sup>
 
-getSize(): number
+ArkTS-Dyn: getSize(): number
+
+ArkTS-Sta: getSize(): long
 
 获取WebHttpBodyStream中的数据大小，分块传输时总是返回零。
 
@@ -166,7 +170,7 @@ getSize(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 获取WebHttpBodyStream中的数据大小。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 获取WebHttpBodyStream中的数据大小。 |
 
 **示例：**
 
@@ -174,7 +178,9 @@ getSize(): number
 
 ## getPosition<sup>12+</sup>
 
-getPosition(): number
+ArkTS-Dyn: getPosition(): number
+
+ArkTS-Sta: getPosition(): long
 
 读取WebHttpBodyStream中当前的读取位置。
 
@@ -184,7 +190,7 @@ getPosition(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | WebHttpBodyStream中当前的读取位置。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | WebHttpBodyStream中当前的读取位置。 |
 
 **示例：**
 

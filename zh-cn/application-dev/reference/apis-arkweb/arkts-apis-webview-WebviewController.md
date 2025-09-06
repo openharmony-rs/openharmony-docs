@@ -1026,7 +1026,9 @@ struct WebComponent {
 
 ## accessStep
 
-accessStep(step: number): boolean
+ArkTS-Dyn: accessStep(step: number): boolean
+
+ArkTS-Sta: accessStep(step: int): boolean
 
 当前页面是否可前进或者后退给定的step步。
 
@@ -1036,7 +1038,7 @@ accessStep(step: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明                                   |
 | ------ | -------- | ---- | ------------------------------------------ |
-| step   | number   | 是   | 要跳转的步数，正数代表前进，负数代表后退。 |
+| step   | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 要跳转的步数，正数代表前进，负数代表后退。 |
 
 **返回值：**
 
@@ -3139,7 +3141,9 @@ struct WebComponent {
 
 ## backOrForward
 
-backOrForward(step: number): void
+ArkTS-Dyn: backOrForward(step: number): void
+
+ArkTS-Sta: backOrForward(step: int): void
 
 按照历史栈，前进或者后退指定步长的页面，当历史栈中不存在对应步长的页面时，不会进行页面跳转。
 
@@ -3151,7 +3155,7 @@ backOrForward(step: number): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| step   | number   | 是   | 需要前进或后退的步长。 |
+| step   | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 需要前进或后退的步长。 |
 
 **错误码：**
 
@@ -4848,7 +4852,9 @@ struct WebComponent {
 
 ## prepareForPageLoad<sup>10+</sup>
 
-static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void
+ArkTS-Dyn: static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void
+
+ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: int): void
 
 预连接url，在加载url之前调用此API，对url只进行DNS解析，socket建链操作，并不获取主资源子资源。
 
@@ -4860,7 +4866,7 @@ static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: numb
 | ---------------| ------- | ---- | ------------- |
 | url            | string  | 是   | 预连接的url。|
 | preconnectable | boolean | 是   | 是否进行预连接。如果preconnectable为true，则对url进行DNS解析，socket建链预连接；如果preconnectable为false，则不做任何预连接操作。|
-| numSockets     | number  | 是   | 要预连接的socket数。socket数目连接需要大于0，最多允许6个连接。|
+| numSockets     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 要预连接的socket数。socket数目连接需要大于0，最多允许6个连接。|
 
 **错误码：**
 
@@ -5233,7 +5239,9 @@ struct WebComponent {
 
 ## setConnectionTimeout<sup>11+</sup>
 
-static setConnectionTimeout(timeout: number): void
+ArkTS-Dyn: static setConnectionTimeout(timeout: number): void
+
+ArkTS-Sta: static setConnectionTimeout(timeout: int): void
 
 设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。
 
@@ -5243,7 +5251,7 @@ static setConnectionTimeout(timeout: number): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| timeout        | number  | 是   | socket连接超时时间，以秒为单位，必须为大于0的整数。 |
+| timeout        | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | socket连接超时时间，以秒为单位，必须为大于0的整数。 |
 
 **错误码：**
 
@@ -8165,7 +8173,9 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 ## setHostIP<sup>12+</sup>
 
-static setHostIP(hostName: string, address: string, aliveTime: number): void
+ArkTS-Dyn: static setHostIP(hostName: string, address: string, aliveTime: number): void
+
+ArkTS-Sta: static setHostIP(hostName: string, address: string, aliveTime: int): void
 
 设置主机域名解析后的IP地址。
 
@@ -8177,7 +8187,7 @@ static setHostIP(hostName: string, address: string, aliveTime: number): void
 | --------- | -------- | ---- | ------------------------------------ |
 | hostName  | string   | 是   | 要添加DNS记录的主机域名。            |
 | address   | string   | 是   | 主机域名解析地址（支持IPv4，IPv6）。 |
-| aliveTime | number   | 是   | 缓存有效时间（秒）。                 |
+| aliveTime | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 缓存有效时间（秒）。                 |
 
 **错误码：**
 
@@ -9155,7 +9165,9 @@ struct WebComponent {
 
 ## setWebDebuggingAccess<sup>20+</sup>
 
-static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
+ArkTS-Dyn: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
+
+ArkTS-Sta: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: int): void
 
 设置是否启用无线网页调试功能，默认不开启。
 
@@ -9173,7 +9185,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | 是   | 设置是否启用网页调试功能。<br/>true表示开启网页调试功能，false表示关闭网页调试功能。 |
-| port               | number  | 是   | 指定devtools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
+| port               | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指定devtools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
 
 
 **错误码：**
@@ -9214,7 +9226,9 @@ struct WebComponent {
 
 ## getProgress<sup>20+</sup>
 
-getProgress(): number
+ArkTS-Dyn: getProgress(): number
+
+ArkTS-Sta: getProgress(): int
 
 获取当前网页加载进度。
 
@@ -9224,7 +9238,7 @@ getProgress(): number
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| number | 当前页面加载进度，取值范围[0, 100] |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 当前页面加载进度，取值范围[0, 100] |
 
 **示例：**
 
