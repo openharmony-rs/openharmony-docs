@@ -2,7 +2,7 @@
 
 ## 概述
 
-[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)对象互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用RenderNode对象的场景。
+从API version 20开始，[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)对象互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用RenderNode对象的场景。
 
 ## 架构原理
 
@@ -26,13 +26,37 @@ RenderNode对象互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS
 
 通过在ArkTS1.2中引用ArkTS1.1创建的RenderNode对象显示Text文本。
 
+
+### 完整示例结构
+
+完整代码结构树
+
+```text
+project/
+├── entry/          # ArkTS1.2主模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── pages/
+│                   └── Index.ets
+│
+└── library/         # ArkTS1.1子模块
+    └── src/
+       ├── main/
+       │     └── ets/
+       │        └── components/
+       │          └── MainPage.ets
+       └── Index.ets
+```
+
 示例如下：
 
 - 创建ArkTS1.1子模块`library`，在`library/src/main/ets/components`目录创提创建ArkTS1.1RenderNode的方法。
 
 ```TypeScript
 // library/src/main/ets/components/MainPage.ets
-import { RenderNode } from '@ohos.arkui.node'
+
+import { RenderNode } from '@kit.ArkUI';
 
 export function renderNodeTest():Object {
   let shapeMaskTestNode =new RenderNode();
@@ -44,6 +68,7 @@ export function renderNodeTest():Object {
 ```
 ```TypeScript
 // library/Index.ets
+
 export { renderNodeTest } from './src/main/ets/components/MainPage';
 ```
 
@@ -62,14 +87,15 @@ export { renderNodeTest } from './src/main/ets/components/MainPage';
 
 ```TypeScript
 // entry/src/main/ets/pages/Index.ets
+
 'use static'
 
-import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import transfer from '@ohos.transfer'
-import { UIContext } from '@ohos.arkui.UIContext'
-import { FrameNode, RenderNode, NodeController } from '@ohos.arkui.node'
-import { renderNodeTest } from 'library'
+import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import transfer from '@ohos.transfer';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { FrameNode, RenderNode, NodeController } from '@ohos.arkui.node';
+import { renderNodeTest } from 'library';
 
 function renderNodeTrans(): RenderNode{
   let renderNode = renderNodeTest();
@@ -99,24 +125,4 @@ struct MyStateSample {
     }
   }
 }
-```
-
-### 完整示例结构
-
-```text
-project/
-├── entry/          # ArkTS1.2主模块
-│   └── src/
-│       └── main/
-│           └── ets/
-│               └── pages/
-│                   └── Index.ets
-│
-└── library/         # ArkTS1.1子模块
-    └── src/
-       ├── main/
-       │     └── ets/
-       │        └── components/
-       │          └── MainPage.ets
-       └── Index.ets
 ```

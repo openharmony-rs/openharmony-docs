@@ -2,7 +2,7 @@
 
 ## 概述
 
-[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)对象互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用FrameNode对象的场景。
+从API version 20开始，[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)对象互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用FrameNode对象的场景。
 
 ## 架构原理
 
@@ -28,14 +28,36 @@ FrameNode对象互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS1
 
 通过在ArkTS1.2中引用ArkTS1.1创建的FrameNode对象显示Text文本。
 
+### 完整示例结构
+
+完整代码结构树
+
+```text
+project/
+├── entry/          # ArkTS1.2主模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── pages/
+│                   └── Index.ets
+│
+└── library/         # ArkTS1.1子模块
+    └── src/
+       ├── main/
+       │     └── ets/
+       │        └── components/
+       │          └── MainPage.ets
+       └── Index.ets
+```
+
 示例如下：
 
 - 创建ArkTS1.1子模块`library`，在`library/src/main/ets/components`目录创提创建ArkTS1.1FrameNode的方法。
 
 ```TypeScript
 // library/src/main/ets/components/MainPage.ets
-import { UIContext } from  '@ohos.arkui.UIContext';
-import { typeNode, FrameNode } from '@ohos.arkui.node';
+
+import { typeNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 export function createFrameNode(context:Object): Object {
   let uiContext:UIContext = context as UIContext;
@@ -46,6 +68,7 @@ export function createFrameNode(context:Object): Object {
 ```
 ```TypeScript
 // library/Index.ets
+
 export { createFrameNode} from './src/main/ets/components/MainPage';
 ```
 
@@ -67,12 +90,12 @@ export { createFrameNode} from './src/main/ets/components/MainPage';
 
 'use static'
 
-import { Entry, Text, Column, Component, NodeContainer} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import {NodeController ,FrameNode, typeNode } from '@ohos.arkui.node'
-import transfer from '@ohos.transfer'
-import {UIContext} from '@ohos.arkui.UIContext'
-import { createFrameNode } from 'library'
+import { Entry, Text, Column, Component, NodeContainer} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import {NodeController ,FrameNode, typeNode } from '@ohos.arkui.node';
+import transfer from '@ohos.transfer';
+import {UIContext} from '@ohos.arkui.UIContext';
+import { createFrameNode } from 'library';
 
 export function FrameNodeTrans(uiContext:UIContext):FrameNode {
   // 通过互操作转换ArkTS1.2UIContext对象为ArkTS1.1UIContext对象
@@ -103,24 +126,4 @@ struct MyStateSample {
     }
   }
 }
-```
-
-### 完整示例结构
-
-```text
-project/
-├── entry/          # ArkTS1.2主模块
-│   └── src/
-│       └── main/
-│           └── ets/
-│               └── pages/
-│                   └── Index.ets
-│
-└── library/         # ArkTS1.1子模块
-    └── src/
-       ├── main/
-       │     └── ets/
-       │        └── components/
-       │          └── MainPage.ets
-       └── Index.ets
 ```
