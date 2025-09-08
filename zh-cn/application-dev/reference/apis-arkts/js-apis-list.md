@@ -364,6 +364,44 @@ obj.add(5);
 let result = list.equal(obj);
 ```
 
+### equal<sup>20+</sup>
+
+equal(obj: RecordData): boolean
+
+比较指定对象与此List是否相等。
+
+**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| obj | [RecordData](js-apis-util.md#recorddata20) | 是 | 用来比较的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 如果对象与此列表相同返回true，否则返回false。 |
+
+**示例：**
+
+```ts
+let list: List<int> = new List<int>();
+list.add(2);
+list.add(4);
+list.add(5);
+let obj: List<int> = new List<int>();
+obj.add(2);
+obj.add(4);
+obj.add(5);
+let result = list.equal(obj);//如果result为true，表示list与obj相等
+```
+
 ### removeByIndex
 
 removeByIndex(index: number): T
