@@ -192,6 +192,67 @@ try {
 ```
 
 
+## connection.pairDevice
+
+pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
+
+主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+- 已知对端设备的真实地址时，支持使用对端设备的真实地址发起配对。
+- 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | [BluetoothAddress](#bluetoothaddress21) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+// promise
+try {
+    let bluetoothAddress: common.BluetoothAddress = {
+        "address": '11:22:33:44:55:66',
+        "addressType": 1,
+    }
+    connection.pairDevice(bluetoothAddress).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
+    })
+
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## connection.getRemoteDeviceName
 
 getRemoteDeviceName(deviceId: string): string
@@ -1882,3 +1943,25 @@ try {
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
+
+## BluetoothAddress<sup>21+</sup>
+
+描述需要配对的对端蓝牙设备地址信息的参数结构。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 名称       | 类型   | 只读   | 可选   | 说明          |
+| -------- | ------ | ---- | ---- | ----------- |
+| address    | string      | 否    | 否    | 需要配对的对端蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+| [addressType](#addresstype21)     | int      | 否    | 否    | 表示地址类型为真实地址或虚拟地址。|
+
+## addressType<sup>21+</sup>
+
+枚举，表示地址类型为真实地址或虚拟地址。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 名称                 | 值  | 说明     |
+| ------------------ | ---- | ------ |
+| VIRTUAL        | 1    | 虚拟地址。|
+| REAL       | 2    | 真实地址。|
