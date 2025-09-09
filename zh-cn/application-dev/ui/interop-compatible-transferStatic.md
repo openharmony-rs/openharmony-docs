@@ -65,8 +65,6 @@ project/
   'use static'
   // entry/src/main/ets/pages/Index.ets
 
-  import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component';
-  import { State } from '@ohos.arkui.stateManagement';
   import transfer from '@ohos.transfer';
   import { xxxObjectTrans } from 'library';
 
