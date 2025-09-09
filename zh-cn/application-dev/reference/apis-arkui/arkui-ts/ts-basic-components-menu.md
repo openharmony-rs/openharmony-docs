@@ -296,8 +296,8 @@ import {
   MenuItemGroup,
   Row,
   FontWeight
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -509,7 +509,7 @@ struct Index {
 
 ArkTS-Dyn示例：
 ```ts
-import { LengthMetrics } from '@kit.ArkUI'
+import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -597,8 +597,8 @@ import {
   LengthMetrics,
   DividerMode,
   RelativeContainer
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component

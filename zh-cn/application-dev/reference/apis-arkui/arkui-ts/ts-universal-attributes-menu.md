@@ -335,8 +335,8 @@ ArkTS-Sta示例：
 ```
 'use static'
 
-import { Entry, Component, Column, Text, Margin } from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Component, Column, Text, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -439,8 +439,8 @@ import {
   Alignment,
   Divider,
   $r
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -544,8 +544,8 @@ import {
   Divider,
   TextAlign,
   ResponseType
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -642,8 +642,8 @@ import {
   ResponseType,
   Placement,
   HapticFeedbackMode
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -747,8 +747,8 @@ import {
   MenuItemOptions,
   $r,
   MenuPreviewMode
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -861,8 +861,8 @@ import {
   MenuItemOptions,
   $r,
   Image
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -991,8 +991,8 @@ import {
   $r,
   Image,
   Button
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -1144,8 +1144,8 @@ import {
   Divider,
   TransitionEffect,
   Curve
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -1278,8 +1278,8 @@ import {
   TransitionEffect,
   Curve,
   SymbolGlyphModifier
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -1395,8 +1395,8 @@ import {
   Divider,
   TransitionEffect,
   Curve
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -1529,8 +1529,8 @@ import {
   BlurStyleActivePolicy,
   AdaptiveColor,
   MenuElement
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -1660,8 +1660,8 @@ import {
   BlurStyleActivePolicy,
   AdaptiveColor,
   MenuElement
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -1847,8 +1847,8 @@ import {
   ContextMenuOptions,
   ContextMenuAnimationOptions,
   MenuPreviewMode
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
@@ -2096,8 +2096,8 @@ import {
   Color,
   Edges,
   SymbolGlyphModifier
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry

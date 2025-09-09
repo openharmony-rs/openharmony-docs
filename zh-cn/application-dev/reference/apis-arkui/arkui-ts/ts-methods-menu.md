@@ -119,8 +119,8 @@ import {
   LengthMetrics,
   DividerMode,
   RelativeContainer
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // xxx.ets
 @Entry
