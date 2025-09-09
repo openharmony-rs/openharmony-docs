@@ -637,11 +637,8 @@
             - [全屏启动原子化服务 (FullScreenLaunchComponent)](ui/arkts-FullScreenComponent.md)
             - [同应用进程嵌入式组件 (EmbeddedComponent)](ui/arkts-embedded-components.md)
        - 使用互操作功能构建UI<!--arkts-use-interop-ui-->
-          - [ArkTS1.2使用ArkTS1.1 FrameNode](./ui/interop-compatible-FrameNode.md)
-          - [ArkTS1.2使用ArkTS1.1 RenderNode](./ui/interop-compatible-RenderNode.md)
-          - [ArkTS1.1使用ArkTS1.2 UIContext](./ui/interop-compatible-UIContext.md)
-          - [ArkTS1.2使用ArkTS1.1 Resource](./ui/interop-compatible-Resource.md)
-          - [ArkTS1.2使用ArkTS1.1 graphics](./ui/interop-compatible-graphics.md)  
+          - [# ArkTS1.2使用ArkTS1.1对象](./ui/interop-compatible-transferStatic.md)
+          - [# ArkTS1.1使用ArkTS1.2对象](./ui/interop-compatible-transferDynamic.md)
           <!--Del-->
           - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](ui/arkts-ui-extension-components.md)
           - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)(ArkTS1.1)](ui/arkts-isolated-components.md)
