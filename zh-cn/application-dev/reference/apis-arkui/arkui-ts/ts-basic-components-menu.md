@@ -193,7 +193,9 @@ ArkTS-Dyn示例：
 @Component
 struct Index {
   @State select: boolean = true;
+  // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.view_list_filled");
+  // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
   private iconStr2: ResourceStr = $r("app.media.arrow_right_filled");
 
   @Builder
@@ -207,6 +209,7 @@ struct Index {
   @Builder
   MyMenu(){
     Menu() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" })
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" })
         .enabled(false)
@@ -223,6 +226,7 @@ struct Index {
           endIcon: this.iconStr2,
           builder: ():void=>this.SubMenu()
         })
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
         MenuItem({
           startIcon: $r("app.media.app_icon"),
           content: "菜单选项",
@@ -303,7 +307,9 @@ import { State } from '@ohos.arkui.stateManagement';
 @Component
 struct Index {
   @State select: boolean = true;
+  // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.view_list_filled");
+  // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
   private iconStr2: ResourceStr = $r("app.media.arrow_right_filled");
 
   @Builder
@@ -317,6 +323,7 @@ struct Index {
   @Builder
   MyMenu(){
     Menu() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" } as MenuItemOptions)
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" } as MenuItemOptions)
         .enabled(false)
@@ -333,6 +340,7 @@ struct Index {
           endIcon: this.iconStr2,
           builder: ():void=>this.SubMenu()
         } as MenuItemOptions)
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
         MenuItem({
           startIcon: $r("app.media.app_icon"),
           content: "菜单选项",

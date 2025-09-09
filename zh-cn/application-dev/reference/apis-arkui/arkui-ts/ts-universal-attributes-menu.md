@@ -384,6 +384,7 @@ struct MenuExample {
       ForEach(this.listData, (item:number, index) => {
         Column() {
           Row() {
+            // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
             Image($r("app.media.icon")).width(20).height(20).margin({ right: 5 })
             Text(`Menu${index as number + 1}`).fontSize(20)
           }
@@ -694,6 +695,7 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
   @Builder
@@ -801,6 +803,7 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
   @Builder
@@ -815,6 +818,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(200)
         .height(200)
@@ -883,6 +887,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(200)
         .height(200)
@@ -922,6 +927,7 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
   @State isShown: boolean = false;
 
@@ -937,6 +943,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(200)
         .height(200)
@@ -998,6 +1005,7 @@ import { State } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
   @State isShown: boolean = false;
 
@@ -1013,6 +1021,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(200)
         .height(200)
@@ -1077,12 +1086,14 @@ struct MenuExample {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(50)
         .height(50)
     }
   }
   @State isShow:boolean = false;
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
   @Builder
@@ -1169,12 +1180,14 @@ struct MenuExample {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(50)
         .height(50)
     }
   }
   @State isShow:boolean = false;
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
   @Builder
@@ -1325,6 +1338,7 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.app_icon");
 
   @Builder
@@ -1339,6 +1353,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.example')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.example'))
         .width(200)
         .height(200)
@@ -1349,6 +1364,7 @@ struct Index {
     Column({ space: 50 }) {
       Column() {
         Column() {
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
           Image($r('app.media.example'))
             .width(100)
             .height(100)
@@ -1402,6 +1418,7 @@ import { State } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.app_icon");
 
   @Builder
@@ -1416,6 +1433,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.example')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.example'))
         .width(200)
         .height(200)
@@ -1426,6 +1444,7 @@ struct Index {
     Column({ space: 50 } as ColumnOptions) {
       Column() {
         Column() {
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
           Image($r('app.media.example'))
             .width(100)
             .height(100)
@@ -1458,6 +1477,7 @@ ArkTS-Dyn示例：
 struct MenuExample {
   build() {
     Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Text('click for Menu')
@@ -1538,6 +1558,7 @@ import { State } from '@ohos.arkui.stateManagement';
 struct MenuExample {
   build() {
     Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Text('click for Menu')
@@ -1588,6 +1609,7 @@ ArkTS-Dyn示例：
 struct MenuExample {
   build() {
     Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Text('click for Menu')
@@ -1669,6 +1691,7 @@ import { State } from '@ohos.arkui.stateManagement';
 struct MenuExample {
   build() {
     Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Text('click for Menu')
@@ -1717,6 +1740,7 @@ struct MenuExample {
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.app_icon");
 
   @Builder
@@ -1731,6 +1755,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.example')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.example'))
         .width(300)
         .height(200)
@@ -1741,6 +1766,7 @@ struct Index {
     Column({ space: 50 }) {
       Column() {
         Column() {
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
           Image($r('app.media.example'))
             .width(100)
             .height(100)
@@ -1775,6 +1801,7 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.startIcon");
 
   @Builder
@@ -1854,6 +1881,7 @@ import { State } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.startIcon");
 
   @Builder
@@ -1899,6 +1927,7 @@ struct Index {
 @Entry
 @Component
 struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.startIcon")
   @State isShown: boolean = false
   @State textColor: Color = Color.Black
