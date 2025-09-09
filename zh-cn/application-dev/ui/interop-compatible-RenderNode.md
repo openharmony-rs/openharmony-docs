@@ -103,9 +103,10 @@ RenderNode对象互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS
   }
   ```
   ![image](figures/renderNodeTransfer.png) 
+
 ### 完整示例结构
 
-完整代码结构树
+完整代码结构树如下图所示。
 
 ```text
 project/

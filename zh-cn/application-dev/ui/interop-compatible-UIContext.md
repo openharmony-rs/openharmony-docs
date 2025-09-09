@@ -80,16 +80,17 @@ UIContext对象互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS1
     build() {
       Column(undefined) {
         Column()
-          .backgroundColor('#ff00ff00')
+          .backgroundColor('#ff0000ff')
           .size({width:uiContextTrans(this.getUIContext()), height:uiContextTrans(this.getUIContext())})
       }
     }
   }
   ```
-![image](figures/uiContextTransfer.png)
+  ![image](figures/uiContextTransfer.png)
+
 ### 完整示例结构
 
-完整代码结构树
+完整代码结构树如下图所示。
 
 ```text
 project/
