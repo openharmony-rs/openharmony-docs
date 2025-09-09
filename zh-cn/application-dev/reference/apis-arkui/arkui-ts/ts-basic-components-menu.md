@@ -368,7 +368,6 @@ struct Index {
 
 该示例通过配置symbolStartIcon、symbolEndIcon实现symbol类型图标的菜单。
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -419,117 +418,6 @@ struct Index {
       MenuItem({
         content: "菜单选项",
       }).selected(this.select).selectIcon(this.selectIconModifier)
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('click to show menu')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .bindMenu(this.MyMenu)
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-```
- 'use static'
-
-import {
-  Entry,
-  Component,
-  Column,
-  ColumnOptions,
-  Text,
-  Builder,
-  TextAlign,
-  ResponseType,
-  ResourceStr,
-  Menu,
-  MenuItem,
-  MenuItemOptions,
-  $r,
-  Image,
-  Button,
-  Margin,
-  Flex,
-  FlexDirection,
-  FlexAlign,
-  ItemAlign,
-  Divider,
-  TransitionEffect,
-  Curve,
-  Stack,
-  BlurStyle,
-  BackgroundBlurStyleOptions,
-  ThemeColorMode,
-  BlurStyleActivePolicy,
-  AdaptiveColor,
-  MenuElement,
-  ContextMenuOptions,
-  ContextMenuAnimationOptions,
-  MenuPreviewMode,
-  Color,
-  Edges,
-  SymbolGlyphModifier,
-  MenuItemGroup,
-  Row,
-  FontWeight
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-
-@Entry
-@Component
-struct Index {
-  @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_mic')).fontSize('24vp');
-  @State endIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_trash')).fontSize('24vp');
-  @State selectIconModifier: SymbolGlyphModifier =
-    new SymbolGlyphModifier($r('sys.symbol.checkmark')).fontSize('24vp');
-  @State select: boolean = true;
-
-  @Builder
-  SubMenu() {
-    Menu() {
-      MenuItem({ content: "复制", labelInfo: "Ctrl+C" } as MenuItemOptions)
-      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" } as MenuItemOptions)
-    }
-  }
-
-  @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({ symbolStartIcon: this.startIconModifier, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ symbolStartIcon: this.startIconModifier, content: "菜单选项" } as MenuItemOptions)
-        .enabled(false)
-      MenuItem({
-        symbolStartIcon: this.startIconModifier,
-        content: "菜单选项",
-        symbolEndIcon: this.endIconModifier,
-        builder: (): void => this.SubMenu()
-      } as MenuItemOptions)
-      MenuItemGroup({ header: '小标题' }) {
-        MenuItem({
-          symbolStartIcon: this.startIconModifier,
-          content: "菜单选项",
-          symbolEndIcon: this.endIconModifier,
-          builder: (): void => this.SubMenu()
-        } as MenuItemOptions)
-        MenuItem({
-          symbolStartIcon: this.startIconModifier,
-          content: "菜单选项",
-          symbolEndIcon: this.endIconModifier,
-          builder: (): void => this.SubMenu()
-        } as MenuItemOptions)
-      }
-      MenuItem({
-        content: "菜单选项",
-      } as MenuItemOptions).selected(this.select).selectIcon(this.selectIconModifier)
     }
   }
 
