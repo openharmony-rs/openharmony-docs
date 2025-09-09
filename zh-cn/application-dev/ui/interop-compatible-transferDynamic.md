@@ -2,7 +2,7 @@
 
 ## 概述
 
-从API version 20开始，[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)，[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)，[UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md)，[Resource](../reference/apis-arkui/arkui-ts/ts-types.md)，[ShapeClip](../reference/apis-arkui/js-apis-arkui-graphics.md#shapeclip12)，[LengthMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)，[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)，[ShapeMask](../reference/apis-arkui/js-apis-arkui-graphics.md#shapemask12) 对象互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用。
+从API version 20开始，[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)，[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)，[UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md)，[Resource](../reference/apis-arkui/arkui-ts/ts-types.md)，[ShapeClip](../reference/apis-arkui/js-apis-arkui-graphics.md#shapeclip12)，[LengthMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)，[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)，[ShapeMask](../reference/apis-arkui/js-apis-arkui-graphics.md#shapemask12) 对象适用于[ArkTS1.2互操作概述](../quick-start/arkts-interop-overview.md)。系统对象转换工具，以及转换对象key值列表可参考[@ohos.transfer（系统对象转换工具）](../reference/apis-arkts/js-apis-transfer.md)。
 
 **限制条件**
 
@@ -28,7 +28,7 @@ project/
        └── Index.ets
 ```
 
-- 创建ArkTS1.2子模块`library2`，在`library/src/main/ets/components`目录创提创建ArkTS1.2对象并转换为ArkTS1.1对象返回。
+- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录创建ArkTS1.2对象并转换为ArkTS1.1对象返回。
 
   ```TypeScript
   'use static'
@@ -37,12 +37,12 @@ project/
   import transfer from '@ohos.transfer';
 
   export function xxxObjectTrans():Object {
-    // todo 创建ArkTS1.1对象
+    // 创建ArkTS1.1对象
     let staticObject:XXXObject = new XXXObject();
-     //通过互操作接口转换为对应的ArkTS1.2对象 转换的参数类型
+     //通过互操作接口转换为对应的ArkTS1.2对象
     let xxxObjectDynamic = transfer.transferDynamic(xxxObject, 'ArkUI.XXXobject');
      // 返回 ArkTS1.1对象
-     return xxxObjectDynamic!;
+     return xxxObjectDynamic! as Object;
   }
   ```
 - 导出MainPage.ets中定义的方法。
@@ -79,14 +79,14 @@ project/
     return xxxObjectDynamic;
   }
   ```
-## 对象类型
+## 示例代码
 
-### ArkTS1.1中使用ArkTS1.2FrameNode对象类型
+### ArkTS1.1中使用ArkTS1.2的FrameNode对象
 
-通过在ArkTS1.1中引用ArkTS1.1创建的FrameNode对象显示蓝色正方形。
+通过在ArkTS1.1中引用ArkTS1.1创建的FrameNode对象，显示蓝色正方形。
 
 
-- 创建ArkTS1.2子模块`library`，在`library2/src/main/ets/components`目录创提创建ArkTS1.1FrameNode的方法。
+- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS1.1FrameNode的方法。
 
   ```TypeScript
   'use static'
@@ -107,7 +107,7 @@ project/
   }
   ```
 
-- 在ArkTS1.1主模块中引入ArkTS1.2创建的FrameNode对象。
+- 在ArkTS1.1主模块中引入ArkTS1.2创建FrameNode对象的方法。
 
   ```TypeScript
   import {NodeController ,FrameNode, typeNode } from '@kit.ArkUI';
@@ -140,11 +140,11 @@ project/
     }
   }
   ```
-  ![image](figures/frameNodeTransferDynamic.png)
+  ![image](figures/frameNodeTransDynamic.png)
   
-### ArkTS1.2中使用ArkTS1.1RenderNode对象类型
+### ArkTS1.1中使用ArkTS1.2的RenderNode对象
 
-- 创建ArkTS1.2子模块`library2`，在`library/src/main/ets/components`目录创提创建ArkTS1.1RenderNode的方法。
+- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS1.1RenderNode的方法。
 
   ```TypeScript
   'use static'
@@ -164,7 +164,7 @@ project/
   }
   ```
 
-- 在ArkTS1.1主模块中引入ArkTS1.1 RenderNode对象。
+- 在ArkTS1.1主模块中引入创建RenderNode对象的方法。
 
   ```TypeScript
   // entry/src/main/ets/pages/Index.ets
@@ -206,9 +206,9 @@ project/
   ```
   ![image](figures/renderNodeTransfer.png) 
 
-### ArkTS1.2中使用ArkTS1.1LengthMetrics、ColorMetrics、ShapeMask、ShapeClip对象类型
+### ArkTS1.1中使用ArkTS1.2的LengthMetrics、ColorMetrics、ShapeMask、ShapeClip对象
 
-- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录创提创建ArkTS1.1LengthMetrics、ColorMetrics、shapeMask、shapeClip的方法。
+- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS1.1LengthMetrics、ColorMetrics、shapeMask、shapeClip的方法。
 
   ```TypeScript
   // library2/src/main/ets/components/MainPage.ets
@@ -259,7 +259,7 @@ project/
   }
   ```
 
-- 在ArkTS1.2主模块中引入ArkTS1.1导出的方法创建对象并转换为ArkTS1.2对象。
+- 在ArkTS1.2主模块中引入ArkTS1.1的方法创建对象。
 
   ```TypeScript
    // entry/src/main/ets/pages/Index.ets
@@ -332,11 +332,11 @@ project/
   ```
   ![image](figures/graphicsTransfer.png)
 
-  ### ArkTS1.2中使用ArkTS1.1Resource对象类型
+  ### ArkTS1.1中使用ArkTS1.1的Resource对象
 
-  通过在ArkTS1.2中引用ArkTS1.1创建的Resource对象显示图片。
+  通过在ArkTS1.2中引用ArkTS1.1创建的Resource对象的方法显示图片。
 
-- 创建ArkTS1.1子模块`library2`，在`library2/src/main/ets/components`目录创提创建ArkTS1.1Resource的方法。
+- 创建ArkTS1.1子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS1.1Resource的方法。
 
   ```TypeScript
     'use static'
@@ -357,7 +357,7 @@ project/
   }
   ```
 
-- 在ArkTS1.2主模块中引入ArkTS1.1 Resource对象。
+- 在ArkTS1.2主模块中引入ArkTS1.1创建Resource对象。
 
   ```TypeScript
   import { resourceTest, rawFileTest } from 'library2';
@@ -383,9 +383,9 @@ project/
   ```
   ![image](figures/resourceTransfer.png)
 
-  ### 在ArkTS1.2中使用ArkTS1.1获取的UIContext对象
+  ### 在ArkTS1.1中使用ArkTS1.2获取的UIContext对象
 
-- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录创提使用传入的UIContext用于逻辑处理。
+- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录的方法中使用传入的UIContext用于逻辑处理。
 
   ```TypeScript
   'use static'
