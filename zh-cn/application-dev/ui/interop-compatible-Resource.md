@@ -26,6 +26,75 @@ Resource对象互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS1.
 
 通过在ArkTS1.2中引用ArkTS1.1创建的Resource对象显示Text文本。
 
+示例如下：
+
+- 创建ArkTS1.1子模块`library`，在`library/src/main/ets/components`目录创提创建ArkTS1.1Resource的方法。
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+
+  export function rawFileTest() {
+    return $rawfile('startIcon.png');
+  }
+
+  export function resourceTest(): Object {
+    return $r('app.float.image_size');
+  }
+  ```
+  ```TypeScript
+  // library/Index.ets
+
+  export { resourceTest, rawFileTest} from './src/main/ets/components/MainPage';
+  ```
+
+
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+
+  ```json
+  // entry/oh-package.json5
+
+  "dependencies": {
+    "library": "file:../library"
+  }
+  ```
+
+- 在ArkTS1.2主模块中引入ArkTS1.1 Resource对象。
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets
+  
+  import { Entry, Column, Component, Resource, Image } from '@ohos.arkui.component';
+  import transfer from '@ohos.transfer';
+  import { resourceTest, rawFileTest } from 'library';
+
+  // Resource $r对象互操作
+  export function resourceTrans(): Resource {
+  
+     let resourceDynamic = resourceTest();
+
+     return transfer.transferStatic(resourceDynamic, 'Global.Resource')! as Resource;
+
+  }
+  // Resource RawFile对象互操作
+  export function rawFileTrans(): Resource {
+    let resourceDynamic = rawFileTest();
+    return transfer.transferStatic(resourceDynamic, 'Global.Resource')! as Resource;
+  }
+  
+  @Entry
+  @Component
+  struct MyStateSample {
+    build() {
+      Column(undefined) {
+        Image(rawFileTrans())
+          .size({width:resourceTrans(), height:resourceTrans()})
+      }
+    }
+  }
+  ```
+![image](figures/resourceTransfer.png)
+
 ### 完整示例结构
 
 完整代码结构树
@@ -42,71 +111,11 @@ project/
 └── library/         # ArkTS1.1子模块
     └── src/
        ├── main/
-       │     └── ets/
-       │        └── components/
-       │          └── MainPage.ets
+       │     ├── ets/
+       │     │  └── components/
+       │     │    └── MainPage.ets
+       │     └── resources/
+       │        └── rawfile/
+       │          └── startIcon.png
        └── Index.ets
-```
-
-示例如下：
-
-- 创建ArkTS1.1子模块`library`，在`library/src/main/ets/components`目录创提创建ArkTS1.1Resource的方法。
-
-```TypeScript
-// library/src/main/ets/components/MainPage.ets
-
-export function rawFileTest() {
-  return $rawfile('startIcon.png');
-}
-
-export function resourceTest(): Object {
-  return $r('app.float.image_size');
-}
-
-```
-```TypeScript
-// library/Index.ets
-
-export { resourceTest, rawFileTest} from './src/main/ets/components/MainPage';
-```
-
-
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
-
-```json
-// entry/oh-package.json5
-
-"dependencies": {
-  "library": "file:../library"
-}
-```
-
-- 在ArkTS1.2主模块中引入ArkTS1.1 Resource对象。
-
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
-
-'use static'
-
-import { Entry, Column, Component, Resource, Image } from '@ohos.arkui.component';
-import transfer from '@ohos.transfer';
-import { resourceTest, rawFileTest } from 'library';
-import { UIContext } from '@ohos.arkui.UIContext';
-
-// Resource $r对象互操作
-export function uiContextTrans(): Resource {
-  let uiContext = this.getUIContext();
-  let uiContextDynamic = transfer.transDynamic(uiContext, 'ArkUI.UIContext');
-}
-
-@Entry
-@Component
-struct MyStateSample {
-  build() {
-    Column(undefined) {
-      Image(rawFileTrans())
-        .size({width:resourceTrans(), height:resourceTrans()})
-    }
-  }
-}
 ```

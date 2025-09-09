@@ -26,7 +26,83 @@ RenderNode对象互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS
 
 通过在ArkTS1.2中引用ArkTS1.1创建的RenderNode对象显示Text文本。
 
+示例如下：
 
+- 创建ArkTS1.1子模块`library`，在`library/src/main/ets/components`目录创提创建ArkTS1.1RenderNode的方法。
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+
+  import { RenderNode } from '@kit.ArkUI';
+
+  export function renderNodeTest():Object {
+    let shapeMaskTestNode =new RenderNode();
+    shapeMaskTestNode.position = { x: 0, y: 0 };
+    shapeMaskTestNode.size = { width: 80, height: 80 }
+    shapeMaskTestNode.backgroundColor = 0xff0000ff;
+    return shapeMaskTestNode;
+  }
+  ```
+  ```TypeScript
+  // library/Index.ets
+
+  export { renderNodeTest } from './src/main/ets/components/MainPage';
+  ```
+
+
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+
+  ```json
+  // entry/oh-package.json5
+
+  "dependencies": {
+    "library": "file:../library"
+  }
+  ```
+
+- 在ArkTS1.2主模块中引入ArkTS1.1 WrappedBuilder对象。
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets
+
+  import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import transfer from '@ohos.transfer';
+  import { UIContext } from '@ohos.arkui.UIContext';
+  import { FrameNode, RenderNode, NodeController } from '@ohos.arkui.node';
+  import { renderNodeTest } from 'library';
+
+  function renderNodeTrans(): RenderNode{
+    let renderNode = renderNodeTest();
+    let renderNodeStatic = transfer.transferStatic(renderNode, 'ArkUI.RenderNode')! as RenderNode;
+    return renderNodeStatic;
+  }
+
+  class TestNodeController extends NodeController {
+    makeNode(uiContext: UIContext): FrameNode | null {
+      let rootNode = new FrameNode(uiContext);
+      const rootRenderNode = rootNode?.getRenderNode();
+      if (rootRenderNode !== null) {
+        rootRenderNode?.appendChild(renderNodeTrans());
+      }
+      return rootNode;
+    }
+  }
+
+  @Entry
+  @Component
+  struct MyStateSample {
+    nodeController: TestNodeController = new TestNodeController();
+
+    build() {
+      Column(undefined) {
+        NodeContainer(this.nodeController)
+      }
+    }
+  }
+  ```
+  ![image](figures/renderNodeTransfer.png) 
 ### 完整示例结构
 
 完整代码结构树
@@ -47,82 +123,4 @@ project/
        │        └── components/
        │          └── MainPage.ets
        └── Index.ets
-```
-
-示例如下：
-
-- 创建ArkTS1.1子模块`library`，在`library/src/main/ets/components`目录创提创建ArkTS1.1RenderNode的方法。
-
-```TypeScript
-// library/src/main/ets/components/MainPage.ets
-
-import { RenderNode } from '@kit.ArkUI';
-
-export function renderNodeTest():Object {
-  let shapeMaskTestNode =new RenderNode();
-  shapeMaskTestNode.position = { x: 0, y: 0 };
-  shapeMaskTestNode.size = { width: 80, height: 80 }
-  shapeMaskTestNode.backgroundColor = 0xff0000ff;
-  return shapeMaskTestNode;
-}
-```
-```TypeScript
-// library/Index.ets
-
-export { renderNodeTest } from './src/main/ets/components/MainPage';
-```
-
-
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
-
-```json
-// entry/oh-package.json5
-
-"dependencies": {
-  "library": "file:../library"
-}
-```
-
-- 在ArkTS1.2主模块中引入ArkTS1.1 WrappedBuilder对象。
-
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
-
-'use static'
-
-import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import transfer from '@ohos.transfer';
-import { UIContext } from '@ohos.arkui.UIContext';
-import { FrameNode, RenderNode, NodeController } from '@ohos.arkui.node';
-import { renderNodeTest } from 'library';
-
-function renderNodeTrans(): RenderNode{
-  let renderNode = renderNodeTest();
-  let renderNodeStatic = transfer.transferStatic(renderNode, 'ArkUI.RenderNode')! as RenderNode;
-  return renderNodeStatic;
-}
-
-class TestNodeController extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    let rootNode = new FrameNode(uiContext);
-    const rootRenderNode = rootNode?.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode?.appendChild(renderNodeTrans());
-    }
-    return rootNode;
-  }
-}
-
-@Entry
-@Component
-struct MyStateSample {
-  nodeController: TestNodeController = new TestNodeController();
-
-  build() {
-    Column(undefined) {
-      NodeContainer(this.nodeController)
-    }
-  }
-}
 ```
