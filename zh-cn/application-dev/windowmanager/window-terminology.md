@@ -54,3 +54,8 @@
 应用窗口进入沉浸式布局之后，页面的所有组件布局范围从安全区域扩展为整个窗口。可以通过[isImmersiveLayout](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20)判断当前窗口是否处于沉浸式布局。
 
 多设备场景下不同窗口形态的沉浸式开发与实现可以参考[窗口沉浸式最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive)。
+
+## 全局悬浮窗
+
+全局悬浮窗口是一种特殊的应用窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
+全局悬浮窗口可以用于应用退至后台后，使用小窗继续播放视频，或者为特定的应用创建悬浮球等快速入口。应用在创建全局悬浮窗口前，需要申请对应的权限。
