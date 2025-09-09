@@ -223,6 +223,7 @@ import { Param } from '@ohos.arkui.stateManagement';
           .onClick((e: ClickEvent) => {
             this.info.name = 'Tom'; // 变化可观察
           })
+        Child({info: this.info})
       }
     }
   }
