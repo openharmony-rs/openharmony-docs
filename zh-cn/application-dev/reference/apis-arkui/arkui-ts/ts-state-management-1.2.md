@@ -81,7 +81,7 @@ let ref2: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 50)!;
 ```
 ### link
 
-static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
+static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;&nbsp;|&nbsp;undefined
 
 与[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中对应的propName建立双向数据绑定。如果给定的propName在AppStorage中存在，返回AppStorage中propName对应属性的双向绑定数据。
 
@@ -101,7 +101,7 @@ static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
 
 | 类型                                | 说明                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | 返回双向绑定的数据，如果AppStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) \| undefined | 返回双向绑定的数据，如果AppStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 ```ts
@@ -578,7 +578,7 @@ let ref2: AbstractProperty<number> = storage.setAndRef<number>('PropA', 50); // 
 
 ### link
 
-link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
+link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;&nbsp;|&nbsp;undefined
 
 如果给定的propName在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)实例中存在，则返回与LocalStorage中propName对应属性的双向绑定数据。
 
@@ -598,7 +598,7 @@ link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
 
 | 类型                                | 说明                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | SubscribedAbstractProperty&lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) \| undefined | SubscribedAbstractProperty&lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 ```ts
