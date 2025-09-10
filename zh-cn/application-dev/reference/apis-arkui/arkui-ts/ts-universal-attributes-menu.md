@@ -301,6 +301,7 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 
 该示例为bindMenu通过配置MenuElement弹出普通菜单。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -330,12 +331,48 @@ struct MenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { Entry, Component, Column, Text, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct MenuExample {
+  build() {
+    Column() {
+      Text('click for Menu')
+        .bindMenu([
+          {
+            value: 'Menu1',
+            action: () => {
+              console.info('handle Menu1 select');
+            }
+          },
+          {
+            value: 'Menu2',
+            action: () => {
+              console.info('handle Menu2 select');
+            }
+          },
+        ])
+    }
+    .width('100%')
+    .margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![zh-cn_image_0000001174582862](figures/zh-cn_image_0000001174582862.gif)
 
 ### 示例2（弹出自定义菜单）
 
 该示例为bindMenu通过配置CustomBuilder弹出自定义菜单。同时，通过配置hapticFeedbackMode实现弹出时的振动效果。
 
+ArkTS-Dyn示例：
 ```ts
 @Entry
 @Component
@@ -347,6 +384,7 @@ struct MenuExample {
       ForEach(this.listData, (item:number, index) => {
         Column() {
           Row() {
+            // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
             Image($r("app.media.icon")).width(20).height(20).margin({ right: 5 })
             Text(`Menu${index as number + 1}`).fontSize(20)
           }
@@ -380,12 +418,83 @@ struct MenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  Text,
+  Margin,
+  Builder,
+  Flex,
+  HapticFeedbackMode,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  ForEach,
+  Image,
+  Alignment,
+  Divider,
+  $r
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct MenuExample {
+  @State listData: Array<Int> = new Array<Int>(0, 0, 0);
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      ForEach(this.listData, (item: int, index: Double) => {
+        Column() {
+          Row() {
+            // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+            Image($r("app.media.icon")).width(20).height(20).margin({ right: 5 } as Margin)
+            Text(`Menu${index + 1}`).fontSize(20)
+          }
+          .width('100%')
+          .height(30)
+          .justifyContent(FlexAlign.Center)
+          .align(Alignment.Center)
+          .onClick(() => {
+            console.info(`Menu${index + 1} Clicked!`);
+          })
+
+          if (index != this.listData.length - 1) {
+            Divider().height(10).width('80%').color('#ccc')
+          }
+        }.padding(5).height(40)
+      })
+    }.width(100)
+  }
+
+  build() {
+    Column() {
+      Text('click for menu')
+        .fontSize(20)
+        .margin({ top: 20 } as Margin)
+        .bindMenu(this.MenuBuilder, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#f0f0f0')
+  }
+}
+```
+
 ![zh-cn_image_0000001186807708](figures/zh-cn_image_0000001186807708.gif)
 
 ### 示例3（长按弹出菜单）
 
 该示例为bindContextMenu通过配置responseType.LongPress弹出菜单。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -418,12 +527,65 @@ struct ContextMenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Margin,
+  Builder,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TextAlign,
+  ResponseType
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ContextMenuExample {
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('Test menu item 1')
+        .fontSize(20)
+        .width(100)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('Test menu item 2')
+        .fontSize(20)
+        .width(100)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  build() {
+    Column() {
+      Text('LongPress for menu')
+    }
+    .width('100%')
+    .margin({ top: 5 } as Margin)
+    .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+  }
+}
+```
+
 ![longMenu](figures/longMenu.gif)
 
 ### 示例4（右键弹出指向型菜单）
 
 该示例为bindContextMenu通过配置responseType.RightClick、enableArrow弹出指向型菜单。同时，通过配置hapticFeedbackMode实现弹出时的振动效果。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -462,17 +624,78 @@ struct DirectiveMenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Builder,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TextAlign,
+  ResponseType,
+  Placement,
+  HapticFeedbackMode
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct DirectiveMenuExample {
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Text('Options')
+      Divider().strokeWidth(2).margin(5).color('#F0F0F0')
+      Text('Hide')
+      Divider().strokeWidth(2).margin(5).color('#F0F0F0')
+      Text('Exit')
+    }
+    .width(200)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Column() {
+        Text("DirectiveMenuExample")
+          .fontSize(20)
+          .width('100%')
+          .height("25%")
+          .backgroundColor('#F0F0F0')
+          .textAlign(TextAlign.Center)
+          .bindContextMenu(this.MenuBuilder, ResponseType.RightClick, {
+            enableArrow: true,
+            placement: Placement.Bottom,
+            hapticFeedbackMode: HapticFeedbackMode.ENABLED
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![zh-cn_image_0000001689126950](figures/zh-cn_image_0000001689126950.png)
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
 该示例为bindContextMenu通过配置responseType.LongPress、preview的MenuPreviewMode类型弹出菜单预览样式。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
   @Builder
@@ -506,17 +729,81 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  Flex,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  MenuPreviewMode
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.icon");
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+    }
+  }
+
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Column() {
+        Column() {
+          Text('preview-image')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                preview: MenuPreviewMode.IMAGE,
+                previewAnimationOptions: { scale: [0.8, 1.0] },
+              })
+            .backgroundColor("#ff3df2f5")
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![preview-image](figures/preview-image.png)
 
 ### 示例6（长按弹出菜单的自定义预览样式）
 
 该示例为bindContextMenu通过配置responseType.LongPress、preview的CustomBuilder类型弹出菜单自定义预览样式。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
   @Builder
@@ -531,6 +818,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(200)
         .height(200)
@@ -558,17 +846,88 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.icon");
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+    }
+  }
+
+  @Builder
+  MyPreview() {
+    Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.icon'))
+        .width(200)
+        .height(200)
+    }
+  }
+
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Column() {
+        Column() {
+          Text('preview-builder')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                preview: this.MyPreview
+              })
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![preview-builder](figures/preview-builder.png)
 
 ### 示例7（设置状态变量弹出菜单）
 
 该示例为bindContextMenu通过配置isShown弹出菜单预览样式。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
   @State isShown: boolean = false;
 
@@ -584,6 +943,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(200)
         .height(200)
@@ -618,12 +978,91 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.icon");
+  @State isShown: boolean = false;
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+    }
+  }
+
+  @Builder
+  MyPreview() {
+    Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.icon'))
+        .width(200)
+        .height(200)
+    }
+  }
+
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Column() {
+        Column() {
+          Text('preview-builder')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.isShown, this.MyMenu,
+              {
+                preview: this.MyPreview,
+                aboutToDisappear: ()=>{
+                  this.isShown = false;
+                }
+              })
+          Button('click')
+            .onClick(()=>{
+              this.isShown = true;
+            })
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![preview-builder](figures/preview-builder.png)
 
 ### 示例8（设置菜单和预览的动效）
 
 该示例为bindContextMenu通过配置transition，实现自定义菜单以及菜单预览时的显示和退出动效。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -647,12 +1086,14 @@ struct MenuExample {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
         .width(50)
         .height(50)
     }
   }
   @State isShow:boolean = false;
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
   @Builder
@@ -686,12 +1127,107 @@ struct MenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct MenuExample {
+  @Builder MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('Test menu item 1')
+        .fontSize(12)
+        .width(200)
+        .height(30)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('Test menu item 2')
+        .fontSize(12)
+        .width(100)
+        .height(30)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+  @Builder
+  MyPreview() {
+    Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.icon'))
+        .width(50)
+        .height(50)
+    }
+  }
+  @State isShow:boolean = false;
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.icon");
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+    }
+  }
+  build() {
+    Column() {
+      Button('LongPress bindContextMenu')
+        .margin({ top: 15 } as Margin)
+        .bindContextMenu(
+          this.MenuBuilder,
+          ResponseType.LongPress,{
+          transition: TransitionEffect.OPACITY.animation({ duration: 4000, curve: Curve.Ease }).combine(
+            TransitionEffect.rotate({ z: 1, angle: 180 })),
+          preview: this.MyPreview,
+          previewAnimationOptions: {
+            scale: [0.8, 1.0],
+            transition: TransitionEffect.OPACITY.animation({ duration: 4000, curve: Curve.Ease }).combine(
+              TransitionEffect.rotate({ z: 1, angle: 180 }))
+          }
+        })
+    }
+    .width('100%')
+    .margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![preview-builder](figures/menu2.gif)
 
 ### 示例9（设置symbol类型图标）
 
 该示例为bindMenu通过配置MenuElement的symbolIcon弹出菜单。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -726,17 +1262,83 @@ struct MenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  SymbolGlyphModifier
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct MenuExample {
+  @State symbolIconModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
+  @State symbolIconModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
+  build() {
+    Column() {
+      Text('click for Menu')
+    }
+    .width('100%')
+    .margin({ top: 5 } as Margin)
+    .bindMenu([
+      {
+        value: 'Menu1',
+        symbolIcon:this.symbolIconModifier1,
+        action: () => {
+          console.info('handle Menu1 select');
+        }
+      },
+      {
+        value: 'Menu2',
+        symbolIcon:this.symbolIconModifier2,
+        action: () => {
+          console.info('handle Menu2 select');
+        }
+      },
+    ])
+  }
+}
+```
+
 ![preview-symbol](figures/preview-symbol.png)
 
 ### 示例10（设置一镜到底动效）
 
 该示例为bindContextMenu通过配置preview中hoverScale，实现组件截图到自定义预览图的一镜到底过渡动效。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.app_icon");
 
   @Builder
@@ -751,6 +1353,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.example')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.example'))
         .width(200)
         .height(200)
@@ -761,6 +1364,87 @@ struct Index {
     Column({ space: 50 }) {
       Column() {
         Column() {
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+          Image($r('app.media.example'))
+            .width(100)
+            .height(100)
+            .margin(100)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                preview: this.MyPreview,
+                previewAnimationOptions: {
+                  hoverScale: [1.0, 0.95]
+                }
+              })
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.app_icon");
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+    }
+  }
+
+  @Builder
+  MyPreview() {
+    Column() {
+      // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.example'))
+        .width(200)
+        .height(200)
+    }
+  }
+
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Column() {
+        Column() {
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
           Image($r('app.media.example'))
             .width(100)
             .height(100)
@@ -785,6 +1469,7 @@ struct Index {
 
 该示例为bindMenu通过配置backgroundBlurStyleOptions，实现自定义菜单背景模糊效果。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -792,6 +1477,7 @@ struct Index {
 struct MenuExample {
   build() {
     Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Text('click for Menu')
@@ -828,12 +1514,94 @@ struct MenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct MenuExample {
+  build() {
+    Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Text('click for Menu')
+          .bindMenu([
+            {
+              value: 'Menu1',
+              action: () => {
+                console.info('handle Menu1 select')
+              }
+            } as MenuElement,
+            {
+              value: 'Menu2',
+              action: () => {
+                console.info('handle Menu2 select')
+              }
+            } as MenuElement,
+          ],
+            {
+              backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
+              backgroundBlurStyleOptions: {
+                colorMode:ThemeColorMode.LIGHT,
+                blurOptions:{grayscale:[20,20]},
+                policy: BlurStyleActivePolicy.ALWAYS_ACTIVE,
+                adaptiveColor: AdaptiveColor.AVERAGE,
+                scale: 1
+              } as BackgroundBlurStyleOptions,
+            }
+          )
+      }
+      .width('100%')
+      .margin({ top: 5 } as Margin)
+    }
+  }
+}
+```
+
 ![preview-builder](figures/zh-cn_image_backgroundBlurStyleOptions.png)
 
 ### 示例12（自定义背景效果参数）
 
 该示例为bindMenu通过配置backgroundEffect，实现自定义菜单背景效果。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -841,6 +1609,7 @@ struct MenuExample {
 struct MenuExample {
   build() {
     Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Text('click for Menu')
@@ -878,6 +1647,88 @@ struct MenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct MenuExample {
+  build() {
+    Stack() {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Text('click for Menu')
+          .bindMenu([
+            {
+              value: 'Menu1',
+              action: () => {
+                console.info('handle Menu1 select');
+              }
+            } as MenuElement,
+            {
+              value: 'Menu2',
+              action: () => {
+                console.info('handle Menu2 select');
+              }
+            } as MenuElement,
+          ],
+            {
+              backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
+              backgroundEffect: {
+                radius: 60,
+                saturation: 10,
+                brightness: 1,
+                color: '#661A1A1A',
+                adaptiveColor: AdaptiveColor.AVERAGE,
+                blurOptions:{grayscale:[20,20]}
+              }
+            }
+          )
+      }
+      .width('100%')
+      .margin({ top: 5 } as Margin)
+    }
+  }
+}
+```
+
 ![preview-builder](figures/zh-cn_image_backgroundEffect.png)
 
  ### 示例13（设置一镜到底动效支持抬手打断）
@@ -889,6 +1740,7 @@ struct MenuExample {
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.app_icon");
 
   @Builder
@@ -903,6 +1755,7 @@ struct Index {
   @Builder
   MyPreview() {
     Column() {
+      // $r('app.media.example')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.example'))
         .width(300)
         .height(200)
@@ -913,6 +1766,7 @@ struct Index {
     Column({ space: 50 }) {
       Column() {
         Column() {
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
           Image($r('app.media.example'))
             .width(100)
             .height(100)
@@ -941,11 +1795,13 @@ struct Index {
 
 该示例为bindContextMenu通过配置responseType.LongPress、preview的MenuPreviewMode类型弹出菜单预览样式、previewBorderRadius设置预览图边框圆角半径。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.startIcon");
 
   @Builder
@@ -980,6 +1836,86 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.startIcon");
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+    }
+  }
+
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Column() {
+        Column() {
+          Text('preview-image')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                preview: MenuPreviewMode.IMAGE,
+                previewBorderRadius: 50
+              })
+            .backgroundColor("#ff7fcdff")
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![hoverScaleInterruption](figures/menuPreviewBorderRadius.jpg)
 
 ### 示例15（bindMenu配置生命周期回调）
@@ -991,6 +1927,7 @@ struct Index {
 @Entry
 @Component
 struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.startIcon")
   @State isShown: boolean = false
   @State textColor: Color = Color.Black
@@ -1106,6 +2043,7 @@ struct Index {
 
 该示例为bindMenu通过配置outlineWidth和outlineColor属性设置下拉菜单外描边样式。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -1122,6 +2060,89 @@ struct Index {
 
   build() {
     Column({ space: 50 }) {
+      Column() {
+        Column() {
+          Text('click for Menu')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindMenu(this.MyMenu,
+              {
+                outlineWidth: '5vp',
+                outlineColor: Color.Blue
+              })
+        }
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor('#F0F2F5')
+    }
+  }
+}
+
+```
+
+ArkTS-Sta示例：
+```ts
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode,
+  Color,
+  Edges,
+  SymbolGlyphModifier
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ content: "菜单选项" } as MenuItemOptions)
+    }.width(200)
+  }
+
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
       Column() {
         Column() {
           Text('click for Menu')
