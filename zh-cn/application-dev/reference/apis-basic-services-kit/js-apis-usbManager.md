@@ -57,7 +57,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -146,7 +146,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -193,7 +193,7 @@ hasRight(deviceName: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -237,7 +237,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -281,7 +281,7 @@ removeRight(deviceName: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -332,7 +332,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -383,7 +383,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -431,7 +431,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -484,7 +484,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -531,7 +531,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -574,7 +574,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -626,7 +626,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -690,7 +690,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -763,7 +763,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -825,7 +825,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -907,7 +907,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -993,7 +993,7 @@ closePipe(pipe: USBDevicePipe): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1039,7 +1039,7 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1086,7 +1086,7 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1127,7 +1127,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1167,7 +1167,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1210,7 +1210,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1258,7 +1258,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1307,7 +1307,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
