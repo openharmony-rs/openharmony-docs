@@ -117,7 +117,7 @@ if (serialManager.hasSerialRight(portId)) {
 
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
-请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
+请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -419,7 +419,7 @@ try {
 
 read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-从串口设备异步读取数据。
+从串口设备异步读取数据。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -590,7 +590,7 @@ try {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备异步写入数据。
+向串口设备异步写入数据。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
