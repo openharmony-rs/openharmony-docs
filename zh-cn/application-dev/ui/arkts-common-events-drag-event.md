@@ -258,164 +258,314 @@
 
 **完整示例：**
 
-```ts
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { promptAction } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
+1. ArkTs-Dyn示例：
 
-@Entry
-@Component
-struct Index {
-  @State targetImage: string = '';
-  @State imageWidth: number = 100;
-  @State imageHeight: number = 100;
-  @State imgState: Visibility = Visibility.Visible;
-  @State pixmap: image.PixelMap|undefined = undefined
+    ```ts
+    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+    import { promptAction } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { image } from '@kit.ImageKit';
 
-  @Builder
-  pixelMapBuilder() {
-    Column() {
-      Image($r('app.media.startIcon'))
-        .width(120)
-        .height(120)
-        .backgroundColor(Color.Yellow)
-    }
-  }
+    @Entry
+    @Component
+    struct Index {
+      @State targetImage: string = '';
+      @State imageWidth: number = 100;
+      @State imageHeight: number = 100;
+      @State imgState: Visibility = Visibility.Visible;
+      @State pixmap: image.PixelMap|undefined = undefined;
 
-  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
-    try {
-      let data: UnifiedData = event.getData();
-      if (!data) {
-        return false;
+      @Builder
+      pixelMapBuilder() {
+        Column() {
+          Image($r('app.media.startIcon'))
+            .width(120)
+            .height(120)
+            .backgroundColor(Color.Yellow)
+        }
       }
-      let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-      if (!records || records.length <= 0) {
-        return false;
+
+      getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
+        try {
+          let data: UnifiedData = event.getData();
+          if (!data) {
+            return false;
+          }
+          let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+          if (!records || records.length <= 0) {
+            return false;
+          }
+          callback(event);
+          return true;
+        } catch (e) {
+          console.log("getData failed, code: " + (e as BusinessError).code + ", message: " + (e as BusinessError).message);
+          return false;
+        }
       }
-      callback(event);
-      return true;
-    } catch (e) {
-      console.log("getData failed, code: " + (e as BusinessError).code + ", message: " + (e as BusinessError).message);
-      return false;
-    }
-  }
-  // 获取UDMF数据，首次获取失败后添加1500ms延迟重试机制
-  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
-    if (this.getDataFromUdmfRetry(event, callback)) {
-      return;
-    }
-    setTimeout(() => {
-      this.getDataFromUdmfRetry(event, callback);
-    }, 1500);
-  }
-  // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
-  private getComponentSnapshot(): void {
-    this.getUIContext().getComponentSnapshot().createFromBuilder(()=>{this.pixelMapBuilder()},
-      (error: Error, pixmap: image.PixelMap) => {
-        if(error){
-          console.log("error: " + JSON.stringify(error))
+      // 获取UDMF数据，首次获取失败后添加1500ms延迟重试机制
+      getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
+        if (this.getDataFromUdmfRetry(event, callback)) {
           return;
         }
-        this.pixmap = pixmap;
-      })
-  }
-  // 长按50ms时提前准备自定义截图的pixmap
-  private PreDragChange(preDragStatus: PreDragStatus): void {
-    if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
-      this.getComponentSnapshot();
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          Image($r('app.media.app_icon'))
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 })
-            .visibility(this.imgState)
-            // 绑定平行手势，可同时触发应用自定义长按手势
-            .parallelGesture(LongPressGesture().onAction((event: GestureEvent) => {
-              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Long press gesture trigger' });
-            }))
-            .onDragStart((event: DragEvent) => {
-              let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              data.imageUri = 'common/pic/img.png';
-              let unifiedData = new unifiedDataChannel.UnifiedData(data);
-              event.setData(unifiedData);
-
-              let dragItemInfo: DragItemInfo = {
-                pixelMap: this.pixmap,
-                extraInfo: "this is extraInfo",
-              };
-              return dragItemInfo;
-            })
-              // 提前准备拖拽自定义背板图
-            .onPreDrag((status: PreDragStatus) => {
-              this.PreDragChange(status);
-            })
-            .onDragEnd((event: DragEvent) => {
-              // onDragEnd里取到的result值在接收方onDrop设置
-              if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-              } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-              }
-            })
-        }
-
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-            .draggable(true)
-            .margin({ left: 15 })
-            .border({ color: Color.Black, width: 1 })
-            // 控制角标显示类型为MOVE，即不显示角标
-            .onDragMove((event: DragEvent) => {
-              event.setResult(DragResult.DROP_ENABLED)
-              event.dragBehavior = DragBehavior.MOVE
-            })
-            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-            .onDrop((dragEvent?: DragEvent) => {
-              // 获取拖拽数据
-              this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-                let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
-                let rect: Rectangle = event.getPreviewRect();
-                this.imageWidth = Number(rect.width);
-                this.imageHeight = Number(rect.height);
-                this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-                this.imgState = Visibility.None;
-                // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
-                event.setResult(DragResult.DRAG_SUCCESSFUL);
-              })
-            })
+        setTimeout(() => {
+          this.getDataFromUdmfRetry(event, callback);
+        }, 1500);
+      }
+      // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+      private getComponentSnapshot(): void {
+        this.getUIContext().getComponentSnapshot().createFromBuilder(()=>{this.pixelMapBuilder()},
+          (error: Error, pixmap: image.PixelMap) => {
+            if(error){
+              console.log("error: " + JSON.stringify(error))
+              return;
+            }
+            this.pixmap = pixmap;
+          })
+      }
+      // 长按50ms时提前准备自定义截图的pixmap
+      private PreDragChange(preDragStatus: PreDragStatus): void {
+        if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+          this.getComponentSnapshot();
         }
       }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
 
-```
-![commonDrag](figures/commonDrag.gif)
+      build() {
+        Row() {
+          Column() {
+            Text('start Drag')
+              .fontSize(18)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              Image($r('app.media.app_icon'))
+                .width(100)
+                .height(100)
+                .draggable(true)
+                .margin({ left: 15 })
+                .visibility(this.imgState)
+                // 绑定平行手势，可同时触发应用自定义长按手势
+                .parallelGesture(LongPressGesture().onAction((event: GestureEvent) => {
+                  this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Long press gesture trigger' });
+                }))
+                .onDragStart((event: DragEvent) => {
+                  let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                  data.imageUri = 'common/pic/img.png';
+                  let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                  event.setData(unifiedData);
+
+                  let dragItemInfo: DragItemInfo = {
+                    pixelMap: this.pixmap,
+                    extraInfo: "this is extraInfo",
+                  };
+                  return dragItemInfo;
+                })
+                  // 提前准备拖拽自定义背板图
+                .onPreDrag((status: PreDragStatus) => {
+                  this.PreDragChange(status);
+                })
+                .onDragEnd((event: DragEvent) => {
+                  // onDragEnd里取到的result值在接收方onDrop设置
+                  if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+                  } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+                  }
+                })
+            }
+
+            Text('Drag Target Area')
+              .fontSize(20)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
+                .draggable(true)
+                .margin({ left: 15 })
+                .border({ color: Color.Black, width: 1 })
+                // 控制角标显示类型为MOVE，即不显示角标
+                .onDragMove((event: DragEvent) => {
+                  event.setResult(DragResult.DROP_ENABLED)
+                  event.dragBehavior = DragBehavior.MOVE
+                })
+                .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+                .onDrop((dragEvent?: DragEvent) => {
+                  // 获取拖拽数据
+                  this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+                    let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
+                    let rect: Rectangle = event.getPreviewRect();
+                    this.imageWidth = Number(rect.width);
+                    this.imageHeight = Number(rect.height);
+                    this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+                    this.imgState = Visibility.None;
+                    // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+                    event.setResult(DragResult.DRAG_SUCCESSFUL);
+                  })
+                })
+            }
+          }
+          .width('100%')
+          .height('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
+
+2. ArkTs-Sta示例：
+
+    ```ts
+    import { Entry, Column, Row, Component, Builder, Color, Text, Rectangle, Image, DragEvent, DragItemInfo, DragResult, DragBehavior, LongPressGesture, GestureEvent, Margin, Visibility, UnifiedData, PreDragStatus } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+    import { promptAction } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { image } from '@kit.ImageKit';
+
+    @Entry
+    @Component
+    struct Index {
+      @State targetImage: string = '';
+      @State imageWidth: number = 100;
+      @State imageHeight: number = 100;
+      @State imgState: Visibility = Visibility.Visible;
+      @State pixmap: image.PixelMap|undefined = undefined;
+
+      @Builder
+      pixelMapBuilder() {
+        Column() {
+          Image('app.media.startIcon')
+            .width(120)
+            .height(120)
+            .backgroundColor(Color.Yellow)
+        }
+      }
+
+      getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
+        try {
+          let data: UnifiedData = event.getData();
+          if (!data) {
+            return false;
+          }
+          let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+          if (!records || records.length <= 0) {
+            return false;
+          }
+          callback(event);
+          return true;
+        } catch (e) {
+          console.log("getData failed, code: " + (e as BusinessError).code + ", message: " + (e as BusinessError).message);
+          return false;
+        }
+      }
+      // 获取UDMF数据，首次获取失败后添加1500ms延迟重试机制
+      getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
+        if (this.getDataFromUdmfRetry(event, callback)) {
+          return;
+        }
+        setTimeout(() => {
+          this.getDataFromUdmfRetry(event, callback);
+        }, 1500);
+      }
+      // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+      private getComponentSnapshot(): void {
+        this.getUIContext().getComponentSnapshot().createFromBuilder(()=>{this.pixelMapBuilder()},
+          (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
+            if(error){
+              console.log("error: " + JSON.stringify(error))
+              return;
+            }
+            this.pixmap = pixmap;
+          })
+      }
+      // 长按50ms时提前准备自定义截图的pixmap
+      private PreDragChange(preDragStatus: PreDragStatus): void {
+        if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+          this.getComponentSnapshot();
+        }
+      }
+
+      build() {
+        Row() {
+          Column() {
+            Text('start Drag')
+              .fontSize(18)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              Image('app.media.app_icon')
+                .width(100)
+                .height(100)
+                .draggable(true)
+                .margin({ left: 15 } as Margin)
+                .visibility(this.imgState)
+                // 绑定平行手势，可同时触发应用自定义长按手势
+                .parallelGesture(LongPressGesture().onAction((event: GestureEvent) => {
+                  this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Long press gesture trigger' });
+                }))
+                .onDragStart((event: DragEvent) => {
+                  let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                  data.imageUri = 'common/pic/img.png';
+                  let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                  event.setData(unifiedData);
+
+                  let dragItemInfo: DragItemInfo = {
+                    pixelMap: this.pixmap,
+                    extraInfo: "this is extraInfo",
+                  };
+                  return dragItemInfo;
+                })
+                  // 提前准备拖拽自定义背板图
+                .onPreDrag((status: PreDragStatus) => {
+                  this.PreDragChange(status);
+                })
+                .onDragEnd((event: DragEvent) => {
+                  // onDragEnd里取到的result值在接收方onDrop设置
+                  if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+                  } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+                  }
+                })
+            }
+
+            Text('Drag Target Area')
+              .fontSize(20)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
+                .draggable(true)
+                .margin({ left: 15 } as Margin)
+                .border({ color: Color.Black, width: 1 })
+                // 控制角标显示类型为MOVE，即不显示角标
+                .onDragMove((event: DragEvent) => {
+                  event.setResult(DragResult.DROP_ENABLED)
+                  event.dragBehavior = DragBehavior.MOVE
+                })
+                .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+            }
+          }
+          .width('100%')
+          .height('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
+
+    ![commonDrag](figures/commonDrag.gif)
 
 ### 多选拖拽适配
 
@@ -530,97 +680,195 @@ struct Index {
 
 **完整示例：**
 
-```ts
-import { image } from '@kit.ImageKit';
+1. ArkTs-Dyn示例：
 
-@Entry
-@Component
-struct GridEts {
-  @State pixmap: image.PixelMap|undefined = undefined
-  @State numbers: number[] = []
-  @State isSelectedGrid: boolean[] = []
-  @State previewData: DragItemInfo[] = []
-  @State numberBadge: number = 0;
+    ```ts
+    import { image } from '@kit.ImageKit';
 
-  @Styles
-  normalStyles(): void{
-    .opacity(1.0)
-  }
+    @Entry
+    @Component
+    struct GridEts {
+      @State pixmap: image.PixelMap|undefined = undefined;
+      @State numbers: number[] = [];
+      @State isSelectedGrid: boolean[] = [];
+      @State previewData: DragItemInfo[] = [];
+      @State numberBadge: number = 0;
 
-  @Styles
-  selectStyles(): void{
-    .opacity(0.4)
-  }
+      @Styles
+      normalStyles(): void{
+        .opacity(1.0)
+      }
 
-  onPageShow(): void {
-    let i: number = 0
-    for(i=0;i<100;i++){
-      this.numbers.push(i)
-      this.isSelectedGrid.push(false)
-      this.previewData.push({})
-    }
-  }
+      @Styles
+      selectStyles(): void{
+        .opacity(0.4)
+      }
 
-  @Builder
-  RandomBuilder(idx: number) {
-    Column()
-      .backgroundColor(Color.Blue)
-      .width(50)
-      .height(50)
-      .opacity(1.0)
-  }
+      onPageShow(): void {
+        let i: number = 0
+        for(i=0;i<100;i++){
+          this.numbers.push(i)
+          this.isSelectedGrid.push(false)
+          this.previewData.push({})
+        }
+      }
 
-  build() {
-    Column({ space: 5 }) {
-      Grid() {
-        ForEach(this.numbers, (idx: number) => {
-          GridItem() {
-            Column()
-              .backgroundColor(Color.Blue)
-              .width(50)
-              .height(50)
-              .opacity(1.0)
-              .id('grid'+idx)
-          }
-          .dragPreview(this.previewData[idx])
-          .selectable(true)
-          .selected(this.isSelectedGrid[idx])
-          // 设置多选显示效果
-          .stateStyles({
-            normal : this.normalStyles,
-            selected: this.selectStyles
-          })
-          .onClick((event: ClickEvent)=>{
-            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
-            if (this.isSelectedGrid[idx]) {
-              this.numberBadge++;
-              let gridItemName = 'grid' + idx
-              // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
-              this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap)=>{
-                this.pixmap = pixmap
-                this.previewData[idx] = {
-                  pixelMap:this.pixmap
+      @Builder
+      RandomBuilder(idx: number) {
+        Column()
+          .backgroundColor(Color.Blue)
+          .width(50)
+          .height(50)
+          .opacity(1.0)
+      }
+
+      build() {
+        Column({ space: 5 }) {
+          Grid() {
+            ForEach(this.numbers, (idx: number) => {
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid'+idx)
+              }
+              .dragPreview(this.previewData[idx])
+              .selectable(true)
+              .selected(this.isSelectedGrid[idx])
+              // 设置多选显示效果
+              .stateStyles({
+                normal : this.normalStyles,
+                selected: this.selectStyles
+              })
+              .onClick((event: ClickEvent)=>{
+                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
+                if (this.isSelectedGrid[idx]) {
+                  this.numberBadge++;
+                  let gridItemName = 'grid' + idx;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap)=>{
+                    this.pixmap = pixmap;
+                    this.previewData[idx] = {
+                      pixelMap:this.pixmap
+                    }
+                  })
+                } else {
+                  this.numberBadge--;
                 }
               })
-            } else {
-              this.numberBadge--;
-            }
-          })
-          // 使能多选拖拽，右上角数量角标需要应用设置numberBadge参数
-          .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
-          .onDragStart((event: DragEvent)=>{
-          })
-        }, (idx: string) => idx)
+              // 使能多选拖拽，右上角数量角标需要应用设置numberBadge参数
+              .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
+              .onDragStart((event: DragEvent)=>{
+              })
+            }, (idx: string) => idx)
+          }
+          .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+          .columnsGap(5)
+          .rowsGap(10)
+          .backgroundColor(0xFAEEE0)
+        }.width('100%').margin({ top: 5 })
       }
-      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
-      .columnsGap(5)
-      .rowsGap(10)
-      .backgroundColor(0xFAEEE0)
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-![multiDrag](figures/multiDrag.gif)
+    }
+    ```
+
+2. ArkTs-Sta示例：
+
+    ```ts
+    import { Entry, Column, Component, Grid, GridItem, ForEach, Color, ClickEvent, DragEvent, DragItemInfo, ColumnOptions, Margin, Builder, CustomStyles, BusinessError, CommonMethod, Array } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { image } from "@ohos.multimedia.image";
+
+    @Entry
+    @Component
+    struct GridEts {
+      @State pixmap: image.PixelMap|undefined = undefined;
+      @State numbers:Int[] = [0];
+      @State isSelectedGrid: boolean[] = [false];
+      @State previewData: DragItemInfo[] = [{} as DragItemInfo];
+      @State numberBadge: Int = 0;
+
+      normalStyles: CustomStyles = (instance: CommonMethod): void => {
+        instance.opacity(1.0);
+      }
+
+      selectStyles: CustomStyles = (instance: CommonMethod): void => {
+        instance.opacity(0.4);
+      }
+
+      onPageShow(): void {
+        let i: Int = 1
+        for(i=1;i<100;i++){
+          this.numbers.push(i)
+          this.isSelectedGrid.push()
+          this.previewData.push({} as DragItemInfo)
+        }
+      }
+
+      @Builder
+      RandomBuilder(idx: Int) {
+        Column()
+          .backgroundColor(Color.Blue)
+          .width(50)
+          .height(50)
+          .opacity(1.0)
+      }
+
+      build() {
+        this.onPageShow()
+        Column({ space: 5 } as ColumnOptions) {
+          Grid() {
+            ForEach(this.numbers, (idx: Int) => {
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid'+idx)
+              }
+              .dragPreview(this.previewData[idx])
+              .selectable(true)
+              .selected(this.isSelectedGrid[idx])
+              // 设置多选显示效果
+              .stateStyles({
+                normal : this.normalStyles,
+                selected: this.selectStyles
+              })
+              .onClick((event: ClickEvent)=>{
+                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
+                if (this.isSelectedGrid[idx]) {
+                  this.numberBadge++;
+                  let gridItemName = 'grid' + idx;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: BusinessError |null, pixmap: image.PixelMap|undefined) => {
+                    this.pixmap = pixmap;
+                    this.previewData[idx] = {
+                      pixelMap:this.pixmap
+                    }
+                  })
+                } else {
+                  this.numberBadge--;
+                }
+              })
+              // 使能多选拖拽，右上角数量角标需要应用设置numberBadge参数
+              .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
+              .onDragStart((event: DragEvent, extraParams?: string) => {
+                return {} as DragItemInfo;
+              })
+            }, (idx: Int) => idx.toString())
+          }
+          .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+          .columnsGap(5)
+          .rowsGap(10)
+          .backgroundColor(0xFAEEE0)
+        }.width('100%').margin({ top: 5 } as Margin)
+      }
+    }
+    ```
+
+    ![multiDrag](figures/multiDrag.gif)
 
 ### 适配自定义落位动效
 
@@ -679,85 +927,172 @@ struct GridEts {
 
 **完整示例：**
 
-```ts
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { promptAction } from '@kit.ArkUI';
+1. ArkTs-Dyn示例：
+
+    ```ts
+    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+    import { promptAction } from '@kit.ArkUI';
 
 
-@Entry
-@Component
-struct DropAnimationExample {
-  @State targetImage: string = '';
-  @State imageWidth: number = 100;
-  @State imageHeight: number = 100;
-  @State imgState: Visibility = Visibility.Visible;
+    @Entry
+    @Component
+    struct DropAnimationExample {
+      @State targetImage: string = '';
+      @State imageWidth: number = 100;
+      @State imageHeight: number = 100;
+      @State imgState: Visibility = Visibility.Visible;
 
-  customDropAnimation =
-    () => {
-      this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
-        this.imageWidth = 200;
-        this.imageHeight = 200;
-        this.imgState = Visibility.None;
-      })
-    }
-
-  build() {
-    Row() {
-      Column() {
-        Image($r('app.media.app_icon'))
-          .width(100)
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15 ,top: 40})
-          .visibility(this.imgState)
-          .onDragStart((event: DragEvent) => {
+      customDropAnimation =
+        () => {
+          this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
+            this.imageWidth = 200;
+            this.imageHeight = 200;
+            this.imgState = Visibility.None;
           })
-          .onDragEnd((event: DragEvent) => {
-            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-              console.log('Drag Success');
-            } else if (event.getResult() === DragResult.DRAG_FAILED) {
-              console.log('Drag failed');
+        }
+
+      build() {
+        Row() {
+          Column() {
+            Image($r('app.media.app_icon'))
+              .width(100)
+              .height(100)
+              .draggable(true)
+              .margin({ left: 15 ,top: 40})
+              .visibility(this.imgState)
+              .onDragStart((event: DragEvent) => {
+              })
+              .onDragEnd((event: DragEvent) => {
+                if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                  console.log('Drag Success');
+                } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                  console.log('Drag failed');
+                }
+              })
+          }.width('45%')
+          .height('100%')
+          Column() {
+            Text('Drag Target Area')
+              .fontSize(20)
+              .width(180)
+              .height(40)
+              .textAlign(TextAlign.Center)
+              .margin(10)
+              .backgroundColor('rgb(240,250,255)')
+            Column() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
             }
-          })
-      }.width('45%')
-      .height('100%')
-      Column() {
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width(180)
-          .height(40)
-          .textAlign(TextAlign.Center)
-          .margin(10)
-          .backgroundColor('rgb(240,250,255)')
-        Column() {
-          Image(this.targetImage)
+            .draggable(true)
+            .margin({ left: 15 })
+            .border({ color: Color.Black, width: 1 })
+            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+            .onDrop((dragEvent: DragEvent) => {
+              let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
+              let rect: Rectangle = dragEvent.getPreviewRect();
+              this.imageWidth = Number(rect.width);
+              this.imageHeight = Number(rect.height);
+              this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+              dragEvent.useCustomDropAnimation = true;
+              dragEvent.executeDropAnimation(this.customDropAnimation);
+            })
             .width(this.imageWidth)
             .height(this.imageHeight)
+          }.width('45%')
+          .height('100%')
+          .margin({ left: '5%' })
         }
-        .draggable(true)
-        .margin({ left: 15 })
-        .border({ color: Color.Black, width: 1 })
-        .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-        .onDrop((dragEvent: DragEvent) => {
-          let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
-          let rect: Rectangle = dragEvent.getPreviewRect();
-          this.imageWidth = Number(rect.width);
-          this.imageHeight = Number(rect.height);
-          this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-          dragEvent.useCustomDropAnimation = true;
-          dragEvent.executeDropAnimation(this.customDropAnimation)
-        })
-        .width(this.imageWidth)
-        .height(this.imageHeight)
-      }.width('45%')
-      .height('100%')
-      .margin({ left: '5%' })
+        .height('100%')
+      }
     }
-    .height('100%')
-  }
-}
-```
-![executeDropAnimation](figures/executeDropAnimation.gif)
+    ```
+
+2. ArkTs-Sta示例：
+
+    ```ts
+    import { Entry, Column, Row, Component, Image, Text, TextAlign, Color, Rectangle, DragEvent, DragItemInfo, DragResult,
+    Margin, Curve, PlayMode, Visibility, $r } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+    import { promptAction } from '@kit.ArkUI';
+
+    @Entry
+    @Component
+    struct DropAnimationExample {
+      @State targetImage: string = '';
+      @State imageWidth: number = 100;
+      @State imageHeight: number = 100;
+      @State imgState: Visibility = Visibility.Visible;
+
+      customDropAnimation =
+        () => {
+          this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
+            this.imageWidth = 200;
+            this.imageHeight = 200;
+            this.imgState = Visibility.None;
+          })
+        }
+
+      build() {
+        Row() {
+          Column() {
+            Image($r('app.media.startIcon'))
+              .width(100)
+              .height(100)
+              .draggable(true)
+              .margin({ left: 15 ,top: 40} as Margin)
+              .visibility(this.imgState)
+              .onDragStart((event: DragEvent, extraParams?: string) => {
+                return {} as DragItemInfo
+              })
+              .onDragEnd((event: DragEvent) => {
+                if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                  console.log('Drag Success');
+                } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                  console.log('Drag failed');
+                }
+              })
+          }.width('45%')
+          .height('100%')
+          Column() {
+              Text('Drag Target Area')
+                .fontSize(20)
+                .width(180)
+                .height(40)
+                .textAlign(TextAlign.Center)
+                .margin(10)
+                .backgroundColor('rgb(240,250,255)')
+            Column() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
+            }
+            .draggable(true)
+            .margin({ left: 15 } as Margin)
+            .border({ color: Color.Black, width: 1 })
+            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+            .onDrop((dragEvent: DragEvent, extraParams?: string) => {
+              let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
+              let rect: Rectangle = dragEvent.getPreviewRect();
+              this.imageWidth = Number(rect.width as Double);
+              this.imageHeight = Number(rect.height as Double);
+              this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+              dragEvent.useCustomDropAnimation = true;
+              dragEvent.executeDropAnimation(this.customDropAnimation);
+            })
+            .width(this.imageWidth)
+            .height(this.imageHeight)
+          }.width('45%')
+          .height('100%')
+          .margin({ left: '5%' } as Margin)
+        }
+        .height('100%')
+      }
+    }
+    ```
+
+    ![executeDropAnimation](figures/executeDropAnimation.gif)
 
 ### 处理大批量数据
 
@@ -874,128 +1209,72 @@ struct DropAnimationExample {
 
 **完整示例：**
 
-```ts
-import { image } from '@kit.ImageKit';
-import { unifiedDataChannel as UDC } from '@kit.ArkData';
-import { dragController } from '@kit.ArkUI';
+1. ArkTs-Dyn示例：
 
-@Entry
-@Component
-struct GridEts {
-  @State pixmap: image.PixelMap|undefined = undefined
-  @State numbers: number[] = []
-  @State isSelectedGrid: boolean[] = []
-  @State previewData: DragItemInfo[] = []
-  @State numberBadge: number = 0;
-  unifiedData: UnifiedData|undefined = undefined;
-  timeout: number = 1
-  finished: boolean = false;
-  dragEvent: DragEvent|undefined;
+    ```ts
+    import { image } from '@kit.ImageKit';
+    import { unifiedDataChannel as UDC } from '@kit.ArkData';
+    import { dragController } from '@kit.ArkUI';
 
-  @Styles
-  normalStyles(): void{
-    .opacity(1.0)
-  }
+    @Entry
+    @Component
+    struct GridEts {
+      @State pixmap: image.PixelMap|undefined = undefined;
+      @State numbers: number[] = [];
+      @State isSelectedGrid: boolean[] = [];
+      @State previewData: DragItemInfo[] = [];
+      @State numberBadge: number = 0;
+      unifiedData: UnifiedData|undefined = undefined;
+      timeout: number = 1;
+      finished: boolean = false;
+      dragEvent: DragEvent|undefined;
 
-  @Styles
-  selectStyles(): void{
-    .opacity(0.4)
-  }
-
-  onPageShow(): void {
-    let i: number = 0
-    for(i=0;i<500;i++){
-      this.numbers.push(i)
-      this.isSelectedGrid.push(false)
-      this.previewData.push({})
-    }
-  }
-
-  loadData() {
-    this.timeout = setTimeout(() => {
-      //数据准备完成后的状态
-      if (this.dragEvent) {
-        this.dragEvent.setData(this.unifiedData);
+      @Styles
+      normalStyles(): void{
+        .opacity(1.0)
       }
-      this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
-      this.finished = true;
-    }, 4000);
-  }
 
-  @Builder
-  RandomBuilder(idx: number) {
-    Column()
-      .backgroundColor(Color.Blue)
-      .width(50)
-      .height(50)
-      .opacity(1.0)
-  }
+      @Styles
+      selectStyles(): void{
+        .opacity(0.4)
+      }
 
-  build() {
-    Column({ space: 5 }) {
-      Button('全选')
-        .onClick((event: ClickEvent) => {
-          for (let i=0;i<this.isSelectedGrid.length;i++) {
-            if (this.isSelectedGrid[i] === false) {
-              this.numberBadge++;
-              this.isSelectedGrid[i] = true;
-              let data: UDC.Image = new UDC.Image();
-              data.uri = '/resource/image.jpeg';
-              if (!this.unifiedData) {
-                this.unifiedData = new UDC.UnifiedData(data);
-              }
-              this.unifiedData.addRecord(data);
-              let gridItemName = 'grid' + i;
-              // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
-              this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap)=>{
-                this.pixmap = pixmap
-                this.previewData[i] = {
-                  pixelMap:this.pixmap
-                }
-              })
-            }
+      onPageShow(): void {
+        let i: number = 0
+        for(i=0;i<500;i++){
+          this.numbers.push(i)
+          this.isSelectedGrid.push(false)
+          this.previewData.push({})
+        }
+      }
+
+      loadData() {
+        this.timeout = setTimeout(() => {
+          // 数据准备完成后的状态
+          if (this.dragEvent) {
+            this.dragEvent.setData(this.unifiedData);
           }
-        })
-      Grid() {
-        ForEach(this.numbers, (idx: number) => {
-          GridItem() {
-            Column()
-              .backgroundColor(Color.Blue)
-              .width(50)
-              .height(50)
-              .opacity(1.0)
-              .id('grid'+idx)
-          }
-          .dragPreview(this.previewData[idx])
-          .selectable(true)
-          .selected(this.isSelectedGrid[idx])
-          // 设置多选显示效果
-          .stateStyles({
-            normal : this.normalStyles,
-            selected: this.selectStyles
-          })
-          .onClick((event: ClickEvent)=>{
-            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-            if (this.isSelectedGrid[idx]) {
-              let data: UDC.Image = new UDC.Image();
-              data.uri = '/resource/image.jpeg';
-              if (!this.unifiedData) {
-                this.unifiedData = new UDC.UnifiedData(data);
-              }
-              this.unifiedData.addRecord(data);
-              this.numberBadge++;
-              let gridItemName = 'grid' + idx;
-              // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
-              this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap)=>{
-                this.pixmap = pixmap;
-                this.previewData[idx] = {
-                  pixelMap:this.pixmap
-                }
-              })
-            } else {
-              this.numberBadge--;
-              for (let i=0; i<this.isSelectedGrid.length; i++) {
-                if (this.isSelectedGrid[i] === true) {
+          this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
+          this.finished = true;
+        }, 4000);
+      }
+
+      @Builder
+      RandomBuilder(idx: number) {
+        Column()
+          .backgroundColor(Color.Blue)
+          .width(50)
+          .height(50)
+          .opacity(1.0)
+      }
+
+      build() {
+        Column({ space: 5 }) {
+          Button('全选')
+            .onClick((event: ClickEvent) => {
+              for (let i=0;i<this.isSelectedGrid.length;i++) {
+                if (this.isSelectedGrid[i] === false) {
+                  this.numberBadge++;
                   this.isSelectedGrid[i] = true;
                   let data: UDC.Image = new UDC.Image();
                   data.uri = '/resource/image.jpeg';
@@ -1003,44 +1282,275 @@ struct GridEts {
                     this.unifiedData = new UDC.UnifiedData(data);
                   }
                   this.unifiedData.addRecord(data);
+                  let gridItemName = 'grid' + i;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap)=>{
+                    this.pixmap = pixmap;
+                    this.previewData[i] = {
+                      pixelMap:this.pixmap
+                    }
+                  })
                 }
               }
-            }
-          })
-          .onPreDrag((status: PreDragStatus) => {
-            // 1.长按时通知，350ms回调
-            if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
-              // 2.用户按住一段时间，还没有松手，有可能会拖拽，此时可准备数据
-              this.loadData()
-            } else if (status == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
-              // 3.用户停止拖拽交互，取消数据准备(模拟方法：定时器取消)
-              clearTimeout(this.timeout);
-            }
-          })
-          // >=500ms,移动超过10vp触发
-          .onDragStart((event: DragEvent) => {
-            this.dragEvent = event;
-            if (this.finished == false) {
-              this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
-            } else {
-              event.setData(this.unifiedData);
-            }
-          })
-          .onDragEnd((event: DragEvent) => {
-            this.finished = false;
-          })
-          .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
-        }, (idx: string) => idx)
+            })
+          Grid() {
+            ForEach(this.numbers, (idx: number) => {
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid'+idx)
+              }
+              .dragPreview(this.previewData[idx])
+              .selectable(true)
+              .selected(this.isSelectedGrid[idx])
+              // 设置多选显示效果
+              .stateStyles({
+                normal : this.normalStyles,
+                selected: this.selectStyles
+              })
+              .onClick((event: ClickEvent)=>{
+                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                if (this.isSelectedGrid[idx]) {
+                  let data: UDC.Image = new UDC.Image();
+                  data.uri = '/resource/image.jpeg';
+                  if (!this.unifiedData) {
+                    this.unifiedData = new UDC.UnifiedData(data);
+                  }
+                  this.unifiedData.addRecord(data);
+                  this.numberBadge++;
+                  let gridItemName = 'grid' + idx;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap)=>{
+                    this.pixmap = pixmap;
+                    this.previewData[idx] = {
+                      pixelMap:this.pixmap
+                    }
+                  })
+                } else {
+                  this.numberBadge--;
+                  for (let i=0; i<this.isSelectedGrid.length; i++) {
+                    if (this.isSelectedGrid[i] === true) {
+                      this.isSelectedGrid[i] = true;
+                      let data: UDC.Image = new UDC.Image();
+                      data.uri = '/resource/image.jpeg';
+                      if (!this.unifiedData) {
+                        this.unifiedData = new UDC.UnifiedData(data);
+                      }
+                      this.unifiedData.addRecord(data);
+                    }
+                  }
+                }
+              })
+              .onPreDrag((status: PreDragStatus) => {
+                // 1.长按时通知，350ms回调
+                if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+                  // 2.用户按住一段时间，还没有松手，有可能会拖拽，此时可准备数据
+                  this.loadData()
+                } else if (status == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
+                  // 3.用户停止拖拽交互，取消数据准备(模拟方法：定时器取消)
+                  clearTimeout(this.timeout);
+                }
+              })
+              // >=500ms,移动超过10vp触发
+              .onDragStart((event: DragEvent) => {
+                this.dragEvent = event;
+                if (this.finished == false) {
+                  this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+                } else {
+                  event.setData(this.unifiedData);
+                }
+              })
+              .onDragEnd((event: DragEvent) => {
+                this.finished = false;
+              })
+              .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
+            }, (idx: string) => idx)
+          }
+          .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+          .columnsGap(5)
+          .rowsGap(10)
+          .backgroundColor(0xFAEEE0)
+        }.width('100%').margin({ top: 5 })
       }
-      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
-      .columnsGap(5)
-      .rowsGap(10)
-      .backgroundColor(0xFAEEE0)
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-![patchDataProcess](figures/patchDataProcess.gif)
+    }
+    ```
+
+2. ArkTs-Sta示例：
+
+    ```ts
+    import { Entry, Column, ColumnOptions, Component, Image, Grid, GridItem, Button, Color, Rectangle, DragEvent,
+    DragItemInfo, DragResult, Margin, ClickEvent, PreDragStatus, UnifiedData, ForEach, CustomStyles, CommonMethod,
+    Builder, BusinessError } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { image } from '@kit.ImageKit';
+    import { unifiedDataChannel as UDC } from '@kit.ArkData';
+    import dragController from "@ohos.arkui.dragController";
+
+    @Entry
+    @Component
+    struct GridEts {
+      @State pixmap: image.PixelMap|undefined = undefined;
+      @State numbers: Int[] = [0];
+      @State isSelectedGrid: boolean[] = [false];
+      @State previewData: DragItemInfo[] = [{} as DragItemInfo];
+      @State numberBadge: number = 0;
+      unifiedData: UnifiedData = new UDC.UnifiedData();
+      timeout: Int = 1;
+      finished: boolean = false;
+      dragEvent: DragEvent|undefined;
+
+      normalStyles: CustomStyles = (instance: CommonMethod): void => {
+        instance.opacity(1.0);
+      }
+
+      selectStyles: CustomStyles = (instance: CommonMethod): void => {
+        instance.opacity(0.4);
+      }
+
+      onPageShow(): void {
+        let i: Int = 1
+        for(i=1;i<500;i++){
+          this.numbers.push(i)
+          this.isSelectedGrid.push(false)
+          this.previewData.push({})
+        }
+      }
+
+      loadData() {
+        this.timeout = setTimeout(() => {
+          // 数据准备完成后的状态
+          if (this.dragEvent) {
+            this.dragEvent?.setData(this.unifiedData);
+          }
+          this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
+          this.finished = true;
+        }, 4000);
+      }
+
+      @Builder
+      RandomBuilder(idx: number) {
+        Column()
+          .backgroundColor(Color.Blue)
+          .width(50)
+          .height(50)
+          .opacity(1.0)
+      }
+
+      build() {
+        Column({ space: 5 } as ColumnOptions) {
+          Button('全选')
+            .onClick((event: ClickEvent) => {
+              for (let i=0;i<this.isSelectedGrid.length;i++) {
+                if (this.isSelectedGrid[i] === false) {
+                  this.numberBadge++;
+                  this.isSelectedGrid[i] = true;
+                  let data: UDC.Image = new UDC.Image();
+                  data.uri = '/resource/image.jpeg';
+                  if (!this.unifiedData) {
+                    this.unifiedData = new UDC.UnifiedData(data);
+                  }
+                  this.unifiedData.addRecord(data);
+                  let gridItemName = 'grid' + i;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: BusinessError |null, pixmap: image.PixelMap|undefined) => {
+                    this.pixmap = pixmap;
+                    this.previewData[i] = {
+                      pixelMap:this.pixmap
+                    }
+                  })
+                }
+              }
+            })
+          Grid() {
+            ForEach(this.numbers, (idx: Int) => {
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid'+idx)
+              }
+              .dragPreview(this.previewData[idx])
+              .selectable(true)
+              .selected(this.isSelectedGrid[idx])
+              // 设置多选显示效果
+              .stateStyles({
+                normal : this.normalStyles,
+                selected: this.selectStyles
+              })
+              .onClick((event: ClickEvent)=>{
+                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                if (this.isSelectedGrid[idx]) {
+                  let data: UDC.Image = new UDC.Image();
+                  data.uri = '/resource/image.jpeg';
+                  if (!this.unifiedData) {
+                    this.unifiedData = new UDC.UnifiedData(data);
+                  }
+                  this.unifiedData.addRecord(data);
+                  this.numberBadge++;
+                  let gridItemName = 'grid' + idx;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: BusinessError |null, pixmap: image.PixelMap|undefined) => {
+                    this.pixmap = pixmap;
+                    this.previewData[idx] = {
+                      pixelMap:this.pixmap
+                    }
+                  })
+                } else {
+                  this.numberBadge--;
+                  for (let i=0; i<this.isSelectedGrid.length; i++) {
+                    if (this.isSelectedGrid[i] === true) {
+                      this.isSelectedGrid[i] = true;
+                      let data: UDC.Image = new UDC.Image();
+                      data.uri = '/resource/image.jpeg';
+                      if (!this.unifiedData) {
+                        this.unifiedData = new UDC.UnifiedData(data);
+                      }
+                      this.unifiedData.addRecord(data);
+                    }
+                  }
+                }
+              })
+              .onPreDrag((status: PreDragStatus) => {
+                // 1.长按时通知，350ms回调
+                if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+                  // 2.用户按住一段时间，还没有松手，有可能会拖拽，此时可准备数据
+                  this.loadData()
+                } else if (status == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
+                  // 3.用户停止拖拽交互，取消数据准备(模拟方法：定时器取消)
+                  clearTimeout(this.timeout);
+                }
+              })
+              // >=500ms,移动超过10vp触发
+              .onDragStart((event: DragEvent, extraParams?: string) => {
+                this.dragEvent = event;
+                if (this.finished == false) {
+                  this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+                } else {
+                  event.setData(this.unifiedData);
+                }
+                return {} as DragItemInfo;
+              })
+              .onDragEnd((event: DragEvent) => {
+                this.finished = false;
+              })
+              .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
+            }, (idx: Int) => idx.toString())
+          }
+          .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+          .columnsGap(5)
+          .rowsGap(10)
+          .backgroundColor(0xFAEEE0)
+        }.width('100%').margin({ top: 5 } as Margin)
+      }
+    }
+    ```
+
+    ![patchDataProcess](figures/patchDataProcess.gif)
 
 
 ## 支持悬停检测
@@ -1229,7 +1739,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
 **完整代码如下**
 
-  ```typescript
+  ```ts
   import { dragController } from '@kit.ArkUI';
   import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
   
@@ -1341,11 +1851,11 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
           .backgroundColor(this.buttonBackgroundColor)
           .onDragEnter((event: DragEvent)=>{
             // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
-            this.buttonBackgroundColor = this.reminderColor
+            this.buttonBackgroundColor = this.reminderColor;
           })
           .onDragLeave((event: DragEvent)=>{
             // 当用户拖拽离开按钮范围，恢复UI
-            this.buttonBackgroundColor = this.normalColor
+            this.buttonBackgroundColor = this.normalColor;
           })
           .onDragSpringLoading((context: SpringLoadingContext)=>{
             this.handleSpringLoading(context);

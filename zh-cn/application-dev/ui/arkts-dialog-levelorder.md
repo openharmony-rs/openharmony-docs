@@ -17,55 +17,121 @@ ArkUI的弹出框节点都是直接挂载在根节点上，会根据层级从小
 > 
 > 详细变量定义请参考[完整示例](#完整示例)。
 
-1.初始化一个弹出框内容区，内部包含一个Text组件。
+1. 初始化一个弹出框内容区，内部包含一个Text组件。
 
-```ts
-@Builder normalCustomDialog(index: number) {
-  Column() {
-    Text("我是普通弹窗" + index).fontSize(30)
-  }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
-}
-```
+   ArkTS-Dyn示例：
 
-2.初始化另一个弹出框内容区，内部包含一个点击打开普通弹出框的按钮，点击事件中通过调用[UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext)中[getPromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#promptaction)对象，在通过该对象调用[openCustomDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12)接口，并且设置层级为0的[levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来创建普通层级弹出框。
+   ```ts
+   @Builder normalCustomDialog(index: number) {
+     Column() {
+       Text("我是普通弹窗" + index).fontSize(30)
+     }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
+   }
+   ```
 
-```ts
-@Builder topCustomDialog() {
-  Column() {
-    Text("我是置顶弹窗").fontSize(30)
-    Row({ space: 50 }) {
-      Button('点我打开普通弹窗')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().openCustomDialog({
-            builder: () => {
-              this.normalCustomDialog(this.dialogIndex)
-            },
-            levelOrder: LevelOrder.clamp(0),
-          })
-            .catch((err: BusinessError) => {
-              console.error("openCustomDialog error: " + err.code + " " + err.message)
-            })
-          this.dialogIndex++
-        })
-    }
-  }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
-}
-```
+   ArkTS-Sta示例：
 
-3.通过调用[UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext)中[getPromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#promptaction)对象，在通过该对象调用[openCustomDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12)接口，并且设置层级为100000的[levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来创建最高层级弹出框。
+   ```ts
+   import { Builder, FlexAlign, Text, Column } from '@ohos.arkui.component';
+   
+   @Builder normalCustomDialog(index: number) {
+     Column() {
+       Text("我是普通弹窗" + index).fontSize(30)
+     }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
+   }
+   ```
 
-```ts
-this.getUIContext().getPromptAction().openCustomDialog({
-  builder: () => {
-    this.topCustomDialog()
-  },
-  levelOrder: LevelOrder.clamp(100000)
-}).catch((err: BusinessError) => {
-  console.error("openCustomDialog error: " + err.code + " " + err.message)
-})
-```
+2. 初始化另一个弹出框内容区，内部包含一个点击打开普通弹出框的按钮，点击事件中通过调用[UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext)中[getPromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#promptaction)对象，在通过该对象调用[openCustomDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12)接口，并且设置[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)中层级为0的levelOrder参数来创建普通层级弹出框。
+
+   ArkTS-Dyn示例：
+
+   ```ts
+   @Builder topCustomDialog() {
+     Column() {
+       Text("我是置顶弹窗").fontSize(30)
+       Row({ space: 50 }) {
+         Button('点我打开普通弹窗')
+           .onClick(() => {
+             this.getUIContext().getPromptAction().openCustomDialog({
+               builder: () => {
+                 this.normalCustomDialog(this.dialogIndex)
+               },
+               levelOrder: LevelOrder.clamp(0),
+             })
+               .catch((err: BusinessError) => {
+                 console.error("openCustomDialog error: " + err.code + " " + err.message)
+               })
+             this.dialogIndex++
+           })
+       }
+     }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   import { Builder, FlexAlign, Text, Row, Column, Button, RowOptions } from '@ohos.arkui.component';
+   import promptAction, { LevelOrder } from '@ohos.promptAction';
+   
+   @Builder topCustomDialog() {
+     Column() {
+       Text('我是置顶弹窗').fontSize(30)
+       Row({ space: 50 } as RowOptions) {
+         Button('点我打开普通弹窗')
+           .onClick(() => {
+             this.getUIContext().getPromptAction().openCustomDialog({
+               builder: () => {
+                 this.normalCustomDialog(this.dialogIndex)
+               },
+               levelOrder: LevelOrder.clamp(0),
+             } as promptAction.CustomDialogOptions)
+               .catch((err: Error) => {
+                 console.error('presentCustomDialog error: ' + err.code + '' + err.message);
+               })
+             this.dialogIndex++
+           })
+       }
+     }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
+   }
+   ```
+
+3. 通过调用[UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext)中[getPromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/js-apis-arkui-UIContext.md#promptaction)对象，在通过该对象调用[openCustomDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12)接口，并且设置[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)层级为100000的levelOrder参数来创建最高层级弹出框。
+
+   ArkTS-Dyn示例：
+
+   ```ts
+   this.getUIContext().getPromptAction().openCustomDialog({
+     builder: () => {
+       this.topCustomDialog()
+     },
+     levelOrder: LevelOrder.clamp(100000)
+   }).catch((err: BusinessError) => {
+     console.error("openCustomDialog error: " + err.code + " " + err.message)
+   })
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   import { State, StorageLink } from '@ohos.arkui.stateManagement';
+   import promptAction, { LevelOrder } from '@ohos.promptAction';
+   
+   this.getUIContext().getPromptAction().openCustomDialog({
+     builder: () => {
+       this.topCustomDialog()
+     },
+     levelOrder: LevelOrder.clamp(100000)
+   } as promptAction.CustomDialogOptions)
+   .catch((err: Error) => {
+     console.error("presentCustomDialog error: " + err.code + " " + err.message);
+     })
+   ```
 
 ## 完整示例
+
+ArkTS-Dyn示例：
+
 ```ts
 import { LevelOrder } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -122,4 +188,82 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Builder,
+  FlexAlign,
+  Text,
+  Row,
+  Column,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  RowOptions
+} from '@ohos.arkui.component';
+import { State, StorageLink } from '@ohos.arkui.stateManagement';
+import promptAction, { LevelOrder } from '@ohos.promptAction';
+
+@Entry
+@Component
+struct Index {
+  @StorageLink('dialogIndex') dialogIndex: number = 0;
+
+  @Builder
+  normalCustomDialog(index: number) {
+    Column() {
+      Text("我是普通弹窗" + index).fontSize(30)
+    }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
+  }
+
+  @Builder
+  topCustomDialog() {
+    Column() {
+      Text("我是置顶弹窗").fontSize(30)
+      Row({ space: 50 } as RowOptions) {
+        Button('点我打开普通弹窗')
+          .onClick((e: ClickEvent) => {
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: () => {
+                this.normalCustomDialog(this.dialogIndex)
+              },
+              levelOrder: LevelOrder.clamp(0),
+            } as promptAction.CustomDialogOptions)
+            .catch((err: Error) => {
+                console.error("presentCustomDialog error: " + err.code + " " + err.message);
+              })
+            this.dialogIndex++;
+          })
+      }
+    }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
+  }
+
+  build() {
+    Row() {
+      Column({ space: 5 } as ColumnOptions) {
+        Button('点击弹窗')
+          .fontSize(20)
+          .onClick((e: ClickEvent) => {
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: () => {
+                this.topCustomDialog()
+              },
+              levelOrder: LevelOrder.clamp(100000)
+            } as promptAction.CustomDialogOptions)
+            .catch((err: Error) => {
+                console.error("presentCustomDialog error: " + err.code + " " + err.message);
+              })
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![dialog-levelorder-demo1](figures/dialog-levelorder-demo1.gif)

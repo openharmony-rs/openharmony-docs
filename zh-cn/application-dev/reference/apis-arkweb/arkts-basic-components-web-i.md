@@ -4,6 +4,8 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## WebOptions
@@ -335,8 +337,8 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| activeMatchOrdinal | number  | 是 | 当前匹配的查找项的序号（从0开始）。                       |
-| numberOfMatches    | number  | 是 | 所有匹配到的关键词的个数。                            |
+| activeMatchOrdinal | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 当前匹配的查找项的序号（从0开始）。                       |
+| numberOfMatches    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 所有匹配到的关键词的个数。                            |
 | isDoneCounting     | boolean | 是 | 当次页内查找操作是否结束。<br>true表示当次页内查找操作结束，false表示当次页内查找操作未结束。<br>该方法可能会回调多次，直到isDoneCounting为true为止。 |
 
 ## OnScrollEvent<sup>12+</sup>
@@ -389,7 +391,7 @@ Web同层渲染的配置。
 | -------------- | ---- | ---- | ---------------------------------------- |
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 是 | 通知Web组件用户操作行为。  |
 | host     | string                                   | 是 | 请求证书服务器的主机名。    |
-| port     | number                                   | 是 | 请求证书服务器的端口号。    |
+| port     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是 | 请求证书服务器的端口号。    |
 | keyTypes | Array<string\>                           | 是 | 可接受的非对称秘钥类型。    |
 | issuers  | Array<string\>                           | 是 | 与私钥匹配的证书可接受颁发者。 |
 
@@ -497,7 +499,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| object     | object                                   | 是    | 参与注册的对象。只能声明方法，不能声明属性。                   |
+| ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 是    | 参与注册的对象。只能声明方法，不能声明属性。                   |
 | name       | string                                   | 是    | 注册对象的名称，与window中调用的对象名一致。                |
 | methodList | Array\<string\>                          | 是    | 参与注册的应用侧JavaScript对象的同步方法。                 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | 是    | -    | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
@@ -532,7 +534,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| newProgress | ArkTS1.1: number<br>ArkTS1.2: int | 是 | 新的加载进度，取值范围为0到100的整数。                       |
+| newProgress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 新的加载进度，取值范围为0到100的整数。                       |
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 
@@ -576,7 +578,7 @@ Web同层渲染的配置。
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
 | jsStack      | string | 是  | 网页的javaScript调用栈信息。       |
-| pid | ArkTS1.1: number <br> ArkTS1.2: int | 是   | 网页的进程id。 |
+| pid | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 是   | 触发渲染进程无响应回调的原因。 |
 
 ## FullScreenEnterEvent<sup>12+</sup>
@@ -654,7 +656,7 @@ Web组件进入全屏回调事件的详情。
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 是    | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
-| enterKeyType | ArkTS1.1: number <br> ArkTS1.2: int | 否    | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
+| enterKeyType | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
 | customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否    | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
 
 

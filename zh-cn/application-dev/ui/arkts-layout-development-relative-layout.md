@@ -48,6 +48,8 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - RelativeContainer父组件为锚点，__container__代表父容器的组件标识（id）。
 
+ArkTS1.1示例：
+
   ```ts
   let AlignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
     'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
@@ -91,9 +93,60 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
+  AlignRuleOption, BorderOptions } from '@ohos.arkui.component';
+
+let AlignRus: AlignRuleOption = {
+  top: { 'anchor': '__container__', 'align': VerticalAlign.Top },
+  left: { 'anchor': '__container__', 'align': HorizontalAlign.Start }
+} as AlignRuleOption
+let AlignRue: AlignRuleOption = {
+  top: { 'anchor': '__container__', 'align': VerticalAlign.Top },
+  right: { 'anchor': '__container__', 'align': HorizontalAlign.End }
+} as AlignRuleOption
+let Mleft: Margin = { left: 20 } as Margin
+let BWC: BorderOptions = { width: 2, color: '#6699FF' } as BorderOptions
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Row() {
+        Text('row1')
+      }
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .backgroundColor('#a3cf62')
+      .alignRules(AlignRus as AlignRuleOption )
+      .id("row1")
+
+      Row() {
+        Text('row2')
+      }
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .backgroundColor('#00ae9d')
+      .alignRules(AlignRue as AlignRuleOption )
+      .id("row2")
+    }.width(300).height(300)
+    .margin(Mleft as Margin)
+    .border(BWC as BorderOptions)
+  }
+}
+```
+
   ![zh-cn_image_0000001562820901](figures/zh-cn_image_0000001562820901.png)
 
 - 以兄弟元素为锚点。
+
+ArkTS1.1示例：
 
   ```ts
   let AlignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
@@ -138,9 +191,60 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
+  AlignRuleOption, BorderOptions } from '@ohos.arkui.component';
+
+let AlignRus: AlignRuleOption = {
+  top: { anchor: '__container__', align: VerticalAlign.Top },
+  left: { anchor: '__container__', align: HorizontalAlign.Start }
+} as AlignRuleOption
+let RelConB: AlignRuleOption = {
+  top: { anchor: 'row1', align: VerticalAlign.Bottom },
+  left: { anchor: 'row1', align: HorizontalAlign.Start }
+} as AlignRuleOption
+let Mleft: Margin = { left: 20 } as Margin
+let BWC: BorderOptions = { width: 2, color: '#6699FF' } as BorderOptions
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Row() {
+        Text('row1')
+      }
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .backgroundColor('#00ae9d')
+      .alignRules(AlignRus)
+      .id("row1")
+
+      Row() {
+        Text('row2')
+      }
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .backgroundColor('#a3cf62')
+      .alignRules(RelConB)
+      .id("row2")
+    }.width(300).height(300)
+    .margin(Mleft)
+    .border(BWC)
+  }
+}
+```
+
   ![zh-cn_image_0000001562940613](figures/zh-cn_image_0000001562940613.png)
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
+
+ArkTS1.1示例：
 
   ```ts
   @Entry
@@ -193,6 +297,65 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     }
   }
   ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
+  AlignRuleOption, BorderOptions } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row(){Text('row1')}.justifyContent(FlexAlign.Center).width(100).height(100)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          top: {anchor: "__container__", align: VerticalAlign.Top},
+          left: {anchor: "__container__", align: HorizontalAlign.Start}
+        } as AlignRuleOption)
+        .id("row1")
+
+        Row(){Text('row2')}.justifyContent(FlexAlign.Center).width(100)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          top: {anchor: "__container__", align: VerticalAlign.Top},
+          right: {anchor: "__container__", align: HorizontalAlign.End},
+          bottom: {anchor: "row1", align: VerticalAlign.Center},
+        } as AlignRuleOption)
+        .id("row2")
+
+        Row(){Text('row3')}.justifyContent(FlexAlign.Center).height(100)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          top: {anchor: "row1", align: VerticalAlign.Bottom},
+          left: {anchor: "row1", align: HorizontalAlign.Start},
+          right: {anchor: "row2", align: HorizontalAlign.Start}
+        } as AlignRuleOption)
+        .id("row3")
+
+        Row(){Text('row4')}.justifyContent(FlexAlign.Center)
+        .backgroundColor('#2ca9e0')
+        .alignRules({
+          top: {anchor: "row3", align: VerticalAlign.Bottom},
+          left: {anchor: "row1", align: HorizontalAlign.Center},
+          right: {anchor: "row2", align: HorizontalAlign.End},
+          bottom: {anchor: "__container__", align: VerticalAlign.Bottom}
+        } as AlignRuleOption)
+        .id("row4")
+      }
+      .width(300).height(300)
+      .margin({left: 50} as Margin)
+      .border({width:2, color: "#6699FF"} as BorderOptions)
+    }
+    .height('100%')
+  }
+}
+```
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image1.png)
 
 ### 设置相对于锚点的对齐位置
@@ -210,6 +373,8 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 ### 子组件位置偏移
 
 子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了[bias](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#bias对象说明)对象，建议API Version 11及以后的版本使用bias来设置额外偏移。
+
+ArkTS1.1示例：
 
   ```ts
 @Entry
@@ -326,11 +491,136 @@ struct Index {
   }
 }
   ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
+  AlignRuleOption, BorderOptions, Position, Alignment, ImageSize } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row() {
+          Text('row1')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          top: { anchor: "__container__", align: VerticalAlign.Top },
+          left: { anchor: "__container__", align: HorizontalAlign.Start }
+        } as AlignRuleOption)
+        .id("row1")
+
+        Row() {
+          Text('row2')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          top: { anchor: "__container__", align: VerticalAlign.Top },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          bottom: { anchor: "row1", align: VerticalAlign.Center },
+        } as AlignRuleOption)
+        .offset({
+          x: -40,
+          y: -20
+        } as Position)
+        .id("row2")
+
+        Row() {
+          Text('row3')
+        }
+        .justifyContent(FlexAlign.Center)
+        .height(100)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          top: { anchor: "row1", align: VerticalAlign.Bottom },
+          left: { anchor: "row1", align: HorizontalAlign.End },
+          right: { anchor: "row2", align: HorizontalAlign.Start }
+        } as AlignRuleOption)
+        .offset({
+          x: -10,
+          y: -20
+        } as Position)
+        .id("row3")
+
+        Row() {
+          Text('row4')
+        }
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#2ca9e0')
+        .alignRules({
+          top: { anchor: "row3", align: VerticalAlign.Bottom },
+          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row1", align: HorizontalAlign.End }
+        } as AlignRuleOption)
+        .offset({
+          x: -10,
+          y: -30
+        } as Position)
+        .id("row4")
+
+        Row() {
+          Text('row5')
+        }
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#30c9f7')
+        .alignRules({
+          top: { anchor: "row3", align: VerticalAlign.Bottom },
+          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+          left: { anchor: "row2", align: HorizontalAlign.Start },
+          right: { anchor: "row2", align: HorizontalAlign.End }
+        } as AlignRuleOption)
+        .offset({
+          x: 10,
+          y: 20
+        } as Position)
+        .id("row5")
+
+        Row() {
+          Text('row6')
+        }
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#ff33ffb5')
+        .alignRules({
+          top: { anchor: "row3", align: VerticalAlign.Bottom },
+          bottom: { anchor: "row4", align: VerticalAlign.Bottom },
+          left: { anchor: "row3", align: HorizontalAlign.Start },
+          right: { anchor: "row3", align: HorizontalAlign.End }
+        } as AlignRuleOption)
+        .offset({
+          x: -15,
+          y: 10
+        } as Position)
+        .backgroundImagePosition(Alignment.Bottom)
+        .backgroundImageSize(ImageSize.Cover)
+        .id("row6")
+      }
+      .width(300).height(300)
+      .margin({ left: 50 } as Margin)
+      .border({ width: 2, color: "#6699FF" } as BorderOptions)
+    }
+    .height('100%')
+  }
+}
+```
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image2.png)
 
 ## 多种组件的对齐布局
 
 Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
+
+ArkTS1.1示例：
 
   ```ts
 @Entry
@@ -400,6 +690,83 @@ struct Index {
   }
 }
   ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
+  AlignRuleOption, BorderOptions, Position, Alignment, Column, Flex, Stack, FlexDirection } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State value: number = 0;
+
+  build() {
+    Row() {
+
+      RelativeContainer() {
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor('#a3cf62')
+          .alignRules({
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            left: { anchor: "__container__", align: HorizontalAlign.Start }
+          } as AlignRuleOption)
+          .id("row1")
+
+        Column()
+          .width('50%')
+          .height(30)
+          .backgroundColor('#00ae9d')
+          .alignRules({
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            left: { anchor: "__container__", align: HorizontalAlign.Center }
+          } as AlignRuleOption)
+          .id("row2")
+
+        Flex({ direction: FlexDirection.Row }) {
+          Text('1').width('20%').height(50).backgroundColor('#0a59f7')
+          Text('2').width('20%').height(50).backgroundColor('#2ca9e0')
+          Text('3').width('20%').height(50).backgroundColor('#0a59f7')
+          Text('4').width('20%').height(50).backgroundColor('#2ca9e0')
+        }
+        .padding(10)
+        .backgroundColor('#30c9f7')
+        .alignRules({
+          top: { anchor: "row2", align: VerticalAlign.Bottom },
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          bottom: { anchor: "__container__", align: VerticalAlign.Center },
+          right: { anchor: "row2", align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .id("row3")
+
+        Stack({ alignContent: Alignment.Bottom }) {
+          Text('First child, show in bottom').width('90%').height('100%').backgroundColor('#a3cf62').align(Alignment.Top)
+          Text('Second child, show in top').width('70%').height('60%').backgroundColor('#00ae9d').align(Alignment.Top)
+        }
+        .margin({ top: 5 } as Margin)
+        .alignRules({
+          top: { anchor: "row3", align: VerticalAlign.Bottom },
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+          right: { anchor: "row3", align: HorizontalAlign.End }
+        } as AlignRuleOption)
+        .id("row4")
+
+      }
+      .width(300).height(300)
+      .margin({ left: 50 } as Margin)
+      .border({ width: 2, color: "#6699FF" } as BorderOptions)
+    }
+    .height('100%')
+  }
+}
+```
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image3.png)
 
 ## 组件尺寸
@@ -410,6 +777,10 @@ struct Index {
 >
 > * 根据约束条件和子组件自身的size属性无法确定子组件的大小，此时，不绘制该子组件。
 > * 在同一方向上设置两个或更多锚点时，若这些锚点的位置顺序有误，该子组件将被视为大小为0而不予绘制。
+
+
+ArkTS1.1示例：
+
 ```ts
 @Entry
 @Component
@@ -503,6 +874,107 @@ struct Index {
   }
 }
 ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
+  AlignRuleOption, BorderOptions, ImageSize, Alignment } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row() {
+          Text('row1')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          top: { anchor: "__container__", align: VerticalAlign.Top },
+          left: { anchor: "__container__", align: HorizontalAlign.Start }
+        } as AlignRuleOption)
+        .id("row1")
+
+        Row() {
+          Text('row2')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          top: { anchor: "__container__", align: VerticalAlign.Top },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          bottom: { anchor: "row1", align: VerticalAlign.Center },
+        } as AlignRuleOption)
+        .id("row2")
+
+        Row() {
+          Text('row3')
+        }
+        .justifyContent(FlexAlign.Center)
+        .height(100)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          top: { anchor: "row1", align: VerticalAlign.Bottom },
+          left: { anchor: "row1", align: HorizontalAlign.End },
+          right: { anchor: "row2", align: HorizontalAlign.Start }
+        } as AlignRuleOption)
+        .id("row3")
+
+        Row() {
+          Text('row4')
+        }.justifyContent(FlexAlign.Center)
+        .backgroundColor('#2ca9e0')
+        .alignRules({
+          top: { anchor: "row3", align: VerticalAlign.Bottom },
+          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row1", align: HorizontalAlign.End }
+        } as AlignRuleOption)
+        .id("row4")
+
+        Row() {
+          Text('row5')
+        }.justifyContent(FlexAlign.Center)
+        .backgroundColor('#30c9f7')
+        .alignRules({
+          top: { anchor: "row3", align: VerticalAlign.Bottom },
+          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+          left: { anchor: "row2", align: HorizontalAlign.Start },
+          right: { anchor: "row2", align: HorizontalAlign.End }
+        } as AlignRuleOption)
+        .id("row5")
+
+        Row() {
+          Text('row6')
+        }
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#ff33ffb5')
+        .alignRules({
+          top: { anchor: "row3", align: VerticalAlign.Bottom },
+          bottom: { anchor: "row4", align: VerticalAlign.Bottom },
+          left: { anchor: "row3", align: HorizontalAlign.Start },
+          right: { anchor: "row3", align: HorizontalAlign.End }
+        } as AlignRuleOption)
+        .id("row6")
+        .backgroundImagePosition(Alignment.Bottom)
+        .backgroundImageSize(ImageSize.Cover)
+      }
+      .width(300).height(300)
+      .margin({ left: 50 } as Margin)
+      .border({ width: 2, color: "#6699FF" } as BorderOptions)
+    }
+    .height('100%')
+  }
+}
+```
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image4.png)
 
 
@@ -512,6 +984,8 @@ struct Index {
 * 链的方向和格式在链头组件的[chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在竖直方向上，从上边开始）。
 * 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[Packed](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[bias](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#bias对象说明)设置超出部分的分布。
 
+
+ArkTS1.1示例：
 
 ```ts
 @Entry
@@ -657,4 +1131,156 @@ struct Index {
   }
 }
 ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Row, Text, FlexAlign, VerticalAlign, HorizontalAlign, RelativeContainer,
+  AlignRuleOption, BorderOptions, Axis, ChainStyle } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row() {
+          Text('row1')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row2", align: HorizontalAlign.Start },
+          top: { anchor: "__container__", align: VerticalAlign.Top }
+        } as AlignRuleOption)
+        .id("row1")
+        .chainMode(Axis.Horizontal, ChainStyle.SPREAD)
+
+        Row() {
+          Text('row2')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          left: { anchor: "row1", align: HorizontalAlign.End },
+          right: { anchor: "row3", align: HorizontalAlign.Start },
+          top: { anchor: "row1", align: VerticalAlign.Top }
+        } as AlignRuleOption)
+        .id("row2")
+
+        Row() {
+          Text('row3')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "row2", align: HorizontalAlign.End },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          top: { anchor: "row1", align: VerticalAlign.Top }
+        } as AlignRuleOption)
+        .id("row3")
+
+        Row() {
+          Text('row4')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row5", align: HorizontalAlign.Start },
+          center: { anchor: "__container__", align: VerticalAlign.Center }
+        } as AlignRuleOption)
+        .id("row4")
+        .chainMode(Axis.Horizontal, ChainStyle.SPREAD_INSIDE)
+
+        Row() {
+          Text('row5')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          left: { anchor: "row4", align: HorizontalAlign.End },
+          right: { anchor: "row6", align: HorizontalAlign.Start },
+          top: { anchor: "row4", align: VerticalAlign.Top }
+        } as AlignRuleOption)
+        .id("row5")
+
+        Row() {
+          Text('row6')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "row5", align: HorizontalAlign.End },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          top: { anchor: "row4", align: VerticalAlign.Top }
+        } as AlignRuleOption)
+        .id("row6")
+
+        Row() {
+          Text('row7')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row8", align: HorizontalAlign.Start },
+          bottom: { anchor: "__container__", align: VerticalAlign.Bottom }
+        } as AlignRuleOption)
+        .id("row7")
+        .chainMode(Axis.Horizontal, ChainStyle.PACKED)
+
+        Row() {
+          Text('row8')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          left: { anchor: "row7", align: HorizontalAlign.End },
+          right: { anchor: "row9", align: HorizontalAlign.Start },
+          top: { anchor: "row7", align: VerticalAlign.Top }
+        } as AlignRuleOption)
+        .id("row8")
+
+        Row() {
+          Text('row9')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "row8", align: HorizontalAlign.End },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          top: { anchor: "row7", align: VerticalAlign.Top }
+        } as AlignRuleOption)
+        .id("row9")
+      }
+      .width(300).height(300)
+      .margin({ left: 50 } as Margin)
+      .border({ width: 2, color: "#6699FF" } as BorderOptions)
+    }
+    .height('100%')
+  }
+}
+```
+
 ![relative container](figures/relativecontainer6.png)

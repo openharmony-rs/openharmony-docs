@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```ts
-import { AppStorage } from '@ohos.arkui.stateManagement';
+import { AppStorage, LocalStorage, PersistentStorage, Environment, LayoutDirection, ColorMode } from '@ohos.arkui.stateManagement';
 ```
 
 ## AppStorage
@@ -81,7 +81,7 @@ let ref2: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 50)!;
 ```
 ### link
 
-static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
+static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;&nbsp;|&nbsp;undefined
 
 与[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中对应的propName建立双向数据绑定。如果给定的propName在AppStorage中存在，返回AppStorage中propName对应属性的双向绑定数据。
 
@@ -101,7 +101,7 @@ static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
 
 | 类型                                | 说明                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | 返回双向绑定的数据，如果AppStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) \| undefined | 返回双向绑定的数据，如果AppStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 ```ts
@@ -366,12 +366,6 @@ let res: number = AppStorage.size(); // 1
 
 LocalStorage具体UI使用说明，详见[LocalStorage(页面级UI状态存储)](../../../ui/state-management-static/arkts-static-localstorage.md)
 
-## 导入模块
-
-```ts
-import { LocalStorage } from '@ohos.arkui.stateManagement';
-```
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor
@@ -584,7 +578,7 @@ let ref2: AbstractProperty<number> = storage.setAndRef<number>('PropA', 50); // 
 
 ### link
 
-link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
+link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;&nbsp;|&nbsp;undefined
 
 如果给定的propName在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)实例中存在，则返回与LocalStorage中propName对应属性的双向绑定数据。
 
@@ -604,7 +598,7 @@ link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
 
 | 类型                                | 说明                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | SubscribedAbstractProperty&lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) \| undefined | SubscribedAbstractProperty&lt;T&gt;的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 ```ts
@@ -913,7 +907,7 @@ link.aboutToBeDeleted();
 
 ### info
 
-info(): string;
+info(): string
 
 返回属性名称。
 
@@ -925,15 +919,28 @@ info(): string;
 |---------|-------------|
 |string    |属性名称。    |
 
+## PersistPropsOptions\<T\>
+
+指定持久化属性及其默认值的键值对对象，作为[persistProps](#persistprops)参数传入。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称       | 类型                                  | 只读 | 可选 | 说明                                                     |
+| ------------ | ------------------------------------- | --- | ---- | ------------------------------------------------------------ |
+| key          | string                                | 否 | 否   | 属性名。                                                     |
+| defaultValue | T | 否 | 否 | 当在[PersistentStorage](#PersistentStorage)和[AppStorage](#AppStorage)中未查询到key时，使用defaultValue中。 |
+| toJson       | ToJsonType\<T\> | 否 | 是 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
+| fromJson     | FromJsonType\<T\> | 否 | 是 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
+
 ## PersistentStorage
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储UI状态)](../../../ui/state-management-static/arkts-static-persiststorage.md)
 
-### ToJsonType<T>
+### ToJsonType\<T\>
 
-type ToJsonType<T> = (value: T) => jsonx.JsonElement;
+type ToJsonType\<T\> = (value: T) => jsonx.JsonElement
 
 >**说明：**
 >
@@ -941,9 +948,9 @@ type ToJsonType<T> = (value: T) => jsonx.JsonElement;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### FromJsonType<T>
+### FromJsonType\<T\>
 
-type FromJsonType<T> = (element: jsonx.JsonElement) => T;
+type FromJsonType\<T\> = (element: jsonx.JsonElement) => T
 
 >**说明：**
 >
@@ -953,7 +960,7 @@ type FromJsonType<T> = (element: jsonx.JsonElement) => T;
 
 ### persistProp
 
-static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType<T>, fromJson?: FromJsonType<T>): boolean
+static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T\>, fromJson?: FromJsonType\<T\>): boolean
 
 将[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中key对应的属性持久化到文件中。该接口的调用通常在访问AppStorage之前。
 
@@ -976,9 +983,9 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType<T>
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | key          | string | 是   | 属性名。                                                     |
-| defaultValue | T      | 是   | 在PersistentStorage和AppStorage中未查询到时，则使用默认值进行初始化。 |
-| toJson       | ToJsonType<T> | 否 | 用于序列化,复杂类型开发者必须实现才能序列化成功。|
-| fromJson     | FromJsonType<T> | 否 | 用于反序列化，复杂类型开发者必须实现才能序列化成功。|
+| defaultValue | T      | 是   | 当在[PersistentStorage](#PersistentStorage)和[AppStorage](#AppStorage)中未查询到key时，使用defaultValue中。|
+| toJson       | ToJsonType\<T\> | 否 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
+| fromJson     | FromJsonType\<T\> | 否 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
 
 
 **示例：**
@@ -1000,10 +1007,58 @@ static deleteProp(key: string): void
 | key  | string | 是    | PersistentStorage中的属性名。 |
 
 **示例：**
+
 ```ts
 import { PersistentStorage } from '@ohos.arkui.stateManagement';
 
 PersistentStorage.deleteProp('highScore');
+```
+
+### persistProps
+
+static persistProps(props: PersistPropsOptions\<Any\>[]): void
+
+将[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中key对应的属性持久化到文件中。与[persistProp](#persistprop)的区别在于可以一次性持久化多个数据，适用场景是：应用启动时调用持久化接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名        | 类型                                       | 必填   | 说明                                     |
+| ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| props | [PersistPropsOptions](#persistpropsoptions)[] | 是 | 持久化数组。 |
+
+**示例：**
+```ts
+import { PersistentStorage } from '@ohos.arkui.stateManagement';
+
+PersistentStorage.persistProps([
+  {
+    key: 'intVal',
+    defaultValue: '55',
+  },
+  {
+    key: 'classVal',
+    defaultValue: new Array<string>('1'),
+    toJson: (array: Any): jsonx.JsonElement => {
+      const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+      const arrayEle = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+      (array as Array<string>).forEach((v: string) => {
+        arrayEle.setElement(v, jsonx.JsonElement.createString(v));
+      });
+      root.setElement('array', arrayEle);
+      return root;
+    }, 
+    fromJson: (json: jsonx.JsonElement): Array<string> => {
+      let arrayEle: jsonx.JsonElement = json.getElement('array');
+      const array: Array<string> = new Array<string>();
+      for (let ele of arrayEle) {
+        array.push(ele[1].asString());
+      }
+      return array;
+    }
+  }
+]);
 ```
 
 ### keys
@@ -1052,7 +1107,7 @@ Environment具体使用说明，详见[Environment(设备环境查询)](../../..
 
 ### envProp
 
-static envProp&lt;S&gt;(key: string, value: S): boolean
+static envProp&lt;S&gt;(key: string, value: T): boolean
 
 将[Environment](../../../ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
 
@@ -1069,7 +1124,7 @@ static envProp&lt;S&gt;(key: string, value: S): boolean
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | key    | string | 是   | 环境变量名称，支持的范围详见[内置环境变量说明](#内置环境变量说明)。 |
-| value  | S      | 是   | 查询不到环境变量key时，则使用value作为默认值存入AppStorage中。 |
+| value  | T      | 是   | 查询不到环境变量key时，则使用value作为默认值存入AppStorage中。 |
 
 **返回值：**
 
@@ -1122,6 +1177,7 @@ static keys(): Array&lt;string&gt;
 | Array&lt;string&gt; | 返回关联的系统项数组。 |
 
 **示例：**
+
 ```ts
 Environment.envProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
   key: 'languageCode',
@@ -1141,3 +1197,27 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 | fontWeightScale      | number          | 字重比例。                                                   |
 | layoutDirection      | LayoutDirection | 布局方向类型，可选值为：<br/>-&nbsp;LayoutDirection.LTR：从左到右；<br/>-&nbsp;LayoutDirection.RTL：从右到左。<br/>-&nbsp;Auto：跟随系统。 |
 | languageCode         | string          | 当前系统语言，小写字母，例如zh。                             |
+
+### ColorMode
+
+系统当前深浅色模式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值    | 说明      |
+| ----- | -----| ----------|
+| LIGHT | 0    | 浅色模式。 |
+| DARK  | 1    | 深色模式。 |
+
+
+### LayoutDirection
+
+系统的布局方向类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值    | 说明      |
+| ----- | -----| ----------|
+| LTR   | 0    | 从左向右布局。 |
+| RTL   | 1    | 从右向左布局。 |
+| AUTO  | 2    | 自动布局，跟随系统。 |

@@ -469,7 +469,6 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | ----------- | -------- | ---- | ---------------------------------------- |
 | constructor | number[] | 是    | 创建具有4\*5矩阵的颜色过滤器，入参为[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
 
-
 ## CustomBuilder<sup>8+</sup>
 
 组件属性方法参数可使用CustomBuilder类型来自定义UI描述。
@@ -477,6 +476,40 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | 名称            | 类型定义                   | 描述                                       |
 | ------------- | ---------------------- | ---------------------------------------- |
 | CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
+
+## CustomBuilder<sup>20+</sup>
+
+type CustomBuilder = @Builder (() => void)
+
+组件属性方法参数可使用CustomBuilder类型来自定义UI描述。
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+## CustomBuilderT\<T><sup>20+</sup>
+
+type CustomBuilderT\<T> = @Builder ((t: T) => void)
+
+组件属性方法参数可使用CustomBuilderT类型来自定义UI描述。
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| t | T | 是    | [@Builder（ArkTS1.2）](../../../ui/state-management/arkts-v1.2-builder.md)的入参。 |
 
 ## MarkStyle<sup>10+</sup>对象说明
 

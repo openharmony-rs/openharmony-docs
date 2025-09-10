@@ -11,8 +11,20 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
 - 通过label和[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建不包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
 
+  ArkTS-Dyn示例：
+
   ```ts
   Button(label?: ResourceStr, options?: { type?: ButtonType, stateEffect?: boolean })
+  ```
+
+  ArkTS-Sta示例：
+
+  在ArkTS-Sta上使用[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建该组件时，需要先导入Button以及用来指定参数类型的ButtonOptions。
+
+  ```ts
+  import { Button, ButtonOptions, ButtonType } from '@ohos.arkui.component';
+  
+  Button(label?: ResourceStr, options?: { type?: ButtonType, stateEffect?: boolean } as ButtonOptions )
   ```
 
   其中，label用来设置按钮文字，type用于设置Button类型，stateEffect属性设置Button是否开启点击效果。
@@ -26,7 +38,6 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   ```
 
   ![zh-cn_image_0000001562820757](figures/zh-cn_image_0000001562820757.png)
-
 
 - 通过[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
 
@@ -170,7 +181,6 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
     console.info('Button onClick') 
   })
 ```
-
 
 ## 场景示例
 

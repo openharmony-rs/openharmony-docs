@@ -59,6 +59,13 @@
       - [ArkTS1.2互操作场景](quick-start/arkts-interop-more.md)
       - [ArkTS1.2互操作特性规范](quick-start/arkts-interop-spec.md)      
       - [ArkTS1.2UI迁移规则](quick-start/arkts-v1.1-v1.2-ui.md)
+      - ArkTS1.2UI互操作指导
+        - [互操作概述](quick-start/arkts-v1.1-v1.2-ui-interop.md)
+        - [UI构建互操作](quick-start/arkts-v1.2-interop-v1.1-ui-build.md)
+        - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
+        - 状态管理V2互操作
+        - 状态管理V1V2混用互操作
+        - [UI数据互操作](quick-start/arkts-v1.2-interop-v1.1-ui-data.md)
     - [ArkTS高性能编程实践](quick-start/arkts-high-performance-programming.md)
     - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
       - [从Java到ArkTS的迁移指导](quick-start/getting-started-with-arkts-for-java-programmers.md)
@@ -391,8 +398,8 @@
         - 从ArkTS1.1到ArkTS1.2的UI适配指导<!--ui-arkts-migration-guide-->
           - ArkTS1.2不再支持的UI接口<!--ui-deprecated-apis-->
             - [滚动与滑动](ui/arkts-v1.2-deprecated-scrollable-apis.md)
-            - [像素单位转换](arkts-v1.2-deprecated-ts-pixel-units-apis.md)
-            - [页面上下文](arkts-v1.2-deprecated-ts-pixel-units-apis.md)
+            - [像素单位转换](ui/arkts-v1.2-deprecated-ts-pixel-units-apis.md)
+            - [页面上下文](ui/arkts-v1.2-deprecated-ts-context-apis.md)
             - [绘制组件](ui/arkts-v1.2-deprecated-drawing-apis.md)
             - [Picker类组件](ui/arkts-v1.2-deprecated-picker-apis.md)
             - [渲染控制](ui/arkts-v1.2-deprecated-rendering-control-apis.md)
@@ -414,6 +421,7 @@
             - [交互事件字段](ui/arkts-v1.2-deprecated-event-object-apis.md)
             - [UIExtensionComponent (系统接口)](ui/arkts-v1.2-deprecated-uiextension.md)
             - [AbilityComponent (系统接口)](ui/arkts-v1.2-deprecated-abilitycomponent.md)
+            - [ChipGroup](ui/arkts-v1.2-deprecated-chipgroup.md)
         - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
           - [基本语法概述](ui/state-management/arkts-basic-syntax-overview.md)
           - [声明式UI描述](ui/state-management/arkts-declarative-ui-description.md)
@@ -613,6 +621,7 @@
             - [自定义组件节点 (FrameNode)](ui/arkts-user-defined-arktsNode-frameNode.md)
             - [自定义渲染节点 (RenderNode)](ui/arkts-user-defined-arktsNode-renderNode.md)
             - [自定义声明式节点 (BuilderNode)](ui/arkts-user-defined-arktsNode-builderNode.md)
+            - [自定义声明式节点 (BuilderNode)（ArkTS1.2）](ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)
           - 自定义绘制<!--arkts-draw-->
             - [使用画布绘制自定义图形 (Canvas)](ui/arkts-drawing-customization-on-canvas.md)
             - [自定义绘制修改器 (DrawModifier)](ui/arkts-user-defined-extension-drawModifier.md)
@@ -665,6 +674,8 @@
         - [在NDK中保证多实例场景功能正常](ui/ndk-scope-task.md)
         - [NDK支持多线程创建组件](ui/ndk-build-on-multi-thread.md)
       - [UI高性能开发](ui/ui-performance-overview.md)
+        - [BuilderNode并行化构建和更新节点树](ui/ui-parallel-buildernode.md)
+        - [UI并行化创建组件树](ui/ui-parallel-components.md)
       - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
         - [UI开发 (兼容JS的类Web开发范式)概述](ui/ui-js-overview.md)
         - 框架说明<!--js-framework-overview-->
@@ -2668,7 +2679,9 @@
           <!--DelEnd-->
           - arkui<!--ui-interface-arkui-->
             - [BuilderNode](reference/apis-arkui/js-apis-arkui-builderNode.md)
+            - [BuilderNode.static](reference/apis-arkui/js-apis-arkui-builderNode-static.md)
             - [ComponentContent](reference/apis-arkui/js-apis-arkui-ComponentContent.md)
+            - [ComponentContent.static](reference/apis-arkui/js-apis-arkui-ComponentContent-static.md)
             - [FrameNode](reference/apis-arkui/js-apis-arkui-frameNode.md)
             - [Graphics](reference/apis-arkui/js-apis-arkui-graphics.md)
             - [NodeController](reference/apis-arkui/js-apis-arkui-nodeController.md)
@@ -5456,6 +5469,12 @@
         - [VkNativeBufferPropertiesOHOS](reference/native-lib/_vk_native_buffer_properties_o_h_o_s.md)
         - [VkNativeBufferUsageOHOS](reference/native-lib/_vk_native_buffer_usage_o_h_o_s.md)
         - [VkSurfaceCreateInfoOHOS](reference/native-lib/_vk_surface_create_info_o_h_o_s.md)
+    - EAWorker
+        - [EAWorker 独占线程任务执行器（ArkTS）](reference/native-lib/eaworker_managed.md)
+        - [EAWorker 独占线程任务执行器（C/C++）](reference/native-lib/eaworker_native.md)
+        - [Job](reference/native-lib/job.md)
+        - [Message 消息单元](reference/native-lib/message.md)
+        - [MessageHandler 消息处理器](reference/native-lib/message_handler.md)
     - 附录<!--appendixes-->
       - [libc中没有导出的符号列表](reference/native-lib/musl-peculiar-symbol.md)
       - [NDK musl-libc接口受权限影响的说明](reference/native-lib/guidance-on-ndk-libc-interfaces-affected-by-permissions.md)

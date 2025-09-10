@@ -151,19 +151,80 @@ try {
 | authType | [UserAuthType](#userauthtype8) | 否   | 认证成功时，返回认证类型。                           |
 | enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) | 否   |  认证成功时，返回注册凭据的状态。|
 
+## AuthCallbackOnResultFunc<sup>22+</sup>	
+
+type AuthCallbackOnResultFunc = (result: UserAuthResult) => void	
+
+回调函数，返回身份认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。	
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.UserIAM.UserAuth.Core	
+
+**参数：**	
+
+| 参数名 | 类型                                | 必填 | 说明       |	
+| ------ | ----------------------------------- | ---- | ---------- |	
+| result | [UserAuthResult](#userauthresult10)   | 是   | 身份认证结果。 |	
+
+**示例：**	
+
+发起用户认证，获取认证结果。	
+
+```ts	
+import { BusinessError } from '@kit.BasicServicesKit';	
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';	
+import { userAuth } from '@kit.UserAuthenticationKit';	
+
+try {	
+  const rand = cryptoFramework.createRandom();	
+  const len: number = 16;	
+  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;	
+  const authParam: userAuth.AuthParam = {	
+    challenge: randData,	
+    authType: [userAuth.UserAuthType.PIN],	
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,	
+  };	
+  const widgetParam: userAuth.WidgetParam = {	
+    title: '请输入密码',	
+  };	
+
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);	
+  console.info('get userAuth instance success');	
+  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。	
+  userAuthInstance.on('result', {	
+    onResult: (result: userAuth.UserAuthResult) => {	
+      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);	
+    }	
+  });	
+  console.info('auth on success');	
+} catch (error) {	
+  const err: BusinessError = error as BusinessError;	
+  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);	
+}	
+```
+
 ## IAuthCallback<sup>10+</sup>
 
 返回认证结果的回调对象。
 
-### onResult<sup>10+</sup>
+### 属性
 
-ArkTS1.1: onResult(result: UserAuthResult): void
+**系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
-ArkTS1.2: onResult: (result: UserAuthResult) => void
+| 名称     | 类型                           | 只读 | 可选 | 说明                                                         |
+| -------- | ----------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| onResult<sup>22+</sup> | [AuthCallbackOnResultFunc](#authcallbackonresultfunc22) | 否 | 否 | 返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。<br>**ArkTS模式**：该接口仅适用于ArkTS-Sta。 |
 
-回调函数，返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。
+### onResult<sup>10+</sup>	
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+onResult(result: UserAuthResult): void	
+
+回调函数，返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。	
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。	
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
@@ -176,7 +237,7 @@ ArkTS1.2: onResult: (result: UserAuthResult) => void
 **示例1：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果。<br>
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -213,7 +274,7 @@ try {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -251,7 +312,7 @@ try {
 **示例2：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。<br>
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -292,7 +353,7 @@ try {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -336,7 +397,7 @@ try {
 **示例3：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+任意应用认证类型相关 + 复用任意应用最大有效时长认证，获取认证结果。<br>
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -377,7 +438,7 @@ try {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

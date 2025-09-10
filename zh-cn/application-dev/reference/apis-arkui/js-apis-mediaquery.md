@@ -48,7 +48,7 @@ matchMediaSync(condition: string): MediaQueryListener
 | ------------------ | -------------------------------------------- |
 | [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
 
-**示例：** 
+ArkTS1.1示例：
 
 ```ts
 import { mediaquery } from '@kit.ArkUI';
@@ -56,6 +56,14 @@ import { mediaquery } from '@kit.ArkUI';
 let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
 ```
 
+
+ArkTS1.2示例：
+
+```ts
+import mediaquery from '@ohos.mediaquery';
+
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
+```
 
 ## MediaQueryListener
 
@@ -117,7 +125,7 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 | type     | string                           | 是   | 必须填写字符串'change'。                                   |
 | callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要去注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
 
-**示例：** 
+ArkTS1.1示例：
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
@@ -135,6 +143,23 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
 listener.on('change', onPortrait) // 注册回调
 listener.off('change', onPortrait) // 去取消注册回调
   ```
+
+ArkTS1.2示例：
+
+```ts
+import mediaquery from '@ohos.mediaquery';
+
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches) {
+    // do something here
+  } else {
+    // do something here
+  }
+}
+listener.on('change', onPortrait) // 注册回调
+listener.off('change', onPortrait) // 去取消注册回调
+```
 
 ## MediaQueryResult
 
@@ -161,6 +186,9 @@ listener.off('change', onPortrait) // 去取消注册回调
 >
 > 推荐通过使用[UIContext](js-apis-arkui-UIContext.md#uicontext)中的[getMediaQuery](js-apis-arkui-UIContext.md#getmediaquery)方法获取当前UI上下文关联的[MediaQuery](js-apis-arkui-UIContext.md#mediaquery)对象。
 
+
+ArkTS1.1示例：
+
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
 ```ts
@@ -169,8 +197,8 @@ import { mediaquery } from '@kit.ArkUI';
 @Entry
 @Component
 struct MediaQueryExample {
-  @State color: string = '#DB7093'
-  @State text: string = 'Portrait'
+  @State color: string = '#DB7093';
+  @State text: string = 'Portrait';
   listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); //监听横屏事件，mediaquery.matchMediaSync接口已废弃，建议使用this.getUIContext().getMediaQuery().matchMediaSync()来获取
 
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
@@ -202,4 +230,53 @@ struct MediaQueryExample {
   }
 }
 ```
+
+ArkTS1.2示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Text, Color, Flex, FlexDirection, ItemAlign, FlexAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import mediaquery from '@ohos.mediaquery';
+import common from '@ohos.app.ability.common';
+import window from '@ohos.window';
+import { UIContext } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct MediaQueryExample {
+  @State color: string = '#DB7093';
+  @State text: string = 'Portrait';
+  listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件，mediaquery.matchMediaSync接口已废弃，建议使用this.getUIContext().getMediaQuery().matchMediaSync()来获取
+
+  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+    if (mediaQueryResult.matches) {
+      this.color = '#FFD700'
+      this.text = 'Landscape'
+    } else {
+      this.color = '#DB7093'
+      this.text = 'Portrait'
+    }
+  }
+
+  aboutToAppear() {
+    let portraitFunc = (mediaQueryResult: mediaquery.MediaQueryResult): void => this.onPortrait(mediaQueryResult)
+    // 绑定回调函数
+    this.listener.on('change', portraitFunc);
+  }
+
+  aboutToDisappear() {
+    // 解绑listener中注册的回调函数
+    this.listener.off('change');
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Text(this.text).fontSize(24).fontColor(this.color)
+    }
+    .width('100%').height('100%')
+  }
+}
+```
+
 ![media_query](figures/media_query.png)

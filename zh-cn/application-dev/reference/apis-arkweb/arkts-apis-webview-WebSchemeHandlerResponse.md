@@ -123,7 +123,9 @@ setNetErrorCode(code: WebNetErrorList): void
 
 ## setStatus<sup>12+</sup>
 
-setStatus(code: number): void
+ArkTS-Dyn: setStatus(code: number): void
+
+ArkTS-Sta: setStatus(code: int): void
 
 给当前的Response设置HTTP状态码。
 
@@ -133,7 +135,7 @@ setStatus(code: number): void
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  code | number | 是   | Http状态码。 |
+|  code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | Http状态码。 |
 
 **错误码：**
 
@@ -292,7 +294,9 @@ getNetErrorCode(): WebNetErrorList
 
 ## getStatus<sup>12+</sup>
 
-getStatus(): number
+ArkTS-Dyn: getStatus(): number
+
+ArkTS-Sta: getStatus(): int
 
 获取Response的Http状态码。
 
@@ -302,7 +306,7 @@ getStatus(): number
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| number | 获取Response的Http状态码。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 获取Response的Http状态码。|
 
 **示例：**
 

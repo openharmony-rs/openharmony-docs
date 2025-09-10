@@ -1,6 +1,6 @@
 # ConcurrentHashMap (并发哈希表)
 
-ConcurrentHashMap<[K, V]> 是一个多线程安全的哈希表，支持并发读取和写入，减少锁的竞争，实现高并发性能。提供了对容器元素的高效操作，包括添加、删除、查找等，并且可以迭代操作内部存储的元素。
+ConcurrentHashMap<[K, V]>是一个多线程安全的哈希表，支持并发读取和写入，减少锁的竞争，实现高并发性能。提供了对容器元素的高效操作，包括添加、删除、查找等，并且可以迭代操作内部存储的元素。
 
 > **说明：**
 >
@@ -21,7 +21,7 @@ ConcurrentHashMap的构造函数，创建一个空的ConcurrentHashMap<K, V>实�
 **示例：**
 
 ```typescript
-let concurrentHashMap: ConcurrentHashMap<number, string> = new ConcurrentHashMap<number, string>();
+let concurrentHashMap: containers.ConcurrentHashMap<number, string> = new containers.ConcurrentHashMap<number, string>();
 ```
 
 ## constructor
@@ -46,7 +46,7 @@ for (let i = 0; i < 5; i++) {
   let arrKV: [Double, String] = [arrKeys[i], arrValues[i]];
   array[i] = arrKV;
 }
-let concurrentHashMap: ConcurrentHashMap<Double, String> = new ConcurrentHashMap<Double, String>(array);
+let concurrentHashMap: containers.ConcurrentHashMap<Double, String> = new containers.ConcurrentHashMap<Double, String>(array);
 ```
 
 ## constructor
@@ -71,7 +71,7 @@ let arr: Array<[Double, string]> = [
 ];
 let map = new Map<Double, string>(arr);
 let iterable = map.entries();
-let concurrentHashMap: ConcurrentHashMap<Double, string> = new ConcurrentHashMap<Double, string>(iterable);
+let concurrentHashMap: containers.ConcurrentHashMap<Double, string> = new containers.ConcurrentHashMap<Double, string>(iterable);
 ```
 
 ## constructor
@@ -91,7 +91,7 @@ ConcurrentHashMap的构造函数，传入一个实现了ReadonlyMap<K, V>接口�
 ```typescript
 let map: Map<number, string> = new Map<number, string>();
 map.set(1, "1");
-let concurrentHashMap: ConcurrentHashMap<number, string> = new ConcurrentHashMap<number, string>(map);
+let concurrentHashMap: containers.ConcurrentHashMap<number, string> = new containers.ConcurrentHashMap<number, string>(map);
 ```
 
 ## set
@@ -118,7 +118,7 @@ set(key: K, val: V): this
 **示例：**
 
 ```typescript
-let concurrentHashMap: ConcurrentHashMap<number, string> = new ConcurrentHashMap<number, string>();
+let concurrentHashMap: containers.ConcurrentHashMap<number, string> = new containers.ConcurrentHashMap<number, string>();
 let val = concurrentHashMap.set(1, "one").get(1); //"one"
 ```
 
@@ -145,7 +145,7 @@ get(key: K): V \| undefined
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(1, "one");
 let val_0 = concurrentHashMap.get(1); // "one"
 let val_1 = concurrentHashMap.get(2); // undefined
@@ -175,7 +175,7 @@ replace(key: K, newValue: V): boolean
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 let val = concurrentHashMap.set(1, "one").get(1); //"one"
 let flag_0 = concurrentHashMap.replace(1, "first"); // true
 let flag_1 = concurrentHashMap.replace(2, "second"); // false
@@ -205,7 +205,7 @@ has(key: K): boolean
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(1, "one");
 let flag_1 = concurrentHashMap.has(1); // true
 let flag_2 = concurrentHashMap.has(2); // false
@@ -234,7 +234,7 @@ remove(key: K): V | undefined
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(1, "one");
 let val_0 = concurrentHashMap.remove(1); // "one"
 let val_1 = concurrentHashMap.remove(1); // undefined
@@ -263,7 +263,7 @@ delete(key:K): boolean
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(1, "one");
 let flag = concurrentHashMap.delete(1); // true
 flag = concurrentHashMap.delete(1); // false
@@ -286,7 +286,7 @@ isEmpty(): boolean
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 let flag: boolean = concurrentHashMap.isEmpty(); // true
 ```
 
@@ -301,7 +301,7 @@ clear():void
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(1, "one");
 concurrentHashMap.set(2, "two");
 concurrentHashMap.clear();
@@ -326,7 +326,7 @@ keys(): IterableIterator\<K>
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(0, "zero");
 concurrentHashMap.set(1, "one");
 concurrentHashMap.set(2, "two");
@@ -366,7 +366,7 @@ values(): IterableIterator\<V>
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(0, "zero");
 concurrentHashMap.set(1, "one");
 concurrentHashMap.set(2, "two");
@@ -406,7 +406,7 @@ entries(): IterableIterator<[K, V]>
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<int, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<int, string>();
 concurrentHashMap.set(0, "zero");
 concurrentHashMap.set(1, "one");
 concurrentHashMap.set(2, "two");
@@ -446,7 +446,7 @@ key: 4  value: four
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<int, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<int, string>();
 concurrentHashMap.set(0, "zero");
 concurrentHashMap.set(1, "one");
 concurrentHashMap.set(2, "two");
@@ -494,11 +494,11 @@ callbackfn的参数说明：
 **示例：**
 
 ```typescript
-let concurrentHashMap: ConcurrentHashMap<number, string> = new ConcurrentHashMap<number, string>();
+let concurrentHashMap: containers.ConcurrentHashMap<number, string> = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(1, "one");
 concurrentHashMap.set(2, "two");
 
-concurrentHashMap.forEach((value: string, key: number, map: ConcurrentHashMap<number, string>) => {
+concurrentHashMap.forEach((value: string, key: number, map: containers.ConcurrentHashMap<number, string>) => {
   console.log("value: " + value, "  key: " + key);
 });
 /*
@@ -524,7 +524,7 @@ toString(): String
 **示例：**
 
 ```typescript
-let concurrentHashMap = new ConcurrentHashMap<number, string>();
+let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
 concurrentHashMap.set(1, "one");
 concurrentHashMap.set(2, "two");
 let str = concurrentHashMap.toString();

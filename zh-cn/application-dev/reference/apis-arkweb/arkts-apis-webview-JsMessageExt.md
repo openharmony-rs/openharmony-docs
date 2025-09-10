@@ -48,7 +48,9 @@ getString(): string
 
 ## getNumber<sup>10+</sup>
 
-getNumber(): number
+ArkTS-Dyn: getNumber(): number
+
+ArkTS-Sta: getNumber(): double | long
 
 获取数据对象的数值类型数据。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
 
@@ -58,7 +60,7 @@ getNumber(): number
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| number | 返回数值类型的数据。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double \| long | 返回数值类型的数据。 |
 
 **错误码：**
 
@@ -114,7 +116,9 @@ getArrayBuffer(): ArrayBuffer
 
 ## getArray<sup>10+</sup>
 
-getArray(): Array\<string | number | boolean\>
+ArkTS-Dyn: getArray(): Array\<string | number | boolean\>
+
+ArkTS-Sta: getArray(): Array\<string | double | long | boolean\>
 
 获取数据对象的数组类型数据。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
 
@@ -124,7 +128,7 @@ getArray(): Array\<string | number | boolean\>
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| Array\<string \| number \| boolean\> | 返回数组类型的数据。 |
+| ArkTS-Dyn: Array\<string \| number \| boolean\><br>ArkTS-Sta: Array\<string \| double \| long \| boolean\> | 返回数组类型的数据。 |
 
 **错误码：**
 

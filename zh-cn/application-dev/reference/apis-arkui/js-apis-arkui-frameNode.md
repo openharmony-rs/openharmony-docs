@@ -1333,6 +1333,8 @@ getCustomProperty(name: string): Object | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
@@ -1348,6 +1350,30 @@ getCustomProperty(name: string): Object | undefined
 **示例：**
 
 请参考[节点操作示例](#节点操作示例)。
+
+### getCustomProperty<sup>20+</sup>
+
+getCustomProperty(name: string): CustomProperty
+
+通过名称获取组件的自定义属性。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：** 
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                         |
+| ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| name  | string | 是   | 自定义属性的名称。 |
+
+**返回值：**
+
+| 类型                                                           | 说明                                                                  |
+| -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [CustomProperty](./arkui-ts/ts-universal-attributes-custom-property.md#customproperty20) | 自定义属性的值。 |
 
 ### dispose<sup>12+</sup>
 
@@ -1708,6 +1734,8 @@ addComponentContent\<T>(content: ComponentContent\<T>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
@@ -1747,6 +1775,92 @@ class MyNodeController extends NodeController {
       .borderColor(Color.Black)
       .backgroundColor(Color.Green)
     let component = new ComponentContent<Object>(uiContext, wrapBuilder(buildText))
+    if (row4.isModifiable()) {
+      row4.addComponentContent(component)
+      col.appendChild(row4)
+    }
+    return node
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController);
+    }
+  }
+}
+```
+
+### addComponentContent<sup>20+</sup>
+
+addComponentContent\<T extends Object>(content: ComponentContent\<T>): void
+
+支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](#ismodifiable12)的返回值为true，否则抛出异常信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名  | 类型                                                   | 必填 | 说明             |
+| ------- | ------------------------------------------------------ | ---- | ---------------- |
+| content | [ComponentContent](./js-apis-arkui-ComponentContent-static.md#componentcontent)\<T> | 是   | FrameNode节点中显示的组件内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+
+```ts
+import {
+  Entry,
+  Builder,
+  Column,
+  ColumnOptions,
+  Button,
+  Component,
+  NodeContainer,
+  wrapBuilder,
+  Row,
+  Text,
+  UIContext,
+  Color
+} from '@ohos.arkui.component';
+import { NodeController,FrameNode, typeNode,ComponentContent} from '@ohos.arkui.node';
+
+
+@Builder
+function buildText() {
+  Column() {
+    Text('hello')
+      .width(50)
+      .height(50)
+      .backgroundColor(Color.Yellow)
+  }
+}
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext)
+    node.commonAttribute.width(300).height(300).backgroundColor(Color.Red)
+    let col = typeNode.createNode(uiContext, "Column")
+    node.appendChild(col)
+    let row4 = typeNode.createNode(uiContext, "Row")
+    row4.attribute.width(200)
+      .height(200)
+      .borderWidth(1)
+      .borderColor(Color.Black)
+      .backgroundColor(Color.Green)
+    let component = new ComponentContent(uiContext, wrapBuilder(buildText))
     if (row4.isModifiable()) {
       row4.addComponentContent(component)
       col.appendChild(row4)
@@ -4585,6 +4699,8 @@ isDisposed(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型    | 说明               |
@@ -6012,6 +6128,7 @@ struct Index {
 ```
 ## NodeAdapter使用示例
 
+ArkTS1.1示例：
 ```ts
 import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';
 
@@ -6207,6 +6324,212 @@ struct ListNodeTest {
 
 ```
 
+ArkTS1.2示例：
+
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, NodeContainer, Row, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import { FrameNode, NodeController, NodeAdapter, typeNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+
+class MyNodeAdapter extends NodeAdapter {
+  uiContext: UIContext
+  cachePool: Array<FrameNode> = new Array<FrameNode>();
+  changed: boolean = false
+  reloadTimes: number = 0;
+  data: Array<string> = new Array<string>();
+  hostNode?: FrameNode
+
+  constructor(uiContext: UIContext, count: number) {
+    super();
+    this.uiContext = uiContext;
+    this.totalNodeCount = count;
+    this.loadData();
+  }
+
+  reloadData(count: number): void {
+    this.reloadTimes++;
+    if (this.hostNode) {
+      NodeAdapter.attachNodeAdapter(this, this.hostNode!);
+    }
+    this.totalNodeCount = count;
+    this.loadData();
+    this.reloadAllItems();
+  }
+
+  refreshData(): void {
+    let items = this.getAllAvailableItems()
+    console.info("UINodeAdapter get All items:" + items.length);
+    this.reloadAllItems();
+  }
+
+  detachData(): void {
+    if (this.hostNode) {
+      NodeAdapter.detachNodeAdapter(this.hostNode!);
+    }
+    this.reloadTimes = 0;
+  }
+
+  loadData(): void {
+    this.data = new Array<string>(this.totalNodeCount);
+    for (let i = 0; i < this.totalNodeCount; i++) {
+      this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
+    }
+  }
+
+  changeData(from: number, count: number): void {
+    this.changed = !this.changed;
+    for (let i = 0; i < count; i++) {
+      let index = i + from;
+      this.data[index as Int] =
+        "Adapter ListItem " + (this.changed ? "changed:" : "") + index + " r:" + this.reloadTimes;
+    }
+    this.reloadItem(from, count);
+  }
+
+  insertData(from: number, count: number): void {
+    for (let i = 0; i < count; i++) {
+      let index = i + from;
+      this.data.splice(index, 0, "Adapter ListItem " + from + "-" + i);
+    }
+    this.insertItem(from, count);
+    this.totalNodeCount += count;
+    console.info("UINodeAdapter after insert count:" + this.totalNodeCount);
+  }
+
+  removeData(from: number, count: number): void {
+    let arr = this.data.splice(from, count);
+    this.removeItem(from, count);
+    this.totalNodeCount -= arr.length;
+    console.info("UINodeAdapter after remove count:" + this.totalNodeCount);
+  }
+
+  moveData(from: number, to: number): void {
+    let tmp = this.data.splice(from, 1);
+    this.data.splice(to, 0, tmp[0]);
+    this.moveItem(from, to);
+  }
+
+  onAttachToNode(target: FrameNode): void {
+    console.info("UINodeAdapter onAttachToNode id:" + target.getUniqueId());
+    this.hostNode = target;
+  }
+
+  onDetachFromNode(): void {
+    console.info("UINodeAdapter onDetachFromNode");
+  }
+
+  onGetChildId(index: number): number {
+    console.info("UINodeAdapter onGetChildId:" + index);
+    return index;
+  }
+
+  onCreateChild(index: number): FrameNode {
+    console.info("UINodeAdapter onCreateChild:" + index);
+    if (this.cachePool.length > 0) {
+      let cacheNode = this.cachePool.pop();
+      if (cacheNode !== undefined) {
+        console.info("UINodeAdapter onCreateChild reused id:" + cacheNode.getUniqueId());
+        let text = cacheNode?.getFirstChild();
+        let textNode = text as typeNode.Text;
+        textNode?.initialize(this.data[index as Int]).fontSize(20);
+        return cacheNode;
+      }
+    }
+    console.info("UINodeAdapter onCreateChild createNew");
+    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
+    let textNode = typeNode.createNode(this.uiContext, "Text");
+    textNode.initialize(this.data[index as Int]).fontSize(20);
+    itemNode.appendChild(textNode);
+    return itemNode;
+  }
+
+  onDisposeChild(id: number, node: FrameNode): void {
+    console.info("UINodeAdapter onDisposeChild:" + id);
+    if (this.cachePool.length < 10) {
+      if (!this.cachePool.includes(node)) {
+        console.info("UINodeAdapter caching node id:" + node.getUniqueId());
+        this.cachePool.push(node);
+      }
+    } else {
+      node.dispose();
+    }
+  }
+
+  onUpdateChild(id: number, node: FrameNode): void {
+    let index = id;
+    let text = node.getFirstChild();
+    let textNode = text as typeNode.Text;
+    textNode?.initialize(this.data[index as Int]).fontSize(20);
+  }
+}
+
+class MyNodeAdapterController extends NodeController {
+  rootNode: FrameNode | null = null;
+  nodeAdapter: MyNodeAdapter | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    let listNode = typeNode.createNode(uiContext, "List");
+    listNode.initialize({ space: 3 }).borderWidth(2).borderColor(Color.Black);
+    this.rootNode!.appendChild(listNode!);
+    this.nodeAdapter = new MyNodeAdapter(uiContext, 100);
+    NodeAdapter.attachNodeAdapter(this.nodeAdapter!, listNode);
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct ListNodeTest {
+  adapterController: MyNodeAdapterController = new MyNodeAdapterController();
+
+  build() {
+    Column() {
+      Text("ListNode Adapter");
+      NodeContainer(this.adapterController)
+        .width(300).height(300)
+        .borderWidth(1).borderColor(Color.Black);
+      Row() {
+        Button("Reload")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.reloadData(50);
+          })
+        Button("Change")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.changeData(5, 10)
+          })
+        Button("Insert")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.insertData(10, 10);
+          })
+      }
+
+      Row() {
+        Button("Remove")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.removeData(10, 10);
+          })
+        Button("Move")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.moveData(2, 5);
+          })
+        Button("Refresh")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.refreshData();
+          })
+        Button("Detach")
+          .onClick((event: ClickEvent) => {
+            this.adapterController.nodeAdapter?.detachData();
+          })
+      }
+    }.borderWidth(1)
+    .width("100%")
+  }
+}
+
+```
 ## 节点复用回收使用示例
 
 ```ts

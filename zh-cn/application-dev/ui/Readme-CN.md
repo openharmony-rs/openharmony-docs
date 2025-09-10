@@ -28,17 +28,20 @@
       - [交互事件字段](arkts-v1.2-deprecated-event-object-apis.md)
       - [UIExtensionComponent (系统接口)](arkts-v1.2-deprecated-uiextension.md)
       - [AbilityComponent (系统接口)](arkts-v1.2-deprecated-abilitycomponent.md)
+      - [ChipGroup](arkts-v1.2-deprecated-chipgroup.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](../ui/state-management/arkts-basic-syntax-overview.md)
     - [声明式UI描述](../ui/state-management/arkts-declarative-ui-description.md)
-    - 自定义组件<!--arkts-custom-components-->
+    - 动态自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](../ui/state-management/arkts-create-custom-components.md)
-        - [\@ComponentV2装饰器：自定义组件](state-management/arkts-new-componentV2.md)
       - [自定义组件生命周期](../ui/state-management/arkts-page-custom-components-lifecycle.md)
       - [自定义组件的自定义布局](../ui/state-management/arkts-page-custom-components-layout.md)
       - [自定义组件可见性修饰符](../ui/state-management/arkts-custom-components-access-restrictions.md)
       - [自定义组件冻结](../ui/state-management/arkts-custom-components-v1-v2-freeze.md)
       - [自定义组件复用](../ui/state-management/arkts-custom-components-reuse.md)
+    - 静态自定义组件<!--arkts-static-custom-components-->
+      - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
+      - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
     - UI装饰器
       - [装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
       - 组件扩展<!--arkts-extend-components-->
@@ -119,10 +122,10 @@
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
           - [\@Observed装饰器和\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-->
-          - LocalStorage：页面级UI状态存储
-          - AppStorage：应用全局的UI状态存储
-          - PersistentStorage：持久化存储UI状态
-          - Environment：设备环境查询
+          - [LocalStorage：页面级UI状态存储](state-management-static/arkts-static-localstorage.md)
+          - [AppStorage：应用全局的UI状态存储](state-management-static/arkts-static-appstorage.md)
+          - [PersistentStorage：持久化存储UI状态](state-management-static/arkts-static-persiststorage.md)
+          - [Environment：设备环境查询](state-management-static/arkts-static-environment.md)
       - 状态管理（V2）<!--arkts-state-management-v2-->
         - 管理组件拥有的状态<!--arkts-component-state-management-v2-->
           - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
@@ -140,6 +143,7 @@
         - 辅助接口<!--arkts-new-other-state-mgmt-->
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
+          - [memorizeUpdatedState接口：并行化UI创建场景下的状态变量拷贝接口](state-management-static/arkts-static-memorizeUpdatedState.md)
           - addMonitor/clearMonitor接口：动态添加/取消监听
       - 状态管理V1和V2对比<!--arkts-state-management-v1-v2-compare-->
       - 状态管理V1向V2迁移指导
@@ -149,12 +153,14 @@
     - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
   - 渲染控制<!--arkts-rendering-control-->
       - [渲染控制概述](state-management/arkts-rendering-control-overview.md)
-      - [ArkTS1.2 渲染控制组件迁移规范](state-management/arkts-v1.2-rendering-control.md)
       - [if/else：条件渲染](state-management/arkts-rendering-control-ifelse.md)
       - [ForEach：循环渲染](state-management/arkts-rendering-control-foreach.md)
       - [LazyForEach：数据懒加载](state-management/arkts-rendering-control-lazyforeach.md)
       - [Repeat：可复用的循环渲染](state-management/arkts-new-rendering-control-repeat.md)
       - [ContentSlot：混合开发](state-management/arkts-rendering-control-contentslot.md)
+      - [ArkTS1.2 ForEach迁移规范](state-management/arkts-v1.2-rendering-control-foreach.md)
+      - [ArkTS1.2 LazyForEach迁移规范](state-management/arkts-v1.2-rendering-control-lazyforeach.md)
+      - [ArkTS1.2 Repeat迁移规范](state-management/arkts-v1.2-rendering-control-repeat.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - [组件导航(Navigation) (推荐)](arkts-navigation-navigation.md)
@@ -278,6 +284,7 @@
       - [自定义组件节点 (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
+      - [自定义声明式节点 (BuilderNode)(ArkTS1.2)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
     - 自定义绘制<!--arkts-draw-->
       - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
       - [自定义绘制修改器 (DrawModifier)](arkts-user-defined-extension-drawModifier.md)
@@ -335,7 +342,8 @@
     - [ArkTS1.2使用ArkTS1.1全局自定义构建函数](interop-compatible-builder.md)
     - [ArkTS1.2使用ArkTS1.1 WrappedBuilder对象](interop-compatible-WrappedBuilder.md)
 - [UI高性能开发](ui-performance-overview.md)
-
+  - [BuilderNode并行化构建和更新节点树](ui-parallel-buildernode.md)
+  - [UI并行化创建组件树](ui-parallel-components.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->

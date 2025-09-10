@@ -6,6 +6,8 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## onAlert
@@ -2357,6 +2359,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2392,7 +2395,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
       Column() {
         Web({ src: $rawfile("window.html"), controller: this.controller })
           .javaScriptAccess(true)
-          // 需要使能multiWindowAccess
+          // 需要使能multiWindowAccess。
           .multiWindowAccess(true)
           .allowWindowOpenMethod(true)
           .onWindowNew((event) => {
@@ -2404,6 +2407,65 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
               builder: NewWebViewComp({ webviewController1: popController })
             })
             this.dialogController.open();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Component, Entry, Web, Column, CustomDialogController, CustomDialog } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+    controller?: CustomDialogController;
+    webviewController1: webview.WebviewController = new webview.WebviewController("");
+
+    build() {
+      Column() {
+        Web({ src: "www.example.com", controller: this.webviewController1 })
+          .javaScriptAccess(true)
+          .multiWindowAccess(false)
+          .onWindowExit(() => {
+            console.info("NewWebViewComp onWindowExit");
+            if (this.controller) {
+              this.controller?.close();
+            }
+          })
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController("");
+    dialogController: CustomDialogController | null = null;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("window.html"), controller: this.controller })
+          .javaScriptAccess(true)
+          // 需要使能multiWindowAccess。
+          .multiWindowAccess(true)
+          .allowWindowOpenMethod(true)
+          .onWindowNew((event) => {
+            if (this.dialogController) {
+              this.dialogController?.close();
+            }
+            let popController: webview.WebviewController = new webview.WebviewController("");
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController })
+            })
+            this.dialogController?.open();
             // 将新窗口对应WebviewController返回给Web内核。
             // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
             // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
@@ -2691,6 +2753,7 @@ onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2699,6 +2762,28 @@ onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onPageVisible((event) => {
+            console.log('onPageVisible url:' + event.url);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController("");
 
     build() {
       Column() {
@@ -3837,6 +3922,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3899,7 +3985,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
         .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
-          // option初始化，默认使用系统默认键盘
+          // option初始化，默认使用系统默认键盘。
           let option: WebKeyboardOptions = {
             useSystemKeyboard: true,
           };
@@ -3907,10 +3993,10 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
             return option;
           }
 
-          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为
+          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为。
           this.webKeyboardController = KeyboardCallbackInfo.controller
           let attributes: Record<string, string> = KeyboardCallbackInfo.attributes
-          // 遍历attributes
+          // 遍历attributes。
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
             console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
@@ -3918,10 +4004,10 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
           if (attributes) {
             if (attributes['data-keyboard'] == 'customKeyboard') {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘。
               console.log('WebCustomKeyboard use custom keyboard')
               option.useSystemKeyboard = false;
-              // 设置自定义键盘builder
+              // 设置自定义键盘builder。
               option.customKeyboard = () => {
                 this.customKeyboardBuilder()
               }
@@ -3929,9 +4015,119 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
             }
 
             if (attributes['keyboard-return'] != undefined) {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型。
               option.useSystemKeyboard = true;
               let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return'])
+              if (enterKeyType != undefined) {
+                option.enterKeyType = enterKeyType
+              }
+              return option;
+            }
+          }
+
+          return option;
+        })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import { WebKeyboardOptions, WebKeyboardCallbackInfo, WebKeyboardController, $rawfile, Web, Column, Margin, Button, Color, Text, Row, Builder, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { inputMethodEngine } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController("");
+    webKeyboardController: WebKeyboardController = new WebKeyboardController();
+    inputAttributeMap: Map<string, int> = new Map<string, int>([
+        ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
+        ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
+        ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
+        ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
+        ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
+        ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
+        ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
+      ])
+
+    /**
+     * 自定义键盘组件Builder
+     */
+    @Builder
+    customKeyboardBuilder() {
+      // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
+      Row() {
+        Text("完成")
+          .fontSize(20)
+          .fontColor(Color.Blue)
+          .onClick(() => {
+            this.webKeyboardController.close();
+          })
+        // 插入字符。
+        Button("insertText").onClick(() => {
+          this.webKeyboardController.insertText('insert ');
+        }).margin({
+          bottom: 200,
+        } as Margin)
+        // 从后往前删除length参数指定长度的字符。
+        Button("deleteForward").onClick(() => {
+          this.webKeyboardController.deleteForward(1);
+        }).margin({
+          bottom: 200,
+        } as Margin)
+        // 从前往后删除length参数指定长度的字符。
+        Button("deleteBackward").onClick(() => {
+          this.webKeyboardController.deleteBackward(1);
+        }).margin({
+          left: -220,
+        } as Margin)
+        // 插入功能按键。
+        Button("sendFunctionKey").onClick(() => {
+          this.webKeyboardController.sendFunctionKey(6);
+        })
+      }
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
+          // option初始化，默认使用系统默认键盘。
+          let option: WebKeyboardOptions = {
+            useSystemKeyboard: true,
+          };
+          if (!KeyboardCallbackInfo) {
+            return option;
+          }
+
+          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为。
+          this.webKeyboardController = KeyboardCallbackInfo.controller
+          let attributes: Record<string, string> = KeyboardCallbackInfo.attributes
+          // 遍历attributes。
+          let attributeKeys = Object.keys(attributes)
+          for (let i = 0; i < attributeKeys.length; i++) {
+            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+          }
+
+          if (attributes) {
+            if (attributes['data-keyboard'] == 'customKeyboard') {
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘。
+              console.log('WebCustomKeyboard use custom keyboard')
+              option.useSystemKeyboard = false;
+              // 设置自定义键盘builder。
+              option.customKeyboard = () => {
+                this.customKeyboardBuilder()
+              }
+              return option;
+            }
+
+            if (attributes['keyboard-return'] != undefined) {
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型。
+              option.useSystemKeyboard = true;
+              let enterKeyType: int | undefined = this.inputAttributeMap.get(attributes['keyboard-return'] as string)
               if (enterKeyType != undefined) {
                 option.enterKeyType = enterKeyType
               }

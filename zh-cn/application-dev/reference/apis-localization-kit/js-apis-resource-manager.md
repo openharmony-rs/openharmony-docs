@@ -170,13 +170,13 @@ getResourceManager(bundleName: string): Promise&lt;ResourceManager&gt;
   });
   ```
 
-## resourceManager.getSystemResourceManager<sup>10+</sup>
+## resourceManager.getSysResourceManager<sup>20+</sup>
 
-getSystemResourceManager(): ResourceManager
+getSysResourceManager(): ResourceManager
 
-获取系统资源管理ResourceManager对象。
+获取系统资源管理对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -199,18 +199,19 @@ getSystemResourceManager(): ResourceManager
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let systemResourceManager = resourceManager.getSystemResourceManager();
-    systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
-      let str = value;
-    }).catch((error: BusinessError) => {
-      console.error("systemResourceManager getStringValue promise error is " + error);
+try {
+    let systemResourceManager = resourceManager.getSysResourceManager();
+    // 'ohos_lab_vibrate'仅作示例，请替换为实际使用的资源
+    systemResourceManager.getStringByName('ohos_lab_vibrate').then((value: string) => {
+        console.info(`systemResourceManager getStringByName success: ${value}`);
+    }).catch((error) => {
+        console.error(`systemResourceManager getStringByName promise error: ${error}`);
     });
-  } catch (error) {
+} catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
-    console.error(`getSystemResourceManager failed, error code: ${code}, message: ${message}.`);
-  }
+    console.error(`getSysResourceManager failed, error code: ${code}, message: ${message}.`);
+}
   ```
 
 ## Direction
@@ -4101,7 +4102,8 @@ getLocales(includeSystem?: boolean): Array\<string>
   }
 
   try {
-    resourceManager.getSystemResourceManager().getLocales(); // 仅获取系统资源语言列表
+    let locales = resourceManager.getSysResourceManager().getLocales(); // 仅获取系统资源语言列表
+    console.info(`getLocales success: ${locales}`);
   } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
@@ -7430,6 +7432,53 @@ closeRawFileDescriptor(path: string): Promise&lt;void&gt;
   resourceManager.getResourceManager((error, mgr) => {
       mgr.closeRawFileDescriptor("test.txt");
   });
+  ```
+
+## resourceManager.getSystemResourceManager<sup>(deprecated)</sup>
+
+getSystemResourceManager(): ResourceManager
+
+获取系统资源管理ResourceManager对象。
+
+> **说明**
+>
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[resourceManager.getSysResourceManager](#resourcemanagergetsysresourcemanager20)替代。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
+
+**返回值：**
+
+| 类型                                       | 说明                 |
+| ---------------------------------------- | ------------------ |
+| [ResourceManager](#resourcemanager) | 系统资源管理对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 9001009  | Failed to access the system resource. which is not mapped to application sandbox, This error code will be thrown. |
+
+**示例：**
+  ```js
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let systemResourceManager = resourceManager.getSystemResourceManager();
+    systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
+      let str = value;
+    }).catch((error: BusinessError) => {
+      console.error("systemResourceManager getStringValue promise error is " + error);
+    });
+  } catch (error) {
+    let code = (error as BusinessError).code;
+    let message = (error as BusinessError).message;
+    console.error(`getSystemResourceManager failed, error code: ${code}, message: ${message}.`);
+  }
   ```
 
 ## AsyncCallback<sup>(deprecated)</sup>

@@ -3175,21 +3175,7 @@ static getFocusedUIContext(): UIContext | undefined
 
 **示例：**
 ```ts
-import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
-
-import {
-  Text,
-  TextAttribute,
-  Column,
-  Component,
-  Button,
-  ButtonAttribute,
-  ClickEvent,
-  UserView
-} from '@ohos.arkui.component';
-
-import { State, MutableState, stateOf, observableProxy } from '@ohos.arkui.stateManagement';
-import hilog from '@ohos.hilog';
+import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { UIContext } from '@ohos.arkui.UIContext';
 
 @Entry
@@ -3199,7 +3185,6 @@ struct MyStateSample {
     Column(undefined) {
       Button("MyButton").backgroundColor("#FFFF00FF")
         .onClick((e: ClickEvent) => {
-          hilog.info(0x0000, 'testTag', 'On Click');
           let uicontext = UIContext.getFocusedUIContext()
           if (uicontext) {
             console.log("MyButton nodeType:" + uicontext.getFrameNodeById('MyButton')?.getNodeType());
@@ -5393,7 +5378,7 @@ matchMediaSync(condition: string): mediaQuery.MediaQueryListener
 | ------------------------------------------------------------ | -------------------------------------------- |
 | [mediaQuery.MediaQueryListener](js-apis-mediaquery.md#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
 
-**示例：**
+ArkTS1.1示例：
 
 <!--code_no_check-->
 ```ts
@@ -5401,6 +5386,14 @@ import { MediaQuery } from '@kit.ArkUI';
 
 let mediaquery: MediaQuery = uiContext.getMediaQuery();
 let listener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
+```
+
+ArkTS1.2示例：
+
+```ts
+import mediaquery from '@ohos.mediaquery';
+
+listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 ```
 
 ## Router

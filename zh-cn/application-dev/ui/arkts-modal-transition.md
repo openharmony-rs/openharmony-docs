@@ -348,6 +348,7 @@ struct BindSheetDemo {
 
 [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)为组件绑定弹出式菜单，通过点击触发。完整示例和效果如下。
 
+ArkTS-Dyn示例：
 
 ```ts
 class BMD{
@@ -391,6 +392,43 @@ struct BindMenuDemo {
 
 ![zh-cn_image_0000001599643478](figures/zh-cn_image_0000001599643478.gif)
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Button, Column, MenuElement, FlexAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BindMenuDemo {
+  // 第一步: 定义一组数据用来表示菜单按钮项
+  private menuArray: Array<MenuElement> = new Array<MenuElement>(
+    {
+      value: '菜单项1',
+      action: () => {
+        console.info('handle Menu1 select');
+      }
+    } as MenuElement,
+    {
+      value: '菜单项2',
+      action: () => {
+        console.info('handle Menu2 select')
+      }
+    } as MenuElement)
+
+  build() {
+    Column() {
+      Button('click')
+        .backgroundColor(0x409eff)
+        .borderRadius(5)
+        // 第二步: 通过bindMenu接口将菜单数据绑定给元素
+        .bindMenu(this.menuArray)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height(437)
+  }
+}
+```
 
 ## 使用bindContextMenu实现菜单弹出效果
 
@@ -398,12 +436,14 @@ struct BindMenuDemo {
 
 完整示例和效果如下。
 
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
 @Component
 struct BindContextMenuDemo {
   private menu: string[] = ['保存图片', '收藏', '搜一搜'];
+  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // 通过@Builder构建自定义菜单项
@@ -458,6 +498,93 @@ struct BindContextMenuDemo {
 
 ![zh-cn_image_0000001600137920](figures/zh-cn_image_0000001600137920.gif)
 
+ArkTS-Sta示例：
+
+```ts
+ import {
+  Entry,
+  Component,
+  Button,
+  Column,
+  HorizontalAlign,
+  Builder,
+  ForEach,
+  Text,
+  TextAlign,
+  BorderOptions,
+  ResponseType,
+  Resource,
+  $r,
+  ShadowOptions,
+  Padding,
+  Row,
+  EdgeWidths,
+  Color,
+  Image
+} from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BindContextMenuDemo {
+  private menu: string[] = ['保存图片', '收藏', '搜一搜'];
+  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+  private pics: Resource[] = [$r('app.media.icon1'), $r('app.media.icon2')];
+
+  // 通过@Builder构建自定义菜单项
+  @Builder
+  myMenu() {
+    Column() {
+      ForEach(this.menu, (item: string) => {
+        Row() {
+          Text(item)
+            .fontSize(18)
+            .width('100%')
+            .textAlign(TextAlign.Center)
+        }
+        .padding(15)
+        .border({ width: { bottom: 1 } as EdgeWidths, color: 0xcccccc } as BorderOptions)
+      })
+    }
+    .width(140)
+    .borderRadius(15)
+    .shadow({ radius: 15, color: 'f1f1f1' as string } as ShadowOptions)
+    .backgroundColor(0xf1f1f1)
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text('查看图片')
+          .fontSize(20)
+          .fontColor(Color.White)
+          .width('100%')
+          .textAlign(TextAlign.Center)
+          .padding({ top: 20, bottom: 20 } as Padding)
+      }
+      .backgroundColor(0x007dfe)
+
+      Column() {
+        ForEach(this.pics, (item: Resource) => {
+          Row() {
+            Image(item)
+              .width('100%')
+              .draggable(false)
+          }
+          .padding({
+            top: 20,
+            bottom: 20,
+            left: 10,
+            right: 10
+          } as Padding)
+          .bindContextMenu(this.myMenu, ResponseType.LongPress)
+        })
+      }
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
 
 ## 使用bindPopUp实现气泡弹窗效果
 
@@ -465,6 +592,7 @@ struct BindContextMenuDemo {
 
 完整示例和代码如下。
 
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -503,7 +631,7 @@ struct BindPopupDemo {
         .bindPopup(this.customPopup, {
           builder: this.popupBuilder,
           placement: Placement.Top,
-          maskColor: 0x33000000,
+          mask: { color: 0x33000000 },
           popupColor: 0xf56c6c,
           enableArrow: true,
           onStateChange: (e) => {
@@ -520,7 +648,80 @@ struct BindPopupDemo {
 }
 ```
 
+ArkTS-Sta示例：
 
+```ts
+import {
+  Entry,
+  Component,
+  Button,
+  Column,
+  FlexAlign,
+  Builder,
+  Row,
+  Color,
+  CustomPopupOptions,
+  Placement,
+  ClickEvent,
+  PopupStateChangeParam,
+  ColumnOptions,
+  Text,
+  PopupMaskType
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct BindPopupDemo {
+  // 第一步：定义变量控制弹窗显示
+  @State customPopup: boolean = false;
+
+  // 第二步：popup构造器定义弹框内容
+  @Builder
+  popupBuilder() {
+    Column({ space: 2 } as ColumnOptions) {
+      Row().width(64)
+        .height(64)
+        .backgroundColor(0x409eff)
+      Text('Popup')
+        .fontSize(10)
+        .fontColor(Color.White)
+    }
+    .justifyContent(FlexAlign.SpaceAround)
+    .width(100)
+    .height(100)
+    .padding(5)
+  }
+
+  build() {
+    Column() {
+
+      Button('click')
+      // 第四步：创建点击事件，控制弹窗显隐
+        .onClick((event: ClickEvent) => {
+          this.customPopup = !this.customPopup;
+        })
+        .backgroundColor(0xf56c6c)
+        // 第三步：使用bindPopup接口将弹窗内容绑定给元素
+        .bindPopup(this.customPopup, {
+          builder: this.popupBuilder,
+          placement: Placement.Top,
+          mask: { color: 0x33000000 } as PopupMaskType,
+          popupColor: 0xf56c6c,
+          enableArrow: true,
+          onStateChange: (event: PopupStateChangeParam) => {
+            if (!event.isVisible) {
+              this.customPopup = false;
+            }
+          }
+        } as CustomPopupOptions)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height(437)
+  }
+}
+```
 
 ![zh-cn_image_0000001649282285](figures/zh-cn_image_0000001649282285.gif)
 

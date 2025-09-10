@@ -42,6 +42,12 @@
     - [Uint32Array](arkts-builtin-api-Uint32Array.md)
     - [Uint8ClampedArray](arkts-builtin-api-Uint8ClampedArray.md)
     - [jsonx](arkts1.2-jsonx.md)
+- EAWorker
+  - [EAWorker 独占线程任务执行器（ArkTS）](eaworker_managed.md)
+  - [EAWorker 独占线程任务执行器（C/C++）](eaworker_native.md)
+  - [Job](job.md)
+  - [Message 消息单元](message.md)
+  - [MessageHandler 消息处理器](message_handler.md)
 - 附录<!--appendixes-->
   - [libc中没有导出的符号列表](musl-peculiar-symbol.md)
   - [NDK musl-libc接口受权限影响的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)

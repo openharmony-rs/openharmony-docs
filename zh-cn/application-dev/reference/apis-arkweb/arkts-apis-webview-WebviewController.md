@@ -8,6 +8,8 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 导入模块
@@ -24,7 +26,9 @@ constructor(webTag?: string)
 
 > **说明：**
 >
-> 不传参：new webview.WebviewController()表示构造函数为空，不使用C API时不需要传参。
+> ArkTS-Dyn：不传参，new webview.WebviewController()表示构造函数为空，不使用C API时不需要传参。
+> 
+> ArkTS-Sta：不支持不传参，不区分多实例时可传入""或undefined。
 > 
 > 传参且参数是合法字符串：new webview.WebviewController("xxx")，用于开发者区分多实例，并调用对应实例下的方法。
 > 
@@ -42,6 +46,7 @@ constructor(webTag?: string)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -65,6 +70,62 @@ class WebObj {
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController()
+  @State webTestObj: WebObj = new WebObj();
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick(() => {
+          try {
+            this.controller.refresh();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('deleteJavaScriptRegister')
+        .onClick(() => {
+          try {
+            this.controller.deleteJavaScriptRegister("objTestName");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: '', controller: this.controller })
+        .javaScriptAccess(true)
+        .onControllerAttached(() => {
+          this.controller.loadUrl($rawfile("index.html"));
+          this.controller.registerJavaScriptProxy(this.webTestObj, "objTestName", ["webTest", "webString"]);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Web, Button, Column, State, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class WebObj {
+  constructor() {
+  }
+
+  webTest(): string {
+    console.log('Web test');
+    return "Web test";
+  }
+
+  webString(): void {
+    console.log('Web test toString');
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("")
   @State webTestObj: WebObj = new WebObj();
 
   build() {
@@ -789,6 +850,7 @@ onActive(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -798,6 +860,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('onActive')
+        .onClick(() => {
+          try {
+            this.controller.onActive();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
 
   build() {
     Column() {
@@ -835,6 +925,7 @@ onInactive(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -844,6 +935,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('onInactive')
+        .onClick(() => {
+          try {
+            this.controller.onInactive();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
 
   build() {
     Column() {
@@ -907,7 +1026,9 @@ struct WebComponent {
 
 ## accessStep
 
-accessStep(step: number): boolean
+ArkTS-Dyn: accessStep(step: number): boolean
+
+ArkTS-Sta: accessStep(step: int): boolean
 
 当前页面是否可前进或者后退给定的step步。
 
@@ -917,7 +1038,7 @@ accessStep(step: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明                                   |
 | ------ | -------- | ---- | ------------------------------------------ |
-| step   | number   | 是   | 要跳转的步数，正数代表前进，负数代表后退。 |
+| step   | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 要跳转的步数，正数代表前进，负数代表后退。 |
 
 **返回值：**
 
@@ -1010,7 +1131,7 @@ struct WebComponent {
 
 ## registerJavaScriptProxy
 
-registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
+registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
 registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的交互能力。
 <br>注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refresh)接口生效。
@@ -1030,7 +1151,7 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 
 | 参数名     | 类型       | 必填 | 说明                                        |
 | ---------- | -------------- | ---- | ------------------------------------------------------------ |
-| object     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>方法的参数和返回类型可以为string，number，boolean。<br>方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>方法的返回类型支持Promise，Promise的Callback不能有返回值。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
+| jsObject     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>方法的参数和返回类型可以为string，number，boolean。<br>方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>方法的返回类型支持Promise，Promise的Callback不能有返回值。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 | name       | string         | 是   | 注册对象的名称，与window中调用的对象名一致。注册后window对象可以通过此名字访问应用侧JavaScript对象。 |
 | methodList | Array\<string> | 是   | 参与注册的应用侧JavaScript对象的同步方法。                       |
 | asyncMethodList<sup>12+</sup> | Array\<string> | 否   | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。  |
@@ -2526,9 +2647,9 @@ struct WebComponent {
 
 ## getWebId
 
-ArkTS1.1: getWebId(): number
+ArkTS-Dyn: getWebId(): number
 
-ArkTS1.2: getWebId(): int
+ArkTS-Sta: getWebId(): int
 
 获取当前Web组件的索引值，用于多个Web组件的管理。
 
@@ -2538,7 +2659,7 @@ ArkTS1.2: getWebId(): int
 
 | 类型   | 说明                  |
 | ------ | --------------------- |
-| ArkTS1.1: number <br> ArkTS1.2: int | 当前Web组件的索引值。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前Web组件的索引值。 |
 
 **错误码：**
 
@@ -2550,6 +2671,7 @@ ArkTS1.2: getWebId(): int
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2559,6 +2681,35 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getWebId')
+        .onClick(() => {
+          try {
+            let id = this.controller.getWebId();
+            console.log("id: " + id);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
 
   build() {
     Column() {
@@ -2990,7 +3141,9 @@ struct WebComponent {
 
 ## backOrForward
 
-backOrForward(step: number): void
+ArkTS-Dyn: backOrForward(step: number): void
+
+ArkTS-Sta: backOrForward(step: int): void
 
 按照历史栈，前进或者后退指定步长的页面，当历史栈中不存在对应步长的页面时，不会进行页面跳转。
 
@@ -3002,7 +3155,7 @@ backOrForward(step: number): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| step   | number   | 是   | 需要前进或后退的步长。 |
+| step   | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 需要前进或后退的步长。 |
 
 **错误码：**
 
@@ -4699,7 +4852,9 @@ struct WebComponent {
 
 ## prepareForPageLoad<sup>10+</sup>
 
-static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void
+ArkTS-Dyn: static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void
+
+ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: int): void
 
 预连接url，在加载url之前调用此API，对url只进行DNS解析，socket建链操作，并不获取主资源子资源。
 
@@ -4711,7 +4866,7 @@ static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: numb
 | ---------------| ------- | ---- | ------------- |
 | url            | string  | 是   | 预连接的url。|
 | preconnectable | boolean | 是   | 是否进行预连接。如果preconnectable为true，则对url进行DNS解析，socket建链预连接；如果preconnectable为false，则不做任何预连接操作。|
-| numSockets     | number  | 是   | 要预连接的socket数。socket数目连接需要大于0，最多允许6个连接。|
+| numSockets     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 要预连接的socket数。socket数目连接需要大于0，最多允许6个连接。|
 
 **错误码：**
 
@@ -5084,7 +5239,9 @@ struct WebComponent {
 
 ## setConnectionTimeout<sup>11+</sup>
 
-static setConnectionTimeout(timeout: number): void
+ArkTS-Dyn: static setConnectionTimeout(timeout: number): void
+
+ArkTS-Sta: static setConnectionTimeout(timeout: int): void
 
 设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。
 
@@ -5094,7 +5251,7 @@ static setConnectionTimeout(timeout: number): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| timeout        | number  | 是   | socket连接超时时间，以秒为单位，必须为大于0的整数。 |
+| timeout        | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | socket连接超时时间，以秒为单位，必须为大于0的整数。 |
 
 **错误码：**
 
@@ -8016,7 +8173,9 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 ## setHostIP<sup>12+</sup>
 
-static setHostIP(hostName: string, address: string, aliveTime: number): void
+ArkTS-Dyn: static setHostIP(hostName: string, address: string, aliveTime: number): void
+
+ArkTS-Sta: static setHostIP(hostName: string, address: string, aliveTime: int): void
 
 设置主机域名解析后的IP地址。
 
@@ -8028,7 +8187,7 @@ static setHostIP(hostName: string, address: string, aliveTime: number): void
 | --------- | -------- | ---- | ------------------------------------ |
 | hostName  | string   | 是   | 要添加DNS记录的主机域名。            |
 | address   | string   | 是   | 主机域名解析地址（支持IPv4，IPv6）。 |
-| aliveTime | number   | 是   | 缓存有效时间（秒）。                 |
+| aliveTime | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 缓存有效时间（秒）。                 |
 
 **错误码：**
 
@@ -8376,7 +8535,9 @@ body.appendChild(element);
 
 ## enableBackForwardCache<sup>12+</sup>
 
-static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
+ArkTS-Dyn: static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
+
+ArkTS-Sta: static enableBackForwardCache(features?: BackForwardCacheSupportedFeatures): void
 
 开启Web组件前进后退缓存功能，通过参数指定是否允许使用特定的页面进入前进后退缓存。
 
@@ -8388,7 +8549,7 @@ static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | 是   | 允许使用特定的页面进入前进后退缓存中。|
+| features     |  [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否   | 允许使用特定的页面进入前进后退缓存中。<br>ArkTS-Sta: 若入参为空，默认设置为false。|
 
 **示例：**
 
@@ -8415,7 +8576,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setBackForwardCacheOptions<sup>12+</sup>
 
-setBackForwardCacheOptions(options: BackForwardCacheOptions): void
+ArkTS-Dyn: setBackForwardCacheOptions(options: BackForwardCacheOptions): void
+
+ArkTS-Sta: setBackForwardCacheOptions(options?: BackForwardCacheOptions): void
 
 可以设置Web组件中前进后退缓存的相关选项。
 
@@ -8425,7 +8588,8 @@ setBackForwardCacheOptions(options: BackForwardCacheOptions): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | 是   | 用来控制Web组件前进后退缓存相关选项。|
+| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否   | 用来控制Web组件前进后退缓存相关选项。<br>ArkTS-Sta: 若入参为空，默认设置size为1，timeToLive为600。|
+
 
 **错误码：**
 
@@ -9001,7 +9165,9 @@ struct WebComponent {
 
 ## setWebDebuggingAccess<sup>20+</sup>
 
-static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
+ArkTS-Dyn: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
+
+ArkTS-Sta: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: int): void
 
 设置是否启用无线网页调试功能，默认不开启。
 
@@ -9019,7 +9185,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | 是   | 设置是否启用网页调试功能。<br/>true表示开启网页调试功能，false表示关闭网页调试功能。 |
-| port               | number  | 是   | 指定devtools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
+| port               | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指定devtools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
 
 
 **错误码：**
@@ -9060,7 +9226,9 @@ struct WebComponent {
 
 ## getProgress<sup>20+</sup>
 
-getProgress(): number
+ArkTS-Dyn: getProgress(): number
+
+ArkTS-Sta: getProgress(): int
 
 获取当前网页加载进度。
 
@@ -9070,7 +9238,7 @@ getProgress(): number
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| number | 当前页面加载进度，取值范围[0, 100] |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 当前页面加载进度，取值范围[0, 100] |
 
 **示例：**
 

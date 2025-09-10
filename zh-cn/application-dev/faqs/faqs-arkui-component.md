@@ -892,3 +892,28 @@ struct Index {
 }
 
 ```
+## UI并行化创建组件树接口ParallelizeUI什么时候使用？(API 20)
+**解决措施**
+
+使用ParallelizeUI执行并行构建的内容不会在当帧立即渲染，因此执行并行构建的内容一般为屏幕外的内容、可以延迟显示的内容或可以先用占位替代需要显示的内容。如下所示，推荐并行构建和串行构建结合使用。
+
+示例代码如下：
+```ts
+import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      ParallelizeUI() {
+        Text('Hello') // 并行构建内容通常为屏幕外的内容
+      }
+      Text('World') // 串行构建
+    }.height('100%').width('100%')
+  }
+}
+```
+**参考链接**
+
+[ParallelizeUI最佳实践](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI)
