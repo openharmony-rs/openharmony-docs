@@ -6,8 +6,6 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## onAlert
@@ -886,6 +884,10 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名              | 类型                                     | 必填   | 说明             |
@@ -894,6 +896,7 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -915,6 +918,31 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
     }
   }
   ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, RenderExitReason, OnRenderExitedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined)
+
+    build() {
+      Column() {
+        Web({ src: 'chrome://crash/', controller: this.controller })
+          .onRenderExited((event: OnRenderExitedEvent): void => {
+            if (event) {
+              console.log('reason:' + event.renderExitReason);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderProcessNotResponding<sup>12+</sup>
 
 onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
@@ -927,6 +955,10 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填   | 说明                                   |
@@ -935,6 +967,7 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -956,6 +989,29 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Column, Component, Web, RenderProcessNotRespondingData } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onRenderProcessNotResponding((data: RenderProcessNotRespondingData): void => {
+            console.info("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
+              ", [process]=" + data.pid + ", [reason]=" + data.reason);
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderProcessResponding<sup>12+</sup>
 
 onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
@@ -963,6 +1019,10 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 渲染进程由无响应状态变回正常运行状态时触发该回调函数，该回调表明该网页并非真正卡死。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -972,6 +1032,7 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -985,6 +1046,28 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onRenderProcessResponding(() => {
+            console.log("onRenderProcessResponding again");
+          })
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onRenderProcessResponding((): void => {
             console.log("onRenderProcessResponding again");
           })
       }
@@ -2351,6 +2434,10 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2427,7 +2514,7 @@ ArkTS-Sta示例：
   @CustomDialog
   struct NewWebViewComp {
     controller?: CustomDialogController;
-    webviewController1: webview.WebviewController = new webview.WebviewController("");
+    webviewController1: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -2447,7 +2534,7 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController("");
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
     dialogController: CustomDialogController | null = null;
 
     build() {
@@ -2461,7 +2548,7 @@ ArkTS-Sta示例：
             if (this.dialogController) {
               this.dialogController?.close();
             }
-            let popController: webview.WebviewController = new webview.WebviewController("");
+            let popController: webview.WebviewController = new webview.WebviewController(undefined);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController })
             })
@@ -2606,6 +2693,10 @@ onWindowExit(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2614,6 +2705,7 @@ onWindowExit(callback: () => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2622,6 +2714,28 @@ onWindowExit(callback: () => void)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onWindowExit(() => {
+            console.info("onWindowExit...");
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -2804,6 +2918,10 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2812,6 +2930,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2825,6 +2944,32 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onInterceptKeyEvent((event) => {
+            if (event.keyCode == 2017 || event.keyCode == 2018) {
+              console.info(`onInterceptKeyEvent get event.keyCode ${event.keyCode}`);
+              return true;
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, KeyEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onInterceptKeyEvent((event: KeyEvent): boolean => {
             if (event.keyCode == 2017 || event.keyCode == 2018) {
               console.info(`onInterceptKeyEvent get event.keyCode ${event.keyCode}`);
               return true;
@@ -3247,6 +3392,10 @@ onControllerAttached(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3256,6 +3405,8 @@ onControllerAttached(callback: () => void)
 **示例：**
 
 在该回调中使用loadUrl加载网页
+
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3276,7 +3427,31 @@ onControllerAttached(callback: () => void)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: '', controller: this.controller })
+          .onControllerAttached(() => {
+            this.controller.loadUrl($rawfile("index.html"));
+          })
+      }
+    }
+  }
+  ```
+
 在该回调中使用getWebId
+
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3304,6 +3479,37 @@ onControllerAttached(callback: () => void)
     }
   }
   ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onControllerAttached(() => {
+            try {
+              let id = this.controller.getWebId();
+              console.log("id: " + id);
+            } catch (error) {
+              let code = (error as BusinessError).code;
+              let message = (error as BusinessError).message;
+              console.error(`ErrorCode: ${code},  Message: ${message}`);
+            }
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!-- index.html -->
@@ -3914,6 +4120,10 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3944,7 +4154,7 @@ ArkTS-Dyn示例：
       ])
 
       /**
-       * 自定义键盘组件Builder
+       * 自定义键盘组件Builder。
        */
       @Builder
       customKeyboardBuilder() {
@@ -4041,7 +4251,7 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController("");
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
     webKeyboardController: WebKeyboardController = new WebKeyboardController();
     inputAttributeMap: Map<string, int> = new Map<string, int>([
         ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
@@ -4054,7 +4264,7 @@ ArkTS-Sta示例：
       ])
 
     /**
-     * 自定义键盘组件Builder
+     * 自定义键盘组件Builder。
      */
     @Builder
     customKeyboardBuilder() {

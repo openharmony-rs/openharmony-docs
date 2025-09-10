@@ -8,8 +8,6 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 导入模块
@@ -4092,6 +4090,11 @@ serializeWebState(): Uint8Array
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
+
 **返回值：**
 
 | 类型       | 说明                                          |
@@ -4109,6 +4112,8 @@ serializeWebState(): Uint8Array
 **示例：**
 
 1.对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4144,11 +4149,64 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, Web, AppStorage } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('serializeWebState')
+        .onClick(() => {
+          try {
+            let state = this.controller.serializeWebState();
+            let path:string | undefined = AppStorage.get("cacheDir");
+            if (path) {
+              path += '/WebState';
+              // 以同步方法打开文件。
+              let file = fileIo.openSync(path as string, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+              fileIo.writeSync(file.fd, state.buffer);
+              fileIo.closeSync(file.fd);
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 2.修改EntryAbility.ets。
 获取应用缓存文件路径。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+        AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+    }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -5907,15 +5965,20 @@ struct WebComponent {
 
 static setRenderProcessMode(mode: RenderProcessMode): void
 
-设置ArkWeb渲染子进程模式。
+设置ArkWeb渲染子进程模式。如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 
 **参数：**
 
 | 参数名       | 类型           | 必填  | 说明                      |
 | ----------- | ------------- | ---- | ------------------------ |
-| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。<br>如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。 |
+| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值SINGLE为单子进程模式，枚举值MULTIPLE为多子进程模式。 |
 
 **错误码：**
 
@@ -5927,6 +5990,7 @@ static setRenderProcessMode(mode: RenderProcessMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5952,23 +6016,57 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct webViewController {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setRenderProcessMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        });
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getRenderProcessMode<sup>12+</sup>
 
 static getRenderProcessMode(): RenderProcessMode
 
-查询ArkWeb的渲染子进程模式。
+查询ArkWeb的渲染子进程模式。如果获取的值不在RenderProcessMode枚举值范围内，则默认为多渲染子进程模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
 | 类型                                      | 说明                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。<br>如果获取的值不在RenderProcessMode枚举值范围内，则默认为多渲染子进程模式。 |
+| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值SINGLE为单子进程模式，枚举值MULTIPLE为多子进程模式。 |
 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5991,6 +6089,32 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct webViewController {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getRenderProcessMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getRenderProcessMode();
+          console.log("getRenderProcessMode: " + mode);
+        });
+      Web({
+        src: 'www.example.com', controller: this.controller,
+      })
+    }
+  }
+}
+```
+
 ## terminateRenderProcess<sup>12+</sup>
 
 terminateRenderProcess(): boolean
@@ -6000,6 +6124,10 @@ terminateRenderProcess(): boolean
 调用该接口将会主动销毁相关联的渲染进程。如果渲染进程尚未启动，或者已销毁则没有任何影响。此外销毁渲染进程会同时影响所有与该渲染进程关联的其他实例。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -6017,6 +6145,7 @@ terminateRenderProcess(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6034,6 +6163,32 @@ struct WebComponent {
           console.log("terminateRenderProcess result: " + result);
         })
       Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct webViewController {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('terminateRenderProcess')
+        .onClick(() => {
+          const result: boolean = this.controller.terminateRenderProcess();
+          console.log("terminateRenderProcess result: " + result);
+        });
+      Web({
+        src: 'www.example.com', controller: this.controller,
+      })
     }
   }
 }
@@ -6619,6 +6774,10 @@ pauseAllTimers(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -6629,7 +6788,9 @@ pauseAllTimers(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6655,6 +6816,35 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('PauseAllTimers')
+        .onClick(() => {
+          try {
+            webview.WebviewController.pauseAllTimers();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+    }
+  }
+}
+ ```
+
 加载的html文件。
 
 ```html
@@ -6686,6 +6876,10 @@ resumeAllTimers(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -6696,7 +6890,9 @@ resumeAllTimers(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6730,6 +6926,43 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('PauseAllTimers')
+        .onClick(() => {
+          try {
+            webview.WebviewController.pauseAllTimers();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('ResumeAllTimers')
+        .onClick(() => {
+          try {
+            webview.WebviewController.resumeAllTimers();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+    }
+  }
+}
+```
+
 加载的html文件。
 
 ```html
