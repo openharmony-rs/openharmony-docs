@@ -4,11 +4,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块从API version 12 开始支持查询被禁用应用和设备上已安装应用(不区用户)的图标和名称资源。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块从API version 12开始支持查询被禁用应用和设备上已安装应用(不区分用户)的图标和名称资源。
 >
 > 本模块为系统接口。
 
@@ -26,7 +26,7 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 | 名称                                                     | 值         | 说明                                                         |
 | -------------------------------------------------------- | ---------- | ------------------------------------------------------------ |
@@ -52,6 +52,10 @@ ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int): Bundl
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -83,8 +87,8 @@ ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int): Bundl
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -108,6 +112,10 @@ ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: in
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -138,8 +146,8 @@ ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: in
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -164,6 +172,10 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int, callback: AsyncCallback<
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                |
@@ -186,8 +198,8 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int, callback: AsyncCallback<
 ArkTS-Dyn: 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllBundleResourceInfo(resourceFlag, (err, data) => {
@@ -205,7 +217,7 @@ try {
 ArkTS-Sta: 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -235,6 +247,10 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int): Promise<Array<BundleRes
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                |
@@ -262,8 +278,8 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int): Promise<Array<BundleRes
 ArkTS-Dyn: 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllBundleResourceInfo(resourceFlag).then(data=> {
@@ -279,7 +295,7 @@ try {
 ArkTS-Sta: 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -307,6 +323,10 @@ ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int, callback: Async
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                |
@@ -329,8 +349,8 @@ ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int, callback: Async
 ArkTS-Dyn:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag, (err, data) => {
@@ -348,7 +368,7 @@ try {
 ArkTS-Sta:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -378,6 +398,10 @@ ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int): Promise<Array<
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                |
@@ -404,8 +428,8 @@ ArkTS-Sta: getAllLauncherAbilityResourceInfo(resourceFlags: int): Promise<Array<
 ArkTS-Dyn:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag).then(data=> {
@@ -421,7 +445,7 @@ try {
 ArkTS-Sta:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -448,6 +472,10 @@ ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int, appInd
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -481,8 +509,8 @@ ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int, appInd
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 let appIndex = 1;
@@ -507,6 +535,10 @@ ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: in
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -538,8 +570,8 @@ ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: in
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 let appIndex = 1;
@@ -564,6 +596,10 @@ ArkTS-Sta: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityT
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -620,6 +656,10 @@ type BundleResourceInfo = _BundleResourceInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo) |应用配置的图标和名称信息。 |
@@ -633,6 +673,10 @@ type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |

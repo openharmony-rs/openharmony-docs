@@ -4,9 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见（[BundleInfo](js-apis-bundleManager-bundleInfo.md)）。
 
@@ -21,6 +21,10 @@ import { bundleManager } from '@kit.AbilityKit';
 应用的动态图标信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：** 此接口为系统接口。
 
@@ -37,6 +41,10 @@ import { bundleManager } from '@kit.AbilityKit';
 应用包选项，用于设置或查询应用相关信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：** 此接口为系统接口。
 

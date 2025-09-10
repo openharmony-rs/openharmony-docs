@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -17,6 +19,10 @@ import { defaultAppManager } from '@kit.AbilityKit';
 默认应用的应用类型。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称   | 值 | 说明                                   |
 | -------- | -------------------------------------- | -------------------------------------- |
@@ -37,6 +43,10 @@ isDefaultApplication(type: string): Promise\<boolean>
 根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -61,6 +71,7 @@ isDefaultApplication(type: string): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -72,6 +83,18 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   });
 ```
+ArkTS-Sta:
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
+  .then((data: boolean) => {
+    console.info('Operation successful. IsDefaultApplication ? ' + JSON.stringify(data));
+  }).catch((error: Error) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error as BusinessError));
+  });
+```
 
 ## defaultAppManager.isDefaultApplication
 
@@ -80,6 +103,10 @@ isDefaultApplication(type: string, callback: AsyncCallback\<boolean>): void
 根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用callback异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -99,11 +126,25 @@ isDefaultApplication(type: string, callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. IsDefaultApplication ? ' + JSON.stringify(data));
+});
+```
+ArkTS-Sta:
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError | null, data) => {
   if (err) {
     console.error('Operation failed. Cause: ' + JSON.stringify(err));
     return;
@@ -119,6 +160,10 @@ isDefaultApplicationSync(type: string): boolean
 以同步方法根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用boolean形式返回结果。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
