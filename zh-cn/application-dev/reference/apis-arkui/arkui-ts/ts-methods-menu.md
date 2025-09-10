@@ -73,7 +73,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
  'use static'
 
 import {

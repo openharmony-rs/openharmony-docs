@@ -332,7 +332,7 @@ struct MenuExample {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
 'use static'
 
 import { Entry, Component, Column, Text, Margin } from '@ohos.arkui.component';
@@ -419,7 +419,7 @@ struct MenuExample {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
 'use static'
 
 import {
@@ -528,7 +528,7 @@ struct ContextMenuExample {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
 'use static'
 
 import {
@@ -625,7 +625,7 @@ struct DirectiveMenuExample {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
 'use static'
 
 import {
@@ -730,7 +730,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
 'use static'
 
 import {
@@ -847,7 +847,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
 'use static'
 
 import {
@@ -1384,7 +1384,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-```
+```ts
 'use static'
 
 import {
