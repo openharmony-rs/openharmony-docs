@@ -76,7 +76,7 @@ hasSerialRight(portId: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -135,7 +135,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -194,7 +194,7 @@ open(portId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -268,7 +268,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -349,7 +349,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -439,7 +439,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -524,7 +524,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -610,7 +610,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -695,7 +695,7 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -773,7 +773,7 @@ close(portId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -849,7 +849,7 @@ cancelSerialRight(portId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
