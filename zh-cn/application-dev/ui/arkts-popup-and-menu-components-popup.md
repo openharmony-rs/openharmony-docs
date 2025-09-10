@@ -37,7 +37,7 @@ struct PopupExample {
 
 ArkTS-Sta示例：
 
-在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupOptions：
+在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupOptions。
 
 ```ts
 'use static'
@@ -99,7 +99,7 @@ struct PopupExample {
 
 ArkTS-Sta示例：
 
-在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupStateChangeParam：
+在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupStateChangeParam。
 
 ```ts
 'use static'
