@@ -22,7 +22,9 @@ BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议使
 >
 > - 新建的BuilderNode在[build](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#build)之后，才能通过[getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#getframenode)获取到指向根节点的FrameNode对象；否则，返回null。
 >
-> - 如果传入的Builder的根节点为未设置通用样式的[自定义组件](./state-management/arkts-create-custom-components.md#创建自定义组件)、[ContentSlot](../../application-dev/ui/state-management/arkts-rendering-control-contentslot.md#contentslot混合开发)、[LazyForEach](../../application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)、[if/else](../../application-dev/ui/state-management/arkts-rendering-control-ifelse.md)，需要额外生成一个FrameNode。在节点树中显示为“BuilderProxyNode”。
+> - 如果传入的Builder的根节点为未设置通用样式的[自定义组件](./state-management/arkts-create-custom-components.md#创建自定义组件)、[ContentSlot](../../application-dev/ui/state-management/arkts-rendering-control-contentslot.md#contentslot混合开发)、[LazyForEach](../../application-dev/ui/state-management/arkts-v1.2-rendering-control-lazyforeach.md)、[Repeat](../../application-dev/ui/state-management/arkts-v1.2-rendering-control-repeat.md)(全量加载模式)、[ForEach](../../application-dev/ui/state-management/arkts-v1.2-rendering-control-foreach.md)、[if/else](../../application-dev/ui/state-management/arkts-rendering-control-ifelse.md)，需要额外生成一个FrameNode。在节点树中显示为“BuilderProxyNode”。
+>
+> - 不支持根节点为[懒加载模式](../../application-dev/ui/state-management/arkts-v1.2-rendering-control-repeat.md#默认懒加载)的repeat节点。
 >
 > - 如果BuilderNode挂载在FrameNode或者NodeContainer组件上，则使用父节点的布局约束进行布局。
 >
