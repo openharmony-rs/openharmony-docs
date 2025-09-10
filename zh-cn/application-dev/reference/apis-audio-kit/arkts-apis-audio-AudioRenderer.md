@@ -44,7 +44,7 @@ getRendererInfo(callback: AsyncCallback<AudioRendererInfo\>): void
 
 | 参数名   | 类型                                                     | 必填 | 说明                   |
 | :------- | :------------------------------------------------------- | :--- | :--------------------- |
-| callback | AsyncCallback<[AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频渲染器的信息成功，err为undefined，data为获取到的音频渲染器的信息；否则为错误对象。<br>ArkTS-Sta: 当获取音频渲染器的信息成功，err为null，data为获取到的音频渲染器的信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频渲染器的信息成功，err为undefined，data为获取到的音频渲染器的信息；否则为错误对象。<br>ArkTS-Sta：当获取音频渲染器的信息成功，err为null，data为获取到的音频渲染器的信息；否则为错误对象。 |
 
 **示例：**
 
@@ -175,7 +175,7 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频流信息成功，err为undefined，data为获取到的音频流信息；否则为错误对象。<br>ArkTS-Sta: 当获取音频流信息成功，err为null，data为获取到的音频流信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频流信息成功，err为undefined，data为获取到的音频流信息；否则为错误对象。<br>ArkTS-Sta：当获取音频流信息成功，err为null，data为获取到的音频流信息；否则为错误对象。 |
 
 **示例：**
 
@@ -300,7 +300,7 @@ ArkTS-Sta: getAudioStreamId(callback: AsyncCallback<long\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。<br>ArkTS-Sta: 当获取音频流id成功，err为null，data为获取到的音频流id；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。<br>ArkTS-Sta：当获取音频流id成功，err为null，data为获取到的音频流id；否则为错误对象。 |
 
 **示例：**
 
@@ -425,7 +425,7 @@ setAudioEffectMode(mode: AudioEffectMode, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                                     | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
 | mode     | [AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)    | 是   | 音效模式。               |
-| callback | AsyncCallback\<void>                     | 是   | 回调函数。<br>ArkTS-Dyn: 当设置当前音效模式成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当设置当前音效模式成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void>                     | 是   | 回调函数。<br>ArkTS-Dyn：当设置当前音效模式成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置当前音效模式成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -533,7 +533,7 @@ getAudioEffectMode(callback: AsyncCallback\<AudioEffectMode>): void
 
 | 参数名   | 类型                                                    | 必填 | 说明               |
 | -------- | ------------------------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback<[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取当前音效模式成功，err为undefined，data为获取到的当前音效模式；否则为错误对象。<br>ArkTS-Sta: 当获取当前音效模式成功，err为null，data为获取到的当前音效模式；否则为错误对象。 |
+| callback | AsyncCallback<[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取当前音效模式成功，err为undefined，data为获取到的当前音效模式；否则为错误对象。<br>ArkTS-Sta：当获取当前音效模式成功，err为null，data为获取到的当前音效模式；否则为错误对象。 |
 
 **示例：**
 
@@ -615,7 +615,7 @@ start(callback: AsyncCallback<void\>): void
 
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn: 当启动音频渲染器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当启动音频渲染器成功，err为null，否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当启动音频渲染器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当启动音频渲染器成功，err为null，否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
 
 **示例：**
 
@@ -697,7 +697,7 @@ pause(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn: 当暂停渲染成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当暂停渲染成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当暂停渲染成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当暂停渲染成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -779,7 +779,7 @@ drain(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn: 当检查缓冲区是否已被耗尽成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当检查缓冲区是否已被耗尽成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当检查缓冲区是否已被耗尽成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当检查缓冲区是否已被耗尽成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -907,7 +907,7 @@ stop(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn: 当停止渲染成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当停止渲染成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当停止渲染成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当停止渲染成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -989,7 +989,7 @@ release(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn: 当释放音频渲染器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当释放音频渲染器成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当释放音频渲染器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当释放音频渲染器成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -1073,7 +1073,7 @@ ArkTS-Sta: getAudioTime(callback: AsyncCallback\<long>): void
 
 | 参数名   | 类型                   | 必填 | 说明             |
 | -------- | ---------------------- | ---- | ---------------- |
-| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。<br>ArkTS-Sta: 当获取时间戳成功，err为null，data为获取到的时间戳；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。<br>ArkTS-Dyn：当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。<br>ArkTS-Sta：当获取时间戳成功，err为null，data为获取到的时间戳；否则为错误对象。 |
 
 **示例：**
 
@@ -1287,7 +1287,7 @@ ArkTS-Sta: getBufferSize(callback: AsyncCallback\<long>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>ArkTS-Sta: 当获取音频渲染器的最小缓冲区大小成功，err为null，data为获取到的最小缓冲区大小；否则为错误对象。|
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>ArkTS-Sta：当获取音频渲染器的最小缓冲区大小成功，err为null，data为获取到的最小缓冲区大小；否则为错误对象。|
 
 **示例：**
 
@@ -1533,7 +1533,7 @@ setInterruptMode(mode: InterruptMode, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                                | 必填   | 说明            |
 | ------- | ----------------------------------- | ------ | -------------- |
 |mode     | [InterruptMode](arkts-apis-audio-e.md#interruptmode9)     | 是     | 焦点模型。|
-|callback | AsyncCallback\<void>                 | 是     |回调函数。<br>ArkTS-Dyn: 当设置应用的焦点模型成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当设置应用的焦点模型成功，err为null，否则为错误对象。|
+|callback | AsyncCallback\<void>                 | 是     |回调函数。<br>ArkTS-Dyn：当设置应用的焦点模型成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置应用的焦点模型成功，err为null，否则为错误对象。|
 
 **示例：**
 
@@ -1679,7 +1679,7 @@ ArkTS-Sta: setVolume(volume: double, callback: AsyncCallback\<void>): void
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
 |volume   | ArkTS-Dyn: number<br>ArkTS-Sta: double     | 是     | 音量值范围为[0.0, 1.0]。 |
-|callback | AsyncCallback\<void> | 是     |回调函数。<br>ArkTS-Dyn: 当设置应用的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当设置应用的音量成功，err为null，否则为错误对象。|
+|callback | AsyncCallback\<void> | 是     |回调函数。<br>ArkTS-Dyn：当设置应用的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置应用的音量成功，err为null，否则为错误对象。|
 
 **示例：**
 
@@ -1771,7 +1771,7 @@ ArkTS-Sta: getMinStreamVolume(callback: AsyncCallback&lt;double&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback |ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。<br>ArkTS-Dyn: 当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。<br>ArkTS-Sta: 当获取音频流的最小音量成功，err为null，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
+|callback |ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。<br>ArkTS-Dyn：当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。<br>ArkTS-Sta：当获取音频流的最小音量成功，err为null，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
 
 **示例：**
 
@@ -1903,7 +1903,7 @@ ArkTS-Sta: getMaxStreamVolume(callback: AsyncCallback&lt;double&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。<br>ArkTS-Dyn: 当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。<br>ArkTS-Sta: 当获取音频流的最大音量成功，err为null，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。|
+|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。<br>ArkTS-Dyn：当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。<br>ArkTS-Sta：当获取音频流的最大音量成功，err为null，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。|
 
 **示例：**
 
@@ -2035,7 +2035,7 @@ ArkTS-Sta: getUnderflowCount(callback: AsyncCallback&lt;long&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是     |回调函数。<br>ArkTS-Dyn: 当获取当前播放音频流的欠载音频帧数量成功，err为undefined，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。<br>ArkTS-Sta: 当获取当前播放音频流的欠载音频帧数量成功，err为null，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。|
+|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是     |回调函数。<br>ArkTS-Dyn：当获取当前播放音频流的欠载音频帧数量成功，err为undefined，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。<br>ArkTS-Sta：当获取当前播放音频流的欠载音频帧数量成功，err为null，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。|
 
 **示例：**
 
@@ -2165,7 +2165,7 @@ getCurrentOutputDevices(callback: AsyncCallback&lt;AudioDeviceDescriptors&gt;): 
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)>| 是     |回调函数。<br>ArkTS-Dyn: 当获取音频流输出设备信息成功，err为undefined，data为获取到的音频流输出设备信息；否则为错误对象。<br>ArkTS-Sta: 当获取音频流输出设备信息成功，err为null，data为获取到的音频流输出设备信息；否则为错误对象。|
+|callback | AsyncCallback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)>| 是     |回调函数。<br>ArkTS-Dyn：当获取音频流输出设备信息成功，err为undefined，data为获取到的音频流输出设备信息；否则为错误对象。<br>ArkTS-Sta：当获取音频流输出设备信息成功，err为null，data为获取到的音频流输出设备信息；否则为错误对象。|
 
 **示例：**
 

@@ -31,7 +31,7 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: int&gt;): void
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量；否则为错误对象。<br>ArkTS-Sta: 当获取指定流的音量成功，err为null，data为获取到的指定流的音量；否则为错误对象。<br>指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量；否则为错误对象。<br>ArkTS-Sta：当获取指定流的音量成功，err为null，data为获取到的指定流的音量；否则为错误对象。<br>指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
 
 **示例：**
 
@@ -179,7 +179,7 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量；否则为错误对象。<br>ArkTS-Sta: 当获取指定流的最小音量成功，err为null，data为获取到的指定流的最小音量；否则为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量；否则为错误对象。<br>ArkTS-Sta：当获取指定流的最小音量成功，err为null，data为获取到的指定流的最小音量；否则为错误对象。 |
 
 **示例：**
 
@@ -327,7 +327,7 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量；否则为错误对象。<br>ArkTS-Sta: 当获取指定流的最大音量成功，err为null，data为获取到的指定流的最大音量；否则为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量；否则为错误对象。<br>ArkTS-Sta：当获取指定流的最大音量成功，err为null，data为获取到的指定流的最大音量；否则为错误对象。 |
 
 **示例：**
 
@@ -473,7 +473,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 | 参数名     | 类型                                | 必填 | 说明                                            |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                    |
-| callback   | AsyncCallback&lt;boolean&gt;        | 是   | 回调函数。<br>ArkTS-Dyn: 当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。<br>ArkTS-Sta: 当获取指定音量流静音状态成功，err为null，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback   | AsyncCallback&lt;boolean&gt;        | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。<br>ArkTS-Sta：当获取指定音量流静音状态成功，err为null，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 **示例：**
 
@@ -588,7 +588,7 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                     |
 | -------- | ---------------------------------------------------- | ---- | ------------------------ |
-| callback | AsyncCallback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。<br>ArkTS-Sta: 当获取铃声模式成功，err为null，data为获取到的铃声模式；否则为错误对象。 |
+| callback | AsyncCallback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。<br>ArkTS-Sta：当获取铃声模式成功，err为null，data为获取到的铃声模式；否则为错误对象。 |
 
 **示例：**
 
@@ -753,7 +753,7 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                    |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。<br>ArkTS-Sta: 当获取麦克风静音状态成功，err为null，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。<br>ArkTS-Sta：当获取麦克风静音状态成功，err为null，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 **示例：**
 
@@ -947,7 +947,7 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
 | volumeLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音量等级。                                               |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | 是   | 设备类型。                                               |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。<br>ArkTS-Sta: 当获取音量增益dB值成功，err为null，data为获取到的音量增益dB值；否则为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。<br>ArkTS-Sta：当获取音量增益dB值成功，err为null，data为获取到的音量增益dB值；否则为错误对象。 |
 
 **错误码：**
 

@@ -27,7 +27,7 @@ getAudioScene\(callback: AsyncCallback<AudioScene\>\): void
 
 | 参数名   | 类型                                                | 必填 | 说明                         |
 | :------- | :-------------------------------------------------- | :--- | :--------------------------- |
-| callback | AsyncCallback<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频场景模式成功，err为undefined，data为获取到的音频场景模式；否则为错误对象。<br>ArkTS-Sta: 当获取音频场景模式成功，err为null，data为获取到的音频场景模式；否则为错误对象。 |
+| callback | AsyncCallback<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频场景模式成功，err为undefined，data为获取到的音频场景模式；否则为错误对象。<br>ArkTS-Sta：当获取音频场景模式成功，err为null，data为获取到的音频场景模式；否则为错误对象。 |
 
 **示例：**
 

@@ -64,7 +64,7 @@ getTitle(callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | -----------------------------------------| ---- | ------------------------- |
-| callback | AsyncCallback&lt;string&gt;              | 是   | 回调函数。<br>ArkTS-Dyn: 当获取铃声标题成功，err为undefined，data为获取到的铃声标题；否则为错误对象。<br>ArkTS-Sta: 当获取铃声标题成功，err为null，data为获取到的铃声标题；否则为错误对象。 |
+| callback | AsyncCallback&lt;string&gt;              | 是   | 回调函数。<br>ArkTS-Dyn：当获取铃声标题成功，err为undefined，data为获取到的铃声标题；否则为错误对象。<br>ArkTS-Sta：当获取铃声标题成功，err为null，data为获取到的铃声标题；否则为错误对象。 |
 
 **示例：**
 
@@ -150,7 +150,7 @@ getAudioRendererInfo(callback: AsyncCallback&lt;audio.AudioRendererInfo&gt;): vo
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | -----------------------------------------| ---- | ------------------------- |
-| callback | AsyncCallback&lt;[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)&gt; | 是 | 回调函数。<br>ArkTS-Dyn: 当获取音频渲染器信息成功，err为undefined，data为获取到的音频渲染器信息；否则为错误对象。<br>ArkTS-Sta: 当获取音频渲染器信息成功，err为null，data为获取到的音频渲染器信息；否则为错误对象。 |
+| callback | AsyncCallback&lt;[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)&gt; | 是 | 回调函数。<br>ArkTS-Dyn：当获取音频渲染器信息成功，err为undefined，data为获取到的音频渲染器信息；否则为错误对象。<br>ArkTS-Sta：当获取音频渲染器信息成功，err为null，data为获取到的音频渲染器信息；否则为错误对象。 |
 
 **示例：**
 
@@ -254,7 +254,7 @@ configure(options: RingtoneOptions, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | -----------------------------------------| ---- | ------------------------- |
 | options  | [RingtoneOptions](#ringtoneoptions)      | 是   | 指定铃声参数。             |
-| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn: 当配置铃声播放参数成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当配置铃声播放参数成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn：当配置铃声播放参数成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当配置铃声播放参数成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -366,7 +366,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | -----------------------------------------| ---- | ------------------------- |
-| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn: 当开始播放铃声成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当开始播放铃声成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn：当开始播放铃声成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当开始播放铃声成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -452,7 +452,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | -----------------------------------------| ---- | ------------------------- |
-| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn: 当停止播放铃声成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当停止播放铃声成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn：当停止播放铃声成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当停止播放铃声成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -538,7 +538,7 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | -----------------------------------------| ---- | ------------------------- |
-| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn: 当释放铃声播放器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当释放铃声播放器成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt;                | 是   | 回调函数。<br>ArkTS-Dyn：当释放铃声播放器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当释放铃声播放器成功，err为null，否则为错误对象。 |
 
 **示例：**
 

@@ -44,7 +44,7 @@ getCapturerInfo(callback: AsyncCallback<AudioCapturerInfo\>): void
 
 | 参数名   | 类型                              | 必填 | 说明                                 |
 | :------- | :-------------------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<[AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频采集器信息成功，err为undefined，data为获取到的音频采集器信息；否则为错误对象。<br>ArkTS-Sta: 当获取音频采集器信息成功，err为null，data为获取到的音频采集器信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频采集器信息成功，err为undefined，data为获取到的音频采集器信息；否则为错误对象。<br>ArkTS-Sta：当获取音频采集器信息成功，err为null，data为获取到的音频采集器信息；否则为错误对象。 |
 
 **示例：**
 
@@ -173,7 +173,7 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                             |
 | :------- | :--------------------------------------------------- | :--- | :------------------------------- |
-| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频采集器流信息成功，err为undefined，data为获取到的音频采集器流信息；否则为错误对象。<br>ArkTS-Sta: 当获取音频采集器流信息成功，err为null，data为获取到的音频采集器流信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频采集器流信息成功，err为undefined，data为获取到的音频采集器流信息；否则为错误对象。<br>ArkTS-Sta：当获取音频采集器流信息成功，err为null，data为获取到的音频采集器流信息；否则为错误对象。 |
 
 **示例：**
 
@@ -304,7 +304,7 @@ ArkTS-Sta: getAudioStreamId(callback: AsyncCallback<long\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。<br>ArkTS-Sta: 当获取音频流id成功，err为null，data为获取到的音频流id；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。<br>ArkTS-Sta：当获取音频流id成功，err为null，data为获取到的音频流id；否则为错误对象。 |
 
 **示例：**
 
@@ -426,7 +426,7 @@ start(callback: AsyncCallback<void\>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn: 当启动音频采集器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当启动音频采集器成功，err为null，否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当启动音频采集器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当启动音频采集器成功，err为null，否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
 
 **示例：**
 
@@ -520,7 +520,7 @@ stop(callback: AsyncCallback<void\>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn: 当停止音频采集成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当停止音频采集成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当停止音频采集成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当停止音频采集成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -610,7 +610,7 @@ release(callback: AsyncCallback<void\>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                |
 | :------- | :------------------- | :--- | :---------------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn: 当释放音频采集器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当释放音频采集器成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当释放音频采集器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当释放音频采集器成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -698,7 +698,7 @@ ArkTS-Sta: getAudioTime(callback: AsyncCallback<long\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                           |
 | :------- | :--------------------- | :--- | :----------------------------- |
-| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。<br>ArkTS-Sta: 当获取时间戳成功，err为null，data为获取到的时间戳；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。<br>ArkTS-Sta：当获取时间戳成功，err为null，data为获取到的时间戳；否则为错误对象。 |
 
 **示例：**
 
@@ -906,7 +906,7 @@ ArkTS-Sta: getBufferSize(callback: AsyncCallback<long\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                 |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>ArkTS-Sta: 当获取采集器合理的最小缓冲区大小成功，err为null，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>ArkTS-Sta：当获取采集器合理的最小缓冲区大小成功，err为null，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。 |
 
 **示例：**
 
@@ -1546,7 +1546,7 @@ ArkTS-Sta: on(type: 'periodReach', frame: long, callback: Callback&lt;long&gt;):
 | 参数名   | 类型                     | 必填 | 说明                                        |
 | :------- | :----------------------- | :--- | :------------------------------------------ |
 | type     | string                   | 是   | 事件回调类型，支持的事件为'periodReach'，当采集的帧数达到frame参数的值时，触发该事件。 |
-| frame    | ArkTS-Dyn: number<br>ArkTS-Sta:long                    | 是   | 触发事件的帧数。该值必须大于0。            |
+| frame    | ArkTS-Dyn: number<br>ArkTS-Sta: long                    | 是   | 触发事件的帧数。该值必须大于0。            |
 | callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<long>         | 是   |回调函数，返回frame参数的值。    |
 
 **示例：**

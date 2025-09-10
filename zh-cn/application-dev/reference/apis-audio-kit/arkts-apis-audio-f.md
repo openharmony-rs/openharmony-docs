@@ -45,7 +45,7 @@ createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback\<Audi
 | 参数名   | 类型                                            | 必填 | 说明             |
 | -------- | ----------------------------------------------- | ---- | ---------------- |
 | options  | [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8)  | 是   | 配置渲染器。     |
-| callback | AsyncCallback<[AudioRenderer](arkts-apis-audio-AudioRenderer.md)> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。<br>ArkTS-Sta: 当获取音频渲染器成功，err为null，data为获取到的音频渲染器对象；否则为错误对象。 |
+| callback | AsyncCallback<[AudioRenderer](arkts-apis-audio-AudioRenderer.md)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。<br>ArkTS-Sta：当获取音频渲染器成功，err为null，data为获取到的音频渲染器对象；否则为错误对象。 |
 
 **示例：**
 
@@ -183,7 +183,7 @@ createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<Audio
 | 参数名   | 类型                                            | 必填 | 说明             |
 | :------- | :---------------------------------------------- | :--- | :--------------- |
 | options  | [AudioCapturerOptions](arkts-apis-audio-i.md#audiocaptureroptions8)  | 是   | 配置音频采集器。 |
-| callback | AsyncCallback<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | 是   | 回调函数。<br>ArkTS-Dyn: 当获取音频采集器成功，err为undefined，data为获取到的音频采集器对象；否则为错误对象。<br>ArkTS-Sta: 当获取音频采集器成功，err为null，data为获取到的音频采集器对象；否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
+| callback | AsyncCallback<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频采集器成功，err为undefined，data为获取到的音频采集器对象；否则为错误对象。<br>ArkTS-Sta：当获取音频采集器成功，err为null，data为获取到的音频采集器对象；否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
 
 **示例：**
 
