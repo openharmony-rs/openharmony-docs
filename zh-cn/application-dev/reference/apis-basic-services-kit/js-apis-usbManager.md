@@ -1598,7 +1598,7 @@ Usb异步传输回调。
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称         | 类型 | 只读  | 必填 | 说明    |
-| ---------- | ------ | ----- | ------ |
-| length | number | 是 |读写操作的期望长度值，单位为字节。 |
-| actualLength | number| 是 |读写操作的实际长度值，单位为字节。 |
-| status | [UsbTransferStatus](#usbtransferstatus18) | 是 |实时传输分包的状态码。 |
+| ---------- | ------ | ----| ----- | ------ |
+| length | number | 否 | 是 |读写操作的期望长度值，单位为字节。 |
+| actualLength | number| 否 | 是 |读写操作的实际长度值，单位为字节。 |
+| status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 是 |实时传输分包的状态码。 |
