@@ -8444,6 +8444,8 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 
 该示例通过调用openPopuo、updatePopup和closePopup接口，展示了弹出、更新以及关闭Popup的功能。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8519,6 +8521,95 @@ struct Index {
           let context = this.getUIContext();
           const popupParam: PopupParam = {};
           const contentNode = new ComponentContent(context, wrapBuilder(buildText), popupParam);
+          showPopup(context, this.getUniqueId(), contentNode, popupParam);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+import { Entry, Component, Builder, wrapBuilder, ComponentContent, UIContext, Text, Row, Column,
+  Button, FrameNode, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { PromptAction } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+interface PopupParam {
+  updateFunc?: () => void;
+  closeFunc?: () => void;
+}
+
+export function showPopup(context: UIContext, uniqueId: number, contentNode: ComponentContent<PopupParam>,
+  popupParam: PopupParam) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let targetId = frameNode?.getFirstChild()?.getUniqueId();
+  promptAction.openPopup(contentNode, { id: targetId as Double }, {
+    radius: 16,
+    mask: { color: Color.Pink },
+    enableArrow: true,
+  })
+    .then(() => {
+      console.info('openPopup success');
+    })
+    .catch((err: Error) => {
+      console.error('openPopup error: ' + err);
+    })
+  popupParam.updateFunc = () => {
+    promptAction.updatePopup(contentNode, {
+      enableArrow: false
+    }, true)
+      .then(() => {
+        console.info('updatePopup success');
+      })
+      .catch((err: Error) => {
+        console.error('updatePopup error: ' + err);
+      })
+  }
+  popupParam.closeFunc = () => {
+    promptAction.closePopup(contentNode)
+      .then(() => {
+        console.info('closePopup success');
+      })
+      .catch((err: Error) => {
+        console.error('closePopup error: ' + err);
+      })
+  }
+}
+
+@Builder
+function buildText(param: PopupParam) {
+  Column() {
+    Text('popup')
+    Button('Update Popup')
+      .fontSize(20)
+      .onClick(() => {
+        param?.updateFunc?.();
+      })
+    Button('Close Popup')
+      .fontSize(20)
+      .onClick(() => {
+        param?.closeFunc?.();
+      })
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Open Popup')
+        .fontSize(20)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const popupParam: PopupParam = {};
+          const contentNode = new ComponentContent<PopupParam>(context, wrapBuilder(buildText), popupParam);
           showPopup(context, this.getUniqueId(), contentNode, popupParam);
         })
     }
