@@ -1985,12 +1985,14 @@ struct Index {
 }
 ```
 
-## 使用@ohos.transfer进行类型转换
+## 使用@ohos.transfer进行LengthMetrics、ColorMetrics、ShapeMask、ShapeClip类型转换
   
   ArkTS-Dyn中使用ArkTS-Sta的LengthMetrics、ColorMetrics、ShapeMask、ShapeClip对象。
 
 - 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynLengthMetrics、ColorMetrics、shapeMask、shapeClip的方法。
-
+  
+  ArkTS-Sta
+  
   ```TypeScript
   // library2/src/main/ets/components/MainPage.ets
   'use static'
@@ -2041,6 +2043,8 @@ struct Index {
   ```
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn的方法创建对象。
+  
+  ArkTS-Dyn
 
   ```TypeScript
    // entry/src/main/ets/pages/Index.ets
@@ -2116,6 +2120,8 @@ struct Index {
  ArkTS-Sta中使用ArkTS-Dyn的LengthMetrics、ColorMetrics、ShapeMask、ShapeClip对象。
 
 - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-Dyn LengthMetrics、ColorMetrics、shapeMask、shapeClip的方法。
+  
+  ArkTS-Dyn
 
   ```TypeScript
   // library/src/main/ets/components/MainPage.ets
@@ -2169,6 +2175,8 @@ struct Index {
   ```
 
 - 在ArkTS-Sta主模块中引入ArkTS1.1导出的方法创建对象并转换为ArkTS-Sta对象。
+  
+  ArkTS-Sta
 
   ```TypeScript
   'use static'

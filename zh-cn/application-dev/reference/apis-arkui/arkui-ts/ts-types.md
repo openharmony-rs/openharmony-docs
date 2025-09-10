@@ -34,12 +34,14 @@
 >
 >  引用资源类型时，需确保资源类型对象用法为当前支持的用法，否则当前以资源类型作为参数的属性效果将和不设置该属性相同。
 
-### 使用@ohos.transfer进行类型转换
+### 使用@ohos.transfer进行Resource类型转换
 
   通过在ArkTS-Sta中引用ArkTS-Dyn创建的Resource对象的方法显示图片。
 
 - 创建ArkTS-Dyn子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynResource的方法。
-
+ 
+  ArkTS-Sta
+ 
   ```TypeScript
     'use static'
   // library2/src/main/ets/components/MainPage.ets
@@ -60,6 +62,8 @@
   ```
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn创建Resource对象。
+  
+  ArkTS-Dyn
 
   ```TypeScript
   import { resourceTest, rawFileTest } from 'library2';
@@ -88,7 +92,9 @@
   通过在ArkTS-Sta中引用ArkTS-Dyn创建的Resource对象显示图片。
   
   - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynResource的方法。
-  
+    
+    ArkTS-Dyn
+
     ```TypeScript
     // library/src/main/ets/components/MainPage.ets
   
@@ -102,7 +108,9 @@
     ```
   
   - 在ArkTS-Sta主模块中引入ArkTS-Dyn Resource对象。
-  
+    
+    ArkTS-Sta
+
     ```TypeScript
     'use static'
     // entry/src/main/ets/pages/Index.ets

@@ -6885,11 +6885,13 @@ struct Index {
 }
 ```
 
-## 使用@ohos.transfer进行类型转换
+## 使用@ohos.transfer进行FrameNde类型转换
 
-通过在ArkTS-Dyn中引用ArkTS-Dyn创建的FrameNode对象，显示蓝色正方形。
+通过在ArkTS-Dyn中引用ArkTS-Sta创建的FrameNode对象，显示蓝色正方形。
 
 - 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynFrameNode的方法。
+
+  ArkTS-Sta
 
   ```TypeScript
   'use static'
@@ -6911,6 +6913,8 @@ struct Index {
   ```
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta创建FrameNode对象的方法。
+
+ ArkTS-Dyn
 
   ```TypeScript
   import {NodeController ,FrameNode, typeNode } from '@kit.ArkUI';
@@ -6950,6 +6954,8 @@ struct Index {
   
   - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynFrameNode的方法。
   
+   ArkTS-Dyn
+
     ```TypeScript
     // library/src/main/ets/components/MainPage.ets
     
@@ -6965,6 +6971,8 @@ struct Index {
   
   - 在ArkTS-Sta主模块中引入ArkTS-Dyn创建FrameNode对象的方法。
   
+    ArkTS-Sta
+    
     ```TypeScript
     // entry/src/main/ets/pages/Index.ets
   
