@@ -9,10 +9,10 @@
 ## 基本概念
 
 - 窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。
-  沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用子窗口（弹窗、全局悬浮窗口等辅助窗口）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
+  沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用子窗口（弹窗、全局悬浮窗等辅助窗口）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
 
-- 全局悬浮窗：全局悬浮窗口是一种特殊的应用窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
-  全局悬浮窗口可以用于应用退至后台后，使用小窗继续播放视频，或者为特定的应用创建悬浮球等快速入口。应用在创建全局悬浮窗口前，需要申请对应的权限。
+- 全局悬浮窗：全局悬浮窗是一种特殊的应用窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
+  全局悬浮窗可以用于应用退至后台后，使用小窗继续播放视频，或者为特定的应用创建悬浮球等快速入口。应用在创建全局悬浮窗前，需要申请对应的权限。
 
 
 ## 场景介绍
@@ -652,6 +652,6 @@ export default class EntryAbility extends UIAbility {
 
 - [`Window`：一多设置典型页面（Settings）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings)
 
-- [悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
+- [全局悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
 
 - [窗口管理（ArkTS）（API12）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowManage)
