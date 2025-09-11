@@ -2866,11 +2866,13 @@ struct Index {
 
 ![](figures/RenderNode_isDisposed.gif)
 
-### 使用@ohos.transfer进行类型转换
+### 使用@ohos.transfer进行RenderNode类型转换
 
 ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
 
 - 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynRenderNode的方法。
+  
+  ArkTS-Sta示例：
 
   ```TypeScript
   'use static'
@@ -2891,7 +2893,9 @@ ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
   ```
 
 - 在ArkTS-Dyn主模块中引入创建RenderNode对象的方法。
-
+  
+  ArkTS-Dyn示例：
+  
   ```TypeScript
   // entry/src/main/ets/pages/Index.ets
   
@@ -2932,10 +2936,12 @@ ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
   ```
   ![image](figures/renderNodeTransfer.png) 
 
-   ArkTS-Sta中使用ArkTS-Dyn的RenderNode对象。
+ArkTS-Sta中使用ArkTS-Dyn的RenderNode对象。
 
-  - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创提供建ArkTS-DynRenderNode的方法。
-  
+ - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创提供建ArkTS-DynRenderNode的方法。
+    
+    ArkTS-Dyn示例：
+    
     ```TypeScript
     // library/src/main/ets/components/MainPage.ets
   
@@ -2950,8 +2956,10 @@ ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
     }
     ```
   
-  - 在ArkTS-Sta主模块中引入ArkTS-Dyn创建RenderNoded的方法。
-  
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn创建RenderNoded的方法。
+    
+    ArkTS-Sta示例：
+
     ```TypeScript
     'use static'
     // entry/src/main/ets/pages/Index.ets

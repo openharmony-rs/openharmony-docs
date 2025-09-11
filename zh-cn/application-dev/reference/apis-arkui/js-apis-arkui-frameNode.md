@@ -6885,11 +6885,14 @@ struct Index {
 }
 ```
 
-## 使用@ohos.transfer进行类型转换
+## 使用@ohos.transfer进行FrameNde类型转换
 
-通过在ArkTS-Dyn中引用ArkTS-Dyn创建的FrameNode对象，显示蓝色正方形。
+通过在ArkTS-Dyn中引用ArkTS-Sta创建的FrameNode对象，显示蓝色正方形。
 
 - 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynFrameNode的方法。
+
+
+  ArkTS-Sta示例：
 
   ```TypeScript
   'use static'
@@ -6911,6 +6914,8 @@ struct Index {
   ```
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta创建FrameNode对象的方法。
+
+   ArkTS-Dyn示例：
 
   ```TypeScript
   import {NodeController ,FrameNode, typeNode } from '@kit.ArkUI';
@@ -6944,12 +6949,15 @@ struct Index {
   }
   ```
   ![image](figures/frameNodeTransDynamic.png)
+
   
-  通过在ArkTS-Sta中引用ArkTS-Dyn创建的FrameNode对象的方法显示Text文本。
+通过在ArkTS-Sta中引用ArkTS-Dyn创建的FrameNode对象的方法显示Text文本。
   
   
-  - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynFrameNode的方法。
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynFrameNode的方法。
   
+   ArkTS-Dyn示例：
+
     ```TypeScript
     // library/src/main/ets/components/MainPage.ets
     
@@ -6958,13 +6966,15 @@ struct Index {
     export function createFrameNode(context:Object): Object {
       let uiContext:UIContext = context as UIContext;
       let textNode = typeNode.createNode(uiContext, 'Text');
-      textNode.initialize('hello word');
+      textNode.initialize('hello world');
       return textNode;
     }
     ```
   
-  - 在ArkTS-Sta主模块中引入ArkTS-Dyn创建FrameNode对象的方法。
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn创建FrameNode对象的方法。
   
+    ArkTS-Sta示例：
+    
     ```TypeScript
     // entry/src/main/ets/pages/Index.ets
   

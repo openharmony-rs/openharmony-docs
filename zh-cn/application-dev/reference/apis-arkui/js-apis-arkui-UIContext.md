@@ -11917,12 +11917,14 @@ struct Index {
 }
 ```
 
-## 使用@ohos.transfer进行类型转换
+## 使用@ohos.transfer进行UIContext类型转换
 
 
 在ArkTS-Dyn中使用ArkTS-Sta获取的UIContext对象。
 
 - 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录的方法中使用传入的UIContext用于逻辑处理。
+  
+  ArkTS-Sta示例：
 
   ```TypeScript
   'use static'
@@ -11940,6 +11942,8 @@ struct Index {
   ```
   
 - 在ArkTS-Dyn主模块中获取UIContext并传递给ArkTS-Sta。
+  
+  ArkTS-Dyn示例：
 
   ```TypeScript
   // entry/src/main/ets/pages/Index.ets
@@ -11966,10 +11970,12 @@ struct Index {
   ```
   ![image](figures/uiContextTransfer.png)
 
-  在ArkTS-Dyn中使用ArkTS-Sta获取的UIContext对象。
+在ArkTS-Dyn中使用ArkTS-Sta获取的UIContext对象。
   
-  - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录的方中使用传入的UIContext进行业务处理。
-  
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录的方中使用传入的UIContext进行业务处理。
+    
+    ArkTS-Dyn示例：
+
     ```TypeScript
     // library/src/main/ets/components/MainPage.ets
   
@@ -11982,8 +11988,10 @@ struct Index {
     }
     ```
     
-  - 在ArkTS-Sta主模块中获取UIContext并传递给ArkTS-Dyn。
-  
+- 在ArkTS-Sta主模块中获取UIContext并传递给ArkTS-Dyn。
+    
+    ArkTS-Sta示例：
+    
     ```TypeScript
     'use static'
     // entry/src/main/ets/pages/Index.ets
