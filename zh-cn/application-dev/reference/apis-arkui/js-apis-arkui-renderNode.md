@@ -2892,7 +2892,7 @@ ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
   }
   ```
 
-- 在ArkTS-Dyn主模块中引入创建RenderNode对象的方法。
+- 在ArkTS-Dyn主模块中使用ArkTS-Sta子模块创建RenderNode对象的方法。
   
   ArkTS-Dyn示例：
   
