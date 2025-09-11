@@ -144,6 +144,7 @@ export function har1func(dynamic_obj: Any) {
 |"ArkUI.ShapeClip" | [ShapeClip](../apis-arkui/js-apis-arkui-graphics.md#shapeclip12)| 
 |"ArkUI.ColorMetrics" | [ColorMetrics](../apis-arkui/js-apis-arkui-graphics.md#colormetrics12)|   
 |"ArkUI.ShapeMask" | [ShapeMask](../apis-arkui/js-apis-arkui-graphics.md#shapemask12)|
+| "ArkUI.ColorFilter" | [ColorFilter](../apis-arkui/arkui-ts/ts-types.md#colorfilter9) |
 |"Global.Resource" | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)|
 | "ImageKit.AuxiliaryPicture" | [AuxiliaryPicture](../apis-image-kit/arkts-apis-image-AuxiliaryPicture.md) |
 | "ImageKit.ImageCreator" | [ImageCreator](../apis-image-kit/arkts-apis-image-ImageCreator.md) |
