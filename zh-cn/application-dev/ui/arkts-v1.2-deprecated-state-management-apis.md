@@ -210,11 +210,11 @@ let link: SubscribedAbstractProperty<number> = AppStorage.setAndLink<number>('Pr
 
 ### SetAndProp
 
-ArkTS1.1接口声明：[static SetAndProp\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandpropdeprecated)
+ArkTS1.1接口声明：[static SetAndProp\<S\>(propName: string, defaultValue: S): SubscribedAbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandpropdeprecated)
 
 ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS1.2接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+替代的ArkTS1.2接口声明：[static setAndRef\<S\>(propName: string, defaultValue: S): AbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
 
 
 
@@ -276,7 +276,7 @@ ArkTS1.1接口声明: [static prop\<T\>(propName: string): SubscribedAbstractPro
 
 ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
 
-替代的ArkTS1.2接口声明：[static ref\<T\>(propName: string): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
+替代的ArkTS1.2接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
 
 ArkTS1.1
 
@@ -294,11 +294,11 @@ ref?.set(48);
 
 ### setAndProp
 
-ArkTS1.1接口声明：[static setAndProp\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandprop10)
+ArkTS1.1接口声明：[static setAndProp\<S\>(propName: string, defaultValue: S): SubscribedAbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandprop10)
 
 ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS1.2接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+替代的ArkTS1.2接口声明：[static setAndRef\<S\>(propName: string, defaultValue: S): AbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
 
 ArkTS1.1
 
@@ -336,9 +336,9 @@ let res = AppStorage.clear();
 
 ### EnvProp
 
-ArkTS1.1接口声明：[static EnvProp\<T\>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropdeprecated)
+ArkTS1.1接口声明：[static EnvProp\<S\>(key: string, value: S): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropdeprecated)
 
-替代的ArkTS1.2接口声明：[static envProp\<T\>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
+替代的ArkTS1.2接口声明：[static envProp\<S\>(key: string, value: S): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
 
 
 
@@ -356,9 +356,9 @@ Environment.envProp<string>('accessibilityEnabled', 'default');
 
 ### EnvProps
 
-ArkTS1.1接口声明：[static EnvProps\<T\>(props: {key: string; defaultValue: any; }[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropsdeprecated)
+ArkTS1.1接口声明：[static EnvProps(props: {key: string; defaultValue: any; }[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropsdeprecated)
 
-替代的ArkTS1.2接口声明：[static envProps\<T\>(props: EnvPropsOptions[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprops10)
+替代的ArkTS1.2接口声明：[static envProps(props: EnvPropsOptions[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprops10)
 
 
 
@@ -384,11 +384,9 @@ Environment.envProps([
 
 ### Keys
 
-ArkTS1.1接口声明：[static Keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated)
+ArkTS1.1接口声明：[static Keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated-2)
 
-替代的ArkTS1.2接口声明：[static keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10)
-
-
+替代的ArkTS1.2接口声明：[static keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-2)
 
 ArkTS1.1
 
