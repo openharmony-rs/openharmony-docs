@@ -5583,7 +5583,7 @@ UI事件监听器。
 
 ### once('toastShow')<sup>10+</sup>
 
-once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 开始监听toast控件出现的事件，使用callback的形式返回结果。
 
@@ -5625,7 +5625,7 @@ async function demo() {
 
 ### once('dialogShow')<sup>10+</sup>
 
-once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 开始监听dialog控件出现的事件，使用callback的形式返回结果。
 

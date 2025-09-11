@@ -121,28 +121,80 @@ export default function abilityTest() {
   })
 }
 ```
+### 控件查找与操作
+
+支持[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)。
+
+#### 接口说明
+
+| 接口 | 功能说明 |
+| ------ | ------|
+| findComponent(on: On): Promise\<Component> | 根据给出的目标控件属性要求查找目标控件 |
+| findComponents(on: On): Promise\<Array\<Component>> | 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存 |
+| scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>|在控件上滑动查找目标控件（适用支持滑动的控件） |
+
+```ts
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+// 导入测试依赖kit
+import { Driver, Component, ON, On } from '@kit.TestKit';
+
+export default function abilityTest() {
+  describe('componentOperationTest', () => {
+    /**
+     * 查找类型为'Button'的控件，并进行控件点击操作
+     */
+    it("componentSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      let button: Component = await driver.findComponent(ON.type('Button'));
+      await button.click();
+    })
+
+    /**
+     * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
+     */
+    it("relativePositioncomponentSearch", TestType.FUNCTION, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      let on: On = ON.text('123').within(ON.type('Scroll'));
+      let items: Array<Component> = await driver.findComponents(on);
+    })
+
+    /**
+     * 查找类型为'Image'的控件，并进行对其进行双指放大操作。
+     */
+    it("componentPinch", TestType.FUNCTION, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      let image: Component = await driver.findComponent(ON.type('Image'));
+      await image.pinchOut(1.5);
+    })
+  })
+}
+
+```
+
 
 ### 模拟触摸屏手指操作
+
+支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
 
 #### 接口说明
 | 接口 | 功能说明 |
 | ----- | ------|
-| click | 基于坐标进行点击操作|
-| clickAt | 基于坐标进行点击操作，支持指定坐标所属屏幕ID |
-| doubleClick | 基于坐标进行双击操作 |
-| doubleClickAt | 基于坐标进行双击操作，支持指定坐标所属屏幕ID |
-| longClick | 基于坐标进行长按操作 |
-| longClickAt | 基于坐标进行长按操作，支持指定坐标所属屏幕ID |
-| swipe | 基于坐标进行滑动操作 |
-| swipeBetween | 基于坐标进行滑动操作，支持指定坐标所属屏幕ID |
-| fling | 模拟手指滑动后脱离屏幕的快速滑动操作，支持指定速度和步长 |
-| fling | 模拟手指滑动后脱离屏幕的快速滑动操作，指定方向和速度 |
-| drag | 基于坐标进行拖拽操作 |
-| dragBetween | 基于坐标进行拖拽操作，支持指定坐标所属屏幕ID|
-| injectMultiPointerAction | 向设备注入多指操作，支持指定手指和步骤对应动作的坐标点、滑动速度 |
+| click(x: number, y: number): Promise\<void> | 基于坐标进行点击操作|
+| clickAt(point: Point): Promise\<void> | 基于坐标进行点击操作，支持指定坐标所属屏幕ID |
+| doubleClick(x: number, y: number): Promise\<void> | 基于坐标进行双击操作 |
+| doubleClickAt(point: Point): Promise\<void> | 基于坐标进行双击操作，支持指定坐标所属屏幕ID |
+| longClick(x: number, y: number): Promise\<void> | 基于坐标进行长按操作 |
+| longClickAt(point: Point, duration?: number): Promise\<void> | 基于坐标进行长按操作，支持指定坐标所属屏幕ID |
+| swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行滑动操作 |
+| swipeBetween(from: Point, to: Point, speed?: number): Promise\<void> | 基于坐标进行滑动操作，支持指定坐标所属屏幕ID |
+| fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，支持指定速度和步长 |
+| fling(direction: UiDirection, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，指定方向和速度 |
+| drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行拖拽操作 |
+| dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void> | 基于坐标进行拖拽操作，支持指定坐标所属屏幕ID|
+| injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean> | 向设备注入多指操作，支持指定手指和步骤对应动作的坐标点、滑动速度 |
+
 
 以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
-
 ```ts
 import { describe, it, TestType, Size, Level } from '@ohos/hypium';
 // 导入测试依赖kit
@@ -183,62 +235,50 @@ export default function abilityTest() {
 }
 
 ```
-### 控件查找与操作
+### 页面加载等待
+
+在与页面进行交互后，可通过在指定时间内等待某控件的出现或等待页面空闲来判断页面跳转是否完成。
 
 #### 接口说明
+
 | 接口 | 功能说明 |
 | ------ | ------|
-| findComponent | 根据给出的目标控件属性要求查找目标控件 |
-| findComponents | 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存 |
-| waitForComponent | 在用户给定的时间内，持续查找满足控件属性要求的目标控件 |
+| waitForComponent(on: On, time: number): Promise\<Component> | 在用户给定的时间内，持续查找满足控件属性要求的目标控件 |
+| waitForIdle(idleTime: number, timeout: number): Promise\<boolean> | 判断当前界面的所有控件是否已经空闲，使用Promise异步回调。 |
 
-以下示例代码演示了如何使用UiTest接口进行控件的查找和操作，根据控件属性或相对位置查找控件，并进行点击、放大等控件级操作。
+### TODO: 待完善示例
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 // 导入测试依赖kit
-import { Driver, Component, ON, On } from '@kit.TestKit';
+import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+import { UIAbility, Want } from '@kit.AbilityKit';
 
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 export default function abilityTest() {
-  describe('componentOperationTest', () => {
-    /**
-     * 查找类型为'Button'的控件，并进行控件点击操作
-     */
-    it("componentSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
-      let driver: Driver = Driver.create();
-      let button: Component = await driver.findComponent(ON.type('Button'));
-      await button.click();
-    })
+  describe('ActsAbilityTest', () => {
+    it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, "testWaitForComponent_static Start!!!");
+      let driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      let button = await driver.waitForComponent(ON.text('next page'), 1000);
+      hilog.info(domain, tag, `testWaitForComponent_static button: ${ JSON.stringify(button) }`);
 
-    /**
-     * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
-     */
-    it("relativePositioncomponentSearch", TestType.FUNCTION, async (done: Function) => {
-      let driver: Driver = Driver.create();
-      let on: On = ON.text('123').within(ON.type('Scroll'));
-      let items: Array<Component> = await driver.findComponents(on);
-    })
-
-    /**
-     * 查找类型为'Image'的控件，并进行对其进行双指放大操作。
-     */
-    it("componentPinch", TestType.FUNCTION, async (done: Function) => {
-      let driver: Driver = Driver.create();
-      let image: Component = await driver.findComponent(ON.type('Image'));
-      await image.pinchOut(1.5);
     })
   })
 }
-
 ```
 
+
 ### 模拟文本输入
+
+支持向指定坐标点或指定控件输入文本内容，同时支持[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
 
 #### 接口说明
 | 接口 | 功能说明 |
 | ------ | ------|
-| inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>| 在指定坐标点输入文本，支持指定文本输入方式 |
-| inputText(text: string, mode: InputTextMode): Promise\<void>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效 |
+| inputText(p: Point, text: string, mode?: InputTextMode): Promise\<void>| 在指定坐标点输入文本，支持指定文本输入方式 |
+| inputText(text: string, mode?: InputTextMode): Promise\<void>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效 |
 
 以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
@@ -297,9 +337,13 @@ export default function abilityTest() {
 #### 接口说明
 | 接口 | 功能说明 |
 | ------ | ------|
-| screenCap(savePath: string, displayId: number): Promise\<boolean>| 
-捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中 |
+| screenCap(savePath: string, displayId: number): Promise\<boolean>| 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中 |
 | screenCapture(savePath: string, rect?: Rect): Promise\<boolean>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效 |
+
+> **说明：**
+> 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../file-management/app-sandbox-directory.md)。
+> 2. 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
+> 3. 多屏场景下，期望对指定屏幕做截屏操作时，可以调用display模块的接口[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)，实现[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)。
 
 以下示例代码演示了如何使用UiTest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
 
@@ -335,12 +379,15 @@ export default function abilityTest() {
 }
 ```
 
-> **说明：**
-> 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../file-management/app-sandbox-directory.md)。
-> 2. 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->为system_basic、normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
-> 3. 截屏时，可以调用display模块的接口[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)，实现[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)。
 
 ### UI事件监听
+
+#### 接口说明
+| 接口 | 功能说明 |
+| ------ | ------|
+| once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void | 开始监听dialog控件出现的事件，使用callback的形式返回结果。|
+| once(type: 'toastShow', callback: Callback\<UIElementInfo>): void | 开始监听toast控件出现的事件，使用callback的形式返回结果。|
+
 以下示例代码演示了如何使用UiTest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
 
 ```ts
@@ -368,6 +415,19 @@ export default function abilityTest() {
 ```
 
 ### 模拟键鼠操作
+
+#### 接口说明
+| 接口 | 功能说明 |
+| ------ | ------|
+|mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>|在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。|
+|mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>|在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。|
+|mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>|在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。|
+|mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>|鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。|
+|mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>|在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度。|
+|mouseMoveTo(p: Point): Promise\<void>|将鼠标光标移到目标点。|
+|mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>|鼠标从起始坐标点滑向终点坐标点。|
+
+
 以下示例代码演示了如何使用UiTest接口进行键鼠模拟操作，包括键盘按键、组合键输入操作，鼠标点击、移动、拖拽操作和键鼠组合操作等。
 
 ```ts
@@ -539,14 +599,19 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 | 命令            | 配置参数   |描述                              |
 |---------------|---------------------------------|---------------------------------|
 | help          | help|  显示uitest工具能够支持的命令信息。            |
-| screenCap       |[-p] | 截屏。非必填。<br>指定存储路径和文件名，只支持存放在/data/local/tmp/下。<br>默认存储路径：/data/local/tmp，文件名：时间戳 + .png。 |
+| screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图) |
 | dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)|
 | uiRecord        | uiRecord \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
 | uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入ui模拟操作](#注入ui模拟操作)。                       |
-| --version | --version|获取当前工具版本信息。                     |
+| --version | --version|获取当前工具版本信息。 |
 | start-daemon|start-daemon| 拉起uitest测试进程。 |
 
-### 截图使用示例
+### 获取截图
+
+| 命令    |   配置参数   | 描述       | 
+|---------|--------------|-----------|
+| **-p** | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
+| **-d** | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 存储路径：/data/local/tmp，文件名：时间戳 + .png。
@@ -564,7 +629,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | **-b** | \<bundleName\> |获取指定包名对应目标窗口的控件树信息。|
 | **-w** | \<windowId\>  |获取指定ID目标窗口的控件树信息。|
 | **-m** | \<true\|false\> |指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
-| **-d** | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。|
+| **-d** | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
@@ -585,9 +650,9 @@ hdc shell uitest dumpLayout -d 0
 **命令列表**
 | 命令   | 配置参数    |  必填 | 描述              | 
 |-------|--------------|------|-----------------|
-| -W    | \<true/false> | 否   | 录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 |
-| -l    |              | 否   | 在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 | 
-| -c    | \<true/false> | 否   | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示打印，不设置时默认为true。 | 
+| -W    | \<true/false> | 否   | 录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 <br> **说明：** 从API version 20开始支持该命令。|
+| -l    |              | 否   | 在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
+| -c    | \<true/false> | 否   | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示打印，不设置时默认为true。<br> **说明：** 从API version 20开始支持该命令。 | 
 
 ```bash
 # 将当前界面操作记录到/data/local/tmp/record.csv，结束录制操作使用Ctrl+C结束录制。
@@ -655,7 +720,7 @@ hdc shell uitest uiRecord read
 | drag   | 是    | 模拟拖拽操作。具体请参考下方**uiInput swipe/drag使用示例**。     | 
 | dircFling   | 是    | 模拟指定方向滑动操作。具体请参考下方**uiInput dircFling使用示例**。     |
 | inputText   | 是    | 指定坐标点，模拟输入框输入文本操作。具体请参考下方**uiInput inputText使用示例**。                   |
-| text   | 是    | 无需指定坐标点，在当前获焦处，模拟输入框输入文本操作。具体请参考下方**uiInput text使用示例**。                           |
+| text   | 是    | 无需指定坐标点，在当前获焦处，模拟输入框输入文本操作。具体请参考下方**uiInput text使用示例**。<br> **说明：** 从API version 18开始支持该命令。|
 | keyEvent   | 是    | 模拟实体按键事件（如：键盘，电源键，返回上一级，返回桌面等），以及组合按键操作。具体请参考下方**uiInput keyEvent使用示例**。     | 
 
 
@@ -793,7 +858,7 @@ hdc shell uitest start-daemon
 >
 > 仅元能力aa test拉起的测试hap才能调用Uitest的能力。
 >
-> 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->需为system_basic、normal。
+> 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->需为normal。
 
 <!--Del-->
 
