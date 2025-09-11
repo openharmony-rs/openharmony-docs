@@ -165,6 +165,7 @@ this.parent.child.num = 5;
       }
     }
 
+    @Entry
     @Component
     struct Parent {
       @State info: Info = new Info(0)
@@ -515,13 +516,13 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick((e) => {
-          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          this.arrA[Math.floor(this.arrA.length / 2) as int].info = 10;
         })
       Button(`ViewParent: item property in middle`)
         .width(320)
         .margin(10)
         .onClick((e) => {
-          this.arrA[Math.floor(this.arrA.length / 2)] = new Info(11);
+          this.arrA[Math.floor(this.arrA.length / 2) as int] = new Info(11);
         })
     }
   }
