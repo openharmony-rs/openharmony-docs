@@ -214,7 +214,7 @@ ArkTS1.1接口声明：[static SetAndProp\<S\>(propName: string, defaultValue: S
 
 ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS1.2接口声明：[static setAndRef\<S\>(propName: string, defaultValue: S): AbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+替代的ArkTS1.2接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
 
 
 
@@ -294,11 +294,11 @@ ref?.set(48);
 
 ### setAndProp
 
-ArkTS1.1接口声明：[static setAndProp\<S\>(propName: string, defaultValue: S): SubscribedAbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandprop10)
+ArkTS1.1接口声明：[static setAndProp\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandprop10)
 
 ArkTS1.2未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS1.2接口声明：[static setAndRef\<S\>(propName: string, defaultValue: S): AbstractProperty\<S\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+替代的ArkTS1.2接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
 
 ArkTS1.1
 
