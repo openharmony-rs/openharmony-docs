@@ -34,6 +34,116 @@
 >
 >  引用资源类型时，需确保资源类型对象用法为当前支持的用法，否则当前以资源类型作为参数的属性效果将和不设置该属性相同。
 
+**使用@ohos.transfer进行Resource类型转换**
+
+通过在ArkTS-Sta中引用ArkTS-Dyn创建的Resource对象的方法显示图片。
+
+- 创建ArkTS-Dyn子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynResource的方法。
+ 
+  ArkTS-Sta示例：
+ 
+  ```TypeScript
+    'use static'
+  // library2/src/main/ets/components/MainPage.ets
+
+  import transfer from '@ohos.transfer';
+  import {$rawfile, $r} from '@ohos.arkui.component';
+
+  export function rawFileTest() {
+    let rawFile = $rawfile('startIcon.png');
+    let dynamicRawFile = transfer.transferDynamic(rawFile, 'Global.Resource');
+    return dynamicRawFile! as Object;
+  }
+  export function resourceTest(): Object {
+    let resource = $r('app.float.image_size');
+    let dynamicResource = transfer.transferDynamic(resource, 'Global.Resource');
+    return dynamicResource! as Object;
+  }
+  ```
+
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn创建Resource对象。
+  
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { resourceTest, rawFileTest } from 'library2';
+  // Resource $r对象互操作
+  export function resourceTrans(): Resource {
+    return  resourceTest() as Resource;
+  }
+  // Resource RawFile对象互操作
+  export function rawFileTrans(): Resource {
+     return rawFileTest() as Resource;
+  }
+
+  @Entry
+  @Component
+  struct MyStateSample {
+    build() {
+      Column(undefined) {
+        Image(rawFileTrans())
+          .size({width:resourceTrans(), height:resourceTrans()})
+      }
+    }
+  }
+  ```
+  ![image](figures/resourceTransfer.png)
+
+通过在ArkTS-Sta中引用ArkTS-Dyn创建的Resource对象显示图片。
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynResource的方法。
+    
+    ArkTS-Dyn示例：
+
+    ```TypeScript
+    // library/src/main/ets/components/MainPage.ets
+  
+    export function rawFileTest() {
+      return $rawfile('startIcon.png');
+    }
+  
+    export function resourceTest(): Object {
+      return $r('app.float.image_size');
+    }
+    ```
+  
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn Resource对象。
+    
+    ArkTS-Sta示例：
+
+    ```TypeScript
+    'use static'
+    // entry/src/main/ets/pages/Index.ets
+    
+    import { Entry, Column, Component, Resource, Image } from '@ohos.arkui.component';
+    import transfer from '@ohos.transfer';
+    import { resourceTest, rawFileTest } from 'library';
+  
+    // Resource $r对象互操作
+    export function resourceTrans(): Resource {
+       let resourceDynamic = resourceTest();
+       return transfer.transferStatic(resourceDynamic, 'Global.Resource')! as Resource;
+  
+    }
+    // Resource RawFile对象互操作
+    export function rawFileTrans(): Resource {
+      let resourceDynamic = rawFileTest();
+      return transfer.transferStatic(resourceDynamic, 'Global.Resource')! as Resource;
+    }
+    
+    @Entry
+    @Component
+    struct MyStateSample {
+      build() {
+        Column(undefined) {
+          Image(rawFileTrans())
+            .size({width:resourceTrans(), height:resourceTrans()})
+        }
+      }
+    }
+    ```
+    ![image](figures/resourceTransfer.png)
+    
 ## Length
 
 长度类型，用于描述尺寸单位。

@@ -1975,3 +1975,284 @@ struct Index {
   }
 }
 ```
+
+## 使用@ohos.transfer进行LengthMetrics、ColorMetrics、ShapeMask、ShapeClip类型转换
+  
+ArkTS-Dyn中使用ArkTS-Sta的LengthMetrics、ColorMetrics、ShapeMask、ShapeClip对象。
+
+- 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynLengthMetrics、ColorMetrics、shapeMask、shapeClip的方法。
+  
+  ArkTS-Sta示例：
+  
+  ```TypeScript
+  // library2/src/main/ets/components/MainPage.ets
+  'use static'
+  
+  import { ShapeClip, ColorMetrics, ShapeMask, LengthMetrics, RenderNode, RoundRect } from '@ohos.arkui.node';
+  import transfer from '@ohos.transfer';
+  
+  export function shapeMaskTest(): Object {
+    const mask = new ShapeMask();
+    const roundRect: RoundRect = {
+      rect: {
+        left: 0,
+        top: 0,
+        right: 100,
+        bottom: 100
+      },
+      corners: {
+        topLeft: { x: 50, y: 50 },
+        topRight: { x: 50, y: 50 },
+        bottomLeft: { x: 50, y: 50 },
+        bottomRight: { x: 50, y: 50 }
+      }
+    }
+    mask.setRoundRectShape(roundRect);
+    mask.fillColor = 0X50FF0000;
+    let maskDynamic = transfer.transferDynamic(mask, 'ArkUI.ShapeMask');
+    return mask! as Object;
+  }
+  
+  export function shapeClipTest(): Object {
+    let shapeClip = new ShapeClip();
+    shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+    let shapeClipDynamic = transfer.transferDynamic(shapeClip, 'ArkUI.ShapeClip');
+    return shapeClipDynamic! as Object;
+  }
+  
+  export function colorMetricsTest(): Object {
+    let ret = ColorMetrics.numeric(10);
+    let colorMetrics = transfer.transferDynamic(ret, 'ArkUI.ColorMetrics');
+    return colorMetrics! as Object;
+  }
+  
+  export function lengthMetricsTest(): Object {
+    let ret = LengthMetrics.px(30);
+    let lengthMetrics = transfer.transferDynamic(ret, 'ArkUI.LengthMetrics');
+    return lengthMetrics! as Object;
+  }
+  ```
+
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn的方法创建对象。
+  
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+   // entry/src/main/ets/pages/Index.ets
+
+   import {NodeController, FrameNode, LengthUnit, ShapeClip, ColorMetrics, ShapeMask, RenderNode, LengthMetrics, RoundRect } from '@kit.ArkUI';
+   import { lengthMetricsTest, colorMetricsTest, shapeMaskTest, shapeClipTest } from 'library2';
+  
+  
+    const shapeClipTestNode: RenderNode = new RenderNode()
+    // 初始化RenderNode
+    shapeClipTestNode.position = { x: 0, y: 80 };
+    shapeClipTestNode.size = { width: 80, height: 80 }
+    shapeClipTestNode.backgroundColor = 0xff0000ff;
+  
+   const shapeMaskTestNode: RenderNode = new RenderNode()
+   // 初始化RenderNode
+   shapeMaskTestNode.position = { x: 0, y: 0 };
+   shapeMaskTestNode.size = { width: 80, height: 80 }
+   shapeMaskTestNode.backgroundColor = 0xff0000ff;
+  
+    // ShapeMask ShapeClip 对象转换
+    export function shapeTrans(rootNode: FrameNode) {
+      // 调用ArkTS-Dyn方法获取ShapeMask对象
+      let shapeMask = shapeMaskTest();
+      // 调用ArkTS-Dyn方法获取ShapeClip对象
+      let shapeClip = shapeClipTest();
+      let shapeClipStatic = shapeClip as ShapeClip;
+      let shapeMaskStatic = shapeMask as ShapeMask;
+      const rootRenderNode = rootNode?.getRenderNode();
+      if (rootRenderNode !== null) {
+        shapeMaskTestNode.shapeMask = shapeMaskStatic;
+        shapeClipTestNode.shapeClip = shapeClipStatic;
+        rootRenderNode?.appendChild(shapeMaskTestNode);
+        rootRenderNode?.appendChild(shapeClipTestNode);
+      }
+    }
+    // ColorMetrics对象互操作
+    function colorMetricsTrans():ColorMetrics {
+      return colorMetricsTest() as ColorMetrics;
+    }
+    // lengthMetrics对象互操作
+    function lengthMetricsTrans(): LengthMetrics {
+      return lengthMetricsTest() as LengthMetrics;
+    }
+    class TestNodeController extends NodeController {
+      makeNode(uiContext: UIContext): FrameNode | null {
+        let rootNode = new FrameNode(uiContext);
+        shapeTrans(rootNode);
+        return rootNode;
+      }
+    }
+    @Entry
+    @Component
+    struct MyStateSample {
+      nodeController: TestNodeController = new TestNodeController();
+  
+      build() {
+        Column(undefined) {
+          NodeContainer(this.nodeController)
+            .size({width:200, height:200})
+            .border({width:1})
+          Button("Button").focusBox({
+            margin: LengthMetrics.px(20),
+            strokeColor: colorMetricsTrans(),
+            strokeWidth: lengthMetricsTrans()
+          }).margin(30)
+        }
+      }
+  }
+  ```
+  ![image](figures/graphicsTransfer.png)
+
+ArkTS-Sta中使用ArkTS-Dyn的LengthMetrics、ColorMetrics、ShapeMask、ShapeClip对象。
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-Dyn LengthMetrics、ColorMetrics、shapeMask、shapeClip的方法。
+  
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  import { ShapeClip, ColorMetrics, ShapeMask, LengthMetrics, RenderNode } from  '@kit.ArkUI';
+
+  export function shapeMaskTest(): Object {
+    const mask = new ShapeMask();
+    const roundRect: RoundRect = {
+      rect: {
+        left: 0,
+        top: 0,
+        right: 100,
+        bottom: 100
+      },
+      corners: {
+        topLeft: { x: 50, y: 50 },
+        topRight: { x: 50, y: 50 },
+        bottomLeft: { x: 50, y: 50 },
+        bottomRight: { x: 50, y: 50 }
+      }
+    }
+    mask.setRoundRectShape(roundRect);
+    mask.fillColor = 0X50FF0000;
+    return mask;
+  }
+  export function shapeClipTest(): Object {
+    let shapeClip = new ShapeClip();
+    shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+    return shapeClip;
+  }
+  
+  export function resourceTest(): Object {
+    return $r('app.float.node_container_size');
+  }
+  
+  export function colorMetricsTest(): Object {
+    return ColorMetrics.numeric(10);
+  }
+  
+  export function lengthMetricsTest(): Object {
+    return LengthMetrics.px(30);
+  }
+  
+  export function renderNodeTest():Object {
+    let shapeMaskTestNode =new RenderNode();
+    shapeMaskTestNode.position = { x: 0, y: 0 };
+    shapeMaskTestNode.size = { width: 80, height: 80 }
+    shapeMaskTestNode.backgroundColor = 0xff0000ff;
+    return shapeMaskTestNode;
+  }
+  ```
+
+- 在ArkTS-Sta主模块中引入ArkTS1.1导出的方法创建对象并转换为ArkTS-Sta对象。
+  
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+
+  // entry/src/main/ets/pages/Index.ets
+
+  import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import transfer from '@ohos.transfer';
+  import { UIContext } from '@ohos.arkui.UIContext';
+  import {NodeController, FrameNode, LengthUnit, ShapeClip, ColorMetrics, ShapeMask, RenderNode, LengthMetrics, RoundRect } from '@ohos.arkui.node';
+  import { lengthMetricsTest, colorMetricsTest, shapeMaskTest, shapeClipTest, resourceTest, renderNodeTest } from 'library';
+
+  const shapeMaskTestNode: RenderNode = renderNodeTrans();
+  const shapeClipTestNode: RenderNode = new RenderNode()
+  // 初始化RenderNode
+  shapeClipTestNode.position = { x: 0, y: 80 };
+  shapeClipTestNode.size = { width: 80, height: 80 }
+  shapeClipTestNode.backgroundColor = 0xff0000ff;
+
+  // ShapeMask ShapeClip 对象转换
+  export function shapeTrans(rootNode: FrameNode) {
+    // 调用ArkTS-Dyn方法获取ShapeMask对象
+    let shapeMask = shapeMaskTest();
+    // 调用ArkTS-Dyn方法获取ShapeClip对象
+    let shapeClip = shapeClipTest();
+    let shapeClipStatic = transfer.transferStatic(shapeClip, 'ArkUI.ShapeClip')! as ShapeClip;
+    let shapeMaskStatic = transfer.transferStatic(shapeMask, 'ArkUI.ShapeMask')! as ShapeMask;
+    const rootRenderNode = rootNode?.getRenderNode();
+    if (rootRenderNode !== null) {
+      shapeMaskTestNode.shapeMask = shapeMaskStatic;
+      shapeClipTestNode.shapeClip = shapeClipStatic;
+      rootRenderNode?.appendChild(shapeMaskTestNode);
+      rootRenderNode?.appendChild(shapeClipTestNode);
+    }
+  }
+  // Resource对象互操作
+  export function resourceTrans():Resource {
+    let resourceDynamic = resourceTest();
+    return  transfer.transferStatic(resourceDynamic, 'Global.Resource')! as Resource;
+  }
+  // ColorMetrics对象互操作
+  function colorMetricsTrans():ColorMetrics {
+    let colorMetrics = colorMetricsTest();
+    let colorMetricsStatic = transfer.transferStatic(colorMetrics, 'ArkUI.ColorMetrics')! as ColorMetrics;
+    return colorMetricsStatic;
+  }
+  // RenderNode对象互操作
+  function renderNodeTrans():RenderNode {
+    let renderNode = renderNodeTest();
+    let renderNodeStatic = transfer.transferStatic(renderNode, 'ArkUI.RenderNode')! as RenderNode;
+    return renderNodeStatic;
+  }
+  // lengthMetrics对象互操作
+  function lengthMetricsTrans(): LengthMetrics {
+    let lengthMetrics = lengthMetricsTest();
+    let lengthMetricsStatic = transfer.transferStatic(lengthMetrics, 'ArkUI.LengthMetrics')! as LengthMetrics;
+    return lengthMetricsStatic;
+  }
+  
+  class TestNodeController extends NodeController {
+    makeNode(uiContext: UIContext): FrameNode | null {
+      let rootNode = new FrameNode(uiContext);
+      shapeTrans(rootNode);
+      return rootNode;
+    }
+  }
+
+  @Entry
+  @Component
+  struct MyStateSample {
+    nodeController: TestNodeController = new TestNodeController();
+
+    build() {
+      Column(undefined) {
+        NodeContainer(this.nodeController)
+          .size({width:resourceTrans(), height:resourceTrans()})
+          .border({width:1})
+        Button("Button").focusBox({
+          margin: LengthMetrics.px(20),
+          strokeColor: colorMetricsTrans(),
+          strokeWidth: lengthMetricsTrans()
+        }).margin(30)
+      }
+    }
+  }
+  ```
+  ![image](figures/graphicsTransfer.png)

@@ -2865,3 +2865,139 @@ struct Index {
 ```
 
 ![](figures/RenderNode_isDisposed.gif)
+
+### 使用@ohos.transfer进行RenderNode类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
+
+- 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynRenderNode的方法。
+  
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // library/src/main/ets/components/MainPage.ets
+
+  import { RenderNode } from '@ohos.arkui.node';
+  import transfer from '@ohos.transfer';
+
+  export function renderNodeTest(): Object {
+    let renderNodeTest =new RenderNode();
+    renderNodeTest.position = { x: 0, y: 0 };
+    renderNodeTest.size = { width: 80, height: 80 }
+    renderNodeTest.backgroundColor = 0xff0000ff;
+    let renderNodeDynamic = transfer.transferDynamic(renderNodeTest, 'ArkUI.RenderNode');
+    let ret = renderNodeDynamic! as Object;
+    return ret;
+  }
+  ```
+
+- 在ArkTS-Dyn主模块中引入创建RenderNode对象的方法。
+  
+  ArkTS-Dyn示例：
+  
+  ```TypeScript
+  // entry/src/main/ets/pages/Index.ets
+  
+  import { FrameNode, RenderNode, NodeController } from '@kit.ArkUI';
+  import { renderNodeTest } from 'library2';
+  
+  function renderNodeTrans(): RenderNode{
+    let renderNode = renderNodeTest();
+    let renderNodeDynamic = renderNode as RenderNode;
+    return renderNodeDynamic;
+  }
+  
+  class TestNodeController extends NodeController {
+    makeNode(uiContext: UIContext): FrameNode | null {
+      let rootNode = new FrameNode(uiContext);
+      rootNode.commonAttribute.width(100);
+      rootNode.commonAttribute.height(100);
+  
+      const rootRenderNode = rootNode?.getRenderNode();
+      if (rootRenderNode !== null) {
+        rootRenderNode?.appendChild(renderNodeTrans());
+      }
+      return rootNode;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct MyStateSample {
+    nodeController: TestNodeController = new TestNodeController();
+  
+    build() {
+      Column(undefined) {
+        NodeContainer(this.nodeController).width(100).height(100)
+      }
+    }
+  }
+  ```
+  ![image](figures/renderNodeTransfer.png) 
+
+ArkTS-Sta中使用ArkTS-Dyn的RenderNode对象。
+
+ - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创提供建ArkTS-DynRenderNode的方法。
+    
+    ArkTS-Dyn示例：
+    
+    ```TypeScript
+    // library/src/main/ets/components/MainPage.ets
+  
+    import { RenderNode } from '@kit.ArkUI';
+  
+    export function renderNodeTest():Object {
+      let shapeMaskTestNode =new RenderNode();
+      shapeMaskTestNode.position = { x: 0, y: 0 };
+      shapeMaskTestNode.size = { width: 80, height: 80 }
+      shapeMaskTestNode.backgroundColor = 0xff0000ff;
+      return shapeMaskTestNode;
+    }
+    ```
+  
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn创建RenderNoded的方法。
+    
+    ArkTS-Sta示例：
+
+    ```TypeScript
+    'use static'
+    // entry/src/main/ets/pages/Index.ets
+  
+    import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import transfer from '@ohos.transfer';
+    import { UIContext } from '@ohos.arkui.UIContext';
+    import { FrameNode, RenderNode, NodeController } from '@ohos.arkui.node';
+    import { renderNodeTest } from 'library';
+  
+    function renderNodeTrans(): RenderNode{
+      let renderNode = renderNodeTest();
+      let renderNodeStatic = transfer.transferStatic(renderNode, 'ArkUI.RenderNode')! as RenderNode;
+      return renderNodeStatic;
+    }
+  
+    class TestNodeController extends NodeController {
+      makeNode(uiContext: UIContext): FrameNode | null {
+        let rootNode = new FrameNode(uiContext);
+        const rootRenderNode = rootNode?.getRenderNode();
+        if (rootRenderNode !== null) {
+          rootRenderNode?.appendChild(renderNodeTrans());
+        }
+        return rootNode;
+      }
+    }
+  
+    @Entry
+    @Component
+    struct MyStateSample {
+      nodeController: TestNodeController = new TestNodeController();
+  
+      build() {
+        Column(undefined) {
+          NodeContainer(this.nodeController)
+        }
+      }
+    }
+    ```
+    ![image](figures/renderNodeTransfer.png) 

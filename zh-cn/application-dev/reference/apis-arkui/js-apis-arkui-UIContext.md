@@ -1409,7 +1409,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 ```ts
 uiContext.getFilteredInspectorTree(['id', 'src', 'content']);
 ```
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // xxx.ets
@@ -1472,7 +1472,7 @@ InsTree ---| type: Column, ID: 15
 InsTree ----| type: Button, ID: 16
 InsTree ----| type: Button, ID: 18
 ```
-ArkTS1.2示例：
+ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
 import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
@@ -1584,7 +1584,7 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 ```ts
 uiContext.getFilteredInspectorTreeById('testId', 0, ['id', 'src', 'content']);
 ```
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { UIContext } from '@kit.ArkUI';
@@ -1616,7 +1616,7 @@ struct ComponentPage {
   }
 }
 ```
-ArkTS1.2示例：
+ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
 import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
@@ -3241,7 +3241,7 @@ static getFocusedUIContext(): UIContext | undefined
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS版本：**  该接口仅适用于ArkTS1.2。
+**ArkTS版本：**  该接口仅适用于ArkTS-Sta。
 
 **返回值：**
 
@@ -3514,7 +3514,7 @@ createComponentObserver(id: string): inspector.ComponentObserver
 | ------------------------------------------------------------ | -------------------------------------------------- |
 | [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
-**ArkTS1.2 示例:**
+**ArkTS-Sta 示例:**
 
 <!--code_no_check-->
 ```ts
@@ -12354,3 +12354,107 @@ struct Index {
   }
 }
 ```
+
+## 使用@ohos.transfer进行UIContext类型转换
+
+
+在ArkTS-Dyn中使用ArkTS-Sta获取的UIContext对象。
+
+- 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录的方法中使用传入的UIContext用于逻辑处理。
+  
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // library2/src/main/ets/components/MainPage.ets
+
+  import transfer from '@ohos.transfer';
+  import { UIContext } from '@ohos.arkui.UIContext';
+
+  const vpTest:number = 200;
+  export function uiContextTest(uiContext:Object): number {
+    let uiContextTrans = transfer.transferStatic(uiContext, 'ArkUI.UIContext');
+    let uiContextStatic = uiContextTrans! as UIContext;
+    return uiContextStatic.px2vp(vpTest);
+  }
+  ```
+  
+- 在ArkTS-Dyn主模块中获取UIContext并传递给ArkTS-Sta。
+  
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // entry/src/main/ets/pages/Index.ets
+  
+  import { uiContextTest } from 'library2';
+  import { UIContext } from '@kit.ArkUI';
+  
+  // uiContext互操作
+  export function uiContextTrans(uiContext:UIContext): number {
+    return uiContextTest(uiContext);
+  }
+  
+  @Entry
+  @Component
+  struct MyStateSample {
+    build() {
+      Column(undefined) {
+        Column()
+          .backgroundColor('#ff0000ff')
+          .size({width:uiContextTrans(this.getUIContext()), height:uiContextTrans(this.getUIContext())})
+      }
+    }
+  }
+  ```
+  ![image](figures/uiContextTransfer.png)
+
+在ArkTS-Dyn中使用ArkTS-Sta获取的UIContext对象。
+  
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录的方中使用传入的UIContext进行业务处理。
+    
+    ArkTS-Dyn示例：
+
+    ```TypeScript
+    // library/src/main/ets/components/MainPage.ets
+  
+    import { UIContext } from '@kit.ArkUI';
+  
+    const vpTest:number = 200;
+    export function uiContextTest(uiContext:Object): number {
+      let uiContextDynamic = uiContext as UIContext;
+      return uiContextDynamic.px2vp(vpTest);
+    }
+    ```
+    
+- 在ArkTS-Sta主模块中获取UIContext并传递给ArkTS-Dyn。
+    
+    ArkTS-Sta示例：
+    
+    ```TypeScript
+    'use static'
+    // entry/src/main/ets/pages/Index.ets
+  
+    import { Entry, Column, Component, Resource, Image } from '@ohos.arkui.component';
+    import transfer from '@ohos.transfer';
+    import { uiContextTest } from 'library';
+    import { UIContext } from '@ohos.arkui.UIContext';
+    
+    // uiContext互操作
+    export function uiContextTrans(uiContext:UIContext): number {
+      let uiContextDynamic = transfer.transferDynamic(uiContext, 'ArkUI.UIContext');
+      return uiContextTest(uiContextDynamic);
+    }
+  
+    @Entry
+    @Component
+    struct MyStateSample {
+      build() {
+        Column(undefined) {
+          Column()
+            .backgroundColor('#ff0000ff')
+            .size({width:uiContextTrans(this.getUIContext()), height:uiContextTrans(this.getUIContext())})
+        }
+      }
+    }
+    ```
+    ![image](figures/uiContextTransfer.png)
