@@ -246,7 +246,6 @@ try {
     }, (error: BusinessError) => {
         console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
     })
-
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
