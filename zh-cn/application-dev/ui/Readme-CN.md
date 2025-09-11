@@ -232,7 +232,6 @@
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
     - [形状裁剪 (clipShape)](arkts-clip-shape.md)
-    - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
   - [添加交互响应](arkts-interaction-development-guide-overview.md)
     - [交互响应概述](arkts-interaction-capability-overview.md)
     - [交互基础机制说明](arkts-interaction-basic-principles.md)
@@ -293,6 +292,7 @@
       - [内容修改器 (ContentModifier)](arkts-common-attributes-content-modifier.md)
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
+  - [UI国际化](arkts-internationalization.md)
   - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
     - [支持无障碍](arkts-universal-attributes-accessibility.md)
     - [支持适老化](arkui-support-for-aging-adaptation.md)
@@ -418,6 +418,7 @@
   - [自定义组件](ui-js-custom-components.md)
   - [WebGL](../webgl/Readme-CN.md)
 - UI开发调试调优<!--ui-debug-optimize-->
+  - [预览](ui-ide-previewer.md)
   - [UI调优(ArkTs1.2)](ui-inspector-profiler-static.md)
 - [窗口管理](../windowmanager/Readme-CN.md)
 - [屏幕管理](../displaymanager/Readme-CN.md)
