@@ -10489,7 +10489,9 @@ unmapAshmem(): void
 
 ### getAshmemSize<sup>8+</sup>
 
-getAshmemSize(): number
+ArkTS-Dyn: getAshmemSize(): number
+
+ArkTS-Sta: getAshmemSize(): int
 
 获取Ashmem对象的内存大小。
 
@@ -10499,10 +10501,20 @@ getAshmemSize(): number
 
   | 类型   | 说明                       |
   | ------ | -------------------------- |
-  | number | 返回Ashmem对象的内存大小。 |
+  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回Ashmem对象的内存大小。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let size = ashmem.getAshmemSize();
+  hilog.info(0x0000, 'testTag', 'RpcTest: get ashmem is ' + ashmem + ' size is ' + size);
+  ```
+
+ArkTS-Sta示例：
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
