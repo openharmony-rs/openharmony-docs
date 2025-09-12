@@ -778,7 +778,7 @@
     ```ts
     import { Entry, Column, Component, Grid, GridItem, ForEach, Color, ClickEvent, DragEvent, DragItemInfo, ColumnOptions, Margin, Builder, CustomStyles, BusinessError, CommonMethod, Array } from '@ohos.arkui.component';
     import { State } from '@ohos.arkui.stateManagement';
-    import { image } from "@ohos.multimedia.image";
+    import { image } from '@kit.ImageKit';
 
     @Entry
     @Component
