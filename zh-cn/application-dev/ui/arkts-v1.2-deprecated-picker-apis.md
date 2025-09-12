@@ -17,7 +17,7 @@ ArkTS1.1
 @Entry
 @Component
 struct DatePickerExample {
-  private selectedDate: Date = new Date('2021-08-08');
+  @State selectedDate: Date = new Date('2021-08-08');
 
   build() {
     Column() {
@@ -27,9 +27,11 @@ struct DatePickerExample {
         selected: this.selectedDate
       })
         .onChange((value: DatePickerResult) => {
-          console.info('select current date is: ' + value.toString());
+          this.selectedDate.setFullYear(value.year ? value.year : 2025, value.month ? value.month : 0,
+            value.day ? value.day : 1);
+          console.info('select current date is: ' + JSON.stringify(value));
         })
-    }
+    }.width('100%')
   }
 }
 ```
@@ -64,7 +66,7 @@ struct DatePickerExample {
 
 ArkTS1.1接口声明：[static show(options?: DatePickerDialogOptions)](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#showdeprecated)
 
-替代的ArkTS1.2接口声明：[showTimePickerDialog(options: TimePickerDialogOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdatepickerdialog)
+替代的ArkTS1.2接口声明：[showDatePickerDialog(options: DatePickerDialogOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdatepickerdialog) 
 
 
 ArkTS1.1
@@ -133,23 +135,25 @@ ArkTS1.1
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  @State selectedDate: Date = new Date('2010-1-1');
 
   build() {
     Column() {
       Button("DatePickerDialog")
-        .margin(20)
+        .margin(30)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-1-1'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             onAccept: (value: DatePickerResult) => {
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              this.selectedDate.setFullYear(value.year ? value.year : 2025, value.month ? value.month : 0,
+                  value.day ? value.day : 1);
+              console.info('DatePickerDialog:onDateAccept()' + JSON.stringify(value));
             }
           });
         })
-    }
+    }.width('100%')
   }
 }
 
@@ -194,23 +198,23 @@ ArkTS1.1
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  @State selectedDate: Date = new Date('2010-1-1');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
-        .margin(20)
+      Button('DatePickerDialog')
+        .margin(30)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-1-1'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             onChange: (value: DatePickerResult) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
+              console.info('DatePickerDialog:onDateChange()' + JSON.stringify(value));
             },
           });
         })
-    }
+    }.width('100%')
   }
 }
 ```
@@ -350,22 +354,22 @@ ArkTS1.2
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: number | number[] = 0;
+  private selected: number = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
 
   build() {
-      Column() {
-        Button("TextPickerDialog:")
-          .onClick(() => {
-            this.getUIContext().showTextPickerDialog({
-              range: this.fruits,
-              selected: this.select,
-              onAccept: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
-              }
-            });
-          })
-      }.width('100%')
-    }
+    Column() {
+      Button('TextPickerDialog')
+        .onClick(() => {
+          this.getUIContext().showTextPickerDialog({
+            range: this.fruits,
+            selected: this.selected,
+            onAccept: (value: TextPickerResult) => {
+              console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
+            }
+          });
+        })
+    }.width('100%')
+  }
 }
 ```
