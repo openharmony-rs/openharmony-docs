@@ -874,14 +874,19 @@ defaultFixedFontSize(size: number)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：13。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：13。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -901,6 +906,27 @@ defaultFixedFontSize(size: number)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State fontSize: Int = 16;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .defaultFixedFontSize(this.fontSize)
+      }
+    }
+  }
+  ```
+
 ## defaultFontSize<sup>9+</sup>
 
 defaultFontSize(size: number)
@@ -909,14 +935,19 @@ defaultFontSize(size: number)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：16。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：16。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -936,6 +967,27 @@ defaultFontSize(size: number)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State fontSize: Int = 13;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .defaultFontSize(this.fontSize)
+      }
+    }
+  }
+  ```
+
 ## minFontSize<sup>9+</sup>
 
 minFontSize(size: number)
@@ -944,14 +996,19 @@ minFontSize(size: number)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：8。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：8。<br/> |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -966,6 +1023,27 @@ minFontSize(size: number)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .minFontSize(this.fontSize)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State fontSize: Int = 13;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .minFontSize(this.fontSize)
       }
     }
   }
@@ -1014,6 +1092,11 @@ webFixedFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                     |
@@ -1022,6 +1105,7 @@ webFixedFont(family: string)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1041,6 +1125,27 @@ webFixedFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State family: string = "monospace";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webFixedFont(this.family)
+      }
+    }
+  }
+  ```
+
 ## webSansSerifFont<sup>9+</sup>
 
 webSansSerifFont(family: string)
@@ -1048,6 +1153,10 @@ webSansSerifFont(family: string)
 设置网页的sans-serif font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1057,6 +1166,7 @@ webSansSerifFont(family: string)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1071,6 +1181,27 @@ webSansSerifFont(family: string)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .webSansSerifFont(this.family)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State family: string = "sans-serif";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webSansSerifFont(this.family)
       }
     }
   }
@@ -1119,6 +1250,10 @@ webStandardFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                   |
@@ -1127,6 +1262,7 @@ webStandardFont(family: string)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1146,6 +1282,27 @@ webStandardFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State family: string = "sans-serif";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webStandardFont(this.family)
+      }
+    } 
+  }
+  ```
+
 ## webFantasyFont<sup>9+</sup>
 
 webFantasyFont(family: string)
@@ -1153,6 +1310,10 @@ webFantasyFont(family: string)
 设置网页的fantasy font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1162,6 +1323,7 @@ webFantasyFont(family: string)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1180,6 +1342,26 @@ webFantasyFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State family: string = "fantasy";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webFantasyFont(this.family)
+      }
+    }
+  }
+  ```
+
 ## webCursiveFont<sup>9+</sup>
 
 webCursiveFont(family: string)
@@ -1187,6 +1369,10 @@ webCursiveFont(family: string)
 设置网页的cursive font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1196,6 +1382,7 @@ webCursiveFont(family: string)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1215,6 +1402,27 @@ webCursiveFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State family: string = "cursive";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webCursiveFont(this.family)
+      }
+    }
+  }
+  ```
+
 ## darkMode<sup>9+</sup>
 
 darkMode(mode: WebDarkMode)
@@ -1222,6 +1430,11 @@ darkMode(mode: WebDarkMode)
 设置Web深色模式。当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 
 **参数：**
 
@@ -1231,6 +1444,7 @@ darkMode(mode: WebDarkMode)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1250,6 +1464,27 @@ darkMode(mode: WebDarkMode)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State, WebDarkMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State mode: WebDarkMode = WebDarkMode.On;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .darkMode(this.mode)
+      }
+    }
+  }
+  ```
+
 ## forceDarkAccess<sup>9+</sup>
 
 forceDarkAccess(access: boolean)
@@ -1257,6 +1492,10 @@ forceDarkAccess(access: boolean)
 设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1266,6 +1505,7 @@ forceDarkAccess(access: boolean)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1282,6 +1522,29 @@ forceDarkAccess(access: boolean)
         Web({ src: 'www.example.com', controller: this.controller })
           .darkMode(this.mode)
           .forceDarkAccess(this.access)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State, WebDarkMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  @State mode: WebDarkMode = WebDarkMode.On;
+  @State access: boolean = true;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .darkMode(this.mode)
+        .forceDarkAccess(this.access)
       }
     }
   }
@@ -2115,6 +2378,10 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
@@ -2123,6 +2390,7 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
   **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2140,6 +2408,29 @@ defaultTextEncodingFormat(textEncodingFormat: string)
           .defaultTextEncodingFormat("UTF-8")
           .javaScriptAccess(true)
       }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+      // 设置高
+        .height(500)
+        .defaultTextEncodingFormat("UTF-8")
+        .javaScriptAccess(true)
+      } 
     }
   }
   ```
@@ -2217,6 +2508,10 @@ textAutosizing(textAutosizing: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
@@ -2225,6 +2520,7 @@ textAutosizing(textAutosizing: boolean)
 
   **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2238,6 +2534,26 @@ textAutosizing(textAutosizing: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .textAutosizing(false)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .textAutosizing(false)
       }
     }
   }
@@ -2756,6 +3072,10 @@ enableFollowSystemFontWeight(follow: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                             | 必填 | 说明                                |
@@ -2764,6 +3084,7 @@ enableFollowSystemFontWeight(follow: boolean)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2776,6 +3097,25 @@ enableFollowSystemFontWeight(follow: boolean)
       Column() {
         Web({ src: "www.example.com", controller: this.controller })
           .enableFollowSystemFontWeight(true)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+// xxx.ets
+import { Entry, Component, Web, Column } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController("");
+  build() {
+    Column() {
+      Web({ src: "www.example.com", controller: this.controller })
+        .enableFollowSystemFontWeight(true)
       }
     }
   }
