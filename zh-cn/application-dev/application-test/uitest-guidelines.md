@@ -171,7 +171,6 @@ export default function abilityTest() {
 
 ```
 
-
 ### 模拟触摸屏手指操作
 
 支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
@@ -269,7 +268,6 @@ export default function abilityTest() {
 }
 ```
 
-
 ### 模拟文本输入
 
 支持向指定坐标点或指定控件输入文本内容，同时支持[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
@@ -277,8 +275,8 @@ export default function abilityTest() {
 #### 接口说明
 | 接口 | 功能说明 |
 | ------ | ------|
-| inputText(p: Point, text: string, mode?: InputTextMode): Promise\<void>| 在指定坐标点输入文本，支持指定文本输入方式 |
-| inputText(text: string, mode?: InputTextMode): Promise\<void>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效 |
+| inputText(p: Point, text: string, mode?: InputTextMode): Promise\<void>| 在指定坐标点输入文本，支持指定文本输入方式。 |
+| inputText(text: string, mode?: InputTextMode): Promise\<void>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效。 |
 
 以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
@@ -337,8 +335,8 @@ export default function abilityTest() {
 #### 接口说明
 | 接口 | 功能说明 |
 | ------ | ------|
-| screenCap(savePath: string, displayId: number): Promise\<boolean>| 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中 |
-| screenCapture(savePath: string, rect?: Rect): Promise\<boolean>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效 |
+| screenCap(savePath: string, displayId: number): Promise\<boolean>| 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中。 |
+| screenCapture(savePath: string, rect?: Rect): Promise\<boolean>| 捕获屏幕指定区域，并保存为PNG格式的图片至给出的保存路径中。 |
 
 > **说明：**
 > 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../file-management/app-sandbox-directory.md)。
