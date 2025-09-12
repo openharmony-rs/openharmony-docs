@@ -224,8 +224,7 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|201 | Permission denied.                 |              |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -235,13 +234,14 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.bluetooth.common';
 // promise
 try {
-    let bluetoothAddress: common.BluetoothAddress = {
+    let btAddr: common.BluetoothAddress = {
         "address": '11:22:33:44:55:66',
-        "addressType": 1,
+        "addressType": common.BluetoothAddressType.REAL,
     }
-    connection.pairDevice(bluetoothAddress).then(() => {
+    connection.pairDevice(btAddr).then(() => {
         console.info('pairDevice');
     }, (error: BusinessError) => {
         console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
