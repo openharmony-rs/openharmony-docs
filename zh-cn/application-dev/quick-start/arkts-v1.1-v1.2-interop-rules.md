@@ -388,7 +388,8 @@ export class X {
 // file2.ets  ArkTS1.2
 'use static'
 import { X } from './file1';
-let x: X = new X('hello') // 编译报错
+let x1: X = {name: 'hello'}   //编译报错
+let x2: X = new X('hello')    // OK
 ```
 
 ### ArkTS1.2创建ArkTS1.1具有二义性的对象字面量
