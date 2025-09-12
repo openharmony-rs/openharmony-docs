@@ -3400,3 +3400,35 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   // Unregister event
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
 ```
+
+## wifiManager.startScan<sup>21+</sup>
+
+startScan(): void
+
+启动WLAN扫描。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**示例：**
+
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		wifiManager.startScan();
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+```
