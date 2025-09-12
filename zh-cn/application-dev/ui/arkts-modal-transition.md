@@ -59,6 +59,8 @@
 
 完整示例代码和效果如下。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { curves } from '@kit.ArkUI';
 
@@ -242,6 +244,191 @@ struct BindContentCoverDemo {
 
 ![zh-cn_image_0000001646921957](figures/zh-cn_image_0000001646921957.gif)
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Builder, Row, Text, ForEach, Color, Margin, TextAlign, Padding, HorizontalAlign, ClickEvent,
+  $$, BorderOptions, ShadowOptions, SheetSize, EdgeWidths, ContentCoverOptions, FontWeight, TransitionEffect, ModalTransition
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import curves from '@ohos.curves';
+
+interface PersonList {
+  name: string,
+  cardNum: string
+}
+
+@Entry
+@Component
+struct BindContentCoverDemo {
+  private personList: Array<PersonList> = [
+    { name: '王**', cardNum: '1234***********789' } as PersonList,
+    { name: '宋*', cardNum: '2345***********789' } as PersonList,
+    { name: '许**', cardNum: '3456***********789' } as PersonList,
+    { name: '唐*', cardNum: '4567***********789' } as PersonList
+  ];
+  // 第一步：定义全屏模态转场效果bindContentCover
+  // 模态转场控制变量
+  @State isPresent: boolean = false;
+
+  // 第二步：定义模态展示界面
+  // 通过@Builder构建模态展示界面
+  @Builder
+  MyBuilder() {
+    Column() {
+      Row() {
+        Text('选择乘车人')
+          .fontSize(20)
+          .fontColor(Color.White)
+          .width('100%')
+          .textAlign(TextAlign.Center)
+          .padding({ top: 30, bottom: 15 } as Padding)
+      }
+      .backgroundColor(0x007dfe)
+
+      Row() {
+        Text('+ 添加乘车人')
+          .fontSize(16)
+          .fontColor(0x333333)
+          .margin({ top: 10 } as Margin)
+          .padding({ top: 20, bottom: 20 } as Padding)
+          .width('92%')
+          .borderRadius(10)
+          .textAlign(TextAlign.Center)
+          .backgroundColor(Color.White)
+      }
+
+      Column() {
+        ForEach(this.personList, (item: PersonList, index: number) => {
+          Row() {
+            Column() {
+              if (index % 2 == 0) {
+                Column()
+                  .width(20)
+                  .height(20)
+                  .border({ width: 1, color: 0x007dfe })
+                  .backgroundColor(0x007dfe)
+              } else {
+                Column()
+                  .width(20)
+                  .height(20)
+                  .border({ width: 1, color: 0x007dfe })
+              }
+            }
+            .width('20%')
+
+            Column() {
+              Text(item.name)
+                .fontColor(0x333333)
+                .fontSize(18)
+              Text(item.cardNum)
+                .fontColor(0x666666)
+                .fontSize(14)
+            }
+            .width('60%')
+            .alignItems(HorizontalAlign.Start)
+
+            Column() {
+              Text('编辑')
+                .fontColor(0x007dfe)
+                .fontSize(16)
+            }
+            .width('20%')
+          }
+          .padding({ top: 10, bottom: 10 } as Padding)
+          .border({ width: { bottom: 1 } as EdgeWidths, color: 0xf1f1f1 } as BorderOptions)
+          .width('92%')
+          .backgroundColor(Color.White)
+        })
+      }
+      .padding({ top: 20, bottom: 20 } as Padding)
+
+      Text('确认')
+        .width('90%')
+        .height(40)
+        .textAlign(TextAlign.Center)
+        .borderRadius(10)
+        .fontColor(Color.White)
+        .backgroundColor(0x007dfe)
+        .onClick((e: ClickEvent) => {
+          this.isPresent = !this.isPresent;
+        })
+    }
+    .size({ width: '100%', height: '100%' })
+    .backgroundColor(0xf5f5f5)
+    // 通过转场动画实现出现消失转场动画效果
+    .transition(TransitionEffect.translate({ y: 1000 }).animation({ curve: curves.springMotion(0.6, 0.8) }))
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text('确认订单')
+          .fontSize(20)
+          .fontColor(Color.White)
+          .width('100%')
+          .textAlign(TextAlign.Center)
+          .padding({ top: 30, bottom: 60 } as Padding)
+      }
+      .backgroundColor(0x007dfe)
+
+      Column() {
+        Row() {
+          Column() {
+            Text('00:25')
+            Text('始发站')
+          }
+          .width('30%')
+
+          Column() {
+            Text('G1234')
+            Text('8时1分')
+          }
+          .width('30%')
+
+          Column() {
+            Text('08:26')
+            Text('终点站')
+          }
+          .width('30%')
+        }
+      }
+      .width('92%')
+      .padding(15)
+      .margin({ top: -30 } as Margin)
+      .backgroundColor(Color.White)
+      .shadow({ radius: 30, color: '#aaaaaa' } as ShadowOptions)
+      .borderRadius(10)
+
+      Column() {
+        Text('+ 选择乘车人')
+          .fontSize(18)
+          .fontColor(Color.Orange)
+          .fontWeight(FontWeight.Bold)
+          .padding({ top: 10, bottom: 10 } as Padding)
+          .width('60%')
+          .textAlign(TextAlign.Center)
+          .borderRadius(15)// 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，这里选择DEFAULT代表设置上下切换动画效果，通过onDisappear控制状态变量变换
+          .bindContentCover($$(this.isPresent), this.MyBuilder, {
+            modalTransition: ModalTransition.DEFAULT,
+            onDisappear: () => {
+              if (this.isPresent) {
+                this.isPresent = !this.isPresent;
+              }
+            }
+          } as ContentCoverOptions)
+          .onClick((e: ClickEvent) => {
+            // 第三步：通过模态接口调起模态展示界面，通过转场动画或者共享元素动画去实现对应的动画效果
+            // 改变状态变量，显示模态界面
+            this.isPresent = !this.isPresent;
+          })
+      }
+      .padding({ top: 60 } as Padding)
+    }
+  }
+}
+```
+
 
 
 ## 使用bindSheet构建半模态转场效果
@@ -250,6 +437,7 @@ struct BindContentCoverDemo {
 
 完整示例和效果如下。
 
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -342,6 +530,103 @@ struct BindSheetDemo {
 ```
 
 ![zh-cn_image_0000001599977924](figures/zh-cn_image_0000001599977924.gif)
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Builder, Text, FlexDirection, FlexWrap, FontWeight, Margin, ClickEvent, Flex, HorizontalAlign, Blank,
+  Column, Color, ForEach, VerticalAlign, $$, Padding, Row, EdgeWidths, ShadowOptions
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct BindSheetDemo {
+  // 半模态转场显示隐藏控制
+  @State isShowSheet: boolean = false;
+  private menuList: string[] = ['不要辣', '少放辣', '多放辣', '不要香菜', '不要香葱', '不要一次性餐具', '需要一次性餐具'];
+
+  // 通过@Builder构建半模态展示界面
+  @Builder
+  mySheet() {
+    Column() {
+      Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap }) {
+        ForEach(this.menuList, (item: string) => {
+          Text(item)
+            .fontSize(16)
+            .fontColor(0x333333)
+            .backgroundColor(0xf1f1f1)
+            .borderRadius(8)
+            .margin(10)
+            .padding(10)
+        })
+      }
+      .padding({ top: 18 } as Padding)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.White)
+  }
+
+  build() {
+    Column() {
+      Text('口味与餐具')
+        .fontSize(28)
+        .padding({ top: 30, bottom: 30 } as Padding)
+      Column() {
+        Row() {
+          Row()
+            .width(10)
+            .height(10)
+            .backgroundColor('#a8a8a8')
+            .margin({ right: 12 } as Margin)
+            .borderRadius(20)
+
+          Column() {
+            Text('选择点餐口味和餐具')
+              .fontSize(16)
+              .fontWeight(FontWeight.Medium)
+          }
+          .alignItems(HorizontalAlign.Start)
+
+          Blank()
+
+          Row()
+            .width(12)
+            .height(12)
+            .margin({ right: 15 } as Margin)
+            .border({
+              width: { top: 2, right: 2 } as EdgeWidths,
+              color: 0xcccccc
+            })
+            .rotate({ angle: 45 })
+        }
+        .borderRadius(15)
+        .shadow({ radius: 100, color: '#ededed' } as ShadowOptions)
+        .width('90%')
+        .alignItems(VerticalAlign.Center)
+        .padding({ left: 15, top: 15, bottom: 15 } as Padding)
+        .backgroundColor(Color.White)
+        // 通过选定的半模态接口，绑定模态展示界面，style中包含两个参数，一个是设置半模态的高度，不设置时默认高度是Large，一个是是否显示控制条DragBar，默认是true显示控制条，通过onDisappear控制状态变量变换
+        .bindSheet($$(this.isShowSheet), this.mySheet, {
+          height: 300,
+          dragBar: false,
+          onDisappear: () => {
+            this.isShowSheet = !this.isShowSheet;
+          }
+        })
+        .onClick((e: ClickEvent) => {
+          this.isShowSheet = !this.isShowSheet;
+        })
+      }
+      .width('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xf1f1f1)
+  }
+}
+```
 
 
 ## 使用bindMenu实现菜单弹出效果
