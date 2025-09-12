@@ -54,41 +54,6 @@ enableSemiWifi(): void
 	}
 ```
 
-## wifiManager.startScan<sup>10+</sup>
-
-startScan(): void
-
-**系统接口：** 此接口为系统接口。
-
-启动WLAN扫描。
-
-**需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.MANAGE_WIFI_CONNECTION
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**错误码：**
-
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
-
-| **错误码ID** | **错误信息** |
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-
-**示例：**
-
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		wifiManager.startScan();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-```
-
 ## wifiManager.setScanAlwaysAllowed<sup>10+</sup>
 
 setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
