@@ -526,7 +526,7 @@ import { Text, Column, ComponentV2, Position, Entry, Builder, BuilderParam, ForE
 struct MyStateSample {
   build() {
     Column() {
-      Custom1({ builder: ColumnChildren })
+      Custom1({ builder: ColumnChildren });
     }
   }
 }
@@ -562,7 +562,7 @@ struct Custom1 {
     let startPos = 300;
     children.forEach((child) => {
       let pos = startPos - child.measureResult.height;
-      child.layout({ x: pos, y: pos })
+      child.layout({ x: pos, y: pos });
     })
   }
 
@@ -570,9 +570,8 @@ struct Custom1 {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
-      size += result.width / 2
-      ;
+      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size });
+      size += result.width / 2;
     })
     this.result.width = 100;
     this.result.height = 400;
@@ -580,7 +579,7 @@ struct Custom1 {
   }
 
   build() {
-    this.builder()
+    this.builder();
   }
 }
 ```
