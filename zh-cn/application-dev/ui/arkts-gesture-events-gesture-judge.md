@@ -543,7 +543,7 @@
               }
             }
             return GestureJudgeResult.CONTINUE;
-          })
+          }, false)
           .parallelGesture( // 绑定一个Pan手势作为动态控制器
             PanGesture()
               .onActionUpdate((event: GestureEvent)=>{
