@@ -1602,7 +1602,7 @@ struct Index {
 }
 ```
 
-## \@Builder支持函数泛型（ArkTS-ST）
+## \@Builder支持函数泛型（仅限ArkTS-ST）
 
 Builder函数可以支持泛型声明。
 
@@ -2399,7 +2399,7 @@ struct Parent {
     Column() {
       overBuilder({paramA: this.label})
       Button('click me')
-        .onClick(() => {
+        .onClick((e: ClickEvent) => {
           this.label = 'ArkUI';
         })
     }
