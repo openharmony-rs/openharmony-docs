@@ -239,7 +239,7 @@ import common from '@ohos.bluetooth.common';
 try {
     let btAddr: common.BluetoothAddress = {
         "address": '11:22:33:44:55:66',
-        "addressType": common.BluetoothAddressType.REAL,
+        "addressType": common.BluetoothAddressType.VIRTUAL,
     }
     connection.pairDevice(btAddr).then(() => {
         console.info('pairDevice');
