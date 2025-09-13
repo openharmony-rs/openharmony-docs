@@ -1,4 +1,4 @@
-# \@Builder装饰器：自定义构建函数（ArkTS1.1）
+# \@Builder装饰器：自定义构建函数
 
 ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。在静态上下文中，需导入装饰器：
 
@@ -250,10 +250,11 @@ struct Parent {
 **ArkTS-ST:**
 ```ts
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent } from "@ohos.arkui.component";
-import { State } from "@ohos.arkui.stateManagement";
+import { State, Observed } from "@ohos.arkui.stateManagement";
 
 // 引用传递类型是interface或@Observed class时才能触发UI刷新。
-interface Tmp {
+@Observed
+class Tmp {
   paramA1: string = '';
 }
 
@@ -1095,7 +1096,7 @@ struct Parent {
 
 ![arkts-builder-usage-scenario5](figures/arkts-builder-usage-scenario5.gif)
 
-### \@Builder函数联合V2装饰器(仅限ArkTS-DT)
+### \@Builder函数联合V2装饰器
 
 由`@ObservedV2`和`@Trace`装饰的类对象实例具备深度观测属性变化的能力。在`@ComponentV2`装饰的自定义组件中，当调用全局Builder或局部Builder且使用值传递的方式传递参数时，修改`@Trace`装饰的对象属性可以触发UI刷新。
 
@@ -1180,6 +1181,99 @@ struct ParentPage {
       ChildPage({ childInfo: this.info2 }) // 调用自定义组件
       Button("change info1&info2")
         .onClick(() => {
+          this.info1.name = "Cat"; // 修改Text1显示的info1的name值
+          this.info1.age = 18; // 修改Text1显示的info1的age值
+          this.info2.name = "Cat"; // 修改Text2显示的info2的name值
+          this.info2.age = 18; // 修改Text2显示的info2的age值
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+**ArkTS-ST:**
+```ts
+import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2 } from '@ohos.arkui.component';
+import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { Require, Param } from '@kit.ArkUI';
+
+@ObservedV2
+class Info {
+  @Trace name: string;
+  @Trace age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Builder
+function overBuilder(param: Info) {
+  Column() {
+    Text(`全局@Builder name: ${param.name}`)
+    Text(`全局@Builder age: ${param.age}`)
+  }
+  .width(230)
+  .height(40)
+  .margin(10)
+  .backgroundColor('#0d000000')
+  .borderRadius(20)
+}
+
+@ComponentV2
+struct ChildPage {
+  @Require @Param childInfo: Info;
+
+  build() {
+    Column() {
+      // 此处必须为值传递方式，如果使用引用传递的方式会被ArkTS语法拦截
+      overBuilder(this.childInfo)
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentPage {
+  info1: Info = new Info("Tom", 25);
+  info2: Info = new Info("Tom", 25);
+
+  @Builder
+  privateBuilder() {
+    Column() {
+      Text(`局部@Builder name: ${this.info1.name}`)
+      Text(`局部@Builder age: ${this.info1.age}`)
+    }
+    .width(230)
+    .height(40)
+    .margin(10)
+    .backgroundColor('#0d000000')
+    .borderRadius(20)
+  }
+
+  build() {
+    Column() {
+      Column() {
+        Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
+        Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
+      }
+      .width(230)
+      .height(40)
+      .margin(10)
+      .backgroundColor('#0d000000')
+      .borderRadius(20)
+
+      // 调用局部@Builder
+      this.privateBuilder()
+      // 调用全局@Builder, 此处必须为值传递方式，如果使用引用传递的方式会被ArkTS语法拦截
+      overBuilder(this.info2)
+      ChildPage({ childInfo: this.info1 }) // 调用自定义组件
+      ChildPage({ childInfo: this.info2 }) // 调用自定义组件
+      Button("change info1&info2")
+        .onClick((e: ClickEvent) => {
           this.info1.name = "Cat"; // 修改Text1显示的info1的name值
           this.info1.age = 18; // 修改Text1显示的info1的age值
           this.info2.name = "Cat"; // 修改Text2显示的info2的name值
@@ -1780,7 +1874,7 @@ struct Single {
 
 ## 常见问题
 
-### \@Builder存在两个或者两个以上参数（仅限ArkTS-DT）
+### \@Builder存在两个或者两个以上参数
 
 当存在两个或两个以上的参数时，即使通过对象字面量形式传递，值的改变也不会触发UI刷新。
 
@@ -1815,6 +1909,47 @@ struct Parent {
         .height(10)
         .backgroundColor('#000000').margin(10)
       Button('点击改变参数值').onClick(() => {
+        this.objParam.str_value = 'Hello World';
+        this.num = 1;
+      })
+    }
+  }
+}
+```
+
+**ArkTS-ST:**
+```ts
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { Line } from '@kit.ArkUI';
+
+class GlobalTmp {
+  str_value: string = 'Hello';
+}
+
+@Builder function overBuilder(param: GlobalTmp, num: number) {
+  Column() {
+    Text(`str_value: ${param.str_value}`)
+    Text(`num: ${num}`)
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State objParam: GlobalTmp = new GlobalTmp();
+  @State num: number = 0;
+  build() {
+    Column() {
+      Text('通过调用@Builder渲染UI界面')
+        .fontSize(20)
+      // 使用了两个参数，用法错误。
+      overBuilder({str_value: this.objParam.str_value}, this.num)
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      Button('点击改变参数值').onClick((e: ClickEvent) => {
         this.objParam.str_value = 'Hello World';
         this.num = 1;
       })
@@ -1864,6 +1999,49 @@ struct Parent {
 }
 ```
 
+**ArkTS-ST:**
+```ts
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { Line } from '@kit.ArkUI';
+
+class GlobalTmp {
+  str_value: string = 'Hello';
+}
+class SecondTmp {
+  num_value: number = 0;
+}
+@Builder function overBuilder(param: GlobalTmp, num: SecondTmp) {
+  Column() {
+    Text(`str_value: ${param.str_value}`)
+    Text(`num: ${num.num_value}`)
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State strParam: GlobalTmp = new GlobalTmp();
+  @State numParam: SecondTmp = new SecondTmp();
+  build() {
+    Column() {
+      Text('通过调用@Builder渲染UI界面')
+        .fontSize(20)
+      // 使用了两个参数，用法错误。
+      overBuilder({str_value: this.strParam.str_value}, {num_value: this.numParam.num_value})
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      Button('点击改变参数值').onClick((e: ClickEvent) => {
+        this.strParam.str_value = 'Hello World';
+        this.numParam.num_value = 1;
+      })
+    }
+  }
+}
+```
+
 \@Builder只接受一个参数，当传入一个参数的时候，通过对象字面量的形式传递，值的改变会引起UI的刷新。
 
 【正例】
@@ -1895,6 +2073,46 @@ struct Parent {
         .height(10)
         .backgroundColor('#000000').margin(10)
       Button('点击改变参数值').onClick(() => {
+        this.objParam.str_value = 'Hello World';
+        this.objParam.num_value = 1;
+      })
+    }
+  }
+}
+```
+
+**ArkTS-ST:**
+```ts
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
+import { State, Observed } from '@ohos.arkui.stateManagement';
+import { Line } from '@kit.ArkUI';
+
+@Observed
+class GlobalTmp {
+  str_value: string = 'Hello';
+  num_value: number = 0;
+}
+@Builder function overBuilder(param: GlobalTmp) {
+  Column() {
+    Text(`str_value: ${param.str_value}`)
+    Text(`num: ${param.num_value}`)
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State objParam: GlobalTmp = new GlobalTmp();
+  build() {
+    Column() {
+      Text('通过调用@Builder渲染UI界面')
+        .fontSize(20)
+      overBuilder({str_value: this.objParam.str_value, num_value: this.objParam.num_value})
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      Button('点击改变参数值').onClick((e: ClickEvent) => {
         this.objParam.str_value = 'Hello World';
         this.objParam.num_value = 1;
       })
