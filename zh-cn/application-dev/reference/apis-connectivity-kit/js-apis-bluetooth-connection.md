@@ -202,8 +202,6 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
