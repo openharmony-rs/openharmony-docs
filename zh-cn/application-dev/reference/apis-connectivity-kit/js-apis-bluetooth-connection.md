@@ -197,12 +197,10 @@ try {
 pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
-- 已知对端设备的真实地址时，支持使用对端设备的真实地址发起配对。
+- 支持使用对端设备的虚拟地址或真实地址发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
-
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -210,13 +208,13 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | [BluetoothAddress](#bluetoothaddress21) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
+| deviceId | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
 
 **返回值：**
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1942,25 +1940,3 @@ try {
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
-
-## BluetoothAddress<sup>21+</sup>
-
-描述需要配对的对端蓝牙设备地址信息的参数结构。
-
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-| 名称       | 类型   | 只读   | 可选   | 说明          |
-| -------- | ------ | ---- | ---- | ----------- |
-| address    | string      | 否    | 否    | 需要配对的对端蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。|
-| [addressType](#addresstype21)     | int      | 否    | 否    | 表示地址类型为真实地址或虚拟地址。|
-
-## addressType<sup>21+</sup>
-
-枚举，表示地址类型为真实地址或虚拟地址。
-
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-| 名称                 | 值  | 说明     |
-| ------------------ | ---- | ------ |
-| VIRTUAL        | 1    | 虚拟地址。|
-| REAL       | 2    | 真实地址。|
