@@ -12370,7 +12370,7 @@ struct Index {
 ## 使用@ohos.transfer进行UIContext类型转换
 
 
-在ArkTS-Dyn中使用ArkTS-Sta获取的UIContext对象。
+在ArkTS-Sta中使用ArkTS-Dyn传入的UIContext对象。
 
 - 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录的方法中使用传入的UIContext用于逻辑处理。
   
@@ -12420,7 +12420,7 @@ struct Index {
   ```
   ![image](figures/uiContextTransfer.png)
 
-在ArkTS-Dyn中使用ArkTS-Sta获取的UIContext对象。
+在ArkTS-Dyn中使用ArkTS-Sta传入的UIContext对象。
   
 - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录的方中使用传入的UIContext进行业务处理。
     
@@ -12438,7 +12438,7 @@ struct Index {
     }
     ```
     
-- 在ArkTS-Sta主模块中获取UIContext并传递给ArkTS-Dyn。
+- 在ArkTS-Sta主模块中获取UIContext后转换为ArkTS-Dyn对象并传递给ArkTS-Dyn模块。
     
     ArkTS-Sta示例：
     

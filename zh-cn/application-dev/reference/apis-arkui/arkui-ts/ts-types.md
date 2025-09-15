@@ -36,7 +36,7 @@
 
 **使用@ohos.transfer进行Resource类型转换**
 
-通过在ArkTS-Sta中引用ArkTS-Dyn创建的Resource对象的方法显示图片。
+通过在ArkTS-Dyn中引用ArkTS-Sta创建的Resource对象的方法显示图片。
 
 - 创建ArkTS-Dyn子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynResource的方法。
  
