@@ -868,7 +868,9 @@ blockNetwork(block: boolean)
 
 ## defaultFixedFontSize<sup>9+</sup>
 
-defaultFixedFontSize(size: number)
+ArkTS-Dyn: defaultFixedFontSize(size: number)
+
+ArkTS-Sta:  defaultFixedFontSize(size: int)
 
 设置网页的默认等宽字体大小。
 
@@ -915,7 +917,7 @@ defaultFixedFontSize(size: number)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State fontSize: Int = 16;
 
   build() {
@@ -929,7 +931,9 @@ defaultFixedFontSize(size: number)
 
 ## defaultFontSize<sup>9+</sup>
 
-defaultFontSize(size: number)
+ArkTS-Dyn: defaultFontSize(size: number)
+
+ArkTS-Sta: defaultFontSize(size: int)
 
 设置网页的默认字体大小。
 
@@ -976,7 +980,7 @@ defaultFontSize(size: number)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State fontSize: Int = 13;
 
   build() {
@@ -990,7 +994,9 @@ defaultFontSize(size: number)
 
 ## minFontSize<sup>9+</sup>
 
-minFontSize(size: number)
+ArkTS-Dyn: minFontSize(size: number)
+
+ArkTS-Sta: minFontSize(size: int)
 
 设置网页字体大小最小值。
 
@@ -1037,7 +1043,7 @@ minFontSize(size: number)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State fontSize: Int = 13;
 
   build() {
@@ -1134,7 +1140,7 @@ webFixedFont(family: string)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State family: string = "monospace";
 
   build() {
@@ -1195,7 +1201,7 @@ webSansSerifFont(family: string)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State family: string = "sans-serif";
 
   build() {
@@ -1291,7 +1297,7 @@ webStandardFont(family: string)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State family: string = "sans-serif";
 
   build() {
@@ -1350,7 +1356,7 @@ webFantasyFont(family: string)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State family: string = "fantasy";
 
   build() {
@@ -1411,7 +1417,7 @@ webCursiveFont(family: string)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State family: string = "cursive";
 
   build() {
@@ -1473,7 +1479,7 @@ darkMode(mode: WebDarkMode)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State mode: WebDarkMode = WebDarkMode.On;
 
   build() {
@@ -1536,7 +1542,7 @@ forceDarkAccess(access: boolean)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State mode: WebDarkMode = WebDarkMode.On;
   @State access: boolean = true;
 
@@ -2421,7 +2427,7 @@ defaultTextEncodingFormat(textEncodingFormat: string)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -2548,7 +2554,7 @@ textAutosizing(textAutosizing: boolean)
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -3111,7 +3117,7 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   build() {
     Column() {
       Web({ src: "www.example.com", controller: this.controller })
