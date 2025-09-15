@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -18,6 +20,10 @@ WebContextMenuParam的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 ## x<sup>9+</sup>
 
 x(): number
@@ -25,6 +31,10 @@ x(): number
 弹出菜单的x坐标。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -40,6 +50,10 @@ y(): number
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                 |
@@ -53,6 +67,10 @@ getLinkUrl(): string
 获取链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -68,6 +86,10 @@ getUnfilteredLinkUrl(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                    |
@@ -81,6 +103,10 @@ getSourceUrl(): string
 获取sourceUrl链接。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -96,6 +122,10 @@ existsImageContents(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型      | 说明                        |
@@ -109,6 +139,10 @@ getMediaType(): ContextMenuMediaType
 获取网页元素媒体类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -124,6 +158,10 @@ getSelectionText(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                   |
@@ -137,6 +175,10 @@ getSourceType(): ContextMenuSourceType
 获取菜单事件来源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -152,6 +194,10 @@ getInputFieldType(): ContextMenuInputFieldType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                       | 说明     |
@@ -165,6 +211,10 @@ isEditable(): boolean
 获取网页元素是否可编辑标识。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -180,6 +230,10 @@ getEditStateFlags(): number
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                                       |
@@ -194,6 +248,10 @@ getPreviewWidth(): number
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明       |
@@ -207,6 +265,10 @@ getPreviewHeight(): number
 获取预览图的高。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

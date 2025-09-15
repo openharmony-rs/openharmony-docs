@@ -2519,6 +2519,10 @@ requestFocus(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -2529,8 +2533,42 @@ requestFocus(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('requestFocus')
+        .onClick(() => {
+          try {
+            this.controller.requestFocus();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        });
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, Web } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6324,6 +6362,10 @@ getScrollable(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明           |
@@ -6340,8 +6382,43 @@ getScrollable(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getScrollable')
+        .onClick(() => {
+          try {
+            let scrollEnabled = this.controller.getScrollable();
+            console.log("scrollEnabled: " + scrollEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, Web } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 

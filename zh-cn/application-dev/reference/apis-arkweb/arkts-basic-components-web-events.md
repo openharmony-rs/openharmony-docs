@@ -1086,6 +1086,7 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
 3. 拉起相机选择器。
 
+   ArkTS-Dyn示例：
    ```ts
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
@@ -1111,6 +1112,63 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
    @Entry
    @Component
    struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
+
+     build() {
+       Column() {
+         Web({ src: $rawfile('index.html'), controller: this.controller })
+           .onShowFileSelector((event) => {
+             openCamera((result) => {
+               if (event) {
+                 console.log('Title is ' + event.fileSelector.getTitle());
+                 console.log('Mode is ' + event.fileSelector.getMode());
+                 console.log('Accept types are ' + event.fileSelector.getAcceptType());
+                 console.log('Capture is ' + event.fileSelector.isCapture());
+                 console.log('Mime types are ' + event.fileSelector.getMimeTypes());
+                 event.result.handleFileList([result]);
+               }
+             }, this.getUIContext())
+             return true;
+           })
+       }
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+   ```ts
+   'use static'
+
+   // xxx.ets
+   import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component'
+   import { State } from '@ohos.arkui.stateManagement'
+   import hilog from '@ohos.hilog'
+
+   import { $rawfile, Callback, Web } from '@ohos.arkui.component'
+   import { UIContext } from '@ohos.arkui.UIContext'
+   import { webview } from '@kit.ArkWeb';
+   import { cameraPicker, camera } from '@kit.CameraKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+
+   async function openCamera(callback: Callback<string>, uiContext: UIContext) {
+     let mContext = uiContext.getHostContext() as common.Context;
+     try {
+       let pickerProfile: cameraPicker.PickerProfile = {
+         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
+       };
+       let pickerResult: cameraPicker.PickerResult = await cameraPicker.pick(mContext,
+         [cameraPicker.PickerMediaType.PHOTO, cameraPicker.PickerMediaType.VIDEO], pickerProfile);
+       callback(pickerResult.resultUri);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`the pick call failed. error code: ${err.code}`);
+     }
+   }
+
+   @Entry
+   @Component
+   struct Index {
      controller: webview.WebviewController = new webview.WebviewController();
 
      build() {
@@ -1888,6 +1946,10 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -1896,6 +1958,7 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2042,6 +2105,140 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
                 }
               }
             })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+
+  // xxx.ets
+  import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component'
+  import { State } from '@ohos.arkui.stateManagement'
+  import hilog from '@ohos.hilog'
+
+  import { $rawfile, Web, Builder, Menu, MenuItem, Placement, WebContextMenuResult } from '@ohos.arkui.component'
+  import { MenuItemOptions, CustomPopupOptions, PopupStateChangeParam } from '@ohos.arkui.component'
+  import { UIContext } from '@ohos.arkui.UIContext'
+  import { webview } from '@kit.ArkWeb';
+  import pasteboard from '@ohos.pasteboard';
+
+  const TAG = 'ContextMenu';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private result: WebContextMenuResult | undefined = undefined;
+    @State linkUrl: string = '';
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State showMenu: boolean = false;
+    uiContext: UIContext = this.getUIContext();
+
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuBuilder() {
+      // 以垂直列表形式显示的菜单。
+      Menu() {
+        // 展示菜单Menu中具体的item菜单项。
+        MenuItem({
+          content: '复制图片',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyImage();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '剪切',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.cut();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '复制',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copy();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '粘贴',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.paste();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '复制链接',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            let pasteData = pasteboard.createData('text/plain', this.linkUrl);
+            pasteboard.getSystemPasteboard().setData(pasteData, (error) => {
+              if (error) {
+                return;
+              }
+            })
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '全选',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.selectAll();
+            this.showMenu = false;
+          })
+      }
+      .width(150)
+      .height(450)
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              console.info("x coord = " + event.param.x());
+              console.info("link url = " + event.param.getLinkUrl());
+              this.linkUrl = event.param.getLinkUrl();
+            }
+            console.info(TAG, `x: ${this.offsetX}, y: ${this.offsetY}`);
+            this.showMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(this.uiContext!.px2vp(event?.param.y() ?? 0) - 0, 0);
+            return true;
+          })
+          .bindPopup(this.showMenu,
+            {
+              builder: this.MenuBuilder,
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              offset: { x: this.offsetX, y: this.offsetY },
+              mask: false,
+              onStateChange: (e: PopupStateChangeParam) => {
+                if (!e.isVisible) {
+                  this.showMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            } as CustomPopupOptions)
       }
     }
   }
