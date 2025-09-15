@@ -1195,9 +1195,9 @@ struct ParentPage {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2 } from '@ohos.arkui.component';
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
-import { Require, Param } from '@kit.ArkUI';
+import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2 } from "@ohos.arkui.component";
+import { ObservedV2, Trace } from "@ohos.arkui.stateManagement";
+import { Require, Param } from "@kit.ArkUI";
 
 @ObservedV2
 class Info {
@@ -1608,7 +1608,7 @@ Builder函数可以支持泛型声明。
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign } from '@ohos.arkui.component';
+import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign } from "@ohos.arkui.component";
 
 type ItemBuilder<T> = @Builder (item: T) => void;
 
@@ -1777,8 +1777,8 @@ struct Single {
 import {
   Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod,
   Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles
-} from '@ohos.arkui.component';
-import { UIUtils, Binding, MutableBinding, State, ObservedV2, Prop, Trace, Local } from '@ohos.arkui.stateManagement';
+} from "@ohos.arkui.component";
+import { UIUtils, Binding, MutableBinding, State, ObservedV2, Prop, Trace, Local } from "@ohos.arkui.stateManagement";
 
 @ObservedV2
 class ClassA {
@@ -1919,9 +1919,9 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import { Line } from '@kit.ArkUI';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from "@ohos.arkui.component";
+import { State } from "@ohos.arkui.stateManagement";
+import { Line } from "@kit.ArkUI";
 
 class GlobalTmp {
   str_value: string = 'Hello';
@@ -2001,9 +2001,9 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import { Line } from '@kit.ArkUI';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from "@ohos.arkui.component";
+import { State } from "@ohos.arkui.stateManagement";
+import { Line } from "@kit.ArkUI";
 
 class GlobalTmp {
   str_value: string = 'Hello';
@@ -2083,9 +2083,9 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
-import { Line } from '@kit.ArkUI';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from "@ohos.arkui.component";
+import { State, Observed } from "@ohos.arkui.stateManagement";
+import { Line } from "@kit.ArkUI";
 
 @Observed
 class GlobalTmp {
@@ -2175,8 +2175,8 @@ struct PageBuilder {
  
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
-import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from "@ohos.arkui.component";
+import { Trace, ObservedV2, Local } from "@ohos.arkui.stateManagement";
 
 @ObservedV2
 class ParamTmp {
@@ -2311,8 +2311,8 @@ struct PageBuilder {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
-import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from "@ohos.arkui.component";
+import { Trace, ObservedV2, Local } from "@ohos.arkui.stateManagement";
 
 @ObservedV2
 class ParamTmp {
