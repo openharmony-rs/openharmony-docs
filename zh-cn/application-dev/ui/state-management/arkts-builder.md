@@ -1199,8 +1199,7 @@ struct ParentPage {
 **ArkTS-ST:**
 ```ts
 import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2 } from '@ohos.arkui.component';
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
-import { Require, Param } from '@kit.ArkUI';
+import { ObservedV2, Trace, Require, Param } from '@ohos.arkui.stateManagement';
 
 @ObservedV2
 class Info {
@@ -1925,9 +1924,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
-import { Line } from '@kit.ArkUI';
 
 @Observed
 class GlobalTmp {
@@ -2008,9 +2006,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
-import { Line } from '@kit.ArkUI';
 
 @Observed
 class GlobalTmp {
@@ -2092,9 +2089,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
+import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
-import { Line } from '@kit.ArkUI';
 
 @Observed
 class GlobalTmp {
