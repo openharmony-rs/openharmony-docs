@@ -513,6 +513,7 @@ struct Custom1 {
   }
 }
 ```
+ArkTS-Sta示例：
 
 ```
 import { Text, Column, ComponentV2, Position, Entry, Builder, BuilderParam, ForEach, SizeResult, GeometryInfo, Layoutable, ConstraintSizeOptions, Measurable, MeasureResult, CustomLayout, Local} from '@kit.ArkUI';
