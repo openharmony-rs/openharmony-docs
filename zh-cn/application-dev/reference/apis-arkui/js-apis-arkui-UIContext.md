@@ -902,23 +902,35 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 
 <!--code_no_check-->
 ```ts
-let selectedDate: Date = new Date("2010-1-1");
-uiContext.showDatePickerDialog({
-  start: new Date("2000-1-1"),
-  end: new Date("2100-12-31"),
-  selected: selectedDate,
-  onAccept: (value: DatePickerResult) => {
-    // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
-    selectedDate.setFullYear(Number(value.year), Number(value.month), Number(value.day));
-    console.info("DatePickerDialog:onAccept()" + JSON.stringify(value));
-  },
-  onCancel: () => {
-    console.info("DatePickerDialog:onCancel()");
-  },
-  onChange: (value: DatePickerResult) => {
-    console.info("DatePickerDialog:onChange()" + JSON.stringify(value));
+@Entry
+@Component
+struct DatePickerDialogExample {
+  private selectedDate: Date = new Date('2010-1-1');
+
+  build() {
+    Column() {
+      Button('showDatePickerDialog')
+        .margin(30)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            start: new Date('2000-1-1'),
+            end: new Date('2100-12-31'),
+            selected: this.selectedDate,
+            onDateAccept: (value: Date) => {
+              this.selectedDate = value;
+              console.info('DatePickerDialog:onAccept()' + JSON.stringify(value));
+            },
+            onCancel: () => {
+              console.info('DatePickerDialog:onCancel()');
+            },
+            onDateChange: (value: Date) => {
+              console.info('DatePickerDialog:onChange()' + JSON.stringify(value));
+            }
+          });
+        })
+    }.width('100%')
   }
-});
+}
 ```
 
 ### showTimePickerDialog
@@ -1004,23 +1016,24 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 // xxx.ets
 
 class SelectedValue{
-  select: number = 2;
+  public selected: number = 2;
   set(val: number){
-    this.select = val;
+    this.selected = val;
   }
 }
 class SelectedArray{
-  select: number[] = [];
+  public selected: number[] = [];
   set(val: number[]){
-    this.select = val;
+    this.selected = val;
   }
 }
 @Entry
 @Component
 struct TextPickerDialogExample {
-  @State selectTime: Date = new Date('2023-12-25T08:30:00');
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  private select: number  = 0;
+  private selectedVal = new SelectedValue();
+  private selectedArr = new SelectedArray();
+
   build() {
     Column() {
       Button('showTextPickerDialog')
@@ -1028,25 +1041,24 @@ struct TextPickerDialogExample {
         .onClick(() => {
           this.getUIContext().showTextPickerDialog({
             range: this.fruits,
-            selected: this.select,
+            selected: Array.isArray(this.fruits[0]) ? this.selectedArr.selected : this.selectedVal.selected,
             onAccept: (value: TextPickerResult) => {
               // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-              let selectedVal = new SelectedValue();
-              let selectedArr = new SelectedArray();
-              if (value.index){
-                value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+              if (value.index != null) {
+                value.index instanceof Array ?
+                  this.selectedArr.set(value.index as number[]) : this.selectedVal.set(value.index as number);
               }
-              console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
             },
             onCancel: () => {
-              console.info("TextPickerDialog:onCancel()");
+              console.info('TextPickerDialog:onCancel()');
             },
             onChange: (value: TextPickerResult) => {
-              console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+              console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
             }
           });
         })
-    }.width('100%').margin({ top: 5 })
+    }.width('100%')
   }
 }
 ```
