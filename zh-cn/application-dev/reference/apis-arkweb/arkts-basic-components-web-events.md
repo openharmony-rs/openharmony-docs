@@ -2997,12 +2997,12 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
- import { Entry, Component, Web, Column,OnFirstContentfulPaintEvent} from '@kit.ArkUI';
- import { webview } from '@kit.ArkWeb';
+  import { Entry, Component, Web, Column,OnFirstContentfulPaintEvent} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
 
- @Entry
- @Component
- struct WebComponent {
+  @Entry
+  @Component
+  struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
