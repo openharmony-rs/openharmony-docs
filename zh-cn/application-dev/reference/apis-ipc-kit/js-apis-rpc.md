@@ -2009,7 +2009,7 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc write intArray fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'rpc write intArray fail, errorMessage ' + e.message);
   }
-  let array: Array<number> = new Array(3);
+  let array: Array<int> = new Array(3);
   try {
     data.readIntArray(array);
   } catch (error) {
@@ -2475,7 +2475,7 @@ ArkTS-Sta示例：
     hilog.error(0x0000, 'testTag', 'rpc write doubleArray fail, errorCode ' + e.code);
     hilog.error(0x0000, 'testTag', 'rpc write doubleArray fail, errorMessage ' + e.message);
   }
-  let array: Array<number> = new Array(3);
+  let array: Array<double> = new Array(3);
   try {
     data.readDoubleArray(array);
   } catch (error) {
