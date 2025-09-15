@@ -514,10 +514,6 @@ struct Custom1 {
 }
 ```
 
-ArkTS-Sta示例：
-
-下面是自定义布局V2的示例代码。
-
 ```
 import { Text, Column, ComponentV2, Position, Entry, Builder, BuilderParam, ForEach, SizeResult, GeometryInfo, Layoutable, ConstraintSizeOptions, Measurable, MeasureResult, CustomLayout, Local} from '@kit.ArkUI';
 
