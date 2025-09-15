@@ -569,6 +569,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 创建具有4*5矩阵的颜色过滤器。
 
+支持使用[@ohos.transfer](../../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -578,6 +580,141 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | 名称          | 类型       | 必填   | 描述                                       |
 | ----------- | -------- | ---- | ---------------------------------------- |
 | constructor | number[] | 是    | 创建具有4\*5矩阵的颜色过滤器，入参为[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
+
+**使用@ohos.transfer进行ColorFilter类型转换**
+
+ArkTS-Dyn中使用ArkTS-Sta的ColorFilter对象。
+
+- 在ArkTS-Sta主模块中创建ArkTS-Dyn ColorFilter，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets
+  import { Entry, Column, Component, Button, $r, ColorFilter, FlexAlign } from '@ohos.arkui.component';
+  import transfer from '@ohos.transfer';
+  import { MyChild, createColorFilterDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct Index {
+    aboutToAppear() {
+      let colorFilterStatic = new ColorFilter([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.8, 0]);
+      try {
+        let colorFilterDynamic = transfer.transferDynamic(colorFilterStatic, "ArkUI.ColorFilter") as Object;
+        let moduleName = ESValue.load("@normalized:N&entry&com.example.myApplication&library/Index&1.0.0");
+        let colorFilterMapFunc = moduleName.getProperty('createColorFilterDynamic');
+        colorFilterMapFunc.invoke(colorFilterDynamic);
+      } catch (e: Error) {
+        console.log('transferDynamic catch error：-----------' + e.message);
+      }
+    }
+
+    build() {
+      Column() {
+        MyChild()
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn ColorFilter的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  let g_colorFilter: ColorFilter = null;
+
+  export function createColorFilterDynamic(colorFilter: any) {
+    g_colorFilter = colorFilter;
+  }
+
+  @Component
+  export struct MyChild {
+    @State colorFilter_: any = null;
+
+    build() {
+      Column({ space: 5 }) {
+        Button('更新图片')
+          .onClick(() => {
+            let colorFilter = g_colorFilter;
+            if (colorFilter) {
+              this.colorFilter_ = colorFilter;
+            }
+          })
+        Image($r('app.media.startIcon'))
+          .width(100)
+          .height(100)
+          .colorFilter(this.colorFilter_)
+      }
+    }
+  }
+  ```
+  ![image](figures/colorFilterTransferDyn.png)
+
+ArkTS-Sta中使用ArkTS-Dyn的ColorFilter对象。
+
+- 在ArkTS-Sta主模块得到ArkTS-Dyn子模块`library`创建的ArkTS-Dyn ColorFilter对象。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets
+  import { Entry, Column, Component, Button, Image, Row, ColorFilter, $r, FlexAlign } from '@ohos.arkui.component';
+  import transfer from '@ohos.transfer';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { getColorFilterDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct Index {
+    @State colorFilter_: ColorFilter | undefined = undefined;
+
+    aboutToAppear() {
+      let moduleName = ESValue.load("@normalized:N&entry&com.example.myApplication&library/Index&1.0.0");
+      let colorFilterMapFunc = moduleName.getProperty('getColorFilterDynamic');
+      let colorFilterDynamic = colorFilterMapFunc.invoke();
+      try {
+        let colorFilterStatic = transfer.transferStatic(colorFilterDynamic, "ArkUI.ColorFilter");
+        this.colorFilter_ = colorFilterStatic as ColorFilter;
+      } catch (e: Error) {
+        console.log('transferStatic catch error：-----------' + e.message);
+      }
+    }
+
+    build() {
+      Column() {
+        Image($r('app.media.startIcon'))
+          .width(100)
+          .height(100)
+          .colorFilter(this.colorFilter_)
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-Dyn ColorFilter的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  export function getColorFilterDynamic() {
+    let colorFilterMatrix: number[] = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.8, 0];
+    let colorFilter = new ColorFilter(colorFilterMatrix);
+    return colorFilter;
+  }
+  ```
+  ![image](figures/colorFilterTransferSta.png)
 
 ## CustomBuilder<sup>8+</sup>
 
