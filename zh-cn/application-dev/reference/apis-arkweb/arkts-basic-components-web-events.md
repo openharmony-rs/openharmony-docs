@@ -3003,7 +3003,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
  @Entry
  @Component
  struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -3071,7 +3071,7 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -3142,7 +3142,7 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
