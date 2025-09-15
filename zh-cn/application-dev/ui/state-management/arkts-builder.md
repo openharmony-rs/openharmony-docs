@@ -250,7 +250,7 @@ struct Parent {
 **ArkTS-ST:**
 ```ts
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
+import { State } from '@ohos.arkui.stateManagement';
 
 // 引用传递类型是interface或@Observed class时才能触发UI刷新。
 interface Tmp {
@@ -499,12 +499,14 @@ struct Parent {
 **ArkTS-ST:**
 ```ts
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { State, Observed } from '@ohos.arkui.stateManagement';
 
+@Observed
 class ChildTmp {
   val: number = 1;
 }
 
+@Observed
 class Tmp {
   str_value: string = 'Hello';
   num_value: number = 0;
@@ -647,8 +649,9 @@ struct Parent {
 **ArkTS-ST:**
 ```ts
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { State, Observed } from '@ohos.arkui.stateManagement';
 
+@Observed
 class Tmp {
   str_value: string = 'Hello';
 }
@@ -962,6 +965,7 @@ struct Parent {
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
 import { State, Prop } from '@ohos.arkui.stateManagement';
 
+// 引用传递类型是interface或@Observed class时才能触发UI刷新。
 interface Tmp {
   paramA1: string;
 }
@@ -1480,6 +1484,7 @@ struct ReusableChildTwoPage {
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
 import { State, Prop } from '@ohos.arkui.stateManagement';
 
+// 引用传递类型是interface或@Observed class时才能触发UI刷新。
 interface Tmp {
   componentName: string;
 }
@@ -1608,6 +1613,7 @@ Builder函数可以支持泛型声明。
 **ArkTS-ST:**
 ```ts
 import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign } from '@ohos.arkui.component';
+import { Observed } from '@ohos.arkui.stateManagement';
 
 type ItemBuilder<T> = @Builder (item: T) => void;
 
@@ -1622,6 +1628,7 @@ function forEachWithType<T>(arrayList: T[], closer: ItemBuilder<T>) {
   }
 }
 
+@Observed
 class ClassA {
   stringData: string = "Hello";
 }
@@ -1919,9 +1926,10 @@ struct Parent {
 **ArkTS-ST:**
 ```ts
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { State, Observed } from '@ohos.arkui.stateManagement';
 import { Line } from '@kit.ArkUI';
 
+@Observed
 class GlobalTmp {
   str_value: string = 'Hello';
 }
@@ -2001,12 +2009,14 @@ struct Parent {
 **ArkTS-ST:**
 ```ts
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { State, Observed } from '@ohos.arkui.stateManagement';
 import { Line } from '@kit.ArkUI';
 
+@Observed
 class GlobalTmp {
   str_value: string = 'Hello';
 }
+@Observed
 class SecondTmp {
   num_value: number = 0;
 }
@@ -2441,6 +2451,7 @@ struct Parent {
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
+// 引用传递类型是interface或@Observed class时才能触发UI刷新。
 interface Temp {
   paramA: string;
 }
@@ -2512,6 +2523,7 @@ struct Parent {
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
+// 引用传递类型是interface或@Observed class时才能触发UI刷新。
 interface Temp {
   paramA: string;
 }
@@ -2605,8 +2617,9 @@ struct ParentPage {
 **ArkTS-ST:**
 ```ts
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
-import { State, Prop } from '@ohos.arkui.stateManagement';
+import { State, Prop, Observed } from '@ohos.arkui.stateManagement';
 
+@Observed
 class Tmp {
   name: string = 'Hello';
   age: number = 16;
@@ -2725,6 +2738,7 @@ struct ParentPage {
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
 import { State, Prop } from '@ohos.arkui.stateManagement';
 
+// 引用传递类型是interface或@Observed class时才能触发UI刷新。
 interface Tmp {
   name: string;
   age: number;
