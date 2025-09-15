@@ -217,8 +217,8 @@ struct Parent {
 
 **ArkTS-DT:**
 ```ts
-interface Tmp {
-  paramA1: string;
+class Tmp {
+  paramA1: string = '';
 }
 
 @Builder
