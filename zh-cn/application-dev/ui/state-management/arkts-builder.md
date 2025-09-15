@@ -2121,7 +2121,7 @@ struct Parent {
 }
 ```
 
-### 使用@ComponentV2装饰器触发动态刷新（仅限ArkTS-DT）
+### 使用@ComponentV2装饰器触发动态刷新
 
 在@ComponentV2装饰器装饰的自定义组件中配合@ObservedV2和@Trace装饰器，通过按值传递的方式可以实现UI刷新功能。
 
@@ -2169,6 +2169,52 @@ struct PageBuilder {
     .width('100%')
     .height('100%')
     .padding(50)
+  }
+}
+```
+ 
+**ArkTS-ST:**
+```ts
+import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
+import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class ParamTmp {
+  @Trace count : number = 0;
+}
+
+@Builder
+function renderNumber(paramNum: number) {
+  Text(`paramNum : ${paramNum}`)
+    .fontSize(30)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Entry
+@ComponentV2
+struct PageBuilder {
+  @Local class_value: ParamTmp = new ParamTmp();
+  // 此处使用简单数据类型不支持刷新UI的能力。
+  @Local num_value: number = 0;
+  private progressTimer?: int = -1;
+
+  aboutToAppear(): void {
+    this.progressTimer = setInterval(() => {
+      if (this.class_value.count < 100) {
+        this.class_value.count += 5;
+        this.num_value += 5;
+      } else {
+        clearInterval(this.progressTimer);
+      }
+    }, 500);
+  }
+
+  build() {
+    Column() {
+      renderNumber(this.num_value)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -2222,6 +2268,95 @@ struct PageBuilder {
   @Local set_value: Set<number> = new Set([0]);
   @Local numArr_value: number[] = [0];
   private progressTimer: number = -1;
+
+  aboutToAppear(): void {
+    this.progressTimer = setInterval(() => {
+      if (this.builderParams.count < 100) {
+        this.builderParams.count += 5;
+        this.map_value.set('name', this.builderParams.count);
+        this.set_value.add(this.builderParams.count);
+        this.numArr_value[0] = this.builderParams.count;
+      } else {
+        clearInterval(this.progressTimer);
+      }
+    }, 500);
+  }
+
+  @Builder
+  localBuilder() {
+    Column() {
+      Text(`localBuilder : ${this.builderParams.count}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      this.localBuilder()
+      Text(`builderParams :${this.builderParams.count}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      renderText(this.builderParams)
+      renderText({ count: this.builderParams.count })
+      renderMap(this.map_value)
+      renderSet(this.set_value)
+      renderNumberArr(this.numArr_value)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+**ArkTS-ST:**
+```ts
+import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
+import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class ParamTmp {
+  @Trace count : number = 0;
+}
+
+@Builder
+function renderText(param: ParamTmp) {
+  Column() {
+    Text(`param : ${param.count}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Builder
+function renderMap(paramMap: Map<string,number>) {
+  Text(`paramMap : ${paramMap.get('name')}`)
+    .fontSize(20)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Builder
+function renderSet(paramSet: Set<number>) {
+  Text(`paramSet : ${paramSet.size}`)
+    .fontSize(20)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Builder
+function renderNumberArr(paramNumArr: number[]) {
+  Text(`paramNumArr : ${paramNumArr[0]}`)
+    .fontSize(20)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Entry
+@ComponentV2
+struct PageBuilder {
+  @Local builderParams: ParamTmp = new ParamTmp();
+  @Local map_value: Map<string,number> = new Map<string,number>();
+  @Local set_value: Set<number> = new Set<number>([0]);
+  @Local numArr_value: number[] = [0];
+  private progressTimer?: int = -1;
 
   aboutToAppear(): void {
     this.progressTimer = setInterval(() => {
