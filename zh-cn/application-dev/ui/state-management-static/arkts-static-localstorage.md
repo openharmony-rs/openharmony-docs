@@ -31,6 +31,8 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 在静态上下文中使用时，需导入LocalStorage：
 
 ```ts
+'use static';
+
 import { LocalStorage } from '@ohos.arkui.stateManagement';
 ```
 
@@ -47,6 +49,8 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
+'use static';
+
 import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 ```
 
@@ -102,6 +106,8 @@ import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
+'use static';
+
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 ```
 
@@ -155,6 +161,8 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 1. \@LocalStoragePropRef/\@LocalStorageLink的参数必须为string类型，否则编译期会报错。
 
   ```ts
+  'use static';
+
   import { Entry, Column, Component } from '@ohos.arkui.component';
   import { LocalStorage, LocalStoragePropRef, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -185,6 +193,8 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 ### 应用逻辑使用LocalStorage
 
 ```ts
+'use static';
+
 import { LocalStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47 };
@@ -209,6 +219,8 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
 - \@LocalStorageLink绑定LocalStorage对给定的属性，建立双向数据同步。
 
  ```ts
+ 'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -289,6 +301,8 @@ struct Child {
 - Child组件中，Text绑定的storageProp2 依旧显示47。
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
@@ -337,6 +351,8 @@ struct Child {
 下面的示例展示了\@LocalStorageLink装饰的数据和LocalStorage双向同步的场景：
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
@@ -390,6 +406,8 @@ Child自定义组件中的变化：
 1. playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父组件相应的刷新。
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
 
@@ -461,6 +479,8 @@ struct Parent {
 上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
 
 ```ts
+'use static';
+
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -487,6 +507,8 @@ export default class EntryAbility extends UIAbility {
 在下面的用例中，Index页面中的propA通过使用共享的LocalStorage实例,数值为loadContent传入的storage实例中的'PropA'。
 
 ```ts
+'use static';
+
 // index.ets
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
@@ -520,6 +542,8 @@ struct Index {
 在下面的示例中，变量A的类型为number | null，变量B的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
@@ -583,6 +607,8 @@ struct Index {
 在下面的示例中，\@LocalStorageLink装饰的selectedDate类型为Date，点击Button改变selectedDate的值，UI会随之刷新。
 
 ```ts
+'use static';
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -624,6 +650,8 @@ struct DateSample {
 在下面的示例中，\@LocalStorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，UI会随之刷新。
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -664,6 +692,8 @@ struct MapSample {
 在下面的示例中，\@LocalStorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，UI会随之刷新。
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -703,6 +733,8 @@ struct SetSample {
 ### 自定义组件外改变状态变量
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink, LocalStorage } from '@ohos.arkui.stateManagement';
 
