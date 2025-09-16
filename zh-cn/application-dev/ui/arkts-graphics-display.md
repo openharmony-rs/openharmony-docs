@@ -506,6 +506,7 @@ struct MyComponent {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import {
   Entry,
   Scroll,
@@ -641,6 +642,7 @@ struct Index {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import {
   Entry,
   $r,
@@ -743,6 +745,7 @@ struct MyComponent {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import {
   Entry,
   $r,
@@ -832,6 +835,7 @@ struct MyComponent {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import {
   Entry,
   $r,
@@ -841,7 +845,8 @@ import {
   Column,
   ImageRenderMode,
   ColumnOptions,
-  RowOptions,Padding,
+  RowOptions,
+  Padding,
   Image
 } from '@ohos.arkui.component';
 
@@ -918,6 +923,7 @@ struct Index {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import {
   Entry,
   $r,
@@ -930,6 +936,7 @@ import {
   RowOptions,
   Image
 } from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct Index {
@@ -998,14 +1005,9 @@ struct Index {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import {
-  Entry,
-  $r,
-  ColorFilter,
-  Row,
-  Component,FlexAlign,
-  Column,
-  Image
+  Entry, $r, ColorFilter, Row, Component, FlexAlign, Column, Image
 } from '@ohos.arkui.component';
 
 @Entry
@@ -1015,6 +1017,7 @@ struct Index {
     0, 1, 0, 0, 0,
     0, 0, 1, 0, 0,
     0, 0, 0, 1, 0]);
+
   build() {
     Column() {
       Row() {
@@ -1100,6 +1103,7 @@ struct MyComponent {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import {
   Entry,
   $r,
