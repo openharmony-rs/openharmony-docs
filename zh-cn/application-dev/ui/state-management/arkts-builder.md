@@ -1573,7 +1573,7 @@ struct ReusableChildTwoPage {
 
 使用变量存储@Builder函数，并在UI组件中使用。
 
-**ArkTS-ST**
+**ArkTS-DT**
 ```ts
 import { Builder, Component, Column, Color, Entry, ForEach, Text } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
