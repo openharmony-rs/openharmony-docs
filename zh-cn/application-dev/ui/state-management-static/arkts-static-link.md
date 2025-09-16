@@ -9,8 +9,6 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-'use static';
-
 import { Link } from '@ohos.arkui.stateManagement';
 ```
 
@@ -34,8 +32,6 @@ import { Link } from '@ohos.arkui.stateManagement';
 - 当装饰的对象是Date时，可以观察到Date的整体赋值，以及通过调用`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`方法更新其属性。
 
   ```ts
-  'use static';
-
   import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
   import { State, Link } from '@ohos.arkui.stateManagement';
   
@@ -90,8 +86,6 @@ import { Link } from '@ohos.arkui.stateManagement';
 - 当装饰interface字面量类型时，可以观察到字面量整体及其属性的变化。
 
   ```ts
-  'use static';
-
   import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { State, Link } from '@ohos.arkui.stateManagement';
   
@@ -136,8 +130,6 @@ import { Link } from '@ohos.arkui.stateManagement';
 2. \@Link装饰的变量禁止在本地初始化，否则编译期会报错。
 
     ```ts
-    'use static';
-
     // 错误写法，编译报错
     @Link count: number = 10;
     
@@ -150,8 +142,6 @@ import { Link } from '@ohos.arkui.stateManagement';
     【反例】
 
     ```ts
-    'use static';
-
     import { Entry, Component, Column, Text } from '@ohos.arkui.component';
     import { State, Link } from '@ohos.arkui.stateManagement';
     
@@ -190,8 +180,6 @@ import { Link } from '@ohos.arkui.stateManagement';
     【正例】
 
     ```ts
-    'use static';
-
     import { Entry, Component, Column, Text } from '@ohos.arkui.component';
     import { State, Link } from '@ohos.arkui.stateManagement';
     
@@ -228,8 +216,6 @@ import { Link } from '@ohos.arkui.stateManagement';
     【反例】
   
     ```ts
-    'use static';
-
     import { Entry, Component, Column, Text } from '@ohos.arkui.component';
     import { State, Link } from '@ohos.arkui.stateManagement';
     
@@ -265,8 +251,6 @@ import { Link } from '@ohos.arkui.stateManagement';
     【正例】
     
     ```ts
-    'use static';
-
     import { Entry, Component, Column, Text } from '@ohos.arkui.component';
     import { State, Link } from '@ohos.arkui.stateManagement';
     
@@ -306,8 +290,6 @@ import { Link } from '@ohos.arkui.stateManagement';
 当装饰的数据类型为boolean、string、number时，可以同步观察到数值的变化。
 
 ```ts
-'use static';
-
 import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State, Link } from '@ohos.arkui.stateManagement';
 
@@ -364,8 +346,6 @@ struct Index {
 当装饰数组时，可以观察到数组整体和数组项的变化，同时可以通过调用Array的接口 `push`、`pop`、`shift`、`unshift`、`splice`、`copyWithin`、`fill`、`reverse`、`sort`更新Array的数据。
 
 ```ts
-'use static';
-
 import { Entry, Component, Column, Button, ClickEvent, ForEach, Text } from '@ohos.arkui.component';
 import { State, Link } from '@ohos.arkui.stateManagement';
 @Component
@@ -408,8 +388,6 @@ struct Parent {
 在下面的示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
 ```ts
-'use static';
-
 import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@ohos.arkui.component';
 import { State, Link } from '@ohos.arkui.stateManagement';
 @Component
@@ -464,8 +442,6 @@ struct MapSample {
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
 ```ts
-'use static';
-
 import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@ohos.arkui.component';
 import { State, Link } from '@ohos.arkui.stateManagement';
 
@@ -520,8 +496,6 @@ struct SetSample {
 以下示例中，在\@Link的\@Watch回调中修改\@State装饰的状态变量memberMessage，实现父子组件间的变量同步。但是在本地修改\@State装饰的变量memberMessage不会影响到父组件中的变量改变。
 
 ```ts
-'use static';
-
 import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State, Link, Watch } from '@ohos.arkui.stateManagement';
 
@@ -571,8 +545,6 @@ struct Child {
 `@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`Index`中的按钮可以改变`name`的属性或类型，`Child`组件也会相应刷新。
 
 ```ts
-'use static';
-
 import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State, Link } from '@ohos.arkui.stateManagement';
 

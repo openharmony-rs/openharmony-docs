@@ -8,8 +8,6 @@
 ## 导入模块
 
 ```ts
-'use static';
-
 import { memorizeUpdatedState } from '@ohos.arkui.stateManagement'
 ```
 
@@ -56,8 +54,6 @@ memorizeUpdatedState\<T>(factory: RememberFactory\<T>): MemoState\<T>
 **示例：**
 
 ```ts
-'use static';
-
 import { State, memorizeUpdatedState } from '@ohos.arkui.stateManagement'
 import { ParallelOption, ParallelizeUI } from "@ohos.arkui.Parallelize"
 
