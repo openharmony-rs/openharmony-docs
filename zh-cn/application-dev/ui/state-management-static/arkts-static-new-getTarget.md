@@ -31,6 +31,8 @@
 - getTarget传入Date、Map、Set、Array以及interface字面量之外的class时，不做处理，直接返回传入内容。
 
   ```ts
+  'use static'
+  
   import { Entry, Component, Column, Text } from '@ohos.arkui.component';
   import { State, Observed, UIUtils } from '@ohos.arkui.stateManagement';
   @Observed
@@ -53,6 +55,8 @@
 - 更改getTarget获取的原始对象中的内容不会被观察，也不会触发UI刷新。
 
   ```ts
+  'use static'
+  
   import { Text, Column, Component, Entry, Button, ClickEvent } from '@ohos.arkui.component';
   import { State, UIUtils } from '@ohos.arkui.stateManagement';
   interface Info {
@@ -95,6 +99,8 @@ UIUtils.getTarget(value) === value
 以V1中的Array和interface字面量类型为例，完整示例如下。
 
 ```ts
+'use static'
+
 import { Text, Column, Component, Entry } from '@ohos.arkui.component';
 import { State, UIUtils } from '@ohos.arkui.stateManagement';
 interface Info {
