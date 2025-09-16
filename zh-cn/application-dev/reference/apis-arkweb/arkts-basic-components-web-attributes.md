@@ -280,6 +280,10 @@ overScrollMode(mode: OverScrollMode)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                    | 必填   | 说明               |
@@ -288,6 +292,7 @@ overScrollMode(mode: OverScrollMode)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -297,6 +302,27 @@ overScrollMode(mode: OverScrollMode)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State mode: OverScrollMode = OverScrollMode.ALWAYS;
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .overScrollMode(this.mode)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, State, OverScrollMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State mode: OverScrollMode = OverScrollMode.ALWAYS;
+
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
@@ -382,6 +408,10 @@ zoomAccess(zoomAccess: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型    | 必填   | 说明          |
@@ -390,6 +420,7 @@ zoomAccess(zoomAccess: boolean)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -407,6 +438,27 @@ zoomAccess(zoomAccess: boolean)
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .zoomAccess(true)
+      }
+    }
+  }
+  ```
+
 
 ## overviewModeAccess
 
@@ -646,6 +698,10 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                 | 类型    | 必填   | 说明         |
@@ -654,6 +710,7 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -668,7 +725,7 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
   
     build() {
       Column() {
-        // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
+        // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效。
         Button('refresh')
           .onClick(() => {
             if(this.isShow){
@@ -677,6 +734,45 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
             }else{
               this.isShow = true;
               this.btnMsg="隐藏滚动条";
+            }
+            try {
+              this.controller.refresh();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          }).height("10%").width("40%")
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          .horizontalScrollBarAccess(this.isShow)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry, State, Button } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State isShow: boolean = true;
+    @State btnMsg: string = "隐藏滚动条";
+
+    build() {
+      Column() {
+        // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效。
+        Button('refresh')
+          .onClick(() => {
+            if (this.isShow) {
+              this.isShow = false;
+              this.btnMsg = "隐藏滚动条";
+            } else {
+              this.isShow = true;
+              this.btnMsg = "显示滚动条";
             }
             try {
               this.controller.refresh();
@@ -728,6 +824,10 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名               | 类型    | 必填   | 说明         |
@@ -736,6 +836,7 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -750,7 +851,7 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
   
     build() {
       Column() {
-        // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
+        // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效。
         Button(this.btnMsg)
           .onClick(() => {
             if(this.isShow){
@@ -759,6 +860,45 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
             }else{
               this.isShow = true;
               this.btnMsg="隐藏滚动条";
+            }
+            try {
+              this.controller.refresh();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          }).height("10%").width("40%")
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          .verticalScrollBarAccess(this.isShow)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry, State, Button } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State isShow: boolean = true;
+    @State btnMsg: string = "隐藏滚动条";
+
+    build() {
+      Column() {
+        // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效。
+        Button(this.btnMsg)
+          .onClick((): void => {
+            if (this.isShow) {
+              this.isShow = false;
+              this.btnMsg = "隐藏滚动条";
+            } else {
+              this.isShow = true;
+              this.btnMsg = "显示滚动条";
             }
             try {
               this.controller.refresh();
@@ -867,20 +1007,27 @@ struct WebComponent {
 
 ## textZoomRatio<sup>9+</sup>
 
-textZoomRatio(textZoomRatio: number)
+ArkTS-Dyn: textZoomRatio(textZoomRatio: number)
+
+ArkTS-Sta: textZoomRatio(textZoomRatio: int)
 
 设置页面的文本缩放百分比。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名           | 类型   | 必填   | 说明                             |
 | ------------- | ------ | ---- | -------------------------------- |
-| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比。<br>取值为整数，范围为(0, 2147483647]。<br>默认值：100。 |
+| textZoomRatio | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 要设置的页面的文本缩放百分比。<br>取值为整数，范围为(0, 2147483647]。<br>默认值：100。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -890,6 +1037,27 @@ textZoomRatio(textZoomRatio: number)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State ratio: number = 150;
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .textZoomRatio(this.ratio)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State ratio: int = 150;
 
     build() {
       Column() {
@@ -2484,6 +2652,10 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                     | 必填   | 说明             |
@@ -2492,6 +2664,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2511,6 +2684,32 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
     }
   }
   ```
+
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, NestedScrollMode, NestedScrollOptions } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .nestedScroll({
+            scrollForward: NestedScrollMode.SELF_FIRST,
+            scrollBackward: NestedScrollMode.SELF_FIRST
+          } as NestedScrollOptions)
+      }
+    }
+  }
+  ```
+
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2539,6 +2738,43 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry, NestedScrollMode, Scroll, Text } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { NestedScrollOptionsExt, Color } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined)
+
+    build() {
+      Scroll() {
+        Column() {
+          Text("嵌套Web")
+            .height("25%")
+            .width("100%")
+            .fontSize(30)
+            .backgroundColor(Color.Yellow)
+          Web({
+            src: $rawfile('index.html'),
+            controller: this.controller
+          })
+            .nestedScroll({
+              scrollUp: NestedScrollMode.SELF_FIRST,
+              scrollDown: NestedScrollMode.PARENT_FIRST,
+              scrollLeft: NestedScrollMode.SELF_FIRST,
+              scrollRight: NestedScrollMode.SELF_FIRST,
+            } as NestedScrollOptionsExt)
+        }
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!-- index.html -->
@@ -2640,6 +2876,10 @@ forceDisplayScrollBar(enabled: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明           |
@@ -2649,6 +2889,7 @@ forceDisplayScrollBar(enabled: boolean)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2657,6 +2898,26 @@ forceDisplayScrollBar(enabled: boolean)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .forceDisplayScrollBar(true)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
