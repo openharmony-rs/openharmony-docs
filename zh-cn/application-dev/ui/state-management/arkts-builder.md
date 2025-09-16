@@ -1,6 +1,8 @@
 # \@Builder装饰器：自定义构建函数
 
-ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。在静态上下文中，需导入装饰器：
+ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
+
+在静态上下文中，需导入装饰器：
 
 ```ts
 import { Builder } from '@ohos.arkui.component';
@@ -1567,7 +1569,7 @@ struct ReusableChildTwoPage {
 
 ![arkts-builder-usage-scenario7](figures/arkts-builder-usage-scenario7.gif)
 
-### 用变量存储@Builder函数（该场景仅适用于静态上下文）
+### 用变量存储@Builder函数（仅适用于静态上下文）
 
 使用变量存储@Builder函数，并在UI组件中使用。
 
@@ -1605,7 +1607,7 @@ struct Index {
 }
 ```
 
-## \@Builder支持函数泛型（该场景仅适用于动态上下文）
+## \@Builder支持函数泛型（仅适用于动态上下文）
 
 Builder函数可以支持泛型声明。
 
