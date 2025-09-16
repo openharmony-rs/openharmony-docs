@@ -85,6 +85,8 @@ import { Watch } from '@ohos.arkui.stateManagement';
 ### \@Watch和自定义组件更新
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State, Watch, PropRef } from '@ohos.arkui.stateManagement';
 
@@ -132,6 +134,8 @@ struct CountModifier {
 当\@Watch装饰interface类型，或被`@Observed/@Track`装饰的class类型时，interface或class中不同的成员属性的修改，会将其具体的属性名传入回调方法，而非状态变量名。详细见以下示例代码：
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State, Watch } from '@ohos.arkui.stateManagement';
 import hilog from '@ohos.hilog';

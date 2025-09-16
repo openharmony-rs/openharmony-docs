@@ -35,6 +35,8 @@ import { PropRef } from '@ohos.arkui.stateManagement';
 - 当装饰的变量为boolean、string、number等类型时，数据源的变化可以被同步观察到。
 
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
   import { State, PropRef } from '@ohos.arkui.stateManagement';
   @Entry
@@ -107,6 +109,8 @@ import { PropRef } from '@ohos.arkui.stateManagement';
 \@PropRef可以接收父组件传递的数据源，并与之单向同步。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, PropRef } from '@ohos.arkui.stateManagement';
 @Entry
@@ -145,6 +149,8 @@ struct Child {
 当使用\@PropRef装饰数组类型时，可以观察到数组整体及其元素的变化。通过API操作更改数组内容也能被观测到。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, PropRef } from '@ohos.arkui.stateManagement';
 @Entry
@@ -179,6 +185,8 @@ struct Child {
 使用\@PropRef装饰Map类型时，可以观察到Map整体及其API操作带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, PropRef } from '@ohos.arkui.stateManagement';
 @Entry
@@ -213,6 +221,8 @@ struct Child {
 使用\@PropRef装饰Set类型时，可以观察到Set整体以及API操作带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, PropRef } from '@ohos.arkui.stateManagement';
 @Entry
@@ -253,6 +263,8 @@ struct Child {
 使用\@PropRef装饰Date类型时，可以观察到Date整体及其API操作的变化。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, PropRef } from '@ohos.arkui.stateManagement';
 @Entry
