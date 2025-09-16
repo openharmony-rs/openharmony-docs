@@ -366,6 +366,10 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                | 类型    | 必填   | 说明            |
@@ -374,6 +378,7 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -387,6 +392,26 @@ overviewModeAccess(overviewModeAccess: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .overviewModeAccess(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .overviewModeAccess(true)
       }
     }
   }
@@ -973,20 +998,27 @@ minFontSize(size: number)
 
 ## minLogicalFontSize<sup>9+</sup>
 
-minLogicalFontSize(size: number)
+ArkTS-Dyn: minLogicalFontSize(size: number)
+
+ArkTS-Sta: minLogicalFontSize(size: int)
 
 设置网页逻辑字体大小最小值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：8。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：8。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1001,6 +1033,27 @@ minLogicalFontSize(size: number)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .minLogicalFontSize(this.fontSize)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { State, Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State fontSize: Int = 13;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .minLogicalFontSize(this.fontSize)
       }
     }
   }
@@ -1084,6 +1137,10 @@ webSerifFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                     |
@@ -1092,6 +1149,7 @@ webSerifFont(family: string)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1106,6 +1164,27 @@ webSerifFont(family: string)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .webSerifFont(this.family)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { State, Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State family: string = "serif";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webSerifFont(this.family)
       }
     }
   }
@@ -1295,6 +1374,10 @@ pinchSmooth(isEnabled: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型    | 必填   | 说明          |
@@ -1303,6 +1386,7 @@ pinchSmooth(isEnabled: boolean)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1316,6 +1400,26 @@ pinchSmooth(isEnabled: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .pinchSmooth(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .pinchSmooth(true)
       }
     }
   }
@@ -1821,6 +1925,10 @@ layoutMode(mode: WebLayoutMode)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                  | 必填   | 说明                  |
@@ -1830,6 +1938,8 @@ layoutMode(mode: WebLayoutMode)
 **示例：**
 
   1、指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免默认渲染模式下(`RenderMode.ASYNC_RENDER`)视口高度超过7680px导致页面渲染出错，需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)。
+  
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1849,7 +1959,30 @@ layoutMode(mode: WebLayoutMode)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, WebLayoutMode, RenderMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+        .layoutMode(this.mode)
+      }
+    }
+  }
+  ```
+
   2、指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免嵌套滚动场景下，Web滚动到边缘时会优先触发过滚动的过界回弹效果影响用户体验，建议指定[overScrollMode](#overscrollmode11)为`OverScrollMode.NEVER`。
+  
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1866,6 +1999,29 @@ layoutMode(mode: WebLayoutMode)
         Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
           .layoutMode(this.layoutMode)
           .overScrollMode(this.overScrollMode)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { State,Entry, Component, Web, Column, WebLayoutMode, RenderMode, OverScrollMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+  @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+        .layoutMode(this.layoutMode)
+        .overScrollMode(this.overScrollMode)
       }
     }
   }
@@ -1983,6 +2139,10 @@ enableNativeEmbedMode(mode: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                      | 必填   | 说明             |
@@ -1991,6 +2151,7 @@ enableNativeEmbedMode(mode: boolean)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2003,6 +2164,25 @@ enableNativeEmbedMode(mode: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .enableNativeEmbedMode(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .enableNativeEmbedMode(true)
       }
     }
   }
@@ -2080,6 +2260,10 @@ registerNativeEmbedRule(tag: string, type: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明             |
@@ -2089,6 +2273,7 @@ registerNativeEmbedRule(tag: string, type: string)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2103,6 +2288,27 @@ registerNativeEmbedRule(tag: string, type: string)
         Web({ src: 'www.example.com', controller: this.controller })
           .enableNativeEmbedMode(true)
           .registerNativeEmbedRule("object", "application/view")
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+import { Entry, Component, Web, Column } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .enableNativeEmbedMode(true)
+        .registerNativeEmbedRule("object", "application/view")
       }
     }
   }
@@ -2171,6 +2377,10 @@ metaViewport(enabled: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                         |
@@ -2179,6 +2389,7 @@ metaViewport(enabled: boolean)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2192,9 +2403,29 @@ struct WebComponent {
     Column() {
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .metaViewport(true)
+      }
     }
   }
-}
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .metaViewport(true)
+      }
+    }
+  }
   ```
 
 ```html
@@ -2880,6 +3111,10 @@ nativeEmbedOptions(options?: EmbedOptions)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                             | 必填 | 说明                                |
@@ -2888,6 +3123,7 @@ nativeEmbedOptions(options?: EmbedOptions)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2907,6 +3143,29 @@ nativeEmbedOptions(options?: EmbedOptions)
     }
   }
   ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile,Entry, Component, Web, Column, EmbedOptions } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  options: EmbedOptions = {supportDefaultIntrinsicSize: true} as EmbedOptions;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+        .enableNativeEmbedMode(true)
+        .nativeEmbedOptions(this.options)
+      }
+    }
+  }
+  ```
+
 加载的html文件
   ```html
   <!-- index.html -->

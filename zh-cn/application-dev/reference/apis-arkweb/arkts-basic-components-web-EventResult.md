@@ -31,6 +31,11 @@ setGestureEventResult(result: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
+
 **参数：**
 
 | 参数名          | 类型 | 必填  | 说明             |
@@ -48,6 +53,10 @@ setGestureEventResult(result: boolean, stopPropagation: boolean): void
 设置手势事件消费结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
