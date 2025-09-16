@@ -635,6 +635,10 @@ static saveCookieAsync(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
@@ -651,6 +655,7 @@ static saveCookieAsync(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -681,6 +686,38 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('saveCookieAsync')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.saveCookieAsync((error) => {
+              if (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## saveCookieAsync
 
 static saveCookieAsync(): Promise\<void>
@@ -688,6 +725,10 @@ static saveCookieAsync(): Promise\<void>
 将当前存在内存中的cookie以Promise方法异步保存到磁盘中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -705,6 +746,7 @@ static saveCookieAsync(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -725,6 +767,40 @@ struct WebComponent {
                 console.log("saveCookieAsyncCallback success!");
               })
               .catch((error: BusinessError) => {
+                console.error("error: " + error);
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('saveCookieAsync')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.saveCookieAsync()
+              .then(() => {
+                console.log("saveCookieAsyncCallback success!");
+              })
+              .catch((error) => {
                 console.error("error: " + error);
               });
           } catch (error) {
@@ -1002,6 +1078,10 @@ static clearAllCookies(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
@@ -1018,6 +1098,7 @@ static clearAllCookies(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1048,6 +1129,38 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearAllCookies')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.clearAllCookies((error) => {
+              if (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## clearAllCookies<sup>11+</sup>
 
 static clearAllCookies(): Promise\<void>
@@ -1055,6 +1168,10 @@ static clearAllCookies(): Promise\<void>
 异步promise方式清除所有cookie。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1072,6 +1189,7 @@ static clearAllCookies(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1092,6 +1210,40 @@ struct WebComponent {
                 console.log("clearAllCookies success!");
               })
               .catch((error: BusinessError) => {
+                console.error("error: " + error);
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearAllCookies')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.clearAllCookies()
+              .then(() => {
+                console.log("clearAllCookies success!");
+              })
+              .catch((error) => {
                 console.error("error: " + error);
               });
           } catch (error) {
