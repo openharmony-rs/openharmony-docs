@@ -1,7 +1,8 @@
 # \@BuilderParam装饰器：引用\@Builder函数
 
-当开发者创建自定义组件并需要为其添加特定功能（例如：点击跳转操作）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决组件功能定制化的问题，ArkUI引入了@BuilderParam装饰器。@BuilderParam用于装饰指向@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（例如：参数修改、尾随闭包、借用箭头函数等）对@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用@BuilderParam为组件增加特定功能。该装饰器用于声明任意UI描述的元素，类似于slot占位符。在静态上下文中，需导入装饰器：
+当开发者创建自定义组件并需要为其添加特定功能（例如：点击跳转操作）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决组件功能定制化的问题，ArkUI引入了@BuilderParam装饰器。@BuilderParam用于装饰指向@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（例如：参数修改、尾随闭包、借用箭头函数等）对@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用@BuilderParam为组件增加特定功能。该装饰器用于声明任意UI描述的元素，类似于slot占位符。
 
+在静态上下文中，需导入装饰器：
 ```ts
 import { BuilderParam } from '@ohos.arkui.component';
 ```
@@ -25,219 +26,219 @@ import { BuilderParam } from '@ohos.arkui.component';
 
 - 使用所属自定义组件的自定义构建函数或者全局的自定义构建函数，在本地初始化\@BuilderParam。
 
-```ts
-@Builder
-function overBuilder() {
-}
-
-@Component
-struct Child {
+  ```ts
   @Builder
-  doNothingBuilder() {
+  function overBuilder() {
   }
-
-  // 使用自定义组件的自定义构建函数初始化@BuilderParam
-  @BuilderParam customBuilderParam: () => void = this.doNothingBuilder;
-  // 使用全局自定义构建函数初始化@BuilderParam
-  @BuilderParam customOverBuilderParam: () => void = overBuilder;
-
-  build() {
+  
+  @Component
+  struct Child {
+    @Builder
+    doNothingBuilder() {
+    }
+  
+    // 使用自定义组件的自定义构建函数初始化@BuilderParam
+    @BuilderParam customBuilderParam: () => void = this.doNothingBuilder;
+    // 使用全局自定义构建函数初始化@BuilderParam
+    @BuilderParam customOverBuilderParam: () => void = overBuilder;
+  
+    build() {
+    }
   }
-}
-```
+  ```
 
 - 用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
-**ArkTS-DT:**
-```ts
-@Component
-struct Child {
-  @Builder
-  customBuilder() {
-  }
-
-  @BuilderParam customBuilderParam: () => void = this.customBuilder;
-
-  build() {
-    Column() {
-      this.customBuilderParam()
+  **ArkTS-DT:**
+  ```ts
+  @Component
+  struct Child {
+    @Builder
+    customBuilder() {
+    }
+  
+    @BuilderParam customBuilderParam: () => void = this.customBuilder;
+  
+    build() {
+      Column() {
+        this.customBuilderParam()
+      }
     }
   }
-}
 
-@Entry
-@Component
-struct Parent {
-  @Builder
-  componentBuilder() {
-    Text(`Parent builder `)
-  }
-
-  build() {
-    Column() {
-      Child({ customBuilderParam: this.componentBuilder })
+  @Entry
+  @Component
+  struct Parent {
+    @Builder
+    componentBuilder() {
+      Text(`Parent builder `)
+    }
+  
+    build() {
+      Column() {
+        Child({ customBuilderParam: this.componentBuilder })
+      }
     }
   }
-}
-```
+  ```
 
-**ArkTS-ST:**
-```ts
-import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
+  **ArkTS-ST:**
+  ```ts
+  import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
 
-@Component
-struct Child {
-  @Builder
-  customBuilder() {
-  }
+  @Component
+  struct Child {
+    @Builder
+    customBuilder() {
+    }
 
-  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+    @BuilderParam customBuilderParam: () => void = this.customBuilder;
 
-  build() {
-    Column() {
-      this.customBuilderParam()
+    build() {
+      Column() {
+        this.customBuilderParam()
+      }
     }
   }
-}
 
-@Entry
-@Component
-struct Parent {
-  @Builder
-  componentBuilder() {
-    Text(`Parent builder `)
-  }
+  @Entry
+  @Component
+  struct Parent {
+    @Builder
+    componentBuilder() {
+      Text(`Parent builder `)
+    }
 
-  build() {
-    Column() {
-      Child({ customBuilderParam: this.componentBuilder })
+    build() {
+      Column() {
+        Child({ customBuilderParam: this.componentBuilder })
+      }
     }
   }
-}
-```
-**图1** 示例效果图
+  ```
+  **图1** 示例效果图
 
-![builderparam-demo1](figures/builderparam-demo1.png)
+  ![builderparam-demo1](figures/builderparam-demo1.png)
 
 
 - 需要注意this的指向。
 
-this指向示例如下：
+  this指向示例如下：
 
-**ArkTS-DT:**
-```ts
-@Component
-struct Child {
-  label: string = 'Child';
-
-  @Builder
-  customBuilder() {
-  }
-
-  @Builder
-  customChangeThisBuilder() {
-  }
-
-  @BuilderParam customBuilderParam: () => void = this.customBuilder;
-  @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
-
-  build() {
-    Column() {
-      this.customBuilderParam()
-      this.customChangeThisBuilderParam()
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  label: string = 'Parent';
-
-  @Builder
-  componentBuilder() {
-    Text(`${this.label}`)
-  }
-
-  build() {
-    Column() {
-      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为"Parent"。
-      this.componentBuilder()
-      Child({
-        // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this指向的是子组件Child，即label变量的值为"Child"。
-        customBuilderParam: this.componentBuilder,
-        // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
-        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为"Parent"。
-        customChangeThisBuilderParam: (): void => {
-          this.componentBuilder()
-        }
-      })
-    }
-  }
-}
-```
+  **ArkTS-DT:**
+    ```ts
+    @Component
+    struct Child {
+      label: string = 'Child';
   
-**图2** 示例效果图
-
-![builderparam-demo2](figures/builderparam-demo2.png)
-
-**ArkTS-ST:**
-```ts
-import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
-
-@Component
-struct Child {
-  label: string = 'Child';
-
-  @Builder
-  customBuilder() {
-  }
-
-  @Builder
-  customChangeThisBuilder() {
-  }
-
-  @BuilderParam customBuilderParam: () => void = this.customBuilder;
-  @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
-
-  build() {
-    Column() {
-      this.customBuilderParam()
-      this.customChangeThisBuilderParam()
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  label: string = 'Parent';
-
-  @Builder
-  componentBuilder() {
-    Text(`${this.label}`)
-  }
-
-  build() {
-    Column() {
-      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为"Parent"。
-      this.componentBuilder()
-      Child({
-        // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this始终指向定义处上下文Parent，即label变量的值为"Parent"。
-        customBuilderParam: this.componentBuilder,
-        // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
-        // this始终指向定义处上下文Parent，即label变量的值为"Parent"。
-        customChangeThisBuilderParam: (): void => {
-          this.componentBuilder()
+      @Builder
+      customBuilder() {
+      }
+  
+      @Builder
+      customChangeThisBuilder() {
+      }
+  
+      @BuilderParam customBuilderParam: () => void = this.customBuilder;
+      @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
+  
+      build() {
+        Column() {
+          this.customBuilderParam()
+          this.customChangeThisBuilderParam()
         }
-      })
+      }
+    }
+
+    @Entry
+    @Component
+    struct Parent {
+      label: string = 'Parent';
+  
+      @Builder
+      componentBuilder() {
+        Text(`${this.label}`)
+      }
+  
+      build() {
+        Column() {
+          // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为"Parent"。
+          this.componentBuilder()
+          Child({
+            // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this指向的是子组件Child，即label变量的值为"Child"。
+            customBuilderParam: this.componentBuilder,
+            // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
+            // 因为箭头函数的this指向的是宿主对象，所以label变量的值为"Parent"。
+            customChangeThisBuilderParam: (): void => {
+              this.componentBuilder()
+            }
+          })
+        }
+      }
+    }
+    ```
+    
+  **图2** 示例效果图
+
+  ![builderparam-demo2](figures/builderparam-demo2.png)
+
+  **ArkTS-ST:**
+  ```ts
+  import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
+
+  @Component
+  struct Child {
+    label: string = 'Child';
+
+    @Builder
+    customBuilder() {
+    }
+
+    @Builder
+    customChangeThisBuilder() {
+    }
+
+    @BuilderParam customBuilderParam: () => void = this.customBuilder;
+    @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
+
+    build() {
+      Column() {
+        this.customBuilderParam()
+        this.customChangeThisBuilderParam()
+      }
     }
   }
-}
-```
-**图2** 示例效果图
 
-![builderparam-demo2](figures/builderparam-demo2-2.png)
+  @Entry
+  @Component
+  struct Parent {
+    label: string = 'Parent';
+
+    @Builder
+    componentBuilder() {
+      Text(`${this.label}`)
+    }
+
+    build() {
+      Column() {
+        // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为"Parent"。
+        this.componentBuilder()
+        Child({
+          // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this始终指向定义处上下文Parent，即label变量的值为"Parent"。
+          customBuilderParam: this.componentBuilder,
+          // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
+          // this始终指向定义处上下文Parent，即label变量的值为"Parent"。
+          customChangeThisBuilderParam: (): void => {
+            this.componentBuilder()
+          }
+        })
+      }
+    }
+  }
+  ```
+  **图3** 示例效果图
+
+  ![builderparam-demo2](figures/builderparam-demo2-2.png)
 
 ## 限制条件
 
@@ -361,7 +362,7 @@ struct Parent {
   }
 }
 ```
-**图3** 示例效果图
+**图4** 示例效果图
 
 ![builderparam-demo3](figures/builderparam-demo3.png)
 
@@ -489,7 +490,7 @@ struct CustomContainerUser {
   }
 }
 ```
-**图4** 示例效果图
+**图5** 示例效果图
 
 ![builderparam-demo4](figures/builderparam-demo4.png)
 
@@ -902,7 +903,7 @@ struct HelloWorldPage {
   }
 }   
 ```
-**图5** 示例效果图
+**图6** 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
 
@@ -985,6 +986,12 @@ struct ParentPage {
   }
 }
 ```
+
+**图7** 示例效果图
+
+![builderparam-demo5](figures/builderparam-demo5.png)
+
+
 **ArkTS-ST:**
 ```ts
 import { Entry, Component, Column, Builder, BuilderParam, Text, FontWeight, Line } from "@ohos.arkui.component";
@@ -1062,11 +1069,11 @@ struct ParentPage {
   }
 }
 ```
-**图6** 示例效果图
+**图8** 示例效果图
 
-![builderparam-demo5](figures/builderparam-demo5.png)
+![builderparam-demo5](figures/builderparam-demo5-2.png)
 
-### 在@ComponentV2装饰的自定义组件中使用@BuilderParam（仅限动态上下文）
+### 在@ComponentV2装饰的自定义组件中使用@BuilderParam
 
 使用全局@Builder和局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
 
@@ -1145,7 +1152,7 @@ struct ParentPage {
   }
 }
 ```
-**图7** 示例效果图
+**图9** 示例效果图
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
 
@@ -1219,12 +1226,13 @@ struct ParentPage {
 ```
 ## 常见问题
 
-### 改变内容UI不刷新（仅限动态上下文）
+### 改变内容UI不刷新（仅适用于动态上下文）
 
 调用自定义组件ChildPage时，通过`this.componentBuilder`形式传递`@Builder`参数。由于`this`指向自定义组件内部，因此在父组件中改变`label`的值时，自定义组件ChildPage无法感知到这一变化。
 
 【反例】
 
+**ArkTS-DT:**
 ```ts
 @Component
 struct ChildPage {
@@ -1276,6 +1284,7 @@ struct ParentPage {
 
 【正例】
 
+**ArkTS-DT:**
 ```ts
 @Component
 struct ChildPage {
