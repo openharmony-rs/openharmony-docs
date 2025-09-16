@@ -130,18 +130,18 @@ import { BuilderParam } from '@ohos.arkui.component';
     @Component
     struct Child {
       label: string = 'Child';
-  
+    
       @Builder
       customBuilder() {
       }
-  
+    
       @Builder
       customChangeThisBuilder() {
       }
-  
+    
       @BuilderParam customBuilderParam: () => void = this.customBuilder;
       @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
-  
+    
       build() {
         Column() {
           this.customBuilderParam()
@@ -154,12 +154,12 @@ import { BuilderParam } from '@ohos.arkui.component';
     @Component
     struct Parent {
       label: string = 'Parent';
-  
+    
       @Builder
       componentBuilder() {
         Text(`${this.label}`)
       }
-  
+    
       build() {
         Column() {
           // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为"Parent"。
