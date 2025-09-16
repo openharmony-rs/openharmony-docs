@@ -43,12 +43,12 @@ UI 测试构建于单元测试基础之上，额外增加了对 UiTest 接口的
 
 ### UI测试简例
 
-下方示例代码以单元测试脚本为基础，进行UI测试的增量开发，实现的核心步骤为：
+下方示例代码以[单元测试脚本](jsunit-guidelines.md#)为基础，进行UI测试的增量开发，实现的核心步骤为：
 1) 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态.
 
 2) 调用UI测试框架能力，页面中执行点击操作；
 
-3) 通过添加断言，验证操作后当前页面的实际变化是否与预期结果一致。
+3) 通过[添加断言](jsunit-guidelines.md#)，验证操作后当前页面的实际变化是否与预期结果一致。
 
 A. 编写Index.ets页面代码，作为被测示例demo。
 ```ts
@@ -289,7 +289,7 @@ export default function abilityTest() {
   describe('inputTextTest', () => {
     /**
      * 基于控件的文本输入，调用接口会默认清空文本框中内容后输入指定文本
-     * 当输入文本中不包含中文、特殊字符，且文本长度超过200字符时默认为逐字键入
+     * 当输入文本中不包含中文、特殊字符，且文本长度不超过200字符时默认为逐字键入
      */
     it('componentInputText', TestType.FUNCTION, async () => {
       let driver = Driver.create();
@@ -300,7 +300,7 @@ export default function abilityTest() {
      * 基于控件的文本输入，指定以复制粘贴方式注入输入指定文本
      * 指定以追加方式输入，即在输入文本签不清空原有内容
      */
-    it('componentInputText', TestType.FUNCTION, async () => {
+    it('componentInputTextAddition', TestType.FUNCTION, async () => {
       let driver = Driver.create();
       let input = await driver.findComponent(ON.type('TextInput'));
       await input.inputText('abc', {paste: true, addition: true});
@@ -308,7 +308,7 @@ export default function abilityTest() {
 
     /**
      * 基于坐标的文本输入，点击指定位置使输入框获焦，并在光标处输入指定文本
-     * 当输入文本中不包含中文、特殊字符，且文本长度超过200字符时默认为逐字键入
+     * 当输入文本中不包含中文、特殊字符，且文本长度不超过200字符时默认为逐字键入
      */
     it('pointInputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create()
@@ -321,11 +321,23 @@ export default function abilityTest() {
      * 基于坐标的文本输入，指定以复制粘贴方式注入输入指定文本
      * 指定以追加方式输入，即点击指定位置使输入框获焦后将光标移动至原有文本末尾后输入
      */
-    it('pointInputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+    it('pointInputTextAddition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create()
       let input = await driver.findComponent(ON.type('TextInput'))
       let center = await input.getBoundsCenter()
       await driver.inputText(center, '123', {paste: true, addition: true})
+    })
+
+    /**
+     * 基于坐标的文本输入，指定以复制粘贴方式注入输入指定文本
+     * 指定以追加方式输入，即点击指定位置使输入框获焦后将光标移动至原有文本末尾后输入
+     * 当输入内容包含中文或特殊字符时，仅支持以复制粘贴方式输入文本，'paste'字段不生效
+     */
+    it('pointInputTextChinese', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create()
+      let input = await driver.findComponent(ON.type('TextInput'))
+      let center = await input.getBoundsCenter()
+      await driver.inputText(center, '你好', {paste: false, addition: true})
     })
   })
 }
@@ -594,9 +606,9 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 > 使用cmd的方式，需要配置好hdc相关的环境变量。
 
 **命令列表**
-| 命令            | 配置参数   |描述                              |
+| 命令            | 参数   |说明                              |
 |---------------|---------------------------------|---------------------------------|
-| help          | help|  显示uitest工具能够支持的命令信息。            |
+| help          | - |  显示uitest工具能够支持的命令信息。            |
 | screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图) |
 | dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)|
 | uiRecord        | uiRecord \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
@@ -606,10 +618,10 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 
 ### 获取截图
 
-| 命令    |   配置参数   | 描述       | 
+| 命令    |   参数   | 说明       | 
 |---------|--------------|-----------|
-| **-p** | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
-| **-d** | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
+| -p | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
+| -d | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 存储路径：/data/local/tmp，文件名：时间戳 + .png。
@@ -619,7 +631,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 ```
 
 ### 获取控件树
-| 命令    |   配置参数   | 描述       | 
+| 命令    |   参数   | 说明       | 
 |---------|--------------|-----------|
 | **-p** | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .json'。|
 | **-i** | |不过滤不可见控件，也不做窗口合并。|
@@ -646,7 +658,7 @@ hdc shell uitest dumpLayout -d 0
 > 录制过程中，需等待当前操作的识别结果在命令行输出后，再进行下一步操作。
 
 **命令列表**
-| 命令   | 配置参数    |  必填 | 描述              | 
+| 命令   | 参数    |  必填 | 说明              | 
 |-------|--------------|------|-----------------|
 | -W    | \<true/false> | 否   | 录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 <br> **说明：** 从API version 20开始支持该命令。|
 | -l    |              | 否   | 在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
@@ -707,7 +719,7 @@ hdc shell uitest uiRecord read
 
 ### 注入UI模拟操作
 
-| 命令   | 必填 | 描述              | 
+| 命令   | 必填 | 说明              | 
 |------|------|-----------------|
 | help   | 是    | uiInput命令相关帮助信息。 |
 | click   | 是    | 模拟单击操作。具体请参考下方**uiInput-click/doubleClick/longClick使用示例**。      | 
@@ -722,9 +734,9 @@ hdc shell uitest uiRecord read
 | keyEvent   | 是    | 模拟实体按键事件（如：键盘，电源键，返回上一级，返回桌面等），以及组合按键操作。具体请参考下方**uiInput keyEvent使用示例**。     | 
 
 
-#### uiInput-click/doubleClick/longClick使用示例
+- uiInput-click/doubleClick/longClick使用示例
 
-| 配置参数    | 必填 | 描述            |
+| 参数    | 必填 | 说明            |
 |---------|------|-----------------|
 | point_x | 是      | 点击x坐标点。 |
 | point_y | 是       | 点击y坐标点。 |
@@ -740,9 +752,9 @@ hdc shell uitest uiInput doubleClick 100 100
 hdc shell uitest uiInput longClick 100 100
 ```
 
-#### uiInput fling使用示例
+- uiInput fling使用示例
 
-| 配置参数  | 必填             | 描述               |      
+| 参数  | 必填             | 说明               |      
 |------|------------------|-----------------|
 | from_x   | 是                | 滑动起点x坐标。 | 
 | from_y   | 是                | 滑动起点y坐标。 | 
@@ -757,9 +769,9 @@ hdc shell uitest uiInput longClick 100 100
 hdc shell uitest uiInput fling 10 10 200 200 500 
 ```
 
-#### uiInput swipe/drag使用示例
+- uiInput swipe/drag使用示例
 
-| 配置参数  | 必填             | 描述               |
+| 参数  | 必填             | 说明               |
 |------|------------------|-----------------|
 | from_x   | 是                | 滑动起点x坐标。 |
 | from_y   | 是                | 滑动起点y坐标。 |
@@ -775,9 +787,9 @@ hdc shell uitest uiInput swipe 10 10 200 200 500
 hdc shell uitest uiInput drag 10 10 100 100 500 
 ```
 
-#### uiInput dircFling使用示例
+- uiInput dircFling使用示例
 
-| 配置参数             | 必填       | 描述 |
+| 参数             | 必填       | 说明 |
 |-------------------|-------------|----------|
 | direction         | 否 | 滑动方向，取值范围：[0,1,2,3]，默认值为0。<br> 0代表向左滑动，1代表向右滑动，2代表向上滑动，3代表向下滑动。    | 
 | swipeVelocityPps_ | 否| 滑动速度，单位：px/s，取值范围：200-40000。<br> **默认值**: 600。取值超出限定范围时，取默认值。    | 
@@ -794,9 +806,9 @@ hdc shell uitest uiInput dircFling 2
 hdc shell uitest uiInput dircFling 3
 ```
 
-#### uiInput inputText使用示例
+- uiInput inputText使用示例
 
-| 配置参数             | 必填       | 描述 |       
+| 参数             | 必填       | 说明 |       
 |------|------------------|----------|
 | point_x   | 是                | 输入框x坐标点。 | 
 | point_y   | 是                | 输入框y坐标点。 |
@@ -807,9 +819,9 @@ hdc shell uitest uiInput dircFling 3
 hdc shell uitest uiInput inputText 100 100 hello 
 ```
 
-#### uiInput text使用示例
+- uiInput text使用示例
 
-| 配置参数             | 必填       | 描述 |       
+| 参数             | 必填       | 说明 |       
 |--------|-------------------|----------------|
 | text   | 是                | 输入文本内容。  |
 
@@ -818,9 +830,9 @@ hdc shell uitest uiInput inputText 100 100 hello
 hdc shell uitest uiInput text hello
 ```
 
-#### uiInput keyEvent使用示例
+- uiInput keyEvent使用示例
 
-| 配置参数             | 必填       | 描述                                                                                                                              |                
+| 参数             | 必填       | 说明                                                                                                                              |                
 |------|------|---------------------------------------------------------------------------------------------------------------------------------|
 | keyID1   | 是    | 实体按键对应ID，取值范围：Back、Home、Power、或[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)。<br>当取值为Back、Home或Power时，不支持输入组合键。 <br>当前注入大写锁定键（KeyCode=2074）无效，请使用组合键实现大写字母输入。如“按键shift+按键V”输入大写字母V。 | 
 | keyID2    | 否    | 实体按键对应ID，取值范围：[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)，默认值为空。                                               |
@@ -902,7 +914,7 @@ hdc shell uitest start-daemon
 
 ## 常见问题
 
-**1. 失败日志有“uitest-api does not allow calling concurrently”错误信息**
+### 失败日志有“uitest-api does not allow calling concurrently”错误信息
 
 **问题描述**
 
@@ -920,7 +932,7 @@ UI测试用例执行失败，查看hilog日志发现日志中有“uitest-api do
 
 2. 避免多进程执行UI测试用例。
 
-**2. 失败日志有“does not exist on current UI! Check if the UI has changed after you got the widget object”错误信息**
+### 失败日志有“does not exist on current UI! Check if the UI has changed after you got the widget object”错误信息
 
 **问题描述** 
 
@@ -934,7 +946,7 @@ UI测试用例执行失败，查看hilog日志发现日志中有“does not exis
 
 重新执行UI测试用例，确保进行模拟操作时控件在界面中存在。
 
-**3. 失败日志有“Cannot connect to AAMS, RET_ERR_CONNECTION_EXIST”错误信息**
+### 失败日志有“Cannot connect to AAMS, RET_ERR_CONNECTION_EXIST”错误信息
 
 **问题描述** 
 
