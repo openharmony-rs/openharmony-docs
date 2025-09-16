@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
@@ -25,6 +26,10 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: int&gt;): void
 获取指定流的音量。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -73,6 +78,10 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明         |
@@ -112,6 +121,10 @@ ArkTS-Sta: getVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的音量。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -174,6 +187,10 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
@@ -221,6 +238,10 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明         |
@@ -260,6 +281,10 @@ ArkTS-Sta: getMinVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的最小音量。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -322,6 +347,10 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
@@ -369,6 +398,10 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明         |
@@ -408,6 +441,10 @@ ArkTS-Sta: getMaxVolumeSync(volumeType: AudioVolumeType): int
 获取指定流的最大音量。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -468,6 +505,10 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                            |
@@ -513,6 +554,10 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明         |
@@ -540,6 +585,10 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 获取指定音量流是否被静音。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -584,6 +633,10 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                     |
@@ -627,6 +680,10 @@ getRingerMode(): Promise&lt;AudioRingMode&gt;
 获取铃声模式。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -678,6 +735,10 @@ on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                                                         |
@@ -709,6 +770,10 @@ off(type: 'ringerModeChange', callback?: Callback&lt;AudioRingMode&gt;): void
 取消监听铃声模式变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -748,6 +813,10 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 获取麦克风静音状态。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -793,6 +862,10 @@ isMicrophoneMute(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                   | 说明                                                         |
@@ -814,6 +887,10 @@ isMicrophoneMuteSync(): boolean
 获取麦克风静音状态。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -844,6 +921,10 @@ on(type: 'micStateChange', callback: Callback&lt;MicStateChangeEvent&gt;): void
 目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅。因此，推荐使用单一AudioManager实例进行开发。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -876,6 +957,10 @@ off(type: 'micStateChange', callback?: Callback&lt;MicStateChangeEvent&gt;): voi
 取消监听系统麦克风状态更改事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -917,6 +1002,10 @@ isVolumeUnadjustable(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                   | 说明                                                   |
@@ -939,6 +1028,10 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 获取音量增益dB值。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -999,6 +1092,10 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
@@ -1058,6 +1155,10 @@ ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int
 获取音量增益dB值。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1121,6 +1222,10 @@ ArkTS-Sta: getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Pr
 获取输入设备音频流的最大电平值，取值范围为[0, 1]。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1197,6 +1302,10 @@ ArkTS-Sta: getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): 
 获取输出设备音频流的最大电平值，取值范围为[0, 1]。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1275,7 +1384,11 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG，该权限仅系统应用可申请。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1310,7 +1423,11 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG，该权限仅系统应用可申请。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 

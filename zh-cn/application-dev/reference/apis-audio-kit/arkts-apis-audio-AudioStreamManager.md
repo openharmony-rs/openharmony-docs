@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
@@ -23,6 +24,10 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeI
 获取当前音频渲染器的信息。使用callback异步回调。
 
 **系统能力**: SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -105,6 +110,10 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                                              | 说明                                    |
@@ -185,6 +194,10 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 获取当前音频渲染器的信息。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -267,6 +280,10 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型                                 | 必填      | 说明                                                      |
@@ -344,6 +361,10 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 获取当前音频采集器的信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -423,6 +444,10 @@ getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                                         | 说明                                 |
@@ -467,6 +492,10 @@ on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArr
 监听音频渲染器更改事件（当音频播放流状态变化或设备变化时触发）。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -542,6 +571,10 @@ off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoA
 取消监听音频渲染器更改事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -633,6 +666,10 @@ on(type: 'audioCapturerChange', callback: Callback&lt;AudioCapturerChangeInfoArr
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型     | 必填      | 说明                                                                                          |
@@ -679,6 +716,10 @@ off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoA
 取消监听音频采集器更改事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -735,6 +776,10 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                              |
@@ -780,6 +825,10 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明         |
@@ -807,6 +856,10 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 获取指定音频流是否为活跃状态。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -850,6 +903,10 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback&lt;AudioEffe
 获取当前音效模式的信息。使用callback异步回调。
 
 **系统能力**: SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -909,6 +966,10 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise&lt;AudioEffectInfoArray&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -964,6 +1025,10 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -1009,6 +1074,8 @@ isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -1053,6 +1120,8 @@ isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -1096,6 +1165,8 @@ isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 

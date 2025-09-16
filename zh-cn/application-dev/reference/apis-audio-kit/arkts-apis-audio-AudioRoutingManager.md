@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
@@ -23,6 +24,10 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 获取音频设备列表。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -69,6 +74,10 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                      | 必填 | 说明             |
@@ -96,6 +105,10 @@ getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors
 获取音频设备列表。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -140,6 +153,10 @@ isMicBlockDetectionSupported(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                   | 说明                                                         |
@@ -163,6 +180,10 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo\>): v
 使用此功能前，请查询设备是否支持检测。应用在使用麦克风录音时，若麦克风堵塞状态发生变化，将触发该事件。目前此检测功能仅支持麦克风位于本地设备上。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -201,6 +222,10 @@ off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo\>):
 取消监听麦克风堵塞状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -242,6 +267,10 @@ on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChange
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                      |
@@ -277,6 +306,10 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 取消监听音频设备连接状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -325,6 +358,10 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, cal
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                  | 必填 | 说明                      |
@@ -371,6 +408,10 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                      | 必填 | 说明             |
@@ -414,6 +455,10 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
@@ -449,6 +494,10 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): vo
 取消监听音频可选设备连接状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -497,6 +546,10 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Pr
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                                   | 必填 | 说明               |
@@ -525,6 +578,10 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: Async
 获取指定通信设备的激活状态。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -571,6 +628,10 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise&lt;boo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                                  | 必填 | 说明               |
@@ -598,6 +659,10 @@ isCommunicationDeviceActiveSync(deviceType: CommunicationDeviceType): boolean
 获取指定通信设备的激活状态。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -641,6 +706,10 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: 
 根据音频信息，返回优先级最高的输出设备。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -712,6 +781,10 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise&l
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
@@ -782,6 +855,10 @@ getPreferredOutputDeviceForRendererInfoSync(rendererInfo: AudioRendererInfo): Au
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
@@ -831,6 +908,10 @@ on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererI
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                      |
@@ -870,6 +951,10 @@ off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDe
 取消监听最高优先级输出音频设备变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -914,6 +999,10 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback
 根据音频信息，返回优先级最高的输入设备。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -982,6 +1071,10 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
@@ -1049,6 +1142,10 @@ getPreferredInputDeviceForCapturerInfoSync(capturerInfo: AudioCapturerInfo): Aud
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
@@ -1098,6 +1195,10 @@ on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapture
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
@@ -1137,6 +1238,10 @@ off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<Audio
 取消监听最高优先级输入音频设备变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

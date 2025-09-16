@@ -22,11 +22,11 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称                                      | 类型 | 值   | 说明      |
 |------------------------------------------|---|-----|---------|
-| TONE_CATEGORY_RINGTONE<sup>12+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 1   | 铃声类别。   |
-| TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 2   | 短信铃声类别。 |
-| TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 4   | 通知铃声类别。 |
-| TONE_CATEGORY_ALARM<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long | 8   | 闹钟铃声类别。 |
-| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | 联系人铃声类别。(该值仅适用于ArkTS-Dyn。) |
+| TONE_CATEGORY_RINGTONE<sup>12+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 1   | 铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20   |
+| TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 2   | 短信铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
+| TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 4   | 通知铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
+| TONE_CATEGORY_ALARM<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long | 8   | 闹钟铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
+| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | 联系人铃声类别。(该值仅适用于ArkTS-Dyn。)<br> **ArkTS-Dyn起始版本：** 20 |
 
 ## RingtoneType
 
@@ -38,10 +38,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称                            | 值  | 说明                                                                     |
 | ------------------------------- |----|------------------------------------------------------------------------|
-| RINGTONE_TYPE_DEFAULT<sup>(deprecated)</sup>           | 0  | 默认铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_0替代。 |
-| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | sim卡1的铃声。                                                              |
-| RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。 |
-| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | sim卡2的铃声。                                                              |
+| RINGTONE_TYPE_DEFAULT<sup>(deprecated)</sup>           | 0  | 默认铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_0替代。<br> **ArkTS-Dyn起始版本：** 10 |
+| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | sim卡1的铃声。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20                                                              |
+| RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。<br> **ArkTS-Dyn起始版本：** 10 |
+| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | sim卡2的铃声。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20                                                              |
 
 ## SystemToneType<sup>11+</sup>
 
@@ -50,6 +50,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                            | 值   | 说明         |
 | ------------------------------- |-----|------------|
@@ -65,6 +69,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                         | 值   | 说明         |
 | ----------------------------|-----|------------|
@@ -84,6 +92,10 @@ getTitle(): string
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -114,6 +126,10 @@ setTitle(title: string): void
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -148,6 +164,10 @@ getFileName(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明   |
@@ -178,6 +198,10 @@ setFileName(name: string): void
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -212,6 +236,10 @@ getUri(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                                      |
@@ -241,6 +269,10 @@ getCustomizedType(): ToneCustomizedType
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -273,6 +305,10 @@ ArkTS-Sta: setCategory(category: long): void
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -309,6 +345,10 @@ ArkTS-Sta: getCategory(): long
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明     |
@@ -340,6 +380,10 @@ type ToneAttrsArray = Array&lt;[ToneAttrs](#toneattrs12)&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                     | 说明      |
 |----------------------------------------|---------|
 | Array&lt;[ToneAttrs](#toneattrs12)&gt; | 铃音属性数组。 |
@@ -353,6 +397,10 @@ createCustomizedToneAttrs(): ToneAttrs
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -380,6 +428,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                          | 值 | 说明                 |
 | ----------------------------- | -- | -------------------- |
 | STANDARD| 0  | 标准振动风格。 |
@@ -392,6 +444,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                     | 值 | 说明         |
 | ------------------------|----|--------|
@@ -409,6 +465,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                          | 值 | 说明                 |
 | ----------------------------- | -- | -------------------- |
 | NONE        | 0  | 无振动模式。 |
@@ -422,6 +482,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 类型 | 只读 | 可选 | 说明                 |
 | ------------ | -- | -- | -- | -------------------- |
@@ -441,6 +505,10 @@ getUri(): string
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -472,6 +540,10 @@ getTitle(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明  |
@@ -502,6 +574,10 @@ getFileName(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明  |
@@ -530,6 +606,10 @@ type ToneHapticsAttrsArray = Array&lt;ToneHapticsAttrs&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                     | 说明      |
 |----------------------------------------|---------|
 | Array&lt;[ToneHapticsAttrs](#tonehapticsattrs14)&gt; | 系统铃音的振动属性数组。 |
@@ -543,6 +623,10 @@ getSystemSoundManager(): SystemSoundManager
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -568,9 +652,13 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[setRingtoneUri](#setringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -611,9 +699,13 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[setRingtoneUri](#setringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -657,9 +749,13 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtoneUri](#getringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -698,9 +794,13 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise&lt;string&gt
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtoneUri](#getringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -742,9 +842,13 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtonePlayer](#getringtoneplayer11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -785,9 +889,13 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise&lt;Ringto
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtonePlayer](#getringtoneplayer11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -831,6 +939,10 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise&l
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -905,6 +1017,10 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                             | 必填 | 说明                     |
@@ -974,6 +1090,10 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise&lt;Ringtone
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1048,6 +1168,10 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                     |
@@ -1121,6 +1245,10 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise&lt;string&
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                     |
@@ -1190,6 +1318,10 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise&lt;Syst
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1264,6 +1396,10 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise&lt;To
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                         |
@@ -1333,6 +1469,10 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise&lt;ToneAt
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1404,6 +1544,10 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise&l
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                                          | 必填 | 说明                         |
@@ -1473,6 +1617,10 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise&lt;To
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1544,6 +1692,10 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise&lt;ToneAttrs&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明        |
@@ -1611,6 +1763,10 @@ setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型        | 必填 | 说明   |
@@ -1671,6 +1827,10 @@ getAlarmToneUri(context: Context): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型      | 必填 | 说明              |
@@ -1727,6 +1887,10 @@ getAlarmToneAttrList(context: BaseContext): Promise&lt;ToneAttrsArray&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1796,6 +1960,10 @@ ArkTS-Sta: openAlarmTone(context: Context, uri: string): Promise&lt;int&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1870,6 +2038,10 @@ ArkTS-Sta: close(fd: int): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                           |
@@ -1940,6 +2112,10 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2035,6 +2211,10 @@ ArkTS-Sta: addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int,
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2135,6 +2315,10 @@ removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                                                                      |
@@ -2207,6 +2391,10 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                                          |
@@ -2277,6 +2465,10 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2359,6 +2551,10 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                                          |
@@ -2427,6 +2623,10 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2502,6 +2702,10 @@ ArkTS-Sta: openToneHaptics(context: Context, hapticsUri: string): Promise&lt;int
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明                                                                                  |
@@ -2572,6 +2776,10 @@ type RingtonePlayer = _RingtonePlayer;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型              |说明     |
 |-----------------|-------|
 | _RingtonePlayer | 系统铃音播放器。 |
@@ -2583,6 +2791,10 @@ type SystemTonePlayer = _SystemTonePlayer;
 系统提示音播放器对象。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型              | 说明        |
 |-----------------|-----------|
@@ -2596,6 +2808,10 @@ type RingtoneOptions = _RingtoneOptions;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型              | 说明          |
 |-----------------|-------------|
 | _RingtoneOptions | 系统铃音播放器配置项。 |
@@ -2607,6 +2823,10 @@ type SystemToneOptions = _SystemToneOptions;
 系统提示音播放器配置项。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型              | 说明            |
 |-----------------|---------------|

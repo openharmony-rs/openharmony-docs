@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
@@ -20,6 +21,10 @@ getAudioHapticManager(): AudioHapticManager
 获取音振管理器。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -38,6 +43,10 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                            |  值     | 说明                                         |
 | ------------------------------- | ------ | -------------------------------------------- |
 | AUDIO_LATENCY_MODE_NORMAL       | 0      | 普通时延模式。                                |
@@ -48,6 +57,10 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 音振播放器选项。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称      | 类型            |必填   | 说明                              |
 | --------- | -------------- | ---- | --------------------------------- |
@@ -67,6 +80,10 @@ ArkTS-Sta: registerSource(audioUri: string, hapticUri: string): Promise&lt;int&g
 注册音频和振动资源的Uri。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -132,6 +149,10 @@ ArkTS-Sta: unregisterSource(id: int): Promise&lt;void&gt;
 取消注册音频和振动资源。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -209,6 +230,10 @@ ArkTS-Sta: setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
@@ -276,6 +301,10 @@ ArkTS-Sta: setStreamUsage(id: int, usage: audio.StreamUsage): void
 设置音频流使用类型。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -351,6 +380,10 @@ ArkTS-Sta: createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise&lt
 如果应用创建的AudioHapticPlayer需要触发振动，则需要校验应用是否拥有该权限。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -437,6 +470,10 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                            |  值     | 说明                                         |
 | ------------------------------- | ------ | -------------------------------------------- |
 | AUDIO_HAPTIC_TYPE_AUDIO         | 0      | 音频。                                    |
@@ -453,6 +490,10 @@ isMuted(type: AudioHapticType): boolean
 查询该音振类型是否被静音。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -489,6 +530,10 @@ start(): Promise&lt;void&gt;
 开始播放。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -538,6 +583,10 @@ stop(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                | 说明                              |
@@ -585,6 +634,10 @@ release(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                | 说明                            |
@@ -631,6 +684,10 @@ on(type: 'endOfStream', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                                                       |
@@ -653,6 +710,10 @@ off(type: 'endOfStream', callback?: Callback&lt;void&gt;): void
 取消监听流结束事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -684,6 +745,10 @@ on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;): void
 监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -754,6 +819,10 @@ off(type: 'audioInterrupt', callback?: Callback&lt;audio.InterruptEvent&gt;): vo
 取消监听音频中断事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

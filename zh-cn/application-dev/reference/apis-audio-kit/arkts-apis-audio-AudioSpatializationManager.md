@@ -2,8 +2,10 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 18开始支持。
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 空间音频管理。
 
@@ -22,6 +24,10 @@ isSpatializationEnabledForCurrentDevice(): boolean
 获取当前设备空间音频渲染是否开启。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -45,6 +51,10 @@ on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boole
 监听当前设备空间音频渲染开关状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -78,6 +88,10 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 取消监听当前设备空间音频渲染开关状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

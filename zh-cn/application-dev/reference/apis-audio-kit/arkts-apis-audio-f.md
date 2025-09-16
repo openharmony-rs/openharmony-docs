@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
@@ -18,6 +19,10 @@ getAudioManager(): AudioManager
 获取音频管理器。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -39,6 +44,10 @@ createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback\<Audi
 获取音频渲染器。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -86,6 +95,10 @@ createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer\>
 获取音频渲染器。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -174,6 +187,10 @@ createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<Audio
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限：** ohos.permission.MICROPHONE
 
 当设置Mic音频源（即[SourceType](arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_CAMCORDER）时需要该权限。
@@ -224,6 +241,10 @@ createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer\>
 获取音频采集器。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -319,6 +340,8 @@ createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 20
 
 **需要权限：** ohos.permission.MICROPHONE
 

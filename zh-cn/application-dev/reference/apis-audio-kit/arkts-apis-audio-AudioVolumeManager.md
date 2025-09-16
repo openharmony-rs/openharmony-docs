@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
@@ -25,6 +26,10 @@ ArkTS-Sta: getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolu
 获取音频组管理器。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -76,6 +81,10 @@ ArkTS-Sta: getVolumeGroupManager(groupId: int\): Promise<AudioVolumeGroupManager
 获取音频组管理器。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -129,6 +138,10 @@ ArkTS-Sta: getVolumeGroupManagerSync(groupId: int\): AudioVolumeGroupManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                               |
@@ -174,6 +187,10 @@ ArkTS-Sta: getAppVolumePercentage(): Promise<int\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                | 说明                 |
@@ -211,6 +228,10 @@ ArkTS-Sta: setAppVolumePercentage(volume: int\): Promise<void\>
 设置应用的音量（范围为0到100）。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -251,6 +272,10 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
@@ -284,6 +309,10 @@ off(type: 'volumeChange', callback?: Callback\<VolumeEvent>): void
 取消监听系统音量变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -327,6 +356,10 @@ on(type: 'appVolumeChange', callback: Callback\<VolumeEvent>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
@@ -359,6 +392,10 @@ off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 取消监听当前应用应用级音量变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

@@ -6,6 +6,7 @@ systemTonePlayer需要和[@ohos.multimedia.systemSoundManager](js-apis-systemSou
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 本模块接口为系统接口。
@@ -23,6 +24,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称        | 类型    | 必填 | 说明                                          |
 | ----------- | ------- | ---- | --------------------------------------------- |
@@ -42,6 +47,10 @@ getTitle(): Promise&lt;string&gt;
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -91,6 +100,10 @@ prepare(): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -145,6 +158,10 @@ ArkTS-Sta: start(toneOptions?: SystemToneOptions): Promise&lt;int&gt;
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **需要权限：** ohos.permission.VIBRATE
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -215,6 +232,10 @@ ArkTS-Sta: stop(id: int): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                      |
@@ -273,6 +294,10 @@ release(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                            |
@@ -323,6 +348,10 @@ ArkTS-Sta: setAudioVolumeScale(scale: double): void
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                 |
@@ -363,6 +392,10 @@ ArkTS-Sta: getAudioVolumeScale(): double
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 
@@ -398,6 +431,10 @@ getSupportedHapticsFeatures(): Promise&lt;Array&lt;systemSoundManager.ToneHaptic
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -436,6 +473,10 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -498,6 +539,10 @@ getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                                                              | 说明     |
@@ -549,6 +594,10 @@ ArkTS-Sta: on(type: 'playFinished', streamId: int, callback: Callback\<int>): vo
 监听对象为传入的streamId对应音频流。当streamId传入0时，监听本播放器对应的所有音频流。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -617,6 +666,10 @@ ArkTS-Sta: off(type: 'playFinished', callback?: Callback\<int>): void
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                              |
@@ -675,6 +728,10 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统能力**：SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型          | 必填 | 说明                                 |
@@ -708,6 +765,10 @@ off(type: 'error', callback?: ErrorCallback): void
 取消监听铃音播放过程中的错误事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

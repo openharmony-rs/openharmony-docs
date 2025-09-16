@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
@@ -12,6 +13,10 @@ type AudioRendererChangeInfoArray = Array&lt;Readonly&lt;AudioRendererChangeInfo
 数组类型，AudioRenderChangeInfo数组，只读。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|
@@ -26,6 +31,10 @@ type AudioCapturerChangeInfoArray = Array&lt;Readonly&lt;AudioCapturerChangeInfo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型      | 说明                                                              |
 |---------|-----------------------------------------------------------------|
 | Array&lt;Readonly&lt;AudioCapturerChangeInfo&gt;&gt; | 数组类型，[AudioCapturerChangeInfo](arkts-apis-audio-i.md#audiocapturerchangeinfo9)数组，只读。 |
@@ -38,6 +47,10 @@ type AudioEffectInfoArray = Array&lt;Readonly&lt;AudioEffectMode&gt;&gt;
 待查询ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)数组，只读。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|
@@ -53,6 +66,10 @@ type AudioDeviceDescriptors = Array&lt;Readonly&lt;AudioDeviceDescriptor&gt;&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|
 | Array&lt;Readonly&lt;AudioDeviceDescriptor&gt;&gt; | 设备属性数组类型，为[AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)的数组，只读。 |
@@ -67,6 +84,8 @@ type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackRe
 **ArkTS模式：** 该类型仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -90,6 +109,8 @@ type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackRe
 **ArkTS模式：** 该类型仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

@@ -6,6 +6,7 @@ ringtonePlayer需要和[@ohos.multimedia.systemSoundManager](js-apis-systemSound
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 本模块接口为系统接口。
@@ -24,6 +25,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称      | 类型            |必填   | 说明                              |
 | --------- | -------------- | ---- | --------------------------------- |
 | volume    | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 指定的相对音量大小，取值范围为[0.00, 1.00]，1表示最大音量，即100%。 |
@@ -38,6 +43,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  | 类型                        | 只读 | 可选 | 说明               |
 | ----- | -------------------------- | ---- | ---- | ------------------ |
@@ -59,6 +68,10 @@ getTitle(callback: AsyncCallback&lt;string&gt;): void
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -106,6 +119,10 @@ getTitle(): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                  | 说明                              |
@@ -145,6 +162,10 @@ getAudioRendererInfo(callback: AsyncCallback&lt;audio.AudioRendererInfo&gt;): vo
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -200,6 +221,10 @@ getAudioRendererInfo(): Promise&lt;audio.AudioRendererInfo&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                | 说明                            |
@@ -248,6 +273,10 @@ configure(options: RingtoneOptions, callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -304,6 +333,10 @@ configure(options: RingtoneOptions): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -362,6 +395,10 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
@@ -408,6 +445,10 @@ start(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                | 说明                              |
@@ -447,6 +488,10 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -494,6 +539,10 @@ stop(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                | 说明                              |
@@ -533,6 +582,10 @@ release(callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -580,6 +633,10 @@ release(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                | 说明                            |
@@ -619,6 +676,10 @@ on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;): void
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -747,6 +808,10 @@ off(type: 'audioInterrupt'): void
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
