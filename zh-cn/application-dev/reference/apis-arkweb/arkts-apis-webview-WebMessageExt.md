@@ -189,6 +189,10 @@ setString(message: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -212,6 +216,11 @@ ArkTS-Sta: setNumber(message: double): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -232,6 +241,10 @@ setBoolean(message: boolean): void
 设置数据对象的布尔类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
