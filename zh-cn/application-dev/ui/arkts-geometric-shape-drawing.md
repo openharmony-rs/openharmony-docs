@@ -51,102 +51,283 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过形状视口对图形进行放大与缩小。
 
-  ```ts
-  class tmp{
-    x:number = 0
-    y:number = 0
-    width:number = 75
-    height:number = 75
-  }
-  let viep:tmp = new tmp()
+ArkTS-Dyn示例：
 
-  class tmp1{
-    x:number = 0
-    y:number = 0
-    width:number = 300
-    height:number = 300
-  }
-  let viep1:tmp1 = new tmp1()
+```ts
+class tmp {
+  x: number = 0
+  y: number = 0
+  width: number = 75
+  height: number = 75
+}
 
-  // 画一个宽高都为75的圆
-  Text('原始尺寸Circle组件')
-  Circle({width: 75, height: 75}).fill('#E87361')
+class tmp1 {
+  x:number = 0
+  y:number = 0
+  width:number = 300
+  height:number = 300
+}
 
-  Row({space:10}) {
+@Entry
+@Component
+struct Index {
+  viep: tmp = new tmp();
+  viep1: tmp1 = new tmp1();
+
+  build() {
     Column() {
-      // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为75的viewport。用一个蓝色的矩形来填充viewport，在viewport中绘制一个直径为75的圆。
-      // 绘制结束，viewport会根据组件宽高放大两倍
-      Text('shape内放大的Circle组件')
-      Shape() {
-        Rect().width('100%').height('100%').fill('#0097D4')
-        Circle({width: 75, height: 75}).fill('#E87361')
+      // 画一个宽高都为75的圆。
+      Text('原始尺寸Circle组件')
+      Circle({ width: 75, height: 75 }).fill('#E87361')
+
+      Row({ space: 10 }) {
+        Column() {
+          // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为75的viewPort。
+          // 用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
+          // 绘制结束，viewPort会根据组件宽高放大两倍。
+          Text('shape内放大的Circle组件')
+          Shape() {
+            Rect().width('100%').height('100%').fill('#0097D4')
+            Circle({ width: 75, height: 75 }).fill('#E87361')
+          }
+          .viewPort(this.viep)
+          .width(150)
+          .height(150)
+          .backgroundColor('#F5DC62')
+        }
+
+        Column() {
+          // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为300的viewPort。
+          // 用一个绿色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
+          // 绘制结束，viewPort会根据组件宽高缩小两倍。
+          Text('Shape内缩小的Circle组件')
+          Shape() {
+            Rect().width('100%').height('100%').fill('#BDDB69')
+            Circle({width: 75, height: 75}).fill('#E87361')
+          }
+          .viewPort(this.viep1)
+          .width(150)
+          .height(150)
+          .backgroundColor('#F5DC62')
+        }
       }
-      .viewPort(viep)
-      .width(150)
-      .height(150)
-      .backgroundColor('#F5DC62')
-    }
-    Column() {
-      // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为300的viewport。用一个绿色的矩形来填充viewport，在viewport中绘制一个直径为75的圆。
-      // 绘制结束，viewport会根据组件宽高缩小两倍。
-      Text('Shape内缩小的Circle组件')
-      Shape() {
-        Rect().width('100%').height('100%').fill('#BDDB69')
-        Circle({width: 75, height: 75}).fill('#E87361')
-      }
-      .viewPort(viep1)
-      .width(150)
-      .height(150)
-      .backgroundColor('#F5DC62')
     }
   }
+}
+  ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import{
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Circle,
+  CircleOptions,
+  Row,
+  RowOptions,
+  Rect,
+  RectOptions,
+  Text,
+  Shape,
+  ViewportRect,
+}from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  viep: ViewportRect = {x:0,y:0,width:75,height:75} as ViewportRect;
+  viep1: ViewportRect = {x:0,y:0,width:300,height:300} as ViewportRect;
+
+  build() {
+    Column() {
+      // 画一个宽高都为75的圆。
+      Text('原始尺寸Circle组件')
+      Circle({ width: 75, height: 75 } as CircleOptions).fill('#E87361')
+
+      Row({ space: 10 } as RowOptions) {
+        Column() {
+          // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为75的viewPort。
+          // 用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
+          // 绘制结束，viewPort会根据组件宽高放大两倍。
+          Text('shape内放大的Circle组件')
+          Shape() {
+            Rect().width('100%').height('100%').fill('#0097D4')
+            Circle({ width: 75, height: 75 } as CircleOptions).fill('#E87361')
+          }
+          .viewPort(this.viep)
+          .width(150)
+          .height(150)
+          .backgroundColor('#F5DC62')
+        }
+
+        Column() {
+          // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为300的viewPort。
+          // 用一个绿色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
+          // 绘制结束，viewPort会根据组件宽高缩小两倍。
+          Text('Shape内缩小的Circle组件')
+          Shape() {
+            Rect().width('100%').height('100%').fill('#BDDB69')
+            Circle({width: 75, height: 75} as CircleOptions).fill('#E87361')
+          }
+          .viewPort(this.viep1)
+          .width(150)
+          .height(150)
+          .backgroundColor('#F5DC62')
+        }
+      }
+    }
+  }
+}
   ```
 
   ![2023032401632](figures/2023032401632.jpg)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，一个宽高都为300的viewport。用一个蓝色的矩形来填充viewport，在viewport中绘制一个半径为75的圆。
 
-  ```ts
-  class tmp{
-    x:number = 0
-    y:number = 0
-    width:number = 300
-    height:number = 300
-  }
-  let viep:tmp = new tmp()
+ArkTS-Dyn示例：
 
-  Shape() {
-    Rect().width("100%").height("100%").fill("#0097D4")
-    Circle({ width: 150, height: 150 }).fill("#E87361")
+```ts
+class tmp {
+  x: number = 0
+  y: number = 0
+  width: number = 300
+  height: number = 300
+}
+
+@Entry
+@Component
+struct Index {
+  viep: tmp = new tmp();
+
+  build() {
+    Column() {
+      Shape() {
+        Rect().width("100%").height("100%").fill("#0097D4")
+        Circle({ width: 150, height: 150 }).fill("#E87361")
+      }
+      .viewPort(this.viep)
+      .width(300)
+      .height(300)
+      .backgroundColor("#F5DC62")
+    }
   }
-    .viewPort(viep)
-    .width(300)
-    .height(300)
-    .backgroundColor("#F5DC62")
+}
+  ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import{
+  Entry,
+  Component,
+  Column,
+  Circle,
+  CircleOptions,
+  Rect,
+  Shape,
+  ViewportRect,
+  RectOptions,
+}from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  viep: ViewportRect = {x:0,y:0,width:300,height:300} as ViewportRect;
+
+  build() {
+    Column() {
+      Shape() {
+        Rect().width("100%").height("100%").fill("#0097D4")
+        Circle({ width: 150, height: 150 } as CircleOptions).fill("#E87361")
+      }
+      .viewPort(this.viep)
+      .width(300)
+      .height(300)
+      .backgroundColor("#F5DC62")
+    }
+  }
+}
   ```
 
   ![viewport（2）](figures/viewport（2）.jpg)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewport。用一个蓝色的矩形来填充viewport，在viewport中绘制一个半径为75的圆，将viewport向右方和下方各平移150。
 
-  ```ts
-  class tmp{
-    x:number = -150
-    y:number = -150
-    width:number = 300
-    height:number = 300
-  }
-  let viep:tmp = new tmp()
+ArkTS-Dyn示例：
 
-  Shape() {
-    Rect().width("100%").height("100%").fill("#0097D4")
-    Circle({ width: 150, height: 150 }).fill("#E87361")
+```ts
+class tmp {
+  x: number = -150
+  y: number = -150
+  width: number = 300
+  height: number = 300
+}
+
+@Entry
+@Component
+struct Index {
+  viep: tmp = new tmp();
+
+  build() {
+    Column() {
+      Shape() {
+        Rect().width("100%").height("100%").fill("#0097D4")
+        Circle({ width: 150, height: 150 }).fill("#E87361")
+      }
+      .viewPort(this.viep)
+      .width(300)
+      .height(300)
+      .backgroundColor("#F5DC62")
+    }
   }
-    .viewPort(viep)
-    .width(300)
-    .height(300)
-    .backgroundColor("#F5DC62")
-  ```
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import{
+  Entry,
+  Component,
+  Column,
+  Circle,
+  CircleOptions,
+  Row,
+  Rect,
+  Text,
+  Shape,
+  ViewportRect,
+  RectOptions,
+}from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  viep: ViewportRect = {x:-150,y:-150,width:300,height:300} as ViewportRect;
+
+  build() {
+    Column() {
+      Shape() {
+        Rect().width("100%").height("100%").fill("#0097D4")
+        Circle({ width: 150, height: 150 } as CircleOptions).fill("#E87361")
+      }
+      .viewPort(this.viep)
+      .width(300)
+      .height(300)
+      .backgroundColor("#F5DC62")
+    }
+  }
+}
+``` 
 
   ![viewport（3）](figures/viewport（3）.jpg)
 
@@ -206,7 +387,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .stroke(Color.Red)
     .strokeWidth(8)
     .points([[20, 0], [0, 100], [100, 90]])
-     // 设置折线拐角处为圆弧
+     // 设置折线拐角处为圆弧。
     .strokeLineJoin(LineJoinStyle.Round)
   ```
 
@@ -223,9 +404,9 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .stroke(Color.Red)
     .strokeWidth(10)
     .points([[20, 0], [20, 100], [100, 100]])
-    // 设置折线拐角处为尖角
+    // 设置折线拐角处为尖角。
     .strokeLineJoin(LineJoinStyle.Miter)
-    // 设置斜接长度与线宽的比值
+    // 设置斜接长度与线宽的比值。
     .strokeMiterLimit(1/Math.sin(45))
   Polyline()
     .width(100)
@@ -243,7 +424,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 - 通过antiAlias设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
   ```ts
-  //开启抗锯齿
+  // 开启抗锯齿。
   Circle()
     .width(150)
     .height(200)
@@ -255,7 +436,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   ![无标题](figures/无标题.png)
 
   ```ts
-  //关闭抗锯齿
+  // 关闭抗锯齿。
   Circle()
     .width(150)
     .height(200)
@@ -274,25 +455,70 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   在Shape的(-80, -5)点绘制一个封闭路径，填充颜色0x317AF7，线条宽度3，边框颜色红色，拐角样式锐角（默认值）。
 
-  ```ts
-  @Entry
-  @Component
-  struct ShapeExample {
-    build() {
-      Column({ space: 10 }) {
-        Shape() {
-          Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
-        }
-        .viewPort({ x: -80, y: -5, width: 500, height: 300 })
-        .fill(0x317AF7)
-        .stroke(Color.Red)
-        .strokeWidth(3)
-        .strokeLineJoin(LineJoinStyle.Miter)
-        .strokeMiterLimit(5)
-      }.width('100%').margin({ top: 15 })
-    }
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct ShapeExample {
+  build() {
+    Column({ space: 10 }) {
+      Shape() {
+        Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
+      }
+      .viewPort({ x: -80, y: -5, width: 500, height: 300 })
+      .fill(0x317AF7)
+      .stroke(Color.Red)
+      .strokeWidth(3)
+      .strokeLineJoin(LineJoinStyle.Miter)
+      .strokeMiterLimit(5)
+    }.width('100%').margin({ top: 15 })
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import{
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Circle,
+  CircleOptions,
+  Rect,
+  Text,
+  Shape,
+  ViewportRect,
+  RectOptions,
+  Margin,
+  Path,
+  LineJoinStyle,
+}from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShapeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Shape() {
+        Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
+      }
+      .viewPort({ x: -80, y: -5, width: 500, height: 300 })
+      .fill(0x317AF7)
+      .stroke(Color.Red)
+      .strokeWidth(3)
+      .strokeLineJoin(LineJoinStyle.Miter)
+      .strokeMiterLimit(5)
+    }.width('100%').margin({ top: 15 } as Margin)
+  }
+}
+```
+
+
 
   ![场景1](figures/场景1.jpg)
 
@@ -300,15 +526,17 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   绘制一个直径为150的圆，和一个直径为150、线条为红色虚线的圆环（宽高设置不一致时以短边为直径）。
 
+ArkTS-Dyn示例：
+
   ```ts
   @Entry
   @Component
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆。
         Circle({ width: 150, height: 150 })
-        //绘制一个直径为150、线条为红色虚线的圆环
+        // 绘制一个直径为150、线条为红色虚线的圆环。
         Circle()
           .width(150)
           .height(200)
@@ -320,5 +548,47 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     }
   }
   ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import{
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Circle,
+  CircleOptions,
+  Row,
+  RowOptions,
+  Rect,
+  Text,
+  Shape,
+  ViewportRect,
+  RectOptions,
+}from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CircleExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      // 绘制一个直径为150的圆。
+      Circle({ width: 150, height: 150 } as CircleOptions)
+      // 绘制一个直径为150、线条为红色虚线的圆环。
+      Circle()
+        .width(150)
+        .height(200)
+        .fillOpacity(0)
+        .strokeWidth(3)
+        .stroke(Color.Red)
+        .strokeDashArray([1, 2])
+    }.width('100%')
+  }
+}
+```
+
 
   ![场景2](figures/场景2.jpg)
