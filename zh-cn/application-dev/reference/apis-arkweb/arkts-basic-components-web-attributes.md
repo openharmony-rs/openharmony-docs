@@ -362,7 +362,7 @@ zoomAccess(zoomAccess: boolean)
 
 overviewModeAccess(overviewModeAccess: boolean)
 
-设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当前仅支持移动设备。
+设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当前仅支持移动设备。当属性没有显式调用时，默认允许使用概览模式加载网页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -374,7 +374,7 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 | 参数名                | 类型    | 必填   | 说明            |
 | ------------------ | ------- | ---- | --------------- |
-| overviewModeAccess | boolean | 是    | 设置是否使用概览模式加载网页。<br>true表示设置使用概览模式加载网页，false表示设置不使用概览模式加载网页。<br>默认值：true。 |
+| overviewModeAccess | boolean | 是    | 设置是否使用概览模式加载网页。<br>true表示设置使用概览模式加载网页，false表示设置不使用概览模式加载网页。 |
 
 **示例：**
 
@@ -1002,7 +1002,7 @@ ArkTS-Dyn: minLogicalFontSize(size: number)
 
 ArkTS-Sta: minLogicalFontSize(size: int)
 
-设置网页逻辑字体大小最小值。
+设置网页逻辑字体大小最小值。当属性没有显式调用时，默认允许设置网页逻辑字体大小为8。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1014,7 +1014,7 @@ ArkTS-Sta: minLogicalFontSize(size: int)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：8。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
 
 **示例：**
 
