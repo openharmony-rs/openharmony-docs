@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## 概述
 
@@ -92,7 +92,7 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 | 参数项 | 描述 |
 | -- | -- |
 | const char* webTag | Web组件名称。                   |
-| const char* objName  | JavaScript对象名称           |
+| const char* objName  | JavaScript对象名称。          |
 
 ### refresh()
 

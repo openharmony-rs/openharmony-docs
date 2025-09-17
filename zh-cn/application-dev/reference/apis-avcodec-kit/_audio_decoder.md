@@ -1,5 +1,11 @@
 # AudioDecoder
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @zengyawen-->
 
 ## 概述
 
@@ -11,7 +17,7 @@ AudioDecoder模块提供用于音频解码功能的函数。
 
 **废弃版本：** 11
 
-**替代建议：** 当前模块下的接口均已废弃，开发者可使用[AudioCodec](_audio_codec.md)完成对应功能开发，单个接口的替代关系可查阅具体的接口说明。
+**替代建议：** 当前模块下的接口均已废弃，开发者可使用[AudioCodec](capi-audiocodec.md)完成对应功能开发，单个接口的替代关系可查阅具体的接口说明。
 
 
 ## 汇总
@@ -30,19 +36,19 @@ AudioDecoder模块提供用于音频解码功能的函数。
 | -------- | -------- |
 | OH_AVCodec \* [OH_AudioDecoder_CreateByMime](#oh_audiodecoder_createbymime) (const char \*mime) | 根据MIME类型创建音频解码器实例。 | 
 | OH_AVCodec \* [OH_AudioDecoder_CreateByName](#oh_audiodecoder_createbyname) (const char \*name) | 通过音频解码器名称创建音频解码器实例。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_Destroy](#oh_audiodecoder_destroy) (OH_AVCodec \*codec) | 清理解码器内部资源，销毁解码器实例。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_SetCallback](#oh_audiodecoder_setcallback) (OH_AVCodec \*codec, [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) callback, void \*userData) | 设置异步回调函数，使应用可以响应音频解码器生成的事件。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_Configure](#oh_audiodecoder_configure) (OH_AVCodec \*codec, OH_AVFormat \*format) | 要配置音频解码器，通常需要配置从容器中提取的音频描述信息。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_Prepare](#oh_audiodecoder_prepare) (OH_AVCodec \*codec) | 准备解码器的内部资源。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_Start](#oh_audiodecoder_start) (OH_AVCodec \*codec) | 调用此接口启动解码器，在Prepare成功后执行。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_Stop](#oh_audiodecoder_stop) (OH_AVCodec \*codec) | 停止解码器。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_Flush](#oh_audiodecoder_flush) (OH_AVCodec \*codec) | 清除解码器中缓存的输入和输出数据。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_Reset](#oh_audiodecoder_reset) (OH_AVCodec \*codec) | 重置解码器。如果要继续解码，需要再次调用Configure接口配置解码器实例。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Destroy](#oh_audiodecoder_destroy) (OH_AVCodec \*codec) | 清理解码器内部资源，销毁解码器实例。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_SetCallback](#oh_audiodecoder_setcallback) (OH_AVCodec \*codec, [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) callback, void \*userData) | 设置异步回调函数，使应用可以响应音频解码器生成的事件。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Configure](#oh_audiodecoder_configure) (OH_AVCodec \*codec, OH_AVFormat \*format) | 要配置音频解码器，通常需要配置从容器中提取的音频描述信息。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Prepare](#oh_audiodecoder_prepare) (OH_AVCodec \*codec) | 准备解码器的内部资源。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Start](#oh_audiodecoder_start) (OH_AVCodec \*codec) | 调用此接口启动解码器，在Prepare成功后执行。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Stop](#oh_audiodecoder_stop) (OH_AVCodec \*codec) | 停止解码器。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Flush](#oh_audiodecoder_flush) (OH_AVCodec \*codec) | 清除解码器中缓存的输入和输出数据。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Reset](#oh_audiodecoder_reset) (OH_AVCodec \*codec) | 重置解码器。如果要继续解码，需要再次调用Configure接口配置解码器实例。 | 
 | OH_AVFormat \* [OH_AudioDecoder_GetOutputDescription](#oh_audiodecoder_getoutputdescription) (OH_AVCodec \*codec) | 获取解码器输出数据的描述信息。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_SetParameter](#oh_audiodecoder_setparameter) (OH_AVCodec \*codec, OH_AVFormat \*format) | 配置解码器的动态参数。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_PushInputData](#oh_audiodecoder_pushinputdata) (OH_AVCodec \*codec, uint32_t index, [OH_AVCodecBufferAttr](_o_h___a_v_codec_buffer_attr.md) attr) | 通知音频解码器已完成对index所对应缓冲区进行输入数据的填充。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_FreeOutputData](#oh_audiodecoder_freeoutputdata) (OH_AVCodec \*codec, uint32_t index) | 将处理后的输出缓冲区返回给解码器。 | 
-| [OH_AVErrCode](_core.md#oh_averrcode) [OH_AudioDecoder_IsValid](#oh_audiodecoder_isvalid) (OH_AVCodec \*codec, bool \*isValid) | 检查当前解码器实例是否有效，可用于后台故障恢复或应用程序从后台恢复时检测解码器有效状态。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_SetParameter](#oh_audiodecoder_setparameter) (OH_AVCodec \*codec, OH_AVFormat \*format) | 配置解码器的动态参数。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_PushInputData](#oh_audiodecoder_pushinputdata) (OH_AVCodec \*codec, uint32_t index, [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) attr) | 通知音频解码器已完成对index所对应缓冲区进行输入数据的填充。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_FreeOutputData](#oh_audiodecoder_freeoutputdata) (OH_AVCodec \*codec, uint32_t index) | 将处理后的输出缓冲区返回给解码器。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_IsValid](#oh_audiodecoder_isvalid) (OH_AVCodec \*codec, bool \*isValid) | 检查当前解码器实例是否有效，可用于后台故障恢复或应用程序从后台恢复时检测解码器有效状态。 | 
 
 
 ## 函数说明
@@ -66,7 +72,7 @@ OH_AVErrCode OH_AudioDecoder_Configure (OH_AVCodec *codec, OH_AVFormat *format)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_Configure](_audio_codec.md#oh_audiocodec_configure)
+**替代接口：**[OH_AudioCodec_Configure](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_configure)
 
 **参数:**
 
@@ -77,7 +83,7 @@ OH_AVErrCode OH_AudioDecoder_Configure (OH_AVCodec *codec, OH_AVFormat *format)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_CreateByMime()
@@ -96,7 +102,7 @@ OH_AVCodec* OH_AudioDecoder_CreateByMime (const char *mime)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_CreateByMime](_audio_codec.md#oh_audiocodec_createbymime)
+**替代接口：**[OH_AudioCodec_CreateByMime](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_createbymime)
 
 **参数:**
 
@@ -125,7 +131,7 @@ OH_AVCodec* OH_AudioDecoder_CreateByName (const char *name)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_CreateByName](_audio_codec.md#oh_audiocodec_createbyname)
+**替代接口：**[OH_AudioCodec_CreateByName](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_createbyname)
 
 **参数:**
 
@@ -154,7 +160,7 @@ OH_AVErrCode OH_AudioDecoder_Destroy (OH_AVCodec *codec)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_Destroy](_audio_codec.md#oh_audiocodec_destroy)
+**替代接口：**[OH_AudioCodec_Destroy](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_destroy)
 
 **参数:**
 
@@ -164,7 +170,7 @@ OH_AVErrCode OH_AudioDecoder_Destroy (OH_AVCodec *codec)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_Flush()
@@ -185,7 +191,7 @@ OH_AVErrCode OH_AudioDecoder_Flush (OH_AVCodec *codec)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_Flush](_audio_codec.md#oh_audiocodec_flush)
+**替代接口：**[OH_AudioCodec_Flush](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_flush)
 
 **参数:**
 
@@ -195,7 +201,7 @@ OH_AVErrCode OH_AudioDecoder_Flush (OH_AVCodec *codec)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_FreeOutputData()
@@ -214,7 +220,7 @@ OH_AVErrCode OH_AudioDecoder_FreeOutputData (OH_AVCodec *codec, uint32_t index)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_FreeOutputBuffer](_audio_codec.md#oh_audiocodec_freeoutputbuffer)
+**替代接口：**[OH_AudioCodec_FreeOutputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_freeoutputbuffer)
 
 **参数:**
 
@@ -225,7 +231,7 @@ OH_AVErrCode OH_AudioDecoder_FreeOutputData (OH_AVCodec *codec, uint32_t index)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_GetOutputDescription()
@@ -246,7 +252,7 @@ OH_AVFormat* OH_AudioDecoder_GetOutputDescription (OH_AVCodec *codec)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_GetOutputDescription](_audio_codec.md#oh_audiocodec_getoutputdescription)
+**替代接口：**[OH_AudioCodec_GetOutputDescription](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_getoutputdescription)
 
 **参数:**
 
@@ -275,7 +281,7 @@ OH_AVErrCode OH_AudioDecoder_IsValid (OH_AVCodec *codec, bool *isValid)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_IsValid](_audio_codec.md#oh_audiocodec_isvalid)
+**替代接口：**[OH_AudioCodec_IsValid](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_isvalid)
 
 **参数:**
 
@@ -286,7 +292,7 @@ OH_AVErrCode OH_AudioDecoder_IsValid (OH_AVCodec *codec, bool *isValid)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_Prepare()
@@ -305,7 +311,7 @@ OH_AVErrCode OH_AudioDecoder_Prepare (OH_AVCodec *codec)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_Prepare](_audio_codec.md#oh_audiocodec_prepare)
+**替代接口：**[OH_AudioCodec_Prepare](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_prepare)
 
 **参数:**
 
@@ -315,7 +321,7 @@ OH_AVErrCode OH_AudioDecoder_Prepare (OH_AVCodec *codec)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_PushInputData()
@@ -338,7 +344,7 @@ OH_AVErrCode OH_AudioDecoder_PushInputData (OH_AVCodec *codec, uint32_t index, O
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_PushInputBuffer](_audio_codec.md#oh_audiocodec_pushinputbuffer)
+**替代接口：**[OH_AudioCodec_PushInputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_pushinputbuffer)
 
 **参数:**
 
@@ -350,7 +356,7 @@ OH_AVErrCode OH_AudioDecoder_PushInputData (OH_AVCodec *codec, uint32_t index, O
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_Reset()
@@ -369,7 +375,7 @@ OH_AVErrCode OH_AudioDecoder_Reset (OH_AVCodec *codec)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_Reset](_audio_codec.md#oh_audiocodec_reset)
+**替代接口：**[OH_AudioCodec_Reset](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_reset)
 
 **参数:**
 
@@ -379,7 +385,7 @@ OH_AVErrCode OH_AudioDecoder_Reset (OH_AVCodec *codec)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_SetCallback()
@@ -398,7 +404,7 @@ OH_AVErrCode OH_AudioDecoder_SetCallback (OH_AVCodec *codec, OH_AVCodecAsyncCall
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_RegisterCallback](_audio_codec.md#oh_audiocodec_registercallback)
+**替代接口：**[OH_AudioCodec_RegisterCallback](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_registercallback)
 
 **参数:**
 
@@ -410,7 +416,7 @@ OH_AVErrCode OH_AudioDecoder_SetCallback (OH_AVCodec *codec, OH_AVCodecAsyncCall
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_SetParameter()
@@ -431,7 +437,7 @@ OH_AVErrCode OH_AudioDecoder_SetParameter (OH_AVCodec *codec, OH_AVFormat *forma
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_SetParameter](_audio_codec.md#oh_audiocodec_setparameter)
+**替代接口：**[OH_AudioCodec_SetParameter](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_setparameter)
 
 **参数:**
 
@@ -442,7 +448,7 @@ OH_AVErrCode OH_AudioDecoder_SetParameter (OH_AVCodec *codec, OH_AVFormat *forma
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_Start()
@@ -461,7 +467,7 @@ OH_AVErrCode OH_AudioDecoder_Start (OH_AVCodec *codec)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_Start](_audio_codec.md#oh_audiocodec_start)
+**替代接口：**[OH_AudioCodec_Start](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_start)
 
 **参数:**
 
@@ -471,7 +477,7 @@ OH_AVErrCode OH_AudioDecoder_Start (OH_AVCodec *codec)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。
 
 
 ### OH_AudioDecoder_Stop()
@@ -492,7 +498,7 @@ OH_AVErrCode OH_AudioDecoder_Stop (OH_AVCodec *codec)
 
 **废弃版本：** 11
 
-**替代接口：**[OH_AudioCodec_Stop](_audio_codec.md#oh_audiocodec_stop)
+**替代接口：**[OH_AudioCodec_Stop](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_stop)
 
 **参数:**
 
@@ -502,4 +508,4 @@ OH_AVErrCode OH_AudioDecoder_Stop (OH_AVCodec *codec)
 
 **返回：**
 
-如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](_core.md#oh_averrcode)。
+如果执行成功，则返回AV_ERR_OK，否则返回特定错误代码，请参阅 [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode)。

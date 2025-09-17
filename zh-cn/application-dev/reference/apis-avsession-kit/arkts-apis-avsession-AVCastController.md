@@ -166,8 +166,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
-let resolutionLeve = avSession.ResolutionLevel;
-aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve) => {
+aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
   console.info('getRecommendedResolutionLevel successfully');
 }).catch((err: BusinessError) => {
   console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -369,7 +368,8 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102 | The session does not exist. |
 
 **示例：**
 
@@ -1462,7 +1462,6 @@ off(type: 'videoSizeChange'): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: number, height: number) => void   | 是   | 回调函数。                    |
 
 **错误码：**
 
@@ -1471,6 +1470,7 @@ off(type: 'videoSizeChange'): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception. |
 
 **示例：**
 
@@ -2103,7 +2103,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
 
@@ -2136,7 +2136,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
 

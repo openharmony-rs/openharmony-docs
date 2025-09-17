@@ -5096,11 +5096,11 @@ With this permission, the HAP can load independent binary .so files with a devel
 
 Allows a system application to query the certificate information of independent binary programs.
 
-**Permission level**: ：system_core
+**Permission level**: system_core
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
 **Supported devices**: PC/2in1
 
@@ -5110,12 +5110,42 @@ Allows a system application to query the certificate information of independent 
 
 Allows a system application to set the certificate status of independent binary programs.
 
-**Permission level**: ：system_core
+**Permission level**: system_core
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
 **Supported devices**: PC/2in1
 
 **Valid since**: 20
+
+## ohos.permission.MANAGE_SELF_SKILLS
+
+Allows an application to manage its skills configuration.
+
+With this permission, the application can extend its implicit matching capabilities, such as opening specific file types.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PC/2in1
+
+**Valid since**: 22
+
+## ohos.permission.DATA_IDENTIFY_ANONYMIZE
+
+Allows the system app to invoke the data identification and anonymization capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PC/2in1 | Phone | Tablet | TV | Car
+
+**Valid since**：21

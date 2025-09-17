@@ -99,7 +99,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | 文件uri。<br>**注意：**查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
+| URI           | 'uri'                 | 文件uri。<br>**注意：** 查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
 | PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 | DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
 | SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
@@ -336,3 +336,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ALL | 0   | 所有来源的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | CAMERA | 1   | 仅相机拍摄的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | SCREENSHOT | 2   | 截屏图片或者录屏视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## HdrMode<sup>21+</sup>
+
+枚举，图片的HDR类型。
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  默认类型。|
+| HDR_ISO_SINGLE |  1 |  单层HDR技术。  |
+| HDR_ISO_DUAL |  2 |  单层HDR技术。  |
+| HDR_CUVA |  3 |  中国超高清视频产业联盟HDR标准。  |
+| HDR_VIVID_SINGLE |  4 |  单层HDR VIVID技术。  |
+| HDR_VIVID_DUAL |  5 |  单层HDR VIVID技术。  |

@@ -26,9 +26,9 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
 
 ## 约束和限制
 
-- **支持的平台**：该能力与平台能力有关，可以通过[OH_AVCapability_IsFeatureSupported](../../reference/apis-avcodec-kit/_a_v_capability.md#oh_avcapability_isfeaturesupported)接口查询系统支持情况。
+- **支持的平台**：该能力与平台能力有关，可以通过[OH_AVCapability_IsFeatureSupported](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口查询系统支持情况。
 - **支持的API版本**：API20及以后。
-- **支持的编码器**：该能力与编码器能力有关，可以通过[OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/_a_v_capability.md#oh_avcodec_getcapabilitybycategory)接口查询支持情况。
+- **支持的编码器**：该能力与编码器能力有关，可以通过[OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory)接口查询支持情况。
 - **支持的码控模式**：VBR、CBR、SQR、CQ。
 - 不支持与时域可分层视频编码共同使能。
 - 不支持与长期参考帧共同使能。
@@ -54,7 +54,7 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
     // 1.1 获取对应视频编码器能力实例，此处以H.265为例。
     OH_AVCapability *cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
     if (cap != nullptr) {
-        OH_LOG_INFO("Get codec Capability sucess!");
+        OH_LOG_INFO("Get codec Capability success!");
         // 1.2 通过特性能力查询接口校验是否支持B帧编码特性。
         bool isSupported = OH_AVCapability_IsFeatureSupported(cap, VIDEO_ENCODER_B_FRAME);
         int32_t supportedMaxBFrameCount = 0;

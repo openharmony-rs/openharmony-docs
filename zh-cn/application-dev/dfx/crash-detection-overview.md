@@ -2,8 +2,8 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
-<!--Designer: @Maplestory-->
-<!--Tester: @yufeifei-->
+<!--Designer: @Maplestory91-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 广义上的进程崩溃是指应用或者系统进程非预期的退出。目前已知以下场景会发生进程非预期退出：
@@ -14,4 +14,4 @@
 
 3. 应用卡死后生成AppFreeze日志并被强制终止退出，详见[AppFreeze（应用冻屏）检测](appfreeze-guidelines.md)。
 
-4. 系统查杀造成进程非预期退出，详见[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
+4. 应用进程被系统终止造成其非预期退出，详见[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。

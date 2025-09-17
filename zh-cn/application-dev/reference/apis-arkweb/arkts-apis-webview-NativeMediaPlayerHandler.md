@@ -4,7 +4,7 @@
 <!--Owner: @zhangyao75477-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) 回调函数的参数。
 应用通过该对象，将播放器的状态报告给ArkWeb内核。
@@ -83,7 +83,7 @@ handlePlaybackRateChanged(playbackRate: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| playbackRate | number | 是 | 播放速率，取值范围：[0, 10.0] |
+| playbackRate | number | 是 | 播放速率，取值范围：[0, +∞) |
 
 **示例：**
 

@@ -4,7 +4,7 @@
 <!--Owner: @GrowUpEveryday-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Web组件提供了视频进入全屏和退出全屏的事件功能，应用可通过监听这些事件实现进入和退出沉浸式全屏模式。
 
@@ -44,12 +44,12 @@ struct ShortWebPage {
         controller: this.controller
       })
         .onFullScreenEnter((event) => {
-          console.log("onFullScreenEnter...")
+          console.info("onFullScreenEnter...")
           // 当全屏的时候，isVisible标志位为false，组件状态为不可见，不参与布局、不进行占位
           this.isVisible = false;
         })
         .onFullScreenExit(() => {
-          console.log("onFullScreenExit...")
+          console.info("onFullScreenExit...")
           // 当退出全屏的时候，isVisible标志位为true，组件状态为可见
           this.isVisible = true;
         })

@@ -42,7 +42,7 @@
 | typedef void(\* [OH_AVCodecOnError](_codec_base.md#oh_avcodeconerror)) (OH_AVCodec \*codec, int32_t errorCode, void \*userData) | 当OH_AVCodec实例运行出错时，会调用来上报具体的错误信息的函数指针。 | 
 | typedef void(\* [OH_AVCodecOnStreamChanged](_codec_base.md#oh_avcodeconstreamchanged)) (OH_AVCodec \*codec, OH_AVFormat \*format, void \*userData) | 当视频解码输入码流分辨率或者视频编码输出码流的分辨率发生变化时，调用此函数指针报告新的流描述信息。<br>从API 15开始，支持音频解码时，码流采样率、声道数或者音频采样格式发生变化时，将调用此函数指针报告新的流描述信息，支持检测此变化的解码格式有：<!--RP1--><!--RP1End-->AAC，FLAC，MP3，VORBIS。 | 
 | typedef void(\* [OH_AVCodecOnNeedInputData](_codec_base.md#oh_avcodeconneedinputdata)) (OH_AVCodec \*codec, uint32_t index, OH_AVMemory \*data, void \*userData) | 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。（API11废弃） | 
-| typedef void(\* [OH_AVCodecOnNewOutputData](_codec_base.md#oh_avcodeconnewoutputdata)) (OH_AVCodec \*codec, uint32_t index, OH_AVMemory \*data, [OH_AVCodecBufferAttr](_o_h___a_v_codec_buffer_attr.md) \*attr, void \*userData) | 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。（API11废弃） | 
+| typedef void(\* [OH_AVCodecOnNewOutputData](_codec_base.md#oh_avcodeconnewoutputdata)) (OH_AVCodec \*codec, uint32_t index, OH_AVMemory \*data, [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) \*attr, void \*userData) | 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。（API11废弃） | 
 | typedef void(\* [OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer)) (OH_AVCodec \*codec, uint32_t index, OH_AVBuffer \*buffer, void \*userData) | 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。 | 
 | typedef void(\* [OH_AVCodecOnNewOutputBuffer](_codec_base.md#oh_avcodeconnewoutputbuffer)) (OH_AVCodec \*codec, uint32_t index, OH_AVBuffer \*buffer, void \*userData) | 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。 | 
 | typedef struct [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) [OH_AVCodecAsyncCallback](_codec_base.md#oh_avcodecasynccallback) | OH_AVCodec中所有异步回调函数指针的集合。（API11废弃） | 
@@ -79,7 +79,7 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| [OH_MediaType](_codec_base.md#oh_mediatype-1) {<br/>MEDIA_TYPE_AUD = 0,<br/>MEDIA_TYPE_VID = 1,<br/>MEDIA_TYPE_SUBTITILE = 2,<br/>MEDIA_TYPE_TIMED_METADATA = 5,<br/>MEDIA_TYPE_AUXILIARY = 6<br/>} | 媒体类型。 |
+| [OH_MediaType](_codec_base.md#oh_mediatype-1) {<br/>MEDIA_TYPE_AUD = 0,<br/>MEDIA_TYPE_VID = 1,<br/>MEDIA_TYPE_SUBTITLE = 2,<br/>MEDIA_TYPE_TIMED_METADATA = 5,<br/>MEDIA_TYPE_AUXILIARY = 6<br/>} | 媒体类型。 |
 | [OH_AACProfile](_codec_base.md#oh_aacprofile-1) {<br/>AAC_PROFILE_LC = 0,<br/>AAC_PROFILE_HE = 3,<br/>AAC_PROFILE_HE_V2 = 4<br/>} | AAC档次。<!--Del--><br/>（AAC_PROFILE_HE, AAC_PROFILE_HE_V2暂未开放）<!--DelEnd--> | 
 | [OH_AVCProfile](_codec_base.md#oh_avcprofile-1) {<br/>AVC_PROFILE_BASELINE = 0,<br/>AVC_PROFILE_HIGH = 4,<br/>AVC_PROFILE_MAIN = 8<br/>} | AVC档次。 | 
 | [OH_HEVCProfile](_codec_base.md#oh_hevcprofile-1) {<br/>HEVC_PROFILE_MAIN = 0,<br/>HEVC_PROFILE_MAIN_10 = 1,<br/>HEVC_PROFILE_MAIN_STILL = 2,<br/>HEVC_PROFILE_MAIN_10_HDR10 = 3,<br/>HEVC_PROFILE_MAIN_10_HDR10_PLUS = 4<br/>} | HEVC档次。<br>（HEVC_PROFILE_MAIN_10_HDR10、HEVC_PROFILE_MAIN_10_HDR10_PLUS在API 14废弃）。 | 
@@ -142,7 +142,7 @@
 | const char \* [OH_MD_KEY_MAX_INPUT_SIZE](_codec_base.md#oh_md_key_max_input_size) | 设置解码输入码流大小最大值的键，值类型为int32_t。 |
 | const char \* [OH_MD_KEY_WIDTH](_codec_base.md#oh_md_key_width) | 视频宽度的键，值类型为int32_t。 | 
 | const char \* [OH_MD_KEY_HEIGHT](_codec_base.md#oh_md_key_height) | 视频高度键，值类型为int32_t。 | 
-| const char \* [OH_MD_KEY_PIXEL_FORMAT](_codec_base.md#oh_md_key_pixel_format) | 视频像素格式的键，值类型为int32_t，请参见[OH_AVPixelFormat](_core.md#oh_avpixelformat)。 | 
+| const char \* [OH_MD_KEY_PIXEL_FORMAT](_codec_base.md#oh_md_key_pixel_format) | 视频像素格式的键，值类型为int32_t，请参见[OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat)。 | 
 | const char \* [OH_MD_KEY_AUDIO_SAMPLE_FORMAT](_codec_base.md#oh_md_key_audio_sample_format) | 音频原始格式的键，值类型为int32_t，请参见[OH_BitsPerSample](_codec_base.md#oh_bitspersample)。 | 
 | const char \* [OH_MD_KEY_FRAME_RATE](_codec_base.md#oh_md_key_frame_rate) | 视频帧率的键，值类型为double。 | 
 | const char \* [OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE](_codec_base.md#oh_md_key_video_encode_bitrate_mode) | 视频编码码率模式，值类型为int32_t，请参见[OH_BitrateMode](_codec_base.md#oh_bitratemode-1)。 | 
