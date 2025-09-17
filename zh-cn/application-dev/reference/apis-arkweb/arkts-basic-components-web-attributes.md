@@ -872,7 +872,7 @@ ArkTS-Dyn: defaultFixedFontSize(size: number)
 
 ArkTS-Sta:  defaultFixedFontSize(size: int)
 
-设置网页的默认等宽字体大小。当属性没有显式调用时，默认允许使用13设置网页的默认等宽字体大小。
+设置网页的默认等宽字体大小。当属性没有显式调用时，默认设置网页的默认等宽字体大小为13。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -935,7 +935,7 @@ ArkTS-Dyn: defaultFontSize(size: number)
 
 ArkTS-Sta: defaultFontSize(size: int)
 
-设置网页的默认字体大小。当属性没有显示调用时，默认允许使用16设置网页的默认字体大小。
+设置网页的默认字体大小。当属性没有显示调用时，默认设置网页的默认字体大小为16。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -998,7 +998,7 @@ ArkTS-Dyn: minFontSize(size: number)
 
 ArkTS-Sta: minFontSize(size: int)
 
-设置网页字体大小最小值。当属性没有显式调用时，默认允许使用8设置网页字体大小最小值。
+设置网页字体大小最小值。当属性没有显式调用时，默认设置网页字体大小最小值为8。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2380,7 +2380,7 @@ registerNativeEmbedRule(tag: string, type: string)
 
 defaultTextEncodingFormat(textEncodingFormat: string)
 
-设置网页的默认字符编码。当属性没有显示调用时，默认允许使用"UTF-8"作为设置网页的默认字符编码。
+设置网页的默认字符编码。当属性没有显示调用时，默认允许使用"UTF-8"作为设置网页字符编码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2510,7 +2510,7 @@ struct WebComponent {
 
 textAutosizing(textAutosizing: boolean)
 
-设置使能文本自动调整大小。当属性没有显式调用时，默认文本不自动调整大小。
+设置使能文本自动调整大小。当属性没有显式调用时，默认设置文本不自动调整大小。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3070,7 +3070,7 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 enableFollowSystemFontWeight(follow: boolean)
 
-设置Web组件是否开启字重跟随系统设置变化。当属性没有显示调用时，默认字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。
+设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，默认字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。
 
 > **说明：**
 >
