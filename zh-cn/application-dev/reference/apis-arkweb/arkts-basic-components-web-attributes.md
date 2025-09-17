@@ -870,7 +870,7 @@ blockNetwork(block: boolean)
 
 ArkTS-Dyn: defaultFixedFontSize(size: number)
 
-ArkTS-Sta:  defaultFixedFontSize(size: int)
+ArkTS-Sta: defaultFixedFontSize(size: int)
 
 设置网页的默认等宽字体大小。当属性没有显式调用时，默认设置网页的默认等宽字体大小为13。
 
