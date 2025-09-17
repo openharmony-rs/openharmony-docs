@@ -162,4 +162,4 @@ PhotoSelectOptions extends BaseSelectOptions
 | displayName    | string   | 是   | 用户上次选择界面，首张完整显示的图片的文件名。默认为空字符串。 |
 | recommendationType    | number   | 是   | 用户上次选择时设置的推荐内容枚举值，参考RecommendationType值定义。<br/>当上次选择时未设置推荐时，则为0。<br/>默认未推荐，为0。 |
 | selectRecommendationType    | number   | 是   | 用户上次选择时选中的推荐内容枚举值，参考RecommendationType值定义。<br/>当上次选择时未选中推荐项，选中"全部"时，则为0。<br/>默认不选中推荐项，为0。 |
-| version    | number   | 是   | 现场数据版本号，用于校验现场信息数据与现场回复能力的匹配度， |
+| version    | number   | 是   | 现场数据版本号，用于校验现场信息数据与现场回复能力的匹配度。 |
