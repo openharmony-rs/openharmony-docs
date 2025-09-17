@@ -1,23 +1,23 @@
 # 路由和导航类接口
 
-以下接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
 ## @ohos.router
 
 ### push
-ArkTS1.1接口声明：[push(options: RouterOptions): void](../reference/apis-arkui/js-apis-router.md#routerpushdeprecated)
+ArkTS-Dyn接口声明：[push(options: RouterOptions): void](../reference/apis-arkui/js-apis-router.md#routerpushdeprecated)
 
-替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl)
+替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.push({url: "url"})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"})
@@ -25,19 +25,19 @@ this.getUIContext().getRouter().pushUrl({url: "url"})
 
 
 ### pushUrl
-ArkTS1.1接口声明：[pushUrl(options: RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated)
+ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated)
 
-替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl)
+替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushUrl({url: "url"})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"})
@@ -45,19 +45,19 @@ this.getUIContext().getRouter().pushUrl({url: "url"})
 
 
 ### pushUrl
-ArkTS1.1接口声明：[pushUrl(options: RouterOptions, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-1)
+ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-1)
 
-替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-1)
+替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushUrl({url: "url"}, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
@@ -65,19 +65,19 @@ this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
 
 
 ### pushUrl
-ArkTS1.1接口声明：[pushUrl(options: RouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-2)
+ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-2)
 
-替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-2)
+替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-2)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushUrl({url: "url"}, router.RouterMode.Standard)
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard)
@@ -85,19 +85,19 @@ this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard
 
 
 ### pushUrl
-ArkTS1.1接口声明：[pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-3)
+ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-3)
 
-替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-3)
+替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-3)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
@@ -105,18 +105,18 @@ this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard
 
 
 ### back
-ArkTS1.1接口声明：[back(options?: RouterOptions):void](../reference/apis-arkui/js-apis-router.md#routerbackdeprecated)
+ArkTS-Dyn接口声明：[back(options?: RouterOptions):void](../reference/apis-arkui/js-apis-router.md#routerbackdeprecated)
 
-替代的ArkTS1.2接口声明：[back(options?: router.RouterOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back)
+替代的ArkTS-Sta接口声明：[back(options?: router.RouterOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.back({url: "url"})
 ```
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().back({url: "url"})
@@ -124,19 +124,19 @@ this.getUIContext().getRouter().back({url: "url"})
 
 
 ### back
-ArkTS1.1接口声明：[back(index: number, params?: Object): void](../reference/apis-arkui/js-apis-router.md#routerbackdeprecated-1)
+ArkTS-Dyn接口声明：[back(index: number, params?: Object): void](../reference/apis-arkui/js-apis-router.md#routerbackdeprecated-1)
 
-替代的ArkTS1.2接口声明：[back(index: number, params?: Object): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back12)
+替代的ArkTS-Sta接口声明：[back(index: number, params?: Object): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back12)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.back(1)
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().back(1)
@@ -144,39 +144,19 @@ this.getUIContext().getRouter().back(1)
 
 
 ### replace
-ArkTS1.1接口声明：[replace(options: RouterOptions): void](../reference/apis-arkui/js-apis-router.md#routerreplacedeprecated)
+ArkTS-Dyn接口声明：[replace(options: RouterOptions): void](../reference/apis-arkui/js-apis-router.md#routerreplacedeprecated)
 
-替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl)
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl)
 
 
 
-ArkTS1.1
-
-```ts
-router.replaceUrl({url: "url"})
-```
-
-ArkTS1.2
+ArkTS-Dyn
 
 ```ts
-this.getUIContext().getRouter().replaceUrl({url: "url"})
+router.replace({url: "url"})
 ```
 
-
-### replaceUrl
-ArkTS1.1接口声明：[replaceUrl(options: RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated)
-
-替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl)
-
-
-
-ArkTS1.1
-
-```ts
-router.replaceUrl({url: "url"})
-```
-
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"})
@@ -184,19 +164,39 @@ this.getUIContext().getRouter().replaceUrl({url: "url"})
 
 
 ### replaceUrl
-ArkTS1.1接口声明：[replaceUrl(options: RouterOptions, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-1)
+ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated)
 
-替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-1)
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
+
+```ts
+router.replaceUrl({url: "url"})
+```
+
+ArkTS-Sta
+
+```ts
+this.getUIContext().getRouter().replaceUrl({url: "url"})
+```
+
+
+### replaceUrl
+ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-1)
+
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-1)
+
+
+
+ArkTS-Dyn
 
 ```ts
 router.replaceUrl({url: "url"}, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"}, ()=>{})
@@ -204,19 +204,19 @@ this.getUIContext().getRouter().replaceUrl({url: "url"}, ()=>{})
 
 
 ### replaceUrl
-ArkTS1.1接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-2)
+ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-2)
 
-替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-2)
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-2)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.replaceUrl({url: "url"}, router.RouterMode.Standard)
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard)
@@ -224,19 +224,19 @@ this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Stand
 
 
 ### replaceUrl
-ArkTS1.1接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-3)
+ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>):void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-3)
 
-替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-3)
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceurl-3)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.replaceUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
@@ -244,19 +244,19 @@ this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Stand
 
 
 ### pushNamedRoute
-ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated)
+ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated)
 
-替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute)
+替代的ArkTS-Sta接口声明：[pushNamedRoute(options: router.NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushNamedRoute({name: "路由名"})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"})
@@ -264,19 +264,19 @@ this.getUIContext().getRouter().pushNamedRoute({name: "路由名"})
 
 
 ### pushNamedRoute
-ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated-1)
+ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated-1)
 
-替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-1)
+替代的ArkTS-Sta接口声明：[pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushNamedRoute({name: "路由名"}, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, ()=>{})
@@ -284,19 +284,19 @@ this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, ()=>{})
 
 
 ### pushNamedRoute
-ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated-2)
+ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated-2)
 
-替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-2)
+替代的ArkTS-Sta接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-2)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard)
@@ -304,19 +304,19 @@ this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.Route
 
 
 ### pushNamedRoute
-ArkTS1.1接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated-3)
+ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerpushnamedroutedeprecated-3)
 
-替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-3)
+替代的ArkTS-Sta接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushnamedroute-3)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.pushNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
@@ -324,19 +324,19 @@ this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.Route
 
 
 ### replaceNamedRoute
-ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated)
+ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated)
 
-替代的ArkTS1.2接口声明：[replaceNamedRoute(options: router.NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute)
+替代的ArkTS-Sta接口声明：[replaceNamedRoute(options: router.NamedRouterOptions): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.replaceNamedRoute({name: "路由名"})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"})
@@ -344,19 +344,19 @@ this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"})
 
 
 ### replaceNamedRoute
-ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-1)
+ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-1)
 
-替代的ArkTS1.2接口声明：[replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-1)
+替代的ArkTS-Sta接口声明：[replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.replaceNamedRoute({name: "路由名"}, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, ()=>{})
@@ -364,19 +364,19 @@ this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, ()=>{})
 
 
 ### replaceNamedRoute
-ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-2)
+ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-2)
 
-替代的ArkTS1.2接口声明：[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-2)
+替代的ArkTS-Sta接口声明：[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-2)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard)
@@ -384,19 +384,19 @@ this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.Ro
 
 
 ### replaceNamedRoute
-ArkTS1.1接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-3)
+ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-3)
 
-替代的ArkTS1.2接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-3)
+替代的ArkTS-Sta接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replacenamedroute-3)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
@@ -404,19 +404,19 @@ this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.Ro
 
 
 ### getParams
-ArkTS1.1接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-router.md#routergetparamsdeprecated)
+ArkTS-Dyn接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-router.md#routergetparamsdeprecated)
 
-替代的ArkTS1.2接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-arkui-UIContext.md#getparams)
+替代的ArkTS-Sta接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-arkui-UIContext.md#getparams)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.getParams()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().getParams()
@@ -424,19 +424,19 @@ this.getUIContext().getRouter().getParams()
 
 
 ### getStateByUrl
-ArkTS1.1接口声明：[getStateByUrl(url: string): Array<RouterState>](../reference/apis-arkui/js-apis-router.md#routergetstatebyurldeprecated)
+ArkTS-Dyn接口声明：[getStateByUrl(url: string): Array\<RouterState>](../reference/apis-arkui/js-apis-router.md#routergetstatebyurldeprecated)
 
-替代的ArkTS1.2接口声明：[getStateByUrl(url: string): Array<router.RouterState>](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstatebyurl12)
+替代的ArkTS-Sta接口声明：[getStateByUrl(url: string): Array<router.RouterState>](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstatebyurl12)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.getStateByUrl("url")
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().getStateByUrl("url")
@@ -444,19 +444,19 @@ this.getUIContext().getRouter().getStateByUrl("url")
 
 
 ### getStateByIndex
-ArkTS1.1接口声明：[getStateByIndex(index: number): RouterState | undefined](../reference/apis-arkui/js-apis-router.md#routergetstatebyindexdeprecated)
+ArkTS-Dyn接口声明：[getStateByIndex(index: number): RouterState | undefined](../reference/apis-arkui/js-apis-router.md#routergetstatebyindexdeprecated)
 
-替代的ArkTS1.2接口声明：[getStateByIndex(index: number): router.RouterState | undefined](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstatebyindex12)
+替代的ArkTS-Sta接口声明：[getStateByIndex(index: number): router.RouterState | undefined](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstatebyindex12)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.getStateByIndex(1)
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().getStateByIndex(1)
@@ -464,19 +464,19 @@ this.getUIContext().getRouter().getStateByIndex(1)
 
 
 ### getState
-ArkTS1.1接口声明：[getState():RouterState](../reference/apis-arkui/js-apis-router.md#routergetstatedeprecated)
+ArkTS-Dyn接口声明：[getState():RouterState](../reference/apis-arkui/js-apis-router.md#routergetstatedeprecated)
 
-替代的ArkTS1.2接口声明：[getState(): router.RouterState](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstate)
+替代的ArkTS-Sta接口声明：[getState(): router.RouterState](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstate)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.getState()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().getState()
@@ -484,19 +484,19 @@ this.getUIContext().getRouter().getState()
 
 
 ### getLength
-ArkTS1.1接口声明：[getLength():string](../reference/apis-arkui/js-apis-router.md#routergetlengthdeprecated)
+ArkTS-Dyn接口声明：[getLength():string](../reference/apis-arkui/js-apis-router.md#routergetlengthdeprecated)
 
-替代的ArkTS1.2接口声明：[getLength(): string](../reference/apis-arkui/js-apis-arkui-UIContext.md#getlength)
+替代的ArkTS-Sta接口声明：[getLength(): string](../reference/apis-arkui/js-apis-arkui-UIContext.md#getlength)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.getLength()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().getLength()
@@ -504,19 +504,19 @@ this.getUIContext().getRouter().getLength()
 
 
 ### clear
-ArkTS1.1接口声明：[clear():void](../reference/apis-arkui/js-apis-router.md#routercleardeprecated)
+ArkTS-Dyn接口声明：[clear():void](../reference/apis-arkui/js-apis-router.md#routercleardeprecated)
 
-替代的ArkTS1.2接口声明：[clear(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#clear)
+替代的ArkTS-Sta接口声明：[clear(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#clear)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.clear()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().clear()
@@ -524,19 +524,19 @@ this.getUIContext().getRouter().clear()
 
 
 ### enableAlertBeforeBackPage
-ArkTS1.1接口声明：[enableAlertBeforeBackPage(options: EnableAlertOptions): void](../reference/apis-arkui/js-apis-router.md#routerenablealertbeforebackpagedeprecated)
+ArkTS-Dyn接口声明：[enableAlertBeforeBackPage(options: EnableAlertOptions): void](../reference/apis-arkui/js-apis-router.md#routerenablealertbeforebackpagedeprecated)
 
-替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
+替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "1111" })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
@@ -544,19 +544,19 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
 
 
 ### showAlertBeforeBackPage
-ArkTS1.1接口声明：[showAlertBeforeBackPage(options: EnableAlertOptions):void](../reference/apis-arkui/js-apis-router.md#routershowalertbeforebackpagedeprecated)
+ArkTS-Dyn接口声明：[showAlertBeforeBackPage(options: EnableAlertOptions):void](../reference/apis-arkui/js-apis-router.md#routershowalertbeforebackpagedeprecated)
 
-替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
+替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.showAlertBeforeBackPage({message: "1111"})
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
@@ -564,18 +564,19 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
 
 
 ### disableAlertBeforeBackPage
-ArkTS1.1接口声明：[disableAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-router.md#routerdisablealertbeforebackpagedeprecated)
-替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
+ArkTS-Dyn接口声明：[disableAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-router.md#routerdisablealertbeforebackpagedeprecated)
+
+替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.disableAlertBeforeBackPage()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
@@ -583,19 +584,19 @@ this.getUIContext().getRouter().hideAlertBeforeBackPage()
 
 
 ### hideAlertBeforeBackPage
-ArkTS1.1接口声明：[hideAlertBeforeBackPage():void](../reference/apis-arkui/js-apis-router.md#routerhidealertbeforebackpagedeprecated)
+ArkTS-Dyn接口声明：[hideAlertBeforeBackPage():void](../reference/apis-arkui/js-apis-router.md#routerhidealertbeforebackpagedeprecated)
 
-替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
+替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.hideAlertBeforeBackPage()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
@@ -605,19 +606,19 @@ this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ## @system.router
 
 ### Router
-ArkTS1.1接口声明：[export default class Router](../reference/apis-arkui/js-apis-system-router.md#导入模块)
+ArkTS-Dyn接口声明：[export default class Router](../reference/apis-arkui/js-apis-system-router.md#导入模块)
 
-替代的ArkTS1.2接口声明：[export class Router](../reference/apis-arkui/js-apis-arkui-UIContext.md#router)
+替代的ArkTS-Sta接口声明：[export class Router](../reference/apis-arkui/js-apis-arkui-UIContext.md#router)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 import router from '@system.router'
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter()
@@ -625,19 +626,19 @@ this.getUIContext().getRouter()
 
 
 ### push
-ArkTS1.1接口声明：[static push(options: RouterOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerpush)
+ArkTS-Dyn接口声明：[static push(options: RouterOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerpush)
 
-替代的ArkTS1.2接口声明：[pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-1)
+替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#pushurl-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.push({ uri: "url" })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
@@ -645,19 +646,19 @@ this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
 
 
 ### back
-ArkTS1.1接口声明：[static back(options?: BackRouterOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerback)
+ArkTS-Dyn接口声明：[static back(options?: BackRouterOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerback)
 
-替代的ArkTS1.2接口声明：[back(options?: router.RouterOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back)
+替代的ArkTS-Sta接口声明：[back(options?: router.RouterOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#back)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.back() 
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().back()
@@ -665,19 +666,19 @@ this.getUIContext().getRouter().back()
 
 
 ### replace
-ArkTS1.1接口声明：[static replace(options: RouterOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerreplace)
+ArkTS-Dyn接口声明：[static replace(options: RouterOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerreplace)
 
-替代的ArkTS1.2接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceUrl-1)
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#replaceUrl-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.replace({ uri: "url" })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({ url: "url" }, ()=>{})
@@ -685,19 +686,19 @@ this.getUIContext().getRouter().replaceUrl({ url: "url" }, ()=>{})
 
 
 ### clear
-ArkTS1.1接口声明：[static clear(): void](../reference/apis-arkui/js-apis-system-router.md#routerclear)
+ArkTS-Dyn接口声明：[static clear(): void](../reference/apis-arkui/js-apis-system-router.md#routerclear)
 
-替代的ArkTS1.2接口声明：[clear(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#clear)
+替代的ArkTS-Sta接口声明：[clear(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#clear)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.clear()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().clear()
@@ -705,19 +706,19 @@ this.getUIContext().getRouter().clear()
 
 
 ### enableAlertBeforeBackPage
-ArkTS1.1接口声明：[static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerenablealertbeforebackpage6)
+ArkTS-Dyn接口声明：[static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerenablealertbeforebackpage6)
 
-替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
+替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "" })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
@@ -725,19 +726,19 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 
 
 ### disableAlertBeforeBackPage
-ArkTS1.1接口声明：[static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerdisablealertbeforebackpage6)
+ArkTS-Dyn接口声明：[static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerdisablealertbeforebackpage6)
 
-替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
+替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.disableAlertBeforeBackPage()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
@@ -745,19 +746,19 @@ this.getUIContext().getRouter().hideAlertBeforeBackPage()
 
 
 ### getLength
-ArkTS1.1接口声明：[static getLength(): string](../reference/apis-arkui/js-apis-system-router.md#routergetlength)
+ArkTS-Dyn接口声明：[static getLength(): string](../reference/apis-arkui/js-apis-system-router.md#routergetlength)
 
-替代的ArkTS1.2接口声明：[getLength(): string](../reference/apis-arkui/js-apis-arkui-UIContext.md#getlength)
+替代的ArkTS-Sta接口声明：[getLength(): string](../reference/apis-arkui/js-apis-arkui-UIContext.md#getlength)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let length: string = router.getLength()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let length: string = this.getUIContext().getRouter().getLength()
@@ -765,19 +766,19 @@ let length: string = this.getUIContext().getRouter().getLength()
 
 
 ### getParams
-ArkTS1.1接口声明：[static getParams(): ParamsInterface](../reference/apis-arkui/js-apis-system-router.md#routergetparams7)
+ArkTS-Dyn接口声明：[static getParams(): ParamsInterface](../reference/apis-arkui/js-apis-system-router.md#routergetparams7)
 
-替代的ArkTS1.2接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-arkui-UIContext.md#getparams)
+替代的ArkTS-Sta接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-arkui-UIContext.md#getparams)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.getParams()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().getParams()
@@ -785,19 +786,19 @@ this.getUIContext().getRouter().getParams()
 
 
 ### getState
-ArkTS1.1接口声明：[static getState(): RouterState](../reference/apis-arkui/js-apis-system-router.md#routergetstate)
+ArkTS-Dyn接口声明：[static getState(): RouterState](../reference/apis-arkui/js-apis-system-router.md#routergetstate)
 
-替代的ArkTS1.2接口声明：[getState(): router.RouterState](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstate)
+替代的ArkTS-Sta接口声明：[getState(): router.RouterState](../reference/apis-arkui/js-apis-arkui-UIContext.md#getstate)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.getState()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().getState()
@@ -807,19 +808,19 @@ this.getUIContext().getRouter().getState()
 ## BackRouterOptions
 
 ### BackRouterOptions
-ArkTS1.1接口声明：[export interface BackRouterOptions](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
+ArkTS-Dyn接口声明：[export interface BackRouterOptions](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
 
-替代的ArkTS1.2接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: BackRouterOptions = { uri: "url" }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -827,19 +828,19 @@ let options: router.RouterOptions = { url: "url" }
 
 
 ### uri
-ArkTS1.1接口声明：[uri: string ](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
+ArkTS-Dyn接口声明：[uri: string ](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
 
-替代的ArkTS1.2接口声明：[url: string ](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[url: string ](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: BackRouterOptions = { uri: "url" }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -847,19 +848,19 @@ let options: router.RouterOptions = { url: "url" }
 
 
 ### params
-ArkTS1.1接口声明：[params?: Object](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
+ArkTS-Dyn接口声明：[params?: Object](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
 
-替代的ArkTS1.2接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: BackRouterOptions = {uri: "url", params: ""}
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: router.RouterOptions = {uri: "url", params: ""}
@@ -869,19 +870,19 @@ let options: router.RouterOptions = {uri: "url", params: ""}
 ## RouterOptions
 
 ### RouterOptions
-ArkTS1.1接口声明：[export interface RouterOptions](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
+ArkTS-Dyn接口声明：[export interface RouterOptions](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
 
-替代的ArkTS1.2接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: RouterOptions = { uri: "url" }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -889,19 +890,19 @@ let options: router.RouterOptions = { url: "url" }
 
 
 ### uri
-ArkTS1.1接口声明：[uri: string](/reference/apis-arkui/js-apis-system-router.md#routeroptions)
+ArkTS-Dyn接口声明：[uri: string](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
 
-替代的ArkTS1.2接口声明：[url: string](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[url: string](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: RouterOptions = { uri: "url" }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -909,19 +910,19 @@ let options: router.RouterOptions = { url: "url" }
 
 
 ### params
-ArkTS1.1接口声明：[params?: Object](/reference/apis-arkui/js-apis-system-router.md#routeroptions)
+ArkTS-Dyn接口声明：[params?: Object](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
 
-替代的ArkTS1.2接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: RouterOptions = {url: "url", params: ""}
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: router.RouterOptions = {url: "url", params: ""}
@@ -931,19 +932,19 @@ let options: router.RouterOptions = {url: "url", params: ""}
 ## RouterState
 
 ### RouterState
-ArkTS1.1接口声明：[export interface RouterState](../reference/apis-arkui/js-apis-system-router.md#routerstate)
+ArkTS-Dyn接口声明：[export interface RouterState](../reference/apis-arkui/js-apis-system-router.md#routerstate)
 
-替代的ArkTS1.2接口声明：[interface RouterState](../reference/apis-arkui/js-apis-router.md#routerstate)
+替代的ArkTS-Sta接口声明：[interface RouterState](../reference/apis-arkui/js-apis-router.md#routerstate)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let state: RouterState = { uri: "url" }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let state: router.RouterState = { url: "url" }
@@ -951,20 +952,20 @@ let state: router.RouterState = { url: "url" }
 
 
 ### index
-ArkTS1.1接口声明：[index: number](../reference/apis-arkui/js-apis-system-router.md#routerstate)
+ArkTS-Dyn接口声明：[index: number](../reference/apis-arkui/js-apis-system-router.md#routerstate)
 
-替代的ArkTS1.2接口声明：[index: number](../reference/apis-arkui/js-apis-router.md#routerstate)
+替代的ArkTS-Sta接口声明：[index: number](../reference/apis-arkui/js-apis-router.md#routerstate)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let state: RouterState = router.getState()
 let index: number = state.index
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let state: router.RouterState = this.getUIContext().getRouter().getState()
@@ -973,20 +974,20 @@ let index: number = state.index
 
 
 ### name
-ArkTS1.1接口声明：[name: string](../reference/apis-arkui/js-apis-system-router.md#routerstate)
+ArkTS-Dyn接口声明：[name: string](../reference/apis-arkui/js-apis-system-router.md#routerstate)
 
-替代的ArkTS1.2接口声明：[name: string](../reference/apis-arkui/js-apis-router.md#routerstate)
+替代的ArkTS-Sta接口声明：[name: string](../reference/apis-arkui/js-apis-router.md#routerstate)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let state: RouterState = router.getState()
 let name: string = state.name
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let state: router.RouterState = this.getUIContext().getRouter().getState()
@@ -995,20 +996,20 @@ let name: string = state.name
 
 
 ### path
-ArkTS1.1接口声明：[path: string](../reference/apis-arkui/js-apis-system-router.md#routerstate)
+ArkTS-Dyn接口声明：[path: string](../reference/apis-arkui/js-apis-system-router.md#routerstate)
 
-替代的ArkTS1.2接口声明：[path: string](../reference/apis-arkui/js-apis-router.md#routerstate)
+替代的ArkTS-Sta接口声明：[path: string](../reference/apis-arkui/js-apis-router.md#routerstate)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let state: RouterState = router.getState()
 let path: string = state.path
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let state: router.RouterState = this.getUIContext().getRouter().getState()
@@ -1019,19 +1020,19 @@ let path: string = state.path
 ## EnableAlertBeforeBackPageOptions
 
 ### EnableAlertBeforeBackPageOptions
-ArkTS1.1接口声明：[export interface EnableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[export interface EnableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[interface EnableAlertOptions](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
+替代的ArkTS-Sta接口声明：[interface EnableAlertOptions](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: EnableAlertBeforeBackPageOptions = { message: "" }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: EnableAlertOptions = { message: "" }
@@ -1039,19 +1040,19 @@ let options: EnableAlertOptions = { message: "" }
 
 
 ### message
-ArkTS1.1接口声明：[message: string ](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[message: string ](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[message: string ](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
+替代的ArkTS-Sta接口声明：[message: string ](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "" })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
@@ -1059,61 +1060,64 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 
 
 ### success
-ArkTS1.1接口声明：[success?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[success?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
+替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "", success: (err: string)=>{} })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ```
 
 
 ### cancel
-ArkTS1.1接口声明：[cancel?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[cancel?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
+替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "", cancel: (err: string)=>{} })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ```
 
 
 ### complete
-ArkTS1.1接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
+替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "", complete: ()=>{} })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ```
 
@@ -1121,19 +1125,19 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ## DisableAlertBeforeBackPageOptions
 
 ### DisableAlertBeforeBackPageOptions
-ArkTS1.1接口声明：[export interface DisableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[export interface DisableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)
+替代的ArkTS-Sta接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let options: DisableAlertBeforeBackPageOptions = { complete: ()=>{} }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -1141,61 +1145,64 @@ let options: router.RouterOptions = { url: "url" }
 
 
 ### success
-ArkTS1.1接口声明：[success?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[success?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
+替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.disableAlertBeforeBackPage({ success: (err: string)=>{} })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
 
 ### cancel
-ArkTS1.1接口声明：[cancel?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[cancel?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
+替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.disableAlertBeforeBackPage({ cancel: (err: string)=>{} })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
 
 ### complete
-ArkTS1.1接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
-替代的ArkTS1.2接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
+替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#hidealertbeforebackpage)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 router.disableAlertBeforeBackPage({ complete: ()=>{} })
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
@@ -1203,19 +1210,19 @@ this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ## ParamsInterface
 
 ### ParamsInterface
-ArkTS1.1接口声明：type ParamsInterface = {[key: string]: Object}
+ArkTS-Dyn接口声明：[type ParamsInterface = {[key: string]: Object}](../reference/apis-arkui/js-apis-system-router.md#paramsinterface)
 
-替代的ArkTS1.2接口声明：interface Object
+替代的ArkTS-Sta接口声明：interface Object
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 let params: ParamsInterface = router.getParams()
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 let params: Object = this.getUIContext().getRouter().getParams()
@@ -1226,13 +1233,13 @@ let params: Object = this.getUIContext().getRouter().getParams()
 
 ### toolBar
 
-ArkTS1.1接口声明：[toolBar(value: object | CustomBuilder): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbardeprecated)
+ArkTS-Dyn接口声明：[toolBar(value: object | CustomBuilder): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbardeprecated)
 
-替代的ArkTS1.2接口声明：[toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)
+替代的ArkTS-Sta接口声明：[toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 @Builder
@@ -1244,7 +1251,7 @@ build(){
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
 @Builder
@@ -1259,19 +1266,19 @@ build(){
 
 ### subTitle
 
-ArkTS1.1接口声明：[subTitle(value: string): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#subtitledeprecated)
+ArkTS-Dyn接口声明：[subTitle(value: string): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#subtitledeprecated)
 
-替代的ArkTS1.2接口声明：[title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)
+替代的ArkTS-Sta接口声明：[title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 Navigation().subTitle("子标题")
 ```
 
-ArkTS1.2
+ArkTS-Sta
 ```ts
 Navigation().title({main: "标题", sub: "子标题"})
 ```
@@ -1279,13 +1286,13 @@ Navigation().title({main: "标题", sub: "子标题"})
 
 ## Navigator
 
-ArkTS1.1接口声明：[Navigator(value?: {target: string, type?: NavigationType})](../reference/apis-arkui/arkui-ts/ts-container-navigator.md#navigator)
+ArkTS-Dyn接口声明：[Navigator(value?: {target: string, type?: NavigationType})](../reference/apis-arkui/arkui-ts/ts-container-navigator.md#navigator)
 
-替代的ArkTS1.2接口声明：[export class Router](../reference/apis-arkui/js-apis-arkui-UIContext.md#router)
+替代的ArkTS-Sta接口声明：[export class Router](../reference/apis-arkui/js-apis-arkui-UIContext.md#router)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 Navigator({ target: "url", type: NavigationType.Push}){
@@ -1299,9 +1306,10 @@ Navigator({ target: "url", type: NavigationType.Replace}){
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本Navigator组件全面废弃，将由router进行替代
 Text("Push").onClick(()=>{
     this.getUIContext().getRouter().pushUrl({ url: "url"});
 })
@@ -1316,13 +1324,13 @@ Text("Replace").onClick(()=>{
 
 ## NavRouter
 
-ArkTS1.1接口声明：[NavRouter()](../reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md#navrouter-1)
+ArkTS-Dyn接口声明：[NavRouter()](../reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md#navrouter-1)
 
-替代的ArkTS1.2接口声明：[Navigation(pathInfos: NavPathStack)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation10)
+替代的ArkTS-Sta接口声明：[Navigation(pathInfos: NavPathStack)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation10)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 ```ts
 @Entry
@@ -1355,9 +1363,10 @@ struct Index {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
 ```ts
+// ArkTS-Sta版本NavRouter组件全面废弃，将由Navigation进行替代
 @Entry
 @Component
 struct Index {
