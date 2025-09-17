@@ -916,4 +916,65 @@ struct Index {
 ```
 **参考链接**
 
-[ParallelizeUI最佳实践](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI)
+[ParallelizeUI最佳实践](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI/README.md)
+
+
+## UI并行化创建组件树接口ParallelizeUI如何确保多线程读写安全？(API 20)
+
+ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于此特性，开发者需要特别注意多线程环境下的数据读写安全问题。
+
+**解决措施**
+
+1. 需要依赖外部的状态变量更新UI，请使用[memorizeUpdatedState](../ui/state-management-static/arkts-static-memorizeUpdatedState.md)创建MemoState传递到ParallelizeUI内部使用。
+
+    ```ts
+    import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+    import { memorizeUpdatedState } from '@ohos.arkui.stateManagement';
+
+    @Entry
+    @Component
+    struct Index {
+      @State str: string = 'Hello';
+      build() {
+        Column() {
+          const str = memorizeUpdatedState<string>(() => {return this.str})
+          ParallelizeUI() {
+            Text(str.value) // 使用memorizeUpdatedState进行数据传递
+            .fontSize(50)
+          }
+          Text('World')
+            .fontSize(50)
+          Button('UpperCase')
+            .onClick((event: ClickEvent) => {
+              this.str = this.str.toUpperCase()
+            })
+        }.height('100%')
+          .width('100%')
+      }
+    }
+    ```
+
+2. 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。例如[并发哈希表](../reference/native-lib/arkts1.2-concurrenthashmap.md)、[并发集合](../reference/native-lib/arkts1.2-concurrentset.md)、[异步锁](../reference/native-lib/arkts1.2-asynclock.md)和[阻塞队列](../reference/native-lib/arkts1.2-blockingqueue.md)等。如下示例展示了使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全。
+    ```ts
+    import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+    @Entry
+    @Component
+    struct Index {
+      build() {
+        Column() {
+          // 使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全
+          let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
+          concurrentHashMap.set(1, "one");
+          concurrentHashMap.set(2, "two");
+          ParallelizeUI() {
+            let val_0 = concurrentHashMap.get(1); // "one"
+            let val_1 = concurrentHashMap.get(2); // "two"
+            Text(val_0)
+            .fontSize(50)
+          }
+        }.height('100%')
+          .width('100%')
+      }
+    }
+    ```
