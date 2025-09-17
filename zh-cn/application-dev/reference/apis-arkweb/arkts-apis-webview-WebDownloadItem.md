@@ -30,7 +30,6 @@ getGuid(): string
 
 **ArkTS-Sta起始版本：** 20
 
-
 **返回值：**
 
 | 类型   | 说明                      |
@@ -520,7 +519,6 @@ getState(): WebDownloadState
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
-
 
 **返回值：**
 
@@ -1072,7 +1070,6 @@ getSuggestedFileName(): string
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
-
 
 **返回值：**
 
@@ -1979,7 +1976,6 @@ pause(): void
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
-
 
 **错误码：**
 
