@@ -1,14 +1,14 @@
 # Panel
 
-该组件在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+该组件在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1组件声明：[Panel](../reference/apis-arkui/arkui-ts/ts-container-panel.md)
+ArkTS-Dyn组件声明：[Panel](../reference/apis-arkui/arkui-ts/ts-container-panel.md)
 
-替代的ArkTS1.2接口声明：[bindSheet(isShow: Optional<boolean>, builder: CustomBuilder, options?: SheetOptions): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)
+替代的ArkTS-Sta接口声明：[bindSheet(isShow: Optional<boolean>, builder: CustomBuilder, options?: SheetOptions): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)
 
 
 
-ArkTS1.1
+ArkTS-Dyn:
 
 ```ts
 @Entry
@@ -42,7 +42,7 @@ struct Index {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta:
 
 ```ts
 @Entry
