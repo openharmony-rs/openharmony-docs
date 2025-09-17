@@ -9,17 +9,17 @@
 
 ## 概述
 
-UI测试框架（UiTest）为开发者提供全方位的UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI 交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者高效搭建可靠的界面自动化测试流程。
+UI测试框架（UiTest）为开发者提供UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者高效实现可靠的界面自动化测试。
 
 ## 功能全景
 
-UiTest支持采用ArkTS API与Shell命令两种方式提供UI测试能力，为界面自动化测试提供灵活高效的技术支撑，核心能力如下：
+UiTest支持采用ArkTS API与Shell命令两种方式，为界面自动化测试提供灵活高效的技术支撑，其中：
 
 **ArkTS 脚本开发能力：** 
-提供简洁易用的API接口，可满足各类测试场景需求，核心支持点击、双击、长按、滑动等主流 UI 交互操作，助力用户快速开发基于界面交互逻辑的自动化测试脚本，降低脚本编写门槛。
+提供简洁易用的API接口，满足各类测试场景需求，支持点击、双击、长按、滑动等常用UI交互操作，助力开发者快速开发基于界面交互逻辑的自动化测试脚本。
 
-**Shell 命令测试能力：** 
-支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、导出界面控件树结构、录制界面操作流程、便捷注入UI模拟事件等，帮助开发者灵活开展测试验证工作。
+**Shell 命令测试能力：**
+支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、导出界面控件树结构、录制界面操作流程、便捷注入UI模拟事件等。
 
 ![](figures/Uitest.PNG)
 
@@ -39,7 +39,7 @@ UiTest框架运行分为客户端和服务端。
 
 本章节将重点讲解 UI 测试框架 ArkTS API 的核心能力与具体使用方法，为开发者开展界面自动化测试提供清晰指引。
 
-UI 测试构建于单元测试基础之上，额外增加了对 UiTest 接口的调用，接口的详细定义与参数说明可参考<!--RP1-->具体请参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP1End-->。
+UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定义与参数说明可参考具体请参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)。
 
 ### UI测试简例
 
@@ -50,7 +50,7 @@ UI 测试构建于单元测试基础之上，额外增加了对 UiTest 接口的
 
 3) 通过[添加断言](jsunit-guidelines.md#)，验证操作后当前页面的实际变化是否与预期结果一致。
 
-A. 编写Index.ets页面代码，作为被测示例demo。
+1. 编写Index.ets页面代码，作为被测示例demo。
 ```ts
 @Entry
 @Component
@@ -79,7 +79,7 @@ struct Index {
 }
 ```
 
-B. 在ohosTest > ets > test文件夹下.test.ets文件中编写具体测试代码。
+2. 在ohosTest > ets > test文件夹下.test.ets文件中编写具体测试代码。
 ```ts
 import { describe, it, expect, Level } from '@ohos/hypium';
 // 导入测试依赖kit
@@ -125,13 +125,13 @@ export default function abilityTest() {
 
 支持[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)。
 
-#### 接口说明
+**接口说明：**
 
 | 接口 | 功能说明 |
 | ------ | ------|
-| findComponent(on: On): Promise\<Component> | 根据给出的目标控件属性要求查找目标控件 |
-| findComponents(on: On): Promise\<Array\<Component>> | 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存 |
-| scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>|在控件上滑动查找目标控件（适用支持滑动的控件） |
+| findComponent(on: On): Promise\<Component> | 根据给出的目标控件属性要求查找目标控件。 |
+| findComponents(on: On): Promise\<Array\<Component>> | 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。 |
+| scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>|在控件上滑动查找目标控件（适用支持滑动的控件）。 |
 
 ```ts
 import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -175,22 +175,22 @@ export default function abilityTest() {
 
 支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
 
-#### 接口说明
+**接口说明：**
 | 接口 | 功能说明 |
 | ----- | ------|
-| click(x: number, y: number): Promise\<void> | 基于坐标进行点击操作|
-| clickAt(point: Point): Promise\<void> | 基于坐标进行点击操作，支持指定坐标所属屏幕ID |
-| doubleClick(x: number, y: number): Promise\<void> | 基于坐标进行双击操作 |
-| doubleClickAt(point: Point): Promise\<void> | 基于坐标进行双击操作，支持指定坐标所属屏幕ID |
-| longClick(x: number, y: number): Promise\<void> | 基于坐标进行长按操作 |
-| longClickAt(point: Point, duration?: number): Promise\<void> | 基于坐标进行长按操作，支持指定坐标所属屏幕ID |
-| swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行滑动操作 |
-| swipeBetween(from: Point, to: Point, speed?: number): Promise\<void> | 基于坐标进行滑动操作，支持指定坐标所属屏幕ID |
-| fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，支持指定速度和步长 |
-| fling(direction: UiDirection, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，指定方向和速度 |
-| drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行拖拽操作 |
-| dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void> | 基于坐标进行拖拽操作，支持指定坐标所属屏幕ID|
-| injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean> | 向设备注入多指操作，支持指定手指和步骤对应动作的坐标点、滑动速度 |
+| click(x: number, y: number): Promise\<void> | 基于坐标进行点击操作。|
+| clickAt(point: Point): Promise\<void> | 基于坐标进行点击操作，支持指定坐标所属屏幕ID。 |
+| doubleClick(x: number, y: number): Promise\<void> | 基于坐标进行双击操作。 |
+| doubleClickAt(point: Point): Promise\<void> | 基于坐标进行双击操作，支持指定坐标所属屏幕ID。 |
+| longClick(x: number, y: number): Promise\<void> | 基于坐标进行长按操作。 |
+| longClickAt(point: Point, duration?: number): Promise\<void> | 基于坐标进行长按操作，支持指定坐标所属屏幕ID。 |
+| swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行滑动操作。 |
+| swipeBetween(from: Point, to: Point, speed?: number): Promise\<void> | 基于坐标进行滑动操作，支持指定坐标所属屏幕ID。 |
+| fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，支持指定速度和步长。 |
+| fling(direction: UiDirection, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，指定方向和速度。 |
+| drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行拖拽操作。 |
+| dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void> | 基于坐标进行拖拽操作，支持指定坐标所属屏幕ID。|
+| injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean> | 向设备注入多指操作，支持指定手指和步骤对应动作的坐标点、滑动速度。 |
 
 
 以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
@@ -238,11 +238,11 @@ export default function abilityTest() {
 
 在与页面进行交互后，可通过在指定时间内等待某控件的出现或等待页面空闲来判断页面跳转是否完成。
 
-#### 接口说明
+**接口说明：**
 
 | 接口 | 功能说明 |
 | ------ | ------|
-| waitForComponent(on: On, time: number): Promise\<Component> | 在用户给定的时间内，持续查找满足控件属性要求的目标控件 |
+| waitForComponent(on: On, time: number): Promise\<Component> | 在用户给定的时间内，持续查找满足控件属性要求的目标控件。 |
 | waitForIdle(idleTime: number, timeout: number): Promise\<boolean> | 判断当前界面的所有控件是否已经空闲，使用Promise异步回调。 |
 
 ### TODO: 待完善示例
@@ -272,7 +272,7 @@ export default function abilityTest() {
 
 支持向指定坐标点或指定控件输入文本内容，同时支持[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
 
-#### 接口说明
+**接口说明：**
 | 接口 | 功能说明 |
 | ------ | ------|
 | inputText(p: Point, text: string, mode?: InputTextMode): Promise\<void>| 在指定坐标点输入文本，支持指定文本输入方式。 |
@@ -344,7 +344,7 @@ export default function abilityTest() {
 ```
 ### 截图
 
-#### 接口说明
+**接口说明：**
 | 接口 | 功能说明 |
 | ------ | ------|
 | screenCap(savePath: string, displayId: number): Promise\<boolean>| 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中。 |
@@ -392,7 +392,7 @@ export default function abilityTest() {
 
 ### UI事件监听
 
-#### 接口说明
+**接口说明：**
 | 接口 | 功能说明 |
 | ------ | ------|
 | once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void | 开始监听dialog控件出现的事件，使用callback的形式返回结果。|
@@ -426,7 +426,7 @@ export default function abilityTest() {
 
 ### 模拟键鼠操作
 
-#### 接口说明
+**接口说明：**
 | 接口 | 功能说明 |
 | ------ | ------|
 |mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>|在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。|
@@ -600,19 +600,20 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 ## 基于Shell命令进行UI测试
 
 在开发阶段，若需快速执行截屏、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可直接借助Shell命令实现，高效完成各类测试验证需求，显著提升操作便捷性与测试效率。
+在开发阶段，如果需要快速执行截屏、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可借助Shell命令实现，提升测试效率。
 
-> **说明：**
+> **环境要求：**
 >
-> 使用cmd的方式，需要配置好hdc相关的环境变量。
+> 根据hdc命令行工具指导，完成[环境准备](../dfx/hdc.md#环境准备)。确保设备已成功连接，并执行hdc shell。
 
-**命令列表**
+### 命令列表
 | 命令            | 参数   |说明                              |
 |---------------|---------------------------------|---------------------------------|
 | help          | - |  显示uitest工具能够支持的命令信息。            |
-| screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图) |
-| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)|
+| screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
+| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
 | uiRecord        | uiRecord \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
-| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入ui模拟操作](#注入ui模拟操作)。                       |
+| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入ui模拟操作](#注入ui模拟操作)。|
 | --version | --version|获取当前工具版本信息。 |
 | start-daemon|start-daemon| 拉起uitest测试进程。 |
 
@@ -635,7 +636,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 |---------|--------------|-----------|
 | **-p** | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .json'。|
 | **-i** | |不过滤不可见控件，也不做窗口合并。|
-| **-a** | |保存 BackgroundColor、 Content、FontColor、FontSize、extraAttrs 属性数据。<br>**说明** ：默认不保存上述属性数据。 <br> **-a和-i不可同时使用** | 
+| **-a** | |保存 BackgroundColor、 Content、FontColor、FontSize、extraAttrs 属性数据。<br>**说明** ：默认不保存上述属性数据， **-a和-i不可同时使用。** | 
 | **-b** | \<bundleName\> |获取指定包名对应目标窗口的控件树信息。|
 | **-w** | \<windowId\>  |获取指定ID目标窗口的控件树信息。|
 | **-m** | \<true\|false\> |指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
@@ -661,7 +662,7 @@ hdc shell uitest dumpLayout -d 0
 | 命令   | 参数    |  必填 | 说明              | 
 |-------|--------------|------|-----------------|
 | -W    | \<true/false> | 否   | 录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 <br> **说明：** 从API version 20开始支持该命令。|
-| -l    |              | 否   | 在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
+| -l    | - | 否   | 在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
 | -c    | \<true/false> | 否   | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示打印，不设置时默认为true。<br> **说明：** 从API version 20开始支持该命令。 | 
 
 ```bash
@@ -793,7 +794,7 @@ hdc shell uitest uiInput drag 10 10 100 100 500
 |-------------------|-------------|----------|
 | direction         | 否 | 滑动方向，取值范围：[0,1,2,3]，默认值为0。<br> 0代表向左滑动，1代表向右滑动，2代表向上滑动，3代表向下滑动。    | 
 | swipeVelocityPps_ | 否| 滑动速度，单位：px/s，取值范围：200-40000。<br> **默认值**: 600。取值超出限定范围时，取默认值。    | 
-| stepLength        | 否        | 滑动步长。<br> **默认值**: 滑动距离/50。为更好的模拟效果，推荐参数缺省/使用默认值。 |
+| stepLength        | 否        | 滑动步长。<br> **默认值**： 滑动距离/50。为更好的模拟效果，推荐参数缺省/使用默认值。 |
 
 ```shell  
 # 执行左滑操作。
