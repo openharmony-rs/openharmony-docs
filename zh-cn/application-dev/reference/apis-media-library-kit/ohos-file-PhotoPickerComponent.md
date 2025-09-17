@@ -104,8 +104,9 @@ Picker配置选项。
 | uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | 否   | Picker的颜色模式。Picker宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性一般设置PickerColorMode.LIGHT时不与深颜色的backgroundColor搭配；设置PickerColorMode.DARK时不与浅颜色的backgroundColor搭配，否则会出现组件背景或文字无法看清楚的问题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 | gridStartOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图第一行与组件顶部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | gridEndOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图最后一行与组件底部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| PickerIndex<sup>21+</sup>    | number                              | 否   | 应用创建PhotoPickerComponent可配置序号。当应用同时创建多个PhotoPickerComponent时，序号不能重复。序号唯一性由应用控制，PhotoPickerComponent不做校验。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| preSelecedtUrisWithPickerIndex<sup>21+</sup>    | Array<PreselectedInfo>TODO                              | 否   | PhotoPickerComponent预选中的文件以及可选中picker序号<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| pickerIndex<sup>21+</sup>    | number                              | 否   | 应用创建PhotoPickerComponent可配置序号。当应用同时创建多个PhotoPickerComponent时，序号不能重复。序号唯一性由应用控制，PhotoPickerComponent不做校验。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| preselectedInfos<sup>21+</sup>    | Array<[PreselectedInfo](#preselectedinfo21)>                              | 否   | PhotoPickerComponent预选中的文件以及可选中picker序号。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 一个picker只支持一种badgeType定义。需要展示特殊角标的图片配置，系统最高支持20万数据量配置。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -182,6 +183,40 @@ setData(dataType: DataType, data: Object): void
 应用可通过该接口向picker组件发送数据，并通过DataType来区分具体发送什么类型的数据。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+|  参数名        | 类型                                    | 必填  | 说明  |
+| ------------------------- | ------------------ | ----- | --------------- |
+| dataType | [DataType](#datatype) | 是 | 发送数据的数据类型。|
+| data | Object | 是 | 发送的数据。 | 
+
+### addData
+
+addData(dataType: DataType, data: Object): void
+
+应用可通过该接口向picker组件发送增加配置数据，并通过DataType来区分具体发送什么类型的数据，当前仅支持SET_BADGE—_CONFIGS。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+|  参数名        | 类型                                    | 必填  | 说明  |
+| ------------------------- | ------------------ | ----- | --------------- |
+| dataType | [DataType](#datatype) | 是 | 发送数据的数据类型。|
+| data | Object | 是 | 发送的数据。 | 
+
+### deleteData
+
+deleteData(dataType: DataType, data: Object): void
+
+应用可通过该接口向picker组件发送移除配置数据，并通过DataType来区分具体发送什么类型的数据，当前仅支持SET_BADGE—_CONFIGS。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -302,10 +337,10 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 | width    | number                | 否   | 图片、视频的宽（单位：像素）（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | height   | number                | 否   | 图片、视频的高（单位：像素）（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | size     | number                | 否   | 图片、视频的大小（单位：字节）（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
-| duration   | number                | 否   | 视频的时长（单位：毫秒），图片时返回-1（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| photoSubType   | PhotoSubtype TODO                | 否   | 图片类型，见PhotoSubtype定义，包括movingPhoto、brust等。非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
-| dynamicRangeType   | DynamicRangeType TODO                | 否   | 媒体文件动态范围模型，见DynamicRangeType定义，包括HDR、SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-| orientation   | number             | 否   | 图片/视频方向信息：<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，镜像水平翻转再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，镜像水平翻转再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+| duration   | number                | 否   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| photoSubType<sup>21+</sup>   | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否   | 图片类型，见PhotoSubtype定义，包括movingPhoto、brust等。非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| dynamicRangeType<sup>21+</sup>   | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否   | 媒体文件动态范围模型，见DynamicRangeType定义，包括HDR、SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+| orientation<sup>+</sup>   | number             | 否   | 图片/视频方向信息：<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，镜像水平翻转再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，镜像水平翻转再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 ## ItemInfo
 
@@ -372,19 +407,45 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 | itemBorderRadius | [Length](../apis-arkui/arkui-ts/ts-types.md#length) &verbar; [BorderRadiuses](../apis-arkui/arkui-ts/ts-types.md#borderradiuses9) &verbar; [LocalizedBorderRadiuses](../apis-arkui/arkui-ts/ts-types.md#localizedborderradiuses12) | 否   | 宫格圆角属性。 |
 | itemGap | [Length](../apis-arkui/arkui-ts/ts-types.md#length) | 否   | 宫格间距。 |
 
+## BadgeConfig<sup>21+</sup>
+
+特殊角标配置项。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型                                             | 必填 | 说明                                                                           |
+| ---- | ------------------------------------------------ | ---- | ------------------------------------------------------------------------------ |
+| badgeType | [BadgeType](#badgetype21) | 是   | 特殊角标的类型。 |
+| uris | Array<string> | 是   | 显示角标的资产uri数据。 |
+
+## PreselectedInfo<sup>21+</sup>
+
+预选中的文件以及可预选中picker序号。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型                                             | 必填 | 说明                                                                           |
+| ---- | ------------------------------------------------ | ---- | ------------------------------------------------------------------------------ |
+| uri | string | 是   | 选中媒体文件的uri。 |
+| preselectablePickerIndex | number | 否   | 限制仅在指定序号的PhotoPickerComponent中进行自动选中；默认为-1，即可支持在任意序号的pickerComponent中自动选中。 |
 ## DataType
 
 枚举，PickerController向picker组件发送数据的数据类型。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                | 值   | 说明                                                                                                                 |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
-| SET_SELECTED_URIS | 1   | 发送已选择的数据列表，通知picker组件勾选状态刷新，需要传入string数组类型。<br>例如：应用在自己的页面中删除某张图片后，需要把剩下的已选择的数据列表通过setData接口通知到picker组件，从而触发picker组件勾选框状态刷新正确。 |
-| SET_ALBUM_URI | 2   | 发送已选择相册，通知picker组件刷新相册，需要传入string类型。<br>例如：应用在自己的页面中选择相册后，需要把已选择的相册uri通过setData接口通知到picker组件，从而触发picker组件刷新相册数据。 |
-| SET_SELECTED_URIS_AND_PICKER_INDEX | 3   | 发送已选择的文件uri以及选中的picker序号。当picker序号与参数中的picker序号匹配时，已选择文件支持在当前picker里自动选中。 |
+| SET_SELECTED_URIS | 1   | 发送已选择的数据列表，通知picker组件勾选状态刷新，需要传入string数组类型。<br>例如：应用在自己的页面中删除某张图片后，需要把剩下的已选择的数据列表通过setData接口通知到picker组件，从而触发picker组件勾选框状态刷新正确。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| SET_ALBUM_URI | 2   | 发送已选择相册，通知picker组件刷新相册，需要传入string类型。<br>例如：应用在自己的页面中选择相册后，需要把已选择的相册uri通过setData接口通知到picker组件，从而触发picker组件刷新相册数据。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| SET_SELECTED_INFO | 3   | 发送已选择的文件uri以及选中的picker序号。当picker序号与参数中的picker序号匹配时，已选择文件支持在当前picker里自动选中。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| SET_BADGE_CONFIGS | 4   | 发送需要显示角标的配置，类型为[badgeConfig](#badgeconfig21)，包含角标的类型和对应文件uri的数据列表。配置后，对应文件会显示配置类型的角标。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## ItemType
 
@@ -520,6 +581,18 @@ Picker的颜色模式。
 |-------------|-----|----------|
 | SAVE_AS     | 0   | 另存为新的图片/视频。  |
 | OVERWRITE  | 1   | 覆盖原有图片/视频，覆盖后支持在图库中将保存内容回退，还原成原始图片/视频。 |
+
+## BadgeType<sup>21+</sup>
+
+特殊角标的类型。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称          | 值   | 说明       |
+|-------------|-----|----------|
+| BADGE_UPLOADED     | 1   | 已上传。  |
 
 ## VideoPlayerState<sup>14+</sup>
 
