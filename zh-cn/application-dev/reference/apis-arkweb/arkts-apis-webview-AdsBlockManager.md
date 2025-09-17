@@ -30,10 +30,6 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                               |
@@ -56,7 +52,6 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -93,10 +88,6 @@ struct WebComponent {
     }
   }
 }
-```
-
-ArkTS-Sta示例：
-```ts
 ```
 
 ## addAdsBlockDisallowedList<sup>12+</sup>
