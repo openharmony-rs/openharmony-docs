@@ -229,9 +229,7 @@ ArkTS1.2示例：
 ```ts
 'use static'
 import {
-  memo,
-  __memo_context_type,
-  __memo_id_type
+  memo, __memo_context_type, __memo_id_type
 } from '@ohos.arkui.stateManagement';
 import {
   Entry,
@@ -239,31 +237,30 @@ import {
   Row,
   Component,
   Button,
-  ButtonAttributr,
+  ButtonAttribute,
   ClickEvent,
   Progress,
   ProgressAttribute,
   ProgressType,
 } from '@ohos.arkui.component';
 import {
-  State,
-  Mutablestate,
-  stateOf,
-  observableProxy
+  State, MutableState, stateOf, observableProxy
 } from '@ohos.arkui.stateManagement';
+
 @Entry
 @Component
 struct ProgressCase1 {
-  @State progressValue: number = 0;	// 设置进度条初始值为0
+  @State progressValue: number = 0; // 设置进度条初始值为0
+
   build() {
     Column() {
       Column() {
-        Progress({value:0, total:100, type:ProgressType.Capsule}).width(200).height(50).value(this.progressValue)
+        Progress({ value: 0, total: 100, type: ProgressType.Capsule }).width(200).height(50).value(this.progressValue)
         Row().width('100%').height(5)
         Button("进度条+5")
-          .onClick((e:ClickEvent)=>{
+          .onClick((e: ClickEvent) => {
             this.progressValue += 5;
-            if (this.progressValue > 100){
+            if (this.progressValue > 100) {
               this.progressValue = 0;
             }
           })
