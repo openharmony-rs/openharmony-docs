@@ -256,6 +256,39 @@ struct Index {
 }
 ```
 
+## getId<sup>22+</sup>
+
+getId(): number
+
+获取后端实例唯一标识的ID。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index{
+  build(){
+    Column()
+      .width("100%")
+      .height("100%")
+      .onClick(()=>{
+      console.log(`id:${this.getUIContext()?.getId()}`);
+    })
+  }
+}
+```
+
 ## getMediaQuery
 
 getMediaQuery(): MediaQuery
