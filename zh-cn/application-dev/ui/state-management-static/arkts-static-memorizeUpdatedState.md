@@ -58,6 +58,7 @@ memorizeUpdatedState\<T>(factory: RememberFactory\<T>): MemoState\<T>
 ```ts
 'use static';
 
+import { Entry, Component, Button, ClickEvent, Column, Text } from '@ohos.arkui.component';
 import { State, memorizeUpdatedState } from '@ohos.arkui.stateManagement'
 import { ParallelOption, ParallelizeUI } from "@ohos.arkui.Parallelize"
 
