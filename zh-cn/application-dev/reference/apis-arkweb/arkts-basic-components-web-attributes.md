@@ -1133,7 +1133,7 @@ webSansSerifFont(family: string)
 
 webSerifFont(family: string)
 
-设置网页的serif font字体库。
+设置网页的serif font字体库。当属性没有显式调用时，默认允许设置网页的serif font字体库为serif。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1145,7 +1145,7 @@ webSerifFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的serif font字体库。<br>默认值：serif。 |
+| family | string | 是    | 设置网页的serif font字体库。 |
 
 **示例：**
 
@@ -1370,7 +1370,7 @@ forceDarkAccess(access: boolean)
 
 pinchSmooth(isEnabled: boolean)
 
-设置网页是否开启捏合流畅模式。
+设置网页是否开启捏合流畅模式。当属性没有显式调用时，默认允许使用网页不开启捏合流畅模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1382,7 +1382,7 @@ pinchSmooth(isEnabled: boolean)
 
 | 参数名       | 类型    | 必填   | 说明          |
 | --------- | ------- | ---- | ------------- |
-| isEnabled | boolean | 是    | 网页是否开启捏合流畅模式。<br>true表示设置网页开启捏合流畅模式，false表示设置网页不开启捏合流畅模式。<br>默认值：false。 |
+| isEnabled | boolean | 是    | 网页是否开启捏合流畅模式。<br>true表示设置网页开启捏合流畅模式，false表示设置网页不开启捏合流畅模式。 |
 
 **示例：**
 
@@ -1908,7 +1908,7 @@ Hello world!
 
 layoutMode(mode: WebLayoutMode)
 
-设置Web布局模式。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
+设置Web布局模式。当属性没有显式调用时，默认允许使用跟随系统或自适应布局。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
 
 > **说明：**
 >
@@ -1933,7 +1933,7 @@ layoutMode(mode: WebLayoutMode)
 
 | 参数名  | 类型                                  | 必填   | 说明                  |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | 是    | 设置web布局模式，跟随系统或自适应布局。<br>默认值：`WebLayoutMode.NONE。` |
+| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | 是    | 设置web布局模式，跟随系统或自适应布局。 |
 
 **示例：**
 
@@ -2135,7 +2135,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 enableNativeEmbedMode(mode: boolean)
 
-设置是否开启同层渲染功能。
+设置是否开启同层渲染功能。当属性没有显式调用时，默认允许使用不开启同层渲染功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2147,7 +2147,7 @@ enableNativeEmbedMode(mode: boolean)
 
 | 参数名   | 类型                      | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  boolean | 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>默认值：false。 |
+| mode |  boolean | 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。 |
 
 **示例：**
 
@@ -2367,7 +2367,7 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
 metaViewport(enabled: boolean)
 
-设置meta标签的viewport属性是否可用。
+设置meta标签的viewport属性是否可用。当属性没有显式调用时，默认允许使用支持meta标签的viewport属性，将解析viewport属性，并根据viewport属性布局。
 
 > **说明：**
 >
@@ -2385,7 +2385,7 @@ metaViewport(enabled: boolean)
 
 | 参数名 | 类型 | 必填 | 说明                         |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | boolean  | 是   | 是否支持meta标签的viewport属性。<br>true表示支持meta标签的viewport属性，将解析viewport属性，并根据viewport属性布局。<br>false表示不支持meta标签的viewport属性，将不解析viewport属性，进行默认布局。<br>默认值：true。 |
+| enabled | boolean  | 是   | 是否支持meta标签的viewport属性。<br>true表示支持meta标签的viewport属性，将解析viewport属性，并根据viewport属性布局。<br>false表示不支持meta标签的viewport属性，将不解析viewport属性，进行默认布局。 |
 
 **示例：**
 
