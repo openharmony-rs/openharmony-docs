@@ -798,17 +798,23 @@ textZoomRatio(textZoomRatio: number)
 
 ## initialScale<sup>9+</sup>
 
-initialScale(percent: number)
+ArkTS-Dyn: initialScale(percent: number)
+
+ArkTS-Sta: initialScale(percent: double)
 
 设置整体页面的缩放百分比。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填   | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |
-| percent | number | 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。<br>默认值：100。 |
+| percent | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。<br>默认值：100。 |
 
 **示例：**
 

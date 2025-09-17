@@ -2007,17 +2007,23 @@ struct WebComponent {
 
 ## zoom
 
-zoom(factor: number): void
+ArkTS-Dyn: zoom(factor: number): void
+
+ArkTS-Sta: zoom(factor: double): void
 
 调整当前网页的缩放比例，[zoomAccess](arkts-basic-components-web-attributes.md#zoomaccess)需为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| factor | number   | 是   | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
+| factor | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
 
 **错误码：**
 
@@ -3235,7 +3241,9 @@ struct WebComponent {
 
 ## scrollTo
 
-scrollTo(x:number, y:number, duration?:number): void
+ArkTS-Dyn: scrollTo(x: number, y: number, duration?: number): void
+
+ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 
 在指定时间内，将页面滚动到指定的绝对位置。
 
@@ -3245,9 +3253,9 @@ scrollTo(x:number, y:number, duration?:number): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| x   | number   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。 |
-| y   | number   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。|
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
+| y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
 
 **错误码：**
 
@@ -3319,7 +3327,9 @@ Scroll Test
 
 ## scrollBy
 
-scrollBy(deltaX:number, deltaY:number,duration?:number): void
+ArkTS-Dyn: scrollBy(deltaX: number, deltaY: number, duration?: number): void
+
+ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 在指定时间内将页面滚动指定的偏移量。
 
@@ -3329,9 +3339,9 @@ scrollBy(deltaX:number, deltaY:number,duration?:number): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| deltaX | number   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。 |
-| deltaY | number   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。 |
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
+| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
 
 **错误码：**
 
@@ -3406,18 +3416,24 @@ Scroll Test
 ```
 ## scrollByWithResult<sup>12+</sup>
 
-scrollByWithResult(deltaX: number, deltaY: number): boolean
+ArkTS-Dyn: scrollByWithResult(deltaX: number, deltaY: number): boolean
+
+ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| deltaX | number   | 是   | 水平偏移量，其中水平向右为正方向。 |
-| deltaY | number   | 是   | 垂直偏移量，其中垂直向下为正方向。 |
+| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。 |
+| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。 |
 
 **返回值：**
 
@@ -3494,18 +3510,24 @@ Scroll Test
 ```
 ## slideScroll
 
-slideScroll(vx:number, vy:number): void
+ArkTS-Dyn: slideScroll(vx: number, vy: number): void
+
+ArkTS-Sta: slideScroll(vx: double, vy: double): void
 
 按照指定速度模拟对页面的轻扫滚动动作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| vx     | number   | 是   | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。<br>单位：vp/ms。 |
-| vy     | number   | 是   | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。<br>单位：vp/ms。 |
+| vx     | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。<br>单位：vp/ms。 |
+| vy     | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。<br>单位：vp/ms。 |
 
 **错误码：**
 
