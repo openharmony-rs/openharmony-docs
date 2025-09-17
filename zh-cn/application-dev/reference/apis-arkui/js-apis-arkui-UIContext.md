@@ -5534,7 +5534,7 @@ ArkTS1.2示例：
 ```ts
 import mediaquery from '@ohos.mediaquery';
 
-listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 ```
 
 ## Router
