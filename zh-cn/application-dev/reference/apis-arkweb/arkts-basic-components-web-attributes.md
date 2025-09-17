@@ -872,7 +872,7 @@ ArkTS-Dyn: defaultFixedFontSize(size: number)
 
 ArkTS-Sta:  defaultFixedFontSize(size: int)
 
-设置网页的默认等宽字体大小。
+设置网页的默认等宽字体大小。当属性没有显式调用时，默认允许使用13设置网页的默认等宽字体大小。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -884,7 +884,7 @@ ArkTS-Sta:  defaultFixedFontSize(size: int)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：13。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
 
 **示例：**
 
@@ -935,7 +935,7 @@ ArkTS-Dyn: defaultFontSize(size: number)
 
 ArkTS-Sta: defaultFontSize(size: int)
 
-设置网页的默认字体大小。
+设置网页的默认字体大小。当属性没有显示调用时，默认允许使用16设置网页的默认字体大小。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -947,7 +947,7 @@ ArkTS-Sta: defaultFontSize(size: int)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：16。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
 
 **示例：**
 
@@ -998,7 +998,7 @@ ArkTS-Dyn: minFontSize(size: number)
 
 ArkTS-Sta: minFontSize(size: int)
 
-设置网页字体大小最小值。
+设置网页字体大小最小值。当属性没有显式调用时，默认允许使用8设置网页字体大小最小值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1010,7 +1010,7 @@ ArkTS-Sta: minFontSize(size: int)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：8。<br/> |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br/> |
 
 **示例：**
 
@@ -1094,7 +1094,7 @@ minLogicalFontSize(size: number)
 
 webFixedFont(family: string)
 
-设置网页的fixed font字体库。
+设置网页的fixed font字体库。当属性没有显式调用时，默认允许使用monospace设置网页的fixed font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1107,7 +1107,7 @@ webFixedFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的fixed font字体库。<br>默认值：monospace。 |
+| family | string | 是    | 设置网页的fixed font字体库。 |
 
 **示例：**
 
@@ -1156,7 +1156,7 @@ webFixedFont(family: string)
 
 webSansSerifFont(family: string)
 
-设置网页的sans-serif font字体库。
+设置网页的sans-serif font字体库。当属性没有显式调用时，默认允许使用sans-serif设置网页的sans-serif font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1168,7 +1168,7 @@ webSansSerifFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的sans-serif font字体库。<br>默认值：sans-serif。 |
+| family | string | 是    | 设置网页的sans-serif font字体库。 |
 
 **示例：**
 
@@ -1252,7 +1252,7 @@ webSerifFont(family: string)
 
 webStandardFont(family: string)
 
-设置网页的standard font字体库。
+设置网页的standard font字体库。当属性没有显式调用时，默认允许使用sans-serif设置网页的standard font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1264,7 +1264,7 @@ webStandardFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| family | string | 是    | 设置网页的standard font字体库。<br>默认值：sans-serif。 |
+| family | string | 是    | 设置网页的standard font字体库。 |
 
 **示例：**
 
@@ -1313,7 +1313,7 @@ webStandardFont(family: string)
 
 webFantasyFont(family: string)
 
-设置网页的fantasy font字体库。
+设置网页的fantasy font字体库。当属性没有显式调用时，默认允许使用fantasy设置网页的fantasy font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1325,7 +1325,7 @@ webFantasyFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的fantasy font字体库。<br>默认值：fantasy。 |
+| family | string | 是    | 设置网页的fantasy font字体库。 |
 
 **示例：**
 
@@ -1372,7 +1372,7 @@ webFantasyFont(family: string)
 
 webCursiveFont(family: string)
 
-设置网页的cursive font字体库。
+设置网页的cursive font字体库。当属性没有显示调用时，默认允许使用cursive设置网页的cursive font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1384,7 +1384,7 @@ webCursiveFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的cursive font字体库。<br>默认值：cursive。 |
+| family | string | 是    | 设置网页的cursive font字体库。 |
 
 **示例：**
 
@@ -1433,7 +1433,7 @@ webCursiveFont(family: string)
 
 darkMode(mode: WebDarkMode)
 
-设置Web深色模式。当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。
+设置Web深色模式。当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。当属性没有显式调用时，默认允许使用Web深色模式关闭设置Web深色模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1446,7 +1446,7 @@ darkMode(mode: WebDarkMode)
 
 | 参数名  | 类型                             | 必填   | 说明                     |
 | ---- | -------------------------------- | ---- | ------------------------ |
-| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | 是    | 设置Web的深色模式为关闭、开启或跟随系统。<br>默认值：`WebDarkMode.Off`。 |
+| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | 是    | 设置Web的深色模式为关闭、开启或跟随系统。 |
 
 **示例：**
 
@@ -1495,7 +1495,7 @@ darkMode(mode: WebDarkMode)
 
 forceDarkAccess(access: boolean)
 
-设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。
+设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。当属性没有显式调用时，默认允许设置网页不开启强制深色模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1507,7 +1507,7 @@ forceDarkAccess(access: boolean)
 
 | 参数名    | 类型    | 必填   | 说明            |
 | ------ | ------- | ---- | --------------- |
-| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。<br>默认值：false。 |
+| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。 |
 
 **示例：**
 
@@ -2380,7 +2380,7 @@ registerNativeEmbedRule(tag: string, type: string)
 
 defaultTextEncodingFormat(textEncodingFormat: string)
 
-设置网页的默认字符编码。
+设置网页的默认字符编码。当属性没有显示调用时，默认允许使用"UTF-8"作为设置网页的默认字符编码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2392,7 +2392,7 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textEncodingFormat | string | 是    | 默认字符编码。默认值："UTF-8"。 |
+| textEncodingFormat | string | 是    | 默认字符编码。 |
 
   **示例：**
 
@@ -2510,7 +2510,7 @@ struct WebComponent {
 
 textAutosizing(textAutosizing: boolean)
 
-设置使能文本自动调整大小。
+设置使能文本自动调整大小。当属性没有显式调用时，默认文本不自动调整大小。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2522,7 +2522,7 @@ textAutosizing(textAutosizing: boolean)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textAutosizing | boolean | 是    | 文本自动调整大小。<br>true表示文本自动调整大小，false表示文本不自动调整大小。<br>默认值：true。 |
+| textAutosizing | boolean | 是    | 文本自动调整大小。<br>true表示文本自动调整大小，false表示文本不自动调整大小。 |
 
   **示例：**
 
@@ -3070,7 +3070,7 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 enableFollowSystemFontWeight(follow: boolean)
 
-设置Web组件是否开启字重跟随系统设置变化。
+设置Web组件是否开启字重跟随系统设置变化。当属性没有显示调用时，默认字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。
 
 > **说明：**
 >
@@ -3086,7 +3086,7 @@ enableFollowSystemFontWeight(follow: boolean)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>默认值：false。 |
+| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。 |
 
 **示例：**
 
