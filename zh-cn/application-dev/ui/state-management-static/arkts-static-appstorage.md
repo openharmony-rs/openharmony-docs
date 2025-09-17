@@ -154,28 +154,28 @@ import { StorageLink } from '@ohos.arkui.stateManagement';
 
 1. \@StoragePropRef、\@StorageLink的参数必须为string类型，否则编译期会报错。
 
-  ```ts
-  'use static';
+    ```ts
+    'use static';
 
-  import { Entry, Column, Component } from '@ohos.arkui.component';
-  import { AppStorage, StoragePropRef, StorageLink } from '@ohos.arkui.stateManagement';
+    import { Entry, Column, Component } from '@ohos.arkui.component';
+    import { AppStorage, StoragePropRef, StorageLink } from '@ohos.arkui.stateManagement';
 
-  AppStorage.setOrCreate('PropA', 47);
-  
-  @Entry
-  @Component
-  struct Index {
-    // 错误写法，编译报错
-    // @StoragePropRef() storageProp: number = 1;
-    // @StorageLink() storageLink: number = 2;
-  
-    // 正确写法
-    @StoragePropRef('PropA') storageProp: number = 1;
-    @StorageLink('PropA') storageLink: number = 2;
+    AppStorage.setOrCreate('PropA', 47);
+    
+    @Entry
+    @Component
+    struct Index {
+      // 错误写法，编译报错
+      // @StoragePropRef() storageProp: number = 1;
+      // @StorageLink() storageLink: number = 2;
+    
+      // 正确写法
+      @StoragePropRef('PropA') storageProp: number = 1;
+      @StorageLink('PropA') storageLink: number = 2;
 
-    build() {}
-  }
-  ```
+      build() {}
+    }
+    ```
 
 2.AppStorage与[PersistentStorage](arkts-static-persiststorage.md)和[Environment](arkts-static-environment.md)配合使用时，需要注意以下几点：：
 
