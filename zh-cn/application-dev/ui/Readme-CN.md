@@ -47,7 +47,7 @@
       - 组件扩展<!--arkts-extend-components-->
         - [组件扩展概述](../ui/state-management/arkts-extend-components-overview.md)
         - [\@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
-        - [\@LocalBuilder装饰器：维持组件关系](../ui/state-management/arkts-localBuilder.md)
+        - [\@LocalBuilder装饰器：维持组件关系（ArkTS-DT）](../ui/state-management/arkts-localBuilder.md)
         - [\@BuilderParam装饰器：引用\@Builder函数](../ui/state-management/arkts-builderparam.md)
         - [wrapBuilder：封装全局@Builder（ArkTS1.1）](../ui/state-management/arkts-wrapBuilder.md)
         - [wrapBuilder：封装全局@Builder（ArkTS1.2）](../ui/state-management/arkts-v1.2-wrapBuilder.md)
