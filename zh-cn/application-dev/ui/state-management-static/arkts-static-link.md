@@ -9,8 +9,6 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-'use static'
-
 import { Link } from '@ohos.arkui.stateManagement';
 ```
 
@@ -136,8 +134,6 @@ import { Link } from '@ohos.arkui.stateManagement';
 2. \@Link装饰的变量禁止在本地初始化，否则编译期会报错。
 
     ```ts
-    'use static'
-
     // 错误写法，编译报错
     @Link count: number = 10;
     

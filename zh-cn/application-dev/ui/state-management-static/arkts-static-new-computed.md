@@ -15,8 +15,6 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-'use static'
-
 import { Computed } from '@ohos.arkui.stateManagement';
 ```
 
@@ -36,8 +34,6 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - \@Computed为方法装饰器，仅能装饰getter方法。
 
    ```ts
-   'use static'
-
    import { Computed } from '@ohos.arkui.stateManagement';
 
    @Computed
@@ -179,8 +175,6 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - 多个\@Computed一起使用时，警惕循环求解，以防止计算过程中的死循环。
 
    ```ts
-   'use static'
-
    @Local a : number = 1;
    @Computed
    get b() {

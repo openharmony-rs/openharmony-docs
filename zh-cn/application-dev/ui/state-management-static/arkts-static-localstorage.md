@@ -31,8 +31,6 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 在静态上下文中使用时，需导入LocalStorage：
 
 ```ts
-'use static'
-
 import { LocalStorage } from '@ohos.arkui.stateManagement';
 ```
 
@@ -49,8 +47,6 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
-'use static'
-
 import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 ```
 
@@ -106,8 +102,6 @@ import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
-'use static'
-
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 ```
 
@@ -193,8 +187,6 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 ### 应用逻辑使用LocalStorage
 
 ```ts
-'use static'
-
 import { LocalStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47 };
@@ -479,9 +471,9 @@ Child自定义组件中的变化：
 上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
 
 ```ts
+// EntryAbility.ets
 'use static'
 
-// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { LocalStorage } from '@ohos.arkui.stateManagement'
@@ -507,9 +499,9 @@ export default class EntryAbility extends UIAbility {
 在下面的用例中，Index页面中的propA通过使用共享的LocalStorage实例,数值为loadContent传入的storage实例中的'PropA'。
 
 ```ts
+// index.ets
 'use static'
 
-// index.ets
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
 

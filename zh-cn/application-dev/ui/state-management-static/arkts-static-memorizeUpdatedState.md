@@ -8,8 +8,6 @@
 ## 导入模块
 
 ```ts
-'use static'
-
 import { memorizeUpdatedState } from '@ohos.arkui.stateManagement'
 ```
 
