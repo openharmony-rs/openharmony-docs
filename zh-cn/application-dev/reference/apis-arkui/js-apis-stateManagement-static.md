@@ -4,15 +4,202 @@
 
 >**说明：**
 >
->本模块首批接口从API version 20开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块首批接口从API version 20开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->本模块仅适用于ArkTS静态上下文中使用。
+>- 本模块仅支持ArkTS-Sta。
 
 ## 导入模块
 
 ```ts
-import { UIUtils } from '@ohos.arkui.stateManagement';
+import { AppStorageV2, UIUtils } from '@ohos.arkui.stateManagement';
 ```
+
+## AppStorageV2
+
+AppStorageV2提供状态变量在应用级全局共享的能力。
+
+AppStorageV2具体UI使用说明，详见[AppStorageV2：应用全局的UI状态存储](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)。
+
+### connect
+
+static connect\<T extends object\>(
+    ttype: Type,
+    key: string,
+    defaultCreator?: StorageDefaultCreator\<T\> 
+): T | undefined
+
+将键值对数据存储在应用内存中。如果给定的key已经存在于[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，存储后返回。
+
+>**说明：**
+>
+>- 如果数据已存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+>
+>- key相同，connect类型不同的数据会导致应用异常，开发者需要确保类型匹配。
+>
+>- 建议key使用有意义的值，可由字母、数字和下划线组成，长度不超过255字符，避免使用非法字符或空字符。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本**：20
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ---------------------- |
+| ttype | Type | 是   | 指定的类型。 |
+| key | string | 是   | 指定的key。 |
+| defaultCreator | [StorageDefaultCreator\<T\>](./js-apis-StateManagement.md#storagedefaultcreatort) | 否   | 获取默认值的构造器。 |
+
+**返回值：**
+
+| 类型                                   | 说明                                                         |
+| -------------------------------------- | ------------------------------------------------------------ |
+| T \| undefined | 创建或获取AppStorageV2数据成功时，返回数据；否则返回undefined。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class SampleClass {
+  @Trace p: number = 0;
+}
+
+const ISampleType = Type.of(new SampleClass());
+
+// 将key为key_as1、value为new SampleClass()对象的键值对存储到内存中，并赋值给as1
+const as1: SampleClass = AppStorageV2.connect<SampleClass>(ISampleType, 'key_as1', () => new SampleClass())!;
+```
+
+### connect
+
+static connect\<T extends object\>(
+    ttype: Type,
+    defaultCreator?: StorageDefaultCreator\<T\>
+): T | undefined
+
+将键值对数据存储在应用内存中。如果给定的ttype已经存在于[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，存储后返回。
+
+>**说明：**
+>
+>- ttype使用[Type](../apis-arkts/js-apis-util.md#type10).of(object)方法获得。
+>
+>- 未传入key时，默认使用ttype的name作为key。
+>
+>- 如果数据已存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本**：20
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ---------------------- |
+| ttype | Type | 是   | 指定的类型。 |
+| defaultCreator | [StorageDefaultCreator\<T\>](./js-apis-StateManagement.md#storagedefaultcreatort) | 否   | 获取默认值的构造器。 |
+
+**返回值：**
+
+| 类型                                   | 说明                                                         |
+| -------------------------------------- | ------------------------------------------------------------ |
+| T \| undefined | 创建或获取AppStorageV2数据成功时，返回数据；否则返回undefined。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class SampleClass {
+  @Trace p: number = 0;
+}
+
+const ISampleType = Type.of(new SampleClass());
+
+// 将ttype为SampleClass的Type、value为new SampleClass()对象的键值对存储到内存中，并赋值给as2
+const as2: SampleClass | undefined = AppStorageV2.connect<SampleClass>(ISampleType, () => new SampleClass());
+
+// ttype为SampleClass的Type的对象已经在AppStorageV2中，将该对象返回给as3
+const as3: SampleClass = AppStorageV2.connect<SampleClass>(ISampleType)!;
+```
+
+### remove
+
+static remove(keyOrType: string | Type): void
+
+将指定的键值对数据从[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)里面删除。如果指定的键值不存在于AppStorageV2中，将删除失败。
+
+>**说明：**
+>
+>删除AppStorageV2中不存在的key会报警告。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本**：20
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ---------------------- |
+| keyOrType | string \| Type | 是   | 需要删除的key。如果传入的是Type类型，则删除的key为Type类型入参的name。 |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+'use static'
+
+import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+
+// 假设AppStorageV2中存在keyOrType为key_as2的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove('key_as2');
+
+// 假设AppStorageV2中存在keyOrType为SampleClass的Type的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove(Type.of(new SampleClass()));
+
+// 假设AppStorageV2中不存在keyOrType为key_as1的键，报警告
+AppStorageV2.remove('key_as1');
+```
+
+### keys
+
+static keys(): Array\<string\>
+
+获取[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中的所有key。
+
+>**说明：**
+>
+>key在Array中的顺序是无序的，与key插入到AppStorageV2中的顺序无关。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本**：20
+
+**返回值：**
+
+| 类型                                   | 说明                                                         |
+| -------------------------------------- | ------------------------------------------------------------ |
+| Array\<string\> | 所有AppStorageV2中的key。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+
+// 假设AppStorageV2中存在两个key（key_as1、key_as2），返回[key_as1、key_as2]，并赋值给keys
+const keys: Array<string> = AppStorageV2.keys();
+```
+
 
 ## UIUtils
 
