@@ -27,7 +27,7 @@ EventResult的构造函数。
 
 setGestureEventResult(result: boolean): void
 
-设置手势事件消费结果。当属性没有显式调用时，默认允许使用消费该手势事件。
+设置手势事件消费结果。当属性没有显式调用时，默认允许消费该手势事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,7 +50,7 @@ setGestureEventResult(result: boolean): void
 
 setGestureEventResult(result: boolean, stopPropagation: boolean): void
 
-设置手势事件消费结果。当属性没有显式调用时，默认允许使用阻止冒泡。
+设置手势事件消费结果。当属性没有显式调用时，默认阻止事件冒泡。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
