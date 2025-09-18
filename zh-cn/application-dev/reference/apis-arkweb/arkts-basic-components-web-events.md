@@ -4240,10 +4240,6 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -4252,7 +4248,6 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
 **示例：**
 
-  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4378,32 +4373,6 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
   </div>
   </body>
   </html>
-  ```
-
-  ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Entry, Component, Web, Column,OnFirstContentfulPaintEvent} from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .onFirstContentfulPaint((event:OnFirstContentfulPaintEvent):void => {
-          if (event) {
-            console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
-            event.navigationStartTick + ", [firstContentfulPaintMs]:" +
-            event.firstContentfulPaintMs);
-          }
-        })
-      }
-    }
-  }
   ```
 
 ## onNativeEmbedMouseEvent<sup>20+</sup>
