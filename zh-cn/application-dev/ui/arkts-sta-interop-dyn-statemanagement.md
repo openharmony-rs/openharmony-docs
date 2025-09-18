@@ -1,35 +1,36 @@
-# ArkTS1.2使用ArkTS1.1状态管理互操作
+# ArkTS-Sta使用ArkTS-Dyn状态管理互操作
 
 ## 概述
 
-状态管理互操作适用于[ArkTS1.2互操作](../quick-start/arkts-interop-overview.md)中使用UI的场景。
+状态管理互操作适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用UI的场景。
 
 
 ## 架构原理
 
-[占位组件](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS1.2和ArkTS1.1的UI节点，构建完整的UI界面。
-ArkTS1.2的状态变量会同步创建一个ArkTS1.1的代理状态变量，用于与ArkTS1.1的状态变量进行状态传递。
+[占位组件](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
+
+ArkTS-Sta的状态变量会同步创建一个ArkTS-Dyn的代理状态变量，用于与ArkTS-Dyn的状态变量进行状态传递。
 
 
 ## 设计理念
 
-UI状态管理互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS1.1的场景。
+UI状态管理互操作适用于主模块使用ArkTS-Sta、子模块使用ArkTS-Dyn的场景。
 
 
 ## 约束与限制
 
 - 遵循[语言互操作](../quick-start/arkts-interop-overview.md#交互基本原则)的基本规范。
 
-- ArkTS1.2的数据不支持深拷贝，因此ArkTS1.1的@Prop变量不能接收ArkTS1.2的引用类型数据。
+- ArkTS-Sta的数据不支持深拷贝，因此ArkTS-Dyn的@Prop变量不能接收ArkTS-Sta的引用类型数据。
 
 
 ## 开发场景
 
-### 在ArkTS1.2引用ArkTS1.1中的自定义组件并使用状态管理
+### 在ArkTS-Sta引用ArkTS-Dyn中的自定义组件并使用状态管理
 
-下面的代码示例展示了在ArkTS1.2中与ArkTS1.1状态变量进行互操作。
+下面的代码示例展示了在ArkTS-Sta中与ArkTS-Dyn状态变量进行互操作。
 
-- 在ArkTS1.2主模块`entry`中引入ArkTS1.1组件。
+- 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn组件。
 
 ```TypeScript
 'use static';
@@ -80,7 +81,7 @@ struct ParentComp {
 }
 ```
 
-- 创建ArkTS1.1子模块`library`，在`library/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
 // library/src/main/ets/components/MainPage.ets
@@ -152,7 +153,7 @@ export struct MainPage {
 export { MainPage } from from './src/main/ets/components/MainPage';
 ```
 
-- 在ArkTS1.1模块`library`的`oh-package.json5`文件中配置子模块依赖。
+- 在ArkTS-Dyn模块`library`的`oh-package.json5`文件中配置子模块依赖。
 
 ```json
 // library/oh-package.json5
@@ -162,7 +163,7 @@ export { MainPage } from from './src/main/ets/components/MainPage';
 }
 ```
 
-- 创建ArkTS1.2子模块`library2`，在`library2/src/main/ets/components`目录创建并导出静态数据。
+- 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录创建并导出静态数据。
 
 ```TypeScript
 // library2/src/main/ets/components/MainPage.ets
@@ -193,20 +194,20 @@ export { StaticClass, Info } from from './src/main/ets/components/MainPage';
 
 ```text
 project/
-├── entry/          # ArkTS1.2主模块
+├── entry/          # ArkTS-Sta主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
 │                   └── MainPage.ets
 │
-│── library/         # ArkTS1.1子模块
+│── library/         # ArkTS-Dyn子模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── components/
 │                   └── MainPage.ets
-└── library2/         # ArkTS1.2子模块
+└── library2/         # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/

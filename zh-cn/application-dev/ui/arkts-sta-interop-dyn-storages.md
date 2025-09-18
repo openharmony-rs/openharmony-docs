@@ -1,41 +1,41 @@
-# ArkTS1.2与ArkTS1.1应用间状态存储互操作
+# ArkTS-Sta与ArkTS-Dyn应用间状态存储互操作
 
 ## 概述
 
-应用间状态存储互操作适用于[ArkTS1.2使用ArkTS1.1自定义组件](./interop-compatible-component.md)中应用间使用AppStorage，LocalStorage，PersistentStorage，Environment的场景。
+应用间状态存储互操作适用于[ArkTS-Sta使用ArkTS-Dyn自定义组件](./interop-compatible-component.md)中应用间使用AppStorage，LocalStorage，PersistentStorage，Environment的场景。
 
 ## 架构原理
 
-在互操作场景下，[占位组件](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)连接ArkTS1.2和ArkTS1.1的UI节点，构建完整的UI界面。通过建立统一数据存储机制，确保ArkTS1.2和ArkTS1.1访问相同数据管理对象，实现状态和数据互通。
+在互操作场景下，[占位组件](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)连接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。通过建立统一数据存储机制，确保ArkTS-Sta和ArkTS-Dyn访问相同数据管理对象，实现状态和数据互通。
 
 ## 设计理念
 
-应用间状态存储互操作适用于主模块使用ArkTS1.2、子模块使用ArkTS1.1的场景。
+应用间状态存储互操作适用于主模块使用ArkTS-Sta、子模块使用ArkTS-Dyn的场景。
 
-- 渐进式迁移：逐步将ArkTS1.1组件迁移到新版本。
+- 渐进式迁移：逐步将ArkTS-Dyn组件迁移到新版本。
 
-- 使用旧应用级别的状态存储：使用稳定的ArkTS1.1的AppStorage，LocalStorage，PersistentStorage，Environment。
+- 使用旧应用级别的状态存储：使用稳定的ArkTS-Dyn的AppStorage，LocalStorage，PersistentStorage，Environment。
 
 ## 参数传递规则
 
-- 遵循ArkTS1.2使用ArkTS1.1自定义组件[约束与限制](./interop-compatible-component.md#约束与限制)。
+- 遵循ArkTS-Sta使用ArkTS-Dyn自定义组件[约束与限制](./interop-compatible-component.md#约束与限制)。
 
-- 遵循ArkTS1.1 AppStorage[限制条件](./state-management/arkts-appstorage.md#限制条件)。
+- 遵循ArkTS-Dyn AppStorage[限制条件](./state-management/arkts-appstorage.md#限制条件)。
 
-- 遵循ArkTS1.1 LocalStorage[限制条件](./state-management/arkts-localstorage.md#限制条件)。
+- 遵循ArkTS-Dyn LocalStorage[限制条件](./state-management/arkts-localstorage.md#限制条件)。
 
-- 遵循ArkTS1.1 PersistentStorage[限制条件](./state-management/arkts-persiststorage.md#限制条件)。
+- 遵循ArkTS-Dyn PersistentStorage[限制条件](./state-management/arkts-persiststorage.md#限制条件)。
 
-- 遵循ArkTS1.1 Environment[限制条件](./state-management/arkts-environment.md#限制条件)。
+- 遵循ArkTS-Dyn Environment[限制条件](./state-management/arkts-environment.md#限制条件)。
 
 ## 开发场景
 
-### ArkTS1.1使用ArkTS1.2AppStorage中的数据
+### ArkTS-Dyn使用ArkTS-StaAppStorage中的数据
 
-使用ArkTS1.1自定义组件中的\@StorageLink与ArkTS1.2的AppStorage数据双向绑定；使用ArkTS1.1自定义组件中的\@StorageProp与ArkTS1.2的AppStorage数据单向绑定。
+使用ArkTS-Dyn自定义组件中的\@StorageLink与ArkTS-Sta的AppStorage数据双向绑定；使用ArkTS-Dyn自定义组件中的\@StorageProp与ArkTS-Sta的AppStorage数据单向绑定。
 
 示例如下：
-- 创建ArkTS1.1子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
 // har1_1/src/main/ets/components/MainPage.ets
@@ -76,7 +76,7 @@ export struct MainPage {
 }
 ```
 
-- 在ArkTS1.2主模块中引入ArkTS1.1组件。
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
 'use static';
@@ -115,12 +115,12 @@ struct MyStateSample {
 
 ```
 
-### ArkTS1.1使用ArkTS1.2LocalStorage中的数据
+### ArkTS-Dyn使用ArkTS-StaLocalStorage中的数据
 
-使用ArkTS1.1自定义组件中的\@StorageLink与ArkTS1.2的LocalStorage数据双向绑定；使用ArkTS1.1自定义组件中的\@StorageProp与ArkTS1.2的LocalStorage数据单向绑定。
+使用ArkTS-Dyn自定义组件中的\@StorageLink与ArkTS-Sta的LocalStorage数据双向绑定；使用ArkTS-Dyn自定义组件中的\@StorageProp与ArkTS-Sta的LocalStorage数据单向绑定。
 
 示例如下：
-- 创建ArkTS1.1子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
 // har1_1/src/main/ets/components/MainPage.ets
@@ -160,7 +160,7 @@ export struct MainPage {
 }
 ```
 
-- 在ArkTS1.2主模块中引入ArkTS1.1组件。
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
 'use static';
@@ -198,12 +198,12 @@ struct MyStateSample {
 }
 ```
 
-### ArkTS1.1使用ArkTS1.2PersistentStorage中的数据
+### ArkTS-Dyn使用ArkTS-StaPersistentStorage中的数据
 
-使用ArkTS1.1自定义组件中的\@StorageLink与ArkTS1.2的PersistentStorage数据双向绑定；使用ArkTS1.1自定义组件中的\@StorageProp与ArkTS1.2的PersistentStorage数据单向绑定。
+使用ArkTS-Dyn自定义组件中的\@StorageLink与ArkTS-Sta的PersistentStorage数据双向绑定；使用ArkTS-Dyn自定义组件中的\@StorageProp与ArkTS-Sta的PersistentStorage数据单向绑定。
 
 示例如下：
-- 创建ArkTS1.1子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
 // har1_1/src/main/ets/components/MainPage.ets
@@ -244,7 +244,7 @@ export struct MainPage {
 }
 ```
 
-- 在ArkTS1.2主模块中引入ArkTS1.1组件。
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
 'use static';
@@ -282,12 +282,12 @@ struct MyStateSample {
 }
 ```
 
-### ArkTS1.1使用ArkTS1.2Environment中的数据
+### ArkTS-Dyn使用ArkTS-StaEnvironment中的数据
 
-使用ArkTS1.1自定义组件中的\@StorageLink与ArkTS1.2的Environment数据双向绑定；使用ArkTS1.1自定义组件中的\@StorageProp与ArkTS1.2的Environment数据单向绑定。
+使用ArkTS-Dyn自定义组件中的\@StorageLink与ArkTS-Sta的Environment数据双向绑定；使用ArkTS-Dyn自定义组件中的\@StorageProp与ArkTS-Sta的Environment数据单向绑定。
 
 示例如下：
-- 创建ArkTS1.1子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
 // har1_1/src/main/ets/components/MainPage.ets
@@ -330,7 +330,7 @@ export struct MainPage {
 }
 ```
 
-- 在ArkTS1.2主模块中引入ArkTS1.1组件。
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
 'use static';
@@ -373,14 +373,14 @@ struct MyStateSample {
 
 ```text
 project/
-├── entry/          # ArkTS1.2主模块
+├── entry/          # ArkTS-Sta主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
 │                   └── Index.ets
 │
-└── har1_1/         # ArkTS1.1子模块
+└── har1_1/         # ArkTS-Dyn子模块
     └── src/
         └── main/
             └── ets/

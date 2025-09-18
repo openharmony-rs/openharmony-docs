@@ -29,6 +29,20 @@
       - [UIExtensionComponent (系统接口)](arkts-v1.2-deprecated-uiextension.md)
       - [AbilityComponent (系统接口)](arkts-v1.2-deprecated-abilitycomponent.md)
       - [ChipGroup](arkts-v1.2-deprecated-chipgroup.md)
+  - ArkTS-Dyn与ArkTS-Sta的交互能力<!--ui-arkts-sta-interop-dyn-->
+    - [互操作概述](arkts-dyn-sta-ui-interop.md)
+    - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
+      - [ArkTS-Sta使用ArkTS-Dyn自定义组件](arkts-sta-interop-dyn-component.md)
+      - [ArkTS-Sta使用ArkTS-Dyn全局自定义构建函数](arkts-sta-interop-dyn-builder.md)
+      - [ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象](arkts-sta-interop-dyn-WrappedBuilder.md)
+      - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-BuilderParam.md)
+      - [使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
+    - [状态管理V1互操作](arkts-sta-interop-dyn-statemanager-v1.md)
+      - [ArkTS-Sta使用ArkTS-Dyn状态管理互操作](arkts-sta-interop-dyn-statemanagement.md)
+      - [ArkTS-Sta与ArkTS-Dyn应用间状态存储互操作](arkts-sta-interop-dyn-storages.md)
+    - 状态管理V2互操作
+    - 状态管理V1V2混用互操作
+    - [UI数据互操作](arkts-v1.2-interop-v1.1-ui-data.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](../ui/state-management/arkts-basic-syntax-overview.md)
     - [声明式UI描述](../ui/state-management/arkts-declarative-ui-description.md)
@@ -335,12 +349,6 @@
     - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md)
     - [在NDK中保证多实例场景功能正常](ndk-scope-task.md)
     - [NDK支持多线程创建组件](ndk-build-on-multi-thread.md)
-  - 使用互操作功能构建UI<!--arkts-use-interop-ui-->
-    - [ArkTS1.2使用ArkTS1.1自定义组件](interop-compatible-component.md)
-    - [ArkTS1.2使用ArkTS1.1状态管理互操作](interop-compatible-statemanagement.md)
-    - [ArkTS1.2与ArkTS1.1应用间状态存储互操作](interop-storages.md)
-    - [ArkTS1.2使用ArkTS1.1全局自定义构建函数](interop-compatible-builder.md)
-    - [ArkTS1.2使用ArkTS1.1 WrappedBuilder对象](interop-compatible-WrappedBuilder.md)
 - [UI高性能开发](ui-performance-overview.md)
   - [BuilderNode并行化构建和更新节点树](ui-parallel-buildernode.md)
   - [UI并行化创建组件树](ui-parallel-components.md)
