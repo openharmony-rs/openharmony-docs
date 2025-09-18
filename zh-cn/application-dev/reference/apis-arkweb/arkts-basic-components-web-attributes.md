@@ -1133,7 +1133,7 @@ webSansSerifFont(family: string)
 
 webSerifFont(family: string)
 
-设置网页的serif font字体库。当属性没有显式调用时，默认允许设置网页的serif font字体库为serif。
+设置网页的serif字体库。当属性没有显式调用时，默认允许设置网页的serif字体库为serif。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1370,7 +1370,7 @@ forceDarkAccess(access: boolean)
 
 pinchSmooth(isEnabled: boolean)
 
-设置网页是否开启捏合流畅模式。当属性没有显式调用时，默认设置为网页不开启捏合流畅模式。
+设置网页是否开启捏合流畅模式。当属性没有显式调用时，默认不开启。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
