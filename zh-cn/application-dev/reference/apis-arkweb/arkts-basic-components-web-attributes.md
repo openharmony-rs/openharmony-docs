@@ -2367,7 +2367,7 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
 metaViewport(enabled: boolean)
 
-设置meta标签的viewport属性是否可用。当属性没有显式调用时，默认允许解析iewport属性，并根据其其布局。
+设置meta标签的viewport属性是否可用。当属性没有显式调用时，默认允许解析iewport属性，并根据其布局。
 
 > **说明：**
 >
