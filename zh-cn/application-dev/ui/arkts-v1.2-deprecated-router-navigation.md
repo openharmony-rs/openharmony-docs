@@ -1127,22 +1127,7 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ### DisableAlertBeforeBackPageOptions
 ArkTS-Dyn接口声明：[export interface DisableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
-替代的ArkTS-Sta接口声明：[interface RouterOptions](../reference/apis-arkui/js-apis-router.md#routeroptions)
-
-
-
-ArkTS-Dyn
-
-```ts
-let options: DisableAlertBeforeBackPageOptions = { complete: ()=>{} }
-```
-
-ArkTS-Sta
-
-```ts
-let options: router.RouterOptions = { url: "url" }
-```
-
+暂无替代的ArkTS-Sta接口。
 
 ### success
 ArkTS-Dyn接口声明：[success?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
