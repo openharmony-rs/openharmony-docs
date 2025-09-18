@@ -872,7 +872,7 @@ ArkTS-Dyn: defaultFixedFontSize(size: number)
 
 ArkTS-Sta: defaultFixedFontSize(size: int)
 
-设置网页的默认等宽字体大小。当属性没有显式调用时，默认设置网页的默认等宽字体大小为13。
+设置网页的默认等宽字体大小。若未显式调用该属性，网页的默认等宽字体大小为13。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -935,7 +935,7 @@ ArkTS-Dyn: defaultFontSize(size: number)
 
 ArkTS-Sta: defaultFontSize(size: int)
 
-设置网页的默认字体大小。当属性没有显示调用时，默认设置网页的默认字体大小为16。
+设置网页的默认字体大小。若未显式调用该属性，默认字体大小为16。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -998,7 +998,7 @@ ArkTS-Dyn: minFontSize(size: number)
 
 ArkTS-Sta: minFontSize(size: int)
 
-设置网页字体大小最小值。当属性没有显式调用时，默认设置网页字体大小最小值为8。
+设置网页字体大小最小值。当未显式调用该属性时，网页字体大小最小值默认为8。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1094,7 +1094,7 @@ minLogicalFontSize(size: number)
 
 webFixedFont(family: string)
 
-设置网页的fixed font字体库。当属性没有显式调用时，默认允许使用monospace设置网页的fixed font字体库。
+设置网页的fixed font字体库。当属性未显式调用时，默认允许使用monospace。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1156,7 +1156,7 @@ webFixedFont(family: string)
 
 webSansSerifFont(family: string)
 
-设置网页的sans-serif font字体库。当属性没有显式调用时，默认允许使用sans-serif设置网页的sans-serif font字体库。
+设置网页的sans-serif font字体库。当属性未显式调用时，默认允许使用sans-serif。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1252,7 +1252,7 @@ webSerifFont(family: string)
 
 webStandardFont(family: string)
 
-设置网页的standard font字体库。当属性没有显式调用时，默认允许使用sans-serif设置网页的standard font字体库。
+设置网页的standard font字体库。当属性没有显式调用时，默认使用sans-serif设置网页的standard font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1313,7 +1313,7 @@ webStandardFont(family: string)
 
 webFantasyFont(family: string)
 
-设置网页的fantasy font字体库。当属性没有显式调用时，默认允许使用fantasy设置网页的fantasy font字体库。
+设置网页的fantasy font字体库。当属性未显式调用时，默认使用fantasy字体。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1372,7 +1372,7 @@ webFantasyFont(family: string)
 
 webCursiveFont(family: string)
 
-设置网页的cursive font字体库。当属性没有显示调用时，默认允许使用cursive设置网页的cursive font字体库。
+设置网页的cursive font字体库。如果未显式调用该属性，默认允许使用cursive字体。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1433,7 +1433,7 @@ webCursiveFont(family: string)
 
 darkMode(mode: WebDarkMode)
 
-设置Web深色模式。当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。当属性没有显式调用时，默认允许使用Web深色模式关闭设置Web深色模式。
+设置Web深色模式。当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。未显式调用该属性时，默认允许关闭Web深色模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1495,7 +1495,7 @@ darkMode(mode: WebDarkMode)
 
 forceDarkAccess(access: boolean)
 
-设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。当属性没有显式调用时，默认允许设置网页不开启强制深色模式。
+设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。当属性没有显式调用时，默认关闭强制深色模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
