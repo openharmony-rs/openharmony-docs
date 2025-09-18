@@ -46,6 +46,8 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 - 在嵌套类中使用\@Trace装饰的属性具有被观测变化的能力。
 
    ```ts
+   'use static'
+   
    import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -75,8 +77,9 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 
 - 在继承类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-
    ```ts
+   'use static'
+   
    import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -102,10 +105,12 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
      }
    }
    ```
-   
+
 - 类中使用\@Trace装饰的静态属性具有被观测变化的能力。
-   
+  
    ```ts
+   'use static'
+   
    import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -125,9 +130,9 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
            })
        }
      }
-   }
-   ```
-
+  }
+  ```
+  
 - \@Trace装饰内置类型时，可以观测各自API导致的变化。
 
   | 类型  | 可观测变化的API                                              |
@@ -144,6 +149,8 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 - 非\@Trace装饰的成员属性用在UI上无法触发UI刷新。
 
    ```ts
+   'use static'
+   
    import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -209,6 +216,8 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 点击Button('change length')，length是被\@Trace装饰的属性，它的变化可以触发关联的UI组件，即UINode (1)的刷新，并输出"id: 1 renderTimes: x"的日志，其中x根据点击次数依次增长。
 
 ```ts
+'use static'
+
 import { Button, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
 import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 
@@ -259,6 +268,8 @@ struct Page {
 以下例子中，创建类Son和类Cousin的实例，点击Button('change Son age')和Button('change Cousin age')可以触发UI的刷新。
 
 ```ts
+'use static'
+
 import { Button, Column, ComponentV2, Entry, FontWeight, Row, Text } from '@ohos.arkui.component';
 import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 
@@ -334,6 +345,8 @@ struct Index {
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
 ```ts
+'use static'
+
 import { Button, Column, ComponentV2, Divider, Entry,
          FontWeight, ForEach, Row, Text } from '@ohos.arkui.component';
 import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
@@ -442,6 +455,8 @@ struct Index {
 * 点击Text组件更改age时，Text组件会刷新。
 
    ```ts
+   'use static'
+   
    import { Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -514,6 +529,8 @@ struct Index {
 * 因为Info类被\@ObservedV2装饰且属性memberMap被\@Trace装饰，点击Button('init map')对memberMap赋值也可以观测到变化。
 
    ```ts
+   'use static'
+   
    import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -571,6 +588,8 @@ struct Index {
 * 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观察变化。
 
    ```ts
+   'use static'
+   
    import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -622,6 +641,8 @@ struct Index {
 * 因为Info类被\@ObservedV2装饰且属性selectedDate被\@Trace装饰，点击Button('set selectedDate to 2023-07-08')对selectedDate赋值也可以观测到变化。
 
    ```ts
+   'use static'
+   
    import { Button, Column, ComponentV2, DatePicker, Divider, Entry } from '@ohos.arkui.component';
    import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
