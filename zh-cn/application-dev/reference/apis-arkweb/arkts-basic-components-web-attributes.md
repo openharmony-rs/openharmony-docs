@@ -1507,7 +1507,7 @@ forceDarkAccess(access: boolean)
 
 | 参数名    | 类型    | 必填   | 说明            |
 | ------ | ------- | ---- | --------------- |
-| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。 |
+| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示开启，false表示关闭。 |
 
 **示例：**
 
