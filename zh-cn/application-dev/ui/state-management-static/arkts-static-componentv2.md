@@ -15,7 +15,7 @@
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
     ```ts
-    'use static';
+    'use static'
     
     import { Entry, ComponentV2 } from '@ohos.arkui.component';
     import { Local } from '@ohos.arkui.stateManagement';
