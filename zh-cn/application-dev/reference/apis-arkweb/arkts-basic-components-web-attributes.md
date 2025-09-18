@@ -362,7 +362,7 @@ zoomAccess(zoomAccess: boolean)
 
 overviewModeAccess(overviewModeAccess: boolean)
 
-设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当前仅支持移动设备。当属性没有显式调用时，默认允许使用概览模式加载网页。
+设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当前仅支持移动设备。未显式调用时默认启用概览模式加载网页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1370,7 +1370,7 @@ forceDarkAccess(access: boolean)
 
 pinchSmooth(isEnabled: boolean)
 
-设置网页是否开启捏合流畅模式。当属性没有显式调用时，默认允许使用网页不开启捏合流畅模式。
+设置网页是否开启捏合流畅模式。当属性没有显式调用时，默认设置为网页不开启捏合流畅模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2135,7 +2135,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 enableNativeEmbedMode(mode: boolean)
 
-设置是否开启同层渲染功能。当属性没有显式调用时，默认允许使用不开启同层渲染功能。
+设置是否开启同层渲染功能。当属性没有显式调用时，默认关闭此能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2367,7 +2367,7 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
 metaViewport(enabled: boolean)
 
-设置meta标签的viewport属性是否可用。当属性没有显式调用时，默认允许使用支持meta标签的viewport属性，将解析viewport属性，并根据viewport属性布局。
+设置meta标签的viewport属性是否可用。当属性没有显式调用时，默认允许解析iewport属性，并根据其其布局。
 
 > **说明：**
 >
