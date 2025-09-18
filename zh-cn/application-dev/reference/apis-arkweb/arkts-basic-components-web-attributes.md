@@ -2135,7 +2135,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 enableNativeEmbedMode(mode: boolean)
 
-设置是否开启同层渲染功能。当属性没有显式调用时，默认关闭此能。
+设置是否开启同层渲染功能。当属性没有显式调用时，默认关闭此功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
