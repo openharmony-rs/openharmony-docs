@@ -159,3 +159,8 @@ export function har1func(dynamic_obj: Any) {
 | "ArkGraphics3D.Node" | [Node](../apis-arkgraphics3d/js-apis-inner-scene-nodes.md#node)|
 | "ArkGraphics3D.Scene" | [Scene](../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1)|
 | "ArkGraphics3D.SceneResourceFactory" | [SceneResourceFactory](../apis-arkgraphics3d/js-apis-inner-scene.md#sceneresourcefactory)|
+| "ArkWeb.FileSelectorParam" | [FileSelectorParam](../apis-arkweb/arkts-basic-components-web-FileSelectorParam.md)|
+| "ArkWeb.FileSelectorResult" | [FileSelectorResult](../apis-arkweb/arkts-basic-components-web-FileSelectorResult.md)|
+| "ArkWeb.JsResult" | [JsResult](../apis-arkweb/arkts-basic-components-web-JsResult.md)|
+| "ArkWeb.WebContextMenuParam" | [WebContextMenuParam](../apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)|
+| "ArkWeb.WebContextMenuResult" | [WebContextMenuResult](../apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)|
