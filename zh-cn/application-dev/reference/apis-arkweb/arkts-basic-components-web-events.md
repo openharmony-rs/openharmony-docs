@@ -2957,6 +2957,10 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2965,6 +2969,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2989,6 +2994,32 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column,OnFirstContentfulPaintEvent} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onFirstContentfulPaint((event:OnFirstContentfulPaintEvent):void => {
+          if (event) {
+            console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+            event.navigationStartTick + ", [firstContentfulPaintMs]:" +
+            event.firstContentfulPaintMs);
+          }
+        })
+      }
+    }
+  }
+  ```
+
 ## onFirstMeaningfulPaint<sup>12+</sup>
 
 onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
@@ -2996,6 +3027,10 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
 设置网页绘制页面主要内容回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3005,6 +3040,7 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3026,6 +3062,31 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column,FirstMeaningfulPaint} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onFirstMeaningfulPaint((event:FirstMeaningfulPaint):void => {
+          if(event) {
+            console.log("onFirstMeaningfulPaint: [navigationStartTime]= " + event.navigationStartTime +
+              ", [firstMeaningfulPaintTime]=" + event.firstMeaningfulPaintTime);
+            }
+          })
+        }
+      }
+  }
+  ```
+
 ## onLargestContentfulPaint<sup>12+</sup>
 
 onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
@@ -3033,6 +3094,10 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
 设置网页绘制页面最大内容回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3042,6 +3107,7 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3062,6 +3128,35 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
               ", [largestImageLoadEndTime]=" + details.largestImageLoadEndTime +
               ", [imageBPP]=" + details.imageBPP);
           })
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column,LargestContentfulPaint} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onLargestContentfulPaint((event:LargestContentfulPaint):void => {
+          if(event) {
+            console.log("onLargestContentfulPaint: [navigationStartTime]= " + event.navigationStartTime +
+              ", [largestImagePaintTime]=" + event.largestImagePaintTime +
+              ", [largestTextPaintTime]=" + event.largestTextPaintTime +
+              ", [largestImageLoadStartTime]=" + event.largestImageLoadStartTime +
+              ", [largestImageLoadEndTime]=" + event.largestImageLoadEndTime +
+              ", [imageBPP]=" + event.imageBPP);
+          }
+        })
       }
     }
   }

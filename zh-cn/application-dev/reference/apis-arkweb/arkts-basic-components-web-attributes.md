@@ -968,20 +968,27 @@ blockNetwork(block: boolean)
 
 ## defaultFixedFontSize<sup>9+</sup>
 
-defaultFixedFontSize(size: number)
+ArkTS-Dyn: defaultFixedFontSize(size: number)
 
-设置网页的默认等宽字体大小。
+ArkTS-Sta: defaultFixedFontSize(size: int)
+
+设置网页的默认等宽字体大小。若未显式调用该属性，网页的默认等宽字体大小为13。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：13。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1001,22 +1008,50 @@ defaultFixedFontSize(size: number)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State fontSize: Int = 16;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .defaultFixedFontSize(this.fontSize)
+      }
+    }
+  }
+  ```
+
 ## defaultFontSize<sup>9+</sup>
 
-defaultFontSize(size: number)
+ArkTS-Dyn: defaultFontSize(size: number)
 
-设置网页的默认字体大小。
+ArkTS-Sta: defaultFontSize(size: int)
+
+设置网页的默认字体大小。若未显式调用该属性，默认字体大小为16。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：16。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1036,22 +1071,50 @@ defaultFontSize(size: number)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State fontSize: Int = 13;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .defaultFontSize(this.fontSize)
+      }
+    }
+  }
+  ```
+
 ## minFontSize<sup>9+</sup>
 
-minFontSize(size: number)
+ArkTS-Dyn: minFontSize(size: number)
 
-设置网页字体大小最小值。
+ArkTS-Sta: minFontSize(size: int)
+
+设置网页字体大小最小值。当未显式调用该属性时，网页字体大小最小值默认为8。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>默认值：8。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br/> |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1066,6 +1129,27 @@ minFontSize(size: number)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .minFontSize(this.fontSize)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State fontSize: Int = 13;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .minFontSize(this.fontSize)
       }
     }
   }
@@ -1138,18 +1222,24 @@ struct WebComponent {
 
 webFixedFont(family: string)
 
-设置网页的fixed font字体库。
+设置网页的fixed font字体库。当属性未显式调用时，默认允许使用monospace。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的fixed font字体库。<br>默认值：monospace。 |
+| family | string | 是    | 设置网页的fixed font字体库。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1169,22 +1259,48 @@ webFixedFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State family: string = "monospace";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webFixedFont(this.family)
+      }
+    }
+  }
+  ```
+
 ## webSansSerifFont<sup>9+</sup>
 
 webSansSerifFont(family: string)
 
-设置网页的sans-serif font字体库。
+设置网页的sans-serif font字体库。当属性未显式调用时，默认允许使用sans-serif。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的sans-serif font字体库。<br>默认值：sans-serif。 |
+| family | string | 是    | 设置网页的sans-serif font字体库。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1199,6 +1315,27 @@ webSansSerifFont(family: string)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .webSansSerifFont(this.family)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State family: string = "sans-serif";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webSansSerifFont(this.family)
       }
     }
   }
@@ -1269,18 +1406,23 @@ webSerifFont(family: string)
 
 webStandardFont(family: string)
 
-设置网页的standard font字体库。
+设置网页的standard font字体库。当属性没有显式调用时，默认使用sans-serif设置网页的standard font字体库。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| family | string | 是    | 设置网页的standard font字体库。<br>默认值：sans-serif。 |
+| family | string | 是    | 设置网页的standard font字体库。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1300,22 +1442,48 @@ webStandardFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State family: string = "sans-serif";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webStandardFont(this.family)
+      }
+    } 
+  }
+  ```
+
 ## webFantasyFont<sup>9+</sup>
 
 webFantasyFont(family: string)
 
-设置网页的fantasy font字体库。
+设置网页的fantasy font字体库。当属性未显式调用时，默认使用fantasy字体。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的fantasy font字体库。<br>默认值：fantasy。 |
+| family | string | 是    | 设置网页的fantasy font字体库。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1334,22 +1502,47 @@ webFantasyFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State family: string = "fantasy";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webFantasyFont(this.family)
+      }
+    }
+  }
+  ```
+
 ## webCursiveFont<sup>9+</sup>
 
 webCursiveFont(family: string)
 
-设置网页的cursive font字体库。
+设置网页的cursive font字体库。如果未显式调用该属性，默认允许使用cursive字体。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的cursive font字体库。<br>默认值：cursive。 |
+| family | string | 是    | 设置网页的cursive font字体库。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1369,22 +1562,49 @@ webCursiveFont(family: string)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State family: string = "cursive";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .webCursiveFont(this.family)
+      }
+    }
+  }
+  ```
+
 ## darkMode<sup>9+</sup>
 
 darkMode(mode: WebDarkMode)
 
-设置Web深色模式。当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。
+设置Web深色模式。当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。未显式调用该属性时，默认允许关闭Web深色模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 
 **参数：**
 
 | 参数名  | 类型                             | 必填   | 说明                     |
 | ---- | -------------------------------- | ---- | ------------------------ |
-| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | 是    | 设置Web的深色模式为关闭、开启或跟随系统。<br>默认值：`WebDarkMode.Off`。 |
+| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | 是    | 设置Web的深色模式为关闭、开启或跟随系统。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1404,22 +1624,48 @@ darkMode(mode: WebDarkMode)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State, WebDarkMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State mode: WebDarkMode = WebDarkMode.On;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .darkMode(this.mode)
+      }
+    }
+  }
+  ```
+
 ## forceDarkAccess<sup>9+</sup>
 
 forceDarkAccess(access: boolean)
 
-设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。
+设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。当属性没有显式调用时，默认关闭强制深色模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型    | 必填   | 说明            |
 | ------ | ------- | ---- | --------------- |
-| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。<br>默认值：false。 |
+| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示开启，false表示关闭。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1436,6 +1682,29 @@ forceDarkAccess(access: boolean)
         Web({ src: 'www.example.com', controller: this.controller })
           .darkMode(this.mode)
           .forceDarkAccess(this.access)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, State, WebDarkMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State mode: WebDarkMode = WebDarkMode.On;
+  @State access: boolean = true;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .darkMode(this.mode)
+        .forceDarkAccess(this.access)
       }
     }
   }
@@ -2392,18 +2661,23 @@ struct WebComponent {
 
 defaultTextEncodingFormat(textEncodingFormat: string)
 
-设置网页的默认字符编码。
+设置网页的默认字符编码。当属性没有显示调用时，默认允许使用"UTF-8"作为设置网页字符编码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textEncodingFormat | string | 是    | 默认字符编码。默认值："UTF-8"。 |
+| textEncodingFormat | string | 是    | 默认字符编码。 |
 
   **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2421,6 +2695,29 @@ defaultTextEncodingFormat(textEncodingFormat: string)
           .defaultTextEncodingFormat("UTF-8")
           .javaScriptAccess(true)
       }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+      // 设置高
+        .height(500)
+        .defaultTextEncodingFormat("UTF-8")
+        .javaScriptAccess(true)
+      } 
     }
   }
   ```
@@ -2519,18 +2816,23 @@ struct WebComponent {
 
 textAutosizing(textAutosizing: boolean)
 
-设置使能文本自动调整大小。
+设置使能文本自动调整大小。当属性没有显式调用时，默认设置文本不自动调整大小。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textAutosizing | boolean | 是    | 文本自动调整大小。<br>true表示文本自动调整大小，false表示文本不自动调整大小。<br>默认值：true。 |
+| textAutosizing | boolean | 是    | 文本自动调整大小。<br>true表示文本自动调整大小，false表示文本不自动调整大小。 |
 
   **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2544,6 +2846,26 @@ textAutosizing(textAutosizing: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .textAutosizing(false)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .textAutosizing(false)
       }
     }
   }
@@ -3054,7 +3376,7 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 enableFollowSystemFontWeight(follow: boolean)
 
-设置Web组件是否开启字重跟随系统设置变化。
+设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，默认字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。
 
 > **说明：**
 >
@@ -3062,14 +3384,19 @@ enableFollowSystemFontWeight(follow: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>默认值：false。 |
+| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3082,6 +3409,25 @@ enableFollowSystemFontWeight(follow: boolean)
       Column() {
         Web({ src: "www.example.com", controller: this.controller })
           .enableFollowSystemFontWeight(true)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+// xxx.ets
+import { Entry, Component, Web, Column } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
+    Column() {
+      Web({ src: "www.example.com", controller: this.controller })
+        .enableFollowSystemFontWeight(true)
       }
     }
   }
