@@ -2,37 +2,15 @@
 
 ## 简介
 
-使用 Taihe 进行可选属性相关开发时，可以使用 Optional<T> 或 @optional 注解。
+使用 Taihe 进行可选属性相关开发时，需要使用到 `Optional<T>` 类型及 `@optional` 注解。
 
 ## 基本概念
 
-Taihe 相关代码示例
+`Optional<T>` 是一个模板类型，表示一个值可能存在（持有一个 `T` 类型的值），也可能不存在（持有空值）。它在 C++ 侧对应 `taihe::optional<T>`，在 ArkTS 侧则对应 `T | undefined`。
 
-```rust
-Optional\<T\>
-```
+`@optional` 是一个注解，可用于修饰函数参数或结构体成员，表示在 ArkTS 中调用该函数或创建该结构体时，该参数或成员是可省略的（默认值为 `undefined`），相当于 ArkTS 中的 `a?: T`。
 
-以下是对应的 ets 代码
-
-```typescript
-T | undefined;
-```
-
-例如 `Optional\<String\>` 对应 `string | undefined`。
-
-Taihe 相关代码示例
-
-```rust
-@optional item: Optional\<T\>
-```
-
-以下是对应的 ets 代码
-
-```typescript
-item ?: T
-```
-
-例如 `@optional item: Optional\<String\>` 对应 `item ?: String`。
+**_需要特别注意的是，在使用 `@optional` 注解时，务必要保证其修饰的参数或成员的类型是可为空的（即 `Optional<T>` 或有 `@undefined unit` 类型成员的联合体类型等）。_**这是因为 `@optional` 注解本身只影响 ArkTS 侧的调用签名，并不会改变 C++ 侧接收的参数类型。如果一个参数或成员被 `@optional` 注解修饰，但其声明的类型却不可为空，那么当在 ArkTS 侧省略该参数或成员时，会传入一个 C++ 侧无法接受的空值，从而导致运行时错误。
 
 ## 使用示例
 

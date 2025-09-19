@@ -8,13 +8,13 @@
 
 2. `use ModuleA;`
 
-其中，`ModuleA` 是 Taihe 文件的名称，`DeclFoo` 是一个声明。
+其中，`ModuleA` 是要导入的 Taihe IDL 文件的名称（不含文件扩展名），`DeclFoo` 是要导入的具体声明名称。
 
 ## 基本概念
 
 使用 `use` 语句导入外部声明。
 
-被导入模块文件 user.taihe
+被导入的 Taihe IDL 文件 user.ohidl
 ```rust
 interface IUser {
     @get getEmail(): String;
@@ -24,7 +24,7 @@ interface IUser {
 function makeUser(path: String): IUser;
 ```
 
-导入模块文件 notification.taihe
+导入的 Taihe IDL 文件 notification.ohidl
 ```rust
 from user use IUser;
 
@@ -72,7 +72,7 @@ interface INotificationService{
 
 ### Taihe 声明
 
-**被导入模块文件 user.taihe**
+**被导入模块文件 user.ohidl**
 ```rust
 interface IUser {
     @get getEmail(): String;
@@ -82,7 +82,7 @@ interface IUser {
 function makeUser(path: String): IUser;
 ```
 
-**导入模块文件 notification.taihe**
+**导入模块文件 notification.ohidl**
 ```rust
 from user use IUser;
 

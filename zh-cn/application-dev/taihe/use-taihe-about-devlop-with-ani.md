@@ -2,7 +2,7 @@
 
 ## 简介
 
-Taihe 提供 Opaque 类型声明外部语言对象，用于表达在 Taihe 中无法表达的不透明类型，并允许使用 `@sts_type` 注解指定外部语言对象的具体 ets 类型。
+Taihe 提供 Opaque 类型声明外部语言对象，用于表达在 Taihe 中无法表达的不透明类型，并允许使用 `@sts_type` 注解指定该外部语言对象的具体 ets 类型。
 
 ## 基本概念
 
@@ -25,7 +25,13 @@ bool is_string(uintptr_t s) {
 }
 ```
 
-现存的 ArkTS 代码：
+`Opaque` 类型在 ArkTS 侧对应的类型为 `Object`，因此上述 Taihe 声明在 ArkTS 侧对应的声明为：
+
+```typescript
+function is_string(s: Object): boolean;
+```
+
+`Opaque` 类型的使用场景通常是：某些类型完全是在 ArkTS 侧定义的，而在 Taihe IDL 中并没有对应的声明，例如：
 
 ```typescript
 export interface Person {
@@ -34,7 +40,7 @@ export interface Person {
 }
 ```
 
-但是这部分代码没有写 Taihe 文件声明，此时可以通过 `@sts_type` 注解声明该 Opaque 在 ets 侧的类型，例如样例中的 `Person`。
+此时，如果希望使用 Taihe 声明一个函数来处理 `Person` 类型的参数，就必须使用 `Opaque` 类型来作为该参数的类型。此外，为了使该类型在 ArkTS 侧能被正确投影为 `Person` 类型而非 `Object` 类型，我们需要使用 `@sts_type` 注解来修饰该类型，表示该 `Opaque` 类型在 ArkTS 侧实际对应的具体类型为 `Person`：
 
 ```rust
 @!sts_inject("import {Person} from 'other.subsystem';")
@@ -65,7 +71,7 @@ void processPerson(uintptr_t person) {
 
 ## 使用示例
 
-### 现存 ArkTS 代码
+### 外部类型声明
 
 ```typescript
 export interface Person {
@@ -73,8 +79,6 @@ export interface Person {
     age: number;
 }
 ```
-
-我们在该示例中希望使用 Person 类型，但是没有 Person 类型相对应的 Taihe 声明时，可以使用 Opaque 类型。
 
 ### Taihe 声明
 
@@ -120,6 +124,7 @@ void processPerson(uintptr_t person) {
 ```typescript
     console.log(extobj.is_string("hello"));
     console.log(extobj.is_string(123));
+
     let person: Person = {name: "John", age: 30};
     extobj.processPerson(person);
 ```

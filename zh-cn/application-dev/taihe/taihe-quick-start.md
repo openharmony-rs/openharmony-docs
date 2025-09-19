@@ -6,7 +6,7 @@
 
 - 源码用户
 
-  Ubuntu 用户可运行 `scripts/install-ubuntu-deps` 一键配置环境。
+  Ubuntu 用户可在拉取的 Taihe 项目根目录下运行 `scripts/install-ubuntu-deps` 一键配置环境。
 
   对于非 Ubuntu 用户，需要手动安装以下依赖项：
 
@@ -19,7 +19,7 @@
 
   安装完成后，在项目根目录下以此运行 `uv sync` 和 `uv build` 命令以同步依赖并构建项目，完成环境配置。
 
-  配置好环境后，每次使用时都需要先在项目根目录下运行 `source .venv/bin/activate` 来激活虚拟环境，或者在使用命令行工具时运行 `uv run taihec` 命令而不是直接运行 `taihec`。
+  在配置好环境后，每次使用时都需要先在项目根目录下运行 `source .venv/bin/activate` 来激活虚拟环境，或者在使用命令行工具时运行 `uv run taihec` 命令而不是直接运行 `taihec`。
 
 - 二进制包用户
 
@@ -27,21 +27,20 @@
 
 ## Taihe 命令行使用方法
 
-Taihe 编译器提供命令行工具 `taihec`，用于处理 Taihe IDL 文件并生成代码。以下为 `taihec` 的基本用法：
+`taihec` 是 Taihe 的核心编译器工具，用于解析 Taihe IDL 文件并编译为目标语言的代码。并支持选择任意多种代码生成后端，生成适用于不同场景的代码。以下是 `taihec` 的基本用法：
+
 ```sh
 taihec [taihe_files ...] [options ...]
 ```
 
-- 输入：Taihe IDL 文件
-- 输出：生成文件
-
-*注：`taihe_files` 可以是一个或多个 Taihe IDL 文件，也可以使用通配符（例如 `path/to/idl/*.ohidl`）来指定多个文件。*
+- `taihe_files` 可以是一个或多个 Taihe IDL 文件，也可以使用通配符（例如 `path/to/idl/*.ohidl`）来指定多个文件。
+- `options` 用于指定代码生成的各种选项，详见下表。
 
 ### 命令行选项
 
 | 参数 | 简写 | 说明 |
 | ---- | ---- | ---- |
-| `--output <path>` | `-O<path>` | 指定生成的目标文件存放目录（默认：`taihe-generated`） |
+| `--output <path>` | `-O<path>` | 指定生成的目标文件存放目录（如缺省则默认生成在 `taihe-generated` 目录下） |
 | `--generate <backend>` | `-G<backend>` | 指定要启用的代码生成后端，如 `abi-header`、`abi-source`、`c-author` 等 |
 | `--build <build-system>` | `-B<build-system>` | 指定构建系统类型，目前支持 `cmake`（生成 `CMakeLists.txt`） |
 | `--codegen <namespace>:<config>[=<value>]` | `-C<namespace>:<config>[=<value>]` | 额外的代码生成配置项，例如 `sts:keep-name`、`arkts:module-prefix=prefix` 等 |
