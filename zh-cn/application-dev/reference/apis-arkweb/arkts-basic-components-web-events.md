@@ -3722,6 +3722,7 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
     }
   }
   ```
+
 加载的html文件
   ```html
   <!-- index.html -->
@@ -3856,6 +3857,10 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3864,6 +3869,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3887,6 +3893,37 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
               // 默认值，可不作处理
             }
           })
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Entry, Component, Web, Column, ViewportFit } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onViewportFitChanged((data:ViewportFit):void => {
+          let jsonData = JSON.stringify(data);
+          let viewportFit: ViewportFit = JSON.parse(jsonData).viewportFit;
+          console.log("jsonData:",jsonData)
+          if (viewportFit === ViewportFit.COVER) {
+            // index.html网页支持沉浸式布局，可调用expandSafeArea调整web控件布局视口覆盖避让区域(状态栏或导航条)。
+          } else if (viewportFit === ViewportFit.CONTAINS) {
+            // index.html网页不支持沉浸式布局，可调用expandSafeArea调整web控件布局视口为安全区域。
+          } else {
+            // 默认值，可不作处理
+          }
+        })
       }
     }
   }

@@ -7806,8 +7806,13 @@ static enableWholeWebPageDrawing(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7817,6 +7822,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.enableWholeWebPageDrawing();
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   aboutToAppear(): void {
     try {
@@ -7848,6 +7881,10 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback\<SnapshotResult>): v
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型           | 必填  | 说明                      |
@@ -7857,6 +7894,7 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback\<SnapshotResult>): v
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7866,6 +7904,43 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('webPageSnapshot')
+        .onClick(() => {
+          try {
+            this.controller.webPageSnapshot({ id: "1234", size: { width: 100, height: 100 } }, (error, result) => {
+              if (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                return;
+              }
+              if (result) {
+                console.info(`return value is:${result}`);
+                //开发者可以根据需要处理返回结果
+              }
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -8266,6 +8341,10 @@ getSurfaceId(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                |
@@ -8274,6 +8353,7 @@ getSurfaceId(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8286,6 +8366,44 @@ struct Example{
   controller: webview.WebviewController = new webview.WebviewController();
 
   @State imagePixelMap: image.PixelMap | undefined = undefined;
+
+  build(){
+    Column(){
+      Button("截图")
+        .onClick(()=>{
+          try {
+            let surfaceId = this.controller.getSurfaceId();
+            console.log("surfaceId: " + surfaceId);
+            if(surfaceId.length != 0) {
+              let region:image.Region = { x: 0, y: 0, size: { height: 800, width: 1000}}
+              this.imagePixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region)
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Image(this.imagePixelMap)
+        .height(100)
+      Web({src: 'www.example.com', controller: this.controller})
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { State, Entry, Column, Component, Button, Web, Image, ImageContent, String, Resource } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Example{
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  @State imagePixelMap: image.PixelMap | DrawableDescriptor | ImageContent | String | Resource = '';
 
   build(){
     Column(){
