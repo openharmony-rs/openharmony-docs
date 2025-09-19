@@ -50,7 +50,7 @@ export function process_teacher(a: Teacher): Teacher {
 
 注意，使用 @class 时通常需要提供构造函数，除非确认无需在 ets 层使用 new 实例化。
 
-使用 @static 注解会给对应的 class 添加静态方法，它仅对 @class interface 有效。@rename 注解会改变 ets 侧方法名，使用 @rename("<new_name>") 会使得 ets 侧方法名修改为 new_name, 当其不带参数时会在 ets 侧生成匿名函数。
+使用@static注解会给对应的class添加静态方法，它仅对@class interface有效。[@rename 注解](./use-taihe-about-rename.md)会改变ets侧方法名，使用@rename("<new_name>")会使得ets侧方法名修改为new_name, 当其不带参数时会在ets侧生成匿名函数。
 
 注意，根据 ets 规范，当一个 class 只有一个构造函数时，该函数应该为匿名构造函数，所以应该使用 @rename。
 

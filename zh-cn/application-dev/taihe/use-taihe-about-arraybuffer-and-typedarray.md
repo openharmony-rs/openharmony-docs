@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 ArrayBuffer 相关开发
+# 使用Taihe进行ArrayBuffer和TypedArray相关开发
 
 ## 简介
 

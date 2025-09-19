@@ -1,7 +1,7 @@
 # Node-API模块解耦复用实践指导
 
 ## 解耦设计在鸿蒙生态中的必要性与优势
-在鸿蒙跨语言开发中，ArkTS通过Node-API调用C++模块是常见模式。随着业务复杂度和跨平台需求增加，对C++模块进行分层解耦成为关键设计原则。良好的分层设计使Node-API模块支持ANI时，能复用相同代码逻辑，降低开发工作量。通过将代码明确划分为：
+在鸿蒙跨语言开发中，ArkTS通过Node-API调用C++模块是常见模式。随着业务复杂度和跨平台需求的增加，对C++模块进行分层解耦成为关键的设计原则。良好的分层设计使Node-API模块在支持ANI时，能复用相同代码逻辑，降低开发工作量。通过将代码明确划分为以下两层：
 
 1. Node-API胶水层：处理ArkTS与C++的类型转换和交互逻辑
 2. 核心逻辑层：实现平台无关的业务算法与数据处理
@@ -29,7 +29,7 @@
 
 ## 基于Node-API迁移到ANI的解耦实践
 
-为了更直观地展示分层解耦的价值，我们以图像处理模块为例，演示如何将紧耦合的 Node-API 代码重构为分层架构并迁移至 ANI（ArkTS Native Interface）。
+为了更直观地展示分层解耦的价值，我们通过图像处理模块的示例，说明如何将紧耦合的Node-API代码重构为分层架构，并迁移至[ANI（ArkTS Native Interface）](../../ani/ani-usage-scenarios.md)。
 
 ### 迁移步骤
 1. 分析现有Node-API接口：梳理当前混合了胶水逻辑与业务实现的代码。
@@ -78,7 +78,7 @@ static napi_value Init(napi_env env, napi_value exports) {
 
 1. 提取语言无关的逻辑层（C++）
 
-根据上述代码提供的GrayScale功能主要是根据图像数据进行灰度计算，这部分功能可以提取一个image_processor.cpp文件，这个文件提供一个ApplyGrayScale的存c++函数，接收pixelmap的数据，进行灰度计算，这个函数中不能使用任何Node-API相关的类型与函数。
+根据上述代码提供的GrayScale功能主要是根据图像数据进行灰度计算，这部分功能可以提取一个image_processor.cpp文件，此文件提供一个纯c++函数ApplyGrayScale，接收pixelmap的数据，进行灰度计算，在这个函数中不能使用任何Node-API相关的类型与函数。
 
 语言无关核心层（image_processor.cpp）
 ```cpp
@@ -122,7 +122,7 @@ static napi_value Init(napi_env env, napi_value exports) {
 ```
 
 ### 适配ANI胶水层（ANI_Glue.cpp）
-完成上述的接口分层以后，这个Native模块要能运行在ArkTS-ST模式中，只需要把胶水层从Node-API接口迁移到ANI接口，业务逻辑层在两种环境中都可以复用。
+完成上述的接口分层后，要使Native模块能够在ArkTS-ST模式中运行，只需将胶水层从Node-API接口迁移到ANI接口，而业务逻辑层在两种环境中均可复用。
 
 Node-API与ANI的模块注册机制不同。Node-API可以在Native侧完整注册模块，而ANI需在ArkTS侧声明模块，并在函数前添加native关键字，表明函数实现在Native侧。
 image_processor.ets文件
@@ -165,7 +165,7 @@ ani_status ANI_Constructor(ani_vm *vm, uint32_t *result)
 }
 ```
 
-通过上述的解耦，重构；ArkTS-DT与ArkTS-ST两种接口可以复用逻辑业务，降低工作量，当中的胶水层后续可以通过工具自动生成。
+通过上述的解耦，重构，ArkTS-DT与ArkTS-ST两种接口可以复用逻辑业务，降低工作量，当中的胶水层后续可以通过工具自动生成。
 
 
 ## 总结
