@@ -2051,7 +2051,7 @@ struct Index {
 
 ### borderStyle<sup>12+</sup>
 
-ArkTs-Dyn: set borderStyle(style: Edges\<BorderStyle>)
+ArkTs-Dyn: set borderStyle(style: Edges\<BorderStyle>)  
 ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 设置当前RenderNode的边框样式。
@@ -2066,8 +2066,10 @@ ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 | ------ | ------------------------------------------------------------------------------------------------------ | ---- | ---------------------- |
 | style  |ArkTs-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式。 |
 |   |ArkTs-Sta: [NodeEdges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> |    |  |
+
 ArkTs-Dyn: get borderStyle(): Edges\<BorderStyle>
-ArkTs-Sta: get borderStyle(): NodeEdges\<BorderStyle>
+
+ArkTs-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 获取当前RenderNode的边框样式。
 
@@ -2129,7 +2131,7 @@ struct Index {
 
 ### borderWidth<sup>12+</sup>
 
-ArkTs-Dyn: set borderWidth(width: Edges\<number>)
+ArkTs-Dyn: set borderWidth(width: Edges\<number>)  
 ArkTs-Sta: set borderWidth(width: NodeEdges\<number>)
 
 设置当前RenderNode的边框宽度。
@@ -2146,7 +2148,7 @@ ArkTs-Sta: set borderWidth(width: NodeEdges\<number>)
 |    |ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#edgest12) |    | |
 
 ArkTs-Dyn: get borderWidth(): Edges\<number>
-ArkTs-Sta: get borderWidth(): NodeEdges\<number>
+ArkTs-Sta: get borderWidth(): NodeEdges\<number> | undefined
 
 获取当前RenderNode的边框宽度。
 
@@ -2219,8 +2221,8 @@ ArkTs-Sta: set borderColor(color: NodeEdges\<number>)
 | color  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | 是   | RenderNode的边框颜色。 |
 |    |ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#edgest12) |  |  |
 
-ArkTs-Dyn: get borderColor(): Edges\<number>
-ArkTs-Sta: get borderColor(): NodeEdges\<number>
+ArkTs-Dyn: get borderColor(): Edges\<number>  
+ArkTs-Sta: get borderColor(): NodeEdges\<number> | undefined
 
 获取当前RenderNode的边框颜色。
 
@@ -2293,7 +2295,9 @@ set borderRadius(radius: BorderRadiuses)
 | radius | [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | 是   | RenderNode的边框圆角，单位为vp。 |
 
 
-get borderRadius(): BorderRadiuses
+ArkTs-Dyn: get borderRadius(): BorderRadiuses
+
+ArkTs-Sta: get borderRadius(): BorderRadiuses | undefined
 
 获取当前RenderNode的边框圆角。
 
@@ -2363,7 +2367,8 @@ set shapeMask(shapeMask: ShapeMask)
 | --------- | -------------------------------------------------- | ---- | ------------------ |
 | shapeMask | [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | 是   | RenderNode的遮罩。 |
 
-get shapeMask(): ShapeMask
+ArkTs-Dyn: get shapeMask(): ShapeMask  
+ArkTs-Sta: get shapeMask(): ShapeMask | undefined
 
 获取当前RenderNode的遮罩。
 
