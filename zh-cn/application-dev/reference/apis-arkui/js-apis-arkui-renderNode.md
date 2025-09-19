@@ -2061,9 +2061,9 @@ ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn: **12
+**ArkTs-Dyn起始版本：** 12
 
-**ArkTs-Sta: **20
+**ArkTs-Sta起始版本：** 20
 
 **参数：**
 
@@ -2081,9 +2081,9 @@ ArkTs-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn: **12
+**ArkTs-Dyn起始版本：** 12
 
-**ArkTs-Sta: **20
+**ArkTs-Sta起始版本：** 20
 
 **返回值：**
 
