@@ -307,8 +307,8 @@ struct Index {
 }
 ```
 
-## ArkTs-Dyn: Edges\<T><sup>12+</sup>
-## ArkTs-Sta: NodeEdges\<T><sup>20+</sup>
+## Edges\<T><sup>12+</sup>
+
 用于设置边框的属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -316,6 +316,23 @@ struct Index {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTs-Dyn起始版本：** 12
+
+| 名称   | 类型 | 只读 | 可选 | 说明             |
+| ------ | ---- | ---- | ---- | ---------------- |
+| left   | T    | 是   | 是   | 左侧边框的属性。 |
+| top    | T    | 是   | 是   | 顶部边框的属性。 |
+| right  | T    | 是   | 是   | 右侧边框的属性。 |
+| bottom | T    | 是   | 是   | 底部边框的属性。 |
+
+## NodeEdges\<T><sup>20+</sup>
+
+用于设置边框的属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTs模式：** 改接口仅适用于ArkTs-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTs-Sta起始版本：** 20
 
