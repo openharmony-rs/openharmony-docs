@@ -4746,7 +4746,9 @@ struct WebComponent {
 
 ## prefetchResource<sup>12+</sup>
 
-static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: number): void
+ArkTS-Dyn: static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: number): void
+
+ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: int): void
 
 根据指定的请求信息和附加的http请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的post请求。最多可以预获取6个post请求。如果要预获取第7个，请通过[clearPrefetchedResource](#clearprefetchedresource12)清除不需要的post请求缓存，否则会自动清除最早预获取的post缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的post请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
 
@@ -4759,7 +4761,7 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | 是   | 预获取请求的信息。                                                      |
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。                                             |
 | cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 |
-| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。         |
+| cacheValidTime    | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。         |
 
 **错误码：**
 
@@ -4772,6 +4774,7 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4799,6 +4802,34 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { webview } from '@kit.ArkWeb';
+import { AppStorage } from '@ohos.arkui.stateManagement';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    webview.WebviewController.initializeWebEngine();
+    // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+    webview.WebviewController.prefetchResource(
+      {
+        url: "https://www.example1.com/post?e=f&g=h",
+        method: "POST",
+        formData: "a=x&b=y",
+      },
+      [{
+        headerKey: "c",
+        headerValue: "z",
+      },],
+      "KeyX", 500);
+    AppStorage.setOrCreate("abilityWant", want);
+  }
+}
+```
 ## clearPrefetchedResource<sup>12+</sup>
 
 static clearPrefetchedResource(cacheKeyList: Array\<string>): void
@@ -7331,7 +7362,9 @@ closeCamera(): void
 
 ## precompileJavaScript<sup>12+</sup>
 
-precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<number\>
+ArkTS-Dyn: precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<number\>
+
+ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<int\>
 
 预编译JavaScript生成字节码缓存或根据提供的参数更新已有的字节码缓存。
 接口通过提供的文件信息、E-Tag响应头和Last-Modified响应头判断是否需要更新已有的字节码缓存。
@@ -7350,7 +7383,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 | 类型                                | 说明                        |
 | ----------------------------------- | --------------------------- |
-| Promise\<number\> | 生成字节码缓存的错误码，0表示无错误，-1表示内部错误。 |
+| ArkTS-Dyn: Promise\<number\> <br> ArkTS-Sta: Promise\<int\> | 生成字节码缓存的错误码，0表示无错误，-1表示内部错误。 |
 
 **错误码：**
 
@@ -9580,7 +9613,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setBlanklessLoadingCacheCapacity<sup>20+</sup>
 
-static setBlanklessLoadingCacheCapacity(capacity: number): number
+ArkTS-Dyn: static setBlanklessLoadingCacheCapacity(capacity: number): number
+
+ArkTS-Sta: static setBlanklessLoadingCacheCapacity(capacity: int): int
 
 设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。
 
@@ -9590,13 +9625,13 @@ static setBlanklessLoadingCacheCapacity(capacity: number): number
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| capacity | number | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。<br>默认值：30MB。<br>合法取值范围：0~100，当设置为0时，无缓存空间，则功能全局不开启。<br>非法值设置行为：小于0时生效值为0，大于100时生效值为100。 |
+| capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。<br>默认值：30MB。<br>合法取值范围：0~100，当设置为0时，无缓存空间，则功能全局不开启。<br>非法值设置行为：小于0时生效值为0，大于100时生效值为100。 |
 
 **返回值：**
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| number | 返回实际生效的容量值，范围0~100。<br>小于0时生效值为0，大于100时生效值为100。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回实际生效的容量值，范围0~100。<br>小于0时生效值为0，大于100时生效值为100。 |
 
 **错误码：**
 
@@ -9609,6 +9644,7 @@ static setBlanklessLoadingCacheCapacity(capacity: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { webview } from '@kit.ArkWeb';
@@ -9625,7 +9661,35 @@ export default class EntryAbility extends UIAbility {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+  } 
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { webview } from '@kit.ArkWeb';
+import { AppStorage } from '@ohos.arkui.stateManagement';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    webview.WebviewController.initializeWebEngine();
+    // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+    webview.WebviewController.prefetchResource(
+      {
+        url: "https://www.example1.com/post?e=f&g=h",
+        method: "POST",
+        formData: "a=x&b=y",
+      },
+      [{
+        headerKey: "c",
+        headerValue: "z",
+      },],
+      "KeyX", 500);
+    AppStorage.setOrCreate("abilityWant", want);
   }
 }
 ```
