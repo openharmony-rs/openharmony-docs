@@ -2181,3 +2181,48 @@ List宽度相当于md及以下时显示3列。
 List宽度相当于lg及以下时显示5列。
 
 ![lg_list](figures/list_itemFillPolicy_LG.png)
+
+### 示例14（获取内容总大小）
+
+从API version 22 开始，该示例实现了List组件获取内容总大小的功能。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ListExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  scrollerForList: Scroller = new Scroller()
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: string) => item)
+      }
+      .width('90%').height('90%')
+
+      Button('GetContentSize')
+        .onClick(()=> {
+          this.contentWidth=this.scrollerForList.contentSize().width;
+          this.contentHeight=this.scrollerForList.contentSize().height;
+        })
+      Text('Width：'+ this.contentWidth+'，Height：'+ this.contentHeight)
+        .fontColor(Color.Red)
+        .height(50)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
+  }
+}
+```
+
+![list_contentStartOffset](figures/listContentSize.gif)
