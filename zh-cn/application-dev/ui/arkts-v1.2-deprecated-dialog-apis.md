@@ -2,61 +2,78 @@
 
 ## Popup控制
 
-以下接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
 ### placementOnTop
 
-ArkTS1.1接口声明：[placementOnTop?: boolean](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)
+ArkTS-Dyn接口声明：[placementOnTop?: boolean](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)
 
-替代的ArkTS1.2接口声明：[placement?: Placement](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)
+替代的ArkTS-Sta接口声明：[placement?: Placement](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
-```
+```ts
 @Entry
 @Component
 struct Example {
-    @State handlePopup: boolean = false;
-    build() {
-        Column() {
-            Button('click').onClick((e: ClickEvent) => {
-                this.handlePopup = !this.handlePopup;
-            }).bindPopup(this.handlePopup, {message: 'test', placementOnTop: true}).position({x:0, y: 300})
-        }
+  @State handlePopup: boolean = false;
+
+  build() {
+    Column() {
+      Button('click').onClick((e: ClickEvent) => {
+        this.handlePopup = !this.handlePopup;
+      }).bindPopup(this.handlePopup, { message: 'test', placementOnTop: true }).position({ x: 0, y: 300 })
     }
+  }
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  Placement,
+  Position,
+  PopupOptions,
+  ClickEvent
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
 @Entry
 @Component
 struct Example {
-    @State handlePopup: boolean = false;
-    build() {
-        Column() {
-            Button('click').onClick((e: ClickEvent) => {
-                this.handlePopup = !this.handlePopup;
-            }).bindPopup(this.handlePopup, {message: 'test', placement: Placement.Top}).position({x:0, y: 300})
-        }
+  @State handlePopup: boolean = false;
+
+  build() {
+    Column() {
+      Button('click')
+        .onClick((e: ClickEvent) => {
+          this.handlePopup = !this.handlePopup;
+        })
+        .bindPopup(this.handlePopup, { message: 'test', placement: Placement.Top } as PopupOptions)
+        .position({ x: 0, y: 300 } as Position)
     }
+  }
 }
 ```
 
 ### maskColor
 
-ArkTS1.1接口声明：[maskColor?: Resource | string | number | Color](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)
+ArkTS-Dyn接口声明：[maskColor?: Resource | string | number | Color](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)
 
-替代的ArkTS1.2接口声明：[mask?: boolean | PopupMaskType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)
+替代的ArkTS-Sta接口声明：[mask?: boolean | PopupMaskType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
-```
+```ts
 @Entry
 @Component
 struct Example {
@@ -79,48 +96,62 @@ struct Example {
 
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  CustomPopupOptions,
+  ClickEvent,
+  PopupMaskType,
+  Builder,
+  Row,
+  Text,
+  Color
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
 @Entry
 @Component
 struct Example {
-    @State customPopup: boolean = false;
+  @State customPopup: boolean = false;
 
-    @Builder popupBuilder() {
-        Row() {
-            Text('Custom Popup')
-        }
+  @Builder popupBuilder() {
+    Row() {
+      Text('Custom Popup')
     }
+  }
 
-    build() {
-        Column() {
-            Button('click').onClick((e: ClickEvent) => {
-                this.customPopup = !this.customPopup;
-            }).bindPopup(this.customPopup, {builder: this.popupBuilder, mask: { color: Color.Red } as PopupMaskType})
-        }
+  build() {
+    Column() {
+      Button('click').onClick((e: ClickEvent) => {
+        this.customPopup = !this.customPopup;
+      }).bindPopup(this.customPopup, {builder: this.popupBuilder, mask: { color: Color.Red } as PopupMaskType} as CustomPopupOptions)
     }
+  }
 }
 ```
 
 ## 菜单组件
 
-以下接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
 ### fontSize
 
-ArkTS1.1接口声明：[fontSize(value: Length)](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md#fontsizedeprecated)
+ArkTS-Dyn接口声明：[fontSize(value: Length)](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md#fontsizedeprecated)
 
-替代的ArkTS1.2接口声明：[font(value: Font)](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md#font10)
+替代的ArkTS-Sta接口声明：[font(value: Font)](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md#font10)
 
+ArkTS-Dyn
 
-
-ArkTS1.1
-
-```
+```ts
 @Entry
 @Component
 struct Example {
+    // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
     private iconStr: ResourceStr = $r('app.media.icon');
 
     @Builder
@@ -140,18 +171,34 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Builder,
+  Menu,
+  MenuItem,
+  ResourceStr,
+  MenuItemOptions,
+  MenuPreviewMode,
+  ResponseType,
+  $r
+} from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct Example {
+    // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
     private iconStr: ResourceStr = $r('app.media.icon');
 
     @Builder
     MyMenu() {
         Menu() {
-            MenuItem({startIcon: this.iconStr, content: '菜单选项'})
+            MenuItem({startIcon: this.iconStr, content: '菜单选项'} as MenuItemOptions)
         }.font({
             size: 40
         })
@@ -167,13 +214,116 @@ struct Example {
 }
 ```
 
+### ContextMenu.close
+
+ArkTS-Dyn接口声明：[static close()](../reference/apis-arkui/arkui-ts/ts-methods-menu.md#contextmenuclosedeprecated)
+
+替代的ArkTS-Sta接口声明：[引用@ohos.arkui.UIContext的close(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#contextmenucontroller12)
+
+ArkTS-Dyn
+
+```ts
+@Entry
+@Component
+struct Index {
+  @Builder MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('ContextMenu1')
+      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Button('ContextMenu2')
+      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Button('ContextMenu3')
+    }
+    .width(200)
+    .height(160)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Column() {
+        Text('ContextMenu')
+          .fontSize(20)
+          .width('100%')
+          .height(500)
+          .backgroundColor(0xAFEEEE)
+          .textAlign(TextAlign.Center)
+      }
+      .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+      .onDragStart(()=>{
+        // 拖拽时关闭菜单
+        ContextMenu.close() // 建议使用 this.getUIContext().getContextMenuController().close()
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta
+
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Builder,
+  Button,
+  Divider,
+  Color,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Flex,
+  TextAlign,
+  ResponseType,
+  Text
+} from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  @Builder MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('ContextMenu1')
+      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Button('ContextMenu2')
+      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Button('ContextMenu3')
+    }
+    .width(200)
+    .height(160)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Column() {
+        Text('ContextMenu')
+          .fontSize(20)
+          .width('100%')
+          .height(500)
+          .backgroundColor(0xAFEEEE)
+          .textAlign(TextAlign.Center)
+      }
+      .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+      .onDragStart(()=>()=>{
+        // 拖拽时关闭菜单
+        this.getUIContext().getContextMenuController().close()
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## Toast组件（即时反馈）
 
 ### showToast
 
-由@ohos.prompt、@system.prompt、@ohos.promptAction提供的showToast接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+由@ohos.prompt、@system.prompt、@ohos.promptAction提供的showToast接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
 [引用@ohos.prompt的showToast(options: ShowToastOptions): void](../reference/apis-arkui/js-apis-prompt.md#promptshowtoast)
 
@@ -181,113 +331,128 @@ ArkTS1.1接口声明：
 
 [引用@ohos.promptAction的showToast(options: ShowToastOptions): void](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowtoastdeprecated)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
 [引用@ohos.arkui.UIContext的showToast(options: promptAction.ShowToastOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showtoast)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 引用@ohos.prompt的showToast
 
-```
-import prompt from '@ohos.prompt'
+```ts
+import prompt from '@ohos.prompt';
+
 @Entry
 @Component
 struct Example {
-    build() {
-        Column() {
-           Button('show toast from ohos.prompt').onClick((e: ClickEvent) => {
-                prompt.showToast({
-                    message: 'test',
-                    duration: 2000
-                })
-           })
-        }
+  build() {
+    Column() {
+      Button('show toast from ohos.prompt').onClick((e: ClickEvent) => {
+        prompt.showToast({
+          message: 'test',
+          duration: 2000
+        })
+      })
     }
+  }
 }
 ```
 
 引用@system.prompt的showToast
 
-```
-import prompt from '@system.prompt'
+```ts
+import prompt from '@system.prompt';
+
 @Entry
 @Component
 struct Example {
-    build() {
-        Column() {
-           Button('show toast from system.prompt').onClick((e: ClickEvent) => {
-                prompt.showToast({
-                    message: 'test',
-                    duration: 2000
-                })
-           })
-        }
+  build() {
+    Column() {
+      Button('show toast from system.prompt').onClick((e: ClickEvent) => {
+        prompt.showToast({
+          message: 'test',
+          duration: 2000
+        })
+      })
     }
+  }
 }
 ```
 
 引用@ohos.promptAction的showToast
 
-```
-import promptAction from '@ohos.promptAction'
+```ts
+import promptAction from '@ohos.promptAction';
+
 @Entry
 @Component
 struct Example {
-    build() {
-        Column() {
-           Button('show toast from ohos.promptAction').onClick((e: ClickEvent) => {
-                promptAction.showToast({
-                    message: 'test',
-                    duration: 2000
-                })
-           })
-        }
+  build() {
+    Column() {
+      Button('show toast from ohos.promptAction').onClick((e: ClickEvent) => {
+        promptAction.showToast({
+          message: 'test',
+          duration: 2000
+        })
+      })
     }
+  }
 }
 ```
 
 
-ArkTS1.2
+ArkTS-Sta
 
 改用UIContext下的showToast方法
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder
+} from '@ohos.arkui.component';
+import { UIContext } from '@ohos.arkui.UIContext';
+
 @Entry
 @Component
 struct Example {
-    uiContext: UIContext = this.getUIContext();
+  uiContext: UIContext = this.getUIContext();
 
-    build() {
-        Column() {
-            Button('show toast from uicontext').onClick((e: ClickEvent) => {
-                this.uiContext.getPromptAction().showToast({
-                    message: 'test',
-                    duration: 2000
-                })
-           })
-        }
+  build() {
+    Column() {
+      Button('show toast from UIContext').onClick((e: ClickEvent) => {
+        this.uiContext.getPromptAction().showToast({
+          message: 'test',
+          duration: 2000
+        })
+      })
     }
+  }
 }
 ```
 
 ## 弹出框组件
 
-以下接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
 ### ActionSheet.show
 
-ArkTS1.1接口声明：[static show(value: ActionSheetOptions)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)
+ArkTS-Dyn接口声明：[static show(value: ActionSheetOptions)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)
 
-替代的ArkTS1.2接口声明：[showActionSheet(value: ActionSheetOptions): void)](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionsheet)
+替代的ArkTS-Sta接口声明：[showActionSheet(value: ActionSheetOptions): void)](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionsheet)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
-```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Example {
@@ -311,24 +476,24 @@ struct Example {
               console.info('ActionSheet Closed callbacks');
             },
             sheets: [
-            {
-              title: 'apples',
-              action: () => {
-                console.info('ActionSheet apples')
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('ActionSheet apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('ActionSheet bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('ActionSheet pears');
+                }
               }
-            },
-            {
-              title: 'bananas',
-              action: () => {
-                console.info('ActionSheet bananas')
-              }
-            },
-            {
-              title: 'pears',
-              action: () => {
-                console.info('ActionSheet pears')
-              }
-            }
             ],
             onDidAppear: () => {
               console.info("ActionSheet is onDidAppear!");
@@ -354,9 +519,21 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder,
+  ActionSheetOptions,
+  DialogAlignment
+} from '@ohos.arkui.component';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -380,24 +557,24 @@ struct Example {
               console.info('ActionSheet Closed callbacks');
             },
             sheets: [
-            {
-              title: 'apples',
-              action: () => {
-                console.info('ActionSheet apples')
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('ActionSheet apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('ActionSheet bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('ActionSheet pears');
+                }
               }
-            },
-            {
-              title: 'bananas',
-              action: () => {
-                console.info('ActionSheet bananas')
-              }
-            },
-            {
-              title: 'pears',
-              action: () => {
-                console.info('ActionSheet pears')
-              }
-            }
             ],
             onDidAppear: () => {
               console.info("ActionSheet is onDidAppear!");
@@ -411,12 +588,13 @@ struct Example {
             onWillDisappear: () => {
               console.info("ActionSheet is onWillDisappear!");
             }
-          })
+          } as ActionSheetOptions)
         } catch (error: BusinessError) {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
           console.error(`showActionSheet args error code is ${code}, message is ${message}`);
-        };
+        }
+        ;
       })
     }
   }
@@ -425,15 +603,17 @@ struct Example {
 
 ### AlertDialog.show
 
-ArkTS1.1接口声明：[static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions)](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#showdeprecated)
+ArkTS-Dyn接口声明：[static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions)](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#showdeprecated)
 
-替代的ArkTS1.2接口声明：[showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertdialog)
+替代的ArkTS-Sta接口声明：[showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertdialog)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
-```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Example {
@@ -451,11 +631,11 @@ struct Example {
             confirm: {
               value: 'button',
               action: () => {
-                console.info('Button-clicking callback')
+                console.info('Button-clicking callback');
               }
             },
             cancel: () => {
-              console.info('Closed callbacks')
+              console.info('Closed callbacks');
             },
             onDidAppear: () => {
               console.info("AlertDialog is onDidAppear!");
@@ -502,7 +682,7 @@ struct Example {
               }
             },
             cancel: () => {
-              console.info('Closed callbacks')
+              console.info('Closed callbacks');
             },
             onDidAppear: () => {
               console.info("AlertDialog is onDidAppear!");
@@ -557,7 +737,7 @@ struct Example {
               },
             ],
             cancel: () => {
-              console.info('Closed callbacks')
+              console.info('Closed callbacks');
             },
             onDidAppear: () => {
               console.info("AlertDialog is onDidAppear!");
@@ -583,9 +763,24 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder,
+  AlertDialogParamWithButtons,
+  DialogAlignment,
+  AlertDialogParamWithConfirm,
+  DialogButtonStyle,
+  AlertDialogParamWithOptions
+} from '@ohos.arkui.component';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -654,7 +849,7 @@ struct Example {
               }
             },
             cancel: () => {
-              console.info('Closed callbacks')
+              console.info('Closed callbacks');
             },
             onDidAppear: () => {
               console.info("AlertDialog is onDidAppear!");
@@ -709,7 +904,7 @@ struct Example {
               },
             ],
             cancel: () => {
-              console.info('Closed callbacks')
+              console.info('Closed callbacks');
             },
             onDidAppear: () => {
               console.info("AlertDialog is onDidAppear!");
@@ -737,19 +932,21 @@ struct Example {
 
 ### showActionMenu
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
 [showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenudeprecated)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
 [showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<promptAction.ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenu11)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
-```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Example {
@@ -787,9 +984,21 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -831,26 +1040,27 @@ struct Example {
 
 ### showActionMenu
 
-由@ohos.prompt、@ohos.promptAction提供的showActionMenu接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+由@ohos.prompt、@ohos.promptAction提供的showActionMenu接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
 引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu)
 
 引用@ohos.promptAction的[showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
 引用@ohos.arkui.UIContext的[showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<promptAction.ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenu11)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 引用@ohos.prompt的showActionMenu。
 
-```
+```ts
 import prompt from '@ohos.prompt';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -891,8 +1101,9 @@ struct Example {
 
 引用@ohos.promptAction的showActionMenu。
 
-```
+```ts
 import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -931,9 +1142,21 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -975,26 +1198,27 @@ struct Example {
 
 ### showActionMenu
 
-由@ohos.prompt、@ohos.promptAction提供的showActionMenu接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+由@ohos.prompt、@ohos.promptAction提供的showActionMenu接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
-引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu-1)
+引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions): Promise\<ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu-1)
 
-引用@ohos.promptAction的[showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated-1)
+引用@ohos.promptAction的[showActionMenu(options: ActionMenuOptions): Promise\<ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated-1)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
-引用@ohos.arkui.UIContext的[showActionMenu(options: promptAction.ActionMenuOptions): Promise<promptAction.ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenu)
+引用@ohos.arkui.UIContext的[showActionMenu(options: promptAction.ActionMenuOptions): Promise\<promptAction.ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionmenu)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 引用@ohos.prompt的showActionMenu。
 
-```
+```ts
 import prompt from '@ohos.prompt';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1031,8 +1255,9 @@ struct Example {
 
 引用@ohos.promptAction的showActionMenu。
 
-```
+```ts
 import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1067,9 +1292,21 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -1105,26 +1342,27 @@ struct Example {
 
 ### showDialog
 
-由@ohos.prompt、@ohos.promptAction提供的showDialog接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+由@ohos.prompt、@ohos.promptAction提供的showDialog接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
-引用@ohos.prompt的[showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>)](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog-1)
+引用@ohos.prompt的[showDialog(options: ShowDialogOptions, callback: AsyncCallback\<ShowDialogSuccessResponse>)](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog-1)
 
-引用@ohos.promptAction的[showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>)](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated-1)
+引用@ohos.promptAction的[showDialog(options: ShowDialogOptions, callback: AsyncCallback\<ShowDialogSuccessResponse>)](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated-1)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
-引用@ohos.arkui.UIContext的[showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<promptAction.ShowDialogSuccessResponse>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdialog)
+引用@ohos.arkui.UIContext的[showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback\<promptAction.ShowDialogSuccessResponse>): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdialog)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 引用@ohos.prompt的showDialog。
 
-```
+```ts
 import prompt from '@ohos.prompt';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1166,8 +1404,9 @@ struct Example {
 
 引用@ohos.promptAction的showDialog。
 
-```
+```ts
 import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1207,9 +1446,21 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -1252,26 +1503,27 @@ struct Example {
 
 ### showDialog
 
-由@ohos.prompt、@ohos.promptAction提供的showDialog接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+由@ohos.prompt、@ohos.promptAction提供的showDialog接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
-引用@ohos.prompt的[showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog)
+引用@ohos.prompt的[showDialog(options: ShowDialogOptions): Promise\<ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog)
 
-引用@ohos.promptAction的[showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated)
+引用@ohos.promptAction的[showDialog(options: ShowDialogOptions): Promise\<ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
-引用@ohos.arkui.UIContext的[showDialog(options: promptAction.ShowDialogOptions): Promise<promptAction.ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdialog-1)
+引用@ohos.arkui.UIContext的[showDialog(options: promptAction.ShowDialogOptions): Promise\<promptAction.ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdialog-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 引用@ohos.prompt的showActionMenu。
 
-```
+```ts
 import prompt from '@ohos.prompt';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1309,8 +1561,9 @@ struct Example {
 
 引用@ohos.promptAction的showActionMenu。
 
-```
+```ts
 import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1346,9 +1599,21 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -1385,24 +1650,25 @@ struct Example {
 
 ### openCustomDialog
 
-由@ohos.promptAction提供的openCustomDialog接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+由@ohos.promptAction提供的openCustomDialog接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
 引用@ohos.promptAction的[openCustomDialog(options: CustomDialogOptions): Promise<number>](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
 引用@ohos.arkui.UIContext的[openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 引用@ohos.promptAction的openCustomDialog。
 
-```
+```ts
 import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1445,9 +1711,22 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder,
+  Text
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
@@ -1490,24 +1769,25 @@ struct Example {
 
 ### closeCustomDialog
 
-由@ohos.promptAction提供的closeCustomDialog接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+由@ohos.promptAction提供的closeCustomDialog接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
-ArkTS1.1接口声明：
+ArkTS-Dyn接口声明：
 
 引用@ohos.promptAction的[closeCustomDialog(dialogId: number): void](../reference/apis-arkui/js-apis-promptAction.md#promptactionclosecustomdialogdeprecated)
 
-替代的ArkTS1.2接口声明：
+替代的ArkTS-Sta接口声明：
 
 引用@ohos.arkui.UIContext的[closeCustomDialog(dialogId: number): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#closecustomdialog12-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn
 
 引用@ohos.promptAction的closeCustomDialog。
 
-```
+```ts
 import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1550,9 +1830,22 @@ struct Example {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta
 
-```
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  ClickEvent,
+  Builder,
+  Text
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct Example {
