@@ -307,13 +307,17 @@ struct Index {
 }
 ```
 
-## Edges\<T><sup>12+</sup>
-
+## ArkTs-Dyn: Edges\<T><sup>12+</sup>
+## ArkTs-Sta: NodeEdges\<T><sup>20+</sup>
 用于设置边框的属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
