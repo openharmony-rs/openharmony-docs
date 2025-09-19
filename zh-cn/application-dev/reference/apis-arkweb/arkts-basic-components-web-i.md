@@ -273,8 +273,8 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| oldScale | number | 是 | 变化前的显示比例百分比。 |
-| newScale | number | 是 | 变化后的显示比例百分比。 |
+| oldScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 变化前的显示比例百分比。 |
+| newScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 变化后的显示比例百分比。 |
 
 ## OnHttpAuthRequestEvent<sup>12+</sup>
 
@@ -349,8 +349,8 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| xOffset | number | 是 | 以网页最左端为基准，水平滚动条滚动所在位置。<br>单位：vp。 |
-| yOffset | number | 是 | 以网页最上端为基准，竖直滚动条滚动所在位置。<br>单位：vp。 |
+| xOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最左端为基准，水平滚动条滚动所在位置。<br>单位：vp。 |
+| yOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最上端为基准，竖直滚动条滚动所在位置。<br>单位：vp。 |
 
 ## OnSslErrorEventReceiveEvent<sup>12+</sup>
 
@@ -488,8 +488,8 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| xOffset | number | 是 | 以网页最左端为基准，水平过度滚动的偏移量。<br>单位：vp。 |
-| yOffset | number | 是 | 以网页最上端为基准，竖直过度滚动的偏移量。<br>单位：vp。 |
+| xOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最左端为基准，水平过度滚动的偏移量。<br>单位：vp。 |
+| yOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最上端为基准，竖直过度滚动的偏移量。<br>单位：vp。 |
 
 ## JavaScriptProxy<sup>12+</sup>
 

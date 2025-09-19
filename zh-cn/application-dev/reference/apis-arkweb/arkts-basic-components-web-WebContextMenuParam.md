@@ -10,6 +10,8 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## constructor<sup>9+</sup>
@@ -22,31 +24,43 @@ WebContextMenuParam的构造函数。
 
 ## x<sup>9+</sup>
 
-x(): number
+ArkTS-Dyn: x(): number
+
+ArkTS-Sta: x(): int
 
 弹出菜单的x坐标。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 显示正常返回非负整数，否则返回-1。<br>单位：vp。 |
 
 ## y<sup>9+</sup>
 
-y(): number
+ArkTS-Dyn: y(): number
+
+ArkTS-Sta: y(): int
 
 弹出菜单的y坐标。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 显示正常返回非负整数，否则返回-1。<br>单位：vp。 |
 
 ## getLinkUrl<sup>9+</sup>
 
@@ -176,45 +190,63 @@ isEditable(): boolean
 
 ## getEditStateFlags<sup>9+</sup>
 
-getEditStateFlags(): number
+ArkTS-Dyn: getEditStateFlags(): number
+
+ArkTS-Sta: getEditStateFlags(): int
 
 获取网页元素可编辑标识。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 网页元素可编辑标识，参照[ContextMenuEditStateFlags](./arkts-basic-components-web-e.md#contextmenueditstateflags9)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 网页元素可编辑标识，参照[ContextMenuEditStateFlags](./arkts-basic-components-web-e.md#contextmenueditstateflags9)。 |
 
 ## getPreviewWidth<sup>13+</sup>
 
-getPreviewWidth(): number
+ArkTS-Dyn: getPreviewWidth(): number
+
+ArkTS-Sta: getPreviewWidth(): int
 
 获取预览图的宽。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明       |
 | ------ | ----------- |
-| number | 预览图的宽。<br>单位：vp。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的宽。<br>单位：vp。 |
 
 ## getPreviewHeight<sup>13+</sup>
 
-getPreviewHeight(): number
+ArkTS-Dyn: getPreviewHeight(): number
+
+ArkTS-Sta: getPreviewHeight(): int
 
 获取预览图的高。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明       |
 | ------ | ----------  |
-| number | 预览图的高。<br>单位：vp。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的高。<br>单位：vp。 |
 
 ## 使用@ohos.transfer进行WebContextMenuParam类型转换
 

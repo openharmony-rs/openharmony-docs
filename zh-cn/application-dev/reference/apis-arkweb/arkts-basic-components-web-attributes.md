@@ -6,6 +6,8 @@
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## domStorageAccess
@@ -798,20 +800,27 @@ textZoomRatio(textZoomRatio: number)
 
 ## initialScale<sup>9+</sup>
 
-initialScale(percent: number)
+ArkTS-Dyn: initialScale(percent: number)
+
+ArkTS-Sta: initialScale(percent: double)
 
 设置整体页面的缩放百分比。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填   | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |
-| percent | number | 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。<br>默认值：100。 |
+| percent | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。<br>默认值：100。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -821,6 +830,29 @@ initialScale(percent: number)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State percent: number = 100;
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .initialScale(this.percent)
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { State } from '@ohos.arkui.stateManagement';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State percent: double = 100;
 
     build() {
       Column() {
