@@ -1352,7 +1352,7 @@ try {
 
 ## DomainFilterRule
 
-域名过滤规则。
+域名过滤规则，支持域名分段匹配。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
