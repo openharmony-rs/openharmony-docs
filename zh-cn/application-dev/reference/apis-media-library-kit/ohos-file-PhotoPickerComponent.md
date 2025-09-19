@@ -193,7 +193,7 @@ setData(dataType: DataType, data: Object): void
 | dataType | [DataType](#datatype) | 是 | 发送数据的数据类型。|
 | data | Object | 是 | 发送的数据。 | 
 
-### addData
+### addData<sup>21+</sup>
 
 addData(dataType: DataType, data: Object): void
 
@@ -210,11 +210,11 @@ addData(dataType: DataType, data: Object): void
 | dataType | [DataType](#datatype) | 是 | 发送数据的数据类型。|
 | data | Object | 是 | 发送的数据。 | 
 
-### deleteData
+### deleteData<sup>21+</sup>
 
 deleteData(dataType: DataType, data: Object): void
 
-应用可通过该接口向picker组件发送移除配置数据，并通过DataType来区分具体发送什么类型的数据，当前仅支持SET_BADGE_CONFIGS。
+应用可通过该接口向picker组件发送移除配置数据，并通过[DataType](#datatype)来区分具体发送的数据类型，当前仅支持SET_BADGE_CONFIGS。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -224,8 +224,8 @@ deleteData(dataType: DataType, data: Object): void
 
 |  参数名        | 类型                                    | 必填  | 说明  |
 | ------------------------- | ------------------ | ----- | --------------- |
-| dataType | [DataType](#datatype) | 是 | 发送数据的数据类型。|
-| data | Object | 是 | 发送的数据。 | 
+| dataType | [DataType](#datatype) | 是 | 发送移除配置数据的数据类型。|
+| data | Object | 是 | 发送的移除配置数据。 | 
 
 ### setMaxSelected
 
