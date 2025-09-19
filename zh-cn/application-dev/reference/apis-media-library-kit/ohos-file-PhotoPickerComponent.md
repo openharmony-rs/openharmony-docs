@@ -105,8 +105,8 @@ Picker配置选项。
 | gridStartOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图第一行与组件顶部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | gridEndOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图最后一行与组件底部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | pickerIndex<sup>21+</sup>    | number                              | 否   | 应用创建PhotoPickerComponent可配置序号。当应用同时创建多个PhotoPickerComponent时，序号不能重复。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| preselectedInfos<sup>21+</sup>    | Array<[PreselectedInfo](#preselectedinfo21)>                              | 否   | PhotoPickerComponent预选中的文件以及可选中picker序号。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 一个picker只支持一种badgeType定义。需要展示特殊角标的图片配置，系统最高支持20万数据量配置。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | PhotoPickerComponent预选中的文件以及可选中picker序号。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
