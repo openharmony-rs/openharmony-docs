@@ -2051,7 +2051,8 @@ struct Index {
 
 ### borderStyle<sup>12+</sup>
 
-ArkTs-Dyn: set borderStyle(style: Edges\<BorderStyle>)  
+ArkTs-Dyn: set borderStyle(style: Edges\<BorderStyle>)
+
 ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 设置当前RenderNode的边框样式。
@@ -2060,6 +2061,10 @@ ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn: **12
+
+**ArkTs-Sta: **20
+
 **参数：**
 
 | 参数名 | 类型                                                                                                   | 必填 | 说明                   |
@@ -2067,7 +2072,8 @@ ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 | style  |ArkTs-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTs-Sta: [NodeEdges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式。 |
 
 
-ArkTs-Dyn: get borderStyle(): Edges\<BorderStyle>  
+ArkTs-Dyn: get borderStyle(): Edges\<BorderStyle>
+
 ArkTs-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 获取当前RenderNode的边框样式。
@@ -2075,6 +2081,10 @@ ArkTs-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn: **12
+
+**ArkTs-Sta: **20
 
 **返回值：**
 
@@ -2129,7 +2139,8 @@ struct Index {
 
 ### borderWidth<sup>12+</sup>
 
-ArkTs-Dyn: set borderWidth(width: Edges\<number>)  
+ArkTs-Dyn: set borderWidth(width: Edges\<number>)
+
 ArkTs-Sta: set borderWidth(width: NodeEdges\<number>)
 
 设置当前RenderNode的边框宽度。
@@ -2138,13 +2149,18 @@ ArkTs-Sta: set borderWidth(width: NodeEdges\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
 | width  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#edgest12) | 是   | RenderNode的边框宽度，单位为vp。 |
 
-ArkTs-Dyn: get borderWidth(): Edges\<number>  
+ArkTs-Dyn: get borderWidth(): Edges\<number>
+
 ArkTs-Sta: get borderWidth(): NodeEdges\<number> | undefined
 
 获取当前RenderNode的边框宽度。
@@ -2152,6 +2168,10 @@ ArkTs-Sta: get borderWidth(): NodeEdges\<number> | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2210,13 +2230,18 @@ ArkTs-Sta: set borderColor(color: NodeEdges\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
 | color  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#edgest12) | 是   | RenderNode的边框颜色。 |
 
-ArkTs-Dyn: get borderColor(): Edges\<number>  
+ArkTs-Dyn: get borderColor(): Edges\<number>
+
 ArkTs-Sta: get borderColor(): NodeEdges\<number> | undefined
 
 获取当前RenderNode的边框颜色。
@@ -2299,6 +2324,10 @@ ArkTs-Sta: get borderRadius(): BorderRadiuses | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                         | 说明                   |
@@ -2361,12 +2390,17 @@ set shapeMask(shapeMask: ShapeMask)
 | --------- | -------------------------------------------------- | ---- | ------------------ |
 | shapeMask | [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | 是   | RenderNode的遮罩。 |
 
-ArkTs-Dyn: get shapeMask(): ShapeMask  
+ArkTs-Dyn: get shapeMask(): ShapeMask
+
 ArkTs-Sta: get shapeMask(): ShapeMask | undefined
 
 获取当前RenderNode的遮罩。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
 
 **返回值：**
 
