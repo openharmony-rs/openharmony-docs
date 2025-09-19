@@ -62,6 +62,8 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
 - 当装饰Date时，可以观察到Date整体的赋值，并通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。
 
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
   import { Provide, Consume } from '@ohos.arkui.stateManagement';
   @Component
@@ -115,6 +117,8 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
 - 当装饰的变量是interface字面量类型时，可以观察到字面量整体以及属性的变化。
 
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { Provide, Consume } from '@ohos.arkui.stateManagement';
   interface Info {
@@ -167,6 +171,8 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
    【反例】
 
    ```ts
+   'use static'
+
    import { Entry, Component, Column, Text } from '@ohos.arkui.component';
    import { Provide, Consume } from '@ohos.arkui.stateManagement';
    @Component
@@ -195,6 +201,8 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
    【正例】
 
    ```ts
+   'use static'
+
    import { Entry, Component, Column, Text } from '@ohos.arkui.component';
    import { Provide, Consume } from '@ohos.arkui.stateManagement';
    @Component
@@ -239,6 +247,8 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击Index和ContentComponent组件内的Button时，count的更改会在Index和ContentComponent中双向同步。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
 import { Provide, Consume } from '@ohos.arkui.stateManagement';
 @Component
@@ -291,6 +301,8 @@ struct Index {
 以下示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@ohos.arkui.component';
 import { Provide, Consume } from '@ohos.arkui.stateManagement';
 @Component
@@ -349,6 +361,8 @@ struct MapSample {
 以下示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@ohos.arkui.component';
 import { Provide, Consume } from '@ohos.arkui.stateManagement';
 @Component
@@ -404,6 +418,8 @@ struct SetSample {
 @Provide和@Consume支持联合类型（包括undefined和null）。以下示例中，count类型为`string | undefined`，当点击Ancestors组件中的Button改变count的属性或类型时，Child组件也会对应刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
 import { Provide, Consume } from '@ohos.arkui.stateManagement';
 @Component
@@ -468,6 +484,8 @@ struct MyComponent {
 完整示例如下：
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
 import { Provide, Consume } from '@ohos.arkui.stateManagement';
 @Component

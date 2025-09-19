@@ -101,6 +101,8 @@ import { State } from '@ohos.arkui.stateManagement';
 - 当装饰Date时，可以观察到Date的赋值，并通过调用`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds`接口更新Date的属性。
 
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   @Entry
@@ -143,6 +145,8 @@ import { State } from '@ohos.arkui.stateManagement';
 - 当装饰interface字面量类型时，可以观察到字面量整体以及属性的变化。
 
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   interface Info {
@@ -193,6 +197,8 @@ import { State } from '@ohos.arkui.stateManagement';
 - 仅Button组件执行更新方法，实现按需刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry
@@ -214,6 +220,8 @@ struct MyComponent {
 在下面的示例中，message类型为Map\<number, string\>，点击Button改变其值，视图随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, ForEach, Divider, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry
@@ -257,6 +265,8 @@ struct MapSample {
 在下面的示例中，message类型为Set\<number\>，点击Button改变其值，视图随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Row, Column, ForEach, Divider, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry
@@ -296,6 +306,8 @@ struct SetSample {
 \@State支持联合类型（包括undefined和null）。在下面的示例中，count类型为number | undefined，点击Button改变count的值或类型，视图会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry

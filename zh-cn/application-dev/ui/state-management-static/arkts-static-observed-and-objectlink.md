@@ -52,6 +52,8 @@ this.objLink= ...
 
 
 ```ts
+'use static'
+
 import { Observed } from '@ohos.arkui.statemanagement';
 
 class Child {
@@ -101,6 +103,8 @@ this.parent.child.num = 5;
 2. \@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译期会报错。
 
     ```ts
+    'use static'
+
     import { Component, Text } from '@ohos.arkui.component';
     import { ObjectLink, Observed } from '@ohos.arkui.stateManagement';
 
@@ -140,6 +144,8 @@ this.parent.child.num = 5;
 3. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译期会报错。
 
     ```ts
+    'use static'
+
     import { Column, Component, Text } from '@ohos.arkui.component';
     import { State, ObjectLink, Observed } from '@ohos.arkui.stateManagement';
 
@@ -183,6 +189,8 @@ this.parent.child.num = 5;
     【反例】
   
     ```ts
+    'use static'
+
     import { Column, Component, Text, Entry } from '@ohos.arkui.component';
     import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -227,6 +235,8 @@ this.parent.child.num = 5;
     【正例】
   
     ```ts
+    'use static'
+
     import { Button, Column, Component, Text, Entry } from '@ohos.arkui.component';
     import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -278,6 +288,8 @@ this.parent.child.num = 5;
 ### 继承对象
 
 ```ts
+'use static'
+
 import { Button, Column, CommonMethod, Component, Entry, Text, TextAlign, TextAttribute } from '@ohos.arkui.component';
 import { Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -360,6 +372,8 @@ struct Index {
 ### 嵌套对象
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, Text, TextAlign } from '@ohos.arkui.component';
 import { Observed, ObjectLink, State } from '@ohos.arkui.stateManagement';
 
@@ -438,6 +452,8 @@ struct Index {
 > NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, ForEach, Row } from '@ohos.arkui.component';
 import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -545,6 +561,8 @@ struct Parent {
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child中也会对应刷新。
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, Text } from '@ohos.arkui.component';
 import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 
