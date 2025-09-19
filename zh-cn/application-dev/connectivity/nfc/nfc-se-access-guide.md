@@ -47,12 +47,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-let seService : omapi.SEService;
-let seReaders : omapi.Reader[];
-let seSession : omapi.Session;
-let seChannel : omapi.Channel;
-let testSelectedAid : number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
-let p2 : number = 0x00;
+let seService: omapi.SEService;
+let seReaders: omapi.Reader[];
+let seSession: omapi.Session;
+let seChannel: omapi.Channel;
+let testSelectedAid: number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
+let p2: number = 0x00;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -67,7 +67,7 @@ export default class EntryAbility extends UIAbility {
     this.omaTest();
   }
 
-  private async omaTest () {
+  private async omaTest() {
     // 创建安全单元service，用于访问安全单元
     await omapi.createService().then((data) => {
       if (data == undefined || !data.isConnected()) {
