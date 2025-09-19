@@ -65,12 +65,14 @@ constructor()
 **系统能力**：SystemCapability.Global.I18n
 
 **示例：**
-  ```ts
-  // 默认构造函数使用系统当前区域ID创建
-  let locale = new intl.Locale();
-  // 返回系统当前区域ID
-  let localeID = locale.toString();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 默认构造函数使用系统当前区域ID创建
+let locale = new intl.Locale();
+// 返回系统当前区域ID
+let localeID = locale.toString();
+```
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -94,11 +96,13 @@ constructor(locale: string, options?: LocaleOptions)
 | options             | [LocaleOptions](#localeoptionsdeprecated) | 否    | 创建区域对象的选项。 |
 
 **示例：**
-  ```ts
-  // 创建zh-CN区域对象
-  let locale = new intl.Locale("zh-CN");
-  let localeID = locale.toString(); // localeID = "zh-CN"
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 创建zh-CN区域对象
+let locale = new intl.Locale('zh-CN');
+let localeID = locale.toString(); // localeID = 'zh-CN'
+```
 
 
 ### toString<sup>(deprecated)</sup>
@@ -122,10 +126,12 @@ toString(): string
 | string | 区域对象的字符串。 |
 
 **示例：**
-  ```ts
-  // 创建en-GB区域对象
-  let locale = new intl.Locale("en-GB");
-  let localeID = locale.toString(); // localeID = "en-GB"
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 创建en-GB区域对象
+let locale = new intl.Locale('en-GB');
+let localeID = locale.toString(); // localeID = 'en-GB'
   ```
 
 ### maximize<sup>(deprecated)</sup>
@@ -149,19 +155,21 @@ maximize(): Locale
 | [Locale](#localedeprecated) | 补齐完脚本、国家地区信息后的区域对象。 |
 
 **示例：**
-  ```ts
-  // 创建zh区域对象
-  let locale = new intl.Locale("zh");
-  // 补齐区域对象的脚本和地区
-  let maximizedLocale = locale.maximize();
-  let localeID = maximizedLocale.toString(); // localeID = "zh-Hans-CN"
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // 创建en-US区域对象
-  locale = new intl.Locale("en-US");
-  // 补齐区域对象的脚本
-  maximizedLocale = locale.maximize();
-  localeID = maximizedLocale.toString(); // localeID = "en-Latn-US"
-  ```
+// 创建zh区域对象
+let locale = new intl.Locale('zh');
+// 补齐区域对象的脚本和地区
+let maximizedLocale = locale.maximize();
+let localeID = maximizedLocale.toString(); // localeID = 'zh-Hans-CN'
+
+// 创建en-US区域对象
+locale = new intl.Locale('en-US');
+// 补齐区域对象的脚本
+maximizedLocale = locale.maximize();
+localeID = maximizedLocale.toString(); // localeID = 'en-Latn-US'
+```
 
 
 ### minimize<sup>(deprecated)</sup>
@@ -185,19 +193,21 @@ minimize(): Locale
 | [Locale](#localedeprecated) | 移除完脚本、国家地区信息后的区域对象。 |
 
 **示例：**
-  ```ts
-  // 创建zh-Hans-CN区域对象
-  let locale = new intl.Locale("zh-Hans-CN");
-  // 移除区域对象的脚本和地区
-  let minimizedLocale = locale.minimize();
-  let localeID = minimizedLocale.toString(); // localeID = "zh"
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // 创建en-US区域对象
-  locale = new intl.Locale("en-US");
-  // 移除区域对象的地区
-  minimizedLocale = locale.minimize();
-  localeID = minimizedLocale.toString(); // localeID = "en"
-  ```
+// 创建zh-Hans-CN区域对象
+let locale = new intl.Locale('zh-Hans-CN');
+// 移除区域对象的脚本和地区
+let minimizedLocale = locale.minimize();
+let localeID = minimizedLocale.toString(); // localeID = 'zh'
+
+// 创建en-US区域对象
+locale = new intl.Locale('en-US');
+// 移除区域对象的地区
+minimizedLocale = locale.minimize();
+localeID = minimizedLocale.toString(); // localeID = 'en'
+```
 
 ## LocaleOptions<sup>(deprecated)</sup>
 
@@ -250,6 +260,8 @@ constructor()
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统当前区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
@@ -277,6 +289,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建DateTimeFormat对象，日期风格为full，时间风格为medium
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('zh-CN', { dateStyle: 'full', timeStyle: 'medium' });
 
@@ -312,6 +326,8 @@ format(date: Date): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let date: Date = new Date(2021, 11, 17, 3, 24, 0); // 时间日期为2021.12.17 03:24:00
 // 使用en-GB区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB');
@@ -351,11 +367,13 @@ formatRange(startDate: Date, endDate: Date): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let startDate: Date = new Date(2021, 11, 17, 3, 24, 0); // 时间日期为2021.12.17 03:24:00
 let endDate: Date = new Date(2021, 11, 18, 3, 24, 0);
 // 使用en-GB区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB');
-let formattedDateRange: string = formatter.formatRange(startDate, endDate); // formattedDateRange = "17/12/2021 - 18/12/2021"
+let formattedDateRange: string = formatter.formatRange(startDate, endDate); // formattedDateRange = '17/12/2021 - 18/12/2021'
 ```
 
 ### resolvedOptions<sup>(deprecated)</sup>
@@ -380,7 +398,9 @@ resolvedOptions(): DateTimeOptions
 
 **示例：**
 ```ts
-let formatter: intl.DateTimeFormat = new intl.DateTimeFormat("en-GB", { dateStyle: 'full', timeStyle: 'medium' });
+import { intl } from '@kit.LocalizationKit';
+
+let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'medium' });
 // 返回DateTimeFormat对象的配置项
 let options: intl.DateTimeOptions = formatter.resolvedOptions();
 let dateStyle: string | undefined = options.dateStyle; // dateStyle = 'full'
@@ -442,6 +462,8 @@ constructor()
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统当前区域ID创建NumberFormat对象
 let formatter: intl.NumberFormat = new intl.NumberFormat();
 ```
@@ -466,6 +488,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: NumberOptions)
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用en-GB区域ID创建NumberFormat对象，style设置为decimal，notation设置为scientific
 let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'decimal', notation: 'scientific' });
 ```
@@ -495,11 +519,13 @@ format(num: number): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用区域ID列表创建NumberFormat对象，因为en-GB为合法的区域ID，因此使用en-GB创建NumberFormat对象
 let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 let formattedNumber: string = formatter.format(1223); // formattedNumber = 1.223E3
-let options : intl.NumberOptions = {
-  roundingPriority: "lessPrecision",
+let options: intl.NumberOptions = {
+  roundingPriority: 'lessPrecision',
   maximumFractionDigits: 3,
   maximumSignificantDigits: 3
 }
@@ -533,6 +559,8 @@ formatRange(startRange: number, endRange: number): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let formatter: intl.NumberFormat = new intl.NumberFormat('en-US', { style: 'unit', unit: 'meter' });
 let formattedRange: string = formatter.formatRange(0, 3); // formattedRange: 0–3 m
 ```
@@ -557,6 +585,8 @@ resolvedOptions(): NumberOptions
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 // 获取NumberFormat对象配置项
 let options: intl.NumberOptions = formatter.resolvedOptions();
@@ -616,10 +646,12 @@ constructor()
 **系统能力**：SystemCapability.Global.I18n
 
 **示例：**
-  ```ts
-  // 使用系统区域创建Collator对象
-  let collator = new intl.Collator();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建Collator对象
+let collator = new intl.Collator();
+```
 
 
 ### constructor<sup>8+</sup>
@@ -640,10 +672,12 @@ constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
 | options              | [CollatorOptions](#collatoroptions8) | 否    | 创建排序对象时可设置的配置项。       |
 
 **示例：**
-  ```ts
-  // 使用zh-CN区域ID创建Collator对象，localeMatcher设置为lookup，usage设置为sort
-  let collator = new intl.Collator("zh-CN", {localeMatcher: "lookup", usage: "sort"});
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用zh-CN区域ID创建Collator对象，localeMatcher设置为lookup，usage设置为sort
+let collator = new intl.Collator('zh-CN', {localeMatcher: 'lookup', usage: 'sort'});
+```
 
 
 ### compare<sup>8+</sup>
@@ -670,12 +704,14 @@ compare(first: string, second: string): number
 | number | 比较结果。<br>- number为负数时，表示first排序在second之前。<br>- number为0时，表示first与second排序相同。<br>- number为正数，表示first排序在second之后。 |
 
 **示例：**
-  ```ts
-  // 使用en-GB区域ID创建Collator对象
-  let collator = new intl.Collator("en-GB");
-  // 比较first和second的先后顺序
-  let compareResult = collator.compare("first", "second"); // compareResult = -1
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用en-GB区域ID创建Collator对象
+let collator = new intl.Collator('en-GB');
+// 比较first和second的先后顺序
+let compareResult = collator.compare('first', 'second'); // compareResult = -1
+```
 
 
 ### resolvedOptions<sup>8+</sup>
@@ -695,13 +731,15 @@ resolvedOptions(): CollatorOptions
 | [CollatorOptions](#collatoroptions8) | 返回排序对象的属性。 |
 
 **示例：**
-  ```ts
-  let collator = new intl.Collator("zh-Hans", { usage: 'sort', ignorePunctuation: true });
-  // 获取Collator对象的配置项
-  let options = collator.resolvedOptions();
-  let usage = options.usage; // usage = "sort"
-  let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+let collator = new intl.Collator('zh-Hans', { usage: 'sort', ignorePunctuation: true });
+// 获取Collator对象的配置项
+let options = collator.resolvedOptions();
+let usage = options.usage; // usage = 'sort'
+let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
+```
 
 
 ## CollatorOptions<sup>8+</sup>
@@ -748,10 +786,12 @@ constructor()
 **系统能力**：SystemCapability.Global.I18n
 
 **示例：**
-  ```ts
-  // 使用系统区域创建PluralRules对象
-  let pluralRules = new intl.PluralRules();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建PluralRules对象
+let pluralRules = new intl.PluralRules();
+```
 
 
 ### constructor<sup>(deprecated)</sup>
@@ -775,6 +815,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: PluralRulesOptions)
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建PluralRules对象，localeMatcher设置为lookup，type设置为cardinal
 let pluralRules: intl.PluralRules = new intl.PluralRules('zh-CN', { localeMatcher: 'lookup', type: 'cardinal' });
 ```
@@ -804,17 +846,19 @@ select(n: number): string
 | string | 单复数类别，取值包括："zero"，"one"，"two",&nbsp;"few",&nbsp;"many",&nbsp;"others"。 <br>不同取值的含义请参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。|
 
 **示例：**
-  ```ts
-  // 使用zh-Hans区域ID创建PluralRules对象
-  let zhPluralRules = new intl.PluralRules("zh-Hans");
-  // 计算zh-Hans区域中数字1对应的单复数类别
-  let plural = zhPluralRules.select(1); // plural = other
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // 使用en-US区域ID创建PluralRules对象
-  let enPluralRules = new intl.PluralRules("en-US");
-  // 计算en-US区域中数字1对应的单复数类别
-  plural = enPluralRules.select(1); // plural = one
-  ```
+// 使用zh-Hans区域ID创建PluralRules对象
+let zhPluralRules = new intl.PluralRules('zh-Hans');
+// 计算zh-Hans区域中数字1对应的单复数类别
+let plural = zhPluralRules.select(1); // plural = 'other'
+
+// 使用en-US区域ID创建PluralRules对象
+let enPluralRules = new intl.PluralRules('en-US');
+// 计算en-US区域中数字1对应的单复数类别
+plural = enPluralRules.select(1); // plural = 'one'
+```
 
 
 ## PluralRulesOptions<sup>(deprecated)</sup>
@@ -862,6 +906,8 @@ constructor()
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统区域创建RelativeTimeFormat对象
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
@@ -888,6 +934,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: RelativeTimeFormatIn
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建RelativeTimeFormat对象，localeMatcher设置为lookup，numeric设置为always，style设置为long
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN', {
   localeMatcher: 'lookup',
@@ -924,6 +972,8 @@ format(value: number, unit: string): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建RelativeTimeFormat对象
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN');
 // 计算zh-CN区域中数字3，单位quarter的本地化表示
@@ -958,6 +1008,8 @@ formatToParts(value: number, unit: string): Array&lt;object&gt;
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用en区域ID创建RelativeTimeFormat对象，numeric设置为auto
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('en', { numeric: 'auto' });
 let parts: Array<object> = formatter.formatToParts(10, 'seconds'); // parts = [ {type: 'literal', value: 'in'}, {type: 'integer', value: 10, unit: 'second'}, {type: 'literal', value: 'seconds'} ]
@@ -984,6 +1036,8 @@ resolvedOptions(): RelativeTimeFormatResolvedOptions
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用en-GB区域ID创建RelativeTimeFormat对象
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('en-GB', { style: 'short' });
 // 获取RelativeTimeFormat对象配置项
