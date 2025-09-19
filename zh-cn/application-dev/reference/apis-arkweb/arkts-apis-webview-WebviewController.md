@@ -8,8 +8,6 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 导入模块
@@ -8426,6 +8424,10 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明                  |
@@ -8443,6 +8445,7 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8459,7 +8462,7 @@ struct WebComponent {
       Web({ src: "", controller: this.controller })
         .onControllerAttached(() => {
           try {
-            // 设置允许可以跨域访问的路径列表
+            // 设置允许可以跨域访问的路径列表。
             this.controller.setPathAllowingUniversalAccess([
               this.uiContext.getHostContext()!.resourceDir,
               this.uiContext.getHostContext()!.filesDir + "/example"
@@ -8477,6 +8480,42 @@ struct WebComponent {
 }
 
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Web, UIContext, Row } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Web({ src: "", controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            // 设置允许可以跨域访问的路径列表。
+            this.controller.setPathAllowingUniversalAccess([
+              this.uiContext.getHostContext()!.resourceDir,
+              this.uiContext.getHostContext()!.filesDir + "/example"
+            ])
+            this.controller.loadUrl("file://" + this.getUIContext().getHostContext()!.resourceDir + "/index.html")
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+  ```
 
 加载的html文件，位于应用资源目录resource/resfile/index.html。
 ```html
@@ -8642,6 +8681,10 @@ trimMemoryByPressureLevel(level: PressureLevel): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -8657,6 +8700,8 @@ trimMemoryByPressureLevel(level: PressureLevel): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter string is too long. 3.Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8672,7 +8717,7 @@ struct WebComponent {
         Button('trim_Memory')
           .onClick(() => {
             try {
-              // 设置当前内存压力等级为适中，释放少量内存
+              // 设置当前内存压力等级为适中，释放少量内存。
               webview.WebviewController.trimMemoryByPressureLevel(
                 webview.PressureLevel.MEMORY_PRESSURE_LEVEL_MODERATE);
             } catch (error) {
@@ -8685,6 +8730,38 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Web, Column, Row, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
+    Column() {
+      Row() {
+        Button('trim_Memory')
+          .onClick(() => {
+            try {
+              // 设置当前内存压力等级为适中，释放少量内存。
+              webview.WebviewController.trimMemoryByPressureLevel(
+                webview.PressureLevel.MEMORY_PRESSURE_LEVEL_MODERATE);
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+      }.height('10%')
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 
 ## createPdf<sup>14+</sup>
 
