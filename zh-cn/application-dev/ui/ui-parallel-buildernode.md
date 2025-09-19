@@ -20,6 +20,7 @@
   * 并行模式下，UI的最终挂载时机由框架控制，开发者无需手动同步。
   * 如果节点已挂载，则`update`操作将按串行方式执行，确保UI一致性。
   * 并行模式适合重计算量大、耗时长的UI构建；对于轻量UI，默认串行模式即可满足需求。
+  * 当前[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)并行化构建仅支持[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)组件。其他组件将触发运行时错误，导致应用崩溃。
 
 ## 场景示例
 
@@ -88,6 +89,7 @@
     LayoutConstraint,
   } from '@ohos.arkui.node';
 
+  // 自定义参数
   class Params {
     text1: string;
     constructor(text: string) {
@@ -211,6 +213,7 @@
         }
         .height("40%")
 
+        // 添加 BuilderNode 节点
         Button("addBuilderNode")
           .onClick((e: ClickEvent) => {
             hilog.info(0x0000, 'testTag', 'changeValue');
@@ -220,6 +223,7 @@
           .height(50)
           .margin({ bottom: 10 } as Margin)
 
+        // 更新 BuilderNode 节点
         Button("Update")
           .onClick((e: ClickEvent) => {
             hilog.info(0x0000, 'testTag', 'On Click');
@@ -229,6 +233,7 @@
           .height(50)
           .margin({ bottom: 10 } as Margin)
 
+        // 更新配置
         Button("updateConfiguration")
           .onClick((e: ClickEvent) => {
             hilog.info(0x0000, 'testTag', 'updateConfiguration');
@@ -238,6 +243,7 @@
           .height(50)
           .margin({ bottom: 10 } as Margin)
 
+        // 销毁节点，释放资源
         Button("Dispose")
           .onClick((e: ClickEvent) => {
             this.flag = false;
