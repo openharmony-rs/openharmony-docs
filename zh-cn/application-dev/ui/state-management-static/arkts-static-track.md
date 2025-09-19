@@ -114,7 +114,7 @@ struct Index {
 'use static'
 
 import { Button, Column, Component, Entry, FontWeight, Row, Text } from '@ohos.arkui.component';
-import { State, Track } from '@ohos.arkui.stateManagement';
+import { State, Track, Observed } from '@ohos.arkui.stateManagement';
 
 class LogTrack {
   @Track str1: string;
