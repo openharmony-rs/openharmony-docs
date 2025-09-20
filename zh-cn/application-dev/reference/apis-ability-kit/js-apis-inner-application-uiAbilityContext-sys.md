@@ -50,7 +50,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 启动Ability的回调函数，返回Ability结果。 |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，当接口调用成功，err中code为0，data为该Ability销毁时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -145,7 +145,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOp
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback\<void\> | 是 | 启动Ability后，Ability被销毁时的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -331,7 +331,7 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的want信息。 |
-| callback | AsyncCallback\<void\> | 是 | 启动ServiceExtensionAbility的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -486,7 +486,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback\<void\> | 是 | 启动ServiceExtensionAbility的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -642,7 +642,7 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的want信息。 |
-| callback | AsyncCallback\<void\> | 是 | 停止ServiceExtensionAbility的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当停止ServiceExtensionAbility成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -790,7 +790,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback\<void\> | 是 | 停止ServiceExtensionAbility的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当停止ServiceExtensionAbility成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1039,7 +1039,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback\<void\> | 是 | 启动Ability的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1133,7 +1133,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。|
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback\<void\> | 是 | 启动Ability的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1320,7 +1320,7 @@ setMissionIcon(icon: image.PixelMap, callback: AsyncCallback\<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | icon | image.PixelMap | 是 | 在最近的任务中显示的Ability图标。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当设置当前Ability在任务中显示的图标成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数，当设置当前Ability在任务中显示的图标成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1464,7 +1464,7 @@ startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的want信息。 |
-| callback | AsyncCallback\<void> | 是 | 指定的回调函数的结果。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1557,7 +1557,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的want信息。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback\<void> | 是 | 指定的回调函数的结果。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1846,7 +1846,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的want信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1894,7 +1894,7 @@ export default class EntryAbility extends UIAbility {
 
     // 使用启动方的Caller身份信息启动新Ability
     this.context.startAbilityAsCaller(localWant, (err) => {
-      if (err && err.code != 0) {
+      if (err.code) {
         console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
@@ -1924,7 +1924,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的want信息。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1973,7 +1973,7 @@ export default class EntryAbility extends UIAbility {
 
     // 使用启动方的Caller身份信息启动新Ability
     this.context.startAbilityAsCaller(localWant, option, (err) => {
-      if (err && err.code != 0) {
+      if (err.code) {
         console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
@@ -2170,7 +2170,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的want信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当拉起UIExtension成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当拉起UIExtension成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
