@@ -238,6 +238,19 @@
         }
         .width('100%')
         .height('100%')
+        .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+          console.log(`newValue: ${JSON.stringify(newValue)}`);
+          if (!this.formRect) {
+            return;
+          }
+
+          // 当卡片尺寸扩展之后，向系统发送动效页面准备完毕信息
+          let isWidthExtend: boolean = newValue.width === this.formRect.width * Constants.OVERFLOW_WIDTH_RATIO;
+          let isHeightExtend: boolean = newValue.height === this.formRect.height * Constants.OVERFLOW_HEIGHT_RATIO;
+          if (isWidthExtend && isHeightExtend) {
+            this.session?.sendData({['isExtensionOverflowReady']: true});
+          }
+        })        
       }
     
       @Builder
