@@ -418,7 +418,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 | 名称 | 类型                                             | 必填 | 说明                                                                           |
 | ---- | ------------------------------------------------ | ---- | ------------------------------------------------------------------------------ |
 | badgeType | [BadgeType](#badgetype21) | 是   | 特殊角标的类型。 |
-| uris | Array<string> | 是   | 显示角标的资产uri数据。 |
+| uris | Array&lt;string&gt;  | 是   | 显示角标的资产uri数据。 |
 
 ## PreselectedInfo<sup>21+</sup>
 
