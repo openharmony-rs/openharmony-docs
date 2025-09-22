@@ -204,6 +204,19 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+async function onPickerStateChange(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.off('pickerStateChange');
+}
+```
+
+ArkTS-Sta示例：
+
 ```ts
 import { common } from '@kit.AbilityKit';
 

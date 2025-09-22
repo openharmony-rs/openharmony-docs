@@ -2651,7 +2651,7 @@ on(type:'playWithAssetId', callback: Callback\<string>): void
 
 设置指定资源id进行播放的监听事件。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2688,7 +2688,7 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 
 取消指定资源id进行播放的事件监听，关闭后，不再进行该事件回调。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2851,7 +2851,7 @@ on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
 设置目标循环模式的监听事件。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3495,7 +3495,7 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 取消监听目标循环模式变化事件。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
