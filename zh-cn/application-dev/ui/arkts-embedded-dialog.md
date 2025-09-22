@@ -227,8 +227,8 @@ struct Next {
 ArkTS-Sta示例：
 
 ```ts
-// Index.ets
 'use static'
+// Index.ets
 
 import { Entry, Component, Builder, FontWeight, ComponentContent, UIContext, Text, Row, Column, Button, Blank,
   FrameNode } from '@ohos.arkui.component';
@@ -291,8 +291,8 @@ struct Index {
 ```
 
 ```ts
-// Next.ets
 'use static'
+// Next.ets
 
 import { Entry, Component, Builder, Column, Button, FontWeight, Row } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';

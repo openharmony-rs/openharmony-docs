@@ -444,7 +444,7 @@ struct Example {
 
 ArkTS-Dyn接口声明：[static show(value: ActionSheetOptions)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)
 
-替代的ArkTS-Sta接口声明：[showActionSheet(value: ActionSheetOptions): void)](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionsheet)
+替代的ArkTS-Sta接口声明：[showActionSheet(value: ActionSheetOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#showactionsheet)
 
 
 
@@ -1044,9 +1044,9 @@ struct Example {
 
 ArkTS-Dyn接口声明：
 
-引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu)
+引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions, callback: AsyncCallback&lt;ActionMenuSuccessResponse&gt;): void](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu)
 
-引用@ohos.promptAction的[showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated)
+引用@ohos.promptAction的[showActionMenu(options: ActionMenuOptions, callback: AsyncCallback&lt;ActionMenuSuccessResponse&gt;):void](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated)
 
 替代的ArkTS-Sta接口声明：
 
@@ -1202,9 +1202,9 @@ struct Example {
 
 ArkTS-Dyn接口声明：
 
-引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions): Promise\<ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu-1)
+引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu-1)
 
-引用@ohos.promptAction的[showActionMenu(options: ActionMenuOptions): Promise\<ActionMenuSuccessResponse>](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated-1)
+引用@ohos.promptAction的[showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated-1)
 
 替代的ArkTS-Sta接口声明：
 
@@ -1346,9 +1346,9 @@ struct Example {
 
 ArkTS-Dyn接口声明：
 
-引用@ohos.prompt的[showDialog(options: ShowDialogOptions, callback: AsyncCallback\<ShowDialogSuccessResponse>)](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog-1)
+引用@ohos.prompt的[showDialog(options: ShowDialogOptions, callback: AsyncCallback&lt;ShowDialogSuccessResponse&gt;):void](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog-1)
 
-引用@ohos.promptAction的[showDialog(options: ShowDialogOptions, callback: AsyncCallback\<ShowDialogSuccessResponse>)](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated-1)
+引用@ohos.promptAction的[showDialog(options: ShowDialogOptions, callback: AsyncCallback&lt;ShowDialogSuccessResponse&gt;):void](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated-1)
 
 替代的ArkTS-Sta接口声明：
 
@@ -1654,11 +1654,11 @@ struct Example {
 
 ArkTS-Dyn接口声明：
 
-引用@ohos.promptAction的[openCustomDialog(options: CustomDialogOptions): Promise<number>](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)
+引用@ohos.promptAction的[openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)
 
 替代的ArkTS-Sta接口声明：
 
-引用@ohos.arkui.UIContext的[openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12-1)
+引用@ohos.arkui.UIContext的[openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12-1)
 
 
 

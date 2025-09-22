@@ -132,9 +132,9 @@ ArkTS-Sta示例：
 'use static'
 
 import { Entry, Text, Column, Component, Button, FontWeight, ComponentContent, Position,
-  Builder, wrapBuilder } from '@ohos.arkui.component'
-import { State, StorageLink } from '@ohos.arkui.stateManagement'
-import { UIContext, OverlayManager } from '@ohos.arkui.UIContext'
+  Builder, wrapBuilder } from '@ohos.arkui.component';
+import { State, StorageLink } from '@ohos.arkui.stateManagement';
+import { UIContext, OverlayManager } from '@ohos.arkui.UIContext';
 
 class Params {
   text: string = "";
@@ -467,7 +467,7 @@ ArkTS-Sta示例：
 'use static'
 
 import { Entry, Text, Component, Button, ComponentContent, Position,
-  Builder, wrapBuilder, ColumnOptions, Column, Color, Alignment, Row, Stack } from '@ohos.arkui.component';
+  Builder, wrapBuilder, ColumnOptions, Column, Color, Alignment, Row, Stack, FontWeight } from '@ohos.arkui.component';
 import { State, StorageLink } from '@ohos.arkui.stateManagement';
 import { UIContext, OverlayManager } from '@ohos.arkui.UIContext';
 import { LevelOrder } from '@ohos.promptAction';

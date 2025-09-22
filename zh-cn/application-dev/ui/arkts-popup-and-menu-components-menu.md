@@ -274,7 +274,7 @@ ArkTS-Sta示例：
 ArkTS-Sta上使用右键弹出菜单并想要实现触控反馈时，需先导入ResponseType、HapticFeedbackMode和用来指定参数类型的ContextMenuOptions。
 
   ```ts
-  import { ResponseType } from '@ohos.arkui.component';
+  import { ResponseType, HapticFeedbackMode, ContextMenuOptions } from '@ohos.arkui.component';
   Button('click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED } as ContextMenuOptions)
   ```
