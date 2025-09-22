@@ -159,7 +159,7 @@ PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker�
 | ----------------------- | ------------------- | ---- | -------------------------------- |
 | albumUri    | string | 是   | 用户选择完成退出时的相册信息。<br/>albumUri对应媒体库中相册的uri。<br>-当上次在所有图片中选择时，albumUri为固定的"allPhotos"字符串。<br/>- 当用户在搜索结果/文本推荐/头像推荐中完成选择退出时，不支持下次恢复现场。因此Picker返回的albumUri为空字符串，不支持恢复现场。<br/>默认值为空字符串。 |
 | time    | number   | 是   | 用户上次选择界面，首张完整显示图片的时间。<br/>- 按拍摄时间排序的相册，返回拍摄时间。<br/>- 按保存时间排序的相册返回保存时间。默认为0。 |
-| displayName    | string   | 是   | 用户上次选择界面：首张完整显示图片的文件名。默认为空字符串。 |
+| displayName    | string   | 是   | 用户上次选择界面，首张完整显示图片的文件名。默认为空字符串。 |
 | recommendationType    | number   | 是   | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未设置推荐时，默认为0。|
 | selectRecommendationType    | number   | 是   | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未选中推荐项，选中"全部"时，默认为0。|
 | version    | number   | 是   | 现场数据版本号，用于校验现场信息数据与现场回复能力的匹配度。<br>版本号必须大于等于1.0。|
