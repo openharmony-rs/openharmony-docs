@@ -1091,7 +1091,7 @@ clearHistory(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2067,57 +2067,67 @@ ArkTS-Sta: zoom(factor: double): void
 **示例：**
 
 ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: WebController = new WebController()
-    @State factor: number = 1
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State factor: number = 1;
 
-    build() {
-      Column() {
-        Button('zoom')
-          .onClick(() => {
-            this.controller.zoom(this.factor)
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('zoom')
+        .onClick(() => {
+          try {
+            this.controller.zoom(this.factor);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .zoomAccess(true)
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
+
 ```ts
 // xxx.ets
-  import { Web, Column, Component, Entry, Button, State } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+'use static'
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
-    @State factor: number = 1;
+import { Web, Column, Component, Entry, Button, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('zoom')
-          .onClick(() => {
-            try {
-              this.controller.zoom(this.factor);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-          .zoomAccess(true)
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State factor: number = 1;
+
+  build() {
+    Column() {
+      Button('zoom')
+        .onClick(() => {
+          try {
+            this.controller.zoom(this.factor);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .zoomAccess(true)
     }
   }
-  ```
+}
+```
 
 ## searchAllAsync
 
@@ -2639,59 +2649,61 @@ zoomIn(): void
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('zoomIn')
-          .onClick(() => {
-            try {
-              this.controller.zoomIn();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('zoomIn')
+        .onClick(() => {
+          try {
+            this.controller.zoomIn();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('zoomIn')
-          .onClick(() => {
-            try {
-              this.controller.zoomIn();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('zoomIn')
+        .onClick(() => {
+          try {
+            this.controller.zoomIn();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ## zoomOut
 
@@ -2717,58 +2729,60 @@ zoomOut(): void
 **示例：**
 
 ArkTS-Dyn示例
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('zoomOut')
-          .onClick(() => {
-            try {
-              this.controller.zoomOut();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('zoomOut')
+        .onClick(() => {
+          try {
+            this.controller.zoomOut();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('zoomOut')
-          .onClick(() => {
-            try {
-              this.controller.zoomOut();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('zoomOut')
+        .onClick(() => {
+          try {
+            this.controller.zoomOut();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
+}
   ```
 
 ## getWebId
@@ -2864,7 +2878,7 @@ getUserAgent(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -3411,7 +3425,7 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 | ------ | -------- | ---- | ---------------------- |
 | x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。 |
 | y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。|
-| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。 |
 
 **错误码：**
 
@@ -3425,45 +3439,45 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Button('scrollTo')
-          .onClick(() => {
-            try {
-              this.controller.scrollTo(50, 50, 500);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-          Button('stopScroll')
-          .onClick(() => {
-            try {
-              this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-      }
-    }
-  }
-```
-ArkTS-Sta示例：
 ```ts
 // xxx.ets
-'use static'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('scrollTo')
+        .onClick(() => {
+          try {
+            this.controller.scrollTo(50, 50, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button('stopScroll')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3482,7 +3496,7 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-        Button('stopScroll')
+      Button('stopScroll')
         .onClick(() => {
           try {
             this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
@@ -3539,7 +3553,7 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 | ------ | -------- | ---- | ---------------------- |
 | deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。 |
 | deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。 |
-| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。 |
 
 **错误码：**
 
@@ -3557,75 +3571,76 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-    build() {
-      Column() {
-        Button('scrollBy')
-          .onClick(() => {
-            try {
-              this.controller.scrollBy(50, 50, 500);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Button('stopScroll')
-          .onClick(() => {
-            try {
-              this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('scrollBy')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(50, 50, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('stopScroll')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+'use static'
+import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-    build() {
-      Column() {
-        Button('scrollBy')
-          .onClick(() => {
-            try {
-              this.controller.scrollBy(50, 50, 500);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Button('stopScroll')
-          .onClick(() => {
-            try {
-              this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('scrollBy')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(50, 50, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('stopScroll')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
-  ```
+}
+```
 
 加载的html文件。
 ```html
@@ -3655,7 +3670,7 @@ ArkTS-Dyn: scrollByWithResult(deltaX: number, deltaY: number): boolean
 
 ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
-将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。
+将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。当属性没有显式调用时，默认当前网页不可以滑动。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3674,7 +3689,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。<br>默认为false。 |
+| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。|
 
 **错误码：**
 
@@ -3695,61 +3710,63 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('scrollByWithResult')
-          .onClick(() => {
-            try {
-            let result = this.controller.scrollByWithResult(50, 50);
-            console.log("original result: " + result);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('scrollByWithResult')
+        .onClick(() => {
+          try {
+          let result = this.controller.scrollByWithResult(50, 50);
+          console.log("original result: " + result);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('scrollByWithResult')
-          .onClick(() => {
-            try {
-              let result = this.controller.scrollByWithResult(50, 50);
-              console.log("original result: " + result);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('scrollByWithResult')
+        .onClick(() => {
+          try {
+            let result = this.controller.scrollByWithResult(50, 50);
+            console.log("original result: " + result);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
-  ```
+}
+```
 
 加载的html文件。
 ```html
@@ -3775,9 +3792,9 @@ Scroll Test
 ```
 ## slideScroll
 
-ArkTS-Dyn: slideScroll(vx:number, vy:number): void
+ArkTS-Dyn: slideScroll(vx: number, vy: number): void
 
-ArkTS-Sta: slideScroll(vx:double, vy:double): void
+ArkTS-Sta: slideScroll(vx: double, vy: double): void
 
 按照指定速度模拟对页面的轻扫滚动动作。
 
@@ -3806,59 +3823,60 @@ ArkTS-Sta: slideScroll(vx:double, vy:double): void
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-    build() {
-      Column() {
-        Button('slideScroll')
-          .onClick(() => {
-            try {
-              this.controller.slideScroll(500, 500);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('slideScroll')
+        .onClick(() => {
+          try {
+            this.controller.slideScroll(500, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+'use static'
+import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-    build() {
-      Column() {
-        Button('slideScroll')
-          .onClick(() => {
-            try {
-              this.controller.slideScroll(500, 500);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('slideScroll')
+        .onClick(() => {
+          try {
+            this.controller.slideScroll(500, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
-  ```
+}
+```
 
 加载的html文件。
 ```html
@@ -4312,59 +4330,59 @@ pageUp(top: boolean): void
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-    build() {
-      Column() {
-        Button('pageUp')
-          .onClick(() => {
-            try {
-              this.controller.pageUp(false);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('pageUp')
+        .onClick(() => {
+          try {
+            this.controller.pageUp(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
+}
 ```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-    build() {
-      Column() {
-        Button('pageUp')
-          .onClick(() => {
-            try {
-              this.controller.pageUp(false);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('pageUp')
+        .onClick(() => {
+          try {
+            this.controller.pageUp(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ## pageDown
 
@@ -4396,59 +4414,59 @@ pageDown(bottom: boolean): void
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-    build() {
-      Column() {
-        Button('pageDown')
-          .onClick(() => {
-            try {
-              this.controller.pageDown(false);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('pageDown')
+        .onClick(() => {
+          try {
+            this.controller.pageDown(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-    build() {
-      Column() {
-        Button('pageDown')
-          .onClick(() => {
-            try {
-              this.controller.pageDown(false);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+  build() {
+    Column() {
+      Button('pageDown')
+        .onClick(() => {
+          try {
+            this.controller.pageDown(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ## getBackForwardEntries
 
@@ -4462,7 +4480,7 @@ getBackForwardEntries(): BackForwardList
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -4545,7 +4563,7 @@ serializeWebState(): Uint8Array
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -5593,7 +5611,7 @@ getCustomUserAgent(): string
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -6940,59 +6958,61 @@ setScrollable(enable: boolean, type?: ScrollType): void
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('setScrollable')
-          .onClick(() => {
-            try {
-              this.controller.setScrollable(true);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setScrollable')
+        .onClick(() => {
+          try {
+            this.controller.setScrollable(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('setScrollable')
-          .onClick(() => {
-            try {
-              this.controller.setScrollable(true, webview.ScrollType.EVENT);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setScrollable')
+        .onClick(() => {
+          try {
+            this.controller.setScrollable(true, webview.ScrollType.EVENT);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ## getScrollable<sup>12+</sup>
 
@@ -9807,6 +9827,10 @@ getScrollOffset(): ScrollOffset
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值**
 
 | 类型                            | 说明                   |
@@ -9817,6 +9841,7 @@ getScrollOffset(): ScrollOffset
 
 ArkTS-Dyn示例：
 ```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -9924,6 +9949,64 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, State, OverScrollMode, Web, Row, Column, Component, Entry, Button, Text } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { OverScrollMode, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  @State testTitle: string = 'webScroll'
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State controllerX: number = -100;
+  @State controllerY: number = -100;
+  @State mode: OverScrollMode = OverScrollMode.ALWAYS;
+
+  build() {
+    Column() {
+      Row() {
+        Text(this.testTitle)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .margin(5)
+      }
+      Column() {
+        Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`).fontSize(20)
+      }
+      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+        .key("web_01")
+        .overScrollMode(this.mode)
+        .onTouch(() => {
+          this.controllerX = this.controller.getScrollOffset().x;
+          this.controllerY = this.controller.getScrollOffset().y;
+          let componentInfo = this.getUIContext().getComponentUtils().getRectangleById("web_01");
+          let webHeight = this.getUIContext().px2vp(componentInfo.size.height);
+          let pageHeight = this.controller.getPageHeight();
+          if (this.controllerY < 0) {
+            // case1：网页向下过滚动时，可直接使用ScrollOffset.y
+            console.log(`get downwards overscroll offsetY = ${this.controllerY}`);
+          } else if ((this.controllerY != 0) && (this.controllerY > (pageHeight - webHeight))) {
+            // case2：网页向上过滚动时，需计算出网页下边界与Web组件下边界的偏移量
+            console.log(`get upwards overscroll offsetY = ${this.controllerY -
+              (pageHeight >= webHeight ? (pageHeight - webHeight) : 0)}`);
+          } else {
+            // case3：网页未发生过滚动时，可直接使用ScrollOffset.y
+            console.log(`get scroll offsetY = ${this.controllerY}`);
+          }
+        })
+        .height(600)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## getLastHitTest<sup>18+</sup>
 
 getLastHitTest(): HitTestValue
@@ -9953,63 +10036,65 @@ getLastHitTest(): HitTestValue
 **示例：**
 
 ArkTS-Dyn示例：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('getLastHitTest')
-          .onClick(() => {
-            try {
-              let hitValue = this.controller.getLastHitTest();
-              console.log("hitType: " + hitValue.type);
-              console.log("extra: " + hitValue.extra);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getLastHitTest')
+        .onClick(() => {
+          try {
+            let hitValue = this.controller.getLastHitTest();
+            console.log("hitType: " + hitValue.type);
+            console.log("extra: " + hitValue.extra);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    build() {
-      Column() {
-        Button('getLastHitTest')
-          .onClick(() => {
-            try {
-              let hitValue = this.controller.getLastHitTest();
-              console.log("hitType: " + hitValue.type);
-              console.log("extra: " + hitValue.extra);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getLastHitTest')
+        .onClick(() => {
+          try {
+            let hitValue = this.controller.getLastHitTest();
+            console.log("hitType: " + hitValue.type);
+            console.log("extra: " + hitValue.extra);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
-  ```
+}
+```
 
 ## getAttachState<sup>20+</sup>
 

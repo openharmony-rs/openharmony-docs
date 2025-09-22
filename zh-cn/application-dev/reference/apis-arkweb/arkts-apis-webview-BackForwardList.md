@@ -20,10 +20,14 @@ import { webview } from '@kit.ArkWeb';
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| currentIndex | ArkTS1.1: number<br>ArkTS1.2: int | 否   | 否   | 当前在页面历史列表中的索引。                                 |
-| size         | ArkTS1.1: number<br>ArkTS1.2: int | 否   | 否   | 历史列表中索引的数量，最多保存50条，超过时起始记录会被覆盖。 |
+| currentIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 当前在页面历史列表中的索引。                                 |
+| size         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 历史列表中索引的数量，最多保存50条，超过时起始记录会被覆盖。 |
 
 ## getItemAtIndex
 
@@ -35,7 +39,7 @@ ArkTS-Sta: getItemAtIndex(index: int): HistoryItem
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -43,7 +47,7 @@ ArkTS-Sta: getItemAtIndex(index: int): HistoryItem
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| index  | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 指定历史列表中的索引。 |
+| index  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定历史列表中的索引。 |
 
 **返回值：**
 

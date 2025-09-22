@@ -191,6 +191,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | request | [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md) | 是 | 网页请求的封装信息。      |
@@ -590,6 +594,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
 | jsStack      | string | 是  | 网页的javaScript调用栈信息。       |
@@ -667,6 +675,10 @@ Web组件进入全屏回调事件的详情。
 拦截网页可编辑元素拉起软键盘的回调返回值，可以指定使用的键盘类型，并返回给web内核，以控制拉起不同类型的软键盘；
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |

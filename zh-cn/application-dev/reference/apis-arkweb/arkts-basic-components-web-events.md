@@ -316,7 +316,7 @@ ArkTS-Dyn示例：
       }
     });
 
-    // 自定义弹出框的内容区。
+    // 自定义弹出框的内容区
     @Builder
     buildContent(): void {
       Column() {
@@ -351,7 +351,8 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Dyn示例：
+ArkTS-Sta示例：
+
   ```ts
   // xxx.ets
   import { $rawfile, Web, State, Column, Component, Entry, WebKeyboardAvoidMode, CustomDialogController, Builder} from '@kit.ArkUI';
@@ -568,7 +569,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -864,7 +865,7 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1013,7 +1014,7 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1455,28 +1456,6 @@ ArkTS-Sta示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onScaleChange((event: OnScaleChangeEvent) => {
             console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
-          })
-      }
-    }
-  }
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, OnScaleChangeEvent } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .onScaleChange((event: OnScaleChangeEvent): void => {
-            console.log('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           })
       }
     }
@@ -2434,29 +2413,6 @@ ArkTS-Sta示例：
   }
   ```
 
-ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, OnScrollEvent } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .onScroll((event: OnScrollEvent): void => {
-            console.info("x = " + event.xOffset);
-            console.info("y = " + event.yOffset);
-          })
-      }
-    }
-  }
-  ```
-
 ## onGeolocationShow
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
@@ -2665,7 +2621,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2924,7 +2880,7 @@ onWindowExit(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -3149,7 +3105,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -3736,29 +3692,6 @@ ArkTS-Sta示例：
   }
   ```
 
-ArkTS-Sta示例：
-  ```ts
-  // xxx.ets
-  import { Web, Column, Component, Entry, OnOverScrollEvent } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .onOverScroll((event: OnOverScrollEvent): void => {
-            console.info("x = " + event.xOffset);
-            console.info("y = " + event.yOffset);
-          })
-      }
-    }
-  }
-  ```
-
 ## onControllerAttached<sup>10+</sup>
 
 onControllerAttached(callback: () => void)
@@ -3770,7 +3703,7 @@ onControllerAttached(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 

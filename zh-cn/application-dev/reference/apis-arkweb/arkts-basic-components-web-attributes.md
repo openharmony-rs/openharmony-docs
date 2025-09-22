@@ -16,7 +16,7 @@ domStorageAccess(domStorageAccess: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -79,7 +79,7 @@ fileAccess(fileAccess: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -276,7 +276,7 @@ javaScriptAccess(javaScriptAccess: boolean)
 
 overScrollMode(mode: OverScrollMode)
 
-设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。
+设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。当属性没有显式调用时，关闭过滚动模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -288,11 +288,12 @@ overScrollMode(mode: OverScrollMode)
 
 | 参数名  | 类型                                    | 必填   | 说明               |
 | ---- | --------------------------------------- | ---- | ------------------ |
-| mode | [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) | 是    | 设置Web的过滚动模式为关闭或开启。<br>默认值：`OverScrollMode.NEVER`，表示关闭过滚动模式。 |
+| mode | [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) | 是    | 设置Web的过滚动模式为关闭或开启。|
 
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -312,6 +313,7 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
   // xxx.ets
   import { Web, Column, Component, Entry, State, OverScrollMode } from '@kit.ArkUI';
@@ -404,7 +406,7 @@ onlineImageAccess(onlineImageAccess: boolean)
 
 zoomAccess(zoomAccess: boolean)
 
-设置是否支持手势进行缩放。
+设置是否支持手势进行缩放。当属性没有显式调用时，设置支持手势进行缩放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -416,7 +418,7 @@ zoomAccess(zoomAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。<br>默认值：true。 |
+| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。|
 
 **示例：**
 
@@ -527,7 +529,7 @@ databaseAccess(databaseAccess: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -675,7 +677,7 @@ multiWindowAccess(multiWindow: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -689,7 +691,7 @@ multiWindowAccess(multiWindow: boolean)
 
 horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
-设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。
+设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。当属性没有显式调用时，设置显示横向滚动条。
 
 > **说明：**
 >
@@ -706,7 +708,7 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 | 参数名                 | 类型    | 必填   | 说明         |
 | ------------------- | ------- | ---- | ------------ |
-| horizontalScrollBar | boolean | 是    | 设置是否显示横向滚动条。<br>true表示设置显示横向滚动条，false表示设置不显示横向滚动条。<br>默认值：true。 |
+| horizontalScrollBar | boolean | 是    | 设置是否显示横向滚动条。<br>true表示设置显示横向滚动条，false表示设置不显示横向滚动条。|
 
 **示例：**
 
@@ -815,7 +817,7 @@ ArkTS-Sta示例：
 
 verticalScrollBarAccess(verticalScrollBar: boolean)
 
-设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。
+设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。当属性没有显式调用时，设置显示纵向滚动条。
 
 > **说明：**
 >
@@ -832,7 +834,7 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 | 参数名               | 类型    | 必填   | 说明         |
 | ----------------- | ------- | ---- | ------------ |
-| verticalScrollBar | boolean | 是    | 设置是否显示纵向滚动条。<br>true表示设置显示纵向滚动条，false表示设置不显示纵向滚动条。<br>默认值：true。 |
+| verticalScrollBar | boolean | 是    | 设置是否显示纵向滚动条。<br>true表示设置显示纵向滚动条，false表示设置不显示纵向滚动条。|
 
 **示例：**
 
@@ -1011,7 +1013,7 @@ ArkTS-Dyn: textZoomRatio(textZoomRatio: number)
 
 ArkTS-Sta: textZoomRatio(textZoomRatio: int)
 
-设置页面的文本缩放百分比。
+设置页面的文本缩放百分比。当属性没有显式调用时，默认页面缩放比为100%
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1023,7 +1025,7 @@ ArkTS-Sta: textZoomRatio(textZoomRatio: int)
 
 | 参数名           | 类型   | 必填   | 说明                             |
 | ------------- | ------ | ---- | -------------------------------- |
-| textZoomRatio | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 要设置的页面的文本缩放百分比。<br>取值为整数，范围为(0, 2147483647]。<br>默认值：100。 |
+| textZoomRatio | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 要设置的页面的文本缩放百分比。<br>取值为整数，范围为(0, 2147483647]。 |
 
 **示例：**
 
@@ -1986,7 +1988,7 @@ allowWindowOpenMethod(flag: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2870,7 +2872,7 @@ enableNativeEmbedMode(mode: boolean)
 forceDisplayScrollBar(enabled: boolean)
 
 
-设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。
+设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。当属性没有显式调用时，默认滚动条不常驻。
 
 全量展开模式下不支持滚动条常驻，即layoutMode为WebLayoutMode.FIT_CONTENT模式时，参数enabled为false。
 
@@ -2884,7 +2886,7 @@ forceDisplayScrollBar(enabled: boolean)
 
 | 参数名  | 类型 | 必填 | 说明           |
 | ------- | -------- | ---- | ------------------ |
-| enabled | boolean  | 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。<br>默认值：false。 |
+| enabled | boolean  | 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。 |
 
 
 **示例：**
