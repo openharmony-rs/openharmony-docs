@@ -472,12 +472,12 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-| 名称   | 类型 | 只读 | 可选 | 说明               |
-| ------ | -------- | ---- | ---- | ------------------ |
-| displayId | number   | 否   | 否   | 窗口的显示id。  |
-| windowId  | number   | 否   | 否   | 窗口id。        |
-| showing   | boolean  | 否   | 否   | 显示窗口的状态。 |
-| label     | string   | 否   | 否   | 窗口标签。      |
+| 名称   | 类型 | 只读  | 可选 | 说明                    |
+| ------ | ---- | ----- | ---- | ----------------------- |
+| displayId | number  | 否 | 否 | 窗口的屏幕id。 |
+| windowId  | number  | 否 | 否 | 窗口id。 |
+| showing   | boolean | 否 | 否 | 显示窗口的状态。true表示显示窗口，false表示不显示窗口。|
+| label     | string  | 否 | 否 | 窗口标签。 |
 
 ## WindowSnapshotConfiguration<sup>21+</sup>
 
@@ -485,6 +485,6 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-| 名称   | 类型 | 只读 | 可选 | 说明               |
-| ------ | -------- | ---- | ---- | ------------------ |
-| useCache | boolean   | 否   | 是   | 是否使用已有的窗口截图，默认为是。  |
+| 名称     | 类型      | 只读 | 可选 | 说明               |
+| -------- | -------- | ---- | ---- | ------------------ |
+| useCache | boolean  | 否   | 是   | 是否使用已有的窗口截图。默认值：true。 true表示使用已有的窗口截图，false表示不使用已有的窗口截图。|

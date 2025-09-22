@@ -1247,15 +1247,17 @@ export default class EntryAbility extends UIAbility {
 
 getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
-获取全部主窗口信息，使用Promise异步回调。
+获取全部主窗信息，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | 返回主窗信息列表。 |
+| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | Promise对象。返回主窗信息列表。 |
 
 **错误码：**
 
@@ -1264,47 +1266,75 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 201      | Permission verification failed. |
-| 801      | Capability not supported on this device. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage) {
-    console.info('onWindowStageCreate');
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Success in loading the content');
+    });
     try {
-      let promise = window.getAllMainWindowInfo();
-      promise.then((data) => {
-        console.info('Succeeded in getting all main window info. Data: ' + JSON.stringify(data));
-      }).catch((error: BusinessError) => {
-        console.error(`Failed to get all main window info. Error code: ${error.code}, message: ${error.message}`);
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
+        console.info('Get all main window info success.');
+      }).catch((err: BusinessError) => {
+        console.error('Get all main window info failed. Error info: ' + JSON.stringify(err));
       });
-    } catch (exception) {
-      console.error(`Failed to get all main window info. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error('Get all main window info failed. Cause info: ' + JSON.stringify(err));
     }
   }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // 用户授权
+      } else {
+        // 用户拒绝授权
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
 }
 ```
 
 ## window.getMainWindowSnapshot<sup>21+</sup>
 
-getMainWindowSnapshot(windowId: Array<number>, configs: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
+getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
-获取指定主窗截图，使用Promise异步回调。
+获取全部主窗信息，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| windowId | Array&lt;number&gt; | 是   | 需要获取的主窗口id列表。|
-| configs | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取主窗口截图的配置项。 |
+| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口id列表。|
+| config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取窗口截图时的配置信息。 |
 
 **返回值：**
 
@@ -1319,33 +1349,55 @@ getMainWindowSnapshot(windowId: Array<number>, configs: WindowSnapshotConfigurat
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 201      | Permission verification failed. |
-| 801      | Capability not supported on this device. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage) {
-    console.info('onWindowStageCreate');
-    try {
-      let windowId: number[] = {1, 2, 3};
-      let configs: window.WindowSnapshotConfiguration = {
-        useCache: false
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
       }
-      let promise = window.getMainWindowSnapshot(windowId, configs);
-      promise.then((data) => {
-        console.info('Succeeded in getting main window snapshot.');
-      }).catch((error: BusinessError) => {
-        console.error(`Failed to get main window snapshot. Error code: ${error.code}, message: ${error.message}`);
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Success in loading the content');
+    });
+    try {
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
+        console.info('Get all main window info success.');
+      }).catch((err: BusinessError) => {
+        console.error('Get all main window info failed. Error info: ' + JSON.stringify(err));
       });
-    } catch (exception) {
-      console.error(`Failed to get main window snapshot. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error('Get all main window info failed. Cause info: ' + JSON.stringify(err));
     }
   }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // 用户授权
+      } else {
+        // 用户拒绝授权
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
 }
 ```
