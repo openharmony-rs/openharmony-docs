@@ -1,14 +1,14 @@
-# 使用 Taihe 进行 ets 协同开发
+# 使用Taihe进行ets协同开发
 
 ## 简介
 
-Taihe 提供注解 `@!sts_inject`，可以将代码注入到生成的 ets 文件中。
+Taihe提供注解`@!sts_inject`，可以将代码注入到生成的ets文件中。
 
 ## 基本概念
 
-`@!sts_inject("""...""")`：Taihe IDL 文件顶层注解。可以将一段 ets 代码注入到当前 Taihe 文件对应的 ets namespace 中。
+`@!sts_inject("""...""")`：Taihe IDL文件顶层注解。可以将一段ets代码注入到当前Taihe文件对应的ets namespace中。
 
-`@!sts_inject_into_module("""...""")`：Taihe IDL 文件顶层注解。可以将一段 ets 代码注入到当前 Taihe 文件所对应的 ets namespace 所在的 module 头部。
+`@!sts_inject_into_module("""...""")`：Taihe IDL文件顶层注解。可以将一段ets代码注入到当前Taihe文件所对应的ets namespace所在的module头部。
 
 **moduleA.foo.ohidl**
 ```rust
@@ -26,9 +26,9 @@ export namespace foo {
 }
 ```
 
-`@!sts_inject_into_interface("""...""")`：可加在 Taihe IDL 中声明的 struct/interface 上。用于将一段 ets 代码注入到对应生成的 ets interface 中。
+`@!sts_inject_into_interface("""...""")`：可加在Taihe IDL中声明的struct/interface上。用于将一段ets代码注入到对应生成的ets interface中。
 
-`@!sts_inject_into_class("""...""")`：可加在 Taihe IDL 中声明的 struct/interface 上。用于将一段 ets 代码注入到对应生成的 ets class 中。
+`@!sts_inject_into_class("""...""")`：可加在Taihe IDL中声明的struct/interface上。用于将一段ets代码注入到对应生成的ets class中。
 
 **taihe声明**
 ```rust
@@ -72,7 +72,7 @@ class _taihe_RGB_inner implements RGB {
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 **moduleA.foo.ohidl**
 ```rust
@@ -89,11 +89,11 @@ struct RGB {
 }
 ```
 
-### C++ 实现
+### C++实现
 
-此处代码示例无需实现具体代码，因此无需提供 C++ 实现。
+此处代码示例无需实现具体代码，因此无需提供C++实现。
 
-### ets 使用
+### ets使用
 
 ```typescript
 let res1: string = moduleA.toplevelFunc("hello");

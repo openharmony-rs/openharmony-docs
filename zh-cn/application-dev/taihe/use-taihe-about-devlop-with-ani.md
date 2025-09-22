@@ -1,18 +1,18 @@
-# 使用 Taihe 进行 ANI 协同开发
+# 使用Taihe进行ANI协同开发
 
 ## 简介
 
-Taihe 提供 Opaque 类型声明外部语言对象，用于表达在 Taihe 中无法表达的不透明类型，并允许使用 `@sts_type` 注解指定该外部语言对象的具体 ets 类型。
+Taihe提供Opaque类型声明外部语言对象，用于表达在Taihe中无法表达的不透明类型，并允许使用`@sts_type`注解指定该外部语言对象的具体ets类型。
 
 ## 基本概念
 
-当有部分类型在 Taihe 中不可见时，可以使用 Taihe 的 Opaque 类型进行声明，在 C++ 实现侧编写 ANI 代码。
+当有部分类型在Taihe中不可见时，可以使用Taihe的Opaque类型进行声明，在C++实现侧编写ANI代码。
 
 ```rust
 function is_string(s: Opaque): bool;
 ```
 
-C++ 实现：
+C++实现：
 
 ```cpp
 bool is_string(uintptr_t s) {
@@ -25,13 +25,13 @@ bool is_string(uintptr_t s) {
 }
 ```
 
-`Opaque` 类型在 ArkTS 侧对应的类型为 `Object`，因此上述 Taihe 声明在 ArkTS 侧对应的声明为：
+`Opaque`类型在ArkTS侧对应的类型为`Object`，因此上述Taihe声明在ArkTS侧对应的声明为：
 
 ```typescript
 function is_string(s: Object): boolean;
 ```
 
-`Opaque` 类型的使用场景通常是：某些类型完全是在 ArkTS 侧定义的，而在 Taihe IDL 中并没有对应的声明，例如：
+`Opaque`类型的使用场景通常是：某些类型完全是在ArkTS侧定义的，而在Taihe IDL中并没有对应的声明，例如：
 
 ```typescript
 export interface Person {
@@ -40,14 +40,14 @@ export interface Person {
 }
 ```
 
-此时，如果希望使用 Taihe 声明一个函数来处理 `Person` 类型的参数，就必须使用 `Opaque` 类型来作为该参数的类型。此外，为了使该类型在 ArkTS 侧能被正确投影为 `Person` 类型而非 `Object` 类型，我们需要使用 `@sts_type` 注解来修饰该类型，表示该 `Opaque` 类型在 ArkTS 侧实际对应的具体类型为 `Person`：
+此时，如果希望使用Taihe声明一个函数来处理`Person`类型的参数，就必须使用`Opaque`类型来作为该参数的类型。此外，为了使该类型在ArkTS侧能被正确投影为`Person`类型而非`Object`类型，我们需要使用`@sts_type`注解来修饰该类型，表示该`Opaque`类型在ArkTS侧实际对应的具体类型为`Person`：
 
 ```rust
 @!sts_inject("import {Person} from 'other.subsystem';")
 function processPerson(person: @sts_type("Person") Opaque): void;
 ```
 
-C++ 实现：
+C++实现：
 
 ```cpp
 void processPerson(uintptr_t person) {
@@ -67,7 +67,7 @@ void processPerson(uintptr_t person) {
 }
 ```
 
-注：1. ANI 相关开发参考 [ANI 文档](../ani/ani-usage-scenarios.md)。2. 注解 `@sts_inject` 参考 [文档](./use-taihe-about-devlop-with-ets.md)。
+注：1. ANI相关开发参考[ANI文档](../ani/ani-usage-scenarios.md)。2. 注解`@sts_inject`参考[文档](./use-taihe-about-devlop-with-ets.md)。
 
 ## 使用示例
 
@@ -80,7 +80,7 @@ export interface Person {
 }
 ```
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 @!sts_inject("import {Person} from 'other.subsystem';")
@@ -90,7 +90,7 @@ function is_string(s: Opaque): bool;
 function processPerson(person: @sts_type("Person") Opaque): void;
 ```
 
-### C++ 实现
+### C++实现
 
 ```cpp
 bool is_string(uintptr_t s) {
@@ -119,7 +119,7 @@ void processPerson(uintptr_t person) {
 }
 ```
 
-### ets 使用
+### ets使用
 
 ```typescript
     console.log(extobj.is_string("hello"));
