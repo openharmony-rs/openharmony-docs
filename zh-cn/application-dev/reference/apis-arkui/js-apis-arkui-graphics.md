@@ -1835,7 +1835,9 @@ struct Index {
 
 ## edgeColors<sup>12+</sup>
 
-edgeColors(all: number): Edges\<number>
+ArkTs-Dyn: edgeColors(all: number): Edges\<number>
+
+ArkTs-Sta: edgeColors(all: number): NodeEdges\<number>
 
 用于生成边框颜色均设置为传入值的边框颜色对象。
 
@@ -1853,7 +1855,7 @@ edgeColors(all: number): Edges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框颜色均设置为传入值的边框颜色对象。 |
+| [Edges\<number>](#edgest12) <br> [NodeEdges\<number>](#nodeedgest20) | 边框颜色均设置为传入值的边框颜色对象。 |
 
 **示例：**
 
@@ -1897,7 +1899,9 @@ struct Index {
 
 ## edgeWidths<sup>12+</sup>
 
-edgeWidths(all: number): Edges\<number>
+ArkTs-Dyn: edgeWidths(all: number): Edges\<number>
+
+ArkTs-Sta: edgeWidths(all: number): NodeEdges\<number>
 
 用于生成边框宽度均设置为传入值的边框宽度对象。
 
@@ -1915,7 +1919,7 @@ edgeWidths(all: number): Edges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框宽度均设置为传入值的边框宽度对象。 |
+| [Edges\<number>](#edgest12) <br> [NodeEdges\<number>](#nodeedgest20) | 边框宽度均设置为传入值的边框宽度对象。 |
 
 **示例：**
 
@@ -1959,7 +1963,9 @@ struct Index {
 
 ## borderStyles<sup>12+</sup>
 
-borderStyles(all: BorderStyle): Edges\<BorderStyle>
+ArkTs-Dyn: borderStyles(all: BorderStyle): Edges\<BorderStyle>
+
+ArkTs-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
 
 用于生成边框样式均设置为传入值的边框样式对象。
 
@@ -1977,7 +1983,7 @@ borderStyles(all: BorderStyle): Edges\<BorderStyle>
 
 | 类型                                                                        | 说明                                   |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
+| [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> [NodeEdges](#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
 
 **示例：**
 
