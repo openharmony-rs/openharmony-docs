@@ -2069,7 +2069,7 @@ ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 | 参数名 | 类型                                                                                                   | 必填 | 说明                   |
 | ------ | ------------------------------------------------------------------------------------------------------ | ---- | ---------------------- |
-| style  |ArkTs-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTs-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式。默认undefined |
+| style  |ArkTs-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTs-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式，默认undefined。|
 
 ArkTs-Dyn: get borderStyle(): Edges\<BorderStyle>
 
@@ -2089,7 +2089,7 @@ ArkTs-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 | 类型                                                                                                   | 说明                   |
 | ------------------------------------------------------------------------------------------------------ | ---------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | RenderNode的边框样式。 |
+| [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | RenderNode的边框样式，默认undefined。 |
 
 **示例：**
 ```ts
@@ -2156,7 +2156,7 @@ ArkTs-Sta: set borderWidth(width: NodeEdges\<number>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框宽度，单位为vp。默认undefined |
+| width  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框宽度，单位为vp，默认undefined。 |
 
 ArkTs-Dyn: get borderWidth(): Edges\<number>
 
@@ -2176,7 +2176,7 @@ ArkTs-Sta: get borderWidth(): NodeEdges\<number> | undefined
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-|ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | RenderNode的边框宽度，默认所有边框宽度为0vp。 |
+|ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | RenderNode的边框宽度，默认所有边框宽度为0vp，默认undefined。 |
 
 **示例：**
 
@@ -2187,7 +2187,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-const borderWidth = renderNode.borderWidth;
+const borderWidth = renderNode.borderWidth!;
 
 
 class MyNodeController extends NodeController {
@@ -2238,7 +2238,7 @@ ArkTs-Sta: set borderColor(color: NodeEdges\<number>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框颜色。默认undefined |
+| color  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框颜色，默认undefined。 |
 
 ArkTs-Dyn: get borderColor(): Edges\<number>
 
@@ -2258,7 +2258,7 @@ ArkTs-Sta: get borderColor(): NodeEdges\<number> | undefined
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-|ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | RenderNode的边框颜色，默认所有边框颜色为0XFF000000。 |
+|ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | RenderNode的边框颜色，默认undefined。 |
 
 **示例：**
 
@@ -2270,7 +2270,7 @@ renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
 renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
-const borderColor = renderNode.borderColor;
+const borderColor = renderNode.borderColor!;
 
 
 class MyNodeController extends NodeController {
@@ -2347,7 +2347,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderRadius = { topLeft: 32, topRight: 32, bottomLeft: 32, bottomRight: 32 };
-const borderRadius = renderNode.borderRadius;
+const borderRadius = renderNode.borderRadius!;
 
 
 class MyNodeController extends NodeController {
@@ -2410,7 +2410,7 @@ ArkTs-Sta: get shapeMask(): ShapeMask | undefined
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | RenderNode的边框遮罩。 |
+| [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | RenderNode的边框遮罩，默认undefined。 |
 
 **示例：**
 
@@ -2427,7 +2427,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeMask = mask;
-const shapeMask = renderNode.shapeMask;
+const shapeMask = renderNode.shapeMask!;
 
 
 class MyNodeController extends NodeController {
