@@ -1045,6 +1045,10 @@ ArkTs-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
@@ -1067,6 +1071,10 @@ ArkTs-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
@@ -1088,6 +1096,10 @@ ArkTs-Sta: getUserConfigMargin(): NodeEdges\<LengthMetrics\>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
 
 **返回值：**
 

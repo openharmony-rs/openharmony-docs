@@ -1909,6 +1909,10 @@ ArkTs-Sta: edgeWidths(all: number): NodeEdges\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
@@ -1972,6 +1976,10 @@ ArkTs-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
 
 **参数：**
 

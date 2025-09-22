@@ -2220,7 +2220,8 @@ struct Index {
 
 ### borderColor<sup>12+</sup>
 
-ArkTs-Dyn: set borderColor(color: Edges\<number>)  
+ArkTs-Dyn: set borderColor(color: Edges\<number>)
+
 ArkTs-Sta: set borderColor(color: NodeEdges\<number>)
 
 设置当前RenderNode的边框颜色。
@@ -2248,6 +2249,10 @@ ArkTs-Sta: get borderColor(): NodeEdges\<number> | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
 
 **返回值：**
 
