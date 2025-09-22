@@ -498,7 +498,7 @@ struct Second {
           abilityName: "UIExtensionProvider",
           parameters: {
             "ability.want.params.uiExtensionType": "sys/commonUI"
-          } as Record<String, Object>},
+          } as Record<String, undefined | null | Object>},
           {
             isTransferringCaller: this.isTransferringCaller
           })
