@@ -918,7 +918,7 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 
 getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
-获取全部主窗信息，使用Promise异步回调。
+获取指定主窗截图，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
