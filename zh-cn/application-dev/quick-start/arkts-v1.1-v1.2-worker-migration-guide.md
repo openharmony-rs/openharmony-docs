@@ -843,6 +843,13 @@ const currentworker = EAWorker.current()
 const workerInstance = new EAWorker("worker");
 workerInstance.start();
 
+// 宿主线程接收EAWorker传递至宿主线程的数据并访问其属性
+const currentCB = (msg: concurrency.Message) => {
+  let obj: SendableObject = msg.getObject() as SendableObject;
+  console.info("sendable index obj is: " + obj.a);
+}
+let currentHandler = new concurrency.MessageHandler(currentCB, currentworker);
+
 // EAWorker新建SendableObject实例并传递至宿主线程
 const workerCB = (msg: concurrency.Message) => {
   let str: string = "receive start signal from main thread";
@@ -852,13 +859,6 @@ const workerCB = (msg: concurrency.Message) => {
   currentHandler.sendMessage(message);
 }
 let workerHandler = new concurrency.MessageHandler(workerCB, workerInstance);
-
-// 宿主线程接收EAWorker传递至宿主线程的数据并访问其属性
-const currentCB = (msg: concurrency.Message) => {
-  let obj: SendableObject = msg.getObject() as SendableObject;
-  console.info("sendable index obj is: " + obj.a);
-}
-let currentHandler = new concurrency.MessageHandler(currentCB, currentworker);
 
 // 宿主线程向EAworker线程传递信息
 let str: string = "hello world";
