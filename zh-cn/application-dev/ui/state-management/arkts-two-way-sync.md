@@ -57,8 +57,8 @@
 @Entry
 @Component
 struct TextInputExample {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
 
   build() {
     Column({ space: 20 }) {
@@ -68,7 +68,10 @@ struct TextInputExample {
         .placeholderFont({ size: 14, weight: 400 })
         .caretColor(Color.Blue)
         .width(300)
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```

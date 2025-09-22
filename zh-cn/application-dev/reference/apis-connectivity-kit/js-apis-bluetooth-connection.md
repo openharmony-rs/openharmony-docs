@@ -87,11 +87,25 @@ type MajorMinorClass = constant.MajorMinorClass
 | [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | 蓝牙设备的子类型。 |
 
 
+## BluetoothAddress<sup>21+</sup>
+
+type BluetoothAddress = common.BluetoothAddress
+
+描述蓝牙设备地址信息的参数结构，包括地址与地址类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 蓝牙设备的地址信息。 |
+
+
 ## connection.pairDevice
 
 pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 主动发起与对端蓝牙设备的配对流程。使用Callback异步回调。
+- 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -141,6 +155,7 @@ try {
 pairDevice(deviceId: string): Promise&lt;void&gt;
 
 主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+- 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -197,7 +212,7 @@ try {
 pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
-- 支持使用对端设备的虚拟地址或真实地址发起配对。
+- 若开发者已知目标设备的MAC地址及[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -208,7 +223,7 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
+| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
 
 **返回值：**
 
@@ -218,7 +233,7 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -232,18 +247,18 @@ pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-import common from '@ohos.bluetooth.common';
+import { common } from '@kit.ConnectivityKit';
 // promise
 try {
     let btAddr: common.BluetoothAddress = {
-        "address": '11:22:33:44:55:66',
-        "addressType": common.BluetoothAddressType.VIRTUAL,
+        "address": '11:22:33:44:55:66', // 目标设备的实际MAC地址或虚拟MAC地址
+        "addressType": common.BluetoothAddressType.REAL, // 相应的地址类型
     }
     connection.pairDevice(btAddr).then(() => {
         console.info('pairDevice');
     }, (error: BusinessError) => {
         console.error('errCode: ' + error.code + ', errMessage' + error.message);
-    })
+    });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -587,7 +602,7 @@ getPairedDevices(): Array&lt;string&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Array&lt;string&gt; | 已配对蓝牙设备的地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
+| Array&lt;string&gt; | 已配对蓝牙设备的地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 
 **错误码**：
 
@@ -1316,7 +1331,7 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 | 参数名      | 类型                                  | 必填   | 说明                                     |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | type     | string                              | 是    | 事件回调类型，支持的事件为'bluetoothDeviceFind'，表示蓝牙设备扫描结果上报事件。当调用[connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery)后，开始设备扫描，若扫描到设备，触发该事件。 |
-| callback | Callback&lt;Array&lt;string&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描到的设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。    |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描到的设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。   |
 
 **错误码**：
 
@@ -1936,7 +1951,7 @@ try {
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId    | string      | 否    | 否    | 扫描到的设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。|
+| deviceId    | string      | 否    | 否    | 扫描到的设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。|
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
