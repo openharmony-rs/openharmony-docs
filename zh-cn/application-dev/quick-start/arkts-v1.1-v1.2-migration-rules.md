@@ -4001,6 +4001,158 @@ import { MainPage } from 'library/ets/components/MainPage'
 import { MainPage } from 'library/src/main/ets/components/MainPage'
 ```
 
+## Number类型逻辑运算符结果类型变更
+
+**场景描述：**
+
+当两个number类型数值采用`||`、`&&`运算符时，在两个版本中结果存在差异。
+
+在ArkTS1.1中，运算结果类型是number。
+
+在ArkTS1.2中，运算结果类型是boolean。
+
+**示例：**
+
+```typescript
+let array = [1, 2];
+
+array[1 && 1];
+array[1 || 1];
+```
+
+## 抽象方法禁止重名
+
+**场景描述：**
+
+在ArkTS1.1中，支持抽象方法重名。
+
+在ArkTS1.2中，抽象方法重名会编译报错。
+
+**示例：**
+
+```typescript
+abstract class Base6 {
+  abstract foo1();
+
+  abstract foo1();
+
+  abstract foo1(): boolean;
+
+  abstract foo1(): number;
+}
+```
+
+## 仅有set访问器时属性读取限制
+
+**场景描述：**
+
+当类中只存在set访问器时，ArkTS1.1可以读取，ArkTS1.2会编译报错。
+
+**示例：**
+
+```typescript
+class Person {
+  private _age: number = 0;
+
+  // get age(): number {
+  //   return this._age;
+  // }
+
+  set age(value: number) {
+    this._age = value > 0 ? value : 0;
+  }
+}
+
+let a: Person = new Person();
+
+let b = a.age;
+```
+
+## 元组类型声明文件生成兼容性问题
+
+**场景描述：**
+
+在ArkTS1.2中，当引用ArkTS1.1包含可选元素的元组类型或者包含rest展开的元组类型时，生成的声明文件会编译报错。
+
+**示例：**
+
+**ArkTS1.1**
+
+```typescript
+export type OptionalTuples = [number, boolean, string?];
+
+export type VariableTuples = [string, ...string[]];
+```
+
+## 函数不定参数类型转换异常
+
+**场景描述：**
+
+在ArkTS1.1中，当引用ArkTS1.2的函数不定参数，且参数为int类型（映射在ArkTS1.1中为number类型），调用时会引起运行时包类型转换异常。
+
+**示例：**
+
+```typescript
+export function arg_rest_int_function(...args: int[]): int {
+  return args[0];
+}
+
+arg_rest_int_function(1, 2, 3) === 1;
+arg_rest_int_function(0) === 0;
+```
+
+## `return this`使用限制
+
+**场景描述：**
+
+在ArkTS1.1中，在类的`constructor`里可以使用`return this`，而在ArkTS1.2中这种写法会报错。
+
+**示例：**
+
+```typescript
+class Base {
+  constructor() {
+    return this;
+  }
+}
+```
+
+## this关键字作用域限制
+
+**场景描述：**
+
+在ArkTS1.1中，可以在`class`之外使用`this`，ArkTS1.2只能在`class`内部使用。
+
+**示例：**
+
+```typescript
+let that = this;
+```
+
+## 默认导出访问方式变更
+
+**场景描述：**
+
+在ArkTS1.1中，通过`import * as A`引入`A`之后可以用`A.default`访问到`A`里的`default`，但在ArkTS1.2中这种写法会报错。
+
+**示例：**
+
+```typescript
+// tt.ets
+'use static'
+
+export let num = 111;
+
+export { num as default };
+```
+
+```typescript
+// index.ets
+import * as AAA from "./tt";
+
+this.stateVar += AAA.default; // 在ArkTS1.2中报错
+```
+
 ## 逆变和协变
 用来描述类型转换后的继承关系，如果A、B表示类型，f()表示类型转换，≤表示继承关系（A≤B表示A是由B派生出来的子类），则有：
 
