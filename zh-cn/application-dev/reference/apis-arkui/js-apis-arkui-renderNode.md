@@ -2069,7 +2069,7 @@ ArkTs-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 | 参数名 | 类型                                                                                                   | 必填 | 说明                   |
 | ------ | ------------------------------------------------------------------------------------------------------ | ---- | ---------------------- |
-| style  |ArkTs-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTs-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式，默认undefined。|
+| style  |ArkTs-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTs-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式。|
 
 ArkTs-Dyn: get borderStyle(): Edges\<BorderStyle>
 
@@ -2156,7 +2156,7 @@ ArkTs-Sta: set borderWidth(width: NodeEdges\<number>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框宽度，单位为vp，默认undefined。 |
+| width  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框宽度，单位为vp。 |
 
 ArkTs-Dyn: get borderWidth(): Edges\<number>
 
@@ -2238,7 +2238,7 @@ ArkTs-Sta: set borderColor(color: NodeEdges\<number>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框颜色，默认undefined。 |
+| color  |ArkTs-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框颜色。 |
 
 ArkTs-Dyn: get borderColor(): Edges\<number>
 
@@ -2315,7 +2315,7 @@ set borderRadius(radius: BorderRadiuses)
 
 | 参数名 | 类型                                                         | 必填 | 说明                   |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------- |
-| radius | [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | 是   | RenderNode的边框圆角，单位为vp。默认undefined |
+| radius | [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | 是   | RenderNode的边框圆角，单位为vp。 |
 
 
 ArkTs-Dyn: get borderRadius(): BorderRadiuses
@@ -2336,7 +2336,7 @@ ArkTs-Sta: get borderRadius(): BorderRadiuses | undefined
 
 | 类型                                                         | 说明                   |
 | ------------------------------------------------------------ | ---------------------- |
-| [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | RenderNode的边框圆角，默认所有边框圆角为0vp。 |
+| [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | RenderNode的边框圆角，默认undefined。 |
 
 **示例：**
 
