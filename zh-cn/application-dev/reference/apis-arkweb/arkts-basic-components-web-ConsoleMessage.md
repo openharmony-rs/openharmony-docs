@@ -40,7 +40,7 @@ ArkTS-Sta: getLineNumber(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 20
 
@@ -58,7 +58,7 @@ getMessage(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -76,7 +76,7 @@ getMessageLevel(): MessageLevel
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
