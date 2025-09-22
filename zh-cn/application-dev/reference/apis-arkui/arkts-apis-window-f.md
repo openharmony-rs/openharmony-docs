@@ -1340,7 +1340,7 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)&gt;&gt; | 截图PixelMap的列表，按照传入的窗口id数组的顺序排列。 |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)&gt;&gt; | Promise对象。截图的PixelMap列表，按传入的窗口id数组的顺序排列。 |
 
 **错误码：**
 
