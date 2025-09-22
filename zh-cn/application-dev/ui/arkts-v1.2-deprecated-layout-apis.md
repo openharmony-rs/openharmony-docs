@@ -12,6 +12,7 @@ ArkTS1.1接口声明：[matchMediaSync(condition: string): MediaQueryListener](.
 
 
 ArkTS1.1
+<!--deprecated_code_no_check-->
 ```ts
 import { mediaquery } from '@kit.ArkUI';
 
@@ -20,10 +21,10 @@ let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orient
 
 ArkTS1.2
 ```ts
-import { MediaQuery } from '@kit.ArkUI';
+'use static'
+import mediaquery from '@kit.ArkUI';
 
-let mediaquery: MediaQuery = uiContext.getMediaQuery();
-let listener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 ```
 
 ## GridContainer
@@ -87,6 +88,7 @@ ArkTS1.1接口声明：[
 
 
 ArkTS1.1
+<!--deprecated_code_no_check-->
 ```ts
 // xxx.ets
 @Entry
@@ -168,13 +170,16 @@ struct GridContainerExample1 {
 
 ArkTS1.2
 ```ts
-// xxx.ets
+'use static'
+
+import { Entry, Component, GridRow, GridCol, Column, Row,  GridRowDirection, BreakpointsReference, Margin, Color, ForEach, State} from '@kit.ArkUI';
+
 @Entry
 @Component
 struct GridColExample {
   @State bgColors: Color[] =
-    [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
-  @State currentBp: string = 'unknown'
+    [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
 
   build() {
     Column() {
@@ -200,7 +205,7 @@ struct GridColExample {
       .onBreakpointChange((breakpoint) => {
         this.currentBp = breakpoint
       })
-    }.width('80%').margin({ left: 10, top: 5, bottom: 5 }).height(200)
+    }.width('80%').margin({ left: 10, top: 5, bottom: 5 } as Margin).height(200)
     .border({ color: '#880606', width: 2 })
   }
 }
@@ -249,6 +254,7 @@ ArkTS1.1接口声明：[onLayout?(children: Array<LayoutChild>, constraint: Cons
 
 
 ArkTS1.1
+<!--deprecated_code_no_check-->
 ```ts
 // xxx.ets
 @Entry
@@ -300,31 +306,36 @@ struct CustomLayout {
 
 ArkTS1.2
 ```ts
-// xxx.ets
+'use static'
+
+import { Text, Column, Component, Position, Entry, Builder, BuilderParam, ForEach, SizeResult, GeometryInfo, Layoutable, ConstraintSizeOptions, Measurable, MeasureResult, CustomLayout, State} from '@kit.ArkUI';
+
 @Entry
 @Component
-struct Index {
+struct MyStateSample {
   build() {
     Column() {
-      CustomLayout({ builder: ColumnChildren })
+      Custom1({ builder: ColumnChildren })
     }
   }
 }
 
 @Builder
 function ColumnChildren() {
-  ForEach([1, 2, 3], (index: number) => { // 暂不支持lazyForEach的写法
-    Text('S' + index)
+  ForEach([1, 2, 3], (item: Int, index: number) => { // 暂不支持lazyForEach的写法
+    Text('S' + item)
       .fontSize(30)
       .width(100)
       .height(100)
       .borderWidth(2)
-      .offset({ x: 10, y: 20 })
+      .offset({ x: 10, y: 20 } as Position)
   })
-}
 
+}
+@CustomLayout
 @Component
-struct CustomLayout {
+struct Custom1 {
+
   @Builder
   doNothingBuilder() {
   };
@@ -334,7 +345,7 @@ struct CustomLayout {
   result: SizeResult = {
     width: 0,
     height: 0
-  };
+  } as SizeResult;
 
   onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
     let startPos = 300;
