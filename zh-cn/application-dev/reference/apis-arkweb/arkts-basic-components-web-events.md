@@ -1319,6 +1319,10 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -1327,6 +1331,7 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1341,6 +1346,29 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
         Web({ src: 'www.example.com', controller: this.controller })
           .onScaleChange((event) => {
             console.log('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          })
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+
+  import { Web, Column, Component, Entry, OnScaleChangeEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onScaleChange((event: OnScaleChangeEvent) => {
+            console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           })
       }
     }
@@ -2240,6 +2268,10 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2248,6 +2280,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2261,6 +2294,30 @@ onScroll(callback: Callback\<OnScrollEvent\>)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onScroll((event) => {
+            console.info("x = " + event.xOffset);
+            console.info("y = " + event.yOffset);
+          })
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+
+  import { Web, Column, Component, Entry, OnScrollEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onScroll((event: OnScrollEvent) => {
             console.info("x = " + event.xOffset);
             console.info("y = " + event.yOffset);
           })
@@ -3490,6 +3547,10 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3498,6 +3559,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3511,6 +3573,30 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onOverScroll((event) => {
+            console.info("x = " + event.xOffset);
+            console.info("y = " + event.yOffset);
+          })
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+
+  import { Web, Column, Component, Entry, OnOverScrollEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onOverScroll((event: OnOverScrollEvent) => {
             console.info("x = " + event.xOffset);
             console.info("y = " + event.yOffset);
           })

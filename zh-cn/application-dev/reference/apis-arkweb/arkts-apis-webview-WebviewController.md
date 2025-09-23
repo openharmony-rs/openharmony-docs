@@ -2036,17 +2036,23 @@ struct WebComponent {
 
 ## zoom
 
-zoom(factor: number): void
+ArkTS-Dyn: zoom(factor: number): void
+
+ArkTS-Sta: zoom(factor: double): void
 
 调整当前网页的缩放比例，[zoomAccess](arkts-basic-components-web-attributes.md#zoomaccess)需为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| factor | number   | 是   | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
+| factor | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
 
 **错误码：**
 
@@ -2060,6 +2066,7 @@ zoom(factor: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2069,6 +2076,38 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State factor: number = 1;
+
+  build() {
+    Column() {
+      Button('zoom')
+        .onClick(() => {
+          try {
+            this.controller.zoom(this.factor);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .zoomAccess(true)
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State factor: number = 1;
 
   build() {
@@ -3296,19 +3335,25 @@ struct WebComponent {
 
 ## scrollTo
 
-scrollTo(x:number, y:number, duration?:number): void
+ArkTS-Dyn: scrollTo(x:number, y:number, duration?:number): void
+
+ArkTS-Sta: scrollTo(x:double, y:double, duration?:int): void
 
 在指定时间内，将页面滚动到指定的绝对位置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| x   | number   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。 |
-| y   | number   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。|
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。 |
+| y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。|
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
 
 **错误码：**
 
@@ -3321,6 +3366,8 @@ scrollTo(x:number, y:number, duration?:number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3330,6 +3377,43 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('scrollTo')
+        .onClick(() => {
+          try {
+            this.controller.scrollTo(50, 50, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button('stopScroll')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -3380,19 +3464,25 @@ Scroll Test
 
 ## scrollBy
 
-scrollBy(deltaX:number, deltaY:number,duration?:number): void
+ArkTS-Dyn: scrollBy(deltaX:number, deltaY:number, duration?:number): void
+
+ArkTS-Sta: scrollBy(deltaX:double, deltaY:double, duration?:int): void
 
 在指定时间内将页面滚动指定的偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| deltaX | number   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。 |
-| deltaY | number   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。 |
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。 |
+| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
 
 **错误码：**
 
@@ -3409,6 +3499,7 @@ scrollBy(deltaX:number, deltaY:number,duration?:number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3418,6 +3509,43 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('scrollBy')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(50, 50, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('stopScroll')
+        .onClick(() => {
+          try {
+            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -3467,18 +3595,24 @@ Scroll Test
 ```
 ## scrollByWithResult<sup>12+</sup>
 
-scrollByWithResult(deltaX: number, deltaY: number): boolean
+ArkTS-Dyn: scrollByWithResult(deltaX: number, deltaY: number): boolean
+
+ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| deltaX | number   | 是   | 水平偏移量，其中水平向右为正方向。 |
-| deltaY | number   | 是   | 垂直偏移量，其中垂直向下为正方向。 |
+| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。 |
+| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。 |
 
 **返回值：**
 
@@ -3504,6 +3638,7 @@ scrollByWithResult(deltaX: number, deltaY: number): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3521,6 +3656,36 @@ struct WebComponent {
           try {
           let result = this.controller.scrollByWithResult(50, 50);
           console.log("original result: " + result);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('scrollByWithResult')
+        .onClick(() => {
+          try {
+            let result = this.controller.scrollByWithResult(50, 50);
+            console.info("original result: " + result);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3555,18 +3720,24 @@ Scroll Test
 ```
 ## slideScroll
 
-slideScroll(vx:number, vy:number): void
+ArkTS-Dyn: slideScroll(vx:number, vy:number): void
+
+ArkTS-Sta: slideScroll(vx:double, vy:double): void
 
 按照指定速度模拟对页面的轻扫滚动动作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| vx     | number   | 是   | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。<br>单位：vp/ms。 |
-| vy     | number   | 是   | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。<br>单位：vp/ms。 |
+| vx     | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。<br>单位：vp/ms。 |
+| vy     | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。<br>单位：vp/ms。 |
 
 **错误码：**
 
@@ -3579,6 +3750,7 @@ slideScroll(vx:number, vy:number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3588,6 +3760,35 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('slideScroll')
+        .onClick(() => {
+          try {
+            this.controller.slideScroll(500, 500);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -9461,6 +9662,7 @@ getScrollOffset(): ScrollOffset
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 
@@ -9503,6 +9705,62 @@ struct WebComponent {
           } else {
             // case3：网页未发生过滚动时，可直接使用ScrollOffset.y
             console.log(`get scroll offsetY = ${this.controllerY}`);
+          }
+        })
+        .height(600)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { $rawfile, Web, Text, Row, Column, Component, Entry, OverScrollMode, FontWeight } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct WebComponent {
+  @State testTitle: string = 'webScroll'
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State controllerX: double =-100;
+  @State controllerY: double =-100;
+  @State mode: OverScrollMode = OverScrollMode.ALWAYS;
+
+  build() {
+    Column() {
+      Row() {
+        Text(this.testTitle)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+      }
+      Column() {
+        Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
+      }
+      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+        .key("web_01")
+        .overScrollMode(this.mode)
+        .onTouch(() => {
+          this.controllerX = this.controller.getScrollOffset().x;
+          this.controllerY = this.controller.getScrollOffset().y;
+          let componentInfo = this.getUIContext().getComponentUtils().getRectangleById("web_01");
+          let webHeight = this.getUIContext().px2vp(componentInfo.size.height);
+          let pageHeight = this.controller.getPageHeight();
+          if (this.controllerY < 0) {
+            // case1：网页向下过滚动时，可直接使用ScrollOffset.y
+            console.info(`get downwards overscroll offsetY = ${this.controllerY}`);
+          } else if ((this.controllerY != 0) && (this.controllerY > (pageHeight - webHeight))) {
+            // case2：网页向上过滚动时，需计算出网页下边界与Web组件下边界的偏移量
+            console.info(`get upwards overscroll offsetY = ${this.controllerY - (pageHeight >= webHeight ? (pageHeight - webHeight) : 0)}`);
+          } else {
+            // case3：网页未发生过滚动时，可直接使用ScrollOffset.y
+            console.info(`get scroll offsetY = ${this.controllerY}`);
           }
         })
         .height(600)
