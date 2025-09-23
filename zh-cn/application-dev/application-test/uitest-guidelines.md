@@ -43,8 +43,8 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 ### UI测试简例
 
 下方示例代码以[单元测试脚本](jsunit-guidelines.md#)为基础，进行UI测试的增量开发，实现的核心步骤为：
-1) 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态.
-2) 调用UI测试框架能力，页面中执行点击操作；
+1) 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态。
+2) 调用UI测试框架能力，页面中执行点击操作。
 3) 通过[添加断言](jsunit-guidelines.md#)，验证操作后当前页面的实际变化是否与预期结果一致。
 
 1. 编写Index.ets页面代码，作为被测示例demo。
@@ -67,9 +67,10 @@ struct Index {
             .onClick((event?: ClickEvent) => {
                 if(event){
                     this.text = "after click";
-                })
-        }
+                }
+            })
         .width('100%')
+        }
     }
     .height('100%')
     }
