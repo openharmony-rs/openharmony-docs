@@ -2928,6 +2928,56 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### isCompatibleDuplicateSupported<sup>21+</sup>
+
+isCompatibleDuplicateSupported(bundleName: string): Promise&lt;boolean&gt;
+
+检查是否要为指定应用创建JPEG格式的临时副本。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| bundleName | string | 是   | 需查询的应用包名。 |
+
+**返回值：**
+
+| 类型                  | 说明                        |
+| --------------------- | --------------------------- |
+| Promise&lt;boolean&gt; | 检查是否要为指定应用创建JPEG格式的临时副本。true表示创建，false表示不创建。 |
+
+**错误码：**
+
+错误码详情请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2.system running error.|
+
+**示例：**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('isCompatibleDuplicateSupportedPromiseDemo')
+    let isSupport: boolean = await phAccessHelper.isCompatibleDuplicateSupported('com.example.helloworld');
+    console.info(`isCompatibleDuplicateSupported: ${isSupport}`);
+  } catch (err) {
+    console.error(`isCompatibleDuplicateSupportedPromiseDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### getPhotoAlbums<sup>20+</sup> 
 
 getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
@@ -4377,6 +4427,58 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('edit data is ' + data);
   } catch (err) {
     console.error(`getEditDataDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### createTemporaryCompatibleDuplicate<sup>21+</sup>
+
+createTemporaryCompatibleDuplicate(): Promise&lt;void&gt;
+
+为不支持HEIF/HEIC图片编码格式的第三方应用创建JPEG格式的兼容副本。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+|Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.        |
+| 202   | Called by non-system application.         |
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being editted.|
+| 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
+
+**示例：**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('createTemporaryCompatibleDuplicatePromiseDemo')
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    await photoAsset.createTemporaryCompatibleDuplicate();
+  } catch (err) {
+    console.error(`createTemporaryCompatibleDuplicatePromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
