@@ -106,7 +106,7 @@ Picker配置选项。
 | gridEndOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图最后一行与组件底部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | pickerIndex<sup>21+</sup>    | number                              | 否   | 通过设置唯一序号来区分不同的pickerComponent，默认值为-1。不设置或设置-1时不做区分。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | 支持在指定pickerIndex的PhotoPickerComponent中回显用户已选择的数据。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标。详见[BadgeType](#badgetype21)<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -197,7 +197,7 @@ setData(dataType: DataType, data: Object): void
 
 addData(dataType: DataType, data: Object): void
 
-应用可通过该接口向picker组件发送增加配置数据，并通过DataType来区分具体发送什么类型的数据，当前仅支持SET_BADGE_CONFIGS。
+应用可通过该接口向picker组件发送增加配置数据，并通过[DataType](#datatype)来区分具体发送什么类型的数据，当前仅支持SET_BADGE_CONFIGS。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
