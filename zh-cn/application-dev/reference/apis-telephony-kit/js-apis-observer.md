@@ -122,6 +122,20 @@ SIM卡状态。
 | [sim.SimState](js-apis-sim.md#simstate) | SIM卡状态。 |
 
 
+## TelCallState
+
+type TelCallState = call.TelCallState
+
+通话状态码。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [call.TelCallState](js-apis-call.md#telcallstate21) | 通话状态码。 |
+
+
+
 ## observer.on('networkStateChange')
 
 on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
