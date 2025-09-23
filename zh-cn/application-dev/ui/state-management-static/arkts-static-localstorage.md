@@ -2,7 +2,7 @@
 
 LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持UIAbility实例内多个页面间状态共享。
 
-本文仅介绍LocalStorage使用场景和相关的装饰器：\@LocalStorageProp和\@LocalStorageLink。
+本文仅介绍LocalStorage使用场景和相关的装饰器：[\@LocalStoragePropRef](#localstoragepropref)和[\@LocalStorageLink](#localstoragelink)。
 
 在阅读本文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
@@ -24,9 +24,9 @@ LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的
 
 LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了两个装饰器：
 
-- [@LocalStoragePropRef](#localstoragepropref)：\@LocalStoragePropRef装饰的变量与LocalStorage中给定属性建立单向同步关系。
+- \@LocalStoragePropRef：\@LocalStoragePropRef装饰的变量与LocalStorage中给定属性建立单向同步关系。
 
-- [@LocalStorageLink](#localstoragelink)：\@LocalStorageLink装饰的变量与LocalStorage中给定属性建立双向同步关系。
+- \@LocalStorageLink：\@LocalStorageLink装饰的变量与LocalStorage中给定属性建立双向同步关系。
 
 在静态上下文中使用时，需导入LocalStorage：
 
@@ -111,7 +111,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
 1. 本地修改发生，该修改会被写回LocalStorage中。
 
-2. LocalStorage中的修改发生后，该修改会被同步到所有绑定LocalStorage对应key的属性上，包括单向（\@LocalStorageProp和通过prop创建的单向绑定变量）、双向（\@LocalStorageLink和通过link创建的双向绑定变量）变量。
+2. LocalStorage中的修改发生后，该修改会被同步到所有绑定LocalStorage对应key的属性上，包括单向（\@LocalStoragePropRef）、双向（\@LocalStorageLink和通过link创建的双向绑定变量）变量。
 
 ### 装饰器使用规则
 
@@ -127,7 +127,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 | 传递/访问规则        | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
 | 从父节点初始化和更新 | 禁止，\@LocalStorageLink不支持从父节点初始化，只能从LocalStorage中key对应的属性初始化，如果没有对应的key，将使用本地默认值初始化。 |
-| 初始化子节点         | 支持，可用于初始化\@State、\@Link、\@Prop、\@Provide。       |
+| 初始化子节点         | 支持，可用于初始化\@State、\@Link、\@PropRef、\@Provide。       |
 | 是否支持组件外访问   | 否。                                                         |
 
 ### 观察变化和行为表现
@@ -148,7 +148,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
 1. 使用\@LocalStorageLink(key)装饰的变量更新时，会同步写回LocalStorage对应的key，还会引起所属的自定义组件的重新渲染。
 
-2. 当LocalStorage中对应key的值发生变化时，所有绑定该key的数据（包括双向\@LocalStorageLink和单向\@LocalStorageProp）都会同步更新。
+2. 当LocalStorage中对应key的值发生变化时，所有绑定该key的数据（包括双向\@LocalStorageLink和单向\@LocalStoragePropRef）都会同步更新。
 
 ## 限制条件
 
@@ -509,7 +509,7 @@ import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
 @Entry({ useSharedStorage: true })
 @Component
 struct Index {
-  // 可以使用@LocalStorageLink/Prop与LocalStorage实例中的变量建立联系
+  // 可以使用@LocalStorageLink/LocalStoragePropRef与LocalStorage实例中的变量建立联系
   @LocalStorageLink('PropA') propA: int = 1;
 
   build() {
