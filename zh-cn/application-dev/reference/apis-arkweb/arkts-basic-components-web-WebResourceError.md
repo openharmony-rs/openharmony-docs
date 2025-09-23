@@ -18,6 +18,10 @@ WebResourceError的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 ## getErrorCode
 
 ArkTS-Dyn: getErrorCode(): number

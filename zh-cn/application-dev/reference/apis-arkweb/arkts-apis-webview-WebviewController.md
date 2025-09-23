@@ -1091,6 +1091,10 @@ clearHistory(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -1101,6 +1105,7 @@ clearHistory(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1126,7 +1131,33 @@ struct WebComponent {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearHistory')
+        .onClick(() => {
+          try {
+            this.controller.clearHistory();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
 ## registerJavaScriptProxy
 
 registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
@@ -2736,6 +2767,10 @@ getUserAgent(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明           |
@@ -2752,6 +2787,7 @@ getUserAgent(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2779,7 +2815,39 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getUserAgent')
+        .onClick(() => {
+          try {
+            let userAgent = this.controller.getUserAgent();
+            console.log("userAgent: " + userAgent);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 支持开发者基于默认的User-Agent去定制User-Agent。
+
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2789,6 +2857,39 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State ua: string = "";
+
+  aboutToAppear(): void {
+    webview.once('webInited', () => {
+      try {
+        // 应用侧用法示例，定制User-Agent。
+        this.ua = this.controller.getUserAgent() + 'xxx';
+        this.controller.setCustomUserAgent(this.ua);
+      } catch (error) {
+        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      }
+    })
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, State } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State ua: string = "";
 
   aboutToAppear(): void {
@@ -4040,6 +4141,10 @@ getBackForwardEntries(): BackForwardList
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                | 说明                        |
@@ -4056,6 +4161,7 @@ getBackForwardEntries(): BackForwardList
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4065,6 +4171,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getBackForwardEntries')
+        .onClick(() => {
+          try {
+            let list = this.controller.getBackForwardEntries()
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -5078,6 +5212,10 @@ getCustomUserAgent(): string
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -5094,6 +5232,7 @@ getCustomUserAgent(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5103,6 +5242,36 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State userAgent: string = '';
+
+  build() {
+    Column() {
+      Button('getCustomUserAgent')
+        .onClick(() => {
+          try {
+            this.userAgent = this.controller.getCustomUserAgent();
+            console.log("userAgent: " + this.userAgent);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button, State } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State userAgent: string = '';
 
   build() {

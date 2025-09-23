@@ -6,8 +6,6 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## onAlert
@@ -484,6 +482,10 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                     | 必填   | 说明            |
@@ -492,6 +494,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -500,6 +503,40 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onErrorReceive((event) => {
+            if (event) {
+              console.log('getErrorInfo:' + event.error.getErrorInfo());
+              console.log('getErrorCode:' + event.error.getErrorCode());
+              console.log('url:' + event.request.getRequestUrl());
+              console.log('isMainFrame:' + event.request.isMainFrame());
+              console.log('isRedirect:' + event.request.isRedirect());
+              console.log('isRequestGesture:' + event.request.isRequestGesture());
+              console.log('getRequestHeader_headerKey:' + event.request.getRequestHeader().toString());
+              let result = event.request.getRequestHeader();
+              console.log('The request header result size is ' + result.length);
+              for (let i of result) {
+                console.log('The request header key is : ' + i.headerKey + ', value is : ' + i.headerValue);
+              }
+            }
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -741,6 +778,10 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名         | 类型   | 必填   | 说明                  |
@@ -749,7 +790,7 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
 **示例：**
 
-ArkTS1.1示例：
+ ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -771,11 +812,11 @@ ArkTS1.1示例：
   }
   ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
   ```ts
   // xxx.ets
-  import webview from '@ohos.web.webview';
-  import { Entry, Column, Component, Web, OnProgressChangeEvent } from '@ohos.arkui.component';
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Column, Component, Web, OnProgressChangeEvent } from '@kit.ArkUI';
 
   @Entry
   @Component
@@ -783,13 +824,13 @@ ArkTS1.2示例：
     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
-      Column(undefined) {
+      Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onProgressChange((event: OnProgressChangeEvent): void => {
-              if (event) {
-                console.log('newProgress:' + event.newProgress);
-              }
-            })
+            if (event) {
+              console.log('newProgress:' + event.newProgress);
+            }
+          })
       }
     }
   }
