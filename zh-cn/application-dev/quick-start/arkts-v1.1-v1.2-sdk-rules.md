@@ -515,3 +515,181 @@ foo(x.b); // x.b为int类型
 ```
 
 
+## 异步生命周期变更
+
+**规则：** `sdk-ability-asynchronous-lifecycle`
+
+**规则解释：**
+
+[onDestroy](../application-models/uiability-lifecycle.md#ondestroy)是UIAbility生命周期回调，当UIAbility被销毁时，系统会触发该回调。
+
+开发者可以在该生命周期中执行资源清理等相关操作，使用同步回调或Promise异步回调。
+
+在ArkTS1.2中，void无法作为联合类型，需要把onDestroy()拆分为两个接口：同步调回onDestroy(): void或异步调回onDestroyAsync(): Promise\<void\>。
+
+**变更原因：**
+
+ArkTS1.2对void类型的语义进行了收紧，限制其使用场景以增强类型安全性。
+
+**适配建议：**
+
+根据原onDestroy实现，将其拆分到对应的onDestroy或onDestroyAsync接口中。
+
+**示例：**
+
+**ArkTS1.1**
+
+```
+import { UIAbility } from '@kit.AbilityKit';
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms)
+  })
+}
+
+export default class MyUIAbility extends UIAbility {
+  async onDestroy(): Promise<void> {
+    console.info('testTag', '%{public}s', 'Ability onDestroy');
+    return sleep(1000);
+  }
+}
+```
+
+**ArkTS1.2**
+
+```
+import { UIAbility } from '@kit.AbilityKit';
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms)
+  })
+}
+
+class MyUIAbility extends UIAbility {
+  onDestroyAsync(): Promise<void> {
+    console.info('testTag', '%{public}s', 'Ability onDestroy');
+    return sleep(1000);
+  }
+}
+```
+
+## 扫描生命周期监听变更
+
+**规则：** `sdk-ability-lifecycle-monitor`
+
+**规则解释：**
+
+在ArkTS1.2中，UIAbility需要用新的接口StaticAbilityLifecycleCallback监听。
+
+**变更原因：**
+
+ArkTS1.2的UIAbility不支持使用[AbilityLifecycleCallback](../reference/apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md)监听UIAbility。
+
+**适配建议：**
+
+在ArkTS1.2中，使用接口StaticAbilityLifecycleCallback监听UIAbility。
+
+**示例：**
+
+**ArkTS1.1**
+
+```
+import { UIAbility, AbilityStage, AbilityLifecycleCallback} from '@kit.AbilityKit';
+
+class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    let AbilityLifecycleCallback: AbilityLifecycleCallback = {
+      onAbilityCreate(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
+      },
+      onWindowStageCreate(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageCreate ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageCreate windowStage: ${windowStage}`);
+      },
+      onWindowStageActive(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageActive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageActive windowStage: ${windowStage}`);
+      },
+      onWindowStageInactive(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageInactive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageInactive windowStage: ${windowStage}`);
+      },
+      onWindowStageDestroy(ability, windowStage) {
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy windowStage: ${windowStage}`);
+      },
+      onAbilityDestroy(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityDestroy ability: ${ability}`);
+      },
+      onAbilityForeground(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityForeground ability: ${ability}`);
+      },
+      onAbilityBackground(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityBackground ability: ${ability}`);
+      },
+      onAbilityContinue(ability) {
+        console.info(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
+      }
+    }
+    // 1.通过context属性获取applicationContext
+    let applicationContext = this.context.getApplicationContext();
+    // 2.通过applicationContext注册监听应用内生命周期
+    let lifecycleId = applicationContext.on('abilityLifecycle', AbilityLifecycleCallback);
+    console.info(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
+  }
+}
+
+```
+
+**ArkTS1.2**
+
+```
+import { UIAbility, AbilityStage, StaticAbilityLifecycleCallback} from '@kit.AbilityKit';
+
+class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    let StaticAbilityLifecycleCallback: StaticAbilityLifecycleCallback = {
+      onAbilityCreate(ability) {
+        console.info(`StaticAbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
+      },
+      onWindowStageCreate(ability, windowStage) {
+        console.info(`StaticAbilityLifecycleCallback onWindowStageCreate ability: ${ability}`);
+        console.info(`StaticAbilityLifecycleCallback onWindowStageCreate windowStage: ${windowStage}`);
+      },
+      onWindowStageActive(ability, windowStage) {
+        console.info(`StaticAbilityLifecycleCallback onWindowStageActive ability: ${ability}`);
+        console.info(`StaticAbilityLifecycleCallback onWindowStageActive windowStage: ${windowStage}`);
+      },
+      onWindowStageInactive(ability, windowStage) {
+        console.info(`StaticAbilityLifecycleCallback onWindowStageInactive ability: ${ability}`);
+        console.info(`StaticAbilityLifecycleCallback onWindowStageInactive windowStage: ${windowStage}`);
+      },
+      onWindowStageDestroy(ability, windowStage) {
+        console.info(`StaticAbilityLifecycleCallback onWindowStageDestroy ability: ${ability}`);
+        console.info(`StaticAbilityLifecycleCallback onWindowStageDestroy windowStage: ${windowStage}`);
+      },
+      onAbilityDestroy(ability) {
+        console.info(`StaticAbilityLifecycleCallback onAbilityDestroy ability: ${ability}`);
+      },
+      onAbilityForeground(ability) {
+        console.info(`StaticAbilityLifecycleCallback onAbilityForeground ability: ${ability}`);
+      },
+      onAbilityBackground(ability) {
+        console.info(`StaticAbilityLifecycleCallback onAbilityBackground ability: ${ability}`);
+      },
+      onAbilityContinue(ability) {
+        console.info(`StaticAbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
+      }
+    }
+    // 1.通过context属性获取applicationContext
+    let applicationContext = this.context.getApplicationContext();
+    // 2.通过applicationContext注册监听应用内生命周期
+    let lifecycleId = applicationContext.on('abilityLifecycle', StaticAbilityLifecycleCallback);
+    console.info(`registerStaticAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
+  }
+}
+```
+
+
