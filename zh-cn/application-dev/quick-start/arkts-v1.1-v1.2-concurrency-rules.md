@@ -80,9 +80,38 @@ ArkTS演进为内存天然共享模型，跨线程数据交互无需再依赖Act
 
 **ArkTS1.1**
 ```typescript
-import { worker } from '@kit.ArkTS';
+// Worker.ets
+import { worker, MessageEvent, ThreadWorkerGlobalScope } from '@kit.ArkTS';
 
-const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets')
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+// 注册onmessage回调，当worker线程收到其宿主线程通过postMessage接口发送的消息时被调用
+workerPort.onmessage = (e: MessageEvents) => {
+  let data: string = e.data;
+  console.info('workerPort onmessage is: ', data);
+}
+
+// 向宿主线程发送消息
+workerPort.postMessage('hello hostThread');
+```
+
+```typescript
+// Index.ets
+import { worker, MessageEvent } from '@kit.ArkTS';
+
+let workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+
+// 注册onmessage回调，当宿主线程接收到其创建的worker通过workerPort.postMessage接口发送的消息时被调用
+workerInstance.onmessage = (e: MessageEvents) => {
+  let data: string = e.data;
+  console.info('workerInstance onmessage is: ', data);
+}
+// 发送消息给worker线程
+workerInstance.postMessage('hello worker!')
+
+// 执行结果为：
+// workerPort onmessage is: hello worker!
+// workerInstance onmessage is： hello hostThread！
 ```
 
 **ArkTS1.2**
