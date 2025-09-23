@@ -162,7 +162,7 @@ console.log("global function output: ", result);
 ```typescript
 // 以 struct 作为参数和返回值
 callback_lib.cbStruct((a: callback_lib.Person) => {
-    let person = new callback_lib.Person(a.name + " Swift", a.age + 18 ); 
+    let person: callback_lib.Person = {name: a.name + " Swift", age: a.age + 18 }; 
     return person;
 });
 // 输出：

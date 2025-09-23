@@ -2,7 +2,7 @@
 
 ## 简介
 
-Taihe 支持 struct 继承 struct，@class struct 继承 struct。本文着重介绍 struct 的 @extend 注解的用法，需要用户对 [struct](./use-taihe-about-struct.md) 有基础的了解。
+Taihe支持struct继承struct，@class struct继承struct。本文着重介绍struct的@extend注解的用法，需要用户对[struct](./use-taihe-about-struct.md)和[class](./use-taihe-about-class.md)有基础的了解。
 
 ## 基本概念
 

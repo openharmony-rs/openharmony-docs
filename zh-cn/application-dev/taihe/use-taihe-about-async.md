@@ -2,11 +2,11 @@
 
 ## 简介
 
-在 Taihe 中使用注解 `@async` 和 `@promise` 生成同步函数的异步版本。
+在Taihe中使用注解`@async`将声明的函数或方法转换为Async版，使用注解`@promise`将声明的函数或方法转换为Promise版。
 
 ## 基本概念
 
-异步操作不阻塞后续代码，而是先执行其他任务，等操作完成后再返回处理这些任务。
+理解以下示例需要对[@static_overload](./use-taihe-about-overload.md)有基础的了解。
 
 **Taihe声明代码**
 

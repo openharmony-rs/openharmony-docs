@@ -10,9 +10,9 @@ Taihe 相关代码示例
 
 ```rust
 union NullableValue {
+    uValue: @undefined unit;
     sValue: String;
     iValue: i32;
-    uValue: @undefined unit;
     nValue: @null unit;
 }
 ```
@@ -20,7 +20,7 @@ union NullableValue {
 以下是对应的 ets 代码
 
 ```typescript
-export type NullableValue = string | int | undefined | null;
+export type NullableValue = undefined | string | int | null;
 ```
 
 ## 使用示例
@@ -29,9 +29,9 @@ export type NullableValue = string | int | undefined | null;
 
 ```rust
 union NullableValue {
+    uValue: @undefined unit;
     sValue: String;
     iValue: i32;
-    uValue: @undefined unit;
     nValue: @null unit;
 }
 
