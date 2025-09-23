@@ -319,7 +319,7 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
@@ -334,11 +334,11 @@ struct Index {
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 改接口仅适用于ArkTs-Sta。
+**ArkTs模式：** 该接口仅适用于ArkTs-Sta。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
@@ -1849,9 +1849,9 @@ ArkTS-Sta: edgeColors(all: number): NodeEdges\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1917,9 +1917,9 @@ ArkTS-Sta: edgeWidths(all: number): NodeEdges\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1985,9 +1985,9 @@ ArkTS-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

@@ -2063,9 +2063,9 @@ ArkTS-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2083,9 +2083,9 @@ ArkTS-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2150,9 +2150,9 @@ ArkTS-Sta: set borderWidth(width: NodeEdges\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2170,9 +2170,9 @@ ArkTS-Sta: get borderWidth(): NodeEdges\<number> | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2232,9 +2232,9 @@ ArkTS-Sta: set borderColor(color: NodeEdges\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2252,9 +2252,9 @@ ArkTS-Sta: get borderColor(): NodeEdges\<number> | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2330,9 +2330,9 @@ ArkTS-Sta: get borderRadius(): BorderRadiuses | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2404,9 +2404,9 @@ ArkTS-Sta: get shapeMask(): ShapeMask | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

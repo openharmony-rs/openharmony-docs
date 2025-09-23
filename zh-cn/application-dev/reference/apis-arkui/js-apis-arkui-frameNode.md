@@ -1047,9 +1047,9 @@ ArkTS-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1073,9 +1073,9 @@ ArkTS-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1099,9 +1099,9 @@ ArkTS-Sta: getUserConfigMargin(): NodeEdges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
