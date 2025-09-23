@@ -84,6 +84,8 @@ import { BuilderParam } from '@ohos.arkui.component';
 
   **ArkTS-ST:**
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
 
   @Component
@@ -184,6 +186,8 @@ import { BuilderParam } from '@ohos.arkui.component';
 
   **ArkTS-ST:**
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
 
   @Component
@@ -228,7 +232,7 @@ import { BuilderParam } from '@ohos.arkui.component';
           customBuilderParam: this.componentBuilder,
           // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
           // this始终指向定义处上下文Parent，即label变量的值为"Parent"。
-          customChangeThisBuilderParam: (): void => {
+          customChangeThisBuilderParam: @Builder(): void => {
             this.componentBuilder()
           }
         })
@@ -309,6 +313,8 @@ struct Parent {
 ```
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Builder, BuilderParam, Text, Color } from "@ohos.arkui.component";
 
 class Tmp {
@@ -436,6 +442,8 @@ struct CustomContainerUser {
 ```
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Builder, BuilderParam, Text, Color, ClickEvent } from "@ohos.arkui.component";
 import { State, Prop } from "@ohos.arkui.stateManagement";
 
@@ -568,7 +576,9 @@ struct ParentPage {
 ```
 **ArkTS-ST:**
 ```ts
-import { Entry, Text, Row, Colum, ComponentV2, Builder, FontWeight, Line, BuilderParam } from "@ohos.arkui.component";
+'use static'
+
+import { Entry, Text, Row, Column, ComponentV2, Builder, Line, BuilderParam } from "@ohos.arkui.component";
 import { Local, Require, Param } from "@ohos.arkui.stateManagement";
 
 @ComponentV2
@@ -585,7 +595,6 @@ struct ChildPage {
     Column() {
       Text(this.message)
         .fontSize(30)
-        .fontWeight(FontWeight.Bold)
       this.customBuilderParam()
     }
   }
@@ -596,9 +605,8 @@ const builder_value: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    Text(`全局 Builder: ${builder_value}`)
+    Text(`Global Builder: ${builder_value}`)
       .fontSize(20)
-      .fontWeight(FontWeight.Bold)
   }
 }
 
@@ -610,9 +618,8 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      Text(`局部 Builder :${this.label}`)
+      Text(`Local Builder :${this.label}`)
         .fontSize(20)
-        .fontWeight(FontWeight.Bold)
     }
   }
 
@@ -666,7 +673,8 @@ function navigationAction(params: navigationParams) {
         .onClick(() => {
           // 通过修改@BuilderParam参数决定是否跳转。
           if (params.boo) {
-            params.pathStack.pushPath({ name: "HelloWorldPage" });
+            let info: NavPathInfo = new NavPathInfo('HelloWorldPage', undefined);
+            params.pathStack.pushPath(info);
           } else {
             console.info('@BuilderParam setting does not jump');
           }
@@ -775,91 +783,17 @@ struct HelloWorldPage {
 ```
 **ArkTS-ST:**
 ```ts
-import { HelloWorldPageBuilder } from './helloworld';
-import { Entry, Component, Column, Builder, BuilderParam, Text, Color, ClickEvent, Navigation, Button } from "@ohos.arkui.component";
+'use static'
 
-class navigationParams {
-  pathStack: NavPathStack = new NavPathStack();
+import { Entry, Component, Column, Builder, BuilderParam, Text, Color, Navigation, NavigationMode, Button, NavPathStack, ButtonType, NavPathInfo, NavDestination } from "@ohos.arkui.component";
+import { State } from "@ohos.arkui.stateManagement";
+
+class NavigationParams {
   boo: boolean = true;
-}
-
-@Builder
-function navigationAction(params: navigationParams) {
-  Column() {
-    Navigation(params.pathStack) {
-      Button('router to page', { stateEffect: true, type: ButtonType.Capsule })
-        .width('80%')
-        .height(40)
-        .margin(20)
-        .onClick(() => {
-          // 通过修改@BuilderParam参数决定是否跳转。
-          if (params.boo) {
-            params.pathStack.pushPath({ name: 'HelloWorldPage' });
-          } else {
-            console.info('@BuilderParam setting does not jump');
-          }
-        })
-    }
-    .navDestination(HelloWorldPageBuilder)
-    .hideTitleBar(true)
-    .height('100%')
-    .width('100%')
+  pathStack: NavPathStack = new NavPathStack();
+  constructor(boo: boolean) {
+    this.boo = boo;
   }
-  .height('25%')
-  .width('100%')
-}
-
-@Entry
-@Component
-struct ParentPage {
-  @State info: navigationParams = new navigationParams();
-
-  build() {
-    Column() {
-      Text('ParentPage')
-      navigationAction({ pathStack: this.info.pathStack, boo: true })
-      ChildPageOne()
-      ChildPage_BuilderParam({ eventBuilder: navigationAction })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@Component
-struct ChildPageOne {
-  @State info: navigationParams = new navigationParams();
-
-  build() {
-    Column() {
-      Text('ChildPage')
-      navigationAction({ pathStack: this.info.pathStack, boo: true })
-    }
-  }
-}
-
-@Component
-struct ChildPage_BuilderParam {
-  @State info: navigationParams = new navigationParams();
-  @BuilderParam eventBuilder: (param: navigationParams) => void = navigationAction;
-
-  build() {
-    Column() {
-      Text('ChildPage_BuilderParam')
-      // 对传递过来的全局@Builder进行参数修改，可以实现禁用点击跳转的功能。
-      this.eventBuilder({ pathStack: this.info.pathStack, boo: false })
-    }
-  }
-}
-```
-
-```ts
-// helloworld.ets
-import { Entry, Component, Column, Builder, Text, Color, ClickEvent, NavDestination, FontWeight, NavPathStack } from "@ohos.arkui.component";
-
-@Builder
-export function HelloWorldPageBuilder() {
-  HelloWorldPage()
 }
 
 @Component
@@ -872,37 +806,94 @@ struct HelloWorldPage {
       Column() {
         Text(this.message)
           .fontSize(20)
-          .fontWeight(FontWeight.Bold)
       }
     }
     .height('100%')
     .width('100%')
   }
 }
-```
-
-```ts
-// router_map.json
-{
-  "routerMap": [
-    {
-      "name": "HelloWorldPage",
-      "buildFunction": "HelloWorldPageBuilder",
-      "pageSourceFile": "src/main/ets/pages/helloworld.ets"
+@Builder
+function PageBuilder(name: string, param: Object|null|undefined) {
+  if (name == "HelloWorldPage") {
+    HelloWorldPage()
+  }
+}
+@Builder
+function navigationAction(params: NavigationParams) {
+  Column() {
+    Navigation(params?.pathStack) {
+      Button('router to page', { stateEffect: true, type: ButtonType.Capsule })
+        .width('80%')
+        .height(40)
+        .margin(20)
+        .onClick((e) => {
+          // 通过修改@BuilderParam参数决定是否跳转。
+          if (params.boo) {
+            try{
+              let info: NavPathInfo = new NavPathInfo('HelloWorldPage',new Object());
+              params?.pathStack?.pushPath(info, true);
+            } catch(e) {
+              console.error(e);
+            }
+          } else {
+            console.info('@BuilderParam setting does not jump');
+          }
+        })
     }
-  ]
+    .navDestination(PageBuilder)
+    .hideTitleBar(true, true)
+    .height('100%')
+    .width('100%')
+  }
+  .height('25%')
+  .width('100%')
+}
+
+@Entry
+@Component
+struct ParentPage {
+  @State info: NavigationParams = new NavigationParams(true);
+
+  build() {
+    Column() {
+      Text('ParentPage')
+      navigationAction(this.info)
+      ChildPageOne()
+      ChildPageBuilderParam({ eventBuilder: navigationAction })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ChildPageOne {
+  @State info: NavigationParams = new NavigationParams(true);
+
+  build() {
+    Column() {
+      Text('ChildPage')
+      navigationAction(this.info)
+    }
+  }
+}
+
+@Component
+struct ChildPageBuilderParam {
+  @State info: NavigationParams = new NavigationParams(false);
+  @BuilderParam eventBuilder: (param: NavigationParams) => void = navigationAction;
+
+  build() {
+    Column() {
+      Text('ChildPageBuilderParam')
+      // 对传递过来的全局@Builder进行参数修改，可以实现禁用点击跳转的功能。
+      this.eventBuilder(this.info)
+    }
+  }
 }
 ```
 
-```ts
-// module.json5
-{
-  "module": {
-    "routerMap": "$profile:router_map",
-    ......
-  }
-}   
-```
+
 **图6** 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
@@ -994,7 +985,9 @@ struct ParentPage {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Builder, BuilderParam, Text, FontWeight, Line } from "@ohos.arkui.component";
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text, Line, Row } from "@ohos.arkui.component";
 
 @Component
 struct ChildPage {
@@ -1020,9 +1013,8 @@ const builder_value: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    Text(`全局 Builder: ${builder_value}`)
+    Text(`Global Builder: ${builder_value}`)
       .fontSize(20)
-      .fontWeight(FontWeight.Bold)
   }
 }
 
@@ -1034,9 +1026,8 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      Text(`局部 Builder :${this.label}`)
+      Text(`Local Builder :${this.label}`)
         .fontSize(20)
-        .fontWeight(FontWeight.Bold)
     }
   }
 
@@ -1049,7 +1040,7 @@ struct ParentPage {
         customBuilderParam: this.componentBuilder,
         // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
         // 因为箭头函数的this指向的是宿主对象，所以label变量的值为"Parent Page"。
-        customChangeThisBuilderParam: (): void => {
+        customChangeThisBuilderParam: @Builder(): void => {
           this.componentBuilder()
         }
       })
@@ -1069,9 +1060,6 @@ struct ParentPage {
   }
 }
 ```
-**图8** 示例效果图
-
-![builderparam-demo5](figures/builderparam-demo5-2.png)
 
 ### 在@ComponentV2装饰的自定义组件中使用@BuilderParam
 
@@ -1152,13 +1140,15 @@ struct ParentPage {
   }
 }
 ```
-**图9** 示例效果图
+**图8** 示例效果图
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Text, Row, Column, ComponentV2, Builder, FontWeight, Line, BuilderParam } from "@ohos.arkui.component";
+'use static'
+
+import { Entry, Text, Row, Column, ComponentV2, Builder, Line, BuilderParam } from "@ohos.arkui.component";
 import { Local, Param } from "@ohos.arkui.stateManagement";
 
 @ComponentV2
@@ -1183,9 +1173,8 @@ const builder_value: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    Text(`全局 Builder: ${builder_value}`)
+    Text(`Global Builder: ${builder_value}`)
       .fontSize(20)
-      .fontWeight(FontWeight.Bold)
   }
 }
 
@@ -1197,9 +1186,8 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      Text(`局部 Builder :${this.label}`)
+      Text(`Local Builder :${this.label}`)
         .fontSize(20)
-        .fontWeight(FontWeight.Bold)
     }
   }
 
@@ -1370,6 +1358,11 @@ struct ChildPage {
 ```
 **ArkTS-ST:**
 ```ts
+'use static'
+
+import { Entry, Component, Column, Builder, Text, BuilderParam } from "@ohos.arkui.component";
+import { Require } from "@ohos.arkui.stateManagement";
+
 @Builder
 function globalBuilder() {
   Text('Hello World')
@@ -1430,6 +1423,11 @@ struct ChildPage {
 ```
 **ArkTS-ST:**
 ```ts
+'use static'
+
+import { Entry, Component, Column, Builder, Text, BuilderParam } from "@ohos.arkui.component";
+import { Require } from "@ohos.arkui.stateManagement";
+
 @Builder
 function globalBuilder() {
   Text('Hello World')
@@ -1495,7 +1493,10 @@ struct ChildPage {
 ```
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Builder, BuilderParam } from "@ohos.arkui.component";
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
+import { State } from "@ohos.arkui.stateManagement";
 
 @Builder
 function globalBuilder() {
@@ -1557,7 +1558,9 @@ struct ChildPage {
 ```
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Builder, BuilderParam } from "@ohos.arkui.component";
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text } from "@ohos.arkui.component";
 
 @Builder function globalBuilder() {
   Text('Hello World')
