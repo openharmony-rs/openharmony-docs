@@ -1,27 +1,25 @@
-# 使用 Taihe 进行 namespace 相关开发
+# 使用Taihe进行namespace相关开发
 
 ## 简介
 
-命名空间（namespace）可以提供独立作用域，避免不同模块同名标识符的命名冲突。
-
-在 Taihe 中，使用注解 `@!namespace` 可以为 Taihe 声明文件生成的 ets 代码添加一个命名空间。
+ArkTS中以模块和命名空间来组织代码。模块用于区分不同的功能单元，而命名空间则用于在模块内对代码进行分组，避免命名冲突。Taihe通过`@!namespace`注解来支持将一个Taihe IDL文件的内容映射到ArkTS侧的指定模块和命名空间中。
 
 ## 基本概念
 
-命名空间注解的语法为 `@!namespace(<module_name>, <namespace_name>)`，表示该文件内容属于 `<module_name>` 模块的 `<namespace_name>` 命名空间。注解用于 Taihe 文件，一个 Taihe 文件只能使用一个 `@!namespace`，一个 module 里有多个 namespace 的情况下需要将每个 namespace 写到单独的 Taihe 文件中。
+命名空间注解的语法为`@!namespace(<module_name>, <namespace_name>)`，这个注解放置放在文件顶层，作用于整个Taihe IDL文件。表示该文件内容在ArkTS侧对应于`<module_name>`模块的`<namespace_name>`命名空间。例如，`@!namespace("@ohos.multimedia.image", "image")`表示该文件内容在ArkTS侧对应于`@ohos.multimedia.image`模块内的`image`命名空间。
 
-推荐将 Taihe 文件命名为 <module_name>.<namespace_name>.taihe。
+文件的第二个参数`<namespace_name>`可以有多个层级，例如`@!namespace("module1", "foo.bar")`表示该文件内容在ArkTS侧对应于`module1`模块内的`foo.bar`命名空间。另外该参数也可以省略，表示该文件内容在ArkTS侧对应于`<module_name>`模块的顶层命名空间。
 
-特殊用法：
+一个Taihe IDL文件最多只能有一个`@!namespace`注解。在不使用该注解时，会默认使用当前Taihe IDL文件对应的[包名](./taihe-idl-reference.md#定义包)作为ArkTS侧的模块名，且对应于该模块的顶层命名空间。
 
-可以使用 `@!namespace(<module_name>)`，生成的 ets 文件的文件名将更改为 `<module_name>`。
+推荐将Taihe文件命名为`<module_name>.<namespace_name>.ohidl`。
 
-**`module1.taihe`**
+**`module1.ohidl`**
 ```rust
 function module1Run(): void;
 ```
 
-**`module1.foo.taihe`**
+**`module1.foo.ohidl`**
 ```rust
 @!namespace("module1", "foo")
 
@@ -47,11 +45,11 @@ export namespace foo {
     }
 }
 ```
-可以看到 `module1.taihe` 和 `module1.foo.taihe` 的内容都生成在 `module1.ets` 文件中。
+可以看到`module1.ohidl`和`module1.foo.ohidl`的内容都生成在`module1.ets`文件中。
 
-假如只需要一个 `<module_name>.<namespace_name>.taihe` 的文件，无需额外创建一个空内容的 `<module_name>.taihe` 文件。
+假如只需要一个`<module_name>.<namespace_name>.ohidl`的文件，无需额外创建一个空内容的`<module_name>.ohidl`文件。
 
-**`module2.bar.taihe`**
+**`module2.bar.ohidl`**
 ```rust
 @!namespace("module2", "bar")
 
@@ -75,19 +73,19 @@ export namespace bar {
 
 ### Taihe声明
 
-**`module1.taihe`**
+**`module1.ohidl`**
 ```rust
 function module1Run(): void;
 ```
 
-**`module1.foo.taihe`**
+**`module1.foo.ohidl`**
 ```rust
 @!namespace("module1", "foo")
 
 function fooFunc(): void;
 ```
 
-**`module2.bar.taihe`**
+**`module2.bar.ohidl`**
 ```rust
 @!namespace("module2", "bar")
 
@@ -96,21 +94,21 @@ function barFunc(): void;
 
 ### C++实现
 
-**`module1.taihe 的 C++ 实现`**
+**`module1.ohidl的C++实现`**
 ```cpp
 void module1Run() {
     std::cout << "Module: module1" << std::endl;
 }
 ```
 
-**`module1.foo.taihe 的 C++ 实现`**
+**`module1.foo.ohidl的C++实现`**
 ```cpp
 void fooFunc() {
     std::cout << "namespace: module1.foo, func: foo" << std::endl;
 }
 ```
 
-**`module2.bar.taihe 的 C++ 实现`**
+**`module2.bar.ohidl的C++实现`**
 ```cpp
 void barFunc() {
     std::cout << "namespace: module2.bar, func: bar" << std::endl;
