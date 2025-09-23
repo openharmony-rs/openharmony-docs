@@ -4,7 +4,6 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 ## 导入模块
 
@@ -20,7 +19,7 @@ getAudioManager(): AudioManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 20
 
@@ -31,6 +30,7 @@ getAudioManager(): AudioManager
 | [AudioManager](arkts-apis-audio-AudioManager.md) | 音频管理器对象。 |
 
 **示例：**
+
 ```ts
 import { audio } from '@kit.AudioKit';
 
@@ -45,7 +45,7 @@ createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback\<Audi
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -96,7 +96,7 @@ createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -174,7 +174,7 @@ let audioRenderer: audio.AudioRenderer;
 audio.createAudioRenderer(audioRendererOptions).then((data) => {
   audioRenderer = data;
   console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-}).catch((err: Error) => {
+}).catch(async(err: BusinessError) => {
   console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
 });
 ```
@@ -187,7 +187,7 @@ createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<Audio
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -242,7 +242,7 @@ createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -324,7 +324,7 @@ let audioCapturer: audio.AudioCapturer;
 audio.createAudioCapturer(audioCapturerOptions).then((data) => {
   audioCapturer = data;
   console.info('AudioCapturer Created : SUCCESS');
-}).catch((err: Error) => {
+}).catch(async(err: BusinessError) => {
   console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
 ```

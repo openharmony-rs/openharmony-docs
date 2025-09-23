@@ -1,11 +1,9 @@
 # Interface (AudioStreamManager)
 
 > **说明：**
->
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 管理音频流。
 
@@ -25,7 +23,7 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeI
 
 **系统能力**: SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -110,7 +108,7 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -181,7 +179,7 @@ async function getCurrentAudioRendererInfoArray(){
         }
       }
     }
-  }).catch((err: Error) => {
+  }).catch(async (err: BusinessError) => {
     console.error(`getCurrentAudioRendererInfoArray :ERROR: ${err}`);
   });
 }
@@ -195,7 +193,7 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -206,8 +204,6 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 | [AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)          | 返回当前音频渲染器信息。      |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -240,38 +236,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray = audioStreamManager.getCurrentAudioRendererInfoArraySync();
-  console.info(`getCurrentAudioRendererInfoArraySync success.`);
-  if (audioRendererChangeInfoArray != null) {
-    for (let i = 0; i < audioRendererChangeInfoArray.length; i++) {
-      let AudioRendererChangeInfo: audio.AudioRendererChangeInfo = audioRendererChangeInfoArray[i];
-      console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
-      console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
-      console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);
-      for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
-        console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
-        console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
-        console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
-        console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
-        console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
-        console.info(`SampleRate: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
-        console.info(`ChannelCount: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
-        console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks[0]}`);
-      }
-    }
-  }
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getCurrentAudioRendererInfoArraySync :ERROR: ${error}`);
-}
-```
-
 ## getCurrentAudioCapturerInfoArray<sup>9+</sup>
 
 getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeInfoArray&gt;): void
@@ -280,7 +244,7 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -362,7 +326,7 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -430,7 +394,7 @@ async function getCurrentAudioCapturerInfoArray(){
         }
       }
     }
-  }).catch((err: Error) => {
+  }).catch(async (err: BusinessError) => {
     console.error(`getCurrentAudioCapturerInfoArray :ERROR: ${err}`);
   });
 }
@@ -444,7 +408,7 @@ getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -491,11 +455,13 @@ on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArr
 
 监听音频渲染器更改事件（当音频播放流状态变化或设备变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioRendererChange](#onAudioRendererChange22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -514,8 +480,6 @@ on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArr
 | 6800101 | Parameter verification failed. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
@@ -540,14 +504,43 @@ audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: aud
 });
 ```
 
-ArkTS-Sta示例：
+## onAudioRendererChange<sup>22+</sup>
+
+onAudioRendererChange(callback: Callback&lt;AudioRendererChangeInfoArray&gt;): void
+
+监听音频渲染器更改事件（当音频播放流状态变化或设备变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioRendererChange')](#onaudioRendererChange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名      | 类型        | 必填      | 说明                                                                     |
+| -------- | ---------- | --------- | ------------------------------------------------------------------------ |
+| callback | Callback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | 是  |  回调函数，返回当前音频渲染器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
 
 ```ts
-audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+audioStreamManager.onAudioRendererChange((audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
   for (let i = 0; i < audioRendererChangeInfoArray.length; i++) {
     let audioRendererChangeInfo: audio.AudioRendererChangeInfo = audioRendererChangeInfoArray[i];
     console.info(`## RendererChange on is called for ${i} ##`);
     console.info(`StreamId for ${i} is: ${audioRendererChangeInfo.streamId}`);
+    console.info(`Content ${i} is: ${audioRendererChangeInfo.rendererInfo.content}`);
     console.info(`Stream ${i} is: ${audioRendererChangeInfo.rendererInfo.usage}`);
     console.info(`Flag ${i} is: ${audioRendererChangeInfo.rendererInfo.rendererFlags}`);
     for (let j = 0;j < audioRendererChangeInfo.deviceDescriptors.length; j++) {
@@ -570,11 +563,13 @@ off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoA
 
 取消监听音频渲染器更改事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioRendererChange](#offAudioRendererChange22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -592,8 +587,6 @@ off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoA
 | 6800101 | Parameter verification failed. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 // 取消该事件的所有监听。
@@ -626,11 +619,39 @@ audioStreamManager.on('audioRendererChange', audioRendererChangeCallback);
 audioStreamManager.off('audioRendererChange', audioRendererChangeCallback);
 ```
 
-ArkTS-Sta示例：
+## offAudioRendererChange<sup>22+</sup>
+
+offAudioRendererChange(callback?: Callback&lt;AudioRendererChangeInfoArray&gt;): void
+
+取消监听音频渲染器更改事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioRendererChange')](#offaudioRendererChange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名     | 类型     | 必填 | 说明              |
+| -------- | ------- |----| ---------------- |
+| callback | Callback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | 否  |  回调函数，返回当前音频渲染器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息                     |
+| ------- |--------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
 
 ```ts
 // 取消该事件的所有监听。
-audioStreamManager.off('audioRendererChange');
+audioStreamManager.offAudioRendererChange();
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
@@ -638,6 +659,7 @@ let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRend
     let audioRendererChangeInfo: audio.AudioRendererChangeInfo = audioRendererChangeInfoArray[i];
     console.info(`## RendererChange on is called for ${i} ##`);
     console.info(`StreamId for ${i} is: ${audioRendererChangeInfo.streamId}`);
+    console.info(`Content ${i} is: ${audioRendererChangeInfo.rendererInfo.content}`);
     console.info(`Stream ${i} is: ${audioRendererChangeInfo.rendererInfo.usage}`);
     console.info(`Flag ${i} is: ${audioRendererChangeInfo.rendererInfo.rendererFlags}`);
     for (let j = 0;j < audioRendererChangeInfo.deviceDescriptors.length; j++) {
@@ -653,9 +675,9 @@ let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRend
   }
 };
 
-audioStreamManager.on('audioRendererChange', audioRendererChangeCallback);
+audioStreamManager.onAudioRendererChange(audioRendererChangeCallback);
 
-audioStreamManager.off('audioRendererChange', audioRendererChangeCallback);
+audioStreamManager.offAudioRendererChange(audioRendererChangeCallback);
 ```
 
 ## on('audioCapturerChange')<sup>9+</sup>
@@ -664,11 +686,13 @@ on(type: 'audioCapturerChange', callback: Callback&lt;AudioCapturerChangeInfoArr
 
 监听音频采集器更改事件（当音频录制流状态变化或设备变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioCapturerChange](#onAudioCapturerChange22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -709,17 +733,70 @@ audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray: audi
 });
 ```
 
+## onAudioCapturerChange<sup>22+</sup>
+
+onAudioCapturerChange(callback: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
+
+监听音频采集器更改事件（当音频录制流状态变化或设备变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioCapturerChange')](#onaudioCapturerChange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名     | 类型     | 必填      | 说明                                                                                          |
+| -------- | ------- | --------- | ---------------------------------------------------------------------- |
+| callback | Callback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | 是     | 回调函数，返回当前音频采集器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioStreamManager.onAudioCapturerChange((AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
+  for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
+    console.info(`## CapChange on is called for element ${i} ##`);
+    console.info(`StreamId for ${i} is: ${AudioCapturerChangeInfoArray[i].streamId}`);
+    console.info(`Source for ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.source}`);
+    console.info(`Flag  ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+    for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
+      console.info(`Id: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+      console.info(`Type: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+      console.info(`Role: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+      console.info(`Name: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+      console.info(`Address: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+      console.info(`SampleRate: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+      console.info(`ChannelCount: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
+      console.info(`ChannelMask: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks[0]}`);
+    }
+  }
+});
+```
+
 ## off('audioCapturerChange')<sup>9+</sup>
 
 off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
 
 取消监听音频采集器更改事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioCapturerChange](#offAudioCapturerChange22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -768,15 +845,79 @@ audioStreamManager.on('audioCapturerChange', audioCapturerChangeCallback);
 audioStreamManager.off('audioCapturerChange', audioCapturerChangeCallback);
 ```
 
-## isActive<sup>9+</sup>
+## offAudioCapturerChange<sup>22+</sup>
+
+offAudioCapturerChange(callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
+
+取消监听音频采集器更改事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioCapturerChange')](#offaudioCapturerChange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名       | 类型     | 必填 | 说明                                                          |
+| -------- | -------- | --- | ------------------------------------------------------------- |
+| callback | Callback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | 否 | 回调函数，返回当前音频采集器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioStreamManager.offAudioCapturerChange();
+// 取消该事件的所有监听。
+audioStreamManager.offAudioCapturerChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioCapturerChangeCallback = (AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
+  for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
+    console.info(`## CapChange on is called for element ${i} ##`);
+    console.info(`StreamId for ${i} is: ${AudioCapturerChangeInfoArray[i].streamId}`);
+    console.info(`Source for ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.source}`);
+    console.info(`Flag  ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+    for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
+      console.info(`Id: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+      console.info(`Type: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+      console.info(`Role: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+      console.info(`Name: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+      console.info(`Address: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+      console.info(`SampleRate: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+      console.info(`ChannelCount: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
+      console.info(`ChannelMask: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks[0]}`);
+    }
+  }
+};
+
+audioStreamManager.onAudioCapturerChange(audioCapturerChangeCallback);
+
+audioStreamManager.offAudioCapturerChange(audioCapturerChangeCallback);
+```
+
+## isActive<sup>(deprecated)</sup>
 
 isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): void
 
 获取指定音频流活跃状态。使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -817,15 +958,19 @@ if (err) {
 });
 ```
 
-## isActive<sup>9+</sup>
+## isActive<sup>(deprecated)</sup>
 
 isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
 获取指定音频流是否为活跃状态。使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -849,15 +994,19 @@ audioStreamManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) =
 });
 ```
 
-## isActiveSync<sup>10+</sup>
+## isActiveSync<sup>(deprecated)</sup>
 
 isActiveSync(volumeType: AudioVolumeType): boolean
 
 获取指定音频流是否为活跃状态。同步返回结果。
 
+> **说明：**
+>
+> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1009,10 +1158,12 @@ audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC)
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC).then((audioEffectInfoArray: audio.AudioEffectInfoArray) => {
   console.info('getAudioEffectInfoArray ######### Get Promise is called ##########');
   console.info(`The effect modes are: ${audioEffectInfoArray}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`getAudioEffectInfoArray :ERROR: ${err}`);
 });
 ```
@@ -1189,6 +1340,7 @@ isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean
 | 6800101 | Parameter verification failed.              |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

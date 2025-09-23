@@ -8,7 +8,6 @@ ringtonePlayer需要和[@ohos.multimedia.systemSoundManager](js-apis-systemSound
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 本模块接口为系统接口。
 
 ## 导入模块
@@ -17,7 +16,7 @@ ringtonePlayer需要和[@ohos.multimedia.systemSoundManager](js-apis-systemSound
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
-## RingtoneOptions
+## RingtoneOptions<sup>10+</sup>
 
 铃声参数选项。
 
@@ -34,7 +33,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | volume    | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 指定的相对音量大小，取值范围为[0.00, 1.00]，1表示最大音量，即100%。 |
 | loop      | boolean        | 是   | 是否开启循环播放，true表示开启循环播放，false表示不开启循环播放。 |
 
-## RingtonePlayer
+## RingtonePlayer<sup>10+</sup>
 
 系统铃声播放器，提供系统铃声的参数设置、参数获取、播放、停止等功能。在调用RingtonePlayer的接口前，需要先通过[getRingtonePlayer](./js-apis-systemSoundManager-sys.md#getringtoneplayer11)创建实例。
 
@@ -59,7 +58,7 @@ import { media } from '@kit.MediaKit';
 let state: media.AVPlayerState = systemRingtonePlayer.state;
 ```
 
-### getTitle
+### getTitle<sup>10+</sup>
 
 getTitle(callback: AsyncCallback&lt;string&gt;): void
 
@@ -109,7 +108,7 @@ systemRingtonePlayer.getTitle((err: BusinessError<void> | null, value: string | 
 });
 ```
 
-### getTitle
+### getTitle<sup>10+</sup>
 
 getTitle(): Promise&lt;string&gt;
 
@@ -148,12 +147,12 @@ ArkTS-Sta示例：
 ```ts
 systemRingtonePlayer.getTitle().then((value: string) => {
   console.info(`Promise returned to indicate that the value of the system ringtone title is obtained ${value}.`);
-}).catch ((err: Error) => {
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to get the system ringtone title ${err}`);
 });
 ```
 
-### getAudioRendererInfo
+### getAudioRendererInfo<sup>10+</sup>
 
 getAudioRendererInfo(callback: AsyncCallback&lt;audio.AudioRendererInfo&gt;): void
 
@@ -211,7 +210,7 @@ systemRingtonePlayer.getAudioRendererInfo((err: BusinessError<void> | null, valu
 });
 ```
 
-### getAudioRendererInfo
+### getAudioRendererInfo<sup>10+</sup>
 
 getAudioRendererInfo(): Promise&lt;audio.AudioRendererInfo&gt;
 
@@ -259,12 +258,12 @@ let audioRendererInfo: audio.AudioRendererInfo | undefined = undefined;
 systemRingtonePlayer.getAudioRendererInfo().then((value: audio.AudioRendererInfo) => {
   console.info(`Promise returned to indicate that the value of the ringtone AudioRendererInfo is obtained ${value}.`);
   audioRendererInfo = value;
-}).catch ((err: Error) => {
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to get the ringtone AudioRendererInfo ${err}`);
 });
 ```
 
-### configure
+### configure<sup>10+</sup>
 
 configure(options: RingtoneOptions, callback: AsyncCallback&lt;void&gt;): void
 
@@ -324,7 +323,7 @@ systemRingtonePlayer.configure(ringtoneOptions, (err: BusinessError<void> | null
 });
 ```
 
-### configure
+### configure<sup>10+</sup>
 
 configure(options: RingtoneOptions): Promise&lt;void&gt;
 
@@ -380,12 +379,12 @@ let ringtoneOptions: RingtoneOptions = {volume: 0.5, loop: true};
 
 systemRingtonePlayer.configure(ringtoneOptions).then(() => {
   console.info(`Promise returned to indicate a successful setting of ringtone options.`);
-}).catch ((err: Error) => {
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to configure ringtone options. ${err}`);
 });
 ```
 
-### start
+### start<sup>10+</sup>
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
@@ -435,7 +434,7 @@ systemRingtonePlayer.start((err: BusinessError<void> | null) => {
 });
 ```
 
-### start
+### start<sup>10+</sup>
 
 start(): Promise&lt;void&gt;
 
@@ -474,12 +473,12 @@ ArkTS-Sta示例：
 ```ts
 systemRingtonePlayer.start().then(() => {
   console.info(`Promise returned to indicate a successful starting of ringtone.`);
-}).catch ((err: Error) => {
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to start playing ringtone. ${err}`);
 });
 ```
 
-### stop
+### stop<sup>10+</sup>
 
 stop(callback: AsyncCallback&lt;void&gt;): void
 
@@ -529,7 +528,7 @@ systemRingtonePlayer.stop((err: BusinessError<void> | null) => {
 });
 ```
 
-### stop
+### stop<sup>10+</sup>
 
 stop(): Promise&lt;void&gt;
 
@@ -568,12 +567,12 @@ ArkTS-Sta示例：
 ```ts
 systemRingtonePlayer.stop().then(() => {
   console.info(`Promise returned to indicate a successful stopping of ringtone.`);
-}).catch ((err: Error) => {
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to stop playing ringtone. ${err}`);
 });
 ```
 
-### release
+### release<sup>10+</sup>
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
@@ -623,7 +622,7 @@ systemRingtonePlayer.release((err: BusinessError<void> | null) => {
 });
 ```
 
-### release
+### release<sup>10+</sup>
 
 release(): Promise&lt;void&gt;
 
@@ -662,24 +661,26 @@ ArkTS-Sta示例：
 ```ts
 systemRingtonePlayer.release().then(() => {
   console.info(`Promise returned to indicate a successful releasing of ringtone player.`);
-}).catch ((err: Error) => {
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to release ringtone player. ${err}`);
 });
 ```
 
-### on('audioInterrupt')
+### on('audioInterrupt')<sup>10+</sup>
 
 on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;): void
 
 监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt](#onAudioInterrupt22)。
 
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -698,8 +699,6 @@ on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;): void
 | 6800101 | Parameter verification failed. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -749,7 +748,38 @@ systemRingtonePlayer.on('audioInterrupt', async(interruptEvent: audio.InterruptE
 });
 ```
 
-ArkTS-Sta示例：
+### onAudioInterrupt<sup>22+</sup>
+
+onAudioInterrupt(callback: Callback&lt;audio.InterruptEvent&gt;): void
+
+监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioInterrupt')](#onaudioInterrupt10)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                                       |
+| -------- | ----------------------- | ---- | -------------------------------------------------------------------------- |
+| callback | Callback&lt;[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)&gt; | 是   | 回调函数，返回中断事件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system application. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -757,7 +787,7 @@ import { audio } from '@kit.AudioKit';
 let isPlaying: boolean; // 标识符，表示是否正在渲染。
 let isDucked: boolean; // 标识符，表示是否被降低音量。
 
-systemRingtonePlayer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
+systemRingtonePlayer.onAudioInterrupt((interruptEvent: audio.InterruptEvent) => {
   if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
     // 由系统进行操作，强制打断音频渲染，应用需更新自身状态及显示内容等。
     switch (interruptEvent.hintType) {
@@ -799,19 +829,21 @@ systemRingtonePlayer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent)
 });
 ```
 
-### off('audioInterrupt') <sup>10+</sup>
+### off('audioInterrupt')<sup>10+<sup>
 
 off(type: 'audioInterrupt'): void
 
 取消监听音频中断事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offAudioInterrupt22)。
 
 **系统接口：** 该接口为系统接口
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -832,4 +864,34 @@ off(type: 'audioInterrupt'): void
 
 ```ts
 systemRingtonePlayer.off('audioInterrupt');
+```
+
+### offAudioInterrupt<sup>22+</sup>
+
+offAudioInterrupt(): void
+
+取消监听音频中断事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioInterrupt')](#offaudioInterrupt10)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system application. |
+
+**示例：**
+
+```ts
+systemRingtonePlayer.offAudioInterrupt();
 ```

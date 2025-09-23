@@ -1,11 +1,9 @@
 # Interface (AudioSessionManager)
 
 > **说明：**
->
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 音频会话管理。
 
@@ -78,7 +76,7 @@ let strategy: audio.AudioSessionStrategy = {
 
 audioSessionManager.activateAudioSession(strategy).then(() => {
   console.info('activateAudioSession SUCCESS');
-}).catch((err: Error) => {
+}).catch(async(err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -128,7 +126,7 @@ ArkTS-Sta示例：
 ```ts
 audioSessionManager.deactivateAudioSession().then(() => {
   console.info('deactivateAudioSession SUCCESS');
-}).catch((err: Error) => {
+}).catch(async(err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -163,11 +161,13 @@ on(type: 'audioSessionDeactivated', callback: Callback\<AudioSessionDeactivatedE
 
 监听音频会话停用事件（当音频会话停用时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioSessionDeactivated](#onAudioSessionDeactivated22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -193,17 +193,55 @@ audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent:
 });
 ```
 
+## onAudioSessionDeactivated<sup>22+</sup>
+
+onAudioSessionDeactivated(callback: Callback\<AudioSessionDeactivatedEvent>): void
+
+监听音频会话停用事件（当音频会话停用时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioSessionDeactivated')](#onaudioSessionDeactivated12)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                                        | 必填 | 说明                                                         |
+| -------- |---------------------------------------------------------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | 是   | 回调函数，返回音频会话停用原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioSessionManager.onAudioSessionDeactivated((audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+});
+```
+
 ## off('audioSessionDeactivated')<sup>12+</sup>
 
 off(type: 'audioSessionDeactivated', callback?: Callback\<AudioSessionDeactivatedEvent>): void
 
 取消监听音频会话停用事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioSessionDeactivated](#offAudioSessionDeactivated22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -235,4 +273,48 @@ let audioSessionDeactivatedCallback = (audioSessionDeactivatedEvent: audio.Audio
 audioSessionManager.on('audioSessionDeactivated', audioSessionDeactivatedCallback);
 
 audioSessionManager.off('audioSessionDeactivated', audioSessionDeactivatedCallback);
+```
+
+## offAudioSessionDeactivated<sup>22+</sup>
+
+offAudioSessionDeactivated(callback?: Callback\<AudioSessionDeactivatedEvent>): void
+
+取消监听音频会话停用事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioSessionDeactivated')](#offaudioSessionDeactivated12)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback |Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | 否   | 回调函数，返回音频会话停用原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSessionManager.offAudioSessionDeactivated();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioSessionDeactivatedCallback = (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+};
+
+audioSessionManager.onAudioSessionDeactivated(audioSessionDeactivatedCallback);
+
+audioSessionManager.offAudioSessionDeactivated(audioSessionDeactivatedCallback);
 ```

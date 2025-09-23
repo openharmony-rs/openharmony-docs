@@ -1,11 +1,9 @@
 # Interface (AudioVolumeManager)
 
 > **说明：**
->
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 音量管理。
 
@@ -27,7 +25,7 @@ ArkTS-Sta: getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolu
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -82,7 +80,7 @@ ArkTS-Sta: getVolumeGroupManager(groupId: int\): Promise<AudioVolumeGroupManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -138,7 +136,7 @@ ArkTS-Sta: getVolumeGroupManagerSync(groupId: int\): AudioVolumeGroupManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -264,17 +262,21 @@ audioVolumeManager.setAppVolumePercentage(20).then(() => {
 });
 ```
 
-## on('volumeChange')<sup>9+</sup>
+## on('volumeChange')<sup>(deprecated)</sup>
 
 on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 
 监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -302,17 +304,21 @@ audioVolumeManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
 });
 ```
 
-## off('volumeChange')<sup>12+</sup>
+## off('volumeChange')<sup>(deprecated)</sup>
 
 off(type: 'volumeChange', callback?: Callback\<VolumeEvent>): void
 
 取消监听系统音量变化事件。使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 12开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -354,11 +360,13 @@ on(type: 'appVolumeChange', callback: Callback\<VolumeEvent>): void
 
 监听当前应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAppVolumeChange](#onAppVolumeChange22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 19
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -385,17 +393,57 @@ audioVolumeManager.on('appVolumeChange', (volumeEvent: audio.VolumeEvent) => {
 });
 ```
 
+## onAppVolumeChange<sup>22+</sup>
+
+onAppVolumeChange(callback: Callback\<VolumeEvent>): void
+
+监听当前应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('appVolumeChange')](#onappVolumeChange19)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.onAppVolumeChange((volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
 ## off('appVolumeChange')<sup>19+</sup>
 
 off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 
 取消监听当前应用应用级音量变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAppVolumeChange](#offAppVolumeChange22)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 19
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -428,4 +476,50 @@ let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
 audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
 
 audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
+```
+
+## offAppVolumeChange<sup>22+</sup>
+
+offAppVolumeChange(callback?: Callback\<VolumeEvent>): void
+
+取消监听当前应用应用级音量变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('appVolumeChange')](#offappVolumeChange19)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.offAppVolumeChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.onAppVolumeChange(appVolumeChangeCallback);
+
+audioVolumeManager.offAppVolumeChange(appVolumeChangeCallback);
 ```
