@@ -34,15 +34,15 @@
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
       - [ArkTS-Sta使用ArkTS-Dyn自定义组件](arkts-sta-interop-dyn-component.md)
       - [ArkTS-Sta使用ArkTS-Dyn全局自定义构建函数](arkts-sta-interop-dyn-builder.md)
-      - [ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象](arkts-sta-interop-dyn-WrappedBuilder.md)
-      - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-BuilderParam.md)
+      - [ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象](arkts-sta-interop-dyn-wrappedbuilder.md)
+      - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-builderparam.md)
       - [使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
     - [状态管理V1互操作](arkts-sta-interop-dyn-statemanager-v1.md)
       - [ArkTS-Sta使用ArkTS-Dyn状态管理互操作](arkts-sta-interop-dyn-statemanagement.md)
       - [ArkTS-Sta与ArkTS-Dyn应用间状态存储互操作](arkts-sta-interop-dyn-storages.md)
     - 状态管理V2互操作
     - 状态管理V1V2混用互操作
-    - [UI数据互操作](arkts-v1.2-interop-v1.1-ui-data.md)
+    - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](../ui/state-management/arkts-basic-syntax-overview.md)
     - [声明式UI描述](../ui/state-management/arkts-declarative-ui-description.md)
