@@ -152,7 +152,7 @@
           - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
           - [\@Computed装饰器：计算属性](state-management-static/arkts-static-new-computed.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-v2-->
-          - AppStorageV2: 应用全局UI状态存储
+          - [AppStorageV2: 应用全局的UI状态存储](./state-management-static/arkts-static-appstoragev2.md)
           - PersistenceV2: 持久化存储UI状态
         - 辅助接口<!--arkts-new-other-state-mgmt-->
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)

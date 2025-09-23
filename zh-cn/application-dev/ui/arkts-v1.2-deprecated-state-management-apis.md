@@ -28,7 +28,7 @@ let res: boolean = AppStorage.clear();
 
 ArkTS-Dyn接口声明：[static Delete(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#deletedeprecated)
 
-替代的ArkTS-Sta接口声明：[static delete(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#delete10)
+替代的ArkTS-Sta接口声明：[static delete(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#delete)
 
 
 
@@ -345,7 +345,7 @@ ArkTS-Dyn接口声明：[static EnvProp\<S\>(key: string, value: S): boolean](..
 ArkTS-Dyn
 
 ```ts
-Environment.EnvProp('accessibilityEnabled', 'default');
+Environment.EnvProp<string>('accessibilityEnabled', 'default');
 ```
 
 ArkTS-Sta
@@ -384,9 +384,9 @@ Environment.envProps([
 
 ### Keys
 
-ArkTS-Dyn接口声明：[static Keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated-2)
+ArkTS-Dyn接口声明：[static Keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated-2)
 
-替代的ArkTS-Sta接口声明：[static keys(): Array<string>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-2)
+替代的ArkTS-Sta接口声明：[static keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-2)
 
 ArkTS-Dyn
 
@@ -549,7 +549,7 @@ ArkTS-Dyn接口声明：[static PersistProp\<T\>(key: string, defaultValue: T): 
 ArkTS-Dyn
 
 ```ts
-PersistentStorage.PersistProp('highScore', '0');
+PersistentStorage.PersistProp<string>('highScore', '0');
 ```
 
 ArkTS-Sta
