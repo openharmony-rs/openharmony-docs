@@ -32,6 +32,10 @@ ArkTS-Sta: getErrorCode(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明          |
@@ -45,6 +49,10 @@ getErrorInfo(): string
 获取加载资源的错误信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
