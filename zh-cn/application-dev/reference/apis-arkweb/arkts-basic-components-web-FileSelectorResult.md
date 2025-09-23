@@ -44,10 +44,10 @@ ArkTS-Dyn中使用ArkTS-Sta的FileSelectorResult对象。
 
   ```TypeScript
   'use static'
-  import { Entry, Column, Component, Web, OnShowFileSelectorEvent, $rawfile } from '@kit.ArkUI'
-  import { webview } from '@kit.ArkWeb'
-  import { transfer } from '@kit.ArkTS'
-  import { handleFileSelectorResultDynamic } from 'library'
+  import { Entry, Column, Component, Web, OnShowFileSelectorEvent, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { handleFileSelectorResultDynamic } from 'library';
 
   @Entry
   @Component
@@ -58,12 +58,12 @@ ArkTS-Dyn中使用ArkTS-Sta的FileSelectorResult对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onShowFileSelector((event: OnShowFileSelectorEvent): boolean => {
-            console.log('MyFileUploader onShowFileSelector invoked');
+            console.info('MyFileUploader onShowFileSelector invoked');
             try {
                 let fileSelectorResultDynamic = transfer.transferDynamic(event.result, "ArkWeb.FileSelectorResult") as Object;
                 handleFileSelectorResultDynamic(fileSelectorResultDynamic);
             } catch (e: Error) {
-                console.log('transferDynamic catch error：-----------' + e.message);
+                console.error('transferDynamic catch error：-----------' + e.message);
             }
             return true;
           })
@@ -118,7 +118,7 @@ ArkTS-Sta中使用ArkTS-Dyn的FileSelectorResult对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onShowFileSelector((event: OnShowFileSelectorEvent): boolean => {
-            console.log('MyFileUploader onShowFileSelector invoked');
+            console.info('MyFileUploader onShowFileSelector invoked');
             handleFileSelectorResultStatic(event.result);
             return true;
           })
@@ -149,15 +149,15 @@ ArkTS-Sta中使用ArkTS-Dyn的FileSelectorResult对象。
   ```TypeScript
   // library/src/main/ets/components/MainPage.ets
   'use static'
-  import { FileSelectorResult } from '@kit.ArkUI'
-  import { transfer } from '@kit.ArkTS'
+  import { FileSelectorResult } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
 
   export function handleFileSelectorResultStatic(dynObject: Object) {
     try {
         let result: FileSelectorResult = transfer.transferStatic(dynObject, "ArkWeb.FileSelectorResult") as FileSelectorResult;
         result.handleFileList(new Array<string>("file:///data/storage/xxx/xxx.mp4"));
     } catch (e: Error) {
-        console.log('transferStatic catch error：-----------' + e.message);
+        console.error('transferStatic catch error：-----------' + e.message);
     }
   }
   ```

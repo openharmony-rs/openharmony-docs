@@ -110,10 +110,10 @@ ArkTS-Dyn中使用ArkTS-Sta的WebContextMenuResult对象。
 
   ```TypeScript
   'use static'
-  import { Entry, Column, Component, Web, OnContextMenuShowEvent, $rawfile } from '@kit.ArkUI'
-  import { webview } from '@kit.ArkWeb'
-  import { transfer } from '@kit.ArkTS'
-  import { handleWebContextMenuResultDynamic } from 'library'
+  import { Entry, Column, Component, Web, OnContextMenuShowEvent, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { handleWebContextMenuResultDynamic } from 'library';
 
   @Entry
   @Component
@@ -124,12 +124,12 @@ ArkTS-Dyn中使用ArkTS-Sta的WebContextMenuResult对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onContextMenuShow((event: OnContextMenuShowEvent): boolean => {
-            console.log('onContextMenuShow invoked');
+            console.info('onContextMenuShow invoked');
             try {
                 let webContextMenuResultDynamic = transfer.transferDynamic(event.result, "ArkWeb.WebContextMenuResult") as Object;
                 handleWebContextMenuResultDynamic(webContextMenuResultDynamic);
             } catch (e: Error) {
-                console.log('transferDynamic catch error：-----------' + e.message);
+                console.error('transferDynamic catch error：-----------' + e.message);
             }
             return false;
           })
@@ -183,7 +183,7 @@ ArkTS-Sta中使用ArkTS-Dyn的WebContextMenuResult对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onContextMenuShow((event: OnContextMenuShowEvent): boolean => {
-            console.log('onContextMenuShow invoked');
+            console.info('onContextMenuShow invoked');
             handleWebContextMenuResultStatic(event.result);
             return false;
           })
@@ -213,15 +213,15 @@ ArkTS-Sta中使用ArkTS-Dyn的WebContextMenuResult对象。
   ```TypeScript
   // library/src/main/ets/components/MainPage.ets
   'use static'
-  import { WebContextMenuResult } from '@kit.ArkUI'
-  import { transfer } from '@kit.ArkTS'
+  import { WebContextMenuResult } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
 
   export function handleWebContextMenuResultStatic(dynObject: Object) {
     try {
         let result: WebContextMenuResult = transfer.transferStatic(dynObject, "ArkWeb.WebContextMenuResult") as WebContextMenuResult;
         result.copyImage();
     } catch (e: Error) {
-        console.log('transferStatic catch error：-----------' + e.message);
+        console.error('transferStatic catch error：-----------' + e.message);
     }
   }
   ```

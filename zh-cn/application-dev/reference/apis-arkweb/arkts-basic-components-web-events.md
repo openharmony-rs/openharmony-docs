@@ -1193,6 +1193,10 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -1238,7 +1242,7 @@ ArkTS-Sta示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onScaleChange((event: OnScaleChangeEvent) => {
-            console.log('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+            console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           })
       }
     }
@@ -2137,6 +2141,10 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 > 如果是全局滚动，window.pagYOffset或者window.pagXOffset的值在滚动前后会有变化，反之没有变化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3255,6 +3263,10 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 该接口在网页过度滚动时触发，用于通知网页过度滚动的偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

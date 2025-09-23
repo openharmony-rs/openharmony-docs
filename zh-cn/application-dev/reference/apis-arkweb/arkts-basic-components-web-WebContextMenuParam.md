@@ -10,8 +10,6 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## constructor<sup>9+</sup>
@@ -258,10 +256,10 @@ ArkTS-Dyn中使用ArkTS-Sta的WebContextMenuParam对象。
 
   ```TypeScript
   'use static'
-  import { Entry, Column, Component, Web, OnContextMenuShowEvent, $rawfile } from '@kit.ArkUI'
-  import { webview } from '@kit.ArkWeb'
-  import { transfer } from '@kit.ArkTS'
-  import { handleWebContextMenuParamDynamic } from 'library'
+  import { Entry, Column, Component, Web, OnContextMenuShowEvent, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { handleWebContextMenuParamDynamic } from 'library';
 
   @Entry
   @Component
@@ -272,12 +270,12 @@ ArkTS-Dyn中使用ArkTS-Sta的WebContextMenuParam对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onContextMenuShow((event: OnContextMenuShowEvent): boolean => {
-            console.log('onContextMenuShow invoked');
+            console.info('onContextMenuShow invoked');
             try {
                 let webContextMenuParamDynamic = transfer.transferDynamic(event.param, "ArkWeb.WebContextMenuParam") as Object;
                 handleWebContextMenuParamDynamic(webContextMenuParamDynamic);
             } catch (e: Error) {
-                console.log('transferDynamic catch error：-----------' + e.message);
+                console.error('transferDynamic catch error：-----------' + e.message);
             }
             return false;
           })
@@ -308,10 +306,10 @@ ArkTS-Dyn中使用ArkTS-Sta的WebContextMenuParam对象。
   // library/src/main/ets/components/MainPage.ets
   export function handleWebContextMenuParamDynamic(param_: any) {
     let param: WebContextMenuParam = param_ as WebContextMenuParam;
-    console.log('x: ' + param.x());
-    console.log('y: ' + param.y());
-    console.log('LinkUrl: ' + param.getLinkUrl());
-    console.log('SourceUrl: ' + param.getSourceUrl());
+    console.info('x: ' + param.x());
+    console.info('y: ' + param.y());
+    console.info('LinkUrl: ' + param.getLinkUrl());
+    console.info('SourceUrl: ' + param.getSourceUrl());
   }
   ```
 
@@ -334,7 +332,7 @@ ArkTS-Sta中使用ArkTS-Dyn的WebContextMenuParam对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onContextMenuShow((event: OnContextMenuShowEvent): boolean => {
-            console.log('onContextMenuShow invoked');
+            console.info('onContextMenuShow invoked');
             handleWebContextMenuParamStatic(event.param);
             return false;
           })
@@ -364,18 +362,18 @@ ArkTS-Sta中使用ArkTS-Dyn的WebContextMenuParam对象。
   ```TypeScript
   // library/src/main/ets/components/MainPage.ets
   'use static'
-  import { WebContextMenuParam } from '@kit.ArkUI'
-  import { transfer } from '@kit.ArkTS'
+  import { WebContextMenuParam } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
 
   export function handleWebContextMenuParamStatic(dynObject: Object) {
     try {
         let param: WebContextMenuParam = transfer.transferStatic(dynObject, "ArkWeb.WebContextMenuParam") as WebContextMenuParam;
-        console.log('x: ' + param.x());
-        console.log('y: ' + param.y());
-        console.log('LinkUrl: ' + param.getLinkUrl());
-        console.log('SourceUrl: ' + param.getSourceUrl());
+        console.info('x: ' + param.x());
+        console.info('y: ' + param.y());
+        console.info('LinkUrl: ' + param.getLinkUrl());
+        console.info('SourceUrl: ' + param.getSourceUrl());
     } catch (e: Error) {
-        console.log('transferStatic catch error：-----------' + e.message);
+        console.error('transferStatic catch error：-----------' + e.message);
     }
   }
   ```

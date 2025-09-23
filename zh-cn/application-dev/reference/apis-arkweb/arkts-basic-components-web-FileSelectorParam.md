@@ -100,10 +100,10 @@ ArkTS-Dyn中使用ArkTS-Sta的FileSelectorParam对象。
 
   ```TypeScript
   'use static'
-  import { Entry, Column, Component, Web, OnShowFileSelectorEvent, $rawfile } from '@kit.ArkUI'
-  import { webview } from '@kit.ArkWeb'
-  import { transfer } from '@kit.ArkTS'
-  import { handleFileSelectorParamDynamic } from 'library'
+  import { Entry, Column, Component, Web, OnShowFileSelectorEvent, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { handleFileSelectorParamDynamic } from 'library';
 
   @Entry
   @Component
@@ -114,12 +114,12 @@ ArkTS-Dyn中使用ArkTS-Sta的FileSelectorParam对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onShowFileSelector((event: OnShowFileSelectorEvent): boolean => {
-            console.log('MyFileUploader onShowFileSelector invoked');
+            console.info('MyFileUploader onShowFileSelector invoked');
             try {
                 let fileSelectorParamDynamic = transfer.transferDynamic(event.fileSelector, "ArkWeb.FileSelectorParam") as Object;
                 handleFileSelectorParamDynamic(fileSelectorParamDynamic);
             } catch (e: Error) {
-                console.log('transferDynamic catch error：-----------' + e.message);
+                console.error('transferDynamic catch error：-----------' + e.message);
             }
             return false;
           })
@@ -151,11 +151,11 @@ ArkTS-Dyn中使用ArkTS-Sta的FileSelectorParam对象。
   // library/src/main/ets/components/MainPage.ets
   export function handleFileSelectorParamDynamic(param_: any) {
     let param: FileSelectorParam = param_ as FileSelectorParam;
-    console.log('title: ' + param.getTitle());
-    console.log('mode: ' + param.getMode());
-    console.log('isCapture: ' + param.isCapture());
-    console.log('AcceptType: ' + param.getAcceptType());
-    console.log('MimeTypes: ' + param.getMimeTypes());
+    console.info('title: ' + param.getTitle());
+    console.info('mode: ' + param.getMode());
+    console.info('isCapture: ' + param.isCapture());
+    console.info('AcceptType: ' + param.getAcceptType());
+    console.info('MimeTypes: ' + param.getMimeTypes());
   }
   ```
 
@@ -166,8 +166,8 @@ ArkTS-Sta中使用ArkTS-Dyn的FileSelectorParam对象。
   ArkTS-Dyn示例：
 
   ```TypeScript
-  import { webview } from '@kit.ArkWeb'
-  import { handleFileSelectorParamStatic } from 'library'
+  import { webview } from '@kit.ArkWeb';
+  import { handleFileSelectorParamStatic } from 'library';
 
   @Entry
   @Component
@@ -178,7 +178,7 @@ ArkTS-Sta中使用ArkTS-Dyn的FileSelectorParam对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onShowFileSelector((event: OnShowFileSelectorEvent): boolean => {
-            console.log('MyFileUploader onShowFileSelector invoked');
+            console.info('MyFileUploader onShowFileSelector invoked');
             handleFileSelectorParamStatic(event.fileSelector);
             return false;
           })
@@ -209,19 +209,19 @@ ArkTS-Sta中使用ArkTS-Dyn的FileSelectorParam对象。
   ```TypeScript
   // library/src/main/ets/components/MainPage.ets
   'use static'
-  import { FileSelectorParam } from '@kit.ArkUI'
-  import { transfer } from '@kit.ArkTS'
+  import { FileSelectorParam } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
 
   export function handleFileSelectorParamStatic(dynObject: Object) {
     try {
         let param: FileSelectorParam = transfer.transferStatic(dynObject, "ArkWeb.FileSelectorParam") as FileSelectorParam;
-        console.log('title: ' + param.getTitle());
-        console.log('mode: ' + param.getMode());
-        console.log('isCapture: ' + param.isCapture());
-        console.log('AcceptType: ' + param.getAcceptType());
-        console.log('MimeTypes: ' + param.getMimeTypes());
+        console.info('title: ' + param.getTitle());
+        console.info('mode: ' + param.getMode());
+        console.info('isCapture: ' + param.isCapture());
+        console.info('AcceptType: ' + param.getAcceptType());
+        console.info('MimeTypes: ' + param.getMimeTypes());
     } catch (e: Error) {
-        console.log('transferStatic catch error：-----------' + e.message);
+        console.error('transferStatic catch error：-----------' + e.message);
     }
   }
   ```

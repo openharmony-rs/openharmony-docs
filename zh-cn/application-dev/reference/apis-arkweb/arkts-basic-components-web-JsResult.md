@@ -60,10 +60,10 @@ ArkTS-Dyn中使用ArkTS-Sta的JsResult对象。
 
   ```TypeScript
   'use static'
-  import { Entry, Column, Component, Web, OnPromptEvent, $rawfile } from '@kit.ArkUI'
-  import { webview } from '@kit.ArkWeb'
-  import { transfer } from '@kit.ArkTS'
-  import { handleJsResultDynamic } from 'library'
+  import { Entry, Column, Component, Web, OnPromptEvent, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { transfer } from '@kit.ArkTS';
+  import { handleJsResultDynamic } from 'library';
 
   @Entry
   @Component
@@ -74,12 +74,12 @@ ArkTS-Dyn中使用ArkTS-Sta的JsResult对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onPrompt((event: OnPromptEvent): boolean => {
-            console.log('onPrompt invoked');
+            console.info('onPrompt invoked');
             try {
                 let jsResultDynamic = transfer.transferDynamic(event.result, "ArkWeb.JsResult") as Object;
                 handleJsResultDynamic(jsResultDynamic);
             } catch (e: Error) {
-                console.log('transferDynamic catch error：-----------' + e.message);
+                console.error('transferDynamic catch error：-----------' + e.message);
             }
             return true;
           })
@@ -143,7 +143,7 @@ ArkTS-Sta中使用ArkTS-Dyn的JsResult对象。
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onPrompt((event: OnPromptEvent): boolean => {
-            console.log('onPrompt invoked');
+            console.info('onPrompt invoked');
             handleJsResultStatic(event.result);
             return true;
           })
@@ -183,15 +183,15 @@ ArkTS-Sta中使用ArkTS-Dyn的JsResult对象。
   ```TypeScript
   // library/src/main/ets/components/MainPage.ets
   'use static'
-  import { JsResult } from '@kit.ArkUI'
-  import { transfer } from '@kit.ArkTS'
+  import { JsResult } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
 
   export function handleJsResultStatic(dynObject: Object) {
     try {
         let result: JsResult = transfer.transferStatic(dynObject, "ArkWeb.JsResult") as JsResult;
         result.handlePromptConfirm("JsResult transfer success");
     } catch (e: Error) {
-        console.log('transferStatic catch error：-----------' + e.message);
+        console.error('transferStatic catch error：-----------' + e.message);
     }
   }
   ```
