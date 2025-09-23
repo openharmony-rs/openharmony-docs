@@ -1845,6 +1845,10 @@ ArkTs-Sta: edgeColors(all: number): NodeEdges\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
