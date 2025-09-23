@@ -8454,7 +8454,7 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 
 **示例：**
 
-该示例通过调用openPopuo、updatePopup和closePopup接口，展示了弹出、更新以及关闭Popup的功能。
+该示例通过调用openPopup、updatePopup和closePopup接口，展示了弹出、更新以及关闭Popup的功能。
 
 ArkTS-Dyn示例：
 
