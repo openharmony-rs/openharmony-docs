@@ -618,16 +618,20 @@ mediaPlayGestureAccess(access: boolean)
 
 multiWindowAccess(multiWindow: boolean)
 
-设置是否开启多窗口权限。
+设置是否开启多窗口权限。当属性没有显示调用时，默认不开启多窗口权限。
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名         | 类型    | 必填   | 说明         |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | boolean | 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。<br>默认值：false。 |
+| multiWindow | boolean | 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。|
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 
@@ -1784,14 +1788,19 @@ allowWindowOpenMethod(flag: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填    | 说明                      |
 | ---- | ------- | ---- | ------------------------- |
-| flag | boolean | 是    | <br>true表示网页可以通过JavaScript自动打开新窗口，该属性为false时，用户行为仍可通过JavaScript自动打开新窗口，但非用户行为不能通过JavaScript自动打开新窗口。<br>此处的用户行为是指，在用户对Web组件进行点击等操作后，同时在5秒内请求打开新窗口（window.open）的行为。<br>默认值与系统属性关联，当系统属性`persist.web.allowWindowOpenMethod.enabled`为true时，默认值为true，如果未设置系统属性则默认值为false。 |
+| flag | boolean | 是    | <br>true表示网页可以通过JavaScript自动打开新窗口，该属性为false时，用户行为仍可通过JavaScript自动打开新窗口，但非用户行为不能通过JavaScript自动打开新窗口。<br>此处的用户行为是指，在用户对Web组件进行点击等操作后，同时在5秒内请求打开新窗口（window.open）的行为。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1827,7 +1836,7 @@ allowWindowOpenMethod(flag: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .javaScriptAccess(true)
-          // 需要使能multiWindowAccess
+          // 需要使能multiWindowAccess。
           .multiWindowAccess(true)
           .allowWindowOpenMethod(true)
           .onWindowNew((event) => {
@@ -1839,6 +1848,65 @@ allowWindowOpenMethod(flag: boolean)
               builder: NewWebViewComp({ webviewController1: popController })
             })
             this.dialogController.open();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Component, Entry, Web, Column, CustomDialogController, CustomDialog } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+    controller?: CustomDialogController;
+    webviewController1: webview.WebviewController = new webview.WebviewController("");
+
+    build() {
+      Column() {
+        Web({ src: "", controller: this.webviewController1 })
+          .javaScriptAccess(true)
+          .multiWindowAccess(false)
+          .onWindowExit(() => {
+            console.info("NewWebViewComp onWindowExit");
+            if (this.controller) {
+              this.controller?.close();
+            }
+          })
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController("");
+    dialogController: CustomDialogController | null = null;
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .javaScriptAccess(true)
+          // 需要使能multiWindowAccess。
+          .multiWindowAccess(true)
+          .allowWindowOpenMethod(true)
+          .onWindowNew((event) => {
+            if (this.dialogController) {
+              this.dialogController?.close();
+            }
+            let popController: webview.WebviewController = new webview.WebviewController("");
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController })
+            })
+            this.dialogController?.open();
             // 将新窗口对应WebviewController返回给Web内核。
             // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
             // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
@@ -2950,20 +3018,25 @@ onAdsBlocked(callback: OnAdsBlockedCallback)
 
 keyboardAvoidMode(mode: WebKeyboardAvoidMode)
 
-Web组件自定义软件键盘避让模式。
+Web组件自定义软件键盘避让模式。当属性没有显式调用时，默认开启软件键盘避让行为。
 
 当UIContext设置的键盘避让模式为[KeyboardAvoidMode.RESIZE](../apis-arkui/js-apis-arkui-UIContext.md#keyboardavoidmode11)模式时，该接口功能不生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| mode | [WebKeyboardAvoidMode](./arkts-basic-components-web-e.md#webkeyboardavoidmode12) | 是     | Web软键盘避让模式。<br>嵌套滚动场景下不推荐使用web软键盘避让，包括RESIZE_VISUAL与RESIZE_CONTENT。<br>默认值：`WebKeyboardAvoidMode.RESIZE_CONTENT`避让行为。|
+| mode | [WebKeyboardAvoidMode](./arkts-basic-components-web-e.md#webkeyboardavoidmode12) | 是     | Web软键盘避让模式，嵌套滚动场景下不推荐使用。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2978,6 +3051,27 @@ Web组件自定义软件键盘避让模式。
       Column() {
         Web({ src: $rawfile("index.html"), controller: this.controller })
         .keyboardAvoidMode(this.avoidMode)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, State, Column, Component, Entry, WebKeyboardAvoidMode } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State avoidMode: WebKeyboardAvoidMode = WebKeyboardAvoidMode.RESIZE_VISUAL;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .keyboardAvoidMode(this.avoidMode)
       }
     }
   }
@@ -3321,18 +3415,23 @@ struct WebComponent {
 
 blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
-设置当软键盘收起时Web元素失焦模式。
+设置当软键盘收起时Web元素失焦模式。当属性没有显式调用时，软键盘收起时Web组件失焦功能关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型                                    | 必填   | 说明               |
 | ---- | --------------------------------------- | ---- | ------------------ |
-| mode | [BlurOnKeyboardHideMode](./arkts-basic-components-web-e.md#bluronkeyboardhidemode14) | 是    | 设置当软键盘收起时Web元素失焦关闭或开启。默认值：`BlurOnKeyboardHideMode.SILENT`。 |
+| mode | [BlurOnKeyboardHideMode](./arkts-basic-components-web-e.md#bluronkeyboardhidemode14) | 是    | 设置当软键盘收起时Web元素失焦关闭或开启。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3342,6 +3441,28 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State blurMode: BlurOnKeyboardHideMode = BlurOnKeyboardHideMode.BLUR;
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .blurOnKeyboardHideMode(this.blurMode)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+
+  import { $rawfile, Web, Column, Component, Entry, BlurOnKeyboardHideMode, State } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State blurMode: BlurOnKeyboardHideMode = BlurOnKeyboardHideMode.BLUR;
+
     build() {
       Column() {
         Web({ src: $rawfile("index.html"), controller: this.controller })

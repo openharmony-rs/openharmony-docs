@@ -8,8 +8,6 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## constructor<sup>12+</sup>
@@ -76,6 +74,10 @@ ArkTS-Sta: sendFunctionKey(key: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                   |
@@ -89,3 +91,7 @@ close(): void
 关闭自定义键盘。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
