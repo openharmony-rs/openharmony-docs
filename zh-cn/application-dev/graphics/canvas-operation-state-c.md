@@ -78,6 +78,7 @@ OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁画刷对象并收回其占的内存
 OH_Drawing_BrushDestroy(brush);
 ```
+<!-- [ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 裁剪后的图 |
 | -------- | -------- |
