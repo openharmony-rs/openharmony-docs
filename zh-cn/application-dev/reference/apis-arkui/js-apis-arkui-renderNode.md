@@ -2089,7 +2089,7 @@ ArkTs-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 | 类型                                                                                                   | 说明                   |
 | ------------------------------------------------------------------------------------------------------ | ---------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | RenderNode的边框样式，默认undefined。 |
+| [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTs-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | RenderNode的边框样式，默认undefined。 |
 
 **示例：**
 ```ts
