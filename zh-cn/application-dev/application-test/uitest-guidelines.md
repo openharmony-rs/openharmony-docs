@@ -21,9 +21,9 @@ UiTest支持采用ArkTS API与Shell命令两种方式，为界面自动化测试
 **Shell 命令测试能力：**
 支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、导出界面控件树结构、录制界面操作流程、便捷注入UI模拟事件等。
 
-![](figures/Uitest.PNG)
+![arkxtest-uitest](figures/Uitest.PNG)
 
-UiTest框架运行分为客户端和服务端。
+UiTest框架分为客户端和服务端。
 
 **· 客户端**包含跨语言通信层、IPC模块等，主要功能为对外导出API，为UI测试框架启动提供入口。客户端由测试应用加载，运行在应用进程。其中，跨语言通信层主要进行接口导出、JSON序列化对象处理、上层ArkTS接口与底层C++接口的转换、参数解析和校验。此外，由于本模块涉及C++层对ArkTS层回调函数的调用，跨语言通信层同时负责ArkTS回调函数的管理和调用。
 
@@ -107,9 +107,9 @@ export default function abilityTest() {
       expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
 
       // 依据指定文本“Next”查找目标控件
-      const button = await driver.findComponent(ON.text('Next'));
+      const next = await driver.findComponent(ON.text('Next'));
       // 点击目标控件
-      await button.click();
+      await next.click();
       await driver.waitForIdle(4000,5000);
       // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期。
       await driver.assertComponentExist(ON.text('after click'));
