@@ -40,6 +40,8 @@ getStatus(): Promise<AudioLoopbackStatus\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -84,6 +86,8 @@ setVolume(volume: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -122,6 +126,8 @@ on(type: 'statusChange', callback: Callback<AudioLoopbackStatus\>): void
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 audioLoopback.on('statusChange', (status: audio.AudioLoopbackStatus) => {
@@ -165,6 +171,8 @@ off(type: 'statusChange', callback?: Callback&lt;AudioLoopbackStatus&gt;): void
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // 取消该事件的所有监听。
@@ -224,6 +232,8 @@ enable(enable: boolean): Promise<boolean\>
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -31,6 +31,16 @@ import { audio } from '@kit.AudioKit';
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let state: audio.AudioState = audioRenderer.state;
+```
+
+ArkTS-Sta示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 
@@ -124,7 +134,7 @@ audioRenderer.getRendererInfo().then((rendererInfo: audio.AudioRendererInfo) => 
   console.info('Renderer GetRendererInfo:');
   console.info(`Renderer usage: ${rendererInfo.usage}`);
   console.info(`Renderer flags: ${rendererInfo.rendererFlags}`)
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`AudioFrameworkRenderLog: RendererInfo :ERROR: ${err}`);
 });
 ```
@@ -275,7 +285,7 @@ audioRenderer.getStreamInfo().then((streamInfo: audio.AudioStreamInfo) => {
   console.info(`Renderer channel: ${streamInfo.channels}`);
   console.info(`Renderer format: ${streamInfo.sampleFormat}`);
   console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -398,7 +408,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getAudioStreamId().then((streamId: long) => {
   console.info(`Renderer getAudioStreamId: ${streamId}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -565,7 +575,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT).then(() => {
   console.info('setAudioEffectMode SUCCESS');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -655,7 +665,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
   console.info(`getAudioEffectMode: ${effectMode}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -745,7 +755,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.start().then(() => {
   console.info('Renderer started');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -835,7 +845,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.pause().then(() => {
   console.info('Renderer paused');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -925,7 +935,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.drain().then(() => {
   console.info('Renderer drained successfully');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -975,7 +985,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.flush().then(() => {
   console.info('Renderer flushed successfully');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -1065,7 +1075,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.stop().then(() => {
   console.info('Renderer stopped successfully');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -1155,7 +1165,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.release().then(() => {
   console.info('Renderer released successfully');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -1243,7 +1253,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getAudioTime().then((timestamp: long) => {
   console.info(`Current timestamp: ${timestamp}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -1349,7 +1359,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.getAudioTimestampInfo().then((audioTimestampInfo: audio.AudioTimestampInfo) => {
   console.info(`Current timestamp: ${audioTimestampInfo.timestamp}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
@@ -1495,7 +1505,7 @@ let bufferSize: long | undefined;
 audioRenderer.getBufferSize().then((data: long) => {
   console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
   bufferSize = data;
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${err}`);
 });
 ```
@@ -1660,7 +1670,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.setInterruptMode(audio.InterruptMode.SHARE_MODE).then(() => {
   console.info('setInterruptMode Success!');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`setInterruptMode Fail: ${err}`);
 });
 ```
@@ -1816,7 +1826,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.setVolume(0.5).then(() => {
   console.info('setVolume Success!');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`setVolume Fail: ${err}`);
 });
 ```
@@ -2011,7 +2021,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.getMinStreamVolume().then((value: double) => {
   console.info(`Get min stream volume Success! ${value}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`Get min stream volume Fail: ${err}`);
 });
 ```
@@ -2155,7 +2165,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.getMaxStreamVolume().then((value: double) => {
   console.info(`Get max stream volume Success! ${value}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`Get max stream volume Fail: ${err}`);
 });
 ```
@@ -2299,7 +2309,7 @@ ArkTS-Sta示例：
 ```ts
 audioRenderer.getUnderflowCount().then((value: long) => {
   console.info(`Get underflow count Success! ${value}`);
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`Get underflow count Fail: ${err}`);
 });
 ```
@@ -2477,7 +2487,7 @@ audioRenderer.getCurrentOutputDevices().then((deviceInfo: audio.AudioDeviceDescr
     console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
     console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
   }
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`Get current output devices Fail: ${err}`);
 });
 ```
@@ -2711,7 +2721,7 @@ ArkTS-Sta示例：
 // 正在播放时调用，在没有外接设备如蓝牙耳机/有线耳机，系统会立即切换到设置的默认本机内置发声设备发声；否则系统会先记录应用设置的默认本机内置发声设备，等外接设备移除后再切换到设置的默认本机内置发声设备发声。
 audioRenderer.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
   console.info('setDefaultOutputDevice Success!');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`setDefaultOutputDevice Fail: ${err}`);
 });
 ```
@@ -3470,7 +3480,7 @@ let writeDataCallback = (buffer: ArrayBuffer) => {
 audioRenderer.on('writeData', writeDataCallback);
 audioRenderer.start().then(() => {
   console.info('Renderer started');
-}).catch((err: Error) => {
+}).catch(async (err: BusinessError) => {
   console.error(`ERROR: ${err}`);
 });
 ```
