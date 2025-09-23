@@ -5,6 +5,10 @@
 
 声明从native层管理可丢弃内存的方法。
 
+**库：** libpurgeable_memory_ndk.z.so
+
+**系统能力：** SystemCapability.Kernel.Memory
+
 **起始版本：**
 
 10
