@@ -1839,9 +1839,9 @@ struct Index {
 
 ## edgeColors<sup>12+</sup>
 
-ArkTs-Dyn: edgeColors(all: number): Edges\<number>
+ArkTS-Dyn: edgeColors(all: number): Edges\<number>
 
-ArkTs-Sta: edgeColors(all: number): NodeEdges\<number>
+ArkTS-Sta: edgeColors(all: number): NodeEdges\<number>
 
 用于生成边框颜色均设置为传入值的边框颜色对象。
 
@@ -1863,7 +1863,7 @@ ArkTs-Sta: edgeColors(all: number): NodeEdges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| ArkTs-Dyn: [Edges\<number>](#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框颜色均设置为传入值的边框颜色对象。 |
+| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框颜色均设置为传入值的边框颜色对象。 |
 
 **示例：**
 
@@ -1907,9 +1907,9 @@ struct Index {
 
 ## edgeWidths<sup>12+</sup>
 
-ArkTs-Dyn: edgeWidths(all: number): Edges\<number>
+ArkTS-Dyn: edgeWidths(all: number): Edges\<number>
 
-ArkTs-Sta: edgeWidths(all: number): NodeEdges\<number>
+ArkTS-Sta: edgeWidths(all: number): NodeEdges\<number>
 
 用于生成边框宽度均设置为传入值的边框宽度对象。
 
@@ -1931,7 +1931,7 @@ ArkTs-Sta: edgeWidths(all: number): NodeEdges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| ArkTs-Dyn: [Edges\<number>](#edgest12) <br> ArkTs-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框宽度均设置为传入值的边框宽度对象。 |
+| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框宽度均设置为传入值的边框宽度对象。 |
 
 **示例：**
 
@@ -1975,9 +1975,9 @@ struct Index {
 
 ## borderStyles<sup>12+</sup>
 
-ArkTs-Dyn: borderStyles(all: BorderStyle): Edges\<BorderStyle>
+ArkTS-Dyn: borderStyles(all: BorderStyle): Edges\<BorderStyle>
 
-ArkTs-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
+ArkTS-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
 
 用于生成边框样式均设置为传入值的边框样式对象。
 
@@ -1999,7 +1999,7 @@ ArkTs-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
 
 | 类型                                                                        | 说明                                   |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| ArkTs-Dyn: [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTs-Sta: [NodeEdges](#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
+| ArkTS-Dyn: [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTS-Sta: [NodeEdges](#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
 
 **示例：**
 
