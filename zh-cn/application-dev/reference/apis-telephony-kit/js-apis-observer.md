@@ -135,7 +135,6 @@ type TelCallState = call.TelCallState
 | [call.TelCallState](js-apis-call.md#telcallstate21) | 通话状态码。 |
 
 
-
 ## observer.on('networkStateChange')
 
 on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
