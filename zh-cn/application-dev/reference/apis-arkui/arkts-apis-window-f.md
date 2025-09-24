@@ -844,9 +844,9 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
 获取全部主窗信息，使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
 
@@ -875,7 +875,7 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Succeeded in loading the content');
@@ -885,10 +885,10 @@ export default class EntryAbility extends UIAbility {
       windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
         console.info('Get all main window info success.');
       }).catch((err: BusinessError) => {
-        console.error('Get all main window info failed. Error info: ' + JSON.stringify(err));
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
       });
     } catch (err) {
-      console.error('Get all main window info failed. Cause info: ' + JSON.stringify(err));
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
     }
   }
 }
@@ -920,9 +920,9 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 
 获取指定主窗截图，使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
@@ -952,26 +952,43 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
       }
       reqPermissionsFromUser(permissions, this.context);
-      console.info('Succeeded in loading the content');
+      console.info('Success in loading the content');
     });
     try {
+      let windowIds: number[] = [];
+      let configs: window.WindowSnapshotConfiguration = {
+        useCache: false
+      }
       let windowInfoPromise = window.getAllMainWindowInfo();
       windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
         console.info('Get all main window info success.');
+        for (let i = 0; i < list.length; i++) {
+          windowIds[i] = list[i].windowId;
+          console.info('Get all main window info id: ' + windowIds[i]);
+        }
+        let promise = window.getMainWindowSnapshot(windowIds, configs);
+        promise.then((list: Array<image.PixelMap>) => {
+          for (let i = 0; i < list.length; i++) {
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i].getBytesNumberPerRow()}`);
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+        });
       }).catch((err: BusinessError) => {
-        console.error('Get all main window info failed. Error info: ' + JSON.stringify(err));
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
       });
     } catch (err) {
-      console.error('Get all main window info failed. Cause info: ' + JSON.stringify(err));
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
     }
   }
 }
