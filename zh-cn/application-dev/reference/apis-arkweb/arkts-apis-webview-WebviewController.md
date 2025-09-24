@@ -4754,6 +4754,10 @@ ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：**  12
+
+**ArkTS-Sta起始版本：**  20
+
 **参数：**
 
 | 参数名             | 类型                             |  必填  | 说明                                                              |
@@ -7371,6 +7375,10 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：**  12
+
+**ArkTS-Sta起始版本：**  20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -7395,6 +7403,8 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例
 
 接口推荐配合动态组件使用，使用离线的Web组件用于生成字节码缓存，并在适当的时机加载业务用Web组件使用这些字节码缓存。下方是代码示例：
 
@@ -7609,6 +7619,41 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
    ```
 
 当需要更新本地已经生成的编译字节码时，修改cacheOptions参数中responseHeaders中的E-Tag或Last-Modified响应头对应的值，再次调用接口即可。
+
+ArkTS-Sta示例
+
+   ```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const url: "https://www.example.com/example.js";
+const scripts = "console.log('test')";
+
+const options: { responseHeaders: [
+        { headerKey: "E-Tag", headerValue: "aWO42N9P9dG/5xqYQCxsx+vDOoU="},
+        { headerKey: "Last-Modified", headerValue: "Wed, 21 Mar 2024 10:38:41 GMT"}
+      ] } as webview.CacheOptions;
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('PrecompileJavaScript')
+        .onClick(() => {
+          try {
+            this.controller.precompileJavaScript(url, scripts, options);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+   ```
 
 ## onCreateNativeMediaPlayer<sup>12+</sup>
 
