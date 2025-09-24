@@ -51,11 +51,11 @@ let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [w
 
 > **说明：**
 >
-> ArkTS1.2继承ArkTS1.1的规格，wrapBuilder方法只能传入全局@Builder方法的限制。
+> ArkTS1.2继承ArkTS1.1的规格，wrapBuilder方法仅支持传入全局@Builder方法作为参数。
 >
 > ArkTS1.2增加能力，如果需要使用struct内的@Builder，可以直接传递@Builder函数，不需要wrapBuilder封装。
 
-wrapBuilder方法返回的WrappedBuilder对象的builder属性方法只能在struct内部使用。
+wrapBuilder方法返回的WrappedBuilder对象的builder属性方法限定在struct内部使用。
 
 ## @Builder方法赋值给变量
 
