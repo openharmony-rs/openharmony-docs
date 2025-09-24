@@ -1158,7 +1158,8 @@
           - [证书集合及证书吊销列表集合对象的创建和获取](security/DeviceCertificateKit/create-get-cert-crl-object.md)
           - [证书链对象的创建和校验](security/DeviceCertificateKit/create-verify-certchain-object.md)
           - [使用系统预置CA证书校验证书链](security/DeviceCertificateKit/verify-certchain-by-systemca.md)
-          - [证书PKCS7签名](security/DeviceCertificateKit/create-pkcs7-sign-object.md)
+          - [证书CMS签名](security/DeviceCertificateKit/create-cms-sign-object.md)
+          - [证书CMS封装](security/DeviceCertificateKit/create-cms-enveloped-object.md)
           - [证书PKCS12的创建和解析](security/DeviceCertificateKit/create-parse-pkcs12.md)
         - 证书管理<!--certmanager-->
           - [证书管理概述](security/DeviceCertificateKit/certManager-overview.md)
