@@ -146,7 +146,7 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Column, Component, Text } from '@ohos.arkui.component';
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
     import { State, ObjectLink, Observed } from '@ohos.arkui.stateManagement';
 
     @Observed
