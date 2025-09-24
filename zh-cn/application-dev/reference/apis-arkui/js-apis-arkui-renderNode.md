@@ -2107,7 +2107,7 @@ renderNode.borderStyle = {
   right: BorderStyle.Dashed,
   bottom: BorderStyle.Solid
 }
-const borderStyle = renderNode.borderStyle;
+const borderStyle = renderNode.borderStyle!;
 
 
 class MyNodeController extends NodeController {
