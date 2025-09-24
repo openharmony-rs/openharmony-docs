@@ -12,7 +12,7 @@
 
 @Monitor用于状态管理V2中，监听状态变量修改，使得状态变量具有深度监听的能力。
 
-在静态语言上下文中使用时，开发指南参考：[@Monitor装饰器：状态变量修改监听（ArkTS-ST）](../../../ui/state-management-static/arkts-static-new-monitor.md)。
+在ArkTS-Sta中使用时，开发指南参考：[@Monitor装饰器：状态变量修改监听（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-monitor.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +25,8 @@
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Monitor, IMonitor } from '@ohos.arkui.stateManagement';
 

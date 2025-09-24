@@ -12,7 +12,7 @@
 
 @Provider和@Consumer搭配使用，用于状态管理V2中，实现跨组件层级的数据双向同步。@Provider修饰数据提供方，为子组件提供数据。
 
-在静态语言上下文中使用时，开发指南参考：[\@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步（ArkTS-ST）](../../../ui/state-management-static/arkts-static-new-provider-and-consumer.md)。
+在ArkTS-Sta中使用时，开发指南参考：[\@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-provider-and-consumer.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +25,8 @@
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 

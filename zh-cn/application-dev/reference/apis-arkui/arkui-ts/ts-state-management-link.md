@@ -13,7 +13,7 @@
 
 @Link用于状态管理V1中，接收外部传入值，并与父组件中的数据源建立双向数据绑定。
 
-在动态语言上下文中使用时，开发指南参考：[@Link装饰器：父子双向同步（ArkTS-DT）](../../../ui/state-management/arkts-link.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Link装饰器：父子双向同步（ArkTS-Dyn）](../../../ui/state-management/arkts-link.md)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
