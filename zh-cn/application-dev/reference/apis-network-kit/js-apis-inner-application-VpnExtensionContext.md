@@ -41,9 +41,9 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-| 名称   | 类型                                                         | 必填 | 说明           |
-|------| ------------------------------------------------------------ | ---- | -------------- |
-| context | [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md) | 是   | 指定 context。 |
+| 名称   | 类型                                                         | 只读 |可选| 说明           |
+|------| ------------------------------------------------------------ | ---- | ---|----------- |
+| context | [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md) | 否   | 否|指定 context。 |
 
 
 ### onCreate
