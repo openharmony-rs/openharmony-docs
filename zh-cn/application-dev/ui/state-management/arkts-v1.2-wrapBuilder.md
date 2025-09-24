@@ -49,11 +49,9 @@ let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [w
 
 ## 限制条件
 
-> **说明：**
->
-> ArkTS1.2去除了wrapBuilder方法只能传入全局@Builder方法的限制。
+1. wrapBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法。
 
-wrapBuilder方法返回的WrappedBuilder对象的builder属性方法只能在struct内部使用。
+2. WrappedBuilder对象的builder属性方法仅限在struct内部使用。
 
 ## @Builder方法赋值给变量
 
