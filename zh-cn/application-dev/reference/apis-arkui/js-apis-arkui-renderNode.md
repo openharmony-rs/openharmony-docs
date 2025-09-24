@@ -2094,6 +2094,9 @@ ArkTS-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 | ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> \| undefined | RenderNode的边框样式，默认undefined。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -2107,7 +2110,7 @@ renderNode.borderStyle = {
   right: BorderStyle.Dashed,
   bottom: BorderStyle.Solid
 }
-const borderStyle = renderNode.borderStyle!;
+const borderStyle = renderNode.borderStyle;
 
 
 class MyNodeController extends NodeController {
@@ -2117,6 +2120,53 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component'
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+renderNode.borderStyle = {
+  left: BorderStyle.Solid,
+  top: BorderStyle.Dotted,
+  right: BorderStyle.Dashed,
+  bottom: BorderStyle.Solid
+}
+const borderStyle = renderNode.borderStyle!;
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
     }
@@ -2182,6 +2232,8 @@ ArkTS-Sta: get borderWidth(): NodeEdges\<number> | undefined
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -2189,8 +2241,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-const borderWidth = renderNode.borderWidth!;
-
+const borderWidth = renderNode.borderWidth;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -2199,6 +2250,47 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component'
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+const borderWidth = renderNode.borderWidth!;
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
     }
@@ -2264,8 +2356,53 @@ ArkTS-Sta: get borderColor(): NodeEdges\<number> | undefined
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+const borderColor = renderNode.borderColor;
+
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component'
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
@@ -2281,7 +2418,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
 
-    const rootRenderNode = this.rootNode.getRenderNode();
+    const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
     }
@@ -2342,6 +2479,8 @@ ArkTS-Sta: get borderRadius(): BorderRadiuses | undefined
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -2349,8 +2488,49 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderRadius = { topLeft: 32, topRight: 32, bottomLeft: 32, bottomRight: 32 };
-const borderRadius = renderNode.borderRadius!;
+const borderRadius = renderNode.borderRadius;
 
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController, ShapeMask } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component'
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderRadius = { topLeft: 32, topRight: 32, bottomLeft: 32, bottomRight: 32 };
+const borderRadius = renderNode.borderRadius!;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -2416,6 +2596,8 @@ ArkTS-Sta: get shapeMask(): ShapeMask | undefined
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
 
@@ -2429,8 +2611,54 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeMask = mask;
-const shapeMask = renderNode.shapeMask!;
+const shapeMask = renderNode.shapeMask;
 
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController, ShapeMask } from '@ohos.arkui.node'
+import { UIContext } from '@ohos.arkui.UIContext'
+import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component'
+
+const mask = new ShapeMask();
+mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
+mask.fillColor = 0X55FF0000;
+mask.strokeColor = 0XFFFF0000;
+mask.strokeWidth = 24;
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.shapeMask = mask;
+const shapeMask = renderNode.shapeMask!;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
