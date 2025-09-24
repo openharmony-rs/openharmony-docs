@@ -121,7 +121,7 @@ SIM卡状态。
 | ---------------- | --------------------------- |
 | [sim.SimState](js-apis-sim.md#simstate) | SIM卡状态。 |
 
-## TelCallState
+## TelCallState<sup>21+</sup>
 
 type TelCallState = call.TelCallState
 
