@@ -2144,9 +2144,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
-import { UIContext } from '@ohos.arkui.UIContext'
-import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component'
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
@@ -2274,9 +2274,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
-import { UIContext } from '@ohos.arkui.UIContext'
-import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component'
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
@@ -2400,9 +2400,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
-import { UIContext } from '@ohos.arkui.UIContext'
-import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component'
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
@@ -2522,9 +2522,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
-import { UIContext } from '@ohos.arkui.UIContext'
-import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component'
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
@@ -2644,9 +2644,9 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@ohos.arkui.node'
-import { UIContext } from '@ohos.arkui.UIContext'
-import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component'
+import { RenderNode, FrameNode, NodeController, ShapeMask } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component';
 
 const mask = new ShapeMask();
 mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
