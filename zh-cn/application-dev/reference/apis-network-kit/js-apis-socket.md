@@ -87,7 +87,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 ```
 
@@ -134,7 +134,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
 });
@@ -192,7 +192,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
   address: '192.168.xx.xxx',  // 对端地址
@@ -207,7 +207,7 @@ udp.send(sendOptions, (err: BusinessError) => {
     console.error('send fail');
     return;
   }
-  console.log('send success');
+  console.info('send success');
 });
 ```
 
@@ -227,7 +227,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
   address: '192.168.xx.xxx',  // 对端地址
@@ -253,7 +253,7 @@ udp.send(sendOptions, (err: BusinessError) => {
     console.error('send fail');
     return;
   }
-  console.log('send success');
+  console.info('send success');
 });
 ```
 
@@ -310,7 +310,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
   return;
@@ -324,7 +324,7 @@ let sendOptions: socket.UDPSendOptions = {
   address: netAddress
 }
 udp.send(sendOptions).then(() => {
-  console.log('send success');
+  console.info('send success');
 }).catch((err: BusinessError) => {
   console.error('send fail');
 });
@@ -342,7 +342,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
   return;
@@ -367,7 +367,7 @@ let sendOptions: socket.UDPSendOptions = {
   proxy: proxyOptions,
 }
 udp.send(sendOptions).then(() => {
-  console.log('send success');
+  console.info('send success');
 }).catch((err: BusinessError) => {
   console.error('send fail');
 });
@@ -409,7 +409,7 @@ udp.close((err: BusinessError) => {
     console.error('close fail');
     return;
   }
-  console.log('close success');
+  console.info('close success');
 })
 ```
 
@@ -445,7 +445,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 udp.close().then(() => {
-  console.log('close success');
+  console.info('close success');
 }).catch((err: BusinessError) => {
   console.error('close fail');
 });
@@ -497,10 +497,10 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.error('bind success');
   udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
     if (err) {
-      console.log('getState fail');
+      console.error('getState fail');
       return;
     }
-    console.log('getState success:' + JSON.stringify(data));
+    console.info('getState success:' + JSON.stringify(data));
   })
 })
 ```
@@ -549,9 +549,9 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   udp.getState().then((data: socket.SocketStateBase) => {
-    console.log('getState success:' + JSON.stringify(data));
+    console.info('getState success:' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error('getState fail' + JSON.stringify(err));
   });
@@ -604,7 +604,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   let udpextraoptions: socket.UDPExtraOptions = {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
@@ -617,7 +617,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
       console.error('setExtraOptions fail');
       return;
     }
-    console.log('setExtraOptions success');
+    console.info('setExtraOptions success');
   })
 })
 ```
@@ -673,7 +673,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   let udpextraoptions: socket.UDPExtraOptions = {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
@@ -682,7 +682,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     broadcast: true
   }
   udp.setExtraOptions(udpextraoptions).then(() => {
-    console.log('setExtraOptions success');
+    console.info('setExtraOptions success');
   }).catch((err: BusinessError) => {
     console.error('setExtraOptions fail');
   });
@@ -771,8 +771,8 @@ udp.on('message', (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 });
 ```
 
@@ -806,8 +806,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 udp.on('message', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -838,10 +838,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 udp.on('listening', () => {
-  console.log("on listening success");
+  console.info("on listening success");
 });
 udp.on('close', () => {
-  console.log("on close success");
+  console.info("on close success");
 });
 ```
 
@@ -868,14 +868,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let callback1 = () => {
-  console.log("on listening, success");
+  console.info("on listening, success");
 }
 udp.on('listening', callback1);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 udp.off('listening', callback1);
 udp.off('listening');
 let callback2 = () => {
-  console.log("on close, success");
+  console.info("on close, success");
 }
 udp.on('close', callback2);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -1113,7 +1113,7 @@ multicast.addMembership(addr, (err: Object) => {
     console.error('add membership fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('add membership success');
+  console.info('add membership success');
 })
 ```
 
@@ -1165,7 +1165,7 @@ let addr: socket.NetAddress = {
   port: 8080
 }
 multicast.addMembership(addr).then(() => {
-  console.log('addMembership success');
+  console.info('addMembership success');
 }).catch((err: Object) => {
   console.error('addMembership fail');
 });
@@ -1218,7 +1218,7 @@ multicast.dropMembership(addr, (err: Object) => {
     console.error('drop membership fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('drop membership success');
+  console.info('drop membership success');
 })
 ```
 
@@ -1270,7 +1270,7 @@ let addr: socket.NetAddress = {
   port: 8080
 }
 multicast.dropMembership(addr).then(() => {
-  console.log('drop membership success');
+  console.info('drop membership success');
 }).catch((err: Object) => {
   console.error('drop membership fail');
 });
@@ -1319,7 +1319,7 @@ multicast.setMulticastTTL(ttl, (err: Object) => {
     console.error('set ttl fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('set ttl success');
+  console.info('set ttl success');
 })
 ```
 
@@ -1366,7 +1366,7 @@ import { socket } from '@kit.NetworkKit';
 
 let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
 multicast.setMulticastTTL(8).then(() => {
-  console.log('set ttl success');
+  console.info('set ttl success');
 }).catch((err: Object) => {
   console.error('set ttl failed');
 });
@@ -1412,7 +1412,7 @@ multicast.getMulticastTTL((err: Object, value: Number) => {
     console.error('set ttl fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('set ttl success, value: ' + JSON.stringify(value));
+  console.info('set ttl success, value: ' + JSON.stringify(value));
 })
 ```
 
@@ -1452,7 +1452,7 @@ import { socket } from '@kit.NetworkKit';
 
 let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
 multicast.getMulticastTTL().then((value: Number) => {
-  console.log('ttl: ', JSON.stringify(value));
+  console.info('ttl: ', JSON.stringify(value));
 }).catch((err: Object) => {
   console.error('set ttl failed');
 });
@@ -1498,7 +1498,7 @@ multicast.setLoopbackMode(false, (err: Object) => {
     console.error('set loopback mode fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('set loopback mode success');
+  console.info('set loopback mode success');
 })
 ```
 
@@ -1543,7 +1543,7 @@ import { socket } from '@kit.NetworkKit';
 
 let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
 multicast.setLoopbackMode(false).then(() => {
-  console.log('set loopback mode success');
+  console.info('set loopback mode success');
 }).catch((err: Object) => {
   console.error('set loopback mode failed');
 });
@@ -1588,7 +1588,7 @@ multicast.getLoopbackMode((err: Object, value: Boolean) => {
     console.error('get loopback mode fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('get loopback mode success, value: ' + JSON.stringify(value));
+  console.info('get loopback mode success, value: ' + JSON.stringify(value));
 })
 ```
 
