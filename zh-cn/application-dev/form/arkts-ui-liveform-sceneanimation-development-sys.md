@@ -129,6 +129,7 @@
     import { UIExtensionContentSession } from '@kit.AbilityKit';
     import { Constants } from '../../common/Constants';
     
+    const EPSILON: number = 1e-1;
     let that: MySystemLiveFormPage;
     
     @Entry
@@ -141,6 +142,7 @@
       private formId: string | undefined = undefined;
       @State formRect: formInfo.Rect | undefined = undefined;
       @State formBorderRadius: number | undefined = undefined;
+      private isExtensionReady: boolean = false;
     
       aboutToAppear(): void {
         console.info('aboutToAppear');
@@ -220,7 +222,8 @@
           return;
         }
         if (status === Constants.EXTENSION_READY) {
-          // 卡片的激活态已切换完毕
+          // 卡片的激活态已切换完毕，可以支持调用requestOverflow接口
+          this.isExtensionReady = true;
           return;
         }
         if (status === Constants.LONG_PRESS) {
@@ -239,14 +242,18 @@
         .width('100%')
         .height('100%')
         .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
-          console.log(`newValue: ${JSON.stringify(newValue)}`);
           if (!this.formRect) {
             return;
           }
 
           // 当卡片尺寸扩展之后，向系统发送动效页面准备完毕信息
-          let isWidthExtend: boolean = newValue.width === this.formRect.width * Constants.OVERFLOW_WIDTH_RATIO;
-          let isHeightExtend: boolean = newValue.height === this.formRect.height * Constants.OVERFLOW_HEIGHT_RATIO;
+          let isWidthExtend: boolean = 
+            Math.abs(newValue.width as number - this.formRect.width * Constants.OVERFLOW_WIDTH_RATIO) < EPSILON;
+          let isHeightExtend: boolean =
+            Math.abs(newValue.height as number - this.formRect.height * Constants.OVERFLOW_HEIGHT_RATIO) < EPSILON;
+          console.info(`newValue: ${JSON.stringify(newValue)}` + `, ${isWidthExtend}, ${isHeightExtend}` +
+              `, ${this.formRect.width * Constants.OVERFLOW_WIDTH_RATIO}` +
+              `, ${this.formRect.height * Constants.OVERFLOW_HEIGHT_RATIO}`);
           if (isWidthExtend && isHeightExtend) {
             this.session?.sendData({['isExtensionOverflowReady']: true});
           }
@@ -300,7 +307,7 @@
       }
     
       private requestOverflow(): void {
-        if (!this.formId || !this.formRect) {
+        if (!this.formId || !this.formRect || !this.isExtensionReady) {
           return;
         }
         formProvider.requestOverflow(this.formId,{
