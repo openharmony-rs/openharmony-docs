@@ -2522,7 +2522,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@ohos.arkui.node'
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node'
 import { UIContext } from '@ohos.arkui.UIContext'
 import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component'
 
