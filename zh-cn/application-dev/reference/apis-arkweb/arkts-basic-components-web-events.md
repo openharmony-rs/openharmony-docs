@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 通用事件仅支持[onAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)、[onDisAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)、[onBlur](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)、[onFocus](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)、[onDragEnd](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10)、[onDragEnter](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter)、[onDragStart](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)、[onDragMove](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)、[onDrop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop)、[onHover](../apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)、[onMouse](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)、[onKeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)、[onTouch](../apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)、[onVisibleAreaChange](../apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)。
 
@@ -1292,7 +1292,7 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回ture表示http auth认证成功，返回false表示http auth认证失败。   |
+| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示http auth认证成功，返回false表示http auth认证失败。   |
 
 **示例：**
 
@@ -3029,7 +3029,7 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onLargestContentfulPaint((details) => {
-            console.log("onLargestContentfulPaint: [navigationStartTime]= " + details.navigationStartTime +
+            console.info("onLargestContentfulPaint: [navigationStartTime]= " + details.navigationStartTime +
               ", [largestImagePaintTime]=" + details.largestImagePaintTime +
               ", [largestTextPaintTime]=" + details.largestTextPaintTime +
               ", [largestImageLoadStartTime]=" + details.largestImageLoadStartTime +
@@ -3379,6 +3379,58 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
   }
   ```
 
+## onSafeBrowsingCheckFinish<sup>21+</sup>
+
+onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+
+网站安全风险检查结束时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  export enum ThreatType {
+    UNKNOWN = -1,
+    THREAT_ILLEGAL = 0,
+    THREAT_FRAUD = 1,
+    THREAT_RISK = 2,
+    THREAT_WARNING = 3,
+    THREAT_NONE = 4,
+    THREAT_UNPROCESSED = 5,
+  }
+
+  export class OnSafeBrowsingCheckResultCallback {
+    threatType: ThreatType = ThreatType.UNKNOWN;
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSafeBrowsingCheckFinish((callback) => {
+            let jsonData = JSON.stringify(callback);
+            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json.threatType);
+          })
+      }
+    }
+  }
+  ```
+
 ## onNativeEmbedLifecycleChange<sup>11+</sup>
 
 onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
@@ -3519,16 +3571,16 @@ export default class EntryAbility extends UIAbility {
             if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
               this.embedStatus = 'Leave BFCache';
             }
-            console.log("status = " + this.embedStatus);
-            console.log("surfaceId = " + event.surfaceId);
-            console.log("embedId = " + event.embedId);
+            console.info("status = " + this.embedStatus);
+            console.info("surfaceId = " + event.surfaceId);
+            console.info("embedId = " + event.embedId);
             if (event.info) {
-              console.log("id = " + event.info.id);
-              console.log("type = " + event.info.type);
-              console.log("src = " + event.info.src);
-              console.log("width = " + event.info.width);
-              console.log("height = " + event.info.height);
-              console.log("url = " + event.info.url);
+              console.info("id = " + event.info.id);
+              console.info("type = " + event.info.type);
+              console.info("src = " + event.info.src);
+              console.info("width = " + event.info.width);
+              console.info("height = " + event.info.height);
+              console.info("url = " + event.info.url);
             }
           })
       }
@@ -3682,13 +3734,13 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
                 if (event.result) {
                   event.result.setGestureEventResult(ret, true);
                 }
-                console.log("embedId = " + event.embedId);
-                console.log("touchType = " + this.eventType);
-                console.log("x = " + event.touchEvent.touches[0].x);
-                console.log("y = " + event.touchEvent.touches[0].y);
-                console.log("Component globalPos:(" + event.touchEvent.target.area.globalPosition.x + "," + event.touchEvent.target.area.globalPosition.y + ")");
-                console.log("width = " + event.touchEvent.target.area.width);
-                console.log("height = " + event.touchEvent.target.area.height);
+                console.info("embedId = " + event.embedId);
+                console.info("touchType = " + this.eventType);
+                console.info("x = " + event.touchEvent.touches[0].x);
+                console.info("y = " + event.touchEvent.touches[0].y);
+                console.info("Component globalPos:(" + event.touchEvent.target.area.globalPosition.x + "," + event.touchEvent.target.area.globalPosition.y + ")");
+                console.info("width = " + event.touchEvent.target.area.width);
+                console.info("height = " + event.touchEvent.target.area.height);
               }
             })
         }
@@ -3780,7 +3832,7 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回ture表示中止加载URL，返回false表示继续在Web中加载URL |
+| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL |
 
 **示例：**
 
@@ -4062,7 +4114,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
-当网页中同层标签（例如<embed\>标签或<embed\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
+当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4173,8 +4225,8 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
               } else {
                 this.embedVisibility = 'Hidden';
               }
-              console.log("embedId = " + embed.embedId);
-              console.log("visibility = " + embed.visibility);
+              console.info("embedId = " + embed.embedId);
+              console.info("visibility = " + embed.visibility);
             })
         }
       }
@@ -4341,6 +4393,151 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
   <div>
       <div id="bodyId">
           <embed id="nativeButton" type ="native/button" width="800" height="800" style="background-color:red"/>
+      </div>
+  </div>
+  </body>
+  </html>
+  ```
+
+## onNativeEmbedObjectParamChange<sup>21+</sup>
+
+onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
+
+当同层渲染object标签内嵌param元素变化时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback       | [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) | 是 | 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。 |
+
+**示例：**
+
+```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { NodeController, BuilderNode, NodeRenderType, FrameNode, UIContext } from '@kit.ArkUI';
+
+  declare class Params {
+    text: string;
+    width: number;
+    height: number;
+  }
+
+  declare class NodeControllerParams {
+    surfaceId: string;
+    renderType: NodeRenderType;
+    width: number;
+    height: number;
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<[Params]> | undefined | null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: number = 0;
+    private height_: number = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+      this.rootNode.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ });
+      return this.rootNode.getFrameNode();
+    }
+
+    postInputEvent(event: TouchEvent | MouseEvent | undefined): boolean {
+      return this.rootNode?.postInputEvent(event) as boolean;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @Prop params: Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: $rawfile('index.html'), controller: this.controller })
+            .enableNativeEmbedMode(true)
+            .registerNativeEmbedRule("object", "native")
+            .onNativeEmbedLifecycleChange((embed) => {
+              if (embed.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: embed.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(embed.info?.width),
+                  height: this.uiContext!.px2vp(embed.info?.height)
+                });
+                this.nodeController.rebuild();
+              }
+            })
+            .onNativeEmbedObjectParamChange((event) => {
+              console.log("embed id: " + event.embedId);
+              let paramItems = event.paramItems;
+              if (paramItems) {
+                for (let i = 0; i < paramItems.length; ++i) {
+                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  ```
+
+加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>同层渲染测试</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+  <div>
+      <div id="bodyId">
+          <object id="nativeButton" type ="native/button" width="300" height="300" style="background-color:red">
+            <param id="param-1" name="name-1" value="value1"/>
+          </object>
       </div>
   </div>
   </body>

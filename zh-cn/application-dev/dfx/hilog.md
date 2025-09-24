@@ -262,7 +262,7 @@ hilog -a 8
    11-15 16:04:08.603   506   506 I I02C01/CustCarrierMount: MountCarrierToShared start
    11-15 16:04:08.604   506   506 I I02C01/CustCarrierMount: success to mount carrier to shared
    11-15 16:04:15.394   972   972 I I02C01/CustCarrierMount: UpdateCotaOpkeyLink start
-   11-15 16:04:15.396   972   972 W I02C01/CustCarrierMount: not exsit CUST_GLOBAL_CARRIER_DIR or COTA_PARAM_CARRIER_DIR
+   11-15 16:04:15.396   972   972 W I02C01/CustCarrierMount: not exist CUST_GLOBAL_CARRIER_DIR or COTA_PARAM_CARRIER_DIR
    11-15 16:04:15.887   972   972 I I02C01/CustCarrierMount: success to update cota carrier
    11-15 16:04:48.749  5777  5901 I A00001/HiAI_Metadata: metadata is null
    11-15 16:04:48.749  5777  5901 I A00001/HiAI_PluginAbilityInfo: abilityInfo is null
@@ -723,7 +723,7 @@ LOGLIMIT是进程或domainID超限管控的丢失；Slow reader missed是全局�
 
 **处理方式**：
 
-- 通过hilog -g命令查询buffer大小（hilog buffer大小默认是256KB）。
+- 通过hilog -g命令查询当前buffer大小。
 
 - 通过hilog -G命令扩大hilog buffer大小。如下命令表示将buffer大小修改为16MB（当前允许的最大规格为16MB）。
 
