@@ -106,7 +106,7 @@ Picker配置选项。
 | gridEndOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图最后一行与组件底部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | pickerIndex<sup>21+</sup>    | number                              | 否   | 通过设置唯一序号来区分不同的pickerComponent，默认值为-1。不设置或设置-1时不做区分。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | 支持在指定pickerIndex的PhotoPickerComponent中回显用户已选择的数据。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标。详见[BadgeType](#badgetype21)<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标，详见[BadgeType](#badgetype21)。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -422,7 +422,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 ## PreselectedInfo<sup>21+</sup>
 
-预选中的文件以及可预选中picker序号。
+预选中的文件以及可预选中的picker序号。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -443,8 +443,8 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
 | SET_SELECTED_URIS | 1   | 发送已选择的数据列表，通知picker组件勾选状态刷新，需要传入string数组类型。<br>例如：应用在自己的页面中删除某张图片后，需要把剩下的已选择的数据列表通过setData接口通知到picker组件，从而触发picker组件勾选框状态刷新正确。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | SET_ALBUM_URI | 2   | 发送已选择相册，通知picker组件刷新相册，需要传入string类型。<br>例如：应用在自己的页面中选择相册后，需要把已选择的相册uri通过setData接口通知到picker组件，从而触发picker组件刷新相册数据。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| SET_SELECTED_INFO | 3   | 发送已选择的文件uri以及选中的picker序号。当picker序号与参数中的picker序号匹配时，已选择文件支持在当前picker里自动选中。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
-| SET_BADGE_CONFIGS | 4   | 发送需要显示角标的配置，类型为[badgeConfig](#badgeconfig21)，包含角标的类型和对应文件uri的数据列表。配置后，对应文件会显示配置类型的角标。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| SET_SELECTED_INFO<sup>21+</sup> | 3   | 发送已选择的文件uri以及选中的picker序号。当picker序号与参数中的picker序号匹配时，已选择文件支持在当前picker里自动选中。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| SET_BADGE_CONFIGS<sup>21+</sup> | 4   | 发送需要显示角标的配置，类型为[badgeConfig](#badgeconfig21)，包含角标的类型和对应文件uri的数据列表。配置后，对应文件会显示配置类型的角标。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## ItemType
 
@@ -583,7 +583,7 @@ Picker的颜色模式。
 
 ## BadgeType<sup>21+</sup>
 
-特殊角标的类型。
+表示特殊角标类型的枚举。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -591,7 +591,7 @@ Picker的颜色模式。
 
 | 名称          | 值   | 说明       |
 |-------------|-----|----------|
-| BADGE_UPLOADED     | 1   | 已上传。  |
+| BADGE_UPLOADED     | 0   | 已上传。  |
 
 ## VideoPlayerState<sup>14+</sup>
 
