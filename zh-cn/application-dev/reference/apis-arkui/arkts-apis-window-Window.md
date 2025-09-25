@@ -6235,7 +6235,7 @@ setAspectRatio(ratio: number): Promise&lt;void&gt;
 >
 > - 仅主窗可设置，且仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下生效。此比例参数将持久化保存，关闭应用或重启设备后，切换到自由悬浮窗口模式时，设置的比例仍然生效。
 >
-> - 建议优先使用[setContentAspectRatio](#setcontentaspectratio21)，可获得更好的效果和兼容性。
+> - 本接口设置的比例参数不支持按窗口区分，建议优先使用[setContentAspectRatio](#setcontentaspectratio21)，以获得更好的效果和兼容性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6306,7 +6306,7 @@ setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 >
 > - 仅主窗可设置，且仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下生效。此比例参数将持久化保存，关闭应用或重启设备后，切换到自由悬浮窗口模式时，设置的比例仍然生效。
 >
-> - 建议优先使用[setContentAspectRatio](#setcontentaspectratio21)，可获得更好的效果和兼容性。
+> - 本接口设置的比例参数不支持按窗口区分，建议优先使用[setContentAspectRatio](#setcontentaspectratio21)，以获得更好的效果和兼容性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6388,7 +6388,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 参数名 | 类型 | 必填 | 说明                                        |
 | --- | ------- | ---- |-------------------------------------------|
 | ratio | number | 是   | 设置窗口内可绘制区域的宽高比。该参数为浮点数，受窗口尺寸限制（参见[WindowLimits](arkts-apis-window-i.md#windowlimits11)），有效范围为`[可绘制区域最小宽度/最大高度，可绘制区域最大宽度/最小高度]`。若传入值超出该范围，则调用失败，并返回错误。|
-| isPersistent | boolean | 否 | 是否持久化保存该比例参数。<br/>如为`true`，比例会持久化保存，关闭应用或重启设备后，当切换到自由悬浮窗口模式时，仍然生效。可通过[resetAspectRatio](#resetaspectratio10)清除持久化保存的比例参数。<br/>如为`false`，仅对当前窗口实例生效，窗口销毁后清除该数据。<br/>默认值为`true`。|
+| isPersistent | boolean | 否 | 是否持久化保存该比例参数。<br/>如为`true`，比例会持久化保存，关闭应用或重启设备后，当切换到自由悬浮窗口模式时，仍然生效。可通过[resetAspectRatio](#resetaspectratio10)清除持久化保存的比例参数。<br/>如为`false`，仅对当前窗口生效，窗口销毁后清除该数据。<br/>默认值为`true`。|
 | needUpdateRect | boolean | 否 | 是否立即根据当前比例更新窗口大小。<br/>如为`true`，立即更新窗口大小。<br/>如为`false`，窗口将在拖拽缩放时根据当前比例更新，也可以使用[resize](#resize9)或[resizeAsync](#resizeasync12)进行主动更新。<br/>默认值为`true`。|
 
 **返回值：**
