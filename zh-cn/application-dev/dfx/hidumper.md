@@ -1359,3 +1359,16 @@ hidumper --mem命令与HiDebug接口内存获取功能详细对比参考下表�
 **可能原因&amp;解决方法**
 
 hidumper --mem-jsheap [pid] --leakobj 命令依赖[JsLeakWatcher](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md)。应用需通过JsLeakWatcher接口开启泄漏检测功能。具体步骤参考：[查询虚拟机堆内存](#查询虚拟机堆内存)。
+
+### 运行应用时报hidumper相关错误
+
+**现象描述**
+
+运行应用时报错设备不支持SystemCapability.HiviewDFX.HiDumper
+
+**可能原因&amp;解决方法**
+
+有两种解决方法：
+
+- 将OpenHarmony SDK切换为HarmonyOS SDK。
+- 将OpenHarmony SDK升级至API 20。
