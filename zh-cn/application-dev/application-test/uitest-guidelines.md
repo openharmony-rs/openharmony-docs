@@ -40,15 +40,15 @@ UiTest框架分为客户端和服务端。
 
 本章节介绍UI测试框架ArkTS API的具体使用方法。
 
-UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定义与参数说明可参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)。
+UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定义与参数说明可参考<!--RP13-->[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP13End-->。
 
 ### UI测试简例
 
-下面提供一个UI测试的简单示例，在[单元测试脚本](jsunit-guidelines.md#)基础上进行UI测试的增量开发，具体实现功能如下：
+下面提供一个UI测试的简单示例，在单元测试脚本基础上进行UI测试的增量开发，具体实现功能如下：
 
-1. 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态。
+1. 调用<!--RP1-->[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)<!--RP1End-->能力，启动目标被测应用，并确认应用运行状态。
 2. 调用UI测试框架能力，页面中执行点击操作。
-3. 通过[添加断言](jsunit-guidelines.md#)，验证操作后当前页面的实际变化是否与预期结果一致。
+3. 通过<!--RP2-->[添加断言](jsunit-guidelines.md#)<!--RP2End-->，验证操作后当前页面的实际变化是否与预期结果一致。
 
 开发步骤如下:
 
@@ -126,7 +126,7 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 ```
 ### 控件查找与操作
 
-支持[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)。
+支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -235,7 +235,7 @@ export default function abilityTest() {
 
 ### 模拟文本输入
 
-支持向指定坐标点或指定控件输入文本内容，同时支持[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
+支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
 
 以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
@@ -304,9 +304,9 @@ export default function abilityTest() {
 ### 截图
 
 > **说明：**
-> 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../file-management/app-sandbox-directory.md)。
-> 2. 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
-> 3. 多屏场景下，期望对指定屏幕做截屏操作时，可以调用display模块的接口[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)，实现[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)。
+> 1. 指定截图文件保存路径，路径需为当前应用的<!--RP6-->[沙箱路径](../file-management/app-sandbox-directory.md)<!--RP6End-->。
+> 2. 测试hap的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
+> 3. 多屏场景下，期望对指定屏幕做截屏操作时，可以调用display模块的接口<!--RP8-->[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)<!--RP8End-->，实现<!--RP9-->[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)<!--RP9End-->。
 
 以下示例代码演示了如何使用UiTest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
 
@@ -539,7 +539,7 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 
 > **环境要求：**
 >
-> 根据hdc命令行工具指导，完成[环境准备](../dfx/hdc.md#环境准备)。确保设备已成功连接，并执行hdc shell。
+> 根据hdc命令行工具指导，完成<!--RP10-->[环境准备](../dfx/hdc.md#环境准备)<!--RP10End-->。确保设备已成功连接，并执行hdc shell。
 
 ### 命令列表
 | 命令            | 参数   |说明                              |
@@ -581,7 +581,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest dumpLayout -p /data/local/tmp/1.json
 ```
-**说明**：可通过hidumper工具[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息), 包含应用对应窗口的WinId和DisplayId。
+**说明**：可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的WinId和DisplayId。
 
 ```bash
 # 指定获取ID为0的屏幕的控件树信息。
@@ -770,9 +770,9 @@ hdc shell uitest uiInput text hello
 
 | 参数             | 必填       | 说明                                                                                                                              |                
 |------|------|---------------------------------------------------------------------------------------------------------------------------------|
-| keyID1   | 是    | 实体按键对应ID，取值范围：Back、Home、Power、或[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)。<br>当取值为Back、Home或Power时，不支持输入组合键。 <br>当前注入大写锁定键（KeyCode=2074）无效，请使用组合键实现大写字母输入。如“按键shift+按键V”输入大写字母V。 | 
-| keyID2    | 否    | 实体按键对应ID，取值范围：[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)，默认值为空。                                               |
-| keyID3    | 否    | 实体按键对应ID，取值范围：[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)，默认值为空。                                               |
+| keyID1   | 是    | 实体按键对应ID，取值范围：Back、Home、Power、或<!--RP12-->[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)<!--RP12End-->。<br>当取值为Back、Home或Power时，不支持输入组合键。 <br>当前注入大写锁定键（KeyCode=2074）无效，请使用组合键实现大写字母输入。如“按键shift+按键V”输入大写字母V。 | 
+| keyID2    | 否    | 实体按键对应ID，取值范围：<!--RP12-->[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)<!--RP12End-->，默认值为空。 |
+| keyID3    | 否    | 实体按键对应ID，取值范围：<!--RP12-->[KeyCode键码值](../reference/apis-input-kit/js-apis-keycode.md#keycode)<!--RP12End-->，默认值为空。 |
 
 ```shell  
 # 返回主页。
@@ -804,7 +804,7 @@ hdc shell uitest start-daemon
 >
 > 仅元能力aa test拉起的测试hap才能调用Uitest的能力。
 >
-> 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->需为normal。
+> 测试hap的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
 
 <!--Del-->
 
