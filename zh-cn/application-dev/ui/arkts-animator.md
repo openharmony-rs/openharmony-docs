@@ -50,7 +50,7 @@
    let result: AnimatorResult = this.getUIContext().createAnimator(options);
    // 设置接收到帧时回调，动画播放过程中每帧会调用onFrame回调
    result.onFrame = (value: number) => {
-     console.log("current value is :" + value);
+     console.info("current value is :" + value);
    }
    ```
 
