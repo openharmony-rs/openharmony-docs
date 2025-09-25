@@ -162,6 +162,30 @@ maxLines(value: number)
 | ------ | ------ | ---- | ---------------- |
 | value  | number | 是   | 文本的最大行数。<br/>**说明：** <br/>取值范围：[0, INT32_MAX]<br/>设置为0时，不显示文本内容。 |
 
+### minLines<sup>22+</sup>
+
+minLines(minLines: Optional\<number>)
+
+设置文本显示的最小行数。
+
+如果实际文本高度小于最小行数对应的高度，最后显示高度为最小行数对应的高度。
+
+与[maxLines](#maxlines)同时配置时，最小行高显示范围不会超过最大行高限制。
+
+如果文本设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，那么组件最后显示高度会在[constraintSize](ts-universal-attributes-size.md#constraintsize)约束内。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                      | 必填 | 说明                                                         |
+| ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
+| minLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 文本最小行数。<br>取值范围：[0, INT32_MAX]<br/>设置的值小于0时按0处理。 |
+
 ### lineHeight
 
 lineHeight(value: number | string | Resource)
@@ -2592,3 +2616,36 @@ struct Index {
 }
 ```
 ![Text_line_height_multiple](figures/Text_line_height_multiple.png)
+
+### 示例21（文本设置显示最小行数）
+
+从API version 22开始，该示例使用[minLines](#minlines22)属性设置文本显示的最小行数。
+
+```ts
+
+@Entry
+@Component
+struct TextExample1 {
+  @State message1: string = 'Hello world!';
+  @State message2: string = 'The minimum number of lines displayed for this text setting is 1';
+
+  build() {
+    Column() {
+      Text(this.message1)
+        .minLines(3)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+      Text(this.message2)
+        .minLines(1)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+    }.height(100).width('90%').margin(10)
+  }
+}
+```
+
+![textMinlines](figures/textMinlines.png)
