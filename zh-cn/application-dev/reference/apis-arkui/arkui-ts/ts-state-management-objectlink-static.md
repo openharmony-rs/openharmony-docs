@@ -12,13 +12,15 @@
 
 @ObjectLink用于状态管理V1中，接收@Observed装饰的类的实例，并与父组件中的数据源建立双向数据绑定。
 
-在静态语言上下文中使用时，开发指南参考：[\@Observed装饰器和\@ObjectLink装饰器：嵌套类对象属性变化（ArkTS-ST）](../../../ui/state-management-static/arkts-static-observed-and-objectlink.md)。
+在ArkTS-Sta中使用时，开发指南参考：[\@Observed装饰器和\@ObjectLink装饰器：嵌套类对象属性变化（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-observed-and-objectlink.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text } from '@ohos.arkui.component';
 import { State, Observed, ObjectLink } from '@ohos.arkui.stateManagement';
 

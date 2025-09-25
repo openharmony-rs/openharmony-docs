@@ -482,6 +482,8 @@ static makeObserved\<T extends object\>(source: T): T
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
 import { UIUtils } from '@ohos.arkui.stateManagement';
 interface Info {
@@ -526,6 +528,8 @@ static getTarget\<T extends object\>(source: T): T
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
 import { State, UIUtils } from '@ohos.arkui.stateManagement';
 interface Info {
