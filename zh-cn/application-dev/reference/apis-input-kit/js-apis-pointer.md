@@ -312,7 +312,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。    |
+| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。当windowId合理且有效时返回对应窗口光标样式，windowId找不到时返回默认全局样式。    |
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
 
 **错误码**：
@@ -373,7 +373,7 @@ getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。 |
+| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。当windowId合理且有效时返回对应窗口光标样式，windowId找不到时返回默认全局样式。 |
 
 **返回值**：
 
@@ -439,7 +439,7 @@ getPointerStyleSync(windowId: number): PointerStyle
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。<br>默认值为-1，表示获取全局的鼠标样式。 |
+| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。当windowId合理且有效时返回对应窗口光标样式，windowId找不到时返回默认全局样式。 |
 
 **返回值**：
 
