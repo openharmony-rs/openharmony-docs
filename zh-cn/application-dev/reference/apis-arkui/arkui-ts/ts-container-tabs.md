@@ -982,11 +982,9 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 > **说明：**
 >
-> 1.[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)回调中不可通过preloadItems控制Tabs预加载指定子节点。[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)执行于Tabs组件渲染前，无法获取有效索引，导致预加载失败且可能报错。
+> - Tabs的preloadItems需要在Tabs创建之后去调用，首次预加载推荐在Tabs的[onAppear](./ts-universal-events-show-hide.md#onappear)生命周期中去控制。
 > 
-> 2.推荐调用时机：
-> - 导航路由生命周期：Router页面使用[onPageShow](./ts-custom-component-lifecycle.md#onpageshow)回调、Navigation页面使用[onAppear](./ts-universal-events-show-hide.md#onappear)回调，二者均在Tabs渲染后触发。
-> - 使用TabContent的[onWillShow](./ts-container-tabcontent.md#onwillshow12)逻辑回调（每次切换到使用preloadItems接口的TabContent时都会触发该回调，需避免重复调用）。
+> - 如果TabsController对象未绑定任何Tabs组件，直接调用该接口，会抛出JS异常。因此使用该接口时，建议通过try-catch捕获异常。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
