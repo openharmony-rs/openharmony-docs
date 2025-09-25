@@ -6583,8 +6583,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 tls.on('message', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -6628,15 +6628,15 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.log('bind fail');
+    console.info('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   tls.on('connect', () => {
-    console.log("on connect success")
+    console.info("on connect success")
   });
   tls.on('close', () => {
-    console.log("on close success")
+    console.info("on close success")
   });
 });
 ```
@@ -6670,14 +6670,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 let callback1 = () => {
-  console.log("on connect success");
+  console.info("on connect success");
 }
 tls.on('connect', callback1);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 tls.off('connect', callback1);
 tls.off('connect');
 let callback2 = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 tls.on('close', callback2);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -6722,10 +6722,10 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.log('bind fail');
+    console.info('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   tls.on('error', (err: BusinessError) => {
     console.error("on error, err:" + JSON.stringify(err))
   });
@@ -6826,7 +6826,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -6858,7 +6858,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -6892,7 +6892,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -6935,7 +6935,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7024,7 +7024,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7047,7 +7047,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 }
 
 tlsTwoWay.connect(tlsConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7058,7 +7058,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7073,7 +7073,7 @@ let tlsOneWayConnectOptions: socket.TLSConnectOptions = {
   secureOptions: oneWaySecureOptions
 }
 tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7094,7 +7094,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7128,7 +7128,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 }
 
 tlsTwoWay.connect(tlsConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7139,7 +7139,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7161,7 +7161,7 @@ let tlsOneWayConnectOptions: socket.TLSConnectOptions = {
   proxy: oneWayProxyOptions,
 }
 tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7200,7 +7200,7 @@ tls.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
     console.error('getRemoteAddress fail');
     return;
   }
-  console.log('getRemoteAddress success:' + JSON.stringify(data));
+  console.info('getRemoteAddress success:' + JSON.stringify(data));
 });
 ```
 
@@ -7233,7 +7233,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getRemoteAddress().then(() => {
-  console.log('getRemoteAddress success');
+  console.info('getRemoteAddress success');
 }).catch((err: BusinessError) => {
   console.error('getRemoteAddress fail');
 });
@@ -7272,7 +7272,7 @@ tls.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
   if (err) {
     console.error("getCertificate callback error = " + err);
   } else {
-    console.log("getCertificate callback = " + data);
+    console.info("getCertificate callback = " + data);
   }
 });
 ```
@@ -7310,7 +7310,7 @@ let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getCertificate().then((data: socket.X509CertRawData) => {
   const decoder = util.TextDecoder.create();
   const str = decoder.decodeToString(data.data);
-  console.log("getCertificate: " + str);
+  console.info("getCertificate: " + str);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7351,7 +7351,7 @@ tls.getRemoteCertificate((err: BusinessError, data: socket.X509CertRawData) => {
   } else {
     const decoder = util.TextDecoder.create();
     const str = decoder.decodeToString(data.data);
-    console.log("getRemoteCertificate callback = " + str);
+    console.info("getRemoteCertificate callback = " + str);
   }
 });
 ```
@@ -7388,7 +7388,7 @@ let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
   const decoder = util.TextDecoder.create();
   const str = decoder.decodeToString(data.data);
-  console.log("getRemoteCertificate:" + str);
+  console.info("getRemoteCertificate:" + str);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7427,7 +7427,7 @@ tls.getProtocol((err: BusinessError, data: string) => {
   if (err) {
     console.error("getProtocol callback error = " + err);
   } else {
-    console.log("getProtocol callback = " + data);
+    console.info("getProtocol callback = " + data);
   }
 });
 ```
@@ -7462,7 +7462,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getProtocol().then((data: string) => {
-  console.log(data);
+  console.info(data);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7502,7 +7502,7 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
   if (err) {
     console.error("getCipherSuite callback error = " + err);
   } else {
-    console.log("getCipherSuite callback = " + data);
+    console.info("getCipherSuite callback = " + data);
   }
 });
 ```
@@ -7538,7 +7538,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getCipherSuite().then((data: Array<string>) => {
-  console.log('getCipherSuite success:' + JSON.stringify(data));
+  console.info('getCipherSuite success:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7576,7 +7576,7 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
   if (err) {
     console.error("getSignatureAlgorithms callback error = " + err);
   } else {
-    console.log("getSignatureAlgorithms callback = " + data);
+    console.info("getSignatureAlgorithms callback = " + data);
   }
 });
 ```
@@ -7610,7 +7610,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getSignatureAlgorithms().then((data: Array<string>) => {
-  console.log("getSignatureAlgorithms success" + data);
+  console.info("getSignatureAlgorithms success" + data);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7688,7 +7688,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 tls.getSocketFd().then((data: number) => {
   console.info("tls socket fd: " + data);
@@ -7732,7 +7732,7 @@ tls.send("xxxx", (err: BusinessError) => {
   if (err) {
     console.error("send callback error = " + err);
   } else {
-    console.log("send success");
+    console.info("send success");
   }
 });
 ```
@@ -7776,7 +7776,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.send("xxxx").then(() => {
-  console.log("send success");
+  console.info("send success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7817,7 +7817,7 @@ tls.close((err: BusinessError) => {
   if (err) {
     console.error("close callback error = " + err);
   } else {
-    console.log("close success");
+    console.info("close success");
   }
 });
 ```
@@ -7854,7 +7854,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.close().then(() => {
-  console.log("close success");
+  console.info("close success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -8077,7 +8077,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   skipRemoteValidation: false
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8135,7 +8135,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8144,7 +8144,7 @@ tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
     console.error('getState fail');
     return;
   }
-  console.log('getState success:' + JSON.stringify(data));
+  console.info('getState success:' + JSON.stringify(data));
 });
 ```
 
@@ -8199,12 +8199,12 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.getState().then(() => {
-  console.log('getState success');
+  console.info('getState success');
 }).catch((err: BusinessError) => {
   console.error('getState fail');
 });
@@ -8263,7 +8263,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8288,7 +8288,7 @@ tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
     console.error('setExtraOptions fail');
     return;
   }
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 });
 ```
 
@@ -8350,7 +8350,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8371,7 +8371,7 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   socketTimeout: 3000
 }
 tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 }).catch((err: BusinessError) => {
   console.error('setExtraOptions fail');
 });
@@ -8431,7 +8431,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8441,7 +8441,7 @@ tlsServer.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
   } else {
     const decoder = util.TextDecoder.create();
     const str = decoder.decodeToString(data.data);
-    console.log("getCertificate callback: " + str);
+    console.info("getCertificate callback: " + str);
   }
 });
 ```
@@ -8499,14 +8499,14 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
   const decoder = util.TextDecoder.create();
   const str = decoder.decodeToString(data.data);
-  console.log("getCertificate: " + str);
+  console.info("getCertificate: " + str);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -8565,7 +8565,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8573,7 +8573,7 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
   if (err) {
     console.error("getProtocol callback error = " + err);
   } else {
-    console.log("getProtocol callback = " + data);
+    console.info("getProtocol callback = " + data);
   }
 });
 ```
@@ -8630,12 +8630,12 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.getProtocol().then((data: string) => {
-  console.log(data);
+  console.info(data);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -8731,12 +8731,12 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
-  console.log(JSON.stringify(data))
+  console.info(JSON.stringify(data))
 });
 ```
 
@@ -8792,13 +8792,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 
 let callback = (data: socket.TLSSocketConnection) => {
-  console.log('on connect message: ' + JSON.stringify(data));
+  console.info('on connect message: ' + JSON.stringify(data));
 }
 tlsServer.on('connect', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -8857,7 +8857,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8918,7 +8918,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -9067,7 +9067,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9078,7 +9078,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       console.error('send fail');
       return;
     }
-    console.log('send success');
+    console.info('send success');
   });
 });
 ```
@@ -9141,14 +9141,14 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.send('Hello, client!').then(() => {
-    console.log('send success');
+    console.info('send success');
   }).catch((err: BusinessError) => {
     console.error('send fail');
   });
@@ -9206,7 +9206,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9217,7 +9217,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       console.error('close fail');
       return;
     }
-    console.log('close success');
+    console.info('close success');
   });
 });
 ```
@@ -9272,13 +9272,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.close().then(() => {
-    console.log('close success');
+    console.info('close success');
   }).catch((err: BusinessError) => {
     console.error('close fail');
   });
@@ -9334,7 +9334,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9344,7 +9344,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       console.error('getRemoteAddress fail');
       return;
     }
-    console.log('getRemoteAddress success:' + JSON.stringify(data));
+    console.info('getRemoteAddress success:' + JSON.stringify(data));
   });
 });
 ```
@@ -9397,13 +9397,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getRemoteAddress().then((data: socket.NetAddress) => {
-    console.log('getRemoteAddress success:' + JSON.stringify(data));
+    console.info('getRemoteAddress success:' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9460,7 +9460,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9471,7 +9471,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
     } else {
       const decoder = util.TextDecoder.create();
       const str = decoder.decodeToString(data.data);
-      console.log("getRemoteCertificate callback: " + str);
+      console.info("getRemoteCertificate callback: " + str);
     }
   });
 });
@@ -9526,7 +9526,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9534,7 +9534,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getRemoteCertificate().then((data: socket.X509CertRawData) => {
     const decoder = util.TextDecoder.create();
     const str = decoder.decodeToString(data.data);
-    console.log("getRemoteCertificate success: " + str);
+    console.info("getRemoteCertificate success: " + str);
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9592,7 +9592,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9601,7 +9601,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
     if (err) {
       console.error("getCipherSuite callback error = " + err);
     } else {
-      console.log("getCipherSuite callback = " + data);
+      console.info("getCipherSuite callback = " + data);
     }
   });
 });
@@ -9657,13 +9657,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getCipherSuite().then((data: Array<string>) => {
-    console.log('getCipherSuite success:' + JSON.stringify(data));
+    console.info('getCipherSuite success:' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9719,7 +9719,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9728,7 +9728,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
     if (err) {
       console.error("getSignatureAlgorithms callback error = " + err);
     } else {
-      console.log("getSignatureAlgorithms callback = " + data);
+      console.info("getSignatureAlgorithms callback = " + data);
     }
   });
 });
@@ -9782,13 +9782,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getSignatureAlgorithms().then((data: Array<string>) => {
-    console.log("getSignatureAlgorithms success" + data);
+    console.info("getSignatureAlgorithms success" + data);
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9909,7 +9909,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9923,8 +9923,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       let message = String.fromCharCode(messages);
       messageView += message;
     }
-    console.log('on message message: ' + JSON.stringify(messageView));
-    console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+    console.info('on message message: ' + JSON.stringify(messageView));
+    console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
   });
 });
 ```
@@ -9977,7 +9977,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9990,8 +9990,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('message', callback);
@@ -10049,13 +10049,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('close', () => {
-    console.log("on close success")
+    console.info("on close success")
   });
 });
 ```
@@ -10108,13 +10108,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 
 let callback = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('close', callback);
@@ -10172,7 +10172,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -10232,7 +10232,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
