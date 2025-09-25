@@ -23,15 +23,15 @@ UiTest支持采用ArkTS API与Shell命令两种方式，为界面自动化测试
 
 ![arkxtest-uitest](figures/Uitest.PNG)
 
-UiTest框架分为客户端和服务端。
+UiTest分为客户端和服务端。
 
 **· 客户端：**
 包含跨语言通信层、IPC模块等，主要功能为对外导出API，为UI测试框架启动提供入口。客户端由测试应用加载，运行在应用进程。其中，跨语言通信层主要进行接口导出、JSON序列化对象处理、上层ArkTS接口与底层C++接口的转换、参数解析和校验。此外，由于本模块涉及C++层对ArkTS层回调函数的调用，跨语言通信层同时负责ArkTS回调函数的管理和调用。
 
 **· 服务端：**
 以独立进程运行，通过IPC与客户端进行通信。服务端启动后，通过广播与客户端建立连接，通过IPC通信确保连接不断开。服务端监听客户端进程状态，实现按需启停。服务端负责UI测试框架核心逻辑的处理，主要分为以下两部分：
-1. 框架运行通用能力：<br> 进行IPC消息处理、进程管理、C++接口和错误码的管理，包括接口调用监听等。
-2. UI测试能力：<br> 解析无障碍节点构建页面控件树、控件匹配查找、操作事件构造、多模事件注入、UI事件监听、屏幕显示控制等。
+1. 框架运行通用能力：进行IPC消息处理、进程管理、C++接口和错误码的管理，包括接口调用监听等。
+2. UI测试能力：解析无障碍节点构建页面控件树、控件匹配查找、操作事件构造、多模事件注入、UI事件监听、屏幕显示控制等。
 
 此外，UiTest运行过程中需依赖部分系统部件，包括元能力、方舟UI框架、无障碍服务、多模子系统、图片框架、公共事件服务、hidumper、TestServer等。
 
@@ -48,11 +48,11 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 
 1. 调用<!--RP1-->[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)<!--RP1End-->能力，启动目标被测应用，并确认应用运行状态。
 2. 调用UI测试框架能力，页面中执行点击操作。
-3. 通过<!--RP2-->[添加断言](jsunit-guidelines.md#)<!--RP2End-->，验证操作后当前页面的实际变化是否与预期结果一致。
+3. 通过<!--RP2-->[添加断言](unittest-guidelines.md#)<!--RP2End-->，验证操作后当前页面的实际变化是否与预期结果一致。
 
 开发步骤如下:
 
-1. 在 main > ets > pages 文件夹下编写 Index.ets 页面代码，作为被测示例demo。
+1. 在main>ets>pages文件夹下编写Index.ets页面代码，作为被测示例demo。
 ```ts
   @Entry
   @Component
@@ -126,7 +126,7 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 ```
 ### 控件查找与操作
 
-支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
+UiTest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -167,7 +167,7 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 
 ### 模拟触摸屏手指操作
 
-支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
+UiTest支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
 
 以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
 ```ts
@@ -226,7 +226,9 @@ export default function abilityTest() {
     it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, "testWaitForComponent_static Start!!!");
       let driver = Driver.create();
+      // 调用元能力接口，拉起目标应用
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      // 通过等待目标应用首页上的指定控件出现，判断应用拉起完成
       let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
     })
   })
@@ -235,7 +237,7 @@ export default function abilityTest() {
 
 ### 模拟文本输入
 
-支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
+UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
 
 以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
@@ -305,7 +307,7 @@ export default function abilityTest() {
 
 > **说明：**
 > 1. 指定截图文件保存路径，路径需为当前应用的<!--RP6-->[沙箱路径](../file-management/app-sandbox-directory.md)<!--RP6End-->。
-> 2. 测试hap的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
+> 2. 测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
 > 3. 多屏场景下，期望对指定屏幕做截屏操作时，可以调用display模块的接口<!--RP8-->[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)<!--RP8End-->，实现<!--RP9-->[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)<!--RP9End-->。
 
 以下示例代码演示了如何使用UiTest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
@@ -323,7 +325,8 @@ export default function abilityTest() {
      */
     it('screenCapture', TestType.FUNCTION, async () => {
       let driver = Driver.create();
-      // 应用沙箱路径，el2为用户级加密区，base为应用在本设备上存放持久化数据的子目录。
+      // 应用沙箱路径，el2为用户级加密区，base为应用在本设备上存放持久化数据的子目录
+      // 请开发者使用时替换为实际的路径。
       let savePath = '/data/storage/el2/base/cache/1.png';
       let res = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100});
     })
@@ -802,9 +805,9 @@ hdc shell uitest start-daemon
 >
 > 设备需调成开发者模式。
 >
-> 仅元能力aa test拉起的测试hap才能调用Uitest的能力。
+> 仅元能力aa test拉起的测试HAP才能调用Uitest的能力。
 >
-> 测试hap的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
+> 测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
 
 <!--Del-->
 
