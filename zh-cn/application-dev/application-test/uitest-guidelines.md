@@ -13,15 +13,15 @@ UI测试框架（UiTest）为开发者提供UI界面查找和操作模拟能力�
 
 ## 功能全景
 
-UiTest支持采用ArkTS API与Shell命令两种方式，为界面自动化测试提供灵活高效的技术支撑，其中：
+UiTest支持采用ArkTS API与命令行两种方式，为界面自动化测试提供灵活高效的技术支撑，其中：
 
 **ArkTS 脚本开发能力：** 
 提供简洁易用的API接口，满足各类测试场景需求，支持点击、双击、长按、滑动等常用UI交互操作，助力开发者快速开发基于界面交互逻辑的自动化测试脚本。
 
 **Shell 命令测试能力：**
-支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
+支持通过命令行直接实现多元化测试操作，包括获取当前界面截屏、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
 
-![arkxtest-uitest](figures/Uitest.PNG)
+![arkxtest-uitest](figures/UiTest.PNG)
 
 UiTest分为客户端和服务端。
 
@@ -32,9 +32,6 @@ UiTest分为客户端和服务端。
 以独立进程运行，通过IPC与客户端进行通信。服务端启动后，通过广播与客户端建立连接，通过IPC通信确保连接不断开。服务端监听客户端进程状态，实现按需启停。服务端负责UI测试框架核心逻辑的处理，主要分为以下两部分：
 1. 框架运行通用能力：进行IPC消息处理、进程管理、C++接口和错误码的管理，包括接口调用监听等。
 2. UI测试能力：解析无障碍节点构建页面控件树、控件匹配查找、操作事件构造、多模事件注入、UI事件监听、屏幕显示控制等。
-
-此外，UiTest运行过程中需依赖部分系统部件，包括元能力、方舟UI框架、无障碍服务、多模子系统、图片框架、公共事件服务、hidumper、TestServer等。
-
 
 ## 使用ArkTS接口进行UI测试
 
@@ -124,6 +121,7 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
     })
   }
 ```
+
 ### 控件查找与操作
 
 UiTest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
@@ -138,7 +136,7 @@ UiTest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
       /**
        * 查找类型为'Button'的控件，并进行控件点击操作
        */
-      it("componentSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
+      it("componentSearchAndOperation", TestType.FUNCTION, async () => {
         let driver: Driver = Driver.create();
         let button: Component = await driver.findComponent(ON.type('Button'));
         await button.click();
@@ -147,7 +145,7 @@ UiTest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
       /**
        * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
        */
-      it("relativePositioncomponentSearch", TestType.FUNCTION, async (done: Function) => {
+      it("relativePositioncomponentSearch", TestType.FUNCTION, async () => {
         let driver: Driver = Driver.create();
         let on: On = ON.text('123').within(ON.type('Scroll'));
         let items: Array<Component> = await driver.findComponents(on);
@@ -156,7 +154,7 @@ UiTest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
       /**
        * 查找类型为'Image'的控件，并进行对其进行双指放大操作。
        */
-      it("componentPinch", TestType.FUNCTION, async (done: Function) => {
+      it("componentPinch", TestType.FUNCTION, async () => {
         let driver: Driver = Driver.create();
         let image: Component = await driver.findComponent(ON.type('Image'));
         await image.pinchOut(1.5);
@@ -180,7 +178,7 @@ export default function abilityTest() {
     /**
      * 基于坐标的触摸屏手指操作
      */
-    it("touchScreenOperation", TestType.FUNCTION, async (done: Function) => {
+    it("touchScreenOperation", TestType.FUNCTION, async () => {
       let driver: Driver = Driver.create();
       // 单击
       await driver.click(100,100);
@@ -224,7 +222,6 @@ const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorReg
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, "testWaitForComponent_static Start!!!");
       let driver = Driver.create();
       // 调用元能力接口，拉起目标应用
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
@@ -357,9 +354,7 @@ import { Driver, UIElementInfo } from '@kit.TestKit';
 
 export default function abilityTest() {
   describe('observerTest', () => {
-    /**
-     * 监听toast控件出现。
-     */
+    // 监听Toast控件出现
     it("toastObserver", TestType.FUNCTION, async () => {
       let driver = Driver.create();
       let observer = driver.createUIEventObserver();
@@ -386,9 +381,7 @@ import { KeyCode } from '@ohos.multimodalInput.keyCode';
 
 export default function abilityTest() {
   describe('KeyboardMouseTest', () => {
-    /**
-     * 模拟键盘按键输入、组合键输入。
-     */
+    // 模拟键盘按键输入、组合键输入
     it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create();
       // 键盘按键输入（注入返回键）
@@ -397,9 +390,7 @@ export default function abilityTest() {
       await driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT,  KeyCode.KEYCODE_S);
     })
 
-    /**
-     * 模拟鼠标左键单击、鼠标移动、鼠标拖拽操作。
-     */
+    // 模拟鼠标左键单击、鼠标移动、鼠标拖拽操作
     it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create();
       // 鼠标左键单击
@@ -410,9 +401,7 @@ export default function abilityTest() {
       await driver.mouseDrag({x: 100, y: 100}, {x: 200, y: 200}, 600);
     })
 
-    /**
-     * 模拟键盘、鼠标组合操作。
-     */
+    // 模拟键盘、鼠标组合操作
     it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create();
       // 按下左CTRL键，同时鼠标滚轮滚动
@@ -434,10 +423,8 @@ import { Driver, Component, ON, On } from '@kit.TestKit';
 
 export default function abilityTest() {
   describe('windowOperationTest', () => {
-    /**
-     * 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
-     */
-    it("windowSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
+    // 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
+    it("windowSearchAndOperation", TestType.FUNCTION, async () => {
       let driver = Driver.create();
       let window = await driver.findWindow({active: true});
       await window.minimize();
@@ -456,9 +443,7 @@ import { Driver, UiDirection } from '@kit.TestKit';
 
 export default function abilityTest() {
   describe('touchPadOperationTest', () => {
-    /**
-     * PC场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作。
-     */
+    // PC场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
     it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create();
       // 触摸板三指上滑返回桌面。
@@ -481,9 +466,7 @@ import { Driver } from '@kit.TestKit';
 
 export default function abilityTest() {
   describe('penOperationTest', () => {
-    /**
-     * 模拟手写笔单击、双击、长按、滑动操作
-     */
+    // 模拟手写笔单击、双击、长按、滑动操作
     it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create();
       // 手写笔单击
@@ -503,9 +486,7 @@ export default function abilityTest() {
 以下示例代码演示了如何使用UiTest接口进行表冠模拟操作，包括表冠的顺/逆时针旋转。
 
 ```ts
-/**
-  * 手表场景，模拟表冠顺/逆时针旋转
-  */
+// 手表场景，模拟表冠顺/逆时针旋转
 it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
   let driver = Driver.create();
   // 顺时针旋转50格，旋转速度为30格/秒
@@ -519,9 +500,7 @@ it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () =
 以下示例代码演示了如何使用UiTest接口进行屏幕显示操作，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。
 
 ```ts
-/**
-  * 屏幕属性获取和屏幕操作
-  */
+// 屏幕属性获取和屏幕操作
 it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
   let driver = Driver.create();
   // 获取屏幕大小
@@ -535,10 +514,9 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 })
 ```
 
-## 基于Shell命令进行UI测试
+## 基于命令行进行UI测试
 
-在开发阶段，若需快速执行截屏、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可直接借助Shell命令实现，高效完成各类测试验证需求，显著提升操作便捷性与测试效率。
-在开发阶段，如果需要快速执行截屏、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可借助Shell命令实现，提升测试效率。
+在开发阶段，如果需要快速执行截屏、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可借助命令行实现，提升测试效率。
 
 > **环境要求：**
 >
@@ -547,20 +525,20 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 ### 命令列表
 | 命令            | 参数   |说明                              |
 |---------------|---------------------------------|---------------------------------|
-| help          | - |  显示uitest工具能够支持的命令信息。            |
+| help          | - |  显示UiTest工具能够支持的命令信息。            |
 | screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
 | dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
-| uiRecord        | uiRecord \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
+| uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
 | uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入ui模拟操作](#注入ui模拟操作)。|
-| --version | --version|获取当前工具版本信息。 |
-| start-daemon|start-daemon| 拉起uitest测试进程。 |
+| --version | - |获取当前UiTest工具版本信息。 |
+| start-daemon| - | 拉起UiTest测试进程。 |
 
 ### 获取截图
 
-| 命令    |   参数   | 说明       | 
-|---------|--------------|-----------|
-| -p | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
-| -d | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
+| 参数    |   二级参数   |说明       | 
+|---------|---------|------------|
+| -p | \<savePath\> | 指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
+| -d | \<displayId\> | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 存储路径：/data/local/tmp，文件名：时间戳 + .png。
@@ -568,23 +546,23 @@ hdc shell uitest screenCap
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest screenCap -p /data/local/tmp/1.png
 ```
-
+ 
 ### 获取控件树
-| 命令    |   参数   | 说明       | 
-|---------|--------------|-----------|
-| **-p** | \<savePath\> |指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .json'。|
-| **-i** | |不过滤不可见控件，也不做窗口合并。|
-| **-a** | |保存 BackgroundColor、 Content、FontColor、FontSize、extraAttrs 属性数据。<br>**说明** ：默认不保存上述属性数据， **-a和-i不可同时使用。** | 
-| **-b** | \<bundleName\> |获取指定包名对应目标窗口的控件树信息。|
-| **-w** | \<windowId\>  |获取指定ID目标窗口的控件树信息。|
-| **-m** | \<true\|false\> |指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
-| **-d** | \<displayId\>  |多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
+| 参数    | 二级参数   |  说明       | 
+|---------|---------|-----------|
+| -p | \<savePath\> | 指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .json'。|
+| -i | - | 不过滤不可见控件，也不做窗口合并。|
+| -a | - | 保存控件的BackgroundColor、Content、FontColor、FontSize、extraAttrs属性数据。<br>**说明** ：默认不保存上述属性数据， **-a和-i不可同时使用。** | 
+| -b | \<bundleName\> | 获取指定包名对应目标窗口的控件树信息。|
+| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。|
+| -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
+| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest dumpLayout -p /data/local/tmp/1.json
 ```
-**说明**：可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的WinId和DisplayId。
+**说明:**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的WinId和DisplayId。
 
 ```bash
 # 指定获取ID为0的屏幕的控件树信息。
@@ -596,17 +574,17 @@ hdc shell uitest dumpLayout -d 0
 >
 > 录制过程中，需等待当前操作的识别结果在命令行输出后，再进行下一步操作。
 
-**命令列表**
-| 命令   | 参数    |  必填 | 说明              | 
+**参数列表**
+| 参数   | 二级参数    |   说明              | 
 |-------|--------------|------|-----------------|
-| -W    | \<true/false> | 否   | 录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 <br> **说明：** 从API version 20开始支持该命令。|
-| -l    | - | 否   | 在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
-| -c    | \<true/false> | 否   | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示打印，不设置时默认为true。<br> **说明：** 从API version 20开始支持该命令。 | 
+| -W    | \<true/false> |  录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 <br> **说明：** 从API version 20开始支持该命令。|
+| -l    | - |  在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
+| -c    | \<true/false> | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示打印，不设置时默认为true。<br> **说明：** 从API version 20开始支持该命令。 | 
 
 ```bash
 # 将当前界面操作记录到/data/local/tmp/record.csv，结束录制操作使用Ctrl+C结束录制。
 hdc shell uitest uiRecord record
-# 录制时仅记录操作对应的坐标，不匹配目标控件。
+# 录制时仅记录操作的坐标，不匹配目标控件。
 hdc shell uitest uiRecord record -W false
 # 每次操作后，保存页面布局，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。
 hdc shell uitest uiRecord record -l
@@ -616,7 +594,7 @@ hdc shell uitest uiRecord record -c false
 hdc shell uitest uiRecord read
 ```
 
-以下举例为：record数据中包含的字段及字段含义，仅供参考。
+以下举例为：录制数据中字段及含义如下。
 
  ```json
  {
@@ -624,7 +602,7 @@ hdc shell uitest uiRecord read
    "BUNDLE": "com.ohos.launcher", // 操作应用
    "CENTER_X": "", // 预留字段,暂未使用
    "CENTER_Y": "", // 预留字段,暂未使用
-   "EVENT_TYPE": "pointer", //  
+   "EVENT_TYPE": "pointer", // 操作类型
    "LENGTH": "0", // 总体步长
    "OP_TYPE": "click", //事件类型，当前支持点击、双击、长按、拖拽、滑动、抛滑动作录制
    "VELO": "0.000000", // 离手速度
@@ -635,13 +613,13 @@ hdc shell uitest uiRecord read
      "LENGTH": "0", // 总体步长
      "MAX_VEL": "40000", // 最大速度
      "VELO": "0.000000", // 离手速度
-     "W1_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 起点控件bounds
-     "W1_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 起点控件hierarchy
+     "W1_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 起点控件边界
+     "W1_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 起点控件页面层级
      "W1_ID": "", // 起点控件id
      "W1_Text": "", // 起点控件text
      "W1_Type": "Image", // 起点控件类型
-     "W2_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 终点控件bounds
-     "W2_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 终点控件hierarchy
+     "W2_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 终点控件边界
+     "W2_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 终点控件页面层级
      "W2_ID": "", // 终点控件id
      "W2_Text": "", // 终点控件text
      "W2_Type": "Image", // 终点控件类型
@@ -649,7 +627,7 @@ hdc shell uitest uiRecord read
      "X_POSI": "47", // 起点X
      "Y2_POSI": "301", // 终点Y
      "Y_POSI": "301", // 起点Y
-     "direction.X": "0.000000", // x方向移动量
+     "direction.X": "0.000000", // X方向移动量
      "direction.Y": "0.000000" // Y方向移动量
    }],
    "fingerNumber": "1" //手指数量
@@ -658,19 +636,19 @@ hdc shell uitest uiRecord read
 
 ### 注入UI模拟操作
 
-| 命令   | 必填 | 说明              | 
-|------|------|-----------------|
-| help   | 是    | uiInput命令相关帮助信息。 |
-| click   | 是    | 模拟单击操作。具体请参考下方**uiInput-click/doubleClick/longClick使用示例**。      | 
-| doubleClick   | 是    | 模拟双击操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。      | 
-| longClick   | 是    | 模拟长按操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。     | 
-| fling   | 是    | 模拟快滑操作。具体请参考下方**uiInput fling使用示例**。   | 
-| swipe   | 是    | 模拟慢滑操作。具体请参考下方**uiInput swipe/drag使用示例**。     | 
-| drag   | 是    | 模拟拖拽操作。具体请参考下方**uiInput swipe/drag使用示例**。     | 
-| dircFling   | 是    | 模拟指定方向滑动操作。具体请参考下方**uiInput dircFling使用示例**。     |
-| inputText   | 是    | 指定坐标点，模拟输入框输入文本操作。具体请参考下方**uiInput inputText使用示例**。                   |
-| text   | 是    | 无需指定坐标点，在当前获焦处，模拟输入框输入文本操作。具体请参考下方**uiInput text使用示例**。<br> **说明：** 从API version 18开始支持该命令。|
-| keyEvent   | 是    | 模拟实体按键事件（如：键盘，电源键，返回上一级，返回桌面等），以及组合按键操作。具体请参考下方**uiInput keyEvent使用示例**。     | 
+| 参数   |  说明              | 
+|------|----------------|
+| help   |uiInput命令相关帮助信息。 |
+| click   |  模拟单击操作。具体请参考下方**uiInput-click/doubleClick/longClick使用示例**。      | 
+| doubleClick   |  模拟双击操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。      | 
+| longClick   |模拟长按操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。     | 
+| fling   | 模拟快滑操作，即操作结束后页面存在惯性滚动。具体请参考下方**uiInput fling使用示例**。   | 
+| swipe   |  模拟慢滑操作。具体请参考下方**uiInput swipe/drag使用示例**。     | 
+| drag   | 模拟拖拽操作。具体请参考下方**uiInput swipe/drag使用示例**。     | 
+| dircFling   |  模拟指定方向滑动操作。具体请参考下方**uiInput dircFling使用示例**。     |
+| inputText   |  指定坐标点，模拟输入框输入文本操作。具体请参考下方**uiInput inputText使用示例**。                   |
+| text   |  无需指定坐标点，在当前获焦处，模拟输入框输入文本操作。具体请参考下方**uiInput text使用示例**。<br> **说明：** 从API version 18开始支持该命令。|
+| keyEvent   | 模拟实体按键事件（如：键盘，电源键，返回上一级，返回桌面等），以及组合按键操作。具体请参考下方**uiInput keyEvent使用示例**。     | 
 
 
 - uiInput-click/doubleClick/longClick使用示例
@@ -810,8 +788,6 @@ hdc shell uitest start-daemon
 > 测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
 
 <!--Del-->
-
-
 ## UI测试脚本实例
 
 ### 查找指定控件能力实例
@@ -862,7 +838,7 @@ UI测试用例执行失败，查看hilog日志发现日志中有“uitest-api do
 **可能原因**
 
 1. 用例中UI测试框架提供异步接口没有增加await语法糖调用。
-2. 多进程执行UI测试用例，导致拉起多个UITest进程，框架不支持多进程调用。
+2. 多进程执行UI测试用例，导致拉起多个UiTest进程，框架不支持多进程调用。
 
 **解决方法**
 
@@ -891,7 +867,7 @@ UI测试用例执行失败，查看hilog日志发现日志中有“Cannot connec
 
 **可能原因**
 
-在用例执行的同时使用了其他依赖UI测试框架运行的测试工具，如：DevEco Testing，hypium等。
+在用例执行的同时使用了其他依赖UI测试框架运行的测试工具。
 
 **解决方法**
 
