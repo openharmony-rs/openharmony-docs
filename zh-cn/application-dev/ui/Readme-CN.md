@@ -37,6 +37,7 @@
       - [ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象](arkts-sta-interop-dyn-wrappedbuilder.md)
       - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-builderparam.md)
       - [使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
+      - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](arkts-sta-interop-dyn-navigation.md)
     - [状态管理V1互操作](arkts-sta-interop-dyn-statemanager-v1.md)
       - [ArkTS-Sta使用ArkTS-Dyn状态管理互操作](arkts-sta-interop-dyn-statemanagement.md)
       - [ArkTS-Sta与ArkTS-Dyn应用间状态存储互操作](arkts-sta-interop-dyn-storages.md)
