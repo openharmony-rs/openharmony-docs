@@ -416,7 +416,7 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1010,7 +1010,7 @@ ArkTS-Sta: defaultFixedFontSize(size: int)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1073,7 +1073,7 @@ ArkTS-Sta: defaultFontSize(size: int)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1136,7 +1136,7 @@ ArkTS-Sta: minFontSize(size: int)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1199,7 +1199,7 @@ ArkTS-Sta: minLogicalFontSize(size: int)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1260,7 +1260,7 @@ webFixedFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1322,7 +1322,7 @@ webSansSerifFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1383,7 +1383,7 @@ webSerifFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1444,7 +1444,7 @@ webStandardFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1505,7 +1505,7 @@ webFantasyFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1564,7 +1564,7 @@ webCursiveFont(family: string)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1625,7 +1625,7 @@ darkMode(mode: WebDarkMode)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1752,7 +1752,7 @@ pinchSmooth(isEnabled: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
