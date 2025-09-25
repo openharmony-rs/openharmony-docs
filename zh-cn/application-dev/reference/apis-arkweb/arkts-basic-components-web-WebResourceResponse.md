@@ -26,6 +26,10 @@ getReasonMessage(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -42,6 +46,10 @@ ArkTS-Sta: getResponseCode(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明          |
@@ -55,6 +63,10 @@ getResponseData(): string
 获取资源响应数据。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -70,6 +82,10 @@ getResponseEncoding(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明         |
@@ -84,6 +100,10 @@ getResponseHeader() : Array\<Header\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                         | 说明       |
@@ -97,6 +117,10 @@ getResponseMimeType(): string
 获取资源响应的媒体（MIME）类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -113,6 +137,10 @@ ArkTS-Sta: getResponseDataEx(): string | int | ArrayBuffer | Resource | undefine
 获取资源响应数据，支持多种数据类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -132,6 +160,10 @@ getResponseIsReady(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 |类型|说明|
@@ -148,6 +180,10 @@ ArkTS-Sta: setResponseData(data: string \| int \| Resource \| ArrayBuffer): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                     | 必填   | 说明                                     |
@@ -161,6 +197,10 @@ setResponseEncoding(encoding: string): void
 设置资源响应的编码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -176,6 +216,10 @@ setResponseMimeType(mimeType: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型   | 必填   | 说明                 |
@@ -190,6 +234,10 @@ setReasonMessage(reason: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明            |
@@ -203,6 +251,10 @@ setResponseHeader(header: Array\<Header\>): void
 设置资源响应头。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -220,6 +272,10 @@ ArkTS-Sta: setResponseCode(code: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明          |
@@ -230,12 +286,16 @@ ArkTS-Sta: setResponseCode(code: int): void
 
 setResponseIsReady(IsReady: boolean): void
 
-设置资源响应数据是否已经就绪。
+设置资源响应数据是否已经就绪。若未显式调用属性，默认资源响应数据已就绪。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名   | 类型    | 必填  | 说明          |
 | ------- | ------- | ---- | ------------- |
-| IsReady | boolean | 是   | 资源响应数据是否已经就绪。<br>true表示资源响应数据已经就绪，false表示资源响应数据未就绪。默认值：true。 |
+| IsReady | boolean | 是   | 资源响应数据是否已经就绪。<br>true表示资源响应数据已经就绪，false表示资源响应数据未就绪。 |
