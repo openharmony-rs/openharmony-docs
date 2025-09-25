@@ -555,7 +555,7 @@ ArkTS-Sta: skipToQueueItem(itemId: int, callback: AsyncCallback\<void>): void
 | 参数名    | 类型                  | 必填 | 说明                                                        |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
 | itemId   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 播放列表单项的ID值，用以表示选中的播放列表单项。                |
-| callback | AsyncCallback\<void>  | 是   | 回调函数。<br>ArkTS-Dyn: 当播放状态设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当播放状态设置成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>  | 是   | 回调函数。<br>ArkTS-Dyn：当播放状态设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当播放状态设置成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -786,7 +786,7 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
 | event    | [KeyEvent](../apis-input-kit/js-apis-keyevent.md) | 是   | 按键事件。 |
-| callback | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn: 当事件发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当事件发送成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn：当事件发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当事件发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1148,7 +1148,7 @@ destroy(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn: 当控制器销毁成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当控制器销毁成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当控制器销毁成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当控制器销毁成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1376,7 +1376,7 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | command  | [AVControlCommand](arkts-apis-avsession-i.md#avcontrolcommand10) | 是   | 会话的相关命令和命令相关参数。                               |
-| callback | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn: 当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当命令发送成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1537,7 +1537,7 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>, call
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
 | args | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的控制命令键值对。 |
-| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn: 当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当命令发送成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 > **说明：**
 > 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
@@ -2188,7 +2188,7 @@ on(type: 'sessionDestroy', callback: () => void)
 | 参数名   | 类型       | 必填 | 说明                                                         |
 | -------- | ---------- | ---- | ------------------------------------------------------------ |
 | type     | string     | 是   | 事件回调类型，支持事件`'sessionDestroy'`：当检测到会话销毁时，触发该事件）。 |
-| callback | () => void | 是   | 回调函数。<br>ArkTS-Dyn: 当监听事件注册成功，err为undefined，否则为错误对象。<br>ArkTS-Sta: 当监听事件注册成功，err为null，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -2223,7 +2223,7 @@ off(type: 'sessionDestroy', callback?: () => void)
 | 参数名   | 类型       | 必填 | 说明                                                         |
 | -------- | ---------- | ---- | ------------------------------------------------------------ |
 | type     | string     | 是   | 取消对应的监听事件，支持事件`'sessionDestroy'`。             |
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 

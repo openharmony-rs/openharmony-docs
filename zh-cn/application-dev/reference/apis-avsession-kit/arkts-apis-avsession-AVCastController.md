@@ -445,7 +445,7 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | command  | [AVCastControlCommand](arkts-apis-avsession-i.md#avcastcontrolcommand10) | 是   | 会话的相关命令和命令相关参数。                               |
-| callback | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn: 当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当命令发送成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -507,7 +507,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | item | [AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10) | 是   | 播放列表中单项的相关属性。 |
-| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn: 当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当命令发送成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -699,7 +699,7 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | item | [AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10) | 是   | 播放列表中单项的相关属性。 |
-| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn: 当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当命令发送成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -889,9 +889,9 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| callback | AsyncCallback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                  | 是   | 回调函数。<br>ArkTS-Dyn: 当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当命令发送成功，err为null，否则返回错误对象。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1169,7 +1169,7 @@ release(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn: 当命令执行成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当命令执行成功，err为null，否则返回错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当命令执行成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令执行成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1658,7 +1658,7 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'requestPlay'`：当请求播放状态变化时，触发该事件。 |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>ArkTS-Dyn: 当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件注册成功，err为null，否则返回错误对象。 |
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1704,7 +1704,7 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'requestPlay'`。                |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1746,7 +1746,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 | 参数名   | 类型             | 必填 | 说明                                                         |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
 | type     | string           | 是   | 事件回调类型，支持事件`'endOfStream'`：当资源播放结束时，触发该事件。 |
-| callback | Callback\<void\> | 是   | 回调函数。<br>ArkTS-Dyn: 当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件注册成功，err为null，否则返回错误对象。 |
+| callback | Callback\<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1792,7 +1792,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 | 参数名   | 类型             | 必填 | 说明                                                         |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
 | type     | string           | 是   | 取消对应的监听事件，支持事件`'endOfStream'`。                |
-| callback | Callback\<void\> | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<void\> | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2268,7 +2268,7 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持的事件是`'keyRequest'`。 |
-| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2371,7 +2371,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlGenericError'。 |
-| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2474,7 +2474,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlIoError'。 |
-| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2565,7 +2565,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlParsingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-ta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-ta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2657,7 +2657,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2748,7 +2748,7 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlAudioRendererError'。 |
-| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2844,7 +2844,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlDrmError'。 |
-| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn: 当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta: 当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
