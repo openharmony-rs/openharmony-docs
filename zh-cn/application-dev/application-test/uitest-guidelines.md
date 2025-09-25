@@ -19,15 +19,17 @@ UiTest支持采用ArkTS API与Shell命令两种方式，为界面自动化测试
 提供简洁易用的API接口，满足各类测试场景需求，支持点击、双击、长按、滑动等常用UI交互操作，助力开发者快速开发基于界面交互逻辑的自动化测试脚本。
 
 **Shell 命令测试能力：**
-支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、导出界面控件树结构、录制界面操作流程、便捷注入UI模拟事件等。
+支持通过Shell命令直接实现多元化测试操作，包括获取当前界面截屏、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
 
 ![arkxtest-uitest](figures/Uitest.PNG)
 
 UiTest框架分为客户端和服务端。
 
-**· 客户端**包含跨语言通信层、IPC模块等，主要功能为对外导出API，为UI测试框架启动提供入口。客户端由测试应用加载，运行在应用进程。其中，跨语言通信层主要进行接口导出、JSON序列化对象处理、上层ArkTS接口与底层C++接口的转换、参数解析和校验。此外，由于本模块涉及C++层对ArkTS层回调函数的调用，跨语言通信层同时负责ArkTS回调函数的管理和调用。
+**· 客户端：**
+包含跨语言通信层、IPC模块等，主要功能为对外导出API，为UI测试框架启动提供入口。客户端由测试应用加载，运行在应用进程。其中，跨语言通信层主要进行接口导出、JSON序列化对象处理、上层ArkTS接口与底层C++接口的转换、参数解析和校验。此外，由于本模块涉及C++层对ArkTS层回调函数的调用，跨语言通信层同时负责ArkTS回调函数的管理和调用。
 
-**· 服务端**以独立进程运行，通过IPC与客户端进行通信。服务端启动后，通过广播与客户端建立连接，通过IPC通信确保连接不断开。服务端监听客户端进程状态，实现按需启停。服务端负责UI测试框架核心逻辑的处理，主要分为以下两部分：
+**· 服务端：**
+以独立进程运行，通过IPC与客户端进行通信。服务端启动后，通过广播与客户端建立连接，通过IPC通信确保连接不断开。服务端监听客户端进程状态，实现按需启停。服务端负责UI测试框架核心逻辑的处理，主要分为以下两部分：
 1. 框架运行通用能力：<br> 进行IPC消息处理、进程管理、C++接口和错误码的管理，包括接口调用监听等。
 2. UI测试能力：<br> 解析无障碍节点构建页面控件树、控件匹配查找、操作事件构造、多模事件注入、UI事件监听、屏幕显示控制等。
 
@@ -36,129 +38,131 @@ UiTest框架分为客户端和服务端。
 
 ## 使用ArkTS接口进行UI测试
 
-本章节将重点讲解 UI 测试框架 ArkTS API 的核心能力与具体使用方法，为开发者开展界面自动化测试提供清晰指引。
+本章节介绍UI测试框架ArkTS API的具体使用方法。
 
-UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定义与参数说明可参考具体请参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)。
+UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定义与参数说明可参考[API文档](../reference/apis-test-kit/js-apis-uitest.md)。
 
 ### UI测试简例
 
-下方示例代码以[单元测试脚本](jsunit-guidelines.md#)为基础，进行UI测试的增量开发，实现的核心步骤为：
-1) 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态。
-2) 调用UI测试框架能力，页面中执行点击操作。
-3) 通过[添加断言](jsunit-guidelines.md#)，验证操作后当前页面的实际变化是否与预期结果一致。
+下面提供一个UI测试的简单示例，在[单元测试脚本](jsunit-guidelines.md#)基础上进行UI测试的增量开发，具体实现功能如下：
 
-1. 编写Index.ets页面代码，作为被测示例demo。
+1. 调用[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)能力，启动目标被测应用，并确认应用运行状态。
+2. 调用UI测试框架能力，页面中执行点击操作。
+3. 通过[添加断言](jsunit-guidelines.md#)，验证操作后当前页面的实际变化是否与预期结果一致。
+
+开发步骤如下:
+
+1. 在 main > ets > pages 文件夹下编写 Index.ets 页面代码，作为被测示例demo。
 ```ts
-@Entry
-@Component
-struct Index {
-    @State message: string = 'Hello World';
-    @State text: string = 'Next';
-    build() {
-    Row() {
-        Column() {
-        Text(this.message)
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-        Text(this.text)
-            .fontSize(50)
-            .margin({top:20})
-            .fontWeight(FontWeight.Bold)          
-            .onClick((event?: ClickEvent) => {
-                if(event){
-                    this.text = 'after click';
-                }
-            })
-        .width('100%')
-        }
-    }
-    .height('100%')
-    }
-}
+  @Entry
+  @Component
+  struct Index {
+      @State message: string = 'Hello World';
+      @State text: string = 'Next';
+      build() {
+      Row() {
+          Column() {
+          Text(this.message)
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+          Text(this.text)
+              .fontSize(50)
+              .margin({top:20})
+              .fontWeight(FontWeight.Bold)          
+              .onClick((event?: ClickEvent) => {
+                  if(event){
+                      this.text = 'after click';
+                  }
+              })
+          .width('100%')
+          }
+      }
+      .height('100%')
+      }
+  }
 ```
 
-2. 在ohosTest > ets > test文件夹下.test.ets文件中编写具体测试代码。
+2. 在ohosTest > ets > test文件夹下新建uitest.test.ets文件，并编写具体测试代码。
 ```ts
-import { describe, it, expect, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-import { UIAbility, Want } from '@kit.AbilityKit';
+  import { describe, it, expect, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+  import { UIAbility, Want } from '@kit.AbilityKit';
 
-const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-export default function abilityTest() {
-  describe('ActsAbilityTest', () => {
-    it('testUiExample',Level.LEVEL3, async (done: Function) => {
-      console.info("uitest: TestUiExample begin");        
-      // 初始化Driver对象
-      const driver = Driver.create();
-      const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-      // 指定被测应用包名、ability名
-      const want: Want = {
-          bundleName: bundleName,
-          abilityName: 'EntryAbility'
-      }
-      // 拉起被测应用
-      await delegator.startAbility(want);
-      // 等待应用拉起完成
-      await driver.waitForIdle(4000,5000);
-      // 确认当前应用顶部Ability为指定的ability
-      const ability: UIAbility = await delegator.getCurrentTopAbility();
-      console.info("get top ability");
-      expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
+  const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+  export default function abilityTest() {
+    describe('ActsAbilityTest', () => {
+      it('testUiExample',Level.LEVEL3, async (done: Function) => {
+        console.info("uitest: TestUiExample begin");        
+        // 初始化Driver对象
+        const driver = Driver.create();
+        const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
+        // 指定被测应用包名、ability名
+        const want: Want = {
+            bundleName: bundleName,
+            abilityName: 'EntryAbility'
+        }
+        // 拉起被测应用
+        await delegator.startAbility(want);
+        // 等待应用拉起完成
+        await driver.waitForIdle(4000,5000);
+        // 确认当前应用顶部Ability为指定的ability
+        const ability: UIAbility = await delegator.getCurrentTopAbility();
+        console.info("get top ability");
+        expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
 
-      // 依据指定文本“Next”查找目标控件
-      const next_text = await driver.findComponent(ON.text('Next'));
-      // 点击目标控件
-      await next_text.click();
-      await driver.waitForIdle(4000,5000);
-      // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期。
-      await driver.assertComponentExist(ON.text('after click'));
-      await driver.pressBack();
-      done();
+        // 依据指定文本“Next”查找目标控件
+        const next_text = await driver.findComponent(ON.text('Next'));
+        // 点击目标控件
+        await next_text.click();
+        await driver.waitForIdle(4000,5000);
+        // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期
+        await driver.assertComponentExist(ON.text('after click'));
+        await driver.pressBack();
+        done();
+      })
     })
-  })
-}
+  }
 ```
 ### 控件查找与操作
 
 支持[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, Component, ON, On } from '@kit.TestKit';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, Component, ON, On } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('componentOperationTest', () => {
-    /**
-     * 查找类型为'Button'的控件，并进行控件点击操作
-     */
-    it("componentSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
-      let driver: Driver = Driver.create();
-      let button: Component = await driver.findComponent(ON.type('Button'));
-      await button.click();
+  export default function abilityTest() {
+    describe('componentOperationTest', () => {
+      /**
+       * 查找类型为'Button'的控件，并进行控件点击操作
+       */
+      it("componentSearchAndOperation", TestType.FUNCTION, async (done: Function) => {
+        let driver: Driver = Driver.create();
+        let button: Component = await driver.findComponent(ON.type('Button'));
+        await button.click();
+      })
+
+      /**
+       * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
+       */
+      it("relativePositioncomponentSearch", TestType.FUNCTION, async (done: Function) => {
+        let driver: Driver = Driver.create();
+        let on: On = ON.text('123').within(ON.type('Scroll'));
+        let items: Array<Component> = await driver.findComponents(on);
+      })
+
+      /**
+       * 查找类型为'Image'的控件，并进行对其进行双指放大操作。
+       */
+      it("componentPinch", TestType.FUNCTION, async (done: Function) => {
+        let driver: Driver = Driver.create();
+        let image: Component = await driver.findComponent(ON.type('Image'));
+        await image.pinchOut(1.5);
+      })
     })
-
-    /**
-     * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
-     */
-    it("relativePositioncomponentSearch", TestType.FUNCTION, async (done: Function) => {
-      let driver: Driver = Driver.create();
-      let on: On = ON.text('123').within(ON.type('Scroll'));
-      let items: Array<Component> = await driver.findComponents(on);
-    })
-
-    /**
-     * 查找类型为'Image'的控件，并进行对其进行双指放大操作。
-     */
-    it("componentPinch", TestType.FUNCTION, async (done: Function) => {
-      let driver: Driver = Driver.create();
-      let image: Component = await driver.findComponent(ON.type('Image'));
-      await image.pinchOut(1.5);
-    })
-  })
-}
-
+  }
 ```
 
 ### 模拟触摸屏手指操作
