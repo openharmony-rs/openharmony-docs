@@ -166,6 +166,10 @@ WebViewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  20
+
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
 | errCode | WebBlanklessErrorCode | 否   | 否   | 无白屏加载的异常错误码，见[WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20)定义。 |
