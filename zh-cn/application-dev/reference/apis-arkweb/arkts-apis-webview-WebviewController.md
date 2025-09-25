@@ -4831,6 +4831,7 @@ export default class EntryAbility extends UIAbility {
       },],
       "KeyX", 500);
     AppStorage.setOrCreate("abilityWant", want);
+    console.log("EntryAbility onCreate done");
   }
 }
 ```
