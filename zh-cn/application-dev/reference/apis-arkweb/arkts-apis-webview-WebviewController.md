@@ -9666,6 +9666,10 @@ ArkTS-Sta: static setBlanklessLoadingCacheCapacity(capacity: int): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  20
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
