@@ -742,6 +742,13 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 与[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和自定义组件结合使用时，由于[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)只会保留缓存范围内的自定义组件，在缓存范围外的会被删除，因此需要开发者保证通过该接口预加载的节点index在缓存范围内。
 
+> **说明：**
+>
+> 1.[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)回调中不可通过preloadItems控制Swiper预加载指定子节点。[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)执行于Swiper组件渲染前，无法获取有效索引，导致预加载失败且可能报错。
+> 
+> 2.推荐调用时机：
+> - 导航路由生命周期：Router页面使用[onPageShow](./ts-custom-component-lifecycle.md#onpageshow)回调、Navigation页面使用[onAppear](./ts-universal-events-show-hide.md#onappear)回调，二者均在Swiper渲染后触发。
+
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
