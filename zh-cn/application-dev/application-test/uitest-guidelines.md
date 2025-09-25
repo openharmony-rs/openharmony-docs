@@ -53,20 +53,20 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 @Component
 struct Index {
     @State message: string = 'Hello World';
-
+    @State text: string = 'Next';
     build() {
     Row() {
         Column() {
         Text(this.message)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-        Text("Next")
+        Text(this.text)
             .fontSize(50)
             .margin({top:20})
             .fontWeight(FontWeight.Bold)          
             .onClick((event?: ClickEvent) => {
                 if(event){
-                    this.text = "after click";
+                    this.text = 'after click';
                 }
             })
         .width('100%')
@@ -107,9 +107,9 @@ export default function abilityTest() {
       expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
 
       // 依据指定文本“Next”查找目标控件
-      const next = await driver.findComponent(ON.text('Next'));
+      const next_text = await driver.findComponent(ON.text('Next'));
       // 点击目标控件
-      await next.click();
+      await next_text.click();
       await driver.waitForIdle(4000,5000);
       // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期。
       await driver.assertComponentExist(ON.text('after click'));
@@ -122,14 +122,6 @@ export default function abilityTest() {
 ### 控件查找与操作
 
 支持[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)。
-
-**接口说明：**
-
-| 接口 | 功能说明 |
-| ------ | ------|
-| findComponent(on: On): Promise\<Component> | 根据给出的目标控件属性要求查找目标控件。 |
-| findComponents(on: On): Promise\<Array\<Component>> | 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。 |
-| scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>|在控件上滑动查找目标控件（适用支持滑动的控件）。 |
 
 ```ts
 import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -172,24 +164,6 @@ export default function abilityTest() {
 ### 模拟触摸屏手指操作
 
 支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
-
-**接口说明：**
-| 接口 | 功能说明 |
-| ----- | ------|
-| click(x: number, y: number): Promise\<void> | 基于坐标进行点击操作。|
-| clickAt(point: Point): Promise\<void> | 基于坐标进行点击操作，支持指定坐标所属屏幕ID。 |
-| doubleClick(x: number, y: number): Promise\<void> | 基于坐标进行双击操作。 |
-| doubleClickAt(point: Point): Promise\<void> | 基于坐标进行双击操作，支持指定坐标所属屏幕ID。 |
-| longClick(x: number, y: number): Promise\<void> | 基于坐标进行长按操作。 |
-| longClickAt(point: Point, duration?: number): Promise\<void> | 基于坐标进行长按操作，支持指定坐标所属屏幕ID。 |
-| swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行滑动操作。 |
-| swipeBetween(from: Point, to: Point, speed?: number): Promise\<void> | 基于坐标进行滑动操作，支持指定坐标所属屏幕ID。 |
-| fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，支持指定速度和步长。 |
-| fling(direction: UiDirection, speed: number): Promise\<void> | 模拟手指滑动后脱离屏幕的快速滑动操作，指定方向和速度。 |
-| drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void> | 基于坐标进行拖拽操作。 |
-| dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void> | 基于坐标进行拖拽操作，支持指定坐标所属屏幕ID。|
-| injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean> | 向设备注入多指操作，支持指定手指和步骤对应动作的坐标点、滑动速度。 |
-
 
 以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
 ```ts
@@ -236,15 +210,6 @@ export default function abilityTest() {
 
 在与页面进行交互后，可通过在指定时间内等待某控件的出现或等待页面空闲来判断页面跳转是否完成。
 
-**接口说明：**
-
-| 接口 | 功能说明 |
-| ------ | ------|
-| waitForComponent(on: On, time: number): Promise\<Component> | 在用户给定的时间内，持续查找满足控件属性要求的目标控件。 |
-| waitForIdle(idleTime: number, timeout: number): Promise\<boolean> | 判断当前界面的所有控件是否已经空闲，使用Promise异步回调。 |
-
-### TODO: 待完善示例
-
 ```ts
 import { describe, it, expect, Level } from '@ohos/hypium';
 // 导入测试依赖kit
@@ -258,9 +223,7 @@ export default function abilityTest() {
       hilog.info(domain, tag, "testWaitForComponent_static Start!!!");
       let driver = Driver.create();
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
-      let button = await driver.waitForComponent(ON.text('next page'), 1000);
-      hilog.info(domain, tag, `testWaitForComponent_static button: ${ JSON.stringify(button) }`);
-
+      let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
     })
   })
 }
@@ -269,12 +232,6 @@ export default function abilityTest() {
 ### 模拟文本输入
 
 支持向指定坐标点或指定控件输入文本内容，同时支持[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
-
-**接口说明：**
-| 接口 | 功能说明 |
-| ------ | ------|
-| inputText(p: Point, text: string, mode?: InputTextMode): Promise\<void>| 在指定坐标点输入文本，支持指定文本输入方式。 |
-| inputText(text: string, mode?: InputTextMode): Promise\<void>| 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效。 |
 
 以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
@@ -342,12 +299,6 @@ export default function abilityTest() {
 ```
 ### 截图
 
-**接口说明：**
-| 接口 | 功能说明 |
-| ------ | ------|
-| screenCap(savePath: string, displayId: number): Promise\<boolean>| 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中。 |
-| screenCapture(savePath: string, rect?: Rect): Promise\<boolean>| 捕获屏幕指定区域，并保存为PNG格式的图片至给出的保存路径中。 |
-
 > **说明：**
 > 1. 指定截图文件保存路径，路径需为当前应用的[沙箱路径](../file-management/app-sandbox-directory.md)。
 > 2. 测试hap的<!--RP4-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP4End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
@@ -390,12 +341,6 @@ export default function abilityTest() {
 
 ### UI事件监听
 
-**接口说明：**
-| 接口 | 功能说明 |
-| ------ | ------|
-| once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void | 开始监听dialog控件出现的事件，使用callback的形式返回结果。|
-| once(type: 'toastShow', callback: Callback\<UIElementInfo>): void | 开始监听toast控件出现的事件，使用callback的形式返回结果。|
-
 以下示例代码演示了如何使用UiTest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
 
 ```ts
@@ -423,18 +368,6 @@ export default function abilityTest() {
 ```
 
 ### 模拟键鼠操作
-
-**接口说明：**
-| 接口 | 功能说明 |
-| ------ | ------|
-|mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>|在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。|
-|mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>|在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。|
-|mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>|在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。|
-|mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>|鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。|
-|mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>|在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度。|
-|mouseMoveTo(p: Point): Promise\<void>|将鼠标光标移到目标点。|
-|mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>|鼠标从起始坐标点滑向终点坐标点。|
-
 
 以下示例代码演示了如何使用UiTest接口进行键鼠模拟操作，包括键盘按键、组合键输入操作，鼠标点击、移动、拖拽操作和键鼠组合操作等。
 
@@ -724,7 +657,7 @@ hdc shell uitest uiRecord read
 | click   | 是    | 模拟单击操作。具体请参考下方**uiInput-click/doubleClick/longClick使用示例**。      | 
 | doubleClick   | 是    | 模拟双击操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。      | 
 | longClick   | 是    | 模拟长按操作。具体请参考下方**uiInput click/doubleClick/longClick使用示例**。     | 
-| fling   | 是    | 模拟快滑操作。具体请参考下方**uiInput fling使用示例使用示例**。   | 
+| fling   | 是    | 模拟快滑操作。具体请参考下方**uiInput fling使用示例**。   | 
 | swipe   | 是    | 模拟慢滑操作。具体请参考下方**uiInput swipe/drag使用示例**。     | 
 | drag   | 是    | 模拟拖拽操作。具体请参考下方**uiInput swipe/drag使用示例**。     | 
 | dircFling   | 是    | 模拟指定方向滑动操作。具体请参考下方**uiInput dircFling使用示例**。     |
