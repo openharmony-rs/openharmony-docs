@@ -9710,6 +9710,7 @@ export default class EntryAbility extends UIAbility {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     AppStorage.setOrCreate("abilityWant", want);
+    console.log("EntryAbility onCreate done");
   } 
 }
 ```
@@ -9739,6 +9740,7 @@ export default class EntryAbility extends UIAbility {
       },],
       "KeyX", 500);
     AppStorage.setOrCreate("abilityWant", want);
+    console.log("EntryAbility onCreate done");
   }
 }
 ```
