@@ -38,7 +38,7 @@
 ### 长时激活卡片动效
 
 长时激活卡片支持调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口发起互动卡片动效请求。
-- 如果接口中传入的动效持续时长overflowInfo.duration大于等于60秒，动效请求申请成功且一直保持。当调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效，[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20)接口切换为非激活态或其他卡片申请动效成功，当前卡片才会退出动效并切换为非激活态。
+- 如果接口中传入的动效持续时长overflowInfo.duration大于等于60秒，动效请求申请成功且一直保持。当调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效、[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20)接口切换为非激活态或其他卡片申请动效成功，当前卡片才会退出动效并切换为非激活态。
 - 如果接口中传入的动效持续时长overflowInfo.duration小于60秒，发起动效请求失败。
 
 ### 长时激活卡片状态信息同步
@@ -108,10 +108,10 @@
           `, borderRadius: ${borderRadius}`);
     
         try {
-          // 加载提供方页面
+          // 加载卡片提供方页面
           session.loadContent(PAGE_PATH, storage);
 
-          // 卡片提供方需在激活态页面准备就绪时，通过 session 发送信息告知卡片使用方
+          // 卡片提供方需在激活态页面准备就绪时，通过session发送信息告知卡片使用方
           session.sendData({['isFormReady']: true});
         } catch (e) {
           console.info(`sth wrong when load content ${e.code}, ${e.message}`);
@@ -217,7 +217,7 @@
           return;
         }
         if (status === Constants.EXTENSION_READY) {
-          // 卡片的激活态已切换完毕，可以支持调用requestOverflow接口
+          // 卡片的激活态已切换完毕，支持调用requestOverflow接口
           this.isExtensionReady = true;
           return;
         }
