@@ -11756,7 +11756,7 @@ console.info('isInFreeWindowMode: ' + isInFreeWindowMode);
 
 on(type:  'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
-开启窗口是否为自由窗口模式的监听。
+开启是否为自由窗口模式的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11767,7 +11767,7 @@ on(type:  'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'freeWindowModeChange'，即窗口是否为自由窗口模式变化事件。 |
-| callback | Callback&lt;[boolean]; | 是   | 回调函数。返回当前窗口是否为自由窗口模式。                           |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前窗口是否为自由窗口模式。                           |
 
 **错误码：**
 
@@ -11794,18 +11794,18 @@ try {
 
 off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭窗口尺寸变化的监听。
+关闭是否为自由窗口模式的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
 | type     | string                        | 是   | 监听事件，固定为'freeWindowModeChange'，即窗口是否为自由窗口模式变化事件。 |
-| callback | Callback&lt;boolean; | 否   | 回调函数。返回当前窗口是否为自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化的监听。                           |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否为自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化的监听。                           |
 
 **错误码：**
 
