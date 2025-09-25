@@ -4,11 +4,13 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
-> 当前不支持在预览器中使用FrameNode节点。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> FrameNode节点暂不支持拖拽。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 当前不支持在预览器中使用FrameNode节点。
+>
+> - FrameNode节点暂不支持拖拽。
 
 ## 导入模块
 
@@ -1035,7 +1037,9 @@ getLayoutPosition(): Position
 
 ### getUserConfigBorderWidth<sup>12+</sup>
 
-getUserConfigBorderWidth(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigBorderWidth(): Edges\<LengthMetrics\>
+
+ArkTS-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics\>
 
 获取用户设置的边框宽度。
 
@@ -1043,11 +1047,15 @@ getUserConfigBorderWidth(): Edges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的边框宽度。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\>| 用户设置的边框宽度。 |
 
 **示例：**
 
@@ -1055,7 +1063,9 @@ getUserConfigBorderWidth(): Edges\<LengthMetrics\>
 
 ### getUserConfigPadding<sup>12+</sup>
 
-getUserConfigPadding(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigPadding(): Edges\<LengthMetrics\>
+
+ArkTS-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics\>
 
 获取用户设置的内边距。
 
@@ -1063,11 +1073,15 @@ getUserConfigPadding(): Edges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的内边距。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的内边距。 |
 
 **示例：**
 
@@ -1075,7 +1089,9 @@ getUserConfigPadding(): Edges\<LengthMetrics\>
 
 ### getUserConfigMargin<sup>12+</sup>
 
-getUserConfigMargin(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigMargin(): Edges\<LengthMetrics\>
+
+ArkTS-Sta: getUserConfigMargin(): NodeEdges\<LengthMetrics\>
 
 获取用户设置的外边距。
 
@@ -1083,11 +1099,15 @@ getUserConfigMargin(): Edges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的外边距。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的外边距。 |
 
 **示例：**
 

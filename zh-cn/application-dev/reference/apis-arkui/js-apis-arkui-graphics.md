@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -309,11 +311,34 @@ struct Index {
 
 ## Edges\<T><sup>12+</sup>
 
-用于设置边框的属性。
+用于设置边框的属性，属性包括边框风格、边框颜色、边框宽度、边框长度等。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式：** 该接口仅适用于ArkTs-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+| 名称   | 类型 | 只读 | 可选 | 说明             |
+| ------ | ---- | ---- | ---- | ---------------- |
+| left   | T    | 是   | 是   | 左侧边框的属性。 |
+| top    | T    | 是   | 是   | 顶部边框的属性。 |
+| right  | T    | 是   | 是   | 右侧边框的属性。 |
+| bottom | T    | 是   | 是   | 底部边框的属性。 |
+
+## NodeEdges\<T><sup>20+</sup>
+
+用于设置边框的属性，属性包括边框风格、边框颜色、边框宽度、边框长度等。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTs模式：** 该接口仅适用于ArkTs-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
@@ -1814,13 +1839,19 @@ struct Index {
 
 ## edgeColors<sup>12+</sup>
 
-edgeColors(all: number): Edges\<number>
+ArkTS-Dyn: edgeColors(all: number): Edges\<number>
+
+ArkTS-Sta: edgeColors(all: number): NodeEdges\<number>
 
 用于生成边框颜色均设置为传入值的边框颜色对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1832,7 +1863,7 @@ edgeColors(all: number): Edges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框颜色均设置为传入值的边框颜色对象。 |
+| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框颜色均设置为传入值的边框颜色对象。 |
 
 **示例：**
 
@@ -1876,13 +1907,19 @@ struct Index {
 
 ## edgeWidths<sup>12+</sup>
 
-edgeWidths(all: number): Edges\<number>
+ArkTS-Dyn: edgeWidths(all: number): Edges\<number>
+
+ArkTS-Sta: edgeWidths(all: number): NodeEdges\<number>
 
 用于生成边框宽度均设置为传入值的边框宽度对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1894,7 +1931,7 @@ edgeWidths(all: number): Edges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框宽度均设置为传入值的边框宽度对象。 |
+| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框宽度均设置为传入值的边框宽度对象。 |
 
 **示例：**
 
@@ -1938,13 +1975,19 @@ struct Index {
 
 ## borderStyles<sup>12+</sup>
 
-borderStyles(all: BorderStyle): Edges\<BorderStyle>
+ArkTS-Dyn: borderStyles(all: BorderStyle): Edges\<BorderStyle>
+
+ArkTS-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
 
 用于生成边框样式均设置为传入值的边框样式对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1956,7 +1999,7 @@ borderStyles(all: BorderStyle): Edges\<BorderStyle>
 
 | 类型                                                                        | 说明                                   |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
+| ArkTS-Dyn: [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTS-Sta: [NodeEdges](#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
 
 **示例：**
 
