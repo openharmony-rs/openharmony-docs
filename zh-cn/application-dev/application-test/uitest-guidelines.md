@@ -169,43 +169,43 @@ UiTest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 
 以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, PointerMatrix } from '@kit.TestKit';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, PointerMatrix, UiDirection } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('screenOperationTest', () => {
-    /**
-     * 基于坐标的触摸屏手指操作
-     */
-    it("touchScreenOperation", TestType.FUNCTION, async () => {
-      let driver: Driver = Driver.create();
-      // 单击
-      await driver.click(100,100);
-      // 指定屏幕id进行单击
-      await driver.clickAt({ x: 100, y: 100, displayId: 0 });
-      // 滑动
-      await driver.swipe(100, 100, 200, 200, 600);
-      // 指定屏幕id进行滑动
-      await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
-      // 抛滑
-      await driver.fling({x: 100, y: 100},{x: 200, y: 200}, 5, 600);
-      // 指定方向的抛滑
-      await driver.fling(UiDirection.DOWN, 10000);
-      // 拖拽
-      await driver.drag(100, 100, 200, 200, 600);
-      // 指定屏幕id和拖拽移动前的长按时间
-      await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500); 
-      // 多指操作，指定使用两根手指，每根手指基于两个坐标点滑动
-      let pointers: PointerMatrix = PointerMatrix.create(2, 2);
-      pointers.setPoint(0, 0, {x: 100, y: 100});
-      pointers.setPoint(0, 1, {x: 200, y: 100});
-      pointers.setPoint(1, 0, {x: 100, y: 200});
-      pointers.setPoint(1, 1, {x: 200, y: 200});
-      await driver.injectMultiPointerAction(pointers);
+  export default function abilityTest() {
+    describe('screenOperationTest', () => {
+      /**
+       * 基于坐标的触摸屏手指操作
+       */
+      it("touchScreenOperation", TestType.FUNCTION, async () => {
+        let driver: Driver = Driver.create();
+        // 单击
+        await driver.click(100,100);
+        // 指定屏幕id进行单击
+        await driver.clickAt({ x: 100, y: 100, displayId: 0 });
+        // 滑动
+        await driver.swipe(100, 100, 200, 200, 600);
+        // 指定屏幕id进行滑动
+        await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+        // 抛滑
+        await driver.fling({x: 100, y: 100},{x: 200, y: 200}, 5, 600);
+        // 指定方向的抛滑
+        await driver.fling(UiDirection.DOWN, 10000);
+        // 拖拽
+        await driver.drag(100, 100, 200, 200, 600);
+        // 指定屏幕id和拖拽移动前的长按时间
+        await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500); 
+        // 多指操作，指定使用两根手指，每根手指基于两个坐标点滑动
+        let pointers: PointerMatrix = PointerMatrix.create(2, 2);
+        pointers.setPoint(0, 0, {x: 100, y: 100});
+        pointers.setPoint(0, 1, {x: 200, y: 100});
+        pointers.setPoint(1, 0, {x: 100, y: 200});
+        pointers.setPoint(1, 1, {x: 200, y: 200});
+        await driver.injectMultiPointerAction(pointers);
+      })
     })
-  })
-}
+  }
 
 ```
 ### 页面加载等待
@@ -213,23 +213,23 @@ export default function abilityTest() {
 在与页面进行交互后，可通过在指定时间内等待某控件的出现或等待页面空闲来判断页面跳转是否完成。
 
 ```ts
-import { describe, it, expect, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-import { UIAbility, Want } from '@kit.AbilityKit';
+  import { describe, it, expect, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+  import { UIAbility, Want } from '@kit.AbilityKit';
 
-const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-export default function abilityTest() {
-  describe('ActsAbilityTest', () => {
-    it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      let driver = Driver.create();
-      // 调用元能力接口，拉起目标应用
-      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
-      // 通过等待目标应用首页上的指定控件出现，判断应用拉起完成
-      let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
+  const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+  export default function abilityTest() {
+    describe('ActsAbilityTest', () => {
+      it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+        let driver = Driver.create();
+        // 调用元能力接口，拉起目标应用
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        // 通过等待目标应用首页上的指定控件出现，判断应用拉起完成
+        let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
+      })
     })
-  })
-}
+  }
 ```
 
 ### 模拟文本输入
@@ -239,66 +239,66 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, ON } from '@kit.TestKit';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, ON } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('inputTextTest', () => {
-    /**
-     * 基于控件的文本输入，调用接口会默认清空文本框中内容后输入指定文本
-     * 当输入文本中不包含中文、特殊字符，且文本长度不超过200字符时默认为逐字键入
-     */
-    it('componentInputText', TestType.FUNCTION, async () => {
-      let driver = Driver.create();
-      let input = await driver.findComponent(ON.type('TextInput'));
-      await input.inputText('abc');
-    })
-    /**
-     * 基于控件的文本输入，指定以复制粘贴方式注入输入指定文本
-     * 指定以追加方式输入，即在输入文本签不清空原有内容
-     */
-    it('componentInputTextAddition', TestType.FUNCTION, async () => {
-      let driver = Driver.create();
-      let input = await driver.findComponent(ON.type('TextInput'));
-      await input.inputText('abc', {paste: true, addition: true});
-    })
+  export default function abilityTest() {
+    describe('inputTextTest', () => {
+      /**
+       * 基于控件的文本输入，调用接口会默认清空文本框中内容后输入指定文本
+       * 当输入文本中不包含中文、特殊字符，且文本长度不超过200字符时默认为逐字键入
+       */
+      it('componentInputText', TestType.FUNCTION, async () => {
+        let driver = Driver.create();
+        let input = await driver.findComponent(ON.type('TextInput'));
+        await input.inputText('abc');
+      })
+      /**
+       * 基于控件的文本输入，指定以复制粘贴方式注入输入指定文本
+       * 指定以追加方式输入，即在输入文本签不清空原有内容
+       */
+      it('componentInputTextAddition', TestType.FUNCTION, async () => {
+        let driver = Driver.create();
+        let input = await driver.findComponent(ON.type('TextInput'));
+        await input.inputText('abc', {paste: true, addition: true});
+      })
 
-    /**
-     * 基于坐标的文本输入，点击指定位置使输入框获焦，并在光标处输入指定文本
-     * 当输入文本中不包含中文、特殊字符，且文本长度不超过200字符时默认为逐字键入
-     */
-    it('pointInputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create()
-      let input = await driver.findComponent(ON.type('TextInput'))
-      let center = await input.getBoundsCenter()
-      await driver.inputText(center, 'abc')
-    })
+      /**
+       * 基于坐标的文本输入，点击指定位置使输入框获焦，并在光标处输入指定文本
+       * 当输入文本中不包含中文、特殊字符，且文本长度不超过200字符时默认为逐字键入
+       */
+      it('pointInputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create()
+        let input = await driver.findComponent(ON.type('TextInput'))
+        let center = await input.getBoundsCenter()
+        await driver.inputText(center, 'abc')
+      })
 
-    /**
-     * 基于坐标的文本输入，指定以复制粘贴方式注入输入指定文本
-     * 指定以追加方式输入，即点击指定位置使输入框获焦后将光标移动至原有文本末尾后输入
-     */
-    it('pointInputTextAddition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create()
-      let input = await driver.findComponent(ON.type('TextInput'))
-      let center = await input.getBoundsCenter()
-      await driver.inputText(center, '123', {paste: true, addition: true})
-    })
+      /**
+       * 基于坐标的文本输入，指定以复制粘贴方式注入输入指定文本
+       * 指定以追加方式输入，即点击指定位置使输入框获焦后将光标移动至原有文本末尾后输入
+       */
+      it('pointInputTextAddition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create()
+        let input = await driver.findComponent(ON.type('TextInput'))
+        let center = await input.getBoundsCenter()
+        await driver.inputText(center, '123', {paste: true, addition: true})
+      })
 
-    /**
-     * 基于坐标的文本输入，指定以复制粘贴方式注入输入指定文本
-     * 指定以追加方式输入，即点击指定位置使输入框获焦后将光标移动至原有文本末尾后输入
-     * 当输入内容包含中文或特殊字符时，仅支持以复制粘贴方式输入文本，'paste'字段不生效
-     */
-    it('pointInputTextChinese', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create()
-      let input = await driver.findComponent(ON.type('TextInput'))
-      let center = await input.getBoundsCenter()
-      await driver.inputText(center, '你好', {paste: false, addition: true})
+      /**
+       * 基于坐标的文本输入，指定以复制粘贴方式注入输入指定文本
+       * 指定以追加方式输入，即点击指定位置使输入框获焦后将光标移动至原有文本末尾后输入
+       * 当输入内容包含中文或特殊字符时，仅支持以复制粘贴方式输入文本，'paste'字段不生效
+       */
+      it('pointInputTextChinese', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create()
+        let input = await driver.findComponent(ON.type('TextInput'))
+        let center = await input.getBoundsCenter()
+        await driver.inputText(center, '你好', {paste: false, addition: true})
+      })
     })
-  })
-}
+  }
 ```
 ### 截图
 
@@ -310,36 +310,36 @@ export default function abilityTest() {
 以下示例代码演示了如何使用UiTest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver } from '@kit.TestKit';
-import display from '@ohos.display';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver } from '@kit.TestKit';
+  import display from '@ohos.display';
 
-export default function abilityTest() {
-  describe('screenCaptureTest', () => {
-    /**
-     * 截取指定区域的屏幕，并保存到指定路径
-     */
-    it('screenCapture', TestType.FUNCTION, async () => {
-      let driver = Driver.create();
-      // 应用沙箱路径，el2为用户级加密区，base为应用在本设备上存放持久化数据的子目录
-      // 请开发者使用时替换为实际的路径。
-      let savePath = '/data/storage/el2/base/cache/1.png';
-      let res = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100});
-    })
+  export default function abilityTest() {
+    describe('screenCaptureTest', () => {
+      /**
+       * 截取指定区域的屏幕，并保存到指定路径
+       */
+      it('screenCapture', TestType.FUNCTION, async () => {
+        let driver = Driver.create();
+        // 应用沙箱路径，el2为用户级加密区，base为应用在本设备上存放持久化数据的子目录
+        // 请开发者使用时替换为实际的路径。
+        let savePath = '/data/storage/el2/base/cache/1.png';
+        let res = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100});
+      })
 
-    /**
-     * 截取指定屏幕id的屏幕全屏，并保存到指定路径
-     */
-    it('screenCapWithId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create();
-      // 获取默认屏幕对象
-      let disPlay = display.getDefaultDisplaySync();
-      let savePath = '/data/storage/el2/base/cache/1.png'
-      let res = await driver.screenCap(savePath, disPlay.id)；// 获取默认屏幕ID属性
+      /**
+       * 截取指定屏幕id的屏幕全屏，并保存到指定路径
+       */
+      it('screenCapWithId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        // 获取默认屏幕对象
+        let disPlay = display.getDefaultDisplaySync();
+        let savePath = '/data/storage/el2/base/cache/1.png'
+        let res = await driver.screenCap(savePath, disPlay.id)；// 获取默认屏幕ID属性
+      })
     })
-  })
-}
+  }
 ```
 
 
@@ -348,25 +348,25 @@ export default function abilityTest() {
 以下示例代码演示了如何使用UiTest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, UIElementInfo } from '@kit.TestKit';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, UIElementInfo } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('observerTest', () => {
-    // 监听Toast控件出现
-    it("toastObserver", TestType.FUNCTION, async () => {
-      let driver = Driver.create();
-      let observer = driver.createUIEventObserver();
-      let callback = (uiElementInfo : UIElementInfo) => {
-        let bundleName = uiElementInfo.bundleName;
-        let text = uiElementInfo.text;
-        let type = uiElementInfo.type;
-      }
-      observer.once('toastShow', callback);
+  export default function abilityTest() {
+    describe('observerTest', () => {
+      // 监听Toast控件出现
+      it("toastObserver", TestType.FUNCTION, async () => {
+        let driver = Driver.create();
+        let observer = driver.createUIEventObserver();
+        let callback = (uiElementInfo : UIElementInfo) => {
+          let bundleName = uiElementInfo.bundleName;
+          let text = uiElementInfo.text;
+          let type = uiElementInfo.type;
+        }
+        observer.once('toastShow', callback);
+      })
     })
-  })
-}
+  }
 ```
 
 ### 模拟键鼠操作
@@ -374,85 +374,85 @@ export default function abilityTest() {
 以下示例代码演示了如何使用UiTest接口进行键鼠模拟操作，包括键盘按键、组合键输入操作，鼠标点击、移动、拖拽操作和键鼠组合操作等。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, MouseButton } from '@kit.TestKit';
-import { KeyCode } from '@ohos.multimodalInput.keyCode';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, MouseButton } from '@kit.TestKit';
+  import { KeyCode } from '@ohos.multimodalInput.keyCode';
 
-export default function abilityTest() {
-  describe('KeyboardMouseTest', () => {
-    // 模拟键盘按键输入、组合键输入
-    it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create();
-      // 键盘按键输入（注入返回键）
-      await driver.triggerKey(KeyCode.KEYCODE_BACK);
-      // 键盘组合键输入（注入保存组合键）
-      await driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT,  KeyCode.KEYCODE_S);
-    })
+  export default function abilityTest() {
+    describe('KeyboardMouseTest', () => {
+      // 模拟键盘按键输入、组合键输入
+      it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        // 键盘按键输入（注入返回键）
+        await driver.triggerKey(KeyCode.KEYCODE_BACK);
+        // 键盘组合键输入（注入保存组合键）
+        await driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT,  KeyCode.KEYCODE_S);
+      })
 
-    // 模拟鼠标左键单击、鼠标移动、鼠标拖拽操作
-    it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create();
-      // 鼠标左键单击
-      await driver.mouseClick({x: 100, y: 100}, MouseButton.MOUSE_BUTTON_LEFT); 
-      // 鼠标移动
-      await driver.mouseMoveTo({x: 100, y: 100});
-      // 鼠标拖拽
-      await driver.mouseDrag({x: 100, y: 100}, {x: 200, y: 200}, 600);
-    })
+      // 模拟鼠标左键单击、鼠标移动、鼠标拖拽操作
+      it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        // 鼠标左键单击
+        await driver.mouseClick({x: 100, y: 100}, MouseButton.MOUSE_BUTTON_LEFT); 
+        // 鼠标移动
+        await driver.mouseMoveTo({x: 100, y: 100});
+        // 鼠标拖拽
+        await driver.mouseDrag({x: 100, y: 100}, {x: 200, y: 200}, 600);
+      })
 
-    // 模拟键盘、鼠标组合操作
-    it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create();
-      // 按下左CTRL键，同时鼠标滚轮滚动
-      await driver.mouseScroll({x:100, y:100}, true, 30, KeyCode.KEYCODE_CTRL_LEFT);
-      // 按下左CTRL键，同时鼠标左键长按
-      await driver.mouseLongClick({x:100, y:100}, MouseButton.MOUSE_BUTTON_LEFT, KeyCode.KEYCODE_CTRL_LEFT);
+      // 模拟键盘、鼠标组合操作
+      it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        // 按下左CTRL键，同时鼠标滚轮滚动
+        await driver.mouseScroll({x:100, y:100}, true, 30, KeyCode.KEYCODE_CTRL_LEFT);
+        // 按下左CTRL键，同时鼠标左键长按
+        await driver.mouseLongClick({x:100, y:100}, MouseButton.MOUSE_BUTTON_LEFT, KeyCode.KEYCODE_CTRL_LEFT);
+      })
     })
-  })
-}
+  }
 ```
 
 ### 窗口查找与操作
 以下示例代码演示了如何使用UiTest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, Component, ON, On } from '@kit.TestKit';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, Component, ON, On } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('windowOperationTest', () => {
-    // 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
-    it("windowSearchAndOperation", TestType.FUNCTION, async () => {
-      let driver = Driver.create();
-      let window = await driver.findWindow({active: true});
-      await window.minimize();
+  export default function abilityTest() {
+    describe('windowOperationTest', () => {
+      // 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
+      it("windowSearchAndOperation", TestType.FUNCTION, async () => {
+        let driver = Driver.create();
+        let window = await driver.findWindow({active: true});
+        await window.minimize();
+      })
     })
-  })
-}
+  }
 ```
 
 ### 模拟触摸板操作
 以下示例代码演示了如何使用UiTest接口进行触摸板模拟操作，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver, UiDirection } from '@kit.TestKit';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, UiDirection } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('touchPadOperationTest', () => {
-    // PC场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
-    it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create();
-      // 触摸板三指上滑返回桌面。
-      await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
-      // 触摸板三指下滑恢复窗口
-      await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+  export default function abilityTest() {
+    describe('touchPadOperationTest', () => {
+      // PC场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
+      it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        // 触摸板三指上滑返回桌面。
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+        // 触摸板三指下滑恢复窗口
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+      })
     })
-  })
-}
+  }
 
 ```
 
@@ -460,40 +460,55 @@ export default function abilityTest() {
 以下示例代码演示了如何使用UiTest接口进行手写笔模拟操作，包括点击、滑动等操作，支持设置操作时的压力值大小。
 
 ```ts
-import { describe, it, TestType, Size, Level } from '@ohos/hypium';
-// 导入测试依赖kit
-import { Driver } from '@kit.TestKit';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('penOperationTest', () => {
-    // 模拟手写笔单击、双击、长按、滑动操作
-    it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      let driver = Driver.create();
-      // 手写笔单击
-      await driver.penClick({x: 100, y: 100});
-      // 手写笔双击
-      await driver.penDoubleClick({x: 100, y: 100});
-      // 手写笔长按
-      await driver.penLongClick({x: 100, y: 100}, 0.5);
-      // 手写笔滑动
-      await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+  export default function abilityTest() {
+    describe('penOperationTest', () => {
+      // 模拟手写笔单击、双击、长按、滑动操作
+      it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        // 手写笔单击
+        await driver.penClick({x: 100, y: 100});
+        // 手写笔双击
+        await driver.penDoubleClick({x: 100, y: 100});
+        // 手写笔长按
+        await driver.penLongClick({x: 100, y: 100}, 0.5);
+        // 手写笔滑动
+        await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+      })
     })
-  })
-}
+  }
 ```
 
 ### 模拟表冠操作
 以下示例代码演示了如何使用UiTest接口进行表冠模拟操作，包括表冠的顺/逆时针旋转。
 
-```ts
-// 手表场景，模拟表冠顺/逆时针旋转
-it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-  let driver = Driver.create();
-  // 顺时针旋转50格，旋转速度为30格/秒
-  await driver.crownRotate(50, 30);
-  // 逆时针旋转20格，旋转速度为30格/秒
-  await driver.crownRotate(-20, 30);
-})
+```ts  
+  import { describe, it, TestType, Size, Level，expect } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver } from '@kit.TestKit';
+  const CapabilityCode = 801;
+
+  export default function abilityTest() {
+    describe('crownRotateTest', () => {
+      // 手表场景，模拟表冠顺/逆时针旋转
+      it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        try {
+          // 顺时针旋转50格，旋转速度为30格/秒
+          await driver.crownRotate(50, 30);
+          // 逆时针旋转20格，旋转速度为30格/秒
+          await driver.crownRotate(-20, 30);
+        } catch (error) {
+          // 该接口仅在智能表设备上生效，其他设备调用时将抛出801错误码
+          console.log(`${TestTag}, testCrownRotate error is: ${JSON.stringify(error)}`);
+          expect(error.code).assertEqual(CapabilityCode);
+        }
+      })
+    })
+  }
 ```
 
 ### 屏幕显示操作
