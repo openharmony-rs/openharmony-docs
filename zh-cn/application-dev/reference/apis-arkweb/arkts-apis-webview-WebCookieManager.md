@@ -931,7 +931,7 @@ static existCookie(incognito?: boolean): boolean
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下查询是否存在cookies，false表示正常非隐私模式下查询是否存在cookies。<br>默认值：false。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下查询是否存在cookies，false表示正常非隐私模式下查询是否存在cookies。<br>默认值：false。<br>传入undefined或null时返回undefined。 |
 
 **返回值：**
 
@@ -975,7 +975,7 @@ static clearAllCookiesSync(incognito?: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito    | boolean | 否   | true表示清除隐私模式下Webview的所有内存cookies，false表示清除正常非隐私模式下的持久化cookies。<br>默认值：false。 |
+| incognito    | boolean | 否   | true表示清除隐私模式下Webview的所有内存cookies，false表示清除正常非隐私模式下的持久化cookies。<br>默认值：false。<br>传入undefined或null时不清除cookies。 |
 
 **示例：**
 
