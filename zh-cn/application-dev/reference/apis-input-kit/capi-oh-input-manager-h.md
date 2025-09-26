@@ -4308,3 +4308,270 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 | 类型 | 说明 |
 | -- | -- |
 | [Input_Result](#input_result) | OH_Input_DispatchToNextHandler的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。可通过[OH_Input_GetKeyEventId](#oh_input_getkeyeventid)查看传入的eventId是否准确。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+
+
+### OH_Input_SetPointerVisible()
+
+```
+Input_Result OH_Input_SetPointerVisible(bool visible)
+```
+
+**描述**
+
+设置鼠标光标的显示或隐藏状态
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| bool visible | 鼠标光标是否显示。true表示显示，false表示不显示。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_SetPointerVisible的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+
+
+### OH_Input_GetPointerStyle()
+
+```
+Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
+```
+
+**描述**
+
+获取鼠标光标样式类型
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 窗口Id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br> 窗口Id合法并且对应窗口存在时，返回窗口的鼠标光标样式 <br> 窗口Id合法但窗口不存在时，默认返回全局鼠标光标样式，不存在的窗口的鼠标光标样式可以被[OH_Input_SetPointerStyle](#oh_input_setpointerstyle)设置|
+| int32_t* pointerStyle | 鼠标光标样式类型的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_GetPointerStyle的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+
+
+### OH_Input_SetPointerStyle()
+
+```
+Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
+```
+
+**描述**
+
+设置鼠标光标样式类型
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 窗口Id。取值范围为大于等于0的整数。<br> 窗口Id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式 <br> 窗口Id合法但窗口不存在时，也可以设置鼠标光标样式，设置结果可通过[OH_Input_GetPointerStyle](#oh_input_getpointerstyle)查询|
+| int32_t pointerStyle | 鼠标光标样式类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_SetPointerStyle的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+
+
+### OH_Input_CustomCursor_Create()
+
+```
+Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, int32_t anchorX, int32_t anchorY)
+```
+
+**描述**
+
+创建自定义光标资源对象
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| OH_PixelmapNative* pixelMap | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) 自定义光标。最小限制为资源图本身的最小限制。最大限制为256 x 256px。|
+| int32_t anchorX | 自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值。 |
+| int32_t anchorY | 自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值。 |
+
+**返回：**
+| 类型 | 说明 |
+| -- | -- |
+| Input_CustomCursor* | 自定义光标资源 [Input_CustomCursor](./capi-input-input-customcursor.md)对象。 |
+
+
+### OH_Input_CustomCursor_Destroy()
+
+```
+void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)
+```
+
+**描述**
+
+销毁自定义光标资源对象
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| Input_CustomCursor** customCursor | 自定义光标资源 [Input_CustomCursor](./capi-input-input-customcursor.md)对象。 |
+
+
+### OH_Input_CustomCursor_GetPixelMap()
+
+```
+Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor, OH_PixelmapNative* pixelMap)
+```
+
+**描述**
+
+获取自定义光标资源的自定义光标[OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| Input_CustomCursor* customCursor | 自定义光标资源 [Input_CustomCursor](./capi-input-input-customcursor.md)。 |
+| OH_PixelmapNative* pixelMap | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) 自定义光标。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_CustomCursor_GetPixelMap的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+
+
+### OH_Input_CustomCursor_GetAnchor()
+
+```
+Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, int32_t* anchorX, int32_t* anchorY)
+```
+
+**描述**
+获取自定义光标资源的焦点水平坐标和焦点垂直坐标
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| Input_CustomCursor* customCursor | 自定义光标资源 [Input_CustomCursor](./capi-input-input-customcursor.md)。 |
+| int32_t* anchorX | 自定义光标资源的焦点水平坐标。|
+| int32_t* anchorY | 自定义光标资源的焦点垂直坐标。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_CustomCursor_GetAnchor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+
+
+### OH_Input_CursorConfig_Create()
+
+```
+Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)
+```
+
+**描述**
+创建自定义光标配置对象
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| bool followSystem | 是否根据系统设置调整光标大小。false表示使用自定义光标样式大小，true表示根据系统设置调整光标大小，可调整范围为：[光标资源图大小，256×256]|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| Input_CursorConfig* | 自定义光标配置 [Input_CursorConfig](./capi-input-input-cursorconfig.md)对象。 |
+
+
+### OH_Input_CursorConfig_Destroy()
+
+```
+void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)
+```
+
+**描述**
+销毁自定义光标配置对象
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| Input_CursorConfig** cursorConfig | 自定义光标配置 [Input_CursorConfig](./capi-input-input-cursorconfig.md)对象。 |
+
+
+### OH_Input_CursorConfig_IsFollowSystem()
+
+```
+Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConfig, bool *followSystem)
+```
+
+**描述**
+获取自定义光标是否根据系统设置调整光标大小的设置
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| Input_CursorConfig* cursorConfig | 自定义光标配置 [Input_CursorConfig](./capi-input-input-cursorconfig.md)。 |
+| bool* followSystem | 是否根据系统设置调整光标大小。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_CursorConfig_IsFollowSystem的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+
+
+### OH_Input_SetCustomCursor()
+
+```
+Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* customCursor, Input_CursorConfig* cursorConfig)
+```
+
+**描述**
+设置自定义光标样式
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 窗口Id。取值范围为大于等于0的整数|
+| Input_CustomCursor* customCursor | 自定义光标资源 [Input_CustomCursor](./capi-input-input-customcursor.md)。 |
+| Input_CursorConfig* cursorConfig | 自定义光标配置 [Input_CursorConfig](./capi-input-input-cursorconfig.md)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
