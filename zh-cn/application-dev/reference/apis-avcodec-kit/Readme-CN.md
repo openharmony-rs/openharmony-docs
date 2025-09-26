@@ -39,7 +39,6 @@
   - 结构体<!--avcodec-struct-->
     - [OH_AVRange](capi-avcapability-oh-avrange.md)
     - [OH_AVCapability](capi-avcapability-oh-avcapability.md)
-    - [MediaKeySession](capi-audiocodec-mediakeysession.md)
     - [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md)
     - [OH_AVBuffer](capi-core-oh-avbuffer.md)
     - [OH_NativeBuffer](capi-core-oh-nativebuffer.md)
