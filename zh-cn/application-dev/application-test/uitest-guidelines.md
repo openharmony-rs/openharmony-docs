@@ -18,7 +18,7 @@ UiTest支持采用ArkTS API与命令行两种方式，为界面自动化测试�
 **ArkTS 脚本开发能力：** 
 提供简洁易用的API接口，满足各类测试场景需求，支持点击、双击、长按、滑动等常用UI交互操作，助力开发者快速开发基于界面交互逻辑的自动化测试脚本。
 
-**Shell 命令测试能力：**
+**命令行测试能力：**
 支持通过命令行直接实现多元化测试操作，包括获取当前界面截屏、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
 
 ![arkxtest-uitest](figures/UiTest.PNG)
@@ -50,78 +50,78 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 开发步骤如下:
 
 1. 在main>ets>pages文件夹下编写Index.ets页面代码，作为被测示例demo。
-```ts
-  @Entry
-  @Component
-  struct Index {
-      @State message: string = 'Hello World';
-      @State text: string = '';
-      build() {
-      Row() {
-          Column() {
-          Text(this.message)
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
-          Text("Next")
-              .fontSize(50)
-              .margin({top:20})
-              .fontWeight(FontWeight.Bold)          
-              .onClick((event?: ClickEvent) => {
-                  if(event){
-                      this.text = "after click";
-                  }
-              })
-          .width('100%')
-          Text(this.text).margin(15)
-          }
-      }
-      .height('100%')
-      }
-  }
-```
+  ```ts
+    @Entry
+    @Component
+    struct Index {
+        @State message: string = 'Hello World';
+        @State text: string = '';
+        build() {
+        Row() {
+            Column() {
+            Text(this.message)
+                .fontSize(50)
+                .fontWeight(FontWeight.Bold)
+            Text("Next")
+                .fontSize(50)
+                .margin({top:20})
+                .fontWeight(FontWeight.Bold)          
+                .onClick((event?: ClickEvent) => {
+                    if(event){
+                        this.text = "after click";
+                    }
+                })
+            .width('100%')
+            Text(this.text).margin(15)
+            }
+        }
+        .height('100%')
+        }
+    }
+  ```
 
 2. 在ohosTest > ets > test文件夹下新建uitest.test.ets文件，并编写具体测试代码。
-```ts
-  import { describe, it, expect, Level } from '@ohos/hypium';
-  // 导入测试依赖kit
-  import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-  import { UIAbility, Want } from '@kit.AbilityKit';
+  ```ts
+    import { describe, it, expect, Level } from '@ohos/hypium';
+    // 导入测试依赖kit
+    import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+    import { UIAbility, Want } from '@kit.AbilityKit';
 
-  const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-  export default function abilityTest() {
-    describe('ActsAbilityTest', () => {
-      it('testUiExample',Level.LEVEL3, async (done: Function) => {
-        console.info("uitest: TestUiExample begin");        
-        // 初始化Driver对象
-        const driver = Driver.create();
-        const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-        // 指定被测应用包名、ability名
-        const want: Want = {
-            bundleName: bundleName,
-            abilityName: 'EntryAbility'
-        }
-        // 拉起被测应用
-        await delegator.startAbility(want);
-        // 等待应用拉起完成
-        await driver.waitForIdle(4000,5000);
-        // 确认当前应用顶部Ability为指定的ability
-        const ability: UIAbility = await delegator.getCurrentTopAbility();
-        console.info("get top ability");
-        expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
+    const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+    export default function abilityTest() {
+      describe('ActsAbilityTest', () => {
+        it('testUiExample',Level.LEVEL3, async (done: Function) => {
+          console.info("uitest: TestUiExample begin");        
+          // 初始化Driver对象
+          const driver = Driver.create();
+          const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
+          // 指定被测应用包名、ability名
+          const want: Want = {
+              bundleName: bundleName,
+              abilityName: 'EntryAbility'
+          }
+          // 拉起被测应用
+          await delegator.startAbility(want);
+          // 等待应用拉起完成
+          await driver.waitForIdle(4000,5000);
+          // 确认当前应用顶部Ability为指定的ability
+          const ability: UIAbility = await delegator.getCurrentTopAbility();
+          console.info("get top ability");
+          expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
 
-        // 依据指定文本“Next”查找目标控件
-        const next = await driver.findComponent(ON.text('Next'));
-        // 点击目标控件
-        await next.click();
-        await driver.waitForIdle(4000,5000);
-        // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期
-        await driver.assertComponentExist(ON.text('after click'));
-        await driver.pressBack();
-        done();
+          // 依据指定文本“Next”查找目标控件
+          const next = await driver.findComponent(ON.text('Next'));
+          // 点击目标控件
+          await next.click();
+          await driver.waitForIdle(4000,5000);
+          // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期
+          await driver.assertComponentExist(ON.text('after click'));
+          await driver.pressBack();
+          done();
+        })
       })
-    })
-  }
-```
+    }
+  ```
 
 ### 控件查找与操作
 
@@ -564,7 +564,7 @@ it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async
 | screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
 | dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
 | uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
-| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入ui模拟操作](#注入ui模拟操作)。|
+| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入UI模拟操作](#注入UI模拟操作)。|
 | --version | - |获取当前UiTest工具版本信息。 |
 | start-daemon| - | 拉起UiTest测试进程。 |
 
@@ -589,19 +589,13 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -i | - | 不过滤不可见控件，也不做窗口合并。|
 | -a | - | 保存控件的BackgroundColor、Content、FontColor、FontSize、extraAttrs属性数据。<br>**说明** ：默认不保存上述属性数据， **-a和-i不可同时使用。** | 
 | -b | \<bundleName\> | 获取指定包名对应目标窗口的控件树信息。|
-| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。|
+| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明:**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的WinId。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
-| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
+| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的DisplayId。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest dumpLayout -p /data/local/tmp/1.json
-```
-**说明:**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的WinId和DisplayId。
-
-```bash
-# 指定获取ID为0的屏幕的控件树信息。
-hdc shell uitest dumpLayout -d 0
 ```
 
 ### 录制界面操作
@@ -611,7 +605,7 @@ hdc shell uitest dumpLayout -d 0
 
 **参数列表**
 | 参数   | 二级参数    |   说明              | 
-|-------|--------------|------|-----------------|
+|-------|--------------|-----------------|
 | -W    | \<true/false> |  录制过程中是否保存操作坐标对应的控件信息到/data/local/tmp/record.csv文件中。true表示保存控件信息，false表示仅记录坐标信息，不设置时默认为true。 <br> **说明：** 从API version 20开始支持该命令。|
 | -l    | - |  在每次操作后保存当前布局信息，文件保存路径：/data/local/tmp/layout_录制启动时间戳_操作序号.json。 <br> **说明：** 从API version 20开始支持该命令。| 
 | -c    | \<true/false> | 是否将录制到的操作事件信息打印到控制台，true表示打印，false表示打印，不设置时默认为true。<br> **说明：** 从API version 20开始支持该命令。 | 
@@ -810,10 +804,6 @@ hdc shell uitest --version
 ```
 ### 拉起uitest测试进程
 
-```shell  
-hdc shell uitest start-daemon
-```
-
 >**说明**
 >
 > 设备需调成开发者模式。
@@ -821,6 +811,11 @@ hdc shell uitest start-daemon
 > 仅元能力aa test拉起的测试HAP才能调用Uitest的能力。
 >
 > 测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
+
+```shell  
+hdc shell uitest start-daemon
+```
+
 
 <!--Del-->
 ## UI测试脚本实例
