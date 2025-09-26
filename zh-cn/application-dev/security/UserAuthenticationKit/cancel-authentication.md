@@ -29,48 +29,8 @@
 
 示例代码为发起认证可信等级≥ATL3的人脸+锁屏口令认证后，取消认证请求：
 
-```ts
-import { BusinessError } from  '@kit.BasicServicesKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+<!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
-try {
-  const rand = cryptoFramework.createRandom();
-  const len: number = 16;
-  let randData: Uint8Array | null = null;
-  let retryCount = 0;
-  while(retryCount < 3){
-    randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
-      break;
-    }
-    retryCount++;
-  }
-  if(!randData){
-    return;
-  }
-  // 设置认证参数。
-  const authParam: userAuth.AuthParam = {
-    challenge: randData,
-    authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE],
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  };
-  // 配置认证界面。
-  const widgetParam: userAuth.WidgetParam = {
-    title: '请进行身份认证',
-  };
-  // 获取认证对象。
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
-  // 开始认证。
-  userAuthInstance.start();
-  console.info('auth start success');
-  // 取消认证。
-  userAuthInstance.cancel();
-  console.info('auth cancel success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-}
-```
-<!-- [cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+## 示例代码
+
+  - [认证过程中取消认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)

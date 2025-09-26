@@ -84,228 +84,26 @@
 
  发起用户认证，采用认证可信等级≥ATL3的人脸+锁屏口令认证，获取认证结果。
 
-```ts
-// API version 10
-import { BusinessError } from '@kit.BasicServicesKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
-
-try {
-  const rand = cryptoFramework.createRandom();
-  const len: number = 16; // Generate a 16-byte random number.
-  let randData: Uint8Array | null = null;
-  let retryCount = 0;
-  while(retryCount < 3){
-    randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
-      break;
-    }
-    retryCount++;
-  }
-  if(!randData){
-    return;
-  }
-  // 设置认证参数。
-  const authParam: userAuth.AuthParam = {
-    challenge: randData,
-    authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE],
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  };
-  // 配置认证界面。
-  const widgetParam: userAuth.WidgetParam = {
-    title: '请进行身份认证',
-  };
-  // 获取认证对象。
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
-  // 订阅认证结果。
-  userAuthInstance.on('result', {
-    onResult(result) {
-      console.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-      // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-      userAuthInstance.off('result');
-    }
-  });
-  console.info('auth on success');
-  userAuthInstance.start();
-  console.info('auth start success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-}
-```
-<!-- [authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 **示例2：**
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
 
-```ts
-// API version 10
-import { BusinessError } from  '@kit.BasicServicesKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
-
-// 设置认证参数。
-let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-  reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-  reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-}
-try {
-  const rand = cryptoFramework.createRandom();
-  const len: number = 16;
-  let randData: Uint8Array | null = null;
-  let retryCount = 0;
-  while(retryCount < 3){
-    randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
-      break;
-    }
-    retryCount++;
-  }
-  if(!randData){
-    return;
-  }
-  const authParam: userAuth.AuthParam = {
-    challenge: randData,
-    authType: [userAuth.UserAuthType.FACE],
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-    reuseUnlockResult: reuseUnlockResult,
-  };
-  // 配置认证界面。
-  const widgetParam: userAuth.WidgetParam = {
-    title: '请进行身份认证',
-  };
-  // 获取认证对象。
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
-  // 订阅认证结果。
-  userAuthInstance.on('result', {
-    onResult(result) {
-      console.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-      // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-      userAuthInstance.off('result');
-    }
-  });
-  console.info('auth on success');
-  userAuthInstance.start();
-  console.info('auth start success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-}
-```
-<!-- [authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 **示例3：**
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
 
-```ts
-// API version 14
-import { BusinessError } from  '@kit.BasicServicesKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
-
-// 设置认证参数。
-let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-  reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
-  reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-}
-try {
-  const rand = cryptoFramework.createRandom();
-  const len: number = 16;
-  let randData: Uint8Array | null = null;
-  let retryCount = 0;
-  while(retryCount < 3){
-    randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
-      break;
-    }
-    retryCount++;
-  }
-  if(!randData){
-    return;
-  }
-  const authParam: userAuth.AuthParam = {
-    challenge: randData,
-    authType: [userAuth.UserAuthType.FACE],
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-    reuseUnlockResult: reuseUnlockResult,
-  };
-  // 配置认证界面。
-  const widgetParam: userAuth.WidgetParam = {
-    title: '请进行身份认证',
-  };
-  // 获取认证对象。
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
-  // 订阅认证结果。
-  userAuthInstance.on('result', {
-    onResult(result) {
-      console.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-      // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-      userAuthInstance.off('result');
-    }
-  });
-  console.info('auth on success');
-  userAuthInstance.start();
-  console.info('auth start success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-}
-```
-<!-- [authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 **示例4：**
 
 以模应用方式拉起身份认证控件对用户进行身份认证：
 
-```ts
-// API version 18
-import { BusinessError } from '@kit.BasicServicesKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
-try {
-  const rand = cryptoFramework.createRandom();
-  const len: number = 16;
-  let randData: Uint8Array | null = null;
-  let retryCount = 0;
-  while(retryCount < 3){
-    randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
-      break;
-    }
-    retryCount++;
-  }
-  if(!randData){
-    return;
-  }
-  const authParam: userAuth.AuthParam = {
-    challenge: randData,
-    authType: [userAuth.UserAuthType.PIN],
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  };
-  const widgetParam: userAuth.WidgetParam = {
-    title: '请输入密码',
-    uiContext: this.getUIContext().getHostContext(),
-  };
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
-  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
-  userAuthInstance.on('result', {
-    onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
-    }
-  });
-  console.info('auth on success');
-  userAuthInstance.start();
-  console.info('auth start success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-}
-```
-<!-- [authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+## 示例代码
+
+  - [发起认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
