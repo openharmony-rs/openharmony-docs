@@ -3131,6 +3131,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### query<sup>22+</sup>
+
+query(sql: string): Promise&lt;ResultSet&gt;
+
+根据指定的SQL语句查询数据库数据，不支持写操作和多级查询。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明 |
+| ------- | ----- | ----- | ---- |
+| sql | string | 是 | 要执行的SQL语句。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ---- |
+| Promise&lt;[ResultSet](#resultset22)&gt; | Promise对象，如果操作成功，则返回ResultSet对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Called by non-system application.                            |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('query');
+  try {
+    let ret: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    while (ret.goToNextRow()) {
+      let row = ret.getRow();
+      Object.entries(row).forEach((entry) => {
+        const key = entry[0];
+        const value = entry[1];
+      });
+    }
+    ret.close();
+  } catch (err) {
+    console.error(`query failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## PhotoAsset
 
 提供封装文件属性的方法。
@@ -10521,3 +10579,303 @@ async function example(context: Context) {
 | orderSection | number | 否   | 否  | 相册排序区域。|
 | orderType    | number | 否   | 否  | 相册排序类型。|
 | orderStatus  | number | 否   | 否  | 相册排序状态。|
+
+## ValueType<sup>22+</sup>
+
+type ValueType =  number | string | boolean | Uint8Array | null
+
+用于表示允许的数据字段类型，接口参数的具体类型根据其功能而定。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 类型 | 说明 |
+|------|------|
+| number | 表示值类型为数字。 |
+| string | 表示值类型为字符串。 |
+| boolean | 表示值类型为布尔值。 |
+| Uint8Array | 表示值类型为Uint8类型的数组。 |
+| null | 表示值类型为空。 |
+
+## ValuesBucket<sup>22+</sup>
+
+type ValuesBucket = Record&lt;string, ValueType&gt;
+
+用于存储键值对的类型。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 类型| 说明 |
+| ---- | ---- |
+| Record&lt;string, ValueType&gt; | 表示键值对类型。键的类型为string，值的类型为ValueType。 |
+
+## ResultSet<sup>22+</sup>
+
+提供通过查询数据库生成的数据库结果集的访问方法。
+
+下列API示例中，需先使用query方法获取ResultSet实例，再调用对应方法。
+
+​**系统接口**​：此接口为系统接口。
+
+​**系统能力**​：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+### 属性
+
+| 名称 | 类型 | 可读 | 可写 | 说明 |
+| ----- | ---- | ----- | ---- | ----- |
+| columnCount | number | 是 | 否 | 获取结果集的列数。<br>**系统接口**：此接口为系统接口。</br> |
+| rowCount | number | 是 | 否 | 获取结果集的行数。<br>**系统接口**：此接口为系统接口。</br> |
+| rowIndex | number | 是 | 否 | 获取结果集的当前行索引。<br>**系统接口**：此接口为系统接口。</br> |
+| isAtLastRow | boolean | 是 | 否 | 检查游标是否位于最后一行。<br>**系统接口**：此接口为系统接口。</br> |
+
+### goToRow<sup>22+</sup>
+
+goToRow(position: number): boolean
+
+转到结果集的指定行。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | ---- | ----- | ----- |
+| position | number | 是 | 指定行的索引，从 0 开始。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----- |
+| boolean | 如果成功移动结果集，则为true；否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToRow(0);
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### goToFirstRow<sup>22+</sup>
+
+goToFirstRow(): boolean
+
+转到结果集的第一行。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ---- |
+| boolean | 如果成功移动结果集，则为true；否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToFirstRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToFirstRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### goToNextRow<sup>22+</sup>
+
+goToNextRow(): boolean
+
+转到结果集的下一行。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ---- |
+| boolean | 如果成功移动结果集，则为true；否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToNextRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToNextRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToNextRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getValue<sup>22+</sup>
+
+getValue(columnIndex: number): ValueType
+
+获取当前行中指定列的值。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | ---- | ----- | ----- |
+| columnIndex | number | 是 | 指定的列索引，从0开始。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----- |
+| [ValueType](#valuetype22) | 表示允许的数据字段类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getValue');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    const codes = resultSet.getValue(0);
+    resultSet.close();
+  } catch (err) {
+    console.error(`getValue failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getRow<sup>22+</sup>
+
+getRow(): ValuesBucket
+
+获取指定行的所有列值。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----- |
+| [ValuesBucket](#valuesbucket22) | 返回指定行的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    const row = resultSet.getRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`getRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### close<sup>22+</sup>
+
+close(): void
+
+关闭结果集，若不关闭可能会引起内存泄漏。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('close');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.close();
+  } catch (err) {
+    console.error(`close failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
