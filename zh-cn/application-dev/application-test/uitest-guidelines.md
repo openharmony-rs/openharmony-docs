@@ -214,18 +214,23 @@ UiTest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 在与页面进行交互后，可通过在指定时间内等待某控件的出现或等待页面空闲来判断页面跳转是否完成。
 
 ```ts
-  import { describe, it, expect, Level } from '@ohos/hypium';
+  import { describe, it, Level, TestType, Size } from '@ohos/hypium';
   // 导入测试依赖kit
   import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-  import { UIAbility, Want } from '@kit.AbilityKit';
 
   const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+  const bundleName: string = 'com.uitestScene.acts'
+  const abilityName: string = 'com.uitestScene.acts.MainAbility'
   export default function abilityTest() {
     describe('ActsAbilityTest', () => {
       it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
         let driver = Driver.create();
-        // 调用元能力接口，拉起目标应用
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        // 调用元能力接口，拉起目标应用      
+        await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
+          console.info(`UiTestCase, start abilityFinished: ${result}`)
+        }).catch((err : BusinessError) => {
+            console.error(`UiTestCase, start abilityFailed: ${err}`)
+        })
         // 通过等待目标应用首页上的指定控件出现，判断应用拉起完成
         let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
       })
@@ -337,7 +342,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
         // 获取默认屏幕对象
         let disPlay = display.getDefaultDisplaySync();
         let savePath = '/data/storage/el2/base/cache/1.png'
-        let res = await driver.screenCap(savePath, disPlay.id)；// 获取默认屏幕ID属性
+        let res = await driver.screenCap(savePath, disPlay.id);// 获取默认屏幕ID属性
       })
     })
   }
@@ -418,17 +423,24 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 以下示例代码演示了如何使用UiTest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
 
 ```ts
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, Component, ON, On } from '@kit.TestKit';
+  const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
     describe('windowOperationTest', () => {
       // 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
       it("windowSearchAndOperation", TestType.FUNCTION, async () => {
         let driver = Driver.create();
-        let window = await driver.findWindow({active: true});
-        await window.minimize();
+        try {
+          let window = await driver.findWindow({active: true});
+          await window.minimize();
+        } catch (error) {
+          // 在不支持窗口操作的设备上调用时，将抛出17000005错误码
+          console.log(`$ windowSearchAndOperation error is: ${JSON.stringify(error)}`);
+          expect(error.code).assertEqual(DeviceErrorCode);
+        }
       })
     })
   }
@@ -438,19 +450,26 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 以下示例代码演示了如何使用UiTest接口进行触摸板模拟操作，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。
 
 ```ts
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, UiDirection } from '@kit.TestKit';
+  const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
     describe('touchPadOperationTest', () => {
       // PC场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
       it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
-        // 触摸板三指上滑返回桌面。
-        await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
-        // 触摸板三指下滑恢复窗口
-        await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+        try {
+          // 触摸板三指上滑返回桌面。
+          await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+          // 触摸板三指下滑恢复窗口
+          await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+        } catch (error) {
+          // 在不支持触摸板操作的设备上调用时，将抛出17000005错误码
+          console.log(`$ windowSearchAndOperation error is: ${JSON.stringify(error)}`);
+          expect(error.code).assertEqual(DeviceErrorCode);
+        }
       })
     })
   }
