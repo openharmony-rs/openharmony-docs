@@ -368,8 +368,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：General | Phone | TV | Router| Wearable | PC/2in1
-
 **起始版本**：18
 
 ## ohos.permission.VISIBLE_WINDOW_INFO
