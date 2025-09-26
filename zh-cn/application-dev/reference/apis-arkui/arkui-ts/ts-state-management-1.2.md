@@ -1109,7 +1109,7 @@ Environment具体使用说明，详见[Environment(设备环境查询)](../../..
 
 ### envProp
 
-static envProp&lt;S&gt;(key: string, value: T): boolean
+static envProp&lt;T&gt;(key: string, value: T): boolean
 
 将[Environment](../../../ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
 
