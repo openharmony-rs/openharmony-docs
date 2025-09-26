@@ -72,8 +72,8 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
                   }
               })
           .width('100%')
-          }
           Text(this.text).margin(15)
+          }
       }
       .height('100%')
       }
