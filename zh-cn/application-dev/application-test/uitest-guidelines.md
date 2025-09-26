@@ -228,7 +228,7 @@ UiTest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
         // 调用元能力接口，拉起目标应用      
         await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
           console.info(`UiTestCase, start abilityFinished: ${result}`)
-        }).catch((err : BusinessError) => {
+        }).catch((err: Error) => {
             console.error(`UiTestCase, start abilityFailed: ${err}`)
         })
         // 通过等待目标应用首页上的指定控件出现，判断应用拉起完成
