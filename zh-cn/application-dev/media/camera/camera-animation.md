@@ -171,7 +171,7 @@
 
    ```ts
    @State isShowBlur: boolean = false; // 是否显示截图组件。
-   @State isShowBlack: boolean = false; // 闪黑组件，不使用可以去除。
+   @State isShowBlack: boolean = false; // 闪黑组件，无需使用可以删除。
    @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // 模式切换动效触发入口。
    @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;// 前后置切换动效触发入口。
    @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // 动效消失入口。
