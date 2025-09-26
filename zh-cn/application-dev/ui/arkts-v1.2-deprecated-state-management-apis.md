@@ -338,7 +338,7 @@ let res = AppStorage.clear();
 
 ArkTS-Dyn接口声明：[static EnvProp\<S\>(key: string, value: S): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropdeprecated)
 
-替代的ArkTS-Sta接口声明：[static envProp\<S\>(key: string, value: S): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
+替代的ArkTS-Sta接口声明：[static envProp\<T\>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
 
 
 
