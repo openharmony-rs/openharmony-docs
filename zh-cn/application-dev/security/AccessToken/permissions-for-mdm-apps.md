@@ -17,6 +17,8 @@
 
 允许应用激活设备管理应用。
 
+企业读取设备信息权限，包括读取设备ID、读取设备硬盘序列号，读取OS版本、读取机器名。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -29,6 +31,8 @@
 ## ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
 允许设备管理应用查询网络信息。
+
+企业查询网络信息权限，包括查询网卡设置、IP地址、MAC地址，网卡启用状态。
 
 **权限级别**：system_basic
 
@@ -82,6 +86,8 @@
 
 允许设备管理应用设置账户管理策略。
 
+允许设备管理应用设置账户管理策略，比如新增账号。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -94,6 +100,8 @@
 ## ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 允许设备管理应用设置包安装管理策略。
+
+允许设备管理应用设置包安装管理策略，比如设置包安装白名单。
 
 **权限级别**：system_basic
 
@@ -108,6 +116,8 @@
 
 允许设备管理应用设置系统时间。
 
+允许设备管理应用设置系统时间，包括设置系统时间值，禁止用户修改系统时间策略。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -120,6 +130,8 @@
 ## ohos.permission.ENTERPRISE_SET_NETWORK
 
 允许设备管理应用设置网络信息。
+
+允许设备管理应用设置网络信息，包括禁用、开启网卡。
 
 **权限级别**：system_basic
 
@@ -134,6 +146,8 @@
 
 允许设备管理应用设置和查询WiFi信息。
 
+允许设备管理应用设置和查询WiFi信息，可设置和查询wifi禁用，设置wifi连接。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -146,6 +160,8 @@
 ## ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
 允许设备管理应用订阅管理事件。
+
+允许设备管理应用订阅管理事件，比如锁屏事件，有可能软件版本更新事件，订阅成功，事件会通知MDM应用。
 
 **权限级别**：system_basic
 
@@ -160,6 +176,8 @@
 
 允许设备管理员下发和获取限制类策略。
 
+企业设备下发限制类策略，比如禁用HDC，禁用直连打印服务等。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -172,6 +190,8 @@
 ## ohos.permission.ENTERPRISE_SET_SCREENOFF_TIME
 
 允许设备管理员设置系统休眠时间。
+
+企业设备设置和获取设备休眠时间。
 
 **权限级别**：system_basic
 
@@ -212,6 +232,8 @@
 
 允许设备管理员管理证书。
 
+企业设备可以安装卸载用户证书。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -224,6 +246,8 @@
 ## ohos.permission.ENTERPRISE_GET_SETTINGS
 
 允许设备管理员查询“设置”应用数据。
+
+企业设备管理员查询设置的应用数据。
 
 **权限级别**：system_basic
 
@@ -264,6 +288,8 @@
 
 允许设备设置/取消浏览器策略。
 
+企业设备管理器激活后可设置、取消设置浏览器策略。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -276,6 +302,8 @@
 ## ohos.permission.SET_ENTERPRISE_INFO
 
 允许设备管理应用设置企业信息。
+
+企业设备管理器激活后可设置企业组织信息，包括企业名称和描述信息，用于system UI展示设备被所属管理信息。
 
 **权限级别**：system_basic
 
@@ -290,6 +318,8 @@
 
 允许设备设置安全管理策略。
 
+允许设备设置安全管理策略的权限。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -302,6 +332,8 @@
 ## ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 允许设备管理应用设置和查询蓝牙信息。
+
+允许设备管理应用设置和查询蓝牙信息的权限。
 
 **权限级别**：system_basic
 
@@ -329,6 +361,8 @@
 
 允许设备管理应用设置和查询WIFI信息。
 
+允许设备管理应用设置和查询WIFI信息的权限。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -341,6 +375,8 @@
 ## ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 允许设备管理应用管理限制策略。
+
+允许设备管理应用管理限制策略权限。
 
 **权限级别**：system_basic
 
@@ -355,6 +391,8 @@
 
 允许设备管理应用管理应用策略。
 
+允许设备管理应用管理应用策略权限。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -367,6 +405,8 @@
 ## ohos.permission.ENTERPRISE_MANAGE_LOCATION
 
 允许设备管理应用设置和查询位置信息。
+
+允许设备管理应用设置和查询位置信息权限。
 
 **权限级别**：system_basic
 
@@ -381,6 +421,8 @@
 
 允许设备管理应用进行关机重启操作。
 
+允许设备管理应用进行关机重启操作权限。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -393,6 +435,8 @@
 ## ohos.permission.ENTERPRISE_LOCK_DEVICE
 
 允许设备管理应用锁定设备。
+
+允许设备管理应用锁定设备权限。
 
 **权限级别**：system_basic
 
@@ -440,11 +484,15 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：12
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY
 
 允许应用管理企业级恢复密钥。
+
+当前仅2in1设备应用可申请此权限。
 
 **权限级别**：system_core
 
@@ -452,6 +500,8 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：13
 
@@ -465,6 +515,8 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -640,6 +692,8 @@
 ## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 允许设备管理应用（MDM）生成、解密DLP文件，查询DLP文件策略。
+
+在API20，该权限面向系统应用开放；从API 21开始，面向MDM应用开放。
 
 **权限级别**：system_core
 

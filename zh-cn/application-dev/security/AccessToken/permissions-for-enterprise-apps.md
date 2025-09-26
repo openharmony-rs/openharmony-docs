@@ -34,6 +34,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：10
 
 **变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开发范围变更为企业普通应用。
@@ -50,6 +52,8 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：10
 
@@ -76,12 +80,16 @@
 
 允许应用跨系统本地账号交互。
 
+当前支持企业应用申请该权限。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：General
 
 **起始版本**：7
 
@@ -100,6 +108,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：General
+
 **起始版本**：7
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
@@ -108,12 +118,16 @@
 
 允许应用监听应用状态。
 
+获取该权限后，可注册应用状态监听器。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：General
 
 **起始版本**：7
 
@@ -132,6 +146,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：General
+
 **起始版本**：7
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
@@ -140,14 +156,16 @@
 
 允许应用获取Wi-Fi的配置信息。
 
+该权限允许应用获取SSID、PSK、加密方式等Wi-Fi配置的相关信息。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1
-
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：8
 
@@ -166,6 +184,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：8
 
 **变更信息**：API 8-14该权限仅向系统应用开放；从API 15开始，开放范围变更为企业普通应用。
@@ -181,6 +201,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：10
 
 **变更信息**：API 10-13该权限仅向系统应用开放；从API 14开始，开放范围变更为企业普通应用。
@@ -195,6 +217,8 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：12
 
@@ -213,6 +237,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：General
+
 **起始版本**：12
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
@@ -229,6 +255,8 @@
 
 **ACL使能**：true
 
+**支持设备**：General
+
 **起始版本**：15
 
 ## ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT
@@ -244,6 +272,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：Tablet | Phone
+
 **起始版本**：18
 
 ## ohos.permission.MANAGE_NET_FIREWALL
@@ -258,6 +288,8 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：12
 
@@ -276,6 +308,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：12
 
 **变更信息**：API 12-14该权限仅向系统应用开放；从API 15开始，开放范围变更为企业普通应用。
@@ -291,6 +325,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：18
 
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
@@ -303,6 +339,8 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：18
 
@@ -317,6 +355,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：18
 
 ## ohos.permission.GET_SIGNATURE_INFO
@@ -330,6 +370,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：General | Phone | TV | Router| Wearable | PC/2in1
+
 **起始版本**：18
 
 ## ohos.permission.VISIBLE_WINDOW_INFO
@@ -342,6 +384,8 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：General
 
 **起始版本**：18
 
@@ -451,6 +495,8 @@
 
 允许企业应用管理防病毒软件。
 
+面向合作企业开放，仅在允许名单内的固定应用可申请该权限，如需进入允许名单，请联系企业技术支持。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -465,6 +511,8 @@
 ## ohos.permission.REGISTER_ANTIVIRUS
 
 允许企业防病毒软件向系统注册、更新基本信息。
+
+面向合作企业开放，仅在允许名单内的固定应用可申请该权限，如需进入允许名单，请联系企业技术支持。
 
 **权限级别**：system_basic
 
