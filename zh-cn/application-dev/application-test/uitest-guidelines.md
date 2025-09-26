@@ -9,11 +9,11 @@
 
 ## 概述
 
-UI测试框架（UiTest）为开发者提供UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者高效实现可靠的界面自动化测试。
+UI测试框架（UITest）为开发者提供UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者高效实现可靠的界面自动化测试。
 
 ## 功能全景
 
-UiTest支持采用ArkTS API与命令行两种方式，为界面自动化测试提供灵活高效的技术支撑，其中：
+UITest支持采用ArkTS API与命令行两种方式，为界面自动化测试提供灵活高效的技术支撑，其中：
 
 **ArkTS 脚本开发能力：** 
 提供简洁易用的API接口，满足各类测试场景需求，支持点击、双击、长按、滑动等常用UI交互操作，助力开发者快速开发基于界面交互逻辑的自动化测试脚本。
@@ -21,9 +21,9 @@ UiTest支持采用ArkTS API与命令行两种方式，为界面自动化测试�
 **命令行测试能力：**
 支持通过命令行直接实现多元化测试操作，包括获取当前界面截屏、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
 
-![arkxtest-uitest](figures/UiTest.PNG)
+![arkxtest-uitest](figures/UITest.PNG)
 
-UiTest分为客户端和服务端。
+UITest分为客户端和服务端。
 
 **· 客户端：**
 包含跨语言通信层、IPC模块等，主要功能为对外导出API，为UI测试框架启动提供入口。客户端由测试应用加载，运行在应用进程。其中，跨语言通信层主要进行接口导出、JSON序列化对象处理、上层ArkTS接口与底层C++接口的转换、参数解析和校验。此外，由于本模块涉及C++层对ArkTS层回调函数的调用，跨语言通信层同时负责ArkTS回调函数的管理和调用。
@@ -37,7 +37,7 @@ UiTest分为客户端和服务端。
 
 本章节介绍UI测试框架ArkTS API的具体使用方法。
 
-UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定义与参数说明可参考<!--RP13-->[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP13End-->。
+UI测试是在单元测试基础上进行UITest接口调用，接口的详细定义与参数说明可参考<!--RP13-->[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP13End-->。
 
 ### UI测试简例
 
@@ -125,7 +125,7 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
 
 ### 控件查找与操作
 
-UiTest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
+UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -166,9 +166,9 @@ UiTest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
 
 ### 模拟触摸屏手指操作
 
-UiTest支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
+UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
 
-以下示例代码演示了如何使用UiTest接口进行触摸屏坐标级的手指操作模拟。
+以下示例代码演示了如何使用UITest接口进行触摸屏坐标级的手指操作模拟。
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
@@ -227,9 +227,9 @@ UiTest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
         let driver = Driver.create();
         // 调用元能力接口，拉起目标应用      
         await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
-          console.info(`UiTestCase, start abilityFinished: ${result}`)
+          console.info(`UITestCase, start abilityFinished: ${result}`)
         }).catch((err: Error) => {
-            console.error(`UiTestCase, start abilityFailed: ${err}`)
+            console.error(`UITestCase, start abilityFailed: ${err}`)
         })
         // 通过等待目标应用首页上的指定控件出现，判断应用拉起完成
         let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
@@ -240,9 +240,9 @@ UiTest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 
 ### 模拟文本输入
 
-UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
+UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
 
-以下示例代码演示了如何使用UiTest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
+以下示例代码演示了如何使用UITest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -313,7 +313,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 > 2. 测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
 > 3. 多屏场景下，期望对指定屏幕做截屏操作时，可以调用display模块的接口<!--RP8-->[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)<!--RP8End-->，实现<!--RP9-->[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)<!--RP9End-->。
 
-以下示例代码演示了如何使用UiTest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
+以下示例代码演示了如何使用UITest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -351,7 +351,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 ### UI事件监听
 
-以下示例代码演示了如何使用UiTest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
+以下示例代码演示了如何使用UITest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -377,7 +377,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 ### 模拟键鼠操作
 
-以下示例代码演示了如何使用UiTest接口进行键鼠模拟操作，包括键盘按键、组合键输入操作，鼠标点击、移动、拖拽操作和键鼠组合操作等。
+以下示例代码演示了如何使用UITest接口进行键鼠模拟操作，包括键盘按键、组合键输入操作，鼠标点击、移动、拖拽操作和键鼠组合操作等。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -420,7 +420,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ```
 
 ### 窗口查找与操作
-以下示例代码演示了如何使用UiTest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
+以下示例代码演示了如何使用UITest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
 
 ```ts
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
@@ -447,7 +447,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ```
 
 ### 模拟触摸板操作
-以下示例代码演示了如何使用UiTest接口进行触摸板模拟操作，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。
+以下示例代码演示了如何使用UITest接口进行触摸板模拟操作，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。
 
 ```ts
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
@@ -477,7 +477,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ```
 
 ### 模拟手写笔操作
-以下示例代码演示了如何使用UiTest接口进行手写笔模拟操作，包括点击、滑动等操作，支持设置操作时的压力值大小。
+以下示例代码演示了如何使用UITest接口进行手写笔模拟操作，包括点击、滑动等操作，支持设置操作时的压力值大小。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -503,7 +503,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ```
 
 ### 模拟表冠操作
-以下示例代码演示了如何使用UiTest接口进行表冠模拟操作，包括表冠的顺/逆时针旋转。
+以下示例代码演示了如何使用UITest接口进行表冠模拟操作，包括表冠的顺/逆时针旋转。
 
 ```ts  
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
@@ -532,7 +532,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ```
 
 ### 屏幕显示操作
-以下示例代码演示了如何使用UiTest接口进行屏幕显示操作，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。
+以下示例代码演示了如何使用UITest接口进行屏幕显示操作，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。
 
 ```ts
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
@@ -568,13 +568,13 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ### 命令列表
 | 命令            | 参数   |说明                              |
 |---------------|---------------------------------|---------------------------------|
-| help          | - |  显示UiTest工具能够支持的命令信息。            |
+| help          | - |  显示UITest工具能够支持的命令信息。            |
 | screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
 | dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
 | uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
 | uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入UI模拟操作](#注入UI模拟操作)。|
-| --version | - |获取当前UiTest工具版本信息。 |
-| start-daemon| - | 拉起UiTest测试进程。 |
+| --version | - |获取当前UITest工具版本信息。 |
+| start-daemon| - | 拉起UITest测试进程。 |
 
 ### 获取截图
 
@@ -810,7 +810,7 @@ hdc shell uitest uiInput keyEvent 2047 2038
 ```bash
 hdc shell uitest --version
 ```
-### 拉起uitest测试进程
+### 拉起UITest测试进程
 
 >**说明**
 >
@@ -876,7 +876,7 @@ UI测试用例执行失败，查看hilog日志发现日志中有“uitest-api do
 **可能原因**
 
 1. 用例中UI测试框架提供异步接口没有增加await语法糖调用。
-2. 多进程执行UI测试用例，导致拉起多个UiTest进程，框架不支持多进程调用。
+2. 多进程执行UI测试用例，导致拉起多个UITest进程，框架不支持多进程调用。
 
 **解决方法**
 
