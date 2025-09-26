@@ -1,5 +1,12 @@
 # ICU4C
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 当今的软件市场是一个全球性的市场，应用程序的开发和维护需要支持多种语言。International Components for Unicode (ICU) 库为多平台多系统提供了强大且功能齐全的多语言文化信息处理能力。
 
 [ICU4C](https://unicode-org.github.io/icu/userguide/icu4c/)是ICU 库的C语言版本，部分接口已开放，支持如下能力：
