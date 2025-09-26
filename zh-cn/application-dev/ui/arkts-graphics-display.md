@@ -58,7 +58,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   Image('https://www.example.com/example.JPG') // 实际使用时请替换为真实地址
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```ts
   import { Image } from '@ohos.arkui.component';
@@ -81,7 +81,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   Image($r('app.media.icon'))
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```
   import { $r, Image } from '@ohos.arkui.component';
@@ -102,7 +102,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   Image($rawfile('example1.png'))
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```
   import { $rawfile, Image } from '@ohos.arkui.component';
@@ -166,7 +166,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
       }
       ```
 
-      ArkTS1.2不支持调用接口获取图库的照片url。
+      ArkTS静态类型不支持调用接口获取图库的照片url。
 
   2. 从媒体库获取的url格式通常如下。
 
@@ -177,7 +177,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
       .width(200)
       ```
 
-      ArkTS1.2示例：
+      ArkTS静态类型示例代码：
 
       ```ts
       import { Image } from '@ohos.arkui.component';
@@ -383,7 +383,7 @@ Image($r('app.media.cloud'))
   .fillColor(Color.Blue)
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 import { Color, $r, Image } from '@ohos.arkui.component';
@@ -503,7 +503,7 @@ struct MyComponent {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'
@@ -639,7 +639,7 @@ struct Index {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'
@@ -742,7 +742,7 @@ struct MyComponent {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'
@@ -832,7 +832,7 @@ struct MyComponent {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'
@@ -920,7 +920,7 @@ struct Index {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'
@@ -1002,7 +1002,7 @@ struct Index {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'
@@ -1048,7 +1048,7 @@ Image($r('app.media.icon'))
   .syncLoad(true)
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 import { $r,Image } from '@ohos.arkui.component';
@@ -1100,7 +1100,7 @@ struct MyComponent {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'

@@ -21,7 +21,7 @@ ArkTS1.1示例：
 Progress({ value: 24, total: 100, type: ProgressType.Linear }) // 创建一个进度总长为100，初始进度值为24的线性进度条
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
   ```ts
   import {
@@ -53,7 +53,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(50).height(200)
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```ts
   import {
@@ -79,7 +79,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
       .style({ strokeWidth: 15})	// 设置strokeWidth进度条宽度为15.0vp
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```ts
   import {
@@ -114,7 +114,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
       .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })	// 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为3vp
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```ts
   import {
@@ -147,7 +147,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
   Progress({ value: 20, total: 150, type: ProgressType.Eclipse }).color(Color.Grey).width(100).height(100)
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```ts
   import {
@@ -179,7 +179,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
   Progress({ value: 50, total: 150, type: ProgressType.Capsule }).width(50).height(100).color(Color.Blue).backgroundColor(Color.Black)
   ```
 
-  ArkTS1.2示例：
+  ArkTS静态类型示例代码：
 
   ```ts
   import {
@@ -224,7 +224,7 @@ struct ProgressCase1 {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS静态类型示例代码：
 
 ```ts
 'use static'
