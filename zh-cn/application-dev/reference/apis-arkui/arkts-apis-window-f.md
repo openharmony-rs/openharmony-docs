@@ -842,7 +842,7 @@ try {
 
 getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
-获取全部主窗信息，使用Promise异步回调。
+获取全部主窗口信息，使用Promise异步回调。
 
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
@@ -852,7 +852,7 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | Promise对象。返回主窗信息列表。 |
+| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | Promise对象。返回主窗口信息列表。 |
 
 **错误码：**
 
@@ -916,9 +916,9 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 
 ## window.getMainWindowSnapshot<sup>21+</sup>
 
-getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
+getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
 
-获取指定主窗截图，使用Promise异步回调。
+获取指定主窗口的截图，使用Promise异步回调。
 
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
@@ -928,14 +928,14 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口id列表。|
+| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。|
 | config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取窗口截图时的配置信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)&gt;&gt; | Promise对象。截图的PixelMap列表，按传入的窗口id数组的顺序排列。 |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | undefined&gt;&gt; | Promise对象。截图的PixelMap列表，按传入的窗口ID数组的顺序排列。当根据窗口ID找不到窗口或者不是主窗口时，返回undefined。 |
 
 **错误码：**
 

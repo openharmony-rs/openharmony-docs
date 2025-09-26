@@ -474,8 +474,8 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| displayId | number  | 否 | 否 | 窗口的屏幕id。 |
-| windowId  | number  | 否 | 否 | 窗口id。 |
+| displayId | number  | 否 | 否 | 窗口的屏幕ID。 |
+| windowId  | number  | 否 | 否 | 窗口ID。 |
 | showing   | boolean | 否 | 否 | 显示窗口的状态。true表示显示窗口，false表示不显示窗口。|
 | label     | string  | 否 | 否 | 窗口标签。 |
 
