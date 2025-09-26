@@ -602,7 +602,7 @@ console.log(`closePipe = ${closeRet}`);
 
 controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
 
-控制传输。
+控制传输。使用Promise异步回调。
 
 > **说明：**
 >
@@ -670,7 +670,7 @@ console.log(`controlTransfer = ${ret}`);
 
 usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
 
-控制传输。
+控制传输。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -736,7 +736,7 @@ console.log(`usbControlTransfer = ${ret}`);
 
 bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
 
-批量传输。
+批量传输。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -1066,7 +1066,7 @@ try {
 
 requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
-为指定应用程序申请访问USB配件的访问权限。
+为指定应用程序申请访问USB配件的访问权限。使用Promise异步回调。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1599,6 +1599,6 @@ Usb异步传输回调。
 
 | 名称         | 类型 | 只读  | 必填 | 说明    |
 | ---------- | ------ | ----| ----- | ------ |
-| length | number | 是 | 是 |读写操作的期望长度值，单位为字节。 |
-| actualLength | number| 是 | 是 |读写操作的实际长度值，单位为字节。 |
-| status | [UsbTransferStatus](#usbtransferstatus18) | 是 | 是 |实时传输分包的状态码。 |
+| length | number | 否 | 是 |读写操作的期望长度值，单位为字节。 |
+| actualLength | number|否 | 是 |读写操作的实际长度值，单位为字节。 |
+| status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 是 |实时传输分包的状态码。 |
