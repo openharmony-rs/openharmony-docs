@@ -18,7 +18,10 @@
 ```ts
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
 ```
-
+**ArkTS1.2**
+```ts
+import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
+```
 
 ## 子组件
 
@@ -45,7 +48,7 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 | options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | - | 拉起原子化服务参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onError<sup>18+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | onTerminated<sup>18+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| onReceive<sup>20+<sup> | [ReceiveCallback](ts-container-ui-extension-component-sys.md#receivecallback18) | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 >
@@ -94,6 +97,62 @@ function ColumChild() {
   Column() {
     Image($r('app.media.startIcon'))
     Text('test')
+  }
+}
+```
+**ArkTS1.2 示例:**
+```ts
+import { memo, __memo_context_type, __memo_id_type } from "@ohos.arkui.stateManagement" 
+import { ReceiveCallback, RecordData, Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder, TerminationInfo } from '@ohos.arkui.component';
+import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
+import { State, MutableState, stateOf, observableProxy } from "@ohos.arkui.stateManagement"
+import AtomicServiceOptions from '@ohos.app.ability.AtomicServiceOptions';
+import { ErrorCallback, Callback, BusinessError} from '@ohos.base';
+
+@Component
+struct MyStateSample {
+  @State appId: string = '6917573653426122083'; // 原子化服务appId
+
+  build() {
+    Row() {
+      Column() {
+        FullScreenLaunchComponent({
+          content: ColumChild,
+          appId: this.appId,
+          options: {} as AtomicServiceOptions,
+          onTerminated: (info: TerminationInfo) => {
+            console.info("onTerminated code: " + info.code.toString());
+          } as Callback<TerminationInfo>,
+          onError: (err: BusinessError) => {
+            console.error("onError code: " + err.code + ", message: ", err.message);
+          } as ErrorCallback<BusinessError>,
+          onReceive: (data: Record<string, RecordData>) => {
+            console.info("onReceive data: " + JSON.stringify(data));
+          } as ReceiveCallback
+        })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent')
+      .width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    let wrapper = @memo () => {
+      MyStateSample(undefined)
+    }
+    return wrapper
   }
 }
 ```
