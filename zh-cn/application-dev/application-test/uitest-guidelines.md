@@ -55,24 +55,25 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
   @Component
   struct Index {
       @State message: string = 'Hello World';
-      @State text: string = 'Next';
+      @State text: string = '';
       build() {
       Row() {
           Column() {
           Text(this.message)
               .fontSize(50)
               .fontWeight(FontWeight.Bold)
-          Text(this.text)
+          Text("Next")
               .fontSize(50)
               .margin({top:20})
               .fontWeight(FontWeight.Bold)          
               .onClick((event?: ClickEvent) => {
                   if(event){
-                      this.text = 'after click';
+                      this.text = "after click";
                   }
               })
           .width('100%')
           }
+          Text(this.text).margin(15)
       }
       .height('100%')
       }
@@ -109,9 +110,9 @@ UI测试是在单元测试基础上进行UiTest接口调用，接口的详细定
         expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
 
         // 依据指定文本“Next”查找目标控件
-        const next_text = await driver.findComponent(ON.text('Next'));
+        const next = await driver.findComponent(ON.text('Next'));
         // 点击目标控件
-        await next_text.click();
+        await next.click();
         await driver.waitForIdle(4000,5000);
         // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期
         await driver.assertComponentExist(ON.text('after click'));
