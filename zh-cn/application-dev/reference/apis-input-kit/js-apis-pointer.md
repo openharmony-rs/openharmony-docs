@@ -312,7 +312,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口得鼠标光标样式。<br>窗口id合法但窗口不存在时，返回默认全局鼠标光标样式，不存在的窗口的鼠标光标样式可以被[setPointerStyle](#pointersetpointerstyle)设置。 |
+| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，返回默认全局鼠标光标样式。<br>不存在的窗口的鼠标光标样式可以被[setPointerStyle](#pointersetpointerstyle)设置，该接口可以正常调用，但无实际效果。 |
 ）设置。    |
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
 
@@ -374,7 +374,7 @@ getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口得鼠标光标样式。<br>窗口id合法但窗口不存在时，返回默认全局鼠标光标样式，不存在的窗口的鼠标光标样式可以被[setPointerStyle](#pointersetpointerstyle-1)设置。 |
+| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，返回默认全局鼠标光标样式。<br>不存在的窗口的鼠标光标样式可以被[setPointerStyle](#pointersetpointerstyle-1)设置，该接口可以正常调用，但无实际效果。 |
 
 **返回值**：
 
@@ -440,7 +440,7 @@ getPointerStyleSync(windowId: number): PointerStyle
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口得鼠标光标样式。<br>窗口id合法但窗口不存在时，返回默认全局鼠标光标样式，不存在的窗口的鼠标光标样式可以被[setPointerStyleSync](#pointersetpointerstylesync10)设置。 |
+| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，返回默认全局鼠标光标样式。<br>不存在的窗口的鼠标光标样式可以被[setPointerStyleSync](#pointersetpointerstylesync10)设置，该接口可以正常调用，但无实际效果。 |
 
 **返回值**：
 
