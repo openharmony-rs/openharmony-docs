@@ -25,6 +25,10 @@ constructor(context: Context)
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                                        | 必填 | 说明                                                         |
@@ -41,6 +45,36 @@ constructor(context: Context)
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(40)
+          .fontWeight(FontWeight.Bold)
+          .onClick(()=>{
+            let context = this.getUIContext().getHostContext() as Context;
+            let avCastPicker = new avSession.AVCastPickerHelper(context);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -77,6 +111,10 @@ select(options?: AVCastPickerOptions): Promise\<void>
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -147,6 +185,10 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明      |
@@ -164,6 +206,22 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AVCastPickerState } from '@kit.AVSessionKit';
+
+async function onPickerStateChange(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.on('pickerStateChange', (state: AVCastPickerState) => {
+    console.info(`picker state change : ${state}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -186,6 +244,10 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
