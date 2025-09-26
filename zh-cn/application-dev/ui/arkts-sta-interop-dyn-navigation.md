@@ -1,11 +1,8 @@
 # ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面
 
-## 概述
 
 从API version 20开始，支持从ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面实现导航跳转。在[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)场景下，导出ArkTS-Dyn的NavDestination子页面，在ArkTS-Sta的Navigation中直接调用。
 
-
-## 在ArkTS-Sta的Navigation中调用ArkTS-Dyn的NavDestination页面实现跳转
 
 完整示例结构如下图所示：
 
