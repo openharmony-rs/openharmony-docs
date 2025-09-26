@@ -66,6 +66,7 @@
         - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
         - 状态管理V2互操作
           - [ArkTS-Sta与ArkTS-Dyn应用间V2状态存储互操作](ui/arkts-sta-interop-dyn-storages-v2.md)
+          - [ArkTS-Sta与ArkTS-Dyn@ObservedV2数据和@Trace数据互操作](arkts-sta-interop-dyn-observedv2.md)
         - 状态管理V1V2混用互操作
         - [UI数据互操作](quick-start/arkts-v1.2-interop-v1.1-ui-data.md)
         - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](ui/arkts-sta-interop-dyn-navigation.md)
@@ -3048,6 +3049,7 @@
           - [compatibleState (ArkTS-Sta)(系统接口)](reference/apis-arkui/arkui-ts/ts-interop-compatible-state.md)
           - [transferCompatibleBuilder (ArkTS-Sta)(系统接口)](reference/apis-arkui/arkui-ts/ts-interop-compatible-builder.md)
           - [compatibleWrappedBuilder (ArkTS-Sta)](reference/apis-arkui/arkui-ts/ts-interop-compatible-WrappedBuilder.md)
+          - [enableCompatibleObservedV2ForStatic\<T\> (ArkTS-Sta)](reference/apis-arkui/arkui-ts/ts-interop-compatible-ObservedV2.md)
         - 系统预置UI组件库<!--system-preset-ui-component-library-->
           - [Chip](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)
           - [ChipGroup](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)
