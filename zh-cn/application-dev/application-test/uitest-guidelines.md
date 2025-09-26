@@ -487,7 +487,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 以下示例代码演示了如何使用UiTest接口进行表冠模拟操作，包括表冠的顺/逆时针旋转。
 
 ```ts  
-  import { describe, it, TestType, Size, Level，expect } from '@ohos/hypium';
+  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
   const CapabilityCode = 801;
@@ -504,7 +504,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
           await driver.crownRotate(-20, 30);
         } catch (error) {
           // 该接口仅在智能表设备上生效，其他设备调用时将抛出801错误码
-          console.log(`${TestTag}, testCrownRotate error is: ${JSON.stringify(error)}`);
+          console.log(`$ testCrownRotate error is: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(CapabilityCode);
         }
       })
