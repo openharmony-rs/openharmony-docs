@@ -116,7 +116,7 @@ typedef void (*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 |  uint32_t index | 对应编码帧的index。 |
 |  [OH_AVFormat](capi-core-oh-avformat.md) *parameter |  编码参数。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
@@ -139,13 +139,13 @@ OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#变量)。 |
+| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](_codec_base.md#变量)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | 成功则返回一个指向视频编码实例的指针。<br> 如果输入为不支持的编码器类型或内存不足时，则返回NULL。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) * | 成功则返回一个指向视频编码实例的指针。<br> 如果输入为不支持的编码器类型或内存不足时，则返回NULL。 |
 
 ### OH_VideoEncoder_CreateByName()
 
@@ -171,7 +171,7 @@ OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | 成功则返回一个指向视频编码实例的指针。<br> 如果输入是不支持编码器名称或者内存资源不足，则返回NULL。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) * | 成功则返回一个指向视频编码实例的指针。<br> 如果输入是不支持编码器名称或者内存资源不足，则返回NULL。 |
 
 ### OH_VideoEncoder_Destroy()
 
@@ -191,7 +191,7 @@ OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -221,8 +221,8 @@ OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
-| [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | 所有回调函数的集合。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) callback | 所有回调函数的集合。 |
 | void *userData | 开发者执行回调所依赖的数据。 |
 
 **返回：**
@@ -249,8 +249,8 @@ OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallb
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
-| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) callback | 所有回调函数的集合。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodecCallback](_o_h___a_v_codec_callback.md) callback | 所有回调函数的集合。 |
 | void *userData | 开发者执行回调所依赖的数据。 |
 
 **返回：**
@@ -277,7 +277,7 @@ OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_Vid
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | [OH_VideoEncoder_OnNeedInputParameter](#oh_videoencoder_onneedinputparameter) onInputParameter | 输入参数回调指针。 |
 | void *userData | 开发者执行回调所依赖的数据。 |
 
@@ -330,7 +330,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | [OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat的指针，用于给出要编码的视频轨的描述。 |
 
 **返回：**
@@ -357,7 +357,7 @@ OH_AVErrCode OH_VideoEncoder_Prepare(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -383,7 +383,7 @@ OH_AVErrCode OH_VideoEncoder_Start(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -409,7 +409,7 @@ OH_AVErrCode OH_VideoEncoder_Stop(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -435,7 +435,7 @@ OH_AVErrCode OH_VideoEncoder_Flush(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -461,7 +461,7 @@ OH_AVErrCode OH_VideoEncoder_Reset(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -487,7 +487,7 @@ OH_AVFormat *OH_VideoEncoder_GetOutputDescription(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -513,7 +513,7 @@ OH_AVErrCode OH_VideoEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | [OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat实例的指针。 |
 
 **返回：**
@@ -540,7 +540,7 @@ OH_AVErrCode OH_VideoEncoder_GetSurface(OH_AVCodec *codec, OHNativeWindow **wind
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | [OHNativeWindow](../apis-arkgraphics2d/capi-nativewindow-nativewindow.md) **window | 指向OHNativeWindow实例的指针。应用负责管理window的生命周期，结束时调用[OH_NativeWindow_DestroyNativeWindow](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_destroynativewindow)释放。 |
 
 **返回：**
@@ -571,7 +571,7 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t index | 输出缓冲区对应的索引值。由[OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata)给出。 |
 
 **返回：**
@@ -598,7 +598,7 @@ OH_AVErrCode OH_VideoEncoder_NotifyEndOfStream(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -628,7 +628,7 @@ OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t index | 输入缓冲区对应的索引值。由[OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata)给出。 |
 | [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) attr | 缓冲区中包含数据的描述信息。 |
 
@@ -656,7 +656,7 @@ Buffer模式下，将index对应的OH_AVBuffer送入编码器编码。
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t index | 输入缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)给出。 |
 
 **返回：**
@@ -683,7 +683,7 @@ Surface模式下，将index对应帧的编码参数送入编码器编码。
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t index | 输入参数缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)给出。 |
 
 **返回：**
@@ -710,7 +710,7 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t index | 输出缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)给出。 |
 
 **返回：**
@@ -737,7 +737,7 @@ OH_AVFormat *OH_VideoEncoder_GetInputDescription(OH_AVCodec *codec)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 
 **返回：**
 
@@ -763,7 +763,7 @@ OH_AVErrCode OH_VideoEncoder_IsValid(OH_AVCodec *codec, bool *isValid)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | bool *isValid | 输出参数，指向布尔类型的指针。只有当接口返回AV_ERR_OK时，该值表示编码器服务的有效性（true为有效，false为无效）。建议开发者将isValid初始化为false。 |
 
 **返回：**
@@ -790,7 +790,7 @@ OH_AVErrCode OH_VideoEncoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t *index | 输入buffer对应的索引值。 |
 | int64_t timeoutUs | 超时时长，单位为微秒。负值：无限等待；0：立即退出；正值：等待指定时长后退出。 |
 
@@ -818,7 +818,7 @@ OH_AVBuffer *OH_VideoEncoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t i
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t index | 输入buffer对应的索引值，可通过[OH_VideoEncoder_QueryInputBuffer](#oh_videoencoder_queryinputbuffer) 接口获取。 |
 
 **返回：**
@@ -845,7 +845,7 @@ OH_AVErrCode OH_VideoEncoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t *index | 输出buffer对应的索引值。 |
 | int64_t timeoutUs | 超时时长，单位为微秒。负值：无限等待；0：立即退出；正值：等待指定时长后退出。 |
 
@@ -873,7 +873,7 @@ OH_AVBuffer *OH_VideoEncoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
+| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
 | uint32_t index | 输出buffer对应的索引值，可通过[OH_VideoEncoder_QueryOutputBuffer](#oh_videoencoder_queryoutputbuffer)接口获取。 |
 
 **返回：**
