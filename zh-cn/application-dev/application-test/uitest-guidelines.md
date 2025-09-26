@@ -535,7 +535,7 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 以下示例代码演示了如何使用UiTest接口进行屏幕显示操作，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。
 
 ```ts
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
+  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, Point } from '@kit.TestKit';
   
