@@ -6375,7 +6375,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 >
 > - 根据相同ratio参数计算窗口宽高时，窗口宽高会跟随窗口边框装饰尺寸或可见性变化而调整。
 >
-> - 通过[setWindowDecorVisible](#setWindowDecorVisible11)将窗口标题栏设置为不可见时，窗口可绘制区域将占据原本标题栏的高度空间。
+> - 通过[setWindowDecorVisible](#setwindowdecorvisible11)将窗口标题栏设置为不可见时，窗口可绘制区域将占据原本标题栏的高度空间。
 >
 > - 通过其他接口如[resize](#resize9)、[resizeAsync](#resizeasync12)设置窗口大小时，不受ratio约束。
 >
@@ -6387,7 +6387,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 
 | 参数名 | 类型 | 必填 | 说明                                        |
 | --- | ------- | ---- |-------------------------------------------|
-| ratio | number | 是   | 设置窗口内可绘制区域的宽高比。该参数为浮点数，受窗口尺寸限制（参见[WindowLimits](arkts-apis-window-i.md#windowlimits11)），有效范围为`[可绘制区域最小宽度/最大高度，可绘制区域最大宽度/最小高度]`。若传入值超出该范围，则调用失败，并返回错误码 1300016。|
+| ratio | number | 是   | 设置窗口内可绘制区域的宽高比。该参数为浮点数，受窗口尺寸限制（参见[WindowLimits](arkts-apis-window-i.md#windowlimits11)），有效范围为`[可绘制区域最小宽度/最大高度，可绘制区域最大宽度/最小高度]`。若传入值超出该范围，则调用失败，并返回错误码1300016。|
 | isPersistent | boolean | 否 | 是否持久化保存该比例参数。<br/>如为`true`，比例参数会持久化保存，销毁窗口、关闭应用或重启设备后，当再次切换到自由悬浮窗口模式时仍然生效。可通过[resetAspectRatio](#resetaspectratio10)清除持久化保存的比例参数。<br/>如为`false`，比例参数仅对当前窗口生效，窗口销毁后清除该数据。<br/>默认值为`true`。|
 | needUpdateRect | boolean | 否 | 是否立即根据当前比例更新窗口大小。<br/>如为`true`，立即根据当前比例更新窗口大小。<br/>如为`false`，窗口将在拖拽缩放时根据当前比例更新，也可以使用[resize](#resize9)或[resizeAsync](#resizeasync12)进行主动更新。<br/>默认值为`true`。|
 
