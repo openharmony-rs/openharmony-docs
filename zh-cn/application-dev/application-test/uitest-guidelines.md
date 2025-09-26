@@ -535,18 +535,26 @@ UiTest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 以下示例代码演示了如何使用UiTest接口进行屏幕显示操作，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。
 
 ```ts
-// 屏幕属性获取和屏幕操作
-it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-  let driver = Driver.create();
-  // 获取屏幕大小
-  let size: Point = await driver.getDisplaySize();
-  // 获取屏幕清晰度
-  let density: Point = await driver.getDisplayDensity();
-  // 唤醒屏幕
-  await driver.wakeUpDisplay();
-  // 屏幕顺时针旋转90度
-  await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
-})
+  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
+  // 导入测试依赖kit
+  import { Driver, Point } from '@kit.TestKit';
+  
+  export default function abilityTest() {
+    describe('crownRotateTest', () => {
+      // 屏幕属性获取和屏幕操作
+      it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        let driver = Driver.create();
+        // 获取屏幕大小
+        let size: Point = await driver.getDisplaySize();
+        // 获取屏幕清晰度
+        let density: Point = await driver.getDisplayDensity();
+        // 唤醒屏幕
+        await driver.wakeUpDisplay();
+        // 屏幕顺时针旋转90度
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
+      })
+    })
+  }
 ```
 
 ## 基于命令行进行UI测试
