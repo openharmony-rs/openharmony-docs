@@ -1,5 +1,12 @@
 # @ohos.net.netFirewall (网络防火墙)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块为应用程序提供网络防火墙能力。应用程序可以对机器进行防火墙拦截记录的查询。
 
 
