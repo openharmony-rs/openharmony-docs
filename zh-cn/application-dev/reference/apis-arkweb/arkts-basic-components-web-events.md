@@ -260,6 +260,10 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                  | 必填   | 说明            |
@@ -268,6 +272,7 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { CustomContentDialog } from '@kit.ArkUI';
@@ -312,6 +317,88 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
     });
 
     // 自定义弹出框的内容区
+    @Builder
+    buildContent(): void {
+      Column() {
+        Text(this.message)
+        TextInput()
+          .onChange((value) => {
+            this.promptResult = value;
+          })
+          .defaultFocus(true)
+      }
+      .width('100%')
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+          .onPrompt((event) => {
+            if (event) {
+              console.log("event.url:" + event.url);
+              console.log("event.message:" + event.message);
+              console.log("event.value:" + event.value);
+              this.title = "来自" + event.url + "的消息";
+              this.message = event.message;
+              this.promptResult = event.value;
+              this.result = event.result;
+              this.dialogController.open();
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, State, Column, Component, Entry, WebKeyboardAvoidMode, CustomDialogController, Builder} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { JsResult, Text, TextInput, ButtonStyleMode } from '@kit.ArkUI';
+  import { CustomContentDialog } from '@ohos.arkui.advanced.Dialog';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    @State message: string = 'Hello World';
+    @State title: string = 'Hello World';
+    @State result: JsResult | null = null;
+    promptResult: string = '';
+    webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+    dialogController: CustomDialogController = new CustomDialogController({
+      builder: CustomContentDialog({
+        primaryTitle: this.title,
+        contentBuilder: () => {
+          this.buildContent();
+        },
+        buttons: [
+          {
+            value: '取消',
+            buttonStyle: ButtonStyleMode.TEXTUAL,
+            action: () => {
+              console.info('Callback when the button is clicked');
+              this.result?.handleCancel()
+            }
+          },
+          {
+            value: '确认',
+            buttonStyle: ButtonStyleMode.TEXTUAL,
+            action: () => {
+              this.result?.handlePromptConfirm(this.promptResult);
+            }
+          }
+        ],
+      }),
+      onWillDismiss: () => {
+        this.result?.handleCancel();
+        this.dialogController.close();
+      }
+    });
+
+    // 自定义弹出框的内容区。
     @Builder
     buildContent(): void {
       Column() {
@@ -482,7 +569,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -778,7 +865,7 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 20
 
@@ -927,7 +1014,7 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2534,7 +2621,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2793,7 +2880,7 @@ onWindowExit(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -3018,7 +3105,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -3616,7 +3703,7 @@ onControllerAttached(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
