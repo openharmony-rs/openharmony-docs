@@ -1,14 +1,14 @@
 # 管理外置存储设备（仅对系统应用开放）
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
 外置存储设备具备可插拔属性，因此系统提供了设备插拔事件的监听及挂载功能，用于管理外置存储设备。
 
-外置存储设备的管理由StorageManager和StorageDaemon两个服务完成。StorageDaemon实现底层的的监听挂载等功能；StorageManager则对系统应用提供状态变更通知、查询和管理能力。
+外置存储设备的管理由StorageManager和StorageDaemon两个服务完成。StorageDaemon实现底层的监听挂载等功能；StorageManager则对系统应用提供状态变更通知、查询和管理能力。
 
 **图1** 外置存储设备管理示意图  
 
