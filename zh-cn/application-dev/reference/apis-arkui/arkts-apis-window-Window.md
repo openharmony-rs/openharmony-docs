@@ -6412,18 +6412,26 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let ratio = 1.0;
-  let promise = windowClass.setContentAspectRatio(ratio, true, true);
-  promise.then(() => {
-    console.info('Succeeded in setting aspect ratio of window.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to set the aspect ratio of window. Cause code: ${exception.code}, message: ${exception.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      let ratio = 1.0;
+      let promise = windowClass.setContentAspectRatio(ratio, true, true);
+      promise.then(() => {
+        console.info('Succeeded in setting aspect ratio of window.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to set the aspect ratio of window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
 }
 ```
 
