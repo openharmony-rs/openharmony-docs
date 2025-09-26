@@ -1,5 +1,12 @@
 # @ohos.net.statistics (流量管理)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 流量管理模块提供获取指定网卡实时上行、下行流量等能力。
 
 > **说明：**
