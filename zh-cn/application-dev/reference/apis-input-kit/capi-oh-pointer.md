@@ -43,7 +43,7 @@ enum Input_PointerStyle
 
 **起始版本：** 22
 
-鼠标样式类型。
+鼠标光标样式类型。
 
 | 名称                               | 值    | 说明     |图示 |
 | -------------------------------- | ---- | ------ |------ |
@@ -66,7 +66,7 @@ enum Input_PointerStyle
 | COLOR_SUCKER                     | 16   | 滴管     |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING                    | 17   | 并拢的手   |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN                        | 18   | 张开的手   |![Hand_Open.png](./figures/Hand_Open.png)|
-| HAND_POINTING                    | 19   | 手形指针   |![Hand_Poniting.png](./figures/Hand_Pointing.png)|
+| HAND_POINTING                    | 19   | 手形指针   |![Hand_Pointing.png](./figures/Hand_Pointing.png)|
 | HELP                             | 20   | 帮助选择   |![Help.png](./figures/Help.png)|
 | MOVE                             | 21   | 移动     |![Move.png](./figures/Move.png)|
 | RESIZE_LEFT_RIGHT                | 22   | 内部左右调整 |![Resize_Left_Right.png](./figures/Resize_Left_Right.png)|
@@ -91,7 +91,7 @@ enum Input_PointerStyle
 | CURSOR_CIRCLE | 41 | 圆形光标 |![Cursor_Circle.png](./figures/Cursor_Circle.png)|
 | LOADING | 42 | 正在载入动画光标 |![Loading.png](./figures/Loading.png)|
 | RUNNING | 43 | 后台运行中动画光标 |![Running.png](./figures/Running.png)|
-| MIDDLE_BTN_EAST_WEST          | 44   | 向东西滚动 |![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
+| MIDDLE_BTN_EAST_WEST         | 44   | 向东西滚动 |![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
 | SCREENRECORDER_CURSOR        | 48   | 录屏光标  |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
 
 
