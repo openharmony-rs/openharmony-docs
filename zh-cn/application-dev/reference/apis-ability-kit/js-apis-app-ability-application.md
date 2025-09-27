@@ -369,7 +369,7 @@ getAppPreloadType(): AppPreloadType
 
 | 类型            | 说明            |
 | --------------- | --------------- |
-| AppPreloadType  | 应用预加载完成阶段。     |
+|[AppPreloadType](./js-apis-app-ability-application.md#apppreloadtype22)  | 应用预加载完成阶段。     |
 
 **示例：**
 
