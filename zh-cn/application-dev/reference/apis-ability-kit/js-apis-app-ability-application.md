@@ -20,6 +20,19 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+## AppPreloadType<sup>22+</sup>
+
+表示应用预加载完成阶段的枚举。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称                 | 值  | 说明                               |
+| -------------------- | --- | --------------------------------- |
+| UNSPECIFIED    | 0   |    未发生预加载或预加载数据已被清除。       |
+| TYPE_CREATE_PROCESS          | 1   |    预加载将在进程创建完成后完成。      |
+| TYPE_CREATE_ABILITY_STAGE  | 2   |     预加载将在[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成后完成。   |
+| TYPE_CREATE_WINDOW_STAGE        | 3   |    预加载将在[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成后完成。           |
+
 ## application.createModuleContext<sup>12+</sup>
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
@@ -340,6 +353,32 @@ export default class EntryAbility extends UIAbility {
       let message: string = (error as BusinessError).message;
       console.error(`exitMasterProcessRole failed, error.code: ${code}, error.message: ${message}`);
     }
+  }
+}
+```
+
+## application.getAppPreloadType<sup>22+</sup>
+
+getAppPreloadType(): AppPreloadType
+
+获取应用预加载完成阶段。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+	
+**返回值：**
+
+| 类型            | 说明            |
+| --------------- | --------------- |
+| AppPreloadType  | 应用预加载完成阶段。     |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      let appPreloadType = application.getAppPreloadType();
   }
 }
 ```
