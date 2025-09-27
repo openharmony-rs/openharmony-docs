@@ -759,7 +759,7 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | number  | 是    | 窗口id。取值为大于0的整数。 |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
 | focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
@@ -851,7 +851,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | number  | 是    | 窗口id。取值为大于0的整数。 |
 | cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | 是    | 自定义光标资源。 |
 | config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
 
