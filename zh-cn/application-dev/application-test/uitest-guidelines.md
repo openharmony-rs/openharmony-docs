@@ -15,11 +15,11 @@ UI测试框架（UITest）为开发者提供UI界面查找和操作模拟能力�
 
 UITest支持采用ArkTS API与命令行两种方式，为界面自动化测试提供灵活高效的技术支撑，其中：
 
-**ArkTS 脚本开发能力：** 
+**ArkTS脚本开发能力：** 
 提供简洁易用的API接口，满足各类测试场景需求，支持点击、双击、长按、滑动等常用UI交互操作，助力开发者快速开发基于界面交互逻辑的自动化测试脚本。
 
 **命令行测试能力：**
-支持通过命令行直接实现多元化测试操作，包括获取当前界面截屏、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
+支持通过命令行直接实现多元化测试操作，包括获取当前界面截图、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
 
 ![arkxtest-uitest](figures/UITest.PNG)
 
@@ -39,9 +39,9 @@ UITest分为客户端和服务端。
 
 UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基础上进行UITest接口调用，接口的详细定义与参数说明可参考<!--RP13-->[API文档](../reference/apis-test-kit/js-apis-uitest.md)<!--RP13End-->。
 
-### UI测试简例
+### UI测试示例
 
-下面提供一个UI测试的简单示例，在单元测试脚本基础上进行UI测试的增量开发，具体实现功能如下：
+下面提供一个UI测试的简单示例，介绍如何在单元测试脚本基础上进行UI测试的增量开发，具体实现功能如下：
 
 1. 调用<!--RP1-->[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)<!--RP1End-->能力，启动目标被测应用，并确认应用运行状态。
 2. 调用UI测试框架能力，页面中执行点击操作。
@@ -95,7 +95,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
           // 初始化Driver对象
           const driver = Driver.create();
           const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-          // 指定被测应用包名、ability名
+          // 指定被测应用包名、ability名，请开发者替换为被测应用包名和ability名
           const want: Want = {
               bundleName: bundleName,
               abilityName: 'EntryAbility'
@@ -127,7 +127,10 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
 UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
 
-```ts
+如下给出控件查找与操作的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
+
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, Component, ON, On } from '@kit.TestKit';
@@ -162,14 +165,16 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
       })
     })
   }
-```
+  ```
 
 ### 模拟触摸屏手指操作
 
 UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操作等事件。
 
-以下示例代码演示了如何使用UITest接口进行触摸屏坐标级的手指操作模拟。
-```ts
+如下给出触摸屏坐标级的手指操作模拟的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
+
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, PointerMatrix, UiDirection } from '@kit.TestKit';
@@ -207,25 +212,28 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
       })
     })
   }
-
-```
+  ```
 ### 页面加载等待
 
 在与页面进行交互后，可通过在指定时间内等待某控件的出现或等待页面空闲来判断页面跳转是否完成。
 
-```ts
+如下给出页面加载等待的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
+
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, Level, TestType, Size } from '@ohos/hypium';
   // 导入测试依赖kit
   import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 
   const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+  // 指定被测应用包名、ability名，请开发者替换为被测应用包名和ability名
   const bundleName: string = 'com.uitestScene.acts'
   const abilityName: string = 'com.uitestScene.acts.MainAbility'
   export default function abilityTest() {
     describe('ActsAbilityTest', () => {
       it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
         let driver = Driver.create();
-        // 调用元能力接口，拉起目标应用      
+        // 拉起目标应用      
         await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
           console.info(`UITestCase, start abilityFinished: ${result}`)
         }).catch((err: Error) => {
@@ -236,15 +244,16 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
       })
     })
   }
-```
+  ```
 
 ### 模拟文本输入
 
 UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
 
-以下示例代码演示了如何使用UITest接口进行文本输入，包括基于控件的文本输入和基于坐标的文本输入两种方式。
+如下给出文本输入的示例，包括基于控件的文本输入和基于坐标的文本输入两种方式。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, ON } from '@kit.TestKit';
@@ -305,17 +314,17 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
       })
     })
   }
-```
+  ```
 ### 截图
 
 > **说明：**
 > 1. 指定截图文件保存路径，路径需为当前应用的<!--RP6-->[沙箱路径](../file-management/app-sandbox-directory.md)<!--RP6End-->。
 > 2. 测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->为normal，对应要求使用用户级加密区的应用沙箱路径。且需指定将文件保存在应用在本设备上存放持久化数据的子目录。
-> 3. 多屏场景下，期望对指定屏幕做截屏操作时，可以调用display模块的接口<!--RP8-->[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)<!--RP8End-->，实现<!--RP9-->[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)<!--RP9End-->。
 
-以下示例代码演示了如何使用UITest接口进行屏幕截图，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。
+如下给出屏幕截图的示例，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。多屏场景下，期望对指定屏幕做截图操作时，可以调用display模块的接口<!--RP8-->[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)<!--RP8End-->，实现<!--RP9-->[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)<!--RP9End-->。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
@@ -346,14 +355,15 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
       })
     })
   }
-```
+  ```
 
 
 ### UI事件监听
 
-以下示例代码演示了如何使用UITest接口进行UI界面事件的监听，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。
+如下给出UI界面事件的监听的示例，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, UIElementInfo } from '@kit.TestKit';
@@ -373,13 +383,14 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
       })
     })
   }
-```
+  ```
 
 ### 模拟键鼠操作
 
-以下示例代码演示了如何使用UITest接口进行键鼠模拟操作，包括键盘按键、组合键输入操作，鼠标点击、移动、拖拽操作和键鼠组合操作等。
+如下给出键鼠模拟操作，包括键盘按键、组合键输入操作的示例，包括鼠标点击、移动、拖拽操作和键鼠组合操作等。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, MouseButton } from '@kit.TestKit';
@@ -417,12 +428,13 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
       })
     })
   }
-```
+  ```
 
 ### 窗口查找与操作
-以下示例代码演示了如何使用UITest接口进行窗口查找和操作，根据窗口属性查找窗口，并进行窗口最小化等操作。
+如下给出窗口查找和操作的示例，根据窗口属性查找窗口，并进行窗口最小化等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, Component, ON, On } from '@kit.TestKit';
@@ -437,19 +449,20 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
           let window = await driver.findWindow({active: true});
           await window.minimize();
         } catch (error) {
-          // 在不支持窗口操作的设备上调用时，将抛出17000005错误码
+          // 在不支持窗口操作的设备上调用minimize接口操作窗口时，将抛出17000005错误码
           console.log(`$ windowSearchAndOperation error is: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(DeviceErrorCode);
         }
       })
     })
   }
-```
+  ```
 
 ### 模拟触摸板操作
-以下示例代码演示了如何使用UITest接口进行触摸板模拟操作，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。
+如下给出触摸板模拟操作的示例，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, UiDirection } from '@kit.TestKit';
@@ -474,12 +487,13 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
     })
   }
 
-```
+  ```
 
 ### 模拟手写笔操作
-以下示例代码演示了如何使用UITest接口进行手写笔模拟操作，包括点击、滑动等操作，支持设置操作时的压力值大小。
+如下给出手写笔模拟操作，包括点击、滑动等操作的示例，支持设置操作时的压力值大小。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
@@ -500,12 +514,13 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
       })
     })
   }
-```
+  ```
 
 ### 模拟表冠操作
-以下示例代码演示了如何使用UITest接口进行表冠模拟操作，包括表冠的顺/逆时针旋转。
+如下给出表冠模拟操作的示例，包括表冠的顺/逆时针旋转。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts  
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
@@ -522,19 +537,20 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
           // 逆时针旋转20格，旋转速度为30格/秒
           await driver.crownRotate(-20, 30);
         } catch (error) {
-          // 该接口仅在智能表设备上生效，其他设备调用时将抛出801错误码
+          // driver.crownRotate接口仅在智能表设备上生效，其他设备调用时将抛出801错误码
           console.log(`$ testCrownRotate error is: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(CapabilityCode);
         }
       })
     })
   }
-```
+  ```
 
 ### 屏幕显示操作
-以下示例代码演示了如何使用UITest接口进行屏幕显示操作，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。
+如下给出屏幕显示操作的示例，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-```ts
+  ```ts
+  // ohosTest/ets/test/uitest.test.ets
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, Point } from '@kit.TestKit';
@@ -555,11 +571,11 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
       })
     })
   }
-```
+  ```
 
 ## 基于命令行进行UI测试
 
-在开发阶段，如果需要快速执行截屏、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可借助命令行实现，提升测试效率。
+在开发阶段，如果需要快速执行截图、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可借助命令行实现，提升测试效率。
 
 > **环境要求：**
 >
@@ -569,8 +585,8 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 | 命令            | 参数   |说明                              |
 |---------------|---------------------------------|---------------------------------|
 | help          | - |  显示UITest工具能够支持的命令信息。            |
-| screenCap       |[-p] [-d]| 截屏。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
-| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>|支持在daemon运行时执行获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
+| screenCap       |[-p] [-d]| 截图。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
+| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>| 获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
 | uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
 | uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入UI模拟操作](#注入UI模拟操作)。|
 | --version | - |获取当前UITest工具版本信息。 |
@@ -581,7 +597,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 | 参数    |   二级参数   |说明       | 
 |---------|---------|------------|
 | -p | \<savePath\> | 指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
-| -d | \<displayId\> | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：** 从API version 20开始支持该命令。|
+| -d | \<displayId\> | 多屏场景下，获取指定ID屏幕下的截图。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 存储路径：/data/local/tmp，文件名：时间戳 + .png。
@@ -599,7 +615,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -b | \<bundleName\> | 获取指定包名对应目标窗口的控件树信息。|
 | -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明:**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的WinId。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
-| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的DisplayId。|
+| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
@@ -631,14 +647,14 @@ hdc shell uitest uiRecord record -c false
 hdc shell uitest uiRecord read
 ```
 
-以下举例为：录制数据中字段及含义如下。
+录制数据中字段及含义如下。
 
  ```json
  {
-   "ABILITY": "com.ohos.launcher.MainAbility", // 前台应用界面
-   "BUNDLE": "com.ohos.launcher", // 操作应用
-   "CENTER_X": "", // 预留字段,暂未使用
-   "CENTER_Y": "", // 预留字段,暂未使用
+   "ABILITY": "com.ohos.launcher.MainAbility", // 被操作应用对应的Ability名称
+   "BUNDLE": "com.ohos.launcher", // 被操作应用对应的包名
+   "CENTER_X": "", // 预留字段，暂未使用
+   "CENTER_Y": "", // 预留字段，暂未使用
    "EVENT_TYPE": "pointer", // 操作类型
    "LENGTH": "0", // 总体步长
    "OP_TYPE": "click", //事件类型，当前支持点击、双击、长按、拖拽、滑动、抛滑动作录制
@@ -814,11 +830,7 @@ hdc shell uitest --version
 
 >**说明**
 >
-> 设备需调成开发者模式。
->
-> 仅元能力aa test拉起的测试HAP才能调用Uitest的能力。
->
-> 测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
+> 仅元能力aa test拉起的测试HAP才能调用Uitest的能力，且测试HAP的<!--RP7-->[APL等级级别](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)<!--RP7End-->需为normal。
 
 ```shell  
 hdc shell uitest start-daemon
