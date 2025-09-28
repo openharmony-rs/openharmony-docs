@@ -51,6 +51,10 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 组件布局和组件绘制送显完成回调的句柄，包含了申请句柄时的首次查询结果。
 
+> **说明：**
+>
+> 该接口不支持设置空值、null/undefined以及其他非法值。若输入非法值会导致编译报错。
+
 ### on('layout')
 
 ArkTS1.1: on(type: 'layout', callback: () => void): void
