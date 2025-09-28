@@ -190,8 +190,8 @@ setData(dataType: DataType, data: Object): void
 
 |  参数名        | 类型                                    | 必填  | 说明  |
 | ------------------------- | ------------------ | ----- | --------------- |
-| dataType | [DataType](#datatype) | 是 | 发送增加配置数据的数据类型。|
-| data | Object | 是 | 发送的增加配置数据。 | 
+| dataType | [DataType](#datatype) | 是 | 发送数据的数据类型。|
+| data | Object | 是 | 发送的数据。 | 
 
 ### addData<sup>21+</sup>
 
