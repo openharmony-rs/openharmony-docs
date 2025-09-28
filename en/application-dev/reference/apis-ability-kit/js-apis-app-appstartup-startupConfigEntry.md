@@ -1,4 +1,4 @@
-# @ohos.app.appstartup.StartupConfigEntry (AppStartup Configuration)
+# @ohos.app.appstartup.StartupConfigEntry (AppStartup Configuration Entry)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 
 
-The module provides APIs for configuring AppStartup.
+The module provides the capability to configure [AppStartup](../../application-models/app-startup.md).
 
 > **NOTE**
 >
@@ -21,11 +21,15 @@ The module provides APIs for configuring AppStartup.
 import { StartupConfigEntry } from '@kit.AbilityKit';
 ```
 
-## StartupConfigEntry.onConfig
+## StartupConfigEntry
+
+### onConfig
 
 onConfig?(): StartupConfig
 
-Called during application startup to configure AppStartup.
+Called if the HAP of the AbilityStage has [defined the AppStartup configuration file](../../application-models/app-startup.md#defining-startup-parameter-configuration). This callback is triggered before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
+
+You can set the AppStartup configuration within this callback. For details, see [Setting Startup Parameters](../../application-models/app-startup.md#setting-startup-parameters).
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -33,7 +37,7 @@ Called during application startup to configure AppStartup.
 
 | Type| Description|
 | -------- | -------- |
-| StartupConfig | AppStartup configuration.|
+| [StartupConfig](js-apis-app-appstartup-startupConfig.md#startupconfig) | AppStartup configuration.|
 
 **Example**
 
@@ -48,7 +52,8 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     let onCompletedCallback = (error: BusinessError<void>) => {
       hilog.info(0x0000, 'testTag', `onCompletedCallback`);
       if (error) {
-        hilog.info(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code, error.message);
+        hilog.info(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
+          error.message);
       } else {
         hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
       }
@@ -65,11 +70,15 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
 }
 ```
 
-## StartupConfigEntry.onRequestCustomMatchRule<sup>20+</sup>
+### onRequestCustomMatchRule<sup>20+</sup>
 
 onRequestCustomMatchRule(want: Want): string
 
-Called to obtain a custom matching rule during application launch. Depending on the parameters in the Want passed in, you can return various custom rules to match against the **customization** field in **matchRules** configured for the startup task. If a match is successful, the task is executed automatically. This API can be used to further refine the matching rules when a startup scenario cannot match a startup task through the URI, action, or intent name. For details, see [Adding Task Matching Rules](../../application-models/app-startup.md#adding-task-matching-rules).
+Called if the HAP of the AbilityStage has [defined the AppStartup configuration file](../../application-models/app-startup.md#defining-startup-parameter-configuration). This callback is triggered after [StartupConfigEntry.onConfig](#onconfig) but before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
+
+You can use this callback to return different custom matching rules based on parameters in the Want object passed by the caller to start the UIAbility. . AppStartup matches these rules with the **customization** field in **matchRules** of the startup task configuration. If a match is successful, the task is executed automatically. For details about the matching rules, see [Adding Task Matching Rules](../../application-models/app-startup.md#adding-task-matching-rules).
+
+This API is typically used in scenarios where tasks cannot be matched directly using URI, action, or intent name rules. It allows for further refinement of matching rules.
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -88,12 +97,9 @@ Called to obtain a custom matching rule during application launch. Depending on 
 **Example**
 
 ```ts
-import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import { StartupConfigEntry, Want } from '@kit.AbilityKit';
 
 export default class MyStartupConfigEntry extends StartupConfigEntry {
-
   // ...
 
   onRequestCustomMatchRule(want: Want): string {

@@ -1,9 +1,9 @@
-# Starting UIAbility in the Same Application
+# Starting UIAbility Within the Same Application
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @altay-->
-<!--Designer: @altay-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -967,8 +967,9 @@ For the CalleeAbility, implement the callback to receive data and the methods to
                     try {
                       caller.release();
                     } catch (releaseErr) {
-                      console.log('Caller.release catch error, error.code: ' + JSON.stringify(releaseErr.code) +
-                        ' error.message: ' + JSON.stringify(releaseErr.message));
+                      let code = (releaseErr as BusinessError).code;
+                      let msg = (releaseErr as BusinessError).message;
+                      console.error(`Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
                     }
                   }
                 }).catch((err: BusinessError) => {
