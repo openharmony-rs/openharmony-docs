@@ -9,7 +9,7 @@
 
 ## 概述
 
-提供可丢弃内存的内存管理功能。提供的功能包括创建、开始读取、结束读取、开始写入、结束写入、重建等。<br> 使用时需要链接libpurgeable_memory_ndk.z.so。
+提供可丢弃内存的内存管理功能。<br>提供的功能包括创建、开始读取、结束读取、开始写入、结束写入、重建等。<br>使用时需要链接libpurgeable_memory_ndk.z.so。
 
 **引用文件：** <purgeable_memory/purgeable_memory.h>
 
@@ -63,7 +63,7 @@ typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)
 | 参数项 | 描述 |
 | -- | -- |
 | void * | 数据指针，指向可丢弃内存对象的内容的起始地址。 |
-| [](capi-purgeable-memory-h.md#) [](capi-purgeable-memory-h.md#)s[](capi-purgeable-memory-h.md#)i[](capi-purgeable-memory-h.md#)z[](capi-purgeable-memory-h.md#)e[](capi-purgeable-memory-h.md#)_[](capi-purgeable-memory-h.md#)t[](capi-purgeable-memory-h.md#) | 内容的数据大小。 |
+| size_t | 内容的数据大小。 |
 | void * | 其他私有参数。 |
 
 **返回：**
