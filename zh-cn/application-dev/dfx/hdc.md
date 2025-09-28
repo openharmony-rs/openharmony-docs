@@ -535,7 +535,7 @@ hdc tconn IP:port [-remove]
 | 返回信息 | 说明 |
 | -------- | -------- |
 | Connect OK. | 连接成功。 |
-| [Info]Target is connected, repeat opration. | 设备当前已连接。 |
+| [Info]Target is connected, repeat operation. | 设备当前已连接。 |
 | [Fail]Connect failed. | 连接失败。 |
 
 **使用方法**：
