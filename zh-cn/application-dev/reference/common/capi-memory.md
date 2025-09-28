@@ -1,7 +1,7 @@
 # Memory
 
 <!--Kit: Kernel Enhance Kit-->
-<!--Subsystem: kernel-->
+<!--Subsystem: Kernel-->
 <!--Owner: @sagittary-->
 <!--Designer: @OH-wxy-->
 <!--Tester: @liuhonggang123-->
