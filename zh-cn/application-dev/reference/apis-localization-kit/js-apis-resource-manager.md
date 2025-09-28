@@ -1624,7 +1624,7 @@ export default class EntryAbility extends UIAbility {
             // "format_test"仅作示例，请替换为实际使用的资源
             let pluralStr = this.context.resourceManager.getDoublePluralStringByNameSync("format_test", 2.1, 2, "basket", 0.6);
             console.log(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
-            // 打印输出结果: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+            // 打印输出结果: getDoublePluralStringByNameSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
