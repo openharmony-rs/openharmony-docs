@@ -509,6 +509,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | isDeepIdle      | boolean                           | 否    | 是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
 | idleWaitTime    | number                            | 否    | 空闲等待时间，单位为毫秒。           |
 | parameters      | Record<string, number \| string \| boolean>  | 否    | 携带参数信息。 |
+| earliestStartTime<sup>22+</sup> | number | 否 | 任务首次执行时间距离任务申请时间的间隔，单位为毫秒，默认为0，范围大于等于0。 |
 
 ## NetworkType
 
