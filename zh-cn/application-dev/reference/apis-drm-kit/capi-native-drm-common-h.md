@@ -1,12 +1,19 @@
 # native_drm_common.h
 
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @zengyawen-->
+
 ## 概述
 
 定义DRM数据类型。
 
 **引用文件：** <multimedia/drm_framework/native_drm_common.h>
 
-**库：** libnative_drm.z.so
+**库：** libnative_drm.so
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -88,6 +95,8 @@ enum DRM_EventType
 **描述**
 
 监听事件类型。
+
+**系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 

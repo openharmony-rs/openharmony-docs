@@ -1,10 +1,16 @@
 # Usb_DeviceArray
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
 设备ID清单，用于存放OH_Usb_GetDevices接口获取到的设备ID列表和设备数量。
 
-**起始版本：** 16
+**起始版本：** 18
 
 **相关模块：** [UsbDDK](capi-usbddk.md)
 

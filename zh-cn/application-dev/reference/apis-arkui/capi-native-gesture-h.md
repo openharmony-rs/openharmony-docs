@@ -1,4 +1,10 @@
 # native_gesture.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -13,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->、<!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End-->
 
 ## 汇总
 
@@ -58,14 +66,14 @@
 | [int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recognizer, ArkUI_GestureInterruptInfo* info)](#oh_arkui_touchrecognizer_canceltouch) | - | 在手势打断回调中向指定的触摸识别器发送取消触摸的事件 |
 | [ArkUI_GestureEventActionType OH_ArkUI_GestureEvent_GetActionType(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getactiontype) | - | 返回手势事件类型。 |
 | [const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getrawinputevent) | - | 返回手势输入。 |
-| [int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)](#oh_arkui_longpress_getrepeatcount) | - | 返回长按手势定时触发次数。 |
+| [int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)](#oh_arkui_longpress_getrepeatcount) | - | 返回是否为重复触发事件。 |
 | [float OH_ArkUI_PanGesture_GetVelocity(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getvelocity) | - | 滑动手势返回手势主方向速度。 |
 | [float OH_ArkUI_PanGesture_GetVelocityX(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getvelocityx) | - | 滑动手势返回当前手势的x轴方向速度。 |
 | [float OH_ArkUI_PanGesture_GetVelocityY(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getvelocityy) | - | 滑动手势返回当前手势的y轴方向速度。 |
 | [float OH_ArkUI_PanGesture_GetOffsetX(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getoffsetx) | - | 滑动手势返回当前手势事件x轴相对偏移量。 |
 | [float OH_ArkUI_PanGesture_GetOffsetY(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getoffsety) | - | 滑动手势返回当前手势事件y轴相对偏移量。 |
-| [float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getangle) | - | 滑动手势返回当前手势事件角度信息。角度计算方式：滑动手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br> |
-| [float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getvelocity) | - | 滑动手势场景中所有手指滑动平均速度。 |
+| [float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getangle) | - | 快滑手势返回当前手势事件角度信息。角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br> |
+| [float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getvelocity) | - | 快滑手势场景中所有手指滑动平均速度。 |
 | [float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_rotationgesture_getangle) | - | 旋转手势返回当前手势事件角度信息。 |
 | [float OH_ArkUI_PinchGesture_GetScale(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getscale) | - | 捏合手势返回当前手势事件缩放信息。 |
 | [float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcenterx) | - | 捏合手势中心点相对于当前组件元素左上角x轴坐标。 |
@@ -229,10 +237,10 @@ enum ArkUI_GestureRecognizerType
 | -- |-----------------------------------|
 | TAP_GESTURE = 0 | 敲击手势。                             |
 | LONG_PRESS_GESTURE | 长按手势。                             |
-| PAN_GESTURE | 拖动手势。                             |
+| PAN_GESTURE | 滑动手势。                             |
 | PINCH_GESTURE | 捏合手势。                             |
 | ROTATION_GESTURE | 旋转手势。                             |
-| SWIPE_GESTURE | 滑动手势。                             |
+| SWIPE_GESTURE | 快滑手势。                             |
 | GROUP_GESTURE | 手势组合。                             |
 | CLICK_GESTURE | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
 | DRAG_DROP | 用于拖放的拖拽手势。<br>**起始版本：** 20        |
@@ -292,6 +300,14 @@ typedef void (*ArkUI_GestureRecognizerDisposeNotifyCallback)(ArkUI_GestureRecogn
 定义手势识别器析构通知事件的回调函数类型。
 
 **起始版本：** 12
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
+| void* userData | 用户自定义数据。 |
 
 ### OH_ArkUI_GestureInterruptInfo_GetSystemFlag()
 
@@ -423,7 +439,7 @@ int32_t OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers(const ArkUI_GestureInt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 参数错误。 |
+| int32_t | 返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 表示成功。<br>         返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 表示参数错误。 |
 
 ### OH_ArkUI_TouchRecognizer_GetNodeHandle()
 
@@ -539,7 +555,7 @@ int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)
 **描述：**
 
 
-返回长按手势定时触发次数。
+返回是否为重复触发事件。
 
 **起始版本：** 12
 
@@ -554,7 +570,7 @@ int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 长按手势定时触发次数。 |
+| int32_t | 是否为重复触发事件。1表示为重复触发事件，0表示为非重复触发事件。 |
 
 ### OH_ArkUI_PanGesture_GetVelocity()
 
@@ -695,7 +711,7 @@ float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 **描述：**
 
 
-滑动手势返回当前手势事件角度信息。角度计算方式：滑动手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br>
+快滑手势返回当前手势事件角度信息。角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br>
 
 **起始版本：** 12
 
@@ -710,7 +726,7 @@ float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 滑动手势的角度，即两根手指间的线段与水平方向的夹角变化的度数。 |
+| float | 快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数。单位为deg。|
 
 ### OH_ArkUI_SwipeGesture_GetVelocity()
 
@@ -721,7 +737,7 @@ float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)
 **描述：**
 
 
-滑动手势场景中所有手指滑动平均速度。
+快滑手势场景中所有手指滑动平均速度。
 
 **起始版本：** 12
 
@@ -736,7 +752,7 @@ float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 滑动手势速度，即所有手指滑动的平均速度，单位为px/秒。 |
+| float | 快滑手势速度，即所有手指滑动的平均速度，单位为px/秒。 |
 
 ### OH_ArkUI_RotationGesture_GetAngle()
 
@@ -762,7 +778,7 @@ float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 旋转角度。 |
+| float | 旋转角度。单位为deg。|
 
 ### OH_ArkUI_PinchGesture_GetScale()
 
@@ -1049,7 +1065,7 @@ int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(ArkUI_GestureEventTargetIn
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)* info | 手势事件目标信息。 |
-| bool* ret | 当前滚动类容器组件是否在顶部。 |
+| bool* ret | 当前滚动类容器组件是否在顶部。true表示在顶部，false表示不在顶部。|
 
 **返回：**
 
@@ -1076,7 +1092,7 @@ int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)* info | 手势事件目标信息。 |
-| bool* ret | 当前滚动类容器组件是否在底部。 |
+| bool* ret | 当前滚动类容器组件是否在底部。true表示在底部，false表示不在底部。 |
 
 **返回：**
 
@@ -1312,6 +1328,7 @@ int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer*
 
 设置手势识别器对象析构通知回调函数。
 
+**起始版本：** 12
 
 **参数：**
 
@@ -1427,7 +1444,7 @@ int32_t OH_ArkUI_GetGestureParam_repeat(ArkUI_GestureRecognizer* recognizer, boo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| bool* isRepeat | 手势识别器是否连续触发事件回调。 |
+| bool* isRepeat | 手势识别器是否连续触发事件回调。true表示连续触发，false表示不连续触发。|
 
 **返回：**
 
@@ -1454,7 +1471,7 @@ int32_t OH_ArkUI_GetGestureParam_distance(ArkUI_GestureRecognizer* recognizer, d
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| double* distance | 手势识别器的手指允许的移动距离范围。 |
+| double* distance | 手势识别器的手指允许的移动距离范围。单位为px。|
 
 **返回：**
 
@@ -1481,7 +1498,7 @@ int32_t OH_ArkUI_GetGestureParam_speed(ArkUI_GestureRecognizer* recognizer, doub
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| double* speed | 手势识别器的识别滑动的最小速度。 |
+| double* speed | 手势识别器的识别滑动的最小速度。单位为px/s。|
 
 **返回：**
 
@@ -1508,7 +1525,7 @@ int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, i
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| int* duration | 手势识别器的触发长按的最短时间。 |
+| int* duration | 手势识别器的触发长按的最短时间。单位为ms。|
 
 **返回：**
 
@@ -1535,7 +1552,7 @@ int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, doub
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| double* angle | 手势识别器的旋转手势的最小改变度数。 |
+| double* angle | 手势识别器的旋转手势的最小改变度数。单位为deg。|
 
 **返回：**
 

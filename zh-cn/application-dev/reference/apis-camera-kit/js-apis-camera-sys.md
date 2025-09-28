@@ -1,4 +1,10 @@
 # @ohos.multimedia.camera (相机管理)(系统接口)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 本模块为开发者提供一套简单且易于理解的相机服务接口，开发者通过调用接口可以开发相机应用。应用通过访问和操作相机硬件，实现基础操作，如预览、拍照和录像；还可以通过接口组合完成更多操作，如控制闪光灯和曝光时间、对焦或调焦等。
 
@@ -73,7 +79,7 @@ lcd闪光灯信息项。
 
 | 名称   | 类型                            | 只读  | 可选       | 说明 |
 | ------ | ----------------------------- |-----| ---------- | ---------- |
-| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| NA  | 是   | raw图。 |
+| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| 否  | 是   | raw图。 |
 
 ## ExposureMode
 
@@ -148,7 +154,6 @@ createDepthDataOutput(profile: DepthProfile): DepthDataOutput
 | --------------- | --------------- |
 | 202                    |  Not System Application.               |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
 
 **示例：**
 
@@ -459,6 +464,7 @@ prelaunch(): void
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
 
 function preLaunch(context: common.BaseContext): void {
   let cameraManager: camera.CameraManager = camera.getCameraManager(context);
@@ -568,7 +574,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
 | isCameraOccluded                 | boolean              |  是  | 否 |遮挡状态，true为遮挡状态，false为不遮挡状态。        |
 
-## CameraOutputCapability<sup>13+</sup>
+## CameraOutputCapability<sup>10+</sup>
 
 相机输出能力项。
 
@@ -590,6 +596,8 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
+| CAMERA_FORMAT_DNG<sup>12+</sup> |   4   | Digital Negative格式的图。      |
+| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Extreme Digital格式的图。   |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | DEPTH_16格式的深度图。      |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | DEPTH_32格式的深度图。      |
 
@@ -747,7 +755,7 @@ async function releaseDepthData(depthData: camera.DepthData): Promise<void> {
 
 start(): Promise\<void\>
 
-启动深度信息输出流，通过Promise获取结果。
+启动深度信息输出流。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -757,7 +765,7 @@ start(): Promise\<void\>
 
 | 类型            | 说明                     |
 | -------------- | ----------------------- |
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -786,7 +794,7 @@ function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
 
 stop(): Promise\<void\>
 
-结束深度信息输出，通过Promise获取结果。
+结束深度信息输出。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -796,7 +804,7 @@ stop(): Promise\<void\>
 
 | 类型            | 说明                     |
 | -------------- | ----------------------- |
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -980,7 +988,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void {
   try {
     let isSupperted: boolean = DepthFusionQuery.isDepthFusionSupported();
-    console.info('Promise returned to indicate that isDepthFusionSupported method execution success.');
+    console.info('Indicate that isDepthFusionSupported method execution success.');
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to depth fusion query  isDepthFusionSupported, error code: ${err.code}.`);
@@ -1059,15 +1067,16 @@ isDepthFusionEnabled(): boolean
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): void {
+function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
+  let isEnable: boolean = false;
   try {
-    let isEnable: boolean = DepthFusion.isDepthFusionEnabled();
+    isEnable = DepthFusion.isDepthFusionEnabled();
     console.info('Promise returned to indicate that isDepthFusionEnabled method execution success.');
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to depth fusion isDepthFusionEnabled, error code: ${err.code}.`);
   };
+  return isEnable;
 }
 ```
 
@@ -1124,12 +1133,12 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-|            名称                 | 类型                                               |     只读    |     必填     | 说明       |
+|            名称                 | 类型                                               |     只读    |     可选     | 说明       |
 | ------------------------------- |--------------------------------------------------| ----------- | ------------ | ---------- |
-| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      否     |       是      | 相机信息。         |
-| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      否     |       否      | 预保存参数类型。    |
-| activeTime<sup>11+</sup>        | number                                           |      否     |       否      | 激活时间，单位min。 |
-| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      否     |       否      | 设置参数内容。      |
+| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      否     |       否      | 相机信息。         |
+| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      否     |       是      | 预保存参数类型。    |
+| activeTime<sup>11+</sup>        | number                                           |      否     |       是      | 激活时间，单位min。 |
+| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      否     |       是      | 设置参数内容。      |
 
 ## RestoreParamType<sup>11+</sup>
 
@@ -1192,6 +1201,7 @@ addDeferredSurface(surfaceId: string): void
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
   const cameraManager: camera.CameraManager = camera.getCameraManager(context);
@@ -1204,7 +1214,13 @@ async function preview(context: common.BaseContext, cameraDevice: camera.CameraD
   session.addOutput(previewOutput);
   session.addOutput(photoOutput);
   await session.commitConfig();
-  await session.start();
+  try {
+    await session.start();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`start session failed. error code: ${err.code}`);
+  }
   previewOutput.addDeferredSurface(previewSurfaceId);
 }
 ```
@@ -1514,7 +1530,7 @@ function getThumbnail(proxyObj: camera.DeferredPhotoProxy): void {
 
 release(): Promise\<void\>
 
-释放输出资源，通过Promise获取结果。
+释放输出资源。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1524,7 +1540,7 @@ release(): Promise\<void\>
 
 | 类型            | 说明               |
 | -------------- |------------------|
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1550,7 +1566,7 @@ async function releaseDeferredPhotoProxy(proxyObj: camera.DeferredPhotoProxy): P
 
 burstCapture(setting: PhotoCaptureSetting): Promise\<void\>
 
-开始连续拍照，一般用于拍照模式下，开始后底层持续上图，可以通过[confirmCapture](#confirmcapture11)取消连续拍照。
+开始连续拍照，一般用于拍照模式下，开始后底层持续上图，可以通过[confirmCapture](#confirmcapture11)取消连续拍照。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1566,7 +1582,7 @@ burstCapture(setting: PhotoCaptureSetting): Promise\<void\>
 
 | 类型            | 说明                      |
 | -------------- | ------------------------   |
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1913,6 +1929,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 function callback(err: BusinessError, proxyObj: camera.DeferredPhotoProxy): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
   proxyObj.getThumbnail().then((thumbnail: image.PixelMap) => {
     AppStorage.setOrCreate('proxyThumbnail', thumbnail);
   });
@@ -1954,6 +1974,7 @@ isQuickThumbnailSupported(): boolean
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function isQuickThumbnailSupported(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<boolean> {
   let cameraManager: camera.CameraManager = camera.getCameraManager(context);
@@ -1963,12 +1984,22 @@ async function isQuickThumbnailSupported(context: common.BaseContext, mode: came
   // 开始配置会话。
   session.beginConfig();
   // 把CameraInput加入到会话。
+  if (cameras.length <= 0) {
+    console.info('Get supported cameras is null or [].');
+    return false;
+  }
   let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
   await cameraInput.open();
   session.addInput(cameraInput);
   // 把photoOutput加入到会话。
   let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
-  session.addOutput(photoOutput);
+  try {
+    session.addOutput(photoOutput);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`AddOutput called failed. error code: ${err.code}`);
+    return false;
+  }
   let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
   return isSupported;
 }
@@ -2008,6 +2039,7 @@ enableQuickThumbnail(enabled: boolean): void
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
 
 async function enableQuickThumbnail(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<void> {
   let cameraManager: camera.CameraManager = camera.getCameraManager(context);
@@ -2062,6 +2094,7 @@ on(type: 'quickThumbnail', callback: AsyncCallback\<image.PixelMap>): void
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
+import { camera } from '@kit.CameraKit';
 
 function callback(err: BusinessError, pixelMap: image.PixelMap): void {
   if (err || pixelMap === undefined) {
@@ -2069,7 +2102,7 @@ function callback(err: BusinessError, pixelMap: image.PixelMap): void {
       return;
   }
   // 显示或保存pixelMap。
-  // do something.
+  // 执行操作。
 }
 
 async function registerQuickThumbnail(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<void> {
@@ -2143,7 +2176,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| metadataObjectTypes  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
 
 **错误码：**
 
@@ -2184,7 +2217,7 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| metadataObjectTypes  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
 
 **错误码：**
 
@@ -2249,7 +2282,7 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 | 名称         | 类型                                        | 只读 | 可选 |说明                |
 | -----------  | ------------------------------------------- | ---- | ---- | ----------------- |
 | objectId<sup>13+</sup>     | number                                      |  是  |  否  | metadataObject Id序号。|
-| confidence<sup>13+</sup>   | number                                      |  是  |  否  | 检测置信度，取值范围[0,1]。|
+| confidence<sup>13+</sup>   | number                                      |  是  |  否  | 检测置信度，取值范围[0, 1]。|
 
 ## MetadataFaceObject<sup>13+</sup>
 
@@ -2262,7 +2295,7 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 | leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                             |  是  |  否  | 左眼区域框|
 | rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                            |  是  |  否  | 右眼区域框。|
 | emotion                | [Emotion](#emotion13)             |  是  |  否  | 检测到的情绪类型。|
-| emotionConfidence      | number                            |  是  |  否  | 情绪检测置信度，取值范围[0,1]。|
+| emotionConfidence      | number                            |  是  |  否  | 情绪检测置信度，取值范围[0, 1]。|
 | pitchAngle             | number                            |  是  |  否  | 俯仰角度，取值范围[-90, 90]，以向下为正。|
 | yawAngle               | number                            |  是  |  否  | 左右旋转角度，取值范围[-90, 90]，以向右为正。|
 | rollAngle              | number                            |  是  |  否  | 平面内旋转角度，取值范围[-180, 180]，以顺时针方向为正。|
@@ -2575,6 +2608,8 @@ function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
 
 枚举，场景特性枚举。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                            | 值   | 说明                        |
@@ -2587,12 +2622,14 @@ function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
 
 场景检测结果信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称     | 类型        |   只读   |   必填   | 说明       |
+| 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
-| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   是     |    是    | 特性类型。 |
-| detected |   boolean   |   是     |    是    | 检测结果。true为检测到指定特性场景，false为未检测到指定特性场景。 |
+| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   是     |    否    | 特性类型。 |
+| detected |   boolean   |   是     |    否    | 表示是否检测到指定特性场景。true为检测到指定特性场景，false为未检测到指定特性场景。 |
 
 ## TripodDetectionResult<sup>13+</sup>
 
@@ -2600,11 +2637,13 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](#scenefeaturedetecti
 
 脚架检测信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称     | 类型                              |   只读   |   必填   | 说明      |
+| 名称     | 类型                              |   只读   |   可选   | 说明      |
 | -------- |---------------------------------| -------- | -------- |---------|
-| tripodStatus | [TripodStatus](#tripodstatus13) |   是     |    是    | 脚架状态信息。 |
+| tripodStatus | [TripodStatus](#tripodstatus13) |   是     |    否    | 脚架状态信息。 |
 
 ## SceneDetection<sup>12+</sup>
 
@@ -2852,10 +2891,10 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称     | 类型           | 只读 | 必填 | 说明         |
+| 名称     | 类型           | 只读 | 可选 | 说明         |
 | -------- | ------------- |---- | ---- | -------------|
-| min      | number        | 是  |  N/A  | 获取的可变焦距范围的最小值  |
-| max      | number        | 是  |  N/A  | 获取的可变焦距范围的最大值。 |
+| min      | number        | 是  |  否  | 获取的可变焦距范围的最小值。  |
+| max      | number        | 是  |  否  | 获取的可变焦距范围的最大值。 |
 
 ## Beauty<sup>11+</sup>
 
@@ -3621,82 +3660,6 @@ PhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorManagement
 
 普通拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置普通拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
-### on('macroStatusChanged')<sup>11+</sup>
-
-on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
-
-监听相机微距状态变化，通过注册回调函数获取结果。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型                                      | 必填 | 说明                       |
-| -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string      | 是   | 监听事件，固定为'macroStatusChanged'，session创建成功可监听。 |
-| callback | AsyncCallback\<boolean\>     | 是   | 回调函数，用于获取当前微距状态，返回true为开启状态，返回false为禁用状态。  |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID | 错误信息                      |
-|-------|---------------------------|
-| 202   | Not System Application.   |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, macroStatus: boolean): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`Macro state: ${macroStatus}`);
-}
-
-function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
-  photoSession.on('macroStatusChanged', callback);
-}
-```
-
-### off('macroStatusChanged')<sup>11+</sup>
-
-off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
-
-注销监听相机微距状态变化。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型                    | 必填 | 说明                       |
-| -------- | ------------------------ | ---- | ------------------------ |
-| type     | string                   | 是   | 监听事件，固定为'macroStatusChanged'，session创建成功可监听。|
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true为开启状态，返回false为禁用状态。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID | 错误信息                      |
-|-------|---------------------------|
-| 202   | Not System Application.   |
-
-**示例：**
-
-```ts
-function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
-  photoSession.off('macroStatusChanged');
-}
-```
-
 ### on('featureDetection')<sup>12+</sup>
 
 on(type: 'featureDetection', featureType: SceneFeatureType, callback: AsyncCallback\<SceneFeatureDetectionResult\>): void
@@ -3902,82 +3865,6 @@ VideoSessionForSys extends VideoSession, Beauty, ColorEffect, ColorManagement, A
 VideoSession extends Session, Flash, AutoExposure, Focus, Zoom, Stabilization, ColorManagement
 
 普通录像模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置普通录像模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)。
-
-### on('macroStatusChanged')<sup>11+</sup>
-
-on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
-
-监听相机微距状态变化，通过注册回调函数获取结果。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型                                      | 必填 | 说明                       |
-| -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string      | 是   | 监听事件，固定为'macroStatusChanged'，session创建成功可监听。 |
-| callback | AsyncCallback\<boolean\>     | 是   | 回调函数，用于获取当前微距状态，返回true是开启状态，返回false是禁用状态。  |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID | 错误信息                      |
-|-------|---------------------------|
-| 202   | Not System Application.   |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, macroStatus: boolean): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`Macro state: ${macroStatus}`);
-}
-
-function registerMacroStatusChanged(videoSession: camera.VideoSession): void {
-  videoSession.on('macroStatusChanged', callback);
-}
-```
-
-### off('macroStatusChanged')<sup>11+</sup>
-
-off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
-
-注销监听相机微距状态变化。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名    | 类型                     | 必填 | 说明                       |
-| -------- | ------------------------ | ---- | ------------------------ |
-| type     | string                   | 是   | 监听事件，固定为'macroStatusChanged'，session创建成功可监听。|
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true是开启状态，返回false是禁用状态。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID | 错误信息                      |
-|-------|---------------------------|
-| 202   | Not System Application.   |
-
-**示例：**
-
-```ts
-function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
-  videoSession.off('macroStatusChanged');
-}
-```
 
 ### on('lcdFlashStatus')<sup>13+</sup>
 
@@ -4491,7 +4378,9 @@ function unregisterLcdFlashStatus(portraitPhotoSession: camera.PortraitPhotoSess
 
 NightPhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect, ColorManagement, ManualExposure
 
-夜景拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置夜景拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)。
+夜景拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置夜景拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)、[PhotoOutput](arkts-apis-camera-PhotoOutput.md)。
+
+夜景拍照需要监听拍照结束事件[onCaptureEnd](arkts-apis-camera-PhotoOutput.md#oncaptureend)作为一次拍照的结束。
 
 ### on('error')<sup>11+</sup>
 
@@ -4751,6 +4640,10 @@ HighResolutionPhotoSession extends Session, AutoExposure, Focus
 
 高像素拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置高像素拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
+> **说明：**
+>
+> 高像素拍照场景下，需要使用物理镜头，不可以使用逻辑镜头。
+
 ### on('error')<sup>12+</sup>
 
 on(type: 'error', callback: ErrorCallback): void
@@ -4906,10 +4799,11 @@ function unregisterFocusStateChange(highResolutionPhotoSession: camera.HighResol
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称          | 类型      | 只读 | 必填 | 说明        |
+| 名称          | 类型      | 只读 | 可选 | 说明        |
 | ------------- | -------- | ---- | ---- | ---------- |
-| status        | number   | 否   | 是   | 画中画当前的状态。0：已停止，1：已启动，2：停止中，3：启动中。|
-| sketchRatio   | number   | 否   | 是   | 画中画画面的Zoom倍率。|
+| status        | number   | 否   | 否   | 画中画当前的状态。0：已停止，1：已启动，2：停止中，3：启动中。|
+| sketchRatio   | number   | 否   | 否   | 画中画画面的Zoom倍率。|
+| centerPointOffset<sup>20+</sup> | Point | 否  | 否   | 画中画的偏移点。  |
 
 ## SlowMotionVideoSession<sup>12+</sup>
 
@@ -5481,7 +5375,7 @@ ISO参数信息。
 
 | 名称        | 类型    | 只读 | 可选  | 说明       |
 | ----------- | ------- | ---- |-----| ---------- |
-| lumination  | number  | 是   | 是   | 范围[0,1],光照值归一化数值|
+| lumination  | number  | 是   | 是   | 范围[0, 1]，光照值归一化数值。|
 
 ## CameraFormat
 
@@ -5899,10 +5793,8 @@ getFocusAssist(): boolean
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function getFocusAssist(professionalPhotoSession: camera.ProfessionalPhotoSession): boolean {
-  let isFocusAssistOpened: boolean;
+  let isFocusAssistOpened: boolean = false;
   try {
     isFocusAssistOpened = professionalPhotoSession.getFocusAssist();
   } catch (error) {
@@ -6096,7 +5988,7 @@ function getFocusDriven(session: camera.VideoSessionForSys): camera.FocusDrivenT
 
 setFocusDistance(distance: number): void
 
-手动设置对焦距离，可设置范围为[0,1]之间的浮点数，0表现为近景，1表现为远景。
+手动设置对焦距离，可设置范围为[0, 1]之间的浮点数，0表现为近景，1表现为远景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6106,7 +5998,7 @@ setFocusDistance(distance: number): void
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| distance | number | 是   | 范围0-1：该值为归一化值，0为近景，1为远景，<br>可在该范围内调节 |
+| distance | number | 是   | 范围[0, 1]：该值为归一化值，0为近景，1为远景，<br>可在该范围内调节。 |
 
 **错误码：**
 
@@ -6239,7 +6131,7 @@ getIsoRange(): Array\<number\>
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| Array\<number\>   | 用于获取ISO范围，范围为[50,100,...,6400]，实际根据底层能力返回为准，接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| Array\<number\>   | 用于获取ISO范围，范围为[50, 100, ..., 6400]，实际根据底层能力返回为准，接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -6622,7 +6514,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6694,7 +6586,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6766,7 +6658,7 @@ function apertureInfoCallback(err: BusinessError, info: camera.ApertureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Aperture value: ${info.aperture}`);
+  console.info(`Aperture value: ${info.aperture}`);
 }
 
 function registerApertureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6838,7 +6730,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -7140,7 +7032,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7212,7 +7104,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7284,7 +7176,7 @@ function apertureInfoCallback(err: BusinessError, info: camera.ApertureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Aperture value: ${info.aperture}`);
+  console.info(`Aperture value: ${info.aperture}`);
 }
 
 function registerApertureInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7356,7 +7248,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -8167,7 +8059,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8239,7 +8131,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8311,7 +8203,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8383,7 +8275,7 @@ function tryAEInfoCallback(err: BusinessError, info: camera.TryAEInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
+  console.info(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
 }
 
 function registerTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {

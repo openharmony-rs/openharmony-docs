@@ -1,10 +1,16 @@
 # avrecorder_base.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @shiwei75-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
-The **avrecorder_base.h** file declares the struct and enums used by the AVRecorder.
+The file declares the struct and enums used by the AVRecorder.
 
-**File to include**: avrecorder.h
+**File to include**: <multimedia/player_framework/avrecorder_base.h>
 
 **Library**: libavrecorder.so
 
@@ -20,14 +26,14 @@ The **avrecorder_base.h** file declares the struct and enums used by the AVRecor
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AVRecorder_Profile](capi-oh-avrecorder-profile.md) | OH_AVRecorder_Profile | Describes the parameters used for audio and video recording.|
-| [OH_AVRecorder](capi-oh-avrecorder.md) | OH_AVRecorder | Describes an initialized AVRecorder.|
-| [OH_AVRecorder_Location](capi-oh-avrecorder-location.md) | OH_AVRecorder_Location | Describes the geographical location information about a media asset.|
-| [OH_AVRecorder_MetadataTemplate](capi-oh-avrecorder-metadatatemplate.md) | OH_AVRecorder_MetadataTemplate | Describes the basic template of metadata.|
-| [OH_AVRecorder_Metadata](capi-oh-avrecorder-metadata.md) | OH_AVRecorder_Metadata | Describes the metadata.|
-| [OH_AVRecorder_Config](capi-oh-avrecorder-config.md) | OH_AVRecorder_Config | Describes the AVRecorder configuration.|
-| [OH_AVRecorder_Range](capi-oh-avrecorder-range.md) | OH_AVRecorder_Range | Describes the range.|
-| [OH_AVRecorder_EncoderInfo](capi-oh-avrecorder-encoderinfo.md) | OH_AVRecorder_EncoderInfo | Describes the encoder information.|
+| [OH_AVRecorder_Profile](capi-avrecorder-oh-avrecorder-profile.md) | OH_AVRecorder_Profile | Describes the parameters used for audio and video recording.|
+| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) | OH_AVRecorder | Describes an initialized AVRecorder.|
+| [OH_AVRecorder_Location](capi-avrecorder-oh-avrecorder-location.md) | OH_AVRecorder_Location | Describes the geographical location information about a media asset.|
+| [OH_AVRecorder_MetadataTemplate](capi-avrecorder-oh-avrecorder-metadatatemplate.md) | OH_AVRecorder_MetadataTemplate | Describes the basic template of metadata.|
+| [OH_AVRecorder_Metadata](capi-avrecorder-oh-avrecorder-metadata.md) | OH_AVRecorder_Metadata | Describes the metadata.|
+| [OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md) | OH_AVRecorder_Config | Describes the AVRecorder configuration.|
+| [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) | OH_AVRecorder_Range | Describes the range.|
+| [OH_AVRecorder_EncoderInfo](capi-avrecorder-oh-avrecorder-encoderinfo.md) | OH_AVRecorder_EncoderInfo | Describes the encoder information.|
 
 ### Enums
 
@@ -45,8 +51,8 @@ The **avrecorder_base.h** file declares the struct and enums used by the AVRecor
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder,OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)](#oh_avrecorder_onstatechange) | OH_AVRecorder_OnStateChange | Called when the AVRecorder state changes.|
-| [typedef void (\*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg,void *userData)](#oh_avrecorder_onerror) | OH_AVRecorder_OnError | Called when an error occurs during recording.|
+| [typedef void (\*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)](#oh_avrecorder_onstatechange) | OH_AVRecorder_OnStateChange | Called when the AVRecorder state changes.|
+| [typedef void (\*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avrecorder_onerror) | OH_AVRecorder_OnError | Called when an error occurs during recording.|
 | [typedef void (\*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)](#oh_avrecorder_onuri) | OH_AVRecorder_OnUri | Called when the recording is in [OH_AVRecorder_FileGenerationMode](#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode.|
 
 ## Enum Description
@@ -225,7 +231,7 @@ Called when the AVRecorder state changes.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVRecorder](capi-oh-avrecorder.md) *recorder | Pointer to the **OH_AVRecorder** instance.|
+| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance.|
 | [OH_AVRecorder_State](#oh_avrecorder_state) state | AVRecorder state.|
 | [OH_AVRecorder_StateChangeReason](#oh_avrecorder_statechangereason) reason | Reason for the AVRecorder state change.|
 |  void *userData | Pointer to user-defined data.|
@@ -249,7 +255,7 @@ Called when an error occurs during recording.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVRecorder](capi-oh-avrecorder.md) *recorder | Pointer to the **OH_AVRecorder** instance.|
+| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance.|
 |  int32_t errorCode | Error code. For details, see [AVErrorCode](../apis-avcodec-kit/_core.md#oh_averrcode-1).|
 |  const char *errorMsg | Pointer to the error message.|
 | void *userData | Pointer to user-defined data.|
@@ -273,8 +279,6 @@ Called when the recording is in [OH_AVRecorder_FileGenerationMode](#oh_avrecorde
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVRecorder](capi-oh-avrecorder.md) *recorder | Pointer to the **OH_AVRecorder** instance.|
-| [OH_MediaAsset](../apis-media-library-kit/capi-oh-mediaasset.md) *asset | Pointer to the **OH_MediaAsset** instance.|
+| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance.|
+| [OH_MediaAsset](../apis-media-library-kit/capi-mediaassetmanager-oh-mediaasset.md) *asset | Pointer to the OH_MediaAsset instance.|
 |  void *userData | Pointer to user-defined data.|
-
- <!--no_check--> 

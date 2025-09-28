@@ -1,18 +1,28 @@
 # HAR
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
+
 HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资源和配置文件。通过HAR可以实现多个模块或多个工程共享ArkUI组件、资源等相关代码。
 
 ## 使用场景
 - 支持应用内共享，也可以作为二方库（SDK）、三方库（SDK）发布后供其他应用使用。
 - 作为二方库（SDK），发布到[OHPM私仓](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo)，供公司内部其他应用使用。
-- 作为三方库（SDK），发布到[OHPM中心仓](https://ohpm.openharmony.cn/)，供其他应用使用。
+- 作为三方库（SDK），发布到[OHPM中心仓](https://ohpm.openharmony.cn/#/cn/home)，供其他应用使用。
 
 ## 约束限制
 
 - HAR不支持在设备上单独安装或运行，只能作为应用模块的依赖项被引用。
-- HAR不支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件。从API version 14开始，支持在配置文件中声明[UIAbility](../application-models/uiability-overview.md)组件，配置UIAbility的方法参考[在模块中添加Ability](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，拉起HAR中UIAbility的方式与[启动应用内的UIAbility](../application-models/uiability-intra-device-interaction.md)方法相同。
+- 从API version 14开始，HAR支持在配置文件中声明[UIAbility](../application-models/uiability-overview.md)组件，配置UIAbility的方法参考[在模块中添加Ability](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，拉起HAR中UIAbility的方式与[启动应用内的UIAbility](../application-models/uiability-intra-device-interaction.md)方法相同。
+
 > **说明：**
 >
 > 如果使用[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口拉起HAR中的UIAbility，接口参数中的moduleName取值需要为依赖该HAR的[HAP](hap-package.md)/[HSP](in-app-hsp.md)的moduleName。
+
+- 从API version 18开始，HAR支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HAR中配置ExtensionAbility的方法和支持的类型请参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。API version 17及之前版本，不支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件。
 - HAR不支持在配置文件中声明[pages](./module-configuration-file.md#pages标签)页面，但是可以包含pages页面，并通过[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)的方式进行跳转。
 - HAR不支持引用AppScope目录中的资源。在编译构建时，AppScope中的内容不会打包到HAR中，因此会导致HAR资源引用失败。
 - 由于HSP仅支持应用内共享，如果HAR依赖了HSP，则该HAR文件仅支持应用内共享，不支持发布到二方仓或三方仓供其他应用使用，否则会导致编译失败。
@@ -28,7 +38,7 @@ HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资�
 
 
 ## 创建
-开发者可以通过DevEco Studio创建一个HAR模块，详见[创建库模块](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har#section643521083015)。
+开发者可以通过DevEco Studio创建一个用于调用C++代码的HAR模块，创建过程中需要在Configure New Module界面中开启Enable native。详见[创建库模块](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har#section643521083015)。
 
 
 ## 开发
@@ -106,9 +116,7 @@ export function func2() {
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
 ```ts
 // library/Index.ets
-export { Log } from './src/main/ets/test';
-export { func } from './src/main/ets/test';
-export { func2 } from './src/main/ets/test';
+export { Log, func, func2 } from './src/main/ets/test';
 ```
 
 ### 导出native方法
@@ -175,8 +183,7 @@ struct IndexSec {
 通过`import`引用HAR导出的类和方法，示例如下所示：
 ```ts
 // entry/src/main/ets/pages/Index.ets
-import { Log } from 'library';
-import { func } from 'library';
+import { Log, func } from 'library';
 
 @Entry
 @Component
@@ -189,11 +196,6 @@ struct Index {
         .fontFamily('HarmonyHeiTi')
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
-        .fontWeight(700)
-        .fontColor($r('app.color.text_color'))
-        .textAlign(TextAlign.Start)
-        .margin({ top: '32px' })
-        .width('624px')
 
       //引用HAR的ets类和方法
       Button($r('app.string.button'))
@@ -202,11 +204,6 @@ struct Index {
         .width('624px')
         .margin({ top: '4%' })
         .type(ButtonType.Capsule)
-        .fontFamily('HarmonyHeiTi')
-        .borderRadius($r('sys.float.ohos_id_corner_radius_button'))
-        .backgroundColor($r('app.color.button_background'))
-        .fontColor($r('sys.color.ohos_id_color_foreground_contrary'))
-        .fontSize($r('sys.float.ohos_id_text_size_button1'))
         .onClick(() => {
           // 引用HAR的类和方法
           Log.info('har msg');
@@ -237,11 +234,6 @@ struct Index {
         .fontFamily('HarmonyHeiTi')
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
-        .fontWeight(700)
-        .fontColor($r('app.color.text_color'))
-        .textAlign(TextAlign.Start)
-        .margin({ top: '32px' })
-        .width('624px')
 
       //引用HAR的native方法
       Button($r('app.string.native_add'))
@@ -250,11 +242,6 @@ struct Index {
         .width('624px')
         .margin({ top: '4%', bottom: '6%' })
         .type(ButtonType.Capsule)
-        .fontFamily('HarmonyHeiTi')
-        .borderRadius($r('sys.float.ohos_id_corner_radius_button'))
-        .backgroundColor($r('app.color.button_background'))
-        .fontColor($r('sys.color.ohos_id_color_foreground_contrary'))
-        .fontSize($r('sys.float.ohos_id_text_size_button1'))
         .onClick(() => {
           this.message = 'result: ' + nativeAdd(1, 2);
         })
@@ -306,7 +293,7 @@ struct Index {
 ```
 ## 编译
 
-HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆能力](../arkts-utils/source-obfuscation.md)。
+HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆](../arkts-utils/source-obfuscation-guide.md#开启源码混淆)。
 
 [混淆能力](../arkts-utils/source-obfuscation.md)开启后，DevEco Studio在构建HAR时，会对代码进行编译、混淆及压缩处理，保护代码资产。
 
@@ -347,13 +334,19 @@ HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，�
 
 > **场景说明**
 >
->在HAR中使用[Sendable](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/sendable-object)时，开启该配置。
+>在HAR中使用[Sendable](../arkts-utils/arkts-sendable.md)时，开启该配置。
 
 > **使用限制**
 >
->在依赖TS HAR时，禁止引用TS HAR中的ArkUI组件。
+> 在依赖TS HAR时，禁止引用TS HAR中的ArkUI组件。
+
 
 HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修改为ts文件，可以在HAR模块下的module.json5文件中将"metadata"字段下的"name"设置为“UseTsHar”，配置如下所示：
+>
+> **说明：**
+>
+> 从DevEco Studio NEXT Beta1（5.0.3.800）版本开始，默认构建字节码HAR，详情参考[构建HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har)。
+>
 
   ```json
   {
@@ -381,4 +374,4 @@ HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修�
 
 ## 相关实例
 
-- [购物示例应用](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Shopping/OrangeShopping)
+- [购物示例应用](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Shopping/OrangeShopping)

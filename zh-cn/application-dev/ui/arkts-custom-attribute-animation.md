@@ -1,4 +1,10 @@
 # 自定义属性动画
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 属性动画是可动画属性的参数值发生变化时，引起UI上产生的连续视觉效果。当参数值发生连续变化，且设置到可以引起UI发生变化的属性接口上时，就可以实现属性动画。
@@ -191,4 +197,4 @@ struct AnimatedShape {
 
 针对自定义属性动画开发，有以下相关实例可供参考：
 
-- [自定义下拉刷新动画（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/AnimateRefresh)
+- [自定义下拉刷新动画（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/AnimateRefresh)

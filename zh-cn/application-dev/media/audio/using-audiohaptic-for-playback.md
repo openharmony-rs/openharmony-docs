@@ -1,4 +1,10 @@
 # 使用AudioHaptic开发音振协同播放功能
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 AudioHaptic<sup>11+</sup>提供音频与振动协同播放及管理的方法，适用于需要在播放音频时同步发起振动的场景，如来电铃声随振、键盘按键反馈、消息通知反馈等。
 
@@ -30,7 +36,7 @@ AudioHaptic<sup>11+</sup>提供音频与振动协同播放及管理的方法，�
    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
      console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
      id = value;
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to register source ${err}`);
    });
    ```
@@ -52,12 +58,11 @@ AudioHaptic<sup>11+</sup>提供音频与振动协同播放及管理的方法，�
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
    audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
-     console.info(`Promise returned to indicate that the audio haptic player instance.`);
+     console.info(`Create the audio haptic player successfully.`);
      audioHapticPlayer = value;
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to create player ${err}`);
    });
-   console.info(`Create the audio haptic player successfully.`);
    ```
 
 4. 调用start()方法，开启音频播放并同步开启振动。
@@ -65,7 +70,7 @@ AudioHaptic<sup>11+</sup>提供音频与振动协同播放及管理的方法，�
    ```ts
    audioHapticPlayer.start().then(() => {
      console.info(`Promise returned to indicate that start playing successfully.`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to start playing. ${err}`);
    });
    ```
@@ -75,7 +80,7 @@ AudioHaptic<sup>11+</sup>提供音频与振动协同播放及管理的方法，�
    ```ts
    audioHapticPlayer.stop().then(() => {
      console.info(`Promise returned to indicate that stop playing successfully.`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to stop playing. ${err}`);
    });
    ```
@@ -85,7 +90,7 @@ AudioHaptic<sup>11+</sup>提供音频与振动协同播放及管理的方法，�
    ```ts
    audioHapticPlayer.release().then(() => {
      console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to release the audio haptic player. ${err}`);
    });
    ```
@@ -95,7 +100,7 @@ AudioHaptic<sup>11+</sup>提供音频与振动协同播放及管理的方法，�
    ```ts
    audioHapticManagerInstance.unregisterSource(id).then(() => {
      console.info(`Promise returned to indicate that unregister source successfully`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to unregister source ${err}`);
    });
    ```

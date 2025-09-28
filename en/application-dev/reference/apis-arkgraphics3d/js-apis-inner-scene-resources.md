@@ -1,4 +1,11 @@
 # SceneResource
+<!--Kit: ArkGraphics 3D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @zzhao0-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
+
 The SceneResource module provides basic resource types in 3D graphics.
 
 > **NOTE**
@@ -50,14 +57,15 @@ Destroys the scene resource and releases all associated resources or references.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Shader, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
-function destroy() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function destroy(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      // Create shader resources. The path and file name can be customized based on the specific project resources.
       let sceneResourceParameter: SceneResourceParameters = { name: "shaderResource",
         uri: $rawfile("shaders/custom_shader/custom_material_sample.shader") };
       let shader: Promise<Shader> = sceneFactory.createShader(sceneResourceParameter);
@@ -71,15 +79,13 @@ function destroy() : void {
 ```
 
 ## Shader
-Shader resource, which inherits from [SceneResource](#sceneresource).
-
-### Properties
+Shader resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| inputs | Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image> | Yes| No| Inputs of the shader.|
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| No| Inputs of the shader.|
 
 ## MaterialType
 Enumerates the material types in a scene. The material type defines how materials in a scene are rendered.
@@ -105,18 +111,14 @@ Enumerates the culling modes of PBR materials. You can improve rendering perform
 ## Blend<sup>20+</sup>
 Controls the transparency of materials.
 
-### Properties
-
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| enabled | boolean | No| No| Whether the transparency of the material is enabled. The value **true** means that the transparency is enabled, and **false** means the opposite.|
+| enabled | boolean | No| No| Whether the transparency of the material is enabled. **true** if enabled, **false** otherwise.|
 
 ## RenderSort<sup>20+</sup>
 Describes the order in which materials are rendered, controlling the sequence of drawing in the rendering pipeline.
-
-### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -126,16 +128,14 @@ Describes the order in which materials are rendered, controlling the sequence of
 | renderSortLayerOrder | number | No| Yes| Rendering order of different objects within the same rendering layer. A smaller value indicates an earlier rendering order. The value range is [0, 255]. The default value is **0**.|
 
 ## Material
-Material resource, which inherits from [SceneResource](#sceneresource).
-
-### Properties
+Material resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | materialType | [MaterialType](#materialtype) | Yes| No| Type of the material.|
-| shadowReceiver<sup>20+</sup> | boolean | No| Yes| Whether the material receives shadows. The value **true** means that the material receives shadows, and **false** means the opposite. The default is **false**.|
+| shadowReceiver<sup>20+</sup> | boolean | No| Yes| Whether the material receives shadows. **true** if the material receives shadows, **false** otherwise. The default is **false**.|
 | cullMode<sup>20+</sup> | [CullMode](#cullmode20) | No| Yes| Culling mode of the material, which can be used to determine whether to cull front or back faces. The default value is **BACK**.|
 | blend<sup>20+</sup> | [Blend](#blend20) | No| Yes| Whether the material is transparent. The default value is **false**.|
 | alphaCutoff<sup>20+</sup> | number | No| Yes| Threshold of the alpha channel. If the alpha of a pixel is greater than or equal to this threshold, the pixel is rendered; otherwise, the pixel is not rendered. Setting a value less than **1** enables this mode. The value range is [0, 1]. The default value is **1**.|
@@ -143,8 +143,6 @@ Material resource, which inherits from [SceneResource](#sceneresource).
 
 ## MaterialProperty<sup>20+</sup>
 Defines the textures, property factors, and texture samplers used by a material.
-
-### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -156,7 +154,6 @@ Defines the textures, property factors, and texture samplers used by a material.
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
 Material resource for creating realistic appearances, using the Metallic-Roughness model based on PBR. It simulates the surface lighting and reflection effects of different materials like metal and plastic by adjusting metallicity and roughness parameters. It inherits from [Material](#material).
-### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -175,7 +172,6 @@ Material resource for creating realistic appearances, using the Metallic-Roughne
 
 ## ShaderMaterial
 Shader material, which inherits from [Material](#material).
-### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -208,8 +204,6 @@ Enumerates the sampler addressing modes, which are used to control how texture c
 ## Sampler<sup>20+</sup>
 Describes the sampling modes used during texture sampling.
 
-### Properties
-
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
@@ -219,11 +213,9 @@ Describes the sampling modes used during texture sampling.
 | mipMapMode | [SamplerFilter](#samplerfilter20) | No| Yes| Sampling modes between different texture resolutions. The default value is **LINEAR**.|
 | addressModeU | [SamplerAddressMode](#sampleraddressmode20) | No| Yes| Sampling mode of the texture in the U (horizontal) direction. The default value is **REPEAT**.|
 | addressModeV | [SamplerAddressMode](#sampleraddressmode20) | No| Yes| Sampling mode of the texture in the V (vertical) direction. The default value is **REPEAT**.|
-| addressModeW | [SamplerAddressMode](#sampleraddressmode20) | No| Yes| Sampling mode of the texture in the W (depth) direction. The default value is **REPEAT**.|
 
 ## SubMesh
 Sub-mesh resource.
-### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -236,8 +228,6 @@ Sub-mesh resource.
 ## Morpher<sup>20+</sup>
 Defines the deformation of 3D models by adjusting the weights of different deformation targets to create dynamic effects.
 
-### Properties
-
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
@@ -245,8 +235,7 @@ Defines the deformation of 3D models by adjusting the weights of different defor
 | targets | Record<string, number> | Yes| No| Used to store the names and weights of deformation targets. The weight value is usually within the range of [0.0, 1.0].|
 
 ## Mesh
-Mesh resource, which inherits from [SceneResource](#sceneresource).
-### Properties
+Mesh resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -257,22 +246,23 @@ Mesh resource, which inherits from [SceneResource](#sceneresource).
 | materialOverride | [Material](#material) | No| Yes| Material. The default value is undefined.|
 
 ## MeshResource<sup>18+</sup>
-Mesh resource, which inherits from [SceneResource](#sceneresource).
+Mesh resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## Animation
-Animation resource, which inherits from [SceneResource](#sceneresource).
+Animation resource, which inherits from [SceneResource](#sceneresource-1).
+
 ### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| enabled | boolean | No| No| Whether the animation is enabled. The value **true** means that the animation can be played, and **false** means the opposite.|
+| enabled | boolean | No| No| Whether the animation is enabled. **true** if enabled, **false** otherwise.|
 | speed<sup>20+</sup> | number | No| Yes| Playback speed factor of the animation. The default value is **1.0**, indicating that the animation is played at normal speed. If the value is negative, the animation plays in reverse.|
-| duration | number | Yes| No| Duration of the animation. The value is greater than or equal to 0.|
-| running | boolean | Yes| No| Running status of the animation. The value **true** means that the animation is being played, and **false** means the opposite.|
+| duration | number | Yes| No| Animation duration, in seconds. The value must be greater than or equal to 0.|
+| running | boolean | Yes| No| Whether the animation is running. **true** if running, **false** otherwise.|
 | progress | number | Yes| No| Playing progress of the animation. The value range is [0, 1].|
 
 ### onFinished
@@ -289,13 +279,13 @@ Called when the animation playback is complete or the **finish** API is called.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function onFinished() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function onFinished(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Register a callback.
       anim.onFinished(()=>{
@@ -322,13 +312,13 @@ Called when the animation starts to play. The start operation is triggered by ca
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function onStarted() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function onStarted(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Register a callback.
       anim.onStarted(()=>{
@@ -348,13 +338,13 @@ Pauses the animation. The animation remains in the current playing progress.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function pause() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function pause(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Pause the animation.
       anim.pause();
@@ -372,13 +362,13 @@ Plays the animation from the beginning.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function restart() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function restart(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Restart the animation.
       anim.restart();
@@ -401,13 +391,13 @@ Plays the animation from the specified position.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function seek() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function seek(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Set the animation playback progress to 10%.
       anim.seek(0.1);
@@ -425,13 +415,13 @@ Plays the animation based on the current progress.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function start() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function start(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Start the animation.
       anim.start();
@@ -449,13 +439,13 @@ Stops playing the animation and sets its progress to **0** (not started).
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function stop() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function stop(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Stop playing the animation and set its progress to 0 (not started).
       anim.stop();
@@ -472,13 +462,13 @@ Finishes the playing of the animation and sets its progress of **1** (finished).
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
-function finish() : void {
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+function finish(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
-    if (result) {
+    if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
       // Finish the playing of the animation and set its progress of **1** (finished).
       anim.finish();
@@ -500,8 +490,7 @@ Enumerates the environment background types, which are used to define how the ba
 | BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular background.|
 
 ## Environment
-Environment resource, which inherits from [SceneResource](#sceneresource).
-### Properties
+Environment resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -516,12 +505,11 @@ Environment resource, which inherits from [SceneResource](#sceneresource).
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | No| Yes| Irradiance coefficients. The default value is undefined.|
 
 ## Image
-Image resource, which inherits from [SceneResource](#sceneresource).
-### Properties
+Image resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| width | number | Yes| No| Image width. The value is greater than 0.|
-| height | number | Yes| No| Image height. The value is greater than 0.|
+| width | number | Yes| No| Image width, in px. The value must be greater than 0.|
+| height | number | Yes| No| Image height, in px. The value must be greater than 0.|

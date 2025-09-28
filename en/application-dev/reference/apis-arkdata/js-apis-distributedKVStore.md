@@ -1,6 +1,12 @@
 # @ohos.data.distributedKVStore (Distributed KV Store)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @dboy190; @houpengtao1-->
+<!--Tester: @logic42-->
+<!--Adviser: @ge-yafang-->
 
-The **distributedKVStore** module implements collaboration between databases for different devices that forms a Super Device. You can use the APIs provided by this module to save application data to a distributed key-value (KV) store and perform operations, such as adding, deleting, modifying, and querying data, and synchronizing data across devices.
+The **distributedKVStore** module implements collaboration between databases for different devices that form a Super Device. You can use the APIs provided by this module to save application data to a distributed key-value (KV) store and perform operations, such as adding, deleting, modifying, and querying data, and synchronizing data across devices.
 
 The **distributedKVStore** module provides the following functionalities:
 
@@ -26,10 +32,10 @@ Provides the **KVManager** instance configuration, including the bundle name of 
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
-| Name    | Type             | Mandatory| Description                                                        |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context    | BaseContext           | Yes  |Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).<br>Since API version 10, the parameter type of context is [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md).|
-| bundleName | string                | Yes  | Bundle name.                                              |
+| Name    | Type             | Read Only| Optional| Description                                                        |
+| ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
+| context    | BaseContext    | No  | No  |Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).<br>Since API version 10, the parameter type of context is [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md).|
+| bundleName | string          | No  | No  | Bundle name.                                              |
 
 ## Constants
 
@@ -67,10 +73,10 @@ Defines the **value** object in a KV store.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
-| Name | Type  |Mandatory | Description                   |
-| ----- | -------   |-----|------------------------ |
-| type | [ValueType](#valuetype) | Yes|Type of the value.  |
-| value | Uint8Array \| string \| number \| boolean| Yes|Value of the KV pair.  |
+| Name | Type  | Read Only| Optional| Description                   |
+| ----- | -------|-----|-----|------------------------ |
+| type | [ValueType](#valuetype) | No   | No  |Type of the value.  |
+| value | Uint8Array \| string \| number \| boolean| No   | No  |Value of the KV pair.  |
 
 ## Entry
 
@@ -78,10 +84,10 @@ Defines the KV pairs stored in a KV store.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
-| Name | Type       | Mandatory| Description    |
-| ----- | --------------- | ---- | -------- |
-| key   | string          | Yes  | Key of the KV pair.  |
-| value | [Value](#value) | Yes  | Value object of the KV pair.|
+| Name | Type       | Read Only| Optional| Description    |
+| ----- | ---------- |-- | ---- | -------- |
+| key   | string          | No   | No  | Key of the KV pair.  |
+| value | [Value](#value) | No   | No  | Value object of the KV pair.|
 
 ## ChangeNotification
 
@@ -89,12 +95,12 @@ Defines the content of a data change notification, including inserted data, upda
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
-| Name         | Type         | Mandatory      | Description                    |
-| ------------- | ----------------- | ---- | ------------------------ |
-| insertEntries | [Entry](#entry)[] | Yes  | Data inserted.          |
-| updateEntries | [Entry](#entry)[] | Yes  | Data updated.          |
-| deleteEntries | [Entry](#entry)[] | Yes   | Data deleted.          |
-| deviceId      | string            | Yes   | UUID of the device.|
+| Name         | Type         | Read Only| Optional      | Description                    |
+| ------------- | ----------------- |---- | ---- | ------------------------ |
+| insertEntries | [Entry](#entry)[] | No   | No  | Data inserted.          |
+| updateEntries | [Entry](#entry)[] | No   | No  | Data updated.          |
+| deleteEntries | [Entry](#entry)[] | No   | No   | Data deleted.          |
+| deviceId      | string            | No   | No   | UUID of the device.|
 
 ## SyncMode
 
@@ -126,8 +132,8 @@ Enumerates the distributed KV store types.
 
 | Name                | Value| Description                                                        |
 | -------------------- | - | ------------------------------------------------------------ |
-| DEVICE_COLLABORATION | 0 | Device KV store.<br> The device KV store manages data by device, which eliminates conflicts. Data can be queried by device.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore|
-| SINGLE_VERSION       | 1 | Single KV store.<br> The single KV store does not differentiate data by device. If entries with the same key are modified on different devices, the value will be overwritten.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
+| DEVICE_COLLABORATION | 0 | Device KV store.<br>The device KV store manages data by device, which eliminates conflicts. Data can be queried by device.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore|
+| SINGLE_VERSION       | 1 | Single KV store.<br>The single KV store does not differentiate data by device. If entries with the same key are modified on different devices, the value will be overwritten.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
 
 ## SecurityLevel
 
@@ -152,15 +158,15 @@ Enumerates the KV store security levels.
 
 Provides KV store configuration.
 
-| Name         | Type                       | Mandatory| Description                                                        |
-| --------------- | -------------- | ---- | -------------------------|
-| createIfMissing | boolean                         | No | Whether to create a KV store if the database file does not exist. The default value is **true**, which means to create a KV store.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
-| encrypt         | boolean                         | No  | Whether to encrypt the KV store. The default value is **false**, which means the KV store is not encrypted.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
-| backup          | boolean                         | No  | Whether to back up the KV store. The default value is **true**, which means to back up the KV store.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
-| autoSync        | boolean                         | No  | Whether to enable auto sync across devices. The default value is **false**, indicating that only manual sync is supported. If this parameter is set to **true**, <!--RP1-->it takes effect only in [device collaboration using cross-device calls](../../application-models/hop-multi-device-collaboration.md#using-cross-device-call).<!--RP1End--><br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core<br>**Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC|
-| kvStoreType     | [KVStoreType](#kvstoretype)     | No  | Type of the KV store to create. The default value is **DEVICE_COLLABORATION**, which indicates a device KV store.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
-| securityLevel   | [SecurityLevel](#securitylevel) | Yes  | Security level of the KV store.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
-| schema          | [Schema](#schema)               | No  | Schema that defines the values stored in the KV store. The default value is **undefined**, which means no schema is used.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore|
+| Name         | Type                       | Read Only| Optional| Description                                                        |
+| --------------- | -------------- | ---- | ----| -------------------------|
+| createIfMissing | boolean                         | No   | Yes | Whether to create a database when database files do not exist. The value **true** means to create a database, and the value **false** means the opposite. The default value is **true**.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
+| encrypt         | boolean                         | No   | Yes  | Whether to encrypt the database files. The value **true** means to encrypt the database files, and the value **false** means the opposite. The default value is **false**.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
+| backup          | boolean                         | No   | Yes  | Whether to back up the database files. The value **true** means to back up the database files, and the value **false** means the opposite. The default value is **true**.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
+| autoSync        | boolean                         | No   | Yes  | Whether to enable auto sync across devices. The default value is **false**, indicating that only manual sync is supported. If this parameter is set to **true**, <!--RP1-->it takes effect only in [device collaboration using cross-device calls](../../application-models/hop-multi-device-collaboration.md#using-cross-device-call).<!--RP1End--><br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core<br>**Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC|
+| kvStoreType     | [KVStoreType](#kvstoretype)     | No   | Yes  | Type of the KV store to create. The default value is **DEVICE_COLLABORATION**, which indicates a device KV store.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
+| securityLevel   | [SecurityLevel](#securitylevel) | No   | No  | Security level of the KV store.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.Core|
+| schema          | [Schema](#schema)               | No   | Yes  | Schema that defines the values stored in the KV store. The default value is **undefined**, which means no schema is used.<br>**System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore|
 
 ## Schema
 
@@ -168,12 +174,12 @@ Defines the schema of a KV store. You can create a **Schema** object and pass it
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-| Name   | Type                   | Readable| Writable| Description                      |
+| Name   | Type                   | Read Only| Optional| Description                      |
 | ------- | ----------------------- | ---- | ---- | -------------------------- |
-| root    | [FieldNode](#fieldnode) | Yes  | Yes  | Definitions of all the fields in **Value**.|
-| indexes | Array\<string>          | Yes  | Yes  | Indexes of the fields in **Value**. Indexes are created only for **FieldNode** with this parameter specified. If no index needs to be created, this parameter can be left empty. <br>Format: `'$.field1'`, `'$.field2'`|
-| mode    | number                  | Yes  | Yes  | Schema mode, which can be **0** (compatible mode) or **1** (strict mode).|
-| skip    | number                  | Yes  | Yes  | Number of bytes to be skipped during the value check. The value range is [0, 4 x 1024 x 1024 - 2].|
+| root    | [FieldNode](#fieldnode) | No | No | Definitions of all the fields in **Value**.|
+| indexes | Array\<string>          | No | No | Indexes of the fields in **Value**. Indexes are created only for **FieldNode** with this parameter specified. The format is **'$.field1'**, **'$.field2'**.|
+| mode    | number                  | No | No | Schema mode, which can be **0** (compatible mode) or **1** (strict mode).|
+| skip    | number                  | No | No | Number of bytes to be skipped during the value check. The value range is [0, 4 x 1024 x 1024 - 2].|
 
 Strict mode: In this mode, the value to be inserted must strictly match the schema defined, and the number and format of fields must be consistent with that defined in the schema. Otherwise, an error will be returned.
 
@@ -214,11 +220,11 @@ Represents a **Schema** instance, which provides the methods for defining the va
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-| Name    | Type   | Readable| Writable| Description                          |
-| -------- | ------- | ---- | ---- | ------------------------------ |
-| nullable | boolean | Yes  | Yes  | Whether the field can be null. The value **true** means the node field can be null; the value **false** means the opposite.|
-| default  | string  | Yes  | Yes  | Default value of **FieldNode**.       |
-| type     | number  | Yes  | Yes  | **FieldNode** data type, which is a value of [ValueType](#valuetype). Currently, the BYTE_ARRAY type is not supported. Using this type may cause a failure in calling [getKVStore](#getkvstore).|
+| Name    | Type   | Read Only| Optional| Description                                                        |
+| -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| nullable | boolean | No  | No  | Whether the field can be null. The value **true** means the node field can be null; the value **false** means the opposite.|
+| default  | string  | No  | No  | Default value of **FieldNode**.                                     |
+| type     | number  | No  | No  | **FieldNode** data type, which is a value of [ValueType](#valuetype). Currently, the BYTE_ARRAY type is not supported. Using this type may cause a failure in calling [getKVStore](#getkvstore).|
 
 ### constructor
 
@@ -232,7 +238,7 @@ A constructor used to create a **FieldNode** instance with a string field.
 
 | Name| Type| Mandatory| Description           |
 | ------ | -------- | ---- | --------------- |
-| name   | string   | Yes  | Value of **FieldNode**, which cannot be left empty.|
+| name   | string   | Yes  | Value of **FieldNode**, with a maximum of 64 characters. This parameter cannot be left blank.|
 
 **Error codes**
 
@@ -329,6 +335,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let kvManager: distributedKVStore.KVManager;
+let appId: string = 'com.example.datamanagertest';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
@@ -336,7 +343,7 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     const kvManagerConfig: distributedKVStore.KVManagerConfig = {
       context: context,
-      bundleName: 'com.example.datamanagertest'
+      bundleName: appId
     }
     try {
       kvManager = distributedKVStore.createKVManager(kvManagerConfig);
@@ -346,7 +353,6 @@ export default class EntryAbility extends UIAbility {
       console.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
     }
     if (kvManager !== undefined) {
-      kvManager = kvManager as distributedKVStore.KVManager;
       // Perform subsequent operations such as creating a KV store.
       // ...
     }
@@ -362,10 +368,11 @@ import { featureAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let kvManager: distributedKVStore.KVManager;
+let appId: string = 'com.example.datamanagertest';
 let context = featureAbility.getContext();
 const kvManagerConfig: distributedKVStore.KVManagerConfig = {
   context: context,
-  bundleName: 'com.example.datamanagertest'
+  bundleName: appId
 }
 try {
   kvManager = distributedKVStore.createKVManager(kvManagerConfig);
@@ -437,15 +444,14 @@ try {
     }
     console.info("Succeeded in getting KVStore");
     kvStore = store;
+    if (kvStore !== null) {
+       // Perform subsequent data operations, such as adding, deleting, modifying, and querying data, and subscribing to data changes.
+       // ...
+    }
   });
 } catch (e) {
   let error = e as BusinessError;
   console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
-}
-if (kvStore !== null) {
-     kvStore = kvStore as distributedKVStore.SingleKVStore;
-       // Perform subsequent data operations, such as adding, deleting, modifying, and querying data, and subscribing to data changes.
-       // ...
 }
 ```
 
@@ -457,7 +463,7 @@ Creates and obtains a distributed KV store based on the specified **options** an
 
 > **NOTE**
 >
-> If the database file cannot be opened (for example, the file header is damaged) when an existing distributed KV store is obtained, the automatic rebuild logic will be triggered to return a newly created distributed KV store instance. For important data that cannot be regenerated, you are advised to use the backup and restore feature to prevent data loss. For details, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
+> If the database file cannot be opened (for example, the file header is damaged) when an existing distributed KV store is obtained, the automatic rebuild logic will be triggered to return a newly created distributed KV store instance. For important data that cannot be regenerated, you are advised to use the backup and restore feature to prevent data loss. For details, see [Database Backup and Restoration](../../database/data-backup-and-restore.md).
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -466,7 +472,7 @@ Creates and obtains a distributed KV store based on the specified **options** an
 | Name | Type           | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | storeId | string              | Yes  | Unique identifier of the KV store. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](#constants) in length.|
-| options | [Options](#options) | Yes  | Configuration of the distributed KV store to create.                              |
+| options | [Options](#options) | Yes  | Configuration of the KV store to create.                              |
 
 **Return value**
 
@@ -560,13 +566,16 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.closeKVStore('appId', 'storeId', (err: BusinessError)=> {
-      if (err != undefined) {
-        console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
-        return;
-      }
-      console.info('Succeeded in closing KVStore');
-    });
+    if (kvManager != undefined) {
+      // appId is the one in createKVManager.
+      kvManager.closeKVStore(appId, 'storeId', (err: BusinessError)=> {
+        if (err != undefined) {
+          console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing KVStore');
+      });
+    }
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -625,11 +634,14 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.closeKVStore('appId', 'storeId').then(() => {
-      console.info('Succeeded in closing KVStore');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
-    });
+    if (kvManager != undefined) {
+      // appId is the one in createKVManager.
+      kvManager.closeKVStore(appId, 'storeId').then(() => {
+        console.info('Succeeded in closing KVStore');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
+      });
+    }
   }).catch((err: BusinessError) => {
     console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
   });
@@ -681,7 +693,7 @@ const options: distributedKVStore.Options = {
   securityLevel: distributedKVStore.SecurityLevel.S3
 }
 try {
-  kvManager.getKVStore('store', options, async (err: BusinessError, store: distributedKVStore.SingleKVStore | null) => {
+  kvManager.getKVStore('storeId', options, async (err: BusinessError, store: distributedKVStore.SingleKVStore | null) => {
     if (err != undefined) {
       console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
       return;
@@ -690,13 +702,16 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.deleteKVStore('appId', 'storeId', (err: BusinessError) => {
-      if (err != undefined) {
-        console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in deleting KVStore`);
-    });
+    if (kvManager != undefined) {
+      // appId is the one in createKVManager.
+      kvManager.deleteKVStore(appId, 'storeId', (err: BusinessError) => {
+        if (err != undefined) {
+          console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info(`Succeeded in deleting KVStore`);
+      });
+    }
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -756,11 +771,14 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.deleteKVStore('appId', 'storeId').then(() => {
-      console.info('Succeeded in deleting KVStore');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
-    });
+    if (kvManager != undefined) {
+      // appId is the one in createKVManager.
+      kvManager.deleteKVStore(appId, 'storeId').then(() => {
+        console.info('Succeeded in deleting KVStore');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
+      });
+    }
   }).catch((err: BusinessError) => {
     console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
   });
@@ -799,7 +817,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  kvManager.getAllKVStoreId('appId', (err: BusinessError, data: string[]) => {
+  // appId is the one in createKVManager.
+  kvManager.getAllKVStoreId(appId, (err: BusinessError, data: string[]) => {
     if (err != undefined) {
       console.error(`Failed to get AllKVStoreId.code is ${err.code},message is ${err.message}`);
       return;
@@ -847,8 +866,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // appId is the one in createKVManager.
   console.info('GetAllKVStoreId');
-  kvManager.getAllKVStoreId('appId').then((data: string[]) => {
+  kvManager.getAllKVStoreId(appId).then((data: string[]) => {
     console.info('Succeeded in getting AllKVStoreId');
     console.info(`GetAllKVStoreId size = ${data.length}`);
   }).catch((err: BusinessError) => {
@@ -1470,10 +1490,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.equalTo("key", "value");
-  console.info("query is " + query.getSqlLike());
-  query.reset();
-  console.info("query is " + query.getSqlLike());
+  if (query != null) {
+    query.equalTo("key", "value");
+    console.info("query is " + query.getSqlLike());
+    query.reset();
+    console.info("query is " + query.getSqlLike());
+  }
   query = null;
 } catch (e) {
   console.error("simply calls should be ok :" + e);
@@ -1516,8 +1538,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.equalTo("field", "value");
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.equalTo("field", "value");
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -1561,8 +1585,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.notEqualTo("field", "value");
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.notEqualTo("field", "value");
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -1605,8 +1631,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.greaterThan("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.greaterThan("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1651,8 +1679,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.lessThan("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.lessThan("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1697,8 +1727,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.greaterThanOrEqualTo("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.greaterThanOrEqualTo("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1743,8 +1775,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.lessThanOrEqualTo("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.lessThanOrEqualTo("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1787,8 +1821,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.isNull("field");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.isNull("field");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1832,8 +1868,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.inNumber("field", [0, 1]);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.inNumber("field", [0, 1]);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1877,8 +1915,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.inString("field", ['test1', 'test2']);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.inString("field", ['test1', 'test2']);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1922,8 +1962,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notInNumber("field", [0, 1]);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notInNumber("field", [0, 1]);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1967,8 +2009,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notInString("field", ['test1', 'test2']);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notInString("field", ['test1', 'test2']);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2012,8 +2056,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.like("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.like("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2057,8 +2103,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.unlike("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.unlike("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2087,10 +2135,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value1");
-    query.and();
-    query.notEqualTo("field", "value2");
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.notEqualTo("field", "value1");
+      query.and();
+      query.notEqualTo("field", "value2");
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2118,10 +2168,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value1");
-    query.or();
-    query.notEqualTo("field", "value2");
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.notEqualTo("field", "value1");
+      query.or();
+      query.notEqualTo("field", "value2");
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2163,9 +2215,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value");
-    query.orderByAsc("field");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notEqualTo("field", "value");
+      query.orderByAsc("field");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2208,9 +2262,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value");
-    query.orderByDesc("field");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notEqualTo("field", "value");
+      query.orderByDesc("field");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2230,8 +2286,8 @@ Creates a **Query** object to specify the number of records of the query result 
 
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ------------------ |
-| total  | number   | Yes  | Maximum number of results to query. The value must be a non-negative integer. If the input value is less than 0, the number of results is not limited.|
-| offset | number   | Yes  | Start position of the query result. By default, the start position is the beginning of the result set. If **offset** is a negative number, the start position is the beginning of the result set. If **offset** exceeds the end of the result set, the query result is empty.|
+| total  | number   | Yes  | Maximum number of results to query. The value must be a non-negative integer.<br>If the value is a negative number, the entire result set is queried.|
+| offset | number   | Yes  | Start position of the query result. The value must be a non-negative integer.<br>If the value is a negative number, the entire result set is queried.<br>If **offset** exceeds the end of the result set, the query result is empty.|
 
 **Return value**
 
@@ -2256,9 +2312,11 @@ let total = 10;
 let offset = 1;
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.notEqualTo("field", "value");
-  query.limit(total, offset);
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.notEqualTo("field", "value");
+    query.limit(total, offset);
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -2301,8 +2359,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.isNotNull("field");
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.isNotNull("field");
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -2331,10 +2391,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.beginGroup();
-    query.isNotNull("field");
-    query.endGroup();
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.beginGroup();
+      query.isNotNull("field");
+      query.endGroup();
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2362,10 +2424,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.beginGroup();
-    query.isNotNull("field");
-    query.endGroup();
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.beginGroup();
+      query.isNotNull("field");
+      query.endGroup();
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2407,9 +2471,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.prefixKey("$.name");
-    query.prefixKey("0");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.prefixKey("$.name");
+      query.prefixKey("0");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2452,9 +2518,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.setSuggestIndex("$.name");
-    query.setSuggestIndex("0");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.setSuggestIndex("$.name");
+      query.setSuggestIndex("0");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2501,8 +2569,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.deviceId("deviceId");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.deviceId("deviceId");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
 } catch (e) {
     let error = e as BusinessError;
     console.error(`duplicated calls should be ok.code is ${error.code},message is ${error.message}`);
@@ -2530,8 +2600,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    let sql1 = query.getSqlLike();
-    console.info(`GetSqlLike sql= ${sql1}`);
+    if (query != null) {
+      let sql1 = query.getSqlLike();
+      console.info(`GetSqlLike sql= ${sql1}`);
+    }
 } catch (e) {
     console.error("duplicated calls should be ok : " + e);
 }
@@ -3271,7 +3343,7 @@ Obtains the value of the specified key. This API uses a promise to return the re
 
 | Type   | Description      |
 | ------  | -------   |
-|Promise&lt;Uint8Array \| string \| boolean \| number&gt; |Promise used to return the value obtained.|
+|Promise&lt;boolean \| string \| number \| Uint8Array&gt; |Promise used to return the value obtained.|
 
 **Error codes**
 
@@ -3691,7 +3763,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -3734,7 +3806,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -3760,7 +3832,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -3834,7 +3906,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -3872,7 +3944,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -3925,7 +3997,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 
 ```
@@ -3981,7 +4053,7 @@ try {
 
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -4028,12 +4100,12 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
     if (kvStore != null) {
-      kvStore.getResultSize(query, async (err: BusinessError, resultSize: number) => {
+      kvStore.getResultSize(query, (err: BusinessError, resultSize: number) => {
         if (err != undefined) {
           console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
           return;
@@ -4044,7 +4116,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -4110,7 +4182,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -4869,7 +4941,7 @@ Sets the default delay for cross-device data sync. This API uses an asynchronous
 
 | Name               | Type                 | Mandatory| Description                                        |
 | --------------------- | ------------------------- | ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | number                    | Yes  | Delay time to set, in ms.|
+| defaultAllowedDelayMs | number                    | Yes  | Delay time to set, in ms. The value can be **0** or ranges from 100 to 86400000.|
 | callback              | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -4916,7 +4988,7 @@ Sets the default delay for cross-device data sync. This API uses a promise to re
 
 | Name               | Type| Mandatory| Description                                        |
 | --------------------- | -------- | ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | number   | Yes  | Delay time to set, in ms.|
+| defaultAllowedDelayMs | number   | Yes  | Delay time to set, in ms. The value can be **0** or ranges from 100 to 86400000.|
 
 **Return value**
 
@@ -5054,8 +5126,8 @@ Starts cross-device data sync manually. This API returns the result synchronousl
 | Name   | Type             | Mandatory| Description                                          |
 | --------- | --------------------- | ---- | ---------------------------------------------- |
 | deviceIds | string[]              | Yes  | List of **networkId**s of the devices in the same networking environment to be synchronized.|
-| mode      | [SyncMode](#syncmode) | Yes  | Sync mode.                                    |
 | query     | [Query](#query)        | Yes  | **Query** object to match.                     |
+| mode      | [SyncMode](#syncmode) | Yes  | Sync mode.                                    |
 | delayMs   | number                | No  | Delay time allowed, in ms. The default value is **0**. If **delayMs** is set, data sync will be executed **delayMs** after **sync()** is called. If **delayMs** is not set, the delay set in [setSyncParam](#setsyncparam) is used.|
 
 **Error codes**
@@ -5075,7 +5147,6 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let devManager: distributedDeviceManager.DeviceManager;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
 // create deviceManager
@@ -5149,7 +5220,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -5284,7 +5355,7 @@ Unsubscribes from the cross-device data sync completion events.
 | Name      | Type                                     | Mandatory| Description                                                      |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
 | event        | string                                        | Yes  | Event type. The value is **syncComplete**, which indicates a sync completion event.|
-| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for for the sync completion event. |
+| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes. |
 
 **Error codes**
 
@@ -5492,7 +5563,7 @@ Obtains the value of the specified key for this device. This API uses a promise 
 
 | Type                                                    | Description                           |
 | -------------------------------------------------------- | ------------------------------- |
-| Promise&lt;Uint8Array \| string \| boolean \| number&gt; | Promise used to return the value obtained.|
+| Promise&lt;boolean \| string \| number \| Uint8Array&gt; | Promise used to return the value obtained.|
 
 **Error codes**
 
@@ -5985,7 +6056,7 @@ try {
     entries.push(entry);
   }
   console.info(`entries: {entries}`);
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting Batch');
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
@@ -6338,7 +6409,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -6381,7 +6452,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -6412,7 +6483,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -6478,7 +6549,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -6536,7 +6607,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -6625,7 +6696,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -6707,7 +6778,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -6745,7 +6816,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -6776,7 +6847,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                       |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -6876,12 +6947,12 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
     if (kvStore != null) {
-      kvStore.getResultSize(query, async (err: BusinessError, resultSize: number) => {
+      kvStore.getResultSize(query, (err: BusinessError, resultSize: number) => {
         if (err != undefined) {
           console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
           return;
@@ -6892,7 +6963,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -6958,7 +7029,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -6990,6 +7061,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -7010,7 +7082,7 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     if (err != undefined) {
       console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
       return;
@@ -7019,7 +7091,7 @@ try {
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
     if (kvStore != null) {
-      kvStore.getResultSize('localDeviceId', query, async (err: BusinessError, resultSize: number) => {
+      kvStore.getResultSize('localDeviceId', query, (err: BusinessError, resultSize: number) => {
         if (err != undefined) {
           console.error(`Failed to get resultSize.code is ${err.code},message is ${err.message}`);
           return;
@@ -7067,6 +7139,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**

@@ -1,4 +1,10 @@
 # UDMF Error Codes
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 > **NOTE**
 >
@@ -8,7 +14,7 @@
 
 **Error Message**
 
-Settings already exist.
+Settings already exist. To reconfigure, remove the existing sharing options.
 
 **Description**
 

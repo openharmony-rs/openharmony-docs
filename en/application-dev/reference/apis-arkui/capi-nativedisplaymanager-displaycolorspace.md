@@ -1,8 +1,14 @@
 # NativeDisplayManager_DisplayColorSpace
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The NativeDisplayManager_DisplayColorSpace struct describes all the color spaces supported by a display.
+The struct describes all the color spaces supported by a display.
 
 **Since**: 14
 

@@ -1,4 +1,10 @@
 # @ohos.bundleState (设备使用信息统计)
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备使用信息统计能力。
 
@@ -15,9 +21,10 @@
 import bundleState from '@ohos.bundleState'
 ```
 
-## bundleState.isIdleState
+## bundleState.isIdleState<sup>(deprecated)</sup>
 
 isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。
 
 判断指定bundleName的应用当前是否是空闲状态，三方应用只能查询自身的空闲状态。系统应用支持查询其他应用的空闲状态，查询前需要申请权限ohos.permission.BUNDLE_ACTIVE_INFO。使用Callback异步回调。
 
@@ -39,14 +46,15 @@ bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) =>
   if (err) {
     console.error('BUNDLE_ACTIVE isIdleState callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
   }
 });
 ```
 
-## bundleState.isIdleState
+## bundleState.isIdleState<sup>(deprecated)</sup>
 
 isIdleState(bundleName: string): Promise&lt;boolean&gt;
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。
 
 判断指定bundleName的应用当前是否是空闲状态，三方应用只能查询自身的空闲状态。系统应用支持查询其他应用的空闲状态，查询前需要申请权限ohos.permission.BUNDLE_ACTIVE_INFO，使用Promise异步回调。
 
@@ -70,7 +78,7 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 import { BusinessError } from '@ohos.base';
 // 三方应用使用示例代码时，注意将bundleName更换为自己应用的bundleName
 bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
-  console.log('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE isIdleState promise failed, because: ' + err.code);
 });

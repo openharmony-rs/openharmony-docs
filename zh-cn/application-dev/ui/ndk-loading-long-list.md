@@ -1,5 +1,11 @@
 # 使用列表
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
 
 ArkUI开发框架在NDK接口提供了列表组件，使用列表可以轻松高效地显示结构化、可滚动的信息。列表组件支持控制滚动位置、支持分组显示内容、支持使用NodeAdapter实现懒加载以提升列表创建性能。
 
@@ -9,23 +15,23 @@ ArkUI开发框架在NDK接口提供了列表组件，使用列表可以轻松高
 
 ## 监听滚动事件 
 
-参考监听组件事件章节实现列表滚动事件监听。 
+参考[监听组件事件](ndk-listen-to-component-events.md)章节实现列表滚动事件监听。 
 
 ## 使用懒加载 
 
 ### NodeAdapter介绍 
 
-NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeadapterhandle)对象替代ArkTS侧的LazyForEach功能，用于按需生成子组件，NodeAdapter支持在List/ListItemGroup、Grid、WaterFlow、Swiper组件中使用。
+NDK提供了[NodeAdapter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeadapter8h.md)对象替代ArkTS侧的LazyForEach功能，用于按需生成子组件，NodeAdapter支持在List/ListItemGroup、Grid、WaterFlow、Swiper组件中使用。
 
 - 设置了NodeAdapter属性的节点，不再支持addChild等直接添加子组件的接口。子组件完全由NodeAdapter管理，使用属性方法设置NodeAdapter时，会判断父组件是否已经存在子节点，如果父组件已经存在子节点，则设置NodeAdapter操作失败，返回错误码。
 
-- NodeAdapter通过相关事件通知开发者按需生成组件，类似组件事件机制，开发者使用NodeAdapter时要注册[事件监听器](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_nodeadapter_registereventreceiver)，在监听器事件中处理逻辑，相关事件通过[ArkUI_NodeAdapterEventType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeadaptereventtype)定义。另外NodeAdapter不会主动释放不在屏幕内显示的组件对象，开发者需要在[NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeadaptereventtype)事件中进行组件对象的释放，或者进行缓存复用。下图展示了典型列表滑动场景下的事件触发机制：
+- NodeAdapter通过相关事件通知开发者按需生成组件，类似组件事件机制，开发者使用NodeAdapter时要注册[事件监听器](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver)，在监听器事件中处理逻辑，相关事件通过[ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)定义。另外NodeAdapter不会主动释放不在屏幕内显示的组件对象，开发者需要在[NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)事件中进行组件对象的释放，或者进行缓存复用。下图展示了典型列表滑动场景下的事件触发机制：
   ![zh-cn_image_0000001949769409](figures/zh-cn_image_0000001949769409.png)
 
 
 ### 实现懒加载适配器
 
-使用ArkUListItemAdapter类来管理懒加载适配器，在类的构造中创建NodeAdapter对象，并给NodeAdapter对象设置事件监听器，在类的析构函数中，销毁NodeAdapter对象。
+使用ArkUIListItemAdapter类来管理懒加载适配器，在类的构造中创建NodeAdapter对象，并给NodeAdapter对象设置事件监听器，在类的析构函数中，销毁NodeAdapter对象。
 
    ```c++
    // ArkUIListItemAdapter
@@ -41,7 +47,8 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
    
    #include "ArkUIListItemNode.h"
    #include "ArkUITextNode.h"
-   #include "nativeModule.h"
+   #include "NativeModule.h"
+   #include <hilog/log.h>
    
    namespace NativeModule {
    
@@ -170,7 +177,15 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
                textNode->SetBackgroundColor(0xFFfffacd);
                textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
                listItem->AddChild(textNode);
-               listItem->RegisterOnClick([index]() { OH_LOG_INFO(LOG_APP, "on %{public}d list item click", index); });
+               auto swipeNode = std::make_shared<ArkUITextNode>();
+               swipeNode->RegisterOnClick([this, data = data_[index]](ArkUI_NodeEvent *event) {
+                   auto it = std::find(data_.begin(), data_.end(), data);
+                   if (it != data_.end()) {
+                       auto index = std::distance(data_.begin(), it);
+                       RemoveItem(index);
+                   }
+               });
+               listItem->SetSwiperAction(swipeNode);
                handle = listItem->GetHandle();
                // 保持文本列表项的引用。
                items_.emplace(handle, listItem);
@@ -215,7 +230,6 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
    
    #include "ArkUIListItemAdapter.h"
    #include "ArkUINode.h"
-   #include <hilog/log.h>
    
    namespace NativeModule {
    class ArkUIListNode : public ArkUINode {
@@ -224,7 +238,9 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST)) {}
    
        ~ArkUIListNode() override {
-           nativeModule_->unregisterNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX);
+           if (nativeModule_) {
+               nativeModule_->unregisterNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX);
+           }
            if (adapter_) {
                // 析构的时候卸载adapter下的UI组件。
                nativeModule_->resetAttribute(handle_, NODE_LIST_NODE_ADAPTER);
@@ -315,10 +331,7 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
    
    #include "NativeEntry.h"
    
-   #include "ArkUIMixedRefresh.h"
    #include "LazyTextListExample.h"
-   #include "MixedRefreshExample.h"
-   #include "TextListExample.h"
    
    #include <arkui/native_node_napi.h>
    #include <arkui/native_type.h>
@@ -344,7 +357,6 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
    
        // 保持Native侧对象到管理类中，维护生命周期。
        NativeEntry::GetInstance()->SetRootNode(node);
-       g_env = env;
        return nullptr;
    }
    
@@ -431,10 +443,14 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
         std::shared_ptr<ArkUINode> GetSwipeContent() const { 
             return swipeContent_; 
         }
+        std::list<std::shared_ptr<ArkUIBaseNode>> &GetChildren() {
+            return children_;
+        }
     private: 
         ArkUI_ListItemSwipeActionOption* swipeAction_ = nullptr; 
         ArkUI_ListItemSwipeActionItem* swipeItem_ = nullptr;
         std::shared_ptr<ArkUINode> swipeContent_ = nullptr; 
+        std::list<std::shared_ptr<ArkUIBaseNode>> children_;
     }; 
     }// namespace NativeModule 
     #endif// MYAPPLICATION_ARKUILISTITEMNODE_H
@@ -612,7 +628,7 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#ar
             header->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
             auto listItemGroup = std::make_shared<ArkUIListItemGroupNode>(); 
             listItemGroup->SetHeader(header); 
-            auto adapter = std::make_shared<ArkUIListItemAdapter>(4); 
+            auto adapter = std::make_shared<ArkUIListItemAdapter>(); 
             listItemGroup->SetLazyAdapter(adapter); 
             list->AddChild(listItemGroup); 
         }

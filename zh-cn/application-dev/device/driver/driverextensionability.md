@@ -1,4 +1,10 @@
 # 开发无UI界面基础驱动
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 场景介绍
 
@@ -101,7 +107,7 @@
             "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
           },
           {
-            "name": "ohos.permission.ACCESS_DDK_DRIVERS" // 此处为允许该扩展外设应用访问扩展外设驱动的权限，API verison 18及以上版本，必须配置。
+            "name": "ohos.permission.ACCESS_DDK_DRIVERS" // 此处为允许该扩展外设应用访问扩展外设驱动的权限，API version 18及以上版本，必须配置。
           }
         ],
         "deliveryWithInstall": true,
@@ -173,7 +179,7 @@
     }
     ```
 
-8. 完成客户端和驱动示例代码开发后，请参考[使用本地真机运行应用/元服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V13/ide-run-device-V13)，将Hap导入设备中，并点击hap中的Hello，查看是否会转变为Hello world，即实现ipc通信功能。
+8. 完成客户端和驱动示例代码开发后，请参考[使用本地真机运行应用/元服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)，将Hap导入设备中，并点击hap中的Hello，查看是否会转变为Hello world，即实现ipc通信功能。
 
 ## 扩展设备能力
 
@@ -209,5 +215,5 @@
       }
       ```
 
-自动签名方法： 请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V13/ide-signing-V13#section18815157237)。
+自动签名方法： 请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
 <!--RP1End-->

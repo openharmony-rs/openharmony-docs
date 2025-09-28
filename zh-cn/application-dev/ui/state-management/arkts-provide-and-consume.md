@@ -1,4 +1,10 @@
 # \@Provide装饰器和\@Consume装饰器：与后代组件双向同步
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liwenzhen3-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 \@Provide和\@Consume，应用于与后代组件的双向数据同步、状态数据在多个层级之间传递的场景。不同于上文提到的父子组件之间通过命名参数机制传递，\@Provide和\@Consume摆脱参数传递机制的束缚，实现跨层级传递。
 
@@ -22,11 +28,11 @@
 
 \@Provide/\@Consume装饰的状态变量有以下特性：
 
-- \@Provide装饰的状态变量自动对其所有后代组件可用，即该变量被“provide”给他的后代组件。由此可见，\@Provide的方便之处在于，开发者不需要多次在组件之间传递变量。
+- \@Provide装饰的状态变量自动对其所有后代组件可用，开发者不需要多次在组件之间传递变量。
 
-- 后代通过使用\@Consume去获取\@Provide提供的变量，建立在\@Provide和\@Consume之间的双向数据同步，与\@State/\@Link不同的是，前者可以在多层级的父子组件之间传递。
+- 后代通过使用\@Consume去获取\@Provide提供的变量，建立在\@Provide和\@Consume之间的双向数据同步，与\@State/\@Link不同的是，前者可以更便捷的在多层级父子组件之间传递。
 
-- \@Provide和\@Consume可以通过相同的变量名或者相同的变量别名绑定，建议类型相同，否则会发生类型隐式转换，从而导致应用行为异常。
+- \@Provide和\@Consume通过变量名或者变量别名绑定，需要类型相同，否则会发生类型隐式转换，从而导致应用行为异常。
 
 ```ts
 // 通过相同的变量名绑定
@@ -36,9 +42,17 @@
 // 通过相同的变量别名绑定
 @Provide('a') id: number = 0;
 @Consume('a') age: number;
-```
 
-\@Provide和\@Consume通过相同的变量名或者相同的变量别名绑定时，\@Provide装饰的变量和\@Consume装饰的变量是一对多的关系。不允许在同一个自定义组件内，包括其子组件中声明多个同名或者同别名的\@Provide装饰的变量，@Provide的属性名或别名需要唯一且确定，如果声明多个同名或者同别名的@Provide装饰的变量，会发生运行时报错。
+// 通过Provide的变量别名和Consume的变量名相同绑定
+@Provide('a') id: number = 0;
+@Consume a: number;
+
+// 通过Provide的变量名和Consume的变量别名绑定
+@Provide id: number = 0;
+@Consume('id') a: number;
+
+```
+当\@Provide指定变量别名时，会同时保存变量名与变量别名，\@Consume在查找时，会优先以变量别名作为查找值去匹配，如果没有别名则用变量名作为查找值，只要\@Consume提供的查找值与\@Provide保存的变量名或别名中任意一项一致，即可成功建立绑定关系。
 
 ## 装饰器说明
 
@@ -46,17 +60,18 @@
 
 | \@Provide变量装饰器 | 说明                                       |
 | -------------- | ---------------------------------------- |
-| 装饰器参数          | 别名：常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。 |
-| 同步类型           | 双向同步。<br/>从\@Provide变量到所有\@Consume变量以及相反的方向的数据同步。双向同步的操作与\@State和\@Link的组合相同。 |
-| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Date类型。<br/>支持ArkUI框架定义的联合类型Length、ResourceStr、ResourceColor类型。<br/>必须指定类型。<br/>\@Provide变量和\@Consume变量的类型必须相同。<br/>支持类型的场景请参考[观察变化](#观察变化)。<br/>不支持any类型。<br/>API version 11及以上支持Map、Set类型以及上述支持类型的联合类型。例如：string \| number, string \| undefined或者ClassA \| null，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。 <br/>**注意：**<br/>当使用undefined和null的时候，建议显示指定类型，遵循TypeScript类型校验。例如：推荐`@Provide a : string \| undefined = undefined`，不推荐`@Provide a: string = undefined`。
-| 被装饰变量的初始值      | 必须指定。                                    |
+| 装饰器参数          | 别名：常量字符串，可选。|
+| 同步类型           | 双向同步。<br/>从\@Provide变量到所有\@Consume变量以及相反方向的数据同步。双向同步的操作与\@State和\@Link的组合相同。 |
+| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
+| 不允许装饰的变量类型 | 不支持装饰Function类型。      |
+| 被装饰变量的初始值      | 必须本地初始化。                                    |
 | 支持allowOverride参数          | 允许重写，只要声明了allowOverride，则别名和属性名都可以被Override。示例见[\@Provide支持allowOverride参数](#provide支持allowoverride参数)。 |
 
 | \@Consume变量装饰器 | 说明                                       |
 | -------------- | ---------------------------------------- |
-| 装饰器参数          | 别名：常量字符串，可选。<br/>如果提供了别名，则必须有\@Provide的变量和其有相同的别名才可以匹配成功；否则，则需要变量名相同才能匹配成功。 |
+| 装饰器参数          | 别名：常量字符串，可选。 |
 | 同步类型           | 双向同步：从\@Provide变量（具体请参见\@Provide）到所有\@Consume变量，以及相反的方向。双向同步操作与\@State和\@Link的组合相同。 |
-| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Date类型。<br/>支持ArkUI框架定义的联合类型Length、ResourceStr、ResourceColor类型。<br/>必须指定类型。<br/>\@Provide变量和\@Consume变量的类型必须相同。<br/>API version 20之前，\@Consume装饰的变量，在其父组件或者祖先组件上，必须有对应的属性和别名的\@Provide装饰的变量。<br/>支持类型的场景请参考[观察变化](#观察变化)。<br/>不支持any类型。<br/>API version 11及以上支持Map、Set类型以及上述支持类型的联合类型。例如：string \| number, string \| undefined或者ClassA \| null，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。 <br/>**注意：**<br/>当使用undefined和null的时候，建议显示指定类型，遵循TypeScript类型校验。例如：`@Consume a : string \| undefined`。
+| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。 <br/>**说明：** <br/>API version 20之前，\@Consume装饰的变量，在其父组件或者祖先组件上，必须有对应的属性和别名的\@Provide装饰的变量。
 | 被装饰变量的初始值      | 从API version 20开始，\@Consume支持设置默认值。若存在匹配成功的\@Provide，则会使用\@Provide的变量值作为初始值。示例见[\@Consume装饰的变量支持设置默认值](#consume装饰的变量支持设置默认值)。                            |
 
 ## 变量的传递/访问规则说明
@@ -93,62 +108,9 @@
 
 - 当装饰的数据类型为class或者Object的时候，可以观察到赋值和属性赋值的变化（属性为Object.keys(observedObject)返回的所有属性）。
 
-- 当装饰的对象是array的时候，可以观察到数组的添加、删除、更新数组单元。
+- 当装饰Array时，可以观察到数组本身、数组项的赋值及其API操作带来的变化。
 
-- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。
-
-```ts
-@Component
-struct Child {
-  @Consume selectedDate: Date;
-
-  build() {
-    Column() {
-      Button(`child increase the day by 1`)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1)
-        })
-      Button('child update the new date')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-09-09')
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @Provide selectedDate: Date = new Date('2021-08-08')
-
-  build() {
-    Column() {
-      Button('parent increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1)
-        })
-      Button('parent update the new date')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-07-07')
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-      Child()
-    }
-  }
-}
-```
+- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
 - 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
@@ -174,7 +136,7 @@ struct Parent {
 
 ## 限制条件
 
-1. \@Provide/\@Consume的参数key必须为string类型，否则编译期会报错。
+1. \@Provide/\@Consume的参数key必须为string类型，否则编译时会报错。
 
     ```ts
     // 错误写法，编译报错
@@ -186,7 +148,7 @@ struct Parent {
     @Provide(change) message: string = 'Hello';
     ```
 
-2. \@Consume装饰的变量不能在构造参数中传入初始化，否则编译期会报错。\@Consume仅能通过key来匹配对应的\@Provide变量或者从API version 20开始设置默认值进行初始化。
+2. \@Consume装饰的变量不能在构造参数中传入初始化，否则编译时会报错。\@Consume仅能通过key来匹配对应的\@Provide变量或者从API version 20开始设置默认值进行初始化。
 
     【反例】
   
@@ -333,7 +295,7 @@ class B {}
 ```
 在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext } from "@kit.ArkUI";
+import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 @Builder
 function buildText() {
@@ -430,7 +392,7 @@ struct ToDoDemo {
 @Entry
 @Component
 struct ToDo {
-  // @Provide装饰的变量index由入口组件ToDo提供其后代组件
+  // @Provide装饰的变量count由入口组件ToDo提供其后代组件
   @Provide count: number = 0;
 
   build() {
@@ -458,25 +420,32 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(30)
+        Text(`${item[1]}`)
+          .fontSize(30)
         Divider()
       })
-      Button('Consume init Map').onClick(() => {
-        this.message = new Map([[0, "a"], [1, "b"], [3, "c"]])
-      })
-      Button('Consume set new one').onClick(() => {
-        this.message.set(4, "d")
-      })
-      Button('Consume clear').onClick(() => {
-        this.message.clear()
-      })
-      Button('Consume replace the first item').onClick(() => {
-        this.message.set(0, "aa")
-      })
-      Button('Consume delete the first item').onClick(() => {
-        this.message.delete(0)
-      })
+      Button('Consume init Map')
+        .onClick(() => {
+          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+        })
+      Button('Consume set new one')
+        .onClick(() => {
+          this.message.set(4, 'd');
+        })
+      Button('Consume clear')
+        .onClick(() => {
+          this.message.clear();
+        })
+      Button('Consume replace the first item')
+        .onClick(() => {
+          this.message.set(0, 'aa');
+        })
+      Button('Consume delete the first item')
+        .onClick(() => {
+          this.message.delete(0);
+        })
     }
   }
 }
@@ -485,14 +454,15 @@ struct Child {
 @Entry
 @Component
 struct MapSample {
-  @Provide message: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]])
+  @Provide message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']])
 
   build() {
     Row() {
       Column() {
-        Button('Provide init Map').onClick(() => {
-          this.message = new Map([[0, "a"], [1, "b"], [3, "c"], [4, "d"]])
-        })
+        Button('Provide init Map')
+          .onClick(() => {
+            this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c'], [4, 'd']]);
+          })
         Child()
       }
       .width('100%')
@@ -517,22 +487,27 @@ struct Child {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
+      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+        Text(`${item[0]}`)
+          .fontSize(30)
         Divider()
       })
-      Button('Consume init set').onClick(() => {
-        this.message = new Set([0, 1, 2, 3, 4])
-      })
-      Button('Consume set new one').onClick(() => {
-        this.message.add(5)
-      })
-      Button('Consume clear').onClick(() => {
-        this.message.clear()
-      })
-      Button('Consume delete the first one').onClick(() => {
-        this.message.delete(0)
-      })
+      Button('Consume init set')
+        .onClick(() => {
+          this.message = new Set([0, 1, 2, 3, 4]);
+        })
+      Button('Consume set new one')
+        .onClick(() => {
+          this.message.add(5);
+        })
+      Button('Consume clear')
+        .onClick(() => {
+          this.message.clear();
+        })
+      Button('Consume delete the first one')
+        .onClick(() => {
+          this.message.delete(0);
+        })
     }
     .width('100%')
   }
@@ -547,14 +522,72 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        Button('Provide init set').onClick(() => {
-          this.message = new Set([0, 1, 2, 3, 4, 5])
-        })
+        Button('Provide init set')
+          .onClick(() => {
+            this.message = new Set([0, 1, 2, 3, 4, 5]);
+          })
         Child()
       }
       .width('100%')
     }
     .height('100%')
+  }
+}
+```
+
+### 装饰Date类型变量
+
+以下示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
+
+```ts
+@Component
+struct Child {
+  @Consume selectedDate: Date;
+
+  build() {
+    Column() {
+      Button(`child increase the day by 1`)
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Button('child update the new date')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate = new Date('2023-09-09');
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.selectedDate
+      })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @Provide selectedDate: Date = new Date('2021-08-08')
+
+  build() {
+    Column() {
+      Button('parent increase the day by 1')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Button('parent update the new date')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate = new Date('2023-07-07');
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.selectedDate
+      })
+      Child()
+    }
   }
 }
 ```
@@ -619,7 +652,7 @@ allowOverride：\@Provide重写选项。
 ```ts
 @Component
 struct MyComponent {
-  @Provide({allowOverride : "reviewVotes"}) reviewVotes: number = 10;
+  @Provide({allowOverride : 'reviewVotes'}) reviewVotes: number = 10;
 }
 ```
 
@@ -629,7 +662,7 @@ struct MyComponent {
 @Component
 struct GrandSon {
   // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
-  @Consume("reviewVotes") reviewVotes: number;
+  @Consume('reviewVotes') reviewVotes: number;
 
   build() {
     Column() {
@@ -643,7 +676,7 @@ struct GrandSon {
 
 @Component
 struct Child {
-  @Provide({ allowOverride: "reviewVotes" }) reviewVotes: number = 10;
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 10;
 
   build() {
     Row({ space: 5 }) {
@@ -654,7 +687,7 @@ struct Child {
 
 @Component
 struct Parent {
-  @Provide({ allowOverride: "reviewVotes" }) reviewVotes: number = 20;
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 20;
 
   build() {
     Child()
@@ -664,7 +697,7 @@ struct Parent {
 @Entry
 @Component
 struct GrandParent {
-  @Provide("reviewVotes") reviewVotes: number = 40;
+  @Provide('reviewVotes') reviewVotes: number = 40;
 
   build() {
     Column() {
@@ -677,10 +710,10 @@ struct GrandParent {
 ```
 
 在上面的示例中：
-- GrandParent声明了@Provide("reviewVotes") reviewVotes: number = 40。
-- Parent是GrandParent的子组件，声明@Provide为allowOverride，重写父组件GrandParent的@Provide("reviewVotes") reviewVotes: number = 40。如果不设置allowOverride，则会抛出运行时报错，提示@Provide重复定义。Child同理。
+- GrandParent声明了@Provide('reviewVotes') reviewVotes: number = 40。
+- Parent是GrandParent的子组件，声明@Provide为allowOverride，重写父组件GrandParent的@Provide('reviewVotes') reviewVotes: number = 40。如果不设置allowOverride，则会抛出运行时报错，提示@Provide重复定义。Child同理。
 - GrandSon在初始化@Consume的时候，@Consume装饰的变量通过相同的属性名绑定其最近的祖先的@Provide装饰的变量。
-- GrandSon查找到相同属性名的@Provide在祖先Child中，所以@Consume("reviewVotes") reviewVotes: number初始化数值为10。如果Child中没有定义与@Consume同名的@Provide，则继续向上寻找Parent中的同名@Provide值为20，以此类推。
+- GrandSon查找到相同属性名的@Provide在祖先Child中，所以@Consume('reviewVotes') reviewVotes: number初始化数值为10。如果Child中没有定义与@Consume同名的@Provide，则继续向上寻找Parent中的同名@Provide值为20，以此类推。
 - 如果查找到根节点还没有找到key对应的@Provide，则会报初始化@Consume找不到@Provide的报错。
 
 ### \@Consume装饰的变量支持设置默认值
@@ -717,7 +750,7 @@ struct Parent {
           // 点击change provideOne按钮，provideOne和子组件中的textOne属性会同时变化
           Button('change provideOne')
             .onClick(() => {
-              this.provideOne = undefined; 
+              this.provideOne = undefined;
             })
           // 点击change provideTwo按钮，provideTwo和子组件中的textTwo属性会同时变化
           Button('change provideTwo')
@@ -772,6 +805,11 @@ struct Child {
 - @Consume装饰的属性设置的默认值仅在祖先组件没有匹配结果时才生效，有匹配结果时无影响。
 
 ### \@Consume在跨BuilderNode场景下和\@Provide建立双向同步
+
+> **说明：**
+>
+> 从API version 20开始，支持跨BuilderNode配对\@Provide/\@Consume。
+
 BuilderNode支持\@Provide/\@Consume，需注意：
 1. 在BuilderNode子树中定义的\@Consume需要设置默认值，或者在子树中已存在配对的\@Provide，否则会发生运行时报错。
 2. BuilderNode上树后，设置默认值的\@Consume会向上查找\@Provide，根据key的匹配规则找到最近的\@Provide后，会和\@Provide建立双向同步关系。如果找不到配对的\@Provide，则\@Consume仍使用默认值。
@@ -788,7 +826,7 @@ BuilderNode支持\@Provide/\@Consume，需注意：
 4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行aboutToDisappear。
 
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext } from "@kit.ArkUI";
+import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 @Builder
 function buildText() {
@@ -912,7 +950,6 @@ struct Child {
 }
 ```
 
-
 ## 常见问题
 
 ### \@BuilderParam尾随闭包情况下\@Provide未定义错误
@@ -923,7 +960,7 @@ struct Child {
 
 ```ts
 class Tmp {
-  a: string = ''
+  a: string = '';
 }
 
 @Entry
@@ -987,7 +1024,7 @@ struct CustomWidgetChild {
 
 ```ts
 class Tmp {
-  name: string = ''
+  name: string = '';
 }
 
 @Entry

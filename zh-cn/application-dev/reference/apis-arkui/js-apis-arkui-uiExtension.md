@@ -1,10 +1,16 @@
 # @ohos.arkui.uiExtension (uiExtension)
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @chbchb12-->
+<!--Designer: @stupidb-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 用于EmbeddedUIExtensionAbility（或UIExtensionAbility）中获取宿主应用的窗口信息或对应的EmbeddedComponent<!--Del-->（或UIExtensionComponent）<!--DelEnd-->组件的信息。
 
 > **说明**
 >
-> 从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## 导入模块
@@ -36,6 +42,8 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -82,6 +90,8 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | type   | string | 是 | 监听的事件类型，固定为'avoidAreaChange'，即系统规避区变化事件。 |
@@ -123,6 +133,8 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**参数：**
+
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ---- | ---- | ---  |
 | type     | string | 是 | 注销的事件类型，固定为'avoidAreaChange'，即系统规避区变化事件。 |
@@ -155,16 +167,18 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
-注册宿主应用窗口尺寸变化的监听。
+注册组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**参数：**
+
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | 是   | 监听的事件类型，固定为'windowSizeChange'，即窗口尺寸变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 是   | 回调函数：入参用于接收当前窗口的尺寸。 |
+| type     | string                | 是   | 监听的事件类型，固定为'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 是   | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
 
 **错误码**：
 
@@ -184,7 +198,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionWindow = session.getUIExtensionWindowProxy();
-    // 注册宿主应用窗口大小变化的监听
+    // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionWindow.on('windowSizeChange', (size: window.Size) => {
       console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
     });
@@ -196,15 +210,17 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
-注销宿主应用窗口尺寸变化的监听。
+注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**参数：**
+
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | 是   | 注销的事件类型，固定值：'windowSizeChange'，即窗口尺寸变化事件。 |
+| type     | string                | 是   | 注销的事件类型，固定值：'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 否   | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。 |
 
 **错误码**：
@@ -224,7 +240,7 @@ import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.Abil
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionWindow = session.getUIExtensionWindowProxy();
-    // 注销宿主应用窗口大小变化的监听
+    // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionWindow.off('windowSizeChange');
   }
 }
@@ -234,11 +250,13 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&gt;): void
 
-注册组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的监听，目前仅支持在2in1设备上使用。
+注册组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的监听。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -279,11 +297,13 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
-注销组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的监听，目前仅支持在2in1设备上使用。
+注销组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的监听。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -392,7 +412,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
           });
         });
       }).catch((error: BusinessError) => {
-        console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+        console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
       })
   }
 }
@@ -436,6 +456,7 @@ occupyEvents(eventFlags: number): Promise&lt;void&gt;
 // ExtensionProvider.ts
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { uiExtension } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
@@ -483,10 +504,10 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-| 名称 | 类型                 | 必填 | 说明        |
-| ------ | -------------------- | ------------------ | ------------------ |
-| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 窗口规避区类型。   |
-| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | 是| 窗口内容规避区域。 |
+| 名称 | 类型                 | 只读 | 可选 | 说明        |
+| ------ | -------------------- | ----- | ---- | ------------------ |
+| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否 | 否 | 窗口规避区类型。|
+| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | 否 | 否 | 窗口内容规避区域。 |
 
 ## WindowProxyProperties<sup>14+</sup>
 
@@ -496,9 +517,9 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-| 名称                         | 类型        | 必填      | 说明                             |
-| ------------------------------ | ----------- | -------------------------------- | -------------------------------- |
-| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 是 | 组件（EmbeddedComponent或UIExtensionComponent）的位置和宽高。 |
+| 名称                         | 类型        | 只读 | 可选 | 说明                             |
+| ------------------------------ | ----------- | ----- | ---- | -------------------------------- |
+| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 |组件（EmbeddedComponent或UIExtensionComponent）的位置和宽高。 |
 
 ## RectChangeReason<sup>14+</sup>
 
@@ -611,7 +632,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
   @Component
   struct Extension {
     @State message: string = 'EmbeddedUIExtensionAbility Index';
-    private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
     private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
     private extensionWindow: uiExtension.WindowProxy | undefined = this.session?.getUIExtensionWindowProxy();
     private subWindow: window.Window | undefined = undefined;
@@ -678,7 +699,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
                       });
                   });
               }).catch((error: BusinessError) => {
-                  console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+                  console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
               })
         })
       }.width('100%').height('100%')

@@ -1,12 +1,19 @@
 # Interface (ImageReceiver)
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 9.
 
 The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
-Before calling any APIs in ImageReceiver, you must create an ImageReceiver instance.
+Before calling any APIs in ImageReceiver, you must use [createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11) to create an ImageReceiver instance.
 
 ## Modules to Import
 
@@ -20,9 +27,9 @@ import { image } from '@kit.ImageKit';
 
 | Name    | Type                        | Read Only| Optional| Description              |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
-| size     | [Size](arkts-apis-image-i.md#size)                | Yes  | No  | Image size. This parameter does not affect the size of the received image. The actual returned size is determined by the producer, for example, the camera.        |
-| capacity | number                       | Yes  | No  | Maximum number of images that can be accessed at the same time. This parameter is used only as an expected value. The actual capacity is determined by the device hardware.|
-| format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | Yes  | No  | Image format, which is a constant of [ImageFormat](arkts-apis-image-e.md#imageformat9). (Currently, only **ImageFormat:JPEG** is supported. The format actually returned is determined by the producer, for example, camera.)       |
+| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)                | Yes  | No  | Image size. This parameter does not affect the size of the received image. The actual returned size is determined by the producer, for example, the camera.        |
+| capacity<sup>9+</sup> | number                       | Yes  | No  | Maximum number of images that can be accessed at the same time. This parameter is used only as an expected value. The actual capacity is determined by the device hardware.|
+| format<sup>9+</sup>   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | Yes  | No  | Image format, which is a constant of [ImageFormat](arkts-apis-image-e.md#imageformat9). (Currently, only **ImageFormat:JPEG** is supported. The format actually returned is determined by the producer, for example, camera.)       |
 
 ## getReceivingSurfaceId<sup>9+</sup>
 
@@ -43,13 +50,15 @@ Obtains a surface ID for the camera or other components. This API uses an asynch
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.getReceivingSurfaceId((err: BusinessError, id: string) => {
-  if (err) {
-    console.error(`Failed to get the ReceivingSurfaceId.code ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in getting the ReceivingSurfaceId.');
-  }
-});
+async function GetReceivingSurfaceId(receiver : image.ImageReceiver) {
+  receiver.getReceivingSurfaceId((err: BusinessError, id: string) => {
+    if (err) {
+      console.error(`Failed to get the ReceivingSurfaceId.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in getting the ReceivingSurfaceId.');
+    }
+  });
+}
 ```
 
 ## getReceivingSurfaceId<sup>9+</sup>
@@ -71,11 +80,13 @@ Obtains a surface ID for the camera or other components. This API uses a promise
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.getReceivingSurfaceId().then((id: string) => { 
-  console.info('Succeeded in getting the ReceivingSurfaceId.');
-}).catch((error: BusinessError) => {
-  console.error(`Failed to get the ReceivingSurfaceId.code ${error.code},message is ${error.message}`);
-})
+async function GetReceivingSurfaceId(receiver : image.ImageReceiver) {
+  receiver.getReceivingSurfaceId().then((id: string) => { 
+    console.info('Succeeded in getting the ReceivingSurfaceId.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get the ReceivingSurfaceId.code ${error.code},message is ${error.message}`);
+  })
+}
 ```
 
 ## readLatestImage<sup>9+</sup>
@@ -99,13 +110,15 @@ This API can be called to receive data only after the [on](#on9) callback is tri
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.readLatestImage((err: BusinessError, img: image.Image) => {
-  if (err) {
-    console.error(`Failed to read the latest Image.code ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in reading the latest Image.');
-  }
-});
+async function ReadLatestImage(receiver : image.ImageReceiver) {
+  receiver.readLatestImage((err: BusinessError, img: image.Image) => {
+    if (err) {
+      console.error(`Failed to read the latest Image.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in reading the latest Image.');
+    }
+  });
+}
 ```
 
 ## readLatestImage<sup>9+</sup>
@@ -129,11 +142,13 @@ This API can be called to receive data only after the [on](#on9) callback is tri
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.readLatestImage().then((img: image.Image) => {
-  console.info('Succeeded in reading the latest Image.');
-}).catch((error: BusinessError) => {
-  console.error(`Failed to read the latest Image.code ${error.code},message is ${error.message}`);
-})
+async function ReadLatestImage(receiver : image.ImageReceiver) {
+  receiver.readLatestImage().then((img: image.Image) => {
+    console.info('Succeeded in reading the latest Image.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to read the latest Image.code ${error.code},message is ${error.message}`);
+  });
+}
 ```
 
 ## readNextImage<sup>9+</sup>
@@ -157,13 +172,15 @@ This API can be called to receive data only after the [on](#on9) callback is tri
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.readNextImage((err: BusinessError, img: image.Image) => {
-  if (err) {
-    console.error(`Failed to read the next Image.code ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in reading the next Image.');
-  }
-});
+async function ReadNextImage(receiver : image.ImageReceiver) {
+  receiver.readNextImage((err: BusinessError, img: image.Image) => {
+    if (err) {
+      console.error(`Failed to read the next Image.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in reading the next Image.');
+    }
+  });
+}
 ```
 
 ## readNextImage<sup>9+</sup>
@@ -187,11 +204,13 @@ This API can be called to receive data only after the [on](#on9) callback is tri
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.readNextImage().then((img: image.Image) => {
-  console.info('Succeeded in reading the next Image.');
-}).catch((error: BusinessError) => {
-  console.error(`Failed to read the next Image.code ${error.code},message is ${error.message}`);
-})
+async function ReadNextImage(receiver : image.ImageReceiver) {
+  receiver.readNextImage().then((img: image.Image) => {
+    console.info('Succeeded in reading the next Image.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to read the next Image.code ${error.code},message is ${error.message}`);
+  });
+}
 ```
 
 ## on<sup>9+</sup>
@@ -212,9 +231,11 @@ Listens for image arrival events.
 **Example**
 
 ```ts
-receiver.on('imageArrival', () => {
-  // image arrival, do something.
-})
+async function On(receiver : image.ImageReceiver) {
+  receiver.on('imageArrival', () => {
+    // Implement the callback logic when an image is received.
+  });
+}
 ```
 
 ## off<sup>13+</sup>
@@ -235,11 +256,13 @@ Unregisters the callback function that is triggered when the buffer is released.
 **Example**
 
 ```ts
-let callbackFunc = ()=>{
-    // do something.
+async function Off(receiver : image.ImageReceiver) {
+  let callbackFunc = ()=>{
+      // Implement the callback logic.
+  };
+  receiver.on('imageArrival', callbackFunc);
+  receiver.off('imageArrival', callbackFunc);
 }
-receiver.on('imageArrival', callbackFunc)
-receiver.off('imageArrival', callbackFunc)
 ```
 
 ## release<sup>9+</sup>
@@ -263,13 +286,15 @@ ArkTS supports memory reclamation. Even if the application does not call **relea
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.release((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to release the receiver.code ${err.code},message is ${err.message}`);
-  } else {
-    console.info('Succeeded in releasing the receiver.');
-  }
-})
+async function Release(receiver : image.ImageReceiver) {
+  receiver.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the receiver.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in releasing the receiver.');
+    }
+  })
+}
 ```
 
 ## release<sup>9+</sup>
@@ -293,11 +318,11 @@ ArkTS supports memory reclamation. Even if the application does not call **relea
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-receiver.release().then(() => {
-  console.info('Succeeded in releasing the receiver.');
-}).catch((error: BusinessError) => {
-  console.error(`Failed to release the receiver.code ${error.code},message is ${error.message}`);
-})
+async function Release(receiver : image.ImageReceiver) {
+  receiver.release().then(() => {
+    console.info('Succeeded in releasing the receiver.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release the receiver.code ${error.code},message is ${error.message}`);
+  })
+}
 ```
-
-<!--no_check-->

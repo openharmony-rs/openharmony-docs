@@ -1,4 +1,10 @@
 # Camera Error Codes
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -52,7 +58,7 @@ An operation that requires session configuration is performed before the session
 
 **Possible Cause**
 
-For example, the **start()** API is called before the session is configured.
+APIs such as [start](arkts-apis-camera-Session.md#start11-1) are called before the session is configured.
 
 **Solution**
 
@@ -70,7 +76,7 @@ An operation that requires a running session is performed before the session run
 
 **Possible Cause**
 
-For example, the **capture()** API is called before the session runs.
+APIs such as [capture](arkts-apis-camera-PhotoOutput.md#capture) are called before the session runs.
 
 **Solution**
 

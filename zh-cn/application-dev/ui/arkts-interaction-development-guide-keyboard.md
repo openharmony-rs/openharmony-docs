@@ -1,10 +1,16 @@
 # 支持键盘输入事件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
-物理按键产生的按键事件为非指向性事件，与触摸等指向性事件不同，其事件并没有坐标位置信息，所以其会按照一定次序向用户操作的焦点进行派发，一些文字输入场景，按键事件都会优先派发给输入法软键盘进行处理，以便其处理文字的联想和候选词，应用可以通过`onKeyPreIme`提前感知事件。
+物理按键产生的按键事件为非指向性事件，与触摸等指向性事件不同，其事件并没有坐标位置信息，所以其会按照一定次序向获焦组件进行派发，大多数文字输入场景下，按键事件都会优先派发给输入法进行处理，以便其处理文字的联想和候选词，应用可以通过`onKeyPreIme`提前感知事件。
 
 > **说明：**
 >
-> 一些系统按键产生的事件并不会传递给UI组件，如电源键、音量键。
+> 一些系统按键产生的事件并不会传递给UI组件，如电源键。
 
 ## 按键事件数据流
 
@@ -15,13 +21,13 @@
 
 1. 首先分发给ArkUI框架用于触发获焦组件绑定的onKeyPreIme回调和页面快捷键。
 2. 再向输入法分发，输入法会消费按键用作输入。
-3. 再次将事件发给ArkUI框架，用于响应系统默认Key事件（例如走焦）以及获焦组件绑定的onKeyEvent回调。
+3. 再次将事件发给ArkUI框架，用于响应onKeyEventDispatch事件、获焦组件绑定的onKeyEvent回调以及走焦。
 
 因此，当某输入框组件获焦，且打开了输入法，此时大部分按键事件均会被输入法消费。例如字母键会被输入法用来往输入框中输入对应字母字符、方向键会被输入法用来切换选中备选词。如果在此基础上给输入框组件绑定了快捷键，那么快捷键会优先响应事件，事件也不再会被输入法消费。
 
-按键事件到ArkUI框架之后，会先找到完整的父子节点获焦链。从叶子节点到根节点，逐一发送按键事件。 
+按键事件到ArkUI框架之后，会先找到完整的节点获焦链。从叶子节点到根节点，逐一发送按键事件，若有子组件可以处理则优先给子组件处理，若子组件无法处理，则进行冒泡寻找父组件进行处理。 
 
-Web组件的KeyEvent流程与上述过程有所不同。对于Web组件，不会在onKeyPreIme返回false时候，去匹配快捷键。而是第三次按键派发过程，Web对于未消费的KeyEvent通过ReDispatch重新派发回ArkUI，在ReDispatch中再执行匹配快捷键等操作。
+Web组件的KeyEvent流程与上述过程有所不同。在onKeyPreIme返回false时，Web组件不会匹配快捷键。而在第三次按键派发过程中，Web组件会将未消费的KeyEvent通过ReDispatch重新派发回ArkUI，在ReDispatch中再执行匹配快捷键等操作。
 
 ## onKeyEvent & onKeyPreIme
 
@@ -32,7 +38,7 @@ onKeyPreIme(event: Callback<KeyEvent, boolean>): T
 onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 ```
 
-上述两种方法的区别仅在于触发的时机（见[按键事件数据流](#按键事件数据流)）。其中onKeyPreIme的返回值决定了该按键事件后续是否会被继续分发给页面快捷键、输入法和onKeyEvent。
+上述四种方法的区别仅在于触发的时机（见[按键事件数据流](#按键事件数据流)）。其中onKeyPreIme的返回值决定了该按键事件后续是否会被继续分发给页面快捷键、输入法、onKeyEventDispatch和onKeyEvent。
 
 
 当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)，可由该参数获得当前按键事件的按键行为（[KeyType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keytype)）、键码（[keyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
@@ -84,7 +90,7 @@ struct KeyEventExample {
           this.columnType = 'Up';
         }
         this.columnText = 'Column: \n' +
-        'KeyType:' + this.buttonType + '\n' +
+        'KeyType:' + this.columnType + '\n' +
         'KeyCode:' + event.keyCode + '\n' +
         'KeyText:' + event.keyText;
       }
@@ -160,7 +166,7 @@ struct KeyEventExample {
           this.columnType = 'Up';
         }
         this.columnText = 'Column: \n' +
-          'KeyType:' + this.buttonType + '\n' +
+          'KeyType:' + this.columnType + '\n' +
           'KeyCode:' + event.keyCode + '\n' +
           'KeyText:' + event.keyText;
       }
@@ -214,11 +220,11 @@ struct Index {
     Row() {
       Row() {
         Button('button1').id('button1').onKeyEvent((event) => {
-          console.log("button1");
+          console.info("button1");
           return true
         })
-        Button('button1').id('button2').onKeyEvent((event) => {
-          console.log("button2");
+        Button('button2').id('button2').onKeyEvent((event) => {
+          console.info("button2");
           return true
         })
       }
@@ -246,3 +252,46 @@ struct Index {
 }
 ```
 
+使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
+
+```ts
+@Entry
+@Component
+struct TextAreaDemo {
+  @State content: string = '';
+  @State text: string = '';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      Text('Submissions: ' + this.content)
+      TextArea({ controller: this.controller, text: this.text })
+        .onKeyPreIme((event: KeyEvent) => {
+          console.info(`${JSON.stringify(event)}`);
+          if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
+            const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
+            if (hasCtrl) {
+              console.info('Line break');
+            } else {
+              console.info('Submissions：' + this.text);
+              this.content = this.text;
+              this.text = '';
+              event.stopPropagation();
+            }
+            return true;
+          }
+          return false;
+        })
+        .onChange((value: string) => {
+          this.text = value
+        })
+    }
+  }
+}
+```
+
+![onKeyPreIme1](figures/onKeyPreIme1.png)
+
+在输入框中输入内容后回车。
+
+![onKeyPreIme2](figures/onKeyPreIme2.png)

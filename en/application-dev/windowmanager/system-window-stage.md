@@ -1,4 +1,10 @@
 # System Window Development (Stage Model Only)
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
@@ -77,6 +83,10 @@ export default class ServiceExtensionAbility1 extends ServiceExtensionAbility {
       }
       console.info('Succeeded in creating the volume window.')
       windowClass = data;
+      if (!windowClass) {
+        console.error('windowClass is null');
+        return;
+      }
       // 2. Change the size and position of the volume bar window, or set its properties such as the background color and brightness.
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
@@ -102,8 +112,12 @@ export default class ServiceExtensionAbility1 extends ServiceExtensionAbility {
           return;
         }
         console.info('Succeeded in loading the content.');
+        if (!windowClass) {
+          console.error('windowClass is null');
+          return;
+        }
         // 3.2 Show the volume bar window.
-        (windowClass as window.Window).showWindow((err: BusinessError) => {
+        windowClass.showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             console.error('Failed to show the window. Cause:' + JSON.stringify(err));
@@ -116,7 +130,11 @@ export default class ServiceExtensionAbility1 extends ServiceExtensionAbility {
       // Hide the volume bar window when a touch event outside the window is detected.
       windowClass.on('touchOutside', () => {
         console.info('touch outside');
-        (windowClass as window.Window).hide((err: BusinessError) => {
+        if (!windowClass) {
+          console.error('windowClass is null');
+          return;
+        }
+        windowClass.hide((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             console.error('Failed to hide the window. Cause: ' + JSON.stringify(err));
@@ -157,10 +175,10 @@ You can determine whether to play an animation when a system window is showing o
 import { window } from '@kit.ArkUI';
 
 export class AnimationConfig {
-  private animationForShownCallFunc_: Function = undefined;
-  private animationForHiddenCallFunc_: Function = undefined;
+  private animationForShownCallFunc_: ((context: window.TransitionContext) => void) | undefined = undefined;
+  private animationForHiddenCallFunc_: ((context: window.TransitionContext) => void) | undefined = undefined;
 
-  ShowWindowWithCustomAnimation(windowClass: window.Window, callback) {
+  ShowWindowWithCustomAnimation(windowClass: window.Window, callback: (context: window.TransitionContext) => void) {
     if (!windowClass) {
       console.error('LOCAL-TEST windowClass is undefined');
       return false;
@@ -178,7 +196,7 @@ export class AnimationConfig {
     return true;
   }
 
-  HideWindowWithCustomAnimation(windowClass: window.Window, callback) {
+  HideWindowWithCustomAnimation(windowClass: window.Window, callback: (context: window.TransitionContext) => void) {
     if (!windowClass) {
       console.error('LOCAL-TEST window is undefined');
       return false;
@@ -261,7 +279,7 @@ struct transferCtrlSubWindow {
       Button() {
         Text("close")
           .fontSize(24)
-          .fontSize(FontWeight.Normal)
+          .fontWeight(FontWeight.Normal)
       }.width(220).height(68)
       .margin({ left: 10, top: 10 })
       .onClick(() => {
@@ -296,12 +314,6 @@ struct Index {
   }
 
   private CreateTransferSubWindow(){
-    if(this.subWindow_){
-      this.subWindow_ = AppStorage.get<window.Window>("TransferSubWindow");
-      if(!this.subWindow_){
-        this.subWindow_ = undefined;
-      }
-    }
     let context = AppStorage.get<common.UIAbilityContext>("currentContext");
     console.log('LOCAL-TEST try to CreateTransferSubWindow');
     let windowConfig:window.Configuration = {
@@ -309,8 +321,8 @@ struct Index {
       windowType : window.WindowType.TYPE_FLOAT,
       ctx : context,
     };
-    let promise = window?.createWindow(windowConfig);
-    promise?.then(async(subWin) => {
+    let promise = window.createWindow(windowConfig);
+    promise.then(async(subWin: window.Window) => {
       this.subWindow_ = subWin;
       AppStorage.setOrCreate<window.Window>("systemTypeWindow", subWin);
       await subWin.setUIContent("pages/transferCtrlSubWindow",()=>{});
@@ -328,10 +340,10 @@ struct Index {
     let animationConfig = new AnimationConfig();
     let systemTypeWindow = window.findWindow("systemTypeWindow");
     console.log("LOCAL-TEST try to ShowWindowWithCustomAnimation");
-    animationConfig.ShowWindowWithCustomAnimation(systemTypeWindow,(context:window.TransitionContext)=>{
+    animationConfig.ShowWindowWithCustomAnimation(systemTypeWindow, (context:window.TransitionContext) => {
       console.info('LOCAL-TEST start show window animation');
       let toWindow = context.toWindow;
-      animateTo({
+      this.getUIContext()?.animateTo({
         duration: 200, // Animation duration
         tempo: 0.5, // Playback speed.
         curve: Curve.EaseInOut, // Animation curve.
@@ -349,7 +361,7 @@ struct Index {
           z: 0.0
         };
         try {
-          toWindow.translate(obj); // Set the transition animation.
+          toWindow?.translate(obj); // Set the transition animation.
         }catch(exception){
           console.error('Failed to translate. Cause: ' + JSON.stringify(exception));
         }
@@ -366,10 +378,10 @@ struct Index {
     let animationConfig = new AnimationConfig();
     let systemTypeWindow = window.findWindow("systemTypeWindow");
     console.log("LOCAL-TEST try to HideWindowWithCustomAnimation");
-    animationConfig.HideWindowWithCustomAnimation(systemTypeWindow,(context:window.TransitionContext)=>{
+    animationConfig.HideWindowWithCustomAnimation(systemTypeWindow, (context:window.TransitionContext) => {
       console.info('LOCAL-TEST start hide window animation');
       let toWindow = context.toWindow;
-      animateTo({
+      this.getUIContext()?.animateTo({
         duration: 200, // Animation duration
         tempo: 0.5, // Playback speed.
         curve: Curve.EaseInOut, // Animation curve.
@@ -387,7 +399,7 @@ struct Index {
           z: 0.0
         };
         try {
-          toWindow.translate(obj); // Set the transition animation.
+          toWindow?.translate(obj); // Set the transition animation.
         }catch(exception){
           console.error('Failed to translate. Cause: ' + JSON.stringify(exception));
         }

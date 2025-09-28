@@ -1,4 +1,10 @@
 # ArkGuard字节码混淆原理及功能
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @oatuwwutao; @u012789010-->
+<!--Designer: @hufeng20-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @foryourself-->
 
 ## 术语清单
 
@@ -39,16 +45,20 @@ ArkGuard支持基础的名称混淆功能，不支持控制混淆、数据混淆
 假设ArkGuard支持配置指定类型的白名单，配置类A1作为白名单，类A1的属性prop1在白名单中，而A2中的prop1属性不在白名单中。此时，a2作为参数被传入test函数中，调用prop1属性时会导致功能异常。
 
 ```typescript
+// example.ts
 // 混淆前
 class A1 {
-  prop1: string = '';
+	prop1: string = '';
 }
+
 class A2 {
-  prop1: string = '';
+	prop1: string = '';
 }
+
 function test(input: A1) {
-  console.info(input.prop1);
+	console.info(input.prop1);
 }
+
 let a2 = new A2();
 a2.prop1 = 'prop a2';
 test(a2);
@@ -57,14 +67,17 @@ test(a2);
 ```typescript
 // 混淆后
 class A1 {
-  prop1: string = '';
+	prop1: string = '';
 }
+
 class A2 {
-  a: string = '';
+	a: string = '';
 }
+
 function test(input: A1) {
-  console.info(input.prop1);
+	console.info(input.prop1);
 }
+
 let a2 = new A2();
 a2.a = 'prop a2';
 test(a2);
@@ -74,7 +87,7 @@ test(a2);
 
 **2.安全保证的有限性**
 
-与其他代码混淆工具一样，混淆只能在一定程度上增加逆向过程的难度，并不能真正阻止逆向工程。
+与其他代码混淆工具一样，混淆只能在一定程度上增加逆向工程的难度，并不能真正阻止逆向工程。
 
 并且，由于ArkGuard混淆工具仅支持基础混淆能力，开发者不应只依赖ArkGuard来保证应用的安全性，对于源码安全有高要求的开发者，应考虑使用[应用加密](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/code-protect)、第三方安全加固等安全措施来保护代码。
 
@@ -120,21 +133,22 @@ test(a2);
 
 开启属性名称混淆，效果如下：
 
- ```ts
+```ts
+// test.ts
 // 混淆前：
 class TestA {
-  static prop1: number = 0;
+	static prop1: number = 0;
 }
 TestA.prop1;
- ```
+```
 
- ```ts
+```ts
 // 混淆后：
 class TestA {
-  static i: number = 0;
+	static i: number = 0;
 }
 TestA.i;
- ```
+```
 
 若配置该选项，那么所有的属性名都会被混淆，除了下面场景：
 
@@ -142,17 +156,20 @@ TestA.i;
 
     ```ts
     export class MyClass {
-       data: string;
+        data: string;
     }
     ```
 
 * ArkUI组件中的属性名不会被混淆。例如下面例子中的`message`和`data`不会被混淆。
 
     ```ts
+    // example.ets
     @Component struct MyExample {
-     @State message: string = "hello";
+        @State message: string = "hello";
         data: number[] = [];
-        // ...
+
+        build() {
+        }
     }
     ```
 
@@ -168,9 +185,10 @@ TestA.i;
 * 注解成员名不会被混淆。例如下面例子中的`authorName`和`revision`不会被混淆。
 
     ```ts
+    // example.ets
     @interface MyAnnotation {
-    authorName: string;
-    revision: number = 1;
+        authorName: string;
+        revision: number;
     }
     ```
 
@@ -180,24 +198,24 @@ TestA.i;
 
 若想混淆字符串字面量属性名，需要在已配置-enable-property-obfuscation的基础上使用。例如：
 
-  ```txt
-  -enable-property-obfuscation
-  -enable-string-property-obfuscation
-  ```
+```txt
+-enable-property-obfuscation
+-enable-string-property-obfuscation
+```
 
-根据上述配置，下面例子中的"fritstName"和"personAge"混淆效果如下：
+根据上述配置，下面例子中的"firstName"和"personAge"混淆效果如下：
 
-  ```ts
-  // 混淆前：
-  let person = {"fritstName": "abc"};
-  person["personAge"] = 22;
-  ```
+```ts
+// 混淆前：
+let person = {"firstName": "abc"};
+person["personAge"] = 22;
+```
 
-  ```ts
-  // 混淆后：
-  let person = {"a": "abc"};
-  person["b"] = 22;
-  ```
+```ts
+// 混淆后：
+let person = {"a": "abc"};
+person["b"] = 22;
+```
 
 **使用该选项时，需要注意以下事项：**
 **1.** 如果字符串属性名包含特殊字符（除了`a-z、A-Z、0-9、_`之外的字符），例如`let obj = {"\n": 123, "": 4, " ": 5}`，建议不要开启`-enable-string-property-obfuscation`选项，因为可能无法通过[保留选项](#-keep-property-name)来指定保留这些名字。
@@ -207,7 +225,7 @@ TestA.i;
 ```ts
 // SDK API文件@ohos.app.ability.wantConstant片段：
 export enum Params {
-  ACTION_HOME = 'ohos.want.action.home'
+    ACTION_HOME = 'ohos.want.action.home'
 }
 // 开发者源码示例：
 let params = obj['ohos.want.action.home'];
@@ -243,14 +261,14 @@ let s = 0;
 ```ts
 // 混淆前：
 namespace ns {
-  export type customT = string;
+	export type customT = string;
 }
 ```
 
 ```ts
 // 混淆后：
 namespace ns {
-  export type h = string;
+    export type h = string;
 }
 ```
 
@@ -303,7 +321,7 @@ const module = import('../a/b');
 ```ts
 // 混淆前：
 class TestA {
-  static prop1: number = 0;
+	static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -324,7 +342,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 ```ts
 // 混淆前：
 if (flag) {
-  console.info("hello");
+	console.info("hello");
 }
 ```
 
@@ -348,7 +366,7 @@ if (flag) {
 
     ```ts
     function foo() {
-    console.info('in block');
+        console.info('in block');
     }
     ```
   
@@ -357,7 +375,7 @@ if (flag) {
   
     ```ts
     namespace ns {
-    console.info('in ns');
+        console.info('in ns');
     }
     ```
   
@@ -366,11 +384,11 @@ if (flag) {
   
     ```js
     switch (value) {
-    case 1:
-        console.info("in switch case");
-        break;
-    default:
-        console.info("default");
+        case 1:
+            console.info("in switch case");
+            break;
+        default:
+            console.info("default");
     }
     ```
 
@@ -454,6 +472,7 @@ lastName
 1.如果代码中通过字符串拼接、变量访问或使用`defineProperty`方法来定义对象属性，则这些属性名应被保留。例如：
 
 ```js
+// example.js
 var obj = {x0: 0, x1: 0, x2: 0};
 for (var i = 0; i <= 2; i++) {
     console.info(obj['x' + i]);  // x0, x1, x2应该被保留
@@ -463,11 +482,11 @@ Object.defineProperty(obj, 'y', {});  // y应该被保留
 Object.getOwnPropertyDescriptor(obj, 'y');  // y应该被保留
 console.info(obj.y);
 
-obj.s = 0;
-let key = 's';
+obj.s1 = 'a';
+let key = 's1';
 console.info(obj[key]);        // key对应的变量值s应该被保留
 
-obj.t1 = 0;
+obj.t1 = 'b';
 console.info(obj['t' + '1']);        // t1应该被保留
 ```
 
@@ -480,13 +499,14 @@ console.info(obj['t' + '1']);        // t1应该被保留
 obj.t = 0;
 console.info(obj['t']); // 此时，'t'会被正确混淆，t可以选择性保留
 
-obj.['v'] = 0;
+obj['v'] = 0;
 console.info(obj['v']); // 此时，'v'会被正确混淆，v可以选择性保留
 ```
 
 2.对于间接导出的场景，例如`export MyClass`和`let a = MyClass; export {a};`，如果不想混淆它们的属性名，那么需要使用[保留选项](#保留选项)来保留这些属性名。另外，对于直接导出的类或对象的属性的属性名，例如下面例子中的`firstName`和`personAge`，如果不想混淆它们，那么也需要使用[保留选项](#保留选项)来保留这些属性名。
 
 ```ts
+// myclass.ts
 export class MyClass {
     person = {firstName: "123", personAge: 100};
 }
@@ -495,8 +515,13 @@ export class MyClass {
 3.在ArkTS/TS/JS文件中使用so库的API（例如示例中的foo）时，需手动保留API名称。
 
 ```ts
+// src/main/cpp/types/libentry/Index.d.ts
+export const add: (a: number, b: number) => number;
+
+// test.ets
 import testNapi from 'library.so'
-testNapi.foo() // foo需要保留，示例如：-keep-property-name foo
+
+testNapi.add() // add需要保留，示例如：-keep-property-name foo
 ```
 
 4.JSON数据解析及对象序列化时，需要保留使用到的字段，例如：
@@ -509,25 +534,27 @@ testNapi.foo() // foo需要保留，示例如：-keep-property-name foo
   "otherProperty": "value2"
 }
 */
-const jsonData = fs.readFileSync('./test.json', 'utf8');
-let jsonObj = JSON.parse(jsonData);
-let jsonProp = jsonObj.jsonProperty; // jsonProperty应该被保留
+
+import jsonData from './test.json';
+
+let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留
+
 class jsonTest {
-  prop1: string = '';
-  prop2: number = 0
+    prop1: string = '';
+    prop2: number = 0;
 }
 let obj = new jsonTest();
-const jsonStr = JSON.stringify(obj); // prop1、prop2会被混淆，应该被保留
+const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留
 ```
 
 5.使用到的数据库相关的字段，需要手动保留。例如，数据库键值对类型（ValuesBucket）中的属性：
 
 ```ts
 const valueBucket: ValuesBucket = {
-  'ID1': ID1, // ID1应该被保留
-  'NAME1': name, // NAME1应该被保留
-  'AGE1': age, // AGE1应该被保留
-  'SALARY1': salary // SALARY1应该被保留
+    'ID1': ID1, // ID1应该被保留
+    'NAME1': name, // NAME1应该被保留
+    'AGE1': age, // AGE1应该被保留
+    'SALARY1': salary // SALARY1应该被保留
 }
 ```
 
@@ -535,22 +562,26 @@ const valueBucket: ValuesBucket = {
 示例：
 
 ```ts
+function CustomDecorator(target: Object, propertyKey: string) {}
+function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
+function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
+
 class A {
-  // 1.成员变量装饰器
-  @CustomDecoarter
-  propertyName: string = ""   // propertyName 需要被保留
-  // 2.成员方法装饰器
-  @MethodDecoarter
-  methodName1(){} // methodName1 需要被保留
-  // 3.方法参数装饰器
-  methodName2(@ParamDecorator param: string): void { // methodName2 需要被保留
-  }
+    // 1.成员变量装饰器
+    @CustomDecorator
+    propertyName: string = ""   // propertyName 需要被保留
+    // 2.成员方法装饰器
+    @MethodDecorator
+    methodName1(){} // methodName1 需要被保留
+    // 3.方法参数装饰器
+    methodName2(@ParamDecorator param: string): void { // methodName2 需要被保留
+    }
 }
 ```
 
 ### -keep-global-name
 
-指定要保留的顶层作用域或导入和导出元素的名称，支持使用[名称类通配符](#名称类通配符)。可按如下方式进行配置：
+指定要保留的顶层作用域及导入和导出元素的名称，支持使用[名称类通配符](#名称类通配符)。可按如下方式进行配置：
 
 ```txt
 -keep-global-name
@@ -562,8 +593,8 @@ printPersonName
 
 ```ts
 export namespace Ns {
-  export const age = 18; // -keep-global-name age 保留变量age
-  export function myFunc () {}; // -keep-global-name myFunc 保留函数myFunc
+    export const myAge = 18; // -keep-global-name myAge 保留变量myAge
+    export function myFunc () {}; // -keep-global-name myFunc 保留函数myFunc
 }
 ```
 
@@ -593,7 +624,15 @@ let d = new MyClass();      // MyClass 可以被正确地混淆
 2.当以命名导入的方式导入 so 库的 API时，若同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
 
 ```ts
+// src/main/cpp/types/libentry/Index.d.ts
+declare function testNapi(): void;
+declare function testNapi1(): void;
+
+// example.ets
 import { testNapi, testNapi1 as myNapi } from 'library.so' // testNapi 和 testNapi1 应该被保留
+
+testNapi();
+myNapi();
 ```
 
 ### -keep-file-name
@@ -610,31 +649,37 @@ entry
 1.在使用`require`引入文件路径时，由于`ArkTS`不支持[CommonJS](../arkts-utils/module-principle.md#commonjs模块)语法，因此这种情况下路径应该被保留。
 
 ```ts
+// example.js
 const module1 = require('./file1')   // file1 应该被保留
 ```
 
 2.对于动态导入的路径名，由于无法识别`import`函数中的参数是否为路径，因此这种情况下路径应该被保留。
 
 ```ts
+// file2.ts
+export function foo () {}
+```
+```ts
+// main.ts
 const moduleName = './file2'         // moduleName对应的路径名file2应该被保留
 const module2 = import(moduleName)
 ```
 
-3.在使用[动态路由](../ui/arkts-navigation-navigation.md#跨包动态路由)进行路由跳转时，传递给动态路由的路径应该被保留。动态路由提供系统路由表和自定义路由表两种方式。若采用自定义路由表进行跳转，配置白名单的方式与上述第二种动态引用场景一致。而若采用系统路由表进行跳转，则需要将模块下`resources/base/profile/route_map.json`文件中`pageSourceFile`字段对应的路径添加到白名单中。
+3.在使用[跨包路由](../ui/arkts-navigation-navigation.md#跨包路由)进行路由跳转时，传递给动态路由的路径应该被保留。动态路由提供系统路由表和自定义路由表两种方式。若采用自定义路由表进行跳转，配置白名单的方式与上述第二种动态引用场景一致。而若采用系统路由表进行跳转，则需要将模块下`resources/base/profile/route_map.json`文件中`pageSourceFile`字段对应的路径添加到白名单中。
 
 ```json
 {
-    "routerMap": [
-      {
-        "name": "PageOne",
-        "pageSourceFile": "src/main/ets/pages/directory/PageOne.ets",  // 路径都应该被保留
-        "buildFunction": "PageOneBuilder",
-        "data": {
-          "description" : "this is PageOne"
-        }
+  "routerMap": [
+    {
+      "name": "PageOne",
+      "pageSourceFile": "src/main/ets/pages/directory/PageOne.ets",  // 路径都应该被保留
+      "buildFunction": "PageOneBuilder",
+      "data": {
+        "description" : "this is PageOne"
       }
-    ]
-  }
+    }
+  ]
+}
 ```
 
 ### -keep-dts
@@ -666,7 +711,7 @@ const module2 = import(moduleName)
 | 通配符 | 含义                   | 示例                                       |
 | ------ | ---------------------- | ------------------------------------------ |
 |?|匹配任意单个字符|"AB?"能匹配"ABC"等，但不能匹配"AB"|
-|*|匹配任意数量的任意字符|"*AB*"能匹配"AB"、"aABb"、"cAB"、"ABc"等|
+|*|匹配任意数量的任意字符|"\*AB\*"能匹配"AB"、"aABb"、"cAB"、"ABc"等|
 
 **使用示例：**
 保留所有以a开头的属性名称：
@@ -750,7 +795,7 @@ a*
 
 ```txt
 class A {
-  '*'= 1
+	'*'= 1
 }
 -keep-property-name
 *
@@ -771,7 +816,7 @@ class A {
 根据依赖模块的类型，混淆规则分为以下两个来源：
 
 - **本地HAR/HSP模块**
-  指该模块配置文件·build-profile.json5`中`arkOptions.obfuscation.consumerFiles`字段指定的混淆配置文件内容。
+  指该模块配置文件`build-profile.json5`中`arkOptions.obfuscation.consumerFiles`字段指定的混淆配置文件内容。
 
 - **远程HAR/HSP包**
   指该远程HAR/HSP包中obfuscation.txt文件内容。

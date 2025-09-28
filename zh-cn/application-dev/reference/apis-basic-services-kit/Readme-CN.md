@@ -1,4 +1,10 @@
 # Basic Services Kit（基础服务）
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 - ArkTS API<!--basic-services-arkts-->
   - 账号管理<!--account-management-arkts-->
@@ -35,12 +41,14 @@
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)](js-apis-app-ability-PrintExtensionAbility.md)
     - [@ohos.pasteboard (剪贴板)](js-apis-pasteboard.md)
     - [@ohos.print (打印)](js-apis-print.md)
+    - [@ohos.scan (扫描)](js-apis-scan.md)
     - [@ohos.request (上传下载)](js-apis-request.md)
     - [@ohos.request.cacheDownload (缓存下载)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip模块)](js-apis-zlib.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)(系统接口)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (打印)(系统接口)](js-apis-print-sys.md)
+    - [@ohos.scan (扫描)(系统接口)](js-apis-scan-sys.md)
     - [@ohos.request (上传下载)(系统接口)](js-apis-request-sys.md)
     - [@ohos.selectionInput.SelectionExtensionAbility (划词扩展能力)(系统接口)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
     - [@ohos.selectionInput.SelectionExtensionContext (划词扩展上下文)(系统接口)](js-apis-selectionInput-selectionExtensionContext-sys.md)
@@ -99,7 +107,7 @@
     - [@ohos.systemTime(系统时间、时区)](js-apis-system-time.md)
 - C API<!--basic-services-c-->
   - 模块<!--basic-services-module-->
-    - [CommonEvent](capi-common-event.md)
+    - [OH_CommonEvent](capi-oh-commonevent.md)
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
@@ -110,8 +118,8 @@
   - 头文件<!--basic-services-headerfile-->
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [ohbattery_info.h](capi-ohbattery-info-h.md)
-    - [oh_commonevent.h](oh_commonevent_8h.md)
-    - [oh_commonevnt_support.h](oh_commonevent_support_8h.md)
+    - [oh_commonevent.h](capi-oh-commonevent-h.md)
+    - [oh_commonevent_support.h](capi-oh-commonevent-support-h.md)
     - [oh_pasteboard.h](capi-oh-pasteboard-h.md)
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [os_account.h](capi-os-account-h.md)
@@ -125,6 +133,9 @@
     - [Print_PrintAttributes](_print___print_attributes.md)
     - [Print_PrintDocCallback](_print___print_doc_callback.md)
     - [Print_Range](_print___range.md)
+    - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
+    - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
+    - [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)
     - [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)
     - [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)
     - [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)
@@ -149,6 +160,7 @@
   - [系统电源管理错误码](errorcode-power.md)
   - [账号管理错误码](errorcode-account.md)
   - [升级错误码](errorcode-update.md)
+  - [打印服务错误码](errorcode-print.md)
   <!--Del-->
   - [锁屏服务错误码](errorcode-screenlock.md)
   - [设备证明错误码](errorcode-deviceAttest.md)

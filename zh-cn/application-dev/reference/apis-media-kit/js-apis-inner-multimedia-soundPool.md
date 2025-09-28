@@ -1,4 +1,10 @@
 # SoundPool (音频池)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 音频池提供了短音频的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。
 
@@ -23,13 +29,13 @@ import { audio } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
-| 名称            | 类型                                     | 必填 | 说明                                                         |
-| --------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| loop | number   | 否  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。                   |
-| rate | number    | 否  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：0。 |
-| leftVolume  | number | 否  | 设置左声道音量，设置范围（0.0~1.0）。默认值：1.0。                                    |
-| rightVolume | number  | 否  | 设置右声道音量，设置范围（0.0~1.0）。（当前不支持左右分别设置，将以左声道音量为准）。默认值：1.0。 |
-| priority  | number  | 否  | 音频流播放的优先级，0为最低优先级，数值越大优先级越高，通过相互比较大小确定播放优先级，设置范围为大于等于0的整数。默认值：0。      |
+| 名称            | 类型                                     | 只读 | 可选 | 说明                                                         |
+| --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
+| loop | number   | 否 | 是  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。                   |
+| rate | number    | 否 | 是  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：0。 |
+| leftVolume  | number | 否 | 是  | 设置左声道音量，设置范围（0.0, 1.0）。默认值：1.0。                                    |
+| rightVolume | number  | 否 | 是  | 设置右声道音量，设置范围（0.0, 1.0）。（当前不支持左右分别设置，将以左声道音量为准）。默认值：1.0。 |
+| priority  | number  | 否 | 是  | 音频流播放的优先级，0为最低优先级，数值越大优先级越高，通过相互比较大小确定播放优先级，设置范围为大于等于0的整数。默认值：0。      |
 
 ## ErrorType<sup>20+</sup>
 
@@ -104,8 +110,10 @@ load(uri: string, callback: AsyncCallback\<number>): void
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -120,7 +128,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     console.info(`Succeeded in createSoundPool`);
     let uri:string = "";
     let file: fileIo.File;
-    //获取fd的uri路径。
+    // 获取fd的uri路径。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
@@ -161,7 +169,7 @@ load(uri: string): Promise\<number>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<number> | 以Promise方式异步加载音频池资源，返回资源的id，有效值大于0。 |
+| Promise\<number> | Promise对象，返回资源的id，有效值大于0。 |
 
 **错误码：**
 
@@ -178,8 +186,10 @@ load(uri: string): Promise\<number>
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -195,7 +205,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let uri:string = "";
     let soundID: number = 0;
     let file: fileIo.File;
-    //获取fd的uri路径。
+    // 获取fd的uri路径。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
@@ -209,7 +219,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     }); // '/test_01.mp3' 作为样例，使用时需要传入文件对应路径。
   }
 });
-
 ```
 
 ### load
@@ -249,8 +258,10 @@ load(fd: number, offset: number, length: number, callback: AsyncCallback\<number
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -265,9 +276,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     console.info(`Succeeded in createSoundPool`);
     let file: fileIo.File;
     let soundID: number = 0;
-    let fileSize: number = 1; //通过fileIo.stat()获取size值。
+    let fileSize: number = 1; // 通过fileIo.stat()获取size值。
     let uri: string = "";
-    //获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
+    // 获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
@@ -283,7 +294,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     }); // '/test_01.mp3' 作为样例，使用时需要传入文件对应路径。
   }
 });
-
 ```
 
 **示例2：**
@@ -294,7 +304,7 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function create(context: Context) {
-  //创建soundPool实例。
+  // 创建soundPool实例。
   let soundPool: media.SoundPool;
   let audioRendererInfo: audio.AudioRendererInfo = {
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -308,7 +318,7 @@ function create(context: Context) {
     } else {
       soundPool = soundPool_;
       console.info(`Succeeded in createSoundPool`);
-      //test_01.mp3为rawfile目录资源下面的音频。
+      // test_01.mp3为rawfile目录资源下面的音频。
       let fileDescriptor = await context.resourceManager.getRawFd('test_01.mp3');
       soundPool.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length, (error: BusinessError, soundId_: number) => {
         if (error) {
@@ -321,7 +331,6 @@ function create(context: Context) {
     }
   });
 }
-
 ```
 
 ### load
@@ -349,7 +358,7 @@ load(fd: number, offset: number, length: number): Promise\<number>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<number> | 以Promise方式获取返回的soundID，有效值大于0。 |
+| Promise\<number> | Promise对象，返回soundID，有效值大于0。 |
 
 **错误码：**
 
@@ -366,8 +375,10 @@ load(fd: number, offset: number, length: number): Promise\<number>
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -382,9 +393,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     console.info(`Succeeded in createSoundPool`);
     let file: fileIo.File;
     let soundID: number = 0;
-    let fileSize: number = 1; //通过fileIo.stat()获取size值。
+    let fileSize: number = 1; // 通过fileIo.stat()获取size值。
     let uri: string = "";
-    //获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
+    // 获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
@@ -409,7 +420,7 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function create(context: Context) {
-  //创建soundPool实例。
+  // 创建soundPool实例。
   let soundPool: media.SoundPool;
   let audioRendererInfo: audio.AudioRendererInfo = {
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -423,7 +434,7 @@ function create(context: Context) {
     } else {
       soundPool = soundPool_;
       console.info(`Succeeded in createSoundPool`);
-      //test_01.mp3为rawfile目录资源下面的音频。
+      // test_01.mp3为rawfile目录资源下面的音频。
       let fileDescriptor = await context.resourceManager.getRawFd('test_01.mp3');
       soundPool.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length).then((soundId: number) => {
         console.info('Succeeded in loading soundpool');
@@ -434,14 +445,13 @@ function create(context: Context) {
     }
   });
 }
-
 ```
 
 ### play
 
 play(soundID: number, params: PlayParameters, callback: AsyncCallback\<number>): void
 
-播放音频资源。使用callback方式异步获取音频流streamID。
+播放音频资源，获取音频流streamID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -467,8 +477,10 @@ play(soundID: number, params: PlayParameters, callback: AsyncCallback\<number>):
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -500,14 +512,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### play
 
 play(soundID: number, callback: AsyncCallback\<number>): void
 
-播放音频资源。使用callback方式异步获取音频流streamID。
+使用默认参数播放音频资源，获取音频流streamID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -532,8 +543,10 @@ play(soundID: number, callback: AsyncCallback\<number>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -558,14 +571,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### play
 
 play(soundID: number, params?: PlayParameters): Promise\<number>
 
-播放音频资源。使用Promise方式异步获取音频流streamID。
+播放音频资源，获取音频流streamID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -580,7 +592,7 @@ play(soundID: number, params?: PlayParameters): Promise\<number>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<number> | 以Promise方式获取返回的音频流ID，有效值大于0。 |
+| Promise\<number> | Promise对象，返回音频流ID，有效值大于0。 |
 
 **错误码：**
 
@@ -596,8 +608,10 @@ play(soundID: number, params?: PlayParameters): Promise\<number>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -628,14 +642,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### stop
 
 stop(streamID: number, callback: AsyncCallback\<void>): void
 
-停止播放音频资源。使用callback方式异步获取返回值。
+停止播放音频资源。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -660,8 +673,10 @@ stop(streamID: number, callback: AsyncCallback\<void>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -675,7 +690,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     let streamID: number = 0;
-    //先调用play方法给拿到对应的streamID。
+    // 先调用play方法给拿到对应的streamID。
     soundPool.stop(streamID, (error: BusinessError) => {
       if (error) {
         console.error(`Failed to stop soundpool: errCode is ${error.code}, errMessage is ${error.message}`);
@@ -692,7 +707,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 stop(streamID: number): Promise\<void>
 
-停止streamID对应的音频播放。使用Promise方式异步获取返回值。
+停止streamID对应的音频播放。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -706,7 +721,7 @@ stop(streamID: number): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | 以Promise方式返回，无返回值。 |
+| Promise\<void> | Promise方式返回，无返回结果。 |
 
 **错误码：**
 
@@ -722,8 +737,10 @@ stop(streamID: number): Promise\<void>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -737,7 +754,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     let streamID: number = 0;
-    //先调用play方法给拿到对应的streamID。
+    // 先调用play方法给拿到对应的streamID。
     soundPool.stop(streamID).then(() => {
       console.info('Succeeded in stopping soundpool');
     }, (err: BusinessError) => {
@@ -751,7 +768,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
 
-设置循环模式。使用callback方式异步获取返回值。
+设置循环模式。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -777,8 +794,10 @@ setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -792,8 +811,8 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     let streamID: number = 0;
-    //先通过调用play方法获取到对应的streamID。
-    //设置循环2次。
+    // 先通过调用play方法获取到对应的streamID。
+    // 设置循环2次。
     soundPool.setLoop(streamID, 2, (error: BusinessError) => {
       if (error) {
         console.error(`Failed to setLoop soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
@@ -810,7 +829,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setLoop(streamID: number, loop: number): Promise\<void>
 
-设置循环模式。使用Promise方式异步获取返回值。
+设置循环模式。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -825,7 +844,7 @@ setLoop(streamID: number, loop: number): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | 异步音频池setLoop方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -841,8 +860,10 @@ setLoop(streamID: number, loop: number): Promise\<void>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -856,8 +877,8 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     let streamID: number = 0;
-    //先通过调用play方法获取到对应的streamID。
-    //设置循环1次。
+    // 先通过调用play方法获取到对应的streamID。
+    // 设置循环1次。
     soundPool.setLoop(streamID, 1).then(() => {
       console.info('Succeeded in setLoopping soundpool, streamID:' + streamID);
     }).catch((err: BusinessError) => {
@@ -865,14 +886,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### setPriority
 
 setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>): void
 
-设置音频流播放的优先级。使用callback方式异步获取返回值。
+设置音频流播放的优先级。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -898,8 +918,10 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>):
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -924,14 +946,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### setPriority
 
 setPriority(streamID: number, priority: number): Promise\<void>
 
-设置音频流优先级。使用Promise方式异步获取返回值。
+设置音频流优先级。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -946,7 +967,7 @@ setPriority(streamID: number, priority: number): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | 异步音频池setPriority的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -962,8 +983,10 @@ setPriority(streamID: number, priority: number): Promise\<void>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -987,14 +1010,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### setRate
 
 setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback\<void>): void
 
-设置音频流播放速率。使用callback方式异步获取返回值。
+设置音频流播放速率。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1020,8 +1042,10 @@ setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1046,14 +1070,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### setRate
 
 setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 
-设置音频流的播放速率。使用Promise方式异步获取返回值。
+设置音频流的播放速率。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1068,7 +1091,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | 异步音频池setRate方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1084,8 +1107,10 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1115,7 +1140,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: AsyncCallback\<void>): void
 
-设置音频流播放音量。使用callback方式异步获取返回值。
+设置音频流播放音量。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1142,8 +1167,10 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: A
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1158,7 +1185,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     console.info(`Succeeded in createSoundPool`);
     let streamID: number = 0;
     // 先调用play方法获取到对应资源的streamID。
-    //设置音量为0.5。
+    // 设置音量为0.5。
     soundPool.setVolume(streamID, 0.5, 0.5, (error: BusinessError) => {
       if (error) {
         console.error(`Failed to setVolume soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
@@ -1168,14 +1195,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### setVolume
 
 setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<void>
 
-设置音频流的播放音量。使用Promise方式异步获取返回值。
+设置音频流的播放音量。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1191,7 +1217,7 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | 异步音频池setVolume方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1207,8 +1233,10 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1231,14 +1259,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### unload
 
 unload(soundID: number, callback: AsyncCallback\<void>): void
 
-卸载音频资源。使用callback方式异步获取返回值。
+卸载音频资源。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1263,8 +1290,10 @@ unload(soundID: number, callback: AsyncCallback\<void>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1288,14 +1317,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### unload
 
 unload(soundID: number): Promise\<void>
 
-卸载音频资源。使用Promise方式异步获取返回值。
+卸载音频资源。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1309,7 +1337,7 @@ unload(soundID: number): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | 异步音频池unload方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1325,8 +1353,10 @@ unload(soundID: number): Promise\<void>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1349,14 +1379,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### release
 
 release(callback: AsyncCallback\<void>): void
 
-释放音频池实例。使用callback方式异步获取返回值。
+释放音频池实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1378,8 +1407,10 @@ release(callback: AsyncCallback\<void>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1401,15 +1432,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
-
 ```
 
 ### release
 
 release(): Promise\<void>
 
-释放音频池实例。使用Promise方式异步获取返回值。
+释放音频池实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1417,7 +1446,7 @@ release(): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | 异步音频池release方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1431,8 +1460,10 @@ release(): Promise\<void>
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1474,8 +1505,10 @@ on(type: 'loadComplete', callback: Callback\<number>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1514,8 +1547,10 @@ off(type: 'loadComplete'): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1557,8 +1592,10 @@ on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool_: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1596,8 +1633,10 @@ off(type: 'playFinishedWithStreamId'): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool_: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1634,8 +1673,10 @@ on(type: 'playFinished', callback: Callback\<void>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1674,8 +1715,10 @@ off(type: 'playFinished'): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1713,8 +1756,10 @@ on(type: 'error', callback: ErrorCallback): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1733,7 +1778,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### off('error')
@@ -1754,8 +1798,10 @@ off(type: 'error'): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1792,6 +1838,8 @@ on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
 // 创建soundPool实例。
 let soundPool: media.SoundPool;
@@ -1815,7 +1863,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### off('errorOccurred')<sup>20+</sup>
@@ -1837,6 +1884,8 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
 // 创建soundPool实例。
 let soundPool: media.SoundPool;

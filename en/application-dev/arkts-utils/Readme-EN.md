@@ -1,4 +1,10 @@
 # ArkTS
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @flyingwolf-->
+<!--Designer: @flyingwolf-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @foryourself-->
 
 - [Introduction to ArkTS](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->
@@ -22,9 +28,9 @@
         - [TaskPool](taskpool-introduction.md)
         - [Worker](worker-introduction.md)
         - [Comparison Between TaskPool and Worker](taskpool-vs-worker.md)
-    - Inter-Thread Communication<!--interthead-communication-->
+    - Inter-Thread Communication<!--interthread-communication-->
         - [Overview of ArkTS Inter-Thread Communication](interthread-communication-overview.md)
-        - Inter-Thread Communication Objects<!--interthead-communication-object-->
+        - Inter-Thread Communication Objects<!--interthread-communication-object-->
             - [Overview of Inter-Thread Communication Objects](serializable-overview.md)
             - [Regular Object](normal-object.md)
             - [ArrayBuffer Object](arraybuffer-object.md)
@@ -40,7 +46,7 @@
                 - [Shared Module](arkts-sendable-module.md)
                 - [Freezing Sendable Objects](sendable-freeze.md)
                 - [Use Scenarios of Sendable](sendable-guide.md)
-        - Communication Between Threads<!--interthead-communication-guide-->
+        - Communication Between Threads<!--interthread-communication-guide-->
             - [Using TaskPool for Independent Time-Consuming Tasks](independent-time-consuming-task.md)
             - [Using TaskPool for Multiple Time-Consuming Tasks](multi-time-consuming-tasks.md)
             - [Communication Between the TaskPool Task and Host Thread](taskpool-communicates-with-mainthread.md)
@@ -86,6 +92,7 @@
         - [Statically Loading Native Modules](arkts-import-native-module.md)
         - [Loading Modules Using Node-API](load-module-base-nodeapi.md)
         - [Side Effects and Optimization of Module Loading](arkts-module-side-effects.md)
+    - [ArkTS Runtime FAQs](arkts-runtime-faq.md)
 - ArkTS Compilation Toolchain<!--arkts-compilation-tool-chain-->
     - [Overview of the ArkTS Compilation Toolchain](compilation-tool-chain-overview.md)
     - Ark Bytecode<!--arkts-bytecode-->

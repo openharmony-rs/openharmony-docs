@@ -1,4 +1,10 @@
 # Graphics
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 自定义节点相关属性定义的详细信息。
 
@@ -22,8 +28,8 @@ import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4
 
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| width  | number | 是   | 是   | 组件大小的宽度。<br/>单位：vp<br/>取值范围：[0, +∞) |
-| height | number | 是   | 是   | 组件大小的高度。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| width  | number | 否   | 否   | 组件大小的宽度。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| height | number | 否   | 否   | 组件大小的高度。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ## Position
 
@@ -63,10 +69,10 @@ type PositionT\<T> = Vector2T\<T>
 
 | 名称   | 类型   | 只读 | 可选 | 说明                        |
 | ------ | ------ | ---- | ---- | --------------------------- |
-| x      | number | 是   | 是   | 水平方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| y      | number | 是   | 是   | 垂直方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| width  | number | 是   | 是   | 组件的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
-| height | number | 是   | 是   | 组件的高度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
+| x      | number | 否   | 否   | 水平方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
+| y      | number | 否   | 否   | 垂直方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
+| width  | number | 否   | 否   | 组件的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
+| height | number | 否   | 否   | 组件的高度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
 
 ## Pivot
 
@@ -206,12 +212,6 @@ const transform: Matrix4 = [
 
 图形绘制上下文，提供绘制所需的画布宽度和高度。
 
-| 名称 | 类型   | 只读 | 可选 | 说明              |
-| ---- | ------ | ---- | ---- | ----------------- |
-| size | [Size](#size) | 是  | 否  | 画布的宽度和高度。 |
-| sizeInPixel | [Size](#size) | 是  | 否  | 画布的宽度和高度，以px为单位。 |
-| canvas | [drawing.Canvas](../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)| 是  | 否  | 用于绘制的画布。 |
-
 ### size
 
 get size(): Size
@@ -317,10 +317,10 @@ struct Index {
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
-| left   | T    | 是   | 是   | 左侧边框的属性。 |
-| top    | T    | 是   | 是   | 顶部边框的属性。 |
-| right  | T    | 是   | 是   | 右侧边框的属性。 |
-| bottom | T    | 是   | 是   | 底部边框的属性。 |
+| left   | T    | 否   | 否   | 左侧边框的属性。 |
+| top    | T    | 否   | 否   | 顶部边框的属性。 |
+| right  | T    | 否   | 否   | 右侧边框的属性。 |
+| bottom | T    | 否   | 否   | 底部边框的属性。 |
 
 ## LengthUnit<sup>12+</sup>
 
@@ -348,8 +348,8 @@ struct Index {
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
-| width   | T    | 是   | 是   | 宽度的属性。 |
-| height    | T    | 是   | 是   | 高度的属性。 |
+| width   | T    | 否   | 否   | 宽度的属性。 |
+| height    | T    | 否   | 否   | 高度的属性。 |
 
 ## LengthMetricsUnit<sup>12+</sup>
 
@@ -376,8 +376,8 @@ struct Index {
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
-| value       | number | 是   | 是   | 长度属性的值。   |
-| unit | [LengthUnit](#lengthunit12)                                   | 是   | 是   | 长度属性的单位，默认为VP。|
+| value       | number | 否   | 否   | 长度属性的值。   |
+| unit | [LengthUnit](#lengthunit12)                                   | 否   | 否   | 长度属性的单位，默认为VP。|
 
 ### constructor<sup>12+</sup>
 
@@ -528,14 +528,52 @@ static resource(value: Resource): LengthMetrics
 | ------------- | ---------------- |
 | [LengthMetrics](#lengthmetrics12) | LengthMetrics 类的实例。 |
 
-**错误码：** 
+**示例：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[系统资源错误码](errorcode-system-resource.md)。
+使用LengthMetrics设置Row的padding和margin属性。
+```ts
+import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
 
-| 错误码ID | 错误信息                                   |
-| -------- | ------------------------------------------ |
-| 180001   | System resources does not exist.           |
-| 180002   | The type of system resources is incorrect. |
+@Entry
+@Component
+struct SizeExample {
+  build() {
+    Column({ space: 10 }) {
+      Text('margin and padding:')
+        .fontSize(12)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      Row() {
+        Row() {
+          Row()
+            .size({ width: '100%', height: '100%' })
+            .backgroundColor('#ffd5d5d5')
+        }
+        .width(80)
+        .height(80)
+        .padding({
+          top: new LengthMetrics(20, LengthUnit.VP),
+          bottom: LengthMetrics.px(15),
+          start: LengthMetrics.vp(10),
+          end: LengthMetrics.fp(20)
+        })
+        .margin({
+          top: LengthMetrics.percent(0.1),
+          bottom: LengthMetrics.lpx(20),
+          start: LengthMetrics.resource($r('app.float.row_margin_start')),
+          end: LengthMetrics.vp(10)
+        })
+        .backgroundColor(Color.White)
+      }
+      .backgroundColor("#ff2787d9")
+    }
+    .width('100%')
+    .margin({ top: 5 })
+  }
+}
+```
+![image](figures/lengthMetricsDemo.png)
+
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -582,7 +620,7 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 | red   | number | 是   | 颜色的R分量（红色），值是0~255的整数。 |
 | green | number | 是   | 颜色的G分量（绿色），值是0~255的整数。 |
 | blue  | number | 是   | 颜色的B分量（蓝色），值是0~255的整数。 |
-| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。|
+| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。<br/> **说明：** alpha小于0为全透明，大于1为不透明。|
 
 **返回值：**
 
@@ -651,7 +689,7 @@ static resourceColor(color: ResourceColor): ColorMetrics
 
 blendColor(overlayColor: ColorMetrics): ColorMetrics
 
-颜色混合。
+在当前颜色的上方叠加上一层指定的颜色（overlayColor），并返回混合后的新颜色。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -661,15 +699,21 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| overlayColor | [ColorMetrics](#colormetrics12) | 是 | 叠加颜色的 ColorMetrics 类的实例。 |
+| overlayColor | [ColorMetrics](#colormetrics12) | 是 | 要叠加在上方的颜色对象。alpha属性决定叠加强度。1.0表示完全覆盖，0.0表示完全透明，混合结果为原色。 |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | 混合后的ColorMetrics 类的实例。 |
+| [ColorMetrics](#colormetrics12) |  新的颜色对象，其red、green、blue和alpha通道均为当前颜色与叠加颜色混合后的结果值。 |
 
-**错误码**：
+**混合公式：**
+
+混合后透明度为完全不透明，rgb按照以下公式计算：
+
+result_rgb = overlay_rgb*(overlay_alpha) + (1 - overlay_alpha) * base_rgb
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -768,7 +812,9 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
   try {
     //在使用ColorMetrics的resourceColor和blendColor需要追加捕获异常处理
     //可能返回的arkui子系统错误码有401和180003
-    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#19000000"));
+    // 61 157 180
+    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
+    console.info('current color is '+sourceColor.color+ ' r:'+sourceColor.red +' g:'+sourceColor.green+' b:'+sourceColor.blue+ ' a :'+sourceColor.alpha );
   } catch (error) {
     console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
     (error as BusinessError).message);
@@ -782,17 +828,38 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
 struct ColorMetricsSample {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button("ColorMetrics")
+      Button("ColorMetrics blendColor")
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(getBlendColor(Color.Red).color)
+        .backgroundColor(getBlendColor("#ff3d9db4").color)
+        .margin(10)
+      Button("ColorMetrics numeric")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.numeric(0xff707070).color)
+        .margin(10)
+      Button("ColorMetrics rgba")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.rgba(0,74,175,255).color)
+        .margin(10)
+      Button("ColorMetrics colorWithSpace")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB,  0.4392, 0.4392, 0.4392).color)
+        .margin(10)
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+![image](figures/colorMetricsDemo.png)
+
 ## Corners\<T><sup>12+</sup>
 
 用于设置四个角的圆角度数。
@@ -803,10 +870,10 @@ struct ColorMetricsSample {
 
 | 名称        | 类型 | 只读 | 可选 | 说明                   |
 | ----------- | ---- | ---- | ---- | ---------------------- |
-| topLeft     | T    | 是   | 是   | 左上边框的圆角属性。   |
-| topRight    | T    | 是   | 是   | 右上边框的圆角属性。 |
-| bottomLeft  | T    | 是   | 是   | 左下边框的圆角属性。   |
-| bottomRight | T    | 是   | 是   | 右下边框的圆角属性。   |
+| topLeft     | T    | 否   | 否   | 左上边框的圆角属性。   |
+| topRight    | T    | 否   | 否   | 右上边框的圆角属性。 |
+| bottomLeft  | T    | 否   | 否   | 左下边框的圆角属性。   |
+| bottomRight | T    | 否   | 否   | 右下边框的圆角属性。   |
 
 ## CornerRadius<sup>12+</sup>
 
@@ -860,8 +927,8 @@ type Rect = common2D.Rect
 
 | 名称    | 类型                          | 只读 | 可选 | 说明             |
 | ------- | ----------------------------- | ---- | ---- | ---------------- |
-| rect    | [Rect](#rect12)                 | 是   | 是   | 设置矩形的属性。 |
-| corners | [CornerRadius](#cornerradius12) | 是   | 是   | 设置圆角的属性。 |
+| rect    | [Rect](#rect12)                 | 否   | 否   | 设置矩形的属性。 |
+| corners | [CornerRadius](#cornerradius12) | 否   | 否   | 设置圆角的属性。 |
 
 ## Circle<sup>12+</sup>
 
@@ -873,9 +940,9 @@ type Rect = common2D.Rect
 
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------- | ------ | ---- | ---- | ------------------------- |
-| centerX | number | 是   | 是   | 圆心x轴的位置，单位为px。 |
-| centerY | number | 是   | 是   | 圆心y轴的位置，单位为px。 |
-| radius  | number | 是   | 是   | 圆形的半径，单位为px。 <br/> 取值范围：[0, +∞)   |
+| centerX | number | 否   | 否   | 圆心x轴的位置，单位为px。 |
+| centerY | number | 否   | 否   | 圆心y轴的位置，单位为px。 |
+| radius  | number | 否   | 否   | 圆形的半径，单位为px。 <br/> 取值范围：[0, +∞)   |
 
 ## CommandPath<sup>12+</sup>
 
@@ -887,11 +954,23 @@ type Rect = common2D.Rect
 
 | 名称                                                         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 是   | 是   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位转换](./arkui-ts/ts-pixel-units.md#像素单位转换)。<br/>单位：px |
+| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 否   | 否   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位转换](./arkui-ts/ts-pixel-units.md#像素单位转换)。<br/>单位：px |
 
 ## ShapeMask<sup>12+</sup>
 
 用于设置图形遮罩。
+
+### 属性
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称            | 类型    | 只读 | 可选 | 说明                                                |
+| --------------- | ------ | ---- | ---- | -------------------------------------------------- |
+| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> **说明：** fillColor只有透明度通道生效其他通道不生效。  |
+| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/>   **说明：** strokeColor只有透明度通道生效其他通道不生效。           |
+| strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
 
 ### constructor<sup>12+</sup>
 
@@ -1203,167 +1282,6 @@ struct Index {
 }
 ```
 
-### fillColor<sup>12+</sup>
-
-fillColor: number
-
-遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-const mask = new ShapeMask();
-mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
-mask.fillColor = 0X55FF0000;
-
-const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeMask = mask;
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
-
-### strokeColor<sup>12+</sup>
-
-strokeColor: number
-
-遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-const mask = new ShapeMask();
-mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
-mask.strokeColor = 0XFFFF0000;
-mask.strokeWidth = 24;
-
-const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeMask = mask;
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
-
-### strokeWidth<sup>12+</sup>
-
-strokeWidth: number
-
-遮罩的边框宽度，单位为px。默认值为0。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-const mask = new ShapeMask();
-mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
-mask.strokeColor = 0XFFFF0000;
-mask.strokeWidth = 24;
-
-const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeMask = mask;
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
-
 ## ShapeClip<sup>12+</sup>
 
 用于设置图形裁剪。
@@ -1525,7 +1443,6 @@ struct Index {
               bottomRight: { x: 32, y: 32 }
             }
           });
-          renderNode.shapeClip = renderNode.shapeClip;
         })
     }
   }
@@ -1593,7 +1510,6 @@ struct Index {
       Button("setCircleShape")
         .onClick(() => {
           renderNode.shapeClip.setCircleShape({ centerY: 75, centerX: 75, radius: 75 });
-          renderNode.shapeClip = renderNode.shapeClip;
 
         })
     }
@@ -1667,7 +1583,6 @@ struct Index {
             top: 0,
             bottom: this.getUIContext().vp2px(100)
           });
-          renderNode.shapeClip = renderNode.shapeClip;
         })
     }
   }
@@ -1730,7 +1645,6 @@ struct Index {
       Button("setCommandPath")
         .onClick(()=>{
           renderNode.shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
-          renderNode.shapeClip = renderNode.shapeClip;
         })
     }
   }

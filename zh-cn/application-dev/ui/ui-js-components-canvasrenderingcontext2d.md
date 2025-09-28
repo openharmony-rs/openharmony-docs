@@ -1,4 +1,10 @@
 # CanvasRenderingContext2D对象
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 
 使用CanvasRenderingContext2D在Canvas画布组件上进行绘制，绘制对象可以是图形、文本、线段、图片等。具体请参考[CanvasRenderingContext2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)。
@@ -6,7 +12,7 @@
 
 ## 画线段
 
-使用moveTo和lineTo画出一条线段，当使用closePath方法时会结束当前路径形成一个封闭图形。设置quadraticCurveTo（二次贝赛尔曲线）或bezierCurveTo（三次贝赛尔曲线）的值组成图形。
+使用moveTo和lineTo画出一条线段，当使用closePath方法时会结束当前路径形成一个封闭图形。设置quadraticCurveTo（二次贝塞尔曲线）或bezierCurveTo（三次贝塞尔曲线）的值组成图形。
 
 
 ```html
@@ -116,7 +122,7 @@ export default {
       // 上
       this.ctx.beginPath();
       this.ctx.moveTo(100, 150);
-      // 二次贝赛尔曲线的路径
+      // 二次贝塞尔曲线的路径
       this.ctx.quadraticCurveTo(300, 50, 500, 150);
       this.ctx.stroke();
       // 左
@@ -134,7 +140,7 @@ export default {
       // 下
       this.ctx.beginPath();
       this.ctx.moveTo(100, 200);
-      // 三次贝赛尔曲线的路径
+      // 三次贝塞尔曲线的路径
       this.ctx.bezierCurveTo(150, 100, 200, 100,250, 200);
       this.ctx.stroke();
       // 左
@@ -230,6 +236,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #F1F3F5;
+  display: flex;
 }
 canvas{
   width: 600px;
@@ -326,6 +333,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #F1F3F5;
+  display: flex;
 }
 canvas{
   width: 600px;
@@ -496,7 +504,7 @@ export default {
       // 初始化textBaseline
       this.ctx.textBaseline = 'alphabetic';
       // 设置字体
-      this.ctx.font = '30px';
+      this.ctx.font = '30px Arial';
       let text = "Hello World";
       // 获取字体width
       this.ctx.fillText("with:"+this.ctx.measureText(text).width, 200, 300);
@@ -635,6 +643,7 @@ export default {
     // 创建图片对象
     let img = new Image();
     // 设置图片路径
+    // "common/images/2.png"需要替换为开发者所需的图像资源文件
     img.src = 'common/images/2.png';
     // 设置图片宽度
     img.width= 150;
@@ -661,6 +670,7 @@ export default {
       ctx.drawImage(img, 150, 20, 200, 200);
     };
     let img1 = new Image();
+    // "common/images/3.png"需要替换为开发者所需的图像资源文件
     img1.src = 'common/images/3.png';
     img1.onload = function() {
       // 画上图片
@@ -802,7 +812,7 @@ export default {
   },
   onShow(){
     this.ctx = this.$refs.canvas.getContext("2d");
-    this.ctx.fillStyle = "red"
+    this.ctx.fillStyle = "red";
     this.ctx.fillRect(200, 150, 200, 200);
   },
   save(){
@@ -812,7 +822,7 @@ export default {
   },
   clear(){ 
     this.ctx.clearRect(0,0,600,500);
-    // 该变画笔颜色
+    // 改变画笔颜色
     this.ctx.fillStyle = "#2133d2";
   },
   restore(){

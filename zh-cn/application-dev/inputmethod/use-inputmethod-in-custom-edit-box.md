@@ -1,4 +1,10 @@
 # 在自绘编辑框中使用输入法
+<!--Kit: IME Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @illybyy-->
+<!--Designer: @andeszhang-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 在输入法框架中，可以通过[getController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcontroller9)方法获取到[InputMethodController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller)实例来绑定输入法并监听输入法应用的各种操作，比如插入、删除、选择、光标移动等。这样就可以在自绘编辑框中使用输入法，并实现更加灵活和自由的编辑操作。
 
@@ -38,7 +44,7 @@
    }
    ```
 
-3. 在控件中获取inputMethodController实例，并在文本点击时调用controller示例的attach方法绑定和拉起软键盘，并注册监听输入法插入文本、删除等方法，本示例仅展示插入、删除。
+3. 在控件中获取inputMethodController实例，先在文本点击时调用controller实例的attach方法绑定和拉起软键盘，再注册监听输入法插入文本、删除等方法。本示例仅展示插入、删除。
 
    ```ets
    import { inputMethod } from '@kit.IMEKit';
@@ -65,15 +71,19 @@
            this.attachAndListener(); // 点击控件
          })
      }
-   
+
      async attachAndListener() { // 绑定和设置监听
        focusControl.requestFocus('CustomInput');
-       await this.inputController.attach(true, {
+       try {
+        await this.inputController.attach(true, {
          inputAttribute: {
            textInputType: inputMethod.TextInputType.TEXT,
            enterKeyType: inputMethod.EnterKeyType.SEARCH
          }
-       });
+       });       
+       } catch(err) {
+         console.error(`Failed to attach: code:${err.code}, message:${err.message}`);
+       }
        if (!this.isAttach) {
          this.inputController.on('insertText', (text) => {
            this.inputText += text;

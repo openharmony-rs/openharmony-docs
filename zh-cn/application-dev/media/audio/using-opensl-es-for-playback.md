@@ -1,4 +1,10 @@
 # 使用OpenSL ES开发音频播放功能(C/C++)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 OpenSL ES全称为Open Sound Library for Embedded Systems，是一个嵌入式、跨平台、免费的音频处理库。为嵌入式移动多媒体设备上的应用开发者提供标准化、高性能、低延迟的API。OpenHarmony的Native API基于[Khronos Group](https://www.khronos.org/)开发的[OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API 规范实现，开发者可以通过&lt;OpenSLES.h&gt;和&lt;OpenSLES_OpenHarmony.h&gt;在OpenHarmony上使用相关API。
 
@@ -14,7 +20,7 @@ OHAudio的开发指南见[使用OHAudio开发音频播放功能(C/C++)](using-oh
 
 ## OpenHarmony上的OpenSL ES
 
-OpenSL ES中提供了以下的接口，OpenHarmony当前仅实现了部分[接口](https://gitee.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h)，可以实现音频播放的基础功能。
+OpenSL ES中提供了以下的接口，OpenHarmony当前仅实现了部分[接口](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h)，可以实现音频播放的基础功能。
 
 调用未实现接口后会返回**SL_RESULT_FEATURE_UNSUPPORTED**, 当前没有相关扩展可以使用。
 

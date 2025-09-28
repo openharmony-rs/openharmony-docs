@@ -1,5 +1,12 @@
 # 管理分布式账号（仅对系统应用开放）
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-kit/js-apis-distributed-account.md)将自有账号与本地系统账号建立关联关系。
 
 ## 开发准备
@@ -36,9 +43,9 @@ OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-ki
 
    ```ts
    distributedAccountAbility.setOsAccountDistributedInfo(distributedInfo).then(() => {
-       console.log('setOsAccountDistributedInfo successfully');
+       console.info('setOsAccountDistributedInfo successfully');
    }).catch((err: BusinessError) => {
-       console.error('setOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+       console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -46,9 +53,9 @@ OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-ki
 
    ```ts
    distributedAccountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-       console.log('distributed information: ' + JSON.stringify(data));
+       console.info('distributed information: ' + JSON.stringify(data));
    }).catch((err: BusinessError) => {
-       console.error('getOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+       console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -70,9 +77,9 @@ OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-ki
 
    ```ts
    distributedAccountAbility.setOsAccountDistributedInfo(distributedInfo).then(() => {
-       console.log('setOsAccountDistributedInfo successfully');
+       console.info('setOsAccountDistributedInfo successfully');
    }).catch((err: BusinessError) => {
-       console.error('setOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+       console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -95,9 +102,9 @@ OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-ki
 
    ```ts
    distributedAccountAbility.setOsAccountDistributedInfoByLocalId(localId, distributedInfo).then(() => {
-       console.log('setOsAccountDistributedInfoByLocalId successfully');
+       console.info('setOsAccountDistributedInfoByLocalId successfully');
    }).catch((err: BusinessError) => {
-       console.error('setOsAccountDistributedInfoByLocalId exception: '  + JSON.stringify(err));
+       console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -105,9 +112,9 @@ OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-ki
 
    ```ts
    distributedAccountAbility.getOsAccountDistributedInfoByLocalId(localId).then((data: distributedAccount.DistributedInfo) => {
-       console.log('distributed information: ' + JSON.stringify(data));
+       console.info('distributed information: ' + JSON.stringify(data));
    }).catch((err: BusinessError) => {
-       console.error('getOsAccountDistributedInfoByLocalId exception: '  + JSON.stringify(err));
+       console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -130,8 +137,8 @@ OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-ki
 
    ```ts
    distributedAccountAbility.setOsAccountDistributedInfoByLocalId(localId, distributedInfo).then(() => {
-       console.log('setOsAccountDistributedInfoByLocalId successfully');
+       console.info('setOsAccountDistributedInfoByLocalId successfully');
    }).catch((err: BusinessError) => {
-       console.error('setOsAccountDistributedInfoByLocalId exception: '  + JSON.stringify(err));
+       console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
    });
    ```

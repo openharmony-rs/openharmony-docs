@@ -1,4 +1,10 @@
 # 组合手势
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 
 组合手势由多种单一手势组合而成，通过在GestureGroup中使用不同的[GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode枚举说明)来声明该组合手势的类型，支持[顺序识别](#顺序识别)、[并行识别](#并行识别)和[互斥识别](#互斥识别)三种类型。
@@ -17,9 +23,9 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 顺序识别组合手势对应的GestureMode为Sequence。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应onActionEnd。
 
-以一个由长按手势和拖动手势组合而成的顺序识别手势为例：
+以一个由长按手势和滑动手势组合而成的顺序识别手势为例：
 
-在一个Column组件上绑定了translate属性，通过修改该属性可以设置组件的位置移动。然后在该组件上绑定LongPressGesture和PanGesture组合而成的Sequence组合手势。当触发LongPressGesture时，更新显示的数字。当长按后进行拖动时，根据拖动手势的回调函数，实现组件的拖动。
+在一个Column组件上绑定了translate属性，通过修改该属性可以设置组件的位置移动。然后在该组件上绑定LongPressGesture和PanGesture组合而成的Sequence组合手势。当触发LongPressGesture时，更新显示的数字。当长按后进行拖动时，根据滑动手势的回调函数，实现组件的拖动。
 
 ```ts
 // xxx.ets
@@ -43,7 +49,7 @@ struct Index {
     .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
     .height(250)
     .width(300)
-    //以下组合手势为顺序识别，当长按手势事件未正常触发时不会触发拖动手势事件
+    //以下组合手势为顺序识别，当长按手势事件未正常触发时不会触发滑动手势事件
     .gesture(
       // 声明该组合手势的类型为Sequence类型
       GestureGroup(GestureMode.Sequence,
@@ -82,7 +88,7 @@ struct Index {
           })
       )
       .onCancel(() => {
-        console.log("sequence gesture canceled")
+        console.info("sequence gesture canceled")
       })
     )
   }
@@ -119,7 +125,7 @@ struct Index {
     }
     .height(200)
     .width('100%')
-    // 以下组合手势为并行并别，单击手势识别成功后，若在规定时间内再次点击，双击手势也会识别成功
+    // 以下组合手势为并行识别，单击手势识别成功后，若在规定时间内再次点击，双击手势也会识别成功
     .gesture(
       GestureGroup(GestureMode.Parallel,
         TapGesture({ count: 1 })
@@ -172,7 +178,7 @@ struct Index {
     }
     .height(200)
     .width('100%')
-    //以下组合手势为互斥并别，单击手势识别成功后，双击手势会识别失败
+    //以下组合手势为互斥识别，单击手势识别成功后，双击手势会识别失败
     .gesture(
       GestureGroup(GestureMode.Exclusive,
         TapGesture({ count: 1 })
@@ -199,4 +205,71 @@ struct Index {
 >
 >当只有单次点击时，单击手势识别成功，双击手势识别失败。
 >
->当有两次点击时，手势响应取决于绑定手势的顺序。若先绑定单击手势后绑定双击手势，单击手势在第一次点击时即宣告识别成功，此时双击手势已经失败。即使在规定时间内进行了第二次点击，双击手势事件也不会进行响应，此时会触发单击手势事件的第二次识别成功。若先绑定双击手势后绑定单击手势，则会响应双击手势不响应单击手势。
+>当有两次点击时，手势响应取决于绑定手势的顺序。若先绑定单击手势后绑定双击手势，单击手势在第一次点击时即宣告识别成功，此时双击手势已经失败。即使在规定时间内进行了第二次点击，双击手势事件也不会进行响应，此时会触发单击手势事件的第二次识别成功。若先绑定双击手势后绑定单击手势，则会响应双击手势而不响应单击手势。
+
+## 场景示例
+
+以下示例实现了子组件绑定长按和滑动手势，长按手势和滑动手势需要可以同时触发，但是在长按手势未成功时，需要让父组件Swiper的内置滑动手势触发的功能。由于子组件的滑动手势和父组件的内置滑动手势是竞争关系，且子组件的滑动手势的优先级更高，因此需要通过动态控制子组件的滑动手势是否触发。
+
+```ts
+// xxx.ets
+import { PromptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CombinedGestureDemo {
+  @State isLongPress: boolean = false;
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+  build() {
+    Swiper() {
+      // 页面1
+      Row()
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Grey)
+        .borderRadius(12)
+        // 通过自定义手势判定回调，判断在长按手势未成功时，拒绝子组件的滑动手势，从而让父组件Swiper的滑动手势成功
+        .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>)=>{
+          if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
+            return GestureJudgeResult.CONTINUE;
+          }
+          if (this.isLongPress) {
+            return GestureJudgeResult.CONTINUE;
+          }
+          return GestureJudgeResult.REJECT;
+        })
+        .gesture(
+          // 绑定并行手势组，实现长按手势和滑动手势可以同时触发
+          GestureGroup(GestureMode.Parallel,
+            LongPressGesture()
+              .onAction(() => {
+                this.isLongPress = true;
+                this.promptAction.showToast({ message: "LongPress trigger" })
+              })
+              .onActionEnd(() => {
+                this.isLongPress = false;
+              })
+            ,
+            PanGesture()
+              .onActionStart(() => {
+                this.promptAction.showToast({ message: "child pan start" })
+              })
+          )
+        )
+      // 页面2
+      Row()
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Pink)
+        .borderRadius(12)
+    }
+    .borderWidth(2)
+    .width('100%')
+    .height(300)
+    .padding(20)
+  }
+}
+```
+
+![combined-gesture](figures/combined-gesture.gif)

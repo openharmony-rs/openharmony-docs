@@ -1,8 +1,14 @@
 # NativeDisplayManager_CutoutInfo
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The NativeDisplayManager_CutoutInfo struct describes the unusable area of a display, including punch hole, notch, and curved area of a waterfall display.
+The struct describes the unusable area of a display, including punch hole, notch, and curved area of a waterfall display.
 
 **Since**: 12
 

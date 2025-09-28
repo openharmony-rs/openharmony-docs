@@ -1,4 +1,10 @@
 # @ohos.uiAppearance (用户界面外观)(系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。
 
@@ -40,7 +46,7 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -- | -- |
 | 201 | Permission denied. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | 500001 | Internal error. |
 
 **示例：** 
@@ -92,7 +98,7 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 | 错误码ID | 错误信息 |
 | -- | -- |
 | 201 | Permission denied. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | 500001 | Internal error. |
 
 **示例：** 
@@ -141,11 +147,15 @@ setFontScale(fontScale: number): Promise\<void>
 
 错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
 
+> **说明：**
+>
+> 在未申请`ohos.permission.UPDATE_CONFIGURATION`权限时，应用安装将失败，不会返回202错误码。
+
 | 错误码ID | 错误信息 |
 | -- | -- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | 500001 | Internal error. |
 
 **示例：** 
@@ -197,11 +207,15 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
 
+> **说明：**
+>
+> 在未申请`ohos.permission.UPDATE_CONFIGURATION`权限时，应用安装将失败，不会返回202错误码。
+
 | 错误码ID | 错误信息 |
 | -- | -- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed.  |
 | 500001 | Internal error. |
 
 **示例：** 

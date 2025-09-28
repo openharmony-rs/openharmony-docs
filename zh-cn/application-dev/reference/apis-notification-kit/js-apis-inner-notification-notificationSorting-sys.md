@@ -1,4 +1,10 @@
 # NotificationSorting(系统接口)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 提供有关活动通知的排序信息。
 
@@ -12,7 +18,7 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**系统接口**：以下为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 | 名称      | 类型              | 只读   | 可选 | 说明                     |
 |-----------| ---------------- | -------|----- |-------------------------|

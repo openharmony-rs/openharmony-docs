@@ -1,4 +1,10 @@
 # VPN 管理（仅对系统应用开放）
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 简介
 
@@ -27,7 +33,7 @@ VPN 即虚拟专网（VPN-Virtual Private Network）在公用网络上建立专�
 4. 处理虚拟网卡的数据，如：读写操作。
 5. 销毁 VPN 网络。
 
-本示例通过 Native C++ 的方式开发应用程序，Native C++ 可参考：[简易 Native C++ 示例（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/NativeAPI/NativeTemplateDemo)。
+本示例通过 Native C++ 的方式开发应用程序，Native C++ 可参考：[简易 Native C++ 示例（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/NativeAPI/NativeTemplateDemo)。
 
 示例程序主要包含两个部分：js 功能代码和 C++功能代码。
 
@@ -391,3 +397,9 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) {
     napi_module_register(&demoModule);
 }
 ```
+
+## 相关实例
+
+针对 VPN 管理的开发，有以下相关实例可供参考：
+
+- [VPN应用](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case)

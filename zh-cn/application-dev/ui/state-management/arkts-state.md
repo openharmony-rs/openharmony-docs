@@ -1,6 +1,12 @@
 # \@State装饰器：组件内状态
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-被@State装饰的变量称为状态变量，使普通变量具备状态属性。当状态变量改变时，会触发其直接绑定的UI组件渲染更新。
+被状态变量装饰器装饰的变量称为状态变量，使普通变量具备状态属性。当状态变量改变时，会触发其直接绑定的UI组件渲染更新。
 
 在状态变量相关装饰器中，@State是最基础的装饰器，也是大部分状态变量的数据源。
 
@@ -16,9 +22,7 @@
 
 \@State装饰的变量与声明式范式中的其他被装饰变量一样，是私有的，只能从组件内部访问，在声明时必须指定其类型并完成本地初始化；若需从父组件初始化，也可选择使用命名参数机制完成赋值。
 
-\@State装饰的变量拥有以下特点：
-
-- \@State装饰的变量与子组件中的\@Prop装饰变量之间建立单向数据同步，与\@Link、\@ObjectLink装饰变量之间建立双向数据同步。
+\@State装饰的变量拥有以下特性：
 
 - \@State装饰的变量生命周期与其所属自定义组件的生命周期相同。
 
@@ -28,8 +32,9 @@
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
 | 同步类型           | 不与父组件中任何类型的变量同步。                             |
-| 允许装饰的变量类型 | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Date类型。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型。<br/>支持undefined和null类型。<br/>支持ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型。 <br/>类型必须指定。<br/>支持类型的场景见[观察变化](#观察变化)。<br/>不支持any。<br/>API version 11及以上支持上述支持类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[@State支持联合类型实例](#state支持联合类型实例)。 <br/>**注意：**<br/>当使用undefined和null的时候，建议显式指定类型，遵循TypeScript类型校验。比如：支持`@State a : string \| undefined = undefined`；不支持`@State a: string = undefined`。|
-| 被装饰变量的初始值 | 必须本地初始化。                                               |
+| 允许装饰的变量类型 | object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@State支持联合类型实例](#state支持联合类型实例)。<br/>支持类型的场景见[观察变化](#观察变化)。|
+| 不允许装饰的变量类型 | 不支持装饰Function类型。      |
+| 被装饰变量的初始值 | 必须本地初始化。      |
 
 ## 变量的传递/访问规则说明
 
@@ -162,45 +167,7 @@
   this.title[0].value = 6;
   ```
 
-- 当装饰的对象是Date时，可以观察到Date的赋值，以及通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`更新Date的属性。
-
-  ```ts
-  @Entry
-  @Component
-  struct DatePickerExample {
-    @State selectedDate: Date = new Date('2021-08-08');
-  
-    build() {
-      Column() {
-        Button('set selectedDate to 2023-07-08')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate = new Date('2023-07-08');
-          })
-        Button('increase the year by 1')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-          })
-        Button('increase the month by 1')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-          })
-        Button('increase the day by 1')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-          })
-        DatePicker({
-          start: new Date('1970-1-1'),
-          end: new Date('2100-1-1'),
-          selected: this.selectedDate
-        })
-      }.width('100%')
-    }
-  }
-  ```
+- 当装饰的对象是Date时，可以观察到Date的赋值，以及通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
 - 当装饰的变量是Map时，可以观察到Map整体的赋值，以及通过调用Map的接口`set`, `clear`, `delete`更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
@@ -216,10 +183,10 @@
 
 1. \@State装饰的变量必须初始化，否则编译期会报错。
 
-    ```ts
+    ```ts	
     // 错误写法，编译报错
     @State count: number;
-  
+    
     // 正确写法
     @State count: number = 10;
     ```
@@ -344,7 +311,7 @@ struct MyComponent {
 @Entry
 @Component
 struct MapSample {
-  @State message: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+  @State message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
 
   build() {
     Row() {
@@ -355,16 +322,16 @@ struct MapSample {
           Divider()
         })
         Button('init map').onClick(() => {
-          this.message = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
         Button('set new one').onClick(() => {
-          this.message.set(4, "d");
+          this.message.set(4, 'd');
         })
         Button('clear').onClick(() => {
           this.message.clear();
         })
         Button('replace the first one').onClick(() => {
-          this.message.set(0, "aa");
+          this.message.set(0, 'aa');
         })
         Button('delete the first one').onClick(() => {
           this.message.delete(0);
@@ -394,7 +361,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number]) => {
+        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
           Text(`${item[0]}`).fontSize(30)
           Divider()
         })
@@ -418,7 +385,50 @@ struct SetSample {
 }
 ```
 
-## State支持联合类型实例
+### 装饰Date类型变量
+
+在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
+
+```ts
+  @Entry
+  @Component
+  struct DatePickerExample {
+    @State selectedDate: Date = new Date('2021-08-08');
+  
+    build() {
+      Column() {
+        Button('set selectedDate to 2023-07-08')
+          .margin(10)
+          .onClick(() => {
+            this.selectedDate = new Date('2023-07-08');
+          })
+        Button('increase the year by 1')
+          .margin(10)
+          .onClick(() => {
+            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+          })
+        Button('increase the month by 1')
+          .margin(10)
+          .onClick(() => {
+            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+          })
+        Button('increase the day by 1')
+          .margin(10)
+          .onClick(() => {
+            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+          })
+        DatePicker({
+          start: new Date('1970-1-1'),
+          end: new Date('2100-1-1'),
+          selected: this.selectedDate
+        })
+      }.width('100%')
+    }
+  }
+```
+
+
+### State支持联合类型实例
 
 \@State支持联合类型和undefined和null，在下面的示例中，count类型为number | undefined，点击Button改变count的属性或者类型，视图会随之刷新。
 
@@ -574,7 +584,7 @@ export class TestModel {
   constructor() {
     this.model = new Model(() => {
       this.isSuccess = true;
-      console.log(`this.isSuccess: ${this.isSuccess}`);
+      console.info(`this.isSuccess: ${this.isSuccess}`);
     })
   }
 
@@ -761,7 +771,12 @@ struct Test {
 }
 ```
 
-上述示例中，点击Button('change')，只会触发第二个Text组件的刷新。这是因为点击按钮后，首先执行`this.user.info = new Info('广州')`，会创建一个新的Info对象。再执行`this.user.info.address = '北京'`，改变的是这个新创建的Info对象中的address值，而原始的Info对象中的address值不会受到影响。
+在上述示例中，点击按钮后有以下变化：
+
+- 第一个`Text`组件不会刷新。这是因为在点击事件中执行`this.user.info = new Info('广州')`，该变化使得`this.user.info`不再引用`this.info`，而是重新赋值了一个`Info`实例，因此再改变`this.user.info`的属性不会被`this.info`观察，第一个`Text`组件不会刷新。
+- 第二个`Text`组件会刷新。这是因为点击按钮后，首先执行`this.user.info = new Info('广州')`，该变化属于第一层的赋值，可以被观察，会对当前自定义组件标脏，并请求下一帧刷新。再执行`this.user.info.address = '北京'`，该变化属于第二层的赋值，不能被观察到。但是需要注意，当前变化虽然无法被观察到，但赋值是可以生效的。在下一帧刷新到来时，`this.user.info.address`已被修改为`北京`，因此第二个`Text`组件显示`北京`。
+
+如果上述示例注释掉`this.user.info = new Info('广州')`，则与示例2场景一致，只会触发第一个`Text`组件更新，第二个`Text`组件将无法更新。
 
 ### 复杂类型常量重复赋值给状态变量触发刷新
 
@@ -795,11 +810,11 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    console.log("dataObj changed");
+    console.info('dataObj changed');
   }
 
   getContent() {
-    console.log(`this.dataObj.name change: ${this.dataObj.name}`);
+    console.info(`this.dataObj.name change: ${this.dataObj.name}`);
     return this.dataObj.name;
   }
 
@@ -811,9 +826,9 @@ struct ConsumerChild {
 }
 ```
 
-以上示例每次点击Button('change to self')，把相同的类常量赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。原因是在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理用于观测一层属性或API调用产生的变化。  
+以上示例每次点击Button('change to self')，把相同的类常量赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。原因是在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理，用于观测一层属性或API调用产生的变化。  
 当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。 
-为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象提前进行新旧值的判断，如果相同则不执行赋值。  
+为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。  
 方法一：增加\@Observed
 
 ```ts
@@ -847,7 +862,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    console.log("dataObj changed");
+    console.info('dataObj changed');
   }
 
   build() {
@@ -897,7 +912,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    console.log("dataObj changed");
+    console.info('dataObj changed');
   }
 
   build() {
@@ -974,7 +989,7 @@ struct Index {
   }
 }
 ```
-上面示例渲染过程：
+上面示例的渲染过程为：
 
 1. 创建第一个Text组件，触发this.message改变。
 
@@ -982,7 +997,7 @@ struct Index {
 
 3. 第二个Text组件的刷新又触发this.message的改变，触发第一个Text组件刷新。
 
-4. 循环重新渲染……
+4. 循环重新渲染。
 
 5. 系统长时间无响应，appfreeze。
 
@@ -1036,10 +1051,11 @@ struct Index {
 }
 ```
 
-可以通过以下步骤为this.balloon保留Proxy代理，以实现UI刷新。
+状态变量观察类属性变化是通过代理捕获其变化的，当使用a.b(this.object)调用时，框架会将代理对象转换为原始对象。修改原始对象属性，无法观察，因此UI不会刷新。开发者可以使用如下方法修改：
 
 1. 先将this.balloon赋值给临时变量。
 2. 再使用临时变量完成原本的调用逻辑。
+具体见正例。
 
 【正例】
 

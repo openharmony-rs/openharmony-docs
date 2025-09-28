@@ -1,5 +1,12 @@
 # 使用MindSpore Lite进行模型推理 (C/C++)
 
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
 ## 场景介绍
 
 MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型推理的功能，目前已经在图像分类、目标识别、人脸识别、文字识别等应用中广泛使用。
@@ -37,7 +44,7 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 | 接口名称        | 描述        |
 | ------------------ | ----------------- |
 |OH_AI_ModelHandle OH_AI_ModelCreate()|创建一个模型对象。|
-|OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType odel_type, const OH_AI_ContextHandle model_context)|通过模型文件加载并编译MindSpore模型。|
+|OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)|通过模型文件加载并编译MindSpore Lite模型。|
 |void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)|释放一个模型对象。|
 
 ### Tensor 相关接口
@@ -63,6 +70,7 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 ```c
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "mindspore/model.h"
 
 //生成随机的输入
@@ -83,7 +91,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 }
 ```
 
-然后进入主要的开发步骤，具括包括模型的准备、读取、编译、推理和释放，具体开发过程及细节请见下文的开发步骤及示例。
+然后进入主要的开发步骤，具体包括模型的准备、读取、编译、推理和释放，具体开发过程及细节请见下文的开发步骤及示例。
 
 1. 模型准备。
 
@@ -125,7 +133,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
    <!--Del-->
    > **说明：**
    >
-   > NNRT/CPU异构推理，需要有实际的NNRT硬件接入，NNRT相关资料请参考：[OpenHarmony/ai_neural_network_runtime](https://gitee.com/openharmony/ai_neural_network_runtime)。
+   > NNRT/CPU异构推理，需要有实际的NNRT硬件接入，NNRT相关资料请参考：[OpenHarmony/ai_neural_network_runtime](https://gitcode.com/openharmony/ai_neural_network_runtime)。
    <!--DelEnd-->
     ```c
     // 创建并配置上下文，设置运行时的线程数量为2，绑核策略为大核优先
@@ -173,6 +181,12 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
     }
 
     // 加载与编译模型，模型的类型为OH_AI_MODELTYPE_MINDIR
+    if (access(argv[1], F_OK) != 0) {
+        printf("model file not exists.\n");
+        OH_AI_ModelDestroy(&model);
+        OH_AI_ContextDestroy(&context);
+        return OH_AI_STATUS_LITE_ERROR;
+    }
     int ret = OH_AI_ModelBuildFromFile(model, argv[1], OH_AI_MODELTYPE_MINDIR, context);
     if (ret != OH_AI_STATUS_SUCCESS) {
       printf("OH_AI_ModelBuildFromFile failed, ret: %d.\n", ret);
@@ -233,6 +247,12 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
       printf("Tensor name: %s, tensor size is %zu ,elements num: %lld.\n", OH_AI_TensorGetName(tensor),
             OH_AI_TensorGetDataSize(tensor), element_num);
       const float *data = (const float *)OH_AI_TensorGetData(tensor);
+      if (data == NULL) {
+        printf("OH_AI_TensorGetData failed.\n");
+        OH_AI_ModelDestroy(&model);
+        OH_AI_ContextDestroy(&context);
+        return OH_AI_STATUS_LITE_ERROR;
+      }
       printf("output data is:\n");
       const int max_print_num = 50;
       for (int j = 0; j < element_num && j <= max_print_num; ++j) {
@@ -297,4 +317,4 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 
 针对MindSpore Lite 的使用，有以下相关实例可供参考：
 
-- [简易MSLite教程](https://gitee.com/openharmony/third_party_mindspore/tree/OpenHarmony-3.2-Release/mindspore/lite/examples/quick_start_c)
+- [简易MSLite教程](https://gitcode.com/openharmony/third_party_mindspore/tree/OpenHarmony-3.2-Release/mindspore/lite/examples/quick_start_c)

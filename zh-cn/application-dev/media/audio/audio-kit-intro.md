@@ -1,4 +1,10 @@
 # Audio Kit简介
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 Audio Kit（音频服务）旨在提供场景化的音频播放和录制接口，助力开发者迅速构建音频高清采集及沉浸式播放能力。
 
@@ -20,7 +26,7 @@ Audio Kit（音频服务）旨在提供场景化的音频播放和录制接口�
 <!--Del-->
 - 空间音频
 
-   提供空间音频能力，支持用户佩戴TWS耳机时，使用应用播放音源（立体声/多声道/AudioVivid格式），可主观感受到空间音频渲染效果（方位感/空间感）。
+   提供空间音频能力，支持用户佩戴TWS耳机时，使用应用播放音源（立体声/多声道/Audio Vivid格式），可主观感受到空间音频渲染效果（方位感/空间感）。
 <!--DelEnd-->
 - 音振协同
 
@@ -44,7 +50,7 @@ Audio Kit（音频服务）旨在提供场景化的音频播放和录制接口�
 
 在Native框架层，音频系统实现了播放、录音、音量控制、设备路由和音效处理等接口的框架实现，通过跨进程接口连接音频服务。
 
-**Native SystemAility**
+**Native SystemAbility**
 
 音频服务进程audio_server承载了软件实现的音频系统功能组件，提供了丰富的音频策略管理和数据处理能力。组件通过HDI接口与HAL层连接，从而使用音频硬件能力。
 
@@ -54,7 +60,7 @@ HAL通过统一的HDI接口对外提供服务，不同的音频硬件开发人�
 
 **Kernel**
 
-内核驱动程序负责与音频硬件交互，针对不同规模的操作系统，可以选择多种内核，如Linux、LiteOS、OpenHamrony内核等。
+内核驱动程序负责与音频硬件交互，针对不同规模的操作系统，可以选择多种内核，如Linux、LiteOS、OpenHarmony内核等。
 
 ## 开发说明
 
@@ -64,9 +70,9 @@ HAL通过统一的HDI接口对外提供服务，不同的音频硬件开发人�
 
 在开发音频功能之前，尤其是要实现处理音频数据的功能前，建议开发者先了解声学相关的知识，帮助理解操作系统提供的API是如何控制音频系统，从而开发出更易用、体验更好的音视频类应用。建议了解的相关概念包括但不限于：
 
-- 音频量化的过程：采样 &gt; 量化 &gt; 编码
+- 音频量化的过程：采样 &gt; 量化 &gt; 编码。
 
-- 音频量化过程的相关概念：模拟信号和数字信号、采样率、声道、采样格式、位宽、码率、常见编码格式（如AAC、MP3、PCM、WMA等）、常见封装格式（如WAV、MPA、FLAC、AAC、OGG等）
+- 音频量化过程的相关概念：模拟信号和数字信号、采样率、声道、采样格式、位宽、码率、常见编码格式（如AAC、MP3、PCM、WMA等）、常见封装格式（如WAV、MPA、FLAC、AAC、OGG等）。
 
 ## 音频流介绍
 
@@ -100,7 +106,7 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 音频格式说明：
 
-- 支持的常用的音频采样率（Hz）：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200<sup>12+</sup>、96000，176400<sup>12+</sup>、192000<sup>12+</sup>具体参考枚举[AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。
+- 支持的音频采样率（Hz）：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200<sup>12+</sup>、96000，176400<sup>12+</sup>、192000<sup>12+</sup>具体参考枚举[AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。
   不同设备支持的采样率规格会存在差异。
 
 - 支持单声道、双声道，具体参考[AudioChannel](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiochannel8)。

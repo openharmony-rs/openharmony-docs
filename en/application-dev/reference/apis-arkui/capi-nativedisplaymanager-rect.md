@@ -1,8 +1,14 @@
 # NativeDisplayManager_Rect
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The NativeDisplayManager_Rect struct describes a rectangle.
+The struct describes a rectangle.
 
 **Since**: 12
 

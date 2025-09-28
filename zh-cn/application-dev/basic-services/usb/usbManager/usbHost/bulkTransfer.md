@@ -1,5 +1,12 @@
 # USB批量传输
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: USB-->
+<!--Owner: @hwymlgitcode-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 场景介绍
 
 批量传输主要应用在传输和接收大量数据同时又没有带宽和间隔时间要求的情况下，例如传输文件、图像等场景，打印机和扫描仪等设备属于这种类型的设备。
@@ -25,7 +32,7 @@
 ### 搭建环境
 
 - 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
+- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 - 用USB线缆将搭载OpenHarmony的设备连接到PC。
 
@@ -56,10 +63,19 @@
    ```
    
 2. 获取设备列表。
+
+> **说明：** 
+>
+> 批量传输只能在[传输类型](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbendpointtransfertype18)为2的端点上进行，若不匹配会返回IO错误。
    
-    ```ts
+   ```ts
    // 获取设备列表。
    let deviceList : Array<usbManager.USBDevice> = usbManager.getDevices();
+   console.info(`deviceList: ${deviceList}`);
+   if(deviceList.length === 0) {
+     console.error('deviceList is empty');
+     return;
+   }
    /*
    deviceList结构示例
    [
@@ -100,7 +116,7 @@
                    maxPacketSize: 4,
                    direction: 128,
                    number: 1,
-                   type: 3,
+                   type: 2, // 决定传输类型。
                    interfaceId: 0,
                  }
                ]
@@ -139,6 +155,12 @@
    ```
 
 5. 数据传输。
+
+**说明：**
+
+> 在数据传输前建议先获取interface所属endpointer的type，通过type判断interface是否支持所需的传输类型。
+>
+> 若调用传输接口失败，请先确认设备interface是否支持[模式切换](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbinterface)。若alternateSetting支持切换设置，可在传输前调用[usbManager.setInterface](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbmanagersetinterface)重新设置interface，使端点和传输类型匹配，保证端点正常通信。
 
     ```ts
     /*

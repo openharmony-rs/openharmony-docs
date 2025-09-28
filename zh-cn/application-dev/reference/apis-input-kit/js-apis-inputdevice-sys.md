@@ -1,8 +1,13 @@
 # @ohos.multimodalInput.inputDevice (输入设备)(系统接口)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
-本模块提供输入设备管理能力，包括查询输入设备信息等。
-
+本模块提供输入设备管理能力，包括查询输入设备信息，设置/获取键盘按键重复时延，设置输入设备的开关状态等。
 
 > **说明**：
 >
@@ -61,7 +66,7 @@ struct Index {
                 console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat delay success`);
+              console.info(`Set keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -117,7 +122,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
-              console.log(`Set keyboard repeat delay success`);
+              console.info(`Set keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -171,7 +176,7 @@ struct Index {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat delay success`);
+              console.info(`Get keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -221,7 +226,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
-              console.log(`Get keyboard repeat delay success`);
+              console.info(`Get keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -276,7 +281,7 @@ struct Index {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat rate success`);
+              console.info(`Set keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -332,7 +337,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.log(`Set keyboard repeat rate success`);
+              console.info(`Set keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -386,7 +391,7 @@ struct Index {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat rate success`);
+              console.info(`Get keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -436,7 +441,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
-              console.log(`Get keyboard repeat rate success`);
+              console.info(`Get keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -463,7 +468,7 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | ------------------------- |
-| deviceId | number  | 是   | 目标设备Id。              |
+| deviceId | number  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。              |
 | enabled  | boolean | 是   | 输入设备的开关状态，取值为true表示开启输入设备，取值为false表示关闭输入设备。 |
 
 **错误码**：
@@ -473,8 +478,8 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
+| 201      | Permission denied. The application does not have the permission required to call the API |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 

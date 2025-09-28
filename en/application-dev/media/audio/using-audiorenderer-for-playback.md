@@ -1,34 +1,40 @@
 # Using AudioRenderer for Audio Playback
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 The AudioRenderer is used to play Pulse Code Modulation (PCM) audio data. Unlike the [AVPlayer](../media/using-avplayer-for-playback.md), the AudioRenderer can perform data preprocessing before audio input. Therefore, the AudioRenderer is more suitable if you have extensive audio development experience and want to implement more flexible playback features.
 
 ## Development Guidelines
 
-The full rendering process involves creating an **AudioRenderer** instance, configuring audio rendering parameters, starting and stopping rendering, and releasing the instance. In this topic, you will learn how to use the AudioRenderer to render audio data. Before the development, you are advised to read [AudioRenderer](../../reference/apis-audio-kit/js-apis-audio.md#audiorenderer8) for the API reference.
+The full rendering process involves creating an AudioRenderer instance, configuring audio rendering parameters, starting and stopping rendering, and releasing the instance. In this topic, you will learn how to use the AudioRenderer to render audio data. Before the development, you are advised to read [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md) for the API reference.
 
-The figure below shows the state changes of the AudioRenderer. After an **AudioRenderer** instance is created, different APIs can be called to switch the AudioRenderer to different states and trigger the required behavior. If an API is called when the AudioRenderer is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AudioRenderer state before triggering state transition.
+The figure below shows the state changes of the AudioRenderer. After an AudioRenderer instance is created, different APIs can be called to switch the AudioRenderer to different states and trigger the required behavior. If an API is called when the AudioRenderer is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AudioRenderer state before triggering state transition.
 
-To prevent the UI thread from being blocked, most **AudioRenderer** calls are asynchronous. Each API provides the callback and promise functions. The following examples use the callback functions.
+To prevent the UI thread from being blocked, most AudioRenderer calls are asynchronous. Each API provides the callback and promise functions. The following examples use the callback functions.
 
 **Figure 1** AudioRenderer state transition
 
 ![AudioRenderer state transition](figures/audiorenderer-status-change.png)
 
-During application development, you are advised to use [on('stateChange')](../../reference/apis-audio-kit/js-apis-audio.md#onstatechange-8) to subscribe to state changes of the AudioRenderer. This is because some operations can be performed only when the AudioRenderer is in a given state. If the application performs an operation when the AudioRenderer is not in the given state, the system may throw an exception or generate other undefined behavior.
+During application development, you are advised to use [on('stateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onstatechange8) to subscribe to state changes of the AudioRenderer. This is because some operations can be performed only when the AudioRenderer is in a given state. If the application performs an operation when the AudioRenderer is not in the given state, the system may throw an exception or generate other undefined behavior.
 
-- **prepared**: The AudioRenderer enters this state by calling [createAudioRenderer()](../../reference/apis-audio-kit/js-apis-audio.md#audiocreateaudiorenderer8).
+- **prepared**: The AudioRenderer enters this state by calling [createAudioRenderer()](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8).
 
-- **running**: The AudioRenderer enters this state by calling [start()](../../reference/apis-audio-kit/js-apis-audio.md#start8) when it is in the **prepared**, **paused**, or **stopped** state.
+- **running**: The AudioRenderer enters this state by calling [start()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) when it is in the **prepared**, **paused**, or **stopped** state.
 
-- **paused**: The AudioRenderer enters this state by calling [pause()](../../reference/apis-audio-kit/js-apis-audio.md#pause8) when it is in the **running** state. When the audio playback is paused, it can call [start()](../../reference/apis-audio-kit/js-apis-audio.md#start8) to resume the playback.
+- **paused**: The AudioRenderer enters this state by calling [pause()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8) when it is in the **running** state. When the audio playback is paused, it can call [start()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) to resume the playback.
 
-- **stopped**: The AudioRenderer enters this state by calling [stop()](../../reference/apis-audio-kit/js-apis-audio.md#stop8) when it is in the **paused** or **running** state.
+- **stopped**: The AudioRenderer enters this state by calling [stop()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8) when it is in the **paused** or **running** state.
 
-- **released**: The AudioRenderer enters this state by calling [release()](../../reference/apis-audio-kit/js-apis-audio.md#release8) when it is in the **prepared**, **paused**, or **stopped** state. In this state, the AudioRenderer releases all occupied hardware and software resources and will not transit to any other state.
+- **released**: The AudioRenderer enters this state by calling [release()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8) when it is in the **prepared**, **paused**, or **stopped** state. In this state, the AudioRenderer releases all occupied hardware and software resources and will not transit to any other state.
 
 ### How to Develop
 
-1. Set audio rendering parameters and create an **AudioRenderer** instance. For details about the parameters, see [AudioRendererOptions](../../reference/apis-audio-kit/js-apis-audio.md#audiorendereroptions8).
+1. Set audio rendering parameters and create an AudioRenderer instance. For details about the parameters, see [AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendereroptions8).
 
     ```ts
     import { audio } from '@kit.AudioKit';
@@ -89,7 +95,7 @@ During application development, you are advised to use [on('stateChange')](../..
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
      // Ensure that the resource exists in the path.
-     let filePath = path + '/StarWars10s-2C-48000-4SW.wav';
+     let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 
      let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -140,7 +146,7 @@ During application development, you are advised to use [on('stateChange')](../..
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
      // Ensure that the resource exists in the path.
-     let filePath = path + '/StarWars10s-2C-48000-4SW.wav';
+     let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
      let writeDataCallback = (buffer: ArrayBuffer) => {
        // If you do not want to play a particular portion of the buffer, you can add a check and clear that specific section of the buffer.
@@ -201,7 +207,7 @@ During application development, you are advised to use [on('stateChange')](../..
 
 When developing a media player, it is important to correctly set the stream usage type according to the intended use case. This will ensure that the player behaves as expected in different scenarios.
 
-The recommended use cases are described in [StreamUsage](../../reference/apis-audio-kit/js-apis-audio.md#streamusage). For example, **STREAM_USAGE_MUSIC** is recommended for music scenarios, **STREAM_USAGE_MOVIE** is recommended for movie or video scenarios, and **STREAM_USAGE_GAME** is recommended for gaming scenarios.
+The recommended use cases are described in [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage). For example, **STREAM_USAGE_MUSIC** is recommended for music scenarios, **STREAM_USAGE_MOVIE** is recommended for movie or video scenarios, and **STREAM_USAGE_GAME** is recommended for gaming scenarios.
 
 An incorrect configuration of **StreamUsage** may cause unexpected behavior. Example scenarios are as follows:
 
@@ -216,11 +222,11 @@ Resampling involves upsampling (adding samples through interpolation) or downsam
 
 The AudioRenderer supports all sampling rates defined in the enum **AudioSamplingRate**.
 
-If the input audio sampling rate configured by **AudioRenderer** is different from the output sampling rate of the device, the system resamples the input audio to match the output sampling rate.
+If the input audio sampling rate configured by AudioRenderer is different from the output sampling rate of the device, the system resamples the input audio to match the output sampling rate.
 
 To minimize power consumption from resampling, it is best to use input audio with a sampling rate that matches the output sampling rate of the device. A sampling rate of 48 kHz is highly recommended.
 
-### Sample Code
+### Complete Sample Code
 
 Refer to the sample code below to render an audio file using AudioRenderer.
 
@@ -238,7 +244,7 @@ class Options {
 }
 
 let bufferSize: number = 0;
-let renderModel: audio.AudioRenderer | undefined = undefined;
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
   channels: audio.AudioChannel.CHANNEL_2, // Channel.
@@ -253,38 +259,50 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   streamInfo: audioStreamInfo,
   rendererInfo: audioRendererInfo
 };
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let path = context.cacheDir;
-// Ensure that the resource exists in the path.
-let filePath = path + '/StarWars10s-2C-48000-4SW.wav';
-let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-let writeDataCallback = (buffer: ArrayBuffer) => {
-  let options: Options = {
-    offset: bufferSize,
-    length: buffer.byteLength
-  };
+let file: fs.File;
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
-  try {
-    fs.readSync(file.fd, buffer, options);
-    bufferSize += buffer.byteLength;
-    // This function does not return a callback result in API version 11, but does so in API version 12 and later versions.
-    return audio.AudioDataCallbackResult.VALID;
-  } catch (error) {
-    console.error('Error reading file:', error);
-    // This function does not return a callback result in API version 11, but does so in API version 12 and later versions.
-    return audio.AudioDataCallbackResult.INVALID;
-  }
-};
+async function initArguments(context: common.UIAbilityContext) {
+  let path = context.cacheDir;
+  // Ensure that the resource exists in the path.
+  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: Options = {
+      offset: bufferSize,
+      length: buffer.byteLength
+    };
+
+    try {
+      let bufferLength = fs.readSync(file.fd, buffer, options);
+      bufferSize += buffer.byteLength;
+      // If the data passed in the current callback is less than one frame, the blank areas must be filled with silent data to avoid playback noise.
+      if (bufferLength < buffer.byteLength) {
+        let view = new DataView(buffer);
+        for (let i = bufferLength; i < buffer.byteLength; i++) {
+          // For blank areas, silent data should be used. When using the SAMPLE_FORMAT_U8 audio sampling format, 0x7F represents silent data. For other sampling formats, 0 is used as silent data.
+          view.setUint8(i, 0);
+        }
+      }
+      // This function does not return a callback result in API version 11, but does so in API version 12 and later versions.
+      // If you do not want to play a certain buffer, return audio.AudioDataCallbackResult.INVALID.
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      // This function does not return a callback result in API version 11, but does so in API version 12 and later versions.
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+}
 
 // Create an AudioRenderer instance, and set the events to listen for.
-function init() {
+async function init() {
   audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // Create an AudioRenderer instance.
     if (!err) {
       console.info(`${TAG}: creating AudioRenderer success`);
-      renderModel = renderer;
-      if (renderModel !== undefined) {
-        (renderModel as audio.AudioRenderer).on('writeData', writeDataCallback);
+      audioRenderer = renderer;
+      if (audioRenderer !== undefined) {
+        audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
       console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
@@ -293,15 +311,15 @@ function init() {
 }
 
 // Start audio rendering.
-function start() {
-  if (renderModel !== undefined) {
+async function start() {
+  if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
-    if (stateGroup.indexOf((renderModel as audio.AudioRenderer).state.valueOf()) === -1) { // Rendering can be started only when the AudioRenderer is in the prepared, paused, or stopped state.
+    if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // Rendering can be started only when the AudioRenderer is in the prepared, paused, or stopped state.
       console.error(TAG + 'start failed');
       return;
     }
     // Start rendering.
-    (renderModel as audio.AudioRenderer).start((err: BusinessError) => {
+    audioRenderer.start((err: BusinessError) => {
       if (err) {
         console.error('Renderer start failed.');
       } else {
@@ -312,15 +330,15 @@ function start() {
 }
 
 // Pause the rendering.
-function pause() {
-  if (renderModel !== undefined) {
+async function pause() {
+  if (audioRenderer !== undefined) {
     // Rendering can be paused only when the AudioRenderer is in the running state.
-    if ((renderModel as audio.AudioRenderer).state.valueOf() !== audio.AudioState.STATE_RUNNING) {
+    if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING) {
       console.info('Renderer is not running');
       return;
     }
     // Pause the rendering.
-    (renderModel as audio.AudioRenderer).pause((err: BusinessError) => {
+    audioRenderer.pause((err: BusinessError) => {
       if (err) {
         console.error('Renderer pause failed.');
       } else {
@@ -332,14 +350,14 @@ function pause() {
 
 // Stop rendering.
 async function stop() {
-  if (renderModel !== undefined) {
+  if (audioRenderer !== undefined) {
     // Rendering can be stopped only when the AudioRenderer is in the running or paused state.
-    if ((renderModel as audio.AudioRenderer).state.valueOf() !== audio.AudioState.STATE_RUNNING && (renderModel as audio.AudioRenderer).state.valueOf() !== audio.AudioState.STATE_PAUSED) {
+    if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING && audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
       console.info('Renderer is not running or paused.');
       return;
     }
     // Stop rendering.
-    (renderModel as audio.AudioRenderer).stop((err: BusinessError) => {
+    audioRenderer.stop((err: BusinessError) => {
       if (err) {
         console.error('Renderer stop failed.');
       } else {
@@ -352,20 +370,104 @@ async function stop() {
 
 // Release the instance.
 async function release() {
-  if (renderModel !== undefined) {
+  if (audioRenderer !== undefined) {
     // The AudioRenderer can be released only when it is not in the released state.
-    if (renderModel.state.valueOf() === audio.AudioState.STATE_RELEASED) {
+    if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
       console.info('Renderer already released');
       return;
     }
     // Release the resources.
-    (renderModel as audio.AudioRenderer).release((err: BusinessError) => {
+    audioRenderer.release((err: BusinessError) => {
       if (err) {
         console.error('Renderer release failed.');
       } else {
         console.info('Renderer release success.');
       }
     });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Column() {
+            Text('Initialize').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            initArguments(context);
+            init();
+          });
+
+          Column() {
+            Text('Start playback').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            start();
+          });
+        }
+
+        Row() {
+          Column() {
+            Text('Pause playback').fontSize(16).margin({ top: 12 });
+          }
+          .id('audio_effect_manager_card')
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            pause();
+          });
+
+          Column() {
+            Text('Stop playback').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            stop();
+          });
+        }
+
+        Row() {
+          Column() {
+            Text('Release resources').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .id('audio_volume_card')
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            release();
+          });
+        }
+        .padding(12)
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor('#F1F3F5');
+    }
   }
 }
 ```

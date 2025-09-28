@@ -1,4 +1,10 @@
 # Using Motion and Orientation Sensors
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zhang-yinglie-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
@@ -18,7 +24,8 @@ To access the motion and orientation sensors, invoke the following W3C standards
 
 ## Required Permission
 
-To use the preceding APIs, you need to declare the corresponding sensor permissions in the **module.json5** file. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+To use the preceding APIs, you need to declare the corresponding sensor permissions in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
+
 
 ```
     "requestPermissions":[
@@ -31,13 +38,14 @@ To use the preceding APIs, you need to declare the corresponding sensor permissi
     ]
 ```
 
-When the **Web** component is connected to a motion or orientation sensor, configure [onPermissionRequest](../reference/apis-arkweb/ts-basic-components-web.md#onpermissionrequest9) to receive permission request notifications.
+When the **Web** component is connected to a motion or orientation sensor, configure [onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9) to receive permission request notifications.
 
 ## How to Develop
 
-1. In the application code, configure [onPermissionRequest](../reference/apis-arkweb/ts-basic-components-web.md#onpermissionrequest9) for the **Web** component and use the [getAccessibleResource](../reference/apis-arkweb/ts-basic-components-web.md#getaccessibleresource9) API of [PermissionRequest](../reference/apis-arkweb/ts-basic-components-web.md#permissionrequest9) to obtain the resource type of the request permission. When the resource type is **TYPE_SENSOR**, the sensor is authorized.
+1. In the application code, configure [onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9) for the **Web** component and use the [getAccessibleResource](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md#getaccessibleresource9) API of [PermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md) to obtain the resource type of the request permission. When the resource type is **TYPE_SENSOR**, the sensor is authorized.
 
    ```ts
+   import { UIContext } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -45,18 +53,23 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    @Entry
    @Component
    struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController()
+     controller: webview.WebviewController = new webview.WebviewController();
+     uiContext: UIContext = this.getUIContext();
+
      aboutToAppear() {
        // Enable web frontend page debugging.
        webview.WebviewController.setWebDebuggingAccess(true);
        // Create an **AtManager** instance, which is used for application access control.
        let atManager = abilityAccessCtrl.createAtManager();
        try {
-         atManager.requestPermissionsFromUser(getContext(this), ['ohos.permission.ACCELEROMETER', 'ohos.permission.GYROSCOPE']
+         atManager.requestPermissionsFromUser(this.uiContext.getHostContext(), ['ohos.permission.ACCELEROMETER', 'ohos.permission.GYROSCOPE']
            , (err: BusinessError, data: PermissionRequestResult) => {
-           console.info('data:' + JSON.stringify(data));
-           console.info('data permissions:' + data.permissions);
-           console.info('data authResults:' + data.authResults);
+           if (err) {
+             console.error(`requestPermissionsFromUser fail, err->${JSON.stringify(err)}`);
+           } else {
+             console.info('data permissions:' + data.permissions);
+             console.info('data authResults:' + data.authResults);
+           }
          })
        } catch (error) {
          console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
@@ -68,7 +81,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
          Web({ src: $rawfile('index.html'), controller: this.controller })
            .onPermissionRequest((event) => {
              if (event) {
-               AlertDialog.show({
+                this.uiContext.showAlertDialog({
                  title: 'title',
                  message: 'text',
                  primaryButton: {
@@ -103,11 +116,10 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    <head>
        <meta charset="utf-8" />
        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-       <meta name="misapplication-tap-highlight" content="no" />
+       <meta name="msapplication-tap-highlight" content="no" />
        <meta name="HandheldFriendly" content="true" />
        <meta name="MobileOptimized" content="320" />
        <title>Motion and direction sensor</title>
-       <meta charset="UTF-8">
        <style>
            body {
                font-family: Arial, sans-serif;
@@ -117,10 +129,10 @@ When the **Web** component is connected to a motion or orientation sensor, confi
            // Access the accelerometer of the device and obtain its data.
            function getAccelerometer() {
                var acc = new Accelerometer({frequency: 60});
-               acc.addEventListener('activate', () => console.log('Ready to measure.'));
-               acc.addEventListener('error', error => console.log('Error type: ' + error.type + ', error: ' + error.error ));
+               acc.addEventListener('activate', () => console.info('Ready to measure.'));
+               acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
                acc.addEventListener('reading', () => {
-                   console.log(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
+                   console.info(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
                });
                acc.start();
            }
@@ -128,10 +140,10 @@ When the **Web** component is connected to a motion or orientation sensor, confi
            // Access the gyroscope of the device and obtain its data.
            function getGyroscope() {
                var gyr = new Gyroscope({frequency: 60});
-               gyr.addEventListener('activate', () => console.log('Ready to measure.'));
-               gyr.addEventListener('error', error => console.log('Error type: ' + error.type + ', error: ' + error.error ));
+               gyr.addEventListener('activate', () => console.info('Ready to measure.'));
+               gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
                gyr.addEventListener('reading', () => {
-                   console.log(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
+                   console.info(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
                });
                gyr.start();
            }
@@ -139,10 +151,10 @@ When the **Web** component is connected to a motion or orientation sensor, confi
            // Access the orientation sensor of the device and obtain its data.
            function getAbsoluteOrientationSensor() {
                var aos = new AbsoluteOrientationSensor({frequency: 60});
-               aos.addEventListener('activate', () => console.log('Ready to measure.'));
-               aos.addEventListener('error', error => console.log('Error type: ' + error.type + ', error: ' + error.error ));
+               aos.addEventListener('activate', () => console.info('Ready to measure.'));
+               aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
                aos.addEventListener('reading', () => {
-                   console.log(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
+                   console.info(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
                });
                aos.start();
            }
@@ -153,7 +165,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                if ('DeviceMotionEvent' in window) {
                    window.addEventListener('devicemotion', handleMotionEvent, false);
                } else {
-                 console.log ("DeviceMotionEvent is not supported.");
+                 console.info('DeviceMotionEvent is not supported');
                }
            }
    
@@ -162,7 +174,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                if ('DeviceMotionEvent' in window) {
                  window.removeEventListener('devicemotion', handleMotionEvent, false);
                } else {
-                 console.log ("DeviceOrientationEvent is not supported.");
+                 console.info('DeviceMotionEvent is not supported');
                }
            }
    
@@ -171,7 +183,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                const x = event.accelerationIncludingGravity.x;
                const y = event.accelerationIncludingGravity.y;
                const z = event.accelerationIncludingGravity.z;
-               console.log(`DeviceMotionEvent data: ${event.timeStamp}, ${x}, ${y}, ${z}`);
+               console.info(`DeviceMotionEvent data: ${event.timeStamp}, ${x}, ${y}, ${z}`);
            }
    
            // Listen for the device orientation events and execute the corresponding processing logic.
@@ -180,7 +192,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                if ('DeviceOrientationEvent' in window) {
                    window.addEventListener('deviceorientation', handleOrientationEvent, false);
                } else {
-                   console.log ("DeviceOrientationEvent is not supported.");
+                   console.info('DeviceOrientationEvent is not supported');
                }
            }
    
@@ -189,7 +201,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                if ('DeviceOrientationEvent' in window) {
                  window.removeEventListener('deviceorientation', handleOrientationEvent, false);
                } else {
-                 console.log ("DeviceOrientationEvent is not supported.");
+                 console.info('DeviceOrientationEvent is not supported');
                }
            }
    
@@ -199,7 +211,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                if ('DeviceOrientationEvent' in window) {
                    window.addEventListener('deviceorientationabsolute', handleOrientationEvent, false);
                } else {
-                   console.log ("DeviceOrientationEvent is not supported.");
+                   console.info('DeviceOrientationEvent is not supported');
                }
            }
    
@@ -208,13 +220,13 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                if ('DeviceOrientationEvent' in window) {
                  window.removeEventListener('deviceorientationabsolute', handleOrientationEvent, false);
                } else {
-                 console.log ("DeviceOrientationEvent is not supported.");
+                 console.info('DeviceOrientationEvent is not supported');
                }
            }
    
            // Handle the orientation event.
            function handleOrientationEvent(event) {
-               console.log(`DeviceOrientationEvent data: ${event.timeStamp}, ${event.absolute}, ${event.alpha}, ${event.beta}, ${event.gamma}`);
+               console.info(`DeviceOrientationEvent data: ${event.timeStamp}, ${event.absolute}, ${event.alpha}, ${event.beta}, ${event.gamma}`);
            }
        </script>
    </head>

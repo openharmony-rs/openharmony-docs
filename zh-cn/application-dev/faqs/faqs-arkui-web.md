@@ -1,5 +1,11 @@
 # Web开发常见问题
 
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yp99ustc; @aohui; @weixin_41848015-->
+<!--Designer: @ctqctq99; @yaomingliu; @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloCrease-->
 
 ## H5页面如何与ArkTS交互(API 10)
 
@@ -82,6 +88,7 @@
               results.push(callFun(paramsObj.data))
           })
           Promise.all(results.filter(i => !!i)).then(res => {
+              // 依赖于results中包含非undefined或null的元素。
               this.callback(paramsObj.callID, res.length > 1 ? res : res[0])
           })
       }
@@ -193,7 +200,7 @@ Web({ src: 'www.example.com', controller: this.controller })
    <body>
        <h1>标题</h1>
        <h5 id="h5"></h5>
-       <h5 id = "h6"></h5>
+       <h5 id="h6"></h5>
        <button onclick="handleFromH5">调用Arkts的方法</button>
        <script type="text/javascript">
            function handleFromH5(){

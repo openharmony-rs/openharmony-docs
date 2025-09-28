@@ -1,4 +1,10 @@
 # Media Error Codes
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -153,6 +159,26 @@ The value of the parameter exceeds the expected range.
 
 Adjust the parameter value to fall within the acceptable range.
 
+<!--Del-->
+## 5400109 Session ID Does Not Exist
+
+**Error Message**
+
+Sessions not exist. Return by promise.
+
+**Description**
+
+This error is reported when the session ID does not exists.
+
+**Possible Causes**
+
+The session ID does not exist.
+
+**Solution**
+
+Pass in a correct session ID.
+<!--DelEnd-->
+
 ## 5411001 Failed to Parse or Connect to the Server Address
 
 **Error Message**
@@ -176,7 +202,7 @@ Try another server address.
 
 **Error Message**
 
-Connection time out.
+Connection timeout.
 
 **Description**
 
@@ -195,7 +221,7 @@ The network is abnormal.
 
 **Error Message**
 
-NetWork abnormal.
+Network abnormal.
 
 **Description**
 
@@ -213,7 +239,7 @@ Destroy this instance and re-create it. If the re-creation fails, stop related o
 
 **Error Message**
 
-NetWork unavailable.
+Network unavailable.
 
 **Description**
 
@@ -346,7 +372,7 @@ The certificate is not carried, is invalid, or has expired.
 
 **Error Message**
 
-Unsupportted request.
+Unsupported request.
 
 **Description**
 
@@ -365,7 +391,7 @@ The client request parameter is incorrect or exceeds the processing capability.
 
 **Error Message**
 
-seek continuous is unsupported.
+Seek continuous is unsupported.
 
 **Description**
 
@@ -383,7 +409,7 @@ The media source or device does not support the seek operation in SEEK_CONTINUOU
 
 **Error Message**
 
-super resolution not supported.
+Super resolution not supported.
 
 **Description**
 
@@ -401,7 +427,7 @@ Do not call super resolution related APIs for the media source on the current de
 
 **Error Message**
 
-super resolution not enabled.
+Super resolution not enabled.
 
 **Description**
 
@@ -409,7 +435,7 @@ Super resolution is not enabled. As a result, super resolution related APIs are 
 
 **Possible Causes**
 
-Super resolution is not enabled by using [PlaybackStrategy](./js-apis-media.md#playbackstrategy12).
+Super resolution is not enabled by using [PlaybackStrategy](./arkts-apis-media-i.md#playbackstrategy12).
 
 **Solution**
 

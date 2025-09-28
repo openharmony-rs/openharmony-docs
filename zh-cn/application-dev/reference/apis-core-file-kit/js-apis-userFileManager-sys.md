@@ -1,4 +1,10 @@
 # @ohos.filemanagement.userFileManager (用户数据管理)(系统接口)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 该模块提供用户数据管理能力：包括访问、修改用户公共媒体数据信息等常用功能。
 
@@ -693,10 +699,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   let album: userFileManager.Album = await fetchResult.getFirstObject();
   mgr.deleteAlbums([album]).then(() => {
     console.info('deletePhotoAlbumsPromise successfully');
+      fetchResult.close();
     }).catch((err: BusinessError) => {
       console.error('deletePhotoAlbumsPromise failed with err: ' + err);
+      fetchResult.close();
   });
-  fetchResult.close();
 }
 ```
 
@@ -1517,7 +1524,7 @@ async function example(mgr: userFileManager.UserFileManager) {
       fetchColumns: [],
       predicates: predicatesForGetAsset
     };
-    // Obtain the uri of the album
+    // 获取相册的uri。
     let albumFetchResult: userFileManager.FetchResult<userFileManager.Album> = await mgr.getAlbums(userFileManager.AlbumType.SYSTEM, userFileManager.AlbumSubType.FAVORITE, fetchOp);
     let album: userFileManager.Album = await albumFetchResult.getFirstObject();
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1528,7 +1535,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let photoFetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await album.getPhotoAssets(fetchOptions);
     let expectIndex = 1;
-    // Obtain the uri of the second file
+    // 获取第二个文件的uri。
     let photoAsset: userFileManager.FileAsset = await photoFetchResult.getPositionObject(expectIndex);
     mgr.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions, (err, index) => {
       if (err == undefined) {
@@ -1593,9 +1600,13 @@ async function example(mgr: userFileManager.UserFileManager) {
       fetchColumns: [],
       predicates: predicatesForGetAsset
     };
-    // Obtain the uri of the album
+    // 获取相册的uri。
     let albumFetchResult: userFileManager.FetchResult<userFileManager.Album> = await mgr.getAlbums(userFileManager.AlbumType.SYSTEM, userFileManager.AlbumSubType.FAVORITE, fetchOp);
     let album: userFileManager.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('getPhotoIndexPromise albums is undefined');
+      return;
+    }
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     predicates.orderByAsc(userFileManager.ImageVideoKey.DATE_MODIFIED.toString());
     let fetchOptions: userFileManager.FetchOptions = {
@@ -1604,7 +1615,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let photoFetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await album.getPhotoAssets(fetchOptions);
     let expectIndex = 1;
-    // Obtain the uri of the second file
+    // 获取第二个文件的uri。
     let photoAsset: userFileManager.FileAsset = await photoFetchResult.getPositionObject(expectIndex);
     mgr.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions).then((index) => {
       console.info(`getPhotoIndex successfully and index is : ${index}`);
@@ -1725,15 +1736,15 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
   let onCallback1 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something
+    // 图像文件已更改，请执行操作。
   }
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something
+    // 图像文件已更改，请执行操作。
   }
-  // 注册onCallback1监听
+  // 注册onCallback1监听。
   mgr.on(fileAsset.uri, false, onCallback1);
-  // 注册onCallback2监听
+  // 注册onCallback2监听。
   mgr.on(fileAsset.uri, false, onCallback2);
 
   fileAsset.favorite(true, (err) => {
@@ -1794,12 +1805,14 @@ async function example(mgr: userFileManager.UserFileManager) {
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
     console.info('onCallback2 on');
   }
-  // 注册onCallback1监听
-  mgr.on(fileAsset.uri, false, onCallback1);
-  // 注册onCallback2监听
-  mgr.on(fileAsset.uri, false, onCallback2);
-  // 关闭onCallback1监听，onCallback2 继续监听
-  mgr.off(fileAsset.uri, onCallback1);
+  if (fileAsset.uri !== undefined) {
+    // 注册onCallback1监听。
+    mgr.on(fileAsset.uri, false, onCallback1);
+    // 注册onCallback2监听。
+    mgr.on(fileAsset.uri, false, onCallback2);
+    // 关闭onCallback1监听，onCallback2 继续监听。
+    mgr.off(fileAsset.uri, onCallback1);  
+  }
   fileAsset.favorite(true, (err) => {
     if (err == undefined) {
       console.info('favorite successfully');
@@ -1837,7 +1850,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // image file had changed, do something
+    // 图像文件已更改，请执行操作。
   });
   try {
     let testFileName: string = 'testFile' + Date.now() + '.jpg';
@@ -1847,14 +1860,14 @@ async function example(mgr: userFileManager.UserFileManager) {
   } catch (err) {
     console.error('createPhotoAsset failed, message = ' + err);
   }
-  //sleep 1s
+  // 睡眠一秒。
   if (count > 0) {
     console.info('onDemo success');
   } else {
     console.error('onDemo fail');
   }
   mgr.off('imageChange', () => {
-    // stop listening success
+    // 停止监听成功。
   });
 }
 ```
@@ -1886,11 +1899,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // image file had changed, do something
+    // 图像文件已更改，请执行操作。
   });
 
   mgr.off('imageChange', () => {
-    // stop listening success
+    // 停止监听成功。
   });
 
   try {
@@ -1901,7 +1914,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   } catch (err) {
     console.error('createPhotoAsset failed, message = ' + err);
   }
-  //sleep 1s
+  // 睡眠一秒。
   if (count == 0) {
     console.info('offDemo success');
   } else {
@@ -2727,7 +2740,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-返回jpg格式图片Exif标签组成的json格式的字符串，该方法使用Promise方式返回结果。
+返回jpg格式图片Exif标签组成的json格式的字符串，该方法使用callback方式返回结果。
 
 **注意**：此接口返回的是exif标签组成的json格式的字符串，完整exif信息由all_exif与[ImageVideoKey.USER_COMMENT](#imagevideokey)组成，fetchColumns需要传入这两个字段。
 
@@ -2803,6 +2816,11 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await mgr.getPhotoAssets(fetchOptions);
     let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+    if (fileAsset === undefined) {
+      console.error('getExif fileAsset is undefined');
+      fetchResult.close();
+      return;
+    }
     console.info('getExifDemo fileAsset displayName: ' + JSON.stringify(fileAsset.displayName));
     let userCommentKey: string = 'UserComment';
     fileAsset.getExif((err, exifMessage) => {
@@ -3368,8 +3386,12 @@ async function example(mgr: userFileManager.UserFileManager) {
     predicates: predicates
   };
   let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await mgr.getPhotoAssets(fetchOption);
-  let fileAsset: userFileManager.FileAsset = await fetchResult.getPositionObject(0);
-  console.info('fileAsset displayName: ', fileAsset.displayName);
+  if (fetchResult.getCount() > 0) {
+    let fileAsset: userFileManager.FileAsset = await fetchResult.getPositionObject(0);
+    console.info('fileAsset displayName: ', fileAsset.displayName);
+  } else {
+    console.info('No file assets found');
+  } 
 }
 ```
 
@@ -4202,6 +4224,10 @@ async function example(mgr: userFileManager.UserFileManager) {
     predicates: predicates
   };
   const trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  if (trashAlbum === undefined) {
+    console.error('trashAlbum is undefined');
+    return;
+  }
   trashAlbum.getPhotoAssets(fetchOption, (err, fetchResult) => {
     if (fetchResult != undefined) {
       let count = fetchResult.getCount();
@@ -4403,8 +4429,16 @@ async function example(mgr: userFileManager.UserFileManager) {
     predicates: predicates
   };
   let trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  if (trashAlbum === undefined) {
+    console.error('privateAlbumRecoverDemoCallback trashAlbum is undefined');
+    return;
+  }
   let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await trashAlbum.getPhotoAssets(fetchOption);
   let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+  if (fileAsset === undefined) {
+    console.error('privateAlbumRecoverDemoCallback fileAsset is undefined');
+    return;
+  }
   let recoverFileUri: string = fileAsset.uri;
   trashAlbum.recover(recoverFileUri, (err) => {
     if (err != undefined) {
@@ -4470,30 +4504,38 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 ## MemberType
 
-成员类型。
+type MemberType = number | string | boolean
+
+文件资产成员的类型。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
-| 名称  |  类型 |  只读  |  可选  |  说明  |
-| ----- |  ---- |  ---- |  ---- |  ---- |
-| number |  number | 是 | 是 | number类型。 |
-| string |  string | 是 | 是 | string类型。|
-| boolean |  boolean | 是 | 是 | boolean类型。 |
+| 类型  | 说明                      |
+| ----- |  ---- |
+| number | number类型。 |
+| string | string类型。 |
+| boolean | boolean类型。 |
 
 ## ChangeEvent
 
+type ChangeEvent = 'deviceChange' | 'albumChange' | 'imageChange' | 'audioChange' | 'videoChange' | 'remoteFileChange'
+
 变更监听的媒体文件类型。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
-| 名称   | 类型                     | 必填 | 说明                      |
-| -------- | ------------------------- | ---- | ----- |
-| deviceChange | string | 是    | 设备。 |
-| albumChange | string | 是    | 相册。 |
-| imageChange | string | 是    | 图片。 |
-| audioChange | string | 是    | 音频。 |
-| videoChange | string | 是    | 视频。 |
-| remoteFileChange | string | 是    | 远程文件。 |
+| 类型  | 说明                      |
+| ----- |  ---- |
+| 'deviceChange' | 表示设备，值固定为'deviceChange'字符串。 |
+| 'albumChange' | 表示相册，值固定为'albumChange'字符串。 |
+| 'imageChange' | 表示图片，值固定为'imageChange'字符串。 |
+| 'audioChange' | 表示音频，值固定为'audioChange'字符串。 |
+| 'videoChange' | 表示视频，值固定为'videoChange'字符串。 |
+| 'remoteFileChange' | 表示远程文件，值固定为'remoteFileChange'字符串。 |
 
 ## PeerInfo
 
@@ -4646,12 +4688,14 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 图片或视频的创建选项。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subType           | [PhotoSubType](#photosubtype10) | 否  | 图片或者视频的子类型。  |
-| cameraShotKey           | string | 否  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
+| subType           | [PhotoSubType](#photosubtype10) | 否   | 是   | 图片或者视频的子类型。 |
+| cameraShotKey           | string | 否   | 是   | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。 |
 
 ## FetchOptions
 

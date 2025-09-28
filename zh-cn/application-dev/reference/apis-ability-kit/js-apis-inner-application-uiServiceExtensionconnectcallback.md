@@ -1,5 +1,12 @@
 # UIServiceExtensionConnectCallback
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 UIServiceExtensionConnectCallback是UIServiceExtension连接回调接口类，提供UIServiceExtension连接回调数据能力。
 
 
@@ -95,7 +102,7 @@ struct UIServiceExtensionAbility {
       // 连接到UIServiceExtensionAbility
       context.connectUIServiceExtensionAbility(startWant, this.dataCallBack)
         .then((proxy: common.UIServiceProxy) => {
-          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           let formData: Record<string, string> = {
             'PATH': '/tmp/aaa.jpg'
@@ -205,4 +212,3 @@ struct UIServiceExtensionAbility {
   }
 }
 ```
-

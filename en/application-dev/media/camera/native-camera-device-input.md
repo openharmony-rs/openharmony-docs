@@ -1,12 +1,18 @@
 # Device Input Management (C/C++)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
-Before developing a camera application, request permissions by following the instructions provided in [Requesting Camera Development Permissions](camera-preparation.md).
+Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
 A camera application invokes and controls a camera device to perform basic operations such as preview, photo capture, and video recording.
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API reference.
+Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API reference.
 
 1. Import the NDK.  
 
@@ -32,7 +38,7 @@ Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API refe
    )
    ```
 
-3. Call [OH_CameraManager_CreateCameraInput()](../../reference/apis-camera-kit/_o_h___camera.md#oh_cameramanager_createcamerainput) to obtain a **cameraInput** object.
+3. Call [OH_CameraManager_CreateCameraInput()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcamerainput) to obtain a cameraInput object.
    ```c++
    // Listen for camera input errors.
    void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
@@ -84,7 +90,7 @@ Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API refe
        }
        // Obtain the camera list.
         ret = OH_CameraManager_GetSupportedCameras(cameraManager, &cameras, &size);
-        if (cameras == nullptr || size < 0 || ret != CAMERA_OK) {
+        if (cameras == nullptr || size == 0 || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
             return;
         }
@@ -106,11 +112,12 @@ Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API refe
        }
    }
    ```
+
    > **NOTE**
    >
    > Before any camera device input, you must complete camera management by following the instructions provided in [Camera Device Management](native-camera-device-management.md).
 
-4. Call [OH_CameraManager_GetSupportedSceneModes()](../../reference/apis-camera-kit/_o_h___camera.md#oh_cameramanager_getsupportedscenemodes) to obtain the list of scene modes supported by the current camera device. The list stores all the [Camera_SceneModes](../../reference/apis-camera-kit/_o_h___camera.md#camera_scenemode) supported by the camera device.
+4. Call [OH_CameraManager_GetSupportedSceneModes()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes) to obtain the list of scene modes supported by the current camera device. The list stores all the [Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode) supported by the camera device.
 
    ```c++
    bool IsSupportedSceneMode(Camera_Device camera, Camera_SceneMode sceneMode)
@@ -122,7 +129,7 @@ Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API refe
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedSceneModes failed.");
            return false;
        }
-       for (int index = 0; index < sceneModeSize; index++) {
+       for (uint32_t index = 0; index < sceneModeSize; index++) {
            OH_LOG_INFO(LOG_APP, "scene mode = %{public}u ", sceneModes[index]);    // Obtain the specified scene mode.
            if (sceneModes[index] == sceneMode) {
                return true;
@@ -132,8 +139,7 @@ Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API refe
    }
    ```
 
-5. Call [OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/_o_h___camera.md#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode) to obtain all output streams supported by the current device, such as preview streams and photo streams. The output streams supported are the value of each **profile** field under **CameraOutputCapability**. Different types of output streams must be added based on the value of [Camera_SceneMode](../../reference/apis-camera-kit/_o_h___camera.md#camera_scenemode) specified by the camera device.
-
+5. Call [OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode) to obtain all output streams supported by the current device, such as preview streams and photo streams. The output streams supported are the value of each **profile** field under **CameraOutputCapability**. Different types of output streams must be added based on the value of [Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode) specified by the camera device.
 
    ```c++
    Camera_OutputCapability* GetSupportedCameraOutputCapability(Camera_Manager* cameraManager, Camera_Device &camera)

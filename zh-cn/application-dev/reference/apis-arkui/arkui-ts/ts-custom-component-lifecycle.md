@@ -1,4 +1,10 @@
 # 自定义组件的生命周期
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @seaside_wu1; @huyisuo-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 自定义组件的生命周期回调函数用于通知用户该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用程序中手动调用这些回调函数。不要在多个窗口复用同一个自定义组件节点，其生命周期可能会紊乱。
 
@@ -7,12 +13,23 @@
 >- 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >- 允许在生命周期函数中使用Promise和异步回调函数，比如网络资源获取，定时器设置等。
 
+## build
+
+build(): void
+
+build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToAppear
 
 aboutToAppear?(): void
 
-aboutToAppear函数在创建自定义组件的新实例后，在执行其build()函数之前执行。允许在aboutToAppear函数中改变状态变量，更改将在后续执行build()函数中生效。实现自定义布局的自定义组件的aboutToAppear生命周期在布局过程中触发。
+aboutToAppear函数在创建自定义组件的新实例后，在其build()函数执行前调用。允许在aboutToAppear函数中改变状态变量，更改将在后续执行build()函数中生效。实现[自定义布局](./ts-custom-component-layout.md)的自定义组件的aboutToAppear生命周期在布局过程中触发。
 
 > **说明：**
 >
@@ -29,7 +46,7 @@ aboutToAppear函数在创建自定义组件的新实例后，在执行其build()
 
 onDidBuild?(): void
 
-onDidBuild函数在执行自定义组件的build()函数之后执行，开发者可以在这个阶段进行埋点数据上报等不影响实际UI的功能。不建议在onDidBuild函数中更改状态变量、使用animateTo等功能，这可能会导致不稳定的UI表现。
+onDidBuild函数在自定义组件的build()函数执行后调用，开发者可以在这个阶段进行埋点数据上报等不影响实际UI的功能。不建议在onDidBuild函数中更改状态变量、使用animateTo等功能，这可能会导致不稳定的UI表现。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -65,7 +82,7 @@ router路由页面（仅[\@Entry](../../../../application-dev/ui/state-managemen
 
 onPageHide?(): void
 
-router路由页面（仅[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的自定义组件）每次隐藏时触发一次，包括路由跳转、应用进入后台等场景。
+router路由页面每次隐藏时触发一次，包括路由跳转、应用进入后台等场景。
 
 > **说明：**
 >
@@ -137,9 +154,9 @@ onNewParam?(param: ESObject): void
 
 **参数：**
 
-| 参数名 | 类型     |              说明         |
-|-------|----------|---------------------------|
-| param | ESObject | 路由跳转时传递到目标页面的数据。|
+| 参数名 | 类型     | 必填     |             说明         |
+|-------|----------|----------|---------------------------|
+| param | ESObject |是 | 路由跳转时传递到目标页面的数据。|
 
 ```ts
 // pages/Index.ets
@@ -157,11 +174,11 @@ export class routerParam {
 @Component
 struct Index {
   aboutToAppear(): void {
-    console.log('onNewParam', 'Index aboutToAppear');
+    console.info('onNewParam', 'Index aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -198,11 +215,11 @@ import { routerParam } from './Index';
 @Component
 struct PageOne {
   aboutToAppear(): void {
-    console.log('onNewParam', 'PageOne aboutToAppear');
+    console.info('onNewParam', 'PageOne aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -238,7 +255,7 @@ aboutToReuse?(params: Record\<string, Object | undefined | null>): void
 
 > **说明：**
 >
-> * 避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse中重复更新。最佳实践请参考[组件复用最佳实践-优化状态管理，精准控制组件刷新范围使用](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse#section4470171391314)。
+> * [避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse()中重复赋值](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse#section7441712174414)。
 > * 在滑动场景中，使用组件复用通常需要用该回调函数去更新组件的状态变量，因此在该回调函数中应避免耗时操作，否则会导致丢帧卡顿。最佳实践请参考[主线程耗时操作优化指导-组件复用回调](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -247,9 +264,9 @@ aboutToReuse?(params: Record\<string, Object | undefined | null>): void
 
 **参数：**
 
-| 参数名  | 类型                                      | 说明                |
-|--------|-------------------------------------------|---------------------|
-| params | Record\<string, Object \| undefined \| null> | 自定义组件的构造参数。|
+| 参数名  | 类型                                      | 必填 | 说明                |
+|--------|-------------------------------------------|-----|---------------------|
+| params | Record\<string, Object \| undefined \| null> |   是   | 自定义组件的构造参数。|
 
 ```ts
 // xxx.ets
@@ -335,7 +352,7 @@ struct Index {
 struct ReusableV2Component {
   @Local message: string = 'Hello World';
   aboutToReuse() {
-    console.log('ReusableV2Component aboutToReuse'); // 复用时被调用
+    console.info('ReusableV2Component aboutToReuse'); // 复用时被调用
   }
   build() {
     Column() {
@@ -430,9 +447,21 @@ onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创�
 
 **参数：**
 
-| 参数名    | 类型                                       | 说明         |
-|--------|------------------------------------------|------------|
-| theme | [Theme](../js-apis-arkui-theme.md#theme) | 自定义组件当前生效的Theme对象。|
+| 参数名    | 类型                                       | 必填    | 说明         |
+|--------|------------------------------------------|------------|-------------------------|
+| theme | [Theme](#theme12) | 是     | 自定义组件当前生效的Theme对象。|
+
+## Theme<sup>12+</sup>
+
+type Theme = Theme
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                                                      | 说明                    |
+| --------------------------------------------------------- | ----------------------- |
+| [Theme](../js-apis-arkui-theme.md#theme) | 自定义组件当前生效的Theme对象。 |
 
 V1：
 
@@ -578,3 +607,143 @@ struct IndexComponent {
 ```
 
 ![onWillApplyTheme_V2](figures/onWillApplyTheme_V2.png)
+
+## pageTransition<sup>9+</sup>
+
+pageTransition?(): void
+
+进入此页面或移动到其他页面时实现动画。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onFormRecycle<sup>11+</sup>
+
+onFormRecycle?(): string
+
+onFormRecycle回调函数在卡片回收时执行，卡片提供方可以返回需要卡片管理服务代保存的数据，在卡片恢复时通过[onFormRecover](#onformrecover11)接口传给卡片提供方。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                | 说明        |
+| ------------------- | ---------   |
+| string | 返回卡片提供方需要卡片管理服务代保存的数据。 |
+
+**示例：**
+```ts
+@Entry
+@Component
+struct WidgetCard {
+  readonly title: string = 'Hello World';
+  readonly actionType: string = 'router';
+  readonly abilityName: string = 'EntryAbility';
+  readonly message: string = 'add detail';
+  readonly fullWidthPercent: string = '100%';
+  readonly fullHeightPercent: string = '100%';
+
+  onFormRecycle(): string {
+    let formId: string = "1859635745"
+    console.info("card is recycled, formID: " + formId);
+    return formId;
+  }
+
+  onFormRecover(statusData: string): void {
+    console.info("card has been restored, formID: " + statusData);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.title)
+          .fontSize($r('app.float.font_size'))
+          .fontWeight(FontWeight.Medium)
+          .fontColor($r('sys.color.font'))
+      }
+      .width(this.fullWidthPercent)
+    }
+    .height(this.fullHeightPercent)
+    .backgroundColor($r('sys.color.comp_background_primary'))
+    .onClick(() => {
+      postCardAction(this, {
+        action: this.actionType,
+        abilityName: this.abilityName,
+        params: {
+          message: this.message
+        }
+      });
+    })
+  }
+}
+```
+
+## onFormRecover<sup>11+</sup>
+
+onFormRecover?(statusData: string): void
+
+onFormRecover回调函数在卡片恢复时执行，卡片提供方可以拿到卡片回收时卡片管理服务代保存的数据，该数据可以通过[onFormRecycle](#onformrecycle11)卡片回收回调函数保存到卡片管理服务。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型                                       | 必填    | 说明         |
+|--------|------------------------------------------|------------|-------------------------|
+| statusData | string | 是     | 卡片回收时卡片管理服务代保存的数据。|
+
+**示例：**
+```ts
+@Entry
+@Component
+struct WidgetCard {
+  readonly title: string = 'Hello World';
+  readonly actionType: string = 'router';
+  readonly abilityName: string = 'EntryAbility';
+  readonly message: string = 'add detail';
+  readonly fullWidthPercent: string = '100%';
+  readonly fullHeightPercent: string = '100%';
+
+  onFormRecycle(): string {
+    let formId: string = "1859635745"
+    console.info("card is recycled, formID: " + formId);
+    return formId;
+  }
+
+  onFormRecover(statusData: string): void {
+    console.info("card has been restored, formID: " + statusData);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.title)
+          .fontSize($r('app.float.font_size'))
+          .fontWeight(FontWeight.Medium)
+          .fontColor($r('sys.color.font'))
+      }
+      .width(this.fullWidthPercent)
+    }
+    .height(this.fullHeightPercent)
+    .backgroundColor($r('sys.color.comp_background_primary'))
+    .onClick(() => {
+      postCardAction(this, {
+        action: this.actionType,
+        abilityName: this.abilityName,
+        params: {
+          message: this.message
+        }
+      });
+    })
+  }
+}
+```

@@ -1,4 +1,11 @@
-# @ohos.runningLock (Runninglock锁)
+# @ohos.runningLock (RunningLock锁)
+
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: PowerManager-->
+<!--Owner: @zhang-yinglie; @volcano_wang-->
+<!--Designer: @wangyantian0-->
+<!--Tester: @alien0208-->
+<!--Adviser: @w_Machine_cc-->
 
 该模块主要提供RunningLock锁相关操作的接口，包括创建、查询、持锁、释放锁等操作。
 
@@ -34,7 +41,7 @@ isSupported(type: RunningLockType): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[RunningLock锁错误码](errorcode-runninglock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
@@ -71,7 +78,7 @@ create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[RunningLock锁错误码](errorcode-runninglock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
@@ -116,7 +123,7 @@ create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[RunningLock锁错误码](errorcode-runninglock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
@@ -290,7 +297,7 @@ hold(timeout: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[RunningLock锁错误码](errorcode-runninglock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息     |
 |---------|----------|
@@ -340,7 +347,7 @@ unhold(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[RunningLock锁错误码](errorcode-runninglock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息     |
 |---------|----------|

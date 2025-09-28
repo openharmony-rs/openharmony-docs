@@ -1,5 +1,12 @@
 # 为通知添加行为意图
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 应用向Ability Kit申请[WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)，并将WantAgent封装至通知中。当发布通知时，用户便可以通过点击通知栏中的消息或按钮，拉起目标应用组件或发布公共事件。
 
 携带了actionButtons的通知示意图如下。
@@ -43,8 +50,8 @@
      wants: [
        {
          deviceId: '',
-         bundleName: 'com.samples.notification',
-         abilityName: 'SecondAbility',
+         bundleName: 'com.samples.notification', // 需要替换为对应的bundleName。
+         abilityName: 'SecondAbility', // 需要替换为对应的abilityName。
          action: '',
          entities: [],
          uri: '',
@@ -136,5 +143,5 @@
 
 ## 示例代码
 
-  - [自定义通知](https://gitee.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README_zh.md)
+  - [自定义通知](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README_zh.md)
 <!--RP1End-->

@@ -1,4 +1,10 @@
 # 语言基础类库错误码
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 > **说明：**
 >
@@ -57,7 +63,7 @@ Worker initialization failed.
 
 **处理步骤**
 
-1. 检查Worker的数量是否超出8个，如果存在，及时销毁空闲的Worker。
+1. 检查Worker的数量是否超出64个，如果超出，及时销毁空闲的Worker。
 2. 如果设置WorkerOptions，检查参数类型及其合法性。
 
 ## 10200004 Worker处于非运行状态
@@ -127,7 +133,7 @@ The worker file path is invalid.
 
 **可能原因**
 
-Worker文件路径异常导致无法正常编译生成合法的worker.abc。
+Worker文件路径异常。
 
 **处理步骤**
 
@@ -156,7 +162,7 @@ Buffer长度要求为size的整数倍。其中size为16-bits、32-bits或者64-b
 
 **错误信息**
 
-The container is empty.
+Container is empty.
 
 **错误描述**
 
@@ -951,3 +957,22 @@ ArrayBuffer已分离，或者ArrayBuffer为空。
 **处理步骤**
 
 调用时，确保使用的ArrayBuffer是可用的。无法保证时，需要捕获异常。
+
+## 10200301 加载native模块失败
+
+**错误信息**
+
+Loading native module failed.
+
+**错误描述**
+
+当加载native模块失败时，返回该错误码。
+
+**可能原因**
+
+1. 对应路径下不存在该native模块。
+2. 模块内容有问题，无法正确加载。
+
+**处理步骤**
+
+检查待加载的native模块是否在当前包内。

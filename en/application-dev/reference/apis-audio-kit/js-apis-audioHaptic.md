@@ -1,4 +1,10 @@
 # @ohos.multimedia.audioHaptic (Audio-Haptic)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 Audio-haptic enables users to get rhythmic auditory and haptic feedback while having incoming calls or messages.
 
@@ -17,7 +23,7 @@ import { audioHaptic } from '@kit.AudioKit';
 
 getAudioHapticManager(): AudioHapticManager
 
-Obtains an **AudioHapticManager** instance.
+Obtains an AudioHapticManager instance.
 
 **System capability**: SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -25,7 +31,7 @@ Obtains an **AudioHapticManager** instance.
 
 | Type                         | Description        |
 | ----------------------------- | ------------ |
-| [AudioHapticManager](#audiohapticmanager) | **AudioHapticManager** instance.|
+| [AudioHapticManager](#audiohapticmanager) | AudioHapticManager instance.|
 
 **Example**
 ```ts
@@ -49,14 +55,30 @@ Describes the options for the audio-haptic player.
 
 **System capability**: SystemCapability.Multimedia.AudioHaptic.Core
 
-| Name     | Type           |Mandatory  | Description                             |
-| --------- | -------------- | ---- | --------------------------------- |
-| muteAudio   | boolean      | No  | Whether to mute the audio. The value **true** means to mute the audio, and **false** means the opposite. If this parameter is not specified, the default value **false** is used.|
-| muteHaptics | boolean      | No  | Whether to mute haptics feedback. The value **true** means to mute haptics feedback, and **false** means the opposite. If this parameter is not specified, the default value **false** is used.|
+| Name     | Type           |Read-Only | Optional| Description                             |
+| --------- | -------------- | ---- |---| --------------------------------- |
+| muteAudio   | boolean      | No  | Yes| Whether to mute the audio. **true** to mute, **false** otherwise. If this parameter is not specified, the default value **false** is used.|
+| muteHaptics | boolean      | No  | Yes| Whether to mute haptics feedback. **true** to mute, **false** otherwise. If this parameter is not specified, the default value **false** is used.|
+
+## AudioHapticFileDescriptor<sup>20+</sup>
+
+Describes the audio-haptic file descriptor.
+
+>**NOTE**
+>
+> Ensure that **fd** is an available file descriptor and the values of **offset** and **length** are correct.
+
+**System capability**: SystemCapability.Multimedia.AudioHaptic.Core
+
+| Name    | Type          |Read-Only | Optional | Description                            |
+| --------- | -------------- | ---- | ---- | --------------------------------- |
+| fd        | number         | No  | No  | File descriptor of the audio-haptic file, which is generally greater than or equal to 0.|
+| offset    | number         | No  | Yes  | Offset in the file from which data will be read. By default, the offset is 0.|
+| length    | number         | No  | Yes  | Number of bytes to read. By default, the length is the number of bytes remaining in the file from the offset position.|
 
 ## AudioHapticManager
 
-Manages the audio-haptic feature. Before calling any API in **AudioHapticManager**, you must use [getAudioHapticManager](#audiohapticgetaudiohapticmanager) to create an **AudioHapticManager** instance.
+Manages the audio-haptic feature. Before calling any API in AudioHapticManager, you must use [getAudioHapticManager](#audiohapticgetaudiohapticmanager) to create an AudioHapticManager instance.
 
 ### registerSource
 
@@ -70,7 +92,7 @@ Registers an audio-haptic source. This API uses a promise to return the result.
 
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| audioUri  | string                                  | Yes  | URI of the audio source. In normal latency mode, the supported audio resource formats and path formats are defined in [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9). In low latency mode, the supported audio resource formats are defined in [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool), and the path format must meet the requirements of [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen). In both modes, you are advised to pass in the absolute path of the file.          |
+| audioUri  | string                                  | Yes  | URI of the audio source. In normal latency mode, the supported audio resource formats and path formats are defined in [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md). In low latency mode, the supported audio resource formats are defined in [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool), and the path format must meet the requirements of [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen). In both modes, you are advised to pass in the absolute path of the file.          |
 | hapticUri | string                                  | Yes  | URI of the haptic source. The supported haptic resource formats are defined in [vibrator](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements of [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen). You are advised to pass in the absolute path of the file.        |
 
 **Return value**
@@ -81,7 +103,7 @@ Registers an audio-haptic source. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | ------- |-----------------------------------|
@@ -99,8 +121,61 @@ let id = 0;
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
   console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
   id = value;
-}).catch ((err: BusinessError) => {
+}).catch((err: BusinessError) => {
   console.error(`Failed to register source ${err}`);
+});
+```
+
+### registerSourceFromFd<sup>20+</sup>
+
+registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;number&gt;
+
+Registers audio-haptic resources through a file descriptor to ensure they are synchronized during playback. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Multimedia.AudioHaptic.Core
+
+**Parameters**
+
+| Name | Type                                    | Mandatory| Description                   |
+| -------- | ---------------------------------------- | ---- | ------------------------ |
+| audioFd | [AudioHapticFileDescriptor](#audiohapticfiledescriptor20) | Yes| Valid file descriptor object that has been opened, used to describe the audio file. The offset and length must match the actual file length.|
+| hapticFd | [AudioHapticFileDescriptor](#audiohapticfiledescriptor20) | Yes| Valid file descriptor object that has been opened, used to describe the haptic file. The offset and length must match the actual file length.|
+
+**Return value**
+
+| Type              | Description                          |
+| ------------------- | ------------------------------- |
+| Promise&lt;number&gt; | Promise used to return the ID of the resource registered.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // Use the corresponding file in the rawfile directory.
+let audioFd: audioHaptic.AudioHapticFileDescriptor = {
+  fd: audioFile.fd,
+  offset: audioFile.offset,
+  length: audioFile.length,
+};
+
+let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // Use the corresponding file in the rawfile directory.
+let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
+  fd: hapticFile.fd,
+  offset: hapticFile.offset,
+  length: hapticFile.length,
+};
+let id = 0;
+
+audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
+  console.info('Succeeded in doing registerSourceFromFd.');
+  id = value;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -126,7 +201,7 @@ Unregisters an audio-haptic source. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | ------- |-----------------------------------|
@@ -137,21 +212,12 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioUri = 'data/audioTest.wav'; // Change it to the URI of the target audio source.
-let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target haptic source.
-let id = 0;
-
-audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
-  id = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to register source ${err}`);
-});
+let id = 0; // The ID is obtained using registerSource.
 
 audioHapticManagerInstance.unregisterSource(id).then(() => {
-  console.info(`Promise returned to indicate that unregister source successfully`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to unregistere source ${err}`);
+  console.info('Succeeded in doing unregisterSource.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to unregisterSource. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -172,7 +238,7 @@ Sets the latency mode for an audio-haptic source.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
 
 | ID| Error Message                             |
 | ------- |-----------------------------------|
@@ -184,16 +250,7 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioUri = 'data/audioTest.wav'; // Change it to the URI of the target audio source.
-let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target haptic source.
-let id = 0;
-
-audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
-  id = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to register source ${err}`);
-});
+let id = 0; // The ID is obtained using registerSource.
 
 let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
 
@@ -213,11 +270,11 @@ Sets the stream usage for an audio-haptic source.
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
 | id       | number                                   | Yes  | Source ID.   |
-| usage    | [audio.StreamUsage](js-apis-audio.md#streamusage) | Yes  | Stream usage.   |
+| usage    | [audio.StreamUsage](arkts-apis-audio-e.md#streamusage) | Yes  | Stream usage.   |
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
 
 | ID| Error Message                             |
 | ------- |-----------------------------------|
@@ -230,16 +287,7 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioUri = 'data/audioTest.wav'; // Change it to the URI of the target audio source.
-let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target haptic source.
-let id = 0;
-
-audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
-  id = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to register source ${err}`);
-});
+let id = 0; // The ID is obtained using registerSource.
 
 let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
 
@@ -269,11 +317,11 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;[AudioHapticPlayer](#audiohapticplayer)&gt; | Promise used to return the audio-haptic player.|
+| Promise&lt;[AudioHapticPlayer](#audiohapticplayer)&gt; |Promise used to return the audio-haptic player.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
 
 | ID| Error Message                             |
 | ------- |-----------------------------------|
@@ -288,25 +336,16 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioUri = 'data/audioTest.wav'; // Change it to the URI of the target audio source.
-let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target haptic source.
-let id = 0;
-
-audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
-  id = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to register source ${err}`);
-});
+let id = 0; // The ID is obtained using registerSource.
 
 let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
 let audioHapticPlayerInstance: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
 audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
   audioHapticPlayerInstance = value;
-  console.info(`Create the audio haptic player successfully.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to create the audio haptic player. ${err}`);
+  console.info('Succeeded in doing createPlayer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to createPlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -323,7 +362,7 @@ Enumerates the audio haptic types.
 
 ## AudioHapticPlayer
 
-Implements audio-haptic playback. Before calling any API in **AudioHapticPlayer**, you must use [createPlayer](#createplayer) to create an **AudioHapticPlayer** instance.
+Implements audio-haptic playback. Before calling any API in AudioHapticPlayer, you must use [createPlayer](#createplayer) to create an AudioHapticPlayer instance.
 
 ### isMuted
 
@@ -343,11 +382,11 @@ Checks whether an audio-haptic type is muted.
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| boolean             | Check result. The value **true** means that the audio-haptic type is muted, and **false** means the opposite.|
+| boolean             | Check result for whether the audio-haptic type is muted. **true** if muted, **false** otherwise.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                             |
 | ------- |-----------------------------------|
@@ -392,7 +431,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.start().then(() => {
   console.info(`Promise returned to indicate that start playing successfully.`);
-}).catch ((err: BusinessError) => {
+}).catch((err: BusinessError) => {
   console.error(`Failed to start playing. ${err}`);
 });
 ```
@@ -427,7 +466,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.stop().then(() => {
   console.info(`Promise returned to indicate that stop playing successfully.`);
-}).catch ((err: BusinessError) => {
+}).catch((err: BusinessError) => {
   console.error(`Failed to stop playing. ${err}`);
 });
 ```
@@ -461,8 +500,98 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.release().then(() => {
   console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
-}).catch ((err: BusinessError) => {
+}).catch((err: BusinessError) => {
   console.error(`Failed to release the audio haptic player. ${err}`);
+});
+```
+
+### setVolume<sup>20+</sup>
+
+setVolume(volume: number): Promise&lt;void&gt;
+
+Sets the volume for this audio-haptic player. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> This API must be called before the audio-haptic player is released.
+
+**System capability**: SystemCapability.Multimedia.AudioHaptic.Core
+
+**Parameters**
+
+| Name | Type                                    | Mandatory| Description                   |
+| -------- | ---------------------------------------- | ---- | ------------------------ |
+| volume     | number                                | Yes | Volume, in the range [0.00, 1.00], where 1.00 indicates the maximum volume (100%).|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+
+| ID  | Error Message                             |
+|---------|-----------------------------------|
+| 5400105  | Service died. |
+| 5400102  | Operate not permit in current state. |
+| 5400108  | Parameter out of range. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioHapticPlayerInstance.setVolume(0.5).then(() => {
+  console.info('Promise returned to indicate that set volume successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set volume. ${err}`);
+});
+```
+
+### setLoop<sup>20+</sup>
+
+setLoop(loop: boolean): Promise&lt;void&gt;
+
+Sets this audio-haptic player to play in a loop. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> This API must be called before the audio-haptic player is released.
+
+**System capability**: SystemCapability.Multimedia.AudioHaptic.Core
+
+**Parameters**
+
+| Name | Type                                    | Mandatory| Description                   |
+| -------- | ---------------------------------------- | ---- | ------------------------ |
+| loop | boolean                           | Yes | Whether to play in a loop. **true** to play in a loop, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md).
+
+| ID  | Error Message                             |
+|---------|-----------------------------------|
+| 5400102  | Operate not permit in current state. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioHapticPlayerInstance.setLoop(true).then(() => {
+  console.info('Promise returned to indicate that set player loop successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set player loop. ${err}`);
 });
 ```
 
@@ -533,7 +662,7 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 | Name  | Type                    | Mandatory| Description                                                                      |
 | -------- | ----------------------- | ---- | -------------------------------------------------------------------------- |
 | type     | string                  | Yes  | Event type. The event **'audioInterrupt'** is triggered when the audio focus is changed.|
-| callback | Callback&lt;[audio.InterruptEvent](js-apis-audio.md#interruptevent9)&gt; | Yes  | Callback used to return the event information.|
+| callback | Callback&lt;[audio.InterruptEvent](arkts-apis-audio-i.md#interruptevent9)&gt; | Yes  | Callback used to return the event information.|
 
 **Example**
 
@@ -545,9 +674,9 @@ let isDucked: boolean; // An identifier specifying whether the audio volume is r
 
 audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
   // When an audio interruption event occurs, the audioHapticPlayerInstance receives the interruptEvent callback and performs processing based on the content in the callback.
-  // 1. (Optional) The audioHapticPlayerInstance reads the value of interruptEvent.forceType to see whether the system has forcibly performed the operation.
-  // Note: In the default focus policy, INTERRUPT_HINT_RESUME maps to the force type INTERRUPT_SHARE, and others map to INTERRUPT_FORCE. Therefore, the value of forceType does not need to be checked.
-  // 2. (Mandatory) The audioHapticPlayerInstance then reads the value of interruptEvent.hintType and performs corresponding processing.
+  // 1. (Optional) The AudioRenderer reads the value of interruptEvent.forceType to see whether the system has forcibly performed the operation.
+  // Note: In the default focus strategy, INTERRUPT_HINT_RESUME maps to the force type INTERRUPT_SHARE, and others map to INTERRUPT_FORCE. Therefore, the value of forceType does not need to be checked.
+  // 2. (Mandatory) The AudioRenderer then reads the value of interruptEvent.hintType and performs corresponding processing.
   if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
     // The audio focus event has been forcibly executed by the system. The application needs to update its status and displayed content.
     switch (interruptEvent.hintType) {
@@ -568,7 +697,7 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // The audio stream is rendered at the normal volume.
-        console.info('Force ducked. Update volume status');
+        console.info('Force unducked. Update volume status');
         isDucked = false; // A simplified processing indicating several operations for updating the volume status.
         break;
       default:
@@ -603,7 +732,7 @@ Unsubscribes from the audio interruption event. This API uses an asynchronous ca
 | Name| Type  | Mandatory| Description                                             |
 | ----- | ----- | ---- | ------------------------------------------------- |
 | type   | string | Yes  | Event type. The event **'audioInterrupt'** is triggered when the audio focus is changed.|
-| callback | Callback&lt;[audio.InterruptEvent](js-apis-audio.md#interruptevent9)&gt; | No  | Callback used to return the event information.|
+| callback | Callback&lt;[audio.InterruptEvent](arkts-apis-audio-i.md#interruptevent9)&gt; | No  | Callback used to return the event information.|
 
 **Example**
 
@@ -618,9 +747,9 @@ let isPlaying: boolean; // An identifier specifying whether rendering is in prog
 let isDucked: boolean; // An identifier specifying whether the audio volume is reduced.
 let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
   // When an audio interruption event occurs, the audioHapticPlayerInstance receives the interruptEvent callback and performs processing based on the content in the callback.
-  // 1. (Optional) The audioHapticPlayerInstance reads the value of interruptEvent.forceType to see whether the system has forcibly performed the operation.
-  // Note: In the default focus policy, INTERRUPT_HINT_RESUME maps to the force type INTERRUPT_SHARE, and others map to INTERRUPT_FORCE. Therefore, the value of forceType does not need to be checked.
-  // 2. (Mandatory) The audioHapticPlayerInstance then reads the value of interruptEvent.hintType and performs corresponding processing.
+  // 1. (Optional) The AudioRenderer reads the value of interruptEvent.forceType to see whether the system has forcibly performed the operation.
+  // Note: In the default focus strategy, INTERRUPT_HINT_RESUME maps to the force type INTERRUPT_SHARE, and others map to INTERRUPT_FORCE. Therefore, the value of forceType does not need to be checked.
+  // 2. (Mandatory) The AudioRenderer then reads the value of interruptEvent.hintType and performs corresponding processing.
   if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
     // The audio focus event has been forcibly executed by the system. The application needs to update its status and displayed content.
     switch (interruptEvent.hintType) {
@@ -641,7 +770,7 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // The audio stream is rendered at the normal volume.
-        console.info('Force ducked. Update volume status');
+        console.info('Force unducked. Update volume status');
         isDucked = false; // A simplified processing indicating several operations for updating the volume status.
         break;
       default:

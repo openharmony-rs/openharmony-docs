@@ -1,4 +1,10 @@
 # Class (ProxyConfig)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 可以通过该类提供的接口对代理进行配置。
 

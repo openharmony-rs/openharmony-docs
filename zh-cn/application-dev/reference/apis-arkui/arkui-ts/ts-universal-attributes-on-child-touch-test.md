@@ -1,14 +1,20 @@
 # 自定义事件分发
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
-在处理触屏事件时，ArkUI会在触屏事件触发前进行按压点和组件区域的触摸测试，收集需要响应触屏事件的组件，再基于触摸测试结果分发相应的触屏事件。在父节点，可以通过onChildTouchTest决定子节点的触摸测试方式，影响子组件的触摸测试，从而影响后续的触屏事件分发。具体影响参考[TouchTestStrategy](#touchteststrategy枚举说明)枚举说明。
+在处理触屏事件时，ArkUI会在触屏事件触发前进行按压点和组件区域的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)，收集需要响应触屏事件的组件，再基于触摸测试结果分发相应的触屏事件。在父节点，可以通过onChildTouchTest决定子节点的触摸测试方式，影响子组件的触摸测试，从而影响后续的触屏事件分发。具体影响参考[TouchTestStrategy](#touchteststrategy11枚举说明)枚举说明。
 
 >  **说明：**
 >
->  - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - onClick以及旋转、捏合手势经过自定义事件分发之后可能会因为未命中触摸热区导致事件不响应。
+>  - onClick和旋转、捏合手势经过自定义事件分发后，可能会因为未命中触摸热区导致事件不响应。
 
-## onChildTouchTest
+## onChildTouchTest<sup>11+</sup>
 
 onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
@@ -22,7 +28,7 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 | 参数名 | 类型                                       | 必填 | 说明                   |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| value  | Array<[TouchTestInfo>](#touchtestinfo) | 是   | 包含子节点信息的数组。 |
+| event  | (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult | 是   | 触摸事件信息。value的值为包含子节点信息的数组。 |
 
 **返回值：** 
 
@@ -32,9 +38,11 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 >**说明：**
 >
->子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
+>- 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
+>
+>- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-## TouchTestInfo
+## TouchTestInfo<sup>11+</sup>
 
 当前屏幕触点所在组件的坐标系、id和尺寸相关信息。
 
@@ -42,18 +50,33 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型   | 描述                                       |
-| ------------- | ------ | ---------------------------------------- |
-| windowX | number | 按压点相对于窗口左上角的x轴坐标。<br />单位：vp |
-| windowY   | number |按压点相对于窗口左上角的y轴坐标。<br />单位：vp|
-| parentX   | number |按压点相对于父组件左上角的x轴坐标。<br />单位：vp  |
-| parentY   | number |按压点相对于父组件左上角的y轴坐标。<br />单位：vp  |
-| x   | number | 按压点相对于子组件左上角的x轴坐标。<br />单位：vp |
-| y   | number | 按压点相对于子组件左上角的y轴坐标。<br />单位：vp |
-| rect   | [RectResult](ts-types.md#rectresult10) |子组件的大小。  |
-| [id](ts-universal-attributes-component-id.md)   | string | 通过id属性设置的组件id。 |
+| 名称          | 类型  | 只读    | 可选   |  说明                                       |
+| ------------- | ------ | ------ | ------ | ---------------------------------------- |
+| windowX | number | 否 | 否| 按压点相对于窗口左上角的x轴坐标。<br />单位：vp |
+| windowY   | number| 否 |否|按压点相对于窗口左上角的y轴坐标。<br />单位：vp|
+| parentX   | number| 否  |否|按压点相对于父组件左上角的x轴坐标。<br />单位：vp  |
+| parentY   | number| 否 |否|按压点相对于父组件左上角的y轴坐标。<br />单位：vp  |
+| x   | number| 否  | 否|按压点相对于子组件左上角的x轴坐标。<br />单位：vp |
+| y   | number| 否  |否| 按压点相对于子组件左上角的y轴坐标。<br />单位：vp |
+| rect   | [RectResult](#rectresult)| 否  |否|子组件的位置和宽高。  |
+| [id](ts-universal-attributes-component-id.md)   | string| 否  | 否|子组件的唯一标识。 |
 
-## TouchResult
+## RectResult
+
+位置和尺寸类型，用于描述组件的位置和宽高。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称      | 类型   | 只读 | 可选  | 说明 |
+| ------- | ------ | ----- | -------- | ---------- |
+| x     | number | 否 | 否 | 水平方向横坐标。|
+| y     | number |  否 | 否 | 竖直方向纵坐标。|
+| width | number | 否 | 否 | 内容宽度大小。|
+| height | number | 否 | 否 | 内容高度大小。|
+
+## TouchResult<sup>11+</sup>
 
 自定义事件分发结果，开发者通过返回结果来影响事件分发。
 
@@ -61,24 +84,26 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型                                     | 必填   | 描述                                |
-| --------- | --------- | ---- |--------------------------------------- |
-| strategy  | [TouchTestStrategy](#touchteststrategy枚举说明) | 是    | 事件派发策略。                     |
-| id  | string | 否    | 通过id属性设置的组件id。<br>当strategy为TouchTestStrategy.DEFAULT时，id是可选的；当strategy是TouchTestStrategy.FORWARD_COMPETITION或TouchTestStrategy.FORWARD时，id是必需的（如果没有返回id，则当成TouchTestStrategy.DEFAULT处理）。 |
+| 名称      | 类型                                     | 只读    | 可选   |  说明                                |
+| --------- | --------- | ---- |--------------------------------------- | ---- |
+| strategy  | [TouchTestStrategy](#touchteststrategy11枚举说明) | 否     | 否  |事件派发策略。                     |
+| id  | string | 否    | 是  |子组件的唯一标识。<br>当strategy为TouchTestStrategy.DEFAULT时，id是可选的；当strategy是TouchTestStrategy.FORWARD_COMPETITION或TouchTestStrategy.FORWARD时，id是必需的（如果没有返回id，则当成TouchTestStrategy.DEFAULT处理）。 |
 
-## TouchTestStrategy枚举说明
+## TouchTestStrategy<sup>11+</sup>枚举说明
 
-事件的派发策略。
+事件派发策略。
+
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 描述                                       |
-| ------------| ----------------------------------------- |
-| DEFAULT     | 自定义分发不产生影响，系统按当前节点命中状态分发事件。 |
-| FORWARD_COMPETITION       | 应用指定分发事件到某个子节点，其他兄弟节点是否分发事件交由系统决定。 |
-| FORWARD | 应用指定分发事件到某个子节点，系统不再处理分发事件到其他兄弟节点。 |
+| 名称          | 值    |说明                                       |
+| ------------| ---------| ----------------------------------------- |
+| DEFAULT   | 0  | 自定义分发不产生影响，系统按当前节点命中状态分发事件。 |
+| FORWARD_COMPETITION  | 1  | 应用指定分发事件到某个子节点，其他兄弟节点是否分发事件交由系统决定。 |
+| FORWARD |2 | 应用指定分发事件到某个子节点，系统不再分发事件到其他兄弟节点。 |
 
 ## 示例
 
@@ -110,7 +135,7 @@ struct ListExample {
           }.borderRadius(24)
           .backgroundColor(Color.White)
           .padding({ left: 12, right: 12 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.Off)
@@ -120,7 +145,7 @@ struct ListExample {
         console.info('last' + end)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
       })
       .width('100%')
       .height('65%')
@@ -129,7 +154,7 @@ struct ListExample {
       Button(this.text)
         .width(312)
         .height(40)
-        .id('Mybutton')
+        .id('MyButton')
         .fontSize(16)
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
@@ -143,8 +168,8 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchinfo) => {
-      for (let info of touchinfo) {
+    .onChildTouchTest((touchInfo) => {
+      for (let info of touchInfo) {
         if (info.id == 'MyList') {
           return { id: info.id, strategy: TouchTestStrategy.FORWARD_COMPETITION }
         }
@@ -185,7 +210,7 @@ struct ListExample {
           }.borderRadius(24)
           .backgroundColor(Color.White)
           .padding({ left: 12, right: 12 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.Off)
@@ -204,7 +229,7 @@ struct ListExample {
       Button(this.text)
         .width(312)
         .height(40)
-        .id('Mybutton')
+        .id('MyButton')
         .fontSize(16)
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
@@ -218,8 +243,8 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchinfo) => {
-      for (let info of touchinfo) {
+    .onChildTouchTest((touchInfo) => {
+      for (let info of touchInfo) {
         if (info.id == 'MyList') {
           return { id: info.id, strategy: TouchTestStrategy.FORWARD }
         }
@@ -260,7 +285,7 @@ struct ListExample {
           }.borderRadius(24)
           .backgroundColor(Color.White)
           .padding({ left: 12, right: 12 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.Off)
@@ -270,7 +295,7 @@ struct ListExample {
         console.info('last' + end)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
       })
       .width('100%')
       .height('65%')
@@ -279,7 +304,7 @@ struct ListExample {
       Button(this.text)
         .width(312)
         .height(40)
-        .id('Mybutton')
+        .id('MyButton')
         .fontSize(16)
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
@@ -293,7 +318,7 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchinfo) => {
+    .onChildTouchTest((touchInfo) => {
       return { strategy: TouchTestStrategy.DEFAULT }
     })
   }

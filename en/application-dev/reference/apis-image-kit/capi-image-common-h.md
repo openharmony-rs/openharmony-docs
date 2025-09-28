@@ -1,8 +1,14 @@
 # image_common.h
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
-The **image_common.h** file declares the common enums and structs used by the image interface.
+The file declares the common enums and structs used by the image interface.
 
 **File to include**: <multimedia/image_framework/image/image_common.h>
 
@@ -197,8 +203,8 @@ The **image_common.h** file declares the common enums and structs used by the im
 | static const char* OHOS_IMAGE_PROPERTY_CLOUD_ENHANCEMENT_MODE = "HwMnoteCloudEnhancementMode" | Cloud enhancement mode.<br>**Since**: 12|
 | static const char* OHOS_IMAGE_PROPERTY_WIND_SNAPSHOT_MODE = "HwMnoteWindSnapshotMode" | Motion snapshot mode.<br>**Since**: 12|
 | static const char* OHOS_IMAGE_PROPERTY_GIF_LOOP_COUNT = "GIFLoopCount" | Number of GIF loops.<br>**Since**: 12|
-| static const char* OHOS_IMAGE_PROPERTY_X_IN_ORIGINAL = "XInOriginal" | X coordinate of the upper left corner of the fragment map in the original image.<br>**Since**: 13|
-| static const char* OHOS_IMAGE_PROPERTY_Y_IN_ORIGINAL = "YInOriginal" | Y coordinate of the upper left corner of the fragment map in the original image.<br>**Since**: 13|
+| static const char* OHOS_IMAGE_PROPERTY_X_IN_ORIGINAL = "XInOriginal" | X coordinate of the top-left corner of the fragment map in the original image.<br>**Since**: 13|
+| static const char* OHOS_IMAGE_PROPERTY_Y_IN_ORIGINAL = "YInOriginal" | Y coordinate of the top-left corner of the fragment map in the original image.<br>**Since**: 13|
 | static const char* OHOS_IMAGE_PROPERTY_FRAGMENT_WIDTH = "FragmentImageWidth" | Width of the fragment map.<br>**Since**: 13|
 | static const char* OHOS_IMAGE_PROPERTY_FRAGMENT_HEIGHT = "FragmentImageHeight" | Height of the fragment map.<br>**Since**: 13|
 | static const char* IMAGE_PROPERTY_GIF_DELAY_TIME = "GifDelayTime" | Duration for playing each frame of a GIF image, in milliseconds.<br>**Since**: 20|

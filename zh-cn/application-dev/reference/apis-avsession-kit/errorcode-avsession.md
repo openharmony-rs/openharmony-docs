@@ -1,5 +1,11 @@
 # 媒体会话管理错误码
- 
+ <!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @zengyawen-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -286,7 +292,7 @@ Cross-device data transmission is locked.
 
 **处理步骤**
 
-当前远端设备异常，先重启远端设备，再重新发起会话。
+当前远端设备无法响应指令，先重启远端设备，再重新发起会话。
 
 ## 6611101 不支持当前进度条模式
 
@@ -792,7 +798,7 @@ Parsing error associated with the media manifest.
 
 **处理步骤**
 
-检查设置的资源格式是否正常，可更换其他格式的资源，重新发起会话。
+检查设置的资源格式是否正常，可更换其他格式的资源，再次发起会话。
 
 ## 6613003 不支持该媒体格式
 
@@ -846,7 +852,7 @@ Unspecified decoding error.
 
 **处理步骤**
 
-当前远端设备异常，先重启远端设备，在重新发起会话。
+当前远端设备异常，先重启远端设备，再重新发起会话。
 
 ## 6614001 解码器初始化失败
 

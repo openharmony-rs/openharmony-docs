@@ -1,5 +1,11 @@
 # 任务（Mission）管理场景介绍
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 任务（Mission）管理相关的基本概念如下：
 
@@ -58,11 +64,11 @@
       },
       // 任务快照变化
       onMissionSnapshotChanged: (mission: number) => {
-        hilog.info(DOMAIN_NUMBER, TAG, '--------onMissionMovedToFront-------');
+        hilog.info(DOMAIN_NUMBER, TAG, '--------onMissionSnapshotChanged-------');
       },
       // 任务被移动到前台
       onMissionMovedToFront: (mission: number) => {
-        hilog.info(DOMAIN_NUMBER, TAG, '--------onMissionClosed-------');
+        hilog.info(DOMAIN_NUMBER, TAG, '--------onMissionMovedToFront-------');
       },
       // 任务图标变化
       onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {
@@ -131,13 +137,14 @@
     missionManager.getMissionSnapShot('', this.missionId,
       (error: BusinessError, snapshot: missionManager.MissionSnapshot) => {
         if (error === null) {
+          hilog.info(DOMAIN_NUMBER, TAG, `bundleName = ${snapshot.ability.bundleName}.`);
           this.getUIContext().getPromptAction().showToast({
             message: 'obtain_snapshot_success_toast'
           });
+        } else {
+          hilog.error(DOMAIN_NUMBER, TAG,
+              `getMissionSnapShot is called, error code: ${error.code}, error msg: ${error.message}.`);
         }
-        hilog.error(DOMAIN_NUMBER, TAG,
-          `getMissionSnapShot is called, error code: ${error.code}, error msg: ${error.message}.`);
-        hilog.info(DOMAIN_NUMBER, TAG, `bundleName = ${snapshot.ability.bundleName}.`);
       });
     ```
     ```ts
@@ -145,13 +152,14 @@
     missionManager.getLowResolutionMissionSnapShot('', this.missionId,
       (error: BusinessError, snapshot: missionManager.MissionSnapshot) => {
         if (error === null) {
+          hilog.info(DOMAIN_NUMBER, TAG, `bundleName = ${snapshot.ability.bundleName}.`);
           this.getUIContext().getPromptAction().showToast({
             message: 'obtain_low_snapshot_success_toast'
           });
+        } else {
+          hilog.error(DOMAIN_NUMBER, TAG,
+              `getLowResolutionMissionSnapShot is called, error code: ${error.code}, error msg: ${error.message}.`);
         }
-        hilog.error(DOMAIN_NUMBER, TAG,
-          `getLowResolutionMissionSnapShot is called, error code: ${error.code}, error msg: ${error.message}.`);
-        hilog.info(DOMAIN_NUMBER, TAG, `bundleName = ${snapshot.ability.bundleName}.`);
       });
     ```
     ```ts
@@ -209,4 +217,4 @@
 
 针对任务管理开发，有以下相关实例可供参考：
 
-- [任务管理（ArkTS）（Full SDK）（API9）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/MissionManager)
+- [任务管理（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/MissionManager)

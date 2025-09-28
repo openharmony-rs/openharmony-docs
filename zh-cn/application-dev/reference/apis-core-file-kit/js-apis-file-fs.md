@@ -1,4 +1,10 @@
 # @ohos.file.fs (文件管理)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
 
@@ -162,10 +168,6 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
-| 错误码ID                     | 错误信息        |
-| ---------------------------- | ---------- |
-| 401 | 1. 未指定必须的参数；2. 参数类型与接口定义不匹配。 |
-| 13900020 | 非法参数值。 |
 
 **示例：**
 
@@ -183,7 +185,7 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
   });
   ```
 
-## fs.access
+## fs.access<sup>12+</sup>
 
 access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boolean&gt;
 
@@ -208,11 +210,6 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
-
-| 错误码ID                     | 错误信息        |
-| ---------------------------- | ---------- |
-| 401 | 1. 未指定必须的参数；2. 参数类型与接口定义不匹配。 |
-| 13900020 | 非法参数值。 |
 
 **示例：**
 
@@ -251,10 +248,6 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
-| 错误码ID                     | 错误信息        |
-| ---------------------------- | ---------- |
-| 401 | 1. 未指定必须的参数；2. 参数类型与接口定义不匹配。 |
-| 13900020 | 非法参数值。|
 
 **示例：**
 
@@ -301,11 +294,6 @@ accessSync(path: string, mode?: AccessModeType): boolean
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
-| 错误码ID                     | 错误信息        |
-| ---------------------------- | ---------- |
-| 401 | 1. 未指定必须的参数；2. 参数类型与接口定义不匹配。 |
-| 13900020 | 非法参数值。 |
-
 **示例：**
 
   ```ts
@@ -324,7 +312,7 @@ accessSync(path: string, mode?: AccessModeType): boolean
   }
   ```
 
-## fs.accessSync
+## fs.accessSync<sup>12+</sup>
 
 accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
@@ -349,11 +337,6 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
-
-| 错误码ID                     | 错误信息        |
-| ---------------------------- | ---------- |
-| 401 | 1. 未指定必须的参数；2. 参数类型与接口定义不匹配。 |
-| 13900020 | 非法参数值。 |
 
 **示例：**
 
@@ -521,11 +504,11 @@ let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
 let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
   console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
 };
-let copyoption: fs.CopyOptions = {
+let copyOption: fs.CopyOptions = {
   "progressListener" : progressListener
 }
 try {
-  fs.copy(srcDirUriLocal, dstDirUriLocal, copyoption).then(()=>{
+  fs.copy(srcDirUriLocal, dstDirUriLocal, copyOption).then(()=>{
     console.info("Succeeded in copying.");
   }).catch((err: BusinessError)=>{
     console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
@@ -624,10 +607,10 @@ try {
   let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
     console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
   };
-  let copyoption: fs.CopyOptions = {
+  let copyOption: fs.CopyOptions = {
     "progressListener" : progressListener
   }
-  fs.copy(srcDirUriLocal, dstDirUriLocal, copyoption, (err: BusinessError) => {
+  fs.copy(srcDirUriLocal, dstDirUriLocal, copyOption, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -1238,7 +1221,7 @@ getxattrSync(path: string, key: string): string
     console.info("Get extended attribute succeed, the value is: " + attrValue);
   } catch (err) {
     console.error("Failed to get extended attribute with error message: " + err.message + ", error code: " + err.code);
-    }
+  }
 
   ```
 
@@ -1504,7 +1487,7 @@ open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | path     | string                          | 是   | 文件或目录的应用沙箱路径或URI。                                   |
 | mode  | number | 是   | 打开文件或目录的[选项](#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。 |
-| callback     | AsyncCallback&lt;void&gt;                          | 是   | 异步打开文件之后的回调。                                   |
+| callback     | AsyncCallback&lt;[File](#file)&gt;                          | 是   | 异步打开文件之后的回调。                                   |
 
 **错误码：**
 
@@ -1540,7 +1523,7 @@ open(path: string, callback: AsyncCallback&lt;File&gt;): void
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | path     | string                          | 是   | 文件或目录的应用沙箱路径或URI。                                   |
-| callback     | AsyncCallback&lt;void&gt;                          | 是   | 异步打开文件之后的回调。                                   |
+| callback     | AsyncCallback&lt;[File](#file)&gt;                          | 是   | 异步打开文件之后的回调。                                   |
 
 **错误码：**
 
@@ -1729,7 +1712,7 @@ readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
 
 rmdir(path: string): Promise&lt;void&gt;
 
-删除整个目录，使用promise异步回调。
+删除目录及其所有子目录和文件，使用promise异步回调。
 
 > **说明：**
 >
@@ -1771,7 +1754,7 @@ rmdir(path: string): Promise&lt;void&gt;
 
 rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除整个目录，使用callback异步回调。
+删除目录及其所有子目录和文件，使用callback异步回调。
 
 > **说明：**
 >
@@ -1810,7 +1793,7 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 rmdirSync(path: string): void
 
-以同步方法删除目录。
+以同步方法删除目录及其所有子目录和文件。
 
 > **说明：**
 >
@@ -2305,7 +2288,7 @@ next(): ReaderIteratorResult
 
   | 类型                    | 说明         |
   | --------------------- | ---------- |
-  | [ReaderIteratorResult](#readeriteratorresult) | 文件读取迭代器返回结果。 |
+  | [ReaderIteratorResult](#readeriteratorresult11) | 文件读取迭代器返回结果。 |
 
 **错误码：**
 
@@ -2333,7 +2316,7 @@ next(): ReaderIteratorResult
   });
   ```
 
-## ReaderIteratorResult
+## ReaderIteratorResult<sup>11+</sup>
 
 文件读取迭代器返回结果，支持ReaderIterator接口使用。
 
@@ -2411,13 +2394,12 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo as fs, ReadTextOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
+  let stat = fs.statSync(filePath);
   let readTextOption: ReadTextOptions = {
       offset: 1,
-      length: 0,
+      length: stat.size,
       encoding: 'utf-8'
   };
-  let stat = fs.statSync(filePath);
-  readTextOption.length = stat.size;
   fs.readText(filePath, readTextOption, (err: BusinessError, str: string) => {
     if (err) {
       console.error("readText failed with error message: " + err.message + ", error code: " + err.code);
@@ -2534,7 +2516,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
     if (err) {
       console.error("lstat failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("lstat succeed, the size of file is" + stat.size);
+      console.info("lstat succeed, the size of file is " + stat.size);
     }
   });
   ```
@@ -2568,7 +2550,7 @@ lstatSync(path: string): Stat
   ```ts
   let filePath = pathDir + "/linkToFile";
   let fileStat = fs.lstatSync(filePath);
-  console.info("lstat succeed, the size of file is" + fileStat.size);
+  console.info("lstat succeed, the size of file is " + fileStat.size);
   ```
 
 ## fs.rename
@@ -2855,7 +2837,7 @@ fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
-  fs.fdatasync (file.fd, (err: BusinessError) => {
+  fs.fdatasync(file.fd, (err: BusinessError) => {
     if (err) {
       console.error("fdatasync failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -3616,7 +3598,7 @@ mkdtempSync(prefix: string): string
 
 utimes(path: string, mtime: number): void
 
-修改文件最近访问时间属性。
+更改文件上次修改该文件的时间。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3624,7 +3606,7 @@ utimes(path: string, mtime: number): void
 |    参数名    | 类型     | 必填   | 说明                          |
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 | path  | string  |  是    | 文件的应用沙箱路径。 |
-| mtime  | number  |  是   | 待更新的时间戳。自1970年1月1日起至目标时间的毫秒数。仅支持修改文件最近访问时间属性。 |
+| mtime  | number  |  是   | 待更新的时间戳。自1970年1月1日起至目标时间的毫秒数。仅支持更改上次修改该文件的时间属性。 |
 
 **错误码：**
 
@@ -3658,7 +3640,7 @@ createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAcc
 
   | 类型                                | 说明        |
   | --------------------------------- | --------- |
-  | Promise&lt;[RandomAccessFile](#randomaccessfile)&gt; | Promise对象。返回RandomAccessFile对象的结果。 |
+  | Promise&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Promise对象。返回RandomAccessFile对象的结果。 |
 
 **错误码：**
 
@@ -3693,7 +3675,7 @@ createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAcc
 |  参数名    | 类型     | 必填   | 说明                          |
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 |     file     | string \| [File](#file) | 是    | 文件的应用沙箱路径或已打开的File对象。 |
-| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile)&gt; | 是   | 异步创建RandomAccessFile对象之后的回调。                                   |
+| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile10)&gt; | 是   | 异步创建RandomAccessFile对象之后的回调。                                   |
 
 **错误码：**
 
@@ -3729,7 +3711,7 @@ createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallbac
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 |     file     | string \| [File](#file) | 是    | 文件的应用沙箱路径或已打开的File对象。 |
 |     mode     | number | 是   | 创建文件RandomAccessFile对象的[选项](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile)&gt; | 是   | 异步创建RandomAccessFile对象之后的回调。                                   |
+| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile10)&gt; | 是   | 异步创建RandomAccessFile对象之后的回调。                                   |
 
 **错误码：**
 
@@ -3771,7 +3753,7 @@ createRandomAccessFile(file: string | File, mode?: number, options?: RandomAcces
 
   | 类型                                | 说明        |
   | --------------------------------- | --------- |
-  | Promise&lt;[RandomAccessFile](#randomaccessfile)&gt; | Promise对象。返回RandomAccessFile对象的结果。 |
+  | Promise&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Promise对象。返回RandomAccessFile对象的结果。 |
 
 **错误码：**
 
@@ -3810,7 +3792,7 @@ createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 
   | 类型                | 说明        |
   | ------------------ | --------- |
-  | [RandomAccessFile](#randomaccessfile) | 返回RandomAccessFile对象。 |
+  | [RandomAccessFile](#randomaccessfile10) | 返回RandomAccessFile对象。 |
 
 **错误码：**
 
@@ -3846,7 +3828,7 @@ createRandomAccessFileSync(file: string | File, mode?: number,
 
   | 类型                | 说明        |
   | ------------------ | --------- |
-  | [RandomAccessFile](#randomaccessfile) | 返回RandomAccessFile对象。 |
+  | [RandomAccessFile](#randomaccessfile10) | 返回RandomAccessFile对象。 |
 
 **错误码：**
 
@@ -3933,9 +3915,9 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
     if (err) {
       console.error("create stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
+      stream.closeSync();
       console.info("createStream succeed");
     }
-    stream.closeSync();
   })
   ```
 
@@ -4054,11 +4036,11 @@ fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): v
   fs.fdopenStream(file.fd, "r+", (err: BusinessError, stream: fs.Stream) => {
     if (err) {
       console.error("fdopen stream failed with error message: " + err.message + ", error code: " + err.code);
-      stream.closeSync();
-    } else {
-      console.info("fdopen stream succeed");
       // 文件流打开失败后，文件描述符需要手动关闭
       fs.closeSync(file);
+    } else {
+      console.info("fdopen stream succeed");
+      stream.closeSync();
     }
   });
   ```
@@ -4247,8 +4229,8 @@ let pathDir = context.filesDir;
 
 try {
   let atomicFile = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = atomicFile.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = atomicFile.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     atomicFile.finishWrite();
     let File = atomicFile.getBaseFile();
     console.info('AtomicFile getBaseFile File.fd is: ' + File.fd + ' path: ' + File.path + ' name: ' + File.name);
@@ -4289,8 +4271,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let readStream = file.openRead();
@@ -4341,8 +4323,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let data = file.readFully();
@@ -4391,8 +4373,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     console.info('AtomicFile write finished!');
   })
 } catch (err) {
@@ -4425,8 +4407,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
   })
 } catch (err) {
@@ -4459,8 +4441,8 @@ let pathDir = context.filesDir;
 
 let file = new fs.AtomicFile(`${pathDir}/write.txt`);
 try {
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     console.info('AtomicFile write succeed!');
   })
 } catch (err) {
@@ -4495,8 +4477,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let data = file.readFully();
@@ -4687,9 +4669,7 @@ onCancel(): Promise&lt;string&gt;
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { TaskSignal } from '@ohos.file.fs';
 let copySignal: fs.TaskSignal = new TaskSignal();
-copySignal.onCancel().then(() => {
-    console.info("copyFileWithCancel success.");
-});
+copySignal.onCancel();
 ```
 
 ## CopyOptions<sup>11+</sup>
@@ -4748,7 +4728,7 @@ copySignal.onCancel().then(() => {
 | atimeNs<sup>15+</sup>  | bigint | 是    | 是    | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。      |
 | mtimeNs<sup>15+</sup>  | bigint | 是    | 是    | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。      |
 | ctimeNs<sup>15+</sup>  | bigint | 是    | 是    | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的纳秒数。      |
-| location<sup>11+</sup> | [LocaltionType](#locationtype11)| 是 |否| 文件的位置，表示该文件是本地文件或者云端文件。
+| location<sup>11+</sup> | [LocationType](#locationtype11)| 是 |否| 文件的位置，表示该文件是本地文件或者云端文件。
 
 > **说明：**
 >
@@ -5207,9 +5187,9 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
     } else {
       if (bytesWritten) {
         console.info("write succeed and size is:" + bytesWritten);
-        stream.close();
       }
     }
+    stream.close();
   });
   ```
 
@@ -5298,7 +5278,7 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
   stream.read(arrayBuffer, readOption).then((readLen: number) => {
     console.info("read data succeed");
     let buf = buffer.from(arrayBuffer, 0, readLen);
-    console.log(`The content of file: ${buf.toString()}`);
+    console.info(`The content of file: ${buf.toString()}`);
     stream.close();
   }).catch((err: BusinessError) => {
     console.error("read data failed with error message: " + err.message + ", error code: " + err.code);
@@ -5346,7 +5326,7 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
     } else {
       console.info("read data succeed");
       let buf = buffer.from(arrayBuffer, 0, readLen);
-      console.log(`The content of file: ${buf.toString()}`);
+      console.info(`The content of file: ${buf.toString()}`);
       stream.close();
     }
   });
@@ -5467,7 +5447,7 @@ lock(exclusive?: boolean): Promise\<void>
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   file.lock(true).then(() => {
-    console.log("lock file succeed");
+    console.info("lock file succeed");
   }).catch((err: BusinessError) => {
     console.error("lock file failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
@@ -5504,7 +5484,7 @@ lock(exclusive?: boolean, callback: AsyncCallback\<void>): void
     if (err) {
       console.error("lock file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.log("lock file succeed");
+      console.info("lock file succeed");
     }
     fs.closeSync(file);
   });
@@ -5534,7 +5514,7 @@ tryLock(exclusive?: boolean): void
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   file.tryLock(true);
-  console.log("lock file succeed");
+  console.info("lock file succeed");
   fs.closeSync(file);
   ```
 
@@ -5557,7 +5537,7 @@ unlock(): void
   let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   file.tryLock(true);
   file.unlock();
-  console.log("unlock file succeed");
+  console.info("unlock file succeed");
   fs.closeSync(file);
   ```
 
@@ -5586,7 +5566,7 @@ onStatus(networkId: string, status: number): void;
   | networkId   | string | 是    | 设备的网络Id。                             |
   | status | number | 是    | 分布式文件系统的状态码（以connectDfs回调onStatus的特定错误码作为入参）。触发场景为connectDfs调用过程中出现对端设备异常，对应错误码为：<br/>-&nbsp;[13900046](errorcode-filemanagement.md#13900046-软件造成连接中断)：软件造成连接中断。
 
-## RandomAccessFile
+## RandomAccessFile<sup>10+</sup>
 
 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile()方法（同步或异步）来构建一个RandomAccessFile实例。
 
@@ -6184,7 +6164,7 @@ open接口flags参数常量。文件打开标签。
 | bytesRead    | number | 是    | 否    | 可读流已经读取的字节数。 |
 | path    | string | 是    | 否    | 当前可读流对应的文件路径。 |
 
-### Seek
+### Seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
 
@@ -6220,7 +6200,7 @@ seek(offset: number, whence?: WhenceType): number
   rs.close();
   ```
 
-### close
+### close<sup>12+</sup>
 
 close(): void
 
@@ -6251,7 +6231,7 @@ close(): void
 | bytesWritten    | number | 是    | 否    | 可写流已经写入的字节数。 |
 | path    | string | 是    | 否    | 当前可写流对应的文件路径。 |
 
-### Seek
+### Seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number;
 
@@ -6286,7 +6266,7 @@ seek(offset: number, whence?: WhenceType): number;
   ws.close();
   ```
 
-### close
+### close<sup>12+</sup>
 
 close(): void
 

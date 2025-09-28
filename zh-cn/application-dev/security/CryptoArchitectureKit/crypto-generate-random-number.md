@@ -1,5 +1,12 @@
 # 安全随机数生成(ArkTS)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 > **说明：**
 >
 > 从API version 12开始，轻量级智能穿戴设备支持获取随机数相关操作。
@@ -66,7 +73,7 @@
     let len = 24; // Generate a 24-byte random number.
     try {
       let randData = rand.generateRandomSync(len);
-      if (randData !== null) {
+      if (randData.data.length !== 0) {
         console.info("[Sync]: rand result: " + randData.data);
       } else {
         console.error("[Sync]: get rand result fail!");

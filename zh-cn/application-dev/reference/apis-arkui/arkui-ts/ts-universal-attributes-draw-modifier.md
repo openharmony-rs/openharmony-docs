@@ -1,4 +1,10 @@
 # 自定义绘制设置
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 当某些组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由地组件绘制。
 
@@ -18,13 +24,13 @@ drawModifier(modifier: DrawModifier | undefined): T
 
 **组件支持范围:**
 
-AlphabetIndexer、Badge、Blank、Button、CalendarPicker、Checkbox、CheckboxGroup、Circle、Column、ColumnSplit、Counter、DataPanel、DatePicker、Ellipse、Flex、FlowItem、FolderStack、FormLink、Gauge、Grid、GridCol、GridItem、GridRow、Hyperlink、Image、ImageAnimator、ImageSpan、Line、List、ListItem、ListItemGroup、LoadingProgress、Marquee、Menu、MenuItem、MenuItemGroup、NavDestination、Navigation、Navigator、NavRouter、NodeContainer、Path、PatternLock、Polygon、Polyline、Progress、QRCode、Radio、Rating、Rect、Refresh、RelativeContainer、RichEditor、Row、RowSplit、Scroll、ScrollBar、Search、Select、Shape、SideBarContainer、Slider、Stack、Stepper、StepperItem、Swiper、SymbolGlyph、TabContent、Tabs、Text、TextArea、TextClock、TextInput、TextPicker、TextTimer、TimePicker、Toggle、WaterFlow、XComponent
+[AlphabetIndexer](ts-container-alphabet-indexer.md)、[Badge](ts-container-badge.md)、[Blank](ts-basic-components-blank.md)、[Button](ts-basic-components-button.md)、[CalendarPicker](ts-basic-components-calendarpicker.md)、[Checkbox](ts-basic-components-checkbox.md)、[CheckboxGroup](ts-basic-components-checkboxgroup.md)、[Circle](ts-drawing-components-circle.md)、[Column](ts-container-column.md)、[ColumnSplit](ts-container-columnsplit.md)、[Counter](ts-container-counter.md)、[DataPanel](ts-basic-components-datapanel.md)、[DatePicker](ts-basic-components-datepicker.md)、[Ellipse](ts-drawing-components-ellipse.md)、[Flex](ts-container-flex.md)、[FlowItem](ts-container-flowitem.md)、[FolderStack](ts-container-folderstack.md)、[FormLink](ts-container-formlink.md)、[Gauge](ts-basic-components-gauge.md)、[Grid](ts-container-grid.md)、[GridCol](ts-container-gridcol.md)、[GridItem](ts-container-griditem.md)、[GridRow](ts-container-gridrow.md)、[Hyperlink](ts-container-hyperlink.md)、[Image](ts-basic-components-image.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[ImageSpan](ts-basic-components-imagespan.md)、[Line](ts-drawing-components-line.md)、[List](ts-container-list.md)、[ListItem](ts-container-listitem.md)、[ListItemGroup](ts-container-listitemgroup.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[Marquee](ts-basic-components-marquee.md)、[Menu](ts-basic-components-menu.md)、[MenuItem](ts-basic-components-menuitem.md)、[MenuItemGroup](ts-basic-components-menuitemgroup.md)、[NavDestination](ts-basic-components-navdestination.md)、[Navigation](ts-basic-components-navigation.md)、[Navigator](ts-container-navigator.md)、[NavRouter](ts-basic-components-navrouter.md)、[NodeContainer](ts-basic-components-nodecontainer.md)、[Path](ts-drawing-components-path.md)、[PatternLock](ts-basic-components-patternlock.md)、[Polygon](ts-drawing-components-polygon.md)、[Polyline](ts-drawing-components-polyline.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[Radio](ts-basic-components-radio.md)、[Rating](ts-basic-components-rating.md)、[Rect](ts-drawing-components-rect.md)、[Refresh](ts-container-refresh.md)、[RelativeContainer](ts-container-relativecontainer.md)、[RichEditor](ts-basic-components-richeditor.md)、[Row](ts-container-row.md)、[RowSplit](ts-container-rowsplit.md)、[Scroll](ts-container-scroll.md)、[ScrollBar](ts-basic-components-scrollbar.md)、[Search](ts-basic-components-search.md)、[Select](ts-basic-components-select.md)、[Shape](ts-drawing-components-shape.md)、[SideBarContainer](ts-container-sidebarcontainer.md)、[Slider](ts-basic-components-slider.md)、[Stack](ts-container-stack.md)、[Stepper](ts-basic-components-stepper.md)、[StepperItem](ts-basic-components-stepperitem.md)、[Swiper](ts-container-swiper.md)、[SymbolGlyph](ts-basic-components-symbolGlyph.md)、[TabContent](ts-container-tabcontent.md)、[Tabs](ts-container-tabs.md)、[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextClock](ts-basic-components-textclock.md)、[TextInput](ts-basic-components-textinput.md)、[TextPicker](ts-basic-components-textpicker.md)、[TextTimer](ts-basic-components-texttimer.md)、[TimePicker](ts-basic-components-timepicker.md)、[Toggle](ts-basic-components-toggle.md)、[WaterFlow](ts-container-waterflow.md)、[XComponent](ts-basic-components-xcomponent.md)
 
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | 是   | 自定义绘制修改器，其中定义了自定义绘制的逻辑。 <br> 默认值：undefined <br/>**说明：** <br/> 每个自定义修改器只对当前绑定组件的FrameNode生效，对其子节点不生效。 |
+| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | 是   | 自定义绘制修改器，其中定义了自定义绘制的逻辑。 <br> 默认值：undefined <br/>**说明：** <br/> 每个自定义修改器只对当前绑定组件的[FrameNode](../js-apis-arkui-frameNode.md)生效，对其子节点不生效。 |
 
 **返回值：**
 
@@ -58,7 +64,11 @@ drawFront?(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+
+**示例：**
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ### drawContent
 
@@ -74,7 +84,11 @@ drawContent?(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+
+**示例：**
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ### drawBehind
 
@@ -90,7 +104,11 @@ drawBehind?(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+
+**示例：**
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ### drawForeground<sup>20+</sup>
 
@@ -106,7 +124,11 @@ drawForeground(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+
+**示例：**
+
+请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#示例2通过drawmodifier对容器的前景进行自定义绘制)。
 
 ### invalidate
 
@@ -118,17 +140,34 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例：**
+
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+
+### DrawContext
+
+type DrawContext = DrawContext
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                                                      | 说明                    |
+| --------------------------------------------------------- | ----------------------- |
+| [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
+
 ## 示例
 
 ### 示例1（通过DrawModifier进行自定义绘制）
 
-通过DrawModifier对Text组件进行自定义绘制。
+通过DrawModifier对[Text](ts-basic-components-text.md)组件进行自定义绘制。
 
 ```ts
 // xxx.ets
 import { drawing } from '@kit.ArkGraphics2D';
 import { AnimatorResult } from '@kit.ArkUI';
 
+// 继承DrawModifier实现自定义绘制控制器
 class MyFullDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
@@ -139,6 +178,7 @@ class MyFullDrawModifier extends DrawModifier {
     this.uiContext = uiContext;
   }
 
+  // 重载drawBehind方法，自定义绘制背景  
   drawBehind(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -149,7 +189,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     context.canvas.drawRect({
       left: this.uiContext.vp2px(halfWidth - 50 * this.scaleX),
       top: this.uiContext.vp2px(halfHeight - 50 * this.scaleY),
@@ -158,6 +198,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
   }
 
+  // 重载drawContent方法，自定义绘制内容
   drawContent(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -168,7 +209,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     context.canvas.drawRect({
       left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
       top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
@@ -177,6 +218,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
   }
 
+  // 重载drawFront方法，自定义绘制内容前景
   drawFront(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -187,12 +229,13 @@ class MyFullDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
     context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
+// 继承DrawModifier实现自定义绘制控制器，仅支持自定义绘制内容前景
 class MyFrontDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
@@ -213,7 +256,7 @@ class MyFrontDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
     context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
   }
@@ -228,6 +271,7 @@ struct DrawModifierExample {
   @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
   private count = 0;
 
+  // 创建Animator对象并设置动画
   create() {
     let self = this;
     this.drawAnimator = this.getUIContext().createAnimator({
@@ -245,6 +289,7 @@ struct DrawModifierExample {
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
+      // 主动触发重绘
       self.modifier.invalidate();
     };
   }
@@ -308,7 +353,7 @@ struct DrawModifierExample {
 
 ### 示例2（通过DrawModifier对容器的前景进行自定义绘制）
 
-通过DrawModifier对Column容器的前景进行自定义绘制。
+通过DrawModifier对[Column](ts-container-column.md)容器的前景进行自定义绘制。
 
 ```ts
 // xxx.ets
@@ -324,7 +369,7 @@ class MyForegroundDrawModifier extends DrawModifier {
     this.uiContext = uiContext;
   }
 
-  // 重载drawForeground方法，实现自定义绘制前景。
+  // 重载drawForeground方法，实现自定义绘制前景
   drawForeground(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -335,7 +380,7 @@ class MyForegroundDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     context.canvas.drawRect({
       left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
       top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
@@ -348,7 +393,7 @@ class MyForegroundDrawModifier extends DrawModifier {
 @Entry
 @Component
 struct DrawModifierExample {
-  // 将自定义绘制前景的类实例化，传入UIContext实例。
+  // 将自定义绘制前景的类实例化，传入UIContext实例
   private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
 
   build() {
@@ -363,7 +408,7 @@ struct DrawModifierExample {
     .width(280)
     .height(300)
     .backgroundColor(0x87CEEB)
-    // 调用此接口并传入自定义绘制前景的类实例，即可实现自定义绘制前景。
+    // 调用此接口并传入自定义绘制前景的类实例，即可实现自定义绘制前景
     .drawModifier(this.foregroundModifier)
   }
 }

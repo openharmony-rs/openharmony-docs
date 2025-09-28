@@ -1,8 +1,14 @@
 # data_asset.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
-提供资产类型数据结构。<br>资产是指可以一种可以在数据管理中使用的数据结构，可以存储及查询一个文件的名称、绝对路径、相对路径、创建时间、修改时间、状态、占用空间等属性。
+提供资产类型数据结构。<br>资产是指一种可以在数据管理中使用的数据结构，可以存储及查询一个文件的名称、绝对路径、相对路径、创建时间、修改时间、状态、占用空间等属性。
 
 **引用文件：** <database/rdb/data_asset.h>
 
@@ -122,7 +128,7 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| uri |  表示要设置的URI。 |
+| const char *uri |  表示要设置的URI。 |
 
 **返回：**
 
@@ -457,7 +463,7 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 **描述**
 
-创造一个[Data_Asset](capi-rdb-data-asset.md)类型实例。
+创建一个[Data_Asset](capi-rdb-data-asset.md)类型实例。
 
 **起始版本：** 11
 
@@ -479,7 +485,6 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -500,7 +505,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 **描述**
 
-创造指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。
+创建指定数量的[Data_Asset](capi-rdb-data-asset.md)类型实例。
 
 **起始版本：** 11
 

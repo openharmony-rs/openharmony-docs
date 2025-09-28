@@ -1,10 +1,16 @@
 # @ohos.curves (插值计算)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供设置动画插值曲线功能，用于构造阶梯曲线对象、三阶贝塞尔曲线对象和弹簧曲线对象。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -39,6 +45,8 @@ initCurve(curve?: Curve): ICurve
 ## Curve
 
 插值曲线和动效请参考<!--RP1-->[贝塞尔曲线](../../../design/ux-design/animation-attributes.md)<!--RP1End-->。
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -338,7 +346,7 @@ let value: number = curveValue.interpolate(0.5) // 计算得到时间到一半�
 init(curve?: Curve): string
 
 
-插值曲线的初始化函数，可以根据入参创建一个插值曲线对象，从API version9开始废弃，推荐使用[Curves.initCurve](#curvesinitcurve9)。
+插值曲线的初始化函数，可以根据入参创建一个插值曲线对象，从API version 9开始废弃，推荐使用[Curves.initCurve](#curvesinitcurve9)。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,13 +356,19 @@ init(curve?: Curve): string
 | ------ | --------------- | ---- | ----------------------------------- |
 | curve  | [Curve](#curve) | 否   | 曲线类型。<br/>默认值：Curve.Linear |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 返回插值曲线对象。 |
+
 
 ## curves.steps<sup>(deprecated)</sup>
 
 steps(count: number, end: boolean): string
 
 
-构造阶梯曲线对象，从API version9开始废弃，推荐使用[Curves. stepsCurve](#curvesstepscurve9)。
+构造阶梯曲线对象，从API version 9开始废弃，推荐使用[Curves. stepsCurve](#curvesstepscurve9)。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -365,13 +379,19 @@ steps(count: number, end: boolean): string
 | count  | number  | 是   | 阶梯的数量，需要为正整数。                                   |
 | end    | boolean | 是   | 在每个间隔的起点或是终点发生阶跃变化。<br>-true：在终点发生阶跃变化。<br>-false：在起点发生阶跃变化。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 返回阶梯曲线对象。 |
+
 
 ## curves.cubicBezier<sup>(deprecated)</sup>
 
 cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 
-构造三阶贝塞尔曲线对象，曲线的值必须处于0-1之间，API version9开始废弃，推荐使用 [Curves.cubicBezierCurve](#curvescubicbeziercurve9)。
+构造三阶贝塞尔曲线对象，曲线的值必须处于0-1之间，API version 9开始废弃，推荐使用 [Curves.cubicBezierCurve](#curvescubicbeziercurve9)。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -383,13 +403,19 @@ cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 | x2   | number | 是    | 确定贝塞尔曲线第二点横坐标。 |
 | y2   | number | 是    | 确定贝塞尔曲线第二点纵坐标。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 返回三阶贝塞尔曲线对象。 |
+
 
 ## curves.spring<sup>(deprecated)</sup>
 
 spring(velocity: number, mass: number, stiffness: number, damping: number): string
 
 
-构造弹簧曲线对象，从API version9开始废弃，推荐使用[Curves.springCurve](#curvesspringcurve9)。
+构造弹簧曲线对象，从API version 9开始废弃，推荐使用[Curves.springCurve](#curvesspringcurve9)。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -401,6 +427,12 @@ spring(velocity: number, mass: number, stiffness: number, damping: number): stri
 | mass      | number | 是    | 质量。弹性系统的受力对象，会对弹性系统产生惯性影响。质量越大，震荡的幅度越大，恢复到平衡位置的速度越慢。 |
 | stiffness | number | 是    | 刚度。是物体抵抗施加的力而形变的程度。在弹性系统中，刚度越大，抵抗变形的能力越强，恢复到平衡位置的速度就越快。 |
 | damping   | number | 是    | 阻尼。是一个纯数，无真实的物理意义，用于描述系统在受到扰动后震荡及衰减的情形。阻尼越大，弹性运动的震荡次数越少、震荡幅度越小。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 返回弹簧曲线对象。 |
 
 ## 整体示例
 

@@ -1,4 +1,10 @@
 # \@Builder装饰器：自定义构建函数
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
 
@@ -6,9 +12,9 @@ ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，�
 
 在阅读本文档前，建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)、[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
 
-@Builder装饰器和@Component装饰器的区别：
+@Builder装饰器和@Component装饰器在功能和使用方式上的主要差异：
 
-1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义状态变量或使用生命周期函数，必须通过参数传递的方式与调用方完成数据交互。
+1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义状态变量或使用生命周期函数，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
 
 2. 在ArkUI框架中，@Component装饰器作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。该装饰器不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
 
@@ -87,7 +93,7 @@ struct BuilderDemo {
 }
 ```
 
-- 如果不涉及组件状态变化，建议使用全局的自定义构建函数。
+- 如果不涉及组件状态变量变化，建议使用全局的自定义构建函数。
 
 - 全局自定义构建函数允许在build函数和其他自定义构建函数中调用。
 
@@ -96,7 +102,7 @@ struct BuilderDemo {
 
 自定义构建函数的参数传递有[按值传递](#按值传递参数)和[按引用传递](#按引用传递参数)两种，均需遵守以下规则：
 
-- 参数的类型必须与参数声明的类型一致，不允许undefined、null和返回undefined、null的表达式。
+- \@Builder装饰的函数参数类型不允许为undefined、null和返回undefined、null的表达式。
 
 - 在\@Builder装饰的函数内部，不允许改变参数值。
 
@@ -163,15 +169,15 @@ struct Parent {
 
 ## 限制条件
 
-1. \@Builder装饰的函数内部不允许修改参数值，否则框架会抛出运行时错误。但开发者可以在使用@Builder的自定义组件中改变其参数。请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
+1. \@Builder装饰的函数内部在没有使用[MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)时不允许修改参数值，修改不会触发UI刷新。若[按引用传递参数](#按引用传递参数)且仅传入一个参数时，修改参数内部的属性会抛出运行时错误。使用MutableBinding可以帮助开发者在\@Builder装饰的函数内部修改参数值，请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
 
 2. \@Builder按引用传递且仅传入一个参数时，才会触发动态渲染UI。请参考[按引用传递参数](#按引用传递参数)。
 
-3. 如果\@Builder传入的参数是两个或两个以上，不会触发动态渲染UI，请参考[@Builder存在两个或者两个以上参数](#builder存在两个或者两个以上参数)。
+3. 如果\@Builder传入的参数是两个或两个以上，不会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
 
-4. \@Builder传入的参数中同时包含按值传递和按引用传递，不会触发动态渲染UI，请参考[@Builder存在两个或者两个以上参数](#builder存在两个或者两个以上参数)。
+4. \@Builder传入的参数中同时包含按值传递和按引用传递，不会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
 
-5. \@Builder的参数必须按照对象字面量的形式，把所需属性一一传入，才会触发动态渲染UI，请参考[@Builder存在两个或者两个以上参数](#builder存在两个或者两个以上参数)。
+5. \@Builder的参数必须按照对象字面量的形式，把所需属性一一传入，才会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
 
 
 ## 使用场景
@@ -232,7 +238,7 @@ struct PrivateBuilder {
 
 ### 全局自定义构建函数
 
-创建全局的\@Builder函数，在Column里面使用overBuilder()方式调用，通过以对象字面量的形式传递参数，无论是简单类型还是复杂类型，值的改变都会引起UI界面的刷新。
+创建全局的`@Builder`函数，并在`Column`中通过`overBuilder()`方式调用。传递参数时，可以使用对象字面量形式，无论是简单类型还是复杂类型，值的任何变化都会触发UI界面的刷新。
 
 ```ts
 class ChildTmp {
@@ -379,9 +385,10 @@ struct Parent {
 
 ![arkts-builder-usage-scenario3](figures/arkts-builder-usage-scenario3.gif)
 
-### 将@Builder装饰的函数当作customBuilder类型使用
+### 将@Builder装饰的函数当作CustomBuilder类型使用
 
-当参数类型为`customBuilder`时，可以传入定义的`@Builder`函数。因为`customBuilder`实际上是`Function(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
+当参数类型为`CustomBuilder`时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`Function(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
+全局`@Builder`函数当作`CustomBuilder`类型传递时需要绑定this上下文，开发者可以直接调用全局`@Builder`函数，编译工具链会自动生成绑定this上下文的代码。
 
 ```ts
 @Builder
@@ -422,10 +429,11 @@ struct customBuilderDemo {
           }
           .swipeAction({
             start: {
-              builder: overBuilder()
+              builder: overBuilder() // 编译工具链会自动绑定this上下文
             },
             end: {
               builder: () => {
+                // 在箭头函数中调用局部@Builder会自动绑定this上下文，无需编译工具链处理
                 this.privateBuilder()
               }
             }
@@ -442,7 +450,7 @@ struct customBuilderDemo {
 
 ### 多层\@Builder函数嵌套
 
-在\@Builder函数内调用自定义组件或者其他\@Builder函数，以实现多个\@Builder嵌套使用的场景，要想实现最里面的\@Builder动态UI刷新功能，必须要保证每层调用\@Builder的地方使用按引用传递的方式。这里的[\$$](./arkts-two-way-sync.md)不是必须的参数形式，[\$$](./arkts-two-way-sync.md)也可以换成其他名称。
+在\@Builder函数内调用自定义组件或其他\@Builder函数，实现多个\@Builder嵌套使用。若要实现最内层的\@Builder动态UI刷新功能，每层调用\@Builder的地方必须使用按引用传递的方式。这里`$$`不是必须的参数形式，可以换成其他名称。
 
 ```ts
 class Tmp {
@@ -579,8 +587,7 @@ struct Parent {
 
 ### \@Builder函数联合V2装饰器
 
-由`@ObservedV2`和`@Trace`装饰的类对象实例具备深度观测属性变化的能力。在`@ComponentV2`装饰的自定义组件中，当调用全局Builder或局部Builder且使用值传递的方式传递参数时，修改`@Trace`装饰的对象属性可以触发UI刷新。
-
+由[@ObservedV2](./arkts-new-observedV2-and-trace.md)和[@Trace](./arkts-new-observedV2-and-trace.md)装饰的类对象实例具备深度观测属性变化的能力。在`@ComponentV2`装饰的自定义组件中，当调用全局Builder或局部Builder且使用值传递的方式传递参数时，修改`@Trace`装饰的对象属性可以触发UI刷新。
 ```ts
 @ObservedV2
 class Info {
@@ -622,8 +629,8 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = new Info("Tom", 25);
-  info2: Info = new Info("Tom", 25);
+  info1: Info = new Info('Tom', 25);
+  info2: Info = new Info('Tom', 25);
 
   @Builder
   privateBuilder() {
@@ -659,11 +666,11 @@ struct ParentPage {
       overBuilder(this.info2)
       ChildPage({ childInfo: this.info1 }) // 调用自定义组件
       ChildPage({ childInfo: this.info2 }) // 调用自定义组件
-      Button("change info1&info2")
+      Button('change info1&info2')
         .onClick(() => {
-          this.info1.name = "Cat"; // 修改Text1显示的info1的name值
+          this.info1.name = 'Cat'; // 修改Text1显示的info1的name值
           this.info1.age = 18; // 修改Text1显示的info1的age值
-          this.info2.name = "Cat"; // 修改Text2显示的info2的name值
+          this.info2.name = 'Cat'; // 修改Text2显示的info2的name值
           this.info2.age = 18; // 修改Text2显示的info2的age值
         })
     }
@@ -680,7 +687,7 @@ struct ParentPage {
 
 ```ts
 class Info {
-  name: string = "Tom";
+  name: string = 'Tom';
   age: number = 25;
 }
 
@@ -713,8 +720,8 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = { name: "Tom", age: 25 };
-  @Local info2: Info = { name: "Tom", age: 25 };
+  info1: Info = { name: 'Tom', age: 25 };
+  @Local info2: Info = { name: 'Tom', age: 25 };
 
   @Builder
   privateBuilder() {
@@ -750,10 +757,10 @@ struct ParentPage {
       overBuilder({ name: this.info2.name, age: this.info2.age })
       ChildPage({ childInfo: this.info1 }) // 调用自定义组件
       ChildPage({ childInfo: this.info2 }) // 调用自定义组件
-      Button("change info1&info2")
+      Button('change info1&info2')
         .onClick(() => {
-          this.info1 = { name: "Cat", age: 18 }; // Text1不会刷新，原因是没有装饰器修饰监听不到值的改变
-          this.info2 = { name: "Cat", age: 18 }; // Text2会刷新，原因是有装饰器修饰，可以监听到值的改变
+          this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是没有装饰器修饰监听不到值的改变
+          this.info2 = { name: 'Cat', age: 18 }; // Text2会刷新，原因是有装饰器修饰，可以监听到值的改变
         })
     }
     .height('100%')
@@ -952,7 +959,9 @@ struct Single {
         UIUtils.makeBinding<number>(() => this.number1),
         UIUtils.makeBinding<number>(
           () => this.number2,
-          (val: number) => this.number2 = val)
+          (val: number) => {
+            this.number2 = val;
+          })
       )
       Text(`classA.props === ${this.classA.props}`)
         .width(300)
@@ -983,7 +992,7 @@ struct Single {
 
 ## 常见问题
 
-### \@Builder存在两个或者两个以上参数
+### @Builder存在两个或两个以上参数
 
 当存在两个或两个以上的参数时，即使通过对象字面量形式传递，值的改变也不会触发UI刷新。
 
@@ -1065,7 +1074,7 @@ struct Parent {
 }
 ```
 
-\@Builder只接受一个参数，当传入一个参数的时候，通过对象字面量的形式传递，值的改变会引起UI的刷新。
+\@Builder只接受一个参数。当传入一个参数的时候，通过对象字面量的形式传递，值的改变会引起UI的刷新。
 
 【正例】
 
@@ -1105,7 +1114,7 @@ struct Parent {
 
 ### 使用@ComponentV2装饰器触发动态刷新
 
-在@ComponentV2装饰器装饰的自定义组件中配合@ObservedV2和@Trace装饰器，通过按值传递的方式可以实现UI刷新功能。
+在@ComponentV2装饰的组件中，配合@ObservedV2和@Trace装饰器，通过按值传递实现UI刷新功能。
 
 【反例】
 
@@ -1243,76 +1252,6 @@ struct PageBuilder {
 }
 ```
 
-### 在\@Builder装饰的函数内部修改入参内容
-
-【反例】
-
-```ts
-interface Temp {
-  paramA: string;
-}
-
-@Builder function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-        .onClick(() => {
-          // 错误写法，不允许在@Builder装饰的函数内部修改参数值
-          param.paramA = 'Yes';
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick(() => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
-【正例】
-
-```ts
-interface Temp {
-  paramA: string;
-}
-
-@Builder function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick(() => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
 ### 在\@Builder内创建自定义组件传递参数不刷新问题
 
 在parentBuilder函数中创建自定义组件HelloComponent，传递参数为class对象并修改对象内的值时，UI不会触发刷新功能。
@@ -1428,6 +1367,428 @@ struct ParentPage {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+### 在UI语句外调用\@Builder函数或方法影响节点正常刷新
+
+当\@Builder方法赋值给变量或者数组后，在UI方法中无法使用，且会造成刷新时节点显示异常。
+
+【反例】
+```ts
+@Entry
+@Component
+struct BackGround {
+  @Builder
+  myImages() {
+    Column() {
+      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  };
+
+  @Builder
+  myImages2() {
+    Column() {
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  };
+
+  private Bg_list: Array<CustomBuilder> =[this.myImages(), this.myImages2()]; // 错误用法，应避免在UI方法外调用@Builder方法
+
+  @State bg_builder: CustomBuilder = this.myImages(); // 错误用法，应避免在UI方法外调用@Builder方法
+  @State bg_Color: ResourceColor = Color.Orange;
+  @State bg_Color2: ResourceColor = Color.Orange;
+  @State index: number = 0;
+
+  build() {
+    Column({space: 10}) {
+      Text('1').width(100).height(50)
+      Text('2').width(100).height(50)
+      Text('3').width(100).height(50)
+
+      Text('4-1').width(100).height(50).fontColor(this.bg_Color)
+      Text('5-1').width(100).height(50)
+      Text('4-2').width(100).height(50)
+      Text('5-2').width(100).height(50)
+      Stack() {
+        Column(){
+          Text('Vsync2')
+        }
+        .size({ width: '100%', height: '100%' })
+        .border({ width: 1, color: Color.Black })
+      }
+      .size({ width: 100, height: 80 })
+      .backgroundColor('#ffbbd4bb')
+
+      Button('change').onClick((event: ClickEvent) => {
+        this.index = 1;
+        this.bg_Color = Color.Red;
+        this.bg_Color2 = Color.Red;
+      })
+    }
+    .margin(10)
+  }
+}
+```
+\@Builder方法赋值给变量或数组后在UI方法中无法使用，开发者应避免将\@Builder赋值给变量或数组后再使用。
+
+【正例】
+```ts
+@Entry
+@Component
+struct BackGround {
+  @Builder
+  myImages() {
+    Column() {
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  }
+
+  @Builder
+  myImages2() {
+    Column() {
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  }
+
+  @State bg_Color: ResourceColor = Color.Orange;
+  @State bg_Color2: ResourceColor = Color.Orange;
+  @State index: number = 0;
+
+  build() {
+    Column({ space: 10 }) {
+      Text('1').width(100).height(50)
+      Text('2').width(100).height(50).background(this.myImages) // 直接传递@Builder方法
+      Text('3').width(100).height(50).background(this.myImages()) // 直接调用@Builder方法
+
+      Text('4-1').width(100).height(50).fontColor(this.bg_Color)
+      Text('5-1').width(100).height(50)
+      Text('4-2').width(100).height(50)
+      Text('5-2').width(100).height(50)
+      Stack() {
+        Column() {
+          Text('Vsync2')
+        }
+        .size({ width: '100%', height: '100%' })
+        .border({ width: 1, color: Color.Black })
+      }
+      .size({ width: 100, height: 80 })
+      .backgroundColor('#ffbbd4bb')
+
+      Button('change').onClick((event: ClickEvent) => {
+        this.index = 1;
+        this.bg_Color = Color.Red;
+        this.bg_Color2 = Color.Red;
+      })
+    }
+    .margin(10)
+  }
+}
+```
+
+### 在\@Builder方法中使用MutableBinding未传递set访问器
+
+\@Builder方法定义时使用MutableBinding，构造时没有给MutableBinding类型参数传递set访问器，触发set访问器会造成运行时错误。
+
+【反例】
+```ts
+import { UIUtils, Binding, MutableBinding } from '@kit.ArkUI';
+@ObservedV2
+class GlobalTmp {
+  @Trace str_value: string = 'Hello';
+}
+
+@Builder
+function builderWithTwoParams(param1: Binding<GlobalTmp>, param2: MutableBinding<number>) {
+  Column() {
+    Text(`str_value: ${param1.value.str_value}`)
+    Button(`num: ${param2.value}`)
+      .onClick(()=>{
+        param2.value += 1; // 点击Button触发set访问器会造成运行时错误
+      })
+  }.borderWidth(1)
+}
+
+@Entry
+@ComponentV2
+struct MakeBindingTest {
+  @Local globalTmp: GlobalTmp = new GlobalTmp();
+  @Local num: number = 0;
+
+  build() {
+    Column() {
+      Text(`${this.globalTmp.str_value}`)
+      builderWithTwoParams(UIUtils.makeBinding(() => this.globalTmp),
+        UIUtils.makeBinding<number>(() => this.num)) // 构造MutableBinding类型参数时没有传SetterCallback
+      Button('点击改变参数值').onClick(() => {
+        this.globalTmp.str_value = 'Hello World 2025';
+        this.num = 1;
+      })
+    }
+  }
+}
+```
+MutableBinding的使用规格详见[状态管理API文档](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)。
+
+【正例】
+```ts
+import { UIUtils, Binding, MutableBinding } from '@kit.ArkUI';
+
+@ObservedV2
+class GlobalTmp {
+  @Trace str_value: string = 'Hello';
+}
+
+@Builder
+function builderWithTwoParams(param1: Binding<GlobalTmp>, param2: MutableBinding<number>) {
+  Column() {
+    Text(`str_value: ${param1.value.str_value}`)
+    Button(`num: ${param2.value}`)
+      .onClick(() => {
+        param2.value += 1; // 修改了MutableBinding类型参数的value属性
+      })
+  }.borderWidth(1)
+}
+
+@Entry
+@ComponentV2
+struct MakeBindingTest {
+  @Local globalTmp: GlobalTmp = new GlobalTmp();
+  @Local num: number = 0;
+
+  build() {
+    Column() {
+      Text(`${this.globalTmp.str_value}`)
+      builderWithTwoParams(UIUtils.makeBinding(() => this.globalTmp),
+        UIUtils.makeBinding<number>(() => this.num,
+          val => {
+            this.num = val;
+          }))
+      Button('点击改变参数值').onClick(() => {
+        this.globalTmp.str_value = 'Hello World 2025';
+        this.num = 1;
+      })
+    }
+  }
+}
+```
+
+### 在\@Builder装饰的函数内部修改入参内容
+
+不使用[MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。
+
+【反例】
+```ts
+@Builder
+function MyGlobalBuilder(value: string) {
+  Column() {
+    Text(`MyGlobalBuilder: ${value} `)
+      .fontSize(16)
+      .onClick(() => {
+        // 简单类型按值传递的@Builder函数中修改参数，不闪退但UI不刷新
+        value = 'value change';
+      })
+  }.borderWidth(1)
+}
+
+interface Temp {
+  paramA: string;
+}
+
+@Builder
+function overBuilder(param: Temp) {
+  Row() {
+    Column() {
+      Button(`overBuilder === ${param.paramA}`)
+        .onClick(() => {
+          // 错误写法，不允许在@Builder装饰的函数内部修改对象类型参数的属性，闪退且UI不刷新
+          param.paramA = 'Yes';
+        })
+      Button('change')
+        .onClick(() => {
+          // 错误写法，不允许在@Builder装饰的函数内部修改对象类型参数的引用，不闪退但UI不刷新
+          param = { paramA: 'change trial' };
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State label: string = 'Hello';
+  @State message1: string = 'Value Passing';
+
+  @Builder
+  extendBlank() {
+    Row() {
+      Blank()
+    }
+    .height(20)
+  }
+
+  build() {
+    Column() {
+      // 按引用传递能实现参数变化时的UI刷新，但不能在@Builder函数内部修改参数
+      overBuilder({ paramA: this.label });
+      this.extendBlank();
+      Button('click me')
+        .onClick(() => {
+          this.label = 'ArkUI';
+        })
+      this.extendBlank();
+      MyGlobalBuilder(this.message1);
+    }
+  }
+}
+```
+正确使用[MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)可以帮助开发者在\@Builder装饰的函数内部修改参数值。
+
+【正例】
+```ts
+import { UIUtils, MutableBinding } from '@kit.ArkUI';
+
+// 使用MutableBinding在@Builder装饰的函数中修改参数值
+@Builder
+function MyGlobalBuilderMod(str: MutableBinding<string>) {
+  Column() {
+    Text(`Mod--MyGlobalBuilder: ${str.value}`)
+      .fontSize(16)
+      .onClick(() => {
+        str.value = 'value change mod';
+      })
+  }
+}
+
+interface Temp {
+  paramA: string;
+}
+
+// 使用MutableBinding在@Builder装饰的函数内部修改参数值
+@Builder
+function overBuilderMod(param: MutableBinding<Temp>) {
+  Column() {
+    Button(`Mod--overBuilder === ${param.value.paramA}`)
+      .onClick(() => {
+        param.value.paramA = 'Yes';
+      })
+    Button(`change`)
+      .onClick(() => {
+        param.value = { paramA: 'trialOne' };
+      })
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State label: string = 'Hello';
+  @State message1: string = 'Value Passing';
+  @State objectOne: Temp = {
+    paramA: this.label
+  };
+
+  @Builder
+  extendBlank() {
+    Row() {
+      Blank()
+    }
+    .height(20)
+  }
+
+  build() {
+    Column() {
+      // 使用MutableBinding时无法传对象字面量，需要先将字面量对象抽出为状态变量
+      overBuilderMod(
+        UIUtils.makeBinding<Temp>(
+          () => this.objectOne,
+          value => {
+            this.objectOne = value; // 必须要传SetterCallback，否则触发时会造成运行时错误
+          }
+        )
+      )
+      this.extendBlank();
+      Button('click me')
+        .onClick(() => {
+          this.objectOne.paramA = 'ArkUI';
+        })
+      this.extendBlank();
+      MyGlobalBuilderMod(
+        UIUtils.makeBinding<string>(
+          () => this.message1,
+          value => {
+            this.message1 = value; // 必须要传SetterCallback，否则触发时会造成运行时错误
+          }
+        )
+      );
+    }
+  }
+}
+```
+
+### 在\@Watch函数中执行\@Builder函数
+
+在\@Watch函数中执行\@Builder函数，会导致UI刷新异常。
+
+【反例】
+```ts
+@Entry
+@Component
+struct Child {
+  @Provide @Watch('provideWatch') content: string = 'Index: hello world';
+
+  @Builder
+  watchBuilder(content: string) {
+    Row() {
+      Text(`${content}`)
+    }
+  }
+
+  provideWatch() {
+    this.watchBuilder(this.content); // 错误写法，在@Watch函数中使用@Builder函数
+  }
+
+  build() {
+    Column() {
+      Button(`content value: ${this.content}`)
+        .onClick(() => {
+          this.content += '_world';
+        })
+      this.watchBuilder(this.content);
+    }
+  }
+}
+```
+Button按钮会出现UI异常的情况，开发者需要避免在\@Watch函数中使用\@Builder函数。
+
+【正例】
+```ts
+@Entry
+@Component
+struct Child {
+  @Provide @Watch('provideWatch') content: string = 'Index: hello world';
+
+  @Builder
+  watchBuilder(content: string) {
+    Row() {
+      Text(`${content}`)
+    }
+  }
+
+  provideWatch() {
+    console.info(`content value has changed.`);
+  }
+
+  build() {
+    Column() {
+      Button(`content value: ${this.content}`)
+        .onClick(() => {
+          this.content += '_world';
+        })
+      this.watchBuilder(this.content);
+    }
   }
 }
 ```

@@ -1,8 +1,14 @@
 # Hid_MscEventArray
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
-其它特殊事件属性数组。
+其他特殊事件属性数组。
 
 **起始版本：** 11
 
@@ -16,7 +22,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| Hid_MscEvent* hidMscEvent | 其它特殊事件属性编码 |
+| Hid_MscEvent* hidMscEvent | 其他特殊事件属性编码 |
 | uint16_t length | 数组长度 |
 
 

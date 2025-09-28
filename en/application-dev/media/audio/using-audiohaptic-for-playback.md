@@ -1,4 +1,10 @@
 # Using AudioHaptic for Audio-Haptic Playback
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 AudioHaptic<sup>11+</sup> provides APIs for audio-haptic playback and management. It applies to scenarios where haptic feedback needs to be initiated synchronously during audio playback, for example, when there are incoming calls or messages or users are typing.
 
@@ -15,7 +21,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 ### How to Develop
 
-1. Obtain an **AudioHapticManager** instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
+1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -30,7 +36,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
      console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
      id = value;
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to register source ${err}`);
    });
    ```
@@ -45,19 +51,18 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    audioHapticManagerInstance.setStreamUsage(id, usage);
    ```
 
-3. Create an **AudioHapticPlayer** instance.
+3. Create an AudioHapticPlayer instance.
 
    ```ts
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
    audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
-     console.info(`Promise returned to indicate that the audio haptic player instance.`);
+     console.info(`Create the audio haptic player successfully.`);
      audioHapticPlayer = value;
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to create player ${err}`);
    });
-   console.info(`Create the audio haptic player successfully.`);
    ```
 
 4. Call **start()** to start the audio-haptic player.
@@ -65,7 +70,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    ```ts
    audioHapticPlayer.start().then(() => {
      console.info(`Promise returned to indicate that start playing successfully.`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to start playing. ${err}`);
    });
    ```
@@ -75,17 +80,17 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    ```ts
    audioHapticPlayer.stop().then(() => {
      console.info(`Promise returned to indicate that stop playing successfully.`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to stop playing. ${err}`);
    });
    ```
 
-6. Release the **AudioHapticPlayer** instance.
+6. Release the AudioHapticPlayer instance.
 
    ```ts
    audioHapticPlayer.release().then(() => {
      console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to release the audio haptic player. ${err}`);
    });
    ```
@@ -95,7 +100,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    ```ts
    audioHapticManagerInstance.unregisterSource(id).then(() => {
      console.info(`Promise returned to indicate that unregister source successfully`);
-   }).catch ((err: BusinessError) => {
+   }).catch((err: BusinessError) => {
      console.error(`Failed to unregister source ${err}`);
    });
    ```

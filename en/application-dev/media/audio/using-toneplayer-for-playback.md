@@ -1,10 +1,16 @@
 # Using TonePlayer for Audio Playback (for System Applications Only)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
-TonePlayer<sup>9+</sup> provides APIs for playing and managing Dual Tone Multi Frequency (DTMF) tones, such as dial tones, ringback tones, supervisory tones, and proprietary tones. The main task of the TonePlayer is to generate sine waves of different frequencies by using the built-in algorithm based on the [ToneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9) and add the sine waves to create a sound. The sound can then be played by using the [AudioRenderer](../../reference/apis-audio-kit/js-apis-audio.md#audiorenderer8), and the playback task can also be managed by using the [AudioRenderer](../../reference/apis-audio-kit/js-apis-audio.md#audiorenderer8). The full process includes loading the DTMF tone configuration, starting DTMF tone playing, stopping the playback, and releasing the resources associated with the **TonePlayer** object. For details about the APIs, see the [TonePlayer API Reference](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9).
+TonePlayer<sup>9+</sup> provides APIs for playing and managing Dual Tone Multi Frequency (DTMF) tones, such as dial tones, ringback tones, supervisory tones, and proprietary tones. The main task of the TonePlayer is to generate sine waves of different frequencies by using the built-in algorithm based on the [ToneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9) and add the sine waves to create a sound. The sound can then be played by using the [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md), and the playback task can also be managed by using the [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md). The full process includes loading the DTMF tone configuration, starting DTMF tone playing, stopping the playback, and releasing the resources associated with the TonePlayer object. For details about the APIs, see the [TonePlayer API Reference](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9).
 
 ## Supported Tone Types
 
-The table below lists the supported [ToneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9)s. You can call **load()** with **audio.ToneType.*type*** as a parameter to load the tone resource of the specified type.
+The table below lists the supported [tone types](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9). You can call **load()** with **audio.ToneType.*type*** as a parameter to load the tone resource of the specified type.
 
 | Tone Type| Value| Description|
 | -------- | -------- | -------- |
@@ -41,7 +47,7 @@ The table below lists the supported [ToneType](../../reference/apis-audio-kit/js
 
 To implement audio playback with the TonePlayer, perform the following steps:
 
-1. Create a **TonePlayer** instance.
+1. Create a TonePlayer instance.
    
    ```ts
    import { audio } from '@kit.AudioKit';
@@ -80,7 +86,7 @@ To implement audio playback with the TonePlayer, perform the following steps:
    }
    ```
 
-5. Release the resources associated with the **TonePlayer** instance.
+5. Release the resources associated with the TonePlayer instance.
 
    ```ts
    async function release() {
@@ -90,11 +96,11 @@ To implement audio playback with the TonePlayer, perform the following steps:
 
 If the APIs are not called in the preceding sequence, the error code **6800301 NAPI_ERR_SYSTEM** is returned.
 
-## Sample Code
+## Complete Sample Code
 
 Refer to the following code to play the DTMF tone when the dial key on the keyboard is pressed.
 
-To prevent the UI thread from being blocked, most **TonePlayer** calls are asynchronous. Each API provides the callback and promise functions. The following examples use the promise functions. For more information, see [TonePlayer](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9).
+To prevent the UI thread from being blocked, most TonePlayer calls are asynchronous. Each API provides the callback and promise functions. The following examples use the promise functions. For more information, see [TonePlayer](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9).
 
 ```ts
 import { audio } from '@kit.AudioKit';

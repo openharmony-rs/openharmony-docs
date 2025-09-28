@@ -1,4 +1,10 @@
 # @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 StaticSubscriberExtensionAbility模块提供静态订阅者ExtensionAbility类别的能力。
 
@@ -18,7 +24,7 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 ## 属性
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统API**：该接口为系统接口，三方应用不支持调用。
 
@@ -28,13 +34,13 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 ## StaticSubscriberExtensionAbility.onReceiveEvent
 
-onReceiveEvent(event: CommonEventData): void;
+onReceiveEvent(event: CommonEventData): void
 
 静态订阅者通用事件回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**系统API**：该接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -44,11 +50,11 @@ onReceiveEvent(event: CommonEventData): void;
 
 **示例：**
   ```ts
-  import { commonEventManager, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
+  import { commonEventManager } from '@kit.BasicServicesKit';
 
     class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
         onReceiveEvent(event: commonEventManager.CommonEventData) {
-            console.log(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+            console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
         }
     }
   ```

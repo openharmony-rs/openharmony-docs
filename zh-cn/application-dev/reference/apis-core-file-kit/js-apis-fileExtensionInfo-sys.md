@@ -1,4 +1,10 @@
 # @ohos.file.fileExtensionInfo (公共文件访问与管理属性信息)(系统接口)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @zhuangzhuang-->
+<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 该模块提供公共文件访问和管理模块中RootInfo与FileInfo中部分属性值的定义。
 
@@ -19,6 +25,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 | 名称 | 值 | 说明 |
@@ -37,6 +45,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 ### 常量
@@ -51,6 +61,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 组成FileInfo中的mode字段，通过与运算判断是否具备某种能力。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 

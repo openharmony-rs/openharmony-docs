@@ -1,4 +1,10 @@
 # slider开发指导
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 slider为滑动条组件，用来快速调节音量、亮度等。具体用法请参考[slider](../reference/apis-arkui/arkui-js/js-components-basic-slider.md)。
@@ -110,7 +116,7 @@ slider组件通过color、selected-color、block-color样式分别为滑动条�
   <text>slider start value is {{startValue}}</text>
   <text>slider current value is {{currentValue}}</text>
   <text>slider end value is {{endValue}}</text>
-  <slider min="0" max="100" value="{{value}}" onchange="setvalue"></slider>
+  <slider min="0" max="100" value="{{value}}" onchange="setValue"></slider>
 </div>
 ```
 
@@ -137,14 +143,14 @@ export default {
     currentValue: 0,
     endValue: 0,
   },
-  setvalue(e) {
-    if (e.mode == "start") {
+  setValue(e) {
+    if (e.mode === "start") {
       this.value = e.value;
       this.startValue = e.value;
-    } else if (e.mode == "move") {
+    } else if (e.mode === "move") {
       this.value = e.value;
       this.currentValue = e.value;
-    } else if (e.mode == "end") {
+    } else if (e.mode === "end") {
       this.value = e.value;
       this.endValue = e.value;
     }
@@ -165,9 +171,9 @@ export default {
 <div class="container">
   <image src="common/landscape3.jpg" style=" width: {{WidthVal}}px;height:{{HeightVal}}px;margin-top: -150px;"></image>
   <div class="txt">
-    <slider min="0" max="100" value="{{value}}" onchange="setvalue"></slider>
-    <text>The width of this picture is    {{WidthVal}}</text>
-    <text>The height of this picture is  {{HeightVal}}</text>
+    <slider min="0" max="100" value="{{value}}" onchange="setValue"></slider>
+    <text>The width of this picture is {{WidthVal}}</text>
+    <text>The height of this picture is {{HeightVal}}</text>
   </div>
 </div>
 ```
@@ -183,14 +189,14 @@ export default {
   align-items: center;
   background-color: #F1F3F5;
 }
-.txt{
+.text{
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
   top: 65%;
 }
-text{
+.text{
   margin-top: 30px;
 }
 ```
@@ -204,7 +210,7 @@ export default{
     WidthVal: 200,
     HeightVal: 200
   },
-  setvalue(e) {
+  setValue(e) {
     this.WidthVal = 200 + e.value;
     this.HeightVal = 200 + e.value
   }
@@ -218,6 +224,6 @@ export default{
 
 针对slider开发，有以下相关实例可供参考：
 
-- [slider组件的使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/SliderApplication)
+- [slider组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/SliderApplication)
 
-- [简易视频播放器（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)
+- [简易视频播放器（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)

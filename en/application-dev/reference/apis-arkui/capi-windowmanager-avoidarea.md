@@ -1,8 +1,14 @@
 # WindowManager_AvoidArea
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The WindowManager_AvoidArea struct describes the avoid area.
+The struct describes the avoid area.
 
 **Since**: 15
 

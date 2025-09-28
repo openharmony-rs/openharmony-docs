@@ -1,6 +1,12 @@
 # @ohos.util (util工具函数)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
-该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）等功能。
+该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）等功能。
 
 > **说明：**
 >
@@ -62,14 +68,14 @@ format(format: string,  ...args: Object[]): string
 ```ts
 import { util } from '@kit.ArkTS';
 
-interface utilAddresstype {
+interface utilAddressType {
   city: string;
   country: string;
 }
-interface utilPersontype {
+interface utilPersonType {
   name: string;
   age: number;
-  address: utilAddresstype;
+  address: utilAddressType;
 }
 
 let name = 'John';
@@ -93,7 +99,7 @@ const obj: Record<string,number | string> = { "name": 'John', "age": 20 };
 formattedString = util.format('The object is %j', obj);
 console.info(formattedString);
 // 输出结果：The object is {"name":"John","age":20}
-const person: utilPersontype = {
+const person: utilPersonType = {
   name: 'John',
   age: 20,
   address: {
@@ -178,13 +184,15 @@ console.info("result = " + result);
 
 ## util.callbackWrapper
 
-callbackWrapper(original: Function): (err: Object, value: Object )=&gt;void
+callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 
 对异步函数进行回调化处理，回调中第一个参数是拒绝原因（如果Promise已解决，则为null），第二个参数是已解决的值。
 
 > **说明：**
 >
 > 该接口要求参数original必须是异步函数类型。如果传入的参数不是异步函数，不会进行拦截，但是会输出错误信息："callbackWrapper: The type of Parameter must be AsyncFunction"。
+>
+> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -200,7 +208,7 @@ callbackWrapper(original: Function): (err: Object, value: Object )=&gt;void
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Function | 返回一个回调函数，该函数第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。 |
+| (err: Object, value: Object)=&gt;void | 返回一个回调函数，该函数第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。 |
 
 **错误码：**
 
@@ -213,11 +221,11 @@ callbackWrapper(original: Function): (err: Object, value: Object )=&gt;void
 **示例：**
 
 ```ts
-async function fn() {
-  return 'hello world';
+async function fn(input: string) {
+  return input;
 }
 let cb = util.callbackWrapper(fn);
-cb(1, (err : Object, ret : string) => {
+cb('hello world', (err : Object, ret : string) => {
   if (err) throw new Error;
   console.info(ret);
 });
@@ -238,7 +246,7 @@ promisify(original: (err: Object, value: Object) =&gt; void): Function
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | Function | 是 | 回调函数中第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。  |
+| original | (err: Object, value: Object) =&gt; void | 是 | 回调函数中第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。  |
 
 **返回值：**
 
@@ -314,7 +322,7 @@ console.info("RFC 4122 Version 4 UUID:" + uuid);
 
 generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 
-使用加密安全随机数生成器生成随机的RFC 4122版本4的Uint8Array类型UUID。
+使用加密安全随机数生成器生成随机的RFC 4122版本4的UUID。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -352,7 +360,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-将generateRandomUUID生成的string类型UUID转换为generateRandomBinaryUUID生成的Uint8Array类型UUID，符合RFC 4122版本规范。
+将generateRandomUUID生成的string类型UUID转换为generateRandomBinaryUUID生成的UUID，符合RFC 4122版本规范。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -462,7 +470,7 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 > **说明：**
 >
-> 此接口不可用，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，此接口不可用，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -470,20 +478,22 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | Function | 是 | 异步函数。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 异步函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Function | 采用遵循常见的错误优先的回调风格的函数（也就是将(err, value) => ...回调作为最后一个参数），并返回一个promise的函数。 |
+| Object | 返回promise函数，采用遵循常见的错误优先的回调风格的函数（也就是将(err, value) => ...回调作为最后一个参数）。 |
 
 
 ## util.getHash<sup>12+</sup>
 
 getHash(object: object): number
 
-获取对象的Hash值。首次获取时，则计算Hash值并保存到对象的Hash域（返回随机的Hash值）；后续获取时，直接从Hash域中返回Hash值（同一对象多次返回值保持不变）。
+获取对象的Hash值。
+
+首次获取时，则计算Hash值并保存到对象的Hash域（返回随机的Hash值）；后续获取时，直接从Hash域中返回Hash值（同一对象多次返回值保持不变）。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -528,7 +538,9 @@ console.info('result2 is ' + result2);
 
 getMainThreadStackTrace(): string
 
-获取主线程的栈追踪信息，最多返回64层调用帧。该接口可能会影响到主线程性能，建议谨慎使用。
+获取主线程的栈追踪信息，最多返回64层调用帧。
+
+该接口可能对主线程性能产生影响，建议仅在必要时使用，如日志记录、错误分析或调试场景。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -563,7 +575,7 @@ console.info(stack);
 
 ## DecodeToStringOptions<sup>12+</sup>
 
-解码是否使用流处理方式。
+用于配置decodeToString方法在解码字节流时的行为参数。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1030,7 +1042,7 @@ TextDecoder的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | encoding | string | 否 | 编码格式，默认值是'utf-8'。 |
-| options | object | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。 |
+| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。 |
 
   **表1** options
 
@@ -1062,7 +1074,7 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | 是 | 符合格式需要解码的数组。 |
-| options | object | 否 | 解码相关选项参数。 |
+| options | { stream?: false } | 否 | 解码相关选项参数。 |
 
 **表2** options
 
@@ -1261,13 +1273,13 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 | 参数名 | 类型       | 必填 | 说明                                                    |
 | ------ | ---------- | ---- | ------------------------------------------------------- |
 | input  | string     | 是   | 需要编码的字符串。                                      |
-| dest   | Uint8Array | 是   | Uint8Array对象实例，用于将生成的UTF-8编码文本放入其中。 |
+| dest   | Uint8Array | 是   | Uint8Array对象实例，用于将生成的utf-8编码文本放入其中。 |
 
 **返回值：**
 
 | 类型       | 说明               |
 | ---------- | ------------------ |
-| [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | 返回一个对象，read表示已编码的字符数，write表示编码字符所占用的字节数。 |
+| [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
 
 **错误码：**
 
@@ -1296,7 +1308,7 @@ console.info("result.written = " + result.written);
 
 encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
-将生成的UTF-8编码文本写入dest数组。
+将生成的utf-8编码文本写入dest数组。
 
 > **说明：**
 >
@@ -1309,13 +1321,13 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | input | string | 是 | 需要编码的字符串。 |
-| dest | Uint8Array | 是 | Uint8Array对象实例，用于将生成的UTF-8编码文本放入其中。 |
+| dest | Uint8Array | 是 | Uint8Array对象实例，用于将生成的utf-8编码文本放入其中。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Uint8Array | 返回编码后的Uint8Array对象。 |
+| { read: number; written: number } | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
 
 **示例：**
 
@@ -1424,7 +1436,7 @@ let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 
 ### createRationalFromString<sup>8+</sup>
 
-static createRationalFromString(rationalString: string): RationalNumber​
+static createRationalFromString(rationalString: string): RationalNumber
 
 使用给定的字符串创建RationalNumber对象。
 
@@ -2541,7 +2553,7 @@ console.info('result = ' + result);
 
 entries(): IterableIterator&lt;[K, V]&gt;
 
-迭代此对象中的所有键值对。
+返回一个迭代器对象，用于按插入顺序遍历当前对象中的所有键值对（[key, value]）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2832,7 +2844,9 @@ let range = new util.ScopeHelper(tempLower, tempUpper);
 let tempMiDF = new Temperature(35);
 let tempMidS = new Temperature(39);
 let rangeFir = new util.ScopeHelper(tempMiDF, tempMidS);
-range.intersect(rangeFir);
+let result = range.intersect(rangeFir);
+console.info("result = " + result);
+// 输出结果：result = [35, 39]
 ```
 
 ### intersect<sup>9+</sup>
@@ -3583,7 +3597,7 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 
 encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 
-将输入参数异步编码后输出对应Uint8Array对象。
+将输入参数异步编码后输出对应Uint8Array对象。使用Promise异步回调。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3600,7 +3614,7 @@ encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 
 | 类型                      | 说明                              |
 | ------------------------- | --------------------------------- |
-| Promise&lt;Uint8Array&gt; | 返回异步编码后新分配的Uint8Array对象。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回异步编码后新分配的Uint8Array对象。 |
 
 **错误码：**
 
@@ -5225,6 +5239,68 @@ isSharedArrayBuffer(value: Object): boolean
   console.info("result = " + result);
   // 输出结果：result = true
   ```
+
+## AutoFinalizer&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizer是一个接口类，用于在ArkTS对象释放时提供回调。通过实现回调接口，开发者可自定义对象被回收时自动触发的资源清理逻辑。
+
+> **说明：**
+>
+> AutoFinalizer&lt;T&gt;需要和AutoFinalizerCleaner&lt;T&gt;一起使用，只实现该接口类没有任何功能。
+
+### onFinalization<sup>22+</sup>
+
+onFinalization(heldValue: T): void
+
+开发者需要实现该接口，定义对象被回收时自动触发的资源清理回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| heldValue | T | 是 | 当监听的对象被回收时，该值会被传递给`onFinalization`回调方法。 |
+
+## AutoFinalizerCleaner&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizerCleaner是用于关联对象生命周期与资源清理逻辑的工具类。主要的作用是将实现了AutoFinalizer&lt;T&gt;接口的对象与特定值绑定，当对象被回收时自动触发资源清理回调。
+
+### register&lt;T&gt;<sup>22+</sup>
+
+static register&lt;T&gt;(obj: AutoFinalizer&lt;T&gt;, heldValue: T): void
+
+将`AutoFinalizer`接口的对象与输入值关联，当对象被回收时触发资源清理的回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| obj | [AutoFinalizer&lt;T&gt;](#autofinalizert22) | 是 | 实现了`AutoFinalizer`接口的对象，其`onFinalization`方法会在该对象被回收时调用。 |
+| heldValue | T | 是 | 当监听的对象被回收时，该值会被传递给`obj.onFinalization`方法。 |
+
+**示例：**
+
+```ts
+class DeviceManageViewModel implements util.AutoFinalizer<string> {
+  constructor(heldValue: string) {
+    util.AutoFinalizerCleaner.register(this, heldValue);
+  }
+
+  onFinalization(heldValue: string) {
+    console.info("onFinalization: ", heldValue);
+    // 等待触发垃圾回收，触发后会输出结果：onFinalization: test
+  }
+}
+
+const device = new DeviceManageViewModel("test");
+```
 
 ## LruBuffer<sup>(deprecated)</sup>
 

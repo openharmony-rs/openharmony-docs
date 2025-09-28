@@ -1,4 +1,10 @@
 # 切换按钮 (Toggle)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 Toggle组件提供状态按钮样式、勾选框样式和开关样式，一般用于两种状态之间的切换。具体用法请参考[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)。
@@ -113,8 +119,8 @@ import { promptAction } from '@kit.ArkUI';
 @Entry
 @Component
 struct ToggleExample {
-  @State BOnSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is on.' };
-  @State BOffSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is off.' };
+  @State bOnSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is on.' };
+  @State bOffSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is off.' };
 
   build() {
     Column() {
@@ -135,9 +141,9 @@ struct ToggleExample {
           .margin({ left: 200, right: 10 })
           .onChange((isOn: boolean) => {
             if (isOn) {
-              this.getUIContext().getPromptAction().showToast(this.BOnSt);
+              this.getUIContext().getPromptAction().showToast(this.bOnSt);
             } else {
-              this.getUIContext().getPromptAction().showToast(this.BOffSt);
+              this.getUIContext().getPromptAction().showToast(this.bOffSt);
             }
           })
       }

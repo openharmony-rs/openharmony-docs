@@ -1,5 +1,11 @@
 # UIAbility组件基本用法
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件的基本用法包括：指定UIAbility的启动页面以及获取UIAbility的上下文[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。
 
@@ -31,7 +37,7 @@ export default class EntryAbility extends UIAbility {
 ## 获取UIAbility的上下文信息
 
 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)类拥有自身的上下文信息，该信息为[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类的实例，[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类拥有abilityInfo、currentHapModuleInfo等属性。通过UIAbilityContext可以获取UIAbility的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，以及可以获取操作UIAbility实例的方法（如[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)等）。
-如果需要在页面中获得当前Ability的Context，可调用[getHostContext](../reference/apis-arkui/js-apis-arkui-UIContext.md#gethostcontext12)接口获取当前页面关联的UIAbilityContext或[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+如果需要在页面中获得当前Ability的Context，可调用[getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)接口获取当前页面关联的UIAbilityContext或[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
   
@@ -196,24 +202,24 @@ export default class EntryAbility extends UIAbility {
     export default class UIAbilityB extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 调用方无需手动传递parameters参数，系统会自动向Want对象中传递调用方信息。
-        console.log(`onCreate, callerPid: ${want.parameters?.['ohos.aafwk.param.callerPid']}.`);
-        console.log(`onCreate, callerBundleName: ${want.parameters?.['ohos.aafwk.param.callerBundleName']}.`);
-        console.log(`onCreate, callerAbilityName: ${want.parameters?.['ohos.aafwk.param.callerAbilityName']}.`);
+        console.info(`onCreate, callerPid: ${want.parameters?.['ohos.aafwk.param.callerPid']}.`);
+        console.info(`onCreate, callerBundleName: ${want.parameters?.['ohos.aafwk.param.callerBundleName']}.`);
+        console.info(`onCreate, callerAbilityName: ${want.parameters?.['ohos.aafwk.param.callerAbilityName']}.`);
       }
 
       onDestroy(): void {
-        console.log(`UIAbilityB onDestroy.`);
+        console.info(`UIAbilityB onDestroy.`);
       }
 
       onWindowStageCreate(windowStage: window.WindowStage): void {
-        console.log(`Ability onWindowStageCreate.`);
+        console.info(`Ability onWindowStageCreate.`);
 
         windowStage.loadContent('pages/Index', (err) => {
           if (err.code) {
             console.error(`Failed to load the content, error code: ${err.code}, error msg: ${err.message}.`);
             return;
           }
-          console.log(`Succeeded in loading the content.`);
+          console.info(`Succeeded in loading the content.`);
         });
       }
     }

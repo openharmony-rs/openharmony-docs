@@ -13,7 +13,7 @@ Before reading this topic, you are advised to read [Basic Syntax Overview](./ark
 > This decorator can be used in atomic services since API version 11.
 
 
-## Rules of Use
+## Usage Rules
 
 The \@Builder decorator can be used for the private custom build function defined in the custom component and global custom build function defined globally.
 
@@ -480,10 +480,10 @@ class Info {
 @Builder
 function overBuilder(param: Info) {
   Column() {
-    Text('Global @Builder name :${param.name}`)
+    Text(`Global @Builder name :${param.name}`)
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
-    Text('Global @Builder age :${param.age}`)
+    Text(`Global @Builder age :${param.age}`)
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
   }
@@ -506,10 +506,10 @@ struct ParentPage {
   @Builder
   privateBuilder() {
     Column() {
-      Text('Local @Builder name :${this.info1.name}`)
+      Text(`Local @Builder name :${this.info1.name}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-      Text('Local @Builder age :${this.info1.age}`)
+      Text(`Local @Builder age :${this.info1.age}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
     }

@@ -1,5 +1,12 @@
 # @ohos.multimodalInput.inputDeviceCooperate (键鼠穿越)(系统接口)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 键鼠穿越功能模块，提供两台或多台设备组网协同后键鼠共享能力，实现键鼠输入设备的跨设备协同操作。
 
 > **说明**
@@ -59,7 +66,7 @@ struct Index {
                 console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Keyboard mouse crossing enable success.`);
+              console.info(`Keyboard mouse crossing enable success.`);
             });
           } catch (error) {
             console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -86,9 +93,9 @@ enable(enable: boolean): Promise&lt;void&gt;
 
 **返回值**：
 
-| 参数                 | 说明                     |
+| 类型                 | 说明                     |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt;      | Promise对象，异步返回键鼠穿越开启、关闭结果。        |
+| Promise&lt;void&gt;      | 无返回结果的Promise对象。        |
 
 **错误码**：
 
@@ -113,7 +120,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDeviceCooperate.enable(true).then(() => {
-              console.log(`Keyboard mouse crossing enable success.`);
+              console.info(`Keyboard mouse crossing enable success.`);
             }, (error: BusinessError) => {
               console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -173,7 +180,7 @@ struct Index {
                 console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Start Keyboard mouse crossing success.`);
+              console.info(`Start Keyboard mouse crossing success.`);
             });
           } catch (error) {
             console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -203,7 +210,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
 **返回值**：
 
-| 参数名                  | 说明                             |
+| 类型                  | 说明                             |
 | ---------------------- | ------------------------------- |
 | Promise\<void>         | Promise对象，异步返回键鼠穿越启动、关闭结果。       |
 
@@ -234,7 +241,7 @@ struct Index {
           let srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
-              console.log(`Start Keyboard mouse crossing success.`);
+              console.info(`Start Keyboard mouse crossing success.`);
             }, (error: BusinessError) => {
               console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -288,7 +295,7 @@ struct Index {
                 console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Stop Keyboard mouse crossing success.`);
+              console.info(`Stop Keyboard mouse crossing success.`);
             });
           } catch (error) {
             console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -309,7 +316,7 @@ stop(): Promise\<void>
 
 **返回值**：
 
-| 参数名                | 说明                            |
+| 类型                | 说明                            |
 | --------             | ----------------------------   |
 | Promise\<void>       |  Promise对象，异步返回停止键鼠穿越结果。      |
 
@@ -328,7 +335,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDeviceCooperate.stop().then(() => {
-              console.log(`Stop Keyboard mouse crossing success.`);
+              console.info(`Stop Keyboard mouse crossing success.`);
             }, (error: BusinessError) => {
               console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -385,7 +392,7 @@ struct Index {
                 console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
             });
           } catch (error) {
             console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -412,7 +419,7 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 **返回值**：
 
-| 参数                        | 说明                     |
+| 类型                        | 说明                     |
 | -------------------        | ------------------------------- |
 | Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。ture 表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
 
@@ -441,7 +448,7 @@ struct Index {
           let deviceDescriptor = "descriptor";
           try {
             inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
-              console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
             }, (error: BusinessError) => {
               console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -491,7 +498,7 @@ struct Index {
       Text()
         .onClick(() => {
           let callback = (msg: object) => {
-            console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
           try {
@@ -543,11 +550,11 @@ struct Index {
         .onClick(() => {
           // 取消注册单个回调函数
           let callbackOn = (msg: object) => {
-            console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
           let callbackOff = () => {
-            console.log(`Keyboard mouse crossing event`);
+            console.info(`Keyboard mouse crossing event`);
             return false;
           }
           try {
@@ -573,7 +580,7 @@ struct Index {
         .onClick(() => {
           // 取消注册所有回调函数
           let callback = (msg: object) => {
-            console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
           try {

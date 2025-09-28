@@ -1,12 +1,16 @@
 # DataAbilityHelper
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 可以通过[acquireDataAbilityHelper](js-apis-ability-featureAbility.md#featureabilityacquiredataabilityhelper7)接口获取DataAbilityHelper对象。
 
 > **说明：**
 > 
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
-> 除了[PacMap](js-apis-inner-ability-dataAbilityHelper.md#pacmap)，本模块接口仅可在FA模型下使用。
 
 ## 导入模块
 
@@ -395,7 +399,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
     'dataability:///com.example.DataAbility'
 );
-DAHelper.normalizeUri('dataability:///com.example.DataAbility',).then((data) => {
+DAHelper.normalizeUri('dataability:///com.example.DataAbility').then((data) => {
     console.info(`normalizeUri data: ${JSON.stringify(data)}`);
 });
 ```
@@ -468,7 +472,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
     'dataability:///com.example.DataAbility'
 );
-DAHelper.denormalizeUri('dataability:///com.example.DataAbility',).then((data) => {
+DAHelper.denormalizeUri('dataability:///com.example.DataAbility').then((data) => {
     console.info(`denormalizeUri data: ${JSON.stringify(data)}`);
 });
 ```

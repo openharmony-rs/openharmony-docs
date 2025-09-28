@@ -1,5 +1,12 @@
 # @ohos.account.distributedAccount (分布式账号管理)(系统接口)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 本模块提供管理分布式账号的一些基础功能，主要包括查询和更新账号登录状态。
 
 > **说明：**
@@ -55,13 +62,14 @@ try {
   accountAbility.getOsAccountDistributedInfoByLocalId(100,
     (err: BusinessError, data: distributedAccount.DistributedInfo) => {
       if (err) {
-        console.error('getOsAccountDistributedInfoByLocalId exception: ' + JSON.stringify(err));
+        console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('distributed information: ' + JSON.stringify(data));
+        console.info('distributed information: ' + JSON.stringify(data));
       }
     });
-} catch (err) {
-  console.error('getOsAccountDistributedInfoByLocalId exception: ' + JSON.stringify(err));
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -107,12 +115,13 @@ const accountAbility: distributedAccount.DistributedAccountAbility = distributed
 try {
   accountAbility.getOsAccountDistributedInfoByLocalId(100).then((
     data: distributedAccount.DistributedInfo) => {
-    console.log('distributed information: ' + JSON.stringify(data));
+    console.info('distributed information: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountDistributedInfoByLocalId exception: '  + JSON.stringify(err));
+    console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
   });
-} catch (err) {
-  console.error('getOsAccountDistributedInfoByLocalId exception: ' + JSON.stringify(err));
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -159,13 +168,14 @@ let accountInfo: distributedAccount.DistributedInfo =
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo, (err: BusinessError) => {
     if (err) {
-      console.error('setOsAccountDistributedInfoByLocalId exception: ' + JSON.stringify(err));
+      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setOsAccountDistributedInfoByLocalId successfully');
+      console.info('setOsAccountDistributedInfoByLocalId successfully');
     }
   });
-} catch (err) {
-    console.error('setOsAccountDistributedInfoByLocalId exception: ' + JSON.stringify(err));
+} catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -216,11 +226,12 @@ let accountInfo: distributedAccount.DistributedInfo =
   {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo).then(() => {
-      console.log('setOsAccountDistributedInfoByLocalId successfully');
+      console.info('setOsAccountDistributedInfoByLocalId successfully');
   }).catch((err: BusinessError) => {
-      console.error('setOsAccountDistributedInfoByLocalId exception: '  + JSON.stringify(err));
+      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
   });
-} catch (err) {
-    console.error('setOsAccountDistributedInfoByLocalId exception: ' + JSON.stringify(err));
+} catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```

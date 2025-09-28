@@ -1,4 +1,10 @@
 # 通过向量数据库实现数据持久化 (C/C++)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @cuile44; @baijidong-->
+<!--Designer: @houpengtao1-->
+<!--Tester: @logic42-->
+<!--Adviser: @ge-yafang-->
 
 
 ## 场景介绍
@@ -155,6 +161,10 @@ libnative_rdb_ndk.z.so
    ```c
    // 不使用参数绑定查询数据
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where id = 1;", nullptr);
+   if (cursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      return;
+   }
    int rowCount = 0;
    cursor->getRowCount(cursor, &rowCount);
    cursor->goToNextRow(cursor);
@@ -171,20 +181,36 @@ libnative_rdb_ndk.z.so
    OH_Data_Values *values3 = OH_Values_Create();
    OH_Values_PutInt(values3, 1);
    cursor = OH_Rdb_ExecuteQueryV2(store_, querySql, values3);
+   if (cursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      return;
+   }
    OH_Values_Destroy(values3);
    cursor->destroy(cursor);
 
    // 子查询，创建第二张表
    OH_Rdb_ExecuteV2(store_, "CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);", nullptr, nullptr);
    cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where id in (select id from test1);", nullptr);
+   if (cursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      return;
+   }
    cursor->destroy(cursor);
 
    // 聚合查询
    cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where data1 <-> '[1.0, 1.0]' > 0 group by id having max(data1 <=> '[1.0, 1.0]');", nullptr);
+   if (cursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      return;
+   }
    cursor->destroy(cursor);
 
    // 多表查询
    cursor = OH_Rdb_ExecuteQueryV2(store_, "select id, data1 <-> '[1.5, 5.6]' as distance from test union select id, data1 <-> '[1.5, 5.6]' as distance from test order by distance limit 5;", nullptr);
+   if (cursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      return;
+   }
    cursor->destroy(cursor);
    ```
 
@@ -193,6 +219,10 @@ libnative_rdb_ndk.z.so
    ```c
    OH_Rdb_ExecuteV2(store_, "CREATE VIEW v1 as select * from test where id > 0;", nullptr, nullptr);
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from v1;", nullptr);
+   if (cursor == NULL) {
+      OH_LOG_ERROR(LOG_APP, "Query failed.");
+      return;
+   }
    cursor->destroy(cursor);
    ```
 
@@ -309,14 +339,14 @@ libnative_rdb_ndk.z.so
 
    示例代码如下：
 
-   ```ts
+   ```c
    // content列配置了数据压缩，并且配置了数据老化。
    OH_Rdb_ExecuteV2(store_, "CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with (time_col = 'time', interval = '5 minute', compress_col = 'content');", nullptr, nullptr);
    ```
 
 10. 删除数据库。示例代码如下：
 
-   ```c
-   OH_Rdb_CloseStore(store_);
-   OH_Rdb_DeleteStoreV2(config);
-   ```
+    ```c
+    OH_Rdb_CloseStore(store_);
+    OH_Rdb_DeleteStoreV2(config);
+    ```

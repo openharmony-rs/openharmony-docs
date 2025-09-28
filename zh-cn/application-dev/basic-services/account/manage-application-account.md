@@ -1,5 +1,12 @@
 # 管理应用账号
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 应用开发者可以使用[应用账号SDK](../../reference/apis-basic-services-kit/js-apis-appAccount.md)管理本应用的账号数据。
 
 能力限制：应用卸载场景下，被卸载应用的账号数据会被删除；本地账号删除场景下，被删除本地账号下的所有应用的账号数据会被删除。
@@ -39,10 +46,10 @@
 
    ```ts
    appAccountManager.createAccount(name, options).then(()=>{
-    console.log('createAccount successfully');
-  }).catch((err: BusinessError)=>{
-    console.error('createAccount failed, error: ' + JSON.stringify(err));
-  });
+       console.info('createAccount successfully');
+   }).catch((err: BusinessError)=>{
+       console.error(`createAccount failed, error: code is ${err.code}, message is ${err.message}`);
+   });
    ```
 
 ## 查询应用账号列表
@@ -54,9 +61,9 @@
 
    ```ts
    appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
-       console.log('getAllAccounts successfully, data: ' + JSON.stringify(data));
+       console.info('getAllAccounts successfully, data: ' + JSON.stringify(data));
    }).catch((err: BusinessError) => {
-       console.error('getAllAccounts failed, error: ' + JSON.stringify(err));
+       console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -76,9 +83,9 @@
 
    ```ts
    appAccountManager.getCredential(name, credentialType).then((data: string) => {
-       console.log('getCredential successfully, data: ' + data);
+       console.info('getCredential successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getCredential failed, error: ' + JSON.stringify(err));
+       console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -86,9 +93,9 @@
 
    ```ts
    appAccountManager.setCredential(name, credentialType, credential).then(() => {
-       console.log('setCredential successfully');
+       console.info('setCredential successfully');
    }).catch((err: BusinessError) => {
-       console.error('setCredential failed: ' + JSON.stringify(err));
+       console.error(`setCredential failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -108,9 +115,9 @@
 
    ```ts
    appAccountManager.setCustomData(name, key, value).then(() => {
-       console.log('setCustomData successfully');
+       console.info('setCustomData successfully');
    }).catch((err: BusinessError) => {
-       console.error('setCustomData failed: ' + JSON.stringify(err));
+       console.error(`setCustomData failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -118,9 +125,9 @@
 
    ```ts
    appAccountManager.getCustomData(name, key).then((data: string) => {
-       console.log('getCustomData successfully, data: ' + data);
+       console.info('getCustomData successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getCustomData failed, error: ' + JSON.stringify(err));
+       console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -141,9 +148,9 @@
 
    ```ts
    appAccountManager.setAuthToken(name, authType, token).then(() => {
-       console.log('setAuthToken successfully');
+       console.info('setAuthToken successfully');
    }).catch((err: BusinessError) => {
-       console.error('setAuthToken failed: ' + JSON.stringify(err));
+       console.error(`setAuthToken failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -151,9 +158,9 @@
 
    ```ts
    appAccountManager.getAuthToken(name, owner, authType).then((data: string) => {
-       console.log('getAuthToken successfully, data: ' + data);
+       console.info('getAuthToken successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getAuthToken failed, error: ' + JSON.stringify(err));
+       console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -166,11 +173,11 @@
 指定要删除的账号名称，调用[removeAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md#removeaccount9)接口删除账号。
 
    ```ts
-   let name: string = 'Zhangsan';
+   let name: string = 'ZhangSan';
    appAccountManager.removeAccount(name).then(() => {
-       console.log('removeAccount successfully');
+       console.info('removeAccount successfully');
    }).catch((err: BusinessError) => {
-       console.error('removeAccount failed, error: ' + JSON.stringify(err));
+       console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 

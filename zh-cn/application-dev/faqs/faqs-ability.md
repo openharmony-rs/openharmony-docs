@@ -1,5 +1,12 @@
 # 应用模型常见问题
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @ccllee1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 
 ## 如何获取设备横竖屏的状态变化通知(API 9)
 
@@ -78,7 +85,7 @@ FA和Stage模型中，应用可以创建进程并指定UIAbility运行在某个�
 
 **参考链接**
 
-[AbilityStage组件容器](../application-models/abilitystage.md)
+[AbilityStage组件管理器](../application-models/abilitystage.md)
 
 
 ## 多实例场景下当前Ability调用terminateSelf后，桌面最近任务列表如何设置不保留快照(API 9)
@@ -162,7 +169,7 @@ Failure[INSTALL_FAILED_SIZE_TOO_LARGE] error while deploying hap？
 
 **解决措施**
 
-使用\@ohos.systemDateTime的getCurrentTime来获取系统系统时间和时区。
+使用\@ohos.systemDateTime的getCurrentTime来获取系统时间和时区。
 
 **代码示例**
 
@@ -251,7 +258,7 @@ DevEco Studio默认下载是public-sdk。
 
 **问题现象**
 
-已在stage模型下的应用如何拉起FA模型
+已在Stage模型下的应用如何拉起FA模型
 
 **解决措施**
 
@@ -369,7 +376,7 @@ this.context.startAbility(
 ```
 
 
-## stage模型，\@Component组件内如何获取UIAbilityContext(API 9)
+## Stage模型，\@Component组件内如何获取UIAbilityContext(API 9)
 
 **解决措施**
 

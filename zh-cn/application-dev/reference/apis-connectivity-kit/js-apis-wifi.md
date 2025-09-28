@@ -1,4 +1,10 @@
 # @ohos.wifi (WLAN)
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
@@ -111,27 +117,6 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 ```ts
 import wifi from '@ohos.wifi';
-
-wifi.getScanInfos((err, result) => {
-    if (err) {
-        console.error("get scan info error");
-        return;
-    }
-
-    let len = result.length;
-    console.log("wifi received scan info: " + len);
-    for (let i = 0; i < len; ++i) {
-        console.info("ssid: " + result[i].ssid);
-        console.info("bssid: " + result[i].bssid);
-        console.info("capabilities: " + result[i].capabilities);
-        console.info("securityType: " + result[i].securityType);
-        console.info("rssi: " + result[i].rssi);
-        console.info("band: " + result[i].band);
-        console.info("frequency: " + result[i].frequency);
-        console.info("channelWidth: " + result[i].channelWidth);
-        console.info("timestamp: " + result[i].timestamp);
-    }
-});
 
 wifi.getScanInfos().then(result => {
     let len = result.length;
@@ -1023,7 +1008,7 @@ wifi.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
 
 let recvP2pPeerDeviceChangeFunc = (result:wifi.WifiP2pDevice[]) => {
     console.info("p2p peer device change receive event: " + JSON.stringify(result));
-    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice) => {
+    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice[]) => {
         if (err) {
             console.error('failed to get peer devices: ' + JSON.stringify(err));
             return;
@@ -1135,7 +1120,7 @@ stopDiscoverDevices(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:操作执行成功 flase:操作执行失败。 |
+  | boolean | true:操作执行成功 false:操作执行失败。 |
 
 **示例：**
 ```ts

@@ -1,4 +1,10 @@
 # Using Image_NativeModule to Encode Images
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 You can use the **ImagePacker** class to create and release ImagePacker instances.
 
@@ -27,7 +33,6 @@ After an ImagePacker instance is created and encoding parameters are specified, 
 > According to the MIME protocol, the standard encoding format is image/jpeg. When the APIs provided by the image module are used for encoding, **image_MimeType** of the encoding parameters must be set to **image/jpeg**. The file name extension of the encoded image file can be .jpg or .jpeg, and the file can be used on platforms that support image/jpeg decoding.
 
 ```c++
-#include <linux/kd.h>
 #include <string>
 #include <set>
 #include <hilog/log.h>
@@ -47,7 +52,7 @@ Image_MimeType GetMimeTypeIfEncodable(const char *format)
 {
     auto it = g_encodeSupportedFormats.find(format);
     if (it == g_encodeSupportedFormats.end()) {
-        return {"", 0};
+        return {const_cast<char *>(""), 0};
     }
     return {const_cast<char *>(format), strlen(format)};
 }

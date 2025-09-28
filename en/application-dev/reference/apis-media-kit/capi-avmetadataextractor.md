@@ -1,8 +1,16 @@
 # AVMetadataExtractor
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
-The AVMetadataExtractor module provides the APIs for extracting metadata from media assets.
+The module provides the APIs for extracting metadata from media assets.
+
+You can refer to the corresponding development guide and samples based on your development requirements: [Using AVMetadataExtractor to Obtain Metadata (C/C++)](../../media/media/using-ndk-avmetadataextractor-for-media.md).
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 

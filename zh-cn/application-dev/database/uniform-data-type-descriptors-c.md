@@ -1,4 +1,10 @@
 # 标准化数据类型 (C/C++)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 
 ## 场景介绍
@@ -85,25 +91,25 @@ if (isEquals) {
 // 5. 比较两种方式获取到的typeId是否存在归属关系
 bool isBelongsTo = OH_Utd_BelongsTo(typeIds1[0], typeIds2[0]);
 if (isBelongsTo) {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] Belongs To typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] belongs to typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] dont Belongs To typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] don't belongs to typeIds2[0]");
 }
 // 6. 比较两种方式获取到的typeIds1[0]是否是typeIds2[0]的低层级类型
 bool isLower = OH_Utd_IsLower(typeIds1[0], typeIds2[0]);
 if (isLower) {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] is Lower typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] is lower typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] is not Lower typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] is not lower typeIds2[0]");
 }
 // 7. 比较两种方式获取到的typeIds1[0]是否是typeIds2[0]的高层级类型
 bool isHigher = OH_Utd_IsHigher(typeIds1[0], typeIds2[0]);
 if (isHigher) {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] is Higher typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] is higher typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0]  is not Higher typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0]  is not higher typeIds2[0]");
 }
-// 8. 销毁OH_Utd_GetTypesByFilenameExtension与OH_Utd_GetFilenameExtensions函数获取到的指针，同时销毁UTD指针
+// 8. 销毁OH_Utd_GetTypesByFilenameExtension与OH_Utd_GetTypesByMimeType函数获取到的指针，同时销毁UTD指针
 OH_Utd_DestroyStringList(typeIds1, typeIds1Count);
 OH_Utd_DestroyStringList(typeIds2, typeIds2Count);
 OH_Utd_Destroy(utd1);

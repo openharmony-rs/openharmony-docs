@@ -1,4 +1,10 @@
 # 组件导航(Navigation) (推荐)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 组件导航（Navigation）主要用于实现Navigation页面（NavDestination）间的跳转，支持在不同Navigation页面间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。本文将从组件导航（Navigation）的显示模式、路由操作、子页面管理、跨包跳转以及跳转动效等几个方面进行详细介绍。
 
@@ -25,15 +31,15 @@ Navigation组件通过mode属性设置页面的显示模式。
   .mode(NavigationMode.Auto)
   ```
 
-- 单页面模式
+- 单栏模式
 
-  单页面模式适用于窄屏设备，发生路由跳转时，整个页面都会被替换。
+  单栏模式适用于窄屏设备，发生路由跳转时，整个页面都会被替换。
 
-    **图1** 单页面布局示意图  
+    **图1** 单栏布局示意图  
 
   ![zh-cn_image_0000001511740532](figures/zh-cn_image_0000001511740532.png)
 
-  将mode属性设置为NavigationMode.Stack，Navigation组件即可设置为单页面显示模式。
+  将mode属性设置为NavigationMode.Stack，Navigation组件即可设置为单栏显示模式。
 
 
   ```ts
@@ -60,7 +66,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   @Entry
   @Component
   struct NavigationExample {
-    @State TooTmp: ToolbarItem = {
+    @State toolTmp: ToolbarItem = {
       'value': "func",
       'icon': "./image/ic_public_highlights.svg",  // 当前目录image文件夹下的图标资源
       'action': () => {}
@@ -69,7 +75,7 @@ Navigation组件通过mode属性设置页面的显示模式。
     private arr: number[] = [1, 2, 3];
 
     @Builder
-    PageMap(name: string) {
+    pageMap(name: string) {
       if (name === "NavDestinationTitle1") {
         pageOneTmp();
       } else if (name === "NavDestinationTitle2") {
@@ -109,7 +115,7 @@ Navigation组件通过mode属性设置页面的显示模式。
         }
         .title("主标题")
         .mode(NavigationMode.Split)
-        .navDestination(this.PageMap)
+        .navDestination(this.pageMap)
         .menus([
           {
             value: "", icon: "./image/ic_public_search.svg", action: () => {
@@ -132,7 +138,7 @@ Navigation组件通过mode属性设置页面的显示模式。
             }
           }
         ])
-        .toolbarConfiguration([this.TooTmp, this.TooTmp, this.TooTmp])
+        .toolbarConfiguration([this.toolTmp, this.toolTmp, this.toolTmp])
       }
       .height('100%')
       .width('100%')
@@ -153,7 +159,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title("NavDestinationTitle1")
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -172,7 +178,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title("NavDestinationTitle2")
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -191,7 +197,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title("NavDestinationTitle3")
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -311,7 +317,7 @@ Navigation() {
 
 Navigation路由相关的操作都是基于导航控制器[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法进行，每个Navigation都需要创建并传入一个NavPathStack对象，用于管理页面。主要涉及页面跳转、页面返回、页面替换、页面删除、参数获取、路由拦截等功能。
 
-从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类NavPathStack对象使用。Navigation中的NavDeatination页面存在于NavPathStack中，以栈的结构管理，我们称为路由栈。具体示例代码参见：[导航控制器继承示例代码](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。
+从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类NavPathStack对象使用。Navigation中的NavDestination页面存在于NavPathStack中，以栈的结构管理，我们称为路由栈。具体示例代码参见：[导航控制器继承示例代码](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。
 
 > **说明：**
 >
@@ -349,7 +355,7 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 
     ```ts
     this.pageStack.pushPathByName('PageOne', "PageOne Param", (popInfo) => {
-      console.log('Pop page name is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result));
+      console.info('Pop page name is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result));
     });
     ```
 
@@ -438,11 +444,36 @@ struct Page01 {
 
   build() {
     NavDestination() {
-...
+      // ...
     }.title('Page01')
     .onReady((context: NavDestinationContext) => {
       this.pathStack = context.pathStack;
       this.pageParam = context.pathInfo.param as string;
+    })
+  }
+}
+```
+
+NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
+
+```ts
+class NavParam {
+  desc: string = 'navigation-param'
+}
+
+@Component
+struct DemoNavDestination {
+  // ...
+  build() {
+    NavDestination() {
+      // ...
+    }
+    .onResult((param: Object) => {
+      if (param instanceof NavParam) {
+        console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
+        return;
+      }
+      console.info('TestTag', 'param not instance of NavParam');
     })
   }
 }
@@ -482,7 +513,7 @@ this.pageStack.setInterception({
   willShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
     operation: NavigationOperation, animated: boolean) => {
     if (typeof to === "string") {
-      console.log("target page is navigation home page.");
+      console.info("target page is navigation home page.");
       return;
     }
     // 将跳转到PageTwo的路由重定向到PageOne
@@ -645,18 +676,18 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
    // 在UIAbility中使用
    import { UIContext, uiObserver } from '@kit.ArkUI';
   
-   // callBackFunc 是开发者定义的监听回调函数
-   function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {}
-   uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
+   // callbackFunc是开发者定义的监听回调函数
+   function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {}
+   uiObserver.on('navDestinationSwitch', this.context, callbackFunc);
   
    // 可以通过窗口的getUIContext()方法获取对应的UIContent
    uiContext: UIContext | null = null;
-   uiObserver.on('navDestinationSwitch', this.uiContext, callBackFunc);
+   uiObserver.on('navDestinationSwitch', this.uiContext, callbackFunc);
   ```
 
 ## 页面转场
 
-Navigation默认提供了页面切换的转场动画，通过导航控制器操作时，会触发不同的转场效果（API version 13之前，Dialog类型的页面默认无转场动画。从API version13开始，Dialog类型的页面支持系统转场动画。），Navigation也提供了关闭系统转场、自定义转场以及共享元素转场的能力。
+Navigation默认提供了页面切换的转场动画，通过导航控制器操作时，会触发不同的转场效果（API version 13之前，Dialog类型的页面默认无转场动画。从API version13开始，Dialog类型的页面支持系统转场动画。），Navigation也提供了关闭系统转场、自定义转场以及共享元素转场的能力。系统默认动画时长由物理曲线参数决定，不同设备上动画时长存在差异。
 
 ### 关闭转场
 
@@ -701,6 +732,11 @@ Navigation默认提供了页面切换的转场动画，通过导航控制器操�
 
   具体示例代码可以参考[NavDestination自定义转场示例](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例2设置navdestination自定义转场)。
 
+- 使用建议
+  1. Navigation自定义转场[customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11)适用于控制Navigation内所有页面，统一转场动画效果。
+  2. NavDestination自定义转场[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)适用于控制单个页面的转场效果。
+  3. 在同时使用[customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11)和[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)时，customNavContentTransition优先级更高。
+
 ### 共享元素转场
 
 NavDestination之间切换时可以通过[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md#geometrytransition)实现共享元素转场。配置了共享元素转场的页面同时需要关闭系统默认的转场动画。
@@ -711,6 +747,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
     NavDestination() {
       Column() {
         // ...
+        // $r('app.media.startIcon')需要替换为开发者所需的资源文件
         Image($r('app.media.startIcon'))
         .geometryTransition('sharedId')
         .width(100)
@@ -723,6 +760,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
     NavDestination() {
       Column() {
         // ...
+        // $r('app.media.startIcon')需要替换为开发者所需的资源文件
         Image($r('app.media.startIcon'))
         .geometryTransition('sharedId')
         .width(200)
@@ -751,25 +789,24 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
     .title('FromPage')
     ```
 
-## 跨包动态路由
+## 跨包路由
 
-通过静态import页面再进行路由跳转的方式会造成不同模块之间的依赖耦合，以及首页加载时间长等问题。
-
-动态路由设计的初衷旨在解决多个模块（HAR/HSP）能够复用相同的业务逻辑，实现各业务模块间的解耦，同时支持路由功能的扩展与整合。
-
-**动态路由的优势：**
-
-- 路由定义除了跳转的URL以外，可以丰富的配置扩展信息，如横竖屏默认模式，是否需要鉴权等等，做路由跳转时统一处理。
-- 给每个路由页面设置一个名字，按照名称进行跳转而不是文件路径。
-- 页面的加载可以使用动态import（按需加载），防止首个页面加载大量代码导致卡顿。
-
-动态路由提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式。
+系统提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式。
 
 - 系统路由表相对自定义路由表，使用更简单，只需要添加对应页面跳转配置项，即可实现页面跳转。
 
 - 自定义路由表使用起来更复杂，但是可以根据应用业务进行定制处理。
 
 支持自定义路由表和系统路由表混用。
+
+### 路由表能力对比
+
+不同路由方式适用于不同需求，易用性或可扩展性需根据项目特点权衡选择。
+
+| 路由方式     | 跨包跳转能力             | 可扩展性     | 易用性                               |
+| ------------ | ------------------------ | ------------ | ------------------------------------ |
+| [系统路由表](#系统路由表)   | 跳转前无需import页面文件，页面按需动态加载。 | 可扩展性一般。 | 易用性更强，系统自动维护路由表。       |
+| [自定义路由表](#自定义路由表) | 跳转前需要import页面文件。 | 可扩展性更强。 | 易用性一般，需要开发者自行维护路由表。 |
 
 ### 系统路由表
 
@@ -853,15 +890,127 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 ### 自定义路由表
 
-自定义路由表是动态路由的一种实现方式。开发者可以通过自定义路由表的方式来实现跨包动态路由，具体实现方法请参考<!--RP1-->[Navigation自定义动态路由](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End--> 示例。
+自定义路由表通过给Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性设置Builder函数实现，其特点是需要import页面。有两种import页面的方式，静态import和动态import，二者的区别在于： 
 
-**实现方案：**
+| import方式 | 模块间耦合度   | 实现复杂度 | 性能                                     |
+| ---------- | -------------- | ---------- | ---------------------------------------- |
+| 动态import | 模块间解耦。 | 复杂度高。 | 性能好，按需加载，跳转前再加载对应页面。 |
+| 静态import | 模块间耦合。 | 复杂度低。 | 性能一般，初始化时一次性加载所有依赖的页面。 |
+
+**动态import（推荐）**
+
+动态import旨在解决多个模块（HAR/HSP）能够复用相同的业务逻辑，实现各业务模块间的解耦，同时支持路由功能的扩展与整合，可以按需import，具体实现方法请参考<!--RP1-->[Navigation动态路由](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End-->示例。
+
+动态import的优势：
+
+- 路由定义除了跳转的URL以外，可以配置丰富的扩展信息，如横竖屏默认模式、是否需要鉴权等等，做路由跳转时统一处理。
+- 给每个路由页面设置一个名字，按照名称进行跳转而不是文件路径。
+- 页面的加载可以使用动态import（按需加载），防止首个页面加载大量代码导致卡顿。
+
+实现方案：
 
 1. 定义页面跳转配置项。
    - 使用资源文件进行定义，通过资源管理[@ohos.resourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md)在运行时对资源文件解析。
    - 在ets文件中配置路由加载配置项，一般包括路由页面名称（即pushPath等接口中页面的别名），文件所在模块名称（hsp/har的模块名），加载页面在模块内的路径（相对src目录的路径）。
 2. 加载目标跳转页面，通过[动态import](../arkts-utils/arkts-dynamic-import.md)将跳转目标页面所在的模块在运行时加载，在模块加载完成后，调用模块中的方法，通过import在模块的方法中加载模块中显示的目标页面，并返回页面加载完成后定义的Builder函数。
 3. 触发页面跳转，在Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性执行步骤2中加载的Builder函数，即可跳转到目标页面。
+
+**静态import**
+
+静态import实现方式简单，但通过静态import页面进行路由跳转会导致不同模块之间的依赖耦合，并增加首页加载时间长等问题。建议使用[自定义路由表](#自定义路由表)的动态import或[系统路由表](#系统路由表)。
+
+实现方案：
+
+```ts
+import { pageOneTmp } from './pageOne';
+
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  private arr: number[] = [1, 2];
+
+  @Builder
+  pageMap(name: string) {
+    if (name === "NavDestinationTitle1") {
+      pageOneTmp();
+    } else if (name === "NavDestinationTitle2") {
+      pageTwoTmp();
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        TextInput({ placeholder: 'search...' })
+          .width("90%")
+          .height(40)
+
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text("Page" + item)
+                .width("100%")
+                .height(72)
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: "NavDestinationTitle" + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width("90%")
+        .margin({ top: 12 })
+      }
+      .title("主标题")
+      .navDestination(this.pageMap)
+      .mode(NavigationMode.Split)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+export struct pageTwoTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("NavDestinationContent2")
+      }.width('100%').height('100%')
+    }.title("NavDestinationTitle2")
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+// pageOne.ets
+@Component
+export struct pageOneTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("NavDestinationContent1")
+      }.width('100%').height('100%')
+    }.title("NavDestinationTitle1")
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
 
 ## 导航示例
 
@@ -973,8 +1122,8 @@ export function PageOneBuilder(name: string, param: string) {
 @Component
 export struct PageOne {
   pathInfos: NavPathStack = new NavPathStack();
-  name: String = '';
-  @State value: String = '';
+  name: string = '';
+  @State value: string = '';
 
   build() {
     NavDestination() {
@@ -1032,7 +1181,7 @@ export function PageTwoBuilder(name: string) {
 @Component
 export struct PageTwo {
   pathInfos: NavPathStack = new NavPathStack();
-  name: String = '';
+  name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
 
   build() {

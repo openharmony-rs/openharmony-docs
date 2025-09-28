@@ -1,4 +1,10 @@
 # Camera Metadata (C/C++)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 Metadata is the description and context of image information returned by the camera application. It provides detailed data for the image information, such as the coordinates of a viewfinder frame for identifying a portrait in a photo or video.
 
@@ -6,7 +12,7 @@ Metadata uses a tag (key) to find the corresponding data during the transfer of 
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API reference.
+Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API reference.
 
 1. Import the NDK.
 
@@ -44,7 +50,7 @@ Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API refe
        }
        Camera_MetadataObjectType* metaDataObjectType = nullptr;
        bool isSupported = false;
-       for (int index = 0; index < cameraOutputCapability->metadataProfilesSize; index++) {
+       for (uint32_t index = 0; index < cameraOutputCapability->metadataProfilesSize; index++) {
            if (cameraOutputCapability->supportedMetadataObjectTypes[index] != nullptr &&
                *cameraOutputCapability->supportedMetadataObjectTypes[index] == FACE_DETECTION) {
                metaDataObjectType = *cameraOutputCapability->supportedMetadataObjectTypes;
@@ -95,7 +101,7 @@ Read [Camera](../../reference/apis-camera-kit/_o_h___camera.md) for the API refe
 
 During camera application development, you can listen for the status of metadata objects and output stream.
 
-- Register the **'metadataObjectsAvailable'** event to listen for metadata objects that are available. When a valid metadata object is detected, the callback function returns the metadata. This event can be registered when a **MetadataOutput** object is created.
+- Register the **'metadataObjectsAvailable'** event to listen for metadata objects that are available. When a valid metadata object is detected, the callback function returns the metadata. This event can be registered when a MetadataOutput object is created.
   ```c++
   void OnMetadataObjectAvailable(Camera_MetadataOutput* metadataOutput,
       Camera_MetadataObject* metadataObject, uint32_t size)
@@ -106,16 +112,17 @@ During camera application development, you can listen for the status of metadata
 
   > **NOTE**
   >
-  > Currently, only **FACE_DETECTION** is available for the metadata type. The metadata object is the rectangle of the recognized face, including the x-axis coordinate and y-axis coordinate of the upper left corner of the rectangle as well as the width and height of the rectangle.
+  > Currently, only **FACE_DETECTION** is available for the metadata type. The metadata object is the rectangle of the recognized face, including the x-axis coordinate and y-axis coordinate of the top-left corner of the rectangle as well as the width and height of the rectangle.
 
-- Register the **'error'** event to listen for metadata stream errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/_o_h___camera.md#camera_errorcode-1).
-    
+- Register the **'error'** event to listen for metadata stream errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
+
   ```c++
   void OnMetadataOutputError(Camera_MetadataOutput* metadataOutput, Camera_ErrorCode errorCode)
   {
       OH_LOG_INFO(LOG_APP, "OnMetadataOutput errorCode = %{public}d", errorCode);
   }
   ```
+
   ```c++
   MetadataOutput_Callbacks* GetMetadataOutputListener(void)
   {

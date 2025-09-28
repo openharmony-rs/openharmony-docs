@@ -1,12 +1,18 @@
 # Camera Device Management (ArkTS)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 Before developing a camera application, you must call the camera APIs to create an independent camera device.
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/js-apis-camera.md) for the API reference.
+Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
 
-1. Import the camera module, which provides camera-related attributes and methods.
+1. Import the camera module, which provides camera-related properties and methods.
 
    ```ts
    import { camera } from '@kit.CameraKit';
@@ -14,13 +20,20 @@ Read [Camera](../../reference/apis-camera-kit/js-apis-camera.md) for the API ref
    import { common } from '@kit.AbilityKit';
    ```
 
-2. Call [getCameraManager](../../reference/apis-camera-kit/js-apis-camera.md#cameragetcameramanager) to obtain a **CameraManager** object.
+2. Call [getCameraManager](../../reference/apis-camera-kit/arkts-apis-camera-f.md#cameragetcameramanager) to obtain a CameraManager object.
 
    For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
    ```ts
-   function getCameraManager(context: common.BaseContext): camera.CameraManager {
-     let cameraManager: camera.CameraManager = camera.getCameraManager(context);
+   function getCameraManager(context: common.BaseContext): camera.CameraManager | undefined {
+     let cameraManager: camera.CameraManager;
+     try {
+       cameraManager = camera.getCameraManager(context);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`getCameraManager error, errCode: ${err.code}`);
+       return undefined;
+     }
      return cameraManager;
    }
    ```
@@ -29,7 +42,7 @@ Read [Camera](../../reference/apis-camera-kit/js-apis-camera.md) for the API ref
    >
    > If obtaining the object fails, the camera device may be occupied or unusable. If it is occupied, wait until it is released.
 
-3. Call [getSupportedCameras](../../reference/apis-camera-kit/js-apis-camera.md#getsupportedcameras) in the [CameraManager](../../reference/apis-camera-kit/js-apis-camera.md#cameramanager) class to obtain the list of cameras supported by the current device. The list stores the IDs of all cameras supported. If the list is not empty, each ID in the list can be used to create an independent camera object. If the list is empty, no camera is available for the current device and subsequent operations cannot be performed.
+3. Call [getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) in [CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md) to obtain the list of cameras supported by the current device. The list stores the IDs of all cameras supported. If the list is not empty, each ID in the list can be used to create an independent camera object. If the list is empty, no camera is available for the current device and subsequent operations cannot be performed.
 
    ```ts
    function getCameraDevices(cameraManager: camera.CameraManager): Array<camera.CameraDevice> {
@@ -54,7 +67,7 @@ Read [Camera](../../reference/apis-camera-kit/js-apis-camera.md) for the API ref
 
 During camera application development, you can listen for the camera status, including the appearance of a new camera, removal of a camera, and availability of a camera. The camera ID and camera status are included in the callback function. When a new camera appears, the new camera can be added to the supported camera list.
 
-Register the **'cameraStatus'** event and return the listening result through a callback, which carries the **CameraStatusInfo** parameter. For details about the parameter, see [CameraStatusInfo](../../reference/apis-camera-kit/js-apis-camera.md#camerastatusinfo).
+Register the **'cameraStatus'** event and return the listening result through a callback, which carries the **CameraStatusInfo** parameter. For details about the parameter, see [CameraStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#camerastatusinfo).
 
 ```ts
 function onCameraStatusChange(cameraManager: camera.CameraManager): void {

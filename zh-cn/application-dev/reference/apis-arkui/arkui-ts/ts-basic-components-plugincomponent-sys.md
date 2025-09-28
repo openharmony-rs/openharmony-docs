@@ -1,4 +1,10 @@
 # PluginComponent (系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @HelloCrease-->
 
 提供外部应用组件嵌入式显示功能，即外部应用提供的UI可在本应用内显示。如需通过跨进程通信实现更新，请参考[@ohos.pluginComponent](../js-apis-plugincomponent.md)。
 
@@ -38,12 +44,20 @@ PluginComponent(options: PluginComponentOptions)
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 | 参数       | 类型   | 描述                        |
 | ---------- | ------ | --------------------------- |
 | template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 组件模板，用于跟提供方定义的组件绑定。                |
 | data<sup>9+</sup>       | any    | 传给插件组件提供方使用的数据。 |
 
 ## PluginComponentTemplate<sup>9+</sup>类型说明
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数       | 类型   | 描述                        |
 | ---------- | ------ | --------------------------- |
@@ -109,6 +123,10 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 发生错误时调用回调。
 
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 | 参数     | 类型               | 描述                        |
 | -------- | ------------------ | --------------------------- |
 | info     | [PluginErrorData](#pluginerrordata18类型说明)  | 发生错误时提供的数据。 |
@@ -120,6 +138,10 @@ onError(callback:&nbsp;PluginErrorCallback)
 > **说明：**
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数       | 类型   | 描述                        |
 | ---------- | ------ | -------------------------- |
@@ -142,7 +164,7 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 ## 示例（加载PluginComponent）
 
-本示例展示`PluginComponent`组件的基础使用方式，需要创建一个`bundleName`为"com.example.user"的[使用方应用](#组件使用方)，和一个`bundleName`为"com.example.provider"的[提供方应用](#组件提供方)。应用项目构建完成后，具体测试步骤如下：
+本示例展示PluginComponent组件的基础使用方式，需要创建一个bundleName为"com.example.user"的[使用方应用](#组件使用方)，和一个bundleName为"com.example.provider"的[提供方应用](#组件提供方)。应用项目构建完成后，具体测试步骤如下：
 1. 将两个应用的hap包安装到设备上；
 2. 打开使用方应用页面，使用方与提供方内容都正确显示；
 3. 分别点击使用方的“Register Push Listener”按钮和提供方的“Register Request Listener”按钮注册监听；
@@ -151,8 +173,8 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 ### 组件使用方
 
-使用方应用的`bundleName`为"com.example.user"，包含一个页面。
-- `EntryAbility(UIAbility)`加载入口页面文件`ets/pages/Index.ets`，`Index.ets`内容如下：
+使用方应用的bundleName为"com.example.user"，包含一个页面。
+- EntryAbility(UIAbility)加载入口页面文件ets/pages/Index.ets，Index.ets内容如下：
   ```ts
   import plugin from "./plugin_component";
 
@@ -204,8 +226,8 @@ onError(callback:&nbsp;PluginErrorCallback)
     }
   }
   ```
-- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的`ets/pages/plugin_component.js`文件中。
-- 在`module.json5`配置文件中增加`requestPermissions`标签，允许使用方查询其他应用信息：
+- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.js文件中。
+- 在module.json5配置文件中增加requestPermissions标签，允许使用方查询其他应用信息：
   ```json
   "requestPermissions": [
     {
@@ -222,8 +244,8 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 ### 组件提供方
 
-提供方应用的`bundleName`为"com.example.provider"，包含一个页面。
-- `EntryAbility(UIAbility)`加载入口页面文件`ets/pages/Index.ets`，`Index.ets`内容如下：
+提供方应用的bundleName为"com.example.provider"，包含一个页面。
+- EntryAbility(UIAbility)加载入口页面文件ets/pages/Index.ets，Index.ets内容如下：
   ```ts
   import plugin from "./plugin_component";
 
@@ -262,13 +284,13 @@ onError(callback:&nbsp;PluginErrorCallback)
     }
   }
   ```
-- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的`ets/pages/plugin_component.js`文件中。
+- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.js文件中。
 
 ### Plugin组件工具
 
 Plugin组件工具，用于使用方与提供方之间进行通信。需要根据模型类型选择对应代码，并拷贝至项目中。
 
-#### FA模型
+### FA模型
 ```js
 // 当前示例代码仅适用于FA模型
 import pluginComponentManager from '@ohos.pluginComponent'
@@ -347,7 +369,7 @@ export default {
 }
 ```
 
-#### Stage模型
+### Stage模型
 ```js
 // 当前示例代码仅适用于Stage模型
 import pluginComponentManager from '@ohos.pluginComponent'

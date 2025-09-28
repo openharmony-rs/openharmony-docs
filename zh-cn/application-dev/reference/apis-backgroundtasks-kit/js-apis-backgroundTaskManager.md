@@ -1,5 +1,12 @@
 # @ohos.backgroundTaskManager (后台任务管理)
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 本模块提供后台任务管理能力。
 
 当应用或业务模块处于后台（无可见界面）时，如果有需要继续执行或者后续执行的业务，可基于业务类型，申请短时任务延迟挂起（Suspend）或者长时任务避免进入挂起状态。
@@ -96,9 +103,9 @@ getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;):
   let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
   backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessError, res: number) => {
       if(err) {
-          console.log('callback => Operation getRemainingDelayTime failed. Cause: ' + err.code);
+          console.info('callback => Operation getRemainingDelayTime failed. Cause: ' + err.code);
       } else {
-          console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+          console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
       }
   })
   ```
@@ -135,9 +142,9 @@ import { BusinessError } from '@ohos.base';
 
 let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
     backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId).then((res:number) => {
-    console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((err : BusinessError) => {
-    console.log('promise => Operation getRemainingDelayTime failed. Cause: ' + err.code);
+    console.info('promise => Operation getRemainingDelayTime failed. Cause: ' + err.code);
 })
 ```
 

@@ -1,4 +1,10 @@
 # 使用AVRecorder录制视频(C/C++)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @shiwei75-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @zengyawen-->
 
 AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单视频录制并直接得到本地媒体文件的场景。
 
@@ -23,7 +29,7 @@ AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，�
 
 > **说明：**
 >
-> 仅应用需要克隆、备份或同步用户公共目录的图片、视频类文件时，可申请ohos.permission.READ_IMAGEVIDEO、ohos.permission.WRITE_IMAGEVIDEO权限来读写音频文件，申请方式请参考<!--RP1-->[申请受控权限](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->。
+> 仅应用需要克隆、备份或同步用户公共目录的图片、视频类文件时，可申请ohos.permission.READ_IMAGEVIDEO、ohos.permission.WRITE_IMAGEVIDEO权限来读写音视频文件，申请方式请参考<!--RP1-->[申请受控权限](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->。
 
 
 ## 开发步骤及注意事项
@@ -34,7 +40,7 @@ AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，�
 > 文件的创建与存储，请参考[应用文件访问与管理](../../file-management/app-file-access.md)，默认存储在应用的沙箱路径之下，如需存储至图库，请使用[安全控件保存媒体资源](../medialibrary/photoAccessHelper-savebutton.md)对沙箱内文件进行存储。
 
 
-开发者通过引入[avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md)、[avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/native__averrors_8h.md)头文件，使用视频录制相关API。
+开发者通过引入[avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md)、[avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用视频录制相关API。
 
 AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/capi-avrecorder.md)。
 
@@ -43,7 +49,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[OH_AVFormat](../../reference/apis-avcodec-kit/_core.md#oh_avformat)相关接口时，需引入如下头文件。
+使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -69,7 +75,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    #include <multimedia/player_framework/avrecorder.h>
    #include <multimedia/player_framework/avrecorder_base.h>
 
-   static struct OH_AVRecorder *g_avRecorder = {};
+   static struct OH_AVRecorder *g_avRecorder = nullptr;
    g_avRecorder = OH_AVRecorder_Create();
    ```
 
@@ -87,34 +93,35 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        (void)recorder;
        (void)userData;
 
-       // 将 reason 转换为字符串表示。
-       const char *reasonStr = (reason == AVRECORDER_USER) ? "USER" : (reason == AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
+       // 将reason转换为字符串表示。
+       const char *reasonStr = (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_USER) ? "USER" :
+                               (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
 
-       if (state == IDLE) {
+       if (state == OH_AVRecorder_State::AVRECORDER_IDLE) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange IDLE, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
-       if (state == PREPARED) {
+       if (state == OH_AVRecorder_State::PREPARED) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange PREPARED, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
-       if (state == STARTED) {
+       if (state == OH_AVRecorder_State::STARTED) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange STARTED, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
-       if (state == PAUSED) {
+       if (state == OH_AVRecorder_State::PAUSED) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange PAUSED, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
-       if (state == STOPPED) {
+       if (state == OH_AVRecorder_State::STOPPED) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange STOPPED, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
-       if (state == RELEASED) {
+       if (state == OH_AVRecorder_State::RELEASED) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange RELEASED, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
-       if (state == ERROR) {
+       if (state == OH_AVRecorder_State::ERROR) {
            OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
@@ -190,7 +197,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
 
-       config.metadata.videoOrientation = (char*)malloc(2);
+       config.metadata.videoOrientation = new char[2]; // 开发者需要自行释放申请的内存。
        if (config.metadata.videoOrientation != nullptr) {
            strcpy(config.metadata.videoOrientation, "0"); // 视频旋转角度，支持0、90、180、270。
        }
@@ -210,18 +217,18 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         if (g_avRecorder == nullptr) {
             OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Create failed!");
         }
-        OH_AVRecorder_Config *config = new OH_AVRecorder_Config();
+        OH_AVRecorder_Config *config = new OH_AVRecorder_Config(); // 开发者需要自行释放申请的内存。
         
         SetConfig(*config);
     
-        // 1. 设置URL（fileGenerationMode选择APP_CREATE时设置）。
+        // 1.设置URL（fileGenerationMode选择APP_CREATE时设置）。
         const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
         int32_t outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
         OH_LOG_INFO(LOG_APP, "config.url is: %s", const_cast<char *>(fileUrl.c_str()));
     
-        // 2. 设置回调。
+        // 2.设置回调。
         // 状态回调。
         OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
 
@@ -236,11 +243,16 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
             OH_LOG_ERROR(LOG_APP, "==NDKDemo==  Failed to set URI callback, error code: %d", ret);
         }
         
-        // 3. 调用prepare接口。
+        // 3.调用prepare接口。
         int result = OH_AVRecorder_Prepare(g_avRecorder, config);
         if (result != AV_ERR_OK) {
             OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
         }
+      
+        // 4.释放内存。
+        delete config->metadata.videoOrientation;
+        delete config;
+        config = nullptr;
       
         napi_value res;
         napi_create_int32(env, result, &res);
@@ -258,7 +270,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    OHNativeWindow *window = nullptr;
    int resultCode = OH_AVRecorder_GetInputSurface(g_avRecorder, &window);
    uint64_t surfaceId = 0;
-   OH_NativeWindow_GetSurfaceId(window, &surfaceId);
+   if (resultCode == AV_ERR_OK && window != nullptr) {
+      OH_NativeWindow_GetSurfaceId(window, &surfaceId);
+   }
    ```
 
 5. 初始化视频数据输入源。该步骤需要在输入源模块完成，以相机为例，需要创建录像输出流，包括创建Camera对象、获取相机列表、创建相机输入流等，相机详细步骤请参考[相机-录像方案](../camera/native-camera-recording.md)。
@@ -294,6 +308,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 参考以下示例，包括“创建录制实例-准备录制-开始录制-暂停录制-恢复录制-停止录制-重置录制状态-释放录制资源”的完整流程。
 
    ```C++
+   #include <unistd.h>
    #include <fcntl.h>
    #include "hilog/log.h"
    #include <multimedia/player_framework/avrecorder.h>
@@ -302,7 +317,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    #include <multimedia/media_library/media_access_helper_capi.h>
    #include <multimedia/media_library/media_asset_capi.h>
 
-   static struct OH_AVRecorder *g_avRecorder = {};
+   static struct OH_AVRecorder *g_avRecorder = nullptr;
+   static int32_t g_outputFd;
 
    // 设置状态回调。
    void OnStateChange(OH_AVRecorder *recorder, OH_AVRecorder_State state,
@@ -311,35 +327,35 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       (void)recorder;
       (void)userData;
 
-      // 将 reason 转换为字符串表示。
-      const char *reasonStr = (reason == AVRECORDER_USER) ? "USER" :
-                              (reason == AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
+      // 将reason转换为字符串表示。
+      const char *reasonStr = (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_USER) ? "USER" :
+                              (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
 
-      if (state == AVRECORDER_IDLE) {
+      if (state == OH_AVRecorder_State::AVRECORDER_IDLE) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange IDLE, reason: %{public}s", reasonStr);
          // 处理状态变更。
       }
-      if (state == AVRECORDER_PREPARED) {
+      if (state == OH_AVRecorder_State::AVRECORDER_PREPARED) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange PREPARED, reason: %{public}s", reasonStr);
          // 处理状态变更。
       }
-      if (state == AVRECORDER_STARTED) {
+      if (state == OH_AVRecorder_State::AVRECORDER_STARTED) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange STARTED, reason: %{public}s", reasonStr);
          // 处理状态变更。
       }
-      if (state == AVRECORDER_PAUSED) {
+      if (state == OH_AVRecorder_State::AVRECORDER_PAUSED) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange PAUSED, reason: %{public}s", reasonStr);
          // 处理状态变更。
       }
-      if (state == AVRECORDER_STOPPED) {
+      if (state == OH_AVRecorder_State::AVRECORDER_STOPPED) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange STOPPED, reason: %{public}s", reasonStr);
          // 处理状态变更。
       }
-      if (state == AVRECORDER_RELEASED) {
+      if (state == OH_AVRecorder_State::AVRECORDER_RELEASED) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange RELEASED, reason: %{public}s", reasonStr);
          // 处理状态变更。
       }
-      if (state == AVRECORDER_ERROR) {
+      if (state == OH_AVRecorder_State::AVRECORDER_ERROR) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
          // 处理状态变更。
       }
@@ -403,7 +419,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
       config.fileGenerationMode = AVRECORDER_APP_CREATE;
 
-      config.metadata.videoOrientation = (char *)malloc(2);
+      config.metadata.videoOrientation = new char[2]; // 开发者需要自行释放申请的内存。
       if (config.metadata.videoOrientation != nullptr) {
          strcpy(config.metadata.videoOrientation, "0"); // 视频旋转角度，支持0、90、180、270。
       }
@@ -423,17 +439,17 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       if (g_avRecorder == nullptr) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Create failed!");
       }
-      OH_AVRecorder_Config *config = new OH_AVRecorder_Config();
+      OH_AVRecorder_Config *config = new OH_AVRecorder_Config(); // 开发者需要自行释放申请的内存。
 
       SetConfig(*config);
 
-      // 1.1 设置URL（fileGenerationMode选择APP_CREATE时设置）。
+      // 1.1设置URL（fileGenerationMode选择APP_CREATE时设置）。
       const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-      int32_t outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
-      std::string fileUrl = "fd://" + std::to_string(outputFd);
+      g_outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
+      std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
 
-      // 1.2 设置回调。
+      // 1.2设置回调。
       // 状态回调。
       OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
 
@@ -448,18 +464,23 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          OH_LOG_ERROR(LOG_APP, "==NDKDemo==  Failed to set URI callback, error code: %d", ret);
       }
 
-      // 1.3 调用prepare接口。
+      // 1.3调用prepare接口。
       int result = OH_AVRecorder_Prepare(g_avRecorder, config);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
       }
+      
+      // 1.4释放内存。
+      delete config->metadata.videoOrientation;
+      delete config;
+      config = nullptr;
 
       napi_value res;
       napi_create_int32(env, result, &res);
       return res;
    }
 
-   // 2. 启动相机。
+   // 2.启动相机。
    static napi_value PrepareCamera(napi_env env, napi_callback_info info)
    {
       OH_LOG_INFO(LOG_APP, "==NDKDemo== AVRecorder PrepareCamera");
@@ -470,7 +491,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       if (resultCode != AV_ERR_OK || window == nullptr) {
           OH_LOG_INFO(LOG_APP, "==NDKDemo== AVRecorder OH_AVRecorder_GetInputSurface failed!");
           napi_value errorResult;
-          napi_create_int32(env, -1, &errorResult); // -1 表示错误
+          napi_create_int32(env, -1, &errorResult); // -1表示错误
           return errorResult;
       }
       uint64_t surfaceId = 0;
@@ -484,7 +505,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       return res;
    }
 
-   // 3. 开始录制。
+   // 3.开始录制。
    static napi_value StartAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
@@ -497,7 +518,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       return res;
    }
 
-   // 4. 暂停录制。
+   // 4.暂停录制。
    static napi_value PauseAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
@@ -510,7 +531,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       return res;
    }
 
-   // 5. 恢复录制。
+   // 5.恢复录制。
    static napi_value ResumeAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
@@ -523,7 +544,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       return res;
    }
 
-   // 6. 停止录制。
+   // 6.停止录制。
    static napi_value StopAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
@@ -531,16 +552,17 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Stop failed %{public}d", result);
       }
+      close(g_outputFd);
       napi_value res;
       napi_create_int32(env, result, &res);
       return res;
    }
 
-   // 7. 重置录制状态。
+   // 7.重置录制状态。
    static napi_value ResetAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      // 检查 g_avRecorder 是否有效。
+      // 检查g_avRecorder是否有效。
       if (g_avRecorder == nullptr) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== g_avRecorder is nullptr!");
          napi_value res;
@@ -557,11 +579,11 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       return res;
    }
 
-   // 8. 释放录制资源。
+   // 8.释放录制资源。
    static napi_value ReleaseAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      // 检查 g_avRecorder 是否有效。
+      // 检查g_avRecorder是否有效。
       if (g_avRecorder == nullptr) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== g_avRecorder is nullptr!");
          napi_value res;

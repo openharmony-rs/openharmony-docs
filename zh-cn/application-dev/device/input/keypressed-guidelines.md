@@ -1,5 +1,12 @@
 # 按键拦截监听开发指导
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 场景介绍
 
 按键拦截监听支持应用在前台状态下监听物理按键的按下事件，当前按键仅支持音量加和音量减。该接口不仅可以订阅用户按键行为，还可屏蔽按键的系统默认响应，如音量调节。
@@ -69,7 +76,7 @@ struct TestDemo14 {
       inputConsumer.on('keyPressed', options1, this.volumeUpCallBackFunc);
       inputConsumer.on('keyPressed', options2, this.volumeDownCallBackFunc);
     } catch (error) {
-      console.error(`Subscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Subscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
     }
   }
 
@@ -83,7 +90,7 @@ struct TestDemo14 {
               inputConsumer.off('keyPressed', this.volumeUpCallBackFunc);
               this.getUIContext().getPromptAction().showToast({ message: '取消监听音量按键上的监听事件成功！' })
             } catch (error) {
-              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
             }
           })
       }.width('100%')
@@ -98,7 +105,7 @@ struct TestDemo14 {
               inputConsumer.off('keyPressed', this.volumeDownCallBackFunc);
               this.getUIContext().getPromptAction().showToast({ message: '取消监听音量按键下的监听事件成功！' })
             } catch (error) {
-              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
             }
           })
       }.width('100%')

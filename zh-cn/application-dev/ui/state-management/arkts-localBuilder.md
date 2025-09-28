@@ -1,4 +1,10 @@
 # \@LocalBuilder装饰器： 维持组件关系
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 当开发者使用局部\@Builder进行引用数据传递时，需要考虑组件的父子关系。然而在使用.bind(this)的方式更改函数调用上下文后，会出现组件的父子关系与状态管理的父子关系不一致的问题。为了解决这一问题，引入\@LocalBuilder装饰器。\@LocalBuilder拥有和局部\@Builder相同的功能，且比局部\@Builder能够更好的确定组件的父子关系和状态管理的父子关系。
 
@@ -7,6 +13,10 @@
 > **说明：**
 >
 > 从API version 12开始支持。
+>
+> 从API version 12开始，该装饰器支持在ArkTS卡片中使用。
+>
+> 从API version 12开始，该装饰器支持在原子化服务中使用。
 
 ## 装饰器使用说明
 
@@ -23,7 +33,7 @@
 ```ts
 this.myBuilderFunction()
 ```
-- 允许在自定义组件内定义一个或多个@LocalBuilder函数，该函数被认为是该组件的私有、特殊类型的成员函数。
+- 允许在自定义组件内定义一个或多个\@LocalBuilder函数，该函数被认为是该组件的私有、特殊类型的成员函数。
 
 - 自定义构建函数可以在所属组件的build函数和其他自定义构建函数中调用，但不允许在组件外调用。
 
@@ -65,7 +75,7 @@ this.myBuilderFunction()
 
 > **说明：**
 >
-> 若\@LocalBuilder函数和$$参数一起使用，子组件调用父组件的@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。
+> 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。
 
 组件Parent内的\@LocalBuilder函数在build函数内调用，按键值对写法进行传值，当点击Click me时，\@LocalBuilder内的Text文本内容会随着状态变量内容的改变而改变。
 
@@ -97,9 +107,9 @@ struct Parent {
 }
 ```
 
-按引用传递参数时，如果在\@LocalBuilder函数内调用自定义组件，ArkUI提供[$$](arkts-two-way-sync.md)作为按引用传递参数的范式。
+按引用传递参数时，如果在\@LocalBuilder函数内调用自定义组件，ArkUI提供`$$`作为按引用传递参数的范式。
 
-组件Parent内的\@LocalBuilder函数内调用自定义组件，且按照引用传递参数将值传递到自定义组件，当Parent组件内状态变量值发生变化时，\@LocalBuilder函数内的自定义组件HelloComponent的message值也会发生变化。
+组件Parent内的\@LocalBuilder函数内调用自定义组件，且按照引用传递参数将值传递到自定义组件，当Parent组件内状态变量值发生变化时，\@LocalBuilder函数内的自定义组件HelloComponent的message值也会随之更新。
 
 ```ts
 class ReferenceType {
@@ -205,7 +215,7 @@ struct Child {
       this.contentBuilder({ size: this.data.size })
       this.contentLocalBuilder({ size: this.data.size })
       this.contentLocalBuilderNoArgument()
-      Button("add child size").onClick(() => {
+      Button('add child size').onClick(() => {
         this.data.size += 1;
       })
     }
@@ -315,8 +325,8 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = { name: "Tom", age: 25 };
-  @Local info2: Info = { name: "Tom", age: 25 };
+  info1: Info = { name: 'Tom', age: 25 };
+  @Local info2: Info = { name: 'Tom', age: 25 };
 
   @LocalBuilder
   privateBuilder() {
@@ -376,10 +386,10 @@ struct ParentPage {
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      Button("change info1&info2")
+      Button('change info1&info2')
         .onClick(() => {
-          this.info1 = { name: "Cat", age: 18 }; // Text1不会刷新，原因是info1没被装饰器装饰，无法监听到值的改变。
-          this.info2 = { name: "Cat", age: 18 }; // Text2会刷新，原因是info2有装饰器装饰，可以监听到值的改变。
+          this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没被装饰器装饰，无法监听到值的改变。
+          this.info2 = { name: 'Cat', age: 18 }; // Text2会刷新，原因是info2有装饰器装饰，可以监听到值的改变。
         })
     }
   }

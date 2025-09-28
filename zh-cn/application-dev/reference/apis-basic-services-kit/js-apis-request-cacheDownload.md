@@ -1,4 +1,10 @@
 # @ohos.request.cacheDownload (缓存下载)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Request-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 request部件主要给应用提供上传下载文件、后台传输代理的基础能力。
 
@@ -18,15 +24,28 @@ request部件主要给应用提供上传下载文件、后台传输代理的基�
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
-## CacheDownloadOptions
+## SslType<sup>21+</sup>
 
-缓存下载的配置选项。例如：HTTP选项、传输选项、任务选项等。
+表示安全通信协议的枚举。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称      | 类型                       | 必填 | 说明                    |
-|---------|--------------------------|----|-----------------------|
-| headers | Record\<string, string\> | 否  | 缓存下载任务在HTTP传输时使用的请求头。 |
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| TLS | 'TLS' | 使用TLS安全通信协议。|
+| TLCP | 'TLCP' | 使用TLCP安全通信协议。 |
+
+## CacheDownloadOptions
+
+缓存下载的配置选项。包括HTTP选项、传输选项和任务选项。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| headers | Record\<string, string\> | 否  | 是 | 缓存下载任务在HTTP传输时使用的请求头。 |
+| sslType<sup>21+</sup> | [SslType](#ssltype21) | 否  | 是 | 使用安全通信协议TLS或TLCP，默认使用TLS。当前TLS和TLCP均不支持双向认证。 |
+| caPath<sup>21+</sup> | string | 否  | 是 | CA证书路径。目前仅支持.pem格式证书，默认使用系统预设的CA证书。 |
 
 ## ResourceInfo<sup>20+</sup>
 
@@ -44,10 +63,9 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
-| 名称         | 类型       | 只读 | 可选 | 说明                                 |
-|------------|----------|----|----|------------------------------------|
-| ip         | string   | 是  | 否  | 下载资源时指定url的ip地址。当前暂不支持获取ip，值固定为空串。 |
-| dnsServers | string[] | 是  | 否  | 下载资源时使用的dns服务列表。                   |
+| 名称         | 类型       | 只读 | 可选 | 说明                |
+|------------|----------|----|----|-------------------|
+| dnsServers | string[] | 是  | 否  | 下载资源时使用的DNS服务器列表。 |
 
 ## PerformanceInfo<sup>20+</sup>
 
@@ -79,7 +97,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 ## cacheDownload.download
 
-download(url: string, options: CacheDownloadOptions)
+download(url: string, options: CacheDownloadOptions): void
 
 启动一个缓存下载任务，若传输成功，则将数据下载到内存缓存和文件缓存中。
 
@@ -117,7 +135,11 @@ download(url: string, options: CacheDownloadOptions)
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
 
   // 提供缓存下载任务的配置选项。
-  let options: cacheDownload.CacheDownloadOptions = {};
+  let options: cacheDownload.CacheDownloadOptions = {
+    headers: { 'Accept': 'application/json' },
+    sslType: cacheDownload.SslType.TLS,
+    caPath: '/path/to/ca.pem',
+  };
   
   try {
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
@@ -129,7 +151,7 @@ download(url: string, options: CacheDownloadOptions)
 
 ## cacheDownload.cancel
 
-cancel(url: string)
+cancel(url: string): void
 
 根据url移除一个正在执行的缓存下载任务，已保存的内存缓存和文件缓存不会受到影响。
 
@@ -180,7 +202,7 @@ cancel(url: string)
 
 ## cacheDownload.setMemoryCacheSize
 
-setMemoryCacheSize(bytes: number)
+setMemoryCacheSize(bytes: number): void
 
 设置缓存下载组件能够保存的内存缓存上限。
 
@@ -219,13 +241,15 @@ setMemoryCacheSize(bytes: number)
 
 ## cacheDownload.setFileCacheSize
 
-setFileCacheSize(bytes: number)
+setFileCacheSize(bytes: number): void
 
-设置缓存下载组件能够保存的文件缓存上限。
+设置缓存下载组件能够保存的文件缓存的上限。
 
 - 使用该接口调整缓存大小时，默认使用“LRU”（最近最少使用）方式清除多余的已缓存的文件缓存内容。
 
-- 该方法为同步方法，不阻塞调用线程。
+- 使用该接口时，若bytes设置为0，将会删除所有缓存文件。
+
+- 该方法为同步方法，不会阻塞调用线程。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -255,6 +279,12 @@ setFileCacheSize(bytes: number)
     console.error(`Failed to set file cache size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
+
+> ​**说明：​**​
+>
+> * 预下载模块下载的网络缓存文件会保存在应用沙箱的缓存目录中。
+> * 应用可以借助该接口的能力达成清理缓存文件的目的。
+> * 不建议应用直接对缓存目录和文件进行修改，以避免功能异常。
 
 ## cacheDownload.setDownloadInfoListSize<sup>20+</sup>
 

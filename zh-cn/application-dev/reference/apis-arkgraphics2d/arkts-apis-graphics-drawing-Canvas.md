@@ -2,8 +2,9 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--SE: @wangyanglan-->
-<!--TSE: @nobuggers-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 > **说明：**
 >
@@ -1368,6 +1369,14 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 | y | number | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。 |
 | features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。|
 
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
 **示例：**
 
 ```ts
@@ -1700,8 +1709,8 @@ saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
 
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ---- | ----------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect)\|null | 否   | 矩形对象，用于限制图层大小，默认为当前画布大小。 |
-| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md)\|null | 否   | 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式，默认不设置额外效果。 |
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null | 否   | 矩形对象，用于限制图层大小，默认为当前画布大小。 |
+| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md) \| null | 否   | 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式，默认不设置额外效果。 |
 
 **返回值：**
 

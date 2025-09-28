@@ -1,8 +1,17 @@
 # Adaptation Cases
 
-In this document, various use cases are presented to provide suggestions on adapting TS code to ArkTS for compliance with ArkTS syntax rules. Each chapter is named after an ArkTS syntax rule. Each use case provides the TS code before adaptation and the ArkTS code after adaptation.
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @anxuesm-->
+<!--Designer: @qyhuo32-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @zhang_yixin13-->
+
+In this topic, specific use cases are presented to provide suggestions on adapting TS code to ArkTS for compliance with ArkTS syntax rules. Each chapter is named after an ArkTS syntax rule. Each use case provides the TS code before adaptation and the ArkTS code after adaptation.
 
 ## arkts-identifiers-as-prop-names
+
+If the property name is a valid identifier (that is, special characters and spaces are excluded, and does not start with a digit), it can be used directly without quotes.
 
 **Before adaptation**
 
@@ -45,7 +54,7 @@ function printObj(obj: any) {
   console.log(obj);
 }
 
-printObj('abc');
+printObj('abc'); // abc
 ```
 
 **After adaptation**
@@ -55,7 +64,7 @@ function printObj(obj: string) {
   console.log(obj);
 }
 
-printObj('abc');
+printObj('abc'); // abc
 ```
 
 ### Marking JSON.parse Return Value Type
@@ -151,6 +160,8 @@ foo((value: string) => {
 
 ## arkts-no-ctor-signatures-type
 
+Use the factory function (**() => Instance**) instead of the constructor signature.
+
 **Before adaptation**
 
 ```typescript
@@ -166,17 +177,17 @@ type ControllerConstructor = {
   new (value: string): Controller;
 }
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
-      return new this.controller(123);
+      return new this.controller('123');
     }
     return null;
   }
 }
 
-let t = new Menu();
+let t = new testMenu();
 console.log(t.createController()!.value);
 ```
 
@@ -193,7 +204,7 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = () => {
     return new Controller('abc');
   }
@@ -206,7 +217,7 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
+let t: testMenu = new testMenu();
 console.log(t.createController()!.value);
 ```
 
@@ -236,6 +247,8 @@ function foo(data: Record<string, string>) {
 
 ## arkts-no-typing-with-this
 
+Use a specific type instead of **this**.
+
 **Before adaptation**
 
 ```typescript
@@ -257,6 +270,8 @@ class C {
 ```
 
 ## arkts-no-ctor-prop-decls
+
+Declare class properties explicitly and manually assign values to the constructor.
 
 **Before adaptation**
 
@@ -287,6 +302,8 @@ class Person {
 
 ## arkts-no-ctor-signatures-iface
 
+Use type to define factory functions or common function types.
+
 **Before adaptation**
 
 ```typescript
@@ -302,7 +319,7 @@ interface ControllerConstructor {
   new (value: string): Controller;
 }
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -312,7 +329,7 @@ class Menu {
   }
 }
 
-let t = new Menu();
+let t = new testMenu();
 console.log(t.createController()!.value);
 ```
 
@@ -329,7 +346,7 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = () => {
     return new Controller('abc');
   }
@@ -342,33 +359,35 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
+let t: testMenu = new testMenu();
 console.log(t.createController()!.value);
 ```
 
 ## arkts-no-props-by-index
 
-Use the **Record** type to access object attributes.
+Use the **Record** type to access object properties.
 
 **Before adaptation**
 
 ```typescript
-import { router } from '@kit.ArkUI';
-let params: Object = router.getParams();
-let funNum: number = params['funNum'];
-let target: string = params['target'];
+function foo(params: Object) {
+    let funNum: number = params['funNum'];
+    let target: string = params['target'];
+}
 ```
 
 **After adaptation**
 
 ```typescript
-import { router } from '@kit.ArkUI';
-let params = router.getParams() as Record<string, string | number>;
-let funNum: number = params.funNum as number;
-let target: string = params.target as string;
+function foo(params: Record<string, string | number>) {
+    let funNum: number = params['funNum'] as number;
+    let target: string = params['target'] as string;
+}
 ```
 
 ## arkts-no-inferred-generic-params
+
+Explicitly specify the generic parameter types, such as **Map\<string, T\>** and **.map\<T\>()**, for all generic invocations.
 
 **Before adaptation**
 
@@ -404,6 +423,8 @@ let originMenusMap: Map<string, C | null> = new Map<string, C | null>(arr.map<[s
 
 ## arkts-no-regexp-literals
 
+Use **new RegExp(pattern, flags)** instead of the **RegExp** literal.
+
 **Before adaptation**
 
 ```typescript
@@ -427,7 +448,7 @@ To include a flag in a regular expression, use it as a parameter of **new RegExp
 **Before adaptation**
 
 ```typescript
-const area = {
+const area = { // No type is specified, so it is inconvenient for maintenance.
   pixels: new ArrayBuffer(8),
   offset: 0,
   stride: 8,
@@ -440,7 +461,7 @@ const area = {
 ```typescript
 import { image } from '@kit.ImageKit';
 
-const area: image.PositionArea = {
+const area: image.PositionArea = { // Type is specified.
   pixels: new ArrayBuffer(8),
   offset: 0,
   stride: 8,
@@ -448,14 +469,14 @@ const area: image.PositionArea = {
 }
 ```
 
-### Using a Class for Object Literal Type Annotation Only When the Class Constructor Have No Parameters
+### Using a Class for Object Literal Type Annotation Only When the Class Constructor Has No Parameters
 
 **Before adaptation**
 
 ```typescript
 class Test {
   value: number = 1
-
+  // There is a constructor.
   constructor(value: number) {
     this.value = value;
   }
@@ -507,7 +528,7 @@ let s: C = new C(-2); 	// An exception is thrown.
 let t: C = { value: -2 };	// Not supported by ArkTS.
 ```
 
-In the preceding example, if **C** is allowed to be used to specify the object literal type, the variable **t** in the code will cause ambiguity of behavior. In light of this, ArkTS does not allow for object literal type annotation that may cause this issue.
+In the preceding example, if **C** can be used to specify the object literal type, the variable **t** in the code will cause ambiguity of behavior. In light of this, ArkTS does not allow for object literal type annotation that may cause this issue.
 
 ### Using an Identifier as the Object Literal Key When Specifying the Object Literal Type with a Class or Interface
 
@@ -550,7 +571,7 @@ let arr: Test[] = [
 ]
 ```
 
-### If **Record** is used to specify the object literal type, a string must be used as the key of the object literal.
+### Using a String as the Object Literal Key When Specifying the Object Literal Type with a Record
 
 **Before adaptation**
 
@@ -653,7 +674,7 @@ let t:T = new T();
 
 **Reason for change**
 
-The methods declared in a class or interface should be shared by all instances of the class. In ArkTS, object literals cannot be used to rewrite instance methods. ArkTS supports attributes of the function type.
+The methods declared in a class or interface should be shared by all instances of the class. In ArkTS, object literals cannot be used to rewrite instance methods. ArkTS supports properties of the function type.
 
 ### export default Object
 
@@ -703,7 +724,7 @@ declare namespace test {
 export default test;
 
 // app.ets
-import { test } from 'test';
+import test from 'test';
 
 let option = { id: '', type: 0 };
 test.foo('', option);
@@ -725,7 +746,7 @@ declare namespace test {
 export default test;
 
 // app.ets
-import { test } from 'test';
+import test from 'test';
 
 let option: test.I = { id: '', type: 0 };
 test.foo('', option);
@@ -734,7 +755,7 @@ test.foo('', option);
 **Reason for change**
 
 The object literal lacks a type. According to the analysis of **test.foo**, the **option** type comes from the declaration file. Therefore, you only need to import the type.
-In **test.d.ets**, **I** is defined in the namespace. Therefore, to import the type in the .ets file, import the namespace and then obtain the target type based on the name.
+In **test.d.ets**, **I** is defined in **namespace**. Import **namespace** to the .ets file and then obtain t he corresponding type by name.
 
 ### Passing Parameters from the Object Literal to the Object Type
 
@@ -764,6 +785,8 @@ emit('', emitArg);
 
 ## arkts-no-obj-literals-as-types
 
+Use **interface** to explicitly define the structure type.
+
 **Before adaptation**
 
 ```typescript
@@ -780,6 +803,8 @@ interface Person {
 ```
 
 ## arkts-no-noninferrable-arr-literals
+
+Explicitly declare the type of array elements (using **interface** or **class**) and add type annotations to array variables.
 
 **Before adaptation**
 
@@ -809,6 +834,8 @@ let permissionList: PermissionItem[] = [
 ```
 
 ## arkts-no-method-reassignment
+
+Use class fields of the function type instead of prototype methods.
 
 **Before adaptation**
 
@@ -847,10 +874,12 @@ c1.add = sub;
 
 ## arkts-no-polymorphic-unops
 
+Use explicit conversion functions such as **Number.parseInt()** and **new Number()**.
+
 **Before adaptation**
 
 ```typescript
-let a = +'5';
+let a = +'5'; // Implicit conversion using operators.
 let b = -'5';
 let c = ~'5';
 let d = +'string';
@@ -859,13 +888,15 @@ let d = +'string';
 **After adaptation**
 
 ```typescript
-let a = Number.parseInt('5');
+let a = Number.parseInt('5'); // Explicit conversion using Number.parseInt.
 let b = -Number.parseInt('5');
 let c = ~Number.parseInt('5');
-let d = new Number('string');
+let d = new Number('123');
 ```
 
 ## arkts-no-type-query
+
+Use **class**, **interface**, or type aliases instead of **typeof** to avoid inferring types based on variables.
 
 **Before adaptation**
 
@@ -899,7 +930,7 @@ let t: C = { value: 123 };
 
 ## arkts-no-in
 
-### Using Object.keys to Determine Whether an Attribute Exists
+### Using Object.keys to Determine Whether a Property Exists
 
 **Before adaptation**
 
@@ -923,6 +954,8 @@ function test(str: string, obj: Record<string, Object>) {
 ```
 
 ## arkts-no-destruct-assignment
+
+Use index access or manual assignment instead of destructuring assignment.
 
 **Before adaptation**
 
@@ -950,6 +983,8 @@ for (let arr of map) {
 
 ## arkts-no-types-in-catch
 
+Use the untyped **catch (error)** and then handle the error using type assertion.
+
 **Before adaptation**
 
 ```typescript
@@ -976,6 +1011,8 @@ try {
 ```
 
 ## arkts-no-for-in
+
+Use **Object.entries(obj)** with **for...of** instead of **for...in**.
 
 **Before adaptation**
 
@@ -1008,6 +1045,8 @@ for (let ele of Object.entries(p)) {
 
 ## arkts-no-mapped-types
 
+Use **Record\<K, T\>** instead of the mapped type.
+
 **Before adaptation**
 
 ```typescript
@@ -1034,6 +1073,8 @@ type OptionsFlags = Record<keyof C, string>
 ```
 
 ## arkts-limited-throw
+
+Convert an object to **Error**, or create an **Error** instance and throw it.
 
 **Before adaptation**
 
@@ -1096,7 +1137,7 @@ obj.foo();
 
 **After adaptation: mode 2**
 
-Passing this as a Parameter
+Pass in **this** as a parameter.
 
 ```typescript
 function foo(obj: Test) {
@@ -1113,7 +1154,7 @@ foo(obj);
 
 **After adaptation: mode 3**
 
-Pass the attribute as a parameter.
+Pass in a property as a parameter.
 ```typescript
 function foo(value: string) {
   console.log(value);
@@ -1152,6 +1193,8 @@ class Test {
 ```
 
 ## arkts-no-spread
+
+Use **Object.assign()**, manual assignment, or array methods instead of the spread operator.
 
 **Before adaptation**
 
@@ -1201,11 +1244,11 @@ t.type = 0;
 
 **Reason for change**
 
-In ArkTS, the object layout is determined at compile time. To assign all attributes of an object to another object, you can use the attribute-by-attribute assignment statement. In this example, the type of the source object s the same as that of the target object. In this case, you can reconstruct the code by changing the object attribute.
+In ArkTS, the object layout is determined at compile time. To assign all properties of an object to another object, you can use the property-by-property assignment statement. In this example, the type of the source object is the same as that of the target object. In this case, you can reconstruct the code by changing the object property.
 
 ## arkts-no-ctor-signatures-funcs
 
-Declare attributes within a class, not on a constructor.
+Declare properties within a class, not on a constructor.
 
 **Before adaptation**
 
@@ -1219,7 +1262,7 @@ class Controller {
 
 type ControllerConstructor = new (value: string) => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -1229,7 +1272,7 @@ class Menu {
   }
 }
 
-let t = new Menu()
+let t = new testMenu()
 console.log(t.createController()!.value)
 ```
 
@@ -1245,7 +1288,7 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
+class testMenu {
   controller: ControllerConstructor = () => { return new Controller('abc') }
   createController() {
     if (this.controller) {
@@ -1255,17 +1298,17 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
+let t: testMenu = new testMenu();
 console.log(t.createController()!.value);
 ```
 
 ## arkts-no-globalthis
 
-ArkTS does not support **globalThis** for two reasons:<br>(1) A static type cannot be added for **globalThis**. As a result, the attributes of **globalThis** can be accessed only through search, which causes extra performance overhead.<br> (2) Type annotation is not available for attributes of **globalThis**. As a result, the security and performance of operations on these attributes cannot be ensured.  
+ArkTS does not support **globalThis** for two reasons:<br> (1) A static type cannot be added for **globalThis**. As a result, the properties of **globalThis** can be accessed only through search, which causes extra performance overhead.<br> (2) Type annotation is not available for properties of **globalThis**. As a result, the security and performance of operations on these properties cannot be ensured.
 
 1. You are advised to transfer data between modules based on the service logic and import/export syntax.
 
-2. If necessary, you can construct a singleton object to implement the function of a global object. (**NOTE**: The singleton object cannot be defined in a HAR file, which packages two copies in different HAP files and therefore cannot implement singleton objects.)
+2. If necessary, you can construct a singleton object to implement the function of a global object. (**Note**: The singleton object cannot be defined in a HAR file, which packages two copies in different HAP files and therefore cannot implement singleton objects.)
 
 Construct a singleton object.
 
@@ -1489,33 +1532,11 @@ let entries = new Map([
 ]);
 
 let obj: Record<string, Object> = {};
-entries.forEach((value, key) => {
+entries.forEach((key, value) => {
   if (key != undefined && key != null) {
     obj[key] = value;
   }
 })
-```
-
-### Using Attributes and Methods of Number
-
-ArkTS does not allow the use of the following attributes and methods for global objects: **Infinity**, **NaN**, **isFinite**, **isNaN**, **parseFloat**, and **parseInt**
-
-You can use them for **Number**.
-
-**Before adaptation**
-
-```typescript
-NaN;
-isFinite(123);
-parseInt('123');
-```
-
-**After adaptation**
-
-```typescript
-Number.NaN;
-Number.isFinite(123);
-Number.parseInt('123');
 ```
 
 ## arkts-strict-typing(StrictModeError)
@@ -1605,13 +1626,13 @@ let a: A | null = foo(getNumber());
 a?.bar();
 ```
 
-### Strict Attribute Initialization Check
+### Strict Property Initialization Check
 
-In a class, if an attribute is not initialized and is not assigned a value in the constructor, ArkTS reports an error.
+In a class, if a property is not initialized and is not assigned a value in the constructor, ArkTS reports an error.
 
 **After adaptation**
 
-1. Whenever possible, initialize attributes during declaration based on service logic or assign values to the attributes in constructors. Example:
+1. Whenever possible, initialize properties during declaration based on service logic or assign values to the properties in constructors. Example:
 
 ```typescript
 //code with error
@@ -1620,13 +1641,13 @@ class Test {
   flag: boolean
 }
 
-// Method 1: Initialize attributes during declaration.
+// Method 1: Initialize properties during declaration.
 class Test {
   value: number = 0
   flag: boolean = false
 }
 
-// Method 2: Assign values to attributes in the constructor.
+// Method 2: Assign values to properties in the constructor.
 class Test {
   value: number
   flag: boolean
@@ -1645,8 +1666,8 @@ class Test {
 
 ​	Mode 3 (iii): **prop: A | undefined = undefined**
 
-- From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at run time.
-- In terms of code readability and simplicity, **prop?:A** is the syntax sugar of **prop: A | undefined = undefined**. You are advised to use optional attributes.
+- From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at runtime.
+- In terms of code readability and simplicity, **prop?:A** is the syntax sugar of **prop: A | undefined = undefined**. You are advised to use optional properties.
 
 ### Strict Function Type Check
 
@@ -1668,7 +1689,7 @@ foo((value?: string) => {}, '');
 
 **Reason for change**
 
-In the following example, if strict function type check is not enabled during compilation, the code can be compiled successfully, but unexpected behavior occurs at run time. Specifically, in the function body of **foo**, an **undefined** is passed in to **fn** (this is acceptable because **fn** can accept **undefined**). However, at the invoking point of **foo** in line 6 of the code, in the passed function implementation of **(value: string) => { console.log(value.toUpperCase()) }**, the **value** parameter is always of the string type and can call the **toUpperCase** method. If strict function type check is not enabled, an error indicating that the property cannot be found on **undefined** occurs at run time.
+In the following example, if strict function type check is not enabled during compilation, the code can be compiled successfully, but unexpected behavior occurs at runtime. Specifically, in the function body of **foo**, an **undefined** is passed in to **fn** (this is acceptable because **fn** can accept **undefined**). However, at the invoking point of **foo** in line 6 of the code, in the passed function implementation of **(value: string) => { console.info(value.toUpperCase()) }**, the **value** parameter is always of the string type and can call the **toUpperCase** method. If strict function type check is not enabled, an error indicating that the property cannot be found on **undefined** occurs at runtime.
 
 ```typescript
 function foo(fn: (value?: string) => void, value: string): void {
@@ -1676,10 +1697,10 @@ function foo(fn: (value?: string) => void, value: string): void {
   fn(v);
 }
 
-foo((value: string) => { console.log(value.toUpperCase()) }, ''); // Cannot read properties of undefined (reading 'toUpperCase')
+foo((value: string) => { console.info(value.toUpperCase()) }, ''); // Cannot read properties of undefined (reading 'toUpperCase')
 ```
 
-If strict type check is enabled during compilation, the preceding issue can be detected at compile time.
+To avoid unexpected behavior during runtime, if strict type check is enabled, the preceding code cannot be compiled. You need to modify the code to ensure program security.
 
 ### Strict Null Check
 
@@ -1719,7 +1740,7 @@ t.printValue();
 
 **Reason for change**
 
-In the first code segment, if strict null check is not enabled during compilation, the code segment can be compiled successfully, but unexpected behavior occurs at run time. This is because the **value** property of **t** is **undefined** (**value?: string** is the syntax sugar of **value: string | undefined = undefined**), and when the **printValue** method is called in line 11, the property is directly accessed based on the string type, due to a lack of null check on the value of **this.value** in the method body. To avoid unexpected behavior at run time, enable strict null check during compilation.
+In the first code segment, if strict null check is not enabled during compilation, the code segment can be compiled successfully, but unexpected behavior occurs at runtime. This is because the **value** property of **t** is **undefined** (**value?: string** is the syntax sugar of **value: string | undefined = undefined**), and when the **printValue** method is called in line 11, the property is directly accessed based on the string type, due to a lack of null check on the value of **this.value** in the method body. To avoid unexpected behavior at runtime, enable strict null check during compilation.
 
 ### Function Return Type Mismatch
 
@@ -1738,30 +1759,6 @@ In the original code, the return type of the function is parsed as **void | unde
 ```typescript
 class Test {
   handleClick: ((action: string, externInfo?: string) => void) | null = null;
-}
-```
-
-### '***' is of type 'unknown'
-
-**Before adaptation**
-
-```typescript
-try {
-  
-} catch (error) {
-  console.log(error.message);
-}
-```
-
-**After adaptation**
-
-```typescript
-import { BusinessError } from '@kit.BasicServicesKit'
-
-try {
-  
-} catch (error) {
-  console.log((error as BusinessError).message);
 }
 ```
 
@@ -1837,7 +1834,7 @@ function foo(v: number): A | null {
 let a: A = foo(123)!;
 ```
 
-### Cannot invoke an object which possibly 'undefined'
+### Cannot invoke an object which is possibly 'undefined'
 
 **Before adaptation**
 
@@ -1875,7 +1872,7 @@ if (a.foo) {
 
 **Reason for change**
 
-In the original code definition, **foo** is an optional property and may be **undefined**. If **undefined** is called, an error is reported. You are advised to determine whether a property is optional based on the service logic. If defining an optional property is necessary, a null check is required for accessing the property.
+In the original code definition, **foo** is an optional property and may be **undefined**. If **undefined** is called, an error is reported. You are advised to determine whether to set **foo** as an optional property based on the service logic. If defining an optional property is necessary, a null check is required for accessing the property.
 
 ### Variable '***' is used before being assigned
 
@@ -1920,7 +1917,7 @@ if (a) {
 
 For primitive types, a value can be assigned based on the service logic, for example, **0**, **''**, and **false**.
 
-For the object type, you can change the type to a union type consisting of **null** and assign **null** to the type. In this case, when using the object type, you need to perform the non-null check.
+For object types, you can change the type to a union type consisting of **null** and assign **null** to the type. In this case, when using the object type, you need to perform the non-null check.
 
 ### Function lacks ending return statement and return type does not include 'undefined'.
 
@@ -1951,10 +1948,12 @@ function foo(a: number): number | undefined {
 
 ## arkts-strict-typing-required
 
+Remove the @ts-nocheck comment and explicitly declare types for all variables.
+
 **Before adaptation**
 
 ```typescript
-// @ts-nocheck
+// @ts-ignore
 var a: any = 123;
 ```
 
@@ -1981,6 +1980,8 @@ Mode 1: Change the file name extension of the .ts file to .ets and adapt the cod
 Mode 2: Extract the code that the .ts file depends on from the .ets file to the .ts file.
 
 ## arkts-no-special-imports
+
+Use **import { ... } from '...'** to import the type.
 
 **Before adaptation**
 
@@ -2013,7 +2014,7 @@ interface ControllerConstructor {
   new (value: string): Controller;
 }
 
-class Menu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -2023,7 +2024,7 @@ class Menu {
   }
 }
 
-let t = new Menu();
+let t = new TestMenu();
 console.log(t.createController()!.value);
 ```
 
@@ -2032,15 +2033,19 @@ console.log(t.createController()!.value);
 ```typescript
 class Controller {
   value: string = ''
+
   constructor(value: string) {
-    this.value = value
+    this.value = value;
   }
 }
 
 type ControllerConstructor = () => Controller;
 
-class Menu {
-  controller: ControllerConstructor = () => { return new Controller('abc'); }
+class TestMenu {
+  controller: ControllerConstructor = () => {
+    return new Controller('abc');
+  }
+
   createController() {
     if (this.controller) {
       return this.controller();
@@ -2049,7 +2054,7 @@ class Menu {
   }
 }
 
-let t: Menu = new Menu();
+let t: TestMenu = new TestMenu();
 console.log(t.createController()!.value);
 ```
 
@@ -2099,7 +2104,7 @@ console.log(getC2Value());
 
 ## arkts-no-side-effects-imports
 
-Use Dynamic Imports
+Use dynamic imports.
 
 **Before adaptation**
 
@@ -2114,6 +2119,8 @@ import('module')
 ```
 
 ## arkts-no-func-props
+
+Use a **class** to organize multiple related functions.
 
 **Before adaptation**
 
@@ -2151,13 +2158,18 @@ class Foo {
 
 ## arkts-limited-esobj
 
+Use specific types (such as **number**, **string**) or **interface** instead of the ambiguous **ESObject**.
+
 **Before adaptation**
 
 ```typescript
-// lib.d.ts
-declare function foo(): any;
+// testa.ts
+export function foo(): any {
+  return null;
+}
 
 // main.ets
+import {foo} from './testa'
 let e0: ESObject = foo();
 
 function f() {
@@ -2171,10 +2183,13 @@ function f() {
 **After adaptation**
 
 ```typescript
-// lib.d.ts
-declare function foo(): any;
+// testa.ts
+export function foo(): any {
+  return null;
+}
 
 // main.ets
+import {foo} from './testa'
 interface I {}
 
 function f() {

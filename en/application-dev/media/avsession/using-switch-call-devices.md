@@ -1,14 +1,20 @@
 # Using the Call Device Switching Component
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @zengyawen-->
 
-## Basic Concepts
+## Switching Call Output Devices
 
-The system no longer provides APIs for switching audio output devices. To switch an audio output device, you must implement the **AVCastPicker** component. For details about the component, see [@ohos.multimedia.avCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) and [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md).
+The system no longer provides APIs for switching audio output devices. If you need to switch audio output devices within your application, implement the **AVCastPicker** component. For details about the component, see [@ohos.multimedia.avCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) and [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md).
 
-This topic describes how to integrate the **AVCastPicker** component to implement the switching of call devices.
+This topic describes how to integrate the **AVCastPicker** component to implement the switching of call output devices.
 
-Currently, the system provides the default style and custom style for the **AVCastPicker** component. In the default style, the system displays the default component style based on the selected device during device switching. In the custom style, the application must refresh the style based on the device changes.
-
-## How to Develop
+Currently, the system provides the default style and custom style for the **AVCastPicker** component.
+- If the application chooses to display the default style, when the device switches, the system displays the default component style based on the currently selected device.
+- If the application opts for a custom style, it needs to refresh its defined style in response to device changes.
 
 ### Implementing the Default Style
 
@@ -24,10 +30,14 @@ Currently, the system provides the default style and custom style for the **AVCa
       build() { 
         Column() {
             Text(this.message)
-              .onClick(()=>{
-                let context = this.getUIContext().getHostContext() as Context;
+              .onClick(async ()=> {
+                try {
+                  let context = this.getUIContext().getHostContext() as Context;
                 // Create an AVSession of the voice_call type.
                 let session: AVSessionManager.AVSession = await AVSessionManager.createAVSession(context, 'voiptest', 'voice_call');
+                } catch (err) {
+                  console.error(`avsession create :  Error: ${JSON.stringify(err)}`);
+                }
               })
           }
         .width('100%')
@@ -85,9 +95,9 @@ Currently, the system provides the default style and custom style for the **AVCa
 
    this.audioRenderer?.start((err: BusinessError) => {
     if (err) {
-      console.error(`audioRender start faild :  Error: ${JSON.stringify(err)}`);
+      console.error(`audioRenderer start failed -Code : ${err.code}, Message ${err.message}`);
     } else {
-      console.error('audioRender start success');
+      console.info('audioRender start success');
     }
    });
    ```
@@ -121,7 +131,7 @@ Currently, the system provides the default style and custom style for the **AVCa
 
 ### Implementing a Custom Style
 
-You can customize a style by setting the **customPicker** parameter of the [CustomBuilder](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) type.
+You can customize a style by setting the [customPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker) parameter of the [CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) type.
 
 The procedure for implementing a custom style is similar to that for implementing the default style. You can create an AVSession and implement audio playback by referring to [Implementing the Default Style Implementation](#implementing-the-default-style).
 
@@ -176,6 +186,9 @@ The differences are as follows:
 
    // Refresh the custom resource pickerImage after the device is changed.
    private changePickerShow(desc: audio.AudioDeviceDescriptors) {
+     if(!desc || !desc.length || !desc[0]) {
+      return;
+     }
      if (desc[0].deviceType === 2) {
        this.pickerImage = $r('app.media.sound');
      } else if (desc[0].deviceType === 7) {
@@ -186,5 +199,89 @@ The differences are as follows:
    }
    ```
 
-<!--RP1-->
-<!--RP1End-->
+## Switching Call Input Devices (for PCs and 2-in-1 Devices Only)
+
+The system no longer provides APIs for switching audio input devices. If you need to switch audio input devices within your application, implement the **AVInputCastPicker** component. For details about the component, see [@ohos.multimedia.avInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) and [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md).
+
+This topic describes how to integrate the **AVInputCastPicker** component to implement the switching of call input devices.
+
+Currently, the system provides the default style and custom style for the **AVCastPicker** component.
+- If the application chooses to display the default style, when the device switches, the system displays the default component style based on the currently selected device.
+- If the application opts for a custom style, it needs to refresh its defined style in response to device changes.
+
+### Implementing the Default Style
+
+1. Create the **AVInputCastPicker** component on the call page that provides device switching.
+
+   ```ts
+   import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
+
+   // (Optional) Callback for the device list state change.
+   private onStateChange(state: AVCastPickerState) {
+     if (state === AVCastPickerState.STATE_APPEARING) {
+       console.info('The picker starts showing.');
+     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
+       console.info('The picker finishes presenting.');
+     }
+   }
+
+   // Create the component and set its size.
+   build() {
+     Row() {
+       Column() {
+         AVInputCastPicker(
+         {
+           onStateChange: this.onStateChange
+         }
+         ).size({ height:45, width:45 })
+       }
+     }
+   }
+   ```
+
+2. Implement the call feature. For details, see [Developing Audio Call](../audio/audio-call-development.md).
+
+### Implementing a Custom Style
+
+You can customize a style by setting the **customPicker** parameter of the [AVInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md#avinputcastpicker).
+
+1. When creating a custom **AVInputCastPicker** component, you must add a custom parameter.
+
+   ```ts
+   import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
+
+   @State pickerImage: ResourceStr = $r('app.media.earpiece'); // Custom resources.
+
+   // (Optional) Callback for the device list state change.
+   private onStateChange(state: AVCastPickerState) {
+     if (state === AVCastPickerState.STATE_APPEARING) {
+       console.info('The picker starts showing.');
+     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
+       console.info('The picker finishes presenting.');
+     }
+   }
+
+   build() {
+     Row() {
+       Column() {
+         AVInputCastPicker(
+           {
+             customPicker: (): void => this.ImageBuilder(), // Add a custom parameter.
+             onStateChange: this.onStateChange
+           }
+         ).size({ height: 45, width:45 })
+       }
+     }
+   }
+
+   // Custom content.
+   @Builder
+   ImageBuilder(): void {
+     Image(this.pickerImage)
+       .size({ width: '100%', height: '100%' })
+       .backgroundColor('#00000000')
+       .fillColor(Color.Black)
+   }
+   ```
+
+2. Implement the call feature. For details, see [Developing Audio Call](../audio/audio-call-development.md).

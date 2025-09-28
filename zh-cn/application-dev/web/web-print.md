@@ -1,8 +1,14 @@
 # 使用Web组件打印前端页面
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zhang-yinglie-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Web组件打印html页面时可通过W3C标准协议接口和应用接口两种方式实现。
 
-使用打印功能前，请在module.json5中配置相关权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md)。
+使用打印功能前，请在module.json5中配置相关权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
   ```
   "requestPermissions":[
@@ -40,9 +46,9 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
   <body>
       <div>
           <h1><b>
-                  <center>This is a test page for printing</center>
+                  <p style="text-align: center;">This is a test page for printing</p>
               </b>
-              <hr color=#00cc00 width=95%>
+              <hr color="#00cc00" width="95%">
           </h1>
           <button class="Button Button--outline" onclick="window.print();">Print</button>
           <p> content content content </p>
@@ -85,25 +91,20 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
   </head>
   <body>
       <button id="printIframe">打印iframe嵌套页面</button>
+      <iframe id="contentIframe" hidden></iframe>
 
       <script>
-          function setPrint() {
-              const closePrint = () => {
-                  document.body.removeChild(this);
-              };
-              this.contentWindow.onbeforeunload = closePrint;
-              this.contentWindow.onafterprint = closePrint;
-              this.contentWindow.print();
-          }
-
           document.getElementById("printIframe").addEventListener("click", () => {
-              const hideFrame = document.createElement("iframe");
-              hideFrame.onload = setPrint;
-              hideFrame.style.display = "none"; // 隐藏 iframe
-              hideFrame.src = "example.pdf";
-              document.body.appendChild(hideFrame);
+              var ctIframe = document.getElementById("contentIframe");
+              if(!ctIframe.contentWindow || !ctIframe.contentWindow.document) {
+                console.error("iframe页面初始化失败");
+                return;
+              }
+              var ctIframeDoc = ctIframe.contentWindow.document;
+              ctIframeDoc.write("嵌套页面");
+              ctIframeDoc.close();
+              ctIframe.contentWindow.print();
           });
-
       </script>
   </body>
   </html>
@@ -132,14 +133,13 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
   }
   ```
 
-## 通过调用应用侧接口拉起打印。
+## 通过调用应用侧接口拉起打印
 应用侧通过调用[createWebPrintDocumentAdapter](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebprintdocumentadapter11)创建打印适配器，通过将适配器传入打印的print接口调起打印。
 
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { print } from '@kit.BasicServicesKit'
+import { BusinessError, print } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -152,7 +152,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
-            print.print('example_jobid', webPrintDocadapter, null, this.getUIContext().getHostContext());
+            print.print('example_job_id', webPrintDocadapter, null, this.getUIContext().getHostContext());
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }

@@ -1,6 +1,12 @@
 # Video Recording Practices (C/C++)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
-Before developing a camera application, request permissions by following the instructions provided in [Requesting Camera Development Permissions](camera-preparation.md).
+Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
 This topic provides sample code that covers the complete video recording process and the API calling sequence. For details about a single process (such as device input, session management, and video recording), see the corresponding C/C++ development guide links provided in [Requesting Camera Development Permissions](camera-preparation.md).
 
@@ -10,7 +16,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 
 ![Recording Development Process](figures/recording-ndk-development-process.png)
 
-## Sample Code
+## Complete Sample Code
 
 1. Link the dynamic library in the CMake script.
     ```txt
@@ -41,7 +47,6 @@ After obtaining the output stream capabilities supported by the camera, create a
 3. Import the NDK APIs on the C++ side, and perform video recording based on the surface ID passed in.
     ```c++
     #include "hilog/log.h"
-    #include "ndk_camera.h"
     #include <cmath>
 
     bool IsAspectRatioEqual(float videoAspectRatio, float previewAspectRatio)
@@ -152,7 +157,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 
         // Obtain the camera list.
         ret = OH_CameraManager_GetSupportedCameras(cameraManager, &cameras, &size);
-        if (cameras == nullptr || size < 0 || ret != CAMERA_OK) {
+        if (cameras == nullptr || size <= 0 || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
             return;
         }
@@ -162,6 +167,11 @@ After obtaining the output stream capabilities supported by the camera, create a
             OH_LOG_ERROR(LOG_APP, "cameraPosition  =  %{public}d ", cameras[index].cameraPosition);  // Obtain the camera position.
             OH_LOG_ERROR(LOG_APP, "cameraType  =  %{public}d ", cameras[index].cameraType);          // Obtain the camera type.
             OH_LOG_ERROR(LOG_APP, "connectionType  =  %{public}d ", cameras[index].connectionType);  // Obtain the camera connection type.
+        }
+
+        if (size < cameraDeviceIndex + 1) {
+            OH_LOG_ERROR(LOG_APP, "cameraDeviceIndex is invalid.");
+            return;
         }
 
         // Obtain the output stream capability supported by the camera.
@@ -177,7 +187,7 @@ After obtaining the output stream capabilities supported by the camera, create a
             return;
         }
         previewProfile = cameraOutputCapability->previewProfiles[0];
-        OH_LOG_INFO(LOG_APP, "previewProfile width: %{public}, height: %{public}.", previewProfile->size.width,
+        OH_LOG_INFO(LOG_APP, "previewProfile width: %{public}d, height: %{public}d.", previewProfile->size.width,
             previewProfile->size.height);
         if (cameraOutputCapability->photoProfiles == nullptr) {
             OH_LOG_ERROR(LOG_APP, "photoProfiles == null");
@@ -186,7 +196,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         photoProfile = cameraOutputCapability->photoProfiles[0];
 
         if (cameraOutputCapability->videoProfiles == nullptr) {
-            OH_LOG_ERROR(LOG_APP, "videorofiles == null");
+            OH_LOG_ERROR(LOG_APP, "videoProfiles == null");
             return;
         }
         // Ensure that the aspect ratio of the preview stream is the same as that of the video stream. To record HDR videos, choose Camera_VideoProfile that supports HDR.
@@ -197,15 +207,18 @@ After obtaining the output stream capabilities supported by the camera, create a
             // The profile of CAMERA_FORMAT_YUV_420_SP is used by default.
             if (isEqual && videoProfiles[index]->format == Camera_Format::CAMERA_FORMAT_YUV_420_SP) {
                 videoProfile = videoProfiles[index];
-                OH_LOG_INFO(LOG_APP, "videoProfile width: %{public}, height: %{public}.", videoProfile->size.width,
+                OH_LOG_INFO(LOG_APP, "videoProfile width: %{public}d, height: %{public}d.", videoProfile->size.width,
                     videoProfile->size.height);
                 break;
             }
         }
-
+        if (videoProfile == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Get videoProfile failed.");
+            return;
+        }
         // Create a VideoOutput instance.
         ret = OH_CameraManager_CreateVideoOutput(cameraManager, videoProfile, videoSurfaceId, &videoOutput);
-        if (videoProfile == nullptr || videoOutput == nullptr || ret != CAMERA_OK) {
+        if (videoOutput == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateVideoOutput failed.");
             return;
         }

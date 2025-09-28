@@ -1,8 +1,14 @@
 # OhosImageRect
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
-The OhosImageRect struct describes the information about an image rectangle.
+The struct describes the information about an image rectangle.
 
 **Since**: 10
 

@@ -1,4 +1,10 @@
 # rating开发指导
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 rating是评分组件，用于展示用户对某项内容的评价等级。具体用法请参考[rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)。
@@ -27,7 +33,7 @@ rating是评分组件，用于展示用户对某项内容的评价等级。具�
   align-items: center;
   background-color: #F1F3F5;
 }
-rating {
+.rating {
   width: 80%;
   height: 150px;
 }
@@ -60,7 +66,7 @@ rating组件通过设置numstars和rating属性设置评分条的星级总数和
   align-items: center;
   background-color: #F1F3F5;
 }
-rating {
+.rating {
   width: 80%;
   height: 150px;
 }
@@ -145,7 +151,7 @@ export default {
   align-items: center;
   background-color: #F1F3F5;
 }
-rating {
+.rating {
   width: 80%;
   height: 150px;
 }
@@ -205,7 +211,7 @@ export default {
     width: 500px;
     height: 100px;
 }
-switch{
+.switch{
     font-size: 40px;
 }
 ```
@@ -229,7 +235,7 @@ export default {
     },
     setstar(e) {
         if (e.checked == true) {
-            this.backstar = '/common/love.PNG'
+            this.backstar = '/common/love.png'
             this.secstar = 'common/love.png'
             this.forestar = 'common/love1.png'
         } else {
@@ -263,4 +269,4 @@ export default {
 
 针对rating组件的开发，有以下相关实例可供参考：
 
-- [rating组件的使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)
+- [rating组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)

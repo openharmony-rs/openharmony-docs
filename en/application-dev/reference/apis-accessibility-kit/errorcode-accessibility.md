@@ -1,5 +1,12 @@
 # Accessibility Error Codes
 
+<!--Kit: Accessibility Kit-->
+<!--Subsystem: BarrierFree-->
+<!--Owner: @qiiiiiiian-->
+<!--Designer: @z7o-->
+<!--Tester: @A_qqq-->
+<!--Adviser: @w_Machine_cc-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -63,7 +70,7 @@ The permission for performing the accessibility operation is not granted when th
 1. Request from the user the permission for performing the accessibility operation, stating the reason for the request.
 2. Have the accessibility application re-enabled and the required accessibility operation enabled.
 
-## 9300004 Attribute Not Found
+## 9300004 Property Not Found
 
 **Error Message**
 
@@ -71,15 +78,15 @@ This property does not exist.
 
 **Description**
 
-This error code is reported when the entered attribute of the accessibility element does not exist.
+This error code is reported when the entered property of the accessibility element does not exist.
 
 **Possible Causes**
 
-The attribute does not exist in the accessibility element.
+The property does not exist in the accessibility element.
 
 **Solution**
 
-Make sure the accessibility element has the target attribute.
+Make sure the accessibility element has the target property.
 
 ## 9300005 Operation Not Supported
 
@@ -121,7 +128,7 @@ Call this method later.
 
 **Error Message**
 
-Failed to trigger amplification.
+Trigger magnification failed.
 
 **Description**
 
@@ -129,7 +136,7 @@ This error code is reported when the amplification feature fails to be triggered
 
 **Possible Causes**
 
-1. The amplification feature is not enabled in Settings.
+1. The amplification feature is not enabled.
 2. The amplification mode is not configured.
 
 **Solution**

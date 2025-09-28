@@ -1,6 +1,12 @@
 # image开发指导
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
-image是图片组件，用来渲染展示图片。具体用法请参考[image API](../reference/apis-arkui/arkui-js/js-components-basic-image.md)。
+image是图片组件，用来渲染展示图片。具体用法请参考[image](../reference/apis-arkui/arkui-js/js-components-basic-image.md)。
 
 
 ## 创建image组件
@@ -208,6 +214,6 @@ export default {
 
 针对image开发，有以下相关实例可供参考：
 
-- [image、image-animator组件的使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/ClickableJs)
+- [image、image-animator组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/ClickableJs)
 
-- [图片常见操作（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/ImageOperation)
+- [图片常见操作（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageOperation)

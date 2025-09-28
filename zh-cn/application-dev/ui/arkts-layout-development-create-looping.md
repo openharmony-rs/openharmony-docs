@@ -1,4 +1,10 @@
 # 创建轮播 (Swiper)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)组件提供滑动轮播显示的能力。Swiper本身是一个容器组件，当设置了多个子组件后，可以对这些子组件进行轮播显示。通常，在一些应用首页显示推荐的内容时，需要用到轮播显示的能力。
@@ -657,10 +663,52 @@ Swiper通过设置[maintainVisibleContentPosition](../reference/apis-arkui/arkui
 
 maintainVisibleContentPosition为true时，显示区域上方或前方插入或删除数据时可见内容位置不变。
 
-关于数据[LazyForEach：懒加载](../ui/state-management/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
+关于数据[LazyForEach：懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
 
 ```ts
 // xxx.ets
+class MyDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private dataArray: string[] = ['0', '1', '2', '3', '4', '5', '6'];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string | undefined {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  public deleteData(index: number): void {
+    this.dataArray.splice(index, 1);
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      console.info('add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      console.info('remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+}
+
 @Entry
 @Component
 struct SwiperExample {
@@ -669,8 +717,13 @@ struct SwiperExample {
   build() {
     Column({ space: 5 }) {
       Swiper() {
-        LazyForEach(this.data, () => {
-          // ...
+        LazyForEach(this.data, (item: string) => {
+          Text(item.toString())
+            .width('90%')
+            .height(160)
+            .backgroundColor(0xAFEEEE)
+            .textAlign(TextAlign.Center)
+            .fontSize(30)
         })
       }
       .onChange((index) => {
@@ -704,7 +757,7 @@ struct SwiperExample {
 
 针对Swiper组件开发，有以下相关实例可供参考：
 
-- [电子相册（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/ElectronicAlbum)
+- [电子相册（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ElectronicAlbum)
 
-- [Swiper的使用（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/SwiperArkTS)
+- [Swiper的使用（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SwiperArkTS)
 <!--RP1--><!--RP1End-->

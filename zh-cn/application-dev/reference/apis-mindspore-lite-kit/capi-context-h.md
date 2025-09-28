@@ -1,5 +1,11 @@
 # context.h
-<!--Kit_MindSpore Lite Kit--><!--System_AI-->
+
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -21,8 +27,8 @@
 
 | 名称                                                           | typedef关键字 | 描述                                |
 |--------------------------------------------------------------|------------|-----------------------------------|
-| [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) | void*      | MindSpore的上下文信息的指针，该指针会指向Context。 |
-| [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)   | void*          | MindSpore的运行设备信息的指针。                                  |
+| [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) | void*      | MindSpore Lite的上下文信息的指针，该指针会指向Context。 |
+| [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)   | void*          | MindSpore Lite的运行设备信息的指针。                                  |
 
 ### 函数
 
@@ -64,7 +70,7 @@
 | [OH_AI_API OH_AI_PerformanceMode OH_AI_DeviceInfoGetPerformanceMode(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetperformancemode) | 获取NNRt性能模式，仅NNRt设备可用。 |
 | [OH_AI_API void OH_AI_DeviceInfoSetPriority(OH_AI_DeviceInfoHandle device_info, OH_AI_Priority priority)](#oh_ai_deviceinfosetpriority) | 设置NNRt任务优先级，仅NNRt设备可用。 |
 | [OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetpriority) | 获取NNRt任务优先级，仅NNRt设备可用。 |
-| [OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name,const char *value, size_t value_size)](#oh_ai_deviceinfoaddextension) | 向设备信息中添加键/值对形式的扩展配置。只对NNRt设备信息有效。<br> 注意：当前仅支持{"CachePath": "YourCachePath"}，{"CacheVersion": "YouCacheVersion"}，<br> {"QuantBuffer": "YourQuantBuffer"}，{"ModelName": "YourModelName"}，<br> {"isProfiling": "YourisProfiling"}，{"opLayout": "YouropLayout"}，<br> {"InputDims": "YourInputDims"}，{"DynamicDims": "YourDynamicDims"}，<br> {"QuantConfigData": "YourQuantConfigData"}，{"BandMode": "YourBandMode"}，<br> {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}11种键值对配置，用户根据使用情况替换具体的值。 |
+| [OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name,const char *value, size_t value_size)](#oh_ai_deviceinfoaddextension) | 向设备信息中添加键/值对形式的扩展配置。只对NNRt设备信息有效。<br>当前仅支持配置以下11种键：{"CachePath": "YourCachePath"}，{"CacheVersion": "YourCacheVersion"}，<br> {"QuantBuffer": "YourQuantBuffer"}，{"ModelName": "YourModelName"}，<br> {"isProfiling": "YourProfilingSwitch"}，{"opLayout": "YourOpLayout"}，<br> {"InputDims": "YourInputDims"}，{"DynamicDims": "YourDynamicDims"}，<br> {"QuantConfigData": "YourQuantConfigData"}，{"BandMode": "YourBandMode"}，<br> {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}，用户可根据使用情况配置各个键对应的值。 |
 
 ## 函数说明
 
@@ -123,7 +129,7 @@ OH_AI_API void OH_AI_ContextSetThreadNum(OH_AI_ContextHandle context, int32_t th
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) context | 指向上下文信息实例的[OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md)。 |
-| int32_t thread_num | 运行时的线程数量。 |
+| int32_t thread_num | 运行时的线程数量。长度跟随系统限制。 |
 
 ### OH_AI_ContextGetThreadNum()
 
@@ -369,7 +375,7 @@ OH_AI_API void OH_AI_DeviceInfoSetProvider(OH_AI_DeviceInfoHandle device_info, c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md) device_info | 指向设备信息实例的[OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)。 |
-| const char *provider | 生产商的名称。 |
+| const char *provider | 生产商的名称。字符串长度跟随系统限制。 |
 
 ### OH_AI_DeviceInfoGetProvider()
 
@@ -414,7 +420,7 @@ OH_AI_API void OH_AI_DeviceInfoSetProviderDevice(OH_AI_DeviceInfoHandle device_i
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md) device_info | 指向设备信息实例的[OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)。 |
-| const char *device | 生产商设备名称。例如: CPU。 |
+| const char *device | 生产商设备名称。例如: CPU。字符串长度跟随系统限制。 |
 
 ### OH_AI_DeviceInfoGetProviderDevice()
 
@@ -484,7 +490,7 @@ OH_AI_API void OH_AI_DeviceInfoSetEnableFP16(OH_AI_DeviceInfoHandle device_info,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md) device_info | 指向设备信息实例的[OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)。 |
-| bool is_fp16 | 是否开启float16推理模式。 |
+| bool is_fp16 | 是否开启float16推理模式。true为开启float16推理模式，false为不开启float16推理模式。 |
 
 ### OH_AI_DeviceInfoGetEnableFP16()
 
@@ -509,7 +515,7 @@ OH_AI_API bool OH_AI_DeviceInfoGetEnableFP16(const OH_AI_DeviceInfoHandle device
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AI_API bool | 设置是否开启float16推理模式。 |
+| OH_AI_API bool | 是否开启float16推理模式。true为开启float16推理模式，false为不开启float16推理模式。 |
 
 ### OH_AI_DeviceInfoSetFrequency()
 
@@ -529,7 +535,7 @@ OH_AI_API void OH_AI_DeviceInfoSetFrequency(OH_AI_DeviceInfoHandle device_info, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md) device_info | 指向设备信息实例的[OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)。 |
-| int frequency | 频率类型，取值范围为0-4，默认是3。1表示低功耗，2表示平衡，3表示高性能，4表示超高性能。 |
+| int frequency | 频率类型，取值范围为0-4，默认是3。0表示不设置，由系统调节；1表示低功耗；2表示平衡；3表示高性能；4表示超高性能。 |
 
 ### OH_AI_DeviceInfoGetFrequency()
 
@@ -554,7 +560,7 @@ OH_AI_API int OH_AI_DeviceInfoGetFrequency(const OH_AI_DeviceInfoHandle device_i
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AI_API int | NPU的频率类型。取值范围为0-4，1表示低功耗，2表示平衡，3表示高性能，4表示超高性能。 |
+| OH_AI_API int | NPU的频率类型。取值范围为0-4，0表示不设置，由系统调节；1表示低功耗；2表示平衡；3表示高性能；4表示超高性能。 |
 
 ### OH_AI_GetAllNNRTDeviceDescs()
 
@@ -718,7 +724,7 @@ OH_AI_API OH_AI_DeviceInfoHandle OH_AI_CreateNNRTDeviceInfoByName(const char *na
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | 目标NNRt设备名。 |
+| const char *name | 目标NNRt设备名。字符串长度跟随系统限制。 |
 
 **返回：**
 
@@ -894,7 +900,7 @@ OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle devic
 
 **描述**
 
-向设备信息中添加键/值对形式的扩展配置。只对NNRt设备信息有效。<br> 注意：当前仅支持{"CachePath": "YourCachePath"}，{"CacheVersion": "YouCacheVersion"}，<br> {"QuantBuffer": "YourQuantBuffer"}，{"ModelName": "YourModelName"}，<br> {"isProfiling": "YourisProfiling"}，{"opLayout": "YouropLayout"}，<br> {"InputDims": "YourInputDims"}，{"DynamicDims": "YourDynamicDims"}，<br> {"QuantConfigData": "YourQuantConfigData"}，{"BandMode": "YourBandMode"}，<br> {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}11种键值对配置，用户根据使用情况替换具体的值。
+向设备信息中添加键/值对形式的扩展配置。只对NNRt设备信息有效。<br>当前仅支持配置以下11种键：{"CachePath": "YourCachePath"}，{"CacheVersion": "YourCacheVersion"}，<br> {"QuantBuffer": "YourQuantBuffer"}，{"ModelName": "YourModelName"}，<br> {"isProfiling": "YourProfilingSwitch"}，{"opLayout": "YourOpLayout"}，<br> {"InputDims": "YourInputDims"}，{"DynamicDims": "YourDynamicDims"}，<br> {"QuantConfigData": "YourQuantConfigData"}，{"BandMode": "YourBandMode"}，<br> {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}，用户可根据使用情况配置各个键对应的值。
 
 **起始版本：** 10
 
@@ -904,8 +910,8 @@ OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle devic
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md) device_info | 指向设备信息实例的[OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)。 |
-| const char *name | 单个扩展项的键，格式为C字符串。 |
-| const char *value | 单个扩展项的值内容首地址。 |
+| const char *name | 单个扩展项的键，格式为C字符串。字符串长度限制为128。 |
+| const char *value | 单个扩展项的值内容首地址。字符串长度跟随系统限制。 |
 | size_t value_size | 单个扩展项的值内容长度。 |
 
 **返回：**

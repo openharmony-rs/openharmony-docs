@@ -1,8 +1,14 @@
 # Using AVPlayer to Play Streaming Media (ArkTS)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xushubo; @chennotfound-->
+<!--Designer: @dongyu_dy-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 This topic describes how to use [AVPlayer](media-kit-intro.md#avplayer) for streaming live broadcasts and video-on-demand. The examples demonstrate how to play streaming videos in an end-to-end manner.
 
-This guide focuses solely on streaming media playback. For details about other scenarios such as local audio and video playback, see [Using AVPlayer to Play Audio (ArkTS)](using-avplayer-for-playback.md).
+This guide focuses solely on streaming media playback. For details about other scenarios such as local audio and video playback, see [Using AVPlayer to Play Videos (ArkTS)](video-playback.md).
 
 ## Formats Supported by Streaming Media
 
@@ -15,7 +21,7 @@ This guide focuses solely on streaming media playback. For details about other s
 
 ## How to Develop
 
-The full streaming media playback process includes creating an AVPlayer instance, setting the media asset to play and the window to display the video, setting playback parameters (volume, speed, and scale type), controlling playback (play, pause, seek, and stop), resetting the playback configuration, and releasing the instance. During application development, you can use the **state** attribute of the AVPlayer to obtain the AVPlayer state or call **on('stateChange')** to listen for state changes. Performing actions when the AVPlayer is in an incorrect state can lead to exceptions or undefined behavior. For details, see [AVPlayerState](../../reference/apis-media-kit/js-apis-media.md#avplayerstate9).  
+The full streaming media playback process includes creating an AVPlayer instance, setting the media asset to play and the window to display the video, setting playback parameters (volume, speed, and scale type), controlling playback (play, pause, seek, and stop), resetting the playback configuration, and releasing the instance. During application development, you can use the **state** property of the AVPlayer to obtain the AVPlayer state or call **on('stateChange')** to listen for state changes. Performing actions when the AVPlayer is in an incorrect state can lead to exceptions or undefined behavior. For details, see [AVPlayerState](../../reference/apis-media-kit/arkts-apis-media-t.md#avplayerstate9).  
 
 1. Call **createAVPlayer()** to create an AVPlayer instance. The AVPlayer is the **idle** state.
 
@@ -23,15 +29,15 @@ The full streaming media playback process includes creating an AVPlayer instance
 
    | Event| Description|
    | -------- | -------- |
-   | stateChange | Mandatory; used to listen for changes of the **state** attribute of the AVPlayer.|
-   | error | Mandatory; used to listen for AVPlayer errors.|
+   | stateChange | Mandatory; used to listen for changes of the **state** property of the AVPlayer.<br>To ensure proper functionality, the listener must be configured when the AVPlayer is in the idle state and before the resource setting API is called. If the listener is set after the resource setting API is called, the stateChange event reported during resource setting may fail to be received.|
+   | error | Mandatory; used to listen for AVPlayer errors.<br>To ensure proper functionality, the listener must be configured when the AVPlayer is in the idle state and before the resource setting API is called. If the listener is set after the resource setting API is called, the error event reported during resource setting may fail to be received.|
    | durationUpdate | Used to listen for progress bar updates to refresh the media asset duration.|
    | timeUpdate | Used to listen for the current position of the progress bar to refresh the current time.|
    | seekDone | Used to listen for the completion status of the **seek()** request.<br>This event is reported when the AVPlayer seeks to the playback position specified in **seek()**.|
    | speedDone | Used to listen for the completion status of the **setSpeed()** request.<br>This event is reported when the AVPlayer plays videos at the speed specified in **setSpeed()**.|
    | volumeChange | Used to listen for the completion status of the **setVolume()** request.<br>This event is reported when the AVPlayer plays videos at the volume specified in **setVolume()**.|
    | bufferingUpdate | Used to listen for network playback buffer information. This event reports the buffer percentage and playback progress.|
-   | audioInterrupt | Used to listen for audio interruption. This event is used together with the **audioInterruptMode** attribute.<br>This event is reported when the current audio playback is interrupted by another (for example, when a call is coming), so the application can process the event in time.|
+   | audioInterrupt | Used to listen for audio interruption. This event is used together with the **audioInterruptMode** property.<br>This event is reported when the current audio playback is interrupted by another (for example, when a call is coming), so the application can process the event in time.|
 
 3. Set the media asset. Specifically, [use the AVPlayer to set the playback URL](playback-url-setting-method.md). The AVPlayer transitions to the initialized state.
    > **NOTE**
@@ -61,11 +67,18 @@ The standard process for playing streaming media follows the development steps o
 
 ### Buffering Status for Streaming Media
 
-If the download speed falls below the bit rate of the media source, playback stuttering may occur. In this case, the AVPlayer detects a lack of data in the buffer and will accumulate some data before resuming playback to prevent continuous stuttering. The buffering event reporting sequence for a single instance of stuttering is as follows: BUFFERING_START -> BUFFERING_PERCENT 0 -> ... -> BUFFERING_PERCENT 100 -> BUFFERING_END. The CACHED_DURATION event is continuously reported throughout the stuttering and playback phases, until the download reaches the end of the resource. For details, see [BufferingInfoType](../../reference/apis-media-kit/js-apis-media.md#bufferinginfotype8).
+If the download speed falls below the bit rate of the media source, playback stuttering may occur. In this case, the AVPlayer detects a lack of data in the buffer and will accumulate some data before resuming playback to prevent continuous stuttering. The buffering event reporting sequence for a single instance of stuttering is as follows: BUFFERING_START -> BUFFERING_PERCENT 0 -> ... -> BUFFERING_PERCENT 100 -> BUFFERING_END. The CACHED_DURATION event is continuously reported throughout the stuttering and playback phases, until the download reaches the end of the resource. For details, see [BufferingInfoType](../../reference/apis-media-kit/arkts-apis-media-e.md#bufferinginfotype8).
 
 Sample code for listening for the bufferingUpdate event:
 
 ```ts
+import { media } from '@kit.MediaKit';
+// Define the class member avPlayer.
+private avPlayer: media.AVPlayer | null = null;
+
+// Create an AVPlayer instance.
+this.avPlayer = await media.createAVPlayer();
+// Listen for the bufferingUpdate event.
 this.avPlayer.on('bufferingUpdate', (infoType : media.BufferingInfoType, value : number) => {
   console.info(`AVPlayer bufferingUpdate, infoType is ${infoType}, value is ${value}.`);
 })
@@ -75,29 +88,37 @@ this.avPlayer.on('bufferingUpdate', (infoType : media.BufferingInfoType, value :
 
 HLS streams currently support playback at multiple bit rates. By default, the AVPlayer selects the most suitable bit rate based on the network download speed.
 
-1. Use [on('availableBitrates')](../../reference/apis-media-kit/js-apis-media.md#onavailablebitrates9) to listen for the available bit rates for an HLS stream. If the bit rate list has a length of 0, setting a specific bit rate is not supported.
+1. Use [on('availableBitrates')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onavailablebitrates9) to listen for the available bit rates for an HLS stream. If the bit rate list has a length of 0, setting a specific bit rate is not supported.
 
     ```ts
+    import { media } from '@kit.MediaKit';
+    // Define the class member avPlayer.
+    private avPlayer: media.AVPlayer | null = null;
+
     // Create an AVPlayer instance.
-    this.avPlayer: media.AVPlayer = await media.createAVPlayer();
+    this.avPlayer = await media.createAVPlayer();
     // Listen for the available bit rates of the current HLS stream.
     this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
       console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
     })
     ```
 
-2. Use [setBitrate](../../reference/apis-media-kit/js-apis-media.md#setbitrate9) to set the playback bit rate. If the bit rate is not among the available bit rates, the AVPlayer selects the minimum and closest bit rate from the available ones. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can listen for the [bitrateDone](../../reference/apis-media-kit/js-apis-media.md#onbitratedone9) event to check whether the setting takes effect.
+2. Use [setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9) to set the playback bit rate. If the bit rate is not among the available bit rates, the AVPlayer selects the minimum and closest bit rate from the available ones. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can listen for the [bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9) event to check whether the setting takes effect.
 
     ```ts
+    import { media } from '@kit.MediaKit';
+    // Define the class member avPlayer.
+    private avPlayer: media.AVPlayer | null = null;
+
     // Create an AVPlayer instance.
-    this.avPlayer: media.AVPlayer = await media.createAVPlayer();
+    this.avPlayer = await media.createAVPlayer();
     // Check whether the bit rate setting takes effect.
     this.avPlayer.on('bitrateDone', (bitrate: number) => {
       console.info('bitrateDone called, and bitrate value is: ' + bitrate);
     })
     // Set the playback bit rate.
     this.bitrate: number = 96000;
-    avPlayer.setBitrate(bitrate);
+    this.avPlayer.setBitrate(this.bitrate);
     ```
 
 ### DASH Video Playback Startup Strategy
@@ -107,6 +128,8 @@ To maintain a smooth playback experience in environments with poor network conne
 The sample code below demonstrates setting the video to start at a width of 1920 px and a height of 1080 px. The AVPlayer selects a video stream with a resolution of 1920 x 1080 from the MPD resources for playback.
 
 ```ts
+import { media } from '@kit.MediaKit';
+
 let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://test.cn/dash/aaa.mpd",  {"User-Agent" : "User-Agent-Value"});
 let playbackStrategy : media.PlaybackStrategy = {preferredWidth: 1920, preferredHeight: 1080};
 this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
@@ -116,18 +139,32 @@ this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
 
 DASH streaming media includes multiple audio, video, and subtitle tracks, each with different resolutions, bit rates, sampling rates, and encoding formats. By default, the AVPlayer automatically select video tracks with different bit rates based on the network status. You can manually select an audio or video track for playback based on service requirements. In this case, the adaptive bit rate switching feature becomes invalid.
 
-1. Set the [trackChange](../../reference/apis-media-kit/js-apis-media.md#ontrackchange12) event.
+1. Set the [trackChange](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#ontrackchange12) event.
 
     ```ts
+    import { media } from '@kit.MediaKit';
+    // Define the class member avPlayer.
+    private avPlayer: media.AVPlayer | null = null;
+
+    // Create an AVPlayer instance.
+    this.avPlayer = await media.createAVPlayer();
     this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
       console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
     })
     ```
 
-2. Call [getTrackDescription](../../reference/apis-media-kit/js-apis-media.md#gettrackdescription9) to obtain the list of all audio and video tracks. You can determine the index of the target track based on an actual requirement and information about each field in [MediaDescription](../../reference/apis-media-kit/js-apis-media.md#mediadescription8).
+2. Call [getTrackDescription](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#gettrackdescription9) to obtain the list of all audio and video tracks. You can determine the index of the target track based on an actual requirement and information about each field in [MediaDescription](../../reference/apis-media-kit/arkts-apis-media-i.md#mediadescription8).
 
     ```ts
     // The following uses the 1080p video track index as an example.
+    import { media } from '@kit.MediaKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    public videoTrackIndex: number = 0;
+    // Define the class member avPlayer.
+    private avPlayer: media.AVPlayer | null = null;
+    
+    // Create an AVPlayer instance.
+    this.avPlayer = await media.createAVPlayer();
     this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
@@ -136,22 +173,29 @@ DASH streaming media includes multiple audio, video, and subtitle tracks, each w
           let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
           let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
           if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
-            this.videoTrackIndex = parseInt(propertyIndex.toString()); // Obtain the 1080p video track index.
+            this.videoTrackIndex = parseInt(propertyIndex?.toString()); // Obtain the 1080p video track index.
           }
         }
       } else {
         console.error(`getTrackDescription fail, error:${error}`);
       }
     });
-    ```                   
+    ```
 
-3. During audio and video playback, call [selectTrack](../../reference/apis-media-kit/js-apis-media.md#selecttrack12) to select audio and video tracks, or call [deselectTrack](../../reference/apis-media-kit/js-apis-media.md#deselecttrack12) to deselect them.
+3. During audio and video playback, call [selectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#selecttrack12) to select audio and video tracks, or call [deselectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#deselecttrack12) to deselect them.
 
     ```ts
+    import { media } from '@kit.MediaKit';
+    public videoTrackIndex: number = 0;
+        // Define the class member avPlayer.
+    private avPlayer: media.AVPlayer | null = null;
+    
+    // Create an AVPlayer instance.
+    this.avPlayer = await media.createAVPlayer();
     // Select a video track.
-    avPlayer.selectTrack(videoTrackIndex);
+    this.avPlayer.selectTrack(this.videoTrackIndex);
     // Deselect the video track.
-    // avPlayer.deselectTrack(videoTrackIndex);
+    // this.avPlayer.deselectTrack(this.videoTrackIndex);
     ```
 
 ## Exception Description
@@ -162,7 +206,7 @@ If the network is disconnected when the AVPlayer is playing streaming media, the
 
 Refer to the following example to play a complete streaming video.
 
-1. Create a project, download the [sample project](https://gitee.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia), and copy the following resources of the sample project to the corresponding directories.
+1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia), and copy its resources to the corresponding directories.
     ```
     AVPlayerArkTSAudio
     entry/src/main/ets/
@@ -197,15 +241,52 @@ Refer to the following example to play a complete streaming video.
 ## Development Example
 
 ```ts
+import { media } from '@kit.MediaKit';
+import { emitter } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+const TIME_ONE = 60000; // Milliseconds in one minute.
+const TIME_TWO = 1000; // Milliseconds in one second.
+const SET_INTERVAL = 1000; // Update the current playback time every second.
+const SPEED_ZERO: number = 0; // Corresponds to 1.00x speed.
+const SPEED_ONE: number = 1; // Corresponds to 1.25x speed.
+const SPEED_TWO: number = 2; // Corresponds to 1.75x speed.
+const SPEED_THREE: number = 3; // Corresponds to 2.00x speed.
+const PROPORTION: number = 0.99;
+let innerEventFalse: emitter.InnerEvent = {
+  eventId: 1,
+  priority: emitter.EventPriority.HIGH
+};
+let innerEventTrue: emitter.InnerEvent = {
+  eventId: 2,
+  priority: emitter.EventPriority.HIGH
+};
+
+let innerEventWH: emitter.InnerEvent = {
+  eventId: 3,
+  priority: emitter.EventPriority.HIGH
+};
 @Entry
 @Component
 struct Index {
   private avPlayer: media.AVPlayer | null = null;
-  private context: common.UIAbilityContext | undefined = undefined;
+  private context: Context | undefined = undefined;
   public videoTrackIndex: number = 0;
   public bitrate: number = 0;
-  ...
-
+  @State durationTime: number = 0;
+  @State currentTime: number = 0;
+  @State percent: number = 0;
+  @State isSwiping: boolean = false;
+  @State tag: string = 'StreamingMedia';
+  private surfaceId: string = '';
+  @State speedSelect: number = -1;
+  public intervalID: number = -1;
+  @State windowWidth: number = 300;
+  @State windowHeight: number = 300;
+  @State surfaceW: number | null = null;
+  @State surfaceH: number | null = null;
+  @State isPaused: boolean = true;
+  @State XComponentFlag: boolean = false;
   getDurationTime(): number {
     return this.durationTime;
   }
@@ -230,7 +311,7 @@ struct Index {
     })
   }
 
-  async avSetupStreaminMediaVideo() {
+  async avSetupStreamingMediaVideo() {
     if (this.context == undefined) return;
     // Create an AVPlayer instance.
     this.avPlayer = await media.createAVPlayer();
@@ -283,7 +364,7 @@ struct Index {
     // Case 6: DASH audio and video track switching.
     /*
     this.avPlayer.url = "http://poster-inland.hwcloudtest.cn/AiMaxEngine/ProductionEnvVideo/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3.mpd";
-    // 
+    //
     this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
@@ -380,9 +461,9 @@ struct Index {
     }
   }
 
-  // Set AVPlayer callback functions.
+  // Set the AVPlayer callback functions.
   async setAVPlayerCallback(callback: (avPlayer: media.AVPlayer) => void, vType?: number): Promise<void> {
-    // Callback function for the seek operation.
+    // Callback for the seek operation.
     if (this.avPlayer == null) {
       console.error(`${this.tag}: avPlayer has not init!`);
       return;
@@ -402,7 +483,7 @@ struct Index {
       }
       this.avPlayer.reset();
     });
-    // Callback function for state changes.
+    // Callback for state changes.
     this.avPlayer.on('stateChange', async (state, reason) => {
       if (this.avPlayer == null) {
         console.info(`${this.tag}: avPlayer has not init on state change`);
@@ -512,10 +593,15 @@ struct Index {
   aboutToAppear() {
     this.windowWidth = display.getDefaultDisplaySync().width;
     this.windowHeight = display.getDefaultDisplaySync().height;
-    this.surfaceW = this.windowWidth * SURFACE_W;
-    this.surfaceH = this.surfaceW / SURFACE_H;
+    if (this.percent >= 1) { // Horizontal video.
+      this.surfaceW = Math.round(this.windowWidth * PROPORTION);
+      this.surfaceH = Math.round(this.surfaceW / this.percent);
+    } else { // Vertical video.
+      this.surfaceH = Math.round(this.windowHeight * PROPORTION);
+      this.surfaceW = Math.round(this.surfaceH * this.percent);
+    }
     this.isPaused = true;
-    this.context = getContext(this) as common.UIAbilityContext;
+    this.context = this.getUIContext().getHostContext();
   }
 
   aboutToDisappear() {
@@ -570,8 +656,12 @@ struct Index {
   }
 
   @Builder
-  CoverXComponent() {...}
+  CoverXComponent() {
+    // ...
+  }
 
-  build() {...}
+  build() {
+    // ...
+  }
 }
 ```

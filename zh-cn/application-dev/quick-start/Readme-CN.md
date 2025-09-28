@@ -1,4 +1,11 @@
 # 入门<!--application-getting-started-->
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
+
 <!--Del-->
 - 快速入门<!--quick-start-->
   - [开发准备](start-overview.md)
@@ -30,10 +37,11 @@
     - [集成态HSP](integrated-hsp.md)
     - [HAR转HSP指导](har-to-hsp.md)
     - [HSP转HAR指导](hsp-to-har.md)
+    - [HAP转HAR指导](hap-to-har.md)
     - [创建应用静态快捷方式](typical-scenario-configuration.md)
     - [创建应用分身](app-clone.md)
     - [创建应用多实例](multiInstance.md)
-    - [配置应用图标](layered-image.md)
+    - [配置应用图标和名称](layered-image.md)
   - [应用程序包常见问题](common_problem_of_application.md)
   - [应用程序包术语](application-package-glossary.md)
 - [资源分类与访问](resource-categories-and-access.md)

@@ -1,17 +1,23 @@
 # Implementing Asynchronous Operations Using Node-API
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
-Node-API provides APIs for implementing asynchronous operations for time-consuming tasks, such as downloading data from network or reading a large file. Different from synchronous operations, asynchronous operations are executed in the background without blocking the main thread. When an asynchronous operation is complete, it will be added to the task queue and executed when the main thread is idle.
+Node-API provides APIs for implementing asynchronous operations for time-consuming tasks, such as downloading data from network or reading a large file. Unlike synchronous operations, asynchronous operations are executed in the background without blocking the main thread. When an asynchronous operation is complete, it will be added to the task queue and executed when the main thread is idle.
 
 ## Basic Concepts
 
-**Promise** is an object used to handle asynchronous operations in ArkTS. It has three states: **pending**, **fulfilled**, and **rejected**. The initial state is **pending**, which can be changed to **fulfilled** by **resolve()** and to **rejected** by **reject()**. Once the state is **fulfilled** or **rejected**, the promise state cannot be changed. Read on the following to learn basic concepts related to **Promise**:
+**Promise** is an object used to handle asynchronous operations in ArkTS. It has three states: **pending**, **fulfilled**, and **rejected**. The initial state is **pending**, which can be changed to **fulfilled** by **resolve()** and to rejected by **reject()**. Once the state is **fulfilled** or **rejected**, the promise state cannot be changed. The basic concepts are as follows:
 
-- Synchronous: Code is executed line by line in sequence. Each line of code is executed after the previous line of code is executed. During synchronous execution, if an operation takes a long time, the execution of the entire application will be blocked until the operation is complete.
-- Asynchronous: Tasks can be executed concurrently without waiting for the end of the previous task. In ArkTS, common asynchronous operations apply for timers, event listening, and network requests. Instead of blocking subsequent tasks, the asynchronous task uses a callback or promise to process its result.
-- **Promise**: an ArkTS object used to handle asynchronous operations. Generally, it is exposed externally by using **then()**, **catch()**, or **finally()** to custom logic.
-- **deferred**: a utility object associated with the **Promise** object to set **resolve()** and **reject()** of **Promise**. It is used internally to maintain the state of the asynchronous model and set the **resolve()** and **reject()** callbacks.
+- Synchronous: Code is executed line by line in sequence. Each line of code is executed after the previous line of code is executed. If an operation takes a long time, the entire application will be blocked.
+- Asynchronous: Tasks can be executed concurrently without waiting for the end of the previous task. Common asynchronous operations apply for timers, event listening, and network requests. Instead of blocking subsequent tasks, the asynchronous task uses a callback or promise to process its result.
+- **Promise**: an ArkTS object used to handle asynchronous operations. It is customized by using **then()**, **catch()**, and **finally()**.
+- **deferred**: a deferred object associated with **Promise**. It is used to set the callbacks **resolve()** and **reject()** of **Promise** to maintain the asynchronous model state.
 - **resolve**: a function used to change the promise state from **pending** to **fulfilled**. The parameters passed to **resolve()** can be obtained from **then()** of the **Promise** object.
 - **reject**: a function used to change the promise state from **pending** to **rejected**. The parameters passed to **reject()** can be obtained from **catch()** of the **Promise** object.
 
@@ -61,6 +67,7 @@ static napi_value IsPromise(napi_env env, napi_callback_info info)
     return result;
 }
 ```
+<!-- @[napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
@@ -68,11 +75,12 @@ API declaration:
 // index.d.ts
 export const isPromise: <T>(value: T) => boolean;
 ```
+<!-- @[napi_is_promise_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = Promise.resolve();
@@ -80,6 +88,7 @@ let value = Promise.resolve();
 hilog.info(0x0000, 'Node-API', 'napi_is_promise %{public}s', testNapi.isPromise(value));
 hilog.info(0x0000, 'Node-API', 'napi_is_promise string %{public}s', testNapi.isPromise(''));
 ```
+<!-- @[ark_napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_create_promise
 
@@ -87,11 +96,11 @@ Call **napi_create_promise** to create a **Promise** object.
 
 When using this API, observe to the following:
 
-- If **napi_create_promise** is called when there is an exception not handled, **napi_pending_exception** will be returned.
-- After calling **napi_create_promise**, always check whether the return value is **napi_ok**. If **deferred** and **promise** are used, the application will crash.
+1. If **napi_create_promise** is called when there is an exception not handled, **napi_pending_exception** will be returned.
+2. After calling **napi_create_promise**, always check whether the return value is **napi_ok**. If **deferred** and **promise** are used, the application will crash.
 
 ```c++
-napi_value NapiPromiseDemo(napi_env env, napi_callback_info)
+napi_value NapiPromiseDemo(napi_env env, napi_callback_info info)
 {
     napi_deferred deferred = nullptr;
     napi_value promise = nullptr;
@@ -135,7 +144,11 @@ static napi_value CreatePromise(napi_env env, napi_callback_info info)
     //Call napi_is_promise to check whether the object created by napi_create_promise is a Promise object.
     bool isPromise = false;
     napi_value returnIsPromise = nullptr;
-    napi_is_promise(env, promise, &isPromise);
+    status = napi_is_promise(env, promise, &isPromise);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_is_promise failed");
+        return nullptr;
+    }
     // Convert the Boolean value to napi_value and return it.
     napi_get_boolean(env, isPromise, &returnIsPromise);
     return returnIsPromise;
@@ -148,18 +161,23 @@ static napi_value ResolveRejectDeferred(napi_env env, napi_callback_info info)
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // The first parameter is the data to be passed to Resolve(), the second parameter is the data to be passed to reject(), and the third parameter is the Promise state.
-    bool status;
-    napi_get_value_bool(env, args[INT_ARG_2], &status);
+    bool promiseStatus;
+    napi_status status = napi_get_value_bool(env, args[INT_ARG_2], &promiseStatus);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_value_bool failed");
+        return nullptr;
+    }
+
     // Create a Promise object.
     napi_deferred deferred = nullptr;
     napi_value promise = nullptr;
-    napi_status createStatus = napi_create_promise(env, &deferred, &promise);
-    if (createStatus != napi_ok) {
+    status = napi_create_promise(env, &deferred, &promise);
+    if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Create promise failed");
         return nullptr;
     }
     // Set the promise state based on the third parameter.
-    if (status) {
+    if (promiseStatus) {
         napi_resolve_deferred(env, deferred, args[0]);
     } else {
         napi_reject_deferred(env, deferred, args[1]);
@@ -168,19 +186,21 @@ static napi_value ResolveRejectDeferred(napi_env env, napi_callback_info info)
     return promise;
 }
 ```
+<!-- @[napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
-API declaration:
+API declaration example:
 
 ```ts
 // index.d.ts
-export const createPromise: () => boolean | void;
-export const resolveRejectDeferred: (resolve: string, reject: string, status: boolean) => Promise<string> | void;
+export const createPromise: () => boolean | undefined;
+export const resolveRejectDeferred: (resolve: string, reject: string, status: boolean) => Promise<string> | undefined;
 ```
+<!-- @[napi_resolve_reject_deferred_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 // Create a promise. Return true if the operation is successful, and return false otherwise.
@@ -201,6 +221,7 @@ promiseFail.then((res) => {
   hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err)
 })
 ```
+<!-- @[ark_napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 
@@ -208,5 +229,5 @@ To print logs in the native CPP, add the following information to the **CMakeLis
 // CMakeLists.txt
 add_definitions( "-DLOG_DOMAIN=0xd0d0" )
 add_definitions( "-DLOG_TAG=\"testTag\"" )
-target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
+target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```

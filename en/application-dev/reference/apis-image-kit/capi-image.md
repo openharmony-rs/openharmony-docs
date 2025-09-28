@@ -1,8 +1,14 @@
 # Image
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
-The Image module enables access to image APIs.
+The module enables access to image APIs.
 
 You can refer to the corresponding development guide and samples based on your development requirements.
 

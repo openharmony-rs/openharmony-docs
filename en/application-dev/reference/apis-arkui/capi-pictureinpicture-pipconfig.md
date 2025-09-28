@@ -1,8 +1,14 @@
 # PictureInPicture_PipConfig
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The PictureInPicture_PipConfig struct describes the PiP configuration.
+The struct describes the PiP configuration.
 
 **Since**: 20
 

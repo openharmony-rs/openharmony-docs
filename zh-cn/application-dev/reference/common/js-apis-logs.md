@@ -1,4 +1,10 @@
 # Console (控制台)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @yao_dashuai-->
+<!--Designer: @yao_dashuai-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供了一个简单的调试控制台，类似于浏览器提供的JavaScript控制台机制。
 
@@ -351,14 +357,14 @@ group(...arguments: Object[]): void
 **示例：**
 
 ```js
-console.log("outter");
+console.info("outter");
 // outter
 console.group();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.group("in level1");
 //   in level1
-console.log("level 2");
+console.info("level 2");
 //     level 2
 ```
 
@@ -386,11 +392,11 @@ groupCollapsed(...arguments: Object[]): void
 console.groupCollapsed("outter");
 // outter
 console.groupCollapsed();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.groupCollapsed("in level1");
 //   in level1
-console.log("level 2");
+console.info("level 2");
 //     level 2
 ```
 
@@ -408,13 +414,13 @@ groupEnd(): void
 **示例：**
 
 ```js
-console.log("outter");
+console.info("outter");
 // outter
 console.group();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.groupEnd();
-console.log("outter");
+console.info("outter");
 // outter
 ```
 

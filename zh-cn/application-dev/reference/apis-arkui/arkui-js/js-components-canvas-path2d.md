@@ -1,4 +1,10 @@
 # Path2D对象
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 >  **说明：**
 >  从API version 6开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -206,7 +212,7 @@ export default {
 
 bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
 
-创建三次贝赛尔曲线的路径。
+创建三次贝塞尔曲线的路径。
 
 **参数：** 
 
@@ -249,7 +255,7 @@ export default {
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-创建二次贝赛尔曲线的路径。
+创建二次贝塞尔曲线的路径。
 
 **参数：**  
 

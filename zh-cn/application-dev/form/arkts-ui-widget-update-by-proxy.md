@@ -1,4 +1,10 @@
 # 卡片代理刷新
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 
 卡片代理刷新是一种通过系统应用刷新卡片的机制。卡片提供方不在运行时，仍然可以通过开启了数据共享能力的系统应用完成卡片数据的更新。
 
@@ -62,7 +68,6 @@
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -145,7 +150,6 @@
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -235,5 +239,5 @@
 
 针对卡片代理开发，有以下相关实例可供参考：
 
-- [应用主动添加数据代理卡片到桌面（ArkTS）（Full SDK）（API10）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Widget/RequestAddForm)
+- [应用主动添加数据代理卡片到桌面（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Widget/RequestAddForm)
 <!--DelEnd-->

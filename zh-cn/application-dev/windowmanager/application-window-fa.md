@@ -1,4 +1,10 @@
 # 管理应用窗口（FA模型）
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## 基本概念
 
@@ -7,7 +13,7 @@
 
 > **说明：**
 >
-> 当前沉浸式界面开发仅支持window级别的配置，暂不支持Page级别的配置。若有Page级别切换的需要，可以在页面生命周期开始，例如onPageShow中设置沉浸模式，然后在页面退出，例如onPageHide中恢复默认设置来实现。
+> 当前沉浸式界面开发仅支持窗口级别的配置，暂不支持Page级别的配置。若有Page级别切换的需要，可以在页面生命周期开始，例如onPageShow中设置沉浸模式，然后在页面退出，例如onPageHide中恢复默认设置来实现。
 
 ## 场景介绍
 
@@ -29,11 +35,11 @@
 | window静态方法 | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口。<br/>-`config`：创建窗口时的参数。               |
 | window静态方法 | findWindow(name: string): Window                             | 查找`name`所对应的窗口。                                     |
 | Window         | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | 根据当前工程中某个页面的路径为窗口加载具体的页面内容。<br>其中path为要加载到窗口中的页面内容的路径，在FA模型下该路径需添加到工程的config.json文件中。                                 |
-| Window         | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | 移动当前窗口。                                               |
+| Window         | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | 移动当前窗口位置。                                               |
 | Window         | setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void | 设置屏幕亮度值。                                             |
 | Window         | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | 改变当前窗口大小。                                           |
-| Window         | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | 设置窗口布局是否为全屏布局。                                 |
-| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | 设置导航栏、状态栏是否显示。                                 |
+| Window         | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | 设置主窗口或子窗口的布局是否为沉浸式布局。true表示沉浸式布局；false表示非沉浸式布局。|
+| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | <!--RP1-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP1End-->。<br>例如，该参数设置为['status',&nbsp;'navigation']，则全部显示；设置为[]，则不显示。|
 | Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | 设置窗口内导航栏、状态栏属性。<br/>`systemBarProperties`：导航栏、状态栏的属性集合。 |
 | Window         | showWindow(callback: AsyncCallback\<void>): void             | 显示当前窗口。                                               |
 | Window         | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | 开启本窗口区域外的点击事件的监听。                           |
@@ -45,8 +51,8 @@
 开发者可以按需创建应用子窗口，如弹窗等，并对其进行属性设置等操作。
 
 > **说明：**  
-> 由于以下几种情况，移动设备场景下不推荐使用子窗口，优先推荐使用控件[overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。  
-> - 移动设备场景下子窗不能超出主窗口范围，与控件一致。  
+> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。  
+> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于悬浮窗、分屏状态的主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。
 
@@ -55,6 +61,9 @@
 1. 创建/获取子窗口对象。
 
    - 可以通过`window.createWindow`接口创建子窗口。
+   非[自由窗口](../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../windowmanager/window-terminology.md#沉浸式布局)。
+
+   自由窗口状态下，子窗口参数[decorEnabled](../reference/apis-arkui/arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
    - 也可以通过`window.findWindow`接口来查找已经创建的窗口从而得到子窗口。
 
    ```ts
@@ -72,6 +81,10 @@
      }
      console.info('Succeeded in creating subWindow. Data: ' + JSON.stringify(data));
      windowClass = data;
+     if (!windowClass) {
+      console.error('windowClass is null');
+      return;
+     }
    });
    // 方式二：查找得到子窗口。
    try {
@@ -87,7 +100,6 @@
 
    ```ts
    // 移动子窗口位置。
-   let windowClass: window.Window = window.findWindow("test");
    windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {
@@ -113,7 +125,6 @@
 
    ```ts
    // 为子窗口加载对应的目标页面。
-   let windowClass: window.Window = window.findWindow("test");
    windowClass.setUIContent("pages/page2", (err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {
@@ -121,6 +132,10 @@
        return;
      }
      console.info('Succeeded in loading the content.');
+     if (!windowClass) {
+       console.error('windowClass is null');
+       return;
+     }
      // 显示子窗口。
      windowClass.showWindow((err: BusinessError) => {
        let errCode: number = err.code;
@@ -139,7 +154,6 @@
 
    ```ts
    // 销毁子窗口。当不再需要某些子窗口时，可根据场景的具体实现逻辑，使用destroy接口销毁子窗口。
-   let windowClass: window.Window = window.findWindow("test");
    windowClass.destroyWindow((err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {
@@ -180,11 +194,15 @@
    window.getLastWindow(context, (err: BusinessError, data) => {
      let errCode: number = err.code;
      if (errCode) {
-       console.error('Failed to get the subWindow. Cause: ' + JSON.stringify(err));
+       console.error('Failed to get the mainWindow. Cause: ' + JSON.stringify(err));
        return;
      }
-     console.info('Succeeded in getting subWindow. Data: ' + JSON.stringify(data));
+     console.info('Succeeded in getting mainWindow. Data: ' + JSON.stringify(data));
      mainWindowClass = data;
+     if (!mainWindowClass) {
+      console.error('mainWindowClass is null');
+      return;
+     }
    });
    ```
 
@@ -196,7 +214,6 @@
    ```ts
    // 实现沉浸式效果。方式一：设置导航栏、状态栏不显示。
    let names: Array<'status' | 'navigation'> = [];
-   let mainWindowClass: window.Window = window.findWindow("test");
    mainWindowClass.setWindowSystemBarEnable(names)
     .then(() => {
       console.info('Succeeded in setting the system bar to be visible.');
@@ -236,7 +253,6 @@
 
    ```ts
    // 为沉浸式窗口加载对应的目标页面。
-   let mainWindowClass: window.Window = window.findWindow("test");
    mainWindowClass.setUIContent("pages/page3", (err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {
@@ -244,6 +260,10 @@
        return;
      }
      console.info('Succeeded in loading the content.');
+     if (!mainWindowClass) {
+      console.error('mainWindowClass is null');
+      return;
+     }
      // 显示沉浸式窗口。
      mainWindowClass.showWindow((err: BusinessError) => {
        let errCode: number = err.code;

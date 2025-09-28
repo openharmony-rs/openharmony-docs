@@ -1,4 +1,10 @@
 # @ohos.data.relationalStore (关系型数据库)(系统接口)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 关系型数据库（Relational Database，RDB）是一种基于关系模型来管理数据的数据库。关系型数据库基于SQLite组件提供了一套完整的对本地数据库进行管理的机制，对外提供了一系列的增、删、改、查等接口，也可以直接运行用户输入的SQL语句来满足复杂的场景需要。不支持Worker线程。
 ArkTS侧支持的基本数据类型：number、string、二进制类型数据、boolean。为保证插入并读取数据成功，建议一条数据不要超过2M。超出该大小，插入成功，读取失败。
@@ -71,13 +77,15 @@ import { relationalStore } from '@kit.ArkData';
 
 提供管理关系型数据库（RDB）的接口。
 
-在使用以下相关接口前，请使用[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)接口初始化数据库表结构和相关数据。
+在使用以下API前，请先通过[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore-1)方法获取RdbStore实例，并使用该实例调用对应接口方法。
+
+在此基础上，建议优先使用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
 
 ### update
 
 update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;number&gt;):void
 
-根据DataSharePredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据DataSharePredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -158,7 +166,7 @@ predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates, (err, rows) => {
     if (err) {
-      console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Updated row count: ${rows}`);
@@ -170,7 +178,7 @@ if (store != undefined) {
 
 update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates):Promise&lt;number&gt;
 
-根据DataSharePredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据DataSharePredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -255,10 +263,10 @@ const valueBucket3: ValuesBucket = {
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: Number) => {
+  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
-    console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -321,7 +329,7 @@ predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates, (err, rows) => {
     if (err) {
-      console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Delete rows: ${rows}`);
@@ -391,10 +399,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates).then((rows: Number) => {
+  (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates).then((rows: number) => {
     console.info(`Delete rows: ${rows}`);
   }).catch((err: BusinessError) => {
-    console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -403,7 +411,7 @@ if (store != undefined) {
 
 query(table: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -441,7 +449,7 @@ predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
   (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -463,7 +471,7 @@ if (store != undefined) {
 
 query(table: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -502,7 +510,7 @@ predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
   (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -524,7 +532,7 @@ if (store != undefined) {
 
 query(table: string, predicates: dataSharePredicates.DataSharePredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
-根据指定条件查询数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -580,7 +588,7 @@ if (store != undefined) {
     // 释放数据集的内存
     resultSet.close();
   }).catch((err: BusinessError) => {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -629,10 +637,10 @@ predicates.in("id", ["id1", "id2"]);
 
 if (store != undefined) {
   (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail}`);
+    console.info(`progress: ${progressDetail.schedule}`);
   }, (err) => {
     if (err) {
-      console.error(`cloudSync failed, code is ${err.code},message is ${err.message}}`);
+      console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Cloud sync succeeded');
@@ -641,8 +649,6 @@ if (store != undefined) {
 ```
 **示例2：指定资产下载**
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 let asset: relationalStore.Asset = {
   name: "name",
@@ -657,10 +663,10 @@ predicates.beginWrap().equalTo("id", "id1").and().equalTo("asset", asset).endWra
 
 if (store != undefined) {
   (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail}`);
+    console.info(`progress: ${progressDetail.schedule}`);
   }, (err) => {
     if (err) {
-      console.error(`cloud sync failed, code is ${err.code},message is ${err.message}}`);
+      console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('cloud sync succeeded');
@@ -719,11 +725,11 @@ predicates.in("id", ["id1", "id2"]);
 
 if (store != undefined) {
   (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail}`);
+    console.info(`progress: ${progressDetail.schedule}`);
   }).then(() => {
     console.info('cloud sync succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`cloud sync failed, code is ${err.code},message is ${err.message}}`);
+    console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
   });
 };
 ```
@@ -745,11 +751,11 @@ predicates.beginWrap().equalTo("id", "id1").and().equalTo("asset", asset).endWra
 
 if (store != undefined) {
   (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail}`);
+    console.info(`progress: ${progressDetail.schedule}`);
   }).then(() => {
     console.info('Cloud sync succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`cloudSync failed, code is ${err.code},message is ${err.message}}`);
+    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
   });
 };
 ```
@@ -822,7 +828,7 @@ if (store != undefined) {
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
   }).catch((err: BusinessError) => {
-    console.error(`query sharing resource failed, code is ${err.code},message is ${err.message}`);
+    console.error(`query sharing resource failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -881,7 +887,7 @@ predicates.equalTo('data', 'data_test');
 if (store != undefined) {
   (store as relationalStore.RdbStore).querySharingResource(predicates, (err, resultSet) => {
     if (err) {
-      console.error(`sharing resource failed, code is ${err.code},message is ${err.message}`);
+      console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     if (!resultSet.goToFirstRow()) {
@@ -950,7 +956,7 @@ predicates.equalTo('data', 'data_test');
 if (store != undefined) {
   (store as relationalStore.RdbStore).querySharingResource(predicates, ['uuid', 'data'], (err, resultSet) => {
     if (err) {
-      console.error(`sharing resource failed, code is ${err.code},message is ${err.message}`);
+      console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     if (!resultSet.goToFirstRow()) {
@@ -999,10 +1005,10 @@ lockCloudContainer(): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).lockCloudContainer().then((time: Number) => {
+  (store as relationalStore.RdbStore).lockCloudContainer().then((time: number) => {
     console.info('lockCloudContainer succeeded time:' + time);
   }).catch((err: BusinessError) => {
-    console.error(`lockCloudContainer failed, code is ${err.code},message is ${err.message}`);
+    console.error(`lockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -1040,7 +1046,7 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).unlockCloudContainer().then(() => {
     console.info('unlockCloudContainer succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`unlockCloudContainer failed, code is ${err.code},message is ${err.message}`);
+    console.error(`unlockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -1093,13 +1099,12 @@ restore(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let store: relationalStore.RdbStore | undefined = undefined;
 if (store != undefined) {
   let promiseRestore = (store as relationalStore.RdbStore).restore();
   promiseRestore.then(() => {
     console.info('Succeeded in restoring.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to restore, code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to restore, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -1137,7 +1142,7 @@ getFloat32Array(columnIndex: number): Float32Array
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | The capability is not supported because the database is not a vector DB. |
 | 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |

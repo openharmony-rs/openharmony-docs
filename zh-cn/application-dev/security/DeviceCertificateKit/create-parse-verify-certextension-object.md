@@ -1,5 +1,12 @@
 # 证书扩展信息对象的创建、解析和校验
 
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 以获取证书指定OID域段，并判断是否为CA证书为例，完成证书扩展信息对象的创建、解析和校验。
 
 ## 开发步骤
@@ -50,7 +57,7 @@ function certExtensionSample(): void {
       return;
     }
     // 证书扩展实例创建成功。
-    console.log('createCertExtension success');
+    console.info('createCertExtension success');
 
     try {
       // 根据OID获取证书扩展信息。
@@ -62,7 +69,7 @@ function certExtensionSample(): void {
 
       // 检查证书是否为CA证书。
       let pathLen = certExtension.checkCA();
-      console.log('test cert extension success');
+      console.info('test cert extension success');
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`operation failed, message:${e.message} ,code:${e.code} `);

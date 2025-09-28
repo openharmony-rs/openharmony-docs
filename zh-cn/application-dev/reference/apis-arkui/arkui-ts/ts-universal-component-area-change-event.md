@@ -1,4 +1,10 @@
 # 组件区域变化事件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 组件区域变化事件指组件显示的尺寸、位置等发生变化时触发的事件。
 
@@ -14,7 +20,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 组件区域变化时触发该回调。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。
 
-由绘制变化所导致的渲染属性变化不会响应回调，如[translate](ts-universal-attributes-transformation.md#translate)、[offset](ts-types.md#offset)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)。
+由绘制变化所导致的渲染属性变化不会响应回调，如[translate](ts-universal-attributes-transformation.md#translate)、[offset](ts-universal-attributes-location.md#offset)、[markAnchor](ts-universal-attributes-location.md#markanchor)、[scale](ts-universal-attributes-transformation.md#scale)、[transform](ts-universal-attributes-transformation.md#transform)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)。
 
 >  **说明：**
 >
@@ -28,8 +34,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| oldValue | [Area](ts-types.md#area8) | 是   | 返回目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
-| newValue | [Area](ts-types.md#area8) | 是   | 返回目标元素变化之后的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
+| event | (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void  | 是   | 返回目标元素位置信息变化情况，oldValue为目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。newValue为目标元素变化之后的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
 
 **返回值：**
 

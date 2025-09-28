@@ -1,4 +1,10 @@
 # Introduction to Audio Kit
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 Audio Kit provides scenario-specific audio playback and recording APIs to help you quickly build HD audio collection and immersive playback capabilities.
 
@@ -20,7 +26,7 @@ Audio Kit provides scenario-specific audio playback and recording APIs to help y
 <!--Del-->
 - Spatial audio
 
-   Spatial audio APIs are provided. Applications can play audio sources in different formats (stereo, multi-channel, and AudioVivid), and users can get a sense of space and direction while wearing TWS earbuds for listening.
+   Spatial audio APIs are provided. Applications can play audio sources in different formats (stereo, multi-channel, and Audio Vivid), and users can get a sense of space and direction while wearing TWS earbuds for listening.
 <!--DelEnd-->
 - Audio-haptic
 
@@ -28,7 +34,7 @@ Audio Kit provides scenario-specific audio playback and recording APIs to help y
 
 ## Audio Architecture
 
-You can use the APIs provided by Audio Kit to access the playback, recording, and audio policy management capabilities of the audio system, thereby interacting with the corresponding audio hardware. The audio architecture defines how the system encapsulates and manages audio hardware capabilities, as illustrated in the figure below:
+You can use the APIs provided by Audio Kit to access the playback, recording, and audio strategy management capabilities of the audio system, thereby interacting with the corresponding audio hardware. The audio architecture defines how the system encapsulates and manages audio hardware capabilities, as illustrated in the figure below:
 
 ![Audio Architecture](figures/audio-architecture.png)
 
@@ -44,9 +50,9 @@ NAPI, an interface introduced by Node.js for developing C++ modules, encapsulate
 
 At the native framework layer, the audio system implements interfaces for playing, recording, volume control, device routing, and audio effect processing, and connects to the audio service through inter-process interfaces.
 
-**Native SystemAility**
+**Native SystemAbility**
 
-The audio_server process hosts the software-implemented audio system functional components, providing rich audio policy management and data processing capabilities. The components connect to the HAL layer through HDIs to utilize audio hardware capabilities.
+The audio_server process hosts the software-implemented audio system functional components, providing rich audio strategy management and data processing capabilities. The components connect to the HAL layer through HDIs to utilize audio hardware capabilities.
 
 **HAL**
 
@@ -54,11 +60,11 @@ The HAL provides services through a set of HDIs. Different audio hardware develo
 
 **Kernel**
 
-The kernel driver interacts with the audio hardware. Depending on the scale of the operating system, multiple kernels can be chosen, such as Linux, LiteOS, and OpenHarmony kernels.
+The kernel driver interacts with the audio hardware. Multiple kernels, such as Linux, LiteOS, and OpenHarmony, can be selected for different operating systems.
 
 ## Development Description
 
-For every functionality provided by the multimedia subsystem, you will learn multiple implementation modes, each of which corresponds to a specific usage scenario. You will also learn the sub-functionalities in these scenarios. For example, in the **Audio Playback** chapter, you will learn audio concurrency policies, volume management, and output device processing methods. All these will help you develop an application with more comprehensive features.
+For every functionality provided by the multimedia subsystem, you will learn multiple implementation modes, each of which corresponds to a specific usage scenario. You will also learn the sub-functionalities in these scenarios. For example, in the **Audio Playback** chapter, you will learn audio concurrency strategies, volume management, and output device processing methods. All these will help you develop an application with more comprehensive features.
 
 This development guide applies only to audio playback or recording, which are implemented by Audio Kit. The UI, image processing, media storage, or other related capabilities are not covered.
 
@@ -72,21 +78,21 @@ Before developing an audio feature, especially before implementing audio data pr
 
 An audio stream is an independent audio data processing unit that has a specific audio format and audio usage scenario information. The audio stream can be used in playback and recording scenarios, and supports independent volume adjustment and audio device routing.
 
-The basic audio stream information is defined by [AudioStreamInfo](../../reference/apis-audio-kit/js-apis-audio.md#audiostreaminfo8), which includes the sampling, audio channel, bit width, and encoding information. It describes the basic attributes of audio data and is mandatory for creating an audio playback or recording stream. To enable the audio module to correctly process audio data, the configured basic information must match the transmitted audio data.
+The basic audio stream information is defined by [AudioStreamInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiostreaminfo8), which includes the sampling, audio channel, bit width, and encoding information. It describes the basic attributes of audio data and is mandatory for creating an audio playback or recording stream. To enable the audio module to correctly process audio data, the configured basic information must match the transmitted audio data.
 
 ### Audio Stream Usage Scenario Information
 
-In addition to the basic information (which describes only audio data), an audio stream has usage scenario information. This is because audio streams differ in the volume, device routing, and concurrency policy. The system chooses an appropriate processing policy for an audio stream based on the usage scenario information, thereby delivering better user experience.
+In addition to the basic information (which describes only audio data), an audio stream has usage scenario information. This is because audio streams differ in the volume, device routing, and concurrency strategy. The system chooses an appropriate processing strategy for an audio stream based on the usage scenario information, thereby delivering better user experience.
 
 - Playback scenario
 
-  Information about the audio playback scenario is defined by [StreamUsage](../../reference/apis-audio-kit/js-apis-audio.md#streamusage).
+  Information about the audio playback scenario is defined by [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage).
 
   **StreamUsage** specifies the usage type of an audio stream, for example, used for media, voice communication, voice assistant, notification, and ringtone.
 
 - Recording scenario
 
-  Information about the audio stream recording scenario is defined by [SourceType](../../reference/apis-audio-kit/js-apis-audio.md#sourcetype8).
+  Information about the audio stream recording scenario is defined by [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8).
 
   **SourceType** specifies the recording source type of an audio stream, including the mic source, voice recognition source, and voice communication source.
 
@@ -98,13 +104,13 @@ The APIs of the audio module support PCM encoding, including AudioRenderer, Audi
 
 Be familiar with the following about the audio format:
 
-- The common audio sampling rates are supported: 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200<sup>12+</sup>, 96000, 176400<sup>12+</sup>, and 192000<sup>12+</sup>, in units of Hz. For details, see [AudioSamplingRate](../../reference/apis-audio-kit/js-apis-audio.md#audiosamplingrate8).
+- The following audio sampling rates are supported: 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200<sup>12+</sup>, 96000, 176400<sup>12+</sup>, and 192000<sup>12+</sup>, in units of Hz. For details, see [AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8).
   
   The sampling rate varies according to the device type.
 
-- Mono and stereo are supported. For details, see [AudioChannel](../../reference/apis-audio-kit/js-apis-audio.md#audiochannel8).
+- Mono and stereo are supported. For details, see [AudioChannel](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiochannel8).
 
-- The following sampling formats are supported: U8 (unsigned 8-bit integer), S16LE (signed 16-bit integer, little endian), S24LE (signed 24-bit integer, little endian), S32LE (signed 32-bit integer, little endian), and F32LE (signed 32-bit floating point number, little endian). For details, see [AudioSampleFormat](../../reference/apis-audio-kit/js-apis-audio.md#audiosampleformat8).
+- The following sampling formats are supported: U8 (unsigned 8-bit integer), S16LE (signed 16-bit integer, little endian), S24LE (signed 24-bit integer, little endian), S32LE (signed 32-bit integer, little endian), and F32LE (signed 32-bit floating-point number, little endian). For details, see [AudioSampleFormat](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosampleformat8).
   
   Due to system restrictions, only some devices support the sampling formats S24LE, S32LE, and F32LE.
 

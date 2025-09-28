@@ -1,4 +1,10 @@
 # @ohos.enterprise.restrictions （限制类策略）(系统接口)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设置通用限制类策略能力，包括禁用或启用设备打印、HDC等能力。
 
@@ -8,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md)。
 
 ## 导入模块
 
@@ -27,6 +33,10 @@ setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallback\<void
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -78,6 +88,10 @@ setPrinterDisabled(admin: Want, disabled: boolean): Promise\<void>
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -134,6 +148,10 @@ isPrinterDisabled(admin: Want, callback: AsyncCallback\<boolean>): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
@@ -184,6 +202,10 @@ isPrinterDisabled(admin: Want): Promise\<boolean>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
@@ -232,11 +254,15 @@ restrictions.isPrinterDisabled(wantTemp).then((result) => {
 
 setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback\<void>): void
 
-使设备禁用或启用[HDC](../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md#hdc使用指导)。使用callback异步回调。 
+使设备禁用或启用[HDC](../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。 
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -288,6 +314,10 @@ setHdcDisabled(admin: Want, disabled: boolean): Promise\<void>
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -344,12 +374,16 @@ isHdcDisabled(admin: Want, callback: AsyncCallback\<boolean>): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
-| callback | AsyncCallback\<boolean> | 是 | 回调函数，callbac方式返回HDC是否被禁用，true表示HDC被禁用，false表示HDC未被禁用。 |
+| callback | AsyncCallback\<boolean> | 是 | 回调函数，callback方式返回HDC是否被禁用，true表示HDC被禁用，false表示HDC未被禁用。 |
 
 **错误码**：
 
@@ -393,6 +427,10 @@ isHdcDisabled(admin: Want): Promise\<boolean>
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -448,6 +486,10 @@ isMicrophoneDisabled(admin: Want): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
@@ -502,6 +544,10 @@ disableMicrophone(admin: Want, disable: boolean): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
@@ -552,6 +598,10 @@ setFingerprintAuthDisabled(admin: Want, disabled: boolean): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
@@ -601,6 +651,10 @@ isFingerprintAuthDisabled(admin: Want): boolean
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 

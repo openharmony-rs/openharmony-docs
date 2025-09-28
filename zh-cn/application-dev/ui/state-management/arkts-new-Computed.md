@@ -1,4 +1,10 @@
 # \@Computed装饰器：计算属性
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liwenzhen3-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 当开发者使用相同的计算逻辑重复绑定在UI上时，为了防止重复计算，可以使用\@Computed计算属性。计算属性中的依赖的状态变量变化时，只会计算一次。这解决了UI多次重用该属性导致的重复计算和性能问题。如下面例子。
 
@@ -17,8 +23,9 @@ Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计�
 
 >**说明：**
 >
->\@Computed装饰器从API version 12开始支持。
+> \@Computed装饰器从API version 12开始支持。
 >
+> 从API version 12开始，该装饰器支持在原子化服务中使用。
 
 ## 概述
 
@@ -71,7 +78,7 @@ struct Page {
 
   @Computed
   get fullName() {
-    console.info(`fullName`);
+    console.info('fullName');
     // 不推荐在@Computed的计算中做赋值逻辑，因为@Computed本质是一个getter访问器，用来节约重复计算
     // 在这个例子中，fullNameRequestCount仅代表@Computed计算次数，不能代表fullName被访问的次数
     this.fullNameRequestCount++;
@@ -105,14 +112,14 @@ struct Page {
 
   @Computed
   get fullName1() {
-    console.info(`fullName1`);
+    console.info('fullName1');
     this.lastName += 'a'; // 错误，不能改变参与计算的属性
     return this.firstName + ' ' + this.lastName;
   }
 
   @Computed
   get fullName2() {
-    console.info(`fullName2`);
+    console.info('fullName2');
     this.firstName += 'a'; // 错误，不能改变参与计算的属性
     return this.firstName + ' ' + this.lastName;
   }
@@ -204,7 +211,7 @@ struct Index {
 
   @Computed
   get fullName() {
-    console.info("---------Computed----------");
+    console.info('---------Computed----------');
     return this.firstName + ' ' + this.lastName + this.age;
   }
 
@@ -287,9 +294,9 @@ struct MyView {
     return (this.fahrenheit - 32) * 5 / 9 + 273.15; // F -> K
   }
 
-  @Monitor("kelvin")
+  @Monitor('kelvin')
   onKelvinMonitor(mon: IMonitor) {
-    console.log("kelvin changed from " + mon.value()?.before + " to " + mon.value()?.now);
+    console.log('kelvin changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -300,7 +307,7 @@ struct MyView {
             this.celsius--;
           })
 
-        Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(50)
+        Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(40)
 
         Button('+')
           .onClick(() => {
@@ -308,8 +315,8 @@ struct MyView {
           })
       }
 
-      Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(50)
-      Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(50)
+      Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(40)
+      Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(40)
     }
     .width('100%')
   }
@@ -350,19 +357,22 @@ struct Index {
 
   build() {
     Column() {
-      Text(`Shopping List: `).fontSize(30)
+      Text(`Shopping List: `)
+        .fontSize(30)
       ForEach(this.shoppingBasket, (item: Article) => {
         Row() {
           Text(`unitPrice: ${item.unitPrice}`)
-          Button('-').onClick(() => {
-            if (item.quantity > 0) {
-              item.quantity--;
-            }
-          })
+          Button('-')
+            .onClick(() => {
+              if (item.quantity > 0) {
+                item.quantity--;
+              }
+            })
           Text(`quantity: ${item.quantity}`)
-          Button('+').onClick(() => {
-            item.quantity++;
-          })
+          Button('+')
+            .onClick(() => {
+              item.quantity++;
+            })
         }
 
         Divider()
@@ -379,8 +389,10 @@ struct Child {
 
   build() {
     Row() {
-      Text(`Total: ${this.total} `).fontSize(30)
-      Text(`Discount: ${this.qualifiesForDiscount} `).fontSize(30)
+      Text(`Total: ${this.total} `)
+        .fontSize(30)
+      Text(`Discount: ${this.qualifiesForDiscount} `)
+        .fontSize(30)
     }
   }
 }

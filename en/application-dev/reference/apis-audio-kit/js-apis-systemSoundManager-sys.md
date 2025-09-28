@@ -1,4 +1,10 @@
 # @ohos.multimedia.systemSoundManager (System Sound Management) (System API)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 The systemSoundManager module provides basic capabilities for managing system sounds, including setting and obtaining ringtones and obtaining a player to play the ringtones.
 
@@ -19,12 +25,13 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
-| Name                                     | Value  | Description     |
-|------------------------------------------|-----|---------|
-| TONE_CATEGORY_RINGTONE<sup>12+</sup>     | 1   | Ringtone.  |
-| TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | 2   | SMS tone.|
-| TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | 4   | Notification tone.|
-| TONE_CATEGORY_ALARM<sup>12+</sup>        | 8   | Alarm tone.|
+| Name                                     | Type| Value  | Description     |
+|------------------------------------------|---|-----|---------|
+| TONE_CATEGORY_RINGTONE<sup>12+</sup>     | number | 1   | Ringtone.  |
+| TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | number | 2   | SMS tone.|
+| TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | number | 4   | Notification tone.|
+| TONE_CATEGORY_ALARM<sup>12+</sup>        | number | 8   | Alarm tone.|
+| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | Contacts tone.|
 
 ## RingtoneType
 
@@ -55,6 +62,37 @@ Enumerates the system tone types.
 | SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | SMS tone of SIM card 2.|
 | SYSTEM_TONE_TYPE_NOTIFICATION   | 32  | Notification tone.    |
 
+## MediaType<sup>20+</sup>
+
+Enumerates the media types.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+| Name                           | Value  | Description        |
+| ------------------------------- |-----|------------|
+| AUDIO      | 0   | Audio.|
+| VIDEO       | 1   | Video.|
+
+## SystemSoundError<sup>20+</sup>
+
+Enumerates the types of errors available for system sounds.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+| Name                        | Value  | Description        |
+| -----------------------------|-----|------------|
+| ERROR_IO                     | 5400103  | I/O error.    |
+| ERROR_OK                     | 20700000 | No error.    |
+| ERROR_TYPE_MISMATCH          | 20700001 | Type mismatch.    |
+| ERROR_UNSUPPORTED_OPERATION  | 20700003 | Unsupported operation.    |
+| ERROR_DATA_TOO_LARGE         | 20700004 | Data size exceeds the upper limit.    |
+| ERROR_TOO_MANY_FILES         | 20700005 | File count exceeds the upper limit.    |
+| ERROR_INSUFFICIENT_ROM       | 20700006 | Insufficient ROM space.    |
+| ERROR_INVALID_PARAM          | 20700007 | Invalid parameter.    |
 
 ## ToneCustomizedType<sup>12+</sup>
 
@@ -71,7 +109,7 @@ Enumerates the tone customization types.
 
 ## ToneAttrs<sup>12+</sup>
 
-Manages tone attributes. Before calling any API in **ToneAttrs<sup>12+</sup>**, you must use [createCustomizedToneAttrs](#systemsoundmanagercreatecustomizedtoneattrs12), [getDefaultRingtoneAttrs](#getdefaultringtoneattrs12), or [getRingtoneAttrList](#getringtoneattrlist12) to obtain a tone instance.
+Manages tone attributes. Before calling any API in ToneAttrs<sup>12+</sup>, you must use [createCustomizedToneAttrs](#systemsoundmanagercreatecustomizedtoneattrs12), [getDefaultRingtoneAttrs](#getdefaultringtoneattrs12), or [getRingtoneAttrList](#getringtoneattrlist12) to obtain a tone instance.
 
 ### getTitle<sup>12+</sup>
 
@@ -90,6 +128,8 @@ Obtains the title of this tone.
 | string | Title.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message             |
 |---------| -------------------- |
@@ -230,7 +270,7 @@ toneAttrs.getUri();
 
 ### getCustomizedType<sup>12+</sup>
 
-getCustomizedType(): string
+getCustomizedType(): ToneCustomizedType
 
 Obtains the tone customization type.
 
@@ -293,7 +333,7 @@ toneAttrs.setCategory(categoryValue);
 
 ### getCategory<sup>12+</sup>
 
-getCategory(): string
+getCategory(): number
 
 Obtains the category of this tone.
 
@@ -322,11 +362,75 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 toneAttrs.getCategory();
 ```
 
+### setMediaType<sup>20+</sup>
+
+setMediaType(type: MediaType): void
+
+Sets a media type for this tone.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Parameters**
+
+| Name     | Type     | Mandatory| Description      |
+|----------| ---------| ---- |----------|
+| type | [MediaType](#mediatype20)   | Yes  | Media type. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message             |
+|-------| -------------------- |
+| 202   | Caller is not a system application. |
+
+**Example**
+
+```ts
+let type: systemSoundManager.MediaType = systemSoundManager.MediaType.VIDEO; // Use the required type.
+let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
+toneAttrs.setMediaType(type);
+```
+
+### getMediaType<sup>20+</sup>
+
+getMediaType(): MediaType
+
+Obtains the media type of this tone.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Return value**
+
+| Type   | Description    |
+|--------|--------|
+| [MediaType](#mediatype20) | Media type. If the application has not called **setMediaType** to set the media type, the default value **AUDIO** is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message             |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**Example**
+
+```ts
+toneAttrs.getMediaType();
+```
+
 ## ToneAttrsArray<sup>12+</sup>
 
 type ToneAttrsArray = Array&lt;[ToneAttrs](#toneattrs12)&gt;
 
 Defines an array of tone attributes.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -420,7 +524,7 @@ Describes the haptics settings of a tone.
 
 ## ToneHapticsAttrs<sup>14+</sup>
 
-Manages haptics attributes of tones. Before calling any API in **ToneHapticsAttrs<sup>14+</sup>**, you must call [getToneHapticsList](#gettonehapticslist14) or [getHapticsAttrsSyncedWithTone](#gethapticsattrssyncedwithtone14) to obtain an instance.
+Manages haptics attributes of tones. Before calling any API in ToneHapticsAttrs<sup>14+</sup>, you must use [getToneHapticsList](#gettonehapticslist14) or [getHapticsAttrsSyncedWithTone](#gethapticsattrssyncedwithtone14) to obtain an instance.
 
 ### getUri<sup>14+</sup>
 
@@ -547,7 +651,7 @@ let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSo
 
 ## SystemSoundManager
 
-Provides APIs to manage system sounds. Before calling any API in **SystemSoundManager**, you must use [getSystemSoundManager](#systemsoundmanagergetsystemsoundmanager) to create a **SystemSoundManager** instance.
+Provides APIs to manage system sounds. Before calling any API in SystemSoundManager, you must use [getSystemSoundManager](#systemsoundmanagergetsystemsoundmanager) to obtain a SystemSoundManager instance.
 
 ### setSystemRingtoneUri<sup>(deprecated)</sup>
 
@@ -568,7 +672,7 @@ Sets a URI for a ringtone. This API uses an asynchronous callback to return the 
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | Yes  | Application context.          |
-| uri      | string                                   | Yes  | URI of the ringtone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9).|
+| uri      | string                                   | Yes  | URI of the ringtone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 | type     | [RingtoneType](#ringtonetype)            | Yes  | Type of the ringtone.    |
 | callback | AsyncCallback&lt;void&gt;                | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -612,7 +716,7 @@ Sets a URI for a ringtone. This API uses a promise to return the result.
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | Yes  | Application context.        |
-| uri      | string                                   | Yes  | URI of the ringtone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9).|
+| uri      | string                                   | Yes  | URI of the ringtone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 | type     | [RingtoneType](#ringtonetype)            | Yes  | Type of the ringtone.  |
 
 **Return value**
@@ -634,9 +738,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the system ringtone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the system ringtone uri ${err}`);
+  console.info('Succeeded in doing setSystemRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -721,9 +825,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone uri is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone uri ${err}`);
+  console.info('Succeeded in doing getSystemRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -811,10 +915,10 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefi
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone player is obtained.`);
+  console.info('Succeeded in doing getSystemRingtonePlayer.');
   systemRingtonePlayer = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone player ${err}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -833,7 +937,7 @@ Sets a URI for a ringtone. This API uses a promise to return the result.
 | Name  | Type                           | Mandatory| Description                    |
 | -------- |-------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)            | Yes  | Application context.        |
-| uri      | string                        | Yes  | URI of the ringtone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9).|
+| uri      | string                        | Yes  | URI of the ringtone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 | type     | [RingtoneType](#ringtonetype) | Yes  | Type of the ringtone.  |
 
 **Return value**
@@ -865,9 +969,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setRingtoneUri(context, uri, type).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the system ringtone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the system ringtone uri ${err}`);
+  console.info('Succeeded in doing setRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -916,9 +1020,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getRingtoneUri(context, type).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone uri is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone uri ${err}`);
+  console.info('Succeeded in doing getRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -967,10 +1071,10 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefi
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone player is obtained.`);
+  console.info('Succeeded in doing getRingtonePlayer.');
   systemRingtonePlayer = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone player ${err}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -989,7 +1093,7 @@ Sets a URI for a system tone. This API uses a promise to return the result.
 | Name  | Type                                 | Mandatory| Description                    |
 | -------- |-------------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.        |
-| uri      | string                              | Yes  | URI of the system tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9).|
+| uri      | string                              | Yes  | URI of the system tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 | type     | [SystemToneType](#systemtonetype11) | Yes  | Type of the system tone.  |
 
 **Return value**
@@ -1021,9 +1125,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setSystemToneUri(context, uri, type).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the system tone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the system tone uri ${err}`);
+  console.info('Succeeded in doing setSystemToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setSystemToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1072,9 +1176,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemToneUri(context, type).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the system tone uri is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system tone uri ${err}`);
+  console.info('Succeeded in doing getSystemToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1123,10 +1227,10 @@ let systemTonePlayer: systemSoundManager.SystemTonePlayer | undefined = undefine
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: systemSoundManager.SystemTonePlayer) => {
-  console.info(`Promise returned to indicate that the value of the system tone player is obtained.`);
+  console.info('Succeeded in doing getSystemTonePlayer.');
     systemTonePlayer = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system tone player ${err}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemTonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1175,9 +1279,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getDefaultRingtoneAttrs(context, type).then((value: systemSoundManager.ToneAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attributes of the default ringtone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the default ring tone attrs ${err}`);
+  console.info('Succeeded in doing getDefaultRingtoneAttrs.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getDefaultRingtoneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1226,9 +1330,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getRingtoneAttrList(context, type).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of ringtone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of ringtone ${err}`);
+  console.info('Succeeded in doing getRingtoneAttrList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRingtoneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1277,9 +1381,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getDefaultSystemToneAttrs(context, type).then((value: systemSoundManager.ToneAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attributes of the system ringtone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system tone attrs ${err}`);
+  console.info('Succeeded in doing getDefaultSystemToneAttrs.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getDefaultSystemToneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1328,9 +1432,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemToneAttrList(context, type).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of system tone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of system tone ${err}`);
+  console.info('Succeeded in doing getSystemToneAttrList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemToneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1377,9 +1481,9 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: systemSoundManager.ToneAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attributes of the default alarm tone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the default alarm tone attrs ${err}`);
+  console.info('Succeeded in doing getDefaultAlarmToneAttrs.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getDefaultAlarmToneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1398,7 +1502,7 @@ Sets a URI for an alarm tone. This API uses a promise to return the result.
 | Name  | Type       | Mandatory| Description  |
 | -------- | --------- | ---- |--------------------------|
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.                                                                          |
-| uri      | string    | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9).|
+| uri      | string    | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
 
@@ -1418,9 +1522,9 @@ let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the alarm tone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the alarm tone uri ${err}`);
+  console.info('Succeeded in doing setAlarmToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setAlarmToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1457,9 +1561,9 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getAlarmToneUri(context).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of alarm tone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the alarm tone uri ${err}`);
+  console.info('Succeeded in doing getAlarmToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getAlarmToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1506,9 +1610,9 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of alarm tone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of alarm tone ${err}`);
+  console.info('Succeeded in doing getAlarmToneAttrList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getAlarmToneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1527,7 +1631,7 @@ Enables an alarm tone. This API uses a promise to return the result.
 | Name  | Type      | Mandatory| Description                                                                                 |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.                                                                          |
-| uri      | string   | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9).|
+| uri      | string   | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
 
@@ -1537,7 +1641,7 @@ Enables an alarm tone. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID| Error Message             |
 | ------- | --------------------- |
@@ -1558,9 +1662,9 @@ let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
-  console.info(`Promise returned to indicate the value of fd.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to open alarm tone ${err}`);
+  console.info('Succeeded in doing openAlarmTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to openAlarmTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1608,9 +1712,9 @@ let fd = 50; // Use the FD of the target alarm tone.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.close(fd).then(() => {
-  console.info(`Promise returned to indicate that the fd has been close.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to close fd ${err}`);
+  console.info('Succeeded in doing close.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to close. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1620,6 +1724,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 Adds a custom tone with a given URI to the tone library. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.WRITE_RINGTONE
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
@@ -1628,7 +1734,7 @@ Adds a custom tone with a given URI to the tone library. This API uses a promise
 
 | Name| Type       | Mandatory| Description           |
 |-----|-----------| ---- |---------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.    |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.    |
 | toneAttr  | ToneAttrs | Yes  | Attributes of the tone.        |
 | externalUri  | string    | Yes  | URI of the tone in the external storage device.|
 
@@ -1640,7 +1746,7 @@ Adds a custom tone with a given URI to the tone library. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID  | Error Message             |
 |---------| -------------------- |
@@ -1649,6 +1755,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | The parameters check failed. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
+| 20700004 | Data size exceeds the limit. |
+| 20700005 | The number of files exceeds the limit. |
+| 20700006 | Insufficient ROM space. |
 
 **Example**
 
@@ -1671,9 +1780,9 @@ let path = 'file://data/test.ogg'; // Set the URI of the target tone.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of tone uri in ringtone library.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to add customized tone ${err}`);
+  console.info('Succeeded in doing addCustomizedTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to addCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1683,6 +1792,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 Adds a custom tone with a given FD to the tone library. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.WRITE_RINGTONE
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
@@ -1691,7 +1802,7 @@ Adds a custom tone with a given FD to the tone library. This API uses a promise 
 
 | Name| Type       | Mandatory| Description                                                                    |
 |-----|-----------|----|------------------------------------------------------------------------|
-| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes | Application context.                                                             |
+| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes | Application context.                                                             |
 | toneAttr | [ToneAttrs](#toneattrs12) | Yes | Attributes of the tone.                                                                 |
 | fd  | number    | Yes | File descriptor, which is obtained by calling [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).|
 | offset | number    | No | Offset from which the data is read, in bytes. The default value is **0**.                                             |
@@ -1705,7 +1816,7 @@ Adds a custom tone with a given FD to the tone library. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID  | Error Message             |
 |---------| -------------------- |
@@ -1714,6 +1825,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | The parameters check failed. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
+| 20700004 | Data size exceeds the limit. |
+| 20700005 | The number of files exceeds the limit. |
+| 20700006 | Insufficient ROM space. |
 
 **Example**
 
@@ -1738,9 +1852,9 @@ let length = 50; // Set the data length.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, length).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of tone uri in ringtone library.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to add customized tone ${err}`);
+  console.info('Succeeded in doing addCustomizedTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to addCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1750,6 +1864,8 @@ removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 Removes a custom tone from the tone library. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.WRITE_RINGTONE
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
@@ -1758,7 +1874,7 @@ Removes a custom tone from the tone library. This API uses a promise to return t
 
 | Name| Type       | Mandatory| Description                                                                                                     |
 |-----|-----------| ---- |---------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.                                                                                              |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.                                                                                              |
 | uri  | string    | Yes  | Tone URI, which is obtained by using [addCustomizedTone](#addcustomizedtone12) or [getAlarmToneAttrList](#getalarmtoneattrlist12).|
 
 **Return value**
@@ -1791,9 +1907,9 @@ let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
-  console.info(`Promise returned to indicate that the customized tone has been deleted.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to delete customized tone ${err}`);
+  console.info('Succeeded in doing removeCustomizedTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to removeCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1811,7 +1927,7 @@ Obtains the haptics settings of the tone. This API uses a promise to return the 
 
 | Name| Type       | Mandatory| Description                                                                         |
 |-----|-----------| ---- |----------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.  |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.  |
 | type  | [ToneHapticsType](#tonehapticstype14)    | Yes  | Haptics type of the tone.|
 
 **Return value**
@@ -1822,7 +1938,7 @@ Obtains the haptics settings of the tone. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID  | Error Message             |
 |---------| -------------------- |
@@ -1843,9 +1959,9 @@ let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsTyp
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: systemSoundManager.ToneHapticsSettings) => {
-  console.info(`Promise returned to indicate that the value of the tone haptics settings is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the tone haptics settings ${err}`);
+  console.info('Succeeded in doing getToneHapticsSettings.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getToneHapticsSettings. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1863,7 +1979,7 @@ Sets the haptics settings for the tone. This API uses a promise to return the re
 
 | Name| Type       | Mandatory| Description                                                                         |
 |-----|-----------| ---- |----------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.  |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.  |
 | type  | [ToneHapticsType](#tonehapticstype14)    | Yes  | Haptics type of the tone.|
 | settings  | [ToneHapticsSettings](#tonehapticssettings14)    | Yes  | Haptics settings of the tone.|
 
@@ -1875,7 +1991,7 @@ Sets the haptics settings for the tone. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID  | Error Message             |
 |---------| -------------------- |
@@ -1901,9 +2017,9 @@ let toneHapticsSettings: systemSoundManager.ToneHapticsSettings = {
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setToneHapticsSettings(context, type, toneHapticsSettings).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the tone haptics.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the tone haptics settings ${err}`);
+  console.info('Succeeded in doing setToneHapticsSettings.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setToneHapticsSettings. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1921,8 +2037,8 @@ Obtains the haptics attributes of the tone in sync or non-sync mode. This API us
 
 | Name| Type       | Mandatory| Description                                                                         |
 |-----|-----------| ---- |----------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.  |
-| isSynced  | boolean    | Yes  | Whether the haptics feedback is synchronized with the tone. The value **true** means that the haptics feedback is synchronized with the tone, and **false** means the opposite.|
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.  |
+| isSynced  | boolean    | Yes  | Whether the haptics feedback is synchronized with the tone. **true** if synchronized, **false** otherwise.|
 
 **Return value**
 
@@ -1932,7 +2048,7 @@ Obtains the haptics attributes of the tone in sync or non-sync mode. This API us
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID  | Error Message             |
 |---------| -------------------- |
@@ -1952,9 +2068,9 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getToneHapticsList(context, false).then((value: systemSoundManager.ToneHapticsAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of tone haptics is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of tone haptics ${err}`);
+  console.info('Succeeded in doing getToneHapticsList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getToneHapticsList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1972,7 +2088,7 @@ Obtains the attributes of the haptics feedback synchronized with the tone. This 
 
 | Name| Type       | Mandatory| Description                                                                         |
 |-----|-----------| ---- |----------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.  |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.  |
 | toneUri  | string    | Yes  | URI of the tone. The URI can be obtained by calling [getRingtoneAttrList](#getringtoneattrlist12) or [getSystemToneAttrList](#getsystemtoneattrlist12).|
 
 **Return value**
@@ -1983,7 +2099,7 @@ Obtains the attributes of the haptics feedback synchronized with the tone. This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID  | Error Message             |
 |---------| -------------------- |
@@ -2005,9 +2121,9 @@ let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // Use 
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then((value: systemSoundManager.ToneHapticsAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attribute of tone haptics is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute of tone haptics ${err}`);
+  console.info('Succeeded in doing getHapticsAttrsSyncedWithTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getHapticsAttrsSyncedWithTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2026,7 +2142,7 @@ Enables haptics for the tone. This API uses a promise to return the result.
 | Name  | Type      | Mandatory| Description                                                                                 |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.          |
-| hapticsUri      | string   | Yes  | URI of the haptics resource. For details about supported resources, see [media.AVPlayer](../apis-media-kit/js-apis-media.md#avplayer9).|
+| hapticsUri      | string   | Yes  | URI of the haptics resource. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
 
@@ -2036,7 +2152,7 @@ Enables haptics for the tone. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID| Error Message             |
 | ------- | --------------------- |
@@ -2058,9 +2174,154 @@ let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json';
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: number) => {
-  console.info(`Promise returned to indicate the value of fd.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to open haptics ${err}`);
+  console.info('Succeeded in doing openToneHaptics.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to openToneHaptics. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getCurrentRingtoneAttribute<sup>20+</sup>
+
+getCurrentRingtoneAttribute(type: RingtoneType): Promise&lt;ToneAttrs&gt;
+
+Obtains the attributes of the ringtone in use. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Parameters**
+
+| Name  | Type                                 | Mandatory| Description                        |
+| -------- |-------------------------------------| ---- | --------------------------- |
+| type     |[RingtoneType](#ringtonetype)        | Yes  | Type of the ringtone. |
+
+**Return value**
+
+| Type                   | Description            |
+|-----------------------|----------------|
+| Promise&lt;[ToneAttrs](#toneattrs12)&gt; | Promise used to return the attributes of the default ringtone.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+
+| ID| Error Message             |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 5400103 | I/O error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: systemSoundManager.ToneAttrs) => {
+  console.info('Succeeded in doing getCurrentRingtoneAttribute.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getCurrentRingtoneAttribute. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### openToneList<sup>20+</sup>
+
+openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSoundError]>>
+
+Obtains an array of attributes of ringtones. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Parameters**
+
+| Name  | Type      | Mandatory| Description                   |
+| -------- | ---------| ---- |-----------------------|
+| uriList  | Array\<string>| Yes  | URI list of the ringtones. The number of URIs cannot exceed 1024.          |
+
+**Return value**
+
+| Type                   | Description            |
+|-----------------------|----------------|
+| Promise\<Array\<[string, number, [SystemSoundError](#systemsounderror20)]>> | Promise used to return the result. The first parameter in the array is **uri**, the second parameter is **fd**, and the third parameter is the result of opening that URI.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ring Error Codes](./errorcode-ringtone.md).
+
+| ID| Error Message             |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 20700007 | Parameter is invalid, e.g. the length of uriList is too long. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ringPath: string = '';
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
+ringPath = result.getUri();
+
+systemSoundManagerInstance.openToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
+  console.info('Succeeded in doing openToneList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to openToneList. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### removeCustomizedToneList<sup>20+</sup>
+
+removeCustomizedToneList(uriList: Array\<string>): Promise\<Array\<[string, SystemSoundError]>>
+
+Removes a list of custom tones in batch. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_RINGTONE
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Parameters**
+
+| Name  | Type      | Mandatory| Description                              |
+| -------- | ---------| ---- |----------------------------------|
+| uriList  | Array\<string>| Yes  | URI list of the ringtones. The number of URIs cannot exceed 1024.          |
+
+**Return value**
+
+| Type                   | Description            |
+|-----------------------|----------------|
+| Promise\<Array\<[string, [SystemSoundError](#systemsounderror20)]>> | Promise used to return the result. The first parameter in the array is **uri**, and the second parameter is the result of removing that URI.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ring Error Codes](./errorcode-ringtone.md).
+
+| ID| Error Message             |
+| ------- | --------------------- |
+| 201     | Permission denied. |
+| 202 | Caller is not a system application. |
+| 20700007 | Parameter is invalid, e.g. the length of uriList is too long. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ringPath: string = '';
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
+ringPath = result.getUri();
+
+systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
+  console.info('Succeeded in doing removeCustomizedToneList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to removeCustomizedToneList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

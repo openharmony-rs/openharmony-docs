@@ -1,4 +1,10 @@
 # @ohos.file.fileAccess (公共文件访问与管理)(系统接口)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @zhuangzhuang-->
+<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 fileAccess模块是基于[extension](../../application-models/extensionability-overview.md)机制实现的一个对公共文件访问和操作的框架。该模块一方面对接各类文件管理服务，如存储管理服务等；另一方面为系统应用提供一套统一的文件访问管理接口。存储管理服务可以管理内置存储部分目录，以及共享盘、U盘、SD卡等设备上的资源。
 
@@ -11,7 +17,7 @@ fileAccess模块是基于[extension](../../application-models/extensionability-o
 ## 导入模块
 
 ```ts
-import fileAccess from '@ohos.file.fileAccess';
+import { fileAccess } from '@kit.CoreFileKit';
 ```
 
 ## 常量
@@ -19,6 +25,8 @@ import fileAccess from '@ohos.file.fileAccess';
 表示用于监听设备上线和下线通知的URI，用作注册监听的URI。
 
 **模型约束**：仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService。
 
@@ -35,6 +43,8 @@ getFileAccessAbilityInfo() : Promise&lt;Array&lt;Want&gt;&gt;
 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -59,7 +69,7 @@ getFileAccessAbilityInfo() : Promise&lt;Array&lt;Want&gt;&gt;
     let wantInfos: Array<Want> = [];
     try {
       wantInfos = await fileAccess.getFileAccessAbilityInfo();
-      console.log("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
+      console.info("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
     } catch (err) {
       let error: BusinessError = err as BusinessError;
       console.error("getFileAccessAbilityInfo failed, errCode:" + error.code + ", errMessage:" + error.message);
@@ -74,6 +84,8 @@ getFileAccessAbilityInfo(callback: AsyncCallback&lt;Array&lt;Want&gt;&gt;): void
 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -101,7 +113,7 @@ getFileAccessAbilityInfo(callback: AsyncCallback&lt;Array&lt;Want&gt;&gt;): void
           console.error("Failed to getFileAccessAbilityInfo in async, errCode:" + err.code + ", errMessage:" + err.message);
           return;
         }
-        console.log("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
+        console.info("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
       });
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -117,6 +129,8 @@ createFileAccessHelper(context: Context, wants: Array&lt;Want&gt;) : FileAccessH
 以同步方法创建连接指定wants的helper对象。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -177,6 +191,8 @@ createFileAccessHelper(context: Context) : FileAccessHelper
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER 和 ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
@@ -225,6 +241,8 @@ createFileAccessHelper(context: Context) : FileAccessHelper
 表示文件(夹)属性信息和接口能力。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -289,7 +307,7 @@ listFile(filter?: Filter) : FileIterator
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           subfileInfos.push(result.value);
@@ -309,6 +327,8 @@ scanFile(filter?: Filter) : FileIterator;
 以同步方法从某个目录，基于过滤器，递归获取符合条件的文件信息的迭代器对象FileIterator，然后通过[next](#next)方法返回[FileInfo](#fileinfo)。目前仅支持内置存储设备。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -349,7 +369,7 @@ scanFile(filter?: Filter) : FileIterator;
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           subfileInfos.push(result.value);
@@ -368,6 +388,8 @@ scanFile(filter?: Filter) : FileIterator;
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -379,6 +401,8 @@ next() : { value: FileInfo, done: boolean }
 可以通过next同步方法获取下一级文件(夹)信息。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -399,6 +423,8 @@ next() : { value: FileInfo, done: boolean }
 表示设备的根属性信息和接口能力。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -421,6 +447,8 @@ listFile(filter?: Filter) : FileIterator
 以同步方法从某设备根节点开始，基于过滤器，获取第一级符合条件的文件(夹)信息的迭代器对象FileIterator，然后通过[next](#next)方法返回[FileInfo](#fileinfo)。目前仅支持内置存储设备过滤，外置存储设备不支持过滤。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -461,7 +489,7 @@ listFile(filter?: Filter) : FileIterator
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           fileInfos.push(result.value);
@@ -481,6 +509,8 @@ scanFile(filter?: Filter) : FileIterator
 以同步方法从某设备根节点开始，基于过滤器，递归获取符合条件的文件信息的迭代器对象FileIterator，然后通过[next](#next)方法返回[FileInfo](#fileinfo)。目前仅支持内置存储设备。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -521,7 +551,7 @@ scanFile(filter?: Filter) : FileIterator
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           fileInfos.push(result.value);
@@ -540,6 +570,8 @@ scanFile(filter?: Filter) : FileIterator
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -551,6 +583,8 @@ next() : { value: RootInfo, done: boolean }
 通过next同步方法获取下一级设备根目录。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -570,6 +604,8 @@ next() : { value: RootInfo, done: boolean }
 
 FileAccessHelper对象。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -580,6 +616,8 @@ getRoots() : Promise&lt;RootIterator&gt;
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。
 该方法返回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -612,7 +650,7 @@ async function getRoots() {
       }
       while (!isDone) {
         let result = rootIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           rootinfos.push(result.value);
@@ -632,6 +670,8 @@ getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。
 callback带回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -664,7 +704,7 @@ callback带回迭代器对象RootIterator，然后通过[next](#next-1)方法返
           }
           while (!isDone) {
             let result = rootIterator.next();
-            console.log("next result = " + JSON.stringify(result));
+            console.info("next result = " + JSON.stringify(result));
             isDone = result.done;
             if (!isDone) {
               rootinfos.push(result.value);
@@ -684,6 +724,8 @@ callback带回迭代器对象RootIterator，然后通过[next](#next-1)方法返
 createFile(uri: string, displayName: string) : Promise&lt;string&gt;
 
 以异步方法创建文件到指定目录，返回新文件uri。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -726,7 +768,7 @@ createFile(uri: string, displayName: string) : Promise&lt;string&gt;
           console.error("createFile return undefined object");
           return;
         }
-        console.log("createFile sucess, fileUri: " + JSON.stringify(fileUri));       
+        console.info("createFile success, fileUri: " + JSON.stringify(fileUri));       
       }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -740,6 +782,8 @@ createFile(uri: string, displayName: string) : Promise&lt;string&gt;
 createFile(uri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) : void
 
 以异步方法创建文件到指定目录，返回新文件uri。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -774,7 +818,7 @@ createFile(uri: string, displayName: string, callback: AsyncCallback&lt;string&g
         if (err) {
           console.error("Failed to createFile in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("createFile sucess, fileUri: " + JSON.stringify(fileUri));
+        console.info("createFile success, fileUri: " + JSON.stringify(fileUri));
       });
     }
   } catch (err) {
@@ -788,6 +832,8 @@ createFile(uri: string, displayName: string, callback: AsyncCallback&lt;string&g
 mkDir(parentUri: string, displayName: string) : Promise&lt;string&gt;
 
 以异步方法创建文件夹到指定目录，返回文件夹uri。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -829,7 +875,7 @@ mkDir(parentUri: string, displayName: string) : Promise&lt;string&gt;
         if (!dirUri) {
           console.error("mkDir return undefined object");
         } else {
-          console.log("mkDir success, dirUri: " + JSON.stringify(dirUri));
+          console.info("mkDir success, dirUri: " + JSON.stringify(dirUri));
         }
       }
     } catch (err) {
@@ -844,6 +890,8 @@ mkDir(parentUri: string, displayName: string) : Promise&lt;string&gt;
 mkDir(parentUri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) : void
 
 以异步方法创建文件夹到指定目录，返回文件夹uri。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -878,7 +926,7 @@ mkDir(parentUri: string, displayName: string, callback: AsyncCallback&lt;string&
         if (err) {
           console.error("Failed to mkDir in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("mkDir sucess, dirUri: " + JSON.stringify(dirUri));
+        console.info("mkDir success, dirUri: " + JSON.stringify(dirUri));
       });
     }
   } catch (err) {
@@ -893,6 +941,8 @@ openFile(uri: string, flags: OPENFLAGS) : Promise&lt;number&gt;
 
 以异步方法打开文件，返回文件描述符。使用Promise异步回调。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -902,7 +952,7 @@ openFile(uri: string, flags: OPENFLAGS) : Promise&lt;number&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | -- |
 | uri | string | 是 | 待打开文件的uri。 |
-| flags | [OPENFLAGS](#openflags) | 是 | 文件打开的标志。 |
+| flags | [OPENFLAGS](#openflags) | 是 | 文件打开的标志。默认值为0o0，即读模式。 |
 
 **返回值：**
 
@@ -942,6 +992,8 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback&lt;number&gt;) :
 
 以异步方法打开文件，返回文件描述符。使用callback异步回调。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -951,7 +1003,7 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback&lt;number&gt;) :
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | -- |
 | uri | string | 是 | 待打开文件的uri。 |
-| flags | [OPENFLAGS](#openflags) | 是 | 文件打开的标志。 |
+| flags | [OPENFLAGS](#openflags) | 是 | 文件打开的标志。默认值为0o0，即读模式。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 文件描述符。 |
 
 **错误码：**
@@ -974,7 +1026,7 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback&lt;number&gt;) :
         if (err) {
           console.error("Failed to openFile in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("openFile sucess, fd: " + fd);
+        console.info("openFile success, fd: " + fd);
       });
     }
   } catch (err) {
@@ -988,6 +1040,8 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback&lt;number&gt;) :
 delete(uri: string) : Promise&lt;number&gt;
 
 以异步方法删除文件(夹)，返回错误码。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1039,6 +1093,8 @@ delete(uri: string, callback: AsyncCallback&lt;number&gt;) : void
 
 以异步方法删除文件(夹)，返回错误码。使用callback异步回调。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -1070,7 +1126,7 @@ delete(uri: string, callback: AsyncCallback&lt;number&gt;) : void
         if (err) {
           console.error("Failed to delete in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("delete sucess, code: " + code);
+        console.info("delete success, code: " + code);
       });
     }
   } catch (err) {
@@ -1084,6 +1140,8 @@ delete(uri: string, callback: AsyncCallback&lt;number&gt;) : void
 move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
 
 以异步方法移动文件(夹)，返回移动后文件(夹)的uri。使用Promise异步回调。目前仅支持设备内移动，跨设备不支持移动。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1121,7 +1179,7 @@ move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
     try {
       if (fileAccessHelper != undefined) {
         let fileUri = await fileAccessHelper.move(sourceFile, destFile);
-        console.log("move sucess, fileUri: " + JSON.stringify(fileUri));
+        console.info("move success, fileUri: " + JSON.stringify(fileUri));
       }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -1135,6 +1193,8 @@ move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
 move(sourceFile: string, destFile: string, callback: AsyncCallback&lt;string&gt;) : void
 
 以异步方法移动文件(夹)，返回移动后文件(夹)的uri。使用callback异步回调。目前仅支持设备内移动，跨设备不支持移动。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1169,7 +1229,7 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback&lt;string&gt;
         if (err) {
           console.error("Failed to move in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("move sucess, fileUri: " + JSON.stringify(fileUri));
+        console.info("move success, fileUri: " + JSON.stringify(fileUri));
       });
     }
   } catch (err) {
@@ -1183,6 +1243,8 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback&lt;string&gt;
 rename(uri: string, displayName: string) : Promise&lt;string&gt;
 
 以异步方法重命名文件(夹)，返回重命名后的文件(夹)的Uri。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1219,7 +1281,7 @@ rename(uri: string, displayName: string) : Promise&lt;string&gt;
     try {
       if (fileAccessHelper != undefined) {
         let DestDir = await fileAccessHelper.rename(sourceDir, "testDir");
-        console.log("rename sucess, DestDir: " + JSON.stringify(DestDir));
+        console.info("rename success, DestDir: " + JSON.stringify(DestDir));
       }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -1233,6 +1295,8 @@ rename(uri: string, displayName: string) : Promise&lt;string&gt;
 rename(uri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) : void
 
 以异步方法重命名文件(夹)，返回重命名后的文件(夹)的Uri。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1266,7 +1330,7 @@ rename(uri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) 
         if (err) {
           console.error("Failed to rename in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("rename sucess, DestDir: " + JSON.stringify(DestDir));
+        console.info("rename success, DestDir: " + JSON.stringify(DestDir));
       });
     }
   } catch (err) {
@@ -1280,6 +1344,8 @@ rename(uri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) 
 access(sourceFileUri: string) : Promise&lt;boolean&gt;
 
 以异步方法判断文件(夹)是否存在。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1316,9 +1382,9 @@ access(sourceFileUri: string) : Promise&lt;boolean&gt;
       if (fileAccessHelper != undefined) {
         let existJudgment = await fileAccessHelper.access(sourceDir);
         if (existJudgment) {
-          console.log("sourceDir exists");
+          console.info("sourceDir exists");
         } else {
-          console.log("sourceDir does not exist");
+          console.info("sourceDir does not exist");
         }
       }
     } catch (err) {
@@ -1333,6 +1399,8 @@ access(sourceFileUri: string) : Promise&lt;boolean&gt;
 access(sourceFileUri: string, callback: AsyncCallback&lt;boolean&gt;) : void
 
 以异步方法判断文件(夹)是否存在。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1367,9 +1435,9 @@ access(sourceFileUri: string, callback: AsyncCallback&lt;boolean&gt;) : void
           return;
         }
         if (existJudgment)
-          console.log("sourceDir exists");
+          console.info("sourceDir exists");
         else
-          console.log("sourceDir does not exist");
+          console.info("sourceDir does not exist");
       });
     }
   } catch (err) {
@@ -1383,6 +1451,8 @@ access(sourceFileUri: string, callback: AsyncCallback&lt;boolean&gt;) : void
 getFileInfoFromUri(uri: string) : Promise\<FileInfo>
 
 以异步方法获取uri对应的FileInfo对象。使用promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1428,6 +1498,8 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
 
 以异步方法获取uri对应的FileInfo对象。使用callback异步回调。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -1456,7 +1528,7 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
           console.error("Failed to getFileInfoFromUri in async, errCode:" + err.code + ", errMessage:" + err.message);
           return;
         }
-        console.log("getFileInfoFromUri success, fileInfo: " + JSON.stringify(fileInfo));
+        console.info("getFileInfoFromUri success, fileInfo: " + JSON.stringify(fileInfo));
       });
     }
   } catch (err) {
@@ -1471,6 +1543,8 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
 getFileInfoFromRelativePath(relativePath: string) : Promise\<FileInfo>
 
 以异步方法获取relativePath对应的FileInfo对象。使用promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1515,6 +1589,8 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback\<FileI
 
 以异步方法获取relativePath对应的FileInfo对象。使用callback异步回调。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -1542,7 +1618,7 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback\<FileI
           console.error("Failed to getFileInfoFromRelativePath in async, errCode:" + err.code + ", errMessage:" + err.message);
           return;
         }
-        console.log("getFileInfoFromRelativePath success, fileInfo: " + JSON.stringify(fileInfo));
+        console.info("getFileInfoFromRelativePath success, fileInfo: " + JSON.stringify(fileInfo));
       });
     }
   } catch (err) {
@@ -1556,6 +1632,8 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback\<FileI
 query(uri:string, metaJson: string) : Promise&lt;string&gt;
 
 通过uri查询文件或目录的相关信息，使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1587,7 +1665,7 @@ async function getQuery01() {
     if (fileAccessHelper != undefined) {
       let fileInfo = await fileAccessHelper.getFileInfoFromRelativePath(imageFileRelativePath);
       let queryResult = await fileAccessHelper.query(fileInfo.uri, jsonStrSingleRelativepath);
-      console.log("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
+      console.info("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
     }
   } catch (err) {
     let error: BusinessError = err as BusinessError;
@@ -1601,6 +1679,8 @@ async function getQuery01() {
 query(uri:string, metaJson: string, callback: AsyncCallback&lt;string&gt;) : void
 
 通过uri查询文件或目录的相关信息，使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1631,7 +1711,7 @@ async function getQuery02() {
           console.error(`query_file_single faf query Failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        console.log("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
+        console.info("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
       })
     }
   } catch (err) {
@@ -1646,6 +1726,8 @@ async function getQuery02() {
 copy(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array&lt;CopyResult&gt;&gt;
 
 复制文件或目录，使用 Promise 异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1681,7 +1763,7 @@ async function copyFunc01() {
     if (fileAccessHelper != undefined) {
       let copyResult = await fileAccessHelper.copy(sourceFile, destFile);
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1714,7 +1796,7 @@ async function copyFunc02() {
     if (fileAccessHelper != undefined) {
       let copyResult = await fileAccessHelper.copy(sourceFile, destFile, true);
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1736,6 +1818,8 @@ async function copyFunc02() {
 copy(sourceUri: string, destUri: string, callback: AsyncCallback&lt;Array&lt;CopyResult&gt;&gt;) : void
 
 复制文件或目录，使用 callback 异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1767,7 +1851,7 @@ try {
         console.error("copy failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1789,6 +1873,8 @@ try {
 copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback&lt;Array&lt;CopyResult&gt;&gt;) : void
 
 复制文件或目录，使用 callback 异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1821,7 +1907,7 @@ try {
         console.error("copy failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1845,6 +1931,8 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise&lt;strin
 复制文件并传入备用文件名，使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1880,7 +1968,7 @@ async function copyFunc01() {
   try {
     if (fileAccessHelper != undefined) {
       let copyResult = await fileAccessHelper.copyFile(sourceFile, destFile, fileName);
-      console.log("copyResult uri: " + copyResult);
+      console.info("copyResult uri: " + copyResult);
     }
   } catch (err) {
     let error: BusinessError = err as BusinessError;
@@ -1896,6 +1984,8 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 复制文件并传入备用文件名，使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1924,8 +2014,8 @@ let fileName: string = "2.txt";
 let fileAccessHelper : fileAccess.FileAccessHelper|undefined;
 try {
   if (fileAccessHelper != undefined) {
-    fileAccessHelper.copyFile(sourceFile, destFile, fileName, async (copyResult: string) => {
-          console.log("copyResult uri: " + copyResult);
+    fileAccessHelper.copyFile(sourceFile, destFile, fileName, async (err: BusinessError, copyResult: string) => {
+          console.info("copyResult uri: " + copyResult);
     });
   }
 } catch (err) {
@@ -1939,6 +2029,8 @@ try {
 registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback&lt;NotifyMessage&gt;): void
 
 注册指定uri的callback。uri与callback可以为多对多的关系，推荐使用一个callback监听一个uri。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1969,7 +2061,7 @@ async function registerObserver01() {
       // uri为'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR1/SUB_FILE'，事件类型为NOTIFY_MOVE_SELF
       const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -1977,7 +2069,7 @@ async function registerObserver01() {
       // 期待收到uri为'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR2/SUB_FILE'，事件类型为NOTIFY_MOVED_TO
       const callbackDir2 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -1986,7 +2078,7 @@ async function registerObserver01() {
       // 期待收到uri为'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR1/SUB_FILE'，事件类型为NOTIFY_MOVED_FROM
       const callbackFile = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2023,7 +2115,7 @@ async function registerObserver02() {
       // 期待收到uri为'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR/SUB_DIR'，事件类型为NOTIFY_ADD
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2057,7 +2149,7 @@ async function registerObserver03() {
       // 期待无第二次返回
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2087,7 +2179,7 @@ async function UnregisterObserver03() {
   try {
     const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
       if (NotifyMessageDir != undefined) {
-        console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+        console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
       } else {
         console.error("NotifyMessageDir is undefined");
       }
@@ -2110,6 +2202,8 @@ async function UnregisterObserver03() {
  unregisterObserver(uri: string, callback?: Callback&lt;NotifyMessage&gt;): void
 
 取消注册指定的uri和callback。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -2136,7 +2230,7 @@ async function UnregisterObserver01() {
       // 期待收到uri为'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR'，事件类型为NOTIFY_DELETE
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2167,7 +2261,7 @@ async function UnregisterObserver02() {
       // 期待收到uri为'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR'，事件类型为NOTIFY_DELETE
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2201,7 +2295,7 @@ async function UnregisterObserver03() {
       // 期待收到uri为'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR/RENAME_FILE'，事件类型为NOTIFY_MOVED_TO
       const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2209,7 +2303,7 @@ async function UnregisterObserver03() {
       // 期待收不到任何事件
       const callbackDir2 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2241,7 +2335,7 @@ async function UnregisterObserver03() {
   try {
     const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
       if (NotifyMessageDir != undefined) {
-        console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+        console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
       } else {
         console.error("NotifyMessageDir is undefined");
       }
@@ -2270,6 +2364,8 @@ moveItem(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array
 目前仅支持设备内移动，跨设备不支持移动。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -2309,7 +2405,7 @@ async function moveItemFunc01() {
     if (fileAccessHelper != undefined) {
       let moveResult = await fileAccessHelper.moveItem(sourceUri, destUri);
       if (moveResult.length === 0) {
-        console.log("moveItem success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2342,7 +2438,7 @@ async function moveItemFunc02() {
     if (fileAccessHelper != undefined) {
       let moveResult = await fileAccessHelper.moveItem(sourceUri, destUri, true);
       if (moveResult.length === 0) {
-        console.log("moveItem success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2369,6 +2465,8 @@ moveItem(sourceUri: string, destUri: string, callback: AsyncCallback&lt;Array&lt
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -2394,12 +2492,12 @@ let destUri: string = "file://docs/storage/Users/currentUser/Download/test";
 let fileAccessHelper : fileAccess.FileAccessHelper|undefined;
 try {
   if (fileAccessHelper != undefined) {
-    fileAccessHelper.moveItem(sourceUri, destUri, async (err: BusinessError, copyResult: Array<fileAccess.MoveResult>) => {
+    fileAccessHelper.moveItem(sourceUri, destUri, async (err: BusinessError, moveResult: Array<fileAccess.MoveResult>) => {
       if (err) {
         console.error("moveItem failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (moveResult.length === 0) {
-        console.log("moveItem success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2427,6 +2525,8 @@ moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCall
 当前仅支持设备内移动，不支持跨设备移动。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -2459,7 +2559,7 @@ try {
         console.error("moveItem failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (moveResult.length === 0) {
-        console.log("copy success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2487,6 +2587,8 @@ moveFile(sourceUri: string, destUri: string, fileName: string) : Promise&lt;stri
 目前仅支持设备内移动，跨设备不支持移动。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -2520,13 +2622,13 @@ moveFile(sourceUri: string, destUri: string, fileName: string) : Promise&lt;stri
     // 开发者应根据自己实际获取的uri进行开发
     let sourceUri: string = "file://docs/storage/Users/currentUser/Download/1.txt";
     let destUri: string = "file://docs/storage/Users/currentUser/Download/test";
-    let fileName: string;
+    let fileName: string = "2.txt";
     // fileAccessHelper 参考 fileAccess.createFileAccessHelper 示例代码获取
     let fileAccessHelper : fileAccess.FileAccessHelper|undefined;
     try {
     if (fileAccessHelper != undefined) {
         let fileUri = await fileAccessHelper.moveFile(sourceUri, destUri, fileName);
-        console.log("moveFile sucess, fileUri: " + JSON.stringify(fileUri));
+        console.info("moveFile success, fileUri: " + JSON.stringify(fileUri));
     }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -2546,6 +2648,8 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 当前仅支持设备内移动，不支持跨设备移动。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -2573,7 +2677,7 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
   // 开发者应根据自己实际获取的uri进行开发
   let sourceUri: string = "file://docs/storage/Users/currentUser/Download/1.txt";
   let destUri: string = "file://docs/storage/Users/currentUser/Download/test";
-  let fileName: string;
+  let fileName: string = "2.txt";
   // fileAccessHelper 参考 fileAccess.createFileAccessHelper 示例代码获取
   let fileAccessHelper : fileAccess.FileAccessHelper|undefined;
   try {
@@ -2582,7 +2686,7 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
         if (err) {
           console.error("Failed to moveFile in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("moveFile sucess, fileUri: " + JSON.stringify(fileUri));
+        console.info("moveFile success, fileUri: " + JSON.stringify(fileUri));
       });
     }
   } catch (err) {
@@ -2594,6 +2698,8 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 ## CopyResult<sup>10+</sup>
 
 表示复制操作失败时的返回信息，复制成功时则没有返回信息。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -2609,6 +2715,8 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 ## OPENFLAGS
 
 枚举，目前支持的文件打开的标志位。
+
+**系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2626,6 +2734,8 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力** ：SystemCapability.FileManagement.UserFileService
 
 | 名称          | 值            | 说明                                |
@@ -2641,6 +2751,8 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 枚举，通知类型。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -2660,6 +2772,8 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
@@ -2674,6 +2788,8 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 表示移动操作失败时的返回信息，移动成功时则没有返回信息。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 

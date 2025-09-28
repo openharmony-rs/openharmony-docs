@@ -1,5 +1,12 @@
 # USB Serial Communication Development Overview
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: USB-->
+<!--Owner: @hwymlgitcode-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The USB serial communication service provides the USB host-to-serial port communication. With this service, you can obtain the list of connected ports that comply with the USB host-to-serial protocol and be able to enable and disable ports, set parameters, obtain parameters, read data, write data, and manage device permissions.
@@ -37,7 +44,7 @@ The USB serial port service consists of two phases:
 
 ### Constraints
 
-- Before data transmission between the host and the serial port device, you need to request a permission to access the device. Data can be transmitted only after the user grants the permission.
+- Before data transmission between the host and the serial port device, you need to request permission to access the device. Data can be transmitted only after the user grants the permission.
 
 - If the configuration parameters during data transmission are not set, the default configuration parameters are used (baud rate: 9600 bit/s; data bit: 8; parity bit: 0; stop bit: 1).
 
@@ -47,14 +54,14 @@ The USB serial port service consists of two phases:
 
 - Development tool and configuration:
 
-  As a development tool, DevEco Studio is a prerequisite for developing the USB serial communication service. You can use DevEco Studio to perform development, debugging, and packaging. [Download and install](https://developer.huawei.com/consumer/cn/download/) DevEco Studio and verify basic operations to ensure that it can function properly. For details, see [Creating and Running a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V14/ide-create-new-project-V14) in [DevEco Studio User Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V14/ide-tools-overview-V14).
+  As a development tool, DevEco Studio is a prerequisite for developing the USB serial communication service. You can use DevEco Studio to perform development, debugging, and packaging. [Download and install](https://developer.huawei.com/consumer/en/download/) DevEco Studio and verify basic operations to ensure that it can function properly. For details, see [Creating and Running a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V14/ide-create-new-project-V14) in [DevEco Studio User Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V14/ide-tools-overview-V14).
 
 - SDK version configuration:
 
-  API version 18 or later.
+  API version 19 or later.
 
 ### Environment Setup
 
 - Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-- Update the public SDK to API version 18 or later.
+- Update the public SDK to API version 19 or later.
 - Prepare a USB-to-serial cable. Connect the USB port and the serial port of the cable to that of the OpenHarmony device.

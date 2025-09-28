@@ -1,7 +1,13 @@
 # @ohos.app.appstartup.StartupListener (启动框架任务监听器)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yzkp-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 
-本模块提供监听启动任务的能力。
+本模块提供[应用启动框架](../../application-models/app-startup.md)任务监听器的定义。
 
 > **说明：**
 >
@@ -27,7 +33,7 @@ onCompleted?(error: BusinessError\<void\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| error | [BusinessError](../apis-basic-services-kit/js-apis-base.md#businesserror) | 是 | 错误信息。 |
+| error | [BusinessError\<void>](../apis-basic-services-kit/js-apis-base.md#businesserror) | 是 | 错误信息。 |
 
 **示例：**
 

@@ -1,4 +1,10 @@
 # Using Image_NativeModule to Encode Pictures
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 With Image_NativeModule, you can create and release ImagePacker instances and encode picture objects.
 
@@ -28,12 +34,6 @@ After an ImagePacker instance is created and encoding parameters are specified, 
 
 ```c++
 #include <hilog/log.h>
-#include <bits/alltypes.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sstream>
 #include <multimedia/image_framework/image/image_native.h>
 #include <multimedia/image_framework/image/image_packer_native.h>
 #include <multimedia/image_framework/image/image_source_native.h>
@@ -95,7 +95,7 @@ static napi_value PackToDataFromPicture(napi_env env, napi_callback_info info) {
     uint32_t fd = 0;
     napi_get_value_uint32(env, args[0], &fd);
     size_t outDataSize = 10000 * 10000;
-    uint8_t *outData = new uint8_t[10000 * 10000];
+    uint8_t *outData = new uint8_t[outDataSize];
 
     if (thisPicture->packerOptions == nullptr) {
         thisPicture->errorCode = OH_PackingOptions_Create(&thisPicture->packerOptions);
@@ -132,7 +132,7 @@ static napi_value PackToDataFromPicture(napi_env env, napi_callback_info info) {
         ReleaseImageSource(thisPicture->source);
     OH_LOG_DEBUG(LOG_APP, "OH_ImagePackerNative_PackToDataFromPicture success !");
     }
-
+	delete[] outData;
     return getJsResult(env, thisPicture->errorCode);
 }
 

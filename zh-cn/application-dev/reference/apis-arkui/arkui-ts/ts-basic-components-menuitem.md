@@ -1,6 +1,12 @@
 # MenuItem
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Armstrong15-->
+<!--Designer: @zhanghaibo0-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
-用来展示菜单Menu中具体的item菜单项。
+用来展示菜单中具体的菜单选项。
 
 > **说明：**
 >
@@ -26,17 +32,19 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 ## MenuItemOptions对象说明
 
+Menu中具体item菜单项信息。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型                                        | 必填 | 说明                             |
-| --------- | ------------------------------------------- | ---- | -------------------------------------- |
-| startIcon | [ResourceStr](ts-types.md#resourcestr)      | 否   | item中显示在左侧的图标信息路径。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| content   | [ResourceStr](ts-types.md#resourcestr)      | 否   | item的内容信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | 否   | item中显示在右侧的图标信息路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| labelInfo | [ResourceStr](ts-types.md#resourcestr)      | 否   | 定义结束标签信息，如快捷方式Ctrl+C等。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 用于构建二级菜单。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | item中显示在左侧的HMSymbol图标信息路径。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | item中显示在右侧的HMSymbol图标信息路径。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 名称      | 类型                                        | 只读 | 可选 | 说明                             |
+| --------- | ------------------------------------------- | ---- | -------------------------------------- | -------------------------------------- |
+| startIcon | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是  | MenuItem的起始图标。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| content   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是  | MenuItem的内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是  | MenuItem的末尾图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| labelInfo | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是  | MenuItem结束的标签信息，如快捷方式Ctrl+C等。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是  | 用于构建二级菜单。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
+| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是  | MenuItem起始的HMSymbol图标。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是  | MenuItem末尾的HMSymbol图标。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 
 ## 属性
@@ -60,7 +68,7 @@ selected(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 菜单项是否选中。<br />默认值：false<br/>值为true时，菜单项被选中。值为false时，菜单项不被选中。 |
+| value  | boolean | 是   | 菜单项是否选中。<br/>true：菜单项被选中；false：菜单项不被选中。<br />默认值：false |
 
 ### selectIcon
 
@@ -76,7 +84,7 @@ selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)<sup>12+</sup> | 是   | 菜单项被选中时，是否显示被选中的图标。<br/>默认值：false<br/>true：显示默认的对勾图标。<br/>false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。 |
+| value  | boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)<sup>12+</sup> | 是   | 菜单项被选中时，是否显示被选中的图标。<br/>true：显示默认的对勾图标；false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。<br/>默认值：false |
 ### contentFont<sup>10+</sup>
 
 contentFont(value: Font)
@@ -157,7 +165,7 @@ onChange(callback: (selected: boolean) => void)
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| selected | boolean | 是   | 选中状态发生变化时，触发该回调。<br />返回值为true时，表示已选中，为false时，表示未选中。 |
+| selected | boolean | 是   | 选中状态发生变化时，触发该回调。<br />true：未选中切换为选中；false：选中切换为未选中。 |
 
 ## 示例
 

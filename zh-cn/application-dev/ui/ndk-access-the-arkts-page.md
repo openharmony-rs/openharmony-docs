@@ -1,11 +1,16 @@
 # 接入ArkTS页面
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 ## 占位组件
 
 使用NDK接口构建UI界面时，需要在ArkTS页面创建用于挂载NDK接口创建组件的占位组件。占位组件类型为[ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)，ContentSlot能够绑定一个[NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md)对象，该对象可通过Node-API传递到Native侧挂载显示Native组件。
 
-- NDK配置文件oh-package.json5如下。
+- NDK配置文件entry/src/main/cpp/types/libentry/oh-package.json5如下。
   ```ts
   {
     "name": "libentry.so",
@@ -68,10 +73,10 @@
 
 ## NDK组件模块
 
-NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注册等是通过函数指针结构体（如[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md)）进行暴露，该函数指针结构体可以通过[模块查询接口](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_getmoduleinterface)获取。
+NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注册等是通过函数指针结构体（如[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)）进行暴露，该函数指针结构体可以通过[模块查询接口](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)获取。
 
 > **说明：**
-> - [模块查询接口](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_getmoduleinterface)带有初始化NDK的逻辑，建议先调用该接口进行全局初始化，再使用NDK进行UI构造。
+> - [模块查询接口](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)带有初始化NDK的逻辑，建议先调用该接口进行全局初始化，再使用NDK进行UI构造。
 
 ```
 ArkUI_NativeNodeAPI_1* arkUINativeNodeApi = nullptr;
@@ -88,7 +93,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
   arkUINativeNodeApi->disposeNode(listNode);
   ```
 
-  获取NDK接口支持的组件范围可以通过查询[ArkUI_NodeType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodetype)枚举值。
+  获取NDK接口支持的组件范围可以通过查询[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)枚举值。
 
 - 组件树操作。
   ```
@@ -104,12 +109,12 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
   ArkUI_NumberValue value[] = {{.f32 = 100}};
   ArkUI_AttributeItem item = {value, 1};
   arkUINativeNodeApi->setAttribute(stack, NODE_WIDTH, &item);
-  ArkUI_NumberValue value[] = {{.u32 = 0xff112233}};
-  ArkUI_AttributeItem item = {value, 1};
+  ArkUI_NumberValue value_color[] = {{.u32 = 0xff112233}};
+  ArkUI_AttributeItem item_color = {value_color, 1};
   arkUINativeNodeApi->setAttribute(stack, NODE_BACKGROUND_COLOR, &item);
   ```
 
-  获取NDK接口支持的属性范围可以通过查询[ArkUI_NodeAttributeType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeattributetype)枚举值。
+  获取NDK接口支持的属性范围可以通过查询[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)枚举值。
 
 - 事件注册。
   ```
@@ -120,12 +125,37 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
   arkUINativeNodeApi->registerNodeEvent(stack, NODE_ON_CLICK, 0, nullptr);
   ```
 
-  获取NDK接口支持的事件范围可以通过查询[ArkUI_NodeEventType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeeventtype)枚举值。
+  获取NDK接口支持的事件范围可以通过查询[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举值。
 
 
 ## 示例
 
 下面的示例展示了如何使用ContentSlot挂载Native侧的文本列表。
+
+示例代码的目录结构及其文件说明如下：
+
+```
+.
+|——cpp
+|    |——types
+|    |	  |——libentry
+|    |	  |	   |——index.d.ts 提供Native和ArkTS侧的桥接方法。
+|    |——napi_init.cpp 与index.d.ts对应的桥接方法对接Native侧的定义处。
+|    |——NativeEntry.cpp 桥接方法的Native侧实现。
+|    |——NativeEntry.h 桥接方法的Native侧定义。
+|    |——CMakeList.txt C语言库引用文件。
+|    |——ArkUIBaseNode.h 节点封装扩展类。
+|    |——ArkUINode.h 节点封装扩展类。
+|    |——ArkUIListNode.h 节点封装扩展类。
+|    |——ArkUIListItemNode.h 节点封装扩展类。
+|    |——ArkUITextNode.h 节点封装扩展类。
+|    |——NormalTextListExample.h 示例代码文件。
+| 
+|——ets
+|    |——pages
+|         |——entry.ets 应用启动页，加载承载Native的容器。
+|
+```
 
 **图1** Native文本列表
 
@@ -218,7 +248,6 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
    #include <ArkUIBaseNode.h>
    #include <arkui/native_type.h>
    #include <js_native_api_types.h>
-   #include <memory.h>
    
    namespace NativeModule {
    
@@ -267,6 +296,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
    #include <hilog/log.h>
    #include <js_native_api.h>
    #include "NativeEntry.h"
+   #include "NormalTextListExample.h"
    
    namespace NativeModule {
    
@@ -300,14 +330,17 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
    
    
    使用NDK 提供的C接口需要在CMakeLists.txt 中增加libace_ndk.z.so 的引用，如下所示，其中entry为工程导出的动态库名称，如当前示例使用的是默认的名称 libentry.so。
+   新增cpp文件后，同样需要在CMakeLists.txt中添加对应cpp文件，如果未配置，对应文件将不会参与编译。
    
    ```
+   add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
+   
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so)
    ```
 
 4. 由于NDK接口提供的是C接口，为了使用面向对象的方式简化编程和工程管理，这里建议使用C++进行二次封装，下面示例代码展示了示例界面中所需的列表，文本组件封装类。
    
-   1）获取ArkUI在NDK接口的入口模块[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md)，该结构体模块提供了一系列组件创建、树构建、属性设置和事件注册等函数指针。
+   1）获取ArkUI在NDK接口的入口模块[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)，该结构体模块提供了一系列组件创建、树构建、属性设置和事件注册等函数指针。
    
    ```c
    // NativeModule.h
@@ -316,8 +349,8 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
    #ifndef MYAPPLICATION_NATIVEMODULE_H
    #define MYAPPLICATION_NATIVEMODULE_H
    
+   #include "napi/native_api.h"
    #include <arkui/native_node.h>
-   #include <functional>
    #include <cassert>
    
    #include <arkui/native_interface.h>

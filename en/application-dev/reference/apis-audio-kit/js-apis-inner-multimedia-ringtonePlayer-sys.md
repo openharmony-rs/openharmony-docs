@@ -1,4 +1,10 @@
 # ringtonePlayer (Ringtone Player) (System API)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 The ringtonePlayer module provides APIs for playing, configuring, and obtaining ringtones.
 
@@ -26,11 +32,11 @@ Enumerates the ringtone parameters.
 | Name     | Type           |Mandatory  | Description                             |
 | --------- | -------------- | ---- | --------------------------------- |
 | volume    | number         | Yes  | Relative volume. The value ranges from 0.00 to 1.00. The value **1.00** indicates the maximum volume (100%).|
-| loop      | boolean        | Yes  | Whether to enable loop playback. The value **true** means to enable loop playback, and **false** means the opposite.|
+| loop      | boolean        | Yes  | Whether to enable loop playback. **true** to enable, **false** otherwise.|
 
 ## RingtonePlayer
 
-Provides APIs for setting and obtaining ringtone parameters as well as playing and stopping ringtones. Before calling any API in **RingtonePlayer**, you must use [getRingtonePlayer](./js-apis-systemSoundManager-sys.md#getringtoneplayer11) to obtain a **RingtonePlayer** instance.
+Provides APIs for setting and obtaining ringtone parameters as well as playing and stopping ringtones. Before calling any API in RingtonePlayer, you must use [getRingtonePlayer](./js-apis-systemSoundManager-sys.md#getringtoneplayer11) to obtain a RingtonePlayer instance.
 
 ### Attributes
 
@@ -38,9 +44,9 @@ Provides APIs for setting and obtaining ringtone parameters as well as playing a
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
-| Name | Type                       | Readable| Writable| Description              |
+| Name | Type                       | Read-Only| Optional| Description              |
 | ----- | -------------------------- | ---- | ---- | ------------------ |
-| state | [media.AVPlayerState](../apis-media-kit/js-apis-media.md#avplayerstate9) | Yes  | No  | Audio renderer state.|
+| state | [media.AVPlayerState](../apis-media-kit/arkts-apis-media-t.md#avplayerstate9) | Yes  | No  | Audio renderer state.|
 
 **Example**
 
@@ -121,7 +127,7 @@ Obtains the information about the audio renderer used by the ringtone. This API 
 
 | Name  | Type                                     | Mandatory| Description                      |
 | -------- | -----------------------------------------| ---- | ------------------------- |
-| callback | AsyncCallback&lt;[audio.AudioRendererInfo](../apis-audio-kit/js-apis-audio.md#audiorendererinfo8)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the renderer information obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the renderer information obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -155,7 +161,7 @@ Obtains the information about the audio renderer used by the ringtone. This API 
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;[audio.AudioRendererInfo](../apis-audio-kit/js-apis-audio.md#audiorendererinfo8)&gt; | Promise used to return the renderer information.|
+| Promise&lt;[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)&gt; | Promise used to return the renderer information.|
 
 **Example**
 
@@ -439,11 +445,11 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 | Name  | Type                    | Mandatory| Description                                                                      |
 | -------- | ----------------------- | ---- | -------------------------------------------------------------------------- |
 | type     | string                  | Yes  | Event type. The event **'audioInterrupt'** is triggered when the audio focus is changed.|
-| callback | Callback&lt;[audio.InterruptEvent](../apis-audio-kit/js-apis-audio.md#interruptevent9)&gt; | Yes  | Callback used to return the event information.|
+| callback | Callback&lt;[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)&gt; | Yes  | Callback used to return the event information.|
 
 **Error codes**
 
-For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -455,8 +461,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 ```ts
 import { audio } from '@kit.AudioKit';
 
-let isPlaying: boolean; // An identifier specifying whether rendering is in progress.
-let isDucked: boolean; // An identifier specifying whether the audio volume is reduced.
+let isPlaying: boolean = false; // An identifier specifying whether rendering is in progress.
+let isDucked: boolean = false; // An identifier specifying whether the audio volume is reduced.
 
 systemRingtonePlayer.on('audioInterrupt', async(interruptEvent: audio.InterruptEvent) => {
   if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
@@ -479,7 +485,7 @@ systemRingtonePlayer.on('audioInterrupt', async(interruptEvent: audio.InterruptE
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // The audio stream is rendered at the normal volume.
-        console.info('Force ducked. Update volume status');
+        console.info('Force unducked. Update volume status');
         isDucked = false; // A simplified processing indicating several operations for updating the volume status.
         break;
       default:
@@ -518,7 +524,7 @@ Unsubscribes from the audio interruption event.
 
 **Error codes**
 
-For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|

@@ -1,6 +1,13 @@
 # @ohos.resourceschedule.workScheduler (延迟任务调度)
 
-本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
+本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
 >  **说明：**
 >
@@ -18,7 +25,7 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 startWork(work: WorkInfo): void
 
-申请延迟任务。
+申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -26,7 +33,7 @@ startWork(work: WorkInfo): void
 
 | 参数名  | 类型                    | 必填   | 说明             |
 | ---- | --------------------- | ---- | -------------- |
-| work | [WorkInfo](#workinfo) | 是    | 要添加到执行队列的延迟任务。 |
+| work | [WorkInfo](#workinfo) | 是    | 指定延迟任务具体信息，比如延迟任务ID、触发条件等。|
 
 **错误码**：
 
@@ -45,6 +52,7 @@ startWork(work: WorkInfo): void
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
   
   let workInfo: workScheduler.WorkInfo = {
       workId: 1,
@@ -99,6 +107,7 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   let workInfo: workScheduler.WorkInfo = {
       workId: 1,
@@ -153,6 +162,7 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
     if (error) {
@@ -199,6 +209,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
     console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
@@ -207,7 +218,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
   })
 ```
 
-## workScheduler.obtainAllWorks<sup>deprecated<sup>
+## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 > 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代
@@ -222,6 +233,12 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 | -------- | -------------------- | ---- | ------------------------------- |
 | callback |  AsyncCallback\<void> | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
+**返回值**：
+
+| 类型                              | 说明                                       |
+| ------------------------------- | ---------------------------------------- |
+| Array\<[WorkInfo](#workinfo)> | 延迟任务列表，如果已添加延迟任务到执行队列，则返回当前应用所有的延迟任务列表；否则返回空列表。|
+  
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
@@ -262,6 +279,7 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) =>{
     if (error) {
@@ -301,6 +319,7 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
     console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
@@ -332,6 +351,7 @@ stopAndClearWorks(): void
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   try{
     workScheduler.stopAndClearWorks();
@@ -341,7 +361,7 @@ stopAndClearWorks(): void
   }
 ```
 
-## workScheduler.isLastWorkTimeOut<sup>deprecated<sup>
+## workScheduler.isLastWorkTimeOut<sup>(deprecated)<sup>
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
@@ -358,6 +378,12 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 | workId   | number               | 是    | 指定延迟任务的Id。                                 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。 |
 
+**返回值**：
+
+| 类型                              | 说明                                       |
+| ------------------------------- | ---------------------------------------- |
+|boolean| 检查延迟任务最后一次执行是否超时，如果workId有效，则返回从WorkSchedulerService获取的任务最后一次执行是否超时；否则，抛出异常。true，对应workId延迟任务最后一次执行超时，false，对应workId延迟任务最后一次执行未超时。|
+  
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
@@ -401,6 +427,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) =>{
     if (error) {
@@ -447,6 +474,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.isLastWorkTimeOut(500)
     .then((res: boolean) => {
@@ -459,7 +487,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## WorkInfo
 
-延迟任务的具体信息。
+延迟任务的具体信息, 用于设置延迟任务的触发条件等。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -469,7 +497,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | bundleName      | string                            | 是    | 延迟任务所在应用的包名。           |
 | abilityName     | string                            | 是    | 包内ability名称。 |
 | networkType     | [NetworkType](#networktype)       | 否    | 网络类型。             |
-| isCharging      | boolean                           | 否    | 是否充电，默认为false。<br>- true表示充电触发延迟回调。<br>- false表示不充电触发延迟回调。|
+| isCharging      | boolean                           | 否    | 是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
 | chargerType     | [ChargingType](#chargingtype)     | 否    | 充电类型。             |
 | batteryLevel    | number                            | 否    | 电量。              |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 电池状态。             |
@@ -484,7 +512,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## NetworkType
 
-触发延迟回调的网络类型。
+触发延迟任务回调的网络类型。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -499,7 +527,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## ChargingType
 
-触发延迟回调的充电类型。
+触发延迟任务回调的充电类型。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -512,7 +540,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## BatteryStatus
 
-触发延迟回调的电池状态。
+触发延迟任务回调的电池状态。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -524,7 +552,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 ## StorageRequest
 
-触发延迟回调的存储状态。
+触发延迟任务回调的存储状态。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 

@@ -1,8 +1,15 @@
 # Function Flow Runtime图依赖并发(C)
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## 概述
 
-FFRT图依赖并发范式支持任务依赖和数据依赖两种方式构建任务依赖图。任务依赖图中每个节点表示一个任务，边表示任务之间的依赖关系。任务依赖分为输入依赖`in_deps`和输出依赖`out_deps`。
+FFRT图依赖并发范式支持任务依赖和数据依赖两种方式构建任务依赖图。任务依赖图中每个节点代表一个任务，边代表任务之间的依赖关系。任务依赖分为输入依赖`in_deps`和输出依赖`out_deps`。
 
 构建任务依赖图的两种不同方式：
 
@@ -18,7 +25,7 @@ FFRT图依赖并发范式支持任务依赖和数据依赖两种方式构建任�
 任务依赖适用于任务之间有明确顺序或逻辑流程要求的场景，例如：
 
 - 顺序执行的任务，例如：先进行数据预处理任务，然后再进行模型训练任务。
-- 逻辑流程控制，例如：商品交易过程中，通常是先下单，然后是制作，最后是物流运输。
+- 逻辑流程控制，例如：商品交易过程需依次执行下单、制作和物流运输三个步骤。
 - 多级任务链，例如：流媒体视频处理过程中，视频解析后可以进行视频转码和视频生成缩略图，然后是视频添加水印，最后是视频发布。
 
 ### 数据依赖
@@ -147,6 +154,10 @@ int main()
 视频发布
 ```
 
+> **说明：**
+>
+> `ffrt_submit_h_f`和`ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
+
 ## 示例：斐波那契数列
 
 斐波那契数列中每个数字是前两个数字之和，计算斐波那契数的过程可以很好地通过数据对象来表达任务依赖关系。使用FFRT并发编程框架计算斐波那契数的代码如下所示：
@@ -216,7 +227,11 @@ Fibonacci(5) is 5
 
 示例中将`fibonacci(x-1)`和`fibonacci(x-2)`作为两个任务提交给FFRT，在两个任务完成之后将结果进行累加。虽然单个任务只是拆分成两个子任务，但是子任务又可以继续进行拆分，因此整个计算图的并行度是非常高的。
 
-各个任务在FFRT内部形成了一颗调用树：
+> **说明：**
+>
+> `ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
+
+各个任务在FFRT内部形成了一棵调用树：
 
 ![image](figures/ffrt_figure2.png)
 
@@ -224,19 +239,19 @@ Fibonacci(5) is 5
 
 上述样例中涉及到主要的FFRT的接口包括：
 
-| 名称                                                       | 描述                             |
-| ---------------------------------------------------------- | -------------------------------- |
-| [ffrt_submit_f](ffrt-api-guideline-c.md#ffrt_submit_f)     | 提交任务调度执行。               |
-| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | 提交任务调度执行并返回任务句柄。 |
-| [ffrt_wait_deps](ffrt-api-guideline-c.md#ffrt_wait_deps)   | 等待依赖的任务完成。             |
+| 名称                                                       | 描述                                                                              |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [ffrt_submit_f](ffrt-api-guideline-c.md#ffrt_submit_f)     | 提交任务调度执行。<br/>**说明**：从API version 20开始，支持该接口。               |
+| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | 提交任务调度执行并返回任务句柄。<br/>**说明**：从API version 20开始，支持该接口。 |
+| [ffrt_wait_deps](ffrt-api-guideline-c.md#ffrt_wait_deps)   | 等待依赖的任务完成。                                                              |
 
 > **说明：**
 >
 > - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#using-ffrt-c-api-1)。
-> - 使用FFRT C接口或C++接口时，都可以通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
+> - 使用FFRT C接口或C++接口时，均可通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制
 
 - 使用`ffrt_submit_base`接口进行任务提交时，每个任务的输入依赖和输出依赖的数量之和不能超过8个。
 - 使用`ffrt_submit_h_base`接口进行任务提交时，每个任务的输入依赖和输出依赖的数量之和不能超过7个。
-- 参数既作为输入依赖又作为输出依赖的时候，统计依赖数量时只统计一次，如输入依赖是`{&x}`，输出依赖也是`{&x}`，实际依赖的数量是1。
+- 当参数同时作为输入依赖和输出依赖时，统计依赖数量时只统计一次，如输入依赖是`{&x}`，输出依赖也是`{&x}`，实际依赖的数量是1。

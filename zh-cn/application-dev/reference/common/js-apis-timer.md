@@ -1,4 +1,10 @@
 # Timer (定时器)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @yao_dashuai-->
+<!--Designer: @yao_dashuai-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @foryourself-->
 
 本模块提供基础的定时器能力，支持按照指定的时间执行对应函数。
 
@@ -13,7 +19,7 @@
 setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): number
 
 设置一个定时器，该定时器在定时器到期后执行一个函数。  
-该定时器在回调被执行后自动删除，或使用clearTimeout接口手动删除。
+该定时器在回调被执行后自动删除，或使用clearTimeout()接口手动删除。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -24,7 +30,7 @@ setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): num
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | handler | Function \| string | 是 | 类型为Function表示定时器到期后执行函数；<br>类型为string则通过Error方式打印string中内容，不进行其他处理。 |
-| delay | number | 否 | 延迟的毫秒数，函数的调用会在该延迟之后发生。建议传入整数，若传入小数，会被向下取整。<br>如果省略该参数，delay取默认值0。<br>**注意**：<br>1. 无论是哪种情况，实际延迟可能会比预期长一些。<br>2. 如果值小于1，会被默认取0。<br>3. delay值受系统限制，超出2^32 - 1时会溢出，delay值为0。|
+| delay | number | 否 | 延迟的毫秒数，函数的调用会在该延迟之后发生。建议传入整数，若传入小数，会被向下取整。<br>如果省略该参数，delay取默认值0。<br>**注意**：<br>1. 该计时器非精准计时器，实际延迟可能会与预期延迟存在误差。<br>2. 如果值小于1，会被默认取0。<br>3. delay值受系统限制，超出2^32 - 1时会溢出，delay值为0。|
 | ...arguments | any[] | 否 | 附加参数，仅当handler类型为Function时生效，作为参数传递给handler。<br/>arguments参数数量少于handler函数参数数量时，未被arguments覆盖的参数会被设为undefined。<br/>arguments参数数量多于handler函数参数数量时，多余的arguments参数会被忽略，但可通过handler函数内部的arguments对象访问。|
 
 **返回值：**
@@ -41,7 +47,7 @@ setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): num
   }, 1000);
   ```
 
-**示例2**：带参数传递给函数(handle为function时参数与arguments参数个数一致)。
+**示例2**：带参数传递给函数(handler为function时参数与arguments参数个数一致)。
 
   ```ts
   function myFunction(param1: string, param2: string) {
@@ -50,7 +56,7 @@ setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): num
   setTimeout(myFunction, 1000, 'Hello', 'World');
   ```
 
-**示例3**：带参数传递给函数(handle为function时参数比arguments参数个数少)。
+**示例3**：带参数传递给函数(handler为function时参数比arguments参数个数少)。
 
   ```ts
   function myFunction(a: string, b: string) {
@@ -63,7 +69,7 @@ setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): num
   }
   setTimeout(myFunction, 1000, 'hello', 'world', 'C++', 'js');
   ```
-**示例4**：带参数传递给函数(handle为function时参数比arguments参数个数多)。
+**示例4**：带参数传递给函数(handler为function时参数比arguments参数个数多)。
 
   ```ts
   function myFunction(a: string, b: string) {
@@ -93,13 +99,13 @@ clearTimeout(timeoutID?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| timeoutID | number | 否 | 要取消定时器的ID，需要与调用setTimeout设置定时器的返回值一致。如果省略该参数或指定的定时器ID不存在时，不会取消任何定时任务。|
+| timeoutID | number | 否 | 要取消定时器的ID，需要与调用setTimeout()设置定时器的返回值一致。如果省略该参数或指定的定时器ID不存在时，不会取消任何定时任务。|
 
 **示例：**
 
   ```js
   let timeoutID = setTimeout(() => {
-    console.log('do after 1s delay.');
+    console.info('do after 1s delay.');
   }, 1000);
   clearTimeout(timeoutID);
   ```
@@ -121,7 +127,7 @@ setInterval(handler: Function | string, delay: number, ...arguments: any[]): num
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | handler | Function \| string | 是 | 类型为Function表示定时器到期后执行函数；<br>类型为string则通过Error方式打印string中内容，不进行其他处理。 |
-| delay | number | 否 | 延迟的毫秒数，函数的调用会在该延迟之后发生。建议传入整数，若传入小数，会被向下取整。<br>如果省略该参数，delay取默认值0。<br>**注意**：<br>1. 无论是哪种情况，实际延迟可能会比预期长一些。<br>2. 如果值小于1，将被默认设置为0。<br>3. delay值受系统限制，超出2^32 - 1时会溢出，delay值为0。|
+| delay | number | 否 | 延迟的毫秒数，函数的调用会在该延迟之后发生。建议传入整数，若传入小数，会被向下取整。<br>如果省略该参数，delay取默认值0。<br>**注意**：<br>1. 该计时器非精准计时器，实际延迟可能会与预期延迟存在误差。<br>2. 如果值小于1，将被默认设置为0。<br>3. delay值受系统限制，超出2^32 - 1时会溢出，delay值为0。|
 | ...arguments | any[] | 否 | 附加参数，仅当handler类型为Function时生效，作为参数传递给handler。<br/>arguments参数数量少于handler函数参数数量时，未被arguments覆盖的参数会被设为undefined。<br/>arguments参数数量多于handler函数参数数量时，多余的arguments参数会被忽略，但可通过handler函数内部的arguments对象访问。|
 
 **返回值：**
@@ -134,7 +140,7 @@ setInterval(handler: Function | string, delay: number, ...arguments: any[]): num
 
   ```js
   setInterval(() => {
-    console.log('do every 1s.');
+    console.info('do every 1s.');
   }, 1000);
   ```
 
@@ -161,7 +167,7 @@ clearInterval(intervalID?: number): void
 
   ```js
   let intervalID = setInterval(() => {
-    console.log('do every 1s.');
+    console.info('do every 1s.');
   }, 1000);
   clearInterval(intervalID);
   ```
@@ -180,7 +186,7 @@ clearInterval(intervalID?: number): void
   After OH test setTimeout
   OH test foo is called
   ```
-这是因为，虽然setTimeout设置了0ms的延迟，但任务不会立即执行，而是被放入队列中，等待下一次事件循环。当前代码执行完毕后，队列中的函数才会被执行，因此最终的执行顺序可能与预期不一致。
+这是因为，虽然setTimeout()设置了0ms的延迟，但任务不会立即执行，而是被放入队列中，等待下一次事件循环。当前代码执行完毕后，队列中的函数才会被执行，因此最终的执行顺序可能与预期不一致。
 
 ### 最大延迟值
 定时器内部使用32位带符号整数存储延时。因此，当延时超过2147483647毫秒（约24.8天）时，定时器会溢出并立即执行。
@@ -188,4 +194,4 @@ clearInterval(intervalID?: number): void
 ### 定时器冻结
 定时器的触发受底层任务调度。当前应用被切换到后台后，定时器到期不会触发。应用被重新拉起到前台后，到期定时器会按序触发。可以使用trace查看进程是否还存在调度，如果没有调度，定时器会被冻结。
 ### 定时器ID
-setTimeout()和setInterval()使用同一个ID池，这意味着技术上可以混用clearTimeout()和clearInterval()。然而，为了代码的清晰性，建议不要混用它们。
+setTimeout()和setInterval()使用相同的ID池，因此技术上可以互相调用clearTimeout()和clearInterval()来清除。然而，为了提高代码的可读性和可维护性，建议分别使用各自对应的清除方法，以避免混淆。

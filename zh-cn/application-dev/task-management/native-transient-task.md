@@ -1,5 +1,12 @@
 # 短时任务(C/C++)
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 场景介绍
 
 应用退至后台一小段时间后，应用进程会被挂起，无法执行对应的任务。如果应用在后台仍需要执行耗时不长的任务，如状态保存等，可以通过本文申请短时任务，扩展应用在后台的运行时间。
@@ -159,7 +166,7 @@
 ### 在index.d.ts文件中声明函数
 
    ```ts
-   import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
+   import backgroundTaskManager from '@kit.BackgroundTasksKit';
 
    export const RequestSuspendDelay: () => number;
    export const GetRemainingDelayTime: () => number;
@@ -203,22 +210,22 @@
 
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
-       console.log("The return requestId is " + requestId);
+       console.info("The return requestId is " + requestId);
      }
 
      GetRemainingDelayTime() {
        let time = testTransientTask.GetRemainingDelayTime();
-       console.log("The time is " + time);
+       console.info("The time is " + time);
      }
 
      CancelSuspendDelay() {
        let ret = testTransientTask.CancelSuspendDelay();
-       console.log("The ret is " + ret);
+       console.info("The ret is " + ret);
      }
 
      GetTransientTaskInfo() {
        let ret = testTransientTask.GetTransientTaskInfo();
-       console.log("The ret is " + JSON.stringify(ret));
+       console.info("The ret is " + JSON.stringify(ret));
      }
    }
 

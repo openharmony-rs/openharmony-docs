@@ -1,4 +1,10 @@
 # 标准化数据类型 (ArkTS)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 
 ## 场景介绍
@@ -15,7 +21,7 @@
 
 基于MIME Type或文件后缀名进行类型区分，存在另一个不足：即扁平化的数据类型定义。
 
-扁平/松散的类型定义难以描述不同类型间的兼容与继承关系，且在实际使用过程中，会增加应用处理数据类型时的开发复杂度。例如搜索场景，用户从精确地搜索动物相关的任意类型图片，进一步扩展到动物相关的任意图片、视频或音频资源。为了满足上述场景，我们需要在定义数据类型时，支持类型层级结构。
+扁平或松散的类型定义难以准确描述不同类型间的兼容与继承关系，且在实际使用中，会增加应用处理数据类型时的开发复杂度。例如，在搜索场景中，用户从精确搜索动物相关的图片，希望进一步扩展搜索动物相关的图片、视频或音频资源。为了满足上述需求，我们需要在定义数据类型时，支持类型层级结构。
 
 构建标准类型的层级结构，定义层级结构中的类型归属关系，能够帮助系统、应用实现数据类型的分层、分类管理。当用户进行数据分享或拖拽时，如果数据中同时包含图片、视频、音频等内容，系统/应用可以根据层级按需对分享内容进行整理，如分享了几张图片、几条视频或几个媒体资源文件等。
 
@@ -193,8 +199,8 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 function uniformTypeDescriptorTest() {
   try {
     // 2.可根据 “.mp3” 文件后缀查询对应UTD数据类型，并查询对应UTD数据类型的具体属性
-    let fileExtention = '.mp3';
-    let typeIds1 = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtention);
+    let fileExtension = '.mp3';
+    let typeIds1 = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
     if (typeIds1.length == 0) {
       return;
     }
@@ -206,8 +212,8 @@ function uniformTypeDescriptorTest() {
     console.info('mimeTypes:' + typeObj1.mimeTypes);
 
     // 3.可根据 “audio/mp3” MIMEType查询对应UTD数据类型，并查询对应UTD数据类型的具体属性。
-    let mineType = 'audio/mp3';
-    let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mineType);
+    let mimeType = 'audio/mp3';
+    let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
     if (typeIds2.length == 0) {
       return;
     }
@@ -251,8 +257,8 @@ function uniformTypeDescriptorTest() {
 import { uniformTypeDescriptor } from '@kit.ArkData';
 try {
   // 2.可根据 “.ts” 文件后缀查询对应UTD数据类型。
-  let fileExtention = '.ts';
-  let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtention);
+  let fileExtension = '.ts';
+  let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
   for (let typeId of typeIds) {
     // 3.根据UTD数据类型查询对应的MIMEType列表。
     let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
@@ -276,8 +282,8 @@ try {
 import { uniformTypeDescriptor } from '@kit.ArkData';
 try {
   // 2.可根据 “text/plain” MIMEType查询对应UTD数据类型。
-  let mineType = 'text/plain';
-  let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mineType);
+  let mimeType = 'text/plain';
+  let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
   for (let typeId of typeIds) {
     // 3. 根据UTD数据类型查询对应的MIMEType列表
     let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
@@ -293,4 +299,4 @@ try {
 
 针对标准化数据定义的开发，有以下相关实例可供参考：
 
-- [标准化数据定义与描述（ArkTS）（API11）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)
+- [标准化数据定义与描述（ArkTS）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)

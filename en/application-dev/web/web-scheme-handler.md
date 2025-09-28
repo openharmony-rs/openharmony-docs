@@ -1,14 +1,20 @@
-# Intercepting Network Requests Initiated by the Web component
+# Intercepting Network Requests Initiated by the Web Component
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloCrease-->
 
-The [Network Interception APIs(arkweb_scheme_handler.h)](../reference/apis-arkweb/arkweb__scheme__handler_8h.md) can be used to intercept requests sent by **Web** components and provide custom response headers and bodies for intercepted requests.
+The [Network Interception APIs(arkweb_scheme_handler.h)](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md) are supported to intercept requests sent by **Web** components and provide custom response headers and bodies for intercepted requests.
 
 ## Setting Network Interceptors for Web Components
 
 Set **ArkWeb_SchemeHandler** for a specified **Web** component or ServiceWorker. When the **Web** kernel sends a scheme request, the callback of **ArkWeb_SchemeHandler** is triggered. You need to set the network interceptor when the **Web** component is initialized.
 
-When a request starts, **ArkWeb_OnRequestStart** is called. When a request ends, **ArkWeb_OnRequestStop** is called.
+**ArkWeb_OnRequestStart** is called when the request starts, and **ArkWeb_OnRequestStop** is called when the request ends.
 
-To intercept the first request sent by a **Web** component, you can use [initializeWebEngine](../reference/apis-arkweb/js-apis-webview.md#initializewebengine) to initialize the **Web** component in advance and set an interceptor.
+To intercept the first request sent by a **Web** component, you can use the [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) method to initialize the **Web** component in advance and then set an interceptor. For details, see [Sample Code](#sample-code).
 
   ```c++
     // Create an ArkWeb_SchemeHandler object.
@@ -56,7 +62,7 @@ To intercept the request of a custom scheme, you need to register the custom sch
   ```
 
 The scheme needs to be registered before the **Web** component is initialized, and the network interceptor needs to be set after the **Web** component is initialized. Therefore, you are advised to call the C++ API in **onCreate()** of **EntryAbility** to register the scheme.
-After the scheme is registered, use [initializeWebEngine](../reference/apis-arkweb/js-apis-webview.md#initializewebengine) to initialize the **Web** component, and then set the network interceptor.
+After the scheme is registered, initialize the **Web** component using [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) and then set the network interceptor.
 
   ```ts
     export default class EntryAbility extends UIAbility {
@@ -71,6 +77,10 @@ After the scheme is registered, use [initializeWebEngine](../reference/apis-arkw
         ...
     };
   ```
+
+> **NOTE**
+>
+> **registerCustomSchemes** must be registered before the [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) method is called.
 
 ## Obtaining Information of an Intercepted Request
 
@@ -106,7 +116,7 @@ Uploaded data of **PUT** and **POST** requests can be obtained. Data types such 
 
 ## Providing Custom Response Bodies for Intercepted Requests
 
-The network interception of the **Web** component provides custom response bodies for intercepted requests in stream mode in the worker thread. The intercepted request can also be stopped with a specific [network error code](../reference/apis-arkweb/arkweb__net__error__list_8h.md).
+The network interception provides custom response bodies for intercepted requests in stream mode in the worker thread. You can also use a specific [network errorcode](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md) to end the current intercepted request.
 
   ```c++
     // Create a response header for the intercepted request.
@@ -129,10 +139,16 @@ The network interception of the **Web** component provides custom response bodie
     // Pass an error code to the Web component and end the request.
     OH_ArkWebResourceHandler_DidFinish(resourceHandler);
   ```
+  
+Since API version 20, to end the network request, you can call the **OH_ArkWebResourceHandler_DidFailWithErrorV2** API to return the default network error code **ARKWEB_ERR_CONNECTION_FAILED**. For details about the error codes, see [arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md).
+  ```c++
+    // Return the network error code ARKWEB_ERR_CONNECTION_FAILED to end the request.
+    OH_ArkWebResourceHandler_DidFailWithErrorV2(resourceHandler_, ARKWEB_ERR_FAILED, true);
+  ```
 
 ## Sample Code
 
-In DevEco Studio, create a default **Native C++** project. You need to prepare an MP4 file named **test.mp4** and place the **test.mp4** file in **main/resources/rawfile**.
+In DevEco Studio, create a default native C++ project. You need to prepare an MP4 file named **test.mp4** and place the file in **main/resources/rawfile**.
 
 main/ets/pages/index.ets
 ```ts
@@ -161,7 +177,7 @@ struct Index {
           .domStorageAccess(true)
           .cacheMode(CacheMode.Default)
           .onPageBegin( event => {
-            testNapi.initResourceManager(getContext().resourceManager);
+            testNapi.initResourceManager(this.getUIContext().getHostContext()!.resourceManager);
           })
       }
       .width('100%')
@@ -266,6 +282,7 @@ void OnURLRequestStop(const ArkWeb_SchemeHandler *schemeHandler,
     RawfileRequest *rawfileRequest = (RawfileRequest *)OH_ArkWebResourceRequest_GetUserData(request);
     if (rawfileRequest) {
         rawfileRequest->Stop();
+        delete rawfileRequest;
     }
 }
 
@@ -291,6 +308,7 @@ void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler,
     RawfileRequest *rawfileRequest = (RawfileRequest *)OH_ArkWebResourceRequest_GetUserData(request);
     if (rawfileRequest) {
         rawfileRequest->Stop();
+        delete rawfileRequest;
     }
 }
 
@@ -417,6 +435,7 @@ public:
     void DidReceiveData(const uint8_t *buffer, int64_t bufLen);
     void DidFinish();
     void DidFailWithError(ArkWeb_NetError errorCode);
+    void DidFailWithErrorV2(ArkWeb_NetError errorCode, bool completeIfNoResponse);
 
 private:
     const ArkWeb_ResourceRequest *resourceRequest_{nullptr};
@@ -516,7 +535,11 @@ RawfileRequest::RawfileRequest(const ArkWeb_ResourceRequest *resourceRequest,
           resourceHandler_(resourceHandler),
           resourceManager_(resourceManager) {}
 
-RawfileRequest::~RawfileRequest() {}
+RawfileRequest::~RawfileRequest() {
+    if (stream_) {
+        OH_ArkWebResourceRequest_DestroyHttpBodyStream(stream_);
+    }
+}
 
 void RawfileRequest::Start()
 {
@@ -660,6 +683,14 @@ void RawfileRequest::DidFailWithError(ArkWeb_NetError errorCode)
     OH_LOG_INFO(LOG_APP, "did finish with error %{public}d.", errorCode);
     if (!stopped_) {
         OH_ArkWebResourceHandler_DidFailWithError(resourceHandler_, errorCode);
+    }
+}
+
+void RawfileRequest::DidFailWithErrorV2(ArkWeb_NetError errorCode, bool completeIfNoResponse)
+{
+    OH_LOG_INFO(LOG_APP, "did finish with error %{public}d.", errorCode);
+    if (!stopped_) {
+        OH_ArkWebResourceHandler_DidFailWithErrorV2(resourceHandler_, errorCode, completeIfNoResponse);
     }
 }
 ```
@@ -824,7 +855,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-    console.log("v1 now redy to handle fetches.");
+    console.log("v1 now ready to handle fetches.");
 });
 ```
 

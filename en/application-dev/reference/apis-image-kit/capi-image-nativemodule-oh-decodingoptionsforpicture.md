@@ -1,8 +1,14 @@
 # OH_DecodingOptionsForPicture
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
-The OH_DecodingOptionsForPicture describes the decoding options for pictures. It is obtained by calling [OH_DecodingOptionsForPicture_Create](capi-image-source-native-h.md#oh_decodingoptionsforpicture_create).
+The struct describes the decoding options for pictures. It is obtained by calling [OH_DecodingOptionsForPicture_Create](capi-image-source-native-h.md#oh_decodingoptionsforpicture_create).
 
 **Since**: 13
 

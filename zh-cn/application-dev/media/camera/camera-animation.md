@@ -1,4 +1,10 @@
 # 相机基础动效(ArkTS)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 在使用相机过程中，如相机模式切换，前后置镜头切换等场景，不可避免出现预览流替换，为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[显示动画能力](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md)实现下方三种核心场景动效：
 
@@ -61,7 +67,7 @@
 3. 实现闪黑动效。
 
    ```ts
-   // @Component修饰组件的内部方法
+   // @Component修饰组件的内部方法。
    flashBlackAnim() {
      console.info('flashBlackAnim E');
      this.flashBlackOpacity = 1; // 闪黑组件不透明。
@@ -116,7 +122,7 @@
      public static surfaceShot: image.PixelMap;
    
      /**
-      * 获取surface截图
+      * 获取surface截图。
       * @param surfaceId
       * @returns
       */
@@ -143,12 +149,17 @@
      }
    
      /**
-      * 获取doSurfaceShot得到的截图
+      * 获取doSurfaceShot得到的截图。
       * @returns
       */
-     public static getSurfaceShot(): image.PixelMap {
-       return BlurAnimateUtil.surfaceShot;
+    public static getSurfaceShot(): image.PixelMap | undefined {
+       if (BlurAnimateUtil.surfaceShot === null || BlurAnimateUtil.surfaceShot === undefined) {
+          console.error("SurfaceShot is null!");
+          return undefined;
+        }
+        return BlurAnimateUtil.surfaceShot;
      }
+  
    }
    ```
 
@@ -160,6 +171,7 @@
 
    ```ts
    @State isShowBlur: boolean = false; // 是否显示截图组件。
+   @State isShowBlack: boolean = false;
    @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // 模式切换动效触发入口。
    @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;// 前后置切换动效触发入口。
    @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // 动效消失入口。
@@ -169,7 +181,7 @@
    @State shotImgBlur: number = 0; // 截图组件模糊度。
    @State shotImgOpacity: number = 1; // 截图组件透明度。
    @State shotImgScale: ScaleOptions = { x: 1, y: 1 }; // 截图组件比例。
-   @State shotImgRotation: RotateOptions = { y: 0.5, angle: 0 } // 截图组件旋转角度。
+   @State shotImgRotation: RotateOptions = { y: 0.5, angle: 0 }; // 截图组件旋转角度。
    ```
 
    截图组件的实现参考：
@@ -205,6 +217,10 @@
      console.info('showBlurAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // 后置。
      if (this.curPosition === 0) {
        console.info('showBlurAnim BACK');
@@ -273,12 +289,16 @@
 
    ```ts
    /**
-    * 先向外翻转90°，前后置切换触发
+    * 先向外翻转90°，前后置切换触发。
     */
    async rotateFirstAnim() {
      console.info('rotateFirstAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // 后置切前置。
      if (this.curPosition === 1) {
        console.info('rotateFirstAnim BACK');
@@ -319,12 +339,16 @@
    }
    
    /**
-    * 再向内翻转90°
+    * 再向内翻转90°。
     */
    async rotateSecondAnim() {
      console.info('rotateSecondAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // 后置。
      if (this.curPosition === 1) {
        // 直板机后置镜头内容旋转补偿90°。
@@ -358,7 +382,7 @@
    }
    
    /**
-    * 向外翻转90°同时
+    * 向外翻转90°同时。
     */
    blurFirstAnim() {
      console.info('blurFirstAnim E');
@@ -385,7 +409,7 @@
    }
    
    /**
-    * 向内翻转90°同时
+    * 向内翻转90°同时。
     */
    blurSecondAnim() {
      console.info('blurSecondAnim E');

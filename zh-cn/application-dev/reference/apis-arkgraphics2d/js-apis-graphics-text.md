@@ -1,5 +1,10 @@
 # @ohos.graphics.text (文本模块)
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 本模块提供一系列用于文本布局和字体管理的编程接口。文本布局相关的接口旨在提供高质量的排版，包括字符到字形的转换、字距调整、换行、对齐、文本测量等。字体管理接口提供字体注册、字体描述符、字体集管理等功能。
 
 该模块提供以下创建复杂样式的文本段落的常用类：
@@ -21,7 +26,7 @@
 ## 导入模块
 
 ```ts
-import { text } from '@kit.ArkGraphics2D';
+import { text } from '@kit.ArkGraphics2D'
 ```
 
 ## text.setTextHighContrast<sup>20+</sup>
@@ -108,8 +113,8 @@ matchFontDescriptors(desc: FontDescriptor): Promise&lt;Array&lt;FontDescriptor&g
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
-import { BusinessError } from '@kit.BasicServicesKit';
+import { text } from '@kit.ArkGraphics2D'
+import { BusinessError } from '@kit.BasicServicesKit'
 
 @Entry
 @Component
@@ -173,8 +178,8 @@ getSystemFontFullNamesByType(fontType: SystemFontType): Promise&lt;Array&lt;stri
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
-import { BusinessError } from '@kit.BasicServicesKit';
+import { text } from '@kit.ArkGraphics2D'
+import { BusinessError } from '@kit.BasicServicesKit'
 
 @Entry
 @Component
@@ -241,8 +246,8 @@ getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
-import { BusinessError } from '@kit.BasicServicesKit';
+import { text } from '@kit.ArkGraphics2D'
+import { BusinessError } from '@kit.BasicServicesKit'
 
 @Entry
 @Component
@@ -258,8 +263,8 @@ struct Index {
           .onClick(() => {
             let fontType:text.SystemFontType = text.SystemFontType.GENERIC
             let promise = text.getFontDescriptorByFullName("HarmonyOS Sans", fontType)
-            promise.then((fontdecriptor) => {
-              console.info(`desc: ${JSON.stringify(fontdecriptor)}`)
+            promise.then((fontDescriptor) => {
+              console.info(`desc: ${JSON.stringify(fontDescriptor)}`)
             }).catch((error: BusinessError) => {
               console.error(`Failed to get fontDescriptor by fullName, error: ${JSON.stringify(error)}`);
             });
@@ -357,7 +362,7 @@ struct Index {
 | NORMAL                      | 0    | 默认的换行规则。依据各自语言的规则，允许在字间发生换行。                                                                  |
 | BREAK_ALL                   | 1    | 对于Non-CJK（非中文，日文，韩文）文本允许在任意字符内发生换行。该值适合包含一些非亚洲文本的亚洲文本，比如使连续的英文字符断行。|
 | BREAK_WORD                  | 2    | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点时，则在任意2个字符间断行。对于CJK与NORMAL效果一致。|
-| BREAK_HYPHEN<sup>18+</sup>  | 3    | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。                        |
+| BREAK_HYPHEN<sup>18+</sup>  | 3    | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。<br/>使用此断词策略时，需与[TextStyle](#textstyle)中`locale`属性配合使用，通过locale定义语言环境共同作用影响断词效果。                        |
 
 ## Decoration
 
@@ -545,6 +550,17 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | TEXT_SUPERSCRIPT | 1 | 使能上标。 |
 | TEXT_SUBSCRIPT | 2 | 使能下标。 |
 
+## LineHeightStyle<sup>21+</sup>
+
+行高缩放基数枚举。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称   | 值 | 说明      |
+| ------ | - | --------- |
+| FONT_SIZE | 0 | 以字号大小作为缩放基数。最终行高为[TextStyle](#textstyle).fontSize * [TextStyle](#textstyle).heightScale。 |
+| FONT_HEIGHT | 1 | 以字形高度作为缩放基数。最终行高为塑形后字形高度 * [TextStyle](#textstyle).heightScale。 |
+
 ## TextStyle
 
 文本样式。
@@ -556,6 +572,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。             |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。                         |
 | fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold（即W600）时字体粗细无变化，当设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。                         |
+| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。                          |
 | fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。                          |
 | baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
 | fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。                    |
@@ -574,6 +591,9 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。|
 | backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。|
 | badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。|
+| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。 |
+| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。 |
+| lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。 |
 
 ## StrutStyle
 
@@ -635,7 +655,7 @@ static getGlobalInstance(): FontCollection
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let fontCollection = text.FontCollection.getGlobalInstance();
@@ -673,7 +693,7 @@ loadFontSync(name: string, path: string | Resource): void
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 
 let fontCollection: text.FontCollection = new text.FontCollection();
 
@@ -738,7 +758,7 @@ loadFont(name: string, path: string | Resource): Promise\<void>
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 
 let fontCollection: text.FontCollection = new text.FontCollection();
 
@@ -786,7 +806,7 @@ unloadFontSync(name: string): void
 **示例：**
 
 ``` ts
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -845,7 +865,7 @@ unloadFont(name: string): Promise\<void>
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -885,7 +905,7 @@ clearCaches(): void
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -920,6 +940,7 @@ struct Index {
 | trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。|
 | autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。|
 | verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。 |
+| lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。 |
 
 ## PlaceholderAlignment
 
@@ -1028,7 +1049,7 @@ layout(width: number): Promise\<void>
 
 ```ts
 import { drawing, text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit';
+import { image } from '@kit.ImageKit'
 
 let textStyle: text.TextStyle = {
   color: {
@@ -1576,7 +1597,7 @@ getLineMetrics(): Array\<LineMetrics>
 **示例：**
 
 ```ts
-let arrLineMetrc =  paragraph.getLineMetrics();
+let arrLineMetric =  paragraph.getLineMetrics();
 ```
 
 ### getLineMetrics
@@ -1597,7 +1618,7 @@ getLineMetrics(lineNumber: number): LineMetrics | undefined
 
 | 类型             | 说明                                              |
 | ---------------- | ------------------------------------------------ |
-| [LineMetrics](#linemetrics) | 如果指定的行号有效且度量信息存在，则返回一个包含该行度量数据的LineMetrics对象；如果行号无效或无法获取度量信息，则返回undefined。                  |
+| [LineMetrics](#linemetrics) \| undefined | 如果指定的行号有效且度量信息存在，则返回一个包含该行度量数据的LineMetrics对象；如果行号无效或无法获取度量信息，则返回undefined。                  |
 
 **示例：**
 
@@ -1843,7 +1864,7 @@ ParagraphBuilder对象的构造函数。
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D";
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -1894,9 +1915,9 @@ struct Index {
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
+import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -1938,9 +1959,9 @@ popStyle(): void
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
+import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -1989,9 +2010,9 @@ addText(text: string): void
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
+import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2039,20 +2060,20 @@ addPlaceholder(placeholderSpan: PlaceholderSpan): void
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
+import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myParagraphStyle: text.ParagraphStyle = {
     align: text.TextAlign.END,
   };
   let myPlaceholderSpan: text.PlaceholderSpan = {
-    width: 10000,
-    height: 10000000,
+    width: 100,
+    height: 100,
     align: text.PlaceholderAlignment.ABOVE_BASELINE,
     baseline: text.TextBaseline.ALPHABETIC,
-    baselineOffset: 100000
+    baselineOffset: 100
   };
   let fontCollection = new text.FontCollection();
   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
@@ -2091,7 +2112,7 @@ build(): Paragraph
 
 ```ts
 import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit';
+import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2182,7 +2203,7 @@ addSymbol(symbolId: number): void
 **示例：**
 
 ```ts
-import { text } from "@kit.ArkGraphics2D";
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2347,9 +2368,9 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 <!--code_no_check-->
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
+import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
 
 function textFunc(pixelmap: PixelMap) {
   let canvas = new drawing.Canvas(pixelmap);
@@ -2404,7 +2425,7 @@ createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string)
 <!--code_no_check-->
 ```ts
 import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit';
+import { image } from '@kit.ImageKit'
 
 function textFunc(pixelmap: PixelMap) {
   let canvas = new drawing.Canvas(pixelmap);
@@ -2689,7 +2710,7 @@ getGlyphs(range: Range): Array\<number>
 
 <!--code_no_check-->
 ```ts
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let glyphs = runs[0].getGlyphs(); // 获取渲染块全部字形序号
@@ -2757,7 +2778,7 @@ getPositions(range: Range): Array<common2D.Point>
 
 <!--code_no_check-->
 ```ts
-import { text } from "@kit.ArkGraphics2D";
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let positions = runs[0].getPositions(); // 获取渲染块全部字形位置
@@ -2843,9 +2864,9 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 <!--code_no_check-->
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
-import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
+import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
 
 function textFunc(pixelmap: PixelMap) {
   let canvas = new drawing.Canvas(pixelmap);
@@ -2920,7 +2941,7 @@ getStringIndices(range?: Range): Array\<number>
 
 <!--code_no_check-->
 ```ts
-import { text } from "@kit.ArkGraphics2D";
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let indices = runs[0].getStringIndices(); // 获取渲染块全部字符索引

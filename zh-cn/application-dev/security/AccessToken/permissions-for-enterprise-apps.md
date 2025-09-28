@@ -1,5 +1,12 @@
 # 企业类应用可用权限
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 以下权限面向<!--Del-->系统应用和<!--DelEnd-->企业类应用开放。
 
 企业类应用包括企业普通应用和MDM（Mobile Device Management）设备管理应用。
@@ -191,7 +198,7 @@
 
 **起始版本**：12
 
-**变更信息**：API 12-13该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变为更为企业普通应用。
+**变更信息**：API 12-13该权限仅面向MDM应用开放；从API 14开始，开放范围从MDM应用变更为企业普通应用。
 
 ## ohos.permission.KILL_APP_PROCESSES
 
@@ -209,21 +216,6 @@
 **起始版本**：12
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
-
-## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
-
-允许系统应用和运营商应用设置eSIM昵称和激活eSIM。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-<!--Del-->
-**ACL使能**：true<!--DelEnd-->
-
-**起始版本**：14
-
-**变更信息**：在API 13，权限等级为normal；从API 14开始，权限等级变更为system_basic。
 
 ## ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -455,9 +447,56 @@
 
 **起始版本**：20
 
+## ohos.permission.MANAGE_ANTIVIRUS
+
+允许企业应用管理防病毒软件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.REGISTER_ANTIVIRUS
+
+允许企业防病毒软件向系统注册、更新基本信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
 ## ohos.permission.CALL_TPM_CMD
 
 允许应用调用TPM（Trusted Platform Module）命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.ENTERPRISE_WORKSPACES_EVENT_SUBSCRIBE
+
+允许企业应用订阅企业数字空间相关事件。
+
+获取此权限后，可以通过spaceManager.subscribeEvent和spaceManager.unsubscribeEvent，订阅和取消订阅企业数字空间相关事件。
 
 **权限级别**：system_basic
 

@@ -1,4 +1,10 @@
 # 卡片错误码
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -128,8 +134,13 @@ The form cannot be operated by the current application.
 
 **处理步骤**
 
-1. 检查传入卡片ID所有权。
+<!--Del-->
+1. 
+<!--DelEnd-->
+检查传入卡片ID，是否属于本应用。
+<!--Del-->
 2. 升级权限为SystemApp。
+<!--DelEnd-->
 
 ## 16501006 卡片渲染服务连接失败
 
@@ -223,7 +234,7 @@ The form can not support this operation.
 
 检查当前卡片对应[互动卡片配置项sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
 
-## 16501012 卡片尺寸信息错误
+## 16501012 卡片尺寸错误
 
 **错误信息**
 
@@ -231,7 +242,7 @@ The form host uses an incorrect dimension.
 
 **错误描述**
 
-卡片使用方传入错误的卡片尺寸。
+卡片尺寸错误。
 
 **可能原因**
 
@@ -296,7 +307,7 @@ Invalid params received on operating form.
 3. 参数数量错误。
 4. 空参数错误，比如传入空字符串（''）。
 5. 参数格式错误。
-6. 参数值错误。输入参数与[app.json5](../../quick-start/app-configuration-file.md)、[配置卡片的配置文件](../../form/arkts-ui-widget-configuration.md)的对应配置需要保持一致。
+6. 参数值错误。输入参数需要与[app.json5](../../quick-start/app-configuration-file.md)和[配置ArkTS卡片的配置文件](../../form/arkts-ui-widget-configuration.md)中对应的配置保持一致。
 
 **处理步骤**
 

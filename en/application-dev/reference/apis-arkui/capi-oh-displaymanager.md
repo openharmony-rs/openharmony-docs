@@ -1,8 +1,14 @@
 # OH_DisplayManager
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The OH_DisplayManager module provides the display management capability.
+The module provides the display management capability.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 

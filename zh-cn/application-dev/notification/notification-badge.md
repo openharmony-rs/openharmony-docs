@@ -1,5 +1,12 @@
 # 管理通知角标
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 针对未读的通知，系统提供了角标设置接口，将未读通知个数显示在桌面图标的右上角角标上。
 
 通知增加时，角标上显示的未读通知个数需要增加。
@@ -21,7 +28,7 @@
 
   | **接口名** | **描述** |
   | -------- | -------- |
-  | setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void | 设置角标个数。 |
+  | setBadgeNumber(badgeNumber: number): Promise\<void\> | 设置角标个数。 |
 
 
 ## 开发步骤
@@ -44,16 +51,12 @@
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
    
     ```ts
-    let setBadgeNumberCallback = (err: BusinessError): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
+    let badgeNumber: number = 9;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }
-
-    let badgeNumber = 9;
-    notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
     ```
 
 3. 减少角标个数。
@@ -61,16 +64,12 @@
    一条通知被查看后，应用需要调用接口设置剩下未读通知个数，桌面刷新角标。
 
     ```ts
-    let setBadgeNumberCallback = (err: BusinessError): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
+    let badgeNumber: number = 8;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }
-
-    let badgeNumber = 8;
-    notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
     ```
 
 ## 常见问题
@@ -87,10 +86,14 @@
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     badgeNumber = 11;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```
 
@@ -107,6 +110,10 @@
       badgeNumber = 11;
       notificationManager.setBadgeNumber(badgeNumber).then(() => {
         hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+      }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
       });
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```

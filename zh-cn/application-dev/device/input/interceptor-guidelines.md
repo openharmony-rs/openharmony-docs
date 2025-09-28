@@ -1,5 +1,12 @@
 # 事件拦截开发指导（C/C++）
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 功能介绍
 
 多模为应用提供了创建和删除按键、输入事件（鼠标、触摸和轴事件）拦截的能力。使用场景例如：云桌面应用需要拦截按键、鼠标、触摸和轴事件。
@@ -39,7 +46,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### 创建事件拦截
 
-#### 按键事件
+- **按键事件**
 
 ```c++
 #include "multimodalinput/oh_input_manager.h"
@@ -60,7 +67,7 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
 }
 
-void TestInterceptor()
+void TestKeyEventInterceptor()
 {
     //添加按键事件拦截
     Input_Result ret = OH_Input_AddKeyEventInterceptor(OnKeyEventCallback, nullptr);
@@ -69,7 +76,7 @@ void TestInterceptor()
 }
 ```
 
-#### 输入拦截（鼠标、触摸和轴事件）
+- **输入拦截（鼠标、触摸和轴事件）**
 
 ```c++
 #include "multimodalinput/oh_input_manager.h"
@@ -165,7 +172,7 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
 //输入事件回调函数结构体
 Input_InterceptorEventCallback g_eventCallback;
 
-void TestInterceptor()
+void TestInputEventInterceptor()
 {
     //设置鼠标事件回调函数
     g_eventCallback.mouseCallback = OnMouseEventCallback;

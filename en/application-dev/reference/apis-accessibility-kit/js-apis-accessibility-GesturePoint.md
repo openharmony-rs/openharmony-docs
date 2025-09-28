@@ -1,5 +1,12 @@
 # @ohos.accessibility.GesturePoint (Gesture Point)
 
+<!--Kit: Accessibility Kit-->
+<!--Subsystem: BarrierFree-->
+<!--Owner: @qiiiiiiian-->
+<!--Designer: @z7o-->
+<!--Tester: @A_qqq-->
+<!--Adviser: @w_Machine_cc-->
+
 The **GesturePoint** module provides APIs for creating gesture touch point information required for an accessibility application to inject gestures.
 
 > **NOTE**
@@ -20,16 +27,16 @@ Defines a gesture touch point.
 
 ### Attributes
 
-| Name       | Type  | Readable  | Writable  | Description     |
+| Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| positionX | number | Yes   | Yes   | X coordinate of the touch point.|
-| positionY | number | Yes   | Yes   | Y coordinate of the touch point.|
+| positionX | number | No   | No   | X coordinate of the touch point.|
+| positionY | number | No   | No   | Y coordinate of the touch point.|
 
 ### constructor<sup>(deprecated)</sup>
 
 constructor(positionX: number, positionY: number);
 
-A constructor used to create a **Highlights** album instance.
+A constructor used to create a **GesturePoint** instance.
 
 > **NOTE**
 >

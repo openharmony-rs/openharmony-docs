@@ -1,14 +1,20 @@
 # image_receiver_mdk.h
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
-The **image_receiver_native.h** file declares the APIs used to obtain image data from the native layer.
+The file declares the APIs used to obtain image data from the native layer.
 
 **Library**: libimage_receiver_ndk.z.so
 
 **File to include**: <multimedia/image_framework/image_receiver_mdk.h>
 
-**System capability**: SystemCapability.Multimedia.Image
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 
@@ -44,7 +50,7 @@ The **image_receiver_native.h** file declares the APIs used to obtain image data
 ### OH_Image_Receiver_On_Callback()
 
 ```
-typedef void (*OH_Image_Receiver_On_Callback)()
+typedef void (*OH_Image_Receiver_On_Callback)(void)
 ```
 
 **Description**
@@ -104,7 +110,7 @@ Initializes an [ImageReceiverNative](capi-image-imagereceivernative-.md) object 
 
 | Type| Description|
 | -- | -- |
-| [ImageReceiverNative](capi-image-imagereceivernative-.md)* | Pointer to the ImageReceiverNative object obtained. If the operation fails, a null pointer is returned.|
+| [ImageReceiverNative](capi-image-imagereceivernative-.md)* | Pointer to the ImageReceiverNative object obtained. If the operation fails, nullptr is returned.|
 
 **See also**
 

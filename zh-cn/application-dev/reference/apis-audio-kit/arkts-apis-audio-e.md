@@ -1,4 +1,10 @@
 # Enums
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @zengyawen-->
 
 > **说明：**
 >
@@ -95,7 +101,9 @@
 | HDMI<sup>19+</sup>        | 27 | HDMI设备（例如HDMI、ARC、eARC等）。           |
 | LINE_DIGITAL<sup>19+</sup>        | 28 | 有线数字设备（例如S/PDIF等）。           |
 | REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| HEARING_AID<sup>20+</sup>        | 30 | 助听器设备。 |
 | NEARLINK<sup>20+</sup>        | 31 | 星闪设备。 |
+| SYSTEM_PRIVATE<sup>22+</sup> | 200 | 系统私有设备（由于该设备在系统中属于私有设备，因此应用程序可以忽略该设备）。 |
 | DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## CommunicationDeviceType<sup>9+</sup>
@@ -278,7 +286,7 @@
 | STREAM_USAGE_UNKNOWN                      | 0      | 未知类型。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | STREAM_USAGE_MEDIA<sup>(deprecated)</sup> | 1      | 媒体。<br/> 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME或STREAM_USAGE_AUDIOBOOK替代。 |
 | STREAM_USAGE_MUSIC<sup>10+</sup>          | 1      | 音乐。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP语音通话。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。| 
+| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP语音通话（该流类型起播时，会触发开启3A算法）。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | STREAM_USAGE_VOICE_ASSISTANT<sup>9+</sup> | 3      | 语音播报。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | STREAM_USAGE_ALARM<sup>10+</sup>          | 4      | 闹钟。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | STREAM_USAGE_VOICE_MESSAGE<sup>10+</sup>  | 5      | 语音消息。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -290,7 +298,7 @@
 | STREAM_USAGE_GAME<sup>10+</sup>           | 11     | 游戏。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | STREAM_USAGE_AUDIOBOOK<sup>10+</sup>      | 12     | 有声读物（包括听书、相声、评书）、听新闻、播客等。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | STREAM_USAGE_NAVIGATION<sup>10+</sup>     | 13     | 导航。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP视频通话。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP视频通话（该流类型起播时，会触发开启3A算法）。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## AudioState<sup>8+</sup>
 
@@ -405,8 +413,9 @@
 
 | 名称                 | 值   | 说明                             |
 | -------------------- | ---- | -------------------------------- |
-| PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制。   |
-| PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制。 |
+| PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制或屏幕投射，不包含隐私类型的流。|
+| PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制或屏幕投射。 |
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。 <br/> 例如，在PRIVACY_TYPE_PUBLIC策略下，[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)类型音频流不会被其他应用录制或屏幕投射。 <br/> 然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。 <br> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 
 ## ChannelBlendMode<sup>11+</sup>
 
@@ -425,16 +434,27 @@
 
 表示流设备变更原因的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 | 名称                                        |  值     | 说明              |
 |:------------------------------------------| :----- |:----------------|
-| REASON_UNKNOWN | 0 | 未知原因。           |
-| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。         |
-| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。 |
-| REASON_OVERRODE | 3 | 强选。 |
+| REASON_UNKNOWN | 0 | 未知原因。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_OVERRODE | 3 | 强选。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_SESSION_ACTIVATED<sup>20+</sup> | 4 | 音频会话已激活。 |
+| REASON_STREAM_PRIORITY_CHANGED<sup>20+</sup> | 5 | 更高优先级的音频流出现导致的系统设备切换。 |
+
+## OutputDeviceChangeRecommendedAction<sup>20+</sup>
+
+表示输出设备变更后推荐操作的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                                        |  值     | 说明              |
+|:------------------------------------------| :----- |:----------------|
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | 推荐继续播放。           |
+| DEVICE_CHANGE_RECOMMEND_TO_STOP | 1 | 推荐停止播放。         |
 
 ## DeviceChangeType
 
@@ -468,11 +488,11 @@
 | SOURCE_TYPE_MIC                              | 0      | Mic音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | 语音识别源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core  |
 | SOURCE_TYPE_PLAYBACK_CAPTURE<sup>(deprecated)</sup>   | 2 | 播放音频流（内录）录制音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture <br/> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。  |
-| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | 语音通话场景的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | 语音通话场景的音频源（单独启动录制不会开启3A算法，需同时使用[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)或[STREAM_USAGE_VIDEO_COMMUNICATION](#streamusage)类型的AudioRender起播才会触发开启3A算法）。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup>      | 10     | 短语音消息的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup>          | 13     | 录像的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup>     | 14 |  麦克风纯净录音的音频源（系统不做任何算法处理）。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-|  SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  直播场景的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  直播场景的音频源，在支持的设备上会提供系统回声消除能力。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## AudioScene<sup>8+</sup>
 
@@ -510,6 +530,39 @@
 | :--------------------- |:--|:-------|
 | DEACTIVATED_LOWER_PRIORITY | 0 | 应用焦点被抢占。 |
 | DEACTIVATED_TIMEOUT | 1 | 音频会话等待超时。    |
+
+## AudioSessionScene<sup>20+</sup>
+
+枚举音频会话场景。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                   | 值 | 说明      |
+| :--------------------- |:--|:--------|
+| AUDIO_SESSION_SCENE_MEDIA | 0 | 媒体音频会话场景。     |
+| AUDIO_SESSION_SCENE_GAME | 1 | 游戏音频会话场景。     |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP语音通话音频会话场景。 |
+
+## AudioSessionStateChangeHint<sup>20+</sup>
+
+枚举用于音频会话状态变更提示。
+
+当用户监听到音频会话状态变化事件（即收到[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)事件）时，获取相关信息。
+
+此类型表示根据焦点策略对音频会话执行的操作，包括暂停、调整音量等。
+
+详情请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                               |  值     | 说明                                         |
+| ---------------------------------- | ------ | -------------------------------------------- |
+| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME              | 0      | 提示音频会话恢复，应用可主动触发开始渲染等操作。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE               | 1      | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到 AUDIO_SESSION_STATE_CHANGE_HINT_RESUME 事件。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_STOP                | 2      | 提示音频会话因焦点被抢占而停止，彻底失去音频焦点。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP                | 3      | 提示音频会话因长时间无业务而被系统停止，导致失去音频焦点。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -592,3 +645,28 @@
 | UNAVAILABLE_SCENE  | -1     | 表示返听由于音频场景而不可用（如音频焦点、低时延管控）。 |
 | AVAILABLE_IDLE     |  0     | 表示返听可用。     |
 | AVAILABLE_RUNNING  |  1     | 表示返听运行中。   |
+
+## AudioLoopbackReverbPreset<sup>21+</sup>
+
+表示返听混响模式的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称      | 值     | 说明             |
+| --------- | ------ | ---------------- |
+| ORIGINAL  | 1     | 保持原始混响，不进行任何增强。   |
+| KTV       | 2     | 提供类似KTV的混响效果。 |
+| THEATER   | 3     | 提供类似剧场的混响效果（默认的混响模式）。 |
+| CONCERT   | 4     | 提供类似演唱会的混响效果。   |
+
+## AudioLoopbackEqualizerPreset<sup>21+</sup>
+
+表示返听均衡器类型的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称      | 值     | 说明             |
+| --------- | ------ | ---------------- |
+| FLAT   | 1     | 保持原始声音，不进行均衡调节。|
+| FULL   | 2     | 使人声更饱满（默认的均衡器类型）。|
+| BRIGHT | 3     | 使人声更明亮。|

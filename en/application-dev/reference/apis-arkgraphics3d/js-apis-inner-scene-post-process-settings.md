@@ -1,5 +1,12 @@
 # ScenePostProcessSettings
-The ScenePostProcessSettings module provides image post-processing methods (for example, tone mapping) in 3D graphics.
+<!--Kit: ArkGraphics 3D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @zzhao0-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
+
+The module provides image post-processing methods (for example, tone mapping) in 3D graphics.
 
 > **NOTE**
 >
@@ -23,7 +30,6 @@ Enumerates the tone mapping types.
 
 ## ToneMappingSettings
 Describes the tone mapping settings.
-### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -34,7 +40,6 @@ Describes the tone mapping settings.
 
 ## BloomSettings<sup>18+</sup>
 Describes the bloom settings.
-### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 

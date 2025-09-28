@@ -1,4 +1,10 @@
 # AVSession Controller (for System Applications Only)
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @zengyawen-->
 
 Media Controller preset in OpenHarmony functions as the controller to interact with audio and video applications, for example, obtaining and displaying media information and delivering playback control commands.
 
@@ -8,18 +14,18 @@ You can develop a system application (for example, a new playback control center
 
 - AVSessionDescriptor: session information, including the session ID, session type (audio/video), custom session name (**sessionTag**), information about the corresponding application (**elementName**), and whether the session is pined on top (isTopSession).
 
-- Top session: session with the highest priority in the system, for example, a session that is being played. Generally, the controller must hold an **AVSessionController** object to communicate with a session. However, the controller can directly communicate with the top session, for example, directly sending a playback control command or key event, without holding an **AVSessionController** object.
+- Top session: session with the highest priority in the system, for example, a session that is being played. Generally, the controller must hold an AVSessionController object to communicate with a session. However, the controller can directly communicate with the top session, for example, directly sending a playback control command or key event, without holding an AVSessionController object.
 
 ## Available APIs
 
 The key APIs used by the controller are classified into the following types:
 
-1. APIs called by the **AVSessionManager** object, which is obtained by means of import. An example API is **AVSessionManager.createController(sessionId)**.
-2. APIs called by the **AVSessionController** object. An example API is **controller.getAVPlaybackState()**.
+1. APIs called by the AVSessionManager object, which is obtained by means of import. An example API is **AVSessionManager.createController(sessionId)**.
+2. APIs called by the AVSessionController object. An example API is **controller.getAVPlaybackState()**.
 
 Asynchronous JavaScript APIs use either a callback or promise to return the result. The APIs listed below use a callback. They provide the same functions as their counterparts that use a promise.
 
-For details, see [AVSession Management](../../reference/apis-avsession-kit/js-apis-avsession.md).
+For details, see [AVSession Management](../../reference/apis-avsession-kit/arkts-apis-avsession.md).
 
 ### APIs Called by the AVSessionManager Object
 
@@ -39,7 +45,7 @@ For details, see [AVSession Management](../../reference/apis-avsession-kit/js-ap
 | getAVMetadata(callback: AsyncCallback&lt;AVMetadata&gt;): void<sup>10+<sup> | Obtains the session metadata.|
 | getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+<sup> | Obtains the output device information.|
 | sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sends a key event to the session corresponding to this controller.|
-| getLaunchAbility(callback: AsyncCallback&lt;WantAgent&gt;): void<sup>10+<sup> | Obtains the **WantAgent** object saved by the application in the session.|
+| getLaunchAbility(callback: AsyncCallback&lt;WantAgent&gt;): void<sup>10+<sup> | Obtains the WantAgent object saved by the application in the session.|
 | isActive(callback: AsyncCallback&lt;boolean&gt;): void<sup>10+<sup> | Checks whether the session is activated.|
 | destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Destroys this controller. A controller can no longer be used after being destroyed.|
 | getValidCommands(callback: AsyncCallback&lt;Array&lt;AVControlCommandType&gt;&gt;): void<sup>10+<sup> | Obtains valid commands supported by the session.|
@@ -61,9 +67,9 @@ For details, see [AVSession Management](../../reference/apis-avsession-kit/js-ap
 
 To enable a system application to access the AVSession service as a controller, proceed as follows:
 
-1. Obtain **AVSessionDescriptor** through AVSessionManager and create an **AVSessionController** object.
+1. Obtain AVSessionDescriptor through AVSessionManager and create an AVSessionController object.
 
-   The controller may obtain all **AVSessionDescriptor**s in the current system, and create an **AVSessionController** object for each session, so as to perform unified playback control on all the audio and video applications.
+   The controller may obtain all AVSessionDescriptors in the current system, and create an AVSessionController object for each session, so as to perform unified playback control on all the audio and video applications.
 
    ```ts
    // Import the AVSessionManager module.
@@ -178,67 +184,69 @@ To enable a system application to access the AVSession service as a controller, 
    import { BusinessError } from '@kit.BasicServicesKit';
 
    let g_controller = new Array<AVSessionManager.AVSessionController>();
-   let controller = g_controller[0];
-   let g_validCmd:Set<AVSessionManager.AVControlCommandType>;
-   let g_centerSupportCmd:Set<AVSessionManager.AVControlCommandType> = new Set(['play', 'pause', 'playNext', 'playPrevious', 'fastForward', 'rewind', 'seek','setSpeed', 'setLoopMode', 'toggleFavorite']);
-   // Subscribe to the 'activeStateChange' event.
-   controller.on('activeStateChange', (isActive) => {
-     if (isActive) {
-       console.info(`The widget corresponding to the controller is highlighted.`);
-     } else {
-       console.info(`The widget corresponding to the controller is invalid.`);
-     }
-   });
-   // Subscribe to the 'sessionDestroy' event to enable the controller to get notified when the session dies.
-   controller.on('sessionDestroy', () => {
-     console.info(`on sessionDestroy : SUCCESS `);
-     controller.destroy().then(() => {
-       console.info(`destroy : SUCCESS`);
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to destroy session. Code: ${err.code}, message: ${err.message}`);
-     });
-   });
+   if (g_controller && g_controller.length > 0 && g_controller[0]) {
+    let controller = g_controller[0];
+    let g_validCmd:Set<AVSessionManager.AVControlCommandType>;
+    let g_centerSupportCmd:Set<AVSessionManager.AVControlCommandType> = new Set(['play', 'pause', 'playNext', 'playPrevious', 'fastForward', 'rewind', 'seek','setSpeed', 'setLoopMode', 'toggleFavorite']);
+    // Subscribe to the 'activeStateChange' event.
+    controller.on('activeStateChange', (isActive) => {
+      if (isActive) {
+        console.info(`The widget corresponding to the controller is highlighted.`);
+      } else {
+        console.info(`The widget corresponding to the controller is invalid.`);
+      }
+    });
+    // Subscribe to the 'sessionDestroy' event to enable the controller to get notified when the session dies.
+    controller.on('sessionDestroy', () => {
+      console.info(`on sessionDestroy : SUCCESS `);
+      controller.destroy().then(() => {
+        console.info(`destroy : SUCCESS`);
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to destroy session. Code: ${err.code}, message: ${err.message}`);
+      });
+    });
 
-   // Subscribe to metadata changes.
-   controller.on('metadataChange', ['assetId', 'title', 'description'], (metadata: AVSessionManager.AVMetadata) => {
-     console.info(`on metadataChange assetId : ${metadata.assetId}`);
-   });
-   // Subscribe to playback state changes.
-   controller.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: AVSessionManager.AVPlaybackState) => {
-     console.info(`on playbackStateChange state : ${playbackState.state}`);
-   });
-   // Subscribe to supported command changes.
-   controller.on('validCommandChange', (cmds) => {
-     console.info(`validCommandChange : SUCCESS : size : ${cmds.length}`);
-     console.info(`validCommandChange : SUCCESS : cmds : ${cmds.values()}`);
-     g_validCmd.clear();
-     let centerSupportCmd = Array.from(g_centerSupportCmd.values())
-     for (let c of centerSupportCmd) {
-       if (cmds.concat(c)) {
-         g_validCmd.add(c);
-       }
-     }
-   });
-   // Subscribe to output device changes.
-   controller.on('outputDeviceChange', (state, device) => {
-     console.info(`outputDeviceChange device are : ${JSON.stringify(device)}`);
-   });
-   // Subscribe to custom session event changes.
-   controller.on('sessionEvent', (eventName, eventArgs) => {
-     console.info(`Received new session event, event name is ${eventName}, args are ${JSON.stringify(eventArgs)}`);
-   });
-   // Subscribe to custom media packet changes.
-   controller.on('extrasChange', (extras) => {
-     console.info(`Received custom media packet, packet data is ${JSON.stringify(extras)}`);
-   });
-   // Subscribe to custom playlist item changes.
-   controller.on('queueItemsChange', (items) => {
-     console.info(`Caught queue items change, items length is ${items.length}`);
-   });
-   // Subscribe to custom playback name changes.
-   controller.on('queueTitleChange', (title) => {
-     console.info(`Caught queue title change, title is ${title}`);
-   });
+    // Subscribe to metadata changes.
+    controller.on('metadataChange', ['assetId', 'title', 'description'], (metadata: AVSessionManager.AVMetadata) => {
+      console.info(`on metadataChange assetId : ${metadata.assetId}`);
+    });
+    // Subscribe to playback state changes.
+    controller.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: AVSessionManager.AVPlaybackState) => {
+      console.info(`on playbackStateChange state : ${playbackState.state}`);
+    });
+    // Subscribe to supported command changes.
+    controller.on('validCommandChange', (cmds) => {
+      console.info(`validCommandChange : SUCCESS : size : ${cmds.length}`);
+      console.info(`validCommandChange : SUCCESS : cmds : ${Array.from(cmds)}`);
+      g_validCmd.clear();
+      let centerSupportCmd = Array.from(g_centerSupportCmd.values())
+      for (let c of centerSupportCmd) {
+        if (cmds.indexOf(c) != -1) {
+          g_validCmd.add(c);
+        }
+      }
+    });
+    // Subscribe to output device changes.
+    controller.on('outputDeviceChange', (state, device) => {
+      console.info(`outputDeviceChange device are : ${JSON.stringify(device)}`);
+    });
+    // Subscribe to custom session event changes.
+    controller.on('sessionEvent', (eventName, eventArgs) => {
+      console.info(`Received new session event, event name is ${eventName}, args are ${JSON.stringify(eventArgs)}`);
+    });
+    // Subscribe to custom media packet changes.
+    controller.on('extrasChange', (extras) => {
+      console.info(`Received custom media packet, packet data is ${JSON.stringify(extras)}`);
+    });
+    // Subscribe to custom playlist item changes.
+    controller.on('queueItemsChange', (items) => {
+      console.info(`Caught queue items change, items length is ${items.length}`);
+    });
+    // Subscribe to custom playback name changes.
+    controller.on('queueTitleChange', (title) => {
+      console.info(`Caught queue title change, title is ${title}`);
+    });
+   }
    ```
 
 4. Obtain the media information transferred by the provider for display on the UI, for example, displaying the track being played and the playback state in Media Controller.
@@ -270,21 +278,21 @@ To enable a system application to access the AVSession service as a controller, 
      console.info(`get queueTitle by controller : ${queueTitle}`);
      // Obtain the custom media packet of the session.
      let extras = await controller.getExtras();
-     console.info(`get custom media packets by controller : ${JSON.stringify(extras)}`);
+     console.info(`get custom media packets by controller : ${extras ? JSON.stringify(extras) : ''}`);
      // Obtain the ability information provided by the application corresponding to the session.
      let agent = await controller.getLaunchAbility();
-     console.info(`get want agent info by controller : ${JSON.stringify(agent)}`);
+     console.info(`get want agent info by controller : ${agent ? JSON.stringify(agent) : ''}`);
      // Obtain the current playback position of the session.
      let currentTime = controller.getRealPlaybackPositionSync();
      console.info(`get current playback time by controller : ${currentTime}`);
      // Obtain valid commands supported by the session.
      let validCommands = await controller.getValidCommands();
-     console.info(`get valid commands by controller : ${JSON.stringify(validCommands)}`);
+     console.info(`get valid commands by controller : ${validCommands ? JSON.stringify(validCommands) : '[]'}`);
    }
    ```
 
 5. Control the playback behavior, for example, sending a command to operate (play/pause/previous/next) the item being played in Media Controller.
-
+   
    After listening for the playback control command event, the audio and video application serving as the provider needs to implement the corresponding operation.
 
    ```ts

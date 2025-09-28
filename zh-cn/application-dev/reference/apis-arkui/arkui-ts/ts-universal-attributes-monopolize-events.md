@@ -1,4 +1,10 @@
 # 事件独占控制
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 设置组件是否独占事件，事件范围包括组件自带的事件和开发者自定义的点击、触摸、手势事件。<br />
 在一个窗口内，设置了独占控制的组件上的事件如果首先响应，则本次交互只允许此组件上设置的事件响应，窗口内其他组件上的事件不会响应。
@@ -21,7 +27,7 @@ monopolizeEvents(monopolize: boolean): T
 
 | 参数名   | 类型 | 必填 | 说明                  |
 | ----------- | -------- | ------------------------ | ------------------------ |
-| monopolize | boolean  | 是 | 设置组件是否独占事件。true表示组件独占事件，false表示组件不独占事件。<br />默认值：false <br />**说明：**<br />1、如果第一根手指触发了组件事件独占，在抬起前又按下了一根手指，则第二根手指的交互继续处于组件独占状态，依次类推。<br />2、如果开发者通过[parallelGesture](ts-gesture-settings.md)绑定了与子组件同时触发的手势，如[PanGesture](ts-basic-gestures-pangesture.md)，子组件设置了独占控制且首个响应事件，则父组件的手势不会响应。|
+| monopolize | boolean  | 是 | 组件是否独占事件。true表示组件独占事件，false表示组件不独占事件。<br />默认值：false <br />**说明：**<br />1、如果第一根手指触发了组件事件独占，在抬起前又按下了一根手指，则第二根手指的交互继续处于组件独占状态，依次类推。<br />2、如果开发者通过[parallelGesture](ts-gesture-settings.md)绑定了与子组件同时触发的手势，如[PanGesture](ts-basic-gestures-pangesture.md)，子组件设置了独占控制且首个响应事件，则父组件的手势不会响应。|
 
 **返回值：**
 
@@ -85,7 +91,7 @@ struct Index {
         // 内层column绑定触摸事件
         .onTouch((event:TouchEvent)=>{
           if (event.type == TouchType.Down) {
-            console.log("inner column touch down")
+            console.info("inner column touch down")
             this.messageInner = "inner column touch down"
           }
         })
@@ -96,8 +102,8 @@ struct Index {
       // 外层column绑定触摸事件
       .onTouch((event)=>{
         if (event.type == TouchType.Down) {
-          console.log("outside column touch down")
-          this.messageOut = "inner column touch down"
+          console.info("outside column touch down")
+          this.messageOut = "outside column touch down"
         }
       })
     }

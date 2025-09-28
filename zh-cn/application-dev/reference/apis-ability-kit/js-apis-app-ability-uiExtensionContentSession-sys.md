@@ -1,5 +1,12 @@
 # @ohos.app.ability.UIExtensionContentSession (带界面扩展能力界面操作类)(系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 UIExtensionContentSession是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)加载界面内容时创建的实例对象，当UIExtensionComponent控件拉起指定的UIExtensionAbility时，UIExtensionAbility会创建UIExtensionContentSession对象，并通过[onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)回调传递给开发者。一个UIExtensionComponent控件对应一个UIExtensionContentSession对象，提供界面加载，结果通知等方法。每个UIExtensionAbility的UIExtensionContentSession之间互不影响，可以各自进行操作。
 
 > **说明：**
@@ -68,7 +75,7 @@ struct Index {
           try {
             this.session?.sendData(data);
           } catch (err) {
-            console.log('sendData err:' + JSON.stringify(err));
+            console.error('sendData err:' + JSON.stringify(err));
           }
         })
     }
@@ -312,11 +319,11 @@ export default class UIExtAbility extends UIExtensionAbility {
   // ...
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let starOptions: StartOptions = {
+    let startOptions: StartOptions = {
       displayId: 0
     };
 
-    session.startAbility(want, starOptions, (err: BusinessError) => {
+    session.startAbility(want, startOptions, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -392,11 +399,11 @@ export default class UIExtAbility extends UIExtensionAbility {
   // ...
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let starOptions: StartOptions = {
+    let startOptions: StartOptions = {
       displayId: 0
     };
 
-    session.startAbility(want, starOptions)
+    session.startAbility(want, startOptions)
       .then(() => {
         console.info(`Succeeded in startAbility`);
       })
@@ -545,11 +552,11 @@ export default class UIExtAbility extends UIExtensionAbility {
   // ...
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let starOptions: StartOptions = {
+    let startOptions: StartOptions = {
       displayId: 0
     };
 
-    session.startAbilityForResult(want, starOptions, (err: BusinessError, data: common.AbilityResult) => {
+    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
       if (err) {
         console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -631,11 +638,11 @@ export default class UIExtAbility extends UIExtensionAbility {
   // ...
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let starOptions: StartOptions = {
+    let startOptions: StartOptions = {
       displayId: 0
     };
 
-    session.startAbilityForResult(want, starOptions)
+    session.startAbilityForResult(want, startOptions)
       .then((data: common.AbilityResult) => {
         console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
       })
@@ -689,13 +696,13 @@ export default class UIExtAbility extends UIExtensionAbility {
     try {
       session.loadContent('pages/Extension', storage);
     } catch (err) {
-      console.log('loadContent err:' + JSON.stringify(err));
+      console.error('loadContent err:' + JSON.stringify(err));
     }
 
     try {
       session.setWindowBackgroundColor('#00FF00');
     } catch (err) {
-      console.log('setWindowBackgroundColor err:' + JSON.stringify(err));
+      console.error('setWindowBackgroundColor err:' + JSON.stringify(err));
     }
   }
 
@@ -727,7 +734,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -798,7 +805,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -876,7 +883,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -961,19 +968,19 @@ const TAG: string = '[UIExtAbility]';
 
 export default class UIExtAbility extends UIExtensionAbility {
   onCreate() {
-    console.log(TAG, `UIExtAbility onCreate`);
+    console.info(TAG, `UIExtAbility onCreate`);
   }
 
   onForeground() {
-    console.log(TAG, `UIExtAbility onForeground`);
+    console.info(TAG, `UIExtAbility onForeground`);
   }
 
   onBackground() {
-    console.log(TAG, `UIExtAbility onBackground`);
+    console.info(TAG, `UIExtAbility onBackground`);
   }
 
   onDestroy() {
-    console.log(TAG, `UIExtAbility onDestroy`);
+    console.info(TAG, `UIExtAbility onDestroy`);
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
@@ -987,12 +994,12 @@ export default class UIExtAbility extends UIExtensionAbility {
     try {
       session.loadContent('pages/Extension', storage);
     } catch (err) {
-      console.log('loadContent err:' + JSON.stringify(err));
+      console.error('loadContent err:' + JSON.stringify(err));
     }
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    console.log(TAG, `UIExtAbility onSessionDestroy`);
+    console.info(TAG, `UIExtAbility onSessionDestroy`);
   }
 }
 ```

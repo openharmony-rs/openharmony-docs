@@ -1,4 +1,10 @@
 # Using Image_NativeModule to Edit EXIF Data
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @zengyawen-->
 
 Image Kit provides the capabilities of reading and editing Exchangeable Image File Format (EXIF) data.
 
@@ -29,8 +35,6 @@ Create a native C++ application in DevEco Studio. The project created by default
 After an ImageSource instance is created, read and edit its EXIF data.
 
 ```c++
-
-#include <linux/kd.h>
 #include <string>
 
 #include <hilog/log.h>
@@ -57,7 +61,7 @@ static napi_value exifTest(napi_env env, napi_callback_info info)
     size_t argCount = NUM_1;
     if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1 ||
         argValue[NUM_0] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest exifTest napi_get_cb_info failed, argCount: %{public}d.", argCount);
+        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest exifTest napi_get_cb_info failed, argCount: %{public}lu.", argCount);
         return getJsResult(env, IMAGE_BAD_PARAMETER);
     }
     char name[1024];

@@ -1,5 +1,12 @@
 # 字符处理
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 使用场景
 
 不同语言中字符规则差异较大，通常很难从对应文本中提取需要的信息。通过字符处理，可以在不同语言规则下，以相似的逻辑处理文本。
@@ -22,13 +29,13 @@
 2. 判断字符属性。
 
    ```ts
-   let isDigit: boolean = i18n.Unicode.isDigit(char: string);
+   let isDigit: boolean = i18n.Unicode.isDigit(ch: string);
    ```
 
 3. 以一般类别值为例，获取字符类型。
 
    ```ts
-   let unicodeType: string = i18n.Unicode.getType(char: string);
+   let unicodeType: string = i18n.Unicode.getType(ch: string);
    ```
 
 **开发实例**
@@ -54,7 +61,7 @@ let unicodeType: string = i18n.Unicode.getType('a'); // unicodeType = 'U_LOWERCA
 
 音译是指将采用某个文字系统或字母表表示的文本转换为发音相同的采用另一个文字系统或字母表表示的文本的过程，并不等同于翻译。使用Transliterator类的[transform](../reference/apis-localization-kit/js-apis-i18n.md#transform9)接口可以实现音译功能，具体开发步骤如下：
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
 > 本模块支持中文汉字转拼音，但当中文文本中包含多音字时，可能出现部分多音字无法按照正确的发音转换为拼音的问题。
 
 1. 导入模块。
@@ -200,7 +207,6 @@ let breakText: string = iterator.getLineBreakText(); // breakText = 'Apple is my
 **开发实例**
 ```ts
 // 导入模块
-import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
 
 try {
