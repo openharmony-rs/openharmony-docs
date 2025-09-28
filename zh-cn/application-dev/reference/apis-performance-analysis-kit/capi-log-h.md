@@ -59,7 +59,7 @@ HiLog模块日志接口定义，通过这些接口实现日志打印相关功能
 >
 > 如果设置的日志级别低于[全局日志级别](../../dfx/hilog.md#查看和设置日志级别)，OH_LOG_SetMinLogLevel()设置不生效。
 >
-> Debug应用下，OH_LOG_SetMinLogLevel()和OH_LOG_SetLogLevel()函数均不生效。
+> debug版本应用下，OH_LOG_SetMinLogLevel()和OH_LOG_SetLogLevel()函数均不生效。
 
 ## 枚举类型说明
 
