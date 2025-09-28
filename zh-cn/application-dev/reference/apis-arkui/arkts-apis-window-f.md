@@ -918,7 +918,7 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 
 getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
 
-获取指定主窗口的截图，使用Promise异步回调。
+获取一个或多个指定ID的主窗口截图。，使用Promise异步回调。
 
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
