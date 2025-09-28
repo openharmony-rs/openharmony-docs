@@ -1,4 +1,10 @@
 # 媒体库错误码
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -67,3 +73,23 @@ Scene parameter validation failed.
 **处理步骤**
 
 检查参数赋值或者参数长度。
+
+## 23800104 传入参数校验不通过
+
+**错误信息**
+
+The provided member must be a property name of PhotoKey.
+
+**错误描述**
+
+参数异常。
+
+**可能原因**
+
+参数不在[PhotoKeys](js-apis-photoAccessHelper-sys.md#photokeys)枚举范围之内。
+
+
+**处理步骤**
+
+检查传入参数是否在PhotoKeys枚举范围之内。
+

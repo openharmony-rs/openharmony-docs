@@ -500,64 +500,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-## getRangeObjects<sup>21+</sup>
-
-getRangeObjects(index: number, offset: number): Promise<T[]>
-
-获取文件检索结果中指定范围内的文件资产。此方法返回Promise形式的文件数组。
-
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**参数：**
-
-| 参数名       | 类型                                       | 必填   | 说明                 |
-| -------- | ---------------------------------------- | ---- | ------------------ |
-| index    | number                                   | 是    | 要获取的文件索引，大于等于0，小于检索结果中对象数量     |
-| offset    | number                                   | 是    | 要获取的文件数量，大于0，index+offset小于检索结果中对象数量     |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
-
-**示例：**
-
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper} from '@kit.MediaLibraryKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('getRangeObjectsDemo');
-  type PhotoAsset = photoAccessHelper.PhotoAsset;
-  let testNum: string = "getRangeObjects_test_002";
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOptions: photoAccessHelper.FetchOptions = {
-      fetchColumns: [],
-      predicates: predicates
-  };
-  let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
-  let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
-  let count: number = fetchResult1.getCount();
-  const half: number = Math.ceil(count / 2);
-  let promises: Promise<PhotoAsset[]>[] = [];
-  promises[0] = fetchResult1.getRangeObjects(0, half);
-  promises[1] = fetchResult2.getRangeObjects(half, count - half);
-  let photoAssetsArray: PhotoAsset[][] = await Promise.all(promises);
-  let photoAssets: PhotoAsset[] = photoAssetsArray[0].concat(photoAssetsArray[1]);
-  console.info('photoAssets length: ', photoAssets.length);
-}
-```
-
 ## getObjectByPosition
 
 getObjectByPosition(index: number): Promise&lt;T&gt;
