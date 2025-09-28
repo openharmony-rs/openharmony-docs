@@ -4983,6 +4983,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | dateAdded<sup>18+</sup>    | number | 是    | 是   | 相册添加时间。<br>**系统接口**：此接口为系统接口。|
 | dateModified<sup>18+</sup>    | number | 是    | 是   | 相册修改时间。<br>**系统接口**：此接口为系统接口。|
 | coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。|
+| uploadStatus<sup>22+</sup>    | boolean | 是    | 否   | 表示是否允许相册同步到云空间或家庭存储。true表示允许，false表示不允许。<br>**系统接口**：此接口为系统接口。|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -6306,6 +6307,116 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### deleteLocalAssetsWithUri<sup>22+</sup>
+
+static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
+
+批量删除本地状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+
+>**说明：**
+>
+>- 对仅存在于本端设备的资产，直接删除到回收站。
+>- 对仅存在于云端的资产，不做任何处理。
+>- 对存在于本端设备和云端的资产，删除后变化为云端资产，本地资产进入回收站。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或者视频Uri数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by non-system application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteLocalAssetsWithUriDemo');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteLocalAssetsWithUri(context, [assetUri]);
+    } catch (err) {
+      console.error(`deleteLocalAssetsWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
+### deleteCloudAssetsWithUri<sup>22+</sup>
+
+static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
+
+批量删除云端状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+
+>**说明：**
+>
+>- 对仅存在于本端设备的资产，不做任何处理。
+>- 对仅存在于云端的资产，直接删除到回收站。
+>- 对存在于本端设备和云端的资产，删除后变化为本地资产，云端资产进入回收站。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或者视频Uri数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by non-system application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteCloudAssetsWithUriDemo');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteCloudAssetsWithUri(context, [assetUri]);
+    } catch (err) {
+      console.error(`deleteCloudAssetsWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
 ## MediaAssetsChangeRequest<sup>11+</sup>
 
 批量资产变更请求。
@@ -6744,6 +6855,58 @@ async function example(context: Context, albumUri: string) {
     console.info('deleteAlbums successfully');
   } catch (err) {
     console.error(`deleteAlbumsWithUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setUploadStatus<sup>22+</sup>
+
+static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean): Promise&lt;void&gt;
+
+设置相册是否可以同步到云空间或家庭存储。使用promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的Context。 |
+| albums  |   [Album](#album)[]          | 是   | 待设置同步状态的相册数组，支持设置用户相册和来源相册，数组中元素个数不超过500个。         |
+| allowUpload  |   boolean       | 是   | 是否允许相册同步，true表示允许，false表示不允许。         |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt;| Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      |  Permission denied.         |
+| 202      |  Called by non-system application.  |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Album array size is bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(context: Context, album: photoAccessHelper.Album) {
+  console.info('setUploadStatusDemo');
+  try {
+    let allowUpload = true;
+    await photoAccessHelper.MediaAlbumChangeRequest.setUploadStatus(context, [album], allowUpload);
+    console.info('setUploadStatus successfully');
+  } catch (err) {
+    console.error(`setUploadStatus failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -9923,6 +10086,7 @@ async function example(context: Context) {
 | BUNDLE_NAME<sup>18+</sup>          | 'bundle_name'                 | 相册的包名。<br>**系统接口**：此接口为系统接口。            |
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | 相册修改的时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。            |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | 相册封面的来源。<br>**系统接口**：此接口为系统接口。            |
+| UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | 相册同步状态。<br>**系统接口**：此接口为系统接口。            |
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
