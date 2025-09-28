@@ -233,7 +233,7 @@ import { window } from '@kit.ArkUI';
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
-最小化某显示设备下的所有主窗口。
+最小化指定ID的屏幕中的所有主窗口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -289,7 +289,7 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-最小化某显示设备下的所有主窗口。
+最小化指定ID的屏幕中的所有主窗口。
 
 **系统接口：** 此接口为系统接口。
 
