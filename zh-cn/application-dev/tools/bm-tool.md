@@ -1091,7 +1091,7 @@ error: install failed due to grant request permissions failed.<br>
 
 **处理步骤**
 
-根据[ACL签名指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)为应用申请受限ACL权限。
+根据[ACL签名指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section26216104250)为应用申请受限ACL权限。
 
 
 ### 9568290 更新HAP token失败导致安装失败
