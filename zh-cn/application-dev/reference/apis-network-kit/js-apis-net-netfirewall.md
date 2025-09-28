@@ -516,7 +516,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 | direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 否 |否 |规则方向，入站或出站。                                         |
 | action      | [FirewallRuleAction](#firewallruleaction)                   | 否 |否 |行为。                                                         |
 | type        | [NetFirewallRuleType](#netfirewallruletype)                 | 否 |否 |规则类型。                                                     |
-| isEnabled   | boolean                                                     | 否 |否 |是否启用。true:启用；false：不启用。                                                     |
+| isEnabled   | boolean                                                     | 否 |否 |是否启用。true表示启用，false表示不启用。                                                     |
 | id          | number                                                      | 否 |是| 规则ID。                                                       |
 | description | string                                                      | 否 |是 |规则描述，可选，最多256个字符。                                |
 | appUid      | number                                                      | 否 |是 |应用程序或服务UID。                                            |
