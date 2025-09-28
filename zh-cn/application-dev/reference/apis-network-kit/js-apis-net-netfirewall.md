@@ -536,8 +536,8 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 | 名称       | 类型                                             | 只读 |可选| 说明                        |
 |------------|--------------------------------------------------|------|-----|----------------------- |
-| page       | number                                           | 否   |否 |页码，值范围：[1,1000]。    |
-| pageSize   | number                                           | 否  |否 |页面大小，值范围：[1,50]。  |
+| page       | number                                           | 否   |否 |页码，值范围：[1, 1000]。    |
+| pageSize   | number                                           | 否  |否 |页面大小，值范围：[1, 50]。  |
 | orderField | [NetFirewallOrderField](#netfirewallorderfield)  | 否   |否 |排序字段。                  |
 | orderType  | [NetFirewallOrderType](#netfirewallordertype)    | 否   |否 |排序顺序。                  |
 
