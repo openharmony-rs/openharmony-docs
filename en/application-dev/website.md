@@ -56,7 +56,7 @@
       - [DataResubmissionHandler](onlyfortest/reference/apis-arkweb/arkts-basic-components-web-DataResubmissionHandler.md)
       - [interfaces](onlyfortest/reference/apis-arkweb/arkts-basic-components-web-i.md)
     - ArkTs API module<!--reference-big-file-module-arkts-->
-      - [Module Description](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore.md)
+      - [Module Description](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore-1.md)
       - [Accessibility Error Codes](onlyfortest/reference/apis-accessibility-kit/errorcode-accessibility.md)
       - [\@ohos.accessibility.config (SystemAPI)](onlyfortest/reference/apis-accessibility-kit/js-apis-accessibility-config-sys.md)
       - [AccessibilityExtensionContext (Accessibility Extension Context)](onlyfortest/reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md)
@@ -73,7 +73,7 @@
       - [\@ohos.util.ArrayList (Linear Container ArrayList)](onlyfortest/reference/apis-arkts/js-apis-arraylist.md)
       - [AVSource](onlyfortest/reference/apis-avcodec-kit/_a_v_source.md)
     - ArkTs API components<!--reference-big-file-components-arkts-->
-      - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web.md)
+      - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web-1.md)
       - [Accessibility Error Codes](onlyfortest/reference/apis-accessibility-kit/errorcode-accessibility.md)
       - [\@ohos.accessibility.config (SystemAPI)](onlyfortest/reference/apis-accessibility-kit/js-apis-accessibility-config-sys.md)
       - [AccessibilityExtensionContext (Accessibility Extension Context)](onlyfortest/reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md)
@@ -92,26 +92,26 @@
     - C API<!--reference-big-file-c-->
       - Background Tasks Kit<!--reference-big-file-c-background-tasks-->
         - Modules<!--reference-big-file-c-background-tasks-module-->
-          - [Module Discription](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore.md)
+          - [Module Discription](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore-2.md)
           - [TransientTask](onlyfortest/reference/apis-backgroundtasks-kit/capi-_transient_task.md)
         - Header Files<!--reference-big-file-c-background-tasks-headerfile-->
-          - [Module Discription](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore.md)
+          - [Module Discription](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore-3.md)
           - [jsvm.h](onlyfortest/reference/apis-backgroundtasks-kit/capi-transient__task__api_8h.md)
           - [os_account.h](onlyfortest/reference/apis-backgroundtasks-kit/capi-transient__task__type_8h.md)
         - Structs<!--reference-big-file-c-background-tasks-struct-->
-          - [Module Discription](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore.md)
+          - [Module Discription](onlyfortest/reference/apis-arkdata/arkts-apis-data-relationalStore-4.md)
           - [TransientTask_DelaySuspendInfo](onlyfortest/reference/apis-backgroundtasks-kit/capi-_transient_task___delay_suspend_info.md)
       - Avsession<!--reference-big-file-c-avsession-->
         - Modules<!--reference-big-file-c-avsession-module-->
-          - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web.md)
+          - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web-2.md)
           - [OHAVSession](onlyfortest/reference/apis-avsession-kit/capi-_o_h_a_v_session.md)
         - Header Files<!--reference-big-file-c-avsession-headerfile-->
-          - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web.md)
+          - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web-3.md)
           - [net_websocket.h](onlyfortest/reference/apis-avsession-kit/capi-native__avmetadata_8h.md)
           - [data_asset.h](onlyfortest/reference/apis-avsession-kit/capi-native__avsession_8h.md)
           - [oh_fileio.h](onlyfortest/reference/apis-avsession-kit/capi-native__avsession__errors_8h.md)
         - Structs<!--reference-big-file-c-avsession-struct-->
-          - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web.md)
+          - [Component Description](onlyfortest/reference/apis-arkweb/arkts-basic-components-web-4.md)
           - [AVSession_PlaybackPosition](onlyfortest/reference/apis-avsession-kit/capi-_a_v_session___playback_position.md)
 - not-refrence folder<!--not--reference-fold-->
   - C APIC-API add api-nifo tag<!--not--reference-fold--0624-->
