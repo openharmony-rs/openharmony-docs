@@ -1,5 +1,12 @@
 # @ohos.net.networkSecurity (网络安全校验)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块提供网络安全校验能力。应用可以通过证书校验API完成证书校验功能。
 
 > **说明：**

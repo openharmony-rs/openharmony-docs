@@ -1,5 +1,12 @@
 # 内核错误码
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 > **说明：**
 >
 > 以下仅列出内核错误码数值及描述。
