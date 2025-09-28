@@ -42,6 +42,8 @@ Inherited from [TimePickerOptions](ts-basic-components-timepicker.md#timepickero
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | useMilitaryTime | boolean | No| Yes| Whether to display time in 24-hour format. The 12-hour format is used by default.<br>Default value: **false**<br>**NOTE**<br>When in the 12-hour format, the AM/PM zone does not change depending on the hour portion.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -452,7 +454,7 @@ struct TimePickerDialogExample {
 
 ### Example 9: Enabling the AM/PM Indicator to Automatically Switch Based on the Hour in 12-hour Format
 
-This example demonstrates how to enable AM/PM indicator to automatically switch based on the hour in 12-hour format using **enableCascade**.
+This example demonstrates how to enable the AM/PM indicator to automatically switch based on the hour value in 12-hour format using **enableCascade**.
 
 ```ts
 // xxx.ets

@@ -4,9 +4,9 @@ The **DrawableDescriptor** module provides APIs for obtaining **pixelMap** objec
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 
 ## Modules to Import
 
@@ -37,10 +37,12 @@ Obtains this **pixelMap** object.
 **Example**
   ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
-let resManager = this.getUIContext().getHostContext()?.resourceManager
+import { image } from '@kit.ImageKit'
+let resManager = this.getUIContext().getHostContext()?.resourceManager;
+// Replace $r('app.media.app_icon') with the image resource file you use.
 let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
     .id)) as DrawableDescriptor;
-let pixmapNew: object = pixmap.getPixelMap()
+let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
   ```
 
 Creates a **DrawableDescriptor** object when the passed resource ID or name belongs to a common image.
@@ -98,7 +100,9 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
       build() {
         Row() {
           Column() {
+            // Replace $r('app.media.drawable') with the image resource file you use.
             Image((this.resManager?.getDrawableDescriptor($r('app.media.drawable').id) as LayeredDrawableDescriptor))
+            // Replace $r('app.media.drawable') with the image resource file you use.
             Image(((this.resManager?.getDrawableDescriptor($r('app.media.drawable')
             .id) as LayeredDrawableDescriptor).getForeground()).getPixelMap())
           }.height('50%')
@@ -124,8 +128,11 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
       @State maskPixel: image.PixelMap | undefined = undefined;
       @State draw : LayeredDrawableDescriptor | undefined = undefined;
       async aboutToAppear() {
+        // Replace $r('app.media.foreground') with the image resource file you use.
         this.fore1 = await this.getPixmapFromMedia($r('app.media.foreground'));
+        // Replace $r('app.media.background') with the image resource file you use.
         this.back1 = await this.getPixmapFromMedia($r('app.media.background'));
+        // Replace $r('app.media.ohos_icon_mask') with the image resource file you use.
         this.maskPixel = await this.getPixmapFromMedia($r('app.media.ohos_icon_mask'));
         // Create a LayeredDrawableDescriptor object using PixelMapDrawableDescriptor.
         this.foregroundDraw = new PixelMapDrawableDescriptor(this.fore1);
@@ -145,11 +152,7 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
       }
       // Obtain pixelMap from a resource through the image framework based on the resource
       private async getPixmapFromMedia(resource: Resource) {
-        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-          bundleName: resource.bundleName,
-          moduleName: resource.moduleName,
-          id: resource.id
-        });
+        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
         let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
         let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
           desiredPixelFormat: image.PixelMapFormat.BGRA_8888
@@ -204,6 +207,7 @@ struct Index {
 
   private getForeground(): DrawableDescriptor | undefined {
     let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the image resource file you use.
     let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
     if (!drawable) {
       return undefined;
@@ -259,6 +263,7 @@ struct Index {
 
   private getBackground(): DrawableDescriptor | undefined {
     let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the image resource file you use.
     let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
     if (!drawable) {
       return undefined;
@@ -312,6 +317,7 @@ struct Index {
 
   private getMask(): DrawableDescriptor | undefined {
     let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the image resource file you use.
     let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
     if (!drawable) {
       return undefined;
@@ -365,6 +371,7 @@ struct Index {
   build() {
     Row() {
       Column() {
+        // Replace $r('app.media.icon') with the image resource file you use.
         Image($r('app.media.icon'))
           .width('200px').height('200px')
           .clipShape(new Path({commands:LayeredDrawableDescriptor.getMaskClipPath()}))
@@ -434,13 +441,16 @@ import { image } from '@kit.ImageKit';
 @Entry
 @Component
 struct Example {
-  pixelmaps: Array<image.PixelMap>  = [];
-  options: AnimationOptions = {duration:1000, iterations:-1};
-  @State animated: AnimatedDrawableDescriptor  = new AnimatedDrawableDescriptor(this.pixelmaps, this.options);
+  pixelMaps: Array<image.PixelMap> = [];
+  options: AnimationOptions = { duration: 1000, iterations: -1 };
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
+
   async aboutToAppear() {
-    this.pixelmaps.push(await this.getPixmapFromMedia($r('app.media.icon')));
-    this.animated = new AnimatedDrawableDescriptor(this.pixelmaps, this.options);
+    // Replace $r('app.media.icon') with the image resource file you use.
+    this.pixelMaps.push(await this.getPixmapFromMedia($r('app.media.icon')));
+    this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
   }
+
   build() {
     Column() {
       Row() {
@@ -448,12 +458,9 @@ struct Example {
       }
     }
   }
+
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888

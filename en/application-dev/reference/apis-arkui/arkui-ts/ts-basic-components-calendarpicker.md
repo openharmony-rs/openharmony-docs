@@ -22,6 +22,8 @@ Creates a calendar picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name | Type                                       | Mandatory| Description                      |
@@ -42,6 +44,8 @@ Sets how the picker is aligned with the entry component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name   | Type                                   | Mandatory| Description                                                        |
@@ -58,6 +62,8 @@ Sets how the picker is aligned with the entry component. Compared with [edgeAlig
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -76,6 +82,8 @@ Sets the font color, font size, and font weight in the entry area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
@@ -92,6 +100,8 @@ Sets the font color, font size, and font weight in the entry area. Compared with
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
@@ -107,6 +117,8 @@ Whether to highlight the current system date.
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -128,6 +140,8 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description          |
@@ -144,6 +158,8 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
@@ -155,6 +171,8 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 Describes the parameters of the calendar picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name     | Type      | Read-Only| Optional       | Description                           |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
@@ -182,6 +200,8 @@ Enumerates alignment types.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name  | Value| Description                    |
 | ------ | - | ------------------------ |

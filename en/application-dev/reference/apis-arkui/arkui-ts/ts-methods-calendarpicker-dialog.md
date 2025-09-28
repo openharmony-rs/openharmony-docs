@@ -36,6 +36,8 @@ Inherits from [CalendarOptions](ts-basic-components-calendarpicker.md#calendarop
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name      | Type                                           | Read-Only| Optional| Description                                                       |
 | ---------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | onAccept   | [Callback](ts-types.md#callback12)\<Date> | No | Yes | Triggered when the OK button in the dialog box is clicked.<br>The callback parameter represents the selected date value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
