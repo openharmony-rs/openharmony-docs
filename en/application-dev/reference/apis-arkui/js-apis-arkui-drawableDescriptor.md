@@ -4,9 +4,9 @@ The **DrawableDescriptor** module provides APIs for obtaining **pixelMap** objec
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 
 ## Modules to Import
 
@@ -37,13 +37,13 @@ Obtains this **pixelMap** object.
 **Example**
   ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
-let resManager = this.getUIContext().getHostContext()?.resourceManager
+import { image } from '@kit.ImageKit'
+let resManager = this.getUIContext().getHostContext()?.resourceManager;
+// Replace $r('app.media.app_icon') with the image resource file you use.
 let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-    .id)) as DrawableDescriptor;
-let pixmapNew: object = pixmap.getPixelMap()
+    .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
+let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
   ```
-
-Creates a **DrawableDescriptor** object when the passed resource ID or name belongs to a common image.
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
@@ -84,7 +84,7 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
 
 **Example** 
 
-1. Create a **LayeredDrawableDescriptor** object from a JSON file.
+1. Create a **LayeredDrawableDescriptor** object using a JSON file.
 
     ```ts
     // xxx.ets
@@ -94,19 +94,23 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
     @Component
     struct Index {
       private resManager = this.getUIContext().getHostContext()?.resourceManager;
- 
+      // Replace $r('app.media.drawable') with the image resource file you use.
+      private layeredDrawableDescriptor: DrawableDescriptor | undefined =
+        this.resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+
       build() {
         Row() {
           Column() {
-            Image((this.resManager?.getDrawableDescriptor($r('app.media.drawable').id) as LayeredDrawableDescriptor))
-            Image(((this.resManager?.getDrawableDescriptor($r('app.media.drawable')
-            .id) as LayeredDrawableDescriptor).getForeground()).getPixelMap())
+            Image((this.layeredDrawableDescriptor instanceof LayeredDrawableDescriptor) ?
+              this.layeredDrawableDescriptor : undefined)
+            Image((this.layeredDrawableDescriptor instanceof LayeredDrawableDescriptor) ?
+              this.layeredDrawableDescriptor?.getForeground()?.getPixelMap() : undefined)
           }.height('50%')
         }.width('50%')
       }
     }
     ```
-2. Creates a **LayeredDrawableDescriptor** object using **PixelMapDrawableDescriptor**.
+2. Create a **LayeredDrawableDescriptor** object using **PixelMapDrawableDescriptor**.
    
     ```ts
     import { DrawableDescriptor, LayeredDrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
@@ -124,8 +128,11 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
       @State maskPixel: image.PixelMap | undefined = undefined;
       @State draw : LayeredDrawableDescriptor | undefined = undefined;
       async aboutToAppear() {
+        // Replace $r('app.media.foreground') with the image resource file you use.
         this.fore1 = await this.getPixmapFromMedia($r('app.media.foreground'));
+        // Replace $r('app.media.background') with the image resource file you use.
         this.back1 = await this.getPixmapFromMedia($r('app.media.background'));
+        // Replace $r('app.media.ohos_icon_mask') with the image resource file you use.
         this.maskPixel = await this.getPixmapFromMedia($r('app.media.ohos_icon_mask'));
         // Create a LayeredDrawableDescriptor object using PixelMapDrawableDescriptor.
         this.foregroundDraw = new PixelMapDrawableDescriptor(this.fore1);
@@ -145,11 +152,7 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
       }
       // Obtain pixelMap from a resource through the image framework based on the resource
       private async getPixmapFromMedia(resource: Resource) {
-        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-          bundleName: resource.bundleName,
-          moduleName: resource.moduleName,
-          id: resource.id
-        });
+        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
         let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
         let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
           desiredPixelFormat: image.PixelMapFormat.BGRA_8888
@@ -195,11 +198,45 @@ Obtains the **DrawableDescriptor** object of the foreground.
 
 **Example**
   ```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-let drawable: LayeredDrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.drawable')
-    .id)) as LayeredDrawableDescriptor;
-let drawableNew: object = drawable.getForeground();
+  import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+    private getForeground(): DrawableDescriptor | undefined {
+      let resManager = this.getUIContext().getHostContext()?.resourceManager;
+      // Replace $r('app.media.drawable') with the image resource file you use.
+      let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+      if (!drawable) {
+        return undefined;
+      }
+      if (drawable instanceof LayeredDrawableDescriptor) {
+        let layeredDrawableDescriptor = (drawable as LayeredDrawableDescriptor).getForeground();
+        return layeredDrawableDescriptor;
+      }
+      return undefined;
+    }
+
+    aboutToAppear(): void {
+      this.drawableDescriptor = this.getForeground();
+    }
+
+    build() {
+      RelativeContainer() {
+        if (this.drawableDescriptor) {
+          Image(this.drawableDescriptor)
+            .width(100)
+            .height(100)
+            .borderWidth(1)
+            .backgroundColor(Color.Green);
+        }
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
   ```
 
 ### getBackground
@@ -220,11 +257,40 @@ Obtains the **DrawableDescriptor** object of the background.
 
 **Example**
   ```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-let drawable: LayeredDrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.drawable')
-    .id)) as LayeredDrawableDescriptor;
-let drawableNew: object = drawable.getBackground();
+  import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+    private getBackground(): DrawableDescriptor | undefined {
+      let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the image resource file you use.
+      let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+      if (!drawable) {
+        return undefined;
+      }
+      let layeredDrawableDescriptor = (drawable as LayeredDrawableDescriptor).getBackground();
+      return layeredDrawableDescriptor;
+    }
+
+    aboutToAppear(): void {
+      this.drawableDescriptor = this.getBackground();
+    }
+
+    build() {
+      RelativeContainer() {
+        if (this.drawableDescriptor) {
+          Image(this.drawableDescriptor)
+            .width(100)
+            .height(100)
+        }
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
   ```
 
 ### getMask
@@ -245,11 +311,40 @@ Obtains the **DrawableDescriptor** object of the mask.
 
 **Example**
   ```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-let drawable: LayeredDrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.drawable')
-    .id)) as LayeredDrawableDescriptor;
-let drawableNew: object = drawable.getMask();
+  import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+    private getMask(): DrawableDescriptor | undefined {
+      let resManager = this.getUIContext().getHostContext()?.resourceManager;
+      // Replace $r('app.media.drawable') with the image resource file you use.
+      let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+      if (!drawable) {
+        return undefined;
+      }
+      let layeredDrawableDescriptor = (drawable as LayeredDrawableDescriptor).getMask();
+      return layeredDrawableDescriptor;
+    }
+
+    aboutToAppear(): void {
+      this.drawableDescriptor = this.getMask();
+    }
+
+    build() {
+      RelativeContainer() {
+        if (this.drawableDescriptor) {
+          Image(this.drawableDescriptor)
+            .width(100)
+            .height(100)
+        }
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
   ```
 ### getMaskClipPath
 
@@ -279,6 +374,7 @@ struct Index {
   build() {
     Row() {
       Column() {
+        // Replace $r('app.media.icon') with the image resource file you use.
         Image($r('app.media.icon'))
           .width('200px').height('200px')
           .clipShape(new Path({commands:LayeredDrawableDescriptor.getMaskClipPath()}))
@@ -292,35 +388,9 @@ struct Index {
 }
   ```
 
-## AnimationOptions<sup>12+</sup>
-
-Provides the playback options of the animation with a pixel map image array in an **Image** component.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name     | Type   | Mandatory | Description                                   |
-| ---------- | ------ | -----| --------------------------------------- |
-| duration   | number | No  | Total playback duration for the pixel map image array. The default value is 1 second per image.<br> Value range: [0, +∞).     |
-| iterations | number | No  | Number of times that the pixel map image array is played. The default value is **1**. The value **-1** indicates infinite playback, and a value greater than 0 represents the number of playback times.|
-
-**Example**
-
-```ts
-import { AnimationOptions } from '@kit.ArkUI';
-@Entry
-@Component
-struct Example {
-  options: AnimationOptions = { duration: 2000, iterations: 1 };
-  build() {
-  }
-}
-```
-
 ## AnimatedDrawableDescriptor<sup>12+</sup>
 
-Implements an **AnimatedDrawableDescriptor** object, which can be passed in when the **Image** component is used to play the pixel map image array. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Extends [DrawableDescriptor](#drawabledescriptor) to provide the capability for animating **PixelMap** arrays displayed using the **Image** component.
 
 ### constructor<sup>12+</sup>
 
@@ -336,10 +406,25 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| pixelMaps | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Yes  | **PixelMap** image data.|
+| pixelMaps | Array\<[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)>  | Yes  | **PixelMap** image data.|
 | options   | [AnimationOptions](#animationoptions12) | No  | Animation options.                              |
 
+## AnimationOptions<sup>12+</sup>
+
+Configures the playback behavior of **PixelMap** array animations displayed through the **Image** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type   | Mandatory | Description                                   |
+| ---------- | ------ | -----| --------------------------------------- |
+| duration   | number | No  | Total playback duration for the **PixelMap** array animation. By default, each image is played for 1 second.<br> Value range: [0, +∞).     |
+| iterations | number | No  | Number of times that the **PixelMap** array animation is played. The default value is **1**. A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.|
+
 **Example**
+
+This example implements an animation playback effect with multiple images using the [AnimatedDrawableDescriptor](#animateddrawabledescriptor12) object and the [AnimationOptions](#animationoptions12) API.
 
 ```ts
 import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
@@ -348,13 +433,18 @@ import { image } from '@kit.ImageKit';
 @Entry
 @Component
 struct Example {
-  pixelmaps: Array<image.PixelMap>  = [];
-  options: AnimationOptions = {duration:1000, iterations:-1};
-  @State animated: AnimatedDrawableDescriptor  = new AnimatedDrawableDescriptor(this.pixelmaps, this.options);
+  pixelMaps: Array<image.PixelMap> = [];
+  options: AnimationOptions = { duration: 1000, iterations: -1 };
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
+
   async aboutToAppear() {
-    this.pixelmaps.push(await this.getPixmapFromMedia($r('app.media.icon')));
-    this.animated = new AnimatedDrawableDescriptor(this.pixelmaps, this.options);
+    // Replace $r('app.media.icon') with the image resource file you use.
+    this.pixelMaps.push(await this.getPixmapFromMedia($r('app.media.icon')));
+    // Replace $r('app.media.cloud1') with the image resource file you use.
+    this.pixelMaps.push(await this.getPixmapFromMedia($r('app.media.cloud1')));
+    this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
   }
+
   build() {
     Column() {
       Row() {
@@ -362,12 +452,9 @@ struct Example {
       }
     }
   }
+
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -378,3 +465,4 @@ struct Example {
 }
 
 ```
+![relativePath](figures/option.gif)
