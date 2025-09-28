@@ -658,7 +658,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 | 名称         | 类型    | 只读 | 可选|说明                                      |
 | ------------ | --------|------|-----|------------------------------------- |
-| isWildcard   | boolean | 否  | 否|是否包含通配符。true:包含通配符；false：不包含通配符。                          |
+| isWildcard   | boolean | 否  | 否|是否包含通配符。true表示包含，false表示不包含。                          |
 | domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域。 |
 
 ## NetFirewallDnsParams
