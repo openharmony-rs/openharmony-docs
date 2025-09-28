@@ -1275,9 +1275,7 @@ try {
 
 getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
-获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。避让区域是指系统栏区域、刘海屏区域或软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
-
-不支持获取软键盘类型的避让区域，type参数传入TYPE_KEYBOARD时，返回1300016错误码。
+获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。
 
 [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，当前窗口调用该接口获取到空的避让区域。
 
@@ -1289,7 +1287,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- |----------------------------------| -- | ------------------------------------------------------------ |
-| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区域类型。 |
+| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区域类型。不支持获取软键盘类型的避让区域，type参数传入TYPE_KEYBOARD时，返回1300016错误码。 |
 
 **返回值：**
 
