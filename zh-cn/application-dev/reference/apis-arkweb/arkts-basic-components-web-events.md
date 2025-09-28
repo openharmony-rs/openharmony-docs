@@ -16,6 +16,10 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                   | 必填   | 说明            |
@@ -24,6 +28,7 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -54,6 +59,48 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
                   event.result.handleCancel();
                 }
               })
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry, OnAlertEvent, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onAlert((event: OnAlertEvent): boolean => {
+            if (event) {
+              console.log("event.url:" + event.url);
+              console.log("event.message:" + event.message);
+
+              this.uiContext.showAlertDialog({
+                title: 'onAlert',
+                message: event.message,
+                confirm: {
+                  value: 'ok',
+                  action: () => {
+                    event.result.handleConfirm();
+                  }
+                },
+                cancel: () => {
+                  event.result.handleCancel();
+                }
+              } as AlertDialogParamWithConfirm);
             }
             return true;
           })
@@ -171,6 +218,10 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                  | 必填   | 说明            |
@@ -179,6 +230,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 **示例：**
 
+ ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -215,6 +267,48 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
                   event.result.handleCancel();
                 }
               })
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry, OnConfirmEvent, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined)
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onConfirm((event: OnConfirmEvent): boolean => {
+            if (event) {
+              console.log("event.url:" + event.url);
+              console.log("event.message:" + event.message);
+
+              this.uiContext.showAlertDialog({
+                title: 'onConfirm',
+                message: event.message,
+                confirm: {
+                  value: 'ok',
+                  action: () => {
+                    event.result.handleConfirm();
+                  }
+                },
+                cancel: () => {
+                  event.result.handleCancel();
+                }
+              } as AlertDialogParamWithConfirm);
             }
             return true;
           })
@@ -2311,6 +2405,10 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2319,6 +2417,7 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2332,6 +2431,28 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onContextMenuHide(() => {
+            console.log("onContextMenuHide callback");
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onContextMenuHide((): void => {
             console.log("onContextMenuHide callback");
           })
       }
@@ -3542,6 +3663,10 @@ onRequestSelected(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3550,6 +3675,7 @@ onRequestSelected(callback: () => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3569,6 +3695,29 @@ onRequestSelected(callback: () => void)
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onRequestSelected(() => {
+            console.log('onRequestSelected');
+          })
+      }
+    }
+  }
+  ```
+
 ## onScreenCaptureRequest<sup>10+</sup>
 
 onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
