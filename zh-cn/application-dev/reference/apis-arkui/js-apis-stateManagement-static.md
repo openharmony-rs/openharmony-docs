@@ -574,6 +574,8 @@ static makeBindingReadonly\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 **示例：**
 
 ```ts
+'use static'
+
 import { UIUtils, Binding, State } from '@ohos.arkui.stateManagement';
 import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
 
@@ -635,6 +637,8 @@ static makeBindingMutable\<T\>(getter: GetterCallback\<T\>, setter: SetterCallba
 **示例：**
 
 ```ts
+'use static'
+
 import { UIUtils, MutableBinding, State } from '@ohos.arkui.stateManagement';
 import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
 
@@ -696,6 +700,8 @@ static overload makeBinding { makeBindingReadonly, makeBindingMutable }
 **示例：**
 
 ```ts
+'use static'
+
 import { UIUtils, Binding, MutableBinding, State } from '@ohos.arkui.stateManagement';
 import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
 
@@ -750,6 +756,8 @@ type GetterCallback\<T\> = () => T
 **示例：**
 
 ```ts
+'use static'
+
 import { UIUtils, Binding, State } from '@ohos.arkui.stateManagement';
 import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
 
@@ -796,6 +804,8 @@ type SetterCallback\<T\> = (newValue: T) => void
 **示例：**
 
 ```ts
+'use static'
+
 import { UIUtils,MutableBinding, State } from '@ohos.arkui.stateManagement';
 import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
 
@@ -857,6 +867,8 @@ get value(): T
 **示例：**
 
 ```ts
+'use static'
+
 import { Binding } from '@ohos.arkui.stateManagement';
 import { Row, Button, Builder } from '@ohos.arkui.component';
 
@@ -903,6 +915,8 @@ get value(): T
 **示例：**
 
 ```ts
+'use static'
+
 import { MutableBinding } from '@ohos.arkui.stateManagement';
 import { Row, Button, ClickEvent, Builder } from '@ohos.arkui.component';
 
