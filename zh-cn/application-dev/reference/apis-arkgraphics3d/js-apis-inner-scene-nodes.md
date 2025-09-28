@@ -131,8 +131,10 @@ function append(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // append 节点
-      result.root?.children.get(0)?.children.append(node);
+      if (node) {
+        // append 结点，如果node已经在children中，数量不会增加，但操作仍然生效
+        result.root?.children.get(0)?.children.append(node);
+      }
     }
   }).catch((error: Error) => {
     console.error('Scene load failed:', error);
@@ -164,7 +166,7 @@ function insertAfter(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       if (node) {
-        // insertAfter 节点
+        // insertAfter 结点，如果node已经在children中，数量不会增加，但操作仍然生效
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
@@ -320,7 +322,7 @@ function count(): void {
 | layerMask | [LayerMask](#layermask) | 是 | 否 | 结点的图层掩码。 |
 | path | string | 是 | 否 | 结点路径。 |
 | parent | [Node](#node) \| null | 是 | 否 | 结点的父结点，不存在则为空值。 |
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的结点，不存在则为空值。 |
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的子结点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子结点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的结点已存在于容器中，容器会先移除该结点再插入，因此数量不会增加，看似“无效”；添加新结点才会真正增加子结点数量。 |
 
 ### getNodeByPath
 getNodeByPath(path: string): Node | null
