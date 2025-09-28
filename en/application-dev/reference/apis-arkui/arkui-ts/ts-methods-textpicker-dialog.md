@@ -40,6 +40,8 @@ Inherits from [TextPickerOptions](ts-basic-components-textpicker.md#textpickerop
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name| Type| Read Only| Optional|  Description|
 | -------- | -------- | -------- |  -------- |  -------- |
 | defaultPickerItemHeight | number \| string | No| Yes| Height of the picker item. For the number type, the value range is [0, +∞). For the string type, only numeric string values, for example, **"56"**, are supported.<br>Default value: 56 vp (selected) and 36 vp (unselected). The set value applies to both selected and unselected items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -80,7 +82,9 @@ Represents the selection result of a **TextPicker** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | value | string \| string []<sup>10+</sup> | No| No| Text of the selected item.<br>**NOTE**<br>When the picker contains text only or both text and imagery, **value** indicates the text value of the selected item. (For a multi-column picker, **value** is of the array type.)<br>For an image list, **value** is empty.<br>The value cannot contain the following escape character: \\|
 | index | number \| number []<sup>10+</sup> | No| No| Index of the selected item in the range. The index is zero-based. (For a multi-column picker, **index** is of the array type.)|

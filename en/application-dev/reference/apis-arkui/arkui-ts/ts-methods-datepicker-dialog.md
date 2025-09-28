@@ -42,6 +42,8 @@ Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickero
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | lunar | boolean | No| Yes| Whether to display the lunar calendar. The value **true** means to display the lunar calendar, and **false** means the opposite.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -83,6 +85,8 @@ Defines the style of the lunar calendar switch in the **DatePickerDialog** compo
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 |  Name | Type                | Read-Only| Optional| Description      |
 | ------ |-------------------|-----|----------|----------|
