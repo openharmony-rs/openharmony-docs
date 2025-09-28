@@ -1,5 +1,12 @@
 # PurgMem
 
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: kernel-->
+<!--Owner: @sagittary-->
+<!--Designer: @OH-wxy-->
+<!--Tester: @sagittary-->
+<!--Adviser: @fang-jinxu-->
+
 ## 概述
 
 可清除的内存结构。
