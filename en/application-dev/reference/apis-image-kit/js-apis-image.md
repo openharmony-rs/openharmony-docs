@@ -1456,7 +1456,7 @@ async function ReadPixelsRGBA(pixelMap : image.PixelMap) {
     pixelMap.readPixels(area).then(() => {
       console.info('Succeeded in reading the image data in the area.'); // Called if the condition is met.
     }).catch((error: BusinessError) => {
-      console.error(`Failed to read the image data in the area. code is ${error.code}, message is ${error.message}`); // Called if no condition is met.
+      console.error("Failed to read the image data in the area. code is ", error);// Called if no condition is met.
     })
   }
 }
@@ -1472,7 +1472,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
     pixelMap.readPixels(area).then(() => {
       console.info('Succeeded in reading the image data in the area.'); // Called if the condition is met.
     }).catch((error: BusinessError) => {
-      console.error(`Failed to read the image data in the area. code is ${error.code}, message is ${error.message}`); // Called if no condition is met.
+      console.error("Failed to read the image data in the area. code is ", error); // Called if no condition is met.
     })
   }
 }
@@ -1519,7 +1519,7 @@ async function ReadPixelsRGBA(pixelMap : image.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.readPixels(area, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to read pixelmap from the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to read pixelmap from the specified area. code is", error);
         return;
       } else {
         console.info('Succeeded in reading pixelmap from the specified area.');
@@ -1538,7 +1538,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.readPixels(area, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to read pixelmap from the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to read pixelmap from the specified area. code is", error);
         return;
       } else {
         console.info('Succeeded in reading pixelmap from the specified area.');
@@ -1641,7 +1641,7 @@ async function WritePixelsRGBA() {
     pixelMap.writePixels(area).then(() => {
       console.info('Succeeded in writing pixelmap into the specified area.');
     }).catch((error: BusinessError) => {
-      console.error(`Failed to write pixelmap into the specified area. code is ${error.code}, message is ${error.message}`);
+      console.error("Failed to write pixelmap into the specified area. code is", error);
     })
   }
 }
@@ -1661,7 +1661,7 @@ async function WritePixelsYUV() {
     pixelMap.writePixels(area).then(() => {
       console.info('Succeeded in writing pixelmap into the specified area.');
     }).catch((error: BusinessError) => {
-      console.error(`Failed to write pixelmap into the specified area. code is ${error.code}, message is ${error.message}`);
+      console.error("Failed to write pixelmap into the specified area. code is", error);
     })
   }
 }
@@ -1710,7 +1710,7 @@ async function WritePixelsRGBA() {
   if (pixelMap != undefined) {
     pixelMap.writePixels(area, (error : BusinessError) => {
       if (error) {
-        console.error(`Failed to write pixelmap into the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to write pixelmap into the specified area. code is", error);
         return;
       } else {
         console.info('Succeeded in writing pixelmap into the specified area.');
@@ -1732,7 +1732,7 @@ async function WritePixelsYUV() {
   if (pixelMap != undefined) {
     pixelMap.writePixels(area, (error : BusinessError) => {
       if (error) {
-        console.error(`Failed to write pixelmap into the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to write pixelmap into the specified area. code is", error);
         return;
       } else {
         console.info('Succeeded in writing pixelmap into the specified area.');
@@ -3587,32 +3587,28 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 **Example**
 
+For details about how to create a PixelMap with DMA_ALLOC memory, see [Default Memory Allocation Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/image-allocator-type#default-memory-allocation-mode).
 ```ts
-import image from '@ohos.multimedia.image';
 import { BusinessError } from '@kit.BasicServicesKit';
+import {image} from '@kit.ImageKit';
 
-let staticMetadata: image.HdrStaticMetadata = {
-  displayPrimariesX: [1.1, 1.1, 1.1],
-  displayPrimariesY: [1.2, 1.2, 1.2],
-  whitePointX: 1.1,
-  whitePointY: 1.2,
-  maxLuminance: 2.1,
-  minLuminance: 1.0,
-  maxContentLightLevel: 2.1,
-  maxFrameAverageLightLevel: 2.1,
-};
-const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } };
-image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+function SetMetadata(pixelMap: image.PixelMap) { // The input parameter pixelMap must be of the DMA_ALLOC memory type. For details about how to create a PixelMap with DMA_ALLOC memory, see the preceding link.
+  let staticMetadata: image.HdrStaticMetadata = {
+    displayPrimariesX: [1.1, 1.1, 1.1],
+    displayPrimariesY: [1.2, 1.2, 1.2],
+    whitePointX: 1.1,
+    whitePointY: 1.2,
+    maxLuminance: 2.1,
+    minLuminance: 1.0,
+    maxContentLightLevel: 2.1,
+    maxFrameAverageLightLevel: 2.1,
+  };
   pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
     console.info('Succeeded in setting pixelMap metadata.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to set the metadata.code ${error.code},message is ${error.message}`);
+    console.error("Failed to set the metadata.code ", error);
   })
-}).catch((error: BusinessError) => {
-  console.error(`Failed to create the PixelMap.code ${error.code},message is ${error.message}`);
-})
-
+}
 ```
 
 ### setTransferDetached<sup>12+<sup>
@@ -3641,7 +3637,6 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
 import image from '@ohos.multimedia.image';
 import taskpool from '@ohos.taskpool';
 
