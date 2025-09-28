@@ -3131,6 +3131,163 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### batchGetPhotoAssetParams<sup>21+</sup>
+
+batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetParams
+
+批量获取传入的[PhotoAsset](js-apis-photoAccessHelper-sys.md#photoasset)对象数组中指定属性的值。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| assets | [PhotoAsset](js-apis-photoAccessHelper-sys.md#photoasset)[] | 是   | 需要批量获取属性的文件数组。 |
+| members | string[] | 是   | 需要批量获取的属性数组。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| [PhotoAssetParams](arkts-apis-photoAccessHelper-t.md#photoassetparams21)| 文件属性名称及其值的Record类型数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202     | Called by non-system application.         |
+| 23800151       | The scenario parameter verification fails. Possible causes: The attribute to be queried does not exist in assets.        |
+| 23800104       | The provided member must be a property name of PhotoKey.        |
+
+**示例：**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(context: Context) {
+  console.info('batchGetPhotoAssetParams');
+  type PhotoAsset = photoAccessHelper.PhotoAsset;
+  let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  const FETCH_COLUMNS: string[] = [
+    photoAccessHelper.PhotoKeys.SIZE,
+    photoAccessHelper.PhotoKeys.DATE_ADDED,
+    photoAccessHelper.PhotoKeys.DATE_MODIFIED,
+    photoAccessHelper.PhotoKeys.PHOTO_TYPE,
+    photoAccessHelper.PhotoKeys.TITLE,
+    photoAccessHelper.PhotoKeys.DATE_MODIFIED_MS,
+    photoAccessHelper.PhotoKeys.DURATION,
+    photoAccessHelper.PhotoKeys.WIDTH,
+    photoAccessHelper.PhotoKeys.HEIGHT,
+    photoAccessHelper.PhotoKeys.DATE_TRASHED_MS,
+    photoAccessHelper.PhotoKeys.POSITION,
+    photoAccessHelper.PhotoKeys.DATE_TAKEN,
+    'owner_album_id',
+    'thumbnail_ready',
+    'data',
+  ];
+  const keyToGet: string[] = [
+    photoAccessHelper.PhotoKeys.URI,
+    photoAccessHelper.PhotoKeys.DISPLAY_NAME,
+    photoAccessHelper.PhotoKeys.DATE_ADDED,
+    photoAccessHelper.PhotoKeys.SIZE,
+    photoAccessHelper.PhotoKeys.DURATION,
+    photoAccessHelper.PhotoKeys.WIDTH,
+    photoAccessHelper.PhotoKeys.HEIGHT,
+    'data',
+    photoAccessHelper.PhotoKeys.THUMBNAIL_READY,];
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: FETCH_COLUMNS,
+    predicates: predicates
+  };
+  let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: albumPredicates
+  }
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.
+  getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+  let photoAssetsFetchResult: photoAccessHelper.FetchResult<PhotoAsset> = await album.getAssets(fetchOptions);
+  let photoAssets: PhotoAsset[] = await photoAssetsFetchResult.getAllObjects();
+  const batchParamOfPhotoAssets: photoAccessHelper.PhotoAssetParams =
+   phAccessHelper.batchGetPhotoAssetParams(photoAssets, keyToGet);
+  console.info(`batchGetPhotoAssetParams success, the length is ${batchParamOfPhotoAssets.length}`);
+}
+```
+
+### getRangeObjects<sup>21+</sup>
+
+getRangeObjects(index: number, offset: number): Promise\<T[]\>
+
+获取从指定的索引开始一定数量的文件资产。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明                 |
+| -------- | ---------------------------------------- | ---- | ------------------ |
+| index    | number                                   | 是    | 要获取的文件索引起点，大于等于0，小于检索结果中对象数量。     |
+| offset    | number                                   | 是    | 要获取的文件数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。     |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<T[]\>| Promise异步回调数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202     | Called by non-system application.         |
+| 23800151       | The scenario parameter verification fails. Possible causes: 'index' or 'offset' validity check failed.          |
+| 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
+
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getRangeObjectsDemo');
+  type PhotoAsset = photoAccessHelper.PhotoAsset;
+  let testNum: string = "getRangeObjects_test_002";
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+  };
+  let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let count: number = fetchResult1.getCount();
+  const half: number = Math.ceil(count / 2);
+  let promises: Promise<PhotoAsset[]>[] = [];
+  promises[0] = fetchResult1.getRangeObjects(0, half);
+  promises[1] = fetchResult2.getRangeObjects(half, count - half);
+  let photoAssetsArray: PhotoAsset[][] = await Promise.all(promises);
+  let photoAssets: PhotoAsset[] = photoAssetsArray[0].concat(photoAssetsArray[1]);
+  console.info('photoAssets length: ', photoAssets.length);
+}
+```
+
 ## PhotoAsset
 
 提供封装文件属性的方法。
