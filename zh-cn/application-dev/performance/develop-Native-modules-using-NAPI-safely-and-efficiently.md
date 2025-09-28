@@ -92,7 +92,7 @@ static napi_value TestDefineClass(napi_env env, napi_callback_info info) {
 
   status = napi_define_class(NULL, "TrackedFunction", NAPI_AUTO_LENGTH, TestDefineClass, NULL, 1, &property_descriptor,&result);
   SaveConstructor(env, result);
-  ...
+  // ...
 }
 ```
 ```cpp
