@@ -1,4 +1,12 @@
 # Background Tasks Kit（后台任务开发服务）<!--background-task-kit-->
+
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 - [Background Tasks Kit简介](background-task-overview.md)
 - [短时任务(ArkTS)](transient-task.md)
 - [短时任务(C/C++)](native-transient-task.md)
