@@ -1474,7 +1474,7 @@ localServer.off('error');
 | 名称 | 类型   | 只读 |可选| 说明                |
 | ------ | ------ | ---- |---|----------------|
 | certPath   | string  | 否   |否 |证书路径。             |
-| keyPath | string | 是   |否| 证书密钥的路径。          |
+| keyPath | string | 否   |否| 证书密钥的路径。          |
 | keyPassword | string | 否   |是| 证书密钥的密码。缺省为空字符串。 |
 
 ## ProxyConfiguration<sup>12+</sup>
