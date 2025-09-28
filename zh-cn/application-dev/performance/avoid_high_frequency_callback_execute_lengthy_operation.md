@@ -1,5 +1,12 @@
 # 避免在滑动场景的高频回调接口中处理耗时操作
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 在滑动场景或者频繁创建和销毁组件等场景中，容易出现应用卡顿丢帧的问题。大多是由于场景中存在高频的接口调用，同时接口中执行了耗时操作，导致应用出现卡顿丢帧的现象，严重影响用户体验。为了帮助开发者优化应用性能，提升用户体验，本文将介绍以下四种需要避免处理耗时操作的高频场景：
 - **组件复用时避免在aboutToReuse中执行耗时操作。** 例如，在滑动场景中，使用组件复用通常需要用生命周期回调aboutToReuse去更新组件的状态变量。在滑动时，aboutToReuse会被频繁调用。如果在aboutToReuse中进行了耗时操作，将导致应用出现卡顿丢帧的问题。
@@ -13,7 +20,7 @@
 ```ts
 aboutToReuse(params: Record<string, number>) {
   this.item = params.item;
-  console.log("Scenario 1 aboutToReuse");
+  console.info("Scenario 1 aboutToReuse");
 }
 ```
 
@@ -45,7 +52,7 @@ aboutToReuse(params: Record<string, number>) {
   // 模拟耗时操作
   this.count();
 }
-...
+// ...
 ```
 
 **正例：**
@@ -53,11 +60,11 @@ aboutToReuse(params: Record<string, number>) {
 在aboutToReuse中不进行耗时操作。
 
 ```ts
-...
+// ...
 aboutToReuse(params: Record<string, number>) {
   this.item = params.item;
 }
-...
+// ...
 ```
 
 **效果对比**
@@ -106,11 +113,11 @@ struct Index {
 @Component
 struct CustomComponentA {
   aboutToAppear() {
-    console.log("CustomComponentA aboutToAppear");
+    console.info("CustomComponentA aboutToAppear");
   }
 
   aboutToDisappear() {
-    console.log("CustomComponentA aboutToDisappear");
+    console.info("CustomComponentA aboutToDisappear");
   }
 
   build() {
@@ -122,11 +129,11 @@ struct CustomComponentA {
 @Component
 struct CustomComponentB {
   aboutToAppear() {
-    console.log("CustomComponentB aboutToAppear");
+    console.info("CustomComponentB aboutToAppear");
   }
 
   aboutToDisappear() {
-    console.log("CustomComponentB aboutToDisappear");
+    console.info("CustomComponentB aboutToDisappear");
   }
 
   build() {
@@ -164,7 +171,7 @@ class MyDataSource implements IDataSource {
 
   // 返回指定索引位置的数据
   public getData(index: number): number {
-    console.log("Scenario 3 getData,index value:" + this.dataArray[index]);
+    console.info("Scenario 3 getData,index value:" + this.dataArray[index]);
     return this.dataArray[index];
   }
 
@@ -189,13 +196,13 @@ struct MyComponent {
   
   // itemGenerator入参函数
   itemGeneratorFunc(item: number): number {
-    console.log("Scenario 3 itemGenerator,item:" + item);
+    console.info("Scenario 3 itemGenerator,item:" + item);
     return item;
   }
 
   // keyGenerator入参函数
   keyGeneratorFunc(item: number): string {
-    console.log("Scenario 3 keyGenerator,item:" + item);
+    console.info("Scenario 3 keyGenerator,item:" + item);
     return JSON.stringify(item);
   }
 
@@ -262,7 +269,7 @@ struct ReusableChildComponent {
 在itemGenerator入参函数中执行耗时操作。
 
 ```ts
-...
+// ...
 itemGeneratorFunc(item: number): number {
   // 这里用循环函数模拟耗时操作
   let temp: number = 0;
@@ -272,7 +279,7 @@ itemGeneratorFunc(item: number): number {
   item += temp;
   return item;
 }
-...
+// ...
 Grid() {
   LazyForEach(this.data, (item: number) => {
     GridItem() {
@@ -281,7 +288,7 @@ Grid() {
     }
   }, (item: number) => JSON.stringify(item))
 }
-...
+// ...
 ```
 
 **正例：**
@@ -293,7 +300,7 @@ Grid() {
 private timeConsumingValue: number = 0;
 
 aboutToAppear() {
-  ...
+  // ...
   // 执行该异步函数
   this.itemGeneratorFunc();
 }
@@ -306,7 +313,7 @@ async itemGeneratorFunc() {
   }
   this.timeConsumingValue = temp;
 }
-...
+// ...
 Grid() {
   LazyForEach(this.data, (item: number) => {
     GridItem() {
@@ -315,7 +322,7 @@ Grid() {
     }
   }, (item: number) => JSON.stringify(item))
 }
-...
+// ...
 ```
 
 ### 避免在LazyForEach的keyGenerator中执行耗时操作
@@ -325,7 +332,7 @@ Grid() {
 在keyGenerator入参函数中执行耗时操作。
 
 ```ts
-...
+// ...
 keyGeneratorFunc(item: number): string {
   // 这里用循环函数模拟耗时操作
   let temp: number = 0;
@@ -335,7 +342,7 @@ keyGeneratorFunc(item: number): string {
   item += temp;
   return JSON.stringify(item);
 }
-...
+// ...
 Grid() {
   LazyForEach(this.data, (item: number) => {
     GridItem() {
@@ -343,7 +350,7 @@ Grid() {
     }
   }, (item: number) => this.keyGeneratorFunc(item)) // 传入耗时操作函数入参this.keyGeneratorFunc(item)
 }
-...
+// ...
 ```
 
 **正例：**
@@ -355,7 +362,7 @@ Grid() {
 private timeConsumingValue: number = 0;
 
 aboutToAppear() {
-  ...
+  // ...
   // 执行该异步函数
   this.keyGeneratorFunc();
 }
@@ -368,7 +375,7 @@ async keyGeneratorFunc() {
   }
   this.timeConsumingValue = temp;
 }
-...
+// ...
 Grid() {
   LazyForEach(this.data, (item: number) => {
     GridItem() {
@@ -377,7 +384,7 @@ Grid() {
     }
   }, (item: number) => JSON.stringify(item + this.timeConsumingValue))
 }
-...
+// ...
 ```
 
 ### 避免在LazyForEach的getData中执行耗时操作
@@ -387,7 +394,7 @@ Grid() {
 在getData中执行耗时操作。
 
 ```ts
-...
+// ...
 // 返回指定索引位置的数据
 public getData(index: number): number {
   // 这里用循环函数模拟耗时操作
@@ -397,7 +404,7 @@ public getData(index: number): number {
   }
   return this.dataArray[index];
 }
-...
+// ...
 ```
 
 **正例：**
@@ -405,13 +412,13 @@ public getData(index: number): number {
 避免在getData中执行耗时操作。
 
 ```ts
-...
+// ...
 // 返回指定索引位置的数据
 public getData(index: number): number {
   // 不在getData中执行耗时操作
   return this.dataArray[index];
 }
-...
+// ...
 ```
 
 **效果对比**
@@ -446,7 +453,7 @@ struct Index {
 
   // 获取Row组件高度
   getHeight(): number {
-    console.log("Scenario 4 call getHeight");
+    console.info("Scenario 4 call getHeight");
     return 100;
   }
 
@@ -456,7 +463,7 @@ struct Index {
       Button('change row width').onClick(() => {
         this.rowWidth = this.rowWidth + 20;
         this.count++;
-        console.log("Scenario 4 change row width count:" + this.count);
+        console.info("Scenario 4 change row width count:" + this.count);
         if (this.rowWidth > 200) {
           this.rowWidth = 100;
         }
@@ -480,7 +487,7 @@ struct Index {
 在getHeight()中添加耗时操作作为反例。
 
 ```ts
-...
+// ...
   // 获取Row组件高度
   getHeight(): number {
     let height: number = 0;
@@ -488,10 +495,10 @@ struct Index {
     for (let index = 0; index < 1000000; index++) {
       height += 0.0001;
     }
-    console.log("Scenario 4 call getHeight");
+    console.info("Scenario 4 call getHeight");
     return height;
   }
-...
+// ...
 ```
 
 **正例：**
@@ -508,7 +515,7 @@ function getHeight(): number {
   for (let index = 0; index < 1000000; index++) {
     height += 0.0001;
   }
-  console.log("Scenario 4 call getHeight");
+  console.info("Scenario 4 call getHeight");
   return height;
 }
 
@@ -532,7 +539,7 @@ struct Index {
       Button('change row width').onClick(() => {
         this.rowWidth = this.rowWidth + 20;
         this.count++;
-        console.log("Scenario 4 change row width count:" + this.count);
+        console.info("Scenario 4 change row width count:" + this.count);
         if (this.rowWidth > 200) {
           this.rowWidth = 100;
         }
