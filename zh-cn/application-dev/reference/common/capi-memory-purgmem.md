@@ -16,4 +16,3 @@
 **相关模块：** [memory](capi-memory.md)
 
 **所在头文件：** [purgeable_memory.h](capi-purgeable-memory-h.md)
-
