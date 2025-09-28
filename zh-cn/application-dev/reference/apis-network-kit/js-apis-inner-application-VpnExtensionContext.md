@@ -50,7 +50,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 | 名称   | 类型                                                         | 只读 |可选| 说明           |
 |------| ------------------------------------------------------------ | ---- | ---|----------- |
-| context | [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md) | 否   | 否|指定 context。 |
+| context | [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md) | 否   | 否|指定context。 |
 
 
 ### onCreate
