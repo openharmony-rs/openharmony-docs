@@ -336,6 +336,7 @@ zh-cn/application-dev/ui/arkts-rotation-transition-animation.md	@CCFFWW	@lxl007	
 zh-cn/application-dev/ui/arkts-router-to-navigation.md	@jiangdayuan	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-routing.md	@jiangdayuan	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-shadow-effect.md	@CCFFWW	@lxl007	@HelloCrease
+zh-cn/application-dev/ui/arkts-shape-overview.md	@sunbees	@CCFFWW	@liuli0427	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-sheet-page.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-spring-curve.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-styled-string.md	@pssea	@jiaoaozihao	@HelloCrease
@@ -1107,7 +1108,17 @@ zh-cn/application-dev/reference/apis-arkui/capi-native-node-h.md	@xiang-shouxing
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-napi-h.md	@xiang-shouxing	@fredyuan912	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-native-render-h.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-native-type-h.md	@xiang-shouxing	@fredyuan912	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-native-xcomponent-key-event-h.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-nativewindow.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-expectedraterange.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-mouseevent-callback.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md	@sunbees	@liuli0427	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-styled-string-h.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-ui-input-event-h.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-animator.md	@CCFFWW	@lxl007	@HelloCrease
