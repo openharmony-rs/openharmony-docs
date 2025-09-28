@@ -1,4 +1,12 @@
 # Appendix: Standard Intent Access Specifications
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Media Domain
 ### Playing Videos 
 Requests to play a video. It supports parameters such as video entities and episode information, and returns the playback result status.

@@ -4,7 +4,7 @@
 <!--Subsystem: AGC-->
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
-<!--Tester: @yizhixiaosiqin-->
+<!--Tester: @lusq-->
 <!--Adviser: @huipeizi-->
 
 This topic describes how to open the vertical domain panel of navigation applications.
@@ -97,10 +97,10 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
 							};
 							let abilityStartCallback: common.AbilityStartCallback = {
 								onError: (code: number, name: string, message: string) => {
-									console.log(`onError code ${code} name: ${name} message: ${message}`);
+									console.error(`onError code ${code} name: ${name} message: ${message}`);
 								},
 								onResult: (result) => {
-									console.log(`onResult result: ${JSON.stringify(result)}`);
+									console.info(`onResult result: ${JSON.stringify(result)}`);
 								}
 							}
 
@@ -109,7 +109,7 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
 									if (err) {
 										console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
 									} else {
-										console.log(`success`);
+										console.info(`success`);
 									}
 								});
 						});

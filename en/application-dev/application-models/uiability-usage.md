@@ -1,5 +1,11 @@
 # UIAbility Usage
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 When using the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) component, you must specify a startup page and obtain the context, [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).
 
@@ -198,24 +204,24 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
     export default class UIAbilityB extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // The caller does not need to manually pass parameters. The system automatically passes the caller's information to the Want object.
-        console.log(`onCreate, callerPid: ${want.parameters?.['ohos.aafwk.param.callerPid']}.`);
-        console.log(`onCreate, callerBundleName: ${want.parameters?.['ohos.aafwk.param.callerBundleName']}.`);
-        console.log(`onCreate, callerAbilityName: ${want.parameters?.['ohos.aafwk.param.callerAbilityName']}.`);
+        console.info(`onCreate, callerPid: ${want.parameters?.['ohos.aafwk.param.callerPid']}.`);
+        console.info(`onCreate, callerBundleName: ${want.parameters?.['ohos.aafwk.param.callerBundleName']}.`);
+        console.info(`onCreate, callerAbilityName: ${want.parameters?.['ohos.aafwk.param.callerAbilityName']}.`);
       }
 
       onDestroy(): void {
-        console.log(`UIAbilityB onDestroy.`);
+        console.info(`UIAbilityB onDestroy.`);
       }
 
       onWindowStageCreate(windowStage: window.WindowStage): void {
-        console.log(`Ability onWindowStageCreate.`);
+        console.info(`Ability onWindowStageCreate.`);
 
         windowStage.loadContent('pages/Index', (err) => {
           if (err.code) {
             console.error(`Failed to load the content, error code: ${err.code}, error msg: ${err.message}.`);
             return;
           }
-          console.log(`Succeeded in loading the content.`);
+          console.info(`Succeeded in loading the content.`);
         });
       }
     }

@@ -566,7 +566,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
         // The background service is connected.
         hilog.info(DOMAIN_NUMBER, TAG, `sendRequest success, msg: ${msg}`);
       }).catch((error: BusinessError) => {
-        hilog.info(DOMAIN_NUMBER, TAG, `sendRequest failed, ${JSON.stringify(error)}`);
+        hilog.error(DOMAIN_NUMBER, TAG, `sendRequest failed, ${JSON.stringify(error)}`);
       });
     },
     onDisconnect(elementName): void {
@@ -616,7 +616,7 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
         }
         // The verification is successful, and service logic is executed normally.
       }).catch((err: BusinessError) => {
-        hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
+        hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
       //...
     };
@@ -663,7 +663,7 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
         }
         // The verification is successful, and service logic is executed normally.
       }).catch((err: BusinessError) => {
-        hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
+        hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
   
       let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();

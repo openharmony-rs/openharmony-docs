@@ -1,9 +1,9 @@
-# @ohos.app.ability.AbilityStage (Component Manager)
+# @ohos.app.ability.AbilityStage (AbilityStage Component Manager)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -56,7 +56,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
-    console.log('MyAbilityStage.onCreate is called');
+    console.info('MyAbilityStage.onCreate is called');
   }
 }
 ```
@@ -98,7 +98,7 @@ import { AbilityStage, Want } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onAcceptWant(want: Want) {
-    console.log('MyAbilityStage.onAcceptWant called');
+    console.info('MyAbilityStage.onAcceptWant called');
     return 'com.example.test';
   }
 }
@@ -108,9 +108,9 @@ export default class MyAbilityStage extends AbilityStage {
 
 onNewProcessRequest(want: Want): string
 
-Called when a UIAbility or UIExtensionAbility, which is configured to run in an independent process (with **isolationProcess** set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file), is launched. This API returns a string representing the unique process ID. This API returns the result synchronously and does not support asynchronous callbacks.
+Called when a UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd-->, which is configured to run in an independent process (with **isolationProcess** set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file), is launched. This API returns a string representing the unique process ID. This API returns the result synchronously and does not support asynchronous callbacks.
 
-If the application already has a process with the same ID, the UIAbility or UIExtensionAbility runs in that process. Otherwise, a new process is created.
+If the application already has a process with the same ID, the UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd--> runs in that process. Otherwise, a new process is created.
 
 If you implement both **onNewProcessRequest** and [onAcceptWant](#onacceptwant), the system first invokes the **onNewProcessRequest** callback, and then the **onAcceptWant** callback.
 
@@ -118,21 +118,20 @@ If you implement both **onNewProcessRequest** and [onAcceptWant](#onacceptwant),
 The **isolationProcess** field can be set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file, but only for the UIExtensionAbility of the sys/commonUI type.
 <!--DelEnd-->
 
-This API takes effect only on 2-in-1 devices and tablets.
-
 > **NOTE**
 >
-> - In API version 19 and earlier, only a UIAbility can be launched in the specified process. Starting from API version 20, a UIExtensionAbility can also be launched in the specified process.
+> - In API version 19 and earlier, only a UIAbility can be launched in the specified process. <!--Del-->Starting from API version 20, a UIExtensionAbility can also be launched in the specified process.<!--DelEnd-->
 > - Starting from API version 20, this callback is not executed when [AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync20) is implemented.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want type parameter that includes the launch parameters provided by the caller, such as the UIAbility or UIExtensionAbility name and bundle name.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want type parameter that includes the launch parameters provided by the caller, such as the UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd--> name and bundle name.|
 
 **Return value**
 
@@ -147,7 +146,7 @@ import { AbilityStage, Want } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onNewProcessRequest(want: Want) {
-    console.log('MyAbilityStage.onNewProcessRequest called');
+    console.info('MyAbilityStage.onNewProcessRequest called');
     return 'com.example.test';
   }
 }
@@ -177,7 +176,7 @@ import { AbilityStage, Configuration } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onConfigurationUpdate(config: Configuration) {
-    console.log(`MyAbilityStage.onConfigurationUpdate, language: ${config.language}`);
+    console.info(`MyAbilityStage.onConfigurationUpdate, language: ${config.language}`);
   }
 }
 ```
@@ -207,7 +206,7 @@ import { AbilityStage, AbilityConstant } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
-    console.log(`MyAbilityStage.onMemoryLevel, level: ${JSON.stringify(level)}`);
+    console.info(`MyAbilityStage.onMemoryLevel, level: ${JSON.stringify(level)}`);
   }
 }
 ```
@@ -229,7 +228,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onDestroy() {
-    console.log('MyAbilityStage.onDestroy is called');
+    console.info('MyAbilityStage.onDestroy is called');
   }
 }
 ```
@@ -242,8 +241,6 @@ Called when the application is closed by the user, allowing the user to choose b
 
 > **NOTE**
 >
-> - Starting from API version 15, this API takes effect only on 2-in-1 devices. Starting from API version 19, it takes effect on tablets.
->
 > - The API is called only when the application exits under normal circumstances (for example, when the application is closed through the doc bar or tray, or when the application shuts down along with the device). It will not be called if the application is terminated forcibly.
 >
 > - This API is not executed when [AbilityStage.onPrepareTerminationAsync](#onprepareterminationasync15) is implemented.
@@ -254,6 +251,9 @@ Called when the application is closed by the user, allowing the user to choose b
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 15, this API executes the callback normally only on 2-in-1 devices. It does not execute the callback on other devices.
+- Starting from API version 19, this API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
 
 **Return value**
 
@@ -282,8 +282,6 @@ Called when the application is closed by the user, allowing the user to choose b
 
 > **NOTE**
 >
-> - Starting from API version 15, this API takes effect only on 2-in-1 devices. Starting from API version 19, it takes effect on tablets.
->
 > - The API is called only when the application exits under normal circumstances (for example, when the application is closed through the doc bar or tray, or when the application shuts down along with the device). It will not be called if the application is terminated forcibly.
 >
 > - If an asynchronous callback crashes, it will be handled as a timeout. If the application does not respond within 10 seconds, it will be terminated forcibly.
@@ -294,6 +292,9 @@ Called when the application is closed by the user, allowing the user to choose b
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 15, this API executes the callback normally only on 2-in-1 devices. It does not execute the callback on other devices.
+- Starting from API version 19, this API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
 
 **Return value**
 
@@ -359,32 +360,31 @@ class MyAbilityStage extends AbilityStage {
 
 onNewProcessRequestAsync(want: Want): Promise\<string\>
 
-Called when a UIAbility or UIExtensionAbility, which is configured to run in an independent process (with **isolationProcess** set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file), is launched. This API returns a string representing the unique process ID. This API uses a promise to return the result.
+Called when a UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd-->, which is configured to run in an independent process (with **isolationProcess** set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file), is launched. This API returns a string representing the unique process ID. This API uses a promise to return the result.
 
-If the application already has a process with the same ID, the UIAbility or UIExtensionAbility runs in that process. Otherwise, a new process is created.
+If the application already has a process with the same ID, the UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd--> runs in that process. Otherwise, a new process is created.
 
 <!--Del-->
 The **isolationProcess** field can be set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file, but only for the UIExtensionAbility of the sys/commonUI type.
 <!--DelEnd-->
 
-This API takes effect only on 2-in-1 devices and tablets.
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want type parameter that includes the launch parameters provided by the caller, such as the UIAbility or UIExtensionAbility name and bundle name.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want type parameter that includes the launch parameters provided by the caller, such as the UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd--> name and bundle name.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<string\> | Promise used to return a string representing the process ID. If the application already has a process with the same ID, the UIAbility or UIExtensionAbility runs in that process. Otherwise, a new process is created.|
+| Promise\<string\> | Promise used to return a string representing the process ID. If the application already has a process with the same ID, the UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd--> runs in that process. Otherwise, a new process is created.|
 
 **Example**
 

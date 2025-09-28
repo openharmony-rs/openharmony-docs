@@ -1,5 +1,12 @@
 # Using startAbilityByType to Start a Financial Application
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: AGC-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 This topic describes how to open the vertical domain panel of financial applications.
 
 ## Parameters on the Financial Application Panel
@@ -38,10 +45,10 @@ If the **type** field in **startAbilityByType** is set to **finance**, **wantPar
                             };
                             let abilityStartCallback: common.AbilityStartCallback = {
                                 onError: (code: number, name: string, message: string) => {
-                                    console.log(`onError code ${code} name: ${name} message: ${message}`);
+                                    console.error(`onError code ${code} name: ${name} message: ${message}`);
                                 },
                                 onResult: (result) => {
-                                    console.log(`onResult result: ${JSON.stringify(result)}`);
+                                    console.info(`onResult result: ${JSON.stringify(result)}`);
                                 }
                             }
 
@@ -50,7 +57,7 @@ If the **type** field in **startAbilityByType** is set to **finance**, **wantPar
                                     if (err) {
                                         console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
                                     } else {
-                                        console.log(`success`);
+                                        console.info(`success`);
                                     }
                                 });
                         });

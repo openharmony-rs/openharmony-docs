@@ -2084,6 +2084,9 @@ Moves this UIAbility from the foreground to the background. This API uses a prom
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 12, this API can be properly called on phones, wearables, and TVs. If it is called on other device types, error code 16000061 is returned.
+- Starting from API version 13, this API can be properly called on phones, tablets, wearables, and TVs. If it is called on other device types, error code 16000061 is returned.
 
 **Return value**
 
