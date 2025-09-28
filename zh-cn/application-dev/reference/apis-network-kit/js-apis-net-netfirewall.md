@@ -632,7 +632,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 | 名称        | 类型   |只读|可选| 说明                                             |
 | ----------- | -------|----|------|------------------------------------------|
-| type        | number | 否 |否 |1：IP地址或子网，当使用单个IP时，掩码为32。 <br />2：IP段。  <br /> |
+| type        | number | 否 |否 |1：IP地址或子网，当使用单个IP时，掩码为32。 <br />2：IP段。  |
 | family      | number | 否 | 是|1：表示family设置为IPv4。<br />2：表示family设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
 | address     | string | 否 | 是|IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
 | mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |
