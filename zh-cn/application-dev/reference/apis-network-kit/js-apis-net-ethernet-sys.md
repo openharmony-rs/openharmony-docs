@@ -567,7 +567,7 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 
 ## InterfaceStateInfo<sup>11+</sup>
 
-监听以太网卡状态变化
+监听以太网卡状态变化。
 
 **系统接口**：此接口为系统接口。
 
