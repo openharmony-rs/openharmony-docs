@@ -190,8 +190,8 @@ setData(dataType: DataType, data: Object): void
 
 |  参数名        | 类型                                    | 必填  | 说明  |
 | ------------------------- | ------------------ | ----- | --------------- |
-| dataType | [DataType](#datatype) | 是 | 发送数据的数据类型。|
-| data | Object | 是 | 发送的数据。 | 
+| dataType | [DataType](#datatype) | 是 | 发送增加配置数据的数据类型。|
+| data | Object | 是 | 发送的增加配置数据。 | 
 
 ### addData<sup>21+</sup>
 
@@ -340,7 +340,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 | duration   | number                | 否   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoSubType<sup>21+</sup>   | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否   | 图片类型，见[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)定义，包括movingPhoto、brust等。非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否   | 媒体文件动态范围模型，见[DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)定义，包括HDR、SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-| orientation<sup>21+</sup>   | number             | 否   | 图片/视频方向信息：<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，镜像水平翻转再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，镜像水平翻转再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+| orientation<sup>21+</sup>   | number             | 否   | 图片/视频方向信息。<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 ## ItemInfo
 

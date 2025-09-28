@@ -157,7 +157,7 @@ PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker�
 
 | 名称                    | 类型                | 必填 | 说明                          |
 | ----------------------- | ------------------- | ---- | -------------------------------- |
-| albumUri    | string | 是   | 用户选择完成退出时的相册信息。<br/>albumUri对应媒体库中相册的uri。<br>-当上次在所有图片中选择时，albumUri为固定的"allPhotos"字符串。<br/>- 当用户在搜索结果/文本推荐/头像推荐中完成选择退出时，不支持下次恢复现场。因此Picker返回的albumUri为空字符串，不支持恢复现场。<br/>默认值为空字符串。 |
+| albumUri    | string | 是   | 用户选择完成退出时的相册信息。<br/>albumUri对应媒体库中相册的uri。<br>- 当上次在所有图片中选择时，albumUri为固定的"allPhotos"字符串。<br/>- 当用户在搜索结果/文本推荐/头像推荐中完成选择退出时，不支持下次恢复现场。因此Picker返回的albumUri为空字符串，不支持恢复现场。<br/>默认值为空字符串。 |
 | time    | number   | 是   | 用户上次选择图片的宫格界面，左上角首张图片的时间。<br/>- 按拍摄时间排序的相册，返回拍摄时间。<br/>- 按保存时间排序的相册返回保存时间。默认为0。 |
 | displayName    | string   | 是   | 用户上次选择图片的宫格界面，左上角首张图片的文件名。默认为空字符串。 |
 | recommendationType    | number   | 是   | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未设置推荐时，默认为0。|
