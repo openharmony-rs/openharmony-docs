@@ -10,9 +10,9 @@
 
 ### COMMON_EVENT_PACKAGE_RESTARTED
 
-表示用户重启应用包并杀死其所有进程。
+表示用户重启应用包并终止其所有进程。
 
-在设备上指定用户重启应用包并杀死其所有进程，将会触发事件通知服务发布该系统公共事件。
+在设备上指定用户重启应用包并终止其所有进程，将会触发事件通知服务发布该系统公共事件。
 
 > **说明：** 
 > 
@@ -1254,8 +1254,8 @@ Wi-Fi状态变化。
 
 
 
-## Store Kit
-Store Kit面向应用发布如下系统公共事件。
+## AppGallery Kit
+AppGallery Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+<sup>
 表示隐私签署结果的公共事件。
