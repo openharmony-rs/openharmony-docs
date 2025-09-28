@@ -3522,6 +3522,7 @@
           - [ArkUI_PixelRoundPolicy](reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
           - [ArkUI_StyledString](reference/apis-arkui/capi-arkui-nativemodule-arkui-styledstring.md)
           - [ArkUI_UIInputEvent](reference/apis-arkui/capi-arkui-eventmodule-arkui-uiinputevent.md)
+          - [ArkUI_ShowCounterConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
           - [PictureInPicture_PipConfig](reference/apis-arkui/capi-pictureinpicture-pipconfig.md)
           - [WindowManager_Rect](reference/apis-arkui/capi-windowmanager-rect.md)
           - [OH_PixelmapNative](reference/apis-arkui/capi-struct.md)

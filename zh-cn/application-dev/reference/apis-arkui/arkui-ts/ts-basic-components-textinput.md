@@ -3059,3 +3059,38 @@ struct TextInputExample {
 ```
 
 ![textInputEnableAutoSpacing](figures/textInputEnableAutoSpacing.png)
+
+### 示例22（设置字符计数颜色以及超出字符颜色）
+
+从API version 22开始，该示例通过[showCounter](#showcounter11)属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextInputExample {
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: this.text, controller: this.controller })
+        .placeholderFont({ size: 16, weight: 400 })
+        .width(336)
+        .height(56)
+        .maxLength(6)
+        .showCounter(true, {
+          thresholdPercentage: 50,
+          highlightBorder: true,
+          counterTextColor: ColorMetrics.resourceColor(Color.Red),
+          counterTextOverflowColor: ColorMetrics.resourceColor(Color.Orange)
+        })
+        .onChange((value: string) => {
+          this.text = value;
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![TextInputShowCounterColor](figures/TextInputShowCounterColor.gif)
