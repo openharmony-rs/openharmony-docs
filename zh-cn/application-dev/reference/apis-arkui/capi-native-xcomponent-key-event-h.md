@@ -14,8 +14,6 @@
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
 
-**相关示例：** 
-
 ## 汇总
 
 ### 枚举
