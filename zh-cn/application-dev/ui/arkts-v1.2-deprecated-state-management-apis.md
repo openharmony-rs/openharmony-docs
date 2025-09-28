@@ -8,7 +8,7 @@ ArkTS-Dyn中已废弃，并在ArkTS-Sta中不再支持以下接口。
 
 ArkTS-Dyn接口声明：[static Clear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#cleardeprecated)
 
-替代的ArkTS-Sta接口声明：[static clear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#clear10)
+替代的ArkTS-Sta接口声明：[static clear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#clear)
 
 
 
@@ -48,7 +48,7 @@ let res: boolean = AppStorage.delete('PropA');
 
 ArkTS-Dyn接口声明：[static Get\<T\>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#getdeprecated)
 
-替代的ArkTS-Sta接口声明：[static get\<T\>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#get10)
+替代的ArkTS-Sta接口声明：[static get\<T\>(propName: string): T | undefined](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#get)
 
 
 
@@ -68,7 +68,7 @@ let value: number = AppStorage.get<number>('PropA') as number;
 
 ArkTS-Dyn接口声明：[static Has(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#hasdeprecated)
 
-替代的ArkTS-Sta接口声明：[static has(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#has10)
+替代的ArkTS-Sta接口声明：[static has(propName: string): boolean](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#has)
 
 
 
@@ -108,7 +108,7 @@ let mutable: boolean = true;
 
 ArkTS-Dyn接口声明：[static Keys(): IterableIterator\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated)
 
-替代的ArkTS-Sta接口声明：[static keys(): IterableIterator\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10)
+替代的ArkTS-Sta接口声明：[static keys(): IterableIterator\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#keys)
 
 
 
@@ -128,7 +128,7 @@ let keys: IterableIterator<string> = AppStorage.keys();
 
 ArkTS-Dyn接口声明：[static Link(propName: string): any](../reference/apis-arkui/arkui-ts/ts-state-management.md#linkdeprecated)
 
-替代的ArkTS-Sta接口声明：[static link\<T\>(propName: string): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#link10)
+替代的ArkTS-Sta接口声明：[static link\<T\>(propName: string): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#link)
 
 
 
@@ -150,7 +150,7 @@ ArkTS-Dyn接口声明：[static Prop(propName: string): any](../reference/apis-a
 
 ArkTS-Sta未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
 
-替代的ArkTS-Sta接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\> | undefined](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
+替代的ArkTS-Sta接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\> | undefined](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#ref)
 
 
 
@@ -172,7 +172,7 @@ ref?.set(48);
 
 ArkTS-Dyn接口声明：[static Set\<T\>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#setdeprecated)
 
-替代的ArkTS-Sta接口声明：[static set\<T\>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#set10)
+替代的ArkTS-Sta接口声明：[static set\<T\>(propName: string, newValue: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#set)
 
 
 
@@ -192,7 +192,7 @@ let res: boolean = AppStorage.set<number>('PropA', 47);
 
 ArkTS-Dyn接口声明：[static SetAndLink\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandlinkdeprecated)
 
-替代的ArkTS-Sta接口声明：[static setAndLink\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandlink10)
+替代的ArkTS-Sta接口声明：[static setAndLink\<T\>(propName: string, defaultValue: T): SubscribedAbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#setandlink)
 
 
 
@@ -214,7 +214,7 @@ ArkTS-Dyn接口声明：[static SetAndProp\<S\>(propName: string, defaultValue: 
 
 ArkTS-Sta未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS-Sta接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+替代的ArkTS-Sta接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#setandref)
 
 
 
@@ -234,7 +234,7 @@ let ref: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 49);
 
 ArkTS-Dyn接口声明：[static SetOrCreate\<T\>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#setorcreatedeprecated)
 
-替代的ArkTS-Sta接口声明：[static setOrCreate\<T\>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#setorcreate10)
+替代的ArkTS-Sta接口声明：[static setOrCreate\<T\>(propName: string, newValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#setorcreate)
 
 
 
@@ -254,7 +254,7 @@ AppStorage.setOrCreate<number>('simpleProp', 121);
 
 ArkTS-Dyn接口声明：[static Size(): number](../reference/apis-arkui/arkui-ts/ts-state-management.md#sizedeprecated)
 
-替代的ArkTS-Sta接口声明：[static size(): number](../reference/apis-arkui/arkui-ts/ts-state-management.md#size10)
+替代的ArkTS-Sta接口声明：[static size(): number](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#size)
 
 
 
@@ -276,7 +276,7 @@ ArkTS-Dyn接口声明: [static prop\<T\>(propName: string): SubscribedAbstractPr
 
 ArkTS-Sta未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
 
-替代的ArkTS-Sta接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12)
+替代的ArkTS-Sta接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#ref)
 
 ArkTS-Dyn
 
@@ -298,7 +298,7 @@ ArkTS-Dyn接口声明：[static setAndProp\<T\>(propName: string, defaultValue: 
 
 ArkTS-Sta未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS-Sta接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12)
+替代的ArkTS-Sta接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#setandref)
 
 ArkTS-Dyn
 
@@ -316,7 +316,7 @@ let ref: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 49);
 
 ArkTS-Dyn接口声明：[static staticClear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#staticcleardeprecated)
 
-替代的ArkTS-Sta接口声明：[static clear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#clear10)
+替代的ArkTS-Sta接口声明：[static clear(): boolean](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#clear)
 
 
 
@@ -338,7 +338,7 @@ let res = AppStorage.clear();
 
 ArkTS-Dyn接口声明：[static EnvProp\<S\>(key: string, value: S): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropdeprecated)
 
-替代的ArkTS-Sta接口声明：[static envProp\<T\>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)
+替代的ArkTS-Sta接口声明：[static envProp\<T\>(key: string, value: T): boolean](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#envprop)
 
 
 
@@ -358,7 +358,7 @@ Environment.envProp<string>('accessibilityEnabled', 'default');
 
 ArkTS-Dyn接口声明：[static EnvProps(props: {key: string; defaultValue: any; }[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envpropsdeprecated)
 
-替代的ArkTS-Sta接口声明：[static envProps(props: EnvPropsOptions[]): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprops10)
+替代的ArkTS-Sta接口声明：[static envProps(props: EnvPropsOptions[]): void](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#envprops)
 
 
 
@@ -386,7 +386,7 @@ Environment.envProps([
 
 ArkTS-Dyn接口声明：[static Keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated-2)
 
-替代的ArkTS-Sta接口声明：[static keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-2)
+替代的ArkTS-Sta接口声明：[static keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#keys)
 
 ArkTS-Dyn
 
@@ -456,7 +456,7 @@ ArkTS-Dyn接口声明: [static prop\<S\>(propName: string): SubscribedAbstractPr
 
 ArkTS-Sta未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用ref替代。
 
-替代的ArkTS-Sta接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#ref12-1)
+替代的ArkTS-Sta接口声明：[static ref\<T\>(propName: string): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#ref)
 
 ArkTS-Dyn
 
@@ -480,7 +480,7 @@ ArkTS-Dyn接口声明：[static setAndProp\<S\>(propName: string, defaultValue: 
 
 ArkTS-Sta未默认提供类的深拷贝能力，在无需使用深拷贝的场景，可以使用setAndRef替代。
 
-替代的ArkTS-Sta接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#setandref12-1)
+替代的ArkTS-Sta接口声明：[static setAndRef\<T\>(propName: string, defaultValue: T): AbstractProperty\<T\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#setandref)
 
 ArkTS-Dyn
 
@@ -502,7 +502,7 @@ let ref: AbstractProperty<number> = storage.setAndRef<number>('PropA', 49);
 
 ArkTS-Dyn接口声明：[static DeleteProp(key: string): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#deletepropdeprecated)
 
-替代的ArkTS-Sta接口声明：[static deleteProp(key: string): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#deleteprop10)
+替代的ArkTS-Sta接口声明：[static deleteProp(key: string): void](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#deleteprop)
 
 
 
@@ -522,7 +522,7 @@ PersistentStorage.deleteProp('highScore');
 
 ArkTS-Dyn接口声明：[static Keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keysdeprecated-1)
 
-替代的ArkTS-Sta接口声明：[static keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management.md#keys10-1)
+替代的ArkTS-Sta接口声明：[static keys(): Array\<string\>](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#keys)
 
 
 
@@ -542,7 +542,7 @@ let keys: Array<string> = PersistentStorage.keys();
 
 ArkTS-Dyn接口声明：[static PersistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)
 
-替代的ArkTS-Sta接口声明：[static persistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
+替代的ArkTS-Sta接口声明：[static persistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#persistprop)
 
 
 
@@ -562,7 +562,7 @@ PersistentStorage.persistProp<string>('highScore', '0');
 
 ArkTS-Dyn接口声明：[static PersistProps(properties: {key: string; defaultValue: any;}[])](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropsdeprecated)
 
-替代的ArkTS-Sta接口声明：[static persistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10)
+替代的ArkTS-Sta接口声明：[static persistProp\<T\>(key: string, defaultValue: T): void](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#persistprop)
 
 
 
