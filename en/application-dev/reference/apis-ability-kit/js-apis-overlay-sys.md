@@ -1,4 +1,4 @@
-# @ohos.bundle.overlay (overlay) (System API)
+# @ohos.bundle.overlay (overlay Module) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->

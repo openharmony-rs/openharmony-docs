@@ -18,19 +18,20 @@ The sendableContextManager module provides APIs for converting between Context a
 
 This module is used to transfer data between concurrent ArkTS instances (including the main thread and the worker thread of TaskPool or Worker).
 
-For example, when transferring sendable data from the main thread to a child thread, the following conversion steps are involved to ensure efficient data transfer:
+When the main thread transfers sendable data (data that complies with the [Sendable protocol](../../arkts-utils/arkts-sendable.md#sendable-protocol)) to the child thread (such as the TaskPool or Worker thread), the conversion between the Context and SendableContext is required. The process is as follows:
 - Conversion from Context to SendableContext for the main thread to transfer sendable data to the child thread.
 - Conversion from SendableContext to Context for the child thread to use the sendable data.
 
 The Context here is different from that created by [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12). The differences are as follows:
 - Context involved in the conversion: ArkTS concurrent instances hold different application-side Context instances that correspond to the same underlying Context object. When the Context properties and methods in an instance are modified, the Context properties and methods in the related instances are modified accordingly. The eventHub attribute in the Context instance is special. The eventHub objects in different instances are independent of each other and cannot be used across ArkTS instances. If you want to use [EventHub](./js-apis-inner-application-eventHub.md) to transfer data across instances, call [setEventHubMultithreadingEnabled](#sendablecontextmanagerseteventhubmultithreadingenabled20) to enable the cross-thread data transfer feature.
 
-
 - Context created using [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12): ArkTS concurrent instances hold different application-side Context objects that correspond to different underlying Context objects.
 
 ## Constraints
 
-The Context types used in the conversion must be the same. Currently, the following types of Context support conversion: [Context](js-apis-inner-application-context.md), [ApplicationContext](js-apis-inner-application-applicationContext.md), [AbilityStageContext](js-apis-inner-application-abilityStageContext.md), and [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).
+The Context types used in the conversion must be the same. For example, if the main thread uses [convertFromContext](#sendablecontextmanagerconvertfromcontext) to convert the [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) to the SendableContext, the child thread must call [convertToUIAbilityContext](#sendablecontextmanagerconverttouiabilitycontext) to convert the received SendableContext to the [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).
+
+Currently, the following types of Context support conversion: [Context](js-apis-inner-application-context.md), [ApplicationContext](js-apis-inner-application-applicationContext.md), [AbilityStageContext](js-apis-inner-application-abilityStageContext.md), and [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).
 
 ## Modules to Import
 
@@ -58,9 +59,9 @@ convertFromContext(context: common.Context): SendableContext
 
 Converts a Context object to a SendableContext object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
 
@@ -107,7 +108,8 @@ export default class EntryAbility extends UIAbility {
 
     // convert and post
     try {
-      let sendableContext: sendableContextManager.SendableContext = sendableContextManager.convertFromContext(this.context);
+      let sendableContext: sendableContextManager.SendableContext =
+        sendableContextManager.convertFromContext(this.context);
       let object: SendableObject = new SendableObject(sendableContext);
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
@@ -124,9 +126,9 @@ convertToContext(sendableContext: SendableContext): common.Context
 
 Converts a SendableContext object to a Context object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
 
@@ -236,9 +238,9 @@ convertToApplicationContext(sendableContext: SendableContext): common.Applicatio
 
 Converts a SendableContext object to an ApplicationContext object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
 
@@ -289,7 +291,8 @@ export default class EntryAbility extends UIAbility {
     try {
       let context: common.Context = this.context as common.Context;
       let applicationContext = context.getApplicationContext();
-      let sendableContext: sendableContextManager.SendableContext = sendableContextManager.convertFromContext(applicationContext);
+      let sendableContext: sendableContextManager.SendableContext =
+        sendableContextManager.convertFromContext(applicationContext);
       let object: SendableObject = new SendableObject(sendableContext, 'ApplicationContext');
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
@@ -349,9 +352,9 @@ convertToAbilityStageContext(sendableContext: SendableContext): common.AbilitySt
 
 Converts a SendableContext object to an AbilityStageContext object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
 
@@ -400,7 +403,8 @@ export default class EntryAbility extends UIAbility {
 
     // convert and post
     try {
-      let sendableContext: sendableContextManager.SendableContext = sendableContextManager.convertFromContext(this.context);
+      let sendableContext: sendableContextManager.SendableContext =
+        sendableContextManager.convertFromContext(this.context);
       let object: SendableObject = new SendableObject(sendableContext, 'AbilityStageContext');
       hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage post message');
       this.worker.postMessageWithSharedSendable(object);
@@ -460,9 +464,9 @@ convertToUIAbilityContext(sendableContext: SendableContext): common.UIAbilityCon
 
 Converts a SendableContext object to a UIAbilityContext object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
 
@@ -511,7 +515,8 @@ export default class EntryAbility extends UIAbility {
 
     // convert and post
     try {
-      let sendableContext: sendableContextManager.SendableContext = sendableContextManager.convertFromContext(this.context);
+      let sendableContext: sendableContextManager.SendableContext =
+        sendableContextManager.convertFromContext(this.context);
       let object: SendableObject = new SendableObject(sendableContext, 'EntryAbilityContext');
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
@@ -568,23 +573,22 @@ workerPort.onerror = (e: ErrorEvent) => {
 
 setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 
-Enables the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in a [Context](js-apis-inner-application-context.md) object.
+Enables the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in [Context](js-apis-inner-application-context.md).
 
 > **NOTE**
-> 
+>
 > - When multiple Context objects communicate, you need to call this API to set each Context object to support EventHub cross-thread data transfer.
-> - Before this API is called, data is passed by reference. After this API is called, data is passed through serialization, which means that the data of the sender thread is independent of that of the receiver thread.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
 
 | Name | Type          | Mandatory| Description                                                        |
 | ------- | -------------- | ---- | ------------------------------------------------------------ |
 | context | [common.Context](js-apis-inner-application-context.md) | Yes  | Context object. For details about the serialization data types supported by Eventhub, see [Sequenceable Data Types](../apis-arkts/js-apis-taskpool.md#sequenceable-data-types). The data size cannot exceed 16 MB.|
-| enabled  | boolean        | Yes  | Whether to enable the cross-thread data transfer feature. **true** to enable, **false** otherwise.                               |
+| enabled  | boolean        | Yes  | Whether to enable the cross-thread data transfer feature.<br>- **true**: The cross-thread data transfer feature is enabled, and data is passed by reference.<br>- **false**: The cross-thread data transfer feature is disabled. Data is passed through serialization, which means that the data of the sender thread is independent of that of the receiver thread.|
 
 **Example**
 

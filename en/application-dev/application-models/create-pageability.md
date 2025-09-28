@@ -94,7 +94,7 @@ After the PageAbility is created, its abilities-related configuration items are 
 ```
 
 
-In the FA model, you can call **getContext** of **featureAbility** to obtain the application context and then use the capabilities provided by the context.
+In the [FA model](ability-terminology.md#fa-model), you can call **getContext** of **featureAbility** to obtain the application context and then use the capabilities provided by the context.
 
 
   **Table 1** featureAbility APIs

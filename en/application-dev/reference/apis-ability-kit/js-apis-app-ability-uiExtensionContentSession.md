@@ -1,6 +1,13 @@
-# @ohos.app.ability.UIExtensionContentSession (UI Operation Class for ExtensionAbilities with UI)
+# @ohos.app.ability.UIExtensionContentSession (UIExtensionAbility UI Operation Class)
 
-UIExtensionContentSession is an instance created when the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) loads UI content. When the UIExtensionComponent starts a UIExtensionAbility, the UIExtensionAbility creates a UIExtensionContentSession instance and returns it through the [onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) callback. One UIExtensionComponent corresponds to one UIExtensionContentSession instance, which provides methods such as UI loading and result notification. The UIExtensionContentSession instances of multiple UIExtensionAbilities are operated separately.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo; @xuzhihao666-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+UIExtensionContentSession is the UI operation class for the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). It provides control over page loading and allows configuration of the window privacy mode of the host application (application that starts the UIExtensionAbility). When the host application starts a specific UIExtensionAbility, the system creates a UIExtensionContentSession object and passes it back via the [onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) callback. Each UIExtensionAbility corresponds to one UIExtensionContentSession object, and these objects operate independently without interfering with each other.
 
 > **NOTE**
 >
@@ -16,28 +23,30 @@ import { UIExtensionContentSession } from '@kit.AbilityKit';
 
 ## UIExtensionContentSession
 
+UIExtensionContentSession is the UI operation class for the UIExtensionAbility. It provides control over page loading and allows configuration of the window privacy mode of the host application.
+
 ### loadContent
 
 loadContent(path: string, storage?: LocalStorage): void
 
-Loads content from a page associated with a local storage to the window corresponding to the current UIExtensionComponent.
+Loads a page for the [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md), with state properties passed to the page through [LocalStorage](../../ui/state-management/arkts-localstorage.md). This API is used to load a page in the [onSessionCreate](./js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) lifecycle of the UIExtensionAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
 
-| Name | Type                                           | Mandatory| Description                                                        |
-| ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | Yes  | Path of the page from which the content will be loaded.                                        |
-| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | A storage unit, which provides storage for variable state properties and non-variable state properties of an application. This parameter is left blank by default.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| path | string | Yes| Path of the page to load. The path is configured using the [pages](../../quick-start/module-configuration-file.md#pages) tag in the [module.json5](../../quick-start/module-configuration-file.md) file.|
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No| A page-level UI state storage unit, which is used to pass state properties to the page.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
-| ------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000050 | Internal error. |
 
 **Example**
@@ -45,14 +54,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
 import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class ShareExtAbility extends ShareExtensionAbility {
   // ...
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let storage: LocalStorage = new LocalStorage();
-    storage.setOrCreate('session', session);
-    session.loadContent('pages/Extension', storage);
+    try {
+      let storage: LocalStorage = new LocalStorage();
+      storage.setOrCreate('session', session);
+      session.loadContent('pages/Extension', storage);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`Failed to load content, code: ${code}, msg: ${message}`);
+    }
   }
 
   // ...
@@ -72,7 +88,7 @@ Loads a [named route](../../ui/arkts-routing.md#named-route) page for a [UIExten
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------ |
 | name | string | Yes| Name of the named route page.|
-| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No| A page-level UI state storage unit, which is used to pass state properties to the page. The default value is null.|
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No| A page-level UI state storage unit, which is used to pass state properties to the page.|
 
 **Error codes**
 
@@ -142,7 +158,7 @@ struct UIExtensionPage {
 
 terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
-Stops the window object corresponding to this UIExtensionContentSession instance. This API uses an asynchronous callback to return the result.
+Destroys this UIExtensionAbility and closes the corresponding window of the host application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -150,7 +166,7 @@ Stops the window object corresponding to this UIExtensionContentSession instance
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the window object is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -198,7 +214,7 @@ struct Index {
 
 terminateSelf(): Promise&lt;void&gt;
 
-Stops the window object corresponding to this UIExtensionContentSession instance. This API uses a promise to return the result.
+Destroys this UIExtensionAbility and closes the corresponding window of the host application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -246,7 +262,7 @@ struct Index {
 
 terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;void&gt;): void
 
-Stops the window object corresponding to this UIExtensionContentSession instance and returns the result to the UIExtensionComponent. This API uses an asynchronous callback to return the result.
+Destroys this UIExtensionAbility, closes the corresponding window of the host application, and returns the result to the host application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -254,8 +270,8 @@ Stops the window object corresponding to this UIExtensionContentSession instance
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Result returned to the UIExtensionComponent.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the window object is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the host application.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -313,7 +329,7 @@ struct Index {
 
 terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 
-Stops the window object corresponding to this UIExtensionContentSession instance and returns the result to the UIExtensionComponent. This API uses a promise to return the result.
+Destroys this UIExtensionAbility, closes the corresponding window of the host application, and returns the result to the host application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -321,7 +337,7 @@ Stops the window object corresponding to this UIExtensionContentSession instance
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Result returned to the UIExtensionComponent.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the host application.|
 
 **Return value**
 
@@ -334,8 +350,8 @@ Stops the window object corresponding to this UIExtensionContentSession instance
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
-| ------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| ------- | -------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -385,7 +401,7 @@ struct Index {
 
 setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
-Sets whether the window is in privacy mode. A window in privacy mode cannot be captured or recorded. This API uses a promise to return the result.
+Enables or disables the window privacy mode of the host application. A window in privacy mode cannot be captured or recorded. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -394,13 +410,13 @@ Sets whether the window is in privacy mode. A window in privacy mode cannot be c
 **Parameters**
 
 | Name| Type| Mandatory| Description|
-| ------------- | ------- | -- | ----------------------------------------------------- |
-| isPrivacyMode | boolean | Yes| Whether the window is in privacy mode. **true** if in privacy mode, **false** otherwise.|
+| -------- | -------- | -------- | -------- |
+| isPrivacyMode | boolean | Yes| Whether to enable the privacy mode. **true** to enable, **false** otherwise.|
 
 **Return value**
 
 | Type| Description|
-| ------------------- | ------------------------ |
+| -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
@@ -408,9 +424,9 @@ Sets whether the window is in privacy mode. A window in privacy mode cannot be c
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
-| ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| -------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -447,7 +463,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets whether the window is in privacy mode. A window in privacy mode cannot be captured or recorded. This API uses an asynchronous callback to return the result.
+Enables or disables the window privacy mode of the host application. A window in privacy mode cannot be captured or recorded. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -456,18 +472,18 @@ Sets whether the window is in privacy mode. A window in privacy mode cannot be c
 **Parameters**
 
 | Name| Type| Mandatory| Description|
-| ------------- | ------------------------- | -- | ------------------------------------------------------ |
-| isPrivacyMode | boolean                   | Yes| Whether the window is in privacy mode. **true** if in privacy mode, **false** otherwise. |
-| callback      | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the setting is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| -------- | -------- | -------- | -------- |
+| isPrivacyMode | boolean | Yes| Whether to enable the privacy mode. **true** to enable, **false** otherwise.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the setting is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
-| ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| -------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -513,18 +529,18 @@ Implicitly starts a given type of UIExtensionAbility. This API uses an asynchron
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Type of the UIExtensionAbility to start.<!--Del--> For details, see [Starting an Application of the Specified Type](../../application-models/start-intent-panel.md#matching-rules).<!--DelEnd-->|
-| wantParam | Record<string, Object> | Yes| Extended parameter.|
-| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | Yes| Callback used to return the detailed error information if the startup fails.|
-| callback | AsyncCallback\<void> | Yes|Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
+| type | string | Yes| Type of the UIExtensionAbility. For details, see [Starting an Application of the Specified Type](../../application-models/start-intent-panel.md#matching-rules).|
+| wantParam | Record<string, Object> | Yes| Parameters passed for starting the UIExtensionAbility.|
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | Yes| Execution result of starting the UIExtensionAbility.|
+| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
-| ------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000050 | Internal error. |
 
 **Example**
@@ -550,7 +566,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
       }
     };
 
-    session.startAbilityByType('test', wantParams, abilityStartCallback, (err: BusinessError) => {
+    session.startAbilityByType('navigation', wantParams, abilityStartCallback, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to startAbilityByType, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -576,9 +592,9 @@ Implicitly starts a given type of UIExtensionAbility. This API uses a promise to
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Type of the UIExtensionAbility to start.<!--Del--> For details, see [Starting an Application of the Specified Type](../../application-models/start-intent-panel.md#matching-rules).<!--DelEnd-->|
-| wantParam | Record<string, Object> | Yes| Extended parameter.|
-| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | Yes| Callback used to return the detailed error information if the startup fails.|
+| type | string | Yes| Type of the UIExtensionAbility. For details, see [Starting an Application of the Specified Type](../../application-models/start-intent-panel.md#matching-rules).|
+| wantParam | Record<string, Object> | Yes| Parameters passed for starting the UIExtensionAbility.|
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | Yes| Execution result of starting the UIExtensionAbility.|
 
 **Return value**
 
@@ -591,8 +607,8 @@ Implicitly starts a given type of UIExtensionAbility. This API uses a promise to
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
-| ------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000050 | Internal error. |
 
 **Example**
@@ -643,14 +659,14 @@ Obtains the window proxy of this UIExtensionAbility.
 
 | Type| Description|
 | -------- | -------- |
-| uiExtension.WindowProxy | Window proxy.|
+| [uiExtension.WindowProxy](../apis-arkui/js-apis-arkui-uiExtension.md#windowproxy) | Window proxy of the host application.|
 
 **Error codes**
 
 For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
-| ------- | -------------------------------- |
+| -------- | -------- |
 | 16000050 | Internal error. |
 
 **Example**

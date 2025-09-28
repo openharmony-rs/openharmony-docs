@@ -1,4 +1,4 @@
-# AutoFillExtensionAbility
+# Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -40,7 +40,7 @@ The [AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability
 - **onBackground**: called when the AutoFillExtensionAbility is switched from the foreground to the background.
 - **onDestroy**: called to clear resources when the AutoFillExtensionAbility is destroyed.
 - **onSaveRequest**: called to trigger auto-save when form data exists and the page is to be switched.
-- **onFillRequest**: called to automatically fill in the account and password when a fill request is sent.
+- **onFillRequest**: called when an auto-fill request is initiated or a password is generated.
 
 ### Implementing Auto-Fill for Accounts and Passwords
 

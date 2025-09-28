@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-**CompletionHandler** is an optional parameter of [StartOptions](js-apis-app-ability-startOptions.md) and is used to handle the result of an application launch request.
+**CompletionHandler** is an optional parameter of [StartOptions](js-apis-app-ability-startOptions.md#startoptions) and [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md#openlinkoptions). It is used to process the result of an application launch request.
 
 
 > **NOTE**
@@ -21,17 +21,14 @@
 Currently, this module can be used in the following APIs:
 - [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2)
 - [startAbilityForResult](js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)
-- [UIAbilityContext.openAtomicService](js-apis-inner-application-uiAbilityContext.md#openatomicservice12)
-- [UIExtensionContext.openAtomicService](js-apis-inner-application-uiExtensionContext.md#openatomicservice12)
 
 <!--Del-->
 - [startAbilityForResultWithAccount](js-apis-inner-application-uiAbilityContext-sys.md#startabilityforresultwithaccount-2)
 - [startAbilityWithAccount](js-apis-inner-application-uiAbilityContext-sys.md#startabilitywithaccount-2)
 - [startRecentAbility](js-apis-inner-application-uiAbilityContext-sys.md#startrecentability-2)
 - [startAbilityAsCaller](js-apis-inner-application-uiAbilityContext-sys.md#startabilityascaller10-2)
-- [ServiceExtensionContext.openAtomicService](js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextopenatomicservice18)
 <!--DelEnd-->
-
+- [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)
 ## Modules to Import
 
 ```ts
@@ -56,7 +53,7 @@ Called when the application is successfully launched.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| elementName | [ElementName](js-apis-bundleManager-elementName.md) | Yes| **ElementName** information used to identify the target application. <br>- Typically, **ElementName** includes only **abilityName** and **bundleName**. The presence of **moduleName** and **deviceId** depends on whether the caller provides them. **shortName** and **uri** are empty.<br>- If the target being launched is an atomic service, **ElementName** contains only **bundleName**.|
+| elementName | [ElementName](js-apis-bundleManager-elementName.md) | Yes| **ElementName** information used to identify the target application. Typically, **ElementName** includes only **abilityName** and **bundleName**. The presence of **moduleName** and **deviceId** depends on whether the caller provides them. **shortName** and **uri** are empty.|
 | message | string | Yes| Message displayed when the application is successfully launched. This message is in JSON format, as follows:<br>{<br>&emsp;"errMsg": "Succeeded."<br>}<br>|
 
 **Example**
@@ -77,8 +74,8 @@ Called when the application fails to be launched.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| elementName | [ElementName](js-apis-bundleManager-elementName.md) | Yes| **ElementName** information used to identify the target application.<br>- Typically, **ElementName** includes only **abilityName** and **bundleName**. The presence of **moduleName** and **deviceId** depends on whether the caller provides them. **shortName** and **uri** are empty.<br>- If the target being launched is an atomic service, **ElementName** contains only **bundleName**.<br>- **ElementName** information cannot be obtained if the implicit startup fails.|
-| message | string | Yes| Message displayed when the application fails to be launched. This message is in JSON format, as follows:<br>{<br>&emsp;"errMsg": "xxx"<br>}<br>The value of *xxx* is described as follows:<br>Failed to call \<api-name\>: An error occurs when calling the API. \<api-name\> is the specific API name, for example, **startAbility** or **openAtomicService**.<br>User refused redirection: The user has closed the application redirection dialog box.<br>User closed the implicit startup picker: The user has closed the dialog box for selecting an application for implicit startup.<br>User closed the app clone picker: The user has closed the dialog box for selecting a cloned application.<br>Free installation failed: The free installation fails.<br>|
+| elementName | [ElementName](js-apis-bundleManager-elementName.md) | Yes| **ElementName** information used to identify the target application.<br>- Typically, **ElementName** includes only **abilityName** and **bundleName**. The presence of **moduleName** and **deviceId** depends on whether the caller provides them. **shortName** and **uri** are empty.<br>- **ElementName** information cannot be obtained if the implicit startup fails.|
+| message | string | Yes| Message displayed when the application fails to be launched. This message is in JSON format, as follows:<br>{<br>&emsp;"errMsg": "xxx"<br>}<br>The value of *xxx* is described as follows:<br>Failed to call \<api-name\>: An error occurs when calling the API. \<api-name\> is the specific API name, for example, **startAbility**.<br>User refused redirection: The user has closed the application redirection dialog box.<br>User closed the implicit startup picker: The user has closed the dialog box for selecting an application for implicit startup.<br>User closed the app clone picker: The user has closed the dialog box for selecting a cloned application.<br>Free installation failed: The free installation fails.<br>|
 
 **Example**
 
