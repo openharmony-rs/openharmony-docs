@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 空间音频管理主要包含空间音频相关状态和能力的查询、设置与监听。
 
