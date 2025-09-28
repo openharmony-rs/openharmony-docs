@@ -12,6 +12,8 @@
 >
 >  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+>  从API version 20开始，支持通过[getParagraphs](./../arkts-apis-uicontext-measureutils.md#getparagraphs20)获取属性字符串的文本布局信息。
+>
 >  属性字符串目前不支持在worker线程中使用。
 >
 >  属性字符串通过controller绑定时，需要等待布局完成后，绑定生效。当[measure](../js-apis-arkui-frameNode.md#measure12)和setStyledString同时使用，开发者需要通过[@ohos.arkui.inspector (布局回调)](../js-apis-arkui-inspector.md)判断布局完成，再绑定属性字符串。
@@ -40,7 +42,7 @@ constructor(value: string | ImageAttachment | CustomSpan , styles?: Array\<Style
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string \| [ImageAttachment](#imageattachment) \| [CustomSpan](#customspan) | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value值为ImageAttachment或CustomSpan时，styles参数不生效；<br/>需要设置styles时，通过[insertStyledString](#insertstyledstring)实现。 |
+| value | string \| [ImageAttachment](#imageattachment) \| [CustomSpan](#customspan) | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value的类型为ImageAttachment或CustomSpan时，styles参数不生效。<br/>需要设置styles时，通过[setStyle](#setstyle)等方法实现。 |
 | styles | Array<[StyleOptions](#styleoptions对象说明)> | 否 | 属性字符串初始化选项。<br/>**说明：** <br/>start为异常值时，按默认值0处理；<br/>当length为异常值时，length等于属性字符串在start后的实际长度；<br/>当StyledStringKey与StyledStringValue不匹配时，styles不生效。 |
 
 ### 属性
@@ -67,7 +69,7 @@ getString(): string
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| string | 属性字符串文本内容。<br/>**说明：** <br/>当属性字符串中包含图片时，其返回的结果用空格表示。 |
+| string | 属性字符串文本内容。<br/>**说明：** <br/>当属性字符串中包含图片或[CustomSpan](#customspan)时，其返回的结果用空格表示。 |
 
 ### equals
 
@@ -95,7 +97,7 @@ equals(other: StyledString): boolean
 
 subStyledString(start: number, length?: number): StyledString
 
-获取属性字符串的子字符串。不能超出属性字符串的长度。
+获取属性字符串的子属性字符串。不能超出属性字符串的长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -304,7 +306,7 @@ removeString(start: number , length: number): void
 
 移除指定范围的字符串。
 
-当属性字符串中包含图片时，同样生效。
+当属性字符串中包含图片或[CustomSpan](#customspan)时，同样生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -363,7 +365,11 @@ setStyle(spanStyle: SpanStyle): void
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| spanStyle | [SpanStyle](#spanstyle对象说明) | 是   | 样式对象。<br/>**说明：** <br/>默认不清空原有样式，叠加新样式。若是已有样式，则更新。<br/>当SpanStyle的styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或者CustomSpan且长度为1，才会生效，其余情况无效果。 |
+| spanStyle | [SpanStyle](#spanstyle对象说明) | 是   | 样式对象。<br/>默认不清空原有样式，叠加新样式。如果StyledStringValue类型相同，则新样式将覆盖旧样式。<br/>当SpanStyle的styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或CustomSpan且长度为1，才会生效，其余情况无效果。 |
+
+> **说明：**
+>
+> 样式的最小颗粒度是StyledStringValue，如果设置了多个相同的StyledStringValue，只有最后一次设置会生效。如设置两个属性不同的TextStyle，则只有第二次设置的TextStyle生效。
 
 **错误码**：
 

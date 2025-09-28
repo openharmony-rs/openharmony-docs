@@ -96,9 +96,7 @@ placeholderColor(value: ResourceColor)
 
 placeholderFont(value?: Font)
 
-设置placeholder文本样式，包括字体大小，字体粗细，字体族，字体风格。当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。
-
-Wearable设备上默认字体大小为18fp。
+设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -110,11 +108,15 @@ Wearable设备上默认字体大小为18fp。
 | ------ | ------------------------ | ---- | --------------------- |
 | value  | [Font](ts-types.md#font) | 否   | placeholder文本样式。 |
 
+> **说明：**
+>
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
+
 ### textFont
 
 textFont(value?: Font)
 
-设置搜索框内输入文本样式，包括字体大小，字体粗细，字体族，字体风格。目前仅支持默认字体族。
+设置搜索框内输入文本样式，包括字体大小、字体粗细、字体族、字体风格。
 
 Wearable设备上默认字体大小为18fp。
 
@@ -287,8 +289,6 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 默认在输入控件失去焦点时，关闭自定义键盘，开发者也可以通过[stopEditing](#stopediting10)方法控制键盘关闭。
 
-如果设备支持拍摄输入，设置自定义键盘后，该输入框会不支持拍摄输入。
-
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -316,7 +316,7 @@ type(value: SearchType)
 
 | 参数名 | 类型                                | 必填 | 说明                        |
 | ------ | ----------------------------------- | ---- | -------------------------- |
-| value  | [SearchType](#searchtype11枚举说明) | 是   | 输入框类型。<br/>默认值：SearchType.Normal |
+| value  | [SearchType](#searchtype11枚举说明) | 是   | 输入框类型。<br/>默认值：SearchType.NORMAL |
 
 ### maxLength<sup>11+</sup>
 
@@ -541,7 +541,7 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 halfLeading(halfLeading: Optional\<boolean>)
 
-设置文本是否将行间距平分至行的顶部与底部。
+设置文本在行内垂直居中，将行间距平分至行的顶部与底部。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -551,7 +551,7 @@ halfLeading(halfLeading: Optional\<boolean>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是  | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
+| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是  | 设置文本是否垂直居中。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
 
 ### minFontScale<sup>18+</sup>
 
@@ -609,7 +609,7 @@ enablePreviewText(enable: boolean)
 
 设置是否开启输入预上屏。
 
-预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此不触发[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)回调。
+预上屏内容定义为文字暂存态，目前不支持文字拦截功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -720,7 +720,7 @@ strokeColor(color: Optional\<ResourceColor>)
 
 stopBackPress(isStopped: Optional\<boolean>)
 
-设置是否阻止返回键向其它组件或应用侧传递。
+设置是否阻止返回键传递。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -730,7 +730,7 @@ stopBackPress(isStopped: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止返回键向其它组件或应用侧传递，false表示不阻止。<br />默认值：true |
+| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -788,13 +788,13 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 | 名称                 | 值            | 说明          |
 | ------------------ | ------ | ------------- |
-| NORMAL   | 0 | 基本输入模式。<br/>支持输入数字、字母、下划线、空格、特殊字符。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| NORMAL   | 0 | 基本输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | NUMBER   | 2 | 纯数字输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | PHONE_NUMBER | 3 | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | EMAIL    | 5 | 邮箱地址输入模式。<br/>支持数字，字母，下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | NUMBER_DECIMAL<sup>12+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| URL<sup>12+</sup>  | 13 | 带URL的输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| URL<sup>12+</sup>  | 13 | 带URL的输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## CancelButtonOptions<sup>12+</sup>对象说明
 

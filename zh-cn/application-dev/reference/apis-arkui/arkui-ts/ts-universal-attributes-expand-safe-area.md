@@ -36,7 +36,7 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | types  | Array <[SafeAreaType](#safeareatype)> | 否   | 配置扩展安全区域的类型。未添加[Metadata](../../apis-ability-kit/js-apis-bundleManager-metadata.md)配置项时，页面不避让挖孔，CUTOUT类型不生效。<br />默认值：[SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD] <br />非法值：按默认值处理。|
-| edges  | Array <[SafeAreaEdge](#safeareaedge)> | 否   | 配置扩展安全区域的方向。<br />默认值：[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END] <br />非法值：按默认值处理。<br />扩展至所有避让区域。 |
+| edges  | Array <[SafeAreaEdge](#safeareaedge)> | 否   | 配置扩展安全区域的边缘。<br />默认值：[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END] <br />非法值：按默认值处理。<br />扩展至所有避让区域。 |
 
 **返回值：**
 
@@ -84,7 +84,7 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 ## SafeAreaEdge
 
-扩展安全区域的方向。
+扩展安全区域的边缘。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -184,7 +184,7 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 
-扩展安全区域的方向。
+扩展安全区域的边缘。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

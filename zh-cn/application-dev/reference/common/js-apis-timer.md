@@ -47,7 +47,7 @@ setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): num
   }, 1000);
   ```
 
-**示例2**：带参数传递给函数(handle为function时参数与arguments参数个数一致)。
+**示例2**：带参数传递给函数(handler为function时参数与arguments参数个数一致)。
 
   ```ts
   function myFunction(param1: string, param2: string) {
@@ -56,7 +56,7 @@ setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): num
   setTimeout(myFunction, 1000, 'Hello', 'World');
   ```
 
-**示例3**：带参数传递给函数(handle为function时参数比arguments参数个数少)。
+**示例3**：带参数传递给函数(handler为function时参数比arguments参数个数少)。
 
   ```ts
   function myFunction(a: string, b: string) {
@@ -69,7 +69,7 @@ setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): num
   }
   setTimeout(myFunction, 1000, 'hello', 'world', 'C++', 'js');
   ```
-**示例4**：带参数传递给函数(handle为function时参数比arguments参数个数多)。
+**示例4**：带参数传递给函数(handler为function时参数比arguments参数个数多)。
 
   ```ts
   function myFunction(a: string, b: string) {
@@ -105,7 +105,7 @@ clearTimeout(timeoutID?: number): void
 
   ```js
   let timeoutID = setTimeout(() => {
-    console.log('do after 1s delay.');
+    console.info('do after 1s delay.');
   }, 1000);
   clearTimeout(timeoutID);
   ```
@@ -140,7 +140,7 @@ setInterval(handler: Function | string, delay: number, ...arguments: any[]): num
 
   ```js
   setInterval(() => {
-    console.log('do every 1s.');
+    console.info('do every 1s.');
   }, 1000);
   ```
 
@@ -167,7 +167,7 @@ clearInterval(intervalID?: number): void
 
   ```js
   let intervalID = setInterval(() => {
-    console.log('do every 1s.');
+    console.info('do every 1s.');
   }, 1000);
   clearInterval(intervalID);
   ```

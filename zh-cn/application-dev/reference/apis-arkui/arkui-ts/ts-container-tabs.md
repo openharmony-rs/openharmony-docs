@@ -250,6 +250,10 @@ animationMode(mode: Optional\<AnimationMode\>)
 
 设置点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。
 
+>  **说明：**
+>
+> 此属性不支持在[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -672,7 +676,14 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 
 使用说明：
 
-1、当使用自定义切换动画时，Tabs组件自带的默认切换动画会被禁用，同时，页面也无法跟手滑动。<br>2、当设置为undefined时，表示不使用自定义切换动画，仍然使用组件自带的默认切换动画。<br>3、当前自定义切换动画不支持打断。<br>4、目前自定义切换动画只支持两种场景触发：点击页签和调用TabsController.changeIndex()接口。<br>5、当使用自定义切换动画时，Tabs组件支持的事件中，除了onGestureSwipe，其他事件均支持。<br>6、onChange和onAnimationEnd事件的触发时机需要特殊说明：如果在第一次自定义动画执行过程中，触发了第二次自定义动画，那么在开始第二次自定义动画时，就会触发第一次自定义动画的onChange和onAnimationEnd事件。<br>7、当使用自定义动画时，参与动画的页面布局方式会改为Stack布局。如果开发者未主动设置相关页面的zIndex属性，那么所有页面的zIndex值是一样的，页面的渲染层级会按照在组件树上的顺序（即页面的index值顺序）确定。因此，开发者需要主动修改页面的zIndex属性，来控制页面的渲染层级。
+1. 当使用自定义切换动画时，Tabs组件自带的默认切换动画会被禁用，同时，页面也无法跟手滑动。
+2. 当设置为undefined时，表示不使用自定义切换动画，仍然使用组件自带的默认切换动画。
+3. 当前自定义切换动画不支持打断。
+4. 目前自定义切换动画只支持两种场景触发：点击页签和调用TabsController.changeIndex()接口。
+5. 当使用自定义切换动画时，Tabs组件支持的事件中，除了onGestureSwipe，其他事件均支持。
+6. onChange和onAnimationEnd事件的触发时机需要特殊说明：如果在第一次自定义动画执行过程中，触发了第二次自定义动画，那么在开始第二次自定义动画时，就会触发第一次自定义动画的onChange和onAnimationEnd事件。
+7. 当使用自定义动画时，参与动画的页面布局方式会改为Stack布局。如果开发者未主动设置相关页面的zIndex属性，那么所有页面的zIndex值是一样的，页面的渲染层级会按照在组件树上的顺序（即页面的index值顺序）确定。因此，开发者需要主动修改页面的zIndex属性，来控制页面的渲染层级。
+8. 此属性不支持在[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2812,7 +2823,10 @@ struct TabsExample {
 ```ts
 import { curves } from '@kit.ArkUI';
 
-interface TabsItemType { text: string, backgroundColor: ResourceColor }
+interface TabsItemType {
+  text: string,
+  backgroundColor: ResourceColor
+}
 
 @Entry
 @Component
@@ -2822,6 +2836,11 @@ struct TabsExample {
     curves.interpolatingSpring(-1, 1, 328, 34),
     curves.springCurve(10, 1, 228, 30),
     curves.cubicBezierCurve(0.25, 0.1, 0.25, 1.0),
+  ];
+  private curveNames: string[] = [
+    'interpolatingSpring(-1, 1, 328, 34)',
+    'springCurve(10, 1, 228, 30)',
+    'cubicBezierCurve(0.25, 0.1, 0.25, 1.0)'
   ];
   @State curveIndex: number = 0;
   private datas: TabsItemType[] = [
@@ -2834,10 +2853,11 @@ struct TabsExample {
   @State duration: number = 0;
 
   build() {
-    Column({ space:2 }) {
+    Column({ space: 2 }) {
       Tabs({ controller: this.tabsController }) {
         ForEach(this.datas, (item: TabsItemType, index: number) => {
-          TabContent() {}
+          TabContent() {
+          }
           .tabBar(item.text)
           .backgroundColor(item.backgroundColor)
         })
@@ -2847,18 +2867,34 @@ struct TabsExample {
       .height(500)
       .animationCurve(this.curves[this.curveIndex])
       .animationDuration(this.duration)
-      Row({ space:2 }) {
-        Text('Curve:' + this.curveIndex)
-        Button('++').onClick(() => { this.curveIndex = (this.curveIndex + 1) % this.curves.length; })
-        Button('reset').onClick(() => { this.curveIndex = 0; })
+
+      Column({ space: 2 }) {
+        Text('Curve:' + this.curveNames[this.curveIndex])
+        Row({ space: 2 }) {
+          // 切换动效曲线
+          Button('++').onClick(() => {
+            this.curveIndex = (this.curveIndex + 1) % this.curves.length;
+          })
+          Button('reset').onClick(() => {
+            this.curveIndex = 0;
+          })
+        }
       }
       .margin({ left: '10vp' })
       .width('100%')
-      Row({ space:2 }) {
+
+      Row({ space: 2 }) {
         Text('Duration:' + this.duration)
-        Button('+100').onClick(() => { this.duration = (this.duration + 100) % 10000; })
-        Button('+1000').onClick(() => { this.duration = (this.duration + 1000) % 10000; })
-        Button('reset').onClick(() => { this.duration = 0; })
+        // 增加动效时长
+        Button('+100').onClick(() => {
+          this.duration = (this.duration + 100) % 10000;
+        })
+        Button('+1000').onClick(() => {
+          this.duration = (this.duration + 1000) % 10000;
+        })
+        Button('reset').onClick(() => {
+          this.duration = 0;
+        })
       }
       .margin({ left: '10vp' })
       .width('100%')

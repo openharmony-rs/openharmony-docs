@@ -739,7 +739,7 @@
 | ----------- | --- | -------- |
 | None        | 0 | 不支持复制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | InApp       | 1 | 支持仅在当前应用内复制粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LocalDevice | 2 | 支持复制后在当前设备内所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LocalDevice | 2 | 支持复制后在所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
 
 ## HitTestMode<sup>9+</sup>
@@ -1222,6 +1222,20 @@ type Nullable\<T> = T | undefined
 | END    | 3    | 轴事件结束。 |
 | CANCEL | 4    | 轴事件取消。 |
 
+## AxisType<sup>21+</sup>
+
+定义轴事件的轴类型。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+| 名称    | 值   | 说明                               |
+| ------- | ---- | ---------------------------------- |
+| VERTICAL_AXIS   | 0    | 垂直滚动轴。 |
+| HORIZONTAL_AXIS  | 1    | 水平滚动轴。 |
+| PINCH_AXIS | 2    | 捏合轴。 |
+
 ## InteractionHand<sup>15+</sup>
 
 定义事件是由左手点击触发还是右手点击触发。
@@ -1303,7 +1317,7 @@ type Nullable\<T> = T | undefined
 | ------  | ---- | -------------------- |
 | ROTATION | 0 | x、y、z方向的旋转角属性。该属性对应参数个数为3，属性的单位为度（°）。 |
 | TRANSLATION | 1 | x、y方向的平移属性。该属性对应参数个数为2，属性的单位为px。 |
-| SCALE | 2 | x、y方向的缩放属性。该属性对应参数个数为2。 |
+| SCALE | 2 | x、y方向的缩放属性。该属性对应参数个数为2，属性的取值范围为(-∞, +∞) 。|
 | OPACITY | 3 | 透明度属性。该属性对应参数个数为1，属性的取值范围为[0,1]。 |
 
 ## ColorSpace<sup>20+</sup>

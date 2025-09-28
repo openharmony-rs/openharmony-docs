@@ -10,9 +10,7 @@
 
 >  **说明：**
 >
-> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
-> - 该组件不支持在Wearable设备上使用。
+> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -27,6 +25,8 @@ CalendarPicker(options?: CalendarOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
 
@@ -48,6 +48,8 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
 **参数：** 
 
 | 参数名    | 类型                                    | 必填 | 说明                                                         |
@@ -64,6 +66,8 @@ edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
 
@@ -82,6 +86,8 @@ textStyle(value: PickerTextStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
@@ -98,6 +104,8 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
@@ -113,6 +121,8 @@ markToday(enabled: boolean)
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
 
@@ -134,6 +144,8 @@ onChange(callback: Callback\<Date>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明           |
@@ -150,6 +162,8 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -161,6 +175,8 @@ onChange(callback: Optional\<Callback\<Date>>)
 日历选择器组件的参数说明。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称      | 类型       | 只读 | 可选        | 说明                            |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
@@ -188,6 +204,8 @@ onChange(callback: Optional\<Callback\<Date>>)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称   | 值 | 说明                     |
 | ------ | - | ------------------------ |

@@ -15,7 +15,7 @@ Node-API提供了相关接口对object进行基本操作，例如创建对象、
 在Node-API接口开发中，经常需要定义和操作对象。例如，创建一个API接口，该接口接受一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
 
 - **接口（API）**：接口定义了组件之间的交互协议，包括输入参数、输出结果以及可能的错误处理。通过接口，组件可以相互调用和交换数据，而无需了解对方的内部实现细节。
-- **对象（Object）**：在ArkTS，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
+- **对象（Object）**：在ArkTS中，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
 
 ## 场景和功能介绍
 
@@ -76,6 +76,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // 定义一个类
 class Person {
   // 属性
@@ -142,6 +143,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   const myObject = testNapi.createObject();
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_object: %{public}s', myObject.name);
@@ -197,6 +199,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -260,6 +263,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -361,6 +365,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   let varUndefined: undefined;
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_typeof: %{public}s', testNapi.napiTypeOf(varUndefined));
@@ -432,6 +437,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Person {
     name: string;
@@ -537,6 +543,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   data: number = 0
   message: string = ""
@@ -624,6 +631,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 const externalData = testNapi.createExternal();
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_external:%{public}s', testNapi.getExternalType(externalData));
 ```
@@ -669,6 +677,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 hilog.info(0x0000, 'Node-API', 'get_value_external:%{public}d', testNapi.getValueExternal());
 ```
 <!-- @[ark_napi_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
@@ -718,6 +727,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 let varSymbol = testNapi.createSymbol();
 hilog.info(0x0000, 'Node-API', 'createSymbol:%{public}s', typeof varSymbol);
 ```

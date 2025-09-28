@@ -148,7 +148,7 @@ try {
 | authType       | [UserAuthType](#userauthtype8)[]   | 是   | 认证类型列表，用来指定用户认证界面提供的认证方法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 期望达到的认证可信等级。典型操作需要的身份认证可写等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) | 否   |表示可以复用解锁认证的结果。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| skipLockedBiometricAuth<sup>20+</sup> | boolean | 否   | 是否跳过已禁用的认证方式自动切换至其它方式的认证，true表示已跳过，false表示未跳过，若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| skipLockedBiometricAuth<sup>20+</sup> | boolean | 否   | 是否跳过已禁用的认证方式自动切换至其它方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>true表示生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证；<br/>false表示不跳过；默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## WidgetParam<sup>10+</sup>
 
@@ -439,7 +439,7 @@ try {
 
 on(type: 'result', callback: IAuthCallback): void
 
-订阅用户身份认证的结果。
+订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#on20)接口订阅。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -796,7 +796,7 @@ try {
 
 on(type: 'authTip', callback: AuthTipCallback): void
 
-订阅身份认证中间状态。
+订阅身份认证过程中的提示信息。通过该接口可以获取到认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败尝试。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

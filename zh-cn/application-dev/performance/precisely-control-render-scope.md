@@ -4,7 +4,7 @@
 
 ## 多组件关联同一对象的不同属性
 
-在学习本示例之前，需要了解当前状态管理的刷新机制。
+在学习本示例之前，需要了解当前[状态管理的刷新机制](../ui/state-management/arkts-observed-and-objectlink.md)。
 
 ```ts
 @Observed
@@ -145,15 +145,15 @@ struct CompA {
       
       Stack() {
         Column() {
-            Image($r('app.media.icon'))
-              .opacity(this.uiStyle.alpha)
-              .scale({
-                x: this.uiStyle.scaleX,
-                y: this.uiStyle.scaleY
-              })
-              .padding(this.isRenderImage())
-              .width(300)
-              .height(300)
+          Image($r('app.media.icon'))
+            .opacity(this.uiStyle.alpha)
+            .scale({
+              x: this.uiStyle.scaleX,
+              y: this.uiStyle.scaleY
+            })
+            .padding(this.isRenderImage())
+            .width(300)
+            .height(300)
         }
         .width('100%')
         .position({ y: -80 })
@@ -398,7 +398,7 @@ struct Page {
             bottom: 10
           })
           .onClick(() => {
-            this.a.prop1 = this.a.prop1 + 1 ;
+            this.a.prop1 = this.a.prop1 + 1;
           })
         Button("Change subProp1")
           .width(200)
@@ -693,9 +693,9 @@ struct Page {
 
 // 示例
 Text("some text")
-.width(this.needRenderSize.width)
-.height(this.needRenderSize.height)
-.opacity(this.needRenderAlpha.alpha)
+  .width(this.needRenderSize.width)
+  .height(this.needRenderSize.height)
+  .opacity(this.needRenderAlpha.alpha)
 ```
 
 在父组件改变属性的值时，可以通过外层的父类去修改，即：
@@ -965,6 +965,7 @@ Column() {
       ButtonComponent()
     }
   }
+
   Column() {
     Column() {
       List() {
@@ -1002,6 +1003,7 @@ Button(`下标是${this.value}的倍数的组件文字变为红色`)
 ```ts
 // in ListItemComponent
 @State color: Color = Color.Black;
+
 aboutToAppear(): void {
   let event: emitter.InnerEvent = {
     eventId: 1
@@ -1015,6 +1017,7 @@ aboutToAppear(): void {
   // 订阅eventId为1的事件
   emitter.on(event, callback);
 }
+
 build() {
   Column() {
     Text(this.myItem)
