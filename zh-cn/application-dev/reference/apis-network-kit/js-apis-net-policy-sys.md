@@ -2210,7 +2210,7 @@ try {
 | -------- | ---------------------------------------------------- | ---- | ------|---------------------------------------------------------------------- |
 | netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | 否   |否 |网络类型。                                                                   |
 | simId    | string                                               | 否    |否 |计量蜂窝网络的SIM卡的标识值。<br>以太网和wifi网络不会用到。                     |
-| identity | string                                               | 否   |否 |计量蜂窝网络中配合 simId 联合使用。以太网，wifi 网络单独使用。用于标记类型。 |
+| identity | string                                               | 否   |否 |计量蜂窝网络中配合simId联合使用。<br>以太网和wifi网络单独使用。<br>用于标记类型。 |
 
 ## QuotaPolicy<sup>10+</sup>
 
