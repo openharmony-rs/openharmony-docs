@@ -587,8 +587,8 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 | help          | - |  显示UITest工具能够支持的命令信息。            |
 | screenCap       |[-p] [-d]| 截图。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
 | dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>| 获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
-| uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[用户录制操作](#用户录制操作)。|
-| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入UI模拟操作](#注入UI模拟操作)。|
+| uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[录制界面操作](#录制界面操作)。|
+| uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入UI模拟操作](#注入ui模拟操作)。|
 | --version | - |获取当前UITest工具版本信息。 |
 | start-daemon| - | 拉起UITest测试进程。 |
 
@@ -686,7 +686,6 @@ hdc shell uitest uiRecord read
    "fingerNumber": "1" //手指数量
  }
  ```
-
 ### 注入UI模拟操作
 
 | 参数   |  说明              | 
