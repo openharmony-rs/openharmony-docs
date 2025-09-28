@@ -1,6 +1,6 @@
 # Memory
 
-<!--Kit: Kernel Enhance Kit-->
+<!--Kit: KernelEnhanceKit-->
 <!--Subsystem: kernel-->
 <!--Owner: @sagittary-->
 <!--Designer: @OH-wxy-->
