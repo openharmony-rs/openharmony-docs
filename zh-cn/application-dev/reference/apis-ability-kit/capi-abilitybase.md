@@ -1,5 +1,12 @@
 # AbilityBase
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 
 作为Ability Kit的基础定义模块，AbilityBase提供了组件启动参数[Want](capi-want-h.md)的定义与接口，可以用于应用组件间的信息传递。
