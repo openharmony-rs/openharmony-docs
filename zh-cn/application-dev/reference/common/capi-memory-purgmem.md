@@ -1,10 +1,10 @@
 # PurgMem
 
-<!--Kit: KernelEnhanceKit-->
+<!--Kit: Kernel Enhance Kit-->
 <!--Subsystem: kernel-->
 <!--Owner: @sagittary-->
 <!--Designer: @OH-wxy-->
-<!--Tester: @sagittary-->
+<!--Tester: @liuhonggang123-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
