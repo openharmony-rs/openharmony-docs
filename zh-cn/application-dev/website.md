@@ -74,7 +74,7 @@
       - [WebController](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-WebController.md)
       - [Types](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-t.md)
     - ArkTs API module<!--reference-big-file-module-arkts-->
-      - [模块描述](onlyfortest/reference/apis-audio-kit/arkts-apis-graphics-drawing.md)
+      - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-1.md)
       - [元能力子系统错误码](onlyfortest/reference/apis-audio-kit/errorcode-audio.md)
       - [ringtonePlayer (铃声播放器)(系统接口)](onlyfortest/reference/apis-audio-kit/js-apis-inner-multimedia-ringtonePlayer-sys.md)
       - [@ohos.multimedia.audioHaptic (音振协同)](onlyfortest/reference/apis-audio-kit/js-apis-audioHaptic.md)
@@ -88,7 +88,7 @@
       - [native_audiostreambuilder.h](onlyfortest/reference/apis-audio-kit/native__audiostreambuilder_8h.md)
       - [测试错误码标签](onlyfortest/reference/apis-mindspore-lite-kit/errorcode-i18n.md)
     - ArkTs API components<!--reference-big-file-components-arkts-->
-      - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web.md)
+      - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-1.md)
       - [元能力子系统错误码](onlyfortest/reference/apis-audio-kit/errorcode-audio.md)
       - [ringtonePlayer (铃声播放器)(系统接口)](onlyfortest/reference/apis-audio-kit/js-apis-inner-multimedia-ringtonePlayer-sys.md)
       - [@ohos.multimedia.audioHaptic (音振协同)](onlyfortest/reference/apis-audio-kit/js-apis-audioHaptic.md)
@@ -104,10 +104,10 @@
     - C API<!--reference-big-file-c-->
       - AI<!--reference-big-file-c-ai-->
         - 模块<!--reference-big-file-c-ai-module-->
-          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
+          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-2.md)
           - [MindSpore](onlyfortest/reference/apis-mindspore-lite-kit/capi-_mind_spore.md)
         - 头文件<!--reference-big-file-c-ai-head-file-->
-          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
+          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-3.md)
           - [egl.h](onlyfortest/reference/apis-mindspore-lite-kit/capi-context_8h.md)
           - [drawing_surface.h](onlyfortest/reference/apis-mindspore-lite-kit/capi-data__type_8h.md)
           - [uscript.h](onlyfortest/reference/apis-mindspore-lite-kit/capi-format_8h.md)
@@ -116,40 +116,40 @@
           - [ohprint.h](onlyfortest/reference/apis-mindspore-lite-kit/capi-tensor_8h.md)
           - [jsvm_types.h](onlyfortest/reference/apis-mindspore-lite-kit/capi-types_8h.md)
         - 结构体<!--reference-big-file-c-ai-struct-->
-          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
+          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-4.md)
           - [OH_AI_CallBackParam](onlyfortest/reference/apis-mindspore-lite-kit/capi-_o_h___a_i___call_back_param.md)
           - [OH_AI_ShapeInfo](onlyfortest/reference/apis-mindspore-lite-kit/capi-_o_h___a_i___shape_info.md)
           - [OH_AI_TensorHandleArray](onlyfortest/reference/apis-mindspore-lite-kit/capi-_o_h___a_i___tensor_handle_array.md)
       - Neural Network Runtime Kit（Neural Network运行时服务）<!--reference-big-file-c-neural-network-runtime-api-->
         - 模块<!--big-file-neural-network-runtime-module-->
-          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web.md)
+          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-2.md)
           - [NeuralNetworkRuntime](onlyfortest/reference/apis-neural-network-runtime-kit/capi-_neural_network_runtime.md)
         - 头文件<!--big-file-neural-network-runtime-headerfile-->
-          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
+          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-5.md)
           - [neural_network_core.h](onlyfortest/reference/apis-neural-network-runtime-kit/capi-neural__network__core_8h.md)
           - [neural_network_runtime.h](onlyfortest/reference/apis-neural-network-runtime-kit/capi-neural__network__runtime_8h.md)
           - [neural_network_runtime_type.h](onlyfortest/reference/apis-neural-network-runtime-kit/capi-neural__network__runtime__type_8h.md)
         - 结构体<!--big-file-neural-network-runtime-struct-->
-          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
+          - [模块描述](onlyfortest/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-6.md)
           - [OH_NN_Memory](onlyfortest/reference/apis-neural-network-runtime-kit/capi-_o_h___n_n___memory.md)
           - [OH_NN_QuantParam](onlyfortest/reference/apis-neural-network-runtime-kit/capi-_o_h___n_n___quant_param.md)
           - [OH_NN_Tensor](onlyfortest/reference/apis-neural-network-runtime-kit/capi-_o_h___n_n___tensor.md)
           - [OH_NN_UInt32Array](onlyfortest/reference/apis-neural-network-runtime-kit/capi-_o_h___n_n___u_int32_array.md)
       - Avsession<!--reference-big-file-c-avsession-->
         - 模块<!--reference-big-file-c-avsession-module-->
-          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web.md)
+          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-3.md)
           - [OHAVSession](onlyfortest/reference/apis-avsession-kit/_o_h_a_v_session.md)
         - 头文件<!--reference-big-file-c-avsession-headerfile-->
-          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web.md)
+          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-4.md)
           - [jsvm.h](onlyfortest/reference/apis-avsession-kit/native__avmetadata_8h.md)
           - [net_websocket.h](onlyfortest/reference/apis-avsession-kit/native__avsession_8h.md)
           - [native_avsession_errors.h](onlyfortest/reference/apis-avsession-kit/native__avsession__errors_8h.md)
         - 结构体<!--reference-big-file-c-avsession-struct-->
-          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web.md)
+          - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-5.md)
           - [AVSession_PlaybackPosition](onlyfortest/reference/apis-avsession-kit/_a_v_session___playback_position.md)
 - 非reference文件夹<!--not-reference-fold-->
   - C APIC API新增版本筛选标签需求<!--not-reference-fold-0624-->
-    - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web.md)
+    - [组件描述](onlyfortest/reference/apis-mindspore-lite-kit/arkts-basic-components-web-6.md)
     - [Audio Kit简介](onlyfortest/media/audio/audio-kit-intro.md)
 - 用户问题验证<!--user-question-->
   - [回流后代码块异常](onlyfortest/network/http-request.md)
