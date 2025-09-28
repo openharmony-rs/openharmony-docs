@@ -93,7 +93,7 @@ type CallState = call.CallState
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
-| [call.CallState](js-apis-call.md#callstate) | 通话状态码。 |
+| [call.CallState](js-apis-call.md#callstate) | 通话状态码（去电过程仅通知CALL_STATE_OFFHOOK状态）。 |
 
 
 ## CardType
@@ -122,7 +122,7 @@ SIM卡状态。
 | [sim.SimState](js-apis-sim.md#simstate) | SIM卡状态。 |
 
 
-## TelCallState
+## TelCallState<sup>21+</sup>
 
 type TelCallState = call.TelCallState
 
@@ -132,7 +132,7 @@ type TelCallState = call.TelCallState
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
-| [call.TelCallState](js-apis-call.md#telcallstate21) | 通话状态码。 |
+| [call.TelCallState](js-apis-call.md#telcallstate21) | 通话状态码（去电过程通知去电号码状态TEL_CALL_STATE_OFFHOOK和去电接通状态TEL_CALL_STATE_CONNECTED）。 |
 
 
 ## observer.on('networkStateChange')
