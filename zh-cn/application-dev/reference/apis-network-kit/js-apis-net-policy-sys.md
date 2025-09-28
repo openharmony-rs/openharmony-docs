@@ -2227,8 +2227,8 @@ try {
 | limitBytes        | number                        | 否   |否 |流量设置的配额。                                            |
 | metered           | boolean                       | 否   |否 |是否为计量网络。true表示是，false表示不是                                         |
 | limitAction       | [LimitAction](#limitaction10) | 否   | 否|到达流量限制后的动作。                                         |
-| lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。默认值：-1                                  |
-| lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。默认值：-1                                        |
+| lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。默认值：-1。                                  |
+| lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。默认值：-1。                                      |
 
 ## LimitAction<sup>10+</sup>
 
@@ -2276,7 +2276,7 @@ try {
 
 ## NetUidPolicyInfo<sup>11+</sup>
 
-注册网络UID策略变化的回调函数
+注册网络UID策略变化的回调函数。
 
 **系统接口**：此接口为系统接口。
 
