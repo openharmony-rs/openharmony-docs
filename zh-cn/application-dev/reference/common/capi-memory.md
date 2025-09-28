@@ -1,5 +1,11 @@
 # Memory
 
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: Kernel-->
+<!--Owner: @sagittary-->
+<!--Designer: @OH-wxy-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
@@ -19,7 +25,7 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| [purgeable_memory.h](purgeable__memory_8h.md) | 声明从native层管理可丢弃内存的方法。<br>**引用文件**：<purgeable_memory/purgeable_memory.h> <br>**库**：libpurgeable_memory_ndk.z.so | 
+| [purgeable_memory.h](capi-purgeable-memory-h.md) | 声明从native层管理可丢弃内存的方法。<br>**引用文件**：<purgeable_memory/purgeable_memory.h> <br>**库**：libpurgeable_memory_ndk.z.so | 
 
 
 ### 类型定义
