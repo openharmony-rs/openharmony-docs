@@ -405,7 +405,7 @@ int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
+| int32_t | 返回接口执行结果。NATIVE_ERROR_OK，表示接口执行成功。<br> 返回NATIVE_ERROR_INVALID_ARGUMENTS，对应错误码为40001000，表示image参数为空。<br> 返回NATIVE_ERROR_UNKNOWN，对应错误码为50002000，表示未知错误，请查看日志。 |
 
 ### OH_NativeImage_GetBufferMatrix()
 

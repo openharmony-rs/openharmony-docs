@@ -74,7 +74,7 @@
 | [int32_t OH_NativeWindow_GetLastFlushedBufferV2(OHNativeWindow *window, OHNativeWindowBuffer **buffer,int *fenceFd, float matrix[16])](#oh_nativewindow_getlastflushedbufferv2) | 从OHNativeWindow获取上次送回到buffer队列中的OHNativeWindowBuffer,与OH_NativeWindow_GetLastFlushedBuffer的差异在于matrix不同。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
 | [void OH_NativeWindow_SetBufferHold(OHNativeWindow *window)](#oh_nativewindow_setbufferhold) | 提前缓存一帧buffer，且缓存的这一帧延迟一帧上屏显示，以此抵消后续一次超长帧丢帧。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_WriteToParcel(OHNativeWindow *window, OHIPCParcel *parcel)](#oh_nativewindow_writetoparcel) | 将窗口对象写入IPC序列化对象中。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **window)](#oh_nativewindow_readfromparcel) | 从IPC序列化对象中读取窗口对象。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **window)](#oh_nativewindow_readfromparcel) | 从IPC序列化对象中读取窗口对象。<br>本接口将会创建一个OHNativeWindow，当窗口对象使用完，开发者需要与[OH_NativeWindow_DestroyNativeWindow](#oh_nativewindow_destroynativewindow)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_SetColorSpace(OHNativeWindow *window, OH_NativeBuffer_ColorSpace colorSpace)](#oh_nativewindow_setcolorspace) | 为OHNativeWindow设置颜色空间属性。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_GetColorSpace(OHNativeWindow *window, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativewindow_getcolorspace) | 获取OHNativeWindow颜色空间属性。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_SetMetadataValue(OHNativeWindow *window, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativewindow_setmetadatavalue) | 为OHNativeWindow设置元数据属性值。<br>本接口为非线程安全类型接口。 |
@@ -961,7 +961,7 @@ int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **win
 
 **描述**
 
-从IPC序列化对象中读取窗口对象。<br>本接口为非线程安全类型接口。
+从IPC序列化对象中读取窗口对象。<br>本接口将会创建一个OHNativeWindow，当窗口对象使用完，开发者需要与[OH_NativeWindow_DestroyNativeWindow](#oh_nativewindow_destroynativewindow)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
