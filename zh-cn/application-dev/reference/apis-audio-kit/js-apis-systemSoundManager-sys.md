@@ -164,7 +164,7 @@ setTitle(title: string): void
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -228,7 +228,7 @@ setFileName(name: string): void
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -321,7 +321,7 @@ setCategory(category: number): void
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -621,6 +621,8 @@ toneHapticsAttrs.getFileName();
 type ToneHapticsAttrsArray = Array&lt;ToneHapticsAttrs&gt;
 
 系统铃音的振动属性数组。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1258,7 +1260,7 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise&lt;To
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1309,7 +1311,7 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise&lt;ToneAt
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1360,7 +1362,7 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise&l
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1411,7 +1413,7 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise&lt;To
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1461,7 +1463,7 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise&lt;ToneAttrs&gt;
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1483,7 +1485,7 @@ systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: system
 
 ### setAlarmToneUri<sup>12+</sup>
 
-setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
+setAlarmToneUri(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 设置系统闹铃uri。使用Promise异步回调。
 
@@ -1495,7 +1497,7 @@ setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
 
 | 参数名   | 类型        | 必填 | 说明   |
 | -------- | --------- | ---- |--------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。                                                                           |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。                                                                           |
 | uri      | string    | 是   | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
 
 **返回值：**
@@ -1524,7 +1526,7 @@ systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
 
 ### getAlarmToneUri<sup>12+</sup>
 
-getAlarmToneUri(context: Context): Promise&lt;string&gt;
+getAlarmToneUri(context: BaseContext): Promise&lt;string&gt;
 
 获取系统当前闹铃uri。使用Promise异步回调。
 
@@ -1536,7 +1538,7 @@ getAlarmToneUri(context: Context): Promise&lt;string&gt;
 
 | 参数名   | 类型      | 必填 | 说明              |
 | -------- | --------| ---- |-----------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。  |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。  |
 
 **返回值：**
 
@@ -1590,7 +1592,7 @@ getAlarmToneAttrList(context: BaseContext): Promise&lt;ToneAttrsArray&gt;
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1612,7 +1614,7 @@ systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoun
 
 ### openAlarmTone<sup>12+</sup>
 
-openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
+openAlarmTone(context: BaseContext, uri: string): Promise&lt;number&gt;
 
 打开闹铃文件。使用Promise异步回调。
 
@@ -1624,7 +1626,7 @@ openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
 
 | 参数名   | 类型       | 必填 | 说明                                                                                  |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。                                                                           |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。                                                                           |
 | uri      | string   | 是   | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
 
 **返回值：**
@@ -1640,7 +1642,7 @@ openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700001 | Tone type mismatch, e.g. tone of uri is notification instead of alarm. |
 
@@ -1691,7 +1693,7 @@ close(fd: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1746,7 +1748,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700004 | Data size exceeds the limit. |
@@ -1816,7 +1818,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700004 | Data size exceeds the limit. |
@@ -1885,8 +1887,8 @@ removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102     | Operation is not allowed, e.g. ringtone of this uri is not customized. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1937,7 +1939,7 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -1990,8 +1992,8 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not valid. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2047,7 +2049,7 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2098,8 +2100,8 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not used for tones. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2123,7 +2125,7 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 
 ### openToneHaptics<sup>14+</sup>
 
-openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
+openToneHaptics(context: BaseContext, hapticsUri: string): Promise&lt;number&gt;
 
 打开系统铃音的振动。使用Promise异步回调。
 
@@ -2135,7 +2137,7 @@ openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
 
 | 参数名   | 类型       | 必填 | 说明                                                                                  |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。           |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。           |
 | hapticsUri      | string   | 是   | 待打开系统铃音的振动的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
 
 **返回值：**
@@ -2151,7 +2153,7 @@ openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
@@ -2325,6 +2327,8 @@ type RingtonePlayer = _RingtonePlayer;
 
 系统铃音播放器对象。
 
+**系统接口：** 该接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 | 类型              |说明     |
@@ -2336,6 +2340,8 @@ type RingtonePlayer = _RingtonePlayer;
 type SystemTonePlayer = _SystemTonePlayer;
 
 系统提示音播放器对象。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -2349,6 +2355,8 @@ type RingtoneOptions = _RingtoneOptions;
 
 系统铃音播放器配置项。
 
+**系统接口：** 该接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 | 类型              | 说明          |
@@ -2360,6 +2368,8 @@ type RingtoneOptions = _RingtoneOptions;
 type SystemToneOptions = _SystemToneOptions;
 
 系统提示音播放器配置项。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
