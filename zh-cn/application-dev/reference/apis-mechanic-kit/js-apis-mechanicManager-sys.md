@@ -561,6 +561,51 @@ let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotation
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
 
+## searchTarget
+旋转机械体一周搜索目标
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| TargetInfo | param | 是 | 传递目标的相关信息 |
+| SearchParams | param | 是 | 配置搜索时使用的参数 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise\<[SearchResult](#searchresult)> | Promise对象，返回搜索的结果 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+
+**示例：**
+
+```ts
+let targetInfo : mechanicManager.TargetInfo = {
+            targetType: mechanicManager.TargetType.FACE
+           };
+           let searchParams : mechanicManager.SearchParams
+= {
+            direction;
+mechanicManager.SearchDirection.DEFAULT
+        }
+        mechanicManager.searchTarget(targetInfo, 
+searchParams, (searchResult)=>{
+        console.info(`'result:' ${searchResult}`);
+      });
+```
 ## RotationAngles
 
 相对当前位置的旋转角度。
