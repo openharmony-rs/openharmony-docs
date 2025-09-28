@@ -26,7 +26,7 @@
 - Unicode字符串处理(ustring.h)
 - ICU文本抽象表示(utext.h)
 - ICU版本(uversion.h)
-- Locale组件名称(uldnames.h)
+- Locale ID及Locale各组成部分本地化名称(uldnames.h)
 - Unicode码点处理(utf.h，utf8.h，utf16.h)
 - CLDR版本(ulocdata.h)
 
