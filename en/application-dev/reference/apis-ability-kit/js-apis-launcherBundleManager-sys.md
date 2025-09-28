@@ -1,4 +1,4 @@
-# @ohos.bundle.launcherBundleManager (launcherBundleManager) (System API)
+# @ohos.bundle.launcherBundleManager (launcherBundleManager Module) (System API)
 
 The module providers APIs for the Home Screen application to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) and [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md).
 
@@ -240,7 +240,7 @@ try {
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>\>) : void
 
-Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20).
+Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the current user based on the given bundle name of a main application.
 
 No permission is required for obtaining the caller's own information.
 
@@ -295,7 +295,7 @@ try {
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>\>
 
-Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20).
+Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the current user based on the given bundle name of a main application.
 
 No permission is required for obtaining the caller's own information.
 
@@ -353,7 +353,7 @@ try {
 
 getShortcutInfoSync(bundleName : string) : Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>
 
-Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the current user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20).
+Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the current user based on the given bundle name of a main application.
 
 No permission is required for obtaining the caller's own information.
 
@@ -407,7 +407,7 @@ try {
 
 getShortcutInfoSync(bundleName: string, userId: number) : Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>
 
-Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the specified user based on the given bundle name of a main application. To obtain shortcut information about an application clone, use [getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20).
+Obtains the [shortcut information](js-apis-bundleManager-shortcutInfo-sys.md) of the specified user based on the given bundle name of a main application.
 
 No permission is required for obtaining the caller's own information.
 

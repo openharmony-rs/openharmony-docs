@@ -1,4 +1,4 @@
-# @ohos.app.ability.autoStartupManager (autoStartupManager) (System API)
+# @ohos.app.ability.autoStartupManager (Auto-Startup Management) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -49,7 +49,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -99,7 +99,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -155,7 +155,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Failed to start the invisible ability.           |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -218,7 +218,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Failed to start the invisible ability.           |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -274,7 +274,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Failed to start the invisible ability.           |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -337,7 +337,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Failed to start the invisible ability.           |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -390,7 +390,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -399,7 +399,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  autoStartupManager.queryAllAutoStartupApplications((err, data: common.AutoStartupInfo[]) => {
+  autoStartupManager.queryAllAutoStartupApplications((err: BusinessError, data: common.AutoStartupInfo[]) => {
     if (err) {
       console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
       return;
@@ -442,7 +442,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 

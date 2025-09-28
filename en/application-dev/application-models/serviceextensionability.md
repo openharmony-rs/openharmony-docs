@@ -1,4 +1,10 @@
 # ServiceExtensionAbility
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yewei0794-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 ## Overview
 
@@ -142,7 +148,7 @@ To manually create a ServiceExtensionAbility in the DevEco Studio project, perfo
     └
     ```
 
-3. In the **ServiceExtAbility.ets** file, import the [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md) module. Customize a class that inherits from ServiceExtensionAbility and implement the lifecycle callbacks. Return the previously defined **ServiceExtImpl** object in the [onConnect](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate) lifecycle callback.
+3. In the **ServiceExtAbility.ets** file, import the [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md) module. Customize a class that inherits from ServiceExtensionAbility and implement the lifecycle callbacks. Return the previously defined ServiceExtImpl object in the [onConnect](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate) lifecycle callback.
 
     ```ts
     import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -357,7 +363,7 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
 
 ## Connecting to a Background Service
 
-Either a system application or a third-party application can connect to a background service (specified in the **Want** object) through [connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability). The [onConnect()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect) callback is invoked, through which the background service receives the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) object passed by the caller. In this way, a persistent connection is established.
+Either a system application or a third-party application can connect to a background service (specified in the Want object) through [connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability). The [onConnect()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect) callback is invoked, through which the background service receives the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) object passed by the caller. In this way, a persistent connection is established.
 
 The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) in the **onConnect()** callback. Through this IRemoteObject, you can define communication interfaces for RPC interaction between the client and server. Multiple clients can simultaneously connect to the same background service. After a client finishes the interaction, it must call [disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability) to disconnect from the service. If all clients connected to a background service are disconnected, the system destroys the service.
 
@@ -560,7 +566,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
         // The background service is connected.
         hilog.info(DOMAIN_NUMBER, TAG, `sendRequest success, msg: ${msg}`);
       }).catch((error: BusinessError) => {
-        hilog.info(DOMAIN_NUMBER, TAG, `sendRequest failed, ${JSON.stringify(error)}`);
+        hilog.error(DOMAIN_NUMBER, TAG, `sendRequest failed, ${JSON.stringify(error)}`);
       });
     },
     onDisconnect(elementName): void {
@@ -610,7 +616,7 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
         }
         // The verification is successful, and service logic is executed normally.
       }).catch((err: BusinessError) => {
-        hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
+        hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
       //...
     };
@@ -625,7 +631,7 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
 
 - **Verifying the client identity based on callerTokenId**
 
-  Call the [getCallingTokenId()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid) method to obtain the token ID of the client, and then call the [verifyAccessTokenSync()](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstokensync9) method to check whether the client has the required permission. Currently, the system does not support permission customization. Therefore, only [system-defined permissions](../security/AccessToken/app-permissions.md) can be verified. The sample code is as follows:
+  Call the [getCallingTokenId()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid8) method to obtain the token ID of the client, and then call the [verifyAccessTokenSync()](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstokensync9) method to check whether the client has the required permission. Currently, the system does not support permission customization. Therefore, only [system-defined permissions](../security/AccessToken/app-permissions.md) can be verified. The sample code is as follows:
 
   ```ts
   import { abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
@@ -657,7 +663,7 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
         }
         // The verification is successful, and service logic is executed normally.
       }).catch((err: BusinessError) => {
-        hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
+        hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
   
       let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();

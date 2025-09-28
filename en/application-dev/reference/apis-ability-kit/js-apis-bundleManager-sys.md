@@ -1,4 +1,4 @@
-# @ohos.bundle.bundleManager (bundleManager) (System API)
+# @ohos.bundle.bundleManager (Bundle Management Module) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @zhoushihui4-->
@@ -485,7 +485,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type                                                        | Description                            |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | Promise used to return the application information obtained.|
+| Promise\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | Promise used to return the application information.|
 
 **Error codes**
 
@@ -650,7 +650,7 @@ Obtains all the bundle information in the system based on the given bundle flags
 
 | Type                                                        | Description                               |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise used to return the array of bundle information obtained.|
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise used to return an array of bundle information.|
 
 **Error codes**
 
@@ -1859,8 +1859,6 @@ getAllBundleCacheSize(): Promise\<number>
 
 Obtains the global cache size. This API uses a promise to return the result.
 
-It is not possible to obtain the cache of applications that are currently running or have been granted the "AllowAppDataNotCleared" privilege as specified in the [application configuration guide](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
-
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
@@ -2247,7 +2245,7 @@ Enables or disables an application or an application clone. This API uses a prom
 | Name     | Type   | Mandatory| Description                                 |
 | ---------- | ------- | ---- | ------------------------------------- |
 | bundleName | string  | Yes  | Bundle name.           |
-| appIndex   | number  | Yes  | Index of the application clone.<br>The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone.             |
+| appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone.             |
 | isEnabled  | boolean | Yes  | Whether to enable the application or application clone. **true** to enable, **false** otherwise.|
 
 **Return value**
@@ -2489,7 +2487,7 @@ Enables or disables an ability of an application or an application clone. This A
 | Name   | Type       | Mandatory| Description                                 |
 | -------- | ----------- | ---- | ------------------------------------- |
 | info     | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | Yes  | Information about the target ability.                  |
-| appIndex   | number    | Yes  | Index of the application clone.<br>The value **0** means to enable or disable the ability of the main application. A value greater than 0 means to enable or disable the ability of the application clone.           |
+| appIndex   | number    | Yes  | Index of the application clone.<br> The value **0** means to enable or disable the ability of the main application. A value greater than 0 means to enable or disable the ability of the application clone.           |
 | isEnabled| boolean     | Yes  | Whether to enable the ability. **true** to enable, **false** otherwise.|
 
 **Return value**
@@ -2726,7 +2724,7 @@ Checks whether an application or an application clone is enabled. This API uses 
 | Name     | Type  | Mandatory| Description                      |
 | ---------- | ------ | ---- | -------------------------- |
 | bundleName | string | Yes  | Bundle name. |
-| appIndex   | number  | Yes  | Index of the application clone.<br>The value **0** means to obtain the enabled status of the main application. A value greater than 0 means to obtain the enabled status of the application clone.           |
+| appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to obtain the enabled status of the main application. A value greater than 0 means to obtain the enabled status of the application clone.           |
 
 **Return value**
 
@@ -2958,7 +2956,7 @@ Checks whether an ability of an application or an application clone is enabled. 
 | Name| Type       | Mandatory| Description                       |
 | ---- | ----------- | ---- | --------------------------- |
 | info | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | Yes  | Information about the target ability.|
-| appIndex   | number  | Yes  | Index of the application clone.<br>The value **0** means to obtain the enabled status of the ability of the main application. A value greater than 0 means to obtain the enabled status of the ability of the application clone.          |
+| appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to obtain the enabled status of the ability of the main application. A value greater than 0 means to obtain the enabled status of the ability of the application clone.          |
 
 **Return value**
 
@@ -5008,7 +5006,7 @@ Switches the uninstall state of an application. This API is independent of EDM a
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName | string | Yes  | Bundle name of the application.|
-| state | boolean | Yes  | Whether the application can be uninstalled. T**true** if the application can be uninstalled, **false** otherwise.|
+| state | boolean | Yes  | Whether the application can be uninstalled. **true** if the application can be uninstalled, **false** otherwise.|
 
 **Error codes**
 
@@ -5361,7 +5359,7 @@ Obtains the bundle name and application index of an application clone based on t
 
 | Type                                                       | Description                       |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<AppCloneIdentity> | Promise used to return \<AppCloneIdentity>.|
+| Promise\<AppCloneIdentity> | Promise used to return the application clone index.|
 
 **Error codes**
 
@@ -5484,7 +5482,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type                                                       | Description                       |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<Array\<BundleInfo>> | Promise used to return all the bundle information.|
+| Promise\<Array\<BundleInfo>> | Promise used to return an array of bundle information.|
 
 **Error codes**
 
@@ -5627,7 +5625,7 @@ try {
   // Change the values of source1, source2, and dest to the actual file or directory paths.
   let source1: string = "/data/app/el2/100/base/com.example.myapplication/";
   let source2: string = "/data/app/el2/101/base/com.example.myapplication/log.txt";
-  let dest: string = "/data/local/tmp"
+  let dest: string = "/data/local/tmp";
   let sourcePaths: Array<string> = [source1, source2];
 
   bundleManager.migrateData(sourcePaths, dest)

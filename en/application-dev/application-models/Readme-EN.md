@@ -19,14 +19,14 @@
       - [UIAbility Launch Type](uiability-launch-type.md)
       - [UIAbility Usage](uiability-usage.md)
       - [Data Synchronization Between UIAbility and UI Page](uiability-data-sync-with-ui.md)
-      - [Starting UIAbility in the Same Application](uiability-intra-device-interaction.md)
+      - [Starting UIAbility Within the Same Application](uiability-intra-device-interaction.md)
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
       - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability.md)
       - [UIServiceExtensionAbility (for System Applications Only)](uiserviceextension-sys.md)
       - [UIExtensionAbility (for System Applications Only)](uiextensionability.md)
-      - [Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)](autofillextensionablility-guide.md)
+      - [Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)](autofillextensionability-guide.md)
       - [Using UIServiceExtensionAbility for System Floating Windows](uiserviceextension.md)
       <!--DelEnd-->
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
@@ -130,7 +130,7 @@
   - [Accessing a DataShareExtensionAbility from the FA Model](access-datashareextensionability-from-fa.md)
   - [Starting a PageAbility from the Stage Model](start-pageability-from-stage.md)
   - [Connecting to a ServiceAbility from the Stage Model](bind-serviceability-from-stage.md)
-- Switching from the FA Model to the Stage Model<!--fa-to-stage-switc-->
+- Switching from the FA Model to the Stage Model<!--fa-to-stage-switch-->
   - [Model Switching Overview](model-switch-overview.md)
   - Configuration File Switching<!--configuration-file-switch-->
     - [Differences in Configuration Files](configuration-file-diff.md)
@@ -156,5 +156,5 @@
     - [window Switching](window-switch.md)
     - [Storage Switching](storage-switch.md)
 <!--DelEnd-->
-    - [Native Child Process Development (C/C++)](capi_nativechildprocess_development_guideline.md)
+- [Native Child Process Development (C/C++)](capi_nativechildprocess_development_guideline.md)
 - [Ability Kit Terminology](ability-terminology.md)

@@ -1,7 +1,13 @@
-# @ohos.app.appstartup.StartupConfigEntry (AppStartup Configuration)
+# @ohos.app.appstartup.StartupConfigEntry (AppStartup Configuration Entry)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yzkp-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 
-The module provides APIs for configuring AppStartup.
+The module provides the capability to configure [AppStartup](../../application-models/app-startup.md).
 
 > **NOTE**
 >
@@ -15,11 +21,15 @@ The module provides APIs for configuring AppStartup.
 import { StartupConfigEntry } from '@kit.AbilityKit';
 ```
 
-## StartupConfigEntry.onConfig
+## StartupConfigEntry
+
+### onConfig
 
 onConfig?(): StartupConfig
 
-Called during application startup to configure AppStartup.
+Called if the HAP of the AbilityStage has [defined the AppStartup configuration file](../../application-models/app-startup.md#defining-an-appstartup-configuration-file). This callback is triggered before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
+
+You can set the AppStartup configuration within this callback. For details, see [Setting Startup Parameters](../../application-models/app-startup.md#setting-startup-parameters).
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -27,7 +37,7 @@ Called during application startup to configure AppStartup.
 
 | Type| Description|
 | -------- | -------- |
-| StartupConfig | AppStartup configuration.|
+| [StartupConfig](js-apis-app-appstartup-startupConfig.md#startupconfig) | AppStartup configuration.|
 
 **Example**
 
@@ -42,7 +52,8 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     let onCompletedCallback = (error: BusinessError<void>) => {
       hilog.info(0x0000, 'testTag', `onCompletedCallback`);
       if (error) {
-        hilog.info(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code, error.message);
+        hilog.info(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
+          error.message);
       } else {
         hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
       }

@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy; @xuzhihao666-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 
 Environment variables encompass all configuration information that may affect the runtime environment of an application, including internal environment variables that the application can specify (such as font size, appearance, and language) and external environment variables that the application can detect (such as screen orientation).
@@ -46,7 +46,7 @@ The following environment variables can be customized: [font size](#setting-font
 
 ### Setting Font Size
 
-By default, your application's font size does not change with the system. You can set **fontSizeScale** in [configuration](../quick-start/app-configuration-file.md#configuration) to **nonFollowSystem** to enable it to follow the system setting.
+By default, your application's font size does not change with the system. You can set **fontSizeScale** in [configuration](../quick-start/app-configuration-file.md#configuration) to **followSystem** to enable it to follow the system setting.
 
 You can use [setFontSizeScale](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) to set the font size for the application. After the setting, the application's font size will not change with the system, and you will no longer be able to subscribe to system font size changes.
 

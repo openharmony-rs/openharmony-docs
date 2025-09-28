@@ -1,4 +1,4 @@
-# @ohos.bundle (Bundle)
+# @ohos.bundle (Bundle Module)
 
 The module provides APIs for obtaining information about an application, including [bundle information](js-apis-bundle-BundleInfo.md), [application information](js-apis-bundle-ApplicationInfo.md), and [ability information](js-apis-bundle-AbilityInfo.md). It also provides APIs to obtain and set the application disabling state.
 

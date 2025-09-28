@@ -1,4 +1,4 @@
-# @ohos.bundle.overlay (overlay)
+# @ohos.bundle.overlay (overlay Module)
 
 The module provides APIs for installing a module with the overlay feature, querying the [module information](js-apis-bundleManager-overlayModuleInfo.md), and disabling and enabling the module.
 

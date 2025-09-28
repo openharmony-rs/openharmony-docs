@@ -1,4 +1,4 @@
-# @ohos.bundle.launcherBundleManager (launcherBundleManager)
+# @ohos.bundle.launcherBundleManager (launcherBundleManager Module)
 
 The module providers APIs for the launcher application to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md).
 

@@ -1,5 +1,12 @@
 # UIExtensionAbility
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) is an ExtensionAbility component of the UI type. It is usually used in modular development scenarios where process isolation is required, for example, system dialog boxes, status bars, and capsules. There are two forms: embedded and system pop-ups.
@@ -14,8 +21,8 @@
 The [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) class provides the lifecycle callbacks [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate), [onSessionCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate), [onSessionDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessiondestroy), [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground), [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground), and [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy). You must override them as required.
 
 - **onCreate**: called to initialize the service logic when a UIExtensionAbility is created.
-- **onSessionCreate**: called when a **UIExtensionContentSession** instance is created for the UIExtensionAbility.
-- **onSessionDestroy**: called when a **UIExtensionContentSession** instance is destroyed for the UIExtensionAbility.
+- **onSessionCreate**: called when a UIExtensionContentSession instance is created for the UIExtensionAbility.
+- **onSessionDestroy**: called when a UIExtensionContentSession instance is destroyed for the UIExtensionAbility.
 - **onForeground**: called when the UIExtensionAbility is switched from the background to the foreground.
 - **onBackground**: called when the UIExtensionAbility is switched from the foreground to the background.
 - **onDestroy**: called to clear resources when the UIExtensionAbility is destroyed.
@@ -395,30 +402,30 @@ To implement a provider, create a [UIExtensionAbility](../reference/apis-ability
 
     export default class UIExtAbility extends UIExtensionAbility {
       onCreate() {
-        console.log(TAG, `onCreate`);
+        console.info(TAG, `onCreate`);
       }
 
       onForeground() {
-        console.log(TAG, `onForeground`);
+        console.info(TAG, `onForeground`);
       }
 
       onBackground() {
-        console.log(TAG, `onBackground`);
+        console.info(TAG, `onBackground`);
       }
 
       onDestroy() {
-        console.log(TAG, `onDestroy`);
+        console.info(TAG, `onDestroy`);
       }
 
       onSessionCreate(want: Want, session: UIExtensionContentSession) {
-        console.log(TAG, `onSessionCreate, want: ${JSON.stringify(want)}}`);
+        console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
         let storage: LocalStorage = new LocalStorage();
         storage.setOrCreate('session', session);
         session.loadContent('pages/Extension', storage);
       }
 
       onSessionDestroy(session: UIExtensionContentSession) {
-        console.log(TAG, `onSessionDestroy`);
+        console.info(TAG, `onSessionDestroy`);
       }
     }
     ```

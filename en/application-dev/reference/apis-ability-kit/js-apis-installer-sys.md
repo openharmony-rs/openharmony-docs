@@ -1,4 +1,4 @@
-# @ohos.bundle.installer (installer) (System API)
+# @ohos.bundle.installer (installer Module) (System API)
 
 > **NOTE**
 >

@@ -1,4 +1,4 @@
-# @ohos.bundle.distributedBundleManager (distributedBundleManager) (System API)
+# @ohos.bundle.distributedBundleManager (distributedBundleManager Module) (System API)
 
 The module provides APIs for managing distributed bundles.
 

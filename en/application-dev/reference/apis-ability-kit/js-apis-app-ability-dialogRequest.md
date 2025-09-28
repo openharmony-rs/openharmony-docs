@@ -1,4 +1,4 @@
-# @ohos.app.ability.dialogRequest (dialogRequest)
+# @ohos.app.ability.dialogRequest (dialogRequest Module)
 
 The dialogRequest module provides APIs related to modal dialog box processing, including obtaining the request information (used to bind a modal dialog box) and request callback (used to set the request result).
 

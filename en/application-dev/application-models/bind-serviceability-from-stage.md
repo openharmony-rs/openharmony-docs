@@ -1,7 +1,14 @@
 # Connecting to a ServiceAbility from the Stage Model
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-This topic describes how the two application components of the stage model connect to the ServiceAbility component of the FA model.
+
+This topic describes how the two application components of the [stage model](ability-terminology.md#stage-model) connect to the ServiceAbility component of the [FA model](ability-terminology.md#fa-model).
 
 
 ## UIAbility Accessing a ServiceAbility

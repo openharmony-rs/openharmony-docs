@@ -1,10 +1,9 @@
 # @ohos.app.ability.childProcessManager (Child Process Management)
-
-<!--Kit: Ability Kit-->	
-<!--Subsystem: Ability-->	
-<!--Owner: @SKY2001-->	
-<!--Designer: @jsjzju-->	
-<!--Tester: @lixueqing513-->	
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
 The childProcessManager module provides the child process management capability. Currently, it provides APIs to create and start a child process
@@ -18,8 +17,6 @@ The created child process will exit when the parent process exits and cannot run
 > The APIs of this module can be used only in the stage model.
 
 ## Constraints
-
-- The APIs of this module work only for 2-in-1 devices and tablets.
 
 - The child processes created through the APIs of this module have the following restrictions:
   - The created child process does not support the creation of UIs. 
@@ -60,6 +57,8 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 16000061 is returned.
+
 **Parameters**
 
   | Name| Type| Mandatory| Description|
@@ -93,7 +92,7 @@ import { ChildProcess } from '@kit.AbilityKit';
 
 export default class DemoProcess extends ChildProcess {
   onStart() {
-    console.log("DemoProcess OnStart() called");
+    console.info('DemoProcess OnStart() called');
   }
 }
 ```
@@ -110,12 +109,12 @@ try {
   DemoProcess.toString(); // Call any API of the DemoProcess class to prevent the code from being directly optimized by the compiler because it is not being referenced.
   childProcessManager.startChildProcess("./ets/process/DemoProcess.ets", childProcessManager.StartMode.SELF_FORK)
     .then((data) => {
-      console.log(`startChildProcess success, pid: ${data}`);
+      console.info(`startChildProcess success, pid: ${data}`);
     }, (err: BusinessError) => {
       console.error(`startChildProcess error, errorCode: ${err.code}`);
     })
 } catch (err) {
-  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}`);
+  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```
 
@@ -132,6 +131,8 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 > The child process started by calling this API does not support asynchronous ArkTS API calls. It supports only synchronous ArkTS API calls.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 16000061 is returned.
 
 **Parameters**
 
@@ -161,7 +162,7 @@ import { ChildProcess } from '@kit.AbilityKit';
 
 export default class DemoProcess extends ChildProcess {
   onStart() {
-    console.log("DemoProcess OnStart() called");
+    console.info('DemoProcess OnStart() called');
   }
 }
 ```
@@ -178,13 +179,13 @@ try {
   DemoProcess.toString(); // Call any API of the DemoProcess class to prevent the code from being directly optimized by the compiler because it is not being referenced.
   childProcessManager.startChildProcess("./ets/process/DemoProcess.ets", childProcessManager.StartMode.SELF_FORK, (err, data) => {
     if (data) {
-      console.log(`startChildProcess success, pid: ${data}`);
+      console.info(`startChildProcess success, pid: ${data}`);
     } else {
       console.error(`startChildProcess error, errorCode: ${err.code}`);
     }
   });
 } catch (err) {
-  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}`);
+  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```
 
@@ -201,6 +202,8 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
 
 **Parameters**
 
@@ -313,6 +316,8 @@ Starts a [native child process](../../application-models/ability-terminology.md#
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
+
 **Parameters**
 
   | Name| Type| Mandatory| Description|
@@ -341,7 +346,7 @@ Starts a [native child process](../../application-models/ability-terminology.md#
 
 **Example**
 
-Sample code for the child process is provided below. For details, see [Native Child Process Development (C/C++) - Creating a Child Process That Supports Pass-by-Parameter](../../application-models/capi_nativechildprocess_development_guideline.md#creating-a-child-process-that-supports-pass-by-parameter).
+Sample code for the child process is provided below. For details, see [Native Child Process Development (C/C++) - Creating a Native Child Process That Supports Pass-by-Parameter](../../application-models/capi_nativechildprocess_development_guideline.md#creating-a-native-child-process-that-supports-pass-by-parameter).
 
 ```c++
 #include <AbilityKit/native_child_process.h>

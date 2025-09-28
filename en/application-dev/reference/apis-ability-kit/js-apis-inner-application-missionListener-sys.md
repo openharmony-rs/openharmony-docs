@@ -1,5 +1,12 @@
 # MissionListener (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the listeners used to observe the mission status. The listeners can be registered by using [on](js-apis-app-ability-missionManager-sys.md#missionmanageronmission).
 
 > **NOTE**
@@ -159,32 +166,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let listener: missionManager.MissionListener = {
   onMissionCreated: (mission) => {
-    console.log(`onMissionCreated mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionCreated mission: ${JSON.stringify(mission)}`);
   },
   onMissionDestroyed: (mission) => {
-    console.log(`onMissionDestroyed mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionDestroyed mission: ${JSON.stringify(mission)}`);
   },
   onMissionSnapshotChanged: (mission) => {
-    console.log(`onMissionSnapshotChanged mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionSnapshotChanged mission: ${JSON.stringify(mission)}`);
   },
   onMissionMovedToFront: (mission) => {
-    console.log(`onMissionMovedToFront mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionMovedToFront mission: ${JSON.stringify(mission)}`);
   },
   onMissionLabelUpdated: (mission) => {
-    console.log(`onMissionLabelUpdated mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionLabelUpdated mission: ${JSON.stringify(mission)}`);
   },
   onMissionIconUpdated: (mission, icon) => {
-    console.log(`onMissionIconUpdated mission: ${JSON.stringify(mission)}`);
-    console.log(`onMissionIconUpdated icon: ${JSON.stringify(icon)}`);
+    console.info(`onMissionIconUpdated mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionIconUpdated icon: ${JSON.stringify(icon)}`);
   },
   onMissionClosed: (mission) => {
-    console.log(`onMissionClosed mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionClosed mission: ${JSON.stringify(mission)}`);
   }
 };
 
 try {
   let listenerId = missionManager.on('mission', listener);
 } catch (paramError) {
-  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+  console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
 }
 ```

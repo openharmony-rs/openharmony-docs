@@ -1,5 +1,11 @@
 # Ability Error Codes
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -20,7 +26,7 @@ The ability to query does not exist.
 
 **Solution**
 
-1. Pass in correct values of **bundleName**, **moduleName**, and **abilityName** in **want**.
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
 2. Check whether the application corresponding to **bundleName** in **want** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
     ```
     hdc shell bm dump -a
@@ -38,7 +44,7 @@ Incorrect ability type.
 
 **Description**
 
-This error code is reported when the ability type invoked by the API is incorrect.
+This error code is reported when the ability type for the API call is incorrect.
 
 **Possible Causes**
 
@@ -46,10 +52,10 @@ The ability with the specified type does not support the API call.
 
 **Solution**
 
-1. Pass in correct values of **bundleName**, **moduleName**, and **abilityName** in **want**.
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
 2. Call APIs based on the ability type. For example, call <!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) to start the ServiceExtensionAbility, or call <!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to the ServiceExtensionAbility. Additionally, ensure that the value of **type** under **extensionAbilities** in the [module.json5](../../quick-start/module-configuration-file.md) file matches the service you are using.
 
-## 16000003 ID Not Exist
+## 16000003 ID Does Not Exist
 
 **Error Message**
 
@@ -102,7 +108,7 @@ Permission verification for the specified process fails.
 
 **Solution**
 
-Check whether the permission of the specified process is correct.
+Check whether the caller has the permission required by the target component.
 
 ## 16000006 Cross-User Operation Is Not Allowed
 
@@ -120,7 +126,7 @@ The application initiates a cross-user operation.
 
 **Solution**
 
-Do not perform a cross-user operation.
+Check whether a cross-user operation is being attempted by checking whether the user ID passed during the API call matches the current userID.
 
 ## 16000007 Service Busy
 
@@ -156,7 +162,7 @@ The crowdtesting application has expired.
 
 **Solution**
 
-Expired crowdtesting applications cannot be started.
+Check whether the application has expired. A crowdtesting application that has passed its validity period cannot be started.
 
 ## 16000009 Ability Start or Stop Failure in Wukong Mode
 
@@ -176,7 +182,7 @@ An ability cannot be started or stopped in Wukong mode.
 
 Exit Wukong mode, and then start or stop the ability.  
 
-## 16000010 Continuation Flag Forbidden
+## 16000010 Continuation Flag Is Forbidden
 
 **Error Message**
 
@@ -228,7 +234,7 @@ The application is suspected to have malicious behavior and is not allowed to st
 
 **Solution**
 
-It is recommended that end users uninstall the application.
+The target application is prohibited from being started. Try the call again later.
 
 ## 16000013 Application Controlled by EDM
 
@@ -292,13 +298,13 @@ Redirection to a third-party application is not allowed in API version 11 or lat
 
 **Description**
 
-When the API version of an application is later than 11, the application cannot be explicitly redirected to a third-party application.
+For applications with an API version later than 11, explicit redirection to other third-party applications is not allowed.
 
 **Solution**
 
 Use implicit startup or [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12) for redirection.
 
-## 16000019 No Matching Application Is Found During Implicit Startup
+## 16000019 No Matching Ability Is Found During Implicit Startup
 
 **Error Message**
 
@@ -306,12 +312,12 @@ No matching ability is found.
 
 **Description**
 
-A matching ability is not found during implicit startup.
+This error code is reported when a matching ability is not found during implicit startup.
 
 **Possible Causes**
 
-1. The parameter settings for implicit startup are incorrect.
-2. The specified HAP is not installed.
+1. Correct the parameter settings for implicit startup. For details about the matching rules, see [Matching Rules of Explicit Want and Implicit Want](../../application-models/explicit-implicit-want-mappings.md).
+2. Install the specified HAP.
 
 **Solution**
 
@@ -326,16 +332,16 @@ Internal error.
 
 **Description**
 
-This error code is reported when an internal exception occurs that is beyond the control of the developer, such as memory allocation failure, multithreading issues, or IPC failure.
+This error code is reported when an internal exception occurs that the developer cannot resolve, such as memory allocation failure, multithreading exceptions, or IPC failure.
 
 **Possible Causes**
 
-This is a generic system error code and can be triggered by various issues depending on the API. Common causes include: null pointer exceptions for internal objects, processing timeouts, IPC failures, failure in obtaining application information, failure in obtaining system services, and reaching the maximum limit of launched ability instances.
+This is a generic system error code and can be triggered by various issues depending on the API. Common causes include: null pointer exceptions for internal objects, processing timeouts, IPC failures, failure in obtaining application information, failure in obtaining system services, and reaching the upper limit of ability instances launched.
 
 **Solution**
 
-1. Since this is a system-level error, it is typically out of the developer's control.
-2. If the ability fails to start, check whether the data passed in Want is too large.
+1. Internal errors are system exceptions that developers cannot handle. You can try the operation again.
+2. For failures in launching an ability, check whether the data passed in Want is too large.
 
 ## 16000051 Network Error
 
@@ -373,7 +379,7 @@ The application package does not meet the installation-free requirements. For ex
 
 Check whether the application supports installation-free.
 
-## 16000053 Ability Is Not on Top
+## 16000053 Ability Is Not on Top of UI
 
 **Error Message**
 
@@ -385,11 +391,13 @@ This error code is reported when the ability is not displayed on the top of the 
 
 **Possible Causes**
 
-During the installation-free startup process, the ability is not displayed on the top of the UI.
+During the installation-free startup process, it is necessary to ensure that the ability is in the foreground, but the ability is not displayed at the top of the UI.
 
 **Solution**
 
-Ensure that the ability is displayed on the top of the UI.
+1. Ensure that the ability is started and running in the foreground.
+2. Ensure that the ability UI is fully displayed and not obscured or minimized by other application windows.
+3. If the split-screen or multi-window mode is enabled on the device, ensure that the ability is the focused window.
 
 ## 16000054 Installation-Free Busy
 
@@ -499,7 +507,7 @@ An incorrect parameter is passed in. Currently, URI authorization management sup
 
 Ensure that the input parameter is of the supported URI type.
 
-## 16000060 Sandbox Applications Cannot Authorize URIs
+## 16000060 Sandbox Applications Cannot Grant URI Permission
 
 **Error Message**
 
@@ -507,11 +515,11 @@ A sandbox application cannot grant URI permission.
 
 **Description**
 
-This error code is reported when a sandbox application authorizes a URI.
+This error code is reported when a sandbox application attempts to grant URI permission.
 
 **Possible Causes**
 
-Sandbox applications cannot authorize URIs.
+Sandbox applications are not allowed to grant URI permissions.
 
 **Solution**
 
@@ -525,7 +533,7 @@ Operation not supported.
 
 **Description**
 
-This error code is reported when an operation is not supported.
+This error code is reported when the operation is not supported.
 
 **Possible Causes**
 
@@ -551,7 +559,7 @@ The number of created child processes has reached the upper limit.
 
 **Solution**
 
-Limit the number of created child processes. The maximum number is 512.
+Limit the number of created child processes. The upper limit is 512.
 
 ## 16000063 Invalid Ability During Application Restart
 
@@ -569,7 +577,7 @@ The specified ability name or type is invalid.
 
 **Solution**
 
-Ensure that the specified ability name exists in the current application and the ability type is UIAbility.
+Ensure that the specified ability name belongs to the current application and the ability type is UIAbility.
 
 ## 16000064 Frequent Application Restart
 
@@ -579,7 +587,7 @@ Restart too frequently. Try again at least 3s later.
 
 **Description**
 
-An API is called to restart the application and start a specified ability. This error code is reported when the API is called again within 3 seconds.
+This error code is reported when the API used to restart the application with a specified component is called again within 3 seconds.
 
 **Possible Causes**
 
@@ -587,9 +595,9 @@ The API is frequently called.
 
 **Solution**
 
-Call the API again after 3 seconds.
+Wait for at least 3s and try again.
 
-## 16000065 API Can Be Called for a Foreground Ability
+## 16000065 API Can Be Called Only for a Foreground Ability
 
 **Error Message**
 
@@ -605,7 +613,7 @@ The ability is not in the foreground when the API is called.
 
 **Solution**
 
-Switch the ability to the foreground before calling the API.
+Before calling the API, ensure that the ability is running in the foreground and the UI is visible.
 
 ## 16000066 Ability Cannot Be Switched to the Foreground or Background in Wukong Mode
 
@@ -619,7 +627,7 @@ This error code is reported when the API used to switch the ability to the foreg
 
 **Possible Causes**
 
-In Wukong mode, the ability cannot be switched to the foreground or background.
+In Wukong mode, it is not allowed to switch the ability to the foreground or background.
 
 **Solution**
 
@@ -660,7 +668,7 @@ This error code is reported when the target ability is already running.
 
 **Solution**
 
-When **launchType** of the target ability is singleton or specified, do not specify **processMode** and **startupVisibility** in **startAbility()**.
+When **launchType** of the target ability is singleton or specified, do not specify **processMode** or **startupVisibility** in **startAbility()**.
 
 ## 16000069 ExtensionAbility Fails to Start a Third-Party Application in Strict Mode
 
@@ -670,7 +678,7 @@ The extension cannot start the third party application.
 
 **Description**
 
-This type of ExtensionAbility cannot start a third-party application in strict mode.
+In strict mode, the ExtensionAbility is not allowed to start third-party applications.
 
 **Possible Causes**
 
@@ -678,7 +686,7 @@ The ExtensionAbility is in strict mode, and this type of ExtensionAbility is for
 
 **Solution**
 
-1. Check the conditions for enabling the strict mode of this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
+1. Check the strict mode activation conditions for this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
 2. Start the ExtensionAbility in non-strict mode.
 
 ## 16000070 ExtensionAbility Fails to Start a ServiceExtensionAbility in Strict Mode
@@ -689,15 +697,15 @@ The extension cannot start the service.
 
 **Description**
 
-This type of ExtensionAbility cannot start a ServiceExtensionAbility in strict mode.
+In strict mode, the ExtensionAbility is not allowed to start the specified ServiceExtensionAbility.
 
 **Possible Causes**
 
-The ExtensionAbility is in strict mode, and this type of ExtensionAbility is forbidden to start a ServiceExtensionAbility in strict mode.
+The ExtensionAbility is in strict mode, and this type of ExtensionAbility is forbidden to start the specified ServiceExtensionAbility in strict mode.
 
 **Solution**
 
-1. Check the conditions for enabling the strict mode of this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
+1. Check the strict mode activation conditions for this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
 2. Start the ExtensionAbility in non-strict mode.
 
 ## 16000071 Application Clone Is Not Supported
@@ -712,7 +720,7 @@ This error code is reported when the application does not support clones.
 
 **Possible Causes**
 
-This error code is reported when the [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12) API is called while the [multiAppMode](../../quick-start/app-configuration-file.md#multiappmode) field in the **app.json5** file is not set to **appClone** (meaning that the application does not support app clone mode).
+The [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12) API is called while the [multiAppMode](../../quick-start/app-configuration-file.md#multiappmode) field in the **app.json5** file is not set to **appClone** (meaning that the application does not support app clone mode).
 
 **Solution**
 
@@ -834,7 +842,7 @@ Before creating an application instance, the application does not check whether 
 
 **Solution**
 
-You can create application instances only after adjusting the upper limit of application instances or deleting existing application instances.
+To create a new instance when the number of application instances has reached the upper limit, prompt the user to close existing instances via a dialog box.
 
 ## 16000078 Multi-Instance Mode Is Not Supported
 
@@ -940,7 +948,7 @@ The extension can not start the ability due to extension control.
 
 **Description**
 
-Different types of ExtensionAbilities require different capabilities. The system does not allow this type of ExtensionAbility to start the specified ability.
+Different types of ExtensionAbility components require different capabilities. The system does not allow this type of ExtensionAbility to start the specified ability.
 
 **Possible Causes**
 
@@ -1026,11 +1034,11 @@ This error code is reported when an AbilityMonitor API for monitoring the lifecy
 
 **Possible Causes**
 
-Creating an **AbilityDelegatorRegistry** instance fails.
+Creating an AbilityDelegatorRegistry instance fails.
 
 **Solution**
 
-Check whether an **AbilityDelegatorRegistry** instance is created.
+Check whether an AbilityDelegatorRegistry instance is created.
 
 ## 16000101 shell Command Failure
 
@@ -1058,18 +1066,18 @@ Invalid wantAgent object.
 
 **Description**
 
-This error code is reported when the **wantAgent** object passed in the API is invalid.
+This error code is reported when the wantAgent object passed in the API is invalid.
 
 **Possible Causes**
 
-1. The **wantAgent** object is invalid.
+1. The wantAgent object is invalid.
 2. A third-party application attempts to set the ability of another application.
 3. An internal communication error occurs.
 
 **Solution**
 
-1. Ensure that the **wantAgent** object passed in the API exists.
-2. Check whether the caller is a third-party application. Third-party applications cannot set the abilities of other applications.
+1. Ensure that the wantAgent object passed in the API exists.
+2. Check whether the caller is a third-party application. Third-party applications cannot set the ability components of other applications.
 
 ## 16000152 wantAgent Object Does Not Exist
 
@@ -1089,7 +1097,7 @@ The **wantAgent** object does not exist.
 
 Pass a valid **wantAgent** object in the API.
 
-## 16000153 wangAgent Object Canceled
+## 16000153 wantAgent Object Canceled
 
 **Error Message**
 
@@ -1097,7 +1105,7 @@ The wantAgent object has been canceled.
 
 **Description**
 
-This error code is reported when the **wangAgent** object passed in the API has been canceled.
+This error code is reported when the **wantAgent** object passed in the API has been canceled.
 
 **Possible Causes**
 
@@ -1133,7 +1141,7 @@ Incorrect ability type.
 
 **Description**
 
-This error code is reported when the ability type invoked by the API is incorrect.
+This error code is reported when the ability type for the API call is incorrect.
 
 **Possible Causes**
 
@@ -1216,7 +1224,7 @@ The method has been registered by the callee.
 
 **Solution**
 
-Check whether the method has been registered.
+Check whether the method has been registered. If the method has been registered, do not register it again.
 
 ## 16200005 Method Not Registered
 
@@ -1234,7 +1242,7 @@ The method has not been registered by the callee.
 
 **Solution**
 
-Check whether the method has been registered.
+Register the method on the callee side and then call it.
 
 ## 16200006 No Permission to Enable or Disable the Resident Process
 

@@ -1,4 +1,4 @@
-# @ohos.bundle.innerBundleManager (innerBundleManager) (System API)
+# @ohos.bundle.innerBundleManager (innerBundleManager Module) (System API)
 
 The innerBundleManager module provides APIs for the Home Screen application.
 

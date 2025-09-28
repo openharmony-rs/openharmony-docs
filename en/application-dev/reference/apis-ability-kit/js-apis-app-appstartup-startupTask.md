@@ -1,6 +1,12 @@
-# @ohos.app.appstartup.StartupTask (Startup Task)
+# @ohos.app.appstartup.StartupTask (AppStartup Task)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yzkp-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The module provides APIs related to startup tasks.
+The module provides capabilities related to startup tasks in [AppStartup](../../application-models/app-startup.md).
 
 > **NOTE**
 >
@@ -18,6 +24,8 @@ import { StartupTask } from '@kit.AbilityKit';
 
 Provides capabilities related to startup tasks. It is decorated by [@Sendable](../../arkts-utils/arkts-sendable.md#sendable-decorator).
 
+**Decorator**: \@Sendable
+
 ### onDependencyCompleted
 
 onDependencyCompleted?(dependency: string, result: Object): void
@@ -31,7 +39,7 @@ Called when the dependent startup task is complete.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | dependency | string | Yes| Name of the dependent startup task.|
-| result | Object | Yes| Execution result of the dependent startup task.|
+| result | Object | Yes| Execution result of [init](#init) of the dependent startup task.|
 
 **Example**
 
@@ -62,7 +70,7 @@ export default class StartupTask_001 extends StartupTask {
 
 init(context: AbilityStageContext): Promise\<Object \| void\>
 
-Initializes this startup task.
+Called when all the dependent startup tasks are complete. You can initialize the startup task in this callback.
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -70,7 +78,7 @@ Initializes this startup task.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| context | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md) | Yes| Context of the ability stage.|
+| context | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md) | Yes| Context environment of the [AbilityStage](js-apis-app-ability-abilityStage.md).|
 
 **Return value**
 

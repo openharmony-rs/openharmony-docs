@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 EventHub is an event communication mechanism based on the publish-subscribe pattern. It decouples senders and subscribers through event names, supporting efficient data transfer and state synchronization between different service modules. It is primarily used for [data communication between UIAbility components and UI pages](../../application-models/uiability-data-sync-with-ui.md).
 
@@ -26,7 +27,7 @@ Since Worker and TaskPool implement [multithreaded concurrency](../../arkts-util
 - A Context object converted by [sendableContextManager](js-apis-app-ability-sendableContextManager.md) is considered different from the original Context object, and data communication between their EventHub objects is not supported.
 
 ## Modules to Import
-
+ 
 ```ts
 import { common } from '@kit.AbilityKit';
 ```
@@ -40,7 +41,7 @@ import { common, UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   eventFunc() {
-    console.log('eventFunc is called');
+    console.info('eventFunc is called');
   }
 
   onCreate() {
@@ -115,7 +116,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc() {
-    console.log(`eventFunc is called, value: ${this.value}`);
+    console.info(`eventFunc is called, value: ${this.value}`);
   }
 }
 ```
@@ -134,7 +135,7 @@ export default class EntryAbility extends UIAbility {
     try {
       // Anonymous functions can be used to subscribe to events.
       this.context.eventHub.on('myEvent', () => {
-        console.log(`anonymous eventFunc is called, value: ${this.value}`);
+        console.info(`anonymous eventFunc is called, value: ${this.value}`);
       });
     } catch (e) {
       let code: number = (e as BusinessError).code;
@@ -156,7 +157,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc() {
-    console.log(`eventFunc is called, value: ${this.value}`);
+    console.info(`eventFunc is called, value: ${this.value}`);
   }
 }
 ```
@@ -210,11 +211,11 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc1() {
-    console.log('eventFunc1 is called');
+    console.info('eventFunc1 is called');
   }
 
   eventFunc2() {
-    console.log('eventFunc2 is called');
+    console.info('eventFunc2 is called');
   }
 }
 ```
@@ -274,7 +275,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc(argOne: number, argTwo: number) {
-    console.log(`eventFunc is called, ${argOne}, ${argTwo}`);
+    console.info(`eventFunc is called, ${argOne}, ${argTwo}`);
   }
 }
 ```

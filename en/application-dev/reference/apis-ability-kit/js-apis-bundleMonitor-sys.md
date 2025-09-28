@@ -1,4 +1,4 @@
-# @ohos.bundle.bundleMonitor (bundleMonitor) (System API)
+# @ohos.bundle.bundleMonitor (bundleMonitor Module) (System API)
 
 The module provides APIs for listens for bundle installation, uninstall, and updates.
 
