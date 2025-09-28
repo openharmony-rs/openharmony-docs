@@ -1875,6 +1875,7 @@ struct Index {
 draw(context: DrawContext): void
 
 绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。
+该接口的[DrawContext](./js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
 
 > **说明：**
 >
