@@ -48,7 +48,7 @@ Web原生信息连接建立时回调此方法。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ------ |
-| info | [ConnectionInfo](#connectionInfo) | 是 | 连接信息对象。 |
+| info | [ConnectionInfo](#connectioninfo) | 是 | 连接信息对象。 |
 
 **示例:**
 
@@ -79,7 +79,7 @@ Web原生信息连接断开时回调此方法。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ------ |
-| info | [ConnectionInfo](#connectionInfo) | 是 | 连接信息对象。 |
+| info | [ConnectionInfo](#connectioninfo) | 是 | 连接信息对象。 |
 
 **示例:**
 
