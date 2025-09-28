@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 开发者通过调用Image Kit（图片处理服务）提供的接口，可以实现图片的解码、编码、编辑、元数据处理和图片接收等功能。
 

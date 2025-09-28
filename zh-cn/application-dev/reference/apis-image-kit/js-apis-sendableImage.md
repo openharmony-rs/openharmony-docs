@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 本模块基于Sendable对象，提供图片处理效果，包括通过属性创建PixelMap、读取图像像素数据、读取区域内的图片数据等。
 
