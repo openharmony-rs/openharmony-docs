@@ -295,7 +295,7 @@ minimizeAll(id: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** API version 21之前，该接口在所有设备中返回801错误码。从API version 21开始，该接口在Phone设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** <!--RP1-->API version 21之前，该接口在所有设备中返回801错误码。从API version 21开始，该接口在Phone设备中可正常调用，在其他设备中返回801错误码。<!--RP1End-->
 
 **参数：**
 
