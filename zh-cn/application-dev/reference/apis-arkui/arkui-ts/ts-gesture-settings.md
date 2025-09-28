@@ -89,15 +89,15 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 ## SourceType枚举说明<sup>8+</sup>
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | ---- | --- | -------- |
-| Unknown | - | 未知设备。 |
-| Mouse | - | 鼠标。 |
-| TouchScreen | - | 触摸屏。 |
+| Unknown | - | 未知设备。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Mouse | - | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TouchScreen | - | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Key<sup>21+</sup> | 4 | 键盘。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| JoyStick<sup>21+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## SourceTool枚举说明<sup>9+</sup>
 
