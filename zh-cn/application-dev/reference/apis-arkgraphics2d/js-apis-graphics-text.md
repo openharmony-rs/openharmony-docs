@@ -290,13 +290,13 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 | 参数名 | 类型               | 必填 | 说明                              |
 | -----  | ------------------ | ---- | --------------------------------- |
-|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，支持两种格式："file:// + 字体文件绝对路径"或"rawfile/目录or文件名"。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。如果 |
+| Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。 |
 
 **示例：**
 
@@ -313,7 +313,7 @@ struct GetFontDescriptorsFromPathTest {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {
             for (let index = 0; index < fontFullDescriptors.length; index++) {
-              console.log("Path:" + fontFullDescriptors[index].path +
+              console.info("Path:" + fontFullDescriptors[index].path +
                           "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
                           "\nfullName:" + fontFullDescriptors[index].fullName +
                           "\nfamilyName:" + fontFullDescriptors[index].fontFamily +
