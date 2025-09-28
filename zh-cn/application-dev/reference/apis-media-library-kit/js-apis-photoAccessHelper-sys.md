@@ -9846,6 +9846,57 @@ async function example(context: Context) {
 }
 ```
 
+
+### startDownloadSpecificCloudMedia<sup>22+</sup>
+
+startDownloadSpecificCloudMedia(assetUris: string[]): Promise&lt;Map&lt;string,DownloadCloudAssetCode&gt;&gt;
+
+开始批量添加云端媒体资产下载任务。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Map&lt;string,[DownloadCloudAssetCode](#DownloadCloudAssetCode22)&gt;&gt; | Promise对象，返回uri列表添加是否成功。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('startDownloadCloudMediaDemo');
+  try {
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    await cloudMediaAssetManagerInstance.startDownloadCloudMedia(photoAccessHelper.CloudMediaDownloadType.DOWNLOAD_FORCE);
+  } catch (err) {
+    console.error(`startDownloadCloudMediaDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## MovingPhoto<sup>12+</sup>
 
 动态照片对象。
