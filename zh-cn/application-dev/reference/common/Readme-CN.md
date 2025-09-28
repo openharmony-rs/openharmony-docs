@@ -1,5 +1,12 @@
 # 公共基础能力<!--common-basic-api-->
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
+
 - ArkTS API<!--common-basic-arkts-->
   - [Console (控制台)](js-apis-logs.md)
   - [loadNativeModule (同步动态加载系统库接口)](js-apis-common-load-native-module.md)
