@@ -2411,7 +2411,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 }
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd((err: BusinessError, data: number) => {
-  console.info("getSocketFd failed: " + err);
+  console.error("getSocketFd failed: " + err);
   console.info("tunenlfd: " + data);
 })
 ```
@@ -6530,7 +6530,7 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.info('bind fail');
+    console.error('bind fail');
     return;
   }
   console.info('bind success');
@@ -6628,7 +6628,7 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.info('bind fail');
+    console.error('bind fail');
     return;
   }
   console.info('bind success');
@@ -6722,7 +6722,7 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.info('bind fail');
+    console.error('bind fail');
     return;
   }
   console.info('bind success');
