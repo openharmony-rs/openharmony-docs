@@ -563,7 +563,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 | 名称       | 类型                                       | 只读 |可选| 说明          |
 | -----------| -------------------------------------------|------|----|---------- |
-| isOpen     | boolean                                    | 否   |否 |防火墙开/关。true:防火墙开启；false：防火墙关闭。 |
+| isOpen     | boolean                                    | 否   |否 |是否开启防火墙。true表示开启防火墙，false表示关闭防火墙。 |
 | inAction   | [FirewallRuleAction](#firewallruleaction)  | 否   |否 |入站行动。    |
 | outAction  | [FirewallRuleAction](#firewallruleaction)  | 否  | 否|出站行动。    |
 
