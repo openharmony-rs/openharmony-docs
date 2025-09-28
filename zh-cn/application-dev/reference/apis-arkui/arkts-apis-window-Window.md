@@ -1287,7 +1287,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- |----------------------------------| -- | ------------------------------------------------------------ |
-| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区域类型。不支持获取软键盘类型的避让区域，type参数传入TYPE_KEYBOARD时，返回1300016错误码。 |
+| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区域类型。不支持获取软键盘类型的避让区域，传入TYPE_KEYBOARD时，返回1300016错误码。 |
 
 **返回值：**
 
