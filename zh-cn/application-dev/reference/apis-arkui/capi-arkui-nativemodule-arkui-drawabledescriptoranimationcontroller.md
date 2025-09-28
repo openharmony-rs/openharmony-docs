@@ -1,4 +1,4 @@
-# ArkUI_DrawableDescriptor
+# ArkUI_DrawableDescriptor_AnimationController
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
@@ -8,9 +8,9 @@
 
 ## 概述
 
-定义 DrawableDescriptor 对象。
+定义DrawableDescriptor动图控制器对象。
 
-**起始版本：** 12
+**起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
