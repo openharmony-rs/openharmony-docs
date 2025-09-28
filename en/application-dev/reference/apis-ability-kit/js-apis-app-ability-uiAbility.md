@@ -49,7 +49,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 ## UIAbility
 
-Application component that has the UI. It provides lifecycle callbacks such as component creation, destruction, and foreground/background switching, and supports component collaboration.
+Application component that has the UI. It provides lifecycle callbacks such as component creation, destruction, and foreground/background switching, and supports background communication.
 
 ### Properties
 
@@ -58,10 +58,9 @@ Application component that has the UI. It provides lifecycle callbacks such as c
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) | No| No| Context of the UIAbility.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| launchWant | [Want](js-apis-app-ability-want.md) | No| No| Want in the request used to cold start the UIAbility. The value is the Want received in [onCreate](#oncreate).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| launchWant | [Want](js-apis-app-ability-want.md) | No| No| Want in the request used to [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability) the UIAbility. The value is the Want received in [onCreate](#oncreate).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | lastRequestWant | [Want](js-apis-app-ability-want.md) | No| No| Want in the most recent request to launch the UIAbility.<br>- On the first launch of a UIAbility, it is the Want parameter received in [onCreate](#oncreate).<br>- On subsequent launches, it is the most recent Want received in [onNewWant](#onnewwant).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | callee | [Callee](#callee) | No| No| Background communication object created by the system for the UIAbility, known as the Callee UIAbility (Callee), which is capable of receiving data sent from the Caller object.|
-
 
 ### onCreate
 
@@ -92,8 +91,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class MyUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // Execute an asynchronous task.
-    hilog.info(0x0000, 'testTag', `onCreate, want: ${want.abilityName}`);
-    hilog.info(0x0000, 'testTag', `the launchReason is +  ${launchParam.launchReason} + , the lastExitReason is  + ${launchParam.lastExitReason}`);
+    hilog.info(0x0000, 'testTag',
+      `onCreate, want: ${want.abilityName}, the launchReason is ${launchParam.launchReason}, the lastExitReason is ${launchParam.lastExitReason}`);
   }
 }
 ```
@@ -174,7 +173,7 @@ onWindowStageDestroy(): void
 
 Called when the WindowStage instance has been destroyed. It informs applications that the WindowStage instance is no longer available for use.
 
-The callback is invoked only when the UIAbility exits gracefully. It is not invoked in cases of abnormal exits (for example, due to low memory conditions).
+The callback is invoked only when the UIAbility exits gracefully. It is not invoked in cases of abnormal exits (for example, process termination due to low memory conditions).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -203,7 +202,7 @@ Called when the page stack is restored for the target UIAbility during cross-dev
 
 > **NOTE**
 >
-> When an application is launched as a result of a migration, the **onWindowStageRestore()** lifecycle callback function, rather than **onWindowStageCreate()**, is triggered following [onCreate()](#oncreate) or [onNewWant()](#onnewwant). This sequence occurs for both cold and hot starts.
+> When an application is launched as a result of a migration, the **onWindowStageRestore()** lifecycle callback function, rather than **onWindowStageCreate()**, is triggered following [onCreate()](#oncreate) or [onNewWant()](#onnewwant). This sequence occurs for both [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability) and [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability).
 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -235,11 +234,14 @@ export default class MyUIAbility extends UIAbility {
 
 onDestroy(): void | Promise&lt;void&gt;
 
-Called when the UIAbility is destroyed (for example, when the UIAbility is terminated using the [terminateSelf](js-apis-inner-application-uiAbilityContext.md#terminateself) API). You can clear resources and save data during this lifecycle. This API returns the result synchronously or uses a promise to return the result.
+Called when the UIAbility is destroyed (for example, when the UIAbility is terminated using the [terminateSelf](js-apis-inner-application-uiAbilityContext.md#terminateself) API). You can clear resources and save data during this lifecycle.
 
-After the **onDestroy()** lifecycle callback is executed, the application may exit. Consequently, the asynchronous function (for example, asynchronously writing data to the database) in **onDestroy()** may fail to be executed. Using a Promise for asynchronous callback is recommended to prevent such issues.
+This API returns the result synchronously or uses a promise to return the result.
 
-The callback is invoked only when the UIAbility exits gracefully. It is not invoked in cases of abnormal exits (for example, due to low memory conditions).
+> **NOTE**
+>
+> - Once the **onDestroy** lifecycle callback completes, the application may exit. This can interrupt any pending asynchronous operations (such as asynchronously writing data to a database), preventing them from finishing successfully. In this case, you are advised to use a promise to return the result.
+> - The callback is invoked only when the UIAbility exits gracefully. It is not invoked in cases of abnormal exits (for example, process termination due to low memory conditions).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -300,7 +302,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class MyUIAbility extends UIAbility {
   onForeground() {
-    // Execute an asynchronous task.
     hilog.info(0x0000, 'testTag', `onForeground`);
   }
 }
@@ -336,7 +337,7 @@ export default class MyUIAbility extends UIAbility {
 
 onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueResult | Promise&lt;AbilityConstant.OnContinueResult&gt;
 
-Called to save data during the UIAbility migration preparation process.
+Called when a UIAbility is to be migrated across devices. You can save service data to be migrated.
 
 > **NOTE**
 >
@@ -404,6 +405,7 @@ onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void
 
 Called when a UIAbility instance, which has been in the foreground, is brought up again after being in the background (during a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability).
 
+This API returns the result synchronously and does not support asynchronous callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -414,7 +416,7 @@ Called when a UIAbility instance, which has been in the foreground, is brought u
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Data passed by the caller when re-launching the UIAbility.|
-| launchParam | [AbilityConstant.LaunchParam](js-apis-app-ability-abilityConstant.md#launchparam) | Yes| Reason for re-launching the UIAbility.|
+| launchParam | [AbilityConstant.LaunchParam](js-apis-app-ability-abilityConstant.md#launchparam) | Yes| UIAbility launch parameters, including the launch reason.|
 
 **Example**
 
@@ -469,9 +471,7 @@ export default class MyUIAbility extends UIAbility {
 
 onSaveState(reason: AbilityConstant.StateType, wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnSaveResult
 
-Called when the framework automatically saves the UIAbility state in the case of an application fault. This API is used together with [appRecovery](js-apis-app-ability-appRecovery.md). When an application is faulty, the framework calls **onSaveState** to save the status of the UIAbility if auto-save is enabled.
-
-When the application has enabled the fault recovery feature (with the **saveOccasion** parameter in [enableAppRecovery](js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery) set to **SAVE_WHEN_ERROR**), this callback is invoked to save the UIAbility data in the case of an application fault.
+This API must be used with [appRecovery](js-apis-app-ability-appRecovery.md). When the application has enabled the fault recovery feature (with the **saveOccasion** parameter in [enableAppRecovery](js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery) set to **SAVE_WHEN_ERROR**), this callback is invoked to save the UIAbility data in the case of an application fault.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -482,7 +482,7 @@ When the application has enabled the fault recovery feature (with the **saveOcca
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | reason | [AbilityConstant.StateType](js-apis-app-ability-abilityConstant.md#statetype) | Yes| Reason for triggering the application to save its state. Currently, only **APP_RECOVERY** (fault recovery scenario) is supported.|
-| wantParam | Record&lt;string,&nbsp;Object&gt; | Yes| Custom application state data, which is stored in **Want.parameters** in **onCreate** when the application restarts.|
+| wantParam | Record&lt;string,&nbsp;Object&gt; | Yes| Custom application state data, which is stored in **Want.parameters** in [onCreate](#oncreate) when the application restarts.|
 
 **Return value**
 
@@ -575,13 +575,13 @@ export default class EntryAbility extends UIAbility {
       abilityName: "SecondAbility"
     }
     this.context.startAbilityForResult(want)
-      .then((result)=>{
+      .then((result) => {
         // Obtain the startup result and terminate the current UIAbility when resultCode in the return value is 0.
         console.info('startAbilityForResult success, resultCode is ' + result.resultCode);
         if (result.resultCode === 0) {
           this.context.terminateSelf();
         }
-      }).catch((err: BusinessError)=>{
+      }).catch((err: BusinessError) => {
       // Exception handling.
       console.error('startAbilityForResult failed, err:' + JSON.stringify(err));
       this.context.terminateSelf();
@@ -679,9 +679,9 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
 
  **NOTE**
-- This callback does not support ability launch in specified mode.
-- When you use methods such as **startAbility()** to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-ability-wantConstant.md#flags) in the Want object.
-- During a cold start, this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a hot start, this callback must be invoked before [onNewWant](#onnewwant).
+- This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
+- When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
+- During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -712,7 +712,7 @@ export default class MyAbility extends UIAbility {
 
 ## Caller
 
-A Caller UIAbility (which must be a system application) can use [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to start a Callee UIAbility (which can be a third-party application). The Callee UIAbility will provide a Caller object to the Caller UIAbility. Once the Caller UIAbility receives this Caller object, it can use it to communicate with the Callee UIAbility and transmit data.
+A Caller UIAbility (which must be a system application) can use [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to start a Callee UIAbility (which can be a third-party application). After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
 
 ### call
 
@@ -758,16 +758,19 @@ class MyMessageAble implements rpc.Parcelable { // Custom parcelable data struct
   name: string;
   str: string;
   num: number = 1;
+
   constructor(name: string, str: string) {
     this.name = name;
     this.str = str;
   }
+
   marshalling(messageSequence: rpc.MessageSequence) {
     messageSequence.writeInt(this.num);
     messageSequence.writeString(this.str);
     console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
     return true;
   }
+
   unmarshalling(messageSequence: rpc.MessageSequence) {
     this.num = messageSequence.readInt();
     this.str = messageSequence.readString();
@@ -775,6 +778,7 @@ class MyMessageAble implements rpc.Parcelable { // Custom parcelable data struct
     return true;
   }
 }
+
 let method = 'call_Function'; // Notification message string negotiated by the two UIAbility components.
 
 export default class MainUIAbility extends UIAbility {
@@ -865,6 +869,7 @@ class MyMessageAble implements rpc.Parcelable {
     return true;
   }
 }
+
 let method = 'call_Function';
 let caller: Caller;
 
@@ -944,7 +949,7 @@ export default class MainUIAbility extends UIAbility {
 
 onRelease(callback: OnReleaseCallback): void
 
-Called by the Caller UIAbility to register for notifications when the Callee UIAbility disconnects. The callback is used to monitor events where the Callee UIAbility disconnects either intentionally or due to an error.
+Used by the Caller UIAbility to register a listener for disconnection notifications from the Callee UIAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1004,7 +1009,7 @@ Called when the remote UIAbility state changes in the collaboration scenario. Th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback10) | Yes| Callback used to return the result.|
+| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback) | Yes| Callback used to return the result.|
 
 **Error codes**
 
@@ -1049,7 +1054,7 @@ export default class MainAbility extends UIAbility {
 
 on(type: 'release', callback: OnReleaseCallback): void
 
-Called by the Caller UIAbility to register for notifications when the Callee UIAbility disconnects. The callback is used to monitor events where the Callee UIAbility disconnects either intentionally or due to an error.
+Used by the Caller UIAbility to register a listener for disconnection notifications from the Callee UIAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1103,7 +1108,7 @@ export default class MainUIAbility extends UIAbility {
 
 off(type: 'release', callback: OnReleaseCallback): void
 
-Unregister the notification for disconnection from the Callee UIAbility. This is the reverse operation of [Caller.on('release')](#onrelease-1). It is currently not supported.
+Unregisters the listener for disconnection notifications from the Callee UIAbility. This is the reverse operation of [on('release')](#onrelease-1). It is currently not supported.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1159,7 +1164,7 @@ export default class MainUIAbility extends UIAbility {
 
 off(type: 'release'): void
 
-Unregister the notification for disconnection from the Callee UIAbility. This is the reverse operation of [Caller.on('release')](#onrelease-1). It is currently not supported.
+Unregisters the listener for disconnection notifications from the Callee UIAbility. This is the reverse operation of [Caller.on('release')](#onrelease-1). It is currently not supported.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1210,7 +1215,7 @@ export default class MainUIAbility extends UIAbility {
 
 ## Callee
 
-Implements callbacks for caller notification registration and deregistration.
+Background communication object created by the system for the UIAbility, known as the Callee UIAbility (Callee), which is capable of receiving data sent from the Caller object.
 
 ### on
 
@@ -1224,7 +1229,7 @@ Registers a caller notification callback, which is invoked when the target UIAbi
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| method | string | Yes| Notification message string negotiated between the two UIAbility components.|
+| method | string | Yes| Method name agreed upon by the Caller UIAbility and Callee UIAbility, used by the Callee UIAbility to identify the type of message.|
 | callback | [CalleeCallback](#calleecallback) | Yes| JS notification synchronization callback of the [rpc.MessageSequence](../apis-ipc-kit/js-apis-rpc.md#messagesequence9) type. The callback must return at least one empty [rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9) object. Otherwise, the function execution fails.|
 
 **Error codes**
@@ -1247,23 +1252,27 @@ class MyMessageAble implements rpc.Parcelable {
   name: string
   str: string
   num: number = 1
+
   constructor(name: string, str: string) {
     this.name = name;
     this.str = str;
   }
+
   marshalling(messageSequence: rpc.MessageSequence) {
     messageSequence.writeInt(this.num);
     messageSequence.writeString(this.str);
     console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
     return true;
   }
+
   unmarshalling(messageSequence: rpc.MessageSequence) {
     this.num = messageSequence.readInt();
     this.str = messageSequence.readString();
     console.info(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
     return true;
   }
-};
+}
+
 let method = 'call_Function';
 
 function funcCallBack(pdata: rpc.MessageSequence) {
@@ -1271,6 +1280,7 @@ function funcCallBack(pdata: rpc.MessageSequence) {
   pdata.readParcelable(msg);
   return new MyMessageAble('test1', 'Callee test');
 }
+
 export default class MainUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info('Callee onCreate is called');
@@ -1342,9 +1352,9 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 | --- | ----- | --- | -------- |
 | msg | string | Yes| Message used for disconnection.|
 
-## OnRemoteStateChangeCallback<sup>10+</sup>
+## OnRemoteStateChangeCallback
 
-### (msg: string)
+### (msg: string)<sup>10+</sup>
 
 (msg: string): void
 
@@ -1357,7 +1367,7 @@ Defines the callback that is invoked when the remote UIAbility state changes in 
 | Name| Type| Mandatory| Description|
 | --- | ----- | --- | -------- |
 | msg | string | Yes| Message used for disconnection.|
-
+ 
 ## CalleeCallback
 
 ### (indata: rpc.MessageSequence)

@@ -1,4 +1,10 @@
 # ServiceExtensionContext (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yewei0794-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The ServiceExtensionContext module provides the context environment for the ServiceExtensionAbility. It inherits from ExtensionContext.
 
@@ -962,7 +968,7 @@ class EntryAbility extends ServiceExtensionAbility {
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, (err) => {
       if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, err: ${JSON.stringify(err)}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
@@ -1044,7 +1050,7 @@ class EntryAbility extends ServiceExtensionAbility {
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, option, (err) => {
       if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, err: ${JSON.stringify(err)}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
@@ -1137,7 +1143,7 @@ class EntryAbility extends ServiceExtensionAbility {
         console.info('startAbilityAsCaller success.');
       })
       .catch((err: BusinessError) => {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, err: ${JSON.stringify(err)}`);
       })
   }
 }
@@ -1621,8 +1627,6 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 Connects this ability to a ServiceExtensionAbility of a given account. This API can be called only by the main thread.
 
-Currently, this API takes effect only on phones and tablets.
-
 > **NOTE**
 >
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md). 
@@ -1631,6 +1635,8 @@ Currently, this API takes effect only on phones and tablets.
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 16000006 is returned.
 
 **System API**: This is a system API.
 
@@ -2653,9 +2659,9 @@ Starts a new [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionA
 **System API**: This is a system API.
 
 **Parameters**
-| Name| Type| Read Only| Optional| Description                |
-| ------ | ---- | ---- | -------------------- | -------------------- |
-| want   | [Want](js-apis-app-ability-want.md) | Yes | No| Want information about the target ability, such as the ability name and bundle name.|
+| Name| Type| Mandatory| Description                |
+| ------ | ---- | ---- | -------------------- |
+| want   | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability, such as the ability name and bundle name.|
 
 **Return value**
 

@@ -5,6 +5,7 @@
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The Ability class is the fundamental unit for application lifecycle scheduling. It is the base class of [UIAbility](js-apis-app-ability-uiAbility.md) and [ExtensionAbility](js-apis-app-ability-extensionAbility.md), and provides callbacks for system configuration updates and memory level updates. However, you cannot inherit directly from this base class. You should opt for either [UIAbility](js-apis-app-ability-uiAbility.md) or [ExtensionAbility](js-apis-app-ability-extensionAbility.md) based on your service needs. For details, see [Introduction to Ability Kit](../../application-models/abilitykit-overview.md).
 
@@ -58,7 +59,7 @@ import { UIAbility, Configuration } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
   onConfigurationUpdate(config: Configuration) {
-    console.log(`onConfigurationUpdate, config: ${JSON.stringify(config)}`);
+    console.info(`onConfigurationUpdate, config: ${JSON.stringify(config)}`);
   }
 }
 ```
@@ -87,7 +88,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
-    console.log(`onMemoryLevel, level: ${JSON.stringify(level)}`);
+    console.info(`onMemoryLevel, level: ${JSON.stringify(level)}`);
   }
 }
 ```

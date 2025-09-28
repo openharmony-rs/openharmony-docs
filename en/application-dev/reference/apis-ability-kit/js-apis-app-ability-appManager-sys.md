@@ -1,4 +1,10 @@
 # @ohos.app.ability.appManager (appManager) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The appManager module implements application management. You can use the APIs of this module to query whether the application is undergoing a stability test, whether the application is running on a RAM constrained device, the memory size of the application, and information about the running process.
 
@@ -276,7 +282,7 @@ try {
 
 off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
-Deregisters the observer used to listen for application start or exit events.
+Unregisters the observer used to listen for application start or exit events.
 
 **System API**: This is a system API.
 
@@ -1702,7 +1708,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 >
 >- To support keep-alive, **mainElement** in the [module.json5](../../quick-start/module-configuration-file.md) file of the application must be a UIAbility. The system initiates the keep-alive operation only when this mainElement has been launched.
 >- On 2-in-1 devices, the application must appear in the status bar within 5 seconds of launch. Otherwise, the system revokes the application's keep-alive status and terminate the restarted process.
->- When the kept-alive application process exits, the system attempts to restart it. If three consecutive restart attempts fail, the application's keep-alive status is canceled.
+>- When the kept-alive application process exits, the system attempts to restart it. If three consecutive restart attempts fail, the system stops restarting the process.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -1718,7 +1724,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 | -------- | -------- | -------- | -------- |
 | bundleName    | string   | Yes   | Bundle name.|
 | userId    | number   | Yes   | User ID.|
-| enable    | boolean   | Yes   | Whether to keep the application alive or cancel its keep-alive status. **true** to keep the application alive,**false** otherwise.|
+| enable    | boolean   | Yes   | Whether to keep the application alive or cancel its keep-alive status. **true** to keep the application alive, **false** otherwise.|
 
 **Return value**
 
@@ -1768,11 +1774,13 @@ try {
 getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
 
 Obtains information about a specified type of keep-alive application of a user. The application information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14).
-This API uses a promise to return the result. Currently, this API takes effect only on 2-in-1 devices.
+This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1827,11 +1835,13 @@ try {
 
 killProcessesInBatch(pids: Array\<number>): Promise\<void>
 
-Kill processes in batches. Currently, this API takes effect only on 2-in-1 devices.
+Kills processes in batches.
 
 **Required permissions**: ohos.permission.KILL_APP_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1839,7 +1849,7 @@ Kill processes in batches. Currently, this API takes effect only on 2-in-1 devic
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pids    | Array\<number>   | Yes   | IDs of the processes to kill.|
+| pids    | Array\<number>   | Yes   | Array of process IDs.|
 
 **Return value**
 

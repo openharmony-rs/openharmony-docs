@@ -1,5 +1,12 @@
 # Matching Rules of Explicit Want and Implicit Want
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Both explicit [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) and implicit [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) can be used to match an application component to start based on certain rules. These rules determine how the parameters set in [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) match the configuration file declared by the target application component.
 
 ## Matching Rules of Explicit Want
@@ -66,7 +73,8 @@ The system matches the **action** attribute in the **want** parameter passed by 
 
 - If **action** in the passed **want** parameter is not null, and **actions** under **skills** of an application component is not null but does not contain **action** in the passed **want** parameter, the matching fails.
 
-  **Figure 1** Matching rules of action in the want parameter
+**Figure 1** Matching rules of action in the want parameter
+
 ![want-action](figures/want-action.png)
 
 
@@ -84,7 +92,8 @@ The system matches the **entities** attribute in the **want** parameter passed b
 
 - If **entities** in the passed **want** parameter is not null, and **entities** under **skills** of an application component is not null but does not contain **entities** in the passed **want** parameter, the matching fails.
 
-  **Figure 2** Matching rules of entities in the want parameter
+**Figure 2** Matching rules of entities in the want parameter
+
 ![want-entities](figures/want-entities.png)
 
 
@@ -115,6 +124,7 @@ There are four combinations of **uri** and **type** settings. The matching rules
 Leftmost URI matching: When only **scheme**, a combination of **scheme** and **host**, or a combination of **scheme**, **host**, and **port** is configured in the **uris** array under **skills** of the application component, the matching is successful only if the leftmost URI in the passed **want** parameter matches **scheme**, the combination of **scheme** and **host**, or the combination of **scheme**, **host**, and **port**.
 
 **Figure 3** Matching rules when uri and type are not null in the want parameter
+
 ![want-uri-type1](figures/want-uri-type1.png)
 
 To simplify the description:
@@ -123,6 +133,7 @@ To simplify the description:
 - **type** in the **want** parameter passed in by the caller is called **w_type**; the type in the **uris** array under **skills** of the application component to match is called **s_type**.
 
 **Figure 4** Matching rules of uri and type in the want parameter
+
 ![want-uri-type2](figures/want-uri-type2.png)
 
 

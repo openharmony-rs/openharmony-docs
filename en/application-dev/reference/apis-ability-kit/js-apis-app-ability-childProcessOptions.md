@@ -1,10 +1,10 @@
 # @ohos.app.ability.ChildProcessOptions (Child Process Startup Options)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The module describes the startup configuration of a child process. When starting a child process through [childProcessManager](js-apis-app-ability-childProcessManager.md), you can configure the startup configuration of the child process through **ChildProcessOptions**.
 
@@ -27,6 +27,7 @@ import { ChildProcessOptions } from '@kit.AbilityKit';
 | Name       | Type     | Read-Only| Optional| Description                                                              |
 | ----------- | --------- | ---- | ----- | ----------------------------------------------- |
 | isolationMode | boolean | No| Yes| Controls the sandbox isolation level and network access permissions of the child process. **true** if the child process runs in an independent sandbox environment and cannot access the network; **false** if the child process shares the sandbox and network environment with the main process. The default value is **false**.|
+| isolationUid<sup>21+<sup> | boolean | No| Yes| Whether the child process uses an independent UID. **true** if the child process uses an independent UID; **false** if the child process and the main process share the same UID. The default value is **false**. This parameter is valid only when **isolationMode** is set to **true**.|
 
 **Example**
 

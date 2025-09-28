@@ -47,7 +47,7 @@ The created child process does not support the UI or the calling of context-rela
 
 > **NOTE**
 >
-> This function is valid only for 2-in-1 devices.
+> Starting from API version 14, 2-in-1 devices and tablets are supported. In API version 13 and earlier versions, only 2-in-1 devices are supported.
 > Since API version 15, a single process supports a maximum of 50 native child processes. In API version 14 and earlier versions, a single process supports only one native child process.
 
 ## Type Description
@@ -247,7 +247,7 @@ The processing logic sequence is shown in the following pseudocode:
 
 > **NOTE**
 >
-> This function is valid only for 2-in-1 devices.
+> Starting from API version 14, 2-in-1 devices and tablets are supported. In API version 13 and earlier versions, only 2-in-1 devices are supported.
 >
 > Since API version 15, a single process supports a maximum of 50 native child processes. In API version 14 and earlier versions, a single process supports only one native child process.
 
@@ -277,11 +277,11 @@ Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcess(
 
 Starts a native child process, loads the specified DLL file, and calls the entry function. Arguments can be passed to the child process. The ArkTS basic runtime environment cannot be created in the child process.
 
-The specified DLL must implement and export the entry parameters of [NativeChildProcess_Args](#nativechildprocess_args). For details, see [Native Child Process Development (C/C++) - Creating a Child Process That Supports Pass-by-Parameter](../../application-models/capi_nativechildprocess_development_guideline.md#creating-a-child-process-that-supports-pass-by-parameter).
+The specified DLL must implement and export the entry parameters of [NativeChildProcess_Args](#nativechildprocess_args). For details, see [Native Child Process Development (C/C++) - Creating a Child Process That Supports Pass-by-Parameter](../../application-models/capi_nativechildprocess_development_guideline.md#creating-a-native-child-process-that-supports-pass-by-parameter).
 
 > **NOTE**
 >
-> This function is valid only for 2-in-1 devices and tablets.
+> Starting from API version 14, 2-in-1 devices and tablets are supported. In API version 13 and earlier versions, only 2-in-1 devices are supported.
 
 **Since**: 13
 

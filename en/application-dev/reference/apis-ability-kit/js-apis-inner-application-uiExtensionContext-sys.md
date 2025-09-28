@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhangyafei-echo-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -81,7 +81,7 @@ export default class UIExtension extends UIExtensionAbility {
       abilityName: 'EntryAbility',
       moduleName: 'entry'
     }).then((data) => {
-      console.log(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
+      console.info(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
       console.error(`StartAbilityForResultAsCaller failed, err code: ${error.code}, err msg: ${error.message}.`);
     });
@@ -276,6 +276,8 @@ Sets whether the page started by the [UIExtensionAbility](../apis-ability-kit/js
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

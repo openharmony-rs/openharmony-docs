@@ -1,4 +1,4 @@
-# @ohos.bundle.freeInstall (freeInstall) (System API)
+# @ohos.bundle.freeInstall (freeInstall Module) (System API)
 
 The module provides APIs for setting and obtaining installation-free information and APIs for obtaining BundlePackInfo and DispatchInfo.
 

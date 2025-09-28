@@ -1,5 +1,11 @@
 # Using Deep Linking for Application Redirection
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 In Deep Linking, the system, based on the passed-in URI, searches for the application that meets the conditions from the locally installed applications and starts that application. If multiple applications are matched, a dialog box is displayed for users to select one of them.
 
@@ -204,9 +210,9 @@ struct WebComponent {
           if (url === 'link://www.example.com') {
             (this.getUIContext().getHostContext() as common.UIAbilityContext).openLink(url)
               .then(() => {
-                console.log('openLink success');
+                console.info('openLink success.');
               }).catch((err: BusinessError) => {
-                console.error('openLink failed, err:' + JSON.stringify(err));
+                console.error(`openLink failed, err: ${JSON.stringify(err)}.`);
               });
             return true;
           }

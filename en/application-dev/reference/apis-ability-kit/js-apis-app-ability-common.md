@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The module provides pure type definitions for common capabilities within Ability Kit, including various context objects, callback interfaces, and data structures. It exports type declarations only and does not include any implementation logic or executable code.
 
@@ -86,7 +87,7 @@ Defines the parent class of all context types.
 
 type Context = _Context.default
 
-Defines the base class of the context in the stage model.
+Defines the context base class for the [stage model](../../application-models/ability-terminology.md#stage-model).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 
 The module provides APIs for executing intent calls. The system executes intent calls based on user interaction and more.
@@ -15,6 +15,7 @@ The module provides APIs for executing intent calls. The system executes intent 
 > The APIs of this module can be used only in the stage model.
 >
 > The APIs provided by this module are system APIs.
+>
 
 ## Modules to Import
 
@@ -39,7 +40,7 @@ Defines the parameter used to execute an intent call.
 | abilityName | string | No| No| Name of the ability to be called. |
 | insightIntentName | string | No| No| Intent name.|
 | insightIntentParam | Record\<string, Object> | No| No| Intent call parameter.|
-| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | No| No| Intent call execution mode. |
+| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | No| No| Intent execution mode. |
 | displayId<sup>12+</sup> | number | No| Yes| Physical screen ID specified during intent call. The value must be an integer. This parameter is valid only when **executeMode** is set to **UI_ABILITY_FOREGROUND**.|
 | uris<sup>18+</sup> | Array&lt;string&gt; | No| Yes| List of URIs authorized by the intent caller to the intent executor during the call. |
 | flags<sup>18+</sup> | number | No| Yes| [Flags](js-apis-app-ability-wantConstant.md#flags) of the URIs authorized by the intent caller to the intent executor during the call.<br>**NOTE**<br>This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION\||FLAG_AUTH_WRITE_URI_PERMISSION.|

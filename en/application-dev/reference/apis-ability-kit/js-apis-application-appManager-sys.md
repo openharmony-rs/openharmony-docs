@@ -1,4 +1,10 @@
 # @ohos.application.appManager (appManager) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 <!--deprecated_code_no_check-->
 
 The appManager module implements application management. You can use the APIs of this module to query whether the application is undergoing a stability test, whether the application is running on a RAM constrained device, the memory size of the application, and information about the running process.
@@ -46,22 +52,28 @@ Registers an observer to listen for the state changes of all applications.
 
   const observerCode = appManager.registerApplicationStateObserver({
     onForegroundApplicationChanged(appStateData) {
-        console.log('------------ onForegroundApplicationChanged -----------', appStateData);
+      console.info(`onForegroundApplicationChanged, appStateData: ${appStateData}.`);
     },
     onAbilityStateChanged(abilityStateData) {
-        console.log('------------ onAbilityStateChanged -----------', abilityStateData);
+      console.info(`onAbilityStateChanged, abilityStateData: ${abilityStateData}.`);
     },
     onProcessCreated(processData) {
-        console.log('------------ onProcessCreated -----------', processData);
+      console.info(`onProcessCreated, processData: ${processData}.`);
     },
     onProcessDied(processData) {
-        console.log('------------ onProcessDied -----------', processData);
+      console.info(`onProcessDied, processData: ${processData}.`);
     },
     onProcessStateChanged(processData) {
-        console.log('------------ onProcessStateChanged -----------', processData);
+      console.info(`onProcessStateChanged, processData: ${processData}.`);
+    },
+    onAppStarted(appStateData) {
+      console.info(`onAppStarted, appStateData: ${JSON.stringify(appStateData)}`);
+    },
+    onAppStopped(appStateData) {
+      console.info(`onAppStopped, appStateData: ${JSON.stringify(appStateData)}`);
     }
   });
-  console.log('-------- observerCode: ---------', observerCode);
+  console.info(`observerCode: ${observerCode}.`);
   ```
 
 ## appManager.unregisterApplicationStateObserver
@@ -93,9 +105,11 @@ Deregisters the application state observer. This API uses an asynchronous callba
 
   function unregisterApplicationStateObserverCallback(err: BusinessError) {
     if (err) {
-        console.error('------------ unregisterApplicationStateObserverCallback ------------', err);
+      console.error(`UnregisterApplicationStateObserverCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+      return;
     }
   }
+
   appManager.unregisterApplicationStateObserver(observerId, unregisterApplicationStateObserverCallback);
   ```
 
@@ -133,10 +147,10 @@ Deregisters the application state observer. This API uses a promise to return th
 
   appManager.unregisterApplicationStateObserver(observerId)
   .then((data) => {
-      console.log('----------- unregisterApplicationStateObserver success ----------', data);
+      console.info(`unregisterApplicationStateObserver success, data: ${data}.`);
   })
   .catch((err: BusinessError) => {
-      console.error('----------- unregisterApplicationStateObserver fail ----------', err);
+      console.error(`unregisterApplicationStateObserver failed, err code: ${err.code}, err msg: ${err.message}.`);
   });
   ```
 
@@ -165,9 +179,9 @@ Obtains information about the applications that are running in the foreground. T
 
   appManager.getForegroundApplications((err, data) => {
     if (err) {
-        console.error('--------- getForegroundApplicationsCallback fail ---------', err);
+      console.error(`GetForegroundApplications failed, error code: ${err.code}, error msg: ${err.message}.`);
     } else {
-        console.log('--------- getForegroundApplicationsCallback success ---------', data);
+      console.info(`GetForegroundApplications success, data: ${JSON.stringify(data)}.`);
     }
   });
   ```
@@ -197,12 +211,12 @@ Obtains information about the applications that are running in the foreground. T
   import { BusinessError } from '@ohos.base';
 
   appManager.getForegroundApplications()
-  .then((data) => {
-      console.log('--------- getForegroundApplications success -------', data);
-  })
-  .catch((err: BusinessError) => {
-      console.error('--------- getForegroundApplications fail -------', err);
-  });
+    .then((data) => {
+      console.info(`GetForegroundApplications success, data: ${JSON.stringify(data)}.`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`GetForegroundApplications faield, error code: ${err.code}, error msg: ${err.message}.`);
+    });
   ```
 
 ## appManager.killProcessWithAccount
@@ -243,12 +257,12 @@ import { BusinessError } from '@ohos.base';
 let bundleName = 'bundleName';
 let accountId = 0;
 appManager.killProcessWithAccount(bundleName, accountId)
-   .then((data) => {
-       console.log('------------ killProcessWithAccount success ------------', data);
-   })
-   .catch((err: BusinessError) => {
-       console.error('------------ killProcessWithAccount fail ------------', err);
-   });
+  .then((data) => {
+    console.info(`KillProcessWithAccount succes, data: ${JSON.stringify(data)}.`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`KillProcessWithAccount failed, error code: ${err.code}, error msg: ${err.message}.`);
+  });
 ```
 
 
@@ -284,13 +298,15 @@ import { BusinessError } from '@ohos.base';
 
 let bundleName = 'bundleName';
 let accountId = 0;
+
 function killProcessWithAccountCallback(err: BusinessError, data: void) {
-   if (err) {
-       console.error('------------- killProcessWithAccountCallback fail, err: --------------', err);
-   } else {
-       console.log('------------- killProcessWithAccountCallback success, data: --------------', data);
-   }
+  if (err) {
+    console.error(`KillProcessWithAccountCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+  } else {
+    console.info(`KillProcessWithAccountCallback success, data: ${JSON.stringify(data)}`);
+  }
 }
+
 appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
 ```
 
@@ -317,16 +333,18 @@ Kills a process by bundle name. This API uses an asynchronous callback to return
     
   ```ts
   import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@ohos.base';
 
   let bundleName = 'bundleName';
+
   function killProcessesByBundleNameCallback(err: BusinessError, data: void) {
     if (err) {
-        console.error('------------- killProcessesByBundleNameCallback fail, err: --------------', err);
+      console.error(`KillProcessesByBundleNameCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
     } else {
-        console.log('------------- killProcessesByBundleNameCallback success, data: --------------', data);
+      console.info(`KillProcessesByBundleNameCallback success, data: ${JSON.stringify(data)}.`);
     }
   }
+
   appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
   ```
 
@@ -363,10 +381,10 @@ Kills a process by bundle name. This API uses a promise to return the result.
   let bundleName = 'com.example.myapplication';
   appManager.killProcessesByBundleName(bundleName)
     .then((data) => {
-        console.log('------------ killProcessesByBundleName success ------------', data);
+      console.info(`KillProcessesByBundleName success, data: ${JSON.stringify(data)}.`);
     })
     .catch((err: BusinessError) => {
-        console.error('------------ killProcessesByBundleName fail ------------', err);
+      console.error(`KillProcessesByBundleName failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
   ```
 
@@ -396,13 +414,15 @@ Clears application data by bundle name. This API uses an asynchronous callback t
   import { BusinessError } from '@ohos.base';
 
   let bundleName = 'bundleName';
+
   function clearUpApplicationDataCallback(err: BusinessError, data: void) {
     if (err) {
-        console.error('------------- clearUpApplicationDataCallback fail, err: --------------', err);
+      console.error(`ClearUpApplicationDataCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
     } else {
-        console.log('------------- clearUpApplicationDataCallback success, data: --------------', data);
+      console.info(`ClearUpApplicationDataCallback success, dta: ${JSON.stringify(data)}.`);
     }
   }
+
   appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
   ```
 
@@ -439,9 +459,9 @@ Clears application data by bundle name. This API uses a promise to return the re
   let bundleName = 'bundleName';
   appManager.clearUpApplicationData(bundleName)
     .then((data) => {
-        console.log('------------ clearUpApplicationData success ------------', data);
+      console.info(`ClearUpApplicationData sucecss, data: ${JSON.stringify(data)}.`);
     })
     .catch((err: BusinessError) => {
-        console.error('------------ clearUpApplicationData fail ------------', err);
+      console.error(`ClearUpApplicationData failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
   ```

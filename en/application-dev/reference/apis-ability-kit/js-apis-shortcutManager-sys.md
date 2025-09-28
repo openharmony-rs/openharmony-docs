@@ -1,4 +1,4 @@
-# @ohos.bundle.shortcutManager (shortcutManager) (System API)
+# @ohos.bundle.shortcutManager (shortcutManager Module) (System API)
 
 The module allows system applications to add, delete, and query shortcuts, including [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md).
 

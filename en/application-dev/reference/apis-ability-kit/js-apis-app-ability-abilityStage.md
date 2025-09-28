@@ -1,9 +1,9 @@
-# @ohos.app.ability.AbilityStage (Component Manager)
+# @ohos.app.ability.AbilityStage (AbilityStage Component Manager)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 
 AbilityStage is a [module](../../../application-dev/quick-start/application-package-overview.md#multi-module-design-mechanism)-level component manager. When the [HAP](../../../application-dev/quick-start/hap-package.md) or [HSP](../../../application-dev/quick-start/in-app-hsp.md) of an application is first loaded, an AbilityStage instance is created. It is used for initializing operations such as resource preloading and thread creation at the module level. An AbilityStage instance corresponds to a module.
@@ -53,7 +53,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
-    console.log('MyAbilityStage.onCreate is called');
+    console.info('MyAbilityStage.onCreate is called');
   }
 }
 ```
@@ -66,6 +66,7 @@ onAcceptWant(want: Want): string
 Called when a UIAbility with the launch mode set to [specified](../../application-models/uiability-launch-type.md#specified) is launched. This API returns a string representing the unique ID of the UIAbility instance. This API returns the result synchronously and does not support asynchronous callbacks.
 
 If a UIAbility instance with the same ID already exists in the system, that instance is reused. Otherwise, a new instance is created.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -91,7 +92,7 @@ import { AbilityStage, Want } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onAcceptWant(want: Want) {
-    console.log('MyAbilityStage.onAcceptWant called');
+    console.info('MyAbilityStage.onAcceptWant called');
     return 'com.example.test';
   }
 }
@@ -101,9 +102,9 @@ export default class MyAbilityStage extends AbilityStage {
 
 onNewProcessRequest(want: Want): string
 
-Called when a UIAbility or UIExtensionAbility, which is configured to run in an independent process (with **isolationProcess** set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file), is launched. This API returns a string representing the unique process ID. This API returns the result synchronously and does not support asynchronous callbacks.
+Called when a UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd-->, which is configured to run in an independent process (with **isolationProcess** set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file), is launched. This API returns a string representing the unique process ID. This API returns the result synchronously and does not support asynchronous callbacks.
 
-If the application already has a process with the same ID, the UIAbility or UIExtensionAbility runs in that process. Otherwise, a new process is created.
+If the application already has a process with the same ID, the UIAbility<!--Del--> or UIExtensionAbility<!--DelEnd--> runs in that process. Otherwise, a new process is created.
 
 If you implement both **onNewProcessRequest** and [onAcceptWant](#onacceptwant), the system first invokes the **onNewProcessRequest** callback, and then the **onAcceptWant** callback.
 
@@ -134,7 +135,7 @@ import { AbilityStage, Want } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onNewProcessRequest(want: Want) {
-    console.log('MyAbilityStage.onNewProcessRequest called');
+    console.info('MyAbilityStage.onNewProcessRequest called');
     return 'com.example.test';
   }
 }
@@ -164,7 +165,7 @@ import { AbilityStage, Configuration } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onConfigurationUpdate(config: Configuration) {
-    console.log(`MyAbilityStage.onConfigurationUpdate, language: ${config.language}`);
+    console.info(`MyAbilityStage.onConfigurationUpdate, language: ${config.language}`);
   }
 }
 ```
@@ -194,7 +195,7 @@ import { AbilityStage, AbilityConstant } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
-    console.log(`MyAbilityStage.onMemoryLevel, level: ${JSON.stringify(level)}`);
+    console.info(`MyAbilityStage.onMemoryLevel, level: ${JSON.stringify(level)}`);
   }
 }
 ```
@@ -216,7 +217,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onDestroy() {
-    console.log('MyAbilityStage.onDestroy is called');
+    console.info('MyAbilityStage.onDestroy is called');
   }
 }
 ```

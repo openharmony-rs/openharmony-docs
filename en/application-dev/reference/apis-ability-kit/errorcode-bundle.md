@@ -10,7 +10,7 @@
 The specified bundle name is not found.
 
 **Description**<br>
-When a query API is called, the bundle name passed in does not exist.
+The specified bundle name does not exist.
 
 **Possible Causes**<br>
 
@@ -19,7 +19,11 @@ When a query API is called, the bundle name passed in does not exist.
 
 **Solution**<br>
 1. Check whether the spelling of the bundle name is correct.
-2. Check whether the corresponding bundle is installed.
+2. Run the [dump command](../../tools/bm-tool.md#dump), and check the command output. If the bundle is not installed, an error is reported.
+```
+# Replace **com.xxx.demo** with the actual bundle name.
+hdc shell bm dump -n com.xxx.demo
+```
 
 ## 17700002 Module Name Does Not Exist
 
@@ -27,7 +31,7 @@ When a query API is called, the bundle name passed in does not exist.
 The specified module name is not found.
 
 **Description**<br>
-When a query API or an installation-free API is called, the module name passed in does not exist.
+The specified module name does not exist.
 
 **Possible Causes**<br>
 1. The module name is misspelled.
@@ -35,7 +39,11 @@ When a query API or an installation-free API is called, the module name passed i
 
 **Solution**<br>
 1. Check whether the spelling of the module name is correct.
-2. Check whether the module is installed.
+2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether the module name exists in the list of the **hapModuleNames** field in the output. If not, the module is not installed.
+```
+# Replace **com.xxx.demo** with the actual bundle name.
+hdc shell bm dump -n com.xxx.demo
+```
 
 ## 17700003 Ability Name Does Not Exist
 
@@ -43,7 +51,7 @@ When a query API or an installation-free API is called, the module name passed i
 The specified ability name is not found.
 
 **Description**<br>
-When a query API is called, the ability name passed in does not exist.
+The specified ability name does not exist.
 
 **Possible Causes**<br>
 1. The ability name is misspelled.
@@ -51,7 +59,11 @@ When a query API is called, the ability name passed in does not exist.
 
 **Solution**<br>
 1. Check whether the spelling of the ability name is correct.
-2. Check whether the application has the ability specified by **abilityName**.
+2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether **abilityInfos** under the **hapModuleInfos** field in the output contains an entry where the name equals this ability name. If no such entry is found, the ability name does not exist.
+```
+# Replace **com.xxx.demo** with the actual bundle name.
+hdc shell bm dump -n com.xxx.demo
+```
 
 ## 17700004 User ID Does Not Exist
 
@@ -75,7 +87,7 @@ When a user-related API is called, the user ID passed in does not exist.
 The specified app ID is an empty string.
 
 **Description**<br>
-When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the application ID passed in does not exist.
+When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the appId passed in does not exist.
 
 **Possible Causes**<br>
 **appId** is an empty string.
@@ -214,13 +226,11 @@ The version number is earlier than the version in use.
 **Solution**<br>
 Ensure that the version of the bundle to install is not earlier than the version in use.
 
-1. To query the version of an existing application, use [the HDC tool](../../dfx/hdc.md#environment-setup).
+1. To query the version of an existing application, run [the dump command](../../dfx/hdc.md#environment-setup). The output contains the version code of the installed application. If multiple version codes are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
 ```
-// Obtain the last field from the dump output.
-hdc shell bm dump -n com.xxx.demo |grep versionCode
+# Replace **com.xxx.demo** with the actual bundle name.
+hdc shell "bm dump -n com.xxx.demo |grep versionCode"
 ```
-
-![Example](figures/installed_hap_verisonCode.PNG)
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
@@ -265,12 +275,15 @@ The specified uid is invalid.
 When the [getBundleNameByUid](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) API of the bundleManager module is called, the UID passed in is invalid.
 
 **Possible Causes**<br>
-1. The UID is misspelled.
-2. The UID does not exist.
+The application corresponding to the UID does not exist.
 
 **Solution**<br>
-1. Check whether the UID is correct.
-2. Check whether the UID exists.
+Check whether the UID exists in the system. Run the [dump command](../../tools/bm-tool.md#dump), and check the UID of the installed application. If multiple UIDs are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
+```
+# Replace **com.xxx.demo** with the actual bundle name.
+hdc shell "bm dump -n com.xxx.demo |grep uid"
+```
+
 <!--Del-->
 ## 17700022 Invalid Source File
 
@@ -313,12 +326,16 @@ When an API for querying the profile is called, the profile does not exist.
 **Possible Causes**<br>
 1. The metadata name passed in the API does not exist in the profile.
 2. The content of the profile is not in JSON format.
+<!--Del-->
 3. The type of the profile to query does not exist.
+<!--DelEnd-->
 
 **Solution**<br>
 1. Check whether the metadata name in the **ability** or **extensionAbility** to be queried exists.
 2. Check whether the content of the profile to be queried is in JSON format.
+<!--Del-->
 3. Check whether the application contains a profile that matches the value of **profileType** passed in.
+<!--DelEnd-->
 <!--Del-->
 ## 17700025 Invalid Type
 
@@ -767,7 +784,7 @@ When the [canOpenLink](../apis-ability-kit/js-apis-bundleManager.md#bundlemanage
 The scheme of the link is not configured in the **querySchemes** field.
 
 **Solution**<br>
-Check whether the URL scheme is configured in the **querySchemes** field.
+Check whether the URL scheme is configured in the **querySchemes** field. For details, see [Using canOpenLink to Check Application Accessibility](../../application-models/canopenlink.md).
 <!--Del-->
 ## 17700057 Specified Application Is Not a Preset Application
 
@@ -945,13 +962,13 @@ Use the [install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerin
 The launch want is not found.
 
 **Description**<br>
-The launch want does not exist.
+The Want information in the [bundleManager.getLaunchWant](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetlaunchwant13) API does not exist.
 
 **Possible Causes**<br>
-The application does not have an ability, or does not have an ability for which **entities** is set to **entity.system.home** and **actions** is set to **ohos.want.action.home**.
+The application does not have a UIAbility with **entities** containing **"entity.system.home"** and **actions** containing **"ohos.want.action.home"**.
 
 **Solution**<br>
-Configure an ability with **entities** set to **entity.system.home** and **actions** set to **ohos.want.action.home** for the application.
+Configure a UIAbility with **entities** containing **"entity.system.home"** and **actions** containing **"ohos.want.action.home"** for the application.
 
 <!--Del-->
 ## 17700073 Installation Failure Caused by an Application with the Same Bundle Name but Different Signature Information
@@ -976,7 +993,7 @@ The installation fails because an application with the same bundle name but diff
 The specified appIdentifier is invalid.
 
 **Description**<br>
-When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the app identifier passed in does not exist.
+When an API of the [appControl module](../apis-ability-kit/js-apis-appControl-sys.md) is called, the appIdentifier passed in does not exist.
 
 **Possible Causes**<br>
 **appIdentifier** is an empty string.
@@ -1134,6 +1151,7 @@ Errors related to file operations occurs, such as insufficient space at the dest
 **Solution**<br>
 1. Ensure that the destination path has sufficient space.
 2. Ensure the files in the source path are still present.
+
 ## 17700087 Unsupported Plugin Installation
 
 **Error Message**<br>
@@ -1234,22 +1252,21 @@ The plugin is not installed in the application.
 
 **Solution**<br>
 Run the [bm dump -n command](../../tools/bm-tool.md#dump) to query application information and check whether the plugin is installed.
+
 <!--DelEnd-->
 
 ## 17700101 Bundle Manager Service Abnormal
 **Error Message**<br>
-Bundle manager service is excepted.
+Bundle manager service exception.
 
 **Description**<br>
 The Bundle Manager service is abnormal.
 
 **Possible Causes**<br>
 Scenario 1:
-
 An unknown system exception occurs.
 
 Scenario 2:
-
 The system throws an uncaught error code, such as IPC failure or file copy failure.
 
 **Solution**<br>

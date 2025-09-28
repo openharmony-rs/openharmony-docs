@@ -1,4 +1,4 @@
-# @ohos.bundle.bundleResourceManager (bundleResourceManager) (System API)
+# @ohos.bundle.bundleResourceManager (bundleResourceManager Module) (System API)
 
 The module provides APIs for obtaining resource information, including [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md) and [LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md).
 

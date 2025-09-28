@@ -4,6 +4,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The module is used to listen for state changes of the current application process. For ease of description, the term "application process" will be referred to as "process" in the following sections.
 
@@ -72,7 +73,7 @@ let applicationStateChangeCallback: ApplicationStateChangeCallback = {
 
 export default class MyAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     // 1. Obtain an applicationContext object.
     let applicationContext = this.context.getApplicationContext();
     try {
@@ -83,7 +84,7 @@ export default class MyAbility extends UIAbility {
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
-    console.log('Register applicationStateChangeCallback');
+    console.info('Register applicationStateChangeCallback');
   }
   onDestroy() {
     let applicationContext = this.context.getApplicationContext();

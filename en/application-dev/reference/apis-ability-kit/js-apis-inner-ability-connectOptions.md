@@ -1,4 +1,10 @@
 # ConnectOptions
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yewei0794-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 **ConnectOptions** can be used as an input parameter to receive status changes during the connection to a background service. For example, it is used as an input parameter of [connectServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to a ServiceExtensionAbility.
 
@@ -43,10 +49,10 @@ let connectWant: Want = {
 
 let connectOptions: common.ConnectOptions = {
   onConnect(elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) {
-    console.log(`onConnect elementName: ${elementName}`);
+    console.info(`onConnect elementName: ${elementName}`);
   },
   onDisconnect(elementName: bundleManager.ElementName) {
-    console.log(`onDisconnect elementName: ${elementName}`);
+    console.info(`onDisconnect elementName: ${elementName}`);
   },
   onFailed(code: number) {
     console.error(`onFailed code: ${code}`);
@@ -88,10 +94,10 @@ let connectWant: Want = {
 
 let connectOptions: common.ConnectOptions = {
   onConnect(elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) {
-    console.log(`onConnect elementName: ${elementName}`);
+    console.info(`onConnect elementName: ${elementName}`);
   },
   onDisconnect(elementName: bundleManager.ElementName) {
-    console.log(`onDisconnect elementName: ${elementName}`);
+    console.info(`onDisconnect elementName: ${elementName}`);
   },
   onFailed(code: number) {
     console.error(`onFailed code: ${code}`);
@@ -133,10 +139,10 @@ let connectWant: Want = {
 
 let connectOptions: common.ConnectOptions = {
   onConnect(elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) {
-    console.log(`onConnect elementName: ${elementName}`);
+    console.info(`onConnect elementName: ${elementName}`);
   },
   onDisconnect(elementName: bundleManager.ElementName) {
-    console.log(`onDisconnect elementName: ${elementName}`);
+    console.info(`onDisconnect elementName: ${elementName}`);
   },
   onFailed(code: number) {
     console.error(`onFailed code: ${code}`);
