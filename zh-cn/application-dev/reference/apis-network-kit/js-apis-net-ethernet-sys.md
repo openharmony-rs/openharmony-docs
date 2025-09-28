@@ -576,7 +576,7 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 | 名称         | 类型                    | 只读 |可选| 说明                                                 |
 | ------------ | ----------------------- | --- | ---|------------------------------------------------- |
 | iface        | string                  |  否 |否 |以太网卡名称。                                        |
-| active       | boolean                 |  否 |否 |以太网卡是否处于激活状态（true：激活；false：未激活）。 |
+| active       | boolean                 |  否 |否 |以太网卡是否处于激活状态。true表示激活，false表示未激活。 |
 
 ## IPSetMode<sup>9+</sup>
 
