@@ -108,7 +108,7 @@
 
 ## BluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
 
-在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。
+表示在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类枚举。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
