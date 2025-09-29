@@ -1331,6 +1331,7 @@
         <!--DelEnd-->
         - Pasteboard Service<!--pasteboard-->
           - [Requesting Permissions to Access the Pasteboard](basic-services/pasteboard/get-pastedata-permission-guidelines.md)
+          - [Using the Pasteboard to Copy and Paste](basic-services/pasteboard/use-pasteboard-to-copy-and-paste.md)
           - [Using the Pasteboard to Copy and Paste (C/C++)](basic-services/pasteboard/native-use-pasteboard.md)
           - [Using the Delayed Copy and Paste Function of the Pasteboard](basic-services/pasteboard/pasteboard-time-lapse-copy-and-paste.md)
         - Upload and Download<!--upload-download-->
