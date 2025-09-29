@@ -38,7 +38,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -127,7 +127,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -174,7 +174,7 @@ hasRight(deviceName: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -218,7 +218,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -262,7 +262,7 @@ removeRight(deviceName: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -315,7 +315,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -366,7 +366,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -414,7 +414,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -465,7 +465,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -555,7 +555,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -583,7 +583,7 @@ console.log(`closePipe = ${closeRet}`);
 
 controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
 
-控制传输。
+控制传输。使用Promise异步回调。
 
 **说明：**
 
@@ -607,7 +607,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -651,7 +651,7 @@ console.log(`controlTransfer = ${ret}`);
 
 usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
 
-控制传输。
+控制传输。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -671,7 +671,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -717,7 +717,7 @@ console.log(`usbControlTransfer = ${ret}`);
 
 bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
 
-批量传输。
+批量传输。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -744,7 +744,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -806,7 +806,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -895,7 +895,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -977,7 +977,7 @@ closePipe(pipe: USBDevicePipe): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1023,7 +1023,7 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1050,7 +1050,7 @@ try {
 
 requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
-为指定应用程序申请访问USB配件的访问权限。
+为指定应用程序申请访问USB配件的访问权限。使用Promise异步回调。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1070,7 +1070,7 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1111,7 +1111,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1151,7 +1151,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1194,7 +1194,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1242,7 +1242,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1271,16 +1271,16 @@ try {
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称            | 类型                                        | 必填            |说明            |
-| ------------- | ------------------------------------------- | ------------- |------------- |
-| address       | number                                      | 是 |端点地址。         |
-| attributes    | number                                      | 是 |端点属性。         |
-| interval      | number                                      | 是 |端点间隔。         |
-| maxPacketSize | number                                      | 是 |端点最大数据包大小。    |
-| direction     | [USBRequestDirection](#usbrequestdirection) | 是 |端点的方向。        |
-| number        | number                                      | 是 |端点号。          |
-| type          | number                                      | 是 |端点类型。         |
-| interfaceId   | number                                      | 是 |端点所属的接口的唯一标识。 |
+| 名称            | 类型                                        | 只读  | 必填  |说明            |
+| ------------- | ------------------------------------------- | ---- | ---- |------------- |
+| address       | number                                      | 否   | 是 |端点地址。         |
+| attributes    | number                                      | 否   | 是 |端点属性。         |
+| interval      | number                                      | 否   | 是 |端点间隔。         |
+| maxPacketSize | number                                      | 否   | 是 |端点最大数据包大小。    |
+| direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 是 |端点的方向。        |
+| number        | number                                      | 否   | 是 |端点号。          |
+| type          | number                                      | 否   | 是 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
+| interfaceId   | number                                      | 否   | 是 |端点所属的接口的唯一标识。 |
 
 ## USBInterface
 
@@ -1288,15 +1288,15 @@ try {
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称               | 类型                                     | 必填            |说明                    |
-| ---------------- | ---------------------------------------- | ------------- |--------------------- |
-| id               | number                                   | 是 |接口的唯一标识。              |
-| protocol         | number                                   | 是 |接口的协议。                |
-| clazz            | number                                   | 是 |设备类型。                 |
-| subClass         | number                                   | 是 |设备子类。                 |
-| alternateSetting | number                                   | 是 |在同一个接口中的多个描述符中进行切换设置。 |
-| name             | string                                   | 是 |接口名称。                 |
-| endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 是 |当前接口所包含的端点。           |
+| 名称               | 类型                                     | 只读  | 必填            |说明                    |
+| ---------------- | ---------------------------------------- | ---- | ------------- |--------------------- |
+| id               | number                                   | 否 | 是 |接口的唯一标识。              |
+| protocol         | number                                   | 否 | 是 |接口的协议。                |
+| clazz            | number                                   | 否 | 是 |设备类型。                 |
+| subClass         | number                                   | 否 | 是 |设备子类。                 |
+| alternateSetting | number                                   | 否 | 是 |在同一个接口中的多个描述符中进行切换设置。值的大小表示支持可选模式个数，其中0表示不支持可选模式。 |
+| name             | string                                   | 否 | 是 |接口名称。                 |
+| endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 是 |当前接口所包含的端点。           |
 
 ## USBConfiguration
 
@@ -1304,15 +1304,15 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称             | 类型                                             | 必填  |说明              |
-| -------------- | ------------------------------------------------ | --------------- |--------------- |
-| id             | number                                           | 是 |配置的唯一标识。        |
-| attributes     | number                                           | 是 |配置的属性。          |
-| maxPower       | number                                           | 是 |最大功耗，以毫安为单位。    |
-| name           | string                                           | 是 |配置的名称，可以为空。     |
-| isRemoteWakeup | boolean                                          | 是 |检查当前配置是否支持远程唤醒。 |
-| isSelfPowered  | boolean                                          | 是 | 检查当前配置是否支持独立电源。 |
-| interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | 是 |配置支持的接口属性。      |
+| 名称             | 类型                                             | 只读  | 必填  |说明              |
+| -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
+| id             | number                                           | 否 | 是 |配置的唯一标识。        |
+| attributes     | number                                           | 否 | 是 |配置的属性。          |
+| maxPower       | number                                           | 否 | 是 |最大功耗，以毫安为单位。    |
+| name           | string                                           | 否 | 是 |配置的名称，可以为空。     |
+| isRemoteWakeup | boolean                                          | 否 | 是 |检查当前配置是否支持远程唤醒。 |
+| isSelfPowered  | boolean                                          | 否 | 是 | 检查当前配置是否支持独立电源。 |
+| interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | 否 | 是 |配置支持的接口属性。      |
 
 ## USBDevice
 
@@ -1320,21 +1320,21 @@ USB设备信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称               | 类型                                 | 必填         |说明         |
-| ---------------- | ------------------------------------ | ---------- |---------- |
-| busNum           | number                               | 是 |总线地址。      |
-| devAddress       | number                               | 是 |设备地址。      |
-| serial           | string                               | 是 |序列号。       |
-| name             | string                               | 是 |设备名字。      |
-| manufacturerName | string                               | 是 | 产商信息。      |
-| productName      | string                               | 是 |产品信息。      |
-| version          | string                               | 是 |版本。        |
-| vendorId         | number                               | 是 |厂商ID。      |
-| productId        | number                               | 是 |产品ID。      |
-| clazz            | number                               | 是 |设备类。       |
-| subClass         | number                               | 是 |设备子类。      |
-| protocol         | number                               | 是 |设备协议码。     |
-| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 是 |设备配置描述符信息。 |
+| 名称               | 类型                                 | 只读  | 必填         |说明         |
+| ---------------- | ------------------------------------ | ---- | ---------- |---------- |
+| busNum           | number                               | 否 | 是 |总线地址。      |
+| devAddress       | number                               | 否 | 是 |设备地址。      |
+| serial           | string                               | 否 | 是 |序列号。       |
+| name             | string                               | 否 | 是 |设备名字。      |
+| manufacturerName | string                               | 否 | 是 | 产商信息。      |
+| productName      | string                               | 否 | 是 |产品信息。      |
+| version          | string                               | 否 | 是 |版本。        |
+| vendorId         | number                               | 否 | 是 |厂商ID。      |
+| productId        | number                               | 否 | 是 |产品ID。      |
+| clazz            | number                               | 否 | 是 |设备类。       |
+| subClass         | number                               | 否 | 是 |设备子类。      |
+| protocol         | number                               | 否 | 是 |设备协议码。     |
+| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 是 |设备配置描述符信息。 |
 
 ## USBDevicePipe
 
@@ -1342,10 +1342,10 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称         | 类型   | 必填    |说明    |
-| ---------- | ------ | ----- |----- |
-| busNum     | number |是 | 总线地址。 |
-| devAddress | number |是 | 设备地址。 |
+| 名称         | 类型   | 只读  | 必填    |说明    |
+| ---------- | ------ | ---- | ----- |----- |
+| busNum     | number | 否 |是 | 总线地址。 |
+| devAddress | number | 否 |是 | 设备地址。 |
 
 ## USBControlParams<sup>(deprecated)</sup>
 
@@ -1357,14 +1357,14 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称      | 类型                                            | 必填               |说明               |
-| ------- | ----------------------------------------------- | ---------------- |---------------- |
-| request | number                                          | 是   |请求类型。            |
-| target  | [USBRequestTargetType](#usbrequesttargettype)   | 是   |请求目标类型。          |
-| reqType | [USBControlRequestType](#usbcontrolrequesttype) | 是   |请求控制类型。          |
-| value   | number                                          | 是   |请求参数。            |
-| index   | number                                          | 是   |请求参数value对应的索引值。 |
-| data    | Uint8Array                                      | 是   |用于写入或读取的缓冲区。     |
+| 名称      | 类型                                            | 只读  | 必填               |说明               |
+| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
+| request | number                                          | 否 | 是   |请求类型。            |
+| target  | [USBRequestTargetType](#usbrequesttargettype)   | 否 | 是   |请求目标类型。          |
+| reqType | [USBControlRequestType](#usbcontrolrequesttype) | 否 | 是   |请求控制类型。          |
+| value   | number                                          | 否 | 是   |请求参数。            |
+| index   | number                                          | 否 | 是   |请求参数value对应的索引值。 |
+| data    | Uint8Array                                      | 否 | 是   |用于写入或读取的缓冲区。     |
 
 ## USBDeviceRequestParams<sup>12+</sup>
 
@@ -1372,14 +1372,14 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称      | 类型                                            | 必填               |说明               |
-| ------- | ----------------------------------------------- | ---------------- |---------------- |
-| bmRequestType | number                                    | 是   |请求控制类型。            |
-| bRequest  | number                                        | 是   |请求类型。          |
-| wValue | number                                           | 是   |请求参数。          |
-| wIndex   | number                                         | 是   |请求参数value对应的索引值。            |
-| wLength   | number                                        | 是   |请求数据的长度。 |
-| data    | Uint8Array                                      | 是   |用于写入或读取的缓冲区。     |
+| 名称      | 类型                                            | 只读 | 必填               |说明               |
+| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
+| bmRequestType | number                                    | 否 | 是   |请求控制类型。            |
+| bRequest  | number                                        | 否 | 是   |请求类型。          |
+| wValue | number                                           | 否 | 是   |请求参数。          |
+| wIndex   | number                                         | 否 | 是   |请求参数value对应的索引值。            |
+| wLength   | number                                        | 否 | 是   |请求数据的长度。 |
+| data    | Uint8Array                                      | 否 | 是   |用于写入或读取的缓冲区。     |
 
 ## USBRequestTargetType
 
@@ -1423,13 +1423,13 @@ USB配件信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称         | 类型   | 必填 | 说明             |
-| ------------ | ------ | ---- | ---------------- |
-| manufacturer | string | 是   | 配件的生产厂商。 |
-| product      | string | 是   | 配件的产品类型。 |
-| description  | string | 是   | 配件的描述。     |
-| version      | string | 是   | 配件的版本。     |
-| serialNumber | string | 是   | 配件的SN号。     |
+| 名称         | 类型   | 只读 | 必填 | 说明             |
+| ------------ | ------ | ---- | ---- | ---------------- |
+| manufacturer | string | 否 | 是   | 配件的生产厂商。 |
+| product      | string | 否 | 是   | 配件的产品类型。 |
+| description  | string | 否 | 是   | 配件的描述。     |
+| version      | string | 否 | 是   | 配件的版本。     |
+| serialNumber | string | 否 | 是   | 配件的SN号。     |
 
 ## USBAccessoryHandle<sup>14+</sup>
 
@@ -1437,9 +1437,9 @@ USB配件句柄。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称        | 类型   | 必填 | 说明                                      |
-| ----------- | ------ | ---- | ----------------------------------------- |
-| accessoryFd | number | 是   | 配件文件描述符。合法的accessoryFd是正整数。 |
+| 名称        | 类型   | 只读 | 必填 | 说明                                      |
+| ----------- | ------ | ---- | ---- | ----------------------------------------- |
+| accessoryFd | number | 否 | 是   | 配件文件描述符。合法的accessoryFd是正整数。 |
 
 ## UsbDataTransferParams<sup>18+</sup>
 
@@ -1447,18 +1447,18 @@ USB配件句柄。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称         | 类型   | 必填    |说明    |
-| ---------- | ------ | ----- |----- |
-| devPipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。 |
-| flags | [UsbTransferFlags](#usbtransferflags18) |是 | USB传输标志。 |
-| endpoint | number | 是 | 端点地址，正整数。 |
-| type | [UsbEndpointTransferType](#usbendpointtransfertype18) |是 | 传输类型。 |
-| timeout | number | 是 | 超时时间，单位为毫秒。 |
-| length | number |是 | 数据缓冲区的长度，必须是非负数（期望长度），单位为字节。 |
-| callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> |是 | 传输完成时的回调信息。|
-| userData | Uint8Array | 是 | 用户上下文数据。 |
-| buffer | Uint8Array | 是 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | number | 是 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，单位为个数。 |
+| 名称         | 类型   | 只读  | 必填    |说明    |
+| ---------- | ------ | ---- | ----- |----- |
+| devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。 |
+| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |是 | USB传输标志。 |
+| endpoint | number | 否 | 是 | 端点地址，正整数。 |
+| type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |是 | 传输类型。 |
+| timeout | number | 否 | 是 | 超时时间，单位为毫秒。 |
+| length | number | 否 |是 | 数据缓冲区的长度，必须是非负数（期望长度），单位为字节。 |
+| callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | 否 |是 | 传输完成时的回调信息。|
+| userData | Uint8Array | 否 | 是 | 用户上下文数据。 |
+| buffer | Uint8Array | 否 | 是 | 用于存储读或者写请求时的数据。 |
+| isoPacketCount | number | 否 | 是 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，单位为个数。 |
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1491,11 +1491,11 @@ Usb异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称        | 类型 | 必填   | 说明    |
-| ---------- | ------ | ----- | ------ |
-| actualLength | number |  是 |读写操作的实际长度值，单位为字节。 |
-| status | [UsbTransferStatus](#usbtransferstatus18) | 是 |读写操作完成的状态。 |
-| isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | 是 |实时传输的分包信息。 |
+| 名称        | 类型 | 只读 | 必填   | 说明    |
+| ---------- | ------ | ---- | ----- | ------ |
+| actualLength | number | 否 |  是 |读写操作的实际长度值，单位为字节。 |
+| status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 是 |读写操作完成的状态。 |
+| isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | 否 | 是 |实时传输的分包信息。 |
 
 ## UsbTransferStatus<sup>18+</sup>
 
