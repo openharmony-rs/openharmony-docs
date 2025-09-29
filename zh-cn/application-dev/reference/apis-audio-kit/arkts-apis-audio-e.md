@@ -105,6 +105,19 @@
 | NEARLINK<sup>20+</sup>        | 31 | 星闪设备。 |
 | DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
+## BluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
+
+在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                 | 值     | 说明                                                      |
+| ---------------------| ------ | --------------------------------------------------------- |
+| PREFERRED_NONE  | 0      | 不偏好使用蓝牙或星闪连接进行录音。 |
+| PREFERRED_DEFAULT | 1      | 更偏好使用蓝牙或星闪录音，是否使用低延迟或高质量录音取决于系统。 |
+| PREFERRED_LOW_LATENCY  | 2      | 更偏好使用蓝牙或星闪低延迟模式进行录音。 |
+| PREFERRED_HIGH_QUALITY | 3      | 更偏好使用蓝牙或星闪高质量模式进行录音。 |
+
 ## CommunicationDeviceType<sup>9+</sup>
 
 表示用于通信的可用设备类型的枚举。
