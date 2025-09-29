@@ -253,8 +253,8 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | trackCount | string | 否 | 是 | 媒体资源的轨道数量。当前版本AVRecorder不支持该属性的设置。 |
 | sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。当前版本AVRecorder不支持该属性的设置。 |
 | title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。当前版本AVRecorder不支持该属性的设置。 |
-| videoHeight | string | 否 | 是 | 视频的高度，单位为像素。当前版本AVRecorder不支持该属性的设置。 |
-| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素。当前版本AVRecorder不支持该属性的设置。 |
+| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
+| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
 | videoOrientation | string | 否 | 是 | 视频的旋转方向，单位为度（°）。|
 | hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。当前版本AVRecorder不支持该属性的设置。 |
 | location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。 |
