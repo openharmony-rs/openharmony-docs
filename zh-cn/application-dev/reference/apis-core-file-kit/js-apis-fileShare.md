@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import fileShare from '@ohos.fileshare';
+import { fileShare } from '@kit.CoreFileKit';
 ```
 
 ## OperationMode<sup>11+</sup>
