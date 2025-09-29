@@ -74,7 +74,7 @@ Unzips a file. This API uses a promise to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [zlib.decompressFile](#zlibdecompressfile9) instead.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code -1 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods (../). Otherwise, the error code -1 is returned.
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
@@ -250,7 +250,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 >
 > To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -314,7 +314,7 @@ Decompresses a file. This API uses a promise to return the result.
 >
 > To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -380,7 +380,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 >
 > To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -983,7 +983,7 @@ Creates an instance of a compressed or decompressed object. The instance of the 
 
 | Type         | Description                    |
 | ------------- | ------------------------ |
-| [Zip](#zip12) | Instance of the compressed or decompressed object.|
+| [Zip](#zip12) | Instance of the compressed or decompressed object created.|
 
 **Example**
 
@@ -3553,7 +3553,7 @@ async function demo() {
 
 deflatePending(strm: ZStream): Promise&lt;DeflatePendingOutputInfo&gt;
 
-Returns the number of bytes and bits that has been generated but has not yet been output. This API uses a promise to return the result. The result state and the umber of output bytes and bits are returned upon a success.
+Returns the numbers of bytes and bits that have been generated but have not yet been output. This API uses a promise to return the result. The result state and the numbers of output bytes and bits are returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3747,14 +3747,17 @@ async function demo() {
 
 ## Options
 
+Defines options used to compress or decompress a ZIP file.
+
 **System capability**: SystemCapability.BundleManager.Zlib
 
 | Name    | Type            | Read-Only| Optional| Description                                                      |
 | -------- | ---------------- | ---- | ---------------------------------------------------------- | ---- |
-| level    | [CompressLevel](#compresslevel)     | No  | Yes | For details, see [CompressLevel](#compresslevel).<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| memLevel | [MemLevel](#memlevel)         | No  | Yes | For details, see [MemLevel](#memlevel).<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| strategy | [CompressStrategy](#compressstrategy) | No  | Yes | For details, see [CompressStrategy](#compressstrategy).<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | No  | Yes | For details, see [ParallelStrategy](#parallelstrategy18).<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| level    | [CompressLevel](#compresslevel)     | No  | Yes | Compression level specified for compression or decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| memLevel | [MemLevel](#memlevel)         | No  | Yes | Memory level specified for compression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| strategy | [CompressStrategy](#compressstrategy) | No  | Yes | Compression strategy specified for compression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | No  | Yes | Serial or parallel strategy specified for compression or decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | No  | Yes | Separator strategy for the file path in the compressed package specified for decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 21.       |
 
 ## CompressLevel
 
@@ -3805,6 +3808,19 @@ async function demo() {
 | ---------------------------------------- | ---- | ------------------------ |
 | PARALLEL_STRATEGY_SEQUENTIAL             | 0    | Serial compression/decompression policy (default).|
 | PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | Parallel decompression policy.           |
+
+## PathSeparatorStrategy<sup>21+</sup>
+
+Defines **PathSeparatorStrategy**, a property of [Options](#options), used to specify the separator strategy for the file path in the compressed package specified for decompression.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.BundleManager.Zlib
+
+| Name                                     | Value  | Description                                      |
+| ----------------------------------------- | ---- | ----------------------------------------- |
+| PATH_SEPARATOR_STRATEGY_DEFAULT           | 0    | Default value, indicating that separators in the file path of the compressed package are not processed.   |
+| PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH | 1    | Backslashes (\) in the file path of the package are replaced with slashes (/).|
 
 ## ErrorCode<sup>(deprecated)<sup>
 
@@ -4571,7 +4587,7 @@ async function gzgetcDemo(pathDir: string) {
   await gzip.gzputc(1);
   await gzip.gzclose();
   await gzip.gzopen(path, "rb");
-  let resulit = await gzip.gzgetc();
+  let result = await gzip.gzgetc();
   await gzip.gzclose();
 }
 
@@ -4718,7 +4734,7 @@ async function gzfwriteDemo(pathDir: string) {
   for (let i = 0; i < uint8View.length; i++) {
     uint8View[i] = i;
   }
-  let resulit = await gzip.gzfwrite(bufferWithData, 8, 2)
+  let result = await gzip.gzfwrite(bufferWithData, 8, 2)
   await gzip.gzclose();
 }
 

@@ -4,7 +4,7 @@
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -20,7 +20,7 @@ The [pasteboard](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) 
 
 Currently, the following basic data types are supported for copy and paste: text, HTML, URI, Want, and pixel map. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage.
 
-You are advised to use the solution discussed here to implement the copy-and-paste function for new applications.
+You are advised to use the solution discussed here to implement the copy and paste function for new applications.
 
 ### Mapping between ArkTS and NDK Data Types
 | ArkTS| NDK                                                                                                                                       |
@@ -111,7 +111,7 @@ let data = new unifiedDataChannel.UnifiedData();
 data.addRecord(record);
 
 // Save a piece of PlainText data to the system pasteboard.
-let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.setUnifiedData(data).then((data: void) => {
     console.info('Succeeded in setting UnifiedData.');
     // The data is successfully saved, which is a normal case.
