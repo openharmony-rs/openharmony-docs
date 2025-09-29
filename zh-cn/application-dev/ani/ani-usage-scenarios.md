@@ -287,8 +287,8 @@ hdc file send bootpath.json /system/framework/bootpath.json
 
 ## 2 名称修饰符（Mangling）规则
 
-**Mangling** 是对 ArkTS/ETS 中的类型与函数签名进行编码的规则，用于在运行时唯一标识一个方法，包括区分函数的重载。  
-Mangling 结果是一段字符串，拼接了参数类型和返回类型的编码。  
+**Mangling** 是对 ArkTS/ETS 中的类型与函数签名进行编码的规则，用于在运行时唯一标识一个方法，包括区分函数的重载。
+Mangling 结果是一段字符串，拼接了参数类型和返回类型的编码。
 基本格式如下：
 
 ```
@@ -333,8 +333,8 @@ Object_CallMethodByName_Int(obj, "toInt", "C{std.core.String}:i", &result);
 | `double`   | `d`  | `ani_double`  |
 | `number`   | `d`  | `ani_double`  |
 
-> 注意  
-> - ArkTS 中的 `number` 是 `double` 的别名  
+> 注意
+> - ArkTS 中的 `number` 是 `double` 的别名
 > - 仅在**非泛型、非可选、非 union** 情况下直接使用原始编码，否则会装箱成 `C{std.core.<类型名>}`
 
 ### 2.2.2 特殊值类型
@@ -353,7 +353,7 @@ Object_CallMethodByName_Int(obj, "toInt", "C{std.core.String}:i", &result);
 | `class CustomCls`            | `C{example.CustomCls}`       | 类或接口，`C{}` 包含运行时全名 |
 | `interface CustomIface`      | `C{example.CustomIface}`     | 同上                       |
 | `string`                     | `C{std.core.String}`         | 标准库类型                 |
-| `bigint`                     | `C{escompat.BigInt}`         | escompat 标准库类型        |
+| `bigint`                     | `C{std.core.BigInt}`         | std.core 标准库类型        |
 | `Array`                      | `C{escompat.Array}`          | escompat 标准库类型        |
 | `Partial<T>`                 | `P{RuntimeName}`             | Partial 类型               |
 | `FixedArray<double>`         | `A{d}`                       | 固定数组，元素用类型编码表示 |
@@ -560,7 +560,7 @@ ani_ref
 
 ```ts
 type DataType = string | ArrayBuffer | FixedArray<int> | FixedArray<string>
-native function handleData(data: DataType): void  
+native function handleData(data: DataType): void
 
 function main(){
     loadLibrary("libraryName")
@@ -575,7 +575,7 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
     // 注意：在生产代码中，通过`GlobalReference_Create`将FindClass找到的类缓存会大大提高效率
     ani_class stringClass {};
     env->FindClass("std.core.String", &stringClass);
-    
+
     ani_class arrayBufferClass {};
     env->FindClass("escompat.ArrayBuffer", &arrayBufferClass);
 
@@ -599,7 +599,7 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
         ani_int length;
         env->Object_CallMethodByName_Int(union_obj, "getByteLength", nullptr, &length);
         std::cout << "Object is ArraryBuffer; length: " << length << std::endl;
-        return; 
+        return;
     }
 
     ani_boolean isIntArray = ANI_FALSE;
@@ -804,7 +804,7 @@ export class ArrayBuffer extends Buffer
     public constructor(length: int, maxByteLength?: int)
     public constructor(length: number, maxByteLength?: number)
     public static isView(obj: Object): boolean
-    get byteLength(): number 
+    get byteLength(): number
 }
 ```
 
@@ -1163,7 +1163,7 @@ sequenceDiagram
     Worker Thread->>Worker Thread: 6. Run 'execute' callback (long task)
     deactivate Worker Thread
     Worker Thread-->>"NAPI CPP (Main Thread)": 7. 'execute' done, queue 'complete' callback
-    
+
     Note over ArkTS/JS (Main Thread), "NAPI CPP (Main Thread)": Event loop ticks...
 
     "NAPI CPP (Main Thread)"->>"NAPI CPP (Main Thread)": 8. Run 'complete' callback
@@ -1206,7 +1206,7 @@ sequenceDiagram
                 });
             });
         }
-        
+
         static { loadLibrary("myservice"); }
     }
     ```
@@ -1531,7 +1531,7 @@ function main() {
 
 ```cpp
 static void TestBigIntImpl(ani_env *env, ani_object num) {
-    static constexpr const char* className = "escompat.BigInt";
+    static constexpr const char* className = "std.core.BigInt";
     ani_class bigIntCls;
     env->FindClass(className, &bigIntCls);
     ani_method getLongMethod;
@@ -1550,7 +1550,7 @@ ANI_EXPORT ani_status ANI_Constructor(ani_vm *vm, uint32_t *result) {
     ani_module mod;
     env->FindModule("example", &mod);
 
-    ani_native_function fn {"testBigInt", "C{escompat.BigInt}:", reinterpret_cast<void *>(TestBigIntImpl)},
+    ani_native_function fn {"testBigInt", "C{std.core.BigInt}:", reinterpret_cast<void *>(TestBigIntImpl)},
     env->Module_BindNativeFunctions(mod, &fn, 1);
     *result = ANI_VERSION_1;
     return ANI_OK;
@@ -1571,7 +1571,7 @@ ANI_EXPORT ani_status ANI_Constructor(ani_vm *vm, uint32_t *result) {
 | `$_set`      | `C{std.core.Object}:`                   | Set key-value pair |
 | `keys`       | `C{escompat.IterableIterator}`          | List keys          |
 
-**示例：** 
+**示例：**
 ```ts
 class PersonInfo {
     name: string = "";
@@ -1605,7 +1605,7 @@ void CallWithRecordImpl(ani_env *env, ani_object record) {
 
 ### 18.2 元组（Tuple）
 
-**示例：** 
+**示例：**
 ```ts
 let a = [3.14, 2.71, 1.61, 0.59, 10.0];
 
@@ -1617,7 +1617,7 @@ void callWithTupleImpl(ani_env *env, ani_tuple_value tuple) {
     ani_double result = 0.0;
     env->TupleValue_GetItem_Double(tuple, 0U, &result);  // result = 3.14
 }
-``` 
+```
 上述元组示例，通过传入元组对象和序号参数，获取对应元组序号位置的值。
 
 ## 19 错误码分析
