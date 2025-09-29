@@ -1292,7 +1292,7 @@ try {
 		ipAddress : "192.168.1.111"
 	}
 	wifiManager.delHotspotBlockList(config);
-}catch(error){
+} catch (error) {
 	console.error("failed:" + JSON.stringify(error));
 }
  ```
@@ -1329,16 +1329,16 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 **示例：**
 
-   ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let data = wifiManager.getHotspotBlockList();
-		console.info("result:" + JSON.stringify(data));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-   ```
+try {
+	let data = wifiManager.getHotspotBlockList();
+	console.info("result:" + JSON.stringify(data));
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```
 
 ## wifiManager.deletePersistentGroup<sup>9+</sup>
 
@@ -1373,16 +1373,16 @@ deletePersistentGroup(netId: number): void
 | 2801001  | Wi-Fi STA disabled. |
 
 **示例：**
-   ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let netId = 0;
-		wifiManager.deletePersistentGroup(netId);	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-   ```
+try {
+	let netId = 0;
+	wifiManager.deletePersistentGroup(netId);	
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```
 
 ## wifiManager.getP2pGroups<sup>9+</sup>
 
@@ -1418,22 +1418,22 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 2801000  | Operation failed. |
 
 **示例：**
-   ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
-    if (err) {
-        console.error("get P2P groups error");
-        return;
-    }
-		console.info("get P2P groups: " + JSON.stringify(data));
-	});
+wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
+if (err) {
+    console.error("get P2P groups error");
+    return;
+}
+	console.info("get P2P groups: " + JSON.stringify(data));
+});
 
-	wifiManager.getP2pGroups().then(data => {
-		console.info("get P2P groups: " + JSON.stringify(data));
-	});
+wifiManager.getP2pGroups().then(data => {
+	console.info("get P2P groups: " + JSON.stringify(data));
+});
 	
-   ```
+```
 
 
 ## wifiManager.getP2pGroups<sup>9+</sup>
@@ -1502,16 +1502,16 @@ setDeviceName(devName: string): void
 | 2801001  | Wi-Fi STA disabled. |
 
 **示例：**
-   ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let name = "****";
-		wifiManager.setDeviceName(name);	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-   ```
+try {
+	let name = "****";
+	wifiManager.setDeviceName(name);	
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```
 
 
 ## wifiManager.on('streamChange')<sup>9+</sup>
@@ -1577,20 +1577,21 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 | 2501000  | Operation failed.|
 
 **示例：**
-   ```ts
-   import { wifi } from '@kit.ConnectivityKit';
+```ts
+import { wifi } from '@kit.ConnectivityKit';
 
-   let recvStreamChangeFunc = (result:number) => {
-       console.info("Receive stream change event: " + result);
-   }
+let recvStreamChangeFunc = (result:number) => {
+    console.info("Receive stream change event: " + result);
+}
 
-   // Register event
-   wifi.on("streamChange", recvStreamChangeFunc);
+// Register event
+wifi.on("streamChange", recvStreamChangeFunc);
 
-   // Unregister event
-   wifi.off("streamChange", recvStreamChangeFunc);
+// Unregister event
+wifi.off("streamChange", recvStreamChangeFunc);
 
-   ```
+```
+
 ## wifiManager.on('deviceConfigChange')<sup>9+</sup>
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
@@ -1732,20 +1733,20 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 | 2601000  | Operation failed. |
 
 **示例：**
-   ```ts
-   import { wifiManager } from '@kit.ConnectivityKit';
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
 
-   let recvHotspotStaJoinFunc = (result:wifiManager.StationInfo) => {
-       console.info("Receive hotspot sta join event: " + result);
-   }
+let recvHotspotStaJoinFunc = (result:wifiManager.StationInfo) => {
+    console.info("Receive hotspot sta join event: " + result);
+}
 
-   // Register event
-   wifiManager.on("hotspotStaJoin", recvHotspotStaJoinFunc);
+// Register event
+wifiManager.on("hotspotStaJoin", recvHotspotStaJoinFunc);
 
-   // Unregister event
-   wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
+// Unregister event
+wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
-   ```
+```
 
 ## wifiManager.on('hotspotStaLeave')<sup>9+</sup>
 
@@ -1810,20 +1811,20 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 | 2601000  | Operation failed. |
 
 **示例：**
-   ```ts
-   import { wifiManager } from '@kit.ConnectivityKit';
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
 
-   let recvHotspotStaLeaveFunc = (result:wifiManager.StationInfo) => {
-       console.info("Receive hotspot sta leave event: " + result);
-   }
+let recvHotspotStaLeaveFunc = (result:wifiManager.StationInfo) => {
+    console.info("Receive hotspot sta leave event: " + result);
+}
 
-   // Register event
-   wifiManager.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
+// Register event
+wifiManager.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
-   // Unregister event
-   wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
+// Unregister event
+wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
-   ```
+```
 
 ## WifiScanInfo<sup>9+</sup>
 
