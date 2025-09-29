@@ -579,7 +579,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 设置媒体输入设备。
 
-此功能不适用于呼叫录音，即SourceType为SOURCE_TYPE_VOICE_CALL或者SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。
+此功能不适用于呼叫录音，即SourceType为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。
 在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。
 应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
 
