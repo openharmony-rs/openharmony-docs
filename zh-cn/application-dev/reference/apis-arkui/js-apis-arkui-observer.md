@@ -195,7 +195,7 @@ Navigation组件页面切换事件的监听选项。
 
 | 名称         | 类型                                          | 只读  | 可选 | 说明                                          |
 | ------------ | --------------------------------------------- | ----- | ---- | -------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 是   | 指定需要监听的Navigation的ID |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否   | 指定需要监听的Navigation的ID。 |
 
 ## TabContentInfo<sup>12+</sup>
 
