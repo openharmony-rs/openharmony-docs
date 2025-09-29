@@ -1,4 +1,10 @@
 # 通用属性
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 <!--Del-->
 - [尺寸设置](ts-universal-attributes-size.md)
 - [位置设置](ts-universal-attributes-location.md)
