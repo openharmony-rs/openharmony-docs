@@ -20,12 +20,14 @@
    ```ts
    import { osAccount, BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- [import_the_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 3. 获取系统账号管理对象。
 
    ```ts
    let osAccountMgr = osAccount.getAccountManager();
    ```
+   <!-- [obtain_the_system_account_management_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 ## 判断指定域账号是否存在
 
@@ -41,6 +43,7 @@
      domain: 'testDomain'
    }
    ```
+   <!-- [define_the_domain_account_information_to_be_determined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 2. 调用[hasAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#hasaccount10)接口。
 
@@ -51,6 +54,7 @@
      console.error(`execute hasAccount code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [call_the_hasaccount_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 ## 添加域账号
 
@@ -66,6 +70,7 @@
      accountName: 'testAccountName'
    };
    ```
+   <!-- [define_the_domain_account_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 2. 指定类型和域账号信息，调用[createOsAccountForDomain](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccountfordomain8)接口在设备上创建一个域账号。
 
@@ -80,9 +85,11 @@
       }
    });
    } catch (e) {
-   console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
+    const err = e as BusinessError;
+    console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
    }
    ```
+   <!-- [create_a_domain_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 ## 删除域账号
 
@@ -101,10 +108,12 @@
 
    try {
      localId = await osAccountMgr.getOsAccountLocalIdForDomain(domainInfo);
-   } catch (err) {
+   } catch (e) {
+    const err = e as BusinessError;
      console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
+   <!-- [obtain_the_system_account_id_based_on_the_domain_account_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 2. 调用[removeOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount)方法删除域账号。
 
@@ -117,10 +126,12 @@
            console.info('removeOsAccount successfully');
        }
      });
-   } catch (err) {
-     console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
+   <!-- [delete_the_domain_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 ## 查询域账号信息
 
@@ -136,6 +147,7 @@
        accountName: 'testAccountName'
    }
    ```
+   <!-- [define_query_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
 2. 调用[getAccountInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getaccountinfo10)接口查询域账号信息。
 
@@ -149,7 +161,9 @@
            console.info('getAccountInfo result: ' + result);
        }
      });
-   } catch (err) {
-       console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
+   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
    }
    ```
+   <!-- [query_the_domain_account_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->

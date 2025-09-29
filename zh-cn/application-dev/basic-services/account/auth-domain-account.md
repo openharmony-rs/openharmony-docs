@@ -16,6 +16,7 @@
 ```ts
 import { osAccount } from '@kit.BasicServicesKit';
 ```
+<!-- [import_the_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/AuthenticationDomainAccount.ets) -->
 
 ## 使用密码认证域账号
 
@@ -34,6 +35,7 @@ import { osAccount } from '@kit.BasicServicesKit';
      }
      let credential: Uint8Array = new Uint8Array([0]);
    ```
+   <!-- [get_user_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/AuthenticationDomainAccount.ets) -->
 
 3. 定义认证结果回调。
 
@@ -45,16 +47,19 @@ import { osAccount } from '@kit.BasicServicesKit';
      }
    }
    ```
+   <!-- [define_the_callback_for_the_authentication_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/AuthenticationDomainAccount.ets) -->
 
 4. 调用[auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth10)接口进行密码认证。
 
    ```ts
    try {
      osAccount.DomainAccountManager.auth(domainAccountInfo, credential, callback);
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`auth exception = ${err.message}`);
    }
    ```
+   <!-- [perform_password_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/AuthenticationDomainAccount.ets) -->
 
 ## 弹窗认证域账号
 
@@ -72,13 +77,16 @@ import { osAccount } from '@kit.BasicServicesKit';
      }
    }
    ```
+   <!-- [define_the_callback_object_of_the_authentication_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/AuthenticationDomainAccount.ets) -->
 
 2. 调用[authWithPopup](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#authwithpopup10)接口弹窗认证当前域账号。
 
    ```ts
    try {
      osAccount.DomainAccountManager.authWithPopup(callback)
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`authWithPopup exception = ${err.message}`);
    }
    ```
+   <!-- [call_operation_to_authenticate_the_current_domain_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/AuthenticationDomainAccount.ets) -->
