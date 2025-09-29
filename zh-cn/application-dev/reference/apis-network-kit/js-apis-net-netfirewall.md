@@ -522,7 +522,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 | appUid      | number                                                      | 否 |是 |应用程序或服务UID。                                            |
 | localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址：ruleType=RULE_IP有效，否则忽略，最多10个。         |
 | remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。 |
-| protocol    | number                                                      | 否 | 是|协议，TCP:6，UDP:17，当ruleType=RULE_IP时有效，否则将被忽略。  |
+| protocol    | number                                                      | 否 | 是|协议，TCP：6，UDP：17，当ruleType=RULE_IP时有效，否则将被忽略。  |
 | localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表：当ruleType=RULE_DOMAIN时有效，否则将被忽略。         |
