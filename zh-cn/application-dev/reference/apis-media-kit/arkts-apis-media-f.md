@@ -201,7 +201,7 @@ media.createAVRecorder().then((recorder: media.AVRecorder) => {
 
 createAVTranscoder(): Promise\<AVTranscoder>
 
-异步方式创建视频转码实例，使用Promise异步回调。
+创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
 
