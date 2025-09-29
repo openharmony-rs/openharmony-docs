@@ -3007,6 +3007,8 @@ getInt(resId: long): int
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **ArkTS-Sta起始版本：** 20
@@ -3021,15 +3023,14 @@ getInt(resId: long): int
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| int | 资源ID值对应的数值 |
+| int | 资源ID值对应的数值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3080,6 +3081,8 @@ getDouble(resId: long): double
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **ArkTS-Sta起始版本：** 20
@@ -3098,11 +3101,10 @@ getDouble(resId: long): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3251,6 +3253,8 @@ getIntByName(resName: string): int
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **ArkTS-Sta起始版本：** 20
@@ -3269,11 +3273,10 @@ getIntByName(resName: string): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3323,6 +3326,8 @@ getDoubleByName(resName: string): double
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **ArkTS-Sta起始版本：** 20
@@ -3341,11 +3346,10 @@ getDoubleByName(resName: string): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
