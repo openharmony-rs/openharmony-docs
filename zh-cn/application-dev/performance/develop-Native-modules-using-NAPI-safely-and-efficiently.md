@@ -1,4 +1,4 @@
-# 安全和高效的使用N-API开发Native模块
+# 安全和高效地使用N-API开发Native模块
 
 <!--Kit: Common-->
 <!--Subsystem: Demo&Sample-->
