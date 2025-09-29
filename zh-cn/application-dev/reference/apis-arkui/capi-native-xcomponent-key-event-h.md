@@ -1,4 +1,10 @@
 # native_xcomponent_key_event.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @wangjunman1-->
+<!--Designer: @sunbees-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
