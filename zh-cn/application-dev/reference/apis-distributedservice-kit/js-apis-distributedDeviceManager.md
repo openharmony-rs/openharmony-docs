@@ -3,7 +3,7 @@
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->
 <!--Designer: @hwzhangchuang-->
-<!--Tester: @Lyuxin-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 本模块提供分布式设备管理能力。
