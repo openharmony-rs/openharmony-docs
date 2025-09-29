@@ -510,7 +510,7 @@ struct CustomContainerUser {
 ```ts
 @ComponentV2
 struct ChildPage {
-  @Require @Param message: string = "";
+  @Require @Param message: string = '';
 
   @Builder
   customBuilder() {
@@ -583,7 +583,7 @@ import { Local, Require, Param } from "@ohos.arkui.stateManagement";
 
 @ComponentV2
 struct ChildPage {
-  @Require @Param message: string = "";
+  @Require @Param message: string = '';
 
   @Builder
   customBuilder() {
@@ -1470,7 +1470,7 @@ function globalBuilder() {
 @Entry
 @Component
 struct customBuilderDemo {
-  @State message: string = "";
+  @State message: string = '';
 
   build() {
     Column() {

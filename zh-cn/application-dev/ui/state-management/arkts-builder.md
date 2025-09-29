@@ -12,7 +12,7 @@ import { Builder } from '@ohos.arkui.component';
 
 在阅读本文档前，建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)、[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
 
-@Builder装饰器和@Component装饰器的区别：
+@Builder装饰器和[@Component](../state-management-static/arkts-static-create-component.md)装饰器的区别：
 
 1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义状态变量或使用生命周期函数，必须通过参数传递的方式与调用方完成数据交互。
 
@@ -67,6 +67,8 @@ struct BuilderDemo {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Builder, FontWeight } from '@ohos.arkui.component';
 
 @Entry
@@ -132,6 +134,8 @@ struct BuilderDemo {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Builder, FontWeight } from '@ohos.arkui.component';
 
 @Builder
@@ -193,6 +197,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Row, Text, Builder } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -251,6 +257,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -354,6 +362,8 @@ struct PrivateBuilder {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -500,6 +510,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
 
@@ -650,6 +662,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
 
@@ -723,7 +737,7 @@ function overBuilder() {
 
 @Entry
 @Component
-struct customBuilderDemo {
+struct CustomBuilderDemo {
   @State arr: number[] = [0, 1, 2, 3, 4];
 
   @Builder
@@ -767,6 +781,8 @@ struct customBuilderDemo {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -781,8 +797,8 @@ function overBuilder() {
 
 @Entry
 @Component
-struct customBuilderDemo {
-  @State arr: number[] = [0, 1, 2, 3, 4];
+struct CustomBuilderDemo {
+  @State arr: int[] = [0, 1, 2, 3, 4];
 
   @Builder
   privateBuilder() {
@@ -796,7 +812,7 @@ struct customBuilderDemo {
   build() {
     Column() {
       List({ space: 10 }) {
-        ForEach(this.arr, (item: number) => {
+        ForEach(this.arr, (item: int) => {
           ListItem() {
             Text(`${item}`)
               .width('100%')
@@ -816,7 +832,7 @@ struct customBuilderDemo {
               }
             }
           })
-        }, (item: number) => JSON.stringify(item))
+        }, (item: int) => JSON.stringify(item))
       }
     }
   }
@@ -964,7 +980,9 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
+'use static'
+
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
 import { State, Prop } from '@ohos.arkui.stateManagement';
 
 // 引用传递类型是interface或@Observed class时才能触发UI刷新。
@@ -1200,6 +1218,8 @@ struct ParentPage {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2 } from '@ohos.arkui.component';
 import { ObservedV2, Trace, Require, Param } from '@ohos.arkui.stateManagement';
 
@@ -1482,7 +1502,9 @@ struct ReusableChildTwoPage {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
+'use static'
+
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
 import { State, Prop } from '@ohos.arkui.stateManagement';
 
 // 引用传递类型是interface或@Observed class时才能触发UI刷新。
@@ -1573,8 +1595,10 @@ struct ReusableChildTwoPage {
 
 使用变量存储@Builder函数，并在UI组件中使用。
 
-**ArkTS-DT**
+**ArkTS-ST**
 ```ts
+'use static'
+
 import { Builder, Component, Column, Color, Entry, ForEach, Text } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -1613,6 +1637,8 @@ Builder函数可以支持泛型声明。
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign } from '@ohos.arkui.component';
 import { Observed } from '@ohos.arkui.stateManagement';
 
@@ -1781,6 +1807,8 @@ struct Single {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import {
   Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod,
   Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles
@@ -1926,6 +1954,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
 
@@ -2008,6 +2038,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
 
@@ -2091,6 +2123,8 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
 
@@ -2182,6 +2216,8 @@ struct PageBuilder {
  
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
 import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
 
@@ -2318,6 +2354,8 @@ struct PageBuilder {
 
 **ArkTS-ST:**
 ```ts
+'use static'
+
 import { Entry, Column, Text, Builder, ComponentV2, FontWeight } from '@ohos.arkui.component';
 import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
 
@@ -2446,7 +2484,9 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
+'use static'
+
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
 // 引用传递类型是interface或@Observed class时才能触发UI刷新。
@@ -2518,7 +2558,9 @@ struct Parent {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
+'use static'
+
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ListItem, FontWeight } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
 // 引用传递类型是interface或@Observed class时才能触发UI刷新。
@@ -2614,7 +2656,9 @@ struct ParentPage {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
+'use static'
+
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
 import { State, Prop, Observed } from '@ohos.arkui.stateManagement';
 
 @Observed
@@ -2733,7 +2777,9 @@ struct ParentPage {
 
 **ArkTS-ST:**
 ```ts
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List } from '@ohos.arkui.component';
+'use static'
+
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight } from '@ohos.arkui.component';
 import { State, Prop } from '@ohos.arkui.stateManagement';
 
 // 引用传递类型是interface或@Observed class时才能触发UI刷新。

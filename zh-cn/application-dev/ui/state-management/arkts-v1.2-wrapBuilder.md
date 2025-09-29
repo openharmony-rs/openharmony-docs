@@ -58,6 +58,8 @@ let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [w
 使用`@Builder`装饰器装饰的方法`MyBuilder`作为`wrapBuilder`的参数，再将`wrapBuilder`函数的返回值赋值给变量`globalBuilder`，以解决`@Builder`方法赋值给变量后无法使用的问题。
 
 ```ts
+'use static'
+
 import { Builder, Component, Column, Entry, Row, Text, WrappedBuilder, wrapBuilder} from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -93,6 +95,8 @@ struct Index {
 自定义组件Index使用`ForEach`进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
 
 ```ts
+'use static'
+
 import { Builder, Color, Column, Component, Entry, 
          ForEach, Row, Text, WrappedBuilder, wrapBuilder } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -141,6 +145,8 @@ struct Index {
 按引用传递参数时，传递的状态变量的改变会引起@Builder方法内的UI刷新。
 
 ```ts
+'use static'
+
 import { Builder, Button, ClickEvent, Column, Component,
          Entry, Text, WrappedBuilder, wrapBuilder } from '@ohos.arkui.component';
 import { Observed, State } from '@ohos.arkui.stateManagement';
