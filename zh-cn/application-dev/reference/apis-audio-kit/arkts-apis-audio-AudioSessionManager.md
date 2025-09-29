@@ -544,7 +544,7 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): vo
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | type     | string                                              | 是   | 事件回调类型，支持的事件为'availableDeviceChange'，当取消监听音频可选设备连接变化事件时，触发该事件。 |
-| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数，返回可选设备更新详情。 |
+| callback | Callback\<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | 否   | 回调函数，返回可选设备更新详情。 |
 
 **错误码：**
 
@@ -579,7 +579,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 设置媒体输入设备。
 
-此功能不适用于呼叫录音，即SourceType为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。
+此功能不适用于呼叫录音，即[SourceType](arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。
 在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。
 应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
 
@@ -589,13 +589,13 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                      |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
-| inputAudioDevice| [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 是   | 设备信息。 |
+| inputAudioDevice| [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 是   | 媒体输入设备。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -641,7 +641,7 @@ getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 设备信息。 |
+| [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 媒体输入设备信息。 |
 
 **错误码：**
 
@@ -677,7 +677,7 @@ clearSelectedMediaInputDevice(): Promise<void\>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -721,7 +721,7 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -790,7 +790,7 @@ on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChang
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
 | type     | string | 是   | 事件回调类型，支持的事件为'currentInputDeviceChanged'，当前输入设备发生变化时，触发该事件。 |
-| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | 是   | 回调函数，返回当前输入设备信息。 |
+| callback | Callback\<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)\> | 是   | 回调函数，返回当前输入设备信息。 |
 
 **错误码：**
 
@@ -825,8 +825,8 @@ off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceCha
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                      |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
-| type     | string | 是   | 事件回调类型，支持的事件为'currentInputDeviceChanged'，当前输出设备发生变化时，触发该事件。|
-| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | 否 | 回调函数，用于返回当前输出设备变化的信息。 |
+| type     | string | 是   | 事件回调类型，支持的事件为'currentInputDeviceChanged'，当前输入设备发生变化时，触发该事件。|
+| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | 否 | 回调函数，用于返回当前输入设备变化的信息。 |
 
 **错误码：**
 
