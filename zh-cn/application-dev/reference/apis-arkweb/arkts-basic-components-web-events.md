@@ -1358,9 +1358,8 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 >
 > - 主资源：浏览器加载网页的入口文件，通常是HTML文档。  
 > - 子资源：主资源中引用的依赖文件，由主资源解析过程中遇到特定标签时触发加载。
-> - 应用程序必须调用handler.cancel()或handler.proceed()。
+> - 应用程序需要调用[handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9)或[handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9)处理该回调，如果没有处理该回调则默认取消资源加载。handleConfirm()或者handleCancel()的行为可能会被记录下来，以便为将来的SSL错误做出响应。
 > - 应用程序可以用于显示自定义错误页面或静默记录问题。
-> - proceed或者cancel的行为会被记录下来，以便为将来的SSL错误做出响应。如果应用没有处理该回调则默认取消资源加载。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
