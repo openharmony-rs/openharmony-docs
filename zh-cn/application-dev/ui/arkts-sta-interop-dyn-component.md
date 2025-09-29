@@ -87,6 +87,21 @@ export struct ChildComponent {
     .backgroundColor(Color.White)
   }
 }
+
+@ComponentV2
+export struct ChildComponentV2 {
+  message: string = 'Hello World!';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(50)
+        .fontColor(Color.Blue)
+    }
+    .padding(20)
+    .backgroundColor(Color.White)
+  }
+}
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](har-package.md)）说明。
@@ -107,7 +122,7 @@ export struct ChildComponent {
 // entry/src/main/ets/pages/MainPage.ets
 import { Entry, Component, Column } from '@ohos.arkui.component';
 
-import { ChildComponent } from 'har1.1';
+import { ChildComponent, ChildComponentV2 } from 'har1.1';
 
 @Entry
 @Component
@@ -116,10 +131,22 @@ struct MainPage {
     Column() {
       // 无需显式使用占位组件API，框架会自动处理
       ChildComponent()
+      ChildComponentV2()
+      MainPageV2()
     }
     .width('100%')
     .height('100%')
     .backgroundColor('#F1F3F5')
+  }
+}
+
+@ComponentV2
+struct MainPageV2 {
+  build() {
+    Column() {
+      ChildComponent()
+      ChildComponentV2()
+    }
   }
 }
 ```
