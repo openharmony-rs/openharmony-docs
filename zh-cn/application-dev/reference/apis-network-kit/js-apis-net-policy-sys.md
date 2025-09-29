@@ -2326,6 +2326,8 @@ try {
 | ----------------- | --------- | ---- | ------|----------------------- |
 | allowWiFi         | boolean   | 否   |否 |能否允许访问wifi网络。true：允许访问wifi网络；false：不允许访问wifi网络。 |
 | allowCellular     | boolean   | 否  |否 |能否允许访问蜂窝网络。true：允许访问蜂窝网络；false：不允许访问蜂窝网络。 |
+| alwaysAllowWiFi?    | boolean   | 否  |否 |能否允许总是访问wifi网络。true：允许总是访问wifi网络；false：不允许总是访问wifi网络。 |
+| alwaysAllowCellular?     | boolean   | 否  |否 |能否允许总是访问蜂窝网络。true：允许总是访问蜂窝网络；false：不允许总是访问蜂窝网络。 |
 
 ## UidNetworkAccessPolicy<sup>12+</sup>
 
