@@ -559,7 +559,7 @@ struct Index {
 使用UIUtils.getTarget()方法示例。
 
 ```ts
-import { UIUtils } from '@ohos.arkui.StateManagement';
+import { UIUtils } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
