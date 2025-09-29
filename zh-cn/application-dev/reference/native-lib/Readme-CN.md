@@ -30,6 +30,10 @@
     - [RWLock (读写锁)](arkts1.2-rwlock.md)
     - [Map](arkts-builtin-api-Map.md)
     - [Set](arkts-builtin-api-Set.md)
+    - [Boolean](ArkTS-Sta-Boolean.md)
+    - [Byte](ArkTS-Sta-Byte.md)
+    - [Char](ArkTS-Sta-Char.md)
+    - [Int](ArkTS-Sta-Int.md)
 - EAWorker
   - [EAWorker 独占线程任务执行器（ArkTS）](eaworker_managed.md)
   - [EAWorker 独占线程任务执行器（C/C++）](eaworker_native.md)
