@@ -1,6 +1,13 @@
 # LoopObserver
 
-The LoopObserver module defines an observer to listen for event processing timeout. It can be used as an input parameter in [ErrorManager.on](./js-apis-app-ability-errorManager.md#errormanageronloopobserver12) to listen for the event processing timeout of the current application's main thread.
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe--> 
+<!--Adviser: @foryourself-->
+
+The module defines an observer to listen for event processing timeout. It can be used as an input parameter in [ErrorManager.on](./js-apis-app-ability-errorManager.md#errormanageronloopobserver12) to listen for the event processing timeout of the current application's main thread.
 
 > **NOTE**
 > 
@@ -35,7 +42,7 @@ import { errorManager } from '@kit.AbilityKit';
 
 let observer: errorManager.LoopObserver = {
   onLoopTimeOut(timeout: number) {
-    console.log('Duration timeout: ' + timeout);
+    console.info('Duration timeout: ' + timeout);
   }
 };
 

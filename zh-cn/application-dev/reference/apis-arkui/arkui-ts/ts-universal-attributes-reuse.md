@@ -1,5 +1,12 @@
 # 复用选项
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 
 本文档仅为API参考说明。实际功能使用与限制见[@ReusableV2装饰器：组件复用](../../../ui/state-management/arkts-new-reusableV2.md)。

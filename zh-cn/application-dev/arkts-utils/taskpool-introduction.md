@@ -55,7 +55,7 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
   }
   ```
 
-- 由于不同线程中上下文对象不同，TaskPool工作线程只能使用线程安全的库。例如，不能使用UI相关的非线程安全库。
+- 由于不同线程中上下文对象不同，TaskPool工作线程只能使用线程安全的模块。例如，不能使用UI相关的非线程安全模块。TaskPool/Worker等工作线程不支持使用操作UI的模块、线程不安全的模块以及其他只支持在主线程中使用的模块。不支持UI模块是因为目前工作线程不支持操作UI，不支持线程不安全的模块是因为多线程使用该模块可能会导致多线程问题，只支持在主线程中使用的模块明确在文档中说明的有[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)等。线程安全的模块是指多线程同时使用该模块也不会引入多线程问题，如TaskPool/[Worker](./worker-introduction.md)/[hilog](../dfx/hilog.md)等。
 
 - 序列化传输的数据量限制为16MB。
 

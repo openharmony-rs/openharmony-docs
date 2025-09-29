@@ -72,7 +72,7 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.launchReason === AbilityConstant.LaunchReason.START_ABILITY) {
-      console.log('The ability has been started by the way of startAbility.');
+      console.info('The ability has been started by the way of startAbility.');
     }
   }
 }
@@ -93,7 +93,7 @@ Enumerates the reasons for the last exit of the ability. You can use it together
 | JS_ERROR<sup>10+</sup>  | 4    | The ability exits due to a JS_ERROR fault triggered when an application has a JS syntax error that is not captured by developers.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | APP_FREEZE<sup>10+</sup>  | 5    | The ability exits due to [application freeze](../../dfx/appfreeze-guidelines.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | PERFORMANCE_CONTROL<sup>10+</sup>  | 6    | The ability exits due to system performance problems, for example, insufficient device memory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Note: This API will be deprecated. You are advised to use **RESOURCE_CONTROL** instead.|
-| RESOURCE_CONTROL<sup>10+</sup>  | 7    | The ability exits due to improper use of system resources. The specific error cause can be obtained through [LaunchParam.lastExitMessage](#launchparam). The possible causes are as follows:<br> - **CPU Highload**: The CPU load is high.<br> - **CPU_EXT Highload**: A fast CPU load detection is carried out.<br> - **IO Manage Control**: An I/O management and control operation is carried out.<br> - **App Memory Deterioration**: The application memory usage exceeds the threshold.<br> - **Temperature Control**: The temperature is too high or too low.<br> - **Memory Pressure**: The system is low on memory, triggering ability exiting in ascending order of priority.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| RESOURCE_CONTROL<sup>10+</sup>  | 7    | The ability exits due to improper use of system resources. The specific error cause can be obtained through [LaunchParam.lastExitMessage](#launchparam). The possible causes are as follows:<br> - **CPU Highload**: The CPU load is high.<br> - **CPU_EXT Highload**: A fast CPU load detection is carried out.<br> - **IO Manage Control**: An I/O management and control operation is carried out.<br> - **App Memory Deterioration**: The application memory usage exceeds the threshold.<br> - **Temperature Control**: The temperature is too high or too low.<br> - **Memory Pressure**: The system is low on memory, triggering process termination in ascending order of priority.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | UPGRADE<sup>10+</sup>  | 8    | The application exits due to an upgrade.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | USER_REQUEST<sup>18+</sup>  | 9    | The ability exits because it receives a request from the multitasking center.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | SIGNAL<sup>18+</sup>  | 10    | The ability exits because it receives a kill signal from the system.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -106,10 +106,10 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      console.log('The ability has exit last because the ability was not responding.');
+      console.info('The ability has exit last because the ability was not responding.');
     }
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-      console.log('The ability has exited last because the rss control, the lastExitReason is '+ launchParam.lastExitReason + ', the lastExitMessage is ' + launchParam.lastExitMessage);
+      console.info(`The ability has exited last because the rss control, the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
     }
   }
 }
@@ -141,15 +141,15 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitDetailInfo) {
-      console.log('pid: ' + launchParam.lastExitDetailInfo.pid +
-        '\n processName: ' + launchParam.lastExitDetailInfo.processName +
-        '\n uid: ' + launchParam.lastExitDetailInfo.uid +
-        '\n exitSubReason: ' + launchParam.lastExitDetailInfo.exitSubReason +
-        '\n exitMsg: ' + launchParam.lastExitDetailInfo.exitMsg +
-        '\n rss: ' + launchParam.lastExitDetailInfo.rss +
-        '\n pss: ' + launchParam.lastExitDetailInfo.pss +
-        '\n timestamp: ' + launchParam.lastExitDetailInfo.timestamp +
-        '\n processState: ' + launchParam.lastExitDetailInfo.processState
+      console.info(`pid: ${launchParam.lastExitDetailInfo.pid}
+      \n processName: ${launchParam.lastExitDetailInfo.processName}
+      \n uid: ${launchParam.lastExitDetailInfo.uid}
+      \n exitSubReason: ${launchParam.lastExitDetailInfo.exitSubReason}
+      \n exitMsg: ${launchParam.lastExitDetailInfo.exitMsg}
+      \n rss: ${launchParam.lastExitDetailInfo.rss}
+      \n pss: ${launchParam.lastExitDetailInfo.pss}
+      \n timestamp: ${launchParam.lastExitDetailInfo.timestamp}
+      \n processState: ${launchParam.lastExitDetailInfo.processState}.`
       );
     }
   }
@@ -211,7 +211,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
     if (level === AbilityConstant.MemoryLevel.MEMORY_LEVEL_CRITICAL) {
-      console.log('The memory of device is critical, please release some memory.');
+      console.info('The memory of device is critical, please release some memory.');
     }
   }
 }
@@ -225,7 +225,7 @@ Enumerates the window modes in which a UIAbility can be displayed at startup. Yo
 
 | Name                       | Value| Description                |
 | ---                         | --- | ---                  |
-| WINDOW_MODE_FULLSCREEN      | 1   | Full screen mode. It takes effect only on 2-in-1 devices and tablets. |
+| WINDOW_MODE_FULLSCREEN      | 1   | Full-screen mode. It takes effect only on 2-in-1 devices and tablets. |
 | WINDOW_MODE_SPLIT_PRIMARY   | 100 | Primary screen (left screen in the case of horizontal orientation) in split-screen mode. It is valid only in intra-app redirection scenarios. It takes effect only on foldable devices and tablets.  |
 | WINDOW_MODE_SPLIT_SECONDARY | 101 | Secondary screen (right screen in the case of horizontal orientation) in split-screen mode. It is valid only in intra-app redirection scenarios. It takes effect only on foldable devices and tablets.  |
 
@@ -247,7 +247,7 @@ let option: StartOptions = {
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     this.context.startAbility(want, option).then(() => {
-      console.log('Succeed to start ability.');
+      console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
     });
@@ -305,7 +305,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     if (reason === AbilityConstant.StateType.CONTINUATION) {
-      console.log('Save the ability data when the ability continuation.');
+      console.info('Save the ability data when the ability continuation.');
     }
     return AbilityConstant.OnSaveResult.ALL_AGREE;
   }

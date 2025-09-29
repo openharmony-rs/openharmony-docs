@@ -172,8 +172,8 @@ export default {
   <image src="common/landscape3.jpg" style=" width: {{WidthVal}}px;height:{{HeightVal}}px;margin-top: -150px;"></image>
   <div class="txt">
     <slider min="0" max="100" value="{{value}}" onchange="setValue"></slider>
-    <text>The width of this picture is    {{WidthVal}}</text>
-    <text>The height of this picture is  {{HeightVal}}</text>
+    <text>The width of this picture is {{WidthVal}}</text>
+    <text>The height of this picture is {{HeightVal}}</text>
   </div>
 </div>
 ```

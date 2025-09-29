@@ -1,7 +1,15 @@
 # Context (Context Base Class of the FA Model)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 <!--deprecated_code_no_check-->
 
-The Context module provides context for abilities or applications. It allows access to application-specific resources, as well as permission requests and verification.
+The Context module provides context for ability components or applications. It allows access to application-specific resources, as well as permission requests and verification.
 
 > **NOTE**
 >
@@ -588,7 +596,7 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -620,7 +628,7 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -787,7 +795,7 @@ getElementName(callback: AsyncCallback\<ElementName>): void
 
 Obtains the element name of this ability. This API uses an asynchronous callback to return the result.
 
-This API is available only to Page abilities.
+This API is available only to Page ability components.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -821,7 +829,7 @@ getElementName(): Promise\<ElementName>
 
 Obtains the element name of this ability. This API uses a promise to return the result.
 
-This API is available only to Page abilities.
+This API is available only to Page ability components.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

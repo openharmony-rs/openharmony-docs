@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The AppServiceExtensionContext module provides the context environment for the AppServiceExtensionAbility. It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
+The AppServiceExtensionContext module provides the context environment for the [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
 
 AppServiceExtensionContext provides APIs to connect to and disconnect from a ServiceExtensionAbility (an ExtensionAbility for system application background services), as well as to terminate an AppServiceExtensionAbility. Note that a ServiceExtensionAbility can only be developed by system applications and supports connections from third-party applications.
 
@@ -32,8 +32,8 @@ Before using the AppServiceExtensionContext module, you must define a child clas
 ```ts
 import { AppServiceExtensionAbility } from '@kit.AbilityKit';
 
-class AppServiceExtension extends AppServiceExtensionAbility {
-  onCreate() {
+export default class AppServiceExtension extends AppServiceExtensionAbility {
+  onCreate(want: Want) {
     let context = this.context; // Obtain an AppServiceExtensionContext instance.
   }
 }
@@ -45,7 +45,7 @@ class AppServiceExtension extends AppServiceExtensionAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-Starts an ability. This API can be called only by the main thread. It uses a promise to return the result.
+Starts the UIAbility. This API can be called only by the main thread. It uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -171,11 +171,13 @@ import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let commRemote: rpc.IRemoteObject; // Release the instance when the connection is disconnected.
+let commRemote: rpc.IRemoteObject | null = null; // Release the instance when the connection is disconnected.
 const TAG: string = '[AppServiceExtensionAbility]';
 
-class AppServiceExtension extends AppServiceExtensionAbility {
-  onCreate() {
+export default class AppServiceExtension extends AppServiceExtensionAbility {
+  connection: number = 0;
+
+  onCreate(localWant: Want) {
     let want: Want = {
       bundleName: 'com.example.myapp',
       abilityName: 'MyAbility'
@@ -192,14 +194,28 @@ class AppServiceExtension extends AppServiceExtensionAbility {
         hilog.error(0x0000, TAG, '----------- onFailed -----------');
       }
     };
-    let connection: number;
+
 
     try {
-      connection = this.context.connectServiceExtensionAbility(want, callback);
+      this.connection = this.context.connectServiceExtensionAbility(want, callback);
     } catch (paramError) {
+      commRemote = null;
       // Process input parameter errors.
       hilog.error(0x0000, TAG, `error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
     }
+  }
+
+  onDestroy(): void {
+    this.context.disconnectServiceExtensionAbility(this.connection).then(() => {
+      commRemote = null;
+      // Carry out normal service processing.
+      hilog.info(0x0000, TAG, '----------- disconnectServiceExtensionAbility success -----------');
+    })
+      .catch((error: BusinessError) => {
+        commRemote = null;
+        // Process service logic errors.
+        hilog.error(0x0000, TAG, `disconnectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+      });
   }
 }
 ```
@@ -235,39 +251,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 **Example**
 
-```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let commRemote: rpc.IRemoteObject | null; // Release the instance when the connection is disconnected.
-const TAG: string = '[AppServiceExtensionAbility]';
-
-class AppServiceExtension extends AppServiceExtensionAbility {
-  onCreate() {
-    // connection is the return value of connectServiceExtensionAbility.
-    let connection = 1;
-    try {
-      this.context.disconnectServiceExtensionAbility(connection)
-        .then(() => {
-          commRemote = null;
-          // Carry out normal service processing.
-          hilog.info(0x0000, TAG, '----------- disconnectServiceExtensionAbility success -----------');
-        })
-        .catch((error: BusinessError) => {
-          commRemote = null;
-          // Process service logic errors.
-          hilog.error(0x0000, TAG, `disconnectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
-        });
-    } catch (paramError) {
-      commRemote = null;
-      // Process input parameter errors.
-      hilog.error(0x0000, TAG, `error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
-    }
-  }
-}
-```
+For details, see [connectServiceExtensionAbility](#connectserviceextensionability).
 
 ### terminateSelf
 
@@ -302,8 +286,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = '[AppServiceExtensionAbility]';
 
-class AppServiceExtension extends AppServiceExtensionAbility {
-  onCreate() {
+export default class AppServiceExtension extends AppServiceExtensionAbility {
+  onCreate(want: Want) {
     this.context.terminateSelf().then(() => {
       // Carry out normal service processing.
       hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');

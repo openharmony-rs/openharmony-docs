@@ -1,4 +1,10 @@
 # OH_NativeXComponent_ExpectedRateRange
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 

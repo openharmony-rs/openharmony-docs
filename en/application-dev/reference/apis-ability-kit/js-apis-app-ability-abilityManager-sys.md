@@ -116,7 +116,7 @@ Updates the configuration. This API uses a promise to return the result.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise used to return the API call result. You can perform error handling or custom processing in it.|
+| Promise\<void> | Promise that returns no value. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -280,7 +280,7 @@ Obtains the ExtensionAbility running information. This API uses a promise to ret
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>> | Promise used to return the API call result and the ExtensionAbility running information. You can perform error handling or custom processing in it.|
+| Promise\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>> | Promise used to return the API call result and the ExtensionAbility running information. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -368,7 +368,7 @@ Obtains the top ability, which is the ability that has the window focus. This AP
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise used to return the API call result and the element name of the top ability. You can perform error handling or custom processing in it.|
+| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise used to return the API call result and the element name. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -396,7 +396,7 @@ abilityManager.getTopAbility().then((data) => {
 
 acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Object>>): void
 
-Called by a system dialog box to obtain shared data, which is set by the target UIAbility through **onShare()**. This API uses an asynchronous callback to return the result.
+Called by a system dialog box to obtain shared data, which is set by the target UIAbility through [onShare](./js-apis-app-ability-uiAbility.md#onshare10). This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -444,7 +444,7 @@ try {
 
 acquireShareData(missionId: number): Promise\<Record\<string, Object>>
 
-Called by a system dialog box to obtain shared data, which is set by the target UIAbility through **onShare()**. This API uses a promise to return the result.
+Called by a system dialog box to obtain shared data, which is set by the target UIAbility through [onShare](./js-apis-app-ability-uiAbility.md#onshare10). This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -460,7 +460,7 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Record\<string, Object>>| Promise used to return the API call result and the shared data. You can perform error handling or custom processing in it.|
+| Promise\<Record\<string, Object>>| Promise used to return the API call result and the shared data. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -507,7 +507,7 @@ Used by the [Data Loss Prevention (DLP)](../apis-data-protection-kit/js-apis-dlp
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the initiator UIAbility.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the caller.|
 | requestCode | number                                        | Yes| Request code passed in by the DLP management application.         |
 | callback  | AsyncCallback<void\>                             | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.        |
 
@@ -570,7 +570,7 @@ Used by the [Data Loss Prevention (DLP)](../apis-data-protection-kit/js-apis-dlp
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the initiator UIAbility.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the caller.|
 | requestCode | number                                        | Yes| Request code passed in by the DLP management application.         |
 
 **Return value**
@@ -736,7 +736,7 @@ try {
 
 getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): void
 
-Obtains the information about the UIAbilities of an application that is running in the foreground. This API uses an asynchronous callback to return the result.
+Obtains the information about the UIAbility components of an application that is running in the foreground. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -780,7 +780,7 @@ abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<ability
 
 getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
-Obtains the information about the UIAbilities of an application that is running in the foreground. This API uses a promise to return the result.
+Obtains the information about the UIAbility components of an application that is running in the foreground. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1009,6 +1009,8 @@ Obtains the rule for launching an [EmbeddableUIAbility](js-apis-app-ability-embe
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones, tablets, and TVs. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

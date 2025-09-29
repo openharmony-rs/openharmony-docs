@@ -1,5 +1,12 @@
 # RunningMultiAppInfo (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @altay-->
+<!--Designer: @altay-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The RunningMultiAppInfo module defines the information of an application in multi-app mode in the running state.
 
 > **NOTE**

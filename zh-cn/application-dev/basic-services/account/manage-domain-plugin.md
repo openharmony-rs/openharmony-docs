@@ -20,6 +20,7 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
    ```ts
    import { osAccount, AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- [import_the_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccountsPlugin.ets) -->
 
 3. 获取系统账号管理对象。
 
@@ -154,6 +155,7 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
      }
    }
    ```
+   <!-- [define_the_plug_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccountsPlugin.ets) -->
 
 2. 调用[registerPlugin](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#registerplugin9)注册插件。
 
@@ -161,10 +163,12 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
    try {
        osAccount.DomainAccountManager.registerPlugin(plugin)
        console.info("registerPlugin success")
-   } catch (err) {
+   } catch (e) {
+       const err = e as BusinessError;
        console.error(`registerPlugin err: code is ${err.code}, message is ${err.message}`);
    }
    ```
+   <!-- [call_the_api_to_register_the_plug_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccountsPlugin.ets) -->
 
 ## 注销插件
 
@@ -176,7 +180,9 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
 try {
   osAccount.DomainAccountManager.unregisterPlugin();
   console.info('unregisterPlugin success.');
-} catch(err) {
+} catch (e) {
+  const err = e as BusinessError;
   console.error(`unregisterPlugin failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+<!-- [call_the_api_to_log_out_the_plug_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccountsPlugin.ets) -->

@@ -108,7 +108,7 @@ enum ArkUI_KeyCode
 | ARKUI_KEYCODE_N = 2030 | 按键'N'。                     |
 | ARKUI_KEYCODE_O = 2031 | 按键'O'。                     |
 | ARKUI_KEYCODE_P = 2032 | 按键'P'。                     |
-| ARKUI_KEYCODE_Q = 2033 | 按键'R'。                     |
+| ARKUI_KEYCODE_Q = 2033 | 按键'Q'。                     |
 | ARKUI_KEYCODE_R = 2034 | 按键'R'。                     |
 | ARKUI_KEYCODE_S = 2035 | 按键'S'。                     |
 | ARKUI_KEYCODE_T = 2036 | 按键'T'。                     |

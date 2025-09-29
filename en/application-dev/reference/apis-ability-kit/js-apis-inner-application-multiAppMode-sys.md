@@ -1,5 +1,12 @@
 # MultiAppMode (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @altay-->
+<!--Designer: @altay-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines whether an application supports the multi-app mode.
 
 > **NOTE**

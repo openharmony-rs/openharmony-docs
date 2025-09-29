@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy; @zhanghongran; @yang-xiaoyu5-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao; @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - C API<!--avcodec-c-->
   - 模块<!--avcodec-module-->
@@ -13,8 +13,8 @@
     - [AudioCodec](capi-audiocodec.md)
     - [CodecBase](_codec_base.md)
     - [Core](capi-core.md)
-    - [VideoDecoder](_video_decoder.md)
-    - [VideoEncoder](_video_encoder.md)
+    - [VideoDecoder](capi-videodecoder.md)
+    - [VideoEncoder](capi-videoencoder.md)
     - [AVDemuxer](capi-avdemuxer.md)
     - [AVMuxer](capi-avmuxer.md)
     - [AVSource](capi-avsource.md)
@@ -30,8 +30,8 @@
     - [native_avformat.h](capi-native-avformat-h.md)
     - [native_avmemory.h](capi-native-avmemory-h.md)
     - [native_avcodec_base.h](native__avcodec__base_8h.md)
-    - [native_avcodec_videodecoder.h](native__avcodec__videodecoder_8h.md)
-    - [native_avcodec_videoencoder.h](native__avcodec__videoencoder_8h.md)
+    - [native_avcodec_videodecoder.h](capi-native-avcodec-videodecoder-h.md)
+    - [native_avcodec_videoencoder.h](capi-native-avcodec-videoencoder-h.md)
     - [native_avdemuxer.h](capi-native-avdemuxer-h.md)
     - [native_avmuxer.h](capi-native-avmuxer-h.md)
     - [native_avsource.h](capi-native-avsource-h.md)
@@ -39,7 +39,6 @@
   - 结构体<!--avcodec-struct-->
     - [OH_AVRange](capi-avcapability-oh-avrange.md)
     - [OH_AVCapability](capi-avcapability-oh-avcapability.md)
-    - [MediaKeySession](capi-audiocodec-mediakeysession.md)
     - [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md)
     - [OH_AVBuffer](capi-core-oh-avbuffer.md)
     - [OH_NativeBuffer](capi-core-oh-nativebuffer.md)

@@ -62,6 +62,12 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 设置TabBar上显示内容。底部样式没有下划线效果。icon异常时显示灰色图块。
 
+>  **说明：**
+>
+>  - 子页签（[SubTabBarStyle](#subtabbarstyle9)）样式：通常为文字+下划线，文字+背板的页签风格，允许设置文本样式，建议放置在顶部或者底部使用。切换页签时默认支持动画跳转效果。适用于资讯类应用的顶部分类（如"关注、视频、数码"）、功能模块的二级导航场景。
+>  
+>  - 底部页签/侧边页签（[BottomTabBarStyle](#bottomtabbarstyle9)）样式：无下划线和背板效果，页签样式通常为图标+文字的组合方式。切换页签时默认无动画跳转效果。底部页签通常用于应用主导航（如首页、发现、推荐）。侧边页签适用于宽屏场景，可设置vertical(true)启用纵向布局，让页签在侧边显示，默认左侧显示。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -2013,7 +2019,7 @@ struct TabsPreloadItems {
       Button('preload items: [1,2,3]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为1~3的子节点
           this.tabsController.preloadItems([1, 2, 3])
             .then(() => {
               console.info('preloadItems success.');
@@ -2026,7 +2032,7 @@ struct TabsPreloadItems {
       Button('preload items: [1]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为1的子节点
           this.tabsController.preloadItems([1])
             .then(() => {
               console.info('preloadItems success.');
@@ -2038,7 +2044,7 @@ struct TabsPreloadItems {
       Button('preload items: [3]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为3的子节点
           this.tabsController.preloadItems([3])
             .then(() => {
               console.info('preloadItems success.');

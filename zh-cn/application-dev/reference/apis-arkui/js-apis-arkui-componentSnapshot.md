@@ -65,11 +65,11 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001   | Invalid ID. |
 
-**示例：**
-
 > **说明：**
 > 
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
+
+**示例：**
 
 ```ts
 import { componentSnapshot } from '@kit.ArkUI';
@@ -147,11 +147,11 @@ get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 
-**示例：**
-
 > **说明：**
 > 
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
+
+**示例：**
 
 ```ts
 import { componentSnapshot } from '@kit.ArkUI';
@@ -230,11 +230,11 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
 
-**示例：**
-
 > **说明：**
 > 
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
+
+**示例：**
 
 ```ts
 import { componentSnapshot } from '@kit.ArkUI';
@@ -341,11 +341,11 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | 100001 | The builder is not a valid build function. |
 | 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
 
-**示例：**
-
 > **说明：**
 > 
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
+
+**示例：**
 
 ```ts
 import { componentSnapshot } from '@kit.ArkUI'
@@ -441,11 +441,11 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
 
-**示例：**
-
 > **说明：**
 > 
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
+
+**示例：**
 
 ```ts
 import { componentSnapshot } from '@kit.ArkUI';
@@ -537,11 +537,11 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 | end    | number | 否  | 否   | 布局方向为LTR时表示截图区域矩形右下角的x轴坐标，布局方向为RTL时表示截图区域矩形左下角的x轴坐标。<br>单位：px <br>取值范围：[0, 组件宽度] |
 | bottom | number | 否  | 否   | 布局方向为LTR时表示截图区域矩形右下角的y轴坐标，布局方向为RTL时表示截图区域矩形左下角的y轴坐标。<br>单位：px <br>取值范围：[0, 组件高度] |
 
-**示例：**
-
 > **说明：**
 > 
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
+
+**示例：**
 
 ```ts
 import { image } from '@kit.ImageKit';

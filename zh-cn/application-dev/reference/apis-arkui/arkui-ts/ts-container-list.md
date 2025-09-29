@@ -313,7 +313,7 @@ alignListItem(value: ListItemAlign)
 
 sticky(value: StickyStyle)
 
-配合[ListItemGroup](ts-container-listitemgroup.md)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。sticky属性可以设置为 StickyStyle.Header \| StickyStyle.Footer 以同时支持header吸顶和footer吸底。
+配合[ListItemGroup](ts-container-listitemgroup.md)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。sticky属性可以设置为 StickyStyle.Header \| StickyStyle.Footer 以同时支持header吸顶和footer吸底。从API version 20开始，sticky属性也可以设置为StickyStyle.BOTH，以同时支持header吸顶和footer吸底。
 
 > **说明：** 
 >
@@ -348,6 +348,22 @@ scrollSnapAlign(value: ScrollSnapAlign)
 | 参数名 | 类型                                          | 必填 | 说明                                                      |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | value  | [ScrollSnapAlign](#scrollsnapalign10枚举说明) | 是   | 列表项滚动结束对齐效果。<br/>默认值：ScrollSnapAlign.NONE |
+
+### scrollSnapAnimationSpeed<sup>22+</sup>
+
+scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed)
+
+设置列表项滚动限位动画速度。只在列表设置了滚动结束对齐效果后才生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                          | 必填 | 说明                                                      |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------------------- |
+| speed  | [ScrollSnapAnimationSpeed](#scrollsnapanimationspeed22枚举说明) | 是   | 列表滚动限位动画速度。<br/>默认值：ScrollSnapAnimationSpeed.NORMAL |
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -606,17 +622,14 @@ editMode(value: boolean)
 
 ListItemGroup吸顶或吸底效果枚举。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     |  值  | 说明                               |
 | ------ | ------ | ---------------------------------- |
-| None   | 0 | ListItemGroup的header不吸顶，footer不吸底。 |
-| Header | 1 | ListItemGroup的header吸顶，footer不吸底。  |
-| Footer | 2 | ListItemGroup的footer吸底，header不吸顶。  |
+| None   | 0 | ListItemGroup的header不吸顶，footer不吸底。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Header | 1 | ListItemGroup的header吸顶，footer不吸底。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| Footer | 2 | ListItemGroup的footer吸底，header不吸顶。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| BOTH<sup>20+</sup> | 3 | ListItemGroup的header吸顶，footer吸底。<br/>**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollSnapAlign<sup>10+</sup>枚举说明
 
@@ -632,6 +645,20 @@ ListItemGroup吸顶或吸底效果枚举。
 | START  | 1 | 视图中的第一项将在列表的开头对齐。<br/>**说明：**<br/>当列表位移至末端，需要将末端的item完整显示，可能出现开头不对齐的情况。 |
 | CENTER | 2 | 视图中的中间项将在列表中心对齐。<br/>**说明：**<br/>顶端和末尾的item都可以在列表中心对齐，列表显示可能露出空白。 |
 | END    | 3 | 视图中的最后一项将在列表末尾对齐。<br/>**说明：**<br/>当列表位移至顶端，需要将顶端的item完整显示，可能出现末尾不对齐的情况。 |
+
+## ScrollSnapAnimationSpeed<sup>22+</sup>枚举说明
+
+设置列表项滚动限位动画速度。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     |  值  | 说明                                     |
+| ------ | ------ | ---------------------------------------- |
+| NORMAL   | 0 | 默认列表限位动画速度，通常用于列表项尺寸较大，划一下滚动一个列表项场景。            |
+| SLOW  | 1 | 列表限位动画速度较慢，通常用于列表项尺寸较小，划一下滚动多个列表项场景。 |
+
 ## CloseSwipeActionOptions<sup>11+</sup>对象说明
 
 收起[EXPANDED](ts-container-listitem.md#swipeactionstate11枚举说明)状态[ListItem](ts-container-listitem.md)回调事件集合，用于设置收起动画完成后回调事件。
@@ -719,7 +746,9 @@ List初始化时如果initialIndex为0会触发一次，List滚动到起始位�
 
 onReachEnd(event: () => void)
 
-列表到达末尾位置时触发。不满一屏并且最后一个子组件末端在List内时触发。
+列表到达末尾位置时触发事件。当最后一个子组件因滚动或内容/布局变化出现在列表视窗中时，触发此回调。
+
+当子组件未撑满列表，无须滚动即可直接在列表内完整展示时，首次加载也会触发此事件。
 
 List边缘效果为弹簧效果时，划动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
 

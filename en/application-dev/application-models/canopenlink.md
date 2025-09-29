@@ -11,7 +11,7 @@ Before starting application B, application A can call **canOpenLink** to check w
 
 > **NOTE**
 > 
-> The **canOpenLink** API cannot be used to determine whether the application navigated to via App Linking is installed.
+> The **canOpenLink** API cannot be used to determine whether the application navigated to via App Linking is accessible.
 
 ## Constraints
 Starting from API version 21, a maximum of 200 URL schemes can be configured in the [querySchemes](../quick-start/module-configuration-file.md) field in the **module.json5** file of the entry module. In API version 20 and earlier versions, a maximum of 50 URL schemes can be configured.

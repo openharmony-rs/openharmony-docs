@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 该模块提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息等。
 
@@ -3131,6 +3131,163 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### batchGetPhotoAssetParams<sup>21+</sup>
+
+batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetParams
+
+批量获取传入的[PhotoAsset](js-apis-photoAccessHelper-sys.md#photoasset)对象数组中指定属性的值。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| assets | [PhotoAsset](js-apis-photoAccessHelper-sys.md#photoasset)[] | 是   | 需要批量获取属性的文件数组。 |
+| members | string[] | 是   | 需要批量获取的属性数组。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| [PhotoAssetParams](arkts-apis-photoAccessHelper-t.md#photoassetparams21)| 文件属性名称及其值的Record类型数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202     | Called by non-system application.         |
+| 23800151       | The scenario parameter verification fails. Possible causes: The attribute to be queried does not exist in assets.        |
+| 23800104       | The provided member must be a property name of PhotoKey.        |
+
+**示例：**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(context: Context) {
+  console.info('batchGetPhotoAssetParams');
+  type PhotoAsset = photoAccessHelper.PhotoAsset;
+  let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  const FETCH_COLUMNS: string[] = [
+    photoAccessHelper.PhotoKeys.SIZE,
+    photoAccessHelper.PhotoKeys.DATE_ADDED,
+    photoAccessHelper.PhotoKeys.DATE_MODIFIED,
+    photoAccessHelper.PhotoKeys.PHOTO_TYPE,
+    photoAccessHelper.PhotoKeys.TITLE,
+    photoAccessHelper.PhotoKeys.DATE_MODIFIED_MS,
+    photoAccessHelper.PhotoKeys.DURATION,
+    photoAccessHelper.PhotoKeys.WIDTH,
+    photoAccessHelper.PhotoKeys.HEIGHT,
+    photoAccessHelper.PhotoKeys.DATE_TRASHED_MS,
+    photoAccessHelper.PhotoKeys.POSITION,
+    photoAccessHelper.PhotoKeys.DATE_TAKEN,
+    'owner_album_id',
+    'thumbnail_ready',
+    'data',
+  ];
+  const keyToGet: string[] = [
+    photoAccessHelper.PhotoKeys.URI,
+    photoAccessHelper.PhotoKeys.DISPLAY_NAME,
+    photoAccessHelper.PhotoKeys.DATE_ADDED,
+    photoAccessHelper.PhotoKeys.SIZE,
+    photoAccessHelper.PhotoKeys.DURATION,
+    photoAccessHelper.PhotoKeys.WIDTH,
+    photoAccessHelper.PhotoKeys.HEIGHT,
+    'data',
+    photoAccessHelper.PhotoKeys.THUMBNAIL_READY,];
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: FETCH_COLUMNS,
+    predicates: predicates
+  };
+  let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: albumPredicates
+  }
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.
+  getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+  let photoAssetsFetchResult: photoAccessHelper.FetchResult<PhotoAsset> = await album.getAssets(fetchOptions);
+  let photoAssets: PhotoAsset[] = await photoAssetsFetchResult.getAllObjects();
+  const batchParamOfPhotoAssets: photoAccessHelper.PhotoAssetParams =
+   phAccessHelper.batchGetPhotoAssetParams(photoAssets, keyToGet);
+  console.info(`batchGetPhotoAssetParams success, the length is ${batchParamOfPhotoAssets.length}`);
+}
+```
+
+### getRangeObjects<sup>21+</sup>
+
+getRangeObjects(index: number, offset: number): Promise\<T[]\>
+
+获取从指定的索引开始一定数量的文件资产。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明                 |
+| -------- | ---------------------------------------- | ---- | ------------------ |
+| index    | number                                   | 是    | 要获取的文件索引起点，大于等于0，小于检索结果中对象数量。     |
+| offset    | number                                   | 是    | 要获取的文件数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。     |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<T[]\>| Promise异步回调数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202     | Called by non-system application.         |
+| 23800151       | The scenario parameter verification fails. Possible causes: 'index' or 'offset' validity check failed.          |
+| 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
+
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getRangeObjectsDemo');
+  type PhotoAsset = photoAccessHelper.PhotoAsset;
+  let testNum: string = "getRangeObjects_test_002";
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+  };
+  let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let count: number = fetchResult1.getCount();
+  const half: number = Math.ceil(count / 2);
+  let promises: Promise<PhotoAsset[]>[] = [];
+  promises[0] = fetchResult1.getRangeObjects(0, half);
+  promises[1] = fetchResult2.getRangeObjects(half, count - half);
+  let photoAssetsArray: PhotoAsset[][] = await Promise.all(promises);
+  let photoAssets: PhotoAsset[] = photoAssetsArray[0].concat(photoAssetsArray[1]);
+  console.info('photoAssets length: ', photoAssets.length);
+}
+```
+
 ## PhotoAsset
 
 提供封装文件属性的方法。
@@ -4947,23 +5104,23 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | height | number | 否 | 否 | 图片资产的像素高度。<br>**系统接口**：此接口为系统接口。|
 | dataTaken | number | 否 | 否 | 图片资产拍照后存入本地时间。<br>**系统接口**：此接口为系统接口。|
 | orientation | number | 否 | 否 | 图片资产的旋转角度。<br>**系统接口**：此接口为系统接口。|
-| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。<br>**系统接口**：此接口为系统接口。|
+| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏。<br>**系统接口**：此接口为系统接口。|
 | title | string | 否 | 否 | 图片资产的标题。<br>**系统接口**：此接口为系统接口。|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。<br>**系统接口**：此接口为系统接口。|
 | dataTrashed | number | 否 | 否 | 图片资产是否在回收站中。<br>**系统接口**：此接口为系统接口。|
-| hidden | boolean | 否 | 否 | 图片资产是否隐藏。<br>**系统接口**：此接口为系统接口。|
+| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏。<br>**系统接口**：此接口为系统接口。|
 | userComment | string | 否 | 否 | 图片资产的用户评论信息。<br>**系统接口**：此接口为系统接口。|
 | cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。<br>**系统接口**：此接口为系统接口。|
 | dateYear | string | 否 | 否 | 图片资产创建年份时间。<br>**系统接口**：此接口为系统接口。|
 | dateMonth | string | 否 | 否 | 图片资产创建月份时间。<br>**系统接口**：此接口为系统接口。|
 | dateDay | string | 否 | 否 | 图片资产创建日时间。<br>**系统接口**：此接口为系统接口。|
-| pending | boolean | 否 | 否 | 图片资产等待状态，true为等待。<br>**系统接口**：此接口为系统接口。|
+| pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待。<br>**系统接口**：此接口为系统接口。|
 | dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间。<br>**系统接口**：此接口为系统接口。|
 | dateTrashedMs | number | 否 | 否 | 图片资产数据进回收站后经过时间。<br>**系统接口**：此接口为系统接口。|
 | subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。<br>**系统接口**：此接口为系统接口。|
 | movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。<br>**系统接口**：此接口为系统接口。|
 | dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。<br>**系统接口**：此接口为系统接口。|
-| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。<br>**系统接口**：此接口为系统接口。|
+| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。<br>**系统接口**：此接口为系统接口。|
 | lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。<br>**系统接口**：此接口为系统接口。|
 | thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。<br>**系统接口**：此接口为系统接口。|
 | thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变后经过时间。<br>**系统接口**：此接口为系统接口。|
@@ -4983,6 +5140,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | dateAdded<sup>18+</sup>    | number | 是    | 是   | 相册添加时间。<br>**系统接口**：此接口为系统接口。|
 | dateModified<sup>18+</sup>    | number | 是    | 是   | 相册修改时间。<br>**系统接口**：此接口为系统接口。|
 | coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。|
+| uploadStatus<sup>22+</sup>    | boolean | 是    | 否   | 表示是否允许相册同步到云空间或家庭存储。true表示允许，false表示不允许。<br>**系统接口**：此接口为系统接口。|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -6306,6 +6464,116 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### deleteLocalAssetsWithUri<sup>22+</sup>
+
+static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
+
+批量删除本地状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+
+>**说明：**
+>
+>- 对仅存在于本端设备的资产，直接删除到回收站。
+>- 对仅存在于云端的资产，不做任何处理。
+>- 对存在于本端设备和云端的资产，删除后变化为云端资产，本地资产进入回收站。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或者视频Uri数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by non-system application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteLocalAssetsWithUriDemo');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteLocalAssetsWithUri(context, [assetUri]);
+    } catch (err) {
+      console.error(`deleteLocalAssetsWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
+### deleteCloudAssetsWithUri<sup>22+</sup>
+
+static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
+
+批量删除云端状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+
+>**说明：**
+>
+>- 对仅存在于本端设备的资产，不做任何处理。
+>- 对仅存在于云端的资产，直接删除到回收站。
+>- 对存在于本端设备和云端的资产，删除后变化为本地资产，云端资产进入回收站。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或者视频Uri数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by non-system application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteCloudAssetsWithUriDemo');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteCloudAssetsWithUri(context, [assetUri]);
+    } catch (err) {
+      console.error(`deleteCloudAssetsWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
 ## MediaAssetsChangeRequest<sup>11+</sup>
 
 批量资产变更请求。
@@ -6744,6 +7012,58 @@ async function example(context: Context, albumUri: string) {
     console.info('deleteAlbums successfully');
   } catch (err) {
     console.error(`deleteAlbumsWithUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setUploadStatus<sup>22+</sup>
+
+static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean): Promise&lt;void&gt;
+
+设置相册是否可以同步到云空间或家庭存储。使用promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的Context。 |
+| albums  |   [Album](#album)[]          | 是   | 待设置同步状态的相册数组，支持设置用户相册和来源相册，数组中元素个数不超过500个。         |
+| allowUpload  |   boolean       | 是   | 是否允许相册同步，true表示允许，false表示不允许。         |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt;| Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      |  Permission denied.         |
+| 202      |  Called by non-system application.  |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Album array size is bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(context: Context, album: photoAccessHelper.Album) {
+  console.info('setUploadStatusDemo');
+  try {
+    let allowUpload = true;
+    await photoAccessHelper.MediaAlbumChangeRequest.setUploadStatus(context, [album], allowUpload);
+    console.info('setUploadStatus successfully');
+  } catch (err) {
+    console.error(`setUploadStatus failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -8220,7 +8540,7 @@ setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
 | attribute | [HighlightAlbumChangeAttribute](#highlightalbumchangeattribute21) | 是   | 需要设置的时刻属性。 |
-| value       | string   | 是    | 需要设置的时刻属性值。<br>当attribute为IS\_VIEWED或者IS\_FAVORITE时，取值为"0"或"1"；当attribute为NOTIFICATION\_TIME时，取值长度为8字节。 |
+| value       | string   | 是    | 需要设置的时刻属性值。<br>当attribute为IS\_VIEWED或者IS\_FAVORITE时，取值为"0"或"1"；当attribute为NOTIFICATION\_TIME时，取值范围为长度在8字节以内的数字字符串，例如"12345678"。 |
 
 **错误码：**
 
@@ -8884,29 +9204,29 @@ async function example(context: Context) {
       = await cloudEnhancementInstance.queryCloudEnhancementTaskState(asset);
     let taskStage = cloudEnhancementTaskState.taskStage;
     if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_EXCEPTION) {
-      console.log("task has exception");
+      console.info("task has exception");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_PREPARING) {
-      console.log("task is preparing");
+      console.info("task is preparing");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_UPLOADING) {
       let transferredFileSize = cloudEnhancementTaskState.transferredFileSize;
       let totalFileSize = cloudEnhancementTaskState.totalFileSize;
       let message = `task is uploading, transferredFileSize: ${transferredFileSize}, totalFileSize: ${totalFileSize}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_EXECUTING) {
       let expectedDuration = cloudEnhancementTaskState.expectedDuration;
       let message = `task is executing, expectedDuration: ${expectedDuration}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING) {
       let transferredFileSize = cloudEnhancementTaskState.transferredFileSize;
       let totalFileSize = cloudEnhancementTaskState.totalFileSize;
       let message = `task is downloading, transferredFileSize: ${transferredFileSize}, totalFileSize: ${totalFileSize}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
-      console.log("task is completed");
+      console.info("task is completed");
     }
   } catch (err) {
     console.error(`queryCloudEnhancementTaskStateDemo failed with error: ${err.code}, ${err.message}`);
@@ -9359,7 +9679,7 @@ async function example(context: Context) {
     let taskInfo = cloudMediaAssetStatus.taskInfo;
     let errorCode = cloudMediaAssetStatus.errorCode;
     let message = `taskStatus: ${taskStatus}, taskInfo: ${taskInfo}, errorCode: ${errorCode}`;
-    console.log(message);
+    console.info(message);
   } catch (err) {
     console.error(`getCloudMediaAssetStatusDemo failed with error: ${err.code}, ${err.message}`);
   }
@@ -9923,6 +10243,7 @@ async function example(context: Context) {
 | BUNDLE_NAME<sup>18+</sup>          | 'bundle_name'                 | 相册的包名。<br>**系统接口**：此接口为系统接口。            |
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | 相册修改的时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。            |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | 相册封面的来源。<br>**系统接口**：此接口为系统接口。            |
+| UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | 相册同步状态。<br>**系统接口**：此接口为系统接口。            |
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -10256,13 +10577,13 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必定提供 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|taskStage       |[CloudEnhancementTaskStage](#cloudenhancementtaskstage13)  |是 | 云增强任务状态。 |
-|transferredFileSize          |number  |否 | 已传输的文件大小。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_UPLOADING或者CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING时提供。  |
-|totalFileSize          |number  |否 | 总文件大小。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_UPLOADING或者CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING时提供。  |
-|expectedDuration          |number  |否 | 排队时间。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_EXECUTING时提供。  |
-|statusCode          |number  |否 | 状态码。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_FAILED时提供。  |
+| 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskStage  | [CloudEnhancementTaskStage](#cloudenhancementtaskstage13)  | 是 | 否 | 云增强任务状态。  |
+| transferredFileSize  | number  | 是 | 是 | 已传输的文件大小。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_UPLOADING或者CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING时提供。  |
+| totalFileSize  | number  | 是 | 是 | 总文件大小。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_UPLOADING或者CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING时提供。  |
+| expectedDuration  | number  | 是 | 是 | 排队时间。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_EXECUTING时提供。  |
+| statusCode  | number  | 是 | 是 | 状态码。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_FAILED时提供。  |
 
 ## VideoEnhancementType<sup>13+</sup>
 
@@ -10374,11 +10695,11 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必定提供 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|taskStatus       |[CloudMediaAssetTaskStatus](#cloudmediaassettaskstatus14)  |是 | 云端媒体资产下载任务状态。 |
-|taskInfo          |string  |是 | 下载资产的总个数和总大小(byte)，以及未下载的总个数和总大小(byte)。  |
-|errorCode       |[CloudMediaTaskPauseCause](#cloudmediataskpausecause14)  |是 | 云端媒体资产下载任务暂停类型。 |
+| 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskStatus | [CloudMediaAssetTaskStatus](#cloudmediaassettaskstatus14)  | 是 | 否 | 云端媒体资产下载任务状态。  |
+| taskInfo | string  | 是 | 否 | 下载资产的总个数和总大小（byte），以及未下载的总个数和总大小（byte）。  |
+| errorCode | [CloudMediaTaskPauseCause](#cloudmediataskpausecause14)  | 是 | 否 | 云端媒体资产下载任务暂停类型。  |
 
 ## RecommendationType<sup>11+</sup>
 

@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The ProcessInformation module defines the running information of a process.
+The module defines the process information. The information can be obtained through [getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) of appManager.
 
 > **NOTE**
 > 
@@ -25,16 +25,12 @@ import { appManager } from '@kit.AbilityKit';
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | pid | number | No| No| Process ID.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| uid | number | No| No| User ID.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| uid | number | No| No| UID of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | processName | string | No| No| Process name.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | bundleNames | Array&lt;string&gt; | No| No| Names of all running bundles in the process.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | state<sup>10+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10)| No| No| Running status of the process.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | bundleType<sup>12+</sup> | [bundleManager.BundleType](js-apis-bundleManager.md#bundletype) | No| No| Type of the bundle running in the process.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | appCloneIndex<sup>12+</sup> | number   | No  | Yes  | Index of an application clone.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-
-## How to Use
-
-The process information is obtained by calling [getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) of the appManager module.
 
 **Example**
 
@@ -45,7 +41,7 @@ appManager.getRunningProcessInformation((error, data) => {
   if (error) {
     console.error(`getRunningProcessInformation fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`getRunningProcessInformation success, data: ${JSON.stringify(data)}`);
+    console.info(`getRunningProcessInformation success, data: ${JSON.stringify(data)}`);
   }
 });
 ```

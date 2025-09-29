@@ -1,6 +1,13 @@
 # Context (Context Base Class of the Stage Model)
 
-The Context module inherits from [BaseContext](js-apis-inner-application-baseContext.md). It provides context for abilities or applications, including access to application-specific resources.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+Context is the context base class of the stage model. It is used to access application-specific resources and perform callbacks for application-level operations.
 
 > **NOTE**
 >
@@ -95,7 +102,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let moduleContext: common.Context;
     try {
       moduleContext = this.context.createModuleContext('entry');
@@ -110,7 +117,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContext(): ApplicationContext
 
-Obtains the context of this application.
+Obtains the application context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -120,7 +127,7 @@ Obtains the context of this application.
 
 | Type| Description|
 | -------- | -------- |
-| [ApplicationContext](js-apis-inner-application-applicationContext.md) | Application context obtained.|
+| [ApplicationContext](js-apis-inner-application-applicationContext.md) | Application context.|
 
 **Error codes**
 
@@ -138,7 +145,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let applicationContext: common.Context;
     try {
       applicationContext = this.context.getApplicationContext();
@@ -163,7 +170,7 @@ Obtains the shared directory based on a group ID. This API uses a promise to ret
 
 | Name      | Type                    | Mandatory  | Description           |
 | -------- | ---------------------- | ---- | ------------- |
-| dataGroupID | string | Yes   | Group ID, which is assigned by the system when an atomic service project is created.|
+| [dataGroupID](../apis-arkdata/js-apis-data-preferences.md#options10) | string | Yes   | Group ID, which is assigned by the system when an application of the atomic service type is created.|
 
 **Return value**
 
@@ -188,12 +195,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let groupId = "1";
     let getGroupDirContext: common.Context = this.context;
     try {
       getGroupDirContext.getGroupDir(groupId).then(data => {
-        console.log("getGroupDir result:" + data);
+        console.info("getGroupDir result:" + data);
       })
     } catch (error) {
       console.error(`getGroupDirContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
@@ -216,7 +223,7 @@ Obtains the shared directory based on a group ID. This API uses an asynchronous 
 
 | Name      | Type                    | Mandatory  | Description           |
 | -------- | ---------------------- | ---- | ------------- |
-| dataGroupID | string | Yes   | Group ID, which is assigned by the system when an atomic service project is created.|
+| [dataGroupID](../apis-arkdata/js-apis-data-preferences.md#options10) | string | Yes   | Group ID, which is assigned by the system when an application of the atomic service type is created.|
 | callback | AsyncCallback\<string> | Yes   | Callback used to return the result. If no shared directory exists, null is returned. Only the encryption level EL2 is supported.|
 
 **Error codes**
@@ -236,14 +243,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let getGroupDirContext: common.Context = this.context;
 
     getGroupDirContext.getGroupDir("1", (err: BusinessError, data) => {
       if (err) {
         console.error(`getGroupDir faile, err: ${JSON.stringify(err)}`);
       } else {
-        console.log(`getGroupDir result is: ${JSON.stringify(data)}`);
+        console.info(`getGroupDir result is: ${JSON.stringify(data)}`);
       }
     });
   }
@@ -254,7 +261,7 @@ export default class EntryAbility extends UIAbility {
 
 createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
-Creates the context for this application based on a data encryption level. This is required when an application needs to store different types of information in different directories. The application can obtain the corresponding directory.
+Creates an application context with a specific data encryption level. You can call this API to create contexts with different encryption levels, thereby obtaining the corresponding sandbox paths.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -296,7 +303,7 @@ export default class EntryAbility extends UIAbility {
 
 createDisplayContext(displayId: number): Context
 
-Creates the context based on the specified display ID, so as to obtain and use other application contexts with screen information (including [ScreenDensity](../apis-localization-kit/js-apis-resource-manager.md#screendensity) and [Direction](../apis-localization-kit/js-apis-resource-manager.md#direction)).
+Creates an application context based on the specified display ID with screen information (including [ScreenDensity](../apis-localization-kit/js-apis-resource-manager.md#screendensity) and [Direction](../apis-localization-kit/js-apis-resource-manager.md#direction)).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -306,7 +313,7 @@ Creates the context based on the specified display ID, so as to obtain and use o
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| displayId | number | Yes   | Display ID.|
+| [displayId](../apis-arkui/arkts-apis-window-i.md#windowproperties) | number | Yes   | Display ID.|
 
 **Return value**
 

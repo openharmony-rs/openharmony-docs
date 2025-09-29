@@ -5,7 +5,7 @@
 <!--Owner: @jiangfan56-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 从API 20开始，支持B帧视频编码。
 

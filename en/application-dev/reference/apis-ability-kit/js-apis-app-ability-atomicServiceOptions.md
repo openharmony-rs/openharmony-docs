@@ -1,4 +1,4 @@
-# @ohos.app.ability.AtomicServiceOptions (AtomicServiceOptions)
+# @ohos.app.ability.AtomicServiceOptions (Optional Parameters of openAtomicService)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @wendel; @Luobniz21-->
@@ -21,6 +21,8 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 ```
 
 ## AtomicServiceOptions
+
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
