@@ -1,11 +1,19 @@
 # 性能
+
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
   - [性能优化概览](performance-overview.md)
   - [应用开发性能优化入门引导](application-performance-optimization-guidance.md)
   - [应用性能优化常见问题解决指导](performance-optimization-practical-guidance.md)
   - ArkTS高性能编程
     - [高效并发编程](efficient-concurrent-programming.md)
-    - [N-API高效开发指导](develop-Native-modules-using-NAPI-safely-and-efficiently.md)
-    - [多线程能力场景化](multi_thread_capability.md)
+    - [安全和高效地使用N-API开发Native模块](develop-Native-modules-using-NAPI-safely-and-efficiently.md)
+    - [多线程能力场景化示例实践](multi_thread_capability.md)
     - [利用native的方式实现跨线程调用](native-threads-call-js.md)
     - [避免开发过程中的冗余操作](avoiding-redundant-operations.md)
     - [使用AOT进行性能优化](performance-optimization-using-aot.md)
@@ -13,7 +21,7 @@
     - [延迟加载Lazy-Import使用指导](Lazy-Import-Instructions.md)
   - 减少卡顿丢帧
     - [正确使用LazyForEach优化](lazyforeach_optimization.md)
-    - [组件复用使用指导](component-recycle.md)
+    - [组件复用实践](component-recycle.md)
     - [组件复用性能优化指导](component_recycle_case.md)
     - [组件复用总览](component-reuse-overview.md)
     - [WaterFlow高性能开发指导](waterflow_optimization.md)
@@ -56,9 +64,9 @@
     - [在线视频播放卡顿优化实践](online_video_playback_lags_practice.md)
     - [音画同步最佳实践](audio-video-synchronization.md)
   - 性能工具
-    - [性能分析工具CPU Profiler](application-performance-analysis.md)
-    - [性能优化工具HiDumper](performance-optimization-using-hidumper.md)
-    - [性能优化工具SmartPerf-Host](performance-optimization-using-smartperf-host.md)
+    - [应用性能分析工具CPU Profiler的使用指导](application-performance-analysis.md)
+    - [使用HiDumper命令行工具优化性能](performance-optimization-using-hidumper.md)
+    - [使用SmartPerf-Host分析应用性能](performance-optimization-using-smartperf-host.md)
     - [常用trace使用指导](common-trace-using-instructions.md)
     - [状态变量组件定位工具实践](state_variable_dfx_pratice.md)
     - [应用滑动场景帧率问题分析实践](long-frame-optimization.md)
