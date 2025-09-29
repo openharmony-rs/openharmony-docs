@@ -402,7 +402,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
   }
 }
 ```
-### startUIAbilitiesInSplitWindowMode<sup>20+</sup>
+### startUIAbilitiesInSplitWindowMode<sup>21+</sup>
 
 startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
 
