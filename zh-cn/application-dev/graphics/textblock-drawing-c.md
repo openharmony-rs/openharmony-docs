@@ -128,8 +128,7 @@ OH_Drawing_PenDestroy(pen);
 ```
 <!-- [ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-![chinese_stroke_text]
-(figures/chinese_stroke_text.jpg)
+![chinese_stroke_text](figures/chinese_stroke_text.jpg)
 
 ## 文字渐变
 
