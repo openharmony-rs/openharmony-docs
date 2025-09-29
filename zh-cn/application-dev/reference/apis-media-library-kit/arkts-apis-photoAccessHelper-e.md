@@ -4,13 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
-<!--Kit: Media Library Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
-<!--Designer: @liweilu1-->
-<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >

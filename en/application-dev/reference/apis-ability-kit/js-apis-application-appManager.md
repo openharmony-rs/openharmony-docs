@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 <!--deprecated_code_no_check-->
 
-The appManager module implements application management. You can use the APIs of this module to query whether the application is undergoing a stability test, whether the application is running on a RAM constrained device, the memory size of the application, and information about the running process.
+The appManager module provides APIs for application management. For example, you can query whether the system is undergoing a stability test, determine whether the device is RAM-constrained, obtain the maximum memory available to the current application, and retrieve information about running processes.
 
 > **NOTE**
 > 
@@ -23,7 +23,11 @@ import appManager from '@ohos.application.appManager';
 
 isRunningInStabilityTest(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether this application is undergoing a stability test. This API uses an asynchronous callback to return the result.
+Checks whether the system is undergoing a stability test. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> A stability test scenario refers to a specific testing environment designed to verify application reliability under complex, extreme, or long-term operating conditions.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -31,7 +35,7 @@ Checks whether this application is undergoing a stability test. This API uses an
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** if undergoing a stability test, **false** otherwise.| 
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the API call result and the result indicating whether the system is undergoing a stability test. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise.|
 
 **Example**
     
@@ -40,9 +44,9 @@ Checks whether this application is undergoing a stability test. This API uses an
 
   appManager.isRunningInStabilityTest((error, flag) => {
     if (error && error.code !== 0) {
-        console.error(`isRunningInStabilityTest fail, error: ${JSON.stringify(error)}`);
+      console.error(`isRunningInStabilityTest fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`isRunningInStabilityTest success, the result is: ${JSON.stringify(flag)}`);
+      console.info(`isRunningInStabilityTest success, the result is: ${JSON.stringify(flag)}`);
     }
   });
   ```
@@ -52,7 +56,11 @@ Checks whether this application is undergoing a stability test. This API uses an
 
 isRunningInStabilityTest(): Promise&lt;boolean&gt;
 
-Checks whether this application is undergoing a stability test. This API uses a promise to return the result.
+Checks whether the system is undergoing a stability test. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> A stability test scenario refers to a specific testing environment designed to verify application reliability under complex, extreme, or long-term operating conditions.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,7 +68,7 @@ Checks whether this application is undergoing a stability test. This API uses a 
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the result. **true** if undergoing a stability test, **false** otherwise.| 
+  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the system is undergoing a stability test. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise.|
 
 **Example**
     
@@ -69,9 +77,9 @@ Checks whether this application is undergoing a stability test. This API uses a 
   import { BusinessError } from '@ohos.base';
 
   appManager.isRunningInStabilityTest().then((flag) => {
-      console.log(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
+    console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
   }).catch((error: BusinessError) => {
-      console.error(`error: ${JSON.stringify(error)}`);
+    console.error(`error: ${JSON.stringify(error)}`);
   });
   ```
 
@@ -80,7 +88,7 @@ Checks whether this application is undergoing a stability test. This API uses a 
 
 isRamConstrainedDevice(): Promise\<boolean>
 
-Checks whether this application is running on a RAM constrained device. This API uses a promise to return the result.
+Checks whether the current device is a RAM-constrained device (a device with severely limited memory resources). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -88,7 +96,7 @@ Checks whether this application is running on a RAM constrained device. This API
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the result. **true** if running on a RAM constrained device, **false** otherwise.| 
+  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise.|
 
 **Example**
     
@@ -97,9 +105,9 @@ Checks whether this application is running on a RAM constrained device. This API
   import { BusinessError } from '@ohos.base';
 
   appManager.isRamConstrainedDevice().then((data) => {
-      console.log(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+    console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-      console.error(`error: ${JSON.stringify(error)}`);
+    console.error(`error: ${JSON.stringify(error)}`);
   });
   ```
 
@@ -107,7 +115,7 @@ Checks whether this application is running on a RAM constrained device. This API
 
 isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
 
-Checks whether this application is running on a RAM constrained device. This API uses an asynchronous callback to return the result.
+Checks whether the current device is a RAM-constrained device (a device with severely limited memory resources). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -115,7 +123,7 @@ Checks whether this application is running on a RAM constrained device. This API
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** if running on a RAM constrained device, **false** otherwise.| 
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise.|
 
 **Example**
     
@@ -123,11 +131,11 @@ Checks whether this application is running on a RAM constrained device. This API
   import appManager from '@ohos.application.appManager';
 
   appManager.isRamConstrainedDevice((error, data) => {
-      if (error && error.code !== 0) {
-          console.error(`isRamConstrainedDevice fail, error: ${JSON.stringify(error)}`);
-      } else {
-          console.log(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
-      }
+    if (error && error.code !== 0) {
+      console.error(`isRamConstrainedDevice fail, error: ${JSON.stringify(error)}`);
+    } else {
+      console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+    }
   });
   ```
 
@@ -135,7 +143,7 @@ Checks whether this application is running on a RAM constrained device. This API
 
 getAppMemorySize(): Promise\<number>
 
-Obtains the memory size of this application. This API uses a promise to return the result.
+Obtains the maximum memory (RAM allocation) available to the current application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -143,7 +151,7 @@ Obtains the memory size of this application. This API uses a promise to return t
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the memory size, in MB. You can perform error processing or other custom processing based on the size.  | 
+  | Promise&lt;number&gt; | Promise used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
 
 **Example**
     
@@ -152,9 +160,9 @@ Obtains the memory size of this application. This API uses a promise to return t
   import { BusinessError } from '@ohos.base';
 
   appManager.getAppMemorySize().then((data) => {
-      console.log(`The size of app memory is: ${JSON.stringify(data)}`);
+    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-      console.error(`error: ${JSON.stringify(error)}`);
+    console.error(`error: ${JSON.stringify(error)}`);
   });
   ```
 
@@ -162,7 +170,7 @@ Obtains the memory size of this application. This API uses a promise to return t
 
 getAppMemorySize(callback: AsyncCallback\<number>): void
 
-Obtains the memory size of this application. This API uses an asynchronous callback to return the result.
+Obtains the maximum memory (RAM allocation) available to the current application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -170,7 +178,7 @@ Obtains the memory size of this application. This API uses an asynchronous callb
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the memory size, in MB. You can perform error processing or other custom processing based on the size.  | 
+  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
 
 **Example**
     
@@ -178,11 +186,11 @@ Obtains the memory size of this application. This API uses an asynchronous callb
   import appManager from '@ohos.application.appManager';
 
   appManager.getAppMemorySize((error, data) => {
-      if (error && error.code !== 0) {
-          console.error(`getAppMemorySize fail, error: ${JSON.stringify(error)}`);
-      } else {
-          console.log(`The size of app memory is: ${JSON.stringify(data)}`);
-      }
+    if (error && error.code !== 0) {
+      console.error(`getAppMemorySize fail, error: ${JSON.stringify(error)}`);
+    } else {
+      console.info(`The size of app memory is: ${JSON.stringify(data)}`);
+    }
   });
   ```
 ## appManager.getProcessRunningInfos<sup>(deprecated)</sup>
@@ -210,9 +218,9 @@ Obtains information about the running processes. This API uses a promise to retu
   import { BusinessError } from '@ohos.base';
 
   appManager.getProcessRunningInfos().then((data) => {
-      console.log(`The process running infos is: ${JSON.stringify(data)}`);
+    console.info(`The process running infos is: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-      console.error(`error: ${JSON.stringify(error)}`);
+    console.error(`error: ${JSON.stringify(error)}`);
   });
   ```
 
@@ -240,10 +248,10 @@ Obtains information about the running processes. This API uses an asynchronous c
   import appManager from '@ohos.application.appManager';
 
   appManager.getProcessRunningInfos((error, data) => {
-      if (error && error.code !== 0) {
-          console.error(`getProcessRunningInfos fail, error: ${JSON.stringify(error)}`);
-      } else {
-          console.log(`getProcessRunningInfos success, data: ${JSON.stringify(data)}`);
-      }
+    if (error && error.code !== 0) {
+      console.error(`getProcessRunningInfos fail, error: ${JSON.stringify(error)}`);
+    } else {
+      console.info(`getProcessRunningInfos success, data: ${JSON.stringify(data)}`);
+    }
   });
   ```

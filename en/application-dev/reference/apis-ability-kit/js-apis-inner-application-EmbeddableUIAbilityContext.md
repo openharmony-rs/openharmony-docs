@@ -1,6 +1,16 @@
 # EmbeddableUIAbilityContext
 
-EmbeddableUIAbilityContext provides the context environment for the [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md) that needs to store its status. It inherits from [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+EmbeddableUIAbilityContext provides the context environment for the [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md). It inherits from [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).
+
+When an EmbeddableUIAbility component is instantiated, the system automatically creates the corresponding EmbeddableUIAbilityContext.
+
 
 > **NOTE**
 >
@@ -15,10 +25,7 @@ import { common } from '@kit.AbilityKit';
 ```
 
 ## EmbeddableUIAbilityContext 
-
-EmbeddableUIAbilityContext provides the context environment for the [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md) that needs to store its status. It inherits from [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).
-
-EmbeddableUIAbilityContext provides EmbeddableUIAbility-related configuration and APIs for operating EmbeddableUIAbilities and ServiceExtensionAbilities. For example, you can use the APIs to start an EmbeddableUIAbility, terminate an EmbeddableUIAbility to which the EmbeddableUIAbilityContext belongs, and start, terminate, connect to, or disconnect from a ServiceExtensionAbility.
+Through the EmbeddableUIAbilityContext, you can obtain the EmbeddableUIAbility-related configuration and APIs for operating EmbeddableUIAbility and ServiceExtensionAbility components. For example, you can use the APIs to start an EmbeddableUIAbility, terminate an EmbeddableUIAbility to which the EmbeddableUIAbilityContext belongs, and start, terminate, connect to, or disconnect from a ServiceExtensionAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

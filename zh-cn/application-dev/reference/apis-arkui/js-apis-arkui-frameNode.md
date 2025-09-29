@@ -193,7 +193,7 @@ isModifiable(): boolean
 
 | 类型    | 说明                                                                                                                                  |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为系统组件的代理节点或节点已经[dispose](#dispose12)时返回false。<br/>当返回false时，当前FrameNode不支持[appendChild](#appendchild12)、[insertChildAfter](#insertchildafter12)、[removeChild](#removechild12)、[clearChildren](#clearchildren12)、[createAnimation](#createanimation20)、[cancelAnimations](#cancelanimations20)的操作。 |
+| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为[自定义组件节点](../../ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经[dispose](#dispose12)时返回false。<br/>当返回false时，当前FrameNode不支持[appendChild](#appendchild12)、[insertChildAfter](#insertchildafter12)、[removeChild](#removechild12)、[clearChildren](#clearchildren12)、[createAnimation](#createanimation20)、[cancelAnimations](#cancelanimations20)的操作。 |
 
 **示例：**
 
@@ -1588,6 +1588,7 @@ get gestureEvent(): UIGestureEvent
 onDraw?(context: DrawContext): void
 
 FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。
+该接口的[DrawContext](./js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2344,6 +2345,105 @@ struct ListNodeTest {
   }
 }
  ```
+ 
+ ### convertPoint<sup>22+</sup>
+
+convertPoint(position: Position, targetNode: FrameNode): Position
+
+将点的坐标从当前节点的坐标系转换为目标节点的坐标系。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| position | [Position](./js-apis-arkui-graphics.md#position) | 是   | 当前节点局部坐标系中的点坐标。 |
+| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点局部坐标系中的坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| [Position](./js-apis-arkui-graphics.md#position) | 目标节点局部坐标系中的转换坐标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100024   | The current FrameNode and the target FrameNode do not have a common ancestor node. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
+
+**示例：**
+
+```ts
+
+@Entry
+@Component
+struct ConvertPointTestOnly {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+  @State nodeAOk: boolean = false;
+  @State nodeBOK: boolean = false;
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .onAppear(()=>{this.nodeAOk = true})
+      Column() {
+        Text('testNodeB')
+          .id('testNodeB')
+          .fontSize($r('app.float.page_text_font_size'))
+          .fontWeight(FontWeight.Bold)
+          .onAppear(()=>{this.nodeBOK = true})
+
+      }
+      Button('运行convertPoint测试')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    if(!this.nodeAOk||!this.nodeBOK) {
+      return
+    }
+
+    // 等待UI渲染完成
+    if (!this.uiContext) {
+      return
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+    const nodeB = this.uiContext.getAttachedFrameNodeById('testNodeB');
+
+    if (!nodeA || !nodeB) {
+      console.info('无法获取测试节点');
+      return;
+    }
+
+    const testPoint:Position = { x: 10, y: 10 };
+    const result: Position | undefined = nodeA.convertPoint({x:30,y:10}, nodeB); // 显式声明可能返回undefined
+    if (result === undefined) {
+      console.info("convertPoint 转换失败，返回 undefined");
+      return;
+    }
+    console.info(`输出: (${result.x}, ${result.y})`);
+
+  }
+}
+```
 
 ## TypedFrameNode<sup>12+</sup>
 
@@ -9318,14 +9418,16 @@ struct FrameNodeTypeTest {
 
 ``` ts
 import { FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private isRunning: boolean = false; // 表示节点上动画是否在运行
+
   private startInitAnimation() {
     if (this.rootNode) {
       let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, [0, 0, 0], [0, 0, 360],
-        {duration: 3000, curve: Curve.Linear, iterations: -1});// 创建动画，第一次创建时显式指定初值，旋转角从[0,0,0]变成[0,0,360]，无限循环
+        { duration: 3000, curve: Curve.Linear, iterations: -1 }); // 创建动画，第一次创建时显式指定初值，旋转角从[0,0,0]变成[0,0,360]，无限循环
       if (result) {
         this.isRunning = true;
       } else {
@@ -9333,6 +9435,7 @@ class MyNodeController extends NodeController {
       }
     }
   }
+
   cancelAnimation(cnt: number) {
     if (this.rootNode && this.isRunning) {
       let result: boolean = this.rootNode.cancelAnimations([AnimationPropertyType.ROTATION]);
@@ -9349,20 +9452,25 @@ class MyNodeController extends NodeController {
       }
     }
   }
+
   continueAnimation() {
     if (this.rootNode && !this.isRunning) {
-      let currentProperty: number[] = this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION);// 获取当前节点上的旋转属性终值
+      let currentProperty: number[] =
+        this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION); // 获取当前节点上的旋转属性终值
       if (currentProperty.length == 3) { // 获取属性正常，旋转属性对应的数组长度为3，分别是x、y、z方向的旋转角
         let endValue: number[];
         let startValue: number[] | undefined = undefined;
         if (currentProperty[2] >= 360) {
-          startValue = [currentProperty[0], currentProperty[1], currentProperty[2] - 360]; // 当旋转属性过大时使z方向少转360度，避免z方向角度由于多次启停动画一直增加
+          startValue = [currentProperty[0], currentProperty[1],
+            currentProperty[2] - 360]; // 当旋转属性过大时使z方向少转360度，避免z方向角度由于多次启停动画一直增加
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2]];
         } else {
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2] + 360]; // 此时旋转属性小于360度，可以从上次旋转角再多旋转一圈
         }
-        let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue, {duration: 3000, curve: Curve.Linear, iterations: -1});
-        console.info(`create rotation animation from ${startValue? String(startValue[2]): "undefined"} to ${endValue[2]}`);
+        let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue,
+          { duration: 3000, curve: Curve.Linear, iterations: -1 });
+        console.info(`create rotation animation from ${startValue ? String(startValue[2]) :
+          "undefined"} to ${endValue[2]}`);
         if (result) {
           this.isRunning = true;
         } else {
@@ -9371,15 +9479,17 @@ class MyNodeController extends NodeController {
       }
     }
   }
-
+  
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.rootNode) {
       return this.rootNode;
     }
     this.rootNode = new FrameNode(uiContext);
-    this.rootNode.commonAttribute.width(100).height(100).backgroundColor(Color.Blue);//设置节点属性
+    this.rootNode.commonAttribute.width(100)
+      .height(100)
+      .backgroundColor(Color.Blue); // 设置节点属性
     this.startInitAnimation();
-    this.rootNode.commonEvent.setOnClick(()=>{
+    this.rootNode.commonEvent.setOnClick(() => {
       if (this.isRunning) {
         this.cancelAnimation(1);
       } else {
@@ -9389,6 +9499,7 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct CreateAnimationExample {
@@ -9397,7 +9508,7 @@ struct CreateAnimationExample {
   build() {
     Column() {
       NodeContainer(this.myNodeController)
-    }.width('100%').padding({top: 50})
+    }.width('100%').padding({ top: 50 })
   }
 }
 ```

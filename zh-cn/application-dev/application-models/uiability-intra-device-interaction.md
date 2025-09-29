@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @altay-->
-<!--Designer: @altay-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -968,8 +968,9 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
                     try {
                       caller.release();
                     } catch (releaseErr) {
-                      console.log('Caller.release catch error, error.code: ' + JSON.stringify(releaseErr.code) +
-                        ' error.message: ' + JSON.stringify(releaseErr.message));
+                      let code = (releaseErr as BusinessError).code;
+                      let msg = (releaseErr as BusinessError).message;
+                      console.error(`Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
                     }
                   }
                 }).catch((err: BusinessError) => {

@@ -1,4 +1,4 @@
-# @ohos.bundle (Bundle)
+# @ohos.bundle (Bundle Module)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->

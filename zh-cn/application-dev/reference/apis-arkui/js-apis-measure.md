@@ -54,12 +54,11 @@ static measureText(options: MeasureOptions): number
 | ------------  | --------- |
 | number        | 文本宽度。<br/>单位：px |
 
-
-**示例：**
-
 > **说明**
 >
 > 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
+
+**示例：**
 
 ```ts
 import { MeasureText } from '@kit.ArkUI';
@@ -113,12 +112,11 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 | ------------  | --------- |
 | [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明:**  <br/>文本宽度以及高度返回值单位均为px。 |
 
-
-**示例：**
-
 > **说明**
 >
 > 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
+
+**示例：**
 
 ```ts
 import { MeasureText } from '@kit.ArkUI';

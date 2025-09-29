@@ -461,6 +461,7 @@ zh-cn/application-dev/web/web-geolocation-permission.md @handyohos @glzt2l @Hell
 zh-cn/application-dev/web/web-gesture.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web-nested-scrolling.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web-offline-mode.md @qianlf @glzt2l @HelloShuo @xzc_astile
+zh-cn/application-dev/web/web-native-messaging.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
 zh-cn/application-dev/web/web-open-in-new-window.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
 zh-cn/application-dev/web/web-pdf-preview.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/web/web-picture-in-picture.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
@@ -507,9 +508,9 @@ zh-cn/application-dev/device/usb-overview.md @w_Machine_cc @Kevin-Lau @liuhongga
 zh-cn/application-dev/device/usb-guidelines.md @w_Machine_cc @Kevin-Lau @liuhonggang123 @fang-jinxu
 
 [开发-Basic Services Kit-升级服务]
-zh-cn/application-dev/basic-services/update/Readme-CN.md @zhang_yixin13 @fang-jinxu
-zh-cn/application-dev/basic-services/update/sample-server-overview.md  @zhang_yixin13 @fang-jinxu
-zh-cn/application-dev/basic-services/update/sample-server-guidelines.md  @zhang_yixin13 @fang-jinxu
+zh-cn/application-dev/basic-services/update/Readme-CN.md  @fang-jinxu
+zh-cn/application-dev/basic-services/update/sample-server-overview.md   @fang-jinxu
+zh-cn/application-dev/basic-services/update/sample-server-guidelines.md   @fang-jinxu
 
 [开发-Basic Services Kit-压缩解压]
 zh-cn/application-dev/basic-services/compress  @Brilliantry_Rui  @changzheng6   @kongjing2  @small_bricklayer @fang-jinxu
@@ -567,10 +568,29 @@ zh-cn/application-dev/file-management/share-app-file.md @gzhuangzhuang @wang_zha
 zh-cn/application-dev/file-management/user-file-overview.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/user-file-uri-intro.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 
+[开发-Distributed Service Kit]
+zh-cn/application-dev/distributedservice/distributedservice-kit-intro.md @hu-zhiqiong
+zh-cn/application-dev/distributedservice/devicemanager-guidelines.md @hu-zhiqiong
+zh-cn/application-dev/distributedservice/abilityconnectmanager-guidelines.md @hu-zhiqiong
+zh-cn/application-dev/distributedservice/distributedextension-guidelines.md @hu-zhiqiong
+zh-cn/application-dev/distributedservice/linkEnhance_development-guide.md @hu-zhiqiong
+zh-cn/application-dev/distributedservice/camera-distributed.md @hu-zhiqiong
+zh-cn/application-dev/distributedservice/Readme-CN.md @hu-zhiqiong
 
-[开发-Driverdevelopment kit]
-zh-cn/application-dev/application-models/driverextensionability.md @w_Machine_cc @w00373942 @dong-dongzhen @hu-zhiqiong
-zh-cn/application-dev/device/externaldevice-guidelines.md @w_Machine_cc @w00373942 @dong-dongzhen @hu-zhiqiong
+[开发-Driver Development kit]
+zh-cn/application-dev/application-models/driverextensionability.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/externaldevice-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/driverdevelopment-overview.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/environmental-preparation.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/driverextensionability.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/externaldevice-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/usb-ddk-guidelines.md  @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/hid-ddk-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/usb-serial-ddk-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/scsi-peripheral-ddk-guidelines.md  @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/externaldevice-faqs.md  @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/terms.md  @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/driver/Readme-CN.md  @w00373942 @dong-dongzhen @hu-zhiqiong
 
 
 [开发-Form Kit]
@@ -732,9 +752,7 @@ zh-cn/application-dev/device/device-location-geocoding.md @RayShih
 
 
 [开发-Media]
-zh-cn/application-dev/media/ @zengyawen
-zh-cn/application-dev/media/audio/ @w_Machine_cc
-zh-cn/application-dev/media/avsession/ @w_Machine_cc
+zh-cn/application-dev/media/ @w_Machine_cc
 
 [开发-MDM Kit]
 zh-cn/application-dev/mdm/mdm-kit-intro.md @liuzuming @Brilliantry_Rui @lpw_work @lucifinil_han
@@ -1588,6 +1606,9 @@ zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-controllerapi.md @ct
 zh-cn/application-dev/reference/apis-arkweb/capi-web.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-netErrorList.md @aohui @glzt2l @HelloShuo
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md @aohui @glzt2l @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardCacheOptions.md @aohui @glzt2l @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md @aohui @glzt2l @HelloShuo
@@ -1694,35 +1715,35 @@ zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power-sys.md @w_
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usbManager-sys.md @w_Machine_cc @Kevin-Lau @liuhonggang123 @fang-jinxu
 
 [API参考-Basic Services Kit-数据文件处理]
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request-sys.md @zhang_yixin13  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request.md @zhang_yixin13  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-request.md @zhang_yixin13  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-update-sys.md @hughes802 @zhang_yixin13 @zhangzhengxue @mamba-ting @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-request.md @zhang_yixin13 @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-update.md @hughes802 @zhang_yixin13 @zhangzhengxue @mamba-ting @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request-sys.md   @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request.md   @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-request.md   @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-update-sys.md @hughes802  @zhangzhengxue @mamba-ting @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-request.md  @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-update.md @hughes802  @zhangzhengxue @mamba-ting @fang-jinxu
 
 [API参考-Basic Services Kit-时间时区、公共回调、系统设置]
 zh-cn/application-dev/reference/common/js-apis-timer.md @yao_dashuai @yao_dashuai @kirl75; @zsw_zhushiwei @foryourself
-zh-cn/application-dev/reference/apis-basic-services-kit/commonEvent-screenlock.md @zhang_yixin13 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-timer-sys.md @zhang_yixin13  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-time.md @zhang_yixin13  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-date-time-sys.md @zhang_yixin13 @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-time.md @zhang_yixin13 @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-date-time.md @zhang_yixin13 @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-time.md @zhang_yixin13  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock-sys.md @zhang_yixin13   @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock.md @zhang_yixin13 @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper.md @zhang_yixin13 @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-settings.md @xue-seu @zhang_yixin13 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-settings-sys.md @xue-seu @zhang_yixin13 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper-sys.md @zhang_yixin13  @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-WallpaperExtensionAbility-sys.md @zhang_yixin13 @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-screenlock.md @zhang_yixin13  @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/commonEvent-screenlock.md  @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-timer-sys.md   @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-time.md   @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-date-time-sys.md @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-time.md  @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-date-time.md  @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-time.md   @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock-sys.md    @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock.md  @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper.md  @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-settings.md @xue-seu  @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-settings-sys.md @xue-seu  @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper-sys.md   @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-WallpaperExtensionAbility-sys.md  @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-screenlock.md   @murphy1984 @wangzhangjun @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-capability*.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @fang-jinxu
 
 [API参考-Basic Services Kit-启动恢复]
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-parameterV9.md  @zhang_yixin13 @liveery @liuhaonan2 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-device-info.md  @zhang_yixin13 @liveery @liuhaonan2 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-parameterV9.md   @liveery @liuhaonan2 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-device-info.md   @liveery @liuhaonan2 @fang-jinxu
 
 [API参考-Basic Services Kit-压缩解压]
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-zlib.md  @Brilliantry_Rui @changzheng6   @kongjing2  @small_bricklayer @fang-jinxu
@@ -1829,7 +1850,7 @@ zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare-sys.md @lvz
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-statfs.md    @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-system-file.md    @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-userFileManager-sys.md @yixiaoff @liweilu1 @xchaosioda @zengyawen
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-userFileManager-sys.md @yixiaoff @liweilu1 @xchaosioda @w_Machine_cc
 zh-cn/application-dev/reference/apis-core-file-kit/Readme-CN.md @wangke25 @bubble_mao @zhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
 
 
@@ -1925,13 +1946,87 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-loglibrary
 zh-cn/application-dev/reference/apis-performance-analysis-kit/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
 
 
-[API参考-Distributedservice Kit]
-zh-cn/application-dev/reference/apis-distributedservice-kit/ @intermilano  @william-ligang @liuhonggang123 @w_Machine_cc @hu-zhiqiong
-zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-devicestatus-cooperate.md @mayunteng_1 @liuhaonan2 @hu-zhiqiong @cococoler @alien0208  @hu-zhiqiong
+[API参考-Distributed Service Kit]
+zh-cn/application-dev/reference/apis-distributedservice-kit/ @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-devicestatus-cooperate.md @mayunteng_1 @liuhaonan2 @hu-zhiqiong @cococoler @alien0208 
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-link-enhance.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-proxyChannelManager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-distributedHardwareManager-sys.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-distributedDeviceManager-sys.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager-sys.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-device-manager-sys.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode-device-manager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode-devicestatus.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode-link-enhance.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode_proxyChannelManager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/capi-devicemanager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/capi-oh-device-manager-h.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/capi-oh-device-manager-err-code-h.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
 
 [API参考-Driverdevelopment kit]
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/  @w_Machine_cc @w00373942 @dong-dongzhen @hu-zhiqiong
-
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/ @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-inner-application-driverExtensionContext.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-baseddk.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-ddk-api-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-ddk-types-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hid-ddk-api-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsi-peripheral-api-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsi-peripheral-types-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-ddk-api-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-ddk-types-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-serial-api-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-serial-types-h.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-baseddk-ddk-ashmem.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-emititem.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-device.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-eventtypearray.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-keycodearray.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-absaxesarray.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-relaxesarray.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-msceventarray.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-eventproperties.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-rawdevinfo.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-devicehandle.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-devicememmap.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-iorequest.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-request.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-response.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-capacityinfo.m @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-verifyrequest.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-device.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbcontrolrequestsetup.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicedescriptor.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbconfigdescriptor.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbinterfacedescriptor.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbendpointdescriptor.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkendpointdescriptor.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkinterfacedescriptor.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkinterface.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkconfigdescriptor.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbrequestpipe.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicememmap.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usb-devicearray.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk-usbserial-params.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk-usbserial-devicehandle.md @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/errorcode-deviceManager.md @w00373942 @dong-dongzhen @hu-zhiqiong
 
 
 [API参考-Form Kit]
@@ -1976,13 +2071,13 @@ zh-cn/application-dev/reference/apis-location-kit/ @cheng_guohong @RayShih @chen
 
 [API参考-Media]
 zh-cn/application-dev/reference/apis-audio-kit/ @w_Machine_cc
-zh-cn/application-dev/reference/apis-avcodec-kit/ @zengyawen
+zh-cn/application-dev/reference/apis-avcodec-kit/ @w_Machine_cc
 zh-cn/application-dev/reference/apis-avsession-kit/ @w_Machine_cc
-zh-cn/application-dev/reference/apis-camera-kit/ @zengyawen
-zh-cn/application-dev/reference/apis-drm-kit/ @zengyawen
-zh-cn/application-dev/reference/apis-image-kit/ @zengyawen
-zh-cn/application-dev/reference/apis-media-kit/ @zengyawen
-zh-cn/application-dev/reference/apis-media-library-kit/ @zengyawen
+zh-cn/application-dev/reference/apis-camera-kit/ @w_Machine_cc
+zh-cn/application-dev/reference/apis-drm-kit/ @w_Machine_cc
+zh-cn/application-dev/reference/apis-image-kit/ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-library-kit/ @w_Machine_cc
 
 
 

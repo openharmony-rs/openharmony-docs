@@ -368,6 +368,10 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 | left  | string | 否 | 是 | 通过方向键左键走焦到组件的id。<br/>默认值为重置left为空。 |
 | right  | string | 否 | 是 | 通过方向键右键走焦到组件的id。<br/>默认值为重置right为空。 |
 
+> **说明：**
+> 
+> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+
 ## 示例
 
 ### 示例1（设置组件获焦和走焦的效果）
@@ -524,10 +528,6 @@ struct FocusableExample {
 ### 示例2（设置指定组件获焦）
 
 该示例通过配置focusControl.requestFocus使指定组件获取焦点。
-
-> **说明：**
-> 
-> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
 
 ```ts
 // requestFocus.ets

@@ -100,15 +100,16 @@ export default class EntryAbility extends UIAbility {
     let accountId = 100;
 
     try {
-      this.context.startAbilityForResultWithAccount(want, accountId, (err: BusinessError, result: common.AbilityResult) => {
-        if (err.code) {
-          // Process service logic errors.
-          console.error(`startAbilityForResultWithAccount failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // Carry out normal service processing.
-        console.info('startAbilityForResultWithAccount succeed');
-      });
+      this.context.startAbilityForResultWithAccount(want, accountId,
+        (err: BusinessError, result: common.AbilityResult) => {
+          if (err.code) {
+            // Process service logic errors.
+            console.error(`startAbilityForResultWithAccount failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          // Carry out normal service processing.
+          console.info('startAbilityForResultWithAccount succeed');
+        });
     } catch (err) {
       // Process input parameter errors.
       let code = (err as BusinessError).code;
@@ -244,7 +245,7 @@ Starts an ability with the account ID specified and returns the result when the 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise used to return the ability result when the ability is terminated.|
+| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise that contains the **AbilityResult** parameter.|
 
 **Error codes**
 
@@ -928,8 +929,6 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 Connects this ability to a ServiceExtensionAbility, with the account ID specified. This API can be called only by the main thread.
 
-Currently, this API takes effect only on phones and tablets.
-
 > **NOTE**
 >
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md). 
@@ -940,6 +939,8 @@ Currently, this API takes effect only on phones and tablets.
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 16000006 is returned.
 
 **Parameters**
 
@@ -1729,7 +1730,8 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&gt;
 
-Starts an ability with the account ID specified and obtains the caller object for communicating with the ability. This API can be called only by the main thread.
+Starts an ability with the account ID specified and obtains the caller object for communicating with the ability. This API can be called only by the main thread. This API uses a promise to return the result.
+
 This API cannot be used to start the UIAbility with the launch type set to [specified](../../application-models/uiability-launch-type.md#specified).
 
 Observe the following when using this API:
@@ -1893,11 +1895,11 @@ export default class EntryAbility extends UIAbility {
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, (err) => {
       if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
-    })
+    });
   }
 }
 ```
@@ -1972,11 +1974,11 @@ export default class EntryAbility extends UIAbility {
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, option, (err) => {
       if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
-    })
+    });
   }
 }
 ```
@@ -2062,8 +2064,8 @@ export default class EntryAbility extends UIAbility {
         console.info('startAbilityAsCaller success.');
       })
       .catch((err: BusinessError) => {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
-      })
+        console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
+      });
   }
 }
 ```

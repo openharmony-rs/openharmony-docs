@@ -5,7 +5,7 @@
 <!--Owner: @chenkun-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Media Kit简介](media-kit-intro.md)
 - 媒体开发指导(ArkTS)<!--media-kit-dev--arkts-->
