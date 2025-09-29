@@ -737,3 +737,30 @@ searchParams, (searchResult)=>{
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
+
+## TargetInfo
+
+目标人脸信息。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称         | 值  | 说明              |
+| ----------- | ---- | --------------- |
+| HUMAN_FACE | 0 | 人脸信息。 |
+
+## SearchParams
+
+搜索方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称         | 值  | 说明              |
+| ----------- | ---- | --------------- |
+| DEFAULT | 0 | 默认方向。 |
+| LEFTWARD | 1 | 左向，也对应顺时针方向。 |
+| RIGHTWARD | 2 | 右向，也对应逆时针方向。 |
+
