@@ -182,7 +182,7 @@ export class MyNodeController extends NodeController {
 ```
 <!-- [arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
-```
+```ts
 @Entry
 @Component
 struct RenderTest {

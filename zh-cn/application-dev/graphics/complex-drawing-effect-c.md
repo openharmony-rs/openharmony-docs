@@ -55,6 +55,7 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PointDestroy(point);
 ```
+<!-- [ndk_graphics_draw_mixed_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![zh-cn_image_0000002158744138](figures/zh-cn_image_0000002158744138.png)
 
@@ -98,6 +99,7 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_PathEffectDestroy(pathEffect);
 ```
+<!-- [ndk_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置虚线路径效果的示意图 | 设置虚线效果的示意图 |
 | -------- | -------- |
@@ -159,6 +161,7 @@ OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(startPt);
 OH_Drawing_PointDestroy(endPt);
 ```
+<!-- [ndk_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 此例绘制的具有线性渐变着色器效果的矩形如下所示：
 
@@ -202,6 +205,7 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(centerPt);
 ```
+<!-- [ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 此例绘制的具有径向渐变着色器效果的矩形如下所示：
 
@@ -243,6 +247,7 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(centerPt);
 ```
+<!-- [ndk_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 此例绘制的具有扇形渐变着色器效果的矩形如下所示：
 
@@ -335,6 +340,7 @@ OH_Drawing_ColorFilterDestroy(colorFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
+<!-- [ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置颜色滤波器效果的示意图 | 设置5x4颜色矩阵的颜色滤波器效果的示意图 |
 | -------- | -------- |
@@ -389,6 +395,7 @@ OH_Drawing_ImageFilterDestroy(imageFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
+<!-- [ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置图像滤波器效果的示意图 | 设置图像滤波器效果的示意图 |
 | -------- | -------- |
@@ -442,6 +449,7 @@ OH_Drawing_MaskFilterDestroy(maskFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
+<!-- [ndk_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置蒙版滤波器效果的示意图 | 设置蒙版滤波器效果的示意图 |
 | -------- | -------- |

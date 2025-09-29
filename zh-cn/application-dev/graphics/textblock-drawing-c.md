@@ -50,6 +50,7 @@ OH_Drawing_TextBlobDestroy(textBlob);
 // 释放字体对象
 OH_Drawing_FontDestroy(font);
 ```
+<!-- [ndk_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Screenshot_20241225164926098](figures/Screenshot_20241225164926098.jpg)
 
@@ -87,8 +88,45 @@ OH_Drawing_TextBlobDestroy(textBlob);
 OH_Drawing_FontDestroy(font);
 OH_Drawing_PenDestroy(pen);
 ```
+<!-- [ndk_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Screenshot_20241225171259621](figures/Screenshot_20241225171259621.jpg)
+
+## 中文文字描边
+
+基于基本的字块绘制，还可以通过画笔实现中文文字描边效果，描边效果的更多介绍请参考[描边效果](basic-drawing-effect-c.md#描边效果)。
+
+中文文字描边的简要示例和示意图如下：
+
+```c++
+// 创建画笔
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+// 设置抗锯齿
+OH_Drawing_PenSetAntiAlias(pen, true);
+// 设置描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置描边线宽为3
+OH_Drawing_PenSetWidth(pen, 3);
+// 设置画笔描边效果
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value150_);
+const char *str = "你好";
+// 创建字块对象
+OH_Drawing_TextBlob *textBlob =
+    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+// 绘制字块
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// 去除描边效果
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_TextBlobDestroy(textBlob);
+OH_Drawing_FontDestroy(font);
+OH_Drawing_PenDestroy(pen);
+```
+<!-- [ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ## 文字渐变
 
@@ -131,6 +169,7 @@ OH_Drawing_TextBlobDestroy(textBlob);
 OH_Drawing_FontDestroy(font);
 OH_Drawing_BrushDestroy(brush);
 ```
+<!-- [ndk_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Screenshot_20241225173900576](figures/Screenshot_20241225173900576.jpg)
 
@@ -159,6 +198,7 @@ OH_Drawing_TextBlobDestroy(textBlob);
 // 释放字型对象
 OH_Drawing_FontDestroy(font);
 ```
+<!-- [ndk_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 未跟随主题字体的效果图 | 跟随主题字体的效果图（不同主题字体显示效果不同，此处仅示意） |
 | -------- | -------- |
@@ -194,6 +234,7 @@ for (int i = 0; i < 5; ++i) {
 // 释放字型对象
 OH_Drawing_FontDestroy(font);
 ```
+<!-- [ndk_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
@@ -224,6 +265,7 @@ OH_Drawing_FontFeaturesDestroy(features);
 // 释放字型对象
 OH_Drawing_FontDestroy(font);
 ```
+<!-- [ndk_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 

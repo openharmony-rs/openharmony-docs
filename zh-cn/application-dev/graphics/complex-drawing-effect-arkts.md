@@ -30,33 +30,34 @@
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
+```
+<!-- [ndk_graphics_draw_import_ui_and_graphics2D](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    canvas.saveLayer(null, null);
-    const brushCircle = new drawing.Brush();
-    const colorCircle: common2D.Color = {alpha: 255, red: 0, green: 0, blue: 255};
-    brushCircle.setColor(colorCircle);
-    canvas.attachBrush(brushCircle);
-    canvas.drawCircle(500, 500, 200);
-    const brush = new drawing.Brush();
-    //  设置混合模式
-    brush.setBlendMode(drawing.BlendMode.SRC_IN);
-    canvas.saveLayer(null, brush);
+```ts
+function drawRenderNode(canvas: drawing.Canvas) {
+  canvas.saveLayer(null, null);
+  const brushCircle = new drawing.Brush();
+  const colorCircle: common2D.Color = {alpha: 255, red: 0, green: 0, blue: 255};
+  brushCircle.setColor(colorCircle);
+  canvas.attachBrush(brushCircle);
+  canvas.drawCircle(500, 500, 200);
+  const brush = new drawing.Brush();
+  //  设置混合模式
+  brush.setBlendMode(drawing.BlendMode.SRC_IN);
+  canvas.saveLayer(null, brush);
 
-    const brushRect = new drawing.Brush();
-    const colorRect: common2D.Color = {alpha: 255, red: 255, green: 255, blue: 0};
-    brushRect.setColor(colorRect);
-    canvas.attachBrush(brushRect);
-    const rect: common2D.Rect = {left:100, top:100, right:500, bottom:500};
-    canvas.drawRect(rect);
-    canvas.restore();
-    canvas.restore();
-    canvas.detachBrush();
-  }
+  const brushRect = new drawing.Brush();
+  const colorRect: common2D.Color = {alpha: 255, red: 255, green: 255, blue: 0};
+  brushRect.setColor(colorRect);
+  canvas.attachBrush(brushRect);
+  const rect: common2D.Rect = {left:100, top:100, right:500, bottom:500};
+  canvas.drawRect(rect);
+  canvas.restore();
+  canvas.restore();
+  canvas.detachBrush();
 }
 ```
+<!-- [arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![zh-ch_image_BlendMode_SrcIn.png](figures/zh-ch_image_BlendMode_SrcIn.png)
 
@@ -94,6 +95,7 @@ canvas.drawRect(rect);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | 原始图 | 设置虚线效果后的效果图 |
 | -------- | -------- |
@@ -146,6 +148,7 @@ canvas.drawRect(rect);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![zh-cn_image_0000002158744106](figures/zh-cn_image_0000002158744106.png)
 
@@ -175,6 +178,7 @@ canvas.drawRect(rect);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![Screenshot_20241130164939281](figures/Screenshot_20241130164939281.jpg)
 
@@ -204,6 +208,7 @@ canvas.drawRect(rect);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![Screenshot_20241130165741720](figures/Screenshot_20241130165741720.jpg)
 
@@ -281,6 +286,7 @@ canvas.drawRect(rect);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | 原始图 | 设置5x4颜色矩阵的颜色滤波器后的效果图 |
 | -------- | -------- |
@@ -322,6 +328,7 @@ canvas.drawRect(rect);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | 原始图 | 设置模糊效果后的效果图 |
 | -------- | -------- |
@@ -361,6 +368,7 @@ canvas.drawRect(rect);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 | 原始图 | 设置模糊效果后的效果图 |
 | -------- | -------- |

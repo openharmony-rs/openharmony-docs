@@ -47,6 +47,7 @@
    // 创建PixelMap
    let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
    ```
+   <!-- [arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 2. （可选）编辑PixelMap中的像素。如果没有编辑像素的需求，此步骤可以省略。
 
@@ -84,6 +85,7 @@
    // 编辑位图，形成中间的黑白相间条纹
    pixelMap.writePixelsSync(area);
    ```
+   <!-- [arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 3. 绘制PixelMap。
 
@@ -94,6 +96,7 @@
    ```ts
    canvas.drawImage(pixelMap, 0, 0);
    ```
+   <!-- [arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
    绘制效果如下：
 

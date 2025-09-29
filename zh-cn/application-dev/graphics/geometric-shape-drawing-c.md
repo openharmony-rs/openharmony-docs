@@ -79,6 +79,7 @@ OH_Drawing_CanvasDetachPen(canvas);
 // 销毁各类对象
 OH_Drawing_PenDestroy(pen);
 ```
+<!-- [ndk_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 效果如下：
@@ -120,6 +121,7 @@ OH_Drawing_CanvasDetachPen(canvas);
 OH_Drawing_PenDestroy(pen);
 OH_Drawing_RectDestroy(rect);
 ```
+<!-- [ndk_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -157,6 +159,7 @@ OH_Drawing_CanvasDetachPen(canvas);
 OH_Drawing_PenDestroy(pen);
 OH_Drawing_PointDestroy(point);
 ```
+<!-- [ndk_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -225,6 +228,7 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PathDestroy(path);
 ```
+<!-- [ndk_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -266,6 +270,7 @@ OH_Drawing_RegionDestroy(region2);
 OH_Drawing_RectDestroy(rect1);
 OH_Drawing_RectDestroy(rect2);
 ```
+<!-- [ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -294,6 +299,7 @@ OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_RectDestroy(rect);
 ```
+<!-- [ndk_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -332,6 +338,7 @@ OH_Drawing_BrushDestroy(brush);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_RoundRectDestroy(roundRect);
 ```
+<!-- [ndk_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 效果如下：

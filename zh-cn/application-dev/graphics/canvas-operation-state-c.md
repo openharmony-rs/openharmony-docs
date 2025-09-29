@@ -135,6 +135,7 @@ OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
+<!-- [ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
@@ -166,6 +167,7 @@ OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
+<!-- [ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
@@ -196,6 +198,7 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 ```
+<!-- [ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 放大后的效果图 |
 | -------- | -------- |
@@ -248,6 +251,7 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
+<!-- [ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![zh-cn_image_0000002158744186](figures/zh-cn_image_0000002158744186.png)
 

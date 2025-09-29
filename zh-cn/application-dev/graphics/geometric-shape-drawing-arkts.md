@@ -67,6 +67,7 @@ canvas.drawPoint(1000, 1000);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241129174520171](figures/Screenshot_20241129174520171.jpg)
 
@@ -94,6 +95,7 @@ canvas.drawArc(rect, 0, 180);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![zh-cn_image_0000002194025289](figures/zh-cn_image_0000002194025289.png)
 
@@ -119,6 +121,7 @@ canvas.drawCircle(630, 630, 500);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
 
@@ -187,6 +190,7 @@ canvas.detachBrush();
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
 
@@ -219,6 +223,7 @@ canvas.drawRegion(region1);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
@@ -241,6 +246,7 @@ canvas.drawRect(200, 200, 1000, 700);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![zh-cn_image_0000002194110921](figures/zh-cn_image_0000002194110921.png)
 
@@ -275,6 +281,7 @@ canvas.drawRoundRect(rrect);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![zh-cn_image_0000002158584406](figures/zh-cn_image_0000002158584406.png)
 

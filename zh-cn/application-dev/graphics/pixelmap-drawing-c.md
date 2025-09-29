@@ -22,14 +22,25 @@
 
    ```c++
    target_link_libraries(entry PUBLIC libnative_drawing.so)
-   target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so)
    ```
+   <!-- [ndk_graphics_draw_cmake_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
+
+   ```c++
+   target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
+   ```
+   <!-- [ndk_graphics_draw_cmake_hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
+
+   ```c++
+   target_link_libraries(entry PUBLIC libpixelmap.so)
+   ```
+   <!-- [ndk_graphics_draw_cmake_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
 2. 导入依赖的相关头文件。
 
    ```c++
    #include<multimedia/image_framework/image/pixelmap_native.h>
    ```
+   <!-- [ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 3. 创建OH_PixelmapNative像素图对象。
 
@@ -68,6 +79,7 @@
    OH_PixelmapNative *pixelMapNative = nullptr;
    OH_PixelmapNative_CreatePixelmap(pixels, bufferSize, createOps, &pixelMapNative);
    ```
+   <!-- [ndk_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 4. 创建PixelMap。
 
@@ -76,6 +88,7 @@
    ```c++
    OH_Drawing_PixelMap *pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
    ```
+   <!-- [ndk_graphics_draw_create_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 5. 绘制PixelMap。
 
@@ -94,6 +107,7 @@
    // 绘制PixelMap
    OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
    ```
+   <!-- [ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 6. 绘制完成后释放相关对象。
 
@@ -101,6 +115,7 @@
    OH_PixelmapNative_Release(pixelMapNative);
    delete[] pixels;
    ```
+   <!-- [ndk_graphics_draw_release_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
    绘制效果如下：
 

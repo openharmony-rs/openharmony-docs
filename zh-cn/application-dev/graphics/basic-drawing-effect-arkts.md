@@ -38,6 +38,7 @@
    ```ts
    const brush = new drawing.Brush();
    ```
+   <!-- [arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 2. 使用画刷设置基础绘制效果，例如设置填充颜色、开启抗锯齿效果等。
    可使用setColor()接口设置填充颜色。
@@ -45,18 +46,21 @@
    ```ts
    brush.setColor(0xFF, 0xFF, 0x00, 0x00);
    ```
+   <!-- [arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    可使用setAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
 
    ```ts
    brush.setAntiAlias(true);
    ```
+   <!-- [arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 3. 使用attachBrush()接口给Canvas画布设置画刷。
 
    ```ts
    canvas.attachBrush(brush);
    ```
+   <!-- [arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
 
@@ -65,6 +69,7 @@
    ```ts
    canvas.detachBrush();
    ```
+   <!-- [arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 
 ## 描边效果
@@ -95,12 +100,14 @@
    ```ts
    let pen = new drawing.Pen();
    ```
+   <!-- [arkts_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 2. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
    ```ts
    canvas.attachPen(pen);
    ```
+   <!-- [arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 3. 使用画笔设置具体的描边效果（可选以下的一个或者多个效果）。
 
@@ -110,24 +117,28 @@
       // 设置颜色为红色
       pen.setColor(0xFF, 0xFF, 0x00, 0x00);
       ```
+      <!-- [arkts_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    - 可使用setStrokeWidth()接口设置画笔的线宽。
 
       ```ts
       pen.setStrokeWidth(15);
       ```
+      <!-- [arkts_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    - 可使用setAntiAlias()接口设置画笔抗锯齿，以使图形绘制边缘更平滑。
 
       ```ts
       pen.setAntiAlias(true);
       ```
+      <!-- [arkts_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    - 可使用setCapStyle()接口设置画笔线帽样式。
 
       ```ts
       pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
       ```
+      <!-- [arkts_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
       CapStyle线帽样式可选分类对应如下：
 
@@ -142,6 +153,7 @@
       ```ts
       pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
       ```
+      <!-- [arkts_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
       JoinStyle转角样式可选分类对应如下：
 
@@ -158,6 +170,7 @@
    ```ts
    canvas.detachPen();
    ```
+   <!-- [arkts_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 <!--RP1-->
 ## 相关实例
