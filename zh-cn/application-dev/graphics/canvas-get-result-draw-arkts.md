@@ -33,31 +33,46 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 ```ts
 import { UIContext, NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
+```
+<!-- [arkts_graphics_draw_import_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
-// 1. 自定义RenderNode
-export class MyRenderNode extends RenderNode {
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+```
+<!-- [arkts_graphics_draw_import_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+
+```ts
+// 1. 自定义 RenderNode
+class MyRenderNodeDirectDisplay extends RenderNode {
   async draw(context: DrawContext) {
     const canvas = context.canvas;
+    if (canvas === null) {
+      console.error('Canvas is null.');
+      return;
+    }
     // 3. 自定义的绘制相关操作
     const brush = new drawing.Brush();
-    brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
-    canvas.attachBrush(brush);
-    canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+    if (brush === null) {
+      console.error('Brush is null.');
+      return;
+    } else {
+      brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
+      canvas.attachBrush(brush);
+      canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+    }
   }
 }
 
-// 2. 自定义NodeController
-export class MyNodeController extends NodeController {
+// 2. 自定义 NodeController
+class MyNodeControllerDirectDisplay extends NodeController {
   private rootNode: FrameNode | null = null;
-  myRenderNode = new MyRenderNode();
+  private myRenderNode = new MyRenderNodeDirectDisplay();
 
   makeNode(uiContext: UIContext): FrameNode {
     this.rootNode = new FrameNode(uiContext);
     if (this.rootNode === null) {
       return this.rootNode;
     }
-
     const renderNode = this.rootNode.getRenderNode();
     if (renderNode !== null) {
       this.myRenderNode.backgroundColor = 0xffffffff;
@@ -70,26 +85,42 @@ export class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+```
 
+<!-- [arkts_graphics_draw_direct_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+
+```ts
 @Entry
 @Component
 struct RenderTest {
-  @State message: string = 'hello'
+  @State message: string = 'hello';
+  myNodeController_1 = new MyNodeControllerDirectDisplay();
+  myNodeController_2 = new MyNodeControllerIndirectDisplay();
+
   build() {
     Row() {
       Column() {
-        // 4. 将自定义NodeController进行显示
-        NodeContainer(new MyNodeController())
-          .width('100%')
+        Column(){
+          Text($r('app.string.DirectCanvas'))
+          // 直接画布
+          NodeContainer(this.myNodeController_1)
+            .width('100%')
+            .height('40%')
+        }
+        Column(){
+          Text($r('app.string.OffScreenCanvas'))
+          // 离屏画布
+          NodeContainer(this.myNodeController_2)
+            .width('100%')
+            .height('40%')
+            .margin({ top: 20 })
+        }
       }
-      .width('100%')
-      .height('80%')
     }
-    .height('100%')
   }
 }
 ```
-<!-- [arkts_graphics_draw_direct_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+<!-- [arkts_graphics_draw_direct_and_indirect_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
 
 ## 离屏Canvas画布的获取与显示
@@ -113,10 +144,13 @@ import { UIContext, NodeController, FrameNode, RenderNode, DrawContext } from '@
 import { image } from '@kit.ImageKit';
 import { taskpool } from '@kit.ArkTS';
 import { drawing } from '@kit.ArkGraphics2D';
+```
+<!-- [arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
-// 1. 自定义RenderNode
-export class MyRenderNode extends RenderNode {
-  pixelMap: image.PixelMap | null = null;
+```ts
+/ 1. 自定义RenderNode
+export class MyRenderNodeIndirectDisplay extends RenderNode {
+  private pixelMap: image.PixelMap | null = null;
   setPixelMap(pixelMap: image.PixelMap) {
     this.pixelMap = pixelMap;
   }
@@ -129,9 +163,9 @@ export class MyRenderNode extends RenderNode {
 
       // 4.2 离屏绘制
       const brush = new drawing.Brush();
-      brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+      brush.setColor({ alpha: 255, red: 0, green: 0, blue: 255 });
       canvas_.attachBrush(brush);
-      canvas_.drawRect({left:0,right:100,top:0,bottom:100});
+      canvas_.drawRect({ left: 150, right: 575, top: 0, bottom: 600 });
 
       // 4.3 将离屏Canvas的绘制结果交给RenderNode
       canvas.drawImage(this.pixelMap, 0, 0);
@@ -140,21 +174,21 @@ export class MyRenderNode extends RenderNode {
 }
 
 @Concurrent
-async function CreatePixelMapAsync() {
-  const color : ArrayBuffer = new ArrayBuffer(4000000);  // 4000000为需要创建的像素buffer大小，取值为：height * width *4
+async function createPixelMapAsync() {
+  const color : ArrayBuffer = new ArrayBuffer(4000000);  // 40000为需要创建的像素buffer大小，取值为：height * width *4
   let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 1000, width: 1000 } };
   const pixel = await image.createPixelMap(color, opts);
   return pixel;
 }
 
 // 2. 自定义NodeController
-export class MyNodeController extends NodeController {
+export class MyNodeControllerIndirectDisplay extends NodeController {
   private rootNode: FrameNode | null = null;
-  myRenderNode = new MyRenderNode();
+  private myRenderNode = new MyRenderNodeIndirectDisplay();
 
-  // 3. 在MyNodeController的aboutToAppear中创建PixelMap
+  // 3. 在MyNodeController的aboutToAppear中创建PixeMap
   aboutToAppear(): void {
-    let task = new taskpool.Task(CreatePixelMapAsync);
+    let task = new taskpool.Task(createPixelMapAsync);
     taskpool.execute(task).then((pixel:Object)=>{
       this.myRenderNode.setPixelMap(pixel as image.PixelMap);
       this.myRenderNode.invalidate();
@@ -186,20 +220,30 @@ export class MyNodeController extends NodeController {
 @Entry
 @Component
 struct RenderTest {
-  @State message: string = 'hello'
-  nodeController = new MyNodeController()
+  @State message: string = 'hello';
+  myNodeController_1 = new MyNodeControllerDirectDisplay();
+  myNodeController_2 = new MyNodeControllerIndirectDisplay();
 
   build() {
     Row() {
       Column() {
-        // 5. 将自定义NodeController进行显示
-        NodeContainer(this.nodeController)
-          .width('100%')
+        Column(){
+          Text($r('app.string.DirectCanvas'))
+          // 直接画布
+          NodeContainer(this.myNodeController_1)
+            .width('100%')
+            .height('40%')
+        }
+        Column(){
+          Text($r('app.string.OffScreenCanvas'))
+          // 离屏画布
+          NodeContainer(this.myNodeController_2)
+            .width('100%')
+            .height('40%')
+            .margin({ top: 20 })
+        }
       }
-      .width('100%')
-      .height('80%')
     }
-    .height('100%')
   }
 }
 ```

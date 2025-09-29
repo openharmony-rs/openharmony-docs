@@ -45,7 +45,7 @@ font.setSize(100);
 // 创建字块对象
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
 // 绘制字块
-canvas.drawTextBlob(textBlob, 200, 300);
+canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 ```
 <!-- [arkts_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
@@ -75,7 +75,7 @@ canvas.attachPen(pen);
 // 创建字块对象
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
 // 绘制字块
-canvas.drawTextBlob(textBlob, 200, 300);
+canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 // 去除描边效果
 canvas.detachPen();
 ```
@@ -135,8 +135,8 @@ canvas.detachBrush();
 以下为文字添加了线性渐变着色器效果的简要示例和示意图：
 
 ```ts
-let startPt: common2D.Point = { x: 100, y: 100 };
-let endPt: common2D.Point = { x: 900, y: 900 };
+let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
+let endPt: common2D.Point = { x: VALUE_900, y: VALUE_900 };
 let colors = [0xFFFFFF00, 0xFFFF0000, 0xFF0000FF];
 // 创建线性渐变着色器
 let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, colors, drawing.TileMode.CLAMP);
@@ -149,11 +149,11 @@ canvas.attachBrush(brush);
 // 创建字型
 const font = new drawing.Font();
 // 设置字体大小
-font.setSize(200);
+font.setSize(VALUE_200);
 // 创建字块
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
 // 绘制字块
-canvas.drawTextBlob(textBlob, 100, 300);
+canvas.drawTextBlob(textBlob, VALUE_100, VALUE_300);
 // 去除填充效果
 canvas.detachBrush();
 ```
@@ -168,7 +168,7 @@ canvas.detachBrush();
 设置跟随主题字体的示例代码和效果图如下：
 
 ```ts
-// 创建字型对象
+// 创建线性渐变着色器
 const font = new drawing.Font();
 // 设置文字大小
 font.setSize(100);

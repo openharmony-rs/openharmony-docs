@@ -37,14 +37,14 @@
 // 创建字体对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置字体大小
-OH_Drawing_FontSetTextSize(font, 100);
+OH_Drawing_FontSetTextSize(font, value100_);
 // 需要绘制的文字
 const char *str = "Hello world";
 // 创建字块对象
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // 绘制字块
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800); 
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // 释放字块对象
 OH_Drawing_TextBlobDestroy(textBlob);
 // 释放字体对象
@@ -66,21 +66,21 @@ OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置抗锯齿
 OH_Drawing_PenSetAntiAlias(pen, true);
 // 设置描边颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-// 设置描边线宽
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置描边线宽为3
 OH_Drawing_PenSetWidth(pen, 3);
 // 设置画笔描边效果
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置字体大小
-OH_Drawing_FontSetTextSize(font, 150);
+OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // 创建字块对象
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // 绘制字块
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // 去除描边效果
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁各类对象
@@ -138,9 +138,9 @@ OH_Drawing_PenDestroy(pen);
 
 ```c++
 // 开始点
-OH_Drawing_Point *startPt = OH_Drawing_PointCreate(100, 100);
+OH_Drawing_Point *startPt = OH_Drawing_PointCreate(value100_, value100_);
 // 结束点
-OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
 // 颜色数组
 uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 // 相对位置数组
@@ -157,13 +157,13 @@ OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // 设置字体大小
-OH_Drawing_FontSetTextSize(font, 150);
+OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
 // 创建字块对象
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
 // 绘制字块
-OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 200, 800);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // 取消填充效果
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象

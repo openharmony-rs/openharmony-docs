@@ -72,11 +72,11 @@ brush.setColor(0xFF, 0x00,  0x00, 0xFF);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 创建矩形对象
-let rect: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
+let rect: common2D.Rect = { left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 };
 // 裁剪矩形区域
-canvas.clipRect(rect); 
+canvas.clipRect(rect);
 // 绘制圆形
-canvas.drawCircle(300, 300, 300);
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_300);
 // 去除填充效果
 canvas.detachBrush();
 ```
@@ -128,9 +128,9 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 执行平移操作
-canvas.translate(300, 300); 
+canvas.translate(VALUE_300, VALUE_300);
 // 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 }); 
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
 // 去除填充效果
 canvas.detachBrush();
 ```
@@ -158,9 +158,9 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 顺时针旋转45度
-canvas.rotate(45, 200, 200);
+canvas.rotate(45, VALUE_200, VALUE_200);
 // 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
 // 去除填充效果
 canvas.detachBrush();
 ```
@@ -190,7 +190,7 @@ canvas.attachBrush(brush);
 // 执行放大操作
 canvas.scale(2, 2);
 // 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
 // 去除填充效果
 canvas.detachBrush();
 ```
@@ -232,14 +232,14 @@ pen.setStrokeWidth(20);
 canvas.attachPen(pen);
 // 保存操作，当前是不存在放大等操作的，这个原始状态会被保存下来
 canvas.save();
-// x轴和y轴方向分别放大2倍
+// x轴和y轴放行分别放大2倍
 canvas.scale(2, 2);
 // 绘制圆形，因为执行过放大操作，所以此时绘制的是大圆
-canvas.drawCircle(300, 300, 200);
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
 // 恢复操作，恢复到没有放大的原始状态
 canvas.restore();
 // 绘制圆形，因为已经恢复到没有放大的原始状态，所以此时绘制的是小圆
-canvas.drawCircle(300, 300, 200);
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
 // 去除描边效果
 canvas.detachPen();
 ```

@@ -59,11 +59,11 @@ pen.setStrokeWidth(40);
 // 设置画笔描边效果
 canvas.attachPen(pen);
 // 绘制5个点
-canvas.drawPoint(200, 200);
-canvas.drawPoint(400, 400);
-canvas.drawPoint(600, 600);
-canvas.drawPoint(800, 800);
-canvas.drawPoint(1000, 1000);
+canvas.drawPoint(VALUE_200, VALUE_200);
+canvas.drawPoint(VALUE_400, VALUE_400);
+canvas.drawPoint(VALUE_600, VALUE_600);
+canvas.drawPoint(VALUE_800, VALUE_800);
+canvas.drawPoint(VALUE_1000, VALUE_1000);
 // 去除描边效果
 canvas.detachPen();
 ```
@@ -83,14 +83,24 @@ canvas.detachPen();
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置颜色
-pen.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
+pen.setColor({
+alpha: 0xFF,
+red: 0xFF,
+green: 0x00,
+blue: 0x00
+});
 // 设置线宽
 pen.setStrokeWidth(20);
 // 设置画笔描边效果
 canvas.attachPen(pen);
 // 创建矩形对象
-const rect: common2D.Rect = {left:100, top:200, right:1000, bottom:600};
-// 绘制圆弧
+const rect: common2D.Rect = {
+left: VALUE_100,
+top: VALUE_200,
+right: VALUE_1000,
+bottom: VALUE_600
+};
+// 绘制矩形
 canvas.drawArc(rect, 0, 180);
 // 去除描边效果
 canvas.detachPen();
@@ -111,13 +121,18 @@ canvas.detachPen();
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置颜色
-pen.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
+pen.setColor({
+alpha: 0xFF,
+red: 0xFF,
+green: 0x00,
+blue: 0x00
+});
 // 设置线宽
 pen.setStrokeWidth(20);
 // 设置画笔描边效果
 canvas.attachPen(pen);
 // 绘制圆
-canvas.drawCircle(630, 630, 500);
+canvas.drawCircle(VALUE_630, VALUE_630, VALUE_500);
 // 去除描边效果
 canvas.detachPen();
 ```
@@ -141,8 +156,8 @@ canvas.detachPen();
 此处以使用画笔和画刷绘制五角星为例，简单示例如下：
 
 ```ts
-let height_ = 1800;
-let width_ = 1800;
+let height_ = VALUE_1800;
+let width_ = VALUE_1800;
 let len = height_ / 4;
 let aX = width_ / 3;
 let aY = height_ / 6;
@@ -207,15 +222,15 @@ canvas.detachPen();
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色
-brush.setColor(0xFF, 0xFF,  0x00, 0x00);
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 创建左上角的region1
 let region1 = new drawing.Region();
-region1.setRect(100, 100, 600, 600);
+region1.setRect(VALUE_100, VALUE_100, VALUE_600, VALUE_600);
 // 创建右下角的region2
 let region2 = new drawing.Region();
-region2.setRect(300, 300, 900, 900);
+region2.setRect(VALUE_300, VALUE_300, VALUE_900, VALUE_900);
 // 将两个区域以XOR的方式组合
 region1.op(region2, drawing.RegionOp.XOR);
 // 绘制区域
@@ -238,11 +253,11 @@ canvas.detachBrush();
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色
-brush.setColor(0xFF, 0xFF,  0x00, 0x00);
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 绘制矩形
-canvas.drawRect(200, 200, 1000, 700);
+canvas.drawRect(VALUE_200, VALUE_200, VALUE_1000, VALUE_700);
 // 去除填充效果
 canvas.detachBrush();
 ```
@@ -273,7 +288,13 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 创建矩形对象
-let rect: common2D.Rect = { left: 200, top: 200, right: 1000, bottom: 700 };
+let rect: common2D.Rect = {
+left: VALUE_200,
+top: VALUE_200,
+right: VALUE_1000,
+bottom: VALUE_700
+};
+console.info('rect:', rect.right);
 // 创建圆角矩形对象
 let rrect = new drawing.RoundRect(rect, 30, 30);
 // 绘制圆角矩形

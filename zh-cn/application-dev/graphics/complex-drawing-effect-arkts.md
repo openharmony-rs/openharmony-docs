@@ -28,10 +28,10 @@
 关键示例和效果示意图如下所示：
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 ```
-<!-- [ndk_graphics_draw_import_ui_and_graphics2D](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- [arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ```ts
 function drawRenderNode(canvas: drawing.Canvas) {
@@ -89,7 +89,12 @@ pen.setPathEffect(effect);
 // 设置画笔描边效果
 canvas.attachPen(pen);
 // 创建矩形
-let rect: common2D.Rect = { left: 200, top: 200, right: 1000, bottom: 700 };
+let rect: common2D.Rect = {
+  left: VALUE_200,
+  top: VALUE_200,
+  right: VALUE_1000,
+  bottom: VALUE_700
+};
 // 绘制矩形
 canvas.drawRect(rect);
 // 去除描边效果
@@ -131,8 +136,8 @@ canvas.detachPen();
 此处以绘制矩形并使用画刷设置线性渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
-let startPt: common2D.Point = { x: 100, y: 100 };
-let endPt: common2D.Point = { x: 900, y: 900 };
+let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
+let endPt: common2D.Point = { x: VALUE_900, y: VALUE_900 };
 let colors = [0xFFFFFF00, 0xFFFF0000, 0xFF0000FF];
 // 创建线性渐变着色器
 let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, colors, drawing.TileMode.CLAMP);
@@ -142,7 +147,12 @@ let brush = new drawing.Brush();
 brush.setShaderEffect(shaderEffect);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
-let rect: common2D.Rect = { left: 100, top: 100, right: 900, bottom: 900 };
+let rect: common2D.Rect = {
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
 // 绘制矩形
 canvas.drawRect(rect);
 // 去除填充效果
@@ -162,17 +172,22 @@ canvas.detachBrush();
 此处以绘制矩形并使用画刷设置径向渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
-let centerPt: common2D.Point = { x: 500, y: 500 };
+let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
 let colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
 // 创建径向渐变着色器
-let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, 600, colors, drawing.TileMode.CLAMP);
+let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, VALUE_600, colors, drawing.TileMode.CLAMP);
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置径向渐变着色器
 brush.setShaderEffect(shaderEffect);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
-let rect: common2D.Rect = { left: 100, top: 100, right: 900, bottom: 900 };
+let rect: common2D.Rect = {
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
 // 绘制矩形
 canvas.drawRect(rect);
 // 去除填充效果
@@ -192,7 +207,7 @@ canvas.detachBrush();
 此处以绘制矩形并使用画刷设置扇形渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
-let centerPt: common2D.Point = { x: 500, y: 500 };
+let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
 let colors = [0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00];
 // 创建扇形渐变着色器
 let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, colors, drawing.TileMode.CLAMP, 0, 360);
@@ -202,7 +217,12 @@ let brush = new drawing.Brush();
 brush.setShaderEffect(shaderEffect);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
-let rect: common2D.Rect = { left: 100, top: 100, right: 900, bottom: 900 };
+let rect: common2D.Rect = {
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
 // 绘制矩形
 canvas.drawRect(rect);
 // 去除填充效果
@@ -268,7 +288,7 @@ let brush = new drawing.Brush();
 // 设置颜色
 brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置颜色矩阵
-let matrix: Array<number> = [
+let matrix: number[] = [
   1, 0, 0, 0, 0,
   0, 1, 0, 0, 0,
   0, 0, 0.5, 0.5, 0,
@@ -280,7 +300,12 @@ let filter = drawing.ColorFilter.createMatrixColorFilter(matrix);
 brush.setColorFilter(filter);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
-let rect: common2D.Rect = { left: 300, top: 300, right: 900, bottom: 900 };
+let rect: common2D.Rect = {
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
 // 绘制矩形
 canvas.drawRect(rect);
 // 去除填充效果
@@ -322,7 +347,12 @@ let filter = drawing.ImageFilter.createBlurImageFilter(20, 20, drawing.TileMode.
 pen.setImageFilter(filter);
 // 设置画笔描边效果
 canvas.attachPen(pen);
-let rect: common2D.Rect = { left: 300, top: 300, right: 900, bottom: 900 };
+let rect: common2D.Rect = {
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
 // 绘制矩形
 canvas.drawRect(rect);
 // 去除描边效果
@@ -362,7 +392,12 @@ let filter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.NORMAL, 20
 pen.setMaskFilter(filter);
 // 设置画笔描边效果
 canvas.attachPen(pen);
-let rect: common2D.Rect = { left: 300, top: 300, right: 900, bottom: 900 };
+let rect: common2D.Rect = {
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
 // 绘制矩形
 canvas.drawRect(rect);
 // 去除描边效果

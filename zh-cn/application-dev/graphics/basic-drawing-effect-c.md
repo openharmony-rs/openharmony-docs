@@ -136,6 +136,8 @@
    - 可使用OH_Drawing_PenSetWidth()接口设置画笔的线宽。
 
       ```c++
+      // 设置画笔的线宽为50像素
+      float width = 50.0;
       OH_Drawing_PenSetWidth(pen, width);
       ```
       <!-- [ndk_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
@@ -152,7 +154,7 @@
    - 可使用OH_Drawing_PenSetCap()接口设置画笔线帽样式。
 
       ```c++
-      OH_Drawing_PenSetCap(pen, LINE_FLAT_CAP);
+      OH_Drawing_PenSetCap(pen, OH_Drawing_PenLineCapStyle::LINE_ROUND_CAP);
       ```
       <!-- [ndk_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -167,7 +169,7 @@
    - 可使用OH_Drawing_PenSetJoin()接口设置画笔转角样式。
 
       ```c++
-      OH_Drawing_PenSetJoin(pen, LINE_MITER_JOIN);
+      OH_Drawing_PenSetJoin(pen, OH_Drawing_PenLineJoinStyle::LINE_BEVEL_JOIN);
       ```
       <!-- [ndk_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
