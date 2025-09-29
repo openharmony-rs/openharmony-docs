@@ -45,6 +45,12 @@ LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能
 
 `LazyForEach`提供了参数`keyGenerator`，开发者可以使用该函数生成自定义键值。如果未定义`keyGenerator`函数，ArkUI框架将使用默认的键值生成函数：`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`。viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致。
 
+键值应满足以下条件。
+1. 键值具有唯一性，每个数据项对应的键值互不相同。
+2. 键值具有一致性，数据项不变时对应的键值也不变。
+
+上述条件保证`LazyForEach`正确、高效地更新子组件，否则可能存在渲染结果异常、渲染效率降低等问题。
+
 ### 组件创建规则
 
 在确定键值生成规则后，LazyForEach的第二个参数`itemGenerator`函数会根据组件创建规则为数据源的每个数组项创建组件。组件的创建包括两种情况：LazyForEach[首次渲染](#首次渲染)和LazyForEach数据更新后的[非首次渲染](#数据更新)。
