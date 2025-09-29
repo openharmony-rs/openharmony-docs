@@ -1,11 +1,11 @@
 # @ohos.wifiManager (WLAN)（系统接口）
+
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @qq_43802146-->
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
@@ -391,14 +391,14 @@ getSupportedFeatures(): number
 
 **示例：**
    ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.getSupportedFeatures();
-		console.info("supportedFeatures:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+   try {
+       let ret = wifiManager.getSupportedFeatures();
+       console.info("supportedFeatures:" + ret);
+   } catch (error) {
+       console.error("failed:" + JSON.stringify(error));
+   }
 
    ```
 
@@ -434,14 +434,14 @@ getWifiDetailState(): WifiDetailState
 
 **示例：**
    ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.getWifiDetailState();
-		console.info("wifiDetailState:" + ret);
-	} catch(error) {
-		console.error("failed:" + JSON.stringify(error));
-	}
+   try {
+       let ret = wifiManager.getWifiDetailState();
+       console.info("wifiDetailState:" + ret);
+   } catch (error) {
+       console.error("failed:" + JSON.stringify(error));
+   }
 
    ```
 
@@ -490,13 +490,13 @@ reassociate(): void
 
 **示例：**
    ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.reassociate();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+   try {
+       wifiManager.reassociate();
+   } catch (error) {
+       console.error("failed:" + JSON.stringify(error));
+   }
    ```
 
 ## wifiManager.reconnect<sup>9+</sup>
@@ -525,13 +525,13 @@ reconnect(): void
 
 **示例：**
    ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.reconnect();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+   try {
+       wifiManager.reconnect();
+   } catch (error){
+       console.error("failed:" + JSON.stringify(error));
+   }
    ```
 
 ## wifiManager.updateNetwork<sup>9+</sup>
@@ -908,13 +908,13 @@ enableHotspot(): void
 
 **示例：**
    ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.enableHotspot();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+   try {
+       wifiManager.enableHotspot();	
+   } catch (error){
+       console.error("failed:" + JSON.stringify(error));
+   }
    ```
 
 ## wifiManager.disableHotspot<sup>9+</sup>
