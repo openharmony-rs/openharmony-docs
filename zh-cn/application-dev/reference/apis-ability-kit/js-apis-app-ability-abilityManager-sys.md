@@ -179,6 +179,10 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
+> **说明：**
+>
+> 从API version 14开始，调用该接口将不会抛202错误码。
+
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 202 | Not System App. Interface caller is not a system app. |
