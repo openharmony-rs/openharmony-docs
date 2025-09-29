@@ -62,6 +62,7 @@
       - ArkTS1.2UI互操作指导
         - [互操作概述](quick-start/arkts-v1.1-v1.2-ui-interop.md)
         - [UI构建互操作](quick-start/arkts-v1.2-interop-v1.1-ui-build.md)
+        - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](ui/arkts-dyn-interop-sta-component.md)
         - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
         - 状态管理V2互操作
         - 状态管理V1V2混用互操作
