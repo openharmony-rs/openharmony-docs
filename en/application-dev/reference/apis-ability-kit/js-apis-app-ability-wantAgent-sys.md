@@ -1,4 +1,11 @@
-# @ohos.app.ability.wantAgent (WantAgent) (System API)
+# @ohos.app.ability.wantAgent (WantAgent Module) (System API)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The app.ability.WantAgent module provides APIs for creating and comparing WantAgent objects, and obtaining the user ID, Want, and bundle name of a WantAgent object. You are advised to use this module, since it will replace the [@ohos.wantAgent](js-apis-wantAgent.md) module in the near future.
 
@@ -567,7 +574,7 @@ try {
 
 ## OperationType
 
-Enumerates the operation types of the WantAgent objects.
+Enumerates the operation types supported by WantAgent objects.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

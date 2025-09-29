@@ -59,11 +59,11 @@ registerFont(options: FontOptions): void
 | familyName | string \| [Resource](arkui-ts/ts-types.md#resource)<sup>10+</sup> | 否  | 否  | 设置注册的字体名称。   |
 | familySrc  | string \| [Resource](arkui-ts/ts-types.md#resource)<sup>10+</sup> | 否  | 否  | 设置注册字体文件的路径。<br/>**说明：**<br/>读取系统沙箱路径内的资源时，建议使用file://路径前缀的字符串，需要确保沙箱目录路径下的文件存在并且有可读权限。 |
 
-**示例：**
-
 > **说明**
 >
 > 直接使用font可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用[UIContext](./arkts-apis-uicontext-uicontext.md)中的[getFont](./arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+
+**示例：**
 
 ```ts
 // xxx.ets
@@ -156,11 +156,11 @@ getSystemFontList(): Array\<string>
 | -------------------- | ----------------- |
 | Array\<string>       | 系统的字体名列表。  |
 
-**示例：**
-
 > **说明**
 >
 > 直接使用font可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+
+**示例：**
 
 <!--deprecated_code_no_check-->
 

@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The appManager module implements application management. You can use the APIs of this module to query whether the application is undergoing a stability test, whether the application is running on a RAM constrained device, the memory size of the application, and information about the running process.
+The appManager module provides APIs for application management. For example, you can query whether the system is undergoing a stability test, determine whether the device is RAM-constrained, obtain the maximum memory available to the current application, and retrieve information about running processes.
 
 > **NOTE**
 > 
@@ -28,17 +28,21 @@ Enumerates the processes states.
 
 | Name                | Value | Description                              |
 | -------------------- | --- | --------------------------------- |
-| STATE_CREATE    | 0   |    The process is being created.      |
+| STATE_CREATE    | 0   |    The process is created.      |
 | STATE_FOREGROUND          | 1   |    The process is running in the foreground.     |
 | STATE_ACTIVE  | 2   |     The process is active.  |
 | STATE_BACKGROUND        | 3   |    The process is running in the background.          |
-| STATE_DESTROY        | 4   |    The process is being destroyed.        |
+| STATE_DESTROY        | 4   |    The process is destroyed.        |
 
 ## appManager.isRunningInStabilityTest
 
 isRunningInStabilityTest(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether this application is undergoing a stability test. This API uses an asynchronous callback to return the result.
+Checks whether the system is undergoing a stability test. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> A stability test scenario refers to a specific testing environment designed to verify application reliability under complex, extreme, or long-term operating conditions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -48,7 +52,7 @@ Checks whether this application is undergoing a stability test. This API uses an
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | Yes|Callback used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback. **true** if undergoing a stability test, **false** otherwise. | 
+  | callback | AsyncCallback&lt;boolean&gt; | Yes|Callback used to return the API call result and the result indicating whether the system is undergoing a stability test. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise. |
 
 **Error codes**
 
@@ -68,7 +72,7 @@ appManager.isRunningInStabilityTest((err, flag) => {
   if (err) {
     console.error(`isRunningInStabilityTest fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
+    console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
   }
 });
 ```
@@ -78,7 +82,11 @@ appManager.isRunningInStabilityTest((err, flag) => {
 
 isRunningInStabilityTest(): Promise&lt;boolean&gt;
 
-Checks whether this application is undergoing a stability test. This API uses a promise to return the result.
+Checks whether the system is undergoing a stability test. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> A stability test scenario refers to a specific testing environment designed to verify application reliability under complex, extreme, or long-term operating conditions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -88,7 +96,7 @@ Checks whether this application is undergoing a stability test. This API uses a 
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback. **true** if undergoing a stability test, **false** otherwise.| 
+  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise.|
 
 **Error codes**
 
@@ -105,7 +113,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.isRunningInStabilityTest().then((flag) => {
-  console.log(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
+  console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -116,7 +124,7 @@ appManager.isRunningInStabilityTest().then((flag) => {
 
 isRamConstrainedDevice(): Promise\<boolean>
 
-Checks whether this application is running on a RAM constrained device. This API uses a promise to return the result.
+Checks whether the current device is a RAM-constrained device (a device with severely limited memory resources). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -126,7 +134,7 @@ Checks whether this application is running on a RAM constrained device. This API
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback. **true** if running on a RAM constrained device, **false** otherwise.| 
+  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise.|
 
 **Error codes**
 
@@ -143,7 +151,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.isRamConstrainedDevice().then((data) => {
-  console.log(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+  console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -153,7 +161,7 @@ appManager.isRamConstrainedDevice().then((data) => {
 
 isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
 
-Checks whether this application is running on a RAM constrained device. This API uses an asynchronous callback to return the result.
+Checks whether the current device is a RAM-constrained device (a device with severely limited memory resources). This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -163,7 +171,7 @@ Checks whether this application is running on a RAM constrained device. This API
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | Yes|Callback used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback. **true** if running on a RAM constrained device, **false** otherwise. | 
+  | callback | AsyncCallback&lt;boolean&gt; | Yes|Callback used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise. |
 
 **Error codes**
 
@@ -183,7 +191,7 @@ appManager.isRamConstrainedDevice((err, data) => {
   if (err) {
     console.error(`isRamConstrainedDevice fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+    console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -192,7 +200,7 @@ appManager.isRamConstrainedDevice((err, data) => {
 
 getAppMemorySize(): Promise\<number>
 
-Obtains the memory size of this application. This API uses a promise to return the result.
+Obtains the maximum memory (RAM allocation) available to the current application. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -202,7 +210,7 @@ Obtains the memory size of this application. This API uses a promise to return t
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the memory size, in MB. You can perform error processing or other custom processing based on the size.  | 
+  | Promise&lt;number&gt; | Promise used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
 
 **Error codes**
 
@@ -219,7 +227,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.getAppMemorySize().then((data) => {
-  console.log(`The size of app memory is: ${JSON.stringify(data)}`);
+  console.info(`The size of app memory is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -229,7 +237,7 @@ appManager.getAppMemorySize().then((data) => {
 
 getAppMemorySize(callback: AsyncCallback\<number>): void
 
-Obtains the memory size of this application. This API uses an asynchronous callback to return the result.
+Obtains the maximum memory (RAM allocation) available to the current application. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -239,7 +247,7 @@ Obtains the memory size of this application. This API uses an asynchronous callb
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | Yes|Callback used to return the memory size, in MB. You can perform error processing or other custom processing based on the size.  | 
+  | callback | AsyncCallback&lt;number&gt; | Yes|Callback used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
 
 **Error codes**
 
@@ -259,7 +267,7 @@ appManager.getAppMemorySize((err, data) => {
   if (err) {
     console.error(`getAppMemorySize fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The size of app memory is: ${JSON.stringify(data)}`);
+    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -300,7 +308,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.getRunningProcessInformation().then((data) => {
-  console.log(`The running process information is: ${JSON.stringify(data)}`);
+  console.info(`The running process information is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -345,7 +353,7 @@ appManager.getRunningProcessInformation((err, data) => {
   if (err) {
     console.error(`getRunningProcessInformation fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The running process information is: ${JSON.stringify(data)}`);
+    console.info(`The running process information is: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -354,7 +362,7 @@ appManager.getRunningProcessInformation((err, data) => {
 
 on(type: 'applicationState', observer: ApplicationStateObserver): number
 
-Registers an observer to listen for the state changes of all applications.
+Registers an observer to listen for lifecycle changes of all applications.
 
 **Required permissions**: ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -365,13 +373,13 @@ Registers an observer to listen for the state changes of all applications.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
-| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to observe the lifecycle change of an application.|
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to listen for applications lifecycle changes.|
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-| number | Digital code of the observer, which will be used in **off()** to deregister the observer.|
+| number | ID of the observer registered. You can pass this ID to [off('applicationState')](#appmanageroffapplicationstate14) to unregister the observer.|
 
 **Error codes**
 
@@ -391,31 +399,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 
 try {
   const observerId = appManager.on('applicationState', applicationStateObserver);
-  console.log(`[appManager] observerCode: ${observerId}`);
+  console.info(`[appManager] observerCode: ${observerId}`);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -427,7 +435,7 @@ try {
 
 on(type: 'applicationState', observer: ApplicationStateObserver, bundleNameList: Array\<string>): number
 
-Registers an observer to listen for the state changes of a specified application.
+Registers an observer to listen for lifecycle changes of the specified application.
 
 **Required permissions**: ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -438,14 +446,14 @@ Registers an observer to listen for the state changes of a specified application
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
-| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to observe the lifecycle change of an application.|
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to listen for application lifecycle changes.|
 | bundleNameList | `Array<string>` | Yes| **bundleName** array of the application. A maximum of 128 bundle names can be passed.|
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-| number | Digital code of the observer, which will be used in **off()** to deregister the observer.|
+| number | ID of the observer registered. You can pass this ID to [off('applicationState')](#appmanageroffapplicationstate14) to unregister the observer.|
 
 **Error codes**
 
@@ -465,25 +473,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 
@@ -491,7 +499,7 @@ let bundleNameList = ['bundleName1', 'bundleName2'];
 
 try {
   const observerId = appManager.on('applicationState', applicationStateObserver, bundleNameList);
-  console.log(`[appManager] observerCode: ${observerId}`);
+  console.info(`[appManager] observerCode: ${observerId}`);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -503,7 +511,7 @@ try {
 
 off(type: 'applicationState', observerId: number): Promise\<void>
 
-Deregisters the application state observer. This API uses a promise to return the result.
+Unregisters the observer used to listen for application state changes. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -514,13 +522,13 @@ Deregisters the application state observer. This API uses a promise to return th
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
-| observerId | number | Yes| Digital code of the observer.|
+| observerId | number | Yes| ID of the observer registered, which is the listener ID returned by [on('applicationState')](#appmanageronapplicationstate14).|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise used to return the API call result. You can perform error handling or custom processing in this callback.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -543,25 +551,25 @@ let observerId = 0;
 // 1. Register an application state observer.
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 let bundleNameList = ['bundleName1', 'bundleName2'];
@@ -574,10 +582,10 @@ try {
   console.error(`[appManager] error: ${code}, ${message}`);
 }
 
-// 2. Deregister the application state observer.
+// 2. Unregister the application state observer.
 try {
   appManager.off('applicationState', observerId).then((data) => {
-    console.log(`unregisterApplicationStateObserver success, data: ${JSON.stringify(data)}`);
+    console.info(`unregisterApplicationStateObserver success, data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
     console.error(`unregisterApplicationStateObserver fail, err: ${JSON.stringify(err)}`);
   });
@@ -592,7 +600,7 @@ try {
 
 off(type: 'applicationState', observerId: number, callback: AsyncCallback\<void>): void
 
-Deregisters the application state observer. This API uses an asynchronous callback to return the result.
+Unregisters the observer used to listen for application state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -603,7 +611,7 @@ Deregisters the application state observer. This API uses an asynchronous callba
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
-| observerId | number | Yes| Digital code of the observer.|
+| observerId | number | Yes| ID of the observer registered, which is the listener ID returned by [on('applicationState')](#appmanageronapplicationstate14).|
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the application state observer is deregistered, **err** is undefined; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -627,25 +635,25 @@ let observerId = 0;
 // 1. Register an application state observer.
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 let bundleNameList = ['bundleName1', 'bundleName2'];
@@ -666,7 +674,7 @@ function offCallback(err: BusinessError) {
   }
 }
 
-// 2. Deregister the application state observer.
+// 2. Unregister the application state observer.
 try {
   appManager.off('applicationState', observerId, offCallback);
 } catch (paramError) {
@@ -680,7 +688,7 @@ try {
 
 killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?: number): Promise\<void>
 
-Kills a process by bundle name. This API uses an asynchronous callback to return the result. This API uses a promise to return the result.
+Kills a process by bundle name. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -722,7 +730,7 @@ let appIndex = 1;
 
 try {
   appManager.killProcessesByBundleName(bundleName, isClearPageStack, appIndex).then((data) => {
-    console.log('killProcessesByBundleName success.');
+    console.info('killProcessesByBundleName success.');
   }).catch((err: BusinessError) => {
     console.error(`killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
   });
@@ -748,7 +756,7 @@ Checks whether an application is running. This API uses a promise to return the 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| appCloneIndex | number | No| Index of an application clone.|
+| appCloneIndex | number | No| Index of an application clone. The value ranges from 0 to 1000. The value **0** means the main application, and a value greater than 0 means a specific application clone.|
 
 **Return value**
 
@@ -814,19 +822,19 @@ Defines the application state data.
 
 type ApplicationStateObserver = _ApplicationStateObserver.default
 
-Defines the ApplicationStateObserver module.
+Defines the observer used to listen for application state changes.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Type| Description|
 | --- | --- |
-| [_ApplicationStateObserver.default](js-apis-inner-application-applicationStateObserver.md) | ApplicationStateObserver module.|
+| [_ApplicationStateObserver.default](js-apis-inner-application-applicationStateObserver.md) | Application state observer.|
 
 ## ProcessInformation
 
 type ProcessInformation = _ProcessInformation
 
-Defines the ProcessInformation module.
+Defines the process information.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -834,7 +842,7 @@ Defines the ProcessInformation module.
 
 | Type| Description|
 | --- | --- |
-| [_ProcessInformation](js-apis-inner-application-processInformation.md) | ProcessInformation module.|
+| [_ProcessInformation](js-apis-inner-application-processInformation.md) | Process information.|
 
 ## ProcessData<sup>14+</sup>
 

@@ -1,5 +1,12 @@
 # Data Synchronization Between UIAbility and UI Page
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @altay-->
+<!--Designer: @altay-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 
 Based on the application model, you can use any of the following ways to implement data synchronization between [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) components and UI pages:
 
@@ -11,7 +18,7 @@ Based on the application model, you can use any of the following ways to impleme
 
 [EventHub](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md) provides an event mechanism for the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) component so that they can subscribe to, unsubscribe from, and trigger events.
 
-In the [base class Context](../reference/apis-ability-kit/js-apis-inner-application-context.md), the EventHub object is provided for communication within the UIAbility component instance. Before using EventHub to implement data communication between the UIAbility and UI, you must obtain an EventHub object. This section uses EventHub as an example. 
+In the [base class Context](../reference/apis-ability-kit/js-apis-inner-application-context.md), the EventHub object is provided for communication within the UIAbility component instance. Before using EventHub to implement data communication between the UIAbility and UI, you must obtain an EventHub object. This section uses EventHub as an example.
 
 1. Call [eventHub.on()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubon) in the UIAbility in either of the following ways to register a custom event **event1**.
 

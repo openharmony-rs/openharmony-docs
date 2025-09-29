@@ -277,6 +277,62 @@ struct Index {
 }
 ```
 
+## text.getFontDescriptorsFromPath<sup>22+</sup>
+getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDescriptor&gt;&gt;   
+
+根据字体文件路径获取字体描述符数组。使用Promise异步回调。
+
+如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| -----  | ------------------ | ---- | --------------------------------- |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontDescriptorsFromPathTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get fontDesciptors")
+        .onClick(async () => {
+          let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
+          promise.then((fontFullDescriptors) => {
+            for (let index = 0; index < fontFullDescriptors.length; index++) {
+              console.info("Path:" + fontFullDescriptors[index].path +
+                          "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
+                          "\nfullName:" + fontFullDescriptors[index].fullName +
+                          "\nfamilyName:" + fontFullDescriptors[index].fontFamily +
+                          "\nfontSubName:" + fontFullDescriptors[index].fontSubfamily +
+                          "\nweight:" + fontFullDescriptors[index].weight +
+                          "\nwidth:" + fontFullDescriptors[index].width +
+                          "\nitalic:" + fontFullDescriptors[index].italic +
+                          "\nmonoSpace:" + fontFullDescriptors[index].monoSpace +
+                          "\nsymbolic:" + fontFullDescriptors[index].symbolic)
+            }
+          })
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## TextHighContrast<sup>20+</sup>
 
 文字渲染高对比度配置类型枚举。

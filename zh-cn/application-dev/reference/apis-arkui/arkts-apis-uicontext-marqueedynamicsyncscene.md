@@ -1,4 +1,10 @@
 # Class (MarqueeDynamicSyncScene)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 提供Marquee组件相关帧率的配置。
 
