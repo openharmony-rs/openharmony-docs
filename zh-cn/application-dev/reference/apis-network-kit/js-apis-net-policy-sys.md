@@ -2324,8 +2324,8 @@ try {
 
 | 名称              | 类型       | 只读 | 可选|说明                          |
 | ----------------- | --------- | ---- | ------|----------------------- |
-| allowWiFi         | boolean   | 否   |否 |能否允许访问wifi网络。true：允许访问wifi网络；false：不允许访问wifi网络。 |
-| allowCellular     | boolean   | 否  |否 |能否允许访问蜂窝网络。true：允许访问蜂窝网络；false：不允许访问蜂窝网络。 |
+| allowWiFi         | boolean   | 否   |否 |是否允许应用访问wifi网络。true表示允许，false表示不允许。 |
+| allowCellular     | boolean   | 否  |否 |是否允许应用访问蜂窝网络。true表示允许，false表示不允许。 |
 | alwaysAllowWiFi<sup>18+</sup>    | boolean   | 否  |是 |是否允许应用一直访问wifi网络。true表示允许，false表示不允许。 |
 | alwaysAllowCellular<sup>18+</sup>  | boolean   | 否  |是 |是否允许应用一直访问蜂窝网络。true表示允许，false表示不允许。 |
 
