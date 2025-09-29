@@ -267,7 +267,7 @@ class Tmp {
 @Builder
 function overBuilder($$: Tmp) {
   Text($$.label)
-    .width(400)
+    .width('100%')
     .height(50)
     .backgroundColor(Color.Green)
 }
@@ -324,7 +324,7 @@ class Tmp {
 @Builder
 function overBuilder($$: Tmp) {
   Text($$.label)
-    .width(400)
+    .width('100%')
     .height(50)
     .backgroundColor(Color.Green)
 }
