@@ -22,11 +22,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 参数类型                                                    | 必填 | 描述                                                         |
-| ----------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| lightSource | [LightSource](#lightsource对象说明)                         | 否   | 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。<br/>默认值：无光源 |
-| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | 否   | 设置当前组件是否可以被光源照亮，以及被照亮的类型。<br/>默认值：IlluminatedType.NONE |
-| bloom       | number                                                      | 否   | 设置组件的发光强度，建议取值范围为0-1。<br/>默认值：0        |
+| 名称        | 类型                                                    | 只读 | 可选 | 说明                                                         |
+| ----------- | ----------------------------------------------------------- | ---- |  ---- | ------------------------------------------------------------ |
+| lightSource | [LightSource](#lightsource对象说明)                         | 否   |  是   | 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。<br/>默认值：无光源 |
+| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | 否   |  是  | 设置当前组件是否可以被光源照亮，以及被照亮的类型。<br/>默认值：IlluminatedType.NONE |
+| bloom       | number                                                      | 否   |  是   | 设置组件的发光强度，建议取值范围为0-1。<br/>默认值：0        |
 
 ## LightSource对象说明
 
