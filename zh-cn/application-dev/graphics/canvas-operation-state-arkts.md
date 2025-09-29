@@ -232,7 +232,7 @@ pen.setStrokeWidth(20);
 canvas.attachPen(pen);
 // 保存操作，当前是不存在放大等操作的，这个原始状态会被保存下来
 canvas.save();
-// x轴和y轴放行分别放大2倍
+// x轴和y轴方向分别放大2倍
 canvas.scale(2, 2);
 // 绘制圆形，因为执行过放大操作，所以此时绘制的是大圆
 canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
