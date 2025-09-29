@@ -105,6 +105,7 @@
 | [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | 定义无障碍复选框状态类型枚举值。                  |
 | [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype)     | ArkUI_AccessibilityActionType   | 定义无障碍操作类型。                        |
 | [ArkUI_EdgeEffect](#arkui_edgeeffect)                               | ArkUI_EdgeEffect                | 定义边缘滑动效果枚举值。                      |
+| [ArkUI_BarState](#arkui_barstate)                               | ArkUI_BarState                | 定义文本控制滚动条状态枚举值。                      |
 | [ArkUI_EffectEdge](#arkui_effectedge)                               | ArkUI_EffectEdge                | 定义边缘效果生效边缘的方向枚举值。                 |
 | [ArkUI_ScrollDirection](#arkui_scrolldirection)                     | ArkUI_ScrollDirection           | 定义Scroll组件排列方向枚举值。                |
 | [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign)                     | ArkUI_ScrollSnapAlign           | 定义列表项滚动结束对齐效果枚举值。                 |
@@ -973,6 +974,25 @@ enum ArkUI_EdgeEffect
 | ARKUI_EDGE_EFFECT_SPRING = 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
 | ARKUI_EDGE_EFFECT_FADE | 阴影效果，滑动到边缘后会有圆弧状的阴影。 |
 | ARKUI_EDGE_EFFECT_NONE | 滑动到边缘后无效果。 |
+
+### ArkUI_BarState
+
+```
+enum ArkUI_BarState
+```
+
+**描述：**
+
+
+定义文本控制滚动条状态枚举值。
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_BAR_STATE_OFF = 0 | 不显示。 |
+| ARKUI_BAR_STATE_AUTO = 1 | 按需显示。 |
+| ARKUI_BAR_STATE_ON = 2 | 常驻显示。 |
 
 ### ArkUI_EffectEdge
 
