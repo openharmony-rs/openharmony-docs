@@ -33,6 +33,7 @@ import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend
 | SHADER | 6 | 着色器类型。 |
 | IMAGE | 7 | 图片类型。 |
 | MESH_RESOURCE<sup>18+</sup> | 8 | 网格资源类型。 |
+| EFFECT<sup>21+</sup> | 9 | 后处理特效类型。 |
 
 ## SceneResource
 用于表示场景中的资源。
@@ -512,3 +513,14 @@ function finish(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | width | number | 是 | 否 | 图片宽度，单位为像素（px），取值范围大于0。 |
 | height | number | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
+
+## Effect<sup>21+</sup>
+
+特效类型，继承自[SceneResource](#sceneresource-1)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| enable | boolean | 否 | 否 | 特效打开状态。true表示开启特效，false表示关闭特效。 |
+| effectId | string  | 是 | 否 | 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，用于特效的创建，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'。 |
