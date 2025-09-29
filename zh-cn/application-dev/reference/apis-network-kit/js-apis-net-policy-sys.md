@@ -2225,7 +2225,7 @@ try {
 | periodDuration    | string                        | 否   |否 |流量限制计量周期。D1、M1、Y1分别代表1天、1个月、1年内流量限制，超出时间则不受限制。 |
 | warningBytes      | number                        | 否   |否 |发出警告的流量阈值。                                          |
 | limitBytes        | number                        | 否   |否 |流量设置的配额。                                            |
-| metered           | boolean                       | 否   |否 |是否为计量网络。true表示是，false表示不是                                         |
+| metered           | boolean                       | 否   |否 |是否为计量网络。true表示是，false表示不是。                                         |
 | limitAction       | [LimitAction](#limitaction10) | 否   | 否|到达流量限制后的动作。                                         |
 | lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。默认值：-1。                                  |
 | lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。默认值：-1。                                      |
