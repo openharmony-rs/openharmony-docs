@@ -141,6 +141,9 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    setTimeout(() => {
      wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
    }, 125 * 1000);
+   setTimeout(() => {
+     wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
+   }, 125 * 1000);
    // 开始发现P2P设备，即，开始P2P扫描
    console.info("start discover devices -> " + wifiManager.startDiscoverDevices());
    ```
