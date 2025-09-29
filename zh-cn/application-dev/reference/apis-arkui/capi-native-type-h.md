@@ -2897,6 +2897,24 @@ enum ArkUI_FocusWrapMode
 | ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | 默认规则，使用方向键走焦不换行。 |
 | ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | 使用方向键走焦自动换行。 |
 
+### ArkUI_ScrollSnapAnimationSpeed
+
+```
+enum ArkUI_ScrollSnapAnimationSpeed
+```
+
+**描述：**
+
+
+列表限位滚动动画速度。
+
+**起始版本：** 20
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_SCROLL_SNAP_ANIMATION_NORMAL = 0 | 限位滚动动画速度正常。 |
+| ARKUI_SCROLL_SNAP_ANIMATION_SLOW = 1 | 限位滚动动画速度慢。 |
+
 ### ArkUI_EdgeDirection
 
 ```
