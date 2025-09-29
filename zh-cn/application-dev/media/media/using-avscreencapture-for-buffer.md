@@ -108,24 +108,24 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
     7.1 设置屏幕录制隐私窗口屏蔽模式。（可选）
 
-        value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。
+    value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。
 
-        ```c++
-        int value = 0;
-        OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-        OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
-        OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-        ```
+    ```c++
+    int value = 0;
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
+    OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+    ```
 
     7.2 （可选）（API 20起支持）设置屏幕录屏自动跟随旋转配置。
 
-        设为true，表示跟随屏幕旋转，并在横竖屏旋转后，自动调换虚拟屏尺寸，确保输出画面及时跟随旋转。设置后在旋转通知后，无需再手动调用OH_AVScreenCapture_ResizeCanvas接口。
+    设为true，表示跟随屏幕旋转，并在横竖屏旋转后，自动调换虚拟屏尺寸，确保输出画面及时跟随旋转。设置后在旋转通知后，无需再手动调用OH_AVScreenCapture_ResizeCanvas接口。
 
-        ```c++
-        OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-        OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
-        OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-        ```
+    ```c++
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
+    OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+    ```
 
 8. 调用StartScreenCapture()方法开始进行屏幕录制。
 
