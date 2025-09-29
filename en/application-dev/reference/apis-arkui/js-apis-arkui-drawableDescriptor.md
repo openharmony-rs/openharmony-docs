@@ -406,7 +406,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| pixelMaps | Array\<[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)>  | Yes  | **PixelMap** image data.|
+| pixelMaps | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Yes  | **PixelMap** image data.|
 | options   | [AnimationOptions](#animationoptions12) | No  | Animation options.                              |
 
 ## AnimationOptions<sup>12+</sup>
