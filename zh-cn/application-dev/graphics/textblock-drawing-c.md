@@ -128,6 +128,9 @@ OH_Drawing_PenDestroy(pen);
 ```
 <!-- [ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+![chinese_stroke_text]
+(figures/chinese_stroke_text.jpg)
+
 ## 文字渐变
 
 基于基本字块绘制，还可以通过着色器实现文字渐变的效果，着色器的更多介绍请参考[着色器效果](complex-drawing-effect-c.md#着色器效果)。
