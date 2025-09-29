@@ -1,5 +1,10 @@
 # 绘制图形
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 Svg组件可以用来绘制常见图形和线段，如矩形（&lt;rect&gt;）、圆形（&lt;circle&gt;）、线条(&lt;line&gt;）等，具体支持图形样式还请参考[Svg](../reference/apis-arkui/arkui-js/js-components-svg.md)组件。
 
