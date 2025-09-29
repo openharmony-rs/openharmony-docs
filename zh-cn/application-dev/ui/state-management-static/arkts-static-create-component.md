@@ -383,7 +383,9 @@ struct MyStateSample {
     }
     Column() {
       Text(this.stateVar)
-    }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -408,7 +410,9 @@ struct MyStateSample {
     }
     Column() {
       Text(this.stateVar)
-    }.width(100%).height(100%)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -429,8 +433,8 @@ struct MyComponent {
   build() {
     Column() {
       // 应避免直接在Text组件内改变count的值
-      Text(${this.count++}) // 不建议在build过程修改状态变量，渲染异常
-      .width(50)
+      Text(`${this.count++}`) // 不建议在build过程修改状态变量，渲染异常
+        .width(50)
         .height(50)
         .fontColor(this.textColor)
         .onClick((e: ClickEvent) => {
