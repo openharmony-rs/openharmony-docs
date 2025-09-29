@@ -26,6 +26,8 @@ Creates a calendar picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name | Type                                       | Mandatory| Description                      |
@@ -174,6 +176,8 @@ Describes the parameters of the calendar picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name     | Type      | Read-Only| Optional       | Description                           |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
 | hintRadius | number \| [Resource](ts-types.md#resource) | No  | Yes   | Style of the background of the selected state.<br>Value range: [0, 16].<br>Unit: vp.<br>Default value: **16.0vp** (the background is a circle).<br>**NOTE**<br>If the value is **0**, the background is a right-angled rectangle. If the value is in the 0–16 range, the background is a rounded rectangle. If the value is 16 or greater, the background is a circle.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -200,6 +204,8 @@ Enumerates alignment types.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name  | Value| Description                    |
 | ------ | - | ------------------------ |
