@@ -97,14 +97,14 @@ repo forall -c 'git lfs pull'
 | [IB7KDL](https://gitee.com/openharmony/applications_screenlock/issues/IB7KDL?from=project-issue) | [RK3568] After canceling the lock screen password, relocking and unlocking still requires a password input, and the previously used password is ineffective.|
 | [IB7KDI](https://gitee.com/openharmony/applications_screenlock/issues/IB7KDI?from=project-issue) | [RK3568] On the mixed password unlock screen, the first character entered is not fully displayed.      |
 | [IB7KGX](https://gitee.com/openharmony/applications_launcher/issues/IB7KGX?from=project-issue) | [RK3568] After a normal firmware update, the home screen icon layout becomes disordered.                          |
-| [IB8YCY](https://gitee.com/openharmony/xts_acts/issues/IB8YCY?from=project-issue) | [RK3568] The ACTS suite ActsNetManagerHttpEtsTest fails to be executed.     |
+| [IB8YCY](https://gitcode.com/openharmony/xts_acts/issues/IB8YCY?from=project-issue) | [RK3568] The ACTS suite ActsNetManagerHttpEtsTest fails to be executed.     |
 | [IAPYJN](https://gitee.com/openharmony/multimedia_media_lite/issues/IAPYJN?from=project-issue) | [Small-system LiteOS] After a video in Gallery finishes playing, clicking to replay results in a blue screen.|
-| [IB21XU](https://gitee.com/openharmony/xts_hats/issues/IB21XU?from=project-issue) | [RK3568] The HATS suites HatsHdfAudioIdlRenderAdditionalTest and HatsHdfAudioIdlCaptureAdditionalTest fail to be executed.|
-| [IB68WS](https://gitee.com/openharmony/xts_acts/issues/IB68WS?from=project-issue) | [RK3568] The ACTS suite ActsAceWebEnhancedTestTwo has one failed test case.|
+| [IB21XU](https://gitcode.com/openharmony/xts_hats/issues/IB21XU?from=project-issue) | [RK3568] The HATS suites HatsHdfAudioIdlRenderAdditionalTest and HatsHdfAudioIdlCaptureAdditionalTest fail to be executed.|
+| [IB68WS](https://gitcode.com/openharmony/xts_acts/issues/IB68WS?from=project-issue) | [RK3568] The ACTS suite ActsAceWebEnhancedTestTwo has one failed test case.|
 | [I90N04](https://gitee.com/openharmony/applications_settings/issues/I90N04?from=project-issue) | [RK3568] Under **Settings > System > Factory reset**, upon entering the factory reset page, the text on the screen is disordered and there is no reset button.|
-| [IAX7SV](https://gitee.com/openharmony/xts_acts/issues/IAX7SV?from=project-issue) | [RK3568] The ACTS suite ActsAceWebEnhancedTestTwo has one failed test case.|
+| [IAX7SV](https://gitcode.com/openharmony/xts_acts/issues/IAX7SV?from=project-issue) | [RK3568] The ACTS suite ActsAceWebEnhancedTestTwo has one failed test case.|
 | [I9PQ6I](https://gitee.com/openharmony-sig/ability_form_runtime/issues/I9PQ6I?from=project-issue) | [RK3568] A static widget becomes transparent a few seconds after it is added.|
-| [IATPGW](https://gitee.com/openharmony/xts_acts/issues/IATPGW?from=project-issue) | [RK3568] The ACTS suite ActsRequestAuthorityTest has six failed test cases.|
+| [IATPGW](https://gitcode.com/openharmony/xts_acts/issues/IATPGW?from=project-issue) | [RK3568] The ACTS suite ActsRequestAuthorityTest has six failed test cases.|
 | [I9NDZE](https://gitee.com/openharmony/accessibility/issues/I9NDZE?from=project-issue) | [RK3568] After restarting the phone, upgrading an application, or switching accounts, services that were previously running cannot be automatically restarted.|
 | [I9SI9E](https://gitee.com/openharmony/web_webview/issues/I9SI9E?from=project-issue) | [RK3568] The overscroll function fails.|
 | [I9PQFE](https://gitee.com/openharmony/window_window_manager/issues/I9PQFE?from=project-issue) | [RK3568] After the decoration bar is configured, clicking the split-screen button and then clicking the snapshot to be split-screened does not result in a split-screen.|
@@ -133,7 +133,7 @@ repo forall -c 'git lfs pull'
 | [IAF5SS](https://gitee.com/openharmony/security_privacy_center/issues/IAF5SS?from=project-issue) | [RK3568] When a user enables or disables a user certificate in a dialog box, the dialog box is moved to the right, exceeding the screen.|
 | [I9GLKF](https://gitee.com/openharmony/applications_app_samples/issues/I9GLKF?from=project-issue) | [RK3568] [Sample] During a phone call, detailed information about the call status does not contain the phone number.|
 | [I9OZC2](https://gitee.com/openharmony/multimodalinput_input/issues/I9OZC2?from=project-issue) | [RK3568] When the mouse cursor style is set to 41 (corresponding to **pointer.PointerStyle.CURSOR_CIRCLE**), the mouse cursor becomes invisible.|
-| [IA5EDU](https://gitee.com/openharmony/xts_acts/issues/IA5EDU?from=project-issue) | [RK3568] The XTS test suite ActsNativeAVScreenCaptureTest fails to execute in version 4.1.|
+| [IA5EDU](https://gitcode.com/openharmony/xts_acts/issues/IA5EDU?from=project-issue) | [RK3568] The XTS test suite ActsNativeAVScreenCaptureTest fails to execute in version 4.1.|
 | [I9UKT8](https://gitee.com/openharmony/ability_dmsfwk/issues/I9UKT8?from=project-issue) | [RK3568] The version compatibility test suite DctsDmsHapTest has failed test cases.|
 | [I9VJLA](https://gitee.com/openharmony/multimedia_audio_framework/issues/I9VJLA?from=project-issue) | [RK3568] The system fails to read recorded internal resources.|
 | [I9F8M0](https://gitee.com/openharmony/applications_app_samples/issues/I9F8M0?from=project-issue) | [RK3568] In CertificateFramework, a maximum of 100 characters can be entered in the text box. However, the generated data can exceed this limit (for example, 592/100), which is not user-friendly.|
@@ -141,13 +141,13 @@ repo forall -c 'git lfs pull'
 | [I93ONW](https://gitee.com/openharmony/drivers_peripheral/issues/I93ONW?from=project-issue) | [RK3568] The resolution in the image names dumped by rkusb camera does not match the actual resolution.|
 | [I9SSRV](https://gitee.com/openharmony/arkcompiler_runtime_core/issues/I9SSRV?from=project-issue) | [RK3568] The UT test runtime_core_host_unittest has failed items.|
 | [I9PIQK](https://gitee.com/openharmony/applications_notes/issues/I9PIQK?from=project-issue) | [RK3568] When the indentation of the text in a memo is adjusted, saved, and the application is closed, the text appears without indentation upon reopening.|
-| [I9QC3M](https://gitee.com/openharmony/xts_acts/issues/I9QC3M?from=project-issue) | [RK3568] There are defects in the ACTS test suite.|
+| [I9QC3M](https://gitcode.com/openharmony/xts_acts/issues/I9QC3M?from=project-issue) | [RK3568] There are defects in the ACTS test suite.|
 | [I9R5MJ](https://gitee.com/openharmony/bundlemanager_bundle_framework/issues/I9R5MJ?from=project-issue) | [RK3568] After the **verifyAbc** interface is called to place an invalid .abc file, the abc file remains in the installation directory.|
 | [I934K9](https://gitee.com/openharmony/testfwk_arkxtest/issues/I934K9?from=project-issue) | [RK3568]The assertPromiseIs assertion function behaves abnormally.|
 | [I9PPPN](https://gitee.com/openharmony/systemabilitymgr_samgr/issues/I9PPPN?from=project-issue) | [RK3568] After log flushing is enabled and the device is restarted, the log "SystemWaitParameter failed!" is printed.|
-| [I9Q6OD](https://gitee.com/openharmony/xts_dcts/issues/I9Q6OD?from=project-issue) | [RK3568] There is a possibility that the test suite in OpenHarmony 4.1 Release fails.|
+| [I9Q6OD](https://gitcode.com/openharmony/xts_dcts/issues/I9Q6OD?from=project-issue) | [RK3568] There is a possibility that the test suite in OpenHarmony 4.1 Release fails.|
 | [I9NCRP](https://gitee.com/openharmony/drivers_hdf_core/issues/I9NCRP?from=project-issue) | [RK3568] The output of the **./hdf_dbg -q -1** command is abnormal.|
-| [I9OWYO](https://gitee.com/openharmony/xts_acts/issues/I9OWYO?from=project-issue) | [RK3568] Some test cases in the security components fail.|
+| [I9OWYO](https://gitcode.com/openharmony/xts_acts/issues/I9OWYO?from=project-issue) | [RK3568] Some test cases in the security components fail.|
 
 **Table 4** Fixed security vulnerabilities
 

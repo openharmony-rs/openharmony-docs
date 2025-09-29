@@ -113,7 +113,7 @@ repo forall -c 'git lfs pull'
 
 | 子系统       | 问题描述                                                     |
 | ------------ | ------------------------------------------------------------ |
-| 应用子系统   | 进入联系人页面时“无联系人”默认页面一闪而过，进入联系人列表([I5ET9R](https://gitee.com/openharmony/applications_contacts/issues/I5ET9R))<br/>新建卡片推包到rk版，将卡片添加到桌面，长按桌面卡片，弹出服务卡片和移除按钮的同时也打开了应用([I5YB1O](https://gitee.com/openharmony/applications_hap/issues/I5YB1O))<br/>通过工具测出CPPCrash问题([I65H83](https://gitee.com/openharmony/applications_permission_manager/issues/I65H83))<br/>通过工具测出CPPCrash问题([I65TVW](https://gitee.com/openharmony/applications_permission_manager/issues/I65TVW))<br/>Launcher 反复点击recent 按钮会出现内存泄漏([I67SRG](https://gitee.com/openharmony/xts_acts/issues/I67SRG)) |
+| 应用子系统   | 进入联系人页面时“无联系人”默认页面一闪而过，进入联系人列表([I5ET9R](https://gitee.com/openharmony/applications_contacts/issues/I5ET9R))<br/>新建卡片推包到rk版，将卡片添加到桌面，长按桌面卡片，弹出服务卡片和移除按钮的同时也打开了应用([I5YB1O](https://gitee.com/openharmony/applications_hap/issues/I5YB1O))<br/>通过工具测出CPPCrash问题([I65H83](https://gitee.com/openharmony/applications_permission_manager/issues/I65H83))<br/>通过工具测出CPPCrash问题([I65TVW](https://gitee.com/openharmony/applications_permission_manager/issues/I65TVW))<br/>Launcher 反复点击recent 按钮会出现内存泄漏([I67SRG](https://gitcode.com/openharmony/xts_acts/issues/I67SRG)) |
 | 媒体子系统   | 打开图库应用，选择相册页签，点击相机，高概率闪退值桌面([I5QUSZ](https://gitee.com/openharmony/applications_hap/issues/I5QUSZ))<br/>通过工具测出CPPCrash问题([I65GZ1](https://gitee.com/openharmony/multimedia_medialibrary_standard/issues/I65GZ1)) |
 | 全球化子系统 | 通过工具测出CPPCrash问题([I65GR8](https://gitee.com/openharmony/global_resmgr_standard/issues/I65GR8)) |
 | 无障碍子系统 | 安全注入攻击测试，测试报告中存在服务接口ohos.accessibility.IAccessibleAbilityManagerServiceClient存在注入异常([I65PHE](https://gitee.com/openharmony/accessibility/issues/I65PHE)) |
@@ -153,4 +153,4 @@ repo forall -c 'git lfs pull'
 
 | issue                                                        | 问题描述                               | 影响           | 计划解决日期 |
 | ------------------------------------------------------------ | -------------------------------------- | -------------- | ------------ |
-| [I6HAUC](https://gitee.com/openharmony/xts_acts/issues/I6HAUC) | 【3.1】调用Windows接口横竖屏鼠标会变形 | 影响开发者体验 | 2023-04-28   |
+| [I6HAUC](https://gitcode.com/openharmony/xts_acts/issues/I6HAUC) | 【3.1】调用Windows接口横竖屏鼠标会变形 | 影响开发者体验 | 2023-04-28   |
