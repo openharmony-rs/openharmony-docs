@@ -292,13 +292,13 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 >
 > 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 > 
-> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期则会被忽略。如需设置多个cookie，应多次调用此方法。
+> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
 >
 > value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
 >
-> 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
+> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -363,13 +363,13 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 >
 > 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 > 
-> 若存在相同host、path和名称的Cookie，将被新Cookie替换。若设置Cookie已过期则会被忽略。如需设置多个Cookie，应多次调用此方法。
+> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
 >
 > value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
 >
-> 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
+> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
