@@ -579,7 +579,7 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise<SearchResult>
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise\<[SearchResult](#SearchResult)> | Promise对象，返回搜索的结果 |
+| Promise\<[SearchResult](#searchresult)> | Promise对象，返回搜索的结果 |
 
 **错误码：**
 
