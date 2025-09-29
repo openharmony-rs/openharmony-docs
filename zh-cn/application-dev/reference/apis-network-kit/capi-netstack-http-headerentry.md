@@ -23,6 +23,6 @@
 | -- | -- |
 | char *key | 请求或者响应的标头中的键。 |
 | [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | 请求或者响应的标头中的键对应的值，参考[Http_HeaderValue](capi-netstack-http-headervalue.md)。 |
-| struct [Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | 链式存储。指向下一个Http_HeaderEntry，参考[Http_HeaderEntry](capi-netstack-http-headerentry.md)。 |
+| struct Http_HeaderEntry *next | 链式存储。指向下一个Http_HeaderEntry。 |
 
 
