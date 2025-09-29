@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 16开始支持。
 >
@@ -80,25 +80,25 @@ static disableSystemServiceMenuItems(disable: boolean): void
 
 > **说明：**
 > 
-> 此接口调用后整个应用进程都会生效。
+> - 此接口调用后整个应用进程都会生效。
 >
-> 此接口可在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)使用。
+> - 此接口可在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)使用。
 >
-> 此接口调用后将影响文本组件的接口[editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12)，其回调方法[onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
+> - 此接口调用后将影响文本组件的接口[editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12)，其回调方法[onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
 >
-> 涉及文本选择菜单的组件有 [Text](./arkui-ts/ts-basic-components-text.md)、[TextArea](./arkui-ts/ts-basic-components-textarea.md)、[TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)、[RichEditor](./arkui-ts/ts-basic-components-richeditor.md)、[Web](../apis-arkweb/arkts-basic-components-web.md)。
+> - 涉及文本选择菜单的组件有 [Text](./arkui-ts/ts-basic-components-text.md)、[TextArea](./arkui-ts/ts-basic-components-textarea.md)、[TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)、[RichEditor](./arkui-ts/ts-basic-components-richeditor.md)、[Web](../apis-arkweb/arkts-basic-components-web.md)。
 >
-> 系统服务菜单项指除[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的复制、剪切、全选、粘贴以外的菜单项。
+> - 系统服务菜单项指除[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的复制、剪切、全选、粘贴以外的菜单项。
 >
-> 当disableSystemServiceMenuItems与disableMenuItems同时设置时，优先生效先设置的disableSystemServiceMenuItems。
+> - 当disableSystemServiceMenuItems与disableMenuItems同时设置时，优先生效先设置的disableSystemServiceMenuItems。
 >
-> 使用该接口时，全局生效，多次调用以最后一次为准。
+> - 使用该接口时，全局生效，多次调用以最后一次为准。
 >
-> 可以通过以下三种方式恢复禁用菜单：
+> - 可以通过以下三种方式恢复禁用菜单：
 >
-> - 仅设置disableSystemServiceMenuItems(true)禁用菜单时，设置false即可恢复禁用；
-> - 仅设置disableMenuItems禁用菜单时，设置为空数组即可恢复禁用；
-> - 当disableSystemServiceMenuItems与disableMenuItems同时使用时，则前者设置为false，后者设置为空数组，即可恢复禁用。
+>   - 仅设置disableSystemServiceMenuItems(true)禁用菜单时，设置false即可恢复禁用；
+>   - 仅设置disableMenuItems禁用菜单时，设置为空数组即可恢复禁用；
+>   - 当disableSystemServiceMenuItems与disableMenuItems同时使用时，则前者设置为false，后者设置为空数组，即可恢复禁用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -161,25 +161,25 @@ static disableMenuItems(items: Array\<TextMenuItemId>): void
 
 > **说明：**
 > 
-> 此接口调用后整个应用进程都会生效。
+> - 此接口调用后整个应用进程都会生效。
 >
-> 此接口可在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)使用。
+> - 此接口可在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)使用。
 >
-> 此接口调用后将影响文本组件的接口[editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12)，其回调方法[onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
+> - 此接口调用后将影响文本组件的接口[editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12)，其回调方法[onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12)的入参列表中不包含被屏蔽的菜单选项。
 >
-> 涉及文本选择菜单的组件有 [Text](./arkui-ts/ts-basic-components-text.md)、[TextArea](./arkui-ts/ts-basic-components-textarea.md)、[TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)、[RichEditor](./arkui-ts/ts-basic-components-richeditor.md)、[Web](../apis-arkweb/arkts-basic-components-web.md)。
+> - 涉及文本选择菜单的组件有 [Text](./arkui-ts/ts-basic-components-text.md)、[TextArea](./arkui-ts/ts-basic-components-textarea.md)、[TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)、[RichEditor](./arkui-ts/ts-basic-components-richeditor.md)、[Web](../apis-arkweb/arkts-basic-components-web.md)。
 >
-> 系统服务菜单项指除[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的复制、剪切、全选、粘贴以外的菜单项。
+> - 系统服务菜单项指除[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的复制、剪切、全选、粘贴以外的菜单项。
 >
-> 当disableSystemServiceMenuItems与disableMenuItems同时设置时，优先生效先设置的disableSystemServiceMenuItems。
+> - 当disableSystemServiceMenuItems与disableMenuItems同时设置时，优先生效先设置的disableSystemServiceMenuItems。
 >
-> 使用该接口时，全局生效，多次调用以最后一次为准。
+> - 使用该接口时，全局生效，多次调用以最后一次为准。
 >
-> 可以通过以下三种方式恢复禁用菜单：
+> - 可以通过以下三种方式恢复禁用菜单：
 >
-> - 仅设置disableSystemServiceMenuItems(true)禁用菜单时，设置false即可恢复禁用；
-> - 仅设置disableMenuItems禁用菜单时，设置为空数组即可恢复禁用；
-> - 当disableSystemServiceMenuItems与disableMenuItems同时使用时，则前者设置为false，后者设置为空数组，即可恢复禁用。
+>   - 仅设置disableSystemServiceMenuItems(true)禁用菜单时，设置false即可恢复禁用；
+>   - 仅设置disableMenuItems禁用菜单时，设置为空数组即可恢复禁用；
+>   - 当disableSystemServiceMenuItems与disableMenuItems同时使用时，则前者设置为false，后者设置为空数组，即可恢复禁用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
