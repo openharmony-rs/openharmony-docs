@@ -101,9 +101,9 @@
 
    音频未启动前，timestamp和framePostion返回结果为0。为避免出现卡顿等问题，暂不同步，视频帧直接送显。
     ```c++
-    // 如果getTimeStamp方法报错, 就直接渲染音频
+    // 如果getTimeStamp方法报错, 则直接渲染音频
     if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
-        // 第一帧，无需等待直接渲染
+        // 音频第一帧，可直接渲染
         videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
 
         std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
@@ -118,15 +118,15 @@
     - waitTimeUs : 视频帧相对于音频帧延迟时间。
 
     ```c++
-    // 拖动后, 音频渲染刷新, framePosition = 0, writtenSampleCnt = 0
+    // 拖动进度条, 音频渲染刷新, 其中framePosition = 0, writtenSampleCnt = 0
     int64_t latency = (writtenSampleCnt - framePosition) * 1000 * 1000 / sampleInfo.audioSampleRate;
     AVCODEC_SAMPLE_LOGI("VD latency: %{public}ld writtenSampleCnt: %{public}ld", latency, writtenSampleCnt);
 
     nowTimeStamp = getCurrentTime();
     int64_t anchordiff = (nowTimeStamp - audioTimeStamp) / 1000;
 
-    int64_t audioPlayedTime = audioBufferPts - latency + anchordiff; // 微秒, 音频缓冲区加快渲染时间
-    int64_t videoPlayedTime = bufferInfo.attr.pts;                   // 微秒, 视频缓冲区预期渲染时间
+    int64_t audioPlayedTime = audioBufferPts - latency + anchordiff; // 定义音频缓冲区加快渲染时间，单位：微秒
+    int64_t videoPlayedTime = bufferInfo.attr.pts;                   // 定义视频缓冲区预期渲染时间，单位：微秒 
 
     // 音频渲染时间戳与当前时间戳的差值
     int64_t waitTimeUs = videoPlayedTime - audioPlayedTime;
@@ -139,19 +139,19 @@
     - [0ms, ) 视频帧较早，根据业务需要选择渐进同步。
 
     ```c++
-    // 视频缓冲太迟，直接丢弃帧
+    // 视频缓冲超时，则丢弃此帧
     if (waitTimeUs < WAIT_TIME_US_THRESHOLD_WARNING) {
         dropFrame = true;
         AVCODEC_SAMPLE_LOGE("VD buffer is too late");
 
     } else {
         AVCODEC_SAMPLE_LOGE("VD buffer is too early waitTimeUs: %{public}ld", waitTimeUs);
-        // [0, ), 使用 waitTimeUs 进行渲染，最长 1 秒
+        // [0, ), waitTimeUs微秒后进行渲染，最长 1 秒
         // [-40, 0), 直接渲染视频帧
         if (waitTimeUs > WAIT_TIME_US_THRESHOLD) {
             waitTimeUs = WAIT_TIME_US_THRESHOLD;
         }
-        // 每帧渲染时间减少了 33 毫秒
+        // 每帧渲染时间减少 33 毫秒
         if (waitTimeUs > sampleInfo.frameInterval + PER_SINK_TIME_THRESHOLD) {
             waitTimeUs = sampleInfo.frameInterval + PER_SINK_TIME_THRESHOLD;
             AVCODEC_SAMPLE_LOGE("VD buffer is too early and reduced 33ms, waitTimeUs: %{public}ld", waitTimeUs);
