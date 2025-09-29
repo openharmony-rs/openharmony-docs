@@ -1126,8 +1126,6 @@ off(type: 'continuousTaskActive', callback?: Callback&lt;ContinuousTaskActiveInf
 
 取消长时任务激活的监听，使用callback异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
-
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **参数**：
