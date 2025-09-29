@@ -82,14 +82,14 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) | 申请长时任务。 |
+| [startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) | 申请长时任务，本接口一个UIAbility同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。 |
 | [stopBackgroundRunning(context: Context): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)  | 取消长时任务。 |
-| [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21) | 申请多个尝试任务。一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
+| [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21) | 申请多个长时任务。本接口支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
 | [stopBackgroundRunning(context: Context, ContinuousTaskId: number): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning21) | 取消指定Id的长时任务。 |
 
 ## 开发步骤
 
-本文以申请录制长时任务为例，实现如下功能：
+本文以申请一个录制长时任务为例，实现如下功能：
 
 - 点击“申请长时任务”按钮，应用申请录制长时任务成功，通知栏显示“正在运行录制任务”通知。
 
