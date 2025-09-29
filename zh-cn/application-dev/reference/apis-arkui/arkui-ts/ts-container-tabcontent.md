@@ -2019,7 +2019,7 @@ struct TabsPreloadItems {
       Button('preload items: [1,2,3]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为1~3的子节点
           this.tabsController.preloadItems([1, 2, 3])
             .then(() => {
               console.info('preloadItems success.');
@@ -2032,7 +2032,7 @@ struct TabsPreloadItems {
       Button('preload items: [1]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为1的子节点
           this.tabsController.preloadItems([1])
             .then(() => {
               console.info('preloadItems success.');
@@ -2044,7 +2044,7 @@ struct TabsPreloadItems {
       Button('preload items: [3]')
         .margin(5)
         .onClick(() => {
-          // 预加载第0个子节点
+          // 预加载index为3的子节点
           this.tabsController.preloadItems([3])
             .then(() => {
               console.info('preloadItems success.');
