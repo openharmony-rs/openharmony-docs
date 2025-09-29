@@ -9846,12 +9846,11 @@ async function example(context: Context) {
 }
 ```
 
-
 ### startDownloadSpecificCloudMedia<sup>22+</sup>
 
-startDownloadSpecificCloudMedia(assetUris: string[]): Promise&lt;Map&lt;string,DownloadCloudAssetCode&gt;&gt;
+startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, CloudAssetDownloadCode\>\>
 
-开始批量添加云端媒体资产下载任务。
+开始云端媒体资产批量下载任务。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -9869,30 +9868,388 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise&lt;Map&lt;string,D
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Map&lt;string,[DownloadCloudAssetCode](#DownloadCloudAssetCode22)&gt;&gt; | Promise对象，返回uri列表添加是否成功。 |
+| Promise\<Map\<string, [CloudAssetDownloadCode](#cloudassetdownloadcode22)\>\> | Promise对象，返回uri列表对应的下载任务是否添加成功。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris is empty; 2. The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
 
 ```ts
 async function example(context: Context) {
-  console.info('startDownloadCloudMediaDemo');
+  console.info('StartDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
+      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### pauseDownloadSpecificCloudMedia<sup>22+</sup>
+
+pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
+
+暂停云端媒体资产批量下载任务。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的uri列表，传空或空列表表示已有的所有批量下载任务。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('PauseDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
+      await cloudMediaAssetManagerInstance.pauseDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### resumeDownloadSpecificCloudMedia<sup>22+</sup>
+
+resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
+
+恢复云端媒体资产批量下载任务。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的uri列表，传空或空列表表示已有的所有批量下载任务。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('ResumeDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
+      await cloudMediaAssetManagerInstance.resumeDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### cancelDownloadSpecificCloudMedia<sup>22+</sup>
+
+cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
+
+取消云端媒体资产批量下载任务。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[] \| null | 是   | 需要取消下载的原图和视频的uri列表，传空或空列表表示已有的所有批量下载任务。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('CancelDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
+      await cloudMediaAssetManagerInstance.cancelDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### queryDownloadSpecificCloudMediaDetails<sup>22+</sup>
+
+queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataSharePredicates): Promise\<CloudAssetDownloadStatus\>
+
+查询云端媒体资产批量下载任务信息。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 谓词查询，显示过滤条件。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<[CloudAssetDownloadStatus](#cloudassetdownloadstatus22)\> | Promise对象，返回下载任务信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('QueryDownloadSpecificCloudMediaDetailsDemo');
   try {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    await cloudMediaAssetManagerInstance.startDownloadCloudMedia(photoAccessHelper.CloudMediaDownloadType.DOWNLOAD_FORCE);
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.orderByAsc("file_id");
+    let taskListStatus : photoAccessHelper.CloudAssetDownloadStatus =
+       await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaDetails(predicates);
   } catch (err) {
-    console.error(`startDownloadCloudMediaDemo failed with error: ${err.code}, ${err.message}`);
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### queryDownloadSpecificCloudMediaTaskCount<sup>22+</sup>
+
+queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSharePredicates): Promise\<number\>
+
+查询云端媒体资产批量下载任务总量。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 谓词查询，显示过滤条件。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<number\> | Promise对象，返回总量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
+  try {
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.orderByAsc("file_id");
+    let count : number =
+       await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### onDownloadProgressChange<sup>22+</sup>
+
+onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): void
+
+监听云端媒体资产批量下载进度。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo22)\> | 是   | 注册指定的callback监听，回调返回批量下载进度相关通知。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
+  console.info('jsbatchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+}
+async function example(context: Context) {
+  console.info('OnDownloadProgressChangeDemo');
+  try {
+      let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+        = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+      // 注册onCallback监听。
+      cloudMediaAssetManagerInstance.onDownloadProgressChange(onCallback);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### offDownloadProgressChange<sup>22+</sup>
+
+offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>): void
+
+取消监听云端媒体资产批量下载进度相关通知。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo22)\> | 否   | 取消监听[onDownloadProgressChange](#ondownloadprogresschange22)注册指定的callback监听；不填时，则取消所有进度相关监听。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('OffDownloadProgressChangeDemo');
+  try {
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    cloudMediaAssetManagerInstance.offDownloadProgressChange();
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -11351,3 +11708,62 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+## CloudAssetDownloadNotifyType<sup>22+</sup>
+
+枚举，下载进度通知事件类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DOWNLOAD_PROGRESS |  0 |  下载进度通知。|
+| DOWNLOAD_FINISHED |  1 |  下载完成通知。  |
+| DOWNLOAD_FAILED |  2 |  下载失败通知。  |
+| DOWNLOAD_ASSET_DELETED |  3 |  下载资产删除通知。  |
+| DOWNLOAD_AUTO_PAUSED |  4 |  下载自动停止通知。  |
+| DOWNLOAD_AUTO_RESUMED |  5 |  下载自动恢复通知。  |
+| DOWNLOAD_REFRESHED |  6 |  下载刷新通知。  |
+
+## CloudAssetDownloadCode<sup>22+</sup>
+
+枚举，批量下载添加返回值类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| ADD_DOWNLOAD_TASK_SUCCESS |  0 |  添加下载任务成功。|
+| DOWNLOAD_ASSET_NOT_EXIST |  1 |  添加下载任务时，资源不存在。  |
+
+## CloudAssetDownloadProgressInfo<sup>22+</sup>
+
+批量下载进度信息。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| downloadEventType | [CloudAssetDownloadNotifyType](#cloudassetdownloadnotifytype22)  | 是 | 否 | 批量下载事件类型。 |
+| fileId  | number  |是 |是 | 批量下载文件id。  |
+| percent  | number  |是 |是 | 下载进度信息。  |
+| autoPauseReason       | number  |是 |是 | 自动通知原因。  |
+
+## CloudAssetDownloadStatus<sup>22+</sup>
+
+批量下载任务信息。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskInfos | string[]  | 是 | 否 | 批量下载任务信息。 |
+
