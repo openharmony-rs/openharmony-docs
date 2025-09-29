@@ -1368,8 +1368,6 @@ stopBackgroundRunning(context: Context, ContinuousTaskId: number): Promise&lt;vo
 
 取消指定Id的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
-
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **参数**：
