@@ -1,4 +1,10 @@
 # @ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供获取pixelMap的能力，包括前景、背景、蒙版和分层图标。
 
