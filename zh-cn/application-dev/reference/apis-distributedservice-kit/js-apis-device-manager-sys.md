@@ -3,7 +3,7 @@
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->
 <!--Designer: @hwzhangchuang-->
-<!--Tester: @Lyuxin-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 本模块能力已更新至新模块。建议使用新模块的接口进行开发，参见[@ohos.distributedDeviceManager](js-apis-distributedDeviceManager.md)。
