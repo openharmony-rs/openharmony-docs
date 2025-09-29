@@ -34,7 +34,7 @@
 |getRotationAxesStatus(mechId: number): RotationAxesStatus | 获取旋转轴的状态。<br>**说明**：从API version 20开始支持。|
 |on(type: 'rotationAxesStatusChange', callback: Callback\<RotationAxesStateChangeInfo>): void | 注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 20开始支持。|
 |off(type: 'rotationAxesStatusChange', callback?: Callback\<RotationAxesStateChangeInfo>): void | 取消注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 20开始支持。|
-|searchTarget(target: TargetInfo, params: SearchParams): Promise<searchResult>; | 旋转机械体一周搜索目标。<br>**说明**：从API version 21开始支持。|
+|searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>; | 旋转机械体一周搜索目标。<br>**说明**：从API version 21开始支持。|
 ## 开发步骤
 
 ### 开发准备
