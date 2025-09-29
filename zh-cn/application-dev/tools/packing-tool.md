@@ -222,7 +222,7 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 
 ## HQF打包指令
 
-HQF包适用于[增量调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging#section28031446182019)场景。开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、文件路径，生成所需的HQF包。
+HQF包适用于[增量调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging)场景。开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、文件路径，生成所需的HQF包。
 
 > **说明：** 
 >
@@ -694,7 +694,7 @@ Check deduplicateHar field failed.
 
 **错误描述**
 
-打包HSP/HAP时，校验module.json文件中的[deduplicateHar](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)属性（是否HAR去重）失败。
+打包HSP/HAP时，校验[deduplicateHar](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)属性失败。
 
 **可能原因**
 
