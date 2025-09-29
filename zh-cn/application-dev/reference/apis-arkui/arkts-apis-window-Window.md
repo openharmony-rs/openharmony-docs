@@ -1192,6 +1192,8 @@ getGlobalRect(): Rect
 
 在某些设备上，窗口显示时可能经过了缩放，此接口可以获取缩放后窗口在屏幕上的真实位置和大小。
 
+在折叠2in1设备上，无外接显示器时，返回的坐标以主屏幕左上角为原点。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
