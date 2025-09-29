@@ -1174,6 +1174,8 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 
 申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。</br>同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。
 
+**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **参数**：
@@ -1365,8 +1367,6 @@ export default class EntryAbility extends UIAbility {
 stopBackgroundRunning(context: Context, ContinuousTaskId: number): Promise&lt;void&gt;
 
 取消指定Id的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。
-
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
