@@ -1,5 +1,12 @@
 # 音画同步最佳实践
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 
 精确的音视频同步是媒体播放的关键性能指标之一。通常来说，录音设备上同时录制的音频和视频在播放设备（例如手机，电视，媒体播放器）上播放的时候也需要做到同步，播放时的音视频不同步现象会严重影响用户体验。本文旨在指导第三方视频播放应用正确获取并使用音频相关信息来保证播放时的音视频同步。    
@@ -73,7 +80,7 @@
 1. 收到视频帧的时候，通过调用[OH_AudioRenderer_GetTimestamp()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口获取音频渲染位置等信息。
 
     ```c++
-    // get audio render position
+    // 获取音频渲染位置
     int64_t framePosition = 0;
     int64_t timestamp = 0;
     int32_t ret = OH_AudioRenderer_GetTimestamp(audioRenderer, CLOCK_MONOTONIC, &framePosition, ×tamp);
@@ -94,9 +101,9 @@
 
    音频未启动前，timestamp和framePostion返回结果为0。为避免出现卡顿等问题，暂不同步，视频帧直接送显。
     ```c++
-    // audio render getTimeStamp error, render it
+    // 如果getTimeStamp方法报错, 则直接渲染音频
     if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
-        // first frame, render without wait
+        // 音频第一帧，可直接渲染
         videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
 
         std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
@@ -111,17 +118,17 @@
     - waitTimeUs : 视频帧相对于音频帧延迟时间。
 
     ```c++
-    // after seek, audio render flush, framePosition = 0, then writtenSampleCnt = 0
+    // 拖动进度条, 音频渲染刷新, 其中framePosition = 0, writtenSampleCnt = 0
     int64_t latency = (writtenSampleCnt - framePosition) * 1000 * 1000 / sampleInfo.audioSampleRate;
     AVCODEC_SAMPLE_LOGI("VD latency: %{public}ld writtenSampleCnt: %{public}ld", latency, writtenSampleCnt);
 
     nowTimeStamp = getCurrentTime();
     int64_t anchordiff = (nowTimeStamp - audioTimeStamp) / 1000;
 
-    int64_t audioPlayedTime = audioBufferPts - latency + anchordiff; // us, audio buffer accelerate render time
-    int64_t videoPlayedTime = bufferInfo.attr.pts;                   // us, video buffer expected render time
+    int64_t audioPlayedTime = audioBufferPts - latency + anchordiff; // 定义音频缓冲区加快渲染时间，单位：微秒
+    int64_t videoPlayedTime = bufferInfo.attr.pts;                   // 定义视频缓冲区预期渲染时间，单位：微秒 
 
-    // audio render timestamp and now timestamp diff
+    // 音频渲染时间戳与当前时间戳的差值
     int64_t waitTimeUs = videoPlayedTime - audioPlayedTime;
     ```
 
@@ -132,19 +139,19 @@
     - [0ms, ) 视频帧较早，根据业务需要选择渐进同步。
 
     ```c++
-    // video buffer is too late, drop it
+    // 视频缓冲超时，则丢弃此帧
     if (waitTimeUs < WAIT_TIME_US_THRESHOLD_WARNING) {
         dropFrame = true;
         AVCODEC_SAMPLE_LOGE("VD buffer is too late");
 
     } else {
         AVCODEC_SAMPLE_LOGE("VD buffer is too early waitTimeUs: %{public}ld", waitTimeUs);
-        // [0, ), render it with waitTimeUs, max 1s
-        // [-40, 0), render it
+        // [0, ), waitTimeUs微秒后进行渲染，最长 1 秒
+        // [-40, 0), 直接渲染视频帧
         if (waitTimeUs > WAIT_TIME_US_THRESHOLD) {
             waitTimeUs = WAIT_TIME_US_THRESHOLD;
         }
-        // per frame render time reduced by 33ms
+        // 每帧渲染时间减少 33 毫秒
         if (waitTimeUs > sampleInfo.frameInterval + PER_SINK_TIME_THRESHOLD) {
             waitTimeUs = sampleInfo.frameInterval + PER_SINK_TIME_THRESHOLD;
             AVCODEC_SAMPLE_LOGE("VD buffer is too early and reduced 33ms, waitTimeUs: %{public}ld", waitTimeUs);

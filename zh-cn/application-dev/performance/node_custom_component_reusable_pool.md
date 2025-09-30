@@ -1,5 +1,12 @@
 # 全局自定义组件复用实现
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 简介
 
 默认的组件复用行为，是将子组件放在父组件的缓存池里，受到这个限制，不同父组件中的相同子组件无法复用，推荐的解决方案是将父组件改为builder函数，让子组件共享组件复用池，但是由于在一些应用场景下，父组件承载了复杂的带状态的业务逻辑，而builder是无状态的，修改会导致难以维护，因此开发者可以使用BuilderNode自行管理组件复用池。
@@ -8,7 +15,7 @@
 
 ## 实现思路
 
-1. 将要生成自定义组件地方用[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md#nodecontainer)占位，将NodeContainer内部的[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)按照组件类型分别存储在NodePool中。
+1. 将要生成自定义组件地方用[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)占位，将NodeContainer内部的[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)按照组件类型分别存储在NodePool中。
 2. 每次创建子组件时，优先通过NodePool的getNode方法尝试复用已存在的NodeController组件，若无可复用组件则调用makeNode方法新建；若复用成功，则调用update方法更新组件数据。
 3. 当NodeController销毁时，NodeItem回收到NodePool中，供下次使用。
 
@@ -28,7 +35,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 ## 应用场景
 
-在应用开发中，会遇到需要页面切换的场景，比如某些视频APP的首页，就是一个List（标题）+Swiper（列表页面）实现的Tabs切换场景。Swiper中每个页面都使用瀑布流加载视频列表，各个瀑布流中的子组件有可能是相同的布局，为了提升应用性能，就会有跨页面复用子组件的需求。但是在ArkUI提供的常规复用中，复用池是放在父组件中的，这就导致跨页面时无法复用上一个页面瀑布流中的子组件。此时就可以使用[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildernode)自定义一个全局的组件复用池，根据页面状态创建、回收、复用子组件，实现组件的跨页面复用。
+在应用开发中，会遇到需要页面切换的场景，比如某些视频APP的首页，就是一个List（标题）+Swiper（列表页面）实现的Tabs切换场景。Swiper中每个页面都使用瀑布流加载视频列表，各个瀑布流中的子组件有可能是相同的布局，为了提升应用性能，就会有跨页面复用子组件的需求。但是在ArkUI提供的常规复用中，复用池是放在父组件中的，这就导致跨页面时无法复用上一个页面瀑布流中的子组件。此时就可以使用[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)自定义一个全局的组件复用池，根据页面状态创建、回收、复用子组件，实现组件的跨页面复用。
 
 ## 组件复用性能对比
 
@@ -233,7 +240,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 6. 使用NodeContainer占位轮播图组件和瀑布流子组件的位置，在最外层的Swiper切换时，会根据LazyForEach的懒加载机制回收页面，此时会触发NodeItem中的aboutToDisappear方法，将组件回收到复用池中。而新加载的页面则可以通过自定义的组件复用池获取可用的子组件，如果未获取到对应type类型的组件，则会重新创建新的组件，否则直接获取之前回收的子组件进行复用。
 
    ```ts
-   ...
+   // ...
    @Builder
    function FlowItemBuilder(data: ESObject) {
      FlowItemNode({
