@@ -65,7 +65,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Telephony.CellularCall
 - SystemCapability.Telephony.CellularData
 - SystemCapability.Security.Cert
-- SystemCapability.Notification.CommonEvent
 - SystemCapability.Customization.ConfigPolicy
 - SystemCapability.Customization.CustomConfig
 - SystemCapability.Telephony.CoreService
@@ -93,11 +92,12 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.PowerManager.DisplayPowerManager.Lite
 - SystemCapability.BundleManager.DistributedBundleFramework
 - SystemCapability.DistributedHardware.DistributedHardwareFWK
-- SystemCapability.Notification.Notification
-- SystemCapability.Notification.ReminderAgent
 - SystemCapability.Ability.DistributedAbilityManager
 - SystemCapability.Multimedia.Drm.Core
 - SystemCapability.Utils.Lang
+- SystemCapability.Notification.CommonEvent
+- SystemCapability.Notification.Notification
+- SystemCapability.Notification.ReminderAgent
 - SystemCapability.Notification.Emitter
 - SystemCapability.Resourceschedule.Ffrt.Core
 - SystemCapability.Ability.Form
