@@ -85,8 +85,8 @@
       }
    });
    } catch (e) {
-    const err = e as BusinessError;
-    console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
+     const err = e as BusinessError;
+     console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
    }
    ```
    <!-- [create_a_domain_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
@@ -109,7 +109,7 @@
    try {
      localId = await osAccountMgr.getOsAccountLocalIdForDomain(domainInfo);
    } catch (e) {
-    const err = e as BusinessError;
+     const err = e as BusinessError;
      console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
