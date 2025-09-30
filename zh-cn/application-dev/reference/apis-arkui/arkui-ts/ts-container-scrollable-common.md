@@ -501,15 +501,15 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
 
-### onWillStartDragging<sup>22+</sup>
+### onWillStartDragging<sup>21+</sup>
 
 onWillStartDragging(handler: VoidCallback): T
 
 滚动组件开始拖动时触发。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -549,15 +549,15 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 | ---- | ------------------ |
 | T    | 返回当前滚动组件。 |
 
-### onDidStopDragging<sup>22+</sup>
+### onDidStopDragging<sup>21+</sup>
 
 onDidStopDragging(handler: OnDidStopDraggingCallback): T
 
 滚动组件结束拖拽时触发。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -565,7 +565,7 @@ onDidStopDragging(handler: OnDidStopDraggingCallback): T
 
 | 参数名  | 类型                                                       | 必填 | 说明                         |
 | ------- | --------------------------------------------------------- | ---- | --------------------------- |
-| handler | [OnDidStopDraggingCallback](#ondidstopdraggingcallback22) | 是   | 滚动组件结束拖动时触发的回调。 |
+| handler | [OnDidStopDraggingCallback](#ondidstopdraggingcallback21) | 是   | 滚动组件结束拖动时触发的回调。 |
 
 **返回值：**
 
@@ -573,15 +573,15 @@ onDidStopDragging(handler: OnDidStopDraggingCallback): T
 | ---- | ------------------ |
 | T    | 返回当前滚动组件。 |
 
-### onWillStartFling<sup>22+</sup>
+### onWillStartFling<sup>21+</sup>
 
 onWillStartFling(handler: VoidCallback): T
 
 滚动组件将要开始Fling动效时触发。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -597,15 +597,15 @@ onWillStartFling(handler: VoidCallback): T
 | ---- | ------------------ |
 | T    | 返回当前滚动组件。 |
 
-### onDidStopFling<sup>22+</sup>
+### onDidStopFling<sup>21+</sup>
 
 onDidStopFling(handler: VoidCallback): T
 
 滚动组件结束Fling动效后触发，进行中的Fling动效被新的滑动事件打断时不触发。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1004,15 +1004,15 @@ type OnWillStopDraggingCallback = (velocity: number) => void
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | velocity | number | 是   | 划动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
 
-## OnDidStopDraggingCallback<sup>22+</sup>
+## OnDidStopDraggingCallback<sup>21+</sup>
 
 type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 滚动组件在结束拖拽时触发的回调。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
