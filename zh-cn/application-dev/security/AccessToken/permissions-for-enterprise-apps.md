@@ -524,4 +524,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：20
