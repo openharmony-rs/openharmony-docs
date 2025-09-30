@@ -607,6 +607,39 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 文件代码如下：
 
+  * ThingModel.ets
+
+  ```typescript
+  export default class ThingModel {
+    thingName: string = 'Todo';
+    isFinish: boolean = false;
+  }
+  ```
+
+  * TodoListModel.ets
+
+  ```typescript
+  import { common } from '@kit.AbilityKit';
+  import { util } from '@kit.ArkTS';
+  import ThingModel from './ThingModel';
+
+  export default class TodoListModel {
+    things: Array<ThingModel> = [];
+
+    constructor(things: Array<ThingModel>) {
+      this.things = things;
+    }
+
+    async loadTasks(context: common.UIAbilityContext) {
+      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
+      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+      let result = textDecoder.decodeToString(getJson, { stream: false });
+      this.things = JSON.parse(result);
+    }
+  }
+  ```
+
 * Index.ets
 
   ```typescript
@@ -646,39 +679,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
       .width('100%')
       .margin({ top: 5, bottom: 5 })
       .backgroundColor('#90f1f3f5')
-    }
-  }
-  ```
-
-  * ThingModel.ets
-
-  ```typescript
-  export default class ThingModel {
-    thingName: string = 'Todo';
-    isFinish: boolean = false;
-  }
-  ```
-
-  * TodoListModel.ets
-
-  ```typescript
-  import { common } from '@kit.AbilityKit';
-  import { util } from '@kit.ArkTs';
-  import ThingModel from './ThingModel';
-
-  export default class TodoListModel {
-    things: Array<ThingModel> = [];
-
-    constructor(things: Array<ThingModel>) {
-      this.things = things;
-    }
-
-    async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson, { stream: false });
-      this.things = JSON.parse(result);
     }
   }
   ```
