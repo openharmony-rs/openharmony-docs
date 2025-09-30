@@ -2726,7 +2726,7 @@ getNumber(resId: number): number
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getInt](#getint20)和[getDouble](#getdouble20)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getInt](#getint20)和[getDouble](#getdouble20)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2820,11 +2820,11 @@ export default class EntryAbility extends UIAbility {
 
 getInt(resId: long): int
 
-获取指定资源ID对应的integer，使用同步方式返回。
+获取指定资源ID对应的integer数值，使用同步方式返回。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2898,7 +2898,7 @@ getDouble(resId: long): double
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2972,7 +2972,7 @@ getNumberByName(resName: string): number
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getIntByName](#getintbyname20)和[getDoubleByName](#getdoublebyname20)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getIntByName](#getintbyname20)和[getDoubleByName](#getdoublebyname20)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3052,7 +3052,7 @@ export default class EntryAbility extends UIAbility {
       // "float_test"仅作示例，请替换为实际使用的资源
       let floatValue = this.context.resourceManager.getNumberByName("float_test");
       console.log(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-      // 打印输出结果示例: getDoubleByName, densityPixels: 1.5, float value: 45.900001525878906
+      // 打印输出结果示例: getNumberByName, densityPixels: 1.5, float value: 45.900001525878906
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -3070,7 +3070,7 @@ getIntByName(resName: string): int
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3143,7 +3143,7 @@ getDoubleByName(resName: string): double
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
