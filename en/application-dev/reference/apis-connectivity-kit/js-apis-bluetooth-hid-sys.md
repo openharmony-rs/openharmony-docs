@@ -1,5 +1,12 @@
 # @ohos.bluetooth.hid (Bluetooth HID Module) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The **hid** module provides APIs for using the Bluetooth Human Interface Device Profile (HID).
 
 > **NOTE**
@@ -34,7 +41,7 @@ Connects to the HidHost service of a device.
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Error codes**
 
@@ -54,7 +61,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile = hid.createHidHostProfile();
     hidHostProfile.connect('XX:XX:XX:XX:XX:XX');
@@ -80,7 +87,7 @@ Disconnects from the HidHost service of a device.
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Error codes**
 
@@ -100,7 +107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile = hid.createHidHostProfile();
     hidHostProfile.disconnect('XX:XX:XX:XX:XX:XX');
