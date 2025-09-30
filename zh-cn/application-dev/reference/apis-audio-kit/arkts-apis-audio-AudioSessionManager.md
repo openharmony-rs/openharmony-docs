@@ -577,7 +577,7 @@ audioSessionManager.off('availableDeviceChange', availableDeviceChangeCallback);
 
 selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
-设置媒体输入设备。
+设置媒体输入设备。使用Promise异步回调。
 
 此功能不适用于呼叫录音，即[SourceType](arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。
 在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。
@@ -599,7 +599,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -645,7 +645,7 @@ getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -681,7 +681,7 @@ clearSelectedMediaInputDevice(): Promise<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -703,7 +703,7 @@ audioSessionManager.clearSelectedMediaInputDevice().then(() => {
 
 setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPreferredRecordCategory): Promise<void\>
 
-设置在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。
+设置在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。使用Promise异步回调。
 
 应用程序可以在蓝牙或星闪连接之前设置此分类，系统将在设备连接时优先使用蓝牙或星闪进行录音。
 在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与当前设置的偏好设备不同。
@@ -759,7 +759,7 @@ getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredR
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
