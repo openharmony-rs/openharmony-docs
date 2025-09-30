@@ -6341,7 +6341,7 @@ async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType
       assetChangeRequest.setHasAppLink(hasAppLink);
       await phAccessHelper.applyChanges(assetChangeRequest);
     } catch (error) {
-      Log.error(TAG, 'set hasAppLink error: ' + error);
+      console.error(TAG, 'set hasAppLink error: ' + error);
       return;
     }
 }
@@ -6385,10 +6385,10 @@ async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string)
         photoAccessHelper.getPhotoAccessHelper(getContext());
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
-      assetChangeRequest.setHasAppLink(appLinkInfo);
+      assetChangeRequest.setAppLinkInfo(appLinkInfo);
       await phAccessHelper.applyChanges(assetChangeRequest);
     } catch (error) {
-      Log.error(TAG, 'set appLinkInfo error: ' + error);
+      console.error(TAG, 'set appLinkInfo error: ' + error);
       return;
     }
 }
