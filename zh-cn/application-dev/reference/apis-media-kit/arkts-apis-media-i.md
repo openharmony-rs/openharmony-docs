@@ -232,34 +232,34 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 ## AVMetadata<sup>11+</sup>
 
-音视频元数据，包含各个元数据字段。在[AVRecorderConfig](#avrecorderconfig9)中使用时未声明为当前版本只读的参数可以作为使用[AVRecorder](arkts-apis-media-AVRecorder.md)录制时的入参。
+音视频元数据，包含各个元数据字段。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
-| 名称   | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| album     | string | 否   | 专辑的标题。当前版本为只读参数。     |
-| albumArtist | string | 否   | 专辑的艺术家。当前版本为只读参数。 |
-| artist | string | 否   | 媒体资源的艺术家。当前版本为只读参数。 |
-| author | string | 否   | 媒体资源的作者。当前版本为只读参数。 |
-| dateTime | string | 否   | 媒体资源的创建时间。当前版本为只读参数。 |
-| dateTimeFormat | string | 否   | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。当前版本为只读参数。 |
-| composer | string | 否   | 媒体资源的作曲家。当前版本为只读参数。 |
-| duration | string | 否   | 媒体资源的时长。当前版本为只读参数。 |
-| genre | string | 否   | 媒体资源的类型或体裁。|
-| hasAudio | string | 否   | 媒体资源是否包含音频。当前版本为只读参数。 |
-| hasVideo | string | 否   | 媒体资源是否包含视频。当前版本为只读参数。 |
-| mimeType | string | 否   | 媒体资源的mime类型。当前版本为只读参数。 |
-| trackCount | string | 否   | 媒体资源的轨道数量。当前版本为只读参数。 |
-| sampleRate | string | 否   | 音频的采样率，单位为赫兹（Hz）。当前版本为只读参数。 |
-| title | string | 否   | 媒体资源的标题。当前版本为只读参数。当前版本为只读参数。 |
-| videoHeight | string | 否   | 视频的高度，单位为像素。当前版本为只读参数。 |
-| videoWidth | string | 否   | 视频的宽度，单位为像素。当前版本为只读参数。 |
-| videoOrientation | string | 否   | 视频的旋转方向，单位为度（°）。|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否   | 媒体资源的HDR类型。当前版本为只读参数。 |
-| location<sup>12+</sup> | [Location](#location) | 否 | 视频的地理位置信息。 |
-| customInfo<sup>12+</sup> | Record<string, string> | 否 | 从moov.meta.list 获取的自定义参数键值映射。|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 媒体资源的轨道信息。当前版本为只读参数。|
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- |------------------------------------------------------------ |
+| album     | string | 否 | 是 | 专辑的标题。当前版本AVRecorder不支持该属性的设置。     |
+| albumArtist | string | 否 | 是 | 专辑的艺术家。当前版本AVRecorder不支持该属性的设置。 |
+| artist | string | 否 | 是 | 媒体资源的艺术家。当前版本AVRecorder不支持该属性的设置。 |
+| author | string | 否 | 是 | 媒体资源的作者。当前版本AVRecorder不支持该属性的设置。 |
+| dateTime | string | 否 | 是 | 媒体资源的创建时间。当前版本AVRecorder不支持该属性的设置。 |
+| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。当前版本AVRecorder不支持该属性的设置。 |
+| composer | string | 否 | 是 | 媒体资源的作曲家。当前版本AVRecorder不支持该属性的设置。 |
+| duration | string | 否 | 是 | 媒体资源的时长。当前版本AVRecorder不支持该属性的设置。 |
+| genre | string | 否 | 是 | 媒体资源的类型或体裁。|
+| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。当前版本AVRecorder不支持该属性的设置。 |
+| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。当前版本AVRecorder不支持该属性的设置。 |
+| mimeType | string | 否 | 是 | 媒体资源的mime类型。当前版本AVRecorder不支持该属性的设置。 |
+| trackCount | string | 否 | 是 | 媒体资源的轨道数量。当前版本AVRecorder不支持该属性的设置。 |
+| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。当前版本AVRecorder不支持该属性的设置。 |
+| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。当前版本AVRecorder不支持该属性的设置。 |
+| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
+| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
+| videoOrientation | string | 否 | 是 | 视频的旋转方向，单位为度（°）。|
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。当前版本AVRecorder不支持该属性的设置。 |
+| location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。 |
+| customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。当前版本AVRecorder不支持该属性的设置。|
 
 ### AVMetadata.tracks支持的MediaDescriptionKey说明
 

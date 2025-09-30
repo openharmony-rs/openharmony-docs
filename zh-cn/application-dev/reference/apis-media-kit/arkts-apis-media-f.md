@@ -201,7 +201,7 @@ media.createAVRecorder().then((recorder: media.AVRecorder) => {
 
 createAVTranscoder(): Promise\<AVTranscoder>
 
-异步方式创建视频转码实例，通过Promise获取返回值。
+创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
 
@@ -245,7 +245,7 @@ media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
 
 createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
 
-异步方式创建AVMetadataExtractor实例，通过注册回调函数获取返回值。
+创建AVMetadataExtractor实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -283,7 +283,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
 
-异步方式创建AVMetadataExtractor实例，通过Promise获取返回值。
+创建AVMetadataExtractor实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -323,7 +323,7 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 
 createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
 
-创建音频池实例，使用callback方式异步获取返回值。
+创建音频池实例。使用callback异步回调。
 
 > **说明：**
 >
@@ -374,7 +374,7 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 
 createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
 
-创建音频池实例，通过Promise获取返回值。
+创建音频池实例。使用Promise异步回调。
 
 > **说明：**
 >
@@ -470,7 +470,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 
 createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
 
-创建AVImageGenerator实例，通过回调函数获取返回值。
+创建AVImageGenerator实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -508,7 +508,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
 
 createAVImageGenerator(): Promise\<AVImageGenerator>
 
-创建AVImageGenerator对象，通过Promise获取返回值。
+创建AVImageGenerator对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
