@@ -49,7 +49,7 @@ Obtains the list of USB devices connected to the host.
 
 **System capability**: SystemCapability.USB.USBManager
 
-**Returns**
+**Return value**
 
 | Type                                                  | Description     |
 | ---------------------------------------------------- | ------- |
@@ -138,7 +138,7 @@ Connects to the USB device based on the device information returned by **getDevi
 | -------- | -------- | -------- | ---------------- |
 | device | [USBDevice](#usbdevice) | Yes| USB device. The **busNum** and **devAddress** parameters obtained by **getDevices** are used to determine a USB device. Other parameters are passed transparently.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -185,7 +185,7 @@ Checks whether the user, for example, the application or system, has the device 
 | -------- | -------- | -------- | -------- |
 | deviceName | string | Yes| Device name, which can be obtained from the device list returned by **getDevices**.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -229,7 +229,7 @@ Requests the temporary device access permission for the application. This API us
 | -------- | -------- | -------- | -------- |
 | deviceName | string | Yes| Device name, which can be obtained from the device list returned by **getDevices**.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -273,7 +273,7 @@ Removes the device access permission for the application. System applications ar
 | -------- | -------- | -------- | -------- |
 | deviceName | string | Yes| Device name, which can be obtained from the device list returned by **getDevices**.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -324,7 +324,7 @@ Claims a USB device interface.
 | iface | [USBInterface](#usbinterface) | Yes| USB interface. You can use **getDevices** to obtain device information and identify the USB interface based on its ID.|
 | force | boolean | No| Whether to forcibly claim a USB interface. The default value is **false**, which means not to forcibly claim a USB interface. You can set the value as required.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -375,7 +375,7 @@ Releases the claimed communication interface.
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
 | iface | [USBInterface](#usbinterface) | Yes| USB interface. You can use **getDevices** to obtain device information and identify the USB interface based on its ID.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -423,7 +423,7 @@ Sets the device configuration.
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
 | config | [USBConfiguration](#usbconfiguration) | Yes| USB configuration. You can use **getDevices** to obtain device information and identify the USB configuration based on the ID.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -476,7 +476,7 @@ Sets a USB interface.
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
 | iface | [USBInterface](#usbinterface)   | Yes| USB interface. You can use **getDevices** to obtain device information and identify the USB interface based on its **id** and **alternateSetting**.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -523,7 +523,7 @@ Obtains the raw USB descriptor. If the USB service is abnormal, **undefined** ma
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -566,7 +566,7 @@ Obtains the file descriptor.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
 
-**Returns**
+**Return value**
 
 | Type    | Description                  |
 | ------ | -------------------- |
@@ -618,7 +618,7 @@ Performs control transfer.
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
 | timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**. You can set this parameter as required.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -682,7 +682,7 @@ Performs control transfer.
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
 | timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -755,7 +755,7 @@ Performs bulk transfer.
 | buffer | Uint8Array | Yes| Buffer used to write or read data.|
 | timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**. You can set this parameter as required.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -985,7 +985,7 @@ Closes a USB device pipe.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the message control channel. You need to call **connectDevice** to obtain its value.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -1031,7 +1031,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 | --------- | ------------ | ---- | ------------------------------------- |
 | accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
 
-**Returns**
+**Return value**
 
 | Type   | Description                         |
 | ------- | ----------------------------- |
@@ -1078,7 +1078,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 | --------- | ------------ | ---- | ------------------------------------- |
 | accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
 
-**Returns**
+**Return value**
 
 | Type            | Description                         |
 | ---------------- | ----------------------------- |
@@ -1159,7 +1159,7 @@ Obtains the list of USB accessories connected to the host.
 
 **System capability**: SystemCapability.USB.USBManager
 
-**Returns**
+**Return value**
 
 | Type                         | Description                                              |
 | ----------------------------- | -------------------------------------------------- |
@@ -1202,7 +1202,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 | --------- | ------------ | ---- | ------------------------------------- |
 | accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
 
-**Returns**
+**Return value**
 
 | Type              | Description       |
 | ------------------ | ----------- |
@@ -1299,7 +1299,7 @@ Resets a USB peripheral.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
