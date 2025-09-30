@@ -4,7 +4,7 @@
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong2-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -12,8 +12,8 @@ The pasteboard allows you to copy and paste data of the plain text, hypertext, a
 
 ## Basic Concepts
 
-- **OH_PasteboardObserver**: pasteboard observer object, which is used to listen for data changes on the pasteboard.
-- **OH_Pasteboard**: pasteboard object, which is used to query and write.
+- [**OH_PasteboardObserver**](../../reference/apis-basic-services-kit/capi-pasteboard-oh-pasteboardobserver.md): pasteboard observer object, which is used to listen for data changes on the pasteboard.
+- [**OH_Pasteboard**](../../reference/apis-basic-services-kit/capi-pasteboard-oh-pasteboard.md): pasteboard object, which is used to query and write data.
 - [**OH_UdmfData**](../../reference/apis-arkdata/capi-udmf-oh-udmfdata.md): unified data object.
 
 ## Constraints
@@ -104,6 +104,8 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
    // 2. Create an OH_UdmfRecord object and add text data to it.
    OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
    OH_UdsPlainText_SetContent(plainText, "Hello world!");
+   OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
+   OH_UdsHtml_SetContent(udsHtml, "hello world");
    OH_UdmfRecord* record = OH_UdmfRecord_Create();
    OH_UdmfRecord_AddPlainText(record, plainText);
    
@@ -138,7 +140,9 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
      OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
      OH_UdmfRecord_GetPlainText(record, plainText);
      const char* content = OH_UdsPlainText_GetContent(plainText);
-     printf("Get plain text success. content: %s", content);
+     if (content != nullptr){
+      printf("Get plain text success.");
+     }
      // 5. Destroy the pointer when the object is no longer required.
      OH_UdsPlainText_Destroy(plainText);
      OH_UdmfData_Destroy(udmfData);

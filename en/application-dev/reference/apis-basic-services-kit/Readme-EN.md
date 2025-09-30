@@ -35,12 +35,14 @@
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
     - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
+    - [@ohos.scan (Scan)](js-apis-scan.md)
     - [@ohos.request (Upload and Download)](js-apis-request.md)
     - [@ohos.request.cacheDownload (Download and Cache)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip)](js-apis-zlib.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (Print) (System API)](js-apis-print-sys.md)
+    - [@ohos.scan (Scan) (System API)](js-apis-scan-sys.md)
     - [@ohos.request (Upload and Download) (System API)](js-apis-request-sys.md)
     - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
     - [@ohos.selectionInput.SelectionExtensionContext (SelectionExtensionContext) (System API)](js-apis-selectionInput-selectionExtensionContext-sys.md)
@@ -152,6 +154,7 @@
   - [Power Manager Error Codes](errorcode-power.md)
   - [Account Management Error Codes](errorcode-account.md)
   - [Update Error Codes](errorcode-update.md)
+  - [Print Service Error Codes](errorcode-print.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)

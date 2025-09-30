@@ -38,7 +38,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- | 
+| -------- | ----------------------------------- |
 | 1500003  | The common event sending frequency too high. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
@@ -143,7 +143,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    |
 
 **Example**
 
@@ -152,7 +152,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -201,7 +201,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 
 **Example**
 
@@ -210,7 +210,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -250,7 +250,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 
 **Example**
 
@@ -259,7 +259,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -307,7 +307,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -365,7 +365,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
@@ -377,7 +377,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber | undefined; 
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -471,7 +471,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber; 
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ["event"]
 };
