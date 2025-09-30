@@ -5,7 +5,7 @@
 <!--Owner: @xuchangda; @yixiaoff-->
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -66,7 +66,6 @@ Defines information about the images or videos selected.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 | Name                   | Type               | Mandatory| Description                         |
 | ----------------------- | ------------------- | ---- | -------------------------------- |
 | photoUris       | Array&lt;string&gt; | Yes  | URIs of the images or videos selected. The URI array can be used only by calling [photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets) with temporary authorization. For details about how to use the media file URI, see [Using a Media File URI] (../../file-management/user-file-uri-intro.md#using-a-media-file-uri).    |
