@@ -1353,7 +1353,7 @@ Currently, libuv threads are used in the main thread, JS Worker thread, TaskWork
 
 As a result, all the uv APIs that are not triggered by an FD event in the main thread are not responded in a timely manner. The uv APIs on the JS worker threads work as expected.
 
-In addition, in the application main thread, all asynchronous tasks are eventually executed through libuv. However, in the current system, [the libuv thread pool has been incorporated to the FFRT](https://gitee.com/openharmony/third_party_libuv/wikis/06-Wiki- %E6%8A %80%E6%9C %AF %E8%B5%84%E6%BA %90/ %20libuv %E5%B7%A5%E4%BD %9C %E7%BA %BF %E7%A8%8B %E6%8E %A5%E5%85%A5FFRT %E6%96%B9%E6%A1%88%E5%88%86%E6%9E %90). Any asynchronous task thrown to the libuv thread will be scheduled by the FFRT thread. The callbacks of the application main thread are also inserted into the **eventhandler** queue by **PostTask()**. This means that after the async task in an FFRT thread is complete, the callback of the main thread is not triggered by **uv_async_send**. The following figure shows the process.
+In addition, in the application main thread, all asynchronous tasks are eventually executed through libuv. However, in the current system, the libuv thread pool has been incorporated to the FFRT. Any asynchronous task thrown to the libuv thread will be scheduled by the FFRT thread. The callbacks of the application main thread are also inserted into the **eventhandler** queue by **PostTask()**. This means that after the async task in an FFRT thread is complete, the callback of the main thread is not triggered by **uv_async_send**. The following figure shows the process.
 
 ![Usage of the libuv asynchronous thread pool in OpenHarmony](./figures/libuv-ffrt.jpg)
 
