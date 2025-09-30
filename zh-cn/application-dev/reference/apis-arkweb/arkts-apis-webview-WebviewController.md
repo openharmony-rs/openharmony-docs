@@ -367,7 +367,9 @@ struct WebComponent {
 }
 ```
 
-2.resources协议，适用Webview加载带有"#"路由的链接。
+2.resources协议。
+
+使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -384,7 +386,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             // 通过resource协议加载本地资源文件。
-            this.controller.loadUrl("resource://rawfile/index.html");
+            this.controller.loadUrl("resource://rawfile/index.html#home");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -393,6 +395,36 @@ struct WebComponent {
     }
   }
 }
+```
+
+在“src\main\resources\rawfile”文件夹下创建index.html：
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<body>
+<div id="content"></div>
+
+<script>
+	function loadContent() {
+	  var hash = window.location.hash;
+	  var contentDiv = document.getElementById('content');
+
+	  if (hash === '#home') {
+		contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+	  } else {
+		contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+	  }
+	}
+
+	// 加载界面
+	window.addEventListener('load', loadContent);
+
+	// 当hash变化时，更新界面
+	window.addEventListener('hashchange', loadContent);
+</script>
+</body>
+</html>
 ```
 
 3.通过沙箱路径加载本地文件，可以参考[web](../../web/web-page-loading-with-web-components.md#加载本地页面)加载沙箱路径的示例代码。
