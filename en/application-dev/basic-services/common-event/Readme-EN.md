@@ -1,4 +1,10 @@
 # Process and Thread Communication<!--app-events-->
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 - Using Common Events for IPC<!--common-event-communication-->
     - [Common Event Overview](common-event-overview.md)
@@ -15,4 +21,3 @@
     - [Unsubscribing from Common Events in C](native-common-event-unsubscription.md)
     - [Publishing Common Events in C](native-common-event-publish.md)
 - [Using Emitter for Inter-Thread Communication](itc-with-emitter.md)
-

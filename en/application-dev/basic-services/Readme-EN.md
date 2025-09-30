@@ -1,4 +1,10 @@
 # Basic Services Kit
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 - [Introduction to Basic Services Kit](basic-services-kit-overview.md)
 - [Common Event Service](common-event/Readme-EN.md)
@@ -8,3 +14,6 @@
 - [Pasteboard Service](pasteboard/Readme-EN.md)
 - [Upload/Download](request/Readme-EN.md)
 - [Compression/Decompression](compress/Readme-EN.md)
+<!--Del-->
+- [Word Selection Service](selectionInput/Readme-EN.md)
+<!--DelEnd-->

@@ -1,11 +1,21 @@
 # ohscan.h
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @gcw_4D6e0BBd-->
+<!--Tester: @guoshengbang-->
+<!--Adviser: @RayShih-->
 
 ## Overview
 
 Enables applications to use CAPI to access scanners.
 
 **Since**: 12
+
+**Library**: libohscan.so
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 
 ## Summary
@@ -119,22 +129,22 @@ Enumerates the error codes.
 **Since**: 12
 
 | Value| Description|
-| -------- | -------- |
-| SCAN_ERROR_NONE | Operation successful.|
-| SCAN_ERROR_NO_PERMISSION | Permission denied.|
-| SCAN_ERROR_INVALID_PARAMETER | Invalid parameter.|
-| SCAN_ERROR_GENERIC_FAILURE | Internal error.|
-| SCAN_ERROR_RPC_FAILURE | RPC communication error.|
-| SCAN_ERROR_SERVER_FAILURE | Server error.|
-| SCAN_ERROR_UNSUPPORTED | Operation not supported.|
-| SCAN_ERROR_CANCELED | Operation canceled.|
-| SCAN_ERROR_DEVICE_BUSY | Device busy.|
-| SCAN_ERROR_INVALID | Invalid operation.|
-| SCAN_ERROR_JAMMED | Paper jam in feeder.|
-| SCAN_ERROR_NO_DOCS | Out of paper.|
-| SCAN_ERROR_COVER_OPEN | Scanner cover opened.|
-| SCAN_ERROR_IO_ERROR | Scanner I/O operation error.|
-| SCAN_ERROR_NO_MEMORY | Insufficient memory.|
+| -- | -- |
+| SCAN_ERROR_NONE = 0 | Operation successful.|
+| SCAN_ERROR_NO_PERMISSION = 201 | Permission denied.|
+| SCAN_ERROR_INVALID_PARAMETER = 401 | Invalid parameter.|
+| SCAN_ERROR_GENERIC_FAILURE = 24300101 | Internal error.|
+| SCAN_ERROR_RPC_FAILURE = 24300102 | RPC communication error.|
+| SCAN_ERROR_SERVER_FAILURE = 24300103 | Server error.|
+| SCAN_ERROR_UNSUPPORTED = 24300104 | Operation not supported.|
+| SCAN_ERROR_CANCELED = 24300105 | Operation canceled.|
+| SCAN_ERROR_DEVICE_BUSY = 24300106 | Device busy.|
+| SCAN_ERROR_INVALID = 24300107 | Invalid operation.|
+| SCAN_ERROR_JAMMED = 24300108 | Paper jam in feeder.|
+| SCAN_ERROR_NO_DOCS = 24300109 | Out of paper.|
+| SCAN_ERROR_COVER_OPEN = 24300110 | Scanner cover opened.|
+| SCAN_ERROR_IO_ERROR = 24300111 | Scanner I/O operation error.|
+| SCAN_ERROR_NO_MEMORY = 24300112 | Insufficient memory.|
 
 
 ## Function Description
@@ -150,13 +160,13 @@ int32_t OH_Scan_Init();
 
 Starts the scanning service, initializes the client, and establishes a connection with the scanning service.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
@@ -174,7 +184,7 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback);
 
 Searches for scanners and registers a callback function to process the found scanners.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -186,7 +196,7 @@ Searches for scanners and registers a callback function to process the found sca
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
@@ -204,7 +214,7 @@ int32_t OH_Scan_OpenScanner(const char* scannerId);
 
 Connects to a scanner.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -216,7 +226,7 @@ Connects to a scanner.
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
@@ -242,7 +252,7 @@ int32_t OH_Scan_CloseScanner(const char* scannerId);
 
 Disconnects from the scanner.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -254,7 +264,7 @@ Disconnects from the scanner.
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
@@ -274,7 +284,7 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 
 Obtains the scanner setting options. The memory is automatically released when returned structure points to [OH_Scan_Exit](#oh_scan_exit). Only one copy of each scanner model is stored in the memory.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -287,13 +297,15 @@ Obtains the scanner setting options. The memory is automatically released when r
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
 **SCAN_ERROR_RPC_FAILURE**: RPC communication error.
 
 **SCAN_ERROR_SERVER_FAILURE**: Server error.
+
+**SCAN_ERROR_INVALID_PARAMETER**: Invalid parameter.
 
 ### OH_Scan_SetScannerParameter()
 
@@ -305,7 +317,7 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 
 Sets the option parameters of the scanner. The option values are obtained through the [OH_Scan_GetScannerParameter](#oh_scan_getscannerparameter) API.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -319,7 +331,7 @@ Sets the option parameters of the scanner. The option values are obtained throug
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
@@ -339,7 +351,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode);
 
 Starts a scanner.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -352,7 +364,7 @@ Starts a scanner.
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
 **SCAN_ERROR_RPC_FAILURE**: RPC communication error.
@@ -383,7 +395,7 @@ int32_t OH_Scan_CancelScan(const char* scannerId);
 
 Cancels scanning.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -395,7 +407,7 @@ Cancels scanning.
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
@@ -415,7 +427,7 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 
 Queries the image scanning progress.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -428,7 +440,7 @@ Queries the image scanning progress.
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
@@ -460,13 +472,13 @@ int32_t OH_Scan_Exit();
 
 Exits the scanning service, clear the client memory, and cancel the registered scanning callback function.
 
-**System capability**: ohos.permission.PRINT
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
 **Returns**
 
-**Scan_ERROR_NONE**: Operation successful.
+**SCAN_ERROR_NONE**: Operation successful.
 
 **SCAN_ERROR_NO_PERMISSION**: Permission denied.
 
