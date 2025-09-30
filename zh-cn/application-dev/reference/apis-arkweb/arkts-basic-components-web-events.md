@@ -1626,7 +1626,7 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { cert } from '@kit.DeviceCertificateKit';
-  
+
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
       console.log('failed, cert chain data type is not array');
@@ -1649,7 +1649,7 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
     }
     return;
   }
-  
+
   function Uint8ArrayToString(dataArray: Uint8Array) {
     let dataString = '';
     for (let i = 0; i < dataArray.length; i++) {
@@ -2783,6 +2783,10 @@ onActivateContent(callback: Callback\<void>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**
 
 | 参数名        | 类型             | 必填 | 说明                              |
@@ -2791,6 +2795,7 @@ onActivateContent(callback: Callback\<void>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2812,7 +2817,7 @@ onActivateContent(callback: Callback\<void>)
             }
           })
           .onActivateContent(() => {
-            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
+            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web。
             console.log("NewWebViewComp onActivateContent")
           })
       }.height("50%")
@@ -2830,7 +2835,7 @@ onActivateContent(callback: Callback\<void>)
         Web({ src: $rawfile("window.html"), controller: this.controller })
           .javaScriptAccess(true)
           .allowWindowOpenMethod(true)
-          // 需要使能multiWindowAccess
+          // 需要使能multiWindowAccess。
           .multiWindowAccess(true)
           .onWindowNew((event) => {
             if (this.dialogController) {
@@ -2842,6 +2847,68 @@ onActivateContent(callback: Callback\<void>)
               isModal: false
             })
             this.dialogController.open();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+            event.handler.setWebController(popController);
+          })
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Component, Entry, Web, Column, CustomDialogController, CustomDialog } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+    controller?: CustomDialogController;
+    webviewController1: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: "https://www.example.com", controller: this.webviewController1 })
+          .javaScriptAccess(true)
+          .multiWindowAccess(false)
+          .onWindowExit(() => {
+            if (this.controller) {
+              this.controller?.close();
+            }
+          })
+          .onActivateContent(() => {
+            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web。
+            console.log("NewWebViewComp onActivateContent")
+          })
+      }.height("50%")
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    dialogController: CustomDialogController | null = null;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("window.html"), controller: this.controller })
+          .javaScriptAccess(true)
+          .allowWindowOpenMethod(true)
+          // 需要使能multiWindowAccess。
+          .multiWindowAccess(true)
+          .onWindowNew((event) => {
+            if (this.dialogController) {
+              this.dialogController?.close()
+            }
+            let popController: webview.WebviewController = new webview.WebviewController(undefined);
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController }),
+              isModal: false
+            })
+            this.dialogController?.open();
             // 将新窗口对应WebviewController返回给Web内核。
             // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
             event.handler.setWebController(popController);
@@ -3084,7 +3151,7 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController("");
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
