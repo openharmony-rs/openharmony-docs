@@ -56,26 +56,29 @@ Obtains the **ResourceManager** object of this application. This API uses an asy
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | Yes   | Callback used to return the **ResourceManager** object.|
 
 **Example**
-
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import  resourceManager  from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
+export default {
+    onCreate() {
+        resourceManager.getResourceManager((error, mgr) => {
+            if (error != null) {
+                console.error("error is " + error);
+                return;
+            }
+            // Replace "test" with the actual resource name.
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("error is " + JSON.stringify(error));
+                } else {
+                    console.info("success is " + value);
+                }
 
-  resourceManager.getResourceManager((error, mgr) => {
-    if (error != null) {
-      console.error("error is " + error);
-      return;
+            });
+        });
     }
-    // Replace 'app.string.test' with the actual resource.
-    mgr.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let str = value;
-      }
-    });
-  });
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -96,18 +99,31 @@ Obtains the **ResourceManager** object of the specified application. This API us
 | callback   | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | Yes   | Callback used to return the **ResourceManager** object.|
 
 **Example**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import  resourceManager  from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
 
-  // Replace "com.example.myapplication" with the actual package name.
-  resourceManager.getResourceManager("com.example.myapplication", (error, mgr) => {
-    if (error != null) {
-      console.error("error is " + error);
-      return;
+// Replace 'com.example.testapp' with the actual application package name.
+const BUNDLE_NAME = 'com.example.testapp';
+export default {
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
+            if (error != null) {
+                console.error("getResourceManager error is " + error);
+                return;
+            }
+            // Replace "test" with the actual resource name.
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("getResourceManager error is " + JSON.stringify(error));
+                } else {
+                    console.info("getResourceManager success is " + value);
+                }
+            });
+        });
     }
-  });
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -127,23 +143,25 @@ Obtains the **ResourceManager** object of this application. This API uses a prom
 | Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise used to return the **ResourceManager** object.|
 
 **Example**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  resourceManager.getResourceManager().then((mgr: resourceManager.ResourceManager) => {
-    // Replace 'app.string.test' with the actual resource.
-    mgr.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let str = value;
-      }
-    });
-  }).catch((error: BusinessError) => {
-    console.error("error is " + error);
-  });
+import resourceManager from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
+export default {
+    onCreate() {
+        resourceManager.getResourceManager().then(resMgr => {
+            try {
+                // Replace "test" with the actual resource name.
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -169,16 +187,29 @@ Obtains the **ResourceManager** object of the specified application. This API us
 | Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise used to return the **ResourceManager** object.|
 
 **Example**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import resourceManager from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
 
-  // Replace "com.example.myapplication" with the actual package name.
-  resourceManager.getResourceManager("com.example.myapplication").then((mgr: resourceManager.ResourceManager) => {
-  }).catch((error: BusinessError) => {
-    console.error("error is " + error);
-  });
+// Replace 'com.example.testapp' with the actual application package name.
+const BUNDLE_NAME = 'com.example.testapp';
+
+export default {
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME).then(resMgr => {
+            try {
+                // Replace "test" with the actual resource name.
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
+};
   ```
 
 ## resourceManager.getSysResourceManager<sup>20+</sup>
@@ -1593,7 +1624,7 @@ export default class EntryAbility extends UIAbility {
             // Replace "format_test" with the actual resource.
             let pluralStr = this.context.resourceManager.getDoublePluralStringByNameSync("format_test", 2.1, 2, "basket", 0.6);
             console.log(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
-            // Print the output result: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+            // Print the output result: getDoublePluralStringByNameSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
@@ -3789,8 +3820,8 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-                // Print the output result: getRawFileListSync, result: ["test.txt"]
+                console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // Print the output result: getRawFileList, result: ["test.txt"].
             }
         });
     }
@@ -3842,8 +3873,8 @@ export default class EntryAbility extends UIAbility {
         // Replace "" with the actual file path in the rawfile directory.
         this.context.resourceManager.getRawFileList("")
             .then((value: Array<string>) => {
-                console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-                // Print the output result: getRawFileListSync, result: ["test.txt"]
+                console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // Print the output result: getRawFileList, result: ["test.txt"].
             })
             .catch((error: BusinessError) => {
                 console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
@@ -4051,17 +4082,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.closeRawFdSync("test.txt");
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`closeRawFd failed, error code: ${code}, message: ${message}.`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Replace "test.txt" with the actual resource.
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // Use rawfile resources based on the actual service scenario.
+
+      this.context.resourceManager.closeRawFdSync("test.txt");
+      console.info(`closeRawFdSync test success.`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`closeRawFdSync test failed, error code: ${code}, message: ${message}.`);
     }
+  }
 }
   ```
 
@@ -4096,20 +4132,24 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
-                if (error != null) {
-                    console.error("error is " + error);
-                }
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Replace "test.txt" with the actual resource.
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // Use rawfile resources based on the actual service scenario.
+      this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
+        if (error != null) {
+          console.error("error is " + error);
+          return;
         }
+        console.info('closeRawFd success.');
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
     }
+  }
 }
   ```
 
@@ -4149,16 +4189,19 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.closeRawFd("test.txt");
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Replace "test.txt" with the actual resource.
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // Use rawfile resources based on the actual service scenario.
+      this.context.resourceManager.closeRawFd("test.txt");
+      console.info(`closeRawFd test success.`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
     }
+  }
 }
   ```
 
