@@ -14,7 +14,6 @@ This module provides word selection management capabilities, including creating,
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-
 ## on('selectionCompleted')
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void

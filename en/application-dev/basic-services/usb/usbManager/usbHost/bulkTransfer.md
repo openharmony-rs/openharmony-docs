@@ -67,7 +67,7 @@ Connect a host to a device and use the **bulkTransfer** API to transfer data. Th
 > **NOTE**
 >
 > Bulk transfer can be performed only on the endpoint whose [transfer type](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbendpointtransfertype18) is **2**. If an incorrect endpoint type is used, an I/O error is returned.
-
+   
    ```ts
    // Obtain the USB device list.
    let deviceList : Array<usbManager.USBDevice> = usbManager.getDevices();
