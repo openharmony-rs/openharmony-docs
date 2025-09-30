@@ -2193,10 +2193,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称             | 类型                                    | 必填 | 说明                             |
-| ---------------- | --------------------------------------- | ---- | -------------------------------- |
-| networkMatchRule | [NetworkMatchRule](#networkmatchrule10) | 是   | 网络标识，用来确定设置哪一个网络。 |
-| quotaPolicy      | [QuotaPolicy](#quotapolicy10)           | 是   | 具体的计量网络策略。               |
+| 名称             | 类型                                    | 只读 |可选| 说明                             |
+| ---------------- | --------------------------------------- | ---- | ----|---------------------------- |
+| networkMatchRule | [NetworkMatchRule](#networkmatchrule10) | 否   |否 |网络标识，用来确定设置哪一个网络。 |
+| quotaPolicy      | [QuotaPolicy](#quotapolicy10)           | 否  | 否|具体的计量网络策略。               |
 
 ## NetworkMatchRule<sup>10+</sup>
 
@@ -2206,11 +2206,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称     | 类型                                                 | 必填 | 说明                                                                         |
-| -------- | ---------------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
-| netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | 是   | 网络类型。                                                                   |
-| simId    | string                                               | 是   | 计量蜂窝网络的 SIM 卡的标识值。以太网，wifi 网络不会用到。                     |
-| identity | string                                               | 是   | 计量蜂窝网络中配合 simId 联合使用。以太网，wifi 网络单独使用。用于标记类型。 |
+| 名称     | 类型                                                 | 只读 |可选| 说明                                                                         |
+| -------- | ---------------------------------------------------- | ---- | ------|---------------------------------------------------------------------- |
+| netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | 否   |否 |网络类型。                                                                   |
+| simId    | string                                               | 否    |否 |计量蜂窝网络的SIM卡的标识值。<br>以太网和wifi网络不会用到。                     |
+| identity | string                                               | 否   |否 |计量蜂窝网络中配合simId联合使用。<br>以太网和wifi网络单独使用。<br>用于标记类型。 |
 
 ## QuotaPolicy<sup>10+</sup>
 
@@ -2220,15 +2220,15 @@ try {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称              | 类型                            | 必填 | 说明                                                  |
-| ----------------- |-------------------------------| ---- |-----------------------------------------------------|
-| periodDuration    | string                        | 是   | 流量限制计量周期。D1，M1，Y1 分别代表 1 天，1 个月，1 年内流量限制，超出时间则不受限制。 |
-| warningBytes      | number                        | 是   | 发出警告的流量阈值。                                          |
-| limitBytes        | number                        | 是   | 流量设置的配额。                                            |
-| metered           | boolean                       | 是   | 是否为计量网络。true：是计量网络；false：不是计量网络。                                            |
-| limitAction       | [LimitAction](#limitaction10) | 是   | 到达流量限制后的动作。                                         |
-| lastWarningRemind | number                        | 否   | 最新一次发出警告的时间。默认值：-1                                  |
-| lastLimitRemind   | number                        | 否   | 最新一次配额耗尽的时间。默认值：-1                                        |
+| 名称              | 类型                            | 只读 |可选| 说明                                                  |
+| ----------------- |-------------------------------| ---- |----|-------------------------------------------------|
+| periodDuration    | string                        | 否   |否 |流量限制计量周期。D1、M1、Y1分别代表1天、1个月、1年内流量限制，超出时间则不受限制。 |
+| warningBytes      | number                        | 否   |否 |发出警告的流量阈值。                                          |
+| limitBytes        | number                        | 否   |否 |流量设置的配额。                                            |
+| metered           | boolean                       | 否   |否 |是否为计量网络。true表示是，false表示不是。                                         |
+| limitAction       | [LimitAction](#limitaction10) | 否   | 否|到达流量限制后的动作。                                         |
+| lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。默认值：-1。                                  |
+| lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。默认值：-1。                                      |
 
 ## LimitAction<sup>10+</sup>
 
@@ -2263,29 +2263,29 @@ try {
 
 ## NetUidRuleInfo<sup>11+</sup>
 
-生成网络唯一标识
+生成网络唯一标识。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称              | 类型                           | 必填 | 说明                                      |
-| ----------------- | ----------------------------- | ---- | ----------------------------------------- |
-| uid               | number                        | 是   | 流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-| rule              | [NetUidRule](#netuidrule10)   | 是   | 规定一个UID访问计量网络还是非计量网络。     |
+| 名称              | 类型                           | 只读 |可选| 说明                                      |
+| ----------------- | ----------------------------- | ---- | ------|----------------------------------- |
+| uid               | number                        | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
+| rule              | [NetUidRule](#netuidrule10)   | 否  |否 |规定一个UID访问计量网络还是非计量网络。     |
 
 ## NetUidPolicyInfo<sup>11+</sup>
 
-注册网络UID策略变化的回调函数
+注册网络UID策略变化的回调函数。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称              | 类型                            | 必填 | 说明                                    |
-| ----------------- | ------------------------------- | ---- | -------------------------------------- |
-| uid               | number                          | 是   | 流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-| policy            | [NetUidPolicy](#netuidpolicy10) | 是   | UID指定了在后台模式下网络访问的策略。    |
+| 名称              | 类型                            | 只读 |可选| 说明                                    |
+| ----------------- | ------------------------------- | ---- | ----|---------------------------------- |
+| uid               | number                          | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
+| policy            | [NetUidPolicy](#netuidpolicy10) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
 
 ## RemindType<sup>10+</sup>
 
@@ -2322,10 +2322,12 @@ try {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称              | 类型       | 必填 | 说明                          |
-| ----------------- | --------- | ---- | ----------------------------- |
-| allowWiFi         | boolean   | 是   | 能否允许访问wifi网络。true：允许访问wifi网络；false：不允许访问wifi网络。 |
-| allowCellular     | boolean   | 是   | 能否允许访问蜂窝网络。true：允许访问蜂窝网络；false：不允许访问蜂窝网络。 |
+| 名称              | 类型       | 只读 | 可选|说明                          |
+| ----------------- | --------- | ---- | ------|----------------------- |
+| allowWiFi         | boolean   | 否   |否 |是否允许应用访问wifi网络。true表示允许，false表示不允许。 |
+| allowCellular     | boolean   | 否  |否 |是否允许应用访问蜂窝网络。true表示允许，false表示不允许。 |
+| alwaysAllowWiFi<sup>18+</sup>    | boolean   | 否  |是 |是否允许应用一直访问wifi网络。true表示允许，false表示不允许。 |
+| alwaysAllowCellular<sup>18+</sup>  | boolean   | 否  |是 |是否允许应用一直访问蜂窝网络。true表示允许，false表示不允许。 |
 
 ## UidNetworkAccessPolicy<sup>12+</sup>
 
@@ -2335,6 +2337,6 @@ try {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称       | 类型                                                         | 必填 | 说明                 |
-| --------- | -----------------------------------------------------------  | ---- | ------------------- |
-| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | 否   | 数据类型为键值对。      |
+| 名称       | 类型                                                         | 只读 |可选|说明                 |
+| --------- | -----------------------------------------------------------  | ---- | ---|---------------- |
+| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | 否   |是 |数据类型为键值对。      |
