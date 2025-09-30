@@ -924,7 +924,7 @@ struct Index {
           this.xcController.setXComponentSurfaceRect({surfaceWidth: this.screenWidth, surfaceHeight: this.screenHeight, offsetX: 0, offsetY: 0});
           this.mCanvas = this.xcController.lockCanvas();
           if (this.mCanvas) {
-            this.mCanvas.drawColor(255, 39, 135, 217); // 每次绘制前必须完全重绘整个XComponent区域,可以调用此方法实现
+            this.mCanvas.drawColor(255, 39, 135, 217); // 每次绘制前必须完全重绘整个XComponent区域，可以调用此方法实现
             this.xcController.unlockCanvasAndPost(this.mCanvas);
           }
         })
