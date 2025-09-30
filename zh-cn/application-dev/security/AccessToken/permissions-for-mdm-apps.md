@@ -460,8 +460,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：12
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY
@@ -474,8 +472,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：13
 
@@ -490,8 +486,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：14
 
 ## ohos.permission.ENTERPRISE_GET_ALL_BUNDLE_INFO
@@ -504,8 +498,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
 
@@ -520,8 +512,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：20
 
 ## ohos.permission.ENTERPRISE_MANAGE_APN
@@ -534,8 +524,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
 
@@ -550,8 +538,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：20
 
 ## ohos.permission.ENTERPRISE_SET_KIOSK
@@ -564,8 +550,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
 
@@ -582,8 +566,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：20
 
 ## ohos.permission.ENTERPRISE_FILE_TRANSFER_AUDIT_POLICY_MANAGEMENT
@@ -596,8 +578,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -612,8 +592,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：20
 
 ## ohos.permission.MANAGE_PREINSTALLED_ANTIVIRUS
@@ -626,8 +604,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -644,8 +620,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：20
 
 ## ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
@@ -659,8 +633,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：21
 
 ## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
@@ -673,8 +645,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 

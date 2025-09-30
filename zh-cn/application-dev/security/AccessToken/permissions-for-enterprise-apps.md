@@ -34,8 +34,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：10
 
 **变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开发范围变更为企业普通应用。
@@ -52,8 +50,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：10
 
@@ -72,8 +68,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：20
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
@@ -86,8 +80,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：General
 
 **起始版本**：7
 
@@ -106,8 +98,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：General
-
 **起始版本**：7
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
@@ -124,8 +114,6 @@
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：General
 
 **起始版本**：7
 
@@ -144,8 +132,6 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：General
-
 **起始版本**：7
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
@@ -163,8 +149,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：General
-
 **起始版本**：7
 
 **变更信息**：API 7-19该权限仅向系统应用开放；从API 20开始，开放范围从系统应用变更为企业普通应用。
@@ -178,8 +162,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
-
-**支持设备**：PC/2in1
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
@@ -201,8 +183,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：8
 
 **变更信息**：API 8-14该权限仅向系统应用开放；从API 15开始，开放范围变更为企业普通应用。
@@ -218,8 +198,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：10
 
 **变更信息**：API 10-13该权限仅向系统应用开放；从API 14开始，开放范围变更为企业普通应用。
@@ -234,8 +212,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：12
 
@@ -254,8 +230,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：General
-
 **起始版本**：12
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
@@ -272,8 +246,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 **ACL使能**：true
 
-**支持设备**：General
-
 **起始版本**：15
 
 ## ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT
@@ -289,8 +261,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Tablet | Phone
-
 **起始版本**：18
 
 ## ohos.permission.MANAGE_NET_FIREWALL
@@ -305,8 +275,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：12
 
@@ -325,8 +293,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：12
 
 **变更信息**：API 12-14该权限仅向系统应用开放；从API 15开始，开放范围变更为企业普通应用。
@@ -342,8 +308,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：18
 
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
@@ -357,8 +321,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：Phone | PC/2in1 | Tablet
-
 **起始版本**：18
 
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNTS
@@ -371,8 +333,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：18
 
@@ -400,8 +360,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：General
-
 **起始版本**：18
 
 ## ohos.permission.kernel.AUTH_AUDIT_EVENT
@@ -416,8 +374,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -434,8 +390,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：20
 
 ## ohos.permission.ENTERPRISE_MANAGE_EAP
@@ -450,8 +404,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -468,8 +420,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：20
 
 ## ohos.permission.QUERY_LOCAL_WORKSPACES
@@ -484,8 +434,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -502,8 +450,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：20
 
 ## ohos.permission.MANAGE_ANTIVIRUS
@@ -516,8 +462,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -532,8 +476,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
-
 **起始版本**：20
 
 ## ohos.permission.CALL_TPM_CMD
@@ -546,8 +488,6 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -563,7 +503,5 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
-
-**支持设备**：PC/2in1
 
 **起始版本**：20
