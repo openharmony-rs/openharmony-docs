@@ -35,7 +35,7 @@ AVSource模块提供用于构造媒体资源对象功能的函数。
 | -------- | -------- |
 | [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithDataSource](#oh_avsource_createwithdatasource) ([OH_AVDataSource](_o_h___a_v_data_source.md) \*dataSource) | 为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用OH_AVSource_Destroy接口释放实例。  |
 | [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithDataSourceExt](#oh_avsource_createwithdatasourceext) ([OH_AVDataSourceExt](_o_h___a_v_data_source_ext.md) \*dataSource, void *userData) | 为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用OH_AVSource_Destroy接口释放实例。回调支持通过userData传递用户自定义数据。  |
-| [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithURI](#oh_avsource_createwithuri) (char \*uri) | 为统一资源标识符对应的资源对象创建OH_AVSource实例。  | 
+| [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithURI](#oh_avsource_createwithuri) (char \*uri) | 为统一资源标识符对应的资源对象创建OH_AVSource实例。该接口仅支持HTTP渐进式流媒体，不支持HLS/DASH的流媒体；对于HLS/DASH的流媒体播放，推荐使用[AVPlayer](../apis-media-kit/capi-avplayer.md)进行开发。  | 
 | [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithFD](#oh_avsource_createwithfd) (int32_t fd, int64_t offset, int64_t size) | 为文件描述符对应的资源对象创建OH_AVSource实例。  | 
 | [OH_AVErrCode](_core.md#oh_averrcode) [OH_AVSource_Destroy](#oh_avsource_destroy) ([OH_AVSource](#oh_avsource) \*source) | 销毁OH_AVSource实例并清理内部资源。  | 
 | [OH_AVFormat](_core.md#oh_avformat) \* [OH_AVSource_GetSourceFormat](#oh_avsource_getsourceformat) ([OH_AVSource](#oh_avsource) \*source) | 获取媒体资源文件的基础信息。  | 
@@ -164,7 +164,7 @@ OH_AVSource* OH_AVSource_CreateWithFD (int32_t fd, int64_t offset, int64_t size)
 OH_AVSource* OH_AVSource_CreateWithURI (char *uri)
 ```
 **描述**
-为统一资源标识符对应的资源对象创建OH_AVSource实例，可以通过调用OH_AVSource_Destroy接口释放实例。
+为统一资源标识符对应的资源对象创建OH_AVSource实例，可以通过调用OH_AVSource_Destroy接口释放实例。该接口仅支持HTTP渐进式流媒体，不支持HLS/DASH的流媒体；对于HLS/DASH的流媒体播放，推荐使用[AVPlayer](../apis-media-kit/capi-avplayer.md)进行开发。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
