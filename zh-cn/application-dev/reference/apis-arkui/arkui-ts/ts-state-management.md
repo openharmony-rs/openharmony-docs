@@ -845,7 +845,7 @@ static IsMutable(propName: string): boolean
 **示例：**
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
-let res: boolean = AppStorage.IsMutable('simpleProp');
+let res: boolean = AppStorage.IsMutable('PropA');
 ```
 
 
