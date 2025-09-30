@@ -4136,7 +4136,7 @@ export default class EntryAbility extends UIAbility {
     try {
       // Replace "test.txt" with the actual resource.
       let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
-      // 根据实际业务场景，使用rawfile资源
+      // Use rawfile resources based on the actual service scenario.
       this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
         if (error != null) {
           console.error("error is " + error);
@@ -4193,7 +4193,7 @@ export default class EntryAbility extends UIAbility {
     try {
       // Replace "test.txt" with the actual resource.
       let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
-      // 根据实际业务场景，使用rawfile资源
+      // Use rawfile resources based on the actual service scenario.
       this.context.resourceManager.closeRawFd("test.txt");
       console.info(`closeRawFd test success.`);
     } catch (error) {
