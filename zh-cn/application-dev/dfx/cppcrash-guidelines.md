@@ -159,7 +159,7 @@ SIGSEGV是一种信号，它表示进程试图访问一个不属于它的内存�
 
 - 上述崩溃信号和35、38、42信号已经被系统注册信号处理函数，建议应用不要对这些信号注册信号处理函数，如果应用注册了可能会造成系统检测能力失效。
 
-- 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。从**API version 22**前，**三方和系统应用**通过[libuv](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/libuv)和[ffrt](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/function-flow-runtime-api)提交异步任务仅debug版本默认开启。从**API version 22**及以后，**三方应用**通过libuv提交异步任务debug和release版本均默认开启，**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。崩溃日志规格请参见[异步线程栈跟踪故障场景日志规格](#异步线程栈跟踪故障场景日志规格)。
+- 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。从**API version 22**前，**三方和系统应用**通过[libuv](../reference/native-lib/libuv.md)和[ffrt](../reference/native-lib/libuv.md)提交异步任务仅debug版本默认开启。从**API version 22**及以后，**三方应用**通过libuv提交异步任务debug和release版本均默认开启，**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。崩溃日志规格请参见[异步线程栈跟踪故障场景日志规格](#异步线程栈跟踪故障场景日志规格)。
 
 ## 日志获取
 
@@ -203,7 +203,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Reason | 故障原因 | 8 | 是 | - |
 | LastFatalMessage | 应用记录的最后一条Fatal级日志 | 8 | 否 | 进程主动abort，hilog中打印包含最后一条Fatal日志时。 |
 | Fault thread info | 故障线程信息 | 8 | 是 | - |
-| SubmitterStacktrace | 提交者线程栈 | 12 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>从**API version 22**前，**三方和系统应用**通过[libuv](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/libuv)和[ffrt](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/function-flow-runtime-api)提交异步任务仅debug版本默认开启。<br>从**API version 22**及以后，**三方应用**通过libuv提交异步任务debug和release版本均默认开启，**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
+| SubmitterStacktrace | 提交者线程栈 | 12 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>从**API version 22**前，**三方和系统应用**通过libuv和ffrt提交异步任务仅debug版本默认开启。<br>从**API version 22**及以后，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | Registers | 故障现场寄存器 | 8 | 是 | - |
 | Other thread info | 其他线程信息 | 8 | 是 | - |
 | Memory near registers | 故障现场寄存器附近内存值 | 8 | 是 | - |
@@ -579,7 +579,7 @@ cpsr:20870010
 >
 > 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。
 >
-> **API version 22**之前，**三方和系统应用**通过[libuv](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/libuv)和[ffrt](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/function-flow-runtime-api)提交异步任务仅debug版本默认开启。
+> **API version 22**之前，**三方和系统应用**通过libuv和ffrt提交异步任务仅debug版本默认开启。
 >
 > 从**API version 22**及以后，**三方应用**通过libuv提交异步任务debug和release版本均默认开启，**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。
 
