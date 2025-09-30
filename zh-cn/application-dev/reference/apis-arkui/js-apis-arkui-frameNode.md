@@ -4237,7 +4237,7 @@ createNode(context: UIContext, nodeType: 'Search'): Search
 **示例：**
 
 ```ts
-iimport { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {

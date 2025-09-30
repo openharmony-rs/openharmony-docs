@@ -1,4 +1,10 @@
 # 文件管理开发常见问题
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25-->
+<!--Designer: @bubble_mao; @zhuangzhuang; @gsl_1234-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @foryourself-->
 
 ## 使用读写权限打开picker返回的uri失败(API 10)
 

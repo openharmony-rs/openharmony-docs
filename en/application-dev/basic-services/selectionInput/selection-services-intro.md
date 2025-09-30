@@ -1,5 +1,12 @@
 # Overview of Word Selection Service (for System Applications Only)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 Since API version 20, the word selection service is available. It provides capabilities for processing text across applications and managing word selection applications.
 
 This service is mainly used in scenarios such as text translation, content summarization, and term explanation. For example, when a user long presses a word in a news article in foreign language, the translation service is automatically triggered and the translation is displayed in a floating window; when a user selects a long paragraph in a reading application, this content can be quickly summarized; when a user selects a professional term in an education application, an instant explanation card is displayed.

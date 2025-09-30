@@ -472,7 +472,7 @@ hueRotate(rotation: Optional\<number | string>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## colorBlend<sup>7+</sup>
+## colorBlend
 
 colorBlend(value: Color | string | Resource): T
 
@@ -500,7 +500,7 @@ colorBlend(value: Color | string | Resource): T
 
 colorBlend(color: Optional\<Color | string | Resource>): T
 
-为组件添加颜色叠加效果。与[colorBlend<sup>7+</sup>](#colorblend7)相比，color参数新增了对undefined类型的支持。
+为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

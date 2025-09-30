@@ -14,6 +14,7 @@
 | 名称 | 描述 |
 | ---- | ---- |
 | on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void | 订阅划词完成事件，使用`callback`回调函数。 |
+| getSelectionContent(): Promise\<string\> | 获取选中文本的内容。 |
 | createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\> | 创建划词面板。 |
 | show(): Promise\<void\> | 显示面板。 |
 
@@ -79,9 +80,14 @@
     ```
     上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。部分操作可参见下面3、4、5步。
 
-3. 在划词扩展被拉起时，使用划词Ability接口监听划词事件。
+3. 在划词扩展被拉起时，使用划词Ability接口监听划词事件。监听到划词事件后，可以通过[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#getselectioncontent)接口获取选中的文本内容。
     ```ts
-    selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
+    selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
+      try {
+        let content = await selectionManager.getSelectionContent();
+      } catch (err) {
+        console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+      }
     });
     ```
 

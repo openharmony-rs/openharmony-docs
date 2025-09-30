@@ -46,7 +46,7 @@ export class Book {
 @Entry
 @ComponentV2({ freezeWhenInactive: true })
 export struct Page1 {
-  @Local bookTest: Book = new Book('A Midsummer Night’s Dream');
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
@@ -64,7 +64,7 @@ export struct Page1 {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
           setTimeout(() => {
-            this.bookTest = new Book('Jane Austen's Pride and Prejudice');
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 1000)
         })
     }
@@ -489,7 +489,7 @@ struct Page1 {
 
 @ComponentV2({ freezeWhenInactive: true })
 export struct Child {
-  @Local bookTest: Book = new Book('A Midsummer Night's Dream');
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
@@ -508,7 +508,7 @@ export struct Child {
       Button('change BookName')
         .onClick(() => {
           setTimeout(() => {
-            this.bookTest = new Book('Jane Austen's Pride and Prejudice');
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 3000);
         })
     }

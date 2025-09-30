@@ -58,11 +58,11 @@ Enumerates the battery plugged types.
 
 | Enum Item| Description|
 | -- | -- |
-| PLUGGED_TYPE_NONE | No power supply.|
-| PLUGGED_TYPE_AC | AC charging.|
-| PLUGGED_TYPE_USB | USB DC charging.|
-| PLUGGED_TYPE_WIRELESS | Wireless charging.|
-| PLUGGED_TYPE_BUTT | Reserved.|
+| PLUGGED_TYPE_NONE = 0 | No power supply.|
+| PLUGGED_TYPE_AC = 1 | AC charging.|
+| PLUGGED_TYPE_USB = 2 | USB DC charging.|
+| PLUGGED_TYPE_WIRELESS = 3 | Wireless charging.|
+| PLUGGED_TYPE_BUTT = 4 | Reserved.|
 
 
 ## Function Description

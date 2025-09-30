@@ -81,9 +81,9 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单号 | 问题描述 |
 | -------- | -------- |
-| [I4UZ7U](https://gitee.com/openharmony/xts_acts/issues/I4UZ7U?from=project-issue) | 小型系统执行XTS测试时概率有35条失败项 |
-| [I4V2DN](https://gitee.com/openharmony/xts_acts/issues/I4V2DN?from=project-issue) | ActsLwipTest模块测试中存在两条用例执行超时的失败 |
-| [I4V3KC](https://gitee.com/openharmony/xts_acts/issues/I4V3KC?from=project-issue) | 分布式调度子系统testPublish0010测试用例执行失败 |
+| [I4UZ7U](https://gitcode.com/openharmony/xts_acts/issues/I4UZ7U?from=project-issue) | 小型系统执行XTS测试时概率有35条失败项 |
+| [I4V2DN](https://gitcode.com/openharmony/xts_acts/issues/I4V2DN?from=project-issue) | ActsLwipTest模块测试中存在两条用例执行超时的失败 |
+| [I4V3KC](https://gitcode.com/openharmony/xts_acts/issues/I4V3KC?from=project-issue) | 分布式调度子系统testPublish0010测试用例执行失败 |
 | [I4URGA](https://gitee.com/openharmony/applications_sample_camera/issues/I4URGA?from=project-issue) | 设置界面搜WLAN信号时概率出现蓝屏 |
 | I4SDCK | 小型系统HI&nbsp;3516&nbsp;GetSrcPath&nbsp;/GetDataPath&nbsp;获取路径为空或者乱码 |
 | [I4T6KZ](https://gitee.com/openharmony/communication_dsoftbus/issues/I4T6KZ) | 测试传输相关用例时在&nbsp;SendMessage&nbsp;SendData4Data处失败 |
@@ -104,15 +104,15 @@ repo forall -c 'git lfs pull'
 | ISSUE单号 | 问题描述 |
 | -------- | -------- |
 | [I4UJNU](https://gitee.com/openharmony/applications_settings/issues/I4UJNU) | 通过设置连接WLAN时，WLAN密码在hilog日志中明文打印 |
-| [I4MSWM](https://gitee.com/openharmony/xts_acts/issues/I4MSWM?from=project-issue) | XT测试执行测试ActsFaultLoggerTest模块faultloggertest用例时有1条失败项 |
-| [I4MSVV](https://gitee.com/openharmony/xts_acts/issues/I4MSVV?from=project-issue) | XTS测试执行测试ActsHiCollieCppTest模块HiCollieCppTest用例时有3条失败项 |
+| [I4MSWM](https://gitcode.com/openharmony/xts_acts/issues/I4MSWM?from=project-issue) | XT测试执行测试ActsFaultLoggerTest模块faultloggertest用例时有1条失败项 |
+| [I4MSVV](https://gitcode.com/openharmony/xts_acts/issues/I4MSVV?from=project-issue) | XTS测试执行测试ActsHiCollieCppTest模块HiCollieCppTest用例时有3条失败项 |
 | I4PPXV | 打开应用后再退出到桌面，桌面应用图标丢失 |
 | [I4OF9A](https://gitee.com/openharmony/distributeddatamgr_file/issues/I4OF9A?from=project-issue) | file.readText接口读取的text值不稳定 |
-| [I4OWWM](https://gitee.com/openharmony/xts_acts/issues/I4OWWM) | WeekPluralNumbertest模块对应json文件配置问题，执行用例时报"required&nbsp;device&nbsp;does&nbsp;not&nbsp;exist"导致此测试套无法执行 |
-| [I4OUVQ](https://gitee.com/openharmony/xts_tools/issues/I4OUVQ?from=project-issue) | XTS&nbsp;JS用例反复压力测试过程中系统卡死，无法进行测试 |
-| [I4NMXQ](https://gitee.com/openharmony/xts_acts/issues/I4NMXQ?from=project-issue) | XTS执行storagefileioperformancejstest和storagefilestabilityjstest测试套无法执行起来 |
-| [I4NTKG](https://gitee.com/openharmony/xts_acts/issues/I4NTKG) | 执行xts测试套WeekPluralNumberTest出现两条失败项 |
-| [I4NPHG](https://gitee.com/openharmony/xts_acts/issues/I4NPHG?from=project-issue) | timer定时器测试套TimerJSApiTest.hap未随版本编译出来 |
+| [I4OWWM](https://gitcode.com/openharmony/xts_acts/issues/I4OWWM) | WeekPluralNumbertest模块对应json文件配置问题，执行用例时报"required&nbsp;device&nbsp;does&nbsp;not&nbsp;exist"导致此测试套无法执行 |
+| [I4OUVQ](https://gitcode.com/openharmony/xts_tools/issues/I4OUVQ?from=project-issue) | XTS&nbsp;JS用例反复压力测试过程中系统卡死，无法进行测试 |
+| [I4NMXQ](https://gitcode.com/openharmony/xts_acts/issues/I4NMXQ?from=project-issue) | XTS执行storagefileioperformancejstest和storagefilestabilityjstest测试套无法执行起来 |
+| [I4NTKG](https://gitcode.com/openharmony/xts_acts/issues/I4NTKG) | 执行xts测试套WeekPluralNumberTest出现两条失败项 |
+| [I4NPHG](https://gitcode.com/openharmony/xts_acts/issues/I4NPHG?from=project-issue) | timer定时器测试套TimerJSApiTest.hap未随版本编译出来 |
 
 
   **表5** 安全漏洞合入列表

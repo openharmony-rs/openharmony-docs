@@ -1,4 +1,10 @@
 # js标签配置
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 js标签用于配置实例名称、页面路由和窗口样式信息。
 

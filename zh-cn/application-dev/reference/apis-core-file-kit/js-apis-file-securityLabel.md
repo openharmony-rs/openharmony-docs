@@ -216,7 +216,7 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
   securityLabel.getSecurityLabel(filePath).then((type: string) => {
-    console.log("getSecurityLabel successfully, Label: " + type);
+    console.info("getSecurityLabel successfully, Label: " + type);
   }).catch((err: BusinessError) => {
     console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -261,7 +261,7 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
     if (err) {
       console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.log("getSecurityLabel successfully, Label: " + type);
+      console.info("getSecurityLabel successfully, Label: " + type);
     }
   });
   ```
@@ -306,5 +306,5 @@ getSecurityLabelSync(path:string):string
 ```ts
 let filePath = pathDir + '/test.txt';
 let type = securityLabel.getSecurityLabelSync(filePath);
-console.log("getSecurityLabel successfully, Label: " + type);
+console.info("getSecurityLabel successfully, Label: " + type);
 ```
