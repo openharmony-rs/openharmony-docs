@@ -4783,7 +4783,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getConfiguration<sup>6+</sup>
+### getConfiguration
 
 getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 
@@ -4857,7 +4857,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getConfiguration<sup>6+</sup>
+### getConfiguration
 
 getConfiguration(): Promise&lt;Configuration&gt;
 
@@ -4982,7 +4982,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getDeviceCapability<sup>6+</sup>
+### getDeviceCapability
 
 getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 
@@ -5056,7 +5056,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### getDeviceCapability<sup>6+</sup>
+### getDeviceCapability
 
 getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 
