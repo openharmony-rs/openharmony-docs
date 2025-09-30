@@ -766,14 +766,3 @@ searchParams, (searchResult)=>{
 | LEFTWARD | 1 | 左向，也对应顺时针方向。 |
 | RIGHTWARD | 2 | 右向，也对应逆时针方向。 |
 
-  ## SearchResult
-
-搜索目标执行结果。
-
-**系统能力**：SystemCapability.Mechanic.Core
-
-**系统接口**：该接口为系统接口。
-
-| 名称   | 类型 | 只读 | 可选 | 说明|
-| ----- | ---- | ---- | --- | --- |
-| targetCount | number | 否 | 否 | 搜索到的目标数量。 |
