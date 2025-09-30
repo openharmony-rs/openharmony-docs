@@ -404,7 +404,7 @@ getStringSync(resId: number): string
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getStringSync](#getstringsync10)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getStringSync](#getstringsync10)。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -575,7 +575,7 @@ getStringByNameSync(resName: string): string
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getStringByNameSync](#getstringbynamesync10)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getStringByNameSync](#getstringbynamesync10)。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
