@@ -23,10 +23,6 @@
 
 AppStorage具体UI使用说明，详见[AppStorage(应用全局的UI状态存储)](../../../ui/state-management/arkts-appstorage.md)
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### ref<sup>12+</sup>
 
 static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
@@ -654,7 +650,7 @@ let value: number = AppStorage.Get('PropA') as number; // 47
 
 static Set&lt;T&gt;(propName: string, newValue: T): boolean
 
-在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值。
+在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值，如果newValue的值和propName对应属性的值相同，即不需要做赋值操作，状态变量不会通知UI刷新propName对应属性的值，从API version 12开始，newValue可以为null或undefined。
 
 > **说明：**
 >
@@ -667,13 +663,13 @@ static Set&lt;T&gt;(propName: string, newValue: T): boolean
 | 参数名   | 类型   | 必填 | 说明                        |
 | -------- | ------ | ---- | ------------------------------- |
 | propName | string | 是   | AppStorage中的属性名。          |
-| newValue | T      | 是   | 属性值，不能为null或undefined。 |
+| newValue | T      | 是   | 属性值，从API version 12开始可以为null或undefined。 |
 
 **返回值：**
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 如果AppStorage中不存在propName对应的属性，或者设置的newValue是undefined或者null，返回false。设置成功则返回true。 |
+| boolean | 如果AppStorage中不存在propName对应的属性，返回false。设置成功则返回true。 |
 
 **示例：**
 ```ts
@@ -849,7 +845,7 @@ static IsMutable(propName: string): boolean
 **示例：**
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
-let res: boolean = AppStorage.IsMutable('simpleProp');
+let res: boolean = AppStorage.IsMutable('PropA');
 ```
 
 
@@ -882,12 +878,6 @@ let res: number = AppStorage.Size(); // 1
 
 
 LocalStorage具体UI使用说明，详见[LocalStorage(页面级UI状态存储)](../../../ui/state-management/arkts-localstorage.md)
-
-**卡片能力：** 从API version 9开始，支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor<sup>9+</sup>
 
@@ -1462,9 +1452,7 @@ let storage: LocalStorage = LocalStorage.GetShared();
 
 ## AbstractProperty<sup>12+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+AbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的引用。
 
 ### get<sup>12+</sup>
 
@@ -1559,11 +1547,7 @@ ref1?.info(); //  ref1.info()='PropA'
 
 ## SubscribedAbstractProperty
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中同步的属性。
 
 ### get<sup>9+</sup>
 
@@ -1682,10 +1666,6 @@ info(): string
 | defaultValue | number \| string \| boolean \| Object | 是   | 在PersistentStorage和AppStorage未查询到时，则使用默认值初始化它。从API version 12开始，defaultValue允许为null或undefined。 |
 
 ## PersistentStorage
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储UI状态)](../../../ui/state-management/arkts-persiststorage.md)
 
@@ -1919,10 +1899,6 @@ let keys: Array<string> = PersistentStorage.Keys();
 ## Environment
 
 Environment具体使用说明，详见[Environment(设备环境查询)](../../../ui/state-management/arkts-environment.md)
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### envProp<sup>10+</sup>
 

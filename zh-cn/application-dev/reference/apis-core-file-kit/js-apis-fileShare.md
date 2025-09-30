@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import fileShare from '@ohos.fileshare';
+import { fileShare } from '@kit.CoreFileKit';
 ```
 
 ## OperationMode<sup>11+</sup>
@@ -125,7 +125,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **示例：**
 
@@ -196,7 +196,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **示例：**
 
@@ -266,7 +266,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **示例：**
 
@@ -337,7 +337,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **示例：**
 
@@ -400,7 +400,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 |----------| --------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **示例：**
 
@@ -421,7 +421,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
       fileShare.checkPersistentPermission(policies).then(async (data) => {
         let result: Array<boolean> = data;
         for (let i = 0; i < result.length; i++) {
-          console.log("checkPersistentPermission result: " + JSON.stringify(result[i]));
+          console.info("checkPersistentPermission result: " + JSON.stringify(result[i]));
           if(!result[i]){
             let info: fileShare.PolicyInfo = {
               uri: policies[i].uri, 

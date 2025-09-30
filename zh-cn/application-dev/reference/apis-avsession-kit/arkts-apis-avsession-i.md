@@ -18,10 +18,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-| 名称      | 类型                                              | 必填 | 说明           |
-| --------- | ------------------------------------------------- | ---- | -------------- |
-| command   | [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)     | 是   | 命令。每种命令对应的参数不同，具体的对应关系可查阅[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)里的详细介绍。 |
-| parameter | [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8) &#124; number &#124; string &#124; [LoopMode](arkts-apis-avsession-e.md#loopmode10) | 否   | 命令对应的参数。 |
+| 名称      | 类型                                              | 只读 | 可选 | 说明           |
+| --------- | ------------------------------------------------- | ---- |---- | -------------- |
+| command   | [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)     |否 | 否  | 命令。每种命令对应的参数不同，具体的对应关系可查阅[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)。 |
+| parameter | [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8) &#124; number &#124; string &#124; [LoopMode](arkts-apis-avsession-e.md#loopmode10) | 否 | 是   | 命令对应的参数。 |
 
 ## CastDisplayInfo<sup>12+</sup>
 

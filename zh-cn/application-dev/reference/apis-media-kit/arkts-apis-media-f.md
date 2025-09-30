@@ -114,7 +114,7 @@ media.createAVPlayer().then((video: media.AVPlayer) => {
 
 createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
-异步方式创建音视频录制实例。通过注册回调函数获取返回值。
+创建音视频录制实例。使用callback异步回调。
 
 > **说明：**
 >
@@ -126,7 +126,7 @@ createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数，返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
 
 **错误码：**
 
@@ -156,7 +156,7 @@ media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
 
 createAVRecorder(): Promise\<AVRecorder>
 
-异步方式创建音视频录制实例。通过Promise获取返回值。
+创建音视频录制实例。使用Promise异步回调。
 
 > **说明：**
 >
@@ -170,7 +170,7 @@ createAVRecorder(): Promise\<AVRecorder>
 
 | 类型                                 | 说明                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象，返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
 
 **错误码：**
 
@@ -201,7 +201,7 @@ media.createAVRecorder().then((recorder: media.AVRecorder) => {
 
 createAVTranscoder(): Promise\<AVTranscoder>
 
-异步方式创建视频转码实例，通过Promise获取返回值。
+创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
 
@@ -245,7 +245,7 @@ media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
 
 createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
 
-异步方式创建AVMetadataExtractor实例，通过注册回调函数获取返回值。
+创建AVMetadataExtractor实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -283,7 +283,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
 
-异步方式创建AVMetadataExtractor实例，通过Promise获取返回值。
+创建AVMetadataExtractor实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -323,7 +323,7 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 
 createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
 
-创建音频池实例，使用callback方式异步获取返回值。
+创建音频池实例。使用callback异步回调。
 
 > **说明：**
 >
@@ -374,7 +374,7 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 
 createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
 
-创建音频池实例，通过Promise获取返回值。
+创建音频池实例。使用Promise异步回调。
 
 > **说明：**
 >
@@ -432,7 +432,7 @@ media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) =
 
 createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
 
-创建屏幕录制实例，通过Promise获取返回值。
+创建屏幕录制实例，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -440,7 +440,7 @@ createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象。异步返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
+| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象，返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
 
 **错误码：**
 
@@ -470,7 +470,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 
 createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
 
-创建AVImageGenerator实例，通过回调函数获取返回值。
+创建AVImageGenerator实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -508,7 +508,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
 
 createAVImageGenerator(): Promise\<AVImageGenerator>
 
-创建AVImageGenerator对象，通过Promise获取返回值。
+创建AVImageGenerator对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 

@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
+import { fileExtensionInfo } from '@kit.CoreFileKit';
 ```
 
 ## fileExtensionInfo.DeviceType
