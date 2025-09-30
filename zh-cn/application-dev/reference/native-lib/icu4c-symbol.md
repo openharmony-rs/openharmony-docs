@@ -7,7 +7,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @fang-jinxu-->
 
-|符号类型|符号名|起始版本|
+|符号类型|符号名|API version起始版本|
 | --- | --- | --- |
 |FUNC|UCNV_TO_U_CALLBACK_ESCAPE|12|
 |FUNC|u_charDigitValue|12|
