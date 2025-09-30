@@ -60,7 +60,8 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    ```c++
    // sample_graphics.cpp
    uint64_t width, height;
-   OHNativeWindow *nativeWindow;    // NativeWindow及其宽高需要从XComponent获取
+   // NativeWindow及其宽高需要从XComponent获取
+   OHNativeWindow *nativeWindow;
    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
    int ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_USAGE, usage);
    if (ret != 0) {
