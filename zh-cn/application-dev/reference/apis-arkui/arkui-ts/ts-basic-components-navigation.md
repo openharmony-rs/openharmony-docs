@@ -572,9 +572,9 @@ Navigation双栏模式下，支持设置右侧页面显示默认占位页，占�
 | ------ | -------------- | ---- | ------------------ |
 | placeholder  |[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | 是   |设置Navigation双栏模式下右侧的默认占位页。|
 
-### enableShowHideWithContentCover<sup>21+</sup>
+### enableVisibilityLifecycleWithContentCover<sup>21+</sup>
 
-enableShowHideWithContentCover(isEnabled: Optional&lt;boolean&gt;)
+enableVisibilityLifecycleWithContentCover(isEnabled: Optional&lt;boolean&gt;)
 
 设置是否启用[NavDestination](./ts-basic-components-navdestination.md)页面[onHidden](./ts-basic-components-navdestination.md#onhidden10)、[onShown](./ts-basic-components-navdestination.md#onshown10)生命周期与全模态的联动触发。
 
