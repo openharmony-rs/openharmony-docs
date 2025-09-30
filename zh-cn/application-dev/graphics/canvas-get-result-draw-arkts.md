@@ -23,7 +23,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 通过[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)获取可直接上屏显示的Canvas画布。
 
-1. 导入依赖的相关文件
+1. 导入依赖的相关文件。
    ```ts
    // CanvasGetResult.ets
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
@@ -153,7 +153,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 ## 离屏Canvas画布的获取与显示
 
-1. 导入依赖的相关文件
+1. 导入依赖的相关文件。
    ```ts
    // CanvasGetResult.ets
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
