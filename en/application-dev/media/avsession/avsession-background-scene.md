@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 In practical applications, most audio and video content requires background playback. This guide details how to implement long-duration background playback.
 
@@ -51,7 +51,7 @@ Application playback can be achieved using AudioRenderer, AVPlayer, or other thi
   Additionally, you must correctly handle audio focus. The system has preset default audio focus strategies that manage all playback and recording audio streams based on the type of audio stream and the order in which they start. During application playback or recording, if another audio stream requests focus, the system will handle the focus according to the focus strategy. If the focus of this audio stream changes, the system automatically performs necessary operations (such as pausing, resuming, lowering volume, and restoring volume) and notifies the application of the change through the audio focus event (InterruptEvent). For details, see [Handling Audio Focus Changes](../audio/audio-playback-concurrency.md#handling-audio-focus-changes).
   
   For details about the development, see [Using AudioRenderer to Develop Audio Playback Functions](../audio/using-audiorenderer-for-playback.md).
-  
+
 - AVPlayer: Using AVPlayer can achieve end-to-end playback of raw media resources. To achieve background playback or playback with the screen off, you need to access AVSession and request continuous tasks to prevent playback from being forcibly interrupted by the system. [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) can set the focus management strategy through the **audioInterruptMode** property, which defaults to **SHARE_MODE**.
   
   For details about the development, see [Using AVPlayer to Play Audio (ArkTS)](../media/using-avplayer-for-playback.md).

@@ -5,7 +5,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -15,7 +15,7 @@ The APIs can be used to check whether a specific DRM is supported, create a medi
 
 **File to include**: <multimedia/drm_framework/native_mediakeysystem.h>
 
-**Library**: libnative_drm.z.so
+**Library**: libnative_drm.so
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -187,7 +187,8 @@ Checks whether the device supports the specified DRM solution.
 
 | Type| Description|
 | -- | -- |
-| bool | Check result for the support of the specified DRM solution.|
+| bool | Check result for the support of the DRM solution. **true** if supported, **false** otherwise.  |
+
 
 ### OH_MediaKeySystem_IsSupported2()
 
@@ -213,7 +214,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 | Type| Description|
 | -- | -- |
-| bool | Check result for the support of the combination.|
+| bool |  Check result for the support of the combination. **true** if supported, **false** otherwise.   |
 
 ### OH_MediaKeySystem_IsSupported3()
 
@@ -240,7 +241,7 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 | Type| Description|
 | -- | -- |
-| bool | Check result for the support of the combination.|
+| bool |  Check result for the support of the combination. **true** if supported, **false** otherwise.   |
 
 ### OH_MediaKeySystem_Create()
 

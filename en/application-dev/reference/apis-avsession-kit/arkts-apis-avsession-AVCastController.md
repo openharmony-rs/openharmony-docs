@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -369,6 +369,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102 | The session does not exist. |
 
 **Example**
 
@@ -896,7 +897,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'playbackStateChange'** is triggered when the playback state changes.|
 | filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | Yes  | The value **'all'** indicates that any playback state field change will trigger the event, and **Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>** indicates that only changes to the listed playback state field will trigger the event.|
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | Yes  | Callback used for subscription. The **state** parameter in the callback indicates the changed playback state.                     |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | Yes  | Callback function, where the **state** parameter indicates the new playback state.                     |
 
 **Error codes**
 
@@ -969,7 +970,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'mediaItemChange'** is triggered when the media content being played changes.|
-| callback | Callback<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>         | Yes  | Callback used for subscription. **AVQueueItem** is the media asset that is being played.                     |
+| callback | Callback<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>         | Yes  | Callback function, where the **AVQueueItem** parameter specifies the media asset that is being played.                     |
 
 **Error codes**
 

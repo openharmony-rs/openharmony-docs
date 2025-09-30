@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Media Controller preset in OpenHarmony functions as the controller to interact with audio and video applications, for example, obtaining and displaying media information and delivering playback control commands.
 
@@ -138,7 +138,7 @@ To enable a system application to access the AVSession service as a controller, 
      let index = g_controller.findIndex((controller) => {
        return controller.sessionId === session.sessionId;
      });
-     if (index !== 0) {
+     if (index !== -1) {
        g_controller[index].destroy();
        g_controller.splice(index, 1);
      }
@@ -149,7 +149,7 @@ To enable a system application to access the AVSession service as a controller, 
        return controller.sessionId === session.sessionId;
      });
      // Place the session on the top.
-     if (index !== 0) {
+     if (index !== -1) {
        g_controller.sort((a, b) => {
          return a.sessionId === session.sessionId ? -1 : 0;
        });

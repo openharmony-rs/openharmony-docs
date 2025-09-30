@@ -5,7 +5,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -15,7 +15,7 @@ The APIs can be used to generate media key requests, process responses to media 
 
 **File to include**: <multimedia/drm_framework/native_mediakeysession.h>
 
-**Library**: libnative_drm.z.so
+**Library**: libnative_drm.so
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -45,7 +45,7 @@ The APIs can be used to generate media key requests, process responses to media 
 | [Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession, DRM_MediaKeyStatus *mediaKeyStatus)](#oh_mediakeysession_checkmediakeystatus) | - | Checks the status of media keys.|
 | [Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)](#oh_mediakeysession_clearmediakeys) | - | Clears media keys.|
 | [Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseRequest,int32_t *releaseRequestLen)](#oh_mediakeysession_generateofflinereleaserequest) | - | Generates a request to release offline media keys.|
-| [Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseReponse,int32_t releaseReponseLen)](#oh_mediakeysession_processofflinereleaseresponse) | - | Processes a response to a request for releasing offline media keys.|
+| [Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse,int32_t releaseResponseLen)](#oh_mediakeysession_processofflinereleaseresponse) | - | Processes a response to a request for releasing offline media keys.|
 | [Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysession_restoreofflinemediakeys) | - | Restores offline media keys.|
 | [Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaKeySession, DRM_ContentProtectionLevel *contentProtectionLevel)](#oh_mediakeysession_getcontentprotectionlevel) | - | Obtains the content protection level of a media key session.|
 | [Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *mediaKeySession, const char *mimeType, bool *status)](#oh_mediakeysession_requiresecuredecodermodule) | - | Checks whether secure decoding is required.|
@@ -304,7 +304,7 @@ Generates a request to release offline media keys.
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
 ```
-Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseReponse,int32_t releaseReponseLen)
+Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse,int32_t releaseResponseLen)
 ```
 
 **Description**
@@ -321,8 +321,8 @@ Processes a response to a request for releasing offline media keys.
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
 | uint8_t *offlineMediaKeyId | Pointer to the ID of an offline media key.|
 | int32_t offlineMediaKeyIdLen | Length of the offline media key ID.|
-| uint8_t *releaseReponse | Pointer to the response.|
-| int32_t releaseReponseLen | Length of the response.|
+| uint8_t *releaseResponse | Pointer to the response.|
+| int32_t releaseResponseLen | Length of the response.|
 
 **Returns**
 
