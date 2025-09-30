@@ -197,7 +197,7 @@ setData(dataType: DataType, data: Object): void
 
 addData(dataType: DataType, data: Object): void
 
-应用可通过该接口向picker组件发送增加配置数据，并通过[DataType](#datatype)来区分具体发送的数据类型，当前仅支持SET_BADGE_CONFIGS。
+应用可通过该接口向picker组件发送增加配置数据。通过[DataType](#datatype)来区分具体发送的数据类型，该方法仅支持SET_BADGE_CONFIGS类型。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -214,7 +214,7 @@ addData(dataType: DataType, data: Object): void
 
 deleteData(dataType: DataType, data: Object): void
 
-应用可通过该接口向picker组件发送移除配置数据，并通过[DataType](#datatype)来区分具体发送的数据类型，当前仅支持SET_BADGE_CONFIGS。
+应用可通过该接口向picker组件发送移除配置数据。通过[DataType](#datatype)来区分具体发送的数据类型，该方法仅支持SET_BADGE_CONFIGS类型。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -332,12 +332,12 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 | 名称     | 类型    | 必填  | 说明                                                |
 |----------|--------|-----|---------------------------------------------------|
-| uri      | string                | 否   | 图片、视频的uri（itemType为ThUMBNAIL时支持，否则为空）。</br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
-| mimeType | string                | 否   | 图片、视频的mimeType（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| width    | number                | 否   | 图片、视频的宽（单位：像素）（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| height   | number                | 否   | 图片、视频的高（单位：像素）（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| size     | number                | 否   | 图片、视频的大小（单位：字节）（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
-| duration   | number                | 否   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（itemType为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| uri      | string                | 否   | 图片、视频的uri（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。</br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
+| mimeType | string                | 否   | 图片、视频的mimeType（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
+| width    | number                | 否   | 图片、视频的宽（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
+| height   | number                | 否   | 图片、视频的高（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
+| size     | number                | 否   | 图片、视频的大小（单位：字节）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
+| duration   | number                | 否   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoSubType<sup>21+</sup>   | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否   | 图片类型，见[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)定义，包括movingPhoto、brust等。非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否   | 媒体文件动态范围模型，见[DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)定义，包括HDR、SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 | orientation<sup>21+</sup>   | number             | 否   | 图片/视频方向信息。<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
