@@ -57,7 +57,6 @@
 
 当网页处于非顶部状态或向下抛滑时，此时若需返回网页顶部，可以使用[backToTop](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#backtotop22)方法，开启后通过点击状态栏，打断抛滑并将网页滚动到网页顶部。
 
-
 + 示例代码：
   ```ts
   // xxx.ets
