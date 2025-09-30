@@ -18,6 +18,8 @@ This repository stores device and application development documents provided by 
 
  - master: the latest version.
 
+ - OpenHarmony 6.0 Release (API Level 20). [Learn more](en/release-notes/OpenHarmony-v6.0-release.md)
+
  - OpenHarmony 5.1.0 Release (API Level 18). [Learn more](en/release-notes/OpenHarmony-v5.1.0-release.md)
 
  - OpenHarmony 5.0.3 (API Level 15). [Learn more](en/release-notes/OpenHarmony-v5.0.3-release.md)
@@ -28,23 +30,22 @@ This repository stores device and application development documents provided by 
 
  - OpenHarmony 5.0.0 Release (API Level 12). [Learn more](en/release-notes/OpenHarmony-v5.0.0-release.md)
 
+### Historical Versions No Longer Maintained
 
-### Historical Stable Versions
 
  - OpenHarmony 4.1 Release (API Level 11). [Learn more](en/release-notes/OpenHarmony-v4.1-release.md)
 
  - OpenHarmony 4.0 Release (API Level 10). [Learn more](en/release-notes/OpenHarmony-v4.0-release.md)
 
  - OpenHarmony 3.2 Release (API Level 9). [Learn more](en/release-notes/OpenHarmony-v3.2-release.md)
-   
+
  - OpenHarmony 3.1 Release. [Learn more](en/release-notes/OpenHarmony-v3.1-release.md)
 
  - OpenHarmony 3.0 LTS. [Learn more](en/release-notes/OpenHarmony-v3.0-LTS.md)
 
  - OpenHarmony-1.0.1-Release
 
-[More versions](en/release-notes/)
-[OpenHarmony Version Definitions](en/release-notes/release-definitions/Release-version-definitions.md)
+To learn more about the maintenance strategies for different versions, click [here](https://gitee.com/openharmony/release-management).
 
 
 ## Third-Party Open-Source Software and License Notice
