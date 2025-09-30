@@ -61,16 +61,16 @@
     for (uint32_t i = 0; i < width * height; ++i) {
         // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
         uint32_t n = i / 20 % 3;
-        pixels[i * RGBA_SIZE] = RGBA_MIN; // 红色通道
-        pixels[i * RGBA_SIZE + 1] = RGBA_MIN; // +1表示绿色通道
-        pixels[i * RGBA_SIZE + 2] = RGBA_MIN; // +2表示蓝色通道
-        pixels[i * RGBA_SIZE + 3] = 0xFF; // +3表示不透明度通道
+        pixels[i * 4] = 0x00; // 红色通道
+        pixels[i * 4 + 1] = 0x00; // +1表示绿色通道
+        pixels[i * 4 + 2] = 0x00; // +2表示蓝色通道
+        pixels[i * 4 + 3] = 0xFF; // +3表示不透明度通道
         if (n == 0) {
-            pixels[i * RGBA_SIZE] = 0xFF; // 红色通道赋值，颜色显红色
+            pixels[i * 4] = 0xFF; // 红色通道赋值，颜色显红色
         } else if (n == 1) {
-            pixels[i * RGBA_SIZE + 1] = 0xFF; // +1表示绿色通道赋值，其余通道为0，颜色显绿色
+            pixels[i * 4 + 1] = 0xFF; // +1表示绿色通道赋值，其余通道为0，颜色显绿色
         } else {
-            pixels[i * RGBA_SIZE + 2] = 0xFF; // +2表示蓝色通道赋值，其余通道为0，颜色显蓝色
+            pixels[i * 4 + 2] = 0xFF; // +2表示蓝色通道赋值，其余通道为0，颜色显蓝色
         }
     }
     // 设置位图格式（长、宽、颜色类型、透明度类型）
