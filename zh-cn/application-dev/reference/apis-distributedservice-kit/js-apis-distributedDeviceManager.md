@@ -3,7 +3,7 @@
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->
 <!--Designer: @hwzhangchuang-->
-<!--Tester: @Lyuxin-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 本模块提供分布式设备管理能力。
@@ -622,7 +622,7 @@ stopDiscovering(): void
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void
 
-认证设备。
+认证设备。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -728,7 +728,7 @@ unbindTarget(deviceId: string): void
 
 on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-注册设备状态回调，以便在设备状态发生变化时根据应用捆绑包名通知应用。
+注册设备状态回调，以便在设备状态发生变化时根据应用捆绑包名通知应用。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -781,7 +781,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-取消注册设备状态回调。
+取消注册设备状态回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -834,7 +834,7 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
 
 on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-注册发现设备成功回调监听。
+注册发现设备成功回调监听。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -886,7 +886,7 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
 
 off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-取消注册设备发现成功回调。
+取消注册设备发现成功回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -938,7 +938,7 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
 
 on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;): void
 
-注册设备名称变更回调，以便在设备名称改变时通知应用程序。
+注册设备名称变更回调，以便在设备名称改变时通知应用程序。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -985,7 +985,7 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
 
 off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;): void
 
-取消注册设备名称变更回调监听。
+取消注册设备名称变更回调监听。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1032,7 +1032,7 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
 
 on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
-注册设备发现失败回调监听。
+注册设备发现失败回调监听。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1079,7 +1079,7 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
 off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): void
 
-取消注册设备发现失败回调。
+取消注册设备发现失败回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1126,7 +1126,7 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 
 on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。
+注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1169,7 +1169,7 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-取消注册设备管理服务死亡回调。
+取消注册设备管理服务死亡回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
