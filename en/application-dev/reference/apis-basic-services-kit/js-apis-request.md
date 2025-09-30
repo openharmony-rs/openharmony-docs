@@ -74,7 +74,7 @@ import { request } from '@kit.BasicServicesKit';
 
 uploadFile(context: BaseContext, config: UploadConfig): Promise&lt;UploadTask&gt;
 
-Uploads a file. This API uses a promise to return the result. HTTP is supported. You can use [on('complete'|'fail')](#oncomplete-fail9) to obtain the upload success or error information.
+Uploads a file. This API uses a promise to return the result. HTTP is supported. You can use [on('complete'|'fail')](#oncomplete--fail9) to obtain the upload success or error information.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -140,7 +140,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
-Uploads a file. This API uses an asynchronous callback to return the result. HTTP is supported. You can use [on('complete'|'fail')](#oncomplete-fail9) to obtain the upload success or error information.
+Uploads a file. This API uses an asynchronous callback to return the result. HTTP is supported. You can use [on('complete'|'fail')](#oncomplete--fail9) to obtain the upload success or error information.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -779,7 +779,7 @@ Describes the configuration of an upload task.
 | data | Array&lt;[RequestData](#requestdata)&gt; | No| No| Form data in the request body.|
 
 ## TaskState<sup>9+</sup>
-Implements a **TaskState** object, which is the callback parameter of the [on('complete' | 'fail')](#oncomplete-fail9) and [off('complete' | 'fail')](#offcomplete-fail9) APIs.
+Implements a **TaskState** object, which is the callback parameter of the [on('complete' | 'fail')](#oncomplete--fail9) and [off('complete' | 'fail')](#offcomplete--fail9) APIs.
 
 **System capability**: SystemCapability.MiscServices.Upload
 
@@ -5675,4 +5675,3 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     console.error(`Failed to delete the download group, Code: ${err.code}, message: ${err.message}`);
   });
   ```
-<!--no_check-->
