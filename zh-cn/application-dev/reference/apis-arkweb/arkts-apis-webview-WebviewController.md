@@ -25,16 +25,20 @@ constructor(webTag?: string)
 > **说明：**
 >
 > ArkTS-Dyn：不传参，new webview.WebviewController()表示构造函数为空，不使用C API时不需要传参。
-> 
+>
 > ArkTS-Sta：不支持不传参，不区分多实例时可传入""或undefined。
-> 
+>
 > 传参且参数是合法字符串：new webview.WebviewController("xxx")，用于开发者区分多实例，并调用对应实例下的方法。
-> 
+>
 > 传入参数为空：new webview.WebviewController("")或new webview.WebviewController(undefined)，该场景下参数无意义，无法区分多个实例，直接返回undefined，需要开发者判断返回值是否正常。
 >
 > Web组件销毁后会解绑WebViewController，之后调用WebviewController的非静态方法会抛出17100001异常，应注意调用时机和捕获异常，防止进程异常退出。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -123,7 +127,7 @@ class WebObj {
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("")
+  controller: webview.WebviewController = new webview.WebviewController(undefined)
   @State webTestObj: WebObj = new WebObj();
 
   build() {
@@ -885,7 +889,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -960,7 +964,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -2849,7 +2853,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -5948,7 +5952,7 @@ enableSafeBrowsing(enable: boolean): void
 <!--RP1End-->
 
 > **说明：**
-> 
+>
 > 该接口不生效，调用不会产生任何实际效果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -8246,7 +8250,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 **示例：**
 
-ArkTS-Dyn示例: 
+ArkTS-Dyn示例:
 
 接口推荐配合动态组件使用，使用离线的Web组件用于生成字节码缓存，并在适当的时机加载业务用Web组件使用这些字节码缓存。下方是代码示例：
 
@@ -8798,7 +8802,7 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback\<SnapshotResult>): v
 > **说明：**
 >
 > 仅支持对渲染进程上的资源进行截图：静态图片和文本。
-> 
+>
 > 如果页面有视频则截图时会显示该视频的占位图片，没有占位图片则显示空白。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -10248,6 +10252,10 @@ getAttachState(): ControllerAttachState
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型         | 说明                 |
@@ -10257,6 +10265,7 @@ getAttachState(): ControllerAttachState
 **示例：**
 点击Button可以获取当前WebViewController的绑定状态并输出日志。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -10288,13 +10297,54 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getAttachState')
+        .onClick(() => {
+          try {
+            if (this.controller.getAttachState() == webview.ControllerAttachState.ATTACHED) {
+              console.log('Controller is attached.');
+              this.controller.refresh();
+            } else {
+              console.log('Controller is unattached.');
+              this.controller.refresh();
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## on('controllerAttachStateChange')<sup>20+</sup>
 
 on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachState&gt;): void
 
 注册WebViewController绑定状态事件，通过Callback方式获取WebViewController绑定状态的变化通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControllerAttachStateChange](#oncontrollerattachstatechange22)。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -10307,13 +10357,43 @@ on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachSt
 
 请参考[off](#offcontrollerattachstatechange20)。
 
+## onControllerAttachStateChange<sup>22+</sup>
+
+onControllerAttachStateChange(callback: Callback&lt;ControllerAttachState&gt;): void
+
+注册WebViewController绑定状态事件，通过Callback方式获取WebViewController绑定状态的变化通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#oncontrollerattachstatechange20)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
+
+**示例：**
+
+请参考[offControllerAttachStateChange](#offcontrollerattachstatechange22)。
+
 ## off('controllerAttachStateChange')<sup>20+</sup>
 
 off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttachState&gt;): void
 
 取消WebViewController绑定状态事件的注册，取消后将不再接收Callback通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControllerAttachStateChange](#offcontrollerattachstatechange22)。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -10326,6 +10406,8 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 
 on可以注册多个回调，当绑定状态改变后会获取当前的绑定状态并触发这些回调。off可以取消注册某个回调，也可以取消注册所有回调。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -10337,7 +10419,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   aboutToAppear() {
-    // 构建回调函数
+    // 构建回调函数。
     const handleControllerAttachStateChange = (state: webview.ControllerAttachState) => {
       if (state == webview.ControllerAttachState.UNATTACHED) {
         console.log('handleControllerAttachStateChange: Controller is unattached.');
@@ -10346,21 +10428,21 @@ struct WebComponent {
       }
     };
     try {
-      // 注册回调以接收controller绑定状态更改通知
+      // 注册回调以接收controller绑定状态更改通知。
       this.controller.on('controllerAttachStateChange', handleControllerAttachStateChange);
-      // 取消指定注册回调
+      // 取消指定注册回调。
       this.controller.off('controllerAttachStateChange', handleControllerAttachStateChange);
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     try {
-      // 注册回调以接收controller绑定状态更改通知
+      // 注册回调以接收controller绑定状态更改通知。
       this.controller.on('controllerAttachStateChange', (state: webview.ControllerAttachState)=>{
         if (state == webview.ControllerAttachState.UNATTACHED) {
           console.log('Controller is unattached.');
         } else {
           console.log('Controller is attached.');
-          // 取消所有注册回调
+          // 取消所有注册回调。
           this.controller.off('controllerAttachStateChange');
         }
       })
@@ -10376,19 +10458,104 @@ struct WebComponent {
   }
 }
 ```
+
+## offControllerAttachStateChange<sup>22+</sup>
+
+offControllerAttachStateChange(callback?: Callback&lt;ControllerAttachState&gt;): void
+
+取消WebViewController绑定状态事件的注册，取消后将不再接收Callback通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#offcontrollerattachstatechange20)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。 |
+
+**示例：**
+
+onControllerAttachStateChange可以注册多个回调，当绑定状态改变后会获取当前的绑定状态并触发这些回调。offControllerAttachStateChange可以取消注册某个回调，也可以取消注册所有回调。
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  aboutToAppear() {
+    // 构建回调函数。
+    const handleControllerAttachStateChange = (state: webview.ControllerAttachState) => {
+      if (state == webview.ControllerAttachState.UNATTACHED) {
+        console.log('handleControllerAttachStateChange: Controller is unattached.');
+      } else {
+        console.log('handleControllerAttachStateChange: Controller is attached.');
+      }
+    };
+    try {
+      // 注册回调以接收controller绑定状态更改通知。
+      this.controller.onControllerAttachStateChange(handleControllerAttachStateChange);
+      // 取消指定注册回调
+      this.controller.offControllerAttachStateChange(handleControllerAttachStateChange);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+    try {
+      // 注册回调以接收controller绑定状态更改通知。
+      this.controller.onControllerAttachStateChange((state: webview.ControllerAttachState)=>{
+        if (state == webview.ControllerAttachState.UNATTACHED) {
+          console.log('Controller is unattached.');
+        } else {
+          console.log('Controller is attached.');
+          // 取消所有注册回调。
+          this.controller.offControllerAttachStateChange();
+        }
+      })
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## waitForAttached<sup>20+</sup>
 
-waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
+ArkTS-Dyn: waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
+
+ArkTS-Sta: waitForAttached(timeout: int):Promise&lt;ControllerAttachState&gt;
 
 异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型                                    | 必填 | 说明              |
 | ------------- | --------------------------------------- | ---- | ----------------- |
-| timeout | number | 是   | 异步等待时长（单位ms，取值范围0-300000）。 |
+| timeout | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 异步等待时长（单位ms，取值范围0-300000）。 |
 
 **返回值：**
 
@@ -10401,6 +10568,7 @@ waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
 在初始化阶段设置WebViewController等待绑定完成，超时时间为1000ms。若绑定完成或者超时则会触发回调。
 
+ArkTS-Dyn示例:
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -10436,6 +10604,34 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例:
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  aboutToAppear() {
+    this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState)=>{
+      if (state == webview.ControllerAttachState.ATTACHED) {
+        console.log('Controller is attached.');
+        this.controller.refresh();
+      }
+    })
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
 
 ## setWebDebuggingAccess<sup>20+</sup>
 
@@ -10907,7 +11103,7 @@ export default class EntryAbility extends UIAbility {
     }
     AppStorage.setOrCreate("abilityWant", want);
     console.log("EntryAbility onCreate done");
-  } 
+  }
 }
 ```
 

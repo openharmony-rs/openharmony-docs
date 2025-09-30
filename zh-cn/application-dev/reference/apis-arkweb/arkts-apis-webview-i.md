@@ -159,6 +159,10 @@ WebViewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
 | UNATTACHED | 0 | 未绑定状态。 |
