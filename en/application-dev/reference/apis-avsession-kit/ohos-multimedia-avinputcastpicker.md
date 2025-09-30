@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides the functionality to create an **AVInputCastPicker** component, which offers a unified entry for discovering and connecting recording devices.
 
@@ -90,7 +90,7 @@ struct Index {
   }
 
   @Builder
-  customPickerBuilder(): void {
+  customPickerBuilder() {
     Image(this.pickerImage)
       .width('100%')
       .height('100%')
