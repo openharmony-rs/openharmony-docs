@@ -499,7 +499,7 @@ try {
 
 on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback\<DeviceChangeAction>): void
 
-监听音频可选设备连接状态变化事件（当音频可选设备连接状态发生变化时触发）。使用callback异步回调。
+监听音频可选设备连接状态变化事件（当音频可选设备连接状态发生变化时触发）。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -781,7 +781,7 @@ try {
 
 on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChangedEvent\>): void
 
-监听当前输入设备变化事件（当前输入设备发生变化时触发）。使用callback异步回调。
+监听当前输入设备变化事件（当前输入设备发生变化时触发）。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
