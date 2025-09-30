@@ -1,4 +1,10 @@
 # AttributeUpdater
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 **AttributeUpdater** directly set attributes to a component to trigger UI re-renders, without marking them as state variables.
 
@@ -31,7 +37,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 >  
 >  6. **AttributeUpdater** does not support operations related to state management, such as switching between light and dark modes.
 
-## Initializer
+## Initializer\<T>
 type Initializer\<T> = () => T
 
 Defines a decorator for updating attributes.
@@ -40,10 +46,18 @@ Defines a decorator for updating attributes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Return value**
+
+| Type    |                Description        |
+| -------- | ------------------------- |
+|  T       | Current component.             |
+
 ## AttributeUpdater<T, C = Initializer\<T>>
 Represents the implementation class of [AttributeModifier](arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifiert). You need to customize a class to inherit **AttributeUpdater**.
 
 **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. It is required only when **updateConstructorParams** is used.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,23 +100,42 @@ This example shows how to use **initializeModifier** to initialize attribute val
 import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
+  // Triggered when the AttributeUpdater object is used for the first time.
   initializeModifier(instance: ButtonAttribute): void {
-    instance.backgroundColor('#ff2787d9')
-      .width('50%')
-      .height(30);
+    instance.backgroundColor('#ffd5d5d5')
+      .labelStyle({ maxLines: 3 })
+      .width('80%')
+  }
+
+  // Triggered when the AttributeUpdater object is used or updated.
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.borderWidth(1);
   }
 }
 
 @Entry
 @Component
-struct updaterDemo1 {
+struct Index {
   modifier: MyButtonModifier = new MyButtonModifier();
+  @State flushTheButton: string = 'Button';
 
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button(this.flushTheButton)
           .attributeModifier(this.modifier)
+          .onClick(() => {
+            // Modify the attribute by using attribute of AttributeUpdater.
+            // Note that you need to use the attributeModifier attribute method of the component to establish the binding relationship between the component and AttributeUpdater.
+            this.modifier.attribute?.backgroundColor('#ff2787d9').labelStyle({ maxLines: 5 });
+          })
+          .margin('10%')
+        Button('Trigger Button Update')
+          .width('80%')
+          .labelStyle({ maxLines: 2 })
+          .onClick(() => {
+            this.flushTheButton = this.flushTheButton + ' Updated' ;
+          })
       }
       .width('100%')
     }
@@ -110,7 +143,7 @@ struct updaterDemo1 {
   }
 }
 ```
-![attributeUpdater1](figures/attribute-updater1.PNG)
+![attributeUpdater1](figures/attribute-updater1.gif)
 
 
 ### attribute
@@ -176,6 +209,12 @@ Represents construction parameters used for updating component attributes.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type            | Description                                                        |
+| -------------------- | ------------------------------------------------------------ |
+| C   |**C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component.|
 
 **Example**
 

@@ -555,7 +555,7 @@ struct RefreshExample {
 
 ### Example 6: Implementing Pull-Down-to-Refresh and Pull-Up-to-Load-More
 
-This example demonstrates how to combine the [Refresh](#refresh) component with the [List](ts-container-list.md) component to implement pull-down-to-refresh and pull-up-to-load-more features.
+This example demonstrates how to combine the **Refresh** component with the [List](ts-container-list.md) component to implement pull-down-to-refresh and pull-up-to-load-more features.
 
 ```ts
 // xxx.ets

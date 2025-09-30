@@ -1,4 +1,10 @@
 # Foreground Blur
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 You can apply foreground blur effects to a component.
 
@@ -83,18 +89,38 @@ Applies a foreground blur style to the component. Compared with [foregroundBlurS
 ## ForegroundBlurStyleOptions
 Inherited from [BlurStyleOptions](#blurstyleoptions).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+Defines the foreground blur options.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## BlurStyleOptions
 
-Defines the background blur options.
+Defines the foreground blur options.
 
-| Name                       | Type                                               | Mandatory| Description                                                        |
-| --------------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| colorMode     | [ThemeColorMode](ts-container-with-theme.md#themecolormode10) | No  | Color mode used for the foreground blur.<br>Default value: **ThemeColorMode.SYSTEM**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| adaptiveColor | [AdaptiveColor](#adaptivecolor10)   | No  | Adaptive color mode.<br>Default value: **AdaptiveColor.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| blurOptions<sup>11+</sup> | [BlurOptions](#bluroptions11)         | No   | Grayscale blur parameters.<br>Default value: **grayscale: [0,0]**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| scale<sup>12+</sup> | number   | No  | Foreground blur scale.<br>Default value: **1.0**<br>Value range: [0.0, 1.0]<br>**1.0** indicates the highest blur degree.<br>**0.0** indicates the lowest blur degree.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name                       | Type                                               | Read-Only| Optional| Description                                                        |
+| --------------------------- | ------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
+| colorMode     | [ThemeColorMode](#themecolormode) | No| Yes | Color mode used for the foreground blur.<br>Default value: **ThemeColorMode.SYSTEM**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| adaptiveColor | [AdaptiveColor](#adaptivecolor10)   | No| Yes  | Adaptive color mode.<br>Default value: **AdaptiveColor.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| blurOptions<sup>11+</sup> | [BlurOptions](#bluroptions11)         | No| Yes   | Grayscale blur parameters.<br>Default value: **grayscale: [0,0]**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| scale<sup>12+</sup> | number   | No| Yes | Foreground blur scale.<br>Default value: **1.0**<br>Value range: [0.0, 1.0]<br>**1.0** indicates the highest blur degree.<br>**0.0** indicates the lowest blur degree.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+
+## ThemeColorMode
+
+Enumerates the color modes.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Value| Description      |
+| ------ | --- | ------- |
+| SYSTEM | - | System color mode.|
+| LIGHT  | - | Light color mode. |
+| DARK   | - | Dark color mode. |
 
 ## AdaptiveColor<sup>10+</sup>
 
@@ -133,6 +159,7 @@ struct ForegroundBlurStyleDemo {
   build() {
     Column() {
       Text('Thin Material').fontSize(30).fontColor(0xCCCCCC)
+      // Replace $r("app.media.bg") with the image resource file you use.
       Image($r('app.media.bg'))
         .width(300)
         .height(350)
