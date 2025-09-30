@@ -68,6 +68,8 @@
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：20
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
@@ -375,6 +377,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：20
 
 ## ohos.permission.SUPPORT_APP_SERVICE_EXTENSION
@@ -389,6 +393,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -405,6 +411,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：20
 
 ## ohos.permission.SUPPORT_INSTALL_ON_U1
@@ -419,6 +427,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -435,6 +445,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：20
 
 ## ohos.permission.SET_NET_EXT_ATTRIBUTE
@@ -450,6 +462,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：20
 
 ## ohos.permission.MANAGE_ANTIVIRUS
@@ -462,6 +476,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -476,6 +492,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：20
 
 ## ohos.permission.CALL_TPM_CMD
@@ -488,6 +506,8 @@ UDID(Unified Device ID)是设备的唯一标识。
 
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：20
 
