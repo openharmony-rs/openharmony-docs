@@ -669,7 +669,7 @@ try {
 
 clearSelectedMediaInputDevice(): Promise<void\>
 
-清空通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。
+清空通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
