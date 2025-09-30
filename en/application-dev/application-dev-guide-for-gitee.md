@@ -1,4 +1,10 @@
 # Application Development Overview
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @zhang_yixin13-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @zhang_yixin13-->
 
 The application development documents provide reference for you to develop applications using the APIs provided by OpenHarmony. They walk you through how to use JavaScript APIs to develop applications on the standard system.
 
@@ -30,13 +36,11 @@ Then, equip yourself for developing the key features, with the following guideli
 - [WebGL](webgl/Readme-EN.md)
 - [Media](media/Readme-EN.md)
 - [Security](security/Readme-EN.md)
-- [AI](ai/Readme-EN.md)
 - [Connectivity](connectivity/Readme-EN.md)
 - [Telephony Service](telephony/Readme-EN.md)
 - [Data Management](database/Readme-EN.md)
 - [File Management](file-management/Readme-EN.md)
 - [Task Management](task-management/Readme-EN.md)
-- [Device Management](device/Readme-EN.md)
 - [Device Usage Statistics](device-usage-statistics/Readme-EN.md)
 - [DFX](dfx/Readme-EN.md)
 - [Internationalization](internationalization/Readme-EN.md)
@@ -51,15 +55,15 @@ DevEco Studio is a high-performance integrated development environment (IDE) rec
 
 ### Hands-On Tutorials
 
-To make you better understand how functions work together and jumpstart your application development projects, we provide stripped-down, real-world [samples](https://gitee.com/openharmony/applications_app_samples/blob/master/README.md) and [codelabs](https://gitee.com/openharmony/codelabs/blob/master/README.md).
+To make you better understand how functions work together and jumpstart your application development projects, we provide stripped-down, real-world [samples](https://gitcode.com/openharmony/applications_app_samples/blob/master/README.md) and [codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md).
 
 ### API References
 
-[API References](Reference/Readme-EN.md) encompass all components and APIs provided by every kit in the OpenHarmony SDK, helping you use and integrate APIs more effectively.
+[API References](reference/Readme-EN.md) encompass all components and APIs provided by every kit in the OpenHarmony SDK, helping you use and integrate APIs more effectively.
 
 
 ### Readme
 
-For details about the principles and basic information of each subsystem, see the README file in [docs/en/readme](../readme).
+For details about the principles and basic information of each subsystem, see the README file in `[docs/en/readme](../readme)`.
 
  <!--no_check--> 
