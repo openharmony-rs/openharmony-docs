@@ -15,7 +15,7 @@
 ### 非原子操作
 
 ```javascript
-......
+// ...
 // 非原子操作，进行10000次++
 @Concurrent
 function normalProcess(int32Array: Int32Array) {
@@ -30,11 +30,11 @@ function atomicsProcess(int32Array: Int32Array) {
     Atomics.add(int32Array, 0, 1);
   }
 }
-......
+// ...
 @State result: string = "计算结果：";
 private taskNum: number = 2;
 private scroller: Scroller = new Scroller();
-......
+// ...
 Button("非原子操作")
   .width("80%")
   .fontSize(30)
@@ -53,7 +53,7 @@ Scroll(this.scroller) {
   }
 }.height("60%")
 .margin({ top: 30 })
-......
+// ...
 // 根据传入的值isAtomics判断是否使用原子操作
 sharedArrayBufferUsage(isAtomics: boolean) {
   // 创建长度为4的SharedArrayBuffer对象
@@ -94,7 +94,7 @@ sharedArrayBufferUsage(isAtomics: boolean) {
 下面修改一下代码，将自增操作改为使用Atomics.add()方法的原子操作。
 
 ```javascript
-......
+// ...
 Button("原子操作")
   .width("80%")
   .fontSize(30)
@@ -103,7 +103,7 @@ Button("原子操作")
   .onClick(async () => {
     this.sharedArrayBufferUsage(true);
   })
-......
+// ...
 
 ```
 点击按钮查看计算结果，就会发现不论计算多少次，结果一直都是20000。这是因为，原子操作是不可中断的一个或者一系列操作，可以保证在A线程执行完取值、计算、写入内存这三个步骤之前，不会被B线程中断，也就不会发生非原子操作示例中B线程取到旧值的情况，而是每次都能拿到A线程写入内存的新值。所以，在使用SharedArrayBuffer共享内存时，一定要注意使用原子操作保证同步性，否则就可能会造成数据的紊乱。
@@ -123,9 +123,15 @@ export class NonReentrantLock {
     this.flag= new Int32Array(sab); // 其视图为只有一位的int数组（1 = 4bytes * 8 / 32bit）
   }
    
-  lock(): void {...}
-  tryLock(): boolean {...}
-  unlock(): void {...}
+  lock(): void {
+    // ...
+  }
+  tryLock(): boolean {
+    // ...
+  }
+  unlock(): void {
+    // ...
+  }
 }
 
 ```
