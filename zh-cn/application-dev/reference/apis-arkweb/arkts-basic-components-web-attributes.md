@@ -3998,3 +3998,54 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
   </body>
   </html>
   ```
+
+## zoomControlAccess<sup>22+</sup>
+
+zoomControlAccess(zoomControlAccess: boolean)
+
+设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+当属性没有显式调用时，默认允许通过组合按键进行缩放。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| zoomControlAccess | boolean | 是    | 设置是否支持组合按键的默认缩放行为。true表示支持，false表示不支持。传入null或undefined时为false。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .zoomControlAccess(true)
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试网页</title>
+  </head>
+  <body>
+    <h1>zoomControlAccess Demo</h1>
+    <span>You can zoom in/out page when zoomControlAccess is true.</span>
+  </body>
+  </html>
+  ```
