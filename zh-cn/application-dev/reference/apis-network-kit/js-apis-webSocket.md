@@ -311,7 +311,7 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5 * 1024 * 1024-16字节数据，超过该大小会返回401错误码。 |
 
 **返回值：**
 
