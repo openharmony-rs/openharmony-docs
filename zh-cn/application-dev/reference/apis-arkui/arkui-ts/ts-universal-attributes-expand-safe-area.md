@@ -294,7 +294,7 @@ struct SafeAreaExample3 {
 }
 ```
 
-![expandSafeArea3](figures/expandSafeArea3.png)
+![expandSafeArea3](figures/expandSafeArea3.gif)
 
 ### 示例4（设置键盘避让模式为压缩）
 
@@ -338,7 +338,7 @@ struct KeyboardAvoidExample1 {
 }
 ```
 
-![keyboardAvoidMode1](figures/keyboardAvoidMode1.jpg)
+![keyboardAvoidMode1](figures/keyboardAvoidMode1.gif)
 
 ### 示例5（设置键盘避让模式为上抬）
 
@@ -382,7 +382,7 @@ struct KeyboardAvoidExample2 {
 }
 ```
 
-![keyboardAvoidMode1](figures/keyboardAvoidMode2.jpg)
+![keyboardAvoidMode1](figures/keyboardAvoidMode2.gif)
 
 ### 示例6（切换避让模式）
 
@@ -440,17 +440,7 @@ struct KeyboardAvoidExample3 {
   }
 }
 ```
-OFFSET模式
-
-![keyboardAvoidMode3-1](figures/keyboardAvoidMode3-1.jpg)
-
-RESIZE模式
-
-![keyboardAvoidMode3-2](figures/keyboardAvoidMode3-2.jpg)
-
-NONE模式
-
-![keyboardAvoidMode3-3](figures/keyboardAvoidMode3-3.jpg)
+![keyboardAvoidMode3](figures/keyboardAvoidMode3.gif)
 
 ### 示例7（滚动类容器扩展安全区）
 
