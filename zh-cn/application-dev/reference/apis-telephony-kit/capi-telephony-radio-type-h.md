@@ -1,4 +1,10 @@
 # telephony_radio_type.h
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @19821829310-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
