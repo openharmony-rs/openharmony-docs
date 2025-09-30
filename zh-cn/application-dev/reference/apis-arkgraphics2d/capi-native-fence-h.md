@@ -15,6 +15,8 @@
 
 **起始版本：** 20
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **相关模块：** [NativeFence](capi-nativefence.md)
 
 ## 汇总
