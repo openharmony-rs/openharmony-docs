@@ -3624,6 +3624,76 @@ forceEnableZoom(enable: boolean)
   </html>
   ```
 
+## backToTop<sup>22+</sup>
+
+backToTop(backToTop: boolean)
+
+设置Web组件是否启用点击状态栏网页回到顶部功能。当属性没有显式调用时，默认开启状态栏网页回到顶部功能。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| backToTop  | boolean | 是   | 是否启用Web点击状态栏回顶，true表示启用，false表示不启用。<br>传入undefined或null时为true。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .backToTop(true)
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+          .blue {
+            background-color: lightblue;
+          }
+          .green {
+            background-color: lightgreen;
+          }
+          .blue, .green {
+           font-size:16px;
+           height:200px;
+           text-align: center;       /* 水平居中 */
+           line-height: 200px;       /* 垂直居中（值等于容器高度） */
+          }
+      </style>
+  </head>
+  <body>
+  <div class="blue" >webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  </body>
+  </html>
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
