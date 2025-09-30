@@ -8,7 +8,7 @@
 
 \@ComponentV2装饰器用于装饰自定义组件：
 
-- 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括\@Local、\@Param、\@Once、\@Event、\@Provider、\@Consumer。
+- 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括[\@Local](./arkts-static-new-local.md)、[\@Param](./arkts-static-new-param.md)、[\@Once](./arkts-static-new-once.md)、[\@Event](./arkts-static-new-event.md)、[\@Provider、\@Consumer](./arkts-static-new-provider-and-consumer.md)。
 
 
 
@@ -32,5 +32,5 @@
 
 ## 限制
 
-- \@ComponentV2装饰的自定义组件不支持LocalStorage。
+- \@ComponentV2装饰的自定义组件不支持[LocalStorage](./arkts-static-localstorage.md)。
 - 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。

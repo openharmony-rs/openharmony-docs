@@ -440,9 +440,10 @@ struct MyComponent {
         .onClick((e: ClickEvent) => {
           this.columnColor = Color.Red;
         })
-      Button("change textColor").onClick((e: ClickEvent) =>{
-        this.textColor = Color.Pink;
-      })
+      Button('change textColor')
+        .onClick((e: ClickEvent) => {
+          this.textColor = Color.Pink;
+        })
     }
     .backgroundColor(this.columnColor)
   }
