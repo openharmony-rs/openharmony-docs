@@ -461,7 +461,6 @@
 |FUNC|utrans_register|12|
 |FUNC|utrans_setFilter|12|
 |FUNC|utrans_toRules|12|
-|FUNC|utrans_transIncrementalUChars|12|
 |FUNC|utrans_transUChars|12|
 |FUNC|utrans_unregisterID|12|
 |FUNC|utext_close|15|
@@ -555,3 +554,4 @@
 |FUNC|u_getVersion|21|
 |FUNC|utf8_back1SafeBody|21|
 |FUNC|utf8_prevCharSafeBody|21|
+|FUNC|utrans_transIncrementalUChars|21|
