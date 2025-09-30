@@ -562,7 +562,8 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 ```
 
 ## searchTarget
-searchTarget(target: TargetInfo, params: SearchParams): Promise<SearchResult>
+searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
+
 旋转机械体一周搜索目标。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Mechanic.Core
@@ -579,7 +580,7 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise<SearchResult>
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise\<[Result](#result)> | Promise对象，返回搜索的结果 |
+| Promise\<[SearchResult](#searchresult)> | Promise对象，返回搜索的结果 |
 
 **错误码：**
 
