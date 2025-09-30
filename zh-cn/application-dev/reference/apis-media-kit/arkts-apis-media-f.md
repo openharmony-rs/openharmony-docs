@@ -114,7 +114,7 @@ media.createAVPlayer().then((video: media.AVPlayer) => {
 
 createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
-异步方式创建音视频录制实例。通过注册回调函数获取返回值。
+创建音视频录制实例。使用callback异步回调。
 
 > **说明：**
 >
@@ -126,7 +126,7 @@ createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数，返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
 
 **错误码：**
 
@@ -156,7 +156,7 @@ media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
 
 createAVRecorder(): Promise\<AVRecorder>
 
-异步方式创建音视频录制实例。通过Promise获取返回值。
+创建音视频录制实例。使用Promise异步回调。
 
 > **说明：**
 >
@@ -170,7 +170,7 @@ createAVRecorder(): Promise\<AVRecorder>
 
 | 类型                                 | 说明                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象，返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
 
 **错误码：**
 
@@ -432,7 +432,7 @@ media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) =
 
 createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
 
-创建屏幕录制实例，通过Promise获取返回值。
+创建屏幕录制实例，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -440,7 +440,7 @@ createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象。异步返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
+| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象，返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
 
 **错误码：**
 
