@@ -204,7 +204,8 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
    @Concurrent
    async function createPixelMapAsync() {
-     const color : ArrayBuffer = new ArrayBuffer(4000000);  // 40000为需要创建的像素buffer大小，取值为：height * width *4
+     // 4000000为需要创建的像素buffer大小，取值为：height * width *4
+     const color : ArrayBuffer = new ArrayBuffer(4000000);  
      let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 1000, width: 1000 } };
      const pixel = await image.createPixelMap(color, opts);
      return pixel;
