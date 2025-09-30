@@ -28,10 +28,11 @@
 此处以使用画刷设置叠加混合模式为例（为了防止混合模式的效果被背景色干扰，示例中的canvas并未设置背景色，使用的是默认的黑色背景），关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置目标像素颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 将目标像素的画刷效果设置到Canvas中
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建矩形对象
@@ -39,7 +40,7 @@ OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 600, 600);
 // 绘制矩形（目标像素）
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 设置源像素颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MIN, 0xFF));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF));
 // 设置混合模式为叠加模式
 OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_PLUS);
 // 将源像素的画刷效果设置到Canvas中
@@ -75,6 +76,7 @@ OH_Drawing_PointDestroy(point);
 此处以绘制矩形虚线路径效果为例，关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
@@ -132,6 +134,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 此处以绘制矩形并使用画刷设置线性渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 开始点
 OH_Drawing_Point *startPt = OH_Drawing_PointCreate(20, 20);
 // 结束点
@@ -177,6 +180,7 @@ OH_Drawing_PointDestroy(endPt);
 此处以绘制矩形并使用画刷设置径向渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 圆心坐标
 OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
 // 半径
@@ -184,7 +188,7 @@ float radius = 600;
 // 颜色数组
 uint32_t gColors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
 // 相对位置数组
-float_t gPos[] = {0.0f, 0.25f, 0.75f};
+float gPos[] = {0.0f, 0.25f, 0.75f};
 // 创建径向渐变着色器效果
 OH_Drawing_ShaderEffect *colorShaderEffect =
     OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, OH_Drawing_TileMode::REPEAT);
@@ -221,6 +225,7 @@ OH_Drawing_PointDestroy(centerPt);
 此处以绘制矩形并使用画刷设置扇形渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 中心点
 OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
 // 颜色数组
@@ -304,6 +309,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 此处以绘制矩形并使用画刷设置具有5x4颜色矩阵的颜色滤波器效果为例，关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷抗锯齿
@@ -312,10 +318,10 @@ OH_Drawing_BrushSetAntiAlias(brush, true);
 OH_Drawing_BrushSetColor(brush, 0xffff0000);
 // 设置颜色矩阵
 const float matrix[20] = {
-1, 0, 0, 0, 0,
-0, 1, 0, 0, 0,
-0, 0, 0.5f, 0.5f, 0,
-0, 0, 0.5f, 0.5f, 0
+    1, 0, 0, 0, 0,
+    0, 1, 0, 0, 0,
+    0, 0, 0.5f, 0.5f, 0,
+    0, 0, 0.5f, 0.5f, 0
 };
 
 // 创建滤波器颜色
@@ -364,6 +370,7 @@ OH_Drawing_FilterDestroy(filter);
 此处以绘制矩形并使用画笔添加模糊效果的图像滤波器效果为例，关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置画笔抗锯齿
@@ -419,6 +426,7 @@ OH_Drawing_FilterDestroy(filter);
 此处以绘制矩形并使用画笔设置蒙版滤波器效果为例，关键示例和效果示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置画笔抗锯齿

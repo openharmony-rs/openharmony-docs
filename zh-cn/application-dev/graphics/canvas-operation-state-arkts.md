@@ -65,6 +65,7 @@
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为蓝色
@@ -121,6 +122,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -151,6 +153,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -181,6 +184,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -222,6 +226,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置颜色为红色

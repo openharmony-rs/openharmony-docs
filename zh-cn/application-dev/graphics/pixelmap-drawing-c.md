@@ -21,16 +21,19 @@
    在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库：
 
    ```c++
+   // CMakeLists.txt
    target_link_libraries(entry PUBLIC libnative_drawing.so)
    ```
    <!-- [ndk_graphics_draw_cmake_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
    ```c++
+   // CMakeLists.txt
    target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    ```
    <!-- [ndk_graphics_draw_cmake_hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
    ```c++
+   // CMakeLists.txt
    target_link_libraries(entry PUBLIC libpixelmap.so)
    ```
    <!-- [ndk_graphics_draw_cmake_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
@@ -38,6 +41,7 @@
 2. 导入依赖的相关头文件。
 
    ```c++
+   // sample_graphics.cpp
    #include <multimedia/image_framework/image/pixelmap_native.h>
    ```
    <!-- [ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
@@ -47,6 +51,7 @@
    PixelMap需要从图像框架定义的像素图对象（OH_PixelmapNative）中获取，所以需要先通过OH_PixelmapNative_CreatePixelmap()创建OH_PixelmapNative。该函数接受4个参数，第一个参数为图像像素数据的缓冲区，用于初始化PixelMap的像素。第二个参数是缓冲区长度。第三个参数是位图格式（包括长、宽、颜色类型、透明度类型等）。第四个参数即OH_PixelmapNative对象，作为出参使用。
    
    ```c++
+   // sample_graphics.cpp
    // 图片宽高分别为 600 * 400
     uint32_t width = 600;
     uint32_t height = 400;
@@ -86,6 +91,7 @@
    通过OH_Drawing_PixelMapGetFromOhPixelMapNative()函数从OH_PixelmapNative中获取PixelMap。
 
    ```c++
+   // sample_graphics.cpp
    OH_Drawing_PixelMap *pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
    ```
    <!-- [ndk_graphics_draw_create_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
@@ -97,6 +103,7 @@
    其中采样选项对象（OH_Drawing_SamplingOptions）表示了从原始像素数据（即Bitmap）中采样以生成新的像素值的具体方式，具体可见[drawing_sampling_options.h](../reference/apis-arkgraphics2d/capi-drawing-sampling-options-h.md)。
 
    ```c++
+   // sample_graphics.cpp
    // PixelMap中像素的截取区域
    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 600, 400);
    // 画布中显示的区域
@@ -112,6 +119,7 @@
 6. 绘制完成后释放相关对象。
 
    ```c++
+   // sample_graphics.cpp
    OH_PixelmapNative_Release(pixelMapNative);
    delete[] pixels;
    ```

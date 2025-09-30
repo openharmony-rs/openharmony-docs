@@ -55,10 +55,11 @@
 简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画笔线宽为40
 OH_Drawing_PenSetWidth(pen, 40);
 // 设置画布的画笔
@@ -104,10 +105,11 @@ OH_Drawing_PenDestroy(pen);
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画笔线宽为20
 OH_Drawing_PenSetWidth(pen, 20);
 // 设置画布的画笔
@@ -142,10 +144,11 @@ OH_Drawing_RectDestroy(rect);
 此处以使用画笔绘制圆为例，简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画笔线宽为20
 OH_Drawing_PenSetWidth(pen, 20);
 // 设置画布的画笔
@@ -182,10 +185,11 @@ OH_Drawing_PointDestroy(point);
 此处以使用画笔和画刷绘制五角星为例，示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画笔线宽为10
 OH_Drawing_PenSetWidth(pen, 10);
 // 设置 画笔转角样式
@@ -194,7 +198,7 @@ OH_Drawing_PenSetJoin(pen, LINE_ROUND_JOIN);
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建画刷，此例对闭合路径进行了颜色填充，所以需要使用画刷
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MAX, RGBA_MIN));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0x00));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 int len = 551;
@@ -245,10 +249,11 @@ OH_Drawing_PathDestroy(path);
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置画刷填充颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画布的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 矩形区域1
@@ -285,6 +290,7 @@ OH_Drawing_RectDestroy(rect2);
 简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷的填充颜色
@@ -320,6 +326,7 @@ OH_Drawing_RectDestroy(rect);
 简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷的填充颜色

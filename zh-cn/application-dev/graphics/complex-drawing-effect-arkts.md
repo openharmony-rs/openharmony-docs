@@ -28,12 +28,14 @@
 关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 ```
 <!-- [arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ```ts
+// ComplexEffect.ets
 function drawRenderNode(canvas: drawing.Canvas) {
   canvas.saveLayer(null, null);
   const brushCircle = new drawing.Brush();
@@ -75,6 +77,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
 此处以绘制矩形虚线路径效果为例，关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置线宽
@@ -136,6 +139,7 @@ canvas.detachPen();
 此处以绘制矩形并使用画刷设置线性渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 let startPt: common2D.Point = { x: 100, y: 100 };
 let endPt: common2D.Point = { x: 900, y: 900 };
 let colors = [0xFFFFFF00, 0xFFFF0000, 0xFF0000FF];
@@ -172,6 +176,7 @@ canvas.detachBrush();
 此处以绘制矩形并使用画刷设置径向渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 let centerPt: common2D.Point = { x: 500, y: 500 };
 let colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
 // 创建径向渐变着色器
@@ -207,6 +212,7 @@ canvas.detachBrush();
 此处以绘制矩形并使用画刷设置扇形渐变着色器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 let centerPt: common2D.Point = { x: 500, y: 500 };
 let colors = [0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00];
 // 创建扇形渐变着色器
@@ -283,6 +289,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 此处以绘制矩形并使用画刷设置具有5x4颜色矩阵的颜色滤波器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色
@@ -335,6 +342,7 @@ canvas.detachBrush();
 此处以绘制矩形并使用画笔添加模糊效果的图像滤波器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 // 设置画笔
 let pen = new drawing.Pen();
 // 设置线宽
@@ -380,6 +388,7 @@ canvas.detachPen();
 此处以绘制矩形并使用画笔设置蒙版滤波器效果为例，关键示例和效果示意图如下所示：
 
 ```ts
+// ComplexEffect.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置线宽

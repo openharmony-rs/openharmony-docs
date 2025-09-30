@@ -61,6 +61,7 @@
 - 第四个参数表示是否需要进行抗锯齿处理。
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷填充颜色为蓝色
@@ -117,10 +118,11 @@ OH_Drawing_BrushDestroy(brush);
 简单示例和示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置填充颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建在水平和垂直方向分别平移300px的矩阵对象
@@ -149,10 +151,11 @@ OH_Drawing_MatrixDestroy(matrix);
 简单示例和示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置填充颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建旋转的矩阵对象，三个参数分别是旋转角度和旋转中心坐标
@@ -181,10 +184,11 @@ OH_Drawing_MatrixDestroy(matrix);
 简单示例和示意图如下所示：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置填充颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建缩放的矩阵对象，4个参数分别是旋转中心坐标和水平垂直方向的缩放因子
@@ -224,10 +228,11 @@ OH_Drawing_RectDestroy(rect);
 ### 开发示例
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画笔线宽为20
 OH_Drawing_PenSetWidth(pen, 20);
 // 在画布中设置画笔
