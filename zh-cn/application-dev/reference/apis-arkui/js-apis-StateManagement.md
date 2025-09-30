@@ -32,10 +32,6 @@ import { AppStorageV2, PersistenceV2, UIUtils } from '@kit.ArkUI';
 
 AppStorageV2具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../ui/state-management/arkts-new-appstoragev2.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### connect
 
 static&nbsp;connect\<T extends object\>( </br >
@@ -161,10 +157,6 @@ const keys: Array<string> = AppStorageV2.keys();
 ## PersistenceV2
 
 继承自[AppStorageV2](#appstoragev2)，PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management/arkts-new-persistencev2.md)。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### globalConnect<sup>18+</sup>
 
@@ -338,10 +330,6 @@ globalConnect参数类型。
 ## UIUtils
 
 UIUtils提供一些方法，用于处理状态管理相关的数据转换。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### getTarget
 
@@ -937,10 +925,6 @@ struct SampleComp {
 
 含有任意入参的类构造器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### new
 
 new(...args: any): T
@@ -1059,10 +1043,6 @@ struct Index {
 ## TypeConstructor\<T\>
 
 类构造函数。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### new
 
@@ -1285,8 +1265,6 @@ struct CompV2 {
 
 只读数据绑定的泛型类，可以绑定任意类型的数据。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### value<sup>20+</sup>
 get value(): T
 
@@ -1342,8 +1320,6 @@ struct CompV2 {
 ## MutableBinding\<T\><sup>20+</sup>
 
 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### value<sup>20+</sup>
 set value(newValue: T)
