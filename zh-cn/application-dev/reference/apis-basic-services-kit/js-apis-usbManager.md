@@ -47,7 +47,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 >
 > 在USB主机模式未开启、USB服务未正确初始化、USB服务连接失败（如开发者模式关闭）、权限不足或其他系统错误时，接口会返回`undefined`，注意需要对接口返回值做判空处理。
 >
-> 列表的序列号无法直接获取，通过requestRight获取权限后，可以自行调用控制传输获取序列号。
+> 三方应用没有权限获取serial字段读取设备序列号，需要通过requestRight申请权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
