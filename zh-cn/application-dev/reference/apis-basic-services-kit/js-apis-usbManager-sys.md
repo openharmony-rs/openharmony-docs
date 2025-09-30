@@ -51,7 +51,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -96,7 +96,7 @@ usbFunctionsFromString(funcs: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -138,7 +138,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -156,7 +156,7 @@ let ret: string = usbManager.usbFunctionsToString(funcs);
 
 setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
 
 **说明：**
 
@@ -180,7 +180,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -221,7 +221,7 @@ getCurrentFunctions(): FunctionType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -256,7 +256,7 @@ getPorts(): Array\<USBPort\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -297,7 +297,7 @@ getSupportedModes(portId: number): PortModeType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -314,7 +314,7 @@ let ret: number = usbManager.getSupportedModes(0);
 
 setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定的端口支持的角色模式，包含充电角色、数据传输角色。
+设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
 
 **说明：**
 
@@ -340,7 +340,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -391,7 +391,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -455,7 +455,7 @@ getFunctionsFromString(funcs: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -501,7 +501,7 @@ getStringFromFunctions(funcs: FunctionType): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -521,7 +521,7 @@ let ret: string = usbManager.getStringFromFunctions(funcs);
 
 setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
 
 **说明：**
 
@@ -547,7 +547,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -594,7 +594,7 @@ getDeviceFunctions(): FunctionType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
@@ -633,7 +633,7 @@ getPortList(): Array\<USBPort\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -674,7 +674,7 @@ getPortSupportModes(portId: number): PortModeType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -694,7 +694,7 @@ let ret: number = usbManager.getPortSupportModes(0);
 
 setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定的端口支持的角色模式，包含充电角色、数据传输角色。
+设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
 
 **说明：**
 
@@ -722,7 +722,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -767,7 +767,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 **错误码：**
 
-以下错误码的详细介绍请参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
