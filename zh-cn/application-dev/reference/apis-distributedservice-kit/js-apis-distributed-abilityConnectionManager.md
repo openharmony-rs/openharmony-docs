@@ -238,7 +238,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
-创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。
+创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -438,7 +438,7 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-注册connect事件的回调监听。
+注册connect事件的回调监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
