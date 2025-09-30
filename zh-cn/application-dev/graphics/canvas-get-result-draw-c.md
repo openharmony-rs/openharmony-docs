@@ -390,7 +390,8 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 
    ```c++
    // sample_graphics.cpp
-   void* dstPixels = malloc(cWidth * cHeight * 4); // 4 for rgba
+   // 4 for rgba
+   void* dstPixels = malloc(cWidth * cHeight * 4);
    OH_Drawing_CanvasReadPixels(gpuCanvas, &imageInfo, dstPixels, 4 * cWidth, 0, 0);
    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, dstPixels, 4 * cWidth);
    OH_Drawing_CanvasDrawBitmap(screenCanvas, bitmap, 0, 0);
