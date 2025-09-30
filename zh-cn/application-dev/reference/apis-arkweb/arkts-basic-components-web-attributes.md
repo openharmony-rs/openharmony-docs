@@ -3815,6 +3815,57 @@ backToTop(backToTop: boolean)
   </html>
   ```
 
+## blankScreenDetectionConfig<sup>22+</sup>
+
+blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
+
+设置白屏检测的策略配置，如使能开关、检测时间和检测策略等。当属性没有显式调用时，默认关闭白屏检测。
+
+> **说明：**
+>
+> - 根据detectConfig的配置，在网页加载后检测到白屏或者近似白屏现象，可触发回调[onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22)。
+> - 设置后下次导航生效。
+> - 当用户与网页发生交互后，不再会继续检查是否白屏。
+> - 不支持layoutMode为WebLayoutMode.FIT_CONTENT的场景。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| detectConfig | [BlankScreenDetectionConfig](./arkts-basic-components-web-i.md#blankscreendetectionconfig22) | 是    | 白屏检测的策略配置。 |
+
+**示例：**
+
+  ```ts
+  // blankScreenDetectionConfig.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .blankScreenDetectionConfig({
+            enable: true,
+            detectionTiming: [2, 4, 6, 8],
+            contentfulNodesCountThreshold: 4,
+            detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
+          })
+          .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
+            console.log(`Found blank screen on ${event.url}.`);
+            console.log(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.log(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+          })
+      }
+    }
+  }
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
