@@ -411,3 +411,25 @@ Web布局模式的配置。
 | PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
 | PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
 | PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+
+## DetectedBlankScreenReason<sup>22+</sup>
+
+白屏的具体原因。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| NO_CONTENTFUL_NODES        | 0 | 没有命中任何有内容的节点。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN时可能触发。         |
+| SUB_THRESHOLD_CONTENTFUL_NODES | 1 | 命中有内容节点的数量小于等于阈值。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN，且开发者设置了节点数量阈值contentfulNodesCountThreshold时可能触发。 |
+
+## BlankScreenDetectionMethod<sup>22+</sup>
+
+白屏检测使用的检测策略的方法。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
+
