@@ -248,7 +248,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
 | 参数名   | 类型                     | 必填 | 说明         |
 | -------- | ------------------------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5 * 1024 * 1024-16字节数据，超过该大小会返回401错误码。 |
 | callback | AsyncCallback\<boolean\> | 是   | 回调函数。true:发送请求创建成功；false:发送请求创建失败。   |
 
 **错误码：**
@@ -980,7 +980,7 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | ---------- | ---------------------- | --------------------- | ------------------------------------------------ |
-| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。 |
+| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。最大支持发送5 * 1024 * 1024-16字节数据，超过该大小会返回401错误码。 |
 | connection | [WebSocketConnection](#websocketconnection19) | 是  | 发送的客户端信息。                              |
 
 **返回值：**
