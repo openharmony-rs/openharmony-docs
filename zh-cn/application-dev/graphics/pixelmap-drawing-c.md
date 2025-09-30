@@ -100,7 +100,7 @@
    // PixelMap中像素的截取区域
    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 600, 400);
    // 画布中显示的区域
-   OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
+   OH_Drawing_Rect *dst = OH_Drawing_RectCreate(200, 200, 800, 600);
    // 采样选项对象
    OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);

@@ -35,7 +35,7 @@ OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA
 // 将目标像素的画刷效果设置到Canvas中
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建矩形对象
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value600_, value600_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 600, 600);
 // 绘制矩形（目标像素）
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 设置源像素颜色
@@ -45,9 +45,9 @@ OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_PLUS);
 // 将源像素的画刷效果设置到Canvas中
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建圆心的点对象
-OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
+OH_Drawing_Point *point = OH_Drawing_PointCreate(600, 600);
 // 绘制圆（源像素）
-OH_Drawing_CanvasDrawCircle(canvas, point, value300_);
+OH_Drawing_CanvasDrawCircle(canvas, point, 300);
 // 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象
@@ -89,7 +89,7 @@ OH_Drawing_PenSetPathEffect(pen, pathEffect);
 // 在画布上设置画笔，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画笔
@@ -135,7 +135,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 // 开始点
 OH_Drawing_Point *startPt = OH_Drawing_PointCreate(20, 20);
 // 结束点
-OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
 // 颜色数组
 uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 // 相对位置数组
@@ -149,7 +149,7 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
   // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
@@ -178,9 +178,9 @@ OH_Drawing_PointDestroy(endPt);
 
 ```c++
 // 圆心坐标
-OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(value500_, value500_);
+OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
 // 半径
-float radius = value600_;
+float radius = 600;
 // 颜色数组
 uint32_t gColors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
 // 相对位置数组
@@ -194,7 +194,7 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
   // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
@@ -222,7 +222,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 ```c++
 // 中心点
-OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(value500_, value500_);
+OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
 // 颜色数组
 uint32_t colors[3] = {0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00};
 // 相对位置数组
@@ -236,7 +236,7 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
   // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
@@ -329,7 +329,7 @@ OH_Drawing_BrushSetFilter(brush, filter);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
@@ -384,7 +384,7 @@ OH_Drawing_PenSetFilter(pen, filter);
 // 在画布上设置画笔，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画笔
@@ -438,7 +438,7 @@ OH_Drawing_PenSetFilter(pen, filter);
 // 在画布上设置画笔，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画笔

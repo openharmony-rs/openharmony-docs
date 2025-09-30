@@ -32,16 +32,19 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 4. 将自定义NodeController进行显示。
 
 ```ts
+// CanvasGetResult.ets
 import { UIContext, NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
 ```
 <!-- [arkts_graphics_draw_import_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
 ```ts
+// CanvasGetResult.ets
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 <!-- [arkts_graphics_draw_import_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
 ```ts
+// CanvasGetResult.ets
 // 1. 自定义 RenderNode
 class MyRenderNodeDirectDisplay extends RenderNode {
   async draw(context: DrawContext) {
@@ -90,6 +93,7 @@ class MyNodeControllerDirectDisplay extends NodeController {
 <!-- [arkts_graphics_draw_direct_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
 ```ts
+// CanvasGetResult.ets
 @Entry
 @Component
 struct RenderTest {
@@ -140,6 +144,7 @@ struct RenderTest {
 5. 将自定义NodeController进行显示。
 
 ```ts
+// CanvasGetResult.ets
 import { UIContext, NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { taskpool } from '@kit.ArkTS';
@@ -148,7 +153,8 @@ import { drawing } from '@kit.ArkGraphics2D';
 <!-- [arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
 ```ts
-/ 1. 自定义RenderNode
+// CanvasGetResult.ets
+// 1. 自定义RenderNode
 export class MyRenderNodeIndirectDisplay extends RenderNode {
   private pixelMap: image.PixelMap | null = null;
   setPixelMap(pixelMap: image.PixelMap) {
@@ -217,6 +223,7 @@ export class MyNodeControllerIndirectDisplay extends NodeController {
 <!-- [arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
 
 ```ts
+// CanvasGetResult.ets
 @Entry
 @Component
 struct RenderTest {

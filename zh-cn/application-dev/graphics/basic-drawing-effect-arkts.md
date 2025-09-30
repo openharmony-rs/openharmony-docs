@@ -36,6 +36,7 @@
 1. 创建画刷Brush对象。
 
    ```ts
+   // BasicEffect.ets
    const brush = new drawing.Brush();
    ```
    <!-- [arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -44,6 +45,7 @@
    可使用setColor()接口设置填充颜色。
 
    ```ts
+   // BasicEffect.ets
    brush.setColor(0xFF, 0xFF, 0x00, 0x00);
    ```
    <!-- [arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -51,6 +53,7 @@
    可使用setAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
 
    ```ts
+   // BasicEffect.ets
    brush.setAntiAlias(true);
    ```
    <!-- [arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -58,6 +61,7 @@
 3. 使用attachBrush()接口给Canvas画布设置画刷。
 
    ```ts
+   // BasicEffect.ets
    canvas.attachBrush(brush);
    ```
    <!-- [arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -67,6 +71,7 @@
 5. 当不需要填充效果时，可以使用detachBrush()接口去除画布中的画刷。
 
    ```ts
+   // BasicEffect.ets
    canvas.detachBrush();
    ```
    <!-- [arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -98,6 +103,7 @@
 1. 创建画笔Pen对象。
 
    ```ts
+   // BasicEffect.ets
    let pen = new drawing.Pen();
    ```
    <!-- [arkts_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -105,6 +111,7 @@
 2. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
    ```ts
+   // BasicEffect.ets
    canvas.attachPen(pen);
    ```
    <!-- [arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -114,6 +121,7 @@
    - 可使用setColor()接口设置画笔颜色，对应为绘制图形轮廓时使用的颜色。
 
       ```ts
+      // BasicEffect.ets
       // 设置颜色为红色
       pen.setColor(0xFF, 0xFF, 0x00, 0x00);
       ```
@@ -122,6 +130,7 @@
    - 可使用setStrokeWidth()接口设置画笔的线宽。
 
       ```ts
+      // BasicEffect.ets
       pen.setStrokeWidth(15);
       ```
       <!-- [arkts_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -129,6 +138,7 @@
    - 可使用setAntiAlias()接口设置画笔抗锯齿，以使图形绘制边缘更平滑。
 
       ```ts
+      // BasicEffect.ets
       pen.setAntiAlias(true);
       ```
       <!-- [arkts_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -136,6 +146,7 @@
    - 可使用setCapStyle()接口设置画笔线帽样式。
 
       ```ts
+      // BasicEffect.ets
       pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
       ```
       <!-- [arkts_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -151,6 +162,7 @@
    - 可使用setJoinStyle()接口设置画笔转角样式。
 
       ```ts
+      // BasicEffect.ets
       pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
       ```
       <!-- [arkts_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
@@ -168,6 +180,7 @@
 5. 当不需要描边效果时，可以使用detachPen()接口去除画布中的画笔。
 
    ```ts
+   // BasicEffect.ets
    canvas.detachPen();
    ```
    <!-- [arkts_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->

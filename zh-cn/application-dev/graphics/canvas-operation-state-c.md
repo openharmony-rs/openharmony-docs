@@ -67,12 +67,12 @@ OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetColor(brush, 0xff0000ff);
 // 在画布中设置画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(400, 400, 1200, 1200);
 // 裁剪矩形区域
 OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
-OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
+OH_Drawing_Point *point = OH_Drawing_PointCreate(600, 600);
 // 绘制圆形
-OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
+OH_Drawing_CanvasDrawCircle(canvas, point, 600);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁画刷对象并收回其占的内存
@@ -124,11 +124,11 @@ OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建在水平和垂直方向分别平移300px的矩阵对象
-OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(value300_, value300_);
+OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(300, 300);
 // 对Canvas进行矩阵变换
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // 绘制矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -156,11 +156,11 @@ OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建旋转的矩阵对象，三个参数分别是旋转角度和旋转中心坐标
-OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, value200_, value300_);
+OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, 200, 300);
 // 对Canvas进行矩阵变换
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // 绘制矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -188,11 +188,11 @@ OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建缩放的矩阵对象，4个参数分别是旋转中心坐标和水平垂直方向的缩放因子
-OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, value200_, value300_);
+OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, 200, 300);
 // 对Canvas进行矩阵变换
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // 绘制矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -237,13 +237,13 @@ OH_Drawing_CanvasSave(canvas);
 OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(2, 2, 2, 2);
 // 放大画布
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
-OH_Drawing_Point* point = OH_Drawing_PointCreate(value300_, value300_);
+OH_Drawing_Point* point = OH_Drawing_PointCreate(300, 300);
 // 绘制圆形，因为执行过放大操作，所以此时绘制的是大圆
-OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
+OH_Drawing_CanvasDrawCircle(canvas, point, 200);
 // 恢复操作，将恢复到没有放大的原始状态
 OH_Drawing_CanvasRestore(canvas);
 // 绘制圆形，因为已经恢复没有放大的原始状态，所以此时绘制的小圆
-OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
+OH_Drawing_CanvasDrawCircle(canvas, point, 200);
 // 去除画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁画笔对象并收回其占的内存

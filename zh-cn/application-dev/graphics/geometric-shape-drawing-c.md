@@ -65,15 +65,15 @@ OH_Drawing_PenSetWidth(pen, 40);
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 绘制5个点
 AdaptationUtil* adaptationUtil = AdaptationUtil::GetInstance();
-OH_Drawing_Point2D point1 = {value200_, value200_};
+OH_Drawing_Point2D point1 = {200, 200};
 OH_Drawing_CanvasDrawPoint(canvas, &point1);
-OH_Drawing_Point2D point2 = {value400_, value400_};
+OH_Drawing_Point2D point2 = {400, 400};
 OH_Drawing_CanvasDrawPoint(canvas, &point2);
-OH_Drawing_Point2D point3 = {value600_, value600_};
+OH_Drawing_Point2D point3 = {600, 600};
 OH_Drawing_CanvasDrawPoint(canvas, &point3);
-OH_Drawing_Point2D point4 = {value800_, value800_};
+OH_Drawing_Point2D point4 = {800, 800};
 OH_Drawing_CanvasDrawPoint(canvas, &point4);
-OH_Drawing_Point2D point5 = {value1000_, value1000_};
+OH_Drawing_Point2D point5 = {1000, 1000};
 OH_Drawing_CanvasDrawPoint(canvas, &point5);
 // 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
@@ -151,9 +151,9 @@ OH_Drawing_PenSetWidth(pen, 20);
 // 设置画布的画笔
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建圆心点
-OH_Drawing_Point *point = OH_Drawing_PointCreate(value700_, value700_);
+OH_Drawing_Point *point = OH_Drawing_PointCreate(700, 700);
 // 基于圆心点和半径在画布上绘制圆
-OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
+OH_Drawing_CanvasDrawCircle(canvas, point, 600);
 // 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁各类对象
@@ -197,9 +197,9 @@ OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MAX, RGBA_MIN));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-int len = value551_;
-float aX = value630_;
-float aY = value551_;
+int len = 551;
+float aX = 630;
+float aY = 551;
 float dX = aX - len * std::sin(18.0f);
 float dY = aY + len * std::cos(18.0f);
 float cX = aX + len * std::sin(18.0f);
@@ -253,11 +253,11 @@ OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 矩形区域1
 OH_Drawing_Region *region1 = OH_Drawing_RegionCreate();
-OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(value100_, value100_, value600_, value600_);
+OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(100, 100, 600, 600);
 OH_Drawing_RegionSetRect(region1, rect1);
 // 矩形区域2
 OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
-OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(300, 300, 900, 900);
 OH_Drawing_RegionSetRect(region2, rect2);
 // 两个矩形区域组合
 OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR);
@@ -291,7 +291,7 @@ OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetColor(brush, 0xffff0000);
 // 设置画布的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, value800_, value800_);
+OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 800, 800);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
@@ -327,7 +327,7 @@ OH_Drawing_BrushSetColor(brush, 0xffff0000);
 // 设置画布的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建矩形
-OH_Drawing_Rect* rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value600_);
+OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 900, 600);
 // 创建圆角矩形
 OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 30, 30);
 // 绘制圆角矩形

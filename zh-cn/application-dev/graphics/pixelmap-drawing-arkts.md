@@ -21,13 +21,13 @@
 
    ```ts
    // 图片宽高
-  let width = 600;
-  let height = 400;
-  // 字节长度，RGBA_8888每个像素占4字节
-  let bytelength = width * height * 4;
-  const color: ArrayBuffer = new ArrayBuffer(bytelength);
-  let bufferArr = new Uint8Array(color);
-  for (let i = 0; i < bufferArr.length; i += 4) {
+   let width = 600;
+   let height = 400;
+   // 字节长度，RGBA_8888每个像素占4字节
+   let bytelength = width * height * 4;
+   const color: ArrayBuffer = new ArrayBuffer(bytelength);
+   let bufferArr = new Uint8Array(color);
+   for (let i = 0; i < bufferArr.length; i += 4) {
     // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
     bufferArr[i] = 0x00;
     bufferArr[i+1] = 0x00;
@@ -41,14 +41,14 @@
     } else {
       bufferArr[i+2] = 0xFF;
     }
-  }
-  // 设置像素属性
-  let opts: image.InitializationOptions =
-    { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
-  // 创建PixelMap
-  pixelMap = image.createPixelMapSync(color, opts);
+   }
+   // 设置像素属性
+   let opts: image.InitializationOptions =
+     { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
+   // 创建PixelMap
+   pixelMap = image.createPixelMapSync(color, opts);
    ```
-   <!-- [arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+<!-- [arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 2. （可选）编辑PixelMap中的像素。如果没有编辑像素的需求，此步骤可以省略。
 
@@ -88,7 +88,7 @@
   // 为了使图片完全显示，修改绘制起点参数为（0，0）
   canvas.drawImage(pixelMap, 0, 0);
    ```
-   <!-- [arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+<!-- [arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 3. 绘制PixelMap。
 
