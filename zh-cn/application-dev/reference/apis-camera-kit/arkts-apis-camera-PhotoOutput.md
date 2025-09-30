@@ -1179,7 +1179,7 @@ function unregisterPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): voi
 
 ## isPhotoQualityPrioritizationSupported<sup>21+</sup>
 
-isPhotoQualityPrioritizationSupported(quality: PhotoQualityPrioritization): boolean
+isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPrioritization): boolean
 
 检查是否支持指定的拍照画质优先策略。
 
@@ -1191,7 +1191,7 @@ isPhotoQualityPrioritizationSupported(quality: PhotoQualityPrioritization): bool
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | ----------- | ---------------------- | ---- | ------------------------------------------ |
-| quality | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | 是  | 要检查的拍照画质优先策略。 |
+| qualityPrioritization | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | 是  | 要检查的拍照画质优先策略。 |
 
 **返回值：**
 
@@ -1205,7 +1205,7 @@ isPhotoQualityPrioritizationSupported(quality: PhotoQualityPrioritization): bool
 
 | 错误码ID      | 错误信息     |
 | ------------- | --------------- |
-| 7400201 |  Camera service fatal error. |
+| 7400201 |  Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
 **示例：**
 
@@ -1214,10 +1214,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import camera from '@ohos.multimedia.camera';
 let photoOutput: camera.PhotoOutput;
 
-function isPhotoQualityPrioritizationSupported(quality: camera.PhotoQualityPrioritization): boolean {
+function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
   let isSupported: boolean = false;
   try {
-    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(qualityPrioritization);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The isPhotoQualityPrioritizationSupported call failed. error code: ${err.code}`);
@@ -1228,13 +1228,11 @@ function isPhotoQualityPrioritizationSupported(quality: camera.PhotoQualityPrior
 
 ## setPhotoQualityPrioritization<sup>21+</sup>
 
-setPhotoQualityPrioritization(quality: PhotoQualityPrioritization): void
+setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization): void
 
 设置拍照画质优先策略。
 
-进行设置之前，需要先检查：
-
-1. 设备是否支持指定的拍照画质优先策略，可使用方法[isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21)。
+设置之前，可先使用方法[isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21)对设备是否支持指定的拍照画质优先策略进行检查。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -1244,7 +1242,7 @@ setPhotoQualityPrioritization(quality: PhotoQualityPrioritization): void
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| quality  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | 是  | 要设置的拍照画质优先策略。 |
+| qualityPrioritization  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | 是  | 要设置的拍照画质优先策略。 |
 
 **错误码：**
 
@@ -1253,7 +1251,7 @@ setPhotoQualityPrioritization(quality: PhotoQualityPrioritization): void
 | 错误码ID    | 错误信息                                           |
 | -------- |----------------------------------------------- |
 | 7400102  | Operation not allowed. |
-| 7400201  | Camera service fatal error. |
+| 7400201  | Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
 **示例：**
 
@@ -1262,9 +1260,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import camera from '@ohos.multimedia.camera';
 let photoOutput: camera.PhotoOutput;
 
-function setPhotoQualityPrioritization(quality: camera.PhotoQualityPrioritization): void {
+function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {
   try {
-    photoOutput.setPhotoQualityPrioritization(quality);
+    photoOutput.setPhotoQualityPrioritization(qualityPrioritization);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);
