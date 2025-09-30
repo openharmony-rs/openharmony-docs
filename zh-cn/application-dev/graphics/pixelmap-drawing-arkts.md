@@ -25,8 +25,8 @@
    let width = 600;
    let height = 400;
    // 字节长度，RGBA_8888每个像素占4字节
-   let bytelength = width * height * 4;
-   const color: ArrayBuffer = new ArrayBuffer(bytelength);
+   let byteLength = width * height * 4;
+   const color: ArrayBuffer = new ArrayBuffer(byteLength);
    let bufferArr = new Uint8Array(color);
    for (let i = 0; i < bufferArr.length; i += 4) {
      // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
