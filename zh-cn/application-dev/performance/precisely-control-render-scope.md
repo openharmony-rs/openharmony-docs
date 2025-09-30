@@ -23,18 +23,18 @@ class ClassA {
 @Component
 struct CompA {
   @ObjectLink a: ClassA;
-  private sizeFont: number = 30; // the private variable does not invoke rendering
+  private sizeFont: number = 30; // 私有变量不会执行渲染
 
   private isRenderText(): number {
-    this.sizeFont++; // the change of sizeFont will not invoke rendering, but showing that the function is called
+    this.sizeFont++; // sizeFont改变时组件不会刷新，但是可以看到方法是在被调用的
     console.info("Text prop2 is rendered");
     return this.sizeFont;
   }
 
   build() {
     Column() {
-      Text(this.a.prop2) // when this.a.prop2 changes, it will invoke Text rerendering
-        .fontSize(this.isRenderText()) //if the Text renders, the function isRenderText will be called
+      Text(this.a.prop2) // 当this.a.prop2的值改变时，会执行组件渲染
+        .fontSize(this.isRenderText()) // 当Text组件刷新时，会执行isRenderText方法
     }
   }
 }
@@ -98,7 +98,7 @@ class UIStyle {
 struct SpecialImage {
   @ObjectLink uiStyle: UIStyle;
 
-  private isRenderSpecialImage(): number { // function to show whether the component is rendered
+  private isRenderSpecialImage(): number { // 展示组件是否会被刷新的方法
     console.info("SpecialImage is rendered");
     return 1;
   }
@@ -112,7 +112,7 @@ struct SpecialImage {
         x: this.uiStyle.translateImageX,
         y: this.uiStyle.translateImageY
       })
-      .opacity(this.isRenderSpecialImage()) // if the Image is rendered, it will call the function
+      .opacity(this.isRenderSpecialImage()) // 如果Image组件刷新，会执行isRenderSpecialImage方法
   }
 }
 
@@ -120,7 +120,7 @@ struct SpecialImage {
 struct CompA {
   @ObjectLink uiStyle: UIStyle;
 
-  // the following functions are used to show whether the component is called to be rendered
+  // 用于展示组件是否被刷新
   private isRenderColumn(): number {
     console.info("Column is rendered");
     return 1;
@@ -143,9 +143,9 @@ struct CompA {
 
   build() {
     Column() {
-      // when you compile this code in API9, IDE may tell you that
+      // 当使用API9编译代码时，IDE会提示
       // "Assigning the '@ObjectLink' decorated attribute 'uiStyle' to the '@ObjectLink' decorated attribute 'uiStyle' is not allowed. <etsLint>"
-      // But you can still run the code by Previewer
+      // 但仍然可以通过预览器（Priviewer）运行代码
       SpecialImage({
         uiStyle: this.uiStyle
       })
@@ -271,20 +271,20 @@ class ClassA {
 @Component
 struct CompA {
   @ObjectLink a: ClassA;
-  private sizeFont: number = 30; // the private variable does not invoke rendering
+  private sizeFont: number = 30; // 私有变量不会执行组件刷新
 
   private isRenderText(): number {
-    this.sizeFont++; // the change of sizeFont will not invoke rendering, but showing that the function is called
+    this.sizeFont++; // sizeFont的改变不会进行组件刷新，但是可以展示该方法被调用
     console.info("Text prop2 is rendered");
     return this.sizeFont;
   }
 
   build() {
     Column() {
-      Text(this.a.prop2) // when this.a.prop1 changes, it will invoke Text rerendering
+      Text(this.a.prop2) // 当this.a.prop1的值改变, 将会刷新组件
         .margin({ bottom: 10 })
-        .fontSize(this.isRenderText()) //if the Text renders, the function isRenderText will be called
-      Text("subProp1 : " + this.a.prop3.subProp1) //the Text can not observe the change of subProp1
+        .fontSize(this.isRenderText()) // 如果Text组件刷新，会执行isRenderText方法
+      Text("subProp1 : " + this.a.prop3.subProp1) // Text组件刷新时，不会观测到this.a.prop3.subProp1的值改变
         .fontSize(30)
     }
   }
@@ -353,7 +353,7 @@ class ClassA {
 @Component
 struct CompA {
   @ObjectLink a: ClassA;
-  @ObjectLink b: ClassB; // a new objectlink variable
+  @ObjectLink b: ClassB; // objectlink变量
   private sizeFont: number = 30;
 
   private isRenderText(): number {
@@ -370,10 +370,10 @@ struct CompA {
 
   build() {
     Column() {
-      Text(this.a.prop2) // when this.a.prop1 changes, it will invoke Text rerendering
+      Text(this.a.prop2) // 当this.a.prop2的值改变, 将会刷新组件
         .margin({ bottom: 10 })
-        .fontSize(this.isRenderText()) //if the Text renders, the function isRenderText will be called
-      Text("subProp1 : " + this.b.subProp1) // use directly b rather than a.prop3
+        .fontSize(this.isRenderText()) // 当Text组件刷新，会执行isRenderText方法
+      Text("subProp1 : " + this.b.subProp1) // 直接使用b而不是a.prop3
         .fontSize(30)
         .opacity(this.isRenderTextSubProp1())
     }
@@ -436,7 +436,7 @@ struct Page {
 
 ```ts
 @Observed
-class NeedRenderImage { // properties only used in the same component can be divided into the same new divided class
+class NeedRenderImage { // 仅在同一组件中使用的属性可以划分到一个新的类中
   public translateImageX: number = 0;
   public translateImageY: number = 0;
   public imageWidth: number = 78;
@@ -444,47 +444,47 @@ class NeedRenderImage { // properties only used in the same component can be div
 }
 
 @Observed
-class NeedRenderScale { // properties usually used together can be divided into the same new divided class
+class NeedRenderScale { // 通常一起使用的属性可以被划分到一个新的类中
   public scaleX: number = 0.3;
   public scaleY: number = 0.3;
 }
 
 @Observed
-class NeedRenderAlpha { // properties that may be used in different places can be divided into the same new divided class
+class NeedRenderAlpha { // 可在不同地方使用的属性可以划分到一个新的类中
   public alpha: number = 0.5;
 }
 
 @Observed
-class NeedRenderSize { // properties usually used together can be divided into the same new divided class
+class NeedRenderSize { // 通常一起使用的属性可以划分为一个新的类
   public width: number = 336;
   public height: number = 178;
 }
 
 @Observed
-class NeedRenderPos { // properties usually used together can be divided into the same new divided class
+class NeedRenderPos { // 通常一起使用的属性可以划分为一个新的类。
   public posX: number = 10;
   public posY: number = 50;
 }
 
 @Observed
-class NeedRenderBorderRadius { // properties that may be used in different places can be divided into the same new divided class
+class NeedRenderBorderRadius { // 可在不同地方使用的属性可以划分到一个新的类中
   public borderRadius: number = 24;
 }
 
 @Observed
-class NeedRenderFontSize { // properties that may be used in different places can be divided into the same new divided class
+class NeedRenderFontSize { // 可在不同地方使用的属性可以划分到一个新的类中
   public fontSize: number = 20;
 }
 
 @Observed
-class NeedRenderTranslate { // properties usually used together can be divided into the same new divided class
+class NeedRenderTranslate { // 通常一起使用的属性可以划分为一个新的类
   public translateX: number = 0;
   public translateY: number = 0;
 }
 
 @Observed
 class UIStyle {
-  // define new variable instead of using old one
+  // 定义新变量，而不是使用旧变量
   needRenderTranslate: NeedRenderTranslate = new NeedRenderTranslate();
   needRenderFontSize: NeedRenderFontSize = new NeedRenderFontSize();
   needRenderBorderRadius: NeedRenderBorderRadius = new NeedRenderBorderRadius();
@@ -498,30 +498,30 @@ class UIStyle {
 @Component
 struct SpecialImage {
   @ObjectLink uiStyle: UIStyle;
-  @ObjectLink needRenderImage: NeedRenderImage; // receive the new class from its parent component
+  @ObjectLink needRenderImage: NeedRenderImage; // 从其父组件接收新的类
 
-  private isRenderSpecialImage(): number { // function to show whether the component is rendered
+  private isRenderSpecialImage(): number { // 用于显示组件是否已刷新的函数
     console.info("SpecialImage is rendered");
     return 1;
   }
 
   build() {
     Image($r('app.media.icon'))
-      .width(this.needRenderImage.imageWidth) // !! use this.needRenderImage.xxx rather than this.uiStyle.needRenderImage.xxx !!
+      .width(this.needRenderImage.imageWidth) // !! 使用 this.needRenderImage.xxx 而不是 this.uiStyle.needRenderImage.xxx !!
       .height(this.needRenderImage.imageHeight)
       .margin({ top: 20 })
       .translate({
         x: this.needRenderImage.translateImageX,
         y: this.needRenderImage.translateImageY
       })
-      .opacity(this.isRenderSpecialImage()) // if the Image is rendered, it will call the function
+      .opacity(this.isRenderSpecialImage()) // 如果组件刷新，将调用该函数
   }
 }
 
 @Component
 struct CompA {
   @ObjectLink uiStyle: UIStyle;
-  @ObjectLink needRenderTranslate: NeedRenderTranslate; // receive the new class from its parent component
+  @ObjectLink needRenderTranslate: NeedRenderTranslate; // 从其父组件接收新类
   @ObjectLink needRenderFontSize: NeedRenderFontSize;
   @ObjectLink needRenderBorderRadius: NeedRenderBorderRadius;
   @ObjectLink needRenderPos: NeedRenderPos;
@@ -529,7 +529,7 @@ struct CompA {
   @ObjectLink needRenderAlpha: NeedRenderAlpha;
   @ObjectLink needRenderScale: NeedRenderScale;
 
-  // the following functions are used to show whether the component is called to be rendered
+  // 用于显示该组件是否刷新
   private isRenderColumn(): number {
     console.info("Column is rendered");
     return 1;
@@ -552,10 +552,10 @@ struct CompA {
 
   build() {
     Column() {
-      // when you compile this code in API9, IDE may tell you that
+      // 当使用API9编译时，IDE会显示
       // "Assigning the '@ObjectLink' decorated attribute 'uiStyle' to the '@ObjectLink' decorated attribute 'uiStyle' is not allowed. <etsLint>"
       // "Assigning the '@ObjectLink' decorated attribute 'uiStyle' to the '@ObjectLink' decorated attribute 'needRenderImage' is not allowed. <etsLint>"
-      // But you can still run the code by Previewer
+      // 但是仍然可以在预览器（Previewer）中运行
       SpecialImage({
         uiStyle: this.uiStyle,
         needRenderImage: this.uiStyle.needRenderImage //send it to its child
@@ -565,7 +565,7 @@ struct CompA {
           Image($r('app.media.icon'))
             .opacity(this.needRenderAlpha.alpha)
             .scale({
-              x: this.needRenderScale.scaleX, // use this.needRenderXxx.xxx rather than this.uiStyle.needRenderXxx.xxx
+              x: this.needRenderScale.scaleX, // 使用this.needRenderXxx.xxx而不是this.uiStyle.needRenderXxx.xxx
               y: this.needRenderScale.scaleY
             })
             .padding(this.isRenderImage())
@@ -629,7 +629,7 @@ struct CompA {
           .backgroundColor("#FF007DFF")
           .fontSize(20)
           .width(312)
-          .onClick(() => { // in the parent component, still use this.uiStyle.needRenderXxx.xxx to change the properties
+          .onClick(() => { // 在父组件中,仍然使用this.uiStyle.needRenderXxx.xxx改变属性
             this.uiStyle.needRenderImage.imageWidth = (this.uiStyle.needRenderImage.imageWidth + 30) % 160;
             this.uiStyle.needRenderImage.imageHeight = (this.uiStyle.needRenderImage.imageHeight + 30) % 160;
           })
@@ -655,7 +655,7 @@ struct Page {
     Stack() {
       CompA({
         uiStyle: this.uiStyle,
-        needRenderTranslate: this.uiStyle.needRenderTranslate, //send all the new class child need
+        needRenderTranslate: this.uiStyle.needRenderTranslate, // 传递所有子组件需要的类型
         needRenderFontSize: this.uiStyle.needRenderFontSize,
         needRenderBorderRadius: this.uiStyle.needRenderBorderRadius,
         needRenderPos: this.uiStyle.needRenderPos,
@@ -696,7 +696,7 @@ struct Page {
 ```ts
 .property(this.needRenderXxx.xxx)
 
-// sample
+// 示例
 Text("some text")
   .width(this.needRenderSize.width)
   .height(this.needRenderSize.height)
@@ -706,20 +706,20 @@ Text("some text")
 在父组件改变属性的值时，可以通过外层的父类去修改，即：
 
 ```ts
-// in parent Component
+// 在父组件中
 this.parent.needRenderXxx.xxx = x;
 
-//example
+// 示例
 this.uiStyle.needRenderImage.imageWidth = (this.uiStyle.needRenderImage.imageWidth + 20) % 60;
 ```
 
 在子组件本身改变属性的值时，推荐直接通过新类去修改，即：
 
 ```ts
-// in child Component
+// 在子组件中
 this.needRenderXxx.xxx = x;
 
-//example
+// 示例
 this.needRenderScale.scaleX = (this.needRenderScale.scaleX + 0.6) % 1;
 ```
 
