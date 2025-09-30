@@ -25,10 +25,7 @@
 >    1. 仅支持使用[Menu组件](ts-basic-components-menu.md)且子组件包含[MenuItem](ts-basic-components-menuitem.md)或[MenuItemGroup](ts-basic-components-menuitemgroup.md)的场景。
 >
 >    2. 仅支持[MenuPreviewMode](#menupreviewmode11)设置为NONE的菜单。
->  - 菜单最大宽度受设备栅格限制，即使设置为100%，也不会占满屏幕。例如，2in1和Phone设备。
->    1. 2in1：菜单默认宽度为160vp。超过160vp时宽度自适应内容。最小宽度64vp，最大宽度为屏幕的67%。
->
->    2. Phone：菜单的宽度按照2列、4列或6列栅格显示，跟随内容自适应宽度。
+>  - 菜单最大宽度受设备所占栅格限制，即使设置宽度100%，也不会占满屏幕。
 >
 >  - 菜单绑定的组件对象销毁时，菜单消失。
 >
