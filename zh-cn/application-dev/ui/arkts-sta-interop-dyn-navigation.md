@@ -65,13 +65,6 @@ ArkTS-Dyn初始化NavDestination页面属性，其使用规格限制与非互操
 
   let pathStack: NavPathStack = new NavPathStack()
 
-  class NavigationParam {
-    info_: string = "";
-    constructor(info: string) {
-      this.info_ = info;
-    }
-  }
-
   @Entry
   @Component
   struct Index {
@@ -89,9 +82,8 @@ ArkTS-Dyn初始化NavDestination页面属性，其使用规格限制与非互操
             .width('80%')
             .height(40)
             .margin(10)
-            onClick((e?: ClickEvent) => {
-              let info: NavPathInfo =
-                new NavPathInfo("PageOne", new NavigationParam("this is index pushPath") as object)
+            .onClick((e?: ClickEvent) => {
+              let info: NavPathInfo = new NavPathInfo("PageOne", new Object())
               pathStack.pushPath(info)
             })
         }
