@@ -682,7 +682,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | 指向[OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager)创建的音频会话管理实例。 |
-| [OH_AudioDevice_Usage](capi-native-audio-device-base-h#oh_audiodevice_usage) deviceUsage | 用于设置要获取的设备种类。 |
+| [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) deviceUsage | 用于设置要获取的设备种类。 |
 | [OH_AudioSession_AvailableDeviceChangedCallback](#oh_audiosession_availabledevicechangedcallback) callback | 用于返回可用音频设备变更信息的回调函数。 |
 
 **返回：**
