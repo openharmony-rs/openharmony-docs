@@ -59,7 +59,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ArkTS1.1: on(type: 'layout', callback: () => void): void
 
-ArkTS1.2: on(type: 'layout', callback: Callback\<void>): void
+ArkTS1.2: onLayout(callback: Callback\<void>): void
 
 通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
 
@@ -78,7 +78,7 @@ ArkTS1.2: on(type: 'layout', callback: Callback\<void>): void
 
 ArkTS1.1: off(type: 'layout', callback?: () => void): void
 
-ArkTS1.2: off(type: 'layout', callback?: Callback\<void>): void
+ArkTS1.2: offLayout(callback?: Callback\<void>): void
 
 通过句柄向对应的查询条件取消注册回调，当组件布局完成时不再触发指定的回调。
 
@@ -97,7 +97,7 @@ ArkTS1.2: off(type: 'layout', callback?: Callback\<void>): void
 
 ArkTS1.1: on(type: 'draw', callback: () => void): void
 
-ArkTS1.2: on(type: 'draw', callback: Callback\<void>): void
+ArkTS1.2: onDraw(callback: Callback\<void>): void
 
 通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
 
@@ -116,7 +116,7 @@ ArkTS1.2: on(type: 'draw', callback: Callback\<void>): void
 
 ArkTS1.1: off(type: 'draw', callback?: () => void): void
 
-ArkTS1.2: off(type: 'draw', callback?: Callback\<void>): void
+ArkTS1.2: offDraw(callback?: Callback\<void>): void
 
 通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
 
@@ -133,7 +133,9 @@ ArkTS1.2: off(type: 'draw', callback?: Callback\<void>): void
 
 ### on('drawChildren')<sup>20+<sup>
 
-on(type: 'drawChildren',  callback: Callback\<void\>): void
+ArkTS1.1: onDrawChildren(type: 'draw', callback: () => void): void
+
+ArkTS1.2: onDrawChildren(callback: Callback\<void>): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
 
@@ -150,7 +152,9 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 
 ### off('drawChildren')<sup>20+<sup>
 
-off(type: 'drawChildren', callback?: Callback\<void\>): void
+ArkTS1.1: offDrawChildren(type: 'drawChildren', callback?: () => void): void
+
+ArkTS1.2: offDrawChildren(callback?: Callback\<void>): void
 
 通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
 
@@ -248,7 +252,7 @@ struct ImageExample {
     }.height(320).width(360)
   }
 
-  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID') as inspector.ComponentObserver
 
   aboutToAppear() {
     let onLayoutComplete:()=>void=():void=>{
@@ -257,16 +261,23 @@ struct ImageExample {
     let onDrawComplete:()=>void=():void=>{
         // 补充待实现的功能
     }
+    let onDrawChildrenComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
     let FuncLayout = onLayoutComplete // 绑定当前js对象
     let FuncDraw = onDrawComplete // 绑定当前js对象
+    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
     let OffFuncLayout = onLayoutComplete // 绑定当前js对象
     let OffFuncDraw = onDrawComplete // 绑定当前js对象
+    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
 
-    this.listener.on('layout', FuncLayout)
-    this.listener.on('draw', FuncDraw)
+    this.listener.onLayout(FuncLayout)
+    this.listener.onDraw(FuncDraw)
+    this.listener.onDrawChildren(onDrawChildrenComplete)
     
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // this.listener.off('layout', OffFuncLayout)
-    // this.listener.off('draw', OffFuncDraw)
+    // this.listener.offLayout(OffFuncLayout)
+    // this.listener.offDraw(OffFuncDraw)
+    // this.listener.offDrawChildren(OffFuncDrawChildren)
   }
 }
