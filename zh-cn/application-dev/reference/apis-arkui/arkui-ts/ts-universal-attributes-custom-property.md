@@ -75,7 +75,7 @@ struct CustomPropertyExample {
             for (let i = 1; i < 4; i++) {
               const key = 'customProperty' + i;
               const property = node.getCustomProperty(key);
-              console.log(key, JSON.stringify(property));
+              console.info(key, JSON.stringify(property));
             }
           }
         }
