@@ -22,16 +22,16 @@ import { application } from '@kit.AbilityKit';
 
 ## AppPreloadType<sup>22+</sup>
 
-表示应用预加载类型的枚举。
+表示[应用预加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/preload-application)类型的枚举。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
 | UNSPECIFIED    | 0   |    未发生预加载或预加载数据已被清除。       |
-| TYPE_CREATE_PROCESS          | 1   |    预加载将在进程创建完成后完成。      |
-| TYPE_CREATE_ABILITY_STAGE  | 2   |     预加载将在[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成后完成。   |
-| TYPE_CREATE_WINDOW_STAGE        | 3   |    预加载将在[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成后完成。           |
+| TYPE_CREATE_PROCESS          | 1   |    预加载到进程创建完成阶段。      |
+| TYPE_CREATE_ABILITY_STAGE  | 2   |     预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
+| TYPE_CREATE_WINDOW_STAGE        | 3   |    预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
 
 ## application.createModuleContext<sup>12+</sup>
 
@@ -361,7 +361,7 @@ export default class EntryAbility extends UIAbility {
 
 getAppPreloadType(): AppPreloadType
 
-获取应用预加载类型。
+获取[应用预加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/preload-application)类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 	
@@ -369,7 +369,7 @@ getAppPreloadType(): AppPreloadType
 
 | 类型            | 说明            |
 | --------------- | --------------- |
-|[AppPreloadType](./js-apis-app-ability-application.md#apppreloadtype22)  | 应用预加载类型。     |
+|[AppPreloadType](./js-apis-app-ability-application.md#apppreloadtype22)  | [应用预加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/preload-application)类型。     |
 
 **示例：**
 
