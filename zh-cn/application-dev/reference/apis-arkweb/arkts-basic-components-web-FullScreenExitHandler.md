@@ -18,6 +18,10 @@ FullScreenExitHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## exitFullScreen<sup>9+</sup>
 
 exitFullScreen(): void
@@ -25,3 +29,7 @@ exitFullScreen(): void
 通知开发者Web组件退出全屏。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22

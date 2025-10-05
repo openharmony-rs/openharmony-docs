@@ -132,19 +132,28 @@ ArkTS-Dyn示例：
 
 ## imageAccess
 
-imageAccess(imageAccess: boolean)
+ArkTS-Dyn: imageAccess(imageAccess: boolean)
 
-设置是否允许自动加载图片资源。
+ArkTS-Sta: imageAccess(imageAccess: boolean | undefined): this
+
+设置是否允许自动加载图片资源。若未显式调用该属性或入参值为undefined时，则系统默认允许自动加载图片资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名         | 类型    | 必填   | 说明            |
 | ----------- | ------- | ---- | --------------- |
-| imageAccess | boolean | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>默认值：true。 |
+| imageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。|
 
 **示例：**
+
+ArkTS-Dyn示例：
+
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -153,6 +162,27 @@ imageAccess(imageAccess: boolean)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .imageAccess(true)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -419,19 +449,27 @@ ArkTS-Sta示例：
 
 ## onlineImageAccess
 
-onlineImageAccess(onlineImageAccess: boolean)
+ArkTS-Dyn: onlineImageAccess(onlineImageAccess: boolean)
 
-设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。
+ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined): this
+
+设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。若未显式调用该属性或入参值为undefined时，默认允许从网络加载图片资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名               | 类型    | 必填   | 说明             |
 | ----------------- | ------- | ---- | ---------------- |
-| onlineImageAccess | boolean | 是    | 设置是否允许从网络加载图片资源。<br>true表示设置允许从网络加载图片资源，false表示设置不允许从网络加载图片资源。<br>默认值：true。 |
+| onlineImageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许从网络加载图片资源。<br>true表示设置允许从网络加载图片资源，false表示设置不允许从网络加载图片资源。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -445,6 +483,27 @@ onlineImageAccess(onlineImageAccess: boolean)
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
+          .onlineImageAccess(true)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: ('www.example.com'), controller: this.controller })
           .onlineImageAccess(true)
       }
     }
@@ -665,19 +724,27 @@ geolocationAccess(geolocationAccess: boolean)
 
 ## mediaPlayGestureAccess<sup>9+</sup>
 
-mediaPlayGestureAccess(access: boolean)
+ArkTS-Dyn: mediaPlayGestureAccess(access: boolean)
 
-设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。
+ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined): this
+
+设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。若未显式调用该属性或入参值为undefined时，默认设置有声视频的自动播放需要用户手动点击。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名    | 类型    | 必填   | 说明                |
 | ------ | ------- | ---- | ------------------- |
-| access | boolean | 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示设置有声视频的自动播放需要用户手动点击，false表示设置有声视频的自动播放不需要用户手动点击，能自动播放。<br>默认值：true。 |
+| access | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示设置有声视频的自动播放需要用户手动点击，false表示设置有声视频的自动播放不需要用户手动点击，能自动播放。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -693,6 +760,27 @@ mediaPlayGestureAccess(access: boolean)
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .mediaPlayGestureAccess(this.access)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .mediaPlayGestureAccess(true)
       }
     }
   }
@@ -4266,7 +4354,7 @@ ArkTS-Dyn: optimizeParserBudget(optimizeParserBudget: boolean)
 
 ArkTS-Sta: optimizeParserBudget(optimizeParserBudget: boolean | undefined): this
 
-设置是否开启分段解析HTML优化。若未显式调用该属性，默认不开启分段解析HTML优化。
+设置是否开启分段解析HTML优化。若未显式调用该属性或入参值为undefined时，默认不开启分段解析HTML优化。
 
 ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免过多占用主线程资源，并使网页具有渐进式加载能力。ArkWeb内核默认使用解析时间作为分段点，当单次解析时间超过阈值时，会中断解析，随后进行布局和渲染操作。
 
@@ -4327,19 +4415,27 @@ ArkTS-Sta示例：
 
 ## enableWebAVSession<sup>18+</sup>
 
-enableWebAVSession(enabled: boolean)
+ArkTS-Dyn: enableWebAVSession(enabled: boolean)
 
-设置是否支持应用对接到播控中心。
+ArkTS-Sta: enableWebAVSession(enabled: boolean | undefined): this
+
+设置是否支持应用对接到播控中心。若未显式调用该属性或入参值为undefined时，默认支持应用对接到播控中心。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明           |
 | ------- | -------- | ---- | ------------------ |
-| enabled | boolean  | 是   | 设置是否支持应用对接到播控中心。<br>true表示支持应用对接到播控中心，false表示不支持应用对接到播控中心。<br>默认值：true。 |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是   | 设置是否支持应用对接到播控中心。<br>true表示支持应用对接到播控中心，false表示不支持应用对接到播控中心。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -4349,6 +4445,27 @@ enableWebAVSession(enabled: boolean)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .enableWebAVSession(true)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+  
     build() {
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
