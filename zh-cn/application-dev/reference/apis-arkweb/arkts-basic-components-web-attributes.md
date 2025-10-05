@@ -2121,7 +2121,7 @@ ArkTS-Sta示例：
 
 mediaOptions(options: WebMediaOptions)
 
-设置Web媒体播放的策略，其中包括：Web中的音频在重新获焦后能够自动续播的有效期、应用内多个Web实例的音频是否独占。
+设置Web媒体播放的策略，其中包括：Web中的音频在重新获焦后能够自动续播的有效期、应用内多个Web实例的音频是否独占、应用中Web音频类型。当属性没有显式调用时，默认Web中的音频在重新获焦后不自动续播、应用内多个Web实例的音频不独占。
 
 > **说明：**
 >
@@ -2132,13 +2132,19 @@ mediaOptions(options: WebMediaOptions)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                  | 必填   | 说明                                     |
 | ------- | ------------------------------------- | ---- | ---------------------------------------- |
-| options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。<br>默认值：`{resumeInterval: 0, audioExclusive: true}` |
+| options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | 是    | 设置Web的媒体策略。<br>属性参数更新后需重新播放音频方可生效。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -2150,6 +2156,29 @@ mediaOptions(options: WebMediaOptions)
     controller: webview.WebviewController = new webview.WebviewController();
     @State options: WebMediaOptions = {resumeInterval: 10, audioExclusive: true};
 
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .mediaOptions(this.options)
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, State, WebMediaOptions, AudioSessionType } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State options: WebMediaOptions =
+      { resumeInterval: 10, audioExclusive: true, audioSessionType: AudioSessionType.AMBIENT } as WebMediaOptions;
+  
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
@@ -3235,17 +3264,23 @@ textAutosizing(textAutosizing: boolean)
 
 enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
-开启[应用接管网页媒体播放功能](../../web/app-takeovers-web-media.md)。
+开启[应用接管网页媒体播放功能](../../web/app-takeovers-web-media.md)。当属性没有显式调用时，默认不开启该功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明 |
 | ---- | ------ | ---- | ---------------------|
-| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | 是    | enable: 是否开启该功能。<br/> shouldOverlay: 该功能开启后， 应用接管网页视频的播放器画面是否覆盖网页内容。<br>默认值：`{enable: false, shouldOverlay: false}`。|
+| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | 是    | enable: 是否开启该功能。<br/> shouldOverlay: 该功能开启后， 应用接管网页视频的播放器画面是否覆盖网页内容。|
 
   **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -3260,6 +3295,27 @@ enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .enableNativeMediaPlayer({enable: true, shouldOverlay: false})
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableNativeMediaPlayer({ enable: true, shouldOverlay: false })
       }
     }
   }

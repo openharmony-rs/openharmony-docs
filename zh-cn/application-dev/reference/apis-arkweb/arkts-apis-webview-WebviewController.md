@@ -4091,6 +4091,10 @@ hasImage(callback: AsyncCallback\<boolean>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                       |
@@ -4107,6 +4111,8 @@ hasImage(callback: AsyncCallback\<boolean>): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -4140,6 +4146,41 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('hasImageCb')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.hasImage((error: BusinessError | null, data:  Boolean | undefined): void => {
+              if (error) {
+                console.error(`hasImage error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                return;
+              }
+              console.info("hasImage: " + data);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## hasImage
 
 hasImage(): Promise\<boolean>
@@ -4147,6 +4188,10 @@ hasImage(): Promise\<boolean>
 通过Promise方式异步查找当前页面是否存在图像。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4164,6 +4209,8 @@ hasImage(): Promise\<boolean>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -4185,6 +4232,39 @@ struct WebComponent {
             }).catch((error: BusinessError) => {
               console.error("error: " + error);
             })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('hasImagePm')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.hasImage().then((data: boolean) => {
+              console.info('hasImage: ' + data);
+            }).catch((error: Error): PromiseLike<void> | undefined => {
+              console.error("error: " + error);
+            });
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -5171,6 +5251,10 @@ setAudioMuted(mute: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -5188,6 +5272,8 @@ setAudioMuted(mute: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5203,6 +5289,35 @@ struct WebComponent {
       Button("Toggle Mute")
         .onClick(event => {
           if (event) {
+            this.muted = !this.muted;
+            this.controller.setAudioMuted(this.muted);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, ClickEvent, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State muted: boolean = false;
+
+  build() {
+    Column() {
+      Button("Toggle Mute")
+        .onClick((e: ClickEvent) => {
+          if (e) {
             this.muted = !this.muted;
             this.controller.setAudioMuted(this.muted);
           }
@@ -7648,6 +7763,10 @@ stopAllMedia(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -7657,6 +7776,8 @@ stopAllMedia(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7684,6 +7805,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('stopAllMedia')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.stopAllMedia();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## pauseAllMedia<sup>12+</sup>
 
 pauseAllMedia(): void
@@ -7691,6 +7841,10 @@ pauseAllMedia(): void
 控制网页所有音视频暂停。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -7701,6 +7855,8 @@ pauseAllMedia(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7728,6 +7884,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry , ClickEvent} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('pauseAllMedia')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.pauseAllMedia();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## resumeAllMedia<sup>12+</sup>
 
 resumeAllMedia(): void
@@ -7735,6 +7920,10 @@ resumeAllMedia(): void
 控制网页被pauseAllMedia接口暂停的音视频继续播放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -7745,6 +7934,8 @@ resumeAllMedia(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7772,6 +7963,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry , ClickEvent} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('resumeAllMedia')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.resumeAllMedia();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## closeAllMediaPresentations<sup>12+</sup>
 
 closeAllMediaPresentations(): void
@@ -7779,6 +7999,10 @@ closeAllMediaPresentations(): void
 控制网页所有全屏视频关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -7789,6 +8013,8 @@ closeAllMediaPresentations(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7816,6 +8042,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('closeAllMediaPresentations')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.closeAllMediaPresentations();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getMediaPlaybackState<sup>12+</sup>
 
 getMediaPlaybackState(): MediaPlaybackState
@@ -7823,6 +8078,10 @@ getMediaPlaybackState(): MediaPlaybackState
 查询当前所有音视频播控状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -7840,6 +8099,8 @@ getMediaPlaybackState(): MediaPlaybackState
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7854,6 +8115,35 @@ struct WebComponent {
     Column() {
       Button('getMediaPlaybackState')
         .onClick(() => {
+          try {
+            console.log("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getMediaPlaybackState')
+        .onClick((e: ClickEvent) => {
           try {
             console.log("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
           } catch (error) {
@@ -8054,6 +8344,10 @@ startCamera(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -8063,6 +8357,8 @@ startCamera(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8137,6 +8433,91 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { UIContext } from "@kit.ArkUI";
+import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { PermissionRequestResult, common } from '@kit.AbilityKit';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  aboutToAppear(): void {
+    let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
+      (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (data) {
+          console.info('data:' + JSON.stringify(data));
+          console.info('data permissions:' + data.permissions);
+          console.info('data authResults:' + data.authResults);
+        }
+      })
+  }
+
+  build() {
+    Column() {
+      Button("startCamera").onClick((e: ClickEvent) => {
+        try {
+          this.controller.startCamera();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("stopCamera").onClick((e: ClickEvent) => {
+        try {
+          this.controller.stopCamera();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("closeCamera").onClick((e: ClickEvent) => {
+        try {
+          this.controller.closeCamera();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+          if (event) {
+            const dialogOptions: AlertDialogParamWithButtons = {
+              title: 'title',
+              message: 'text',
+              primaryButton: {
+                value: 'deny',
+                action: () => {
+                  event.request.deny();
+                },
+              } as AlertDialogButtonBaseOptions,
+              secondaryButton: {
+                value: 'onConfirm',
+                action: () => {
+                  event.request.grant(event.request.getAccessibleResource());
+                },
+              } as AlertDialogButtonBaseOptions,
+              cancel: () => {
+                event.request.deny();
+              }
+            };
+            this.uiContext.showAlertDialog(dialogOptions);
+          }
+        })
+    }
+  }
+}
+```
+
 加载的html文件。
  ```html
 <!-- index.html -->
@@ -8178,6 +8559,10 @@ stopCamera(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -8197,6 +8582,10 @@ closeCamera(): void
 关闭当前网页摄像头捕获。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
