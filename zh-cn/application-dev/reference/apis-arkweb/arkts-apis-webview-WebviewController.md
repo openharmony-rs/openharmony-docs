@@ -6194,7 +6194,7 @@ ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 
 **ArkTS-Dyn起始版本：**  12
 
-**ArkTS-Sta起始版本：**  20
+**ArkTS-Sta起始版本：**  22
 
 **参数：**
 
@@ -6281,6 +6281,10 @@ static clearPrefetchedResource(cacheKeyList: Array\<string>): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名             | 类型        | 必填  | 说明                                                                       |
@@ -6289,6 +6293,7 @@ static clearPrefetchedResource(cacheKeyList: Array\<string>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6297,6 +6302,43 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: "https://www.example.com/", controller: this.controller })
+        .onAppear(() => {
+          // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+          webview.WebviewController.prefetchResource(
+            {
+              url: "https://www.example1.com/post?e=f&g=h",
+              method: "POST",
+              formData: "a=x&b=y",
+            },
+            [{
+              headerKey: "c",
+              headerValue: "z",
+            },],
+            "KeyX", 500);
+        })
+        .onPageEnd(() => {
+          // 清除后续不再使用的预获取缓存。
+          webview.WebviewController.clearPrefetchedResource(["KeyX",]);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -10112,7 +10154,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 **ArkTS-Dyn起始版本：**  12
 
-**ArkTS-Sta起始版本：**  20
+**ArkTS-Sta起始版本：**  22
 
 **参数：**
 
@@ -10139,12 +10181,11 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 **示例：**
 
-ArkTS-Dyn示例:
-
 接口推荐配合动态组件使用，使用离线的Web组件用于生成字节码缓存，并在适当的时机加载业务用Web组件使用这些字节码缓存。下方是代码示例：
 
 1. 首先，在EntryAbility中将UIContext存到localStorage中。
 
+ArkTS-Dyn示例：
    ```ts
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
@@ -10167,8 +10208,37 @@ ArkTS-Dyn示例:
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // EntryAbility.ets
+  import UIAbility from '@ohos.app.ability.UIAbility';
+  import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+  import Want from '@ohos.app.ability.Want';
+  import window from '@ohos.window';
+  import { BusinessError } from '@ohos.base'
+  import hilog from '@ohos.hilog'
+  import { UIContext, LocalStorage } from '@kit.ArkUI';
+
+  const localStorage: LocalStorage = new LocalStorage('uiContext');
+
+  class EntryAbility extends UIAbility {
+    storage: LocalStorage = localStorage;
+
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', this.storage, (err: BusinessError<void> | null, data): void => {
+        if (err && err.code) {
+          return;
+        }
+        this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+      });
+    }
+  }
+  ```
+
 2. 编写动态组件所需基础代码。
 
+ArkTS-Dyn示例：
    ```ts
    // DynamicComponent.ets
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -10219,8 +10289,73 @@ ArkTS-Dyn示例:
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // DynamicComponent.ets
+  import { UIContext, LocalStorage, WrappedBuilder, wrapBuilder, Builder } from '@kit.ArkUI';
+  import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@ohos.base';
+  import { WebBuilder } from "./PrecompileWebview";
+  let storage : LocalStorage | undefined = undefined;
+
+  export class BuilderData {
+    url: string;
+    controller: webview.WebviewController;
+    context: UIContext;
+
+    constructor(url: string, controller: webview.WebviewController, context: UIContext) {
+      this.url = url;
+      this.controller = controller;
+      this.context = context;
+    }
+  }
+
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+
+  export class NodeControllerImpl extends NodeController {
+    private rootNode: BuilderNode<BuilderData> | null = null;
+    // private wrappedBuilder: WrappedBuilder<@Builder ((p1: BuilderData) => void)> | null = null;
+
+    private wrappedBuilder: WrappedBuilder<MyBuilder> | null = null;
+    constructor(wrappedBuilder: WrappedBuilder<MyBuilder>, context: UIContext) {
+      super();
+      storage = context.getSharedLocalStorage();
+      this.wrappedBuilder = wrappedBuilder;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      if (this.rootNode != null) {
+        return this.rootNode!.getFrameNode();
+      }
+      return null;
+    }
+
+    initWeb(url: string, controller: webview.WebviewController) {
+      if(this.rootNode != null) {
+        return;
+      }
+
+      const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+      if (!uiContext) {
+        return;
+      }
+      this.rootNode = new BuilderNode<BuilderData>(uiContext);
+      this.rootNode!.build(wrapBuilder(WebBuilder), new BuilderData(url, controller, uiContext));
+    }
+  }
+
+  export const createNode = (wrappedBuilder: WrappedBuilder<MyBuilder>, data: BuilderData) => {
+    const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
+    baseNode.initWeb(data.url, data.controller);
+    return baseNode;
+  }
+  ```
+
 3. 编写用于生成字节码缓存的组件，本例中的本地Javascript资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // PrecompileWebview.ets
@@ -10264,10 +10399,58 @@ ArkTS-Dyn示例:
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // PrecompileWebview.ets
+  import { UIContext, WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BuilderData } from "./DynamicComponent";
+  import { Config, configs } from "./PrecompileConfig";
+  import { BusinessError } from '@ohos.base';
+
+  @Builder
+  export function WebBuilder(data: BuilderData) {
+    Web({ src: data.url, controller: data.controller })
+      .onControllerAttached(() => {
+        precompile(data.controller, configs, data.context);
+      })
+      .fileAccess(true)
+  }
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const precompileWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+
+  export const precompile = async (controller: webview.WebviewController, configs: Array<Config>, context: UIContext) => {
+    for (const config of configs) {
+      let content = await readRawFile(config.localPath, context);
+
+      try {
+        controller.precompileJavaScript(config.url, content, config.options)
+          .then(errCode => {
+            console.error("precompile successfully! " + errCode);
+          }).catch((errCode: Error) => {
+          console.error("precompile failed. " + errCode);
+        });
+      } catch (err:BusinessError) {
+        console.error("precompile failed. " + err.code + " " + err.message);
+      }
+    }
+  }
+
+  async function readRawFile(path: string, context: UIContext): Promise<Uint8Array> {
+    try {
+      return await context.getHostContext()!.resourceManager.getRawFileContent(path);
+    } catch (err) {
+      return new Uint8Array(0);
+    }
+  }
+  ```
+
 JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // BusinessWebview.ets
@@ -10275,7 +10458,7 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
 
    @Builder
    function WebBuilder(data: BuilderData) {
-     // 此处组件可根据业务需要自行扩展
+     // 此处组件可根据业务需要自行扩展。
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.Default)
    }
@@ -10283,15 +10466,33 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
    export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // BusinessWebview.ets
+  import { BuilderData } from "./DynamicComponent";
+  import { WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+
+  @Builder
+  function WebBuilder(data: BuilderData) {
+    // 此处组件可根据业务需要自行扩展。
+    Web({ src: data.url, controller: data.controller })
+      // .cacheMode(CacheMode.Default)
+  }
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const businessWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+  ```
+
 5. 编写资源配置信息。
 
+ArkTS-Dyn示例：
    ```ts
    // PrecompileConfig.ets
    import { webview } from '@kit.ArkWeb'
 
    export interface Config {
      url:  string,
-     localPath: string, // 本地资源路径
+     localPath: string, // 本地资源路径。
      options: webview.CacheOptions
    }
 
@@ -10309,8 +10510,35 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
    ]
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // PrecompileConfig.ets
+  import { webview } from '@kit.ArkWeb'
+
+  export interface Config {
+    url:  string,
+    localPath: string, // 本地资源路径。
+    options: webview.CacheOptions
+  }
+
+  export let configs: Array<Config> = [
+    {
+      url: "https://www.example.com/example.js",
+      localPath: "example.js",
+      options: {
+        responseHeaders: [
+          { headerKey: "E-Tag", headerValue: "aWO42N9P9dG/5xqYQCxsx+vDOoU="},
+          { headerKey: "Last-Modified", headerValue: "Wed, 21 Mar 2024 10:38:41 GMT"}
+        ]
+      }
+    }
+  ]
+  ```
+
 6. 在页面中使用。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // Index.ets
@@ -10330,14 +10558,14 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
      businessController: webview.WebviewController = new webview.WebviewController();
 
      aboutToAppear(): void {
-       // 初始化用于注入本地资源的Web组件
+       // 初始化用于注入本地资源的Web组件。
        this.precompileNode = createNode(precompileWebview,
          { url: "https://www.example.com/empty.html", controller: this.precompileController, context: this.getUIContext()});
      }
 
      build() {
        Column() {
-         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
+         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
          Button("加载页面")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
@@ -10346,13 +10574,55 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
                context: this.getUIContext()
              });
            })
-         // 用于业务的Web组件
+         // 用于业务的Web组件。
          NodeContainer(this.businessNode);
        }
      }
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // Index.ets
+  import { Button, Column, Entry, Component, State, NodeContainer, NodeController } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@ohos.base';
+  import { createNode, BuilderData } from "./DynamicComponent"
+  import { businessWebview } from "./BusinessWebview"
+  import { precompileWebview } from "./PrecompileWebview";
+  @Entry
+  @Component
+  struct Index {
+    @State precompileNode: NodeController | undefined = undefined;
+    precompileController: webview.WebviewController = new webview.WebviewController();
+
+    @State businessNode: NodeController | undefined = undefined;
+    businessController: webview.WebviewController = new webview.WebviewController();
+
+    aboutToAppear(): void {
+      // 初始化用于注入本地资源的Web组件。
+      this.precompileNode = createNode(precompileWebview,
+        new BuilderData( "https://www.example.com/empty.html", this.precompileController, this.getUIContext()));
+    }
+
+    build() {
+      Column() {
+        // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
+        Button("加载页面")
+          .onClick(() => {
+            this.businessNode = createNode(businessWebview, new BuilderData(
+              "https://www.example.com/business.html",
+              this.businessController,
+              this.getUIContext()
+            ));
+          })
+        // 用于业务的Web组件。
+        NodeContainer(this.businessNode!);
+      }
+    }
+  }
+  ```
 当需要更新本地已经生成的编译字节码时，修改cacheOptions参数中responseHeaders中的E-Tag或Last-Modified响应头对应的值，再次调用接口即可。
 
 ArkTS-Sta示例:
@@ -10795,6 +11065,10 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -10816,6 +11090,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 接口推荐配合动态组件使用，使用离线的Web组件用于将资源注入到内核的内存缓存中，并在适当的时机加载业务用Web组件使用这些资源。下方是代码示例：
 1. 首先，在EntryAbility中将UIContext存到localStorage中。
 
+ArkTS-Dyn示例：
    ```ts
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
@@ -10838,8 +11113,37 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // EntryAbility.ets
+  import UIAbility from '@ohos.app.ability.UIAbility';
+  import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+  import Want from '@ohos.app.ability.Want';
+  import window from '@ohos.window';
+  import { BusinessError } from '@ohos.base'
+  import hilog from '@ohos.hilog'
+  import { UIContext, LocalStorage } from '@kit.ArkUI';
+
+  const localStorage: LocalStorage = new LocalStorage('uiContext');
+
+  class EntryAbility extends UIAbility {
+    storage: LocalStorage = localStorage;
+
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', this.storage, (err: BusinessError<void> | null, data): void => {
+        if (err && err.code) {
+          return;
+        }
+        this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+      });
+    }
+  }
+  ```
+
 2. 编写动态组件所需基础代码。
 
+ArkTS-Dyn示例：
    ```ts
    // DynamicComponent.ets
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -10890,8 +11194,73 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // DynamicComponent.ets
+  import { UIContext, LocalStorage, WrappedBuilder, wrapBuilder, Builder } from '@kit.ArkUI';
+  import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@ohos.base';
+  import { WebBuilder } from "./InjectWebview";
+
+  export class BuilderData {
+    url: string;
+    controller: webview.WebviewController;
+    context: UIContext;
+
+    constructor(url: string, controller: webview.WebviewController, context: UIContext) {
+      this.url = url;
+      this.controller = controller;
+      this.context = context;
+    }
+  }
+
+  let storage : LocalStorage | undefined = undefined;
+
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+
+  export class NodeControllerImpl extends NodeController {
+    private rootNode: BuilderNode<BuilderData> | null = null;
+    private wrappedBuilder: WrappedBuilder<MyBuilder> | null = null;
+
+    constructor(wrappedBuilder: WrappedBuilder<MyBuilder>, context: UIContext) {
+      super();
+      storage = context.getSharedLocalStorage();
+      this.wrappedBuilder = wrappedBuilder;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      if (this.rootNode != null) {
+        return this.rootNode!.getFrameNode();
+      }
+      return null;
+    }
+
+    initWeb(url: string, controller: webview.WebviewController) {
+      if(this.rootNode != null) {
+        return;
+      }
+
+      const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+      if (!uiContext) {
+        return;
+      }
+      this.rootNode = new BuilderNode<BuilderData>(uiContext);
+      this.rootNode!.build(wrapBuilder(WebBuilder), new BuilderData(url, controller, uiContext));
+    }
+  }
+
+  export const createNode = (wrappedBuilder: WrappedBuilder<MyBuilder>, data: BuilderData) => {
+    const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
+    baseNode.initWeb(data.url, data.controller);
+    return baseNode;
+  }
+  ```
+
 3. 编写用于注入资源的组件代码，本例中的本地资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // InjectWebview.ets
@@ -10917,7 +11286,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    export async function getData(context: UIContext) {
      const resourceMapArr: Array<webview.OfflineResourceMap> = [];
 
-     // 读取配置，从rawfile目录中读取文件内容
+     // 读取配置，从rawfile目录中读取文件内容。
      for (let config of resourceConfigs) {
        let buf: Uint8Array = new Uint8Array(0);
        if (config.localPath) {
@@ -10944,8 +11313,68 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // InjectWebview.ets
+  import { UIContext, WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { resourceConfigs } from "./Resource";
+  import { BuilderData } from "./DynamicComponent";
+  import { BusinessError } from '@ohos.base';
+
+  @Builder
+  export function WebBuilder(data: BuilderData) {
+    Web({ src: data.url, controller: data.controller })
+      .onControllerAttached(() => {
+        (async () => {
+          try {
+            const result = await getData(data.context);
+            data.controller.injectOfflineResources(result);
+          } catch (err: BusinessError) {
+            console.error("error: " + err.code + " " + err.message);
+          }
+        })();
+      })
+      .fileAccess(true)
+  }
+
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const injectWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+
+  export async function getData(context: UIContext): Promise<Array<webview.OfflineResourceMap>> {
+    const resourceMapArr: Array<webview.OfflineResourceMap> = [];
+
+    // 读取配置，从rawfile目录中读取文件内容。
+    for (let config of resourceConfigs) {
+      let buf: Uint8Array = new Uint8Array(0);
+      if (config.localPath) {
+        buf = await readRawFile(config.localPath, context);
+      }
+
+      resourceMapArr.push({
+        urlList: config.urlList,
+        resource: buf,
+        responseHeaders: config.responseHeaders,
+        type: config.type,
+      })
+    }
+
+    return resourceMapArr;
+  }
+
+  async function readRawFile(path: string, context: UIContext): Promise<Uint8Array> {
+    try {
+      return await context.getHostContext()!.resourceManager.getRawFileContent(path);
+    } catch (err) {
+      return new Uint8Array(0);
+    }
+  }
+  ```
+
 4. 编写业务用组件代码。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // BusinessWebview.ets
@@ -10953,7 +11382,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
    @Builder
    function WebBuilder(data: BuilderData) {
-     // 此处组件可根据业务需要自行扩展
+     // 此处组件可根据业务需要自行扩展。
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.Default)
    }
@@ -10961,8 +11390,25 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { BuilderData } from "./DynamicComponent";
+  import { WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+
+  @Builder
+  function WebBuilder(data: BuilderData) {
+    // 此处组件可根据业务需要自行扩展。
+    Web({ src: data.url, controller: data.controller })
+    // .cacheMode(CacheMode.Default)
+  }
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const businessWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+  ```
+
 5. 编写资源配置信息。
 
+ArkTS-Dyn示例：
    ```ts
    // Resource.ets
    import { webview } from '@kit.ArkWeb';
@@ -10971,7 +11417,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      urlList: Array<string>,
      type: webview.OfflineResourceType,
      responseHeaders: Array<Header>,
-     localPath: string, // 本地资源存放在rawfile目录下的路径
+     localPath: string, // 本地资源存放在rawfile目录下的路径。
    }
 
    export const resourceConfigs: Array<ResourceConfig> = [
@@ -10990,19 +11436,62 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      },
      {
        localPath: "example.js",
-       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址
+       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址。
          "https://www.example.com/example.js",
        ],
        type: webview.OfflineResourceType.CLASSIC_JS,
        responseHeaders: [
-         // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头
+         // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头。
          { headerKey: "Cross-Origin", headerValue:"anonymous" }
        ]
      },
    ];
    ```
 
+ArkTS-Sta示例：
+  ```ts
+'use static'
+  // Resource.ets
+  import { webview } from '@kit.ArkWeb';
+
+  export interface ResourceConfig {
+    urlList: Array<string>,
+    type: webview.OfflineResourceType,
+    responseHeaders: Array<webview.WebHeader>,
+    localPath: string, // 本地资源存放在rawfile目录下的路径。
+  }
+
+  export const resourceConfigs: Array<ResourceConfig> = [
+    {
+      localPath: "example.png",
+      urlList: [
+        "https://www.example.com/",
+        "https://www.example.com/path1/example.png",
+        "https://www.example.com/path2/example.png",
+      ],
+      type: webview.OfflineResourceType.IMAGE,
+      responseHeaders: [
+        { headerKey: "Cache-Control", headerValue: "max-age=1000" },
+        { headerKey: "Content-Type", headerValue: "image/png" },
+      ]
+    },
+    {
+      localPath: "example.js",
+      urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址。
+        "https://www.example.com/example.js",
+      ],
+      type: webview.OfflineResourceType.CLASSIC_JS,
+      responseHeaders: [
+        // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头。
+        { headerKey: "Cross-Origin", headerValue:"anonymous" }
+      ]
+    },
+  ];
+  ```
+
 6. 在页面中使用。
+
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // Index.ets
@@ -11022,14 +11511,14 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      businessController: webview.WebviewController = new webview.WebviewController();
 
      aboutToAppear(): void {
-       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可
+       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可。
        this.injectNode = createNode(injectWebview,
            { url: "https://www.example.com/empty.html", controller: this.injectController, context: this.getUIContext()});
      }
 
      build() {
        Column() {
-         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
+         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
          Button("加载页面")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
@@ -11038,12 +11527,56 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
                context: this.getUIContext()
              });
            })
-         // 用于业务的Web组件
+         // 用于业务的Web组件。
          NodeContainer(this.businessNode);
        }
      }
    }
    ```
+
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // Index.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Button, Column, Entry, Component, State, NodeContainer, NodeController } from '@kit.ArkUI';
+  import { createNode, BuilderData } from "./DynamicComponent"
+  import { injectWebview } from "./InjectWebview"
+  import { businessWebview } from "./BusinessWebview"
+
+  @Entry
+  @Component
+  struct Index {
+    @State injectNode: NodeController | undefined = undefined;
+    injectController: webview.WebviewController = new webview.WebviewController();
+
+    @State businessNode: NodeController | undefined = undefined;
+    businessController: webview.WebviewController = new webview.WebviewController();
+
+    aboutToAppear(): void {
+      // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可。
+      this.injectNode = createNode(injectWebview,
+        new BuilderData( "https://www.example.com/empty.html", this.injectController, this.getUIContext()));
+    }
+
+    build() {
+      Column() {
+        // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
+        Button("加载页面")
+          .onClick(() => {
+            this.businessNode = createNode(businessWebview, new BuilderData(
+              "https://www.example.com/business.html",
+              this.businessController,
+              this.getUIContext()
+            ));
+          })
+        // 用于业务的Web组件。
+        NodeContainer(this.businessNode!);
+      }
+    }
+  }
+  ```
+
 
 7. 加载的HTML网页示例。
 
