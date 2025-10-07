@@ -1,4 +1,4 @@
-zh-cn/application-dev/reference/apis-arkui/capi-native-interface-accessibility-h.md# native_interface_accessibility.h
+# native_interface_accessibility.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
