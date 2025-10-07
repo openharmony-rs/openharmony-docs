@@ -30,7 +30,7 @@ import { common } from '@kit.AbilityKit';
 **示例：**
 
 ```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 export default class AppServiceExtension extends AppServiceExtensionAbility {
   onCreate(want: Want) {
@@ -280,7 +280,7 @@ terminateSelf(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
