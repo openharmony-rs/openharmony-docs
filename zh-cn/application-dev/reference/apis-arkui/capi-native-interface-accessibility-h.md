@@ -1,4 +1,4 @@
-# native_interface_accessibility.h
+zh-cn/application-dev/reference/apis-arkui/capi-native-interface-accessibility-h.md# native_interface_accessibility.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
@@ -9,6 +9,9 @@
 ## 概述
 
 声明用于访问Native Accessibility的API，提供无障碍相关能力。
+
+<!--RP1-->
+**相关示例：** [AccessibilityCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)<!--RP1End-->
 
 **引用文件：** <arkui/native_interface_accessibility.h>
 
