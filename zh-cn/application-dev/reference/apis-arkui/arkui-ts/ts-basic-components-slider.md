@@ -142,7 +142,7 @@ trackColor(value: ResourceColor | LinearGradient)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的背景颜色。<br/>**说明：** <br/>设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。默认值：`$r('sys.color.ohos_id_color_component_normal')`。注意：该接口中的LinearGradient类型不支持在原子化服务中使用。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的背景颜色。<br/>默认值：`$r('sys.color.ohos_id_color_component_normal')`<br/>**说明：** <br/>1. 设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。<br/>2. 该接口中的LinearGradient类型不支持在原子化服务中使用。 |
 
 ### selectedColor
 
@@ -160,15 +160,13 @@ selectedColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 滑轨的已滑动部分颜色。 <br/>**说明：** <br/>设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。默认值：`$r('sys.color.ohos_id_color_emphasize')` |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 滑轨的已滑动部分颜色。 <br/>默认值：`$r('sys.color.ohos_id_color_emphasize')` |
 
 ### selectedColor<sup>18+</sup>
 
 selectedColor(selectedColor: ResourceColor | LinearGradient)
 
 设置滑轨的已滑动部分颜色。与[selectedColor](#selectedcolor)相比，新增了LinearGradient类型的支持。
-
-从API version 18开始支持利用LinearGradient设置滑轨的已滑动部分的渐变色。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -180,7 +178,7 @@ selectedColor(selectedColor: ResourceColor | LinearGradient)
 
 | 参数名        | 类型                                                         | 必填 | 说明                                                         |
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>18+</sup>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的已滑动部分颜色。 <br/>**说明：** <br/>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。 <br/>默认值：`$r('sys.color.ohos_id_color_emphasize')` |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的已滑动部分颜色。<br/>默认值：`$r('sys.color.ohos_id_color_emphasize')` <br/>**说明：** <br/>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。  |
 
 ### showSteps
 
@@ -457,7 +455,7 @@ minResponsiveDistance(value: number)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | number | 是   | 设置滑动响应的最小距离，滑动超过此距离后滑块才开始滑动。<br/>**说明：** <br/>单位与[SliderOptions](#slideroptions对象说明)中的属性min以及属性max一致。<br/>当value小于0、大于MAX-MIN或非法值时，取默认值。<br/>默认值：0  |
+| value  | number | 是   | 设置滑动响应的最小距离，滑动超过此距离后滑块才开始滑动。<br/>默认值：0<br/>**说明：** <br/>单位与[SliderOptions](#slideroptions对象说明)中的属性min以及属性max一致。<br/>当value小于0、大于max-min或非法值时，取默认值。  |
 
 ### contentModifier<sup>12+</sup>
 
@@ -536,7 +534,7 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| sensitivity | [Optional\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18) | 是   | 旋转表冠的灵敏度。<br />默认值：CrownSensitivity.MEDIUM |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)[\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18) | 是   | 旋转表冠的灵敏度。<br />默认值：CrownSensitivity.MEDIUM |
 
 ### prefix<sup>20+</sup>
 
@@ -711,9 +709,9 @@ Slider组件滑块形状枚举。
 
 >  **说明：**
 >
->  - 当前仅当MIN<=from<=to<=MAX时该接口生效(MIN和MAX不依赖于其设置的值，而取决于其实际生效的值)。
+>  - 当前仅当min<=from<=to<=max时该接口生效(min和max不依赖于其设置的值，而取决于其实际生效的值)。
 >  - 可只设置from或者to，也可以同时设置from和to。
->  - 当接口生效且设置的from处于紧邻的step整数倍的值之间，则from实际取左区间step整数倍的那个值或者MIN作为修正后的值。
+>  - 当接口生效且设置的from处于紧邻的step整数倍的值之间，则from实际取左区间step整数倍的那个值或者min作为修正后的值。
 >  - 当接口生效且设置的to处于紧邻的step整数倍的值之间，则to实际取右区间step整数倍的那个值或者MAX作为修正后的值。
 >  - 在from和to取修正值后， 当value是undefined或null时，其取值与from一致; 当value是数值型且value <= from，则取from; 当value > to，则取to。
 
@@ -1139,7 +1137,7 @@ struct SliderExample {
           .onChange((value: number, mode: SliderChangeMode) => {
             this.sliderValue = value;
             this.sliderChangeMode = mode;
-            console.info('【SliderLog】value:' + value + 'mode:' + mode.toString());
+            console.info('SliderLog value:' + value + 'mode:' + mode.toString());
           })
           .contentModifier(new MySliderStyle(this.showSlider, this.sliderChangeMode))
 
