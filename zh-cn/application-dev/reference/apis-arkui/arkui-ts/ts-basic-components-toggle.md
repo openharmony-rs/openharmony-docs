@@ -93,7 +93,7 @@ selectedColor(value: ResourceColor)
 
 switchPointColor(color: ResourceColor)
 
-设置Switch类型的圆形滑块颜色。仅对type为ToggleType.Switch生效。
+设置Switch类型的圆形滑块颜色。仅当type为ToggleType.Switch生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -111,7 +111,7 @@ switchPointColor(color: ResourceColor)
 
 switchStyle(value: SwitchStyle)
 
-设置Switch类型的样式。仅对type为ToggleType.Switch生效。
+设置Switch类型的样式。仅当type为ToggleType.Switch生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -137,7 +137,7 @@ contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<ToggleConfiguration>](#toggleconfiguration12对象说明) | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration>](#toggleconfiguration12对象说明) | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## SwitchStyle<sup>12+</sup>对象说明
 
