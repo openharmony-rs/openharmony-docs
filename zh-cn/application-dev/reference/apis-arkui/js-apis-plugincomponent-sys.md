@@ -98,9 +98,9 @@ pluginComponentManager.push(
     jsonPath: "",
   },
   (err, data) => {
-    console.log("push_callback:err: ", JSON.stringify(err));
-    console.log("push_callback:data: ", JSON.stringify(data));
-    console.log("push_callback: push ok!");
+    console.info("push_callback:err: ", JSON.stringify(err));
+    console.info("push_callback:data: ", JSON.stringify(data));
+    console.info("push_callback: push ok!");
   }
 )
 ```
@@ -143,8 +143,8 @@ pluginComponentManager.request(
     jsonPath: "",
   },
   (err, data) => {
-    console.log("request_callback: componentTemplate.ability=" + data.componentTemplate.ability);
-    console.log("request_callback: componentTemplate.source=" + data.componentTemplate.source);
+    console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability);
+    console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source);
   }
 )
 ```
