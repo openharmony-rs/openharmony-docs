@@ -1159,3 +1159,16 @@ constructor(options?: NumericTextTransitionOptions)
 | TOP                   | 0  | 内容区顶部对齐。 |
 | CENTER                | 1  | 内容区中心对齐。 |
 | BOTTOM                | 2  | 内容区底部对齐。 |
+
+## TextDirection<sup>22+</sup>
+
+文本方向。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                   | 值  | 说明                  |
+| --------------------- | -------  | ------------------- |
+| LTR                   | 0  | 从左到右。 |
+| RTL                | 1  | 从右到左。 |

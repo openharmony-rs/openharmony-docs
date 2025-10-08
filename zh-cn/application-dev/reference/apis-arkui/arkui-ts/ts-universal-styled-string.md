@@ -91,7 +91,7 @@ equals(other: StyledString): boolean
 
 | 类型              |       说明       |
 | ------- | --------------------------------- | 
-| boolean | 两个属性字符串是否相等。<br/>true表示相等，false表示不相等。<br/>**说明：** <br/>当属性字符串的文本及样式均一致，视为相等。<br/>不比较GestureStyle，当属性字符串配置了不同事件，文本和其他样式相同时，亦视为相等。<br/>当比较CustomSpan时，比较的是地址，地址相等，视为相等。 |
+| boolean | 两个属性字符串是否相等。<br/>true表示相等，false表示不相等。<br/>**说明：** <br/>当属性字符串的文本及样式均一致，视为相等。<br/>不比较GestureStyle，当属性字符串配置了不同事件，文本和其他样式相同时，亦视为相等。<br/>当比较CustomSpan或[LeadingMarginSpan](#leadingmarginspan22)时，比较的是地址，地址相等，视为相等。 |
 
 ### subStyledString
 
@@ -1127,6 +1127,7 @@ invalidate(): void
 | leadingMargin   | number \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 是    | 是   | 获取属性字符串文本段落的缩进。<br/>返回为number类型时，单位为vp。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | paragraphSpacing<sup>19+</sup>  | number | 是    | 是   | 获取属性字符串文本段落的段落间距。<br/>单位：vp<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 >  **说明：**
 >
@@ -1164,6 +1165,7 @@ constructor(value?: ParagraphStyleInterface)
 | leadingMargin   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 否  | 是    | 设置文本段落的缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | paragraphSpacing<sup>19+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是  | 设置文本段落的段落间距。<br/>段落间距默认大小为0。不支持百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | textVerticalAlign<sup>20+</sup>   | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是  | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 是    | 设置文本段落的自定义缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## UserDataSpan
 
@@ -1174,6 +1176,62 @@ constructor(value?: ParagraphStyleInterface)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## LeadingMarginSpan<sup>22+</sup>
+
+文本段落的自定义缩进，仅提供基类，具体实现由开发者定义。
+
+### onDraw<sup>22+</sup>
+
+abstract onDraw(context: DrawContext, drawInfo: LeadingMarginSpanDrawInfo): void
+
+绘制自定义图案。段落中的每一行文本都会触发一次onDraw。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明                                                         |
+| ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
+| context | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 是   | 图形绘制上下文。<br/>DrawContext的canvas方法获取的是组件的画布，绘制时不会超出组件的范围。 |
+| drawInfo | [LeadingMarginSpanDrawInfo](#leadingmarginspandrawinfo22对象说明) | 是   | 自定义绘制信息。 |
+
+### getLeadingMargin<sup>22+</sup>
+
+abstract getLeadingMargin(): LengthMetrics
+
+返回文本段落的缩进距离。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型              |       说明       |
+| ------- | --------------------------------- | 
+| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 文本段落的缩进。不支持百分比。<br/>默认值：0<br/> |
+
+## LeadingMarginSpanDrawInfo<sup>22+</sup>对象说明
+
+自定义绘制信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型                              | 只读 | 可选 | 说明   |
+| ------- | --------------------------------- | ---- | ---- |--------------------------------- |
+| x | number |  否  | 否 | 当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| top | number |  否  | 否  | 行顶与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| bottom | number |  否  | 否  | 行底与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| baseline | number |  否  | 否  | 当前行的基线与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| direction | [TextDirection](ts-text-common.md#textdirection22) |  否  | 否  | 文本内容的方向。 |
+| start | number |  否  | 否  | 当前行的起始索引。<br/>取值范围：大于等于0。 |
+| end | number |  否  | 否  | 当前行的结束索引。<br/>取值范围：大于等于0。 |
+| first | boolean |  否  | 否  | 当前行是否是段落的首行。<br/>true：首行；false：非首行。 |
 
 ## StyledStringKey枚举说明
 
@@ -2695,3 +2753,121 @@ struct styled_string_demo4 {
 }
 ```
 ![](figures/styledString_16.gif)
+
+### 示例15（设置段落自定义缩进）
+
+从API version 22开始，该示例通过[LeadingMarginSpan](#leadingmarginspan22)设置段落缩进，并且自定义缩进图案。
+
+```ts
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+import { LengthMetrics } from '@kit.ArkUI';
+
+/**
+ * 实现LeadingMarginSpan
+ */
+class MyLeadingMarginSpan extends LeadingMarginSpan {
+  text: string = ""
+
+  constructor(text: string) {
+    super()
+    this.text = text
+  }
+
+  getText() {
+    return this.text;
+  }
+
+  // 返回缩进距离
+  getLeadingMargin(): LengthMetrics {
+    console.info("getLeadingMargin")
+    return LengthMetrics.vp(10)
+  }
+
+  // 回调给开发者行信息，用于canvas绘制
+  onDraw(context: DrawContext, options: LeadingMarginSpanDrawInfo) {
+    console.info("x = " + options.x + options.direction + ", top = " + options.top
+      + ", bottom = " + options.bottom + ", baseline = " + options.baseline
+      + ", direction = " + ", start = " + options.start + ", end = " + options.end + ", first = " + options.first)
+    let canvas = context.canvas;
+    if (!options.first) {
+      return
+    }
+
+    // 绘制文本符号
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlob = drawing.TextBlob.makeFromString(this.text, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.drawTextBlob(textBlob, options.x - 30, options.top + (options.bottom - options.top) / 2);
+  }
+}
+
+@Entry
+@Component
+struct leadingMarginSpanDemo {
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
+  textController: TextController = new TextController();
+  leadingMarginSpan: LeadingMarginSpan = new MyLeadingMarginSpan("●");
+  paragraphStyleAttr2: ParagraphStyle =
+    new ParagraphStyle({ leadingMarginSpan: this.leadingMarginSpan });
+  style: StyledString = new StyledString("段落标题\n段落内容101234567890123456789012345678901234567890123456789",
+    [
+      {
+        start: 0,
+        length: 10,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.paragraphStyleAttr2
+      }
+    ]
+  );
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.textController })
+        .width("90%")
+        .height("20%")
+        .margin({ top: 10 })
+        .borderWidth(1)
+        .copyOption(CopyOptions.InApp)
+        .draggable(true)
+
+      RichEditor(this.options)
+        .width("90%")
+        .height("20%")
+        .margin({ top: 10 })
+        .borderWidth(1)
+      Column() {
+        Button('setStyledString')
+          .onClick(() => {
+            this.textController.setStyledString(this.style);
+            this.controller.setStyledString(this.style);
+          }).margin({ top: 10 })
+        // 查询段落样式
+        Button("getStyles")
+          .onClick(() => {
+            let styles = this.style.getStyles(0, this.style.length);
+            if (styles.length == 0) {
+              return
+            }
+            for (let i = 0; i < styles.length; i++) {
+              console.info('getStyles style object start:' + styles[i].start);
+              console.info('getStyles style object length:' + styles[i].length);
+              console.info('getStyles style object key:' + styles[i].styledKey);
+              if (styles[i].styledKey === 200) {
+                let paraAttr = styles[i].styledValue as ParagraphStyle;
+                console.info('getStyles leadingMarginSpan:' + paraAttr.leadingMarginSpan);
+                let leadingMarginSpanClass = paraAttr.leadingMarginSpan as MyLeadingMarginSpan
+                if (leadingMarginSpanClass != null) {
+                  console.info('getStyles leadingMarginSpan getText: ' + leadingMarginSpanClass.getText());
+                }
+              }
+            }
+          }).margin({ top: 10 })
+      }
+    }
+    .width('100%')
+  }
+}
+```
+![](figures/styledString_15.gif)
