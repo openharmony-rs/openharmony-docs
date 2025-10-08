@@ -1,5 +1,12 @@
 # Media Library Kit（媒体文件管理服务）
 
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xuchangda; @yixiaoff-->
+<!--Designer: @guxinggang; @liweilu1-->
+<!--Tester: @wangbeibei; @xchaosioda-->
+<!--Adviser: @zengyawen-->
+
 - [Media Library Kit 简介](photoAccessHelper-overview.md)
 - [使用Picker选择媒体库资源](photoAccessHelper-photoviewpicker.md)
 - [保存媒体库资源](photoAccessHelper-savebutton.md)
