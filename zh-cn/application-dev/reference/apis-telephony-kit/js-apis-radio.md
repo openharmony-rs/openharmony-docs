@@ -1,4 +1,10 @@
 # @ohos.telephony.radio (网络搜索)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 网络搜索模块提供管理网络搜索的一些基础功能，包括获取当前接入的CS域和PS域无线接入技术、获取网络状态、获取当前选网模式、获取注册网络所在国家的ISO国家码、获取主卡所在卡槽的索引号、获取指定SIM卡槽对应的注册网络信号强度信息列表、获取运营商名称，判断当前设备是否支持NR(New Radio)、判断主卡的Radio是否打开等。
 

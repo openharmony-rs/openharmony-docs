@@ -1,4 +1,10 @@
 # Account Management<!--account-management-->
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 <!--Del-->
 - [Account Management Overview](account-overview.md)
 - System Accounts (for System Applications Only)<!--os-account-->

@@ -728,6 +728,8 @@
         - [UI预览](ui/ui-ide-previewer.md)
         - [UI调优](ui/ui-inspector-profiler.md)
         - [UI高性能开发](ui/ui-performance-overview.md)
+        - UI开发常见问题<!--ui-development-faq-->
+          - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
@@ -1448,12 +1450,6 @@
           - [振动开发概述](device/sensor/vibrator-overview.md)
           - [振动开发指导(ArkTS)](device/sensor/vibrator-guidelines.md)
           - [振动开发指导(C/C++)](device/sensor/vibrator-guidelines-capi.md)
-      - Mechanic Kit（机械体设备管理服务）<!--mechanic-kit-->
-        - [Mechanic Kit简介](mechanicManager/mechanic-kit-intro.md)
-        - [智能拍摄跟踪开发指南](mechanicManager/camera-tracking-guide.md)
-        <!--Del-->
-        - [设备转动控制开发指南](mechanicManager/rotation-control-guide.md)
-        <!--DelEnd-->
     - 调测调优<!--system-debug-optimize-->
       - Performance Analysis Kit（性能分析服务）<!--performance-analysis-kit-->
         - [Performance Analysis Kit简介](dfx/performance-analysis-kit-overview.md)
@@ -1544,7 +1540,10 @@
           - [hisysevent](dfx/hisysevent.md)
         <!--DelEnd-->
       - Test Kit（应用测试服务）<!--test-kit-->
-        - [自动化测试框架使用指导](application-test/arkxtest-guidelines.md)
+        - 自动化测试框架使用指导<!--arkxtest-->
+          - [单元测试框架使用指导](application-test/unittest-guidelines.md)
+          - [UI测试框架使用指导](application-test/uitest-guidelines.md)
+          - [白盒性能测试框架使用指导](application-test/perftest-guideline.md)
         - [SmartPerf性能工具使用指导](application-test/smartperf-guidelines.md)
         - [wukong稳定性工具使用指导](application-test/wukong-guidelines.md)
       - 调试命令<!--debugging-commands-->
@@ -2079,15 +2078,15 @@
     - [应用性能优化常见问题解决指导 ](performance/performance-optimization-practical-guidance.md)
     - ArkTS高性能编程
       - [高效并发编程](performance/efficient-concurrent-programming.md)
-      - [N-API高效开发指导](performance/develop-Native-modules-using-NAPI-safely-and-efficiently.md)
-      - [多线程能力场景化](performance/multi_thread_capability.md)
+      - [安全和高效地使用N-API开发Native模块](performance/develop-Native-modules-using-NAPI-safely-and-efficiently.md)
+      - [多线程能力场景化示例实践](performance/multi_thread_capability.md)
       - [利用native的方式实现跨线程调用](performance/native-threads-call-js.md)
       - [避免开发过程中的冗余操作](performance/avoiding-redundant-operations.md)
       - [使用AOT进行性能优化](performance/performance-optimization-using-aot.md)
       - [延迟加载Lazy-Import使用指导](performance/Lazy-Import-Instructions.md)
     - 减少卡顿丢帧
       - [正确使用LazyForEach优化](performance/lazyforeach_optimization.md)
-      - [组件复用使用指导](performance/component-recycle.md)
+      - [组件复用实践](performance/component-recycle.md)
       - [组件复用性能优化指导](performance/component_recycle_case.md)
       - [组件复用总览](performance/component-reuse-overview.md)
       - [WaterFlow高性能开发指导](performance/waterflow_optimization.md)
@@ -2129,9 +2128,9 @@
       - [在线视频播放卡顿优化实践](performance/online_video_playback_lags_practice.md)
       - [音画同步最佳实践](performance/audio-video-synchronization.md)
     - 性能工具
-      - [性能分析工具CPU Profiler](performance/application-performance-analysis.md)
-      - [性能优化工具HiDumper](performance/performance-optimization-using-hidumper.md)
-      - [性能优化工具SmartPerf-Host](performance/performance-optimization-using-smartperf-host.md)
+      - [应用性能分析工具CPU Profiler的使用指导](performance/application-performance-analysis.md)
+      - [使用HiDumper命令行工具优化性能](performance/performance-optimization-using-hidumper.md)
+      - [使用SmartPerf-Host分析应用性能](performance/performance-optimization-using-smartperf-host.md)
       - [常用trace使用指导](performance/common-trace-using-instructions.md)
       - [状态变量组件定位工具实践](performance/state_variable_dfx_pratice.md)
       - [应用滑动场景帧率问题分析实践](performance/long-frame-optimization.md)
@@ -3520,6 +3519,7 @@
           - [ArkUI_PixelRoundPolicy](reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
           - [ArkUI_StyledString](reference/apis-arkui/capi-arkui-nativemodule-arkui-styledstring.md)
           - [ArkUI_UIInputEvent](reference/apis-arkui/capi-arkui-eventmodule-arkui-uiinputevent.md)
+          - [ArkUI_ShowCounterConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
           - [PictureInPicture_PipConfig](reference/apis-arkui/capi-pictureinpicture-pipconfig.md)
           - [WindowManager_Rect](reference/apis-arkui/capi-windowmanager-rect.md)
           - [OH_PixelmapNative](reference/apis-arkui/capi-struct.md)
@@ -3758,7 +3758,7 @@
         - [@ohos.file.environment (目录环境能力)(系统接口)](reference/apis-core-file-kit/js-apis-file-environment-sys.md)
         - [@ohos.file.fileAccess (公共文件访问与管理)(系统接口)](reference/apis-core-file-kit/js-apis-fileAccess-sys.md)
         - [@ohos.file.fileExtensionInfo (公共文件访问与管理属性信息)(系统接口)](reference/apis-core-file-kit/js-apis-fileExtensionInfo-sys.md)
-        - [@ohos.file.keyManager (用户秘钥管理)(系统接口)](reference/apis-core-file-kit/js-apis-file-keymanager-sys.md)
+        - [@ohos.file.keyManager (用户密钥管理)(系统接口)](reference/apis-core-file-kit/js-apis-file-keymanager-sys.md)
         - [@ohos.file.picker (选择器)(系统接口)](reference/apis-core-file-kit/js-apis-file-picker-sys.md)
         - [@ohos.file.recent(最近访问列表)(系统接口)](reference/apis-core-file-kit/js-apis-file-recent-sys.md)
         - [@ohos.file.storageStatistics (应用空间统计)(系统接口)](reference/apis-core-file-kit/js-apis-file-storage-statistics-sys.md)
@@ -4658,8 +4658,8 @@
           - [@ohos.multimodalAwareness.metadataBinding (记忆链接)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding-sys.md)
           <!--DelEnd-->
         - 错误码<!--ultimodal-awareness-arkts-errcode-->
-          - [行为动作感知错误码](reference/apis-multimodalawareness-kit/errorcode-motion.md)
-          - [回旋镖错误码](reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md)
+          - [动作感知错误码](reference/apis-multimodalawareness-kit/errorcode-motion.md)
+          - [记忆链接错误码](reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md)
           - [设备状态感知错误码](reference/apis-multimodalawareness-kit/errorcode-deviceStatus.md)
           - [用户状态感知错误码](reference/apis-multimodalawareness-kit/errorcode-userStatus.md)
       - Sensor Service Kit（传感器服务）<!--sensor-service-api-->
@@ -4686,14 +4686,6 @@
         - 错误码<!--sensor-service-arkts-errcode-->
           - [Sensor错误码](reference/apis-sensor-service-kit/errorcode-sensor.md)
           - [Vibrator错误码](reference/apis-sensor-service-kit/errorcode-vibrator.md)
-      - Mechanic Kit（机械体设备控制服务）<!--mechanic-api-->
-        - ArkTS API<!--mechanic-arkts-->
-          - [@ohos.distributedHardware.mechanicManager (机械体控制模块)](reference/apis-mechanic-kit/js-apis-mechanicManager.md)
-          <!--Del-->
-          - [@ohos.distributedHardware.mechanicManager (机械体控制模块)(系统接口)](reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md)
-          <!--DelEnd-->
-        - 错误码<!--mechanic-service-arkts-errcode-->
-          - [Mechanic错误码](reference/apis-mechanic-kit/errorcode-mechanic.md)
     - 调测调优<!--system-debug-optimize-api-->
 
       - Performance Analysis Kit（性能分析服务）<!--performance-analysis-api-->
@@ -4856,8 +4848,8 @@
           - [AudioCodec](reference/apis-avcodec-kit/capi-audiocodec.md)
           - [CodecBase](reference/apis-avcodec-kit/_codec_base.md)
           - [Core](reference/apis-avcodec-kit/capi-core.md)
-          - [VideoDecoder](reference/apis-avcodec-kit/_video_decoder.md)
-          - [VideoEncoder](reference/apis-avcodec-kit/_video_encoder.md)
+          - [VideoDecoder](reference/apis-avcodec-kit/capi-videodecoder.md)
+          - [VideoEncoder](reference/apis-avcodec-kit/capi-videoencoder.md)
           - [AVDemuxer](reference/apis-avcodec-kit/capi-avdemuxer.md)
           - [AVMuxer](reference/apis-avcodec-kit/capi-avmuxer.md)
           - [AVSource](reference/apis-avcodec-kit/capi-avsource.md)
@@ -4873,8 +4865,8 @@
           - [native_avformat.h](reference/apis-avcodec-kit/capi-native-avformat-h.md)
           - [native_avmemory.h](reference/apis-avcodec-kit/capi-native-avmemory-h.md)
           - [native_avcodec_base.h](reference/apis-avcodec-kit/native__avcodec__base_8h.md)
-          - [native_avcodec_videodecoder.h](reference/apis-avcodec-kit/native__avcodec__videodecoder_8h.md)
-          - [native_avcodec_videoencoder.h](reference/apis-avcodec-kit/native__avcodec__videoencoder_8h.md)
+          - [native_avcodec_videodecoder.h](reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md)
+          - [native_avcodec_videoencoder.h](reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)
           - [native_avdemuxer.h](reference/apis-avcodec-kit/capi-native-avdemuxer-h.md)
           - [native_avmuxer.h](reference/apis-avcodec-kit/capi-native-avmuxer-h.md)
           - [native_avsource.h](reference/apis-avcodec-kit/capi-native-avsource-h.md)
@@ -4882,7 +4874,6 @@
         - 结构体<!--avcodec-struct-->
           - [OH_AVRange](reference/apis-avcodec-kit/capi-avcapability-oh-avrange.md)
           - [OH_AVCapability](reference/apis-avcodec-kit/capi-avcapability-oh-avcapability.md)
-          - [MediaKeySession](reference/apis-avcodec-kit/capi-audiocodec-mediakeysession.md)
           - [OH_AVCodecAsyncCallback](reference/apis-avcodec-kit/_o_h___a_v_codec_async_callback.md)
           - [OH_AVBuffer](reference/apis-avcodec-kit/capi-core-oh-avbuffer.md)
           - [OH_NativeBuffer](reference/apis-avcodec-kit/capi-core-oh-nativebuffer.md)

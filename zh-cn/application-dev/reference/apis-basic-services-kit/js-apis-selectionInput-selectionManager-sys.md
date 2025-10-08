@@ -53,7 +53,7 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`SelectionInfo text: ${info.text}`);
+    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
   });
 } catch (err) {
   console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
@@ -81,7 +81,7 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 import { selectionManager } from '@kit.BasicServicesKit';
 
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`SelectionInfo text: ${info.text}`);
+  console.info(`SelectionInfo: ${JSON.stringify(info)}`);
 };
 
 selectionManager.on('selectionCompleted', selectionChangeCallback);
@@ -89,6 +89,44 @@ try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
   console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
+}
+```
+
+## getSelectionContent()
+
+getSelectionContent(): Promise\<string>
+
+获取选中文本的内容。使用Promise异步回调。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**返回值：**
+| 类型   | 说明                                                                 |
+| ------- | ------------------------------------------------------------------ |
+| Promise\<string> | Promise对象，返回当前选中文本的内容。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+
+| 错误码ID   | 错误信息                       |
+| ---------- | ----------------------------- |
+| 33600001   | Selection service exception. |
+| 33600004   | The interface is called too frequently. |
+| 33600005   | The interface is called at the wrong time. |
+| 33600006   | The current application is prohibited from accessing content. |
+| 33600007   | The length of selected content is out of range. |
+| 33600008   | Getting the selected content times out. |
+
+**示例：**
+
+```ts
+import { selectionManager } from '@kit.BasicServicesKit';
+
+try {
+  let content = await selectionManager.getSelectionContent();
+} catch (err) {
+  console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
 }
 ```
 
@@ -256,7 +294,6 @@ export default ServiceExtAbility;
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
-| text   	| string   | 否   | 否   | 划词文本。 |
 | selectionType	    | [SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
 | startDisplayX   	| number   | 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
 | startDisplayY   	| number   | 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |

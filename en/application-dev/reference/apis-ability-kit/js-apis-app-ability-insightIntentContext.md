@@ -1,6 +1,13 @@
-# @ohos.app.ability.InsightIntentContext (Intent Call Execution Context)
+# @ohos.app.ability.InsightIntentContext (Intent Execution Context)
 
-The module provides the intent call execution context, which is a property of the base class for intent call execution and provides basic capabilities for the base class.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo; @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The module provides the context for intent execution. It is used as a property in both the [intent execution base class](./js-apis-app-ability-insightIntentExecutor.md) and [base class decorated with @InsightIntentEntry](./js-apis-app-ability-InsightIntentEntryExecutor.md), offering essential capabilities for intent implementation, for example, starting [UIAbility components](./js-apis-app-ability-uiAbility.md) within the same application.
 
 > **NOTE**
 >
@@ -18,7 +25,7 @@ import { InsightIntentContext } from '@kit.AbilityKit';
 
 startAbility(want: Want, callback: AsyncCallback\<void\>): void
 
-Starts an ability. The ability can be started only when it has the same bundle name as the base class for intent call execution. This API uses an asynchronous callback to return the result.
+Starts a UIAbility. This API can only be used to start UIAbility components within the same application. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -30,8 +37,8 @@ Starts an ability. The ability can be started only when it has the same bundle n
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**. Otherwise, **err** is an error object.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for starting the UIAbility.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -55,8 +62,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000061 | Operation not supported. |
 | 16200001 | The caller has been released. |
 
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
-
 **Example**
 
   ```ts
@@ -65,9 +70,10 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
       let want: Want = {
-        bundleName: 'com.ohos.intentexecutedemo',
+        bundleName: 'com.ohos.intentExecuteDemo',
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };
@@ -99,7 +105,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 startAbility(want: Want): Promise\<void\>
 
-Starts an ability. The ability can be started only when it has the same bundle name as the base class for intent call execution. This API uses a promise to return the result.
+Starts a UIAbility. This API can only be used to start UIAbility components within the same application. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -111,7 +117,7 @@ Starts an ability. The ability can be started only when it has the same bundle n
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for starting the UIAbility.|
 
 **Return value**
 
@@ -141,8 +147,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000061 | Operation not supported. |
 | 16200001 | The caller has been released. |
 
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
-
 **Example**
 
   ```ts
@@ -151,9 +155,10 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
+    async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
       let want: Want = {
-        bundleName: 'com.ohos.intentexecutedemo',
+        bundleName: 'com.ohos.intentExecuteDemo',
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };

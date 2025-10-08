@@ -4,7 +4,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 Common Event Service (CES) is provided for applications to subscribe to, publish, and unsubscribe from common events.
 

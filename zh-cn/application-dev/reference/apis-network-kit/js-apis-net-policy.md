@@ -1,5 +1,12 @@
 # @ohos.net.policy (网络策略管理)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块提供网络策略管理能力，采用防火墙技术对用户使用数据流量进行控制管理。
 
 > **说明：**

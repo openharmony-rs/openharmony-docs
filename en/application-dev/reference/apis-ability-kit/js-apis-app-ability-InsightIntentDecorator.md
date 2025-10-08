@@ -3,22 +3,24 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The InsightIntentDecorator module provides various intent decorators that allow you to define application functionalities as intents and integrate them into AI-driven features like intelligent Q&A, search, and recommendations.
+The InsightIntentDecorator module provides several types of intent decorators for decorating classes or methods. You can [use these decorators to develop intents](../../application-models/insight-intent-decorator-development.md), define application functionalities as intents, and integrate them into AI entry points such as intelligent Q&A, intelligent search, and intelligent recommendation systems.
 
 - [@InsightIntentLink](#insightintentlink): decorates a URI in your application as an intent, enabling AI systems to quickly jump to your application via this intent. For details on the parameters supported by this decorator, see [LinkIntentDecoratorInfo](#linkintentdecoratorinfo).
 - [@InsightIntentPage](#insightintentpage): decorates a page in your application as an intent, enabling AI systems to swiftly navigate to that page. For details on the parameters supported by this decorator, see [PageIntentDecoratorInfo](#pageintentdecoratorinfo).
 - [@InsightIntentFunction](#insightintentfunction) and [@InsightIntentFunctionMethod](#insightintentfunctionmethod): The two decorators must be used together. [@InsightIntentFunction](#insightintentfunction) is used to decorate a class, and [@InsightIntentFunctionMethod](#insightintentfunctionmethod) is used to decorate a static function in that class. This setup defines the static function as an intent, enabling AI systems to execute it rapidly.
-- [@InsightIntentEntry](#insightintententry): decorates a class that inherits from [InsightIntentEntryExecutor](./js-apis-app-ability-InsightIntentEntryExecutor.md) to specify the execution mode supported when the ability is started. This helps the AI entry point to easily invoke the bound ability and perform the intended action. For details on the parameters supported by this decorator, see [EntryIntentDecoratorInfo](#entryintentdecoratorinfo).
-- [@InsightIntentForm](#insightintentform): decorates a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md) to specify the name of the widget bound to the FormExtensionAbility. This enables the widget to be added to the AI entry point via intent calls. For details on the parameters supported by this decorator, see [FormIntentDecoratorInfo](#formintentdecoratorinfo).
+- [@InsightIntentEntry](#insightintententry): decorates a class that inherits from [InsightIntentEntryExecutor](./js-apis-app-ability-InsightIntentEntryExecutor.md) to implement intent operations and configure the ability on which the intent depends. This helps the AI entry point to easily invoke the associated ability and perform the intended action. For details on the parameters supported by this decorator, see [EntryIntentDecoratorInfo](#entryintentdecoratorinfo).
+- [@InsightIntentForm](#insightintentform): decorates a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md) to specify the name of the widget bound to the FormExtensionAbility. This enables the AI entry point to add the widget via intent calls. For details on the parameters supported by this decorator, see [FormIntentDecoratorInfo](#formintentdecoratorinfo).
 - [@InsightIntentEntity](#insightintententity): decorates a class that inherits from [IntentEntity](./js-apis-app-ability-insightIntent.md#intententity20) to define the class as an intent entity, which can pass parameters required for intent calls. For details on the parameters supported by this decorator, see [IntentEntityDecoratorInfo](#intententitydecoratorinfo).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Basic Concepts
 
@@ -35,10 +37,6 @@ The system queries the standard intent list for a matching intent based on the *
 import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, InsightIntentFunction, InsightIntentEntry } from '@kit.AbilityKit';
 ```
 
-## Constraints
-
-The intent decorators provided by this module can be used only in.ets files of HAP or HSP modules.
-
 ## @InsightIntentLink
 
 Decorates a URI in the application as an intent, enabling AI systems to quickly jump to the application via this intent. For details on the parameters supported by this decorator, see [LinkIntentDecoratorInfo](#linkintentdecoratorinfo).
@@ -46,8 +44,6 @@ Decorates a URI in the application as an intent, enabling AI systems to quickly 
 > **NOTE**
 >
 > The URI format must adhere to the requirements described in [Application Link Description](../../application-models/app-uri-config.md).
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -66,7 +62,7 @@ import { InsightIntentLink, LinkParamCategory } from '@kit.AbilityKit';
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('sys.float.window_shadow_config'),
+  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   uri: 'https://www.example.com/music/',
@@ -127,7 +123,7 @@ export class ClassForLink {
   }
 
   static Function1(playbackProgress: number, playback?: number): void {
-    console.log('Function1' + playbackProgress);
+    console.info(`Function1, playbackProgress: ${playbackProgress}.`);
   }
 }
 ```
@@ -135,8 +131,6 @@ export class ClassForLink {
 ## IntentDecoratorInfo
 
 Common properties for intent decorators, used to define basic information about an intent (including the intent name and version number). It applies to all decorators provided by this module.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -150,13 +144,13 @@ Common properties for intent decorators, used to define basic information about 
 
 | Name              | Type           | Read-Only        | Optional| Description                                                        |
 | ------------------ | ----------------| ---------- | ---- | ------------------------------------------------------------ |
-| intentName         | string          | No      | No  | Intent name. For a standard intent, the value of this field is the value defined in the standard intent for the corresponding field.                  |
+| intentName         | string          | No      | No  | Intent name, which is the unique identifier of an intent.|
 | domain             | string          | No      | No  | Vertical domain of the intent. It is used to categorize intents by vertical fields (for example, video, music, and games). For details about the value range, see the vertical domain fields in [smart distribution features in different vertical domains](https://developer.huawei.com/consumer/en/doc/service/intents-ai-distribution-characteristic-0000001901922213#section2656133582215).   |
 | intentVersion      | string          | No      | No  | Version number of the intent. It is used to distinguish and manage intents when their capabilities evolve.                       |
-| displayName        | string          | No      | No  | Name of the intent displayed in the InsightIntent framework.                                      |
-| displayDescription | string         | No       | Yes  | Description of the intent displayed in the InsightIntent framework.                                      |
-| schema             | string         | No       | Yes  | Standard intent name.                 |
-| icon               | ResourceStr | No  | Yes  | Icon of the intent.<br>- If the value is a string, the icon is read from a network resource.<br>- If the value is a [resource](../../reference/apis-localization-kit/js-apis-resource-manager.md), the icon is read from a local resource.|
+| displayName        | string          | No      | No  | Name of the intent displayed to users.                                      |
+| displayDescription | string         | No       | Yes  | Description of the intent displayed to users.                                      |
+| schema             | string         | No       | Yes  | Name of a standard intent schema. This field is required when you [access a standard intent](../../application-models/insight-intent-definition.md#accessing-standard-intents). It is not required when you [create a custom intent](../../application-models/insight-intent-definition.md#creating-custom-intents). For details about the standard intent list, see [Appendix: Standard Intent Access Specifications](../../application-models/insight-intent-access-specifications.md).|
+| icon               | ResourceStr | No  | Yes  | Icon of the intent. It is displayed in the AI entry point.<br>- If the value is a string, the icon is read from a network resource.<br>- If the value is a [resource](../../reference/apis-localization-kit/js-apis-resource-manager.md), the icon is read from a local resource.|
 | llmDescription     | string      | No          | Yes  | Function of an intent, which helps large language models understand the intent.                 |
 | keywords           | string[]     | No         | Yes  | Search keywords for the intent.                                      |
 | parameters         | Record<string, Object>| No| Yes  | Data format of intent parameters, which is used to define the input data format during intent calls.  |
@@ -165,8 +159,6 @@ Common properties for intent decorators, used to define basic information about 
 ## LinkIntentDecoratorInfo
 
 **LinkIntentDecoratorInfo** inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and describes the parameters supported by the [@InsightIntentLink](#insightintentlink) decorator, such as the URI information required for application redirection.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -182,8 +174,6 @@ Common properties for intent decorators, used to define basic information about 
 ## LinkIntentParamMapping
 
 **LinkIntentParamMapping** defines the mapping between intent parameters and URI information for the [@InsightIntentLink](#insightintentlink) decorator.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -201,8 +191,6 @@ Common properties for intent decorators, used to define basic information about 
 
 Enumerates the intent parameter categories available for the [@InsightIntentLink](#insightintentlink) decorator. The enum is used to define how intent parameters should be passed.
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -219,8 +207,6 @@ Decorates a page in the application as an intent, enabling AI systems to swiftly
 > **NOTE**
 >
 > This decorator is only applicable to struct pages.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -269,8 +255,6 @@ struct Index {
 
 **PageIntentDecoratorInfo** inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and describes the parameters supported by the [@InsightIntentPage](#insightintentpage) decorator, such as the name of [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) of the target page.
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -288,9 +272,7 @@ struct Index {
 
 This decorator must be used together with the [@InsightIntentFunctionMethod](#insightintentfunctionmethod) decorator.
 
-This decorate is used to decorate a class, and [@InsightIntentFunctionMethod](#insightintentfunctionmethod) is used to decorate a static function in that class. This setup defines the static function as an intent, enabling AI systems to execute it rapidly.
-
-**Model restriction**: This API can be used only in the stage model.
+This decorator is used to decorate a class, and [@InsightIntentFunctionMethod](#insightintentfunctionmethod) is used to decorate a static function in that class. This setup defines the static function as an intent, enabling AI systems to execute it rapidly.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -307,8 +289,6 @@ This decorator must be used together with the [@InsightIntentFunction](#insighti
 > The class containing static methods must be exported using **export**.
 >
 > Parameter names and types of a function must align with those specified in the intent definition.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -327,7 +307,7 @@ export class ClassForFuncDemo {
   intentVersion: '1.0.1',
   displayName: 'Query weather',
   displayDescription: 'Display weather information',
-  icon: $r('sys.plural.selecttitlebar_accessibility_message_desc_new'),
+  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
   llmDescription: 'Get weather of an location',
   parameters: {
     'schema': 'http://json-schema.org/draft-07/schema#',
@@ -346,7 +326,7 @@ export class ClassForFuncDemo {
   }
 })
   static getWeather(location: string): string {
-    console.log('location' + location);
+    console.info(`location: ${location}`);
     return 'The current temperature in Hangzhou is 24℃';
   }
 }
@@ -356,23 +336,19 @@ export class ClassForFuncDemo {
 
 Parameter type of the [@InsightIntentFunctionMethod](#insightintentfunctionmethod) decorator. All properties inherit from [IntentDecoratorInfo](#intentdecoratorinfo).
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 ## @InsightIntentEntry
 
-Decorates a class that inherits from [InsightIntentEntryExecutor](./js-apis-app-ability-InsightIntentEntryExecutor.md) to specify the execution mode supported when the ability is started. This helps the AI entry point to easily invoke the bound ability and perform the intended action. For details on the parameters supported by this decorator, see [EntryIntentDecoratorInfo](#entryintentdecoratorinfo).
+Decorates a class that inherits from [InsightIntentEntryExecutor](./js-apis-app-ability-InsightIntentEntryExecutor.md) to implement intent operations and configure the ability on which the intent depends. This helps the AI entry point to easily invoke the associated ability and perform the intended action. For details on the parameters supported by this decorator, see [EntryIntentDecoratorInfo](#entryintentdecoratorinfo).
 
 > **NOTE**
 >
 > - If this decorator is used to access a standard intent, all mandatory parameters defined in the standard intent JSON schema must be implemented and their parameter types must match.
 > - If this decorator is used to access a custom intent, all mandatory parameters defined in **parameters** must be implemented and their parameter types must match.
 > - Classes decorated by this decorator must be exported using **export default**. Class properties are limited to basic types or intent entities, and the return value must be intent entities.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -393,7 +369,7 @@ const LOG_TAG: string = 'testTag-EntryIntent';
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('app.media.app_icon'),
+  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   abilityName: 'EntryAbility',
@@ -443,8 +419,6 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
 
 Inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and is used to describe the parameters supported by the [@InsightIntentEntry](#insightintententry) decorator.
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -458,13 +432,11 @@ Inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and is used to describ
 
 ## @InsightIntentForm
 
-Decorates a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md) to specify the name of the widget bound to the FormExtensionAbility. This enables the widget to be added to the AI entry point via intent calls. For details on the parameters supported by this decorator, see [FormIntentDecoratorInfo](#formintentdecoratorinfo).
+Decorates a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md) to specify the name of the widget bound to the FormExtensionAbility. This enables the AI entry point to add the widget via intent calls. For details on the parameters supported by this decorator, see [FormIntentDecoratorInfo](#formintentdecoratorinfo).
 
 > **NOTE**
 >
 > For details about the requirements for defining widget names, see [Widget Configuration](../../form/arkts-ui-widget-configuration.md#widget-configuration).
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -478,12 +450,12 @@ import { insightIntent, Want, InsightIntentForm } from '@kit.AbilityKit';
 
 // Use the @InsightIntentForm decorator to define a widget of the FormExtensionAbility as an intent.
 @InsightIntentForm({
-  intentName: 'PlayMusic78',
+  intentName: 'PlayMusic',
   domain: 'MusicDomain',
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('app.media.app_icon'),
+  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   parameters: {
@@ -538,8 +510,6 @@ export default class EntryFormAbility extends FormExtensionAbility {
 
 Inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and is used to describe the parameters supported by the [@InsightIntentForm](#insightintentform) decorator.
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -553,8 +523,6 @@ Inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and is used to describ
 ## @InsightIntentEntity
 
 Decorates a class that inherits from [IntentEntity](./js-apis-app-ability-insightIntent.md#intententity20) to define the class as an intent entity, which can pass parameters required for intent calls. For details on the parameters supported by this decorator, see [IntentEntityDecoratorInfo](#intententitydecoratorinfo).
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -599,8 +567,6 @@ export class ArtistClassDef implements insightIntent.IntentEntity {
 ## IntentEntityDecoratorInfo
 
 Describes the parameters supported by the [@InsightIntentEntity](#insightintententity) decorator.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

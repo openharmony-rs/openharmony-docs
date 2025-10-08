@@ -572,9 +572,9 @@ Navigation双栏模式下，支持设置右侧页面显示默认占位页，占�
 | ------ | -------------- | ---- | ------------------ |
 | placeholder  |[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | 是   |设置Navigation双栏模式下右侧的默认占位页。|
 
-### enableShowHideWithContentCover<sup>21+</sup>
+### enableVisibilityLifecycleWithContentCover<sup>21+</sup>
 
-enableShowHideWithContentCover(isEnabled: Optional&lt;boolean&gt;)
+enableVisibilityLifecycleWithContentCover(isEnabled: Optional&lt;boolean&gt;)
 
 设置是否启用[NavDestination](./ts-basic-components-navdestination.md)页面[onHidden](./ts-basic-components-navdestination.md#onhidden10)、[onShown](./ts-basic-components-navdestination.md#onshown10)生命周期与全模态的联动触发。
 
@@ -1617,21 +1617,20 @@ updateTransition?(progress: number): void;
 
 Navigation跳转拦截对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型     | 必填 | 说明    |
 | ---- | ----- | ----- | ----   |
-| willShow | [InterceptionShowCallback](#interceptionshowcallback12) | 否 | 页面跳转前拦截，允许操作栈，在当前跳转中生效。|
-| didShow | [InterceptionShowCallback](#interceptionshowcallback12) | 否 | 页面跳转后回调。在该回调中操作栈在下一次跳转中刷新。|
-| modeChange | [InterceptionModeCallback](#interceptionmodecallback12) | 否 | Navigation单双栏显示状态发生变更时触发该回调。|
+| willShow | [InterceptionShowCallback](#interceptionshowcallback12) | 否 | 页面跳转前的回调，允许操作栈，在当前跳转中生效。拦截的页面会被创建。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| didShow | [InterceptionShowCallback](#interceptionshowcallback12) | 否 | 页面跳转后回调。在该回调中操作栈在下一次跳转中刷新。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| modeChange | [InterceptionModeCallback](#interceptionmodecallback12) | 否 | Navigation单双栏显示状态发生变更时触发该回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| interception<sup>22+</sup> | [InterceptionCallback](#interceptioncallback22) | 否 | 页面跳转前的回调，允许操作栈，在当前跳转中生效。拦截的页面不会被创建。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ### InterceptionShowCallback<sup>12+</sup>
 
 type InterceptionShowCallback = (from: NavDestinationContext | NavBar, to: NavDestinationContext | NavBar, operation: NavigationOperation, isAnimated: boolean) => void
 
-navigation页面跳转前和页面跳转后的拦截回调。
+Navigation页面跳转前和页面跳转后的拦截回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1650,7 +1649,7 @@ navigation页面跳转前和页面跳转后的拦截回调。
 
 type InterceptionModeCallback = (mode: NavigationMode) => void
 
-navigation单双栏显示状态发生变更时的拦截回调。
+Navigation单双栏显示状态发生变更时的拦截回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1661,6 +1660,26 @@ navigation单双栏显示状态发生变更时的拦截回调。
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
 | mode | [NavigationMode](#navigationmode9枚举说明) | 是 |  导航栏的显示模式。 |
+
+### InterceptionCallback<sup>22+</sup>
+
+type InterceptionCallback = (from: NavPathInfo | NavBar, to: NavPathInfo | NavBar, pathStack: NavPathStack, operation: NavigationOperation, isAnimated: boolean) => void
+
+Navigation页面跳转前的拦截回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明              |
+| ------ | ------ | ---- | ---------------- |
+| from | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | 是 |  退场页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
+| to | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
+| pathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 是 | 页面栈。 |
+| operation | [NavigationOperation](#navigationoperation11枚举说明) | 是 | 当前页面跳转类型。 |
+| isAnimated | boolean | 是 | 页面跳转是否有动画。<br/>true：页面跳转有动画。<br/>false：页面跳转没有动画。 |
 
 ## NavBar<sup>12+</sup>
 
@@ -4821,3 +4840,268 @@ struct Index {
 ```
 
 ![zh-cn_image_navigation_home_NavDestination](figures/zh-cn_image_navigation_home_NavDestination.gif)
+
+### 示例17（使用新增导航控制器方法）
+
+该示例演示如何使用路由拦截功能，并在[NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11)中获取mode。
+
+```ts
+// Index.ets
+@Entry
+@Component
+struct NavigationExample {
+  pageInfos: NavPathStack = new NavPathStack();
+  isUseInterception: boolean = false;
+
+  registerInterception() {
+    this.pageInfos.setInterception({
+      // 页面创建前拦截，允许操作栈，在当前跳转中生效。
+      interception: (from: NavPathInfo | "navBar", to: NavPathInfo | NavBar, navStack: NavPathStack,
+        operation: NavigationOperation, animated: boolean) => {
+        if (!this.isUseInterception) {
+          return;
+        }
+        if (typeof to === "string") {
+          return;
+        }
+        // 重定向目标页面，更改为pageTwo页面到pageOne页面。
+        let target: NavPathInfo = to as NavPathInfo;
+        let navStacktarget: NavPathStack = navStack as NavPathStack;
+        if (target.name === 'pageTwo') {
+          navStacktarget.pop();
+          navStacktarget.pushPathByName('pageOne', null);
+        }
+      },
+      // 页面跳转后回调，在该回调中操作栈在下一次跳转中刷新。
+      didShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
+        operation: NavigationOperation, isAnimated: boolean) => {
+        if (!this.isUseInterception) {
+          return;
+        }
+        if (typeof from === "string") {
+          console.info("current transition is from navigation home");
+        } else {
+          console.info(`current transition is from  ${(from as NavDestinationContext).pathInfo.name}`);
+          console.info(`current transition mode is to ${(to as NavDestinationContext).mode?.toString()}`);
+        }
+        if (typeof to === "string") {
+          console.info("current transition to is navBar");
+        } else {
+          console.info(`current transition is to ${(to as NavDestinationContext).pathInfo.name}`);
+          console.info(`current transition mode is to ${(to as NavDestinationContext).mode?.toString()}`);
+        }
+      },
+      // Navigation单双栏显示状态发生变更时触发该回调。
+      modeChange: (mode: NavigationMode) => {
+        if (!this.isUseInterception) {
+          return;
+        }
+        console.info(`current navigation mode is ${mode}`);
+      }
+    })
+  }
+
+  build() {
+    Navigation(this.pageInfos) {
+      Column() {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈。
+          })
+        Button('use interception', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.isUseInterception = !this.isUseInterception;
+            if (this.isUseInterception) {
+              this.registerInterception();
+            } else {
+              this.pageInfos.setInterception(undefined);
+            }
+          })
+      }
+    }.title('NavIndex')
+  }
+}
+```
+```ts
+// PageOne.ets
+class TmpClass {
+  count: number = 10;
+}
+
+@Builder
+export function PageOneBuilder(name: string, param: Object) {
+  PageOne()
+}
+
+@Component
+export struct PageOne {
+  pageInfos: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('pushPathByName', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            let tmp = new TmpClass();
+            this.pageInfos.pushPathByName('pageTwo', tmp); // 将name指定的NavDestination页面信息入栈，传递的数据为param。
+          })
+        Button('singletonLaunchMode', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.pushPath({ name: 'pageOne' },
+              { launchMode: LaunchMode.MOVE_TO_TOP_SINGLETON }); // 从栈底向栈顶查找，如果指定的名称已经存在，则将对应的NavDestination页面移到栈顶。
+          })
+        Button('popToname', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.popToName('pageTwo'); // 回退路由栈到第一个名为name的NavDestination页面。
+            console.info('popToName' + JSON.stringify(this.pageInfos),
+              '返回值' + JSON.stringify(this.pageInfos.popToName('pageTwo')));
+          })
+        Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.popToIndex(1); // 回退路由栈到index指定的NavDestination页面。
+            console.info('popToIndex' + JSON.stringify(this.pageInfos));
+          })
+        Button('moveToTop', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.moveToTop('pageTwo'); // 将第一个名为name的NavDestination页面移到栈顶。
+            console.info('moveToTop' + JSON.stringify(this.pageInfos),
+              '返回值' + JSON.stringify(this.pageInfos.moveToTop('pageTwo')));
+          })
+        Button('moveIndexToTop', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.moveIndexToTop(1); // 将index指定的NavDestination页面移到栈顶。
+            console.info('moveIndexToTop' + JSON.stringify(this.pageInfos));
+          })
+        Button('clear', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.clear(); // 清除栈中所有页面。
+          })
+        Button('get', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            console.info('-------------------');
+            console.info('获取栈中所有NavDestination页面的名称', JSON.stringify(this.pageInfos.getAllPathName()));
+            console.info('获取index指定的NavDestination页面的参数信息',
+              JSON.stringify(this.pageInfos.getParamByIndex(1)));
+            console.info('获取全部名为name的NavDestination页面的参数信息',
+              JSON.stringify(this.pageInfos.getParamByName('pageTwo')));
+            console.info('获取全部名为name的NavDestination页面的位置索引',
+              JSON.stringify(this.pageInfos.getIndexByName('pageOne')));
+            console.info('获取栈大小', JSON.stringify(this.pageInfos.size()));
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    }).onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+    })
+  }
+}
+```
+```ts
+// PageTwo.ets
+@Builder
+export function PageTwoBuilder(name: string, param: Object) {
+  PageTwo()
+}
+
+@Component
+export struct PageTwo {
+  pathStack: NavPathStack = new NavPathStack();
+  private menuItems: Array<NavigationMenuItem> = [
+    {
+      value: "1",
+      icon: 'resources/base/media/undo.svg',
+    },
+    {
+      value: "2",
+      icon: 'resources/base/media/redo.svg',
+      isEnabled: false,
+    },
+    {
+      value: "3",
+      icon: 'resources/base/media/ic_public_ok.svg',
+      isEnabled: true,
+    }
+  ];
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('pushPathByName', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pathStack.pushPathByName('pageOne', null);
+          })
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .menus(this.menuItems)
+    .onBackPressed(() => {
+      this.pathStack.pop();
+      return true;
+    })
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+      console.info("current page config info is " + JSON.stringify(context.getConfigInRouteMap()));
+    })
+  }
+}
+```
+
+在src/main目录下的工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"。
+
+```json
+// src/main/resources/base/profile/router_map.json
+{
+  "routerMap": [
+    {
+      "name": "pageOne",
+      "pageSourceFile": "src/main/ets/pages/PageOne.ets",
+      "buildFunction": "PageOneBuilder",
+      "data": {
+        "description": "this is pageOne"
+      }
+    },
+    {
+      "name": "pageTwo",
+      "pageSourceFile": "src/main/ets/pages/PageTwo.ets",
+      "buildFunction": "PageTwoBuilder"
+    }
+  ]
+}
+```
+![navigation_interception.gif](figures/navigation_interception.gif)

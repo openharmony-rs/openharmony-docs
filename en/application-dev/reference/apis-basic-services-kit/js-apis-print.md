@@ -22,7 +22,7 @@ import { print } from '@kit.BasicServicesKit';
 
 Implements event listeners for print tasks.
 
-### PrintTask.on
+### on
 
 on(type: 'block', callback: Callback&lt;void&gt;): void
 
@@ -35,7 +35,7 @@ Registers a listener for the print task block event. This API uses a callback to
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**, indicating blocking of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**,<br>indicating blocking of the print task.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -51,13 +51,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('block', () => {
-        console.log('print state is block');
+        console.info('print state is block');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -65,7 +65,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on
+### on
 
 on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
@@ -78,7 +78,7 @@ Registers a listener for the print task success event. This API uses a callback 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**, indicating success of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**,<br>indicating success of the print task.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -94,13 +94,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('succeed', () => {
-        console.log('print state is succeed');
+        console.info('print state is succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -108,7 +108,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on
+### on
 
 on(type: 'fail', callback: Callback&lt;void&gt;): void
 
@@ -121,7 +121,7 @@ Registers a listener for the print task failure event. This API uses a callback 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**, indicating failure of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**,<br>indicating failure of the print task.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -137,13 +137,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('fail', () => {
-        console.log('print state is fail');
+        console.info('print state is fail');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -151,7 +151,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on
+### on
 
 on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
@@ -164,7 +164,7 @@ Registers a listener for the print task cancellation event. This API uses a call
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**, indicating cancellation of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**,<br>indicating cancellation of the print task.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -180,13 +180,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('cancel', () => {
-        console.log('print state is cancel');
+        console.info('print state is cancel');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -194,7 +194,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### off
 
 off(type: 'block', callback?: Callback&lt;void&gt;): void
 
@@ -207,7 +207,7 @@ Unregisters the listener for the print task block event. This API uses a callbac
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**, indicating blocking of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**,<br>indicating blocking of the print task.|
 | callback | Callback&lt;void&gt; | No| Callback used to return the result.|
 
 **Error codes**
@@ -223,13 +223,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('block', () => {
-        console.log('unregister state block');
+        console.info('unregister state block');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -237,7 +237,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### off
 
 off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
@@ -250,7 +250,7 @@ Unregisters the listener for the print task success event. This API uses a callb
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**, indicating success of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**,<br>indicating success of the print task.|
 | callback | Callback&lt;void&gt; | No| Callback used to return the result.|
 
 **Error codes**
@@ -266,13 +266,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('succeed', () => {
-        console.log('unregister state succeed');
+        console.info('unregister state succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -280,7 +280,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### off
 
 off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
@@ -293,7 +293,7 @@ Unregisters the listener for the print task failure event. This API uses a callb
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**, indicating failure of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**,<br>indicating failure of the print task.|
 | callback | Callback&lt;void&gt; | No| Callback used to return the result.|
 
 **Error codes**
@@ -309,13 +309,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('fail', () => {
-        console.log('unregister state fail');
+        console.info('unregister state fail');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -323,7 +323,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### off
 
 off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
@@ -336,7 +336,7 @@ Unregisters the listener for the print task cancellation event. This API uses a 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**, indicating cancellation of the print task. |
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**,<br>indicating cancellation of the print task.|
 | callback | Callback&lt;void&gt; | No| Callback used to return the result.|
 
 **Error codes**
@@ -352,13 +352,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('cancel', () => {
-        console.log('unregister state cancel');
+        console.info('unregister state cancel');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -370,7 +370,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 Provides information about the document to print. This API must be implemented by a third-party application.
 
-### onStartLayoutWrite
+### onStartLayoutWrite<sup>11+</sup>
 
 onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: number, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 
@@ -402,7 +402,6 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
 
 class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
@@ -411,21 +410,21 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     };
     onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
         if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
-            console.log('PREVIEW_DESTROY');
+            console.info('PREVIEW_DESTROY');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
-            console.log('PRINT_TASK_SUCCEED');
+            console.info('PRINT_TASK_SUCCEED');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
-            console.log('PRINT_TASK_FAIL');
+            console.info('PRINT_TASK_FAIL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
-            console.log('PRINT_TASK_CANCEL');
+            console.info('PRINT_TASK_CANCEL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
-            console.log('PRINT_TASK_BLOCK');
+            console.info('PRINT_TASK_BLOCK');
         }
     }
 }
 ```
 
-### onJobStateChanged
+### onJobStateChanged<sup>11+</sup>
 
 onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 
@@ -454,7 +453,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
@@ -463,15 +462,15 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     };
     onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
         if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
-            console.log('PREVIEW_DESTROY');
+            console.info('PREVIEW_DESTROY');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
-            console.log('PRINT_TASK_SUCCEED');
+            console.info('PRINT_TASK_SUCCEED');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
-            console.log('PRINT_TASK_FAIL');
+            console.info('PRINT_TASK_FAIL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
-            console.log('PRINT_TASK_CANCEL');
+            console.info('PRINT_TASK_CANCEL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
-            console.log('PRINT_TASK_BLOCK');
+            console.info('PRINT_TASK_BLOCK');
         }
     }
 }
@@ -506,7 +505,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 // Pass in the URIs of the files.
@@ -516,7 +515,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
         console.error('print err ' + JSON.stringify(err));
     } else {
         printTask.on('succeed', () => {
-            console.log('print state is succeed');
+            console.info('print state is succeed');
         })
         // ...
     }
@@ -556,14 +555,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 // Pass in the URIs of the files.
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('succeed', () => {
-        console.log('print state is succeed');
+        console.info('print state is succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -601,7 +600,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -618,7 +617,7 @@ struct Index {
                             console.error('print err ' + JSON.stringify(err));
                         } else {
                             printTask.on('succeed', () => {
-                                console.log('print state is succeed');
+                                console.info('print state is succeed');
                             })
                             // ...
                         }
@@ -668,7 +667,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -682,7 +681,7 @@ struct Index {
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.on('succeed', () => {
-                            console.log('print state is succeed');
+                            console.info('print state is succeed');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -712,7 +711,7 @@ Prints a file. This API uses a promise to return the result.
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| jobName | string | Yes| Name of the file to print, for example, **test.pdf**. The printer uses the [onStartLayoutWrite](#onstartlayoutwrite) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print.|
+| jobName | string | Yes| Name of the file to print, for example, **test.pdf**. The printer uses the [onStartLayoutWrite](#onstartlayoutwrite11) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print.|
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | Yes| [PrintDocumentAdapter](#printdocumentadapter11) API instance implemented by a third-party application.|
 | printAttributes | [PrintAttributes](#printattributes11) | Yes| Print attributes.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
@@ -735,7 +734,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -762,7 +761,7 @@ struct Index {
 
                     print.print(jobName, printAdapter, printAttributes, context).then((printTask: print.PrintTask) => {
                         printTask.on('succeed', () => {
-                            console.log('print state is succeed');
+                            console.info('print state is succeed');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -786,14 +785,14 @@ Defines the print attributes.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| copyNumber | number | No| Number of printed file copies. The default value is **1**.|
-| pageRange | [PrintPageRange](#printpagerange11) | No| Page range of the file to print.|
-| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | No| Page size of the file to print.|
-| directionMode | [PrintDirectionMode](#printdirectionmode11) | No| Print direction mode.|
-| colorMode | [PrintColorMode](#printcolormode11) | No| Color mode of the files to print.|
-| duplexMode | [PrintDuplexMode](#printduplexmode11) | No| Duplex mode of the files to print.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| copyNumber | number | No| Yes| Number of printed file copies. The default value is **1**.|
+| pageRange | [PrintPageRange](#printpagerange11) | No| Yes| Page range of the file to print.|
+| pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | No| Yes| Page size of the file to print.|
+| directionMode | [PrintDirectionMode](#printdirectionmode11) | No| Yes| Print direction mode.|
+| colorMode | [PrintColorMode](#printcolormode11) | No| Yes| Color mode of the files to print.|
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | No| Yes| Duplex mode of the files to print.|
 
 ## PrintPageRange<sup>11+</sup>
 
@@ -802,11 +801,11 @@ Defines the print range.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| startPage | number | No| Start page. The default value is **1**.|
-| endPage | number | No| End page. The default value is the maximum number of pages of the file to be printed.|
-| pages | Array&lt;number&gt; | No| Page range set of the file to print. The default value is empty.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| startPage | number | No| Yes| Start page. The default value is **1**.|
+| endPage | number | No| Yes| End page. The default value is the maximum number of pages of the file to be printed.|
+| pages | Array&lt;number&gt; | No| Yes| Page range set of the file to print. The default value is empty.|
 
 
 ## PrintPageSize<sup>11+</sup>
@@ -816,12 +815,12 @@ Defines the size of the printed page.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Paper size ID.|
-| name | string | Yes| Paper size name.|
-| width | number | Yes| Page width, in millimeters.|
-| height | number | Yes| Page height, in millimeters.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| id | string | No| No| Paper size ID.|
+| name | string | No| No| Paper size name.|
+| width | number | No| No| Page width, in millimeters.|
+| height | number | No| No| Page height, in millimeters.|
 
 
 
@@ -947,7 +946,7 @@ Enumerates the print job substates.
 | PRINT_JOB_COMPLETED_SUCCESS | 0 | The print job is successful.|
 | PRINT_JOB_COMPLETED_FAILED | 1 | The print job is failed.|
 | PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled by user.|
-| PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | The print job is corrupted.|
+| PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | The print file is corrupted.|
 | PRINT_JOB_BLOCK_OFFLINE | 4 | The printer is offline.|
 | PRINT_JOB_BLOCK_BUSY | 5 | The printer is occupied by another process.|
 | PRINT_JOB_BLOCK_CANCELLED | 6 | The print job is canceled due to a block.|
@@ -1043,7 +1042,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInformation : print.PrinterInformation = {
     printerId : 'testPrinterId',
@@ -1055,7 +1054,7 @@ let printerInformation : print.PrinterInformation = {
     options : 'testOps'
 };
 print.addPrinterToDiscovery(printerInformation).then(() => {
-    console.log('addPrinterToDiscovery success');
+    console.info('addPrinterToDiscovery success');
 }).catch((error: BusinessError) => {
     console.error('addPrinterToDiscovery error : ' + JSON.stringify(error));
 })
@@ -1094,7 +1093,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let testPageSize : print.PrintPageSize = {
     id : 'ISO_A4',
@@ -1124,7 +1123,7 @@ let printerInformation : print.PrinterInformation = {
     options : 'testOptions'
 };
 print.updatePrinterInDiscovery(printerInformation).then(() => {
-    console.log('updatePrinterInDiscovery success');
+    console.info('updatePrinterInDiscovery success');
 }).catch((error: BusinessError) => {
     console.error('updatePrinterInDiscovery error : ' + JSON.stringify(error));
 })
@@ -1163,11 +1162,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = 'testPrinterId';
 print.removePrinterFromDiscovery(printerId).then(() => {
-    console.log('removePrinterFromDiscovery success');
+    console.info('removePrinterFromDiscovery success');
 }).catch((error: BusinessError) => {
     console.error('removePrinterFromDiscovery error : ' + JSON.stringify(error));
 })
@@ -1206,11 +1205,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = 'testPrinterId';
 print.getPrinterInformationById(printerId).then((printerInformation : print.PrinterInformation) => {
-    console.log('getPrinterInformationById data : ' + JSON.stringify(printerInformation));
+    console.info('getPrinterInformationById data : ' + JSON.stringify(printerInformation));
 }).catch((error: BusinessError) => {
     console.error('getPrinterInformationById error : ' + JSON.stringify(error));
 })
@@ -1223,18 +1222,18 @@ Defines the printer information.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| printerId | string | Yes| Printer ID.|
-| printerName | string | Yes| Printer name.|
-| printerStatus | [PrinterStatus](#printerstatus14) | Yes| Printer state.|
-| description | string | No| Printer description.|
-| capability | [PrinterCapabilities](#printercapabilities14) | No| Printer capabilities.|
-| uri | string | No| Printer URI.|
-| printerMake | string | No| Printer model.|
-| preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | No| Printer preferences.|
-| alias<sup>18+</sup> | string | No| Printer alias.|
-| options | string | No| Printer details.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | No| No| Printer ID.|
+| printerName | string | No| No| Printer name.|
+| printerStatus | [PrinterStatus](#printerstatus14) | No| No| Printer state.|
+| description | string | No| Yes| Printer description.|
+| capability | [PrinterCapabilities](#printercapabilities14) | No| Yes| Printer capabilities.|
+| uri | string | No| Yes| Printer URI.|
+| printerMake | string | No| Yes| Printer model.|
+| preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | No| Yes| Printer preferences.|
+| alias<sup>18+</sup> | string | No| Yes| Printer alias.|
+| options | string | No| Yes| Printer details.|
 
 ## PrinterCapabilities<sup>14+</sup>
 
@@ -1243,15 +1242,15 @@ Defines the printer capabilities.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | Yes| List of paper sizes supported by the printer.|
-| supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | Yes| List of color modes supported by the printer.|
-| supportedDuplexModes | Array&lt;[PrintDuplexMode](#printduplexmode11)&gt; | Yes| List of single- and double-sided modes supported by the printer.|
-| supportedMediaTypes | Array&lt;string&gt; | No| List of paper types supported by the printer.|
-| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | No| List of print quality supported by the printer.|
-| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | No| List of print directions supported by the printer.|
-| options | string | No| Printer capability details.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | No| No| List of paper sizes supported by the printer.|
+| supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | No| No| List of color modes supported by the printer.|
+| supportedDuplexModes | Array&lt;[PrintDuplexMode](#printduplexmode11)&gt; | No| No| List of single- and double-sided modes supported by the printer.|
+| supportedMediaTypes | Array&lt;string&gt; | No| Yes| List of paper types supported by the printer.|
+| supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | No| Yes| List of print quality supported by the printer.|
+| supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | No| Yes| List of print directions supported by the printer.|
+| options | string | No| Yes| Printer capability details.|
 
 ## PrintQuality<sup>14+</sup>
 
@@ -1298,15 +1297,15 @@ Defines the printer preferences.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | No| Default duplex mode.|
-| defaultPrintQuality | [PrintQuality](#printquality14) | No| Default print quality.|
-| defaultMediaType | string | No| Default paper type.|
-| defaultPageSizeId | string | No| ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 × 254 mm.|
-| defaultOrientation | [PrintOrientationMode](#printorientationmode14) | No| Default print orientation.|
-| borderless | boolean | No| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. The default value is **false**.|
-| options | string | No| Other fields in the printer preferences. The fields are queried from the printer or obtained from the printer driver and stored in the string in JSON format.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | No| Yes| Default duplex mode.|
+| defaultPrintQuality | [PrintQuality](#printquality14) | No| Yes| Default print quality.|
+| defaultMediaType | string | No| Yes| Default paper type.|
+| defaultPageSizeId | string | No| Yes| ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 × 254 mm.|
+| defaultOrientation | [PrintOrientationMode](#printorientationmode14) | No| Yes| Default print orientation.|
+| borderless | boolean | No| Yes| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. The default value is **false**.|
+| options | string | No| Yes| Other fields in the printer preferences. The fields are queried from the printer or obtained from the printer driver and stored in the string in JSON format.|
 
 ## PrinterEvent<sup>18+</sup>
 
@@ -1361,10 +1360,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.getAddedPrinters().then((printers: string[]) => {
-    console.log('getAddedPrinters success ' + JSON.stringify(printers));
+    console.info('getAddedPrinters success ' + JSON.stringify(printers));
     // ...
 }).catch((error: BusinessError) => {
     console.error('failed to getAddedPrinters because ' + JSON.stringify(error));
@@ -1383,7 +1382,7 @@ Defines a callback that takes the printer event and printer information as param
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | event | [PrinterEvent](#printerevent18) | Yes| Printer event.|
-| printerInformation | PrinterInformation | Yes| Printer information.|
+| printerInformation | [PrinterInformation](#printerinformation14) | Yes| Printer information.|
 
 ## print.on<sup>18+</sup>
 
@@ -1418,7 +1417,7 @@ import { print } from '@kit.BasicServicesKit';
 // Trigger this callback when an added printer is changed.
 let onPrinterChange =
     (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
     };
 print.on('printerChange', onPrinterChange);
 ```
@@ -1456,7 +1455,7 @@ import { print } from '@kit.BasicServicesKit';
 // Trigger this callback when an added printer is changed.
 let onPrinterChange =
     (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
     };
 print.on('printerChange', onPrinterChange);
 print.off('printerChange');
@@ -1490,7 +1489,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Load all print extension abilities.
 let extensionList: string[] = [];
@@ -1500,7 +1499,7 @@ print.startDiscoverPrinter(extensionList, (err: BusinessError) => {
     if (err) {
         console.error('failed to start Discover Printer because : ' + JSON.stringify(err));
     } else {
-        console.log('start Discover Printer success');
+        console.info('start Discover Printer success');
     }
 })
 ```
@@ -1537,14 +1536,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Load all print extension abilities.
 let extensionList: string[] = [];
 // Specify the bundle name of your applications to load required print extension abilities during printer discovery.
 // let extensionList: string[] = ['com.myapplication.test'];
 print.startDiscoverPrinter(extensionList).then(() => {
-    console.log('start Discovery success');
+    console.info('start Discovery success');
 }).catch((error: BusinessError) => {
     console.error('failed to start Discovery because : ' + JSON.stringify(error));
 })
@@ -1577,13 +1576,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.stopDiscoverPrinter((err: BusinessError) => {
     if (err) {
         console.error('failed to stop Discover Printer because : ' + JSON.stringify(err));
     } else {
-        console.log('stop Discover Printer success');
+        console.info('stop Discover Printer success');
     }
 })
 ```
@@ -1615,10 +1614,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.stopDiscoverPrinter().then(() => {
-    console.log('stop Discovery success');
+    console.info('stop Discovery success');
 }).catch((error: BusinessError) => {
     console.error('failed to stop Discovery because : ' + JSON.stringify(error));
 })
@@ -1652,14 +1651,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.connectPrinter(printerId, (err: BusinessError) => {
     if (err) {
         console.error('failed to connect Printer because : ' + JSON.stringify(err));
     } else {
-        console.log('start connect Printer success');
+        console.info('start connect Printer success');
     }
 })
 ```
@@ -1696,11 +1695,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.connectPrinter(printerId).then(() => {
-    console.log('start connect Printer success');
+    console.info('start connect Printer success');
 }).catch((error: BusinessError) => {
     console.error('failed to connect Printer because : ' + JSON.stringify(error));
 })

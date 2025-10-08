@@ -218,6 +218,8 @@ enum anonymous3
 | UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 不支持的来源类型。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | 鼠标。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
+| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 21 |
+| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | 手柄。<br>**起始版本：** 21 |
 
 ### HitTestMode
 

@@ -60,7 +60,7 @@ Connect a host to a device and use the **usbSubmitTransfer** API to transfer dat
     ```ts
     // Import the usbManager module.
     import { usbManager } from '@kit.BasicServicesKit';
-    ```
+    ``` 
 
 2. Obtain the USB device list.
 

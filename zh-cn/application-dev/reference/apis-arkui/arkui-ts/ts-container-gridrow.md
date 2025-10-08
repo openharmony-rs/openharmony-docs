@@ -50,7 +50,7 @@ GridRow(option?: GridRowOptions)
 | -------- | -------- | -------- | -------- | -------- |
 |columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  否 | 是  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 } <br />非法值：按默认值处理。|
 |gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|  否 | 是  |栅格布局间距。<br />默认值：0 <br />非法值：按默认值处理。<br />单位：vp |
-|breakpoints|[BreakPoints](#breakpoints)|  否 | 是  |设置断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />} <br />非法值：按默认值处理。<br />单位：vp |
+|breakpoints|[BreakPoints](#breakpoints)|  否 | 是  |设置断点值的断点数列以及基于应用窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />} <br />非法值：按默认值处理。<br />单位：vp |
 |direction|[GridRowDirection](#gridrowdirection枚举说明)|  否 | 是  |栅格布局排列方向。<br />默认值：GridRowDirection.Row <br />非法值：按默认值处理。 |
 
 ## GutterOption

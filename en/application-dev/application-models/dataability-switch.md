@@ -1,7 +1,13 @@
 # DataAbility Switching
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The DataAbility component in the FA model corresponds to the DataShareExtensionAbility component in the stage model.
+The DataAbility component in the [FA model](ability-terminology.md#fa-model) corresponds to the DataShareExtensionAbility component in the [stage model](ability-terminology.md#stage-model).
 
 
 The DataShareExtensionAbility class provides system APIs. Only system applications can create DataShareExtensionAbility instances. Therefore, DataAbility switching adopts different policies for system applications and third-party applications.  

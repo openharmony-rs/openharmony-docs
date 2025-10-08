@@ -1,4 +1,10 @@
 # NDK-Related musl libc Interface Usage Restrictions
+<!--Kit: NDK Development-->
+<!--Subsystem: commonlibrary-->
+<!--Owner: @liyiming13-->
+<!--Designer: @huang_huijin-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
@@ -205,7 +211,7 @@ For details about the sandbox mechanism, see [Application Sandbox](../../file-ma
 
 Include the **errno.h** header file and check the errno error status code. If the error status code is ENOENT, the interface error may be caused by the sandbox mechanism.
 
-### Common Sandbox-Affected Interfaces
+Common Sandbox-Affected Interfaces
 
 |  Header File       | musl Interface|
 | -------------- | ----------- |
@@ -240,7 +246,7 @@ Include the **errno.h** header file and check the errno error status code. If th
 
 Include the **errno.h** header file and check the errno error status code. If the error status code is EPERM, the interface error may be caused by the system capabilities security mechanism or other kernel security controls.
 
-### Common Capabilities-Affected Interfaces
+Common Capabilities-Affected Interfaces
     
 | Header File        |  musl Interface     | Capabilities Permission    |
 | -------------- | ----------------- | -------------------- |

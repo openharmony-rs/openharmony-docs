@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -29,7 +29,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [MediaKeySession](capi-audiocodec-mediakeysession.md) | MediaKeySession | MediaKeySession字段。 |
+| [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) | MediaKeySession | MediaKeySession字段。 |
 
 ### 函数
 
@@ -491,7 +491,7 @@ OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySessio
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向OH_AVCodec实例的指针。 |
-| [MediaKeySession](capi-audiocodec-mediakeysession.md) *mediaKeySession | 带有解密功能的媒体秘钥会话实例。 |
+| [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) *mediaKeySession | 带有解密功能的媒体秘钥会话实例。 |
 | bool secureAudio | 是否使用安全解码器。使用安全解码器为true,否则为false。<br> 注意：当前音频解密尚不支持使用安全解码器。 |
 
 **返回：**

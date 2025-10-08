@@ -1469,11 +1469,11 @@ localServer.off('error');
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称 | 类型   | 必填 | 说明                |
-| ------ | ------ | ---- |-------------------|
-| certPath   | string  | 是   | 证书路径。             |
-| keyPath | string | 是   | 证书密钥的路径。          |
-| keyPassword | string | 否   | 证书密钥的密码。缺省为空字符串。 |
+| 名称 | 类型   | 只读 |可选| 说明                |
+| ------ | ------ | ---- |---|----------------|
+| certPath   | string  | 否   |否 |证书路径。             |
+| keyPath | string | 否   |否| 证书密钥的路径。          |
+| keyPassword | string | 否   |是| 证书密钥的密码。缺省为空字符串。 |
 
 ## ProxyConfiguration<sup>12+</sup>
 type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
@@ -1496,10 +1496,10 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | 否   | 错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
-| reason | string | 否   | 原因值，关闭WebSocket连接时的可选参数，可根据实际情况来填。默认值为空字符串（""）。 |
+| 名称 | 类型   | 只读 |可选| 说明                                                         |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | 否   |是 |错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
+| reason | string | 否   | 是|原因值，关闭WebSocket连接时的可选参数，可根据实际情况来填。默认值为空字符串（""）。 |
 
 ## CloseResult<sup>10+</sup>
 
@@ -1509,10 +1509,10 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | 是   | 错误码，订阅close事件得到的关闭连接的错误码。 |
-| reason | string | 是   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
+| 名称 | 类型   | 只读 |可选| 说明                                                         |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | 否   |否 |错误码，订阅close事件得到的关闭连接的错误码。 |
+| reason | string | 否   |否 |原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## ResponseHeaders<sup>12+</sup>
 type ResponseHeaders = {

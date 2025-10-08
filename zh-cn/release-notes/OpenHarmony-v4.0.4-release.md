@@ -132,7 +132,7 @@
 | [IAMISK](https://gitee.com/openharmony/napi_generator/issues/IAMISK?from=project-issue) | napi_generator代码仓的OpenHarmony-4.0-Release分支的静态告警清零 |
 | [IAP63C](https://gitee.com/openharmony/arkui_ace_engine/issues/IAP63C?from=project-issue) | 修复plugin加载绝对路径文件错误 |
 | [IANK71](https://gitee.com/openharmony/applications_hap/issues/IANK71?from=project-issue) | 图库hap归档，解决按日删除异常问题 |
-| [IALIBN](https://gitee.com/openharmony/xts_hats/issues/IALIBN?from=project-issue) | xts_hats/hdf/INPUT模块用例逻辑优化 |
+| [IALIBN](https://gitcode.com/openharmony/xts_hats/issues/IALIBN?from=project-issue) | xts_hats/hdf/INPUT模块用例逻辑优化 |
 | [IALKY4](https://gitee.com/openharmony/drivers_peripheral/issues/IALKY4?from=project-issue) | audio_manager_service_4.0新增安全编译选项SP-合入特殊分支 |
 
 ## 修复安全issue列表

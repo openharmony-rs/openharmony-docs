@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -85,7 +85,7 @@ Here is an example of how to use the callback functions of the AbilityStage comp
 
     export default class MyAbilityStage extends AbilityStage {
       onCreate(): void {
-        console.log('AbilityStage onCreate');
+        console.info('AbilityStage onCreate');
         let envCallback: EnvironmentCallback = {
           onConfigurationUpdated(config) {
             console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
@@ -96,13 +96,13 @@ Here is an example of how to use the callback functions of the AbilityStage comp
             let fontWeightScale = config.fontWeightScale; // Font weight scaling factor.
           },
           onMemoryLevel(level) {
-            console.log(`onMemoryLevel level: ${level}`);
+            console.info(`onMemoryLevel level: ${level}`);
           }
         };
         try {
           let applicationContext = this.context.getApplicationContext();
           let callbackId = applicationContext.on('environment', envCallback);
-          console.log(`callbackId: ${callbackId}`);
+          console.info(`callbackId: ${callbackId}`);
         } catch (paramError) {
           console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
         }
@@ -110,7 +110,7 @@ Here is an example of how to use the callback functions of the AbilityStage comp
 
       onDestroy(): void {
         // Use onDestroy() to listen for the ability destruction event.
-        console.log('AbilityStage onDestroy');
+        console.info('AbilityStage onDestroy');
       }
     }
     ```

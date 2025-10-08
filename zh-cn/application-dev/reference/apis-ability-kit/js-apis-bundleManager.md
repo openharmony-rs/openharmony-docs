@@ -74,7 +74,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | DISTRIBUTED<sup>20+</sup> | 28 | [DistributedExtensionAbility](../apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。 |
 | APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)：为企业普通应用提供后台服务能力。 |
 | LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | WebNativeMessagingExtensionAbility：浏览器扩展和原生应用通信的ExtensionAbility。|
+| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)：为开发者提供Web原生消息通信能力的ExtensionAbility。|
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)：提供故障延迟通知的能力。|
 | UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。 |
 <!--RP2--><!--RP2End-->
@@ -1549,6 +1549,52 @@ import { bundleManager } from '@kit.AbilityKit';
 bundleManager.cleanBundleCacheFilesForSelf().then(() => {
     console.info('cleanBundleCacheFilesForSelf complete.');
 });
+```
+
+## bundleManager.getPluginBundlePathForSelf<sup>22+</sup>
+
+getPluginBundlePathForSelf(pluginBundleName: string): string
+
+获取指定插件在当前[应用沙箱](../../file-management/app-sandbox-directory.md)内的安装路径。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名            | 类型    | 必填 | 说明                |
+| ---------------- | ------ | ---- | ------------------ |
+| pluginBundleName | string | 是   | 目标插件的包名。 |
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------- | --------------------- |
+| string  | 目标插件在当前应用沙箱内的安装路径。 |
+
+**错误码：**
+
+错误码请参见[ohos.bundle错误码](errorcode-bundle.md)。
+
+| 错误码ID  | 错误信息                                  |
+| -------- | --------------------------------------- |
+| 17700001 | The specified bundleName is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际插件对应的包名
+let pluginBundleName = 'com.ohos.pluginDemo';
+try {
+  let path = bundleManager.getPluginBundlePathForSelf(pluginBundleName);
+  hilog.info(0x0000, 'testTag', 'getPluginBundlePathForSelf successfully. path: %{public}s', path);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getPluginBundlePathForSelf failed. Cause: %{public}s', message);
+}
 ```
 
 ## ApplicationInfo

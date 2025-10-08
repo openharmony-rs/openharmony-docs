@@ -292,7 +292,13 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 >
 > 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> 
+> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+>
+> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -348,6 +354,22 @@ struct WebComponent {
 static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void
 
 为指定url设置cookie的值。
+
+> **说明：**
+>
+> configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+>
+> 同步cookie的时机建议在Web组件加载之前完成。
+>
+> 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+>
+> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> 
+> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+>
+> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -593,13 +615,15 @@ struct WebComponent {
 
 static saveCookieSync(): void
 
-将当前存在内存中的cookie同步保存到磁盘中。
+将当前可通过fetchCookie获取到的所有需要持久化的cookie同步保存到磁盘中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 > **说明：**
 >
 > saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieSync，也不会将session cookie写入磁盘。
+>
+> saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
 
 **示例：**
 
@@ -633,7 +657,7 @@ struct WebComponent {
 
 static saveCookieAsync(callback: AsyncCallback\<void>): void
 
-将当前存在内存中的cookie异步保存到磁盘中。
+将当前可通过fetchCookie获取到的所有需要持久化的cookie异步保存到磁盘中。
 
 > **说明：**
 >
@@ -691,7 +715,7 @@ struct WebComponent {
 
 static saveCookieAsync(): Promise\<void>
 
-将当前存在内存中的cookie以Promise方法异步保存到磁盘中。
+将当前可通过fetchCookie获取到的所有需要持久化的cookie以Promise方法异步保存到磁盘中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -931,7 +955,7 @@ static existCookie(incognito?: boolean): boolean
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下查询是否存在cookies，false表示正常非隐私模式下查询是否存在cookies。<br>默认值：false。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下查询是否存在cookies，false表示正常非隐私模式下查询是否存在cookies。<br>默认值：false。<br>传入undefined或null时返回undefined。 |
 
 **返回值：**
 
@@ -975,7 +999,7 @@ static clearAllCookiesSync(incognito?: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito    | boolean | 否   | true表示清除隐私模式下Webview的所有内存cookies，false表示清除正常非隐私模式下的持久化cookies。<br>默认值：false。 |
+| incognito    | boolean | 否   | true表示清除隐私模式下Webview的所有内存cookies，false表示清除正常非隐私模式下的持久化cookies。<br>默认值：false。<br>传入undefined或null时不清除cookies。 |
 
 **示例：**
 
