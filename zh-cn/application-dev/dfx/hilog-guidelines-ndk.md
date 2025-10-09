@@ -28,8 +28,14 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 | \#define OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | ERROR级别写日志，宏封装接口。 |
 | \#define OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | FATAL级别写日志，宏封装接口。 |
 | void OH_LOG_SetCallback(LogCallback callback) | 注册函数，注册后可通过LogCallback回调获取本进程的hilog日志。若OH_LOG_IsLoggable接口返回true，则回调函数可获取到该条日志。 |
-| void OH_LOG_SetMinLogLevel(LogLevel level) | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。<br/>**说明**：从API version 15开始，支持该接口。<br/>**注意**：如果设置的日志级别低于[全局日志级别](hilog.md#查看和设置日志级别)，设置不生效。 |
+| void OH_LOG_SetMinLogLevel(LogLevel level) | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。<br/>**说明**：从API version 15开始，支持该接口。|
 | void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer) | 设置当前应用程序进程的最低日志级别。可以配置不同的偏好策略。<br/>**说明**：从API version 21开始，支持该接口。 | 
+
+> **注意：**
+>
+> 如果设置的日志级别低于[全局日志级别](hilog.md#查看和设置日志级别)，OH_LOG_SetMinLogLevel()设置不生效。
+>
+> debug版本应用下，OH_LOG_SetMinLogLevel()和OH_LOG_SetLogLevel()函数均不生效。
 
 ### 参数解析
 
@@ -38,6 +44,8 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 - tag：用于指定日志标识，可以为任意字符串，建议标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断。不建议使用中文字符，可能出现乱码或者对齐问题。
 
 - level：用于指定日志级别。取值见[LogLevel](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)。
+
+- prefer：用于指定偏好策略。取值见[PreferStrategy](../reference/apis-performance-analysis-kit/capi-log-h.md#preferstrategy)。
 
 - fmt：格式字符串，用于日志的格式化输出。日志打印的格式化参数需按照“%{private flag}specifier”的格式打印。
 

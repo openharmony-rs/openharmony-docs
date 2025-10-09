@@ -60,7 +60,7 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 3、不支持collections.Set、collections.Map等类型。
 
-4、不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+4、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
 5、不支持存储基本类型，如string、number、boolean等。注意：不支持存储基本类型意味着connect接口传入的类型不能是基本类型，但connect传入的class中可以包含基本类型。
 

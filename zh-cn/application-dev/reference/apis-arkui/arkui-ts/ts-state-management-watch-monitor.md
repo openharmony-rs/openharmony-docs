@@ -135,10 +135,6 @@ struct Index {
 
 当监听的变量变化时，状态管理框架侧将回调开发者注册的函数，并传入变化信息。变化信息的类型即为IMonitor类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### 属性
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -215,10 +211,6 @@ struct Index {
 ## IMonitorValue\<T\><sup>12+</sup>
 
 @Monitor监听变量变化的具体信息，通过IMonitor的value接口获取。T为变量类型。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### 属性
 

@@ -28,7 +28,7 @@
 | MULTI_DEVICE_CONNECTION | 多设备互联 | multiDeviceConnection | 分布式业务连接、投播。<br> **说明：** 支持在原子化服务中使用。 |
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放） | wifiInteraction  | 通过WLAN传输文件时退后台。 |
 | VOIP<sup>13+</sup> | 音视频通话 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
-| TASK_KEEPING | 计算任务（仅对2in1设备开放） | taskKeeping  | 如杀毒软件。 |
+| TASK_KEEPING | 计算任务（仅对2in1设备开放）<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
 
 关于DATA_TRANSFER（数据传输）说明：
 
@@ -52,7 +52,9 @@
 
 **申请限制**：Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
-**数量限制**：一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才可能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility；一个应用的一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
+**数量限制**：
+- 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
+- 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
 **运行限制**：
 
@@ -66,7 +68,7 @@
 
 > **说明：**
 >
-> 应用按需求申请长时任务，当应用无需在后台运行（任务结束）时，要及时主动取消长时任务，否则系统会强行取消。例如用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。
+> 应用按需求申请长时任务，当应用无需在后台运行（任务结束）时，要及时主动取消长时任务，否则应用退至后台会被系统挂起。例如用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。
 >
 > 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
@@ -80,12 +82,14 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)): Promise&lt;void&gt; | 申请长时任务 |
-| stopBackgroundRunning(context: Context): Promise&lt;void&gt; | 取消长时任务 |
+| [startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) | 申请长时任务，本接口一个UIAbility同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。 |
+| [stopBackgroundRunning(context: Context): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)  | 取消长时任务。 |
+| [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21) | 申请多个长时任务。本接口支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
+| [stopBackgroundRunning(context: Context, ContinuousTaskId: number): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning21) | 取消指定Id的长时任务。 |
 
 ## 开发步骤
 
-本文以申请录制长时任务为例，实现如下功能：
+本文以申请一个录制长时任务为例，实现如下功能：
 
 - 点击“申请长时任务”按钮，应用申请录制长时任务成功，通知栏显示“正在运行录制任务”通知。
 
@@ -619,7 +623,7 @@
       }
 
       onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption) {
-        console.log('ServiceAbility onRemoteRequest called');
+        console.info('ServiceAbility onRemoteRequest called');
         // code 的具体含义用户自定义
         if (code === 1) {
           // 接收到申请长时任务的请求码
@@ -629,7 +633,7 @@
           // 接收到取消长时任务的请求码
           stopContinuousTask();
         } else {
-          console.log('ServiceAbility unknown request code');
+          console.info('ServiceAbility unknown request code');
         }
         return true;
       }

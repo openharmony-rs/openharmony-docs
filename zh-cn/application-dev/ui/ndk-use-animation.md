@@ -20,6 +20,8 @@ ArkUI开发框架在NDK接口主要提供属性动画，实现组件出现/消�
 > - 需要执行的动画属性变化必须写在[ArkUI_ContextCallback](../reference/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md)中callback中。
 > 
 > - 需要执行的动画属性，必须在执行动画之前设置过。
+>
+> - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->。
 
 提供全局animateTo显式动画接口，来指定由于闭包代码导致的状态变化插入过渡动效。同属性动画，布局类改变宽高的动画，内容都是直接到终点状态。
 
