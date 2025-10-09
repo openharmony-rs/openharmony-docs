@@ -22,7 +22,7 @@ import { application } from '@kit.AbilityKit';
 
 ## AppPreloadType<sup>22+</sup>
 
-表示[应用预加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/preload-application)类型的枚举。
+表示[应用预加载](../../application-models/preload-application.md)类型的枚举。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -361,7 +361,7 @@ export default class EntryAbility extends UIAbility {
 
 getAppPreloadType(): AppPreloadType
 
-获取[应用预加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/preload-application)类型。
+获取[应用预加载](../../application-models/preload-application.md)类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 	
@@ -369,7 +369,7 @@ getAppPreloadType(): AppPreloadType
 
 | 类型            | 说明            |
 | --------------- | --------------- |
-|[AppPreloadType](./js-apis-app-ability-application.md#apppreloadtype22)  | [应用预加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/preload-application)类型。     |
+|[AppPreloadType](./js-apis-app-ability-application.md#apppreloadtype22)  | [应用预加载](../../application-models/preload-application.md)类型。     |
 
 **示例：**
 
