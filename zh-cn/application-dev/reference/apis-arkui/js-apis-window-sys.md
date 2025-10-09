@@ -3986,6 +3986,10 @@ setImageForRecent(imgResource: long | image.PixelMap, value: ImageFit): Promise&
 
 设置应用在多任务中显示的图片，使用Promise异步回调。
 
+> **说明：**
+>
+> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口没有完成页面加载，直接调用该接口，该接口功能不会生效，多任务中只会显示应用启动页。
+
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -3996,7 +4000,7 @@ setImageForRecent(imgResource: long | image.PixelMap, value: ImageFit): Promise&
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ----------- | ------- | ---- | ------------------------------------------------------------ |
-| imgResource | long \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源。|
+| imgResource | long \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源，可传入资源id或PixelMap位图。|
 | value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
@@ -4029,26 +4033,34 @@ export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let color: ArrayBuffer = new ArrayBuffer(0);
-    let initializationOptions: image.InitializationOptions = {
-      size: {
-        height: 100,
-        width: 100
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
       }
-    };
-    image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
-      console.info(`Succeeded in create pixelMap`);
-      try {
-        let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
-        promise.then(() => {
-          console.info(`Succeeded in setting image for recent`);
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to set image for recent.`);
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
       }
-    })
+      image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
+        console.info(`Succeeded in create pixelMap`);
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info(`Succeeded in setting image for recent`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to set image for recent.`);
+        }
+      })
+    });
   }
 };
 ```
@@ -4057,7 +4069,7 @@ export default class EntryAbility extends UIAbility {
 
 removeImageForRecent(): Promise&lt;void&gt;
 
-移除应用设置的在多任务中显示的图片，使用Promise异步回调。
+移除应用设置的在多任务中显示的图片，下次查看截图生效，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
