@@ -245,8 +245,9 @@ OH_Drawing_Font *font = OH_Drawing_FontCreate();
 OH_Drawing_FontSetTextSize(font, 100);
 float startX = 100;
 float startY = 100;
+int strLen = 5;
 const char* str = "Hello";
-for (int i = 0; i < 5; ++i) {
+for (int i = 0; i < strLen; ++i) {
     // 单字绘制
     OH_Drawing_CanvasDrawSingleCharacter(canvas, &str[i], font, startX, startY);
     float textWidth = 0.f;
@@ -275,8 +276,9 @@ OH_Drawing_FontFeatures* features = OH_Drawing_FontFeaturesCreate();
 OH_Drawing_FontFeaturesAddFeature(features, "frac", 1);
 float startX = 100;
 float startY = 100;
+int strLen = 5;
 const char* str = "a2+b2";
-for (int i = 0; i < 5; ++i) {
+for (int i = 0; i < strLen; ++i) {
     // 单字绘制
     OH_Drawing_CanvasDrawSingleCharacterWithFeatures(canvas, &str[i], font, startX, startY, features);
     float textWidth = 0.f;
