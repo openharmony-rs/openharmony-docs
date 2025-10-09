@@ -3,7 +3,7 @@
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->
 <!--Designer: @hwzhangchuang-->
-<!--Tester: @Lyuxin-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 The APIs of this module are deprecated. You are advised to use [@ohos.distributedDeviceManager](js-apis-distributedDeviceManager.md).

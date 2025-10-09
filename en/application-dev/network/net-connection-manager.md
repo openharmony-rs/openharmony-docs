@@ -16,7 +16,7 @@ The Network Connection Management module provides basic network management capab
 
 ## Basic Concepts
 
-- Producer: a provider of data networks,  such as Wi-Fi, cellular, and Ethernet.
+- Producer: a provider of data networks, such as Wi-Fi, cellular, and Ethernet.
 - Consumer: a user of data networks, for example, an application or a system service.
 - Network probe: a mechanism used to detect the network availability to prevent the switch from an available network to an unavailable network. The probe type can be binding network detection, DNS detection, HTTP detection, or HTTPS detection.
 - Network selection: a mechanism used to select the optimal network when multiple networks coexist. It is triggered when the network status, network information, or network quality evaluation score changes.
@@ -64,8 +64,22 @@ This permission is of the **normal** level. Before applying for the permission, 
     // Create a NetConnection object.
     let conn = connection.createNetConnection(netSpecifier, timeout);
     ```
+    
+4. Call the [on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable) API of the **NetConnection** object to enable listening for desired events. You must pass in **type** and **callback**.
 
-4. Call [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) to subscribe to network status changes of the specified network. When the network is available, the callback will be invoked to return the **netAvailable** event. When the network is unavailable, the callback will be invoked to return the **netUnavailable** event.
+    ```ts
+    // Enable listening for network status change events. If the network is available, an on_netAvailable event is returned.
+    conn.on('netAvailable', ((data: connection.NetHandle) => {
+      console.info("net is available, netId is " + data.netId);
+    }));
+
+    // Enable listening for network status change events. If the network is unavailable, an on_netUnavailable event is returned.
+    conn.on('netUnavailable', ((data: void) => {
+      console.info("net is unavailable, data is " + JSON.stringify(data));
+    }));
+    ```
+    
+5. Call the [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) API of the **NetConnection** object to subscribe to network status change events. This method must be called after the on method is called. When the network is available, the callback will be invoked to return the **netAvailable** event. When the network is unavailable, the callback will be invoked to return the **netUnavailable** event.
 
     ```ts
     // Register an observer for network status changes.
@@ -73,20 +87,7 @@ This permission is of the **normal** level. Before applying for the permission, 
       console.info(JSON.stringify(err));
     });
     ```
-
-5. Call [on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable) to subscribe to desired events. You must pass in **type** and **callback**.
-
-    ```ts
-    // Subscribe to network status change events. If the network is available, an on_netAvailable event is returned.
-    conn.on('netAvailable', ((data: connection.NetHandle) => {
-      console.info("net is available, netId is " + data.netId);
-    }));
-
-    // Subscribe to network status change events. If the network is unavailable, an on_netUnavailable event is returned.
-    conn.on('netUnavailable', ((data: void) => {
-      console.info("net is unavailable, data is " + JSON.stringify(data));
-    }));
-    ```
+    
 6. Call [unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister) to unsubscribe from the network status changes.
 
     ```ts
@@ -269,13 +270,13 @@ This permission is of the **normal** level. Before applying for the permission, 
                 // The network traffic is not metered.
                 console.info(JSON.stringify("NET_CAPABILITY_NOT_METERED"));
               } else if (item == 12) {
-                // The network has the Internet access capability, which is set by the network provider.
+                // The network has the network access capability, which is set by the network provider.
                 console.info(JSON.stringify("NET_CAPABILITY_INTERNET"));
               } else if (item == 15) {
                 // The network does not use a Virtual Private Network (VPN).
                 console.info(JSON.stringify("NET_CAPABILITY_NOT_VPN"));
               } else if (item == 16) {
-                // The Internet access capability of the network is successfully verified by the connection management module.
+                // The network access capability of the network is successfully verified by the connection management module.
                 console.info(JSON.stringify("NET_CAPABILITY_VALIDATED"));
               }
             }
@@ -321,9 +322,9 @@ This permission is of the **normal** level. Before applying for the permission, 
     }
     ```
 
-## Checking Whether the Default Network Supports Internet Access
+## Checking Whether the Default Network Supports network access
 
-If an application needs to check whether the current network supports Internet access, perform the following steps:
+If an application needs to check whether the current network supports network access, perform the following steps:
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
 This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
