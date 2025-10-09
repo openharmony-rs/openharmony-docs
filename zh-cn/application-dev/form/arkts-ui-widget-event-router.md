@@ -214,11 +214,8 @@
       }
     }
     ```
-
-6. 注册UIAbility页面
-
-  打开main_pages.json，将新建的FunA.ets和FunB.ets正确注册在src数组中。
-  ```ts
+6. 注册UIAbility页面，打开main_pages.json，将新建的FunA.ets和FunB.ets正确注册在src数组中。
+  ```json
   //src/main/resources/base/profile/main_pages.json
   {
      "src": [
