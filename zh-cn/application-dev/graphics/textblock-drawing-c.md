@@ -119,7 +119,7 @@ OH_Drawing_PenSetAntiAlias(pen, true);
 // 设置描边线宽为3
 OH_Drawing_PenSetWidth(pen, 3);
 // 设置画笔描边颜色
-OH_Drawing_PenSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画笔描边效果
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建字型对象
