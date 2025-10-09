@@ -9823,7 +9823,8 @@ getDescriptor(): string
     }
   }
   try {
-    let descriptor = testRemoteObject.getDescriptor();
+    let testObject = new TestRemoteObject("ipcTest");
+    let descriptor = testObject.getDescriptor();
     hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is ' + descriptor);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
