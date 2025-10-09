@@ -45,7 +45,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 | uiContext | [UIContext](js-apis-arkui-UIContext.md) | 是   | UI上下文，获取方式可参考[UIContext获取方法](./js-apis-arkui-node.md#uicontext获取方法)。 |
 | options   | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions)         | 否   | BuilderNode的构造可选参数。<br/>默认值：undefined   |
 
-> **说明**
+> **说明：**
 >
 > uiContext的入参必须是有效的UI上下文。传入非法值或未设置将导致创建失败。
 
@@ -56,7 +56,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T): void
 依照传入的带参数的[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt20)创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)最多拥有一个根节点。
 支持自定义组件。
 
-> **说明**
+> **说明：**
 >
 > @Builder嵌套使用时，需要保证内外的@Builder方法的入参对象一致。
 >
@@ -82,7 +82,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 依照传入的带参数的[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt20)创建组件树，并持有组件树的根节点。同时，支持设置build相关的配置项。无状态的UI方法@Builder最多拥有一个根节点。
 支持自定义组件。
 
-> **说明**
+> **说明：**
 >
 > @Builder进行创建和更新的规格参考[@Builder](../../ui/state-management/arkts-v1.2-builder.md)。
 >
@@ -100,7 +100,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 | arg     |T                                           | 是   | builder的入参。                                                            |
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | 是   | 该值无效，默认支持@Builder参数不一致，且行为与@Builder的行为保持一致。                                        |
 
-**示例**
+**示例：**
 
 请参考[示例1（使用带参数的build方法创建BuilderNode）](#示例1使用带参数的build方法创建buildernode)。
 
@@ -110,7 +110,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 
 依照传入的无参数[CustomBuilder](./arkui-ts/ts-types.md#custombuilder20)创建组件树，并持有组件树的根节点。
 
-> **说明**
+> **说明：**
 >
 > @Builder进行创建和更新的规格参考@Builder。
 
@@ -124,7 +124,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | builder | WrappedBuilder\<[CustomBuilder](./arkui-ts/ts-types.md#custombuilder20)>  | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder（ArkTS1.2）](../../ui/state-management/arkts-v1.2-builder.md)封装的[WrappedBuilder对象](../../ui/state-management/arkts-v1.2-wrapBuilder.md)。   |
 
-**示例**
+**示例：**
 
 请参考[示例2（使用无参的build方法创建BuilderNode）](#示例2使用无参的build方法创建buildernode)。
 
@@ -144,7 +144,7 @@ getFrameNode(): FrameNode | null
 | --------------------------------------------------------- | --------------------------------------------------------------------- |
 | [FrameNode](js-apis-arkui-frameNode.md) \| null | 一个FrameNode对象。若该BuilderNode不包含FrameNode，则返回空对象null。 |
 
-**示例**
+**示例：**
 
 BuilderNode作为NodeContainer的根节点返回。请参考[示例3（buildernode作为nodecontainer的根节点返回）](#示例3buildernode作为nodecontainer的根节点返回)。
 
@@ -168,7 +168,7 @@ update(arg: T): void
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
 | arg    |  T | 是   | 用于更新BuilderNode的参数，和[build](#build)调用时传入的参数类型一致。 |
 
-**示例**
+**示例：**
 
 请参考[示例6（buildernode更新）](#示例6buildernode更新)。
 
@@ -186,7 +186,7 @@ dispose(): void
 
 **ArkTS版本：** 该接口仅适用于ArkTS1.2。
 
-**示例**
+**示例：**
 
 请参考[示例7（buildernode与后端节点解除引用关系）](#示例7buildernode与后端节点解除引用关系)。
 
@@ -204,7 +204,7 @@ updateConfiguration(): void
 >
 > updateConfiguration接口用于通知对象当前系统环境变量发生变化。
 
-**示例**
+**示例：**
 
 请参考[示例8（使用updateconfiguration通知buildernode环境变量变化）](#示例8使用updateconfiguration通知buildernode环境变量变化)。
 
