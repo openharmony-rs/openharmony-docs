@@ -390,13 +390,13 @@
           - [声明式UI描述](ui/state-management/arkts-declarative-ui-description.md)
           - 自定义组件<!--arkts-custom-components-->
             - [创建自定义组件](ui/state-management/arkts-create-custom-components.md)
-            - [页面和自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
+            - [自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
             - [自定义组件的自定义布局](ui/state-management/arkts-page-custom-components-layout.md)
             - [自定义组件成员属性访问限定符使用限制](ui/state-management/arkts-custom-components-access-restrictions.md)
           - 组件扩展<!--arkts-extend-components-->
             - [组件扩展概述](ui/state-management/arkts-extend-components-overview.md)
             - [\@Builder装饰器：自定义构建函数](ui/state-management/arkts-builder.md)
-            - [\@LocalBuilder装饰器：维持组件父子关系](ui/state-management/arkts-localBuilder.md)
+            - [\@LocalBuilder装饰器：维持组件关系](ui/state-management/arkts-localBuilder.md)
             - [\@BuilderParam装饰器：引用\@Builder函数](ui/state-management/arkts-builderparam.md)
             - [wrapBuilder：封装全局@Builder](ui/state-management/arkts-wrapBuilder.md)
           - [\@Styles装饰器：定义组件重用样式](ui/state-management/arkts-style.md)
@@ -521,14 +521,14 @@
             - [弹出框控制器](ui/arkts-dialog-controller.md)
             - [弹出框焦点策略](ui/arkts-dialog-focusable.md)
             - [弹出框蒙层控制](ui/arkts-dialog-mask.md)
-           - 菜单<!--arkts-use-menu-->
-             - [菜单概述](ui/arkts-menu-overview.md)
-             - [菜单控制 (Menu)](ui/arkts-popup-and-menu-components-menu.md)
-             - [不依赖UI组件的全局菜单 (openMenu)](ui/arkts-popup-and-menu-components-uicontext-menu.md)
-           - 气泡提示<!--arkts-use-popup-->
-             - [气泡提示概述](ui/arkts-popup-overview.md)
-             - [气泡提示 (Popup)](ui/arkts-popup-and-menu-components-popup.md)
-             - [不依赖UI组件的全局气泡提示 (openPopup)](ui/arkts-popup-and-menu-components-uicontext-popup.md)
+          - 菜单<!--arkts-use-menu-->
+            - [菜单概述](ui/arkts-menu-overview.md)
+            - [菜单控制 (Menu)](ui/arkts-popup-and-menu-components-menu.md)
+            - [不依赖UI组件的全局菜单 (openMenu)](ui/arkts-popup-and-menu-components-uicontext-menu.md)
+          - 气泡提示<!--arkts-use-popup-->
+            - [气泡提示概述](ui/arkts-popup-overview.md)
+            - [气泡提示 (Popup)](ui/arkts-popup-and-menu-components-popup.md)
+            - [不依赖UI组件的全局气泡提示 (openPopup)](ui/arkts-popup-and-menu-components-uicontext-popup.md)
           - 绑定模态页面<!--arkts-bind-modal-->
             - [绑定模态页面概述](ui/arkts-modal-overview.md)
             - [绑定半模态页面 (bindSheet)](ui/arkts-sheet-page.md)
@@ -900,7 +900,7 @@
             - [卡片编辑开发指导](form/arkts-ui-widget-event-formeditextensionability.md)
           - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
             - [应用内拉起卡片管理加桌](form/arkts-ui-widget-open-formmanager.md)
-        <!--Del-->
+        <!--Del--> 
         - [ArkTS卡片使用方开发指导（仅对系统应用开放）](form/widget-host-development-guide.md)
         <!--DelEnd-->
         - 互动卡片开发<!--arkts-ui-liveform-->
@@ -1298,7 +1298,7 @@
             - [扩展认证](network/net-eap.md)
             <!--Del-->
             - [网络共享（仅对系统应用开放）](network/net-sharing.md)
-            - [以太网连接管理（仅对系统应用开放）](network/net-ethernet.md)
+            - [以太网连接管理（仅对系统应用开放）](network/net-ethernet.md)   
             - [VPN管理（仅对系统应用开放）](network/net-vpn.md)
             <!--DelEnd-->
         - [Network Kit术语](network/network-terminology.md)
@@ -1909,7 +1909,7 @@
       <!--DelEnd-->
       - 跨设备协同通知<!--notification-distributed-->
         - [跨设备协同通知概述](notification/notification-distributed-overview.md)
-        <!--Del-->
+          <!--Del-->
         - [通知消息跨设备协同管理（仅对系统应用开放）](notification/notification-distributed-notdistributed.md)
         <!--DelEnd-->
         - [为跨设备协同通知添加快捷回复](notification/notification-quickreply.md)

@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.metadataBinding (记忆链接)
+# @ohos.multimodalAwareness.metadataBinding (记忆链接)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->
