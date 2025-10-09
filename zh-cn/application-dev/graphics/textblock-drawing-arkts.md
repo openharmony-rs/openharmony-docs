@@ -237,7 +237,7 @@ let startX = 100;
 let startY = 100;
 let text = ['a', '2', '+', 'b', '2'];
 // 创建字体特征对象数组
-let fontFeatures : Array<drawing.FontFeature> = [{name: 'frac', value: 1}];
+let fontFeatures: drawing.FontFeature[] = [{name: 'frac', value: 1}];
 for (let s of text) {
   // 单字绘制
   canvas.drawSingleCharacterWithFeatures(s, font, startX, startY, fontFeatures);
