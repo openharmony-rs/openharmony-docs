@@ -1,5 +1,12 @@
 # Publishing a Live View Notification (for System Applications Only)
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 The live view notification provides real-time progress of long-duration tasks, including voice recording, screen recording, audio and video playback, timing, and phone call. Such type of notification is not stored persistently, and its lifecycle is consistent with that of the notification publisher.
 
 **Table 1** Types of live view notifications
@@ -32,10 +39,10 @@ The following table describes the APIs for notification publishing. You can spec
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Publishes a notification.
+2. Publish a notification.
 
    In addition to the parameters in the normal text notification, the system live view notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
-     
+   
       ```ts
       let imagePixelMap: image.PixelMap | undefined = undefined; // Obtain the image pixel map information.
       let color = new ArrayBuffer(4);
