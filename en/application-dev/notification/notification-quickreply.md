@@ -5,11 +5,17 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 Since API version 18, quick reply is enabled for cross-device notifications.
 
-When an application on the phone subscribes to a notification reply event by specifying an event ID and publishes a notification that supports quick reply to the watch, the user can view the notification and quickly reply to it on the watch without unlocking the mobile phone.
+When an application on the phone subscribes to a notification reply event by specifying an event ID and publishes a notification that supports quick reply to the watch, the user can view the notification and quickly reply to it on the watch without unlocking the phone.
+
+## Constraints
+
+### Device Limitations
+
+Quick reply is only applicable to the scenario where the phone collaborates with the watch.
 
 ## Prerequisites
 

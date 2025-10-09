@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 The cross-device notification is designed to implement collaborative interaction of notifications between a smartphone and another devices such as a watch. Typical scenarios are as follows:
 
