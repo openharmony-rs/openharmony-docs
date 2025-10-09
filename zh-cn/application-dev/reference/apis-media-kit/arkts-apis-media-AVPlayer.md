@@ -2005,7 +2005,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 >**注意：**
 >
 >- 直播场景不支持timeUpdate上报。
->- 操作（seek）时必须等待seekdone结束才能根据timeupdate来更新进度条。
+>- 操作（seek）时必须等待seekdone结束才能根据timeUpdate来更新进度条。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
