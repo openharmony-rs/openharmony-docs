@@ -1,7 +1,7 @@
 # 组件可见区域变化事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -48,7 +48,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
 
-设置[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)事件的回调参数，限制它的执行间隔。
+设置onVisibleAreaApproximateChange事件的回调参数，限制它的执行间隔。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
