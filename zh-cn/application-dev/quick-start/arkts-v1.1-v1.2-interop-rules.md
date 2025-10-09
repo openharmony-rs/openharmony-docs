@@ -285,7 +285,7 @@ Reflect接口参数类型为静态Object。ArkTS1.1对象在ArkTS1.2中不是静
 
 **ArkTS1.1**
 ```typescript
-// file1.ets  ArkTS1.1
+// file1.ets 
 class X {
   a: string = 'hello';
   getName() {
@@ -293,8 +293,7 @@ class X {
   }
 }
 
-// file2.ets  ArkTS1.2
-'use static'
+// file2.ets 
 import { X } from './file1';
 export function foo(prx: Object) {
   Reflect.get(prx, 'a'); // 'hello'
@@ -318,11 +317,11 @@ class X {
 'use static'
 import { X } from './file1';
 export function foo(prx: Object) {
-  Reflect.get(prx, 'a'); // 'hello'
-  Reflect.set(prx, 'a', 'world'); // true
-  Reflect.ownKeys(prx); // ['a']
+  Reflect.get(prx, 'a'); // 编译报错
+  Reflect.set(prx, 'a', 'world'); // 编译报错
+  Reflect.ownKeys(prx); // 编译报错
 }
-foo(new X()); // 编译报错
+foo(new X()); 
 ```
 
 ### ArkTS1.2动态导入ArkTS1.1
