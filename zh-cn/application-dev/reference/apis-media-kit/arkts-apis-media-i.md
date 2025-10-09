@@ -19,8 +19,8 @@
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称   | 类型   | 只读 | 可选  | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| fd     | number | 否  | 否  | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取,也可以通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。    |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| fd     | number | 否  | 否  | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取，也可以通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。    |
 | offset | number | 否  | 是  | 资源偏移量，默认值为0，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | length | number | 否  | 是  | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 
@@ -33,9 +33,9 @@
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 | 名称   | 类型   | 只读 | 可选  | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | fileSize     | number | 否  | 否  | 待播放文件大小（字节），-1代表大小未知。如果fileSize设置为-1, 播放模式类似于直播，不能进行seek及setSpeed操作，不能设置loop属性，因此不能重新播放。 |
-| callback | (buffer: ArrayBuffer, length: number, pos?: number) => number | 否  | 否  | 用户设置的回调函数，用于填写数据。<br>- 函数列式：callback: (buffer: ArrayBuffer, length: number, pos?:number) => number;<br>- buffer，ArrayBuffer类型，表示被填写的内存，必选。<br>- length，number类型，表示被填写内存的最大长度，必选。<br>- pos，number类型，表示填写的数据在资源文件中的位置，可选，当fileSize设置为-1时，该参数禁止被使用。 <br>- 返回值，number类型，返回填充数据的长度，返回-1表示到达流的末尾，返回-2表示遇到不可恢复的错误。|
+| callback | (buffer: ArrayBuffer, length: number, pos?: number) => number | 否  | 否  | 用户设置的回调函数，用于填写数据。<br>- 函数列式：callback: (buffer: ArrayBuffer, length: number, pos?:number) => number;<br>- 'buffer: ArrayBuffer'类型，表示被填写的内存，必选。<br>- 'length: number'类型，表示被填写内存的最大长度，必选。<br>- 'pos?: number'类型，表示填写的数据在资源文件中的位置，可选。当fileSize设置为-1时，该参数禁止被使用。 <br>- 返回值，number类型，返回填充数据的长度。返回-1表示到达流的末尾，返回-2表示遇到不可恢复的错误。|
 
 ## SubtitleInfo<sup>12+</sup>
 
