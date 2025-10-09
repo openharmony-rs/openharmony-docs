@@ -1414,7 +1414,7 @@ Dynamic icons cannot take effect due to existing custom themes.
 1. 检查当前使用的主题是否为自定义主题。<br/>
 2. 可以切换为官方主题后重新调用使能接口。<!--DelEnd-->
 
-## 17700351 设置本应用可打开的文件类型失败
+## 17700351 设置当前应用支持打开的文件类型失败
 **错误信息**<br/>
 Invalid fileTypes. Possible causes:1. The array length exceeds 1024; 2. The array contains an empty item; 3. An item exceeds 512 characters; 4. The array contains wildcard or general.object.
 
