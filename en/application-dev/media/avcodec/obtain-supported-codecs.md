@@ -5,7 +5,7 @@
 <!--Owner: @yang-xiaoyu5-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Due to differences in sources, codec protocols, and device capabilities, the available codecs and their capabilities vary across different devices.
 
@@ -703,7 +703,7 @@ OH_AVFormat_Destroy(format);
 
 ### Setting the Correct Video Pixel Format
 
-The video pixel format determines the pixel layout of an image that is encoded as input or decoded as output. For details, see [OH_AVPixelFormat](../../reference/apis-avcodec-kit/_core.md#oh_avpixelformat-1).
+The video pixel format determines the pixel layout of an image that is encoded as input or decoded as output. For details, see [OH_AVPixelFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat).
 
 | API    | Description                        |
 | -------- | ---------------------------- |
@@ -737,7 +737,7 @@ if (!isMatched) {
 
 ### Checking Whether a Codec Feature Is Supported and Obtaining Its Properties
 
-Codec features refer to optional features used in specific codec scenarios, such as temporal scalable encoding and low-latency codec in video encoding scenarios. For details, see [OH_AVCapabilityFeature](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature-1).
+Codec features refer to optional features used in specific codec scenarios, such as temporal scalable encoding and low-latency codec in video encoding scenarios. For details, see [OH_AVCapabilityFeature](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature).
 | API    | Description                        |
 | -------- | ---------------------------- |
 | OH_AVCapability_IsFeatureSupported              | Checks whether a codec supports a given feature.|
@@ -774,5 +774,3 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
    // Handle exceptions.
 }
 ```
-
-<!--no_check-->
