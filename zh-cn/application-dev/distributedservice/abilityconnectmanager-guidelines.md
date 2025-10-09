@@ -182,9 +182,12 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
       return;
     }
   }
+
+  @StorageLink('sessionId') sessionId: number = -1;
+
   // 定义设备B的协同信息
   const peerInfo: abilityConnectionManager.PeerInfo = {
-    deviceId: getRemoteDeviceId(),
+    deviceId: getRemoteDeviceId()!,
     bundleName: 'com.example.remotephotodemo',
     moduleName: 'entry',
     abilityName: 'EntryAbility',
@@ -349,7 +352,6 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import CameraService from '../model/CameraService';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
   import { fileIo as fs } from '@kit.CoreFileKit';
@@ -391,7 +393,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'startStream');
-  abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+  abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
     let surfaceParam: abilityConnectionManager.SurfaceParam = {
       width: 640,
       height: 480,
@@ -400,7 +402,6 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
     let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
     hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
     AppStorage.setOrCreate<string>('surfaceId', surfaceId);
-    await CameraService.initCamera(surfaceId, 0);
     abilityConnectionManager.startStream(streamId);
   })
   ```
