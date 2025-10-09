@@ -982,6 +982,10 @@ copyOptions(value: CopyOptions)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                        | 必填   | 说明      |
@@ -990,7 +994,9 @@ copyOptions(value: CopyOptions)
 
 **示例：**
 
-  ```ts
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -1005,7 +1011,27 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, CopyOptions } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .copyOptions(CopyOptions.None)
+    }
+  }
+}
+```
 
 ## textZoomRatio<sup>9+</sup>
 
@@ -3402,6 +3428,10 @@ Web组件自定义文本选择菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名              | 类型                              | 必填   | 说明          |
@@ -3409,6 +3439,8 @@ Web组件自定义文本选择菜单。
 | editMenu | [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) | 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在web中无意义，传入值为-1。|
 
 **示例**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -3429,7 +3461,7 @@ struct WebComponent {
 
   onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
     let items = menuItems.filter((menuItem) => {
-      // 过滤用户需要的系统按键
+      // 过滤用户需要的系统按键。
       return (
         menuItem.id.equals(TextMenuItemId.CUT) ||
         menuItem.id.equals(TextMenuItemId.COPY) ||
@@ -3449,31 +3481,31 @@ struct WebComponent {
       id: TextMenuItemId.of('customItem2'),
       icon: $r('app.media.icon')
     };
-    items.push(customItem1);// 在选项列表后添加新选项
-    items.unshift(customItem2);// 在选项列表前添加选项
+    items.push(customItem1);// 在选项列表后添加新选项。
+    items.unshift(customItem2);// 在选项列表前添加选项。
 
     return items;
   }
 
   onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
     if (menuItem.id.equals(TextMenuItemId.CUT)) {
-      // 用户自定义行为
+      // 用户自定义行为。
       console.log("拦截 id：CUT")
-      return true; // 返回true不执行系统回调
+      return true; // 返回true不执行系统回调。
     } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
-      // 用户自定义行为
+      // 用户自定义行为。
       console.log("不拦截 id：COPY")
-      return false; // 返回false执行系统回调
+      return false; // 返回false执行系统回调。
     } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
-      // 用户自定义行为
+      // 用户自定义行为。
       console.log("拦截 id：customItem1")
-      return true;// 用户自定义菜单选项返回true时点击后不关闭菜单，返回false时关闭菜单
+      return true;// 用户自定义菜单选项返回true时点击后不关闭菜单，返回false时关闭菜单。
     } else if (menuItem.id.equals((TextMenuItemId.of($r('app.string.customItem2'))))){
-      // 用户自定义行为
+      // 用户自定义行为。
       console.log("拦截 id：app.string.customItem2")
       return true;
     }
-    return false;// 返回默认值false
+    return false;// 返回默认值false。
   }
 
    onPrepareMenu(menuItems: Array<TextMenuItem>) => {
@@ -3485,8 +3517,8 @@ struct WebComponent {
       content: 'prepare2' + selectText,
       id: TextMenuItemId.of('prepareMenu2'),
     };
-    items.push(item1);// 在选项列表后添加新选项
-    items.unshift(item2);// 在选项列表前添加选项
+    items.push(item1);// 在选项列表后添加新选项。
+    items.unshift(item2);// 在选项列表前添加选项。
 
     return items;
   }
@@ -3508,6 +3540,112 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry, State, Menu } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { MenuItem, TextMenuItem, TextMenuItemId, TextRange, EditMenuOptions } from '@kit.ArkUI';
+
+let selectText: string = '';
+class TestClass {
+  setSelectText(param: String) {
+    selectText = param.toString();
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State testObj: TestClass = new TestClass();
+
+  onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
+    let items = menuItems.filter((menuItem) => {
+      // 过滤用户需要的系统按键。
+      return (
+        menuItem.id.equals(TextMenuItemId.CUT) ||
+        menuItem.id.equals(TextMenuItemId.COPY) ||
+        menuItem.id.equals((TextMenuItemId.PASTE)) ||
+        menuItem.id.equals((TextMenuItemId.TRANSLATE)) ||
+        menuItem.id.equals((TextMenuItemId.SEARCH)) ||
+        menuItem.id.equals((TextMenuItemId.AI_WRITER))
+      )
+    });
+    let customItem1: TextMenuItem = {
+      content: 'customItem1',
+      id: TextMenuItemId.of('customItem1'),
+      icon: $rawfile('app.media.icon')
+    };
+    let customItem2: TextMenuItem = {
+      content: 'customItem2',
+      id: TextMenuItemId.of('customItem2'),
+      icon: $rawfile('app.media.icon')
+    };
+    items.push(customItem1); // 在选项列表后添加新选项。
+    items.unshift(customItem2); // 在选项列表前添加选项。
+
+    return items;
+  }
+
+  onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
+    if (menuItem.id.equals(TextMenuItemId.CUT)) {
+      // 用户自定义行为。
+      console.log("拦截 id：CUT")
+      return true; // 返回true不执行系统回调。
+    } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
+      // 用户自定义行为。
+      console.log("不拦截 id：COPY")
+      return false; // 返回false执行系统回调。
+    } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
+      // 用户自定义行为。
+      console.log("拦截 id：customItem1")
+      return true; // 用户自定义菜单选项返回true时点击后不关闭菜单，返回false时关闭菜单。
+    } else if (menuItem.id.equals(TextMenuItemId.of('customItem2'))) {
+      // 用户自定义行为。
+      console.log("拦截 id：app.string.customItem2")
+      return true;
+    }
+    return false; // 返回默认值false。
+  }
+   onPrepareMenu(menuItems: Array<TextMenuItem>) => {
+    let item1: TextMenuItem = {
+      content: 'prepare1',
+      id: TextMenuItemId.of('prepareMenu1'),
+    };
+    let item2: TextMenuItem = {
+      content: 'prepare2' + selectText,
+      id: TextMenuItemId.of('prepareMenu2'),
+    };
+    items.push(item1);// 在选项列表后添加新选项。
+    items.unshift(item2);// 在选项列表前添加选项。
+
+    return items;
+  }
+
+  @State EditMenuOptions: EditMenuOptions = {
+    onCreateMenu: (items: Array<TextMenuItem>) => this.onCreateMenu(items),
+    onMenuItemClick: (item: TextMenuItem, range: TextRange) => this.onMenuItemClick(item, range),
+    onPrepareMenu:this.onPrepareMenu
+  } as EditMenuOptions;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+        .editMenuOptions(this.EditMenuOptions)
+        .javaScriptProxy({
+          object: this.testObj,
+          name: "testObjName",
+          methodList: ["setSelectText"],
+          controller: this.controller,
+        })
+    }
+  }
+}
+```
+
 
  加载的html文件。
 ```html
@@ -3543,18 +3681,23 @@ struct WebComponent {
 
 enableHapticFeedback(enabled: boolean)
 
-设置Web组件长按文本选择是否开启振动。 需配置"ohos.permission.VIBRATE"。
+设置Web组件长按文本选择是否开启振动。 需配置"ohos.permission.VIBRATE"。当属性没有显式调用时，默认开启振动。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名     | 类型        | 必填   | 说明 |
 | --------- | ---------   | ------ | ------------- |
-| enabled   | boolean | 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。<br>默认值：true。 |
+| enabled   | boolean | 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3571,6 +3714,26 @@ struct WebComponent {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+        .enableHapticFeedback(true)
+    }
+  }
+}  
 ```
 
  加载的html文件。
@@ -3596,6 +3759,10 @@ bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseT
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                             | 必填 | 说明                                |
@@ -3607,6 +3774,7 @@ bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseT
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3684,6 +3852,98 @@ struct WebComponent {
             }
             return false;
           })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry, Image, ImageFit, Builder, State, Menu } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { MenuItem, Resource, WebElementType, WebResponseType, MenuType, WebContextMenuResult } from '@kit.ArkUI';
+import { ClickEvent, MenuItemOptions, DrawableDescriptor, ImageContent, PixelMap } from '@kit.ArkUI';
+import { OnContextMenuShowEvent } from '@kit.ArkUI';
+
+interface PreviewBuilderParam {
+  previewImage: PixelMap | DrawableDescriptor | ImageContent | String | Resource;
+  width: number;
+  height: number;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private result: WebContextMenuResult | undefined = undefined;
+  @State previewImage: PixelMap | DrawableDescriptor | ImageContent | String | Resource = '';
+  @State previewWidth: number = 0;
+  @State previewHeight: number = 0;
+  uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  MenuBuilder() {
+    Menu() {
+      MenuItem({ content: '复制', } as MenuItemOptions)
+        .onClick((e: ClickEvent): void => {
+          this.result?.copy();
+          this.result?.closeContextMenu();
+        })
+      MenuItem({ content: '全选', } as MenuItemOptions)
+        .onClick((e: ClickEvent): void => {
+          this.result?.selectAll();
+          this.result?.closeContextMenu();
+        })
+    }
+  }
+
+  @Builder
+  PreviewBuilderGlobal($$: PreviewBuilderParam) {
+    Column() {
+      Image($$.previewImage)
+        .objectFit(ImageFit.Fill)
+        .autoResize(true)
+    }.width($$.width).height($$.height)
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+        .bindSelectionMenu(WebElementType.IMAGE, this.MenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {
+            },
+            onDisappear: () => {
+              this.result?.closeContextMenu();
+            },
+            preview: () => {
+              this.PreviewBuilderGlobal({
+                previewImage: this.previewImage,
+                width: this.previewWidth,
+                height: this.previewHeight
+              })
+            },
+            menuType: MenuType.PREVIEW_MENU
+          })
+        .onContextMenuShow((event: OnContextMenuShowEvent): boolean => {
+          if (event) {
+            this.result = event.result;
+            if (event.param.getLinkUrl()) {
+              return false;
+            }
+            this.previewWidth = this.uiContext!.px2vp(event.param.getPreviewWidth());
+            this.previewHeight = this.uiContext!.px2vp(event.param.getPreviewHeight());
+            if (event.param.getSourceUrl().indexOf("resource://rawfile/") == 0) {
+              this.previewImage = $rawfile(event.param.getSourceUrl().substr(19));
+            } else {
+              this.previewImage = event.param.getSourceUrl();
+            }
+            return true;
+          }
+          return false;
+        })
     }
   }
 }
