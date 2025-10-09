@@ -524,7 +524,7 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 | 名称 | 类型      | 只读 | 可选 | 说明                        |
 | ---- | --------- | ---- | ----------------------------- | ----------------------------- |
-| type | "capsule" | 否  | 是  | 类型为胶囊类分段按钮。 |
+| type | "capsule" | 否  | 否 | 类型为胶囊类分段按钮。 |
 
 ## SegmentButtonTextItem
 
