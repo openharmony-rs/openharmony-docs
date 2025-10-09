@@ -30,7 +30,6 @@ The packaging tool verifies the validity of the attributes of the module.json fi
 | minCompatibleVersionCode | Earliest version number that an app can be compatible with.| -                        | minCompatibleVersionCode   | -                                |
 | minAPIVersion            | Minimum API version required for running an app.| -                        | minAPIVersion              | compatibleSdkVersion             |
 | targetAPIVersion         | Target API version required for running an app.| -                        | targetAPIVersion           | targetSdkVersion/compileSdkVersion  <br>Note: If targetSdkVersion exists, targetAPIVersion is determined by targetSdkVersion.<br>Otherwise, targetAPIVersion is determined by compileSdkVersion.              |
-| querySchemes             | URL schemes that an app can redirect to.| querySchemes              | -                          | -                                |
 
 ## Constraints
 
@@ -40,8 +39,6 @@ The packaging tool verifies the validity of the attributes of the module.json fi
 ## HAP Packing Command
 
 You can use the JAR package of the packing tool to generate an HAP file for a module by passing in packing options and file paths.
-
-**Verify the validity of HAP during packaging.**
 
 **The compression rules for HAP packaging are as follows:**
 - If compressNativeLibs is set to true, files in the directory specified by --lib-path are compressed based on the compression level specified by --compress-level.
@@ -681,23 +678,6 @@ The size of the atomic service package and the dependent shared library or resou
 **Solution**
 
 Optimize and reduce the package size, for example, delete unnecessary resources, simplify code, or reduce dependencies.
-
-### 10012054 Failed to Verify the HAR Deduplication Attribute
-**Error Message**
-
-Check deduplicateHar field failed.
-
-**Description**
-
-The deduplicateHar attribute (whether to deduplicate HARs) in the module.json file fails to be verified during HSP/HAP packaging.
-
-**Possible Causes**
-
-The value of minAPIVersion in the module.json file of the HSP/HAP module is less than 21, and the value of deduplicateHar is true.
-
-**Solution**
-
-When the deduplicateHar attribute is set to true during HSP/HAP packaging, the value of minAPIVersion must be greater than or equal to 21.
 
 ### 10013005 Failed to Check the Bundle Type of a Module
 **Error Message**

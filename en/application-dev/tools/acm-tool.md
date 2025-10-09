@@ -124,7 +124,7 @@ If the query is successful, the corresponding account information is displayed. 
 # Display the help information.
 acm switch -h
 # Switch to an account with a specified ID.
-acm switch -i <accountId> [-d <displayId>]
+acm switch -i <accountId>
 ```
 
 **Return Result**
@@ -137,7 +137,6 @@ If the account is switched successfully, "switch the local account successfully.
 | ----------------------------------- | -------------------------- |
 | -h | This parameter is optional. It is used to display the parameters supported by the **switch** command.|
 | -i | This parameter is mandatory. ID of the account to be switched to.|
-| -d | This parameter is optional. It is used to specify the ID of the target screen (displayId). |
 
 
 ## deactivate
