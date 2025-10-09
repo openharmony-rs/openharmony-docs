@@ -20,6 +20,8 @@
 
 **相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
+**相关示例：** <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->
+
 ## 汇总
 
 ### 结构体
