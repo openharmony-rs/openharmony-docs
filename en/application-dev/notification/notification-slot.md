@@ -1,4 +1,5 @@
 # Managing Notification Slots
+
 The system supports a range of notification slots. Different notification slots are assigned different reminder modes. You can choose notification slots for your application and manage them as required, such as creating, querying, and deleting notification slots.
 
 ## Notification Slots
