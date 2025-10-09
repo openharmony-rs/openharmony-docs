@@ -513,7 +513,7 @@ try {
     names: ["STACK"],
   } as hiSysEvent.QueryRule];
   let time = hiSysEvent.exportSysEvents(queryArg, queryRules);
-  console.log(`receive export task time is : ${time}`);
+  console.info(`receive export task time is : ${time}`);
 
   // 延迟读取本次导出的事件
   setTimeout(() => {
@@ -523,7 +523,7 @@ try {
       if (filenames[i].indexOf(time.toString()) != -1) {
         let res = fileIo.readTextSync(eventDir + '/' + filenames[i]);
         let events: string = JSON.parse('[' + res.slice(0, res.length - 1) + ']');
-        console.log("read file end, events is :" + JSON.stringify(events));
+        console.info("read file end, events is :" + JSON.stringify(events));
       }
     }
   }, 10000);
@@ -608,7 +608,7 @@ try {
     for (let i = 0; i < filenames.length; i++) {
       let res = fileIo.readTextSync(eventDir + '/' + filenames[i]);
       let events: string = JSON.parse('[' + res.slice(0, res.length - 1) + ']');
-      console.log("read file end, events is :" + JSON.stringify(events));
+      console.info("read file end, events is :" + JSON.stringify(events));
     }
   }, 10000);
 } catch (err) {
