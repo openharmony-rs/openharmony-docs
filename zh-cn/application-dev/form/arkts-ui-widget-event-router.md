@@ -228,4 +228,5 @@
      ]
   }
   ```
-7. 运行效果
+7. 运行效果<br>
+![WidgetPrinciple](figures/router跳转运行截图.gif)
