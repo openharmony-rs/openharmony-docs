@@ -100,7 +100,7 @@ Creates a **DataShareHelper** instance. This API uses an asynchronous callback t
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)        | Yes  | Context of the application.                                          |
 | uri      | string                                                   | Yes  | URI of the server application to connect.                              |
-| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
+| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
 | callback | AsyncCallback&lt;[DataShareHelper](#datasharehelper)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DataShareHelper** instance created. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1355,6 +1355,7 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;DataShareResultSet&gt;): void
 
 Queries data in the database. This API uses an asynchronous callback to return the result.
+In non-silent scenarios, the size of the **predicates** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1409,6 +1410,7 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;): Promise&lt;DataShareResultSet&gt;
 
 Queries data in the database. This API uses a promise to return the result.
+In non-silent scenarios, the size of the **predicates** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1686,6 +1688,7 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
 
 Batch inserts data into the database. This API uses an asynchronous callback to return the result. Silent access is not supported currently.
+In non-silent scenarios, the size of the **values** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1695,7 +1698,7 @@ Batch inserts data into the database. This API uses an asynchronous callback to 
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri      | string                                                       | Yes  | URI of the data to insert.                                    |
 | values   | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | Yes  | Data to insert.                                          |
-| callback | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of data records inserted. Otherwise, **err** is an error object.<br>The number of inserted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| callback | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of data records inserted. Otherwise, **err** is an error object.<br>The number of inserted data records is not returned if the APIs of the database (for example, KVDB) in use do not return of the number of data records.|
 
 **Error codes**
 
@@ -1740,6 +1743,7 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
 Batch inserts data into the database. This API uses a promise to return the result. Silent access is not supported currently.
+In non-silent scenarios, the size of the **values** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
