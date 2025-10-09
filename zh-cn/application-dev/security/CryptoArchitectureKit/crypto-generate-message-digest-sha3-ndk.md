@@ -1,4 +1,4 @@
-# 消息摘要计算MD5(C/C++)
+# 消息摘要计算SHA3-256(C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,8 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+
+从API version 22开始，算法库支持使用该算法进行摘要计算操作。
 
 对应的算法规格请查看[消息摘要计算算法规格](crypto-generate-message-digest-overview.md#支持的算法与规格)。
 
@@ -16,13 +18,13 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 开发步骤
 
-在调用update接口传入数据时，可以[一次性传入所有数据](#摘要算法一次性传入)，也可以把数据人工分段，然后[分段update](#分段摘要算法)。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。
+在调用update接口传入数据时，可以[摘要算法一次性传入](#摘要算法一次性传入)，也可以把数据人工分段，然后[分段摘要算法](#分段摘要算法)。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。
 
 下面分别提供两种方式的示例代码。
 
 ### 摘要算法（一次性传入）
 
-1. 调用[OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create)，指定摘要算法MD5，生成摘要实例（OH_CryptoDigest）。
+1. 调用[OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create)，指定摘要算法SHA3-256，生成摘要实例（OH_CryptoDigest）。
 
 2. 调用[OH_CryptoDigest_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_update)，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
 
@@ -32,7 +34,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 调用[OH_DigestCrypto_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_digestcrypto_destroy)，销毁摘要实例（OH_CryptoDigest）。
 
-以下使用单次传入数据，获取摘要计算结果为例：
+以单次传入数据获取摘要计算结果为例：
 
 ```c++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -47,7 +49,7 @@ static OH_Crypto_ErrCode doTestMd()
     Crypto_DataBlob in = {.data = (uint8_t *)(testData), .len = strlen(testData)};
     Crypto_DataBlob out = {.data = nullptr, .len = 0};
     int mdLen = 0;
-    ret = OH_CryptoDigest_Create("MD5", &ctx);
+    ret = OH_CryptoDigest_Create("SHA3-256", &ctx);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
@@ -70,7 +72,7 @@ static OH_Crypto_ErrCode doTestMd()
 
 ### 分段摘要算法
 
-1. 调用[OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create)，指定摘要算法MD5，生成摘要实例（OH_CryptoDigest）。
+1. 调用[OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create)，指定摘要算法SHA3-256，生成摘要实例（OH_CryptoDigest）。
 
 2. 传入自定义消息，将一次传入数据量设置为20字节，多次调用[OH_CryptoDigest_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_update)，进行摘要更新计算。
 
@@ -80,7 +82,7 @@ static OH_Crypto_ErrCode doTestMd()
 
 5. 调用[OH_DigestCrypto_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_digestcrypto_destroy)，销毁摘要实例（OH_CryptoDigest）。
 
-- 以下使用分段传入数据，获取摘要计算结果为例：
+以下使用分段传入数据，获取摘要计算结果为例：
 
 ```c++
 #include <stdlib.h>
@@ -101,7 +103,7 @@ static OH_Crypto_ErrCode doLoopMd()
     int isBlockSize = 20;
     int offset = 0;
 
-    ret = OH_CryptoDigest_Create("MD5", &ctx);
+    ret = OH_CryptoDigest_Create("SHA3-256", &ctx);
     if (ret != CRYPTO_SUCCESS) {
         free(testData);
         return ret;

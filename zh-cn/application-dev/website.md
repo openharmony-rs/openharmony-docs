@@ -1089,6 +1089,8 @@
             - [使用RSA非对称密钥（PKCS1_OAEP模式）加解密](security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md)
             - [使用SM2非对称密钥加解密(ArkTS)](security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt.md)
             - [使用SM2非对称密钥加解密(C/C++)](security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt-ndk.md)
+            - [使用AES-WRAP算法对对称密钥加解密(ArkTS)](security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt.md)
+            - [使用AES-WRAP算法对对称密钥加解密(C/C++)](security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt-ndk.md)
             - [使用SM2密文格式转换(ArkTS)](security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion.md)
             - [使用SM2密文格式转换(C/C++)](security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion-ndk.md)
         - 签名验签<!--crypto-sign-sig-verify-->
@@ -1124,6 +1126,8 @@
             - [消息摘要计算SHA256(C/C++)](security/CryptoArchitectureKit/crypto-generate-message-digest-ndk.md)
             - [消息摘要计算MD5(ArkTS)](security/CryptoArchitectureKit/crypto-generate-message-digest-md5.md)
             - [消息摘要计算MD5(C/C++)](security/CryptoArchitectureKit/crypto-generate-message-digest-md5-ndk.md)
+            - [消息摘要计算SHA3(ArkTS)](security/CryptoArchitectureKit/crypto-generate-message-digest-sha3.md)
+            - [消息摘要计算SHA3(C/C++)](security/CryptoArchitectureKit/crypto-generate-message-digest-sha3-ndk.md)
         - 消息认证码<!--crypto-compute-mac-->
           - [消息认证码计算介绍及算法规格](security/CryptoArchitectureKit/crypto-compute-mac-overview.md)
           - [消息认证码计算HMAC(ArkTS)](security/CryptoArchitectureKit/crypto-compute-hmac.md)
@@ -1143,6 +1147,8 @@
           - [使用HKDF进行密钥派生(C/C++)](security/CryptoArchitectureKit/crypto-key-derivation-using-hkdf-ndk.md)
           - [使用SCRYPT进行密钥派生(ArkTS)](security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt.md)
           - [使用SCRYPT进行密钥派生(C/C++)](security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt-ndk.md)
+          - [使用X963KDF进行密钥派生(ArkTS)](security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf.md)
+          - [使用X963KDF进行密钥派生(C/C++)](security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf-ndk.md)
       - Data Protection Kit（数据保护服务）<!--data-protection-kit-->
         - 数据防泄漏服务<!--dlp-->
           - [数据防泄漏服务简介](security/DataProtectionKit/dlp-overview.md)
