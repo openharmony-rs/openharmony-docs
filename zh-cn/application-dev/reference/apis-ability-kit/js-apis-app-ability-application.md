@@ -22,7 +22,7 @@ import { application } from '@kit.AbilityKit';
 
 ## AppPreloadType<sup>22+</sup>
 
-表示[应用预加载](../../application-models/preload-application.md)类型的枚举。
+表示应用当前进程的预加载类型枚举。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -361,7 +361,7 @@ export default class EntryAbility extends UIAbility {
 
 getAppPreloadType(): AppPreloadType
 
-获取[应用预加载](../../application-models/preload-application.md)类型。
+获取应用当前进程的预加载类型，参见[应用预加载](../../application-models/preload-application.md)。
 
 > **说明：**
 >
@@ -373,7 +373,7 @@ getAppPreloadType(): AppPreloadType
 
 | 类型            | 说明            |
 | --------------- | --------------- |
-|[AppPreloadType](./js-apis-app-ability-application.md#apppreloadtype22)  | [应用预加载](../../application-models/preload-application.md)类型。     |
+|[AppPreloadType](#apppreloadtype22)  | 应用当前进程的预加载类型。     |
 
 **示例：**
 
