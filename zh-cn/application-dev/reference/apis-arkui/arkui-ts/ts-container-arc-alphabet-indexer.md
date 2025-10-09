@@ -291,12 +291,10 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**参数：**
-
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| arrayValue | string[] | 是 | 字母索引字符串数组，不可设置为空。 |
-| selected   | number              | 是 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | -------- |
+| arrayValue | string[] | 否 | 否 | 字母索引字符串数组，不可设置为空。 |
+| selected   | number              | 否 | 否 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
 
 ## OnSelectCallback
 
