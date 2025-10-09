@@ -1,5 +1,12 @@
 # 界面镜像伪本地化测试
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 使用场景
 
 界面镜像测试主要检查文字阅读顺序是否出现问题。一些语言的阅读顺序不是从左到右。例如，在阿拉伯语中，界面的阅读顺序是从右到左（RTL）。
