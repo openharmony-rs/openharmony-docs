@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -118,6 +118,36 @@ async function avCastPicker(context: common.Context) {
     console.info('select successfully');
   }).catch((err: BusinessError) => {
     console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+## restoreDefaultCommunicationDevice<sup>21+</sup>
+
+restoreDefaultCommunicationDevice(): Promise\<void>
+
+Restores the communication device of an application to the default device. For example, during a voice call, the communication device of the mobile phone is restored to the earpiece. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+
+**Return value**
+
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.restoreDefaultCommunicationDevice().then(() => {
+    console.info('restoreDefaultCommunicationDevice successfully');
   });
 }
 ```
