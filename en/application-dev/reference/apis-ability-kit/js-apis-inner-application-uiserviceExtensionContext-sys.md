@@ -1,5 +1,12 @@
 # UIServiceExtensionContext (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The UIServiceExtensionContext module provides the context environment for a [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
 
 UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md) and APIs for operating the ability, for example, starting, terminating, connecting, and disconnecting ability.
@@ -50,10 +57,10 @@ Starts an ability. This API uses a promise to return the result.
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| No| Want information about the target ability, such as the ability name and bundle name.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes|Yes| Parameters used for starting the ability.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
 
 **Return value**
 
@@ -106,7 +113,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
       this.context.startAbility(want, options)
         .then((data: void) => {
           // Carry out normal service processing.
-          console.log('startAbility succeed');
+          console.info('startAbility succeed');
         })
         .catch((error: BusinessError) => {
           // Process service logic errors.
@@ -125,7 +132,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 
 terminateSelf(): Promise&lt;void&gt;
 
-Terminates this [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md).
+Terminates this [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -151,7 +158,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
   onCreate() {
     this.context.terminateSelf().then(() => {
       // Carry out normal service processing.
-      console.log('terminateSelf succeed');
+      console.info('terminateSelf succeed');
     }).catch((error: BusinessError) => {
       // Process service logic errors.
       console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -165,7 +172,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;,
     abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
 
-Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) based on the type of the target ability. This API can be called only by applications running in the foreground.
+Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) based on the type of the target ability. This API can be called only by applications running in the foreground. This API uses a promise to return the result.
 
 
 > **NOTE**
@@ -178,11 +185,11 @@ Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](j
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- |  -------- |
-| type | string  | Yes| No|  Type of the target ability.|
-| wantParam | Record&lt;string, Object&gt;| Yes| No| Want parameter.|
-| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)| Yes| No| Callback.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- |  -------- |
+| type | string  | Yes| Type of the target ability.|
+| wantParam | Record&lt;string, Object&gt;| Yes| Want parameter.|
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)| Yes| Callback invoked to return the UIExtensionAbility startup result.|
 
 **Return value**
 
@@ -241,7 +248,7 @@ struct SubIndex {
               // Start a UIAbility or UIExtensionAbility based on the type of the target ability.
               context.startAbilityByType("mail", startWant, abilityStartCallback)
                 .then(() => {
-                  console.log(TAG + `Succeeded in windows starting ability`);
+                  console.info(TAG + `Succeeded in windows starting ability`);
                 }).catch((err: BusinessError) => {
                 console.error(TAG +
                   `Failed to windows starting ability, Code is ${err.code}, message is ${err.message}.`);
@@ -277,10 +284,10 @@ Connects to a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) an
 
 **Parameters**
 
-| Name              | Type                    | Read Only| Optional| Description             |
-| -------------------- | ------------------------ | ---- | ---- |----------------- |
-| want                 | [Want](js-apis-app-ability-want.md) | Yes | No| Want parameter.      |
-| options              | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes|Yes  | Connection options.|
+| Name              | Type                    | Mandatory| Description             |
+| -------------------- | ------------------------ | ---- |----------------- |
+| want                 | [Want](js-apis-app-ability-want.md) | Yes| Want parameter.      |
+| options              | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Connection options.|
 
 **Return value**
 
@@ -386,8 +393,7 @@ struct Page_UIServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connectionId: number): Promise&lt;void&gt;
 
-Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API is opposite to [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability).
-
+Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API is opposite to [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -395,9 +401,9 @@ Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.m
 
 **Parameters**
 
-| Name               | Type                    | Read Only| Optional| Description             |
-| -------------------- | ------------------------ | ---- | ----------------- | ----------------- |
-| connectionId         | number                   | Yes | No| Connection ID returned by [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability).|
+| Name               | Type                    | Mandatory| Description             |
+| -------------------- | ------------------------ | ---- | ----------------- |
+| connectionId         | number                   | Yes| Connection ID returned by [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability).|
 
 
 **Return value**

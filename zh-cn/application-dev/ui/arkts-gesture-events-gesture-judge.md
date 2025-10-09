@@ -151,7 +151,7 @@
 
 3. 设置手势并行：此步骤并非必需，典型场景是在嵌套滚动中，设置外部组件的滚动手势与内部的滚动手势并行。
 
-4. 动态开闭手势：指通过手势识别器的setEnable方法，控制手势是否响应用户回调。
+4. 动态开闭手势：指通过手势识别器的setEnabled方法，控制手势是否响应用户回调。
 
 手势并行动态控制涉及以下接口。
 
@@ -391,7 +391,7 @@
 
 ## 阻止手势参与识别
 
-手势识别基于[触摸测试](./arkts-interaction-basic-principles.md#触摸测试)的响应链结果进行，因此在用户按下时，通过控制响应链中手势识别器的参与状态，动态干预手势处理是高效的。
+手势识别基于[触摸测试](./arkts-interaction-basic-principles.md#触摸测试)的响应链结果进行，因此在用户按下时，通过控制响应链中手势识别器的参与状态，实现高效的动态干预手势处理。
 
 这需要结合[onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20)接口来实现：
 
@@ -571,10 +571,10 @@ struct Index {
       return
     }
     let offsetY = newY - this.currentPosY;
-    if (offsetY > 10) {
+    if (Math.abs(offsetY) > 10) {
       this.showMessage((offsetY > 0) ? '降低亮度' : '提高亮度')
+      this.currentPosY = newY
     }
-    this.currentPosY = newY
   }
 
   updateProgress(start: boolean, event: BaseGestureEvent): void {

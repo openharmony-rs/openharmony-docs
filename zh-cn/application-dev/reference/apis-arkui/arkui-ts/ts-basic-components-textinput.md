@@ -102,7 +102,7 @@ placeholderColor(value: ResourceColor)
 
 placeholderFont(value?: Font)
 
-设置placeholder文本样式，包括字体大小，字体粗细，字体族，字体风格。当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。
+设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -113,6 +113,10 @@ placeholderFont(value?: Font)
 | 参数名 | 类型                     | 必填 | 说明                  |
 | ------ | ------------------------ | ---- | --------------------- |
 | value  | [Font](ts-types.md#font) | 否   | placeholder文本样式。<br/>Wearable设备上默认值为：18fp |
+
+> **说明：**
+>
+> 推荐使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
 
 ### enterKeyType
 
@@ -243,7 +247,11 @@ fontFamily(value: ResourceStr)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和自定义字体。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+
+> **说明：**
+>
+> 推荐使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
 
 ### inputFilter<sup>8+</sup>
 
@@ -270,7 +278,7 @@ inputFilter(value: ResourceStr, error?: Callback\<string>)
 
 copyOption(value: CopyOptions)
 
-设置输入的文本是否可复制。设置CopyOptions.None时，当前TextInput中的文字无法被复制、剪切、翻译、分享、搜索和帮写，支持粘贴和全选。
+设置输入的文本是否可复制。设置CopyOptions.None时，只支持粘贴和全选。
 
 设置CopyOptions.None时，不允许拖拽。
 
@@ -322,9 +330,15 @@ textAlign(value: TextAlign)
 
 设置文本在输入框中的水平对齐方式。
 
-仅支持TextAlign.Start、TextAlign.Center和TextAlign.End。
+支持TextAlign.Start、TextAlign.Center和TextAlign.End。从API version 11开始，新增TextAlign.JUSTIFY选项。
 
-可通过[align](ts-universal-attributes-location.md)属性控制文本段落在垂直方向上的位置，此组件中不可通过align属性控制文本段落在水平方向上的位置，即align属性中Alignment.TopStart、Alignment.Top、Alignment.TopEnd效果相同，控制内容在顶部，Alignment.Start、Alignment.Center、Alignment.End效果相同，控制内容垂直居中，Alignment.BottomStart、Alignment.Bottom、Alignment.BottomEnd效果相同，控制内容在底部。
+可通过[align](ts-universal-attributes-location.md#align)属性控制文本段落在垂直方向上的位置。此组件中不可使用align属性控制文本段落在水平方向上的位置。
+
+- Alignment.TopStart、Alignment.Top、Alignment.TopEnd：内容顶部对齐。
+
+- Alignment.Start、Alignment.Center、Alignment.End：内容垂直居中。
+
+- Alignment.BottomStart、Alignment.Bottom、Alignment.BottomEnd：内容底部对齐。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -543,8 +557,6 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 自定义键盘无法获取焦点，但是会拦截手势事件。
 
 默认在输入控件失去焦点时，关闭自定义键盘，开发者也可以通过[TextInputController](#textinputcontroller8).[stopEditing](#stopediting10)方法控制键盘关闭。
-
-如果设备支持拍摄输入，设置自定义键盘后，该输入框会不支持拍摄输入。
 
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
@@ -967,7 +979,7 @@ enablePreviewText(enable: boolean)
 
 设置是否开启输入预上屏。
 
-预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此不触发[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)回调。
+预上屏内容定义为文字暂存态，目前不支持文字拦截功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1078,7 +1090,7 @@ strokeColor(color: Optional\<ResourceColor>)
 
 stopBackPress(isStopped: Optional\<boolean>)
 
-设置是否阻止返回键向其它组件或应用侧传递。
+设置是否阻止返回键传递。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -1088,13 +1100,13 @@ stopBackPress(isStopped: Optional\<boolean>)
 
 | 参数名 | 类型                                                | 必填 | 说明                                      |
 | ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
-| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止返回键向其它组件或应用侧传递，false表示不阻止。<br />默认值：true |
+| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### halfLeading<sup>18+</sup>
 
 halfLeading(halfLeading: Optional\<boolean>)
 
-设置文本是否将行间距平分至行的顶部与底部。
+设置文本在行内垂直居中，将行间距平分至行的顶部与底部。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1104,7 +1116,7 @@ halfLeading(halfLeading: Optional\<boolean>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是  | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
+| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是  | 设置文本是否垂直居中。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
 
 ### minFontScale<sup>18+</sup>
 

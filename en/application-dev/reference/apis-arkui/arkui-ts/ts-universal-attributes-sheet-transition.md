@@ -89,6 +89,20 @@ Enumerates the sheet heights.
 | LARGE                     | 1    | The sheet height is almost the screen height.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | FIT_CONTENT<sup>11+</sup> | 2    | The sheet height automatically adapts to the content.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
+## HoverModeAreaType<sup>14+</sup>
+
+Enumerates the types of display areas for the hover mode.
+
+**Atomic service API**: This API can be used in atomic services since API version 14.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Value   | Description                           |
+| ------ | ----------------------------- | ----------------------------- |
+| TOP_SCREEN | 0 | Upper half screen.|
+| BOTTOM_SCREEN | 1 | Lower half screen.|
+
+
 ## BindOptions
 
 Defines the common configuration for sheets and modals.

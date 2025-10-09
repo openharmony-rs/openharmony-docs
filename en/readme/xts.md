@@ -455,6 +455,6 @@ For details about how to build a HAP, see the JS application development guide o
 
 ## Repositories Involved
 
-[xts\_acts](https://gitee.com/openharmony/xts_acts)
+[xts\_acts](https://gitcode.com/openharmony/xts_acts)
 
-[xts\_tools](https://gitee.com/openharmony/xts_tools)
+[xts\_tools](https://gitcode.com/openharmony/xts_tools)

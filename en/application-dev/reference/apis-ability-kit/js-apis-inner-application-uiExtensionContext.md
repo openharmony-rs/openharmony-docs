@@ -228,7 +228,7 @@ Starts a UIAbility. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -517,7 +517,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise used to return the result.|
+| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise used to return the exit result of the launched UIAbility.|
 
 **Error codes**
 
@@ -701,7 +701,7 @@ ServiceExtensionAbility is a special type of [ExtensionAbility](../../applicatio
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -873,7 +873,7 @@ Destroys this UIExtensionAbility and closes the corresponding window. This API u
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
 
@@ -985,7 +985,7 @@ Destroys this UIExtensionAbility, closes the corresponding window, and returns t
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1302,7 +1302,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-Starts a UIServiceExtensionAbility.
+Starts a UIServiceExtensionAbility. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1321,7 +1321,7 @@ Starts a UIServiceExtensionAbility.
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1388,7 +1388,7 @@ struct Index {
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
-Connects to a UIServiceExtensionAbility.
+Connects to a UIServiceExtensionAbility. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1408,7 +1408,7 @@ Connects to a UIServiceExtensionAbility.
 
 | Type                   | Description                |
 | ----------------------- | -------------------- |
-| Promise&lt;UIServiceProxy&gt; | When the UIServiceExtensionAbility is connected, a [UIServiceProxy](js-apis-inner-application-uiserviceproxy.md) object is returned, which can be used to send data to the UIServiceExtensionAbility.|
+| Promise&lt;UIServiceProxy&gt; | Promise used to return a [UIServiceProxy](js-apis-inner-application-uiserviceproxy.md) object when the UIServiceExtensionAbility is connected. This object can be used to send data to the UIServiceExtensionAbility.|
 
 **Error codes**
 
@@ -1478,7 +1478,7 @@ struct Page_UIServiceExtensionAbility {
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
-Disconnects from a UIServiceExtensionAbility.
+Disconnects from a UIServiceExtensionAbility. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1492,7 +1492,7 @@ Disconnects from a UIServiceExtensionAbility.
 
 | Type                   | Description                |
 | ----------------------- | -------------------- |
-| Promise&lt;void&gt; | that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 

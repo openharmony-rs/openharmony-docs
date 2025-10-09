@@ -137,7 +137,7 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
    | **Name**| **Description**                                                    | **Data Type**| **Initial Value Allowed**  |
    | ------------ | ------------------------------------------------------------ | ------------ | ---------------- |
    | event        | Name of the event to be filtered out for static subscription events. The event name should match with the event list; otherwise, the configuration is invalid.| String      | No|
-   | conditions   | Filter criteria of an event, which is obtained from [CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md). | Object        | No|
+   | conditions   | Filter criteria of an event, which is obtained from [CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md).| Object        | No|
 
    The **conditions** tag identifies the condition configuration for filtering static subscription events. The tag value is of the object type and contains three subtags: **code**, **data**, and **parameters**.
 
@@ -150,10 +150,10 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
    | parameters   | Additional information to filter for a static subscription event. Only data of the Boolean, number, or string type can be configured.| Object| Yes (initial value: left empty)|
 
 
-4. Modify the [preset configuration file](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json) of the device, that is, the **/system/variant/phone/base/etc/app/install_list_capability.json** file. When the device is started, this file is read. During application installation, the common event type specified by **allowCommonEvent** in the file is authorized. The **install_list_capability.json** file contains the following fields:
+4. Modify the [preset configuration file](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json) of the device, that is, the **/system/variant/phone/base/etc/app/install_list_capability.json** file. When the device is started, this file is read. During application installation, the common event type specified by **allowCommonEvent** in the file is authorized. The **install_list_capability.json** file contains the following fields:
 
    - **bundleName**: bundle name of the application.
-   - **app_signature**: fingerprint information of the application. For details about how to configure fingerprint information, see [Application Privilege Configuration](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-app-privilege-config-guide.md#configuration-in-install_list_capabilityjson), or obtain and enter the application ID using [Bundle Manager](https://gitee.com/openharmony/docs/blob/master/en/application-dev/tools/bm-tool.md).
+   - **app_signature**: fingerprint information of the application. For details about how to configure fingerprint information, see [Application Privilege Configuration](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-app-privilege-config-guide.md#configuration-in-install_list_capabilityjson), or obtain and input the **appId** using [Bundle Manager](https://gitee.com/openharmony/docs/blob/master/en/application-dev/tools/bm-tool.md).
    - **allowCommonEvent**: type of common event that can be started by static broadcast.
 
    ```json

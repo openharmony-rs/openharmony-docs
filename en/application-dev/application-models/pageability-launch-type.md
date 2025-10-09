@@ -1,5 +1,11 @@
 # PageAbility Launch Type
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 Depending on the launch type, the action performed when the PageAbility starts differs, as described in the table below.
 

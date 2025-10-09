@@ -1,4 +1,4 @@
-# System Language and Region Setting
+# System Language and Locale
 
 
 ## How It Works

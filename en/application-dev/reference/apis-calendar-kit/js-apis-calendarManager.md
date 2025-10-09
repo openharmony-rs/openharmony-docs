@@ -712,7 +712,7 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 
 | Type            | Description                      |
 | ---------------- |--------------------------|
-| Promise\<number> | Promise used to return the event ID. The ID is greater than 0. |
+| Promise\<number> | Promise used to return the event ID. The ID is greater than 0.|
 
 **Example**
 
@@ -1204,6 +1204,8 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 Obtains all events in the current calendar. This API uses an asynchronous callback to return the result.
 
+Default fields for filtering: **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**.
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -1315,7 +1317,7 @@ If no input parameter is specified, all events under the specified calendar acco
 | Name     | Type                       | Mandatory| Description      |
 | ----------- | --------------------------- | ---- | ---------- |
 | eventFilter | [EventFilter](#eventfilter) | No  | Filter criteria.|
-| eventKey    | (keyof [Event](#event))[]   | No  | Filter field.|
+| eventKey    | (keyof [Event](#event))[]   | No  | Filter field. If this parameter is left empty, the default fields for filtering are **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**.|
 
 **Return value**
 
@@ -1531,7 +1533,7 @@ Queries the event instance with a specified event key in a calendar. This API us
 | start  | number | Yes   | Start time of an event. The value is a 13-digit timestamp.   |
 | end    | number | Yes   | End time of an event. The value is a 13-digit timestamp.   |
 | ids    | number[] | No   | Array of event IDs to be queried, which can be empty or undefined. Otherwise, the value of each ID must be greater than **0**.   |
-| eventKey    | (keyof [Event](#event))[]   | No   | Event key for querying events.|
+| eventKey    | (keyof [Event](#event))[]   | No   | Event key for querying events. If this parameter is left empty, the default fields for filtering are **id**, **title**, **startTime**, **endTime**, **instanceStartTime**, **instanceEndTime**, **isAllDay**, **description**, **timeZone**, **location**, and **service**.|
 
 **Return value**
 
@@ -1597,7 +1599,7 @@ Describes the calendar configuration information.
 | Name          | Type    | Read Only   | Optional| Description                                                        |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | No    | Yes | Whether to enable the reminder for events in the calendar. The value **true** means to enable the reminder for events in the calendar, and **false** means the opposite. The default value is **true**.|
-| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000000 to 0xFFFFFF or from 0x00000000 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFFF**. If this parameter is not specified or the input data is incorrect, the default value **#0A59F7** is used.|
+| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000000 to 0xFFFFFF or from 0x00000000 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFFF**. If this parameter is not set, the default value **0xFF0A59F7** is used. If **undefined** or an incorrect value is input, an exception is thrown.|
 
 ## Event
 
@@ -1652,8 +1654,8 @@ Describes the event location.
 | Name     | Type  | Read Only| Optional| Description                    |
 | --------- | ------ | ---- |----| ------------------------ |
 | location  | string | No  | Yes | Location, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.|
-| longitude | number | No  | Yes | Longitude of the location. The value ranges from -180 to 180. The default value is **0**. |
-| latitude  | number | No  | Yes | Latitude of the location. The value ranges from -90 to 90. The default value is **0**. |
+| longitude | number | No  | Yes | Longitude of the location. The value ranges from –180 to 180. The default value is **0**.   |
+| latitude  | number | No  | Yes | Latitude of the location. The value ranges from –90 to 90. The default value is **0**.   |
 
 ## EventFilter
 
@@ -1876,7 +1878,7 @@ Describes the recurrence rule of an event.
 | interval<sup>12+</sup>            | number                                      | No  | Yes | Interval for a recurrent event. The value is a non-negative integer. If this parameter is not set, the default value **0** is used, indicating that the event is repeated based on the recurrence rule without intervals; if the value is negative, the effect is the same as that of **0**. If both **interval** and **expire** exist, **expire** is used.<br>This attribute is related to the **recurrenceFrequency** rule. The recurrence interval varies according to the recurrence rule. For example, if the **interval** value is **2**, the following situations occur:<br>Daily recurrence: The event repeats every two days.<br>Weekly recurrence: The event repeats every two weeks.<br>Monthly recurrence: The event repeats every two months.<br>Yearly recurrence: The event repeats every two years.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | excludedDates<sup>12+</sup>       | number[]                                    | No  | Yes | Excluded date of a recurrent event. The value is in the timestamp format. If this parameter is not set, the default value is empty, indicating that no date is excluded; if the value is **0** or a negative number, the effect is the same as that of the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                |
 | daysOfWeek<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a week. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 7, corresponding to Monday to Sunday. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                        |
-| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 31, corresponding to the first to the last days of each month. Other values are invalid and have the same effect as **null**. The value **29**, **30**, or **31** is invalid if the corresponding date does not exist in the current month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                |
+| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 31, corresponding to the first to the last days of each month. Other values are invalid and have the same effect as **null**. The value **29**, **30**, or **31** is invalid if the corresponding date does not exist in the current month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                  |
 | daysOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 366, corresponding to the first to the last days of each year. Other values are invalid and have the same effect as the empty value. If this year only has 365 days, the value **366** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                           |
 | weeksOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 5, corresponding to the first to the last weeks of each month. Other values are invalid and have the same effect as the empty value. If this month only has four weeks, the value **5** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                 |
 | weeksOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 53, corresponding to the first to the last weeks of each year. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |

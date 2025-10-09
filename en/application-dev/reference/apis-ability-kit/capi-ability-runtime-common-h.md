@@ -1,5 +1,12 @@
 # ability_runtime_common.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 The file declares the error codes of the AbilityRuntime module.
@@ -58,3 +65,6 @@ Enumerates the error codes of the AbilityRuntime module.
 | ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED = 16000077 |  The number of instances has reached the upper limit.<br>**Since**: 17|
 | ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED = 16000078 |  The application does not support multi-instance mode.<br>**Since**: 17|
 | ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED = 16000079 |  Setting **APP_INSTANCE_KEY** is not supported.<br>**Since**: 17|
+| ABILITY_RUNTIME_ERROR_CODE_GET_APPLICATION_INFO_FAILED = 16000081 |  Failed to obtain the application information.<br>**Since**: 21|
+| ABILITY_RUNTIME_ERROR_CODE_START_TIMEOUT = 16000133 |  Starting the UIAbility times out.<br>**Since**: 21|
+| ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED = 16000134 |  The function cannot be called on the main thread of the application.<br>**Since**: 21|

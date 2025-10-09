@@ -1,4 +1,4 @@
-# @ohos.bundle.bundleManager (bundleManager) (System API)
+# @ohos.bundle.bundleManager (Bundle Management Module) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
@@ -487,7 +487,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type                                                        | Description                            |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | Promise used to return the application information obtained.|
+| Promise\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | Promise used to return the application information.|
 
 **Error codes**
 
@@ -652,7 +652,7 @@ Obtains all the bundle information in the system based on the given bundle flags
 
 | Type                                                        | Description                               |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise used to return the array of bundle information obtained.|
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise used to return an array of bundle information.|
 
 **Error codes**
 
@@ -2249,7 +2249,7 @@ Enables or disables an application or an application clone. This API uses a prom
 | Name     | Type   | Mandatory| Description                                 |
 | ---------- | ------- | ---- | ------------------------------------- |
 | bundleName | string  | Yes  | Bundle name.           |
-| appIndex   | number  | Yes  | Index of the application clone.<br>The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone.             |
+| appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone.             |
 | isEnabled  | boolean | Yes  | Whether to enable the application or application clone. **true** to enable, **false** otherwise.|
 
 **Return value**
@@ -2491,7 +2491,7 @@ Enables or disables an ability of an application or an application clone. This A
 | Name   | Type       | Mandatory| Description                                 |
 | -------- | ----------- | ---- | ------------------------------------- |
 | info     | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | Yes  | Information about the target ability.                  |
-| appIndex   | number    | Yes  | Index of the application clone.<br>The value **0** means to enable or disable the ability of the main application. A value greater than 0 means to enable or disable the ability of the application clone.           |
+| appIndex   | number    | Yes  | Index of the application clone.<br> The value **0** means to enable or disable the ability of the main application. A value greater than 0 means to enable or disable the ability of the application clone.           |
 | isEnabled| boolean     | Yes  | Whether to enable the ability. **true** to enable, **false** otherwise.|
 
 **Return value**
@@ -2728,7 +2728,7 @@ Checks whether an application or an application clone is enabled. This API uses 
 | Name     | Type  | Mandatory| Description                      |
 | ---------- | ------ | ---- | -------------------------- |
 | bundleName | string | Yes  | Bundle name. |
-| appIndex   | number  | Yes  | Index of the application clone.<br>The value **0** means to obtain the enabled status of the main application. A value greater than 0 means to obtain the enabled status of the application clone.           |
+| appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to obtain the enabled status of the main application. A value greater than 0 means to obtain the enabled status of the application clone.           |
 
 **Return value**
 
@@ -2960,7 +2960,7 @@ Checks whether an ability of an application or an application clone is enabled. 
 | Name| Type       | Mandatory| Description                       |
 | ---- | ----------- | ---- | --------------------------- |
 | info | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | Yes  | Information about the target ability.|
-| appIndex   | number  | Yes  | Index of the application clone.<br>The value **0** means to obtain the enabled status of the ability of the main application. A value greater than 0 means to obtain the enabled status of the ability of the application clone.          |
+| appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to obtain the enabled status of the ability of the main application. A value greater than 0 means to obtain the enabled status of the ability of the application clone.          |
 
 **Return value**
 
@@ -5010,7 +5010,7 @@ Switches the uninstall state of an application. This API is independent of EDM a
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName | string | Yes  | Bundle name of the application.|
-| state | boolean | Yes  | Whether the application can be uninstalled. T**true** if the application can be uninstalled, **false** otherwise.|
+| state | boolean | Yes  | Whether the application can be uninstalled. **true** if the application can be uninstalled, **false** otherwise.|
 
 **Error codes**
 
@@ -5498,7 +5498,7 @@ Obtains the bundle name and application index of an application clone based on t
 
 | Type                                                       | Description                       |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<AppCloneIdentity> | Promise used to return \<AppCloneIdentity>.|
+| Promise\<AppCloneIdentity> | Promise used to return the application clone index.|
 
 **Error codes**
 
@@ -5544,7 +5544,7 @@ Obtains the identity information of an application, including the bundle name an
 
 | Name    | Type  | Mandatory| Description                      |
 | ---------- | ------ | ---- | ---------------------------|
-| sandboxDataDir | string |  Yes | Name of the [sandbox directory of the application](../../file-management/app-sandbox-directory.md).<br>**NOTE**<br>The validity of this parameter is not verified. If the input **sandboxDataDir** does not match the directory name format for application clones or atomic services, **sandboxDataDir** is returned as **AppCloneIdentity.bundleName**, and **AppCloneIdentity.appIndex** is **0**.<br> 1. Directory name format for application clones: `+clone-{appIndex}+{bundleName}`, where **appIndex** and **bundleName** are variables corresponding to the clone index and bundle name, respectively. Example: `+clone-1+com.example.myapplication`.<br> 2. Directory name format for atomic services: `+auid-{uid}+{bundleName}`, where **uid** and **bundleName** are variables corresponding to the UID and bundle name, respectively. Example: `+auid-20000000+com.example.myapplication`.  |
+| sandboxDataDir | string |  Yes |     Name of the [sandbox directory of the application](../../file-management/app-sandbox-directory.md).<br>**NOTE**<br> The validity of this parameter is not verified. If the input **sandboxDataDir** does not match the directory name format for application clones or atomic services, **sandboxDataDir** is returned as **AppCloneIdentity.bundleName**, and **AppCloneIdentity.appIndex** is **0**.<br> 1. Directory name format for application clones: `+clone-{appIndex}+{bundleName}`, where **appIndex** and **bundleName** are variables corresponding to the clone index and bundle name, respectively. Example: `+clone-1+com.example.myapplication`.<br> 2. Directory name format for atomic services: `+auid-{uid}+{bundleName}`, where **uid** and **bundleName** are variables corresponding to the UID and bundle name, respectively. Example: `+auid-20000000+com.example.myapplication`.  |
 
 **Return value**
 
@@ -5735,7 +5735,7 @@ No permission is required for obtaining the caller's own information.
 
 | Type                                                       | Description                       |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<Array\<BundleInfo>> | Promise used to return all the bundle information.|
+| Promise\<Array\<BundleInfo>> | Promise used to return an array of bundle information.|
 
 **Error codes**
 

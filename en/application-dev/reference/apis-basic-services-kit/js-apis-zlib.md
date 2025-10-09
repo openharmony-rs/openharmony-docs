@@ -74,7 +74,7 @@ Unzips a file. This API uses a promise to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [zlib.decompressFile](#zlibdecompressfile9) instead.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code -1 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code -1 is returned.
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
@@ -121,7 +121,7 @@ Compresses a file. This API uses an asynchronous callback to return the result. 
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -183,7 +183,7 @@ Compresses a file. This API uses a promise to return the result. If the operatio
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -248,9 +248,9 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -312,9 +312,9 @@ Decompresses a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -378,9 +378,9 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -983,7 +983,7 @@ Creates an instance of a compressed or decompressed object. The instance of the 
 
 | Type         | Description                    |
 | ------------- | ------------------------ |
-| [Zip](#zip12) | Instance of the compressed or decompressed object.|
+| [Zip](#zip12) | Instance of the compressed or decompressed object created.|
 
 **Example**
 
@@ -4571,7 +4571,7 @@ async function gzgetcDemo(pathDir: string) {
   await gzip.gzputc(1);
   await gzip.gzclose();
   await gzip.gzopen(path, "rb");
-  let resulit = await gzip.gzgetc();
+  let result = await gzip.gzgetc();
   await gzip.gzclose();
 }
 
@@ -4718,7 +4718,7 @@ async function gzfwriteDemo(pathDir: string) {
   for (let i = 0; i < uint8View.length; i++) {
     uint8View[i] = i;
   }
-  let resulit = await gzip.gzfwrite(bufferWithData, 8, 2)
+  let result = await gzip.gzfwrite(bufferWithData, 8, 2)
   await gzip.gzclose();
 }
 

@@ -32,10 +32,10 @@ The following table describes the APIs for notification publishing. You can spec
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Publishes a notification.
+2. Publish a notification.
 
    In addition to the parameters in the normal text notification, the system live view notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
-     
+   
       ```ts
       let imagePixelMap: image.PixelMap | undefined = undefined; // Obtain the image pixel map information.
       let color = new ArrayBuffer(4);

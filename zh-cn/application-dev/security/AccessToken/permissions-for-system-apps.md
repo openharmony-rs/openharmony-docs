@@ -1731,18 +1731,6 @@
 
 **起始版本**：10
 
-## ohos.permission.sec.ACCESS_UDID
-
-允许系统应用获取UDID。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：7
-
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
 允许应用获取设备风险状态。
@@ -4514,20 +4502,6 @@
 **ACL使能**：true
 
 **起始版本**：19
-
-## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
-
-允许应用调用企业空间访问DLP文件的接口。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：PC/2in1
-
-**起始版本**：20
 
 ## ohos.permission.UNINSTALL_PLUGIN_BUNDLE
 

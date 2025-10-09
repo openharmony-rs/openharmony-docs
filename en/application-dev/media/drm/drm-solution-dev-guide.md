@@ -4,7 +4,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 DRM plugins implement the DRM HDI, and the DRM framework of DRM Kit loads the DRM plugins through the HDI.
 
 Plugins are developed by DRM solution integrators and placed in the /vendor partition of devices.

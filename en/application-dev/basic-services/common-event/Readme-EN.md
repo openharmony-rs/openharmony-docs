@@ -15,4 +15,3 @@
     - [Unsubscribing from Common Events in C](native-common-event-unsubscription.md)
     - [Publishing Common Events in C](native-common-event-publish.md)
 - [Using Emitter for Inter-Thread Communication](itc-with-emitter.md)
-
