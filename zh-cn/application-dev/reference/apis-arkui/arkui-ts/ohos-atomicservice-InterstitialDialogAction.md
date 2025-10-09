@@ -75,20 +75,20 @@ closeDialog(): void
 
 设置弹框特有的属性以及提供给用户自定义的点击触发动作。
 
-| 名称 | 类型 | 必填 | 说明 |
-| - | - | - | - |
-| uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | 是 | UI上下文实例。 |
-| bottomOffsetType | [BottomOffset](#bottomoffset) | 否 | 弹框距离底部偏移类型。默认值为[BottomOffset](#bottomoffset).OFFSET_FOR_BAR。 |
-| title | [ResourceStr](ts-types.md#resourcestr) | 否 | 弹框标题文本。默认为空字符串。 |
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 弹框副标题文本。默认为空字符串。 |
-| titleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | 否 | 弹框标题文本颜色。默认为$r('sys.color.ohos_id_color_text_primary_contrary')。 |
-| subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | 否 | 弹框副标题文本颜色。默认为$r('sys.color.ohos_id_color_text_secondary_contrary')。 |
-| backgroundImage | [Resource](ts-types.md#resource) | 否 | 弹框背景图片。默认为纯色背景，颜色值为#EBEEF5。 |
-| foregroundImage | [Resource](ts-types.md#resource) | 否 | 弹框前景图片。默认为空，即不显示前景图片。 |
-| iconStyle | [IconStyle](#iconstyle) | 否 | 关闭按钮图标的样式（亮调或者暗调）。<br>默认值：[IconStyle](#iconstyle).Light |
-| titlePosition | [TitlePosition](#titleposition) | 否 | 标题在弹框中的位置，在副标题的上方或者在副标题的下方。<br>默认值：[TitlePosition](#titleposition).Top |
-| onDialogClick | Callback\<void\> | 否 | 点击弹框任意位置后触发的用户自定义动作。默认为“执行关闭弹框的函数”，即仅关闭弹框。 |
-| onDialogClose | Callback\<void\> | 否 | 点击关闭按钮后触发的用户自定义动作。默认为“执行关闭弹框的函数”，即仅关闭弹框。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| - | - | - | - | - |
+| uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | 否 | 否 | UI上下文实例。 |
+| bottomOffsetType | [BottomOffset](#bottomoffset) | 否 | 是 | 弹框距离底部偏移类型。默认值为[BottomOffset](#bottomoffset).OFFSET_FOR_BAR。 |
+| title | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 弹框标题文本。默认为空字符串。 |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 弹框副标题文本。默认为空字符串。 |
+| titleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | 否 | 是 | 弹框标题文本颜色。默认为$r('sys.color.ohos_id_color_text_primary_contrary')。 |
+| subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | 否 | 是 | 弹框副标题文本颜色。默认为$r('sys.color.ohos_id_color_text_secondary_contrary')。 |
+| backgroundImage | [Resource](ts-types.md#resource) | 否 | 是 | 弹框背景图片。默认为纯色背景，颜色值为#EBEEF5。 |
+| foregroundImage | [Resource](ts-types.md#resource) | 否 | 是 | 弹框前景图片。默认为空，即不显示前景图片。 |
+| iconStyle | [IconStyle](#iconstyle) | 否 | 是 | 关闭按钮图标的样式（亮调或者暗调）。<br>默认值：[IconStyle](#iconstyle).Light |
+| titlePosition | [TitlePosition](#titleposition) | 否 | 是 | 标题在弹框中的位置，在副标题的上方或者在副标题的下方。<br>默认值：[TitlePosition](#titleposition).Top |
+| onDialogClick | Callback\<void\> | 否 | 是 | 点击弹框任意位置后触发的用户自定义动作。默认为“执行关闭弹框的函数”，即仅关闭弹框。 |
+| onDialogClose | Callback\<void\> | 否 | 是 | 点击关闭按钮后触发的用户自定义动作。默认为“执行关闭弹框的函数”，即仅关闭弹框。 |
 
 ## IconStyle
 
