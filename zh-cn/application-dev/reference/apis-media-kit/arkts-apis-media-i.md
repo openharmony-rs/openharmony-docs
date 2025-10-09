@@ -323,7 +323,7 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称   | 类型     | 只读 | 可选  | 说明                 |
-| -------- | -------- | ---- | -------------------- |
+| -------- | -------- | ---- | ---- | -------------------- |
 | open | [SourceOpenCallback](arkts-apis-media-t.md#sourceopencallback18) | 否   | 否   | 由应用程序实现的回调函数，用于处理资源打开请求。 |
 | read | [SourceReadCallback](arkts-apis-media-t.md#sourcereadcallback18) | 否   | 否   | 由应用程序实现的回调函数，用于处理资源读取请求。 |
 | close | [SourceCloseCallback](arkts-apis-media-t.md#sourceclosecallback18) | 否   | 否   | 由应用程序实现的回调函数，用于处理资源关闭请求。 |
