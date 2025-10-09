@@ -36,7 +36,7 @@ Create a **&lt;switch&gt;** component in the .hml file under **pages/index**.
 
 ## Adding Attributes and Methods
 
-Use the **textoff** and **showtext** attributes to set the status when text is selected and unselected. Set the **checked** attribute to **true** (indicating that the component is on). Add the **change** event that is triggered when the component status changes. After the event is triggered, the **switchChange** function is executed to obtain the current component status (on or off).
+  Use the **textoff** and **showtext** attributes to set the status when text is selected and unselected. Set the **checked** attribute to **true** (indicating that the component is on). Add the **change** event that is triggered when the component status changes. After the event is triggered, the **switchChange** function is executed to obtain the current component status (on or off).
 
 ```html
 <!-- xxx.hml -->
