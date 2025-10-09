@@ -18,6 +18,10 @@ didReceiveResponse(response: WebSchemeHandlerResponse): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明                                            |
@@ -45,6 +49,10 @@ didReceiveResponseBody(data: ArrayBuffer): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明                                            |
@@ -71,6 +79,10 @@ didFinish(): void
 通知Web组件被拦截的请求已经完成，并且没有更多的数据可用，调用前需要优先调用[didReceiveResponse](#didreceiveresponse12)将构造的响应头传递给被拦截的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
