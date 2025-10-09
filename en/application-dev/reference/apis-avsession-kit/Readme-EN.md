@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS APIs<!--avsession-arkts-->
   - @ohos.multimedia.avsession (AVSession Management)<!--js-apis-avsession-->

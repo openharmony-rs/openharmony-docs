@@ -4,7 +4,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 You can call the ArkTS APIs of DRM Kit and Media Kit to implement the playback of DRM-protected content using the AVPlayer.
 
 ## How to Develop
@@ -25,12 +25,15 @@ You can call the ArkTS APIs of DRM Kit and Media Kit to implement the playback o
 3. Call [createAVPlayer](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9) to create an AVPlayer instance and set a DRM information listener.
 
    ```ts
-   let playerHandle: media.AVPlayer = await media.createAVPlayer()
+   let playerHandle: media.AVPlayer;
+   async function initPlayer() {
+   playerHandle = await media.createAVPlayer();
    playerHandle.on('mediaKeySystemInfoUpdate', async (mediaKeySystemInfo: drm.MediaKeySystemInfo[]) => {
-     console.info('player has received drmInfo signal: ' + JSON.stringify(mediaKeySystemInfo))
-     // Process DRM information.
-     // Set a decryption session.
+   console.info('player has received drmInfo signal: ' + JSON.stringify(mediaKeySystemInfo))
+   // Process DRM information.
+   // Set a decryption session.
    })
+   }
    ```
 
 4. Call [createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem) and [createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession) to create MediaKeySystem and MediaKeySession instances based on the UUID in the DRM information.
@@ -94,9 +97,9 @@ You can call the ArkTS APIs of DRM Kit and Media Kit to implement the playback o
       if (state == 'released') {
     mediaKeySession.destroy();
     mediaKeySystem.destroy();
-  } else if (state == 'releasing') {  
+    } else if (state == 'releasing') {  
     await playerHandle.release();    
-  }
+    }
    })
-  
+   
    ```
