@@ -24,8 +24,6 @@ Asynchronous mode is generally recommended for most use cases. Synchronous mode 
 
 Read [VideoEncoder](../../reference/apis-avcodec-kit/_video_encoder.md) for the API reference.
 
-The figure below shows the call relationship of synchronous video encoding.
-
 - The dotted line indicates an optional operation.
 
 - The solid line indicates a mandatory operation.
@@ -148,11 +146,12 @@ The following walks you through how to implement the entire video encoding proce
     > To use synchronous mode, do not call **OH_VideoEncoder_RegisterCallback** or **OH_VideoEncoder_RegisterParameterCallback** in prior to **OH_VideoEncoder_Configure**. Otherwise, the encoder will run in asynchronous mode instead.
     >
     > Synchronous mode is not supported for frame-specific channels in surface mode.
+    >
 
 3. Set the surface.
 
    In the code snippet below, the following variables are used:
-   
+
    - **nativeWindow**: For details about how to obtain the native window, see step 6 in [Surface Mode](video-encoding.md#surface-mode).
 
     ```c++
@@ -309,7 +308,7 @@ The following walks you through how to implement the entire video encoding proce
 
 10. (Optional) Call **OH_VideoEncoder_Reset()** to reset the encoder.
 
-    After **OH_VideoEncoder_Reset** is called, the encoder returns to the initialized state. To continue encoding, you must call **[OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_configure)** and then **[OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_prepare)**.
+    After **OH_VideoEncoder_Reset** is called, the encoder returns to the initialized state. To continue encoding, you must call [OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_configure) and [OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_prepare).
 
     ```c++
     // Reset the encoder.
@@ -360,11 +359,8 @@ The following walks you through how to implement the entire video encoding proce
     std::unique_lock<std::shared_mutex> lock(codecMutex);
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoEnc != nullptr) {
-        ret = OH_VideoEncoder_Destroy(videoEnc);
+        OH_VideoEncoder_Destroy(videoEnc);
         videoEnc = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
     }
     ```
 
@@ -456,6 +452,7 @@ The following walks you through how to implement the entire video encoding proce
     - Based on this index, call [OH_VideoEncoder_GetInputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_getinputbuffer) to obtain the buffer instance.
     - Write the data to be encoded to the buffer, and call [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_pushinputbuffer) to push it into the encoding input queue for encoding. When all the data to be processed has been passed to the encoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the encoder that the input is complete.
 
+
     The meanings of the variables **size**, **offset**, **pts**, **frameData**, and **flags** in the example are the same as those in surface mode.
 
     ```c++
@@ -543,6 +540,7 @@ The following walks you through how to implement the entire video encoding proce
    - Call [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_queryoutputbuffer) to obtain the index of the next available output buffer.
    - Based on this index, call [OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_getoutputbuffer) to obtain the buffer instance.
    - Call [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_freeoutputbuffer) to release the encoded frame.
+  
 
     ```c++
     bool EncoderOutput(OH_AVCodec *videoEnc, int64_t timeoutUs)

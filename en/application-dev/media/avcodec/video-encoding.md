@@ -77,7 +77,7 @@ The following figure shows the interaction between states.
 
 ## How to Develop
 
-Read [VideoEncoder](../../reference/apis-avcodec-kit/_video_encoder.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/_video_encoder.md).
 
 The figure below shows the call relationship of video encoding.
 
@@ -350,7 +350,7 @@ The following walks you through how to implement the entire video encoding proce
     // Configure the video frame rate.
     double frameRate = 30.0;
     // Configure the video YUV range flag.
-    bool rangeFlag = false;
+    int32_t rangeFlag = 0;
     // Configure the video primary color.
     int32_t primary = static_cast<int32_t>(OH_ColorPrimary::COLOR_PRIMARY_BT709);
     // Configure the transfer characteristics.
@@ -621,7 +621,7 @@ The following walks you through how to implement the entire video encoding proce
     > **NOTE**
     >
     > This API cannot be called in the callback function.
-    > 
+    >
     > After the call, you must set a null pointer to the encoder to prevent program errors caused by wild pointers.
 
     ```c++
@@ -634,11 +634,8 @@ The following walks you through how to implement the entire video encoding proce
     // Call OH_VideoEncoder_Destroy to destroy the encoder.
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoEnc != nullptr) {
-        ret = OH_VideoEncoder_Destroy(videoEnc);
+        OH_VideoEncoder_Destroy(videoEnc);
         videoEnc = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
     }
     inQueue.Flush();
     outQueue.Flush();
@@ -786,15 +783,15 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-5. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.  
+5. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
 
-   ```c++
-OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
+    ```c++
+    OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
     if (ret != AV_ERR_OK) {
         // Handle exceptions.
     }
     ```
-    
+
 6. Call **OH_VideoEncoder_Start()** to start the encoder.
 
     As soon as the encoder starts, the callback functions will be triggered to respond to events. Therefore, you must configure the input file and output file first.
@@ -1040,5 +1037,3 @@ OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
     ```
 
 The subsequent processes (including refreshing, resetting, stopping, and destroying the encoder) are the same as those in surface mode. For details, see steps 14–17 in [Surface Mode](#surface-mode).
-
-<!--no_check-->
