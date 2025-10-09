@@ -2878,6 +2878,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
       // integer对应返回的是原数值
+      // 'app.integer.integer_test'仅作示例，请替换为实际使用的资源
       let intValue = this.context.resourceManager.getInt($r('app.integer.integer_test').id);
       console.log(`getInt, int value: ${intValue}`);
       // 打印输出结果: getInt, int value: 100
@@ -2894,7 +2895,7 @@ export default class EntryAbility extends UIAbility {
 
 getDouble(resId: long): double
 
-获取指定资源ID对应的浮点数数值，使用同步方式返回。
+获取指定资源ID对应的double数值，使用同步方式返回。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2934,7 +2935,7 @@ getDouble(resId: long): double
 {
   "float": [
     {
-      "name": "float_test",
+      "name": "double_test",
       "value": "30.6vp"
     }
   ]
@@ -2951,10 +2952,11 @@ import { $r, display } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
-      // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
-      let floatValue = this.context.resourceManager.getDouble($r('app.float.float_test').id);
-      console.log(`getDouble, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-      // 打印输出结果示例: getDouble, densityPixels: 1.5, float value: 45.900001525878906
+      // double对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
+      // 'app.float.double_test'仅作示例，请替换为实际使用的资源
+      let doubleValue = this.context.resourceManager.getDouble($r('app.float.double_test').id);
+      console.log(`getDouble, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, double value: ${doubleValue}`);
+      // 打印输出结果示例: getDouble, densityPixels: 1.5, double value: 45.900001525878906
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -3123,6 +3125,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
       // integer对应返回的是原数值
+      // "integer_test"仅作示例，请替换为实际使用的资源
       let intValue = this.context.resourceManager.getIntByName("integer_test");
       console.log(`getIntByName, int value: ${intValue}`);
       // 打印输出结果: getIntByName, int value: 100
@@ -3139,7 +3142,7 @@ export default class EntryAbility extends UIAbility {
 
 getDoubleByName(resName: string): double
 
-获取指定资源名称对应的float数值，使用同步方式返回。
+获取指定资源名称对应的double数值，使用同步方式返回。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3179,7 +3182,7 @@ getDoubleByName(resName: string): double
 {
   "float": [
     {
-      "name": "float_test",
+      "name": "double_test",
       "value": "30.6vp"
     }
   ]
@@ -3196,10 +3199,11 @@ import { display } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
-      // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
-      let floatValue = this.context.resourceManager.getDoubleByName("float_test");
-      console.log(`getDoubleByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-      // 打印输出结果示例: getDoubleByName, densityPixels: 1.5, float value: 45.900001525878906
+      // double对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
+      // "double_test"仅作示例，请替换为实际使用的资源
+      let doubleValue = this.context.resourceManager.getDoubleByName("double_test");
+      console.log(`getDoubleByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, double value: ${doubleValue}`);
+      // 打印输出结果示例: getDoubleByName, densityPixels: 1.5, double value: 45.900001525878906
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
