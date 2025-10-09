@@ -1095,11 +1095,11 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                                            | 必填 | 说明         |
-| ------------------- | ---------------------------------------------------------------| ---- | ------------ |
-| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | 是   | 数据连接状态。 |
-| network             | [RatType](js-apis-radio.md#radiotechnology)                    | 是   | 网络类型。     |
 
+| 名称 | 类型                                   |  只读 | 可选 | 说明 |
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  否  |  否  | 数据连接状态。 |
+| network | [RatType](js-apis-radio.md#radiotechnology)  |  否  |  否  | 网络类型。 |
 
 ## ObserverOptions<sup>11+</sup>
 
