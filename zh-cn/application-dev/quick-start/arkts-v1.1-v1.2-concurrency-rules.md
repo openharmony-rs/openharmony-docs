@@ -311,21 +311,21 @@ let result: Boolean = taskpool.isConcurrent(test);
 **ArkTS1.2**
 不支持isConcurrent接口。
 
-## taskpool不需要import
+## taskpool、process、ArkTSUtils不需要import
 
 **规则：** `arkts-limited-stdlib-no-import-concurrency`
 
 **规则解释：**
 
-taskpool已基于ArkTS实现提供，不依赖于其他模块，不再需要import。
+taskpool、process、ArkTSUtils已基于ArkTS实现提供，不依赖于其他模块，不再需要import。
 
 **变更原因：**
 
-ArkTS演进为taskpool提供原生支持，无需import即可直接使用。
+ArkTS演进为taskpool、process、ArkTSUtils提供原生支持，无需import即可直接使用。
 
 **适配建议：**
 
-删除taskpool前的import，改为直接使用。
+删除taskpool、process、ArkTSUtils前的import，改为直接使用，并且process更名为StdProcess。
 
 **示例：**
 

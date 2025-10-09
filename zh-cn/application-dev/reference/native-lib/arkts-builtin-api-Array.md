@@ -209,7 +209,7 @@ predicate函数参数说明：
         this.base = base;
     }
     callEvery(arr: Array<number>): boolean {
-        return arr.every((value: number, index: number, arr: Array<number>)=>{return value < this.base});
+        return arr.every((value: number, index: int, arr: Array<number>)=>{return value < this.base});
     }
   }
   
@@ -302,7 +302,7 @@ fn函数参数说明：
         this.base = base;
     }
     call(arr: Array<number>): Array<number> {
-        return arr.filter((value: number, index: number, arr: Array<number>)=>{return value < this.base});
+        return arr.filter((value: number, index: int, arr: Array<number>)=>{return value < this.base});
     }
   }
   
@@ -398,7 +398,7 @@ predicate函数返回值说明：
         this.base = base;
     }
     call(arr: Array<number>) {
-        return arr.find((value: number, index: number, arr: Array<number>)=>{return value >= this.base});
+        return arr.find((value: number, index: int, arr: Array<number>)=>{return value >= this.base});
     }
   }
   
@@ -496,7 +496,7 @@ predicate函数返回值说明：
         this.base = base;
     }
     call(arr: Array<number>): number {
-        return arr.findIndex((value: number, index: number, arr: Array<number>)=>{return value >= this.base});
+        return arr.findIndex((value: number, index: int, arr: Array<number>)=>{return value >= this.base});
     }
   }
   
@@ -643,7 +643,7 @@ callbackfn函数参数说明：
         this.base = base;
     }
     call(arr: Array<number>) {
-        return arr.forEach((value: number, index: number, arr: Array<number>)=>{console.info(value + this.base)});
+        return arr.forEach((value: number, index: int, arr: Array<number>)=>{console.info(value + this.base)});
     }
   }
   
@@ -738,7 +738,7 @@ callbackfn函数返回值说明：
         this.base = base;
     }
     call(arr: Array<number>): Array<number> {
-        return arr.map((value: number, index: number, arr: Array<number>)=>{return value + this.base})
+        return arr.map((value: number, index: int, arr: Array<number>)=>{return value + this.base})
     }
   }
   
@@ -955,7 +955,7 @@ predicate函数返回值说明：
     }
     call(arr: ReadonlyArray<number>) {
         return arr.some(
-            (value: number, index: number, arr: ReadonlyArray<number>)=>{return value > this.base}
+            (value: number, index: int, arr: ReadonlyArray<number>)=>{return value > this.base}
         );
     }
   }
@@ -987,10 +987,10 @@ predicate函数返回值说明：
 
 **示例：**  
   ``` typescript
-  let arr: number[] = [1, 2, 3, 4, 5]
-  let num: number = 1
-  console.log(Array.isArray(arr))  // ture
-  console.log(Array.isArray(num))  // false
+  let arr: number[] = [1, 2, 3, 4, 5];
+  let num: number = 1;
+  console.info(Array.isArray(arr));  // true
+  console.info(Array.isArray(num));  // false
   ```
 
 **ArkTS1.2版本签名：**  
@@ -1008,10 +1008,10 @@ predicate函数返回值说明：
 
 **示例：**  
   ``` typescript
-  let arr: number[] = [1, 2, 3, 4, 5]
-  let num: number = 1
-  console.log(Array.isArray(arr))  // ture
-  console.log(Array.isArray(num))  // false
+  let arr: number[] = [1, 2, 3, 4, 5];
+  let num: number = 1;
+  console.info(Array.isArray(arr).toString());  // true
+  console.info(Array.isArray(num).toString());  // false
   ```
 
 - 适配建议：
