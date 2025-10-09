@@ -281,7 +281,7 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 ListItem划出菜单的管理器。
 
 ### expand<sup>21+</sup>
-expand(node: FrameNode, direction: ListItemSwipeActionDirection)
+expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 展开指定ListItem的划出菜单。
 
@@ -303,14 +303,14 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection)
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
 | 100023   | The component type of the node is incorrect. |
-| 106203   | The node is not mounted to the component tree. |
+| 106203   | The node not mounted to component tree. |
 
 > **说明：**
 >
 > - 如果List组件cachedCount属性isShow参数设置为true，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
 
 ### collapse<sup>21+</sup>
-collapse(node: FrameNode)
+collapse(node: FrameNode): void
 
 收起指定ListItem的划出菜单。
 
@@ -331,7 +331,7 @@ collapse(node: FrameNode)
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
 | 100023   | The component type of the node is incorrect. |
-| 106203   | The node is not mounted to the component tree. |
+| 106203   | The node not mounted to component tree. |
 
 ## ListItemSwipeActionDirection<sup>21+</sup>枚举说明
 
