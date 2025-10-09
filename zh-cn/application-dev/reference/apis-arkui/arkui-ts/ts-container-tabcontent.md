@@ -625,10 +625,10 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型         | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 是 | 页签内symbol图标普通态样式。<br/>默认值：<br/>fontColor：#66182431 <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
-| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 页签内symbol图标选中态样式。<br/>默认值：<br/>fontColor：#ff007dff <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
+| 名称 | 类型         | 只读 | 可选 | 说明 |
+| -------- | -------- | --- | ----- | -------- |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 否 | 页签内symbol图标普通态样式。<br/>默认值：<br/>fontColor：#66182431 <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
+| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 页签内symbol图标选中态样式。<br/>默认值：<br/>fontColor：#ff007dff <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
 
 ## LayoutMode<sup>10+</sup>枚举说明
 
@@ -652,10 +652,10 @@ Label图标样式对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型                                                     | 必填 | 说明                                                         |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 设置Label图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 设置Label图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
+| -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
 
 ## 事件
 
