@@ -148,6 +148,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：PC/2in1
+
 <!--Del-->
 **ACL使能**：true<!--DelEnd-->
 
@@ -515,7 +517,7 @@
 
 允许应用获取UDID。
 
-UDID(Unified Device ID)是设备的唯一标识。
+UDID（Unified Device ID）是设备的唯一标识。
 
 **权限级别**：system_basic
 
