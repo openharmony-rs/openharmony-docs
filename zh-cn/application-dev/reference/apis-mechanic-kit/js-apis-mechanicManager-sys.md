@@ -596,7 +596,7 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 
 ```ts
 let targetInfo : mechanicManager.TargetInfo = {
-            targetType: mechanicManager.TargetType.FACE
+            targetType: mechanicManager.TargetType.HUMAN_FACE
            };
            let searchParams : mechanicManager.SearchParams
 = {
