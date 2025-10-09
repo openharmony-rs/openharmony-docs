@@ -820,13 +820,13 @@ wantAgent.getWantAgent({
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称           | 类型                           | 必填 | 说明                    |
-| -------------- | ------------------------------ | ---- | ---------------------- |
-| info           | WantAgent                       | 是   | 触发的wantAgent。       |
-| want           | Want                            | 是   | 存在的被触发的want。     |
-| finalCode      | number                          | 是   | 触发wantAgent的请求代码。|
-| finalData      | string                          | 是   | 公共事件收集的最终数据。  |
-| extraInfo      | { [key: string]: any }            | 否   | 额外数据。               |
+| 名称           | 类型                           | 只读 | 可选 | 说明                |
+| -------------- | ----------------------------- | ---- | ---- | ------------------ |
+| info           | WantAgent                       | 否   | 否   | 触发的wantAgent。       |
+| want           | Want                            | 否   | 否   | 存在的被触发的want。     |
+| finalCode      | number                          | 否   | 否   | 触发wantAgent的请求代码。|
+| finalData      | string                          | 否   | 否   | 公共事件收集的最终数据。  |
+| extraInfo      | { [key: string]: any }          | 否   | 是   | 额外数据。               |
 
 ## WantAgent
 
