@@ -10937,7 +10937,7 @@ type ValuesBucket = Record&lt;string, ValueType&gt;
 
 提供通过查询数据库生成的数据库结果集的访问方法。
 
-下列API示例中，需先使用query方法获取ResultSet实例，再调用对应方法。
+下列API示例中，需先使用[query](#query22)方法获取ResultSet实例，再调用对应方法。
 
 ### 属性
 
