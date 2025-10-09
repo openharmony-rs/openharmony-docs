@@ -39,6 +39,58 @@
 
 <!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+  perceiveAndAdjustAuthentication() {
+    try {
+      const randData = getRandData();
+      if (!randData) {
+        return;
+      }
+      // 设置认证参数
+      const authParam: userAuth.AuthParam = {
+        challenge: randData,
+        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+        skipLockedBiometricAuth: true
+      };
+      // 配置认证界面
+      const widgetParam: userAuth.WidgetParam = {
+        title: resourceToString($r('app.string.title')),
+      };
+      // 获取认证对象
+      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+      Logger.info('get userAuth instance success');
+      // 订阅认证过程中的提示信息。
+      userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
+        try {
+          Logger.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+          this.result[ResultIndex.PERCEIVE_ADJUST] = (`${authTipInfo.tipType}`);
+          // 认证完成后取消订阅
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
+        }
+      });
+      // 开始认证
+      userAuthInstance.start();
+	// ···
+        // 取消订阅认证过程中的提示信息。
+        userAuthInstance.off('authTip');
+        Logger.info('off authTip success');
+        // 取消认证
+        userAuthInstance.cancel();
+        Logger.info('auth cancel success');
+		// ···
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`auth catch error, code is ${err?.code as number}, message is ${err?.message}`);
+    }
+  }
+
+```
+
+
 ## 示例代码
 
   - [感知和调整认证过程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)

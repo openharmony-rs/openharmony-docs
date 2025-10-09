@@ -42,6 +42,62 @@
 
 <!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+  handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
+	// ···
+      userAuthInstance.on('result', {
+        onResult: (result: userAuth.UserAuthResult) => {
+		// ···
+              Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
+			// ···
+            if (result.result == userAuth.UserAuthResultCode.CANCELED_FROM_WIDGET ||
+              result.result == userAuth.UserAuthResultCode.NOT_ENROLLED) {
+              // 请开发者自行完成拉起自定义认证界面的实现
+			// ···
+            }
+			// ···
+        }
+      });
+      // 启动认证
+      userAuthInstance.start();
+      Logger.info('auth start success');
+	// ···
+  }
+
+  /*
+   * apply-custom-authentication.md
+   * 当前示例仅展示如何配置界面、选择切换到自定义认证界面，具体拉起的页面及对应页面的实现，请开发者自行实现
+   * */
+  applyingCustomAuthentication() {
+    try {
+      const randData = getRandData();
+      if (!randData) {
+        return;
+      }
+      const authParam: userAuth.AuthParam = {
+        challenge: randData,
+        authType: [userAuth.UserAuthType.FACE],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      };
+      // 配置自定义认证，需设置导航键文本
+      const widgetParam: userAuth.WidgetParam = {
+        title: resourceToString($r('app.string.title')),
+        navigationButtonText: resourceToString($r('app.string.navigationButtonText'))
+      };
+      // 获取认证对象
+      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+      Logger.info('get userAuth instance success');
+      // 订阅认证结果
+      this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+    }
+  }
+
+```
+
+
 ## 示例代码
 
   - [切换自定义认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)

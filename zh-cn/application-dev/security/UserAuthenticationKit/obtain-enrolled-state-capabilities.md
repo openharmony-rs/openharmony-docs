@@ -27,6 +27,22 @@
 
 <!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+  obtainingEnrolledCredentialInformation() {
+    try {
+      let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
+      Logger.info(`get current enrolled state success, enrolledState: ${JSON.stringify(enrolledState)}`);
+      return enrolledState.credentialDigest;
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+      return false;
+    }
+  }
+
+```
+
+
 ## 示例代码
 
   - [查询用户注册凭据的状态](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)

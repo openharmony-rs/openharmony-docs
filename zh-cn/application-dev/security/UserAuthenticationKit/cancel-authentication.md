@@ -31,6 +31,52 @@
 
 <!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+  handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
+	// ···
+      // 启动认证
+      userAuthInstance.start();
+      Logger.info('auth start success');
+	// ···
+        // 取消认证
+        userAuthInstance.cancel();
+        Logger.info('auth cancel success');
+		// ···
+  }
+
+  /*
+   * cancel-authentication.md
+   * 发起认证可信等级≥ATL3的人脸+锁屏密码认证后，取消认证请求
+   * */
+  cancelingUserAuthentication() {
+    try {
+      const randData = getRandData();
+      if (!randData) {
+        return;
+      }
+      // 设置认证参数
+      const authParam: userAuth.AuthParam = {
+        challenge: randData,
+        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      };
+      // 配置认证界面
+      const widgetParam: userAuth.WidgetParam = {
+        title: resourceToString($r('app.string.title')),
+      };
+      // 获取认证对象
+      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+      Logger.info('get userAuth instance success');
+      this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`auth catch error, code is ${err?.code as number}, message is ${err?.message}`);
+    }
+  }
+
+```
+
+
 ## 示例代码
 
   - [认证过程中取消认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
