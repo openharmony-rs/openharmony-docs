@@ -3,7 +3,7 @@
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->
 <!--Designer: @hwzhangchuang-->
-<!--Tester: @Lyuxin-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **distributedDeviceManager** module provides APIs for distributed device management.
@@ -622,7 +622,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void
 
-Binds a device.
+Binds a device. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -728,7 +728,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-Subscribes to the device state changes. The application (identified by the bundle name) will be notified when the device state changes.
+Subscribes to the device state changes. The application (identified by the bundle name) will be notified when the device state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -781,7 +781,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-Unsubscribes from the device state changes.
+Unsubscribes from the device state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -834,7 +834,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-Subscribes to the **'discoverSuccess'** event. The application will be notified when a device is successfully discovered.
+Subscribes to the **'discoverSuccess'** event. The application will be notified when a device is successfully discovered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -886,7 +886,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-Unsubscribes from the **'discoverSuccess'** event.
+Unsubscribes from the **'discoverSuccess'** event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -938,7 +938,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;): void
 
-Subscribes to device name changes. The application will be notified when the name of a device is changed.
+Subscribes to device name changes. The application will be notified when the name of a device is changed. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -985,7 +985,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;): void
 
-Unsubscribes from the device name changes.
+Unsubscribes from the device name changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1032,7 +1032,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
-Subscribes to the **'discoverFailure'** event. The application will be notified when a device fails to be discovered. 
+Subscribes to the **'discoverFailure'** event. The application will be notified when a device fails to be discovered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1079,7 +1079,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): void
 
-Unsubscribes from the **'discoverFailure'** event.
+Unsubscribes from the **'discoverFailure'** event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1126,7 +1126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-Subscribes to the dead events of the **DeviceManager** service. The application will be notified when the **DeviceManager** service is terminated unexpectedly. 
+Subscribes to the dead events of the **DeviceManager** service. The application will be notified when the **DeviceManager** service is terminated unexpectedly. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1169,7 +1169,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-Unsubscribes from the dead events of the **DeviceManager** service.
+Unsubscribes from the dead events of the **DeviceManager** service. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 

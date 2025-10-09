@@ -19,6 +19,8 @@ On the WebSocket server (available only for smart TVs): Use WebSocket to establi
 >**NOTE**
 >	
 >The WebSocket module supports the [heartbeat detection mechanism](https://datatracker.ietf.org/doc/html/rfc6455#section-5.5.2). After a WebSocket connection is established between the client and server or before the client receives a Pong frame from the server, the client sends a Ping frame to the server at an interval of 30s. If the WebSocket server supports the WebSocket protocol, it automatically replies with a Pong frame after receiving a Ping frame, indicating that the connection is normal. If the server is abnormal or does not support the WebSocket protocol, the server does not reply with a Pong frame. If no Pong frame is received within 60s, the server proactively disconnects the connection. The heartbeat detection mechanism cannot be disabled by developers.
+>
+>The WebSocket server is supported since API version 19.
 
 ## Client Development Procedure
 

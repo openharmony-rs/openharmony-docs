@@ -2080,9 +2080,9 @@ Represents the network connection handle.
 
 register(callback: AsyncCallback\<void>): void
 
-Registers a listener for network status changes.
+Registers a listener for network status changes. To listen for a specific type of events, call **on** to enable listening and then call **register** to register an event listener.
 
-**Note**: After using this API, you need to call **unregister** to cancel the registration in a timely manner.
+**Note**: After using this API, you need to call **unregister** to remove the listener in a timely manner.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -2186,17 +2186,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Use the register API to subscribe to netAvailable events.
+// Use the on API to enable listening for netAvailable events.
 netCon.on('netAvailable', (data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 
-// Use the unregister API to unsubscribe from netAvailable events.
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// Use the unregister API to remove the listener for netAvailable events.
 netCon.unregister((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });
@@ -2226,14 +2226,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netBlockStatusChange events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netBlockStatusChange events.
 netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netBlockStatusChange events.
@@ -2268,14 +2268,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netCapabilitiesChange events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netCapChange events.
 netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Unsubscribe from netCapabilitiesChange events.
@@ -2308,14 +2308,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netConnectionPropertiesChange events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netConnectionChange events.
 netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netConnectionPropertiesChange events.
@@ -2350,14 +2350,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netLost events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netLost events.
 netCon.on('netLost', (data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netLost events.
@@ -2392,14 +2392,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netUnavailable events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netUnavailable events.
 netCon.on('netUnavailable', () => {
   console.info("Succeeded to get unavailable net event");
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netUnavailable events.
