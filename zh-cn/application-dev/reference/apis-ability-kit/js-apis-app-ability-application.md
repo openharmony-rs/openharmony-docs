@@ -363,6 +363,12 @@ getAppPreloadType(): AppPreloadType
 
 获取[应用预加载](../../application-models/preload-application.md)类型。
 
+<!--Del-->
+> **说明：**
+>
+> 预加载类型的数据会在首次[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)执行完成后被清除。
+<!--DelEnd-->
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 	
 **返回值：**
@@ -378,7 +384,7 @@ import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      let appPreloadType = application.getAppPreloadType();
+    let appPreloadType = application.getAppPreloadType();
   }
 }
 ```
