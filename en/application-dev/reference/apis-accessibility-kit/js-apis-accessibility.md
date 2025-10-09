@@ -35,18 +35,20 @@ Enumerates the states of an accessibility application.
 
 ## AbilityType
 
+type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'
+
 Enumerates the types of accessibility applications.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
-| Name              | Description       |
+| Type              | Description       |
 | ---------------- | --------- |
-| audible          | The accessibility application provides audible feedback.|
-| generic          | The accessibility application provides generic feedback.|
-| haptic           | The accessibility application provides haptic feedback.|
-| spoken           | The accessibility application provides spoken feedback.|
-| visual           | The accessibility application provides visual feedback.|
-| all<sup>9+</sup> | All the preceding types.|
+| 'audible'          | The accessibility application provides audible feedback.|
+| 'generic'          | The accessibility application provides generic feedback.|
+| 'haptic'           | The accessibility application provides haptic feedback.|
+| 'spoken'           | The accessibility application provides spoken feedback.|
+| 'visual'           | The accessibility application provides visual feedback.|
+| 'all'<sup>9+</sup> | All the preceding types.|
 
 ## AccessibilityAbilityInfo
 
