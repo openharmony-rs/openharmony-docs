@@ -3365,7 +3365,7 @@ password(password: boolean)
 
 > **说明：**
 >
-> 从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，并且不再提供新的接口作为替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3381,9 +3381,11 @@ textZoomAtio(textZoomAtio: number)
 
 设置页面的文本缩放百分比。
 
-**系统能力：** SystemCapability.Web.Webview.Core
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃,建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
 
-从API version 9开始不再维护，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
@@ -3456,7 +3458,7 @@ tableData(tableData: boolean)
 
 > **说明：**
 >
-> 从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，并且不再提供新的接口作为替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3474,9 +3476,15 @@ wideViewModeAccess(wideViewModeAccess: boolean)
 
 > **说明：**
 >
-> 从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，并且不再提供新的接口作为替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名              | 类型                                                         | 必填   | 说明          |
+| ------------------- | ----------------------------------------------------------    | ---- | ------------- |
+| wideViewModeAccess | boolean | 是    | 设置Web是否支持html中meta标签的viewport属性。<br/>true表示支持html中meta标签的viewport属性，false表示不支持html中meta标签的viewport属性。|
 
 ## selectionMenuOptions<sup>(deprecated)</sup>
 
