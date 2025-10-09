@@ -2000,13 +2000,13 @@ async function test() {
   avPlayer.on('timeUpdate', (time: number) => {
     // 关键逻辑：只有seekDone之后才允许更新进度条。
     if (isSeeking) {
-      console.log('seek in progress, ignore timeUpdate');
+      console.info('seek in progress, ignore timeUpdate');
       return; // 忽略seek期间的timeUpdate。
     }
 
     // 真正的播放进度更新（seekDone后才生效）。
     console.info('timeUpdate: ' + time + ' ms');
-    // 此处进行进度条更新
+    // 此处进行进度条更新。
   });
 
   // 3.模拟seek操作。
