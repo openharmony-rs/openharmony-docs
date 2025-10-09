@@ -8443,7 +8443,7 @@ isObjectDead(): boolean
   | TF_SYNC       | number | 是    | 否    | 同步调用标识。                                                            |
   | TF_ASYNC      | number | 是    | 否    | 异步调用标识。                                                            |
   | TF_ACCEPT_FDS | number | 是    | 否    | 指示sendMessageRequest<sup>9+</sup>接口可以传递文件描述符。               |
-  | TF_WAIT_TIME  | number | 是    | 是    | RPC等待时间(单位/秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
+  | TF_WAIT_TIME  | number | 是    | 否    | RPC等待时间(单位/秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
 
 ### constructor<sup>9+</sup>
 
@@ -9823,7 +9823,8 @@ getDescriptor(): string
     }
   }
   try {
-    let descriptor = testRemoteObject.getDescriptor();
+    let testObject = new TestRemoteObject("ipcTest");
+    let descriptor = testObject.getDescriptor();
     hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is ' + descriptor);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
