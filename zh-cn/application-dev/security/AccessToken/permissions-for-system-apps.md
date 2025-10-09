@@ -1731,18 +1731,6 @@
 
 **起始版本**：10
 
-## ohos.permission.sec.ACCESS_UDID
-
-允许系统应用获取UDID。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：7
-
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
 允许应用获取设备风险状态。
