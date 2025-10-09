@@ -1957,10 +1957,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称    | 类型   | 只读 | 可选  | 说明   |
+| 名称    | 类型   | 只读 | 可选 | 说明 |
 | ----- | ------ | ---- | ---- | ---- |
-| start | number | 是  | 否   | 开始时间。 |
-| end   | number | 是  | 否   | 结束时间。 |
+| start | number | 否 | 否 | 开始时间。 |
+| end   | number | 否 | 否 | 结束时间。 |
 
 ## TaskInfo
 
@@ -1968,9 +1968,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称        | 类型                  | 只读 | 可选   | 说明     |
+| 名称        | 类型                  | 只读 | 可选 | 说明 |
 | --------- | --------------------- | ---- | ------ |------ |
-| existTask |  boolean                  | 否 | 否  | 是否存在任务。<br>ture表示存在，false表示不存在。 |
+| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>ture表示存在，false表示不存在。 |
 | taskBody  | [TaskBody](#taskbody) | 否 | 否 | 任务数据。   |
 
 ## EventInfo
@@ -1979,7 +1979,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                  | 只读 | 可选 | 说明   |
+| 名称       | 类型                  | 只读 | 可选 | 说明 |
 | -------- | --------------------- | ---- | ---- | ---- |
 | eventId  | [EventId](#eventid)   | 否 | 否 | 事件ID。 |
 | taskBody | [TaskBody](#taskbody) | 否 | 否 | 任务数据。 |
