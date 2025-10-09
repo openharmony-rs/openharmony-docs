@@ -32,7 +32,7 @@ The file declares the APIs for parsing audio and video media data.
 | [OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)](#oh_avsource_createwithdatasourceext) | Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy). User-defined data can be passed to its callback functions.|
 | [OH_AVSource *OH_AVSource_CreateWithURI(char *uri)](#oh_avsource_createwithuri) | Creates an OH_AVSource instance based on a URI. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).|
 | [OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)](#oh_avsource_createwithfd) | Creates an OH_AVSource instance based on an FD. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy). Note: If **offset** is not the start position of the file or **size** is not the file size, undefined errors such as creation failure and demultiplexing failure may occur due to incomplete data obtained.|
-| [OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)](#oh_avsource_destroy) | Destroys an OH_AVSource instance and clears internal resources. Note: An instance can be destroyed only once. The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed.|
+| [OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)](#oh_avsource_destroy) | Destroys an OH_AVSource instance and clears internal resources. Note: An instance can be destroyed only once. The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed. This function supports only HTTP progressive streaming media, but not HLS/DASH streaming media. For HLS/DASH streaming media playback, use [AVPlayer](../apis-media-kit/capi-avplayer.md) for development.|
 | [OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)](#oh_avsource_getsourceformat) | Obtains the basic information about a media resource file. You must call [OH_AVFormat_Destroy](_core.md#oh_avformat_destroy) to release the OH_AVFormat instance when its lifecycle ends.|
 | [OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)](#oh_avsource_gettrackformat) | Obtains the basic information about a track. You must call [OH_AVFormat_Destroy](_core.md#oh_avformat_destroy) to release the OH_AVFormat instance when its lifecycle ends.|
 | [OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)](#oh_avsource_getcustommetadataformat) | Obtains the basic information about custom metadata. You must call [OH_AVFormat_Destroy](_core.md#oh_avformat_destroy) to release the OH_AVFormat instance when its lifecycle ends.|
@@ -102,7 +102,7 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 **Description**
 
-Creates an OH_AVSource instance based on a URI. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy).
+Creates an OH_AVSource instance based on a URI. You can release the instance by calling [OH_AVSource_Destroy](#oh_avsource_destroy). This function supports only HTTP progressive streaming media, but not HLS/DASH streaming media. For HLS/DASH streaming media playback, use [AVPlayer](../apis-media-kit/capi-avplayer.md) for development.
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
