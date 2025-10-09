@@ -10937,6 +10937,8 @@ type ValuesBucket = Record&lt;string, ValueType&gt;
 
 提供通过查询数据库生成的数据库结果集的访问方法。
 
+下列API示例中，需先使用query方法获取ResultSet实例，再调用对应方法。
+
 ### 属性
 
 ​**系统能力**​：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -10947,8 +10949,6 @@ type ValuesBucket = Record&lt;string, ValueType&gt;
 | rowCount | number | 否 | 否 | 获取结果集的行数。<br>**系统接口**：此接口为系统接口。 |
 | rowIndex | number | 否 | 否 | 获取结果集的当前行索引。<br>**系统接口**：此接口为系统接口。 |
 | isAtLastRow | boolean | 否 | 否 | 检查游标是否位于最后一行。true表示位于最后一行，false表示不位于最后一行。<br>**系统接口**：此接口为系统接口。 |
-
-下列API示例中，需先使用query方法获取ResultSet实例，再调用对应方法。
 
 ### goToRow<sup>22+</sup>
 
@@ -10964,7 +10964,7 @@ goToRow(position: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ---- | ----- | ----- |
-| position | number | 是 | 指定行的索引，从0开始，取值范围为0到结果集行数减1。 |
+| position | number | 是 | 指定行的索引，从0开始。取值范围为0到结果集行数减1。 |
 
 **返回值：**
 
@@ -10980,7 +10980,7 @@ goToRow(position: number): boolean
 | --------- | ---------- |
 | 202 | Called by non-system application. |
 | 23800151 | Scene parameters validate failed, possible causes: position invalid. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -11091,8 +11091,7 @@ getValue(columnIndex: number): ValueType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ---- | ----- | ----- |
-| columnIndex | number | 是 | 指定的列索引，从0开始，取值范围为0到结果集列数减1。
-。 |
+| columnIndex | number | 是 | 指定的列索引，从0开始。取值范围为0到结果集列数减1。 |
 
 **返回值：**
 
@@ -11108,8 +11107,7 @@ getValue(columnIndex: number): ValueType
 | --------- | ---------- |
 | 202 | Called by non-system application. |
 | 23800151 | Scene parameters validate failed, possible causes: columnIndex invalid. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.
-Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
