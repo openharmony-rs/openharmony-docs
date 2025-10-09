@@ -108,6 +108,8 @@
 
 允许应用监听应用状态。
 
+获取该权限后，可注册应用状态监听器。
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -139,6 +141,8 @@
 ## ohos.permission.GET_WIFI_CONFIG
 
 允许应用获取Wi-Fi的配置信息。
+
+该权限允许应用获取SSID、PSK、加密方式等Wi-Fi配置的相关信息。
 
 **权限级别**：system_basic
 
@@ -508,3 +512,20 @@
 **支持设备**：PC/2in1
 
 **起始版本**：20
+
+## ohos.permission.sec.ACCESS_UDID
+
+允许应用获取UDID。
+
+UDID（Unified Device ID）是设备的唯一标识。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**起始版本**：7
+
+**变更信息**：API 7-19该权限仅向系统应用开放；从API 20开始，开放范围从系统应用变更为企业普通应用。
