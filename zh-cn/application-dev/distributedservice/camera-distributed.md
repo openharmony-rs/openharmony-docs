@@ -293,13 +293,13 @@
 通过createCaptureSession()方法创建CaptureSession实例。调用beginConfig()方法开始配置会话，使用addInput()和addOutput()方法将CameraInput()和CameraOutput()加入到会话，最后调用commitConfig()方法提交配置信息，通过Promise获取结果。
 
   ```ts
-  private captureSession?: camera.CaptureSession;
+  private Session?: camera.Session;
 
-  function failureCallback(error: BusinessError): Promise<void> {
+  async failureCallback(error: BusinessError): Promise<void> {
     console.error('case failureCallback called,errMessage is ', JSON.stringify(error));
   }
 
-  function catchCallback(error: BusinessError): Promise<void> {
+  async catchCallback(error: BusinessError): Promise<void> {
     console.error('case catchCallback called,errMessage is ', JSON.stringify(error));
   }
 
@@ -307,23 +307,23 @@
   async createCaptureSession(): Promise<void> {
     console.info('createCaptureSession called');
     if (this.cameraManager) {
-      this.captureSession = this.cameraManager.createCaptureSession();
-      if (!this.captureSession) {
+      this.Session = this.cameraManager.createSession();
+      if (!this.Session) {
         console.error('createCaptureSession failed!');
         return;
       }
       try {
-        this.captureSession.beginConfig();
-        this.captureSession.addInput(this.cameraInput);
+        this.Session.beginConfig();
+        this.Session.addInput(this.cameraInput);
       } catch (e) {
         console.error('case addInput error:' + JSON.stringify(e));
       }
       try {
-        this.captureSession.addOutput(this.previewOutput);
+        this.Session.addOutput(this.previewOutput);
       } catch (e) {
         console.error('case addOutput error:' + JSON.stringify(e));
       }
-      await this.captureSession.commitConfig().then(() => {
+      await this.Session.commitConfig().then(() => {
         console.info('captureSession commitConfig success');
       }, this.failureCallback).catch(this.catchCallback);
     }
