@@ -4,7 +4,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -101,7 +101,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm");
-  console.log("isMediaKeySystemSupported: ", supported);
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -149,7 +149,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc");
-  console.log("isMediaKeySystemSupported: ", supported);
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -198,7 +198,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-  console.log("isMediaKeySystemSupported: ", supported);
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -244,7 +244,7 @@ import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let uuid: string = drm.getMediaKeySystemUuid("com.clearplay.drm");
-  console.log("getMediaKeySystemUuid: ", uuid);
+  console.info("getMediaKeySystemUuid: ", uuid);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`getMediaKeySystemUuid ERROR: ${error}`);  

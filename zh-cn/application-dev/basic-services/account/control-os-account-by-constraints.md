@@ -22,12 +22,14 @@
    ```ts
    import { osAccount } from '@kit.BasicServicesKit';
    ```
+   <!-- [import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
 3. 获取系统账号的单实例对象。
 
    ```ts
    let accountManager = osAccount.getAccountManager();
    ```
+   <!-- [obtain_account_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
 ## 设置指定系统账号的约束列表
 
@@ -41,6 +43,7 @@
    let localId: number = 100;
    let constraint: string[] = [ 'constraint.wifi.set' ];
    ```
+   <!-- [constraint_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
 2. 调用[setOsAccountConstraints](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountconstraints)接口，使能系统账号100的约束。
 
@@ -52,6 +55,7 @@
      console.error(`setOsAccountConstraints failed, error: code is ${err.code}, message is ${err.message}`);
    }
    ```
+   <!-- [system_account_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
 ## 判断目标系统账号的指定约束是否使能
 
@@ -65,6 +69,7 @@
    let localId: number = 100;
    let constraint: string = 'constraint.wifi.set';
    ```
+   <!-- [specify_the_system_account_id_and_constraint_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
 2. 调用[isOsAccountConstraintEnabled](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#isosaccountconstraintenabled11)接口，判断指定约束是否使能。
 
@@ -75,3 +80,4 @@
      }
    });
    ```
+   <!-- [check_whether_the_specified_constraint_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->

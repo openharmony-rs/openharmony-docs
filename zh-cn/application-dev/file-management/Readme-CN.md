@@ -3,7 +3,7 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @zhuangzhuang; @gsl_1234-->
+<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 

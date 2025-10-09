@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 深度信息表示图像中每个像素点与相机之间的距离关系，可以辅助实现更精准的对焦和背景虚化效果等。在相机应用预览、拍照和录像场景中，支持上报深度信息。
 

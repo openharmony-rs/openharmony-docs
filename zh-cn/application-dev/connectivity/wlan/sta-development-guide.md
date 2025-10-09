@@ -6,7 +6,6 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-
 ## 简介
 Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端接入无线局域网（WLAN）的工作模式。在该模式下，设备（如手机、电脑、平板等）通过连接到接入点（AP，Access Point）或无线路由器，实现对网络的访问。
 
@@ -46,41 +45,42 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
 5. 示例代码：
 
 ```ts
-   import { wifiManager } from '@kit.ConnectivityKit';
-   try {
-   let recvPowerNotifyFunc = (result:number) => {
-     let wifiState = "";
-       switch (result) {
-       case 0:
-       wifiState += 'DISABLING';
-       break;
-       case 1:
-       wifiState += 'DISABLED';
-       break;
-       case 2:
-       wifiState += 'ENABLING';
-       break;
-       case 3:
-       wifiState += 'ENABLED';
-       break;
-       default:
-       wifiState += 'UNKNOWN STATUS';
-       break;
-     }
-   }
-     // 监听Wi-Fi当前状态
-     wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
-     // 判断Wi-Fi是否打开
-     let isWifiActive = wifiManager.isWifiActive();
-     if (!isWifiActive) {
-       console.info("Wi-Fi not enabled"); // 请先手动打开Wi-Fi
-       return;
-     }
+import { wifiManager } from '@kit.ConnectivityKit';
 
-     wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
-   } catch (error) {
-     console.error(`WiFi state monitor failed. ${error.message}`);
-   }
+try {
+  let recvPowerNotifyFunc = (result: number) => {
+    let wifiState = "";
+    switch (result) {
+      case 0:
+        wifiState += 'DISABLING';
+        break;
+      case 1:
+        wifiState += 'DISABLED';
+        break;
+      case 2:
+        wifiState += 'ENABLING';
+        break;
+      case 3:
+        wifiState += 'ENABLED';
+        break;
+      default:
+        wifiState += 'UNKNOWN STATUS';
+        break;
+    }
+  }
+  // 监听Wi-Fi当前状态
+  wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
+  // 判断Wi-Fi是否打开
+  let isWifiActive = wifiManager.isWifiActive();
+  if (!isWifiActive) {
+    console.info("Wi-Fi not enabled"); // 请先手动打开Wi-Fi
+    return;
+  }
+
+  wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
+} catch (error) {
+  console.error(`WiFi state monitor failed. ${error.message}`);
+}
 ```
 
 ### 建立Wi-Fi连接
@@ -94,27 +94,27 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
    import { wifiManager } from '@kit.ConnectivityKit';
 
    try {
-       let recvWifiConnectionChangeFunc = (result:number) => {
+     let recvWifiConnectionChangeFunc = (result: number) => {
        console.info("Receive wifi connection change event: " + result);
      }
 
-     let config:wifiManager.WifiDeviceConfig = {
-       ssid : "****",
-       bssid : "****",
-       preSharedKey : "****",
-       securityType : 0
-	   }
+     let config: wifiManager.WifiDeviceConfig = {
+       ssid: "****",
+       bssid: "****",
+       preSharedKey: "****",
+       securityType: 0
+     }
 
-       // 更新当前Wi-Fi连接状态
+     // 更新当前Wi-Fi连接状态
      wifiManager.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
-       // 添加候选网络配置
-	   wifiManager.addCandidateConfig(config).then(result => {
+     // 添加候选网络配置
+     wifiManager.addCandidateConfig(config).then(result => {
        // 连接指定网络
        wifiManager.connectToCandidateConfig(result);
      });
 
      if (!wifiManager.isConnected()) {
-         console.info("Wi-Fi not connected");
+       console.info("Wi-Fi not connected");
      }
      // 获取连接信息
      wifiManager.getLinkedInfo().then(data => {
@@ -123,7 +123,7 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
      // 查询信号强度
      let rssi = -88;
      let band = 1;
-     let level = wifiManager.getSignalLevel(rssi,band);
+     let level = wifiManager.getSignalLevel(rssi, band);
      console.info("level:" + JSON.stringify(level));
 
      // 取消注册，停止更新当前Wi-Fi连接状态

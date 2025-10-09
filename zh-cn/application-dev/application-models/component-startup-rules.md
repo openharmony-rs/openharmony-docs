@@ -54,6 +54,10 @@
 
 - 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
+> **说明：**
+> 
+> 下图中的BACKGROUND权限是指`ohos.permission.START_ABILITIES_FROM_BACKGROUND`，CALL权限是指`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`。
+
 ![startup-rule](figures/component-startup-inner-stage.png)
 
 
@@ -66,5 +70,9 @@
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
 - 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
+
+> **说明：**
+> 
+> 下图中的BACKGROUND权限是指`ohos.permission.START_ABILITIES_FROM_BACKGROUND`，DATASYNC权限是指`ohos.permission.DISTRIBUTED_DATASYNC`。
 
 ![component-startup-rules](figures/component-startup-inter-stage.png)

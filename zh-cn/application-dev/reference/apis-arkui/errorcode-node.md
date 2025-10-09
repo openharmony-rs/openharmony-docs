@@ -66,6 +66,44 @@ Parameter error. Possible causes: 1. The component type of the node is incorrect
 
 调整传入的参数值，或是提前进行判断。
 
+## 100024 节点没有公共祖先节点
+
+**错误信息**
+
+The current FrameNode and the target FrameNode do not have a common ancestor node.
+
+**错误描述**
+
+当前节点和目标节点没有共同父节点。
+
+**可能原因**
+
+找不到当前节点和目标节点的共同父节点。
+
+**处理步骤**
+
+修改传入的参数值。
+
+## 100025 传入参数不符合要求
+
+**错误信息**
+
+The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed."
+
+**错误描述**
+
+传入参数有误。
+
+**可能原因**
+
+如果传入null、undefined或其他有误参数，请查看错误信息以了解具体原因。
+
+**处理步骤**
+
+1. 当报错信息显示传入参数为null，改为传入一个非空的FrameNode对象。
+2. 当报错信息显示找不到公共父节点，传入之前判断目标节点是否为离屏节点，修改目标节点。
+3. 其他原因的报错可参考错误信息进行修改。
+
 ## 106103 对应的操作不支持ArkTS创建的节点
 
 **错误信息**

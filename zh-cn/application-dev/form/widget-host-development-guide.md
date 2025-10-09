@@ -1,4 +1,10 @@
 # 卡片使用方开发指导（仅对系统应用开放）
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 卡片概述
 

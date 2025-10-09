@@ -230,6 +230,19 @@ Web布局模式的配置。
 | None  | 0 | 其他非图片媒体类型。 |
 | Image | 1 | 图片类型。           |
 
+## ContextMenuDataMediaType<sup>22+</sup>
+触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称    | 值 | 说明            |
+| ----- | -- | ------------- |
+| NONE  | 0 | 默认值，表示当前上下文菜单不关联任何媒体类型（例如右键文本或空白区域）。|
+| IMAGE | 1 | 图片类型。           |
+| VIDEO | 2 | 视频类型。           |
+| AUDIO | 3 | 音频类型。           |
+| CANVAS| 4 | Canvas类型。           |
+
 ## ContextMenuInputFieldType<sup>9+</sup>
 
 输入框类型。
@@ -335,6 +348,7 @@ Web布局模式的配置。
 | RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
 | RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。 |
 | OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。   |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 2 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
 
 ## WebElementType<sup>13+</sup>
 
@@ -410,3 +424,25 @@ Web布局模式的配置。
 | PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
 | PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
 | PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+
+## DetectedBlankScreenReason<sup>22+</sup>
+
+白屏的具体原因。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| NO_CONTENTFUL_NODES        | 0 | 没有命中任何有内容的节点。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN时可能触发。         |
+| SUB_THRESHOLD_CONTENTFUL_NODES | 1 | 命中有内容节点的数量小于等于阈值。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN，且开发者设置了节点数量阈值contentfulNodesCountThreshold时可能触发。 |
+
+## BlankScreenDetectionMethod<sup>22+</sup>
+
+白屏检测使用的检测策略的方法。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
+

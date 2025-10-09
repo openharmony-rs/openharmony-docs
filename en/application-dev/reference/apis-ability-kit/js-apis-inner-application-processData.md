@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The module defines process data. If a lifecycle change listener is registered by calling [on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14), the **onProcessCreated** callback in [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) is invoked when the lifecycle of an application or ability changes.
+The module defines process data. If a lifecycle change listener is registered by calling [on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14), the [onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated) callback in [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) is invoked when the lifecycle of an application or ability changes.
 
 > **NOTE**
 > 
@@ -37,29 +37,29 @@ import { appManager } from '@kit.AbilityKit';
 
 let observerCode = appManager.on('applicationState', {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`onForegroundApplicationChanged, appStateData: ${JSON.stringify(appStateData)}.`);
+    console.info(`onForegroundApplicationChanged, appStateData: ${JSON.stringify(appStateData)}.`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`onAbilityStateChanged, abilityStateData: ${JSON.stringify(abilityStateData)}.`);
+    console.info(`onAbilityStateChanged, abilityStateData: ${JSON.stringify(abilityStateData)}.`);
   },
   onProcessCreated(processData) {
-    console.log(`onProcessCreated, processData: ${JSON.stringify(processData)}.`);
+    console.info(`onProcessCreated, processData: ${JSON.stringify(processData)}.`);
   },
   onProcessDied(processData) {
-    console.log(`onProcessDied, processData: ${JSON.stringify(processData)}.`);
+    console.info(`onProcessDied, processData: ${JSON.stringify(processData)}.`);
   },
   onProcessStateChanged(processData) {
-    console.log(`onProcessStateChanged, processData.pid : ${JSON.stringify(processData.pid)}.`);
-    console.log(`onProcessStateChanged, processData.bundleName : ${JSON.stringify(processData.bundleName)}.`);
-    console.log(`onProcessStateChanged, processData.uid : ${JSON.stringify(processData.uid)}.`);
-    console.log(`onProcessStateChanged, processData.isContinuousTask : ${JSON.stringify(processData.isContinuousTask)}.`);
-    console.log(`onProcessStateChanged, processData.isKeepAlive : ${JSON.stringify(processData.isKeepAlive)}.`);
+    console.info(`onProcessStateChanged, processData.pid : ${JSON.stringify(processData.pid)}.`);
+    console.info(`onProcessStateChanged, processData.bundleName : ${JSON.stringify(processData.bundleName)}.`);
+    console.info(`onProcessStateChanged, processData.uid : ${JSON.stringify(processData.uid)}.`);
+    console.info(`onProcessStateChanged, processData.isContinuousTask : ${JSON.stringify(processData.isContinuousTask)}.`);
+    console.info(`onProcessStateChanged, processData.isKeepAlive : ${JSON.stringify(processData.isKeepAlive)}.`);
   },
   onAppStarted(appStateData) {
-    console.log(`onAppStarted, appStateData: ${JSON.stringify(appStateData)}.`);
+    console.info(`onAppStarted, appStateData: ${JSON.stringify(appStateData)}.`);
   },
   onAppStopped(appStateData) {
-    console.log(`onAppStopped, appStateData: ${JSON.stringify(appStateData)}.`);
+    console.info(`onAppStopped, appStateData: ${JSON.stringify(appStateData)}.`);
   }
 });
 ```

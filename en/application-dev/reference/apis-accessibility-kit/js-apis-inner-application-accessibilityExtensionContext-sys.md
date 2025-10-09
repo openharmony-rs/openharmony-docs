@@ -85,7 +85,7 @@ For details, see [AccessibilityElement.spans](#accessibilityelement12).
 
 startAbility(want: Want): Promise\<void>;
 
-Starts the foreground page.
+Starts the foreground page. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -131,7 +131,7 @@ axContext.startAbility(want).then(() => {
 
 getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>;
 
-Obtains node elements in batches.
+Obtains node elements in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -177,7 +177,7 @@ axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) =>
 
 getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>;
 
-Obtains the custom default focuses of an application.
+Obtains the custom default focuses of an application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -285,7 +285,7 @@ try {
 
 on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 
-Subscribes to the pre-disconnection event of the accessibility extension service. This API is called when the accessibility extension service is about to be disconnected.
+Subscribes to the pre-disconnection event of the accessibility extension service. This API is called when the accessibility extension service is about to be disconnected. This API uses an asynchronous callback to return the result.
 
 Used together with [notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20); otherwise, the accessibility extension service is automatically disconnected 30 seconds later by default.
 
@@ -328,7 +328,7 @@ try {
 
 off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the pre-disconnection event of the accessibility extension service. This API is not called until the accessibility extension service is disconnected.
+Unsubscribes from the pre-disconnection event of the accessibility extension service. This API is not called until the accessibility extension service is disconnected. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -441,7 +441,7 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement12)>;
 
-Obtains the root element of an active window.
+Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -450,7 +450,7 @@ Obtains the root element of an active window.
 **Parameters**
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| windowId | number | No | Window ID to be obtained.|
+| windowId | number | No| Window ID to be obtained.|
 
 **Return value**
 | Type                                | Description                   |
@@ -494,7 +494,7 @@ Obtains the accessibility windows.
 **Parameters**
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| displayId | number | No | Display ID. If this parameter is not specified, the default display ID is used.|
+| displayId | number | No| Display ID. If this parameter is not specified, the default display ID is used.|
 
 **Return value**
 
@@ -856,7 +856,7 @@ Executes a specific action based on the specified action type and input paramete
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node. |
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node.
 | parameters | [Parameter](#parameter20) | No   | Parameters set for the action. This parameter is left empty by default.                           |
 
 **Return value**
@@ -933,7 +933,7 @@ try {
 
 getParent(): Promise\<AccessibilityElement>;
 
-Obtains the parent element of an accessibility node.
+Obtains the parent element of an accessibility node. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -943,7 +943,7 @@ Obtains the parent element of an accessibility node.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Parent element.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -976,7 +976,7 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 getChildren(): Promise\<Array\<AccessibilityElement>>;
 
-Obtains the child elements of an element.
+Obtains the child elements of an element. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -986,7 +986,7 @@ Obtains the child elements of an element.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Array of child elements.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1019,7 +1019,7 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 getRoot(): Promise\<AccessibilityElement>;
 
-Obtains the root element of an active window.
+Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1029,7 +1029,7 @@ Obtains the root element of an active window.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Root element.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1061,7 +1061,7 @@ for (let window of windows) {
 
 findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>;
 
-Finds elements based on the content.
+Finds elements based on the content. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1077,7 +1077,7 @@ Finds elements based on the content.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Elements obtained.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1121,7 +1121,7 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>;
 
-Finds elements based on the focus direction.
+Finds elements based on the focus direction. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1137,7 +1137,7 @@ Finds elements based on the focus direction.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | AccessibilityElement.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1184,7 +1184,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>;
 
-Finds elements based on the hint text.
+Finds elements based on the hint text. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1200,7 +1200,7 @@ Finds elements based on the hint text.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Elements obtained.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1249,7 +1249,7 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 findElementById(condition: number): Promise\<AccessibilityElement>;
 
-Finds elements based on element ID.
+Finds elements based on element ID. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1265,7 +1265,7 @@ Finds elements based on element ID.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | AccessibilityElement.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 

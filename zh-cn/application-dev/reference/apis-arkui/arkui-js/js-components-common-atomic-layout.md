@@ -1,4 +1,10 @@
 # 原子布局
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 >  **说明：**
 > 从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。

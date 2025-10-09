@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 在使用相机过程中，如相机模式切换，前后置镜头切换等场景，不可避免出现预览流替换，为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[显示动画能力](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md)实现下方三种核心场景动效：
 
@@ -171,6 +171,7 @@
 
    ```ts
    @State isShowBlur: boolean = false; // 是否显示截图组件。
+   @State isShowBlack: boolean = false; // 闪黑组件，无需使用可以删除。
    @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // 模式切换动效触发入口。
    @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;// 前后置切换动效触发入口。
    @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // 动效消失入口。

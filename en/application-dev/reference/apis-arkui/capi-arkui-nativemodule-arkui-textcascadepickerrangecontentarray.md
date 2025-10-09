@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the cascading data list for a multi-column cascade picker.
+Defines the cascading data list for a multi-column cascading picker.
 
 **Since**: 19
 

@@ -1,4 +1,10 @@
 # 注册节点渲染状态监听错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >

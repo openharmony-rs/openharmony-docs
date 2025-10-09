@@ -1,11 +1,11 @@
 # @ohos.wifiManager (WLAN)（系统接口）
+
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @qq_43802146-->
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
@@ -181,17 +181,17 @@ WLAN配置信息。
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| creatorUid | number | 是 | 是 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| disableReason | number | 是 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 |
-| netId | number | 是 | 是 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacType | number | 是 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacAddr | string | 是 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
-| ipType | [IpType](#iptype9) | 是 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
-| staticIp | [IpConfig](#ipconfig9) | 是 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
-| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 是 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
-| configStatus<sup>12+</sup> | number | 是 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | 是 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
-| isSecureWifi<sup>20+</sup> | boolean | 是 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。|
+| creatorUid | number | 否 | 是 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 |
+| disableReason | number | 否 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 |
+| netId | number | 否 | 是 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 |
+| randomMacType | number | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址 <br /> **系统接口：** 此接口为系统接口。 |
+| randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
+| ipType | [IpType](#iptype9) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
+| staticIp | [IpConfig](#ipconfig9) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
+| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
+| configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。|
 
 ## IpType<sup>9+</sup>
 
@@ -219,11 +219,11 @@ IP配置信息。
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 是 | 否 | IP地址。 |
-| gateway | number | 是 | 否 | 网关。 |
-| prefixLength | number | 是 | 否 | 掩码。 |
-| dnsServers | number[] | 是 | 否 | DNS服务器。 |
-| domains | Array&lt;string&gt; | 是 | 否 | 域信息。 |
+| ipAddress | number | 否 | 否 | IP地址。 |
+| gateway | number | 否 | 否 | 网关。 |
+| prefixLength | number | 否 | 否 | 掩码。 |
+| dnsServers | number[] | 否 | 否 | DNS服务器。 |
+| domains | Array&lt;string&gt; | 否 | 否 | 域信息。 |
 
 
 ## WifiProxyConfig<sup>10+</sup>
@@ -236,11 +236,11 @@ Wifi 代理配置。
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| proxyMethod | ProxyMethod | 是 | 是 | 代理方法。 |
-| pacWebAddress | string | 是 | 是 | 自动配置代理的PAC web 地址。 |
-| serverHostName | string | 是 | 是 | 手动配置代理的服务器主机名。 |
-| serverPort | number | 是 | 是 | 手动配置代理的服务器端口。 |
-| exclusionObjects | string | 是 | 是 | 手动配置代理的排除对象，对象用“,”分隔。|
+| proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 |
+| pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址。 |
+| serverHostName | string | 否 | 是 | 手动配置代理的服务器主机名。 |
+| serverPort | number | 是 | 否 | 手动配置代理的服务器端口。 |
+| exclusionObjects | string | 否 | 是 | 手动配置代理的排除对象，对象用“,”分隔。|
 
 ## ProxyMethod<sup>10+</sup>
 
@@ -391,14 +391,14 @@ getSupportedFeatures(): number
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.getSupportedFeatures();
-		console.info("supportedFeatures:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    let ret = wifiManager.getSupportedFeatures();
+    console.info("supportedFeatures:" + ret);
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 
 ```
 
@@ -434,14 +434,14 @@ getWifiDetailState(): WifiDetailState
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.getWifiDetailState();
-		console.info("wifiDetailState:" + ret);
-	} catch(error) {
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    let ret = wifiManager.getWifiDetailState();
+    console.info("wifiDetailState:" + ret);
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 
 ```
 
@@ -490,13 +490,13 @@ reassociate(): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.reassociate();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    wifiManager.reassociate();
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.reconnect<sup>9+</sup>
@@ -525,13 +525,13 @@ reconnect(): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.reconnect();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    wifiManager.reconnect();
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.updateNetwork<sup>9+</sup>
@@ -573,19 +573,19 @@ updateNetwork(config: WifiDeviceConfig): number
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 3
-		}
-		let ret = wifiManager.updateNetwork(config);
-		console.info("ret:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.WifiDeviceConfig = {
+		ssid : "****",
+		preSharedKey : "****",
+		securityType : 3
 	}
+	let ret = wifiManager.updateNetwork(config);
+	console.info("ret:" + ret);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.disableNetwork<sup>9+</sup>
@@ -621,14 +621,14 @@ disableNetwork(netId: number): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let netId = 0;
-		wifiManager.disableNetwork(netId);		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let netId = 0;
+	wifiManager.disableNetwork(netId);		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.removeAllNetwork<sup>9+</sup>
@@ -657,13 +657,13 @@ removeAllNetwork(): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.removeAllNetwork();		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.removeAllNetwork();		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.get5GChannelList<sup>10+</sup>
@@ -697,14 +697,14 @@ get5GChannelList(): Array&lt;number&gt;
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let channelList = wifiManager.get5GChannelList();
-		console.info("channelList:" + JSON.stringify(channelList));		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let channelList = wifiManager.get5GChannelList();
+	console.info("channelList:" + JSON.stringify(channelList));		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 ## wifiManager.getDisconnectedReason<sup>10+</sup>
 
@@ -736,14 +736,14 @@ getDisconnectedReason(): DisconnectedReason
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let disconnectedReason = wifiManager.getDisconnectedReason();	
-        console.info("disconnectedReason:" + disconnectedReason);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let disconnectedReason = wifiManager.getDisconnectedReason();	
+    console.info("disconnectedReason:" + disconnectedReason);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## DisconnectedReason <sup>10+</sup>
@@ -787,13 +787,13 @@ startPortalCertification(): void
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.startPortalCertification();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.startPortalCertification();
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.enableHiLinkHandshake<sup>12+</sup>
@@ -832,21 +832,21 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	// config数据可以通过getScanInfoList接口获取，只有WifiScanInfo.isHiLinkNetwork为true的热点，才能正常使用该接口
-	let config:wifiManager.WifiDeviceConfig = {
-		ssid : "****",
-		preSharedKey : "****",
-		securityType : 0,
-		bssid : "38:37:8b:80:bf:cc",
-		bssidType : 1,
-		isHiddenSsid : false
-	}	
-	try {
-		wifiManager.enableHiLinkHandshake(true, config.bssid, config);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+import { wifiManager } from '@kit.ConnectivityKit';
+// config数据可以通过getScanInfoList接口获取，只有WifiScanInfo.isHiLinkNetwork为true的热点，才能正常使用该接口
+let config:wifiManager.WifiDeviceConfig = {
+	ssid : "****",
+	preSharedKey : "****",
+	securityType : 0,
+	bssid : "38:37:8b:80:bf:cc",
+	bssidType : 1,
+	isHiddenSsid : false
+}	
+try {
+	wifiManager.enableHiLinkHandshake(true, config.bssid, config);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.factoryReset<sup>11+</sup>
@@ -875,13 +875,13 @@ factoryReset(): void
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.factoryReset();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.factoryReset();
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 ## wifiManager.enableHotspot<sup>9+</sup>
 
@@ -908,13 +908,13 @@ enableHotspot(): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.enableHotspot();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    wifiManager.enableHotspot();
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.disableHotspot<sup>9+</sup>
@@ -942,13 +942,13 @@ disableHotspot(): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.disableHotspot();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.disableHotspot();	
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.isHotspotDualBandSupported<sup>9+</sup>
@@ -982,14 +982,14 @@ isHotspotDualBandSupported(): boolean
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.isHotspotDualBandSupported();
-		console.info("result:" + ret);		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let ret = wifiManager.isHotspotDualBandSupported();
+	console.info("result:" + ret);		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.isOpenSoftApAllowed<sup>18+</sup>
@@ -1023,14 +1023,14 @@ isOpenSoftApAllowed(): boolean
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.isOpenSoftApAllowed();
-		console.info("result:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let ret = wifiManager.isOpenSoftApAllowed();
+	console.info("result:" + ret);
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.setHotspotConfig<sup>9+</sup>
@@ -1065,22 +1065,22 @@ setHotspotConfig(config: HotspotConfig): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.HotspotConfig = {
-			ssid: "****",
-			securityType: 3,
-			band: 0,
-			channel: 0,
-			preSharedKey: "****",
-			maxConn: 0
-		}
-		let ret = wifiManager.setHotspotConfig(config);
-		console.info("result:" + ret);		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.HotspotConfig = {
+		ssid: "****",
+		securityType: 3,
+		band: 0,
+		channel: 0,
+		preSharedKey: "****",
+		maxConn: 0
 	}
+	let ret = wifiManager.setHotspotConfig(config);
+	console.info("result:" + ret);		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## HotspotConfig<sup>9+</sup>
@@ -1093,13 +1093,13 @@ setHotspotConfig(config: HotspotConfig): void
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8。 |
-| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| 是 | 否 | 加密类型。 |
-| band | number | 是 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
-| channel<sup>10+</sup> | number | 是 | 是 | 热点的信道（2.4G：1~14,5G：7~196）。 |
+| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。 |
+| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| 否 | 否 | 加密类型。 |
+| band | number | 否 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
+| channel<sup>10+</sup> | number | 否 | 是 | 热点的信道（2.4G：1~14,5G：7~196）。 |
 | preSharedKey | string | 否 | 否 | 热点的密钥。 |
-| maxConn | number | 是 | 否 | 最大设备连接数。 |
-| ipAddress | string | 是 | 是 | DHCP服务器的IP地址。|
+| maxConn | number | 否 | 否 | 最大设备连接数。 |
+| ipAddress | string | 否 | 是 | DHCP服务器的IP地址。|
 
 ## wifiManager.getHotspotConfig<sup>9+</sup>
 
@@ -1132,14 +1132,14 @@ getHotspotConfig(): HotspotConfig
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config = wifiManager.getHotspotConfig();
-		console.info("result:" + JSON.stringify(config));		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let config = wifiManager.getHotspotConfig();
+	console.info("result:" + JSON.stringify(config));		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.getStations<sup>9+</sup>
@@ -1177,14 +1177,14 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let stations = wifiManager.getStations();
-		console.info("result:" + JSON.stringify(stations));		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let stations = wifiManager.getStations();
+	console.info("result:" + JSON.stringify(stations));		
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## StationInfo<sup>9+</sup>
@@ -1197,10 +1197,10 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | 是 | 否 | 设备名称。 |
-| macAddress | string | 是 | 否 | MAC地址。 |
-| macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | 是 | 是 | MAC地址类型。 |
-| ipAddress | string | 是 | 否 | IP地址。 |
+| name | string | 否 | 否 | 设备名称。 |
+| macAddress | string | 否 | 否 | MAC地址。 |
+| macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | 否 | 是 | MAC地址类型。 |
+| ipAddress | string | 否 | 否 | IP地址。 |
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
@@ -1235,19 +1235,19 @@ addHotspotBlockList(stationInfo: StationInfo)
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.StationInfo = {
-			name : "testSsid",
-			macAddress : "11:22:33:44:55:66",
-			ipAddress : "192.168.1.111"
-		}
-		// 热点开启后，才能正常将设备添加到连接阻止列表中
-		wifiManager.addHotspotBlockList(config);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.StationInfo = {
+		name : "testSsid",
+		macAddress : "11:22:33:44:55:66",
+		ipAddress : "192.168.1.111"
 	}
+	// 热点开启后，才能正常将设备添加到连接阻止列表中
+	wifiManager.addHotspotBlockList(config);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.delHotspotBlockList<sup>11+</sup>
@@ -1283,19 +1283,19 @@ delHotspotBlockList(stationInfo: StationInfo)
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.StationInfo = {
-			name : "testSsid",
-			macAddress : "11:22:33:44:55:66",
-			ipAddress : "192.168.1.111"
-		}
-		wifiManager.delHotspotBlockList(config);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.StationInfo = {
+		name : "testSsid",
+		macAddress : "11:22:33:44:55:66",
+		ipAddress : "192.168.1.111"
 	}
-```
+	wifiManager.delHotspotBlockList(config);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+ ```
 
 ## wifiManager.getHotspotBlockList<sup>11+</sup>
 
@@ -1330,14 +1330,14 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 **示例：**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let data = wifiManager.getHotspotBlockList();
-		console.info("result:" + JSON.stringify(data));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let data = wifiManager.getHotspotBlockList();
+	console.info("result:" + JSON.stringify(data));
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.deletePersistentGroup<sup>9+</sup>
@@ -1374,14 +1374,14 @@ deletePersistentGroup(netId: number): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let netId = 0;
-		wifiManager.deletePersistentGroup(netId);	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let netId = 0;
+	wifiManager.deletePersistentGroup(netId);	
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.getP2pGroups<sup>9+</sup>
@@ -1419,19 +1419,19 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
-    if (err) {
-        console.error("get P2P groups error");
-        return;
-    }
-		console.info("get P2P groups: " + JSON.stringify(data));
-	});
+wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
+if (err) {
+    console.error("get P2P groups error");
+    return;
+}
+	console.info("get P2P groups: " + JSON.stringify(data));
+});
 
-	wifiManager.getP2pGroups().then(data => {
-		console.info("get P2P groups: " + JSON.stringify(data));
-	});
+wifiManager.getP2pGroups().then(data => {
+	console.info("get P2P groups: " + JSON.stringify(data));
+});
 	
 ```
 
@@ -1503,14 +1503,14 @@ setDeviceName(devName: string): void
 
 **示例：**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let name = "****";
-		wifiManager.setDeviceName(name);	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let name = "****";
+	wifiManager.setDeviceName(name);	
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 
@@ -1591,6 +1591,7 @@ wifi.on("streamChange", recvStreamChangeFunc);
 wifi.off("streamChange", recvStreamChangeFunc);
 
 ```
+
 ## wifiManager.on('deviceConfigChange')<sup>9+</sup>
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void

@@ -1,4 +1,10 @@
 # 通用样式
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu; @yihao-lin; @weixin_52725220-->
+<!--Designer: @lanshouren; @piggyguy; @weixin_52725220-->
+<!--Tester: @liuli0427; @songyanhong; @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。

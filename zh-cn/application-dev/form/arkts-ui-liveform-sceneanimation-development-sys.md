@@ -38,7 +38,7 @@
 ### 长时激活卡片动效
 
 长时激活卡片支持调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口发起互动卡片动效请求。
-- 如果接口中传入的动效持续时长overflowInfo.duration大于等于60秒，动效请求申请成功且一直保持。仅当调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效或其他卡片申请动效成功，当前卡片才会退出动效并切换为长时激活态。
+- 如果接口中传入的动效持续时长overflowInfo.duration大于等于60秒，动效请求申请成功且一直保持。当调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效、[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20)接口切换为非激活态或其他卡片申请动效成功，当前卡片才会退出动效并切换为非激活态。
 - 如果接口中传入的动效持续时长overflowInfo.duration小于60秒，发起动效请求失败。
 
 ### 长时激活卡片状态信息同步
@@ -50,8 +50,6 @@
 |stopOverflow|退出动效。|
 |startSwipe|用户触发桌面水平滑动翻页手势。|
 |endSwipe|用户完成桌面水平滑动翻页手势。|
-|onBackground|卡片由可见变为不可见，对应[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)切换到后台。|
-|onForeground|卡片由不可见变为可见，对应[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)切换到前台。|
 |extensionready|卡片的激活态已切换完毕。|
 |longPress|用户触发卡片长按手势，系统即将弹出卡片长按菜单。|
 
@@ -59,8 +57,9 @@
 
 除了[动效请求约束](arkts-ui-liveform-sceneanimation-overview.md#动效请求约束)外，互动卡片切换至长时激活态后，还存在如下限制：
 1. 系统限制长时间保持激活态卡片不超过5个，超过5个时将淘汰最早切换为激活态的卡片。
-2. 互动卡片申请动效成功后，满足以下任一条件时会打断当前卡片动效并切换至长时激活态：
+2. 互动卡片申请动效成功后，满足以下任一条件时会打断当前卡片动效并切换至非激活态：
    - 调用[cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)接口取消动效。
+   - 调用[formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20)接口切换为非激活态。
    - 用户点击其他互动卡片申请动效成功。
    - 申请动效60s内，其他卡片的非用户点击触发的动效请求均会申请失败。申请动效60s后，非用户点击导致的其他互动卡片动效请求申请成功，会打断当前动效。
 
@@ -108,11 +107,15 @@
         console.info(`onSessionCreate formId: ${formId}, rect: ${JSON.stringify(rect)}` +
           `, borderRadius: ${borderRadius}`);
     
-        // 加载卡片提供方页面
-        session.loadContent(PAGE_PATH, storage);
-    
-        // 卡片提供方需在激活态页面准备就绪时，通过session发送信息告知卡片使用方
-        session.sendData({['isFormReady']: true});
+        try {
+          // 加载卡片提供方页面
+          session.loadContent(PAGE_PATH, storage);
+
+          // 卡片提供方需在激活态页面准备就绪时，通过session发送信息告知卡片使用方
+          session.sendData({['isFormReady']: true});
+        } catch (e) {
+          console.info(`sth wrong when load content ${e.code}, ${e.message}`);
+        }
       }
     
       onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
@@ -129,6 +132,7 @@
     import { UIExtensionContentSession } from '@kit.AbilityKit';
     import { Constants } from '../../common/Constants';
     
+    const EPSILON: number = 1e-1;
     let that: MySystemLiveFormPage;
     
     @Entry
@@ -141,6 +145,7 @@
       private formId: string | undefined = undefined;
       @State formRect: formInfo.Rect | undefined = undefined;
       @State formBorderRadius: number | undefined = undefined;
+      private isExtensionReady: boolean = false;
     
       aboutToAppear(): void {
         console.info('aboutToAppear');
@@ -211,16 +216,9 @@
           // 用户完成桌面水平滑动翻页手势
           return;
         }
-        if (status === Constants.ON_BACKGROUND) {
-          // 卡片由可见变为不可见，对应LiveFormExtensionAbility切换到后台
-          return;
-        }
-        if (status === Constants.ON_FOREGROUND) {
-          // 卡片由不可见变为可见，对应LiveFormExtensionAbility切换到前台
-          return;
-        }
         if (status === Constants.EXTENSION_READY) {
-          // 卡片的激活态已切换完毕
+          // 卡片的激活态已切换完毕，支持调用requestOverflow接口
+          this.isExtensionReady = true;
           return;
         }
         if (status === Constants.LONG_PRESS) {
@@ -238,6 +236,23 @@
         }
         .width('100%')
         .height('100%')
+        .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+          if (!this.formRect) {
+            return;
+          }
+
+          // 当卡片尺寸扩展之后，向系统发送动效页面准备完毕信息
+          let isWidthExtend: boolean = 
+            Math.abs(newValue.width as number - this.formRect.width * Constants.OVERFLOW_WIDTH_RATIO) < EPSILON;
+          let isHeightExtend: boolean =
+            Math.abs(newValue.height as number - this.formRect.height * Constants.OVERFLOW_HEIGHT_RATIO) < EPSILON;
+          console.info(`newValue: ${JSON.stringify(newValue)}` + `, ${isWidthExtend}, ${isHeightExtend}` +
+              `, ${this.formRect.width * Constants.OVERFLOW_WIDTH_RATIO}` +
+              `, ${this.formRect.height * Constants.OVERFLOW_HEIGHT_RATIO}`);
+          if (isWidthExtend && isHeightExtend) {
+            this.session?.sendData({['isExtensionOverflowReady']: true});
+          }
+        })        
       }
     
       @Builder
@@ -287,7 +302,7 @@
       }
     
       private requestOverflow(): void {
-        if (!this.formId || !this.formRect) {
+        if (!this.formId || !this.formRect || !this.isExtensionReady) {
           return;
         }
         formProvider.requestOverflow(this.formId,{
@@ -511,13 +526,7 @@
     
       // 用户完成桌面水平滑动翻页手势
       public static readonly END_SWIPE: string = 'endSwipe';
-    
-      // 卡片由可见变为不可见，对应LiveFormExtensionAbility切换到后台
-      public static readonly ON_BACKGROUND: string = 'onBackground';
-    
-      // 卡片由不可见变为可见，对应LiveFormExtensionAbility切换到前台
-      public static readonly ON_FOREGROUND: string = 'onForeground';
-    
+
       // 卡片的激活态已切换完毕
       public static readonly EXTENSION_READY: string = 'extensionReady';
     

@@ -1,6 +1,10 @@
 # Multi-device Collaboration
-
-
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 ## When to Use
 
 Multi-device collaboration involves the following scenarios:
@@ -200,7 +204,7 @@ On device A, touch the **Start** button provided by the initiator application to
     @Entry
     @Component
     struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext();
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     
       build() {
         // ...
@@ -280,7 +284,7 @@ On device A, touch the Start button provided by the initiator application to sta
     @Entry
     @Component
     struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext();
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
         Column() {
           //...
@@ -330,7 +334,7 @@ On device A, touch the Start button provided by the initiator application to sta
     @Entry
     @Component
     struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext();
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
       build() {
         Column() {
@@ -405,7 +409,7 @@ On device A, touch the Start button provided by the initiator application to sta
     @Entry
     @Component
     struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext();
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
         Column() {
           //...
@@ -552,7 +556,7 @@ A system application can connect to a service on another device by calling [conn
     @Entry
     @Component
     struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext();
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    
       build() {
         Column() {
@@ -599,7 +603,7 @@ A system application can connect to a service on another device by calling [conn
     @Entry
     @Component
     struct Page_CollaborateAbility {
-      private context = this.getUIContext().getHostContext();
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
         Column() {
           //...
@@ -859,7 +863,7 @@ The following describes how to implement multi-device collaboration through cros
         @Entry
         @Component
         struct Page_CollaborateAbility {
-          private context = this.getUIContext().getHostContext();
+          private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
           build() {
             Column() {
               //...

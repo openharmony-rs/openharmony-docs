@@ -34,12 +34,14 @@
    ```ts
    import { osAccount, BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- [import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 3. 获取账号管理单实例对象。
 
    ```ts
    let accountManager = osAccount.getAccountManager();
    ```
+   <!-- [obtain_account_management_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 ## 创建系统账号
 
@@ -58,6 +60,7 @@ accountManager.createOsAccount(name, type, (err: BusinessError, osAccountInfo: o
   console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
 });
 ```
+<!-- [specify_nickname_and_type_information_to_create_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 ## 查询所有已创建的系统账号
 
@@ -73,6 +76,7 @@ accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAcco
   console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
 });
 ```
+<!-- [query_the_full_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 ## 查询指定系统账号信息
 
@@ -89,6 +93,7 @@ accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osA
   console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
 });
 ```
+<!-- [query_information_of_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 ## 修改系统账号头像和昵称
 
@@ -109,6 +114,7 @@ accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osA
      console.info(`setOsAccountProfilePhoto code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [change_system_account_avatar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 2. 调用[setOsAccountName](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountname)接口修改系统账号名称。
 
@@ -123,6 +129,7 @@ accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osA
      }
    });
    ```
+   <!-- [change_system_account_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 ## 激活系统账号
 
@@ -142,6 +149,7 @@ accountManager.activateOsAccount(localId, (err: BusinessError)=>{
   }
 });
 ```
+<!-- [activate_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
 ## 删除系统账号
 
@@ -161,3 +169,4 @@ accountManager.removeOsAccount(localId, (err: BusinessError)=>{
   }
 });
 ```
+<!-- [delete_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->

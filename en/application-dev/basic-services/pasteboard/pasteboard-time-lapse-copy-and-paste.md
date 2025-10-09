@@ -1,10 +1,10 @@
-# Using the Delayed Copy and Paste Function of the Pasteboard
+# Using the Delayed Copy and Paste Feature of the Pasteboard
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -18,13 +18,23 @@ When a user copies data in an application that uses the delayed copy and paste f
 
 - The pasteboard content, including system service metadata and application settings, has a maximum size of 128 MB by default. For PCs/2-in-1 devices, the maximum size can be changed through system settings, with a valid range from 128 MB to 2 GB.
 
-- NDK APIs support only record-level delayed copy and paste.
+- NDK APIs support only record-based delayed copy and paste.
 
-- ArkTS APIs support only PasteData-level delayed copy and paste.
+- ArkTS APIs support only data-based delayed copy and paste.
 
-## Using Record-Level Delayed Copy and Paste (Recommended)
+- If the amount of data to be copied is small and the time required for preparing data does not affect user experience, avoid using the delayed copy feature. Instead, you are advised to write data directly to the pasteboard.
+
+## Using Record-based Delayed Copy and Paste (Recommended)
 
 This solution allows you to query the data type before pasting. Applications can determine whether to request data from the pasteboard based on the query result.
+
+Since API version 21, when an application exits, it can call [OH_Pasteboard_SetData](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_setdata) to submit all copied data and call [OH_Pasteboard_SyncDelayedDataAsync](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_syncdelayeddataasync) to notify the pasteboard to obtain all data.
+
+1. When the application uses the delayed copy feature, only the data types supported by the application are written to the pasteboard. Before exiting, the application should call [OH_Pasteboard_SetData](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_setdata) to submit all copied data or call [OH_Pasteboard_SyncDelayedDataAsync](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_syncdelayeddataasync) to sync data to the pasteboard. The application can exit only after data sync is complete. Otherwise, other applications may fail to obtain data.
+
+2. Calling the [OH_Pasteboard_SyncDelayedDataAsync](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_syncdelayeddataasync) API prolongs the exit process. Applications should copy data to the pasteboard directly instead of calling the [OH_UdmfRecordProvider_SetData](../../reference/apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata) and [OH_Pasteboard_SyncDelayedDataAsync](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_syncdelayeddataasync) APIs.
+
+3. If an application exits abnormally when it uses the delayed copy feature, the data sync cannot be triggered. As a result, other applications cannot obtain data to paste.
 
 ### Available APIs
 
@@ -38,6 +48,7 @@ For details about the APIs, see [Pasteboard](../../reference/apis-basic-services
 | int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data) | Writes data to the pasteboard.                                   |
 | OH_UdmfData * OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status) | Obtains data from the pasteboard.|
 | OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count) | Obtains all data records from an **OH_UdmfData** instance.                          |
+| void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode)) | Syncs all delayed data from the application to the pasteboard. When the application uses the delayed copy feature, only the data types supported by the application are written to the pasteboard. Before exiting, the application should call [OH_Pasteboard_SetData](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_setdata) to submit all copied data or call [OH_Pasteboard_SyncDelayedDataAsync](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_syncdelayeddataasync) to sync data to the pasteboard. The application can exit only after data sync is complete. Otherwise, other applications may fail to obtain data.|
 
 ### How to Develop
 
@@ -59,7 +70,7 @@ For better code readability, the operation result verification of each step is o
    ```c
    // 1. Define a callback to be invoked to return the pasteboard data obtained.
    void* GetDataCallback(void* context, const char* type) {
-       // Text
+       // Plain text type.
        if (strcmp(type, UDMF_META_PLAIN_TEXT) == 0) {
            // Create a Uds object of the plain text type.
            OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
@@ -67,7 +78,7 @@ For better code readability, the operation result verification of each step is o
            OH_UdsPlainText_SetContent(udsText, "hello world");
            return udsText;
        }
-       // HTML
+       // HTML type.
        else if (strcmp(type, UDMF_META_HTML) == 0) {
            // Create a Uds object of the HTML type.
            OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
@@ -83,75 +94,108 @@ For better code readability, the operation result verification of each step is o
    }
    ```
 
-3. Prepare the data for delayed copy in the pasteboard. Note that the plain text and HTML data is not written to the pasteboard until the **GetDataCallback** function is triggered when the data consumer obtains **OH_UdsPlainText** or **OH_UdsHtml** from **OH_UdmfRecord**.
+3. Define the **OH_Pasteboard_SyncDelayedDataAsync** callback.
+
+   ```c
+   // 3. Define the callback triggered when the application exits and calls the delayed data sync API.
+   void SyncCallback(int errorCode)
+   {
+       // Application exits.
+   }
+   ```
+
+4. Prepare the data for delayed copy in the pasteboard. The plain text and HTML data is not written to the pasteboard until the **GetDataCallback** function is triggered when the data consumer obtains **OH_UdsPlainText** or **OH_UdsHtml** from **OH_UdmfRecord**.
    
    ```c
-   // 3. Create an OH_UdmfRecord object.
+   // 4. Create an OH_UdmfRecord object.
    OH_UdmfRecord* record = OH_UdmfRecord_Create();
 
-   // 4. Create an OH_UdmfRecordProvider object and set two callback functions used to provide and destruct data.
+   // 5. Create an OH_UdmfRecordProvider object and set two callback functions used to provide and destruct data.
    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
    OH_UdmfRecordProvider_SetData(provider, (void*)record, GetDataCallback, ProviderFinalizeCallback);
 
-   // 5. Bind the provider to the record and set the supported data type.
+   // 6. Bind the provider to the record and set the supported data type.
    const char* types[2] = { UDMF_META_PLAIN_TEXT, UDMF_META_HTML };
    OH_UdmfRecord_SetProvider(record, types, 2, provider);
 
-   // 6. Create an OH_UdmfData object and add OH_UdmfRecord to it.
+   // 7. Create an OH_UdmfData object and add OH_UdmfRecord to it.
    OH_UdmfData* setData = OH_UdmfData_Create();
    OH_UdmfData_AddRecord(setData, record);
 
-   // 7. Create an OH_Pasteboard object and write data to the pasteboard.
+   // 8. Create an OH_Pasteboard object and write data to the pasteboard.
    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
    OH_Pasteboard_SetData(pasteboard, setData);
+
+   // 9. Record the number of changes to pasteboard data.
+   uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
    ```
 
-4. Obtain the data for delayed copy from the pasteboard.
+5. Obtain the data for delayed copy from the pasteboard.
    
    ```c
-   // 8. Obtain OH_UdmfData from the pasteboard.
+   // 10. Obtain OH_UdmfData from the pasteboard.
    int status = -1;
    OH_UdmfData* getData = OH_Pasteboard_GetData(pasteboard, &status);
 
-   // 9. Obtain all OH_UdmfRecord records from OH_UdmfData.
+   // 11. Obtain all OH_UdmfRecord objects from OH_UdmfData.
    unsigned int recordCount = 0;
    OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
+   OH_UdsPlainText* udsText = nullptr;
+   OH_UdsHtml* udsHtml = nullptr;
 
-   // 10. Traverse OH_UdmfRecord records.
+   // 12. Traverse OH_UdmfRecord.
    for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
        OH_UdmfRecord* record = getRecords[recordIndex];
 
-       //11. Query the data types in OH_UdmfRecord.
+       // 13. Query the data types in OH_UdmfRecord.
        unsigned typeCount = 0;
        char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
 
-       //12. Traverse data types.
+       // 14. Traverse data types.
        for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
            char* recordType = recordTypes[typeIndex];
 
-           // Text
+           // Plain text type.
            if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
                // Create a Uds object of the plain text type.
-               OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
-               // Obtain the Uds object of the plain text type from record.
-               OH_UdmfRecord_GetPlainText(record, udsText);
-               // Obtain the content from the Uds object.
-               const char* content = OH_UdsPlainText_GetContent(udsText);
+               udsText = OH_UdsPlainText_Create();
+               if (udsText != nullptr) {
+                // Obtain the Uds object of the plain text type from record.
+                OH_UdmfRecord_GetPlainText(record, udsText);
+                // Obtain the content from the Uds object.
+                const char* content = OH_UdsPlainText_GetContent(udsText);
+               }
            }
-           // HTML
+           // HTML type.
            else if (strcmp(recordType, UDMF_META_HTML) == 0) {
                // Create a Uds object of the HTML type.
-               OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-               // Obtain the Uds object of the HTML type from record.
-               OH_UdmfRecord_GetHtml(record, udsHtml);
-               // Obtain the content from the Uds object.
-               const char* content = OH_UdsHtml_GetContent(udsHtml);
+               udsHtml = OH_UdsHtml_Create();
+               if (udsHtml != nullptr) {
+                // Obtain the Uds object of the HTML type from record.
+                OH_UdmfRecord_GetHtml(record, udsHtml);
+                // Obtain the content from the Uds object.
+                const char* content = OH_UdsHtml_GetContent(udsHtml);
+               }
            }
        }
    }
    ```
 
-5. Release the memory after the objects are used.
+6. If the data in the pasteboard does not change, the application notifies the pasteboard to obtain all data before exiting and exits only after the callback is complete. Otherwise, other applications may fail to obtain data.
+
+   ```c
+   // 15. Check whether the data in the pasteboard changes.
+   uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+   if (newChangeCount == changeCount) {
+       // 16. Notify the pasteboard to obtain all data.
+       OH_Pasteboard_SyncDelayedDataAsync(pasteboard, SyncCallback);
+       // The application exits only after the SyncCallback is complete.
+   } else {
+       // Application exits.
+   }
+   ```
+
+7. Release the memory after the objects are used.
    
    ```c
    OH_UdsPlainText_Destroy(udsText);
@@ -164,7 +208,7 @@ For better code readability, the operation result verification of each step is o
    ```
 
 
-## Using PasteData-Level Delayed Copy and Paste
+## Using Data-based Delayed Copy and Paste (Not Recommended)
 
 You are not allowed to query data type before pasting.
 
@@ -177,7 +221,7 @@ You are not allowed to query data type before pasting.
 | getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData> | Reads data of the unified data type from the system pasteboard.|
 | getUnifiedDataSync(): unifiedDataChannel.UnifiedData | Reads data of the unified data type from the pasteboard. This API returns the result synchronously and cannot be called in the same thread as **setUnifiedData** and **setUnifiedDataSync** when the delayed copy and paste function is used.|
 | setAppShareOptions(shareOptions: ShareOption): void | Sets pasteable range of pasteboard data for an application.|
-| removeAppShareOptions(): void | Removes the pasteable range configuration set by the application.|
+| removeAppShareOptions(): void | Removes the pasteable range configuration set for the application.|
 
 ### How to Develop
 
@@ -208,7 +252,7 @@ You are not allowed to query data type before pasting.
 3. Save a piece of PlainText data to the system pasteboard.
 
    ```ts
-   let SetDelayPlainText = (() => {
+   let SetDelayPlainText = () => {
      plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
      // For cross-application use, set this parameter to CROSS_APP. For intra-application use, set this parameter to IN_APP.
      plainTextData.properties.getDelayData = GetDelayPlainText;
@@ -217,7 +261,7 @@ You are not allowed to query data type before pasting.
      }).catch((error: BusinessError) => {
        // Error case
      });
-   })
+   }
    ```
 
 4. Read the text data from the system pasteboard.
@@ -229,8 +273,8 @@ You are not allowed to query data type before pasting.
        let records = outputData.getRecords();
        if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
          let record = records[0] as unifiedDataChannel.PlainText;
-         console.info('GetPlainText success, type:' + records[0].getType() + ', details:' +
-         JSON.stringify(record.details) + ', textContent:' + record.textContent + ', abstract:' + record.abstract);
+         console.info('GetPlainText success, type:' + records[0].getType() );
+         // Note: The data copied by users is sensitive information. Do not print the data obtained from the pasteboard in plaintext in logs.
        } else {
          console.info('Get Plain Text Data No Success, Type is: ' + records[0].getType());
        }
@@ -243,25 +287,23 @@ You are not allowed to query data type before pasting.
 5. Set pasteable range of pasteboard data for an application.
 
    ```ts
-   let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    try {
        systemPasteboard.setAppShareOptions(pasteboard.ShareOption.INAPP);
        console.info('Set app share options success.');
    } catch (err) {
-       let error: BusinessError = err as BusinessError;
        // Error case
    }
    ```
    
-6. Remove the pasteable range configuration set by the application.
+6. Remove the pasteable range configuration set for the application.
 
    ```ts
-   let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    try {
 	   systemPasteboard.removeAppShareOptions();
 	   console.info('Remove app share options success.');
    } catch (err) {
-	   let error: BusinessError = err as BusinessError;
        // Error case
    }
    ```

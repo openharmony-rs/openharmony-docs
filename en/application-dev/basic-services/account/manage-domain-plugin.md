@@ -162,7 +162,7 @@ The domain account plugin prototype is [DomainPlugin](../../reference/apis-basic
        osAccount.DomainAccountManager.registerPlugin(plugin)
        console.info("registerPlugin success")
    } catch (err) {
-       console.error("registerPlugin err: " + JSON.stringify(err));
+       console.error(`registerPlugin err: code is ${err.code}, message is ${err.message}`);
    }
    ```
 
@@ -175,8 +175,8 @@ Use [unregisterPlugin](../../reference/apis-basic-services-kit/js-apis-osAccount
 ```ts
 try {
   osAccount.DomainAccountManager.unregisterPlugin();
-  console.log('unregisterPlugin success.');
+  console.info('unregisterPlugin success.');
 } catch(err) {
-  console.error('unregisterPlugin err:' + JSON.stringify(err));
+  console.error(`unregisterPlugin failed, code is ${err.code}, message is ${err.message}`);
 }
 ```

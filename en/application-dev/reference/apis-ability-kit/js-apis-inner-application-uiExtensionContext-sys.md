@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhangyafei-echo-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -81,7 +81,7 @@ export default class UIExtension extends UIExtensionAbility {
       abilityName: 'EntryAbility',
       moduleName: 'entry'
     }).then((data) => {
-      console.log(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
+      console.info(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
       console.error(`StartAbilityForResultAsCaller failed, err code: ${error.code}, err msg: ${error.message}.`);
     });
@@ -317,13 +317,11 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 startUIAbilities(wantList: Array\<Want>): Promise\<void>
 
-Starts multiple UIAbilities simultaneously. This API uses a promise to return the result.
+Starts multiple UIAbility components simultaneously. This API uses a promise to return the result.
 
 You can pass the Want information of multiple UIAbility instances, which can point to one or more applications. If all the UIAbility instances can be started successfully, the system displays these UIAbility instances in multiple windows simultaneously. Depending on the window handling, different devices may have varying display effects (including window shape, quantity, and layout).
 
 > **NOTE**
->
-> This API takes effect only on phones and tablets.
 > 
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
 
@@ -331,11 +329,13 @@ You can pass the Want information of multiple UIAbility instances, which can poi
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on phones and tablets. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------ |
-| wantList | Array\<[Want](js-apis-app-ability-want.md)> | Yes| List of launch parameters for multiple UIAbilities to be started simultaneously. A maximum of four Want objects can be passed. The **Want** parameter does not support implicit launch, cross-user launch, distributed launch, instant installation, or on-demand loading. By default, the main application is launched unless specified otherwise.|
+| wantList | Array\<[Want](js-apis-app-ability-want.md)> | Yes| List of launch parameters for multiple UIAbility components to be started simultaneously. A maximum of four Want objects can be passed. The **Want** parameter does not support implicit launch, cross-user launch, distributed launch, instant installation, or on-demand loading. By default, the main application is launched unless specified otherwise.|
 
 **Return value**
 
@@ -353,7 +353,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application. |
 | 801 | Capability not supported. |
 | 16000001 | The specified ability does not exist. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -394,6 +394,92 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
         console.info(`TestTag:: start succeeded.`);
       }).catch((error: BusinessError) => {
         console.info(`TestTag:: startUIAbilities failed: ${JSON.stringify(error)}`);
+      });
+    } catch (paramError) {
+      // Process input parameter errors.
+      console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
+    }
+  }
+}
+```
+### startUIAbilitiesInSplitWindowMode<sup>20+</sup>
+
+startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
+
+Starts a second UIAbility after the first UIAbility instance is created, and displays them in split-screen mode. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> If the first UIAbility instance is destroyed, the second UIAbility is started in full-screen mode.
+> 
+> The second UIAbility supports only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want).
+> 
+> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description                                                                                                                                                                                                                    |
+| ------ |--------| ------ |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| primaryWindowId | number | Yes| ID of the main window of the first UIAbility. The window ID is a property defined in [WindowProperties](../apis-arkui/arkts-apis-window-i.md#windowproperties), which can be obtained by calling [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).|
+| secondaryWant | [Want](js-apis-app-ability-want.md) | Yes| Want information required for starting the second UIAbility.                                                                                                                                                                                              |
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------ | ------ |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not system application. |
+| 801 | Capability not supported. |
+| 16000001 | Target UIAbility does not exist. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist. |
+| 16000050 | Failed to connect to the system service or system server handle failed. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000080 | Creating a new instance is not supported. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000125 | Starting a plugin UIAbility is not supported. |
+| 16000126 | Starting DLP files is not supported. |
+
+**Example**
+
+```ts
+import { UIExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryUIExtAbility extends UIExtensionAbility {
+  onForeground() {
+    // Main window ID of the first UIAbility. Replace it with the actual one.
+    let primaryWindowId = 123;
+    let secdonaryWant: Want = {
+      bundleName: 'com.example.myapplication1',
+      abilityName: 'EntryAbility'
+    };
+    try {
+      this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secdonaryWant).then(() => {
+        console.info(`TestTag:: start succeeded.`);
+      }).catch((error: BusinessError) => {
+        console.error(`TestTag:: startUIAbilitiesInSplitWindowMode failed: ${JSON.stringify(error)}`);
       });
     } catch (paramError) {
       // Process input parameter errors.

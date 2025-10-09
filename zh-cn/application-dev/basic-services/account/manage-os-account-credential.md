@@ -48,12 +48,14 @@
    ```ts
    import { osAccount } from '@kit.BasicServicesKit';
    ```
+   <!-- [import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 3. 创建凭据管理对象。
 
    ```ts
    let userIDM: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
    ```
+   <!-- [create_credential_management_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 注册PIN码输入器
 
@@ -71,6 +73,7 @@
      }
    }
    ```
+   <!-- [define_pin_inputer_pinData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 2. 调用[registerInputer](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#registerinputer8)注册PIN码输入器。
 
@@ -78,6 +81,7 @@
    let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
    pinAuth.registerInputer(inputer);
    ```
+   <!-- [call_the_api_to_register_the_inputer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 打开会话
 
@@ -106,6 +110,7 @@
      token: new Uint8Array([0])
    };
    ```
+   <!-- [define_pin_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 2. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)接口添加指定的凭据信息，执行结果通过回调获取。
 
@@ -117,6 +122,7 @@
      }
    });
    ```
+   <!-- [call_the_api_to_add_the_specified_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 认证PIN码
 
@@ -144,6 +150,7 @@
      }
    });
    ```
+   <!-- [call_the_auth_operation_for_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 录入生物识别凭据
 
@@ -162,6 +169,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      token: new Uint8Array([1, 2, 3, 4, 5])
    }
    ```
+   <!-- [define_facial_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 3. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)录入人脸凭据。
 
@@ -173,6 +181,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      }
    });
    ```
+   <!-- [input_facial_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 4. 定义指纹凭据信息。
 
@@ -183,6 +192,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      token: new Uint8Array([1, 2, 3, 4, 5])
    }
    ```
+   <!-- [define_fingerprint_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 5. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)录入指纹凭据。
 
@@ -194,6 +204,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      }
    });
    ```
+   <!-- [enter_the_fingerprint_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 认证生物识别凭据
 
@@ -220,6 +231,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      }
    });
    ```
+   <!-- [call_the_auth_operation_for_face_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 更新凭据
 
@@ -238,6 +250,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      token: new Uint8Array([1, 2, 3, 4, 5])
    };
    ```
+   <!-- [define_the_credential_information_to_be_updated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 3. 调用[updateCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#updatecredential8)更新凭据。
 
@@ -249,6 +262,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      }
    });
    ```
+   <!-- [update_your_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 查询凭据信息
 
@@ -267,6 +281,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
    ```ts
    let enrolledFingerCredInfoList: osAccount.EnrolledCredInfo[] = await userIDM.getAuthInfo(osAccount.AuthType.FINGERPRINT);
    ```
+   <!-- [obtain_credential_information_of_the_specified_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 删除凭据
 
@@ -284,6 +299,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      credentialId = credInfoList[0].credentialId;
    }
    ```
+   <!-- [obtain_the_credential_information_of_the_fingerprint_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 2. [认证PIN码](#认证pin码)，获取授权令牌。
 
@@ -297,6 +313,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
      }
    });
    ```
+   <!-- [delete_specified_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 注销PIN码输入器
 
@@ -307,6 +324,7 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 ```ts
 pinAuth.unregisterInputer();
 ```
+<!-- [deactivate_pin_input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
 ## 关闭会话
 
@@ -317,3 +335,4 @@ pinAuth.unregisterInputer();
 ```ts
 userIDM.closeSession();
 ```
+<!-- [close_the_session_and_end_credential_management](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->

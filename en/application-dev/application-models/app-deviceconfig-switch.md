@@ -1,11 +1,18 @@
 # Switching of app and deviceConfig
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-To help you better maintain the configuration of application-level attributes, OpenHarmony has extracted the **app** and **deviceConfig** tags from the **config.json** file to the **app.json5** file and changed certain tag names in the stage model.
+
+To help you better maintain the configuration of application-level attributes, OpenHarmony has extracted the **app** and **deviceConfig** tags from the **config.json** file to the **app.json5** file and changed certain tag names in the [stage model](ability-terminology.md#stage-model).
 
 **Table 1** Comparison of the app tag in the configuration files
 
-| Configuration Item| app in config.json| app in app.json5|
+| Configuration Item| app in config.json in [FA Model](ability-terminology.md#fa-model)| app in app.json5 in Stage Model|
 | -------- | -------- | -------- |
 | Internal version number of an application| "version": {<br>    "code": 1,<br>} | "versionCode":&nbsp;1&nbsp;, |
 | Text description of the version number, which is displayed to users| "version": {<br>    "name": "1.0.0",<br>} | "versionName"&nbsp;:&nbsp;"1.0.0"&nbsp;, |
@@ -22,7 +29,7 @@ OpenHarmony has reconstructed the [deviceConfig](../quick-start/deviceconfig-str
 | deviceConfig in the FA Model| Description| Stage Model| Difference|
 | -------- | -------- | -------- | -------- |
 | deviceConfig| Device information.| / | This tag is no longer available in the stage model. In the stage model, device information is configured under the **app** tag.|
-| process | Name of the process running the application or UIAbility. If the **process** attribute is configured in the **deviceConfig** tag, all UIAbilities of the application run in this process. You can set the **process** attribute for a specific UIAbility in the **abilities** attribute, so that the UIAbility can run in the particular process.| / | The stage model does not support the configuration of process names.|
+| process | Name of the process running the application or UIAbility. If the **process** attribute is configured in the **deviceConfig** tag, all UIAbility components of the application run in this process. You can set the **process** attribute for a specific UIAbility in the **abilities** attribute, so that the UIAbility can run in the particular process.| / | The stage model does not support the configuration of process names.|
 | keepAlive | Whether the application is always running. This attribute applies only to system applications and does not take effect for third-party applications.| / | The stage model does not support changing of the model control mode for system applications.|
 | supportBackup | Whether the application supports data backup and restore.| / | This configuration is not supported in the stage model.|
 | compressNativeLibs | Whether the **libs** libraries are packaged in the HAP file after being compressed.| / | This configuration is not supported in the stage model.|

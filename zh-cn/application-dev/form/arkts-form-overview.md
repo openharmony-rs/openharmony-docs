@@ -5,6 +5,7 @@
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
 <!--Adviser: @Brilliantry_Rui-->
+
 以下内容介绍基于ArkTS声明式开发范式语言开发卡片。
 
 ## 亮点/特征

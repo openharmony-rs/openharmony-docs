@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -81,9 +81,9 @@ Represents the text information about the recommended images.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                   | Type               | Mandatory| Description                         |
-| ----------------------- | ------------------- | ---- | -------------------------------- |
-| text | string   | No  | Text based on which images are recommended. The text cannot exceed 250 characters. The default value is an empty string.|
+| Name   | Type                       | Read-Only| Optional| Description                                                        |
+| ---- | ------- | ---- |  ---- | ----- |
+| text  | string  | No| Yes| Text based on which images are recommended. The text cannot exceed 250 characters. The default value is an empty string. |
 
 **Example**
 
@@ -123,12 +123,12 @@ Represents the configuration for saving a media asset (image or video) to the me
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| title | string | No | Title of the image or video. If this parameter is not passed, the system generates a title. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]|
-| fileNameExtension | string | Yes | File name extension, for example, **'jpg'**.|
-| photoType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | Yes | Type of the file to create, which can be **IMAGE** or **VIDEO**. See [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype).|
-| subtype | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | No | Image or video file subtype. Currently, only **DEFAULT** is supported. See [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12).|
+| Name   | Type                       | Read-Only| Optional| Description                                                        |
+| ---- | ------- | ---- |  ---- | ----- |
+| title| string  | No| Yes| Title of the image or video. If this parameter is not passed, the system generates a title. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
+| fileNameExtension  | string  | No| No| File name extension, for example, **'jpg'**. |
+| photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | No| No| Type of the file to create, which can be **IMAGE** or **VIDEO**. See [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype). |
+| subtype  | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | No| Yes| Image or video file subtype. Currently, only **DEFAULT** is supported. See [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12). |
 
 ## PhotoAssetChangeInfo<sup>20+</sup>
 
