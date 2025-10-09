@@ -112,12 +112,12 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
 
-| 名称                     | 类型                        | 必填   | 说明       |
-| ---------------------- | ------------------------- | ---- | -------- |
-| deviceId               | string                    | 是    | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
-| deviceName             | string                    | 是    | 设备名称。    |
-| deviceType             | string                    | 是    | [设备类型](#getdevicetype)。    |
-| networkId              | string                    | 否    | 设备网络标识。  |
+| 名称           | 类型  | 只读| 可选              |  说明    |
+| ---------------------- | ------------------------- | --- | ---- | -------- |
+| deviceId               | string                    | 是 | 否  | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
+| deviceName             | string                    | 是 | 否  | 设备名称。    |
+| deviceType             | string                    | 是 | 否  | [设备类型](#getdevicetype)。    |
+| networkId              | string                    | 是 | 是  | 设备网络标识。  |
 
 ## DeviceStateChange
 
