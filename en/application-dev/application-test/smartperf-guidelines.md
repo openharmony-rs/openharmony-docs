@@ -1,4 +1,10 @@
 # SmartPerf Device User Guide
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @niu-guoliang-->
+<!--Designer: @niu-guoliang-->
+<!--Tester: @laonie666-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Introduction
 
@@ -64,14 +70,14 @@ Click **Report** to access the report list. Touch a report to view its details.
 
 ### Collection Prerequisites
 
-#### Switching to Shell
+- Switching to Shell
 
   ```
   C:\Users\issusser>hdc shell
   $
   ```
 
-#### Starting and Viewing the daemon Process
+- Starting and Viewing the daemon Process
 
   ```
   C:\Users\issusser>hdc shell
@@ -84,7 +90,7 @@ Click **Report** to access the report list. Touch a report to view its details.
   $
   ```
 
-#### Viewing the Help Information
+- Viewing the Help Information
 
   ```
   $ SP_daemon --help
@@ -153,9 +159,12 @@ Click **Report** to access the report list. Touch a report to view its details.
    $
   ```
 
+
 ### Basic Collection
 
-#### Run the **-N** command to enable the collection
+This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire device or specific applications. It supports the following operations:
+
+**1. Per-second sampling**
 
 | Command  |Mandatory| Description                  |
 | :-----| :-----| :--------------------- |
@@ -176,7 +185,6 @@ Click **Report** to access the report list. Touch a report to view its details.
 | -d    |No| Collects the DDR data.                |
 | -sections|No| Sets segment-based collection.         |
 
-##### Samples
 - Collect the number of application threads once based on the bundle name.
 
   ```
@@ -190,7 +198,7 @@ Click **Report** to access the report list. Touch a report to view its details.
     $
   ```
 
-- Collect the frequency and usage of CPU cores twice.
+- Collect twice the frequency and usage of CPU cores.
 
   ```
     $ SP_daemon -N 2 -c
@@ -523,7 +531,7 @@ Click **Report** to access the report list. Touch a report to view its details.
   >
   >- When the collection is complete, you can view the screenshots in **data/local/tmp/capture**.
   >
-  >- To export the screenshots to drive D, open a new CLI and run the hdc file recv data/local/tmp/capture/screenCap_1700725192774.png D:\\ command.
+  >- To export the screenshots to drive D, open a new CLI and run the **hdc file recv data/local/tmp/capture/screenCap_1700725192774.png D:\\** command.
 
 - Collect the network speeds twice.
 
@@ -570,13 +578,13 @@ Click **Report** to access the report list. Touch a report to view its details.
     order:1 fps=15
     order:2 fpsJitters=876291843;;8314062;;8308334;;8314583;;8310417;;8308333;;8326042;;8314583;;8292708;;8492709;;8143750;;8340104;;8294271;;8302604;;8297396
     order:3 refreshrate=69
-     
+ 
     order:0 timestamp=1705306823852
     order:1 fps=12
     order:2 fpsJitters=906667363;;8279167;;8311458;;8315625;;8291146;;8313021;;8323438;;8293750;;8303125;;8313541;;8301563;;8317708
     order:3 refreshrate=69
     ...
-    
+
     command exec finished!
     $
   ```
@@ -813,18 +821,16 @@ Click **Report** to access the report list. Touch a report to view its details.
   >
   >- Make sure you are on the application screen when running this command.
 
+**2. On-demand start and stop**
 
-#### Run the **-start** command to start the collection
-
-Run the **start** command to start collection, operate the device or application, and then run the **stop** command to stop collection.
+Run the start command to start data collection. After operating the device or application, run the stop command to stop data collection.
 
 | Command  |Mandatory| Description                  |
 | :-----|:-----| :--------------------- |
-| -start |Yes| Starts collection. You can add a basic collection command after this command parameter. The collection is performed every second.           |
-| -stop |Yes| Stops collection. A report is generated when collection is complete.             |
-| -print |No| Prints collection information every second.             |
+| -start |Yes| Starts data collection. You can add basic collection commands after this command. Data is collected once per second.           |
+| -stop |Yes| Stops data collection and generates a collection report.             |
+| -print |No| Prints the start and stop collection information per second.             |
 
-##### Samples
   
 - Start and stop collecting the frequency and usage of CPU cores.
 
@@ -907,17 +913,17 @@ Run the **start** command to start collection, operate the device or application
    >
    >- Example 1: Run the **SP_daemon -start -c -g -t -r -d -net -snapshot** command to collect the CPU, GPU, temperature, frame rate, memory, DDR, network rate, and screenshot information of the system.
    >
-   >- Example 2: Run the **SP_daemon -start -PKG ohos.samples.ecg -c -g -t -f -r -d -net -snapshot -threads -fd** command to collect the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
+   >- Example 2 of starting collection (collecting the CPU load, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device and process): SP_daemon -start -PKG ohos.samples.ecg -c -g -t -f -r -d -net -snapshot -threads -fds.
    >
-   >- Example 3: Run the **SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fd** command to collect the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
+   >- Example 3 of starting collection (collecting the CPU load, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device and process): SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds.
    >
-   >- Example 4: Run the **SP_daemon -start -c -g -t -r -d -net -snapshot -threads -fd -print** command to collect and print the CPU, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system.
+   >- Example 4 of starting collection (collecting the CPU, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device, and printing the collected information): SP_daemon -start -c -g -t -r -d -net -snapshot -threads -fds -print.
    >
-   >- Example 5: Run the **SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fd -print** command to collect and print the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
+   >- Example 5 of starting collection (collecting the CPU load, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device and process, and printing the collected information): SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds -print.
    >
-   >- The service start and stop file is stored in **data/local/tmp/smartperf/1/t_index_info.csv**. You can run the **hdc file recv** command to export the report. For details, see [Viewing Collection Result in the CSV File](#viewing-collection-result-in-the-csv-file).
+   >- The output path of the service startup and stop file is data/local/tmp/smartperf/1/t_index_info.csv. You can run the hdc file recv command to export and view the report. For details, see the CSV collection result.
 
-#### Viewing Collection Result in the CSV File
+**3. CSV output**
 
 If the collection result is saved in a CSV file, perform the following steps to export and view the result:
 
@@ -933,7 +939,7 @@ If the collection result is saved in a CSV file, perform the following steps to 
     $
     ```
 
-  - To export the test result file:
+  - Exporting the file to a specified path
     ```
     C:\Users\issusser>hdc file recv data/local/tmp/data.csv D:\
     [I][2023-11-08 16:16:41] HdcFile::TransferSummary success
@@ -941,8 +947,7 @@ If the collection result is saved in a CSV file, perform the following steps to 
 
     C:\Users\issusser>
     ```
-
-  - Open the **data.csv** file to view the collected data.
+  - Opening the data.csv file to view the collected data
 
     The table below describes the data fields in the **data.csv** file.
 
@@ -953,32 +958,32 @@ If the collection result is saved in a CSV file, perform the following steps to 
     | fdTotal                 | Total number of file descriptors.        |-|
     | fds                     | File descriptor.            |Unit: Hz|
     | cpuFrequency            | CPU core frequency.       |Unit: Hz|
-    | cpuUasge                | CPU core usage.         |%|
-    | cpuidleUsage            | CPU usage in idle state.       |%|
+    | cpuUsage                | CPU core usage.         |%|
+    | cpuidleUsage            | CPU usage in idle state.       |%| 
     | cpuioWaitUsage          | CPU usage of I/O wait.       |%|
-    | cpuirqUsage             | CPU usage of hardware interrupts.        |%|
+    | cpuirqUsage             | CPU usage of hardware interrupts.        |%|  
     | cpuniceUsage            | CPU usage of user level processes with lower scheduling priority.   |%|
-    | cpusoftIrqUsage         | CPU usage of software interrupts.        |%|
+    | cpusoftIrqUsage         | CPU usage of software interrupts.        |%| 
     | cpusystemUsage          | CPU usage in kernel mode.     |%|
-    | cpuuserUsage            | CPU usage in user mode.          |%|
+    | cpuuserUsage            | CPU usage in user mode.          |%| 
     | ProcId                  | Process ID.               |-|
     | ChildProcId             | Child process ID.               |-|
-    | ProcAppName             | Application bundle name.               |-|
+    | ProcAppName             | Application bundle name.               |-| 
     | ProcCpuLoad             | Process CPU load.       |%|
     | ChildProcCpuLoad        | CPU load of the child process.       |%|
-    | ProcCpuUsage            | CPU usage of the process.         |%|
-    | ChildProcCpuUsage       | CPU usage of the child process.         |%|
+    | ProcCpuUsage            | CPU usage of the process.         |%| 
+    | ChildProcCpuUsage       | CPU usage of the child process.         |%| 
     | ProcUCpuUsage           | CPU usage of the process in user mode.    |%|
-    | ChildProcCpuUsage       | CPU usage of the child process in user mode.         |%|
-    | ProcSCpuUsage           | CPU usage of the process in kernel mode.    |%|
+    | ChildProcCpuUsage       | CPU usage of the child process in user mode.         |%| 
+    | ProcSCpuUsage           | CPU usage of the process in kernel mode.    |%| 
     | ChildProcSCpuUsage      | CPU usage of the child process in kernel mode.    |%|
     | gpuFrequency            | GPU frequency of the system.         |%|
     | gpuLoad                 | GPU load of the system.     |%|
     | hw-instructions         | Number of executed instructions.         |-|
     | cycles per instruction  | Average number of cycles per instruction.   |Unit: ns|
     | hw-cpu-cycles           | Number of CPU clock cycles.         |Unit: ns|
-    | currentNow              | Current value.      |Unit: mA|
-    | voltageNow              | Voltage value.      |Unit: μV|
+    | currentNow              | Current value.      |Unit: mA| 
+    | voltageNow              | Voltage value.      |Unit: μV| 
     | fps                     | Number of frames per second.             |Unit: FPS|
     | fpsJitters              | Frame interval.       |Unit: ns|
     | refreshrate             | Screen refresh rate.           |Unit: Hz|
@@ -1020,11 +1025,11 @@ If the collection result is saved in a CSV file, perform the following steps to 
     | ChildnativeHeapPss      | Used native memory size of the child process.  |Unit: KB|
     | stackPss                | Used stack memory size of the process.      |Unit: KB|
     | ChildstackPss           | Used stack memory size of the child process.      |Unit: KB|
-    | timeStamp               | Timestamp.           |Collection time.|
+    | timeStamp               | Timestamp.           |Collection time.| 
 
 ### Scenario Collection
 
-In addition to basic collection, the response and completion delay can be collected. The scenario collection result is displayed in the CLI instead of being written into the **data.csv** file.
+In addition to basic collection, response and completion delays can be collected. The scenario collection result is displayed in the CLI instead of being written into the **data.csv** file.
 
 | Command  |Mandatory| Description                  |
 | :-----|:-----| :--------------------- |
@@ -1032,8 +1037,6 @@ In addition to basic collection, the response and completion delay can be collec
 | -responseTime|No|    Collects the response latency.        |
 | -completeTime|No|    Collects the completion delay.        |
 | -fpsohtest|No|    A validator used to collect the frame rate every second. The frame rate is collected 10 times by default.      |
-
-#### Samples
 
 - Collect the application response latency. (This command supports only the RK3568 device.)
 
@@ -1083,8 +1086,6 @@ The power collection result of the current device can be written into the **data
 | -editorServer|No|    Starts a daemon process by using an editor.        |
 | -recordcapacity|No|    Obtains the battery level of the current device.        |
 | -profilerfps |No| Collects the frame rate of the current page.         |
-
-#### Samples
 
 - Obtain the screen resolution.
 
@@ -1200,7 +1201,7 @@ The power collection result of the current device can be written into the **data
   >
   >- **recordTime** indicates the timestamp, and **recordPower** indicates the current battery level.
   >
-  >- This command needs to be executed separately. The collection result is written into the **/data/local/tmp/powerLeftRecord.csv** file and can be exported to the local PC by running the **hdc file recv** command. For details, see [Viewing Collection Result in the CSV File](#viewing-collection-result-in-the-csv-file).
+  >- This command needs to be executed separately. The collection result is written into the **/data/local/tmp/powerLeftRecord.csv** file and can be exported to the local PC by running the **hdc file recv** command. For details, see Viewing CSV Collection Results.
 
 - Collect the frame rate of the current page.
 
