@@ -13,19 +13,17 @@
 
 设置/切换系统语言时，系统会检查[扩展参数](i18n-locale-culture.md)与系统语言是否匹配，若不匹配，则删除扩展参数。例如，当前系统语言设置为阿拉伯语“ar”时，使用本地数字为“arab”。当系统语言切换为马来西亚语“my”时，本地数字参数更改为马来西亚的本地数字“mymr”。当切换为中文时，因中文不支持设置本地数字，采用阿拉伯数字，因此本地数字的扩展参数会被移除。
 
+从API version 21开始，开发者可以在开发者模式下通过[param工具](../tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。
 
 ## 开发步骤
 
 接口具体使用方法和说明请参考[System](../reference/apis-localization-kit/js-apis-i18n.md#system9)的API接口文档。
 
-1. 导入模块。
+1. 获取系统语言、系统地区、系统区域。
    ```ts
    import { i18n } from '@kit.LocalizationKit';
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-   ```
 
-2. 获取系统语言、系统地区、系统区域。
-   ```ts
    // 获取系统语言
    let systemLanguage: string = i18n.System.getSystemLanguage();  // systemLanguage为当前系统语言
 
@@ -59,8 +57,11 @@
    ```
 
 <!--Del-->
-3. 设置系统语言、系统地区。
+2. 设置系统语言、系统地区。
    ```ts
+   import { i18n } from '@kit.LocalizationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
    // 设置系统当前语言为'zh-Hans'
    try {
      i18n.System.setSystemLanguage('zh-Hans');
