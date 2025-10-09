@@ -1,4 +1,10 @@
 # ArkUI框架开发常见问题(JS)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6; @yihao-lin-->
+<!--Designer: @pssea; @piggyguy-->
+<!--Tester: @jiaoaozihao; @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 
 ## input组件是否支持设置文本居中对齐(API 9)
