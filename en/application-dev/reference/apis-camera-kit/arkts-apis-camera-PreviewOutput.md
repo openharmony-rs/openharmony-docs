@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -382,7 +382,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     previewRotation = previewOutput.getPreviewRotation(imageRotation);
-    console.log(`Preview rotation is: ${previewRotation}`);
+    console.info(`Preview rotation is: ${previewRotation}`);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;

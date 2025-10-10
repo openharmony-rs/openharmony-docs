@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 As an important feature of the camera, high-performance photo capture enables deferred photo delivery and further reduces the response delay, delivering a better user experience. High-performance photo capture is implemented as follows: After an application delivers a phot capture request, the system quickly returns a thumbnail to the application, and the application stores the thumbnail and related information in the mediaLibrary. Then the subservice performs scheduling based on the system pressure and custom scenarios and sends the postprocessed original image to the mediaLibrary.
 
@@ -51,7 +51,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
       if (photoProfilesArray.length > 0) {
         photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
       } else {
-        console.log("the length of photoProfilesArray<=0!");
+        console.error("the length of photoProfilesArray<=0!");
         return undefined;
       }
     } catch (error) {
