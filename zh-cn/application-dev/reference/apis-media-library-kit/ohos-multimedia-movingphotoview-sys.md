@@ -15,7 +15,7 @@
 
 ## MovingPhotoViewOptions
 
-定义移动照片视图选项。
+定义动态照片视图选项。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -58,7 +58,7 @@
 
 **示例：**
 
-系统应用设置动态照片解码格式和rangemode格式。
+系统应用设置动态照片解码格式和HDR效果格式。
 
 ```ts
 // 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档
