@@ -563,7 +563,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 protectProcessNet(): Promise\<void\>
 
-保护应用进程不受VPN连接影响，通过该进程发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise方式作为异步方法。
+保护应用进程不受VPN连接影响，被保护的进程直接基于物理网络收发数据，流量不通过VPN转发。使用Promise方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
