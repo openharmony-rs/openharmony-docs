@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Depth data reflects the spatial arrangement of image pixels in relation to the camera lens. It facilitates enhanced focus precision, background blurring effects, and the like. Depth data can be reported in the preview, photo capture, and video scenarios of camera applications.
 
@@ -34,7 +34,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
         if (depthProfilesArray.length > 0) {
           depthDataOutput = cameraManager.createDepthDataOutput(depthProfilesArray[0]);
         } else {
-          console.log("the length of depthProfilesArray<=0!");
+          console.error("the length of depthProfilesArray<=0!");
           return undefined;
         }
       } catch (error) {
