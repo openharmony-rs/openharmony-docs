@@ -6,6 +6,9 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @zhang_yixin13-->
 
+<!--Del-->
+- [应用开发导读](application-dev-guide.md)
+<!--DelEnd-->
 - 入门<!--application-getting-started-->
   <!--Del-->
   - 快速入门<!--quick-start-->
