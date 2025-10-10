@@ -1,4 +1,4 @@
-# 向应用沙箱推送文件
+# 向应用沙箱推送文件（仅对系统应用开放）
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
