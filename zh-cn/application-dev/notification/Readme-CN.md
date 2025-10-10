@@ -1,5 +1,12 @@
 # Notification Kit（用户通知服务）<!--notification-kit-->
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 - [Notification Kit简介](notification-overview.md)
 - [请求通知授权](notification-enable.md)
 - [管理通知角标](notification-badge.md)
