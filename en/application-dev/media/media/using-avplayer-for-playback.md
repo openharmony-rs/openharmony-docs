@@ -217,7 +217,7 @@ export class AVPlayerDemo {
         return -1;
       }
     };
-    let context = getContext(this) as common.UIAbilityContext;
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Obtain the sandbox address filesDir through UIAbilityContext. The stage model is used as an example.
     let pathDir = context.filesDir;
     let path = pathDir  + '/01.mp3';
