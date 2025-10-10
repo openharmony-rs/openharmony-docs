@@ -1,7 +1,12 @@
 # if/else: Conditional Rendering
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @maorh-->
+<!--Designer: @keerecles-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-
-ArkTS provides conditional rendering. It supports the use of the **if**, **else**, and **else if** statements to display different content based on the application state.
+ArkTS provides conditional rendering capabilities that allow you to dynamically display different UI content based on application state using **if**, **else**, and **else if** statements.
 
 > **NOTE**
 >
@@ -9,17 +14,15 @@ ArkTS provides conditional rendering. It supports the use of the **if**, **else*
 
 ## Usage Rules
 
-- The **if**, **else**, and **else if** statements are supported.
+- Supported conditional statements include **if**, **else**, and **else if**.
 
-- The conditional statements following the **if** or **else if** statement can use state variables or normal variables. (Value change of state variables can trigger UI rendering in real time, but value change of normal variables cannot.)
+- Conditions in **if** and **else if** statements can utilize both state variables and regular variables. (State variables trigger UI re-rendering when their values change, while regular variables do not.)
 
-- Conditional statements can be used within a container component to build different child components.
+- Conditional statements can be embedded within container components to dynamically build different child components.
 
-- Conditional statements are "transparent" when it comes to the parent-child relationship of components. Rules about permissible child components must be followed when there is one or more **if** statements between the parent and child components.
+- Conditional rendering maintains the parent-child component relationship hierarchy. The conditional statements do not override the constraints that parent components impose on their children. For example, certain container components enforce restrictions on child component types or quantities. When conditional rendering is used within these containers, the same restrictions apply to components created within conditional branches. A specific example: The [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md) container component only supports [GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md) as direct children. When conditional statements are used within the **Grid** component, only **GridItem** components can be used in conditional branches.
 
-- The build function inside each conditional branch must follow the special rules for build functions. Each of such build functions must create one or more components. An empty build function that creates no components will result in a syntax error.
-
-- Some container components impose restrictions on the type or number of child components. When conditional statements are used in such components, these restrictions also apply to the components to be created by using the conditional statements. For example, the child component of the [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md) container component supports only the [GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md) component. Therefore, only the **GridItem** can be used in the conditional statement within **Grid**.
+- The build function inside each conditional branch must follow the special rules for build functions. Each of such build functions must create one or more components. An empty build function that creates no components will result in a syntax error. For details about the build function specifications, see [Basic Syntax Overview](../state-management/arkts-basic-syntax-overview.md) and [Declarative UI Description](../state-management/arkts-declarative-ui-description.md).
 
 
 ## Update Mechanism
@@ -28,18 +31,15 @@ A conditional statement updates whenever a state variable used inside the **if**
 
 1. The conditional statement re-evaluates the conditions. If the evaluation of the conditions changes, steps 2 and 3 are performed. Otherwise, no follow-up operation is required.
 
-2. The ArkUI framework removes all child components that have been built.
+2. All previously constructed child components within the conditional branch are removed from the component tree.
 
-3. The ArkUI framework executes the build function of the conditional branch again to add the generated child component to its parent component. If an applicable **else** branch is missing, no new build function will be executed.
+3. The build function of the new active branch is executed, and the generated child components are added to the **if** parent component. If no matching **else** branch exists when conditions change, no new build function executes.
 
-A condition can include Typescript expressions. As for any expression inside build functions, such an expression must not change any application state.
+Condition expressions can include TypeScript expressions. However, expressions within constructors must not modify application state.
 
+## Use Cases
 
-## Use Scenarios
-
-
-### Using if for Conditional Rendering
-
+### Basic Conditional Rendering with if
 
 ```ts
 @Entry
@@ -74,17 +74,15 @@ Each branch of the **if** statement includes a build function. Each of such buil
 
 **if** updates whenever a state variable used inside the **if** or **else if** condition changes, and re-evaluates the conditions. If the evaluation of the conditions changes, it means that another branch of **if** needs to be built. In this case, the ArkUI framework will:
 
-1. Remove all previously rendered components (of the earlier branch).
+1. Remove all previously rendered components from the previous branch.
 
-2. Execute the build function of the branch and add the generated child component to its parent component.
+2. Execute the build function of the new active branch and add the generated components to the parent container.
 
-In the preceding example, if **count** increases from 0 to 1, then **if** updates, the condition **count > 0** is re-evaluated, and the evaluation result changes from **false** to **true**. Therefore, the positive branch build function will be executed, which creates a **Text** component and adds it to the **Column** parent component. If **count** changes back to 0 later, then the **Text** component will be removed from the **Column** component. Since there is no **else** branch, no new build function will be executed.
+In this example, when **count** increases from 0 to 1, the condition **if (this.count > 0)** becomes true, executing the branch's build function to create and add a **Text** component to the parent **Column**. If **count** changes back to 0 later, then the **Text** component will be removed from the **Column** component. Since there is no **else** branch, no new build function will be executed.
 
+### if/else with Child Component State Management
 
-### if/else Statement and Child Component States
-
-This example involves an **if/else** statement and a child component with an \@State decorated variable.
-
+This example demonstrates **if/else** statements with child components containing [\@State](../state-management/arkts-state.md) decorated variables.
 
 ```ts
 @Component
@@ -129,14 +127,19 @@ struct MainView {
 }
 ```
 
-On first render, the child component **CounterView(label: 'CounterView \#positive')** is created. This child component carries the \@State decorated variable, named **counter**. When the **CounterView.counter** state variable is updated, the child component **CounterView(label: 'CounterView \#positive')** is re-rendered, with its state variable value preserved. When the value of the **MainView.toggle** state variable changes to **false**, the **if** statement inside the **MainView** parent component gets updated, and subsequently **CounterView(label: 'CounterView \#positive')** is removed. At the same time, a new child component **CounterView(label: 'CounterView \#negative')** is created, with the **counter** state variable set to the initial value **0**.
+Initial rendering: creates **CounterView** child component with label **"CounterView \#positive"** and initial **counter** value **0**.
+
+**Modification to the counter variable of CounterView**: re-renders the existing **CounterView** component (with label **"CounterView #positive"**) while preserving the state variable value.
+
+**MainView.toggle change to false**: updates the **if** statement, causing the following:
+1. Removal of the old **CounterView** instance (label: **"CounterView \#positive"**).
+2. Creation of a new **CounterView** instance (label: **"CounterView \#negative"**) with **counter** reset to **0**.
 
 > **NOTE**
 >
 > **CounterView(label: 'CounterView \#positive')** and **CounterView(label: 'CounterView \#negative')** are two distinct instances of the same custom component. When the **if** branch changes, there is no update to an existing child component or no preservation of state.
 
 The following example shows the required modifications if the value of **counter** needs to be preserved when the **if** condition changes:
-
 
 ```ts
 @Component
@@ -183,13 +186,11 @@ struct MainView {
 }
 ```
 
-Here, the \@State decorated variable **counter** is owned by the parent component. Therefore, it is not destroyed when a **CounterView** component instance is destroyed. The **CounterView** component refers to the state by an \@Link decorator. The state must be moved from a child to its parent (or parent of parent) to avoid losing it when the conditional content (or repeated content) is destroyed.
+Here, the \@State decorated variable **counter** is owned by the parent component. Therefore, it is not destroyed when a **CounterView** component instance is destroyed. The **CounterView** component references the state through the [\@Link](../state-management/arkts-link.md) decorator. The state must be moved from a child to its parent (or parent of parent) to avoid losing it when the conditional content (or repeated content) is destroyed.
 
+### Nested Conditional Statements
 
-### Nested if Statements
-
-The nesting of **if** statements makes no difference to the rule about the parent component.
-
+Nested conditional statements maintain the same rendering rules without affecting parent component constraints.
 
 ```ts
 @Entry
@@ -237,174 +238,6 @@ struct MyComponent {
     }
     .width('100%')
     .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-## FAQs
-
-### The if Branch Switching Protection Fails in the Animation Scenario
-
-Switching the **if/else** branch, which is used for data protection, in the animation and continuously using it, data access will throw an exception, causing a crash.
-
-Negative example:
-
-
-```ts
-class MyData {
-  str: string;
-  constructor(str: string) {
-    this.str = str;
-  }
-}
-@Entry
-@Component
-struct Index {
-  @State data1: MyData|undefined = new MyData("branch 0");
-  @State data2: MyData|undefined = new MyData("branch 1");
-
-  build() {
-    Column() {
-      if (this.data1) {
-        // If a Text is added or deleted in the animation, a default transition is added to Text.
-        // However, when the Text is deleted, the component lifecycle is prolonged after the default opacity transition is added. The Text component is not deleted until the transition animation is complete.
-        Text(this.data1.str)
-          .id("1")
-      } else if (this.data2) {
-        // If a Text is added or deleted in the animation, a default transition is added to Text.
-        Text(this.data2.str)
-          .id("2")
-      }
-
-      Button("play with animation")
-        .onClick(() => {
-          animateTo({}, ()=>{
-            // Change the if condition in animateTo, the first-layer component under the if condition is transitioned by default in the animation.
-            if (this.data1) {
-              this.data1 = undefined;
-              this.data2 = new MyData("branch 1");
-            } else {
-              this.data1 = new MyData("branch 0");
-              this.data2 = undefined;
-            }
-          })
-        })
-
-      Button("play directlp")
-        .onClick(() => {
-          // Directly changing the if condition enables proper branch switching, and the default transition is not added even is .
-          if (this.data1) {
-            this.data1 = undefined;
-            this.data2 = new MyData("branch 1");
-          } else {
-            this.data1 = new MyData("branch 0");
-            this.data2 = undefined;
-          }
-        })
-    }.width("100%")
-    .padding(10)
-  }
-}
-```
-
-Positive example:
-
-Method 1: Add a null check protection to data when using data. For example, **Text(this.data1?.str)**.
-
-
-```ts
-class MyData {
-  str: string;
-  constructor(str: string) {
-    this.str = str;
-  }
-}
-@Entry
-@Component
-struct Index {
-  @State data1: MyData|undefined = new MyData("branch 0");
-  @State data2: MyData|undefined = new MyData("branch 1");
-
-  build() {
-    Column() {
-      if (this.data1) {
-        // If a Text is added or deleted in the animation, a default transition is added to Text.
-        // However, when the Text is deleted, the component lifecycle is prolonged after the default opacity transition is added. The Text component is not deleted until the transition animation is complete.
-        // Add a null check protection when using data. If data1 exists, use str in data1.
-        Text(this.data1?.str)
-          .id("1")
-      } else if (this.data2) {
-        // If a Text is added or deleted in the animation, a default transition is added to Text.
-        // Add a null check protection when using data.
-        Text(this.data2?.str)
-          .id("2")
-      }
-
-      Button("play with animation")
-        .onClick(() => {
-          animateTo({}, ()=>{
-            // Change the if condition in animateTo, the first-layer component under the if condition is transitioned by default in the animation.
-            if (this.data1) {
-              this.data1 = undefined;
-              this.data2 = new MyData("branch 1");
-            } else {
-              this.data1 = new MyData("branch 0");
-              this.data2 = undefined;
-            }
-          })
-        })
-    }.width("100%")
-    .padding(10)
-  }
-}
-```
-
-Method 2: Add the **transition(TransitionEffect.IDENTITY)** attribute to the component to be deleted in the **if/else** statement to prevent the system from adding the default transition.
-
-
-```ts
-class MyData {
-  str: string;
-  constructor(str: string) {
-    this.str = str;
-  }
-}
-@Entry
-@Component
-struct Index {
-  @State data1: MyData|undefined = new MyData("branch 0");
-  @State data2: MyData|undefined = new MyData("branch 1");
-
-  build() {
-    Column() {
-      if (this.data1) {
-        // Display the specified null transition effect in the root component of the if/else statement to avoid the default transition animation.
-        Text(this.data1.str)
-          .transition(TransitionEffect.IDENTITY)
-          .id("1")
-      } else if (this.data2) {
-        // Display the specified null transition effect in the root component of the if/else statement to avoid the default transition animation.
-        Text(this.data2.str)
-          .transition(TransitionEffect.IDENTITY)
-          .id("2")
-      }
-
-      Button("play with animation")
-        .onClick(() => {
-          animateTo({}, ()=>{
-            // Change the if condition in animateTo, the first-layer component under the if condition is transitioned by default in the animation.
-            // The default transition will not be added if the specified transition has been displayed.
-            if (this.data1) {
-              this.data1 = undefined;
-              this.data2 = new MyData("branch 1");
-            } else {
-              this.data1 = new MyData("branch 0");
-              this.data2 = undefined;
-            }
-          })
-        })
-    }.width("100%")
-    .padding(10)
   }
 }
 ```
