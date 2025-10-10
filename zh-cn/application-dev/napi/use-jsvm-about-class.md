@@ -1,4 +1,4 @@
-# 使用JSVM进行class相关开发
+# 使用JSVM-API接口进行class相关开发
 
 ## 简介
 

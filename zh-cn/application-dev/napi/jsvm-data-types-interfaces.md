@@ -799,13 +799,13 @@ RunWithOption: success: 1
 RunWithOrigin: success: 1
 ```
 
-OH_JSVM_CreateCodeCache 接口用法可参考[使用 code cache 加速编译](use-jsvm-about-code-cache.md)。
+OH_JSVM_CreateCodeCache接口用法可参考[使用code cache加速编译](use-jsvm-about-code-cache.md)。
 
-### 使用 JSVM-API WebAssembly 接口编译 wasm module
+### 使用JSVM-API WebAssembly接口编译wasm module
 
 **场景介绍**
 
-JSVM-API WebAssembly 接口提供了 WebAssembly 字节码编译、WebAssembly 函数优化、WebAssembly cache 序列化和反序列化的能力。
+JSVM-API WebAssembly接口提供了WebAssembly字节码编译、WebAssembly函数优化、WebAssembly cache序列化和反序列化的能力。
 详见[使用 JSVM-API WebAssembly 接口](use-jsvm-about-wasm.md)。
 
 **接口说明**
@@ -820,7 +820,7 @@ JSVM-API WebAssembly 接口提供了 WebAssembly 字节码编译、WebAssembly �
 
 **场景示例**
 
-详见[使用 JSVM-API WebAssembly 接口](use-jsvm-about-wasm.md)。
+详见[使用JSVM-API WebAssembly接口](use-jsvm-about-wasm.md)。
 
 ### 异常处理
 
@@ -1164,7 +1164,7 @@ size_t arrayBufferLength = 0;
 OH_JSVM_GetArraybufferInfo(env, retArrayBuffer, &tmpArrayBufferPtr, &arrayBufferLength);
 ```
 
-根据 UTF-8 编码的 C 字符串创建一个 JavaScript 字符串，以及获取给定 JavaScript 字符串的 UTF-8 编码 C 字符串。
+根据UTF-8编码的C字符串创建一个JavaScript字符串，以及获取给定JavaScript字符串的UTF-8编码C字符串。
 
 ```c++
 const char *testStringStr = "testString";
@@ -2002,7 +2002,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
 ```
 场景示例：设置父类并通过DefineClassOptions设置监听拦截属性操作
 
-具体示例参考[使用JSVM进行class相关开发](use-jsvm-about-class.md)。
+具体示例参考[使用JSVM-API接口进行class相关开发](use-jsvm-about-class.md)。
 
 ### 版本管理
 
