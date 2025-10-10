@@ -45,8 +45,8 @@ import { dragInteraction } from '@kit.ArkUI';
 
 | 名称           | 类型            | 只读 | 	可选 | 说明                   |
 | ---------      | -------------- | ---- | ---- | ------------------------|
-| dataType     | string          | 否   | 是   | 拖拽对象类型。 |
-| dataSize     | number          | 否   | 是   | 拖拽对象数据长度。 |
+| dataType     | string          | 否   | 否  | 拖拽对象类型。 |
+| dataSize     | number          | 否   | 否  | 拖拽对象数据长度。 |
 
 ## dragInteraction.on('drag')
 
