@@ -531,8 +531,8 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.queryAllApns().then((data: Array<data.ApnInfo>) => {
-    console.info(`queryAllApns success, promise: data->${JSON.stringify(data)}`);
+data.queryAllApns().then((apnInfos: Array<data.ApnInfo>) => {
+    console.info(`queryAllApns success, promise: apnInfos->${JSON.stringify(apnInfos)}`);
 }).catch((err: BusinessError) => {
     console.error(`queryAllApns failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -583,8 +583,8 @@ apnInfo = {
   mnc: "07",
 };
 
-data.queryApnIds(apnInfo).then((data: Array<number>) => {
-    console.info(`queryApnIds success, promise: data->${JSON.stringify(data)}`);
+data.queryApnIds(apnInfo).then((apnIds: Array<number>) => {
+    console.info(`queryApnIds success, apnIds: ${apnIds}`);
 }).catch((err: BusinessError) => {
     console.error(`queryApnIds failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -631,8 +631,8 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let apnId: number = 0; // apnId为通过queryApnIds返回的有效值，setPreferredApn传入无效的apnId会切回运营商默认配置的优选APN。
-data.setPreferredApn(apnId).then((data: boolean) => {
-    console.info(`setPreferredApn success, promise: data->${JSON.stringify(data)}`);
+data.setPreferredApn(apnId).then((result: boolean) => {
+    console.info(`setPreferredApn result: ${result}`);
 }).catch((err: BusinessError) => {
     console.error(`setPreferredApn failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -668,8 +668,8 @@ getActiveApnName(): Promise\<string\>
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getActiveApnName().then((data: string) => {
-    console.info(`getActiveApnName success, promise: data->${JSON.stringify(data)}`);
+data.getActiveApnName().then((apn: string) => {
+    console.info(`getActiveApnName success, apn: ${apn}`);
 }).catch((err: BusinessError) => {
     console.error(`getActiveApnName failed, promise: err->${JSON.stringify(err)}`);
 });
