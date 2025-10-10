@@ -466,7 +466,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 
 **描述**
 
-将填充数据的输入缓冲区提交给视频解码器。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅[OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata)。一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据。
+将填充数据的输入缓冲区提交给视频解码器。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅[OH_AVCodecOnNeedInputData](_codec_base.md#oh_avcodeconneedinputdata)。一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -481,7 +481,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频解码实例的指针。 |
-| uint32_t index | 输入Buffer对应的索引值。由[OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata)给出。 |
+| uint32_t index | 输入Buffer对应的索引值。由[OH_AVCodecOnNeedInputData](_codec_base.md#oh_avcodeconneedinputdata)给出。 |
 | OH_AVCodecBufferAttr attr | 描述缓冲区中包含的数据的信息。 |
 
 **返回：**
@@ -513,7 +513,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频解码实例的指针。 |
-| uint32_t index | 输出Buffer对应的索引值。由[OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata)给出。 |
+| uint32_t index | 输出Buffer对应的索引值。由[OH_AVCodecOnNewOutputData](_codec_base.md#oh_avcodeconnewoutputdata)给出。 |
 
 **返回：**
 
@@ -544,7 +544,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频解码实例的指针。 |
-| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata)给出。 |
+| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputData](_codec_base.md#oh_avcodeconnewoutputdata)给出。 |
 
 **返回：**
 
@@ -560,7 +560,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 **描述**
 
-通知视频解码器已对index对应的缓冲区完成输入数据的填充。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)。一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据。<br> 开发者可以使用该接口把解码需要的参数集如H.264格式的PPS/SPS传递给解码器，该参数集可以单独送入解码器也可以和要解码的数据一起传入。
+通知视频解码器已对index对应的缓冲区完成输入数据的填充。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅[OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer)。一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据。<br> 开发者可以使用该接口把解码需要的参数集如H.264格式的PPS/SPS传递给解码器，该参数集可以单独送入解码器也可以和要解码的数据一起传入。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -571,7 +571,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频解码实例的指针。 |
-| uint32_t index | 输入buffer对应的索引值。由[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)给出。 |
+| uint32_t index | 输入buffer对应的索引值。由[OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer)给出。 |
 
 **返回：**
 
@@ -598,7 +598,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t inde
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频解码实例的指针。 |
-| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)给出。 |
+| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputBuffer](_codec_base.md#oh_avcodeconnewoutputbuffer)给出。 |
 
 **返回：**
 
@@ -625,7 +625,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频解码实例的指针。 |
-| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)给出。 |
+| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputBuffer](_codec_base.md#oh_avcodeconnewoutputbuffer)给出。 |
 | int64_t renderTimestampNs | 输出buffer被发送到surface的时间戳，取值范围大于0，应由std::chrono::steady_clock标准库时钟生成，且单位为纳秒。 |
 
 **返回：**
@@ -653,7 +653,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频解码实例的指针 |
-| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)给出。 |
+| uint32_t index | 输出buffer对应的索引值。由[OH_AVCodecOnNewOutputBuffer](_codec_base.md#oh_avcodeconnewoutputbuffer)给出。 |
 
 **返回：**
 
