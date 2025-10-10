@@ -3692,74 +3692,110 @@ createComponentObserver(id: string): inspector.ComponentObserver
 | ------------------------------------------------------------ | -------------------------------------------------- |
 | [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
-**ArkTS-Sta 示例:**
+ArkTS1.1示例：
 
-<!--code_no_check-->
 ```ts
-import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement'
-import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
-import hilog from '@ohos.hilog';
-import inspector from '@ohos.arkui.inspector';
+import { inspector } from '@kit.ArkUI'
 
+@Entry
 @Component
-struct MyStateSample {
-  private listener: inspector.ComponentObserver|undefined = undefined;
+struct ImageExample {
   build() {
-    Row() {
-      Column() {
-        Text("hello")
-          .width('70%')
-          .height('70%')
-          .id("TEXT1")
-          .onClick(
-            (ev: ClickEvent) => {
-              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
-            }
-          )
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
       }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
+    }.height(320).width(360).padding({ right: 10, top: 10 })
   }
+
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
 
   aboutToAppear() {
-    this.listener = this.getUIContext().getUIInspector().createComponentObserver("TEXT1")
     let onLayoutComplete:()=>void=():void=>{
-      hilog.info(0x0000, 'testTag', "TEXT1 layout complete");
+        // 补充待实现的功能
     }
     let onDrawComplete:()=>void=():void=>{
-      hilog.info(0x0000, 'testTag', "TEXT1 draw complete");
+        // 补充待实现的功能
     }
+    let onDrawChildrenComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let FuncLayout = onLayoutComplete // 绑定当前js对象
+    let FuncDraw = onDrawComplete // 绑定当前js对象
+    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
+    let OffFuncDraw = onDrawComplete // 绑定当前js对象
+    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
 
-    if (this.listener != undefined) {
-      this.listener!.on('layout', onLayoutComplete)
-      this.listener!.on('draw', onDrawComplete)
-      // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-      // this.listener.off('layout', onLayoutComplete)
-      // this.listener.off('draw', onDrawComplete)
-    } else {
-      hilog.error(0x0000, 'testTag', "listener is undefined");
-    }
+    this.listener.on('layout', FuncLayout)
+    this.listener.on('draw', FuncDraw)
+    this.listener.on('drawChildren', FuncDrawChildren)
+    
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+    // this.listener.off('drawChildren', OffFuncDrawChildren)
   }
 }
+```
 
-@Builder
-function ColumChild() {
-  Column() {
-    Text('FullScreenLaunchComponent').width('100%')
-      .height('100%')
+ArkTS1.2示例：
+
+```ts
+import { inspector } from '@ohos.arkui.inspector'
+import { Column, Row, Image, Flex, FlexDirection, 
+ItemAlign, Image, $r, Text, Component, Entry} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row() {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+      }
+    }.height(320).width(360)
   }
-}
 
-export class ComExampleTrivialApplication extends UserView {
-  getBuilder() {
-    hilog.info(0x0000, 'testTag', 'getBuilder');
-    let wrapper = @memo () => {
-      hilog.info(0x0000, 'testTag', 'MyStateSample');
-      MyStateSample(undefined)
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID') as inspector.ComponentObserver
+
+  aboutToAppear() {
+    let onLayoutComplete:()=>void=():void=>{
+        // 补充待实现的功能
     }
-    return wrapper
+    let onDrawComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let onDrawChildrenComplete:()=>void=():void=>{
+        // 补充待实现的功能
+    }
+    let FuncLayout = onLayoutComplete // 绑定当前js对象
+    let FuncDraw = onDrawComplete // 绑定当前js对象
+    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
+    let OffFuncDraw = onDrawComplete // 绑定当前js对象
+    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+
+    this.listener.onLayout(FuncLayout)
+    this.listener.onDraw(FuncDraw)
+    this.listener.onDrawChildren(onDrawChildrenComplete)
+    
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.offLayout(OffFuncLayout)
+    // this.listener.offDraw(OffFuncDraw)
+    // this.listener.offDrawChildren(OffFuncDrawChildren)
   }
 }
 ```
