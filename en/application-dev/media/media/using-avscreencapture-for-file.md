@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Screen capture is mainly used to record the main screen.
 
@@ -12,7 +12,7 @@ You can call the C APIs of the [AVScreenCapture](media-kit-intro.md#avscreencapt
 
 The AVScreenCapture, Window, and Graphics modules together implement the entire video capture process.
 
-The full screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing the instance.
+The full-screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing the instance.
 
 If you are in a call when screen capture starts or a call is coming during screen capture, screen capture automatically stops, and the **OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL** status is reported.
 
@@ -42,6 +42,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
     #include <multimedia/player_framework/native_avscreen_capture_errors.h>
     #include <fcntl.h>
     #include <string>
+    #include <unistd.h>
     ```
 
 2. Create an AVScreenCapture instance, named **capture** in this example.
@@ -138,6 +139,10 @@ Refer to the sample code below to implement captured file storage using AVScreen
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
 #include <fcntl.h>
 #include <string>
+#include <unistd.h>
+
+int32_t outputFd;
+struct OH_AVScreenCapture* capture;
 
 void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData) {
     (void)capture;
@@ -185,12 +190,15 @@ void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectio
     (void)userData;
     int* selectType = new int;
     uint64_t* displayId = new uint64_t;
+
     // Obtain the selection type and display ID through the API. OH_AVScreenCapture_UserSelectionInfo* selections is valid only in the OnUserSelected callback.
     OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
     OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
+
+    // Release the allocated memory after use.
+    delete selectType, displayId;
 }
 
-struct OH_AVScreenCapture *capture;
 // Call StartScreenCapture to start screen capture.
 static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     OH_AVScreenCaptureConfig config;
@@ -247,7 +255,15 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // Initialize the screen capture parameters and pass in an OH_AVScreenRecorderConfig struct.
     OH_RecorderInfo recorderInfo;
     const std::string SCREEN_CAPTURE_ROOT = "/data/storage/el2/base/files/";
-    int32_t outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);
+    outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);
+
+    // If opening or creation fails, handle the failure and return the error information.
+    if (outputFd == -1) {
+        napi_value errCode;
+        napi_create_double(env, AV_SCREEN_CAPTURE_ERR_IO, &errCode);
+        return errCode;
+    }
+
     std::string fileUrl = "fd://" + std::to_string(outputFd);
     recorderInfo.url = const_cast<char *>(fileUrl.c_str());
     recorderInfo.fileFormat = OH_ContainerFormatType::CFT_MPEG_4;
@@ -287,16 +303,26 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     uint64_t regionDisplayId = 0; // ID of the display where the rectangle area is located.
     OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
     
+    // Release the allocated memory.
+    delete region;
+
     // Start screen capture.
     int32_t retStart = OH_AVScreenCapture_StartScreenRecording(capture);
+
+    // If starting screen capture fails, handle the failure and return the error information.
+    if (retStart != AV_SCREEN_CAPTURE_ERR_OK) {
+        napi_value errCode;
+        napi_create_double(env, retStart, &errCode);
+        return errCode;
+    }
 
     // Call StopScreenCapture to stop screen capture.
     
     // Return the call result. In the example, only a random number is returned.
-    napi_value sum;
-    napi_create_double(env, 5, &sum);
+    napi_value code;
+    napi_create_double(env, AV_SCREEN_CAPTURE_ERR_OK, &code);
 
-    return sum;
+    return code;
 }
 
 // Call StopScreenCapture to stop screen capture.
@@ -305,15 +331,34 @@ static napi_value StopScreenCapture(napi_env env, napi_callback_info info) {
         // Stop screen capture.
         int32_t retStop = OH_AVScreenCapture_StopScreenRecording(capture);
 
+        // Close the file access.
+        close(outputFd);
+
+        // If stopping screen capture fails, handle the failure and return the error information.
+        if (retStop != AV_SCREEN_CAPTURE_ERR_OK) {
+            napi_value errCode;
+            napi_create_double(env, retStop, &errCode);
+            return errCode;
+        }
+
         // Release the AVScreenCapture instance.
         int32_t retRelease = OH_AVScreenCapture_Release(capture);
+
+        // If releasing the AVScreenCapture instance fails, handle the failure and return the error information.
+        if (retRelease != AV_SCREEN_CAPTURE_ERR_OK) {
+            napi_value errCode;
+            napi_create_double(env, retRelease, &errCode);
+            return errCode;
+        }
+
         capture = nullptr;
     }
-    // Return the call result. In the example, only a random number is returned.
-    napi_value sum;
-    napi_create_double(env, 5, &sum);
 
-    return sum;
+    // Return a success message.
+    napi_value code;
+    napi_create_double(env, AV_SCREEN_CAPTURE_ERR_OK, &code);
+
+    return code;
 }
 
 EXTERN_C_START

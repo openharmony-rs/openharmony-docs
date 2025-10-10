@@ -6123,6 +6123,60 @@ try {
 }
 ```
 
+## bundleManager.setAbilityFileTypesForSelf<sup>22+</sup>
+
+setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fileTypes: Array\<string>): void
+
+设置当前应用支持打开的文件类型。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_SELF_SKILLS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**设备行为差异：** 该接口在PC/2in1中可正常调用，在其他设备类型中返回201错误码。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | ---------------------------- |
+| moduleName  | string | 是   | 表示模块的名称。 |
+| abilityName  | string | 是   | 表示UIAbility组件的名称。 |
+| fileTypes  | Array\<string> | 是   | 表示文件类型。fileTypes数组长度不能超过1024，每个元素不能超过512个字符，元素取值为[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)中的值，元素不能为空、通配符、general.object。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700002 | The specified moduleName is not found. |
+| 17700003 | The specified abilityName is not found. |
+| 17700351 | Invalid fileTypes. Possible causes:1. The array length exceeds 1024; 2. The array contains an empty item; 3. An item exceeds 512 characters; 4. The array contains wildcard or general.object. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let moduleName: string = "entry";
+let abilityName: string = "EntryAbility";
+let fileTypes: Array<string> = ["general.png", "general.jpeg"];
+
+try {
+    bundleManager.setAbilityFileTypesForSelf(moduleName, abilityName, fileTypes);
+    hilog.info(0x0000, 'testTag', 'setAbilityFileTypesForSelf successfully');
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'setAbilityFileTypesForSelf failed. Cause: %{public}s', message);
+}
+```
+
 ## PermissionDef
 
 type PermissionDef = _PermissionDef

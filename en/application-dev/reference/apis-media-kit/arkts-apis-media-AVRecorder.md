@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -97,7 +97,7 @@ let avRecorderConfig: media.AVRecorderConfig = {
 
 avRecorder.prepare(avRecorderConfig, (err: BusinessError) => {
   if (err) {
-    console.error('Failed to prepare and error is: ' + err.message);
+    console.error(`Failed to prepare and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in preparing');
   }
@@ -177,7 +177,7 @@ avRecorder.prepare(avRecorderConfig).then(() => {
   console.info('Succeeded in preparing');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to prepare and error is: ' + error.message);
+  console.error(`Failed to prepare and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -185,7 +185,9 @@ avRecorder.prepare(avRecorderConfig).then(() => {
 
 getInputSurface(callback: AsyncCallback\<string>): void
 
-Obtains the surface required for recording. This API uses an asynchronous callback to return the result. The caller obtains the **surfaceBuffer** from this surface and fills in the corresponding video data.
+Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
+
+The caller obtains the surface buffer from this surface and fills in the corresponding video data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 
@@ -217,7 +219,7 @@ let surfaceID: string; // The surfaceID is transferred to the camera API to crea
 
 avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
   if (err) {
-    console.error('Failed to do getInputSurface and error is: ' + err.message);
+    console.error(`Failed to do getInputSurface and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in doing getInputSurface');
     surfaceID = surfaceId;
@@ -230,7 +232,9 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 
 getInputSurface(): Promise\<string>
 
-Obtains the surface required for recording. This API uses a promise to return the result. The caller obtains the **surfaceBuffer** from this surface and fills in the corresponding video data.
+Obtains the surface required for recording. This API uses a promise to return the result.
+
+The caller obtains the surface buffer from this surface and fills in the corresponding video data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 
@@ -242,7 +246,7 @@ This API can be called only after the [prepare()](#prepare9-1) API is called.
 
 | Type            | Description                            |
 | ---------------- | -------------------------------- |
-| Promise\<string> | Promise used to return the result.|
+| Promise\<string> | Promise used to return the surface buffer obtained from the surface.|
 
 **Error codes**
 
@@ -265,7 +269,7 @@ avRecorder.getInputSurface().then((surfaceId: string) => {
   surfaceID = surfaceId;
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to get InputSurface and error is: ' + error.message);
+  console.error(`Failed to get InputSurface and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -313,7 +317,7 @@ avRecorder.updateRotation(rotation).then(() => {
   console.info('Succeeded in doing updateRotation');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to do updateRotation and error is: ' + error.message);
+  console.error(`Failed to do updateRotation and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -355,7 +359,7 @@ avRecorder.setWillMuteWhenInterrupted(true).then(() => {
   console.info('Succeeded in doing setWillMuteWhenInterrupted');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to do setWillMuteWhenInterrupted and error is: ' + error.message);
+  console.error(`Failed to do setWillMuteWhenInterrupted and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -363,7 +367,7 @@ avRecorder.setWillMuteWhenInterrupted(true).then(() => {
 
 start(callback: AsyncCallback\<void>): void
 
-Starts recording. This API uses an asynchronous callback to return the result.
+Starts video recording. This API uses an asynchronous callback to return the result.
 
 For audio-only recording, this API can be called only after the [prepare()](#prepare9) API is called. For video-only recording, this API can be called only after the [getInputSurface()](#getinputsurface9) API is called.
 
@@ -392,7 +396,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 avRecorder.start((err: BusinessError) => {
   if (err) {
-    console.error('Failed to start AVRecorder and error is: ' + err.message);
+    console.error(`Failed to start AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in starting AVRecorder');
   }
@@ -403,7 +407,7 @@ avRecorder.start((err: BusinessError) => {
 
 start(): Promise\<void>
 
-Starts recording. This API uses a promise to return the result.
+Starts video recording. This API uses a promise to return the result.
 
 For audio-only recording, this API can be called only after the [prepare()](#prepare9-1) API is called. For video-only recording, this API can be called only after the [getInputSurface()](#getinputsurface9-1) API is called.
 
@@ -436,7 +440,7 @@ avRecorder.start().then(() => {
   console.info('Succeeded in starting AVRecorder');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to start AVRecorder and error is: ' + error.message);
+  console.error(`Failed to start AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -444,7 +448,7 @@ avRecorder.start().then(() => {
 
 pause(callback: AsyncCallback\<void>): void
 
-Pauses recording. This API uses an asynchronous callback to return the result.
+Pauses video recording. This API uses an asynchronous callback to return the result.
 
 This API can be called only after the [start()](#start9) API is called. You can call [resume()](#resume9) to resume recording.
 
@@ -473,7 +477,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 avRecorder.pause((err: BusinessError) => {
   if (err) {
-    console.error('Failed to pause AVRecorder and error is: ' + err.message);
+    console.error(`Failed to pause AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in pausing');
   }
@@ -484,7 +488,7 @@ avRecorder.pause((err: BusinessError) => {
 
 pause(): Promise\<void>
 
-Pauses recording. This API uses a promise to return the result.
+Pauses video recording. This API uses a promise to return the result.
 
 This API can be called only after the [start()](#start9-1) API is called. You can call [resume()](#resume9-1) to resume recording.
 
@@ -517,7 +521,7 @@ avRecorder.pause().then(() => {
   console.info('Succeeded in pausing');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to pause AVRecorder and error is: ' + error.message);
+  console.error(`Failed to pause AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -525,7 +529,7 @@ avRecorder.pause().then(() => {
 
 resume(callback: AsyncCallback\<void>): void
 
-Resumes recording. This API uses an asynchronous callback to return the result.
+Resumes video recording. This API uses an asynchronous callback to return the result.
 
 This API can be called only after the [pause()](#pause9) API is called.
 
@@ -554,7 +558,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 avRecorder.resume((err: BusinessError) => {
   if (err) {
-    console.error('Failed to resume AVRecorder and error is: ' + err.message);
+    console.error(`Failed to resume AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in resuming AVRecorder');
   }
@@ -565,7 +569,7 @@ avRecorder.resume((err: BusinessError) => {
 
 resume(): Promise\<void>
 
-Resumes recording. This API uses a promise to return the result.
+Resumes video recording. This API uses a promise to return the result.
 
 This API can be called only after the [pause()](#pause9-1) API is called.
 
@@ -598,7 +602,7 @@ avRecorder.resume().then(() => {
   console.info('Succeeded in resuming AVRecorder');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to resume AVRecorder failed and error is: ' + error.message);
+  console.error(`Failed to resume AVRecorder failed and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -606,7 +610,7 @@ avRecorder.resume().then(() => {
 
 stop(callback: AsyncCallback\<void>): void
 
-Stops recording. This API uses an asynchronous callback to return the result.
+Stops video recording. This API uses an asynchronous callback to return the result.
 
 This API can be called only after the [start()](#start9) or [pause()](#pause9) API is called.
 
@@ -637,7 +641,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 avRecorder.stop((err: BusinessError) => {
   if (err) {
-    console.error('Failed to stop AVRecorder and error is: ' + err.message);
+    console.error(`Failed to stop AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in stopping AVRecorder');
   }
@@ -648,7 +652,7 @@ avRecorder.stop((err: BusinessError) => {
 
 stop(): Promise\<void>
 
-Stops recording. This API uses a promise to return the result.
+Stops video recording. This API uses a promise to return the result.
 
 This API can be called only after the [start()](#start9-1) or [pause()](#pause9-1) API is called.
 
@@ -683,7 +687,7 @@ avRecorder.stop().then(() => {
   console.info('Succeeded in stopping AVRecorder');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to stop AVRecorder and error is: ' + error.message);
+  console.error(`Failed to stop AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -719,7 +723,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 avRecorder.reset((err: BusinessError) => {
   if (err) {
-    console.error('Failed to reset AVRecorder and error is: ' + err.message);
+    console.error(`Failed to reset AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in resetting AVRecorder');
   }
@@ -760,7 +764,7 @@ avRecorder.reset().then(() => {
   console.info('Succeeded in resetting AVRecorder');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to reset AVRecorder and error is: ' + error.message);
+  console.error(`Failed to reset AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -795,7 +799,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 avRecorder.release((err: BusinessError) => {
   if (err) {
-    console.error('Failed to release AVRecorder and error is: ' + err.message);
+    console.error(`Failed to release AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in releasing AVRecorder');
   }
@@ -837,7 +841,7 @@ avRecorder.release().then(() => {
   console.info('Succeeded in releasing AVRecorder');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to release AVRecorder and error is: ' + error.message);
+  console.error(`Failed to release AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -877,7 +881,7 @@ let currentCapturerInfo: audio.AudioCapturerChangeInfo;
 
 avRecorder.getCurrentAudioCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapturerChangeInfo) => {
   if (err) {
-    console.error('Failed to get CurrentAudioCapturerInfo and error is: ' + err.message);
+    console.error(`Failed to get CurrentAudioCapturerInfo and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in getting CurrentAudioCapturerInfo');
     currentCapturerInfo = capturerInfo;
@@ -924,7 +928,7 @@ avRecorder.getCurrentAudioCapturerInfo().then((capturerInfo: audio.AudioCapturer
   currentCapturerInfo = capturerInfo;
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to get CurrentAudioCapturerInfo and error is: ' + error.message);
+  console.error(`Failed to get CurrentAudioCapturerInfo and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -964,7 +968,7 @@ let maxAmplitude: number;
 
 avRecorder.getAudioCapturerMaxAmplitude((err: BusinessError, amplitude: number) => {
   if (err) {
-    console.error('Failed to get AudioCapturerMaxAmplitude and error is: ' + err.message);
+    console.error(`Failed to get AudioCapturerMaxAmplitude and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in getting AudioCapturerMaxAmplitude');
     maxAmplitude = amplitude;
@@ -1011,7 +1015,7 @@ avRecorder.getAudioCapturerMaxAmplitude().then((amplitude: number) => {
   maxAmplitude = amplitude;
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to get AudioCapturerMaxAmplitude and error is: ' + error.message);
+  console.error(`Failed to get AudioCapturerMaxAmplitude and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1047,7 +1051,7 @@ let encoderInfo: media.EncoderInfo;
 
 avRecorder.getAvailableEncoder((err: BusinessError, info: media.EncoderInfo[]) => {
   if (err) {
-    console.error('Failed to get AvailableEncoder and error is: ' + err.message);
+    console.error(`Failed to get AvailableEncoder and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in getting AvailableEncoder');
     if (info.length > 0) {
@@ -1098,7 +1102,7 @@ avRecorder.getAvailableEncoder().then((info: media.EncoderInfo[]) => {
     }
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to get AvailableEncoder and error is: ' + error.message);
+  console.error(`Failed to get AvailableEncoder and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1137,7 +1141,7 @@ let avConfig: media.AVRecorderConfig;
 
 avRecorder.getAVRecorderConfig((err: BusinessError, config: media.AVRecorderConfig) => {
   if (err) {
-    console.error('Failed to get avConfig and error is: ' + err.message);
+    console.error(`Failed to get avConfig and error is: Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('Succeeded in getting AVRecorderConfig');
     avConfig = config;
@@ -1183,7 +1187,7 @@ avRecorder.getAVRecorderConfig().then((config: media.AVRecorderConfig) => {
   avConfig = config;
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
-  console.error('Failed to get AVRecorderConfig and error is: ' + error.message);
+  console.error(`Failed to get AVRecorderConfig and error is: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1191,7 +1195,7 @@ avRecorder.getAVRecorderConfig().then((config: media.AVRecorderConfig) => {
 
 on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
-Subscribes to AVRecorder state changes. An application can subscribe to only one AVRecorder state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+Subscribes to AVRecorder state changes. An application can subscribe to only one AVRecorder state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1202,7 +1206,7 @@ Subscribes to AVRecorder state changes. An application can subscribe to only one
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system.|
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | Yes  | Callback invoked when the event is triggered.|
+| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | Yes  | Callback used to return the state change event.|
 
 **Error codes**
 
@@ -1225,7 +1229,7 @@ avRecorder.on('stateChange', async (state: media.AVRecorderState, reason: media.
 
 off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
-Unsubscribes from AVRecorder state changes.
+Unsubscribes from AVRecorder state changes. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1236,7 +1240,7 @@ Unsubscribes from AVRecorder state changes.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system.|
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | No  | Callback invoked when the event is triggered.<br>This parameter is supported since API version 12.|
+| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | No  | Callback used to return the state change event.<br>This parameter is supported since API version 12.|
 
 **Example**
 
@@ -1248,7 +1252,7 @@ avRecorder.off('stateChange');
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to AVRecorder errors. This event is used only for error prompt and does not require the user to stop recording control. If the [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) is also switched to error, call [reset()](#reset9) or [release()][release()](#release9) to exit the recording.
+Subscribes to AVRecorder errors. This event is used only for error prompt and does not require the user to stop recording control. If the [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) is also switched to error, call [reset()](#reset9) or [release()][release()](#release9) to exit the recording. This API uses an asynchronous callback to return the result.
 
 An application can subscribe to only one AVRecorder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
@@ -1261,7 +1265,7 @@ An application can subscribe to only one AVRecorder error event. When the applic
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | Yes  | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during recording.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback invoked when the event is triggered.                                      |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return the recording error event.                                      |
 
 **Error codes**
 
@@ -1286,7 +1290,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avRecorder.on('error', (err: BusinessError) => {
-  console.info('case avRecorder.on(error) called, errMessage is ' + err.message);
+  console.error(`case avRecorder.on(error) called. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1294,7 +1298,7 @@ avRecorder.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Unsubscribes from AVRecorder errors. After the unsubscription, your application can no longer receive AVRecorder errors.
+Unsubscribes from AVRecorder errors. After the unsubscription, your application can no longer receive AVRecorder errors. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1305,7 +1309,7 @@ Unsubscribes from AVRecorder errors. After the unsubscription, your application 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during recording.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback invoked when the event is triggered.<br>This parameter is supported since API version 12.                  |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the recording error event.<br>This parameter is supported since API version 12.                  |
 
 **Example**
 
@@ -1317,7 +1321,7 @@ avRecorder.off('error');
 
 on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo>): void
 
-Subscribes to audio capturer configuration changes. Any configuration change triggers the callback that returns the entire configuration information.
+Subscribes to audio capturer configuration changes. Any configuration change triggers the callback that returns the entire configuration information. This API uses an asynchronous callback to return the result.
 
 When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
@@ -1328,7 +1332,7 @@ When the application initiates multiple subscriptions to this event, the last su
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  |Event type, which is **'audioCapturerChange'** in this case.|
-| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | Yes| Callback used to return the entire configuration information about the audio capturer.|
+| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | Yes| Callback used to return the changed audio capturer configuration.|
 
 **Error codes**
 
@@ -1355,7 +1359,7 @@ avRecorder.on('audioCapturerChange',  (audioCapturerChangeInfo: audio.AudioCaptu
 
 off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeInfo>): void
 
-Subscribes to audio capturer configuration changes.
+Subscribes to audio capturer configuration changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1364,7 +1368,7 @@ Subscribes to audio capturer configuration changes.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'audioCapturerChange'** in this case.|
-| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | No| Callback used to return the entire configuration information about the audio capturer.<br>This parameter is supported since API version 12.|
+| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | No| Callback used to return the changed audio capturer configuration.<br>This parameter is supported since API version 12.|
 
 **Example**
 
@@ -1376,7 +1380,7 @@ avRecorder.off('audioCapturerChange');
 
 on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset>): void
 
-Subscribes to media asset callback events. When [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12) is used during media file creation, the [PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md) object is called back to the application after the [stop](#stop9) operation is complete.
+Subscribes to media asset callback events. When [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12) is used during media file creation, the [PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md) object is called back to the application after the [stop](#stop9) operation is complete. This API uses an asynchronous callback to return the result.
 
 When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
@@ -1444,7 +1448,7 @@ avRecorder.on('photoAssetAvailable',  (asset: photoAccessHelper.PhotoAsset) => {
 
 off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsset>): void
 
-Unsubscribes from media asset callback events.
+Unsubscribes from media asset callback events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
