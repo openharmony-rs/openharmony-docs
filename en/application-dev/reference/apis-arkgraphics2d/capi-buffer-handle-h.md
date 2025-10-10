@@ -2,9 +2,9 @@
 
 ## Overview
 
-The **buffer_handle.h** file declares the BufferHandle struct used by the NativeWindow module.
+This file declares the BufferHandle struct used by the NativeWindow module.
 
-**File to include:** <native_window//buffer_handle.h>
+**File to include**: <native_window//buffer_handle.h>
 
 **Library**: libnative_window.so
 
@@ -12,7 +12,7 @@ The **buffer_handle.h** file declares the BufferHandle struct used by the Native
 
 **Related module**: [NativeWindow](capi-nativewindow.md)
 
-## Total
+## Summary
 
 ### Structs
 

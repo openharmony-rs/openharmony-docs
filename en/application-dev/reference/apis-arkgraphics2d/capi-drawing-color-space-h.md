@@ -9,7 +9,7 @@
 
 ## Overview
 
-The **drawing_color_space.h** file declares the functions related to the color space in the drawing module.
+This file declares the functions related to the color space in the drawing module.
 
 **File to include:** <native_drawing/drawing_color_space.h>
 
@@ -19,7 +19,7 @@ The **drawing_color_space.h** file declares the functions related to the color s
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Functions
 
@@ -27,7 +27,7 @@ The **drawing_color_space.h** file declares the functions related to the color s
 | -- | -- |
 | [OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)](#oh_drawing_colorspacecreatesrgb) | Creates an sRGB color space.|
 | [OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)](#oh_drawing_colorspacecreatesrgblinear) | Creates an sRGB linear (Gamma 1.0) color space.|
-| [void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)](#oh_drawing_colorspacedestroy) | Destroys a color space object and reclaims the memory occupied by the object.|
+| [void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)](#oh_drawing_colorspacedestroy) | Destroys an **OH_Drawing_ColorSpace** object and reclaims the memory occupied by the object.|
 
 ## Function Description
 
@@ -45,11 +45,11 @@ Creates an sRGB color space.
 
 **Since**: 12
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* | The function returns a pointer pointing to the created color space object [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md).|
+| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* | Returns a pointer to the [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md) object created.|
 
 ### OH_Drawing_ColorSpaceCreateSrgbLinear()
 
@@ -65,11 +65,11 @@ Creates an sRGB linear (Gamma 1.0) color space.
 
 **Since**: 12
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* | The function returns a pointer pointing to the created color space object [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md).|
+| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* | Returns a pointer to the [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md) object created.|
 
 ### OH_Drawing_ColorSpaceDestroy()
 
@@ -90,4 +90,4 @@ Destroys an **OH_Drawing_ColorSpace** object and reclaims the memory occupied by
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* colorSpace | Pointer to the color space object [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md).|
+| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* colorSpace | Pointer to an [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md) object.|

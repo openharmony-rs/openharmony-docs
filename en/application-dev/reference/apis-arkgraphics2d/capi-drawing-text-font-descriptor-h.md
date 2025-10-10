@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The **drawing_text_font_descriptor.h** file declares the capabilities of font information, such as obtaining font information and searching for a font.
+This file declares the capabilities of font information, such as obtaining font information and searching for a font.
 
-**File to import**: <native_drawing/drawing_text_font_descriptor.h>
+**File to include**: <native_drawing/drawing_text_font_descriptor.h>
 
 **Library**: libnative_drawing.so
 
@@ -17,7 +17,7 @@ The **drawing_text_font_descriptor.h** file declares the capabilities of font in
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Enumerated value
 
@@ -29,8 +29,8 @@ The **drawing_text_font_descriptor.h** file declares the capabilities of font in
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescriptor* desc, size_t* num)](#oh_drawing_matchfontdescriptors) | Obtains all system font descriptors that match the specified font descriptor. The path field of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) is not a valid matching field. Other fields take effect only when they are not set to the default value.<br>If all fields of desc are set to the default value, all system font descriptors are obtained.<br>If no matching is found, NULL is returned. If the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) is no longer needed, use [OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors) API to release the pointer to the object.|
-| [void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, size_t num)](#oh_drawing_destroyfontdescriptors) | Releases the font descriptor [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) array.|
+| [OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescriptor* desc, size_t* num)](#oh_drawing_matchfontdescriptors) | Obtains all system font descriptors that match a font descriptor. In the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) struct, the **path** field is not used for matching, and other fields are valid only when they are not set to their default values.<br>If all fields in **desc** are set to their default values, all system font descriptors are returned.<br>If no matching is found, NULL is returned. Call [OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors) to release this pointer when the object is no longer needed.|
+| [void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, size_t num)](#oh_drawing_destroyfontdescriptors) | Releases an array of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) objects.|
 | [OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawing_String* fullName,OH_Drawing_SystemFontType fontType)](#oh_drawing_getfontdescriptorbyfullname) | Obtains a font descriptor based on the font name and type. System fonts, style fonts, and user-installed fonts are supported.<br>A font descriptor is a data structure that describes font features. It contains details of the font appearance and properties.|
 | [OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontType fontType)](#oh_drawing_getsystemfontfullnamesbytype) | Obtains an array of font names by font type.|
 | [const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Array* fullNameArray, size_t index)](#oh_drawing_getsystemfontfullnamebyindex) | Obtains the font name with the specified index in the font name array.|
@@ -46,7 +46,7 @@ enum OH_Drawing_SystemFontType
 
 **Description**
 
-Enumerates the system font types.
+Defines an enum for the system font types.
 
 **Since**: 14
 
@@ -69,7 +69,7 @@ OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescri
 
 **Description**
 
-Obtains all system font descriptors that match the specified font descriptor. The path field of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) is not a valid matching field. Other fields take effect when they are not set to the default values.<br>If all fields of desc are set to the default values, all system font descriptors are obtained.<br>If no matching is found, NULL is returned. When [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) is no longer needed, use [OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors) API to release the pointer of this object.
+Obtains all system font descriptors that match a font descriptor. In the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) struct, the **path** field is not used for matching, and other fields are valid only when they are not set to their default values.<br>If all fields in **desc** are set to their default values, all system font descriptors are returned.<br>If no matching is found, NULL is returned. Call [OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors) to release this pointer when the object is no longer needed.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -80,14 +80,14 @@ Obtains all system font descriptors that match the specified font descriptor. Th
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* desc | Pointer.<br>You are advised to use [OH_Drawing_CreateFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_createfontdescriptor) to obtain a valid [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance.<br>If you create a [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance by yourself, ensure that the fields that are not used for matching are set to the default values.|
+| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* desc | Pointer.<br>You are advised to use [OH_Drawing_CreateFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_createfontdescriptor) to obtain a valid [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance.<br>For an [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) instance created by yourself, ensure that the fields that are not used for matching are set to default values.|
 | size_t* num | Pointer to the number of elements in the array.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* | [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) array. Use [OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors) to release the array.|
+| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* | An array of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) objects. Use [OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors) to release the array.|
 
 ### OH_Drawing_DestroyFontDescriptors()
 
@@ -97,7 +97,7 @@ void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, s
 
 **Description**
 
-Releases the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) array of font descriptors.
+Releases an array of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) objects.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -109,7 +109,7 @@ Releases the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* descriptors | Array.|
-| size_t num | Number of members in the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) array.|
+| size_t num | Number of members in an array of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) objects.|
 
 ### OH_Drawing_GetFontDescriptorByFullName()
 
@@ -130,14 +130,14 @@ Obtains a font descriptor based on the font name and type. System fonts, style f
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_String](capi-drawing-oh-drawing-string.md)* fullName | Pointer to the font name string [OH_Drawing_String](capi-drawing-oh-drawing-string.md).|
-| [OH_Drawing_SystemFontType](#oh_drawing_systemfonttype) fontType | Enumerated value [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype) of the font type.|
+| const [OH_Drawing_String](capi-drawing-oh-drawing-string.md)* fullName | Pointer to the font name, which is [OH_Drawing_String](capi-drawing-oh-drawing-string.md).|
+| [OH_Drawing_SystemFontType](#oh_drawing_systemfonttype) fontType | Enum for the system font types, which is [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype).|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* | Pointer to the font descriptor object [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md). Use [OH_Drawing_DestroyFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_destroyfontdescriptor) API to release the pointer to the object when the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) is no longer needed.|
+| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)* | Pointer to an [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) object. Call [OH_Drawing_DestroyFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_destroyfontdescriptor) to release this pointer when the object is no longer needed.|
 
 ### OH_Drawing_GetSystemFontFullNamesByType()
 
@@ -158,13 +158,13 @@ Obtains an array of font names by font type.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_SystemFontType](#oh_drawing_systemfonttype) fontType | Enumerated value of the font type [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype).|
+| [OH_Drawing_SystemFontType](#oh_drawing_systemfonttype) fontType | Enum for the system font types, which is [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype).|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* | Returns the pointer to the font name array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) of the corresponding font type. When the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) is no longer needed, use [OH_Drawing_DestroySystemFontFullNames](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroysystemfontfullnames) API to release the pointer to the object.|
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* | Returns the pointer to the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object of the corresponding font type. Call [OH_Drawing_DestroySystemFontFullNames](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroysystemfontfullnames) to release this pointer when the object is no longer needed.|
 
 ### OH_Drawing_GetSystemFontFullNameByIndex()
 
@@ -185,14 +185,14 @@ Obtains the font name with the specified index in the font name array.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* fullNameArray | Pointer to the font name array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* fullNameArray | Pointer to an [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object.|
 | size_t index | Index of the font in the array.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| const [OH_Drawing_String](capi-drawing-oh-drawing-string.md)* | Pointer to the font name [OH_Drawing_String](capi-drawing-oh-drawing-string.md) at the corresponding index.|
+| const [OH_Drawing_String](capi-drawing-oh-drawing-string.md)* | Returns the pointer to the font name, which is an [OH_Drawing_String](capi-drawing-oh-drawing-string.md) object.|
 
 ### OH_Drawing_DestroySystemFontFullNames()
 
@@ -213,4 +213,4 @@ Releases the memory occupied by the font name array obtained by font type.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* fullNameArray | Pointer to the font name array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* fullNameArray | Pointer to an [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object.|

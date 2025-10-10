@@ -35,11 +35,11 @@ setTextHighContrast(action: TextHighContrast): void
 
 Sets the high contrast mode for text rendering.
 
-The setting takes effect for the entire process. All pages in the process share the same mode.
+The setting of this API takes effect for the entire process, and all pages in the process share the same mode.
 
-You can call this API to set the high contrast mode or enable or disable the high contrast mode by toggling **High contrast text** on the system settings screen. The priority of using this API to enable or disable the high contrast mode is higher than that of using the system switch.
+You can call this API to set the high contrast mode, or enable or disable the high contrast mode by toggling the switch on the system settings screen. This API is used to set the high contrast mode for text rendering. The setting of this API takes precedence over the one based on system settings.
 
-This API does not take effect in the text self-drawing scenario of an app.
+This API does not take effect for the text drawing scenario.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -61,12 +61,12 @@ setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void
 
 Sets the glyph type to be used when characters are mapped to the .notdef (undefined) glyph.
 
-This affects all text displayed after this API is called.
+This setting affects all text rendered subsequently.
 
-This configuration affects the way undefined characters in the font are displayed.
+This setting affects how to display undefined characters in the font:
 
-- The default behavior follows the internal .notdef glyph design of the font.
-- After this function is enabled, characters without glyphs are displayed as a block of text.
+- The default behavior follows the .notdef glyph design of the font.
+- After this feature is enabled, characters without glyphs are displayed as a tofu block of text.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -279,26 +279,26 @@ struct Index {
 
 ## TextHighContrast<sup>20+</sup>
 
-Enumerates the text rendering high contrast configuration types.
+Enumerates the high contrast types for text rendering.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
 | Name                              | Value  | Description                                           |
 | ---------------------------------- | ---- | ---------------------------------------------- |
-| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST   | 0    | Follow the high contrast text configuration in the system settings.                                           |
-| TEXT_APP_DISABLE_HIGH_CONTRAST     | 1    | Disable the high contrast text configuration for app text rendering. This configuration takes precedence over the high contrast text configuration in the system settings.|
-| TEXT_APP_ENABLE_HIGH_CONTRAST      | 2    | Enable the high contrast text configuration for app text rendering. This configuration takes precedence over the high contrast text configuration in the system settings.|
+| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST   | 0    | Follows the high contrast mode for text rendering in the system settings.                                           |
+| TEXT_APP_DISABLE_HIGH_CONTRAST     | 1    | Disables the high contrast mode for text rendering in the application. This mode takes precedence over the one based on system settings.|
+| TEXT_APP_ENABLE_HIGH_CONTRAST      | 2    | Enables the high contrast mode for text rendering in the application. The priority of this mode is higher than the mode following the system settings.|
 
 ## TextUndefinedGlyphDisplay<sup>20+</sup>
 
-Enumerates the display modes when a font does not define a glyph.
+Enumerates the modes for displaying undefined text glyphs.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
 | Name          | Value  | Description                                |
 | -------------- | ---- | ------------------------------------ |
-| USE_DEFAULT    | 0    | Use the internal .notdef glyph of the font. Follow the internal .notdef glyph design of the font, which can be an empty box, space, or custom symbol.|
-| USE_TOFU       | 1    | Always replace undefined fonts with explicit tofu blocks, overwriting the default behavior of the font. Used to debug missing characters or force consistent missing symbol display.|
+| USE_DEFAULT    | 0    | Follows the internal .notdef glyph design of the font, which can be an empty box, space, or custom symbol.|
+| USE_TOFU       | 1    | Always uses explicit tofu blocks to replace undefined glyphs, overriding the default behavior of fonts. It is suitable for debugging missing characters or forcing a uniform display of missing symbols.|
 
 ## TextAlign
 
@@ -323,10 +323,10 @@ Enumerates the vertical alignment modes of text.
 
 | Name       | Value  | Description                                         |
 | --------- | ---- | ---------------------------------------------- |
-| BASELINE | 0    | Aligns text based on the text baseline.                                 |
-| BOTTOM | 1    | Aligns text based on the text bottom.                                 |
+| BASELINE | 0    | Aligned to the baseline.                                 |
+| BOTTOM | 1    | Bottom-aligned.                                 |
 | CENTER    | 2    | Center-aligned.                                 |
-| TOP | 3    | Aligns text based on the text top.                   |
+| TOP | 3    | Top-aligned.                   |
 
 ## TextDirection
 
@@ -362,7 +362,7 @@ Enumerates the word break types.
 | NORMAL                      | 0    | Default mode that break words based on language-specific conventions.                                                                 |
 | BREAK_ALL                   | 1    | Allows breaks within any character in non-CJK text. (CJK means Chinese, Japanese, and Korean.) This value is suitable for Asian text that contains some non-Asian text. For example, it can be used to break consecutive English characters.|
 | BREAK_WORD                  | 2    | Allows breaks between any two characters in non-CJK text. It prioritizes breaking at whitespace or other natural breakpoints to keep words intact. If no breakpoints are found, it breaks between any two characters. For CJK text, this behaves like **NORMAL**.|
-| BREAK_HYPHEN<sup>18+</sup>  | 3    | Attempts to break words at the end of a line using a hyphen. If a hyphen cannot be added, it behaves like **BREAK_WORD**.<br>When using this word break strategy, you need to use it with the `locale` attribute in [TextStyle](#textstyle). The locale attribute defines the language environment and affects the word break effect.                       |
+| BREAK_HYPHEN<sup>18+</sup>  | 3    | Attempts to break words at the end of a line using a hyphen. If a hyphen cannot be added, it behaves like **BREAK_WORD**.<br>When using this word break strategy, you need to use the `locale` attribute in [TextStyle](#textstyle) to define the language environment, which affects the word break effect.                       |
 
 ## Decoration
 
@@ -373,7 +373,7 @@ Describes a text decoration.
 | Name                     | Type                                                 | Read Only| Optional| Description                                        |
 | ------------------------- | --------------------------------------------------- | ---- | ---- | -------------------------------------------- |
 | textDecoration            | [TextDecorationType](#textdecorationtype)           | No  | Yes  | Type of the decoration. The default value is **NONE**.                      |
-| color                     | [common2D.Color](js-apis-graphics-common2D.md#color)| No  | Yes  | Decoration line color. The default value is the text color.                      |
+| color                     | [common2D.Color](js-apis-graphics-common2D.md#color)| No  | Yes  | Color of the decoration. The default value is the text color.                      |
 | decorationStyle           | [TextDecorationStyle](#textdecorationstyle)         | No  | Yes  | Style of the decoration. The default value is **SOLID**.                     |
 | decorationThicknessScale  | number                                              | No  | Yes  | Scale factor for the thickness of the decoration line. The value is a floating point number. The default value is **1.0**. If the value is less than or equal to 0, no decoration line is drawn.|
 
@@ -463,7 +463,7 @@ Enumerates the text height modifier patterns.
 | ALL                   | 0x0 | Allows the first line of the paragraph to rise and the last line to drop.           |
 | DISABLE_FIRST_ASCENT  | 0x1 | Prevents the first line of a paragraph from rising.                  |
 | DISABLE_LAST_ASCENT   | 0x2 | Prevents the last line of a paragraph from dropping.                |
-| DISABLE_ALL           | 0x1 \| 0x2 | The height modifier is set to prevent the first line from being increased and the last line from being decreased in a paragraph.         |
+| DISABLE_ALL           | 0x1 \| 0x2 | Prevents the first line of the paragraph to rise and the last line to drop.         |
 
 ## TextBaseline
 
@@ -540,7 +540,7 @@ Describes a font variation.
 
 ## TextBadgeType<sup>20+</sup>
 
-Enumerates the text superscript and subscript.
+Enumerates the text badges.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -562,7 +562,7 @@ Describes a text style.
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | No| Yes| Text color. The default color is white.                        |
 | fontWeight    | [FontWeight](#fontweight)                            | No| Yes| Font weight. The default value is **W400**. Currently, only the default system font supports font weight adjustment. For other fonts, if the weight is less than semi-bold (W600), there is no variation in stroke thickness. If the weight is greater than or equal to semi-bold, it might result in a fake bold effect.                        |
 | fontStyle     | [FontStyle](#fontstyle)                              | No| Yes| Font style. The default value is **NORMAL**.                         |
-| baseline      | [TextBaseline](#textbaseline)                        | No| Yes| Text baseline type. The default value is ALPHABETIC.              |
+| baseline      | [TextBaseline](#textbaseline)                        | No| Yes| Text baseline type. The default value is **ALPHABETIC**.              |
 | fontFamilies  | Array\<string>                                       | No| Yes| Array of font families. By default, the array is empty, indicating that all system fonts are matched.                   |
 | fontSize      | number                                               | No| Yes| Font size, in units of px. The value is a floating point number. The default value is **14.0**.  |
 | letterSpacing | number                                               | No| Yes| Letter spacing, in units of px. The value is a floating point number. The default value is **0.0**. A positive value causes characters to spread farther apart, and a negative value bring characters closer together.|
@@ -578,7 +578,7 @@ Describes a text style.
 | fontVariations| Array\<[FontVariation](#fontvariation)>              | No| Yes| Array of font variations.|
 | textShadows   | Array\<[TextShadow](#textshadow)>                    | No| Yes| Array of shadows.|
 | backgroundRect| [RectStyle](#rectstyle)                              | No| Yes| Rectangle style.|
-| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | No  | Yes  | Sets whether to use superscript or subscript in text layout. TEXT_SUPERSCRIPT indicates that superscript is enabled, and TEXT_SUBSCRIPT indicates that subscript is enabled. The default value is TEXT_BADGE_NONE, indicating that superscript and subscript are disabled.|
+| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | No  | Yes  | Sets whether to use superscript or subscript in text layout. **TEXT_SUPERSCRIPT** indicates that superscript is enabled, and **TEXT_SUBSCRIPT** indicates that subscript is enabled. The default value is **TEXT_BADGE_NONE**, indicating that neither superscript nor subscript is enabled.|
 
 ## StrutStyle
 
@@ -608,7 +608,7 @@ Describes the font descriptor information.
 
 | Name| Type| Read Only| Optional| Description|
 | - | - | -  | - | - |
-| path | string | No| Yes| Absolute path of the font. The value can be any string that complies with system restrictions. The default value is an empty string.|
+| path | string | No| Yes| Absolute path of the font. Any string that complies with the system restrictions is acceptable. The default value is an empty string.|
 | postScriptName | string | No| Yes| Unique name of the font. Any string is acceptable. The default value is an empty string.|
 | fullName | string | No| Yes| Font name. Any string is acceptable. The default value is an empty string.|
 | fontFamily | string | No| Yes| Family name of the font. Any string is acceptable. The default value is an empty string.|
@@ -772,13 +772,13 @@ unloadFontSync(name: string): void
 
 Uninstalls a specified custom font. This API is synchronous.
 
-After a custom font corresponding to a font alias is uninstalled using this API, the custom font is no longer available.
+After this API is called to unload a custom font corresponding to a font alias, the custom font is no longer available.
 
 All layout objects that use the font alias must be destroyed and recreated.
 
-- Uninstalling a font alias that does not exist does not produce any effect and does not throw an error.
-- This operation affects only subsequent font usage.
-- Uninstalling a font that is being used may cause text rendering exceptions (for example, garbled characters or missing glyphs).
+- Unloading a non-existent font alias does not produce any effect and does not throw an error.
+- This operation only affects future font usage.
+- Unloading a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -825,13 +825,13 @@ unloadFont(name: string): Promise\<void>
 
 Uninstalls a specified custom font. This API uses a promise to return the result.
 
-After a custom font corresponding to a font alias is uninstalled using this API, the custom font is no longer available.
+After this API is called to unload a custom font corresponding to a font alias, the custom font is no longer available.
 
 All layout objects that use the font alias must be destroyed and recreated.
 
-- Uninstalling a font alias that does not exist does not produce any effect and does not throw an error.
-- This operation affects only subsequent font usage.
-- Uninstalling a font in use may cause text rendering exceptions (such as garbled characters or missing glyphs).
+- Unloading a non-existent font alias does not produce any effect and does not throw an error.
+- This operation only affects future font usage.
+- Unloading a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -922,9 +922,9 @@ Describes a paragraph style.
 | strutStyle           | [StrutStyle](#strutstyle)                  | No  | Yes  | Strut style. The default value is the initial **StrutStyle** object.              |
 | textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | No  | Yes  | Text height modifier pattern. The default value is **ALL**.                             |
 | tab<sup>18+</sup>   | [TextTab](#texttab18)  | No  | Yes  | Alignment mode and position of the text after the tab character in a paragraph. By default, the tab character is replaced with a space. This parameter is invalid when it is used together with the **align** parameter or the **ellipsis** parameter in [TextStyle](#textstyle).|
-| trailingSpaceOptimized<sup>20+</sup>   | boolean | No  | Yes  | Whether the spaces at the end of a line are considered in alignment calculation during text layout. **true** means not to include; **false** (default) means to include.|
-| autoSpace<sup>20+</sup>   | boolean | No  | Yes  | Sets whether to enable automatic spacing during text typography. true: Automatic spacing is enabled. The spacing between CJK (Chinese, Japanese, and Korean) and Western characters (Latin, Cyrillic, and Greek), between CJK and digits, between CJK and copyright symbols, between copyright symbols and digits, and between copyright symbols and Western characters is automatically adjusted during text layout. false (default): Automatic spacing is disabled.|
-| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | No  | Yes  | Vertical alignment mode of the text. This parameter takes effect when line height scaling (that is, heightScale of [TextStyle](#textstyle)) or mixed layout of different font sizes in a line (that is, fontSize of [TextStyle](#textstyle)) is enabled. If there is superscript or subscript text in a line (that is, badgeType of [TextStyle](#textstyle)), the superscript or subscript text participates in vertical alignment as common text.|
+| trailingSpaceOptimized<sup>20+</sup>   | boolean | No  | Yes  | Whether to include the trailing spaces in alignment calculations during text typography. **true** means not to include; **false** (default) means to include.|
+| autoSpace<sup>20+</sup>   | boolean | No  | Yes  | Sets whether to enable automatic spacing during text typography. **true** indicates that the automatic spacing feature is enabled. In this case, automatic spacing applies between CJK (Chinese, Japanese, and Korean) and Western characters (Latin, Cyrillic, and Greek), between CJK and digits, between CJK and copyright symbols, between copyright symbols and digits, and between copyright symbols and Western characters. **false** (default) indicates that the automatic spacing feature is disabled.|
+| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | No  | Yes  | Vertical alignment of text. This parameter takes effect when line height scaling (that is, **heightScale** of [TextStyle](#textstyle)) is enabled or different font sizes (that is, **fontSize** of [TextStyle](#textstyle)) are set for text in a line. If superscript and subscript text (that is, **badgeType** of [TextStyle](#textstyle)) is set in a line, the superscript and subscript text will participate in vertical alignment as common text.|
 
 ## PlaceholderAlignment
 
@@ -1549,7 +1549,7 @@ Obtains the actually visible text range in the specified line, excluding any ove
 | Name| Type  | Mandatory| Description     |
 | ----- | ------ | ---- | --------- |
 | lineNumber  | number | Yes  | Line number of the text range, starting from 0. This API can only be used to obtain the bounds of existing lines. That is, the line number must start from 0, and the maximum line number is [getLineCount](#getlinecount) - 1.|
-| includeSpaces  | boolean | Yes  | Whether to include blank characters. The value **true** means that spaces are contained, and **false** means the opposite.|
+| includeSpaces  | boolean | Yes  | Whether spaces are included. The value **true** means that spaces are contained, and **false** means the opposite.|
 
 **Return value**
 
@@ -1614,7 +1614,7 @@ let lineMetrics =  paragraph.getLineMetrics(0);
 
 updateColor(color: common2D.Color): void;
 
-Updates the color of the entire text paragraph. This API call also updates the decoration color if it hasn't been set yet.
+Updates the color of the entire text span. This API call also updates the decoration color if it hasn't been set yet.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1634,7 +1634,7 @@ paragraph.updateColor({ alpha: 255, red: 255, green: 0, blue: 0 });
 
 updateDecoration(decoration: Decoration): void;
 
-Updates the decoration line of the entire text paragraph.
+Updates the decoration line of the entire text span.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -2460,7 +2460,7 @@ Obtains the typographic boundaries of this text line. These boundaries depend on
 
 | Type| Description |
 | -| - |
-| [TypographicBounds](#typographicbounds18) | Typographic boundaries of the text line.|
+| [TypographicBounds](#typographicbounds18) | Describes the typographic boundaries of a text line.|
 
 **Example**
 
@@ -2609,7 +2609,7 @@ Obtains the offset of this text line after alignment based on the alignment fact
 
 | Name| Type| Mandatory| Description|
 | -| - | - | - |
-| alignmentFactor | number | Yes| Alignment factor, which determines how text is aligned. The value is a floating point number. A value less than or equal to 0.0 means that the text is left-aligned; a value between 0.0 and 0.5 means that the text is slightly left-aligned; the value 0.5 means that is text is centered; a value between 0.5 and 1 means that the text is slightly right-aligned; a value greater than or equal to 1.0 means that the text is right-aligned.|
+| alignmentFactor | number | Yes| Alignment factor, which determines how text is aligned. The value is a floating point number. A value less than or equal to 0.0 means that the text is left-aligned; a value between 0.0 and 0.5 means that the text is slightly left-aligned; the value 0.5 means that the text is centered; a value between 0.5 and 1 means that the text is slightly right-aligned; a value greater than or equal to 1.0 means that the text is right-aligned.|
 | alignmentWidth | number | Yes| Alignment width, that is, the width of the text line. The value is a floating point number. If the width is less than the actual width of the text line, **0** is returned.|
 
 **Return value**
@@ -3014,7 +3014,7 @@ let typographicBounds = runs[0].getTypographicBounds();
 
 getTextDirection(): TextDirection
 
-Obtains the text direction of the layout unit.
+Obtains the text direction of the run.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3022,7 +3022,7 @@ Obtains the text direction of the layout unit.
 
 | Type                  | Description          |
 | ---------------------- | -------------- |
-|   [TextDirection](#textdirection)  | Text direction of the layout unit.|
+|   [TextDirection](#textdirection)  | Obtains the text direction of the run.|
 
 **Example**
 
@@ -3034,7 +3034,7 @@ let textDirection = runs[0].getTextDirection();
 
 getAdvances(range: Range): Array<common2D.Point>
 
-Obtains the glyph width array of each glyph in the specified range of the layout unit.
+Obtains the glyph width array of each glyph within the specified range of the run.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3042,21 +3042,21 @@ Obtains the glyph width array of each glyph in the specified range of the layout
 
 | Name   | Type   | Mandatory| Description                      |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | Yes  | Glyph position range to be obtained. range.start indicates the start position of the range, and range.end indicates the range length. If the length is 0, the glyphs from range.start to the end of the rendering block are obtained. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
+| range    | [Range](#range)   | Yes  | Range of the glyph position to be obtained. **range.start** indicates the start position of the range, and **range.end** indicates the range length. If the length is 0, the range starts from **range.start** and ends at the end of the rendering block. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
 
 **Return value**
 
 | Type                  | Description                                  |
 | ---------------------- | ------------------------------------- |
-| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | Array of glyph widths of each glyph in the layout unit relative to the horizontal direction. In [common2D.Point](js-apis-graphics-common2D.md#point12), x indicates the glyph width of each glyph relative to the horizontal direction, and y is a reserved field and returns 0 by default.|
+| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | Returns the glyph width array of each glyph in the run unit relative to the horizontal direction. In [common2D.Point](js-apis-graphics-common2D.md#point12), **x** indicates the glyph width of each glyph relative to the horizontal direction, and **y** is a reserved field. By default, **0** is returned.|
 
 **Example**
 
 ```ts
-let advancesRange = runs[0].getAdvances({start:1, end:2}); // Obtain the width of glyphs in the range from start position 1 to end position 2.
-advancesRange = runs[0].getAdvances({start:-1, end:2}); // -1 is an invalid parameter. undefined will be returned.
-advancesRange = runs[0].getAdvances({start:0, end:-10}); // -10 is an invalid parameter. undefined will be returned.
-let advancesNull = runs[0].getAdvances(null); // null is an invalid parameter. undefined will be returned.
+let advancesRange = runs[0].getAdvances({start:1, end:2}); // Obtain the widths of glyphs in the range starting from position 1, with a length of 2.
+advancesRange = runs[0].getAdvances({start:-1, end:2}); // -1 is an invalid value, and undefined is returned.
+advancesRange = runs[0].getAdvances({start:0, end:-10}); // -10 is an invalid value, and undefined is returned.
+let advancesNull = runs[0].getAdvances(null); // null is an invalid value, and undefined is returned.
 ```
 
 ## TextTab<sup>18+</sup>

@@ -4,7 +4,7 @@
 
 Defines error codes.
 
-**File to import**: <native_window/graphic_error_code.h>
+**File to include**: <native_window/graphic_error_code.h>
 
 **Library**: libnative_window.so
 
@@ -14,7 +14,7 @@ Defines error codes.
 
 **Related module**: [NativeWindow](capi-nativewindow.md)
 
-## Total
+## Summary
 
 ### Enumerated value
 
@@ -39,7 +39,7 @@ Defines an enum for the error codes.
 | Value| Description|
 | -- | -- |
 | NATIVE_ERROR_OK = 0 | Operation successful.|
-| NATIVE_ERROR_MEM_OPERATION_ERROR = 30001000 | Memory operation error.<br>**Since**: 15|
+| NATIVE_ERROR_MEM_OPERATION_ERROR = 30001000 | An error occurs during memory manipulation.<br>**Since**: 15|
 | NATIVE_ERROR_INVALID_ARGUMENTS = 40001000 | An input parameter is invalid.|
 | NATIVE_ERROR_NO_PERMISSION = 40301000 | You do not have the permission to perform the operation.|
 | NATIVE_ERROR_NO_BUFFER = 40601000 | No buffer is available.|

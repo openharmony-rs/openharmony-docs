@@ -9,9 +9,9 @@
 
 ## Overview
 
-The **drawing_mask_filter.h** file declares the functions related to the mask filter in the drawing module.
+This file declares the functions related to the mask filter in the drawing module.
 
-**Header file**: <native_drawing/drawing_mask_filter.h>
+**File to include**: <native_drawing/drawing_mask_filter.h>
 
 **Library**: libnative_drawing.so
 
@@ -19,7 +19,7 @@ The **drawing_mask_filter.h** file declares the functions related to the mask fi
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Enumerated value
 
@@ -44,7 +44,7 @@ enum OH_Drawing_BlurType
 
 **Description**
 
-Enumerates the blur types.
+Defines an enum for the blur types.
 
 **Since**: 11
 
@@ -81,11 +81,11 @@ Creates an **OH_Drawing_MaskFilter** object with a blur type.
 | float sigma | Standard deviation of the Gaussian blur to apply. The value must be greater than 0.|
 | bool respectCTM | Whether the blur's sigma is modified by the CTM. The default value is **true**.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* | Pointer to the created mask filter object.|
+| [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* | Returns the pointer to the **OH_Drawing_MaskFilter** object created.|
 
 ### OH_Drawing_MaskFilterDestroy()
 
