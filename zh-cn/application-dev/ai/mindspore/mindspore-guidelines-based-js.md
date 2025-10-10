@@ -11,7 +11,7 @@
 
 开发者可以使用[@ohos.ai.mindSporeLite](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)，在UI代码中集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
 
-图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等有广泛的应用。
+图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。
 
 ## 基本概念
 
