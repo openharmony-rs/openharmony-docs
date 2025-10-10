@@ -1036,6 +1036,10 @@ ArkTS-Sta: accessStep(step: int): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                   |
@@ -1059,6 +1063,7 @@ ArkTS-Sta: accessStep(step: int): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1074,6 +1079,35 @@ struct WebComponent {
     Column() {
       Button('accessStep')
         .onClick(() => {
+          try {
+            let result = this.controller.accessStep(this.steps);
+            console.log('result:' + result);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Button, Web, Column, Component, Entry, ClickEvent, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State steps: int = 2
+
+  build() {
+    Column() {
+      Button('accessStep')
+        .onClick((e: ClickEvent) => {
           try {
             let result = this.controller.accessStep(this.steps);
             console.log('result:' + result);
@@ -1943,6 +1977,10 @@ deleteJavaScriptRegister(name: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明  |
@@ -1961,6 +1999,7 @@ deleteJavaScriptRegister(name: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2005,6 +2044,67 @@ struct WebComponent {
         })
       Button('deleteJavaScriptRegister')
         .onClick(() => {
+          try {
+            this.controller.deleteJavaScriptRegister(this.name);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestObj {
+  constructor() {
+  }
+
+  test(): string {
+    return "ArkUI Web Component";
+  }
+
+  toString(): string {
+    console.log('Web Component toString');
+    return 'TestObj toString';
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State testObjtest: TestObj = new TestObj();
+  @State name: string = 'objName';
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.refresh();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Register JavaScript To Window')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.registerJavaScriptProxy(this.testObjtest, this.name, ["test", "toString"]);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('deleteJavaScriptRegister')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.deleteJavaScriptRegister(this.name);
           } catch (error) {
@@ -2210,6 +2310,10 @@ clearMatches(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -2220,6 +2324,7 @@ clearMatches(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2234,6 +2339,34 @@ struct WebComponent {
     Column() {
       Button('clearMatches')
         .onClick(() => {
+          try {
+            this.controller.clearMatches();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearMatches')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.clearMatches();
           } catch (error) {
@@ -2309,6 +2442,10 @@ clearSslCache(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -2319,6 +2456,7 @@ clearSslCache(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2345,6 +2483,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearSslCache')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.clearSslCache();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## clearClientAuthenticationCache
 
 clearClientAuthenticationCache(): void
@@ -2352,6 +2518,10 @@ clearClientAuthenticationCache(): void
 清除Web组件记录的客户端证书请求事件对应的用户操作行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -2363,6 +2533,7 @@ clearClientAuthenticationCache(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2377,6 +2548,34 @@ struct WebComponent {
     Column() {
       Button('clearClientAuthenticationCache')
         .onClick(() => {
+          try {
+            this.controller.clearClientAuthenticationCache();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearClientAuthenticationCache')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.clearClientAuthenticationCache();
           } catch (error) {
@@ -3448,6 +3647,10 @@ ArkTS-Sta: backOrForward(step: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
@@ -3465,6 +3668,7 @@ ArkTS-Sta: backOrForward(step: int): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3480,6 +3684,35 @@ struct WebComponent {
     Column() {
       Button('backOrForward')
         .onClick(() => {
+          try {
+            this.controller.backOrForward(this.step);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State step: int = -2
+
+  build() {
+    Column() {
+      Button('backOrForward')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.backOrForward(this.step);
           } catch (error) {
@@ -6035,16 +6268,20 @@ enableSafeBrowsing(enable: boolean): void
 <!--RP1End-->
 
 > **说明：**
->
-> 该接口不生效，调用不会产生任何实际效果。
+> 
+> 该接口不生效，调用不会产生任何实际效果。若未调用该属性，默认不启用检查网站安全风险的功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  enable | boolean | 是   | 是否启用检查网站安全风险的功能。<br>true表示启用检查网站安全风险的功能，false表示不启用检查网站安全风险的功能。<br>默认值：false。 |
+|  enable | boolean | 是   | 是否启用检查网站安全风险的功能。<br>true表示启用检查网站安全风险的功能，false表示不启用检查网站安全风险的功能。 |
 
 **错误码：**
 
@@ -6056,6 +6293,7 @@ enableSafeBrowsing(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6070,6 +6308,35 @@ struct WebComponent {
     Column() {
       Button('enableSafeBrowsing')
         .onClick(() => {
+          try {
+            this.controller.enableSafeBrowsing(true);
+            console.log("enableSafeBrowsing: true");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('enableSafeBrowsing')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.enableSafeBrowsing(true);
             console.log("enableSafeBrowsing: true");
@@ -6125,15 +6392,19 @@ struct WebComponent {
 
 enableIntelligentTrackingPrevention(enable: boolean): void
 
-启用智能防跟踪功能。
+启用智能防跟踪功能。默认不启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  enable | boolean | 是   | 是否启用智能防跟踪功能。<br>true表示启用智能防跟踪功能，false表示不启用智能防跟踪功能。<br>默认值：false。 |
+|  enable | boolean | 是   | 是否启用智能防跟踪功能。<br>true表示启用智能防跟踪功能，false表示不启用智能防跟踪功能。 |
 
 **错误码：**
 
@@ -6151,6 +6422,7 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6165,6 +6437,35 @@ struct WebComponent {
     Column() {
       Button('enableIntelligentTrackingPrevention')
         .onClick(() => {
+          try {
+            this.controller.enableIntelligentTrackingPrevention(true);
+            console.log("enableIntelligentTrackingPrevention: true");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('enableIntelligentTrackingPrevention')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.enableIntelligentTrackingPrevention(true);
             console.log("enableIntelligentTrackingPrevention: true");
@@ -6242,6 +6543,10 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型           | 必填  | 说明                      |
@@ -6263,6 +6568,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6277,6 +6583,35 @@ struct WebComponent {
     Column() {
       Button('addIntelligentTrackingPreventionBypassingList')
         .onClick(() => {
+          try {
+            let hostList = ["www.test1.com", "www.test2.com", "www.test3.com"];
+            webview.WebviewController.addIntelligentTrackingPreventionBypassingList(hostList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('addIntelligentTrackingPreventionBypassingList')
+        .onClick((e: ClickEvent) => {
           try {
             let hostList = ["www.test1.com", "www.test2.com", "www.test3.com"];
             webview.WebviewController.addIntelligentTrackingPreventionBypassingList(hostList);
@@ -6354,6 +6689,10 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 > **说明：**
@@ -6368,6 +6707,7 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6383,6 +6723,29 @@ struct WebComponent {
         .onClick(() => {
           webview.WebviewController.clearIntelligentTrackingPreventionBypassingList();
       })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearIntelligentTrackingPreventionBypassingList')
+        .onClick((e: ClickEvent) => {
+          webview.WebviewController.clearIntelligentTrackingPreventionBypassingList();
+        })
       Web({ src: 'www.example.com', controller: this.controller })
     }
   }
@@ -6451,15 +6814,19 @@ export default class EntryAbility extends UIAbility {
 
 enableAdsBlock(enable: boolean): void
 
-启用广告过滤功能。
+启用广告过滤功能。若未显式调用该属性，默认取消此功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  enable | boolean | 是   | 是否启用广告过滤功能。<br>true表示启用广告过滤功能，false表示取消广告过滤功能。<br>默认值：false。 |
+|  enable | boolean | 是   | 是否启用广告过滤功能。<br>true表示启用广告过滤功能，false表示取消广告过滤功能。 |
 
 **错误码：**
 
@@ -6477,6 +6844,7 @@ enableAdsBlock(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6504,19 +6872,52 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('enableAdsBlock')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.enableAdsBlock(true);
+            console.log("enableAdsBlock: true")
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isAdsBlockEnabled<sup>12+</sup>
 
 isAdsBlockEnabled() : boolean
 
-查询广告过滤功能是否开启。
+查询广告过滤功能是否开启。若未调用，默认该功能关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
 | 类型                                                         | 说明                   |
 | ------------------------------------------------------------ | ---------------------- |
-| boolean | 返回true代表广告过滤功能已开启，返回false代表广告过滤功能关闭。<br>默认值：false。 |
+| boolean | 返回true代表广告过滤功能已开启，返回false代表广告过滤功能关闭。 |
 
 **错误码：**
 
@@ -6532,6 +6933,7 @@ isAdsBlockEnabled() : boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6559,6 +6961,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isAdsBlockEnabled')
+        .onClick((e: ClickEvent) => {
+          try {
+            let isAdsBlockEnabled: boolean = this.controller.isAdsBlockEnabled();
+            console.log("isAdsBlockEnabled:", isAdsBlockEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isAdsBlockEnabledForCurPage<sup>12+</sup>
 
 isAdsBlockEnabledForCurPage() : boolean
@@ -6567,6 +6998,10 @@ isAdsBlockEnabledForCurPage() : boolean
 当Web组件使能广告过滤功能后，默认所有页面都是开启广告过滤的，支持通过[addAdsBlockDisallowedList](./arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)指定域名禁用广告过滤。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -6588,6 +7023,7 @@ isAdsBlockEnabledForCurPage() : boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6602,6 +7038,35 @@ struct WebComponent {
     Column() {
       Button('isAdsBlockEnabledForCurPage')
         .onClick(() => {
+          try {
+            let isAdsBlockEnabledForCurPage: boolean = this.controller.isAdsBlockEnabledForCurPage();
+            console.log("isAdsBlockEnabledForCurPage:", isAdsBlockEnabledForCurPage);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isAdsBlockEnabledForCurPage')
+        .onClick((e: ClickEvent) => {
           try {
             let isAdsBlockEnabledForCurPage: boolean = this.controller.isAdsBlockEnabledForCurPage();
             console.log("isAdsBlockEnabledForCurPage:", isAdsBlockEnabledForCurPage);
@@ -8129,8 +8594,13 @@ clearServiceWorkerWebSchemeHandler(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8144,6 +8614,29 @@ struct WebComponent {
     Column() {
       Button('clearServiceWorkerWebSchemeHandler')
         .onClick(() => {
+          webview.WebviewController.clearServiceWorkerWebSchemeHandler();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearServiceWorkerWebSchemeHandler')
+        .onClick((e: ClickEvent) => {
           webview.WebviewController.clearServiceWorkerWebSchemeHandler();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -9314,6 +9807,10 @@ static clearHostIP(hostName: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明                  |
@@ -9330,6 +9827,7 @@ static clearHostIP(hostName: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -9353,6 +9851,43 @@ struct WebComponent {
         })
       Button('clearHostIP')
         .onClick(() => {
+          try {
+            webview.WebviewController.clearHostIP('www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      // url加载前设置生效。
+      Button('setHostIP')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebviewController.setHostIP('www.example.com', '127.0.0.1', 30);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('clearHostIP')
+        .onClick((e: ClickEvent) => {
           try {
             webview.WebviewController.clearHostIP('www.example.com');
           } catch (error) {
