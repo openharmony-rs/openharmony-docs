@@ -43,7 +43,7 @@
    {
        // 创建CameraManager对象。
        Camera_ErrorCode ret = OH_Camera_GetCameraManager(cameraManager);
-       if (cameraManager == nullptr || ret != CAMERA_OK) {
+       if (*cameraManager == nullptr || ret != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
        }
        return ret;
