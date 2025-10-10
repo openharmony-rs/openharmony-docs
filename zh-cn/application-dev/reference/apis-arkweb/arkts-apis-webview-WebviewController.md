@@ -6672,7 +6672,7 @@ struct WebComponent {
 
 isSafeBrowsingEnabled(): boolean
 
-获取当前网页是否启用了检查网站安全风险。若未调用该属性，默认未启用。
+获取当前网页是否启用了检查网站安全风险。若未显式调用该属性，默认未启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6796,7 +6796,7 @@ struct WebComponent {
 
 isIntelligentTrackingPreventionEnabled(): boolean
 
-判断Web是否启用了智能防跟踪功能。默认未启用。
+判断Web是否启用了智能防跟踪功能。若未显式调用该属性，默认未启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7639,7 +7639,7 @@ struct WebComponent {
 
 isIncognitoMode(): boolean
 
-查询当前是否是隐私模式的Webview。默认情况下，Webview不是隐私模式。
+查询当前是否是隐私模式的Webview。若未显式调用该属性，默认Webview不是隐私模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -11348,7 +11348,7 @@ ArkTS-Dyn: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: numbe
 
 ArkTS-Sta: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: int): void
 
-设置是否启用无线网页调试功能，默认不开启。
+设置是否启用无线网页调试功能，若未显式调用该属性，默认不开启。
 
 * 当没有指定端口port时，该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口，ArkWeb会启动一个本地domain socket监听。
 * 当指定了端口port时，ArkWeb会启动一个tcp socket监听。这时可以无线调试网页。详情请参考[无线调试](../../web/web-debugging-with-devtools.md#无线调试)。
