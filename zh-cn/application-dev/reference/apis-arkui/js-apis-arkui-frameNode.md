@@ -1588,6 +1588,7 @@ get gestureEvent(): UIGestureEvent
 onDraw?(context: DrawContext): void
 
 FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。
+该接口的[DrawContext](./js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4137,7 +4138,7 @@ createNode(context: UIContext, nodeType: 'Search'): Search
 **示例：**
 
 ```ts
-iimport { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
+import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -7145,7 +7146,7 @@ struct FrameNodeTypeTest {
 
 ## NodeAdapter<sup>12+</sup>
 
-NodeAdapter提供FrameNode的数据懒加载能力。
+NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)实现接口功能。
 
 > **说明：**
 >
@@ -7209,7 +7210,7 @@ get totalNodeCount(): number
 
 reloadAllItems(): void
 
-重新加载全部数据操作。
+重新加载全部数据操作。实际调用了LazyForEach中的[OnDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)接口通知组件重新加载所有数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7287,7 +7288,7 @@ moveItem(from: number, to: number): void
 
 getAllAvailableItems(): Array&lt;FrameNode&gt;
 
-获取所有有效数据。
+获取所有有效数据。有效节点数据包括显示在屏幕上的节点以及预加载的节点。其中预加载节点的数量可依照LazyForEach的[使用限制](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#使用限制)，调整父容器的cachedCount属性进行设置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7329,7 +7330,7 @@ onDetachFromNode?(): void
 
 onGetChildId?(index: number): number
 
-节点首次加载或新节点滑入时回调。用于生成自定义的Id，需要开发者自行保证Id的唯一性。
+节点首次加载或新节点滑入时回调。传入的index参数用于自定义生成Id，需要开发者自行保证根据不同index生成Id的唯一性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7351,7 +7352,7 @@ onGetChildId?(index: number): number
 
 onCreateChild?(index: number): FrameNode
 
-节点首次加载或新节点滑入时回调。建议开发者在添加子组件时，遵循声明式组件中子组件的约束。例如，WaterFlow支持添加FlowItem子节点。
+节点首次加载或新节点滑入时回调。建议开发者在添加子组件时，遵循声明式组件中子组件的约束。例如，WaterFlow支持添加FlowItem子节点。父节点根据子节点的索引与key值判断是否触发了节点首次加载或新节点滑入。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7373,7 +7374,7 @@ onCreateChild?(index: number): FrameNode
 
 onDisposeChild?(id: number, node: FrameNode): void
 
-子节点即将销毁时回调。
+子节点即将销毁时回调。既不显示在屏幕上，也不处于预加载范围内的节点都属于即将销毁的节点。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7390,7 +7391,7 @@ onDisposeChild?(id: number, node: FrameNode): void
 
 onUpdateChild?(id: number, node: FrameNode): void
 
-重新加载的数据节点被复用时回调。
+重新加载的数据节点被复用时回调。已缓存节点的key值与被复用节点一致时进行节点复用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9318,14 +9319,16 @@ struct FrameNodeTypeTest {
 
 ``` ts
 import { FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private isRunning: boolean = false; // 表示节点上动画是否在运行
+
   private startInitAnimation() {
     if (this.rootNode) {
       let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, [0, 0, 0], [0, 0, 360],
-        {duration: 3000, curve: Curve.Linear, iterations: -1});// 创建动画，第一次创建时显式指定初值，旋转角从[0,0,0]变成[0,0,360]，无限循环
+        { duration: 3000, curve: Curve.Linear, iterations: -1 }); // 创建动画，第一次创建时显式指定初值，旋转角从[0,0,0]变成[0,0,360]，无限循环
       if (result) {
         this.isRunning = true;
       } else {
@@ -9333,6 +9336,7 @@ class MyNodeController extends NodeController {
       }
     }
   }
+
   cancelAnimation(cnt: number) {
     if (this.rootNode && this.isRunning) {
       let result: boolean = this.rootNode.cancelAnimations([AnimationPropertyType.ROTATION]);
@@ -9349,20 +9353,25 @@ class MyNodeController extends NodeController {
       }
     }
   }
+
   continueAnimation() {
     if (this.rootNode && !this.isRunning) {
-      let currentProperty: number[] = this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION);// 获取当前节点上的旋转属性终值
+      let currentProperty: number[] =
+        this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION); // 获取当前节点上的旋转属性终值
       if (currentProperty.length == 3) { // 获取属性正常，旋转属性对应的数组长度为3，分别是x、y、z方向的旋转角
         let endValue: number[];
         let startValue: number[] | undefined = undefined;
         if (currentProperty[2] >= 360) {
-          startValue = [currentProperty[0], currentProperty[1], currentProperty[2] - 360]; // 当旋转属性过大时使z方向少转360度，避免z方向角度由于多次启停动画一直增加
+          startValue = [currentProperty[0], currentProperty[1],
+            currentProperty[2] - 360]; // 当旋转属性过大时使z方向少转360度，避免z方向角度由于多次启停动画一直增加
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2]];
         } else {
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2] + 360]; // 此时旋转属性小于360度，可以从上次旋转角再多旋转一圈
         }
-        let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue, {duration: 3000, curve: Curve.Linear, iterations: -1});
-        console.info(`create rotation animation from ${startValue? String(startValue[2]): "undefined"} to ${endValue[2]}`);
+        let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue,
+          { duration: 3000, curve: Curve.Linear, iterations: -1 });
+        console.info(`create rotation animation from ${startValue ? String(startValue[2]) :
+          "undefined"} to ${endValue[2]}`);
         if (result) {
           this.isRunning = true;
         } else {
@@ -9371,15 +9380,17 @@ class MyNodeController extends NodeController {
       }
     }
   }
-
+  
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.rootNode) {
       return this.rootNode;
     }
     this.rootNode = new FrameNode(uiContext);
-    this.rootNode.commonAttribute.width(100).height(100).backgroundColor(Color.Blue);//设置节点属性
+    this.rootNode.commonAttribute.width(100)
+      .height(100)
+      .backgroundColor(Color.Blue); // 设置节点属性
     this.startInitAnimation();
-    this.rootNode.commonEvent.setOnClick(()=>{
+    this.rootNode.commonEvent.setOnClick(() => {
       if (this.isRunning) {
         this.cancelAnimation(1);
       } else {
@@ -9389,6 +9400,7 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct CreateAnimationExample {
@@ -9397,7 +9409,7 @@ struct CreateAnimationExample {
   build() {
     Column() {
       NodeContainer(this.myNodeController)
-    }.width('100%').padding({top: 50})
+    }.width('100%').padding({ top: 50 })
   }
 }
 ```

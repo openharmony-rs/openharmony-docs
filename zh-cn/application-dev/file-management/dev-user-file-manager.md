@@ -157,7 +157,7 @@ OpenHarmony预置了FileManager文件管理器。系统应用开发者也可以�
        if (!fileUri) {
          console.error("createFile return undefined object");
        }
-       console.info("createFile sucess, fileUri: " + JSON.stringify(fileUri));
+       console.info("createFile success, fileUri: " + JSON.stringify(fileUri));
      } catch (err) {
       let error: BusinessError = err as BusinessError;
       console.error("createFile failed, errCode:" + error.code + ", errMessage:" + error.message);

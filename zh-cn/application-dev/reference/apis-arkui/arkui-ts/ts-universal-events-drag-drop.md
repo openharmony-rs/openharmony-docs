@@ -830,7 +830,7 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 | 名称     | 类型  | 只读 | 可选 | 说明           |
 | ------ | ------ | ---------------- | ------ | ------ |
-| disableDataPrefetch | boolean  | 否  | 否  | 设置拖拽是否提前获取数据。true表示不提前获取数据，false表示提前获取数据，默认值为false。<br/>**说明：**<br/> 当使用[startDataLoading](#startdataloading15)获取数据时需设置该参数为true，防止拖拽提前获取数据。 |
+| disableDataPrefetch | boolean  | 否  | 是  | 设置拖拽是否提前获取数据。true表示不提前获取数据，false表示提前获取数据，默认值为false。<br/>**说明：**<br/> 当使用[startDataLoading](#startdataloading15)获取数据时需设置该参数为true，防止拖拽提前获取数据。 |
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
