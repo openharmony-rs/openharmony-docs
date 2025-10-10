@@ -6135,13 +6135,15 @@ setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fileTypes: A
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**设备行为差异：** 该接口在PC/2in1中可正常调用，在其他设备类型中返回201错误码。
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
 | moduleName  | string | 是   | 表示模块的名称。 |
 | abilityName  | string | 是   | 表示UIAbility组件的名称。 |
-| fileTypes  | Array\<string> | 是   | 表示文件类型。fileTypes数组长度不能超过1024，每个元素不能超过512个字符，元素为[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型，元素不能为空、通配符、general.object。 |
+| fileTypes  | Array\<string> | 是   | 表示文件类型。fileTypes数组长度不能超过1024，每个元素不能超过512个字符，元素取值为[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)中的值，元素不能为空、通配符、general.object。 |
 
 **错误码：**
 
