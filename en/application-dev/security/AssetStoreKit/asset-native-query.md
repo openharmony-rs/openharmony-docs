@@ -2,8 +2,7 @@
 
 ## Available APIs
 
-You can use [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) to query asset
-information.
+You can use [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) to query asset information.
 
 The following table describes the attributes for querying an asset.
 
