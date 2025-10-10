@@ -284,7 +284,7 @@ typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_Deactivat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | 指向OH_AudioSession_Deactivated_Event音频会话已停用事件。 |
+| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | 指向OH_AudioSession_DeactivatedEvent音频会话已停用事件。 |
 
 ### OH_AudioManager_GetAudioSessionManager()
 
