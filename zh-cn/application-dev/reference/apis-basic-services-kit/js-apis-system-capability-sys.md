@@ -1,4 +1,10 @@
 # @ohos.systemCapability (系统能力)(系统接口)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Developtools-->
+<!--Owner: @pengfojin-->
+<!--Designer: @ringking0-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 系统能力（SystemCapability，简称SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应多个接口。开发者可根据系统能力来判断是否可以使用某接口。本模块提供接口可查询系统能力的集合。
 
@@ -11,14 +17,14 @@
 ## 导入模块
 
 ```ts
-import systemcapability from '@ohos.systemCapability';
+import { systemcapability } from '@kit.BasicServicesKit';
 ```
 
 ## systemcapability.querySystemCapabilities
 
 querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 
-获取系统能力集合的字符串，并调用回调函数。
+获取系统能力集合的字符串，并使用callback回调函数。
 
 **系统能力：** SystemCapability.Developtools.Syscap
 
@@ -35,9 +41,9 @@ querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 try {
     systemcapability.querySystemCapabilities((err:Error, data:string) => {
     if (err == undefined) {
-        console.log("get system capabilities:" + data)
+        console.info("get system capabilities:" + data);
     } else {
-        console.error(" get system capabilities err:" + err)
+        console.error(" get system capabilities err:" + err);
     }});
 }catch(e){
     console.error("get unexpected error: " + e);
@@ -49,7 +55,7 @@ try {
 
 querySystemCapabilities(): Promise&lt;string&gt;
 
-获取系统能力的集合。
+获取系统能力的集合，并使用Promise异步回调函数。
 
 **系统能力：** SystemCapability.Developtools.Syscap
 
@@ -64,7 +70,7 @@ querySystemCapabilities(): Promise&lt;string&gt;
 ```ts
 try {
     systemcapability.querySystemCapabilities().then((value:string) => {
-        console.log("get system capabilities: " + value);
+        console.info("get system capabilities: " + value);
     }).catch((err:Error) => {
         console.error("get system capabilities error: " + err);
     });
