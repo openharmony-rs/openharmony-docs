@@ -157,7 +157,7 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -193,7 +193,7 @@ checkNewVersion(): Promise\<CheckResult>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -235,7 +235,7 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -272,7 +272,7 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -313,7 +313,7 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -370,7 +370,7 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -420,7 +420,7 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -458,7 +458,7 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -499,7 +499,7 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -547,7 +547,7 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -590,7 +590,7 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -626,7 +626,7 @@ getTaskInfo(): Promise\<TaskInfo>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -666,7 +666,7 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -720,7 +720,7 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -771,7 +771,7 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -824,7 +824,7 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -874,7 +874,7 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -927,7 +927,7 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -977,7 +977,7 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1030,7 +1030,7 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1080,7 +1080,7 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1133,7 +1133,7 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1181,7 +1181,7 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1218,7 +1218,7 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1258,7 +1258,7 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1305,7 +1305,7 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1348,7 +1348,7 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1384,7 +1384,7 @@ terminateUpgrade(): Promise\<void>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1429,7 +1429,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 };
 
 updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info("updater on " + JSON.stringify(eventInfo));
+  console.info(`updater on ${JSON.stringify(eventInfo)}`);
 });
 ```
 
@@ -1457,7 +1457,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 };
 
 updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info("updater off " + JSON.stringify(eventInfo));
+  console.info(`updater off ${JSON.stringify(eventInfo)}`);
 });
 ```
 
@@ -1481,7 +1481,7 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1515,7 +1515,7 @@ factoryReset(): Promise\<void>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1557,7 +1557,7 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1604,7 +1604,7 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1647,7 +1647,7 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: Asyn
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1687,7 +1687,7 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md), [通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
@@ -1842,6 +1842,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
+| otaMode         | [OtaMode](#otaMode)                 | 否 | 是 | 升级模式。     | 
 
 ## DescriptionOptions
 
@@ -1994,10 +1995,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | ----------------- | ---------------------------------------- | ---- | ---- | ---- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 |  否    | 版本摘要。 |
 | status            | [UpgradeStatus](#upgradestatus)          | 否 |  否    | 升级状态。 |
-| subStatus         | number                                   | 否 |  是    | 子状态。  |
+| subStatus         | number                                   | 否 |  否    | 子状态。  |
 | progress          | number                                   | 否 |  否    | 进度。   |
 | installMode       | number                                   | 否 |  否    | 安装模式。 |
-| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 |  是    | 错误信息。 |
+| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 |  否    | 错误信息。 |
 | versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否    | 版本组件。 |
 
 ## ErrorMessage
