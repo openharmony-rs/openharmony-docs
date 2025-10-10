@@ -1,201 +1,248 @@
-# Universal Text Attributes
+# Text Box Component Common APIs
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
-Universal text attributes include text style attributes applicable to text containers.
+Provides capabilities for [TextInput](ts-basic-components-textinput.md) and [TextArea](ts-basic-components-textarea.md) components to obtain text and cursor information, insert and delete text, set character counters, and configure text decoration lines.
+Provides capabilities for the [Search](ts-basic-components-search.md) component to obtain text and cursor information, insert and delete text, and configure text decoration lines.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 
-## fontColor
+## TextContentControllerBase
 
-fontColor(value: ResourceColor)
-
-Sets the font color.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+Represents the base controller for **TextInput**, **TextArea**, and **Search** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+### getTextContentRect
 
-| Name| Type                                      | Mandatory| Description      |
-| ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.|
+getTextContentRect(): RectResult
 
-## fontSize
-
-fontSize(value: number | string | Resource)
-
-Sets the font size.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+Obtains the position of the edited text area relative to the component and its size. The unit of the return value is pixel.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Return value**
 
-| Name| Type                                                        | Mandatory| Description                                                        |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Resource](ts-types.md#resource) \| number \| string | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported. Percentage values are not supported.|
+| Type      | Description      |
+| -------------------  | -------- |
+| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) | Position of the edited text area relative to the component and its size.|
 
-## fontStyle
+> **NOTE**
+>
+> - If no text is entered, the return value contains the position information, but the size is 0.
+> - The position information is the offset of the first character relative to the editable area.
+> - For the **Search** component, the returned position information is the offset of the first character relative to the search icon in the component.
+> - If there is input, the width in the return value is the fixed width of the editable area.
 
-fontStyle(value: FontStyle)
+### getTextContentLineCount
 
-Sets the font style.
+getTextContentLineCount(): number
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                       | Mandatory| Description                                   |
-| ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.<br>Default value: **FontStyle.Normal**|
-
-## fontWeight
-
-fontWeight(value: number | FontWeight | string)
-
-Sets the font weight. If the value is too large, the text may be clipped depending on the font.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+Obtains the number of lines of the edited text.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Return value**
 
-| Name| Type                                                        | Mandatory| Description                                                        |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**|
+| Type | Description      |
+| ----- | -------- |
+| number| Number of lines of the edited text.|
 
-## fontFamily
+### getCaretOffset<sup>11+</sup>
 
-fontFamily(value: string | Resource)
+getCaretOffset(): CaretOffset
 
-Sets the font family.
+Obtains the position information of the caret.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                     | Description              |
+| ----------------------- | ---------------- |
+| [CaretOffset](#caretoffset11) | Position of the caret relative to the text box.|
+
+> **NOTE**
+>
+> - If this API is called when the caret position is updated in the current frame, it will not take effect.
+> - For the **Search** component, the returned position information is the offset of the first character relative to the search icon in the component.
+> - If no text is entered in the **Search** component, the return value contains the position information relative to the component.
+> - The location information in the return value is the location of the caret relative to the editable component.
+
+### addText<sup>15+</sup>
+
+addText(text: string, textOperationOptions?: TextContentControllerOptions): number
+
+Inserts text at a specified position in the editable content. If no position is specified, the text is appended to the end of the existing content.
+This API does not work when the text is being dragged.
+
+**addText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for preview text.
+
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type                                                | Mandatory| Description                                                        |
-| ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Resource](ts-types.md#resource) \| string | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported for applications.<br>Only the 'HarmonyOS Sans' font is supported for widgets.|
+| Name | Type  | Mandatory  | Description |
+| ------- | ------ | ---- | ----- |
+| text | string | Yes   | Text to insert.|
+| textOperationOptions   | [TextContentControllerOptions](#textcontentcontrolleroptions15) | No   | Configuration option for inserting text. If this parameter is not provided, the text is appended to the end.|
 
-## lineHeight
+**Return value**
 
-lineHeight(value: number | string | Resource)
+| Type | Description      |
+| ----- | -------- |
+| number| New cursor position after insertion.|
 
-Sets the text line height. If the value is less than or equal to **0**, the line height is not limited and the font size is adaptive.
+### deleteText<sup>15+</sup>
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+deleteText(range?: TextRange): void
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Deletes text within a specified range in the editable content.
+This API does not work when the text is being dragged.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**deleteText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for preview text.
 
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                              |
-| ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| value  | [Resource](ts-types.md#resource) \| number \| string | Yes  | Text line height. For number values, the unit is fp.|
-
-## decoration
-
-decoration(value: DecorationStyleInterface)
-
-Sets the style and color for the text decorative line.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type                                                        | Mandatory| Description                                                        |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decorative line.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
+| Name | Type  | Mandatory  | Description |
+| ------- | ------ | ---- | ----- |
+| range | [TextRange](ts-text-common.md#textrange12) | No   | Range of the text to be deleted, including the start and end positions.<br>If the range is not specified, the entire text is deleted. If the start position is not specified, deletion starts from index 0. If the end position is not specified, deletion ends at the end of the text.|
 
-## Example
+### getSelection<sup>15+</sup>
 
-This example showcases various text styles by using the **fontColor**, **fontSize**, **fontStyle**, and **fontWeight** attributes.
+getSelection(): TextRange
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct TextStyleExample {
-  build() {
-    Column({ space: 8 }) {
-      Text('default text')
-      
-      Text('text font color red').fontColor(Color.Red)
-      
-      Text('text font default')
-      Text('text font size 10').fontSize(10)
-      Text('text font size 10fp').fontSize('10fp')
-      Text('text font size 20').fontSize(20)
-      
-      Text('text font style Italic').fontStyle(FontStyle.Italic)
-      
-      Text('text fontWeight bold').fontWeight(700)
-      Text('text fontWeight lighter').fontWeight(FontWeight.Lighter)
-      
-      Text('red 20 Italic bold text')
-        .fontColor(Color.Red)
-        .fontSize(20)
-        .fontStyle(FontStyle.Italic)
-        .fontWeight(FontWeight.Bold)
-      
-      Text('Orange 18 Normal text')
-        .fontColor(Color.Orange)
-        .fontSize(18)
-        .fontStyle(FontStyle.Normal)
+Obtains the current text selection range.
 
-      Text('text lineHeight 30')
-        .lineHeight(30)
-        .backgroundColor(Color.Gray)
+**Atomic service API**: This API can be used in atomic services since API version 15.
 
-      Text('text fontFamily HarmonyOS Sans')
-        .fontFamily("HarmonyOS Sans")
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-      Text('Underline Black SOLID decoration text')
-        .decoration({
-          type: TextDecorationType.Underline,
-          color: Color.Black,
-          style: TextDecorationStyle.SOLID
-        })
-      Text('Overline Red DOTTED decoration text')
-        .decoration({
-          type: TextDecorationType.Overline,
-          color: Color.Red,
-          style: TextDecorationStyle.DOTTED
-        })
-      Text('LineThrough Orange SOLID decoration text')
-        .decoration({
-          type: TextDecorationType.LineThrough,
-          color: Color.Orange,
-          style: TextDecorationStyle.WAVY
-        })
-    }.width('100%')
-  }
-}
-```
+**Return value**
 
-![textstyle](figures/textstyle.png)
+| Type                     | Description              |
+| ----------------------- | ---------------- |
+| [TextRange](ts-text-common.md#textrange12) | Current text selection range, or cursor position if no text is selected.|
+
+### clearPreviewText<sup>17+</sup>
+
+clearPreviewText(): void
+
+Notifies the input method to clear the current preview text.
+
+**Atomic service API**: This API can be used in atomic services since API version 17.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+## InputCounterOptions<sup>11+</sup>
+
+Provides configuration options for the character counter.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type   |     Read-Only   |     Optional   |     Description   |
+| -------- | ------- | ----------- | ----------- | ----------- |
+| thresholdPercentage | number  | No| Yes| Threshold percentage for displaying the character counter. The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. When displayed, the character counter is in the following format: Number of characters that have been entered/Maximum number of characters allowed. It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. Value range: [1, 100]<br>If the value is not an integer, it is rounded down to the nearest integer. If the value exceeds the valid value range, the character counter is not displayed. If the value is **undefined**, the character counter is displayed, but this parameter has no effect.|
+| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. The value **true** (default) means to highlight the text box border and character counter subscript in red.|
+
+## CaretOffset<sup>11+</sup>
+
+Describes the position of the caret relative to the text box.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type   |     Read-Only   |     Optional   |     Description   |
+| -------- | ------- | ----------- | ----------- | ----------- |
+| index | number | No| No| Index of the caret position.   |
+| x     | number | No| No| X-coordinate of the caret relative to the text box, in px.|
+| y     | number | No| No| Y-coordinate of the caret relative to the text box, in px.|
+
+## TextDecorationOptions<sup>12+</sup>
+
+Provides the text decoration options.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type   |     Read-Only   |     Optional   |     Description   |
+| -------- | ------- | ----------- | ----------- | ----------- |
+| type  | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | No  | No| Type of the text decoration.|
+| color  |  [ResourceColor](ts-types.md#resourcecolor) | No  | Yes| Color of the text decoration.|
+| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | No  | Yes| Style of the text decoration.|
+
+## SelectionOptions<sup>12+</sup>
+
+Provides the configuration options for text selection.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type   |     Read-Only   |     Optional   |     Description   |
+| -------- | ------- | ----------- | ----------- | ----------- |
+| menuPolicy | [MenuPolicy](#menupolicy12) | No  | Yes| Menu display policy.|
+
+## MenuPolicy<sup>12+</sup>
+
+Enumerates menu display policies.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name   | Value  | Description                              |
+| ------- | ---- | ---------------------------------- |
+| DEFAULT | 0    | Whether the menu is displayed depends on the underlying default logic.|
+| HIDE    | 1    | The menu is always hidden.                  |
+| SHOW    | 2    | The menu is always displayed.                    |
+
+## SymbolGlyphModifier<sup>12+</sup>
+
+type SymbolGlyphModifier = SymbolGlyphModifier
+
+Defines custom icon symbol configurations.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description      |
+| ----- | -------- |
+| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | Returns the current **SymbolGlyphModifier** instance.|
+
+## TextContentControllerOptions<sup>15+</sup>
+
+Provides Configuration options for text insertion operations in a text box.
+
+**Atomic service API**: This API can be used in atomic services since API version 15.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type  | Read-Only| Optional| Description      |
+| --------- | ------ | ---- | ---- | ---------- |
+| offset | number | No  | Yes  | Position where the text will be inserted.|

@@ -35,7 +35,7 @@ FoldSplitContainer({
   expandedLayoutOptions: ExpandedRegionLayoutOptions,
   hoverModeLayoutOptions: HoverModeRegionLayoutOptions,
   foldedLayoutOptions: FoldedRegionLayoutOptions,
-  animationOptions?: AnimateParam,
+  animationOptions?: AnimateParam | null,
   onHoverStatusChange?: OnHoverStatusChangeHandler
 })
 
@@ -68,10 +68,10 @@ Defines the layout information for the expanded state.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| isExtraRegionPerpendicular | boolean | No| Whether the extra region extends perpendicularly through the entire component from top to bottom. This setting takes effect only when **extra** is effective. The value **true** means that the extra region extends perpendicularly through the entire component from top to bottom, and **false** means the opposite.<br>Default value: **true**.|
-| verticalSplitRatio | number | No| Height ratio between the primary and secondary regions.<br>Default value: **PresetSplitRatio.LAYOUT_1V1**.|
-| horizontalSplitRatio | number | No| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: **PresetSplitRatio.LAYOUT_3V2**.|
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Position information of the extra region. This setting takes effect only when **isExtraRegionPerpendicular** is **false**.<br>Default value: **ExtraRegionPosition.top**.|
+| isExtraRegionPerpendicular | boolean | No| Whether the extra region extends perpendicularly through the entire component from top to bottom. The value **true** means that the extra region extends perpendicularly through the entire component from top to bottom, and **false** means the opposite. This field takes effect only when extra is valid.<br>Default value: **true**.|
+| verticalSplitRatio | number | No| Height ratio between the primary and secondary regions.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
+| horizontalSplitRatio | number | No| Width ratio of the primary region to the extended region. This field takes effect only when extra is valid.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2|
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Position of the extended region. This field takes effect only when isExtraRegionPerpendicular is set to false.<br>Default value: **ExtraRegionPosition.top**.|
 
 ## HoverModeRegionLayoutOptions
 
@@ -84,8 +84,8 @@ Defines the layout information for the hover state.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | showExtraRegion | boolean | No| Whether to display the extra region in the half-folded state. The value **true** means to display the extra region in the half-folded state, and **false** means the opposite.<br>Default value: **false**.|
-| horizontalSplitRatio | number | No| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: **PresetSplitRatio.LAYOUT_3V2**.|
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Position information of the extra region. This setting takes effect only when **showExtraRegion** is set.<br>Default value: **ExtraRegionPosition.top**.|
+| horizontalSplitRatio | number | No| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2|
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Position of the extended region. This field takes effect only when showExtraRegion is set to true.<br>Default value: **ExtraRegionPosition.top**.|
 
 > **NOTE**
 >
@@ -102,7 +102,7 @@ Defines the layout information for the folded state.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| verticalSplitRatio | number | No| Height ratio between the primary and secondary regions. Default value: **PresetSplitRatio.LAYOUT_1V1**.|
+| verticalSplitRatio | number | No| Height ratio between the primary and secondary regions. Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
 
 ## OnHoverStatusChangeHandler
 
