@@ -1414,6 +1414,7 @@ Dynamic icons cannot take effect due to existing custom themes.
 1. 检查当前使用的主题是否为自定义主题。<br/>
 2. 可以切换为官方主题后重新调用使能接口。<!--DelEnd-->
 
+<!--Del-->
 ## 17700351 无效的文件类型
 **错误信息**<br/>
 Invalid fileTypes.
@@ -1430,3 +1431,4 @@ Invalid fileTypes.
 
 **处理步骤**<br/>
 请检查文件类型数组是否错误，阅读参数规格约束，按照可能原因进行排查。
+<!--DelEnd-->
