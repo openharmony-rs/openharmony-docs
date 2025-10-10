@@ -4318,7 +4318,7 @@ Input_Result OH_Input_SetPointerVisible(bool visible)
 
 **描述**
 
-设置鼠标光标的显示或隐藏状态
+设置当前窗口鼠标光标的显示或隐藏状态
 
 **起始版本：** 22
 
@@ -4351,7 +4351,7 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口Id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br> 窗口Id合法并且对应窗口存在时，返回窗口的鼠标光标样式 <br> 窗口Id合法但窗口不存在时，默认返回全局鼠标光标样式，不存在的窗口的鼠标光标样式可以被[OH_Input_SetPointerStyle](#oh_input_setpointerstyle)设置|
+| int32_t windowId | 窗口Id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br> 窗口Id合法并且对应窗口存在时，返回窗口的鼠标光标样式 <br> 窗口Id合法但窗口不存在时，默认返回全局鼠标光标样式。|
 | int32_t* pointerStyle | 鼠标光标样式类型的指针。 |
 
 **返回：**
@@ -4377,7 +4377,7 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口Id。取值范围为大于等于0的整数。<br> 窗口Id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式 <br> 窗口Id合法但窗口不存在时，也可以设置鼠标光标样式，设置结果可通过[OH_Input_GetPointerStyle](#oh_input_getpointerstyle)查询|
+| int32_t windowId | 窗口Id。取值范围为大于等于0的整数。<br> 接口只能设置所在窗口的光标样式，设置其他窗口的光标样式不生效|
 | int32_t pointerStyle | 鼠标光标样式类型。 |
 
 **返回：**
