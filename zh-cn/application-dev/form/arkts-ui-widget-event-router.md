@@ -15,7 +15,7 @@
 > 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ## 开发步骤
-1. 创建动态卡片，在工程的 entry 模块中，新建名为WidgetEventRouterCard的ArkTS卡片。
+1. 创建动态卡片，在工程的entry模块中，新建名为WidgetEventRouterCard的ArkTS卡片。
 2. 构建ArkTS卡片页面代码布局，卡片页面布局中有两个按钮，点击其中一个按钮时调用postCardAction向指定UIAbility发送router事件，并在事件内定义需要传递的内容。
   ```ts
   // src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets
@@ -104,7 +104,7 @@
       }
     }
 
-    // 如果UIAbility已在后台运行，在收到Router事件后会触发onNewWant生命周期回调
+    // 如果UIAbility已在后台运行，在收到router事件后会触发onNewWant生命周期回调
     onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       hilog.info(DOMAIN_NUMBER, TAG, `onNewWant Want: ${JSON.stringify(want)}`);
       if (want?.parameters?.params) {
