@@ -5119,3 +5119,31 @@ Allows a system application to set the certificate status of independent binary 
 **Supported devices**: PC/2in1
 
 **Valid since**: 20
+
+## ohos.permission.GET_SCREEN_CONTENT
+
+Allows an application to obtain the content on the screen.
+
+**Permission level**：system_core
+
+**Authorization mode**：system_grant
+
+**Enable via ACL**：true
+
+**Supported devices**：General
+
+**Valid since**：20
+
+## ohos.permission.SIMULATE_USER_INPUT
+
+Allows an application to simulate user operations.
+
+**Permission level**：system_core
+
+**Authorization mode**：system_grant
+
+**Enable via ACL**：true
+
+**Supported devices**：General
+
+**Valid since**：20
