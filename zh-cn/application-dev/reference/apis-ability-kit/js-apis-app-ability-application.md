@@ -28,10 +28,10 @@ import { application } from '@kit.AbilityKit';
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
-| UNSPECIFIED    | 0   |    未发生预加载或预加载数据已被清除。       |
-| TYPE_CREATE_PROCESS          | 1   |    预加载到进程创建完成阶段。      |
-| TYPE_CREATE_ABILITY_STAGE  | 2   |     预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
-| TYPE_CREATE_WINDOW_STAGE        | 3   |    预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
+| UNSPECIFIED    | 0   |    表示应用进程最终未发生预加载或预加载数据已被清除。       |
+| TYPE_CREATE_PROCESS          | 1   |    表示应用进程最终会预加载到进程创建完成阶段。      |
+| TYPE_CREATE_ABILITY_STAGE  | 2   |     表示应用进程最终会预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
+| TYPE_CREATE_WINDOW_STAGE        | 3   |    表示应用进程最终会预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
 
 ## application.createModuleContext<sup>12+</sup>
 
@@ -361,11 +361,8 @@ export default class EntryAbility extends UIAbility {
 
 getAppPreloadType(): AppPreloadType
 
-获取应用当前进程的预加载类型。
+获取应用当前进程的预加载类型。该接口只能在首次[AbilityStage.onCreate]中获取到正确的预加载类型的数据，[AbilityStage.onCreate]执行完成后预加载类型的数据会被清除。
 
-> **说明：**
->
-> 预加载类型的数据会在首次[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)执行完成后被清除。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 	
