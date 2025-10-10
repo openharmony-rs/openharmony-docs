@@ -848,6 +848,8 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -918,17 +920,19 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 
 getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
 
-获取一个或多个指定ID的主窗口截图，使用Promise异步回调。
+获取一个或多个指定windowId的主窗口截图，使用Promise异步回调。
 
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。|
+| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。可通过[window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21)获取到主窗口windowId。|
 | config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取窗口截图时的配置信息。 |
 
 **返回值：**

@@ -474,17 +474,17 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| displayId | number  | 否 | 否 | 窗口的屏幕ID。 |
-| windowId  | number  | 否 | 否 | 窗口ID。 |
-| showing   | boolean | 否 | 否 | 显示窗口的状态。true表示窗口在前台显示，false表示窗口不在前台显示。|
-| label     | string  | 否 | 否 | 窗口标签。 |
+| displayId | number  | 否 | 否 | 主窗口所在的屏幕ID。 |
+| windowId  | number  | 否 | 否 | 主窗口ID。 |
+| showing   | boolean | 否 | 否 | 窗口的显示状态。true表示窗口在前台显示，false表示窗口不在前台显示。|
+| label     | string  | 否 | 否 | 主窗口的任务名称。 |
 
 ## WindowSnapshotConfiguration<sup>21+</sup>
 
-窗口截图的配置项。
+主窗口截图的配置项。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称     | 类型      | 只读 | 可选 | 说明               |
 | -------- | -------- | ---- | ---- | ------------------ |
-| useCache | boolean  | 否   | 是   | 是否使用已有的窗口截图。默认值为true。 true表示获取之前已经截图保存的图片，不会再重新截图。如果之前有保存过截图，则使用已保存的截图；如果之前没有保存过截图，则效果等同于false。false表示重新截取当前窗口的一张新图片。|
+| useCache | boolean  | 否   | 是   | 是否使用主窗口的已有截图。默认值为true。 true表示使用主窗口的已有截图，若主窗口无保存的截图，则使用主窗口的最新截图。false表示使用主窗口的最新截图。|
