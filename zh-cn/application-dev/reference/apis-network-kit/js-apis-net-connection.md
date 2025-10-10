@@ -253,7 +253,7 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.log("Succeeded to get data" + JSON.stringify(data));
+  console.info("Succeeded to get data" + JSON.stringify(data));
 });
 ```
 
@@ -496,7 +496,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.setAppNet(netHandle).then(() => {
-    console.log("success");
+    console.info("success");
   }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
   })
@@ -972,7 +972,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1008,7 +1008,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1081,7 +1081,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1117,7 +1117,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1238,7 +1238,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1333,7 +1333,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1612,7 +1612,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.removeCustomDnsRule("xxxx").then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
@@ -1695,7 +1695,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.clearCustomDnsRules().then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
@@ -2485,7 +2485,7 @@ interface Data {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2576,7 +2576,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     }
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
