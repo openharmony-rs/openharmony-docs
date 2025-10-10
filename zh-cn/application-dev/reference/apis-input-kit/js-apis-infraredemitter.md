@@ -123,7 +123,7 @@ struct Index {
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-| 名称                               | 类型 | 必填   | 说明  |
-| -------------------------------- | ---- | ------ | ------ |
-| max                       | number | 是 | 最大支持频率，单位：Hz。 |
-| min                          | number | 是  | 最小支持频率，单位：Hz。 |
+| 名称        | 类型   | 只读   | 可选   | 说明      |
+| --------- | ------ | ---- | ---- | ------- |
+| max    | number  | 否    | 否 | 最大支持频率，单位：Hz。 |
+| min    | number  | 否    | 否 | 最小支持频率，单位：Hz。 |
