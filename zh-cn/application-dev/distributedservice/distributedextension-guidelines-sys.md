@@ -1,4 +1,4 @@
-# DistributedExtensionAbility开发指南
+# DistributedExtensionAbility开发指南（仅对系统应用开放）
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
