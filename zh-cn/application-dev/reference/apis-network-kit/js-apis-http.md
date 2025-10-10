@@ -1534,7 +1534,7 @@ let httpRequest = http.createHttp();
 httpRequest.request("EXAMPLE_URL").then(data => {
   const httpResponseCache = http.createHttpResponseCache();
   httpResponseCache.delete().then(() => {
-    console.log("success");
+    console.info("success");
   }).catch((err: BusinessError) => {
     console.error("fail");
   });
