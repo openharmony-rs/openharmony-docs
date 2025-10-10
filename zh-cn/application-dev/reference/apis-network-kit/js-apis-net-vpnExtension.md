@@ -559,6 +559,58 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
   }
 }
 ```
+### protectProcessNet
+
+protectProcessNet(): Promise\<void\>
+
+保护应用进程不受VPN连接影响，通过该进程发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise方式作为异步方法。
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**返回值：**
+
+| 类型            | 说明                                                  |
+| --------------- | ----------------------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)。
+
+| 错误码ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 19900001       |  Invalid parameter value.  |
+
+**示例：**
+
+```js
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { common, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let g_tunnelFd = -1;
+let context: vpnExtension.VpnExtensionContext;
+export default class MyVpnExtAbility extends VpnExtensionAbility {
+  private vpnServerIp: string = '192.168.31.13';
+  onCreate(want: Want) {
+    let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
+    console.info("VPN createVpnConnection: " + JSON.stringify(vpnConnection));
+    this.ProtectNetByProcess();
+  }
+  CreateTunnel() {
+      g_tunnelFd = 8888;
+  }
+  ProtectNetByProcess() {
+    hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess');
+    this.VpnConnection.protectProcessNet().then(() => {
+      hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess Success');
+      this.CreateTunnel();
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'developTag', 'vpn ProtectNetByProcess Failed %{public}s', JSON.stringify(err) ?? '');
+    })
+  }
+}
+```
 
 ## VpnConfig
 
