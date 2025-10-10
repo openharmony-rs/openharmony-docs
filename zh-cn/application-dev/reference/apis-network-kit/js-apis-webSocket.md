@@ -57,7 +57,9 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果。callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
+> 可通过监听error事件获得该接口的执行结果。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -114,7 +116,9 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
+> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -180,7 +184,9 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
+> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
