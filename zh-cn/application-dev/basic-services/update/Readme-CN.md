@@ -6,5 +6,5 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 
-- [示例服务器开发概述](sample-server-overview.md)
-- [示例服务器开发指导](sample-server-guidelines.md)
+- [示例服务器开发概述](sample-server-overview-sys.md)
+- [示例服务器开发指导](sample-server-guidelines-sys.md)
