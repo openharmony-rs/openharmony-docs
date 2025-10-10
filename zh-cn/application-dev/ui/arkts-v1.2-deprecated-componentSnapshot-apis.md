@@ -1,14 +1,14 @@
 # @ohos.arkui.componentSnapshot
 
-以下接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+以下接口在ArkTS-Dyn中已废弃，在ArkTS-Sta中需使用替代接口来实现能力。
 
 ## get
 
-ArkTS1.1接口声明：[get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated)
+ArkTS-Dyn接口声明：[get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated)
 
-替代的ArkTS1.2接口声明：[get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#get12)
+替代的ArkTS-Sta接口声明：[get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#get12)
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```typescript
 import { componentSnapshot } from '@kit.ArkUI';
@@ -17,7 +17,7 @@ import { image } from '@kit.ImageKit';
 @Entry
 @ComponentV2
 struct SnapshotExample {
-  @Local pixmap: image.PixelMap | undefined = undefined
+  @Local pixmap: image.PixelMap | undefined = undefined;
 
   build() {
     Column() {
@@ -37,10 +37,10 @@ struct SnapshotExample {
         .onClick(() => {
           componentSnapshot.get("snapshot_target", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error("error: " + JSON.stringify(error));
               return;
             }
-            this.pixmap = pixmap
+            this.pixmap = pixmap;
           }, { scale: 2, waitUntilRenderFinished: true })
         }).margin(10)
     }
@@ -51,21 +51,22 @@ struct SnapshotExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```typescript
+import { Entry, ComponentV2, Column, Row, Image, Button, HorizontalAlign, Color, BusinessError, Local, $r } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 @Entry
 @ComponentV2
 struct SnapshotExample {
-  @Local pixmap: image.PixelMap | undefined = undefined
+  @Local pixmap: image.PixelMap | undefined = undefined;
 
   build() {
     Column() {
       Row() {
         // 用来显示截图结果的图片组件
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap ? this.pixmap : '').width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
         // 用来被截图的组件
         Image($r('app.media.startIcon'))
           .autoResize(true)
@@ -78,12 +79,12 @@ struct SnapshotExample {
       Button("click to generate UI snapshot")
         .onClick(() => {
           // 使用UIContext中的同名方法替代
-          this.getUIContext().getComponentSnapshot().get("snapshot_target", (error: Error, pixmap: image.PixelMap) => {
-            if (error) {
-              console.error("error: " + JSON.stringify(error))
+          this.getUIContext().getComponentSnapshot().get("snapshot_target", (error: BusinessError<void> | null, pixmap: image.PixelMap | undefined) => {
+            if (pixmap) {
+              this.pixmap = pixmap;
               return;
             }
-            this.pixmap = pixmap
+            console.error("error: " + JSON.stringify(error));
           }, { scale: 2, waitUntilRenderFinished: true })
         }).margin(10)
     }
@@ -96,11 +97,11 @@ struct SnapshotExample {
 
 ## get
 
-ArkTS1.1接口声明：[get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated-1)
+ArkTS-Dyn接口声明：[get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated-1)
 
-替代的ArkTS1.2接口声明：[get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-UIContext.md#get12-1)
+替代的ArkTS-Sta接口声明：[get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-UIContext.md#get12-1)
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```typescript
 import { componentSnapshot } from '@kit.ArkUI';
@@ -109,7 +110,7 @@ import { image } from '@kit.ImageKit';
 @Entry
 @ComponentV2
 struct SnapshotExample {
-  @Local pixmap: image.PixelMap | undefined = undefined
+  @Local pixmap: image.PixelMap | undefined = undefined;
 
   build() {
     Column() {
@@ -129,9 +130,9 @@ struct SnapshotExample {
         .onClick(() => {
           componentSnapshot.get("snapshot_target", { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
-              this.pixmap = pixmap
+              this.pixmap = pixmap;
             }).catch((err: Error) => {
-            console.log("error: " + err)
+            console.log("error: " + err);
           })
         }).margin(10)
     }
@@ -142,21 +143,22 @@ struct SnapshotExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```typescript
+import { Entry, ComponentV2, Column, Row, Image, Button, HorizontalAlign, Color, Local, $r } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 @Entry
 @ComponentV2
 struct SnapshotExample {
-  @Local pixmap: image.PixelMap | undefined = undefined
+  @Local pixmap: image.PixelMap | undefined = undefined;
 
   build() {
     Column() {
       Row() {
         // 用来显示截图结果的图片组件
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap ? this.pixmap : '').width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
         // 用来被截图的组件
         Image($r('app.media.startIcon'))
           .autoResize(true)
@@ -171,9 +173,9 @@ struct SnapshotExample {
           // 使用UIContext中的同名方法替代
           this.getUIContext().getComponentSnapshot().get("snapshot_target", { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
-              this.pixmap = pixmap
+              this.pixmap = pixmap;
             }).catch((err: Error) => {
-            console.log("error: " + err)
+            console.log("error: " + err);
           })
         }).margin(10)
     }
@@ -186,11 +188,11 @@ struct SnapshotExample {
 
 ## createFromBuilder
 
-ArkTS1.1接口声明：[createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated)
+ArkTS-Dyn接口声明：[createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated)
 
-替代的ArkTS1.2接口声明：[createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#createfrombuilder12)
+替代的ArkTS-Sta接口声明：[createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#createfrombuilder12)
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```typescript
 import { componentSnapshot } from '@kit.ArkUI';
@@ -245,7 +247,7 @@ struct OffscreenSnapshotExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```typescript
 import { image } from '@kit.ImageKit';
@@ -302,11 +304,11 @@ struct OffscreenSnapshotExample {
 
 ## createFromBuilder
 
-ArkTS1.1接口声明：[createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated-1)
+ArkTS-Dyn接口声明：[createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated-1)
 
-替代的ArkTS1.2接口声明：[createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-UIContext.md#createfrombuilder12-1)
+替代的ArkTS-Sta接口声明：[createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-UIContext.md#createfrombuilder12-1)
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```typescript
 import { componentSnapshot } from '@kit.ArkUI'
@@ -358,7 +360,7 @@ struct OffscreenSnapshotExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```typescript
 import { image } from '@kit.ImageKit'
