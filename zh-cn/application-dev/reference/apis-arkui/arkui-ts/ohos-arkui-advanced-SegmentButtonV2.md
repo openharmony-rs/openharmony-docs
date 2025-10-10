@@ -324,18 +324,18 @@ get hasHybrid():boolean
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-| 名称                     | 类型                                                                 | 必填 | 装饰器类型 | 说明                                            |
-| ------------------------ | -------------------------------------------------------------------- | ------ | ---- | ----------------------------------------------- |
-| text                     | [ResourceStr](ts-types.md#resourcestr)                               | 否 | @Trace   | 分段按钮选项文本。<br>默认值：undefined                              |
-| icon                     | [ResourceStr](ts-types.md#resourcestr)                               | 否 | @Trace   | 分段按钮选项图片类型图标。<br>默认值：undefined                      |
-| symbol                   | [Resource](ts-types.md#resource)                                     | 否 | @Trace   | 分段按钮选项的HM Symbol类型图标。<br>默认值：undefined            |
-| enabled                  | boolean                                                              | 是 | @Trace   | 分段按钮选项是否可用。<br>默认值：true<br>true：可用；false：不可用。                          |
-| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md)        | 否 | @Trace   | 分段按钮选项文本属性样式修改器。<br>默认值：undefined                |
-| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md)       | 否 | @Trace   | 分段按钮选项图片类型图标属性的样式修改器。<br>默认值：undefined       |
-| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | @Trace   | 分段按钮选项HM Symbol类型图标属性样式修改器。<br>默认值：undefined |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                               | 否 | @Trace   | 分段按钮选项的无障碍文本。<br>默认值：""                       |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                               | 否 | @Trace   | 分段按钮选项的无障碍说明。<br>默认值：""                       |
-| accessibilityLevel       | string                                                               | 否 | @Trace   | 分段按钮选项的[无障碍重要性](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto"                     |
+| 名称                     | 类型                                                                 | 只读 | 可选 | 说明                                            |
+| ------------------------ | -------------------------------------------------------------------- | ------ | ---- | ---- |
+| text                     | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项文本。<br>默认值：undefined<br>装饰器类型：@Trace         |
+| icon                     | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项图片类型图标。<br>默认值：undefined<br>装饰器类型：@Trace      |
+| symbol                   | [Resource](ts-types.md#resource)                                     | 否 | 是 | 分段按钮选项的HM Symbol类型图标。<br>默认值：undefined<br>装饰器类型：@Trace |
+| enabled                  | boolean                                                              | 否 | 否 | 分段按钮选项是否可用。<br>默认值：true<br>true：可用；false：不可用。<br>装饰器类型：@Trace        |
+| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md)        | 否 | 是 | 分段按钮选项文本属性样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
+| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md)       | 否 | 是 | 分段按钮选项图片类型图标属性的样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
+| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 分段按钮选项HM Symbol类型图标属性样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项的无障碍文本。<br>默认值：""<br>装饰器类型：@Trace       |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项的无障碍说明。<br>默认值：""<br>装饰器类型：@Trace       |
+| accessibilityLevel       | string                                                               | 否 | 是 | 分段按钮选项的[无障碍重要性](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto"<br>装饰器类型：@Trace     |
 
 > **说明** 
 >
@@ -388,18 +388,18 @@ get isHybrid():boolean
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-| 名称                     | 类型                                                         | 必填 | 说明                                                         |
-| ------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| text                     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 分段按钮选项文本。<br>默认值：undefined                      |
-| icon                     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 分段按钮选项图标。<br>默认值：undefined                      |
-| symbol                   | [Resource](ts-types.md#resource)                             | 否   | 分段按钮选项图标，HM Symbol类型 。<br>默认值：undefined      |
-| enabled                  | boolean                                                      | 否   | 分段按钮选项是否可用。<br>默认值：true<br>true：分段按钮选项可用；false：分段按钮选项不可用。 |
-| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 分段按钮选项文本属性样式修改器。<br>默认值：undefined        |
-| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 修改分段按钮选项图片类型的图标属性样式。<br>默认值：undefined |
-| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 分段按钮选项HM Symbol类型图标属性样式修改器。<br>默认值：undefined |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 分段按钮选项无障碍文本。<br>默认值：""                       |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 分段按钮选项无障碍说明。<br>默认值：""                       |
-| accessibilityLevel       | string                                                       | 否   | 分段按钮选项[无障碍重要性](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto" |
+| 名称                     | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| text                     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项文本。<br>默认值：undefined                      |
+| icon                     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项图标。<br>默认值：undefined                      |
+| symbol                   | [Resource](ts-types.md#resource)                             | 否   | 是   | 分段按钮选项图标，HM Symbol类型 。<br>默认值：undefined      |
+| enabled                  | boolean                                                      | 否   | 是   | 分段按钮选项是否可用。<br>默认值：true<br>true：分段按钮选项可用；false：分段按钮选项不可用。 |
+| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 是   | 分段按钮选项文本属性样式修改器。<br>默认值：undefined        |
+| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 是   | 修改分段按钮选项图片类型的图标属性样式。<br>默认值：undefined |
+| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 是   | 分段按钮选项HM Symbol类型图标属性样式修改器。<br>默认值：undefined |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项无障碍文本。<br>默认值：""                       |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项无障碍说明。<br>默认值：""                       |
+| accessibilityLevel       | string                                                       | 否   | 是   | 分段按钮选项[无障碍重要性](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto" |
 
 > **说明** 
 >
