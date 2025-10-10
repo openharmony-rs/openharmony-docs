@@ -33,7 +33,7 @@ import { config } from '@kit.AccessibilityKit';
 | shortkeyTarget                     | [Config](#config)\<string>                                                                 | 否 | 否 | 表示辅助扩展快捷键的目标配置。取值为辅助应用的名称，格式为：'bundleName/abilityName'。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20  |
 | captions                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助字幕功能启用状态。true表示已启用辅助字幕功能，false表示未启用辅助字幕功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20          |
 | captionsStyle                      | [Config](#config)\<[accessibility.CaptionsStyle](js-apis-accessibility.md#captionsstyle8)> | 否 | 否 | 表示辅助字幕的配置。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20            |
-| audioMono<sup>10+</sup>            | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示单声道音频的配置。true表示已启用单声道音频，false表示未启用单声道音频，默认值为false。                                            |
+| audioMono<sup>10+</sup>            | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示单声道音频的配置。true表示已启用单声道音频，false表示未启用单声道音频，默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20               |
 | audioBalance<sup>10+</sup>         | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<double>             | 否 | 否 | 表示左右声道音量平衡的配置。取值范围为-1.0~1.0。默认值为0.0。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20         |
 | shortkeyMultiTargets<sup>11+</sup> | [Config](#config)&lt;Array\<string>&gt;                                                    | 否 | 否 | 表示辅助扩展快捷键的列表配置。取值为辅助应用的名称，格式为：['bundleName/abilityName']。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20 |
 | clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | 否 | 否 | 表示点击持续时间功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20             |
@@ -763,7 +763,7 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    config.offInstalledAccessibilityListChange(this.callback);
+    config.onInstalledAccessibilityListChange(this.callback);
   }
 
   aboutToDisappear(): void {
@@ -1137,7 +1137,7 @@ config.highContrastText.off((data: boolean) => {
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：20
 

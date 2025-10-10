@@ -56,24 +56,20 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
-
-**ArkTS-Sta起始版本**：20
-
 ### 属性
 
 | 名称                             | 类型                                       | 只读   | 可选   | 说明               |
 | ------------------------------ | ---------------------------------------- | ---- | ---- | ---------------- |
-| id                             | string                                   | 是    | 否    | ability&nbsp;id。 |
-| name                           | string                                   | 是    | 否    | ability 名。       |
-| bundleName                     | string                                   | 是    | 否    | Bundle名称。        |
-| targetBundleNames<sup>9+</sup> | Array&lt;string&gt;                      | 是    | 否    | 关注的目标Bundle名称。   |
-| abilityTypes                   | Array&lt;[AbilityType](#abilitytype)&gt; | 是    | 否    | 辅助应用类型。          |
-| capabilities                   | Array&lt;[Capability](#capability)&gt;   | 是    | 否    | 辅助应用能力列表。        |
-| description                    | string                                   | 是    | 否    | 辅助应用描述。          |
-| eventTypes                     | Array&lt;[EventType](#eventtype)&gt;     | 是    | 否    | 辅助应用关注的无障碍事件列表。  |
-| needHide<sup>12+</sup>                     | boolean     | 是    | 否    | 辅助应用是否在已安装的扩展服务列表中被隐藏，true表示隐藏服务，false表示显示服务。  |
-| label<sup>12+</sup>                     | string     | 是    | 否    | 扩展应用在扩展服务列表中的名称。  |
+| id                             | string                                   | 是    | 否    | ability&nbsp;id。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20 |
+| name                           | string                                   | 是    | 否    | ability 名。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20       |
+| bundleName                     | string                                   | 是    | 否    | Bundle名称。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20        |
+| targetBundleNames<sup>9+</sup> | Array&lt;string&gt;                      | 是    | 否    | 关注的目标Bundle名称。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20   |
+| abilityTypes                   | Array&lt;[AbilityType](#abilitytype)&gt; | 是    | 否    | 辅助应用类型。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20          |
+| capabilities                   | Array&lt;[Capability](#capability)&gt;   | 是    | 否    | 辅助应用能力列表。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20        |
+| description                    | string                                   | 是    | 否    | 辅助应用描述。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20          |
+| eventTypes                     | Array&lt;[EventType](#eventtype)&gt;     | 是    | 否    | 辅助应用关注的无障碍事件列表。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20  |
+| needHide<sup>12+</sup>                     | boolean     | 是    | 否    | 辅助应用是否在已安装的扩展服务列表中被隐藏，true表示隐藏服务，false表示显示服务。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20  |
+| label<sup>12+</sup>                     | string     | 是    | 否    | 扩展应用在扩展服务列表中的名称。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20  |
 
 ## Action
 
@@ -395,7 +391,7 @@ captionsManager.off('styleChange', (data: accessibility.CaptionsStyle) => {
 | currentIndex     | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 是   | 当前条目序号。默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20   |
 | endIndex         | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 是   | 画面显示条目的结束序号。默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20 |
 | itemCount        | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 是   | 条目总数。默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20   |
-| elementId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 否   | 是   | 组件elementId。默认值为0。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：20  |
+| elementId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 否   | 是   | 组件elementId。默认值为0。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20  |
 | textAnnouncedForAccessibility<sup>12+</sup>     | string     | 否   | 是   | 主动播报的内容。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20    |
 | textResourceAnnouncedForAccessibility<sup>18+</sup>      | Resource   | 否   | 是   | 主动播报的内容支持传入Resource类型，Resource类型只支持传入string。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20  |
 | customId<sup>12+</sup>        | string                                | 否   | 是   | 主动聚焦的组件ID。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20  |
@@ -823,7 +819,7 @@ getCaptionsManager(): CaptionsManager
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本**：8
 
 **返回值：**
 
@@ -1256,7 +1252,7 @@ offAccessibilityStateChange(callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.on('accessibilityStateChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.onAccessibilityStateChange的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **示例：**
 
@@ -1361,7 +1357,7 @@ offTouchGuideStateChange(callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.on('touchGuideStateChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.onTouchGuideStateChange的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **示例：**
 
@@ -1377,7 +1373,7 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    accessibility.offTouchGuideStateChange(this.callback);
+    accessibility.onTouchGuideStateChange(this.callback);
   }
 
   aboutToDisappear(): void {
@@ -1403,7 +1399,7 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本**：18
 
 **参数：**
 
@@ -1466,7 +1462,7 @@ offScreenReaderStateChange(callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.on('screenReaderStateChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.onScreenReaderStateChange的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **示例：**
 

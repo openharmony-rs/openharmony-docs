@@ -29,18 +29,16 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
-
 ### 属性
 
 | 名称      | 类型              | 只读             | 可选                      | 说明                       |
 | --------- |----------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------| ------------------------------------------------------------ |
-| eventType | [accessibility.EventType](js-apis-accessibility.md#eventtype) \| [accessibility.WindowUpdateType](js-apis-accessibility.md#windowupdatetype) \| [TouchGuideType](#touchguidetype) \| [GestureType](#gesturetype) \| [PageUpdateType](#pageupdatetype) | 否   | 否   | 具体事件类型。<br />EventType：无障碍事件类型；<br />WindowUpdateType：窗口变化类型；TouchGuideType：触摸浏览事件类型；<br />GestureType：手势事件类型；<br />PageUpdateType：页面刷新类型。 |
-| target    | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9) | 否  | 是    | 发生事件的目标组件。  |
-| timeStamp | number              | 否        | 是         | 事件时间戳，单位是毫秒。默认值为0。                          |
-| elementId<sup>12+</sup> | number            | 否             | 是             | 主动聚焦的组件ID。默认值为0。                 |
-| textAnnouncedForAccessibility<sup>12+</sup> | string    | 否           | 是     | 主动播报的内容。                  |
-| extraInfo<sup>20+</sup> | string    | 否           | 是     | 针对TextArea、TextInput、SearchField、RichEdit组件，当文本内容有新增或删除时，携带的文本内容。                 |
+| eventType | [accessibility.EventType](js-apis-accessibility.md#eventtype) \| [accessibility.WindowUpdateType](js-apis-accessibility.md#windowupdatetype) \| [TouchGuideType](#touchguidetype) \| [GestureType](#gesturetype) \| [PageUpdateType](#pageupdatetype) | 否   | 否   | 具体事件类型。<br />EventType：无障碍事件类型；<br />WindowUpdateType：窗口变化类型；TouchGuideType：触摸浏览事件类型；<br />GestureType：手势事件类型；<br />PageUpdateType：页面刷新类型。<br>**ArkTS-Dyn起始版本**：9 |
+| target    | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9) | 否  | 是    | 发生事件的目标组件。<br>**ArkTS-Dyn起始版本**：9  |
+| timeStamp | number              | 否        | 是         | 事件时间戳，单位是毫秒。默认值为0。<br>**ArkTS-Dyn起始版本**：9                          |
+| elementId<sup>12+</sup> | number            | 否             | 是             | 主动聚焦的组件ID。默认值为0。<br>**ArkTS-Dyn起始版本**：12    |
+| textAnnouncedForAccessibility<sup>12+</sup> | string    | 否           | 是     | 主动播报的内容。<br>**ArkTS-Dyn起始版本**：12       |
+| extraInfo<sup>20+</sup> | string    | 否           | 是     | 针对TextArea、TextInput、SearchField、RichEdit组件，当文本内容有新增或删除时，携带的文本内容。<br>**ArkTS-Dyn起始版本**：20    |
 
 
 ## AccessibilityElement<sup>10+</sup>
@@ -84,6 +82,10 @@ let elementAttributeValues: ElementAttributeValues;
 表示查询下一焦点元素的方向，请参考[FocusDirection](js-apis-inner-application-accessibilityExtensionContext.md#focusdirection)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **示例：**
 
@@ -172,11 +174,11 @@ let rect: Rect;
 
 手势事件类型。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：20
 
 | 名称            | 类型            | 描述                  |
 | ------------- | ------------- | ------------------- |
@@ -226,11 +228,11 @@ type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate'
 
 页面刷新类型。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：20
 
 | 类型                | 说明            |
 | ----------------- | ---------------- |
@@ -243,11 +245,11 @@ TouchGuideType = 'touchBegin' | 'touchEnd'
 
 触摸浏览事件类型。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：20
 
 | 类型                | 说明                  |
 | ---------- | ------------------- |

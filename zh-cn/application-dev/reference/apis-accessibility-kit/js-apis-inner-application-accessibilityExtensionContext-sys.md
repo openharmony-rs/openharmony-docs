@@ -29,6 +29,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。
 详见[无障碍节点元素可执行的操作](./js-apis-accessibility-sys.md#accessibilityaction)。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
@@ -244,6 +246,8 @@ holdRunningLockSync(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
@@ -277,6 +281,8 @@ unholdRunningLockSync(): void
 释放RunningLock锁，恢复自动灭屏。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -313,6 +319,8 @@ on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -356,6 +364,8 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 取消已经向无障碍服务注册的预关闭回调函数，无障碍服务关闭该扩展服务前不再执行该回调。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -402,6 +412,8 @@ notifyDisconnect(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
@@ -435,6 +447,8 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 获取当前获得焦点的元素。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -541,6 +555,8 @@ getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
@@ -585,76 +601,74 @@ for (let window of windowList) {
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：20
-
 ### 属性
 
 | 名称                  | 类型                                                             | 可读 | 可写 | 描述             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| accessibilityFocused | boolean                                                            | 是  | 否  | 元素是否因无障碍目的而获得焦点。值为 **true** 表示元素已获得焦点，**false** 表示相反情况。<br>默认值：**false**。|
-| bundleName | string                                                             | 是  | 否  | 包名。|
-| checkable | boolean                                                            | 是  | 否  | 元素是否可勾选。值为 **true** 表示元素可勾选，**false** 表示相反情况。<br>默认值：**false**。|
-| checked | boolean                                                            | 是  | 否  | 元素是否已勾选。值为 **true** 表示元素已勾选，**false** 表示相反情况。<br>默认值：**false**。|
-| clickable | boolean                                                            | 是  | 否  | 元素是否可点击。值为 **true** 表示元素可点击，**false** 表示相反情况。<br>默认值：**false**。|
-| componentId | number                                                             | 是  | 否  | 元素所属组件的 ID。<br>默认值：**-1**。|
-| componentType | string                                                             | 是  | 否  | 元素所属组件的类型。|
-| contents | Array&lt;string&gt;                                                | 是  | 否  | 元素显示内容。|
-| currentIndex | number                                                             | 是  | 否  | 当前项的索引。<br>默认值：**0**。|
-| description | string                                                             | 是  | 否  | 元素的描述信息。|
-| editable | boolean                                                            | 是  | 否  | 元素是否可编辑。值为 **true** 表示元素可编辑，**false** 表示相反情况。<br>默认值：**false**。|
-| endIndex | number                                                             | 是  | 否  | 屏幕上显示的最后一个列表项的索引。<br>默认值：**0**。|
-| error | string                                                             | 是  | 否  | 元素的错误状态。|
-| focusable | boolean                                                            | 是  | 否  | 元素是否可获得焦点。值为 **true** 表示元素可获得焦点，**false** 表示相反情况。<br>默认值：**false**。|
-| hintText | string                                                             | 是  | 否  | 提示文本。|
-| inputType | number                                                             | 是  | 否  | 输入文本的类型。<br>默认值：**0**。|
-| inspectorKey | string                                                             | 是  | 否  | 检查器键。|
-| isActive | boolean                                                            | 是  | 否  | 元素是否处于活动状态。值为 **true** 表示元素处于活动状态，**false** 表示相反情况。<br>默认值：**true**。|
-| isEnable | boolean                                                            | 是  | 否  | 元素是否已启用。值为 **true** 表示元素已启用，**false** 表示相反情况。<br>默认值：**false**。|
-| isHint | boolean                                                            | 是  | 否  | 元素是否为提示信息。值为 **true** 表示元素是提示信息，**false** 表示相反情况。<br>默认值：**false**。|
-| isFocused | boolean                                                            | 是  | 否  | 元素是否已获得焦点。值为 **true** 表示元素已获得焦点，**false** 表示相反情况。<br>默认值：**false**。|
-| isPassword | boolean                                                            | 是  | 否  | 元素是否为密码。值为 **true** 表示元素是密码，**false** 表示相反情况。<br>默认值：**false**。|
-| isVisible | boolean                                                            | 是  | 否  | 元素是否可见。值为 **true** 表示元素可见，**false** 表示相反情况。<br>默认值：**false**。|
-| itemCount | number                                                             | 是  | 否  | 项目总数。<br>默认值：**0**。|
-| lastContent | string                                                             | 是  | 否  | 最后一项内容。|
-| layer | number                                                             | 是  | 否  | 元素的显示层级。|
-| longClickable | boolean                                                            | 是  | 否  | 元素是否可长按。值为 **true** 表示元素可长按，**false** 表示相反情况。<br>默认值：**false**。|
-| pageId | number                                                             | 是  | 否  | 页面 ID。<br>默认值：**-1**。|
-| pluralLineSupported  | boolean                                                            | 是  | 否  | 元素是否支持多行文本。值为 **true** 表示元素支持多行文本，**false** 表示相反情况。<br>默认值：**false**。|
-| rect                 | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#Rect)                                                      | 是  | 否  | 元素的区域。|
-| resourceName         | string                                                             | 是  | 否  | 元素的资源名称。|
-| screenRect           | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#Rect)                                                      | 是  | 否  | 元素的显示区域。|
-| scrollable           | boolean                                                            | 是  | 否  | 元素是否可滚动。值为 **true** 表示元素可滚动，**false** 表示相反情况。<br>默认值：**false**。|
-| selected             | boolean                                                            | 是  | 否  | 元素是否已选中。值为 **true** 表示元素已选中，**false** 表示相反情况。<br>默认值：**false**。|
-| startIndex           | number                                                             | 是  | 否  | 屏幕上第一个列表项的索引。<br>默认值：**0**。|
-| text                 | string                                                             | 是  | 否  | 元素的文本内容。|
-| textLengthLimit      | number                                                             | 是  | 否  | 元素的最大文本长度。|
-| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 是  | 否  | 文本朗读时的移动单位。<br>默认值：**0**。|
-| triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | 是  | 否  | 触发元素事件的操作。|
-| type                 | [WindowType](js-apis-inner-application-accessibilityExtensionContext.md#windowtype)                                          | 是  | 否  | 元素的窗口类型。|
-| valueMax             | number                                                             | 是  | 否  | 最大值。<br>默认值：**0**。|
-| valueMin             | number                                                             | 是  | 否  | 最小值。<br>默认值：**0**。|
-| valueNow             | number                                                             | 是  | 否  | 当前值。<br>默认值：**0**。|
-| windowId             | number                                                             | 是  | 否  | 窗口 ID。<br>默认值：**-1**。|
-| offset             | number              | 是  | 否  | 内容区域相对于可滚动组件（如 **List** 和 **Grid**）顶部坐标的像素偏移量。<br>默认值：**0**。|
-| textType             | string                                                             | 是  | 否  | 元素的无障碍文本类型，由组件的 **accessibilityTextHint** 属性配置。|
-| accessibilityText | string                                                  | 是  | 否  | 元素的无障碍文本信息。|
-| hotArea             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#Rect)                                                              | 是  | 否  | 元素的可触摸区域。|
-| customComponentType             | string                                                             | 是  | 否  | 自定义组件类型。|
-| accessibilityNextFocusId             | number                | 是  | 否  | 下一个要获得焦点的组件的 ID。<br>默认值：**-1**。|
-| accessibilityPreviousFocusId             | number                | 是  | 否  | 上一个要获得焦点的组件的 ID。<br>默认值：**-1**。|
-| extraInfo             | string     | 是  | 否  | 元素的额外信息。值为 JSON 字符串。|
-| accessibilityScrollable             | boolean                 | 是  | 否  | 元素是否因无障碍目的而可滚动。此属性优先级高于 **scrollable**。<br>- **true**（默认值）：元素可滚动。<br>- **false**：元素不可滚动。|
-| supportedActionNames | Array&lt;string&gt;                                                | 是  | 否  | 支持的操作名称。|
-| accessibilityGroup  | boolean                                                            | 是  | 否  | 元素是否为无障碍组。值为 **true** 表示元素是无障碍组，**false** 表示相反情况。<br>默认值：**false**。|
-| accessibilityLevel             | string                                                             | 是  | 否  | 组件的无障碍级别。|
-| navDestinationId             | number                                                             | 是  | 否  | 组件的导航目标 ID。|
-| currentItem             | AccessibilityGrid                                                             | 是  | 否  | 组件网格中的当前项。|
-| spans             | AccessibilitySpan[]                                                             | 是  | 否  | 组件的跨度数组。|
-| accessibilityVisible  | boolean                                                            | 是  | 否  | 组件是否无障碍可见。|
-| mainWindowId             | number                                                             | 是  | 否 | 组件的主窗口 ID。|
-| clip  | boolean                                                            | 是  | 否  | 组件是否需要裁剪。|
-| parentId             | number                                                             | 是  | 否  | 组件的父元素 ID。|
-| childrenIds             | Array\<number>                                                             | 是  | 否  | 组件的子元素 ID 列表。|
+| accessibilityFocused | boolean          | 是  | 否  | 元素是否因无障碍目的而获得焦点。值为 **true** 表示元素已获得焦点，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| bundleName | string            | 是  | 否  | 包名。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20 |
+| checkable | boolean           | 是  | 否  | 元素是否可勾选。值为 **true** 表示元素可勾选，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| checked | boolean        | 是  | 否  | 元素是否已勾选。值为 **true** 表示元素已勾选，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| clickable | boolean        | 是  | 否  | 元素是否可点击。值为 **true** 表示元素可点击，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| componentId | number        | 是  | 否  | 元素所属组件的 ID。<br>默认值：**-1**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| componentType | string           | 是  | 否  | 元素所属组件的类型。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| contents | Array&lt;string&gt;     | 是  | 否  | 元素显示内容。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| currentIndex | number            | 是  | 否  | 当前项的索引。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| description | string        | 是  | 否  | 元素的描述信息。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| editable | boolean       | 是  | 否  | 元素是否可编辑。值为 **true** 表示元素可编辑，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| endIndex | number       | 是  | 否  | 屏幕上显示的最后一个列表项的索引。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| error | string         | 是  | 否  | 元素的错误状态。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| focusable | boolean       | 是  | 否  | 元素是否可获得焦点。值为 **true** 表示元素可获得焦点，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| hintText | string        | 是  | 否  | 提示文本。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| inputType | number       | 是  | 否  | 输入文本的类型。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| inspectorKey | string          | 是  | 否  | 检查器键。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| isActive | boolean           | 是  | 否  | 元素是否处于活动状态。值为 **true** 表示元素处于活动状态，**false** 表示相反情况。<br>默认值：**true**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| isEnable | boolean         | 是  | 否  | 元素是否已启用。值为 **true** 表示元素已启用，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| isHint | boolean        | 是  | 否  | 元素是否为提示信息。值为 **true** 表示元素是提示信息，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| isFocused | boolean       | 是  | 否  | 元素是否已获得焦点。值为 **true** 表示元素已获得焦点，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| isPassword | boolean        | 是  | 否  | 元素是否为密码。值为 **true** 表示元素是密码，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| isVisible | boolean        | 是  | 否  | 元素是否可见。值为 **true** 表示元素可见，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| itemCount | number          | 是  | 否  | 项目总数。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| lastContent | string    | 是  | 否  | 最后一项内容。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| layer | number             | 是  | 否  | 元素的显示层级。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| longClickable | boolean        | 是  | 否  | 元素是否可长按。值为 **true** 表示元素可长按，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| pageId | number         | 是  | 否  | 页面 ID。<br>默认值：**-1**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| pluralLineSupported  | boolean      | 是  | 否  | 元素是否支持多行文本。值为 **true** 表示元素支持多行文本，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| rect        | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#Rect)        | 是  | 否  | 元素的区域。<br>**ArkTS-Dyn起始版本**：20|
+| resourceName         | string       | 是  | 否  | 元素的资源名称。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| screenRect           | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#Rect)         | 是  | 否  | 元素的显示区域。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| scrollable           | boolean        | 是  | 否  | 元素是否可滚动。值为 **true** 表示元素可滚动，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| selected             | boolean        | 是  | 否  | 元素是否已选中。值为 **true** 表示元素已选中，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| startIndex           | number       | 是  | 否  | 屏幕上第一个列表项的索引。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| text                 | string      | 是  | 否  | 元素的文本内容。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| textLengthLimit      | number      | 是  | 否  | 元素的最大文本长度。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 是  | 否  | 文本朗读时的移动单位。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | 是  | 否  | 触发元素事件的操作。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| type                 | [WindowType](js-apis-inner-application-accessibilityExtensionContext.md#windowtype)                                          | 是  | 否  | 元素的窗口类型。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| valueMax             | number        | 是  | 否  | 最大值。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| valueMin             | number        | 是  | 否  | 最小值。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| valueNow             | number        | 是  | 否  | 当前值。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| windowId             | number        | 是  | 否  | 窗口 ID。<br>默认值：**-1**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| offset             | number              | 是  | 否  | 内容区域相对于可滚动组件（如 **List** 和 **Grid**）顶部坐标的像素偏移量。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| textType             | string         | 是  | 否  | 元素的无障碍文本类型，由组件的 **accessibilityTextHint** 属性配置。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityText | string     | 是  | 否  | 元素的无障碍文本信息。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| hotArea             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#Rect)     | 是  | 否  | 元素的可触摸区域。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| customComponentType             | string       | 是  | 否  | 自定义组件类型。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityNextFocusId             | number        | 是  | 否  | 下一个要获得焦点的组件的 ID。<br>默认值：**-1**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityPreviousFocusId             | number       | 是  | 否  | 上一个要获得焦点的组件的 ID。<br>默认值：**-1**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| extraInfo             | string     | 是  | 否  | 元素的额外信息。值为 JSON 字符串。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityScrollable             | boolean                 | 是  | 否  | 元素是否因无障碍目的而可滚动。此属性优先级高于 **scrollable**。<br>- **true**（默认值）：元素可滚动。<br>- **false**：元素不可滚动。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| supportedActionNames | Array&lt;string&gt;        | 是  | 否  | 支持的操作名称。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityGroup  | boolean          | 是  | 否  | 元素是否为无障碍组。值为 **true** 表示元素是无障碍组，**false** 表示相反情况。<br>默认值：**false**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityLevel             | string        | 是  | 否  | 组件的无障碍级别。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| navDestinationId             | number           | 是  | 否  | 组件的导航目标 ID。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| currentItem             | AccessibilityGrid        | 是  | 否  | 组件网格中的当前项。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| spans             | AccessibilitySpan[]          | 是  | 否  | 组件的跨度数组。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityVisible  | boolean        | 是  | 否  | 组件是否无障碍可见。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| mainWindowId             | number      | 是  | 否 | 组件的主窗口 ID。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
+| clip  | boolean          | 是  | 否  | 组件是否需要裁剪。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| parentId             | number            | 是  | 否  | 组件的父元素 ID。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| childrenIds             | Array\<number>        | 是  | 否  | 组件的子元素 ID 列表。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 
 **示例：**
 ```ts
@@ -1018,6 +1032,8 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
@@ -1117,6 +1133,8 @@ getParent(): Promise\<AccessibilityElement>;
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
@@ -1161,6 +1179,8 @@ getChildren(): Promise\<Array\<AccessibilityElement>>;
 获取元素的子元素列表。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1207,6 +1227,8 @@ getRoot(): Promise\<AccessibilityElement>;
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
@@ -1250,6 +1272,8 @@ findElementByContent(content: string): Promise\<Array\<AccessibilityElement>>;
 根据内容查找元素。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1311,6 +1335,8 @@ findElementByFocusDirection(direction: FocusDirection): Promise\<AccessibilityEl
 根据焦点方向查找元素。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1375,6 +1401,8 @@ findElementsByAccessibilityHintText(hintText: string): Promise\<Array\<Accessibi
 根据性提示文本查找元素。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1441,6 +1469,8 @@ findElementById(elementId: number): Promise\<AccessibilityElement>;
 根据元素 ID 查找元素。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
