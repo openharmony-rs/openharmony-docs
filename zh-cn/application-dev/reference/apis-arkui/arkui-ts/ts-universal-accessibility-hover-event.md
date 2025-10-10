@@ -116,6 +116,46 @@ type AccessibilityTransparentCallback = (event: TouchEvent) => void
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | event | [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)| 是   | 原始touch事件。 <br/>**说明：** TouchEvent对象的触摸事件的类型[TouchType](ts-appendix-enums.md#touchtype)为四种无障碍悬浮事件类型中的一种，四种无障碍悬浮事件类型为HOVER_ENTER、HOVER_MOVE、HOVER_EXIT和HOVER_CANCEL。
 
+**Arkts1.2示例 (使用onAccessibilityHoverTransparent接口)**
+
+该示例演示了使用onAccessibilityHoverTransparent接口设置无障碍模式下的按钮。
+
+```ts
+import { Text, Column, Component, Button} from '@ohos.arkui.component';
+import hilog from '@ohos.hilog'
+
+@Component
+struct MyStateSample {
+  build() {
+    Column() {
+      Button('Button1')
+      Column(){
+      }.width('50%').height('10%')
+      .borderWidth(1).margin(5).padding(5)
+      .onAccessibilityHoverTransparent((event)=>{
+        console.info('send access test: event Button1 onAccess' + JSON.stringify(event) )
+      })
+      .onTouch((event)=>{
+        console.info('send access test: event Button1 onTouch ' + JSON.stringify(event) )
+      })
+      Text('Text1')
+      Text('Text2')
+      Column(undefined){
+        Column(){
+        }.width('50%').height('10%')
+        .borderWidth(1).margin(5).padding(5)
+        .onAccessibilityHoverTransparent((event)=>{
+          console.info('send access test: event Text2 ' + JSON.stringify(event) )
+        })
+      }.width('50%').height('10%').borderWidth(2)
+      .onAccessibilityHoverTransparent((event)=>{
+        console.info('send access test: event Text1 ' + JSON.stringify(event) )
+      })
+    }
+  }
+}
+```
+
 ## 示例
 
 ### 示例1 (使用onAccessibilityHover事件)
