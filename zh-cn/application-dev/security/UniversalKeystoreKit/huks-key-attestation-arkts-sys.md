@@ -1,4 +1,4 @@
-# 非匿名密钥证明(ArkTS)
+# 非匿名密钥证明(仅对系统应用开放)(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
