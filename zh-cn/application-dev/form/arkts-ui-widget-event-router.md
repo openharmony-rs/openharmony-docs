@@ -145,109 +145,109 @@
   }
   ```
 4. 创建跳转后的UIAbility页面，新建FunA.ets和FunB.ets，构建页面布局。
-```ts
-// src/main/ets/funpages/FunA.ets
-@Entry
-@Component
-struct FunA {
-  build() {
-    Column() {
-      Row() {
-        Text(($r('app.string.ButtonA_label')))
-          .fontSize(24)
-          .fontWeight(FontWeight.Bold)
-          .textAlign(TextAlign.Start)
-          .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+  ```ts
+  // src/main/ets/funpages/FunA.ets
+  @Entry
+  @Component
+  struct FunA {
+    build() {
+      Column() {
+        Row() {
+          Text(($r('app.string.ButtonA_label')))
+            .fontSize(24)
+            .fontWeight(FontWeight.Bold)
+            .textAlign(TextAlign.Start)
+            .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+        }
+        .width('100%')
+        .height(56)
+        .justifyContent(FlexAlign.Start)
+
+        Image($r('app.media.pic_empty'))
+          .width(120)
+          .height(120)
+          .margin({ top: 224 })
+
+        Text($r('app.string.NoContentAvailable'))
+          .fontSize(14)
+          .fontColor($r('app.color.text_color'))
+          .opacity(0.4)
+          .margin({ top: 8, bottom: 317, right: 152, left: 152 })
       }
       .width('100%')
-      .height(56)
-      .justifyContent(FlexAlign.Start)
-
-      Image($r('app.media.pic_empty'))
-        .width(120)
-        .height(120)
-        .margin({ top: 224 })
-
-      Text($r('app.string.NoContentAvailable'))
-        .fontSize(14)
-        .fontColor($r('app.color.text_color'))
-        .opacity(0.4)
-        .margin({ top: 8, bottom: 317, right: 152, left: 152 })
+      .height('100%')
     }
-    .width('100%')
-    .height('100%')
   }
-}
-```
+  ```
 
-```ts
-// src/main/ets/funpages/FunB.ets
-@Entry
-@Component
-struct FunB {
-  build() {
-    Column() {
-      Row() {
-        Text(($r('app.string.ButtonB_label')))
-          .fontSize(24)
-          .fontWeight(FontWeight.Bold)
-          .textAlign(TextAlign.Start)
-          .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+  ```ts
+  // src/main/ets/funpages/FunB.ets
+  @Entry
+  @Component
+  struct FunB {
+    build() {
+      Column() {
+        Row() {
+          Text(($r('app.string.ButtonB_label')))
+            .fontSize(24)
+            .fontWeight(FontWeight.Bold)
+            .textAlign(TextAlign.Start)
+            .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+        }
+        .width('100%')
+        .height(56)
+        .justifyContent(FlexAlign.Start)
+
+        Image($r('app.media.pic_empty'))
+          .width(120)
+          .height(120)
+          .margin({ top: 224 })
+
+        Text($r('app.string.NoContentAvailable'))
+          .fontSize(14)
+          .fontColor($r('app.color.text_color'))
+          .opacity(0.4)
+          .margin({ top: 8, bottom: 317, right: 152, left: 152 })
       }
       .width('100%')
-      .height(56)
-      .justifyContent(FlexAlign.Start)
-
-      Image($r('app.media.pic_empty'))
-        .width(120)
-        .height(120)
-        .margin({ top: 224 })
-
-      Text($r('app.string.NoContentAvailable'))
-        .fontSize(14)
-        .fontColor($r('app.color.text_color'))
-        .opacity(0.4)
-        .margin({ top: 8, bottom: 317, right: 152, left: 152 })
+      .height('100%')
     }
-    .width('100%')
-    .height('100%')
   }
-}
-```
+  ```
 5. 在resources/base/profile下的main_pages.json文件中配置FunA.ets和FunB.ets页面。
-```json
-// src/main/resources/base/profile/main_pages.json
-{
-    "src": [
-      "pages/Index",
-      "funpages/FunA",
-      "funpages/FunB"
-    ]
-}
-```
+  ```json
+  // src/main/resources/base/profile/main_pages.json
+  {
+      "src": [
+        "pages/Index",
+        "funpages/FunA",
+        "funpages/FunB"
+      ]
+  }
+  ```
 6. 资源文件如下，请开发者替换为实际使用的资源。
-```json
-// src/main/resources/zh_CN/element/string.json
-{
-  "string": [
-    {
-      "name": "ButtonA_label",
-      "value": "FunA页面"
-    },
-    {
-      "name": "ButtonB_label",
-      "value": "FunB页面"
-    },
-    {
-      "name": "JumpLabel",
-      "value": "router事件跳转"
-    },
-    {
-      "name": "NoContentAvailable",
-      "value": "暂无内容"
-    }
-  ]
-}
-```
+  ```json
+  // src/main/resources/zh_CN/element/string.json
+  {
+    "string": [
+      {
+        "name": "ButtonA_label",
+        "value": "FunA页面"
+      },
+      {
+        "name": "ButtonB_label",
+        "value": "FunB页面"
+      },
+      {
+        "name": "JumpLabel",
+        "value": "router事件跳转"
+      },
+      {
+        "name": "NoContentAvailable",
+        "value": "暂无内容"
+      }
+    ]
+  }
+  ```
 ## 运行效果
 ![WidgetPrinciple](figures/router跳转运行截图.gif)
