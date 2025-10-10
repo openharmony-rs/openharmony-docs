@@ -573,14 +573,14 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 **参数：**
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| TargetInfo | param | 是 | 传递目标的相关信息 |
-| SearchParams | param | 是 | 配置搜索时使用的参数 |
+| target | [TargetInfo](#targetinfo) | 是 | 目标人脸信息。 |
+| params | [SearchParams](#searchparams) | 是 | 搜索方向。 |
 
 **返回值：**
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise\<[SearchResult](#searchresult)> | Promise对象，返回搜索的结果 |
+| Promise\<[SearchResult](#searchresult)> | Promise对象，返回搜索的结果。 |
 
 **错误码：**
 
@@ -600,11 +600,11 @@ let targetInfo : mechanicManager.TargetInfo = {
            };
            let searchParams : mechanicManager.SearchParams
 = {
-            direction;
+            direction:
 mechanicManager.SearchDirection.DEFAULT
         }
         mechanicManager.searchTarget(targetInfo, 
-searchParams, (searchResult)=>{
+searchParams, (searchResult).then(searchResult)=>{
         console.info(`'result:' ${searchResult}`);
       });
 ```
