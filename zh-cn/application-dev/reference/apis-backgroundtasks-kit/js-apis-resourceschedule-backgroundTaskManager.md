@@ -1191,8 +1191,6 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**原子化服务API：** 从API version 12开始，该属性支持在原子化服务中使用。
-
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | 数据传输。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
@@ -1209,8 +1207,6 @@ export default class EntryAbility extends UIAbility {
 长时任务通知信息。
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-**原子化服务API：** 从API version 12开始，该属性支持在原子化服务中使用。
 
 | 名称             | 类型     | 只读     | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
