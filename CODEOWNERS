@@ -319,7 +319,7 @@ zh-cn/application-dev/ui/arkts-layout-development-media-query.md	@lanshouren	@li
 zh-cn/application-dev/ui/arkts-layout-development-overview.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/ui/arkts-layout-development-relative-layout.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/ui/arkts-layout-development-stack-layout.md	@lanshouren	@liuli0427	@HelloCrease
-zh-cn/application-dev/ui/arkts-list-grid-development-overview.md	@yylong; @zcdqs	@liuzhenshuo	@HelloCrease
+zh-cn/application-dev/ui/arkts-list-grid-development-overview.md	@yylong	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/ui/arkts-manage-components-visibility.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/ui/arkts-menu-overview.md	@zhanghaibo0	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-modal-overview.md	@CCFFWW	@lxl007	@HelloCrease
@@ -1265,7 +1265,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-node.md	@xiang-shouxing	@sa
 zh-cn/application-dev/reference/apis-arkui/errorcode-nodeadapter.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong; @zcdqs	@liuzhenshuo	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-snapshot.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md	@s10021109	@TerryTsao	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/errorcode-styled-string.md	@pssea	@jiaoaozihao	@HelloCrease
@@ -1597,7 +1597,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-row-sys.md	@lan
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-row.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-rowsplit.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-scroll.md	@yylong	@liuzhenshuo	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md	@yylong; @zcdqs	@liuzhenshuo	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md	@yylong	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md	@jiangdayuan	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack-sys.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack.md	@lanshouren	@liuli0427	@HelloCrease
