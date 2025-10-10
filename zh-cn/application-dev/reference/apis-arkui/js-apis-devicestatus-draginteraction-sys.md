@@ -43,7 +43,6 @@ import { dragInteraction } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-
 | 名称           | 类型            | 只读 | 	可选 | 说明                           |
 | ---------      | -------------- | ---- | ---- | ------------------------       |
 | dataType     | string          | 否   | 是   | 拖拽对象类型。 |
