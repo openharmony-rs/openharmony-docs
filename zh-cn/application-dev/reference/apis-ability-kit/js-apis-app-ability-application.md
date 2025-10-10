@@ -361,7 +361,7 @@ export default class EntryAbility extends UIAbility {
 
 getAppPreloadType(): AppPreloadType
 
-获取应用当前进程的预加载类型，参见[应用预加载](../../application-models/preload-application.md)。
+获取应用当前进程的预加载类型。
 
 > **说明：**
 >
