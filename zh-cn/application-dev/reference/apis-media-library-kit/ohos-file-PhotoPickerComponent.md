@@ -351,7 +351,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称     | 类型    | 只读 | 可选  | 说明                                                |
-|----------|--------|-----|---------------------------------------------------|
+|----------|--------|-----|-----|---------------------------------------------------|
 | itemType | [ItemType](#itemtype) | 是 | 是   | 被点击的item类型。包括缩略图item和相机item。                      |
 
 ## PhotoBrowserInfo
@@ -426,10 +426,10 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称 | 类型                                             | 必填 | 说明                                                                           |
-| ---- | ------------------------------------------------ | ---- | ------------------------------------------------------------------------------ |
-| uri | string | 是   | 选中媒体文件的uri。 |
-| preselectablePickerIndex | number | 否   | 限制仅在指定序号的PhotoPickerComponent中进行自动选中；默认为-1，即可支持在任意序号的PhotoPickerComponent中自动选中。 |
+| 名称 | 类型                                             | 只读 | 可选 | 说明                                                                           |
+| ---- | ------------------------------------------------ | ---- | ---- | ------------------------------------------------------------------------------ |
+| uri | string | 否   | 否 |选中媒体文件的uri。 |
+| preselectablePickerIndex | number | 否   | 是 | 限制仅在指定序号的PhotoPickerComponent中进行自动选中；默认为-1，即可支持在任意序号的PhotoPickerComponent中自动选中。 |
 
 ## DataType
 
