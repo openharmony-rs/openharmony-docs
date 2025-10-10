@@ -1,4 +1,4 @@
-# 非匿名密钥证明(C/C++)
+# 非匿名密钥证明(仅对系统应用开放)(C/C++)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
