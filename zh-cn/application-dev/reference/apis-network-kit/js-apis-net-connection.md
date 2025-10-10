@@ -2861,7 +2861,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否 | 否  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
 **示例：**
 
@@ -2939,7 +2939,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netHandle            | [NetHandle](#nethandle)               | 否 | 否   |数据网络句柄(netHandle)。   |
-| blocked              | boolean                               | 否 | 否   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
 
 ## ConnectionProperties
 
@@ -2967,8 +2967,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | interface      | string                      | 否 | 否 |网卡名称。       |
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
-| hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。 |
+| hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress
