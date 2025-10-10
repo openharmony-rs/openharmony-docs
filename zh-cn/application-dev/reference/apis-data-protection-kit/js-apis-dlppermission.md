@@ -1321,7 +1321,7 @@ DLP文件授权类型的枚举。
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
-generateDlPFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
+generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
 
 获取DLPFile管理对象。使用Promise异步回调。
 >**说明：**
