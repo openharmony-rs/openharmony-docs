@@ -2744,7 +2744,7 @@ getNumber(resId: number): number
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| number | 资源ID值对应的数值。<br>integer对应的是原数值，float数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+| number | 资源ID值对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -2994,7 +2994,7 @@ getNumberByName(resName: string): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 资源名称对应的数值。<br>integer对应的是原数值，float数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+| number | 资源名称对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
