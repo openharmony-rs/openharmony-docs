@@ -1292,7 +1292,7 @@ Checks whether the font follows the theme font. By default, the theme font is no
 | Name| Description|
 | -- | -- |
 | const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object.|
-| bool* followed | Check result. The value **true** means that the theme font is followed, and **false** means the opposite. It as an output parameter.|
+| bool* followed | Check result. The value **true** means that the theme font is followed, and **false** means the opposite. It is used as an output parameter.|
 
 **Returns**
 

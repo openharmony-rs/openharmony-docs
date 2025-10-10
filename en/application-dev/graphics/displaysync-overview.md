@@ -1,4 +1,10 @@
 # Introduction to Variable Frame Rates
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 Nowadays, low-temperature polycrystalline oxide (LTPO) screens are widely used. This type of screen supports switching between frame rates at multiple levels.
 
@@ -20,11 +26,18 @@ The variable frame rate capability allows you to specify the frame rate in diffe
 
 ## Working Principles
 The variable frame rate provides the basic frame rate configuration for animation components, **XComponent**, and UI components.
-
 After a valid expected frame rate is set, the system collects the configured frame rate and divides the frequency on the rendering pipeline.
+
+![Schematic diagram of variable frame rate](./figures/displaysync-architecture.jpg)
+
+As shown in the preceding figure, multiple UIs (animation components, UI drawing, XComponent self-drawing, and non-UI thread drawing) at the application layer can be connected to the frame rate control system through the corresponding variable frame rate APIs (expectedFrameRateRange, displaySync, OH_NativeXComponent_SetExpectedFrameRateRange, and DisplaySoloist). The frame control system collects the expected drawing frame rate set by the UI and participates in the decision-making of the entire system refresh rate at the framework layer. The server distributes the drawing frame rate based on the determined refresh rate result and transfers the drawing frame rate to various UIs at the application layer level by level. In addition, the hardware layer adjusts its refresh rate based on the overall decision to ensure synchronization.
 
 ## Constraints
 
-The actual frame rate may be different from the expected one configured. It is limited by the system capability and screen refresh rate.
+The actual frame rate may be different from the expected one configured. It is limited by the system power consumption and hardware capability of the screen refresh rate.
 
- <!--no_check--> 
+## Samples
+
+The following sample is provided to help you better understand how to develop the frame rate feature:
+
+- [DisplaySync Hierarchical Management (ArkTS, API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/DisplaySync)

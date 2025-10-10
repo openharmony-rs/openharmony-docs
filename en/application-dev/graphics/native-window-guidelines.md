@@ -46,7 +46,7 @@ libnative_window.so
 
 1. Obtain an **OHNativeWindow** instance.
 
-    You can obtain **OHNativeWindow** through the APIs provided by `OH_NativeXComponent_Callback`. The following provides a code example. For details about how to use the **XComponent**, see [XComponent Development](../ui/napi-xcomponent-guidelines.md).
+    You can obtain **OHNativeWindow** through the APIs provided by [`OH_NativeXComponent_Callback`](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md). The following provides a code sample. For details about how to use the **XComponent**, see [XComponent Development](../ui/napi-xcomponent-guidelines.md).
 
     1. Add an **XComponent** to the .ets file.
 
@@ -205,4 +205,4 @@ libnative_window.so
 
 The following samples are provided to help you better understand how to use the native Window module for development:
 
-- [NativeWindow (API11) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)
+- [NativeWindow (API11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)
