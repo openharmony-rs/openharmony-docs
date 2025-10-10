@@ -361,7 +361,7 @@ export default class EntryAbility extends UIAbility {
 
 getAppPreloadType(): AppPreloadType
 
-获取应用当前进程的预加载类型。该接口在首次[AbilityStage.onCreate]回调中调用才能获取到正确的预加载类型，之后调用会获取到UNSPECIFIED。
+获取应用当前进程的预加载类型。该接口在进程首次[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)回调中调用才能获取到正确的预加载类型，之后调用会获取到UNSPECIFIED。
 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
