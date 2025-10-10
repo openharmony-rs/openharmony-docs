@@ -1433,16 +1433,16 @@ class testShape {}
 class testCircle extends testShape { x: number = 5 }
 class testSquare extends testShape { y: string = 'a' }
 
-function createShape(): Shape {
-  return new Circle();
+function createShape(): testShape {
+  return new testCircle();
 }
 
-let c1 = <Circle> createShape();
+let c1 = <testCircle> createShape();
 
-let c2 = createShape() as Circle;
+let c2 = createShape() as testCircle;
 
 // No report is provided during compilation or runtime if casting is wrong.
-let c3 = createShape() as Square;
+let c3 = createShape() as testSquare;
 console.info(c3.y); // undefined
 
 // Important corner case for casting primitives to the boxed counterparts: The left operand is not properly boxed here in runtime because "as" has no runtime effect in TypeScript.
@@ -1459,13 +1459,13 @@ class testShape {}
 class testCircle extends testShape { x: number = 5 }
 
 function createShape(): testShape {
-  return new Circle();
+  return new testCircle();
 }
 
-let c2 = createShape() as testCircle;
+let c1 = createShape() as testCircle;
 
 // A Number object is created and instanceof works as expected.
-let e2 = (new Number(5.0)) instanceof Number; // true
+let e1 = (new Number(5.0)) instanceof Number; // true
 ```
 
 ### JSX Expressions Are Not Supported
@@ -2410,7 +2410,7 @@ interface Document {
 ```
 
 **ArkTS**
-
+ 
 ```typescript
 interface Document {
   createElement(tagName: number): number;
@@ -3031,7 +3031,7 @@ let z: Label = {
 
 **Error code: 10605143**
 
-ArkTS does not support import assertions because import is a compile-time feature in ArkTS, not a runtime feature. So asserting the correctness of imported APIs in runtime does not make sense for the statically typed language. Use the ordinary **import** syntax instead.
+ArkTS does not support import assertions because import is a compile-time feature in ArkTS, not a runtime feature. Therefore, asserting the correctness of imported APIs in runtime does not make sense for the statically typed language. Use the ordinary **import** syntax instead.
 
 **TypeScript**
 
@@ -3228,7 +3228,7 @@ import { C } from 'lib1'
 
 **Error Code: 10605149**
 
-ArkTS does not support using classes as objects (assigning them to variables, etc.). This is because in ArkTS, a **class** declaration introduces a new type, not a value.
+ArkTS does not support using classes as objects (assigning them to objects, etc.). This is because in ArkTS, a **class** declaration introduces a new type, not a value.
 
 ### import Statements After Other Statements Are Not Allowed
 
@@ -3287,7 +3287,7 @@ declare function bar(a: any): number;
 let e0: ESObject = foo(); // Before API version 18, compile-time error: 'ESObject' typed variable can only be local; since API version 18, the ESObject type supports explicit type annotation.
 
 function f() {
-  let e1 = foo();        // Compile-time error: type of e1 is 'any';
+  let e1 = foo();        // Compile-time error: type of e1 is 'any'.
   let e2: ESObject = 1;  // Before API version 18, compile-time error: Cannot initialize an ESObject with non-dynamic values; since API version 18, the number type is supported.
   let e3: ESObject = {}; // Before API version 18, compile-time error: Cannot initialize an ESObject with non-dynamic values; since API version 18, compile-time error: object literal type is not supported.
   let e4: ESObject = []; // Before API version 18, compile-time error: Cannot initialize an ESObject with non-dynamic values; since API version 18, the array type is supported.

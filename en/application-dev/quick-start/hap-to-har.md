@@ -7,6 +7,13 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 HAR allows you to export APIs or ArkUI components from a module and share the module as a second-party or third-party library with other modules or applications, while HAP does not. This topic will walk you through how to convert a HAP project to a HAR project by modifying configuration items.
+
+>
+> **NOTE**
+>
+> There are differences when some components and modules are integrated and used in the HAP, HSP, and HAR. For example, separate constraints are provided on loading the Worker thread file in the HAR compared with that in the HSP. For details, see [Precautions for File URLs](../arkts-utils/worker-introduction.md#precautions-for-file-urls). Therefore, after HAP is converted to HAR by performing the following steps, pay attention to the corresponding components and modules and perform adaptation.
+>
+
 ## How to Convert
 
 1. Modify the [module.json5](./module-configuration-file.md) file in the HAP module as follows:
