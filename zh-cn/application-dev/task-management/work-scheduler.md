@@ -80,9 +80,9 @@
 | workId          | number                            | 否    | 否    | 延迟任务ID。          |
 | bundleName      | string                            | 否    | 否    |  延迟任务所在应用的包名。           |
 | abilityName     | string                            | 否    | 否    | 包内ability名称。 |
-| networkType     | [NetworkType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#networktype)       | 否    | 网络类型。             |
+| networkType     | [NetworkType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#networktype)       | 否    | 是    | 网络类型。             |
 | isCharging      | boolean                           | 否    | 是    | 是否充电。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
-| chargerType     | [ChargingType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#chargingtype)     | 否    | 充电类型。             |
+| chargerType     | [ChargingType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#chargingtype)     | 否    | 是    | 充电类型。             |
 | batteryLevel    | number                            | 否    | 是    | 电量。              |
 | batteryStatus   | [BatteryStatus](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#batterystatus)   | 否    | 是    | 电池状态。             |
 | storageRequest  | [StorageRequest](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#storagerequest) | 否    | 是    | 存储状态。             |
