@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The system provides two solutions for video playback development:
 
@@ -129,14 +129,18 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     ```
 
 4. Obtain and set the surface ID of the window to display the video.
-   The application obtains the surface ID from the **XComponent**. For details about the process, see [XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).
+   The application obtains the surface ID from the **XComponent**. For details about the process, see [getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).
 
     ```ts
-    let surfaceId = 'XComponent';
+    // Obtain the surface ID by calling getXComponentSurfaceId.
+    let surfaceId = '';
     if (avPlayer == null) {
         return;
     }
-    avPlayer.surfaceID = surfaceID;
+    if (surfaceId === '') {
+        return;
+    }
+    avPlayer.surfaceId = surfaceId;
     ```
 
 5. Call **prepare()** to switch the AVPlayer to the **prepared** state. In this state, you can obtain the duration of the media asset to play and set the scale type and volume.
