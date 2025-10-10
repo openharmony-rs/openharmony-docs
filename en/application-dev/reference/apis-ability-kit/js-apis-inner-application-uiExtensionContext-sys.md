@@ -404,7 +404,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
 ```
 ### startUIAbilitiesInSplitWindowMode<sup>21+</sup>
 
-startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
+startUIAbilitiesInSplitWindowMode(primaryWindowId: int, secondaryWant: Want): Promise\<void>
 
 Starts a second UIAbility after the first UIAbility instance is created, and displays them in split-screen mode. This API uses a promise to return the result.
 
