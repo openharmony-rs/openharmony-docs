@@ -1,4 +1,4 @@
-# 管理系统窗口（仅Stage模型支持）
+# 管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
