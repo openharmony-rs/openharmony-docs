@@ -2099,6 +2099,19 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
 
+## OtaMode
+
+升级模式。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称           | 值  | 说明   |
+| ------------- | ---- | ---- |
+| REGULAR_OTA   | 0    | 正常升级。|
+| STREAM_OTA    | 1    | 流式升级。|
+| AB_REGULAR_OTA | 2    | AB正常升级。 |
+| AB_STREAM_OTA  | 3    | AB流式升级。 |
+
 ## DescriptionType
 
 描述文件类型。
