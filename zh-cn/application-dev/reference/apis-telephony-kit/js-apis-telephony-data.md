@@ -534,7 +534,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 data.queryAllApns().then((apnInfos: Array<data.ApnInfo>) => {
     console.info(`queryAllApns success, promise: apnInfos->${JSON.stringify(apnInfos)}`);
 }).catch((err: BusinessError) => {
-    console.error(`queryAllApns failed. code: ${err.code}, message: ${err.message}`);
+    console.error(`queryAllApns failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -586,7 +586,7 @@ apnInfo = {
 data.queryApnIds(apnInfo).then((apnIds: Array<number>) => {
     console.info(`queryApnIds success, apnIds: ${apnIds}`);
 }).catch((err: BusinessError) => {
-    console.error(`queryApnIds failed. code: ${err.code}, message: ${err.message}`);
+    console.error(`queryApnIds failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -634,7 +634,7 @@ let apnId: number = 0; // apnId为通过queryApnIds返回的有效值，setPrefe
 data.setPreferredApn(apnId).then((result: boolean) => {
     console.info(`setPreferredApn result: ${result}`);
 }).catch((err: BusinessError) => {
-    console.error(`setPreferredApn failed. code: ${err.code}, message: ${err.message}`);
+    console.error(`setPreferredApn failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -671,7 +671,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 data.getActiveApnName().then((apn: string) => {
     console.info(`getActiveApnName success, apn: ${apn}`);
 }).catch((err: BusinessError) => {
-    console.error(`getActiveApnName failed. code: ${err.code}, message: ${err.message}`);
+    console.error(`getActiveApnName failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
