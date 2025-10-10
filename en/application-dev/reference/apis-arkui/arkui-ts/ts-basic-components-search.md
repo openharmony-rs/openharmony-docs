@@ -1,4 +1,10 @@
 #  Search
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 The **Search** component provides an area for users to enter search queries.
 
@@ -34,7 +40,7 @@ Describes the initialization options of the **Search** component.
 
 | Name     | Type        | Mandatory| Description       |
 | ----------- | ------------- | ---- | ------------- |
-| value<sup>8+</sup>       | string                                               | No  | Text input in the search text box.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)                                               | No  | Text input in the search text box.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | No  | Text displayed when there is no input.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | icon<sup>8+</sup>        | string                                               | No  | Path to the search icon. By default, the system search icon is used.<br>**NOTE**<br>The icon data source can be a local or online image.<br>- The supported formats include PNG, JPG, BMP, SVG, GIF, pixelmap, and HEIF.<br>- The Base64 string is supported in the following format: data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>If this attribute and the **searchIcon** attribute are both set, the **searchIcon** attribute takes precedence.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | controller<sup>8+</sup>  | [SearchController](#searchcontroller) | No  | Controller of the **Search** component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
@@ -45,7 +51,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 ### searchButton
 
-searchButton(value: string, option?: SearchButtonOptions)
+searchButton(value: ResourceStr, option?: SearchButtonOptions)
 
 Sets the text on the search button located next to the search text box.
 
@@ -61,7 +67,7 @@ The default font size on wearable devices is 18 fp.
 
 | Name| Type                                                 | Mandatory| Description                        |
 | ------ | ----------------------------------------------------- | ---- | ---------------------------- |
-| value  | string                                                | Yes  | Text on the search button located next to the search text box.|
+| value  | [ResourceStr](ts-types.md#resourcestr)                                                | Yes  | Text on the search button located next to the search text box.|
 | option | [SearchButtonOptions](#searchbuttonoptions10) | No  | Font of the search text box.<br>Default value:<br>{<br>fontSize: '16fp',<br>fontColor: '#ff3f97e9'<br>}         |
 
 ### placeholderColor
@@ -366,7 +372,7 @@ Sets the color, type, and style of the text decorative line.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextDecorationOptions](ts-types.md#textdecorationoptions12) | Yes  | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
+| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | Yes  | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
 
 ### letterSpacing<sup>12+</sup>
 
@@ -950,14 +956,14 @@ This callback is triggered after **onWillInsert** and **onWillDelete**, but befo
 
 ## SearchController
 
-Inherits from [TextContentControllerBase](ts-types.md#textcontentcontrollerbase10).
+Inherits from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase).
 
 ### Objects to Import
-```
-controller: SearchController = new SearchController()
+```ts
+controller: SearchController = new SearchController();
 ```
 
-### constructor<sup>8+</sup>
+### constructor
 
 constructor()
 
@@ -1009,7 +1015,7 @@ Sets the text selection range and highlights the selected text when the componen
 | -------------- | -------- | ---- | -------- |
 | selectionStart | number   | Yes  | Start position of the text selection range. The start position of text in the text box is 0.<br>A value less than 0 is handled as **0**. A value greater than the maximum text length is handled as the maximum text length.<br>|
 | selectionEnd   | number   | Yes  | End position of the text selection range.<br>A value less than 0 is handled as the value **0**. A value greater than the maximum text length is handled as the maximum text length.<br>|
-| options | [SelectionOptions](ts-types.md#selectionoptions12) | No   | Configuration options for text selection.<br>Default value: **MenuPolicy.DEFAULT**|
+| options | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12) | No   | Configuration options for text selection.<br>Default value: **MenuPolicy.DEFAULT**|
 
 >  **NOTE**
 >
@@ -1047,10 +1053,10 @@ This example demonstrates how to use the controller to set and obtain the cursor
 @Entry
 @Component
 struct SearchExample {
-  @State changeValue: string = ''
-  @State submitValue: string = ''
-  @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 }
-  controller: SearchController = new SearchController()
+  @State changeValue: string = '';
+  @State submitValue: string = '';
+  @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 };
+  controller: SearchController = new SearchController();
 
   build() {
     Column({space: 10}) {
@@ -1065,16 +1071,16 @@ struct SearchExample {
         .placeholderFont({ size: 14, weight: 400 })
         .textFont({ size: 14, weight: 400 })
         .onSubmit((value: string) => {
-          this.submitValue = value
+          this.submitValue = value;
         })
         .onChange((value: string) => {
-          this.changeValue = value
+          this.changeValue = value;
         })
         .margin(20)
       Button('Set caretPosition 1')
         .onClick(() => {
           // Move the caret to after the first entered character.
-          this.controller.caretPosition(1)
+          this.controller.caretPosition(1);
         })
       Button('Get CaretOffset')
         .onClick(() => {
@@ -1096,8 +1102,8 @@ This example demonstrates how to set search and delete icons using the **searchB
 @Entry
 @Component
 struct SearchExample {
-  @State changeValue: string = ''
-  @State submitValue: string = ''
+  @State changeValue: string = '';
+  @State submitValue: string = '';
 
   build() {
     Column() {
@@ -1121,10 +1127,10 @@ struct SearchExample {
         .placeholderFont({ size: 14, weight: 400 })
         .textFont({ size: 14, weight: 400 })
         .onSubmit((value: string) => {
-          this.submitValue = value
+          this.submitValue = value;
         })
         .onChange((value: string) => {
-          this.changeValue = value
+          this.changeValue = value;
         })
         .margin(20)
     }.width('100%')
@@ -1144,8 +1150,8 @@ This example demonstrates how to implement a custom keyboard using the **customK
 @Entry
 @Component
 struct SearchExample {
-  controller: SearchController = new SearchController()
-  @State inputValue: string = ""
+  controller: SearchController = new SearchController();
+  @State inputValue: string = "";
 
   // Create a custom keyboard component.
   @Builder CustomKeyboardBuilder() {

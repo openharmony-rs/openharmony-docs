@@ -59,28 +59,6 @@ Sets the scrollbar color.
 | --- | -------------- |
 | T | Current scrollable component.|
 
-### scrollBarColor<sup>22+</sup>
-
-scrollBarColor(color: Color | number | string | Resource): T
-
-Sets the scrollbar color.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description          |
-| ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color) \| number \| string \| [Resource](ts-types.md#resource) | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
-
-**Return value**
-
-| Type| Description          |
-| --- | -------------- |
-| T | Current scrollable component.|
-
 ### scrollBarWidth<sup>11+</sup>
 
 scrollBarWidth(value: number | string): T
@@ -934,8 +912,8 @@ Called when the scroll component is released.
 
 ## Example
 
-### Example 1 (scrolling gesture supported)
-In this example, the enableScrollInteraction attribute is set to implement the gesture-based scrolling of a vertical list. The index is called back when the current display screen changes.
+### Example 1: Implementing Gesture-Based Scroll
+This example configures the enableScrollInteraction attribute to enable gesture scrolling in a vertical list, with index callbacks triggered during page transitions.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
@@ -1003,8 +981,8 @@ struct ListExample {
 
 ![en-us_image_0000001174264378](figures/en-us_image_0000001174264378.gif)
 
-### Example 2 (Setting the edge fade-out effect)
-This example sets the fadingEdge attribute to enable the edge fade effect for the List component and set the edge fade length.
+### Example 2: Configuring Edge Fade-Out Effects
+This example uses the fadingEdge attribute to enable edge fade effects for the List component and configure fade length.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 

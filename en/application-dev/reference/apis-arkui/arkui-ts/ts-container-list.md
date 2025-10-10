@@ -347,22 +347,6 @@ This API is available only when the heights of list items are the same. During t
 | ------ | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | value  | [ScrollSnapAlign](#scrollsnapalign10) | Yes  | Alignment mode of the scroll snap position.<br>Default value: **ScrollSnapAlign.NONE**|
 
-### scrollSnapAnimationSpeed<sup>22+</sup>
-
-scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed)
-
-Sets the speed of the snap animation. This parameter takes effect only when the scrolling alignment effect is set.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                         | Mandatory| Description                                                     |
-| ------ | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| speed  | [ScrollSnapAnimationSpeed](#scrollsnapanimationspeed22) | Yes  | Speed of the scrolling animation.<br>Default value: ScrollSnapAnimationSpeed.NORMAL|
-
 ### enableScrollInteraction<sup>10+</sup>
 
 enableScrollInteraction(value: boolean)
@@ -1434,7 +1418,7 @@ struct ListLanesExample {
       .alignListItem(this.alignListItem)
       .scrollBar(BarState.Off)
 
-      Button ('Click to change alignListItem:' + this.alignListItem).onClick(() => {
+      Button('Click to change alignListItem:' + this.alignListItem).onClick(() => {
         if (this.alignListItem == ListItemAlign.Start) {
           this.alignListItem = ListItemAlign.Center;
         } else if (this.alignListItem == ListItemAlign.Center) {

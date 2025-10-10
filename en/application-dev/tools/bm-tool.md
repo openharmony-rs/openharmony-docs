@@ -1079,7 +1079,7 @@ hdc shell df -h /data
 
 error: install failed due to grant request permissions failed.<br>
 
-! [Example](figures/zh-cn_image_9568289.png)
+! [Example](figures/en-us_image_9568289.png)
 
 **Symptom**
 
@@ -1216,7 +1216,7 @@ When you start debugging or run an application, the error message "error: instal
 **Possible Causes**
 
 1. The signatures of the existing application and new application are different, or the signatures of HAPs and HSPs are different. If the [keys](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) or <!--RP7-->app IDs in the application [profiles](../security/app-provision-structure.md)<!--RP7End--> of two applications are the same, their signatures are the same. **Keep Application Data** is selected in **Edit Configurations** (the application installation is overwritten) and the application is re-signed.
-2. If an application is uninstalled but its data is kept, and a new application with the same bundle name is later installed, it is necessary to check whether the identity details match. This error is reported if the values of [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) and <!--RP7--&gt in the signature information and the value of app-identifier<!--RP7End--&gt in the [profile signature file](../security/app-provision-structure.md) are different.
+2. If an application is uninstalled but its data is kept, and a new application with the same bundle name is later installed, it is necessary to check whether the identity details match. This error is reported if the values of [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the signature information and <!--RP7-->the value of app-identifier in the [profile signature file](../security/app-provision-structure.md)<!--RP7End--> are different.
 
 
 **Solution**
