@@ -87,13 +87,13 @@ enum OH_VideoEncodeBitrateMode
 
 **废弃版本：** 14
 
-**替代接口：** [OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode)
+**替代接口：** [OH_BitrateMode](_codec_base.md#oh_bitratemode-1)
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CBR = 0 | 恒定码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
-| VBR = 1 | 可变码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
-| CQ = 2 | 恒定QP模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode) |
+| CBR = 0 | 恒定码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CBR](_codec_base.md#oh_bitratemode-1) |
+| VBR = 1 | 可变码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_VBR](_codec_base.md#oh_bitratemode-1) |
+| CQ = 2 | 恒定QP模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CQ](_codec_base.md#oh_bitratemode-1) |
 
 
 ## 函数说明
@@ -572,7 +572,7 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
-| uint32_t index | 输出缓冲区对应的索引值。由[OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata)给出。 |
+| uint32_t index | 输出缓冲区对应的索引值。由[OH_AVCodecOnNewOutputData](_codec_base.md#oh_avcodeconnewoutputdata)给出。 |
 
 **返回：**
 
@@ -629,7 +629,7 @@ OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
-| uint32_t index | 输入缓冲区对应的索引值。由[OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata)给出。 |
+| uint32_t index | 输入缓冲区对应的索引值。由[OH_AVCodecOnNeedInputData](_codec_base.md#oh_avcodeconneedinputdata)给出。 |
 | [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) attr | 缓冲区中包含数据的描述信息。 |
 
 **返回：**
@@ -657,7 +657,7 @@ Buffer模式下，将index对应的OH_AVBuffer送入编码器编码。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
-| uint32_t index | 输入缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)给出。 |
+| uint32_t index | 输入缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer)给出。 |
 
 **返回：**
 
@@ -684,7 +684,7 @@ Surface模式下，将index对应帧的编码参数送入编码器编码。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
-| uint32_t index | 输入参数缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)给出。 |
+| uint32_t index | 输入参数缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer)给出。 |
 
 **返回：**
 
@@ -711,7 +711,7 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | 指向视频编码实例的指针。 |
-| uint32_t index | 输出缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)给出。 |
+| uint32_t index | 输出缓冲区对应的索引值。由[OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer)给出。 |
 
 **返回：**
 
