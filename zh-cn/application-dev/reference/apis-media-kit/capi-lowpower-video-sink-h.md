@@ -75,7 +75,7 @@ OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* mime | 视频解码器的MIME类型，取值范围请参考[AVCODEC_MIME_TYPE](../apis-avcodec-kit/_codec_base.md#变量)。 |
+| const char* mime | 视频解码器的MIME类型，取值范围请参考[AVCODEC_MIME_TYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
@@ -179,7 +179,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, co
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const [OHNativeWindow](../apis-avcodec-kit/_codec_base.md#ohnativewindow)* surface | 指向OHNativeWindow实例的指针。 |
+| const [OHNativeWindow](../apis-avcodec-kit/capi-codecbase-nativewindow.md)* surface | 指向OHNativeWindow实例的指针。 |
 
 **返回：**
 
