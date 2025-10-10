@@ -2744,7 +2744,7 @@ getNumber(resId: number): number
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| number | 资源ID值对应的数值。<br>integer对应的是原数值，float不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值，具体参考示例代码。 |
+| number | 资源ID值对应的数值。<br>integer对应的是原数值，float数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -2772,6 +2772,7 @@ getNumber(resId: number): number
 
 ```json
 // 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
 {
   "float": [
     {
@@ -2802,11 +2803,11 @@ export default class EntryAbility extends UIAbility {
     }
 
     try {
-      // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
+      // 'app.float.float_test'资源中的数值为30.6vp，带单位，因此floatValue返回像素值。参考如下打印结果，densityPixels为1.5，则floatValue = 30.6 * 1.5 = 45.900001525878906
       // 'app.float.float_test'仅作示例，请替换为实际使用的资源
       let floatValue = this.context.resourceManager.getNumber($r('app.float.float_test').id);
       console.log(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-      // 打印输出结果示例: getNumber, densityPixels: 1.5, float value: 45.900001525878906
+      // 打印输出结果: getNumber, densityPixels: 1.5, float value: 45.900001525878906
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -2917,7 +2918,7 @@ getDouble(resId: long): double
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| double | 资源ID值对应的数值, 不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值，具体参考示例代码。 |
+| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -2932,6 +2933,7 @@ getDouble(resId: long): double
 **示例：**
 ```json
 // 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
 {
   "float": [
     {
@@ -2952,11 +2954,11 @@ import { $r, display } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
-      // double对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
+      // 'app.float.double_test'资源中的数值为30.6vp，带单位，因此doubleValue返回像素值。参考如下打印结果，densityPixels为1.5，则doubleValue = 30.6 * 1.5 = 45.900001525878906
       // 'app.float.double_test'仅作示例，请替换为实际使用的资源
       let doubleValue = this.context.resourceManager.getDouble($r('app.float.double_test').id);
       console.log(`getDouble, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, double value: ${doubleValue}`);
-      // 打印输出结果示例: getDouble, densityPixels: 1.5, double value: 45.900001525878906
+      // 打印输出结果: getDouble, densityPixels: 1.5, double value: 45.900001525878906
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -2992,7 +2994,7 @@ getNumberByName(resName: string): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 资源名称对应的数值。<br>integer对应的是原数值，float不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值。 |
+| number | 资源名称对应的数值。<br>integer对应的是原数值，float数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -3020,6 +3022,7 @@ getNumberByName(resName: string): number
 
 ```json
 // 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
 {
   "float": [
     {
@@ -3050,11 +3053,11 @@ export default class EntryAbility extends UIAbility {
     }
 
     try {
-      // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
+      // "float_test"资源中的数值为30.6vp，带单位，因此floatValue返回像素值。参考如下打印结果，densityPixels为1.5，则floatValue = 30.6 * 1.5 = 45.900001525878906
       // "float_test"仅作示例，请替换为实际使用的资源
       let floatValue = this.context.resourceManager.getNumberByName("float_test");
       console.log(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-      // 打印输出结果示例: getNumberByName, densityPixels: 1.5, float value: 45.900001525878906
+      // 打印输出结果: getNumberByName, densityPixels: 1.5, float value: 45.900001525878906
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -3164,7 +3167,7 @@ getDoubleByName(resName: string): double
 
 | 类型     | 说明        |
 | ------ | --------- |
-| double | 资源名称对应的数值,不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值。 |
+| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -3179,6 +3182,7 @@ getDoubleByName(resName: string): double
 **示例：**
 ```json
 // 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
 {
   "float": [
     {
@@ -3199,11 +3203,11 @@ import { display } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
-      // double对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
+      // "double_test"资源中的数值为30.6vp，带单位，因此doubleValue返回像素值。参考如下打印结果，densityPixels为1.5，则doubleValue = 30.6 * 1.5 = 45.900001525878906
       // "double_test"仅作示例，请替换为实际使用的资源
       let doubleValue = this.context.resourceManager.getDoubleByName("double_test");
       console.log(`getDoubleByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, double value: ${doubleValue}`);
-      // 打印输出结果示例: getDoubleByName, densityPixels: 1.5, double value: 45.900001525878906
+      // 打印输出结果: getDoubleByName, densityPixels: 1.5, double value: 45.900001525878906
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
