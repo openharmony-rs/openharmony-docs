@@ -50,12 +50,12 @@
     - [Getting Started with ArkTS](quick-start/arkts-get-started.md)
     - [Introduction to ArkTS](quick-start/introduction-to-arkts.md)
     - [ArkTS Coding Style Guide](quick-start/arkts-coding-style-guide.md)
-    - TypeScript to ArkTS Migration Guide<!--typescript-to-arkts-migration-->
+    - Migration from TypeScript to ArkTS<!--typescript-to-arkts-migration-->
       - [ArkTS Migration Background](quick-start/arkts-migration-background.md)
       - [TypeScript to ArkTS Cookbook](quick-start/typescript-to-arkts-migration-guide.md)
       - [Adaptation Cases](quick-start/arkts-more-cases.md)
     - [ArkTS Performant Programming Practices](quick-start/arkts-high-performance-programming.md)
-    - Migration Guide to ArkTS from Other Languages<!--arkts-for-other-languages-->
+    - Migration from Other Languages to ArkTS<!--arkts-for-other-languages-->
       - [Migrating from Java to ArkTS](quick-start/getting-started-with-arkts-for-java-programmers.md)
       - [Migrating from Swift to ArkTS](quick-start/getting-started-with-arkts-for-swift-programmers.md)
 - Development<!--application-develop-->
@@ -390,7 +390,7 @@
           - [Declarative UI Description](ui/state-management/arkts-declarative-ui-description.md)
           - Custom Components<!--arkts-custom-components-->
             - [Creating a Custom Component](ui/state-management/arkts-create-custom-components.md)
-            - [Page and Custom Component Lifecycle](ui/state-management/arkts-page-custom-components-lifecycle.md)
+            - [Custom Component Lifecycle](ui/state-management/arkts-page-custom-components-lifecycle.md)
             - [Custom Component Layout](ui/state-management/arkts-page-custom-components-layout.md)
             - [Constraints on Access Modifiers of Custom Component Member Variables](ui/state-management/arkts-custom-components-access-restrictions.md)
           - Component Extension<!--arkts-extend-components-->
@@ -456,12 +456,16 @@
             - [Mixing Use of State Management V1 and V2](ui/state-management/arkts-v1-v2-mixusage.md)
           - Migration from V1 to V2<!--v1v2-migration-->
             - [Migrating Applications from V1 to V2](ui/state-management/arkts-v1-v2-migration.md)
+            - [Migration for Component State Variables](ui/state-management/arkts-v1-v2-migration-inner-component.md)
+            - [Migration for Data Object State Variables](ui/state-management/arkts-v1-v2-migration-inner-class.md)
+            - [Migration for In-Application State Variables and Related Scenarios](ui/state-management/arkts-v1-v2-migration-application-and-others.md)
         - UI Paradigm Rendering Control<!--arkts-rendering-control-->
           - [Rendering Control Overview](ui/rendering-control/arkts-rendering-control-overview.md)
           - [if/else: Conditional Rendering](ui/rendering-control/arkts-rendering-control-ifelse.md)
           - [ForEach: Rendering Repeated Content](ui/rendering-control/arkts-rendering-control-foreach.md)
           - [LazyForEach: Lazy Data Loading](ui/rendering-control/arkts-rendering-control-lazyforeach.md)
           - [Repeat: Reusing Components for Repeated Content Rendering](ui/rendering-control/arkts-new-rendering-control-repeat.md)
+          - [Migrating from LazyForEach to Repeat](ui/rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
           - [ContentSlot: Enabling Hybrid Development](ui/rendering-control/arkts-rendering-control-contentslot.md)
         - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
           - [Component Navigation and Page Routing Overview](ui/arkts-navigation-introduction.md)
@@ -478,6 +482,7 @@
             - [Responsive Grid Layout (GridRow/GridCol)](ui/arkts-layout-development-grid-layout.md)
             - [Tabs](ui/arkts-navigation-tabs.md)
         - Lists and Grids<!--arkts-list-and-grid-->
+          - [List and Grid Overview](ui/arkts-list-grid-development-overview.md)
           - [Creating a List (List)](ui/arkts-layout-development-create-list.md)
           - [Creating an Arc List (ArcList) (Recommended for Circular Screens)](ui/arkts-layout-development-create-arclist.md)
           - [Creating a Grid (Grid/GridItem)](ui/arkts-layout-development-create-grid.md)
@@ -489,12 +494,14 @@
           - [Rich Text (RichEditor)](ui/arkts-common-components-richeditor.md)
           - [Symbol Glyph (SymbolGlyph/SymbolSpan)](ui/arkts-common-components-symbol.md)
           - [Styled String (StyledString/MutableStyledString)](ui/arkts-styled-string.md)
+          - [Image and Text Layout](ui/arkts-text-image-layout.md)
         - Media Display <!--arkts-media-display-->
           - [Image Display (Image)](ui/arkts-graphics-display.md)
           - [Video Playback (Video)](ui/arkts-common-components-video-player.md)
           - [Creating a Swiper (Swiper)](ui/arkts-layout-development-create-looping.md)
           - [Creating an Arc Carousel Component (ArcSwiper) (Recommended for Circular Screens)](ui/arkts-layout-development-arcswiper.md)
         - Form Selection<!--arkts-form-selection-->
+          - [Form and Selection Component Overview](ui/arkts-forms-overview.md)
           - [Button](ui/arkts-common-components-button.md)
           - [Arc Button (ArcButton) (Recommended for Circular Screens)](ui/arkts-advanced-components-arcbutton.md)
           - [Radio Button (Radio)](ui/arkts-common-components-radio-button.md)
@@ -513,14 +520,15 @@
             - [Dialog Box Layer Management](ui/arkts-dialog-levelorder.md)
             - [Dialog Controller](ui/arkts-dialog-controller.md)
             - [Dialog Box Focus Policy](ui/arkts-dialog-focusable.md)
-           - Using Menus<!--arkts-use-menu-->
-             - [Menu Overview](ui/arkts-menu-overview.md)
-             - [Menu Control (Menu)](ui/arkts-popup-and-menu-components-menu.md)
-             - [Global Menu Independent of UI Components (openMenu)](ui/arkts-popup-and-menu-components-uicontext-menu.md)
-           - Using Popups<!--arkts-use-popup-->
-             - [Popup Overview](ui/arkts-popup-overview.md)
-             - [Popup](ui/arkts-popup-and-menu-components-popup.md)
-             - [Global Popup Independent of UI Components (openPopup)](ui/arkts-popup-and-menu-components-uicontext-popup.md)
+            - [Popup Mask Control](ui/arkts-dialog-mask.md)
+          - Using Menus<!--arkts-use-menu-->
+            - [Menu Overview](ui/arkts-menu-overview.md)
+            - [Menu Control (Menu)](ui/arkts-popup-and-menu-components-menu.md)
+            - [Global Menu Independent of UI Components (openMenu)](ui/arkts-popup-and-menu-components-uicontext-menu.md)
+          - Using Popups<!--arkts-use-popup-->
+            - [Popup Overview](ui/arkts-popup-overview.md)
+            - [Popup](ui/arkts-popup-and-menu-components-popup.md)
+            - [Global Popup Independent of UI Components (openPopup)](ui/arkts-popup-and-menu-components-uicontext-popup.md)
           - Binding Modal Pages<!--arkts-bind-modal-->
             - [Modal Page Overview](ui/arkts-modal-overview.md)
             - [Binding a Semi-Modal Page (bindSheet)](ui/arkts-sheet-page.md)
@@ -528,20 +536,26 @@
           - [Using Toasts (Toast)](ui/arkts-create-toast.md)
           - [Managing Overlays (OverlayManager)](ui/arkts-create-overlaymanager.md)
         - Geometric Shapes<!--arkts-draw-graphics-->
+          - [Geometric Shape Drawing Overview](ui/arkts-shape-overview.md)
           - [Drawing Geometric Shapes (Shape)](ui/arkts-geometric-shape-drawing.md)
           - [Clipping Shapes (clipShape)](ui/arkts-clip-shape.md)
-        - Adding Interaction Response<!--adding-interaction-response-->
-          - Adding Gesture Response<!--adding-gesture-response-->
-          - [Interacting with Applications Using Gestures](ui/arkts-interaction-basic-principles.md)
-          - [Handling Touchscreen Input Events](ui/arkts-interaction-development-guide-touch-screen.md)
-          - [Crown Event (Recommended for Circular Screens)](ui/arkts-common-events-crown-event.md)
+        - [Implementing Interaction Responses](ui/arkts-interaction-development-guide-overview.md)
+          - [Interaction Response Overview](ui/arkts-interaction-capability-overview.md)
+          - [Interaction Mechanism Overview](ui/arkts-interaction-basic-principles.md)
+          - [Input Devices and Events](ui/arkts-interaction-development-guide-raw-input-event.md)
+            - [Handling Touchscreen Input Events](ui/arkts-interaction-development-guide-touch-screen.md)
+            - [Handling Mouse Input Events](ui/arkts-interaction-development-guide-mouse.md)
+            - [Handling Touchpad Input Events](ui/arkts-interaction-development-guide-touchpad.md)
+            - [Handling Keyboard Input Events](ui/arkts-interaction-development-guide-keyboard.md)
+            - [Handling Crown Events](ui/arkts-common-events-crown-event.md)
+          - [Implementing Gesture Responses](ui/arkts-interaction-development-guide-support-gesture.md)
             - [Gesture Binding](ui/arkts-gesture-events-binding.md)
             - [Single Gesture](ui/arkts-gesture-events-single-gesture.md)
             - [Combined Gestures](ui/arkts-gesture-events-combined-gestures.md)
             - [Multi-level Gesture Events](ui/arkts-gesture-events-multi-level-gesture.md)
             - [Gesture Conflict Handling](ui/arkts-gesture-events-gesture-judge.md)
           - [Implementing Unified Drag and Drop](ui/arkts-common-events-drag-event.md)
-          - [Focus Event](ui/arkts-common-events-focus-event.md)
+          - [Implementing Focus Support](ui/arkts-common-events-focus-event.md)
         - Using Animation<!--arkts-use-animation-->
           - [Animation Overview](ui/arkts-animation.md)
           - Property Animation<!--arkts-animation-attribute-->
@@ -553,7 +567,7 @@
             - [Enter/Exit Transition](ui/arkts-enter-exit-transition.md)
             - [Modal Transition](ui/arkts-modal-transition.md)
             - [Shared Element Transition](ui/arkts-shared-element-transition.md)
-            - [Rotation Transition Animation](ui/arkts-rotation-transition-animation.md)
+            - [Rotation Transition Animation](ui/arkts-rotation-transition-animation.md)   
             - [Page Transition Animation (Not Recommended)](ui/arkts-page-transition-animation.md)
           - [Particle Animation](ui/arkts-particle-animation.md)
           - [Component Animation](ui/arkts-component-animation.md)
@@ -569,18 +583,23 @@
           - [Frame Animation (ohos.animator)](ui/arkts-animator.md)
         - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
           - [Customization Capability Overview](ui/arkts-user-defined.md)
+          - [Custom Composition](ui/arkts-user-defined-composition.md)
           - Using Custom Nodes<!--arkts-nodes-->
             - [Custom Node Overview](ui/arkts-user-defined-node.md)
             - [Custom Placeholder Node](ui/arkts-user-defined-place-holder.md)
             - [Custom Component Node (FrameNode)](ui/arkts-user-defined-arktsNode-frameNode.md)
             - [Custom RenderNode (RenderNode)](ui/arkts-user-defined-arktsNode-renderNode.md)
             - [Custom Declarative Node (BuilderNode)](ui/arkts-user-defined-arktsNode-builderNode.md)
+            - [Setting Custom Node Cross-Language Attributes](ui/arkts-user-defined-arktsNode-crossLanguage.md)
           - Custom Drawing<!--arkts-draw-->
             - [Drawing Custom Graphics Using the Canvas (Canvas)](ui/arkts-drawing-customization-on-canvas.md)
+            - [Custom Drawing Modifier (DrawModifier)](ui/arkts-user-defined-extension-drawModifier.md)
           - Modifier<!--arkts-modifier-->
             - [Custom Extension Capability Overview](ui/arkts-user-defined-modifier.md)
+            - [Content Modifier (ContentModifier)](ui/arkts-common-attributes-content-modifier.md)
             - [Attribute Modifier (AttributeModifier)](ui/arkts-user-defined-extension-attributeModifier.md)
             - [Attribute Updater (AttributeUpdater)](ui/arkts-user-defined-extension-attributeUpdater.md)
+        - [Implementing UI Internationalization](ui/arkts-internationalization.md)
         - Implementing Accessibility and Aging-Friendly Design<!--arkts-support-accessibility-friendliness-->
           - [Supporting Accessibility](ui/arkts-universal-attributes-accessibility.md)
           - [Supporting Aging-Friendly Design](ui/arkui-support-for-aging-adaptation.md)
@@ -590,6 +609,7 @@
         - UI Scene-based Capabilities<!--arkts-ui-system-scenarization-capability-->
           - [Using the UI Context API for UI Operations (UIContext)](ui/arkts-global-interface.md)
           - [Using Component Snapshot (ComponentSnapshot)](ui/arkts-uicontext-component-snapshot.md)
+          - [Detecting Component Visibility](ui/arkts-manage-components-visibility.md)
           - [Inspecting Page Layouts](ui/arkts-inspector-overview.md)
           - [Media Query (@ohos.mediaquery)](ui/arkts-layout-development-media-query.md)
           - Using Embedded Components<!--arkts-ui-cross-process-->
@@ -617,9 +637,12 @@
         - [Building Dialog Boxes](ui/ndk-build-pop-up-window.md)
         - [Building Custom Components](ui/ndk-build-custom-components.md)
         - [Embedded ArkTS Component](ui/ndk-embed-arkts-components.md)
+        - [Building a Rendering Node](ui/ndk-embed-render-components.md)
         - [Integrating Accessibility Through XComponent](ui/ndk-accessibility-xcomponent.md)
         - [Implementing Custom Drawing](ui/arkts-user-defined-draw.md)
-        - [Ensuring Multi-Instance Functionality in the NDK](ui/ndk-scope-task.md)
+        - [Querying and Operating Custom Nodes](ui/ndk-node-query-operate.md)
+        - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ui/ndk-embedded-component.md)
+        - [Ensuring Multi-Instance Functionality in the NDK](ui/ndk-scope-task.md) 
       - UI Development (JavaScript-compatible Web-like Development Paradigm)<!--ui-js-dev-->
         - [UI Development (JavaScript-compatible Web-like Development Paradigm) Overview](ui/ui-js-overview.md)
         - Framework Overview<!--js-framework-overview-->
@@ -694,6 +717,15 @@
         - [Custom Components](ui/ui-js-custom-components.md)
         - WebGL<!--ui-js-webgl-->
           - [Using WebGL to Draw Graphics](webgl/webgl-2d-guidelines.md)
+      - UI Debugging and Optimization<!--ui-debug-optimize-->
+        - UI Stability Issue Debugging <!--ui-stability-->
+          - [UI Stability Issue Analysis Overview](ui/arkts-stability-guide.md)
+          - [Debugging Common UI-Related Application Crash Issues](ui/arkts-stability-crash-issues.md)
+          - [Common UI Application Freezing Issues](ui/arkts-stability-freeze-issues.md)
+        - [Debugging UI Display Exceptions](ui/arkts-layout-debug.md)
+        - [UI Preview](ui/ui-ide-previewer.md)
+        - [UI Profiling](ui/ui-inspector-profiler.md)
+        - [High-Performance UI Development](ui/ui-performance-overview.md)
       - Window Manager<!--window-manager-->
         - [Window Overview](windowmanager/window-overview.md)
         - [Application Window Development (Stage Model)](windowmanager/application-window-stage.md)
@@ -790,7 +822,7 @@
       - [Deferred Task (ArkTS)](task-management/work-scheduler.md)
       - [Agent-powered Reminder (ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
       - [Requesting Efficiency Resources (ArkTS) (for Privileged System Applications Only)](task-management/efficiency-resource-request.md)
-      - Device Usage Statistics (ArkTS)<!--device-usage-statistics-->
+      - Device Usage Statistics(ArkTS) <!--device-usage-statistics-->
         - [Device Usage Statistics Overview](device-usage-statistics/device-usage-statistics-overview.md)
         - [Device Usage Statistics Development](device-usage-statistics/device-usage-statistics-use-guide.md)
       <!--DelEnd-->
@@ -866,7 +898,7 @@
             - [Widget Editing Development](form/arkts-ui-widget-event-formeditextensionability.md)
           - Widget Addition to Home Screen<!--arkts-ui-widget-add-->
             - [Adding Widgets to the Home Screen](form/arkts-ui-widget-open-formmanager.md)
-        <!--Del-->
+        <!--Del--> 
         - [ArkTS Widget Host Development (for System Applications Only)](form/widget-host-development-guide.md)
         <!--DelEnd-->
         - Interactive Widget Development<!--arkts-ui-liveform-->
@@ -1262,7 +1294,7 @@
             - [Extensible Authentication](network/net-eap.md)
             <!--Del-->
             - [Network Sharing (for System Applications Only)](network/net-sharing.md)
-            - [Ethernet Connection Management (for System Applications Only)](network/net-ethernet.md)
+            - [Ethernet Connection Management (for System Applications Only)](network/net-ethernet.md)  
             - [VPN Management (for System Applications Only)](network/net-vpn.md)
             <!--DelEnd-->
         - [Network Kit Terminology](network/network-terminology.md)
@@ -1448,7 +1480,7 @@
               - Task Execution Timeout Events<!--app-hicollie-events-->
                 - [Task Execution Timeout Event Overview](dfx/hiappevent-watcher-apphicollie-events.md)
                 - [Subscribing to Task Execution Timeout Events (C/C++)](dfx/hiappevent-watcher-apphicollie-events-ndk.md)
-              - App Kill Events<!--app-killed-events-->
+              - App Killed Events<!--app-killed-events-->
                 - [Application Killed Event Overview](dfx/hiappevent-watcher-app-killed-events.md)
                 - [Subscribing to Application Killed Events (ArkTS)](dfx/hiappevent-watcher-app-killed-events-arkts.md)
                 - [Subscribing to Application Killed Events (C/C++)](dfx/hiappevent-watcher-app-killed-events-ndk.md)
@@ -1490,9 +1522,10 @@
           - [hisysevent](dfx/hisysevent.md)
           <!--DelEnd-->
       - Test Kit<!--test-kit-->
-        <!--Del-->
-        - [arkXtest User Guide](application-test/arkxtest-guidelines.md)
-        <!--DelEnd-->
+        - arkXtest User Guide<!--arkxtest-->
+          - [JsUnit User Guide](application-test/unittest-guidelines.md)
+          - [UITest User Guide](application-test/uitest-guidelines.md)
+          - [PerfTest User Guide](application-test/perftest-guideline.md)
         - [SmartPerf User Guide](application-test/smartperf-guidelines.md)
         - [wukong User Guide](application-test/wukong-guidelines.md)
       - Debugging Commands<!--debugging-commands-->
@@ -1637,6 +1670,7 @@
         - [Practices for Automatic Camera Switching (ArkTS)](media/camera/camera-auto-switch.md)
         - [White Balance Settings (ArkTS)](media/camera/camera-whitebalance.md)
         - [Pressure Management (ArkTS)](media/camera/camera-system-pressure.md)
+        - [Camera Controller (ArkTS)](media/camera/camera-control-center.md)
         <!--Del-->
         - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo.md)
         - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-case.md)
@@ -1739,6 +1773,7 @@
           - [Using AVRecorder to Record Videos (C/C++)](media/media/using-ndk-avrecorder-for-video-recording.md)
           - [Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)](media/media/using-avscreencapture-for-buffer.md)
           - [Using AVScreenCapture to Capture Screens and Write Them to Files (C/C++)](media/media/using-avscreencapture-for-file.md)
+          - [Capturing the Specified Area on a Screen (C/C++)](media/media/video-supports-rectangular-area-recording.md)
         - Media Information Query<!--media-info-c-->
           - [Using AVMetadataExtractor to Obtain Metadata (C/C++)](media/media/using-ndk-avmetadataextractor-for-media.md)
           - [Using AVImageGenerator to Obtain Video Frames (C/C++)](media/media/using-ndk-avimagegenerator-for-video.md)
@@ -1825,7 +1860,7 @@
       <!--DelEnd-->
       - Cross-Device Notification<!--notification-distributed-->
         - [Cross-Device Notification Overview](notification/notification-distributed-overview.md)
-        <!--Del-->
+          <!--Del-->
         - [Cross-Device Notification Management (for System Applications Only)](notification/notification-distributed-notdistributed.md)
         <!--DelEnd-->
         - [Enabling Quick Reply for Cross-device Notifications](notification/notification-quickreply.md)
@@ -2230,7 +2265,7 @@
           - [@ohos.application.Configuration (Configuration)](reference/apis-ability-kit/js-apis-application-configuration.md)
           - [@ohos.application.ConfigurationConstant (ConfigurationConstant)](reference/apis-ability-kit/js-apis-application-configurationConstant.md)
           - [@ohos.application.Want (Want)](reference/apis-ability-kit/js-apis-application-want.md)
-          - [@ohos.wantAgent (WantAgent Module) (System API)](reference/apis-ability-kit/js-apis-wantAgent.md)
+          - [@ohos.wantAgent (WantAgent Module)](reference/apis-ability-kit/js-apis-wantAgent.md)
           <!--Del-->
           - [@ohos.ability.wantConstant (wantConstant) (System API)](reference/apis-ability-kit/js-apis-ability-wantConstant-sys.md)
           - [@ohos.application.abilityManager (AbilityManager) (System API)](reference/apis-ability-kit/js-apis-application-abilityManager-sys.md)
@@ -2626,6 +2661,9 @@
           - Interaction Response Events<!--interaction-events-->
             - [Click Event](reference/apis-arkui/arkui-ts/ts-universal-events-click.md)
             - [Drag/Drop Event](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md)
+            <!--Del-->
+            - [Drag Event (System API)](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop-sys.md)
+            <!--DelEnd-->
             - [Focus Event](reference/apis-arkui/arkui-ts/ts-universal-focus-event.md)
             - [Hover Event](reference/apis-arkui/arkui-ts/ts-universal-events-hover.md)
             - [Custom Keyboard Shortcuts](reference/apis-arkui/arkui-ts/ts-universal-events-keyboardshortcut.md)
@@ -2716,6 +2754,7 @@
           - Gesture Binding<!--gesture-binding-->
             - [Gesture Binding Methods](reference/apis-arkui/arkui-ts/ts-gesture-settings.md)
             - [Bound Gesture Configuration](reference/apis-arkui/arkui-ts/ts-uigestureevent.md)
+            - [Gesture Handler](reference/apis-arkui/arkui-ts/ts-gesturehandler.md)
           - Basic Gestures<!--basic-gestures-->
             - [TapGesture](reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)
             - [LongPressGesture](reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md)
@@ -2727,6 +2766,7 @@
           - Gesture Control<!--gesture-control-->
             - [Custom Gesture Judgment](reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md)
             - [Gesture Blocking Enhancement](reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md)
+          - [Gesture Common APIs](reference/apis-arkui/arkui-ts/ts-gesture-common.md)
         - Rows, Columns, and Stacking<!--rows-columns-and-stacking-->
           - [Flex](reference/apis-arkui/arkui-ts/ts-container-flex.md)
           - [Column](reference/apis-arkui/arkui-ts/ts-container-column.md)
@@ -2775,6 +2815,7 @@
           - [StepperItem](reference/apis-arkui/arkui-ts/ts-basic-components-stepperitem.md)
           - [Tabs](reference/apis-arkui/arkui-ts/ts-container-tabs.md)
           - [TabContent](reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)
+          - [ToolBarItem](reference/apis-arkui/arkui-ts/ts-basic-components-toolbaritem.md)
         - Buttons and Selections<!--buttons-and-selections-->
           - [Button](reference/apis-arkui/arkui-ts/ts-basic-components-button.md)
           - [Toggle](reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)
@@ -2837,6 +2878,7 @@
           - [QRCode](reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md)
           - [TextClock](reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md)
           - [TextTimer](reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md)
+          - [Information Display APIs](reference/apis-arkui/arkui-ts/ts-information-display-common.md)
         - Blank and Divider<!--blank-and-divider-->
           - [Blank](reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)
           - [Divider](reference/apis-arkui/arkui-ts/ts-basic-components-divider.md)
@@ -2877,7 +2919,7 @@
           - [Property Animation (animation)](reference/apis-arkui/arkui-ts/ts-animatorproperty.md)
           - [Explicit Animation (animateTo)](reference/apis-arkui/arkui-ts/ts-explicit-animation.md)
           - [Keyframe Animation (keyframeAnimateTo)](reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md)
-          - [Page Transition (pageTransition)](reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
+          - [Page Transition Animation (Not Recommended)](reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
           - [Component Transition (transition)](reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)
           - [Shared Element Transition (sharedTransition)](reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)
           - [Implicit Shared Element Transition (geometryTransition)](reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)
@@ -2928,6 +2970,13 @@
           - [Custom Component Lifecycle](reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)
           - [Custom Component Layout](reference/apis-arkui/arkui-ts/ts-custom-component-layout.md)
           - [Custom Component Built-in APIs](reference/apis-arkui/arkui-ts/ts-custom-component-api.md)
+          - [Custom Component Parameters](reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md)
+          - Component Extension Decorator <!--arkts-extend-component-decorator-->
+            - [Definition of Animatable Properties (@AnimatableExtend)](reference/apis-arkui/arkui-ts/ts-animatable-extend.md)
+            - [@Entry: Page Entry](reference/apis-arkui/arkui-ts/ts-universal-entry.md)
+            - [wrapBuilder: Encapsulating Global @Builder](reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md)
+        - Component Preview<!--component-preview-->
+          - [Component Preview](reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md)
         - System Preset UI Component Library<!--system-preset-ui-component-library-->
           - [Chip](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)
           - [ChipGroup](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)
@@ -2961,7 +3010,9 @@
           - [advanced.Counter](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md)
         - State Management and Rendering Control<!--state-management-and-rendering-control-->
           - [State Management with Application-level Variables](reference/apis-arkui/arkui-ts/ts-state-management.md)
+          - [State Management V1 Decorator Parameters](reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md)
           - [State Variable Change Listening](reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)
+          - [Built-in Environment Variables](reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md)
           - [ForEach](reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)
           - [LazyForEach](reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)
           - [Repeat](reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)
@@ -4121,12 +4172,14 @@
             - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md)
             - [@ohos.pasteboard (Pasteboard)](reference/apis-basic-services-kit/js-apis-pasteboard.md)
             - [@ohos.print (Print)](reference/apis-basic-services-kit/js-apis-print.md)
+            - [@ohos.scan (Scan)](reference/apis-basic-services-kit/js-apis-scan.md)
             - [@ohos.request (Upload and Download)](reference/apis-basic-services-kit/js-apis-request.md)
             - [@ohos.request.cacheDownload (Download and Cache)](reference/apis-basic-services-kit/js-apis-request-cacheDownload.md)
             - [@ohos.zlib (Zip)](reference/apis-basic-services-kit/js-apis-zlib.md)
             <!--Del-->
             - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility-sys.md)
             - [@ohos.print (Print) (System API)](reference/apis-basic-services-kit/js-apis-print-sys.md)
+            - [@ohos.scan (Scan) (System API)](reference/apis-basic-services-kit/js-apis-scan-sys.md)
             - [@ohos.request (Upload and Download) (System API)](reference/apis-basic-services-kit/js-apis-request-sys.md)
             - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)
             - [@ohos.selectionInput.SelectionExtensionContext (SelectionExtensionContext) (System API)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionContext-sys.md)
