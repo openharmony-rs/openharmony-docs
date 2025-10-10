@@ -1228,8 +1228,8 @@
             - [匿名密钥证明(ArkTS)](security/UniversalKeystoreKit/huks-key-anon-attestation-arkts.md)
             - [匿名密钥证明(C/C++)](security/UniversalKeystoreKit/huks-key-anon-attestation-ndk.md)
             <!--Del-->
-            - [非匿名密钥证明(ArkTS)](security/UniversalKeystoreKit/huks-key-attestation-arkts.md)
-            - [非匿名密钥证明(C/C++)](security/UniversalKeystoreKit/huks-key-attestation-ndk.md)
+            - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](security/UniversalKeystoreKit/huks-key-attestation-arkts-sys.md)
+            - [非匿名密钥证明(仅对系统应用开放)(C/C++)](security/UniversalKeystoreKit/huks-key-attestation-ndk-sys.md)
             <!--DelEnd-->
         - 其他操作<!--huks-other-operations-->
           - 查询密钥是否存在<!--huks-check-key-->
