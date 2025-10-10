@@ -1,5 +1,12 @@
 # AVScreenCapture录屏自定义场景
 
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
 在基础流程的基础上，AVScreenCapture支持应用根据实际需求，完成场景化的自定义配置。可参考下述指导，完成对应配置。
 
 ## 设置录屏策略

@@ -1,6 +1,14 @@
 # AVScreenCapture录屏基础流程
 
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
 屏幕录制支持开发者获取屏幕数据，可用于屏幕录制、会议共享、直播等场景。开发者可以调用录屏[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，采集设备内外的音视频源数据。录屏模块和窗口（Window）、图形（Graphic）等模块协同完成整个视频采集的流程。
+
 
 ## 流程介绍
 
@@ -18,6 +26,7 @@
 
 - 码流形式：该码流可根据场景进行不同的处理，例如将码流流转到其他模块，实现桌面共享、视频直播等。
 
+
 ## 约束与限制
 
 - 使用AVScreenCapture时需明确其状态变化。在创建实例后，调用相应方法可进入指定状态以实现特定行为。在特定状态下执行不适当的方法会导致AVScreenCapture出错，开发者需在调用状态转换方法前进行状态检查，避免程序异常。
@@ -28,7 +37,9 @@
 
   ![privacy-pop-up](figures/privacy-pop-up.png)
 
+
 ## 通用开发步骤
+
 
 ### 依赖导入
 
@@ -49,6 +60,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 #include <native_buffer/native_buffer.h>
 #include <vector>
 ```
+
 
 ### 创建AVScreenCapture实例
 

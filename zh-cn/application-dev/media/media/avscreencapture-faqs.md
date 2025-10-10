@@ -1,5 +1,11 @@
 # 录屏常见问题
 
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 录屏启动报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
 
