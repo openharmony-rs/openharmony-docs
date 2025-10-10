@@ -197,6 +197,89 @@ Navigation组件页面切换事件的监听选项。
 | ------------ | --------------------------------------------- | ----- | ---- | -------------------------------------------- |
 | navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否   | 指定需要监听的Navigation的ID。 |
 
+## TextChangeEventInfo<sup>22+</sup>
+输入框文本变化的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                       | 否   | 否   | 文本输入组件的ID。|
+| uniqueId     | number                                       | 否   | 否   | 文本输入组件的唯一标识符。|
+| content        | string                                       | 否   | 否   | 变化后的文本内容。|
+
+## uiObserver.on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', callback: Callback\<TextChangeEventInfo\>): void
+
+监听输入框的文本变化。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 是   | 回调函数，返回文本变化的信息。|
+
+## uiObserver.off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
+
+取消对输入框文本变化的监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22) | 否   | 回调函数。返回文本变化的信息。|
+
+## uiObserver.on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeEventInfo\>): void
+
+监听指定ID输入框的文本变化。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。 |
+| identity | [ObserverOptions](#observeroptions12) | 是   | 指定监听的文本输入组件的ID。                             |
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 是   | 回调函数。返回文本变化的信息。|
+
+## uiObserver.off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', identity: ObserverOptions, callback?: Callback\<TextChangeEventInfo\>): void
+
+取消对指定ID输入框的文本变化监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| identity | [ObserverOptions](#observeroptions12) | 是   | 指定监听的文本输入组件的ID。|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | 否   | 回调函数。返回文本变化的信息。|
+
 ## TabContentInfo<sup>12+</sup>
 
 TabContent页面的切换信息。
