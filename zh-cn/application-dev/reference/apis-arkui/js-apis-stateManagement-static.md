@@ -40,7 +40,7 @@ static connect\<T extends object\>(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -94,7 +94,7 @@ static connect\<T extends object\>(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -143,7 +143,7 @@ static remove(keyOrType: string | Type): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -180,7 +180,7 @@ static keys(): Array\<string\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -200,7 +200,9 @@ const keys: Array<string> = AppStorageV2.keys();
 ```
 
 ## PersistenceV2
+
 继承自[AppStorageV2](#appstoragev2)，PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management-static/arkts-static-new-persistencev2.md)。
+
 ### globalConnect
 
 static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>, toJson: ToJSONType<T>, fromJson: FromJSONType<T>): T | undefined
@@ -208,6 +210,8 @@ static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>, to
 将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management-static/arkts-static-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果globalConnect的是\@ObservedV2对象，该对象\@Trace属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用PersistenceV2.save接口手动存储。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 | 参数名         | 类型                                     | 必填 | 说明                                                  |
@@ -248,8 +252,12 @@ static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>, to
 ```ts
 'use static'
 
-import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
+import {
+  PersistenceV2,
+  ObservedV2,
+  Trace
+} from '@kit.ArkUI';
 
 @ObservedV2
 class SampleChild {
@@ -326,6 +334,8 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;Type\<T\>):&nbsp;void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                | 必填 | 说明                                                             |
@@ -366,6 +376,8 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明               |
@@ -402,19 +414,51 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 ```ts
 'use static'
 
-import { PersistenceV2, Type } from '@kit.ArkUI';
+import {
+  PersistenceV2,
+  ObservedV2,
+  Trace,
+  Local,
+  Entry,
+  Column,
+  Button,
+  ClickEvent,
+  ComponentV2
+} from '@kit.ArkUI';
 
 @ObservedV2
-class SampleChild {
-  @Trace id: number = 0;
-  count: number = 10;
+class Person {
+  @Trace userName: string = 'John';
+  userId: number = 1;
+
+  public toJson(): jsonx.JsonElement {
+    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    // 存储 userName
+    const userNameEle = new jsonx.JsonElement();
+    userNameEle.setString(this.userName);
+    root.setElement('userName', userNameEle);
+
+    const userIdEle = new jsonx.JsonElement();
+    userIdEle.setDouble(this.userId);
+    root.setElement('userId', userIdEle);
+
+    return root;
+  }
+
+  public fromJson(json: jsonx.JsonElement): void {
+    this.userName = json.getElement('userName').asString();
+    this.userId = json.getElement('userId').asInteger();
+  }
 }
 
-@ObservedV2
-export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功
-  @Type(SampleChild)
-  @Trace sampleChild: SampleChild = new SampleChild();
+const toJsonPerson = (person: Person) => {
+  return person.toJson();
+}
+
+const fromJsonPerson = (json: jsonx.JsonElement): Person => {
+  let person = new Person();
+  person.fromJson(json);
+  return person;
 }
 
 // 接受序列化失败的回调
@@ -426,17 +470,27 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 @Entry
 @ComponentV2
 struct Index {
-  // 在PersistenceV2中创建一个key为Sample的键值对（如果存在，则返回PersistenceV2中的数据），并且和data关联
-  // 对于需要换connect对象的data属性，需要加@Local修饰（不建议对属性换connect的对象）
-  @Local data: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
-  pageStack: NavPathStack = new NavPathStack();
+  @Local cp: Person = PersistenceV2.connect<Person>(
+    Type.from<Person>(),
+    toJsonPerson,
+    fromJsonPerson,
+    (): Person => {
+      return new Person();
+    })!;
 
   build() {
-    Text(`Index add 1 to data.id: ${this.data.sampleChild.id}`)
-      .fontSize(30)
-      .onClick(() => {
-        this.data.sampleChild.id++;
-      })
+    Column() {
+      Button(`Page1 connect the key Sample ${this.cp.userName}`)
+        .onClick((e: ClickEvent) => {
+          this.cp = PersistenceV2.connect<Person>(Type.from<Person>(),
+            'Key',
+            toJsonPerson,
+            fromJsonPerson,
+            () => new Person())!;
+        })
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -450,7 +504,7 @@ globalConnect参数类型。
 
 | 名称           | 类型                       | 只读 | 可选 | 说明                                                                                                                                                                                                                                      |
 | -------------- | -------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type           | Type\<T\>                  | 否   | 否   | 指定的类型。                                                                                                                                                                                                                              |
+| type           | Type                  | 否   | 否   | 指定的类型。                                                                                                                                                                                                                              |
 | key            | string                     | 否   | 是   | 传入的key，不传则使用type的名字作为key。                                                                                                                                                                                                  |
 | defaultCreator | StorageDefaultCreator\<T\> | 否   | 是   | 默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。                                                                                                                                                                |
 | areaMode       | contextConstant.AreaMode   | 否   | 是   | 加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。 |
@@ -466,6 +520,8 @@ static makeObserved\<T extends object\>(source: T): T
 将不可观察数据转化为可观察数据。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -513,6 +569,8 @@ static getTarget\<T extends object\>(source: T): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                     |
@@ -558,6 +616,8 @@ static makeBindingReadonly\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 创建只读的单向数据绑定实例，用于在@Builder函数中为参数类型为Binding的参数提供实参。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -620,6 +680,8 @@ static makeBindingMutable\<T\>(getter: GetterCallback\<T\>, setter: SetterCallba
 创建双向数据绑定实例，用于构建@Builder函数中类型为MutableBinding的参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
