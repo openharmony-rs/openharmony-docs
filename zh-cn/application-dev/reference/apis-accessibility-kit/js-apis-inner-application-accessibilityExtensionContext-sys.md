@@ -793,7 +793,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 
 findElementByElementId(condition: long): Promise\<AccessibilityElement>;
 
-根据elementId查询当前活动窗口下的节点元素，使用Promise异步回调。
+根据elementId查询当前活动窗口下的节点元素。使用Promise异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -886,7 +886,7 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 findElementByTextType(condition: string): Promise\<Array\<AccessibilityElement>>;
 
-根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素，使用Promise异步回调。
+根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素。使用Promise异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 

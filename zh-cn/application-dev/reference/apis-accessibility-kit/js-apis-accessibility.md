@@ -892,7 +892,7 @@ struct Index {
 
 onAccessibilityStateChange(callback: Callback&lt;boolean&gt;): void
 
-监听辅助应用启用状态变化事件，使用callback异步回调。
+监听辅助应用启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -987,9 +987,9 @@ struct Index {
 
 ## accessibility.onTouchGuideStateChange<sup>22+</sup>
 
-on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
+onTouchGuideStateChange(callback: Callback&lt;boolean&gt;): void
 
-监听触摸浏览功能启用状态变化事件，使用callback异步回调。
+监听触摸浏览功能启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -1086,7 +1086,7 @@ struct Index {
 
 onScreenReaderStateChange(callback: Callback&lt;boolean&gt;): void
 
-监听屏幕朗读功能启用状态变化事件，使用callback异步回调。
+监听屏幕朗读功能启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -1238,7 +1238,7 @@ struct Index {
 
 offAccessibilityStateChange(callback?: Callback&lt;boolean&gt;): void
 
-取消监听辅助应用启用状态变化事件，使用callback异步回调。
+取消监听辅助应用启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -1343,7 +1343,7 @@ struct Index {
 
 offTouchGuideStateChange(callback?: Callback&lt;boolean&gt;): void
 
-取消监听触摸浏览启用状态变化事件，使用callback异步回调。
+取消监听触摸浏览启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -1448,7 +1448,7 @@ struct Index {
 
 offScreenReaderStateChange(callback?: Callback&lt;boolean&gt;): void
 
-取消监听屏幕朗读启用状态变化事件，使用callback异步回调。
+取消监听屏幕朗读启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 

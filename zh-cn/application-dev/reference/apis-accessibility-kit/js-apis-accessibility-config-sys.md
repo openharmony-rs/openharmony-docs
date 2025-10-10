@@ -360,7 +360,7 @@ struct Index {
 
 onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
 
-添加启用的辅助扩展的列表变化监听，使用callback异步回调。
+添加启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -476,11 +476,11 @@ struct Index {
 }
 ```
 
-## off('enabledAccessibilityExtensionListChange')
+## offEnabledAccessibilityExtensionListChange
 
-off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void&gt;): void
+offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): void
 
-取消启用的辅助扩展的列表变化监听，使用callback异步回调。
+取消启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -600,7 +600,7 @@ struct Index {
 
 onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
 
-添加已安装的辅助扩展的列表变化监听，使用callback异步回调。
+添加已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -720,7 +720,7 @@ struct Index {
 
 offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
 
-取消已安装的辅助扩展的列表变化监听，使用callback异步回调。
+取消已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
