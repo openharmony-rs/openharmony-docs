@@ -32,9 +32,9 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 | 名称            |  类型  | 只读   | 可选   | 说明                                       |
 | -------------- | ------ | ----- | ----------|-------------------------------- |
-| maxSize           | [Size](./js-apis-arkui-graphics.md#size) |否| 是    | 最大尺寸。              |
-| minSize            | [Size](./js-apis-arkui-graphics.md#size) |否| 是    | 最小尺寸。                  |
-| percentReference      | [Size](./js-apis-arkui-graphics.md#size) |否| 是    | 子节点计算百分比时的尺寸基准。|
+| maxSize           | [Size](./js-apis-arkui-graphics.md#size) |否| 否    | 最大尺寸。              |
+| minSize            | [Size](./js-apis-arkui-graphics.md#size) |否| 否    | 最小尺寸。                  |
+| percentReference      | [Size](./js-apis-arkui-graphics.md#size) |否| 否    | 子节点计算百分比时的尺寸基准。|
 
 ## CrossLanguageOptions<sup>15+</sup>
 
