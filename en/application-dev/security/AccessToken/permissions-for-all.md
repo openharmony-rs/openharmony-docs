@@ -593,3 +593,15 @@ This permission applies only to independent binary programs, not to HAPs.
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
+
+## ohos.permission.LOCK_WINDOW_CURSOR
+
+Allows an application to lock the mouse cursor when the window gains focus.
+
+With this permission, the application can lock the mouse cursor within the window when focused, preventing it from moving outside. It also controls if the cursor moves with the window and releases the cursor when the window loses focus.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Valid since**: 22
