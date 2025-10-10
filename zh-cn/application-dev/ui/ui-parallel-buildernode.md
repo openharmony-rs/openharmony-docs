@@ -1,9 +1,9 @@
-# BuilderNode并行化构建和更新节点树
+# BuilderNode并行化构建和更新节点树(ArkTS-Sta)
 从API version 20开始，通过并行化能力，BuilderNode能够在子线程完成复杂UI的创建与更新，从而显著提升页面渲染性能与交互流畅度。适用场景如下所示：
 
 - 构建/更新节点数量较多的复杂UI。
 - 页面切换过程中，希望降低响应时延、提升流畅度。
-- 用户输入或数据加载较早到达时，可以提前触发子线程构建，提高并发利用率。
+- 用户输入或数据加载完成较早时，无需等待主线程空闲，直接在子线程开始构建UI，提高并发利用率。
 
 ## 概述
 [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)可以帮助开发者以命令式的方式创建和更新节点。随着页面结构日益复杂，传统的顺序构建方式逐渐成为性能瓶颈。从API version 20开始，[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)引入了并行化构建与更新节点树能力，帮助开发者显著提升页面渲染效率。
@@ -22,7 +22,7 @@
   * 并行模式适合重计算量大、耗时长的UI构建；对于轻量UI，默认串行模式即可满足需求。
   * 当前[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)并行化构建仅支持[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)组件。其他组件将触发运行时错误，导致应用崩溃。
 
-## 场景示例
+## BuilderNode并行化构建场景示例
 
 如下示例展示了如何使用BuilderNode并行化构建和更新节点树。
 
@@ -256,3 +256,15 @@
   }
   ```
   ![buildernode_guide](figures/buildernode_guide.gif)
+
+
+
+
+## BuilderNode并行化DFX定位指导与性能调优
+参考[使用SmartPerf-Host分析应用性能](../performance/performance-optimization-using-smartperf-host.md)文档，抓取Trace以对比并行创建与非并行创建组件时的性能。同时，也可以通过Trace观察BuilderNode是否在子线程中构建和更新。
+
+- 如何确认并行创建已开启：使用SmartPerf-Host抓取Trace，通过Trace可以观察到BuilderNode在子线程中构建。如图所示，子线程12058中存在`Do parallel task`的trace，这表明BuilderNode的构建是在子线程中进行的。
+ ![buildernode_dotask](figures/buildernode_dotask.png)
+
+- 如何确认开启并行更新：使用SmartPerf-Host抓取Trace，通过Trace观察BuilderNode在子线程更新。如图所示，子线程12058中存在`update use Parallel`的trace，说明BuilderNode的在子线程中更新。
+  ![buildernode_dotask](figures/buildernode_update.png)

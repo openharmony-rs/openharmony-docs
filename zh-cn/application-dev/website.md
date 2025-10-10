@@ -679,7 +679,7 @@
         - [在NDK中保证多实例场景功能正常](ui/ndk-scope-task.md)
         - [NDK支持多线程创建组件](ui/ndk-build-on-multi-thread.md)
       - [UI高性能开发](ui/ui-performance-overview.md)
-        - [BuilderNode并行化构建和更新节点树](ui/ui-parallel-buildernode.md)
+        - [BuilderNode并行化构建和更新节点树(ArkTS-Sta)](ui/ui-parallel-buildernode.md)
         - [UI并行化创建组件树](ui/ui-parallel-components.md)
       - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
         - [UI开发 (兼容JS的类Web开发范式)概述](ui/ui-js-overview.md)
