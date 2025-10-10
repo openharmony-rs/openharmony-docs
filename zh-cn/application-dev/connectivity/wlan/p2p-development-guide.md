@@ -149,3 +149,13 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    ```
 
 7. 错误码请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
+
+### 获取对端Ip
+1. import需要的Wi-Fi模块。
+2. 开启设备的Wi-Fi。
+3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
+4. 获取P2p连接状态，确认ConnectSate = 1。
+5. 获取对端Ip，可以通过wifiP2pGroupInfo中的goIpAddress()和gcIpAddress()获取对应Ip。
+
+### Socket通信
+1. Socket通信请参见[Socket连接](../../reference/apis-network-kit/js-apis-socket.md)。
