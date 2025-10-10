@@ -3692,10 +3692,12 @@ createComponentObserver(id: string): inspector.ComponentObserver
 | ------------------------------------------------------------ | -------------------------------------------------- |
 | [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
-ArkTS1.1示例：
+**示例：** 
+
+ArkTS-Dyn示例：
 
 ```ts
-import { inspector } from '@kit.ArkUI'
+import { inspector } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -3718,20 +3720,20 @@ struct ImageExample {
 
   aboutToAppear() {
     let onLayoutComplete:()=>void=():void=>{
-        // 补充待实现的功能
+        // 用户自定义回调函数。
     }
     let onDrawComplete:()=>void=():void=>{
-        // 补充待实现的功能
+        // 用户自定义回调函数。
     }
     let onDrawChildrenComplete:()=>void=():void=>{
-        // 补充待实现的功能
+        // 用户自定义回调函数。
     }
-    let FuncLayout = onLayoutComplete // 绑定当前js对象
-    let FuncDraw = onDrawComplete // 绑定当前js对象
-    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
-    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
-    let OffFuncDraw = onDrawComplete // 绑定当前js对象
-    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+    let FuncLayout = onLayoutComplete
+    let FuncDraw = onDrawComplete
+    let FuncDrawChildren = onDrawChildrenComplete
+    let OffFuncLayout = onLayoutComplete
+    let OffFuncDraw = onDrawComplete
+    let OffFuncDrawChildren = onDrawChildrenComplete
 
     this.listener.on('layout', FuncLayout)
     this.listener.on('draw', FuncDraw)
@@ -3745,12 +3747,12 @@ struct ImageExample {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
-import { inspector } from '@ohos.arkui.inspector'
+import { inspector } from '@ohos.arkui.inspector';
 import { Column, Row, Image, Flex, FlexDirection, 
-ItemAlign, Image, $r, Text, Component, Entry} from '@ohos.arkui.component'
+ItemAlign, Image, $r, Text, Component, Entry} from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -3773,20 +3775,20 @@ struct ImageExample {
 
   aboutToAppear() {
     let onLayoutComplete:()=>void=():void=>{
-        // 补充待实现的功能
+        // 用户自定义回调函数。
     }
     let onDrawComplete:()=>void=():void=>{
-        // 补充待实现的功能
+        // 用户自定义回调函数。
     }
     let onDrawChildrenComplete:()=>void=():void=>{
-        // 补充待实现的功能
+        // 用户自定义回调函数。
     }
-    let FuncLayout = onLayoutComplete // 绑定当前js对象
-    let FuncDraw = onDrawComplete // 绑定当前js对象
-    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
-    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
-    let OffFuncDraw = onDrawComplete // 绑定当前js对象
-    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+    let FuncLayout = onLayoutComplete
+    let FuncDraw = onDrawComplete
+    let FuncDrawChildren = onDrawChildrenComplete
+    let OffFuncLayout = onLayoutComplete
+    let OffFuncDraw = onDrawComplete
+    let OffFuncDrawChildren = onDrawChildrenComplete
 
     this.listener.onLayout(FuncLayout)
     this.listener.onDraw(FuncDraw)

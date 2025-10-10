@@ -6,19 +6,23 @@
 
 > **说明：**
 >
+>本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 该组件不支持在Wearable设备上使用。
 >
 > 如果需要在该组件中实现可嵌入式运行的原子化服务，必须继承自[EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md)。否则，系统无法保证原子化服务功能正常。
 
-
 ## 导入模块
-
+ArkTS-Dyn导入模块：
 ```ts
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
 ```
-
+ArkTS-Sta导入模块：
+```ts
+import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
+```
 
 ## 子组件
 
@@ -55,7 +59,7 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 ## 示例
 本示例展示组件使用方法和扩展的原子化服务。实际运行时请使用开发者自己的原子化服务appId。
 
-**使用方**
+ArkTS-Dyn示例：
 ```ts
 // 使用方入口界面Index.ets内容如下:
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
@@ -94,6 +98,63 @@ function ColumChild() {
   Column() {
     Image($r('app.media.startIcon'))
     Text('test')
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import { ReceiveCallback, Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder, TerminationInfo } from '@ohos.arkui.component';
+import { RecordData } from '@ohos.base';
+import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
+import { State, MutableState, stateOf, observableProxy } from '@ohos.arkui.stateManagement';
+import AtomicServiceOptions from '@ohos.app.ability.AtomicServiceOptions';
+import { ErrorCallback, Callback, BusinessError} from '@ohos.base';
+
+@Component
+struct MyStateSample {
+  @State appId: string = '6917573653426122083'; // 原子化服务appId
+
+  build() {
+    Row() {
+      Column() {
+        FullScreenLaunchComponent({
+          content: ColumChild,
+          appId: this.appId,
+          options: {} as AtomicServiceOptions,
+          onTerminated: (info: TerminationInfo) => {
+            console.info("onTerminated code: " + info.code.toString());
+          } as Callback<TerminationInfo>,
+          onError: (err: BusinessError) => {
+            console.error("onError code: " + err.code + ", message: ", err.message);
+          } as ErrorCallback<BusinessError>,
+          onReceive: (data: Record<string, RecordData>) => {
+            console.info("onReceive data: " + JSON.stringify(data));
+          } as ReceiveCallback
+        })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent')
+      .width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    let wrapper = @memo () => {
+      MyStateSample(undefined)
+    }
+    return wrapper
   }
 }
 ```
