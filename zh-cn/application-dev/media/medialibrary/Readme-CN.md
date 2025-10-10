@@ -5,7 +5,7 @@
 <!--Owner: @xuchangda; @yixiaoff-->
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Media Library Kit 简介](photoAccessHelper-overview.md)
 - [使用Picker选择媒体库资源](photoAccessHelper-photoviewpicker.md)
