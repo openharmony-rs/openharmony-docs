@@ -66,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create a decoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the decoder instance created.
+2. Create a decoder instance. In the code snippet below, OH_AVCodec * is the pointer to the decoder instance created.
 
    You can create a decoder by MIME type or codec name.
 
