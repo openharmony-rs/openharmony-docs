@@ -20,7 +20,7 @@ Before using this tool, you need to obtain the [hdc tool](../dfx/hdc.md) and run
 | install | Installs a bundle.|
 | uninstall | Uninstalls a bundle.|
 | dump | Displays bundle information.|
-| clean | Clears the cache and data of a bundle. <!--Del--> This command is available in the root version and <!--DelEnd--&gt. This command is available in the user version when the developer mode is enabled.|
+| clean | Clears the cache and data of a bundle. <!--Del--> This command is available in the root version <!--DelEnd-->. This command is available in the user version when the developer mode is enabled.|
 | <!--DelRow-->enable | Enables a bundle. A bundle can be used after being enabled. This command is available in the root version but not in the user version.|
 | <!--DelRow-->disable | Disables a bundle. A bundle cannot be used after being disabled. This command is available in the root version but not in the user version.|
 | get | Obtains the UDID of a device.|
@@ -45,7 +45,7 @@ bm help
 
 ### userId
 
-Indicates the ID of the current system account. For details about the system account APIs, see ../reference/apis-basic-services-kit/js-apis-osAccount.md. The following lists some common system accounts:
+Indicates the ID of the current system account. For details about the APIs related to system accounts, see [System Account Management Module](../reference/apis-basic-services-kit/js-apis-osAccount.md). The following lists some common system accounts.
 
 - userId = 100: indicates the system account with the ID of 100. This account is created by the system account management module when the device is started for the first time. After the account is created, all pre-installed apps are installed under the account.
 
@@ -1004,7 +1004,7 @@ When you start debugging or run an application, the error message "error: signat
 **Solution**
 
 <!--RP9-->
-<!--RP9End--><!--Del-->1. <!--DelEnd-->Use automatic signing (https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
+<!--RP9End--><!--Del-->1. <!--DelEnd-->Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
 <!--Del-->
 2. If manual signing is used, add the **UDID** of the debugging device to the UnsgnedDebugProfileTemplate.json file by referring to [Manually Signing an OpenHarmony App](../security/hapsigntool-guidelines.md).
 
@@ -1037,7 +1037,7 @@ error: install provision type not same.
 
 **Symptom**
 
-When an application or service is debugged or running, the HAP fails to be installed because the type of the [profile](../security/app-provision-structure.md) of the new application is different from that of the existing application.
+When an application or service is debugged or running, the HAP fails to be installed because the type of the <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> of the new application is different from that of the existing application.
 
 **Possible Causes**
 
@@ -2216,7 +2216,7 @@ Enterprise MDM apps or common enterprise apps cannot be installed on the current
 
 **Possible Causes**
 
-The following two types of apps in <!--RP5--> [profile signature file] (../security/app-provision-structure.md)<!--RP5End--> cannot be installed on the current device: enterprise_mdm (enterprise MDM app) and enterprise_normal (common enterprise app).
+The following two types of apps in <!--RP5-->[profile signature file](../security/app-provision-structure.md)<!--RP5End--> cannot be installed on the current device: enterprise_mdm (enterprise MDM app) and enterprise_normal (common enterprise app).
 For details about the profile signature file types, see [ApplicationInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **Solution**
@@ -2230,15 +2230,15 @@ error: Release bundle can not be installed.
 
 **Symptom**
 
-Do not run the bm command to install apps whose type is app_gallery and signature certificate type is release in <!--RP5--> [Profile signature file](../security/app-provision-structure.md)<!--RP5End-->.
+Do not run the bm command to install apps whose type is app_gallery and signature certificate type is release in <!--RP5-->[Profile signature file](../security/app-provision-structure.md)<!--RP5End-->.
 
 **Possible Causes**
 
-Install the app. The type in <!--RP5--> [Profile signature file](../security/app-provision-structure.md)<!--RP5End--> is app_gallery and the signature certificate type is release.
+Install the app. The type in <!--RP5-->[Profile signature file](../security/app-provision-structure.md)<!--RP5End--> is app_gallery and the signature certificate type is release.
 
 **Solution**
 
-1. Use a file whose type is not app_gallery in <!--RP5--> [profile signature file](../security/app-provision-structure.md)<!--RP5End--> to re-sign the app.
+1. Use a file whose type is not app_gallery in <!--RP5-->[profile signature file](../security/app-provision-structure.md)<!--RP5End--> to re-sign the app.
 2. Use the **debug** certificate to re-sign the bundle.
 
 ### 9568403 The Encryption Check Fails During the Installation
@@ -2274,7 +2274,7 @@ The native software package to be installed in the HAP is damaged.
 
 **Solution**
 
-1. Check the native software package in the HAP, replace the native software package with the correct one, and re-sign and package the software package. For details, see Native Software Package Development Guide (https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
+1. Check the native software package in the HAP, replace the native software package with the correct one, and re-sign and package the software package. For details, see [Native Software Package Development Guide](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
 
 ### 9568408 Failed to Uninstall the Native Software Package
 **Error Message**
@@ -2291,7 +2291,7 @@ The native software package to be uninstalled is occupied.
 
 **Solution**
 
-1. Check whether any process occupies the native software package. If yes, stop the process and uninstall the native software package again. For details, see Native Software Package Development Guide (https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
+1. Check whether any process occupies the native software package. If yes, stop the process and uninstall the native software package again. For details, see [Native Software Package Development Guide](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
 
 ### 9568409 Failed to Extract the Native Software Package
 **Error Message**
@@ -2308,7 +2308,7 @@ The native software package configured in **module.json5** does not exist in the
 
 **Solution**
 
-1. Check the native software package directory in the HAP, input the native software package to be installed again and sign the package, or delete the missing native software package configuration from the **module.json5** file. For details, see Native Software Package Development Guide (https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_en .md).
+1. Check the native software package directory in the HAP, input the native software package to be installed again and sign the package, or delete the missing native software package configuration from the **module.json5** file. For details, see [Native Software Package Development Guide](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
 
 ### 9568410 Failed To Install the HAP Because the Device Is Under Control
 **Error Message**
@@ -2392,11 +2392,11 @@ If a pre-installed app is uninstalled and then an app with the same bundle name 
 
 **Possible Causes**
 
-The [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) and <!--RP7--&gt in the app signature information and the app-identifier<!--RP7End--&gt in the app [profile signature file](../security/app-provision-structure.md) are different from those of the uninstalled pre-installed app.
+The [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the app signature information and <!--RP7-->the app-identifier in the app [profile signature file](../security/app-provision-structure.md)<!--RP7End--> are different from those of the uninstalled pre-installed app.
 
 **Solution**
 
-1. Re-sign the app to ensure that the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) and <!--RP7--> in the app signature information and the app-identifier<!--RP7End--> in the [app profile signature file](../security/app-provision-structure.md) are the same as those of the pre-installed app.
+1. Re-sign the app to ensure that the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the app signature information and <!--RP7-->the app-identifier in the app [profile signature file](../security/app-provision-structure.md)<!--RP7End--> are the same as those of the pre-installed app.
 2. Modify [bundleName](../quick-start/app-configuration-file.md) of the installed application to ensure that it is different from that of the preset application.
 
 ### 9568418 Failed to Uninstall an Application Configured with an Uninstallation Disposed Rule
@@ -2431,7 +2431,7 @@ The preset application of the release version is installed through the BM.
 
 **Solution**
 
-Check whether the application is of the preset release version. If yes, replace the type of the application profile signature file (../security/app-provision-structure.md) and re-sign and install the application.
+Check whether the application is of the preset release version. If yes, replace the <!--RP5-->[profile signature file](../security/app-provision-structure.md)<!--RP5End--> type of the application, re-sign the application, and install it.
 
 ### 9568278 Version Codes of Bundles Are Inconsistent
 **Error Message**
@@ -2457,7 +2457,7 @@ The application fails to be installed on the device because the distribution typ
 
 **Possible Causes**
 
-The type in the <!--RP5--> [signature profile file](../security/app-provision-structure.md)<!--RP5End--> is restricted and cannot be installed on the current device.
+The type in the <!--RP5-->[signature profile file](../security/app-provision-structure.md)<!--RP5End--> is restricted and cannot be installed on the current device.
 
 **Solution**
 
@@ -2474,7 +2474,7 @@ The profile file of the signature certificate does not contain the UDID configur
 
 **Possible Causes**
 
-The <!--RP5--> [profile signature file](../security/app-provision-structure.md)<!--RP5End--&gt of the application is of the debugging type, and the UDID of the current device is not configured.
+The <!--RP5-->[profile signature file](../security/app-provision-structure.md)<!--RP5End--> of the application is of the debugging type, and the UDID of the current device is not configured.
 
 **Solution**
 
@@ -2530,7 +2530,7 @@ The pluginDistributionIDs of the application and plug-in do not have the same va
 
 **Solution**
 
-Reconfigure pluginDistributionIDs in <!--RP5--> [signature certificate profile file](../security/app-provision-structure.md)<!--RP5End--> of the application or plug-in. as follows:
+Reconfigure pluginDistributionIDs in <!--RP5-->[signature certificate profile file](../security/app-provision-structure.md)<!--RP5End--> of the application or plug-in. as follows:
 ```
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
@@ -2856,7 +2856,7 @@ The pluginDistributionIDs configuration in the plug-in signature information doe
 
 **Solution**
 
-Reconfigure the app-services-capabilities field in <!--RP5--> [signature certificate profile file](../security/app-provision-structure.md)<!--RP5End--> by referring to the following format:
+Reconfigure the app-services-capabilities field in <!--RP5-->[signature certificate profile file](../security/app-provision-structure.md)<!--RP5End--> by referring to the following format:
 ```
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
@@ -2910,7 +2910,7 @@ The installation fails because the value of U1Enabled in the signature informati
 
 **Possible Causes**
 
-The U1Enabled configuration of the allowed-acls field in <!--RP5--> [profile signature file](../security/app-provision-structure.md)<!--RP5End--> is changed. For example:
+The U1Enabled configuration of the allowed-acls field in <!--RP5-->[profile signature file](../security/app-provision-structure.md)<!--RP5End--> is changed. For example:
 1. The installed application is configured with U1Enabled in allowed-acls, but the application to be installed is not configured with U1Enabled in allowed-acls.
 2. U1Enabled is not configured in allowed-acls for the installed application, but is configured in allowed-acls for the to-be-installed application.
 
@@ -2930,7 +2930,7 @@ The U1Enabled configuration in the signature information is inconsistent. As a r
 
 **Possible Causes**
 
-The <!--RP5--> [Profile signature file](../security/app-provision-structure.md)<!--RP5End--&gt used for signing the multi-HAP package is inconsistent. As a result, the U1Enabled configurations of allowed-acls in the signature information are inconsistent.
+The <!--RP5-->[Profile signature file](../security/app-provision-structure.md)<!--RP5End--> used for signing the multi-HAP package is inconsistent. As a result, the U1Enabled configurations of allowed-acls in the signature information are inconsistent.
 
 **Solution**
 
