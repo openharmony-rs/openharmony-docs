@@ -476,7 +476,7 @@
 | ------ | ---- | ----- | ---- | ----------------------- |
 | displayId | number  | 否 | 否 | 主窗口所在的屏幕ID。 |
 | windowId  | number  | 否 | 否 | 主窗口ID。 |
-| showing   | boolean | 否 | 否 | 窗口的显示状态。true表示窗口在前台显示，false表示窗口不在前台显示。|
+| showing   | boolean | 否 | 否 | 主窗口的前后台状态。true表示主窗口在前台，false表示主窗口不在前台。|
 | label     | string  | 否 | 否 | 主窗口的任务名称。 |
 
 ## WindowSnapshotConfiguration<sup>21+</sup>
