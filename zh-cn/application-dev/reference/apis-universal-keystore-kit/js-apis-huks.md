@@ -39,8 +39,8 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
-| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 属性，用于存HuksParam的数组。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| inData     | Uint8Array        | 否   | 是   | 输入数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。               |
+| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 属性，用于存HuksParam的数组。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| inData     | Uint8Array        | 否   | 是   | 输入数据。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。               |
 
 ## HuksSessionHandle<sup>9+</sup>
 
@@ -51,7 +51,7 @@ huks Handle结构体。
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | handle    | number     | 否   | 否   | 表示无符号整数类型的handle值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                       |
-| challenge | Uint8Array | 否   | 是   | 表示[initSession](#huksinitsession9)操作之后获取到的challenge信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| challenge | Uint8Array | 否   | 是   | 表示[initSession](#huksinitsession9)操作之后获取到的challenge信息。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## HuksReturnResult<sup>9+</sup>
 
@@ -3906,7 +3906,7 @@ huks Handle结构体。
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | errorCode  | number           | 否   | 否   | 表示错误码。 |
 | handle    | number       | 否   | 否 | 表示无符号整数类型的handle值。 |
-| token | Uint8Array | 否   | 是 | 表示[init](#huksinitdeprecated)操作之后获取到的challenge信息。 |
+| token | Uint8Array | 否   | 是 | 表示[init](#huksinitdeprecated)操作之后获取到的challenge信息。默认为空。 |
 
 ## HuksResult<sup>(deprecated)</sup>
 
@@ -3922,9 +3922,9 @@ huks Handle结构体。
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | errorCode  | number                          | 否   | 否   | 表示错误码。     |
-| outData    | Uint8Array                      | 否   | 是   | 表示输出数据。   |
-| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 表示属性信息。   |
-| certChains | Array\<string>                  | 否   | 是   | 表示证书链数据。 |
+| outData    | Uint8Array                      | 否   | 是   | 表示输出数据。默认为空。   |
+| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 表示属性信息。默认为空。   |
+| certChains | Array\<string>                  | 否   | 是   | 表示证书链数据。默认为空。 |
 
 ## HuksErrorCode<sup>(deprecated)</sup>
 
