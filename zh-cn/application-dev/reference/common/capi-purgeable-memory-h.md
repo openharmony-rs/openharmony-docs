@@ -186,7 +186,7 @@ bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 表示可丢弃内存对象的内容是否存在，如果可丢弃内存对象的内容存在则返回 true。<br>          如果内容被清除（不存在），系统将恢复其数据，<br>          如果内容被清除并且恢复失败，则返回 false。<br>          如果内容恢复成功则返回 true。<br> 当此函数返回true时，操作系统无法回收可丢弃内存对象的内容的内存，直到调用 [OH_PurgeableMemory_EndWrite()](oh_purgeablememory_endwrite)。 |
+| bool | 表示可丢弃内存对象的内容是否存在，如果可丢弃内存对象的内容存在则返回 true。<br>          如果内容被清除（不存在），系统将恢复其数据，<br>          如果内容被清除并且恢复失败，则返回 false。<br>          如果内容恢复成功则返回 true。<br> 当此函数返回true时，操作系统无法回收可丢弃内存对象的内容的内存，直到调用 [OH_PurgeableMemory_EndWrite()](#oh_purgeablememory_endwrite)。 |
 
 ### OH_PurgeableMemory_EndWrite()
 
@@ -228,7 +228,7 @@ void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| void * | 返回可丢弃内存对象的内容的起始地址。<br>          如果可丢弃内存对象为NULL，则返回NULL。<br> 此函数应受[OH_PurgeableMemory_BeginRead()](#oh_purgeablememory_beginread)/[OH_PurgeableMemory_EndRead()](#oh_purgeablememory_endread)或者[OH_PurgeableMemory_BeginWrite()](#oh_purgeablememory_beginwrite)/[OH_PurgeableMemory_EndWrite()](oh_purgeablememory_endwrite)保护|
+| void * | 返回可丢弃内存对象的内容的起始地址。<br>          如果可丢弃内存对象为NULL，则返回NULL。<br> 此函数应受[OH_PurgeableMemory_BeginRead()](#oh_purgeablememory_beginread)/[OH_PurgeableMemory_EndRead()](#oh_purgeablememory_endread)或者[OH_PurgeableMemory_BeginWrite()](#oh_purgeablememory_beginwrite)/[OH_PurgeableMemory_EndWrite()](#oh_purgeablememory_endwrite)保护|
 
 ### OH_PurgeableMemory_ContentSize()
 
