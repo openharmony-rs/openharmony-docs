@@ -27,7 +27,7 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void
 
 设置色彩空间。
 
-使用该接口前，必须先通过[getSupportedColorSpaces](arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)获取当前设备所支持的ColorSpaces。该接口建议在[addOutput](arkts-apis-camera-Session.md#addoutput11)之后、[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)之前调用，如果在[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)之后调用该接口，会导致相机会话配置耗时增加。
+使用该接口前，必须先通过[getSupportedColorSpaces](arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)获取当前设备所支持的ColorSpaces。该接口建议在[addOutput](arkts-apis-camera-Session.md#addoutput11)之后、[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)之前调用，如果在[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)之后调用该接口，会导致相机会话配置耗时增加。若在commitCondig之后设置防抖和色彩空间，请先设置防抖、再设置色彩空间，否则会导致配流异常。
 
 **P3广色域与HDR高动态范围成像**   
 
