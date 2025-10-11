@@ -304,7 +304,7 @@ struct Index {
 
 getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void
 
-获取当前窗口的鼠标样式类型，使用callback异步回调。
+获取指定窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
