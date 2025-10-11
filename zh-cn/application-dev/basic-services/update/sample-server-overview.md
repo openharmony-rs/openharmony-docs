@@ -1,4 +1,4 @@
-# 示例服务器开发概述（仅对系统应用开放）
+# 示例服务器开发概述
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
