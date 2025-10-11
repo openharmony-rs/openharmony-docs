@@ -90,5 +90,5 @@
   - [hiprofiler](hiprofiler.md)
   - [uinput](uinput.md)
   <!--Del-->
-  - [hisysevent](hisysevent.md)
+  - [hisysevent (for System Applications Only)](hisysevent-sys.md)
   <!--DelEnd-->

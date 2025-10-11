@@ -6,6 +6,9 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @zhang_yixin13-->
 
+<!--Del-->
+- [Application Development Overview](application-dev-guide.md)
+<!--DelEnd-->
 - Quick Start<!--application-getting-started-->
   <!--Del-->
   - Getting Started<!--quick-start-->
@@ -822,7 +825,7 @@
       - [Deferred Task (ArkTS)](task-management/work-scheduler.md)
       - [Agent-powered Reminder (ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
       - [Requesting Efficiency Resources (ArkTS) (for Privileged System Applications Only)](task-management/efficiency-resource-request.md)
-      - Device Usage Statistics(ArkTS) <!--device-usage-statistics-->
+      - Device Usage Statistics (ArkTS)<!--device-usage-statistics-->
         - [Device Usage Statistics Overview](device-usage-statistics/device-usage-statistics-overview.md)
         - [Device Usage Statistics Development](device-usage-statistics/device-usage-statistics-use-guide.md)
       <!--DelEnd-->
@@ -836,14 +839,14 @@
           - [Accessing Application Files (C/C++)](file-management/native-fileio-guidelines.md)
           - [Obtaining Application and File System Space Statistics](file-management/app-fs-space-statistics.md)
         <!--Del-->
-        - [Pushing Files to an Application Sandbox Directory](file-management/send-file-to-app-sandbox.md)
+        - [Pushing Files to an Application Sandbox Directory (for System Applications Only)](file-management/send-file-to-app-sandbox-sys.md)
         <!--DelEnd-->
         - [Sharing an Application File](file-management/share-app-file.md)
         - Application Data Backup and Restore<!--app-file-backup-restore-->
           - [Application Data Backup and Restore Overview](file-management/app-file-backup-overview.md)
           - [Accessing Backup and Restore](file-management/app-file-backup-extension.md)
           <!--Del-->
-          - [Triggering Backup and Restore (for System Applications Only)](file-management/app-file-backup.md)
+          - [Triggering Backup and Restore (for System Applications Only)](file-management/app-file-backup-sys.md)
           <!--DelEnd-->
       - User Files<!--user-files-->
         - [User File Overview](file-management/user-file-overview.md)
@@ -857,8 +860,8 @@
           - [Persisting Temporary Permissions (C/C++)](file-management/native-fileshare-guidelines.md)
         - [Obtaining and Accessing a User Directory](file-management/request-dir-permission.md)
         <!--Del-->
-        - [Developing a File Manager Application (for System Applications Only)](file-management/dev-user-file-manager.md)
-        - [Managing External Storage Devices (for System Applications Only)](file-management/manage-external-storage.md)
+        - [Developing a File Manager Application (for System Applications Only)](file-management/dev-user-file-manager-sys.md)
+        - [Managing External Storage Devices (for System Applications Only)](file-management/manage-external-storage-sys.md)
         <!--DelEnd-->
       - Distributed File System<!--distributed-fs-->
         - [Distributed File System Overview](file-management/distributed-fs-overview.md)
@@ -1213,8 +1216,8 @@
             - [Anonymous Key Attestation (ArkTS)](security/UniversalKeystoreKit/huks-key-anon-attestation-arkts.md)
             - [Anonymous Key Attestation (C/C++)](security/UniversalKeystoreKit/huks-key-anon-attestation-ndk.md)
             <!--Del-->
-            - [Non-anonymous Key Attestation (ArkTS)](security/UniversalKeystoreKit/huks-key-attestation-arkts.md)
-            - [Non-anonymous Key Attestation (C/C++)](security/UniversalKeystoreKit/huks-key-attestation-ndk.md)
+            - [Non-anonymous Key Attestation (for System Applications Only) (ArkTS)](security/UniversalKeystoreKit/huks-key-attestation-arkts-sys.md)
+            - [Non-anonymous Key Attestation (for System Applications Only) (C/C++)](security/UniversalKeystoreKit/huks-key-attestation-ndk-sys.md)
             <!--DelEnd-->
         - Other Operations<!--huks-other-operations-->
           - Checking Key Existence<!--huks-check-key-->
@@ -1239,6 +1242,7 @@
           - [Obtaining Supported Authentication Capabilities](security/UserAuthenticationKit/obtain-supported-authentication-capabilities.md)
           - [Initiating User Authentication](security/UserAuthenticationKit/start-authentication.md)
           - [Canceling User Authentication](security/UserAuthenticationKit/cancel-authentication.md)
+          - [Perceiving and Adjusting the Authentication Process](security/UserAuthenticationKit/perceive-adjust-authentication-process.md)
           - [Applying Custom Authentication](security/UserAuthenticationKit/apply-custom-authentication.md)
           - [Obtaining Enrolled Credential Information](security/UserAuthenticationKit/obtain-enrolled-state-capabilities.md)
           - [Using Embedded User Identity Authentication Icons](security/UserAuthenticationKit/user-auth-icon.md)
@@ -1271,7 +1275,7 @@
         - Distributed Ability Connection Management<!--abilityconnect-distributed-->
           - [UIAbility Connection Development](distributedservice/abilityconnectmanager-guidelines.md)
           <!--Del-->
-          - [Distributed Extension Ability Development](distributedservice/distributedextension-guidelines.md)
+          - [Distributed Extension Ability Development (for System Applications Only)](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
           - [Enhanced Connection Development](distributedservice/linkEnhance_development-guide.md)
         - Distributed Hardware Connection Management<!--devconnect-distributed-->
@@ -1310,12 +1314,12 @@
               - [Introduction to Common Events](basic-services/common-event/common-event-overview.md)
               - [Subscribing to Common Events in Dynamic Mode](basic-services/common-event/common-event-subscription.md)
               <!--Del-->
-              - [Subscribing to Common Events in Static Mode (for System Applications Only)](basic-services/common-event/common-event-static-subscription.md)
+              - [Subscribing to Common Events in Static Mode (for System Applications Only)](basic-services/common-event/common-event-static-subscription-sys.md)
               <!--DelEnd-->
               - [Unsubscribing from Common Events in Dynamic Mode](basic-services/common-event/common-event-unsubscription.md)
               - [Publishing Common Events](basic-services/common-event/common-event-publish.md)
               <!--Del-->
-              - [Removing Sticky Common Events (for System Applications Only)](basic-services/common-event/common-event-remove-sticky.md)
+              - [Removing Sticky Common Events (for System Applications Only)](basic-services/common-event/common-event-remove-sticky-sys.md)
               <!--DelEnd-->
               - [Subscribing to Common Events (C/C++)](basic-services/common-event/native-common-event-subscription.md)
               - [Unsubscribing from Common Events (C/C++)](basic-services/common-event/native-common-event-unsubscription.md)
@@ -1519,7 +1523,7 @@
           - [hiprofiler](dfx/hiprofiler.md)
           - [uinput](dfx/uinput.md)
           <!--Del-->
-          - [hisysevent](dfx/hisysevent.md)
+          - [hisysevent (for System Applications Only)](dfx/hisysevent-sys.md)
           <!--DelEnd-->
       - Test Kit<!--test-kit-->
         - arkXtest User Guide<!--arkxtest-->
@@ -1804,11 +1808,51 @@
         - [Native DisplaySoloist Development (C/C++)](graphics/displaysoloist-native-guidelines.md)
       - [Overdraw Debugging](graphics/overdraw-dfx-guidelines.md)
       - Graphics Drawing and Display<!--graphic-drawing-and-display-->
-      - [Using the Text Module for Text Display](graphics/text-js-guidelines.md)
+        - [Overview of Graphics Drawing and Display](graphics/graphic-drawing-overview.md)
+        - Canvas Acquisition and Display of Drawing Results<!--canvas-get-result-draw-->
+          - [Obtaining a Canvas and Displaying Drawing Results (ArkTS)](graphics/canvas-get-result-draw-arkts.md)
+          - [Obtaining a Canvas and Displaying Drawing Results (C/C++)](graphics/canvas-get-result-draw-c.md)
+        - Canvas Operations and State Processing<!--canvas-operation-state-->
+          - [Canvas Operations and State Processing (ArkTS)](graphics/canvas-operation-state-arkts.md)
+          - [Canvas Operations and State Processing (C/C++)](graphics/canvas-operation-state-c.md)
+        - Drawing Effects<!--drawing-effect-->
+          - [Overview of Drawing Effects](graphics/drawing-effect-overview.md)
+          - [Basic Drawing Effects (ArkTS)](graphics/basic-drawing-effect-arkts.md)
+          - [Complex Drawing Effects (ArkTS)](graphics/complex-drawing-effect-arkts.md)
+          - [Basic Drawing Effects (C/C++)](graphics/basic-drawing-effect-c.md)
+          - [Complex Drawing Effects (C/C++)](graphics/complex-drawing-effect-c.md)
+        - Primitive Drawing<!--primitive-drawing-->
+          - [Overview of Primitive Drawing](graphics/primitive-drawing-overview.md)
+          - [Drawing Geometric Shapes (ArkTS)](graphics/geometric-shape-drawing-arkts.md)
+          - [Drawing Images](graphics/pixelmap-drawing-arkts.md)
+          - [Drawing TextBlobs (ArkTS)](graphics/textblock-drawing-arkts.md)
+          - [Drawing Geometric Shapes (C/C++)](graphics/geometric-shape-drawing-c.md)
+          - [Drawing Images (C/C++)](graphics/pixelmap-drawing-c.md)
+          - [Drawing TextBlobs (C/C++)](graphics/textblock-drawing-c.md)
+      - Text<!--text-->
+        - [Introduction to Text Development](graphics/text-overview.md)
+        - Font Management<!--font-manager-->
+          - [Using Theme Fonts (ArkTS)](graphics/theme-font-arkts.md)
+          - [Registering and Using Custom Fonts (ArkTS)](graphics/custom-font-arkts.md)
+          - [Obtaining and Using System Fonts (ArkTS)](graphics/system-font-arkts.md)
+          - [Using Theme Fonts (C/C++)](graphics/theme-font-c.md)
+          - [Registering and Using Custom Fonts (C/C++)](graphics/custom-font-c.md)
+          - [Obtaining and Using System Fonts (C/C++)](graphics/system-font-c.md)
+        - Text Measurement<!--text-measure-->
+          - [Text Measurement (ArkTS)](graphics/text-measure-arkts.md)
+          - [Text Measurement (C/C++)](graphics/text-measure-c.md)
+        - Text Drawing and Display<!--draw-text-display-->
+          - [Drawing and Displaying Simple Text (ArkTS)](graphics/simple-text-arkts.md)
+          - [Drawing and Displaying Complex Text (ArkTS)](graphics/complex-text-arkts.md)
+          - [Drawing and Displaying Simple Text (C/C++)](graphics/simple-text-c.md)
+          - [Drawing and Displaying Complex Text (C/C++)](graphics/complex-text-c.md)
+        - [Text Development FAQs](graphics/text-faqs.md)
       - [Native Buffer Development (C/C++)](graphics/native-buffer-guidelines.md)
       - [Native Image Development (C/C++)](graphics/native-image-guidelines.md)
       - [Native Vsync Development (C/C++)](graphics/native-vsync-guidelines.md)
       - [Native Window Development (C/C++)](graphics/native-window-guidelines.md)
+      - [GPU/CPU Memory Access Sync (C/C++)](graphics/native-fence-guidelines.md)
+      - [Graphic Development Terms](graphics/graphic-term.md)
     - ArkGraphics 3D<!--arkgraphics-3d-->
       - [Introduction to ArkGraphics 3D](graphics3d/arkgraphics3D-overview.md)
       - [Building and Managing ArkGraphics 3D Scenes](graphics3d/arkgraphics3D-scene.md)
@@ -1850,18 +1894,18 @@
         - [Publishing a Text Notification](notification/text-notification.md)
         - [Publishing a Progress Notification](notification/progress-bar-notification.md)
         <!--Del-->
-        - [Publishing a Live View Notification (for System Applications Only)](notification/live-view-notification.md)
+        - [Publishing a Live View Notification (for System Applications Only)](notification/live-view-notification-sys.md)
         <!--DelEnd-->
         - [Adding a WantAgent Object to a Notification](notification/notification-with-wantagent.md)
       - [Updating a Notification](notification/notification-update.md)
       - [Canceling a Notification](notification/notification-cancel.md)
       <!--Del-->
-      - [Notification Subscription (for System Applications Only)](notification/notification-subscription.md)
+      - [Notification Subscription (for System Applications Only)](notification/notification-subscription-sys.md)
       <!--DelEnd-->
       - Cross-Device Notification<!--notification-distributed-->
         - [Cross-Device Notification Overview](notification/notification-distributed-overview.md)
           <!--Del-->
-        - [Cross-Device Notification Management (for System Applications Only)](notification/notification-distributed-notdistributed.md)
+        - [Cross-Device Notification Management (for System Applications Only)](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
         - [Enabling Quick Reply for Cross-device Notifications](notification/notification-quickreply.md)
         - [Clearing Repeated Notifications Across Devices](notification/notification-distributed-messageid.md)
