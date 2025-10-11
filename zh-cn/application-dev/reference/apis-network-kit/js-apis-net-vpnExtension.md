@@ -559,7 +559,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
   }
 }
 ```
-### protectProcessNet
+### protectProcessNet<sup>22+</sup>
 
 protectProcessNet(): Promise\<void\>
 
