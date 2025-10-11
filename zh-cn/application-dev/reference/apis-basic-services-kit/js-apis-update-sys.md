@@ -1842,7 +1842,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
-| otaMode         | [OtaMode](#otamode)                 | 否 | 是 | 升级模式。     | 
+| otaMode<sup>20+</sup> | [OtaMode](#otamode)                 | 否 | 是 | 升级模式。     | 
 
 ## DescriptionOptions
 
@@ -2099,7 +2099,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
 
-## OtaMode
+## OtaMode<sup>20+</sup>
 
 升级模式。
 
