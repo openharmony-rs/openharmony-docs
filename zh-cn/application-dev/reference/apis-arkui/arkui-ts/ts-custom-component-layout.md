@@ -316,7 +316,11 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 
 子组件布局信息。
 
-从API version 9开始，从API version 10开始废弃，该接口支持在ArkTS卡片中使用。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[Measurable](#measurable10)或者[Layoutable](#layoutable10)替代。
+
+### 属性
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -329,8 +333,46 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 | constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)   | 否|否|子组件约束尺寸。                       |
 | borderInfo | [LayoutBorderInfo](#layoutborderinfodeprecated)              | 否|否|子组件border信息。                     |
 | position   | [Position](ts-types.md#position)                             | 否|否|子组件位置坐标。                       |
-| measure    | (childConstraint: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)) |否|否| 调用此方法对子组件的尺寸范围进行限制。 |
-| layout     | (childLayoutInfo: [LayoutInfo](#layoutinfodeprecated)) | 否|否|调用此方法对子组件的位置信息进行限制。 |
+
+### measure<sup>(deprecated)</sup>
+
+measure(childConstraint: ConstraintSizeOptions) : void
+
+调用此方法对子组件的尺寸范围进行限制。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[measure](#measure)替代。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名        | 类型     |必填| 说明               |
+|------------|-----------|------|------------------|
+| childConstraint   | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是  | 子组件的尺寸范围的约束信息。|
+
+### layout<sup>(deprecated)</sup>
+
+layout(childLayoutInfo: LayoutInfo) : void
+
+调用此方法对子组件的位置信息进行限制。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[layout](#layout)替代。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名        | 类型     |必填| 说明               |
+|------------|-----------|------|------------------|
+| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | 是  |子组件layout信息。|
 
 ## LayoutBorderInfo<sup>(deprecated)</sup>
 
