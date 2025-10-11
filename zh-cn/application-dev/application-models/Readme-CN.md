@@ -76,10 +76,10 @@
   - [线程模型](thread-model-stage.md)
   <!--Del-->
   - 任务（Mission）管理（仅对系统应用开放）<!--mission-management-->
-    - [任务（Mission）管理场景介绍](mission-management-overview-sys.md)
-    - [任务（Mission）与启动模式](mission-management-launch-type-sys.md)
-    - [页面栈及任务链](page-mission-stack-sys.md)
-    - [设置任务快照的图标和名称](mission-set-icon-name-for-task-snapshot-sys.md)
+    - [任务（Mission）管理场景介绍（仅对系统应用开放）](mission-management-overview-sys.md)
+    - [任务（Mission）与启动模式（仅对系统应用开放）](mission-management-launch-type-sys.md)
+    - [页面栈及任务链（仅对系统应用开放）](page-mission-stack-sys.md)
+    - [设置任务快照的图标和名称（仅对系统应用开放）](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
   - [Stage模型应用配置文件](config-file-stage.md)
   - 意图框架开发指导<!--insight-intent-->
