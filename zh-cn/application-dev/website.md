@@ -132,10 +132,10 @@
         - [线程模型](application-models/thread-model-stage.md)
         <!--Del-->
         - 任务（Mission）管理（仅对系统应用开放）<!--mission-management-->
-          - [任务（Mission）管理场景介绍](application-models/mission-management-overview-sys.md)
-          - [任务（Mission）与启动模式](application-models/mission-management-launch-type-sys.md)
-          - [页面栈及任务链](application-models/page-mission-stack-sys.md)
-          - [设置任务快照的图标和名称](application-models/mission-set-icon-name-for-task-snapshot-sys.md)
+          - [任务（Mission）管理场景介绍（仅对系统应用开放）](application-models/mission-management-overview-sys.md)
+          - [任务（Mission）与启动模式（仅对系统应用开放）](application-models/mission-management-launch-type-sys.md)
+          - [页面栈及任务链（仅对系统应用开放）](application-models/page-mission-stack-sys.md)
+          - [设置任务快照的图标和名称（仅对系统应用开放）](application-models/mission-set-icon-name-for-task-snapshot-sys.md)
         <!--DelEnd-->
         - [Stage模型应用配置文件](application-models/config-file-stage.md)
         - 意图框架开发指导<!--insight-intent-->
@@ -264,6 +264,8 @@
         - [跨应用数据共享概述](database/data-share-overview.md)
         - 一对多跨应用数据共享<!--one-to-many-data-share-->
           <!--Del-->
+          - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
+          - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
           - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
