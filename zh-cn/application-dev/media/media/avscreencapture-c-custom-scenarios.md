@@ -7,7 +7,7 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-在基础流程的基础上，AVScreenCapture支持应用根据实际需求，完成场景化的自定义配置。可参考下述指导，完成对应配置。
+AVScreenCapture支持应用完成场景化的自定义配置，具体配置可参考下述指导。
 
 ## 设置录屏策略
 
@@ -43,24 +43,26 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ## 设置旋转适配
 
+使用[OH_AVScreenCapture_StrategyForCanvasFollowRotation](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)，可设置录屏时是否自动跟随屏幕旋转。
 
-使用[OH_AVScreenCapture_StrategyForCanvasFollowRotation](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)设置屏幕录屏自动跟随旋转配置。设置后在旋转通知后，无需再手动调用OH_AVScreenCapture_ResizeCanvas接口。
+调用此接口完成设置后，无需再调用[OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas)手动修改分辨率。
 
 ```c++
-// 设为true，表示跟随屏幕旋转，并在横竖屏旋转后，自动调换虚拟屏尺寸，确保输出画面及时跟随旋转。
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+// 设为true，表示跟随屏幕旋转，并在横竖屏旋转后，自动调换虚拟屏尺寸，确保输出画面及时跟随旋转。
 OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-
 ## 设置麦克风开关
 
-使用[OH_AVScreenCapture_SetMicrophoneEnabled](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmicrophoneenabled)设置录屏过程中是否打开麦克风，默认麦克风开关为开启状态。
+使用[OH_AVScreenCapture_SetMicrophoneEnabled](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmicrophoneenabled)，可设置在录屏过程中是否开启麦克风，默认麦克风开关为开启状态。
 
 > **说明：**
-> 需配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
-
+> 使用麦克风录制，需要：
+>
+> - 配置麦克风权限ohos.permission.MICROPHONE，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)。
+> - 申请长时任务，申请方式请参见[申请长时任务](../../task-management/continuous-task.md)。
 
 ```c++
 bool isMic = true;
@@ -79,7 +81,7 @@ OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-使用[OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode)设置录屏时的豁免隐私窗口，目前豁免需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
+使用[OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode)设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
 
 ```c++
 std::vector<int> windowIdsSkipPrivacy = {};
@@ -91,7 +93,7 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, &windowIdsSkipPrivacy[0],
 
 从API 20开始支持设置捕获区域。
 
-可以根据需要设置区域坐标和大小，使用[OH_AVScreenCapture_SetCaptureArea](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100，宽100的矩形区域。此接口在开始录屏前后都可以设置。
+可以根据需要设置区域坐标和大小，使用[OH_AVScreenCapture_SetCaptureArea](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100px，宽100px的矩形区域。此接口在录屏开始前后都可以设置。
 
 ```c++
 OH_Rect* region = new OH_Rect;
@@ -102,7 +104,6 @@ OH_Rect* region = new OH_Rect;
 uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕Id。
 OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 ```
-
 
 ## 设置捕获光标
 
@@ -120,7 +121,7 @@ OH_AVScreenCapture_ShowCursor(capture, false);
 OH_AVScreenCapture_SetMaxVideoFrameRate(capture, 20);
 ```
 
-## 设置画布参数
+## 设置屏幕分辨率
 
 使用[OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas)调整录屏分辨率，需在启动后调用，分辨率有范围限制。
 
@@ -130,7 +131,7 @@ OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280);
 
 ## 设置内容过滤
 
-可以选择录屏时要过滤的声音和窗口。
+选择录屏时要过滤的声音和窗口。
 
 使用[OH_AVScreenCapture_ContentFilter_AddAudioContent](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_contentfilter_addaudiocontent)设置可过滤的声音，包含系统音和应用自身声音。
 
@@ -147,7 +148,6 @@ OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, &windowIdsExclu
 
 OH_AVScreenCapture_ExcludeContent(capture, contentFilter);
 ```
-
 
 ## 更多资源
 

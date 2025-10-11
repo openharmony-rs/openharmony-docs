@@ -7,43 +7,39 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-屏幕录制支持开发者获取屏幕数据，可用于屏幕录制、会议共享、直播等场景。开发者可以调用录屏[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，采集设备内外的音视频源数据。录屏模块和窗口（Window）、图形（Graphic）等模块协同完成整个视频采集的流程。
-
+屏幕录制支持开发者获取屏幕数据，适用于屏幕录制、会议共享、直播等场景。开发者调用录屏[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，采集设备内外的音视频源数据。录屏模块与窗口（Window）、图形（Graphic）等模块协同完成视频采集。
 
 ## 流程介绍
 
 基础屏幕录制功能涉及到AVScreenCapture实例创建、音视频参数配置、回调设置、开始与停止、结果处理、资源释放等步骤。
 
-在此基础上，开发者可以根据具体场景进行更高级的设置，详情参见[AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)。
+在此基础上，开发者可以根据视频录制、直播等特定场景进行更高级的设置，详情参见[AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)。
 
 基础流程如下图所示：
 
 ![basic-process-avscreencapture](figures/basic-process-avscreencapture.png)
 
-录屏采集的内容的输出有两种方式：
+录屏采集的内容输出方式如下。
 
 - 文件形式：保存为文件，该文件可以播放、分享等。
 
 - 码流形式：该码流可根据场景进行不同的处理，例如将码流流转到其他模块，实现桌面共享、视频直播等。
 
-
 ## 约束与限制
 
-- 使用AVScreenCapture时需明确其状态变化。在创建实例后，调用相应方法可进入指定状态以实现特定行为。在特定状态下执行不适当的方法会导致AVScreenCapture出错，开发者需在调用状态转换方法前进行状态检查，避免程序异常。
+- 使用AVScreenCapture时需明确其状态变化。创建实例后，调用方法可进入指定状态。在错误状态下执行方法会导致AVScreenCapture出错。开发者应在状态转换前进行检查以避免异常。，避免程序异常。
 
-- 在录屏取码流场景中，屏幕录制启动时会弹出隐私保护弹框，其中包含“屏幕隐私保护”的勾选项。勾选后，部分隐私信息（如横幅通知信息、控制中心、通话界面等）将被屏蔽。不同产品上的隐私信息可能略有差异，请以实际录制结果为准。
+在录屏取码流场景中，屏幕录制启动时会弹出隐私保护弹框，包含“屏幕隐私保护”选项。勾选后，隐私信息（如横幅通知、控制中心、通话界面等）将被屏蔽。不同产品上的隐私信息可能有差异，以实际录制结果为准。
 
   隐私保护弹框：
 
   ![privacy-pop-up](figures/privacy-pop-up.png)
 
-
 ## 通用开发步骤
-
 
 ### 依赖导入
 
-在 CMake 脚本中链接动态库：
+在CMake脚本中链接动态库：
 
 ```
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so) 
@@ -61,40 +57,41 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 #include <vector>
 ```
 
-
 ### 创建AVScreenCapture实例
 
-实例化对象，创建[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)可以通过[OH_AVScreenCapture_Create](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create)进行创建。
+实例化对象，通过[OH_AVScreenCapture_Create](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create)创建[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)。
 
 ```c++
 OH_AVScreenCapture* capture = OH_AVScreenCapture_Create(); 
 ```
 
-
 ### 配置音频采集参数
 
 创建AVScreenCapture实例后，可设置屏幕录制所需要的音频参数[OH_AudioInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioinfo.md)，包括内录、麦克风音频[OH_AudioCaptureInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audiocaptureinfo.md)和输出规格[OH_AudioEncInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-audioencinfo.md)。
 
-如果配置了采集麦克风音频数据，需配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
+如果配置了采集麦克风音频数据，需：
 
-录屏存文件时默认只开启内录，录制过程中，麦克风可以动态开关，开启后，可同时启动内外录制。
+- 配置麦克风权限ohos.permission.MICROPHONE，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)。
+- 申请长时任务，申请方式请参见[申请长时任务](../../task-management/continuous-task.md)。
+
+录屏存文件时默认只开启内录。录制过程中，麦克风可以动态开启/关闭，开启后，可同时启动内外录制。
 
 内录音频信息必须设置，麦克风音频信息可按实际场景按需设置。
 
 ```c++
-// 录屏时获取麦克风,如果内录和麦克风都设置了，内录和麦克风的参数设置需要一致。
+// 录屏时获取麦克风，如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
 OH_AudioCaptureInfo micCapInfo = {
     .audioSampleRate = 48000,
     .audioChannels = 2,
     .audioSource = OH_MIC
 }; 
-// 录屏时获取内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
+// 录屏时获取内录数据，内录参数必填。如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
 OH_AudioCaptureInfo innerCapInfo = {
     .audioSampleRate = 48000,
     .audioChannels = 2,
     .audioSource = OH_ALL_PLAYBACK
 };
-// 录屏音频输出规格配置
+// 录屏音频输出规格配置。
 OH_AudioEncInfo audioEncInfo = {
     .audioBitrate = 48000,
     .audioCodecformat = OH_AAC_LC
@@ -104,7 +101,7 @@ OH_AudioInfo audioInfo = {
     .innerCapInfo = innerCapInfo,
     .audioEncInfo = audioEncInfo
 };  
-// 可以单独设置麦克风开关
+// 可以单独设置麦克风开关。
 bool isMic = true;
 OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 ```
@@ -114,13 +111,13 @@ OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 录屏的视频采集信息[OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md)包含录屏输入规格配置[OH_VideoCaptureInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videocaptureinfo.md)和录屏输出规格配置[OH_VideoEncInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoencinfo.md)。
 
 ```c++
-// 录屏输入规格配置
+// 录屏输入规格配置。
 OH_VideoCaptureInfo videoCapInfo = {
     .videoFrameWidth = 768,
     .videoFrameHeight = 1280,
     .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
  };
-// 录屏输出规格配置
+// 录屏输出规格配置。
 OH_VideoEncInfo videoEncInfo = {
     .videoCodec = OH_H264,
     .videoBitrate = 2000000,
@@ -138,27 +135,26 @@ AVScreenCapture实例的配置[OH_AVScreenRecorderConfig](../../reference/apis-m
 
 配置完成后通过[OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init)将配置项设置到[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)中。
 
+> **说明：**
+> 在PC/2in1设备上，根据不同的录屏模式会有不同弹窗表现，详情见[PC/2in1弹窗模式配置说明](#pc2in1弹窗模式配置说明)。
+
 ```c++
 // 初始化录屏，传入配置信息OH_AVScreenRecorderConfig。
 OH_AVScreenCaptureConfig config = {
     .dataType = OH_ORIGINAL_STREAM,
     .audioInfo = audioInfo,
-    .captureMode = OH_CAPTURE_HOME_SCREEN, //录屏模式设置
+    .captureMode = OH_CAPTURE_HOME_SCREEN, //录屏模式设置。
     .videoInfo = videoInfo
 };
 OH_AVScreenCapture_Init(capture, config);
 ```
 
-> **说明：**
-> 在PC/2in1设备上，根据不同的录屏模式会有不同弹窗表现，详情见[PC/2in1弹框模式配置说明](#pc2in1弹框模式配置说明)。
-
-
 ### 设置数据更新、状态切换、错误上报的回调
 
-回调函数主要用来监听录屏过程中的错误发生、音视频流生成、录屏状态变更的事件，详情见：[错误回调](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror)、[状态回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)、[获取数据回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback)。
+回调函数主要用来监听录屏过程中的错误发生、音视频流生成和录屏状态变更等事件，详细内容请参考：[错误回调](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror)、[状态回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)、[获取数据回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback)。
 
 ```c++
-// 设置回调 。
+// 设置回调。
 // 错误事件发生回调函数OnError()。
 void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData) {
     (void)capture;
@@ -170,7 +166,7 @@ void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData) {
 // 状态变更事件处理函数OnStateChange()。
 void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData) {
     (void)capture;
-    if (stateCode == OH_AVScreenCaptureStateCode::OH_SCREEN_CAPTURE_STATE_CANCELED) { // 按照所需状态自行修改填写
+    if (stateCode == OH_AVScreenCaptureStateCode::OH_SCREEN_CAPTURE_STATE_CANCELED) { // 按照所需状态自行修改填写。
         // 处理录屏状态变更。
     }
     (void)userData;
@@ -180,12 +176,11 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
 void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData) {
     // 处于录屏取码流状态。
 }
-int *userData = nullptr;// 用户自定义数据
+int *userData = nullptr;// 用户自定义数据。
 OH_AVScreenCapture_SetErrorCallback(capture, OnError, userData);
 OH_AVScreenCapture_SetStateCallback(capture, OnStateChange, userData);
 OH_AVScreenCapture_SetDataCallback(capture, OnBufferAvailable, userData);
 ```
-
 
 ### 启动录屏
 
@@ -196,7 +191,6 @@ OH_AVScreenCapture_SetDataCallback(capture, OnBufferAvailable, userData);
 ```c++
 OH_AVScreenCapture_StartScreenCapture(capture);
 ```
-
 
 ### 处理录屏数据
 
@@ -282,12 +276,11 @@ OH_AVScreenCapture_StopScreenCapture(capture);
 OH_AVScreenCapture_Release(capture);
 ```
 
-## PC/2in1弹框模式配置说明
+## PC/2in1弹窗模式配置说明
 
-系统提供了3种录屏模式，[录制指定屏幕](#录制指定屏幕)、[录制主屏幕](#录制主屏幕)和[录制指定窗口](#录制指定窗口推荐)。
+系统提供的录屏模式：[录制指定屏幕](#录制指定屏幕)、[录制主屏幕](#录制主屏幕)和[录制指定窗口](#录制指定窗口推荐)。
 
 录屏模式会使用到屏幕ID（displayId）和窗口ID（missionIds）。获取方式可参考：[获取displayid](../../reference/apis-arkui/capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays)、[获取missionIds](../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。
-
 
 ### 录制指定屏幕
 
@@ -311,7 +304,7 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 即[OH_CAPTURE_HOME_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
 
-在此模式下，启动录屏后，PC/2in1设备不会弹出选择共享内容弹窗，会弹出隐私保护弹窗，同时配置的videoCapInfo.displayId参数不会生效，默认生效主屏的displayId。
+在此模式下，启动录屏后，PC/2in1设备不会弹出选择录屏内容弹窗，会弹出隐私保护弹窗，同时配置的videoCapInfo.displayId参数不会生效，默认生效主屏的displayId。
 
 ```c++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
@@ -328,7 +321,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 应用需根据PC/2in1设备分辨率配置录屏的高度和宽度值并传入屏幕Id。
 
-若期望录制某个指定窗口，需要设置指定的窗口Id，该场景下，启动录屏后，会弹出选择共享内容弹窗，并默认选中指定的窗口。
+若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，会弹出选择共享内容弹窗，并默认选中指定的窗口。
 
 ```c++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
@@ -347,7 +340,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.si
 
 <!--RP2--><!--RP2End-->
 
-若期望同时录制多个窗口，需要传入期望录制的窗口Id列表，该场景下，不弹出选择共享内容弹窗，弹出隐私保护弹窗。
+若期望同时录制多个窗口，需要传入期望录制的窗口Id列表。该场景下，不弹出选择共享内容弹窗，弹出隐私保护弹窗。
 
 ```c++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
@@ -363,7 +356,6 @@ vector<int32_t> missionIds = {60, 61}; // 表示期望同时录制60、61号窗�
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
 ```
-
 
 ## 更多资源
 
