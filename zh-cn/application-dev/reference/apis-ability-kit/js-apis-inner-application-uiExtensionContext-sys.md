@@ -404,7 +404,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
 ```
 ### startUIAbilitiesInSplitWindowMode<sup>21+</sup>
 
-startUIAbilitiesInSplitWindowMode(primaryWindowId: int, secondaryWant: Want): Promise\<void>
+startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
 
 当第一个UIAbility实例被创建后，启动第二个UIAbility，并以分屏模式进行显示。使用Promise异步回调。
 
