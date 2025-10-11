@@ -1304,7 +1304,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 ```ts
   import { wifiManager } from '@kit.ConnectivityKit';
 
-  wifiManager.getLinkedInfo().then(data: WifiLinkedInfo => {
+  wifiManager.getLinkedInfo().then(data => {
       console.info("get wifi linked info: " + JSON.stringify(data));
   }).catch((error) => {
       console.error("get linked info error");
