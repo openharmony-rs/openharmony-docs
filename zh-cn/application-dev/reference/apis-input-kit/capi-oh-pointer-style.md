@@ -92,6 +92,13 @@ enum Input_PointerStyle
 | LOADING | 42 | 正在载入动画光标 |![Loading.png](./figures/Loading.png)|
 | RUNNING | 43 | 后台运行中动画光标 |![Running.png](./figures/Running.png)|
 | MIDDLE_BTN_EAST_WEST         | 44   | 向东西滚动 |![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
+| RUNNING_LEFT         | 45   | 后台运行中动画光标(拓展2) |![Loading_Left.png](./figures/Loading_Left.png)|
+| RUNNING_RIGHT         | 46   | 向东西滚动 |![Loading_Right.png](./figures/Loading_Right.png)|
+| AECH_DEVELOPER_DEFINED_ICON         | 47   | 圆形自定义光标 |![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR        | 48   | 录屏光标  |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
+| LASER_CURSOR        | 49   | 悬浮光标  |![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT        | 50   | 点击光标  |![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED        | 51   | 激光笔光标  |![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| DEVELOPER_DEFINED_ICON        | -100   | 自定义光标  |自定义光标样式，通过接口设置|
 
 
