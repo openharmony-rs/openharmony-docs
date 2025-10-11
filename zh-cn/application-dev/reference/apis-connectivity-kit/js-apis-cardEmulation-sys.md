@@ -47,7 +47,7 @@ getPaymentServices(): [AbilityInfo](../apis-ability-kit/js-apis-bundleManager-ab
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Non-system applications are not allowed to use system APIs. |
+|202 | Not system application.            |
 |801 | Capability not supported.          |
 
 **示例：**
@@ -56,7 +56,7 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 
 let paymentServices = cardEmulation.getPaymentServices();
 if (paymentServices == undefined || paymentServices.length == 0) {
-  console.log('paymentServices is null.');
+  console.error('paymentServices is null.');
 }
 
 ```
