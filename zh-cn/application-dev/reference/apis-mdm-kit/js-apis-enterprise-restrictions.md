@@ -110,7 +110,7 @@ try {
 
 ## restrictions.getDisallowedPolicy
 
-getDisallowedPolicy(admin: Want | null, feature: string): boolean
+getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 
 查询某特性是否被禁用。 
 
