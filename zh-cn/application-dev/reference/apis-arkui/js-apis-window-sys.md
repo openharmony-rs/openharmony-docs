@@ -3988,7 +3988,7 @@ setImageForRecent(imgResource: long | image.PixelMap, value: ImageFit): Promise&
 
 > **说明：**
 >
-> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口没有完成页面加载，直接调用该接口，该接口功能不会生效，多任务中只会显示应用启动页。
+> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4019,7 +4019,7 @@ setImageForRecent(imgResource: long | image.PixelMap, value: ImageFit): Promise&
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **示例：**
 
@@ -4040,6 +4040,7 @@ export default class EntryAbility extends UIAbility {
       }
       console.info('Succeeded in loading the content.');
       let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let pixelMap: image.PixelMap;
       let bufferArr = new Uint8Array(color);
       for (let i = 0; i < bufferArr.length; i += 4) {
         bufferArr[i] = 255;
@@ -4047,8 +4048,11 @@ export default class EntryAbility extends UIAbility {
         bufferArr[i+2] = 122;
         bufferArr[i+3] = 255;
       }
-      image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
-        console.info(`Succeeded in create pixelMap`);
+      image.createPixelMap(color, {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      }).then((data) => {
+        pixelMap = data;
+        console.info(`Succeeded in creating pixelMap`);
         try {
           let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
           promise.then(() => {
@@ -4069,7 +4073,7 @@ export default class EntryAbility extends UIAbility {
 
 removeImageForRecent(): Promise&lt;void&gt;
 
-移除应用设置的在多任务中显示的图片，下次查看截图生效，使用Promise异步回调。
+移除应用设置的多任务截图，下次进多任务查看截图时生效，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
