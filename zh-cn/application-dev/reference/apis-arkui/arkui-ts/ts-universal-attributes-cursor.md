@@ -1,7 +1,7 @@
 # 鼠标光标控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -50,7 +50,7 @@ type PointerStyle = pointer.PointerStyle
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 |类型|说明|
 | -- | -- |

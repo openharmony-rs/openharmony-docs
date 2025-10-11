@@ -1,7 +1,7 @@
 # 手势公共接口
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -570,7 +570,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | velocity<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。<br/>取值范围：[0,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
-## GestureMask<sup>11+</sup>枚举说明
+## GestureMask枚举说明
 
 定义是否屏蔽子组件手势。
 
@@ -583,7 +583,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | Normal | - |不屏蔽子组件的手势，按照默认手势识别顺序进行识别。 |
 | IgnoreInternal | - | 屏蔽子组件的手势，包括子组件上系统内置的手势，如子组件为List组件时，内置的滑动手势同样会被屏蔽。 若父子组件区域存在部分重叠，则只会屏蔽父子组件重叠的部分。|
 
-## GestureJudgeResult<sup>12+</sup>
+## GestureJudgeResult<sup>11+</sup>
 
 定义手势竞争结果。
 
@@ -650,7 +650,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 ## GestureType<sup>11+</sup>
 
-declare type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | SwipeGesture | RotationGesture | GestureGroup
+type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | SwipeGesture | RotationGesture | GestureGroup
 
 定义手势类型。取值类型为下表类型中的并集。
 
