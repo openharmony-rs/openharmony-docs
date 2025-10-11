@@ -242,22 +242,6 @@ Sets the scrollbar color.
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | value  | [Color](ts-appendix-enums.md#color) \| number \| string | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
 
-### scrollBarColor<sup>22+</sup>
-
-scrollBarColor(color: Color | number | string | Resource)
-
-Sets the scrollbar color.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description          |
-| ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color) \| number \| string \| [Resource](ts-types.md#resource) | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
-
 ### scrollBarWidth
 
 scrollBarWidth(value: number | string)
@@ -1581,7 +1565,7 @@ struct GridExample {
     Scroll() {
       Column({ space: 5 }) {
         Blank()
-        Text ('rowsTemplate and columnsTemplate do not set layoutDirection, maxCount, minCount, and cellLength take effect.')
+        Text('rowsTemplate and columnsTemplate do not set layoutDirection, maxCount, minCount, and cellLength take effect.')
           .fontSize(15).fontColor(0xCCCCCC).width('90%')
         Grid() {
           LazyForEach(this.numbers, (day: string) => {
