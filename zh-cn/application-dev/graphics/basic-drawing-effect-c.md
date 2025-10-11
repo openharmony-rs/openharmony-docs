@@ -54,7 +54,7 @@
       ```
       <!-- [ndk_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-   - color是一个32位（ARGB）的变量，例如0xffff0000。
+      color是一个32位（ARGB）的变量，例如0xffff0000。
    
    - 可使用OH_Drawing_BrushSetAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
       ```c++
@@ -140,7 +140,7 @@
       ```
       <!-- [ndk_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-   - color是一个32位（ARGB）的变量，例如0xffff0000。
+      color是一个32位（ARGB）的变量，例如0xffff0000。
 
    - 可使用OH_Drawing_PenSetWidth()接口设置画笔的线宽。
 
