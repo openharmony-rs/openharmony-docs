@@ -2963,7 +2963,7 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.isWlanBssidMatched} due to limited device capabilities.          |
 |3301100 | The location switch is off.                                           |
-|3301800 | Failed to start Wifi scanning.                                        |
+|3301800 | Failed to start WiFi scanning.                                        |
 
 **示例**
 
