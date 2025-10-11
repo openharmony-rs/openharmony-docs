@@ -1188,11 +1188,9 @@ export default class EntryAbility extends UIAbility {
 
 getGlobalRect(): Rect
 
-获取窗口在屏幕上的真实显示区域，同步接口。
+获取窗口在其所在物理屏幕上的真实显示区域，同步接口。
 
 在某些设备上，窗口显示时可能经过了缩放，此接口可以获取缩放后窗口在屏幕上的真实位置和大小。
-
-在折叠2in1设备上，无外接扩展显示器时，返回的坐标以主屏幕左上角为原点；有外接扩展显示器时，窗口在扩展显示器上返回的坐标以扩展显示器左上角为原点。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
