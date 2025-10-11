@@ -6392,7 +6392,7 @@ struct WebComponent {
 
 enableIntelligentTrackingPrevention(enable: boolean): void
 
-启用智能防跟踪功能。默认不启用。
+启用智能防跟踪功能。若未显式调用该属性，默认不启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
