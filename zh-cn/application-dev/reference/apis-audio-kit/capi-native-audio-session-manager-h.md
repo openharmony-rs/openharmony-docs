@@ -208,7 +208,7 @@ typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChange
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | 指向[OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md)音频会话状态变更事件。 |
+| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | 音频会话状态变更事件。 |
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
@@ -284,7 +284,7 @@ typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_Deactivat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | 指向OH_AudioSession_Deactivated_Event音频会话已停用事件。 |
+| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | 音频会话已停用事件。 |
 
 ### OH_AudioManager_GetAudioSessionManager()
 
@@ -302,7 +302,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionMana
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) **audioSessionManager | 指向OH_AudioSessionManager音频会话管理器实例。 |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) **audioSessionManager | 音频会话管理器实例。 |
 
 **返回：**
 
@@ -400,7 +400,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | 指向[OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager)创建的音频会话管理实例。 |
-| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | 指向OH_AudioSessionDeactivatedCallback，用于接收音频会话已停用事件。 |
+| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | 用于接收音频会话已停用事件。 |
 
 **返回：**
 
@@ -425,7 +425,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallbac
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | 指向[OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager)创建的音频会话管理实例。 |
-| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | 指向OH_AudioSessionDeactivatedCallback，用于接收音频会话已停用事件。 |
+| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | 用于接收音频会话已停用事件。 |
 
 **返回：**
 
