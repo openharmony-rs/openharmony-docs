@@ -55,276 +55,276 @@ libnet_websocket.so
 
 1、在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
 
-```cpp
-#include "napi/native_api.h"
-#include "network/netstack/net_websocket.h"
-#include "network/netstack/net_websocket_type.h"
-#include "hilog/log.h"
+    ```cpp
+    #include "napi/native_api.h"
+    #include "network/netstack/net_websocket.h"
+    #include "network/netstack/net_websocket_type.h"
+    #include "hilog/log.h"
 
-#include <cstring>
+    #include <cstring>
 
-#undef LOG_DOMAIN
-#undef LOG_TAG
-#define LOG_DOMAIN 0x3200  // 全局domain宏，标识业务领域
-#define LOG_TAG "WSDEMO"   // 全局tag宏，标识模块日志tag
+    #undef LOG_DOMAIN
+    #undef LOG_TAG
+    #define LOG_DOMAIN 0x3200  // 全局domain宏，标识业务领域
+    #define LOG_TAG "WSDEMO"   // 全局tag宏，标识模块日志tag
 
-// WebSocket客户端全局变量
-static struct WebSocket *client = nullptr;
+    // WebSocket客户端全局变量
+    static struct WebSocket *client = nullptr;
 
-static void onOpen(struct WebSocket *client, WebSocket_OpenResult openResult)
-{
-    (void)client;
-    OH_LOG_INFO(LOG_APP, "onOpen: code: %{public}u, reason: %{public}s",
-        openResult.code, openResult.reason);
-}
-
-static void onMessage(struct WebSocket *client, char *data, uint32_t length)
-{
-    (void)client;
-    char *tmp = new char[length + 1];
-    for (uint32_t i = 0; i < length; i++) {
-        tmp[i] = data[i];
+    static void onOpen(struct WebSocket *client, WebSocket_OpenResult openResult)
+    {
+        (void)client;
+        OH_LOG_INFO(LOG_APP, "onOpen: code: %{public}u, reason: %{public}s",
+            openResult.code, openResult.reason);
     }
-    tmp[length] = '\0';
-    OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s",
-        length, tmp);
-}
 
-static void onError(struct WebSocket *client, WebSocket_ErrorResult errorResult)
-{
-    (void)client;
-    OH_LOG_INFO(LOG_APP, "onError: code: %{public}u, message: %{public}s",
-        errorResult.errorCode, errorResult.errorMessage);
-}
-
-static void onClose(struct WebSocket *client, WebSocket_CloseResult closeResult)
-{
-    (void)client;
-    OH_LOG_INFO(LOG_APP, "onClose: code: %{public}u, reason: %{public}s",
-        closeResult.code, closeResult.reason);
-}
-
-static napi_value ConnectWebsocket(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_value result;
-    
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-    
-    size_t length = 0;
-    napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
-    if (status != napi_ok) {
-        napi_get_boolean(env, false, &result);
-        return result;
+    static void onMessage(struct WebSocket *client, char *data, uint32_t length)
+    {
+        (void)client;
+        char *tmp = new char[length + 1];
+        for (uint32_t i = 0; i < length; i++) {
+            tmp[i] = data[i];
+        }
+        tmp[length] = '\0';
+        OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s",
+            length, tmp);
     }
-    
-    if (client != nullptr) {
-        OH_LOG_INFO(LOG_APP, "there is already one websocket client running.");
-        napi_get_boolean(env, false, &result);
-        return result;
+
+    static void onError(struct WebSocket *client, WebSocket_ErrorResult errorResult)
+    {
+        (void)client;
+        OH_LOG_INFO(LOG_APP, "onError: code: %{public}u, message: %{public}s",
+            errorResult.errorCode, errorResult.errorMessage);
     }
-    char *buf = new char[length + 1];
-    std::memset(buf, 0, length + 1);
-    napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
-	// 创建WebSocket Client对象指针
-    client = OH_WebSocketClient_Constructor(onOpen, onMessage, onError, onClose);
-    if (client == nullptr) {
+
+    static void onClose(struct WebSocket *client, WebSocket_CloseResult closeResult)
+    {
+        (void)client;
+        OH_LOG_INFO(LOG_APP, "onClose: code: %{public}u, reason: %{public}s",
+            closeResult.code, closeResult.reason);
+    }
+
+    static napi_value ConnectWebsocket(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 2;
+        napi_value args[2] = {nullptr};
+        napi_value result;
+        
+        napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+        
+        size_t length = 0;
+        napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
+        if (status != napi_ok) {
+            napi_get_boolean(env, false, &result);
+            return result;
+        }
+        
+        if (client != nullptr) {
+            OH_LOG_INFO(LOG_APP, "there is already one websocket client running.");
+            napi_get_boolean(env, false, &result);
+            return result;
+        }
+        char *buf = new char[length + 1];
+        std::memset(buf, 0, length + 1);
+        napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
+      // 创建WebSocket Client对象指针
+        client = OH_WebSocketClient_Constructor(onOpen, onMessage, onError, onClose);
+        if (client == nullptr) {
+            delete[] buf;
+            napi_get_boolean(env, false, &result);
+            return result;
+        }
+      // 连接buf存放的URL对应的WebSocket服务器
+        int connectRet = OH_WebSocketClient_Connect(client, buf, {});
+        
         delete[] buf;
-        napi_get_boolean(env, false, &result);
+        napi_get_boolean(env, connectRet == 0, &result);
         return result;
     }
-	// 连接buf存放的URL对应的WebSocket服务器
-    int connectRet = OH_WebSocketClient_Connect(client, buf, {});
-    
-    delete[] buf;
-    napi_get_boolean(env, connectRet == 0, &result);
-    return result;
-}
 
-static napi_value SendMessage(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_value result;
-    
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-    
-    size_t length = 0;
-    napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
-    if (status != napi_ok) {
-        napi_create_int32(env, -1, &result);
+    static napi_value SendMessage(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+        napi_value result;
+        
+        napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+        
+        size_t length = 0;
+        napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
+        if (status != napi_ok) {
+            napi_create_int32(env, -1, &result);
+            return result;
+        }
+        
+        if (client == nullptr) {
+            OH_LOG_INFO(LOG_APP, "websocket client not connected.");
+            napi_create_int32(env, WebSocket_ErrCode::WEBSOCKET_CLIENT_NULL, &result);
+            return result;
+        }
+        char *buf = new char[length + 1];
+        std::memset(buf, 0, length + 1);
+        napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
+      // 发送buf中的消息给服务器
+        int ret = OH_WebSocketClient_Send(client, buf, length);
+        
+        delete[] buf;
+        napi_create_int32(env, ret, &result);
         return result;
     }
-    
-    if (client == nullptr) {
-        OH_LOG_INFO(LOG_APP, "websocket client not connected.");
-        napi_create_int32(env, WebSocket_ErrCode::WEBSOCKET_CLIENT_NULL, &result);
-        return result;
-    }
-    char *buf = new char[length + 1];
-    std::memset(buf, 0, length + 1);
-    napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
-	// 发送buf中的消息给服务器
-    int ret = OH_WebSocketClient_Send(client, buf, length);
-    
-    delete[] buf;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
 
-static napi_value CloseWebsocket(napi_env env, napi_callback_info info)
-{
-    napi_value result;
-    if (client == nullptr) {
-        OH_LOG_INFO(LOG_APP, "websocket client not connected.");
-        napi_create_int32(env, -1, &result);
+    static napi_value CloseWebsocket(napi_env env, napi_callback_info info)
+    {
+        napi_value result;
+        if (client == nullptr) {
+            OH_LOG_INFO(LOG_APP, "websocket client not connected.");
+            napi_create_int32(env, -1, &result);
+            return result;
+        }
+      // 关闭WebSocket连接
+        int ret = OH_WebSocketClient_Close(client, {
+            .code = 0,
+            .reason = "Actively Close",
+        });
+      // 释放WebSocket资源并置空
+        OH_WebSocketClient_Destroy(client);
+        client = nullptr;
+        napi_create_int32(env, ret, &result);
         return result;
     }
-	// 关闭WebSocket连接
-    int ret = OH_WebSocketClient_Close(client, {
-        .code = 0,
-        .reason = "Actively Close",
-    });
-	// 释放WebSocket资源并置空
-    OH_WebSocketClient_Destroy(client);
-    client = nullptr;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
 
-```
+    ```
 
 ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返回true，否则返回false。在创建代表WebSocket客户端的WebSocket结构体指针前，需要定义以下回调函数：连接开启时的onOpen回调、接收普通消息的onMessage回调、接收错误消息的onError回调、接收关闭消息的onClose回调。在示例代码中，还调用了`OH_WebSocketClient_Send`、`OH_WebSocketClient_Close`等函数向服务器发送消息，主动关闭WebSocket连接。
 
 
 2、将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将函数暴露给JavaScript使用。示例代码中，ConnectWebsocket函数就会作为外部函数Connect暴露出去；SendMessage函数作为外部函数Send暴露出去；CloseWebsocket函数作为外部函数Close暴露出去。
 
-```C
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
-    napi_property_descriptor desc[] = {
-        {"Connect", nullptr, ConnectWebsocket, nullptr, nullptr, nullptr, napi_default, nullptr },
-        {"Send", nullptr, SendMessage, nullptr, nullptr, nullptr, napi_default, nullptr },
-        {"Close", nullptr, CloseWebsocket, nullptr, nullptr, nullptr, napi_default, nullptr},
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-```
+    ```C
+    EXTERN_C_START
+    static napi_value Init(napi_env env, napi_value exports) {
+        napi_property_descriptor desc[] = {
+            {"Connect", nullptr, ConnectWebsocket, nullptr, nullptr, nullptr, napi_default, nullptr },
+            {"Send", nullptr, SendMessage, nullptr, nullptr, nullptr, napi_default, nullptr },
+            {"Close", nullptr, CloseWebsocket, nullptr, nullptr, nullptr, napi_default, nullptr},
+        };
+        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+        return exports;
+    }
+    EXTERN_C_END
+    ```
 
 3、将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到 Node.js 中。
 
-```C
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
+    ```C
+    static napi_module demoModule = {
+        .nm_version = 1,
+        .nm_flags = 0,
+        .nm_filename = nullptr,
+        .nm_register_func = Init,
+        .nm_modname = "entry",
+        .nm_priv = ((void*)0),
+        .reserved = { 0 },
+    };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&demoModule);
-}
-```
+    extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+    {
+        napi_module_register(&demoModule);
+    }
+    ```
 
 4、在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
 
-```ts
-export const Connect: (url: string) => boolean;
-export const Send: (data: string) => number;
-export const Close: () => number;
-```
+    ```ts
+    export const Connect: (url: string) => boolean;
+    export const Send: (data: string) => number;
+    export const Close: () => number;
+    ```
 
 5、在index.ets文件中对上述封装好的接口进行调用。
 
-```ts
-import testWebsocket from 'libentry.so'
+    ```ts
+    import testWebsocket from 'libentry.so'
 
-@Entry
-@Component
-struct Index {
-  @State wsUrl: string = ''
-  @State content: string = ''
-  @State connecting: boolean = false
+    @Entry
+    @Component
+    struct Index {
+      @State wsUrl: string = ''
+      @State content: string = ''
+      @State connecting: boolean = false
 
-  build() {
-    Navigation() {
-      Column() {
-        Column() {
-          Text("WebSocket address: ")
-            .fontColor(Color.Gray)
-            .textAlign(TextAlign.Start)
-            .width('100%')
-          TextInput()
-            .width('100%')
-            .onChange((value) => {
-              this.wsUrl = value
+      build() {
+        Navigation() {
+          Column() {
+            Column() {
+              Text("WebSocket address: ")
+                .fontColor(Color.Gray)
+                .textAlign(TextAlign.Start)
+                .width('100%')
+              TextInput()
+                .width('100%')
+                .onChange((value) => {
+                  this.wsUrl = value
+                })
+            }
+            .margin({
+              bottom: 16
             })
-        }
-        .margin({
-          bottom: 16
-        })
-        .padding({
-          left: 16,
-          right: 16
-        })
+            .padding({
+              left: 16,
+              right: 16
+            })
 
-        Column() {
-          Text("Content: ")
-            .fontColor(Color.Gray)
-            .textAlign(TextAlign.Start)
-            .width('100%')
-          TextInput()
-            .width('100%')
-            .enabled(this.connecting)
-            .onChange((value) => {
-              this.content = value
+            Column() {
+              Text("Content: ")
+                .fontColor(Color.Gray)
+                .textAlign(TextAlign.Start)
+                .width('100%')
+              TextInput()
+                .width('100%')
+                .enabled(this.connecting)
+                .onChange((value) => {
+                  this.content = value
+                })
+            }
+            .margin({
+              bottom: 16
             })
-        }
-        .margin({
-          bottom: 16
-        })
-        .padding({
-          left: 16,
-          right: 16
-        })
+            .padding({
+              left: 16,
+              right: 16
+            })
 
-        Blank()
+            Blank()
 
-        Column({ space: 12 }) {
-          Button('Connect')
-            .enabled(!this.connecting)
-            .onClick(() => {
-              let connRet = testWebsocket.Connect(this.wsUrl)
-              if (connRet) {
-                this.connecting = true;
-              }
-            })
-          Button('Send')
-            .enabled(this.connecting)
-            .onClick(() => {
-              testWebsocket.Send(this.content)
-            })
-          Button('Close')
-            .enabled(this.connecting)
-            .onClick(() => {
-              let closeResult = testWebsocket.Close()
-              if (closeResult != -1) {
-                this.connecting = false
-              }
-            })
+            Column({ space: 12 }) {
+              Button('Connect')
+                .enabled(!this.connecting)
+                .onClick(() => {
+                  let connRet = testWebsocket.Connect(this.wsUrl)
+                  if (connRet) {
+                    this.connecting = true;
+                  }
+                })
+              Button('Send')
+                .enabled(this.connecting)
+                .onClick(() => {
+                  testWebsocket.Send(this.content)
+                })
+              Button('Close')
+                .enabled(this.connecting)
+                .onClick(() => {
+                  let closeResult = testWebsocket.Close()
+                  if (closeResult != -1) {
+                    this.connecting = false
+                  }
+                })
+            }
+          }
         }
       }
     }
-  }
-}
-```
+    ```
 
 6、配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_websocket.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
