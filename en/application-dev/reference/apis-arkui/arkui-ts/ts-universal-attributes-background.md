@@ -16,11 +16,11 @@ You can set the background for a component.
 
 background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions): T
 
-Sets the background color of the component. Since API version 20, this API supports the [ResourceColor](ts-types.md#resourcecolor) type for the **content** parameter and allows the background to extend into the parent component's safe area.
+Sets the background of the component. Since API version 20, this API supports the [ResourceColor](ts-types.md#resourcecolor) type for the **content** parameter and allows the background to extend into the parent component's safe area.
 
 >**NOTE**
 >
-> [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisappear](./ts-universal-events-show-hide.md#ondisappear) events that are related to node mounting and unmounting are not supported.
+> Events related to node mounting and unmounting, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisappear](./ts-universal-events-show-hide.md#ondisappear), are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -41,9 +41,9 @@ Sets the background color of the component. Since API version 20, this API suppo
 
 >  **NOTE**
 >
-> - Custom background rendering is delayed and cannot respond to events. This attribute cannot be nested.
-> - The background of the CustomBuilder type cannot be previewed in the previewer.
-> - From API version 20, the background can be dynamically updated.
+> - The custom background takes some time to render, during which it cannot respond to events. This attribute cannot be nested.
+> - CustomBuilder backgrounds cannot be previewed in the previewer.
+> - Dynamic background update is supported since API version 20.
 > - If **background**, **backgroundColor**, and **backgroundImage** are set at the same time, all three will take effect, with the stacking order following the rules below:
 >   - If **background** is of the **ResourceColor** type or the **ignoresLayoutSafeAreaEdges** property is set, **background** is at the bottom layer.
 >   - In other cases, **background** is at the top layer.
@@ -57,11 +57,11 @@ Provides background options.
 | Name         | Type  | Read-Only| Optional| Description                                                        |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | align<sup>10+</sup>          | [Alignment](ts-appendix-enums.md#alignment) | No  | Yes  | Alignment mode between the custom background and the component. This property takes effect only for backgrounds of the **CustomBuilder** type. If **ignoresLayoutSafeAreaEdges** is set, alignment applies to the expanded safe area.<br>Default value: **Alignment.Center**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| ignoresLayoutSafeAreaEdges | Array<[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | No  |  Yes  |Safe area to which the background is extended, including the status bar, navigation bar, and [safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14).<br> Default value:<br>- CustomBuilder background: [], which means no extension.<br>- ResourceColor background: [LayoutSafeAreaEdge.ALL], extended to all directions.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| ignoresLayoutSafeAreaEdges | Array<[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | No  |  Yes  |Safe areas to which the background will be extended, including the status bar, navigation bar, and [safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14).<br> Default value:<br>- CustomBuilder background: [], no extension.<br>- ResourceColor background: [LayoutSafeAreaEdge.ALL] (expands all directions).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 > **NOTE**
 >
-> The default value of the clip attribute of the Shape, RowSplit, ColumnSplit, SideBarContainer, Stepper, List, Grid, WaterFlow, Scroll, Refresh, Swiper, Tabs component is true. The background of the child component is clipped.
+> The default value of clip of the Shape, RowSplit, ColumnSplit, SideBarContainer, Stepper, List, Grid, WaterFlow, Scroll, Refresh, Swiper, Tabs component is true, and the background extension of the child component is clipped.
 
 ## backgroundColor
 
@@ -180,7 +180,7 @@ Sets the background image of the component. Compared with [backgroundImage](#bac
 
 | Name| Type                                           | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | Yes  | Image URL. Network image URLs, local image URLs, Base64-encoded images, and PixelMap resources are supported. Animated images in SVG, GIF, and WebP formats are not supported.|
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | Yes  | Image address, which can be the address of an online or local image, a Base64 encoded string, or a pixel map. SVG, GIF, and WebP formats are not supported.|
 | options | [BackgroundImageOptions](ts-universal-attributes-image-effect.md#backgroundimageoptions18) | No  | Background image options.|
 
 **Return value**
@@ -193,7 +193,7 @@ Sets the background image of the component. Compared with [backgroundImage](#bac
 
 backgroundImageSize(value: SizeOptions | ImageSize): T
 
-Sets the width and height of the background image for the component. If backgroundImageSize is not set, the default width and height of the background image are ImageSize.Auto.
+Sets the width and height of the background image for the component. If backgroundImageSize is not set, the **ImageSize.Auto** effect is applied.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -217,7 +217,7 @@ Sets the width and height of the background image for the component. If backgrou
 
 backgroundImagePosition(value: Position | Alignment): T
 
-Sets the position of the component background image. If backgroundImagePosition is not set, the background image is positioned at the upper left corner of the component by default.
+Sets the position of the component background image. If backgroundImagePosition is not set, the component background image is positioned at the upper left corner of the component by default.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -271,7 +271,7 @@ Provides parameters for system adaptive adjustments. By default, the system perf
 
 | Name       |   Type  |   Read-Only |  Optional | Description                       |
 | ----        |  ----   |   ---- |  ---- | --------------------------  |
-| disableSystemAdaptation   |  boolean   |   No  |  Yes |  Whether to disable system adaptive adjustment. Whenever possible, do not include this parameter. This parameter affects only low-computing-power devices. The definition of low-computing-power devices is determined by the device vendor. On low-computing-power devices, the system automatically decides whether to adjust effects (such as blur) to lower-computing-power alternatives based on conditions including computing power and load. To disable this feature, set this parameter to **true**.<br>Default value: **false**|
+| disableSystemAdaptation   |  boolean   |   No  |  Yes |  Whether to disable system adaptive adjustment. Whenever possible, do not include this parameter. This parameter only affects low-computing-power devices, the definition of which is determined by the device manufacturer. On low-computing-power devices, the system automatically decides whether to adjust effects (such as blur) to lower-computing-power alternatives based on conditions including computing power and load. To disable this feature, set this parameter to **true**.<br>Default value: **false**|
 
 ## backgroundBlurStyle<sup>9+</sup>
 
@@ -302,7 +302,7 @@ Defines the background material blur style. It encapsulates various blur radius,
 
 backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOptions): T
 
-This method provides the background material blur capability for the current component. The blur radius, mask color, mask transparency, saturation, and brightness are encapsulated in enumerated values. Compared to [backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle9), the **style** parameter supports the **undefined** type.
+Defines the background material blur style. It encapsulates various blur radius, mask color, mask opacity, saturation, and brightness values through enum values. Compared to [backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle9), the **style** parameter supports the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -331,7 +331,7 @@ This method provides the background material blur capability for the current com
 
 backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T
 
-Provides the background material blur capability for the current component. The blur radius, mask color, mask transparency, saturation, and brightness are encapsulated in enumeration values. Compared with [backgroundBlurStyle<sup>18+</sup>](#backgroundblurstyle18), this API adds the **sysOptions** parameter, which allows for system adaptive adjustments.
+Defines the background material blur style. It encapsulates various blur radius, mask color, mask opacity, saturation, and brightness values through enum values. Compared with [backgroundBlurStyle<sup>18+</sup>](#backgroundblurstyle18), this API adds the **sysOptions** parameter, which allows for system adaptive adjustments.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 19.
 
@@ -386,7 +386,7 @@ Applies a background blur effect to the component. You can customize the blur ra
 
 backdropBlur(radius: Optional\<number>, options?: BlurOptions): T
 
-Background blur effect to apply to the component. You can customize the blur radius and grayscale parameters. Compared to [backdropBlur](#backdropblur), the **radius** parameter supports the **undefined** type.
+Applies a background blur effect to the component. You can customize the blur radius and grayscale parameters. Compared to [backdropBlur](#backdropblur), the **radius** parameter supports the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -527,7 +527,7 @@ Describes the background effect.
 | adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor10) |   No |  Yes | Adaptive color mode used for the background blur effect.<br>Default value: **DEFAULT** When set to **AVERAGE**, the adaptive color mode takes effect only when the color has transparency.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
 | blurOptions  | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) |   No  |  Yes  |   Grayscale blur.<br>Default value: **[0, 0]**<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | policy<sup>14+</sup>    | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | No |  Yes | Blur activation policy.<br> Default value: **BlurStyleActivePolicy.ALWAYS_ACTIVE**<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
-| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  | No  |  Yes | Background color used when blur does not take effect. This parameter must be used together with the policy parameter. When the policy parameter makes blur invalid, the blur effect of the control is removed. If inactiveColor is set, inactiveColor is used as the background color of the control.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
+| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  | No  |  Yes | Background color when the blur effect does not take effect. This parameter must be used together with the **policy** parameter. When **policy** is set to a value that disables the blur effect, the blur effect on the components is removed. If inactiveColor is set, inactiveColor is used as the background color of the components.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## backgroundImageResizable<sup>12+</sup>
 
@@ -566,7 +566,7 @@ Inherits from [BlurStyleOptions](ts-universal-attributes-foreground-blur-style.m
 | Name| Type                                                        | Read-Only| Optional| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---- |---------------------------------------------------- |
 | policy<sup>14+</sup>  | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | No| Yes  | Blur activation policy.<br> Default value: **BlurStyleActivePolicy.ALWAYS_ACTIVE**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor) | No| Yes   | Background color used when blur does not take effect. This parameter must be used together with the policy parameter. When the policy parameter is used to disable blur, the blur effect of the control is removed. If inactiveColor is set, inactiveColor is used as the background color of the control.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor) | No| Yes   | Background color when the blur effect does not take effect. This parameter must be used together with the **policy** parameter. When **policy** is set to a value that disables the blur effect, the blur effect on the components is removed. If inactiveColor is set, inactiveColor is used as the background color of the components.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## BlurStyleActivePolicy<sup>14+</sup>
 
@@ -662,7 +662,7 @@ struct BackgroundExample {
 
       Text('background image repeat along X').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        // Replace $r('app.media.image')with the image resource file you use.
+        // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.X)
         .backgroundImageSize({ width: '250px', height: '140px' })
         .width('90%')
@@ -671,7 +671,7 @@ struct BackgroundExample {
 
       Text('background image repeat along Y').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        // Replace $r('app.media.image')with the image resource file you use.
+        // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.Y)
         .backgroundImageSize({ width: '500px', height: '120px' })
         .width('90%')
@@ -681,7 +681,7 @@ struct BackgroundExample {
       Text('background image size').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
         .width('90%').height(150)
-        // Replace $r('app.media.image')with the image resource file you use.
+        // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize({ width: 1000, height: 500 })
         .border({ width: 1 })
@@ -691,7 +691,7 @@ struct BackgroundExample {
       Row()
         .width(200)
         .height(50)
-        // Replace $r('app.media.image')with the image resource file you use.
+        // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize(ImageSize.Cover)
         .border({ width: 1 })
@@ -701,7 +701,7 @@ struct BackgroundExample {
       Row()
         .width(200)
         .height(50)
-        // Replace $r('app.media.image')with the image resource file you use.
+        // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize(ImageSize.Contain)
         .border({ width: 1 })
@@ -710,7 +710,7 @@ struct BackgroundExample {
       Row()
         .width(100)
         .height(50)
-        // Replace $r('app.media.image')with the image resource file you use.
+        // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize({ width: 1000, height: 560 })
         .backgroundImagePosition({ x: -500, y: -300 })
@@ -873,7 +873,7 @@ struct BlurEffectsExample {
 ### Example 6: Setting Text Blur Effects
 
 This example applies anamorphic blur effects on text using **blendMode** and **backgroundEffect**.<br>
-If unwanted lines appear, make sure the sizes of the two owning components of **blendMode** are the same. If the sizes are the same, the component boundary may fall on a floating-point coordinate. In this case, you can set the [pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround) attribute to align the component boundaries on both sides of the generated white and dark lines to integer pixel coordinates.
+If unwanted lines appear, make sure the sizes of the two owning components of **blendMode** are the same. If the issue persists, the component bounds may have fallen on the floating-point coordinates. In this case, set the universal attribute [pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround) to align the component bounds on both sides of the unwanted lines with the integer pixel coordinates.
 
 ```ts
 // xxx.ets

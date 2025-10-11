@@ -1035,7 +1035,7 @@ struct HomePage {
 
   @Builder
   builder2($$: Tmp) {
-    Text (`${$$.name}test`)
+    Text(`${$$.name} test`)
   }
 
   build() {

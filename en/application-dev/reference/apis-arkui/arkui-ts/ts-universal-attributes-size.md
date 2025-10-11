@@ -92,7 +92,7 @@ Sets the width of the component or its horizontal layout policy. By default, the
 
 | Name  | Type                          | Mandatory  | Description                 |
 | ----- | ---------------------------- | ---- | ------------------- |
-| widthValue | [Length](ts-types.md#length) \|  [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | Yes   | Width of the component to set.<br>Unit: vp|
+| widthValue | [Length](ts-types.md#length) \| [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | Yes   | Width of the component to set.<br>Unit: vp|
 
 **Return value**
 
@@ -116,7 +116,7 @@ Sets the height of the component or its vertical layout policy. By default, the 
 
 | Name  | Type                          | Mandatory  | Description                 |
 | ----- | ---------------------------- | ---- | ------------------- |
-| heightValue | [Length](ts-types.md#length) \|  [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | Yes   | Height of the component to set.<br>Unit: vp|
+| heightValue | [Length](ts-types.md#length) \| [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | Yes   | Height of the component to set.<br>Unit: vp|
 
 **Return value**
 
@@ -168,7 +168,7 @@ Since API version 10, this API supports the calc calculation feature.
 
 | Name  | Type                                      | Mandatory  | Description                                      |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value | [Padding](ts-types.md#padding) \|  [Length](ts-types.md#length) \|   [LocalizedPadding](ts-types.md#localizedpadding12)<sup>12+</sup>| Yes   | Padding of the component to set.<br>When the parameter is of the **Length** type, the four paddings take effect.<br>Default value: **0**<br>Unit: vp<br>When **padding** is set to a percentage, the width of the parent container is used as the basic value.|
+| value | [Padding](ts-types.md#padding) \| [Length](ts-types.md#length) \| [LocalizedPadding](ts-types.md#localizedpadding12)<sup>12+</sup>| Yes   | Padding of the component to set.<br>When the parameter is of the **Length** type, the four paddings take effect.<br>Default value: **0**<br>Unit: vp<br>When **padding** is set to a percentage, the width of the parent container is used as the basic value.|
 
 **Return value**
 
@@ -218,7 +218,7 @@ Sets the safe area padding. This allows the container to add a component-level s
 
 | Name  | Type                                      | Mandatory  | Description                                      |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| paddingValue | [Padding](ts-types.md#padding) \|  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \|   [LocalizedPadding](ts-types.md#localizedpadding12)| Yes   | Safe area padding.<br>Default value: **0**<br>Unit: vp|
+| paddingValue | [Padding](ts-types.md#padding) \| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LocalizedPadding](ts-types.md#localizedpadding12)| Yes   | Safe area padding.<br>Default value: **0**<br>Unit: vp|
 
 **Return value**
 

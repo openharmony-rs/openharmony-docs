@@ -1576,10 +1576,10 @@ struct TextBuilder {
   build() {
     Row() {
       Column() {
-        Text (`Text update content: ${this.message}`)
+        Text(`Text update content: ${this.message}`)
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
-        Text (`Text update times: ${this.count}`)
+        Text(`Text update times: ${this.count}`)
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
       }
