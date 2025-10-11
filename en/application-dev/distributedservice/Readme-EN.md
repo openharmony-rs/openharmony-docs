@@ -5,7 +5,7 @@
 - Distributed Ability Connection Management<!--abilityconnect-distributed-->
   - [UIAbility Connection Development](abilityconnectmanager-guidelines.md)
   <!--Del-->
-  - [UIAbility and Extension Connection Development](distributedextension-guidelines.md)
+  - [UIAbility and Extension Connection Development](distributedextension-guidelines-sys.md)
   <!--DelEnd-->
   - [Enhanced Connection Development](linkEnhance_development-guide.md)
 - Distributed Hardware Connection Management<!--devconnect-distributed-->
