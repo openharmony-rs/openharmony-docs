@@ -20,7 +20,7 @@
 2. 导入系统账号模块。
 
    ```ts
-   import { osAccount } from '@kit.BasicServicesKit';
+   import { osAccount, BusinessError } from '@kit.BasicServicesKit';
    ```
 
 3. 获取系统账号的单实例对象。
@@ -48,7 +48,8 @@
    try {
      accountManager.setOsAccountConstraints(localId, constraint, true);
      console.info('setOsAccountConstraints successfully');
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`setOsAccountConstraints failed, error: code is ${err.code}, message is ${err.message}`);
    }
    ```

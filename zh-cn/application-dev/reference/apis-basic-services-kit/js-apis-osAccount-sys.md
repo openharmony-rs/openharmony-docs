@@ -58,8 +58,10 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
 **示例：** 激活ID为100的系统账号
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -115,8 +117,10 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
 **示例：** 激活ID为100的系统账号
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -168,8 +172,10 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 
 **示例：** 注销ID为100的系统账号
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -222,6 +228,7 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -275,6 +282,7 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -328,6 +336,7 @@ isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -378,6 +387,7 @@ removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let accountName: string = 'testAccountName';
   try {
@@ -438,6 +448,7 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let accountName: string = 'testAccountName';
   try {
@@ -446,7 +457,7 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
         accountManager.removeOsAccount(osAccountInfo.localId).then(() => {
           console.info('removeOsAccount successfully');
         }).catch((err: BusinessError) => {
-            console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
         });
     });
   } catch (e) {
@@ -492,6 +503,7 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -551,6 +563,7 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -601,6 +614,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let name: string = 'demoName';
@@ -659,6 +673,7 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let name: string = 'testName';
@@ -702,6 +717,7 @@ queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxOsAccountNumber((err: BusinessError, maxCnt: number) => {
@@ -744,6 +760,7 @@ queryMaxOsAccountNumber(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxOsAccountNumber().then((maxCnt: number) => {
@@ -784,6 +801,7 @@ queryMaxLoggedInOsAccountNumber(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxLoggedInOsAccountNumber().then((maxNum: number) => {
@@ -835,6 +853,7 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -880,6 +899,7 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
@@ -925,6 +945,7 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryAllCreatedOsAccounts().then((accountArr: osAccount.OsAccountInfo[]) => {
@@ -976,6 +997,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.createOsAccount('testName', osAccount.OsAccountType.NORMAL,
@@ -1037,6 +1059,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let options: osAccount.CreateOsAccountOptions = {
     shortName: 'myShortName',
@@ -1095,9 +1118,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo =
-    {domain: 'testDomain', accountName: 'testAccountName'};
+    { domain: 'testDomain', accountName: 'testAccountName'};
   try {
     accountManager.createOsAccountForDomain(osAccount.OsAccountType.NORMAL, domainInfo,
       (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
@@ -1159,9 +1183,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo =
-    {domain: 'testDomain', accountName: 'testAccountName'};
+    { domain: 'testDomain', accountName: 'testAccountName'};
   let options: osAccount.CreateOsAccountForDomainOptions = {
     shortName: 'myShortName'
   }
@@ -1208,6 +1233,7 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
@@ -1255,6 +1281,7 @@ queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1310,6 +1337,7 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1358,6 +1386,7 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;)
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1413,6 +1442,7 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1463,6 +1493,7 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let photo: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
@@ -1524,6 +1555,7 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let photo: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
@@ -1575,10 +1607,14 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function onCallback(receiveLocalId: number){
     console.info('receive localId:' + receiveLocalId);
   }
+
   try {
     accountManager.on('activating', 'osAccountOnOffNameA', onCallback);
   } catch (e) {
@@ -1620,10 +1656,14 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function offCallback(){
     console.info('off enter')
   }
+
   try {
     accountManager.off('activating', 'osAccountOnOffNameA', offCallback);
   } catch (e) {
@@ -1664,10 +1704,14 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function onSwitchingCallback(eventData: osAccount.OsAccountSwitchEventData){
     console.info('receive eventData:' + JSON.stringify(eventData));
   }
+
   try {
     accountManager.on('switching', onSwitchingCallback);
   } catch (e) {
@@ -1708,6 +1752,8 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.off('switching');
@@ -1749,10 +1795,14 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function onSwitchedCallback(eventData: osAccount.OsAccountSwitchEventData){
     console.info('receive eventData:' + JSON.stringify(eventData));
   }
+
   try {
     accountManager.on('switched', onSwitchedCallback);
   } catch (e) {
@@ -1793,6 +1843,8 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.off('switched');
@@ -1832,6 +1884,7 @@ getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let testUid: number = 1000000;
   try {
@@ -1883,6 +1936,7 @@ getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let testUid: number = 1000000;
   try {
@@ -1930,6 +1984,8 @@ getBundleIdForUidSync(uid: number): number
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let testUid: number = 1000000;
   try {
@@ -1972,6 +2028,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.isMainOsAccount((err: BusinessError,result: boolean)=>{
@@ -2017,6 +2074,7 @@ isMainOsAccount(): Promise&lt;boolean&gt;;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.isMainOsAccount().then((result: boolean) => {
@@ -2065,6 +2123,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountConstraintSourceTypes(100, 'constraint.wifi',
@@ -2121,6 +2180,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountConstraintSourceTypes(100, 'constraint.wifi').then(
@@ -2233,11 +2293,12 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     let localId: number = 100;
     let domainInfo: osAccount.DomainAccountInfo =
-      {domain: 'testDomain', accountName: 'testAccountName'};
+      { domain: 'testDomain', accountName: 'testAccountName'};
     accountManager.bindDomainAccount(localId, domainInfo).then(() => {
       console.info('bindDomainAccount success.');
     }).catch((error: BusinessError) => {
@@ -2272,6 +2333,7 @@ constructor()
 | 202 | Not system application.|
 
 **示例：**
+
   ```ts
   let userAuth = new osAccount.UserAuth();
   ```
@@ -2299,6 +2361,7 @@ getVersion(): number;
 | 202 | Not system application.|
 
 **示例：**
+
   ```ts
   let userAuth = new osAccount.UserAuth();
   let version: number = userAuth.getVersion();
@@ -2341,7 +2404,10 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number;
 | 12300002 | Invalid authType or authTrustLevel. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
   let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
@@ -2385,8 +2451,10 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 | 12300003 | Account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let keys: Array<osAccount.GetPropertyType>  = [
     osAccount.GetPropertyType.AUTH_SUB_TYPE,
@@ -2447,8 +2515,10 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
 | 12300003 | Account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let keys: Array<osAccount.GetPropertyType> = [
     osAccount.GetPropertyType.AUTH_SUB_TYPE,
@@ -2508,8 +2578,10 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 | 12300102 | The credential does not exist. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let credInfo: osAccount.EnrolledCredInfo[] = [];
   async function getProperty() {
@@ -2574,8 +2646,10 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 | 12300002 | Invalid request. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let request: osAccount.SetPropertyRequest = {
     authType: osAccount.AuthType.PIN,
@@ -2631,8 +2705,10 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;;
 | 12300002 | Invalid request. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let request: osAccount.SetPropertyRequest = {
     authType: osAccount.AuthType.PIN,
@@ -2689,6 +2765,7 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
 | 12300111 | Operation timeout. |
 
 **示例：**
+
   ```ts
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2767,7 +2844,10 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let challenge: Uint8Array = new Uint8Array([0]);
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
@@ -2775,8 +2855,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
   try {
     userAuth.auth(challenge, authType, authTrustLevel, {
       onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-          console.info('auth result = ' + result);
-          console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+        console.info('auth result = ' + result);
+        console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
@@ -2842,7 +2922,10 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let challenge: Uint8Array = new Uint8Array([0]);
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
@@ -2853,8 +2936,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
   try {
     userAuth.auth(challenge, authType, authTrustLevel, options, {
       onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-          console.info('auth result = ' + result);
-          console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+        console.info('auth result = ' + result);
+        console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
@@ -2920,7 +3003,10 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let userID: number = 100;
   let challenge: Uint8Array = new Uint8Array([0]);
@@ -2968,7 +3054,10 @@ cancelAuth(contextID: Uint8Array): void
 | 12300002 | Invalid contextId. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   let challenge = new Uint8Array([0]);
@@ -3009,6 +3098,7 @@ constructor()
 | 202 | Not system application.|
 
 **示例：**
+
   ```ts
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   ```
@@ -3043,14 +3133,17 @@ registerInputer(inputer: IInputer): void
 | 12300103 | The credential inputer already exists. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   let password = new Uint8Array([0, 0, 0, 0, 0]);
   try {
     pinAuth.registerInputer({
-        onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
-          callback.onSetData(authSubType, password);
-        }
+      onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+        callback.onSetData(authSubType, password);
+      }
     });
     console.info('registerInputer success.');
   } catch (e) {
@@ -3079,6 +3172,7 @@ unregisterInputer(): void
 | 202 | Not system application.|
 
 **示例：**
+
   ```ts
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   pinAuth.unregisterInputer();
@@ -3120,14 +3214,17 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 | 12300106 | The authentication type is not supported. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0]);
   try {
     osAccount.InputerManager.registerInputer(authType, {
-        onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
-          callback.onSetData(authSubType, password);
-        }
+      onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+        callback.onSetData(authSubType, password);
+      }
     });
     console.info('registerInputer success.');
   } catch (e) {
@@ -3164,12 +3261,16 @@ static unregisterInputer(authType: AuthType): void
 | 12300002  | Invalid authType. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
   try {
     osAccount.InputerManager.unregisterInputer(authType);
     console.info('unregisterInputer success.');
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`unregisterInputer code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -3199,8 +3300,10 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **示例：**
+
   ```ts
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {
@@ -3264,8 +3367,10 @@ authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback)
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3315,8 +3420,10 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3365,8 +3472,10 @@ getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallba
 | callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | 是   | 指示查询结果回调。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3420,8 +3529,10 @@ getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&
 | callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | 是   | 指示查询结果回调。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3473,8 +3584,10 @@ bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: Asy
 | callback   | AsyncCallback&lt;void&gt; | 是   | 指示绑定结果回调。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3523,8 +3636,10 @@ unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;v
 | callback   | AsyncCallback&lt;void&gt; | 是   | 指示绑定结果回调。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3574,8 +3689,10 @@ isAccountTokenValid(domainAccountInfo: DomainAccountInfo, token: Uint8Array, cal
 | callback   | AsyncCallback&lt;boolean&gt; | 是   | 指示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3624,8 +3741,10 @@ getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;
 | callback   | AsyncCallback&lt;Uint8Array&gt; | 是   | 指示结果回调。|
 
 **示例：**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3658,6 +3777,7 @@ getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;
   ```
 
 ## DomainAccountManager <sup>9+</sup>
+
 域账号管理器类。
 
 ### registerPlugin<sup>9+</sup>
@@ -3689,8 +3809,10 @@ static registerPlugin(plugin: DomainPlugin): void
 | 12300201 | The domain plugin has been registered. |
 
 **示例：**
+
   ```ts
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
          callback: osAccount.IUserAuthCallback) => {},
@@ -3712,7 +3834,8 @@ static registerPlugin(plugin: DomainPlugin): void
   try {
     osAccount.DomainAccountManager.registerPlugin(plugin);
     console.info('registerPlugin success.');
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -3738,11 +3861,15 @@ static unregisterPlugin(): void
 | 801 | Capability not supported.|
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     osAccount.DomainAccountManager.unregisterPlugin();
     console.info('unregisterPlugin success.');
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`unregisterPlugin code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -3789,7 +3916,10 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -3849,7 +3979,10 @@ authWithPopup(callback: IUserAuthCallback): void
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     osAccount.DomainAccountManager.authWithPopup({
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
@@ -3906,7 +4039,10 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     osAccount.DomainAccountManager.authWithPopup(100, {
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
@@ -3956,8 +4092,10 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4017,8 +4155,10 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4067,8 +4207,10 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 | 12300003 | Account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan',
@@ -4126,8 +4268,10 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 | 12300003 | Account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan',
@@ -4138,7 +4282,7 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
     osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
       console.info('updateAccountToken successfully');
     }).catch((err: BusinessError) => {
-        console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
+      console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -4182,8 +4326,10 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4244,8 +4390,10 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4297,8 +4445,10 @@ getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&l
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let businessParams: Record<string, Object> = {
     'clientId': 'xxx',
     'secretId': 'yyy'
@@ -4357,8 +4507,10 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
 | 12300211 | Server unreachable. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let businessParams: Record<string, Object> = {
     'clientId': 'xxx',
     'secretId': 'yyy'
@@ -4412,10 +4564,12 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 | 12300003 | Domain account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo =
-    {domain: 'testDomain', accountName: 'testAccountName'};
+    { domain: 'testDomain', accountName: 'testAccountName'};
   try {
     osAccount.DomainAccountManager.isAuthenticationExpired(domainInfo).then((result: boolean) => {
       console.info('isAuthenticationExpired, result: ' + result);
@@ -4451,6 +4605,7 @@ constructor()
 | 202 | Not system application.|
 
 **示例：**
+
   ```ts
   let userIDM = new osAccount.UserIdentityManager();
   ```
@@ -4483,8 +4638,10 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 | 12300001 | The system service works abnormally. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
@@ -4536,15 +4693,17 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
 | 12300008 | Restricted account. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let accountId = 100;
   try {
     userIDM.openSession(accountId).then((challenge: Uint8Array) => {
-        console.info('openSession challenge = ' + JSON.stringify(challenge));
+      console.info('openSession challenge = ' + JSON.stringify(challenge));
     }).catch((err: BusinessError) => {
-        console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
+      console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -4590,8 +4749,10 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | 12300116 | Credential complexity verification failed. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   pinAuth.registerInputer({
@@ -4657,8 +4818,10 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | 12300116 | Credential complexity verification failed. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
@@ -4685,8 +4848,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
         try {
           userIDM.updateCredential(credentialInfo, {
             onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-                console.info('updateCredential result = ' + result);
-                console.info('updateCredential extraInfo = ' + extraInfo);
+              console.info('updateCredential result = ' + result);
+              console.info('updateCredential extraInfo = ' + extraInfo);
             }
           });
         } catch (e) {
@@ -4728,6 +4891,7 @@ closeSession(accountId?: number): void
 | 12300008 | Restricted account. |
 
 **示例：**
+
   ```ts
   let userIDM = new osAccount.UserIdentityManager();
   let accountId = 100;
@@ -4763,12 +4927,16 @@ cancel(challenge: Uint8Array): void
 | 12300002 | Invalid challenge. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let challenge: Uint8Array = new Uint8Array([0]);
   try {
     userIDM.cancel(challenge);
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`cancel code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -4803,7 +4971,10 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 | 12300101 | The token is invalid. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let token: Uint8Array = new Uint8Array([0]);
   try {
@@ -4852,7 +5023,10 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 | 12300102 | The credential does not exist. |
 
 **示例：**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let credentialId: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0]);
   let token: Uint8Array = new Uint8Array([0]);
@@ -4897,8 +5071,10 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 | 12300001 | The system service works abnormally. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.getAuthInfo((err: BusinessError, result: osAccount.EnrolledCredInfo[]) => {
@@ -4944,8 +5120,10 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 | 12300002 | Invalid authType. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.getAuthInfo(osAccount.AuthType.PIN,
@@ -4997,8 +5175,10 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
 | 12300002 | Invalid authType. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.getAuthInfo(osAccount.AuthType.PIN).then((result: osAccount.EnrolledCredInfo[]) => {
@@ -5048,8 +5228,10 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 | 12300003 | Account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let options: osAccount.GetAuthInfoOptions = {
     authType: osAccount.AuthType.PIN,
@@ -5106,16 +5288,18 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 | 12300106 | The authentication type is not supported. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
   let accountId = 100;
   try {
     userIDM.getEnrolledId(authType, accountId).then((enrolledId: Uint8Array) => {
-        console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
+      console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
     }).catch((err: BusinessError) => {
-        console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
+      console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -5155,6 +5339,7 @@ onSetData: (authSubType: AuthSubType, data: Uint8Array) => void;
 | 12300002 | Invalid pinSubType. |
 
 **示例：**
+
   ```ts
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
   let passwordNumber: Uint8Array = new Uint8Array([1, 2, 3, 4]);
@@ -5194,6 +5379,7 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 | options | [GetInputDataOptions](#getinputdataoptions12) | 是 | 回调函数的可选参数集合。 |
 
 **示例：**
+
   ```ts
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
   let passwordNumber: Uint8Array = new Uint8Array([1, 2, 3, 4]);
@@ -5236,6 +5422,7 @@ onResult: (result: number, extraInfo: AuthResult) => void;
 | extraInfo | [AuthResult](#authresult8)  | 是   | 表示不同情况下的具体信息，如果认证通过，则在extrainfo中返回认证令牌，如果身份验证失败，则在extrainfo中返回剩余的身份验证时间，如果身份验证执行器被锁定，冻结时间将在extrainfo中返回。|
 
 **示例：**
+
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
@@ -5264,6 +5451,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | extraInfo | Uint8Array     | 是   | 保留参数。                     |
 
 **示例：**
+
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
@@ -5302,6 +5490,7 @@ onResult: (result: number, extraInfo: RequestResult) => void;
 | extraInfo | [RequestResult](#requestresult8)  | 是   | 针对不同情况传递具体信息。|
 
 **示例：**
+
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: osAccount.RequestResult) => {
@@ -5330,6 +5519,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | extraInfo | Uint8Array | 是   | 保留参数。                     |
 
 **示例：**
+
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: Object) => {

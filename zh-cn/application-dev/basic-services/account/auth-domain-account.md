@@ -14,7 +14,7 @@
 导入系统账号模块。
 
 ```ts
-import { osAccount } from '@kit.BasicServicesKit';
+import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## 使用密码认证域账号
@@ -51,7 +51,8 @@ import { osAccount } from '@kit.BasicServicesKit';
    ```ts
    try {
      osAccount.DomainAccountManager.auth(domainAccountInfo, credential, callback);
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`auth exception = ${err.message}`);
    }
    ```
@@ -78,7 +79,8 @@ import { osAccount } from '@kit.BasicServicesKit';
    ```ts
    try {
      osAccount.DomainAccountManager.authWithPopup(callback)
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`authWithPopup exception = ${err.message}`);
    }
    ```

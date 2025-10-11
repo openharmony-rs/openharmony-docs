@@ -161,8 +161,9 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
    try {
        osAccount.DomainAccountManager.registerPlugin(plugin)
        console.info("registerPlugin success")
-   } catch (err) {
-       console.error(`registerPlugin err: code is ${err.code}, message is ${err.message}`);
+   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`registerPlugin err: code is ${err.code}, message is ${err.message}`);
    }
    ```
 
@@ -176,7 +177,8 @@ OEM厂商可以采用插件方式定制化域账号管理能力，系统提供�
 try {
   osAccount.DomainAccountManager.unregisterPlugin();
   console.info('unregisterPlugin success.');
-} catch(err) {
+} catch (e) {
+  const err = e as BusinessError;
   console.error(`unregisterPlugin failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
