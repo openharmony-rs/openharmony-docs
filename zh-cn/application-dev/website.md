@@ -832,8 +832,8 @@
       - [代理提醒(ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
       - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request-sys.md)
       - 设备使用信息统计（仅对系统应用开放）<!--device-usage-statistics-->
-        - [设备使用信息统计概述（仅对系统特权应用开放）](device-usage-statistics/device-usage-statistics-overview-sys.md)
-        - [设备使用信息统计开发指导（仅对系统特权应用开放）](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
+        - [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-overview-sys.md)
+        - [设备使用信息统计开发指导（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
       <!--DelEnd-->
     - Core File Kit（文件基础服务）<!--core-file-kit-->
       - [Core File Kit简介](file-management/core-file-kit-intro.md)
