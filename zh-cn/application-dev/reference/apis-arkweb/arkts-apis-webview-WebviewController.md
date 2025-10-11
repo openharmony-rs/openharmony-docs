@@ -6269,7 +6269,7 @@ enableSafeBrowsing(enable: boolean): void
 
 > **说明：**
 > 
-> 该接口不生效，调用不会产生任何实际效果。若未调用该属性，默认不启用检查网站安全风险的功能。
+> 该接口不生效，调用不会产生任何实际效果。若未显式调用该属性，默认不启用检查网站安全风险的功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
