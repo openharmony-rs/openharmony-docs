@@ -126,7 +126,7 @@ This section describes the fields of a user-mode trace, including the field comp
 
   This field consists of the level and tag.
 
-  The level is passed through the logging API, whose value can be **D**, **I**, **C**, or **M**. It corresponds to the **level** parameter in the [@ohos.hiTraceMeter (Performance Tracing)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) API. For details about the description and mappings, see[HiTrace Output Levels](#hitrace-output-levels).
+  The level is passed through the logging API, whose value can be **D**, **I**, **C**, or **M**. It corresponds to the **level** parameter in the [@ohos.hiTraceMeter (Performance Tracing)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) API. For details about the description and mappings, see[HiTraceOutputLevel](#hitraceoutputlevel).
 
   The tag set indicates the tags of the trace, each of which is represented by a two-digit number. The tag set can contain multiple two-digit numbers in ascending order.
 
@@ -217,7 +217,7 @@ In the user-mode trace, if the middle field is empty, the vertical bar (|) is re
     S|[Process ID]|H:[ID of the distributed call chain tracing task]#[Content]|[Asynchronous task ID]|[Level and tag set]
     ```
 
-### HiTraceMeter Tags
+### HiTraceMeter Tag
 
 The following lists the user-mode tag set of HitraceMeter. The tag value is the left shift value of 1 in the code. You can run the hitrace -l command to view the user-mode tag. `always` and `commercial` are the default always-on tag and customized tag in commercial version scenarios, respectively.
 

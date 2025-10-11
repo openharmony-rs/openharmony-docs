@@ -90,5 +90,5 @@
   - [hiprofiler](hiprofiler.md)
   - [uinput](uinput.md)
   <!--Del-->
-  - [hisysevent](hisysevent.md)
+  - [hisysevent（仅对系统应用开放）](hisysevent-sys.md)
   <!--DelEnd-->

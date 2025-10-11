@@ -34,7 +34,7 @@ MindSpore Lite provides AI model inference capabilities tailored for different h
 
 **Figure 1** Development process for MindSpore Lite model inference
 
-![mindspore workflow](figures/mindspore_workflow.png)
+![mindspore workflow](figures/mindspore_workflow.jpg)
 
 The MindSpore Lite development process consists of two phases:
 

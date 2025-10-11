@@ -1,4 +1,10 @@
 # RichEditor
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @carnivore233-->
+<!--Designer: @pssea-->
+<!--Tester: @mateng_Holtens-->
+<!--Adviser: @HelloCrease-->
 
 **RichEditor** is a component that supports interactive text editing and mixture of text and imagery.
 
@@ -1010,7 +1016,7 @@ On non-2-in-1 devices, when **options** is set to **MenuPolicy.DEFAULT**, the fo
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | Yes   | Start position of the selection.|
 | selectionEnd   | number | Yes   | End position of the selection.|
-| options<sup>12+</sup>   | [SelectionOptions](ts-types.md#selectionoptions12) | No   | Configuration of options.|
+| options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12) | No   | Configuration of options.|
 
 ### isEditing<sup>12+</sup>
 
@@ -1248,7 +1254,7 @@ Updates the paragraph style.
 
 ### getSpans
 
-getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult| RichEditorTextSpanResult>
+getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorTextSpanResult>
 
 Obtains span information.
 

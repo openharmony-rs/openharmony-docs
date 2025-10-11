@@ -5064,3 +5064,31 @@
 **支持设备**：PC/2in1
 
 **起始版本**：20
+
+## ohos.permission.GET_SCREEN_CONTENT
+
+允许应用获取屏幕上的内容。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.SIMULATE_USER_INPUT
+
+允许应用模拟用户操作。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20

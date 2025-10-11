@@ -9,9 +9,9 @@
 
 ## Overview
 
-The **drawing_gpu_context.h** file declares the functions related to the GPU context in the drawing module.
+This file declares the functions related to the GPU context in the drawing module.
 
-**Header file**: <native_drawing/drawing_gpu_context.h>
+**File to include**: <native_drawing/drawing_gpu_context.h>
 
 **Library**: libnative_drawing.so
 
@@ -19,7 +19,7 @@ The **drawing_gpu_context.h** file declares the functions related to the GPU con
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Structs
 
@@ -53,20 +53,20 @@ Creates an **OH_Drawing_GpuContext** object that uses OpenGL as the backend inte
 
 **Deprecated from**: 18
 
-**Replaced API**: OH_Drawing_GpuContextCreate
+**Substitute**: OH_Drawing_GpuContextCreate
 
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_GpuContextOptions](capi-drawing-oh-drawing-gpucontextoptions.md) gpuContextOptions | GPU context option [OH_Drawing_GpuContextOptions](capi-drawing-oh-drawing-gpucontextoptions.md).|
+| [OH_Drawing_GpuContextOptions](capi-drawing-oh-drawing-gpucontextoptions.md) gpuContextOptions | GPU context options, which is [OH_Drawing_GpuContextOptions](capi-drawing-oh-drawing-gpucontextoptions.md).|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md)* | A pointer to the created GPU context object [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md).|
+| [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md)* | Returns the pointer to the [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object created.|
 
 ### OH_Drawing_GpuContextCreate()
 
@@ -82,11 +82,11 @@ Creates an **OH_Drawing_GpuContext** object, for which the backend type depends 
 
 **Since**: 16
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md)* | Returns a pointer that points to the created GPU context object [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md).|
+| [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md)* | Returns the pointer to the [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object created.|
 
 ### OH_Drawing_GpuContextDestroy()
 
@@ -107,4 +107,4 @@ Destroys an **OH_Drawing_GpuContext** object and reclaims the memory occupied by
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md)* gpuContext | Pointer [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) that points to the GPU context object.|
+| [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md)* gpuContext | Pointer to an [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) object.|

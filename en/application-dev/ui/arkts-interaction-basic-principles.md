@@ -1,12 +1,12 @@
 # Interaction Mechanism Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
 
-The interaction framework processes pointer-based inputs through coordinate-based hit testing to determine event and gesture targets. This mechanism forms a response chain where the system delivers events to corresponding UI components based on the coordinates, types, and other information of the events, combined with the UI layout. Multiple events can combine to trigger gestures or features, for example, long press, click, and drag.
+For pointer-based interactions including [touch events](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md), [mouse events](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md), and [axis events](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md), the interaction framework determines event and gesture targets through coordinate-based hit testing. This process assembles a response chain by identifying components within the interaction area. The system then dispatches events to appropriate UI components by correlating touch coordinates, event types, and layout information. Multiple events can combine to trigger gestures or features, for example, long press, click, and drag.
 
 ## Event Interaction Pipeline
 
@@ -140,6 +140,14 @@ Applications can intervene in hit test results through the following methods to 
    - **HitTestMode.Transparent**: This mode allows the component to participate in hit testing itself, without blocking the hit testing of sibling or parent components.
 
      ![hitTestModeTransparent](figures/hitTestModeTransparent.png)
+
+   - **HitTestMode.BLOCK_HIERARCHY** (available since API version 20): In this mode, the node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.
+
+     ![hitTestModeBLOCK_HIERARCHY.png](figures/hitTestModeBLOCK_HIERARCHY.png)
+
+   - **HitTestMode.BLOCK_DESCENDANTS** (available since API version 20): In this mode, the node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.
+
+     ![hitTestModeBLOCK_DESCENDANTS.png](figures/hitTestModeBLOCK_DESCENDANTS.png)
 
 3. Custom Event Interception
 

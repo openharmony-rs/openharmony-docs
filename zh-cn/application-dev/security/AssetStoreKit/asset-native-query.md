@@ -9,8 +9,7 @@
 
 ## 接口介绍
 
-可通过API文档查看查询关键资产的接口[OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query)
-的详细介绍。
+可通过API文档查看查询关键资产的接口[OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query)的详细介绍。
 
 在查询关键资产时，关键资产属性的内容参数如下表所示：
 

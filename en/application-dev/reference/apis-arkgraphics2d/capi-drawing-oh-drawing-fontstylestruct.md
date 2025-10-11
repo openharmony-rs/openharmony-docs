@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The OH_Drawing_FontStyleStruct struct describes a font style.
+This struct describes a font style.
 
 **Since**: 12
 
@@ -15,7 +15,7 @@ The OH_Drawing_FontStyleStruct struct describes a font style.
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 
-## Total
+## Summary
 
 ### Member Variables
 

@@ -1,4 +1,10 @@
 # Repeat: Reusing Components for Repeated Content Rendering
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liubihao-->
+<!--Designer: @keerecles-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 > 
@@ -21,11 +27,11 @@
 
 ## Constraints
 
-- **Repeat** must be used within the following scrollable container components: [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md).
-<br>Each iteration can only create one child component, which must be compatible with its parent container. For example, when **Repeat** is used with the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component, the child component must be [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md).
+- **Repeat** must be used within scrollable container components. Only the following components support lazy loading with **Repeat**: [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md).<br>
+Each iteration can only create one child component, which must be compatible with its parent container. For example, when **Repeat** is used with the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component, the child component must be [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md).
 - **Repeat** does not support V1 decorators. Using it with V1 decorators can cause rendering issues.
 - Currently, **Repeat** does not support animations.
-- A scrollable container component can contain only one **Repeat**. For example, in a **List** component, using **ListItem**, **ForEach**, and **LazyForEach** together, or using multiple **Repeat** instances, is not recommended.
+- A scrollable container component can contain only one **Repeat**. For example, in a **List** component, avoid mixing **ListItem**, **ForEach**, **LazyForEach**, or multiple **Repeat** components simultaneously.
 - When **Repeat** is used together with a custom component or [@Builder](../state-management/arkts-builder.md) function, the parameter of the **RepeatItem** type must be passed as a whole to the component for data changes to be detected. For details, see [Using Repeat with @Builder](#using-repeat-with-builder).
 
 > **NOTE**
@@ -36,9 +42,9 @@
 
 ## How It Works
 
-Child components of **Repeat** are defined using **.each()** and .**template()** properties, with only one child component allowed per instance. During initial page rendering, **Repeat** creates child components on demand based on the current effective loading range (visible area + preload area), as illustrated below.
+Child components of **Repeat** are defined using **.each()** and **.template()** properties, with only one child component allowed per instance. During initial page rendering, **Repeat** creates child components on demand based on the current effective loading range (visible area + preload area), as illustrated below.
 
-![Repeat-Render](./figures/Repeat-Render.png)
+![Repeat-Render](figures/Repeat-Render.png)
 
 **.each()** applies to the scenario where only one type of child component needs to be rendered in an iteration. The following example demonstrates basic usage of **Repeat**:
 
@@ -76,14 +82,14 @@ struct RepeatExample {
 
 After execution, the UI is displayed as shown below.
 
-![Repeat-Example-With-Each](./figures/Repeat-Example-With-Each.png)
+![Repeat-Example-With-Each](figures/Repeat-Example-With-Each.png) 
 
 **Repeat** supports rendering templates, enabling multiple types of child components to be rendered from a single data source. Each data item obtains its template type through the **.templateId()** API, and the corresponding **.template()** API is used to render the appropriate child component.
 
-- If **.templateId()** is not provided, the default type, which is an empty string, is used.
-- If multiple **.template()** APIs share the same type, the last defined one takes effect, overriding the previous ones.
-- If no matching template type is found, the child component in **.template()** whose type is an empty string is rendered first. If no such **.template()** is available, the child component in **.each()** is rendered.
-- Only nodes with the same template type can be reused.
+- The **.each()** API is equivalent to **.template()** with an empty string as the template type.
+- When multiple templates share the same type (including empty string), **Repeat** only applies the most recent **.each()** or **.template()** definition.
+- If **.templateId()** is unspecified or returns a non-existent template type, **Repeat** defaults to the empty string template type.
+- Components of the same template type are eligible for reuse.
 
 The following example demonstrates how to use **Repeat** with multiple rendering templates.
 
@@ -135,7 +141,7 @@ struct RepeatExampleWithTemplates {
 
 After execution, the UI is displayed as shown below.
 
-![Repeat-Example-With-Templates](./figures/Repeat-Example-With-Templates.png)
+![Repeat-Example-With-Templates](figures/Repeat-Example-With-Templates.png)
 
 ## Node Update and Reuse Mechanism
 
@@ -150,7 +156,7 @@ When scrolling occurs or the array data changes, **Repeat** moves child nodes th
 
 By default, node reuse is enabled for **Repeat**. Since API version 18, you can configure the **reusable** field to specify whether to enable node reuse. For better rendering performance, you are advised to keep node reuse enabled. For a code example, see [VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).
 
-Since API version 18, **Repeat** supports L2 caching of frozen custom components. For details, see [Freezing Custom Components in a Buffer Pool](../state-management/arkts-custom-components-freezeV2.md#repeat).
+Since API version 18, **Repeat** supports L2 caching of frozen custom components. For details, see [Freezing a Custom Component](../state-management/arkts-custom-components-freezeV2.md#repeat).
 
 The following illustrates the rendering logic of child components under typical [scroll](#scrolling-scenario) and [data update](#data-update-scenario) scenarios. In the figure below, the L1 cache represents the effective loading area managed by **Repeat**, and the L2 cache refers to the idle node cache pool for each rendering template.
 
@@ -158,7 +164,7 @@ For this example, we define an array with 20 items. The first 5 items use templa
 
 The following figure shows the list node status after initial rendering.
 
-![Repeat-Start](./figures/Repeat-Start.PNG)
+![Repeat-Start](figures/Repeat-Start.PNG)
 
 ### Scrolling Scenario
 
@@ -166,7 +172,7 @@ When the user swipes the screen to the right by the distance of one node, **Repe
 
 The node whose index is 0 moves out of the effective loading area. When the UI main thread is idle, the system checks whether the **aa** cache pool is full. If it is not full, the system adds the node to the corresponding cache pool; otherwise, **Repeat** destroys redundant nodes.
 
-![Repeat-Slide](./figures/Repeat-Slide.PNG)
+![Repeat-Slide](figures/Repeat-Slide.PNG)
 
 ### Data Update Scenario
 
@@ -174,11 +180,11 @@ Perform the following array update operations based on the previous section: Del
 
 After the node whose index is 4 is deleted, it is invalidated and added to the **aa** cache pool. The subsequent nodes move leftwards, with the newly entering **item_11** node reusing an idle node in the **bb** cache pool, while other nodes only receive index updates.  
 
-![Repeat-Update1](./figures/Repeat-Update1.PNG)
+![Repeat-Update1](figures/Repeat-Update1.PNG)
 
 Then, as the **item_5** node moves leftwards and its index is updated to 4, its template type changes to **aa** according to calculation rules. This requires reusing an idle node from the **aa** cache pool and adding the old node back to the **bb** cache pool.  
 
-![Repeat-Update2](./figures/Repeat-Update2.PNG)
+![Repeat-Update2](figures/Repeat-Update2.PNG)
 
 ## Key Generation
 
@@ -199,7 +205,7 @@ When using **.key()**, pay attention to the following:
 
 ## Precise Lazy Loading
 
-When the total length of the data source is long or loading data items takes time, you can use the precise lazy loading feature of **Repeat** to avoid loading all data during initialization.
+When the total length of the data source is long or loading data items takes time, you can use the precise lazy loading feature of **Repeat** to avoid loading all data during initialization. The precise lazy loading feature for **Repeat** data is supported since API version 19.
 
 You can set the **totalCount** property of **.virtualScroll()** or the custom **onTotalCount** method to calculate the expected length of the data source, and set the **onLazyLoading** property to implement precise lazy loading of data. This way, the corresponding data is loaded when the node is rendered for the first time. For details, see [VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).
 
@@ -246,7 +252,7 @@ struct RepeatLazyLoading {
 
 The figure below shows the effect.
 
-![Repeat-Lazyloading-1](./figures/repeat-lazyloading-demo1.gif)
+![Repeat-Lazyloading-1](figures/repeat-lazyloading-demo1.gif)
 
 **Example 2**
 
@@ -289,7 +295,7 @@ struct RepeatLazyLoading {
 
 The figure below shows the effect.
 
-![Repeat-Lazyloading-2](./figures/repeat-lazyloading-demo2.gif)
+![Repeat-Lazyloading-2](figures/repeat-lazyloading-demo2.gif)
 
 **Example 3**
 
@@ -341,7 +347,7 @@ struct RepeatLazyLoading {
 
 The figure below shows the effect.
 
-![Repeat-Lazyloading-3](./figures/repeat-lazyloading-demo3.gif)
+![Repeat-Lazyloading-3](figures/repeat-lazyloading-demo3.gif)
 
 
 ## Drag-and-Drop Sorting
@@ -381,10 +387,10 @@ struct RepeatVirtualScrollOnMove {
               Text(obj.item)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
-                .size({height: 100, width: "100%"})
+                .size({height: 100, width: '100%'})
             }.margin(10)
             .borderRadius(10)
-            .backgroundColor("#FFFFFFFF")
+            .backgroundColor('#FFFFFFFF')
           })
           .key((item: string, index: number) => {
             return item;
@@ -392,7 +398,7 @@ struct RepeatVirtualScrollOnMove {
           .virtualScroll({ totalCount: this.simpleList.length })
       }
       .border({ width: 1 })
-      .backgroundColor("#FFDCDCDC")
+      .backgroundColor('#FFDCDCDC')
       .width('100%')
       .height('100%')
     }
@@ -402,7 +408,7 @@ struct RepeatVirtualScrollOnMove {
 
 The figure below shows the effect.
 
-![Repeat-Drag-Sort](./figures/repeat-drag-sort.gif)
+![Repeat-Drag-Sort](figures/repeat-drag-sort.gif)
 
 ## Content Position Preservation
 
@@ -445,24 +451,24 @@ struct PreInsertDemo {
               Row() {
                 Text(`index: ${obj.index}  `)
                   .fontSize(16)
-                  .fontColor("#70707070")
+                  .fontColor('#70707070')
                   .textAlign(TextAlign.End)
-                  .size({ height: 100, width: "40%" })
+                  .size({ height: 100, width: '40%' })
                 Text(`item: ${obj.item}`)
                   .fontSize(16)
                   .textAlign(TextAlign.Start)
-                  .size({ height: 100, width: "60%" })
+                  .size({ height: 100, width: '60%' })
               }
             }.margin(10)
             .borderRadius(10)
-            .backgroundColor("#FFFFFFFF")
+            .backgroundColor('#FFFFFFFF')
           })
           .key((item: string, index: number) => item)
           .virtualScroll({ totalCount: this.simpleList.length })
       }
       .maintainVisibleContentPosition(true) // Enable content position preservation.
       .border({ width: 1 })
-      .backgroundColor("#FFDCDCDC")
+      .backgroundColor('#FFDCDCDC')
       .width('100%')
       .height('100%')
     }
@@ -474,7 +480,7 @@ In the example, insertions or deletions above the viewport cause only index upda
 
 The figure below shows the effect.
 
-![Repeat-pre-insert-preserve](./figures/repeat-pre-insert-preserve.gif)
+![Repeat-pre-insert-preserve](figures/repeat-pre-insert-preserve.gif)
 
 ## Use Cases
 
@@ -501,7 +507,7 @@ struct RepeatVirtualScroll2T {
   @Local selectOptions: SelectOption[] = [];
   @Local selectIdx: number = 0;
 
-  @Monitor("simpleList")
+  @Monitor('simpleList')
   reloadSelectOptions(): void {
     this.selectOptions = [];
     for (let i = 0; i < this.simpleList.length; ++i) {
@@ -622,7 +628,7 @@ struct RepeatVirtualScroll2T {
 
 This example demonstrates the implementation of 100 items using a custom class **RepeatClazz** with a string property **message**. The **cachedCount** attribute of the **List** component is set to **2**, and the sizes of the idle node cache pools for the **'odd'** and **'even'** templates are set to **3** and **1**, respectively. After execution, the UI is displayed as shown below.
 
-![Repeat-VirtualScroll-2T-Demo](./figures/Repeat-VirtualScroll-2T-Demo.gif)
+![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
 
 ### Repeat Nesting
 
@@ -663,7 +669,7 @@ struct RepeatNest {
                           .fontSize(20)
                       }
                     })
-                    .key((item) => "innerList_" + item)
+                    .key((item) => 'innerList_' + item)
                     .virtualScroll()
                 }
                 .width('80%')
@@ -675,7 +681,7 @@ struct RepeatNest {
             }
             .border({ width: 1 })
           })
-          .key((item) => "outerList_" + item)
+          .key((item) => 'outerList_' + item)
           .virtualScroll()
       }
       .width('80%')
@@ -690,13 +696,13 @@ struct RepeatNest {
 
 The figure below shows the effect.
 
-![Repeat-Nest](./figures/Repeat-Nest.png)
+![Repeat-Nest](figures/Repeat-Nest.png)
 
 ### Integration with Parent Container Components
 
 This section provides examples of using **Repeat** within scrollable container components.
 
-#### Using with a List Component
+**Using with a List Component**
 
 This example demonstrates how to use **Repeat** in the **List** component.
 
@@ -720,8 +726,8 @@ struct DemoList {
     for (let i = 0; i < 10; i++) {
       // app.media.listItem0, app.media.listItem1, and app.media.listItem2 are only examples. Replace them with the actual ones in use.
       this.videoList.push(new DemoListItemInfo('Video' + i,
-        i % 3 == 0 ? $r("app.media.listItem0") :
-        i % 3 == 1 ? $r("app.media.listItem1") : $r("app.media.listItem2")));
+        i % 3 == 0 ? $r('app.media.listItem0') :
+        i % 3 == 1 ? $r('app.media.listItem1') : $r('app.media.listItem2')));
     }
   }
 
@@ -798,9 +804,9 @@ struct DemoList {
 
 Swipe left and touch the **Delete** button, or touch the button at the bottom to delete the video widget.
 
-![Repeat-Demo-List](./figures/Repeat-Demo-List.gif)
+![Repeat-Demo-List](figures/Repeat-Demo-List.gif)
 
-#### Using with a Grid Component
+**Using with a Grid Component**
 
 This example demonstrates how to use **Repeat** in the **Grid** component.
 
@@ -823,16 +829,16 @@ struct DemoGrid {
   private layoutOptions: GridLayoutOptions = {
     regularSize: [1, 1],
     irregularIndexes: [10]
-  }
-  private GridScroller: Scroller = new Scroller();
+  };
+  private gridScroller: Scroller = new Scroller();
   private num: number = 0;
 
   aboutToAppear(): void {
     for (let i = 0; i < 10; i++) {
       // app.media.gridItem0, app.media.gridItem1, and app.media.gridItem2 are only examples. Replace them with the actual ones in use.
       this.itemList.push(new DemoGridItemInfo('Video' + i,
-        i % 3 == 0 ? $r("app.media.gridItem0") :
-        i % 3 == 1 ? $r("app.media.gridItem1") : $r("app.media.gridItem2")));
+        i % 3 == 0 ? $r('app.media.gridItem0') :
+        i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
     }
   }
 
@@ -843,7 +849,7 @@ struct DemoGrid {
         .fontColor(Color.Gray)
 
       Refresh({ refreshing: $$this.isRefreshing }) {
-        Grid(this.GridScroller, this.layoutOptions) {
+        Grid(this.gridScroller, this.layoutOptions) {
           Repeat<DemoGridItemInfo>(this.itemList)
             .each((obj: RepeatItem<DemoGridItemInfo>) => {
               if (obj.index === 10 ) {
@@ -854,7 +860,7 @@ struct DemoGrid {
                 .height(30)
                 .border({ width: 1 })
                 .onClick(() => {
-                  this.GridScroller.scrollToIndex(0);
+                  this.gridScroller.scrollToIndex(0);
                   this.isRefreshing = true;
                 })
                 .onAppear(() => {
@@ -899,8 +905,8 @@ struct DemoGrid {
           for (let i = 0; i < 10; i++) {
             // app.media.gridItem0, app.media.gridItem1, and app.media.gridItem2 are only examples. Replace them with the actual ones in use.
             this.itemList.unshift(new DemoGridItemInfo('New video ' + this.num,
-              i % 3 == 0 ? $r("app.media.gridItem0") :
-              i % 3 == 1 ? $r("app.media.gridItem1") : $r("app.media.gridItem2")));
+              i % 3 == 0 ? $r('app.media.gridItem0') :
+              i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
             this.num++;
           }
           this.isRefreshing = false;
@@ -914,7 +920,7 @@ struct DemoGrid {
 
       Button('Refresh')
         .onClick(() => {
-          this.GridScroller.scrollToIndex(0);
+          this.gridScroller.scrollToIndex(0);
           this.isRefreshing = true;
         })
     }
@@ -927,9 +933,9 @@ struct DemoGrid {
 
 Swipe down on the screen, touch the **Refresh** button, or touch **Last viewed here. Touch to refresh.** to load new videos.
 
-![Repeat-Demo-Grid](./figures/Repeat-Demo-Grid.gif)
+![Repeat-Demo-Grid](figures/Repeat-Demo-Grid.gif)
 
-#### Using with a Swiper Component
+**Using with a Swiper Component**
 
 This example demonstrates how to use **Repeat** in the **Swiper** component.
 
@@ -1011,7 +1017,7 @@ struct DemoSwiper {
 
 Here network latency is simulated with a 1-second delay for image loading.
 
-![Repeat-Demo-Swiper](./figures/Repeat-Demo-Swiper.gif)
+![Repeat-Demo-Swiper](figures/Repeat-Demo-Swiper.gif)
 
 ## Lazy Loading Disablement
 
@@ -1038,17 +1044,17 @@ Second, **Repeat** traverses new array keys. For each key in the new array:
 
 Third, after the new array keys are traversed, nodes corresponding to the remaining keys in the **deletedKeys** collection are destroyed.
 
-![Repeat-NonVS-FuncGen](./figures/Repeat-NonVS-FuncGen.png)
+![Repeat-NonVS-FuncGen](figures/Repeat-NonVS-FuncGen.png)
 
 In the example of array changes shown below, item_*X* represents the key of a data item.
 
-![Repeat-NonVS-Example](./figures/Repeat-NonVS-Example.png)
+![Repeat-NonVS-Example](figures/Repeat-NonVS-Example.png)
 
 Based on the aforementioned update logic, **item_0** remains unchanged, **item_1** and **item_2** only have their indexes changed, **item_n1** and **item_n2** are obtained by updating **item_4** and **item_3**, respectively, and **item_n3** is newly created because no reusable nodes are available.
 
 > **NOTE**
 > 
-> Key differences between **Repeat** with lazy loading disabled and [ForEach](arkts-rendering-control-foreach.md):
+> Key differences between **Repeat** with lazy loading disabled and [ForEach](./arkts-rendering-control-foreach.md):
 > - Performance optimization: **Repeat** implements specialized rendering enhancements for array update scenarios.
 > - Architectural shift: Component content and index management responsibilities are elevated to the framework level.
 
@@ -1097,7 +1103,7 @@ struct ChildItem {
 }
 ```
 
-![ForEach-Non-Initial-Render-Case-Effect](./figures/ForEach-Non-Initial-Render-Case-Effect.gif)
+![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
 
 When the red text component is clicked, the third data item undergoes a content update while preserving its existing component node.
 
@@ -1140,12 +1146,12 @@ struct RepeatTemplateSingle {
           })
           .template('number', (r) => {
             ListItem() {
-              Text(r.index! + ":" + r.item + "Reuse");
+              Text(r.index! + ':' + r.item + 'Reuse');
             }
           })
           .each((r) => {
             ListItem() {
-              Text(r.index! + ":" + r.item + "eachMessage");
+              Text(r.index! + ':' + r.item + 'eachMessage');
             }
           })
       }
@@ -1167,10 +1173,10 @@ struct RepeatTemplateSingle {
 
 The figure below shows the effect.
 
-![repeat-case1-wrong](./figures/repeat-case1-wrong.gif)
+![repeat-case1-wrong](figures/repeat-case1-wrong.gif)
 
 **Implementation After Correction**
-To maintain the scroll position during off-screen data changes, use the [onScrollIndex](../../ui/arkts-layout-development-create-list.md#handling-scroll-position-changes) callback of the **List** component to listen for scrolling and obtain the scroll position when the list scrolls. Then, use the [scrollToIndex](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of **Scroller** to lock the scroll position when off-screen data is added or removed.
+To maintain the scroll position during off-screen data changes, use the [onScrollIndex](../arkts-layout-development-create-list.md#handling-scroll-position-changes) callback of the **List** component to listen for scrolling and obtain the scroll position when the list scrolls. Then, use the [scrollToIndex](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of **Scroller** to lock the scroll position when off-screen data is added or removed.
 
 The following example demonstrates handling of data additions:
 
@@ -1197,12 +1203,12 @@ struct RepeatTemplateSingle {
           })
           .template('number', (r) => {
             ListItem() {
-              Text(r.index! + ":" + r.item + "Reuse")
+              Text(r.index! + ':' + r.item + 'Reuse')
             }
           })
           .each((r) => {
             ListItem() {
-              Text(r.index! + ":" + r.item + "eachMessage")
+              Text(r.index! + ':' + r.item + 'eachMessage')
             }
           })
       }
@@ -1231,7 +1237,7 @@ struct RepeatTemplateSingle {
 
 The figure below shows the effect.
 
-![repeat-case1-fixed](./figures/repeat-case1-fixed.gif)
+![repeat-case1-fixed](figures/repeat-case1-fixed.gif)
 
 ### Handling Cases Where the totalCount Value Exceeds the Data Source Length
 
@@ -1239,7 +1245,7 @@ For large datasets, lazy loading is typically used to render only a portion of t
 
 If the **totalCount** value is greater than the **array.length** value, the application should request subsequent data when the list is about to reach the end of the currently loaded items. Implement safeguards for data request errors (for example, network latency) to prevent UI display anomalies.
 
-This can be implemented using the [onScrollIndex](../../ui/arkts-layout-development-create-list.md#handling-scroll-position-changes) callback of the parent component (**List** or **Grid**). The sample code is as follows:
+This can be implemented using the [onScrollIndex](../arkts-layout-development-create-list.md#handling-scroll-position-changes) callback of the parent component (**List** or **Grid**). The sample code is as follows:
 
 ```ts
 @ObservedV2
@@ -1267,7 +1273,7 @@ class VehicleDB {
 
 @Entry
 @ComponentV2
-struct entryCompSucc {
+struct EntryCompSucc {
   @Local vehicleItems: VehicleData[] = new VehicleDB().vehicleItems;
   @Local listChildrenSize: ChildrenMainSize = new ChildrenMainSize(60);
   @Local totalCount: number = this.vehicleItems.length;
@@ -1294,7 +1300,7 @@ struct entryCompSucc {
           }, { cachedCount: 5 })
           .each((ri) => {
             ListItem() {
-              Text("Wrong: " + `${ri.item.name} + ${ri.index}`)
+              Text('Wrong: ' + `${ri.item.name} + ${ri.index}`)
                 .width('90%')
                 .height(this.listChildrenSize.childDefaultSize)
                 .backgroundColor(0xFFA07A)
@@ -1315,7 +1321,7 @@ struct entryCompSucc {
         if (this.vehicleItems.length < 50) {
           for (let i = 0; i < 10; i++) {
             if (this.vehicleItems.length < 50) {
-              this.vehicleItems.push(new VehicleData("Vehicle_loaded", i));
+              this.vehicleItems.push(new VehicleData('Vehicle_loaded', i));
             }
           }
         }
@@ -1327,7 +1333,7 @@ struct entryCompSucc {
 
 The figure below shows the effect.
 
-![Repeat-Case2-Succ](./figures/repeat-case2-succ.gif)
+![repeat-case2-succ](figures/repeat-case2-succ.gif)
 
 ### Using Repeat with @Builder
 
@@ -1351,7 +1357,7 @@ struct RepeatBuilderPage {
 
   build() {
     Column({ space: 20 }) {
-      Text('Use Repeat and @Builder together: The abnormal display is on the left, and the normal display is on the right.')
+      Text('Repeat + @Builder: Left (incorrect) vs. Right (correct). Scroll to see differences.')
         .fontSize(15)
         .fontColor(Color.Gray)
 
@@ -1360,7 +1366,7 @@ struct RepeatBuilderPage {
           Repeat<number>(this.simpleList1)
             .each((ri) => {})
             .virtualScroll({ totalCount: this.simpleList1.length })
-            .templateId((item: number, index: number) => "default")
+            .templateId((item: number, index: number) => 'default')
             .template('default', (ri) => {
               ListItem() {
                 Column() {
@@ -1370,6 +1376,7 @@ struct RepeatBuilderPage {
                 }
               }
               .border({ width: 1 })
+              .width('90%')
             }, { cachedCount: 3 })
         }
         .cachedCount(1)
@@ -1381,7 +1388,7 @@ struct RepeatBuilderPage {
           Repeat<number>(this.simpleList2)
             .each((ri) => {})
             .virtualScroll({ totalCount: this.simpleList2.length })
-            .templateId((item: number, index: number) => "default")
+            .templateId((item: number, index: number) => 'default')
             .template('default', (ri) => {
               ListItem() {
                 Column() {
@@ -1391,6 +1398,7 @@ struct RepeatBuilderPage {
                 }
               }
               .border({ width: 1 })
+              .width('90%')
             }, { cachedCount: 3 })
         }
         .cachedCount(1)
@@ -1424,4 +1432,8 @@ struct RepeatBuilderPage {
 
 The following figure shows the display effect. Scroll down on the page to observe the difference: The left side demonstrates incorrect usage, while the right side shows the correct usage. (**Text** components are in black, while **Builder** components are in red). The preceding code shows the error-prone scenario during development, where only the value, instead the entire **RepeatItem** object, is passed in the @Builder function.
 
-![Repeat-Builder](./figures/Repeat-Builder.png)
+![Repeat-Builder](figures/Repeat-Builder.gif)
+
+### Managing Full-Screen Expansion with expandSafeArea
+
+In versions earlier than API version 18, if a Repeat child component has the **expandSafeArea** property declared, the child component cannot expand to full screen. Since API version 18, child components declaring the **expandSafeArea** property can expand to full screen display.

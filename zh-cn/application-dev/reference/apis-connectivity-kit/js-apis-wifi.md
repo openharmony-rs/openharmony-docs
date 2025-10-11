@@ -137,7 +137,7 @@ WLAN热点信息。
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 
-| **名称** | **类型** | **可读** | **可写** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 是 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
@@ -174,7 +174,7 @@ WLAN配置信息。
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 
-| **名称** | **类型** | **可读** | **可写** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 是 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
@@ -490,7 +490,7 @@ wifi.getLinkedInfo().then(data => {
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 是 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
@@ -613,7 +613,7 @@ IP信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-| **名称** | **类型** | **可读** | **可写** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | number | 是 | 否 | IP地址。 |
 | gateway | number | 是 | 否 | 网关。 |
@@ -677,7 +677,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate8) | 是 | 否 | P2P连接状态。 |
 | isGroupOwner | boolean | 是 | 否 | 是否是群主。true:是群主，false:不是群主。 |
@@ -835,7 +835,7 @@ wifi.getP2pPeerDevices().then(data => {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceName | string | 是 | 否 | 设备名称。 |
 | deviceAddress | string | 是 | 否 | 设备MAC地址。 |
@@ -906,7 +906,7 @@ try {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceAddress | string | 是 | 否 | 设备地址。 |
 | netId | number | 是 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 |
@@ -1133,7 +1133,7 @@ try {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isP2pGo | boolean | 是 | 否 | 是否是群主。true:是群主，false:不是群主。 |
 | ownerInfo | [WifiP2pDevice](#wifip2pdevice8) | 是 | 否 | 群组的设备信息。 |

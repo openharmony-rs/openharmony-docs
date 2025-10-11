@@ -20,6 +20,8 @@ Defines the common types for the native module.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+**Sample**: <!--PR1-->[native_type_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/native_type_sample)<!--PR1End-->
+
 ## Summary
 
 ### Structs
@@ -2512,11 +2514,11 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | Failed to obtain the route navigation information.<br>For details about the error code, see [Router Error Codes](../apis-arkui/errorcode-router.md#106201-failed-to-obtain-route-navigation-information).|
 | ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | Invalid buffer size.<br>For details about the error code, see [Router Error Codes](../apis-arkui/errorcode-router.md#106202-invalid-buffer-size).|
 | ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  The passed node is not mounted to the component tree. For details about the error codes, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 16|
-| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  The current node is not a custom node. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  The current node already has child nodes. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  Corresponding render child node not found. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  The parameter value is out of range. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  The current node is not a custom node. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  The current node already has child nodes. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  Corresponding render child node not found. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  The parameter value is out of range. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  The current node is not focusable. For details about the error code, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150001-component-not-focusable).<br>**Since**: 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  An ancestor of the current node is not focusable. For details about the error code, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since**: 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  The current node does not exist. For details about the error code, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150003-component-does-not-exist).<br>**Since**: 15|
@@ -2929,7 +2931,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 **Description**
 
 
-Obtains the minimum width for a size contraint, in px.
+Obtains the minimum width for a size constraint, in px.
 
 **Since**: 12
 
@@ -3820,7 +3822,7 @@ Obtains the distance between a guide line and the left or top of the container.
 
 | Type| Description|
 | -- | -- |
-| float | Distance between the guideline and the left or top of the container.|
+| float | Distance between the guide line and the left or top of the container. The unit is vp.|
 
 ### OH_ArkUI_GuidelineOption_GetPositionEnd()
 
@@ -3847,7 +3849,7 @@ Obtains the distance between a guideline and the right or bottom of the containe
 
 | Type| Description|
 | -- | -- |
-| float | Distance between the guideline and the right or bottom of the container.|
+| float | Distance between the guideline and the right or bottom of the container. The unit is vp.|
 
 ### OH_ArkUI_BarrierOption_Create()
 
@@ -8967,7 +8969,7 @@ Sets the **onError** callback for the **EmbeddedComponent** component. This call
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** option object.|
-| void (\*callback)(int32_t code, const char* name, const char* message) | Callback function defined by the developer.<br>- code: result code returned when the API fails to be called. For details about the error codes, see UIExtension Error Codes.<br>- name: name returned when the API fails to be called.<br>- message: details returned when the API fails to be called.|
+| void (\*callback)(int32_t code, const char* name, const char* message) | Callback function defined by the developer.<br>- code: result code returned when the API fails to be called. For details about error codes, see [UIExtension Error Codes](errorcode-uiextension.md).<br>- name: name returned when the API fails to be called.<br>- message: details returned when the API fails to be called.|
 
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()

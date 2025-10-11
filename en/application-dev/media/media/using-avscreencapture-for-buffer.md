@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Screen recording enables you to capture screen data for various applications like screen recording, conference sharing, and live streaming. The stream data captured through screen recording can be processed differently based on the use case. For example:
 - You can connect to NativeImage as the consumer to provide a surface associated with an OpenGL external texture. For details, see [Native Image Development (C/C++)](../../graphics/native-image-guidelines.md).
@@ -17,7 +17,7 @@ The AVScreenCapture, Window, and Graphics modules together implement the entire 
 
 By default, the main screen is captured, and the Graphics module generates the screen capture frame data based on the main screen and places the data to the display data buffer. The player framework obtains the data from the buffer for processing.
 
-The full screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
+The full-screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
 
 If you are in a call when screen capture starts or a call is coming during screen capture, screen capture automatically stops, and the **OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL** status is reported.
 
@@ -35,7 +35,7 @@ After an AVScreenCapture instance is created, different APIs can be called to sw
 
 If an API is called when the AVScreenCapture is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AVScreenCapture state before triggering state transition.
 
-**Linking the dynamic libraries in the CMake Script**
+**Linking the Dynamic Libraries in the CMake Script**
 
 ```c++
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so)
@@ -107,26 +107,26 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 7. (Optional) Set screen capture strategies.
 
-   7.1 (Optional) Set the privacy window masking mode for screen capture.
+    7.1 (Optional) Set the privacy window masking mode for screen capture.
 
-        The value **0** means that the full-screen masking mode is used, and **1** means that the window masking mode is used. The default value is full-screen masking mode.
+    The value **0** means that the full-screen masking mode is used, and **1** means that the window masking mode is used. The default value is full-screen masking mode.
 
-        ```c++
-        int value = 0;
-        OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-        OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
-        OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-        ```
+    ```c++
+    int value = 0;
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
+    OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+    ```
 
-   7.2 (Optional) Set the automatic rotation following configuration for screen capture.  
+    7.2 (Optional) (Available from API version 20 onwards) Set the automatic rotation following configuration for screen capture.
 
-       Set **StrategyForCanvasFollowRotation** to **true** to enable automatic rotation following. This will automatically adjust the virtual screen size after a rotation, ensuring the output follows the rotation promptly. After this setting, there is no need to manually call **OH_AVScreenCapture_ResizeCanvas** after rotation notifications.
+    Set **StrategyForCanvasFollowRotation** to **true** to enable automatic rotation following. This will automatically adjust the virtual screen size after a rotation, ensuring the output follows the rotation promptly. After this setting, there is no need to manually call **OH_AVScreenCapture_ResizeCanvas** after rotation notifications.
 
-        ```c++
-        OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-        OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
-        OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-        ```
+    ```c++
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
+    OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+    ```
 
 8. Call **StartScreenCapture()** to start screen capture.
 

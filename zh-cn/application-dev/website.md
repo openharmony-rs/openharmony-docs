@@ -6,6 +6,9 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @zhang_yixin13-->
 
+<!--Del-->
+- [应用开发导读](application-dev-guide.md)
+<!--DelEnd-->
 - 入门<!--application-getting-started-->
   <!--Del-->
   - 快速入门<!--quick-start-->
@@ -837,14 +840,14 @@
           - [应用文件访问(C/C++)](file-management/native-fileio-guidelines.md)
           - [应用及文件系统空间统计](file-management/app-fs-space-statistics.md)
         <!--Del-->
-        - [向应用沙箱推送文件](file-management/send-file-to-app-sandbox.md)
+        - [向应用沙箱推送文件（仅对系统应用开放）](file-management/send-file-to-app-sandbox-sys.md)
         <!--DelEnd-->
         - [应用文件分享](file-management/share-app-file.md)
         - 应用数据备份恢复<!--app-file-backup-restore-->
           - [应用数据备份恢复概述](file-management/app-file-backup-overview.md)
           - [应用接入数据备份恢复](file-management/app-file-backup-extension.md)
           <!--Del-->
-          - [应用触发数据备份/恢复（仅对系统应用开放）](file-management/app-file-backup.md)
+          - [应用触发数据备份/恢复（仅对系统应用开放）](file-management/app-file-backup-sys.md)
           <!--DelEnd-->
       - 用户文件<!--user-files-->
         - [用户文件概述](file-management/user-file-overview.md)
@@ -858,8 +861,8 @@
           - [授权持久化(C/C++)](file-management/native-fileshare-guidelines.md)
         - [获取并使用公共目录](file-management/request-dir-permission.md)
         <!--Del-->
-        - [开发用户文件管理器（仅对系统应用开放）](file-management/dev-user-file-manager.md)
-        - [管理外置存储设备（仅对系统应用开放）](file-management/manage-external-storage.md)
+        - [开发用户文件管理器（仅对系统应用开放）](file-management/dev-user-file-manager-sys.md)
+        - [管理外置存储设备（仅对系统应用开放）](file-management/manage-external-storage-sys.md)
         <!--DelEnd-->
       - 分布式文件系统<!--distributed-fs-->
         - [分布式文件系统概述](file-management/distributed-fs-overview.md)
@@ -1216,8 +1219,8 @@
             - [匿名密钥证明(ArkTS)](security/UniversalKeystoreKit/huks-key-anon-attestation-arkts.md)
             - [匿名密钥证明(C/C++)](security/UniversalKeystoreKit/huks-key-anon-attestation-ndk.md)
             <!--Del-->
-            - [非匿名密钥证明(ArkTS)](security/UniversalKeystoreKit/huks-key-attestation-arkts.md)
-            - [非匿名密钥证明(C/C++)](security/UniversalKeystoreKit/huks-key-attestation-ndk.md)
+            - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](security/UniversalKeystoreKit/huks-key-attestation-arkts-sys.md)
+            - [非匿名密钥证明(仅对系统应用开放)(C/C++)](security/UniversalKeystoreKit/huks-key-attestation-ndk-sys.md)
             <!--DelEnd-->
         - 其他操作<!--huks-other-operations-->
           - 查询密钥是否存在<!--huks-check-key-->
@@ -1275,7 +1278,7 @@
         - 应用跨设备连接管理<!--abilityconnect-distributed-->
           - [UIAbility与UIAbility连接开发指南](distributedservice/abilityconnectmanager-guidelines.md)
           <!--Del-->
-          - [DistributedExtensionAbility开发指南](distributedservice/distributedextension-guidelines.md)
+          - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
           - [增强连接开发指南](distributedservice/linkEnhance_development-guide.md)
         - 硬件跨设备连接管理<!--devconnect-distributed-->
@@ -1314,12 +1317,12 @@
               - [公共事件简介](basic-services/common-event/common-event-overview.md)
               - [动态订阅公共事件](basic-services/common-event/common-event-subscription.md)
               <!--Del-->
-              - [静态订阅公共事件（仅对系统应用开放）](basic-services/common-event/common-event-static-subscription.md)
+              - [静态订阅公共事件（仅对系统应用开放）](basic-services/common-event/common-event-static-subscription-sys.md)
               <!--DelEnd-->
               - [取消动态订阅公共事件](basic-services/common-event/common-event-unsubscription.md)
               - [发布公共事件](basic-services/common-event/common-event-publish.md)
               <!--Del-->
-              - [移除粘性公共事件（仅对系统应用开放）](basic-services/common-event/common-event-remove-sticky.md)
+              - [移除粘性公共事件（仅对系统应用开放）](basic-services/common-event/common-event-remove-sticky-sys.md)
               <!--DelEnd-->
               - [订阅公共事件（C/C++）](basic-services/common-event/native-common-event-subscription.md)
               - [取消订阅公共事件（C/C++）](basic-services/common-event/native-common-event-unsubscription.md)
@@ -1525,7 +1528,7 @@
           - [hiprofiler](dfx/hiprofiler.md)
           - [uinput](dfx/uinput.md)
           <!--Del-->
-          - [hisysevent](dfx/hisysevent.md)
+          - [hisysevent（仅对系统应用开放）](dfx/hisysevent-sys.md)
           <!--DelEnd-->
       - Test Kit（应用测试服务）<!--test-kit-->
         - 自动化测试框架使用指导<!--arkxtest-->
@@ -1899,18 +1902,18 @@
         - [发布文本类型通知](notification/text-notification.md)
         - [发布进度条类型通知](notification/progress-bar-notification.md)
         <!--Del-->
-        - [发布实况窗类型通知（仅对系统应用开放）](notification/live-view-notification.md)
+        - [发布实况窗类型通知（仅对系统应用开放）](notification/live-view-notification-sys.md)
         <!--DelEnd-->
         - [为通知添加行为意图](notification/notification-with-wantagent.md)
       - [更新通知](notification/notification-update.md)
       - [取消通知](notification/notification-cancel.md)
       <!--Del-->
-      - [订阅通知（仅对系统应用开放）](notification/notification-subscription.md)
+      - [订阅通知（仅对系统应用开放）](notification/notification-subscription-sys.md)
       <!--DelEnd-->
       - 跨设备协同通知<!--notification-distributed-->
         - [跨设备协同通知概述](notification/notification-distributed-overview.md)
           <!--Del-->
-        - [通知消息跨设备协同管理（仅对系统应用开放）](notification/notification-distributed-notdistributed.md)
+        - [通知消息跨设备协同管理（仅对系统应用开放）](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
         - [为跨设备协同通知添加快捷回复](notification/notification-quickreply.md)
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)

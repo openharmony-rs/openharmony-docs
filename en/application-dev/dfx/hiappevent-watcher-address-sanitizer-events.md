@@ -43,11 +43,11 @@ For details, see [Address Sanitizer Detection](address-sanitizer-guidelines.md).
 
 | Value| Description|
 | -------- | -------- |
-| GWP-ASAN | Error triggered by [GWP-ASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-gwpasan-detection).|
-| UBSAN | Error triggered by [UBSan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ubsan-detection).|
-| TSAN | Error triggered by [TSan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-tsan-detection).|
+| GWP-ASAN | Error triggered by GWP-ASan.|
+| UBSAN | Error triggered by UBSan.|
+| TSAN | Error triggered by TSan.|
 | FDSAN | From API version 20, errors triggered by [fdsan](../napi/fdsan.md) can be subscribed to.|
-| stack tag-mismatch | [HWASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-hwasan-detection) detected that the stack tag does not match, which may be because the stack is used after returning, the stack is used beyond the range, or the stack is out of bounds.|
+| stack tag-mismatch | HWASan detected that the stack tag does not match, which may be because the stack is used after returning, the stack is used beyond the range, or the stack is out of bounds.|
 | alloc-dealloc-mismatch | The memory allocation and release modes do not match.|
 | allocation-size-too-big | The heap memory is too large.|
 | calloc-overflow | **calloc()** fails to allocate memory.|

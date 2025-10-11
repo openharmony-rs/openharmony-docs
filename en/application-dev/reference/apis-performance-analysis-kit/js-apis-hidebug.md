@@ -525,7 +525,7 @@ To obtain the unit trace traffic of an application, you can call **startAppTrace
 
 | Type            | Description           |
 | -----------------|---------------|
-| string           | Returns the trace file name and path. (The interface returns the actual physical path. If the app needs to access the path, convert the path based on the mapping between the app sandbox path and the actual physical path. For details, see [Mapping Between App Sandbox Paths and Actual Physical Paths](../../file-management/app-sandbox-directory.md#mapping-between-app-sandbox-paths-and-actual-physical-paths).)|
+| string           | Returns the trace file name and path. (The interface returns the actual physical path. If the app needs to access the path, convert the path based on the mapping between the app sandbox path and the actual physical path. For details, see [Mapping Between App Sandbox Paths and Actual Physical Paths](../../file-management/app-sandbox-directory.md).)|
 
 **Error codes**
 
@@ -1198,8 +1198,6 @@ enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
 Enables GWP-ASan to detect invalid behaviors during heap memory usage.
 
 This API is used to dynamically configure and enable GWP-ASan to adapt to the GWP-ASan detection policy customized by the application. The configuration takes effect after the application is restarted.
-
-For more information about GWP-ASan, please refer to [Using GWP-ASan to Detect Memory Errors](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection).
 
 > **NOTE**
 > 

@@ -1,22 +1,28 @@
 # Focus Event
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 A focus event is triggered when the page focus moves between components. It can be used to process related logic within the component.
 
 >  **NOTE**
 >
->  - The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - Currently, only the Tab button and arrow buttons on the external keyboard can be used to trigger the focus event. Sequential keyboard navigation is not supported for nested scrollable components.
+>  - Sequential keyboard navigation is not supported for nested scrollable components.
 >
->  - Components that have default interaction logic, such as [Button](ts-basic-components-button.md) and [TextInput](ts-basic-components-textinput.md), are focusable by default. Other components, such as [Text](ts-basic-components-text.md) and [Image](ts-basic-components-image.md), are not focusable by default. Only focusable components can trigger a focus event. To enable a component to be focusable, set its **focusable** attribute to **true**.
+>  - Components that have default interaction logic, such as [Button](ts-basic-components-button.md) and [TextInput](ts-basic-components-textinput.md), are focusable by default. Other components, such as [Text](ts-basic-components-text.md) and [Image](ts-basic-components-image.md), are not focusable by default. Only focusable components can trigger a focus event. To enable a component to be focusable, set its [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true**.
 >  
->  - Container components that can gain focus, such as [Stack](ts-container-stack.md) and [Row](ts-container-row.md), are not focusable if they do not have any focusable child components. To make them focusable, you can add an **onClick** event or a tap gesture to the component. This makes the component implicitly focusable.
+>  - Container components that can gain focus, such as [Stack](ts-container-stack.md) and [Row](ts-container-row.md), are not focusable if they do not have any focusable child components. When configured with an **onClick** event or a single-finger tap gesture, the component implicitly becomes focusable if the **focusable** attribute is not explicitly set.
 > 
 >  - For details about focus development and component focusability, see [Focus Event](../../../ui/arkts-common-events-focus-event.md).
 
 ## onFocus
 
-onFocus(event: () => void)
+onFocus(event: () => void): T
 
 Triggered when the current component obtains focus.
 
@@ -24,9 +30,21 @@ Triggered when the current component obtains focus.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name| Type                         | Mandatory| Description              |
+| ------ | ----------------------------- | ---- | ------------------ |
+| event  | () => void |  Yes  | Callback function of **onFocus**, indicating that the component has gained focus.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
 ## onBlur
 
-onBlur(event:() =&gt; void)
+onBlur(event:() =&gt; void): T
 
 Triggered when the current component loses focus.
 
@@ -34,6 +52,17 @@ Triggered when the current component loses focus.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name| Type                         | Mandatory| Description              |
+| ------ | ----------------------------- | ---- | ------------------ |
+| event  | () => void |  Yes  | Callback function of **onBlur**, which indicates that the component has lost focus.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## Example
 
@@ -44,7 +73,7 @@ This example demonstrates how components gain and lose focus. The colors of the 
 @Entry
 @Component
 struct FocusEventExample {
-  @State oneButtonColor: string = '#FFC0CB'
+  @State oneButtonColor: string = '#0066FF'
   @State twoButtonColor: string = '#87CEFA'
   @State threeButtonColor: string = '#90EE90'
 
@@ -58,10 +87,10 @@ struct FocusEventExample {
         .fontColor(Color.Black)
         .focusable(true)
         .onFocus(() => {
-          this.oneButtonColor = '#FF0000'
+          this.oneButtonColor = '#FFFFFF'
         })
         .onBlur(() => {
-          this.oneButtonColor = '#FFC0CB'
+          this.oneButtonColor = '#0066FF'
         })
       Button('Second Button')
         .backgroundColor(this.twoButtonColor)
@@ -70,7 +99,7 @@ struct FocusEventExample {
         .fontColor(Color.Black)
         .focusable(true)
         .onFocus(() => {
-          this.twoButtonColor = '#FF0000'
+          this.twoButtonColor = '#FFFFFF'
         })
         .onBlur(() => {
           this.twoButtonColor = '#87CEFA'
@@ -82,7 +111,7 @@ struct FocusEventExample {
         .fontColor(Color.Black)
         .focusable(true)
         .onFocus(() => {
-          this.threeButtonColor = '#FF0000'
+          this.threeButtonColor = '#FFFFFF'
         })
         .onBlur(() => {
           this.threeButtonColor = '#90EE90'

@@ -324,7 +324,7 @@ uinput -K -t Hello,World!
 
 ## Stylus Events
 
-Simulates the scenario where a stylus is tapped or swiped. The actual injection effect is the same as that of the [touch event](#touch event). You are advised to use the touch event command first.
+Simulates the scenario where a stylus is tapped or swiped. The actual injection effect is the same as that of the [touch events](#touch-events). You are advised to use the touch event command first.
 
 ### Stylus Down Event
 Simulates the action of pressing the stylus at (dx, dy). It is recommended that this command be used together with the stylus lift event to ensure that the event is closed.

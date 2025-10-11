@@ -33,7 +33,7 @@ Task timeout detection includes main thread timeout detection and task execution
 
    > **NOTE**
    >
-   > Before starting the timeout detection and trace capturing of the main thread, **disable the [developer mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) and use the [nolog](performance-analysis-kit-terminology.md#nolog) version**.
+   > Before starting the timeout detection and trace capturing of the main thread, **disable the [developer mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) and use the [nolog](performance-analysis-kit-terminology.md) version**.
    >
    > You can go to **Settings** > **About phone** to check the software version. The log version ends with **log**.
    >
@@ -70,7 +70,7 @@ Task execution timeout logs are stored in the application sandbox directory. You
 
 **Subscribing to the main thread timeout event using HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Timeout Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Timeout Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md# event field description) field in the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Timeout Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Timeout Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md) field in the event.
 
 ### Log Specifications 
 

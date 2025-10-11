@@ -548,7 +548,7 @@ Sets the alignment rules in the relative container. This API is valid only when 
 
 | Name| Type                                       | Mandatory| Description                    |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption) | Yes  | Alignment rule in the relative container.|
+| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9) | Yes  | Alignment rule in the relative container.|
 
 **Return value**
 
