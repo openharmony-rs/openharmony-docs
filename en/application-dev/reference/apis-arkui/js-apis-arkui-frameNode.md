@@ -2468,8 +2468,8 @@ struct FrameNodeTypeTest {
     Column({ space: 5 }) {
       Text('Text bindController Sample')
       NodeContainer(this.myNodeController)
-      Text (`Number of lines in the text, ${this.line}`)
-      Button (`Click to obtain the number of lines.`)
+      Text(`Number of lines in the text, ${this.line}`)
+      Button(`Click to obtain the number of lines.`)
         .onClick(() => {
           this.line = this.myNodeController.controller.getLayoutManager().getLineCount()
         })

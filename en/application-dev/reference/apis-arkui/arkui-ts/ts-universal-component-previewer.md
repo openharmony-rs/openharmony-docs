@@ -41,17 +41,17 @@ Defines preview device attributes such as device type and screen state.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| title | string | No| Name of the component module to preview. Default value: custom component name.|
-| width| number | No| Width of the preview device, in px. Default value: **1080**.|
-| height | number | No| Height of the preview device, in px. Default value: **2340**.|
-| locale| string | No|  Device language (for example, **zh_CN** and **en_US**). Default value: **zh_CN**.|
-| colorMode | string | No| Brightness mode. Options: **light** (default), **dark**.|
-| deviceType | string | No| Device type for preview rendering. Default value: **Phone**.|
-| dpi | number | No| DPI of the preview device. Default value: **480**.|
-| orientation | string | No| Screen orientation of the preview device. Options: **portrait** (default), **landscape**.|
-| roundScreen | boolean | No| Whether the preview screen is circular. Default value: **false**. **true**: circular. **false**: non-circular.|
+| Name| Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| title | string | No| Yes| Name of the component module to preview. Default value: custom component name.|
+| width| number | No| Yes| Width of the preview device, in px. Default value: **1080**.|
+| height | number | No| Yes| Height of the preview device, in px. Default value: **2340**.|
+| locale| string | No| Yes|  Device language (for example, **zh_CN** and **en_US**). Default value: **zh_CN**.|
+| colorMode | string | No| Yes| Brightness mode. Options: **light** (default), **dark**.|
+| deviceType | string | No| Yes| Device type for preview rendering. Default value: **Phone**.|
+| dpi | number | No| Yes| DPI of the preview device. Default value: **480**.|
+| orientation | string | No| Yes| Screen orientation of the preview device. Options: **portrait** (default), **landscape**.|
+| roundScreen | boolean | No| Yes| Whether the preview screen is circular. Default value: **false**. **true**: circular. **false**: non-circular.|
 
 ## Example
 

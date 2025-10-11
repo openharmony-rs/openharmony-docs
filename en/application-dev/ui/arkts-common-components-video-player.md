@@ -1,4 +1,10 @@
 # Video Playback (Video)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 
 The **Video** component is used to play a video and control its playback. It is usually used in video players and video list pages within applications. A video automatically plays once fully loaded. When the user clicks the video area, the video is paused and the playback progress bar is displayed. The user can drag the progress bar to the desired position. For details, see [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md).
@@ -12,7 +18,7 @@ You can create a **Video** component by calling the following API:
 
 ## Loading Video
 
-The **Video** component supports both local and online videos.
+The **Video** component supports both local and online videos. For details about data source configuration, see [VideoOptions](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videooptions).
 
 
 ### Loading a Local Video
@@ -36,9 +42,9 @@ The **Video** component supports both local and online videos.
     build() {
       Column() {
         Video({
-          src: this.innerResource,
-          previewUri: this.previewUris,
-          controller: this.controller
+          src: this.innerResource,  // Set the video source.
+          previewUri: this.previewUris, // Set the preview image.
+          controller: this.controller // Set the video controller to control the video playback status.
         })
       }
     }
@@ -93,7 +99,7 @@ export struct VideoPlayer {
 
 ### Loading an Online Video
 
-To load online videos, you must apply for the **ohos.permission.INTERNET** permission. For details about how to apply for the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md). In this scenario, the **src** attribute indicates the URL of the online video.
+To load online videos, you must apply for the ohos.permission.INTERNET permission. For details about how to apply for the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md). In this scenario, the **src** attribute indicates the URL of the online video.
 
 
 ```ts
@@ -137,7 +143,7 @@ export struct VideoPlayer {
         .controls(false) // Set whether to display the video playback control bar.
         .autoPlay(false) // Set whether to enable auto play.
         .loop(false) // Set whether to repeat the video.
-        .objectFit(ImageFit.Contain) // Set the video scale type.
+        .objectFit(ImageFit.Contain) // Set the video fill mode.
     }
   }
 }
@@ -171,7 +177,7 @@ struct VideoPlayer {
           console.info("Video prepared.");
         })
         .onError(() => { // Triggered when the video playback fails.
-          console.info("Video error.");
+          console.error("Video error.");
         })
         .onStop(() => { // Triggered when the video playback stops.
           console.info("Video stopped.");
@@ -205,7 +211,7 @@ The video controller is used to control video playback. For details, see [VideoC
           Video({
             src: this.videoSrc,
             previewUri: this.previewUri,
-            currentProgressRate: this.curRate
+            currentProgressRate: this.curRate // Set the playback speed.
           })
         }
         .width('100%')
@@ -217,7 +223,7 @@ The video controller is used to control video playback. For details, see [VideoC
 
 - Custom controller
 
-  To use a custom controller, disable the default controller, and then use components such as **Button** and **Slider** to customize the control and display. This type of controller is applicable to scenarios where customization requirements are involved.
+  Use the custom controller. Disable the default controller, and then use components such as [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) and [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) to customize the control and display. This method is suitable for scenarios where strong customization is required.
 
   ```ts
   // xxx.ets
@@ -227,12 +233,8 @@ The video controller is used to control video playback. For details, see [VideoC
     @State videoSrc: Resource = $rawfile('videoTest.mp4')
     @State previewUri: string = 'common/videoIcon.png'
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
-    @State isAutoPlay: boolean = false
-    @State showControls: boolean = true
-    @State sliderStartTime: string = ''
     @State currentTime: number = 0
     @State durationTime: number = 0
-    @State durationStringTime: string = ''
     controller: VideoController = new VideoController()
 
     build() {
@@ -264,7 +266,7 @@ The video controller is used to control video playback. For details, see [VideoC
               max: this.durationTime
             })
               .onChange((value: number, mode: SliderChangeMode) => {
-                this.controller.setCurrentTime(value);
+                this.controller.setCurrentTime(value); // Set the video playback progress to the value.
               })
               .width("90%")
             Text(JSON.stringify(this.durationTime) + 's')

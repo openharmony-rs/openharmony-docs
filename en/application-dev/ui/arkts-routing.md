@@ -341,7 +341,7 @@ struct Page {
 
   build() {
     Column() {
-      Text (`num: ${this.num}`)
+      Text(`num: ${this.num}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .fontColor(this.textColor)

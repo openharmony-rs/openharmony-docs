@@ -1801,7 +1801,7 @@ struct Index {
                     } else {
                       this.notice = "RENDER_OUT";
                     }
-                    console.info ("Node status changed. Current status: ", state);
+                    console.info("Node status changed. Current status: ", state);
                   })
                 }
               })
