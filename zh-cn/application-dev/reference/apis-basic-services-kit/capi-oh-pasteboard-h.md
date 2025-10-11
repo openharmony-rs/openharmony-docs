@@ -31,6 +31,16 @@
 | [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) | OH_PasteboardObserver | 定义剪贴板数据变更观察者。 |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) | OH_Pasteboard | 定义剪贴板对象，用以操作系统剪贴板。 |
 
+### 宏定义
+
+| 名称  | 描述   |
+|--------------|-----------|
+| [PASTEBOARD_MIMETYPE_TEXT_PLAIN](#pasteboard_mimetype_text_plain)  "text/plain" | 纯文本类型。 |
+| [PASTEBOARD_MIMETYPE_TEXT_URI](#pasteboard_mimetype_text_uri)  "text/uri" | URI类型。 |
+| [PASTEBOARD_MIMETYPE_TEXT_HTML](#pasteboard_mimetype_text_html)  "text/html" | HTML类型。 |
+| [PASTEBOARD_MIMETYPE_PIXELMAP](#pasteboard_mimetype_pixelmap)  "pixelMap" | pixelMap类型。 |
+| [PASTEBOARD_MIMETYPE_TEXT_WANT](#pasteboard_mimetype_text_want)  "text/want" | want类型。 |
+
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
@@ -72,6 +82,68 @@
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)](#oh_pasteboard_getdatawithprogress) | - | 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。 |
 | [uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)](#oh_pasteboard_getchangecount) | - | 获取剪贴板内容的变化次数。 |
 | [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | 通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用[OH_Pasteboard_SyncDelayedDataAsync](#oh_pasteboard_syncdelayeddataasync)接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。 |
+
+## 宏定义说明
+
+### PASTEBOARD_MIMETYPE_TEXT_PLAIN
+
+```
+#define PASTEBOARD_MIMETYPE_TEXT_PLAIN "text/plain"
+```
+
+**描述**
+
+纯文本类型。
+
+**起始版本：** 22
+
+### PASTEBOARD_MIMETYPE_TEXT_URI
+
+```
+#define PASTEBOARD_MIMETYPE_TEXT_URI "text/uri"
+```
+
+**描述**
+
+URI类型。
+
+**起始版本：** 22
+
+### PASTEBOARD_MIMETYPE_TEXT_HTML
+
+```
+#define PASTEBOARD_MIMETYPE_TEXT_HTML "text/html"
+```
+
+**描述**
+
+HTML类型。
+
+**起始版本：** 22
+
+### PASTEBOARD_MIMETYPE_PIXELMAP
+
+```
+#define PASTEBOARD_MIMETYPE_PIXELMAP "pixelMap"
+```
+
+**描述**
+
+pixelMap类型。
+
+**起始版本：** 22
+
+### PASTEBOARD_MIMETYPE_TEXT_WANT
+
+```
+#define PASTEBOARD_MIMETYPE_TEXT_WANT "text/want"
+```
+
+**描述**
+
+want类型。
+
+**起始版本：** 22
 
 ## 枚举类型说明
 
