@@ -1,4 +1,4 @@
-# Distributed Extension Ability Development
+# DistributedExtensionAbility Development (for System Applications Only)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
@@ -6,13 +6,13 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @w_Machine_cc-->
 
-## Introduction
+## Overview
 
 The distributed service allows a device to extend its capabilities by cooperating with other devices in various complex scenarios.
 
 As it is inconvenient for users to use a single account on different devices, the cross-device collaboration capability is provided, enabling a message synchronization mechanism for collaboration between applications on mobile phones and other devices such as watches.
 
-### Available Capabilities
+### Capabilities
 
 Data interaction: implements cross-device transmission of data, including text messages, byte streams, images, and transport streams. (Only text interaction is supported for third-party applications.)
 
@@ -20,11 +20,11 @@ Data interaction: implements cross-device transmission of data, including text m
 
 During cross-device collaboration, when device A is running in the background and device B is running in the foreground, Distributed Management Service (DMS) allows the system to activate **DistributedExtension** to implement synchronous data transmission across devices. For example, when an application runs in the background on the mobile phone and in the foreground on the watch, DMS starts **DistributedExtensionAbility** to synchronize uplink messages on the watch to the application on the mobile phone.
 
-### Basic concepts
+### Basic Concepts
 
 Before you get started, familiarize yourself with the following concepts:
 
-* **DMS**
+* **Distributed Message Service (DMS)**
   
   A framework that provides distributed component management capabilities.
 * **UIAbility**
@@ -51,19 +51,19 @@ The application on device A integrates **DistributedExtensionAbility**. When DSo
 * You need to log in with the same HUAWEI ID on different devices.
 * Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
 
-## Environment Preparation
+## Environment Setup
 
-### Environment requirements
+### Environment Requirements
 
 You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked through Bluetooth.
 
-### Environment Setup
+### Setting Up the Environment
 
-1. Install [DevEco Studio](https://gitee.com/link?target=https%3A%2F%2Fdeveloper.huawei.com%2Fconsumer%2Fcn%2Fdownload%2Fdeveco-studio) 4.1 or later on the PC.
+1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/) 4.1 or later on the PC.
 2. Update the public-SDK to API version 20 or later.
 3. Enable Bluetooth on devices A and B to implement networking.
 
-### Environment Verification
+### Verifying the Environment
 
 Connect devices A and B to the PC and run the shell command on the PC:
 
@@ -78,17 +78,17 @@ If the networking is successful, the number of networking devices is displayed, 
 
 Cross-device connection management enables real-time processing of application background messages through the distributed OS, providing users with more efficient experience.
 
-### APIs
+### Available APIs
 
 For details about how to use the **DistributedExtensionAbility** APIs, see [DistributedExtensionAbility API Reference](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md).
 
-| API                                                              | Description                      |
+| Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |
 | onCreate(want: Want): void;                                          | Creates a distributed collaboration task.      |
 | onDestroy(): void;                                                   | Destroys a distributed collaboration task.         |
 | onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested.|
 
-### How to Develop
+### Development Procedure
 
 1. Register the `Extension` component in the configuration file.
    
@@ -118,9 +118,9 @@ For details about how to use the **DistributedExtensionAbility** APIs, see [Dist
    import { AbilityConstant, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';
    ```
-3. Customize the `MDSExtension.ets` file. Specifically, inherit the `DistributedExtensionAbility` class and rewrite the `onCreate`, `onDestroy` and `onCollaborate` methods to create and destroy **DistributedExtension** and implement connection callback.
+3. Customize the `MDSExtension.ets` file. Specifically, inherit the `DistributedExtensionAbility` class and rewrite the `onCreate`, `onDestroy`, and `onCollaborate` methods to create and destroy `DistributedExtension` and implement connection callback.
    
-   The following is an empty `MDSExtension.ets` file. You can observe its lifecycle based on the corresponding **Logger**.
+   The following is an empty `MDSExtension.ets` file. You can observe its lifecycle based on the corresponding `Logger`.
    
    ```ts
    import { AbilityConstant, Want } from '@kit.AbilityKit';
@@ -151,7 +151,7 @@ For details about how to use the **DistributedExtensionAbility** APIs, see [Dist
    }
    ```
 
-## Common Inquiry
+## FAQs
 
 ### What should I do if device B does not receive the response message from device A?
 
