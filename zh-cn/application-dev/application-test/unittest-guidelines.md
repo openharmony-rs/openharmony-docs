@@ -15,13 +15,13 @@
 
 ## 框架能力全景
 
-单元测试框架是测试框架基础底座，提供测试脚本识别、调度、执行及结果汇总的能力。其具体功能特性如下表所示：
+单元测试框架支持的功能特性如下。
 |   特性     | 功能说明                                                     |
 |  -------- | ------------------------------------------------------------ |
-|  [基础流程](#基础流程能力) | 支持编写及异步执行测试用例。                                 |
-|  [断言库](#断言能力)   | 判断用例实际结果值与预期值是否相符。                         |
+|  [基础流程能力](#基础流程能力) | 支持测试用例识别调度及异步执行测试用例。                                 |
+|  [断言能力](#断言能力)   | 判断用例实际结果值与预期值是否相符。                         |
 |  [Mock能力](#mock能力) | 支持函数级Mock能力，对定义的函数进行Mock并修改函数的行为，使其返回指定的值或者执行指定操作。 |
-|  [数据驱动](#数据驱动) | 提供数据驱动能力，支持复用同一个测试脚本，使用不同输入数据驱动测试脚本执行。 |
+|  [数据驱动能力](#数据驱动) | 提供数据驱动能力，支持复用同一个测试脚本，使用不同输入数据驱动测试脚本执行。 |
 | [专项能力](#命令行执行测试脚本) | 支持测试套与用例筛选、随机执行、压力测试、超时设置、遇错即停模式和跳过执行模式。 |
 
   **图1.单元测试框架主要功能**
@@ -29,7 +29,7 @@
   ![](figures/UnitTest.PNG)
 
 
-## 发布方式
+## 单元测试框架发布方式
 单元测试框架以ohpm包独立发布，版本信息详见[服务组件官网](https://ohpm.openharmony.cn/#/cn/detail/@ohos%2Fhypium)。开发者下载DevEco Studio后，在应用工程中的[oh-package.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-oh-package-json5)文件中devDependencies节点中配置版本号即可使用对应版本框架功能。
 
 **配置示例**
@@ -53,7 +53,7 @@
 
 一个完整的测试脚本需要包含以下基本元素：
 
-1. 依赖导包，以便使用单元测试框架提供的接口，以及其他测试脚本中需要依赖使用的接口，导入模块详见下文示例。
+1. 依赖导包，以便使用单元测试框架提供的接口，以及其他测试脚本中需要依赖使用的接口。
 2. 测试代码编写，编写测试用例的相关测试逻辑。
 3. 断言接口调用，设置测试代码中的检查点，用于检查用例是否符合预期。
 
@@ -70,7 +70,9 @@ function sleep(time: number) {
 }
 export default function abilityTest() {
   describe('ActsAbilityTest', () =>{
+  //测试套名称为ActsAbilityTest
     it('testExample',Level.LEVEL1, async (done: Function) => {
+    //测试用例名称为testExample
       console.info("unitTest: TestExample begin");
       await sleep(500);
       const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
@@ -81,7 +83,7 @@ export default function abilityTest() {
       }
       await delegator.startAbility(want);
       await sleep(500);
-      //获取设备上前台显示的Ability并断言检查
+      //获取设备上前台显示的页面并断言检查
       const ability: UIAbility = await delegator.getCurrentTopAbility();
       console.info("get top ability");
       expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
@@ -123,9 +125,9 @@ export default function abilityTest() {
 
 | 参数  | 参数说明                          | 示例                       |
 | ------------- |  -------------------------------------- | ---------------------------------- |
-| --bundleName/-b  |  应用Bundle名称。                       | - b com.test.example               |
-| --packageName/-p | 应用模块名，适用于FA模型应用。           | - p com.test.example.entry         |
-| --moduleName/-m  |  应用模块名，适用于STAGE模型应用。        | -m entry                           |
+| --bundleName/-b  | 指定应用Bundle名称。                       | - b com.test.example               |
+| --packageName/-p | 指定应用模块名，适用于FA模型应用。           | - p com.test.example.entry         |
+| --moduleName/-m  | 指定应用模块名，适用于Stage模型应用。        | -m entry                           |
 | -s            |  特定参数，以<key, value>键值对方式传入。框架支持通过-s参数键值配置多种用例执行方式，-s的参数及对应含义参见下表。 | - s unittest /ets/testrunner/OpenHarmonyTestRunner |
 
 
@@ -151,7 +153,7 @@ export default function abilityTest() {
 >
 > 下文参数配置和命令示例均基于Stage模型。
 >
-> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考[发布方式](#发布方式)。  
+> 执行命令参数需基于@ohos/hypium框架发布版本，且测试应用包需集成该版本，否则命令参数无法响应，具体配置方式参考[发布方式](#单元测试框架发布方式)。  
 
 
 **示例代码1**：执行所有测试用例
@@ -590,7 +592,7 @@ interface PromiseInfo {
 }
 ```
 ### Mock能力
-从@ohos/hypium 1.0.1版本开始，单元测试框架支持Mock能力。配置方式参考上文[发布方式](#发布方式)。
+从@ohos/hypium 1.0.1版本开始，单元测试框架支持Mock能力。配置方式参考上文[发布方式](#单元测试框架发布方式)。
 
 > **说明：**
 >
