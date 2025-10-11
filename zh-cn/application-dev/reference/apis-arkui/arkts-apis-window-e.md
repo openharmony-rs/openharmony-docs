@@ -129,6 +129,17 @@
 | FLOATING    | 4    | 表示APP自由悬浮形式窗口模式。   |
 | SPLIT_SCREEN  | 5    | 表示APP分屏模式。   |
 
+## PixelUnit<sup>22+</sup>
+
+像素单位枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称    | 值   | 说明   |
+| ------- | ---- | ----- |
+| PX | 0  | 物理像素。  |
+| VP | 1  | 虚拟像素。  |
+
 ## MaximizePresentation<sup>12+</sup>
 
 窗口最大化时的布局枚举。
