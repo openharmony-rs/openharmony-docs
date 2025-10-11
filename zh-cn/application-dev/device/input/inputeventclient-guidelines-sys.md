@@ -1,4 +1,11 @@
-# 注入事件开发指导
+# 事件注入开发指导（仅对系统应用开放）
+
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 场景介绍
 
