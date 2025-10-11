@@ -108,13 +108,13 @@ getPinchAxisScaleValue(): number
 | ------- | --------------------------------- | 
 | number | 双指缩放比例。 |
 
-### hasAxis<sup>21+</sup>
+### hasAxis<sup>22+</sup>
 
 hasAxis(axisType: AxisType): boolean
 
 检测此轴事件是否包含指定的轴类型。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +122,7 @@ hasAxis(axisType: AxisType): boolean
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| axisType  | [AxisType](ts-appendix-enums.md#axistype21) | 是   | 轴事件的轴类型。 |
+| axisType  | [AxisType](ts-appendix-enums.md#axistype22) | 是   | 轴事件的轴类型。 |
 
 **返回值：**
 
