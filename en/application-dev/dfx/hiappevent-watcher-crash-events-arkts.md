@@ -42,7 +42,7 @@ The following describes how to subscribe to the crash event triggered by a butto
    ```ts
     // Build custom parameters for the crash event.
     let params: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100,
+      "test_data": 100, //test_data is the custom data. You can customize the params parameter as required.
     };
     // Set custom parameters for the crash event.
     hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -66,7 +66,7 @@ The following describes how to subscribe to the crash event triggered by a butto
     });
    ```
 
-3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add the system event subscription to **onCreate()**. The sample code is as follows:
+3. Edit the entry > src > main > ets > entryability > EntryAbility.ets file in the project and subscribe to system events in the `onCreate` function. The sample code is as follows:
 
    ```ts
     let watcher: hiAppEvent.Watcher = {

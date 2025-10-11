@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-This module provides multiple methods for debugging and profiling applications. With these methods, you can obtain memory, CPU, GPU, and GC data, collect process trace and profiler data, and dump VM heap snapshots. Since most APIs of this module are both performance-consuming and time-consuming, and are defined based on the HiDebug module, you are advised to use these APIs only during the application debugging and profiling phases. If the APIs are required in other scenarios, evaluate the impact of the APIs on application performance.
+HiDebug provides multiple methods for debugging and profiling applications. With these methods, you can obtain memory, CPU, GPU, and GC data, collect process trace and profiler data, and dump VM heap snapshots. Since most APIs of this module are both performance-consuming and time-consuming, and are defined based on the HiDebug module, you are advised to use these APIs only during the application debugging and profiling phases. If the APIs are required in other scenarios, evaluate the impact of the APIs on application performance.
 
 > **NOTE**
 >
@@ -33,7 +33,7 @@ Obtains the total number of bytes occupied by the total space (**uordblks** + **
 | ------ |--------------------------------------------|
 | bigint | Size of the memory occupied by the total space held by the process, in bytes.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -56,7 +56,7 @@ Obtains the total number of bytes occupied by the total allocated space (**uordb
 | bigint | Size of the memory occupied by the total allocated space held by the process, in bytes.|
 
 
-**Example**
+**Example**:
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
@@ -77,7 +77,7 @@ Obtains the total number of bytes occupied by the total free space (**fordblks**
 | ------ | ----------------------------- |
 | bigint | Size of the memory occupied by the total free space held by the process, in bytes.|
 
-**Example**
+**Example**:
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
@@ -102,7 +102,7 @@ Obtains the size of the physical memory actually used by the application process
 | ------ | ------------------------- |
 | bigint | Size of the physical memory actually used by the application process, in KB.|
 
-**Example**
+**Example**:
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
@@ -113,7 +113,7 @@ let pss: bigint = hidebug.getPss();
 
 getVss(): bigint
 
-Obtains the virtual set size used by the application process. This API is implemented by multiplying the value of **size** (number of memory pages) in the **/proc/{pid}/statm** node by the page size (4 KB per page).
+Obtains the virtual memory size occupied by an application process. This API is implemented by multiplying the value of **size** (number of memory pages) in the **/proc/{pid}/statm** node by the page size (4 KB per page).
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -121,9 +121,9 @@ Obtains the virtual set size used by the application process. This API is implem
 
 | Type  | Description                                    |
 | ------ | ---------------------------------------- |
-| bigint | Virtual set size used by the application process, in KB.|
+| bigint | Virtual memory size occupied by an application process, in KB.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -150,7 +150,7 @@ Obtains the size of the shared dirty memory of a process. This API is implemente
 | bigint | Size of the shared dirty memory of the process, in KB.|
 
 
-**Example**
+**Example**:
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
@@ -175,7 +175,7 @@ Obtains the size of the private dirty memory of a process. This API is implement
 | ------ | -------------------------- |
 | bigint | Size of the private dirty memory of the process, in KB.|
 
-**Example**
+**Example**:
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
@@ -188,8 +188,6 @@ getCpuUsage(): number
 
 Obtains the CPU usage of a process.
 
-For example, if the CPU usage is **50%**, **0.5** is returned.
-
 > **NOTE**
 >
 > This API involves cross-process communication and takes a long time. To avoid performance problems, you are advised not to call this API in the main thread.
@@ -200,10 +198,10 @@ For example, if the CPU usage is **50%**, **0.5** is returned.
 
 | Type  | Description                      |
 | ------ | -------------------------- |
-| number | CPU usage of the process.|
+| number | Obtains the CPU usage of a process. For example, if the CPU usage is **50%**, **0.5** is returned.|
 
 
-**Example**
+**Example**:
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
@@ -212,7 +210,7 @@ let cpuUsage: number = hidebug.getCpuUsage();
 
 ## hidebug.getServiceDump<sup>9+</sup>
 
-getServiceDump(serviceid: number, fd: number, args: Array\<string>) : void
+getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
 
 Obtains system service information.
 
@@ -226,18 +224,18 @@ Obtains system service information.
 | -------- | ------ | ---- |----------------------------|
 | serviceid | number | Yes  | Service ID used to obtain system service information.|
 | fd | number | Yes  | File descriptor to which data is written by the API.        |
-| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service.          |
+| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service. The maximum length of a string is 254 characters.|
 
 **Error codes**
 
-For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed,Possible causes:1.the parameter type error 2.the args parameter is not string array.  |
 | 11400101 | ServiceId invalid. The system ability does not exist.                                           |
 
-**Example**
+**Example**:
 
 <!--code_no_check-->
 ```ts
@@ -265,7 +263,7 @@ if (fileFd >= 0) {
 
 ## hidebug.startJsCpuProfiling<sup>9+</sup>
 
-startJsCpuProfiling(filename: string) : void
+startJsCpuProfiling(filename: string): void
 
 Starts the VM profiling method. **startJsCpuProfiling(filename: string)** and **stopJsCpuProfiling()** are called in pairs. **startJsCpuProfiling(filename: string)** always occurs before **stopJsCpuProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
@@ -275,7 +273,7 @@ Starts the VM profiling method. **startJsCpuProfiling(filename: string)** and **
 
 | Name  | Type  | Mandatory| Description                                              |
 | -------- | ------ | ---- |--------------------------------------------------|
-| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name.|
+| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name. The maximum length of the string is 128.|
 
 **Error codes**
 
@@ -285,7 +283,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed,Parameter type error.                        |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -302,13 +300,13 @@ try {
 
 ## hidebug.stopJsCpuProfiling<sup>9+</sup>
 
-stopJsCpuProfiling() : void
+stopJsCpuProfiling(): void
 
 Stops the VM profiling method. **stopJsCpuProfiling()** and **startJsCpuProfiling(filename: string)** are called in pairs. **startJsCpuProfiling()** always occurs before **stopJsCpuProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -325,9 +323,9 @@ try {
 
 ## hidebug.dumpJsHeapData<sup>9+</sup>
 
-dumpJsHeapData(filename: string) : void
+dumpJsHeapData(filename: string): void
 
-Exports the heap data.
+Dumps the heap data of a virtual machine.
 
 > **NOTE**
 >
@@ -339,7 +337,7 @@ Exports the heap data.
 
 | Name  | Type  | Mandatory| Description                                           |
 | -------- | ------ | ---- | ----------------------------------------------- |
-| filename | string | Yes  | Custom file name of the sampling data. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name.|
+| filename | string | Yes  | Name of the heap data dump output file customized by the user. The heapsnapshot file named after this parameter is generated in the `files` directory of the application. The maximum length of the string is 128.|
 
 **Error codes**
 
@@ -349,7 +347,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed, Parameter type error.                      |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -364,7 +362,7 @@ try {
 
 ## hidebug.startProfiling<sup>(deprecated)</sup>
 
-startProfiling(filename: string) : void
+startProfiling(filename: string): void
 
 > **NOTE**
 > 
@@ -378,9 +376,9 @@ Starts the VM profiling method. **startProfiling(filename: string)** and **stopP
 
 | Name  | Type  | Mandatory| Description                                            |
 | -------- | ------ | ---- | ------------------------------------------------ |
-| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name.|
+| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name. The maximum length of the string is 128 characters.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -394,7 +392,7 @@ hidebug.stopProfiling();
 
 ## hidebug.stopProfiling<sup>(deprecated)</sup>
 
-stopProfiling() : void
+stopProfiling(): void
 
 > **NOTE**
 > 
@@ -404,7 +402,7 @@ Stops the VM profiling method. **stopProfiling()** and **startProfiling(filename
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -418,13 +416,13 @@ hidebug.stopProfiling();
 
 ## hidebug.dumpHeapData<sup>(deprecated)</sup>
 
-dumpHeapData(filename: string) : void
+dumpHeapData(filename: string): void
 
 > **NOTE**
 > 
 > This API is deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9).
 
-Exports the VM heap data and generates a **filename.heapsnapshot** file.
+Dumps the VM heap data and generates a `filename.heapsnapshot` file.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -432,9 +430,9 @@ Exports the VM heap data and generates a **filename.heapsnapshot** file.
 
 | Name  | Type  | Mandatory| Description                                                     |
 | -------- | ------ | ---- |---------------------------------------------------------|
-| filename | string | Yes  | User-defined heap file name. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name.|
+| filename | string | Yes  | User-defined heap file name. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name. The maximum length of the string is 128 characters.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -456,7 +454,7 @@ Obtains VM memory information.
 | -------------| --------------------------------------- |
 | [VMMemoryInfo](#vmmemoryinfo12) | VM memory information.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -484,9 +482,7 @@ Obtains the CPU usage of application threads.
 | -----------------| ------------------------------------------------------------|
 | [ThreadCpuUsage](#threadcpuusage12)[] | CPU usage of all threads of the current application process.|
 
-
-
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -499,7 +495,7 @@ for (let i = 0; i < appThreadCpuUsage.length; i++) {
 
 ## hidebug.startAppTraceCapture<sup>12+</sup>
 
-startAppTraceCapture(tags: number[], flag: TraceFlag, limitSize: number) : string
+startAppTraceCapture(tags: number[], flag: TraceFlag, limitSize: number): string
 
 Starts automatic trace collection in a specified scope. This API is a supplement to the [HiTrace](../../dfx/hitrace.md) module. The performance consumption during trace collection increases with the collection scope. Therefore, before using this API, you are advised to run the **hitrace** command to capture trace logs and select the key scope of trace collection to improve the API performance.
 
@@ -511,7 +507,7 @@ Evaluation method: limitSize = Expected trace collection duration x Unit trace t
 
 Expected trace collection duration: You can determine the duration based on the fault scenario. The unit is second.
 
-Unit trace traffic: The size of trace data generated by an application per second. The recommended value is 300 KB/s. You are advised to use the actual value of your application. The unit is KB/s.
+Trace traffic per second: size of traces generated by an app per second. The recommended value is 300 KB/s. You are advised to use the actual value of your app, in KB/s.
 
 To obtain the unit trace traffic of an application, you can call **startAppTraceCapture()** with **limitSize** set to the maximum value 500 MB. After **N** seconds, call **stopAppTraceCapture()** to stop the collection and check the size **S** (KB) of the trace data. The unit trace traffic is **S**/**N** (KB/s).
 
@@ -529,11 +525,11 @@ To obtain the unit trace traffic of an application, you can call **startAppTrace
 
 | Type            | Description           |
 | -----------------|---------------|
-| string           | Path of the trace file.|
+| string           | Returns the trace file name and path. (The interface returns the actual physical path. If the app needs to access the path, convert the path based on the mapping between the app sandbox path and the actual physical path. For details, see [Mapping Between App Sandbox Paths and Actual Physical Paths](../../file-management/app-sandbox-directory.md#mapping-between-app-sandbox-paths-and-actual-physical-paths).)|
 
 **Error codes**
 
-For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
+For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HiDebug-Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
@@ -542,7 +538,7 @@ For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx
 | 11400103 | No write permission on the file.                                |
 | 11400104 | Abnormal trace status.                                 |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -565,7 +561,7 @@ try {
 
 ## hidebug.stopAppTraceCapture<sup>12+</sup>
 
-stopAppTraceCapture() : void
+stopAppTraceCapture(): void
 
 Stops application trace collection. Use [startAppTraceCapture()](#hidebugstartapptracecapture12) to start collection before calling this API. If this API is called before trace collection or it is repeatedly called, an exception will occur.
 
@@ -575,14 +571,14 @@ If **startAppTraceCapture ()** is called without a properly specified **limitSiz
 
 **Error codes**
 
-For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
+For details about the following error codes, see [HiDebug-Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
 | 11400104 | The status of the trace is abnormal.                                |
 | 11400105 | No capture trace running.                                       |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -604,7 +600,7 @@ try {
 
 ## hidebug.getAppMemoryLimit<sup>12+</sup>
 
-getAppMemoryLimit() : MemoryLimit
+getAppMemoryLimit(): MemoryLimit
 
 Obtains the memory limit of an application process.
 
@@ -616,7 +612,7 @@ Obtains the memory limit of an application process.
 | ------ | -------------------------- |
 | [MemoryLimit](#memorylimit12) | Memory limit of the application process.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -626,11 +622,9 @@ let appMemoryLimit:hidebug.MemoryLimit = hidebug.getAppMemoryLimit();
 
 ## hidebug.getSystemCpuUsage<sup>12+</sup>
 
-getSystemCpuUsage() : number
+getSystemCpuUsage(): number
 
 Obtains the CPU usage of the system.
-
-For example, if the CPU usage of system resources is **50%**, **0.5** is returned.
 
 > **NOTE**
 >
@@ -642,7 +636,7 @@ For example, if the CPU usage of system resources is **50%**, **0.5** is returne
 
 | Type    | Description         |
 |--------|-------------|
-| number | CPU usage of the system.|
+| number | CPU usage of the system. For example, if the CPU usage is **50%**, **0.5** is returned.|
 
 **Error codes**
 
@@ -652,7 +646,7 @@ For details about the error codes, see [HiDebug CPU Usage Error Codes](errorcode
 | ------- |-------------------------------------------------|
 | 11400104 | The status of the system CPU usage is abnormal. |
 
-**Example**
+**Example**:
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -666,7 +660,7 @@ try {
 
 ## hidebug.setAppResourceLimit<sup>12+</sup>
 
-setAppResourceLimit(type: string, value: number, enableDebugLog: boolean) : void
+setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 Sets the number of FDs, number of threads, JS memory, or native memory limit of the application.
 
@@ -690,14 +684,14 @@ This API is used to construct a memory leak. For details, see [Subscribing to Re
 
 **Error codes**
 
-For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
+For details about the following error codes, see [Common Error Codes](../errorcode-universal.md) and [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
 | 401 | Invalid argument, Possible causes:1.The limit parameter is too small 2.The parameter is not in the specified type 3.The parameter type error or parameter order error.  |
 | 11400104 | Set limit failed due to remote exception. |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -731,7 +725,7 @@ Obtains the memory information of the application process. This API is implement
 | ------ | -------------------------- |
 | [NativeMemInfo](#nativememinfo12) | Memory information of the application process.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -746,17 +740,17 @@ console.info(`pss: ${nativeMemInfo.pss}, vss: ${nativeMemInfo.vss}, rss: ${nativ
 
 getAppNativeMemInfoAsync(): Promise&lt;NativeMemInfo&gt;
 
-Obtains the memory information of an application process in asynchronous mode. This API is implemented by reading data from the **/proc/{pid}/smaps_rollup and /proc/{pid}/statm** node.
+Reads the data of the /proc/{pid}/smaps_rollup and /proc/{pid}/statm nodes to obtain the memory information of an application process. This method uses a promise for asynchronous callback.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value**
 
-| Type                                              | Description                     |
-|--------------------------------------------------| -------------------------- |
-| Promise&lt;[NativeMemInfo](#nativememinfo12)&gt; | Promise used to return the application process memory information.|
+| Type                                              | Description                   |
+|--------------------------------------------------| --------------------- |
+| Promise&lt;[NativeMemInfo](#nativememinfo12)&gt; | Promise that returns the memory information of an application process.|
 
-**Example**
+**Example**:
 
 ```ts
 hidebug.getAppNativeMemInfoAsync().then((nativeMemInfo: hidebug.NativeMemInfo)=>{
@@ -790,7 +784,7 @@ Obtains the memory information of the application process. This API uses the cac
 | ------ | -------------------------- |
 | [NativeMemInfo](#nativememinfo12) | Memory information of the application process.|
 
-**Example**
+**Example**:
 
 ```ts
 let nativeMemInfo: hidebug.NativeMemInfo = hidebug.getAppNativeMemInfoWithCache();
@@ -813,7 +807,7 @@ Obtains system memory information. This API is implemented by reading data from 
 | ------ | -------------------------- |
 | [SystemMemInfo](#systemmeminfo12) | System memory information.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -838,7 +832,7 @@ Obtains the system [GC](../../arkts-utils/gc-introduction.md) statistics.
 |-----------------------|----------|
 | [GcStats](#gcstats12) | System GC statistics.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -863,7 +857,7 @@ Obtains the specified system [GC](../../arkts-utils/gc-introduction.md) statisti
 
 | Name  | Type  | Mandatory| Description         |
 | -------- | ------ | ---- |-------------|
-| item | string | Yes  | Item of the GC statistics to be obtained.|
+| item | string | Yes  | Type of the statistics to be obtained. The following statistics can be obtained:<br>"ark.gc.gc-count": number of GC times of the current thread.<br>"ark.gc.gc-time": total GC duration triggered by the current thread, in milliseconds.<br>"ark.gc.gc-bytes-allocated": size of the memory allocated to the current thread Ark VM, in bytes.<br>"ark.gc.gc-bytes-freed": memory freed by the current thread, in bytes.<br> "ark.gc.fullgc-longtime-count": number of long full GCs of the current thread.|
 
 **Return value**
 
@@ -871,21 +865,15 @@ Obtains the specified system [GC](../../arkts-utils/gc-introduction.md) statisti
 |--------|---------------------------|
 | number | System GC statistics returned based on the input parameters.|
 
-| Input Parameter                        | Return Value Description         |
-|------------------------------|----------------|
-| ark.gc.gc-count | Count of GC of the calling thread.    |
-| ark.gc.gc-time | GC time triggered by the calling thread, in milliseconds.|
-| ark.gc.gc-bytes-allocated | Memory size allocated to the Ark VM of the calling thread, in bytes.|
-| ark.gc.gc-bytes-freed | Memory freed by the GC of the calling thread, in bytes.|
-| ark.gc.fullgc-longtime-count | Count of long fullGC of the calling thread.|
-
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                                      |
 | ------- |------------------------------------------------------------------------------------------------------------|
 | 401 | Possible causes:1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1032,23 +1020,13 @@ Describes the key-value pair used to store GC statistics. This type does not sup
 
 | Type     | Description                         |
 | -----------| ---------------------------- |
-| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics.    |
-
-GcStats contains the following information:
-
-| Name                    | Type  | Description                     |
-|-------------------------| ------ |------------------------- |
-| ark.gc.gc-count         | number |  Count of GC of the calling thread.|
-| ark.gc.gc-time          | number |  GC time triggered by the calling thread, in milliseconds.|
-| ark.gc.gc-bytes-allocated | number | Memory size allocated to the Ark VM of the calling thread, in bytes.|
-| ark.gc.gc-bytes-freed   | number | Memory freed by the GC of the calling thread, in bytes.|
-| ark.gc.fullgc-longtime-count | number |  Count of long fullGC of the calling thread.|
+| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics. The key-value information includes:<br>ark.gc.gc-count: number of GC times of the current thread.<br>ark.gc.gc-time: total GC duration of the current thread, in milliseconds.<br>ark.gc.gc-bytes-allocated: size of the memory allocated to the current thread, in bytes.<br>ark.gc.gc-bytes-freed: size of the memory successfully reclaimed by the current thread, in bytes.<br> ark.gc.fullgc-longtime-count: number of times that the current thread triggers long full GC.   |
 
 ## JsRawHeapTrimLevel<sup>20+</sup>
 
 Enumerates the trimming levels of the heap snapshot.
 
-**TRIM_LEVEL_2** takes a longer time than **TRIM_LEVEL_1**. The threshold for screen freezing is 6 seconds. With **TRIM_LEVEL_1**, the trim duration stays below this threshold. When switched to **TRIM_LEVEL_2**, the duration may exceed 6s, triggering an **APP_FREEZE** (screen freeze event) and causing the system to kill the application; the trim level then reverts to **TRIM_LEVEL_1**.
+**TRIM_LEVEL_2** takes a longer time than **TRIM_LEVEL_1**. The threshold for screen freezing is 6 seconds. When TRIM_LEVEL_1 is used, the threshold is not reached. When TRIM_LEVEL_2 is used, the trimming time may exceed 6 seconds, triggering the APP_FREEZE event. As a result, the application is terminated by the system. In this case, the trimming level is rolled back to TRIM_LEVEL_1.
 
 You are advised to use **TRIM_LEVEL_1** to ensure application stability and use **TRIM_LEVEL_2 **only when more complete trimming is required.
 
@@ -1071,9 +1049,9 @@ Obtains the debugging state of an application process.
 
 | Type | Description                                                  |
 | ------ |------------------------------------------------------|
-| boolean | Whether the Ark or native layer of the application process is in the debugging state. The value **true** indicates that the layer is in the debugging state, and **false** indicates the opposite.|
+| boolean | Whether the Ark or native layer of the application process is in the debugging state. true: yes false: no|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1085,7 +1063,7 @@ console.info(`isDebugState = ${hidebug.isDebugState()}`)
 
 getGraphicsMemory(): Promise&lt;number&gt;
 
-Obtains the size of the GPU memory. This API uses a promise to return the result.
+Obtains the size of the application video RAM asynchronously using a promise.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -1093,17 +1071,19 @@ Obtains the size of the GPU memory. This API uses a promise to return the result
 
 **Return value**
 
-| Type                   | Description                          |
-|-----------------------|------------------------------|
-| Promise&lt;number&gt; | Size of the GPU memory, in KB.|
+| Type                   | Description                        |
+|-----------------------|----------------------------|
+| Promise&lt;number&gt; | Promise object, which returns the size of the application video RAM (in KB).|
 
 **Error codes**
+
+For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
 | 11400104 | Failed to get the application memory due to a remote exception. |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
@@ -1120,7 +1100,7 @@ hidebug.getGraphicsMemory().then((ret: number) => {
 
 getGraphicsMemorySync(): number
 
-Obtains the size of the GPU memory synchronously.
+Obtains the size of the application video RAM in synchronous mode.
 
 > **NOTE**
 >
@@ -1134,15 +1114,17 @@ Obtains the size of the GPU memory synchronously.
 
 | Type | Description            |
 | ------ |----------------|
-| number | Size of the GPU memory, in KB.|
+| number | Size of the application video RAM, in KB.|
 
 **Error codes**
+
+For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
 | 11400104 | Failed to get the application memory due to a remote exception. |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1159,7 +1141,7 @@ try {
 
 dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
-Dumps the original heap snapshot of the VM for the current thread. The API uses a promise to return the path of the .rawheap file. You can use [rawheap-translator](../../tools/rawheap-translator.md) to convert the generated file into a .heapsnapshot file for parsing.
+Dumps the original heap snapshot of the VM for the current thread and generates a rawheap file. The rawheap file can be converted into a heapsnapshot file using the rawheap-translator tool for parsing. The path of the generated file is returned using a promise for asynchronous callback.
 
 > **NOTE**
 >
@@ -1174,7 +1156,7 @@ Dumps the original heap snapshot of the VM for the current thread. The API uses 
 
 | Name                    | Type     | Mandatory| Description                                         |
 |-------------------------|---------|----|---------------------------------------------|
-| needGC         | boolean | No | Whether GC is required before storing heap snapshots. The value **true** indicates that GC is required, and **false** indicates the opposite. The default value is **true**.|
+| needGC         | boolean | No | Whether GC is required before storing heap snapshots. true: GC is required. false: GC is not required. The default value is **true**.|
 
 **Return value**
 
@@ -1197,7 +1179,7 @@ For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx
 | 11400112 | Repeated data dump. |
 | 11400113 | Failed to create dump file. |
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1213,16 +1195,16 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 
 enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
 
-Enables GWP-Asan to detect illegal behaviors in heap memory usage.
+Enables GWP-ASan to detect invalid behaviors during heap memory usage.
 
-This API is used to dynamically configure and enable GWP-Asan to adapt to the custom GWP-Asan detection policy. The configuration takes effect after the application is restarted.
+This API is used to dynamically configure and enable GWP-ASan to adapt to the GWP-ASan detection policy customized by the application. The configuration takes effect after the application is restarted.
 
-For details about GWP-Asan, see [Using GWP-Asan to Detect Memory Errors](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-gwpasan-detection).
+For more information about GWP-ASan, please refer to [Using GWP-ASan to Detect Memory Errors](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection).
 
 > **NOTE**
 > 
-> 1. If more than 20 applications have been enabled during device running, this API will fail to be called and an error code will be thrown.
-> 2. To prevent abnormal application exit, use **try-catch** to capture exceptions.
+> 1. If the number of GWP-ASan applications set by calling this API exceeds the quota, the API call will fail and an error code will be returned. Use try-catch to capture exceptions to prevent the application from exiting abnormally.
+> 2. After the device is restarted, the GWP-ASan parameters set by calling this API will become invalid.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1230,8 +1212,8 @@ For details about GWP-Asan, see [Using GWP-Asan to Detect Memory Errors](https:/
 
 | Name  | Type  | Mandatory| Description  |
 |---------|---------|--------|-----|
-|options | [GwpAsanOptions](#gwpasanoptions20) | No| Configuration options of GWP-Asan. If no parameter is set, the default value is used.|
-|duration | number | No| GWP-Asan duration. The default value is 7 days. The value must be a positive integer.|
+| options | [GwpAsanOptions](#gwpasanoptions20) | No| GWP-ASan configuration item. If this parameter is not set, the default parameter is used.|
+| duration | number | No| GWP-ASan duration, in days. The default value is 7. The value must be a positive integer greater than 0.|
 
 **Error codes**
 
@@ -1256,27 +1238,27 @@ let duration: number = 4;
 
 try {
   hidebug.enableGwpAsanGrayscale(options, duration);
-  console.info(`Succeeded in enabling GWP-Asan.`);
+  console.info(`Succeeded in enabling GWP-ASan.`);
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`Failed to enable GWP-Asan. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to enable GWP-ASan. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## GwpAsanOptions<sup>20+</sup>
-Defines configuration options of GWP-Asan. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
+GWP-ASan configuration item. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 | Name        | Type | Read Only | Optional| Description|
 |--------------|------|-------|-------|-----|
-|alwaysEnabled | boolean | No | Yes| Whether to always enable GWP-Asan. The value **true** means to always enable GWP-Asan.<br>The value **false** means to enable GWP-Asan at a probability of 1/128.<br> The default value is **false**.|
-|sampleRate    |number| No |Yes|Sampling rate of GWP-Asan. The default value is **2500**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br> GWP-Asan performs sampling on the allocated memory at a probability of 1/**sampleRate**.|
-|maxSimutaneousAllocations|number|No|Yes|Maximum number of allocated slots. The default value is **1000**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br>When the slots are used up, the newly allocated memory is no longer monitored.<br>After the used memory is released, the slots occupied by the memory are automatically reused to facilitate subsequent memory monitoring.|
+|alwaysEnabled | boolean | No | Yes| true: GWP-ASan is enabled at 100%.<br>false: GWP-ASan is enabled at a probability of 1/128.<br> The default value is **false**.|
+|sampleRate    |number| No |Yes|GWP-ASan sampling frequency. The default value is 2500. A positive integer greater than 0 must be passed. If a decimal is passed, the value is rounded up.<br> GWP-Asan performs sampling on the allocated memory at a probability of 1/**sampleRate**.<br> Recommended value: >= 1000. If the value is too small, the performance is significantly affected.|
+|maxSimutaneousAllocations|number|No|Yes|Maximum number of allocated slots. The default value is **1000**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br>When the slots are used up, the newly allocated memory is no longer monitored.<br>After the used memory is released, the slots occupied by the memory are automatically reused to facilitate subsequent memory monitoring.<br> Recommended value: <= 20000. If the value is too large, the VMA may crash due to exceeding the threshold.|
 
 ## hidebug.disableGwpAsanGrayscale<sup>20+</sup>
 disableGwpAsanGrayscale(): void
 
-Disables GWP-Asan. This API is used to cancel the custom configuration and restore the default parameter [GwpAsanOptions](#gwpasanoptions20).
+Disables GWP-ASan. This API is used to cancel the custom configuration and restore the default parameter [GwpAsanOptions](#gwpasanoptions20).
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1291,7 +1273,7 @@ hidebug.disableGwpAsanGrayscale();
 ## hidebug.getGwpAsanGrayscaleState<sup>20+</sup>
 getGwpAsanGrayscaleState(): number
 
-Obtains the number of remaining days for enabling GWP-Asan.
+Obtains the remaining days for enabling GWP-ASan.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1299,7 +1281,7 @@ Obtains the number of remaining days for enabling GWP-Asan.
 
 | Type| Description|
 |-----------|-------------|
-| number    |Number of remaining days for enabling GWP-Asan. If GWP-Asan is disabled, **0** is returned.|
+| number    |Obtains the remaining days for enabling GWP-ASan. If GWP-Asan is disabled, **0** is returned.|
 
 **Example**:
 
@@ -1324,16 +1306,16 @@ Sets the trimming level of the original heap snapshot stored by the current proc
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
+**Parameters**
+
 | Name| Type                                       | Mandatory| Description                  |
 | ------ | ------------------------------------------- | ---- | ---------------------- |
 | level  | [JsRawHeapTrimLevel](#jsrawheaptrimlevel20) | Yes  | Trimming level for storing heap snapshots. The default value is **TRIM_LEVEL_1**.|
 
-**Example**
+**Example**:
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-hidebug.setJsRawHeapTrimLevel(TRIM_LEVEL_2);
-}
+hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 ```

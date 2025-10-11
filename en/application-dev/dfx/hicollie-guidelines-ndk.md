@@ -34,7 +34,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 1. The fault log file of the service thread stuck event starts with **appfreeze-** and is generated in **Device/data/log/faultlog/faultlogger/**. The log files are named in the format of **appfreeze-application bundle name-application UID-time (seconds)**. For details, see [AppFreeze Log Specifications](appfreeze-guidelines.md#log-specifications).
 
-2. For details about the **OH_HiCollie_Init_StuckDetection** log specifications, see [Main Thread Jank Event Log Specifications](hiappevent-watcher-mainthreadjank-events.md).
+2. For details about the specifications of the OH_HiCollie_Init_StuckDetection log, see [Main Thread Timeout Event Log Specifications](apptask-timeout-guidelines.md#log-specifications).
 
 ## How to Develop
 

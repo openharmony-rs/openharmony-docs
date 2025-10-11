@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @qq_437963121-->
-<!--Designer: @MontSaintMichel-->
+<!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -16,14 +16,14 @@ HiTraceMeter provides APIs for system performance tracing. You can call the APIs
 
 The performance tracing APIs are provided by the **HiTraceMeter** module. For details, see [@ohos.hiTraceMeter (Performance Tracing)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md).
 
-| API| Description| 
+| API| Description|
 | -------- | -------- |
-| hiTraceMeter.startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): void | Starts a synchronous time slice trace with the trace output level specified.<br>**Note**: This API is supported since API version 19.| 
-| hiTraceMeter.finishSyncTrace(level: HiTraceOutputLevel): void | Stops a synchronous time slice trace with the trace output level specified.<br>The value of **level** must be the same as that of **startSyncTrace**.<br>**Note**: This API is supported since API version 19.| 
-| hiTraceMeter.startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number, customCategory: string, customArgs?: string): void | Starts an asynchronous time slice trace with the trace output level specified.<br>If multiple tracing tasks with the same name need to be performed at the same time, different task IDs must be specified through **taskId**. If the tracing tasks with the same name are not performed at the same time, the same task ID can be used.<br>**Note**: This API is supported since API version 19.| 
-| hiTraceMeter.finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void | Stops an asynchronous time slice trace with the trace output level specified.<br>Stops a tracing task. The values of **name** and **taskId** must be the same as those in **startAsyncTrace**.<br>**Note**: This API is supported since API version 19.| 
-| hiTraceMeter.traceByValue(level: HiTraceOutputLevel, name: string, count: number): void | Traces an integer with the trace output level specified.<br>**name** indicates the name of an integer variable to trace, and **count** indicates the integer value.<br>**Note**: This API is supported since API version 19.| 
-| hiTraceMeter.isTraceEnabled(): boolean | Checks whether application trace capture is enabled.<br>When it is enabled, **true** is returned; when it is disabled or stopped, **false** is returned. In this case, calling the HiTraceMeter API does not take effect.<br>**Note**: This API is supported since API version 19.| 
+| hiTraceMeter.startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): void | Starts a synchronous time slice trace with the trace output level specified.<br>**Note**: This API is supported since API version 19.|
+| hiTraceMeter.finishSyncTrace(level: HiTraceOutputLevel): void | Stops a synchronous time slice trace with the trace output level specified.<br>The level must be the same as the parameter value of startSyncTrace().<br>**Note**: This API is supported since API version 19.|
+| hiTraceMeter.startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number, customCategory: string, customArgs?: string): void | Starts an asynchronous time slice trace with the trace output level specified.<br>taskId indicates the ID of a trace. If multiple tasks with the same name are executed concurrently, the taskId parameter passed to startAsyncTrace() must be different each time. If tasks with the same name are executed in sequence, the taskId parameter can be the same.<br>**Note**: This API is supported since API version 19.|
+| hiTraceMeter.finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void | Stops an asynchronous time slice trace with the trace output level specified.<br>The values of level, name, and taskId must be the same as those of startAsyncTrace().<br>**Note**: This API is supported since API version 19.|
+| hiTraceMeter.traceByValue(level: HiTraceOutputLevel, name: string, count: number): void | Traces an integer with the trace output level specified.<br>**name** indicates the name of an integer variable to trace, and **count** indicates the integer value.<br>**Note**: This API is supported since API version 19.|
+| hiTraceMeter.isTraceEnabled(): boolean | Checks whether application trace capture is enabled.<br>When it is enabled, **true** is returned; when it is disabled or stopped, **false** is returned. In this case, calling the HiTraceMeter API does not take effect.<br>**Note**: This API is supported since API version 19.|
 
 > **NOTE**
 >
@@ -38,28 +38,28 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
 ### Use Scenarios
 
 - Synchronous timeslice tracing APIs:
-  The **startSyncTrace** and **finishSyncTrace** APIs must be used sequentially for logging during sequential execution. If they are not called in the correct order, the trace file will appear abnormal in visualization tools such as SmartPerf.
+  These APIs are used in dotting scenarios where dotting is performed in sequence. The startSyncTrace() and finishSyncSyncTrace() APIs must be used in pairs. Otherwise, the trace file will be displayed abnormally in visualization tools such as SmartPerf.
 
 - Asynchronous timeslice tracing APIs:
-  The **startAsyncTrace** API is called to start logging before an asynchronous operation is performed, and the **finishAsyncTrace** API is called to end logging after the asynchronous operation is performed. 
+  The startAsyncTrace() API is called to start dotting before an asynchronous operation is performed, and the finishAsyncTrace() API is called to end dotting after the asynchronous operation is complete. 
   During trace parsing, different asynchronous traces are identified by the **name** and **taskId** parameters. These two APIs must be used in sequence as a pair, with the same **name** and **taskId** passed. 
   Different **name** and **taskId** values must be used for different asynchronous processes. However, the same **name** and **taskId** values can be used if asynchronous processes do not occur at the same time. 
   If the API is called incorrectly, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Integer tracing APIs:
-  The APIs are used to trace integer variables. The **traceByValue** API is called when integer values change. You can view the change in the lane diagram of SmartPerf. The values during the interval between the start of data collection and the first logging cannot be viewed.
+  The APIs are used to trace integer variables. The traceByValue() API is called when the integer value changes. You can view the change in the lane diagram of SmartPerf. The values during the interval between the start of data collection and the first logging cannot be viewed.
 
 
 ### Parameter Description
 
-| Name| Type| Mandatory| Description| 
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| level | enum | Yes| Trace output level. Trace data whose levels are lower than the system threshold will not be output.<br>By default, the log version threshold is **INFO**, and the nolog version threshold is **COMMERCIAL**.| 
-| name | string | Yes| Name of the task or integer variable to trace.| 
-| taskId | number | Yes| Task ID for association. If multiple tasks with the same name are executed concurrently, different task IDs must be set when the **startAsyncTrace** API is called.| 
-| count | number | Yes| Value of an integer variable.| 
-| customCategory | string | Yes| Custom category name, which is used to collect asynchronous trace data of the same type.<br>If the category is not required, pass in an empty string.| 
-| customArgs | string | No| Custom key-value pair. If there are multiple key-value pairs, separate them with commas (,), for example, **key1=value1,key2=value2**.<br>If this parameter is not required, do not pass in it or pass in an empty string.| 
+| level | enum | Yes| Trace output level. Trace data whose levels are lower than the system threshold will not be output.<br>By default, the log version threshold is **INFO**, and the nolog version threshold is **COMMERCIAL**.|
+| name | string | Yes| Name of the task or integer variable to trace.|
+| taskId | number | Yes| ID of the associated task. If multiple tasks with the same name are executed concurrently, the taskId passed each time startAsyncTrace() is called must be different.|
+| count | number | Yes| Value of an integer variable.|
+| customCategory | string | Yes| Custom category name, which is used to collect asynchronous trace data of the same type.<br>If the category is not required, pass in an empty string.|
+| customArgs | string | No| Custom key-value pair. If there are multiple key-value pairs, separate them with commas (,), for example, **key1=value1,key2=value2**.<br>If this parameter is not required, do not pass in it or pass in an empty string.|
 
 > **NOTE**
 >
@@ -169,7 +169,7 @@ The following is an example of an ArkTS application that uses the HiTraceMeter A
    $ hitrace --trace_begin app
    ```
 
-2. Click the **Run** button in DevEco Studio to run the project. Then, click "Hello world" to execute the service logic that contains HiTraceMeter logging. Run the following command to capture trace data and filter the trace data using the keyword **myTest** (the name field prefix passed by the logging API is **myTest** in this example).
+2. Click the run button on DevEco Studio to start the application. Click Hello World on the application screen to execute the service logic that contains HiTraceMeter tracing points. Run the following command to capture trace data and filter the trace data using the keyword **myTest** (the name field prefix passed by the logging API is **myTest** in this example).
 
    ```shell
    $ hitrace --trace_dump | grep myTest
@@ -189,7 +189,7 @@ The following is an example of an ArkTS application that uses the HiTraceMeter A
    e.myapplication-39945   (  39945) [010] .... 347921.342615: tracing_mark_write: F|39945|H:myTestAsyncTrace|1003|M62
    ```
 
-   In the trace data line, **tracing_mark_write** indicates the logging event type. This event is used by the HiTraceMeter API in applications. The data before the logging event type is the thread name, thread ID, process ID, CPU, and logging time (from the startup time to the current time, in seconds). For the data that follows the logging event type, see [User-Mode Trace Format](hitracemeter-view.md#user-mode-trace-format).
+   In each line of trace data, tracing_mark_write indicates the tracing event type. The tracing event type is used by the HiTraceMeter API to trace events in the application. The data before the tracing event type consists of the thread name, thread ID, process ID, CPU, and tracing time (from the startup time to the current time, in seconds). For details about the data after the tracing event type, see [User-mode Trace Format](hitracemeter-view.md).
 
 
 ### Step 3: Stoping Trace Capture
@@ -201,7 +201,7 @@ The following is an example of an ArkTS application that uses the HiTraceMeter A
    $ hitrace --trace_finish
    ```
 
-2. Click "Hello World" on the application screen again. The trace capture of the application is disabled, and the **isTraceEnabled** API returns **false**. In the **Log** window of the DevEco Studio, input the keyword **not enabled** for filtering and the following log is displayed.
+2. Click Hello World on the application page again. The application trace capture is disabled, and the isTraceEnabled() API returns false. In the **Log** window of the DevEco Studio, input the keyword **not enabled** for filtering and the following log is displayed.
 
    ```text
    myTraceTest running, trace is not enabled
@@ -209,4 +209,4 @@ The following is an example of an ArkTS application that uses the HiTraceMeter A
 
    > **NOTE**
    >
-   > In the log version, after the **hitrace --trace_finish** command is used to stop capture, the snapshot mode is automatically started and trace capture is enabled. In this case, the **isTraceEnabled** API returns **true**, and the preceding log is not printed.
+   > After the hitrace --trace_finish command is executed to stop collecting logs, the snapshot mode is automatically enabled, and trace capture is enabled. In this case, the isTraceEnabled() API returns true, and the preceding log is not printed.

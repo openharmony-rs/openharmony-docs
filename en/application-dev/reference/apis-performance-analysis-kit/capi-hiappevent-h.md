@@ -109,8 +109,8 @@ Enumerates the error codes used in the HiAppEvent module.
 
 **Since**: 15
 
-| Enum Item| Description                     |
-| -- |-------------------------|
+| Enum Item| Description|
+| -- | -- |
 | HIAPPEVENT_SUCCESS = 0 | The operation is successful.                  |
 | HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4 | The parameter value length is invalid.<br>**Since**: 18|
 | HIAPPEVENT_PROCESSOR_IS_NULL = -7 | The processor is null.<br>**Since**: 18                       |
@@ -755,8 +755,8 @@ Creates a watcher for application events. Note: If a created watcher is no longe
 
 **Returns**
 
-| Type                     | Description|
-|-------------------------| -- |
+| Type| Description|
+| -- | -- |
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* | Pointer to the new watcher if the API is called successfully; **nullptr** if the **name** parameter is invalid.|
 
 ### OH_HiAppEvent_DestroyWatcher()
@@ -997,8 +997,8 @@ Creates a processor for application events. Note: If a processor is no longer us
 
 **Returns**
 
-| Type                       | Description|
-|---------------------------| -- |
+| Type| Description|
+| -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* | Pointer to the new processor if the API is called successfully; **nullptr** if the **name** parameter is invalid.|
 
 ### OH_HiAppEvent_SetReportRoute()
@@ -1301,8 +1301,8 @@ Creates a pointer to the configuration object that sets the conditions for trigg
 
 **Returns**
 
-| Type                    | Description|
-|------------------------| -- |
+| Type| Description|
+| -- | -- |
 | [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md)* | Pointer to the configuration object that sets the conditions for triggering system events.|
 
 ### OH_HiAppEvent_DestroyConfig()
@@ -1359,7 +1359,11 @@ int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)
 
 **Description**
 
-Sets the conditions for triggering system event subscription.
+Sets event-related configuration parameters.
+
+Different events have different configuration items. Currently, only the following events are supported:
+
+MAIN_THREAD_JANK (For details about the parameter configuration, see [Main Thread Jank Events](../../dfx/hiappevent-watcher-mainthreadjank-events.md).)
 
 **Since**: 15
 

@@ -17,7 +17,7 @@
   - [Address Sanitizer detection](address-sanitizer-guidelines.md)
   - [Application Freeze Detection](appfreeze-guidelines.md)
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
-  - [Application Killed Detection](appkilled-guidelines.md)
+  - [App Killed Detection](appkilled-guidelines.md)
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
@@ -51,10 +51,10 @@
       - Task Execution Timeout Events<!--app-hicollie-events-->
         - [Task Execution Timeout Event Overview](hiappevent-watcher-apphicollie-events.md)
         - [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md)
-      - Application Killed Events<!--app-killed-events-->
+      - App Killed Events<!--app-killed-events-->
         - [Application Killed Event Overview](hiappevent-watcher-app-killed-events.md)
         - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
-        - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
+        - [Subscribing to App Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
   <!--Del-->
   - [Event Reporting](hiappevent-event-reporting.md)
   <!--DelEnd-->

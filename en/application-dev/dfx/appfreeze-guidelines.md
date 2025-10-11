@@ -22,7 +22,7 @@ Currently, AppFreeze detection supports the fault types listed in the following 
 | APP_INPUT_BLOCK | The user input response times out.|
 | LIFECYCLE_TIMEOUT | Ability lifecycle switching times out.|
 
-When any of the preceding faults occurs in an application, the application is killed to ensure that it is recoverable and the application freeze event is reported. You can subscribe to the [application freeze event](hiappevent-watcher-freeze-events.md) by using HiAppEvent.
+When the preceding faults occur in an app, the app will be killed to ensure that the app can be restored. and report the application freeze event. You can subscribe to the [application freeze event](hiappevent-watcher-freeze-events.md) by using HiAppEvent.
 
 ### THREAD_BLOCK_6S Application Main Thread Timeout
 
@@ -33,6 +33,7 @@ When any of the preceding faults occurs in an application, the application is ki
 The following figure shows the detection principle.
 
 **Figure 1**
+
 ![thread_block](figures/thread_block.png)
 
 ### APP_INPUT_BLOCK User Input Response Timeout
@@ -44,11 +45,12 @@ The following figure shows the detection principle.
 The following figure shows the detection principle.
 
 **Figure 2**
+
 ![app_input_block](figures/app_input_block.png)
 
 ### Lifecycle Switching Timeout
 
-**Description**: Lifecycle switching timeouts include [ability lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [page lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
+**Description**: Lifecycle switching timeouts include [UIAbility lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [page lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
 
 This fault occurs during lifecycle switching and affects Ability switching and PageAbility switching of the application.
 
@@ -77,7 +79,7 @@ DevEco Studio collects process crash logs from **/data/log/faultlog/faultlogger/
 
 **Method 2: HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-crash-events.md#fields) field of the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-freeze-events.md#fields) field of the event.
 
 **Method 3: hdc**
 
@@ -109,6 +111,14 @@ Uid:20020177
 Reason:THREAD_BLOCK_6S
 appfreeze: com.samples.freezedebug THREAD_BLOCK_6S at 20250628140837
 DisplayPowerInfo:powerState:UNKNOWN
+HitraceIdInfo: hitrace_id: a92ab27238f409a, span_id: 1cd61c9, parent_span_id: 3072e, trace_flag: 0
+Page switch history:
+  14:08:30:327 /ets/pages/Index:Appfreeze
+  14:08:28:986 /ets/pages/Index
+  14:08:26:502 :enters foreground
+  14:08:07:606 :leaves foreground
+  14:08:06:246 /ets/pages/Index:Appfreeze
+  14:08:01:955 :enters foreground
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 DOMAIN:AAFWK
 STRINGID:THREAD_BLOCK_6S
@@ -117,8 +127,12 @@ PID:13680
 UID:20020177
 PACKAGE_NAME:com.samples.freezedebug
 PROCESS_NAME:com.samples.freezedebug
+NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.
 ***
 ```
+From API version 20 onwards, when a system resource alarm (such as low memory or thermal throttling) is generated, the NOTE line is displayed. When this line is displayed, you can ignore the application freeze fault. In earlier API versions, this line is not displayed regardless of the system resource status.
+
+From API version 20 onwards, when the THREAD_BLOCK_6S fault occurs, the [HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid) information is added to the log. HitraceId is the unique tracing ID provided by HiTraceChain, which is used to trace the call chain of a service process. You can use this field to view the HiLog logs of the faulty process during the fault period and analyze the logs to check the application execution status.
 
 All the three types of AppFreeze events include the following information.
 
@@ -127,6 +141,7 @@ All the three types of AppFreeze events include the following information.
 | Reason | Reason why the application freezes, corresponding to the application freeze detection capability.|
 | PID | PID of the faulty process.|
 | PACKAGE_NAME | Application process package name.|
+|[Page switch history](./cppcrash-guidelines.md#faults-with-page-switching-history)| Since API version 20, the maintenance and debugging process records the application switching history. After an application fault occurs, the generated fault file contains the page switching history. If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed.|
 
 ### General Information in the Log Body
 
@@ -335,7 +350,7 @@ The preceding shows the system memory information. **ReclaimAvailBuffer** indica
 
 ## Log Differences
 
-1. Lifecycle timeout event.
+Lifecycle timeout event.
 
 ```
 DOMAIN:AAFWK
