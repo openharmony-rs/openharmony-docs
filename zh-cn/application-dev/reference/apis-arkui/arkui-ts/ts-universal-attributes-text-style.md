@@ -109,6 +109,22 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 | ----- | -------- |
 | number| 插入文本后光标的位置。 |
 
+### setStyledPlaceholder<sup>22+</sup>
+
+setStyledPlaceholder(styledString: StyledString): void
+
+触发属性字符串的绑定或更新。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是 | 设置属性字符串样式的Placeholder，其优先级高于纯文本的placeholder属性。<br>Placeholder不支持属性字符串事件手势，超链接跳转。|
+
 ### deleteText<sup>15+</sup>
 
 deleteText(range?: TextRange): void
