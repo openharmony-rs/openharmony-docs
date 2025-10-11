@@ -548,12 +548,12 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-| 名称       | 类型                                        | 必填 | 说明          |
-|------------|-------------------------------------------- |------|---------------|
-| page       | number                                      | 是   | 当前页码，值范围：[1,1000]。    |
-| pageSize   | number                                      | 是   | 页大小，值范围：[1,50]。      |
-| totalPage  | number                                      | 是   | 总页数，值范围：[1,1000]。      |
-| data       | Array\<[NetFirewallRule](#netfirewallrule)> | 是   | 页面数据。    |
+| 名称       | 类型                                        | 只读 |可选| 说明          |
+|------------|-------------------------------------------- |------|----|-----------|
+| page       | number                                      | 否  |否 |当前页码，值范围：[1,1000]。    |
+| pageSize   | number                                      | 否  |否 |页大小，值范围：[1,50]。      |
+| totalPage  | number                                      | 否   |否 |总页数，值范围：[1,1000]。      |
+| data       | Array\<[NetFirewallRule](#netfirewallrule)> | 否   |否 |页面数据。    |
 
 ## NetFirewallPolicy
 
