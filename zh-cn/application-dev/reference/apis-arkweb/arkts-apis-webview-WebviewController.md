@@ -6905,7 +6905,7 @@ struct WebComponent {
 
 isAdsBlockEnabled() : boolean
 
-查询广告过滤功能是否开启。若未调用，默认该功能关闭。
+查询广告过滤功能是否开启。若未显式调用该属性，默认该功能关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
