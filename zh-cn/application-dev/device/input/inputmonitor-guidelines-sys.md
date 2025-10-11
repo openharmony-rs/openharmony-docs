@@ -1,4 +1,4 @@
-# 输入监听开发指导
+# 输入监听开发指导（仅对系统应用开放）
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->

@@ -1,4 +1,4 @@
-# 全局快捷键开发指导
+# 全局快捷键开发指导（仅对系统应用开放）
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->

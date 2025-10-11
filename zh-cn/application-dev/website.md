@@ -1406,10 +1406,10 @@
         - [按键拦截监听开发指导](device/input/keypressed-guidelines.md)
         - [鼠标光标开发指导](device/input/pointerstyle-guidelines.md)
         <!--Del-->
-        - [输入监听开发指导](device/input/inputmonitor-guidelines.md)
-        - [事件注入开发指导](device/input/inputeventclient-guidelines.md)
-        - [全局快捷键开发指导](device/input/inputconsumer-guidelines.md)
-        - [系统预置全局快捷键开发指导](device/input/shortkey-guidelines.md)
+        - [输入监听开发指导（仅对系统应用开放）](device/input/inputmonitor-guidelines-sys.md)
+        - [事件注入开发指导（仅对系统应用开放）](device/input/inputeventclient-guidelines-sys.md)
+        - [全局快捷键开发指导（仅对系统应用开放）](device/input/inputconsumer-guidelines-sys.md)
+        - [系统预置全局快捷键开发指导（仅对系统应用开放）](device/input/shortkey-guidelines-sys.md)
         <!--DelEnd-->
         - [事件监听开发指导（C/C++）](device/input/monitor-guidelines.md)
         - [事件拦截开发指导（C/C++）](device/input/interceptor-guidelines.md)

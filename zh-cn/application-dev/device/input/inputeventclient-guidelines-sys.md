@@ -1,4 +1,4 @@
-# 事件注入开发指导
+# 事件注入开发指导（仅对系统应用开放）
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
