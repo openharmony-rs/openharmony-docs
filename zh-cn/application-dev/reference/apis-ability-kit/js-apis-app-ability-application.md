@@ -20,6 +20,19 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+## AppPreloadType<sup>22+</sup>
+
+表示应用当前进程的预加载类型枚举。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称                 | 值  | 说明                               |
+| -------------------- | --- | --------------------------------- |
+| UNSPECIFIED    | 0   |    未发生预加载或预加载数据已被清除。       |
+| TYPE_CREATE_PROCESS          | 1   |    进程最终预加载到进程创建完成阶段。      |
+| TYPE_CREATE_ABILITY_STAGE  | 2   |     进程最终预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
+| TYPE_CREATE_WINDOW_STAGE        | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
+
 ## application.createModuleContext<sup>12+</sup>
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
@@ -345,6 +358,37 @@ export default class EntryAbility extends UIAbility {
       let message: string = (error as BusinessError).message;
       console.error(`exitMasterProcessRole failed, error.code: ${code}, error.message: ${message}`);
     }
+  }
+}
+```
+
+## application.getAppPreloadType<sup>22+</sup>
+
+getAppPreloadType(): AppPreloadType
+
+获取应用当前进程的预加载类型。
+
+> **说明：**
+>
+> - 只有当进程创建完成并首次执行[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)时，调用该接口，才可以返回真实的预加载类型。
+> - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+	
+**返回值：**
+
+| 类型            | 说明            |
+| --------------- | --------------- |
+|[AppPreloadType](#apppreloadtype22)  | 应用当前进程的预加载类型。     |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let appPreloadType = application.getAppPreloadType();
   }
 }
 ```
