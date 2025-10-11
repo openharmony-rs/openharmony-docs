@@ -1,7 +1,7 @@
 # 触摸事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -30,7 +30,7 @@ onTouch(event: (event: TouchEvent) => void): T
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [TouchEvent](#touchevent对象说明) | 是   | 获得TouchEvent对象。 |
+| event  | (event: [TouchEvent](#touchevent对象说明)) => void | 是   | 获得TouchEvent对象。 |
 
 **返回值：**
 
@@ -47,8 +47,8 @@ onTouch(event: (event: TouchEvent) => void): T
 | 名称                | 类型       | 只读 | 可选   | 说明                        |
 | ------------------- | -----------|------|-------- | -------------------------- |
 | type                | [TouchType](ts-appendix-enums.md#touchtype)      | 否 | 否 | 触摸事件的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
-| touches             | &lt;[TouchObject](#touchobject)&gt;[] | 否 | 否 | 全部屏幕触点（多指）的信息，每个元素代表一个触点。在使用该属性时，需要校验是否为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| changedTouches      | &lt;[TouchObject](#touchobject)&gt;[] | 否 | 否 | 发生变化而产生事件的手指信息。在使用该属性时，需要校验是否为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| touches             | [TouchObject](#touchobject)[] | 否 | 否 | 全部屏幕触点（多指）的信息，每个元素代表一个触点。在使用该属性时，需要校验是否为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| changedTouches      | [TouchObject](#touchobject)[] | 否 | 否 | 发生变化而产生事件的手指信息。在使用该属性时，需要校验是否为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | stopPropagation      | () => void | 否 | 否 | 阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | preventDefault<sup>12+</sup>      | () => void | 否 | 否 |  阻止默认事件。<br/> **说明：** 该接口仅支持部分组件使用，当前支持组件：Hyperlink，不支持的组件在使用时会抛出异常。暂不支持异步调用和提供Modifier接口。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
