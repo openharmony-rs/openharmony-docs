@@ -939,7 +939,7 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | undefined&gt;&gt; | Promise对象。截图的PixelMap列表，按传入的窗口ID数组的顺序排列。当根据窗口ID找不到窗口或者不是主窗口时，返回undefined。 |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) \| undefined&gt;&gt; | Promise对象。截图的PixelMap列表，按传入的窗口ID数组的顺序排列。当根据窗口ID找不到窗口或者不是主窗口时，返回undefined。 |
 
 **错误码：**
 
