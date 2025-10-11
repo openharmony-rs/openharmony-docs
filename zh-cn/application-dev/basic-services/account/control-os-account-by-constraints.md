@@ -20,7 +20,7 @@
 2. 导入系统账号模块。
 
    ```ts
-   import { osAccount } from '@kit.BasicServicesKit';
+   import { osAccount, BusinessError } from '@kit.BasicServicesKit';
    ```
    <!-- [import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
@@ -51,7 +51,8 @@
    try {
      accountManager.setOsAccountConstraints(localId, constraint, true);
      console.info('setOsAccountConstraints successfully');
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`setOsAccountConstraints failed, error: code is ${err.code}, message is ${err.message}`);
    }
    ```

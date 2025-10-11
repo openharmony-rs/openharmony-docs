@@ -14,7 +14,7 @@
 导入系统账号模块。
 
 ```ts
-import { osAccount } from '@kit.BasicServicesKit';
+import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 ```
 <!-- [import_the_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/AuthenticationDomainAccount.ets) -->
 
