@@ -1562,7 +1562,7 @@
         - [edm工具](tools/edm-tool.md)
         - [restool工具](tools/restool.md)
         <!--Del-->
-        - [LLDB工具](tools/lldb-tool.md)
+        - [LLDB工具](tools/lldb-tool-sys.md)
         <!--DelEnd-->
         - [param工具](tools/param-tool.md)
         - [power-shell工具](tools/power-shell.md)
