@@ -53,7 +53,7 @@ libnet_websocket.so
 
 ### 构建工程
 
-1、在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
+1. 在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
 
     ```cpp
     #include "napi/native_api.h"
@@ -198,7 +198,7 @@ libnet_websocket.so
 ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返回true，否则返回false。在创建代表WebSocket客户端的WebSocket结构体指针前，需要定义以下回调函数：连接开启时的onOpen回调、接收普通消息的onMessage回调、接收错误消息的onError回调、接收关闭消息的onClose回调。在示例代码中，还调用了`OH_WebSocketClient_Send`、`OH_WebSocketClient_Close`等函数向服务器发送消息，主动关闭WebSocket连接。
 
 
-2、将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将函数暴露给JavaScript使用。示例代码中，ConnectWebsocket函数就会作为外部函数Connect暴露出去；SendMessage函数作为外部函数Send暴露出去；CloseWebsocket函数作为外部函数Close暴露出去。
+2. 将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将函数暴露给JavaScript使用。示例代码中，ConnectWebsocket函数就会作为外部函数Connect暴露出去；SendMessage函数作为外部函数Send暴露出去；CloseWebsocket函数作为外部函数Close暴露出去。
 
     ```C
     EXTERN_C_START
@@ -214,7 +214,7 @@ ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返
     EXTERN_C_END
     ```
 
-3、将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到 Node.js 中。
+3. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到 Node.js 中。
 
     ```C
     static napi_module demoModule = {
@@ -233,7 +233,7 @@ ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返
     }
     ```
 
-4、在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
+4. 在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
 
     ```ts
     export const Connect: (url: string) => boolean;
@@ -241,7 +241,7 @@ ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返
     export const Close: () => number;
     ```
 
-5、在index.ets文件中对上述封装好的接口进行调用。
+5. 在index.ets文件中对上述封装好的接口进行调用。
 
     ```ts
     import testWebsocket from 'libentry.so'
