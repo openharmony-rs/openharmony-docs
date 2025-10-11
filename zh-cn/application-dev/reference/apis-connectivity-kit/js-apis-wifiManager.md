@@ -130,7 +130,7 @@ scan(): void
 启动WLAN扫描，使用前先使能WLAN。
 
 > **说明：**
-> 从 API version 9开始支持，从API version 10开始废弃。替代接口仅向系统应用开放。
+> 从 API version 9开始支持，从API version 10开始废弃。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO、ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
