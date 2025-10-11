@@ -310,7 +310,7 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-![zh-cn_image_0000002194025273](figures/zh-cn_image_0000002194025273.png)
+![zh-cn_image_draw_rect](figures/zh-cn_image_draw_rect.png)
 
 
 ## 绘制圆角矩形
