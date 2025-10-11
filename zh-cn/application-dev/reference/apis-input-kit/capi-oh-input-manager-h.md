@@ -212,6 +212,17 @@
 | [Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)](#oh_input_addkeyeventhook) | - | 添加一个按键事件拦截钩子函数。 |
 | [Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)](#oh_input_removekeyeventhook) | - | 移除按键事件拦截钩子函数。 |
 | [Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)](#oh_input_dispatchtonexthandler) | - | 重新分发按键事件。 |
+| [Input_Result OH_Input_SetPointerVisible(bool visible)](#oh_input_setpointervisible) | - | 设置当前窗口鼠标光标的显示或隐藏状态。 |
+| [Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)](#oh_input_getpointerstyle) | - | 获取鼠标光标样式类型。 |
+| [Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)](#oh_input_setpointerstyle) | - | 设置鼠标光标样式类型。 |
+| [Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, int32_t anchorX, int32_t anchorY)](#oh_input_customcursor_create) | - | 创建自定义光标资源对象。 |
+| [void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)](#oh_input_customcursor_destroy) | - | 销毁自定义光标资源对象。 |
+| [Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor, OH_PixelmapNative* pixelMap)](#oh_input_customcursor_getpixelmap) | - | 获取自定义光标资源的自定义光标。 |
+| [Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, int32_t* anchorX, int32_t* anchorY)](#oh_input_customcursor_getanchor) | - | 获取自定义光标资源的焦点水平坐标和焦点垂直坐标。 |
+| [Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)](#oh_input_cursorconfig_create) | - | 创建自定义光标配置对象。 |
+| [void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)](#oh_input_cursorconfig_destroy) | - | 销毁自定义光标配置对象。 |
+| [Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConfig, bool *followSystem)](#oh_input_cursorconfig_isfollowsystem) | - | 获取自定义光标是否根据系统设置调整光标大小的设置。 |
+| [Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* customCursor, Input_CursorConfig* cursorConfig)](#oh_input_setcustomcursor) | - | 设置自定义光标样式。 |
 
 ## 枚举类型说明
 
