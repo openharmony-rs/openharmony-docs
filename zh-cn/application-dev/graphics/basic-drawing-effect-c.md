@@ -52,16 +52,16 @@
       uint32_t color = 0xffff0000;
       OH_Drawing_BrushSetColor(brush, color); 
       ```
-<!-- [ndk_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      <!-- [ndk_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-      color是一个32位（ARGB）的变量，例如0xffff0000。
-
+   - color是一个32位（ARGB）的变量，例如0xffff0000。
+   
    - 可使用OH_Drawing_BrushSetAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
       ```c++
       // sample_graphics.cpp
       OH_Drawing_BrushSetAntiAlias(brush, true);
       ```
-<!-- [ndk_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      <!-- [ndk_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 3. 使用OH_Drawing_CanvasAttachBrush()接口给Canvas画布设置画刷。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要画设置的画刷对象。画布将会使用设置的画刷样式和颜色等填充图形。
 
