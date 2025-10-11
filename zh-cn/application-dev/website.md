@@ -1302,9 +1302,9 @@
             - [使用网络防火墙](network/net-netfirewall.md)
             - [扩展认证](network/net-eap.md)
             <!--Del-->
-            - [网络共享（仅对系统应用开放）](network/net-sharing.md)
-            - [以太网连接管理（仅对系统应用开放）](network/net-ethernet.md)   
-            - [VPN管理（仅对系统应用开放）](network/net-vpn.md)
+            - [网络共享（仅对系统应用开放）](network/net-sharing-sys.md)
+            - [以太网连接管理（仅对系统应用开放）](network/net-ethernet-sys.md)   
+            - [VPN管理（仅对系统应用开放）](network/net-vpn-sys.md)
             <!--DelEnd-->
         - [Network Kit术语](network/network-terminology.md)
       - Telephony Kit（蜂窝通信服务）<!--telephony-kit-->
