@@ -233,7 +233,7 @@ class Frog { sleep () {}; leap () {} }
 type Animal = Cat | Dog | Frog;
 
 function foo(animal: Animal) {
-  if (animal instanceof Frog) {
+  if (animal instanceof Frog) {  // 判断animal是否是Frog类型
     animal.leap();  // animal在这里是Frog类型
   }
   animal.sleep(); // Animal具有sleep方法
@@ -966,7 +966,7 @@ jack.getName()?.length; // 编译成功，没有运行时错误
 
 **getter和setter**
 
-setter和getter可用于提供对对象属性的受控访问。
+setter和getter可用于提供对类属性的受控访问。
 
 在以下示例中，setter用于禁止将`_age`属性设置为无效值：
 
