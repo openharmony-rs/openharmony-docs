@@ -16,7 +16,7 @@ UIExtension允许开发者创建可以嵌入到其他应用窗口上的界面扩
 	
   在使用方应用定义使用，在是ArkUI提供的提供的组件，可以使用ArkTS的声明式范式在应用中使用。
 
-- [UIExtensionAbility](../application-models/uiextensionability.md)组件
+- [UIExtensionAbility](../application-models/uiextensionability-sys.md)组件
 
   提供方应用中定义使用，用于运行提供方应用在一个独立进程中，在使用方应用中创建可以嵌入到其他应用窗口上的界面扩展，从而增强应用间的交互性和用户体验。
 
