@@ -1054,7 +1054,7 @@ struct WebComponent {
 
 static isThirdPartyCookieAllowed(): boolean
 
-获取WebCookieManager实例是否拥有发送和接收第三方cookie的权限。若未调用该属性，默认无此权限。
+获取WebCookieManager实例是否拥有发送和接收第三方cookie的权限。若未显式调用该属性，默认无此权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
