@@ -153,6 +153,7 @@
       - [浮层](arkui-ts/ts-universal-attributes-overlay.md)
       - [Z序控制](arkui-ts/ts-universal-attributes-z-order.md)
       - [隐私遮罩](arkui-ts/ts-universal-attributes-obscured.md)
+      - [反色逃生](arkui-ts/ts-allow-force-dark.md) 
     - 布局与边框<!--layout-property-->
       - [尺寸设置](arkui-ts/ts-universal-attributes-size.md)
       - [位置设置](arkui-ts/ts-universal-attributes-location.md)
