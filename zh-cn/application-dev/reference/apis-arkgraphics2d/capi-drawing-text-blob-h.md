@@ -1,14 +1,18 @@
 # drawing_text_blob.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 概述
-
 文件中定义了与文字相关的功能函数。
 
 **引用文件：** <native_drawing/drawing_text_blob.h>
 
 **库：** libnative_drawing.so
 
-**起始版本：** 11
+**起始版本：** 11s
 
 **相关模块：** [Drawing](capi-drawing.md)
 
