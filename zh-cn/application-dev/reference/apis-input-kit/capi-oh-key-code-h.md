@@ -149,8 +149,8 @@ enum Input_KeyCode
 | KEYCODE_MOVE_END = 2082 | 光标移动到末尾键 |
 | KEYCODE_INSERT = 2083 | 插入键 |
 | KEYCODE_FORWARD = 2084 | 前进键 |
-| KEYCODE_MEDIA_PLAY = 2085 | 多媒体键：播放。 |
-| KEYCODE_MEDIA_PAUSE = 2086 | 多媒体键：暂停。|
+| KEYCODE_MEDIA_PLAY = 2085 | 多媒体键：播放 |
+| KEYCODE_MEDIA_PAUSE = 2086 | 多媒体键：暂停|
 | KEYCODE_MEDIA_CLOSE = 2087 | 多媒体键：关闭  |
 | KEYCODE_MEDIA_EJECT = 2088 | 多媒体键：弹出 |
 | KEYCODE_MEDIA_RECORD = 2089 | 多媒体键：录音 |
@@ -389,7 +389,7 @@ enum Input_KeyCode
 | KEYCODE_BTN_7 = 3107 | 按键7 |
 | KEYCODE_BTN_8 = 3108 | 按键8 |
 | KEYCODE_BTN_9 = 3109 | 按键9 |
-| KEYCODE_DAGGER_CLICK = 3211 | 智能手表智感窗按键单击 |
-| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击 |
-| KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按 |
+| KEYCODE_DAGGER_CLICK = 3211 | 智能手表智感窗按键单击 <br/>**起始版本：** 18 |
+| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击 <br/>**起始版本：** 18 |
+| KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按 <br/>**起始版本：** 18 |
 | KEYCODE_DIV = 3220 | 智能手表左按键 |
