@@ -88,7 +88,7 @@ OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_Mo
 
 | 参数项 | 描述 |
 | -- | -- |
-| size_t | 可丢弃内存对象内容的数据大小。 |
+| size_t size| 可丢弃内存对象内容的数据大小。 |
 | [OH_PurgeableMemory_ModifyFunc](capi-purgeable-memory-h.md#oh_purgeablememory_modifyfunc) func | 函数指针，用于在可丢弃内存对象的内容被清除时恢复数据。 |
 | void *funcPara | @func 使用的参数。 |
 
@@ -120,7 +120,7 @@ bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | true表示成功，false表示失败。如果可丢弃内存对象为NULL，则返回true。<br> 如果销毁成功，返回true，可丢弃内存对象将被设置为NULL以避免Use-After-Free。 |
+| bool | 返回销毁是否成功，true表示成功，false表示失败。如果可丢弃内存对象为NULL，则返回true。<br> 如果销毁成功，返回true，可丢弃内存对象将被设置为NULL以避免Use-After-Free。 |
 
 ### OH_PurgeableMemory_BeginRead()
 
@@ -144,7 +144,7 @@ bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果可丢弃内存对象的内容存在则返回true。<br>          如果内容被清除（即不存在），系统将尝试恢复其数据。<br>          如果恢复失败，则返回false。<br>          如果恢复成功，则返回true。<br> 当此函数返回true时，系统无法回收可丢弃内存对象的内容的内存，直到调用{@link PurgMemEndRead()}方法。 |
+| bool | 返回读取是否成功，如果可丢弃内存对象的内容存在则返回true。<br>          如果内容被清除（即不存在），系统将尝试恢复其数据。<br>          如果恢复失败，则返回false。<br>          如果恢复成功，则返回true。<br> 当此函数返回true时，系统无法回收可丢弃内存对象的内容的内存，直到调用{@link PurgMemEndRead()}方法。 |
 
 ### OH_PurgeableMemory_EndRead()
 
@@ -186,7 +186,7 @@ bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果可丢弃内存对象的内容存在则返回 true。<br>          如果内容被清除（不存在），系统将恢复其数据，<br>          如果内容被清除并且恢复失败，则返回 false。<br>          如果内容恢复成功则返回 true。<br> 当此函数返回true时，操作系统无法回收可丢弃内存对象的内容的内存，直到调用 {@link PurgMemEndWrite()}。 |
+| bool | 表示可丢弃内存对象的内容是否存在，如果可丢弃内存对象的内容存在则返回 true。<br>          如果内容被清除（不存在），系统将恢复其数据，<br>          如果内容被清除并且恢复失败，则返回 false。<br>          如果内容恢复成功则返回 true。<br> 当此函数返回true时，操作系统无法回收可丢弃内存对象的内容的内存，直到调用 {@link PurgMemEndWrite()}。 |
 
 ### OH_PurgeableMemory_EndWrite()
 
@@ -278,6 +278,6 @@ bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMe
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回追加结果。true为成功；false为失败。 |
+| bool | 返回追加结果。true表示成功；false表示失败。 |
 
 
