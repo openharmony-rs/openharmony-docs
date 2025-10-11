@@ -1,4 +1,3 @@
-使用分布式媒体会话(仅对系统应用开放)
 # AVSession Kit（音视频播控服务）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
