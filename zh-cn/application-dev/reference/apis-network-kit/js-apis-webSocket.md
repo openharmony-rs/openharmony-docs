@@ -58,6 +58,8 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -115,6 +117,8 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -181,6 +185,8 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -248,7 +254,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
 | 参数名   | 类型                     | 必填 | 说明         |
 | -------- | ------------------------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 | callback | AsyncCallback\<boolean\> | 是   | 回调函数。true:发送请求创建成功；false:发送请求创建失败。   |
 
 **错误码：**
@@ -311,7 +317,7 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 
 **返回值：**
 
@@ -512,7 +518,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-订阅WebSocket的打开事件，使用callback方式作为异步方法。
+订阅WebSocket的打开事件，使用callback方式作为异步方法。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect6)发起连接请求前调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -978,7 +984,7 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | ---------- | ---------------------- | --------------------- | ------------------------------------------------ |
-| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。 |
+| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 | connection | [WebSocketConnection](#websocketconnection19) | 是  | 发送的客户端信息。                              |
 
 **返回值：**
