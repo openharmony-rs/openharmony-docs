@@ -54,7 +54,7 @@ FaultLogExtensionAbility生命周期回调。当系统服务完成连接时调�
 **示例：**
 ```ts
 export default class MyFaultLogExtension extends FaultLogExtensionAbility {
-    onConnect {
+    onConnect() {
       console.info('onConnect');
     }
 }
@@ -71,7 +71,7 @@ FaultLogExtensionAbility生命周期回调。当系统服务完成断开连接�
 **示例：**
 ```ts
 export default class MyFaultLogExtension extends FaultLogExtensionAbility {
-    onDisconnect {
+    onDisconnect() {
       console.info('onDisconnect');
     }
 }
@@ -90,13 +90,13 @@ FaultLogExtensionAbility回调。系统服务通知FaultLogExtensionAbility可�
   import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
   export default class MyFaultLogExtension extends FaultLogExtensionAbility {
-      onFaultReportReady {
+      onFaultReportReady() {
           hiAppEvent.addWatcher({
               name: "watcher",
               appEventFilters: [
                   {
                       domain: hiAppEvent.domain.OS,
-                      name: [hiAppEvent.event.APP_CRASH, hiAppEvent.event.APP_FREEZE]
+                      names: [hiAppEvent.event.APP_CRASH, hiAppEvent.event.APP_FREEZE]
                   }
               ],
               onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
