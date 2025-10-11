@@ -1,4 +1,4 @@
-# 页面栈及任务链
+# 页面栈及任务链（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
