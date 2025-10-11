@@ -208,7 +208,7 @@ typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChange
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | 指向[OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md)音频会话状态变更事件。 |
+| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | 音频会话状态变更事件。 |
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
