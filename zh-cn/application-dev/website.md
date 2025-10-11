@@ -1374,8 +1374,8 @@
           - [术语](basic-services/usb/usb-glossary.md)
         <!--Del-->
         - 升级服务<!--update-->
-          - [示例服务器开发概述](basic-services/update/sample-server-overview-sys.md)
-          - [示例服务器开发指导](basic-services/update/sample-server-guidelines-sys.md)
+          - [示例服务器开发概述](basic-services/update/sample-server-overview.md)
+          - [示例服务器开发指导](basic-services/update/sample-server-guidelines.md)
         <!--DelEnd-->
         - 剪贴板服务<!--pasteboard-->
           - [申请访问剪贴板权限](basic-services/pasteboard/get-pastedata-permission-guidelines.md)
