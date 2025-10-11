@@ -10355,7 +10355,7 @@ setSiteIsolationMode(mode: SiteIsolationMode): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 |Init Error .  |
+| 17100001 |Init error .  |
 
 **示例：**
 
