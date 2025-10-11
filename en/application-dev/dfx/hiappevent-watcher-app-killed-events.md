@@ -9,27 +9,27 @@
 
 ## Overview
 
-Since API version 20, HiAppEvent provides APIs for subscribing to application killed events.
+From API version 20, HiAppEvent provides APIs for subscribing to app termination events.
 
-The killed event refers to a phenomenon that an application is forced to exit by the system. Unlike an application crash, an application killed event is triggered not by an exception in the application's own code, but by the system's resource-management policy.
+App termination refers to the phenomenon that an app is forcibly exited by the system. Different from app crashes, app termination is not caused by exceptions in the service code of the app, but is caused by the termination behavior implemented by the system based on the resource management and control policy.
 
-HiAppEvent APIs for subscribing to application killed events:
+HiAppEvent provides APIs for subscribing to app termination events.
 
 - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
 - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
 
-The **params** attribute in the application killed event is described as follows:
+The **params** attribute in the application termination event is described as follows:
 
 ## Field Description
 
 ### params
 
- 
+The **params** parameter in the event information is described as follows.
 
 | Name   | Type  | Description                      |
 | ------- | ------ | ------------------------- |
 | time     | number | Event triggering time, in ms.|
-| reason  | string | Killed reason. For details, see [reason](#reason).|
+| reason  | string | Termination reason. For details, see [reason](#reason).|
 | foreground | boolean | Whether the application is in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
 
 ### reason

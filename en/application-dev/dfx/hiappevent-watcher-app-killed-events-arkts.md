@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-## Event Specifications
+## Application Termination Event Specifications
 
 For details, see [Application Killed Event Overview](./hiappevent-watcher-app-killed-events.md).
 
@@ -22,7 +22,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 ## How to Develop
 
-To ensure that the event callback can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTs code, and use the C ++ fault injection code to construct a fault to trigger the application killed event.
+To ensure that the event callback can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTs code, and use the C ++ fault injection code to construct a fault to trigger the application termination event.
 
 1. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules.
 
@@ -36,7 +36,7 @@ To ensure that the event callback can be successfully received in the developmen
    hiAppEvent.addWatcher({
      // Set the watcher name. The system identifies different watchers based on their names.
      name: "watcher",
-     // You can subscribe to system events that you are interested in. Here, the application killed event is subscribed to.
+     // You can subscribe to system events that you are interested in. Here, the application termination event is subscribed to.
      appEventFilters: [
        {
          domain: hiAppEvent.domain.OS,
@@ -53,11 +53,11 @@ To ensure that the event callback can be successfully received in the developmen
            // Apply custom processing to the event data obtained, for example, print the event data in the log.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
-           // Obtain the timestamp when the application is killed.
+           // Obtain the timestamp when the application is terminated.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
            // Obtain the foreground and background status of the application when the killed event occurs.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
-           // Obtain the cause of the application killed event.
+           // Obtain the cause of the application termination event.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.reason=${eventInfo.params['reason']}`);
          }
        }
@@ -109,7 +109,7 @@ To ensure that the event callback can be successfully received in the developmen
    export const leak: () => void;
    ```
 
-6. In the **entry/src/main/ets/pages/Index.ets** file,  add the **OnClick** function under **build()** and call the **Leak** API.
+6. In the **entry/src/main/ets/pages/Index.ets** file, add the **OnClick** function under **build()** and call the **Leak** API.
 
    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -145,9 +145,9 @@ To ensure that the event callback can be successfully received in the developmen
 
 7. Click the **Run** button in DevEco Studio to run the project. Click **Start To Leak**, and wait for 2 to 3 minutes until **RssThresholdKiller** is triggered.
 
-8. After the application is killed, open the application again. The killed event is reported, and the system calls **onReceive()**. You can view the following event information in the **Log** window.
+8. After the application is terminated, open the application again. The termination event is reported, and the system calls **onReceive()**. You can view the following event information in the **Log** window.
 
-   Sample stack of the application killed event:
+   Sample stack of the application termination event:
 
    ```text
    HiAppEvent eventInfo.domain=OS

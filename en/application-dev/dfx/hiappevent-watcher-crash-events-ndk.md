@@ -270,7 +270,7 @@ The callback time of a crash event varies depending on whether the crash excepti
 
 **Application not proactively captures crash events**
 
-If the application does not proactively capture the crash exception, the application will exit after the system handles the crash. When the application restarts, HiAppEvent reports the crash event to the registered watcher to complete the callback.
+If the application does not proactively capture the crash exception, the application will exit after the system handles the crash.
 
 **Application proactively captures crash events**
 

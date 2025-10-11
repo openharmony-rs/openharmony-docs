@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--SE: @kutcherzhou1-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
@@ -42,9 +43,10 @@ Defines the APIs for debugging.
 | [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg,OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.|
 | [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | Creates an object for stack back-tracing and parsing. This function is not asyn-signal-safe.|
 | [void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)](#oh_hidebug_destroybacktraceobject) | - | Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack back-tracing and parsing. This function is not asyn-signal-safe.|
-| [HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)](#oh_hidebug_setmallocdispatchtable) | - | Sets the MallocDisaptch table of the system C library to replace the custom memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**). The MallocDisaptch table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the system C library. HiDebug_MallocDispatch is only a part of the MallocDisaptch struct.|
+| [HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)](#oh_hidebug_setmallocdispatchtable) | - | Sets the MallocDispatch table of the system C library to replace the custom memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**). The MallocDispatch table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the system C library. HiDebug_MallocDispatch is only a part of the MallocDispatch struct.|
 | [HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)](#oh_hidebug_getdefaultmallocdispatchtable) | - | Obtains the default MallocDispatch table of the system C library. You can call [OH_HiDebug_RestoreMallocDispatchTable](capi-hidebug-h.md#oh_hidebug_restoremallocdispatchtable) to restore the table.|
 | [void OH_HiDebug_RestoreMallocDispatchTable(void)](#oh_hidebug_restoremallocdispatchtable) | - | Restores the MallocDispatch table of the system C library.|
+
 
 ## Function Description
 
@@ -98,8 +100,8 @@ Obtains the CPU usage of all threads of an application. Note that this API invol
 
 **Returns**
 
-| Type| Description                                                                                          |
-| -- |----------------------------------------------------------------------------------------------|
+| Type| Description|
+| -- | -- |
 | [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md) | CPU usage of all threads. For details, see [HiDebug_ThreadCpuUsagePtr](capi-hidebug-hidebug-threadcpuusage.md).<br>         If null is returned, the thread data may not be obtained.|
 
 ### OH_HiDebug_FreeThreadCpuUsage()
@@ -392,7 +394,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 
 **Description**
 
-Sets the MallocDisaptch table of the system C library to replace the custom memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**). The MallocDisaptch table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the system C library. **HiDebug_MallocDispatch** is only a part of the **MallocDisaptch** struct.
+Sets the MallocDispatch table of the system C library to replace the custom memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**). The MallocDispatch table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the system C library. HiDebug_MallocDispatch is only a part of the MallocDispatch struct.
 
 **Since**: 20
 
@@ -425,7 +427,7 @@ Obtains the default MallocDispatch table of the system C library. You can call [
 
 | Type| Description|
 | -- | -- |
-| HiDebug_MallocDispatch* | Pointer to the default [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) struct of the current C library.|
+| [HiDebug_MallocDispatch*](capi-hidebug-hidebug-mallocdispatch.md) | Pointer to the default [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) struct of the current C library.|
 
 ### OH_HiDebug_RestoreMallocDispatchTable()
 

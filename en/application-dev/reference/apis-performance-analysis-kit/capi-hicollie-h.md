@@ -59,12 +59,12 @@ Enumerates the error codes used in the HiCollie module.
 
 **Since**: 12
 
-| Enum Item| Description                             |
-| -- |---------------------------------|
-| HICOLLIE_SUCCESS  = 0 | The operation is successful.                            |
-| HICOLLIE_INVALID_ARGUMENT  = 401 | The parameter is invalid.                          |
-| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | The called thread is incorrect.                        |
-| HICOLLIE_REMOTE_FAILED = 29800002 | The remote call fails.                        |
+| Enum Item| Description|
+| -- | -- |
+| HICOLLIE_SUCCESS  = 0 | The operation is successful.|
+| HICOLLIE_INVALID_ARGUMENT  = 401 | The parameter is invalid.|
+| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | The called thread is incorrect.|
+| HICOLLIE_REMOTE_FAILED = 29800002 | The remote call fails.|
 | HICOLLIE_INVALID_TIMER_NAME = 29800003 | The timer name is invalid.<br>**Since**: 18|
 | HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | The function execution timeout value is invalid.<br>**Since**: 18                 |
 | HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | The process to be accessed is incorrect.<br>**Since**: 18                |
@@ -84,10 +84,10 @@ Enumerates the actions to be performed when a function times out.
 
 | Enum Item| Description|
 | -- | -- |
-| HICOLLIE_FLAG_DEFAULT = (~0) | Generates logs and locates, kills, and recovers the process. This is the default value.|
+| HICOLLIE_FLAG_DEFAULT = (~0) | Generates logs and recovers the process. This is the default value.|
 | HICOLLIE_FLAG_NOOP = (0) | Executes only the callback.|
 | HICOLLIE_FLAG_LOG = (1 << 0) | Generates logs.|
-| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Terminates the process and triggers recovery.|
+| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Performs recovery actions.|
 
 
 ## Function Description

@@ -1,5 +1,12 @@
 # @ohos.hilog (HiLog)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @foryourself-->
+
 The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
 
 > **NOTE**
@@ -231,7 +238,9 @@ setMinLogLevel(level: LogLevel): void
 
 Sets the minimum log level.
 
-If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+> **NOTE**
+>
+> If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 

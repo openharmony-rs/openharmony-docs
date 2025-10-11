@@ -11,14 +11,22 @@ HiAppEvent provides APIs for subscribing to application events.
 
 ## Available APIs
 
-For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This section describes the API usage, including parameter usage restrictions and value ranges. For details, see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging) ArkTS API Reference](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 **Subscription APIs**
 
 | API| Description|
 | -------- | -------- |
-| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
-| removeWatcher(watcher: Watcher): void | Removes a watcher to unsubscribe from application events.|
+| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds an event observer to an application.|
+| removeWatcher(watcher: Watcher): void | Removes an event observer from an application.|
+
+> **Description**
+>
+> The **addWatcher** API involves I/O operations. In performance-sensitive service scenarios, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> To call **addWatcher** in a child thread, ensure that the child thread is not destroyed in the entire API usage period.
+>
+> For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../arkts-utils/multi-thread-concurrency-overview.md).
 
 **Event Logging APIs**
 
@@ -26,6 +34,12 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 | -------- | -------- |
 | write(info: AppEventInfo, callback: AsyncCallback&lt;void>): void | Writes events to the event file through **AppEventInfo** objects. This API uses an asynchronous callback to return the result.|
 | write(info: AppEventInfo): Promise&lt;void> | Writes events to the event file through **AppEventInfo** objects. This API uses a promise to return the result.|
+
+> **Description**
+>
+> The **write** API involves I/O operations, and the execution time is usually at the millisecond level. Therefore, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../arkts-utils/multi-thread-concurrency-overview.md).
 
 ## How to Develop
 
@@ -39,7 +53,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 
 2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add the subscription to the crash event and button click event in the **onCreate** function.
 
-   Subscribe to the crash event using **OnReceive**. After receiving the event, the watcher immediately triggers the **OnReceive** callback. In the **EntryAbility.ets** file, define the methods related to the watcher of the **OnReceive** type.
+   Subscribe to the crash event. The OnReceive observer is used. After receiving the event, the observer triggers the OnReceive() callback immediately. In the **EntryAbility.ets** file, define the methods related to the watcher of the **OnReceive** type.
 
    ```ts
    hiAppEvent.addWatcher({
@@ -130,7 +144,7 @@ The following describes how to subscribe to a crash event (system event) and a b
      Button("buttonClick")
        .onClick(()=>{
          // In onClick(), use hiAppEvent.write() to log an event when the button is clicked.
-         let eventParams: Record<string, number> = { 'click_time': 100 };
+         let eventParams: Record<string, number> = { "click_time": 100 };
          let eventInfo: hiAppEvent.AppEventInfo = {
            // Define the event domain.
            domain: "button",
