@@ -56,7 +56,7 @@ bindTips(message: TipsMessageType, options?: TipsOptions): T
 | arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否   | 是  | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有 ”Start“、”Center“、”End“三个位置点可选。所有位置点均位于父组件区域范围内，不会超出父组件的边界范围，也不会覆盖圆角范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | arrowWidth           | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头宽度。若所设置的宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | arrowHeight          | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头高度。<br/>默认值：8<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | 否   | 是  | 设置Tips跟随类型。<br/>默认值：TipsAnchorType.TARGET<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
+| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | 否   | 是  | 设置Tips跟随类型。<br/>默认值：TipsAnchorType.TARGET<br/>**说明：**<br />Tips的跟随类型为CURSOR时，Tips不显示箭头。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
 
 ## TipsMessageType
 
