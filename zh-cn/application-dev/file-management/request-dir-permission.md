@@ -40,6 +40,21 @@ import { Environment } from '@kit.CoreFileKit';
 ```
 <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
 
+``` TypeScript
+function getUserDirExample() {
+  try {
+    const downloadPath = Environment.getUserDownloadDir();
+    console.info(`success to getUserDownloadDir: ${downloadPath}`);
+    const documentsPath = Environment.getUserDocumentDir();
+    console.info(`success to getUserDocumentDir: ${documentsPath}`);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`failed to get user dir, Error code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+
 
 2.以 Download 目录为例，访问 Download 目录下的文件。
 
@@ -55,6 +70,35 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 ```
 <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
 
+``` TypeScript
+function readUserDownloadDirExample(context: common.UIAbilityContext) {
+  try {
+    // 获取 Download 目录
+    const downloadPath = Environment.getUserDownloadDir();
+    console.info(`success to getUserDownloadDir: ${downloadPath}`);
+    const dirPath = context.filesDir;
+    console.info(`success to get filesDir: ${dirPath}`);
+    // 查看 Download 目录下的文件并拷贝到沙箱目录中
+    let fileList: string[] = fs.listFileSync(downloadPath);
+    fileList.forEach((file, index) => {
+      console.info(`${downloadPath} ${index}: ${file}`);
+      if (fs.statSync(`${downloadPath}/${file}`).isFile()) {
+        fs.copyFileSync(`${downloadPath}/${file}`, `${dirPath}/${file}`);
+      }
+    });
+    // 查看沙箱目录下对应的文件
+    fileList = fs.listFileSync(dirPath);
+    fileList.forEach((file, index) => {
+      console.info(`${dirPath} ${index}: ${file}`);
+    });
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Error code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+
 3.以 Download 目录为例，保存文件到 Download 目录。
 
 ```ts
@@ -64,6 +108,25 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
 ```
 <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+function writeUserDownloadDirExample() {
+  // 检查是否具有 READ_WRITE_DOWNLOAD_DIRECTORY 权限，无权限则需要向用户申请授予权限。
+  try {
+    // 获取 Download 目录
+    const downloadPath = Environment.getUserDownloadDir();
+    console.info(`success to getUserDownloadDir: ${downloadPath}`);
+    // 保存 temp.txt 到 Download 目录下
+    const file = fs.openSync(`${downloadPath}/temp.txt`, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    fs.writeSync(file.fd, 'write a message');
+    fs.closeSync(file);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Error code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 
 
 ## 通过 C/C++ 接口获取并使用公共目录
@@ -110,6 +173,21 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 ```
 <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
 
+``` C++
+void GetUserDownloadDirExample()
+{
+    char *downloadPath = nullptr;
+    FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
+    if (ret == 0) {
+        OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+        free(downloadPath);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+    }
+}
+```
+
+
 2.调用 OH_Environment_GetUserDownloadDir 接口获取用户 Download 目录沙箱路径，并查看 Download 目录下的文件。示例代码如下所示：
 
 ```c++
@@ -119,6 +197,39 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 ```
 <!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
 
+``` C++
+void ScanUserDownloadDirPathExample()
+{
+    // 获取 download 路径
+    char *downloadPath = nullptr;
+    FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
+    if (ret == 0) {
+        OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+        return;
+    }
+    // 查看文件夹下的文件
+    struct dirent **namelist = nullptr;
+    int num = scandir(downloadPath, &namelist, nullptr, nullptr);
+    if (num < 0) {
+        free(downloadPath);
+        OH_LOG_ERROR(LOG_APP, "Failed to scan dir");
+        return;
+    }
+
+    for (int i = 0; i < num; i++) {
+        OH_LOG_INFO(LOG_APP, "%{public}s", namelist[i]->d_name);
+    }
+    free(downloadPath);
+    for (int i = 0; i < num; i++) {
+        free(namelist[i]);
+    }
+    free(namelist);
+}
+```
+
+
 3.调用 OH_Environment_GetUserDownloadDir 接口获取用户 Download 目录沙箱路径，并保存 temp.txt 到 Download 目录下。示例代码如下所示：
 
 ```c++
@@ -126,3 +237,32 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 ```
 <!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
+void WriteUserDownloadDirPathExample()
+{
+    // 获取 download 路径
+    char *downloadPath = nullptr;
+    FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
+    if (ret == 0) {
+        OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+        return;
+    }
+    // 保存文件到 download 目录下
+    std::string filePath = std::string(downloadPath) + "/temp.txt";
+    free(downloadPath);
+
+    std::ofstream outfile;
+    outfile.open(filePath.c_str());
+    if (!outfile) {
+        OH_LOG_ERROR(LOG_APP, "Failed to open file");
+        return;
+    }
+    std::string msg = "Write a message";
+    outfile.write(msg.c_str(), msg.size());
+    outfile.close();
+}
+```
+
