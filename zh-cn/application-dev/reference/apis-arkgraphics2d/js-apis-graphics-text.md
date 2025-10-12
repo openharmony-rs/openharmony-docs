@@ -43,6 +43,8 @@ setTextHighContrast(action: TextHighContrast): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -70,6 +72,8 @@ setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -89,6 +93,8 @@ matchFontDescriptors(desc: FontDescriptor): Promise&lt;Array&lt;FontDescriptor&g
 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -154,6 +160,8 @@ getSystemFontFullNamesByType(fontType: SystemFontType): Promise&lt;Array&lt;stri
 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -222,6 +230,8 @@ getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -286,6 +296,8 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -339,6 +351,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称                               | 值   | 说明                                            |
 | ---------------------------------- | ---- | ---------------------------------------------- |
 | TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST   | 0    | 跟随系统设置中的高对比度文字配置。                                            |
@@ -351,6 +365,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称           | 值   | 说明                                 |
 | -------------- | ---- | ------------------------------------ |
 | USE_DEFAULT    | 0    | 使用字体的内部.notdef字形。遵循字体的内部.notdef字形设计，可以是空框、空格或自定义符号。|
@@ -361,6 +377,8 @@ struct GetFontDescriptorsFromPathTest {
 文本对齐方式枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称        | 值   | 说明                                          |
 | --------- | ---- | ---------------------------------------------- |
@@ -377,6 +395,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称        | 值   | 说明                                          |
 | --------- | ---- | ---------------------------------------------- |
 | BASELINE | 0    | 文本基线对齐。                                  |
@@ -390,6 +410,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称     | 值   | 说明              |
 | -------- | ---- | ---------------- |
 | RTL      | 0    | 文本从右到左排版。 |
@@ -400,6 +422,8 @@ struct GetFontDescriptorsFromPathTest {
 断行策略枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称          | 值   | 说明                                            |
 | ------------- | ---- | ---------------------------------------------- |
@@ -412,6 +436,8 @@ struct GetFontDescriptorsFromPathTest {
 断词策略枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称                          | 值   | 说明                                                                                                                  |
 |-----------------------------| ---- | -------------------------------------------------------------------------------------------------------------------- |
@@ -426,6 +452,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称                      | 类型                                                  | 只读 | 可选 | 说明                                         |
 | ------------------------- | --------------------------------------------------- | ---- | ---- | -------------------------------------------- |
 | textDecoration            | [TextDecorationType](#textdecorationtype)           | 否   | 是   | 装饰线类型，默认为NONE。                       |
@@ -438,6 +466,8 @@ struct GetFontDescriptorsFromPathTest {
 装饰线类型枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称           | 值 | 说明        |
 | -------------- | - | ----------- |
@@ -452,6 +482,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称   | 值 | 说明   |
 | ------ | - | ------ |
 | SOLID  | 0 | 实线。  |
@@ -465,6 +497,8 @@ struct GetFontDescriptorsFromPathTest {
 字重枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称  | 值 | 说明   |
 | ----- | - | ------- |
@@ -484,6 +518,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称             | 值 | 说明       |
 | ---------------- | - | ---------- |
 | ULTRA_CONDENSED  | 1 | 超窄字宽。  |
@@ -502,6 +538,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称    | 值 | 说明                                                 |
 | ------- | - | ---------------------------------------------------- |
 | NORMAL  | 0 | 常规样式。                                            |
@@ -513,6 +551,8 @@ struct GetFontDescriptorsFromPathTest {
 文本高度修饰符模式枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称                  |  值 | 说明                                                  |
 | --------------------- | --- | ---------------------------------------------------- |
@@ -527,6 +567,8 @@ struct GetFontDescriptorsFromPathTest {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称        | 值 | 说明 |
 | ----------- | - | ---- |
 | ALPHABETIC  | 0 | 用于拉丁字母的文本基线对齐。|
@@ -540,6 +582,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
 | START  | 0 | 开头省略号，只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。|
@@ -552,6 +596,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称          | 类型                                                 | 只读 | 可选 | 说明                               |
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 字体阴影的颜色，默认为黑色Color(255, 0, 0, 0)。        |
@@ -563,6 +609,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 矩形框样式。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称               | 类型                                                 | 只读 | 可选 | 说明                                      |
 | -----------------  | ---------------------------------------------------- | --  | ---  | ---------------------------------------- |
@@ -578,6 +626,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
 | name      | string                                               | 否  |  否   | 字体特征键值对中的关键字标识的字符串。       |
@@ -589,6 +639,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
 | axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。       |
@@ -599,6 +651,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 文本上下标枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
@@ -612,6 +666,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
 | FONT_SIZE | 0 | 以字号大小作为缩放基数。最终行高为[TextStyle](#textstyle).fontSize * [TextStyle](#textstyle).heightScale。 |
@@ -622,6 +678,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 文本样式。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称                      | 类型                                     | 只读 | 可选 | 说明                                                   |
 | ------------- | ---------------------------------------------------- | -- | -- | --------------------------------------------------------- |
@@ -657,6 +715,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称                      | 类型                                       | 只读 | 可选 | 说明                                                                 |
 | -------------  | ---------------------------------------------------- | ---- | -- | --------------------------------------------------------------------- |
 | fontFamilies   | Array\<string>                                       | 否   | 是 | 字体家族名称列表，默认为空，匹配系统字体。                                               |
@@ -676,6 +736,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 字体描述符信息。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | -  | - | - |
@@ -701,6 +763,8 @@ static getGlobalInstance(): FontCollection
 获取应用全局FontCollection实例。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -741,6 +805,8 @@ static getLocalInstance(): FontCollection
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型   | 说明                |
@@ -763,6 +829,8 @@ loadFontSync(name: string, path: string | Resource): void
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -816,6 +884,8 @@ loadFont(name: string, path: string | Resource): Promise\<void>
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -882,6 +952,8 @@ unloadFontSync(name: string): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 |   参数名 | 类型               | 必填 | 说明                              |
@@ -937,6 +1009,8 @@ unloadFont(name: string): Promise\<void>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -991,6 +1065,8 @@ clearCaches(): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **示例：**
 
 ```ts
@@ -1015,6 +1091,8 @@ struct Index {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称                 | 类型                                        | 只读 | 可选 | 说明                                          |
 | -------------------- | ------------------------------------------ | ---- | ---- | -------------------------------------------- |
 | textStyle            | [TextStyle](#textstyle)                    | 否   | 是   | 作用于整个段落的文本样式，默认为初始的文本样式。|
@@ -1036,6 +1114,8 @@ struct Index {
 占位符相对于周围文本的纵向对齐方式。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称                | 值 | 说明                   |
 | ------------------- | - | ---------------------- |
@@ -1061,6 +1141,8 @@ struct Index {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称           | 类型                                           | 只读 | 可选 | 说明                         |
 | -------------- | --------------------------------------------- | ---- | --- | --------------------------- |
 | width          | number                                        | 否   | 否   | 占位符的宽度，浮点数，单位为物理像素px。|
@@ -1074,6 +1156,8 @@ struct Index {
 描述左闭右开区间。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称   | 类型   | 只读 | 可选 | 说明            |
 | ----- | ------ | ---- | --- | --------------- |
@@ -1094,6 +1178,8 @@ layoutSync(width: number): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -1113,6 +1199,8 @@ layout(width: number): Promise\<void>
 进行排版并计算所有字形位置，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1220,6 +1308,8 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                    |
@@ -1245,6 +1335,8 @@ paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset
 在画布上沿路径绘制文本。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1275,6 +1367,8 @@ getMaxWidth(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型   | 说明       |
@@ -1294,6 +1388,8 @@ getHeight(): number
 获取文本总高度。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -1315,6 +1411,8 @@ getLongestLine(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型   | 说明           |
@@ -1334,6 +1432,8 @@ getLongestLineWithIndent(): number
 获取文本最长一行的宽度（包含缩进），建议向上取整。文本内容为空时返回0。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -1355,6 +1455,8 @@ getMinIntrinsicWidth(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型   | 说明                           |
@@ -1374,6 +1476,8 @@ getMaxIntrinsicWidth(): number
 获取段落最大固有宽度。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -1395,6 +1499,8 @@ getAlphabeticBaseline(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型   | 说明                |
@@ -1415,6 +1521,8 @@ getIdeographicBaseline(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型   | 说明                  |
@@ -1434,6 +1542,8 @@ getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeig
 获取给定的矩形区域宽度以及矩形区域高度的规格下，文本中该区间范围内的字符所占的矩形区域。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1464,6 +1574,8 @@ getRectsForPlaceholders(): Array\<TextBox>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                         | 说明        |
@@ -1483,6 +1595,8 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 获取与给定坐标最接近的字形位置信息。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1511,6 +1625,8 @@ getWordBoundary(offset: number): Range
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明        |
@@ -1537,6 +1653,8 @@ getLineCount(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型   | 说明       |
@@ -1556,6 +1674,8 @@ getLineHeight(line: number): number
 返回指定行的行高。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1583,6 +1703,8 @@ getLineWidth(line: number): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
@@ -1609,6 +1731,8 @@ didExceedMaxLines(): boolean
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型    | 说明                                                      |
@@ -1629,6 +1753,8 @@ getTextLines(): Array\<TextLine>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                          | 说明          |
@@ -1648,6 +1774,8 @@ getActualTextRange(lineNumber: number, includeSpaces: boolean): Range
 获取指定行的实际可见文本范围，不包括溢出的省略号。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1677,6 +1805,8 @@ getLineMetrics(): Array\<LineMetrics>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                          | 说明          |
@@ -1696,6 +1826,8 @@ getLineMetrics(lineNumber: number): LineMetrics | undefined
 获取特定行号的行度量信息。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1723,6 +1855,8 @@ updateColor(color: common2D.Color): void;
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                    |
@@ -1742,6 +1876,8 @@ updateDecoration(decoration: Decoration): void;
 更新整个文本段落的装饰线。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1773,6 +1909,8 @@ getLineBreak(startIndex: number, width: number): number
 计算在限定宽度下，从指定位置开始可以排版的字符数。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1811,6 +1949,8 @@ createLine(startIndex: number, count: number): TextLine
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -1847,6 +1987,8 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
 | textStyle | [TextStyle](#textstyle)                             | 否   | 否   | 字体的样式信息。|
@@ -1857,6 +1999,8 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 描述文本布局中单行文字的度量信息。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
@@ -1878,6 +2022,8 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
 | rect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 否   | 矩形区域信息。|
@@ -1888,6 +2034,8 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 位置和亲和度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
@@ -1900,6 +2048,8 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称  | 值 | 说明                                   |
 | ----- | - | -------------------------------------- |
 | TIGHT | 0 | 不设置letterSpacing时，与字形紧贴，否则包含letterSpacing的宽度。|
@@ -1910,6 +2060,8 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 矩形区域高度规格枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称                      | 值 | 说明                                           |
 | ------------------------- | - | ---------------------------------------------- |
@@ -1925,6 +2077,8 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 位置亲和度枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称       | 值 | 说明                          |
 | ---------- | - | ----------------------------- |
@@ -1942,6 +2096,8 @@ constructor(paragraphStyle: ParagraphStyle, fontCollection: FontCollection)
 ParagraphBuilder对象的构造函数。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1994,6 +2150,8 @@ struct Index {
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名    | 类型       | 必填 | 说明                                                                                                   |
@@ -2044,6 +2202,8 @@ popStyle(): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **示例：**
 
 ```ts
@@ -2088,6 +2248,8 @@ addText(text: string): void
 向正在构建的文本段落中插入具体的文本字符串。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2138,6 +2300,8 @@ addPlaceholder(placeholderSpan: PlaceholderSpan): void
 用于构建文本段落时插入占位符。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2191,6 +2355,8 @@ build(): Paragraph
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                     | 说明                           |
@@ -2240,6 +2406,8 @@ buildLineTypeset(): LineTypeset
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                     | 说明                           |
@@ -2282,6 +2450,8 @@ addSymbol(symbolId: number): void
 向正在构建的文本段落中插入具体符号。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2329,6 +2499,8 @@ struct Index {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
 | ascent | number | 否 | 否 | 文本行的上升高度，浮点数。 |
@@ -2358,6 +2530,8 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | - | - | - | - |
@@ -2384,6 +2558,8 @@ getGlyphCount(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型    | 说明               |
@@ -2403,6 +2579,8 @@ getTextRange(): Range
 获取该行文本在整个段落文本中的索引区间。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -2424,6 +2602,8 @@ getGlyphRuns(): Array\<Run>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型         | 说明                         |
@@ -2443,6 +2623,8 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 在画布上以坐标点(x, y)为左上角位置绘制该文本行。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2494,6 +2676,8 @@ createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string)
 创建一个截断的文本行对象。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2561,6 +2745,8 @@ getTypographicBounds(): TypographicBounds
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型 | 说明  |
@@ -2593,6 +2779,8 @@ getImageBounds(): common2D.Rect
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型         | 说明                         |
@@ -2613,6 +2801,8 @@ getTrailingSpaceWidth(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型         | 说明                         |
@@ -2632,6 +2822,8 @@ getStringIndexForPosition(point: common2D.Point): number
 获取给定位置在原始字符串中的字符索引。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2660,6 +2852,8 @@ getOffsetForStringIndex(index: number): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2686,6 +2880,8 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2709,6 +2905,8 @@ getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
 获取文本行根据对齐因子和对齐宽度计算的对齐所需偏移量。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2743,6 +2941,8 @@ getGlyphCount(): number
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型     | 说明                |
@@ -2763,6 +2963,8 @@ getGlyphs(): Array\<number>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型            | 说明                             |
@@ -2782,6 +2984,8 @@ getGlyphs(range: Range): Array\<number>
 获取该排版单元指定范围内每个字符的字形序号。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2832,6 +3036,8 @@ getPositions(): Array<common2D.Point>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                   | 说明                                   |
@@ -2850,6 +3056,8 @@ getPositions(range: Range): Array<common2D.Point>
 获取该排版单元指定范围内每个字形相对于每行的字形位置数组。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2900,6 +3108,8 @@ getOffsets(): Array<common2D.Point>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -2920,6 +3130,8 @@ getFont(): drawing.Font
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -2939,6 +3151,8 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 在画布上以(x, y)为左上角位置绘制排版单元。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2991,6 +3205,8 @@ getStringRange(): Range
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3013,6 +3229,8 @@ getStringIndices(range?: Range): Array\<number>
 获取排版单元指定范围内字形的字符索引，该索引是相对于整个段落的偏移。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -3073,6 +3291,8 @@ getImageBounds(): common2D.Rect
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3103,6 +3323,8 @@ getTypographicBounds(): TypographicBounds
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3123,6 +3345,8 @@ getTextDirection(): TextDirection
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3142,6 +3366,8 @@ getAdvances(range: Range): Array<common2D.Point>
 获取该排版单元指定范围内每个字形的字形宽度数组。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -3170,6 +3396,8 @@ let advancesNull = runs[0].getAdvances(null); // null是非法参数，将返回
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 | 名称               | 类型                    | 只读 | 可选 | 说明                                               |
 | -----------------  | ----------------------- | ---- | ---  | -------------------------------------------------- |
 | alignment          | [TextAlign](#textalign) | 否   |  否  | 段落中制表符之后的文本对齐方式，支持设置[TextAlign](#textalign)的LEFT左对齐、RIGHT右对齐和CENTER居中对齐方式，其他枚举值为左对齐，默认为左对齐。 |
@@ -3194,6 +3422,8 @@ alignment为RIGHT，location为100，文本为"aabcdef/tg hi/tjkl/tmno/tp qr"：
 字体类型枚举，通过位或运算可实现组合类型。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 | 名称 | 值 | 说明 |
 | - | - | - |
