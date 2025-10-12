@@ -44,6 +44,7 @@ import { screenshot } from '@kit.ArkUI';
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | displayId | number |  否   | 是 | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，默认为0，该参数应为大于或等于0的整数，非整数会报参数错误。 |
+| blackWindowIds<sup>21+</sup> | Array\<number>        | 否  | 是 | 表示窗口id列表，传入的窗口id不会在截图时显示，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。 |
 
 ## PickInfo
 
