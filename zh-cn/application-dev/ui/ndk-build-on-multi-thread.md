@@ -85,6 +85,10 @@
 - 组件挂载到UI主树后，在非UI线程调用接口操作组件将返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。
 - 在非UI线程调用接口操作非多线程NDK接口创建的组件将返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。
 
+<!--Del-->
+多线程NDK适配过程中遇到的更多问题可以参考[NDK开发常见问题](../faqs/faqs-ndk.md)。
+<!--DelEnd-->
+
 ## 多线程NDK接口集合规格
 
 集合中支持多线程调用的接口包括：[组件创建销毁](#组件创建销毁)，[组件属性读写](#组件属性读写)，[组件事件注册解注册](#组件事件注册解注册)，[组件树操作](#组件树操作)和[组件自定义数据读写](#组件自定义数据读写)。
