@@ -29,6 +29,7 @@
       - [UIExtensionComponent (系统接口)](arkts-v1.2-deprecated-uiextension.md)
       - [AbilityComponent (系统接口)](arkts-v1.2-deprecated-abilitycomponent.md)
       - [ChipGroup](arkts-v1.2-deprecated-chipgroup.md)
+      - [@system.app](arkts-v1.2-deprecated-system-app.md)
   - ArkTS-Dyn与ArkTS-Sta的交互能力<!--ui-arkts-sta-interop-dyn-->
     - [互操作概述](arkts-dyn-sta-ui-interop.md)
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
