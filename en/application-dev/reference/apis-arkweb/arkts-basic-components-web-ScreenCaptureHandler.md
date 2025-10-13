@@ -4,7 +4,7 @@
 <!--Owner: @qq_42700029-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **ScreenCaptureHandler** object for accepting or rejecting a screen capture request. For details about the sample code, see [onScreenCaptureRequest](./arkts-basic-components-web-events.md#onscreencapturerequest10).
 
@@ -62,4 +62,4 @@ Grants the screen capture permission.
 
 | Name   | Type                                    | Mandatory  | Description   |
 | ------ | ---------------------------------------- | ---- | ------- |
-| config | [ScreenCaptureConfig](./arkts-basic-components-web-ScreenCaptureHandler.md) | Yes  | Screen capture configuration.|
+| config | [ScreenCaptureConfig](./arkts-basic-components-web-i.md#screencaptureconfig10) | Yes  | Screen capture configuration.|

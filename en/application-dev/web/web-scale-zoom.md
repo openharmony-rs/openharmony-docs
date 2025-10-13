@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb supports gesture zoom, mouse wheel zoom, and keyboard zoom, allowing users to adjust the display to a comfortable size. It also provides the capability of listening for and controlling the page zoom scale for applications to achieve personalized visual effects.
 

@@ -4,7 +4,7 @@
 <!--Owner: @yuzhouhang1-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebStorage** object to manage the Web SQL database and HTML5 Web Storage APIs. All **Web** components in an application share a **WebStorage** object.
 
@@ -40,7 +40,7 @@ Deletes all data in the specified origin.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -183,7 +183,7 @@ Obtains information about all origins that are currently using the Web SQL Datab
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -247,7 +247,7 @@ Obtains information about all origins that are currently using the Web SQL Datab
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -312,7 +312,7 @@ Obtains the storage quota of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -379,7 +379,7 @@ Obtains the storage quota of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -441,7 +441,7 @@ Obtains the storage usage of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -508,7 +508,7 @@ Obtains the storage usage of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                             |
 | -------- | ----------------------------------------------------- |
@@ -563,7 +563,7 @@ Deletes all data in the Web SQL Database.
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | No  | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **undefined** or **null** is passed, the value is **false**.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If this parameter is set to undefined or null, the default value false is used.|
 
 **Example**
 

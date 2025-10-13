@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 

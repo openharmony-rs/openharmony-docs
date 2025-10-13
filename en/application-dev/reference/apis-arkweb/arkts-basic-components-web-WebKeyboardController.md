@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a controller to control the input, deletion, and closure of the custom keyboard. For details about the sample code, see [onInterceptKeyboardAttach](./arkts-basic-components-web-events.md#oninterceptkeyboardattach12).
 

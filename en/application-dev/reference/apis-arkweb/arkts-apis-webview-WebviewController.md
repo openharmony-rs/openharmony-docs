@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Represents a **WebviewController** object used to control various behaviors of **Web** components, including page navigation, lifecycle status, and JavaScript interaction. A **WebviewController** object can control only one **Web** component, and the APIs (except static APIs) in the **WebviewController** can be invoked only after it has been bound to the target **Web** component.
 
@@ -174,7 +174,7 @@ Sets how the **Web** component uses HTTPDNS for DNS resolution.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -217,11 +217,11 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
-| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web debugging is enabled, and **false** indicates the opposite .<br>Default value: **false**.|
+| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value true indicates that the web page debugging function is enabled. false: Disable the web debugging function.<br>Default value: **false**.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -272,7 +272,7 @@ Loads a specified URL.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -444,7 +444,7 @@ If **encoding** is not base64 (including null values), ASCII encoding is used fo
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -970,7 +970,7 @@ Checks whether a specific number of steps forward or backward can be performed o
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1082,7 +1082,7 @@ Registers a proxy for interaction between the application and web pages loaded b
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1255,7 +1255,7 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1355,7 +1355,7 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1440,7 +1440,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1660,7 +1660,7 @@ Executes a JavaScript script. This API uses a promise to return the script execu
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1857,7 +1857,7 @@ Deletes a specific application JavaScript object that is registered with the win
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1962,7 +1962,7 @@ Zooms in or out of this web page. This API is effective only when [zoomAccess](a
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2016,7 +2016,7 @@ Searches the web page for content that matches the keyword specified by **'searc
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2131,7 +2131,7 @@ Searches for and highlights the next match.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2278,7 +2278,7 @@ Creates web message ports.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2307,7 +2307,7 @@ Sends a web message to an HTML window.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2777,7 +2777,7 @@ struct WebComponent {
 
 getPageHeight(): number
 
-Obtains the height of this web page.
+Obtains the height of this web page. For details, see [Obtaining the Web Page Content Height](../../web/web-getpage-height.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2842,7 +2842,7 @@ Stores this web page. This API uses an asynchronous callback to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2909,7 +2909,7 @@ Stores this web page. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3066,7 +3066,7 @@ Because the previously loaded web pages are used for the operation, no page relo
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3120,7 +3120,7 @@ Scrolls the page to the specified absolute position within a specified period.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3204,7 +3204,7 @@ Scrolls the page by the specified amount within a specified period.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3296,7 +3296,7 @@ Scrolls the page by the specified amount and returns value to indicate whether t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3378,7 +3378,7 @@ Simulates a slide-to-scroll action on the page at the specified velocity.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3556,7 +3556,7 @@ Sets the **window.navigator.onLine** attribute in JavaScript.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3630,7 +3630,7 @@ Checks whether this page contains images. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3687,7 +3687,7 @@ Checks whether this page contains images. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3746,7 +3746,7 @@ Removes all Webview cache files in an application.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3801,7 +3801,7 @@ Removes all Webview cache files in an application.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3851,7 +3851,7 @@ Scrolls the page up by half the viewport or jumps to the top of the page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3934,7 +3934,7 @@ Scrolls the page down by half the viewport or jumps to the bottom of the page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4150,7 +4150,7 @@ If the value of **state** is too large, exceptions may occur. It is recommended 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4234,7 +4234,7 @@ Grants the cross-domain request and fetch request permissions for the specified 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4456,7 +4456,7 @@ Obtains the certificate information of this website. When the **Web** component 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4618,7 +4618,7 @@ Mutes this web page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4737,7 +4737,7 @@ Prefetches resource requests based on specified request information and addition
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4747,7 +4747,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 ```ts
-// xxx.ets
+// EntryAbility.ets
 import { webview } from '@kit.ArkWeb';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
@@ -4790,7 +4790,7 @@ Clears the cache of prefetched resources based on the specified cache key list. 
 **Example**
 
 ```ts
-// xxx.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -4894,7 +4894,7 @@ For details about the default **User-Agent**, see [Developing User-Agent](../../
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5166,7 +5166,7 @@ For details about the default User-Agent definition, application scenarios, and 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5225,7 +5225,7 @@ Sets the network connection timeout. You can use the **onErrorReceive** method i
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5312,7 +5312,7 @@ export default class EntryAbility extends UIAbility {
 enableSafeBrowsing(enable: boolean): void
 
 Enables the safe browsing feature. This feature is forcibly enabled and cannot be disabled for identified untrusted websites.
-By default, this feature does not take effect. OpenHarmony provides only the malicious website blocking web UI. The website risk detection and web UI display features are implemented by the vendor. You are advised to listen for [DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h#:~:text=virtual%20void-,DidStartNavigation) and [DidRedirectNavigation](https://gitee.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h#:~:text=virtual%20void-,DidRedirectNavigation) in **WebContentsObserver** to detect risks.
+By default, this feature does not take effect. OpenHarmony provides only the malicious website blocking web UI. The website risk detection and web UI display features are implemented by the vendor. You are advised to listen to the redirection to [DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h) and [DidRedirectNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h) in WebContentsObserver for detection.
 
 > **NOTE**
 > 
@@ -5328,7 +5328,7 @@ By default, this feature does not take effect. OpenHarmony provides only the mal
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5419,7 +5419,7 @@ Enables intelligent tracking prevention.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5474,7 +5474,7 @@ Obtains whether intelligent tracking prevention is enabled on this web page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5528,7 +5528,7 @@ Adds a list of domain names that bypass intelligent tracking prevention.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -5582,7 +5582,7 @@ Deletes the domain names from the list of domain names added through the **addIn
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -5630,7 +5630,7 @@ Deletes all domain names from the list of domain names added through the **addIn
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -5714,7 +5714,7 @@ Enables ad blocking.
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5771,7 +5771,7 @@ Checks whether ad blocking is enabled.
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5827,7 +5827,7 @@ After ads blocking is enabled for the **Web** component, this feature is enabled
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5878,7 +5878,7 @@ Sets the ArkWeb render subprocess mode.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -6015,7 +6015,7 @@ Loads the specified URL with **postData** using the POST method. If **url** is n
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -6091,7 +6091,7 @@ Creates a **PrintDocumentAdapter** instance to provide content for printing.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                   |
 | -------- | -------------------------------------------------------------------------- |
@@ -6240,7 +6240,7 @@ Sets whether this web page is scrollable.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -6342,7 +6342,7 @@ Sets whether to print the web page background.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -6955,7 +6955,7 @@ Sets the [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md) class for 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -7052,7 +7052,7 @@ Sets the WebSchemeHandler used to intercept ServiceWorker for all Web components
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -7307,7 +7307,7 @@ The API determines whether to update the existing bytecode cache based on the pr
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -7868,7 +7868,7 @@ After **webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8142,7 +8142,7 @@ Sets the IP address of the host after domain name resolution.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
@@ -8168,7 +8168,7 @@ Clears the IP address of a specified host after domain name resolution.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
@@ -8291,7 +8291,7 @@ Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8389,7 +8389,7 @@ If a path in the list is not of the preceding paths, error code 401 is reported 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
@@ -8600,7 +8600,7 @@ Clears the cache occupied by **Web** component based on the specified memory pre
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8653,7 +8653,7 @@ Obtains the data stream of a specified web page using an asynchronous callback.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8736,7 +8736,7 @@ Obtains the data stream of a specified web page using a promise.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8837,7 +8837,7 @@ struct WebComponent {
         Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
       }
       .margin({ top: 10, bottom: 10 })
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
         .key("web_01")
         .overScrollMode(this.mode)
         .onTouch(() => {
@@ -8866,7 +8866,7 @@ struct WebComponent {
 ```
   HTML file to be loaded:
   ```html
-  <!--index.html-->
+  <!-- index.html -->
   <!DOCTYPE html>
   <html>
   <head>
@@ -9291,7 +9291,7 @@ Obtains the loading progress of the current web page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -9448,11 +9448,11 @@ Sets the bottom avoidance height of the visible viewport on the web page.
 
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
-| avoidHeight   | number   | Yes  | Bottom avoidance height of the visible viewport on the web page.<br>Default value: **0**.<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If the value is set to an invalid value, the boundary value is used.|
+| avoidHeight   | number   | Yes  | Bottom avoidance height of the visible viewport on the web page.<br>Default value: **0**.<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If this parameter is set to a value less than 0, the value 0 is used. If this parameter is set to a value greater than the height of the web component, the height of the web component is used.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -9767,7 +9767,7 @@ Sets whether to enable blankless loading. This API must be used together with [g
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
 | key | string | Yes| Key value that uniquely identifies the page. This value must be the same as the **key** value of the **getBlanklessInfoWithKey** API.<br>The value cannot be empty and can contain a maximum of 2048 characters.<br>When an invalid value is set, the error code **WebBlanklessErrorCode** is returned, and the API does not take effect.|
-| is_start | boolean | Yes| Whether to enable frame interpolation. The value **true** means to enable frame interpolation, and **false** means the opposite.<br>Default value: **false**.|
+| is_start | boolean | Yes| Whether to enable frame interpolation. The value **true** means to enable frame interpolation, and **false** means the opposite.<br>If undefined or null is passed, the value is false.|
 
 **Return value**
 
@@ -9881,7 +9881,7 @@ export default class EntryAbility extends UIAbility {
 
 static setBlanklessLoadingCacheCapacity(capacity: number): number
 
-Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. The default cache capacity is 30 MB, and the maximum cache capacity is 100 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.
+Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. If this API is not explicitly called, the default cache capacity is 30 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9889,7 +9889,7 @@ Sets the persistent cache capacity of the blankless loading solution and returns
 
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
-| capacity | number | Yes| Persistent cache capacity, in MB. The maximum value is 100 MB.<br>The default value is 30 MB.<br>The value ranges from 0 to 100. If this parameter is set to **0**, no cache capacity is available and the functionality is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
+| capacity | number | Yes| Persistent cache capacity, in MB. The maximum value is 100 MB.<br>The value ranges from 0 to 100. If this parameter is set to **0**, no cache capacity is available and the functionality is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
 
 **Return value**
 

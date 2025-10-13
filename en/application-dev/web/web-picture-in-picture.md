@@ -4,7 +4,7 @@
 <!--Owner: @gzweioh-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 The web component supports the picture-in-picture (PiP) feature. An application can use the Picture-in-Picture API of the W3C standard to create a floating window on a web page to play videos. In this way, users can continue to watch videos in the PiP window when browsing other web pages or interacting with other applications. 
 
 To use online video resources, you need to set the network permission in the configuration file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).

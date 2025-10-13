@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Register your application code with frontend pages. Then you can invoke application methods with the registered object names on frontend pages.
 

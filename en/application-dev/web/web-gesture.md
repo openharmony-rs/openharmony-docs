@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 On mobile or touch-enabled web applications, users interact with web pages through gestures. ArkWeb supports the recognition of common gestures, such as touch and hold, swipe, and tap, providing a rich user interaction experience.
 ## ArkWeb Gesture Recognition
 ArkWeb receives the ArkUI [touch event](../ui/arkts-interaction-development-guide-touch-screen.md#touch-event) and identifies the gesture. For details about the distribution policy of touch events, see [Basic Interaction Principles](../ui/arkts-interaction-basic-principles.md). ArkWeb gestures comply with the touch events, UI events, and pointer events defined by the W3C standard.

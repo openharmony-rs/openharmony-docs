@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebContextMenuParam** object, which is displayed after the user clicks the right mouse button or long presses a specific element, such as an image or a link. For details about the sample code, see [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9).
 
