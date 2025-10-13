@@ -261,8 +261,8 @@
         - [跨应用数据共享概述](database/data-share-overview.md)
         - 一对多跨应用数据共享<!--one-to-many-data-share-->
           <!--Del-->
-          - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability.md)
-          - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access.md)
+          - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
+          - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
           - [应用间配置共享 (ArkTS)](database/share-config.md)
         - 多对多跨应用数据共享<!--many-to-many-data-share-->
@@ -734,8 +734,8 @@
         - [管理应用窗口（FA模型）](windowmanager/application-window-fa.md)
         - [窗口元数据配置](windowmanager/window-config-m.md)
         <!--Del-->
-        - [管理系统窗口（仅Stage模型支持）](windowmanager/system-window-stage.md)
-        - [WindowExtensionAbility（仅对系统应用开放）](windowmanager/windowextensionability.md)
+        - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](windowmanager/system-window-stage-sys.md)
+        - [WindowExtensionAbility（仅对系统应用开放）](windowmanager/windowextensionability-sys.md)
         <!--DelEnd-->
         - [使用WindowManager管理多模输入事件（C/C++）](windowmanager/native-window-event-filter.md)
         - 应用启动页的配置与使用<!--launch-page-->
@@ -748,7 +748,7 @@
         - [使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](displaymanager/native-display-manager.md)
         - [使用Display实现屏幕属性获取及状态监听 (ArkTS)](displaymanager/screenProperty-guideline.md)
         <!--Del-->
-        - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline.md)
+        - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
     - ArkWeb（方舟Web）<!--arkweb-->
       - [ArkWeb简介](web/web-component-overview.md)
