@@ -822,13 +822,13 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| networkInfo | NetworkInfo | 是   | 指定查询的网络信息，参见[NetworkInfo](#networkinfo12)。 |
+| networkInfo | NetworkInfo | 是   | 指定查询的网络信息，参见[NetworkInfo](#networkinfo22)。 |
 
 **返回值：**
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<[NetStatsInfo](#netstatsinfo10)> | 以 Promise 形式返回获取结果，返回应用历史流量统计信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo22)> | 以 Promise 形式返回获取结果，返回应用历史流量统计信息。 |
 
 **错误码：**
 
@@ -874,7 +874,7 @@ type NetBearType = connection.NetBearType
 | ---------------- | --------------------------- |
 | [connection.NetBearType](js-apis-net-connection.md#netbeartype) | 枚举网络类型。    |
 
-## NetworkInfo<sup>12+</sup>
+## NetworkInfo<sup>22+</sup>
 
 网络信息。
 
@@ -887,7 +887,7 @@ type NetBearType = connection.NetBearType
 | endTime   | number                                               | 否  |否 |结束时间戳(单位:秒)。 |
 | simId     | number                                               | 否  | 是|SIM 卡 ID。    |
 
-## NetStatsInfo<sup>10+</sup>
+## NetStatsInfo<sup>22+</sup>
 
 获取的历史流量信息。
 
