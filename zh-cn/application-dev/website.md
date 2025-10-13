@@ -825,10 +825,10 @@
       - [长时任务(ArkTS)](task-management/continuous-task.md)
       - [延迟任务(ArkTS)](task-management/work-scheduler.md)
       - [代理提醒(ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
-      - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request.md)
+      - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request-sys.md)
       - 设备使用信息统计（ArkTS）<!--device-usage-statistics-->
-        - [设备使用信息统计概述](device-usage-statistics/device-usage-statistics-overview.md)
-        - [设备使用信息统计开发指导](device-usage-statistics/device-usage-statistics-use-guide.md)
+        - [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-overview-sys.md)
+        - [设备使用信息统计开发指导（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
       <!--DelEnd-->
     - Core File Kit（文件基础服务）<!--core-file-kit-->
       - [Core File Kit简介](file-management/core-file-kit-intro.md)
@@ -888,7 +888,7 @@
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
             - [ArkTS卡片被动刷新](form/arkts-ui-widget-passive-refresh.md)
             <!--Del-->
-            - [卡片代理刷新](form/arkts-ui-widget-update-by-proxy.md)
+            - [卡片代理刷新（仅对系统应用开放）](form/arkts-ui-widget-update-by-proxy-sys.md)
             <!--DelEnd-->
             - [刷新本地图片和网络图片](form/arkts-ui-widget-image-update.md)
             - [根据卡片状态刷新不同内容](form/arkts-ui-widget-update-by-status.md)
@@ -904,7 +904,7 @@
           - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
             - [应用内拉起卡片管理加桌](form/arkts-ui-widget-open-formmanager.md)
         <!--Del--> 
-        - [ArkTS卡片使用方开发指导（仅对系统应用开放）](form/widget-host-development-guide.md)
+        - [ArkTS卡片使用方开发指导（仅对系统应用开放）](form/widget-host-development-guide-sys.md)
         <!--DelEnd-->
         - 互动卡片开发<!--arkts-ui-liveform-->
           - [互动卡片概述](form/arkts-ui-liveform-overview.md)
@@ -913,7 +913,7 @@
             - [场景动效类型互动卡片概述](form/arkts-ui-liveform-sceneanimation-overview.md)
             - [场景动效类型互动卡片开发指导](form/arkts-ui-liveform-sceneanimation-development.md)
             <!--Del-->
-            - [场景动效类型互动卡片开发指导（系统应用）](form/arkts-ui-liveform-sceneanimation-development-sys.md)
+            - [场景动效类型互动卡片开发指导（仅对系统应用开放）](form/arkts-ui-liveform-sceneanimation-development-sys.md)
             <!--DelEnd-->
       - JS卡片开发<!--form-js-ui-->
         - [JS卡片概述](form/js-ui-widget-overview.md)
@@ -1401,10 +1401,10 @@
         - [输入设备开发指导](device/input/inputdevice-guidelines.md)
         - [按键拦截监听开发指导](device/input/keypressed-guidelines.md)
         - [鼠标光标开发指导](device/input/pointerstyle-guidelines.md)<!--Del-->
-        - [输入监听开发指导](device/input/inputmonitor-guidelines.md)
-        - [事件注入开发指导](device/input/inputeventclient-guidelines.md)
-        - [全局快捷键开发指导](device/input/inputconsumer-guidelines.md)
-        - [系统预置全局快捷键开发指导](device/input/shortkey-guidelines.md)<!--DelEnd-->
+        - [输入监听开发指导（仅对系统应用开放）](device/input/inputmonitor-guidelines-sys.md)
+        - [事件注入开发指导（仅对系统应用开放）](device/input/inputeventclient-guidelines-sys.md)
+        - [全局快捷键开发指导（仅对系统应用开放）](device/input/inputconsumer-guidelines-sys.md)
+        - [系统预置全局快捷键开发指导（仅对系统应用开放）](device/input/shortkey-guidelines-sys.md)<!--DelEnd-->
         - [事件监听开发指导（C/C++）](device/input/monitor-guidelines.md)
         - [事件拦截开发指导（C/C++）](device/input/interceptor-guidelines.md)
       - MDM Kit（企业设备管理服务）<!--mdm-kit-->
