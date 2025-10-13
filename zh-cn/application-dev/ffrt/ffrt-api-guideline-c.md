@@ -1016,6 +1016,7 @@ void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_
 描述
 
 - 设置检测到队列任务超时后执行的回调函数。
+- 不建议在`f`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_queue_attr_get_callback**
 
@@ -2210,6 +2211,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 描述
 
 - 启动一个定时器，定时器到期且未被取消的话，执行回调函数。如果设置`repeat`为`true`，定时器到期后会重复设置。
+- 不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_timer_stop**
 
@@ -2409,6 +2411,7 @@ int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void 
 描述
 
 - 管理loop上的监听fd事件，事件的监听和回调执行在loop线程上处理。
+- 不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_loop_timer_start**
 
@@ -2433,6 +2436,7 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 描述
 
 - 在loop上启动一个定时器，用法和`ffrt_timer_start`一致，只是定时器的监听和回调执行在loop线程上处理。
+- 不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_loop_timer_stop**
 
