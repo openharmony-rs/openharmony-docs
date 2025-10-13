@@ -926,6 +926,8 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
+![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png)
+
 #### 行高调整（方式二）
 
 行高调整方式第二种：直接调整行高缩放系数。
@@ -966,6 +968,8 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
+![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png)
+
 ### 行间距调整
 
 调整行间距可以改善文本行之间的距离，提高阅读体验。
@@ -979,6 +983,8 @@ OH_Drawing_DestroyTypography(typography);
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置行间距
 OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle, OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING, 100);
+// 设置禁用段落上升部下降部
+OH_Drawing_TypographyTextSetHeightBehavior(typoStyle, OH_Drawing_TextHeightBehavior::TEXT_HEIGHT_DISABLE_ALL);
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // 设置文字大小
 OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
@@ -1002,6 +1008,8 @@ OH_Drawing_DestroyTypographyStyle(typoStyle);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
+
+![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png)
 
 ## 样式的拷贝、绘制与显示
 支持拷贝文本样式、段落样式、阴影样式，以便快速复制相关样式作用到不同文字上。

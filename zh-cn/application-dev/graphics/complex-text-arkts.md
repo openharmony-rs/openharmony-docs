@@ -1340,6 +1340,7 @@ struct Font08 {
 
 ### 示例六（行高调整方式一）
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时绘制表现。
+
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
 import { drawing, text, common2D } from '@kit.ArkGraphics2D'
@@ -1471,8 +1472,8 @@ struct Font08 {
 
 | 行高上限值 | 行高下限值 | 示意效果 |
 | -------- | -------- | -------- |
-| 65 | 65 | |
-| 200 | 200 | |
+| 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
+| 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
 
 ### 示例七（行高调整方式二）
 这里以行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
@@ -1610,8 +1611,8 @@ struct Font08 {
 
 | 行高缩放样式 | 示意效果 |
 | -------- | -------- |
-| FontSize | |
-| FontHeight | |
+| FontSize | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
+| FontHeight | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
 
 ### 示例八（行间距调整）
 这里以设置行间距并关闭段落上升部下降部为例，呈现行间距增加后文本绘制与显示。
@@ -1747,5 +1748,5 @@ struct Font08 {
 
 | 上升部下降部开关 | 示意效果 |
 | -------- | -------- |
-| DISABLE_ALL | |
-| ALL | |
+| DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
+| ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
