@@ -390,3 +390,39 @@ Distributed operation timed out.
 **处理步骤**
 
 检查设备间连接是否正常（例如手机与手表是否配对成功）。
+
+## 1600022 指定的应用信息无效
+
+**错误信息**
+
+The specified bundle is invalid.
+
+**错误描述**
+
+传入的包信息错误或不存在。
+
+**可能原因**
+
+传入的包信息不正确或不存在。
+
+**处理步骤**
+
+检查包信息是否正确，所对应的包是否安装成功。
+
+## 1600023 NotificationSubscriberExtensionAbility未实现
+
+**错误信息**
+
+The application does not implement the NotificationSubscriberExtensionAbility.
+
+**错误描述**
+
+应用未实现NotificationSubscriberExtensionAbility。
+
+**可能原因**
+
+应用未设置或未正确设置NotificationSubscriberExtensionAbility。
+
+**处理步骤**
+
+应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)。
