@@ -4104,7 +4104,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'occlusionStateChanged'，即窗口可见性变化事件。 |
-| callback | Callback&lt;OcclusionState&gt; | 是   | 回调函数。当窗口可见性变化时触发回调。详细含义可参考[可见性状态](arkts-apis-window-e.md#occlusionstate22) |
+| callback | Callback&lt;OcclusionState&gt; | 是   | 窗口可见性变化时的回调函数。详情见[可见性状态](arkts-apis-window-e.md#occlusionstate22) |
 
 **错误码：**
 
