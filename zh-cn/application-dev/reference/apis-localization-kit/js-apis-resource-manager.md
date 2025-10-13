@@ -4050,7 +4050,9 @@ export default class EntryAbility extends UIAbility {
 
 ### getDrawableDescriptor<sup>10+</sup>
 
-getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableDescriptor
+ArkTS-Dyn: getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableDescriptor
+
+ArkTS-Sta: getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor
 
 获取指定资源ID对应的DrawableDescriptor对象，用于图标的显示，使用同步方式返回。
 
@@ -4058,13 +4060,17 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| resId | number | 是    | 资源ID值。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
-| type<sup>11+</sup> | number | 否    | - 1表示获取主题资源包中应用的分层图标资源。<br> - 0或缺省表示获取应用自身图标资源。 |
+| resId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 资源ID值。 |
+| [density](#screendensity) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| type<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | - 1表示获取主题资源包中应用的分层图标资源。<br> - 0或缺省表示获取应用自身图标资源。 |
 
 **返回值：**
 
@@ -4083,36 +4089,86 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { DrawableDescriptor } from '@kit.ArkUI';
 
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.media.icon'仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // 'app.media.icon'仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 120);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // 'app.media.icon'仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 0, 1);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 120);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r, DrawableDescriptor } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.media.icon'仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // 'app.media.icon'仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 120);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // 'app.media.icon'仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 0, 1);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 0, 1);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+}
+```
 
 ### getDrawableDescriptorByName<sup>10+</sup>
 
-getDrawableDescriptorByName(resName: string, density?: number, type?: number): DrawableDescriptor
+ArkTS-Dyn: getDrawableDescriptorByName(resName: string, density?: number, type?: number): DrawableDescriptor
+
+ArkTS-Sta: getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor
 
 获取指定资源名称对应的DrawableDescriptor对象，用于图标的显示，使用同步方式返回。
 
@@ -4120,13 +4176,17 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型     | 必填   | 说明   |
 | ------- | ------ | ---- | ---- |
 | resName | string | 是    | 资源名称。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
-| type<sup>11+</sup> | number | 否    | - 1表示获取主题资源包中应用的分层图标资源。<br> - 0或缺省表示获取应用自身图标资源。 |
+| [density](#screendensity) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| type<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | - 1表示获取主题资源包中应用的分层图标资源。<br> - 0或缺省表示获取应用自身图标资源。 |
 
 **返回值：**
 
@@ -4145,36 +4205,86 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { DrawableDescriptor } from '@kit.ArkUI';
 
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon');
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "icon"仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon');
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // "icon"仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 120);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // "icon"仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 0, 1);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 120);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "icon"仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon');
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // "icon"仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 120);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+    }
+    try {
+      // "icon"仅作示例，请替换为实际使用的资源
+      let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 0, 1);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 0, 1);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+}
+```
 
 ### getBoolean<sup>9+</sup>
 
-getBoolean(resId: number): boolean
+ArkTS-Dyn: getBoolean(resId: number): boolean
+
+ArkTS-Sta: getBoolean(resId: long): boolean
 
 获取指定资源ID值对应的布尔值，使用同步方式返回。
 
@@ -4182,11 +4292,15 @@ getBoolean(resId: number): boolean
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| resId | number | 是    | 资源ID值。 |
+| resId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 资源ID值。 |
 
 **返回值：**
 
@@ -4206,30 +4320,62 @@ getBoolean(resId: number): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
 
-  try {
-    let boolTest = this.context.resourceManager.getBoolean($r('app.boolean.boolean_test').id);
-    console.log(`getBoolean, result: ${boolTest}`);
-    // 打印输出结果: getBoolean, result: true
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.boolean.boolean_test'仅作示例，请替换为实际使用的资源
+      let boolTest = this.context.resourceManager.getBoolean($r('app.boolean.boolean_test').id);
+      console.log(`getBoolean, result: ${boolTest}`);
+      // 打印输出结果: getBoolean, result: true
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.boolean.boolean_test'仅作示例，请替换为实际使用的资源
+      let boolTest = this.context.resourceManager.getBoolean($r('app.boolean.boolean_test').id);
+      console.log(`getBoolean, result: ${boolTest}`);
+      // 打印输出结果: getBoolean, result: true
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getBooleanByName<sup>9+</sup>
 
@@ -4240,6 +4386,10 @@ getBooleanByName(resName: string): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -4265,30 +4415,61 @@ getBooleanByName(resName: string): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
 
-  try {
-    let boolTest = this.context.resourceManager.getBooleanByName("boolean_test");
-    console.log(`getBooleanByName, result: ${boolTest}`);
-    // 打印输出结果: getBooleanByName, result: true
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getBooleanByName failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "boolean_test"仅作示例，请替换为实际使用的资源
+      let boolTest = this.context.resourceManager.getBooleanByName("boolean_test");
+      console.log(`getBooleanByName, result: ${boolTest}`);
+      // 打印输出结果: getBooleanByName, result: true
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getBooleanByName failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "boolean_test"仅作示例，请替换为实际使用的资源
+      let boolTest = this.context.resourceManager.getBooleanByName("boolean_test");
+      console.log(`getBooleanByName, result: ${boolTest}`);
+      // 打印输出结果: getBooleanByName, result: true
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getBooleanByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getNumber<sup>9+</sup>
 
@@ -4791,7 +4972,9 @@ export default class EntryAbility extends UIAbility {
 
 ### getColorSync<sup>10+</sup>
 
-getColorSync(resId: number) : number
+ArkTS-Dyn: getColorSync(resId: number) : number
+
+ArkTS-Sta: getColorSync(resId: long) : long
 
 获取指定资源ID对应的颜色值，使用同步方式返回。
 
@@ -4799,17 +4982,21 @@ getColorSync(resId: number) : number
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| resId | number | 是    | 资源ID值。 |
+| resId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 资源ID值。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| number | 资源ID值对应的颜色值（十进制）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -4823,41 +5010,78 @@ getColorSync(resId: number) : number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
 
-  try {
-    let colorValue = this.context.resourceManager.getColorSync($r('app.color.test').id);
-    console.log(`getColorSync, result: ${colorValue}`);
-    // 打印输出结果: getColorSync, result: 4294967295
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.color.test'仅作示例，请替换为实际使用的资源
+      let colorValue = this.context.resourceManager.getColorSync($r('app.color.test').id);
+      console.log(`getColorSync, result: ${colorValue}`);
+      // 打印输出结果: getColorSync, result: 4294967295
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.color.test'仅作示例，请替换为实际使用的资源
+      let colorValue = this.context.resourceManager.getColorSync($r('app.color.test').id);
+      console.log(`getColorSync, result: ${colorValue}`);
+      // 打印输出结果: getColorSync, result: 4294967295
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getColorByNameSync<sup>10+</sup>
 
-getColorByNameSync(resName: string) : number
+ArkTS-Dyn: getColorByNameSync(resName: string) : number
+
+ArkTS-Sta: getColorByNameSync(resName: string) : long
 
 获取指定资源名称对应的颜色值，使用同步方式返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4869,7 +5093,7 @@ getColorByNameSync(resName: string) : number
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| number | 资源名称对应的颜色值（十进制）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -4883,34 +5107,67 @@ getColorByNameSync(resName: string) : number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
 
-  try {
-    let colorValue = this.context.resourceManager.getColorByNameSync("test");
-    console.log(`getColorByNameSync, result: ${colorValue}`);
-    // 打印输出结果: getColorByNameSync, result: 4294967295
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getColorByNameSync failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test"仅作示例，请替换为实际使用的资源
+      let colorValue = this.context.resourceManager.getColorByNameSync("test");
+      console.log(`getColorByNameSync, result: ${colorValue}`);
+      // 打印输出结果: getColorByNameSync, result: 4294967295
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getColorByNameSync failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test"仅作示例，请替换为实际使用的资源
+      let colorValue = this.context.resourceManager.getColorByNameSync("test");
+      console.log(`getColorByNameSync, result: ${colorValue}`);
+      // 打印输出结果: getColorByNameSync, result: 4294967295
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getColorByNameSync failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getColor<sup>10+</sup>
 
-getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getColor(resId: long, callback: _AsyncCallback&lt;long&gt;): void
 
 获取指定资源ID对应的颜色值，使用callback异步回调。
 
@@ -4918,12 +5175,16 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明              |
 | -------- | --------------------------- | ---- | --------------- |
-| resId    | number                      | 是    | 资源ID值。           |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;number&gt; | 是    | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
+| resId    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 资源ID值。           |
+| callback | ArkTS-Dyn: [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;number&gt;<br>ArkTS-Sta: [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;long&gt;| 是    | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -4937,33 +5198,78 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.         |
 
 **示例Stage：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  this.context.resourceManager.getColor($r('app.color.test').id, (error: BusinessError, value: number) => {
-    if (error != null) {
-      console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getColor, result: ${value}`);
-      // 打印输出结果: getColor, result: 4294967295
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
     }
-  });
-  ```
+  ]
+}
+```
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.color.test'仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColor($r('app.color.test').id, (error: BusinessError, value: number) => {
+        if (error != null) {
+          console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          console.log(`getColor, result: ${value}`);
+          // 打印输出结果: getColor, result: 4294967295
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getColor failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.color.test'仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColor($r('app.color.test').id, (error: BusinessError | null, value: long | undefined) => {
+        if (error != null) {
+          console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          console.log(`getColor, result: ${value}`);
+          // 打印输出结果: getColor, result: 4294967295
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getColor failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getColor<sup>10+</sup>
 
-getColor(resId: number): Promise&lt;number&gt;
+ArkTS-Dyn: getColor(resId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getColor(resId: long): Promise&lt;long&gt;
 
 获取指定资源ID对应的颜色值，使用Promise异步回调。
 
@@ -4971,17 +5277,21 @@ getColor(resId: number): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| resId | number | 是    | 资源ID值。 |
+| resId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 资源ID值。 |
 
 **返回值：**
 
 | 类型                    | 说明          |
 | --------------------- | ----------- |
-| Promise&lt;number&gt; | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -4995,34 +5305,78 @@ getColor(resId: number): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.color.test'仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColor($r('app.color.test').id)
+        .then((value: number) => {
+          console.log(`getColor, result: ${value}`);
+          // 打印输出结果: getColor, result: 4294967295
+        })
+        .catch((error: BusinessError) => {
+          console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getColor failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+}
+```
 
-  this.context.resourceManager.getColor($r('app.color.test').id)
-    .then((value: number) => {
-      console.log(`getColor, result: ${value}`);
-      // 打印输出结果: getColor, result: 4294967295
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+ArkTS-Sta示例：
+```ts
+'use static'
 
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.color.test'仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColor($r('app.color.test').id)
+        .then((value: long) => {
+          console.log(`getColor, result: ${value}`);
+          // 打印输出结果: getColor, result: 4294967295
+        })
+        .catch((error: Error) => {
+          console.error(`promise getColor failed, error is ${error}.`);
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getColor failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getColorByName<sup>10+</sup>
 
-getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getColorByName(resName: string, callback: _AsyncCallback&lt;long&gt;): void
 
 获取指定资源名称对应的颜色值，使用callback异步回调。
 
@@ -5030,12 +5384,16 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明              |
 | -------- | --------------------------- | ---- | --------------- |
 | resName  | string                      | 是    | 资源名称。            |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;number&gt; | 是    | 回调函数，返回资源名称对应的颜色值（十进制）。 |
+| callback | ArkTS-Dyn: [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;number&gt;<br>ArkTS-Sta: [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;long&gt; | 是    | 回调函数，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -5049,39 +5407,87 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  this.context.resourceManager.getColorByName("test", (error: BusinessError, value: number) => {
-    if (error != null) {
-      console.error(`callback getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getColorByName, result: ${value}`);
-      // 打印输出结果: getColorByName, result: 4294967295
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
     }
-  });
-  ```
+  ]
+}
+```
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColorByName("test", (error: BusinessError, value: number) => {
+        if (error != null) {
+          console.error(`callback getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          console.log(`getColorByName, result: ${value}`);
+          // 打印输出结果: getColorByName, result: 4294967295
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getColorByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColorByName("test", (error: BusinessError | null, value: long | undefined) => {
+        if (error != null) {
+          console.error(`callback getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          console.log(`getColorByName, result: ${value}`);
+          // 打印输出结果: getColorByName, result: 4294967295
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getColorByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getColorByName<sup>10+</sup>
 
-getColorByName(resName: string): Promise&lt;number&gt;
+ArkTS-Dyn: getColorByName(resName: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getColorByName(resName: string): Promise&lt;long&gt;
 
 获取指定资源名称对应的颜色值，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5093,7 +5499,7 @@ getColorByName(resName: string): Promise&lt;number&gt;
 
 | 类型                    | 说明         |
 | --------------------- | ---------- |
-| Promise&lt;number&gt; | Promise对象，返回资源名称对应的颜色值（十进制）。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -5107,29 +5513,71 @@ getColorByName(resName: string): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// 资源文件路径: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
 
-  this.context.resourceManager.getColorByName("test")
-    .then((value: number) => {
-      console.log(`getColorByName, result: ${value}`);
-      // 打印输出结果: getColorByName, result: 4294967295
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColorByName("test")
+        .then((value: number) => {
+          console.log(`getColorByName, result: ${value}`);
+          // 打印输出结果: getColorByName, result: 4294967295
+        })
+        .catch((error: BusinessError) => {
+          console.error(`promise getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getColorByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getColorByName("test")
+        .then((value: long) => {
+          console.log(`getColorByName, result: ${value}`);
+          // 打印输出结果: getColorByName, result: 4294967295
+        })
+        .catch((error: Error) => {
+          console.error(`promise getColorByName failed, error is ${error}.`);
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getColorByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFileContentSync<sup>10+</sup>
 
@@ -5140,6 +5588,10 @@ getRawFileContentSync(path: string): Uint8Array
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5163,17 +5615,46 @@ getRawFileContentSync(path: string): Uint8Array
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.getRawFileContentSync("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getRawFileContentSync failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFileContentSync("test.txt");
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getRawFileContentSync failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFileContentSync("test.txt");
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getRawFileContentSync failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFileContent<sup>9+</sup>
 
@@ -5184,6 +5665,10 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5202,23 +5687,58 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.getRawFileContent("test.txt", (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let rawFile = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getRawFileContent failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFileContent("test.txt", (error: BusinessError, value: Uint8Array) => {
+        if (error != null) {
+          console.error(`callback getRawFileContent failed, error is ${error}.`);
+        } else {
+          let rawFile = value;
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getRawFileContent failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFileContent("test.txt", (error: BusinessError | null, value: Uint8Array | undefined) => {
+        if (error != null) {
+          console.error(`callback getRawFileContent failed, error is ${error}.`);
+        } else {
+          let rawFile = value;
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getRawFileContent failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFileContent<sup>9+</sup>
 
@@ -5229,6 +5749,10 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5252,21 +5776,54 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.getRawFileContent("test.txt").then((value: Uint8Array) => {
-      let rawFile = value;
-    }).catch((error: BusinessError) => {
-      console.error("getRawFileContent promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getRawFileContent failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFileContent("test.txt").then((value: Uint8Array) => {
+        let rawFile = value;
+      }).catch((error: BusinessError) => {
+        console.error(`promise getRawFileContent failed, error is ${error}`.);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getRawFileContent failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFileContent("test.txt").then((value: Uint8Array) => {
+        let rawFile = value;
+      }).catch((error: Error) => {
+        console.error(`promise getRawFileContent failed, error is ${error}`.);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getRawFileContent failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFileListSync<sup>10+</sup>
 
@@ -5281,6 +5838,10 @@ getRawFileListSync(path: string): Array\<string>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5304,20 +5865,52 @@ getRawFileListSync(path: string): Array\<string>
 | 9001005  | Invalid relative path.       |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
-    let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
-    console.log(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
-    // 打印输出结果: getRawFileListSync, result: ["test.txt"] 
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getRawFileListSync failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
+      // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
+      let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
+      console.log(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
+      // 打印输出结果: getRawFileListSync, result: ["test.txt"] 
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getRawFileListSync failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
+      // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
+      let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
+      console.log(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
+      // 打印输出结果: getRawFileListSync, result: ["test.txt"] 
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getRawFileListSync failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFileList<sup>10+</sup>
 
@@ -5332,6 +5925,10 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5350,19 +5947,62 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
 | 9001005  | Invalid relative path.       |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
-  this.context.resourceManager.getRawFileList("", (error: BusinessError, value: Array<string>) => {
-    if (error != null) {
-      console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-      // 打印输出结果: getRawFileListSync, result: ["test.txt"]
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
+      // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
+      this.context.resourceManager.getRawFileList("", (error: BusinessError, value: Array<string>) => {
+        if (error != null) {
+          console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+          // 打印输出结果: getRawFileList, result: ["test.txt"]
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getRawFileList failed, error code: ${code}, message: ${message}.`);
     }
-  });
-  ```
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
+      // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
+      this.context.resourceManager.getRawFileList("", (error: BusinessError | null, value: Array<string> | undefined) => {
+        if (error != null) {
+          console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+          // 打印输出结果: getRawFileList, result: ["test.txt"]
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getRawFileList failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFileList<sup>10+</sup>
 
@@ -5377,6 +6017,10 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5400,19 +6044,62 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
-  this.context.resourceManager.getRawFileList("")
-    .then((value: Array<string>) => {
-      console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-      // 打印输出结果: getRawFileListSync, result: ["test.txt"]
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
+      // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
+      this.context.resourceManager.getRawFileList("")
+        .then((value: Array<string>) => {
+          console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+          // 打印输出结果: getRawFileList, result: ["test.txt"]
+        })
+        .catch((error: BusinessError) => {
+          console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getRawFileList failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
+      // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
+      this.context.resourceManager.getRawFileList("")
+        .then((value: Array<string>) => {
+          console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+          // 打印输出结果: getRawFileList, result: ["test.txt"]
+        })
+        .catch((error: Error) => {
+          console.error(`promise getRawFileList failed, error is ${error}.`);
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getRawFileList failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFdSync<sup>10+</sup>
 
@@ -5427,6 +6114,10 @@ getRawFdSync(path: string): RawFileDescriptor
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5450,17 +6141,46 @@ getRawFdSync(path: string): RawFileDescriptor
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.getRawFdSync("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getRawFdSync failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFdSync("test.txt");
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getRawFdSync failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFdSync("test.txt");
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getRawFdSync failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFd<sup>9+</sup>
 
@@ -5475,6 +6195,10 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5493,26 +6217,66 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getRawFd("test.txt", (error: BusinessError, value: resourceManager.RawFileDescriptor) => {
-      if (error != null) {
-        console.error(`callback getRawFd failed error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let fd = value.fd;
-        let offset = value.offset;
-        let length = value.length;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getRawFd failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFd("test.txt", (error: BusinessError, value: resourceManager.RawFileDescriptor) => {
+        if (error != null) {
+          console.error(`callback getRawFd failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          let fd = value.fd;
+          let offset = value.offset;
+          let length = value.length;
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getRawFd failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFd("test.txt", (error: BusinessError | null, value: resourceManager.RawFileDescriptor | undefined) => {
+        if (error != null) {
+          console.error(`callback getRawFd failed, error code: ${error.code}, message: ${error.message}.`);
+        } else {
+          if (value) {
+            let fd = value.fd;
+            let offset = value.offset;
+            let length = value.length;
+          }
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback getRawFd failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getRawFd<sup>9+</sup>
 
@@ -5527,6 +6291,10 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5550,24 +6318,60 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getRawFd("test.txt").then((value: resourceManager.RawFileDescriptor) => {
-      let fd = value.fd;
-      let offset = value.offset;
-      let length = value.length;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getRawFd error error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getRawFd failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFd("test.txt").then((value: resourceManager.RawFileDescriptor) => {
+        let fd = value.fd;
+        let offset = value.offset;
+        let length = value.length;
+      }).catch((error: BusinessError) => {
+        console.error(`promise getRawFd failed, error code: ${error.code}, message: ${error.message}.`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getRawFd failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      this.context.resourceManager.getRawFd("test.txt").then((value: resourceManager.RawFileDescriptor) => {
+        let fd = value.fd;
+        let offset = value.offset;
+        let length = value.length;
+      }).catch((error: Error) => {
+        console.error(`promise getRawFd failed, error is ${error}.`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise getRawFd failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### closeRawFdSync<sup>10+</sup>
 
@@ -5578,6 +6382,10 @@ closeRawFdSync(path: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5595,17 +6403,52 @@ closeRawFdSync(path: string): void
 | 9001005  | The resource not found by path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.closeRawFdSync("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`closeRawFd failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFdSync("test.txt");
+      console.info('closeRawFdSync test success.');
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`closeRawFdSync test failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFdSync("test.txt");
+      console.info('closeRawFdSync test success.');
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`closeRawFdSync test failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### closeRawFd<sup>9+</sup>
 
@@ -5616,6 +6459,10 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5634,21 +6481,62 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 | 9001005  | The resource not found by path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
-      if (error != null) {
-        console.error("error is " + error);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
+        if (error != null) {
+          console.error("callback closeRawFd failed, error is " + error);
+          return;
+        }
+        console.info('callback closeRawFd success.');
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError | null) => {
+        if (error != null) {
+          console.error("callback closeRawFd failed, error is " + error);
+          return;
+        }
+        console.info('callback closeRawFd success.');
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### closeRawFd<sup>9+</sup>
 
@@ -5659,6 +6547,10 @@ closeRawFd(path: string): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -5682,17 +6574,58 @@ closeRawFd(path: string): Promise&lt;void&gt;
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.closeRawFd("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFd("test.txt").then(() => {
+        console.info('promise closeRawFd success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise closeRawFd failed, error is ${error}.`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFd("test.txt").then(() => {
+        console.info('promise closeRawFd success.');
+      }).catch((error: Error) => {
+        console.error(`promise closeRawFd failed, error is ${error}.`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getConfigurationSync<sup>10+</sup>
 
@@ -5704,6 +6637,10 @@ getConfigurationSync(): Configuration
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                       | 说明               |
@@ -5711,15 +6648,42 @@ getConfigurationSync(): Configuration
 | [Configuration](#configuration) | 设备的Configuration。 |
 
 **示例：**
-  ```ts
-  try {
-    let value = this.context.resourceManager.getConfigurationSync();
-    let direction = value.direction;
-    let locale = value.locale;
-  } catch (error) {
-    console.error("getConfigurationSync error is " + error);
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let value = this.context.resourceManager.getConfigurationSync();
+      let direction = value.direction;
+      let locale = value.locale;
+    } catch (error) {
+      console.error("getConfigurationSync error is " + error);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let value = this.context.resourceManager.getConfigurationSync();
+      let direction = value.direction;
+      let locale = value.locale;
+    } catch (error) {
+      console.error("getConfigurationSync error is " + error);
+    }
+  }
+}
+```
 
 ### getConfiguration
 
@@ -5731,6 +6695,10 @@ getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名      | 类型                                       | 必填   | 说明                        |
@@ -5738,22 +6706,58 @@ getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[Configuration](#configuration)&gt; | 是    | 回调函数，返回设备的Configuration。 |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getConfiguration((error: BusinessError, value: resourceManager.Configuration) => {
-      if (error != null) {
-        console.error("getConfiguration callback error is " + error);
-      } else {
-        let direction = value.direction;
-        let locale = value.locale;
-      }
-    });
-  } catch (error) {
-    console.error("getConfiguration callback error is " + error);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getConfiguration((error: BusinessError, value: resourceManager.Configuration) => {
+        if (error != null) {
+          console.error("getConfiguration callback error is " + error);
+        } else {
+          let direction = value.direction;
+          let locale = value.locale;
+        }
+      });
+    } catch (error) {
+      console.error("getConfiguration callback error is " + error);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getConfiguration((error: BusinessError | null, value: resourceManager.Configuration | undefined) => {
+        if (error != null) {
+          console.error("getConfiguration callback error is " + error);
+        } else {
+          if (value) {
+            let direction = value.direction;
+            let locale = value.locale;
+          }
+        }
+      });
+    } catch (error) {
+      console.error("getConfiguration callback error is " + error);
+    }
+  }
+}
+```
 
 ### getConfiguration
 
@@ -5765,6 +6769,10 @@ getConfiguration(): Promise&lt;Configuration&gt;
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                       | 说明               |
@@ -5772,21 +6780,51 @@ getConfiguration(): Promise&lt;Configuration&gt;
 | Promise&lt;[Configuration](#configuration)&gt; | Promise对象，返回设备的Configuration。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getConfiguration().then((value: resourceManager.Configuration) => {
-      let direction = value.direction;
-      let locale = value.locale;
-    }).catch((error: BusinessError) => {
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getConfiguration().then((value: resourceManager.Configuration) => {
+        let direction = value.direction;
+        let locale = value.locale;
+      }).catch((error: BusinessError) => {
+        console.error("getConfiguration promise error is " + error);
+      });
+    } catch (error) {
       console.error("getConfiguration promise error is " + error);
-    });
-  } catch (error) {
-    console.error("getConfiguration promise error is " + error);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getConfiguration().then((value: resourceManager.Configuration) => {
+        let direction = value.direction;
+        let locale = value.locale;
+      }).catch((error: Error) => {
+        console.error("getConfiguration promise error is " + error);
+      });
+    } catch (error) {
+      console.error("getConfiguration promise error is " + error);
+    }
+  }
+}
+```
 
 ### getDeviceCapabilitySync<sup>10+</sup>
 
@@ -5798,6 +6836,10 @@ getDeviceCapabilitySync(): DeviceCapability
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                       | 说明                  |
@@ -5805,15 +6847,42 @@ getDeviceCapabilitySync(): DeviceCapability
 | [DeviceCapability](#devicecapability) | 设备的DeviceCapability。 |
 
 **示例：**
-  ```ts
-  try {
-    let value = this.context.resourceManager.getDeviceCapabilitySync();
-    let screenDensity = value.screenDensity;
-    let deviceType = value.deviceType;
-  } catch (error) {
-    console.error("getDeviceCapabilitySync error is " + error);
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let value = this.context.resourceManager.getDeviceCapabilitySync();
+      let screenDensity = value.screenDensity;
+      let deviceType = value.deviceType;
+    } catch (error) {
+      console.error("getDeviceCapabilitySync error is " + error);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let value = this.context.resourceManager.getDeviceCapabilitySync();
+      let screenDensity = value.screenDensity;
+      let deviceType = value.deviceType;
+    } catch (error) {
+      console.error("getDeviceCapabilitySync error is " + error);
+    }
+  }
+}
+```
 
 ### getDeviceCapability
 
@@ -5825,6 +6894,10 @@ getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名      | 类型                                       | 必填   | 说明                           |
@@ -5832,22 +6905,58 @@ getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DeviceCapability](#devicecapability)&gt; | 是    | 回调函数，返回设备的DeviceCapability。 |
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getDeviceCapability((error: BusinessError, value: resourceManager.DeviceCapability) => {
-      if (error != null) {
-        console.error("getDeviceCapability callback error is " + error);
-      } else {
-        let screenDensity = value.screenDensity;
-        let deviceType = value.deviceType;
-      }
-    });
-  } catch (error) {
-    console.error("getDeviceCapability callback error is " + error);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getDeviceCapability((error: BusinessError, value: resourceManager.DeviceCapability) => {
+        if (error != null) {
+          console.error("getDeviceCapability callback error is " + error);
+        } else {
+          let screenDensity = value.screenDensity;
+          let deviceType = value.deviceType;
+        }
+      });
+    } catch (error) {
+      console.error("getDeviceCapability callback error is " + error);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getDeviceCapability((error: BusinessError | null, value: resourceManager.DeviceCapability | undefined) => {
+        if (error != null) {
+          console.error("getDeviceCapability callback error is " + error);
+        } else {
+          if (value) {
+            let screenDensity = value.screenDensity;
+            let deviceType = value.deviceType;
+          }
+        }
+      });
+    } catch (error) {
+      console.error("getDeviceCapability callback error is " + error);
+    }
+  }
+}
+```
 
 ### getDeviceCapability
 
@@ -5859,6 +6968,10 @@ getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                       | 说明                  |
@@ -5866,21 +6979,51 @@ getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 | Promise&lt;[DeviceCapability](#devicecapability)&gt; | Promise对象，返回设备的DeviceCapability。 |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getDeviceCapability().then((value: resourceManager.DeviceCapability) => {
-      let screenDensity = value.screenDensity;
-      let deviceType = value.deviceType;
-    }).catch((error: BusinessError) => {
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getDeviceCapability().then((value: resourceManager.DeviceCapability) => {
+        let screenDensity = value.screenDensity;
+        let deviceType = value.deviceType;
+      }).catch((error: BusinessError) => {
+        console.error("getDeviceCapability promise error is " + error);
+      });
+    } catch (error) {
       console.error("getDeviceCapability promise error is " + error);
-    });
-  } catch (error) {
-    console.error("getDeviceCapability promise error is " + error);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getDeviceCapability().then((value: resourceManager.DeviceCapability) => {
+        let screenDensity = value.screenDensity;
+        let deviceType = value.deviceType;
+      }).catch((error: Error) => {
+        console.error("getDeviceCapability promise error is " + error);
+      });
+    } catch (error) {
+      console.error("getDeviceCapability promise error is " + error);
+    }
+  }
+}
+```
 
 ### addResource<sup>10+</sup>
 
@@ -5895,6 +7038,10 @@ addResource(path: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5912,18 +7059,48 @@ addResource(path: string): void
 | 9001010  | Invalid overlay path.            |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
-  try {
-    this.context.resourceManager.addResource(path);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`addResource failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // "/library1-default-signed.hsp"仅作示例，请替换为实际的文件路径
+    let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
+    try {
+      this.context.resourceManager.addResource(path);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`addResource failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // "/library1-default-signed.hsp"仅作示例，请替换为实际的文件路径
+    let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
+    try {
+      this.context.resourceManager.addResource(path);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`addResource failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### removeResource<sup>10+</sup>
 
@@ -5938,6 +7115,10 @@ removeResource(path: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5955,18 +7136,50 @@ removeResource(path: string): void
 | 9001010  | Invalid overlay path.            |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
-  try {
-    this.context.resourceManager.removeResource(path);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`removeResource failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // "/library1-default-signed.hsp"仅作示例，请替换为实际的文件路径
+    let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
+    try {
+      this.context.resourceManager.addResource(path);
+      this.context.resourceManager.removeResource(path);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`removeResource failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // "/library1-default-signed.hsp"仅作示例，请替换为实际的文件路径
+    let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
+    try {
+      this.context.resourceManager.addResource(path);
+      this.context.resourceManager.removeResource(path);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`removeResource failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getLocales<sup>11+</sup>
 
@@ -5977,6 +7190,10 @@ getLocales(includeSystem?: boolean): Array\<string>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5991,39 +7208,84 @@ getLocales(includeSystem?: boolean): Array\<string>
 | Array\<string> | 返回获取的语言列表，列表中的字符串由语言、脚本（可选）、地区（可选），按照顺序使用中划线“-”连接组成。|
 
 **示例：**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    this.context.resourceManager.getLocales(); // 仅获取应用资源语言列表
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
-  }
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let locales = resourceManager.getSysResourceManager().getLocales(); // 仅获取系统资源语言列表
-    console.info(`getLocales success: ${locales}`);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getLocales(); // 仅获取应用资源语言列表
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+    }
 
-  try {
-    this.context.resourceManager.getLocales(true); // 获取应用资源和系统资源语言列表
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+    try {
+      resourceManager.getSysResourceManager().getLocales(); // 仅获取系统资源语言列表
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+    }
+
+    try {
+      this.context.resourceManager.getLocales(true); // 获取应用资源和系统资源语言列表
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.resourceManager.getLocales(); // 仅获取应用资源语言列表
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+    }
+
+    try {
+      resourceManager.getSysResourceManager().getLocales(); // 仅获取系统资源语言列表
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+    }
+
+    try {
+      this.context.resourceManager.getLocales(true); // 获取应用资源和系统资源语言列表
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getSymbol<sup>11+</sup>
 
-getSymbol(resId: number): number
+ArkTS-Dyn: getSymbol(resId: number): number
+
+ArkTS-Sta: getSymbol(resId: long): long
 
 获取指定资源ID对应的[Symbol字符](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol)Unicode码，使用同步方式返回。
 
@@ -6031,17 +7293,21 @@ getSymbol(resId: number): number
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| resId | number | 是    | 资源ID值。 |
+| resId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 资源ID值。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| number | 资源ID值对应的Symbol字符Unicode码（十进制）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 资源ID值对应的Symbol字符Unicode码（十进制）。 |
 
 **错误码：**
 
@@ -6055,30 +7321,67 @@ getSymbol(resId: number): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
-    console.log(`getSymbol, result: ${symbolValue}`);
-    // 打印输出结果: getSymbol, result: 983183
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'sys.symbol.message'仅作示例，请替换为实际使用的资源
+      let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
+      console.log(`getSymbol, result: ${symbolValue}`);
+      // 打印输出结果: getSymbol, result: 983183
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'sys.symbol.message'仅作示例，请替换为实际使用的资源
+      let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
+      console.log(`getSymbol, result: ${symbolValue}`);
+      // 打印输出结果: getSymbol, result: 983183
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getSymbolByName<sup>11+</sup>
 
-getSymbolByName(resName: string): number
+ArkTS-Dyn: getSymbolByName(resName: string): number
+
+ArkTS-Sta: getSymbolByName(resName: string): long
 
 获取指定资源名称对应的[Symbol字符](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol)Unicode码，使用同步方式返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6090,7 +7393,7 @@ getSymbolByName(resName: string): number
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| number | 资源名称对应的Symbol字符Unicode码（十进制）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 资源名称对应的Symbol字符Unicode码（十进制）。 |
 
 **错误码：**
 
@@ -6104,19 +7407,50 @@ getSymbolByName(resName: string): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let symbolValue = this.context.resourceManager.getSymbolByName("message");
-    console.log(`getSymbolByName, result: ${symbolValue}`);
-    // 打印输出结果: getSymbolByName, result: 983183
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSymbolByName failed, error code: ${code}, message: ${message}.`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "message"仅作示例，请替换为实际使用的资源
+      let symbolValue = this.context.resourceManager.getSymbolByName("message");
+      console.log(`getSymbolByName, result: ${symbolValue}`);
+      // 打印输出结果: getSymbolByName, result: 983183
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getSymbolByName failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "message"仅作示例，请替换为实际使用的资源
+      let symbolValue = this.context.resourceManager.getSymbolByName("message");
+      console.log(`getSymbolByName, result: ${symbolValue}`);
+      // 打印输出结果: getSymbolByName, result: 983183
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getSymbolByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### isRawDir<sup>12+</sup>
 
@@ -6127,6 +7461,10 @@ isRawDir(path: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6150,25 +7488,64 @@ isRawDir(path: string): boolean
 | 9001005  | Invalid relative path.          |
 
 **示例：**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // 假设rawfile根目录下存在非空文件夹sub，则isRawDir返回结果为true
-    let isRawDir = this.context.resourceManager.isRawDir("sub");
-    // 打印输出结果: sub isRawDir, result: true
-    console.log(`sub isRawDir, result: ${isRawDir}`);
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    // 假设rawfile根目录下存在test.txt文件，则isRawDir返回结果为false
-    isRawDir = this.context.resourceManager.isRawDir("test.txt");
-    // 打印输出结果: test.txt isRawDir, result: false
-    console.log(`test.txt isRawDir, result: ${isRawDir}`);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`isRawDir failed, error code: ${code}, message: ${message}.`);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 假设rawfile根目录下存在非空文件夹sub，则isRawDir返回结果为true
+      // "sub"仅作示例，请替换为实际使用的目录名称
+      let isRawDir = this.context.resourceManager.isRawDir("sub");
+      // 打印输出结果: sub isRawDir, result: true
+      console.log(`sub isRawDir, result: ${isRawDir}`);
+
+      // 假设rawfile根目录下存在test.txt文件，则isRawDir返回结果为false
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      isRawDir = this.context.resourceManager.isRawDir("test.txt");
+      // 打印输出结果: test.txt isRawDir, result: false
+      console.log(`test.txt isRawDir, result: ${isRawDir}`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`isRawDir failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 假设rawfile根目录下存在非空文件夹sub，则isRawDir返回结果为true
+      // "sub"仅作示例，请替换为实际使用的目录名称
+      let isRawDir = this.context.resourceManager.isRawDir("sub");
+      // 打印输出结果: sub isRawDir, result: true
+      console.log(`sub isRawDir, result: ${isRawDir}`);
+
+      // 假设rawfile根目录下存在test.txt文件，则isRawDir返回结果为false
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      isRawDir = this.context.resourceManager.isRawDir("test.txt");
+      // 打印输出结果: test.txt isRawDir, result: false
+      console.log(`test.txt isRawDir, result: ${isRawDir}`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`isRawDir failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getOverrideResourceManager<sup>12+</sup>
 
@@ -6181,6 +7558,10 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6204,21 +7585,51 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    let resMgr = this.context.resourceManager;
-    let overrideConfig = resMgr.getOverrideConfiguration();
-    overrideConfig.colorMode = resourceManager.ColorMode.DARK;
-    let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let resMgr = this.context.resourceManager;
+      let overrideConfig = resMgr.getOverrideConfiguration();
+      overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+      let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let resMgr = this.context.resourceManager;
+      let overrideConfig = resMgr.getOverrideConfiguration();
+      overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+      let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getOverrideConfiguration<sup>12+</sup>
 
@@ -6230,6 +7641,10 @@ getOverrideConfiguration(): Configuration
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                            | 说明             |
@@ -6238,21 +7653,51 @@ getOverrideConfiguration(): Configuration
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    let resMgr = this.context.resourceManager;
-    let overrideConfig = resMgr.getOverrideConfiguration();
-    overrideConfig.colorMode = resourceManager.ColorMode.DARK;
-    let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let resMgr = this.context.resourceManager;
+      let overrideConfig = resMgr.getOverrideConfiguration();
+      overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+      let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let resMgr = this.context.resourceManager;
+      let overrideConfig = resMgr.getOverrideConfiguration();
+      overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+      let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### updateOverrideConfiguration<sup>12+</sup>
 
@@ -6263,6 +7708,10 @@ updateOverrideConfiguration(configuration: Configuration): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -6280,21 +7729,51 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    let resMgr = this.context.resourceManager;
-    let overrideConfig = resMgr.getOverrideConfiguration();
-    overrideConfig.colorMode = resourceManager.ColorMode.DARK;
-    let overrideResMgr = resMgr.updateOverrideConfiguration(overrideConfig);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let resMgr = this.context.resourceManager;
+      let overrideConfig = resMgr.getOverrideConfiguration();
+      overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+      resMgr.updateOverrideConfiguration(overrideConfig);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let resMgr = this.context.resourceManager;
+      let overrideConfig = resMgr.getOverrideConfiguration();
+      overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+      resMgr.updateOverrideConfiguration(overrideConfig);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### release<sup>(deprecated)</sup>
 
