@@ -43,6 +43,8 @@
 
    当前示例使用了默认参数。具体详情，请参见[PasteButton控件](../../reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)。此外，所有安全控件均继承了[安全控件通用属性](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md)，可用于自定义样式。
    
+  <!-- [use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->
+
    ```ts
    import { pasteboard, BusinessError } from '@kit.BasicServicesKit';
    
