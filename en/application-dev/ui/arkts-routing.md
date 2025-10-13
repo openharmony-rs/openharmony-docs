@@ -358,7 +358,7 @@ struct Page {
   }
 }
 ```
-![router_2025-07-02_152548](figures/router_2025-07-02_152548.gif)
+
 
 ## Defining a Custom Transition
 
