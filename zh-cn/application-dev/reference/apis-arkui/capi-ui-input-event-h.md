@@ -220,8 +220,8 @@ enum anonymous3
 | UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 不支持的来源类型。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | 鼠标。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
-| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 21 |
-| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | 手柄。<br>**起始版本：** 21 |
+| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 22 |
+| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | 手柄。<br>**起始版本：** 22 |
 
 ### HitTestMode
 
@@ -383,7 +383,7 @@ enum AxisType
 
 定义轴事件的轴类型。
 
-**起始版本：** 21
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -1832,7 +1832,7 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 
 检测此轴事件是否包含指定的轴类型。
 
-**起始版本：** 21
+**起始版本：** 22
 
 
 **参数：**
