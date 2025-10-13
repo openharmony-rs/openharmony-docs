@@ -1,4 +1,4 @@
-# 卡片代理刷新
+# 卡片代理刷新（仅对系统应用开放）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -51,7 +51,7 @@
 <!--Del-->
 ## 数据提供方开发步骤
 
-参考[数据管理](../database/share-data-by-silent-access.md)开发指南。
+参考[数据管理](../database/share-data-by-silent-access-sys.md)开发指南。
 <!--DelEnd-->
 ## 卡片提供方开发步骤（过程数据）
 
