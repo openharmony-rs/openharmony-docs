@@ -271,7 +271,7 @@ bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。 |
-| [OH_PurgeableMemory_ModifyFunc](capi-purgeable-memory-h.md#oh_purgeablememory_modifyfunc) func | 函数指针，用于修改可丢弃内存对象的内容。 |
+| [OH_PurgeableMemory_ModifyFunc](#oh_purgeablememory_modifyfunc) func | 函数指针，用于修改可丢弃内存对象的内容。 |
 | void *funcPara | @func 使用的参数。 |
 
 **返回：**
