@@ -78,6 +78,22 @@ let accountManager = osAccount.getAccountManager();
 
    <!-- @[specify_the_system_account_id_and_constraint_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
+``` TypeScript
+    let localId: number = 100;
+    let constraint: string = 'constraint.wifi.set';
+```
+
+
 2. 调用[isOsAccountConstraintEnabled](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#isosaccountconstraintenabled11)接口，判断指定约束是否使能。
 
    <!-- @[check_whether_the_specified_constraint_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
+
+``` TypeScript
+    accountManager.isOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {
+      if (isEnabled) {
+        // your business logic
+		// ···
+      }
+    });
+```
+
