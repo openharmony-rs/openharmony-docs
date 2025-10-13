@@ -1332,15 +1332,15 @@
           <!--Del-->
           - [账号管理概述](basic-services/account/account-overview.md)
           - 系统账号 <!--os-account-->
-            - [管理系统账号](basic-services/account/manage-os-account.md)
-            - [使用约束管控系统账号](basic-services/account/control-os-account-by-constraints.md)
-            - [管理系统账号凭据](basic-services/account/manage-os-account-credential.md)
+            - [管理系统账号](basic-services/account/manage-os-account-sys.md)
+            - [使用约束管控系统账号](basic-services/account/control-os-account-by-constraints-sys.md)
+            - [管理系统账号凭据](basic-services/account/manage-os-account-credential-sys.md)
           - 域账号（仅对系统应用开放）<!--domain-account-->
-            - [管理域账号](basic-services/account/manage-domain-account.md)
-            - [认证域账号](basic-services/account/auth-domain-account.md)
-            - [管理域账号插件](basic-services/account/manage-domain-plugin.md)
+            - [管理域账号](basic-services/account/manage-domain-account-sys.md)
+            - [认证域账号](basic-services/account/auth-domain-account-sys.md)
+            - [管理域账号插件](basic-services/account/manage-domain-plugin-sys.md)
           - 分布式账号（仅对系统应用开放）<!--distributed-account-->
-            - [管理分布式账号](basic-services/account/manage-distributed-account.md)
+            - [管理分布式账号](basic-services/account/manage-distributed-account-sys.md)
           <!--DelEnd-->
           - 应用账号<!--application-account-->
             - [管理应用账号](basic-services/account/manage-application-account.md)
@@ -1379,8 +1379,8 @@
           - [压缩与解压](basic-services/compress/deflate-and-inflate.md)
         <!--Del-->
         - 划词服务<!--selectioninput-->
-          - [划词服务概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro.md)
-          - [实现一个划词应用（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide.md)
+          - [划词服务概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
+          - [实现一个划词应用（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
         <!--DelEnd-->
       - Function Flow Runtime Kit（任务并发调度服务）<!--ffrt-kit-->
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
