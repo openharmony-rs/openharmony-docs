@@ -571,11 +571,11 @@ let superScriptStyle: text.TextStyle = {
 
 行高调整方式第一种：为行设置行高上限与下限，具体参考[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).maxLineHeight与[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).minLineHeight。
 
-方式一具体使用效果参考下文[示例六](#示例六行高调整方式一)
+方式一具体使用效果参考下文[示例六](#示例六行高调整方式一)。
 
 行高调整方式第二种：直接调整行高缩放系数（[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).heightScale，并将heightOnly置为true），此外可以调整行高缩放模式，具体参考[LineHeightStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#lineHeightStyle21)。
 
-方式二具体使用效果参考下文[示例七](#示例七行高调整方式二)
+方式二具体使用效果参考下文[示例七](#示例七行高调整方式二)。
 
 ### 行间距调整
 
@@ -583,7 +583,7 @@ let superScriptStyle: text.TextStyle = {
 
 行间距设置在段落样式中，具体参考[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphStyle).lineSpacing。
 
-具体使用效果可参见下文[示例八](#示例八行间距调整)
+具体使用效果可参见下文[示例八](#示例八行间距调整)。
 
 ### 示例一（装饰线、字体特征）
 这里以文本样式中的装饰线和字体特征为例，呈现多样式文本的绘制与显示。

@@ -933,7 +933,7 @@ OH_Drawing_DestroyTypography(typography);
 | 接口定义 | 描述 | 
 | -------- | -------- |
 | void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight) | 使能行高缩放。具体可参考 [OH_Drawing_SetTextStyleFontHeight](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight).TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM。| 
-| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE | 
+| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE。 | 
 
 示例及效果如下所示：
 ```c++
