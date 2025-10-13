@@ -76,7 +76,7 @@ OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)*| 如果创建成功返回指向OH_LowPowerAudioSink实例的指针，否则返回空指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* | 如果创建成功返回指向OH_LowPowerAudioSink实例的指针，否则返回空指针。 |
 
 ### OH_LowPowerAudioSink_Configure()
 
