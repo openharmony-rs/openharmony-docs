@@ -814,6 +814,8 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 获取指定时间段内，本应用在指定网络中的流量使用情况。使用 Promise 方式作为异步方法。
 
+**注意：** 本接口只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于31天，会抛出错误码2103019。
+
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
