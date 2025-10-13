@@ -1,6 +1,6 @@
-# ArkTS-Sta与ArkTS-Dyn UI互操作指南
+# 互操作概述
 
-## 介绍
+## ArkTS-Sta与ArkTS-Dyn UI互操作介绍
 
 ArkUI开发框架针对ArkTS-Sta静态类型在UI构建和状态管理上进行了适配，相关接口和实现与ArkTS-Dyn动态类型存在差异。这些差异要求ArkTS-Sta与ArkTS-Dyn的UI互操作需遵循额外规则。
 
