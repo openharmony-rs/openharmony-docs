@@ -16,13 +16,15 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 ## EventType<sup>9+</sup>
 
+type EventType = beginWakeUp|endWakeUp|beginScreenOn|endScreenOn|beginScreenOff|endScreenOff|unlockScreen|lockScreen|beginExitAnimation|beginSleep|endSleep|changeUser|screenlockEnabled|serviceRestart
+
 定义系统事件类型。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **系统接口**：此接口为系统接口。
 
-| 事件类型            | 说明                     |
+| 类型            | 说明                     |
 | ------------------ | ------------------------ |
 | beginWakeUp        | 表示设备开始唤醒。 |
 | endWakeUp          | 表示设备结束唤醒。 |
@@ -47,10 +49,10 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 **系统接口**：此接口为系统接口。
 
-| 名称    | 类型   | 必填 |       说明        |
-| --------- | ------ | ---- | ------------- |
-| eventType   | [EventType](#eventtype9) | 是   | 系统事件类型。 |
-| params | string | 是   | 系统事件参数。 |
+| 名称    | 类型   | 只读 | 可选 |       说明        |
+| --------- | ------ | ---- | ---- | ------------- |
+| eventType   | [EventType](#eventtype9) | 是   | 否   | 系统事件类型。 |
+| params | string | 是   | 否   | 系统事件参数。 |
 
 ## screenLock.isLocked<sup>9+</sup>
 
