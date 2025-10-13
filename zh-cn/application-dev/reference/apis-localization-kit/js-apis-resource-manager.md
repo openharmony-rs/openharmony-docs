@@ -2724,9 +2724,15 @@ getNumber(resId: number): number
 
 获取指定资源ID对应的integer数值或者float数值，使用同步方式返回。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getInt](#getint20)和[getDouble](#getdouble20)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：** 
 
@@ -2738,7 +2744,7 @@ getNumber(resId: number): number
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| number | 资源ID值对应的数值。<br>integer对应的是原数值，float不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值，具体参考示例代码。 |
+| number | 资源ID值对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -2752,56 +2758,215 @@ getNumber(resId: number): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// 资源文件路径: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```json
-  // 资源文件路径: src/main/resources/base/element/float.json
-  {
-    "float": [
-      {
-        "name": "float_test",
-        "value": "30.6vp"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { display } from '@kit.ArkUI';
+```json
+// 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
+{
+  "float": [
+    {
+      "name": "float_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
 
-  try {
-    // integer对应返回的是原数值
-    let intValue = this.context.resourceManager.getNumber($r('app.integer.integer_test').id);
-    console.log(`getNumber, int value: ${intValue}`);
-    // 打印输出结果: getNumber, int value: 100
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
-  }
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
 
-  try {
-    // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
-    let floatValue = this.context.resourceManager.getNumber($r('app.float.float_test').id);
-    console.log(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-    // 打印输出结果: getNumber, densityPixels: 3.25, float value: 99.45000457763672
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // integer对应返回的是原数值
+      // 'app.integer.integer_test'仅作示例，请替换为实际使用的资源
+      let intValue = this.context.resourceManager.getNumber($r('app.integer.integer_test').id);
+      console.log(`getNumber, int value: ${intValue}`);
+      // 打印输出结果: getNumber, int value: 100
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
+    }
 
+    try {
+      // 'app.float.float_test'资源中的数值为30.6vp，带单位，因此floatValue返回像素值。参考如下打印结果，densityPixels为1.5，则floatValue = 30.6 * 1.5 = 45.900001525878906
+      // 'app.float.float_test'仅作示例，请替换为实际使用的资源
+      let floatValue = this.context.resourceManager.getNumber($r('app.float.float_test').id);
+      console.log(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+      // 打印输出结果: getNumber, densityPixels: 1.5, float value: 45.900001525878906
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+### getInt<sup>20+</sup>
+
+getInt(resId: long): int
+
+获取指定资源ID对应的integer数值，使用同步方式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：** 
+
+| 参数名   | 类型     | 必填   | 说明    |
+| ----- | ------ | ---- | ----- |
+| resId | long | 是    | 资源ID值。 |
+
+**返回值：**
+
+| 类型     | 说明         |
+| ------ | ---------- | 
+| int | 资源ID值对应的数值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 9001001  | Invalid resource ID.                       |
+| 9001002  | No matching resource is found based on the resource ID.         |
+| 9001006  | The resource is referenced cyclically.            |
+
+**示例：**
+```json
+// 资源文件路径: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
+
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // integer对应返回的是原数值
+      // 'app.integer.integer_test'仅作示例，请替换为实际使用的资源
+      let intValue = this.context.resourceManager.getInt($r('app.integer.integer_test').id);
+      console.log(`getInt, int value: ${intValue}`);
+      // 打印输出结果: getInt, int value: 100
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getInt failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+### getDouble<sup>20+</sup>
+
+getDouble(resId: long): double
+
+获取指定资源ID对应的double数值，使用同步方式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumber](#getnumber9)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：** 
+
+| 参数名   | 类型     | 必填   | 说明    |
+| ----- | ------ | ---- | ----- |
+| resId | long | 是    | 资源ID值。 |
+
+**返回值：**
+
+| 类型     | 说明         |
+| ------ | ---------- | 
+| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 9001001  | Invalid resource ID.                       |
+| 9001002  | No matching resource is found based on the resource ID.         |
+| 9001006  | The resource is referenced cyclically.            |
+
+**示例：**
+```json
+// 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
+{
+  "float": [
+    {
+      "name": "double_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
+
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $r, display } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // 'app.float.double_test'资源中的数值为30.6vp，带单位，因此doubleValue返回像素值。参考如下打印结果，densityPixels为1.5，则doubleValue = 30.6 * 1.5 = 45.900001525878906
+      // 'app.float.double_test'仅作示例，请替换为实际使用的资源
+      let doubleValue = this.context.resourceManager.getDouble($r('app.float.double_test').id);
+      console.log(`getDouble, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, double value: ${doubleValue}`);
+      // 打印输出结果: getDouble, densityPixels: 1.5, double value: 45.900001525878906
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDouble failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getNumberByName<sup>9+</sup>
 
@@ -2809,9 +2974,15 @@ getNumberByName(resName: string): number
 
 获取指定资源名称对应的integer数值或者float数值，使用同步方式返回。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getIntByName](#getintbyname20)和[getDoubleByName](#getdoublebyname20)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：** 
 
@@ -2823,7 +2994,7 @@ getNumberByName(resName: string): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 资源名称对应的数值。<br>integer对应的是原数值，float不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值。 |
+| number | 资源名称对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -2837,55 +3008,214 @@ getNumberByName(resName: string): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// 资源文件路径: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```json
-  // 资源文件路径: src/main/resources/base/element/float.json
-  {
-    "float": [
-      {
-        "name": "float_test",
-        "value": "30.6vp"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { display } from '@kit.ArkUI';
+```json
+// 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
+{
+  "float": [
+    {
+      "name": "float_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
 
-  try {
-    // integer对应返回的是原数值
-    let intValue = this.context.resourceManager.getNumberByName("integer_test");
-    console.log(`getNumberByName, int value: ${intValue}`);
-    // 打印输出结果: getNumberByName, int value: 100
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
-  }
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
 
-  try {
-    // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
-    let floatValue = this.context.resourceManager.getNumberByName("float_test");
-    console.log(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-    // 打印输出结果: getNumberByName, densityPixels: 3.25, float value: 99.45000457763672
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // integer对应返回的是原数值
+      // "integer_test"仅作示例，请替换为实际使用的资源
+      let intValue = this.context.resourceManager.getNumberByName("integer_test");
+      console.log(`getNumberByName, int value: ${intValue}`);
+      // 打印输出结果: getNumberByName, int value: 100
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
+    }
+
+    try {
+      // "float_test"资源中的数值为30.6vp，带单位，因此floatValue返回像素值。参考如下打印结果，densityPixels为1.5，则floatValue = 30.6 * 1.5 = 45.900001525878906
+      // "float_test"仅作示例，请替换为实际使用的资源
+      let floatValue = this.context.resourceManager.getNumberByName("float_test");
+      console.log(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+      // 打印输出结果: getNumberByName, densityPixels: 1.5, float value: 45.900001525878906
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
+    }
   }
-  ```
+}
+```
+
+### getIntByName<sup>20+</sup>
+
+getIntByName(resName: string): int
+
+获取指定资源名称对应的integer数值，使用同步方式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：** 
+
+| 参数名     | 类型     | 必填   | 说明   |
+| ------- | ------ | ---- | ---- |
+| resName | string | 是    | 资源名称。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| int | 资源名称对应的数值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 9001003  | Invalid resource name.                     |
+| 9001004  | No matching resource is found based on the resource name.       |
+| 9001006  | The resource is referenced cyclically.            |
+
+**示例：**
+```json
+// 资源文件路径: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
+
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // integer对应返回的是原数值
+      // "integer_test"仅作示例，请替换为实际使用的资源
+      let intValue = this.context.resourceManager.getIntByName("integer_test");
+      console.log(`getIntByName, int value: ${intValue}`);
+      // 打印输出结果: getIntByName, int value: 100
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getIntByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
+
+### getDoubleByName<sup>20+</sup>
+
+getDoubleByName(resName: string): double
+
+获取指定资源名称对应的double数值，使用同步方式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getNumberByName](#getnumberbyname9)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：** 
+
+| 参数名     | 类型     | 必填   | 说明   |
+| ------- | ------ | ---- | ---- |
+| resName | string | 是    | 资源名称。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[资源管理错误码](errorcode-resource-manager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 9001003  | Invalid resource name.                     |
+| 9001004  | No matching resource is found based on the resource name.       |
+| 9001006  | The resource is referenced cyclically.            |
+
+**示例：**
+```json
+// 资源文件路径: src/main/resources/base/element/float.json
+// 数值为30.6vp，带单位
+{
+  "float": [
+    {
+      "name": "double_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
+
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "double_test"资源中的数值为30.6vp，带单位，因此doubleValue返回像素值。参考如下打印结果，densityPixels为1.5，则doubleValue = 30.6 * 1.5 = 45.900001525878906
+      // "double_test"仅作示例，请替换为实际使用的资源
+      let doubleValue = this.context.resourceManager.getDoubleByName("double_test");
+      console.log(`getDoubleByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, double value: ${doubleValue}`);
+      // 打印输出结果: getDoubleByName, densityPixels: 1.5, double value: 45.900001525878906
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getDoubleByName failed, error code: ${code}, message: ${message}.`);
+    }
+  }
+}
+```
 
 ### getColorSync<sup>10+</sup>
 
