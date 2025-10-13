@@ -1334,7 +1334,7 @@
           - [使用Emitter进行线程间通信](basic-services/common-event/itc-with-emitter.md)
         - 账号管理<!--account-management-->
           <!--Del-->
-          - [账号管理概述](basic-services/account/account-overview.md)
+          - [账号管理概述](basic-services/account/account-overview-sys.md)
           - 系统账号 <!--os-account-->
             - [管理系统账号](basic-services/account/manage-os-account-sys.md)
             - [使用约束管控系统账号](basic-services/account/control-os-account-by-constraints-sys.md)
