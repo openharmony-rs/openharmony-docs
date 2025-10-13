@@ -96,7 +96,7 @@ Defines the options of the **XComponent**.
 | -------- | -------- | -------- | -------- | -------- |
 | type | [XComponentType](ts-appendix-enums.md#xcomponenttype10)         | No| No  | Type of the component.|
 | controller | [XComponentController](#xcomponentcontroller) | No| No| Controller bound to the component, which can be used to invoke methods of the component. This parameter is effective only when **type** is **SURFACE** or **TEXTURE**.|
-| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions) | No| Yes| AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
+| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No| Yes| AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
 
 ## NativeXComponentParameters<sup>19+</sup>
 
@@ -109,7 +109,7 @@ Defines the options of the **XComponent**. This API allows the corresponding [Fr
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | type | [XComponentType](ts-appendix-enums.md#xcomponenttype10)         | No| No  | Type of the component.|
-| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions) | No| Yes| AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
+| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No| Yes| AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
 
 ## Attributes
 In addition to universal attributes, the following attributes are supported.
@@ -445,7 +445,7 @@ Starts AI image analysis in the given settings. Before calling this API, make su
 
 | Name| Type     | Mandatory| Description                                                                  |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| config   | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig) | Yes  | Settings of the AI image analyzer.|
+| config   | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | Yes  | Settings of the AI image analyzer.|
 
 **Return value**
 
