@@ -77,11 +77,11 @@ struct ReusableChildComponent {
   @State type: string = ''
 
   aboutToAppear() {
-    console.log(`ReusableChildComponent Appear ${this.type}`)
+    console.info(`ReusableChildComponent Appear ${this.type}`)
   }
 
   aboutToReuse(params: ESObject) {
-    console.log(`ReusableChildComponent Reuse ${this.type}`)
+    console.info(`ReusableChildComponent Reuse ${this.type}`)
     this.type = params.type;
   }
 

@@ -350,7 +350,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowFocus<sup>11+</sup>
 shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted within the main window and child windows.
+Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted within the main window and child windows. This API uses a promise to return the result.
 
 Ensure that the target window can gain focus (configurable by calling [setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)) and that [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
 

@@ -95,10 +95,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------- |
-| reuseMode        | [ReuseMode](#reusemode12) | 是   | 复用解锁认证结果的模式。       |
-| reuseDuration    | number | 是   | 允许复用解锁认证结果的有效时长，有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| reuseMode        | [ReuseMode](#reusemode12) | 否 | 否   | 复用解锁认证结果的模式。       |
+| reuseDuration    | number | 否 | 否 | 允许复用解锁认证结果的有效时长，有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
 
 ## userAuth.getAuthLockState<sup>22+</sup>
 
@@ -221,13 +221,13 @@ try {
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
-| 名称           | 类型                               | 必填 | 说明                                                         |
-| -------------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| challenge      | Uint8Array                         | 是   | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| authType       | [UserAuthType](#userauthtype8)[]   | 是   | 认证类型列表，用来指定用户认证界面提供的认证方法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 期望达到的认证可信等级。典型操作需要的身份认证可写等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) | 否   |表示可以复用解锁认证的结果。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| skipLockedBiometricAuth<sup>20+</sup> | boolean | 否   | 是否跳过已禁用的认证方式自动切换至其它方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>true表示生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证；<br/>false表示不跳过；默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
+| -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| challenge      | Uint8Array                         |  否  |  否  | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authType       | [UserAuthType](#userauthtype8)[]   |  否  |  否  | 认证类型列表，用来指定用户认证界面提供的认证方法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) |  否  |  否  | 期望达到的认证可信等级。典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) |  否  |  是  |表示可以复用解锁认证的结果。默认为不复用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| skipLockedBiometricAuth<sup>20+</sup> | boolean |  否  |  是  | 是否跳过已禁用的认证方式自动切换至其它方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>true表示生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证；<br/>false表示不跳过；默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## WidgetParam<sup>10+</sup>
 
@@ -235,11 +235,11 @@ try {
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
-| 名称                 | 类型                                | 必填 | 说明                                                         |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| title                | string                              | 是   | 用户认证界面的标题，建议传入认证目的，例如用于支付、登录应用等，不支持传空字串，最大长度为500字符。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| navigationButtonText | string                              | 否   | 导航按键的说明文本，最大长度为60字符。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹场景。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uiContext<sup>18+</sup>            | Context               | 否   | 以模应用方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统方式显示。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| title                | string                              |  否  |  否  | 用户认证界面的标题，建议传入认证目的，例如用于支付、登录应用等，不支持传空字串，最大长度为500字符。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| navigationButtonText | string                              |  否  |  是  | 导航按键的说明文本，最大长度为60字符。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹场景。默认为不展示自定义导航按键。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统方式显示。 默认以模系统方式显示身份认证对话框。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 ## UserAuthResult<sup>10+</sup>
 
@@ -249,12 +249,12 @@ try {
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
-| 名称     | 类型                           | 必填 | 说明                                                         |
-| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| result   | number                         | 是   | 用户认证结果。若成功返回SUCCESS，若失败返回相应错误码，参见[UserAuthResultCode](#userauthresultcode9)。 |
-| token    | Uint8Array                     | 否   | 认证成功时，返回认证成功的令牌信息。最大长度为1024字节。 |
-| authType | [UserAuthType](#userauthtype8) | 否   | 认证成功时，返回认证类型。                           |
-| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) | 否   |  认证成功时，返回注册凭据的状态。|
+| 名称     | 类型                           | 只读 | 可选 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| result   | number                         |  否  |  否  | 用户认证结果。若成功返回SUCCESS，若失败返回相应错误码，参见[UserAuthResultCode](#userauthresultcode9)。 |
+| token    | Uint8Array                     |  否  |  是  | 认证成功时，返回认证成功的令牌信息。最大长度为1024字节。 |
+| authType | [UserAuthType](#userauthtype8) |  否  |  是  | 认证成功时，返回认证类型。                           |
+| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) |  否  |  是  |  认证成功时，返回注册凭据的状态。|
 
 ## IAuthCallback<sup>10+</sup>
 
@@ -1096,12 +1096,12 @@ try {
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------- |
-| result        | number | 是   | 认证结果。       |
-| token        | Uint8Array | 否   | 用户身份认证通过的凭证。 |
-| remainAttempts  | number     | 否   | 剩余的认证尝试次数。 |
-| lockoutDuration | number     | 否   | 认证操作的锁定时长，时间单位为毫秒ms。 |
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ----------- | ------ | ---- | ---- | -------------------- |
+| result        | number | 否 | 否 | 认证结果。       |
+| token        | Uint8Array | 否 | 是 | 用户身份认证通过的凭证。 |
+| remainAttempts  | number     | 否 | 是 | 剩余的认证尝试次数。 |
+| lockoutDuration | number     | 否 | 是 | 认证操作的锁定时长，时间单位为毫秒ms。 |
 
 ## TipInfo<sup>(deprecated)</sup>
 
@@ -1112,10 +1112,10 @@ try {
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core。
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------- |
-| module        | number | 是   | 发送提示信息的模块标识。       |
-| tip        | number | 是   | 认证过程提示信息。       |
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ----- | ---- | ---- | -------------------- |
+| module        | number | 否 | 否 | 发送提示信息的模块标识。       |
+| tip        | number | 否 | 否 | 认证过程提示信息。       |
 
 ## EventInfo<sup>(deprecated)</sup>
 
@@ -1879,11 +1879,11 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 **系统能力**：SystemCapability.UserIAM.UserAuth.Core
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------|
-| token        | Uint8Array | 否   | 认证成功的令牌信息。 |
-| remainTimes  | number     | 否   | 剩余的认证操作次数。 |
-| freezingTime | number     | 否   | 认证操作的冻结时间。 |
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ---------- | ---- | ---- | -------------------|
+| token        | Uint8Array | 否 | 是 | 认证成功的令牌信息。 |
+| remainTimes  | number     | 否 | 是 | 剩余的认证操作次数。 |
+| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。 |
 
 ## ResultCode<sup>(deprecated)</sup>
 

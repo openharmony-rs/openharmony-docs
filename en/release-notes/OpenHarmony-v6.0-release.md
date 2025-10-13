@@ -18,7 +18,7 @@ A more detailed description of the enhancements is as follows:
 
 - Widget development: adds support for interactive widgets. ([Guide](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/en/application-dev/form/arkts-ui-liveform-overview.md))
 
-- Kiosk mode: adds support for kiosk mode. Kiosk mode is a special device lock mode that ensures the device UI serves only specific interaction scenarios. ([Guide](https://gitcode.com/RayShih/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager.md))
+- Kiosk mode: adds support for kiosk mode. Kiosk mode is a special device lock mode that ensures the device UI serves only specific interaction scenarios. ([Guide](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/en/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager.md))
 
 - AppStartup: enhances configuration options in feature-type HAPs and introduces task matching rules. ([Guide](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/en/application-dev/application-models/app-startup.md#supported-scope))
 
@@ -103,7 +103,7 @@ A more detailed description of the enhancements is as follows:
 
 ### DSoftBus
 
-Enhanced connection capabilities: introduces new low-level connection capability interfaces to enhance connection capabilities. ([Guide](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/en/application-dev/distributedservice/linnkEnhance_development-guide.md))
+Enhanced connection capabilities: introduces new low-level connection capability interfaces to enhance connection capabilities. ([Guide](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/en/application-dev/distributedservice/linkEnhance_development-guide.md))
 
 
 ### Distributed Services
@@ -186,9 +186,9 @@ Streaming physical A/B upgrade: introduces streaming physical A/B upgrades, allo
 
 - Low-latency audio monitoring: adds support for low-latency audio monitoring, enabling real-time audio transmission to wired headphones with lower latency. ([Guide](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/en/application-dev/media/audio/audio-ear-monitor-loopback.md))
 
-- NFC audio playback and recording: adds support for playback and recording on NFC audio devices, allowing applications to query the current audio output type as an NFC device type.
+- NFC audio playback and recording: adds support for playback and recording on NFC audio devices, allowing applications to query the current audio output type as an NFC device type. ([API Reference](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/en/application-dev/reference/apis-audio-kit/arkts-apis-audio-e.md#devicetype))
 
-- High-quality AEC for live streaming: adds support for high-definition AEC recording in live streaming scenarios, enabling applications to use the new live streaming recording stream type.
+- High-quality AEC for live streaming: adds support for high-definition AEC recording in live streaming scenarios, enabling applications to use the new live streaming recording stream type. ([API Reference](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8))
 
 
 ### Security
@@ -242,12 +242,12 @@ Task management: adds support for setting task timeouts, rate limiting, and down
 
 **Table 1** Version mapping of software and tools
 
-| Software/Tool| Version| Remarks|
+| Software/Tool| Version| Remarks| 
 | -------- | -------- | -------- |
-| OpenHarmony | 6.0 Release | NA |
-| Public SDK | Ohos_sdk_public 6.0.0.47 (API Version 20 Release) | This toolkit is intended for application developers and does not contain system APIs that require system permissions. It is provided as standard in DevEco Studio.|
-| (Optional) HUAWEI DevEco Studio| 6.0.0 Release | Recommended for developing OpenHarmony applications.<br>*To be provided after release.*|
-| (Optional) HUAWEI DevEco Device Tool| 4.0 Release | Recommended for developing OpenHarmony smart devices<br>[Click here](https://device.harmonyos.com/cn/develop/ide#download).|
+| OpenHarmony | 6.0 Release | NA | 
+| Public SDK | Ohos_sdk_public 6.0.0.47 (API Version 20 Release) | This toolkit is intended for application developers and does not contain system APIs that require system permissions. It is provided as standard in DevEco Studio.| 
+| (Optional) HUAWEI DevEco Studio| 6.0.0 Release | Recommended for developing OpenHarmony applications.<br>*To be provided after release.*| 
+| (Optional) HUAWEI DevEco Device Tool| 4.0 Release | Recommended for developing OpenHarmony smart devices<br>[Click here](https://device.harmonyos.com/cn/develop/ide#download).| 
 
 
 ## Source Code Acquisition
@@ -334,26 +334,26 @@ Use the **repo** tool to download the source code over HTTPS.
 
 **Table 3** Resolved issues
 
-| Issue No.| Issue|
+| Issue No.| Issue| 
 | ------- | ------- |
-| ICAWPJ | During XTS testing, a callback (a local function of a case) registered with **on** was not unregistered with **off**. Later cases triggered this callback, but it failed due to the referenced JS function being destructed, causing test failures.|
-| ICD55I | During XTS testing, the ActsTelephonyContactTest suite failed due to a timeout when the contact service of the RK3568 development board accessed datashare.|
-| ICENKX | During XTS testing, the service code of asset creation APIs was not distinguished, leading to test failures.|
-| ICE0E0 | The com.ohos.systemui process frequently freezes due to INPUT_EVENT_SOCKET_TIMEOUT.|
-| ICCUL7 | The OS_IPC_1_743 thread in the /system/bin/bootanimation process occasionally crashes due to libaccessibilityconfig.z.so crashing.|
-| ICCXYS | The OS_IPC_6_979 thread in the foundation process rarely crashes due to libhilog.so crashing.|
+| [7475](https://gitcode.com/openharmony/multimedia_audio_framework/issues/7475) | During XTS testing, a callback (a local function of a case) registered with **on** was not unregistered with **off**. Later cases triggered this callback, but it failed due to the referenced JS function being destructed, causing test failures.|
+| [1523](https://gitcode.com/openharmony/telephony_call_manager/issues/1523) | During XTS testing, the ActsTelephonyContactTest suite failed due to a timeout when the contact service of the RK3568 development board accessed datashare.|
+| [5686](https://gitcode.com/openharmony/multimedia_media_library/issues/5686) | During XTS testing, the service code of asset creation APIs was not distinguished, leading to test failures.|
+| [569](https://gitcode.com/openharmony/applications_systemui/issues/569) | The com.ohos.systemui process frequently freezes due to INPUT_EVENT_SOCKET_TIMEOUT.|
+| [1514](https://gitcode.com/openharmony/accessibility/issues/1514) | The OS_IPC_1_743 thread in the /system/bin/bootanimation process occasionally crashes due to libaccessibilityconfig.z.so crashing.|
+| [513](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/513) | The OS_IPC_6_979 thread in the foundation process rarely crashes due to libhilog.so crashing.| System anomalies, recoverable by rebooting.| 2025-07-30| 
 
 
 ## Known Issues
 
 **Table 4** Known issues
 
-| Issue No.| Issue| Impact| To Be Resolved By|
+| Issue No.| Issue| Impact| To Be Resolved By| 
 | -------- | -------- | -------- | -------- |
-| ICW13P | The sliding comment section in Douyin-like applications runs at 43 fps, not meeting the baseline requirement.| Slightly impacts user experience.| 2025-09-30|
-| ICW0P4 | The boot completion delay is slightly worse than the earlier version.| Slightly impacts user experience.| 2025-09-30|
-| ICW129 | The contact list sliding frame rate is 42 fps, not meeting the baseline requirement.| Slightly impacts user experience.| 2025-12-30|
-| ICV8O8 | The com.ohos.systemui process experiences memory leaks during wukong stress testing.| System anomalies, recoverable by rebooting.| 2025-09-30|
-| ICWA4N<br>ICWA56 | The com.ohos.mms process occasionally crashes due to anonymous or deleteAction.| SMS app anomalies, recoverable by restarting the application.| 2025-09-30|
-| ICUCVF | The hilogd.server thread in the /system/bin/hilogd process rarely crashes.| HiLog logging anomalies, recoverable by rebooting.| 2025-09-30|
-| ICW9XX | The m.ohos.contacts thread in the com.ohos.contacts process rarely crashes due to libace_compatible.z.so.| Contacts application anomalies, recoverable by restarting the application.| 2025-09-30|
+| [19592](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19592) | The sliding comment section in Douyin-like applications runs at 43 fps, not meeting the baseline requirement.| Slightly impacts user experience.| 2025-09-30|
+| [19617](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19617) | The boot completion delay is slightly worse than the earlier version.| Slightly impacts user experience.| 2025-09-30|
+| [329](https://gitcode.com/openharmony/applications_contacts/issues/329) | The contact list sliding frame rate is 42 fps, not meeting the baseline requirement.| Slightly impacts user experience.| 2025-12-30|
+| [588](https://gitcode.com/openharmony/applications_systemui/issues/588) | The com.ohos.systemui process experiences memory leaks during wukong stress testing.| System anomalies, recoverable by rebooting.| 2025-09-30|
+| [296](https://gitcode.com/openharmony/applications_mms/issues/296)<br>[295](https://gitcode.com/openharmony/applications_mms/issues/295) | The com.ohos.mms process occasionally crashes due to anonymous or deleteAction.| SMS app anomalies, recoverable by restarting the application.| 2025-09-30|
+| [527](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/527) | The hilogd.server thread in the /system/bin/hilogd process rarely crashes.| HiLog logging anomalies, recoverable by rebooting.| 2025-09-30|
+| [63972](https://gitcode.com/openharmony/arkui_ace_engine/issues/63972) | The m.ohos.contacts thread in the com.ohos.contacts process rarely crashes due to libace_compatible.z.so.| Contacts application anomalies, recoverable by restarting the application.| 2025-09-30|

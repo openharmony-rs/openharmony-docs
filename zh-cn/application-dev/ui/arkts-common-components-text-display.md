@@ -1166,8 +1166,7 @@ struct Index {
 
 **参考链接**
 
-[属性字符串转Paragraph数组](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)
-<!--RP3--><!--RP3End-->
+[属性字符串转Paragraph数组](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP3--><!--RP3End-->
 
 ### Text组件如何实现不设置maxLines在固定布局约束下内容超出仍显示省略样式
 

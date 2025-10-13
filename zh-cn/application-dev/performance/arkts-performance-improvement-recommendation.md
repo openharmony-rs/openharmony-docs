@@ -1,5 +1,12 @@
 # 性能提升的其他方法
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 开发者若使用低性能的代码实现功能场景可能不会影响应用的正常运行，但却会对应用的性能造成负面影响。本章节列举出了一些可提升性能的场景供开发者参考，以避免应用实现上带来的性能劣化。
 
 ## 设置List组件的宽高
@@ -245,6 +252,7 @@ struct MyComponent {
 @Component
 struct FlexBuild {
   private data: string[] = new Array(20).fill('');
+
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Flex({ direction: FlexDirection.Column }) {
@@ -272,6 +280,7 @@ struct FlexBuild {
 @Component
 struct ColumnAndRowBuild {
   private data: string[] = new Array(20).fill('');
+
   build() {
     Row() {
       Row() {

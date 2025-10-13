@@ -21,6 +21,8 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 ## AccessibilityExtensionAbility
 
+The **AccessibilityExtensionAbility** module provides accessibility extension capabilities based on the ExtensionAbility framework.
+
 ### Properties
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
@@ -109,12 +111,15 @@ let focusDirection: FocusDirection;
 
 ## ElementAttributeKeys<sup>10+</sup>
 
+type ElementAttributeKeys = keyof ElementAttributeValues
+
+Describes the attribute name of [ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues).
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
-| Name     | Type                                                                                                                  | Read-Only  | Optional  | Description                                                |
-| ------- |----------------------------------------------------------------------------------------------------------------------| ---- | ---- |----------------------------------------------------|
-| ElementAttributeKeys | keyof [ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues) | No   | No   | Key of **ElementAttributeValues**.|
-
+| Type     |         Description            |
+| ------- | -------------------------------------------------|
+| keyof [ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues) | Union type of all attribute names in [ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues).|
 
 **Example**
 
@@ -216,47 +221,47 @@ Enumerates gesture types.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
-| Name           | Type           | Description                 |
-| ------------- | ------------- | ------------------- |
-| left          | string          | Left gesture.    |
-| leftThenRight | string          | Left-then-right gesture.|
-| leftThenUp    | string          | Left-then-up gesture.|
-| leftThenDown  | string          | Left-then-down gesture.|
-| right         | string          | Right gesture.    |
-| rightThenLeft | string          | Right-then-left gesture.|
-| rightThenUp   | string          | Right-then-up gesture.|
-| rightThenDown | string          | Right-then-down gesture.|
-| up            | string          | Up gesture.    |
-| upThenLeft    | string          | Up-then-left gesture.|
-| upThenRight   | string          | Up-then-right gesture.|
-| upThenDown    | string          | Up-then-down gesture.|
-| down          | string          | Down gesture.    |
-| downThenLeft  | string          | Down-then-left gesture.|
-| downThenRight | string          | Down-then-right gesture.|
-| downThenUp    | string          | Down-then-up gesture.|
-| twoFingerSingleTap<sup>11+</sup>  | string          | Two-finger single-tap gesture.|
-| twoFingerDoubleTap<sup>11+</sup>  | string          | Two-finger double-tap gesture.|
-| twoFingerDoubleTapAndHold<sup>11+</sup> | string          | Two-finger double-tap-and-hold gesture.|
-| twoFingerTripleTap<sup>11+</sup>  | string          | Two-finger triple-tap gesture.|
-| twoFingerTripleTapAndHold<sup>11+</sup> | string          | Two-finger triple-tap-and-hold gesture.|
-| threeFingerSingleTap<sup>11+</sup> | string          | Three-finger single-tap gesture.|
-| threeFingerDoubleTap<sup>11+</sup> | string          | Three-finger double-tap gesture.|
-| threeFingerDoubleTapAndHold<sup>11+</sup> | string          | Three-finger double-tap-and-hold gesture.|
-| threeFingerTripleTap<sup>11+</sup> | string          | Three-finger triple-tap gesture.|
-| threeFingerTripleTapAndHold<sup>11+</sup> | string          | Three-finger triple-tap-and-hold gesture.|
-| fourFingerSingleTap<sup>11+</sup> | string          | Four-finger single-tap gesture.|
-| fourFingerDoubleTap<sup>11+</sup> | string          | Four-finger double-tap gesture.|
-| fourFingerDoubleTapAndHold<sup>11+</sup> | string          | Four-finger double-tap-and-hold gesture.|
-| fourFingerTripleTap<sup>11+</sup> | string          | Four-finger triple-tap gesture.|
-| fourFingerTripleTapAndHold<sup>11+</sup> | string          | Four-finger triple-tap-and-hold gesture.|
-| threeFingerSwipeUp<sup>11+</sup>  | string          | Three-finger swipe-up gesture.|
-| threeFingerSwipeDown<sup>11+</sup> | string          | Three-finger swipe-down gesture.|
-| threeFingerSwipeLeft<sup>11+</sup> | string          | Three-finger swipe-left gesture.|
-| threeFingerSwipeRight<sup>11+</sup> | string          | Three-finger swipe-right gesture.|
-| fourFingerSwipeUp<sup>11+</sup>   | string          | Four-finger swipe-up gesture.|
-| fourFingerSwipeDown<sup>11+</sup> | string          | Four-finger swipe-down gesture.|
-| fourFingerSwipeLeft<sup>11+</sup> | string          | Four-finger swipe-left gesture.|
-| fourFingerSwipeRight<sup>11+</sup> | string          | Four-finger swipe-right gesture.|
+| Type           | Description                 |
+|------------- | ------------------- |
+| 'left'            | Left gesture.    |
+| 'leftThenRight'   | Left-then-right gesture.|
+| 'leftThenUp'      | Left-then-up gesture.|
+| 'leftThenDown'    | Left-then-down gesture.|
+| 'right'           | Right gesture.    |
+| 'rightThenLeft'   | Right-then-left gesture.|
+| 'rightThenUp'     | Right-then-up gesture.|
+| 'rightThenDown'   | Right-then-down gesture.|
+| 'up'              | Up gesture.    |
+| 'upThenLeft'      | Up-then-left gesture.|
+| 'upThenRight'     | Up-then-right gesture.|
+| 'upThenDown'      | Up-then-down gesture.|
+| 'down'            | Down gesture.    |
+| 'downThenLeft'    | Down-then-left gesture.|
+| 'downThenRight'   | Down-then-right gesture.|
+| 'downThenUp'      | Down-then-up gesture.|
+| 'twoFingerSingleTap'<sup>11+</sup>           | Two-finger single-tap gesture.|
+| 'twoFingerDoubleTap'<sup>11+</sup>           | Two-finger double-tap gesture.|
+| 'twoFingerDoubleTapAndHold'<sup>11+</sup>    | Two-finger double-tap-and-hold gesture.|
+| 'twoFingerTripleTap'<sup>11+</sup>           | Two-finger triple-tap gesture.|
+| 'twoFingerTripleTapAndHold'<sup>11+</sup>    | Two-finger triple-tap-and-hold gesture.|
+| 'threeFingerSingleTap'<sup>11+</sup>         | Three-finger single-tap gesture.|
+| 'threeFingerDoubleTap'<sup>11+</sup>         | Three-finger double-tap gesture.|
+| 'threeFingerDoubleTapAndHold'<sup>11+</sup>  | Three-finger double-tap-and-hold gesture.|
+| 'threeFingerTripleTap'<sup>11+</sup>         | Three-finger triple-tap gesture.|
+| 'threeFingerTripleTapAndHold'<sup>11+</sup>  | Three-finger triple-tap-and-hold gesture.|
+| 'fourFingerSingleTap'<sup>11+</sup>          | Four-finger single-tap gesture.|
+| 'fourFingerDoubleTap'<sup>11+</sup>          | Four-finger double-tap gesture.|
+| 'fourFingerDoubleTapAndHold'<sup>11+</sup>   | Four-finger double-tap-and-hold gesture.|
+| 'fourFingerTripleTap'<sup>11+</sup>          | Four-finger triple-tap gesture.|
+| 'fourFingerTripleTapAndHold'<sup>11+</sup>   | Four-finger triple-tap-and-hold gesture.|
+| 'threeFingerSwipeUp'<sup>11+</sup>           | Three-finger swipe-up gesture.|
+| 'threeFingerSwipeDown'<sup>11+</sup>         | Three-finger swipe-down gesture.|
+| 'threeFingerSwipeLeft'<sup>11+</sup>         | Three-finger swipe-left gesture.|
+| 'threeFingerSwipeRight'<sup>11+</sup>        | Three-finger swipe-right gesture.|
+| 'fourFingerSwipeUp'<sup>11+</sup>            | Four-finger swipe-up gesture.|
+| 'fourFingerSwipeDown'<sup>11+</sup>          | Four-finger swipe-down gesture.|
+| 'fourFingerSwipeLeft'<sup>11+</sup>          | Four-finger swipe-left gesture.|
+| 'fourFingerSwipeRight'<sup>11+</sup>         | Four-finger swipe-right gesture.|
 
 ## PageUpdateType
 
@@ -386,7 +391,7 @@ Called when a physical key is pressed. In this API, you can determine whether to
 **Return value**
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns **true** if the event is consumed and will not be transferred;<br>returns **false** otherwise.|
+| boolean | Returns **true** if the event is consumed and will not be transferred; returns **false** otherwise.|
 
 **Example**
 

@@ -320,7 +320,7 @@ struct Index {
 
   build() {
     Column() {
-      Button ('Print Log')
+      Button('Print Log')
         .onClick(() => {
           for (let i = 0; i < 10; i++) {
             hilog.info(0x0000, 'TAG', '%{public}s', this.message);
@@ -354,7 +354,7 @@ struct Index {
 
   build() {
     Column() {
-      Button ('Print Log')
+      Button('Print Log')
         .onClick(() => {
           let logMessage: string = this.message;
           for (let i = 0; i < 10; i++) {

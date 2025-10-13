@@ -421,7 +421,7 @@ minLines(lines: Optional\<number>)
 
 ### customKeyboard<sup>10+</sup>
 
-customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
+customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions)
 
 设置自定义键盘。
 
@@ -445,7 +445,7 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| value                 |[CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。 |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。                             |
 
 ### type<sup>11+</sup>
@@ -1045,6 +1045,21 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
+### scrollBarColor<sup>22+</sup>
+
+scrollBarColor(thumbColor: ColorMetrics | undefined)
+
+设置滚动条的颜色。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br />默认值：'#66182431' |
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -2514,3 +2529,61 @@ struct TextAreaExample {
 ```
 
 ![TextAreaShowCounterColor](figures/TextAreaShowCounterColor.gif)
+
+### 示例24（设置滚动条颜色）
+从API version 22开始，该示例通过[scrollBarColor](#scrollbarcolor22)属性设置滚动条颜色。
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  controller: TextAreaController = new TextAreaController();
+  build() {
+      Column() {
+        TextArea({
+          text: "Hello World TextArea",
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(undefined)
+        TextArea({
+          text: "Hello World TextArea",
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(ColorMetrics.resourceColor(Color.Orange))
+        TextArea({
+          text: "Hello World TextArea",
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(ColorMetrics.rgba(255, 100, 255))
+      }
+      .backgroundColor(Color.Blue).width('100%').height('100%')
+  }
+}
+```
+![scrollBarColor](figures/textAreaScrollBarColor.jpg)

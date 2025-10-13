@@ -1,5 +1,11 @@
 # DFX开发常见问题
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @mzyan-->
+<!--Designer: @liyueric-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## hilog日志如何落盘存储(API 9)
 
@@ -146,13 +152,13 @@ Native抛异常，如果需要查看backtrace，需要运行一下命令。
 ```bash
 hdc shell param set persist.ark.properties 0x125c
 hdc shell reboot
-```  
+```
 恢复默认值：
 
 ```bash
 hdc shell param set persist.ark.properties 0x105c
 hdc shell reboot
-```  
+```
 
 ## hdc工具的属性开关有哪些？例如Ark属性开关等(API 10)
 

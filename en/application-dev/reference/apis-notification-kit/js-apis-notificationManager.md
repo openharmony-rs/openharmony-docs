@@ -4,7 +4,7 @@
 <!--Owner: @michael_woo888-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationManager** module provides notification management capabilities, covering notifications, notification slots, notification enabled status, and notification badge status.
 
@@ -509,7 +509,7 @@ Obtains a notification slot of a specified type. This API uses a promise to retu
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | used to return the result.|
+| Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | Promise used to return the result.|
 
 **Error codes**
 
@@ -894,9 +894,9 @@ setBadgeNumber(badgeNumber: number): Promise\<void\>
 
 Sets the notification badge number. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -942,9 +942,9 @@ setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
 
 Sets the notification badge number. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -1447,7 +1447,7 @@ Requests notification to be enabled for this application. This API uses an async
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10) with **context** input parameters instead.
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10) with context instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1493,7 +1493,7 @@ Requests notification to be enabled for this application. This API uses a promis
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10-1) with **context** input parameters instead.
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10-1) with context instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1532,6 +1532,8 @@ notificationManager.requestEnableNotification().then(() => {
 isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 Checks whether the device supports cross-device notifications. This API uses an asynchronous callback to return the result.
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, **false** is returned.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1574,6 +1576,8 @@ isDistributedEnabled(): Promise\<boolean>
 
 Checks whether the device supports cross-device notifications. This API uses a promise to return the result.
 
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, **false** is returned.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Return value**
@@ -1610,8 +1614,6 @@ notificationManager.isDistributedEnabled().then((data: boolean) => {
 openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 Opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode. This API uses a promise to return the result.
-
-This API is not supported on wearables.
 
 **Model restriction**: This API can be used only in the stage model.
 

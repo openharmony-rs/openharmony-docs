@@ -636,7 +636,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| contentTransition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -2373,3 +2373,41 @@ struct ImageExample {
 }
 ```
 ![sandBox](figures/trans.gif)
+
+### 示例28（使用alt属性实现设置加载失败中图片和加载失败时图片）
+
+该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  build() {
+      Column() {
+      Text('同时设置placeholder属性和error属性')
+      // 设置一个错误网址来触发alt的placeholder属性和error属性。
+      Image("https://www.example.com/xxx.png")
+      // $r('app.media.startIcon')和$r('app.media.example')需要替换为开发者所需的图像资源文件。
+        .alt({ placeholder: $r('app.media.startIcon'), error: $r('app.media.example') })
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置placeholder属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({ placeholder: $r('app.media.startIcon')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置error属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({error: $r('app.media.example')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![sandBox](figures/imagealt.gif)

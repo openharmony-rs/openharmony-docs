@@ -557,6 +557,7 @@
     - [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)
     - [ArkUI_DragAndDropInfo](capi-arkui-nativemodule-arkui-draganddropinfo.md)
     - [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)
+    - [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)
     - [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md)
     - [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)
     - [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md)

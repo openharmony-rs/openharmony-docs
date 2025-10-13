@@ -1,11 +1,17 @@
 # Creating a List (List)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
 A list is a container that displays a collection of items. If the list items go beyond the screen, the list can scroll to reveal the content off the screen. The list is applicable for presenting similar data types or data type sets, such as images and text. Some common lists seen in applications are the contacts list, playlist, and shopping list.
 
-You can use lists to easily and efficiently display structured, scrollable information. Specifically, you can provide a single view of rows or columns by arranging the [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) or [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) child components linearly in a vertical or horizontal direction in the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component, or use [ForEach](../ui/state-management/arkts-rendering-control-foreach.md) to iterate over a group of rows or columns, or mix any number of single views and **ForEach** structures to build a list. The **List** component supports the generation of child components in various [rendering](../ui/state-management/arkts-rendering-control-overview.md) modes, including conditional rendering, iterative rendering, and lazy data loading.
+You can use lists to easily and efficiently display structured, scrollable information. Specifically, you can provide a single view of rows or columns by arranging the [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) or [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) child components linearly in a vertical or horizontal direction in the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component, or use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to iterate over a group of rows or columns, or mix any number of single views and **ForEach** structures to build a list. The **List** component supports the generation of child components in various [rendering](../ui/rendering-control/arkts-rendering-control-overview.md) modes, including conditional rendering, iterative rendering, and lazy data loading.
 
 On devices with circular screens, the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component is recommended. For details, see [Creating an Arc List (ArcList)](./arkts-layout-development-create-arclist.md).
 
@@ -268,9 +274,9 @@ List() {
 
 ## Iterating List Content
 
-Compared with a static list, a dynamic list is more common in applications. For dynamic lists, you can use [ForEach](../ui/state-management/arkts-rendering-control-foreach.md) to obtain data from the data source and create components for each data item, thereby reducing code complexity.
+Compared with a static list, a dynamic list is more common in applications. For dynamic lists, you can use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to obtain data from the data source and create components for each data item, thereby reducing code complexity.
 
-For example, when creating a contacts list, you can store the contact name and profile picture data in a **Contact** class structure to the **contacts** array, and nest **ListItem** components in **ForEach**, thereby reducing repeated code needed for tiling similar **ListItem** components.
+ArkTS provides component loop rendering capabilities using [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md). For example, when creating a contacts list, you can store the contact name and profile picture data in a **Contact** class structure to the **contacts** array, and nest **ListItem** components in **ForEach**, thereby reducing repeated code needed for tiling similar **ListItem** components.
 
 
 ```ts
@@ -480,7 +486,7 @@ struct ContactsList {
 }
 ```
 
-If the structures of multiple **ListItemGroup** components are similar, you can combine the data of these components into an array and use **ForEach** to render them cyclically. For example, in the contacts list, the **contacts** data of each group (for details, see [Iterating List Content](#iterating-list-content)) and the **title** data of the corresponding group are combined and defined as the **contactsGroups** array. Then, with rendering of **contactsGroups** in **ForEach**, a contact list with multiple groups is implemented. For details, see the example in [Adding a Sticky Header](#adding-a sticky-header).
+If the structures of multiple **ListItemGroup** components are similar, you can combine the data of these components into an array and use **ForEach** to render them cyclically. For example, in the contacts list, the **contacts** data of each group (for details, see [Iterating List Content](#iterating-list-content)) and the **title** data of the corresponding group are combined and defined as the **contactsGroups** array. Then, with rendering of **contactsGroups** in **ForEach**, a contact list with multiple groups is implemented. For details, see the example in [Adding a Sticky Header](#adding-a-sticky-header).
 
 ## Adding a Sticky Header
 
@@ -499,6 +505,7 @@ Setting the **sticky** attribute to **StickyStyle.Header** implements a sticky h
 
 ```ts
 import { util } from '@kit.ArkTS';
+
 class Contact {
   key: string = util.generateRandomUUID(true);
   name: string;
@@ -769,7 +776,7 @@ The following describes the implementation of the pull-and-refresh feature:
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
-  <!--DelEnd-->
+ You can also use the third-party component [PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
 
 
 ## Editing a List
@@ -810,6 +817,7 @@ The process of implementing the addition feature is as follows:
    ```ts
    //ToDoListItem.ets
    import { ToDo } from './ToDo';
+
    @Component
    export struct ToDoListItem {
      @Link isEditMode: boolean;
@@ -952,6 +960,7 @@ The process of implementing the deletion feature is as follows:
     ```ts
    // Structure reference
    import { util } from '@kit.ArkTS';
+
    export class ToDo {
      key: string = util.generateRandomUUID(true);
      name: string;
@@ -984,6 +993,7 @@ The process of implementing the deletion feature is as follows:
     ```ts
     // Structure reference
     import { util } from '@kit.ArkTS';
+
     export class ToDo {
       key: string = util.generateRandomUUID(true);
       name: string;
@@ -1010,9 +1020,9 @@ The process of implementing the deletion feature is as follows:
 
 ## Handling a Long List
 
-While [ForEach](../ui/state-management/arkts-rendering-control-foreach.md) is suitable for short lists, using it for long lists with a large number of items can significantly slow down page loading, as it loads all items at once. Therefore, for better list performance, use [LazyForEach](../ui/state-management/arkts-rendering-control-lazyforeach.md) instead to implement on-demand iterative data loading.
+While [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is suitable for short lists, using it for long lists with a large number of items can significantly slow down page loading, as it loads all items at once. Therefore, for better list performance, use [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md) instead to implement on-demand iterative data loading.
 
-For details about the implementation, see the example in [LazyForEach: Lazy Data Loading](../ui/state-management/arkts-rendering-control-lazyforeach.md).
+For details about the implementation, see the example in [LazyForEach: Lazy Data Loading](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
 When the list is rendered in lazy loading mode, to improve the list scrolling experience and minimize white blocks during list scrolling, you can use the **cachedCount** parameter of the **List** component to set the number of cached list items. With lazy loading, only content outside the visible area up to the **cachedCount** limit will be preloaded, whereas non-lazy loading will load all content. For both lazy and non-lazy loading, only the items within the visible area plus the **cachedCount**-specified number of items outside the visible area are laid out.
 
@@ -1050,6 +1060,7 @@ The process of implementing the collapsing and expanding effect of list items is
 
     ```ts
     import { curves } from '@kit.ArkUI';
+
     interface ItemInfo {
       index: number,
       name: string,
@@ -1194,7 +1205,7 @@ The process of implementing the collapsing and expanding effect of list items is
           .fillColor($r('sys.color.ohos_id_color_fourth'))
           .height(30)
           .width(30)
-          .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 180 : 0) : 180 })
+          .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 0 : 180) : 180 })
           .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
       }
       .width("100%")
@@ -1259,6 +1270,7 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
 Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), and [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)) support swipe release event callbacks. These callbacks are triggered when the user lifts their finger from the screen, reporting the instantaneous swipe velocity. You can use the callbacks to implement custom scroll positioning effects, such as snap scrolling for short news items and free scrolling for long articles.
 
 
+
 1. Define the news item data structure.
 
     ```ts
@@ -1287,7 +1299,7 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
       new news('2', 'Headline 2', 'Another brief news item', 'short'),
       new news('3', 'Headline 3', 'Long-form article with detailed content. '.repeat(20), 'long'),
       new news('4', 'Headline 4', 'Quick news update', 'short'),
-      new news('5', 'Headline 5', 'In-depth analysis piece. '.repeat(15), 'long')
+      new news('5', 'Headline 5', 'In-depth analysis piece.', 'long')
     ];
     ```
 
@@ -1352,4 +1364,18 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
      }
      ```
 
-<!--RP2--><!--RP2End-->
+## Configuring the Edge Effect
+
+The edge effect refers to the visual and interactive feedback when users scroll beyond the boundaries of a scrollable component. The **List** component supports three edge effect types via the [edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-list.md#edgeeffect) attribute: spring (bounce effect), shadow, and none. For details, see [EdgeEffect](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).
+
+When the **List** content area occupies at least one full screen, the default edge effect is spring, as shown below.
+
+
+
+If **.edgeEffect(EdgeEffect.None)** is used, the List component displays no edge effect, as shown below.
+
+
+Since API version 18, **List** supports configuring edge effects for individual sides. For example, **.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })** applies the spring effect only to the start edge.
+
+
+Note: By default, the **List** component can produce a bounce effect only when there is more than one screen of content. To produce a bounce effect when there is less than one screen of content, configure **.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true })**.

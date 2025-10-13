@@ -2456,7 +2456,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](js-apis-inner-commonEvent-commonEventData.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。
 
 <!--Del-->
-请参考[静态订阅公共事件](../../basic-services/common-event/common-event-static-subscription.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd-->
+请参考[静态订阅公共事件](../../basic-services/common-event/common-event-static-subscription-sys.md)以获取事件配置信息和二级配置文件的配置方式。<!--DelEnd-->
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -2653,6 +2653,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | title   | string | 否 | 是 | 通知栏自定义标题。若不设置则使用默认显示方式。title长度上限为1024B。 |
 | text    | string | 否 | 是 | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B。  |
 | visibility<sup>21+</sup> | number | 否 | 是 | 设置任务的通知栏显示方式，通过[agent常量](#常量)的位运算方式决定显示方式。若不设置，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。|
+| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。|
 
 
 **示例：**
@@ -2660,9 +2661,26 @@ resume(callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
 
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        deviceId: '',
+        bundleName: 'com.example.request',
+        abilityName: 'EntryAbility',
+        action: '',
+        entities: [],
+        uri: '',
+        parameters: {}
+      }
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    wantAgentFlags:[wantAgent.WantAgentFlags.CONSTANT_FLAG]
+  };
   let config: request.agent.Config = {
     action: request.agent.Action.DOWNLOAD,
     url: 'http://127.0.0.1', // 需要手动将url替换为真实服务器的HTTP协议地址
@@ -2675,7 +2693,8 @@ resume(callback: AsyncCallback&lt;void&gt;): void
     network: request.agent.Network.ANY,
     gauge: true,
     notification: {
-      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS
+      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
+      wantAgent: await wantAgent.getWantAgent(wantAgentInfo),
     }
   };
   let createOnCallback = (progress: request.agent.Progress) => {
