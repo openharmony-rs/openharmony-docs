@@ -592,10 +592,10 @@ Enumerates collaboration event types.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| SEND_FAILURE   | Task sending failure.|
-| COLOR_SPACE_CONVERSION_FAILURE | Color space conversion failure.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| SEND_FAILURE | 0 |Task sending failure.|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |Color space conversion failure.|
 
 ## FlipOptions
 
@@ -603,10 +603,10 @@ Enumerates video flip options.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| HORIZONTAL   | Horizontal flip.|
-| VERTICAL | Vertical flip.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| HORIZONTAL | 0 | Horizontal flip.|
+| VERTICAL | 1 | Vertical flip.|
 
 ## StreamRole
 
@@ -614,10 +614,10 @@ Enumerates stream transmission modes.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| SOURCE  | TX stream.|
-| SINK  | RX stream.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| SOURCE  | 0 | TX stream.|
+| SINK  | 1 | RX stream.|
 
 ## VideoPixelFormat
 
@@ -625,11 +625,11 @@ Enumerates video pixel formats.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| UNKNOWN   | Unknown pixel format.|
-| NV12  | NV12, YUV420 semi-planar format.|
-| NV21  | NV21, YUV420 semi-planar format.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| UNKNOWN   | -1 | Unknown pixel format.|
+| NV12  | 0 | NV12, YUV420 semi-planar format.|
+| NV21  | 1 | NV21, YUV420 semi-planar format.|
 
 ## ConnectOptions
 

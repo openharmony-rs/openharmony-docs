@@ -123,7 +123,7 @@ Defines the frequency range of IR signals.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-| Name                              | Type| Mandatory  | Description |
-| -------------------------------- | ---- | ------ | ------ |
-| max                       | number | Yes| Maximum frequency, in Hz.|
-| min                          | number | Yes | Minimum frequency, in Hz.|
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| max    | number  | No   | No| Maximum frequency, in Hz.|
+| min    | number  | No   | No| Minimum frequency, in Hz.|

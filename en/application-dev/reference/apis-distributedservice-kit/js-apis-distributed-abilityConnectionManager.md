@@ -238,7 +238,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
-Sets up a UIAbility connection after a collaboration session is created and the session ID is obtained.
+Sets up a UIAbility connection after a collaboration session is created and the session ID is obtained. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -438,7 +438,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-Enables listening for **connect** events.
+Enables listening for **connect** events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 

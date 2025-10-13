@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-## Introduction
+## Overview
 
 The Network Connection Management module provides basic network management capabilities, including management of Wi-Fi/cellular/Ethernet connection priorities, network quality evaluation, subscription to network connection status changes, query of network connection information, and DNS resolution.
 
@@ -382,3 +382,4 @@ This permission is of the **normal** level. Before applying for the permission, 
       console.info("Succeeded to get data: " + JSON.stringify(data));
     });
     ```
+

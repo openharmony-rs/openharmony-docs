@@ -293,7 +293,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     
     ```
 
-## Is certificate verification configured?
+## Configuring Certificate Verification
 
 Certificate-related configurations are required for using the HTTPS protocol. The applications that provide services for Internet users only need to trust the system's prebuilt CA certificates. Currently, the HTTP module trusts the CA certificates preset in the system by default. No special setting is required. If an application needs to trust only the certificates specified by developers, or skip certificate verification, you can configure certificate pinning.
 

@@ -541,12 +541,12 @@ Defines the pagination structure for firewall rules.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name      | Type                                       | Mandatory| Description         |
-|------------|-------------------------------------------- |------|---------------|
-| page       | number                                      | Yes  | Current page number. The value range is [1,1000].   |
-| pageSize   | number                                      | Yes  | Page size. The value range is [1,50].     |
-| totalPage  | number                                      | Yes  | Total number of pages. The value range is [1,1000].     |
-| data       | Array\<[NetFirewallRule](#netfirewallrule)> | Yes  | Page data.   |
+| Name      | Type                                       | Read-Only|Optional| Description         |
+|------------|-------------------------------------------- |------|----|-----------|
+| page       | number                                      | No |No|Current page number. The value range is [1,1000].   |
+| pageSize   | number                                      | No |No|Page size. The value range is [1,50].     |
+| totalPage  | number                                      | No  |No|Total number of pages. The value range is [1,1000].     |
+| data       | Array\<[NetFirewallRule](#netfirewallrule)> | No  |No|Page data.   |
 
 ## NetFirewallPolicy
 
