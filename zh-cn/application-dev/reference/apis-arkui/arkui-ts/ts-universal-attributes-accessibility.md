@@ -48,6 +48,8 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 通过accessibilityPreferred启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
 
+从API version 22开始，通过stateController和actionController参数，可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。
+
 **卡片能力：** 从API version 14开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
@@ -59,7 +61,7 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 | 参数名               | 类型                                                    | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isGroup              | boolean                                                 | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；设置为false表示不启用无障碍分组。<br/>默认值：false |
-| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 是   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>默认值：false            |
+| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 是   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>stateController和actionController可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。|
 
 **返回值：**
 
@@ -845,3 +847,52 @@ struct Index {
 ```
 
 ![accessibilityFocusDrawLevel](figures/accessibilityFocusDrawLevel.png)
+
+### 示例6（设置无障碍聚合功能下的子组件状态和操作接管功能）
+
+该示例主要演示使用accessibilityGroup的可选参数stateControllerRoleType或者stateControllerId来选择一个特定子组件接管其无障碍状态信息，可选参数actionControllerRoleType或者actionControllerId来选择一个特定子组件接管其无障碍控制操作。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isSelected: boolean = false;
+
+  build() {
+    Column({ space: 20 }) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+        Text("是否开启功能")
+        Toggle({ type: ToggleType.Switch, isOn: false })
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+      .accessibilityGroup(true, {stateControllerRoleType : AccessibilityRoleType.TOGGLER,
+                                 actionControllerRoleType : AccessibilityRoleType.TOGGLER})
+      .width('80%')
+      .border({ color : Color.Black, width : 2 })
+
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+        Text("是否开启功能")
+        Toggle({ type: ToggleType.Switch, isOn: false })
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+          .id("TestToggle")
+      }
+      .accessibilityGroup(true, {stateControllerId : "TestToggle",
+                                 actionControllerId : "TestToggle"})
+      .width('80%')
+      .border({ color : Color.Black, width : 2 })
+
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
