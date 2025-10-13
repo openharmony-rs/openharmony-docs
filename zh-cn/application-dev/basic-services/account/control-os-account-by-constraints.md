@@ -21,9 +21,19 @@
 
    <!-- @[import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
+``` TypeScript
+import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+```
+
+
 3. 获取系统账号的单实例对象。
 
    <!-- @[obtain_account_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
+
+``` TypeScript
+let accountManager = osAccount.getAccountManager();
+```
+
 
 ## 设置指定系统账号的约束列表
 
@@ -35,9 +45,28 @@
 
    <!-- @[constraint_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
 
+``` TypeScript
+    let localId: number = 100;
+    let constraint: string[] = [ 'constraint.wifi.set' ];
+```
+
+
 2. 调用[setOsAccountConstraints](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountconstraints)接口，使能系统账号100的约束。
 
    <!-- @[system_account_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
+
+``` TypeScript
+    try {
+      accountManager.setOsAccountConstraints(localId, constraint, true);
+      console.info('setOsAccountConstraints successfully');
+	// ···
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setOsAccountConstraints failed, error: code is ${err.code}, message is ${err.message}`);
+	// ···
+    }
+```
+
 
 ## 判断目标系统账号的指定约束是否使能
 
