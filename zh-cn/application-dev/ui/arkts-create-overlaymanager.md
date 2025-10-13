@@ -276,7 +276,6 @@ struct OverlayExample {
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];
-  controller: TextInputController = new TextInputController();
 
   aboutToAppear(): void {
     let uiContext = this.getUIContext();
@@ -308,22 +307,46 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, FontWeight, ComponentContent, Position,
-  Builder, wrapBuilder, AlertDialogParamWithConfirm, HitTestMode, Stack, Color, DialogAlignment } from '@ohos.arkui.component';
-import { State, StorageLink } from '@ohos.arkui.stateManagement';
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  FontWeight,
+  ComponentContent,
+  Position,
+  Builder,
+  wrapBuilder,
+  AlertDialogParamWithConfirm,
+  HitTestMode,
+  Stack,
+  Color,
+  DialogAlignment
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 import { UIContext, OverlayManager } from '@ohos.arkui.UIContext';
 
 class Params {
   context: UIContext;
-  constructor(context: UIContext) {
+  offset: Position;
+
+  constructor(context: UIContext, offset: Position) {
     this.context = context;
+    this.offset = offset;
   }
 }
+
 @Builder
 function builderOverlay(params: Params) {
   Column() {
-    Stack(){
-    }.width(50).height(50).backgroundColor(Color.Yellow).position({x:0, y: 100} as Position).borderRadius(50)
+    Stack() {
+    }
+    .width(50)
+    .height(50)
+    .backgroundColor('#FFF000')
+    .position(params.offset)
+    .borderRadius(50)
     .onClick(() => {
       params.context.showAlertDialog(
         {
@@ -334,9 +357,11 @@ function builderOverlay(params: Params) {
           gridCount: 3,
           confirm: {
             value: 'Button',
-            action: () => {}
+            action: () => {
+            }
           },
-          cancel: () => {}
+          cancel: () => {
+          }
         } as AlertDialogParamWithConfirm
       )
     })
@@ -349,13 +374,13 @@ struct OverlayExample {
   @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
-  @StorageLink('overlayContent') overlayContent:ComponentContent<Params>[] = [];
+  private overlayContent: ComponentContent<Params>[] = [];
 
   aboutToAppear(): void {
     let uiContext = this.getUIContext();
     let componentContent = new ComponentContent<Params>(
       this.uiContext, wrapBuilder(builderOverlay),
-      new Params(uiContext)
+      new Params(uiContext, { x: 0, y: 100 } as Position)
     );
     this.overlayNode.addComponentContent(componentContent, 0);
     this.overlayContent.push(componentContent);
@@ -376,6 +401,7 @@ struct OverlayExample {
 }
 
 ```
+
 ![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
 
 从API version 18开始，可以通过调用UIContext中getOverlayManager方法获取OverlayManager对象，并利用该对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/js-apis-arkui-UIContext.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
