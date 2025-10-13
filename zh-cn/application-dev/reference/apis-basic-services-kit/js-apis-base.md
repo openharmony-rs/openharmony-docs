@@ -3,17 +3,17 @@
 本模块定义了OpenHarmony ArkTS接口的公共回调类型，包括接口调用时出现的公共回调和公共错误信息。
 
 > **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从 API version 6 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 从API version 12开始，本模块接口支持在ArkTS卡片中使用。
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块ArkTS-Dyn接口从API version 12开始支持在ArkTS卡片中使用。
 
 ## 导入模块
 
 ```
-import base from '@ohos.base';
+import { AsyncCallback, BusinessError, Callback, ErrorCallback, RecordData } from '@kit.BasicServicesKit';
 ```
 
 ## Callback
@@ -96,7 +96,7 @@ AsyncCallback<T, E = void> {
 
 | 名称 | 类型                                                          | 只读 | 可选 | 说明                         |
 | ---- | ------------------------------------------------------------ | ---- | ---- | ---------------------------- |
-| err  | ArkTS-Dyn: [BusinessError](#businesserror) </br> ArkTS-Sta:    [BusinessError](#businesserror) \| null | 否   | 否   | 接口调用失败的公共错误信息。 |
+| err  | ArkTS-Dyn: [BusinessError\<E>](#businesserror) </br> ArkTS-Sta:    [BusinessError\<E>](#businesserror) \| null | 否   | 否   | 接口调用失败的公共错误信息。 |
 | data | ArkTS-Dyn: T </br> ArkTS-Sta: T \| undefined                                                            | 否   | 否   | 接口调用时的公共回调信息。   |
 
 ## BusinessError  
@@ -144,7 +144,7 @@ BusinessError的构造函数。
 
 **系统能力：** SystemCapability.Base  
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 ### constructor<sup>20+</sup>    
 
@@ -154,7 +154,7 @@ BusinessError的构造函数。
 
 **系统能力：** SystemCapability.Base  
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -176,7 +176,7 @@ BusinessError的构造函数。
 
 **系统能力：** SystemCapability.Base      
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta   
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。   
 
 **参数：**
 
@@ -199,7 +199,7 @@ BusinessError的构造函数。
 
 **系统能力：** SystemCapability.Base    
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -212,7 +212,7 @@ BusinessError的构造函数。
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 interface ErrorDataType {
     url: string;
@@ -227,9 +227,10 @@ const businessError = new BusinessError<ErrorDataType>(201, 'no permission', {
 
 RecordData = undefined \| null \| Object \| Record\<string, [RecordData](#RecordData)> \| Array\<[RecordData](#RecordData)>
 
+RecordData 是一个联合类型，用于层级和每层数量都不确定的对象结构。
 
 **系统能力：** SystemCapability.Base
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 20
