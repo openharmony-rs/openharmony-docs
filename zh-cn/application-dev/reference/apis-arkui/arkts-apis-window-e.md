@@ -237,15 +237,15 @@
 
 ## OcclusionState<sup>22+</sup>
 
-可见性状态枚举。
+窗口可见性状态枚举。
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
 | 名称   | 值 | 说明                   |
 | ------ | ---- | --------------------- |
-| NO_OCCLUSION | 0 | 窗口完全可见（没有任何部分被其他窗口遮挡） |
-| PARTIAL_OCCLUSION | 1 | 窗口部分可见（部分被其他窗口遮挡） |
-| FULL_OCCLUSION | 2 | 窗口完全不可见（完全被其他窗口遮挡） |
+| NO_OCCLUSION | 0 | 窗口完全可见（没有任何部分被其他窗口遮挡）。|
+| PARTIAL_OCCLUSION | 1 | 窗口部分可见（部分被其他窗口遮挡）。|
+| FULL_OCCLUSION | 2 | 窗口完全不可见（完全被其他窗口遮挡）。|
 
 ## WindowStageEventType<sup>9+</sup>
 
