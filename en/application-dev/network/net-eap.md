@@ -7,7 +7,7 @@
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
 
-## Introduction
+## Overview
 
 Extensible authentication is a mechanism provided by the **eap** module to enable third-party clients to participate in custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
 

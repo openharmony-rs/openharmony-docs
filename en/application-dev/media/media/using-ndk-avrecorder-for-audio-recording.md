@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the AVRecorder to develop the audio or video recording service. The AVRecorder supports audio capture, audio encoding, video encoding, audio encapsulation, and video encapsulation. It is applicable to simple audio/video recording scenarios and can be used to generate local media files directly.
 
@@ -36,7 +36,7 @@ Before your development, configure the following permissions for your applicatio
 > To record only audio, you do not need to set video-related parameters such as **videoFrameWidth** and **videoFrameHeight**. Similarly, to record only videos, you do not need to set audio-related parameters such as **audioBitrate** and **audioChannels**.
 
 
-You can use C/C++ APIs related to video recording by including the header files [avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md), [avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/native__averrors_8h.md).
+You can use C/C++ APIs related to video recording by including the header files [avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md), [avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
 
 Read [AVRecorder](../../reference/apis-media-kit/capi-avrecorder.md) for the API reference.
 
@@ -46,7 +46,7 @@ Link the dynamic libraries in the CMake script.
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-To use [OH_AVFormat](../../reference/apis-avcodec-kit/_core.md#oh_avformat) APIs, include the following header file:
+To use [OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md) APIs, include the following header file:
 ```
 #include <multimedia/player_framework/native_avformat.h>
 ```

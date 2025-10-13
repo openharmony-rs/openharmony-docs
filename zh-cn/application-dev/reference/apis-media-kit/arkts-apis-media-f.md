@@ -20,7 +20,7 @@ import { media } from '@kit.MediaKit';
 
 createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
 
-异步方式创建音视频播放实例，通过注册回调函数获取返回值。
+创建音视频播放实例。使用callback异步回调。
 
 > **说明：**
 >

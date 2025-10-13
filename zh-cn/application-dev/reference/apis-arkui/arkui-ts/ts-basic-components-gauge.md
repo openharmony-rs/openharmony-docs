@@ -272,11 +272,11 @@ GaugeShadowOptions继承自[MultiShadowOptions](ts-information-display-common.md
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型    | 必填 | 说明              |
-| ------ | ------ | ----| ---------------- |
-| value | number | 是 | 当前数据值。 |
-| min | number | 是 | 当前数据段最小值。 |
-| max | number | 是 | 当前数据段最大值。 |
+| 名称          | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------- | ---- | -------- | -------- |
+| value | number | 否 | 否 | 当前数据值。 |
+| min | number | 否 | 否 | 当前数据段最小值。 |
+| max | number | 否 | 否 | 当前数据段最大值。 |
 
 
 ## 示例

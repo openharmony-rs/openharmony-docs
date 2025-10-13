@@ -44,7 +44,7 @@ import {
 import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
 let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($('app.media.gif'), this.options)
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options)
 try {
     // 可以提前手动加载动图资源到内存中。
     let result: DrawableDescriptorLoadedResult = this.drawable.loadSync()
@@ -526,7 +526,7 @@ struct Index {
 
 ```ts
 import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
-import image from '@kit.ImageKit';
+import { image } from '@kit.ImageKit';
 
 @Entry
 @Component
@@ -542,9 +542,13 @@ struct Example {
   @State animated?: DrawableDescriptor = undefined;
 
   aboutToAppear() {
+    // $r('app.media.png1')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png1')));
+     // $r('app.media.png2')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png2')));
+     // $r('app.media.png3')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png3')));
+     // $r('app.media.png4')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png4')));
     this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
   }
@@ -674,6 +678,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } fro
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -707,6 +712,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } fro
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -760,6 +766,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -796,6 +803,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -832,7 +840,8 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
-  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($('app.media.gif'), this.options);
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
     Column() {
@@ -868,6 +877,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -910,6 +920,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   statusToString(status: AnimationStatus): string {

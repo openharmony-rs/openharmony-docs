@@ -101,6 +101,45 @@ panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngin
   console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
 });
 ```
+
+### setShadow<sup>22+</sup>
+
+setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
+
+设置输入法窗口阴影效果。
+
+> **说明:**
+>
+> 不支持[PanelType](./js-apis-inputmethodengine.md#paneltype10)为SOFT_KEYBOARD类型且[PanelFlag](./js-apis-inputmethodengine.md#panelflag10)状态为FLG_FIXED的面板。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                                                         |
+| ------- | ------ | ---- | ------------------------------------------------------------ |
+| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。 |
+| color   | string | 是   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#000000`或`#FF000000`。 |
+| offsetX | number | 是   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。    |
+| offsetY | number | 是   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 202 | not system application. |
+| 12800013  | window manager service error.      |
+| 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
+
+**示例：**
+
+```ts
+panel.setShadow(20, '#000000', 20, 20);
+```
 ## FluidLightMode<sup>20+</sup>
 
 枚举，输入法流光模式。

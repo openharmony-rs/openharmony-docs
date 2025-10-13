@@ -117,7 +117,7 @@ import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit
 let nfcTagElementName: bundleManager.ElementName;
 let foregroundRegister: boolean;
 
-async function readerModeCb(error : BusinessError, tagInfo : tag.TagInfo) {
+async function readerModeCb(error: BusinessError, tagInfo: tag.TagInfo) {
   if (!error) {
     // 获取特定技术类型的NFC标签对象
     if (tagInfo == null) {
@@ -135,7 +135,7 @@ async function readerModeCb(error : BusinessError, tagInfo : tag.TagInfo) {
 
     // 标签里面可能支持多种技术类型，选择特定的技术类型接口，完成标签数据的读取或写入
     // 下面示例代码，使用IsoDep完成标签数据的读取或写入
-    let isoDep : tag.IsoDepTag | null = null;
+    let isoDep: tag.IsoDepTag | null = null;
     for (let i = 0; i < tagInfo.technology.length; i++) {
       if (tagInfo.technology[i] == tag.ISO_DEP) {
         try {
@@ -154,10 +154,10 @@ async function readerModeCb(error : BusinessError, tagInfo : tag.TagInfo) {
 
     // 使用IsoDep技术连接到NFC标签
     try {
-        isoDep.connect(); 
+      isoDep.connect();
     } catch (error) {
-        hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.connect() error = %{public}s', JSON.stringify(error));
-        return;
+      hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.connect() error = %{public}s', JSON.stringify(error));
+      return;
     }
     if (!isoDep.isConnected()) {
       hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.isConnected() false.');
@@ -167,9 +167,9 @@ async function readerModeCb(error : BusinessError, tagInfo : tag.TagInfo) {
     // 发送指令到已连接的标签，获取标签的响应数据
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // 修改为正确的访问标签的指令数据
     try {
-      isoDep.transmit(cmdData).then((response : number[]) => {
+      isoDep.transmit(cmdData).then((response: number[]) => {
         hilog.info(0x0000, 'testTag', 'readerModeCb isoDep.transmit() response = %{public}s.', JSON.stringify(response));
-      }).catch((err : BusinessError)=> {
+      }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.transmit() err = %{public}s.', JSON.stringify(err));
         return;
       });
@@ -205,7 +205,7 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     if (nfcTagElementName != undefined) {
       // 根据业务需要，选择需要读取标签的通信技术
-      let techList : number[] = [tag.NFC_A, tag.NFC_B, tag.NFC_F, tag.NFC_V];
+      let techList: number[] = [tag.NFC_A, tag.NFC_B, tag.NFC_F, tag.NFC_V];
       try {
         tag.on('readerMode', nfcTagElementName, techList, readerModeCb);
         foregroundRegister = true;
@@ -294,7 +294,7 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
 
     // 获取特定技术类型的NFC标签对象
-    let tagInfo : tag.TagInfo;
+    let tagInfo: tag.TagInfo;
     try {
       tagInfo = tag.getTagInfo(want);
     } catch (error) {
@@ -317,7 +317,7 @@ export default class EntryAbility extends UIAbility {
 
     // 标签里面可能支持多种技术类型，选择特定的技术类型接口，完成标签数据的读取或写入
     // 下面示例代码，使用IsoDep完成标签数据的读取或写入
-    let isoDep : tag.IsoDepTag | null = null;
+    let isoDep: tag.IsoDepTag | null = null;
     for (let i = 0; i < tagInfo.technology.length; i++) {
       if (tagInfo.technology[i] == tag.ISO_DEP) {
         try {
@@ -336,10 +336,10 @@ export default class EntryAbility extends UIAbility {
 
     // 使用IsoDep技术连接到NFC标签
     try {
-        isoDep.connect(); 
+      isoDep.connect();
     } catch (error) {
-        hilog.error(0x0000, 'testTag', 'isoDep.connect() error = %{public}s', JSON.stringify(error));
-        return;
+      hilog.error(0x0000, 'testTag', 'isoDep.connect() error = %{public}s', JSON.stringify(error));
+      return;
     }
     if (!isoDep.isConnected()) {
       hilog.error(0x0000, 'testTag', 'isoDep.isConnected() false.');
@@ -349,9 +349,9 @@ export default class EntryAbility extends UIAbility {
     // 发送指令到已连接的标签，获取标签的响应数据
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // 修改为正确的访问标签的指令数据
     try {
-      isoDep.transmit(cmdData).then((response : number[]) => {
+      isoDep.transmit(cmdData).then((response: number[]) => {
         hilog.info(0x0000, 'testTag', 'isoDep.transmit() response = %{public}s.', JSON.stringify(response));
-      }).catch((err : BusinessError)=> {
+      }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', 'isoDep.transmit() err = %{public}s.', JSON.stringify(err));
         return;
       });

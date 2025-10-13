@@ -253,7 +253,7 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.log("Succeeded to get data" + JSON.stringify(data));
+  console.info("Succeeded to get data" + JSON.stringify(data));
 });
 ```
 
@@ -496,7 +496,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.setAppNet(netHandle).then(() => {
-    console.log("success");
+    console.info("success");
   }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
   })
@@ -972,7 +972,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1008,7 +1008,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1081,7 +1081,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1117,7 +1117,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1238,7 +1238,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1333,7 +1333,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1612,7 +1612,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.removeCustomDnsRule("xxxx").then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
@@ -1695,7 +1695,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.clearCustomDnsRules().then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
@@ -2418,9 +2418,9 @@ netCon.unregister((error: BusinessError) => {
 
 ### 属性
 
-| 名称    | 类型   | 必填 | 说明                      |
-| ------ | ------ | --- |------------------------- |
-| netId  | number | 是  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netId  | number | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### bindSocket<sup>9+</sup>
 
@@ -2485,7 +2485,7 @@ interface Data {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2576,7 +2576,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     }
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2858,10 +2858,10 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称                     | 类型                                | 必填  | 说明                                                         |
-| ----------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| netCapabilities         | [NetCapabilities](#netcapabilities) |  是  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
+| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
 **示例：**
 
@@ -2897,10 +2897,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称                    | 类型                                 | 必填  | 说明                                                         |
-| ----------------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| netHandle               | [NetHandle](#nethandle)              |  是  | 数据网络句柄。                                                |
-| netCap                  |  [NetCapabilities](#netcapabilities) |  是  |  存储数据网络的传输能力和承载类型。                            |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle               | [NetHandle](#nethandle)              |  否 | 否  | 数据网络句柄。                                                |
+| netCap                  |  [NetCapabilities](#netcapabilities) |  否 | 否  |  存储数据网络的传输能力和承载类型。                            |
 
 ## NetCapabilities
 
@@ -2908,12 +2908,12 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称                  | 类型                                | 必填 | 说明                     |
-| --------------------- | ---------------------------------- | --- | ------------------------ |
-| linkUpBandwidthKbps   | number                             |  否 |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| linkDownBandwidthKbps | number                             |  否 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| networkCap            | Array\<[NetCap](#netcap)>           |  否 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |
-| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  是 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| linkUpBandwidthKbps   | number                             |  否 | 是  |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| linkDownBandwidthKbps | number                             |  否 | 是 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| networkCap            | Array\<[NetCap](#netcap)>           |  否 | 是 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |
+| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  否 | 否 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 
 ## NetConnectionPropertyInfo<sup>11+</sup>
 
@@ -2923,10 +2923,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 ### 属性
 
-| 名称                 |                          类型                        | 必填 |         说明           |
-| -------------------- | --------------------------------------------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 是   |数据网络句柄(netHandle)。|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 是   |网络连接属性。           |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |数据网络句柄(netHandle)。|
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接属性。           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -2936,10 +2936,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 ### 属性
 
-| 名称                 | 类型                                  | 必填 |            说明            |
-| -------------------- | ------------------------------------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 是   |数据网络句柄(netHandle)。   |
-| blocked              | boolean                               | 是   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)               | 否 | 否   |数据网络句柄(netHandle)。   |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
 
 ## ConnectionProperties
 
@@ -2947,14 +2947,14 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称          |                类型                 | 必填 |               说明                     |
-| ------------- | ----------------------------------- | ----|--------------------------------------- |
-| interfaceName | string                              | 是 |网卡名称。                                |
-| domains       | string                              | 是 |域名。                                    |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 是 |链路信息。                                |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 是 |路由信息。                                |
-| dnses         | Array\<[NetAddress](#netaddress)>   | 是 |网络地址，参考[NetAddress](#netaddress)。 |
-| mtu           | number                              | 是 |最大传输单元。                            |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| interfaceName | string                              | 否 | 否 |网卡名称。                                |
+| domains       | string                              | 否 | 否 |域名。                                    |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 |链路信息。                                |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 |路由信息。                                |
+| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 |网络地址，参考[NetAddress](#netaddress)。 |
+| mtu           | number                              | 否 | 否 |最大传输单元。                            |
 
 ## RouteInfo
 
@@ -2962,14 +2962,14 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称           | 类型                        | 必填 |     说明      |
-| -------------- | --------------------------- | --- |-------------- |
-| interface      | string                      | 是 |网卡名称。       |
-| destination    | [LinkAddress](#linkaddress) | 是 |目的地址。       |
-| gateway        | [NetAddress](#netaddress)   | 是 |网关地址。       |
-| hasGateway     | boolean                     | 是 |true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 是 |true：默认路由；false：非默认路由。 |
-| isExcludedRoute<sup>20+</sup>| boolean                     | 否 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| interface      | string                      | 否 | 否 |网卡名称。       |
+| destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
+| gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
+| hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
+| isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress
 
@@ -2977,10 +2977,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称         |           类型            | 必填 |        说明         |
-| ------------ | ------------------------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | 是  | 链路地址。           |
-| prefixLength | number                    | 是  |链路地址前缀的长度。  |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |
+| prefixLength | number                    | 否 | 否  |链路地址前缀的长度。  |
 
 ## NetAddress
 
@@ -2990,11 +2990,11 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-|  名称   | 类型   |必填|            说明              |
-| ------- | ------ | -- |---------------------------- |
-| address | string | 是 |地址。                       |
-| family  | number | 否 |IPv4 = 1，IPv6 = 2，默认IPv4。|
-| port    | number | 否 |端口，取值范围\[0, 65535]，默认值为0。  |
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| address | string | 否 | 否 |地址。                       |
+| family  | number | 否 | 是 |IPv4 = 1，IPv6 = 2，默认IPv4。|
+| port    | number | 否 | 是 |端口，取值范围\[0, 65535]，默认值为0。  |
 
 ## HttpRequest
 

@@ -58,7 +58,7 @@
 | [OH_AI_API int OH_AI_DeviceInfoGetFrequency(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetfrequency) | 获取NPU的频率类型，仅NPU设备可用。 |
 | [OH_AI_API NNRTDeviceDesc *OH_AI_GetAllNNRTDeviceDescs(size_t *num)](#oh_ai_getallnnrtdevicedescs) | 获取系统中所有NNRt硬件设备的描述信息。 |
 | [OH_AI_API NNRTDeviceDesc *OH_AI_GetElementOfNNRTDeviceDescs(NNRTDeviceDesc *descs, size_t index)](#oh_ai_getelementofnnrtdevicedescs) | 获取NNRt设备描述信息数组中的元素指针。 |
-| [OH_AI_API void OH_AI_DestroyAllNNRTDeviceDescs(NNRTDeviceDesc **desc)](#oh_ai_destroyallnnrtdevicedescs) | 销毁从[OH_AI_GetAllNNRTDeviceDescs](capi-context-h.md#oh_ai_getallnnrtdevicedescs)获取的NNRt描写信息实例数组。 |
+| [OH_AI_API void OH_AI_DestroyAllNNRTDeviceDescs(NNRTDeviceDesc **desc)](#oh_ai_destroyallnnrtdevicedescs) | 销毁从[OH_AI_GetAllNNRTDeviceDescs](capi-context-h.md#oh_ai_getallnnrtdevicedescs)获取的NNRt描述信息实例数组。 |
 | [OH_AI_API size_t OH_AI_GetDeviceIdFromNNRTDeviceDesc(const NNRTDeviceDesc *desc)](#oh_ai_getdeviceidfromnnrtdevicedesc) | 从特定的NNRt设备描述信息实例获取NNRt设备ID。注意，此ID只对NNRt有效。 |
 | [OH_AI_API const char *OH_AI_GetNameFromNNRTDeviceDesc(const NNRTDeviceDesc *desc)](#oh_ai_getnamefromnnrtdevicedesc) | 从特定的NNRt设备描述信息实例获取NNRt设备名称。 |
 | [OH_AI_API OH_AI_NNRTDeviceType OH_AI_GetTypeFromNNRTDeviceDesc(const NNRTDeviceDesc *desc)](#oh_ai_gettypefromnnrtdevicedesc) | 从特定的NNRt设备描述信息实例获取NNRt设备类型。 |
@@ -621,7 +621,7 @@ OH_AI_API void OH_AI_DestroyAllNNRTDeviceDescs(NNRTDeviceDesc **desc)
 
 **描述**
 
-销毁从[OH_AI_GetAllNNRTDeviceDescs](capi-context-h.md#oh_ai_getallnnrtdevicedescs)获取的NNRt描写信息实例数组。
+销毁从[OH_AI_GetAllNNRTDeviceDescs](capi-context-h.md#oh_ai_getallnnrtdevicedescs)获取的NNRt描述信息实例数组。
 
 **起始版本：** 10
 

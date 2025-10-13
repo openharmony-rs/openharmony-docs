@@ -9,19 +9,13 @@
 
 ## 简介
 
-从API version 18开始，新增应用跨设备协同进行数据传输的能力。应用跨设备连接管理可以通过分布式操作系统，将用户拥有的多个设备整合为一个整体，实现设备与设备之间的能力互助，为用户提供比单设备更加高效的沉浸式体验。<!--Del-->例如通过手表相机应用拉起手机的相机功能并实现实时画面预览和遥控拍照。<!--DelEnd-->
+自API version 18起，系统新增支持应用跨设备协同连接与通信能力（含数据传输）。该特性通过分布式组件管理框架实现多端应用协作（即多个终端设备上的应用协同完成同一业务场景），成为分布式能力体系的核心功能之一。典型应用场景如智能手表端的拍照控制应用，可远程调用手机端相机功能并实现跨设备的实时双向数据交互。
 
 
 ### 能力范围
 
-- 跨设备拉起应用：可以通过本设备应用，拉起其他组网设备的同应用，并进行协同作业。
-- 数据交互：实现跨设备数据传输<!--Del-->，包括文本信息、字节流、图片、传输流（三方应用仅支持文本信息交互能力）<!--DelEnd-->。
-
-
-### 亮点特征
-
-通过多样化的跨设备传输流特性，实现本设备相机拉起对端设备相机功能。为用户提供<!--Del-->实时预览对端设备摄像头的画面、<!--DelEnd-->文本信息交互<!--Del-->、接受回传照片、遥控拍照等<!--DelEnd-->能力。
-
+- 跨设备拉起应用：支持在分布式组网环境下拉起关联应用，实现多端业务协同（需应用适配开发）
+- 跨设备数据交互：实现跨设备数据传输，跨设备数据交互能力随不同应用类型存在差异。具体为系统应用可传输文本、字节流、图片及传输流，三方应用仅支持文本信息。
 
 ### 基本概念
 
@@ -33,11 +27,7 @@
 
 - **UIAbility**
 
-  描述应用程序的界面交互能力，负责管理应用界面的生命周期、用户交互以及界面渲染等任务。
-
-- **Extension**
-
-  用于扩展应用的功能或实现跨设备协同。它允许应用在后台运行某些任务，或者将部分功能迁移到其他设备上执行，从而实现分布式能力。
+  [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview)描述应用程序的界面交互能力，负责管理应用界面的生命周期、用户交互以及界面渲染等任务。
 
 <!--Del-->
 - **字节流**
@@ -50,7 +40,7 @@
 <!--DelEnd-->
 ### 实现原理
 
-应用跨设备连接管理生长在分布式组件管理框架之上，在分布式组件管理框架上进行了JS对象型的封装，能通过分布式组件管理框架服务建立协同关系并进行应用间的连接，数据的交互能力由系统支持。
+应用跨设备连接管理依托分布式组件管理框架，在分布式组件管理框架上进行了JS对象型的封装，能通过分布式组件管理框架服务建立协同关系并进行应用间的连接，数据的交互能力由系统支持。
 
 **图1** 应用跨设备连接运行机制
 
@@ -59,22 +49,22 @@
 
 ### 约束与限制
 
-- 设备间需要登录相同的华为账号。
+- 仅限于API version 18及以上版本设备，设备间需要登录相同的华为账号。
 
 - 不同设备间只有相同bundleName的UIAbility应用才能进行协同。
 <!--Del-->
 - 字节流、图片以及传输流的能力仅支持系统应用。
 <!--DelEnd-->
-- 业务协同完毕后需及时结束协同状态。未申请长时任务的应用，在锁屏或退至后台5秒以上，会被结束掉协同生命周期。
+- 业务协同完毕后需及时结束协同状态。为了系统的安全和资源合理利用考虑，未申请长时任务的应用，在锁屏或退至后台5秒以上，会被结束掉协同生命周期。
 
-- 分布式组件管理框架在协同过程中不会对传输内容进行审查。涉及隐私敏感数据时，建议业务通过数据加密、弹框提醒等方式加强信息安全。
+- 分布式组件管理框架在协同过程中不会对传输内容进行审查。涉及隐私敏感数据时，建议业务通过弹框提醒等方式提醒用户。
 
 
 ## 环境准备
 
 ### 环境要求
 
-可登录华为账号的设备A和设备B，设备间需要组网成功（双端登录同一个华为账号，并使用蓝牙连接）。
+可登录华为账号的设备A和设备B，设备间需要组网成功（设备组网通过调用[Device Manager](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicemanager-guidelines)的接口实现）。
 
 
 ### 搭建环境
@@ -99,8 +89,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 ## 开发指导
 
-应用跨设备连接管理可以通过分布式操作系统，将用户拥有的多个设备作为一个整体，设备与设备之间取长补短、相互帮助，为用户提供比单设备更加高效、沉浸的体验。
-
+应用跨设备连接管理可以通过分布式组件管理框架，拉起对端设备并发送消息。具体案例提供如下。
 
 ### 接口说明
 
@@ -182,9 +171,12 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
       return;
     }
   }
+
+  @StorageLink('sessionId') sessionId: number = -1;
+
   // 定义设备B的协同信息
   const peerInfo: abilityConnectionManager.PeerInfo = {
-    deviceId: getRemoteDeviceId(),
+    deviceId: getRemoteDeviceId()!,
     bundleName: 'com.example.remotephotodemo',
     moduleName: 'entry',
     abilityName: 'EntryAbility',
@@ -349,7 +341,6 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import CameraService from '../model/CameraService';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
   import { fileIo as fs } from '@kit.CoreFileKit';
@@ -391,7 +382,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'startStream');
-  abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+  abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
     let surfaceParam: abilityConnectionManager.SurfaceParam = {
       width: 640,
       height: 480,
@@ -400,7 +391,6 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
     let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
     hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
     AppStorage.setOrCreate<string>('surfaceId', surfaceId);
-    await CameraService.initCamera(surfaceId, 0);
     abilityConnectionManager.startStream(streamId);
   })
   ```

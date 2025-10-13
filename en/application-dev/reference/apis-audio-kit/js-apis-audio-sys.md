@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides basic audio management capabilities, including audio volume and audio device management, and audio data collection and rendering.
 
@@ -447,6 +447,33 @@ Enumerates the volume adjustment types.
 | :--------------------- | :----- | :-------------------------------------------- |
 | VOLUME_UP              | 0      | Adjusts the volume upwards.|
 | VOLUME_DOWN            | 1      | Adjusts the volume downwards.|
+
+## DeviceType
+
+Enumerates the device types.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+| Name                        | Value    | Description                             |
+|----------------------------| ------ |---------------------------------|
+| BLUETOOTH_SPP<sup>22+</sup> | 33 | Bluetooth device connected using the Serial Port Profile (SPP).|
+| NEARLINK_PORT<sup>22+</sup> | 34 | NearLink device connected using the PORT.                    |
+
+## AudioCapturerOptions<sup>8+</sup>
+
+Describes audio capturer configurations.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+| Name                               | Type                                                                  | Read-Only| Optional| Description                                                                                                                                                                                                       |
+| ----------------------------------- |----------------------------------------------------------------------| ---- |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | No| Yes| Preferred input device for this audio capturer.<br>The device must be an input device, and the source type in **capturerInfo** must be [SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8). Otherwise, this parameter is ignored.<br>1. If the caller does not specify a preferred device, the system automatically selects a suitable input device.<br>2. When the caller specifies a preferred device for creating a voice recognition or transcription stream:<br>(1) If the preferred device is online, the audio capturer uses it. If the device disconnects during operation, the system automatically switches to another available capture device.<br>(2) If the preferred device is offline, the audio capturer automatically selects another capture device. If the preferred device goes online during operation, the system automatically switches to the preferred device.<br>3. You can call [getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11) to obtain the capture device in use.|
+
+                                                                                                  
 
 ## AudioManager
 

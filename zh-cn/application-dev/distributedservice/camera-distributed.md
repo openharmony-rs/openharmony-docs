@@ -85,9 +85,14 @@
   例如在UIAbility申请相关的访问权限，通过调用requestPermissionsFromUser()方法添加对应的权限类型。
   ```ts
   //EntryAbility.ets
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl, AbilityConstant, ConfigurationConstant, Permissions,
+    UIAbility, Want } from '@kit.AbilityKit';
+
   export default class EntryAbility extends UIAbility {
-    onCreate(want, launchParam) {
-      Logger.info('Sample_VideoRecorder', 'Ability onCreate,requestPermissionsFromUser');
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+      console.info('Sample_VideoRecorder', 'Ability onCreate,requestPermissionsFromUser');
       let permissionNames: Array<Permissions> = ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA',
         'ohos.permission.WRITE_MEDIA', 'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE', 'ohos.permission.DISTRIBUTED_DATASYNC'];
       abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context, permissionNames).then((data)=> {
@@ -97,6 +102,7 @@
           console.error("testTag", err.message);
         });
     }
+  }
   ```
 
 
@@ -113,7 +119,7 @@
   private cameraIndex: number = 0;
   private curVideoProfiles?: Array<camera.VideoProfile>;
 
-  function initCamera(): void {
+  initCamera(): void {
     console.info('init remote camera called');
     if (this.cameraManager) {
       console.info('cameraManager already exits');
@@ -153,6 +159,8 @@
 
   ```ts
   // create camera input
+  private cameraInput?: camera.CameraInput;
+
   async createCameraInput(): Promise<void> {
     console.info('createCameraInput called');
     if (this.cameras && this.cameras.length > 0) {
@@ -180,11 +188,16 @@
 
   ```ts
   private previewOutput?: camera.PreviewOutput;
+  private avProfile: media.AVRecorderProfile = {
+    fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+  }
   private avConfig: media.AVRecorderConfig = {
     videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
     profile: this.avProfile,
     url: 'fd://',
   }
+  private previewProfiles?: Array<camera.Profile>;
+  private surfaceId?: string;
 
   // create camera preview
   async createPreviewOutput(): Promise<void> {
@@ -214,11 +227,27 @@
   通过createPhotoOutput()方法创建拍照输出对象，通过createImageReceiver()方法创建ImageReceiver实例。
 
   ```ts
-  import { fileio } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit'
+  import { image } from '@kit.ImageKit';
 
+  export default class SaveCameraAsset {
+    private tag: string
+    constructor(tag: string) {
+      this.tag = tag;
+    }
+    public async createImageFd() {
+      //...
+      return 0;
+    }
+    public async closeVideoFile() {
+      //...
+    }
+  }
   private photoReceiver?: image.ImageReceiver;
   private photoOutput?: camera.PhotoOutput;
   private mSaveCameraAsset: SaveCameraAsset = new SaveCameraAsset('Sample_VideoRecorder');
+  private mFileAssetId?: number;
+  private fdPath?: string
 
   async getImageFileFd(): Promise<void> {
     console.info('getImageFileFd called');
@@ -252,7 +281,7 @@
       console.error('createPhotoOutput cameraManager is null')
     }
     if (!this.photoReceiver) {
-      this.photoReceiver = image.createImageReceiver(photoProfile.size.width, photoProfile.size.height, photoProfile.format, 8)
+      this.photoReceiver = image.createImageReceiver(photoProfile.size, image.ImageFormat.YCBCR_422_SP, 8)
       this.photoReceiver.on("imageArrival",()=>{
         this.photoReceiver?.readNextImage((err,image)=>{
           if (err || image === undefined) {
@@ -265,7 +294,7 @@
               return;
             }
             await this.getImageFileFd()
-            fileio.write(this.mFileAssetId, img.byteBuffer)
+            fileIo.write(this.mFileAssetId, img.byteBuffer)
             await this.closeFd()
             await image.release()
             console.info('photoReceiver image.getComponent save success')
@@ -273,7 +302,7 @@
         })
       })
         await this.photoReceiver.getReceivingSurfaceId().then((surfaceId: string) => {
-          this.photoOutput = this.cameraManager?.createPhotoOutput(photoProfile, surfaceId)
+          this.photoOutput = this.cameraManager?.createPhotoOutput(photoProfile)
           if (!this.photoOutput) {
             console.error('cameraManager.createPhotoOutput on error')
           }
@@ -293,13 +322,13 @@
 通过createCaptureSession()方法创建CaptureSession实例。调用beginConfig()方法开始配置会话，使用addInput()和addOutput()方法将CameraInput()和CameraOutput()加入到会话，最后调用commitConfig()方法提交配置信息，通过Promise获取结果。
 
   ```ts
-  private captureSession?: camera.CaptureSession;
+  private Session?: camera.Session;
 
-  function failureCallback(error: BusinessError): Promise<void> {
+  async failureCallback(error: BusinessError): Promise<void> {
     console.error('case failureCallback called,errMessage is ', JSON.stringify(error));
   }
 
-  function catchCallback(error: BusinessError): Promise<void> {
+  async catchCallback(error: BusinessError): Promise<void> {
     console.error('case catchCallback called,errMessage is ', JSON.stringify(error));
   }
 
@@ -307,23 +336,23 @@
   async createCaptureSession(): Promise<void> {
     console.info('createCaptureSession called');
     if (this.cameraManager) {
-      this.captureSession = this.cameraManager.createCaptureSession();
-      if (!this.captureSession) {
+      this.Session = this.cameraManager.createSession();
+      if (!this.Session) {
         console.error('createCaptureSession failed!');
         return;
       }
       try {
-        this.captureSession.beginConfig();
-        this.captureSession.addInput(this.cameraInput);
+        this.Session.beginConfig();
+        this.Session.addInput(this.cameraInput);
       } catch (e) {
         console.error('case addInput error:' + JSON.stringify(e));
       }
       try {
-        this.captureSession.addOutput(this.previewOutput);
+        this.Session.addOutput(this.previewOutput);
       } catch (e) {
         console.error('case addOutput error:' + JSON.stringify(e));
       }
-      await this.captureSession.commitConfig().then(() => {
+      await this.Session.commitConfig().then(() => {
         console.info('captureSession commitConfig success');
       }, this.failureCallback).catch(this.catchCallback);
     }
@@ -360,6 +389,8 @@
   业务协同完毕后需及时结束协同状态，释放分布式相机资源。
 
   ```ts
+  private videoOutput?: camera.VideoOutput;
+  
   // 释放相机
   async releaseCameraInput(): Promise<void> {
     console.info('releaseCameraInput called');

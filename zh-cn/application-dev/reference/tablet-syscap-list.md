@@ -1,4 +1,4 @@
-# 系统能力SystemCapability列表
+# Tablet
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->

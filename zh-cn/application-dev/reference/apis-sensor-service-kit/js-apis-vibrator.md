@@ -1114,10 +1114,10 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 | 名称               | 类型      | 只读 | 可选 | 说明                               |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | 是  | 否  | 报告事件的时间戳。                        |
-| deviceId         | number  | 是  | 否  | 设备的ID。                           |
-| vibratorCount    | number  | 是  | 否  | 设备上的马达的数量。                       |
-| isVibratorOnline | boolean | 是  | 否  | 指示设备的上线和下线状态，true表示上线，false表示下线。 |
+| timestamp        | number  | 否  | 否  | 报告事件的时间戳。                        |
+| deviceId         | number  | 否  | 否  | 设备的ID。                           |
+| vibratorCount    | number  | 否  | 否  | 设备上的马达的数量。                       |
+| isVibratorOnline | boolean | 否  | 否  | 指示设备的上线和下线状态，true表示上线，false表示下线。 |
 
 
 ## VibratorInfoParam<sup>19+</sup>
@@ -1143,7 +1143,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 | 名称                | 类型      | 只读 | 可选 | 说明                            |
 |-------------------|---------|----|----|-------------------------------|
-| isEffectSupported | boolean | 是  | 否  | 预制效果是否支持，true表示支持，false表示不支持。 |
+| isEffectSupported | boolean | 否  | 否  | 预制效果是否支持，true表示支持，false表示不支持。 |
 
 
 ## VibratorInfo<sup>19+</sup>
@@ -1154,11 +1154,11 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 | 名称                  | 类型      | 只读 | 可选 | 说明        |
 |---------------------|---------|----|----|-----------|
-| deviceId            | number  | 是  | 否  | 设备ID。     |
-| vibratorId          | number  | 是  | 否  | 马达ID。     |
-| deviceName          | string  | 是  | 否  | 设备名称。     |
-| isHdHapticSupported | boolean | 是  | 否  | 是否支持高清振动。 |
-| isLocalVibrator     | boolean | 是  | 否  | 是否为本地设备。  |
+| deviceId            | number  | 否  | 否  | 设备ID。     |
+| vibratorId          | number  | 否  | 否  | 马达ID。     |
+| deviceName          | string  | 否  | 否  | 设备名称。     |
+| isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动。 |
+| isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备。  |
 
 
 ## vibrator.isHdHapticSupported<sup>12+</sup>
@@ -1414,7 +1414,9 @@ build(): VibratorPattern;
 
 ## VibrateEffect<sup>9+</sup>
 
-马达振动效果，支持以下四种。在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。
+type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFromPattern
+
+马达振动效果，支持以下四种：在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1433,10 +1435,10 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称     | 类型   | 必填 | 说明                                                        |
-| -------- | ------ | ---- | ----------------------------------------------------------- |
-| type     | 'time' | 是   | 值为'time'，按照指定时长触发马达振动。                      |
-| duration | number | 是   | 马达持续振动时长, 单位ms。取值范围(0,1800000]区间内所有整数 |
+| 名称     | 类型   | 只读 | 可选 | 说明                                                        |
+| -------- | ------ | ---- | ---- | ----------------------------------------------------------- |
+| type     | 'time' | 否   | 否   | 值为'time'，按照指定时长触发马达振动。                      |
+| duration | number | 否   | 否   | 马达持续振动时长, 单位ms。取值范围(0,1800000]区间内所有整数 |
 
 ## VibratePreset<sup>9+</sup>
 
@@ -1444,12 +1446,12 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称                    | 类型     | 必填 | 说明                                                         |
-| ----------------------- | -------- | ---- | ------------------------------------------------------------ |
-| type                    | 'preset' | 是   | 值为'preset'，按照预置振动效果触发马达振动。                 |
-| effectId                | string   | 是   | 预置的振动效果ID，字符串最大长度64，超出截取64。                                           |
-| count                   | number   | 否   | 可选参数，振动的重复次数，默认值为1。                        |
-| intensity<sup>12+</sup> | number   | 否   | 可选参数，振动调节强度，取值范围(0,100]内所有整数，默认值为100。若振动效果不支持强度调节或设备不支持时，则按默认强度振动。 |
+| 名称                    | 类型     | 只读 | 可选 | 说明                                                         |
+| ----------------------- | -------- | ---- | ---- | ------------------------------------------------------------ |
+| type                    | 'preset' | 否   | 否   | 值为'preset'，按照预置振动效果触发马达振动。                 |
+| effectId                | string   | 否   | 否   | 预置的振动效果ID，字符串最大长度64，超出截取64。                             |
+| count                   | number   | 否   | 是   | 可选参数，振动的重复次数，默认值为1。                        |
+| intensity<sup>12+</sup> | number   | 否   | 是   | 可选参数，振动调节强度，取值范围(0,100]内所有整数，默认值为100。若振动效果不支持强度调节或设备不支持时，则按默认强度振动。 |
 
 ## VibrateFromFile<sup>10+</sup>
 
@@ -1457,10 +1459,10 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称     | 类型                                                         | 必填 | 说明                                       |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| type     | 'file'                                                       | 是   | 值为'file'，按照振动配置文件触发马达振动。 |
-| hapticFd | [HapticFileDescriptor](#hapticfiledescriptor10)<sup>10+</sup> | 是   | 振动配置文件的描述符。                     |
+| 名称     | 类型                                                         | 只读 | 可选 | 说明                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
+| type     | 'file'                                                       | 否   | 否   | 值为'file'，按照振动配置文件触发马达振动。 |
+| hapticFd | [HapticFileDescriptor](#hapticfiledescriptor10)<sup>10+</sup> | 否   | 否   | 振动配置文件的描述符。                     |
 
 ## HapticFileDescriptor<sup>10+</sup>
 
@@ -1468,11 +1470,11 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称   | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| fd     | number | 是   | 资源文件描述符。                                             |
-| offset | number | 否   | 距文件起始位置的偏移量，单位为字节，默认为文件起始位置，不可超出文件有效范围。 |
-| length | number | 否   | 资源长度，单位为字节，默认值为从偏移位置至文件结尾的长度，不可超出文件有效范围。 |
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| fd     | number | 否   | 否   | 资源文件描述符。                                             |
+| offset | number | 否   | 是   | 距文件起始位置的偏移量，单位为字节，默认为文件起始位置，不可超出文件有效范围。 |
+| length | number | 否   | 是   | 资源长度，单位为字节，默认值为从偏移位置至文件结尾的长度，不可超出文件有效范围。 |
 
 ## VibratorEventType<sup>18+</sup>
 
@@ -1480,10 +1482,10 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称       | 类型   | 必填 | 说明              |
-| ---------- | ------ | ---- | ----------------- |
-| CONTINUOUS | number | 是   | 值为0，表示长振。 |
-| TRANSIENT  | number | 是   | 值为1，表示短振。 |
+| 类型   | 说明              |
+| ------ | ----------------- |
+| CONTINUOUS | 值为0，表示长振。 |
+| TRANSIENT | 值为1，表示短振。 |
 
 ## VibratorCurvePoint<sup>18+</sup>
 
@@ -1491,11 +1493,11 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型   | 必填 | 说明                                                         |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| time      | number | 是   | 起始时间偏移。                                               |
-| intensity | number | 否   | 可选参数，相对事件振动强度增益，取值范围[0,100%]，省略时默认值为1。 |
-| frequency | number | 否   | 可选参数，相对事件振动频率变化，取值范围[-100,100]内所有整数，省略时默认值为0。 |
+| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| time      | number | 否   | 否   | 起始时间偏移。                                               |
+| intensity | number | 否   | 是   | 可选参数，相对事件振动强度增益，取值范围[0,100%]，省略时默认值为1。 |
+| frequency | number | 否   | 是   | 可选参数，相对事件振动频率变化，取值范围[-100,100]内所有整数，省略时默认值为0。 |
 
 ## VibratorEvent<sup>18+</sup>
 
@@ -1503,15 +1505,15 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型                            | 必填 | 说明                                                         |
-| --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| eventType | VibratorEventType               | 是   | 振动事件类型。                                               |
-| time      | number                          | 是   | 振动起始时间，单位ms。取值范围[0,1800000]区间内所有整数。    |
-| duration  | number                          | 否   | 可选参数，表示振动持续时间，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000 |
-| intensity | number                          | 否   | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。 |
-| frequency | number                          | 否   | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。 |
-| index     | number                          | 否   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。        |
-| points    | Array&lt;[VibratorCurvePoint](#vibratorcurvepoint18)&gt; | 否   | 可选参数，表示振动调节曲线数组。                             |
+| 名称      | 类型                            | 只读 | 可选 | 说明                                                         |
+| --------- | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| eventType | VibratorEventType               | 否   | 否   | 振动事件类型。                                               |
+| time      | number                          | 否   | 否   | 振动起始时间，单位ms。取值范围[0,1800000]区间内所有整数。    |
+| duration  | number                          | 否   | 是   | 可选参数，表示振动持续时间，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000 |
+| intensity | number                          | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。 |
+| frequency | number                          | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。 |
+| index     | number                          | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。        |
+| points    | Array&lt;[VibratorCurvePoint](#vibratorcurvepoint18)&gt; | 否   | 是   | 可选参数，表示振动调节曲线数组。                             |
 
 ## VibratorPattern<sup>18+</sup>
 
@@ -1519,10 +1521,10 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称   | 类型                       | 必填 | 说明                                                 |
-| ------ | -------------------------- | ---- | ---------------------------------------------------- |
-| time   | number                     | 是   | 振动绝对起始时间。                                   |
-| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 是   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+| 名称   | 类型                       | 只读 | 可选 | 说明                                                 |
+| ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
+| time   | number                     | 否   | 否   | 振动绝对起始时间。                                   |
+| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
 
 ## ContinuousParam<sup>18+</sup>
 
@@ -1530,12 +1532,12 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型                 | 必填 | 说明                                                         |
-| --------- | -------------------- | ---- | ------------------------------------------------------------ |
-| intensity | number               | 否   | 可选参数，表示振动强度，取值范围[0,100]内所有整数，省略时默认值为100。 |
-| frequency | number               | 否   | 可选参数，表示振动频率，取值范围[0,100]内所有整数，省略时默认值为50。 |
-| points    | [VibratorCurvePoint](#vibratorcurvepoint18)[] | 否   | 可选参数，表示振动调节曲线数组。                             |
-| index     | number               | 否   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                    |
+| 名称      | 类型                 | 只读 | 可选 | 说明                                                         |
+| --------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
+| intensity | number               | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]内所有整数，省略时默认值为100。 |
+| frequency | number               | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]内所有整数，省略时默认值为50。 |
+| points    | [VibratorCurvePoint](#vibratorcurvepoint18)[] | 否   | 是   | 可选参数，表示振动调节曲线数组。                             |
+| index     | number               | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                    |
 
 ## TransientParam<sup>18+</sup>
 
@@ -1543,11 +1545,11 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型   | 必填 | 说明                                                         |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| intensity | number | 否   | 可选参数，表示振动强度，取值范围[0,100]内所有整数，省略时默认值为100。 |
-| frequency | number | 否   | 可选参数，表示振动频率，取值范围[0,100]内所有整数，省略时默认值为50。 |
-| index     | number | 否   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                    |
+| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| intensity | number | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]内所有整数，省略时默认值为100。 |
+| frequency | number | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]内所有整数，省略时默认值为50。 |
+| index     | number | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                    |
 
 ## VibrateFromPattern<sup>18+</sup>
 
@@ -1555,10 +1557,10 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称    | 类型            | 必填 | 说明                                                 |
-| ------- | --------------- | ---- | ---------------------------------------------------- |
-| type    | 'pattern'       | 是   | 值为“pattern”，根据组合模式触发电机振动。            |
-| pattern | VibratorPattern | 是   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+| 名称    | 类型            | 只读 | 可选 | 说明                                                 |
+| ------- | --------------- | ---- | ---- | ---------------------------------------------------- |
+| type    | 'pattern'       | 否   | 否   | 值为“pattern”，根据组合模式触发电机振动。            |
+| pattern | VibratorPattern | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
 
 ## VibrateAttribute<sup>9+</sup>
 
@@ -1568,11 +1570,11 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称                   | 类型             | 必填 | 说明                                                         |
-| ---------------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| id                     | number           | 否   | 马达ID， 默认值为0。                                         |
-| deviceId<sup>19+</sup> | number           | 否   | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API Version 19开始，该接口支持在原子化服务中使用。 |
-| usage                  | [Usage](#usage9) | 是   | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。 |
+| 名称                   | 类型             | 只读 | 可选 | 说明                                                         |
+| ---------------------- | ---------------- | ---- | ---- | ------------------------------------------------------------ |
+| id                     | number           | 否   | 是   | 马达ID， 默认值为0。                                         |
+| deviceId<sup>19+</sup> | number           | 否   | 是   | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API Version 19开始，该接口支持在原子化服务中使用。 |
+| usage                  | [Usage](#usage9) | 否   | 否   | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。 |
 
 ## Usage<sup>9+</sup>
 

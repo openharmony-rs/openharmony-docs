@@ -234,16 +234,16 @@ type AdvancedDialogV2ButtonAction = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称           | 类型                                                                     | 只读 | 可选 | 装饰器类型  | 说明                                                                          |
-|:-------------|:-----------------------------------------------------------------------|:---|:---|:-------|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | @Trace | 按钮的内容。                                                                      |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | @Trace | 按钮的点击事件。<br />默认无事件。                                                        |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | @Trace | 按钮的背景。<br />默认值跟随buttonStyle。                                               |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | @Trace | 按钮的字体颜色。<br />默认值跟随buttonStyle。                                             |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | @Trace | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。 |
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | @Trace | 按钮的角色。<br />默认值：ButtonRole.NORMAL                                           |
-| defaultFocus | boolean                                                                | 否  | 是  | @Trace | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false               |
-| enabled       | boolean                                                                | 否  | 是  | @Trace | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true                         |
+| 名称           | 类型                                                                     | 只读 | 可选 | 说明                                                                          |
+|:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>装饰器类型：@Trace                                                                      |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>装饰器类型：@Trace                                                        |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的背景。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace                                               |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace                                             |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>装饰器类型：@Trace |
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>装饰器类型：@Trace                                           |
+| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace               |
+| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>装饰器类型：@Trace                         |
 
 > **说明：**
 >

@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can call native APIs to perform audio decoding, which decodes media data into PCM streams.
 
@@ -28,7 +28,7 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 
 ## Development Guidelines
 
-Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md).
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 

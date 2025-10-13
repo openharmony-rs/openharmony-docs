@@ -1660,10 +1660,10 @@ info(): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型                                  | 必填 | 说明                                                     |
-| ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| key          | string                                | 是   | 属性名。                                                     |
-| defaultValue | number \| string \| boolean \| Object | 是   | 在PersistentStorage和AppStorage未查询到时，则使用默认值初始化它。从API version 12开始，defaultValue允许为null或undefined。 |
+| 名称       | 类型                                  | 只读                            | 可选 | 说明                                                     |
+| ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| key          | string                                | 否                               | 否  | 属性名。                                                     |
+| defaultValue | number \| string \| boolean \| Object | 否 | 否 | 在PersistentStorage和AppStorage未查询到时，则使用默认值初始化它。从API version 12开始，defaultValue允许为null或undefined。 |
 
 ## PersistentStorage
 
@@ -1891,10 +1891,10 @@ let keys: Array<string> = PersistentStorage.Keys();
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型                        | 必填 | 说明                                                     |
-| ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
-| key          | string                      | 是   | 环境变量名称，支持的范围详见[内置环境变量说明](#内置环境变量说明)。 |
-| defaultValue | number \| string \| boolean | 是   | 查询不到环境变量key，则使用defaultValue作为默认值存入AppStorage中。 |
+| 名称       | 类型                        | 只读             | 可选 | 说明                                                     |
+| ------------ | --------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| key          | string                      | 否                     | 否  | 环境变量名称，支持的范围详见[内置环境变量说明](#内置环境变量说明)。 |
+| defaultValue | number \| string \| boolean | 否 | 否  | 查询不到环境变量key，则使用defaultValue作为默认值存入AppStorage中。 |
 
 ## Environment
 

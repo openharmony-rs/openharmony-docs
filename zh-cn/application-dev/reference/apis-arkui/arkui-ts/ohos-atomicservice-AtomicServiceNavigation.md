@@ -80,13 +80,13 @@ AtomicServiceNavigation({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| --------------- | ------ | ---- | ---------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 标题栏背景颜色。 |
-| isBlurEnabled | boolean | 否 | 标题栏是否模糊，默认值：true，表示标题栏模糊。 |
-| barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12枚举说明)  | 否 | 标题栏样式属性设置。 |
-| titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | 否 | 设置标题栏类型。默认值为TitleBarType.ROUND_ICON。 |
-| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 设置标题栏的图标。默认值为$r('sys.color.ohos_id_color_titlebar_icon')。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------------- | ------ | ---- | -- | ---------- |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景颜色。 |
+| isBlurEnabled | boolean | 否 | 是 | 标题栏是否模糊，默认值：true，表示标题栏模糊。 |
+| barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12枚举说明)  | 否 | 是 | 标题栏样式属性设置。 |
+| titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | 否 | 是 | 设置标题栏类型。默认值为TitleBarType.ROUND_ICON。 |
+| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 设置标题栏的图标。默认值为$r('sys.color.ohos_id_color_titlebar_icon')。 |
 
 ## GradientBackground<sup>18+</sup>
 供开发者设置品牌渐变色。
@@ -95,13 +95,13 @@ AtomicServiceNavigation({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| --------------- | ------ | ---- | ---------- |
-| primaryColor | [ResourceColor](ts-types.md#resourcecolor)  | 是 | 单色渐变色彩值和双色渐变第一色彩值。无默认值。|
-| secondaryColor |[ResourceColor](ts-types.md#resourcecolor)  | 否 |双色渐变色第二色彩值。无默认值。|
-| backgroundTheme |[BackgroundTheme<sup>18+</sup>](#backgroundtheme18)  | 否 |导航栏背景底色。默认值为DEFAULT。|
-| mixMode | [MixMode<sup>18+</sup>](#mixmode18)  | 否 |同时设置primaryColor和secondaryColor时此参数生效。代表双色渐变下两种颜色的融合方式。默认值为TOWARDS。|
-| alpha | [GradientAlpha<sup>18+</sup>](#gradientalpha18)  | 否 |设置渐变色显示区域的透明度。默认值为OPACITY_20。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------------- | ------ | ---- | -- | ---------- |
+| primaryColor | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 否 | 单色渐变色彩值和双色渐变第一色彩值。无默认值。|
+| secondaryColor |[ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 |双色渐变色第二色彩值。无默认值。|
+| backgroundTheme |[BackgroundTheme<sup>18+</sup>](#backgroundtheme18)  | 否 | 是 |导航栏背景底色。默认值为DEFAULT。|
+| mixMode | [MixMode<sup>18+</sup>](#mixmode18)  | 否 | 是 |同时设置primaryColor和secondaryColor时此参数生效。代表双色渐变下两种颜色的融合方式。默认值为TOWARDS。|
+| alpha | [GradientAlpha<sup>18+</sup>](#gradientalpha18)  | 否 | 是 |设置渐变色显示区域的透明度。默认值为OPACITY_20。|
 
 ## NavDestinationBuilder
 
@@ -180,11 +180,11 @@ NavDestination组件内容。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| --------------- | ------ | ---- | ---------- |
-| sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | 否 | 设置侧边栏的背景颜色。默认为$r('sys.color.ohos_id_color_sub_background')。 |
-| onChange | Callback\<boolean\> | 否 | 侧边栏显示隐藏回调。 |
-| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 侧边栏里的返回图标。默认值为$r('sys.symbol.open_sidebar')。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------------- | ------ | ---- | -- | ---------- |
+| sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置侧边栏的背景颜色。默认为$r('sys.color.ohos_id_color_sub_background')。 |
+| onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。 |
+| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 侧边栏里的返回图标。默认值为$r('sys.symbol.open_sidebar')。 |
 
 ## 示例
 
