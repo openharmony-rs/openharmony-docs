@@ -47,6 +47,11 @@
 
    <!-- @[import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
+
+
 3. 创建凭据管理对象。
 
    <!-- @[create_credential_management_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
