@@ -7,10 +7,10 @@
 <!--Adviser: @ge-yafang-->
 ## 场景介绍
 
-NativeBuffer是提供**共享内存**的模块。开发者可以通过`NativeBuffer`接口实现共享内存的申请、使用、属性查询、释放等操作。
-针对NativeBuffer，常见的开发场景如下：
+NativeBuffer模块提供**共享内存**功能，支持内存的申请、使用、查询和释放等操作。
+NativeBuffer的常见开发场景如下：
 
-* 通过`NativeBuffer`提供的Native API接口申请`OH_NativeBuffer`实例，获取内存的属性信息，把对应的ION内存映射到进程空间。
+NativeBuffer的常见开发场景：通过Native API申请OH_NativeBuffer实例，获取内存属性，将ION内存映射到进程空间。
 
 ## 接口说明
 
@@ -28,7 +28,7 @@ NativeBuffer是提供**共享内存**的模块。开发者可以通过`NativeBuf
 
 ## 开发步骤
 
-以下步骤描述了如何使用`NativeBuffer`提供的Native API接口，创建`OH_NativeBuffer`实例获取内存的属性信息，并把对应的ION内存映射到进程空间。
+以下步骤描述了如何使用`NativeBuffer`提供的Native API接口创建`OH_NativeBuffer`实例，获取内存属性信息，并将ION内存映射到进程空间。
 
 **添加动态链接库**
 
@@ -43,50 +43,14 @@ libnative_buffer.so
 ```
 
 1. **创建OH_NativeBuffer实例**。
-    ```c++
-    #include <iostream>
-
-    OH_NativeBuffer_Config config {
-        .width = 0x100,
-        .height = 0x100,
-    };
-    OH_NativeBuffer* buffer = OH_NativeBuffer_Alloc(&config);
-    if (buffer == nullptr) {
-        std::cout << "OH_NativeBuffer_Alloc Failed" << std::endl;
-    }
-    ```
+    <!-- @[nativebuffer_alloc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
    
 2. **将OH_NativeBuffer对应的ION内存映射到进程空间**。
-    应用如需要访问这块buffer的内存空间，需要通过OH_NativeBuffer_Map接口将buffer对应的ION内存映射到进程空间。
-    ```c++
-    // 将ION内存映射到进程空间
-    void* virAddr = nullptr;
-    int32_t ret = OH_NativeBuffer_Map(buffer, &virAddr); // 映射后通过第二个参数virAddr返回内存的首地址
-    if (ret != 0) {
-        std::cout << "OH_NativeBuffer_Map Failed" << std::endl;
-    }
-
-    // 使用后请及时将OH_NativeBuffer对应的ION内存从进程空间移除
-    ret = OH_NativeBuffer_Unmap(buffer);
-    if (ret != 0) {
-        std::cout << "OH_NativeBuffer_Unmap Failed" << std::endl;
-    }
-    ```
+    应用如需访问buffer内存空间，可通过OH_NativeBuffer_Map接口将ION内存映射到进程空间。
+    <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
 3. **获取内存的属性信息**。
-    ```c++
-    // 获取OH_NativeBuffer的属性
-    OH_NativeBuffer_Config config2 = {};
-    OH_NativeBuffer_GetConfig(buffer, &config2);
-    // 获取OH_NativeBuffer的序列号
-     uint32_t hwBufferID = OH_NativeBuffer_GetSeqNum(buffer);
-    ```
+    <!-- @[nativebuffer_getconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
 4. **销毁OH_NativeBuffer**。
-    ```c++
-    // 调用OH_NativeBuffer_Unreference引用计数减1，之后buffer的引用计数为0，buffer会销毁
-    ret = OH_NativeBuffer_Unreference(buffer);
-    if (ret != 0) {
-        std::cout << "OH_NativeBuffer_Unreference Failed" << std::endl;
-    }
-    ```
+    <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->

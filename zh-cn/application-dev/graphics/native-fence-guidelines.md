@@ -7,14 +7,14 @@
 <!--Adviser: @ge-yafang-->
 ## 场景介绍
 
-NativeFence是提供**同步管理fenceFd**的模块。开发者可以通过`NativeFence`接口实现对fenceFd阻塞指定时间、永久阻塞、关闭和检查fenceFd是否有效等操作。
+NativeFence是管理fenceFd同步状态的模块。开发者可通过其接口实现以下功能：设置阻塞时间、永久阻塞、关闭fenceFd以及检查其有效性。
 
 ## 接口说明
 
 | 接口名 | 描述 |
 | -------- | -------- |
 | OH_NativeFence_IsValid (int fenceFd) | 检查fenceFd是否有效。 |
-| OH_NativeFence_Wait (int fenceFd, uint32_t timeout) | 阻塞传入的fenceFd，最大阻塞时间由超时参数决定。 |
+| OH_NativeFence_Wait (int fenceFd, uint32_t timeout) | 阻塞传入的fenceFd，超时参数指定了允许等待的最长时间。 |
 | OH_NativeFence_WaitForever (int fenceFd) | 永久阻塞传入的fenceFd。 |
 | OH_NativeFence_Close (int fenceFd) | 关闭fenceFd。 |
 
@@ -26,7 +26,7 @@ NativeFence是提供**同步管理fenceFd**的模块。开发者可以通过`Nat
 
 **添加动态链接库**
 
-CMakeLists.txt中添加以下lib。
+CMakeLists.txt中添加以下库文件。
 ```txt
 libnative_fence.so
 ```
@@ -41,44 +41,19 @@ libnative_fence.so
 #include <sys/signalfd.h>
 #include <unistd.h>
 ```
-1. **通过signalfd创建fenceFd**。
-    ```c++
-    sigset_t mask;
-    sigemptyset(&mask);
-    sigprocmask(SIG_BLOCK, &mask, NULL);
-
-    int fenceFd = signalfd(-1, &mask, 0);
-    ```
+1. **使用signalfd()系统调用创建fenceFd**。
+    <!-- @[create_fencefd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
 2. **判断传入的fenceFd是否合法**。
-    ```c++
-    // 检查fenceFd是否有效
-    bool isValid = OH_NativeFence_IsValid(fenceFd);
-    if (!isValid) {
-        std::cout << "fenceFd is invalid" << std::endl;
-    }
-    ```
+    <!-- @[check_fence_invalid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
 3. **调用OH_NativeFence_Wait阻塞接口**。
-    ```c++
-    constexpr uint32_t TIMEOUT_MS = 5000;
-    bool resultWait = OH_NativeFence_Wait(fenceFd, TIMEOUT_MS);
-    if (!resultWait) {
-        std::cout << "OH_NativeFence_Wait Failed" << std::endl;
-    }
-    ```
+    <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
 4. **调用OH_NativeFence_WaitForever阻塞接口**。
-    ```c++
-    bool resultWaitForever = OH_NativeFence_WaitForever(fenceFd);
-    if (!resultWaitForever) {
-        std::cout << "OH_NativeFence_WaitForever Failed" << std::endl;
-    }
-    ```
+    <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
-5. **GPU或CPU进行信号触发signal，通知fenceFd解除阻塞**。
+5. **GPU或CPU发送同步信号(signal)，通知fenceFd解除阻塞**。
 
 6. **关闭fenceFd**。
-    ```c++
-    OH_NativeFence_Close(fenceFd);
-    ```
+    <!-- @[close_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->

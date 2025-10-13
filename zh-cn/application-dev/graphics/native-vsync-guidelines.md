@@ -2,7 +2,7 @@
 
 ## 场景介绍
 
-NativeVSync模块用来获取系统VSync信号，提供了OH_NativeVSync实例的创建、销毁以及设置VSync回调函数的能力，VSync信号到来时会调用已设置的VSync回调函数。
+NativeVSync模块用于获取系统VSync信号，提供OH_NativeVSync实例的创建、销毁及设置VSync回调函数的功能。VSync信号触发时，将调用已设置的回调函数。
 
 ## 接口说明
 
@@ -17,11 +17,11 @@ NativeVSync模块用来获取系统VSync信号，提供了OH_NativeVSync实例�
 
 ## 开发步骤
 
-以下步骤描述了如何使用`NativeVSync`提供的Native API接口，创建和销毁`OH_NativeVSync`实例，以及如何设置VSync回调函数。
+以下步骤描述如何：1. 使用`NativeVSync`提供的API接口 2. 创建和销毁`OH_NativeVSync`实例 3. 设置VSync回调函数
 
 **添加动态链接库**
 
-CMakeLists.txt中添加以下lib。
+CMakeLists.txt中添加以下库文件。
 ```txt
 libnative_vsync.so
 ```
@@ -31,39 +31,14 @@ libnative_vsync.so
 #include <native_vsync/native_vsync.h>
 ```
 
-1. **首先需要准备一个VSync回调函数**。
-    ```c++
-    #include <iostream>
+1. **首先需要定义一个VSync回调函数**。
+    <!-- @[vsync_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
-    static bool flag = false;
-    static void OnVSync(long long timestamp, void* data)
-    {
-        flag = true;
-        std::cout << "OnVSync: " << timestamp << std::endl;
-    }
-    OH_NativeVSync_FrameCallback callback = OnVSync; // 回调函数必须是OH_NativeVSync_FrameCallback类型
-     ```
 2. **创建OH_NativeVSync实例**。
-    ```c++
-    char name[] = "hello_vsync";
-    OH_NativeVSync* nativeVSync = OH_NativeVSync_Create(name, strlen(name));
-     ```
+    <!-- @[create_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
 3. **通过OH_NativeVSync实例设置VSync回调函数**。
-    ```c++
-    #include <unistd.h>
-    #include <iostream>
-
-    OH_NativeVSync_RequestFrame(nativeVSync, callback, nullptr);
-    while (!flag) { // 判断flag值，上面的VSync回调函数被执行后才会跳出while循环，表示已经接收到VSync信号
-        std::cout << "wait for vsync!\n";
-        sleep(1);
-    }
-    std::cout << "vsync come, end this thread\n";
-    ```
+    <!-- @[request_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
 4. **销毁OH_NativeVSync实例**。
-    ```c++
-    OH_NativeVSync_Destroy(nativeVSync); // 如不需要接收VSync信号，请及时销毁OH_NativeVSync实例
-    nativeVSync = nullptr; // 销毁后需要及时将OH_NativeVSync实例指针变量置空，避免销毁后继续使用导致野指针异常
-    ```
+    <!-- @[destroy_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
