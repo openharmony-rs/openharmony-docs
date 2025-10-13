@@ -865,7 +865,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: Asy
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 指定返回的AbilityInfo所包含的信息。                       |
 | userId       | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                               |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
@@ -931,7 +931,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | -------------------------------------------------------|
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 指定返回的AbilityInfo所包含的信息。       |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
@@ -994,7 +994,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Arr
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1086,7 +1086,7 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
+| want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1173,7 +1173,7 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Array\<Want>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
+| want         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
 | abilityFlags | [number](#abilityflag) | 是   | 表示指定返回的AbilityInfo所包含的信息。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1246,7 +1246,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。    |
 | userId                | number                                                       | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                 |
@@ -1313,7 +1313,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。    |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
@@ -1377,7 +1377,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 | 参数名                | 类型                                          | 必填 | 说明                                                      |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
@@ -1472,7 +1472,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbility
 
 | 参数名                | 类型                                          | 必填 | 说明                                                      |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志。 |
 | userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
@@ -3273,7 +3273,7 @@ getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Want | Want对象。 |
+| [Want](js-apis-app-ability-want.md)| Want对象。 |
 
 **错误码：**
 
@@ -4481,7 +4481,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensio
 
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                            | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
+| want                  | [Want](js-apis-app-ability-want.md)      | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
 | extensionAbilityFlags | [number](#extensionabilityflag) | 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
