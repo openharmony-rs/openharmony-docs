@@ -807,12 +807,6 @@ statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
   console.error(JSON.stringify(err));
 });
 ```
-
-
-
-感谢提出新需求。
-
-### 新需求提供了什么功能？
             
 ## statistics.getSelfTrafficStats<sup>22+</sup>
 
@@ -826,13 +820,13 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| networkInfo | NetworkInfo | 是   | 指定查询的网络信息，参见[NetworkInfo](#networkinfo)。 |
+| networkInfo | NetworkInfo | 是   | 指定查询的网络信息，参见[NetworkInfo](#networkinfo12)。 |
 
 **返回值：**
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | 以 Promise 形式返回获取结果，返回应用历史流量统计信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo10)> | 以 Promise 形式返回获取结果，返回应用历史流量统计信息。 |
 
 **错误码：**
 
@@ -886,7 +880,7 @@ type NetBearType = connection.NetBearType
 
 | 名称        | 类型                                                   | 只读 |可选| 说明           |
 |-----------|------------------------------------------------------|----|---|--------------|
-| type      | [NetBearType](#netbeartype) | 否  | 否|网络类型。        |
+| type      | [NetBearType](#netbeartype12) | 否  | 否|网络类型。        |
 | startTime | number                                               | 否  |否| 开始时间戳(单位:秒)。 |
 | endTime   | number                                               | 否  |否 |结束时间戳(单位:秒)。 |
 | simId     | number                                               | 否  | 是|SIM 卡 ID。    |
