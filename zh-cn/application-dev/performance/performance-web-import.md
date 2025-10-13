@@ -1753,7 +1753,7 @@ struct Index {
 使用ArrayBuffer格式的数据做拦截替换
 
 ```typescript
-import webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
