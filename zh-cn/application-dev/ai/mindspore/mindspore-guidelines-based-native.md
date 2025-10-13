@@ -11,7 +11,7 @@
 
 开发者可以使用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
 
-图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等有广泛的应用。
+图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。
 
 ## 基本概念
 
@@ -484,7 +484,7 @@ struct Index {
         .width('40%')
         .height('5%')
         .onClick(() => {
-
+          let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
           let float32View = new Float32Array(this.modelInputHeight * this.modelInputWidth * 3);
           // 图像输入和预处理。
           // 调用c++的runDemo方法，完成图像输入和预处理后的buffer数据保存在float32View，具体可见上文图像输入和预处理中float32View的定义和处理。

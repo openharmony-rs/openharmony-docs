@@ -4,7 +4,7 @@
 <!--Owner: @xuchangda-->
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 应用可以在布局中嵌入AlbumPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的相册列表。
 
@@ -86,6 +86,8 @@ type EmptyAreaClickCallback = () => void
 ## AlbumPickerController<sup>20+</sup>
 
 应用可通过AlbumPickerController向组件发送数据。
+
+**装饰器类型**：@Observed
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

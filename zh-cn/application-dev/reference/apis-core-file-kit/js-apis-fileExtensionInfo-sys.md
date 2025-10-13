@@ -1,8 +1,8 @@
 # @ohos.file.fileExtensionInfo (公共文件访问与管理属性信息)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
+import { fileExtensionInfo } from '@kit.CoreFileKit';
 ```
 
 ## fileExtensionInfo.DeviceType
@@ -24,6 +24,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 组成RootInfo中的deviceType字段，表明此设备的类型。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -43,6 +45,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 ### 常量
@@ -57,6 +61,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 组成FileInfo中的mode字段，通过与运算判断是否具备某种能力。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 

@@ -40,10 +40,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getDefaultCellularDataSlotId((err: BusinessError, contextData: number) => {
-    if(err){
-        console.error(`getDefaultCellularDataSlotId fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`getDefaultCellularDataSlotId success`);
+    if(err) {
+        console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`getDefaultCellularDataSlotId success`);
     }
 });
 ```
@@ -69,9 +69,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getDefaultCellularDataSlotId().then((contextData: number) => {
-    console.log(`getDefaultCellularDataSlotId success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getDefaultCellularDataSlotId success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`getDefaultCellularDataSlotId fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -94,7 +94,7 @@ getDefaultCellularDataSlotIdSync(): number
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSlotIdSync())
+console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 ```
 
 
@@ -119,10 +119,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType) => {
-    if(err){
-        console.error(`getCellularDataFlowType fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`getCellularDataFlowType success`);
+    if(err) {
+        console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`getCellularDataFlowType success`);
     }
 });
 ```
@@ -148,9 +148,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
-    console.log(`getCellularDataFlowType success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`getCellularDataFlowType fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -175,10 +175,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataState((err: BusinessError, contextData: data.DataConnectState) => {
-    if(err){
-        console.error(`getCellularDataState fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`getCellularDataState success`);
+    if(err) {
+        console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`getCellularDataState success`);
     }
 });
 ```
@@ -204,9 +204,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataState().then((contextData: data.DataConnectState) => {
-    console.log(`getCellularDataState success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getCellularDataState success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`getCellularDataState fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -246,10 +246,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataEnabled((err: BusinessError, contextData: boolean) => {
-    if(err){
-        console.error(`isCellularDataEnabled fail,callback: callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`isCellularDataEnabled success`);
+    if(err) {
+        console.error(`isCellularDataEnabled fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`isCellularDataEnabled success`);
     }
 });
 ```
@@ -288,9 +288,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataEnabled().then((contextData: boolean) => {
-    console.log(`isCellularDataEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`isCellularDataEnabled success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`isCellularDataEnabled fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`isCellularDataEnabled fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -330,9 +330,9 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataEnabledSync();
-    console.log(`isCellularDataEnabledSync success : ${isEnabled}`);
+    console.info(`isCellularDataEnabledSync success : ${isEnabled}`);
 } catch (error) {
-    console.error(`isCellularDataEnabledSync fail : err->${JSON.stringify(error)}`);  
+    console.error(`isCellularDataEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```
 
@@ -373,10 +373,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataRoamingEnabled(0, (err: BusinessError, contextData: boolean) => {
-    if(err){
-        console.error(`isCellularDataRoamingEnabled fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`isCellularDataRoamingEnabled success`);
+    if(err) {
+        console.error(`isCellularDataRoamingEnabled fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`isCellularDataRoamingEnabled success`);
     }
 });
 ```
@@ -423,9 +423,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataRoamingEnabled(0).then((contextData: boolean) => {
-    console.log(`isCellularDataRoamingEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`isCellularDataRoamingEnabled success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`isCellularDataRoamingEnabled fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`isCellularDataRoamingEnabled fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -473,9 +473,9 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataRoamingEnabledSync(0);
-    console.log(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
+    console.info(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
 } catch (error) {
-    console.error(`isCellularDataRoamingEnabledSync fail : err->${JSON.stringify(error)}`);  
+    console.error(`isCellularDataRoamingEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```
 
@@ -498,7 +498,7 @@ getDefaultCellularDataSimId(): number
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSimId());
+console.info("Result: "+ data.getDefaultCellularDataSimId());
 ```
 
 ## data.queryAllApns<sup>16+</sup>
@@ -531,10 +531,10 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.queryAllApns().then((data: Array<data.ApnInfo>) => {
-    console.info(`queryAllApns success, promise: data->${JSON.stringify(data)}`);
+data.queryAllApns().then((apnInfos: Array<data.ApnInfo>) => {
+    console.info(`queryAllApns success, promise: apnInfos->${JSON.stringify(apnInfos)}`);
 }).catch((err: BusinessError) => {
-    console.error(`queryAllApns failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`queryAllApns failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -583,10 +583,10 @@ apnInfo = {
   mnc: "07",
 };
 
-data.queryApnIds(apnInfo).then((data: Array<number>) => {
-    console.info(`queryApnIds success, promise: data->${JSON.stringify(data)}`);
+data.queryApnIds(apnInfo).then((apnIds: Array<number>) => {
+    console.info(`queryApnIds success, apnIds: ${apnIds}`);
 }).catch((err: BusinessError) => {
-    console.error(`queryApnIds failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`queryApnIds failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -631,10 +631,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let apnId: number = 0; // apnId为通过queryApnIds返回的有效值，setPreferredApn传入无效的apnId会切回运营商默认配置的优选APN。
-data.setPreferredApn(apnId).then((data: boolean) => {
-    console.info(`setPreferredApn success, promise: data->${JSON.stringify(data)}`);
+data.setPreferredApn(apnId).then((result: boolean) => {
+    console.info(`setPreferredApn result: ${result}`);
 }).catch((err: BusinessError) => {
-    console.error(`setPreferredApn failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`setPreferredApn failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -668,10 +668,10 @@ getActiveApnName(): Promise\<string\>
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getActiveApnName().then((data: string) => {
-    console.info(`getActiveApnName success, promise: data->${JSON.stringify(data)}`);
+data.getActiveApnName().then((apn: string) => {
+    console.info(`getActiveApnName success, apn: ${apn}`);
 }).catch((err: BusinessError) => {
-    console.error(`getActiveApnName failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getActiveApnName failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
 

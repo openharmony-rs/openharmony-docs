@@ -33,14 +33,14 @@ import { common } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | abilityInfo | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | No| No| UIAbility information.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | No| No| Information about the HAP to which the UIAbility belongs.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| config | [Configuration](js-apis-app-ability-configuration.md) | No| No| UIAbility configuration, such as the language and color mode.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| config | [Configuration](js-apis-app-ability-configuration.md) | No| No| Environment variables for the application runtime, such as language and color mode.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | windowStage<sup>12+</sup> | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | No| No| WindowStage object. It can be called only by the main thread.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ### startAbility
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -128,7 +128,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -223,7 +223,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-Starts an ability. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility. This API uses a promise to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -327,9 +327,9 @@ startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;):
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 The following situations may be possible for a started UIAbility:
- - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
- - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
- - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last initiator UIAbility, and an error message, in which **resultCode** is **-1**, is returned to others.
+ - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.	
+ - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.	
+ - If the UIAbility is in [singleton mode](../../application-models/uiability-launch-type.md#singleton) and this UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE**
 >
@@ -421,9 +421,9 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 The following situations may be possible for a started UIAbility:
- - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
- - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
- - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last initiator UIAbility, and an error message, in which **resultCode** is **-1**, is returned to others.
+ - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.	
+ - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.	
+ - If the UIAbility is in [singleton mode](../../application-models/uiability-launch-type.md#singleton) and this UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE**
 >
@@ -518,9 +518,9 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only by the main thread.
 
 The following situations may be possible for a started UIAbility:
- - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
- - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
- - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last initiator UIAbility, and an error message, in which **resultCode** is **-1**, is returned to others.
+ - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.	
+ - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.	
+ - If the UIAbility is in [singleton mode](../../application-models/uiability-launch-type.md#singleton) and this UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE**
 >
@@ -1757,7 +1757,7 @@ export default class EntryAbility extends UIAbility {
 startAbilityByType(type: string, wantParam: Record<string, Object>,
     abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
-Implicitly starts a given type of UIExtensionAbility. This API uses an asynchronous callback to return the result. It can be called only in the main thread and by applications running in the foreground.
+Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API uses an asynchronous callback to return the result. It can be called only in the main thread and by applications running in the foreground.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1816,7 +1816,7 @@ export default class EntryAbility extends UIAbility {
 startAbilityByType(type: string, wantParam: Record<string, Object>,
     abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
-Implicitly starts a given type of UIExtensionAbility. This API uses a promise to return the result. It can be called only in the main thread and by applications running in the foreground.
+Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API uses a promise to return the result. It can be called only in the main thread and by applications running in the foreground.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2144,12 +2144,12 @@ struct Index {
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
-Opens an atomic service in an independent window and returns the result. This API uses a promise to return the result. It can be called only by the main thread.
+Opens an atomic service in an independent window. This API uses a promise to return the result. It can be called only by the main thread.
 
 After an atomic service is started, the following situations may occur:
- - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the atomic service. The result is returned to the caller.
- - If an exception occurs, for example, the atomic service is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an atomic service and then call [terminateSelfWithResult](#terminateselfwithresult) to terminate the atomic service, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+ - Normally, the atomic service can call [terminateSelfWithResult](#terminateselfwithresult) to terminate itself. The result is returned to the caller.
+ - If an exception occurs, for example, the atomic service is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.
+ - If the atomic service is started multiple times by different applications calling this API, when the atomic service calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE**
 >
@@ -2834,7 +2834,7 @@ Sets the icon and label for this UIAbility. The icon and label can be displayed 
 
 | Name| Type                                                           | Mandatory| Description                                              |
 | ------ | -------------------------------------------------------------- | ---- | -------------------------------------------------- |
-| label  |string                                                          | Yes  | Label. The label cannot be an empty string, and can contain a maximum of 1024 bytes. |
+| label  |string                                                          | Yes  | New icon label. The label cannot be an empty string, and can contain a maximum of 1024 bytes. |
 | icon   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Icon. The recommended icon size is 512 px * 512 px.               |
 
 **Return value**

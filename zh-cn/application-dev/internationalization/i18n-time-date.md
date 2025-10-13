@@ -1,5 +1,12 @@
 # 时间日期国际化
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 使用场景
 
 在不同国家和文化中，时间和日期的表示方法存在差异，主要体现在年月日的顺序以及时分秒的分隔符。若应用中需展示时间日期，要确保界面以合适的方式显示，以便用户能够理解。

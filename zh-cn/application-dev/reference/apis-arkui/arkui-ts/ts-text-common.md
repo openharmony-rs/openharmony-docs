@@ -37,7 +37,7 @@ controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
-### getLineCount
+### getLineCount<sup>12+</sup>
 
 getLineCount(): number
 
@@ -53,7 +53,7 @@ getLineCount(): number
 | ------ | --------- |
 | number | 组件内容的总行数。 |
 
-### getGlyphPositionAtCoordinate
+### getGlyphPositionAtCoordinate<sup>12+</sup>
 
 getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
@@ -76,7 +76,7 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 | --------------------------------------------- | ----------- |
 | [PositionWithAffinity](#positionwithaffinity12) | 字形位置信息。|
 
-### getLineMetrics
+### getLineMetrics<sup>12+</sup>
 
 getLineMetrics(lineNumber: number): LineMetrics
 
@@ -226,6 +226,14 @@ equals(id: TextMenuItemId): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### 属性
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型   | 只读 | 可选   | 说明  |
+| ------- | ------ | ---- | ----- | ----- |
+| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。 </br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+
 ### onCreateMenu<sup>12+</sup>
 
 onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem>
@@ -270,22 +278,6 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 | 类型              |       说明       |
 | ------- | --------------------------------- |
 | boolean | 菜单项的执行逻辑。<br/>返回为true，拦截系统默认逻辑，仅执行自定义逻辑。<br/>返回为false，先执行自定义逻辑，再执行系统逻辑。 |
-
-### onPrepareMenu<sup>20+</sup>
-
-onPrepareMenu?: OnPrepareMenuCallback
-
-当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型                              | 说明   |
-| --------------------------------- | --------------------------------- |
-| [OnPrepareMenuCallback](#onpreparemenucallback20) | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。|
 
 ## OnPrepareMenuCallback<sup>20+</sup>
 
@@ -445,6 +437,18 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## SelectDataDetectorConfig<sup>22+</sup>对象说明
+
+文本选择分词识别配置项。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型  | 只读 | 可选 | 说明  |
+| ------ | -------- | ---- | ---- | ------------------------------------------- |
+| types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] \| undefined | 否 | 否  | 设置文本识别的实体类型。设置types为undefined或者[]时，识别所有类型的实体，否则只识别指定类型的实体。 |
 
 ## PreviewText<sup>12+</sup>
 
@@ -999,30 +1003,6 @@ constructor(color: ResourceColor)
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | nodeId  | number | 否  | 否 | 当前输入控件的组件UniqueId。取值范围大于等于0。 |
 
-## TextChangeReason<sup>20+</sup>
-
-组件内容变化原因。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 值 | 说明 |
-| ------- | ---- | ------------------- |
-| UNKNOWN | 0 | 未知原因。 |
-| INPUT | 1 | 用户输入。 |
-| PASTE | 2 | 粘贴。 |
-| CUT | 3 | 剪切。 |
-| DRAG | 4 | 拖拽。 |
-| AUTO_FILL | 5 | 自动填充。 |
-| AI_WRITE | 6 | 小艺帮写。 |
-| REDO | 7 | 重做。 |
-| UNDO | 8 | 撤销。 |
-| CONTROLLER | 9 | 开发者API调用。 |
-| ACCESSIBILITY | 10 | 无障碍接口。 |
-| COLLABORATION | 11 | 跨端拍照。 |
-| STYLUS | 12 | 手写笔。 |
-
 ## MaxLinesOptions<sup>20+</sup>对象说明
 
 配置TextArea组件，文本超长时的显示效果。
@@ -1171,3 +1151,16 @@ constructor(options?: NumericTextTransitionOptions)
 | TOP                   | 0  | 内容区顶部对齐。 |
 | CENTER                | 1  | 内容区中心对齐。 |
 | BOTTOM                | 2  | 内容区底部对齐。 |
+
+## TextDirection<sup>22+</sup>
+
+文本方向。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                   | 值  | 说明                  |
+| --------------------- | -------  | ------------------- |
+| LTR                   | 0  | 从左到右。 |
+| RTL                | 1  | 从右到左。 |

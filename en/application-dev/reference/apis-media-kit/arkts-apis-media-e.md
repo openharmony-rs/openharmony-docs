@@ -1,4 +1,10 @@
 # Enums
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -24,22 +30,22 @@ Enumerates the [media error codes](errorcode-media.md).
 | AVERR_TIMEOUT                         | 5400104 | The system or network response times out.            |
 | AVERR_SERVICE_DIED                    | 5400105 | The service process is dead.                  |
 | AVERR_UNSUPPORT_FORMAT                | 5400106 | The format of the media asset is not supported.      |
-| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | The audio focus is interrupted.                  |
-| AVERR_SESSION_NOT_EXIST<sup>20+</sup> | 5400109 | The session ID does not exist.                  |
-| AVERR_IO_HOST_NOT_FOUND<sup>14+</sup> | 5411001 | Failed to parse the server address or connect to the server.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_CONNECTION_TIMEOUT<sup>14+</sup> | 5411002 | Network connection times out.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_NETWORK_ABNORMAL<sup>14+</sup> | 5411003 | Data or links are abnormal due to network exceptions.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_NETWORK_UNAVAILABLE<sup>14+</sup> | 5411004 | The network is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_NO_PERMISSION<sup>14+</sup> | 5411005 | No access permission.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_REQUEST_DENIED<sup>14+</sup> | 5411006 | The client request parameter is incorrect or exceeds the processing capability.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_RESOURCE_NOT_FOUND<sup>14+</sup> | 5411007 | No network resource is available.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_SSL_CLIENT_CERT_NEEDED<sup>14+</sup> | 5411008 | The server fails to verify the client certificate.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_SSL_CONNECTION_FAILED<sup>14+</sup> | 5411009 | The SSL connection fails.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_SSL_SERVER_CERT_UNTRUSTED<sup>14+</sup> | 5411010 | The client fails to verify the server certificate.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_IO_UNSUPPORTED_REQUEST<sup>14+</sup> | 5411011 | The request is not supported due to a network protocol error.<br>**Atomic service API**: This API can be used in atomic services since API version 14.       |
-| AVERR_SEEK_CONTINUOUS_UNSUPPORTED<sup>18+</sup> | 5410002 | The seek operation in SEEK_CONTINUOUS mode is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
-| AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | Super resolution is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
-| AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | Super resolution is not enabled.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | The audio focus is interrupted.                 |
+| AVERR_IO_HOST_NOT_FOUND<sup>14+</sup> | 5411001 | Failed to parse the server address or connect to the server.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_CONNECTION_TIMEOUT<sup>14+</sup> | 5411002 | Network connection times out.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_NETWORK_ABNORMAL<sup>14+</sup> | 5411003 | Data or links are abnormal due to network exceptions.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_NETWORK_UNAVAILABLE<sup>14+</sup> | 5411004 | The network is disabled.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_NO_PERMISSION<sup>14+</sup> | 5411005 | No access permission.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_REQUEST_DENIED<sup>14+</sup> | 5411006 | The client request parameter is incorrect or exceeds the processing capability.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_RESOURCE_NOT_FOUND<sup>14+</sup> | 5411007 | No network resource is available.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_SSL_CLIENT_CERT_NEEDED<sup>14+</sup> | 5411008 | The server fails to verify the client certificate.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_SSL_CONNECTION_FAILED<sup>14+</sup> | 5411009 | The SSL connection fails.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_SSL_SERVER_CERT_UNTRUSTED<sup>14+</sup> | 5411010 | The client fails to verify the server certificate.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_IO_UNSUPPORTED_REQUEST<sup>14+</sup> | 5411011 | The request is not supported due to a network protocol error.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
+| AVERR_SEEK_CONTINUOUS_UNSUPPORTED<sup>18+</sup> | 5410002 | The seek operation in SEEK_CONTINUOUS mode is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
+| AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | Super resolution is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
+| AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | Super resolution is not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
+| AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | The parameter value is out of range.<br> **Atomic service API**: This API can be used in atomic services since API version 20.       |
 
 ## MediaType<sup>8+</sup>
 
@@ -49,14 +55,14 @@ Enumerates the media types.
 
 | Name          | Value                   | Description                |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | The media type is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 20.
-| MEDIA_TYPE_AUD | 0                     | Media.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
-| MEDIA_TYPE_VID | 1                     | Video.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
-| MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | Subtitle.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MEDIA_TYPE_ATTACHMENT<sup>20+</sup> | 3    | Attachment information (for example, an embedded external file).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| MEDIA_TYPE_DATA<sup>20+</sup> | 4    | Data.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| MEDIA_TYPE_TIMED_METADATA<sup>20+</sup> | 5    | Metadata with a timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| MEDIA_TYPE_AUXILIARY<sup>20+</sup> | 6    | Auxiliary (track) information.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | The media type is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 20.
+| MEDIA_TYPE_AUD | 0                     | Media.<br> **Atomic service API**: This API can be used in atomic services since API version 11.          |
+| MEDIA_TYPE_VID | 1                     | Video.<br> **Atomic service API**: This API can be used in atomic services since API version 11.         |
+| MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | Subtitle.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| MEDIA_TYPE_ATTACHMENT<sup>20+</sup> | 3    | Attachment information (for example, an embedded external file).<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| MEDIA_TYPE_DATA<sup>20+</sup> | 4    | Data.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| MEDIA_TYPE_TIMED_METADATA<sup>20+</sup> | 5    | Metadata with a timestamp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| MEDIA_TYPE_AUXILIARY<sup>20+</sup> | 6    | Auxiliary (track) information.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## CodecMimeType<sup>8+</sup>
 
@@ -72,7 +78,7 @@ Enumerates the codec MIME types.
 | VIDEO_MPEG4  | 'video/mp4v-es'         | Video in MPEG-4 format.    |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | Video in VP8 format.      |
 | VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format.|
-| AUDIO_AAC    | 'audio/mp4a-latm'     | Audio in MP4A-LATM format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| AUDIO_AAC    | 'audio/mp4a-latm'     | Audio in MP4A-LATM format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | AUDIO_VORBIS | 'audio/vorbis'        | Audio in Vorbis format.   |
 | AUDIO_FLAC   | 'audio/flac'          | Audio in FLAC format.     |
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | Audio in MPEG format.     |
@@ -93,15 +99,17 @@ Enumerates the media description keys.
 | MD_KEY_CODEC_MIME        | 'codec_mime'    | Codec MIME type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_DURATION          | 'duration'      | Media duration, which is a number, in units of ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_BITRATE           | 'bitrate'       | Bit rate, which is a number, in units of bit/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_WIDTH             | 'width'         | Video width, which is a number, in units of pixel.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_HEIGHT            | 'height'        | Video height, which is a number, in units of pixel.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_WIDTH             | 'width'         | Video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_HEIGHT            | 'height'        | Video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_FRAME_RATE        | 'frame_rate'    | Video frame rate, which is a number, measured in frames per 100 seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Number of audio channels, which is a number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_SAMPLE_RATE   | 'sample_rate'   | Sampling rate, which is a number, in units of Hz.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio channel count, which is a number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_SAMPLE_RATE   | 'sample_rate'   | Sample rate, which is a number, in units of Hz.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup>  | 'sample_depth'  | Bit depth, which is a number, in units of bits.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | Subtitle language, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | Track name, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 
 ## PlaybackInfoKey<sup>12+</sup>
 
@@ -130,7 +138,7 @@ Enumerates the buffering event types.
 | BUFFERING_START   | 1    | Buffering starts. When this event is triggered, the player pauses the playback.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                  |
 | BUFFERING_END     | 2    | Buffering ends. When this event is triggered, the player resumes the playback.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                  |
 | BUFFERING_PERCENT | 3    | Buffering percentage. You can use this event to monitor the buffering status.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
-| CACHED_DURATION   | 4    | Estimated duration, in ms, that the buffered data can be played. This event is triggered once the data change amount in the buffer exceeds 500 ms. You can use this event to develop a progress bar.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| CACHED_DURATION   | 4    |  Estimated duration, in ms, that the buffered data can be played. This event is triggered once the data change amount in the buffer exceeds 500 ms. You can use this event to develop a progress bar.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 
 ## StateChangeReason<sup>9+</sup>
 
@@ -214,7 +222,7 @@ Enumerates the audio source types for video recording.
 | Name                     | Value  | Description                  |
 | ------------------------- | ---- | ---------------------- |
 | AUDIO_SOURCE_TYPE_DEFAULT | 0    | Default audio input source.|
-| AUDIO_SOURCE_TYPE_MIC     | 1    | Microphone audio input source.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| AUDIO_SOURCE_TYPE_MIC     | 1    | Microphone audio input source.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | Audio source in speech recognition scenarios.|
 | AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | Voice communication source.|
 | AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | Voice message source.|
@@ -240,7 +248,7 @@ Enumerates the container format types (CFTs).
 | Name       | Value   | Description                 |
 | ----------- | ----- | --------------------- |
 | CFT_MPEG_4  | 'mp4' | Video container format MP4.|
-| CFT_MPEG_4A | 'm4a' | Audio container format M4A.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| CFT_MPEG_4A | 'm4a' | Audio container format M4A.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | CFT_MP3<sup>12+</sup>  | 'mp3' | Audio container format MP3.|
 | CFT_WAV<sup>12+</sup>  | 'wav' | Audio container format WAV.|
 | CFT_AMR<sup>18+</sup>  | 'amr' | Audio container format AMR.|
@@ -367,11 +375,11 @@ Enumerates the audio encoding formats.
 
 | Name   | Value  | Description                                                        |
 | ------- | ---- | ------------------------------------------------------------ |
-| DEFAULT | 0    | Default encoding format.<br>This API is defined but not implemented yet.             |
-| AMR_NB  | 1    | AMR-NB.<br>This API is defined but not implemented yet.|
-| AMR_WB  | 2    | Adaptive Multi Rate-Wide Band Speech Codec (AMR-WB).<br>This API is defined but not implemented yet.|
-| AAC_LC  | 3    | Advanced Audio Coding Low Complexity (AAC-LC).|
-| HE_AAC  | 4    | High-Efficiency Advanced Audio Coding (HE_AAC).<br>This API is defined but not implemented yet.|
+| DEFAULT | 0    | Default encoding format.<br>This API is defined but not implemented yet.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **AUDIO_AAC** in [CodecMimeType](#codecmimetype8) instead.|
+| AMR_NB  | 1    | AMR-NB.<br>This API is defined but not implemented yet.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **AUDIO_AMR_NB** in [CodecMimeType](#codecmimetype8) instead.|
+| AMR_WB  | 2    | Adaptive Multi Rate-Wide Band Speech Codec (AMR-WB).<br>This API is defined but not implemented yet.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **AUDIO_AMR_WB** in [CodecMimeType](#codecmimetype8) instead.|
+| AAC_LC  | 3    | Advanced Audio Coding Low Complexity (AAC-LC).<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **AUDIO_AAC** in [CodecMimeType](#codecmimetype8) instead.|
+| HE_AAC  | 4    | High-Efficiency Advanced Audio Coding (HE_AAC).<br>This API is defined but not implemented yet.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **AUDIO_AAC** in [CodecMimeType](#codecmimetype8) instead.|
 
 ## AudioOutputFormat<sup>(deprecated)</sup>
 
@@ -385,11 +393,11 @@ Enumerates the audio output formats.
 
 | Name    | Value  | Description                                                        |
 | -------- | ---- | ------------------------------------------------------------ |
-| DEFAULT  | 0    | Default output format.<br>This API is defined but not implemented yet.             |
-| MPEG_4   | 2    | MPEG-4.                                          |
-| AMR_NB   | 3    | AMR_NB.<br>This API is defined but not implemented yet.         |
-| AMR_WB   | 4    | AMR_WB.<br>This API is defined but not implemented yet.         |
-| AAC_ADTS | 6    | Audio Data Transport Stream (ADTS), which is a transport stream format of AAC-based audio.|
+| DEFAULT  | 0    | Default output format.<br>This API is defined but not implemented yet.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to select one from [ContainerFormatType](#containerformattype8) as required.|
+| MPEG_4   | 2    | MPEG-4.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **CFT_MPEG_4** in [ContainerFormatType](#containerformattype8) instead.|
+| AMR_NB   | 3    | AMR_NB.<br>This API is defined but not implemented yet.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **CFT_AMR** in [ContainerFormatType](#containerformattype8) instead. For the encoding format, use **AUDIO_AMR_NB** in [CodecMimeType](#codecmimetype8).|
+| AMR_WB   | 4    | AMR_WB.<br>This API is defined but not implemented yet.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **CFT_AMR** in [ContainerFormatType](#containerformattype8) instead. For the encoding format, use **AUDIO_AMR_WB** in [CodecMimeType](#codecmimetype8).|
+| AAC_ADTS | 6    | Audio Data Transport Stream (ADTS), which is a transport stream format of AAC-based audio.<br>Note: It is supported since API version 6 and deprecated since API version 8. You are advised to use **CFT_AAC** in [ContainerFormatType](#containerformattype8) instead.|
 
 ## MediaErrorCode<sup>(deprecated)</sup>
 

@@ -14,9 +14,9 @@ The custom layout of a custom component is used to lay out its child components 
 >
 > A custom component is considered to have a custom layout when either of the **onMeasureSize** or **onPlaceChildren** methods is implemented. For complete layout control, implement both methods simultaneously. For details about the specifications, see the API descriptions for these methods.
 >
-> Since API version 20, when child components within a custom layout have their [LayoutPolicy](ts-types.md#layoutpolicy15) object's **fixAtIdealSize** property set to **true**, these components will ignore any layout constraints from their parent component. Instead, they will adhere to the size ranges explicitly defined by the developer in the custom layout implementation.
+> Since API version 20, when child components within a custom layout have their [LayoutPolicy](./ts-universal-attributes-size.md#layoutpolicy15) object's **fixAtIdealSize** property set to **true**, these components will ignore any layout constraints from their parent component. Instead, they will adhere to the size ranges explicitly defined by the developer in the custom layout implementation.
 > 
-> Lazy loading (including [Repeat](../../../ui/state-management/arkts-new-rendering-control-repeat.md) and [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md)) is not supported in custom layouts.
+> Lazy loading (including [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)) is not supported in custom layouts.
 
 ## onMeasureSize<sup>10+</sup>
 
@@ -56,7 +56,7 @@ Invoked when the custom component needs to determine the positions of its child 
 
 | Name           | Type                                                        |Mandatory| Description              |
 |----------------|------------------------------------------------------------|---|------------------|
-| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            |Yes|Information about the component's computed layout properties after measurement.        |
+| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            |Yes|Information about the component's computed layout properties after measurement of the parent component (custom component).        |
 | children       | Array&lt;[Layoutable](#layoutable10)&gt;                   |Yes|Array containing layout information for all child components after measurement.        |
 | constraint     | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Layout constraints applied to the component.|
 
@@ -66,17 +66,17 @@ See the [example for customizing a layout](#example).
 
 ## GeometryInfo<sup>10+</sup>
 
-Provides the parent component layout information. Inherits from [SizeResult](#sizeresult10).
+Provides the parent component (custom component) layout information. Inherits from [SizeResult](#sizeresult10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type     |Read-Only|Optional| Description                 |
-|-------------|-----------|------|------|---------------------|
-| borderWidth | [EdgeWidth](ts-types.md#edgewidths9) |No|No| Border width of the parent component.<br>Unit: vp           |
-| margin      | [Margin](ts-types.md#margin)       | No|No|Margin of the parent component.<br>Unit: vp      |
-| padding     | [Padding](ts-types.md#padding)   |No|No| Padding of the parent component.<br>Unit: vp|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| borderWidth | [EdgeWidth](ts-types.md#edgewidths9) |No|No| Border width of the parent component (custom component).<br>Unit: vp.           |
+| margin      | [Margin](ts-types.md#margin)       | No|No|Margin information of the parent component (custom component).<br>Unit: vp.      |
+| padding     | [Padding](ts-types.md#padding)   |No|No| Padding information of the parent component (custom component).<br>Unit: vp.|
 
 ## Layoutable<sup>10+</sup>
 
@@ -89,11 +89,11 @@ Provides the child component layout information.
 | Name        | Type      | Read-Only|Optional|  Description                                                     |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
 | measureResult| [MeasureResult](#measureresult10) |   No|No| Measurement result of the child component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Unit: vp    |
-| uniqueId<sup>18+</sup>| number | No|No| Unique ID that the system assigns to the child component.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| uniqueId<sup>18+</sup>| number | No|Yes| Unique ID that the system assigns to the child component.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ### layout
 
-layout(position: Position)
+layout(position: Position) : void
 
 Applies the specified position information to the child component.
 
@@ -121,7 +121,7 @@ Obtains the margin values of the child component.
 
 | Type                         | Description                                       |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  |  Margin values of the child component.  |
+| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  Margin values of the child component.  |
 
  ### getPadding<sup>12+</sup>
 
@@ -137,7 +137,7 @@ getPadding() : DirectionalEdgesT\<number>
 
 | Type                         | Description                                       |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  |  Padding values of the child component. |
+| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  Padding values of the child component. |
 
 ### getBorderWidth<sup>12+</sup>
 
@@ -153,7 +153,7 @@ Obtains the border widths of the child component.
 
 | Type                         | Description                                       |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  |  Border widths of the child component. |
+| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  Border widths of the child component. |
 
 ## Measurable<sup>10+</sup>
 
@@ -169,9 +169,9 @@ Provides the child component position information.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type      | Mandatory     |  Description                                                     |
-|--------------|---------------------------------- | -----------------------------------------------|---------------------|
-| uniqueId<sup>18+</sup>| number | No| Unique ID that the system assigns to the child component.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| uniqueId<sup>18+</sup>| number | No| Yes| Unique ID that the system assigns to the child component.|
 
 ### measure
 
@@ -210,7 +210,7 @@ Provides the child component position information.
 
  | Type                              | Description                    |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  | Margin values of the child component.  |
+ |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | Margin values of the child component.  |
 
 ### getPadding<sup>12+</sup>
 
@@ -226,7 +226,7 @@ Obtains the padding values of the child component.
 
  | Type                              | Description                    |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  | Padding values of the child component.  |
+ |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | Padding values of the child component.  |
 
  ### getBorderWidth<sup>12+</sup>
 
@@ -242,7 +242,7 @@ Obtains the border widths of the child component.
 
  | Type                              | Description                    |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  | Border widths of the child component.|
+ |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | Border widths of the child component.|
 
 
 ## MeasureResult<sup>10+</sup>
@@ -263,25 +263,8 @@ Provides the component size information.
 
 | Name    | Type  |Read-Only|Optional| Description   |
 |--------|--------|------|------|-------|
-| width  | number | No|No|Width obtained from the measurement result.<br>Unit: vp|
-| height | number | No|No|Height obtained from the measurement result.<br>Unit: vp|
-
-## DirectionalEdgesT\<T><sup>12+</sup>
-
-Defines the directional edges.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name  | Type|Read-Only|Optional| Description            |
-| ------ | ---- |------|------| ---------------- |
-| start   | T    |No|No| Start edge. It is the left edge if the direction is left-to-right and the right edge if the direction is right-to-left.|
-| end    | T    | No|No|End edge. It is the right edge if the direction is left-to-right and the left edge if the direction is right-to-left.|
-| top  | T    | No|No|Top edge.|
-| bottom | T    | No|No|Bottom edge.|
+| width  | number | No|No|Width obtained from the measurement result.<br>Unit: vp.|
+| height | number | No|No|Height obtained from the measurement result.<br>Unit: vp.|
 
 > **NOTE**
 >
@@ -346,8 +329,8 @@ This API is supported since API version 9 and deprecated since API version 10. I
 | constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)   | No|No|Constraint size of the child component.                      |
 | borderInfo | [LayoutBorderInfo](#layoutborderinfodeprecated)              | No|No|Provides the border information of the child component.                    |
 | position   | [Position](ts-types.md#position)                             | No|No|Position coordinates of the child component.                      |
-| measure    | (childConstraint: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)) =&gt; void |No|No| Method called to apply the size constraint to the child component.|
-| layout     | (LayoutInfo: [LayoutInfo](#layoutinfodeprecated)) =&gt; void | No|No|Method called to apply the specified position information to the child component.|
+| measure    | (childConstraint: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)) |No|No| Method called to apply the size constraint to the child component.|
+| layout     | (childLayoutInfo: [LayoutInfo](#layoutinfodeprecated)) | No|No|Method called to apply the specified position information to the child component.|
 
 ## LayoutBorderInfo<sup>(deprecated)</sup>
 
@@ -359,8 +342,8 @@ This API is supported since API version 9 and deprecated since API version 10. I
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                                | Read-Only|Optional|Description                     |
-|-------------|--------------------------------------|------|------|-------------------------|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
 | borderWidth | [EdgeWidths](ts-types.md#edgewidths9) | No|No|Edge widths in different directions of the component.|
 | margin      | [Margin](ts-types.md#margin)         | No|No|Margin values in different directions of the component.  |
 | padding     | [Padding](ts-types.md#padding)       | No|No|Padding values in different directions of the component.  |
@@ -600,7 +583,7 @@ struct CustomLayout {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      console.log("child uniqueId: ", child.uniqueId)
+      console.info("child uniqueId: ", child.uniqueId)
       const uiContext = this.getUIContext()
       if (uiContext) {
         let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(child.uniqueId) // Obtain the FrameNode of the NodeContainer component.
@@ -625,7 +608,7 @@ struct CustomLayout {
 ![custom_layout_demo3.jpg](figures/custom_layout_demo3.jpg)
 
 ### Example 4: Allowing the Child Component to Ignore Parent Component Size Constraints
-This example demonstrates how to use the **fixAtIdealSize** property of the [LayoutPolicy](ts-types.md#layoutpolicy15) object to allow the child component to ignore parent component size constraints.
+This example demonstrates how to use the **fixAtIdealSize** property of the [LayoutPolicy](./ts-universal-attributes-size.md#layoutpolicy15) object to allow the child component to ignore parent component size constraints.
 ```ts
 @Entry
 @Component

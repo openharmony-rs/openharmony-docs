@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 photoAccessHelper提供监听指定媒体资源变更的接口。
 

@@ -1,4 +1,10 @@
 # Stack
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **Stack** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
 
@@ -11,10 +17,13 @@ The **Stack** component provides a stack container where child components are su
 
 This component can contain child components.
 
-
 ## APIs
 
 Stack(options?: StackOptions)
+
+> **NOTE**
+>
+> Excessive nesting of components can lead to performance degradation. In some scenarios, using component attributes directly or leveraging system APIs can achieve the same effect as the stack container, reducing the number of nested components and optimizing performance. For best practices, see [Preferentially Using Component Properties Instead of Nested Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-nesting-optimization#section78181114123811).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -26,19 +35,23 @@ Stack(options?: StackOptions)
 
 | Name      | Type                                   | Mandatory| Description                                                   |
 | ------------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
-| options | [StackOptions](#stackoptions14) | No  | Alignment of child components in the container.|
+| options | [StackOptions](#stackoptions18) | No  | Alignment of child components in the container.|
 
-## StackOptions<sup>14+</sup>
+## StackOptions<sup>18+</sup>
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 14.
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type           | Mandatory| Description                       |
-| ------------ | --------------- | ---- | --------------------------- |
-| alignContent | [Alignment](ts-appendix-enums.md#alignment) | No  | Alignment of child components in the container.<br>Default value: **Alignment.Center**|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| alignContent<sup>7+</sup> | [Alignment](ts-appendix-enums.md#alignment) | No| Yes  | Alignment of child components in the container.<br>Default value: **Alignment.Center**<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -48,7 +61,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 alignContent(value: Alignment)
 
-Sets the alignment of all child components in the container. When both this attribute and the universal attribute [align](ts-universal-attributes-location.md#align) are set, whichever is set last takes effect.
+Alignment of child components in the container. When this attribute and [align](ts-universal-attributes-location.md#align) are set at the same time, the latter setting takes effect. When this attribute and the constructor input parameters of the API are set at the same time, the setting of the effective attribute takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -60,8 +73,11 @@ Sets the alignment of all child components in the container. When both this attr
 
 | Name| Type                                       | Mandatory| Description                                                       |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
-| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Alignment of child components in the container.<br>Default value: **Alignment.Center**|
+| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Alignment of child components in the container.<br>Default value: **Alignment.Center**<br>Invalid values are treated as the default value.|
 
+## Events
+
+The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 

@@ -1,4 +1,10 @@
 # ArkUI_Rect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 

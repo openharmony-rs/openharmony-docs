@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -170,7 +170,7 @@ Can not use camera cause of preempted.
 
 **处理步骤**
 
-N/A
+将当前开启的摄像头关闭。
 
 ## 7400110 与当前配置存在冲突
 

@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 
 > **说明：**
@@ -285,7 +285,7 @@ The image format does not match.
 
 更换匹配类型的图片。
 
-## 62980113 图片未知格式。
+## 62980113 图片未知格式
 
 **错误信息**
 

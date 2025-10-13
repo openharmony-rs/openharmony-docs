@@ -1,5 +1,12 @@
 # OH_Filter
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanamaru-->
+<!--Designer: @gaoweihua-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 滤镜结构体，用来生成滤镜位图。

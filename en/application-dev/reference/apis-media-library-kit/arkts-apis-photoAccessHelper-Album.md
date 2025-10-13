@@ -1,4 +1,10 @@
 # Interface (Album)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -18,10 +24,10 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name          | Type   | Readable  | Writable | Description  |
+| Name          | Type   | Read-Only  | Optional | Description  |
 | ------------ | ------ | ---- | ---- | ------- |
-| imageCount<sup>11+</sup> | number | Yes  | No  | Number of images in the album.|
-| videoCount<sup>11+</sup> | number | Yes  | No  | Number of videos in the album.|
+| imageCount<sup>11+</sup> | number | Yes  | Yes  | Number of images in the album.|
+| videoCount<sup>11+</sup> | number | Yes  | Yes  | Number of videos in the album.|
 
 ## commitModify
 
@@ -66,7 +72,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
   let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
   album.albumName = 'hello';
   album.commitModify((err) => {
     if (err !== undefined) {
@@ -122,7 +136,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
   let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
   album.albumName = 'hello';
   album.commitModify().then(() => {
     console.info('commitModify successfully');
@@ -160,7 +182,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -184,6 +206,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('addAssetsDemoCallback asset is undefined');
+      return;
+    }
     album.addAssets([asset], (err) => {
       if (err === undefined) {
         console.info('album addAssets successfully');
@@ -230,7 +256,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -255,6 +281,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('addAssetsDemoPromise asset is undefined');
+      return;
+    }
     album.addAssets([asset]).then(() => {
       console.info('album addAssets successfully');
     }).catch((err: BusinessError) => {
@@ -294,7 +324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -318,6 +348,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('removeAssetsDemoCallback asset is undefined');
+      return;
+    }
     album.removeAssets([asset], (err) => {
       if (err === undefined) {
         console.info('album removeAssets successfully');
@@ -364,7 +398,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -387,8 +421,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('removeAssetsPromise albums is undefined');
+      return;
+    }
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('removeAssetsPromise asset is undefined');
+      return;
+    }
     album.removeAssets([asset]).then(() => {
       console.info('album removeAssets successfully');
     }).catch((err: BusinessError) => {

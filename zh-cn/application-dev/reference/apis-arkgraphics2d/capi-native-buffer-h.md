@@ -1,7 +1,7 @@
 # native_buffer.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @li_hui180; @ding-panyun-->
+<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->

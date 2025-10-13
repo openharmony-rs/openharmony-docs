@@ -1,4 +1,10 @@
 # Audio Monitoring
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio monitoring enables real-time transmission of audio to headphones, allowing users to hear themselves or other relevant sounds in real time.
 

@@ -4,7 +4,9 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+从API20开始支持音频低时延耳返。
 
 AudioLoopback是音频返听器，可将音频以更低时延的方式实时传输到耳机中，让用户可以实时听到自己或者其他的相关声音。
 

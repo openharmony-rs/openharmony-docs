@@ -1,5 +1,12 @@
 # 鼠标光标开发指导
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 场景介绍
 
 鼠标光标控制提供鼠标光标显示和隐藏、光标样式查询和设置的能力。使用场景例如：用户在全屏观看视频时，开发者可以控制鼠标光标的显示隐藏；当用户执行取色时，开发者可以将鼠标光标样式切换为取色器样式。
@@ -16,8 +23,8 @@ import { pointer } from '@kit.InputKit';
 
 | 接口名称                                                       | 描述                                                         |
 | ------------------------------------------ | ------------------------------------------------------- |
-| isPointerVisible(callback: AsyncCallback\<boolean>): void | 获取鼠标指针显示或隐藏状态。                                 |
-| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | 设置鼠标指针显示或隐藏状态，该接口会影响全局鼠标光标的显示状态。 |
+| isPointerVisible(callback: AsyncCallback\<boolean>): void | 获取鼠标光标显示或隐藏状态。                                 |
+| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | 设置鼠标光标显示或隐藏状态，该接口会影响全局鼠标光标的显示状态。 |
 | setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | 设置鼠标光标样式，该接口会影响指定窗口鼠标光标样式。         |
 | getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | 查询鼠标光标样式。                                           |
 
@@ -101,25 +108,26 @@ struct Index {
         .onClick(() => {
           // 1.开发者使能取色功能
           // 2.调用窗口实例获取对应的窗口id
-          window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, windowClass: window.Window) => {
-            if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
-              return;
-            }
-            let windowId = windowClass.getWindowProperties().id;
-            if (windowId < 0) {
-              console.info(`Invalid windowId`);
-              return;
-            }
-            try {
-              // 3.设置鼠标光标样式为取色器样式
-              pointer.setPointerStyle(windowId, pointer.PointerStyle.COLOR_SUCKER).then(() => {
-                console.info(`Successfully set mouse pointer style`);
-              });
-            } catch (error) {
-              console.error(`Failed to set the pointer style, error=${JSON.stringify(error)}, msg=${error.message}`);
-            }
-          });
+          window.getLastWindow(this.getUIContext().getHostContext(),
+            (error: BusinessError, windowClass: window.Window) => {
+              if (error.code) {
+                console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+                return;
+              }
+              let windowId = windowClass.getWindowProperties().id;
+              if (windowId < 0) {
+                console.info(`Invalid windowId`);
+                return;
+              }
+              try {
+                // 3.设置鼠标光标样式为取色器样式
+                pointer.setPointerStyle(windowId, pointer.PointerStyle.COLOR_SUCKER).then(() => {
+                  console.info(`Successfully set mouse pointer style`);
+                });
+              } catch (error) {
+                console.error(`Failed to set the pointer style, error=${JSON.stringify(error)}, msg=${error.message}`);
+              }
+            });
         })
     }
   }
@@ -139,25 +147,26 @@ struct Index {
       Text()
         .onClick(() => {
           // 4.取色结束
-          window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, windowClass: window.Window) => {
-            if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
-              return;
-            }
-            let windowId = windowClass.getWindowProperties().id;
-            if (windowId < 0) {
-              console.info(`Invalid windowId`);
-              return;
-            }
-            try {
-              // 5.设置鼠标光标样式为默认样式
-              pointer.setPointerStyle(windowId, pointer.PointerStyle.DEFAULT).then(() => {
-                console.info(`Successfully set mouse pointer style`);
-              });
-            } catch (error) {
-              console.error(`Failed to set the pointer style, error=${JSON.stringify(error)}, msg=${error.message}`);
-            }
-          });
+          window.getLastWindow(this.getUIContext().getHostContext(),
+            (error: BusinessError, windowClass: window.Window) => {
+              if (error.code) {
+                console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+                return;
+              }
+              let windowId = windowClass.getWindowProperties().id;
+              if (windowId < 0) {
+                console.info(`Invalid windowId`);
+                return;
+              }
+              try {
+                // 5.设置鼠标光标样式为默认样式
+                pointer.setPointerStyle(windowId, pointer.PointerStyle.DEFAULT).then(() => {
+                  console.info(`Successfully set mouse pointer style`);
+                });
+              } catch (error) {
+                console.error(`Failed to set the pointer style, error=${JSON.stringify(error)}, msg=${error.message}`);
+              }
+            });
         })
     }
   }

@@ -1,5 +1,12 @@
 # background_process_manager.h
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @hongjianfeng-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 The **background_process_manager.h** file declares the APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through **OH_Ability_StartNativeChildProcess**.

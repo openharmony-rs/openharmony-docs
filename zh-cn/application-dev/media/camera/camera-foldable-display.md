@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 折叠设备形态各异，在相机应用的开发过程中需要统一的摄像头切换方案，以确保用户在拍照、录像过程中获得更好的体验。
 
 一台可折叠设备在不同折叠状态下，可使用不同的相机。系统会标识所有摄像头，每个摄像头与一个折叠状态相对应，表示该摄像头可在对应的折叠状态下使用。应用可调用[CameraManager.on('foldStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#onfoldstatuschange12)或[display.on('foldStatusChange')](../../reference/apis-arkui/js-apis-display.md#displayonfoldstatuschange10)监听设备的折叠状态变化，并调用[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)获取当前状态下可用相机，完成相应适配，确保应用在折叠状态变更时的用户体验。
@@ -204,12 +204,10 @@ struct Index {
       console.info(`${TAG} registerFoldStatusChanged call failed, error: ${err.code}`);
       return;
     }
-    if (foldStatusInfo && foldStatusInfo.supportedCameras) {
-      console.info(`${TAG} foldStatusChanged foldStatus: ${foldStatusInfo.foldStatus}`);
-      for (let i = 0; i < foldStatusInfo.supportedCameras.length; i++) {
-        console.info(TAG +
-          `foldStatusChanged camera[${i}]: ${foldStatusInfo.supportedCameras[i].cameraId},cameraPosition: ${foldStatusInfo.supportedCameras[i].cameraPosition}`);
-      }
+    console.info(TAG + 'foldStatusChanged foldStatus: ' + foldStatusInfo.foldStatus);
+    for (let i = 0; i < foldStatusInfo.supportedCameras.length; i++) {
+      console.info(TAG +
+        `foldStatusChanged camera[${i}]: ${foldStatusInfo.supportedCameras[i].cameraId},cameraPosition: ${foldStatusInfo.supportedCameras[i].cameraPosition}`);
     }
     AppStorage.setOrCreate<number>('foldStatus', foldStatusInfo.foldStatus);
   }
@@ -256,7 +254,7 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    console.log(TAG + 'aboutToAppear is called');
+    console.info(TAG + 'aboutToAppear is called');
     this.initContext();
     this.initCameraManager();
     this.requestPermissionsFn();
@@ -327,6 +325,10 @@ struct Index {
   }
 
   async loadXComponent(): Promise<void> {
+    if (!this.mXComponentController) {
+      console.error(TAG + 'mXComponentController is null');
+      return;
+    }
     this.mSurfaceId = this.mXComponentController.getXComponentSurfaceId();
     this.mXComponentController.setXComponentSurfaceRect(this.surfaceRect);
     console.info(TAG + `mCameraPosition: ${this.mCameraPosition}`)
@@ -360,7 +362,7 @@ struct Index {
 
     // 获取相机列表。
     let cameraArray: Array<camera.CameraDevice> = this.mCameraManager.getSupportedCameras();
-    if (cameraArray.length <= 0) {
+    if (!cameraArray || cameraArray.length == 0) {
       console.error(TAG + 'cameraManager.getSupportedCameras error');
       return;
     }
@@ -406,6 +408,7 @@ struct Index {
     let isSupportPhotoMode: boolean = sceneModes.indexOf(camera.SceneMode.NORMAL_PHOTO) >= 0;
     if (!isSupportPhotoMode) {
       console.error(TAG + 'photo mode not support');
+      await this.releaseCamera();
       return;
     }
 
@@ -418,8 +421,9 @@ struct Index {
     }
     console.info(TAG + 'outputCapability: ' + JSON.stringify(cameraOutputCapability));
     let previewProfile = this.getPreviewProfile(cameraOutputCapability);
-    if (previewProfile === undefined) {
+    if (!previewProfile) {
       console.error(TAG + 'The resolution of the current preview stream is not supported.');
+      await this.releaseCamera();
       return;
     }
     this.previewProfileObj = previewProfile;
@@ -431,18 +435,26 @@ struct Index {
       let err = error as BusinessError;
       console.error(TAG + `Failed to create the PreviewOutput instance. error code: ${err.code}`);
     }
-    if (this.mPreviewOutput === undefined) {
+    if (!this.mPreviewOutput) {
+      await this.releaseCamera();
       return;
     }
 
     //创建会话。
     try {
-      this.mPhotoSession = this.mCameraManager.createSession(camera.SceneMode.NORMAL_PHOTO) as camera.PhotoSession;
+      let session = this.mCameraManager.createSession(camera.SceneMode.NORMAL_PHOTO);
+      if (!session) {
+        await this.releaseCamera();
+        return;
+      }
+      this.mPhotoSession = session as camera.PhotoSession;
     } catch (error) {
       let err = error as BusinessError;
       console.error(TAG + 'Failed to create the session instance. errorCode = ' + err.code);
     }
-    if (this.mPhotoSession === undefined) {
+
+    if (!this.mPhotoSession) {
+      await this.releaseCamera();
       return;
     }
 

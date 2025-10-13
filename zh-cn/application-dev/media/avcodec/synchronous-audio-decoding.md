@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 从API 20开始，支持音频解码同步模式。
 

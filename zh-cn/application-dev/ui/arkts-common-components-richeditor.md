@@ -744,7 +744,7 @@ Button('setSelection(0,2)', {
 
 ### 管理选中菜单项
 
-当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#onpreparemenu20)回调，可在该回调中进行菜单数据设置。
+当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
 ```ts
 // xxx.ets

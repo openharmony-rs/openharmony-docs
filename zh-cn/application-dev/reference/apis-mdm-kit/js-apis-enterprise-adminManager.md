@@ -544,4 +544,5 @@ try {
 |disable_backup_and_restore|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入backupAndRestore，禁用/启用备份和恢复能力，当前仅支持手机、平板使用。<br>feature传入backupAndRestore，查询是否禁用备份和恢复能力，当前仅支持手机、平板使用。|
 |installed_bundle_info_list|[bundleManager.getInstalledBundleList](js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)|获取设备指定用户下已安装应用列表。|
 |clear_up_application_data|[applicationManager.clearUpApplicationData](js-apis-enterprise-applicationManager.md#applicationmanagerclearupapplicationdata20)|清除应用产生的所有数据。|
+|disallow_unmute_device|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|feature传入unmuteDevice，禁用/启用设备媒体播放声音能力。<br>feature传入unmuteDevice，查询是否禁用设备媒体播放声音能力。|
 

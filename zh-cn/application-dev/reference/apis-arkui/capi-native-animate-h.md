@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
-<!--Designer: @yangfan229-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @HelloCrease-->
 
@@ -19,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->
 
 ## 汇总
 

@@ -1,12 +1,18 @@
 # Setting the private Property Using JSVM-API
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
-This topic walks you through on how to use JSVM-API to set a private property for an object.
+This topic walks you through on how to use JSVM-API to set a private property.
 
 ## Basic Concepts
 
-In JSVM-API, you can create private keys, use the keys to create and delete properties of objects, and persist private key symbols.
+JSVM-API provides the capability of creating private keys, creating and deleting properties on objects using the keys, and persistently saving private key symbols.
 
 ## Available APIs
 

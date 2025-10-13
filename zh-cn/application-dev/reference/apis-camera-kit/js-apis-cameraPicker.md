@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 本模块提供相机拍照与录制的能力。应用可选择媒体类型实现拍照和录制的功能。调用此类接口时，应用必须在界面UIAbility中调用，否则无法启动cameraPicker应用。
 
@@ -23,6 +23,10 @@ import { cameraPicker as picker } from '@kit.CameraKit';
 pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: PickerProfile): Promise\<PickerResult\>
 
 拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。
+
+> **说明：**
+>
+> 当应用在阔折叠设备上运行时，如果已在设备展开态下启动相机picker，将设备由展开态切换到折叠态，相机picker被自动推至后台。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

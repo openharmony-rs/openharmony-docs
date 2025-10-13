@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
-<!--Designer: @yangfan229-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @HelloCrease-->
 
@@ -28,7 +28,7 @@ clip(value: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 参数为boolean类型，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。 |
+| value  | boolean | 是   | 参数为boolean类型，设置子组件是否按照当前组件边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示子组件按照当前组件边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ clip(clip: Optional\<boolean>): T
 
 | 参数名 | 类型               | 必填                                                         | 说明 |
 | ------ | ------------------ | ------------------------------------------------------------ | ---- |
-| clip   | Optional\<boolean> | 是 |  参数为boolean类型，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。<br/>当clip的值为undefined时，恢复为不对子组件超出当前组件范围外的区域进行裁剪。    |
+| clip   | Optional\<boolean> | 是 |  参数为boolean类型，设置子组件是否按照当前组件边缘轮廓进行裁剪。<br/>默认值：false <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。<br/>当clip的值为undefined时，恢复为不对子组件超出当前组件范围外的区域进行裁剪。    |
 
 **返回值：**
 
@@ -144,7 +144,7 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | Optional\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当shape的值为undefined时，维持上次取值。 |
+| shape  | Optional\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当shape的值为undefined时，会重置当前值。 |
 
 **返回值：**
 
@@ -328,7 +328,7 @@ maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | Optional\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 在当前组件上加上指定形状的遮罩。<br/>当shape的值为undefined时，维持上次取值。 |
+| shape  | Optional\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 在当前组件上加上指定形状的遮罩。<br/>当shape的值为undefined时，会重置当前值。 |
 
 **返回值：**
 

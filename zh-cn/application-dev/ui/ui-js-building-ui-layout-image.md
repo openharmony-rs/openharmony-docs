@@ -1,4 +1,10 @@
 # 添加图片区域
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 添加图片区域通常用[image](../reference/apis-arkui/arkui-js/js-components-basic-image.md)组件来实现，使用的方法和text组件类似。
 

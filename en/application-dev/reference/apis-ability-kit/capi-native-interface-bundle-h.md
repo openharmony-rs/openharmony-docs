@@ -8,7 +8,7 @@
 
 ## Overview
 
-The module provides capabilities for querying the application's bundle information, such as the bundle name and fingerprint information.
+The file declares the APIs for obtaining the application information, including the bundle name, fingerprint information, and appId.
 
 **File to include**: <bundle/native_interface_bundle.h>
 
@@ -42,6 +42,7 @@ The module provides capabilities for querying the application's bundle informati
 | [char* OH_NativeBundle_GetCompatibleDeviceType()](#oh_nativebundle_getcompatibledevicetype) | Obtains the compatible device type of the current application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)](#oh_nativebundle_isdebugmode) | Checks whether the current application is in debug mode.|
 | [OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)](#oh_nativebundle_getmodulemetadata) | Obtains the module metadata array of the current application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
+| [BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)](#oh_nativebundle_getabilityresourceinfo) | Obtains a list of ability resource information that supports opening a specific file type. After using this function, you must call [OH_AbilityResourceInfo_Destroy](capi-ability-resource-info-h.md#oh_abilityresourceinfo_destroy) to release the pointer returned to prevent memory leakage.|
 
 ## Function Description
 
@@ -61,7 +62,7 @@ Obtains the current application information, including the bundle name and finge
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md) | Pointer to the OH_NativeBundle_ApplicationInfo object. If the returned object is NULL, the creation fails.<br>The possible cause is that the application address space is full, causing space allocation to fail.|
+| [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md) | Pointer to the OH_NativeBundle_ApplicationInfo object. If the returned object is NULL, the creation fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
 
 ### OH_NativeBundle_GetAppId()
 
@@ -79,7 +80,7 @@ Obtains the appId of the current application. The appId is the unique identifier
 
 | Type| Description|
 | -- | -- |
-| char* | Pointer to a new string that indicates the appID. If the returned object is NULL, the creation fails.<br>The possible cause is that the application address space is full, causing space allocation to fail.|
+| char* | Pointer to a new string that indicates the appID. If the returned object is NULL, the creation fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
 
 ### OH_NativeBundle_GetAppIdentifier()
 
@@ -96,7 +97,7 @@ Obtains the appIdentifier of the current application. The appIdentifier does not
 **Returns**
 | Type| Description|
 | -- | -- |
-| char* | Pointer to a new string that indicates the appIdentifier. If the returned object is NULL, the creation fails.<br>The possible cause is that the application address space is full, causing space allocation to fail.|
+| char* | Pointer to a new string that indicates the appIdentifier. If the returned object is NULL, the creation fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
 
 ### OH_NativeBundle_GetMainElementName()
 
@@ -113,7 +114,7 @@ Obtains the mainElement information of the current application, including the bu
 **Returns**
 | Type| Description|
 | -- | -- |
-| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | Pointer to the OH_NativeBundle_ElementName object. If the returned object is NULL, the creation fails.<br>The possible cause is that the application address space is full, causing space allocation to fail.|
+| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | Pointer to the OH_NativeBundle_ElementName object. If the returned object is NULL, the creation fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
 
 
 ### OH_NativeBundle_GetCompatibleDeviceType()
@@ -132,7 +133,7 @@ Obtains the compatible device type of the current application. It helps you opti
 
 | Type| Description|
 | -- | -- |
-| char* | Pointer to a new string that indicates the compatible device type. If the returned object is NULL, the creation fails.<br>The possible cause is that the application address space is full, causing space allocation to fail.|
+| char* | Pointer to a new string that indicates the compatible device type. If the returned object is NULL, the creation fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
 
 ### OH_NativeBundle_IsDebugMode()
 
@@ -180,4 +181,32 @@ Obtains the module metadata array of the current application. After using this f
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | An array of module metadata. If the returned object is NULL, the retrieval fails.<br>The possible cause is that the application address space is full, causing space allocation to fail.|
+| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | An array of module metadata. If the returned object is NULL, the retrieval fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
+
+### OH_NativeBundle_GetAbilityResourceInfo()
+
+```
+BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)
+```
+
+**Description**
+
+Obtains a list of ability resource information that supports opening a specific file type. After using this function, you must call [OH_AbilityResourceInfo_Destroy](capi-ability-resource-info-h.md#oh_abilityresourceinfo_destroy) to release the pointer returned to prevent memory leakage.
+
+**Since**: 21
+
+**Required permissions**: ohos.permission.GET_ABILITY_INFO
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| char* fileType | File type to query. You are advised to use [UTD types](../../database/uniform-data-type-descriptors.md) such as 'general.plain-text' and 'general.image'. For compatibility, [MIME types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com) (for example, 'text/xml') and file name extensions (for example, '.png') are also currently accepted. For details about the mappings between file name extensions and file types, see [Prebuilt UTDs](../../database/uniform-data-type-list.md). '\*/\*' is not supported.|
+| OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo | Double pointer to the list of ability resource information.|
+| size_t* size | Pointer to the size of the ability resource information list.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br> [BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The caller does not have the required permission.|

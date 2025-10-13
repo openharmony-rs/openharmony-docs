@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调整到舒适的显示大小。并对应用提供监听、控制页面缩放比例的功能，以便应用实现个性化的视觉效果。
 
@@ -74,6 +74,26 @@ struct WebComponent {
           }
           return false;
         })
+    }
+  }
+}
+```
+
+或者通过属性[zoomControlAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#zoomcontrolaccess22)设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .zoomControlAccess(false)
     }
   }
 }

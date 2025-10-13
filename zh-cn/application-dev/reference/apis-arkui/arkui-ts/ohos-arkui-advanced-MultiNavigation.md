@@ -40,12 +40,12 @@ MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|   名称   |          类型          | 必填  | 装饰器类型 | 说明 |
+|   名称   |          类型          | 只读 | 可选 | 说明 |
 |:---------:|:----------------------:|-----| ------ |-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) | 是   | @State | 设置路由栈。 |
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | @BuilderParam | 设置加载目标页面的路由规则。 |
-| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | - | 设置MultiNavigation模式变更时的回调。 |
-| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | - | 设置主页处于栈顶时的回调。 |
+| multiStack | [MultiNavPathStack](#multinavpathstack) | 否   | 否 | 设置路由栈。 |
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 否 | 否 | 设置加载目标页面的路由规则。 |
+| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | 是 | 设置MultiNavigation模式变更时的回调。 |
+| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | 是 | 设置主页处于栈顶时的回调。 |
 
 ## MultiNavPathStack
 
@@ -674,7 +674,9 @@ MultiNavigation用以加载NavDestination的方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |
 |name | string |是| 路由页面的标识符。 |
 | param | object | 否 | 路由跳转创建页面时传递的参数。 |
@@ -689,7 +691,9 @@ type OnNavigationModeChangeCallback = (mode: NavigationMode) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型                                                         | 必填 | 说明                           |
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                           |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------ |
 | mode | [NavigationMode](./ts-basic-components-navigation.md#navigationmode9枚举说明) | 是   | 当回调触发时的NavigationMode。 |
 
@@ -703,7 +707,9 @@ type OnHomeShowOnTopCallback = (name: string) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型   | 必填 | 说明                       |
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                       |
 | ---- | ------ | ---- | -------------------------- |
 | name | string | 是   | 显示在栈顶的页面的标识符。 |
 

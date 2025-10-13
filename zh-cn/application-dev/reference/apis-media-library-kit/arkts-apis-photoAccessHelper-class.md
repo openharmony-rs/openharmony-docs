@@ -5,7 +5,7 @@
 <!--Owner: @xuchangda; @yixiaoff-->
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -22,7 +22,7 @@
 | recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 如果需要根据枚举值推荐相应的图片，则配置此参数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | 否   | 如果需要根据文本信息推荐相应的图片，则配置此参数(如果同时配置了recommendationType，则仅textContextInfo生效)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
-## BaseSelectOptions<sup>12+</sup>
+## BaseSelectOptions<sup>10+</sup>
 
 图库选择选项基类。
 
@@ -48,7 +48,7 @@
 
 PhotoSelectOptions extends BaseSelectOptions
 
-图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions12)。
+图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions10)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -58,18 +58,18 @@ PhotoSelectOptions extends BaseSelectOptions
 | isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | subWindowName<sup>12+</sup>       | string | 否   | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 完成按钮显示的内容。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
-
+| contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | 否   | 用于恢复上次退出时PhotoPicker现场的信息。<br>上次完成选择时photoPicker将返回contextRecoveryInfo给应用，应用可使用返回的contextRecoveryInfo，在下次启动时恢复上次使用picker，最后浏览的宫格界面。 <br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。     |
 ## PhotoSelectResult
 
 返回图库选择后的结果集。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 | 名称                    | 类型                | 必填 | 说明                          |
 | ----------------------- | ------------------- | ---- | -------------------------------- |
-| photoUris       | Array&lt;string&gt; | 是   | 返回图库选择后的媒体文件的uri数组，此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。     |
-| isOriginalPhoto       | boolean | 是   | 返回图库选择后的媒体文件是否为原图。true为是原图，false为不是原图，默认值是false。     |
+| photoUris       | Array&lt;string&gt; | 是   | 返回图库选择后的媒体文件的uri数组，此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| isOriginalPhoto       | boolean | 是   | 返回图库选择后的媒体文件是否为原图。true表示是原图，false表示不是原图，默认值是false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| contextRecoveryInfo<sup>21+</sup>         | [ContextRecoveryInfo](#contextrecoveryinfo21)    | 是   | 当用户完成选择时返回的photoSelectResult将包含退出picker的上下文信息contextRecoveryInfo，支持应用下次启动PhotoPicker时设置给PhotoSelectOptions用于上次退出时现场的恢复。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## MimeTypeFilter<sup>19+</sup>
 
@@ -136,7 +136,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 ## PhotoViewMimeTypeFileSizeFilter<sup>20+</sup>
 
-媒体文件视频时长过滤配置。
+指定媒体文件类型和文件大小进行过滤。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -146,3 +146,20 @@ PhotoSelectOptions extends BaseSelectOptions
 | ----------------------- | ------------------- | ---- | -------------------------------- |
 | photoViewMimeType    | [PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)   | 是   | 指定媒体文件类型，用于文件大小过滤。 |
 | sizeFilter    | [FileSizeFilter](#filesizefilter19)   | 是   | 指定文件大小过滤规则。 |
+
+## ContextRecoveryInfo<sup>21+</sup>
+
+PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker时恢复上次退出时的现场。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 类型                | 必填 | 说明                          |
+| ----------------------- | ------------------- | ---- | -------------------------------- |
+| albumUri    | string | 是   | 用户选择图片后，退出时的相册信息。<br/>albumUri对应媒体库中相册的uri。<br>- 当上次在所有图片中选择时，albumUri为固定的"allPhotos"字符串。<br/>- 当用户在搜索结果/文本推荐/头像推荐中完成选择退出时，不支持下次恢复现场，此时Picker返回的albumUri为空字符串。<br/>默认值为空字符串。 |
+| time    | number   | 是   | 用户上次选择图片的宫格界面，左上角首张图片的时间。<br/>- 按拍摄时间排序的相册，返回拍摄时间。<br/>- 按保存时间排序的相册返回保存时间。默认为0。 |
+| displayName    | string   | 是   | 用户上次选择图片的宫格界面，左上角首张图片的文件名。默认为空字符串。 |
+| recommendationType    | number   | 是   | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未设置推荐时，默认为0。|
+| selectRecommendationType    | number   | 是   | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择未选中推荐项，选中"全部"时，默认为0。|
+| version    | number   | 是   | 现场数据版本号，用于校验现场信息数据与现场恢复能力的匹配度。<br>版本号必须大于等于1.0。|

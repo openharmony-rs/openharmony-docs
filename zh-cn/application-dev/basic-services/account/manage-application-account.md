@@ -18,12 +18,14 @@
    ```ts
    import { appAccount, BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- [import_the_application_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 2. 获取应用账号的实例对象。
 
    ```ts
    const appAccountManager = appAccount.createAppAccountManager();
    ```
+   <!-- [obtain_the_instance_object_of_the_application_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 ## 创建应用账号
 
@@ -41,6 +43,7 @@
      }
    };
    ```
+    <!-- [parameter_preparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 2. 调用[createAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md#createaccount9)接口，根据名称和选项创建应用账号。
 
@@ -51,6 +54,7 @@
        console.error(`createAccount failed, error: code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [create_an_app_account_based_on_the_name_and_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 ## 查询应用账号列表
 
@@ -61,11 +65,12 @@
 
    ```ts
    appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
-       console.log('getAllAccounts successfully, data: ' + JSON.stringify(data));
+       console.info('getAllAccounts successfully, data: ' + JSON.stringify(data));
    }).catch((err: BusinessError) => {
-       console.error('getAllAccounts failed, error: ' + JSON.stringify(err));
+       console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [query_the_account_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 ## 存取账号的凭据
 
@@ -78,26 +83,29 @@
    let credentialType: string = 'PIN_SIX';
    let credential: string = 'xxxxxx';
    ```
+   <!-- [prepare_parameters_to_specify_the_account_name_credential_type_and_credential](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 2. 调用[getCredential](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getcredential9)接口，获取账号的凭据。
 
    ```ts
    appAccountManager.getCredential(name, credentialType).then((data: string) => {
-       console.log('getCredential successfully, data: ' + data);
+       console.info('getCredential successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getCredential failed, error: ' + JSON.stringify(err));
+       console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [obtain_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 3. 调用[setCredential](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setcredential9)接口，设置账号的凭据。
 
    ```ts
    appAccountManager.setCredential(name, credentialType, credential).then(() => {
-       console.log('setCredential successfully');
+       console.info('setCredential successfully');
    }).catch((err: BusinessError) => {
-       console.error('setCredential failed: ' + JSON.stringify(err));
+       console.error(`setCredential failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [set_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 ## 存取账号的自定义数据
 
@@ -110,26 +118,29 @@
    let key: string = 'age';
    let value: string = '12';
    ```
+   <!-- [prepare_parameters_specify_the_account_name_and_custom_key_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 2. 调用[setCustomData](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setcustomdata9)接口，设置账号的自定义数据。
 
    ```ts
    appAccountManager.setCustomData(name, key, value).then(() => {
-       console.log('setCustomData successfully');
+       console.info('setCustomData successfully');
    }).catch((err: BusinessError) => {
-       console.error('setCustomData failed: ' + JSON.stringify(err));
+       console.error(`setCustomData failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [set_up_custom_data_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 3. 调用[getCustomData](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getcustomdata9)接口，获取账号的自定义数据。
 
    ```ts
    appAccountManager.getCustomData(name, key).then((data: string) => {
-       console.log('getCustomData successfully, data: ' + data);
+       console.info('getCustomData successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getCustomData failed, error: ' + JSON.stringify(err));
+       console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [obtain_the_custom_data_of_the_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 ## 存取账号的授权令牌
 
@@ -143,26 +154,29 @@
    let authType: string = 'getSocialData';
    let token: string = 'xxxxxx';
    ```
+   <!-- [prepare_parameters_to_specify_the_account_name_account_owner_authorization_type_and_authorization_token](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 2. 调用[setAuthToken](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setauthtoken9)接口，设置指定授权类型的授权令牌。
 
    ```ts
    appAccountManager.setAuthToken(name, authType, token).then(() => {
-       console.log('setAuthToken successfully');
+       console.info('setAuthToken successfully');
    }).catch((err: BusinessError) => {
-       console.error('setAuthToken failed: ' + JSON.stringify(err));
+       console.error(`setAuthToken failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [set_the_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 3. 调用[getAuthToken](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getauthtoken9)接口，获取指定授权类型的授权令牌。
 
    ```ts
    appAccountManager.getAuthToken(name, owner, authType).then((data: string) => {
-       console.log('getAuthToken successfully, data: ' + data);
+       console.info('getAuthToken successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getAuthToken failed, error: ' + JSON.stringify(err));
+       console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [obtain_an_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 ## 删除应用账号
 
@@ -175,11 +189,12 @@
    ```ts
    let name: string = 'ZhangSan';
    appAccountManager.removeAccount(name).then(() => {
-       console.log('removeAccount successfully');
+       console.info('removeAccount successfully');
    }).catch((err: BusinessError) => {
-       console.error('removeAccount failed, error: ' + JSON.stringify(err));
+       console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
+   <!-- [delete_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
 <!--RP1-->
 <!--RP1End-->

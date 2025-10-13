@@ -1,4 +1,10 @@
 # Global Audio Input Device Management
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use APIs to manage audio input devices, including querying audio input device information and listening for device connection status changes. For details about the APIs, see [AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md).
 

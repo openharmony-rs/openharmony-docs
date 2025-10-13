@@ -64,29 +64,30 @@
     // 创建NetConnection对象。
     let conn = connection.createNetConnection(netSpecifier, timeout);
     ```
-
-4. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
-
-    ```ts
-    // 订阅指定网络状态变化的通知。
-    conn.register((err: BusinessError, data: void) => {
-      console.log(JSON.stringify(err));
-    });
-    ```
-
-5. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
+    
+4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback参数，订阅关心的事件。
 
     ```ts
     // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
     conn.on('netAvailable', ((data: connection.NetHandle) => {
-      console.log("net is available, netId is " + data.netId);
+      console.info("net is available, netId is " + data.netId);
     }));
 
     // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户。
     conn.on('netUnavailable', ((data: void) => {
-      console.log("net is unavailable, data is " + JSON.stringify(data));
+      console.info("net is unavailable, data is " + JSON.stringify(data));
     }));
     ```
+    
+5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知，此接口要在调用on后调用。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
+
+    ```ts
+    // 订阅指定网络状态变化的通知。
+    conn.register((err: BusinessError, data: void) => {
+      console.info(JSON.stringify(err));
+    });
+    ```
+    
 6. 当不使用该网络时，可以调用该对象的[unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister)方法，取消订阅。
 
     ```ts
@@ -115,7 +116,7 @@ import { connection } from '@kit.NetworkKit';
 const netConnection = connection.createNetConnection();
 // 监听默认网络改变。
 netConnection.on('netAvailable', (data: connection.NetHandle) => {
- console.log(JSON.stringify(data));
+ console.info(JSON.stringify(data));
 })
 ```
 
@@ -149,7 +150,7 @@ function useSocket() {
       console.error('connect fail');
       return;
     }
-    console.log('connect success');
+    console.info('connect success');
     let tcpSendOptions: socket.TCPSendOptions = {
       data: 'Hello, server!'
     }
@@ -160,7 +161,7 @@ function useSocket() {
 // 通过socket发送数据。
 function socketSend(tcpSendOptions: socket.TCPSendOptions) {
   sock.send(tcpSendOptions).then(() => {
-    console.log('send success');
+    console.info('send success');
   }).catch((err: BusinessError) => {
     console.error('send fail');
   });
@@ -232,7 +233,7 @@ function socketTest() {
       // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)。
       connection.getDefaultNet().then((data:connection.NetHandle) => {
         if (data.netId == 0) {
-          console.log("don't have defaultNet");
+          console.info("don't have defaultNet");
           // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理。
           return;
         }
@@ -248,13 +249,13 @@ function socketTest() {
             for (let item of bearerTypesNum) {
               if (item == 0) {
                 // 蜂窝网络。
-                console.log(JSON.stringify("BEARER_CELLULAR"));
+                console.info(JSON.stringify("BEARER_CELLULAR"));
               } else if (item == 1) {
                 // Wi-Fi网络。
-                console.log(JSON.stringify("BEARER_WIFI"));
+                console.info(JSON.stringify("BEARER_WIFI"));
               } else if (item == 3) {
                 // 以太网网络。
-                console.log(JSON.stringify("BEARER_ETHERNET"));
+                console.info(JSON.stringify("BEARER_ETHERNET"));
               }
             }
     
@@ -264,19 +265,19 @@ function socketTest() {
             for (let item of dataNumber) {
               if (item == 0) {
                 // 表示网络可以访问运营商的MMSC(Multimedia Message Service，多媒体短信服务)发送和接收彩信。
-                console.log(JSON.stringify("NET_CAPABILITY_MMS"));
+                console.info(JSON.stringify("NET_CAPABILITY_MMS"));
               } else if (item == 11) {
                 // 表示网络流量未被计费。
-                console.log(JSON.stringify("NET_CAPABILITY_NOT_METERED"));
+                console.info(JSON.stringify("NET_CAPABILITY_NOT_METERED"));
               } else if (item == 12) {
                 // 表示该网络应具有访问Internet的能力，该能力由网络提供者设置。
-                console.log(JSON.stringify("NET_CAPABILITY_INTERNET"));
+                console.info(JSON.stringify("NET_CAPABILITY_INTERNET"));
               } else if (item == 15) {
                 // 表示网络不使用VPN(Virtual Private Network，虚拟专用网络)。
-                console.log(JSON.stringify("NET_CAPABILITY_NOT_VPN"));
+                console.info(JSON.stringify("NET_CAPABILITY_NOT_VPN"));
               } else if (item == 16) {
                 // 表示该网络访问Internet的能力被网络管理成功验证，该能力由网络管理模块设置。
-                console.log(JSON.stringify("NET_CAPABILITY_VALIDATED"));
+                console.info(JSON.stringify("NET_CAPABILITY_VALIDATED"));
               }
             }
           })

@@ -2,8 +2,9 @@
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
-<!--SE: @liweilu1-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 When a user needs to share files such as images and videos, use **Picker** to start Gallery for the user to select the files to share. No permission is required when Picker is used. Currently, a UIAbility is used to start Gallery with the window component. The procedure is as follows:
 
@@ -108,7 +109,7 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
    async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
      let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
      let uri = 'file://media/Photo/1/IMG_datetime_0001/displayName.jpg' // The URI must exist.
-     predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uri.toString());
+     predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uri);
      let fetchOptions: photoAccessHelper.FetchOptions = {
        fetchColumns: [photoAccessHelper.PhotoKeys.TITLE],
        predicates: predicates

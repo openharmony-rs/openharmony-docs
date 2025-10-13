@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 分段式拍照是相机的重要功能之一，即应用下发拍照任务后，系统将分多阶段上报不同质量的图片。
 
@@ -43,12 +43,18 @@
    function getPhotoOutput(cameraManager: camera.CameraManager, 
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
      let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
-     if (!photoProfilesArray) {
-       console.error("createOutput photoProfilesArray == null || undefined");
+     if (photoProfilesArray===null || photoProfilesArray===undefined) {
+       console.error("createOutput photoProfilesArray is null!");
+       return undefined;
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
-       photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
+      if (photoProfilesArray.length > 0) {
+          photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
+      } else {
+          console.error("the length of photoProfilesArray<=0!");
+          return undefined;
+      }
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to createPhotoOutput. error: ${err}`);

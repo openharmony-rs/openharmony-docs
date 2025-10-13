@@ -1,8 +1,8 @@
 # @ohos.app.ability.contextConstant (Context相关常量)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @wangkailong; @yangxuguang-huawei; @Luobniz21-->
-<!--Designer: @ccllee1; @li-weifeng2-->
+<!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
+<!--Designer: @ccllee1; @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 

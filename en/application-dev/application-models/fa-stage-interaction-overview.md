@@ -1,7 +1,13 @@
 # Component Interaction Between the FA Model and Stage Model
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The FA model is supported by API version 8 and earlier versions, and the stage model is recommended since API version 9. The FA model and stage model have their respective components. The FA model provides three types of application components: PageAbility, ServiceAbility, and DataAbility. The stage model provides two types of application components: UIAbility and ExtensionAbility.
+The [FA model](ability-terminology.md#fa-model) is supported by API version 8 and earlier versions, and the [stage model](ability-terminology.md#stage-model) is recommended since API version 9. The FA model and stage model have their respective components. The FA model provides three types of application components: PageAbility, ServiceAbility, and DataAbility. The stage model provides two types of application components: UIAbility and ExtensionAbility.
 
 
 You cannot use both models for the development of an application (see the figure below). However, a device (system) can contain applications developed on different models (scenario 3 in the figure below). In this case, their components may interact with each other.

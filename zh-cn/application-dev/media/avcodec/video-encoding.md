@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 开发者可以调用本模块的Native API接口，完成视频编码，即将未压缩的视频数据压缩成视频码流。
 
@@ -71,13 +71,13 @@
 6. Executing 状态具有三个子状态：Flushed、Running和End-of-Stream：
    - 在调用了OH_VideoEncoder_Start接口之后，编码器立即进入Running子状态。
    - 对于处于Executing状态的编码器，可以调用OH_VideoEncoder_Flush接口返回到Flushed子状态。
-   - 当待处理数据全部传递给编码器后，可以在input buffers队列中为最后一个入队的input buffer中添加[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/_core.md#oh_avcodecbufferflags-1)标记，遇到这个标记时，编码器会转换为End-of-Stream子状态。在此状态下，编码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
+   - 当待处理数据全部传递给编码器后，可以在input buffers队列中为最后一个入队的input buffer中添加[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)标记，遇到这个标记时，编码器会转换为End-of-Stream子状态。在此状态下，编码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
 
 7. 使用完编码器后，必须调用OH_VideoEncoder_Destroy接口销毁编码器实例，使编码器进入Released状态。
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/_video_encoder.md)。
+详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
 如下为视频编码调用关系图：
 
 - 虚线表示可选。
@@ -339,7 +339,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
 
-    参数校验规则请参考[OH_VideoEncoder_Configure()参考文档](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_configure)。
+    参数校验规则请参考[OH_VideoEncoder_Configure()参考文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)。
 
     参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力文档](obtain-supported-codecs.md)。
 
@@ -349,7 +349,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     // 配置视频帧速率。
     double frameRate = 30.0;
     // 配置视频YUV值范围标志。
-    bool rangeFlag = false;
+    int32_t rangeFlag = 0;
     // 配置视频原色。
     int32_t primary = static_cast<int32_t>(OH_ColorPrimary::COLOR_PRIMARY_BT709);
     // 配置传输特性。
@@ -517,7 +517,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     以下示例中，bufferInfo的成员变量：
 
     - index：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
-    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/_core.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
+    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
     - isValid：bufferInfo中存储的buffer实例是否有效。
 
     <!--RP6-->
@@ -633,11 +633,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     // 调用OH_VideoEncoder_Destroy，注销编码器。
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoEnc != nullptr) {
-        ret = OH_VideoEncoder_Destroy(videoEnc);
+        OH_VideoEncoder_Destroy(videoEnc);
         videoEnc = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // 异常处理。
     }
     inQueue.Flush();
     outQueue.Flush();
@@ -843,7 +840,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     - heightStride：获取到的buffer数据的高跨距。
     
     bufferInfo的成员变量：
-    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/_core.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
+    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
     - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
     - isValid：bufferInfo中存储的buffer实例是否有效。
     
@@ -984,7 +981,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     以下示例中，bufferInfo的成员变量：
     - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
-    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/_core.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针;
+    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针;
     - isValid：bufferInfo中存储的buffer实例是否有效。
 
     与“步骤-8. 写入编码图像”一样，使用同一个接口OH_VideoEncoder_PushInputBuffer，通知编码器输入结束，需要将flag标识成AVCODEC_BUFFER_FLAGS_EOS。

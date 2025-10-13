@@ -1,8 +1,8 @@
 # 用户文件概述
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -31,13 +31,11 @@
   - 其他文件（统称为文档类文件）
     以普通文件的形式存储在系统中，该类文件既包括普通的文本文件、压缩文件等，又包括以普通文件形式存储的图片/视频、音频文件，该类文件通常是以目录树的形式对外展示。
 
-- 多用户共享的文件：用户可以通过将文件放在共享文件区，实现多个用户之间文件的共享访问。
-  共享文件区的文件，也是以普通文件的形式存储在系统中，以目录树的形式对外展示。
 
 ### 外置存储
 
 外置存储，是指用户文件存储在外置可插拔设备上（如SD卡、U盘等）。外置存储设备上的文件，和内置存储设备共享区文件一样，可以被所有登录到系统中的用户看到。
 
-外置存储设备具备可插拔属性，因此系统提供了设备插拔事件的监听及挂载功能，用于管理外置存储设备，<!--RP1-->具体可参考[管理外置存储设备（仅对系统应用开放）](manage-external-storage.md)<!--RP1End-->。
+外置存储设备具备可插拔属性，因此系统提供了设备插拔事件的监听及挂载功能，用于管理外置存储设备，<!--RP1-->具体可参考[管理外置存储设备（仅对系统应用开放）](manage-external-storage-sys.md)<!--RP1End-->。
 
 外置存储设备上的文件，全部以普通文件的形式呈现，和内置存储设备上的文档类文件一样，采用目录树的形式对外展示。

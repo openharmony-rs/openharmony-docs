@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 实现长按页面元素或鼠标右键弹出来的菜单信息。示例代码参考[onContextMenuShow事件](./arkts-basic-components-web-events.md#oncontextmenushow9)。
 
@@ -92,7 +92,7 @@ getSourceUrl(): string
 
 | 类型     | 说明                       |
 | ------ | ------------------------ |
-| string | 如果选中的元素有src属性，返回src的url。 |
+| string | 如果选中的元素有src属性，返回src的url。返回url的最大上限为2M，超出上限时返回空字符串。 |
 
 ## existsImageContents<sup>9+</sup>
 
@@ -112,7 +112,7 @@ existsImageContents(): boolean
 
 getMediaType(): ContextMenuMediaType
 
-获取网页元素媒体类型。
+获取触发上下文菜单的网页元素类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -219,3 +219,17 @@ getPreviewHeight(): number
 | 类型     | 说明       |
 | ------ | ----------  |
 | number | 预览图的高。<br>单位：vp。 |
+
+## getContextMenuMediaType<sup>22+</sup>
+
+getContextMenuMediaType(): ContextMenuDataMediaType
+
+获取触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明       |
+| ------ | ----------  |
+| [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | 网页元素媒体类型。 |
