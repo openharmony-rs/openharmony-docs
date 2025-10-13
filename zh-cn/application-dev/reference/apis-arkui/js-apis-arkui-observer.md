@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @lushi871202; @yangfan229-->
+<!--Designer: @piggyguy; @lushi871202; @yangfan229-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @HelloCrease-->
 
