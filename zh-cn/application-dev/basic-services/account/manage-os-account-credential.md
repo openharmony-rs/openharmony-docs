@@ -56,6 +56,11 @@ import { osAccount } from '@kit.BasicServicesKit';
 
    <!-- @[create_credential_management_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+      let userIDM: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+```
+
+
 ## 注册PIN码输入器
 
 输入器用于传递PIN码数据，录入、认证PIN码前需要先注册输入器。
@@ -66,9 +71,27 @@ import { osAccount } from '@kit.BasicServicesKit';
 
    <!-- @[define_pin_inputer_pinData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+      let pinData: Uint8Array = new Uint8Array([31, 32, 33, 34, 35, 36]);
+	// ···
+      let inputer: osAccount.IInputer = {
+        onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+          callback.onSetData(authSubType, pinData);
+        }
+      }
+```
+
+
 2. 调用[registerInputer](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#registerinputer8)注册PIN码输入器。
 
    <!-- @[call_the_api_to_register_the_inputer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+      let PINAuth: osAccount.PINAuth = new osAccount.PINAuth();
+	// ···
+      PINAuth.registerInputer(inputer);
+```
+
 
 ## 打开会话
 
@@ -91,6 +114,16 @@ import { osAccount } from '@kit.BasicServicesKit';
 1. 定义PIN码凭据信息。
 
    <!-- @[define_pin_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+      let credentialInfo :osAccount.CredentialInfo = {
+		// ···
+        credType:osAccount.AuthType.PIN,
+        credSubType:osAccount.AuthSubType.PIN_SIX,
+        token:new Uint8Array([0])
+      };
+```
+
 
 2. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)接口添加指定的凭据信息，执行结果通过回调获取。
 

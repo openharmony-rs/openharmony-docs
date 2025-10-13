@@ -186,3 +186,16 @@ let plugin: osAccount.DomainPlugin = {
 具体开发实例如下：
 
 <!-- @[call_the_api_to_log_out_the_plug_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccountsPlugin.ets) -->
+
+``` TypeScript
+    try {
+      osAccount.DomainAccountManager.unregisterPlugin();
+      console.info('unregisterPlugin success.');
+	// ···
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`unregisterPlugin failed, code is ${err.code}, message is ${err.message}`);
+	// ···
+    }
+```
+

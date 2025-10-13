@@ -86,6 +86,22 @@ let osAccountMgr = osAccount.getAccountManager();
 
    <!-- @[create_a_domain_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
+``` TypeScript
+    try {
+      osAccountMgr.createOsAccountForDomain(osAccount.OsAccountType.NORMAL, domainInfo,
+        (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
+          console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
+          console.info('createOsAccountForDomain osAccountInfo:' + JSON.stringify(osAccountInfo));
+		// ···
+        });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
+	// ···
+    }
+```
+
+
 ## 删除域账号
 
 用户可以删除不再使用的域账号。由于域账号和系统账号是一一绑定关系，开发者可以使用[removeOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount)接口删除与目标域账号绑定的系统账号，进而实现删除域账号。
@@ -96,9 +112,43 @@ let osAccountMgr = osAccount.getAccountManager();
 
    <!-- @[obtain_the_system_account_id_based_on_the_domain_account_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
+``` TypeScript
+    let domainInfo: osAccount.DomainAccountInfo = {
+      domain: 'testDomain',
+      accountName: 'testAccountName'
+    };
+    let localId: number = 0;
+    try {
+      localId = await osAccountMgr.getOsAccountLocalIdForDomain(domainInfo);
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
+	// ···
+    }
+```
+
+
 2. 调用[removeOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount)方法删除域账号。
 
    <!-- @[delete_the_domain_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
+
+``` TypeScript
+    try {
+      osAccountMgr.removeOsAccount(localId, (err: BusinessError)=>{
+        if (err) {
+          console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+		// ···
+        } else {
+          console.info('removeOsAccount successfully');
+		// ···
+        }
+      });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+    }
+```
+
 
 ## 查询域账号信息
 
@@ -110,6 +160,34 @@ let osAccountMgr = osAccount.getAccountManager();
 
    <!-- @[define_query_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
+``` TypeScript
+    let options: osAccount.GetDomainAccountInfoOptions = {
+      domain: 'testDomain',
+      accountName: 'testAccountName'
+    }
+```
+
+
 2. 调用[getAccountInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getaccountinfo10)接口查询域账号信息。
 
    <!-- @[query_the_domain_account_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
+
+``` TypeScript
+    try {
+      osAccount.DomainAccountManager.getAccountInfo(options,
+        (err: BusinessError, result: osAccount.DomainAccountInfo) => {
+          if (err) {
+            console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
+			// ···
+          } else {
+            console.info('getAccountInfo result: ' + result);
+			// ···
+          }
+        });
+    } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
+	// ···
+    }
+```
+
