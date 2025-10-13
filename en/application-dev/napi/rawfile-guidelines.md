@@ -30,7 +30,7 @@ For details about the APIs, see [rawfile](../reference/apis-localization-kit/cap
 
 1. Create a project on DevEco Studio.
 
-![Creating a C++ application](figures/rawfile1.png)
+	![Creating a C++ application](figures/rawfile1.png)
 
 2. Add dependencies.
 

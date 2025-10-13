@@ -79,37 +79,37 @@ The HiView process obtains and caches the running data of the current CPU every 
 
 1. System CPU usage data
 
-The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
+	The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
 
-```
-cat  /proc/stat
-cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
-...
-```
+	```
+	cat  /proc/stat
+	cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
+	...
+	```
 
-Fields in the CPU indicator:
+	Fields in the CPU indicator:
 
-The CPU usage statistics from left to right indicate the following (cpu indicates the total running data of all CPUs, in jiffies):
+	The CPU usage statistics from left to right indicate the following (cpu indicates the total running data of all CPUs, in jiffies):
 
-- user: user-mode time occupied by non-low-priority processes (nice <= 0).
+	- user: user-mode time occupied by non-low-priority processes (nice <= 0).
 
-- nice: user-mode time occupied by low-priority processes (nice > 0).
+	- nice: user-mode time occupied by low-priority processes (nice > 0).
 
-- system: kernel-mode time.
+	- system: kernel-mode time.
 
-- idle: idle time (excluding I/O wait time).
+	- idle: idle time (excluding I/O wait time).
 
-- iowait: I/O wait time.
+	- iowait: I/O wait time.
 
-- irq: hard interrupt time.
+	- irq: hard interrupt time.
 
-- softirq: soft interrupt time.
+	- softirq: soft interrupt time.
 
-- steal: time of processes running in a virtualization environment but not on the VM.
+	- steal: time of processes running in a virtualization environment but not on the VM.
 
-- guest: time for the OS to run non-low-priority processes (nice <= 0) in a VM (included in the user field).
+	- guest: time for the OS to run non-low-priority processes (nice <= 0) in a VM (included in the user field).
 
-- guest_nice: time for the OS to run low-priority processes (nice > 0) in a VM (included in the nice field).
+	- guest_nice: time for the OS to run low-priority processes (nice > 0) in a VM (included in the nice field).
 
 2. Process/Thread CPU usage data
 
