@@ -1,4 +1,12 @@
 # LLDB工具（仅对系统应用开放）
+
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: Maxi_241437-->
+<!--Designer: da_wei_li11-->
+<!--Tester: chenhliang-->
+<!--Adviser: @fang-jinxu-->
+
 ## 概述
 LLDB（Low Level Debugger）是新一代高性能调试器。具备断点设置、变量查看与修改、内存操作、线程控制、表达式计算、堆栈回溯等功能，并支持跨平台和插件扩展。
 
