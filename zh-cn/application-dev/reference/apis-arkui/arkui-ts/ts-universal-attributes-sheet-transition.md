@@ -258,9 +258,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型       | 必填 | 说明                                                         |
-| ------- | ---------- | ---- | ------------------------------------------------------------ |
-| dismiss | () => void | 是   | 半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
+| 名称    | 类型       | 只读 | 可选 | 说明                                                         |
+| ------- | ---------- | ---- | ---- | ------------------------------------------------------------ |
+| dismiss | () => void | 否   | 否   | 半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
 
 ## SheetTitleOptions<sup>11+</sup>
 
@@ -270,10 +270,10 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                                   | 必填 | 说明                 |
-| -------- | -------------------------------------- | ---- | -------------------- |
-| title    | [ResourceStr](ts-types.md#resourcestr) | 是   | 半模态面板的主标题。 |
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否   | 半模态面板的副标题。 |
+| 名称     | 类型                                   | 只读 | 可选 | 说明                 |
+| -------- | -------------------------------------- | ---- | ---- | -------------------- |
+| title    | [ResourceStr](ts-types.md#resourcestr) | 否   | 否   | 半模态面板的主标题。 |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 半模态面板的副标题。 |
 
 ## SheetMode<sup>12+</sup>枚举说明
 
@@ -309,10 +309,10 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                       | 必填   | 说明            |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| dismiss | [Callback](./ts-types.md#callback12)\<void> | 是    | 半模态页面关闭回调函数。开发者需要退出页面时调用。 |
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 是    | 返回本次半模态页面退出的操作类型。<br />**说明：**<br /> DismissReason.SLIDE只生效半模态侧边弹窗形态，表示右滑退出。若镜像场景则表示左滑退出。<br /> DismissReason.SLIDE_DOWN生效半模态底部弹窗形态和居中弹窗形态，表示下滑退出。<br /> 半模态气泡弹窗形态无滑动退出能力。|
+| 名称              | 类型                                       | 只读   | 可选   | 说明            |
+| --------------- | ---------------------------------------- | ---- | ---- | ------------- |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭回调函数。开发者需要退出页面时调用。 |
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否    | 否    | 返回本次半模态页面退出的操作类型。<br />**说明：**<br /> DismissReason.SLIDE只生效半模态侧边弹窗形态，表示右滑退出。若镜像场景则表示左滑退出。<br /> DismissReason.SLIDE_DOWN生效半模态底部弹窗形态和居中弹窗形态，表示下滑退出。<br /> 半模态气泡弹窗形态无滑动退出能力。|
 
 ## SpringBackAction<sup>12+</sup>
 
@@ -322,9 +322,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                       | 必填   | 说明            |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| springBack | [Callback](./ts-types.md#callback12)\<void> | 是    | 半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。  |
+| 名称              | 类型                                       | 只读   | 可选   | 说明            |
+| --------------- | ---------------------------------------- | ---- | ---- | ------------- |
+| springBack | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。  |
 
 ## SheetKeyboardAvoidMode<sup>13+</sup>枚举说明
 
@@ -668,7 +668,7 @@ struct ListenKeyboardHeightChange {
         this.windowClass = data;
         try {
           if (this.windowClass !== undefined) {
-            console.log('success in listen height change');
+            console.info('success in listen height change');
             this.windowClass.on('keyboardHeightChange', this.callback);
           }
         } catch (exception) {
@@ -682,7 +682,7 @@ struct ListenKeyboardHeightChange {
   }
 
   callback = (height: number) => {
-    console.log('height change: ' + height);
+    console.info('height change: ' + height);
     if (height !== 0) {
       this.scroller.scrollTo({
         xOffset: 0, yOffset: height + this.scroller.currentOffset().yOffset,

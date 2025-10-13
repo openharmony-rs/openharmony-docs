@@ -3,7 +3,7 @@
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->
 <!--Designer: @hwzhangchuang-->
-<!--Tester: @Lyuxin-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 分布式设备管理简介

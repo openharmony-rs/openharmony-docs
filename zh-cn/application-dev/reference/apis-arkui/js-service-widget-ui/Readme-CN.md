@@ -1,4 +1,10 @@
 # JS服务卡片UI组件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 - 框架说明<!--card-comp-framework-overview-->
   - [文件组织](js-service-widget-file.md)

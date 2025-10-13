@@ -57,7 +57,7 @@ Native Messaging的错误列表。
 |------|------|------|------|------|
 | onConnect | connection: [ConnectionNativeInfo](#connectionnativeinfo) | 否 | 否 | 连接成功时的回调。 |
 | onDisconnect | connection: [ConnectionNativeInfo](#connectionnativeinfo) | 否 | 否 | 连接断开时的回调。 |
-| onFailed | code: [NmErrorCode](#NmErrorCode) | 否 | 否 | 连接失败时的回调, 返回错误码。 |
+| onFailed | code: [NmErrorCode](#nmerrorcode) | 否 | 否 | 连接失败时的回调, 返回错误码。 |
 
 ## webNativeMessagingExtensionManager.connectNative
 connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number
@@ -74,7 +74,7 @@ connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConne
 |------|------|------|------|
 | context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | Web原生消息扩展的上下文。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
-| callback | [WebExtensionConnectionCallback](#Webextensionconnectioncallback) | 是 | WebExtensionConnection状态的回调对象。 |
+| callback | [WebExtensionConnectionCallback](#webextensionconnectioncallback) | 是 | WebExtensionConnection状态的回调对象。 |
 
 **返回值:**
 

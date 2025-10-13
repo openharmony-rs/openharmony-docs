@@ -45,16 +45,19 @@ const translateYChangeValue: number = 180; // translateY每次变化的值
 const translateYChangeRange: number = 250; // translateY变化的范围
 const scaleXChangeValue: number = 0.6; // scaleX每次变化的值
 const scaleXChangeRange: number = 0.8; // scaleX每次变化的值
+
 // 样式属性类  
 class UIStyle {  
   public translateX: number = 0;  
   public translateY: number = 0;  
   public scaleX: number = 0.3;  
   public scaleY: number = 0.3;  
-}  
+}
+
 @Component  
 struct ComponentA {  
-  @Link uiStyle: UIStyle; // uiStyle的属性被多个组件使用  
+  @Link uiStyle: UIStyle; // uiStyle的属性被多个组件使用
+    
   build() {  
     Column() {  
       // 使用状态变量的组件  
@@ -67,6 +70,7 @@ struct ComponentA {
               y: this.uiStyle.scaleY  
             })  
         }  
+        
         Stack() {  
           Text('Hello World')  
         }  
@@ -90,17 +94,20 @@ struct ComponentA {
           })  
       }  
     }  
-  }  
-}  
+  }
+}
+
 @Component  
 struct SpecialImage {  
   @Link specialImageUiStyle: UIStyle;  
   private opacityNum: number = 0.5; // 默认透明度  
+    
   private isRenderSpecialImage(): number {  
     // Image每次渲染时透明度增加0.1, 在0-1之间循环  
     this.opacityNum = (this.opacityNum + opacityChangeValue) % opacityChangeRange;  
     return this.opacityNum;  
   }  
+  
   build() {  
     Column() {  
       Image($r('app.media.icon'))  
@@ -188,18 +195,21 @@ class UIStyle {
   translateStyle: TranslateStyle = new TranslateStyle();  
   scaleStyle: ScaleStyle = new ScaleStyle();  
 }  
+
 // 缩放属性类  
 @Observed  
 class ScaleStyle {  
   public scaleX: number = 0.3;  
   public scaleY: number = 0.3;  
 }  
+
 // 位移属性类  
 @Observed  
 class TranslateStyle {  
   public translateX: number = 0;  
   public translateY: number = 0;  
 }  
+
 @Component  
 struct ComponentA {  
   @ObjectLink scaleStyle: ScaleStyle;  
@@ -218,6 +228,7 @@ struct ComponentA {
 @Component  
 struct SpecialImage {  
   @Link specialImageScaleStyle: ScaleStyle;  
+  
   // isRenderSpecialImage函数  
   build() {  
     Column() {  
@@ -263,6 +274,7 @@ struct SpecialImage {
 @Component  
 struct Index {  
   @State indexMessage: string = 'Hello World';  
+  
   build() {  
     Row() {  
       Column() {  
@@ -274,18 +286,22 @@ struct Index {
     .height('100%')  
   }  
 }  
+
 @Component  
 struct ComponentA {  
   @Link componentAMessage: string;  
+  
   build() {  
     Column() {  
       ComponentB({ componentBMessage: this.componentAMessage })  
     }  
   }  
 }  
+
 @Component  
 struct ComponentB {  
   @Link componentBMessage: string;  
+  
   build() {  
     Column() {  
       Text(this.componentBMessage)  

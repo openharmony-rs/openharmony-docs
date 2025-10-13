@@ -137,7 +137,7 @@
     if (avPlayer == null) {
         return;
     }
-    if (surfaceId == null) {
+    if (surfaceId === '') {
         return;
     }
     avPlayer.surfaceId = surfaceId;
