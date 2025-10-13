@@ -1188,7 +1188,7 @@ export default class EntryAbility extends UIAbility {
 
 getGlobalRect(): Rect
 
-获取窗口在屏幕上的真实显示区域，同步接口。
+获取窗口在其所在物理屏幕上的真实显示区域，同步接口。
 
 在某些设备上，窗口显示时可能经过了缩放，此接口可以获取缩放后窗口在屏幕上的真实位置和大小。
 
