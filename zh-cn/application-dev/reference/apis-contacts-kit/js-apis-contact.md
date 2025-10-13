@@ -102,7 +102,8 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  // 获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
       fullName: 'xxx'
