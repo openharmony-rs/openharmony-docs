@@ -28,6 +28,9 @@
 ### 变更详情
 
 #### __GLOBAL-ClassDecorator类型变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `declare type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void`
 
@@ -55,6 +58,9 @@
   使用注解 (Annotation) 替代装饰器功能。
 
 #### __GLOBAL-MethodDecorator类型变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `declare type MethodDecorator = <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void`
 
@@ -88,6 +94,9 @@
   使用注解(Annotation)替代装饰器功能。
 
 #### __GLOBAL-ParameterDecorator类型变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `declare type ParameterDecorator = (target: Object, propertyKey: string | symbol, parameterIndex: number) => void`
 
@@ -115,6 +124,9 @@
   使用注解(Annotation)替代装饰器功能。
 
 #### __GLOBAL-PropertyDecorator类型变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `declare type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void`
 
@@ -142,6 +154,9 @@
   使用注解(Annotation)替代装饰器功能。
 
 #### __GLOBAL-PropertyKey类型变更
+
+**规则：** `arkts-builtin-narrow-types`
+
 **ArkTS1.1版本签名：**  
   `declare type PropertyKey = string | number | symbol`
 
@@ -162,6 +177,9 @@
   仅使用字符串作为对象属性键。
 
 #### __GLOBAL-FlatArray类型变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `type FlatArray<Arr, Depth extends number> = {"done": Arr,"recur": Arr extends ReadonlyArray<infer InnerArr> ? FlatArray<InnerArr, [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20][Depth]>: Arr}[Depth extends -1 ? "done" : "recur"]`
 
@@ -187,6 +205,9 @@
 ### 变更详情
 
 #### AggregateError-构造函数参数类型变更
+
+**规则：** `arkts-builtin-new-cotr`
+
 **ArkTS1.1版本签名：**  
   `constructor(errors: Iterable<any>, message?: string, options?: ErrorOptions): AggregateError`
 
@@ -231,6 +252,9 @@
   仅允许使用Error类型作为迭代器返回值的可迭代对象作为AggregateError构造器第一个参数，不建议使用其他类型对象作为参数传入。
 
 #### AggregateError-errors属性类型变更
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `errors: any[]`
 
@@ -263,6 +287,9 @@
   仅允许使用Error类型作为迭代器返回值的可迭代对象作为AggregateError构造器第一个参数，不建议使用其他类型对象作为参数传入。
 
 #### AggregateError-Constructor变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(errors: Iterable<any>, message?: string, options?: ErrorOptions): AggregateError`
 
@@ -317,6 +344,9 @@
 - ArkTS1.2构造函数新增参数options。
 
 #### Error构造函数入参变更
+
+**规则：** ``
+
 **ArkTS1.1版本签名：**  
   `constructor(message?: string): Error`
 
@@ -349,9 +379,6 @@
   | message | String | 否 | 错误的简要描述。默认值为无。 |
   | options | ErrorOptions | 否 | Error的属性，指示导致该错误的具体原始原因。其中ErrorOptions为ArkTS1.2版本新增类，只包含一个可选属性cause，表示导致该错误的具体原始原因。默认值为无。 |
 
-**适配建议：** 
-  ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
-
 **示例：**  
   ```typescript
   function createError() {
@@ -359,10 +386,16 @@
   }
   ```
 
+**适配建议：** 
+  ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
+
 ## ArrayBuffer
 - any类型变更为Object，返回值类型为布尔类型。
 
 #### ArrayBuffer-isView方法签名变更
+
+**规则：** `arkts-builtin-narrow-types`
+
 **ArkTS1.1版本签名：**  
   `static isView(arg: any): arg is ArrayBufferView`
 
@@ -421,6 +454,9 @@
 ### 变更详情
 
 #### ArrayBufferTypes类型移除
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `ArrayBuffer: ArrayBuffer`
 
@@ -446,6 +482,9 @@
   不使用ArrayBufferTypes，如果需要使用类似结构可以自定义类型。
 
 #### SharedArrayBuffer类型移除
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `SharedArrayBuffer: SharedArrayBuffer`
 
@@ -470,6 +509,9 @@
 ### 变更详情
 
 #### IArguments类型移除
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<any>`
 
@@ -492,6 +534,9 @@
   ArkTS1.2不能使用arguments，因此不需要使用IArguments。
 
 #### IArguments-callee属性移除
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `callee: Function`
 
@@ -514,6 +559,9 @@
   ArkTS1.2不能使用arguments，因此不需要使用callee。
 
 #### IArguments-length属性移除
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `length: number`
 
@@ -561,6 +609,9 @@
   静态语言不支持去修改prototype，建议创建新的对象。
 
 #### DateTimeFormatPartTypesRegistry变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `interface DateTimeFormatPartTypesRegistry {
     day: any
@@ -602,6 +653,9 @@
   不使用Intl.DateTimeFormatPartTypesRegistry。
 
 #### DisplayNames变更
+
+**规则：** `arkts-no-prototype-assignment`
+
 **ArkTS1.1版本签名：**  
   `prototype: DisplayNames`
 
@@ -617,6 +671,9 @@
   静态语言不支持去修改prototype，建议创建新的对象。
 
 #### ListFormat访问变更
+
+**规则：** `arkts-no-prototype-assignment`
+
 **ArkTS1.1版本签名：**  
   `prototype: ListFormat`
 
@@ -632,6 +689,9 @@
   静态语言不支持去修改prototype，建议创建新的对象。
 
 #### NumberFormat变更
+
+**规则：** `arkts-no-prototype-assignment`
+
 **ArkTS1.1版本签名：**  
   `readonly prototype: NumberFormat`
 
@@ -654,6 +714,9 @@
 ### 变更详情
 
 #### Iterable-Symbol.iterator变更
+
+**规则：** `arkts-builtin-symbol-iterator`
+
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): Iterator<T>`
 
@@ -698,6 +761,9 @@
 ### 变更详情
 
 #### Iterator-return方法变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `return?(value?: TReturn): IteratorResult<T, TReturn>`
 
@@ -744,6 +810,9 @@
   不使用return方法。
 
 #### Iterator-throw方法变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `throw?(e?: any): IteratorResult<T, TReturn>`
 
@@ -794,6 +863,9 @@
 ### 变更详情
 
 #### IteratorResult定义变更
+
+**规则：** `arkts-builtin-iterator-result-value`
+
 **ArkTS1.1版本签名：**  
   `type IteratorResult<T, TReturn = any> = IteratorYieldResult<T> | IteratorReturnResult<TReturn>`
 
@@ -857,6 +929,9 @@
 ### 变更详情
 
 #### IteratorReturnResult定义变更
+
+**规则：** `arkts-builtin-iterator-result-value`
+
 **ArkTS1.1版本签名：**  
   ```
   interface IteratorReturnResult<TReturn> {
@@ -887,6 +962,9 @@
 ### 变更详情
 
 #### IteratorYieldResult定义变更
+
+**规则：** `arkts-builtin-iterator-result-value`
+
 **ArkTS1.1版本签名：**  
   ```
   interface IteratorYieldResult<TYield> {
@@ -921,6 +999,9 @@
 ### 变更详情
 
 #### IterableIterator-Symbol.iterator变更
+
+**规则：** `arkts-builtin-symbol-iterator`
+
 **ArkTS1.1 版本签名：**  
   `[Symbol.iterator](): IterableIterator<T>`
 

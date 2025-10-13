@@ -15,7 +15,10 @@
 ## 变更详情
 
 ### Symbol.iterator变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-symbol-iterator`
+
+**ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<number>`
 
 **返回值：**
@@ -29,7 +32,7 @@
   let iter = Reflect.get(a, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `$_iterator(): IterableIterator<number>`
 
 **返回值：**
@@ -46,7 +49,10 @@
 **适配建议：** 建议仅使用for...of访问迭代器，不要显示访问迭代器。
 
 ### every方法变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `every(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
@@ -91,7 +97,7 @@ predicate函数返回值说明：
   arr.every(a.compare, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `every(predicate: (value: number, index: number, array: Uint16Array) => boolean): boolean`
 
 **参数：**
@@ -137,7 +143,10 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### filter方法变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `filter(predicate: (value: number, index: number, array: Uint16Array) => any, thisArg?: any): Uint16Array`
 
 **参数：**
@@ -182,7 +191,7 @@ predicate函数返回值说明：
   arr.filter(a.compare, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `filter(predicate: (value: number, index: number, array: Uint16Array) => boolean): Uint16Array`
 
 **参数：**
@@ -228,7 +237,10 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### find方法变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `find(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number | undefined`
 
 **参数：**
@@ -273,7 +285,7 @@ predicate函数返回值说明：
   arr.find(a.compare, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `find(predicate: (value: number, index: number, obj: Uint16Array) => boolean): number | undefined`
 
 **参数：**
@@ -319,7 +331,10 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### findIndex方法变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `findIndex(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number`
 
 **参数：**
@@ -364,7 +379,7 @@ predicate函数返回值说明：
   arr.findIndex(a.compare, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `findIndex(predicate: (value: number, index: number, obj: Uint16Array) => boolean): number`
 
 **参数：**
@@ -410,7 +425,10 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### forEach方法变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `forEach(callbackfn: (value: number, index: number, array: Uint16Array) => void, thisArg?: any): void`
 
 **参数：**
@@ -445,7 +463,7 @@ callbackfn函数参数说明：
   arr.forEach(a.foo, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `forEach(callbackfn: (value: number, index: number, array: Uint16Array) => void): void`
 
 **参数：**
@@ -481,7 +499,10 @@ callbackfn函数参数说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### map方法变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `map(callbackfn: (value: number, index: number, array: Uint16Array) => number, thisArg?: any): Uint16Array`
 
 **参数：**
@@ -526,7 +547,7 @@ callbackfn函数返回值说明：
   arr.map(a.foo, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `map(callbackfn: (value: number, index: number, array: Uint16Array) => number): Uint16Array`
 
 **参数：**
@@ -572,7 +593,10 @@ callbackfn函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### some方法变更
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `some(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
@@ -617,7 +641,7 @@ predicate函数返回值说明：
   arr.some(a.foo, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `some(predicate: (value: number, index: number, array: Uint16Array) => boolean): boolean`
 
 **参数：**
@@ -663,7 +687,10 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### from静态方法变更1
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Uint16Array`
 
 **参数：**
@@ -708,7 +735,7 @@ mapfn函数返回值说明：
   let arr3 = Uint16Array.from(arr, a.foo, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number): Uint16Array`
 
 **参数：**
@@ -754,7 +781,10 @@ mapfn函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### from静态方法变更2
-**ArkTS1.1版本签名:**  
+
+**规则：** `arkts-builtin-thisArgs`
+
+**ArkTS1.1版本签名：**  
   `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Uint16Array`
 
 **参数：**
@@ -799,7 +829,7 @@ mapfn函数返回值说明：
   let arr3 = Uint16Array.from(arr, a.foo, b);
   ```
 
-**ArkTS1.2版本签名:**  
+**ArkTS1.2版本签名：**  
   `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number): Uint16Array`
 
 **参数：**

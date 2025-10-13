@@ -23,6 +23,8 @@
 ### Array初始化变更
 - ArkTS1.2版本Array初始化时需要多加一个参数为初始值。
 
+**规则：** `arkts-builtin-new-cotr`
+
 **ArkTS1.1版本签名：**  
   `new Array<T>(arrayLength: number):Array<T>`
 
@@ -64,6 +66,9 @@
   增加初始值。
 
 ### Symbol.iterator变更
+
+**规则：** `arkts-builtin-symbol-iterator`
+
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<T>`
 
@@ -96,6 +101,9 @@
   建议仅使用for...of访问迭代器，不要显示访问迭代器。
 
 ### concat方法参数变更
+
+**规则：** `arkts-builtin-narrow-types`
+
 **ArkTS1.1版本签名：**  
   `concat(...items: (T | ConcatArray<T>)[]): T[]`
 
@@ -113,7 +121,7 @@
   ```typescript
   let arr1=new Array<number>();
   let arr2=new Array<number>();
-  arr1.concat(1, arr2)
+  arr1.concat(1, arr2);
   ```
 
 **ArkTS1.2版本签名：**  
@@ -130,6 +138,9 @@
   ```
 
 ### every方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   - `every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean`  
   - `every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[]`
@@ -226,6 +237,9 @@ predicate函数参数说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### filter方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   - `filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[]`  
   - `filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[]`  
@@ -319,6 +333,9 @@ fn函数参数说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### find方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   - `find(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): T | undefined`  
   - `find<S extends T>(predicate: (this: void, value: T, index: number, obj: T[]) => value is S, thisArg?: any): S | undefined`
@@ -404,8 +421,8 @@ predicate函数返回值说明：
   
   function main() {
   let arr: Array<number> = new Array<number>(1, 2, 3);
-    let a = new C(2)
-    let b = new C(3)
+    let a = new C(2);
+    let b = new C(3);
     a.call(arr); // 2
     b.call(arr); // 3
     
@@ -418,6 +435,9 @@ predicate函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### findIndex方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `findIndex(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): number`
 
@@ -513,6 +533,9 @@ predicate函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### flat方法移除
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `flat<A, D extends number = 1>(this: A,depth?: D): FlatArray<A, D>[]`
 
@@ -540,6 +563,9 @@ predicate函数返回值说明：
   不使用flat，对于有明确返回值类型的具体的场景自己实现算法。
 
 ### flatMap方法移除
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `flatMap<U, This = undefined> (callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>,thisArg?: This): U[]`
 
@@ -569,7 +595,7 @@ callback函数返回值说明：
 
 **示例：**  
   ```typescript
-  let arr = [[1, 2], 3, [4, 5]]
+  let arr = [[1, 2], 3, [4, 5]];
   arr.flatMap(
       (value, index, array) =>{
           return value;
@@ -584,6 +610,9 @@ callback函数返回值说明：
   不使用flatMap。
 
 ### forEach方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void`
 
@@ -609,7 +638,7 @@ callbackfn函数参数说明：
         this.base = base;
     }
     foo(value: number, index: number, arr: Array<number>) {
-        console.info((value + this.base).toString())
+        console.info((value + this.base).toString());
     }
   }
   
@@ -660,6 +689,9 @@ callbackfn函数参数说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### map方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[]`
 
@@ -738,7 +770,7 @@ callbackfn函数返回值说明：
         this.base = base;
     }
     call(arr: Array<number>): Array<number> {
-        return arr.map((value: number, index: int, arr: Array<number>)=>{return value + this.base})
+        return arr.map((value: number, index: int, arr: Array<number>)=>{return value + this.base});
     }
   }
   
@@ -755,6 +787,9 @@ callbackfn函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### from方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   - `static from<T, U>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => U, thisArg?: any): U[]`
   - `static from<T, U>(iterable: Iterable<T> | ArrayLike<T>, mapfn: (v: T, k: number) => U, thisArg?: any): U[]`
@@ -835,7 +870,7 @@ mapfn函数返回值说明：
         this.base = base;
     }
     call(arr: Array<number>): Array<number> {
-        return Array.from(arr, (value: number, index: number)=>{return value + this.base})
+        return Array.from(arr, (value: number, index: number)=>{return value + this.base});
     }
   }
   
@@ -876,6 +911,9 @@ mapfn函数返回值说明：
   无需代码修改。
 
 ### some方法签名变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean`
 
@@ -972,6 +1010,8 @@ predicate函数返回值说明：
 ### isArray方法签名变更
 - 参数类型any变更为具体类型，返回值类型为布尔类型。
 
+**规则：** `arkts-no-any-unknown`
+
 **ArkTS1.1版本签名：**  
   `static isArray(arg: any): arg is any[]`
 
@@ -989,8 +1029,8 @@ predicate函数返回值说明：
   ``` typescript
   let arr: number[] = [1, 2, 3, 4, 5];
   let num: number = 1;
-  console.info(Array.isArray(arr));  // true
-  console.info(Array.isArray(num));  // false
+  console.info(Array.isArray(arr).toString());  // true
+  console.info(Array.isArray(num).toString());  // false
   ```
 
 **ArkTS1.2版本签名：**  
@@ -1026,6 +1066,8 @@ predicate函数返回值说明：
 ### 变更详情
 
 #### ArrayConstructor-入参为可选数字构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
 
 **ArkTS1.1版本签名：**  
   `<T>(arrayLength?: number): T[]`
@@ -1074,6 +1116,8 @@ predicate函数返回值说明：
 
 #### ArrayConstructor-入参为剩余参数构造函数调用变更
 
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `<T>(...items: T[]): T[]`
 
@@ -1092,8 +1136,8 @@ predicate函数返回值说明：
   function createArray(ctor: ArrayConstructor) {
       return ctor<number>(1, 2, 3);
   }
-  const num = createArray(Array)
-  console.info("Array :"+ JSON.stringify(num)) // "Array :[1,2,3]" 
+  const num = createArray(Array);
+  console.info("Array :"+ JSON.stringify(num)); // "Array :[1,2,3]" 
   ```
 
 **ArkTS1.2版本签名：**  
@@ -1112,10 +1156,10 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   function createArrayDirect() {
-      return Array<number>(1, 2, 3)
+      return Array<number>(1, 2, 3);
   }
-  const num = createArrayDirect()
-  console.info("Array :"+ JSON.stringify(num)) // "Array :[1,2,3]" 
+  const num = createArrayDirect();
+  console.info("Array :"+ JSON.stringify(num)); // "Array :[1,2,3]" 
   ```
 
 - 适配建议：
