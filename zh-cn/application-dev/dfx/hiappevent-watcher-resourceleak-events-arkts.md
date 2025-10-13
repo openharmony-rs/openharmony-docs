@@ -16,7 +16,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块：
 
    ```ts
-   import { hiAppEvent, hilog, hidebug } from '@kit.PerformanceAnalysisKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
