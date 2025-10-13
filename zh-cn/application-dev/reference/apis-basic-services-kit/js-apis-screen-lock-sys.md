@@ -1,6 +1,6 @@
 # @ohos.screenLock (锁屏管理)（系统接口）
 <!--Kit: ArkData-->
-<!--Subsystem: screenlock_mgr-->
+<!--Subsystem: screenLock-->
 <!--Owner: @jiayunpeng2-->
 <!--Designer: @starrylight; @jiayunpeng2-->
 <!--Tester: @yippo; @logic42-->
