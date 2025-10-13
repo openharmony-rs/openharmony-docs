@@ -620,7 +620,7 @@ toneHapticsAttrs.getFileName();
 
 getGentleUri(): string | null
 
-获取柔和振动资源路径，如果不存在柔和振动，则振动URI 或为空。
+获取柔和振动资源路径。
 
 **系统接口：** 该接口为系统接口。
 
