@@ -273,7 +273,7 @@ TabContent() {
 
 ![内容页和页签不联动](figures/tabcontent_tabbar_not_sync.gif)
 
-此时需要使用Tabs提供的onSelected事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
+此时需要使用Tabs提供的[onSelected](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18)事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
 
 ```ts
 @Entry
