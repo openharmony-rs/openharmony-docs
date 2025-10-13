@@ -1,4 +1,10 @@
 # Notification Kit（用户通知服务）
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @cheerful_ricky-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 - ArkTS API
   - [@ohos.notificationManager (NotificationManager模块)](js-apis-notificationManager.md)
@@ -8,7 +14,9 @@
     - [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)
     - [NotificationCommonDef](js-apis-inner-notification-notificationCommonDef.md)
     - [NotificationContent](js-apis-inner-notification-notificationContent.md)
+    - [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md)
     - [NotificationFlags](js-apis-inner-notification-notificationFlags.md)
+    - [NotificationInfo](js-apis-inner-notification-notificationInfo.md)
     - [NotificationRequest](js-apis-inner-notification-notificationRequest.md)
     - [NotificationSlot](js-apis-inner-notification-notificationSlot.md)
     - [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)
