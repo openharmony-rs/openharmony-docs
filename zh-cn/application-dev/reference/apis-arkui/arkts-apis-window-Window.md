@@ -4120,9 +4120,10 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 
 ```ts
 try {
-  windowClass.on('occlusionStateChanged', (data: OcclusionState) => {
+  let callback: Callback<OcclusionState> = (data: OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
-  });
+  }；
+  windowClass.on('occlusionStateChanged', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
