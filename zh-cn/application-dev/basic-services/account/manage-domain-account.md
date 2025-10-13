@@ -80,7 +80,8 @@
       }
    });
    } catch (e) {
-   console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
+      const err = e as BusinessError;
+      console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
 
@@ -101,7 +102,8 @@
 
    try {
      localId = await osAccountMgr.getOsAccountLocalIdForDomain(domainInfo);
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
@@ -117,7 +119,8 @@
            console.info('removeOsAccount successfully');
        }
      });
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
@@ -149,7 +152,8 @@
            console.info('getAccountInfo result: ' + result);
        }
      });
-   } catch (err) {
+   } catch (e) {
+       const err = e as BusinessError;
        console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
    }
    ```
