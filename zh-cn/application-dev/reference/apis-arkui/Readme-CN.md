@@ -706,6 +706,9 @@
     - [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
     - [ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)
     - [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)
+    - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
+    - [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md)
+    - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [动画错误码](errorcode-animator.md)
