@@ -14,11 +14,13 @@
 import { screenLock } from '@kit.BasicServicesKit';
 ```
 
-## EventType<sup>9+</sup>
+## EventType<sup > 9 + < / sup >
 
-type EventType = beginWakeUp|endWakeUp|beginScreenOn|endScreenOn|beginScreenOff|endScreenOff|unlockScreen|lockScreen|beginExitAnimation|beginSleep|endSleep|changeUser|screenlockEnabled|serviceRestart
+    type EventType =
+    beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen | lockScreen |
+      beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart
 
-定义系统事件类型。
+  定义系统事件类型。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
