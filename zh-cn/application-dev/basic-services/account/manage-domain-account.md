@@ -28,6 +28,11 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
    <!-- @[obtain_the_system_account_management_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
+``` TypeScript
+let osAccountMgr = osAccount.getAccountManager();
+```
+
+
 ## 判断指定域账号是否存在
 
 在添加域账号之前，应该先判断域账号是否存在。开发者可以使用[hasAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#hasaccount10)接口进行判断。
@@ -38,9 +43,27 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
    <!-- @[define_the_domain_account_information_to_be_determined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
+``` TypeScript
+    let domainAccountInfo: osAccount.DomainAccountInfo = {
+      accountName: 'testAccountName',
+      domain: 'testDomain'
+    }
+```
+
+
 2. 调用[hasAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#hasaccount10)接口。
 
    <!-- @[call_the_hasaccount_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
+
+``` TypeScript
+    osAccount.DomainAccountManager.hasAccount(domainAccountInfo).then((isAccountExisted: boolean)=>{
+      console.info('execute hasAccount successfully, isAccountExisted:' + JSON.stringify(isAccountExisted));
+	// ···
+    }).catch((err: BusinessError)=>{
+      console.error(`execute hasAccount code is ${err.code}, message is ${err.message}`);
+    });
+```
+
 
 ## 添加域账号
 
