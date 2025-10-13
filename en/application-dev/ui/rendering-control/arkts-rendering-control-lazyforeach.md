@@ -53,7 +53,7 @@ These requirements ensure correct and efficient child component updates. Violati
 
 ### Component Creation Rules
 
-After the key generation rules are determined, the **itemGenerator** function – the second parameter in **LazyForEach** – creates a component for each array item of the data source based on the rules. Component creation involves two scenarios: [initial rendering](#initial-rendering) and [non-initial rendering](#data-update).
+After the key generation rules are determined, the **itemGenerator** function – the second parameter in **LazyForEach** – creates a component for each array item of the data source based on the rules. Component creation involves two scenarios: [initial rendering](#initial-rendering) and [date updates](#data-update) in non-initial rendering.
 
 ### Initial Rendering
 
@@ -1476,7 +1476,7 @@ struct ChildComponent {
 
 The @ObjectLink decorator can only observe changes to direct sub-properties of its bound object and cannot listen for deeply nested properties. As a result, component re-rendering can only be triggered by modifying these direct sub-properties. For details, see the [usage and constraints of @ObjectLink and @Observed](../state-management/arkts-observed-and-objectlink.md).
 
-The corrected code is as follows:
+The following shows the code snippet after optimization:
 
 ```ts
 /** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
@@ -1709,7 +1709,7 @@ struct MyComponent {
 
 ### Component Reuse Rendering Exception
 
-If @Reusable is used together with [\@ComponentV2](../state-management/arkts-new-componentV2.md), the component rendering will be abnormal.
+Mixing the @Reusable decorator with the [\@ComponentV2](../state-management/arkts-new-componentV2.md) decorator may cause component rendering anomalies.
 
 ```ts
 /** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
