@@ -753,8 +753,8 @@ Defines a screen hopping status change event.
 
 | Name     | Type          |Read-Only| Optional| Description                    |
 | --------- | -------------- | ---- | ---- | ------------------------ |
-| networkId | string         | Yes  | No  | Descriptor of the target device for screen hopping.|
-| state     | CooperateState | Yes  | No  | Screen hopping status.        |
+| networkId | string         | No  | No  | Descriptor of the target device for screen hopping.|
+| state     | CooperateState | No  | No  | Screen hopping status.        |
 
 
 ## MouseLocation<sup>12+</sup>
@@ -765,10 +765,10 @@ Defines the mouse pointer position for screen hopping.
 
 | Name          | Type           | Read-Only| 	Optional| Description                          |
 | ---------      | -------------- | ---- | ---- | ------------------------       |
-| displayX       | number         | Yes  | No  | Position of the mouse pointer on the X coordinate of the screen.|
-| displayY       | number         | Yes  | No  | Position of the mouse pointer on the Y coordinate of the screen.|
-| displayWidth   | number         | Yes  | No  | Screen width, in pixels.                     |
-| displayHeight  | number         | Yes  | No  | Screen height, in pixels.                     |
+| displayX       | number         | No  | No  | Position of the mouse pointer on the X coordinate of the screen.|
+| displayY       | number         | No  | No  | Position of the mouse pointer on the Y coordinate of the screen.|
+| displayWidth   | number         | No  | No  | Screen width, in pixels.                     |
+| displayHeight  | number         | No  | No  | Screen height, in pixels.                     |
 
 ## CooperateState<sup>11+</sup>
 

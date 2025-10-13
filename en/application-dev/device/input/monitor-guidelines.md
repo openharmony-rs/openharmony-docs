@@ -9,7 +9,7 @@
 
 ## When to Use
 
-The multimodal module provides applications with the ability to listen for key and input events (mouse, touch, and axis events). Currently, event listening is available only for screen recording applications. For example, when a user starts screen recording, your application can listen for key, mouse, touch, and axis events of the device.
+Since API version 12, the multimodal module provides applications with the ability to listen for key and input events (including mouse, touch, and axis events). Currently, event listening is available only for screen recording applications. For example, when a user starts screen recording, your application can listen for key, mouse, touch, and axis events of the device.
 
 ## Available APIs
 

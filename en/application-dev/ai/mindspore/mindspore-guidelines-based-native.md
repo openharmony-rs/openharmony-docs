@@ -11,7 +11,7 @@
 
 You can use [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to quickly deploy AI algorithms into your application to perform AI model inference for image classification.
 
-Image classification can be used to recognize objects in images and is widely used in medical image analysis, auto driving, e-commerce, and facial recognition.
+Image classification can be used to recognize objects in images and is widely used in areas such as medical image analysis, auto driving, e-commerce, and facial recognition.
 
 ## Basic Concepts
 
@@ -566,5 +566,4 @@ Touch the **photo** button on the device screen, select an image, and touch **OK
 ![stepc1](figures/stepc1.png)           ![step2](figures/step2.png)
 
 ![step3](figures/step3.png)         ![stepc4](figures/stepc4.png) 
-
 

@@ -160,6 +160,10 @@ Ensure that the device name complies with laws and regulations.
 
 Only one stream can be created for the current session.
 
+**Description**
+
+This error code is reported if a session for which a transport stream is created
+
 **Possible Causes**
 
 This error code is reported if a session for which a transport stream is created already has a transport stream.
@@ -174,9 +178,13 @@ Ensure that the task of the previous transport stream is complete. Use **destroy
 
 The stream at the receive end is not started.
 
+**Description**
+
+This error code is reported if the receive end of transport streams is not started.
+
 **Possible Causes**
 
-This error code is reported if the receive end is not started before
+The receive end is not started.
 
 **Solution**
 
@@ -187,6 +195,10 @@ the transmission of transport streams begins.
 **Error Message**
 
 Bitrate not supported.
+
+**Description**
+
+This error code is reported if the bit rate is not supported.
 
 **Possible Causes**
 
@@ -201,6 +213,10 @@ Select an appropriate bit rate based on network conditions and requirements.
 **Error Message**
 
 Color space not supported.
+
+**Description**
+
+This error code is reported if the color space is not supported.
 
 **Possible Causes**
 

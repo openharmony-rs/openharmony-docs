@@ -112,12 +112,12 @@ Represents the basic information about a distributed device.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-| Name                    | Type                       | Mandatory  | Description      |
-| ---------------------- | ------------------------- | ---- | -------- |
-| deviceId               | string                    | Yes   | Device ID. The value is the result of obfuscating the udid-hash (hash value of the UDID), **appid**, and salt using the SHA-256 algorithm.|
-| deviceName             | string                    | Yes   | Device name.   |
-| deviceType             | string                    | Yes   | [Device type](#getdevicetype).   |
-| networkId              | string                    | No   | Network ID of the device. |
+| Name          | Type | Read-Only| Optional             |  Description   |
+| ---------------------- | ------------------------- | --- | ---- | -------- |
+| deviceId               | string                    | Yes| No | Device ID. The value is the result of obfuscating the udid-hash (hash value of the UDID), **appid**, and salt using the SHA-256 algorithm.|
+| deviceName             | string                    | Yes| No | Device name.   |
+| deviceType             | string                    | Yes| No | [Device type](#getdevicetype).   |
+| networkId              | string                    | Yes| Yes | Network ID of the device. |
 
 ## DeviceStateChange
 
