@@ -477,6 +477,8 @@ function syncRegisterCallback2(proxy: UIExtensionProxy) {
 ArkTS1.2示例:
 
 ```ts
+'use static';
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent, UIExtensionComponent, UIExtensionOptions, UIExtensionProxy, TerminationInfo, DpiFollowStrategy } from '@ohos.arkui.component';
 import { Callback, ErrorCallback, BusinessError } from '@ohos.base';
 import { State } from '@ohos.arkui.stateManagement';
