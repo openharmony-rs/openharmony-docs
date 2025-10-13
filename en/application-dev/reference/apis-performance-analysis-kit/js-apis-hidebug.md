@@ -1028,7 +1028,7 @@ Enumerates the trimming levels of the heap snapshot.
 
 **TRIM_LEVEL_2** takes a longer time than **TRIM_LEVEL_1**. The threshold for screen freezing is 6 seconds. When TRIM_LEVEL_1 is used, the threshold is not reached. When TRIM_LEVEL_2 is used, the trimming time may exceed 6 seconds, triggering the APP_FREEZE event. As a result, the application is terminated by the system. In this case, the trimming level is rolled back to TRIM_LEVEL_1.
 
-You are advised to use **TRIM_LEVEL_1** to ensure application stability and use **TRIM_LEVEL_2 **only when more complete trimming is required.
+You are advised to use **TRIM_LEVEL_1** to ensure application stability and use **TRIM_LEVEL_2** only when more complete trimming is required.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 

@@ -192,16 +192,16 @@ Non-statistical mode is enabled (the stack data is not displayed periodically).
 
 1. Parameters
 
-    | Name| Type| Description| Details| 
-    | -------- | -------- | -------- | -------- |
-    | ftrace_events | string | Captured trace events.| Trace events that record kernel logging.| 
-    | hitrace_categories | string | Captured HiTrace logging information.| The HiTrace capability is called to obtain data and write the data to a file in proto format.| 
-    | hitrace_apps | string | Process of the captured hitrace information.| When this parameter is set, only the trace information of the corresponding process is recorded. When this parameter is added, binder cannot be added to hitrace_categories. Otherwise, trace data parsing will be abnormal.| 
-    | buffer_size_kb | int | Buffer size, in KB.| Cache size required for the **hiprofiler_plugins** process to read kernel events. The default value **204800** is recommended.| 
-    | flush_interval_ms | int | Data collection interval, in ms.| The default value **1000** is recommended.| 
-    | flush_threshold_kb | int | Size of the data to refresh.| Data is refreshed to the file once when the threshold is exceeded. It is recommended that you use the default value of SmartPerf.| 
-    | parse_ksyms | bool | Whether to obtain kernel data.| The value **true** means to obtain kernel data, and **false** means the opposite.| 
-    | trace_period_ms | int | Period for reading kernel data.| It is recommended that you use the default value of SmartPerf.| 
+	    | Name| Type| Description| Details| 
+	    | -------- | -------- | -------- | -------- |
+	    | ftrace_events | string | Captured trace events.| Trace events that record kernel logging.| 
+	    | hitrace_categories | string | Captured HiTrace logging information.| The HiTrace capability is called to obtain data and write the data to a file in proto format.| 
+	    | hitrace_apps | string | Process of the captured hitrace information.| When this parameter is set, only the trace information of the corresponding process is recorded. When this parameter is added, binder cannot be added to hitrace_categories. Otherwise, trace data parsing will be abnormal.| 
+	    | buffer_size_kb | int | Buffer size, in KB.| Cache size required for the **hiprofiler_plugins** process to read kernel events. The default value **204800** is recommended.| 
+	    | flush_interval_ms | int | Data collection interval, in ms.| The default value **1000** is recommended.| 
+	    | flush_threshold_kb | int | Size of the data to refresh.| Data is refreshed to the file once when the threshold is exceeded. It is recommended that you use the default value of SmartPerf.| 
+	    | parse_ksyms | bool | Whether to obtain kernel data.| The value **true** means to obtain kernel data, and **false** means the opposite.| 
+	    | trace_period_ms | int | Period for reading kernel data.| It is recommended that you use the default value of SmartPerf.| 
 
 2. Result analysis
 
@@ -249,13 +249,13 @@ Non-statistical mode is enabled (the stack data is not displayed periodically).
 
 1. Parameters
 
-    | Name| Type| Description| Details| 
-    | -------- | -------- | -------- | -------- |
-    | report_sysmem_vmem_info | bool | Whether to read virtual memory data.| Data is read from the **/proc/vmstat** node.| 
-    | report_process_mem_info | bool | Whether to obtain the detailed memory data of a process, such as **rss_shmem**, **rss_file**, and **vm_swap**.| Data is read from the **/proc/${pid}/stat** node.| 
-    | report_smaps_mem_info | bool | Whether to obtain the smaps memory information of a process.| Data is read from the **/proc/${pid}/smaps** node.| 
-    | report_gpu_mem_info | bool | Whether to obtain the GPU usage of a process.| Data is read from the **/proc/gpu_memory** node.| 
-    | parse_smaps_rollup | bool | Whether to read smaps statistics from the smaps_rollup node.| Reads smaps statistics from the /proc/{pid}/smaps_rollup node. Compared with the report_smaps_mem_info parameter, this parameter optimizes service performance (such as CPU and memory usage optimization).| 
+	    | Name| Type| Description| Details| 
+	    | -------- | -------- | -------- | -------- |
+	    | report_sysmem_vmem_info | bool | Whether to read virtual memory data.| Data is read from the **/proc/vmstat** node.| 
+	    | report_process_mem_info | bool | Whether to obtain the detailed memory data of a process, such as **rss_shmem**, **rss_file**, and **vm_swap**.| Data is read from the **/proc/${pid}/stat** node.| 
+	    | report_smaps_mem_info | bool | Whether to obtain the smaps memory information of a process.| Data is read from the **/proc/${pid}/smaps** node.| 
+	    | report_gpu_mem_info | bool | Whether to obtain the GPU usage of a process.| Data is read from the **/proc/gpu_memory** node.| 
+	    | parse_smaps_rollup | bool | Whether to read smaps statistics from the smaps_rollup node.| Reads smaps statistics from the /proc/{pid}/smaps_rollup node. Compared with the report_smaps_mem_info parameter, this parameter optimizes service performance (such as CPU and memory usage optimization).| 
 
 2. Result analysis
 
@@ -267,10 +267,10 @@ Non-statistical mode is enabled (the stack data is not displayed periodically).
 
 1. Parameters
 
-    | Name| Type| Description| Details| 
-    | -------- | -------- | -------- | -------- |
-    | bundle_name | string | Name of the process for which power consumption profiling is required.| The value must be the same as the process name in the **/proc/ directory**.| 
-    | message_type | XpowerMessageType | Type of the power consumption data to be obtained.| The data types include **REAL_BATTERY**, **APP_STATISTIC**, **APP_DETAIL**, **COMPONENT_TOP**, **ABNORMAL_EVENTS**, and **THERMAL_REPORT**.| 
+	    | Name| Type| Description| Details| 
+	    | -------- | -------- | -------- | -------- |
+	    | bundle_name | string | Name of the process for which power consumption profiling is required.| The value must be the same as the process name in the **/proc/ directory**.| 
+	    | message_type | XpowerMessageType | Type of the power consumption data to be obtained.| The data types include **REAL_BATTERY**, **APP_STATISTIC**, **APP_DETAIL**, **COMPONENT_TOP**, **ABNORMAL_EVENTS**, and **THERMAL_REPORT**.| 
 
 2. Result analysis
 
