@@ -17,9 +17,19 @@
 
    <!-- @[import_the_application_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { appAccount, BusinessError } from '@kit.BasicServicesKit';
+```
+
+
 2. 获取应用账号的实例对象。
 
    <!-- @[obtain_the_instance_object_of_the_application_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const appAccountManager = appAccount.createAppAccountManager();
+```
+
 
 ## 创建应用账号
 
@@ -31,9 +41,30 @@
 
     <!-- @[parameter_preparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let name: string = 'ZhangSan';
+    let options: appAccount.CreateAccountOptions = {
+      customData: {
+        age: '10'
+      }
+    };
+```
+
+
 2. 调用[createAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md#createaccount9)接口，根据名称和选项创建应用账号。
 
    <!-- @[create_an_app_account_based_on_the_name_and_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    appAccountManager.createAccount(name, options).then(()=>{
+      console.info('createAccount successfully');
+	// ···
+    }).catch((err: BusinessError)=>{
+       console.error(`createAccount failed, error: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
 
 ## 查询应用账号列表
 
@@ -44,6 +75,17 @@
 
    <!-- @[query_the_account_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
+      console.info('getAllAccounts successfully, data: ' + JSON.stringify(data));
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
+
 ## 存取账号的凭据
 
 具体开发实例如下：
@@ -52,13 +94,41 @@
 
    <!-- @[prepare_parameters_to_specify_the_account_name_credential_type_and_credential](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let name: string = 'ZhangSan';
+    let credentialType: string = 'PIN_SIX';
+    let credential: string = 'xxxxxx';
+```
+
+
 2. 调用[getCredential](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getcredential9)接口，获取账号的凭据。
 
    <!-- @[obtain_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    appAccountManager.getCredential(name, credentialType).then((data: string) => {
+      console.info('getCredential successfully, data: ' + data);
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
+
 3. 调用[setCredential](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setcredential9)接口，设置账号的凭据。
 
    <!-- @[set_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    await appAccountManager.setCredential(name, credentialType, credential).then(() => {
+      console.info('setCredential successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`setCredential failed: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
 
 ## 存取账号的自定义数据
 
@@ -68,9 +138,26 @@
 
    <!-- @[prepare_parameters_specify_the_account_name_and_custom_key_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let name: string = 'ZhangSan';
+    let key: string = 'age';
+    let value: string = '12';
+```
+
+
 2. 调用[setCustomData](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setcustomdata9)接口，设置账号的自定义数据。
 
    <!-- @[set_up_custom_data_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    await appAccountManager.setCustomData(name, key, value).then(() => {
+      console.info('setCustomData successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`setCustomData failed: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
 
 3. 调用[getCustomData](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getcustomdata9)接口，获取账号的自定义数据。
 
