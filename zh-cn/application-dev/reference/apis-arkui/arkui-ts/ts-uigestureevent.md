@@ -4,6 +4,8 @@
 
 >**说明：**
 >
+>本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  在[GestureEvent](ts-gesture-settings.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
@@ -806,7 +808,9 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 ### onCancel
 
-onCancel(event: Callback\<void>): GestureGroupHandler
+ArkTS-Dyn: onCancel(event: Callback\<void>): GestureGroupHandler
+
+ArkTS-Sta: onCancel(event: VoidCallback): GestureGroupHandler
 
 Rotation手势识别成功，接收到触摸取消事件触发回调。
 
@@ -814,11 +818,15 @@ Rotation手势识别成功，接收到触摸取消事件触发回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 顺序组合手势（GestureMode.Sequence）取消后触发回调。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> <br />ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 是 | 顺序组合手势（GestureMode.Sequence）取消后触发回调。
 
 **返回值：**
 

@@ -1398,6 +1398,10 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
@@ -1412,11 +1416,19 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)以及[UIExtension错误码](./errorcode-uiextension.md)。
+
+ArkTS-Dyn错误码: 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+
+ArkTS-Sta错误码: 
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100023      | Unable to obtain current ui context. |
 
 **示例：**
 <!--code_no_check-->
@@ -1569,6 +1581,10 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
@@ -1586,11 +1602,20 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)以及[UIExtension错误码](./errorcode-uiextension.md)。
+
+ArkTS-Dyn错误码：
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+
+ArkTS-Sta错误码：
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100023      | Unable to obtain current ui context. |
+| 100024      | The parameter depth must be greater than 0.  |
 
 **示例：**
 
