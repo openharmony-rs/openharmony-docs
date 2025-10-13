@@ -861,7 +861,7 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 删除指定id的日程，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -970,7 +970,7 @@ deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 根据日程id，批量删除日程，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
