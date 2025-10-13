@@ -569,7 +569,7 @@ let superScriptStyle: text.TextStyle = {
 
 当前行高调整方式总共有2种。
 
-行高调整方式第一种：为行设置行高上限与下限，具体参考[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).maxLineHeight与[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).minLineHeight。
+行高调整方式第一种：为文本行设置行高上限与下限，具体参考[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).maxLineHeight与[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).minLineHeight。
 
 方式一具体使用效果参考下文[示例六](#示例六行高调整方式一)。
 
