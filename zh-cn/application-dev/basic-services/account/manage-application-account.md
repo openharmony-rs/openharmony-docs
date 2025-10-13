@@ -163,6 +163,17 @@ const appAccountManager = appAccount.createAppAccountManager();
 
    <!-- @[obtain_the_custom_data_of_the_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    appAccountManager.getCustomData(name, key).then((data: string) => {
+      console.info('getCustomData successfully, data: ' + data);
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
+
 ## 存取账号的授权令牌
 
 具体开发实例如下：
@@ -171,13 +182,42 @@ const appAccountManager = appAccount.createAppAccountManager();
 
    <!-- @[prepare_parameters_to_specify_the_account_name_account_owner_authorization_type_and_authorization_token](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let name: string = 'ZhangSan';
+    let owner: string = 'com.samples.managerapplicationaccount';
+    let authType: string = 'getSocialData';
+    let token: string = 'xxxxxx';
+```
+
+
 2. 调用[setAuthToken](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setauthtoken9)接口，设置指定授权类型的授权令牌。
 
    <!-- @[set_the_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    await appAccountManager.setAuthToken(name, authType, token).then(() => {
+      console.info('setAuthToken successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`setAuthToken failed: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
+
 3. 调用[getAuthToken](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getauthtoken9)接口，获取指定授权类型的授权令牌。
 
    <!-- @[obtain_an_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    await appAccountManager.getAuthToken(name, owner, authType).then((data: string) => {
+      console.info('getAuthToken successfully, data: ' + data);
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
 
 ## 删除应用账号
 
@@ -188,6 +228,18 @@ const appAccountManager = appAccount.createAppAccountManager();
 指定要删除的账号名称，调用[removeAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md#removeaccount9)接口删除账号。
 
    <!-- @[delete_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    let name: string = 'ZhangSan';
+    appAccountManager.removeAccount(name).then(() => {
+      console.info('removeAccount successfully');
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
 
 <!--RP1-->
 <!--RP1End-->
