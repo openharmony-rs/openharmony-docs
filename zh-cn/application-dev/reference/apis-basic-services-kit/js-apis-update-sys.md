@@ -1,4 +1,10 @@
 # @ohos.update (升级)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Update-->
+<!--Owner: @RainyDay_005; @huangsiping3-->
+<!--Designer: @zhangzhengxue; @jackd320-->
+<!--Tester: @mamba-ting-->
+<!--Adviser: @zhang_yixin13-->
 
 升级范围：升级整个系统，包括内置资源和预置应用，不包括三方应用。
 
@@ -34,6 +40,14 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 | ----------- | --------------------------- | ---- | ------ |
 | upgradeInfo | [UpgradeInfo](#upgradeinfo) | 是    | 升级对象信息。 |
 
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
 **返回值：**
 
 | 类型                  | 说明   |
@@ -65,6 +79,13 @@ getRestorer(): Restorer
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **返回值：**
 
@@ -91,6 +112,14 @@ getLocalUpdater(): LocalUpdater
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
 **返回值：**
 
 | 类型                            | 说明     |
@@ -105,7 +134,7 @@ try {
   let localUpdater = update.getLocalUpdater();
 } catch(error) {
   console.error(`Fail to get localUpdater error: ${error}`);
-};
+}
 ```
 
 ## Updater
@@ -128,12 +157,12 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -142,7 +171,7 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
-      console.log(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
+      console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
     });
 ```
 
@@ -156,7 +185,7 @@ checkNewVersion(): Promise\<CheckResult>
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
-**返回值:**
+**返回值：**
 
 | 类型                                    | 说明                  |
 | ------------------------------------- | ------------------- |
@@ -164,28 +193,28 @@ checkNewVersion(): Promise\<CheckResult>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
-**示例:**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.checkNewVersion()
       .then((result: update.CheckResult) => {
-        console.log(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
+        console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
         // 版本摘要信息
-        console.log(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
+        console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
       })
       .catch((err: BusinessError)=>{
         console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
-      })
+      });
 ```
 
 ###  getNewVersionInfo
@@ -206,12 +235,12 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -220,8 +249,8 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
-      console.log(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-      console.log(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
+      console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+      console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
 });
 ```
 
@@ -243,12 +272,12 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -257,8 +286,8 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
-    console.log(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-    console.log(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
 }).catch((err: BusinessError) => {
     console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
 });
@@ -284,12 +313,12 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -310,7 +339,7 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.log(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
+  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
   console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
 });
@@ -318,7 +347,7 @@ updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((in
 
 ### getNewVersionDescription
 
-getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>;
+getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
 获取新版本描述文件。使用Promise异步回调。
 
@@ -341,12 +370,12 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -367,7 +396,7 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.log(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
+  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
   console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
 });
@@ -391,12 +420,12 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -405,9 +434,9 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
-  console.log(`info osVersion = ${info?.osVersion}`);
-  console.log(`info deviceName = ${info?.deviceName}`);
-  console.log(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+  console.info(`info osVersion = ${info?.osVersion}`);
+  console.info(`info deviceName = ${info?.deviceName}`);
+  console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
 });
 ```
 
@@ -429,12 +458,12 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -443,9 +472,9 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
-  console.log(`info osVersion = ${info.osVersion}`);
-  console.log(`info deviceName = ${info.deviceName}`);
-  console.log(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+  console.info(`info osVersion = ${info.osVersion}`);
+  console.info(`info deviceName = ${info.deviceName}`);
+  console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
 }).catch((err: BusinessError) => {
   console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
 });
@@ -470,12 +499,12 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -489,8 +518,8 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
-  console.log(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
-  console.log(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
+  console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
+  console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
 });
 ```
 
@@ -518,12 +547,12 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -537,7 +566,7 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
-  console.log(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
+  console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
   console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
 });
@@ -561,12 +590,12 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -575,7 +604,7 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
-  console.log(`getTaskInfo isexistTask= ${info?.existTask}`);
+  console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
 });
 ```
 
@@ -597,12 +626,12 @@ getTaskInfo(): Promise\<TaskInfo>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -611,7 +640,7 @@ getTaskInfo(): Promise\<TaskInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getTaskInfo().then((info: update.TaskInfo) => {
-  console.log(`getTaskInfo isexistTask= ${info.existTask}`);
+  console.info(`getTaskInfo isexistTask= ${info.existTask}`);
 }).catch((err: BusinessError) => {
   console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
 });
@@ -637,12 +666,12 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -662,7 +691,7 @@ const downloadOptions: update.DownloadOptions = {
   order: update.Order.DOWNLOAD // 下载
 };
 updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
-  console.log(`download error ${JSON.stringify(err)}`);
+  console.info(`download error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -691,12 +720,12 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -716,7 +745,7 @@ const downloadOptions: update.DownloadOptions = {
    order: update.Order.DOWNLOAD // 下载
 };
 updater.download(versionDigestInfo, downloadOptions).then(() => {
-  console.log(`download start`);
+  console.info(`download start`);
 }).catch((err: BusinessError) => {
   console.error(`download error ${JSON.stringify(err)}`);
 });
@@ -742,12 +771,12 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -766,7 +795,7 @@ const resumeDownloadOptions : update.ResumeDownloadOptions= {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
 updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
-  console.error(`resumeDownload error ${JSON.stringify(err)}`);
+  console.info(`resumeDownload error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -795,12 +824,12 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -819,7 +848,7 @@ const resumeDownloadOptions: update.ResumeDownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
 updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
-  console.log(`resumeDownload start`);
+  console.info(`resumeDownload start`);
 }).catch((err: BusinessError) => {
   console.error(`resumeDownload error ${JSON.stringify(err)}`);
 });
@@ -845,12 +874,12 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -869,7 +898,7 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
 updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
-  console.log(`pauseDownload error ${JSON.stringify(err)}`);
+  console.info(`pauseDownload error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -898,12 +927,12 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -922,7 +951,7 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
 updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
-  console.log(`pauseDownload`);
+  console.info(`pauseDownload`);
 }).catch((err: BusinessError)  => {
   console.error(`pauseDownload error ${JSON.stringify(err)}`);
 });
@@ -948,12 +977,12 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -972,7 +1001,7 @@ const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
 updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
-  console.log(`upgrade error ${JSON.stringify(err)}`);
+  console.info(`upgrade error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1001,12 +1030,12 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -1025,7 +1054,7 @@ const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
 updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
-  console.log(`upgrade start`);
+  console.info(`upgrade start`);
 }).catch((err: BusinessError) => {
   console.error(`upgrade error ${JSON.stringify(err)}`);
 });
@@ -1051,12 +1080,12 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -1075,7 +1104,7 @@ const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
 updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
-  console.log(`clearError error ${JSON.stringify(err)}`);
+  console.info(`clearError error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1104,12 +1133,12 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -1128,7 +1157,7 @@ const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
 updater.clearError(versionDigestInfo, clearOptions).then(() => {
-  console.log(`clearError success`);
+  console.info(`clearError success`);
 }).catch((err: BusinessError) => {
   console.error(`clearError error ${JSON.stringify(err)}`);
 });
@@ -1152,12 +1181,12 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -1166,8 +1195,8 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
-  console.log(`policy downloadStrategy = ${policy?.downloadStrategy}`);
-  console.log(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
+  console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
+  console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
 });
 ```
 
@@ -1189,12 +1218,12 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -1203,8 +1232,8 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
-  console.log(`policy downloadStrategy = ${policy.downloadStrategy}`);
-  console.log(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
+  console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
+  console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
 }).catch((err: BusinessError)  => {
   console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
 });
@@ -1229,12 +1258,12 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -1248,7 +1277,7 @@ const policy: update.UpgradePolicy = {
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
 updater.setUpgradePolicy(policy, (err: BusinessError) => {
-  console.log(`setUpgradePolicy result: ${err}`);
+  console.info(`setUpgradePolicy result: ${err}`);
 });
 ```
 
@@ -1276,12 +1305,12 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -1295,7 +1324,7 @@ const policy: update.UpgradePolicy = {
   autoUpgradePeriods: [ { start: 120, end: 240 } ] // 自动升级时间段，用分钟表示
 };
 updater.setUpgradePolicy(policy).then(() => {
-  console.log(`setUpgradePolicy success`);
+  console.info(`setUpgradePolicy success`);
 }).catch((err: BusinessError) => {
   console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
 });
@@ -1319,12 +1348,12 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -1333,7 +1362,7 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.terminateUpgrade((err: BusinessError) => {
-  console.log(`terminateUpgrade error ${JSON.stringify(err)}`);
+  console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1355,12 +1384,12 @@ terminateUpgrade(): Promise\<void>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
@@ -1369,7 +1398,7 @@ terminateUpgrade(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 updater.terminateUpgrade().then(() => {
-  console.log(`terminateUpgrade success`);
+  console.info(`terminateUpgrade success`);
 }).catch((err: BusinessError) => {
   console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
 });
@@ -1400,7 +1429,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 };
 
 updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.log("updater on " + JSON.stringify(eventInfo));
+  console.info(`updater on ${JSON.stringify(eventInfo)}`);
 });
 ```
 
@@ -1428,7 +1457,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 };
 
 updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.log("updater off " + JSON.stringify(eventInfo));
+  console.info(`updater off ${JSON.stringify(eventInfo)}`);
 });
 ```
 
@@ -1452,19 +1481,19 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
 **示例：**
 
 ```ts
 restorer.factoryReset((err) => {
-  console.log(`factoryReset error ${JSON.stringify(err)}`);
+  console.info(`factoryReset error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1478,7 +1507,7 @@ factoryReset(): Promise\<void>
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
-**返回值:**
+**返回值：**
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
@@ -1486,21 +1515,21 @@ factoryReset(): Promise\<void>
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
 
-**示例:**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 restorer.factoryReset().then(() => {
-  console.log(`factoryReset success`);
+  console.info(`factoryReset success`);
 }).catch((err: BusinessError) => {
   console.error(`factoryReset error ${JSON.stringify(err)}`);
 });
@@ -1528,12 +1557,12 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -1546,7 +1575,7 @@ const upgradeFile: update.UpgradeFile = {
 };
 
 localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
-  console.log(`factoryReset error ${JSON.stringify(err)}`);
+  console.info(`factoryReset error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1567,7 +1596,7 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 | upgradeFile | [UpgradeFile](#upgradefile) | 是    | 升级文件。   |
 | certsFile   | string                      | 是    | 证书文件路径。 |
 
-**返回值:**
+**返回值：**
 
 | 类型             | 说明                     |
 | -------------- | ---------------------- |
@@ -1575,16 +1604,16 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
-**示例:**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1594,7 +1623,7 @@ const upgradeFile: update.UpgradeFile = {
   filePath: "path" // 本地升级包路径
 };
 localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath").then(() => {
-  console.log(`verifyUpgradePackage success`);
+  console.info(`verifyUpgradePackage success`);
 }).catch((err: BusinessError) => {
   console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
 });
@@ -1618,12 +1647,12 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: Asyn
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
@@ -1636,7 +1665,7 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
 }];
 
 localUpdater.applyNewVersion(upgradeFiles, (err) => {
-  console.log(`applyNewVersion error ${JSON.stringify(err)}`);
+  console.info(`applyNewVersion error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1650,7 +1679,7 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
-**返回值:**
+**返回值：**
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
@@ -1658,16 +1687,16 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void
 
 **错误码**：
 
-以下的错误码的详细介绍请参见[升级错误码](errorcode-update.md)
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
 | 11500104 | IPC error.               |
 
-**示例:**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1677,7 +1706,7 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
   filePath: "path" // 本地升级包路径
 }];
 localUpdater.applyNewVersion(upgradeFiles).then(() => {
-  console.log(`applyNewVersion success`);
+  console.info(`applyNewVersion success`);
 }).catch((err: BusinessError) => {
   console.error(`applyNewVersion error ${JSON.stringify(err)}`);
 });
@@ -1707,7 +1736,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 };
 
 let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => {
-  console.log(`on eventInfo id `, eventInfo.eventId);
+  console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
 localUpdater.on(eventClassifyInfo, onTaskUpdate);
@@ -1737,7 +1766,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 };
 
 let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => {
-  console.log(`on eventInfo id `, eventInfo.eventId);
+  console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
 localUpdater.off(eventClassifyInfo, onTaskUpdate);
@@ -1749,10 +1778,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称           | 类型                          | 必填   | 说明     |
-| ------------ | ----------------------------- | ---- | ------ |
-| upgradeApp   | string                        | 是    | 调用方包名。  |
-| businessType | [BusinessType](#businesstype) | 是    | 升级业务类型。 |
+| 名称           | 类型                          | 只读 | 可选 | 说明     |
+| ------------ | ----------------------------- | ---- | ---- | ------ |
+| upgradeApp   | string                        | 否 | 否 | 调用方包名。  |
+| businessType | [BusinessType](#businesstype) | 否 | 否 | 升级业务类型。 |
 
 ## BusinessType
 
@@ -1760,10 +1789,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称      | 类型                                | 必填   | 说明   |
-| ------- | ----------------------------------- | ---- | ---- |
-| vendor  | [BusinessVendor](#businessvendor)   | 是    | 供应商/厂家。  |
-| subType | [BusinessSubType](#businesssubtype) | 是    | 升级类型。  |
+| 名称      | 类型                                | 只读 | 可选 |  说明   |
+| ------- | ----------------------------------- | ---- | ---- | ---- |
+| vendor  | [BusinessVendor](#businessvendor)   | 否 | 否 | 供应商/厂家。  |
+| subType | [BusinessSubType](#businesssubtype) | 否 | 否 | 升级类型。  |
 
 ## CheckResult
 
@@ -1771,10 +1800,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称                | 类型                              | 必填   | 说明     |
-| ----------------- | --------------------------------- | ---- | ------ |
-| isExistNewVersion | boolean                              | 是    | 是否有新版本。<br>ture表示有新版本，false表示没有新版本。|
-| newVersionInfo    | [NewVersionInfo](#newversioninfo) | 否    | 新版本数据。  |
+| 名称                | 类型                              | 只读 | 可选 | 说明     |
+| ----------------- | --------------------------------- | ---- | ---- | ------ |
+| isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>ture表示有新版本，false表示没有新版本。|
+| newVersionInfo    | [NewVersionInfo](#newversioninfo) | 否 | 否 | 新版本数据。  |
 
 ## NewVersionInfo
 
@@ -1782,10 +1811,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称                | 类型                                     | 必填   | 说明   |
-| ----------------- | ---------------------------------------- | ---- | ---- |
-| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要。 |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 是    | 版本组件。 |
+| 名称                | 类型                                     | 只读 | 可选 | 说明   |
+| ----------------- | ---------------------------------------- | ---- | ---- |---- |
+| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 | 否 | 版本摘要。 |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否 | 版本组件。 |
 
 ## VersionDigestInfo
 
@@ -1793,9 +1822,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称            | 类型   | 必填   | 说明   |
-| ------------- | ------ | ---- | ---- |
-| versionDigest | string | 是    | 版本摘要。 |
+| 名称            | 类型   | 只读 | 可选 | 说明   |
+| ------------- | ------ | ---- | ---- | ---- |
+| versionDigest | string | 否 | 否 | 版本摘要。 |
 
 ## VersionComponent
 
@@ -1803,16 +1832,17 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                                | 必填   | 说明       |
-| --------------- | ----------------------------------- | ---- | -------- |
-| componentId     | string                              | 是    | 组件标识。     |
-| componentType   | [ComponentType](#componenttype)     | 是    | 组件类型。     |
-| upgradeAction   | [UpgradeAction](#upgradeaction)     | 是    | 升级方式。     |
-| displayVersion  | string                              | 是    | 显示版本号。    |
-| innerVersion    | string                              | 是    | 版本号。      |
-| size            | number                              | 是    | 升级包大小，单位为B。    |
-| effectiveMode   | [EffectiveMode](#effectivemode)     | 是    | 生效模式。     |
-| descriptionInfo | [DescriptionInfo](#descriptioninfo) | 是    | 版本描述文件信息。 |
+| 名称              | 类型                                | 只读 | 可选 | 说明       |
+| --------------- | ----------------------------------- | ---- | ---- | -------- |
+| componentId     | string                              | 否 | 否 | 组件标识。     |
+| componentType   | [ComponentType](#componenttype)     | 否 | 否 | 组件类型。     |
+| upgradeAction   | [UpgradeAction](#upgradeaction)     | 否 | 否 | 升级方式。     |
+| displayVersion  | string                              | 否 | 否 | 显示版本号。    |
+| innerVersion    | string                              | 否 | 否 | 版本号。      |
+| size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
+| effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
+| descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
+| otaMode<sup>20+</sup> | [OtaMode](#otamode)                 | 否 | 是 | 升级模式。     |
 
 ## DescriptionOptions
 
@@ -1820,10 +1850,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                                    | 必填   | 说明     |
-| -------- | --------------------------------------- | ---- | ------ |
-| format   | [DescriptionFormat](#descriptionformat) | 是    | 描述文件格式。 |
-| language | string                                  | 是    | 描述文件语言。 |
+| 名称       | 类型                                    | 只读 | 可选 | 说明     |
+| -------- | --------------------------------------- | ---- | ---- | ------ |
+| format   | [DescriptionFormat](#descriptionformat) | 否 | 否 | 描述文件格式。 |
+| language | string                                  | 否 | 否 | 描述文件语言。 |
 
 ## ComponentDescription
 
@@ -1831,10 +1861,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                                | 必填   | 说明     |
-| --------------- | ----------------------------------- | ---- | ------ |
-| componentId     | string                              | 是    | 组件标识。   |
-| descriptionInfo | [DescriptionInfo](#descriptioninfo) | 是    | 描述文件信息。 |
+| 名称              | 类型                                | 只读 | 可选 | 说明     |
+| --------------- | ----------------------------------- | ---- | ---- | ------ |
+| componentId     | string                              | 否 | 否 | 组件标识。   |
+| descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 描述文件信息。 |
 
 ## DescriptionInfo
 
@@ -1842,10 +1872,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称              | 类型                                | 必填   | 说明     |
-| --------------- | ----------------------------------- | ---- | ------ |
-| descriptionType | [DescriptionType](#descriptiontype) | 是    | 描述文件类型。 |
-| content         | string                              | 是    | 描述文件内容。 |
+| 名称              | 类型                                | 只读 | 可选 | 说明     |
+| --------------- | ----------------------------------- | ---- | ---- | ------ |
+| descriptionType | [DescriptionType](#descriptiontype) | 否 | 否 | 描述文件类型。 |
+| content         | string                              | 否 | 否 | 描述文件内容。 |
 
 ## CurrentVersionInfo
 
@@ -1853,11 +1883,11 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称                | 类型                                     | 必填   | 说明    |
-| ----------------- | ---------------------------------------- | ---- | ----- |
-| osVersion         | string                                   | 是    | 系统版本号。 |
-| deviceName        | string                                   | 是    | 设备名。   |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否    | 版本组件。  |
+| 名称                | 类型                                     | 只读 | 可选 | 说明    |
+| ----------------- | ---------------------------------------- | ---- | ---- | ----- |
+| osVersion         | string                                   | 否 | 否 | 系统版本号。 |
+| deviceName        | string                                   | 否 | 否 | 设备名。   |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否 | 版本组件。  |
 
 ## DownloadOptions
 
@@ -1865,10 +1895,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称           | 类型                | 必填   | 说明   |
-| ------------ | ------------------- | ---- | ---- |
-| allowNetwork | [NetType](#nettype) | 是    | 网络类型。 |
-| order        | [Order](#order)     | 是    | 升级指令。 |
+| 名称           | 类型                | 只读 | 可选   | 说明   |
+| ------------ | ------------------- | ---- | ---- | ---- |
+| allowNetwork | [NetType](#nettype) | 否  | 否 | 网络类型。 |
+| order        | [Order](#order)     | 否  | 否 | 升级指令。 |
 
 ## ResumeDownloadOptions
 
@@ -1876,9 +1906,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称           | 类型                | 必填   | 说明   |
-| ------------ | ------------------- | ---- | ---- |
-| allowNetwork | [NetType](#nettype) | 是    | 网络类型。 |
+| 名称           | 类型                | 只读 | 可选 | 说明   |
+| ------------ | ------------------- | ---- | ---- | ---- |
+| allowNetwork | [NetType](#nettype) | 否 | 否 | 网络类型。 |
 
 ## PauseDownloadOptions
 
@@ -1886,9 +1916,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称                | 类型 | 必填   | 说明       |
-| ----------------- | ---- | ---- | -------- |
-| isAllowAutoResume | boolean | 是    | 是否允许自动恢复。<br>ture表示允许自动恢复，false表示不允许。 |
+| 名称                | 类型 | 只读 | 可选 | 说明       |
+| ----------------- | ---- | ---- |---- | -------- |
+| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。<br>ture表示允许自动恢复，false表示不允许。 |
 
 ## UpgradeOptions
 
@@ -1896,9 +1926,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称    | 类型            | 必填   | 说明   |
-| ----- | --------------- | ---- | ---- |
-| order | [Order](#order) | 是    | 升级指令。 |
+| 名称    | 类型            | 只读 | 可选 | 说明   |
+| ----- | --------------- | ---- | ---- |---- |
+| order | [Order](#order) | 否 | 否 | 升级指令。 |
 
 ## ClearOptions
 
@@ -1906,9 +1936,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称     | 类型                            | 必填   | 说明   |
-| ------ | ------------------------------- | ---- | ---- |
-| status | [UpgradeStatus](#upgradestatus) | 是    | 异常状态。 |
+| 名称     | 类型                            | 只读 | 可选 | 说明   |
+| ------ | ------------------------------- | ---- | ---- | ---- |
+| status | [UpgradeStatus](#upgradestatus) | 否 | 否 | 异常状态。 |
 
 ## UpgradePolicy
 
@@ -1916,11 +1946,11 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称                  | 类型                                    | 必填   | 说明      |
-| ------------------- | --------------------------------------- | ---- | ------- |
-| downloadStrategy    | boolean                        | 是    | 自动下载策略。 <br>ture表示可自动下载，false表示不可自动下载。 |
-| autoUpgradeStrategy | boolean                        | 是    | 自动升级策略。 <br>ture表示可自动升级，false表示不可自动升级。 |
-| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 是    | 自动升级时间段。 |
+| 名称                  | 类型                                    | 只读 | 可选 | 说明      |
+| ------------------- | --------------------------------------- | ---- | ---- | ------- |
+| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。 <br>ture表示可自动下载，false表示不可自动下载。 |
+| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>ture表示可自动升级，false表示不可自动升级。 |
+| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 否 | 否  | 自动升级时间段。 |
 
 ## UpgradePeriod
 
@@ -1928,10 +1958,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称    | 类型   | 必填   | 说明   |
-| ----- | ------ | ---- | ---- |
-| start | number | 是    | 开始时间。 |
-| end   | number | 是    | 结束时间。 |
+| 名称    | 类型   | 只读 | 可选 | 说明 |
+| ----- | ------ | ---- | ---- | ---- |
+| start | number | 否 | 否 | 开始时间。 |
+| end   | number | 否 | 否 | 结束时间。 |
 
 ## TaskInfo
 
@@ -1939,10 +1969,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称        | 类型                  | 必填   | 说明     |
-| --------- | --------------------- | ---- | ------ |
-| existTask |  boolean                  | 是    | 是否存在任务。<br>ture表示存在，false表示不存在。 |
-| taskBody  | [TaskBody](#taskbody) | 是    | 任务数据。   |
+| 名称        | 类型                  | 只读 | 可选 | 说明 |
+| --------- | --------------------- | ---- | ------ |------ |
+| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>ture表示存在，false表示不存在。 |
+| taskBody  | [TaskBody](#taskbody) | 否 | 否 | 任务数据。   |
 
 ## EventInfo
 
@@ -1950,10 +1980,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                  | 必填   | 说明   |
-| -------- | --------------------- | ---- | ---- |
-| eventId  | [EventId](#eventid)   | 是    | 事件ID。 |
-| taskBody | [TaskBody](#taskbody) | 是    | 任务数据。 |
+| 名称       | 类型                  | 只读 | 可选 | 说明 |
+| -------- | --------------------- | ---- | ---- | ---- |
+| eventId  | [EventId](#eventid)   | 否 | 否 | 事件ID。 |
+| taskBody | [TaskBody](#taskbody) | 否 | 否 | 任务数据。 |
 
 ## TaskBody
 
@@ -1961,15 +1991,15 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称                | 类型                                     | 必填   | 说明   |
-| ----------------- | ---------------------------------------- | ---- | ---- |
-| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要。 |
-| status            | [UpgradeStatus](#upgradestatus)          | 是    | 升级状态。 |
-| subStatus         | number                                   | 否    | 子状态。  |
-| progress          | number                                   | 是    | 进度。   |
-| installMode       | number                                   | 是    | 安装模式。 |
-| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否    | 错误信息。 |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 是    | 版本组件。 |
+| 名称                | 类型                                     | 只读 | 可选 | 说明   |
+| ----------------- | ---------------------------------------- | ---- | ---- | ---- |
+| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 |  否    | 版本摘要。 |
+| status            | [UpgradeStatus](#upgradestatus)          | 否 |  否    | 升级状态。 |
+| subStatus         | number                                   | 否 |  否    | 子状态。  |
+| progress          | number                                   | 否 |  否    | 进度。   |
+| installMode       | number                                   | 否 |  否    | 安装模式。 |
+| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 |  否    | 错误信息。 |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否    | 版本组件。 |
 
 ## ErrorMessage
 
@@ -1977,10 +2007,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称           | 类型   | 必填   | 说明   |
-| ------------ | ------ | ---- | ---- |
-| errorCode    | number | 是    | 错误码。  |
-| errorMessage | string | 是    | 错误描述。 |
+| 名称           | 类型   | 只读 | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ---- |
+| errorCode    | number | 否 | 否  | 错误码。  |
+| errorMessage | string | 否 | 否  | 错误描述。 |
 
 ## EventClassifyInfo
 
@@ -1988,10 +2018,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称            | 类型                            | 必填   | 说明   |
-| ------------- | ------------------------------- | ---- | ---- |
-| eventClassify | [EventClassify](#eventclassify) | 是    | 事件类型。 |
-| extraInfo     | string                          | 是    | 额外信息。 |
+| 名称            | 类型                            | 只读 | 可选  | 说明   |
+| ------------- | ------------------------------- | ---- | ---- | ---- |
+| eventClassify | [EventClassify](#eventclassify) | 否  | 否  | 事件类型。 |
+| extraInfo     | string                          | 否  | 否  | 额外信息。 |
 
 ## UpgradeFile
 
@@ -1999,10 +2029,10 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-| 名称       | 类型                            | 必填   | 说明   |
-| -------- | ------------------------------- | ---- | ---- |
-| fileType | [ComponentType](#componenttype) | 是    | 文件类型。 |
-| filePath | string                          | 是    | 文件路径。 |
+| 名称       | 类型                            | 只读 | 可选 | 说明   |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
+| filePath | string                          | 否    | 否 | 文件路径。 |
 
 ## UpgradeTaskCallback
 
@@ -2068,6 +2098,19 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | COLD          | 1    | 冷升级。  |
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
+
+## OtaMode<sup>20+</sup>
+
+升级模式。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称           | 值  | 说明   |
+| ------------- | ---- | ---- |
+| REGULAR_OTA   | 0    | 正常升级。|
+| STREAM_OTA    | 1    | 流式升级。|
+| AB_REGULAR_OTA | 2    | AB正常升级。 |
+| AB_STREAM_OTA  | 3    | AB流式升级。 |
 
 ## DescriptionType
 
