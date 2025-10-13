@@ -43,6 +43,11 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
    <!-- @[obtain_account_management_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
+``` TypeScript
+let accountManager = osAccount.getAccountManager();
+```
+
+
 ## 创建系统账号
 
 系统初始化阶段，会创建默认系统账号。此外，可以创建多个系统账号，以满足用户不同诉求。
@@ -52,6 +57,18 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 调用[createOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccount)接口，指定昵称和类型信息来创建系统账号。
 
 <!-- @[specify_nickname_and_type_information_to_create_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
+
+``` TypeScript
+    let name: string = 'Bob';
+    let type: osAccount.OsAccountType = osAccount.OsAccountType.NORMAL;
+
+    accountManager.createOsAccount(name, type, (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
+      console.info(`createOsAccount code is ${err.code}, message is ${err.message}`);
+      console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
+	// ···
+    });
+```
+
 
 ## 查询所有已创建的系统账号
 
@@ -63,6 +80,15 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
 <!-- @[query_the_full_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
+``` TypeScript
+    accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
+      console.info(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
+      console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
+	// ···
+    });
+```
+
+
 ## 查询指定系统账号信息
 
 除了查询所有账号信息，还可以根据账号标识查询指定系统账号的详细信息。
@@ -72,6 +98,16 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 调用[queryOsAccountById](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryosaccountbyid)接口查询指定账号的详细信息。
 
 <!-- @[query_information_of_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
+
+``` TypeScript
+    let localId: number = 100;
+    accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osAccount.OsAccountInfo)=>{
+      console.info(`queryOsAccountById code is ${err.code}, message is ${err.message}`);
+      console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
+	// ···
+    });
+```
+
 
 ## 修改系统账号头像和昵称
 
@@ -83,9 +119,40 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
    <!-- @[change_system_account_avatar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
+``` TypeScript
+    let localId: number = 100;
+	// ···
+    let newPhoto: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
+      'Cxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVDhPvZLBDYMwDEV/ugsXRjAT0EHCOuFIBwkbdIRewi6unbiAyoGgSn1SFH85+Y'+
+      'q/4ljARW62X+LHS8uIzjm4dXUYF+utzBikB52Jo5e5iEPKqpACk7R9NM2RvWm5tIkD2czLCUFNKLD6IjdMHFHDzws285MgGrT0xCtp3WOKHo'+
+      '+7q0mP0DZW9pNmoEFUzrQjp5cCnaen2kSJXLFD8ghbXyZCMQf/8e8Ns1XVAG/XAgqKzVnJFAAAAABJRU5ErkJggg=='
+
+    accountManager.setOsAccountProfilePhoto(localId, newPhoto, (err: BusinessError)=>{
+      console.info(`setOsAccountProfilePhoto code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
+
 2. 调用[setOsAccountName](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountname)接口修改系统账号名称。
 
    <!-- @[change_system_account_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
+
+``` TypeScript
+    let localId: number = 100;
+	// ···
+    let newName: string = 'Tom';
+    accountManager.setOsAccountName(localId, newName, (err: BusinessError) => {
+      if (err) {
+        console.error(`setOsAccountName failed, code is ${err.code}, message is ${err.message}`);
+		// ···
+      } else {
+        console.info('setOsAccountName successfully');
+		// ···
+      }
+    });
+```
+
 
 ## 激活系统账号
 
@@ -97,6 +164,21 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
 <!-- @[activate_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
 
+``` TypeScript
+    let localId: number = 101;
+	// ···
+    accountManager.activateOsAccount(localId, (err: BusinessError)=>{
+      if (err) {
+        console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
+		// ···
+      } else {
+        console.info('activateOsAccount successfully');
+		// ···
+      }
+    });
+```
+
+
 ## 删除系统账号
 
 不再使用某个系统账号时，可以删除该账号。
@@ -106,3 +188,18 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 调用[removeOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount)接口删除指定的账号。
 
 <!-- @[delete_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
+
+``` TypeScript
+    let localId: number = 101;
+	// ···
+    accountManager.removeOsAccount(localId, (err: BusinessError)=>{
+      if (err) {
+        console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+		// ···
+      } else {
+        console.info('removeOsAccount successfully');
+		// ···
+      }
+    });
+```
+
