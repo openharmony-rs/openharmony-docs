@@ -93,7 +93,7 @@ type CallState = call.CallState
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
-| [call.CallState](js-apis-call.md#callstate) | 通话状态码。 |
+| [call.CallState](js-apis-call.md#callstate) | 通话状态码（去电过程仅通知CALL_STATE_OFFHOOK状态）。 |
 
 
 ## CardType
@@ -120,6 +120,18 @@ SIM卡状态。
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [sim.SimState](js-apis-sim.md#simstate) | SIM卡状态。 |
+
+## TelCallState<sup>21+</sup>
+
+type TelCallState = call.TelCallState
+
+通话状态码。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [call.TelCallState](js-apis-call.md#telcallstate21) | 通话状态码（去电过程通知去电号码状态TEL_CALL_STATE_OFFHOOK和去电接通状态TEL_CALL_STATE_CONNECTED）。 |
 
 
 ## observer.on('networkStateChange')
@@ -1083,11 +1095,11 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                                            | 必填 | 说明         |
-| ------------------- | ---------------------------------------------------------------| ---- | ------------ |
-| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | 是   | 数据连接状态。 |
-| network             | [RatType](js-apis-radio.md#radiotechnology)                    | 是   | 网络类型。     |
 
+| 名称 | 类型                                   |  只读 | 可选 | 说明 |
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  否  |  否  | 数据连接状态。 |
+| network | [RatType](js-apis-radio.md#radiotechnology)  |  否  |  否  | 网络类型。 |
 
 ## ObserverOptions<sup>11+</sup>
 
@@ -1095,7 +1107,7 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |         类型      | 必填  | 说明                                    |
-| ------------------- | ------------------| ---- | --------------------------------------- |
-| slotId              | number            | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|     名称            |         类型      | 只读 | 可选 | 说明                                    |
+| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
+| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
 

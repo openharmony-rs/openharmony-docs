@@ -105,6 +105,7 @@ function layerMask(): void {
 | GEOMETRY | 2 | 几何类型结点。 |
 | CAMERA | 3 | 相机类型结点。 |
 | LIGHT | 4 | 灯光类型结点。 |
+| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。 |
 
 ## Container\<T>
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
@@ -131,8 +132,10 @@ function append(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // append 节点
-      result.root?.children.get(0)?.children.append(node);
+      if (node) {
+        // append 结点，如果node已经在children中，数量不会增加，但操作仍然生效
+        result.root?.children.get(0)?.children.append(node);
+      }
     }
   }).catch((error: Error) => {
     console.error('Scene load failed:', error);
@@ -164,7 +167,7 @@ function insertAfter(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       if (node) {
-        // insertAfter 节点
+        // insertAfter 结点，如果node已经在children中，数量不会增加，但操作仍然生效
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
@@ -320,7 +323,7 @@ function count(): void {
 | layerMask | [LayerMask](#layermask) | 是 | 否 | 结点的图层掩码。 |
 | path | string | 是 | 否 | 结点路径。 |
 | parent | [Node](#node) \| null | 是 | 否 | 结点的父结点，不存在则为空值。 |
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的结点，不存在则为空值。 |
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的子结点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子结点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的结点已存在于容器中，容器会先移除该结点再插入，因此数量不会增加，看似“无效”；添加新结点才会真正增加子结点数量。 |
 
 ### getNodeByPath
 getNodeByPath(path: string): Node | null
@@ -413,7 +416,9 @@ function getNode(): void {
 | farPlane | number | 否 | 否 | 远平面，取值大于nearPlane。 |
 | enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。 |
+| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | 是 | 否 | 应用于相机输出的后处理特效。 |
 | clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。） |
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>

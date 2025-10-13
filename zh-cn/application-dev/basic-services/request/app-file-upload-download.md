@@ -697,3 +697,125 @@ struct Index {
 }
 ```
 
+## 使用WantAgent实现通知栏跳转功能
+
+从API version 22开始，开发者可以使用[wantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)接口与上传下载模块结合，实现点击任务通知后跳转至应用指定页面的功能。
+
+### 功能介绍
+
+通过在下载任务的配置中设置[wantAgent参数](../../reference/apis-basic-services-kit/js-apis-request.md#notification15)，开发者可以指定用户点击通知后要跳转的应用页面及相关参数。当用户点击正在进行或已完成的下载任务通知时，系统会根据wantAgent参数启动指定的应用能力。
+
+### 示例代码
+
+以下示例代码展示了如何创建一个带有wantAgent功能的下载任务：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+import { request } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Button("下载并设置通知跳转").onClick(async () => {
+          // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+          // 创建wantAgentInfo对象，用于定义点击通知后要执行的操作
+          let wantAgentInfo: wantAgent.WantAgentInfo = {
+            wants: [
+              {
+                deviceId: '',
+                bundleName: 'com.example.request', // 替换为实际应用的包名
+                abilityName: 'EntryAbility', // 替换为实际的ability名称
+                action: '',
+                entities: [],
+                uri: '',
+                parameters: {} // 可以传递自定义参数
+              }
+            ],
+            actionType: wantAgent.OperationType.START_ABILITY,
+            requestCode: 0,
+            wantAgentFlags:[wantAgent.WantAgentFlags.CONSTANT_FLAG]
+          };
+
+          // 获取WantAgent实例
+          let wantAgentInstance: WantAgent;
+          try {
+            wantAgentInstance = await wantAgent.getWantAgent(wantAgentInfo);
+          } catch (error) {
+            console.error(`Failed to get WantAgent, Code: ${error.code}  message: ${error.message}`);
+            return;
+          }
+
+          // 创建下载任务配置，包含wantAgent参数
+          let config: request.agent.Config = {
+            action: request.agent.Action.DOWNLOAD,
+            url: 'http://example.com/file', // 替换为实际的下载地址
+            title: '下载任务通知标题',
+            description: '下载任务通知描述',
+            mode: request.agent.Mode.BACKGROUND,
+            overwrite: true,
+            method: "GET",
+            saveas: "downloadedFile.txt",
+            network: request.agent.Network.ANY,
+            gauge: true,
+            notification: {
+              visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
+              wantAgent: wantAgentInstance,
+            }
+          };
+
+          // 创建并启动下载任务
+          try {
+            request.agent.create(context, config).then((task: request.agent.Task) => {
+              task.start((err: BusinessError) => {
+                if (err) {
+                  console.error(`Failed to start the download task, Code: ${err.code}  message: ${err.message}`);
+                  return;
+                }
+              });
+              task.on('progress', async (progress) => {
+                console.warn(`Request download status ${progress.state}, downloaded ${progress.processed}`);
+              })
+              task.on('completed', async (progress) => {
+                console.warn('Request download completed, ' + JSON.stringify(progress));
+                // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+                request.agent.remove(task.tid);
+              })
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+            });
+          } catch (err) {
+            console.error(`Failed to create a download task, err: ${err}`);
+          }
+        })
+      }
+    }
+  }
+}
+```
+
+### 配置说明
+
+在上面的示例代码中，我们主要通过以下几个步骤实现了通知栏跳转功能：
+
+1. **创建WantAgentInfo对象**：定义点击通知后要执行的操作，包括目标应用的包名、ability名称和需要传递的具体参数。
+
+2. **获取WantAgent实例**：通过`wantAgent.getWantAgent()`方法获取WantAgent实例。
+
+3. **配置下载任务**：在`request.agent.Config`中设置`notification`属性，并将`wantAgent`参数设置为前面获取的WantAgent实例。
+
+4. **设置通知可见性**：通过`visibility`参数可以控制通知显示的内容，例如进度、完成状态等。
+
+### 注意事项
+
+- 此功能仅支持API version 22及以上版本。
+- 确保在配置`wantAgentInfo`时，填写正确的应用包名和ability名称。
+- `wantAgent`参数需要与`notification`参数配合使用，才能在通知中显示跳转功能。
+- 在实际应用中，建议根据业务需求调整通知的标题、描述、可见性以及其他相关参数。
+

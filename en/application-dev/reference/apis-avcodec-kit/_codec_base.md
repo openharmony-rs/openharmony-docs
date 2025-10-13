@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -51,7 +51,7 @@ The table below lists the media codec formats. The type is a constant string.
 
 The tables below list the key-value pairs used to describe media data. The key type is a constant string, and the value type can be int32_t, int64_t, float, double, char *, or uint8_t *.
 
-The [OH_AVFormat](_core.md#oh_avformat) API is used to configure or query parameters.
+The[OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query parameters.
 
 Key-value pairs dedicated for capability query:
 
@@ -80,7 +80,7 @@ Key-value pairs dedicated for video:
 | [OH_ED_KEY_EOS](#oh_ed_key_eos)                              | End of stream for the surface buffer. The value type is int32_t. This key is optional. (It is deprecated from API version 14.)|
 | [OH_MD_KEY_WIDTH](#oh_md_key_width)                          | Video width. The value type is int32_t.                            |
 | [OH_MD_KEY_HEIGHT](#oh_md_key_height)                        | Video height. The value type is int32_t.                              |
-| [OH_MD_KEY_PIXEL_FORMAT](#oh_md_key_pixel_format)            | Video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](_core.md#oh_avpixelformat).|
+| [OH_MD_KEY_PIXEL_FORMAT](#oh_md_key_pixel_format)            | Video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat).|
 | [OH_MD_KEY_FRAME_RATE](#oh_md_key_frame_rate)                | Video frame rate. The value type is double. This key is optional.                |
 | [OH_MD_KEY_RANGE_FLAG](#oh_md_key_range_flag)                | Video YUV value range flag. The value type is int32_t. The value **1** means a full range, and **0** means a limited range. This key is optional.|
 | [OH_MD_KEY_COLOR_PRIMARIES](#oh_md_key_color_primaries)      | Video primary colors. The value type is int32_t. For details, see [OH_ColorPrimary](#oh_colorprimary). The value complies with Table 2 in H.273. This key is optional.|
@@ -100,7 +100,7 @@ Key-value pairs dedicated for video:
 | [OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT](#oh_md_key_video_encoder_ltr_frame_count)        | Number of LTR frames. The value type is int32_t. The value must be within the supported value range. This key is optional and is used only for video encoding.|
 | [OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR](#oh_md_key_video_encoder_per_frame_mark_ltr)  | Whether the current frame is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and is used only for video encoding.|
 | [OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR](#oh_md_key_video_encoder_per_frame_use_ltr)    | 	POC number of the LTR frame referenced by the current frame. The value type is int32_t. This key is optional and is used only for video encoding.|
-| [OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR](#oh_md_key_video_per_frame_is_ltr)      | Whether the frame corresponding to the stream output from the current [OH_AVBuffer](_core.md#oh_avbuffer) is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and is used only for video encoding.|
+| [OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR](#oh_md_key_video_per_frame_is_ltr)      | Whether the frame corresponding to the stream output from the current [OH_AVBuffer](capi-core-oh-avbuffer.md) is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and is used only for video encoding.|
 | [OH_MD_KEY_VIDEO_PER_FRAME_POC](#oh_md_key_video_per_frame_poc)            | POC number of the frame. The value type is int32_t. This key is optional and is used only for video encoding.|
 | [OH_MD_KEY_VIDEO_ENCODER_QP_MAX](#oh_md_key_video_encoder_qp_max)       | Maximum Quantization Parameter (QP) allowed by the video encoder. The value type is int32_t. This key is optional and is used only for video encoding.|
 | [OH_MD_KEY_VIDEO_ENCODER_QP_MIN](#oh_md_key_video_encoder_qp_min)      | Minimum QP allowed by the video encoder. The value type is int32_t. This key is optional and is used only for video encoding.|
@@ -134,7 +134,7 @@ Key-value pairs dedicated for audio:
 | [OH_MD_KEY_AUD_CHANNEL_COUNT](#oh_md_key_aud_channel_count)  | Number of audio channels. The value type is int32_t.                          |
 | [OH_MD_KEY_AUD_SAMPLE_RATE](#oh_md_key_aud_sample_rate)      | Audio sampling rate. The value type is int32_t.                            |
 | [OH_MD_KEY_AUDIO_COMPRESSION_LEVEL](#oh_md_key_audio_compression_level) | Audio codec compression level. The value type is int32_t type. This key is used only for audio encoding. This key is optional.    |
-| [OH_MD_KEY_CHANNEL_LAYOUT](#oh_md_key_channel_layout)        | Required encoding channel layout. The value type is int64_t. This key applies only to encoders. For details, see [OH_AudioChannelLayout](_core.md#oh_audiochannellayout-1). |
+| [OH_MD_KEY_CHANNEL_LAYOUT](#oh_md_key_channel_layout)        | Required encoding channel layout. The value type is int64_t. This key applies only to encoders. For details, see [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). |
 | [OH_MD_KEY_BITS_PER_CODED_SAMPLE](#oh_md_key_bits_per_coded_sample) | Number of bits per sample. The value type is int32_t. This key is optional.<br>In versions earlier than API version 20, this parameter must be set to **1** for FLAC encoding. Otherwise, **OH_AudioCodec_Configure** returns the error code **AV_ERR_INVALID_VAL**. However, this parameter has no actual effect and does not affect the encoding result. Starting from API version 20, you do not need to set it anymore.|
 | [OH_MD_KEY_SBR](#oh_md_key_sbr)                              | AAC SBR format. The value type is int32_t. This key applies to AAC encoders. This key is optional.|
 | [OH_MD_KEY_COMPLIANCE_LEVEL](#oh_md_key_compliance_level)    | FLAC compliance level. The value type is int32_t. This key is used only for audio encoding. This key is optional.         |
@@ -203,11 +203,11 @@ Key-value pairs dedicated for multiplexing and demultiplexing:
 | typedef struct NativeWindow [OHNativeWindow](#ohnativewindow) | Defines a struct for a native object for the graphics interface. | 
 | typedef struct [OH_AVCodec](#oh_avcodec) [OH_AVCodec](#oh_avcodec) | Defines a struct for a native object for the audio and video codec interface. | 
 | typedef void(\* [OH_AVCodecOnError](#oh_avcodeconerror)) ([OH_AVCodec](#oh_avcodec) \*codec, int32_t errorCode, void \*userData) | Defines the pointer to the function that is called to report error information when an error occurs during the running of an OH_AVCodec instance.| 
-| typedef void(\* [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)) ([OH_AVCodec](#oh_avcodec) \*codec, [OH_AVFormat](_core.md#oh_avformat) \*format, void \*userData) | Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br>From API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.| 
-| typedef void(\* [OH_AVCodecOnNeedInputData](#oh_avcodeconneedinputdata)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVMemory](_core.md#oh_avmemory) \*data, void \*userData) | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data. (It is deprecated from API version 11.)| 
-| typedef void(\* [OH_AVCodecOnNewOutputData](#oh_avcodeconnewoutputdata)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVMemory](_core.md#oh_avmemory) \*data, [OH_AVCodecBufferAttr](_o_h___a_v_codec_buffer_attr.md) \*attr, void \*userData) | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data. (It is deprecated from API version 11.)| 
-| typedef void(\* [OH_AVCodecOnNeedInputBuffer](#oh_avcodeconneedinputbuffer)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVBuffer](_core.md#oh_avbuffer) \*buffer, void \*userData) | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data.| 
-| typedef void(\* [OH_AVCodecOnNewOutputBuffer](#oh_avcodeconnewoutputbuffer)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVBuffer](_core.md#oh_avbuffer) \*buffer, void \*userData) | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data.| 
+| typedef void(\* [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)) ([OH_AVCodec](#oh_avcodec) \*codec, [OH_AVFormat](capi-core-oh-avformat.md) \*format, void \*userData) | Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br>From API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.| 
+| typedef void(\* [OH_AVCodecOnNeedInputData](#oh_avcodeconneedinputdata)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVMemory](capi-core-oh-avmemory.md) \*data, void \*userData) | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data. (It is deprecated from API version 11.)| 
+| typedef void(\* [OH_AVCodecOnNewOutputData](#oh_avcodeconnewoutputdata)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVMemory](capi-core-oh-avmemory.md) \*data, [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) \*attr, void \*userData) | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data. (It is deprecated from API version 11.)| 
+| typedef void(\* [OH_AVCodecOnNeedInputBuffer](#oh_avcodeconneedinputbuffer)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVBuffer](capi-core-oh-avbuffer.md) \*buffer, void \*userData) | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data.| 
+| typedef void(\* [OH_AVCodecOnNewOutputBuffer](#oh_avcodeconnewoutputbuffer)) ([OH_AVCodec](#oh_avcodec) \*codec, uint32_t index, [OH_AVBuffer](capi-core-oh-avbuffer.md) \*buffer, void \*userData) | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data.| 
 | typedef struct [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) [OH_AVCodecAsyncCallback](#oh_avcodecasynccallback) | Defines all the asynchronous callback function pointers of an OH_AVCodec instance. (It is deprecated from API version 11.)| 
 | typedef struct [OH_AVCodecCallback](_o_h___a_v_codec_callback.md) [OH_AVCodecCallback](#oh_avcodeccallback) | Defines all the asynchronous callback function pointers of an OH_AVCodec instance.| 
 | typedef int32_t(\* [OH_AVDataSourceReadAt](#oh_avdatasourcereadat)) (OH_AVBuffer \*data, int32_t length, int64_t pos) | Defines a function pointer used to provide the capability of obtaining user-defined media data. | 
@@ -306,12 +306,12 @@ Key-value pairs dedicated for multiplexing and demultiplexing:
 | const char \* [OH_ED_KEY_EOS](#oh_ed_key_eos) | Pointer to the key that describes the end of stream for the surface buffer. The value type is int32_t. (It is deprecated from API version 14.)|
 | const char \* [OH_MD_KEY_WIDTH](#oh_md_key_width) | Pointer to the key that describes the video width. The value type is int32_t.|
 | const char \* [OH_MD_KEY_HEIGHT](#oh_md_key_height) | Pointer to the key that describes the video height. The value type is int32_t.|
-| const char \* [OH_MD_KEY_PIXEL_FORMAT](#oh_md_key_pixel_format) | Pointer to the key that describes the video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](_core.md#oh_avpixelformat).|
+| const char \* [OH_MD_KEY_PIXEL_FORMAT](#oh_md_key_pixel_format) | Pointer to the key that describes the video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat).|
 | const char \* [OH_MD_KEY_FRAME_RATE](#oh_md_key_frame_rate) | Pointer to the key that describes the video frame rate. The value type is double.|
 | const char \* [OH_MD_KEY_ROTATION](#oh_md_key_rotation) | Pointer to the key that describes the rotation angle of the surface. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is used only for video decoding in surface mode.|
 | const char \* [OH_MD_KEY_RANGE_FLAG](#oh_md_key_range_flag) | Pointer to the key that describes the video YUV value range flag. The value type is int32_t. The value **1** means a full range, and **0** means a limited range.|
 | const char \* [OH_MD_KEY_COLOR_PRIMARIES](#oh_md_key_color_primaries) | Pointer to the key that describes the video primary colors. The value type is int32_t. For details, see [OH_ColorPrimary](#oh_colorprimary). The value complies with Table 2 in H.273.|
-| const char \* [OH_MD_KEY_TRANSFER_CHARACTERISTICS](#oh_md_key_transfer_characteristics) | Pointer to the key that describes the video transfer characteristics. The value type is int32_t. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 4 in H.273.|
+| const char \* [OH_MD_KEY_TRANSFER_CHARACTERISTICS](#oh_md_key_transfer_characteristics) | Pointer to the key that describes the video transfer characteristics. The value type is int32_t. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 3 in H.273.|
 | const char \* [OH_MD_KEY_MATRIX_COEFFICIENTS](#oh_md_key_matrix_coefficients) | Pointer to the key that describes the video matrix coefficients. The value type is int32_t. For details, see [OH_MatrixCoefficient](#oh_matrixcoefficient). The value complies with Table 4 in H.273.|
 | const char \* [OH_MD_KEY_SCALING_MODE](#oh_md_key_scaling_mode) | Pointer to the key that describes the video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](#oh_scalingmode). This key is optional and is used only for video decoding in surface mode. You are advised to set the scaling mode by calling [OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2). (It is deprecated from API version 14.)|
 | const char \* [OH_MD_KEY_VIDEO_CROP_TOP](#oh_md_key_video_crop_top) | Pointer to the key that describes the top coordinate (y) of the cropped rectangle. The value type is int32_t. | 
@@ -619,7 +619,7 @@ Defines the pointer to the function that is called when new output data is gener
 | codec | Pointer to an OH_AVCodec instance. | 
 | index | Index of the new output buffer. | 
 | data | Pointer to the data filled in the new output buffer. | 
-| attr | Pointer to the description information about the new output buffer. For details, see [OH_AVCodecBufferAttr](_o_h___a_v_codec_buffer_attr.md). | 
+| attr | Pointer to the description information about the new output buffer. For details, see [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md). | 
 | userData | Pointer to the data on which the caller depends when executing the callback. | 
 
 
@@ -1080,7 +1080,7 @@ Enumerates the layouts of audio channels. The output format of the decoder is de
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AudioChannelLayout](_core.md#oh_audiochannellayout)
+**Substitute**: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)
 
 | Value| Description| 
 | -------- | -------- |
@@ -1143,7 +1143,7 @@ Enumerates the audio channels. Each channel is mapped to a variable of int64_t.
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AudioChannelSet](_core.md#oh_audiochannelset)
+**Substitute**: [OH_AudioChannelSet](capi-native-audio-channel-layout-h.md#oh_audiochannelset)
 
 | Value| Description| 
 | -------- | -------- |
@@ -1370,17 +1370,17 @@ Enumerates the primary colors. This enum is used for both encoding and decoding.
 
 | Value| Description| 
 | -------- | -------- |
-| COLOR_PRIMARY_BT709  | BT.709 color gamut.  | 
+| COLOR_PRIMARY_BT709  | BT709 color gamut.  | 
 | COLOR_PRIMARY_UNSPECIFIED  | Unspecified color gamut.  | 
-| COLOR_PRIMARY_BT470_M  | BT.470 System M color gamut.  | 
-| COLOR_PRIMARY_BT601_625  | BT.601 625 color gamut.  | 
-| COLOR_PRIMARY_BT601_525  | BT.601 525 color gamut.  | 
-| COLOR_PRIMARY_SMPTE_ST240  | SMPTE ST 240 color gamut.  | 
-| COLOR_PRIMARY_GENERIC_FILM  | Generic film color gamut.  | 
-| COLOR_PRIMARY_BT2020  | BT.2020 color gamut.  | 
-| COLOR_PRIMARY_SMPTE_ST428  | SMPTE ST 428 color gamut.  | 
-| COLOR_PRIMARY_P3DCI  | DCI-P3 color gamut.  | 
-| COLOR_PRIMARY_P3D65  | P3-D65 color gamut.  | 
+| COLOR_PRIMARY_BT470_M  | BT470_M color gamut.  | 
+| COLOR_PRIMARY_BT601_625  | BT601_625 color gamut.  | 
+| COLOR_PRIMARY_BT601_525  | BT601_525 color gamut.  | 
+| COLOR_PRIMARY_SMPTE_ST240  | SMPTE_ST240 color gamut.  | 
+| COLOR_PRIMARY_GENERIC_FILM  | GENERIC_FILM color gamut.  | 
+| COLOR_PRIMARY_BT2020  | BT2020 color gamut.  | 
+| COLOR_PRIMARY_SMPTE_ST428  | SMPTE_ST428 color gamut.  | 
+| COLOR_PRIMARY_P3DCI  | P3DCI color gamut.  | 
+| COLOR_PRIMARY_P3D65  | P3D65 color gamut.  | 
 
 
 ### OH_HEVCLevel
@@ -1457,15 +1457,15 @@ Enumerates the matrix coefficients. This enum is used for both encoding and deco
 | MATRIX_COEFFICIENT_BT709  | BT.709 conversion matrix.  | 
 | MATRIX_COEFFICIENT_UNSPECIFIED  | Unspecified conversion matrix.  | 
 | MATRIX_COEFFICIENT_FCC  | FCC conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT601_625  | BT.601 625 conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT601_525  | BT.601 525 conversion matrix.  | 
-| MATRIX_COEFFICIENT_SMPTE_ST240  | SMPTE ST 240 conversion matrix.  | 
-| MATRIX_COEFFICIENT_YCGCO  | YCgCo conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT2020_NCL  | BT.2020 NCL conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT2020_CL  | BT.2020 CL conversion matrix.  | 
-| MATRIX_COEFFICIENT_SMPTE_ST2085  | SMPTE ST 2085 conversion matrix.  | 
-| MATRIX_COEFFICIENT_CHROMATICITY_NCL  | Chromaticity NCL conversion matrix.  | 
-| MATRIX_COEFFICIENT_CHROMATICITY_CL  | Chromaticity CL conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT601_625  | BT601_625 conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT601_525  | BT601_525 conversion matrix.  | 
+| MATRIX_COEFFICIENT_SMPTE_ST240  | SMPTE_ST240 conversion matrix.  | 
+| MATRIX_COEFFICIENT_YCGCO  | YCGCO conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT2020_NCL  | BT2020_NCL conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT2020_CL  | BT2020_CL conversion matrix.  | 
+| MATRIX_COEFFICIENT_SMPTE_ST2085  | SMPTE_ST2085 conversion matrix.  | 
+| MATRIX_COEFFICIENT_CHROMATICITY_NCL  | CHROMATICITY_NCL conversion matrix.  | 
+| MATRIX_COEFFICIENT_CHROMATICITY_CL  | CHROMATICITY_CL conversion matrix.  | 
 | MATRIX_COEFFICIENT_ICTCP  | ICTCP conversion matrix.  | 
 
 
@@ -1775,20 +1775,20 @@ Enumerates the transfer characteristics. This enum is used for both encoding and
 | -------- | -------- |
 | TRANSFER_CHARACTERISTIC_BT709  | BT.709 transfer function.  | 
 | TRANSFER_CHARACTERISTIC_UNSPECIFIED  | Unspecified transfer function.  | 
-| TRANSFER_CHARACTERISTIC_GAMMA_2_2  | Gamma 2-2 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_GAMMA_2_8  | Gamma 2-8 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT601  | BT.601 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_SMPTE_ST240  | SMPTE ST 240 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_GAMMA_2_2  | GAMMA_2_2 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_GAMMA_2_8  | GAMMA_2_8 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT601  | BT601 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_SMPTE_ST240  | SMPTE_ST240 transfer function.  | 
 | TRANSFER_CHARACTERISTIC_LINEAR  | Linear transfer function.  | 
 | TRANSFER_CHARACTERISTIC_LOG  | Log transfer function.  | 
-| TRANSFER_CHARACTERISTIC_LOG_SQRT  | Log SQRT transfer function.  | 
-| TRANSFER_CHARACTERISTIC_IEC_61966_2_4  | IEC61966-2.4 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT1361  | BT.1361 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_IEC_61966_2_1  | IEC61966 2.1 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT2020_10BIT  | BT.2020 10-bit transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT2020_12BIT  | BT.2020 12-bit transfer function.  | 
+| TRANSFER_CHARACTERISTIC_LOG_SQRT  | LOG_SQRT transfer function.  | 
+| TRANSFER_CHARACTERISTIC_IEC_61966_2_4  | IEC_61966_2_4 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT1361  | BT1361 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_IEC_61966_2_1  | IEC_61966_2_1 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT2020_10BIT  | BT2020_10BIT transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT2020_12BIT  | BT2020_12BIT transfer function.  | 
 | TRANSFER_CHARACTERISTIC_PQ  | PQ transfer function.  | 
-| TRANSFER_CHARACTERISTIC_SMPTE_ST428  | SMPTE ST.428 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_SMPTE_ST428  | SMPTE_ST428 transfer function.  | 
 | TRANSFER_CHARACTERISTIC_HLG  | HLG transfer function.  | 
 
 
@@ -2224,7 +2224,7 @@ const char* OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT
 
 Pointer to the key that describes the maximum number of LTR frames obtained during video encoding. The value type is int32_t.
 
-You can use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_LONG_TERM_REFERENCE](capi-native-avcapability-h.md#oh_avcapabilityfeature-1) to query the maximum number.
+You can use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_LONG_TERM_REFERENCE](capi-native-avcapability-h.md#oh_avcapabilityfeature) to query the maximum number.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -2423,7 +2423,7 @@ const char* OH_MD_KEY_CHANNEL_LAYOUT
 **Description**
 
 Pointer to the key that describes the required encoding channel layout. The value type is int64_t. This key applies only to encoders.
-For details, see [OH_AudioChannelLayout](_core.md#oh_audiochannellayout-1).
+For details, see [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -2611,7 +2611,7 @@ This key is used to set the display height of a video frame when **Configure** i
 
 You can call [OH_AVCapability_GetVideoHeightRange](capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange) to obtain the value range.
 
-For details about the development guide, see step 5 in surface mode or step 4 in buffer mode in [Video Encoding](../../media/avcodec/video-encoding.md).
+For details about the development guide, see step 5 in [surface mode](../../media/avcodec/video-encoding.md#surface-mode) (see../../media/avcodec/video-encoding.md#surface) or step 4 in [buffer mode](see../../media/avcodec/video-encoding.md#buffer) of video encoding.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -2718,7 +2718,7 @@ const char* OH_MD_KEY_PIXEL_FORMAT
 
 **Description**
 
-Pointer to the key that describes the video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](_core.md#oh_avpixelformat).
+Pointer to the key that describes the video pixel format. The value type is int32_t. For details, see [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat).
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -2904,7 +2904,7 @@ const char* OH_MD_KEY_TRANSFER_CHARACTERISTICS
 
 **Description**
 
-Pointer to the key that describes the video transfer characteristics. The value type is int32_t. The default value is **MATRIX_COEFFICIENT_UNSPECIFIED**. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 3 in H.273.
+Pointer to the key that describes the video transfer characteristics. The value type is int32_t. The default value is **TRANSFER_CHARACTERISTIC_UNSPECIFIED**. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 3 in H.273.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -3034,7 +3034,7 @@ const char* OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY
 
 Pointer to the key that describes the enabled status of temporal scalability. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used.
 
-Before using this key, you can use the API [OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported) and the enum [VIDEO_ENCODER_TEMPORAL_SCALABILITY](capi-native-avcapability-h.md#oh_avcapabilityfeature-1) to check whether the video encoder supports temporal scalability.
+Before using this key, you can use the API [OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported) and the enum [VIDEO_ENCODER_TEMPORAL_SCALABILITY](capi-native-avcapability-h.md#oh_avcapabilityfeature) to check whether the video encoder supports temporal scalability.
 
 For details, see [Temporally Scalable Video Coding](../../media/avcodec/video-encoding-temporal-scalability.md#available-apis).
 
@@ -3054,7 +3054,7 @@ const char* OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT
 
 Pointer to the key that describes the number of LTR frames. The value type is int32_t. The value must be within the supported value range.
 
-Before using this key, you can use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_LONG_TERM_REFERENCE](capi-native-avcapability-h.md#oh_avcapabilityfeature-1) to query the number of supported LTR frames.
+Before using this key, you can use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_LONG_TERM_REFERENCE](capi-native-avcapability-h.md#oh_avcapabilityfeature) to query the number of supported LTR frames.
 
 This key is optional and used only in the configuration phase of video encoding.
 
@@ -3147,7 +3147,7 @@ const char* OH_MD_KEY_VIDEO_ENCODER_QP_AVERAGE
 
 Pointer to the key that describes the average QP of video frames. The value type is int32_t.
 
-Pointer to the key that describes the average QP value of the current frame encoding block. It is output with [OH_AVBuffer](_core.md#oh_avbuffer)
+Pointer to the key that describes the average QP value of the current frame encoding block. It is output with [OH_AVBuffer](capi-core-oh-avbuffer.md).
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -3164,7 +3164,7 @@ const char* OH_MD_KEY_VIDEO_ENCODER_MSE
 
 Pointer to the key that describes the MSE of video frames. The value type is double.
 
-Pointer to the key that describes the average MSE value of the current frame encoding block. It is output with [OH_AVBuffer](_core.md#oh_avbuffer)
+Pointer to the key that describes the average MSE value of the current frame encoding block. It is output with [OH_AVBuffer](capi-core-oh-avbuffer.md).
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -3293,15 +3293,15 @@ Pointer to the key that describes the output color space of the video decoder. T
 
 The supported value is **OH_COLORSPACE_BT709_LIMIT**. For details, see [OH_NativeBuffer_ColorSpace](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_colorspace).
 
-It is used when [OH_VideoDecoder_Configure](_video_decoder.md#oh_videodecoder_configure) is called.
+It is used in [OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure).
 
 Before calling **OH_VideoDecoder_Start**, you must call **OH_VideoDecoder_Prepare**.
 
 If Color Space Conversion (CSC) is supported and this key is configured, the video decoder automatically transcodes the HDR Vivid video to the specified color space.
 
-If CSC function not supported, the error code [AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION](_core.md#oh_averrcode-1) is returned when [OH_VideoDecoder_Configure](_video_decoder.md#oh_videodecoder_configure) is called.
+If CSC is not supported, the error code [AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION](capi-native-averrors-h.md#oh_averrcode) is returned when [OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure) is called.
 
-If the input video is not an HDR Vivid video, the callback function [OH_AVCodecOnError](#oh_avcodeconerror) is invoked to report the error code [AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION](_core.md#oh_averrcode-1).
+If the input video is not an HDR Vivid video, the callback function [OH_AVCodecOnError](#oh_avcodeconerror) is invoked to report the error code [AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION](capi-native-averrors-h.md#oh_averrcode).
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -3354,9 +3354,9 @@ const char* OH_MD_KEY_VIDEO_PIC_HEIGHT
 
 Pointer to the key that describes the height of the video frame. The value type is int32_t.
 
-When [OH_VideoDecoder_GetOutputDescription](_video_decoder.md#oh_videodecoder_getoutputdescription) is called during video decoding, the height can be parsed from the returned OH_AVFormat instance.
+When [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) is called during video decoding, the height can be parsed from the returned OH_AVFormat instance.
 
-When the decoded output stream<!--RP2--><!--RP2End--> changes, the height can be parsed from the OH_AVForamt instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
+When the decoded output stream<!--RP2--><!--RP2End--> changes, the height can be parsed from the OH_AVFormat instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
 
 The width and height parsed from the OH_AVFormat instance are aligned, which are different from **OH_MD_KEY_WIDTH** and **OH_MD_KEY_HEIGHT** set by calling **Configure**.
 
@@ -3377,9 +3377,9 @@ const char* OH_MD_KEY_VIDEO_PIC_WIDTH
 
 Pointer to the key that describes the width of the video frame. The value type is int32_t.
 
-When [OH_VideoDecoder_GetOutputDescription](_video_decoder.md#oh_videodecoder_getoutputdescription) is called during video decoding, the width can be parsed from the returned OH_AVFormat instance.
+When [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) is called during video decoding, the width can be parsed from the returned OH_AVFormat instance.
 
-When the decoded output stream<!--RP2--><!--RP2End--> changes, the width can be parsed from the OH_AVForamt instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
+When the decoded output stream<!--RP2--><!--RP2End--> changes, the width can be parsed from the OH_AVFormat instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
 
 The width and height parsed from the OH_AVFormat instance are aligned, which are different from **OH_MD_KEY_WIDTH** and **OH_MD_KEY_HEIGHT** set by calling **Configure**.
 
@@ -3604,7 +3604,7 @@ Pointer to the key that describes the enabled status of the PTS-based bit rate c
 
 This key is optional and is used only for video encoding.
 
-If this feature is enabled, each video frame must contain PTS information and be sent to the encoder. In surface mode, the PTS is set by calling [OH_NativeWindow_NativeWindowHandleOpt](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt), in units of nanosecond (ns). In buffer mode, the PTS is set by calling [OH_AVBuffer_SetBufferAttr](_core.md#oh_avbuffer_setbufferattr), in units of microsecond (us).
+If this feature is enabled, each video frame must contain PTS information and be sent to the encoder. In surface mode, the PTS is set by calling [OH_NativeWindow_NativeWindowHandleOpt](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt), in units of nanosecond (ns). In buffer mode, the PTS is set by calling [OH_AVBuffer_SetBufferAttr](capi-native-avbuffer-h.md#oh_avbuffer_setbufferattr), in units of microsecond (us).
 
 It is used in the configuration phase.
 
@@ -3624,7 +3624,7 @@ Pointer to the key that describes the enabled status of B-frame encoding. The va
 
 This key is optional and used only for video encoding. The default value is **0**.
 
-Before using this key, you can use the API [OH_AVCapability_isFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported) and the enum [VIDEO_ENCODER_B_FRAME](capi-native-avcapability-h.md#oh_avcapabilityfeature-1) to check whether the platform supports this feature.
+Before using this key, you can use the API [OH_AVCapability_isFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported) and the enum [VIDEO_ENCODER_B_FRAME](capi-native-avcapability-h.md#oh_avcapabilityfeature) to check whether the platform supports this feature.
 
 This key is optional and used only in the configuration phase of video encoding.
 
@@ -3642,11 +3642,11 @@ const char* OH_MD_KEY_VIDEO_ENCODER_MAX_B_FRAMES
 
 Pointer to the key that describes the maximum number of B-frames supported by B-frame encoding in video encoding. The value type is int32_t.
 
-Before using this key, you can use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_B_FRAME](capi-native-avcapability-h.md#oh_avcapabilityfeature-1) to check whether the platform supports B-frame encoding.
+Before using this key, you can use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_B_FRAME](capi-native-avcapability-h.md#oh_avcapabilityfeature) to check whether the platform supports B-frame encoding.
 
-Use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_B_FRAME](capi-native-avcapability-h.md#oh_avcapabilityfeature-1) to obtain the handle to [OH_AVFormat](_core.md#oh_avformat).
+Use the API [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) and the enum [VIDEO_ENCODER_B_FRAME](capi-native-avcapability-h.md#oh_avcapabilityfeature) to obtain the handle to [OH_AVFormat](capi-core-oh-avformat.md).
 
-Use the API [OH_AVFormat_GetIntValue](_core.md#oh_avformat_getintvalue) to query the number of supported B-frames.
+Use the API [OH_AVFormat_GetIntValue](capi-native-avformat-h.md#oh_avformat_getintvalue) to query the number of supported B-frames.
 
 This key is optional and used only in the configuration phase of video encoding.
 

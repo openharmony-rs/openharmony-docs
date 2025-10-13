@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhangyafei-echo-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -402,7 +402,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
   }
 }
 ```
-### startUIAbilitiesInSplitWindowMode<sup>20+</sup>
+### startUIAbilitiesInSplitWindowMode<sup>21+</sup>
 
 startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
 

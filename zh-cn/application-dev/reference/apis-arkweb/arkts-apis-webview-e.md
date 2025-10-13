@@ -387,3 +387,15 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony6.0系统上的适配指�
 | ------------------------------- | - | ---------- |
 | PARTIAL | 0 | 部分站点隔离，即在同一个Render进程内加载新站点。 |
 | STRICT  | 1 | 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。 |
+
+
+## WebSoftKeyboardBehaviorMode<sup>22+</sup>
+
+Web软键盘自动控制模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| DEFAULT | 0 | 当Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起（默认值）。 |
+| DISABLE_AUTO_KEYBOARD_ON_ACTIVE | 1 | Web组件在inactive或active状态切换时，系统不再尝试触发软键盘自动隐藏或拉起。 |

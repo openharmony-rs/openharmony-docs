@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -152,7 +152,7 @@ async function Marshalling_UnMarshalling(context: Context) {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<PixelMap>
 
-Creates a PixelMap object with the specified properties. By default, the BGRA_8888 format is used to process data. This API uses a promise to return the result.
+Creates a PixelMap object with the default BGRA_8888 format and specified pixel properties. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -189,7 +189,7 @@ async function CreatePixelMap() {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback\<PixelMap>): void
 
-Creates a PixelMap object with the specified properties. By default, the BGRA_8888 format is used to process data. This API uses an asynchronous callback to return the result.
+Creates a PixelMap object with the default BGRA_8888 format and specified pixel properties. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

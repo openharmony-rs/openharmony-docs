@@ -55,30 +55,33 @@
 简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔颜色
 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-// 设置画笔线宽
+// 设置画笔线宽为40
 OH_Drawing_PenSetWidth(pen, 40);
 // 设置画布的画笔
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 绘制5个点
-OH_Drawing_Point2D point1 = {200.0f, 200.0f};
+AdaptationUtil* adaptationUtil = AdaptationUtil::GetInstance();
+OH_Drawing_Point2D point1 = {200, 200};
 OH_Drawing_CanvasDrawPoint(canvas, &point1);
-OH_Drawing_Point2D point2 = {400.0f, 400.0f};
+OH_Drawing_Point2D point2 = {400, 400};
 OH_Drawing_CanvasDrawPoint(canvas, &point2);
-OH_Drawing_Point2D point3 = {600.0f, 600.0f};
+OH_Drawing_Point2D point3 = {600, 600};
 OH_Drawing_CanvasDrawPoint(canvas, &point3);
-OH_Drawing_Point2D point4 = {800.0f, 800.0f};
+OH_Drawing_Point2D point4 = {800, 800};
 OH_Drawing_CanvasDrawPoint(canvas, &point4);
-OH_Drawing_Point2D point5 = {1000.0f, 1000.0f};
+OH_Drawing_Point2D point5 = {1000, 1000};
 OH_Drawing_CanvasDrawPoint(canvas, &point5);
-// 移除画布中的画笔
+// 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁各类对象
 OH_Drawing_PenDestroy(pen);
 ```
+<!-- [ndk_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 效果如下：
@@ -102,24 +105,26 @@ OH_Drawing_PenDestroy(pen);
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-// 设置画笔线宽
+// 设置画笔线宽为20
 OH_Drawing_PenSetWidth(pen, 20);
 // 设置画布的画笔
 OH_Drawing_CanvasAttachPen(canvas, pen);
-// 创建矩形对象
+// 创建矩形对象，左上坐标为（100，200）右下坐标为（500，300）
 OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 200, 500, 300);
-// 基于矩形对象绘制圆弧
+// 基于矩形对象绘制圆弧，其实角度10°，扫描角度200°
 OH_Drawing_CanvasDrawArc(canvas, rect, 10, 200);
-// 移除画布中的画笔
+// 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁各类对象
 OH_Drawing_PenDestroy(pen);
 OH_Drawing_RectDestroy(rect);
 ```
+<!-- [ndk_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -139,11 +144,12 @@ OH_Drawing_RectDestroy(rect);
 此处以使用画笔绘制圆为例，简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-// 设置画笔线宽
+// 设置画笔线宽为20
 OH_Drawing_PenSetWidth(pen, 20);
 // 设置画布的画笔
 OH_Drawing_CanvasAttachPen(canvas, pen);
@@ -151,12 +157,13 @@ OH_Drawing_CanvasAttachPen(canvas, pen);
 OH_Drawing_Point *point = OH_Drawing_PointCreate(700, 700);
 // 基于圆心点和半径在画布上绘制圆
 OH_Drawing_CanvasDrawCircle(canvas, point, 600);
-// 移除画布中的画笔
+// 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁各类对象
 OH_Drawing_PenDestroy(pen);
 OH_Drawing_PointDestroy(point);
 ```
+<!-- [ndk_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -178,11 +185,12 @@ OH_Drawing_PointDestroy(point);
 此处以使用画笔和画刷绘制五角星为例，示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-// 设置画笔线宽
+// 设置画笔线宽为10
 OH_Drawing_PenSetWidth(pen, 10);
 // 设置 画笔转角样式
 OH_Drawing_PenSetJoin(pen, LINE_ROUND_JOIN);
@@ -190,7 +198,7 @@ OH_Drawing_PenSetJoin(pen, LINE_ROUND_JOIN);
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建画刷，此例对闭合路径进行了颜色填充，所以需要使用画刷
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-OH_Drawing_BrushSetColor(brush , OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0x00));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 int len = 551;
@@ -207,17 +215,17 @@ float eY = bY;
 // 创建路径
 OH_Drawing_Path* path = OH_Drawing_PathCreate();
 // 到起始点
-OH_Drawing_PathMoveTo(path, aX, aY); 
+OH_Drawing_PathMoveTo(path, aX, aY);
 // 绘制直线
-OH_Drawing_PathLineTo(path, bX, bY); 
+OH_Drawing_PathLineTo(path, bX, bY);
 OH_Drawing_PathLineTo(path, cX, cY);
 OH_Drawing_PathLineTo(path, dX, dY);
 OH_Drawing_PathLineTo(path, eX, eY);
 // 直线闭合，形成五角星
-OH_Drawing_PathClose(path); 
+OH_Drawing_PathClose(path);
 // 绘制闭合路径
 OH_Drawing_CanvasDrawPath(canvas, path);
-// 移除画布中的画笔和画刷
+// 去除掉画布中的画笔和画刷
 OH_Drawing_CanvasDetachPen(canvas);
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象
@@ -225,6 +233,7 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PathDestroy(path);
 ```
+<!-- [ndk_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -240,24 +249,25 @@ OH_Drawing_PathDestroy(path);
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置画刷填充颜色
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
 // 设置画布的画刷
-OH_Drawing_CanvasAttachBrush(canvas, brush); 
+OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 矩形区域1
 OH_Drawing_Region *region1 = OH_Drawing_RegionCreate();
-OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(100.0f, 100.0f, 600.f, 600.f);
-OH_Drawing_RegionSetRect(region1, rect1); 
+OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(100, 100, 600, 600);
+OH_Drawing_RegionSetRect(region1, rect1);
 // 矩形区域2
 OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
-OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(300.0f, 300.0f, 900.f, 900.f);
+OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(300, 300, 900, 900);
 OH_Drawing_RegionSetRect(region2, rect2);
 // 两个矩形区域组合
-OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR); 
+OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR);
 OH_Drawing_CanvasDrawRegion(canvas, region1);
-// 从画布移除画刷
+// 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象
 OH_Drawing_BrushDestroy(brush);
@@ -266,6 +276,7 @@ OH_Drawing_RegionDestroy(region2);
 OH_Drawing_RectDestroy(rect1);
 OH_Drawing_RectDestroy(rect2);
 ```
+<!-- [ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
@@ -279,25 +290,27 @@ OH_Drawing_RectDestroy(rect2);
 简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷的填充颜色
 OH_Drawing_BrushSetColor(brush, 0xffff0000);
 // 设置画布的画刷
-OH_Drawing_CanvasAttachBrush(canvas, brush); 
+OH_Drawing_CanvasAttachBrush(canvas, brush);
 OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 800, 800);
 // 绘制矩形
-OH_Drawing_CanvasDrawRect(canvas, rect); 
+OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_RectDestroy(rect);
 ```
+<!-- [ndk_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 效果如下：
 
-![zh-cn_image_0000002194025273](figures/zh-cn_image_0000002194025273.png)
+![zh-cn_image_draw_rect](figures/zh-cn_image_draw_rect.png)
 
 
 ## 绘制圆角矩形
@@ -313,25 +326,27 @@ OH_Drawing_RectDestroy(rect);
 简单示例如下：
 
 ```c++
+// sample_graphics.cpp
 // 创建画刷对象
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷的填充颜色
 OH_Drawing_BrushSetColor(brush, 0xffff0000);
 // 设置画布的画刷
-OH_Drawing_CanvasAttachBrush(canvas, brush); 
+OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建矩形
 OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 900, 600);
 // 创建圆角矩形
 OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 30, 30);
 // 绘制圆角矩形
 OH_Drawing_CanvasDrawRoundRect(canvas, roundRect);
-// 从画布移除画刷
+// 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_RoundRectDestroy(roundRect);
 ```
+<!-- [ndk_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
 效果如下：

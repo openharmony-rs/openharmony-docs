@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 An audio playback application must notice audio stream state changes and perform corresponding operations. For example, when detecting that an audio stream is being played or paused, the application must change the UI display of the **Play** button.
 
@@ -100,7 +100,7 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
 4. (Optional) Call **getCurrentAudioRendererInfoArray()** to obtain the information about all audio playback streams.
 
-     This API can be used to obtain the unique ID of the audio playback stream, UID of the audio playback client, audio status, and other information about the audio player.
+   This API can be used to obtain the unique ID of the audio playback stream, UID of the audio playback client, audio status, and other information about the audio player.
    > **NOTE**
    >
    > Before listening for state changes of all audio streams, the application must [declare the ohos.permission.USE_BLUETOOTH permission](../../security/AccessToken/declare-permissions.md), for the device name and device address (Bluetooth related attributes) to be displayed correctly.

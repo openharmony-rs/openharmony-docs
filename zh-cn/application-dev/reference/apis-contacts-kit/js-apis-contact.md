@@ -4678,7 +4678,7 @@ let holder: contact.Holder = {
 
 ```js
 let event: contact.Event = {
-    eventDate: "xxxxxx"
+    eventDate: "2000-01-01"
 };
 ```
 
@@ -4686,7 +4686,7 @@ let event: contact.Event = {
 
 ```js
 let event = new contact.Event();
-event.eventDate = "xxxxxx";
+event.eventDate = "2000-01-01";
 ```
 
 ## Group

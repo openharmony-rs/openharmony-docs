@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -292,7 +292,7 @@ The transmission is locked.
 
 **Solution**
 
-Restart the remote device and initiate the session again.
+The remote device does not respond. Restart the remote device and initiate the session again.
 
 ## 6611101 Unsupported Seek Mode
 

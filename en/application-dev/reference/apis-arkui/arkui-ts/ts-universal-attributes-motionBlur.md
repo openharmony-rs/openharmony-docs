@@ -1,4 +1,10 @@
 # Motion Blur
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 You can apply a motion blur effect to a component being scaled or moved. This effect must be used together with the **onFinish** parameter of **AnimateParam**.
 
@@ -76,25 +82,29 @@ Applies a motion blur effect to the component being scaled or moved. Compared wi
 
 ## MotionBlurOptions
 
+Defines motion blur options.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                                                       | Mandatory | Description                                                        |
-| ------------- | ----------------------------------------------------------- | ----- | ------------------------------------------------------------ |
-| radius | number      | Yes   | Blur radius. The value range is [0.0, ∞). You are advised to set it to a value less than 1.0.|
-| anchor | [MotionBlurAnchor](#motionbluranchor) | Yes   | Coordinates of the motion blur anchor point. They must be the same as those of the animation scaling anchor point.|
+| Name         | Type                                                       | Read-Only | Optional | Description                                                        |
+| ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
+| radius | number      | No   | No   | Blur radius. The value range is [0.0, ∞). You are advised to set it to a value less than 1.0.|
+| anchor | [MotionBlurAnchor](#motionbluranchor) | No   | No   | Coordinates of the motion blur anchor point. They must be the same as those of the animation scaling anchor point.|
 
 ## MotionBlurAnchor
 
+Coordinates of the motion blur anchor.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                                                       | Mandatory | Description                                                        |
-| ------------- | ----------------------------------------------------------- | ----- | ------------------------------------------------------------ |
-| x | number      | Yes   | X-coordinate of the anchor point. The value range is [0.0, 1.0].|
-| y | number      | Yes   | Y-coordinate of the anchor point. The value range is [0.0, 1.0].|
+| Name         | Type                                                       | Read-Only | Optional | Description                                                        |
+| ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
+| x | number      | No   | No   | X-coordinate of the anchor point. The value range is [0.0, 1.0].|
+| y | number      | No   | No   | Y-coordinate of the anchor point. The value range is [0.0, 1.0].|
 
 ## Example
 
@@ -105,7 +115,7 @@ import { curves } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct motionBlurTest {
+struct MotionBlurTest {
   @State widthSize: number = 400;
   @State heightSize: number = 320;
   @State flag: boolean = true;
@@ -116,6 +126,7 @@ struct motionBlurTest {
   build() {
     Column() {
       Column() {
+        // Replace $r("app.media.testImg") with the image resource file you use.
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)

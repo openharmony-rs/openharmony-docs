@@ -1,5 +1,11 @@
 # 程序访问控制开发常见问题
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @xia-bubai-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 ## 在系统设置修改了应用权限，应用能否监听到权限变化(API 9)
 
@@ -47,3 +53,26 @@
 
 [module.json5配置文件](../quick-start/module-configuration-file.md)
 
+## 如何自定义申请权限时的选项文本，例如申请定位权限时，如何自定义弹出的选项文本(API 10)
+
+**解决方案**
+
+只允许自定义reason，自定义reason在权限弹框时会显示，但不允许自定义弹出选项文本。
+
+**参考资料**
+
+[权限申请](../security/AccessToken/determine-application-mode.md)
+
+## 如何使用安全控件SaveButton进行图片的快速保存，保存控件可以用于哪些场景，区别于使用filepicker方式有什么优势(API 10)
+
+**解决方案**
+
+1. 应用集成SaveButton并注册onClick回调，当用户点击后，应用可以在回调中调用媒体库接口快速创建图片文件，此过程不需要弹窗授权、选择目录之类的操作。
+2. 保存控件可用于需要快速存储图片、视频到媒体库的场景。
+3. 如果使用filepicker，需要拉起系统picker，并选择保存路径等操作，交互流程比较长，用户体验不好。
+
+**参考资料**
+
+[安全控件概述](../security/AccessToken/security-component-overview.md)
+
+[SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)

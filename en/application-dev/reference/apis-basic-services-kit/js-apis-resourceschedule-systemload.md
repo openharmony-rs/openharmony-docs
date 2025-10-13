@@ -1,4 +1,10 @@
 # @ohos.resourceschedule.systemload (System Load Level Management)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @baiheng-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **systemload** module allows the system to determine the system load level based on the current temperature, load, and scenario, and notifies registered applications of level changes, if any.
 
@@ -41,12 +47,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { systemLoad } from '@kit.BasicServicesKit';
 
 function onSystemLoadChange(res: systemLoad.SystemLoadLevel) {
-    console.log(`system load changed, current level ` + res);
+    console.info(`system load changed, current level ` + res);
 }
 
 try {
     systemLoad.on('systemLoadChange', onSystemLoadChange);
-    console.log(`register systemload callback succeeded. `);
+    console.info(`register systemload callback succeeded. `);
 } catch (err) {
     console.error(`register systemload callback failed: ` + JSON.stringify(err));
 }
@@ -81,12 +87,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { systemLoad } from '@kit.BasicServicesKit';
 
 function onSystemLoadChange(res: systemLoad.SystemLoadLevel) {
-    console.log(`system load changed, current level ` + res);
+    console.info(`system load changed, current level ` + res);
 }
 
 try {
     systemLoad.off('systemLoadChange', onSystemLoadChange);
-    console.log(`unregister systemload callback succeeded:. `);
+    console.info(`unregister systemload callback succeeded:. `);
 } catch (err) {
     console.error(`unregister systemload callback failed: ` + JSON.stringify(err));
 }
@@ -113,7 +119,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { systemLoad } from '@kit.BasicServicesKit';
 
 systemLoad.getLevel().then((res: systemLoad.SystemLoadLevel) => {
-    console.log(`getLevel promise succeeded. result: ` + JSON.stringify(res));
+    console.info(`getLevel promise succeeded. result: ` + JSON.stringify(res));
 }).catch((err: BusinessError) => {
     console.error(`getLevel promise failed. code is ${err.code} message is ${err.message}`);
 })

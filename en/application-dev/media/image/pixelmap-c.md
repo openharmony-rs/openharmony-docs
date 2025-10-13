@@ -4,7 +4,7 @@
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the **Pixelmap** class to create, operate, and release a PixelMap, and obtain its width, height, pixel format, alpha type, and row stride.
 

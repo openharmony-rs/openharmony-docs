@@ -38,6 +38,7 @@ Canvas通过drawTextBlob()来绘制字块。函数接受三个参数：TextBlob�
 基本效果的示例代码和效果图如下：
 
 ```ts
+// TextBlockDrawing.ets
 // 创建字型对象
 const font = new drawing.Font();
 // 设置字体大小
@@ -47,6 +48,7 @@ const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.Te
 // 绘制字块
 canvas.drawTextBlob(textBlob, 200, 300);
 ```
+<!-- [arkts_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ![Screenshot_20241225151030139](figures/Screenshot_20241225151030139.jpg)
 
@@ -54,9 +56,14 @@ canvas.drawTextBlob(textBlob, 200, 300);
 
 基于基本的字块绘制，还可以通过画笔实现文字描边效果，描边效果的更多介绍请参考[描边效果](basic-drawing-effect-arkts.md#描边效果)。
 
-文字描边的简要示例和示意图如下：
+以下以英文文字描边和中文文字描边给出示例和指导。
+
+### 英文文字描边
+
+英文文字描边的简要示例和示意图如下：
 
 ```ts
+// TextBlockDrawing.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置抗锯齿
@@ -64,7 +71,7 @@ pen.setAntiAlias(true);
 // 设置描边线宽
 pen.setStrokeWidth(3.0);
 // 设置描边颜色
-pen.setColor(0xFF, 0xFF,  0x00, 0x00);
+pen.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 创建字型对象
 const font = new drawing.Font();
 // 设置字体大小
@@ -78,8 +85,53 @@ canvas.drawTextBlob(textBlob, 200, 300);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ![Screenshot_20241225152446749](figures/Screenshot_20241225152446749.jpg)
+
+### 中文文字描边
+
+首先需要通过画笔描边，然后需要调用画刷填充内部颜色，去除字体中间的杂质和重叠部分，实现中文文字描边效果。
+
+中文文字描边的简要示例和示意图如下：
+
+```ts
+// TextBlockDrawing.ets
+// 创建画刷
+let brush = new drawing.Brush();
+// 创建画笔
+let pen = new drawing.Pen();
+// 设置抗锯齿
+brush.setAntiAlias(true);
+// 设置描边颜色
+brush.setColor(0xFF, 0xFF, 0xFF, 0xFF);
+
+pen.setAntiAlias(true);
+// 设置描边线宽
+pen.setStrokeWidth(3.0);
+// 设置描边颜色
+pen.setColor(0xFF, 0xFF, 0x00, 0x00);
+
+// 创建字型对象
+const font = new drawing.Font();
+// 设置字体大小
+font.setSize(100);
+// 添加画笔描边效果
+canvas.attachPen(pen);
+// 创建字块对象
+const textBlob = drawing.TextBlob.makeFromString('你好', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+// 绘制字块
+canvas.drawTextBlob(textBlob, 200, 300);
+// 去除描边效果
+canvas.detachPen();
+
+canvas.attachBrush(brush);
+canvas.drawTextBlob(textBlob, 200, 300);
+canvas.detachBrush();
+```
+<!-- [arkts_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+![chinese_stroke_text_ark](figures/chinese_stroke_text_ark.png)
 
 ## 文字渐变
 
@@ -88,6 +140,7 @@ canvas.detachPen();
 以下为文字添加了线性渐变着色器效果的简要示例和示意图：
 
 ```ts
+// TextBlockDrawing.ets
 let startPt: common2D.Point = { x: 100, y: 100 };
 let endPt: common2D.Point = { x: 900, y: 900 };
 let colors = [0xFFFFFF00, 0xFFFF0000, 0xFF0000FF];
@@ -110,6 +163,7 @@ canvas.drawTextBlob(textBlob, 100, 300);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ![Screenshot_20241225155707415](figures/Screenshot_20241225155707415.jpg)
 
@@ -120,7 +174,8 @@ canvas.detachBrush();
 设置跟随主题字体的示例代码和效果图如下：
 
 ```ts
-// 创建字型对象
+// TextBlockDrawing.ets
+// 创建线性渐变着色器
 const font = new drawing.Font();
 // 设置文字大小
 font.setSize(100);
@@ -131,6 +186,7 @@ const textBlob = drawing.TextBlob.makeFromString('Hello World', font, drawing.Te
 // 绘制字块
 canvas.drawTextBlob(textBlob, 200, 300);
 ```
+<!-- [arkts_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 | 未跟随主题字体的效果图 | 跟随主题字体的效果图（不同主题字体显示效果不同，此处仅示意） |
 | -------- | -------- |
@@ -148,6 +204,7 @@ canvas.drawTextBlob(textBlob, 200, 300);
 对于无需字体特征的常规文本渲染场景，可以使用drawSingleCharacter绘制单个字符，使用measureSingleCharacter测量单个字符的宽度，示例代码和效果图如下：
 
 ```ts
+// TextBlockDrawing.ets
 // 创建字型对象
 const font = new drawing.Font();
 // 设置文字大小
@@ -163,12 +220,15 @@ for (let s of text) {
   startX += textWidth;
 }
 ```
+<!-- [arkts_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
 进阶场景：绘制带字体特征的字符  
 对于需要字体特征的文本渲染场景，可以使用drawSingleCharacterWithFeatures绘制单个字符，使用measureSingleCharacterWithFeatures测量单个字符的宽度，示例代码和效果图如下：
+
 ```ts
+// TextBlockDrawing.ets
 // 创建字型对象
 const font = new drawing.Font();
 // 设置文字大小
@@ -177,7 +237,7 @@ let startX = 100;
 let startY = 100;
 let text = ['a', '2', '+', 'b', '2'];
 // 创建字体特征对象数组
-let fontFeatures : Array<drawing.FontFeature> = [{name: 'frac', value: 1}];
+let fontFeatures: drawing.FontFeature[] = [{name: 'frac', value: 1}];
 for (let s of text) {
   // 单字绘制
   canvas.drawSingleCharacterWithFeatures(s, font, startX, startY, fontFeatures);
@@ -186,6 +246,7 @@ for (let s of text) {
   startX += textWidth;
 }
 ```
+<!-- [arkts_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 

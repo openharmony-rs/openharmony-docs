@@ -129,6 +129,32 @@ alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | 是   | 设置图片加载过程中显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
 
+### alt<sup>22+</sup>
+
+alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
+
+设置图片加载过程中和加载失败时的占位图。
+
+> **说明：**
+>
+> 通过[ImageAlt](#imagealt22)配置占位图时，Image会根据用户配置的加载过程中和加载失败的占位图源生效，未配置时默认不显示。
+
+占位图支持使用[objectFit](#objectfit)设置填充效果，与图片的填充效果一致。
+
+当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                     | 必填 | 说明                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | 是   | 设置图片加载过程中和加载失败时的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。 |
+
 ### objectFit
 
 objectFit(value: ImageFit)
@@ -610,7 +636,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| contentTransition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -673,6 +699,21 @@ contentTransition(transition: ContentTransitionEffect)
 
 **图1** 设置EdgeWidths效果图
 ![edgewidths](figures/edgewidths.png)
+
+## ImageAlt<sup>22+</sup>
+
+设置图片占位图。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型  | 只读  | 可选    | 说明           |
+| -------- | ---- | -----|-----|---- |
+| placeholder | [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  |  否   |    是  |  加载过程中的占位图。 |
+| error |   [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)   |   否  |   是   |  加载失败的占位图。 |
 
 ## DynamicRangeMode<sup>12+</sup>枚举说明
 
@@ -2332,3 +2373,41 @@ struct ImageExample {
 }
 ```
 ![sandBox](figures/trans.gif)
+
+### 示例28（使用alt属性实现设置加载失败中图片和加载失败时图片）
+
+该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  build() {
+      Column() {
+      Text('同时设置placeholder属性和error属性')
+      // 设置一个错误网址来触发alt的placeholder属性和error属性。
+      Image("https://www.example.com/xxx.png")
+      // $r('app.media.startIcon')和$r('app.media.example')需要替换为开发者所需的图像资源文件。
+        .alt({ placeholder: $r('app.media.startIcon'), error: $r('app.media.example') })
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置placeholder属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({ placeholder: $r('app.media.startIcon')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置error属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({error: $r('app.media.example')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![sandBox](figures/imagealt.gif)

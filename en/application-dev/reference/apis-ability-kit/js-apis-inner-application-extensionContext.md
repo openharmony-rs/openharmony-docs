@@ -6,9 +6,9 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The ExtensionContext module implements the context for ExtensionAbilities. It inherits from Context.
+ExtensionContext provides the context environment for an [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It inherits from [Context](js-apis-inner-application-context.md#context).
 
-This module provides APIs for accessing resources of a specific ExtensionAbility. An ExtensionAbility can use the context directly provided by ExtensionContext or that extended from ExtensionContext.
+This module provides APIs for accessing resources of a specific [ExtensionAbility](js-apis-app-ability-extensionAbility.md). An ExtensionAbility can use the context directly provided by ExtensionContext or that extended from ExtensionContext.
 
 > **NOTE**
 >
@@ -29,54 +29,31 @@ import { common } from '@kit.AbilityKit';
 
 | Name| Type| Read-Only| Optional| Description| 
 | -------- | -------- | -------- | -------- | -------- |
-| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | No| No| Information about the HAP file.<br>(See **api\bundle\hapModuleInfo.d.ts** in the **SDK** directory.) |
-| config   | [Configuration](js-apis-app-ability-configuration.md) | No| No| Module configuration information.<br>(See **api\@ohos.app.ability.Configuration.d.ts** in the **SDK** directory.)|
-| extensionAbilityInfo | [ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md) | No| No| ExtensionAbility information.<br>(See **api\bundle\extensionAbilityInfo.d.ts** in the **SDK** directory.)|
+| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | No| No| Information about the HAP file.|
+| config   | [Configuration](js-apis-app-ability-configuration.md) | No| No| Module configuration information.|
+| extensionAbilityInfo | [ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md) | No| No| [ExtensionAbility](js-apis-app-ability-extensionAbility.md) information.|
 
 ## When to Use
 ExtensionContext provides information about an ExtensionAbility, module, and HAP file. You can use the information based on service requirements.
 
 **Example**
 
-```ts
-// Singleton object GlobalContext.ts
-export class GlobalContext {
-  private static instance: GlobalContext;
-  private _objects = new Map<string, Object>();
-
-  private constructor() {
-  }
-
-  public static getContext(): GlobalContext {
-    if (!GlobalContext.instance) {
-      GlobalContext.instance = new GlobalContext();
-    }
-    return GlobalContext.instance;
-  }
-
-  getObject(value: string): Object | undefined {
-    return this._objects.get(value);
-  }
-
-  setObject(key: string, objectClass: Object): void {
-    this._objects.set(key, objectClass);
-  }
-}
-```
+Obtain the context of a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md) and query information such as its HAP file.
 
 ```ts
 import { FormExtensionAbility, formBindingData } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
-import { GlobalContext } from '../GlobalContext';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
     console.info(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
+    let extensionContext = this.context;
+    let hapInfo = extensionContext.currentHapModuleInfo;
+    console.info(`HAP name is: ${hapInfo.name}`);
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
     };
-    GlobalContext.getContext().setObject("ExtensionContext", this.context);
     let obj1: formBindingData.FormBindingData = formBindingData.createFormBindingData(dataObj1);
     return obj1;
   }

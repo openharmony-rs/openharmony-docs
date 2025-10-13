@@ -1,5 +1,12 @@
 # @ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 This module provides ExtensionAbility for word selection, allowing users to search or translate text selected using a mouse or touchpad.
 
 > **NOTE**

@@ -20,6 +20,7 @@
    createPixelMapSync()函数接受两个参数，第一个参数为图像像素数据的缓冲区，用于初始化PixelMap的像素。第二个参数为创建像素的属性，包括透明度、尺寸、缩略值、像素格式和是否可编辑。
 
    ```ts
+   // PixelMapDrawing.ets
    // 图片宽高
    let width = 600;
    let height = 400;
@@ -43,16 +44,19 @@
      }
    }
    // 设置像素属性
-   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width }};
+   let opts: image.InitializationOptions =
+     { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
    // 创建PixelMap
-   let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+   pixelMap = image.createPixelMapSync(color, opts);
    ```
+<!-- [arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 2. （可选）编辑PixelMap中的像素。如果没有编辑像素的需求，此步骤可以省略。
 
    有多个API接口可以编辑PixelMap中的像素，下文以writePixelsSync()为例。更多方式和接口的使用可见[PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
    ```ts
+   // PixelMapDrawing.ets
    // 设置编辑区域的宽高
    let innerWidth = 400;
    let innerHeight = 200;
@@ -83,7 +87,10 @@
    };
    // 编辑位图，形成中间的黑白相间条纹
    pixelMap.writePixelsSync(area);
+   // 为了使图片完全显示，修改绘制起点参数为（0，0）
+   canvas.drawImage(pixelMap, 0, 0);
    ```
+<!-- [arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 3. 绘制PixelMap。
 
@@ -92,8 +99,10 @@
    drawImage()函数接受4个参数，第一个就是上文中创建的PixelMap，第二个是绘制图片位置的左上角x轴坐标，第三个是左上角y轴坐标，第四个为采样选项对象，默认为不使用任何参数构造的原始采样选项对象。
 
    ```ts
+   // PixelMapDrawing.ets
    canvas.drawImage(pixelMap, 0, 0);
    ```
+   <!-- [arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
    绘制效果如下：
 

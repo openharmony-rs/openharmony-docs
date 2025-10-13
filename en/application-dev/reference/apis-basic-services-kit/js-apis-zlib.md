@@ -37,7 +37,7 @@ Zips a file. This API uses a promise to return the result.
 | outFile | string              | Yes  | Path of the zipped file. The file name extension is .zip.                 |
 | options | [Options](#options) | Yes  | Optional parameters for the zip operation.                                            |
 
-**Returns**
+**Return value**
 
 | Type          | Description                                                        |
 | -------------- | ------------------------------------------------------------ |
@@ -74,7 +74,7 @@ Unzips a file. This API uses a promise to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [zlib.decompressFile](#zlibdecompressfile9) instead.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code -1 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code -1 is returned.
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
@@ -86,7 +86,7 @@ Unzips a file. This API uses a promise to return the result.
 | outFile | string              | Yes  | Path of the unzipped file.                                        |
 | options | [Options](#options) | Yes  | Optional parameters for the unzip operation.                                            |
 
-**Returns**
+**Return value**
 
 | Type          | Description                                                        |
 | -------------- | ------------------------------------------------------------ |
@@ -121,7 +121,7 @@ Compresses a file. This API uses an asynchronous callback to return the result. 
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -183,7 +183,7 @@ Compresses a file. This API uses a promise to return the result. If the operatio
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -197,7 +197,7 @@ Compresses a file. This API uses a promise to return the result. If the operatio
 | outFile | string              | Yes  | Path of the compressed file. When multiple threads compress files at the same time, the values of **outFile** must be different.                                          |
 | options | [Options](#options) | Yes  | Compression parameters.                                              |
 
-**Returns**
+**Return value**
 
 | Type          | Description                   |
 | -------------- | ----------------------- |
@@ -248,9 +248,9 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -312,9 +312,9 @@ Decompresses a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -328,7 +328,7 @@ Decompresses a file. This API uses a promise to return the result.
 | outFile | string              | Yes  | Path of the decompressed file. The path must exist in the system. Otherwise, the decompression fails. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If a file or folder with the same name already exists in the path, they will be overwritten. When multiple threads decompress files at the same time, the values of **outFile** must be different.|
 | options | [Options](#options) | No  | Decompression parameters.                                          |
 
-**Returns**
+**Return value**
 
 | Type          | Description                   |
 | -------------- | ----------------------- |
@@ -378,9 +378,9 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 > **NOTE**
 >
-> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain **../** since API version 13. Otherwise, error codes 900001 and 900002 are returned.
+> To avoid path traversal, the input parameters of **inFile** and **outFile** cannot contain two consecutive periods and a slash (../) since API version 13. Otherwise, error codes 900001 and 900002 are returned.
 >
-> The name of the zipped file or zipped folder cannot contain two consecutive periods (..). Otherwise, the error code 900003 is returned.
+> The name of the zipped file or zipped folder cannot contain two consecutive periods and a slash (../). Otherwise, the error code 900003 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -445,7 +445,7 @@ Obtains the original size of a compressed file and uses a promise to asynchronou
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | compressedFile  | string              | Yes  | Specifies the path of the compressed file. Only .zip files are supported. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md).|
 
-**Returns**
+**Return value**
 
 | Type          | Description                   |
 | -------------- | ----------------------- |
@@ -500,7 +500,7 @@ Compresses multiple specified files and uses a promise to asynchronously return 
 | outFile | string              | Yes  | Path of the compressed file. When multiple threads compress files at the same time, the values of **outFile** must be different.|
 | options | [Options](#options) | Yes  | Compression parameters.                                            |
 
-**Returns**
+**Return value**
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
@@ -554,7 +554,7 @@ Creates a checksum object and uses a promise to asynchronously return the result
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                                  | Description                           |
 | -------------------------------------- | ------------------------------- |
@@ -580,7 +580,7 @@ Creates a checksum object. A checksum object instance is returned upon a success
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                   | Description          |
 | ----------------------- | -------------- |
@@ -615,7 +615,7 @@ Calculates the Adler-32 checksum. This API uses a promise to return the result. 
 | adler  | number      | Yes  | Initial value of the Adler-32 checksum.|
 | buf    | ArrayBuffer | Yes  | Data buffer for calculating the checksum.  |
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
@@ -667,7 +667,7 @@ Combines two Adler-32 checksums. This API uses a promise to return the result. T
 | adler2 | number | Yes  | The second Adler-32 checksum to be combined.      |
 | len2   | number | Yes  | Length of the data block of the second Adler-32 checksum.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
@@ -729,7 +729,7 @@ Updates the CRC-32 checksum. This API uses a promise to return the result. The u
 | crc    | number      | Yes  | Initial value of the CRC-32 checksum.|
 | buf    | ArrayBuffer | Yes  | Data buffer for calculating the checksum.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
@@ -783,7 +783,7 @@ Combines two CRC-32 checksums and uses a promise to asynchronously return the re
 | crc2 | number | Yes  | The second CRC-32 checksum to be combined.      |
 | len2   | number | Yes  | Indicates the length of the second data block checked by CRC-32|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
@@ -845,7 +845,7 @@ Updates the CRC-64 checksum. This API uses a promise to return the result. The u
 | crc    | number      | Yes  | Initial value of the CRC-64 checksum.|
 | buf    | ArrayBuffer | Yes  | Data buffer for calculating the checksum.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
@@ -891,7 +891,7 @@ Outputs the CRC-32 checksum table and uses a promise to asynchronously return th
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                              | Description                           |
 | ---------------------------------- | ------------------------------- |
@@ -921,7 +921,7 @@ Outputs the CRC-64 checksum table and uses a promise to asynchronously return th
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                              | Description                           |
 | ---------------------------------- | ------------------------------- |
@@ -951,7 +951,7 @@ Creates an instance of a compressed or decompressed object and uses a promise to
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                        | Description                                 |
 | ---------------------------- | ------------------------------------- |
@@ -979,11 +979,11 @@ Creates an instance of a compressed or decompressed object. The instance of the 
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type         | Description                    |
 | ------------- | ------------------------ |
-| [Zip](#zip12) | Instance of the compressed or decompressed object.|
+| [Zip](#zip12) | Instance of the compressed or decompressed object created.|
 
 **Example**
 
@@ -1007,7 +1007,7 @@ Outputs a stream. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
@@ -1035,7 +1035,7 @@ Obtains the version information of the currently linked **zlib** library. This A
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                   |
 | --------------------- | --------------------------------------- |
@@ -1063,7 +1063,7 @@ Returns a flag indicating a compile-time option. This API uses a promise to retu
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                   |
 | --------------------- | --------------------------------------- |
@@ -1099,7 +1099,7 @@ Compresses the source buffer to the destination buffer. This API uses a promise 
 | source    | ArrayBuffer | Yes  | Source buffer.|
 | sourceLen | number      | No  | Length of the source data. The default value is **0**.  |
 
-**Returns**
+**Return value**
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
@@ -1156,7 +1156,7 @@ Compresses the source buffer to the destination buffer. This API uses a promise 
 | level     | CompressLevel | Yes  | For details, see [CompressLevel](#compresslevel).|
 | sourceLen | number        | No  | Length of the source data. The default value is **0**.                                 |
 
-**Returns**
+**Return value**
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
@@ -1213,7 +1213,7 @@ Decompresses the compressed data into the original form. This API uses a promise
 | source    | ArrayBuffer | Yes  | Source buffer.|
 | sourceLen | number      | No  | Length of the source data. The default value is **0**.  |
 
-**Returns**
+**Return value**
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
@@ -1274,7 +1274,7 @@ Decompresses the compressed data into the original form. This API uses a promise
 | source    | ArrayBuffer | Yes  | Source buffer.|
 | sourceLen | number      | No  | Length of the source data. The default value is **0**.  |
 
-**Returns**
+**Return value**
 
 | Type                                                        | Description                                                       |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -1333,7 +1333,7 @@ Calculates the maximum size of the compressed data to be returned. This API uses
 | --------- | ------ | ---- | ------------ |
 | sourceLen | number | Yes  | Length of the source data.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                             |
 | --------------------- | --------------------------------- |
@@ -1386,7 +1386,7 @@ Verifies the checksum inside the compressed stream. This API uses a promise to r
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | check  | number  | Yes  | Expected checksum.                 |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1445,7 +1445,7 @@ Finds the synchronization point of the current decompressed stream. This API use
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1504,7 +1504,7 @@ Skips invalid compressed data until a complete re-render point is found. This AP
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1596,7 +1596,7 @@ Resets the state of the decompressed stream to preserve the allocated Huffman Tr
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1656,7 +1656,7 @@ Initializes the decompression dictionary from a given uncompressed byte sequence
 | strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | dictionary | ArrayBuffer | Yes  | Dictionary data.                     |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1754,7 +1754,7 @@ Initializes the decompression dictionary from a given uncompressed byte sequence
 | strm       | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | windowBits | number  | Yes  | Memory window size. The value is restricted in certain range based on the data formats. The options are as follows:<br>Zlib: [1, 15]<br>Gzip: (15, +∞)<br>Raw Deflate: [-15, -1]  |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1813,7 +1813,7 @@ Equivalent to call the **inflateEnd** API and then **inflateInit** API. However,
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1874,7 +1874,7 @@ Initializes the decompression dictionary from a given uncompressed byte sequence
 | bits   | number  | Yes  | Given bits.                     |
 | value  | number  | Yes  | Given value.                     |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -1933,7 +1933,7 @@ Marks the location of the input data for random access. This API uses a promise 
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                       |
 | --------------------- | --------------------------- |
@@ -1992,7 +1992,7 @@ Initializes the internal stream state for decompression. This API uses a promise
 | strm       | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | windowBits | number  | Yes  | Memory window size. The value is restricted in certain range based on the data formats. The options are as follows:<br>Zlib: [1, 15]<br>Gzip: (15, +∞)<br>Raw Deflate: [-15, -1]  |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2047,7 +2047,7 @@ Initializes the internal stream state for decompression. This API uses a promise
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2102,7 +2102,7 @@ Sets the header information of a gzip file before decompressing data. This API u
 | strm   | ZStream                 | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12). |
 | header | [GzHeader](#gzheader12) | Yes  | Header information of a gzip file extracted from the compressed data stream.|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2162,7 +2162,7 @@ Obtains the content and length of the decompression dictionary used in the curre
 | strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | dictionary | ArrayBuffer | Yes  | Receives the actual contents of the decompression dictionary.     |
 
-**Returns**
+**Return value**
 
 | Type                                                        | Description                                   |
 | ------------------------------------------------------------ | --------------------------------------- |
@@ -2221,7 +2221,7 @@ Frees up all dynamically allocated data structures of the decompression stream. 
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2285,7 +2285,7 @@ Copies the decompression stream. This API uses a promise to return the result. T
 | ------ | ---- | ---- | ----------------------- |
 | source | Zip  | Yes  | For details, see [Zip<sup>12+</sup>](#zip12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2345,7 +2345,7 @@ Describes the number of Huffman Trees used in the current decompression stream. 
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                         |
 | --------------------- | --------------------------------------------- |
@@ -2405,7 +2405,7 @@ Initializes the internal stream state for decompression before using the **infla
 | windowBits | number      | Yes  | Memory window size. The value is restricted in certain range based on the data formats. The options are as follows:<br>Zlib: [1, 15]<br>Gzip: (15, +∞)<br>Raw Deflate: [-15, -1]|
 | window     | ArrayBuffer | Yes  | Preset window buffer.                           |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2440,7 +2440,7 @@ Releases all memory allocated by the **inflateBackInit()** function. This API us
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2479,7 +2479,7 @@ Uses callback APIs to input and output data for raw decompression. This API uses
 | backOut | InflateBackOutputCallback | Yes  | Writes the decompressed data to the destination buffer.                                |
 | outDesc | object                    | Yes  | Common object.                                                  |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2647,7 +2647,7 @@ Inputs data.
 | ------ | ------ | ---- | ------------------ |
 | inDesc | object | Yes  | User-defined data object.|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2671,7 +2671,7 @@ Outputs data.
 | buf     | ArrayBuffer | Yes  | Stores the data to be written.|
 | length  | number      | Yes  | Length of the data written to the output buffer.|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2694,7 +2694,7 @@ Decompresses the data. This API uses a promise to return the result. The result 
 | strm   | ZStream           | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).                    |
 | flush  | CompressFlushMode | Yes  | For details, see [CompressFlushMode](#compressflushmode12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2781,7 +2781,7 @@ Initializes the internal stream state for compression. This API uses a promise t
 | strm   | ZStream       | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).              |
 | level  | CompressLevel | Yes  | For details, see [CompressLevel](#compresslevel).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2845,7 +2845,7 @@ Initializes the internal stream state for compression. This API uses a promise t
 | memLevel   | MemLevel         | Yes  | For details, see [MemLevel](#memlevel).                |
 | strategy   | CompressStrategy | Yes  | For details, see [CompressStrategy](#compressstrategy).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2906,7 +2906,7 @@ Compresses data. This API uses a promise to return the result. The result state 
 | strm   | ZStream           | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).                    |
 | flush  | CompressFlushMode | Yes  | For details, see [CompressFlushMode](#compressflushmode12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -2971,7 +2971,7 @@ Frees up all dynamically allocated data structures of the compression stream. Th
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3041,7 +3041,7 @@ Calculates the maximum size of the compressed data. This API uses a promise to r
 | strm      | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | sourceLength | number  | Yes  | Length of the source data.                   |
 
-**Returns**
+**Return value**
 
 | Type                 | Description                             |
 | --------------------- | --------------------------------- |
@@ -3105,7 +3105,7 @@ Provides the header information of the gzip file when **deflateInit2()** request
 | strm   | ZStream                 | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12). |
 | head   | [GzHeader](#gzheader12) | Yes  | Header information of a gzip file extracted from the compressed data stream.|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3170,7 +3170,7 @@ Copies the compression stream. This API uses a promise to return the result. The
 | ------ | ---- | ---- | ----------------------- |
 | source | Zip  | Yes  | For details, see [Zip<sup>12+</sup>](#zip12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3235,7 +3235,7 @@ Initializes the compression dictionary from a given sequence of bytes. This API 
 | strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | dictionary | ArrayBuffer | Yes  | Dictionary data.                     |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3300,7 +3300,7 @@ Obtains the content and length of the decompression dictionary used in the curre
 | strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | dictionary | ArrayBuffer | Yes  | Receives the actual contents of the decompression dictionary.     |
 
-**Returns**
+**Return value**
 
 | Type                                                        | Description                                   |
 | ------------------------------------------------------------ | --------------------------------------- |
@@ -3373,7 +3373,7 @@ Fine-tunes the internal compressed parameters of **deflate**. This API uses a pr
 | niceLength | number  | Yes  | Appropriate delay length threshold.             |
 | maxChain   | number  | Yes  | Maximum chain length.                   |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3437,7 +3437,7 @@ Equivalent to call the **deflateEnd** API and then **deflateInit** API. However,
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3501,7 +3501,7 @@ Resets the initialized deflate compression stream, but retains the compression p
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3553,7 +3553,7 @@ async function demo() {
 
 deflatePending(strm: ZStream): Promise&lt;DeflatePendingOutputInfo&gt;
 
-Returns the number of bytes and bits that has been generated but has not yet been output. This API uses a promise to return the result. The result state and the umber of output bytes and bits are returned upon a success.
+Returns the numbers of bytes and bits that have been generated but have not yet been output. This API uses a promise to return the result. The result state and the numbers of output bytes and bits are returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3565,7 +3565,7 @@ Returns the number of bytes and bits that has been generated but has not yet bee
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 
-**Returns**
+**Return value**
 
 | Type                                                        | Description                                             |
 | ------------------------------------------------------------ | ------------------------------------------------- |
@@ -3631,7 +3631,7 @@ Dynamically updates the compression level and compression strategy. This API use
 | level    | CompressLevel    | Yes  | For details, see [CompressLevel](#compresslevel).      |
 | strategy | CompressStrategy | Yes  | For details, see [CompressStrategy](#compressstrategy).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3697,7 +3697,7 @@ Inserts bits and values into the compression stream. This API uses a promise to 
 | bits   | number  | Yes  | Number of bits to be inserted. The value ranges from 0 to 16. |
 | value  | number  | Yes  | Bit value corresponding to the number of bits.           |
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -3747,14 +3747,17 @@ async function demo() {
 
 ## Options
 
+Defines options used to compress or decompress a ZIP file.
+
 **System capability**: SystemCapability.BundleManager.Zlib
 
 | Name    | Type            | Read-Only| Optional| Description                                                      |
 | -------- | ---------------- | ---- | ---------------------------------------------------------- | ---- |
-| level    | [CompressLevel](#compresslevel)     | No  | Yes | For details, see [CompressLevel](#compresslevel).<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| memLevel | [MemLevel](#memlevel)         | No  | Yes | For details, see [MemLevel](#memlevel).<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| strategy | [CompressStrategy](#compressstrategy) | No  | Yes | For details, see [CompressStrategy](#compressstrategy).<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | No  | Yes | For details, see [ParallelStrategy](#parallelstrategy18).<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| level    | [CompressLevel](#compresslevel)     | No  | Yes | Compression level specified for compression or decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| memLevel | [MemLevel](#memlevel)         | No  | Yes | Memory level specified for compression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| strategy | [CompressStrategy](#compressstrategy) | No  | Yes | Compression strategy specified for compression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | No  | Yes | Serial or parallel strategy specified for compression or decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | No  | Yes | Separator strategy for the file path in the compressed package specified for decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 21.       |
 
 ## CompressLevel
 
@@ -3805,6 +3808,19 @@ async function demo() {
 | ---------------------------------------- | ---- | ------------------------ |
 | PARALLEL_STRATEGY_SEQUENTIAL             | 0    | Serial compression/decompression policy (default).|
 | PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | Parallel decompression policy.           |
+
+## PathSeparatorStrategy<sup>21+</sup>
+
+Defines **PathSeparatorStrategy**, a property of [Options](#options), used to specify the separator strategy for the file path in the compressed package specified for decompression.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.BundleManager.Zlib
+
+| Name                                     | Value  | Description                                      |
+| ----------------------------------------- | ---- | ----------------------------------------- |
+| PATH_SEPARATOR_STRATEGY_DEFAULT           | 0    | Default value, indicating that separators in the file path of the compressed package are not processed.   |
+| PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH | 1    | Backslashes (\) in the file path of the package are replaced with slashes (/).|
 
 ## ErrorCode<sup>(deprecated)<sup>
 
@@ -3951,7 +3967,7 @@ Creates a gzip object. This API uses a promise to return the result. The gzip ob
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                          | Description                           |
 | ------------------------------ | ------------------------------- |
@@ -3977,7 +3993,7 @@ Creates a gzip object. The gzip object instance is returned upon a success.
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type           | Description          |
 | --------------- | -------------- |
@@ -4012,7 +4028,7 @@ Associates gzip file with the file descriptor (fd) and opens the file for readin
 | fd     | number | Yes  | File descriptor. Generally, the value is obtained by calling the **open** method or other methods.|
 | mode   | string | Yes  | Specifies the access mode.                                          |
 
-**Returns**
+**Return value**
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
@@ -4082,7 +4098,7 @@ Sets the internal buffer size for the current library function. This API uses a 
 | ------ | ------ | ---- | -------------------------- |
 | size   | number | Yes  | Size of the internal buffer to be set.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                        |
 | --------------------- | ---------------------------- |
@@ -4155,7 +4171,7 @@ Opens the .gz file in the specified path for reading and decompressing, or compr
 | path   | string | Yes  | Path of the file to be opened.|
 | mode   | string | Yes  | Specifies a method for opening a file.  |
 
-**Returns**
+**Return value**
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
@@ -4218,7 +4234,7 @@ Checks whether the read position (position from which data is read) of the gzip 
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                                        |
 | --------------------- | ------------------------------------------------------------ |
@@ -4283,7 +4299,7 @@ Checks whether the specified gzip file handle directly accesses the original unc
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                              |
 | --------------------- | -------------------------------------------------- |
@@ -4338,7 +4354,7 @@ Clears all pending output of the file. Closes the file and releases the decompre
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -4401,7 +4417,7 @@ Clears the errors and end-of-file flags of a file. This API uses a promise to re
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
@@ -4468,7 +4484,7 @@ Describes the last error message that reported for the file. This API uses a pro
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                                                    | Description                                                     |
 | -------------------------------------------------------- | --------------------------------------------------------- |
@@ -4543,7 +4559,7 @@ Reads and decompresses a byte from a file. This API uses a promise to return the
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                |
 | --------------------- | ------------------------------------ |
@@ -4571,7 +4587,7 @@ async function gzgetcDemo(pathDir: string) {
   await gzip.gzputc(1);
   await gzip.gzclose();
   await gzip.gzopen(path, "rb");
-  let resulit = await gzip.gzgetc();
+  let result = await gzip.gzgetc();
   await gzip.gzclose();
 }
 
@@ -4615,7 +4631,7 @@ Flushes all pending output into a compressed file. This API uses a promise to re
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
 | flush  | CompressFlushMode | Yes  | Controls the flushing mode. For details, see [CompressFlushMode](#compressflushmode12).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -4687,7 +4703,7 @@ Compresses data blocks that are declared with size and nitems from the buffer an
 | size   | number      | Yes  | Number of bytes in a single data block.|
 | nitems | number      | Yes  | Number of data blocks to be written.    |
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                               |
 | --------------------- | --------------------------------------------------- |
@@ -4718,7 +4734,7 @@ async function gzfwriteDemo(pathDir: string) {
   for (let i = 0; i < uint8View.length; i++) {
     uint8View[i] = i;
   }
-  let resulit = await gzip.gzfwrite(bufferWithData, 8, 2)
+  let result = await gzip.gzfwrite(bufferWithData, 8, 2)
   await gzip.gzclose();
 }
 
@@ -4764,7 +4780,7 @@ Decompresses and reads data from a gzip file. This API uses a promise to return 
 | size   | number      | Yes  | Number of bytes in a single data block.        |
 | nitems | number      | Yes  | Number of data blocks to be written.            |
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                               |
 | --------------------- | --------------------------------------------------- |
@@ -4837,7 +4853,7 @@ Implements the same functions as that of **gzclose()** for writing or appending.
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -4900,7 +4916,7 @@ Implements the same functions as that of **gzclose()** for reading only. This AP
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -4971,7 +4987,7 @@ Compresses the uncompressed bytes of the declared length in the buffer and write
 | buf    | ArrayBuffer | Yes  | Data buffer pointed by an object to be written.|
 | len    | number      | Yes  | Length of uncompressed bytes.            |
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
@@ -5046,7 +5062,7 @@ Pushes **c** back into the input stream so that it will be read as the first cha
 | ------ | ------ | ---- | ------------------------ |
 | c      | number | Yes  | Characters before being pushed into the input stream.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                         |
 | --------------------- | ----------------------------- |
@@ -5113,7 +5129,7 @@ Returns the start position of the next **gzread** or **gzwrite** in the file. Th
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                                    |
 | --------------------- | -------------------------------------------------------- |
@@ -5183,7 +5199,7 @@ Dynamically updates the compression level and compression policy of a file. This
 | level    | CompressLevel    | Yes  | Compression level. For details, see [CompressLevel](#compresslevel).     |
 | strategy | CompressStrategy | Yes  | Compression policy. For details, see [CompressStrategy](#compressstrategy).|
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -5255,7 +5271,7 @@ Sets the start position to the offset position relative to the next **gzread** o
 | offset | number               | Yes  | Target offset position.                                              |
 | whence | OffsetReferencePoint | Yes  | Defines the reference point for the offset. For details, see [OffsetReferencePoint](#offsetreferencepoint12).|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                                        |
 | --------------------- | ------------------------------------------------------------ |
@@ -5319,7 +5335,7 @@ Repositions the file pointer to the beginning of the file. This feature is appli
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
@@ -5390,7 +5406,7 @@ Reads a maximum of **len** uncompressed bytes from a file and decompresses them 
 | ------ | ----------- | ---- | -------------- |
 | buf    | ArrayBuffer | Yes  | Target offset position.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
@@ -5469,7 +5485,7 @@ Compresses the given null-terminated strings and writes them to the file, exclud
 | ------ | ------ | ---- | ---------------------- |
 | str    | string | Yes  | Format descriptors and plain text.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                           |
 | --------------------- | ------------------------------- |
@@ -5539,7 +5555,7 @@ Compresses **char** converted to an unsigned character and writes it to a file. 
 | ------ | ------ | ---- | --------------- |
 | char   | number | Yes  | Write character ASCII.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                         |
 | --------------------- | ----------------------------- |
@@ -5610,7 +5626,7 @@ Converts and formats the parameters under the control of the string format and t
 | format | string                        | Yes  | Format descriptors and plain text.|
 | ...args   | Array&lt;string \| number&gt; | No  | List of variable parameters.        |
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
@@ -5675,7 +5691,7 @@ Returns the current compressed read or write offset of the file. This API uses a
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                                 |
 | --------------------- | ----------------------------------------------------- |
@@ -5744,7 +5760,7 @@ Reads bytes from a compressed file until len-1 characters are read, a newline ch
 | ------ | ----------- | ---- | ------------------ |
 | buf    | ArrayBuffer | Yes  | Stores the read row data.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |

@@ -1,5 +1,12 @@
 # NativeResourceManager
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 Represents the native **ResourceManager**. This class encapsulates the native implementation of the JavaScript **ResourceManager**. The pointer to **ResourceManager** can be obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).

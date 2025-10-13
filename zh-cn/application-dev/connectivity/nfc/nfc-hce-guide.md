@@ -110,7 +110,7 @@ import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit
 let hceElementName: bundleManager.ElementName;
 let hceService: cardEmulation.HceService;
 
-const hceCommandCb : AsyncCallback<number[]> = (error : BusinessError, hceCommand : number[]) => {
+const hceCommandCb: AsyncCallback<number[]> = (error: BusinessError, hceCommand: number[]) => {
   if (!error) {
     if (hceCommand == null) {
       hilog.error(0x0000, 'testTag', 'hceCommandCb has invalid hceCommand.');
@@ -246,10 +246,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
-let hceElementName : bundleManager.ElementName;
+let hceElementName: bundleManager.ElementName;
 let hceService: cardEmulation.HceService;
 
-const hceCommandCb : AsyncCallback<number[]> = (error : BusinessError, hceCommand : number[]) => {
+const hceCommandCb: AsyncCallback<number[]> = (error: BusinessError, hceCommand: number[]) => {
   if (!error) {
     if (hceCommand == null) {
       hilog.error(0x0000, 'testTag', 'hceCommandCb has invalid hceCommand.');

@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 该模块基于[Sendable](../../arkts-utils/arkts-sendable.md)对象，提供相册管理功能，包括创建相册和访问、修改相册中的媒体数据。
 
@@ -514,7 +514,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let sendablePhotoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     let photoAsset: photoAccessHelper.PhotoAsset = sendablePhotoAsset.convertToPhotoAsset();
-    console.log(`get no sendable uri success : ${photoAsset.uri}`);
+    console.info(`get no sendable uri success : ${photoAsset.uri}`);
   } catch (err) {
     console.error(`convertToPhotoAsset failed. error: ${err.code}, ${err.message}`);
   }

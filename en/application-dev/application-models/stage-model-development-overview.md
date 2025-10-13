@@ -9,7 +9,7 @@
 
 ## Basic Concepts
 
-The following figure illustrates the stage model.
+The following figure illustrates the [stage model](ability-terminology.md#stage-model).
 
 **Figure 1** Stage model
 

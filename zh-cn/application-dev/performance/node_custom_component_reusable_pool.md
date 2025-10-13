@@ -239,7 +239,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 6. 使用NodeContainer占位轮播图组件和瀑布流子组件的位置，在最外层的Swiper切换时，会根据LazyForEach的懒加载机制回收页面，此时会触发NodeItem中的aboutToDisappear方法，将组件回收到复用池中。而新加载的页面则可以通过自定义的组件复用池获取可用的子组件，如果未获取到对应type类型的组件，则会重新创建新的组件，否则直接获取之前回收的子组件进行复用。
 
    ```ts
-   ...
+   // ...
    @Builder
    function FlowItemBuilder(data: ESObject) {
      FlowItemNode({

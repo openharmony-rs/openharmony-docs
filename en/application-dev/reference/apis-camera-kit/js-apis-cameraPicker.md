@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for an application to use the system camera to take photos or record videos, depending on the media type specified by the application. The application must call these APIs within a UIAbility. Otherwise, the camera picker cannot be started.
 
@@ -23,6 +23,10 @@ import { cameraPicker as picker } from '@kit.CameraKit';
 pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: PickerProfile): Promise\<PickerResult\>
 
 Starts the camera picker and enters the corresponding mode based on the media type. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> When an application is running on a widescreen foldable device and the camera picker is launched while the device is unfolded, switching the device from unfolded to folded will automatically move the camera picker to the background.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

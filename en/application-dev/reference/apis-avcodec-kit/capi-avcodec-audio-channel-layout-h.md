@@ -1,5 +1,12 @@
 # avcodec_audio_channel_layout.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The file declares the enums used for audio encoding and decoding.
@@ -43,7 +50,7 @@ Enumerates the audio channels. Each channel is mapped to a variable of int64.
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AudioChannelSet](_core.md#oh_audiochannelset-1)
+**Substitute**: [OH_AudioChannelSet](capi-native-audio-channel-layout-h.md#oh_audiochannelset)
 
 | Value| Description|
 | -- | -- |
@@ -114,7 +121,7 @@ Enumerates the layouts of audio channels. The output format of the decoder is de
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AudioChannelLayout](_core.md#oh_audiochannellayout-1)
+**Substitute**: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)
 
 | Value| Description|
 | -- | -- |

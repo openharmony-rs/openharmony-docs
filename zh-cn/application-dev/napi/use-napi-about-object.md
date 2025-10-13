@@ -15,7 +15,7 @@ Node-API提供了相关接口对object进行基本操作，例如创建对象、
 在Node-API接口开发中，经常需要定义和操作对象。例如，创建一个API接口，该接口接受一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
 
 - **接口（API）**：接口定义了组件之间的交互协议，包括输入参数、输出结果以及可能的错误处理。通过接口，组件可以相互调用和交换数据，而无需了解对方的内部实现细节。
-- **对象（Object）**：在ArkTS，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
+- **对象（Object）**：在ArkTS中，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
 
 ## 场景和功能介绍
 
@@ -93,7 +93,10 @@ const person = new Person('Alice', 30);
 // 传入实例对象，获取该对象的原型
 let applePrototype = testNapi.getPrototype(person);
 // 判断通过testNapi.getPrototype()函数获取到的原型是不是apple的原型
-// 在DevEco Studio 4.1及以后的版本中，由于ArkTS没有原型的概念，因此尝试进行原型赋值或相关操作时，将会触发错误提示'Prototype assignment is not supported (arkts-no-prototype-assignment)'，以下代码需在ts文件中执行
+// 在DevEco Studio 4.1及以后的版本中，由于ArkTS没有原型的概念，
+// 因此尝试进行原型赋值或相关操作时，
+// 将会触发错误提示'Prototype assignment is not supported (arkts-no-prototype-assignment)'，
+// 以下代码需在ts文件中执行
 if (applePrototype === Person.prototype) {
   hilog.info(0x0000, 'Node-API', 'get_prototype_success');
 } else {

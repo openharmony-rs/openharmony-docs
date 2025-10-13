@@ -27,7 +27,7 @@ The ability to query does not exist.
 
 **Solution**
 
-1. Pass in correct values of **bundleName**, **moduleName**, and **abilityName** in **want**.
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
 2. Check whether the application corresponding to **bundleName** in **want** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
     ```
     hdc shell bm dump -a
@@ -45,7 +45,7 @@ Incorrect ability type.
 
 **Description**
 
-This error code is reported when the ability type invoked by the API is incorrect.
+This error code is reported when the ability type for the API call is incorrect.
 
 **Possible Causes**
 
@@ -53,10 +53,10 @@ The ability with the specified type does not support the API call.
 
 **Solution**
 
-1. Pass in correct values of **bundleName**, **moduleName**, and **abilityName** in **want**.
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
 2. Call APIs based on the ability type. For example, call <!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) to start the ServiceExtensionAbility, or call <!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to the ServiceExtensionAbility. Additionally, ensure that the value of **type** under **extensionAbilities** in the [module.json5](../../quick-start/module-configuration-file.md) file matches the service you are using.
 
-## 16000003 ID Not Exist
+## 16000003 ID Does Not Exist
 
 **Error Message**
 
@@ -109,7 +109,7 @@ Permission verification for the specified process fails.
 
 **Solution**
 
-Check whether the permission of the specified process is correct.
+Check whether the caller has the permission required by the target component.
 
 ## 16000006 Cross-User Operation Is Not Allowed
 
@@ -127,7 +127,7 @@ The application initiates a cross-user operation.
 
 **Solution**
 
-Do not perform a cross-user operation.
+Check whether a cross-user operation is being attempted by checking whether the user ID passed during the API call matches the current userID.
 
 ## 16000007 Service Busy
 
@@ -163,7 +163,7 @@ The crowdtesting application has expired.
 
 **Solution**
 
-Expired crowdtesting applications cannot be started.
+Check whether the application has expired. A crowdtesting application that has passed its validity period cannot be started.
 
 ## 16000009 Ability Start or Stop Failure in Wukong Mode
 
@@ -183,7 +183,7 @@ An ability cannot be started or stopped in Wukong mode.
 
 Exit Wukong mode, and then start or stop the ability.  
 
-## 16000010 Continuation Flag Forbidden
+## 16000010 Continuation Flag Is Forbidden
 
 **Error Message**
 
@@ -235,7 +235,7 @@ The application is controlled by the system control module and is not allowed to
 
 **Solution**
 
-It is recommended that end users uninstall the application.
+The target application is prohibited from being started. Try the call again later.
 
 ## 16000013 Application Controlled by EDM
 
@@ -281,17 +281,17 @@ Redirection to a third-party application is not allowed in API version greater t
 
 **Description**
 
-When the API version of an application is later than 11, the application cannot be explicitly redirected to a third-party application.
+For applications with an API version later than 11, explicit redirection to other third-party applications is not allowed.
 
 **Possible Causes**
 
-The application is using an API version later than 11 and is trying to explicitly redirect to a third-party application.
+The application uses an API version later than 11 and attempts to explicitly redirect to a third-party application.
 
 **Solution**
 
 Use implicit startup or [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12) for redirection.
 
-## 16000019 No Matching Application Is Found During Implicit Startup
+## 16000019 No Matching Ability Is Found During Implicit Startup
 
 **Error Message**
 
@@ -299,7 +299,7 @@ No matching ability is found.
 
 **Description**
 
-A matching ability is not found during implicit startup.
+This error code is reported when a matching ability is not found during implicit startup.
 
 **Possible Causes**
 
@@ -308,7 +308,7 @@ A matching ability is not found during implicit startup.
 
 **Solution**
 
-1. Correct the parameter settings for implicit startup.
+1. Correct the parameter settings for implicit startup. For details about the matching rules, see [Matching Rules of Explicit Want and Implicit Want](../../application-models/explicit-implicit-want-mappings.md).
 2. Install the specified HAP.
 
 <!--Del-->
@@ -324,11 +324,11 @@ This error code is reported when the passed Context object is not an ability-lev
 
 **Possible Causes**
 
-The passed Context object is not a UIAbilityContext or an ExtensionContext, and does not inherit from the UIAbilityContext or ExtensionContext class.
+The passed Context object is not UIAbilityContext or ExtensionContext, and does not inherit from UIAbilityContext or ExtensionContext.
 
 **Solution**
 
-Use a UIAbilityContext object or an ExtensionContext object as the input parameter, or use the object that inherits from the UIAbilityContext or ExtensionContext class as the input parameter.
+Use a UIAbilityContext object or an ExtensionContext object as the input parameter, or use the object that inherits from UIAbilityContext or ExtensionContext as the input parameter.
 <!--DelEnd-->
 
 ## 16000050 Internal Error
@@ -339,18 +339,18 @@ Internal error.
 
 **Description**
 
-This error code is reported when an internal exception occurs that is beyond the control of the developer, such as memory allocation failure, multithreading issues, or IPC failure.
+This error code is reported when an internal exception occurs that the developer cannot resolve, such as memory allocation failure, multithreading exceptions, or IPC failure.
 
 **Possible Causes**
 
-This is a generic system error code and can be triggered by various issues depending on the API. Common causes include: null pointer exceptions for internal objects, processing timeouts, IPC failures, failure in obtaining application information, failure in obtaining system services, and reaching the maximum limit of launched ability instances.
+This is a generic system error code and can be triggered by various issues depending on the API. Common causes include: null pointer exceptions for internal objects, processing timeouts, IPC failures, failure in obtaining application information, failure in obtaining system services, and reaching the upper limit of ability instances launched.
 
 **Solution**
 
-1. Since this is a system-level error, it is typically out of the developer's control. You can try the operation again.
-2. If the ability fails to start, check whether the data passed in Want is too large.
+1. Internal errors are system exceptions that developers cannot handle. You can try the operation again.
+2. For failures in launching an ability, check whether the data passed in Want is too large.
 
-## 16000053 Ability Is Not on Top
+## 16000053 Ability Is Not on Top of UI
 
 **Error Message**
 
@@ -362,11 +362,13 @@ This error code is reported when the ability is not displayed on the top of the 
 
 **Possible Causes**
 
-During the installation-free startup process, the ability is not displayed on the top of the UI.
+During the installation-free startup process, it is necessary to ensure that the ability is in the foreground, but the ability is not displayed at the top of the UI.
 
 **Solution**
 
-Ensure that the ability is displayed on the top of the UI.
+1. Ensure that the ability is started and running in the foreground.
+2. Ensure that the ability UI is fully displayed and not obscured or minimized by other application windows.
+3. If the split-screen or multi-window mode is enabled on the device, ensure that the ability is the focused window.
 
 ## 16000055 Installation-Free Timeout
 
@@ -423,7 +425,7 @@ An incorrect parameter is passed in. Currently, URI authorization management sup
 
 Ensure that the input parameter is of the supported URI type.
 
-## 16000060 Sandbox Applications Cannot Authorize URIs
+## 16000060 Sandbox Applications Cannot Grant URI Permission
 
 **Error Message**
 
@@ -431,11 +433,11 @@ A sandbox application cannot grant URI permission.
 
 **Description**
 
-This error code is reported when a sandbox application authorizes a URI.
+This error code is reported when a sandbox application attempts to grant URI permission.
 
 **Possible Causes**
 
-Sandbox applications cannot authorize URIs.
+Sandbox applications are not allowed to grant URI permissions.
 
 **Solution**
 
@@ -450,7 +452,7 @@ Operation not supported.
 
 **Description**
 
-This error code is reported when an operation is not supported.
+This error code is reported when the operation is not supported.
 
 **Possible Causes**
 
@@ -476,7 +478,7 @@ The number of created child processes has reached the upper limit.
 
 **Solution**
 
-Limit the number of created child processes. The maximum number is 512.
+Limit the number of created child processes. The upper limit is 512.
 
 ## 16000063 Invalid Ability During Application Restart
 
@@ -494,7 +496,7 @@ The specified ability name or type is invalid.
 
 **Solution**
 
-Ensure that the specified ability name exists in the current application and the ability type is UIAbility.
+Ensure that the specified ability name belongs to the current application and the ability type is UIAbility.
 
 ## 16000064 Frequent Application Restart
 
@@ -504,7 +506,7 @@ Restart too frequently. Try again at least 3s later.
 
 **Description**
 
-An API is called to restart the application and start a specified ability. This error code is reported when the API is called again within 3 seconds.
+This error code is reported when the API used to restart the application with a specified component is called again within 3 seconds.
 
 **Possible Causes**
 
@@ -512,9 +514,9 @@ The API is frequently called.
 
 **Solution**
 
-Call the API again after 3 seconds.
+Wait for at least 3s and try again.
 
-## 16000065 API Can Be Called for a Foreground Ability
+## 16000065 API Can Be Called Only for a Foreground Ability
 
 **Error Message**
 
@@ -530,7 +532,7 @@ The ability is not in the foreground when the API is called.
 
 **Solution**
 
-Switch the ability to the foreground before calling the API.
+Before calling the API, ensure that the ability is running in the foreground and the UI is visible.
 
 ## 16000066 Ability Cannot Be Switched to the Foreground or Background in Wukong Mode
 
@@ -544,7 +546,7 @@ This error code is reported when the API used to switch the ability to the foreg
 
 **Possible Causes**
 
-In Wukong mode, the ability cannot be switched to the foreground or background.
+In Wukong mode, it is not allowed to switch the ability to the foreground or background.
 
 **Solution**
 
@@ -585,7 +587,7 @@ This error code is reported when the target ability is already running.
 
 **Solution**
 
-When **launchType** of the target ability is singleton or specified, do not specify **processMode** and **startupVisibility** in **startAbility()**.
+When **launchType** of the target ability is singleton or specified, do not specify **processMode** or **startupVisibility** in **startAbility()**.
 
 ## 16000069 ExtensionAbility Fails to Start a Third-Party Application in Strict Mode
 
@@ -595,7 +597,7 @@ The extension cannot start the third party application.
 
 **Description**
 
-This type of ExtensionAbility cannot start a third-party application in strict mode.
+In strict mode, the ExtensionAbility is not allowed to start third-party applications.
 
 **Possible Causes**
 
@@ -603,7 +605,7 @@ The ExtensionAbility is in strict mode, and this type of ExtensionAbility is for
 
 **Solution**
 
-1. Check the conditions for enabling the strict mode of this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
+1. Check the strict mode activation conditions for this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
 2. Start the ExtensionAbility in non-strict mode.
 
 ## 16000070 ExtensionAbility Fails to Start a ServiceExtensionAbility in Strict Mode
@@ -614,15 +616,15 @@ The extension cannot start the service.
 
 **Description**
 
-This type of ExtensionAbility cannot start a ServiceExtensionAbility in strict mode.
+In strict mode, the ExtensionAbility is not allowed to start the specified ServiceExtensionAbility.
 
 **Possible Causes**
 
-The ExtensionAbility is in strict mode, and this type of ExtensionAbility is forbidden to start a ServiceExtensionAbility in strict mode.
+The ExtensionAbility is in strict mode, and this type of ExtensionAbility is forbidden to start the specified ServiceExtensionAbility in strict mode.
 
 **Solution**
 
-1. Check the conditions for enabling the strict mode of this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
+1. Check the strict mode activation conditions for this [type of ExtensionAbility](../../application-models/extensionability-overview.md).
 2. Start the ExtensionAbility in non-strict mode.
 
 ## 16000071 Application Clone Is Not Supported
@@ -637,7 +639,7 @@ This error code is reported when the application does not support clones.
 
 **Possible Causes**
 
-This error code is reported when the [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12) API is called while the [multiAppMode](../../quick-start/app-configuration-file.md#multiappmode) field in the **app.json5** file is not set to **appClone** (meaning that the application does not support app clone mode).
+The [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12) API is called while the [multiAppMode](../../quick-start/app-configuration-file.md#multiappmode) field in the **app.json5** file is not set to **appClone** (meaning that the application does not support app clone mode).
 
 **Solution**
 
@@ -757,7 +759,7 @@ Before creating an application instance, the application does not check whether 
 
 **Solution**
 
-You can create application instances only after adjusting the upper limit of application instances or deleting existing application instances.
+To create a new instance when the number of application instances has reached the upper limit, prompt the user to close existing instances via a dialog box.
 
 ## 16000078 Multi-Instance Mode Is Not Supported
 
@@ -839,6 +841,24 @@ In the call of an [API related to URI authorization](js-apis-uripermissionmanage
 3. Check whether the target application has created a clone of the specified index.
 <!--DelEnd-->
 
+## 16000083 Specified Ability Cannot Be Started by This Type of ExtensionAbility
+
+**Error Message**
+
+The ExtensionAbility cannot start the ability due to system control.
+
+**Description**
+
+Different types of ExtensionAbility components require different capabilities. The system does not allow this type of ExtensionAbility to start the specified ability.
+
+**Possible Causes**
+
+The current type of ExtensionAbility is under system control and is not allowed to start the specified ability.
+
+**Solution**
+
+Check the usage constraints for this type of ExtensionAbility, and ensure that the API is used as required.
+
 ## 16000084 Only One DelegatorAbility Is Allowed to Call the API
 
 **Error Message**
@@ -893,7 +913,7 @@ The passed Context object is not a UIAbilityContext or does not inherit from the
 
 **Solution**
 
-Use a UIAbilityContext object or an object that inherits from the UIAbilityContext class as the input parameter.
+Ensure that the passed parameter is a UIAbilityContext object or its child class object.
 
 ## 16000090 Caller Is Not an Atomic Service
 
@@ -911,7 +931,7 @@ The API caller is not an atomic service.
 
 **Solution**
 
-The application does not support this API.
+Ensure that the caller is an atomic service.
 
 <!--Del-->
 ## 16000091 Failed to Obtain a File URI by Key
@@ -1042,51 +1062,51 @@ Check whether an AbilityDelegatorRegistry instance is created.
 
 **Error Message**
 
-Current application is not in kiosk app list, can not exit kiosk mode.
+The current application is not in Kiosk app list and cannot enter Kiosk mode.
 
 **Description**
 
-The current application is not in the list of applications configured to support kiosk mode in EDM. Attempting to enter or exit kiosk mode will return this error code.
+This error code is reported when the current application is not in the kiosk mode list and cannot enter kiosk mode.
 
 **Possible Causes**
 
-The application is not in the list of applications configured to support kiosk mode in EDM.
+The application is not in the kiosk mode list and cannot enter kiosk mode.
 
 **Solution**
 
-Check whether the application is in the list of applications configured to support kiosk mode in EDM.
+Add the application to the kiosk application list on the EDM.
 
 ## 16000111 Application Is Already in Kiosk Mode
 
 **Error Message**
 
-System is already in kiosk mode, can not enter again.
+The system is already in Kiosk mode and cannot enter Kiosk mode again.
 
 **Description**
 
-The system already has an application in kiosk mode. Attempting to enter kiosk mode again will return this error code.
+This error code is reported when the system is already in kiosk mode.
 
 **Possible Causes**
 
-An application is already in kiosk mode.
+Only one application can enter Kiosk mode at a time.
 
 **Solution**
 
-Check whether any application in the system is already in kiosk mode.
+Exit the application that is in Kiosk mode.
 
 ## 16000112 No Application Is in Kiosk Mode
 
 **Error Message**
 
-Current application is not in kiosk mode, can not exit.
+The current application is not in Kiosk mode and cannot exit Kiosk mode.
 
 **Description**
 
-No application in the system is in Kiosk mode. Attempting to exit kiosk mode will return this error code.
+This error code is reported when the current application is not in Kiosk mode and cannot exit Kiosk mode.
 
 **Possible Causes**
 
-No application is in kiosk mode.
+The application is not in Kiosk mode and cannot exit Kiosk mode.
 
 **Solution**
 
@@ -1238,6 +1258,24 @@ A DLP file is passed in the Want.
 Check whether the Want carries a DLP file.
 <!--DelEnd-->
 
+## 16000135 UIAbility Main Window Does Not Exist
+
+**Error Message**
+
+The main window of this ability of this context does not exits.
+
+**Description**
+
+This error code is reported when the main window for this UIAbility does not exist.
+
+**Possible Causes**
+
+The API is called when the window has not yet been created or has already been destroyed.
+
+**Solution**
+
+Do not call this API before the window stage is created or after it is destroyed.
+
 ## 16000151 Invalid wantAgent Object
 
 **Error Message**
@@ -1257,7 +1295,7 @@ This error code is reported when the wantAgent object passed in the API is inval
 **Solution**
 
 1. Ensure that the wantAgent object passed in the API exists.
-2. Check whether the caller is a third-party application. Third-party applications cannot set the abilities of other applications.
+2. Check whether the caller is a third-party application. Third-party applications cannot set the ability components of other applications.
 
 <!--Del-->
 ## 16000153 wantAgent Object Is Canceled
@@ -1370,7 +1408,7 @@ The method has been registered by the callee.
 
 **Solution**
 
-Check whether the method has been registered.
+Check whether the method has been registered. If the method has been registered, do not register it again.
 
 ## 16200005 Method Not Registered
 
@@ -1388,7 +1426,7 @@ The method has not been registered by the callee.
 
 **Solution**
 
-Check whether the method has been registered.
+Register the method on the callee side and then call it.
 
 <!--Del-->
 ## 16200006 No Permission to Enable or Disable the Resident Process
@@ -1906,3 +1944,543 @@ The current process is not a candidate master process and cannot be canceled.
 **Solution**
 
 No action can be taken. Cancellation is not supported since the current process is not a candidate master process.
+
+## 16000118 Process Is Not the Master Process
+
+**Error Message**
+
+Not a master process.
+
+**Description**
+
+This error code is reported when you attempt to relinquish the master-process role of the current process, which is not the master process.
+
+**Possible Causes**
+
+The current process is not the master process and cannot relinquish its master-process role.
+
+**Solution**
+
+No action can be taken. The current process is not the master process and cannot relinquish its master-process role.
+
+## 16000119 Unfinished onNewProcessRequest Request Exists
+
+**Error Message**
+
+Cannot exit because there is an unfinished onNewProcessRequest.
+
+**Description**
+
+This error code is reported when you attempt to relinquish the master-process role of the current process while it has an unfinished onNewProcessRequest request.
+
+**Possible Causes**
+
+The current process has an unfinished onNewProcessRequest request.
+
+**Solution**
+
+Wait for the onNewProcessRequest request in the current process to complete, and then relinquish the master-process role of the current process.
+
+## 16000205 API Not Called in Main Thread
+
+**Error Message**
+
+The API is not called in the main thread.
+
+**Description**
+
+This error code is reported when the API is not called in the main thread.
+
+**Possible Causes**
+
+The current API is called in a Worker or TaskPool thread, which is not supported.
+
+**Solution**
+
+Move the API call logic to the main thread.
+
+## 10110000 Incorrect Declaration for Decorator Parameters
+
+**Error Message**
+
+Decorator parameters must be compile-time constants.
+
+**Description**
+
+This error code is reported when variables are used as decorator parameters in the code. Compile-time constants (such as string literals) are required.
+
+**Possible Causes**
+
+Decorator parameters use variables.
+
+**Solution**
+
+Change the decorator parameters from variables to fixed values.
+
+## 10110001 Incorrect Decorator Usage Location
+
+**Error Message**
+
+The intent decorator can only be used in .ets files. 
+
+**Description**
+
+This error code is reported when the intent decorator is used in a non-.ets file.
+
+**Possible Causes**
+
+The intent decorator is used in a non-.ets file.
+
+**Solution**
+
+Use the intent decorator in an .ets file.
+
+## 10110002 Incorrect Decorator Call Form
+
+**Error Message**
+
+Decorators must be called as functions. 
+
+**Description**
+
+This error code is reported when the decorator is not invoked in function call form.
+
+**Possible Causes**
+
+The decorator is not invoked in function call form.
+
+**Solution**
+
+Add parentheses to ensure that the decorator is invoked as a function.
+
+## 10110003 Decorator Missing Required Parameters
+
+**Error Message**
+
+Required parameters are missing for the decorator.
+
+**Description**
+
+This error code is reported when the decorator is missing required parameters.
+
+**Possible Causes**
+
+The decorator is missing required parameters.
+
+**Solution**
+
+Add the required parameters based on the error message.
+
+## 10110004 Parameter Type Does Not Match Decorator Requirements
+
+**Error Message**
+
+The parameter type does not match the decorator's requirement.
+
+**Description**
+
+This error code is reported when the parameter type does not match the decorator's requirements.
+
+**Possible Causes**
+
+The parameter type does not match the decorator's requirements.
+
+**Solution**
+
+Adjust the parameter type based on the error message.
+
+## 10110005 Unsupported Parameters in Decorator
+
+**Error Message**
+
+Unsupported parameters found in the decorator.
+
+**Description**
+
+This error code is reported when unsupported parameters are found in the decorator.
+
+**Possible Causes**
+
+Unsupported parameters are written in the decorator.
+
+**Solution**
+
+Remove unsupported parameters based on the error message. (Only the string, number, boolean, object, and array types are supported.)
+
+## 10110006 Circular Dependency Detected in Decorator Parameters
+
+**Error Message**
+
+Circular dependencies detected in decorator parameters.
+
+**Description**
+
+This error code is reported when circular dependencies are detected in decorator parameters.
+
+**Possible Causes**
+
+Circular dependencies are written in the decorator parameters.
+
+**Solution**
+
+Refactor the data structure by extracting common variables or using ID references to avoid nesting.
+
+## 10110007 Root Type of JSON Schema for Parameters is Not Object
+
+**Error Message**
+
+The root type of the JSON Schema for Parameters must be object. 
+
+**Description**
+
+This error code is reported when the root type of the JSON schema for **Parameters** is not object.
+
+**Possible Causes**
+
+The root type of the JSON schema for **Parameters** is not object.
+
+**Solution**
+
+Ensure that the top-level definition of the JSON schema for parameters is {"type": "object"}.
+
+## 10110008 Class Property Missing Required Field
+
+**Error Message**
+
+A required field in the class property is missing.
+
+**Description**
+
+This error code is reported when a required field in the class property is missing.
+
+**Possible Causes**
+
+A required field in the class property is missing.
+
+**Solution**
+
+Add the required field as specified by the JSON Schema.
+
+## 10110009 Class Property Field Type Does Not Match JSON Schema
+
+**Error Message**
+
+The field type of the class property does not match the JSON Schema.
+
+**Description**
+
+This error code is reported when the field type of the class property does not match the JSON schema.
+
+**Possible Causes**
+
+The field type of the class property does not match the JSON schema.
+
+**Solution**
+
+Correct the type to match the requirement.
+
+## 10110010 Class Property Parameter Violates oneOf/anyOf Validation Rules
+
+**Error Message**
+
+The class property parameter violates the oneOf/anyOf validation rules in the JSON Schema.
+
+**Description**
+
+This error code is reported when the class property parameter violates the oneOf/anyOf validation rules in the JSON schema.
+
+**Possible Causes**
+
+The class property parameter violates the oneOf/anyOf validation rules in the JSON Schema.
+
+**Solution**
+
+Modify the parameter to meet the validation rules.
+
+## 10110011 Class Property Includes Parameters Not Defined in JSON Schema
+
+**Error Message**
+
+The class property includes parameters not defined in the JSON Schema.
+
+**Description**
+
+This error code is reported when the class property includes parameters not defined in the JSON schema.
+
+**Possible Causes**
+
+The class property includes parameters not defined in the JSON schema.
+
+**Solution**
+
+Remove any extra parameters.
+
+## 10110012 Duplicate intentName Definitions Found
+
+**Error Message**
+
+Duplicate intentName definitions found.
+
+**Description**
+
+This error code is reported when duplicate intentName definitions are found.
+
+**Possible Causes**
+
+The same intentName is declared in the module.
+
+**Solution**
+
+Find the duplicate intentName in the module and rename it.
+
+## 10110013 Incorrect Location for Methods Decorated with @InsightIntentFunctionMethod
+
+**Error Message**
+
+Methods decorated with @InsightIntentFunctionMethod must be in a class decorated with @InsightIntentFunction.
+
+**Description**
+
+This error code is reported when the method decorated with @InsightIntentFunctionMethod is not in the class decorated with @InsightIntentFunction.
+
+**Possible Causes**
+
+The method decorated with @InsightIntentFunctionMethod is not in the class decorated with @InsightIntentFunction.
+
+**Solution**
+
+Move the method to the class decorated with @InsightIntentFunction, or add the @InsightIntentFunction decorator to the class.
+
+## 10110014 Class Decorated with @InsightIntentFunction Is Not Exported
+
+**Error Message**
+
+The class decorated with @InsightIntentFunction must be exported.
+
+**Description**
+
+This error code is reported when the class decorated with @InsightIntentFunction is not exported using **export**.
+
+**Possible Causes**
+
+The class decorated with @InsightIntentFunction is not exported using **export**.
+
+**Solution**
+
+Add an **export** statement to the class.
+
+## 10110015 Incorrect Method Decorated with @InsightIntentFunctionMethod
+
+**Error Message**
+
+Methods decorated with @InsightIntentFunctionMethod must be static. 
+
+**Description**
+
+This error code is reported when the method decorated with @InsightIntentFunctionMethod is not a static method.
+
+**Possible Causes**
+
+The method decorated with @InsightIntentFunctionMethod is not modified with static.
+
+**Solution**
+
+Modify the method decorated with @InsightIntentFunctionMethod with **static**.
+
+## 10110016 Incorrect Location for @InsightIntentPage
+
+**Error Message**
+
+@InsightIntentPage must be applied to a struct page.
+
+**Description**
+
+This error code is reported when the @InsightIntentPage decorator is not applied to a struct page.
+
+**Possible Causes**
+
+The @InsightIntentPage decorator is applied to a regular class.
+
+**Solution**
+
+Move the @InsightIntentPage decorator to a struct page.
+
+## 10110017 @InsightIntentPage pagePath Does Not Match Actual Page Path
+
+**Error Message**
+
+pagePath in @InsightIntentPage does not match the actual page path. 
+
+**Description**
+
+This error code is reported when **pagePath** in @InsightIntentPage does not match the actual page path.
+
+**Possible Causes**
+
+The value of **pagePath** in @InsightIntentPage is incorrect.
+
+**Solution**
+
+Ensure that the file paths in the directory are consistent.
+
+## 10110018 Incorrect Inheritance for Class Decorated with @InsightIntentEntry
+
+**Error Message**
+
+Classes decorated with @InsightIntentEntry must inherit from InsightIntentEntryExecutor. 
+
+**Description**
+
+This error code is reported when the class decorated with @InsightIntentEntry does not inherit from the base class InsightIntentEntryExecutor.
+
+**Possible Causes**
+
+The class decorated with @InsightIntentEntry does not inherit from the base class InsightIntentEntryExecutor.
+
+**Solution**
+
+Add base class the InsightIntentEntryExecutor to the class.
+
+## 10110019 Class Decorated with @InsightIntentEntry Not Exported as Default
+
+**Error Message**
+
+The class decorated with @InsightIntentEntry must be exported as default. 
+
+**Description**
+
+This error code is reported when the class decorated with @InsightIntentEntry is not exported using **export default**.
+
+**Possible Causes**
+
+The class decorated with @InsightIntentEntry is not exported using **export default**.
+
+**Solution**
+
+Add an **export default** statement to the class.
+
+## 10110020 Multiple @InsightIntentEntity Decorators Applied to the Same Class
+
+**Error Message**
+
+Multiple @InsightIntentEntity decorators applied to the same class. 
+
+**Description**
+
+This error code is reported when the same class is decorated with multiple @InsightIntentEntity decorators.
+
+**Possible Causes**
+
+Multiple @InsightIntentEntity decorators are applied to the same class.
+
+**Solution**
+
+Remove the extra @InsightIntentEntity decorators.
+
+## 10110021 Class Decorated with @InsightIntentEntity Does Not Implement InsightIntent.IntentEntity
+
+**Error Message**
+
+Classes decorated with @InsightIntentEntity must implement InsightIntent.IntentEntity.
+
+**Description**
+
+This error code is reported when the class decorated with @InsightIntentEntity does not implement **InsightIntent.IntentEntity**.
+
+**Possible Causes**
+
+The class decorated with @InsightIntentEntity does not implement **InsightIntent.IntentEntity**.
+
+**Solution**
+
+Ensure that the class implements **InsightIntent.IntentEntity** or inherits from another intent entity.
+
+## 10110022 Incorrect Location for @InsightIntentForm
+
+**Error Message**
+
+@InsightIntentForm must be applied to formExtensionAbility. 
+
+**Description**
+
+This error code is reported when the @InsightIntentForm decorator is not applied to formExtensionAbility.
+
+**Possible Causes**
+
+The @InsightIntentForm decorator is not applied to formExtensionAbility.
+
+**Solution**
+
+Move the @InsightIntentForm decorator to the formExtensionAbility class.
+
+## 10110023 @InsightIntentForm Decorator formName Parameter Mismatch
+
+**Error Message**
+
+formName in @InsightIntentForm must match the widget name registered in formExtensionAbility.
+
+**Description**
+
+This error code is reported when the **formName** parameter in @InsightIntentForm does not match the widget name registered in formExtensionAbility.
+
+**Possible Causes**
+
+The formName parameter in @InsightIntentForm is declared incorrectly.
+
+**Solution**
+
+Update **formName** to match the registered widget name.
+
+## 10110024 module.json5 File Missing
+
+**Error Message**
+
+The module.json5 file is missing. 
+
+**Description**
+
+This error code is reported when the **module.json5** file is not found in the project.
+
+**Possible Causes**
+
+The **module.json5** file has been deleted or moved.
+
+**Solution**
+
+Check the file path (usually in **entry/src/main/config.json** or **module.json5**) and confirm whether the file has been accidentally deleted or moved.
+
+## 10110025 Failed to Write to Intent Configuration File
+
+**Error Message**
+
+Failed to write to the intent configuration file.
+
+**Description**
+
+This error code is reported when the intent configuration file cannot be written.
+
+**Possible Causes**
+
+The permission is insufficient or the disk space is full.
+
+**Solution**
+
+Check file permissions, free disk space, or restart DevEco Studio.
+
+## 10110027 Failed to Generate OHMUrl
+
+**Error Message**
+
+Generating standard OHMUrl failed with useNormalizedOHMUrl configuration not set to true.
+
+**Description**
+
+This error code is reported when the standard OHM URL fails to be generated because **useNormalizedOHMUrl** is not set to **true**.
+
+**Possible Causes**
+
+**useNormalizedOHMUrl** is not set or is set to **false**.
+
+**Solution**
+
+Set **useNormalizedOHMUrl** to **true** in the application-level file **build-profile.json5**.

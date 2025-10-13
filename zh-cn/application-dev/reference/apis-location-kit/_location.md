@@ -303,7 +303,7 @@ Location_ResultCode OH_Location_IsLocatingEnabled (bool * enabled)
 
 返回操作结果，详细定义参见[Location_ResultCode](#location_resultcode)。
 
-**LOCAION_SUCCESS** 查询位置开关状态成功。
+**LOCATION_SUCCESS** 查询位置开关状态成功。
 
 LOCATION_INVALID_PARAM 入参是空指针。
 
@@ -330,7 +330,7 @@ Location_ResultCode OH_Location_StartLocating (const Location_RequestConfig * re
 
 返回操作结果，详细定义参见[Location_ResultCode](#location_resultcode)。
 
-LOCAION_SUCCESS 启动定位成功。
+LOCATION_SUCCESS 启动定位成功。
 
 LOCATION_INVALID_PARAM 入参requestConfig为空指针。
 
@@ -367,7 +367,7 @@ Location_ResultCode OH_Location_StopLocating (const Location_RequestConfig * req
 
 返回操作结果，详细定义参见[Location_ResultCode](#location_resultcode)。
 
-LOCAION_SUCCESS 停止定位成功。
+LOCATION_SUCCESS 停止定位成功。
 
 LOCATION_INVALID_PARAM 入参为空指针或入参与[OH_Location_StartLocating](#oh_location_startlocating)的requestConfig指针不同。
 
@@ -406,7 +406,7 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo (Location_Info * location,
 
 返回操作结果，详细定义参见[Location_ResultCode](#location_resultcode)。
 
-**LOCAION_SUCCESS** 获取附加信息成功。
+**LOCATION_SUCCESS** 获取附加信息成功。
 
 LOCATION_INVALID_PARAM 1. 入参location或additionalInfo是空指针。
 

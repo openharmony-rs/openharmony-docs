@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -1103,7 +1103,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -1214,7 +1214,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@ohos.multimedia.camera';
+import camera from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
 function isPhotoQualityPrioritizationSupported(quality: camera.PhotoQualityPrioritization): boolean {
@@ -1262,7 +1262,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@ohos.multimedia.camera';
+import camera from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
 function setPhotoQualityPrioritization(quality: camera.PhotoQualityPrioritization): void {

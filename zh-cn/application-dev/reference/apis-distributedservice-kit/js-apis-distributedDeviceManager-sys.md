@@ -3,7 +3,7 @@
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->
 <!--Designer: @hwzhangchuang-->
-<!--Tester: @Lyuxin-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 本模块提供分布式设备管理能力。
@@ -216,7 +216,7 @@ replyUiAction(action: number, actionResult: string): void
 
 on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
-回复UI操作结果回调。
+回复UI操作结果回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
@@ -273,7 +273,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
-取消回复UI操作结果回调。
+取消回复UI操作结果回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
@@ -752,7 +752,7 @@ restoreLocalDeivceName(): void
 
 getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt;string&gt;&gt;
 
-获取符合条件的网络设备ID列表。
+获取符合条件的网络设备ID列表。使用Promise异步回调。
 
 **需要权限**：ohos.permission.ACCESS_SERVICE_DM
 

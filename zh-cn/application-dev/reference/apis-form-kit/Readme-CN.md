@@ -1,4 +1,10 @@
 # Form Kit（卡片开发服务）<!--form-kit-->
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - ArkTS API<!--form-arkts-->
   - [@ohos.app.form.formBindingData (卡片数据绑定类)](js-apis-app-form-formBindingData.md)

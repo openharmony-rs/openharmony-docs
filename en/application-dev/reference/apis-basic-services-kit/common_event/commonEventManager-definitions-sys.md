@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 This topic provides a list of common events defined by the system.
 
@@ -253,7 +253,7 @@ APIs related to this event: **activateOsAccount**. This API is a system API. For
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (for system applications only)
+**Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (before API version 21); ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (since API version 21)
 
 **Value**: "usual.event.USER_SWITCHED"
 
