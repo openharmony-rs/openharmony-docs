@@ -51,8 +51,8 @@ type EventType = beginWakeUp|endWakeUp|beginScreenOn|endScreenOn|beginScreenOff|
 
 | 名称    | 类型   | 只读 | 可选 |       说明        |
 | --------- | ------ | ---- | ---- | ------------- |
-| eventType   | [EventType](#eventtype9) | 是   | 否   | 系统事件类型。 |
-| params | string | 是   | 否   | 系统事件参数。 |
+| eventType   | [EventType](#eventtype9) | 否   | 否   | 系统事件类型。 |
+| params | string | 否   | 否   | 系统事件参数。 |
 
 ## screenLock.isLocked<sup>9+</sup>
 
