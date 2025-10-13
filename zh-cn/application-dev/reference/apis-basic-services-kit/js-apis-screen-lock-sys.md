@@ -14,7 +14,7 @@
 import { screenLock } from '@kit.BasicServicesKit';
 ```
 
-## EventType<sup > 9 + < / sup >
+## EventType<sup>9+</sup>
 
     type EventType =
     beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen | lockScreen |
