@@ -28,6 +28,8 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 获取接入主设备的USB设备列表。如果没有设备接入，那么将会返回一个空的列表。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
+三方应用没有权限获取serial字段读取设备序列号，需要通过requestRight申请权限后，自行发起控制传输获取。
+
 **系统能力：**  SystemCapability.USB.USBManager
 
 **返回值：**
