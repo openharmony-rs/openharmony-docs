@@ -7,8 +7,6 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
-# CodecBase
-
 ## 概述
 
 CodecBase模块提供用于音视频封装、解封装、编解码基础功能的变量、属性以及函数。
