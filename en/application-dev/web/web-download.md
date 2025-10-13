@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 To download files on the web page, you can use the following method to invoke the web APIs.
 
@@ -14,7 +14,7 @@ Call [setDownloadDelegate()](../reference/apis-arkweb/arkts-apis-webview-Webview
 
 In the following example, the **index.html** and **download.html** files are added to the **rawfile** folder of the application. After the application is started, a **Web** component is created and the **index.html** file is loaded. After **setDownloadDelegate** is clicked, a **DownloadDelegate** object is registered with the **Web** component. This **DownloadDelegate** object listens for any downloads initiated by clicking the download button on the page.
 
-By default, the download path is in the web directory of the application sandbox and cannot be viewed by users. If users need to view it, change the download path to a directory with access permission, for example, the **Download** directory. For details, see [Initiating a Download Task](#initiating-a-download-task).
+The default path is in the web directory of the app sandbox, which cannot be viewed by users. If you want users to view the path, change the download path to a directory with the access permission, for example, the Download directory. For details, see [Initiating a Download Task](#initiating-a-download-task).
 
 ```ts
 // xxx.ets

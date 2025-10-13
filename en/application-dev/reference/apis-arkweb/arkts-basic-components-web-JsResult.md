@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **JsResult** object to confirm or cancel a dialog box. For details about the sample code, see [onAlert](./arkts-basic-components-web-events.md#onalert).
 

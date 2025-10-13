@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component can be used to display web pages. It can be used with the [@ohos.web.webview](arkts-apis-webview.md) module, which provides APIs for web control.
 
@@ -167,7 +167,7 @@ Example of loading local web pages using **$rawfile()**:
 
 Example of loading a link with the hash (#) route through the resource protocol in WebView:
 
-When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead.
+When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead. If the URL contains a number sign (#), the content following the number sign (#) is considered as an anchor (fragment).
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';

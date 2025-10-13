@@ -4,7 +4,7 @@
 <!--Owner: @zhou-ke13-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides two rendering modes, which can be adapted to different container sizes as required.
 

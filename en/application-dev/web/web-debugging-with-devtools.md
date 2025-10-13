@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 The **Web** component supports debugging of web frontend pages by using DevTools, a web frontend development and debugging tool that allows you to debug an application's frontend pages on a PC. Before you do this, use [setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess) to enable frontend page debugging for the **Web** component and make sure the test device connected to the PC runs 4.1.0 or a later version.
@@ -145,9 +145,12 @@ Connect the device to a PC and enable Developer mode for subsequent port forward
    ```
 
 ### Port Forwarding
-After the application code calls the **setWebDebuggingAccess** API to enable web debugging, the ArkWeb kernel starts a domain socket listener to enable DevTools to debug web pages. For details, see [Automatically Mapping the WebView Debugging Link](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516). 
+After the application code calls the **setWebDebuggingAccess** API to enable web debugging, the ArkWeb kernel starts a domain socket listener to enable DevTools to debug web pages. 
 However, Chrome cannot directly access the domain socket on the device. Therefore, the domain socket on the device needs to be forwarded to the PC.
 
+**Use the automatic mapping WebView debugging link (https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516).**
+
+If the DevEco version is earlier than the required version, perform the following steps:
 1. Run the following command in hdc shell to obtain the domain socket created by ArkWeb on the device. 
    ```shell
    cat /proc/net/unix | grep devtools
@@ -186,8 +189,8 @@ However, Chrome cannot directly access the domain socket on the device. Therefor
    ![hdc_fport_ls_empty](figures/devtools_resources_hdc_fport_ls_empty.jpg)
 
 ### Script
-#### On Windows
-Copy the following information to create a .bat file, enable application debugging, and run the file.
+**Windows**<br>
+Copy the following information to create a .bat file. After the debugging application is enabled, execute the file.
    ```
    @echo off
    setlocal enabledelayedexpansion
@@ -261,8 +264,8 @@ Copy the following information to create a .bat file, enable application debuggi
 
    endlocal
    ```
-#### On Linux or macOS
-Copy the following information to create an .sh file. Note that you need to run the **chmod** command and convert the file format. Enable the application debugging and run the file.
+**Linux or macOS**<br>
+Copy the following information to create a .sh file. Note the chmod and format conversion. Execute the following information after enabling the debugging application.
 This script will delete all port forwarding. If other tools (such as DevEco Studio) are using port forwarding, they will be affected.
    ```
    #!/bin/bash
