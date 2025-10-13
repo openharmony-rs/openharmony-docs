@@ -630,7 +630,7 @@ getGentleUri(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'），请参考。 如果不存在柔和振动，则振动URI或为空。 柔和振动是指马达振动强度较标准较弱。|
+| string \| null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'），请参考[振动格式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/vibrator-guidelines#%E6%8C%AF%E5%8A%A8%E6%95%88%E6%9E%9C%E8%AF%B4%E6%98%8E)。 如果不存在柔和振动，则振动URI或为空。 柔和振动是指马达振动强度较标准较弱。|
 
 **错误码：**
 
