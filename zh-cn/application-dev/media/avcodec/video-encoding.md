@@ -21,7 +21,7 @@
 |          支持的能力                       |                              使用简述                                            |
 | --------------------------------------- | ---------------------------------------------------------------------------------- |
 | 分层编码 <br> 设置LTR帧、参考帧                      | 具体可参考：[时域可分层视频编码](video-encoding-temporal-scalability.md)        |
-| 支持历史帧repeat编码                    | 具体可参考：[OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_frame_after)、<br> [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_max_count)    |
+| 支持历史帧repeat编码                    | 具体可参考：[OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、<br> [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)    |
 <!--RP4End-->
 
 ## 限制约束
@@ -337,7 +337,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 5. 调用OH_VideoEncoder_Configure()配置编码器。
 
-    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     参数校验规则请参考[OH_VideoEncoder_Configure()参考文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)。
 
