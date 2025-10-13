@@ -541,7 +541,7 @@ getUri(): string
 
 | 类型    | 说明  |
 |--------|-----|
-| string | uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 |
+| string | uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。|
 
 **错误码：**
 
@@ -630,7 +630,7 @@ getGentleUri(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 |
+| string \| null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则振动URI 或为空 |
 
 **错误码：**
 
@@ -650,7 +650,7 @@ toneHapticsAttrs.getGentleUri();
 
 getGentleTitle(): string | null
 
-获取柔和振动标题，如果不存在柔和振动，则振动标题 或为空。
+获取柔和振动标题。
 
 **系统接口：** 该接口为系统接口。
 
@@ -660,7 +660,7 @@ getGentleTitle(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 标题。 |
+| string \| null | 柔和振动的标题。如果不存在柔和振动，则振动标题或为空。 |
 
 **错误码：**
 
@@ -680,7 +680,7 @@ toneHapticsAttrs.getGentleTitle();
 
 getGentleFileName(): string | null
 
-获取柔和振动文件名，如果不存在柔和振动，则振动文件名或为空。
+获取柔和振动文件名。
 
 **系统接口：** 该接口为系统接口。
 
@@ -690,7 +690,7 @@ getGentleFileName(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 文件名。 |
+| string \| null | 柔和振动文件名。如果不存在柔和振动，则振动文件名或为空。 |
 
 **错误码：**
 
