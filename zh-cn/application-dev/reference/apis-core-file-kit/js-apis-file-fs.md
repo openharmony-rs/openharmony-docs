@@ -50,7 +50,7 @@ stat(file: string | number): Promise&lt;Stat&gt;
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。从API version 20开始支持URI。 |
+| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 20开始，支持通过URI传入。 |
 
 **返回值：**
 
@@ -88,7 +88,7 @@ stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
 
 | 参数名   | 类型                               | 必填 | 说明                           |
 | -------- | ---------------------------------- | ---- | ------------------------------ |
-| file     | string \| number                   | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。从API version 20开始支持URI。 |
+| file     | string \| number                   | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 20开始，支持通过URI传入。 |
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | 是   | 异步获取文件或目录的信息之后的回调。 |
 
 **错误码：**
@@ -122,7 +122,7 @@ statSync(file: string | number): Stat
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。从API version 20开始支持URI。 |
+| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 20开始，支持通过URI传入。 |
 
 **返回值：**
 
@@ -2487,7 +2487,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| path   | string | 是   | 文件的应用沙箱路径path或URI。从API version 20开始支持URI。 |
+| path   | string | 是   | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 20开始，支持通过URI传入。 |
 
 **返回值：**
 
@@ -2523,7 +2523,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 | 参数名   | 类型                               | 必填 | 说明                                   |
 | -------- | ---------------------------------- | ---- | -------------------------------------- |
-| path     | string                             | 是   | 文件的应用沙箱路径path或URI。从API version 20开始支持URI。 |
+| path     | string                             | 是   | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 20开始，支持通过URI传入。 |
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | 是   | 异步获取文件具体信息之后的回调。       |
 
 **错误码：**
@@ -2556,7 +2556,7 @@ lstatSync(path: string): Stat
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| path   | string | 是   | 文件的应用沙箱路径path或URI。从API version 20开始支持URI。 |
+| path   | string | 是   | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 20开始，支持通过URI传入。 |
 
 **返回值：**
 
