@@ -1,4 +1,10 @@
-# 卡片代理刷新
+# 卡片代理刷新（仅对系统应用开放）
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 
 卡片代理刷新是一种通过系统应用刷新卡片的机制。卡片提供方不在运行时，仍然可以通过开启了数据共享能力的系统应用完成卡片数据的更新。
 
@@ -45,7 +51,7 @@
 <!--Del-->
 ## 数据提供方开发步骤
 
-参考[数据管理](../database/share-data-by-silent-access.md)开发指南。
+参考[数据管理](../database/share-data-by-silent-access-sys.md)开发指南。
 <!--DelEnd-->
 ## 卡片提供方开发步骤（过程数据）
 
