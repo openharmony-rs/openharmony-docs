@@ -30,7 +30,7 @@
 | [OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_configure) | 配置LowPowerAudioSink，需要在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)前完成。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_setparameter) | 为LowPowerAudioSink设置参数，支持[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)后动态设置。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AVFormat* format)](#oh_lowpoweraudiosink_getparameter) | 获取LowPowerAudioSink的相关参数。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_prepare) | 准备LowPowerAudioSink的解码、渲染资源，在[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)后调用。<br> 调用此接口前必须调用LowPowerVideoSink的[OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)方法方法。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_prepare) | 准备LowPowerAudioSink的解码、渲染资源，在[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)后调用。<br> 调用此接口前必须调用LowPowerVideoSink的[OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)方法。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_start) | 启动低功耗音频接收器，此接口必须在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)成功后调用。<br> 启动成功后，LowPowerAudioSink将开始上报[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_pause) | 暂停LowPowerAudioSink，在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume)后调用。<br> 暂停成功后，LowPowerAudioSink将暂停[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_resume) | 恢复LowPowerAudioSink，在[OH_LowPowerAudioSink_Pause](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_pause)后调用。<br> 恢复成功后，LowPowerAudioSink将恢复[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。 |
@@ -70,13 +70,13 @@ OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* mime | 音频解码器MIME类型，取值范围请参考[AVCODEC_MIME_TYPE](../apis-avcodec-kit/_codec_base.md#变量)}。 |
+| const char* mime | 音频解码器MIME类型，取值范围请参考[AVCODEC_MIME_TYPE](../apis-avcodec-kit/_codec_base.md#变量)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_LowPowerAudioSink*](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | 如果创建成功返回指向OH_LowPowerAudioSink实例的指针，否则返回空指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)*| 如果创建成功返回指向OH_LowPowerAudioSink实例的指针，否则返回空指针。 |
 
 ### OH_LowPowerAudioSink_Configure()
 
@@ -95,7 +95,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | 指向OH_AVFormat的指针，用于配置LowPowerAudioSink的参数。 |
+| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | 指向OH_AVFormat的指针，用于配置LowPowerAudioSink的参数。 |
 
 **返回：**
 
@@ -486,7 +486,7 @@ OH_LowPowerAudioSinkCallback* OH_LowPowerAudioSinkCallback_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_LowPowerAudioSinkCallback*](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | 返回指向OH_LowPowerAudioSinkCallback实例的指针。如果内存不足，则返回nullptr。 |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)* | 返回指向OH_LowPowerAudioSinkCallback实例的指针。如果内存不足，则返回nullptr。 |
 
 ### OH_LowPowerAudioSinkCallback_Destroy()
 

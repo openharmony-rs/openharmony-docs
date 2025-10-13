@@ -80,7 +80,7 @@ OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_LowPowerVideoSink*](capi-lowpowervideosink-oh-lowpowervideosink.md) | 如果创建成功返回指向OH_LowPowerVideoSink实例的指针，否则返回空指针。 |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* | 如果创建成功返回指向OH_LowPowerVideoSink实例的指针，否则返回空指针。 |
 
 ### OH_LowPowerVideoSink_Configure()
 
@@ -492,7 +492,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| {const | float} speed 播放速率的值。当前版本有效范围为[0.1，4.0]。 |
+| const float speed | 播放速率的值。当前版本有效范围为[0.1，4.0]。 |
 
 **返回：**
 
@@ -591,7 +591,7 @@ OH_LowPowerVideoSinkCallback* OH_LowPowerVideoSinkCallback_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_LowPowerVideoSinkCallback*](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | 返回指向OH_LowPowerVideoSinkCallback实例的指针。如果内存不足，则返回nullptr。 |
+| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)* | 返回指向OH_LowPowerVideoSinkCallback实例的指针。如果内存不足，则返回nullptr。 |
 
 ### OH_LowPowerVideoSinkCallback_Destroy()
 
