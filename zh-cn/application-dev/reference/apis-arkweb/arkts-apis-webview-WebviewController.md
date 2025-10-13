@@ -1477,6 +1477,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      this.msg1 = "result type: exception or object";
+                      this.msg2 = "result getErrorDescription:" + ((result.getErrorDescription()));
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -1569,6 +1574,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      this.msg1 = "result type: exception or object";
+                      this.msg2 = "result getErrorDescription:" + ((result.getErrorDescription()));
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -1693,6 +1703,11 @@ struct WebComponent {
           this.controller.runJavaScriptExt('test()')
             .then((result) => {
               try {
+                if (result.getErrorDescription()) {
+                  this.msg1 = "result type: exception or object";
+                  this.msg2 = "result getErrorDescription:" + ((result.getErrorDescription()));
+                  return;
+                }
                 let type = result.getType();
                 switch (type) {
                   case webview.JsMessageType.STRING: {
@@ -1774,6 +1789,11 @@ struct WebComponent {
             this.controller.runJavaScriptExt(arrayBuffer)
               .then((result) => {
                 try {
+                  if (result.getErrorDescription()) {
+                    this.msg1 = "result type: exception or object";
+                    this.msg2 = "result getErrorDescription:" + ((result.getErrorDescription()));
+                    return;
+                  }
                   let type = result.getType();
                   switch (type) {
                     case webview.JsMessageType.STRING: {
