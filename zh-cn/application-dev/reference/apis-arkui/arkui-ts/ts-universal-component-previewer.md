@@ -41,17 +41,17 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| title | string | 否 | 组件预览模块名，默认为自定义组件名称。 |
-| width| number | 否 | 预览设备的宽度，单位：px，默认为1080px。 |
-| height | number | 否 | 预览设备的高度，单位：px，默认为2340px。 |
-| locale| string | 否 |  预览设备的语言，如zh_CN、en_US等，默认为zh_CN。 |
-| colorMode | string | 否 | 显示的亮暗模式，当前支持的取值为light或dark，默认为light。 |
-| deviceType | string | 否 | 组件预览渲染的设备类型，默认为Phone。 |
-| dpi | number | 否 | 预览设备的屏幕DPI值，默认为480。 |
-| orientation | string | 否 | 预览设备的横竖屏状态，取值为portrait或landscape，默认为portrait。 |
-| roundScreen | boolean | 否 | 预览的屏幕形状是否为圆形，默认为false。true为圆形，false为非圆形。 |
+| 名称 | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| title | string | 否 | 是 | 组件预览模块名，默认为自定义组件名称。 |
+| width| number | 否 | 是 | 预览设备的宽度，单位：px，默认为1080px。 |
+| height | number | 否 | 是 | 预览设备的高度，单位：px，默认为2340px。 |
+| locale| string | 否 | 是 |  预览设备的语言，如zh_CN、en_US等，默认为zh_CN。 |
+| colorMode | string | 否 | 是 | 显示的亮暗模式，当前支持的取值为light或dark，默认为light。 |
+| deviceType | string | 否 | 是 | 组件预览渲染的设备类型，默认为Phone。 |
+| dpi | number | 否 | 是 | 预览设备的屏幕DPI值，默认为480。 |
+| orientation | string | 否 | 是 | 预览设备的横竖屏状态，取值为portrait或landscape，默认为portrait。 |
+| roundScreen | boolean | 否 | 是 | 预览的屏幕形状是否为圆形，默认为false。true为圆形，false为非圆形。 |
 
 ## 示例
 

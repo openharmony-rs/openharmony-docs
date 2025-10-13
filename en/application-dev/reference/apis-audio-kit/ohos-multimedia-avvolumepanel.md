@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides the capability of displaying the system volume panel for users to adjust the volume.
 

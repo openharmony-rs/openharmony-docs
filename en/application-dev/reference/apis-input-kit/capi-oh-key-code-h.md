@@ -27,7 +27,7 @@ Defines key codes of the key device.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Input_KeyCode](#input_keycode) | Input_KeyCode | Key code value.|
+| [Input_KeyCode](#input_keycode) | Input_KeyCode | Key code.|
 
 ## Enum Description
 
@@ -39,7 +39,7 @@ enum Input_KeyCode
 
 **Description**
 
-Enumerates keycode values.
+Enumerates the key codes.
 
 **Since**: 12
 

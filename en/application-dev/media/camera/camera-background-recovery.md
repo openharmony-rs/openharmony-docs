@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 This sample demonstrates the complete process for transitioning a camera application from the background to the foreground, providing you with a clear understanding of the entire sequence of API calls.
 

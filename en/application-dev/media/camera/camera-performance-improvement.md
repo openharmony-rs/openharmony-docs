@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
-The camera startup performance is affected by time-consuming operations such as power-on of underlying components and initialization of the process pipeline. To improve the camera startup speed and thumbnail display speed, OpenHarmony introduces some features. The capabilities of these features are related to underlying components. You need to check whether your underlying components support these capabilities before using the capabilities.
+The camera startup performance is affected by time-consuming operations such as power-on of underlying components and initialization of the process pipeline. To improve the camera startup speed and thumbnail display speed, OpenHarmony introduces some features. The capabilities of these features are related to underlying components. Check whether your underlying components support these capabilities before using the capabilities.
 
-​These features are involved in the processes of starting the camera device, configuring streams, and taking photos. This topic describes the three scenarios.
+These features are involved in the processes of starting the camera device, configuring streams, and taking photos. This topic describes the three scenarios.
 
 ## Deferred Stream Configuration
 
@@ -109,8 +109,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 > **NOTE**
 >
-> - [isQuickThumbnailSupported](../../reference/apis-camera-kit/js-apis-camera-sys.md#isquickthumbnailsupported) and [enableQuickThumbnail](../../reference/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail) must be called after [addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11) and [addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11) but before [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)
-.
+> - [isQuickThumbnailSupported](../../reference/apis-camera-kit/js-apis-camera-sys.md#isquickthumbnailsupported) and [enableQuickThumbnail](../../reference/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail) must be called after [addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11) and [addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11) but before [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11).
 > - The **on** API takes effect after [enableQuickThumbnail(true)](../../reference/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail) is called.
 
 ### Development Example
@@ -185,14 +184,13 @@ async function enableQuickThumbnail(baseContext: common.BaseContext, photoProfil
 }
 
 function showOrSavePicture(pixelMap: image.PixelMap): void {
-  // Do something.
+  // Add the processing logic based on service requirements.
 }
 ```
 
 ## Prelaunch
 
 Generally, the startup of the camera application is triggered when the user touches the camera icon on the home screen. The home screen senses the touch event and instructs the application manager to start the camera application. This takes a relatively long time. After the camera application is started, the camera startup process starts. A typical camera startup process includes starting the camera device, configuring a data stream, and starting the data stream, which is also time-consuming.
-
 
 ​The prelaunch feature triggers the action of starting the camera device before the camera application is started. In other words, when the user touches the camera icon on the home screen, the system starts the camera device. At this time, the camera application is not started yet. The figure below shows the camera application process before and after the prelaunch feature is introduced.
 

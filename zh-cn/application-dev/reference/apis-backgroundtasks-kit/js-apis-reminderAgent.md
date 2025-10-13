@@ -478,10 +478,10 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| title | string | 是 | 按钮显示的标题。 |
-| type | [ActionButtonType](#actionbuttontypedeprecated) | 是 | 按钮的类型。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| title | string | 否 | 否 | 按钮显示的标题。 |
+| type | [ActionButtonType](#actionbuttontypedeprecated) | 否 | 否 | 按钮的类型。 |
 
 
 ## WantAgent<sup>(deprecated)</sup>
@@ -493,10 +493,10 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pkgName | string | 是 | 指明点击提醒通知栏后跳转的目标HAP名。 |
-| abilityName | string | 是 | 指明点击提醒通知栏后跳转的目标ability名称。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| pkgName | string | 否 | 否 | 指明点击提醒通知栏后跳转的目标HAP名。 |
+| abilityName | string | 否 | 否 | 指明点击提醒通知栏后跳转的目标ability名称。 |
 
 
 ## MaxScreenWantAgent<sup>(deprecated)</sup>
@@ -508,10 +508,10 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pkgName | string | 是 | 指明提醒到达时自动拉起的目标HAP名（如果设备在使用中，则只弹出通知横幅框）。 |
-| abilityName | string | 是 | 指明提醒到达时自动拉起的目标ability名（如果设备在使用中，则只弹出通知横幅框）。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| pkgName | string | 否 | 否 | 指明提醒到达时自动拉起的目标HAP名（如果设备在使用中，则只弹出通知横幅框）。 |
+| abilityName | string | 否 | 否 | 指明提醒到达时自动拉起的目标ability名（如果设备在使用中，则只弹出通知横幅框）。 |
 
 
 ## ReminderRequest<sup>(deprecated)</sup>
@@ -523,21 +523,21 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| reminderType | [ReminderType](#remindertypedeprecated) | 是 | 指明提醒类型。 |
-| actionButton | [[ActionButton?, ActionButton?]](#actionbuttondeprecated) | 否 | 弹出的提醒通知栏中显示的按钮（参数可选，支持0/1/2个按钮）。 |
-| wantAgent | WantAgent | 否 | 点击通知后需要跳转的目标ability信息。 |
-| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | 否 | 提醒到达时跳转的目标包。如果设备正在使用中，则弹出一个通知框。 |
-| ringDuration | number | 否 | 指明响铃时长（单位：秒），默认1秒。 |
-| snoozeTimes | number | 否 | 指明延迟提醒次数，默认0次。 |
-| timeInterval | number | 否 | 执行延迟提醒间隔（单位：秒），默认0秒。 |
-| title | string | 否 | 指明提醒标题。 |
-| content | string | 否 | 指明提醒内容。 |
-| expiredContent | string | 否 | 指明提醒过期后需要显示的内容。 |
-| snoozeContent | string | 否 | 指明延迟提醒时需要显示的内容。 |
-| notificationId | number | 否 | 指明提醒使用的通知的id号，相同id号的提醒会覆盖。 |
-| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notification.md#slottype) | 否 | 指明提醒的slot类型。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| reminderType | [ReminderType](#remindertypedeprecated) | 否 | 否 | 指明提醒类型。 |
+| actionButton | [[ActionButton?, ActionButton?]](#actionbuttondeprecated) | 否 | 是 | 弹出的提醒通知栏中显示的按钮（参数可选，支持0/1/2个按钮）。 |
+| wantAgent | WantAgent | 否 | 是 | 点击通知后需要跳转的目标ability信息。 |
+| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | 否 | 是 | 提醒到达时跳转的目标包。如果设备正在使用中，则弹出一个通知框。 |
+| ringDuration | number | 否 | 是 | 指明响铃时长（单位：秒），默认1秒。 |
+| snoozeTimes | number | 否 | 是 | 指明延迟提醒次数，默认0次。 |
+| timeInterval | number | 否 | 是 | 执行延迟提醒间隔（单位：秒），默认0秒。 |
+| title | string | 否 | 是 | 指明提醒标题。 |
+| content | string | 否 | 是 | 指明提醒内容。 |
+| expiredContent | string | 否 | 是 | 指明提醒过期后需要显示的内容。 |
+| snoozeContent | string | 否 | 是 | 指明延迟提醒时需要显示的内容。 |
+| notificationId | number | 否 | 是 | 指明提醒使用的通知的id号，相同id号的提醒会覆盖。 |
+| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notification.md#slottype) | 否 | 是 | 指明提醒的slot类型。 |
 
 
 ## ReminderRequestCalendar<sup>(deprecated)</sup>
@@ -550,11 +550,11 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| dateTime | [LocalDateTime](#localdatetimedeprecated) | 是 | 指明提醒的目标时间。 |
-| repeatMonths | Array\<number> | 否 | 指明重复提醒的月份。 |
-| repeatDays | Array\<number> | 否 | 指明重复提醒的日期。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| dateTime | [LocalDateTime](#localdatetimedeprecated) | 否 | 否 | 指明提醒的目标时间。 |
+| repeatMonths | Array\<number> | 否 | 是 | 指明重复提醒的月份。 |
+| repeatDays | Array\<number> | 否 | 是 | 指明重复提醒的日期。 |
 
 
 ## ReminderRequestAlarm<sup>(deprecated)</sup>
@@ -567,11 +567,11 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| hour | number | 是 | 指明提醒的目标时刻。 |
-| minute | number | 是 | 指明提醒的目标分钟。 |
-| daysOfWeek | Array\<number> | 否 | 指明每周哪几天需要重复提醒。范围为周一到周末，对应数字为1到7。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| hour | number | 否 | 否 | 指明提醒的目标时刻。 |
+| minute | number | 否 | 否 | 指明提醒的目标分钟。 |
+| daysOfWeek | Array\<number> | 否 | 是 | 指明每周哪几天需要重复提醒。范围为周一到周末，对应数字为1到7。 |
 
 
 ## ReminderRequestTimer<sup>(deprecated)</sup>
@@ -583,9 +583,9 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | 是 | 指明倒计时的秒数。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。 |
 
 
 ## LocalDateTime<sup>(deprecated)</sup>
@@ -597,11 +597,11 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| year | number | 是 | 年 |
-| month | number | 是 | 月 |
-| day | number | 是 | 日 |
-| hour | number | 是 | 时 |
-| minute | number | 是 | 分 |
-| second | number | 否 | 秒 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| year | number | 否 | 否 | 年 |
+| month | number | 否 | 否 | 月 |
+| day | number | 否 | 否 | 日 |
+| hour | number | 否 | 否 | 时 |
+| minute | number | 否 | 否 | 分 |
+| second | number | 否 | 是 | 秒 |

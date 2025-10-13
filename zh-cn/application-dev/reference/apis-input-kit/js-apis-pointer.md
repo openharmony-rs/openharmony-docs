@@ -23,7 +23,7 @@ import { pointer } from '@kit.InputKit';
 
 setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标光标显示或者隐藏，使用Callback异步回调。
+设置当前窗口的鼠标光标是否显示，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -31,7 +31,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| visible  | boolean                   | 是    | 鼠标光标是否显示。true表示显示，false表示不显示。 |
+| visible  | boolean                   | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -76,7 +76,7 @@ struct Index {
 
 setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
-设置鼠标光标显示或者隐藏，使用Promise异步回调。
+设置当前窗口的鼠标光标是否显示，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -84,7 +84,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | 是    | 鼠标光标是否显示。true表示显示，false表示不显示。 |
+| visible | boolean | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 
 **返回值**：
 
@@ -130,7 +130,7 @@ struct Index {
 
 setPointerVisibleSync(visible: boolean): void
 
-设置鼠标光标的显示或隐藏状态，使用同步方式。
+设置当前窗口鼠标光标的显示状态，使用同步方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -138,7 +138,7 @@ setPointerVisibleSync(visible: boolean): void
 
 | 参数名      | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | 是    | 鼠标光标是否显示。true表示显示，false表示不显示。 |
+| visible | boolean | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 
 **错误码**：
 
@@ -266,7 +266,7 @@ struct Index {
 
 isPointerVisibleSync(): boolean
 
-获取鼠标光标的显示或隐藏状态，使用同步方式。
+获取当前窗口鼠标光标的显示状态，使用同步方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -304,7 +304,7 @@ struct Index {
 
 getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void
 
-获取鼠标样式类型，使用Callback异步回调。
+获取指定窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -312,7 +312,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。    |
+| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
 
 **错误码**：
@@ -373,7 +373,7 @@ getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。 |
+| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle-1)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
@@ -431,7 +431,7 @@ struct Index {
 
 getPointerStyleSync(windowId: number): PointerStyle
 
-查询鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。
+查询指定窗口的鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -439,7 +439,7 @@ getPointerStyleSync(windowId: number): PointerStyle
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。<br>默认值为-1，表示获取全局的鼠标样式。 |
+| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyleSync](#pointersetpointerstylesync10)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
@@ -484,7 +484,7 @@ struct Index {
 
 setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标样式类型，使用Callback异步回调。
+设置指定窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -492,7 +492,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
-| windowId     | number                         | 是    | 窗口id。                          |
+| windowId     | number                         | 是    | 窗口id。取值范围为大于等于0的整数。<br>窗口id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
 
@@ -545,7 +545,7 @@ struct Index {
 
 setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;
 
-设置鼠标样式类型，使用Promise异步回调。
+设置指定窗口的鼠标样式类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -553,7 +553,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。       |
+| windowId            | number                         | 是    | 窗口id。取值范围为大于等于0的整数。<br>窗口id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **返回值**：
@@ -612,7 +612,7 @@ struct Index {
 
 setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
-设置鼠标样式类型，使用同步方式返回结果。
+设置指定窗口的鼠标样式类型，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -620,7 +620,7 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。       |
+| windowId            | number                         | 是    | 窗口id。取值范围为大于等于0的整数。<br>窗口id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyleSync](#pointergetpointerstylesync10)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **错误码**：
@@ -751,7 +751,7 @@ struct Index {
 
 setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): Promise&lt;void&gt;
 
-设置自定义光标样式，使用Promise异步回调。
+设置指定窗口的自定义光标样式，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -842,7 +842,7 @@ struct Index {
 
 setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
-设置自定义光标样式，使用Promise异步回调。
+设置指定窗口的自定义光标样式，使用Promise异步回调。
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
@@ -915,7 +915,7 @@ struct Index {
 
 setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
-设置自定义光标样式，使用同步方式进行设置。
+设置指定窗口的自定义光标样式，使用同步方式进行设置。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 

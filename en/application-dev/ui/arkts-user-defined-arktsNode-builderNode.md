@@ -1,8 +1,15 @@
 # Custom Declarative Node (BuilderNode)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
+
 ## Overview
 
-[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md) is a custom declarative nodedesigned to seamlessly mount built-in components. With BuilderNode, you can build a custom component tree within stateless UI environments through the [global custom builder function](../ui/state-management/arkts-builder.md#global-custom-builder-function), which is decorated by @Builder. Once your custom component tree is established, you can obtain its root [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) by calling [getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode). The root node can be directly returned by [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) and mounted under a [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md). **BuilderNode** facilitates embedding of embedding declarative components within **FrameNode** and [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) trees for mixed display. **BuilderNode** also offers a feature for exporting textures, which can be used for rendering within the same layer of the [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).
+[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md) is a custom declarative node designed to seamlessly mount built-in components. With BuilderNode, you can build a custom component tree within stateless UI environments through the [global custom builder function](../ui/state-management/arkts-builder.md#global-custom-builder-function), which is decorated by @Builder. Once your custom component tree is established, you can obtain its root [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) by calling [getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode). The root node can be directly returned by [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) and mounted under a [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md). **BuilderNode** facilitates embedding of embedding declarative components within **FrameNode** and [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) trees for mixed display. **BuilderNode** also offers a feature for exporting textures, which can be used for rendering within the same layer of the [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).
 
 The ArkTS component tree constructed by **BuilderNode** can be used together with custom nodes, such as FrameNodes and RenderNodes, to achieve the mixed display effect. **BuilderNode** offers a suite of APIs designed to integrate built-in components within third-party frameworks. This is particularly beneficial for scenarios where these frameworks require interaction with custom nodes
 
@@ -329,7 +336,7 @@ function ButtonBuilder(params: Params) {
       .gesture(
         TapGesture()
           .onAction((event: GestureEvent) => {
-            console.log("TapGesture");
+            console.info("TapGesture");
           })
       )
   }
@@ -353,7 +360,7 @@ class MyNodeController extends NodeController {
       return;
     }
     let result = this.rootNode.postTouchEvent(touchEvent);
-    console.log("result " + result);
+    console.info("result " + result);
   }
 }
 
@@ -376,6 +383,254 @@ struct MyComponent {
             this.nodeController.postTouchEvent(event);
           }
         })
+    }
+  }
+}
+```
+
+## BuilderProxyNode in BuilderNode Causes Changes in the Tree Structure
+
+If the root node of the input builder is a syntax node (if/else/foreach/...) or a custom component, an additional FrameNode is generated, which is displayed as BuilderProxyNode in the node tree. This causes changes in the tree structure and affects the transfer process of some tests.
+
+In the following example, the touch event is bound to the column and row, and the [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) attribute of the column is set to [HitTestMode.Transparent](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9). However, BuilderProxyNode is generated, and BuilderProxyNode cannot set attributes. As a result, when the column is touched, the touch test of the column cannot be transferred to the row.
+
+
+
+```ts
+import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
+
+@Component
+struct BlueRowComponent {
+  build() {
+    Row() {
+      Row() {
+      }
+      .width('100%')
+      .height('200vp')
+      .backgroundColor(0xFF2787D9)
+      .onTouch((event: TouchEvent) => {
+        //Touch the green column. The touch event of the blue row is not triggered.
+        console.info("blue touched: " + event.type);
+      })
+    }
+  }
+}
+
+@Component
+struct GreenColumnComponent {
+  build() {
+    Column() {
+    }
+    .width('100%')
+    .height('100vp')
+    .backgroundColor(0xFF17A98D)
+    .hitTestBehavior(HitTestMode.Transparent)
+    .onTouch((event: TouchEvent) => {
+      console.info("green touched: " + event.type);
+    })
+  }
+}
+
+@Builder
+function buildBlueRow() {
+  // Mount the custom component to BuilderProxyNode.
+  BlueRowComponent()
+}
+
+@Builder
+function buildGreenColumn() {
+  // Mount the custom component to BuilderProxyNode.
+  GreenColumnComponent()
+}
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
+
+    const blueRowNode = new BuilderNode(uiContext);
+    blueRowNode.build(wrapBuilder(buildBlueRow));
+
+    const greenColumnNode = new BuilderNode(uiContext);
+    greenColumnNode.build(wrapBuilder(buildGreenColumn));
+
+    // Overlay greenColumnNode on blueRowNode.
+    relativeContainer.appendChild(blueRowNode.getFrameNode());
+    relativeContainer.appendChild(greenColumnNode.getFrameNode());
+
+    return relativeContainer;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      NodeContainer(new MyNodeController())
+    }
+  }
+}
+```
+
+In the preceding scenario, to transfer touch tests, you can wrap the syntax node or custom component in a container component to avoid generating BuilderProxyNode, and set hitTestBehavior of the container component to HitTestMode.Transparent to transfer touch tests to the sibling node.
+
+
+
+```ts
+import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
+
+@Component
+struct BlueRowComponent {
+  build() {
+    Row() {
+      Row() {
+      }
+      .width('100%')
+      .height('200vp')
+      .backgroundColor(0xFF2787D9)
+      .onTouch((event: TouchEvent) => {
+        // Trigger the touch event of the green column and blue row.
+        console.info("blue touched: " + event.type);
+      })
+    }
+  }
+}
+
+@Component
+struct GreenColumnComponent {
+  build() {
+    Column() {
+    }
+    .width('100%')
+    .height('100vp')
+    .backgroundColor(0xFF17A98D)
+    .hitTestBehavior(HitTestMode.Transparent)
+    .onTouch((event: TouchEvent) => {
+      console.info("green touched: " + event.type);
+    })
+  }
+}
+
+@Builder
+function buildBlueRow() {
+  // Mount the custom component to Builder to generate BuilderProxyNode.
+  BlueRowComponent()
+}
+
+@Builder
+function buildGreenColumn() {
+  // The root node of Builder is a container component, and BuilderProxyNode is not generated. You can set attributes.
+  Stack() {
+    GreenColumnComponent()
+  }
+  .hitTestBehavior(HitTestMode.Transparent)
+}
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
+
+    const blueRowNode = new BuilderNode(uiContext);
+    blueRowNode.build(wrapBuilder(buildBlueRow));
+
+    const greenColumnNode = new BuilderNode(uiContext);
+    greenColumnNode.build(wrapBuilder(buildGreenColumn));
+
+    // The green column node is overlaid on the blue row node.
+    relativeContainer.appendChild(blueRowNode.getFrameNode());
+    relativeContainer.appendChild(greenColumnNode.getFrameNode());
+
+    return relativeContainer;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      NodeContainer(new MyNodeController())
+    }
+  }
+}
+```
+
+In addition, for a custom component, you can directly set attributes. In this case, the __Common__ node is generated, and the attributes of the custom component are mounted to the __Common__ node. The above effect can also be achieved.
+
+
+
+```ts
+import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
+
+@Component
+struct BlueRowComponent {
+  build() {
+    Row() {
+      Row() {
+      }
+      .width('100%')
+      .height('200vp')
+      .backgroundColor(0xFF2787D9)
+      .onTouch((event: TouchEvent) => {
+        // Touch the green column node to trigger the touch event of the blue row node.
+        console.info("blue touched: " + event.type);
+      })
+    }
+  }
+}
+
+@Component
+struct GreenColumnComponent {
+  build() {
+    Column() {
+    }
+    .width('100%')
+    .height('100vp')
+    .backgroundColor(0xFF17A98D)
+    .hitTestBehavior(HitTestMode.Transparent)
+    .onTouch((event: TouchEvent) => {
+      console.info("green touched: " + event.type);
+    })
+  }
+}
+
+@Builder
+function buildBlueRow() {
+  // Mount the custom component to Builder and generate BuilderProxyNode.
+  BlueRowComponent()
+}
+
+@Builder
+function buildGreenColumn() {
+  // Set attributes for the custom component to generate the __Common__ node. The root node of Builder is __Common__ and BuilderProxyNode is not generated.
+  GreenColumnComponent()
+    .hitTestBehavior(HitTestMode.Transparent)
+}
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
+
+    const blueRowNode = new BuilderNode(uiContext);
+    blueRowNode.build(wrapBuilder(buildBlueRow));
+
+    const greenColumnNode = new BuilderNode(uiContext);
+    greenColumnNode.build(wrapBuilder(buildGreenColumn));
+
+    // greenColumnNode is overlaid on blueRowNode.
+    relativeContainer.appendChild(blueRowNode.getFrameNode());
+    relativeContainer.appendChild(greenColumnNode.getFrameNode());
+
+    return relativeContainer;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      NodeContainer(new MyNodeController())
     }
   }
 }
@@ -466,7 +721,7 @@ struct ReusableChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.log(`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
 
     // When the switch is open, pass the recycle event to the nested custom component, such as ChildComponent2, through the BuilderNode's recycle API to complete recycling.
     if (this.switch === 'open') {
@@ -475,9 +730,9 @@ struct ReusableChildComponent {
   }
 
   aboutToReuse(params: object): void {
-    console.log(`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
+    console.info(`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
 
-    // When the switch is open, pass the reuse event to the nested custom component, such as ChildComponent2, through the BuilderNode's reuse API to complete reuse.
+    // When the switch is open, pass the recycle event to the nested custom component, such as ChildComponent2, through the BuilderNode's recycle API to complete recycling.
     if (this.switch === 'open') {
       this.controller?.builderNode?.reuse(params);
     }
@@ -497,11 +752,11 @@ struct ChildComponent2 {
   @Prop item: string = "false";
 
   aboutToReuse(params: Record<string, object>) {
-    console.log(`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log(`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -519,11 +774,11 @@ struct ChildComponent3 {
   @Prop item: string = "false";
 
   aboutToReuse(params: Record<string, object>) {
-    console.log(`${TEST_TAG} ChildComponent3 aboutToReuse ${JSON.stringify(params)}`);
+    console.info(`${TEST_TAG} ChildComponent3 aboutToReuse ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log(`${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -621,11 +876,11 @@ struct ReusableChildComponent {
   @Prop item: string = '';
 
   aboutToReuse(params: object): void {
-    console.log(`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
+    console.info(`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log(`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -639,11 +894,11 @@ struct ChildComponent2 {
   @Prop item: string = "";
 
   aboutToReuse(params: Record<string, object>) {
-    console.log(`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log(`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -771,10 +1026,10 @@ struct Index {
   aboutToAppear(): void {
     let environmentCallback: EnvironmentCallback = {
       onMemoryLevel: (level: AbilityConstant.MemoryLevel): void => {
-        console.log('onMemoryLevel');
+        console.info('onMemoryLevel');
       },
       onConfigurationUpdated: (config: Configuration): void => {
-        console.log('onConfigurationUpdated ' + JSON.stringify(config));
+        console.info('onConfigurationUpdated ' + JSON.stringify(config));
         updateColorMode();
       }
     }
@@ -1023,7 +1278,7 @@ struct Index {
 
 ## Using the LocalStorage in the BuilderNode
 
-Since API version 12, custom components can receive [LocalStorage](../ui/state-management/arkts-localstorage.md) instances. You can use LocalStorage related decorators such as [@LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop) and [@LocalStorageLink](../ui/state-management/arkts-localstorage.md#localstoragelink) by [passing LocalStorage instances](../ui/state-management/arkts-localstorage.md#example-of-providing-a-custom-component-with-access-to-a-localstorage-instance).
+Since API version 12, custom components can receive [LocalStorage](../ui/state-management/arkts-localstorage.md) instances. You can use LocalStorage related decorators such as [@LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop) and [@LocalStorageLink](../ui/state-management/arkts-localstorage.md#localstoragelink) by [passing LocalStorage instances](../ui/state-management/arkts-localstorage.md#providing-a-custom-component-with-access-to-a-localstorage-instance).
 
 ```ts
 import { BuilderNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -1186,7 +1441,7 @@ struct Index {
 
 ArkUI supports [custom component freezing](./state-management/arkts-custom-components-freeze.md), which suspends refresh capabilities for inactive components. When frozen, components will not trigger UI re-rendering even if bound state variables change, reducing refresh load in complex UI scenarios.
 
-Since API version 20, a BuilderNode can inherit freeze policies from its parent custom component (the first custom component found when traversing up from the BuilderNode) using the [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) API. When freeze inheritance is enabled: If the parent component has freezing enabled ([freezeWhenInactive](./state-management/arkts-create-custom-components.md#freezewheninactive11) set to **true**), the BuilderNode will freeze when inactive and thaw when active, and update using cached data upon reactivation.
+Since API version 20, a BuilderNode can inherit freeze policies from its parent custom component (the first custom component found when traversing up from the BuilderNode) using the [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) API. When the BuilderNode node inherits the freezing policy of the parent custom component, if the freezing policy of the parent custom component is set to enable component freezing (that is, [freezeWhenInactive](../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions) is set to true), the BuilderNode node is frozen when it is inactive, unfrozen when it is switched to the active state, and updated using the cached data.
 
 The BuilderNode has its freeze policy updated only during the tree operations listed below.
 
@@ -1373,7 +1628,7 @@ struct NavigationContentMsgStack {
 struct TextBuilder {
   @Prop @Watch("info") message: number = 0;
 
-  info() {
+  info(): void {
     console.info(`freeze-test TextBuilder message callback ${this.message}`); // Print logs based on the message content change to determine whether the freeze occurs.
   }
 
@@ -1395,7 +1650,7 @@ struct TextBuilder {
 
 Since API version 20, the BuilderNode supports cross-boundary state sharing between [@Consume](./state-management/arkts-provide-and-consume.md) and [@Provide](./state-management/arkts-provide-and-consume.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
 
-For implementation, see [Example](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-7-configuring-the-buildernode-for-cross-boundary-provide-consume-communication).
+For details, see [Example 5: Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-5-configuring-the-buildernode-for-cross-boundary-provide-consume-communication).
 
 ## Implementing Page Pre-Rendering with BuilderNode and Web Components
 
@@ -1468,7 +1723,7 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
       // This function must be overridden, which is used to construct the number of nodes and return nodes to be mounted in NodeContainer.
       // Called when the corresponding NodeContainer is created or called by the rebuild method.
       makeNode(uiContext: UIContext): FrameNode | null {
-        console.info(" uicontext is undifined : "+ (uiContext === undefined));
+        console.info(" uicontext is undefined : "+ (uiContext === undefined));
         if (this.rootnode != null) {
           // Return the FrameNode object.
           return this.rootnode.getFrameNode();
@@ -1546,4 +1801,3 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
       }
     }
     ```
-<!--no_check-->

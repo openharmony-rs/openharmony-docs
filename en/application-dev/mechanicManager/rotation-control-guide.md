@@ -51,7 +51,7 @@ Device connection status management helps to ensure that the application respond
 1. Import the **mechanicManager** module.
 
     ```ts
-    import mechanicManager from '@kit.MechanicKit';
+    import { mechanicManager } from '@kit.MechanicKit';
     ```
 
 2. Obtain the list of connected mechanic devices.
@@ -61,23 +61,23 @@ Device connection status management helps to ensure that the application respond
 
     try {
     const devices = mechanicManager.getAttachedMechDevices();
-    console.log('Connected devices:', devices);
+    console.info('Connected devices:', devices);
 
     devices.forEach(device => {
-        console.log(`Device ID: ${device.mechId}`);
-        console.log(`Device Name: ${device.mechName}`);
-        console.log(`Device Type: ${device.mechDeviceType}`);
+        console.info(`Device ID: ${device.mechId}`);
+        console.info(`Device Name: ${device.mechName}`);
+        console.info(`Device Type: ${device.mechDeviceType}`);
 
     // Save the MechId of the device whose device type is GIMBAL_DEVICE.
         if (device.mechDeviceType === mechanicManager.MechDeviceType.GIMBAL_DEVICE) {
         savedMechanicIds.push(device.mechId);
-        console.log(`GIMBAL_TYPE device saved ID: ${device.mechId}`);
+        console.info(`GIMBAL_TYPE device saved ID: ${device.mechId}`);
         } else {
-        console.log(`Skip non-gimbal devices: ${device.mechId}`);
+        console.info(`Skip non-gimbal devices: ${device.mechId}`);
         }
     });
 
-    console.log('List of saved gimbal device IDs:', savedMechanicIds);
+    console.info('List of saved gimbal device IDs:', savedMechanicIds);
     } catch (err) {
     console.error('Error getting attached devices:', err);
     }
@@ -88,17 +88,17 @@ Device connection status management helps to ensure that the application respond
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
     if (info.state === mechanicManager.AttachState.ATTACHED) {
-        console.log('Device attached:', info.mechInfo);
+        console.info('Device attached:', info.mechInfo);
         // Process the device connection logic.
         handleDeviceAttached(info.mechInfo);
     } else if (info.state === mechanicManager.AttachState.DETACHED) {
-        console.log('Device detached:', info.mechInfo);
+        console.info('Device detached:', info.mechInfo);
         // Process the device disconnection logic.
         handleDeviceDetached(info.mechInfo);
     }
     };
 
-    // Register a callback listener.
+    // Register a listener for attachStateChange events.
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
@@ -108,13 +108,13 @@ Device connection status management helps to ensure that the application respond
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
 
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
-    console.log(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
+    console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
     savedMechanicIds.push(mechInfo.mechId);
     // To do sth.
     }
 
     function handleDeviceDetached(mechInfo:  mechanicManager.MechInfo) {
-    console.log(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
+    console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
     savedMechanicIds.filter(id => id !== mechInfo.mechId);
     // To do sth.
     }
@@ -137,38 +137,38 @@ Precise rotation control, such as angle adjustment and motion trajectory control
     try {
     // Initialize device functions, such as obtaining the device status.
     const devices = mechanicManager.getAttachedMechDevices();
-    console.log('Connected devices:', devices);
+    console.info('Connected devices:', devices);
 
     devices.forEach(device => {
-        console.log(`Device ID: ${device.mechId}`);
-        console.log(`Device Name: ${device.mechName}`);
-        console.log(`Device Type: ${device.mechDeviceType}`);
+        console.info(`Device ID: ${device.mechId}`);
+        console.info(`Device Name: ${device.mechName}`);
+        console.info(`Device Type: ${device.mechDeviceType}`);
     });
 
     // Register the listener for device connection state changes.
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
         if (info.state === mechanicManager.AttachState.ATTACHED) {
-        console.log('Device attached:', info.mechInfo);
+        console.info('Device attached:', info.mechInfo);
         } else if (info.state === mechanicManager.AttachState.DETACHED) {
-        console.log('Device detached:', info.mechInfo);
+        console.info('Device detached:', info.mechInfo);
         }
     };
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     // Obtain the current angle of the device.
     const currentAngles = mechanicManager.getCurrentAngles(savedMechanicIds[0]);
-    console.log('current angle:', currentAngles);
+    console.info('current angle:', currentAngles);
 
     // Obtain the rotation limit of the device.
     const rotationLimits = mechanicManager.getRotationLimits(savedMechanicIds[0]);
-    console.log('Rotation limit:', rotationLimits);
+    console.info('Rotation limit:', rotationLimits);
 
     // Obtain the maximum rotation speed of the device.
     const maxSpeed = mechanicManager.getMaxRotationSpeed(savedMechanicIds[0]);
-    console.log('Maximum rotation speed:', maxSpeed);
+    console.info('Maximum rotation speed:', maxSpeed);
 
     // Obtain the maximum duration for continuous rotation of the device.
     const maxTime = mechanicManager.getMaxRotationTime(savedMechanicIds[0]);
-    console.log('Maximum spin time:', maxTime);
+    console.info('Maximum spin time:', maxTime);
     } catch (err) {
     console.error('Failed to query device status:', err);
     }
@@ -200,7 +200,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
         console.error('Failed to retrieve rotation limits or limits are undefined.');
         return;
         }
-        console.log('Rotation limits:', rotationLimits);
+        console.info('Rotation limits:', rotationLimits);
 
         // Define the target angle.
         const angles: mechanicManager.RotationAngles = {
@@ -242,7 +242,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
 
         // Obtain the maximum rotation duration.
         const maxTime = mechanicManager.getMaxRotationTime(mechId);
-        console.log('Maximum spin time:', maxTime);
+        console.info('Maximum spin time:', maxTime);
 
         // Obtain the maximum rotation speed.
         const maxSpeed = mechanicManager.getMaxRotationSpeed(mechId);
@@ -250,7 +250,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
         console.error('Failed to retrieve maximum rotation speed or speed values are undefined.');
         return;
         }
-        console.log('Maximum rotation speed:', maxSpeed);
+        console.info('Maximum rotation speed:', maxSpeed);
         // Define the rotation speed and duration.
         const speed : mechanicManager.RotationSpeed = {
         yawSpeed: maxSpeed.yawSpeed / 2,    // Yaw speed: half of the maximum speed
@@ -272,21 +272,21 @@ Precise rotation control, such as angle adjustment and motion trajectory control
 
     ```ts
     const rotationAxesCallback = (info: mechanicManager.RotationAxesStateChangeInfo) => {
-    console.log('Rotation Axes state change:', info);
+    console.info('Rotation Axes state change:', info);
     const mechId = info.mechId;
     const status = info.status;
 
-    console.log(`Device ${mechId} status update:`);
-    console.log(`- Yaw  axes enabled: ${status.yawEnabled}`);
-    console.log(`- Pitch axes enabled: ${status.pitchEnabled}`);
-    console.log(`- Roll axes enabled: ${status.rollEnabled}`);
+    console.info(`Device ${mechId} status update:`);
+    console.info(`- Yaw  axes enabled: ${status.yawEnabled}`);
+    console.info(`- Pitch axes enabled: ${status.pitchEnabled}`);
+    console.info(`- Roll axes enabled: ${status.rollEnabled}`);
 
     if (status.yawLimited !== undefined) {
-        console.log(`- Yaw axis restriction state: ${status.yawLimited}`);
+        console.info(`- Yaw axis restriction state: ${status.yawLimited}`);
     }
     };
 
-    // Register a listener for rotation axis state changes.
+    // Register a listener for rotationAxesStatusChange events.
     mechanicManager.on('rotationAxesStatusChange', rotationAxesCallback);
     ```
 
@@ -297,7 +297,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
     try {
         const mechId = savedMechanicIds[0];
         await mechanicManager.stopMoving(mechId);
-        console.log('The device has ceased moving.');
+        console.info('The device has ceased moving.');
     } catch (err) {
         console.error('Failed to stop device movement:', err);
     }

@@ -275,7 +275,7 @@ selectionMenuHidden(value: boolean)
 
 ### customKeyboard<sup>10+</sup>
 
-customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
+customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions)
 
 设置自定义键盘。
 
@@ -299,7 +299,7 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 自定义键盘。                     |
+| value                 | [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。                     |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。 |
 
 ### type<sup>11+</sup>

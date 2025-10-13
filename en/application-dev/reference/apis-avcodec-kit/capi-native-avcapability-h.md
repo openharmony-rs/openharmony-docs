@@ -1,5 +1,12 @@
 # native_avcapability.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yang-xiaoyu5-->
+<!--Designer: @dpy2650-->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The file declares the native APIs used to query the codec capability.
@@ -44,11 +51,12 @@ The file declares the native APIs used to query the codec capability.
 | [OH_AVErrCode OH_AVCapability_GetEncoderQualityRange(OH_AVCapability *capability, OH_AVRange *qualityRange)](#oh_avcapability_getencoderqualityrange) | Obtains the quality range supported by an encoder.|
 | [OH_AVErrCode OH_AVCapability_GetEncoderComplexityRange(OH_AVCapability *capability, OH_AVRange *complexityRange)](#oh_avcapability_getencodercomplexityrange) | Obtains the complexity range supported by an encoder.|
 | [OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRates(OH_AVCapability *capability, const int32_t **sampleRates, uint32_t *sampleRateNum)](#oh_avcapability_getaudiosupportedsamplerates) | Obtains the sample rates supported by an audio codec.|
+| [OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRateRanges(OH_AVCapability *capability,OH_AVRange **sampleRateRanges, uint32_t *rangesNum)](#oh_avcapability_getaudiosupportedsamplerateranges) | Obtains the sample rate ranges supported by an audio codec.|
 | [OH_AVErrCode OH_AVCapability_GetAudioChannelCountRange(OH_AVCapability *capability, OH_AVRange *channelCountRange)](#oh_avcapability_getaudiochannelcountrange) | Obtains the count range of audio channels supported by an audio codec.|
 | [OH_AVErrCode OH_AVCapability_GetVideoWidthAlignment(OH_AVCapability *capability, int32_t *widthAlignment)](#oh_avcapability_getvideowidthalignment) | Obtains the video width alignment supported by a video codec.|
 | [OH_AVErrCode OH_AVCapability_GetVideoHeightAlignment(OH_AVCapability *capability, int32_t *heightAlignment)](#oh_avcapability_getvideoheightalignment) | Obtains the video height alignment supported by a video codec.|
-| [OH_AVErrCode OH_AVCapability_GetVideoWidthRangeForHeight(OH_AVCapability *capability, int32_t height, OH_AVRange *widthRange)](#oh_avcapability_getvideowidthrangeforheight) | Obtains the video width range supported by a video codec based on a given height.|
-| [OH_AVErrCode OH_AVCapability_GetVideoHeightRangeForWidth(OH_AVCapability *capability, int32_t width, OH_AVRange *heightRange)](#oh_avcapability_getvideoheightrangeforwidth) | Obtains the video height range supported by a video codec based on a given width.|
+| [OH_AVErrCode OH_AVCapability_GetVideoWidthRangeForHeight(OH_AVCapability *capability, int32_t height,OH_AVRange *widthRange)](#oh_avcapability_getvideowidthrangeforheight) | Obtains the video width range supported by a video codec based on a given height.|
+| [OH_AVErrCode OH_AVCapability_GetVideoHeightRangeForWidth(OH_AVCapability *capability, int32_t width,OH_AVRange *heightRange)](#oh_avcapability_getvideoheightrangeforwidth) | Obtains the video height range supported by a video codec based on a given width.|
 | [OH_AVErrCode OH_AVCapability_GetVideoWidthRange(OH_AVCapability *capability, OH_AVRange *widthRange)](#oh_avcapability_getvideowidthrange) | Obtains the video width range supported by a video codec.|
 | [OH_AVErrCode OH_AVCapability_GetVideoHeightRange(OH_AVCapability *capability, OH_AVRange *heightRange)](#oh_avcapability_getvideoheightrange) | Obtains the video height range supported by a video codec.|
 | [bool OH_AVCapability_IsVideoSizeSupported(OH_AVCapability *capability, int32_t width, int32_t height)](#oh_avcapability_isvideosizesupported) | Checks whether a video codec supports a specific video size.|
@@ -101,7 +109,8 @@ Enumerates the optional features that can be used in specific codec scenarios.
 | -- | -- |
 | VIDEO_ENCODER_TEMPORAL_SCALABILITY = 0 | Temporal scalability feature, which is available only in video encoding scenarios.|
 | VIDEO_ENCODER_LONG_TERM_REFERENCE = 1 | Long-term reference frame feature, which is available only in video encoding scenarios.|
-| VIDEO_LOW_LATENCY = 2 | Low latency feature, which is available in video encoding and decoding scenarios.|
+| VIDEO_LOW_LATENCY = 2 | Low latency feature, which is available only in video decoding scenarios.|
+| VIDEO_ENCODER_B_FRAME = 7 | B-frame encoding feature, which is available only in video encoding scenarios.<br>**Since**: 20|
 
 
 ## Function Description
@@ -270,7 +279,7 @@ Obtains the bit rate range supported by an encoder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the bit rate range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the bit rate range is null.|
 
 ### OH_AVCapability_IsEncoderBitrateModeSupported()
 
@@ -326,7 +335,7 @@ Obtains the quality range supported by an encoder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the quality range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the quality range is null.|
 
 ### OH_AVCapability_GetEncoderComplexityRange()
 
@@ -354,7 +363,7 @@ Obtains the complexity range supported by an encoder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the complexity range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the complexity range is null.|
 
 ### OH_AVCapability_GetAudioSupportedSampleRates()
 
@@ -383,7 +392,36 @@ Obtains the sample rates supported by an audio codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the pointer to the sample rate array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the pointer to the sample rate array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+
+### OH_AVCapability_GetAudioSupportedSampleRateRanges()
+
+```
+OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRateRanges(OH_AVCapability *capability,OH_AVRange **sampleRateRanges, uint32_t *rangesNum)
+```
+
+**Description**
+
+Obtains the sample rate ranges supported by an audio codec.
+
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
+**Since**: 20
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the audio codec capability. If a pointer to the video codec capability is provided, undefined behavior occurs.|
+| [OH_AVRange](capi-avcapability-oh-avrange.md) **sampleRateRanges |  Double pointer to the sample rate range array.|
+| uint32_t *rangesNum |  Pointer to the number of elements in the array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the pointer to the sample rate range array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVCapability_GetAudioChannelCountRange()
 
@@ -411,7 +449,7 @@ Obtains the count range of audio channels supported by an audio codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the count range of audio channels is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the count range of audio channels is null.|
 
 ### OH_AVCapability_GetVideoWidthAlignment()
 
@@ -439,7 +477,7 @@ Obtains the video width alignment supported by a video codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video width alignment is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video width alignment is null.|
 
 ### OH_AVCapability_GetVideoHeightAlignment()
 
@@ -467,7 +505,7 @@ Obtains the video height alignment supported by a video codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video height alignment is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video height alignment is null.|
 
 ### OH_AVCapability_GetVideoWidthRangeForHeight()
 
@@ -496,7 +534,7 @@ Obtains the video width range supported by a video codec based on a given height
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the height is not within the supported height range obtained through [OH_AVCapability_GetVideoHeightRange](#oh_avcapability_getvideoheightrange), or the pointer to the width range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the height is not within the supported height range obtained through [OH_AVCapability_GetVideoHeightRange](#oh_avcapability_getvideoheightrange), or the pointer to the width range is null.|
 
 ### OH_AVCapability_GetVideoHeightRangeForWidth()
 
@@ -525,7 +563,7 @@ Obtains the video height range supported by a video codec based on a given width
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the width is not within the supported width range obtained through [OH_AVCapability_GetVideoWidthRange](#oh_avcapability_getvideowidthrange), or the pointer to the height range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the width is not within the supported width range obtained through [OH_AVCapability_GetVideoWidthRange](#oh_avcapability_getvideowidthrange), or the pointer to the height range is null.|
 
 ### OH_AVCapability_GetVideoWidthRange()
 
@@ -553,7 +591,7 @@ Obtains the video width range supported by a video codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video width range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video width range is null.|
 
 ### OH_AVCapability_GetVideoHeightRange()
 
@@ -581,7 +619,7 @@ Obtains the video height range supported by a video codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video height range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video height range is null.|
 
 ### OH_AVCapability_IsVideoSizeSupported()
 
@@ -638,7 +676,7 @@ Obtains the video frame rate range supported by a video codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video frame rate range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid or the pointer to the video frame rate range is null.|
 
 ### OH_AVCapability_GetVideoFrameRateRangeForSize()
 
@@ -668,7 +706,7 @@ Obtains the video frame rate range supported by a video codec based on a given v
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the combination of the width and height is not supported, or the pointer to the frame rate range is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the combination of the width and height is not supported, or the pointer to the frame rate range is null.|
 
 ### OH_AVCapability_AreVideoSizeAndFrameRateSupported()
 
@@ -727,7 +765,7 @@ Obtains the video pixel formats supported by a video codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the pointer to the video pixel format array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the pointer to the video pixel format array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVCapability_GetSupportedProfiles()
 
@@ -756,7 +794,7 @@ Obtains the profiles supported by a codec.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the pointer to the profile array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the pointer to the profile array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVCapability_GetSupportedLevelsForProfile()
 
@@ -786,7 +824,7 @@ Obtains the codec levels supported by a profile.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the level is not in the supported level array obtained through [OH_AVCapability_GetSupportedProfiles](#oh_avcapability_getsupportedprofiles), the pointer to the level array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: The capability instance is invalid, the level is not in the supported level array obtained through [OH_AVCapability_GetSupportedProfiles](#oh_avcapability_getsupportedprofiles), the pointer to the level array is null, or the pointer to the number of elements in the array is null.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.<br> **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVCapability_AreProfileAndLevelSupported()
 
@@ -871,4 +909,4 @@ Obtains the properties of a feature. You must manually release the OH_AVFormat i
 
 | Type| Description|
 | -- | -- |
-| [OH_AVFormat](_core.md#oh_avformat) * | Pointer to an OH_AVFormat instance.|
+| [OH_AVFormat](capi-core-oh-avformat.md) * | Pointer to an OH_AVFormat instance.|

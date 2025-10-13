@@ -24,6 +24,8 @@
 
 以下示例代码展示了如何再次拉起弹框申请ohos.permission.APPROXIMATELY_LOCATION权限。
 
+<!-- [second_request_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondpages/Index.ets) -->
+
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,7 +1,7 @@
 # 拖拽事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -518,6 +518,8 @@ getModifierKeyState?(keys: Array<string\>): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
 | keys   | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
@@ -814,6 +816,8 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名 | 类型 |必填 |说明 |
 | ----- | ----------------- | ----- | ----- |

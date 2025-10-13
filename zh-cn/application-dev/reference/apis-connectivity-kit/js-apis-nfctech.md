@@ -337,7 +337,7 @@ console.info("isoDep hiLayerResponse: " + hiLayerResponse);
 
 isExtendedApduSupported(): Promise&lt;boolean&gt;
 
-检查是否支持扩展的APDU，使用Promise方式作为异步方法。
+检查是否支持扩展的APDU，使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -349,7 +349,7 @@ isExtendedApduSupported(): Promise&lt;boolean&gt;
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise&lt;boolean&gt; | 以Promise形式返回检查结果，true: 支持， false: 不支持。|
+| Promise&lt;boolean&gt; | Promise对象。返回true表示支持；返回false表示不支持。|
 
 **错误码：**
 
@@ -395,7 +395,7 @@ function nfcTechDemo() {
 
 isExtendedApduSupported(callback: AsyncCallback\<boolean>): void
 
-检查是否支持扩展的APDU，使用AsyncCallback方式作为异步方法。
+检查是否支持扩展的APDU。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -573,7 +573,7 @@ console.info("ndef isNdefWritable: " + isWritable);
 
 readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 
-读取标签上的NDEF消息，使用Promise方式作为异步方法。
+读取标签上的NDEF消息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -585,7 +585,7 @@ readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise\<[NdefMessage](#ndefmessage9)> | 以Promise形式返回从NDEF标签中读取到的Message数据对象。|
+| Promise\<[NdefMessage](#ndefmessage9)> | promis对象，返回从NDEF标签中读取到的Message数据对象。|
 
 **错误码：**
 
@@ -631,7 +631,7 @@ function nfcTechDemo(){
 
 readNdef(callback: AsyncCallback\<[NdefMessage](#ndefmessage9)>): void
 
-读取标签上的NDEF消息，使用AsyncCallback方式作为异步方法。
+读取标签上的NDEF消息。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -691,7 +691,7 @@ function nfcTechDemo() {
 
 writeNdef(msg: [NdefMessage](#ndefmessage9)): Promise\<void>
 
-将NDEF Message数据对象写入标签，使用Promise方式作为异步方法。
+将NDEF Message数据对象写入标签。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -759,7 +759,7 @@ function nfcTechDemo() {
 
 writeNdef(msg: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
 
-将NDEF Message数据对象写入此标签，使用AsyncCallback方式作为异步方法。
+将NDEF Message数据对象写入此标签。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -861,7 +861,7 @@ console.info("ndef canSetReadOnly: " + canSetReadOnly);
 
 setReadOnly(): Promise\<void>
 
-将NDEF标签设置为只读，使用Promise方式作为异步方法。
+将NDEF标签设置为只读。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -919,7 +919,7 @@ function nfcTechDemo() {
 
 setReadOnly(callback: AsyncCallback\<void>): void
 
-将NDEF标签设置为只读，使用AsyncCallback方式作为异步方法。
+将NDEF标签设置为只读。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1035,7 +1035,7 @@ MifareClassicTag获取方式请参考[nfc-tag开发指南](../../connectivity/nf
 
 authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise\<void>
 
-使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用Promise方式作为异步方法。
+使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1103,7 +1103,7 @@ function nfcTechDemo() {
 
 authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback: AsyncCallback\<void>): void
 
-使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用AsyncCallback方式作为异步方法。
+使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1167,7 +1167,7 @@ function nfcTechDemo() {
 
 readSingleBlock(blockIndex: number): Promise\<number[]>
 
-读取标签中一个块存储的内容，一个块大小为16字节。使用Promise方式作为异步方法。
+读取标签中一个块存储的内容，一个块大小为16字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1185,7 +1185,7 @@ readSingleBlock(blockIndex: number): Promise\<number[]>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise\<number[]> | 以Promise形式返回读取的块数据。 |
+| Promise\<number[]> | Promise对象。返回读取的块数据。 |
 
 **错误码：**
 
@@ -1232,7 +1232,7 @@ function nfcTechDemo() {
 
 readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
 
-读取标签中一个块存储的内容，一个块大小为16字节。使用AsyncCallback方式作为异步方法。
+读取标签中一个块存储的内容，一个块大小为16字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1294,7 +1294,7 @@ function nfcTechDemo() {
 
 writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
 
-向标签中一个块存储写入内容，一个块大小为16字节。使用Promise方式作为异步方法。
+向标签中一个块存储写入内容，一个块大小为16字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1362,7 +1362,7 @@ function nfcTechDemo() {
 
 writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<void>): void
 
-向标签中一个块存储写入内容，一个块大小为16字节。使用AsyncCallback方式作为异步方法。
+向标签中一个块存储写入内容，一个块大小为16字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1427,7 +1427,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number): Promise\<void>
 
-对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用Promise方式作为异步方法。
+对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1494,7 +1494,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
 
-对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用AsyncCallback方式作为异步方法。
+对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1558,7 +1558,7 @@ function nfcTechDemo() {
 
 decrementBlock(blockIndex: number, value: number): Promise\<void>
 
-对指定块的内容，减少指定的数值，并将结果存储在内部传输缓冲器中。使用Promise方式作为异步方法。
+对指定块的内容，减少指定的数值，并将结果存储在内部传输缓冲器中。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1625,7 +1625,7 @@ function nfcTechDemo() {
 
 decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
 
-对指定块的内容，减少指定的数值。使用AsyncCallback方式作为异步方法。
+对指定块的内容，减少指定的数值。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1690,7 +1690,7 @@ function nfcTechDemo() {
 
 transferToBlock(blockIndex: number): Promise\<void>
 
-将临时寄存器的值转移到指定的块。使用Promise方式作为异步方法。
+将临时寄存器的值转移到指定的块。使用Promise异步异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1755,7 +1755,7 @@ function nfcTechDemo() {
 
 transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
-将临时寄存器的值转移到指定的块。使用AsyncCallback方式作为异步方法。
+将临时寄存器的值转移到指定的块。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1817,7 +1817,7 @@ function nfcTechDemo() {
 
 restoreFromBlock(blockIndex: number): Promise\<void>
 
-将指定块的值复制到临时寄存器。使用Promise方式作为异步方法。
+将指定块的值复制到临时寄存器。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1882,7 +1882,7 @@ function nfcTechDemo() {
 
 restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
-将指定块的值复制到临时寄存器。使用AsyncCallback方式作为异步方法。
+将指定块的值复制到临时寄存器。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2202,7 +2202,7 @@ MifareUltralightTag获取方式请参考[nfc-tag开发指南](../../connectivity
 
 readMultiplePages(pageIndex: number): Promise\<number[]>
 
-读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise方式作为异步方法。
+读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise异步回调
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2220,7 +2220,7 @@ readMultiplePages(pageIndex: number): Promise\<number[]>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise\<number[]> | 以Promise形式返回读取的4页的数据，共16字节。 |
+| Promise\<number[]> | Promise对象。以Promise形式返回读取的4页的数据，共16字节。 |
 
 **错误码：**
 
@@ -2268,7 +2268,7 @@ function nfcTechDemo() {
 
 readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
 
-读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用AsyncCallback方式作为异步方法。
+读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2330,7 +2330,7 @@ function nfcTechDemo() {
 
 writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
 
-写入一页数据，数据大小为4字节。使用Promise方式作为异步方法。
+写入一页数据，数据大小为4字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2397,7 +2397,7 @@ function nfcTechDemo() {
 
 writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void>): void
 
-写入一页数据，数据大小为4字节。使用AsyncCallback方式作为异步方法。
+写入一页数据，数据大小为4字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2497,7 +2497,7 @@ NdefFormatableTag获取方式请参考[nfc-tag开发指南](../../connectivity/n
 
 format(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 
-将标签格式化为NDEF标签，将NDEF消息写入NDEF标签。使用Promise方式作为异步方法。
+将标签格式化为NDEF标签，将NDEF消息写入NDEF标签。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2566,7 +2566,7 @@ function nfcTechDemo() {
 
 format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
 
-将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签。使用AsyncCallback方式作为异步方法。
+将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2631,7 +2631,7 @@ function nfcTechDemo() {
 
 formatReadOnly(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 
-将标签格式化为NDEF标签，将NDEF消息写入NDEF标签，之后将标签设置为只读。使用Promise方式作为异步方法。
+将标签格式化为NDEF标签，将NDEF消息写入NDEF标签，之后将标签设置为只读。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2700,7 +2700,7 @@ function nfcTechDemo() {
 
 formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
 
-将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签，之后将标签设置为只读。使用callback方式作为异步方法。
+将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签，之后将标签设置为只读。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2776,7 +2776,7 @@ BarcodeTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-
 
 getBarcode(): Promise\<ArrayBuffer>
 
-获取读到的Barcode类型的完整Tag。使用Promise方式作为异步方法。
+获取读到的Barcode类型的完整Tag。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 

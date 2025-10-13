@@ -1,4 +1,10 @@
 # lowpower_avsink_base.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -49,13 +55,13 @@ Appends data from an OH_AVBuffer instance to an OH_AVSamplesBuffer instance.
 | Name| Description|
 | -- | -- |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) *samplesBuffer | Pointer to an OH_AVSamplesBuffer instance.|
-| [OH_AVBuffer](../apis-avcodec-kit/_core.md#oh_avbuffer) *avBuffer | Pointer to an OH_AVBuffer instance.|
+| [OH_AVBuffer](../apis-avcodec-kit/capi-core-oh-avbuffer.md) *avBuffer | Pointer to an OH_AVBuffer instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_NO_MEMORY**: The framePacketBuffer does not have sufficient remaining capacity to append an OH_AVBuffer.<br> **AV_ERR_UNKNOW**: An unknown error occurs.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_NO_MEMORY**: The framePacketBuffer does not have sufficient remaining capacity to append an OH_AVBuffer.<br> **AV_ERR_UNKNOWN**: An unknown error occurs.|
 
 ### OH_AVSamplesBuffer_GetRemainedCapacity()
 

@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -42,12 +42,15 @@ You can call the functions to create an audio session manager, activate or deact
 | [OH_AudioSession_StateChangeHint](#oh_audiosession_statechangehint) | OH_AudioSession_StateChangeHint | Enumerates the hints for audio session state changes.|
 | [OH_AudioSession_OutputDeviceChangeRecommendedAction](#oh_audiosession_outputdevicechangerecommendedaction) | OH_AudioSession_OutputDeviceChangeRecommendedAction | Enumerates the recommended actions to take after an output device changes.|
 | [OH_AudioSession_DeactivatedReason](#oh_audiosession_deactivatedreason) | OH_AudioSession_DeactivatedReason | Enumerates the reasons for deactivating an audio session.|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) | OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory | Enumerates the preferred device categories available for recording with Bluetooth or NearLink.|
 
 ### Functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef void (\*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChangedEvent event)](#oh_audiosession_statechangedcallback) | OH_AudioSession_StateChangedCallback | Defines a function pointer to the callback used to listen for audio session state change events.|
+| [typedef void (\*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audiosession_availabledevicechangedcallback) | OH_AudioSession_AvailableDeviceChangedCallback | Defines a pointer to the callback that returns the changed audio device descriptor (possibly multiple descriptors).|
+| [typedef void (\*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason)](#oh_audiosession_currentinputdevicechangedcallback) | OH_AudioSession_CurrentInputDeviceChangedCallback | Defines a function pointer to the callback used to listen for the current input device change events.|
 | [typedef void (\*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction)](#oh_audiosession_currentoutputdevicechangedcallback) | OH_AudioSession_CurrentOutputDeviceChangedCallback | Defines a function pointer to the callback used to listen for the current output device change events.|
 | [typedef int32_t (\*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_DeactivatedEvent event)](#oh_audiosession_deactivatedcallback) | OH_AudioSession_DeactivatedCallback | Defines a function pointer to the callback used to listen for audio session deactivation events.|
 | [OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionManager **audioSessionManager)](#oh_audiomanager_getaudiosessionmanager) | - | Obtains an OH_AudioSessionManager instance. Before using the features related to the audio session manager, you must obtain an OH_AudioSessionManager instance.|
@@ -64,6 +67,16 @@ You can call the functions to create an audio session manager, activate or deact
 | [OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audiosessionmanager_releasedevices) | - | Releases audio devices available for an audio routing manager.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)](#oh_audiosessionmanager_registercurrentoutputdevicechangecallback) | - | Registers a callback to listen for the current output device change events.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)](#oh_audiosessionmanager_unregistercurrentoutputdevicechangecallback) | - | Unregisters the callback used to listen for the current output device change events.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audiosessionmanager_getavailabledevices) | - | Obtains the available audio devices. |
+| [OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)](#oh_audiosessionmanager_registeravailabledeviceschangecallback) | - | Registers a callback to listen for available device change events.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)](#oh_audiosessionmanager_unregisteravailabledeviceschangecallback) | - | Unregisters the callback used to listen for available device change events.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiosessionmanager_selectmediainputdevice) | - | Selects a media input device. This function is not suitable for call recording, meaning it does not apply to situations where [SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is **SOURCE_TYPE_VOICE_CMMUNICATION**.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the one selected.<br> Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)](#oh_audiosessionmanager_getselectedmediainputdevice) | - | Obtains the media input device set by calling [OH_AudioSessionManager_SelectMediaInputDevice](#oh_audiosessionmanager_selectmediainputdevice).|
+| [OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)](#oh_audiosessionmanager_setbluetoothandnearlinkpreferredrecordcategory) | - | Sets the device preference classification of an application when Bluetooth or SparkLink is used for recording. Sets the preferred device category for recording with Bluetooth or NearLink. Applications can set this category before connecting to Bluetooth or NearLink, and the system prioritizes using Bluetooth or NearLink for recording when the device is connected.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the set preferred device.<br> Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)](#oh_audiosessionmanager_getbluetoothandnearlinkpreferredrecordcategory) | - | Obtains the preferred device category for recording with Bluetooth or NearLink.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) | - | Registers a callback to listen for input device changes of an audio session manager.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_unregistercurrentinputdevicechangecallback) | - | Unregisters the callback used to listen for input device changes of an audio session manager.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)](#oh_audiosessionmanager_releasedevice) | - | Releases an audio device for an audio session manager.|
 
 ## Enum Description
 
@@ -159,6 +172,25 @@ Enumerates the reasons for deactivating an audio session.
 | DEACTIVATED_LOWER_PRIORITY = 0 | The application focus is preempted.|
 | DEACTIVATED_TIMEOUT = 1 | The application times out after the stream is stopped.|
 
+### OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
+
+```
+enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
+```
+
+**Description**
+
+Enumerates the preferred device categories available for recording with Bluetooth or NearLink.
+
+**Since**: 21
+
+| Enum Item| Description|
+| -- | -- |
+| PREFERRED_NONE = 0 | No specific device preference.|
+| PREFERRED_DEFAULT = 1 | Prefers using Bluetooth or Nearlink devices for recording; whether to use low-latency or high-quality recording depends on the system.|
+| PREFERRED_LOW_LATENCY = 2 | Prefers using Bluetooth or NearLink devices in low-latency mode for recording.|
+| PREFERRED_HIGH_QUALITY = 3 | Prefers using Bluetooth or NearLink devices in high-quality mode for recording.|
+
 
 ## Function Description
 
@@ -174,12 +206,49 @@ Defines a function pointer to the callback used to listen for audio session stat
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | Pointer to the [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event.|
+
+### OH_AudioSession_AvailableDeviceChangedCallback()
+
+```
+typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
+```
+
+**Description**
+
+Defines a pointer to the callback that returns the changed audio device descriptor (possibly multiple descriptors).
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) type | Device connection status, which can be connected or disconnected.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | Pointer to the audio device descriptors in the array. If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices) to release it.|
+
+### OH_AudioSession_CurrentInputDeviceChangedCallback()
+
+```
+typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason)
+```
+
+**Description**
+
+Defines a function pointer to the callback used to listen for the current input device change events.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *devices | Pointer to the audio device descriptors in the array. If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices) to release it.|
+| [OH_AudioStream_DeviceChangeReason](capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) changeReason | Reason for the device change.|
 
 ### OH_AudioSession_CurrentOutputDeviceChangedCallback()
 
@@ -192,7 +261,6 @@ typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDevic
 Defines a function pointer to the callback used to listen for the current output device change events.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -214,7 +282,6 @@ Defines a function pointer to the callback used to listen for audio session deac
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -234,7 +301,6 @@ Obtains an OH_AudioSessionManager instance.
 Before using the features related to the audio session manager, you must obtain an OH_AudioSessionManager instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -260,7 +326,6 @@ Activates an audio session.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -272,7 +337,7 @@ Activates an audio session.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |         **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **strategy** parameter is invalid.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: Invalid state.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | One of the following return values:<br>         **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **strategy** parameter is invalid.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: Invalid state.|
 
 ### OH_AudioSessionManager_DeactivateAudioSession()
 
@@ -285,7 +350,6 @@ OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSess
 Deactivates an audio session.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -311,7 +375,6 @@ Checks whether an audio session is activated.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -335,7 +398,6 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
 Registers a callback to listen for audio session deactivation events.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -362,7 +424,6 @@ Unregisters the callback used to listen for audio session deactivation events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -387,7 +448,6 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *au
 Sets an audio session scene.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -414,13 +474,12 @@ Registers a callback to listen for audio session state change events.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_StateChangedCallback](#oh_audiosession_statechangedcallback) callback | Pointer to OH_AudioSession_StateChangedCallback, which is used to receive the audio session state change event.|
+| [OH_AudioSession_StateChangedCallback](#oh_audiosession_statechangedcallback) callback | Callback used to receive the audio session state change event.|
 
 **Returns**
 
@@ -440,13 +499,12 @@ Unregisters the callback used to listen for audio session state change events.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_StateChangedCallback](#oh_audiosession_statechangedcallback) callback | Pointer to OH_AudioSession_StateChangedCallback, which is used to receive the audio session state change event.|
+| [OH_AudioSession_StateChangedCallback](#oh_audiosession_statechangedcallback) callback | Callback used to receive the audio session state change event.|
 
 **Returns**
 
@@ -463,6 +521,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 **Description**
 
 Sets the default audio output device.
+> **NOTE**
+>
 > This function applies to the following scenarios:
 >
 > - When [OH_AudioSession_Scene](#oh_audiosession_scene) is set to **VoIP**, the setting takes effect immediately after the AudioSession is activated. For non-VoIP scenarios, the setting does not take effect upon AudioSession activation. Instead, the setting applies when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) for playback is voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
@@ -470,7 +530,6 @@ Sets the default audio output device.
 > - This function has a lower priority than [AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker). If you have already switched the audio device using AVCastPicker, using this function to switch devices again does not take effect.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -497,7 +556,6 @@ Obtains the default audio output device set by [OH_AudioSessionManager_SetDefaul
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -522,7 +580,6 @@ OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManag
 Releases audio devices available for an audio routing manager.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -549,13 +606,12 @@ Registers a callback to listen for the current output device change events.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_CurrentOutputDeviceChangedCallback](#oh_audiosession_currentoutputdevicechangedcallback) callback | Pointer to OH_AudioSession_CurrentOutputDeviceChangedCallback, which is used to return the audio device change information.|
+| [OH_AudioSession_CurrentOutputDeviceChangedCallback](#oh_audiosession_currentoutputdevicechangedcallback) callback | Callback used to return the audio device change information.|
 
 **Returns**
 
@@ -575,16 +631,279 @@ Unregisters the callback used to listen for the current output device change eve
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_CurrentOutputDeviceChangedCallback](#oh_audiosession_currentoutputdevicechangedcallback) callback | Pointer to OH_AudioSession_CurrentOutputDeviceChangedCallback, which is used to return the audio device change information.|
+| [OH_AudioSession_CurrentOutputDeviceChangedCallback](#oh_audiosession_currentoutputdevicechangedcallback) callback | Callback used to return the audio device change information.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **callback** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_GetAvailableDevices()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
+```
+
+**Description**
+
+Obtains the available audio devices.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) deviceUsage | Type of audio device.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Pointer to the audio device descriptors in the array.<br> If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices) to release it.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **deviceUsage** parameter is invalid.<br>                                                        3. The **audioDeviceDescriptorArray** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)
+```
+
+**Description**
+
+Registers a callback to listen for available device change events.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) deviceUsage | Type of audio device.|
+| [OH_AudioSession_AvailableDeviceChangedCallback](#oh_audiosession_availabledevicechangedcallback) callback | Callback used to return the available audio device change information.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **deviceUsage** parameter is set to an invalid value.<br>                                                        3. The **callback** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)
+```
+
+**Description**
+
+Unregisters the callback used to listen for available device change events.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioSession_AvailableDeviceChangedCallback](#oh_audiosession_availabledevicechangedcallback) callback | Callback used to return the available audio device change information.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **callback** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_SelectMediaInputDevice()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)
+```
+
+**Description**
+
+Selects a media input device.
+
+This function is not suitable for call recording, meaning it does not apply to situations where [SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is **SOURCE_TYPE_VOICE_CMMUNICATION**.
+
+When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the one selected.
+
+Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *deviceDescriptor | Pointer to the target device, which must be in the array returned by [OH_AudioSessionManager_GetAvailableDevices](#oh_audiosessionmanager_getavailabledevices).<br> If nullptr is passed, the system clears the previous setting.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioSessionManager** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_GetSelectedMediaInputDevice()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)
+```
+
+**Description**
+
+Obtains the media input device set by calling [OH_AudioSessionManager_SelectMediaInputDevice](#oh_audiosessionmanager_selectmediainputdevice).
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) **audioDeviceDescriptor | Double pointer to the media device set by [OH_AudioSessionManager_SelectMediaInputDevice](#oh_audiosessionmanager_selectmediainputdevice). If no device has been specified, the device of the type AUDIO_DEVICE_TYPE_INVALID is returned.<br> If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevice](#oh_audiosessionmanager_releasedevice) to release it.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **audioDeviceDescriptor** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)
+```
+
+**Description**
+
+Sets the preferred device category for recording with Bluetooth or NearLink.
+
+Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.
+
+When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the set preferred device.
+
+Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) category | Preferred device category for recording with Bluetooth or NearLink.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **category** parameter is incorrect.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)
+```
+
+**Description**
+
+Obtains the preferred device category for recording with Bluetooth or NearLink.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) *category | Pointer to the preferred device category for recording with Bluetooth or NearLink.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **category** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
+```
+
+**Description**
+
+Registers a callback to listen for input device changes of an audio session manager.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioSession_CurrentInputDeviceChangedCallback](#oh_audiosession_currentinputdevicechangedcallback) callback | Callback used to return the input audio device change information.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **callback** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_NO_MEMORY**: The memory is insufficient.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
+```
+
+**Description**
+
+Unregisters the callback used to listen for input device changes of an audio session manager.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioSession_CurrentInputDeviceChangedCallback](#oh_audiosession_currentinputdevicechangedcallback) callback | Callback used to return the input audio device change information.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **callback** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_ReleaseDevice()
+
+```
+OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)
+```
+
+**Description**
+
+Releases an audio device for an audio session manager.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | Pointer to the audio device descriptor to be released.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **audioDeviceDescriptor** parameter is nullptr.|

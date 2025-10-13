@@ -10,12 +10,12 @@
     - [公共事件简介](common-event-overview.md)
     - [动态订阅公共事件](common-event-subscription.md)
     <!--Del-->
-    - [静态订阅公共事件（仅对系统应用开放）](common-event-static-subscription.md)
+    - [静态订阅公共事件（仅对系统应用开放）](common-event-static-subscription-sys.md)
     <!--DelEnd-->
     - [取消动态订阅公共事件](common-event-unsubscription.md)
     - [发布公共事件](common-event-publish.md)
     <!--Del-->
-    - [移除粘性公共事件（仅对系统应用开放）](common-event-remove-sticky.md)
+    - [移除粘性公共事件（仅对系统应用开放）](common-event-remove-sticky-sys.md)
     <!--DelEnd-->
     - [订阅公共事件（C/C++）](native-common-event-subscription.md)
     - [取消订阅公共事件（C/C++）](native-common-event-unsubscription.md)

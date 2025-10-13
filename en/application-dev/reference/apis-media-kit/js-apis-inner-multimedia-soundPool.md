@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for loading, unloading, playing, and stopping playing sounds, setting the volume, and setting the number of loops.
 
@@ -29,13 +29,13 @@ These parameters are used to control the playback volume, number of loops, and p
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
-| Name           | Type                                    | Mandatory| Description                                                        |
-| --------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| loop | number   | No | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.<br>The default value is **0**, indicating that the content is played only once.                  |
-| rate | number    | No | Playback rate. For details, see [AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8). Default value: **0**|
-| leftVolume  | number | No | Volume of the left channel. The value ranges from 0.0 to 1.0. Default value: **1.0**                                   |
-| rightVolume | number  | No | Volume of the right channel. The value ranges from 0.0 to 1.0. (Currently, the volume cannot be set separately for the left and right channels. The volume set for the left channel is used.) Default value: **1.0**|
-| priority  | number  | No | Playback priority. The value **0** means the lowest priority. A larger value indicates a higher priority. The value is an integer greater than or equal to 0. Default value: **0**     |
+| Name           | Type                                    | Read-Only| Optional| Description                                                        |
+| --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
+| loop | number   | No| Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.<br>The default value is **0**, indicating that the content is played only once.                  |
+| rate | number    | No| Yes | Playback rate. For details, see [AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8). Default value: **0**|
+| leftVolume  | number | No| Yes | Volume of the left channel. The value range is (0.0, 1.0). Default value: **1.0**                                   |
+| rightVolume | number  | No| Yes | Volume of the right channel. The value range is (0.0, 1.0). (Currently, the volume cannot be set separately for the left and right channels. The volume set for the left channel is used.) Default value: **1.0**|
+| priority  | number  | No| Yes | Playback priority. The value **0** means the lowest priority. A larger value indicates a higher priority. The value is an integer greater than or equal to 0. Default value: **0**     |
 
 ## ErrorType<sup>20+</sup>
 
@@ -221,7 +221,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
   }
 });
-
 ```
 
 ### load
@@ -298,7 +297,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
   }
 });
-
 ```
 
 **Example 2**
@@ -336,7 +334,6 @@ function create(context: Context) {
     }
   });
 }
-
 ```
 
 ### load
@@ -452,14 +449,13 @@ function create(context: Context) {
     }
   });
 }
-
 ```
 
 ### play
 
 play(soundID: number, params: PlayParameters, callback: AsyncCallback\<number>): void
 
-Plays a sound. This API uses an asynchronous callback to obtain the audio stream ID.
+Plays a sound and obtains the stream ID. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -520,14 +516,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### play
 
 play(soundID: number, callback: AsyncCallback\<number>): void
 
-Plays a sound using the default parameters. This API uses an asynchronous callback to obtain the audio stream ID.
+Plays a sound using default parameters and obtains the stream ID. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -580,14 +575,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### play
 
 play(soundID: number, params?: PlayParameters): Promise\<number>
 
-Plays a sound. This API uses a promise to obtain the audio stream ID.
+Plays a sound and obtains the stream ID. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -652,7 +646,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### stop
@@ -897,7 +890,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### setPriority
@@ -958,7 +950,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### setPriority
@@ -1023,7 +1014,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### setRate
@@ -1084,7 +1074,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### setRate
@@ -1210,7 +1199,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### setVolume
@@ -1275,7 +1263,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### unload
@@ -1334,7 +1321,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### unload
@@ -1397,7 +1383,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     });
   }
 });
-
 ```
 
 ### release
@@ -1451,8 +1436,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
-
 ```
 
 ### release
@@ -1799,7 +1782,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### off('error')
@@ -1885,7 +1867,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     })
   }
 });
-
 ```
 
 ### off('errorOccurred')<sup>20+</sup>
