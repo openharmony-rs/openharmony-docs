@@ -20,7 +20,7 @@ import { screenLock } from '@kit.BasicServicesKit';
     beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen | lockScreen |
       beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart
 
-  定义系统事件类型。
+定义系统事件类型。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
