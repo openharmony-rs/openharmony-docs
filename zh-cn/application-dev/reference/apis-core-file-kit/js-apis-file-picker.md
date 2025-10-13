@@ -904,7 +904,7 @@ constructor(context: Context)
 
 > **说明：**
 >
-> 从API version 12开始废弃。
+> 从API version 12开始支持，从API version 18开始废弃。
 
 **示例：**
 
@@ -946,7 +946,7 @@ constructor()
 
 > **说明：**
 >
-> 从API version 12开始废弃。
+> 从API version 12开始支持，从API version 18开始废弃。
 
 **示例：**
 
@@ -1252,9 +1252,9 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| IMAGE_TYPE  |  'image/*' | 图片类型。  |
-| VIDEO_TYPE |  'video/*' | 视频类型。  |
-| IMAGE_VIDEO_TYPE |  '\*/*' | 图片和视频类型。  |
+| IMAGE_TYPE  |  'image/*' | 图片类型。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
+| VIDEO_TYPE |  'video/*' | 视频类型。 <br>**说明**：从API version 9开始支持，从API version 18开始废弃。 |
+| IMAGE_VIDEO_TYPE |  '\*/*' | 图片和视频类型。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
 
 ## PhotoSelectOptions<sup>(deprecated)</sup>
 
@@ -1270,8 +1270,8 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| MIMEType              | [PhotoViewMIMETypes](#photoviewmimetypesdeprecated)  | 否  | 是   | 可选择的媒体文件类型。若无此参数，则默认为图片和视频类型。  |
-| maxSelectNumber       | number  | 否 | 是   | 选择媒体文件数量的最大值，默认值为50，最大值为500。      |
+| MIMEType              | [PhotoViewMIMETypes](#photoviewmimetypesdeprecated)  | 否  | 是   | 可选择的媒体文件类型。若无此参数，则默认为图片和视频类型。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
+| maxSelectNumber       | number  | 否 | 是   | 选择媒体文件数量的最大值，默认值为50，最大值为500。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。      |
 
 ## PhotoSelectResult<sup>(deprecated)</sup>
 
@@ -1287,8 +1287,8 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| photoUris        | Array&lt;string&gt;    | 否 | 否  | 返回图库选择后的媒体文件的uri数组。此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。  |
-| isOriginalPhoto        | boolean   | 否  | 否   | 返回图库选择后的媒体文件是否为原图。true为原图；false不是原图。  |
+| photoUris        | Array&lt;string&gt;    | 否 | 否  | 返回图库选择后的媒体文件的uri数组。此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
+| isOriginalPhoto        | boolean   | 否  | 否   | 返回图库选择后的媒体文件是否为原图。true为原图；false不是原图。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
 
 ## PhotoSaveOptions<sup>(deprecated)</sup>
 
@@ -1302,4 +1302,4 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| newFileNames              | Array&lt;string&gt;    | 否 | 是  | 拉起photoPicker进行保存图片或视频资源的文件名。若无此参数，则默认需要用户自行输入。 |
+| newFileNames              | Array&lt;string&gt;    | 否 | 是  | 拉起photoPicker进行保存图片或视频资源的文件名。若无此参数，则默认需要用户自行输入。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。 |
