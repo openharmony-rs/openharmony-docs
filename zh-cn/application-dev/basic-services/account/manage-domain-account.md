@@ -47,6 +47,13 @@
 
    <!-- @[define_the_domain_account_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
+``` TypeScript
+    let domainInfo: osAccount.DomainAccountInfo = {
+      domain: 'testDomain',
+      accountName: 'testAccountName'
+    };
+```
+
 2. 指定类型和域账号信息，调用[createOsAccountForDomain](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccountfordomain8)接口在设备上创建一个域账号。
 
    <!-- @[create_a_domain_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
