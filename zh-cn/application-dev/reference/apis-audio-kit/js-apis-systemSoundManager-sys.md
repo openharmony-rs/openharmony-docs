@@ -620,7 +620,7 @@ toneHapticsAttrs.getFileName();
 
 getGentleUri(): string | null
 
-获取弱振资源路径。
+获取柔和振动资源路径，如果不存在柔和振动，则振动URI 或为空。
 
 **系统接口：** 该接口为系统接口。
 
@@ -650,7 +650,7 @@ toneHapticsAttrs.getGentleUri();
 
 getGentleTitle(): string | null
 
-获取弱振标题。
+获取柔和振动标题，如果不存在柔和振动，则振动标题 或为空。
 
 **系统接口：** 该接口为系统接口。
 
@@ -678,9 +678,9 @@ toneHapticsAttrs.getGentleTitle();
 
 ### getGentleFileName<sup>22+</sup>
 
-getFileName(): string | null
+getGentleFileName(): string | null
 
-获取弱振文件名。
+获取柔和振动文件名，如果不存在柔和振动，则振动文件名或为空。
 
 **系统接口：** 该接口为系统接口。
 
