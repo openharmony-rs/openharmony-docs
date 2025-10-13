@@ -45,6 +45,14 @@ OEM厂商可以通过[分布式账号SDK](../../reference/apis-basic-services-ki
 
    <!-- @[define_the_distributed_account_information_to_be_logged_out](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let distributedInfo: distributedAccount.DistributedInfo = {
+      name: 'ZhangSan',
+      id: '12345',
+      event: 'Ohos.account.event.LOGOUT',
+    };
+```
+
 2. 调用[setOsAccountDistributedInfo](../../reference/apis-basic-services-kit/js-apis-distributed-account.md#setosaccountdistributedinfo9)接口，将指定的分布式账号与当前系统账号解绑。
 
    <!-- @[unbind_the_specified_distributed_account_from_the_current_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
