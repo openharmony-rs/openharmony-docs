@@ -12205,6 +12205,7 @@ struct WebComponent {
     }
   }
 }
+```
 
 ## setWebDebuggingAccess<sup>20+</sup>
 
