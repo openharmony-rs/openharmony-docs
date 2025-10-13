@@ -141,9 +141,9 @@ getArray(): Array\<string | number | boolean\>
 | 17100014 | The type and value of the message do not match. |
 ## getErrorDescription<sup>22+</sup>
 
-getErrorDescription(): string | null
+getErrorDescription(): string \| null
 
-获取数据对象的类型。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
+获取JS执行的异常信息。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -151,4 +151,4 @@ getErrorDescription(): string | null
 
 | 类型           | 说明                                                      |
 | --------------| --------------------------------------------------------- |
-| string | null | 若发生异常或返回对象类型时，将其序列化为字符串类型并返回；否则，返回null。 |
+| string \| null | 若发生异常或返回类型不支持时，将其序列化为字符串类型并返回；否则，返回null。 |

@@ -4307,6 +4307,10 @@ type ImageSmoothingQuality = "high" | "low" | "medium"
 
 用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。
 
+> **说明：**
+>
+> RenderingContextSettings的抗锯齿效果对文本绘制无影响。
+
 ### constructor
 
 constructor(antialias?: boolean)

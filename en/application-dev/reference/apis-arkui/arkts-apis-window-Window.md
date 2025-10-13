@@ -1277,6 +1277,52 @@ try {
 }
 ```
 
+## getWindowAvoidAreaIgnoringVisibility<sup>22+</sup>
+
+getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
+
+Obtains the avoid area of this application window, even if the avoid area is invisible.
+
+In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API obtains an empty avoid area.
+
+In non-freeform window mode, this API can calculate and return the avoid area only when the position and size of the child window are the same as those of the main window. Otherwise, this API returns an empty avoid area.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- |----------------------------------| -- | ------------------------------------------------------------ |
+| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoid area. Note that obtaining the avoid area for the soft keyboard type is not supported. If **TYPE_KEYBOARD** is passed in, error code 1300016 is returned.|
+
+**Return value**
+
+| Type| Description|
+|--------------------------| ----------------- |
+| [AvoidArea](arkts-apis-window-i.md#avoidarea7) | Area where the window cannot be displayed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: 1. Parameter verification failed. |
+
+**Example**
+
+```ts
+let type = window.AvoidAreaType.TYPE_SYSTEM;
+try {
+  let avoidArea = windowClass.getWindowAvoidAreaIgnoringVisibility(type);
+} catch (exception) {
+  console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setSystemAvoidAreaEnabled<sup>18+</sup>
 
 setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
@@ -6249,11 +6295,15 @@ promise.then((pixelMap: image.PixelMap) => {
 
 setAspectRatio(ratio: number): Promise&lt;void&gt;
 
-Sets the aspect ratio of the window content layout. This API uses a promise to return the result.
+Sets the aspect ratio of the window content layout (excluding decorations like borders and title bars). This API uses a promise to return the result.
 
-When the window size is set by using other APIs such as [resize](#resize9) and [resizeAsync](#resizeasync12), the window size is not restricted by **ratio**.
-
-This setting is available only for the main window and takes effect only in floating window mode (**window.WindowStatusType.FLOATING** mode). The aspect ratio is saved persistently, which means that the setting is valid in floating window mode even after the application is closed or the device is restarted.
+> **NOTE**
+>
+> - When the window size is set by using other APIs such as [resize](#resize9) and [resizeAsync](#resizeasync12), the window size is not restricted by **ratio**.
+>
+> - This setting is available only for the main window and takes effect only in floating window mode (**window.WindowStatusType.FLOATING** mode). The aspect ratio is saved persistently, which means that the setting is valid in floating window mode even after the application is closed or the device is restarted.
+>
+> - After the aspect ratio is set for a main window of an application, the aspect ratio is used for subsequent main windows. If you need to set the aspect ratio for just one main window, use [setContentAspectRatio](#setcontentaspectratio21) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6263,7 +6313,7 @@ This setting is available only for the main window and takes effect only in floa
 
 | Name            | Type   | Mandatory| Description                                       |
 | ------------------ | ------- | ---- |-------------------------------------------|
-| ratio | number | Yes  | Aspect ratio of the window content layout except border decoration. The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
+| ratio | number | Yes  | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
 
 **Return value**
 
@@ -6316,11 +6366,15 @@ export default class EntryAbility extends UIAbility {
 
 setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the aspect ratio of the window content layout. This API uses an asynchronous callback to return the result.
+Sets the aspect ratio of the window content layout (excluding decorations like borders and title bars). This API uses an asynchronous callback to return the result.
 
-When the window size is set by using other APIs such as [resize](#resize9) and [resizeAsync](#resizeasync12), the window size is not restricted by **ratio**.
-
-This setting is available only for the main window and takes effect only in floating window mode (**window.WindowStatusType.FLOATING** mode). The aspect ratio is saved persistently, which means that the setting is valid in floating window mode even after the application is closed or the device is restarted.
+> **NOTE**
+>
+> - When the window size is set by using other APIs such as [resize](#resize9) and [resizeAsync](#resizeasync12), the window size is not restricted by **ratio**.
+>
+> - This setting is available only for the main window and takes effect only in floating window mode (**window.WindowStatusType.FLOATING** mode). The aspect ratio is saved persistently, which means that the setting is valid in floating window mode even after the application is closed or the device is restarted.
+>
+> - After the aspect ratio is set for a main window of an application, the aspect ratio is used for subsequent main windows. If you need to set the aspect ratio for just one main window, use [setContentAspectRatio](#setcontentaspectratio21) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6330,7 +6384,7 @@ This setting is available only for the main window and takes effect only in floa
 
 | Name            | Type   | Mandatory| Description                                        |
 | ------------------ | ------- | ---- |--------------------------------------------|
-| ratio | number | Yes  | Aspect ratio of the window content layout except border decoration. The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
+| ratio | number | Yes  | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                     |
 
 **Error codes**
@@ -6377,13 +6431,83 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+## setContentAspectRatio<sup>21+</sup>
+
+setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: boolean): Promise&lt;void&gt;
+
+Sets the aspect ratio of the window content layout (excluding decorations like borders and title bars). This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - When you adjust the window width and height using the same **ratio** parameter, the window size adapts to changes in the border decoration size or visibility.
+>
+> - When the window title bar is set to invisible by using [setWindowDecorVisible](#setwindowdecorvisible11), the window content area takes over the space that was previously used by the title bar.
+>
+> - When the window size is set by using other APIs such as [resize](#resize9) and [resizeAsync](#resizeasync12), the window size is not restricted by **ratio**.
+>
+> - This setting is available only for the main window and takes effect only in floating window mode (**window.WindowStatusType.FLOATING** mode).
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description                                       |
+| --- | ------- | ---- |-------------------------------------------|
+| ratio | number | Yes  | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
+| isPersistent | boolean | No| Whether the aspect ratio should be saved persistently.<br>If this parameter is set to **true**, the aspect ratio is saved persistently. This means that the setting is valid in floating window mode even after the window is destroyed, the application is closed, or the device is restarted. You can call [resetAspectRatio](#resetaspectratio10) to clear the persistently saved aspect ratio.<br>If this parameter is set to **false**, the aspect ratio applies only to the current window and is cleared once the window is destroyed.<br>The default value is **true**.|
+| needUpdateRect | boolean | No| Whether the window size should be immediately updated based on the current aspect ratio.<br>If this parameter is set to **true**, the window size is updated immediately based on the current aspect ratio.<br>If this parameter is set to **false**, the window size is updated based on the current aspect ratio when the window is dragged and resized. You can manually trigger an update by calling [resize](#resize9) or [resizeAsync](#resizeasync12).<br>The default value is **true**.|
+
+**Return value**
+
+| Type| Description|
+| ------------------- | ------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+| 1300016 | Parameter error. Possible cause: 1. Invaild parameter range. 2. Invalid parameter length. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      let ratio = 1.0;
+      let promise = windowClass.setContentAspectRatio(ratio, true, true);
+      promise.then(() => {
+        console.info('Succeeded in setting aspect ratio of window.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to set the aspect ratio of window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
 ## resetAspectRatio<sup>10+</sup>
 
 resetAspectRatio(): Promise&lt;void&gt;
 
 Resets the aspect ratio of the window content layout. This API uses a promise to return the result.
 
-This API can be called only for the main window and the setting takes effect only in floating window mode (**window.WindowStatusType.FLOATING** mode). After this API is called, the persistently stored aspect ratio is cleared.
+This API is valid only for the main window. After it is called, the persistently saved aspect ratio is cleared.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6440,7 +6564,7 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 
 Resets the aspect ratio of the window content layout. This API uses an asynchronous callback to return the result.
 
-This API can be called only for the main window and the setting takes effect only in floating window mode (**window.WindowStatusType.FLOATING** mode). After this API is called, the persistently stored aspect ratio is cleared.
+This API is valid only for the main window. After it is called, the persistently saved aspect ratio is cleared.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -8498,7 +8622,6 @@ try {
 startMoving(): Promise&lt;void&gt;
 
 Starts moving this window. This API uses a promise to return the result.
-
 In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect for the main window, child windows, and system windows. In non-freeform window mode, this API takes effect only for child windows and system windows.
 
 The window moves along with the cursor or touch point only when this API is called in the callback function of [onTouch](./arkui-ts/ts-universal-events-touch.md#touchevent), where the event type is **TouchType.Down**.

@@ -1,5 +1,12 @@
 # raw_dir.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 Provides functions related to the **rawfile** directory. These functions include traversing and closing rawfile directories.

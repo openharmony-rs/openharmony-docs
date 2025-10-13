@@ -491,24 +491,25 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
-| 名称             | 类型                                | 必填   | 说明               |
-| --------------- | --------------------------------- | ---- | ---------------- |
-| workId          | number                            | 是    | 延迟任务ID。          |
-| bundleName      | string                            | 是    | 延迟任务所在应用的包名。           |
-| abilityName     | string                            | 是    | 包内ability名称。 |
-| networkType     | [NetworkType](#networktype)       | 否    | 网络类型。             |
-| isCharging      | boolean                           | 否    | 是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
-| chargerType     | [ChargingType](#chargingtype)     | 否    | 充电类型。             |
-| batteryLevel    | number                            | 否    | 电量。              |
-| batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 电池状态。             |
-| storageRequest  | [StorageRequest](#storagerequest) | 否    | 存储状态。             |
-| isRepeat        | boolean                           | 否    | 是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
-| repeatCycleTime | number                            | 否    | 循环间隔，单位为毫秒。             |
-| repeatCount     | number                            | 否    | 循环次数。             |
-| isPersisted     | boolean                           | 否    | 注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
-| isDeepIdle      | boolean                           | 否    | 是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
-| idleWaitTime    | number                            | 否    | 空闲等待时间，单位为毫秒。           |
-| parameters      | Record<string, number \| string \| boolean>  | 否    | 携带参数信息。 |
+| 名称             | 类型                                | 只读   | 可选   | 说明               |
+| --------------- | --------------------------------- | ---- | ---- | ---------------- |
+| workId          | number                            | 否    | 否    |延迟任务ID。          |
+| bundleName      | string                            | 否    | 否    |延迟任务所在应用的包名。           |
+| abilityName     | string                            | 否    | 否    |包内ability名称。 |
+| networkType     | [NetworkType](#networktype)       | 否    | 是    |网络类型。             |
+| isCharging      | boolean                           | 否    | 是    |是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
+| chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。             |
+| batteryLevel    | number                            | 否    | 是    |电量。              |
+| batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 是    |电池状态。             |
+| storageRequest  | [StorageRequest](#storagerequest) | 否    | 是    |存储状态。             |
+| isRepeat        | boolean                           | 否    | 是    |是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
+| repeatCycleTime | number                            | 否    | 是    |循环间隔，单位为毫秒。             |
+| repeatCount     | number                            | 否    | 是    |循环次数。             |
+| isPersisted     | boolean                           | 否    | 是    |注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
+| isDeepIdle      | boolean                           | 否    | 是    |是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
+| idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位为毫秒。           |
+| parameters      | Record<string, number \| string \| boolean>  | 否    | 是    |携带参数信息。 |
+| earliestStartTime<sup>22+</sup> | number | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位为毫秒，默认为0，范围大于等于0。 |
 
 ## NetworkType
 

@@ -110,7 +110,7 @@ try {
 
 ## restrictions.getDisallowedPolicy
 
-getDisallowedPolicy(admin: Want, feature: string): boolean
+getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 
 查询某特性是否被禁用。 
 
@@ -124,7 +124,7 @@ getDisallowedPolicy(admin: Want, feature: string): boolean
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。                                       |
 | feature | string                                                  | 是   | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、usb、wifi、tethering、camera<!--RP4--><!--RP4End-->。 |
 
 **表2 支持查询的特性清单：**

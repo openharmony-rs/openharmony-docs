@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Image decoding refers to the process of decoding an image in a supported format (JPEG and HEIF currently) into a [picture](image-overview.md#basic-concepts).  
 

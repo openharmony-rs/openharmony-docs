@@ -1,4 +1,10 @@
 # @ohos.matrix4 (Matrix Transformation)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **matrix4** module provides APIs for matrix transformation. You can use these APIs to translate, rotate, and scale images.
 
@@ -67,13 +73,14 @@ let matrix = matrix4.init(
   [1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,
     0.0, 0.0, 1.0, 0.0,
-    0.0, 0.0, 0.0, 1.0])
+    0.0, 0.0, 0.0, 1.0]);
 
 @Entry
 @Component
 struct Tests {
   build() {
     Column() {
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width("40%")
         .height(100)
@@ -110,18 +117,20 @@ let matrix1 = matrix4.init(
   [1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,
     0.0, 0.0, 1.0, 0.0,
-    0.0, 0.0, 0.0, 1.0])
-let matrix2 = matrix4.identity()
+    0.0, 0.0, 0.0, 1.0]);
+let matrix2 = matrix4.identity();
 
 @Entry
 @Component
 struct Tests {
   build() {
     Column() {
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width("40%")
         .height(100)
         .transform(matrix1)
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width("40%")
         .height(100)
@@ -166,19 +175,22 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().scale({ x: 1.5 })
-  private matrix2 = this.matrix1.copy().translate({ x: 200 })
-  imageSize: Length = '300px'
+  private matrix1 = matrix4.identity().scale({ x: 1.5 });
+  private matrix2 = this.matrix1.copy().translate({ x: 200 });
+  imageSize: Length = '300px';
 
   build() {
     Column({ space: "50px" }) {
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
         .transform(this.matrix1)
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
@@ -195,7 +207,7 @@ struct Test {
 
 combine(options: Matrix4Transit): Matrix4Transit
 
-Combines the effects of two matrices to generate a new matrix object. The original matrix that calls this API will be changed.
+Combines the effects of two matrices to generate a new matrix object. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -222,17 +234,19 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().translate({ x: 200 })
-  private matrix2 = matrix4.identity().scale({ x: 2 })
+  private matrix1 = matrix4.identity().translate({ x: 200 });
+  private matrix2 = matrix4.identity().scale({ x: 2 });
 
   build() {
     Column() {
       // Before matrix transformation
+      // Replace $r("app.media.icon") with the image resource file you use.
       Image($r("app.media.icon"))
         .width("40%")
         .height(100)
         .margin({ top: 50 })
       // Translate the x-axis by 200px, and then scale it twice to obtain the resultant matrix.
+      // Replace $r("app.media.icon") with the image resource file you use.
       Image($r("app.media.icon"))
         .transform(this.matrix1.copy().combine(this.matrix2))
         .width("40%")
@@ -250,7 +264,7 @@ struct Test {
 
 invert(): Matrix4Transit
 
-Inverts this matrix object. The original matrix that calls this API will be changed.
+Inverts this matrix object. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -268,19 +282,21 @@ Inverts this matrix object. The original matrix that calls this API will be chan
 import { matrix4 } from '@kit.ArkUI';
 
 // The effect of matrix 1 (width scaled up by 2x) is opposite to that of matrix 2 (width scaled down by 2x).
-let matrix1 = matrix4.identity().scale({ x: 2 })
-let matrix2 = matrix1.copy().invert()
+let matrix1 = matrix4.identity().scale({ x: 2 });
+let matrix2 = matrix1.copy().invert();
 
 @Entry
 @Component
 struct Tests {
   build() {
     Column() {
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width(200)
         .height(100)
         .transform(matrix1)
         .margin({ top: 100 })
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width(200)
         .height(100)
@@ -296,7 +312,7 @@ struct Tests {
 
 translate(options: TranslateOption): Matrix4Transit
 
-Translates this matrix object along the x, y, and z axes. The original matrix that calls this API will be changed.
+Translates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -323,10 +339,11 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().translate({ x: 100, y: 200, z: 30 })
+  private matrix1 = matrix4.identity().translate({ x: 100, y: 200, z: 30 });
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
         .width("40%")
         .height(100)
@@ -376,10 +393,11 @@ struct Test {
       z: 4,
       centerX: 50,
       centerY: 50
-    })
+    });
 
   build() {
     Column() {
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage")).transform(this.matrix1)
         .width("300px")
         .height("300px")
@@ -423,10 +441,11 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().skew(2, 3)
+  private matrix1 = matrix4.identity().skew(2, 3);
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
         .height(100)
         .margin({
@@ -479,10 +498,11 @@ struct Test {
       y: 1,
       z: 2,
       angle: 30
-    })
+    });
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
         .width("40%")
         .height(100)
@@ -525,15 +545,16 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private originPoint: number[] = [50, 50]
-  private matrix_1 = matrix4.identity().translate({ x: 150, y: -50 })
-  private transformPoint = this.matrix_1.transformPoint([this.originPoint[0], this.originPoint[1]])
-  private matrix_2 = matrix4.identity().translate({ x: this.transformPoint[0], y: this.transformPoint[1] })
+  private originPoint: number[] = [50, 50];
+  private matrix_1 = matrix4.identity().translate({ x: 150, y: -50 });
+  private transformPoint = this.matrix_1.transformPoint([this.originPoint[0], this.originPoint[1]]);
+  private matrix_2 = matrix4.identity().translate({ x: this.transformPoint[0], y: this.transformPoint[1] });
 
   build() {
     Column() {
       Text(`Coordinates before matrix transformation: [${this.originPoint}]`)
         .fontSize(16)
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r("app.media.image"))
         .width('600px')
         .height('300px')
@@ -541,6 +562,7 @@ struct Test {
       Text(`Coordinates after matrix transformation: [${this.transformPoint}]`)
         .fontSize(16)
         .margin({ top: 100 })
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r("app.media.image"))
         .width('600px')
         .height('300px')
@@ -576,13 +598,12 @@ Maps the vertex coordinates of a polygon to those of another polygon.
 | [Matrix4Transit](#matrix4transit) | Matrix object after the mapping.|
 
 > **NOTE**
->
 > This API must be used with **scale({centerX:0,centerY:0,x:1})** to ensure that the transformation is centered at the upper left corner of the component.
 
 **Example**
 
 ```ts
-import { matrix4 } from '@kit.ArkUI'
+import { matrix4 } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -590,13 +611,14 @@ struct Index {
   private matrix1 = matrix4.identity().setPolyToPoly({
     src: [{ x: 0, y: 0 }, { x: 500, y: 0 }, { x: 0, y: 500 }, { x: 500, y: 500 }],
     dst: [{ x: 0, y: 0 }, { x: 500, y: 0 }, { x: 0, y: 500 }, { x: 750, y: 1000 }], pointCount: 4
-  })
+  });
 
   build() {
     Stack() {
       Column().backgroundColor(Color.Blue)
         .width('500px')
         .height('500px')
+      // Replace $r("app.media.transition_image1") with the image resource file you use.
       Image($r('app.media.transition_image1'))
         .scale({ centerX: 0, centerY: 0, x: 1 })
         .transform(this.matrix1)
@@ -609,6 +631,8 @@ struct Index {
 ![en-us_image_0000001174422898](figures/setPolyTopoly.png)
 ## TranslateOption
 
+Describes the translation parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -620,6 +644,8 @@ struct Index {
 | z    | number | No  | Translation distance along the z-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
 
 ## ScaleOption
+
+Describes the scale parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -634,6 +660,8 @@ struct Index {
 | centerY | number | No  | Y coordinate of the center point.<br>Unit: px<br>Default value: Y-coordinate of the component center<br>Value range: (-∞, +∞)   |
 
 ## RotateOption
+
+Describes the rotation parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -650,19 +678,23 @@ struct Index {
 
 ## PolyToPolyOptions<sup>12+</sup>
 
+Describes the configuration options for polygon-to-polygon transformation mapping.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                                       |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| src    |  Array<[Point](#point12)> | Yes  | Coordinates of the source point.|
-| srcIndex    | number | No  | Start index of the source point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
-| dst    |  Array<[Point](#point12)>  | Yes  | Coordinates of the destination point.|
-| dstIndex    | number | No  |  Start index of the destination point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
-| pointCount    | number | No  | Number of used points.<br>Default value: **src.length/2**.<br> Value range: [0, +∞).|
+| Name| Type  | Read-Only| Optional| Description                                                       |
+| ---- | ------ | ---- | ---- | ----------------------------------------------------------- |
+| src    |  Array<[Point](#point12)> | No  | No  | Coordinates of the source point.|
+| srcIndex    | number | No  | Yes  | Start index of the source point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
+| dst    |  Array<[Point](#point12)>  | No  | No  | Coordinates of the destination point.|
+| dstIndex    | number | No  | Yes  |  Start index of the destination point coordinates.<br>Default value: **src.length/2**.<br> Value range: [0, +∞).|
+| pointCount    | number | No  | Yes  | Number of used points. If the number of points to be used is 0, the unit matrix is returned. If the number of points is 1, the translation matrix that changes two points is returned. If the number of points is 2 to 4, a transformation matrix is returned.<br>Default value: **0**.<br> Value range: [0, +∞).|
 
 ## Point<sup>12+</sup>
+
+Defines the data structure of a coordinate point.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -702,16 +734,18 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().translate({ x: 100 })
+  private matrix1 = matrix4.identity().translate({ x: 100 });
   // Perform the scale operation on the copy matrix of matrix1, which does not affect matrix1.
-  private matrix2 = this.matrix1.copy().scale({ x: 2 })
+  private matrix2 = this.matrix1.copy().scale({ x: 2 });
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1"))
         .width("40%")
         .height(100)
         .transform(this.matrix1)
+      // Replace $r("app.media.bg2") with the image resource file you use.
       Image($r("app.media.bg2"))
         .width("40%")
         .height(100)

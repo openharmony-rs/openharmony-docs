@@ -1,5 +1,11 @@
 # oh_wifi.h
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 ## Overview
 
 Defines APIs for obtaining Wi-Fi switch state.

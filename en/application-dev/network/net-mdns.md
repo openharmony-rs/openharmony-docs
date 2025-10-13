@@ -9,7 +9,7 @@
 ## Overview
 
 Multicast DNS (MDNS) provides functions such as adding, removing, discovering, and resolving local services on a LAN.
-- Local service: a service provider on a LAN, for example, a printer or scanner.
+A local service represents a service provider on a LAN, for example, a printer or scanner.
 
 Typical MDNS management scenarios include:
 
@@ -17,6 +17,7 @@ Typical MDNS management scenarios include:
 - Discovering local services and listening to the status changes of local services of the specified type through the **DiscoveryService** object.
 
 > **NOTE**
+>
 > To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [MDNS Management](../reference/apis-network-kit/js-apis-net-mdns.md).
 
 The following describes the development procedure specific to each application scenario.
