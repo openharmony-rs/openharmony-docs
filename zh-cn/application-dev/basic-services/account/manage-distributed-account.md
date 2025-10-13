@@ -97,6 +97,17 @@ const distributedAccountAbility = distributedAccount.getDistributedAccountAbilit
 
    <!-- @[unbind_the_specified_distributed_account_from_the_current_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    distributedAccountAbility.setOsAccountDistributedInfo(distributedInfo).then(() => {
+      console.info('setOsAccountDistributedInfo successfully');
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
+
 ## 在指定的系统账号上登录绑定分布式账号
 
 具体开发实例如下：
@@ -105,13 +116,45 @@ const distributedAccountAbility = distributedAccount.getDistributedAccountAbilit
 
    <!-- @[determine_the_target_system_account_and_define_the_distributed_account_information_to_be_logged_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let localId: number = 100;
+    let distributedInfo: distributedAccount.DistributedInfo = {
+      name: 'ZhangSan',
+      id: '12345',
+      event: 'Ohos.account.event.LOGIN',
+    };
+```
+
+
 2. 调用[setOsAccountDistributedInfoByLocalId](../../reference/apis-basic-services-kit/js-apis-distributed-account-sys.md#setosaccountdistributedinfobylocalid10)接口，将指定分布式账号与当前系统账号绑定。
 
    <!-- @[bind_the_specified_distributed_account_to_the_current_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    await distributedAccountAbility.setOsAccountDistributedInfoByLocalId(localId, distributedInfo).then(() => {
+      console.info('setOsAccountDistributedInfoByLocalId successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
+
 3. 在账号绑定之后，可以调用[getOsAccountDistributedInfoByLocalId](../../reference/apis-basic-services-kit/js-apis-distributed-account-sys.md#getosaccountdistributedinfobylocalid10)接口查看分布式账号的登录信息。
 
    <!-- @[view_the_login_information_of_a_distributed_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    distributedAccountAbility.getOsAccountDistributedInfoByLocalId(localId)
+      .then((data: distributedAccount.DistributedInfo) => {
+      console.info('distributed information: ' + JSON.stringify(data));
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+
 
 ## 在指定系统账号上登出解绑分布式账号
 
@@ -121,6 +164,27 @@ const distributedAccountAbility = distributedAccount.getDistributedAccountAbilit
 
    <!-- @[determine_the_target_system_account_and_define_the_distributed_account_information_to_be_logged_out](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let localId: number = 100;
+    let distributedInfo: distributedAccount.DistributedInfo = {
+      name: 'ZhangSan',
+      id: '12345',
+      event: 'Ohos.account.event.LOGOUT',
+    };
+```
+
+
 2. 调用[setOsAccountDistributedInfoByLocalId](../../reference/apis-basic-services-kit/js-apis-distributed-account-sys.md#setosaccountdistributedinfobylocalid10)接口，将指定的分布式账号与目标系统账号解绑。
 
    <!-- @[unbind_the_specified_distributed_account_from_the_target_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageDistributedAccount/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    distributedAccountAbility.setOsAccountDistributedInfoByLocalId(localId, distributedInfo).then(() => {
+      console.info('setOsAccountDistributedInfoByLocalId successfully');
+	// ···
+    }).catch((err: BusinessError) => {
+      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+	// ···
+    });
+```
+

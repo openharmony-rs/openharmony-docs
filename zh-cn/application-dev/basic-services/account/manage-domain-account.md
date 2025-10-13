@@ -19,6 +19,11 @@
 
    <!-- @[import_the_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
 
+``` TypeScript
+import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+```
+
+
 3. 获取系统账号管理对象。
 
    <!-- @[obtain_the_system_account_management_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/DomainAccount/entry/src/main/ets/pages/DomainAccount/ManageDomainAccounts.ets) -->
