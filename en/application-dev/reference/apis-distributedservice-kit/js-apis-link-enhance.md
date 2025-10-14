@@ -41,7 +41,7 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -93,7 +93,7 @@ Creates a **Connection** object on the device that functions as the client. The 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -137,7 +137,7 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -175,7 +175,7 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -213,7 +213,7 @@ Destroys the **Server** object to release related resources. To interact with th
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -255,7 +255,7 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -304,7 +304,7 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -354,7 +354,7 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -404,7 +404,7 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -446,7 +446,7 @@ Represents the connection result, which is returned after the client calls **con
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | deviceId          | string | No   |No   | ID of the peer device. If the connection is successful, the device ID of the peer device is returned. If the connection fails, an empty string is returned.    |
 | success           | boolean | No   |No  | Connection result. The value **true** indicates that the connection is successful, and the value **false** indicates the opposite.|
-| reason            | number | No   |No   | Number indicating the result code. If the connection is successful, **0** is returned. If the connection fails, an error code is returned:<br>- 32390200: The client connection times out.<br>- 32390201: The server service is not started.<br>- 32390300: Internal error.<br>For details about the error codes, see [Link Enhancement Error Codes](errorcode_linkEnhance.md).|
+| reason            | number | No   |No   | Number indicating the result code. If the connection is successful, **0** is returned. If the connection fails, an error code is returned:<br>- 32390200: The client connection times out.<br>- 32390201: The server service is not started.<br>- 32390300: Internal error.<br>For details about the error codes, see [Link Enhancement Error Codes](errorcode-linkEnhance.md).|
 
 ## Connection
 
@@ -465,7 +465,7 @@ Connects to the server on the client. A maximum number of 10 connections are sup
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -512,7 +512,7 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -555,7 +555,7 @@ Destroys the **Connection** object to release resources. If the device needs to 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -606,7 +606,7 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -650,7 +650,7 @@ Sends data to the server after a connection is established successfully. When th
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -707,7 +707,7 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -758,7 +758,7 @@ Unregisters the listener for **connectResult** events.
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -809,7 +809,7 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -857,7 +857,7 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -908,7 +908,7 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -955,7 +955,7 @@ Unregisters the listener for **dataReceived** events.
 
 **Error codes**
 
-For details about the error codes, see [Enhanced Connection Error Codes](errorcode_linkEnhance.md).
+For details about the error codes, see [Enhanced Connection Error Codes](errorcode-linkEnhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |

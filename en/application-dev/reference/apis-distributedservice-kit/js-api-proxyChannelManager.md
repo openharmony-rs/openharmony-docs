@@ -52,7 +52,7 @@ Opens a proxy channel. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -121,7 +121,7 @@ Closes a proxy channel that has been opened.
 
 **Error codes**
 
-For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -184,7 +184,7 @@ Sends data to the peer end. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -248,7 +248,7 @@ Subscribes to data receiving events. This API returns the result asynchronously 
 
 **Error codes**
 
-For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -306,7 +306,7 @@ Unsubscribes from data receiving events.
 
 **Error codes**
 
-For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -362,7 +362,7 @@ Subscribes to channel state change events. This API returns the result asynchron
 
 **Error codes**
 
-For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
@@ -420,7 +420,7 @@ Unsubscribes from channel state change events.
 
 **Error codes**
 
-For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
