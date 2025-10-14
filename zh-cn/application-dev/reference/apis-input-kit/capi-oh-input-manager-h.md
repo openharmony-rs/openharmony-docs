@@ -219,7 +219,7 @@
 | [Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)](#oh_input_setpointerstyle) | - | 设置指定窗口的鼠标光标样式。 |
 | [Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, int32_t anchorX, int32_t anchorY)](#oh_input_customcursor_create) | - | 创建自定义鼠标光标资源对象。 |
 | [void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)](#oh_input_customcursor_destroy) | - | 销毁自定义鼠标光标资源对象。 |
-| [Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor, OH_PixelmapNative* pixelMap)](#oh_input_customcursor_getpixelmap) | - | 获取指定自定义鼠标光标资源的自定义鼠标光标像素图。 |
+| [Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor, OH_PixelmapNative** pixelMap)](#oh_input_customcursor_getpixelmap) | - | 获取指定自定义鼠标光标资源的自定义鼠标光标像素图。 |
 | [Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, int32_t* anchorX, int32_t* anchorY)](#oh_input_customcursor_getanchor) | - | 获取指定自定义鼠标光标资源的焦点坐标。 |
 | [Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)](#oh_input_cursorconfig_create) | - | 创建自定义鼠标光标配置对象。 |
 | [void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)](#oh_input_cursorconfig_destroy) | - | 销毁自定义鼠标光标配置对象。 |
@@ -4382,7 +4382,7 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 **描述**
 
-设置指定窗口鼠标光标样式。
+设置指定窗口的鼠标光标样式。
 
 **起始版本：** 22
 
@@ -4390,8 +4390,8 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口Id。取值范围为大于等于0的整数。<br> 接口当前只能设置当前窗口的光标样式，设置其他窗口的光标样式不生效，窗口Id可以通过[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。|
-| int32_t pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](./capi-oh-pointer-style.md)的枚举值。 |
+| int32_t windowId | 窗口Id。取值范围为大于等于0的整数。<br> 接口只能设置当前窗口的光标样式，设置其他窗口的光标样式不生效，窗口Id可以通过[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。|
+| int32_t pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](capi-oh-pointer-style.md#input_pointerstyle)的枚举值。 |
 
 **返回：**
 
@@ -4423,7 +4423,7 @@ Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, in
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| Input_CustomCursor* | 自定义鼠标光标资源 [Input_CustomCursor](./capi-input-input-customcursor.md)对象。操作成功时返回自定义鼠标光标资源对象的指针，异常时返回空指针。 |
+| Input_CustomCursor* | [Input_CustomCursor](./capi-input-input-customcursor.md)对象。操作成功时返回自定义鼠标光标资源对象的指针。异常时返回空指针。 |
 
 
 ### OH_Input_CustomCursor_Destroy()
@@ -4453,7 +4453,7 @@ Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor,
 
 **描述**
 
-获取指定自定义光标鼠标资源的自定义鼠标光标。
+获取指定自定义鼠标光标资源的自定义鼠标光标像素图。
 
 **起始版本：** 22
 
@@ -4478,6 +4478,7 @@ Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, i
 ```
 
 **描述**
+
 获取指定自定义鼠标光标资源的焦点坐标。
 
 **起始版本：** 22
@@ -4504,6 +4505,7 @@ Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)
 ```
 
 **描述**
+
 创建自定义鼠标光标配置对象。
 
 **起始版本：** 22
@@ -4512,7 +4514,7 @@ Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool followSystem | 是否根据系统设置调整光标大小。false表示使用自定义光标样式大小，true表示根据系统设置调整光标大小，可调整范围为：[光标资源图大小，256×256]，单位为px。|
+| bool followSystem | 是否根据系统设置调整鼠标光标大小。false表示使用自定义鼠标光标样式大小，true表示根据系统设置调整鼠标光标大小，可调整范围为：[光标资源图大小，256×256]，单位为px。|
 
 **返回：**
 
@@ -4528,6 +4530,7 @@ void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)
 ```
 
 **描述**
+
 销毁自定义鼠标光标配置对象。
 
 **起始版本：** 22
@@ -4546,6 +4549,7 @@ Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConf
 ```
 
 **描述**
+
 查询自定义鼠标光标配置是否跟随系统设置调整光标大小。
 
 **起始版本：** 22
@@ -4571,6 +4575,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 ```
 
 **描述**
+
 设置自定义鼠标光标样式。
 
 **起始版本：** 22
