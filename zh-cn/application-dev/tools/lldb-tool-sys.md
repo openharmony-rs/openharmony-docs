@@ -2,9 +2,9 @@
 
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: Maxi_241437-->
-<!--Designer: da_wei_li11-->
-<!--Tester: chenhliang-->
+<!--Owner: @Maxi_241437-->
+<!--Designer: @da_wei_li11-->
+<!--Tester: @chenhliang-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
