@@ -111,10 +111,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称         | 类型                                        | 必填 | 说明                        |
-| ------------ | ------------------------------------------ | ---- | --------------------------- |
-| itemId       | number                                     | 是   | 播放列表中单项的ID。          |
-| description  | [AVMediaDescription](#avmediadescription10)  | 否   | 播放列表中单项的媒体元数据。   |
+| 名称         | 类型                                        | 只读 | 可选 | 说明                        |
+| ------------ | ------------------------------------------ | ---- | --- |--------------------------- |
+| itemId       | number                                     |  否 | 否 | 播放列表中单项的ID。          |
+| description  | [AVMediaDescription](#avmediadescription10)  | 否   | 是 | 播放列表中单项的媒体元数据。   |
 
 ## AVPlaybackState<sup>10+</sup>
 
