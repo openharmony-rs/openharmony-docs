@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -30,7 +30,7 @@
 | OH_AVCodec \* [OH_AudioDecoder_CreateByMime](_audio_decoder.md#oh_audiodecoder_createbymime) (const char \*mime) | 根据MIME类型创建音频解码器实例。 | 
 | OH_AVCodec \* [OH_AudioDecoder_CreateByName](_audio_decoder.md#oh_audiodecoder_createbyname) (const char \*name) | 通过音频解码器名称创建音频解码器实例。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Destroy](_audio_decoder.md#oh_audiodecoder_destroy) (OH_AVCodec \*codec) | 清理解码器内部资源，销毁解码器实例。 | 
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_SetCallback](_audio_decoder.md#oh_audiodecoder_setcallback) (OH_AVCodec \*codec, [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) callback, void \*userData) | 设置异步回调函数，使应用可以响应音频解码器生成的事件。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_SetCallback](_audio_decoder.md#oh_audiodecoder_setcallback) (OH_AVCodec \*codec, [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) callback, void \*userData) | 设置异步回调函数，使应用可以响应音频解码器生成的事件。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Configure](_audio_decoder.md#oh_audiodecoder_configure) (OH_AVCodec \*codec, OH_AVFormat \*format) | 要配置音频解码器，通常需要配置从容器中提取的音频描述信息。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Prepare](_audio_decoder.md#oh_audiodecoder_prepare) (OH_AVCodec \*codec) | 准备解码器的内部资源。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioDecoder_Start](_audio_decoder.md#oh_audiodecoder_start) (OH_AVCodec \*codec) | 调用此接口启动解码器，在Prepare成功后执行。 | 

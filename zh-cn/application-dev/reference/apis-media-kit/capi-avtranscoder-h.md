@@ -177,7 +177,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoType(OH_AVTranscoder_Config *confi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| const char *mimeType | 输出视频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#变量)。 |
+| const char *mimeType | 输出视频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
@@ -205,7 +205,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioType(OH_AVTranscoder_Config *confi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| const char *mimeType | 输出音频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#变量)。 |
+| const char *mimeType | 输出音频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
@@ -233,7 +233,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstFileType(OH_AVTranscoder_Config *config
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| [OH_AVOutputFormat](../apis-avcodec-kit/_codec_base.md#oh_avoutputformat-1) mimeType | 输出视频的封装格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#变量)。 |
+| [OH_AVOutputFormat](../apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avoutputformat) mimeType | 输出视频的封装格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
