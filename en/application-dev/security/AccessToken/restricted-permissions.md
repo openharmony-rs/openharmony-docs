@@ -789,3 +789,17 @@ With this permission, the application can enable communication between browser e
 **Device**：PC/2in1
 
 **Since**：21
+
+## ohos.permission.SUBSCRIBE_NOTIFICATION
+
+Allows an application to read notifications published by the system or installed applications.
+
+<!--RP55--><!--RP55End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**：system_grant
+
+**Device**：Phone | Tablet
+
+**Since**：22

@@ -856,3 +856,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1
 
 **起始版本**：21
+
+## ohos.permission.SUBSCRIBE_NOTIFICATION
+
+允许应用读取系统或者已安装应用发布的通知。
+
+<!--RP55--><!--RP55End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：22
