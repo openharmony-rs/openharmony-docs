@@ -47,7 +47,7 @@
 | width| number | 否 | 是 | 预览设备的宽度，单位：px，默认为1080px。 |
 | height | number | 否 | 是 | 预览设备的高度，单位：px，默认为2340px。 |
 | locale| string | 否 | 是 |  预览设备的语言，如zh_CN、en_US等，默认为zh_CN。 |
-| colorMode | string | 否 | 是 | 显示的亮暗模式，当前支持的取值为light或dark，默认为light。 |
+| colorMode | string | 否 | 是 | 显示的亮暗模式，tv设备默认为dark且仅支持dark，其他设备默认为light且仅支持light。 |
 | deviceType | string | 否 | 是 | 组件预览渲染的设备类型，默认为Phone。 |
 | dpi | number | 否 | 是 | 预览设备的屏幕DPI值，默认为480。 |
 | orientation | string | 否 | 是 | 预览设备的横竖屏状态，取值为portrait或landscape，默认为portrait。 |
