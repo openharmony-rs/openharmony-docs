@@ -1,14 +1,26 @@
-# ArkTS1.2UI迁移规则
+# 从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配
 
-受ArkTS1.2静态类型系统的影响，ArkUI的语法与接口需适配变化。本指南列出ArkTS1.2中所有变化的UI语法与接口，提供修改代码的建议。
+受ArkTS-Sta静态类型系统的影响，ArkUI的语法与接口需适配变化。本指南列出ArkTS-Sta中所有变化的UI语法与接口，提供代码适配的建议。
 
 ## 使用UI接口前需要导入
 
 **规则：** `arkui-modular-interface`
 
-在ArkTS1.2中，使用UI接口前必须先导入，否则会违反该规则导致报错，非UI接口不会有报错信息。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，使用UI接口前必须先导入，否则会违反该规则导致报错，非UI接口不会有报错信息。
+
+**变更原因：**
+
+在ArkTS-Sta中，使用UI接口时如果不导入，编译会报错。
+
+**适配建议：**
+
+使用UI接口前先导入。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -22,7 +34,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -50,9 +62,21 @@ struct Index {
 
 ### 系统组件参数双向绑定
 
-在ArkTS1.2中，不支持`this.value!!`形式的双向绑定。对于系统组件参数的双向绑定，应改为`$$(this.value)`的形式。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，不支持`this.value!!`形式的双向绑定。对于系统组件参数的双向绑定，应改为`$$(this.value)`的形式。
+
+**变更原因：**
+
+在ArkTS-Sta中，不支持`this.value!!`形式的双向绑定。
+
+**适配建议：**
+
+对于系统组件参数的双向绑定，应改为`$$(this.value)`的形式。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -70,7 +94,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -101,9 +125,21 @@ struct Index {
 
 ### 自定义组件间双向绑定
 
-在ArkTS1.2中，对于自定义组件间的双向绑定，要将原来的双向绑定语法糖展开。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，对于自定义组件间的双向绑定，要将原来的双向绑定语法糖展开。
+
+**变更原因：**
+
+在ArkTS-Dyn中，对于自定义组件间的双向绑定，编译过程中会将双向绑定语法糖展开。在ArkTS-Sta中则不会。
+
+**适配建议：**
+
+对于自定义组件间的双向绑定，要将原来的双向绑定语法糖展开。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -138,7 +174,7 @@ struct Star {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -165,7 +201,7 @@ struct Index {
       Button(`change value`).onClick((e: ClickEvent) => {
         this.value++;
       })
-      // 在ArkTS1.2中，展开双向绑定语法糖
+      // 在ArkTS-Sta中，展开双向绑定语法糖
       Star({
         value: this.value,
         $value: (value: number) => {
@@ -196,9 +232,21 @@ struct Star {
 
 **规则：** `arkui-no-$$-bidirectional-data-binding`
 
-在ArkTS1.2中，不支持`$$this.value`形式的双向绑定，应改为`$$(this.value)`的形式。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，不支持`$$this.value`形式的双向绑定，应改为`$$(this.value)`的形式。
+
+**变更原因：**
+
+在ArkTS-Sta中，不支持`$$this.value`形式的双向绑定。
+
+**适配建议：**
+
+把`$$this.value`改为`$$(this.value)`的形式。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -216,7 +264,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -249,9 +297,21 @@ struct Index {
 
 **规则：** `arkui-link-decorator-passing`
 
-在ArkTS1.2中，不支持`$value`形式的数据绑定，要变更为`this.value`的形式。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，不支持`$value`形式的数据绑定，要变更为`this.value`的形式。
+
+**变更原因：**
+
+在ArkTS-Sta中，不支持`$value`形式的数据绑定。
+
+**适配建议：**
+
+把`$value`变更为`this.value`的形式。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -288,7 +348,7 @@ struct MyCounter {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -345,9 +405,21 @@ struct MyCounter {
 
 **规则：** `arkui-no-extend-decorator`
 
-在ArkTS1.2中，不支持`@Extend`装饰器，使用`@Extend`装饰的函数需要进行修改。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，不支持`@Extend`装饰器，使用`@Extend`装饰的函数需要进行修改。
+
+**变更原因：**
+
+在ArkTS-Sta中，`@Extend`装饰器被废弃。
+
+**适配建议：**
+
+使用`@Extend`装饰的函数需要按照示例进行修改。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Extend(Text)
@@ -367,7 +439,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -402,9 +474,21 @@ struct Index {
 
 **规则：** `arkui-animatableextend-use-receiver`
 
-在ArkTS1.2中，使用`@AnimatableExtend`装饰器装饰的函数需要进行修改。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，使用`@AnimatableExtend`装饰器装饰的函数需要进行修改。
+
+**变更原因：**
+
+受ArkTS-Sta静态类型系统的影响，使用`@AnimatableExtend`装饰器装饰的函数需要进行修改。
+
+**适配建议：**
+
+使用`@AnimatableExtend`装饰器装饰的函数需要按照示例进行修改。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @AnimatableExtend(Text)
@@ -432,7 +516,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -480,11 +564,23 @@ struct Index {
 
 **规则：** `arkui-no-styles-decorator`
 
-在ArkTS1.2中，不支持`@Styles`装饰器。使用`@Styles`装饰器装饰的函数需要进行修改。
+**规则解释：**
+
+在ArkTS-Sta中，不支持`@Styles`装饰器。使用`@Styles`装饰器装饰的函数需要进行修改。
+
+**变更原因：**
+
+在ArkTS-Sta中，`@Styles`装饰器被废弃。
+
+**适配建议：**
+
+使用`@Styles`装饰器装饰的函数需要按照示例进行修改。
 
 ### `@Styles`装饰器装饰全局函数
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Styles
@@ -507,7 +603,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -543,7 +639,9 @@ struct Index {
 
 ### `@Styles`装饰器装饰成员函数
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -566,7 +664,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -605,9 +703,21 @@ struct Index {
 
 **规则：** `arkui-statestyles-block-need-arrow-func`
 
-在ArkTS1.2中，传递给`stateStyles`的匿名代码块必须是箭头函数。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，传递给`stateStyles`的匿名代码块必须是箭头函数。
+
+**变更原因：**
+
+在ArkTS-Dyn中，传递给`stateStyles`的匿名代码块不符合标准语法。
+
+**适配建议：**
+
+把传递给给`stateStyles`的匿名代码块改为箭头函数。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -630,7 +740,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -667,7 +777,9 @@ struct Index {
 
 **规则：** `arkui-data-observation`
 
-在ArkTS1.2中，被特定装饰器装饰的状态变量，如果要实现数据监听，需要为状态变量所属的类添加`@Observed`装饰器。
+**规则解释：**
+
+在ArkTS-Sta中，被特定装饰器装饰的状态变量，如果要实现数据监听，需要为状态变量所属的类添加`@Observed`装饰器。
 
 装饰器范围如下：
 
@@ -681,7 +793,17 @@ struct Index {
 - `@StorageProp`
 - `@StorageLink`
 
-**ArkTS1.1**
+**变更原因：**
+
+受ArkTS-Sta静态类型系统的影响，如果要实现数据监听，需要为状态变量所属的类添加`@Observed`装饰器。
+
+**适配建议：**
+
+为状态变量所属的类添加`@Observed`装饰器。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 class Num {
@@ -705,7 +827,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -746,11 +868,23 @@ struct Index {
 
 **规则：** `arkui-entry-annotation`
 
-在ArkTS1.2中，`@Entry`装饰器不支持传入动态参数，只能接受基础类型的常量。若`@Entry`装饰器没有入参，则不需要进行修改。
+**规则解释：**
+
+在ArkTS-Sta中，`@Entry`装饰器不支持传入动态参数，只能接受基础类型的常量。若`@Entry`装饰器没有入参，则不需要进行修改。
+
+**变更原因：**
+
+在ArkTS-Sta中，`@Entry`装饰器不支持传入动态参数，只能接受基础类型的常量。
+
+**适配建议：**
+
+把`@Entry`装饰器的入参改为基础类型的常量。
 
 ### 参数类型为`LocalStorage`
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 const storage = new LocalStorage();
@@ -763,7 +897,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -787,7 +921,9 @@ struct Index {
 
 ### 参数类型为`EntryOptions`
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 const storage = new LocalStorage();
@@ -800,7 +936,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -826,11 +962,23 @@ struct Index {
 
 **规则：** `arkui-provide-annotation`
 
-ArkTS1.2的`@Provide`装饰器不支持传入联合类型参数，仅接受基础类型常量。若`@Provide`装饰器没有入参，无需修改。
+**规则解释：**
+
+ArkTS-Sta的`@Provide`装饰器不支持传入联合类型参数，仅接受基础类型常量。若`@Provide`装饰器没有入参，无需修改。
+
+**变更原因：**
+
+ArkTS-Sta的`@Provide`装饰器不支持传入联合类型参数，仅接受基础类型常量。
+
+**适配建议：**
+
+把`@Provide`装饰器的入参改为基础类型的常量。
 
 ### 参数类型为`string`
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -845,7 +993,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -870,7 +1018,9 @@ struct Index {
 
 ### 参数类型为`ProvideOptions`
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -885,7 +1035,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -912,9 +1062,21 @@ struct Index {
 
 **规则：** `arkui-custombuilder-passing`
 
-在ArkTS1.2中，`CustomBuilder`类型的参数接收被`@Builder`装饰器装饰的调用函数时，需用匿名箭头函数包裹。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，`CustomBuilder`类型的参数接收被`@Builder`装饰器装饰的调用函数时，需用匿名箭头函数包裹。
+
+**变更原因：**
+
+在ArkTS-Sta中，`CustomBuilder`的接口定义发生变更。
+
+**适配建议：**
+
+`CustomBuilder`类型的参数接收被`@Builder`装饰器装饰的调用函数时，需用匿名箭头函数包裹。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -936,7 +1098,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -975,11 +1137,23 @@ struct Index {
 
 **规则：** `arkui-buildparam-passing`
 
-在ArkTS1.1中，回调函数的执行上下文在调用时指定。
+**规则解释：**
 
-在ArkTS1.2中，回调函数的执行上下文是函数所在的实例对象。
+在ArkTS-Sta中，被`@Builder`装饰器装饰的函数的执行上下文需要在声明时确定。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Dyn中，回调函数的执行上下文在调用时指定。
+
+在ArkTS-Sta中，回调函数的执行上下文是函数所在的实例对象。
+
+**适配建议：**
+
+在声明时就确定被`@Builder`装饰器装饰的函数的执行上下文。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Component
@@ -994,8 +1168,8 @@ struct SuperComponent {
   build() {
     Column() {
       SubComponent({
-        // ArkTS1.1：this指向SubComponent
-        // ArkTS1.2：this指向SuperComponent
+        // ArkTS-Dyn：this指向SubComponent
+        // ArkTS-Sta：this指向SuperComponent
         content: this.builder
       })
     }
@@ -1024,17 +1198,17 @@ struct SubComponent {
 struct TestBuilderParam1 {
   build() {
     Column() {
-      // ArkTS1.1：执行代码后，SuperComponent组件显示的文本内容是'child'
-      // ArkTS1.2：执行相同代码后，SuperComponent组件显示的文本内容是'parent'
+      // ArkTS-Dyn：执行代码后，SuperComponent组件显示的文本内容是'child'
+      // ArkTS-Sta：执行相同代码后，SuperComponent组件显示的文本内容是'parent'
       SuperComponent()
     }
   }
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
-在ArkTS1.2中，为实现与ArkTS1.1相同的运行效果，需改造代码，将状态变量作为回调函数的参数传递。
+在ArkTS-Sta中，为实现与ArkTS-Dyn相同的运行效果，需改造代码，将状态变量作为回调函数的参数传递。
 
 ```typescript
 'use static'
@@ -1100,11 +1274,23 @@ struct TestBuilderParam1 {
 
 **规则：** `arkui-no-update-in-build`
 
-在ArkTS1.2中，禁止在`build`函数中修改状态变量。此类行为会导致运行时异常。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，禁止在`build`函数中修改状态变量。
 
-在ArkTS1.1中，在`build`函数中修改状态变量的行为会导致告警，但代码可以正常运行。
+**变更原因：**
+
+在ArkTS-Dyn中，在`build`函数中修改状态变量的行为会导致告警，但代码可以正常运行。
+
+在在ArkTS-Sta中，在`build`函数中修改状态变量的行为会导致运行时异常。
+
+**适配建议：**
+
+建议把修改状态变量的代码移动到`aboutToAppear`函数中，以避免运行时异常。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -1114,19 +1300,15 @@ struct Index {
 
   build() {
     Column() {
-      // ArkTS1.1：在build函数中修改状态变量的行为会导致告警
-      // ArkTS1.2：在build函数中修改状态变量的行为会导致运行时异常
+      // ArkTS-Dyn：在build函数中修改状态变量的行为会导致告警
+      // ArkTS-Sta：在build函数中修改状态变量的行为会导致运行时异常
       Text(`${this.count++}`)
     }
   }
 }
 ```
 
-**ArkTS1.2**
-
-在ArkTS1.2中，禁止在`build`函数中修改状态变量。此类行为会导致运行时异常。
-
-建议把修改状态变量的代码移动到`aboutToAppear`函数中，以避免运行时异常。
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1160,9 +1342,21 @@ struct Index {
 
 **规则：** `arkui-stateful-appstorage`
 
-在ArkTS1.2中，如果在自定义组件的`build`方法中调用`AppStorage`的`get`、`has`、`keys`或`size`接口，会和组件建立依赖关系。当`AppStorage`中对应的值发生改变时，会触发界面更新。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，当`AppStorage`中对应的值发生改变时，会触发界面更新。
+
+**变更原因：**
+
+在ArkTS-Sta中，如果在自定义组件的`build`方法中调用`AppStorage`的`get`、`has`、`keys`或`size`接口，会和组件建立依赖关系。
+
+**适配建议：**
+
+ArkTS-Sta的处理方式是能力增强，因此仅提示开发者上述情况可能产生的差异。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -1180,21 +1374,33 @@ struct MyComponent {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
-ArkTS1.2的处理方式是能力增强，因此仅提示开发者上述情况可能产生的差异。
+ArkTS-Sta的处理方式是能力增强，因此仅提示开发者上述情况可能产生的差异。
 
 ## `UIUtils.makeObserved`接口不支持监听自定义类
 
 **规则：** `arkui-makeobserved-cannot-observe-custom-class`
 
-在ArkTS1.2中，`UIUtils.makeObserved`不支持监听开发者自定义的类，需要按照如下示例进行修改。
+**规则解释：**
+
+在ArkTS-Sta中，`UIUtils.makeObserved`不支持监听开发者自定义的类，需要按照示例进行修改。
+
+**变更原因：**
+
+在ArkTS-Sta中，`UIUtils.makeObserved`不支持监听开发者自定义的类。
+
+**适配建议：**
+
+按照示例进行修改。
 
 ### `makeObserved`和V1装饰器配合使用
 
 如果`UIUtils.makeObserved`的入参是自定义类的对象，需为该类添加`@Observed`装饰器，并使用`@State`装饰监听的变量。
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 import { UIUtils } from '@kit.ArkUI';
@@ -1222,7 +1428,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1265,7 +1471,9 @@ struct Index {
 
 如果`UIUtils.makeObserved`的入参是自定义类的对象，需为该类添加`@ObservedV2`装饰器，为该类的属性添加`@Trace`装饰器，并使用`@Local`装饰监听的变量。
 
-**ArkTS1.1**
+**示例：**
+
+ArkTS-Dyn
 
 ```TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -1293,7 +1501,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```TypeScript
 'use static'
@@ -1337,9 +1545,21 @@ struct Index {
 
 **规则：** `arkui-no-prop-decorator`、`arkui-no-storageprop-decorator`、`arkui-no-localstorageprop-decorator`
 
-在ArkTS1.2中，不支持`@Prop`、`@StorageProp`和`@LocalStrorageProp`装饰器，要分别用`@PropRef`、`@StoragePropRef`和`@LocalStroragePropRef`装饰器替代。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，不支持`@Prop`、`@StorageProp`和`@LocalStrorageProp`装饰器，要分别用`@PropRef`、`@StoragePropRef`和`@LocalStroragePropRef`装饰器替代。
+
+**变更原因：**
+
+在ArkTS-Sta中，`@Prop`、`@StorageProp`和`@LocalStrorageProp`装饰器被废弃。
+
+**适配建议：**
+
+分别用`@PropRef`、`@StoragePropRef`和`@LocalStroragePropRef`装饰器去替代`@Prop`、`@StorageProp`和`@LocalStrorageProp`装饰器。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 class User {
@@ -1368,7 +1588,7 @@ struct ChildComponent {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1413,11 +1633,21 @@ struct ChildComponent {
 
 **规则：** `arkui-no-prop-function`、`arkui-no-setandprop-function`
 
-**级别：** error
+**规则解释：**
 
-在ArkTS1.2中，由于`LocalStorage.prop`、`LocalStorage.setAndProp`、`AppStorage.prop`和`AppStorage.setAndProp`接口被废弃，所以需使用`LocalStorage.ref`、`LocalStorage.setAndRef`、`AppStorage.ref`和`AppStorage.setAndRef`接口替代。
+在ArkTS-Sta中，不支持`LocalStorage.prop`、`LocalStorage.setAndProp`、`AppStorage.prop`和`AppStorage.setAndProp`接口，要分别用`LocalStorage.ref`、`LocalStorage.setAndRef`、`AppStorage.ref`和`AppStorage.setAndRef`接口替代。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Sta中，`LocalStorage.prop`、`LocalStorage.setAndProp`、`AppStorage.prop`和`AppStorage.setAndProp`接口被废弃。
+
+**适配建议：**
+
+分别用`LocalStorage.ref`、`LocalStorage.setAndRef`、`AppStorage.ref`和`AppStorage.setAndRef`接口去替代`LocalStorage.prop`、`LocalStorage.setAndProp`、`AppStorage.prop`和`AppStorage.setAndProp`接口。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 AppStorage.setOrCreate('PropA', 47);
@@ -1440,7 +1670,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1478,9 +1708,21 @@ struct Index {
 
 **规则：** `arkui-no-localbuilder-decorator`
 
-在ArkTS1.2中，`@LocalBuilder`装饰器和`@Builder`装饰器的作用相同，因此废弃`@LocalBuilder`装饰器，用`@Builder`装饰器替代。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，不支持`@LocalBuilder`装饰器，用`@Builder`装饰器替代。
+
+**变更原因：**
+
+在ArkTS-Sta中，`@LocalBuilder`装饰器和`@Builder`装饰器的作用相同，因此废弃`@LocalBuilder`装饰器。
+
+**适配建议：**
+
+用`@Builder`装饰器替代`@LocalBuilder`装饰器。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -1503,7 +1745,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1542,9 +1784,21 @@ struct Index {
 
 **规则：** `arkui-custom-layout-need-add-decorator`
 
-在ArkTS1.2中，自定义组件需要组件加上`@CustomLayout`装饰器，才能获得自定义布局能力。
+**规则解释：**
 
-**ArkTS1.1**
+在ArkTS-Sta中，自定义组件需要加上`@CustomLayout`装饰器，才能获得自定义布局能力。
+
+**变更原因：**
+
+受ArkTS-Sta静态类型系统的影响，自定义组件需要组件加上`@CustomLayout`装饰器，才能获得自定义布局能力。
+
+**适配建议：**
+
+为自定义组件加上`@CustomLayout`装饰器。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -1607,7 +1861,7 @@ struct MyComponent {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1696,11 +1950,23 @@ struct MyComponent {
 
 **规则：** `arkui-repeat-disable-default-virtualscroll`
 
-在ArkTS1.1中，`Repate`默认渲染全部子组件。
+**规则解释：**
 
-在ArkTS1.2中，`Repeat`默认支持懒加载，如果想要渲染全部子组件，需要禁用默认的懒加载。
+在ArkTS-Sta中，如果想要渲染全部子组件，需要禁用`Repeat`的默认懒加载。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Dyn中，`Repate`默认渲染全部子组件。
+
+在ArkTS-Sta中，`Repeat`默认支持懒加载，如果想要渲染全部子组件，需要禁用默认的懒加载。
+
+**适配建议：**
+
+禁用`Repeat`的默认懒加载。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Entry
@@ -1732,7 +1998,7 @@ struct Index {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1782,11 +2048,21 @@ struct Index {
 
 **规则：** `arkui-wrappedbuilder-require-arrow-func-generic`
 
-**级别：** error
+**规则解释：**
 
-在ArkTS1.2中，使用`WrappedBuilder`时，必须添加泛型，且泛型的参数必须为箭头函数。
+在ArkTS-Sta中，使用`WrappedBuilder`时，必须添加泛型，且泛型的参数必须为箭头函数。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Sta中，`WrappedBuilder`的接口定义发生变更。
+
+**适配建议：**
+
+使用`WrappedBuilder`时，添加参数为箭头函数的泛型。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 @Builder
@@ -1816,7 +2092,7 @@ struct TestWrappedBuilder1 {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1862,11 +2138,21 @@ struct TestWrappedBuilder1 {
 
 **规则：** `arkui-wrapbuilder-require-arrow-func-generic`
 
-**级别：** error
+**规则解释：**
 
-在ArkTS1.2中，`wrapBuilder`的泛型是可选的。如果指定了泛型，则其参数必须为箭头函数。
+在ArkTS-Sta中，`wrapBuilder`的泛型是可选的。如果指定了泛型，则其参数必须为箭头函数。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Sta中，`WrappedBuilder`的接口定义发生变更。
+
+**适配建议：**
+
+把`wrapBuilder`的泛型参数改为箭头函数的形式。
+
+**示例：**
+
+ArkTS-Dyn
  
 ```typescript
 @Builder
@@ -1896,7 +2182,7 @@ struct TestWrappedBuilder1 {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -1943,11 +2229,21 @@ struct TestWrappedBuilder1 {
 
 **规则：** `arkui-buildernode-generic-no-tuple`
 
-**级别：** error
+**规则解释：**
 
-在ArkTS1.2中，`BuilderNode`的泛型参数不能为元组，需要进行修改。
+在ArkTS-Sta中，`BuilderNode`的泛型参数不能为元组，需要进行修改。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Sta中，`BuilderNode`的接口定义发生变更。
+
+**适配建议：**
+
+如果`BuilderNode`的泛型参数为元组，就按照示例进行修改。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 import { BuilderNode, NodeController, FrameNode } from '@kit.ArkUI';
@@ -1975,7 +2271,7 @@ class MyNodeController extends NodeController {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -2010,11 +2306,21 @@ class MyNodeController extends NodeController {
 
 **规则：** `arkui-buildernode-update-no-literal`
 
-**级别：** error
+**规则解释：**
 
-在ArkTS1.2中，`BuilderNode`的`update`接口的入参不能是字面量。需要将字面量替换为新建`BuilderNode`节点时泛型中指定的类的实例，并确保该实例具有和字面量相同的字段值。
+在ArkTS-Sta中，`BuilderNode`的`update`接口的入参不能是字面量。需要将字面量替换为新建`BuilderNode`节点时泛型中指定的类的实例，并确保该实例具有和字面量相同的字段值。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Sta中，`BuilderNode`的`update`接口的定义发生变更。
+
+**适配建议：**
+
+将字面量替换为新建`BuilderNode`节点时泛型中指定的类的实例，并确保该实例具有和字面量相同的字段值。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 import { NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
@@ -2061,7 +2367,7 @@ class MyNodeController extends NodeController {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -2115,11 +2421,21 @@ class MyNodeController extends NodeController {
 
 **规则：** `arkui-buildernode-no-nestingbuildersupported`
 
-**级别：** error
+**规则解释：**
 
-在ArkTS1.2中，不支持`nestingBuilderSupported`属性。如果`BuilderNode`中`build`接口的入参中包含该属性，需要按照示例进行修改。
+在ArkTS-Sta中，不支持`nestingBuilderSupported`属性。如果`BuilderNode`中`build`接口的入参中包含该属性，需要按照示例进行修改。
 
-**ArkTS1.1**
+**变更原因：**
+
+在ArkTS-Sta中，不支持`nestingBuilderSupported`属性。
+
+**适配建议：**
+
+如果`BuilderNode`中`build`接口的入参中包含`nestingBuilderSupported`属性，需要按照示例进行修改。
+
+**示例：**
+
+ArkTS-Dyn
 
 ```typescript
 import { NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
@@ -2155,7 +2471,7 @@ class MyNodeController extends NodeController {
 }
 ```
 
-**ArkTS1.2**
+ArkTS-Sta
 
 ```typescript
 'use static'
@@ -2194,6 +2510,89 @@ class MyNodeController extends NodeController {
     }
 
     return this.frameNode;
+  }
+}
+```
+
+## 已废弃的高频UI接口用`UIContext`提供的接口作为替代
+
+**规则：** `arkui-deprecated-interface`
+
+**规则解释：**
+
+在ArkTS-Sta中，对于使用频率较高的废弃UI接口，迁移工具提供自动修复能力。
+
+**变更原因：**
+
+在ArkTS-Sta中，部分UI接口被废弃。
+
+**适配建议：**
+
+按照示例进行修改。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context: Context = getContext(this) as Context;
+            console.info("CacheDir:" + context.cacheDir);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta
+
+```typescript
+'use static'
+import {
+  Entry,
+  Component,
+  State,
+  Row,
+  Column,
+  Text,
+  FontWeight,
+  Context,
+  UIContext,
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context: Context = UIContext.getFocusedUIContext()!.getHostContext() as Context;
+            console.info("CacheDir:" + context.cacheDir);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }
 ```
