@@ -156,21 +156,15 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 **示例：**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
-  wifiManagerExt.getSupportedPowerMode((err, data:wifiManagerExt.PowerMode[]) => {
-      if (err) {
-          console.error("get supported power mode info error");
-          return;
-      }
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  });
-
-  wifiManagerExt.getSupportedPowerMode().then(data => {
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  }).catch((error) => {
-      console.error("get supported power mode error");
-  });
+wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => {
+    if (err) {
+        console.error("get supported power mode info error: ", err);
+        return;
+    }
+    console.info("get supported power mode info: " + JSON.stringify(data));
+});
 ```
 
 ## wifiManagerExt.getPowerMode<sup>9+</sup>
