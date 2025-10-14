@@ -1084,10 +1084,10 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                    | 只读 || 可选 | 说明     |
-| ------------------- | -------------------------------------- | ---- || ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 否   || 是   | 通话类型。 |
-| number              | string                                 | 否   || 是   | 电话号码。 |
+|     名称            |                 类型                    | 只读 | 可选 | 说明     |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 是   | 通话类型。 |
+| number              | string                                 | 否   | 是   | 电话号码。 |
 
 
 ## DataConnectionStateInfo<sup>11+</sup>
