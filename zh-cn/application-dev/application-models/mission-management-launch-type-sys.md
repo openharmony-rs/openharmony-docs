@@ -1,4 +1,4 @@
-# 任务（Mission）与启动模式
+# 任务（Mission）与启动模式（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
