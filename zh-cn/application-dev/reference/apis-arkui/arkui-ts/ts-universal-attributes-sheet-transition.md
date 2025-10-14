@@ -105,8 +105,8 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 | 名称                      | 值    | 说明                         |
 | ------------------------- | ---- | -------------------------------- |
-| MEDIUM                    | 0    | 指定半模态高度为屏幕高度一半。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| LARGE                     | 1    | 指定半模态高度几乎为屏幕高度。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| MEDIUM                    | 0    | 指定半模态高度为半模态所在窗口的60%。<br />在TV设备上半模态高度为半模态所在窗口的50%。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| LARGE                     | 1    | 指定半模态高度几乎为半模态所在窗口的高度。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | FIT_CONTENT<sup>11+</sup> | 2    | 指定半模态高度为适应内容的高度。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**说明：**<br />FIT_CONTENT是半模态容器高度去适应孩子builder根节点的布局。此场景下builder根节点的高度不能使用百分比，两者不能相互依赖彼此的布局。 |
 
 ## HoverModeAreaType<sup>14+</sup>
