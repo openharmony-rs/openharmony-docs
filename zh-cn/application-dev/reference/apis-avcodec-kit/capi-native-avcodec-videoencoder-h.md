@@ -87,13 +87,13 @@ enum OH_VideoEncodeBitrateMode
 
 **废弃版本：** 14
 
-**替代接口：** [OH_BitrateMode](_codec_base.md#oh_bitratemode-1)
+**替代接口：** [OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode)
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CBR = 0 | 恒定码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CBR](_codec_base.md#oh_bitratemode-1) |
-| VBR = 1 | 可变码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_VBR](_codec_base.md#oh_bitratemode-1) |
-| CQ = 2 | 恒定QP模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CQ](_codec_base.md#oh_bitratemode-1) |
+| CBR = 0 | 恒定码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
+| VBR = 1 | 可变码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
+| CQ = 2 | 恒定QP模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode) |
 
 
 ## 函数说明
@@ -222,7 +222,7 @@ OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
-| [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) callback | 所有回调函数的集合。 |
+| [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | 所有回调函数的集合。 |
 | void *userData | 开发者执行回调所依赖的数据。 |
 
 **返回：**
@@ -305,7 +305,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 | OH_MD_KEY_HEIGHT | AV_ERR_OK | AV_ERR_INVALID_VAL | AV_ERR_INVALID_VAL |
 | OH_MD_KEY_PIXEL_FORMAT 请参阅[OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat) | AV_ERR_OK | AV_ERR_UNSUPPORT | AV_ERR_OK    |
 | OH_MD_KEY_FRAME_RATE | AV_ERR_OK | AV_ERR_INVALID_VAL | AV_ERR_OK |
-| OH_MD_KEY_PROFILE 请参阅[OH_MD_KEY_PROFILE](_codec_base.md#oh_md_key_profile)    | AV_ERR_OK | AV_ERR_INVALID_VAL | AV_ERR_OK | 
+| OH_MD_KEY_PROFILE 请参阅[OH_MD_KEY_PROFILE](capi-native-avcodec-base-h.md#变量)    | AV_ERR_OK | AV_ERR_INVALID_VAL | AV_ERR_OK | 
 | OH_MD_KEY_I_FRAME_INTERVAL | AV_ERR_OK |  \\       | AV_ERR_OK | 
 
 | OH_MD_KEY_<br>BITRATE | OH_MD_KEY_<br>QUALITY | OH_MD_KEY_<br>VIDEO_ENCODER_BITRATE_MODE | 返回值 | 说明     |

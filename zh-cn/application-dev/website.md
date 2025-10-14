@@ -4864,7 +4864,7 @@
         - 头文件<!--avcodec-headerfile-->
           - [native_avcapability.h](reference/apis-avcodec-kit/capi-native-avcapability-h.md)
           - [native_avcodec_audiocodec.h](reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)
-          - [native_avcodec_base.h](reference/apis-avcodec-kit/ncapi-native-avcodec-base-h.md)
+          - [native_avcodec_base.h](reference/apis-avcodec-kit/capi-native-avcodec-base-h.md)
           - [media_types.h](reference/apis-avcodec-kit/capi-media-types-h.md)
           - [native_audio_channel_layout.h](reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md)
           - [native_avbuffer.h](reference/apis-avcodec-kit/capi-native-avbuffer-h.md)

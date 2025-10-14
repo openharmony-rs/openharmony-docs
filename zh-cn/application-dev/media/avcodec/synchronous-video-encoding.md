@@ -98,7 +98,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     - videoEnc：视频编码器实例的指针。
     - capability：编码器能力查询实例的指针。
-    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-codecbase.md#oh_avcodec_mimetype_video_avc)：AVC格式视频编解码器。
+    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)：AVC格式视频编解码器。
 
     ```c++
     // 创建硬件编码器实例。
