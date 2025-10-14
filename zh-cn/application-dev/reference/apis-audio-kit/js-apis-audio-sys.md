@@ -4632,3 +4632,176 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 ```ts
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
 ```
+
+## RenderTarget<sup>22+</sup>
+
+枚举，音频渲染器的渲染目标。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                               |  值     | 说明                       |
+| ---------------------------------- | ------ | ------------------------- |
+| PLAYBACK                           | 0      | 播放模式（音频渲染器的默认模式）。<br>在此模式下，音频将通过音频渲染器正常播放。 |
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，音频渲染器的输出将被注入到VOIP录音流上。 |
+
+### setTarget<sup>22+</sup>
+
+setTarget(target: RenderTarget): Promise&lt;void&gt;
+
+设置音频渲染器的渲染目标。使用Promise异步回调。
+
+> **说明：**
+>
+> - 此方法仅可在音频渲染器未处于运行或释放状态时调用，否则将返回错误。
+> - 将渲染目标更改为非[PLAYBACK](#rendertarget22)的模式后：
+>   - 该音频渲染器的音频路由与中断策略将无法使用[AudioSessionManager](arkts-apis-audio-AudioSessionManager.md)相关接口。
+>   - 该音频渲染器的device type为[SYSTEM_PRIVATE](arkts-apis-audio-e.md#devicetype)。
+>   - 调用[Start](arkts-apis-audio-AudioRenderer.md#start8)且audio scene不为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
+>   - 调用[getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8)或[getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
+>   - 调用[getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
+>   - 调用[setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
+
+**需要权限：** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+仅设置渲染目标为[INJECT_TO_VOICE_COMMUNICATION_CAPTURE](#rendertarget22)时需要该权限。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名                 | 类型                                                         | 必填 | 说明                      |
+| ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| target | [RenderTarget](#rendertarget22) | 是 | 设置音频渲染目标。 |
+
+**返回值：**
+
+| 类型                  | 说明                         |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201     | Permission denied.      |
+| 202     | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at running and release state. |
+| 6800104 | Current renderer is not supported to set target. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example() {
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+
+  try {
+    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+
+    // 设置为注入模式。
+    audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+    console.info('setTarget INJECT_TO_VOICE_COMMUNICATION_CAPTURE');
+
+    // 设置为普通播放模式。
+    audioRenderer.setTarget(audio.RenderTarget.PLAYBACK);
+    console.info('setTarget PLAYBACK');
+
+  } catch (err) {
+    console.error(AudioFrameworkRenderLog: Error : ${err.message});
+  }
+}
+```
+
+### getTarget<sup>22+</sup>
+
+getTarget(): RenderTarget
+
+获取当前音频渲染器的渲染目标。
+
+> **说明：**
+>
+> - 若未更改过渲染目标，将返回默认值[PLAYBACK](#rendertarget22)。
+> - 若调用此接口前，已经调用过[SetTarget](#settarget22)，请确保[SetTarget](#settarget22)的Promise对象已成功解析，否则获取到的数值可能不准确。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**返回值：**
+
+| 类型                                           | 说明                          |
+|----------------------------------------------| ----------------------------- |
+| [RenderTarget](#rendertarget22) | 返回音频渲染器的渲染目标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------ | -------------------------|
+| 202 | Caller is not a system application. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example() {
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+
+  try {
+    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+
+    // 可选步骤：设置注入模式。
+    await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+    console.info('setTarget success');
+
+    // 获取音频渲染器的当前渲染目标。
+    let renderTarget = audioRenderer.getTarget();
+  } catch (err) {
+    console.error(AudioFrameworkRenderLog: Error : ${err.message});
+  }
+}
+```
