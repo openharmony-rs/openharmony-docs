@@ -4617,11 +4617,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称     | 类型                | 可读   | 可写   | 说明          |
+| 名称     | 类型                | 只读   | 可选   | 说明          |
 | ------ | ------------------- | ---- | ---- | ----------- |
-| uuid   | string              | 是    | 是    | spp单据的uuid。 |
-| secure | boolean             | 是    | 是    | 是否是安全通道。    |
-| type   | [SppType](#spptypedeprecated) | 是    | 是    | Spp链路类型。    |
+| uuid   | string              | 否    | 否    | spp单据的uuid。 |
+| secure | boolean             | 否    | 否    | 是否是安全通道。    |
+| type   | [SppType](#spptypedeprecated) | 否    | 否    | Spp链路类型。    |
 
 
 ## SppType<sup>(deprecated)</sup>
@@ -4647,12 +4647,12 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称              | 类型                                     | 可读   | 可写   | 说明                                       |
+| 名称              | 类型                                     | 只读   | 可选   | 说明                                       |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid     | string                                   | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| isPrimary       | boolean                                  | 是    | 是    | 如果是主服务设置为true，否则设置为false。                |
-| characteristics | Array&lt;[BLECharacteristic](#blecharacteristicdeprecated)&gt; | 是    | 是    | 当前服务包含的特征列表。                             |
-| includeServices | Array&lt;[GattService](#gattservicedeprecated)&gt; | 是    | 是    | 当前服务依赖的其它服务。                             |
+| serviceUuid     | string                                   | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| isPrimary       | boolean                                  | 否    | 否    | 如果是主服务设置为true，否则设置为false。                |
+| characteristics | Array&lt;[BLECharacteristic](#blecharacteristicdeprecated)&gt; | 否    | 否    | 当前服务包含的特征列表。                             |
+| includeServices | Array&lt;[GattService](#gattservicedeprecated)&gt; | 否    | 是    | 当前服务依赖的其它服务。                             |
 
 
 ## BLECharacteristic<sup>(deprecated)</sup>
@@ -4664,12 +4664,12 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                  | 类型                                     | 可读   | 可写   | 说明                                 |
+| 名称                  | 类型                                     | 只读   | 可选   | 说明                                 |
 | ------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string                                   | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid  | string                                   | 是    | 是    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| characteristicValue | ArrayBuffer                              | 是    | 是    | 特征对应的二进制值。                      |
-| descriptors         | Array&lt;[BLEDescriptor](#bledescriptordeprecated)&gt; | 是    | 是    | 特定特征的描述符列表。                |
+| serviceUuid         | string                                   | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid  | string                                   | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| characteristicValue | ArrayBuffer                              | 否    | 否    | 特征对应的二进制值。                      |
+| descriptors         | Array&lt;[BLEDescriptor](#bledescriptordeprecated)&gt; | 否    | 否    | 特定特征的描述符列表。                |
 
 
 ## BLEDescriptor<sup>(deprecated)</sup>
@@ -4681,12 +4681,12 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型        | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型        | 只读   | 可选   | 说明                                       |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid        | string      | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid | string      | 是    | 是    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| descriptorUuid     | string      | 是    | 是    | 描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
-| descriptorValue    | ArrayBuffer | 是    | 是    | 描述符对应的二进制值。                              |
+| serviceUuid        | string      | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid | string      | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| descriptorUuid     | string      | 否    | 否    | 描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
+| descriptorValue    | ArrayBuffer | 否    | 否    | 描述符对应的二进制值。                              |
 
 
 ## NotifyCharacteristic<sup>(deprecated)</sup>
@@ -4698,12 +4698,12 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                  | 类型        | 可读   | 可写   | 说明                                       |
+| 名称                  | 类型        | 只读   | 可选   | 说明                                       |
 | ------------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string      | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid  | string      | 是    | 是    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| characteristicValue | ArrayBuffer | 是    | 是    | 特征对应的二进制值。                               |
-| confirm             | boolean     | 是    | 是    | 如果是notification则对端回复确认设置为true，如果是indication则对端不需要回复确认设置为false。 |
+| serviceUuid         | string      | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid  | string      | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| characteristicValue | ArrayBuffer | 否    | 否    | 特征对应的二进制值。                               |
+| confirm             | boolean     | 否    | 否    | 如果是notification则对端回复确认设置为true，如果是indication则对端不需要回复确认设置为false。 |
 
 
 ## CharacteristicReadRequest<sup>(deprecated)</sup>
@@ -4715,13 +4715,13 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型   | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型   | 只读   | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | 是    | 否    | 表示发送特征值读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number | 是    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number | 是    | 否    | 表示读特征值数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
-| characteristicUuid | string | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string | 否    | 否    | 表示发送特征值读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number | 否    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number | 否    | 否    | 表示读特征值数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
+| characteristicUuid | string | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## CharacteristicWriteRequest<sup>(deprecated)</sup>
@@ -4733,16 +4733,16 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型   | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型   | 只读   | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | 是    | 否    | 表示发送特征值写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number | 是    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number | 是    | 否    | 表示写特征值数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
-| isPrep             | boolean | 是    | 否    | 表示写请求是否立即执行。true表示立即执行。 |
-| needRsp            | boolean | 是    | 否    | 表示是否要给client端回复响应。true表示需要回复。 |
-| value              | ArrayBuffer | 是    | 否    | 表示写入的描述符二进制数据。 |
-| characteristicUuid | string | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string | 否    | 否    | 表示发送特征值写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number | 否    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number | 否    | 否    | 表示写特征值数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
+| isPrep             | boolean | 否    | 否    | 表示写请求是否立即执行。true表示立即执行。 |
+| needRsp            | boolean | 否    | 否    | 表示是否要给client端回复响应。true表示需要回复。 |
+| value              | ArrayBuffer | 否    | 否    | 表示写入的描述符二进制数据。 |
+| characteristicUuid | string | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## DescriptorReadRequest<sup>(deprecated)</sup>
@@ -4754,14 +4754,14 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型   | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型   | 只读   | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | 是    | 否    | 表示发送描述符读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number | 是    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number | 是    | 否    | 表示读描述符数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
-| descriptorUuid     | string | 是    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid | string | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string | 否    | 否    | 表示发送描述符读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number | 否    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number | 否    | 否    | 表示读描述符数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
+| descriptorUuid     | string | 否    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid | string | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## DescriptorWriteRequest<sup>(deprecated)</sup>
@@ -4773,17 +4773,17 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型        | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型        | 只读   | 可选   | 说明                                       |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| deviceId           | string      | 是    | 否    | 表示发送描述符写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number      | 是    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number      | 是    | 否    | 表示写描述符数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
-| isPrep             | boolean     | 是    | 否    | 表示写请求是否立即执行。                             |
-| needRsp            | boolean     | 是    | 否    | 表示是否要给client端回复响应。                       |
-| value              | ArrayBuffer | 是    | 否    | 表示写入的描述符二进制数据。                           |
-| descriptorUuid     | string      | 是    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid | string      | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string      | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string      | 否    | 否    | 表示发送描述符写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number      | 否    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number      | 否    | 否    | 表示写描述符数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
+| isPrep             | boolean     | 否    | 否    | 表示写请求是否立即执行。                             |
+| needRsp            | boolean     | 否    | 否    | 表示是否要给client端回复响应。                       |
+| value              | ArrayBuffer | 否    | 否    | 表示写入的描述符二进制数据。                           |
+| descriptorUuid     | string      | 否    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid | string      | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string      | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## ServerResponse<sup>(deprecated)</sup>
@@ -4795,13 +4795,13 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型        | 可读   | 可写   | 说明                                     |
+| 名称       | 类型        | 只读   | 可选   | 说明                                     |
 | -------- | ----------- | ---- | ---- | -------------------------------------- |
-| deviceId | string      | 是    | 否    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。       |
-| transId  | number      | 是    | 否    | 表示请求的传输ID，与订阅的读/写请求事件携带的ID保持一致。        |
-| status   | number      | 是    | 否    | 表示响应的状态，设置为0即可，表示正常。                   |
-| offset   | number      | 是    | 否    | 表示请求的读/写起始位置，与订阅的读/写请求事件携带的offset保持一致。 |
-| value    | ArrayBuffer | 是    | 否    | 表示回复响应的二进制数据。                          |
+| deviceId | string      | 否    | 否    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。       |
+| transId  | number      | 否    | 否    | 表示请求的传输ID，与订阅的读/写请求事件携带的ID保持一致。        |
+| status   | number      | 否    | 否    | 表示响应的状态，设置为0即可，表示正常。                   |
+| offset   | number      | 否    | 否    | 表示请求的读/写起始位置，与订阅的读/写请求事件携带的offset保持一致。 |
+| value    | ArrayBuffer | 否    | 否    | 表示回复响应的二进制数据。                          |
 
 
 ## BLEConnectChangedState<sup>(deprecated)</sup>
@@ -4813,10 +4813,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称     | 类型                                          | 可读 | 可写 | 说明                                          |
+| 名称     | 类型                                          | 只读 | 可选 | 说明                                          |
 | -------- | ------------------------------------------------- | ---- | ---- | --------------------------------------------- |
-| deviceId | string                                            | 是   | 否   | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 是   | 是   | 表示BLE连接状态的枚举。                       |
+| deviceId | string                                            | 否   | 否   | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 否   | 否   | 表示BLE连接状态的枚举。                       |
 
 
 ## ProfileConnectionState<sup>(deprecated)</sup>
@@ -4845,19 +4845,19 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                                     | 类型    | 可读 | 可写 | 说明                                                         |
+| 名称                                     | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------------------------- | ----------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | 是   | 是   | 表示过滤的BLE设备地址，例如："XX:XX:XX:XX:XX:XX"。           |
-| name                                     | string      | 是   | 是   | 表示过滤的BLE设备名。                                        |
-| serviceUuid                              | string      | 是   | 是   | 表示过滤包含该UUID服务的设备，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| serviceUuidMask             | string      | 是   | 是   | 表示过滤包含该UUID服务掩码的设备，例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
-| serviceSolicitationUuid     | string      | 是   | 是   | 表示过滤包含该UUID服务请求的设备，例如：00001888-0000-1000-8000-00805F9B34FB。 |
-| serviceSolicitationUuidMask | string      | 是   | 是   | 表示过滤包含该UUID服务请求掩码的设备，例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
-| serviceData                 | ArrayBuffer | 是   | 是   | 表示过滤包含该服务相关数据的设备，例如：[0x90,0x00,0xF1,0xF2]。 |
-| serviceDataMask             | ArrayBuffer | 是   | 是   | 表示过滤包含该服务相关数据掩码的设备，例如：[0xFF,0xFF,0xFF,0xFF]。 |
-| manufactureId               | number      | 是   | 是   | 表示过滤包含该制造商ID的设备，例如：0x0006。                 |
-| manufactureData             | ArrayBuffer | 是   | 是   | 表示过滤包含该制造商相关数据的设备，例如：[0x1F,0x2F,0x3F]。 |
-| manufactureDataMask         | ArrayBuffer | 是   | 是   | 表示过滤包含该制造商相关数据掩码的设备，例如：[0xFF,0xFF,0xFF]。 |
+| deviceId                                 | string      | 否   | 是   | 表示过滤的BLE设备地址，例如："XX:XX:XX:XX:XX:XX"。           |
+| name                                     | string      | 否   | 是   | 表示过滤的BLE设备名。                                        |
+| serviceUuid                              | string      | 否   | 是   | 表示过滤包含该UUID服务的设备，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| serviceUuidMask             | string      | 否   | 是   | 表示过滤包含该UUID服务掩码的设备，例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
+| serviceSolicitationUuid     | string      | 否   | 是   | 表示过滤包含该UUID服务请求的设备，例如：00001888-0000-1000-8000-00805F9B34FB。 |
+| serviceSolicitationUuidMask | string      | 否   | 是   | 表示过滤包含该UUID服务请求掩码的设备，例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
+| serviceData                 | ArrayBuffer | 否   | 是   | 表示过滤包含该服务相关数据的设备，例如：[0x90,0x00,0xF1,0xF2]。 |
+| serviceDataMask             | ArrayBuffer | 否   | 是   | 表示过滤包含该服务相关数据掩码的设备，例如：[0xFF,0xFF,0xFF,0xFF]。 |
+| manufactureId               | number      | 否   | 是   | 表示过滤包含该制造商ID的设备，例如：0x0006。                 |
+| manufactureData             | ArrayBuffer | 否   | 是   | 表示过滤包含该制造商相关数据的设备，例如：[0x1F,0x2F,0x3F]。 |
+| manufactureDataMask         | ArrayBuffer | 否   | 是   | 表示过滤包含该制造商相关数据掩码的设备，例如：[0xFF,0xFF,0xFF]。 |
 
 
 ## ScanOptions<sup>(deprecated)</sup>
@@ -4869,11 +4869,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称        | 类型                    | 可读   | 可写   | 说明                                     |
+| 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | --------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| interval  | number                  | 是    | 是    | 表示扫描结果上报延迟时间，默认值为0。                    |
-| dutyMode  | [ScanDuty](#scandutydeprecated)   | 是    | 是    | 表示扫描模式，默认值为SCAN_MODE_LOW_POWER。        |
-| matchMode | [MatchMode](#matchmodedeprecated) | 是    | 是    | 表示硬件的过滤匹配模式，默认值为MATCH_MODE_AGGRESSIVE。 |
+| interval  | number                  | 否    | 是    | 表示扫描结果上报延迟时间，默认值为0。                    |
+| dutyMode  | [ScanDuty](#scandutydeprecated)   | 否    | 是    | 表示扫描模式，默认值为SCAN_MODE_LOW_POWER。        |
+| matchMode | [MatchMode](#matchmodedeprecated) | 否    | 是    | 表示硬件的过滤匹配模式，默认值为MATCH_MODE_AGGRESSIVE。 |
 
 
 ## ScanDuty<sup>(deprecated)</sup>
@@ -4916,11 +4916,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型        | 可读   | 可写   | 说明                                 |
+| 名称       | 类型        | 只读   | 可选   | 说明                                 |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | 是    | 否    | 表示扫描到的设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| rssi     | number      | 是    | 否    | 表示扫描到的设备的rssi值。                    |
-| data     | ArrayBuffer | 是    | 否    | 表示扫描到的设备发送的广播包。                    |
+| deviceId | string      | 否    | 否    | 表示扫描到的设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| rssi     | number      | 否    | 否    | 表示扫描到的设备的rssi值。                    |
+| data     | ArrayBuffer | 否    | 否    | 表示扫描到的设备发送的广播包。                    |
 
 
 ## BluetoothState<sup>(deprecated)</sup>
@@ -4952,11 +4952,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称          | 类型    | 可读   | 可写   | 说明                                       |
+| 名称          | 类型    | 只读   | 可选   | 说明                                       |
 | ----------- | ------- | ---- | ---- | ---------------------------------------- |
-| interval    | number  | 是    | 是    | 表示广播间隔，最小值设置32个slot表示20ms，最大值设置16384个slot，默认值设置为1600个slot表示1s。 |
-| txPower     | number  | 是    | 是    | 表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。   |
-| connectable | boolean | 是    | 是    | 表示是否是可连接广播，默认值设置为true。                   |
+| interval    | number  | 否    | 是    | 表示广播间隔，最小值设置32个slot表示20ms，最大值设置16384个slot，默认值设置为1600个slot表示1s。 |
+| txPower     | number  | 否    | 是    | 表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。   |
+| connectable | boolean | 否    | 是    | 表示是否是可连接广播，默认值设置为true。                   |
 
 
 ## AdvertiseData<sup>(deprecated)</sup>
@@ -4968,11 +4968,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称              | 类型                                     | 可读   | 可写   | 说明                          |
+| 名称              | 类型                                     | 只读   | 可选   | 说明                          |
 | --------------- | ---------------------------------------- | ---- | ---- | --------------------------- |
-| serviceUuids    | Array&lt;string&gt;                      | 是    | 是    | 表示要广播的服务&nbsp;UUID&nbsp;列表。 |
-| manufactureData | Array&lt;[ManufactureData](#manufacturedatadeprecated)&gt; | 是    | 是    | 表示要广播的广播的制造商信息列表。           |
-| serviceData     | Array&lt;[ServiceData](#servicedatadeprecated)&gt; | 是    | 是    | 表示要广播的服务数据列表。               |
+| serviceUuids    | Array&lt;string&gt;                      | 否    | 否    | 表示要广播的服务&nbsp;UUID&nbsp;列表。 |
+| manufactureData | Array&lt;[ManufactureData](#manufacturedatadeprecated)&gt; | 否    | 否    | 表示要广播的广播的制造商信息列表。           |
+| serviceData     | Array&lt;[ServiceData](#servicedatadeprecated)&gt; | 否    | 否    | 表示要广播的服务数据列表。               |
 
 
 ## ManufactureData<sup>(deprecated)</sup>
@@ -4984,10 +4984,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称               | 类型                | 可读   | 可写   | 说明                 |
+| 名称               | 类型                | 只读   | 可选   | 说明                 |
 | ---------------- | ------------------- | ---- | ---- | ------------------ |
-| manufactureId    | number  | 是    | 是    | 表示制造商的ID，由蓝牙SIG分配。 |
-| manufactureValue | ArrayBuffer         | 是    | 是    | 表示制造商发送的制造商数据。     |
+| manufactureId    | number  | 否    | 否    | 表示制造商的ID，由蓝牙SIG分配。 |
+| manufactureValue | ArrayBuffer         | 否    | 否    | 表示制造商发送的制造商数据。     |
 
 
 ## ServiceData<sup>(deprecated)</sup>
@@ -4999,10 +4999,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称           | 类型        | 可读   | 可写   | 说明         |
+| 名称           | 类型        | 只读   | 可选   | 说明         |
 | ------------ | ----------- | ---- | ---- | ---------- |
-| serviceUuid  | string      | 是    | 是    | 表示服务的UUID。 |
-| serviceValue | ArrayBuffer | 是    | 是    | 表示服务数据。    |
+| serviceUuid  | string      | 否    | 否    | 表示服务的UUID。 |
+| serviceValue | ArrayBuffer | 否    | 否    | 表示服务数据。    |
 
 
 ## PinRequiredParam<sup>(deprecated)</sup>
@@ -5014,10 +5014,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型   | 可读   | 可写   | 说明          |
+| 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | 是    | 否    | 表示要配对的设备ID。 |
-| pinCode  | string | 是    | 否    | 表示要配对的密钥。   |
+| deviceId | string | 否    | 否    | 表示要配对的设备ID。 |
+| pinCode  | string | 否    | 否    | 表示要配对的密钥。   |
 
 
 ## BondStateParam<sup>(deprecated)</sup>
@@ -5029,10 +5029,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型   | 可读   | 可写   | 说明          |
+| 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | 是    | 否    | 表示要配对的设备ID。 |
-| state    | BondState   | 是    | 否    | 表示配对设备的状态。 |
+| deviceId | string      | 否    | 否    | 表示要配对的设备ID。 |
+| state    | BondState   | 否    | 否    | 表示配对设备的状态。 |
 
 
 ## StateChangeParam<sup>(deprecated)</sup>
@@ -5044,10 +5044,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称     | 类型                                          | 可读 | 可写 | 说明                            |
+| 名称     | 类型                                          | 只读 | 可选 | 说明                            |
 | -------- | ------------------------------------------------- | ---- | ---- | ------------------------------- |
-| deviceId | string                                            | 是   | 否   | 表示蓝牙设备地址。              |
-| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 是   | 否   | 表示蓝牙设备的profile连接状态。 |
+| deviceId | string                                            | 否   | 否   | 表示蓝牙设备地址。              |
+| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 否   | 否   | 表示蓝牙设备的profile连接状态。 |
 
 
 ## DeviceClass<sup>(deprecated)</sup>
@@ -5059,11 +5059,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称              | 类型                                | 可读   | 可写   | 说明               |
+| 名称              | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
-| majorClass      | [MajorClass](#majorclassdeprecated)           | 是    | 否    | 表示蓝牙设备主要类别的枚举。   |
-| majorMinorClass | [MajorMinorClass](#majorminorclassdeprecated) | 是    | 否    | 表示主要次要蓝牙设备类别的枚举。 |
-| classOfDevice   | number                              | 是    | 否    | 表示设备类别。          |
+| majorClass      | [MajorClass](#majorclassdeprecated)           | 否    | 否    | 表示蓝牙设备主要类别的枚举。   |
+| majorMinorClass | [MajorMinorClass](#majorminorclassdeprecated) | 否    | 否    | 表示主要次要蓝牙设备类别的枚举。 |
+| classOfDevice   | number                              | 否    | 否    | 表示设备类别。          |
 
 
 ## MajorClass<sup>(deprecated)</sup>
