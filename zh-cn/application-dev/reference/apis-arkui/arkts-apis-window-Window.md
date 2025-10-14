@@ -11727,7 +11727,7 @@ promise.then(() => {
 
 isInFreeWindowMode(): boolean;
 
-查询窗口是否为自由窗口模式。
+查询是否为自由窗口模式。
 
 > **说明：**
 >
