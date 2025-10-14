@@ -735,6 +735,24 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 >
 > passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
 
+## X963KdfSpec<sup>22+</sup>
+
+密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为X963KDF密钥派生函数进行密钥派生时的输入。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+
+| 名称    | 类型   | 只读 | 可选 | 说明                                                         |
+| ------- | ------ | ---- | ---- | ------------ |
+| key | string \| Uint8Array | 否   | 否   | 密钥材料。|
+| info | Uint8Array | 否   | 否   | 附加信息。 |
+| keySize | int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+
+> **说明：**
+>
+> key指的是用户输入的最初的密钥材料。
+
 ## SM2CipherTextSpec<sup>12+</sup>
 
 SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需要用到此对象。可以通过指定此参数，生成符合国密标准的ASN.1格式的SM2密文，反之，也可以从ASN.1格式的SM2密文中获取具体参数。

@@ -115,6 +115,14 @@ recordInputEventTime(type: ActionType, sourceType: SourceType, time: number): vo
 | sourceType | [SourceType](#sourcetype12) | 是 | 用户场景触发源。 |
 | time | number | 是 | 场景触发时间（ms），时间戳，例如1751508570794。若传零或负值将自动转化为当前系统时间，若传正值则正常使用。不正确的传参会导致用户操作响应时延指标异常。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | not system application.                     |
+
 **示例：**
 
 ```ts
