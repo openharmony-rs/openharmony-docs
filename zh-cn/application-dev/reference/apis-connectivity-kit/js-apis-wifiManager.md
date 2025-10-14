@@ -1302,13 +1302,13 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 **示例：**
 ```ts
-  import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-  wifiManager.getLinkedInfo().then(data => {
-      console.info("get wifi linked info: " + JSON.stringify(data));
-  }).catch((error) => {
-      console.error("get linked info error");
-  });
+wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
+    console.info("get wifi linked info: " + JSON.stringify(data));
+}).catch((error: Error) => {
+    console.error("get linked info error: ", error);
+});
 ```
 
 ## wifiManager.getLinkedInfoSync<sup>18+</sup>
