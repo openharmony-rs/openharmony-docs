@@ -548,7 +548,7 @@ OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_RegisterCallback()
 
