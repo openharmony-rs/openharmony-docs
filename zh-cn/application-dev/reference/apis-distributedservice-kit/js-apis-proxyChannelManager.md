@@ -52,7 +52,7 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -122,7 +122,7 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -186,7 +186,7 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -251,7 +251,7 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -310,7 +310,7 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -367,7 +367,7 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -426,7 +426,7 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 **错误码：**
 
-以下错误码的详细介绍请参考[代理通道管理错误码](errorcode_proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |

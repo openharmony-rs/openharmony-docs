@@ -4050,7 +4050,7 @@
           - [Screen Hopping Error Codes](reference/apis-distributedservice-kit/errorcode-devicestatus.md)
           <!--DelEnd-->
           - [Link Enhancement Error Codes](reference/apis-distributedservice-kit/errorcode-link-enhance.md)
-          - [Proxy Channel Management Error Codes](reference/apis-distributedservice-kit/errorcode_proxyChannelManager.md)
+          - [Proxy Channel Management Error Codes](reference/apis-distributedservice-kit/errorcode-proxyChannelManager.md)
         - C APIs<!--distributed-service-c-->
           - Modules<!--distributed-service-module-->
             - [DeviceManager](reference/apis-distributedservice-kit/capi-devicemanager.md)
