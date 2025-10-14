@@ -579,7 +579,7 @@ The View layer is organized as required. You need to distinguish the following t
 >
 > A shared component does not contain ViewModel data and requires external data. It contains a custom component that can work as long as external parameters (without service parameters) are met.
 
-### Check whether the default network supports Internet access.
+### Example
 
 Reconstruct the code based on the MVVM pattern:
 

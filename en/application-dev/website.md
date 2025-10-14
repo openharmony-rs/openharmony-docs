@@ -767,6 +767,7 @@
         - [Rendering Modes of the Web Component](web/web-render-mode.md)
         - [Fitting In the Page Content Layout](web/web-fit-content.md)
         - [Optimizing the Page Flash During the Redirection](web/web-router-flash-optimization.md)
+        - [Obtaining the Web Page Content Height](web/web-getpage-height.md)
       - Using Frontend Page JavaScript Code on the Application<!--web-use-frontend-page-js-->
         - [Invoking Frontend Page Functions on the Application](web/web-in-app-frontend-page-function-invoking.md)
         - [Invoking Application Functions on the Frontend Page](web/web-in-page-app-function-invoking.md)
