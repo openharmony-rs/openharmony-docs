@@ -31,6 +31,37 @@
 
 <!-- @[request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+	// ···
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.APPROXIMATELY_LOCATION",
+        "reason": "$string:approximately_location_permission_reason",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.LOCATION",
+        "reason": "$string:location_permission_reason",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ],
+          "when": "inuse"
+        },
+      }
+    ]
+  }
+}
+```
+
+
 ## 权限使用理由的文案内容规范
 
 当申请user_grant权限时，字段reason（申请权限的原因）必填。开发者需在应用配置文件中配置每个需要的权限。
