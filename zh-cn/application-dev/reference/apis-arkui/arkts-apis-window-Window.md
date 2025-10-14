@@ -4122,7 +4122,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 try {
   let callback: Callback<OcclusionState> = (data: OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
-  }；
+  };
   windowClass.on('occlusionStateChanged', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4160,7 +4160,7 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 try {
   let callback: Callback<OcclusionState> = (data: OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
-  }；
+  };
   // 通过on接口开启监听
   windowClass.on('occlusionStateChanged', callback);
   // 关闭指定callback的监听
