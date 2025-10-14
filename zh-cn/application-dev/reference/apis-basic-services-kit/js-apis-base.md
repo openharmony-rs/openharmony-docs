@@ -38,9 +38,9 @@ Callback<T> {
 
 **ArkTS-Sta起始版本：** 20
 
-| 名称 | 类型 | 只读 | 可选 | 说明                       |
-| ---- | ---- | ---- | ---- | -------------------------- |
-| data | T    | 否   | 否   | 接口调用时的公共回调信息。 |
+| 名称 | 类型 | 必填 | 说明                       |	
+| ---- | ---- | ---- | -------------------------- |	
+| data | T    | 是   | 接口调用时的公共回调信息。 |
 
 ## ErrorCallback
 
@@ -66,18 +66,26 @@ ErrorCallback<T extends Error = BusinessError> {
 
 **参数：**
 
-| 名称 | 类型 | 只读 | 可选 | 说明                         |
-| ---- | ---- | ---- | ---- | ---------------------------- |
-| err  | T    | 否   | 否   | 接口调用失败的公共错误信息。 |
+| 名称 | 类型 | 必填 | 说明                         |	
+| ---- | ---- | ---- | ---------------------------- |	
+| err  | T    | 是   | 接口调用失败的公共错误信息。 |
 
 ## AsyncCallback
+
+**ArkTS-Dyn：**   
 
 ```
 AsyncCallback<T, E = void> {
 
-(err: BusinessError<E> | null, data: T | undefined): void;
+(err: BusinessError<E> , data: T): void;
 
 }
+```
+
+**ArkTS-Sta：**   
+
+```
+AsyncCallback<T, E = void> = (err: BusinessError<E> | null, data: T | undefined)=> void
 ```
 
 通用回调函数，携带错误参数和异步返回值。
@@ -94,10 +102,10 @@ AsyncCallback<T, E = void> {
 
 **ArkTS-Sta起始版本：** 20
 
-| 名称 | 类型                                                          | 只读 | 可选 | 说明                         |
-| ---- | ------------------------------------------------------------ | ---- | ---- | ---------------------------- |
-| err  | ArkTS-Dyn: [BusinessError\<E>](#businesserror) </br> ArkTS-Sta:    [BusinessError\<E>](#businesserror) \| null | 否   | 否   | 接口调用失败的公共错误信息。 |
-| data | ArkTS-Dyn: T </br> ArkTS-Sta: T \| undefined                                                            | 否   | 否   | 接口调用时的公共回调信息。   |
+| 名称 | 类型                                                          | 必填 | 说明                         |
+| ---- | ------------------------------------------------------------ | ---- | ---------------------------- |
+| err  | ArkTS-Dyn: [BusinessError\<E>](#businesserror) </br> ArkTS-Sta:    [BusinessError\<E>](#businesserror) \| null | 是   | 接口调用失败的公共错误信息。 |
+| data | ArkTS-Dyn: T </br> ArkTS-Sta: T \| undefined                                                            | 是   | 接口调用时的公共回调信息。   |
 
 ## BusinessError  
 
