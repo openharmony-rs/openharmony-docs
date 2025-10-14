@@ -2045,7 +2045,7 @@ struct Index {
 
   build() {
     Column() {
-      // 待聚焦组件添加id属性，id唯一性由使用者保证
+      // 待聚焦组件添加id属性，id唯一性由使用者保证。
       Button('待聚焦组件').id('click')
     }
   }
@@ -2059,7 +2059,7 @@ let eventInfo: accessibility.EventInfo = ({
   type: 'requestFocusForAccessibility',
   bundleName: 'com.example.MyApplication',
   triggerAction: 'common',
-  customId: 'click' // 对应待聚焦组件id属性值
+  customId: 'click' // 对应待聚焦组件id属性值。
 });
 
 accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError | null) => {

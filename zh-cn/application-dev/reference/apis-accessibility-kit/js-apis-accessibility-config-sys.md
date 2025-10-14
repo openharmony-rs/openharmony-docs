@@ -787,6 +787,8 @@ setMagnificationState(state: boolean): void
 
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
