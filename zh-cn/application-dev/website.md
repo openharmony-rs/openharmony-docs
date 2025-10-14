@@ -4177,7 +4177,7 @@
           - [键鼠穿越管理错误码](reference/apis-distributedservice-kit/errorcode-devicestatus.md)
           <!--DelEnd-->
           - [增强连接错误码](reference/apis-distributedservice-kit/errorcode-link-enhance.md)
-          - [代理通道管理错误码](reference/apis-distributedservice-kit/errorcode_proxyChannelManager.md)
+          - [代理通道管理错误码](reference/apis-distributedservice-kit/errorcode-proxyChannelManager.md)
         - C API<!--distributed-service-c-->
           - 模块<!--distributed-service-module-->
             - [DeviceManager](reference/apis-distributedservice-kit/capi-devicemanager.md)
