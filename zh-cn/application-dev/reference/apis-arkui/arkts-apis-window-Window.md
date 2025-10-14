@@ -5450,7 +5450,7 @@ setWindowBackgroundColor(color: string | ColorMetrics): void
 
 设置窗口的背景色。
 
-未调用该接口时，窗口于浅色模式默认背景色为“fff0f0f0”，于深色莫斯默认背景色为“ff1a1a1a”。
+未调用该接口时，窗口在浅色模式默认背景色为`'#fff0f0f0'`，在深色模式默认背景色为`'#ff1a1a1a'`。
 
 Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
