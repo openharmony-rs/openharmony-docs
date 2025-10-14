@@ -1309,35 +1309,44 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
-let windowClass: window.Window | undefined = undefined;
-let config: window.Configuration = {
-  name: "test",
-  windowType: window.WindowType.TYPE_DIALOG,
-  decorEnabled: true,
-  ctx: this.context
-};
-try {
-  window.createWindow(config, (err: BusinessError, data) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
-      return;
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      decorEnabled: true,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        windowClass.setUIContent("pages/Test");
+        let enabled = true;
+        let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
+        promise.then(() => {
+          let type = window.AvoidAreaType.TYPE_SYSTEM;
+          let avoidArea = windowClass?.getWindowAvoidArea(type);
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to obtain the system window avoid area. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      });
+    } catch (exception) {
+      console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-    windowClass = data;
-    windowClass.setUIContent("pages/Test");
-    let enabled = true;
-    let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
-    promise.then(() => {
-      let type = window.AvoidAreaType.TYPE_SYSTEM;
-      let avoidArea = windowClass?.getWindowAvoidArea(type);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to obtain the system window avoid area. Cause code: ${err.code}, message: ${err.message}`);
-    });
-  });
-} catch (exception) {
-  console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -8823,7 +8832,7 @@ export default class EntryAbility extends UIAbility {
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
-设置当前窗口是否禁用返回手势功能，仅主窗全屏模式下生效，2in1设备下不生效。
+设置当前窗口是否启用返回手势功能，仅主窗全屏模式下生效，2in1设备下不生效。
 禁用返回手势功能后，当前应用会禁用手势热区，侧滑返回功能失效；切换到其他应用或者回到桌面后，手势热区恢复，侧滑返回功能正常。
 开启返回手势功能后，当前应用会恢复手势热区，侧滑返回功能正常。
 
@@ -8897,7 +8906,7 @@ export default class EntryAbility extends UIAbility {
 
 isGestureBackEnabled(): boolean
 
-获取当前窗口是否禁用返回手势功能，仅主窗全屏模式下生效，2in1设备不生效。
+获取当前窗口是否启用返回手势功能，仅主窗全屏模式下生效，2in1设备不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
