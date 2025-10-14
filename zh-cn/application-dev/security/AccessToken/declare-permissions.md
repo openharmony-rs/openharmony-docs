@@ -29,37 +29,7 @@
 >
 > 以下"ohos.permission.APPROXIMATELY_LOCATION"、"ohos.permission.LOCATION"仅为样例示意。请开发者根据实际需要，参照上表要求填写对应属性。
 
-<!-- [request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
-
-```json
-{
-  "module" : {
-    // ...
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.APPROXIMATELY_LOCATION",
-        "reason": "$string:approximately_location_permission_reason",
-        "usedScene": {
-          "abilities": [
-            "FormAbility"
-          ],
-          "when": "inuse"
-        }
-      },
-      {
-        "name": "ohos.permission.LOCATION",
-        "reason": "$string:location_permission_reason",
-        "usedScene": {
-          "abilities": [
-            "FormAbility"
-          ],
-          "when": "inuse"
-        },
-      }
-    ]
-  }
-}
-```
+<!-- @[request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
 
 ## 权限使用理由的文案内容规范
 
