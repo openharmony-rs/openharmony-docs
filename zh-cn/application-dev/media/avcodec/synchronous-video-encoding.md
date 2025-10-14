@@ -98,7 +98,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     - videoEnc：视频编码器实例的指针。
     - capability：编码器能力查询实例的指针。
-    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodec_mimetype_video_avc)：AVC格式视频编解码器。
+    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)：AVC格式视频编解码器。
 
     ```c++
     // 创建硬件编码器实例。
@@ -113,7 +113,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 2. 调用OH_VideoEncoder_Configure()配置编码器。
 
-    - 详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    - 详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
     - 参数校验规则请参考[OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)。
     - 参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力](obtain-supported-codecs.md)。
 
