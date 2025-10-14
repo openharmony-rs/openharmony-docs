@@ -9,7 +9,7 @@
 
 ## 概述
 
-鼠标光标样式枚举。
+鼠标光标的样式。
 
 **引用文件：** <multimodalinput/oh_pointer_style.h>
 
