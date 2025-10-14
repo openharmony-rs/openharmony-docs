@@ -23,7 +23,8 @@ import { screenLock } from '@kit.BasicServicesKit';
 ## EventType<sup>9+</sup>
 
 type EventType = beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen |
-lockScreen | beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart
+lockScreen | beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart |
+strongAuthChanged | screenLockDisabledChanged
 
 定义系统事件类型。
 
@@ -47,6 +48,8 @@ lockScreen | beginExitAnimation | beginSleep | endSleep | changeUser | screenloc
 | changeUser         | 表示切换用户。           |
 | screenlockEnabled  | 表示锁屏是否启用。       |
 | serviceRestart     | 表示锁屏服务进行重启。   |
+| strongAuthChanged  | 表示锁屏增强认证状态变化时候的事件类型。       |
+| screenLockDisabledChanged     | 表示锁屏被禁用、启用状态变化时候的事件类型。   |
 
 ## SystemEvent<sup>9+</sup>
 
