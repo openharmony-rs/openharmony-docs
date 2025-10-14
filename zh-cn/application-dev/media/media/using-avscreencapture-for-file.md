@@ -22,6 +22,8 @@
 
 如果配置了采集麦克风音频数据，需对应配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
+从API 22开始，PC应用需要在录屏的时候屏幕熄灭不锁屏仍能录制，可申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，配置方式请参见，[声明权限](../../security/AccessToken/declare-permissions.md)。
+
 ## 开发步骤及注意事项
 
 使用AVScreenCapture时要明确其状态的变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。
