@@ -44,7 +44,7 @@ import { screenshot } from '@kit.ArkUI';
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | displayId | number |  否   | 是 | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，默认为0，该参数应为大于或等于0的整数，非整数会报参数错误。 |
-| blackWindowIds<sup>21+</sup> | Array\<number>        | 否  | 是 | 表示截取图像时不显示的窗口ID列表，仅支持截图时不显示主窗口和系统窗口，传入子窗口、模态窗、dialog窗口ID时不生效。窗口ID应为大于0的整数，窗口ID为非整数或者小于等于0时不生效不报错。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。 |
+| blackWindowIds<sup>21+</sup> | Array\<number>        | 否  | 是 | 表示截取图像时不显示的窗口ID列表，。窗口ID应为大于0的整数，窗口ID为非整数或者小于等于0时不生效不报错。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。 |
 
 ## PickInfo
 
@@ -124,7 +124,7 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [CaptureOption](#captureoption14) | 否 |  截取图像的相关信息。可包含设备ID，即displayId。 此参数不填时，默认截取displayId为0的屏幕截图。|
+| options | [CaptureOption](#captureoption14) | 否 |  截取图像的相关信息。此参数不填时，默认截取displayId为0的屏幕截图。|
 
 **返回值：**
 
