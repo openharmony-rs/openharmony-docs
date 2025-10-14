@@ -14,7 +14,7 @@
 
 目前系统提供了ServiceExtensionAbility供系统应用使用。切换步骤和PageAbility基本一致。
 
-1. 在Stage应用中[创建ServiceExtensionAbility](serviceextensionability.md)。
+1. 在Stage应用中[创建ServiceExtensionAbility](serviceextensionability-sys.md)。
 
 2. 将FA应用中ServiceAbility的业务代码迁移到新创建的ServiceExtensionAbility中。
    ServiceAbility和ServiceExtensionAbility生命周期对比见下表。
