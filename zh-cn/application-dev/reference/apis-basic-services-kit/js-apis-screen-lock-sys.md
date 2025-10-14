@@ -1,4 +1,10 @@
 # @ohos.screenLock (锁屏管理)（系统接口）
+<!--Kit: ArkData-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @jiayunpeng2-->
+<!--Designer: @starrylight; @jiayunpeng2-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @zhangaof-->
 
 锁屏管理服务是OpenHarmony中的系统服务，为锁屏应用提供注册亮屏、灭屏、开启屏幕、结束休眠、退出动画、请求解锁结果监听，并提供回调结果给锁屏应用。锁屏管理服务向三方应用提供请求解锁、查询锁屏状态、查询是否设置锁屏密码的能力。
 
@@ -16,13 +22,17 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 ## EventType<sup>9+</sup>
 
+type EventType = beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen |
+lockScreen | beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart |
+strongAuthChanged | screenLockDisabledChanged
+
 定义系统事件类型。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **系统接口**：此接口为系统接口。
 
-| 事件类型            | 说明                     |
+| 类型            | 说明                     |
 | ------------------ | ------------------------ |
 | beginWakeUp        | 表示设备开始唤醒。 |
 | endWakeUp          | 表示设备结束唤醒。 |
@@ -38,6 +48,8 @@ import { screenLock } from '@kit.BasicServicesKit';
 | changeUser         | 表示切换用户。           |
 | screenlockEnabled  | 表示锁屏是否启用。       |
 | serviceRestart     | 表示锁屏服务进行重启。   |
+| strongAuthChanged  | 表示锁屏增强认证状态变化时候的事件类型。       |
+| screenLockDisabledChanged     | 表示锁屏被禁用、启用状态变化时候的事件类型。   |
 
 ## SystemEvent<sup>9+</sup>
 
@@ -47,10 +59,10 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 **系统接口**：此接口为系统接口。
 
-| 名称    | 类型   | 必填 |       说明        |
-| --------- | ------ | ---- | ------------- |
-| eventType   | [EventType](#eventtype9) | 是   | 系统事件类型。 |
-| params | string | 是   | 系统事件参数。 |
+| 名称    | 类型   | 只读 | 可选 |       说明        |
+| --------- | ------ | ---- | ---- | ------------- |
+| eventType   | [EventType](#eventtype9) | 否   | 否   | 系统事件类型。 |
+| params | string | 否   | 否   | 系统事件参数。 |
 
 ## screenLock.isLocked<sup>9+</sup>
 
@@ -62,7 +74,7 @@ isLocked(): boolean
 
 **系统接口**：此接口为系统接口。
 
-**返回值：** 
+**返回值：**
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
@@ -76,7 +88,7 @@ isLocked(): boolean
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 
-**示例：** 
+**示例：**
 
 ```ts
 let isLocked = screenLock.isLocked();
@@ -92,7 +104,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统接口**：此接口为系统接口。
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型          | 必填 | 说明                                 |
 | -------- | --------------------- | ---- | ------------------------- |
@@ -109,7 +121,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 | 13200002  | the screenlock management service is abnormal.         |
 | 13200003  | illegal use.         |
 
-**示例：** 
+**示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,7 +149,7 @@ unlock(): Promise&lt;boolean&gt;
 
 **系统接口**：此接口为系统接口。
 
-**返回值：** 
+**返回值：**
 
 | 类型                | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
@@ -153,7 +165,7 @@ unlock(): Promise&lt;boolean&gt;
 | 13200002  | the screenlock management service is abnormal.         |
 | 13200003  | illegal use.         |
 
-**示例：** 
+**示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -181,7 +193,7 @@ lock(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统接口**：此接口为系统接口。
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型          | 必填 | 说明                      |
 | -------- | ---------------------- | ---- | ---------------- |
@@ -198,7 +210,7 @@ lock(callback: AsyncCallback&lt;boolean&gt;): void
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**示例：** 
+**示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -224,7 +236,7 @@ lock(): Promise&lt;boolean&gt;
 
 **系统接口**：此接口为系统接口。
 
-**返回值：** 
+**返回值：**
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
@@ -240,7 +252,7 @@ lock(): Promise&lt;boolean&gt;
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**示例：** 
+**示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -264,13 +276,13 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 
 **系统接口**：此接口为系统接口。
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                        | 必填 | 说明               |
 | -------- | ------------------------- | ---- | ----------------- |
 | callback | Callback\<[SystemEvent](#systemevent9)> | 是   | 锁屏相关的系统事件回调函数。 |
 
-**返回值：** 
+**返回值：**
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
@@ -287,7 +299,7 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**示例：** 
+**示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -314,7 +326,7 @@ sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt
 
 **系统接口**：此接口为系统接口。
 
-**参数：** 
+**参数：**
 
 | 参数名    | 类型            | 必填 | 说明                                                                                                                |
 | --------- | ------------------------ | ---- |-------------------------------------------------------------------------------------------------------------------|
@@ -333,7 +345,7 @@ sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  |the screenlock management service is abnormal.         |
 
-**示例：** 
+**示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -359,14 +371,14 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
 
 **系统接口**：此接口为系统接口。
 
-**参数：** 
+**参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                                                                                                |
 | --------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------|
 | event     | String | 是   | 事件类型，支持如下取值：<br/>- "unlockScreenResult"，表示解锁结果。<br/>- "lockScreenResult"，表示锁屏结果。<br/>- "screenDrawDone"，表示屏幕绘制完成。 |
 | parameter | number | 是   | 事件结果。<br/>- parameter为0，表示成功。例如解锁成功或锁屏成功。<br/>- parameter为1，表示失败。例如解锁失败或锁屏失败。<br/>- parameter为2，表示取消。例如锁屏取消或解锁取消。 |
 
-**返回值：** 
+**返回值：**
 
 | 类型               | 说明                                           |
 | ----------------- | ---------------------------------------------- |
@@ -383,7 +395,7 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**示例：** 
+**示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
