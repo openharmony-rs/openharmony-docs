@@ -581,7 +581,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let g_tunnelFd = -1;
 export default class MyVpnExtAbility  extends VpnExtensionAbility {
-  private vpnServerIp: string = '192.168.31.13';
   onCreate() {
     let vpnConnection = vpnExtension.createVpnConnection(this.context);
     console.info("VPN createVpnConnection: " + JSON.stringify(vpnConnection));
