@@ -1309,6 +1309,7 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 }).catch((error: Error) => {
     console.error("get linked info error: ", error);
 });
+
 ```
 
 ## wifiManager.getLinkedInfoSync<sup>18+</sup>
