@@ -242,7 +242,7 @@ zh-cn/application-dev/arkts-utils/tool-disassembler.md @oatuwwutao @luobohua @hu
 
 
 [开发-ArkUI-UI开发]
-zh-cn/application-dev/ui/state-management/ @zhang_yixin13 @TerryTsao @s10021109 @jiyujia926 @seaside_wu
+zh-cn/application-dev/ui/state-management/ @zhang_yixin13 @zhangwenhan12 @s10021109 @jiyujia926 @seaside_wu
 zh-cn/application-dev/ui/rendering-control/ @zhang_yixin13 @liuli0427 @keerecles @liubihao
 zh-cn/application-dev/ui/arkts-advanced-components-arcbutton.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-animation-smoothing.md	@CCFFWW	@lxl007	@HelloCrease
@@ -401,7 +401,7 @@ zh-cn/application-dev/ui/ndk-waterflow.md	@zcdqs	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/ui/Readme-CN.md			@HelloCrease
 zh-cn/application-dev/ui/theme_skinning.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/ui/ui-dark-light-color-adaptation.md	@lushi871202	@sally__	@HelloCrease
-zh-cn/application-dev/ui/ui-ide-previewer.md	@zhangboren	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/ui/ui-ide-previewer.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/ui/ui-inspector-profiler.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/ui/ui-js-animate-attribute-style.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/ui-js-animate-background-position-style.md	@CCFFWW	@lxl007	@HelloCrease
@@ -450,7 +450,7 @@ zh-cn/application-dev/ui/ui-js-components-swiper.md	@jiangdayuan	@lxl007	@HelloC
 zh-cn/application-dev/ui/ui-js-components-switch.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/ui-js-components-text.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/ui/ui-js-components-toolbar.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/ui/ui-js-custom-components.md	@shiyu_huang	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/ui/ui-js-custom-components.md	@shiyu_huang	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/ui/ui-js-overview.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/ui/ui-performance-overview.md	@wild-mucor	@sally__	@HelloCrease
 
@@ -1267,7 +1267,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md	@liyi0309	@
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md	@jiangdayuan	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-snapshot.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/errorcode-styled-string.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-system-resource.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-uicontext.md	@xiang-shouxing	@sally__	@HelloCrease
@@ -1292,7 +1292,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-NodeContent.md	@xiang-s
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-nodeController.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-observer.md	@xiang-shouxing	@fredyuan0912	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md	@lushi871202	@sally__	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Prefetcher.md	@lixingchi1	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Prefetcher.md	@lixingchi1	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-renderNode.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-resource.md	@fangzhiyuan1	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-shape.md	@CCFFWW	@lxl007	@HelloCrease
@@ -1311,7 +1311,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-prompt.md	@houguobiao	@lxl007
 zh-cn/application-dev/reference/apis-arkui/js-apis-promptAction-sys.md	@houguobiao	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-promptAction.md	@houguobiao	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-router.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-apis-StateManagement.md	@s10021109	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-apis-StateManagement.md	@s10021109	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-app.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-mediaquery.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-prompt.md	@houguobiao	@lxl007	@HelloCrease
@@ -1319,8 +1319,8 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-system-router.md	@jiangdayuan
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance-sys.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/Readme-CN.md	@xiang-shouxing	@fredyuan0912	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-button.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-chart.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-divider.md	@lanshouren	@liuli0427	@HelloCrease
@@ -1383,12 +1383,12 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-swip
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-bar.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-content.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tabs.md	@CCFFWW	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-create-elements.md	@shiyu_huang	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-basic-usage.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-create-elements.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-basic-usage.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-lifecycle.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-props.md	@shiyu_huang	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-slot.md	@shiyu_huang	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-style.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-props.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-slot.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-style.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-grid-basic-concepts.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-grid-col.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-grid-container.md	@lanshouren	@liuli0427	@HelloCrease
@@ -1446,11 +1446,11 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/Readme-CN.md	@piggyguy	
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/errorcode-image-analyzer.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcSlider.md	@liyi0309	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md	@youzhi92	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md	@youzhi92	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md	@youzhi92	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md	@youzhi92	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ComposeListItem.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ComposeTitleBar.md	@YanSanzo	@ybhou1993	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md	@youzhi92	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md	@youzhi92	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-EditableTitleBar.md	@YanSanzo	@ybhou1993	@HelloCrease
@@ -1464,8 +1464,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNav
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md	@YanSanzo	@ybhou1993	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md	@youzhi92	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md	@youzhi92	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md	@youzhi92	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md	@youzhi92	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectTitleBar.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SplitLayout.md	@YanSanzo	@ybhou1993	@HelloCrease
@@ -1609,8 +1609,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-waterflow.md	@z
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-with-theme.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-layout.md	@lanshouren	@liuli0427	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md	@zhangboren	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-line.md	@sunbees	@liuli0427	@HelloCrease
@@ -1647,14 +1647,14 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-page-transition-animation
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-particle-animation.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-picker-common.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-pixel-units.md	@xiang-shouxing	@sally__	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md	@keerecles	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md	@keerecles	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md	@keerecles	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	@s10021109	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-sys.md	@s10021109	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md	@s10021109	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md	@s10021109	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md	@keerecles	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md	@keerecles	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md	@keerecles	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-sys.md	@s10021109	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md	@s10021109	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md	@jiangdayuan	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common-sys.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common.md	@pssea	@jiaoaozihao	@HelloCrease
@@ -1717,7 +1717,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-popu
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md	@xiang-shouxing	@sally__	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition-sys.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md	@CCFFWW	@lxl007	@HelloCrease
@@ -1731,10 +1731,10 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md	@zhangboren	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-size-change-event.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-entry.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-entry.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-events-axis.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-events-click.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-events-crown.md	@piggyguy	@songyanhong	@HelloCrease
@@ -1750,8 +1750,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-focus-event.md	
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-styled-string-sys.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-styled-string.md	@pssea	@jiaoaozihao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md	@zhangboren	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-appendix-types.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-appendix-types.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-button.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-calendar.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-chart.md	@weixin_52725220	@xiong0104	@HelloCrease
@@ -1776,7 +1776,7 @@ zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widge
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-list.md	@yylong	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-stack.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-swiper.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-custom-basic-usage.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-custom-basic-usage.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-file.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-multiple-languages.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-syntax-css.md	@piggyguy	@songyanhong	@HelloCrease
