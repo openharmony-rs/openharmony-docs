@@ -46,7 +46,7 @@
           .onClick(() => {
             try {
               let result = this.controller.isIncognitoMode();
-              console.log('isIncognitoMode' + result);
+              console.info('isIncognitoMode' + result);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -140,10 +140,10 @@
               // getAccessibleGeolocation第三个参数表示隐私模式（true）或非隐私模式（false）下，以回调方式异步获取指定源的地理位置权限状态。
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
-                  console.log('getAccessibleGeolocationAsync error: ' + JSON.stringify(error));
+                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
                   return;
                 }
-                console.log('getAccessibleGeolocationAsync result: ' + result);
+                console.info('getAccessibleGeolocationAsync result: ' + result);
               }, true);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -248,7 +248,7 @@
             try {
               // fetchCookieSync第二个参数表示获取隐私模式（true）或非隐私模式（false）下，webview的内存cookies。
               let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', true);
-              console.log("fetchCookieSync cookie = " + value);
+              console.info("fetchCookieSync cookie = " + value);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -305,7 +305,7 @@
           .onClick(() => {
             // existCookie参数表示隐私模式（true）或非隐私模式（false）下，查询是否存在cookies。
             let result = webview.WebCookieManager.existCookie(true);
-            console.log("result: " + result);
+            console.info("result: " + result);
           })
         Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
       }
