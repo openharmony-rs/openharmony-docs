@@ -116,7 +116,7 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 在API 14-20，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。在API 21后添加Phone设备可正常调用。
+**设备行为差异：** 在API version 14-20，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。在API version 21后添加Phone设备可正常调用。
 
 **需要权限**：ohos.permission.CUSTOM_SCREEN_CAPTURE
 
