@@ -379,8 +379,8 @@ function sendNativeMessage() {
         // disconnect
         console.error(`onDisconnect id ${connection.connectionId} is connected`);
       }
-      onFailed(code:number) {
-        console.error(`onFailed error code is ${code}`);
+      onFailed(code:webNativeMessagingExtensionManager.NmErrorCode, errMsg:string) {
+        console.error(`onFailed error code is ${code}, errMsg is ${errMsg}`);
       }
     }
 
