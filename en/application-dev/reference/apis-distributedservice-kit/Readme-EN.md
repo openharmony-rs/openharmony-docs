@@ -26,7 +26,7 @@
   - [Screen Hopping Error Codes](errorcode-devicestatus.md)
   
   <!--DelEnd-->
-  - [Enhanced Connection Error Codes](errorcode_linkEnhance.md)
+  - [Enhanced Connection Error Codes](errorcode-linkEnhance.md)
 - C API<!--distributed-service-c-->
   - Modules<!--distributed-service-moudle-->
     - [DeviceManager](capi-devicemanager.md)
