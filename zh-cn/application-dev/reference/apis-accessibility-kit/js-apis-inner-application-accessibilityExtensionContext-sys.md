@@ -165,7 +165,7 @@ let windowId: int = 10;
 let elementId: long = 10;
 
 axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -232,7 +232,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId: int = 10;
 
 axContext.getDefaultFocusedElementIds(windowId).then((data: long[]) => {
-  console.log(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
 });
@@ -541,7 +541,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId: int = 0;
 
 axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.log(`Succeeded in get root inactive window element, ${element.bundleName}`);
+  console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -791,7 +791,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 
 ### findElementByElementId<sup>22+</sup>
 
-findElementByElementId(condition: long): Promise\<AccessibilityElement>;
+findElementByElementId(condition: long): Promise\<AccessibilityElement>
 
 根据elementId查询当前活动窗口下的节点元素。使用Promise异步回调。
 
@@ -815,17 +815,25 @@ findElementByElementId(condition: long): Promise\<AccessibilityElement>;
 | ----------------------------------- | -------------------------------- |
 | Promise&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt; | Promise对象，返回满足指定查询条件的节点元素。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                                    |
+| ------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//elementId为10
+// elementId为10。
 let condition = 10;
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -884,7 +892,7 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 ### findElementByTextType<sup>22+</sup>
 
-findElementByTextType(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementByTextType(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素。使用Promise异步回调。
 
@@ -908,17 +916,25 @@ findElementByTextType(condition: string): Promise\<Array\<AccessibilityElement>>
 | ---------------------------------------- | ----------------------------- |
 | Promise&lt;Array&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                                    |
+| ------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致
+// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致。
 let condition = 'location'; 
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });

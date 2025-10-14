@@ -36,7 +36,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | 名称                   | 类型                                                              | 只读 | 可选 | 说明              |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityFocused | boolean                                                            | 否   | 否   | 表示元素是否处于无障碍焦点状态。true表示元素当前处于无障碍焦点状态，false表示元素当前不处于无障碍焦点状态，默认值为false。<br>**ArkTS-Dyn起始版本**：9|
-| accessibilityText<sup>12+</sup> | string                                                  | 否   | 否   | 元素的无障碍文本信息。<br>**ArkTS-Dyn起始版本**：9 |
+| accessibilityText<sup>12+</sup> | string                                                  | 否   | 否   | 元素的无障碍文本信息。<br>**ArkTS-Dyn起始版本**：12 |
 | bundleName           | string                                                             | 否   | 否   | 应用包名。<br>**ArkTS-Dyn起始版本**：9 |
 | checkable            | boolean                                                            | 否   | 否   | 表示元素是否支持点击操作。true表示元素支持点击操作，false表示元素不支持点击操作，默认值为false。<br>**ArkTS-Dyn起始版本**：9 |
 | checked              | boolean                                                            | 否   | 否   | 表示元素当前的可点击状态。true表示元素当前是可点击的，false表示元素当前是不可点击的，默认值为false。<br>**ArkTS-Dyn起始版本**：9 |
