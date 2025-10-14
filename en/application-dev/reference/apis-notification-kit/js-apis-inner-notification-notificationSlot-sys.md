@@ -1,6 +1,6 @@
 # NotificationSlot (System API)
 
-The **NotificationSlot** module provides APIs for defining the notification slot.
+Describes notification slots. The notification reminder modes vary according to notification slots.
 
 > **NOTE**
 >

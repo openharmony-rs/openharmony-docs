@@ -1,4 +1,10 @@
 # Application Development
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @zhang_yixin13-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @zhang_yixin13-->
 
 - [Application Development Overview](application-dev-guide.md)
 - About OpenHarmony
@@ -73,8 +79,8 @@
   - [DevEco Studio (OpenHarmony) User Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-tools-overview)
   - [Debugging Tools](tools/Readme-EN.md)
 - Hands-On Tutorials
-  - [Samples](https://gitee.com/openharmony/applications_app_samples/blob/master/README.md)
-  - [Codelabs](https://gitee.com/openharmony/codelabs/tree/master)
+  - [Samples](https://gitcode.com/openharmony/applications_app_samples/blob/master/README.md)
+  - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md)
 - [API References](reference/Readme-EN.md)
 - [FAQs](faqs/Readme-EN.md)
 - Contribution

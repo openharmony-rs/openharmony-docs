@@ -1,12 +1,12 @@
 # 交互基础机制说明
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
 
-对于指向性交互，交互框架基于坐标信息进行命中测试确定事件和手势的响应目标，即收集形成响应链，系统会根据触控事件的坐标、类型等信息，结合UI布局，将事件发送给对应UI组件。多个事件可以组合触发手势或其他功能，如长按、点击、拖拽。
+对于[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)、[鼠标事件](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md)、[轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md)等指向性事件的交互，交互框架基于坐标信息进行命中测试确定事件和手势的响应目标，即收集形成响应链，系统会根据触控事件的坐标、类型等信息，结合UI布局，将事件发送给对应UI组件。多个事件可以组合触发手势或其他功能，如长按、点击、拖拽。
 
 ## 事件交互流程
 
@@ -136,6 +136,14 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    - HitTestMode.Transparent：自身进行触摸测试，同时不阻塞兄弟组件及父组件。
 
      ![hitTestModeTransparent](figures/hitTestModeTransparent.png)
+
+   - HitTestMode.BLOCK_HIERARCHY（从API version 20开始支持）: 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。
+
+     ![hitTestModeBLOCK_HIERARCHY.png](figures/hitTestModeBLOCK_HIERARCHY.png)
+
+   - HitTestMode.BLOCK_DESCENDANTS（从API version 20开始支持）: 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
+
+     ![hitTestModeBLOCK_DESCENDANTS.png](figures/hitTestModeBLOCK_DESCENDANTS.png)
 
 3. 自定义事件拦截
 

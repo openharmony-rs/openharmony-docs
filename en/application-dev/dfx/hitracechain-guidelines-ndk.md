@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @qq_437963121-->
-<!--Designer: @MontSaintMichel-->
+<!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -257,4 +257,4 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
 
    - The **[chainId spanId parentSpanId]** information added before the HiLog log is **HiTraceId** information. For example, **[a92ab19ae90197d 236699a 2544fdb]** indicates that the trace chain ID (**chainId**) is **a92ab19ae90197d**, the span ID (**spanId**) is **236699a**, and the parent span ID (**parentSpanId**) is **2544fdb**.
    - Transfer the **HiTraceId**, create a **spanId**, and set it to the child thread created by **std::thread**. The HiLog logs of the Print1 and Print2 services running in the child thread also carry the same trace ID **a92ab19ae90197d** as that of the main thread.
-   - After the distributed tracing is ended using **OH_HiTrace_EndChain** or **OH_HiTrace_ClearId**, the HiLog print information does not carry the **HiTraceId** information.
+   - After the distributed tracing is ended using **OH_HiTrace_EndChain()** or **OH_HiTrace_ClearId()**, the HiLog print information does not carry the **HiTraceId** information.

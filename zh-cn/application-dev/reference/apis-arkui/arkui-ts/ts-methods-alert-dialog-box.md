@@ -22,9 +22,9 @@
 
 | 名称                              | 类型                                                         | 只读 | 可选 | 说明                                                        |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| title                             | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是  | 弹窗标题。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                  |
-| subtitle<sup>10+</sup>            | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是  | 弹窗副标题。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                 |
-| message                           | [ResourceStr](ts-types.md#resourcestr)                       | 否  | 否  | 弹窗内容。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                 |
+| title                             | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是  | 弹窗标题。<br/>API version 20之前，弹窗标题的对齐方式为左对齐。<br/>API version 20及之后，弹窗标题的对齐方式为居中对齐。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| subtitle<sup>10+</sup>            | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是  | 弹窗副标题。<br/>API version 20之前，弹窗副标题的对齐方式为左对齐。<br/>API version 20及之后，弹窗副标题的对齐方式为居中对齐。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                 |
+| message                           | [ResourceStr](ts-types.md#resourcestr)                       | 否  | 否  | 弹窗内容。<br/>API version 20之前，弹窗内容的对齐方式为左对齐。<br/>API version 20及之后，弹窗内容的对齐方式为居中对齐。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                 |
 | autoCancel                        | boolean                                                      | 否   | 是  | 点击遮障层时，是否关闭弹窗，true表示关闭弹窗。false表示不关闭弹窗。<br/>默认值：true<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | cancel                            | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是  | 点击遮障层关闭dialog时的回调。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
 | alignment                         | [DialogAlignment](#dialogalignment枚举说明)                  | 否   | 是  | 弹窗在竖直方向上的对齐方式。<br/>默认值：DialogAlignment.Default <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 |
@@ -230,7 +230,7 @@ Dialog关闭的信息。
 
 ### 属性
 
-| 名称    | 类型                                                         | 可读 | 可写 | 说明                                                         |
+| 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | dismiss | Callback&lt;void&gt;                                         | 否   | 否   | Dialog关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
 | reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog是否需要关闭。 |
@@ -243,9 +243,9 @@ Dialog关闭的信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                           | 必填 | 说明                                |
-|--------|------------------------------|----|-----------------------------------|
-| wordBreak      | [WordBreak](ts-appendix-enums.md#wordbreak11) | 否  | 弹窗message内容的文本截断方式。<br/>默认值：WordBreak.BREAK_ALL |
+| 名称     | 类型                           | 只读 | 可选 | 说明                                |
+|--------|------------------------------|----|-----------------------------------|-----------------------------------|
+| wordBreak      | [WordBreak](ts-appendix-enums.md#wordbreak11) | 否  | 是 | 弹窗message内容的文本截断方式。<br/>默认值：WordBreak.BREAK_ALL |
 
 ## AlertDialog
 

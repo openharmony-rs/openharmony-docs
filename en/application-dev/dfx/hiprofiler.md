@@ -11,10 +11,10 @@
 ## Overview
 
 
-hiprofiler consists of the system and application profiler frameworks. It provides a performance profiler platform for you to analyze memory and performance issues.
+HiProfiler provides a series of tuning capabilities to help developers analyze memory and performance problems.
 
 
-Its overall architecture comprises the profiling data display page on the PC and performance profiling service on the device. The services on the PC and device use the C/S model, and the profiling data on the PC is displayed on the [DevEco Studio](https://cbg.huawei.com/#/group/ipd/DevEcoToolsList)/[SmartPerf](https://gitee.com/openharmony/developtools_smartperf_host) web page. The device program consists of multiple parts that run in the system environment. The **hiprofilerd** process that communicates with DevEco Studio is the profiling service. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, plugins such as nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory have been implemented, providing comprehensive profiling capabilities for CPU, GPU, memory, and energy consumption.
+The overall architecture includes the PC and device. The main part is the data display page on the PC and the performance tuning service on the device. The services on the PC and device use the C/S model, and the profiling data on the PC is displayed on the [DevEco Studio](https://cbg.huawei.com/#/group/ipd/DevEcoToolsList) and [Smartperf](https://gitcode.com/openharmony/developtools_smartperf_host) web pages. The device program runs in the system environment and consists of multiple parts. The hiprofilerd process communicates with DevEco and functions as the tuning service. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, multiple plugins have been completed, including nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory data collection, implementing multi-dimensional tuning of CPU, GPU, memory, and power consumption.
 
 
 
@@ -31,13 +31,13 @@ Benchmarking with profilers in the industry, hiprofiler provides more capabiliti
 
 ## Architecture
 
-1. The PC calls **hiprofiler_cmd** on DevEco Studio/SmartPerf.
+1. On the PC, DevEco or Smartperf calls the hiprofiler_cmd command line tool.
 
-2. The **hiprofiler_cmd** process starts the **hiprofilerd** service and the **hiprofiler_plugins** process.
+2. The hiprofiler_cmd process starts the hiprofilerd tuning service and the hiprofiler_plugins plugin process.
 
-3. **hiprofiler_plugins** enables the corresponding plugin and summarizes the obtained profiling data to the hiprofilerd process.
+3. The hiprofiler_plugins process enables the corresponding plugin and summarizes the obtained tuning data to the hiprofilerd process.
 
-4. The **hiprofilerd** process stores the profiling data in proto format to a file, or returns it to the PC in real time.
+4. The hiprofilerd process stores the tuning data in proto format to a file or returns the data to the PC in real time.
 
 5. The PC parses the data, generates lanes, and displays the obtained profiling data.
 
@@ -46,7 +46,7 @@ Benchmarking with profilers in the industry, hiprofiler provides more capabiliti
 
 ## Command Syntax
 
-You can use hiprofiler_cmd to call different profiler plugins and input different parameters for different profiling requirements. The following is an example command:
+You can use the hiprofiler_cmd command line tool to call different plugins and enter different parameters to meet different tuning requirements. The following is an example command:
 
 ```shell
 $ hiprofiler_cmd \
@@ -109,27 +109,25 @@ The following table describes the **plugin_configs** fields.
 | config_data | Parameters of the plugin. The parameters required by each plugin are different. For details, see the **proto** definition of the plugins.<br>(The code path is **developtools/profiler/protos**.)| 
 
 
-Download the generated trace file to the local PC by running the **hdc file recv** command, and then upload the file to SmartPerf or DevEco Studio for parsing.
+Run the hdc file recv command to export the generated trace file to the local PC, and then upload the file to the SmartPerf website or DevEco Studio for parsing.
 
 
 ## Plugins Supported
 
-<!--RP1-->
 | Name| Description| Specifications|
 | -------- | -------- | -------- |
-| native_hook | Obtains the call stack information about heap memory allocation.|  |
-| ftrace-plugin | Obtains the trace events of kernel logging and the HiTrace logging data.|  |
-| cpu-plugin | Obtains the CPU usage information of a process, including the process-level and thread-level usage.|  |
-| gpu-plugin | Obtains the GPU usage information of a process.|  |
-| xpower-plugin | Obtains the power consumption data of a process.|  |
-| memory-plugin | Obtains the memory usage of a process, primarily the data from its **smaps** node.| In user mode, the file paths in **smaps** are not displayed.|
-| diskio plugin | Obtains the disk space usage of a process.|  |
-| network profiler | Obtains the HTTP request information of a process through process logging.|  |
-| network plugin | Obtains the network traffic information of a process.|  |
-| hisysevent plugin | Obtains the HiSysEvent logging data by running the HiSysEvent commands.|  |
-| hiperf plugin | Obtains the number of instructions and the corresponding stack of a process by running the HiPerf commands.|  |
-| hidump plugin | Obtains the HiDump data by running the SP_daemon commands.|  |
-<!--RP1End-->
+| native_hook | Obtains the call stack information about heap memory allocation.| The collected process supports only [Applications Signed by the Debug Certificate](#applications-signed-by-the-debug-certificate).|
+| ftrace-plugin | Obtains the trace events of kernel logging and the HiTrace logging data.| - |
+| cpu-plugin | Obtains the CPU usage information of a process, including the process-level and thread-level usage.| - |
+| gpu-plugin | Obtains the GPU usage information of a process.| - |
+| xpower-plugin | Obtains the power consumption data of a process.| - |
+| memory-plugin | Obtains the memory usage of a process, primarily the data from its **smaps** node.| - |
+| diskio plugin | Obtains the disk space usage of a process.| - |
+| network profiler | Obtains the HTTP request details of a process through process logging.| The collected process supports only [Applications Signed by the Debug Certificate](#applications-signed-by-the-debug-certificate).|
+| network plugin | Obtains the process network traffic statistics.| - |
+| hisysevent plugin | Obtains the HiSysEvent event data by running the HiSysEvent commands.| - |
+| hiperf plugin | Obtains the number of instructions and the corresponding stack of a process by running the HiPerf commands.| - |
+| hidump plugin | Obtains related data by running the SP_daemon command.| - |
 
 
 ## Applications Signed by the Debug Certificate
@@ -145,7 +143,7 @@ For example, run the following command to check the bundle name **com.example.my
 hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 ```
 
-If the application is a debug application, the following information is displayed:
+If the application is a debug-type application, the following information is displayed:
 
 ```shell
 "appProvisionType": "debug",
@@ -158,7 +156,7 @@ To build a debug application, you need to use a debug certificate for signature.
 
 **native_hook**
 
-Obtains the call stacks for heap memory allocations, including cross-language allocations (for example, using Node-API in ArkTS to allocate native heap memory), covering the **malloc**, **mmap**, **calloc**, and **realloc** functions. It can also display the call stacks of unreleased heap memory due to memory leak.
+Obtains the call stack information about heap memory allocation (call stack information about heap memory allocation allocated using basic library functions such as malloc, mmap, calloc, or realloc), including cross-language heap memory allocation information (for example, allocating native heap memory by calling napi in ArkTS), and the call stack information about unreleased heap memory due to memory leak.
 
 Parameters
 
@@ -169,7 +167,7 @@ Parameters
 | startup_mode | bool | Whether to capture the memory during process startup. By default, the memory during process startup is not captured.| This parameter records the heap memory allocation information during the period from when the process is started by AppSpawn to when the profiling ends. If a system-ability (SA) service is captured, locate the name (for example, **sa_main**) of the process that launches it in the corresponding .cfg file and add that name to this parameter.| 
 | js_stack_report | int | Whether to enable cross-language stack unwinding.<br>The value **0** means not to capture the JS stack.<br>The value **1** means to capture the JS stack.| This parameter provides the cross-language stack unwinding feature for the Ark environment.| 
 | malloc_free_matching_interval | int | Matching interval, in seconds. **malloc** and **free** are matched within the interval. If matched, the stack is not flushed to the disk.| Within the matching interval, the allocated and released call stacks are not recorded, reducing the overhead of the stack capture service process. If this parameter is set to a value greater than 0, **statistics_interval** cannot be set to **true**.| 
-| offline_symbolization | bool | Whether to enable offline symbolization.<br>The value **true** means to enable offline symbolization;<br>the value **false** means the opposite.| When offline symbolization is used, the operation of matching symbols based on IP is transferred to SmartPerf, optimizing the performance of the native daemon and reducing process freezes. However, since the offline symbol table must be written into the trace file, the trace file generated under offline symbolization is larger in size than that under online symbolization.| 
+| offline_symbolization | bool | Whether to enable offline symbolization.<br>The value **true** means to enable offline symbolization;<br>the value **false** means the opposite.| When offline symbolization is used, the operation of matching symbols based on IP is completed on SmartPerf, optimizing the performance of the native daemon and reducing process freezes. However, the offline symbol table is written into the trace file, which makes the trace file larger than that generated under online symbolization.|
 | sample_interval | int | Sampling size.| When this parameter is set, the sampling mode is enabled. In sampling mode, malloc allocations smaller than the sampling size are accounted for probabilistically. The larger the call-stack allocation size, the more frequently it occurs and the greater its chance of being sampled.| 
 
 Result examples:
@@ -186,7 +184,7 @@ Statistics mode is enabled (the stack data is displayed periodically).
 
 ![en-us_image_0000002379820229](figures/en-us_image_0000002379820229.png)
 
-Non-statistics mode is enabled.
+Non-statistical mode is enabled (the stack data is not displayed periodically).
 
 ![en-us_image_0000002346019934](figures/en-us_image_0000002346019934.png)
 
@@ -194,113 +192,114 @@ Non-statistics mode is enabled.
 
 1. Parameters
 
-| Name| Type| Description| Details| 
-| -------- | -------- | -------- | -------- |
-| ftrace_events | string | Captured trace events.| Trace events that record kernel logging.| 
-| hitrace_categories | string | Captured HiTrace logging information.| The HiTrace capability is called to obtain data and write the data to a file in proto format.| 
-| buffer_size_kb | int | Buffer size, in KB.| Cache size required for the **hiprofiler_plugins** process to read kernel events. The default value **204800** is recommended.| 
-| flush_interval_ms | int | Data collection interval, in ms.| The default value **1000** is recommended.| 
-| flush_threshold_kb | int | Size of the data to refresh.| Data is refreshed to the file once when the threshold is exceeded. It is recommended that you use the default value of SmartPerf.| 
-| parse_ksyms | bool | Whether to obtain kernel data.| The value **true** means to obtain kernel data, and **false** means the opposite.| 
-| trace_period_ms | int | Period for reading kernel data.| It is recommended that you use the default value of SmartPerf.| 
+	    | Name| Type| Description| Details| 
+	    | -------- | -------- | -------- | -------- |
+	    | ftrace_events | string | Captured trace events.| Trace events that record kernel logging.| 
+	    | hitrace_categories | string | Captured HiTrace logging information.| The HiTrace capability is called to obtain data and write the data to a file in proto format.| 
+	    | hitrace_apps | string | Process of the captured hitrace information.| When this parameter is set, only the trace information of the corresponding process is recorded. When this parameter is added, binder cannot be added to hitrace_categories. Otherwise, trace data parsing will be abnormal.| 
+	    | buffer_size_kb | int | Buffer size, in KB.| Cache size required for the **hiprofiler_plugins** process to read kernel events. The default value **204800** is recommended.| 
+	    | flush_interval_ms | int | Data collection interval, in ms.| The default value **1000** is recommended.| 
+	    | flush_threshold_kb | int | Size of the data to refresh.| Data is refreshed to the file once when the threshold is exceeded. It is recommended that you use the default value of SmartPerf.| 
+	    | parse_ksyms | bool | Whether to obtain kernel data.| The value **true** means to obtain kernel data, and **false** means the opposite.| 
+	    | trace_period_ms | int | Period for reading kernel data.| It is recommended that you use the default value of SmartPerf.| 
 
 2. Result analysis
 
-Example command:
+    Example command:
 
-```shell
-$ hiprofiler_cmd \
-  -c - \
-  -o /data/local/tmp/hiprofiler_data.htrace \
-  -t 10 \
-  -s \
-  -k \
-<<CONFIG
- request_id: 1
- session_config {
-  buffers {
-   pages: 16384
-  }
- }
- plugin_configs {
-  plugin_name: "ftrace-plugin"
-  sample_interval: 1000
-  config_data {
-   ftrace_events: "binder/binder_transaction"
-   ftrace_events: "binder/binder_transaction_received"
-   buffer_size_kb: 204800
-   flush_interval_ms: 1000
-   flush_threshold_kb: 4096
-   parse_ksyms: true
-   clock: "boot"
-   trace_period_ms: 200
-   debug_on: false
-  }
- }
-CONFIG
-```
+    ```shell
+    $ hiprofiler_cmd \
+      -c - \
+      -o /data/local/tmp/hiprofiler_data.htrace \
+      -t 10 \
+      -s \
+      -k \
+    <<CONFIG
+    request_id: 1
+    session_config {
+      buffers {
+      pages: 16384
+      }
+    }
+    plugin_configs {
+      plugin_name: "ftrace-plugin"
+      sample_interval: 1000
+      config_data {
+      ftrace_events: "binder/binder_transaction"
+      ftrace_events: "binder/binder_transaction_received"
+      buffer_size_kb: 204800
+      flush_interval_ms: 1000
+      flush_threshold_kb: 4096
+      parse_ksyms: true
+      clock: "boot"
+      trace_period_ms: 200
+      debug_on: false
+      }
+    }
+    CONFIG
+    ```
 
-This command reads the kernel **binder_transaction** and **binder_transaction_received** data. The two fields must be used together to completely display the data at both ends of the binder. After the command is executed, run the **hdc file recv** command to export the file and drag the file to SmartPerf for parsing. The following figure shows an example result.
+    This command reads the kernel **binder_transaction** and **binder_transaction_received** data. The two fields must be used together to completely display the data at both ends of the binder. After the command is executed, run the **hdc file recv** command to export the file and drag the file to SmartPerf for parsing. The following figure shows an example result.
 
-You can click the arrow on the right of **binder transaction** to go to the process/thread on the other end of the binder.
+    Click the arrow on the right of binder transaction to go to the process or thread at the peer end of the binder.
 
-![en-us_image_0000002316248152](figures/en-us_image_0000002316248152.png)
+    ![en-us_image_0000002316248152](figures/en-us_image_0000002316248152.png)
 
 **memory_plugin**:
 
 1. Parameters
 
-| Name| Type| Description| Details| 
-| -------- | -------- | -------- | -------- |
-| report_sysmem_vmem_info | bool | Whether to read virtual memory data.| Data is read from the **/proc/vmstat** node.| 
-| report_process_mem_info | bool | Whether to obtain the detailed memory data of a process, such as **rss_shmem**, **rss_file**, and **vm_swap**.| Data is read from the **/proc/${pid}/stat** node.| 
-| report_smaps_mem_info | bool | Whether to obtain the smaps memory information of a process.| Data is read from the **/proc/${pid}/smaps** node.| 
-| report_gpu_mem_info | bool | Whether to obtain the GPU usage of a process.| Data is read from the **/proc/gpu_memory** node.| 
-| parse_smaps_rollup | bool | Whether to refresh the data size.| Data is read from the **/proc/{pid}/smaps_rollup** node. The profiling effect (such as CPU and memory) is better than that of using the **report_smaps_mem_info** parameter.| 
+	    | Name| Type| Description| Details| 
+	    | -------- | -------- | -------- | -------- |
+	    | report_sysmem_vmem_info | bool | Whether to read virtual memory data.| Data is read from the **/proc/vmstat** node.| 
+	    | report_process_mem_info | bool | Whether to obtain the detailed memory data of a process, such as **rss_shmem**, **rss_file**, and **vm_swap**.| Data is read from the **/proc/${pid}/stat** node.| 
+	    | report_smaps_mem_info | bool | Whether to obtain the smaps memory information of a process.| Data is read from the **/proc/${pid}/smaps** node.| 
+	    | report_gpu_mem_info | bool | Whether to obtain the GPU usage of a process.| Data is read from the **/proc/gpu_memory** node.| 
+	    | parse_smaps_rollup | bool | Whether to read smaps statistics from the smaps_rollup node.| Reads smaps statistics from the /proc/{pid}/smaps_rollup node. Compared with the report_smaps_mem_info parameter, this parameter optimizes service performance (such as CPU and memory usage optimization).| 
 
 2. Result analysis
 
-![en-us_image_0000002357083514](figures/en-us_image_0000002357083514.png)
+    ![en-us_image_0000002357083514](figures/en-us_image_0000002357083514.png)
 
-You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **Memory** to use the **memory plug-in** feature of the profiler. The preceding figure shows the process smaps memory information in the selected time range.
+    You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **Memory** to use the **memory plug-in** feature of the profiler. The preceding figure shows the process smaps memory information in the selected time range.
 
 **xpower_plugin**:
 
 1. Parameters
 
-| Name| Type| Description| Details| 
-| -------- | -------- | -------- | -------- |
-| bundle_name | string | Name of the process for which power consumption profiling is required.| The value must be the same as the process name in the **/proc/ directory**.| 
-| message_type | XpowerMessageType | Type of the power consumption data to be obtained.| The data types include **REAL_BATTERY**, **APP_STATISTIC**, **APP_DETAIL**, **COMPONENT_TOP**, **ABNORMAL_EVENTS**, and **THERMAL_REPORT**.| 
+	    | Name| Type| Description| Details| 
+	    | -------- | -------- | -------- | -------- |
+	    | bundle_name | string | Name of the process for which power consumption profiling is required.| The value must be the same as the process name in the **/proc/ directory**.| 
+	    | message_type | XpowerMessageType | Type of the power consumption data to be obtained.| The data types include **REAL_BATTERY**, **APP_STATISTIC**, **APP_DETAIL**, **COMPONENT_TOP**, **ABNORMAL_EVENTS**, and **THERMAL_REPORT**.| 
 
 2. Result analysis
 
-![en-us_image_0000002346028442](figures/en-us_image_0000002346028442.png)
+    ![en-us_image_0000002346028442](figures/en-us_image_0000002346028442.png)
 
-You can go to **DevEco Studio** -> **Profiler** -> **Realtime Monitor** to obtain the power consumption data of related processes.
+    You can go to **DevEco Studio** -> **Profiler** -> **Realtime Monitor** to obtain the power consumption data of related processes.
 
 **gpu_plugin**:
 
-Obtaining GPU usage information
+Obtain GPU usage information.
 
-1. Parameters
+Parameters
 
 | Name| Type| Description| Details| 
 | -------- | -------- | -------- | -------- |
-| pid | int | Name of the process to profile.| The value must be the same as the process name in the **/proc/ directory**.| 
-| report_gpu_info | bool | Whether to display the GPU usage of a specified process.| The value **true** means to display the GPU data of a specified process. In this case, you need to set **pid**.  <br>Data is read from the **/sys/class/devfreq/gpufreq/gpu_scene_aware/utilisation** node.<br>The value **false** means not to display the GPU data of a specified process.| 
+| pid | int | ID of the process to be optimized, which must be the same as the process ID in the /proc/ directory.|
+| report_gpu_info | bool | Whether to display the GPU usage of a specified process.| true: Display the GPU data of a specified process. The pid parameter needs to be set. The data is read from the /sys/class/devfreq/gpufreq/gpu_scene_aware/utilisation node.<br>false: Do not display the GPU data of a specified process.| 
 
 **cpu_plugin**:
 
-Obtaining CPU usage information
+Obtain CPU usage information.
 
-1. Parameters
+Parameters
 
 | Name| Type| Description| Details| 
 | -------- | -------- | -------- | -------- |
-| pid | int | Name of the process to profile.| The value must be the same as the process name in the **/proc/ directory**.| 
-| report_process_info | bool | Whether to display the CPU usage of a specified process.| The value **true** means to display the data of a specified process and you need to set the **pid** parameter.<br>The value false means to display the system CPU usage data.| 
-| skip_thread_cpu_info | bool | Whether to skip the thread CPU usage data.| The value **true** means to not display the CPU usage of each thread. When this parameter is set to **true**, the profiling service overhead is reduced.<br>The value false means to display the CPU usage of each thread.| 
+| pid | int | ID of the process to be optimized.| The process ID must be the same as that in the /proc/ directory.|
+| report_process_info | bool | Whether to display the CPU usage of a specified process.| The value **true** means to display the data of a specified process and you need to set the **pid** parameter.<br>false: Only the system-level CPU usage data is displayed.| 
+| skip_thread_cpu_info | bool | Whether to skip the thread CPU usage data.| The value **true** means to not display the CPU usage of each thread. When this parameter is set to **true**, the profiling service overhead is reduced.<br>false: The CPU usage of each thread is displayed.| 
 
 
 ## Common Commands
@@ -309,7 +308,7 @@ Obtaining CPU usage information
 ### Sampling Records of Heap Memory Allocation Call Stack Data
 
 
-Capture the stack for heap memory allocation of the **com.example.insight_test_stage** process. Enable fp stack unwinding, offline symbolization, and statistics mode.
+Capture the stack of heap memory allocation operations of the com.example.insight_test_stage process, and enable fp backstack, offline symbolization, and statistics mode.
 
 
 ```shell
@@ -354,7 +353,7 @@ The collected data is saved to the **/data/local/tmp/hiprofiler_data.htrace** fi
 
 
 
-Capturing the CPU usage of a specified process
+Capture the CPU usage of a specified process.
 
 
 Collect CPU data of the process whose process ID is **1234**. The collection duration is 30s, the sampling period is 1000 ms, the size of the shared memory for transmitting profiling data is 16384 memory pages, and the collected data is saved to the **/data/local/tmp/hiprofiler_data.htrace** file.
@@ -387,13 +386,13 @@ CONFIG
 
 
 
-## FAQs
+## Common Issues
 
-What should I do if an exception occurs during profiling?
+An exception occurs during tuning.
 
 **Symptom**
 
-"Service not started" is displayed when the **hiprofiler_cmd** command is executed.
+When the hiprofiler_cmd command is executed, the message "Service not started" is displayed.
 
 ![en-us_image_0000002357083914](figures/en-us_image_0000002357083914.png)
 
@@ -401,7 +400,7 @@ What should I do if an exception occurs during profiling?
 
 If the profiling service is not started, DevEco Studio is being used for profiling or the previous profiling exits frequently. In this case, run the **hiprofiler_cmd -k** command and then run the profiling command again.
 
-What should I do if the captured trace file is empty?
+The captured trace file is empty.
 
 **Symptom**
 
@@ -411,7 +410,7 @@ The captured trace file is empty.
 
 Check whether the generated file is in the **/data/local/tmp/** directory. If the target path is a folder in **/data/local/tmp**, run the **chmod 777** command on the folder. If the user version uses **nativehook** or **network profiler** to capture a no-debug application, no data can be captured. (For details, see changelog https://gitcode.com/openharmony/docs/pulls/57419.)
 
-What should I do if I suspect that the profiling data is inaccurate?
+The tuning data may be inaccurate.
 
 **Symptom**
 

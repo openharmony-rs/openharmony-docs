@@ -1,4 +1,4 @@
-# Database Backup and Restoration (C/C++)
+# Database Backup and Restore (C/C++)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
@@ -8,13 +8,11 @@
 
 ## When to Use
 
-You may need to restore a database in any of the following cases:
+If an error occurs during the operation or storage, you can restore the database to the previous state and continue the operation.
 
-An important operation being performed by an application is interrupted.
+If a database is tampered with, deleted, or powered off, the database may be unavailable due to data loss, data corruption, or dirty data. In this case, you can use the backup and restore capability to restore the database to the available state.
 
-The database is unavailable due to data loss or corruption, or dirty data.
-
-Currently, only RDB stores (C/C++) supports database backup and restoration.
+Currently, only RDB stores (C/C++) supports database backup and restore.
 
 ## How to Develop
 

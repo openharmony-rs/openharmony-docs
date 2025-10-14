@@ -4,7 +4,7 @@
 <!--Owner: @tangye123456-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The system provides the **MovingPhotoView** component, which can be used to play moving photos in social networking and gallery applications.
 
@@ -66,19 +66,19 @@ The restrictions on using the **MovingPhotoView** component are as follows:
             .objectFit(ImageFit.Cover)
             // Triggered when the playback starts.
             .onStart(() => {
-              console.log('onStart');
+              console.info('onStart');
             })
             // Triggered when the playback ends.
             .onFinish(() => {
-              console.log('onFinish');
+              console.info('onFinish');
             })
             // Triggered when the playback stops.
             .onStop(() => {
-              console.log('onStop')
+              console.info('onStop')
             })
             // Triggered when an error occurs.
             .onError(() => {
-              console.log('onError');
+              console.error('onError');
             })
     
           Row() {

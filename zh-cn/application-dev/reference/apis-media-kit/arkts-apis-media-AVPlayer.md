@@ -13,7 +13,7 @@
 
 播放管理类，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
 
-应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统查杀应用。
+应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
 
 Audio/Video播放demo可参考：[音频播放开发指导](../../media/media/using-avplayer-for-playback.md)、[视频播放开发指导](../../media/media/video-playback.md)。
 
@@ -1951,9 +1951,12 @@ async function test(){
 
 on(type: 'timeUpdate', callback: Callback\<number>): void
 
-监听资源播放当前时间，单位为毫秒（ms），用于刷新进度条当前位置，默认间隔100ms时间上报，因用户操作(seek)产生的时间变化会立刻上报。
+监听资源播放当前时间，单位为毫秒（ms），用于刷新进度条当前位置，默认间隔100ms时间上报，因用户操作（seek）产生的时间变化会立刻上报。
 
-注：直播场景不支持timeUpdate上报。
+>**注意：**
+>
+>- 直播场景不支持timeUpdate上报。
+>- 操作（seek）时必须等待seekdone结束才能根据timeUpdate来更新进度条。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1966,7 +1969,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 | type     | string   | 是   | 时间更新的回调类型，支持的事件：'timeUpdate'。 |
 | callback | Callback\<number> | 是   | 回调函数。返回当前时间。                                     |
 
-**示例：**
+**示例1：**
 
 ```ts
 async function test(){
@@ -1974,6 +1977,43 @@ async function test(){
   avPlayer.on('timeUpdate', (time:number) => {
     console.info('timeUpdate called,and new time is :' + time);
   });
+}
+```
+
+**示例2：**
+
+```ts
+async function test() {
+  let avPlayer = await media.createAVPlayer();
+
+  let isSeeking = false;    // 标记是否正在seek。
+  let seekTargetTime = 0;   // 记录目标时间（单位：毫秒）。
+
+  // 1.监听seekDone：确认跳转完成。
+  avPlayer.on('seekDone', (seekDoneTime: number) => {
+    console.info('seekDone called, and seek time is: ' + seekDoneTime);
+    isSeeking = false;
+    seekTargetTime = seekDoneTime; // 可选：记录最终定位时间。
+  });
+
+  // 2.监听timeUpdate：只在seekDone后才更新进度。
+  avPlayer.on('timeUpdate', (time: number) => {
+    // 关键逻辑：只有seekDone之后才允许更新进度条。
+    if (isSeeking) {
+      console.info('seek in progress, ignore timeUpdate');
+      return; // 忽略seek期间的timeUpdate。
+    }
+
+    // 真正的播放进度更新（seekDone后才生效）。
+    console.info('timeUpdate: ' + time + ' ms');
+    // 此处进行进度条更新。
+  });
+
+  // 3.模拟seek操作。
+  let seekTime: number = 1000;
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC); // 单位：毫秒。
+  isSeeking = true; // 标记正在seek。
 }
 ```
 

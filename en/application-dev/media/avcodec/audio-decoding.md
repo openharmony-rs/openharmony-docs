@@ -28,7 +28,7 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 
 ## Development Guidelines
 
-Read [AudioCodec](../../reference/apis-avcodec-kit/_audio_codec.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/_audio_codec.md).
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 
@@ -66,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create a decoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the decoder instance created.
+2. Create a decoder instance. In the code snippet below, OH_AVCodec * is the pointer to the decoder instance created.
 
    You can create a decoder by MIME type or codec name.
 

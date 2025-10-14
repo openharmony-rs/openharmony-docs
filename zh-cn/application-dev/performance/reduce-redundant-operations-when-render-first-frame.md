@@ -33,7 +33,8 @@
 @Entry
 @Component
 struct AllLoad {
-  @State arr: String[] = Array.from(Array<string>(1000), (val,i) =>i.toString());
+  @State arr: String[] = Array.from(Array<string>(1000), (val, i) => i.toString());
+
   build() {
     List() {
       ForEach(this.arr, (item: string) => {
@@ -151,7 +152,7 @@ struct SmartLoad {
             .fontSize(20)
             .margin({ left: 10 })
         }
-      }, (item:string) => item)
+      }, (item: string) => item)
     }
   }
 }
@@ -188,7 +189,7 @@ struct TaskSync {
   }
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Text(this.text).fontSize(50)
     }
     .width('100%')
@@ -216,11 +217,11 @@ import { worker } from "@kit.ArkTS";
 @Component
 struct TaskAsync {
   @State private text: string = '';
-  private workerInstance:worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
+  private workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
 
   aboutToAppear() {
     // 处理来自子线程的消息
-    this.workerInstance.onmessage = (message)=> {
+    this.workerInstance.onmessage = (message) => {
       console.info(`message from worker: ${JSON.stringify(message)}`);
       this.text = JSON.parse(JSON.stringify(message)).data;
       this.workerInstance.terminate();
@@ -231,14 +232,15 @@ struct TaskAsync {
   }
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Text(this.text).fontSize(50)
     }
     .width('100%')
     .height('100%')
     .padding(10)
   }
-  private async computeTaskAsync(){
+
+  private async computeTaskAsync() {
     // 发送消息到子线程
     this.workerInstance.postMessage('hello world')
   }
@@ -257,6 +259,7 @@ function computeTask(count: number) {
   }
   return 'task complete';
 }
+
 // 处理来自主线程的消息
 parentPort.onmessage = (message) => {
   console.info(`onmessage: ${JSON.stringify(message)}`);
@@ -291,7 +294,8 @@ parentPort.onmessage = (message) => {
 @Entry
 @Component
 struct SyncLoadImage {
-  @State arr: String[] = Array.from(Array<string>(100), (val,i) =>i.toString());
+  @State arr: String[] = Array.from(Array<string>(100), (val, i) => i.toString());
+
   build() {
     Column() {
       Row() {
@@ -319,23 +323,24 @@ struct SyncLoadImage {
 @Entry
 @Component
 struct AsyncLoadImage {
-  @State arr: String[] = Array.from(Array<string>(100), (val,i) =>i.toString());
-    build() {
-      Column() {
-        Row() {
-          List() {
-            ForEach(this.arr, (item: string) => {
-              ListItem() {
-                Image($r('app.media.4k'))
-                  .border({ width: 1 })
-                  .borderStyle(BorderStyle.Dashed)
-                  .height(100)
-                  .width(100)
-              }
-            }, (item: string) => item.toString())
-          }
+  @State arr: String[] = Array.from(Array<string>(100), (val, i) => i.toString());
+
+  build() {
+    Column() {
+      Row() {
+        List() {
+          ForEach(this.arr, (item: string) => {
+            ListItem() {
+              Image($r('app.media.4k'))
+                .border({ width: 1 })
+                .borderStyle(BorderStyle.Dashed)
+                .height(100)
+                .width(100)
+            }
+          }, (item: string) => item.toString())
         }
       }
+    }
   }
 }
 ```
@@ -379,12 +384,12 @@ struct Depth1 {
                     .width('100%')
                     .height(80)
                     .textAlign(TextAlign.Center)
-                    .border({width:1})
+                    .border({ width: 1 })
                 }
               }
             }
           }
-        }, (item:string) => item)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(0)

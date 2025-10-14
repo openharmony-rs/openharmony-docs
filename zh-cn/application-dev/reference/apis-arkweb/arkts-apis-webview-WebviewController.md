@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 通过WebviewController可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
 
@@ -367,7 +367,9 @@ struct WebComponent {
 }
 ```
 
-2.resources协议，适用Webview加载带有"#"路由的链接。
+2.resources协议。
+
+使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -384,7 +386,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             // 通过resource协议加载本地资源文件。
-            this.controller.loadUrl("resource://rawfile/index.html");
+            this.controller.loadUrl("resource://rawfile/index.html#home");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -393,6 +395,36 @@ struct WebComponent {
     }
   }
 }
+```
+
+在“src\main\resources\rawfile”文件夹下创建index.html：
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<body>
+<div id="content"></div>
+
+<script>
+	function loadContent() {
+	  var hash = window.location.hash;
+	  var contentDiv = document.getElementById('content');
+
+	  if (hash === '#home') {
+		contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+	  } else {
+		contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+	  }
+	}
+
+	// 加载界面
+	window.addEventListener('load', loadContent);
+
+	// 当hash变化时，更新界面
+	window.addEventListener('hashchange', loadContent);
+</script>
+</body>
+</html>
 ```
 
 3.通过沙箱路径加载本地文件，可以参考[web](../../web/web-page-loading-with-web-components.md#加载本地页面)加载沙箱路径的示例代码。
@@ -2777,7 +2809,7 @@ struct WebComponent {
 
 getPageHeight(): number
 
-获取当前网页的页面高度。
+获取当前网页的页面高度。具体使用详情请参考[获取网页内容高度](../../web/web-getpage-height.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5164,13 +5196,6 @@ static setUserAgentForHosts(userAgent: string, hosts: Array\<string>): void
 | userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 | hosts      | Array\<string>  | 是   | 用户自定义代理的相关域名列表，每次调用时仅保留最新传入的列表，并限制最大条目数为两万，超出部分自动截断。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -5312,7 +5337,7 @@ export default class EntryAbility extends UIAbility {
 enableSafeBrowsing(enable: boolean): void
 
 启用检查网站安全风险的功能，非法和欺诈网站是强制启用的，不能通过此功能禁用。
-本功能默认不生效，OpenHarmony只提供恶意网址拦截页WebUI，网址风险检测以及显示WebUI的功能由Vendor实现。推荐在WebContentsObserver中监听跳转[DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h#:~:text=virtual%20void-,DidStartNavigation)、[DidRedirectNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h#:~:text=virtual%20void-,DidRedirectNavigation)进行检测。
+本功能默认不生效，OpenHarmony只提供恶意网址拦截页WebUI，网址风险检测以及显示WebUI的功能由Vendor实现。推荐在WebContentsObserver中监听跳转[DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h)、[DidRedirectNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h)进行检测。
 
 > **说明：**
 > 
@@ -8837,7 +8862,7 @@ struct WebComponent {
         Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
       }
       .margin({ top: 10, bottom: 10 })
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
         .key("web_01")
         .overScrollMode(this.mode)
         .onTouch(() => {
@@ -8866,7 +8891,7 @@ struct WebComponent {
 ```
   加载的html文件。
   ```html
-  <!--index.html-->
+  <!-- index.html -->
   <!DOCTYPE html>
   <html>
   <head>
@@ -9448,7 +9473,7 @@ avoidVisibleViewportBottom(avoidHeight: number): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| avoidHeight   | number   | 是   | 设置Web网页可视视口底部避让高度。<br>默认值：0<br>单位：vp<br>合法取值范围：0~Web组件高度<br>非法值设置行为：超出合法取值范围时取边界值。 |
+| avoidHeight   | number   | 是   | 设置Web网页可视视口底部避让高度。<br>默认值：0<br>单位：vp<br>合法取值范围：0~Web组件高度<br>非法值设置行为：小于0取值为0，大于Web组件高度取值为Web组件高度。 |
 
 **错误码：**
 
@@ -9767,7 +9792,7 @@ setBlanklessLoadingWithKey(key: string, is_start: boolean): WebBlanklessErrorCod
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
 | key | string | 是 | 唯一标识本页面的key值。必须与getBlanklessInfoWithKey接口的key值相同。<br>合法取值范围：非空，长度不超过2048个字符。<br>非法值设置行为：返回错误码WebBlanklessErrorCode，方案不生效。 |
-| is_start | boolean | 是 | 是否启用开始插帧。true：启用，false：不启用。<br>默认值：false |
+| is_start | boolean | 是 | 是否启用开始插帧。true：启用，false：不启用。<br>传入undefined或null时为false。 |
 
 **返回值：**
 
@@ -9881,7 +9906,7 @@ export default class EntryAbility extends UIAbility {
 
 static setBlanklessLoadingCacheCapacity(capacity: number): number
 
-设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。
+设置无白屏加载方案的持久化缓存容量，返回实际生效值。当接口没有显式调用时，默认缓存容量为30MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9889,7 +9914,7 @@ static setBlanklessLoadingCacheCapacity(capacity: number): number
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| capacity | number | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。<br>默认值：30MB。<br>合法取值范围：0~100，当设置为0时，无缓存空间，则功能全局不开启。<br>非法值设置行为：小于0时生效值为0，大于100时生效值为100。 |
+| capacity | number | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。<br>合法取值范围：0~100，当设置为0时，无缓存空间，则功能全局不开启。<br>非法值设置行为：小于0时生效值为0，大于100时生效值为100。 |
 
 **返回值：**
 

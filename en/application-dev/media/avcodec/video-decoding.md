@@ -78,7 +78,7 @@ The following figure shows the interaction between states.
 
 ## How to Develop
 
-Read [VideoDecoder](../../reference/apis-avcodec-kit/_video_decoder.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/_video_decoder.md).
 
 The figure below shows the call relationship of video decoding.
 
@@ -447,13 +447,13 @@ The following walks you through how to implement the entire video decoding proce
 
 7. Call **OH_VideoDecoder_Prepare()** to prepare internal resources for the decoder.
 
-   ```c++
-OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
+    ```c++
+    OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     if (ret != AV_ERR_OK) {
         // Handle exceptions.
     }
     ```
-    
+
 8. Call **OH_VideoDecoder_Start()** to start the decoder.
 
     ```c++
@@ -759,7 +759,7 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     > **NOTE**
     >
     > This API cannot be called in the callback function.
-    > 
+    >
     > After the call, you must set a null pointer to the decoder to prevent program errors caused by wild pointers.
 
     ```c++
@@ -772,11 +772,8 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     // Call OH_VideoDecoder_Destroy to destroy the decoder.
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoDec != nullptr) {
-        ret = OH_VideoDecoder_Destroy(videoDec);
+        OH_VideoDecoder_Destroy(videoDec);
         videoDec = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
     }
     inQueue.Flush();
     outQueue.Flush();
@@ -989,13 +986,13 @@ The following walks you through how to implement the entire video decoding proce
 
 6. Call **OH_VideoDecoder_Prepare()** to prepare internal resources for the decoder.
 
-   ```c++
-OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
+    ```c++
+    OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     if (ret != AV_ERR_OK) {
         // Handle exceptions.
     }
     ```
-    
+
 7. Call **OH_VideoDecoder_Start()** to start the decoder.
 
     ```c++
@@ -1241,5 +1238,3 @@ The subsequent processes (including refreshing, resetting, stopping, and destroy
 
 <!--RP5-->
 <!--RP5End-->
-
- <!--no_check--> 

@@ -1,7 +1,7 @@
 # 绑定手势方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -29,7 +29,7 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势类型。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -56,7 +56,7 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -79,7 +79,7 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 

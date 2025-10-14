@@ -16,8 +16,11 @@ The cross-device notification is designed to implement collaborative interaction
   - [Clearing Repeated Notifications Across Devices](./notification-distributed-messageid.md): Clear repeated notifications published across devices and by the local device to prevent multiple notifications from disturbing users.
 
 ## Constraints
-  - Currently, cross-device notification can only be implemented between a smartphone and a watch.
-  - Only the notification slots [SOCIAL_COMMUNICATION](../../application-dev/reference/apis-notification-kit/js-apis-notificationManager.md#slottype) and [LIVE_VIEW](../../application-dev/reference/apis-notification-kit/js-apis-notificationManager.md#slottype) support cross-device notification.
+  - Cross-device notification is supported between phones and watches since API version 18, and between phones and tablets or 2-in-1 devices since API version 20.
+  - [Notification slot types](../../application-dev/reference/apis-notification-kit/js-apis-notificationManager.md#slottype) supported for cross-device notification:
+    - Watch: **SOCIAL_COMMUNICATION** and **LIVE_VIEW**.
+    - Tablet: **SOCIAL_COMMUNICATION**, **SERVICE_INFORMATION**, **LIVE_VIEW**, and **CUSTOMER_SERVICE**.
+    - 2-in-1 device: **SOCIAL_COMMUNICATION**, **SERVICE_INFORMATION**, and **CUSTOMER_SERVICE**.
 
 ## Working Principles
 

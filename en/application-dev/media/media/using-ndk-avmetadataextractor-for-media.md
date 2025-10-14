@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the AVMetadataExtractor to obtain metadata from a raw media asset. This topic walks you through on how to obtain the metadata of a media asset.
 
@@ -81,13 +81,13 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/capi-avmetadataextract
     ```
 
 3. Call [OH_AVMetadataExtractor_FetchMetadata()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata) to obtain metadata.
-   > - First, call **OH_AVFormat_Create()** to create an OH_AVFormat object and obtain the metadata by accessing the key-value pairs of the object. When the object is no longer required, call **OH_AVFormat_Destroy** to release the object to prevent memory leakage. For details, see [OH_AVFormat](../../reference/apis-avcodec-kit/_core.md#oh_avformat).
+   > - First, call **OH_AVFormat_Create()** to create an OH_AVFormat object and obtain the metadata by accessing the key-value pairs of the object. When the object is no longer required, call **OH_AVFormat_Destroy** to release the object to prevent memory leakage. For details, see [OH_AVFormat][OH_AVFormat](../../reference/apis-avcodec-kit/_core.md#oh_avformat).
    ```c
    // Obtain the metadata.
    avErrCode = OH_AVMetadataExtractor_FetchMetadata(mainExtractor, avMetadata);
    ```
 
-4. For a video resource, you can use **OH_AVMetadataExtractor_FetchMetadata** to obtain the medata such as width and height from the OH_AVFormat object, using functions like **OH_AVFormat_GetIntValue** and **GetStringValueFromAVFormat**.
+4. For a video resource, you can use **OH_AVMetadataExtractor_FetchMetadata** to obtain the metadata such as width and height from the OH_AVFormat object, using functions like **OH_AVFormat_GetIntValue** and **GetStringValueFromAVFormat**.
     ```c
     // Parse the width and height of the video resource from the OH_AVFormat object as int32_t.
     int32_t width = 0;

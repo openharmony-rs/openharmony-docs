@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -123,7 +123,7 @@ export class ClassForLink {
   }
 
   static Function1(playbackProgress: number, playback?: number): void {
-    console.log('Function1' + playbackProgress);
+    console.info(`Function1, playbackProgress: ${playbackProgress}.`);
   }
 }
 ```
@@ -326,7 +326,7 @@ export class ClassForFuncDemo {
   }
 })
   static getWeather(location: string): string {
-    console.log('location' + location);
+    console.info(`location: ${location}`);
     return 'The current temperature in Hangzhou is 24℃';
   }
 }

@@ -1822,7 +1822,7 @@ Obtains the asset analysis progress. This API uses a promise to return the resul
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| analysisType | [AnalysisType](#analysistype11) | Yes   | Smart analysis type.|
+| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. |
 
 **Return value**
 
@@ -2466,11 +2466,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2526,11 +2526,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2712,11 +2712,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2772,11 +2772,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2835,11 +2835,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2895,11 +2895,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -4927,23 +4927,23 @@ Describes the information about a shared media asset.
 | height | number | No| No| Pixel height of the media asset.<br>**System API**: This is a system API.|
 | dataTaken | number | No| No| Timestamp when the media asset was taken and stored locally.<br>**System API**: This is a system API.|
 | orientation | number | No| No| Rotation angle of the media asset.<br>**System API**: This is a system API.|
-| isFavorite | boolean | No| No| Whether the media asset is marked as a favorite.<br>**System API**: This is a system API.|
+| isFavorite | boolean | No| No| Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.<br>**System API**: This is a system API.|
 | title | string | No| No| Title of the media asset.<br>**System API**: This is a system API.|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | No| No| Location of the media asset.<br>**System API**: This is a system API.|
 | dataTrashed | number | No| No| Whether the media asset is moved to the trash.<br>**System API**: This is a system API.|
-| hidden | boolean | No| No| Whether the media asset is hidden.<br>**System API**: This is a system API.|
+| hidden | boolean | No| No| Whether the media asset is hidden. **true** if hidden, **false** otherwise.<br>**System API**: This is a system API.|
 | userComment | string | No| No| User comments on the media asset.<br>**System API**: This is a system API.|
 | cameraShotKey | string | No| No| Camera shot information of the media asset.<br>**System API**: This is a system API.|
 | dateYear | string | No| No| Year when the media asset was created.<br>**System API**: This is a system API.|
 | dateMonth | string | No| No| Month when the media asset was created.<br>**System API**: This is a system API.|
 | dateDay | string | No| No| Time when the media asset was created.<br>**System API**: This is a system API.|
-| pending | boolean | No| No| Whether the media asset is in a pending state. **true** if pending.<br>**System API**: This is a system API.|
+| pending | boolean | No| No| Whether the media asset is in a pending state. **true** if pending, **false** otherwise.<br>**System API**: This is a system API.|
 | dateAddedMs | number | No| No| Time elapsed after the media asset was added.<br>**System API**: This is a system API.|
 | dateTrashedMs | number | No| No| Time elapsed since the media asset was trashed.<br>**System API**: This is a system API.|
 | subtype | [PhotoSubtype](#photosubtype) | No| No| Subtype of the media asset.<br>**System API**: This is a system API.|
 | movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | No| No| Effect of the moving photo.<br>**System API**: This is a system API.|
 | dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | No| No| Dynamic range type of the media asset.<br>**System API**: This is a system API.|
-| thumbnailReady | boolean | No| No| Whether the thumbnail of the media asset is ready.<br>**System API**: This is a system API.|
+| thumbnailReady | boolean | No| No| Whether the thumbnail of the media asset is ready. **true** if ready, **false** otherwise.<br>**System API**: This is a system API.|
 | lcdSize | string | No| No| Width and height of the LCD thumbnail of the media asset.<br>**System API**: This is a system API.|
 | thmSize | string | No| No| Width and height of the thumb thumbnail of the media asset.<br>**System API**: This is a system API.|
 | thumbnailModifiedMs<sup>14+</sup> | number | No| Yes| Time elapsed since the thumbnail status of the media asset changed.<br>**System API**: This is a system API.|
@@ -6695,7 +6695,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](js-apis-photoAccessHelper.md).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8307,7 +8307,7 @@ Cancels cloud enhancement tasks.
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| photoAssets | Array<[PhotoAsset](#photoasset)> | Yes  | Array of [PhotoAssets](#photoasset) whose cloud enhancement tasks are to be canceled.|
+| photoAssets | Array<[PhotoAsset](#photoasset)> | Yes  | Array of [PhotoAsset](#photoasset) objects whose cloud enhancement tasks are to be canceled.|
 
 **Return value**
 
@@ -8461,29 +8461,29 @@ async function example(context: Context) {
       = await cloudEnhancementInstance.queryCloudEnhancementTaskState(asset);
     let taskStage = cloudEnhancementTaskState.taskStage;
     if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_EXCEPTION) {
-      console.log("task has exception");
+      console.info("task has exception");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_PREPARING) {
-      console.log("task is preparing");
+      console.info("task is preparing");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_UPLOADING) {
       let transferredFileSize = cloudEnhancementTaskState.transferredFileSize;
       let totalFileSize = cloudEnhancementTaskState.totalFileSize;
       let message = `task is uploading, transferredFileSize: ${transferredFileSize}, totalFileSize: ${totalFileSize}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_EXECUTING) {
       let expectedDuration = cloudEnhancementTaskState.expectedDuration;
       let message = `task is executing, expectedDuration: ${expectedDuration}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING) {
       let transferredFileSize = cloudEnhancementTaskState.transferredFileSize;
       let totalFileSize = cloudEnhancementTaskState.totalFileSize;
       let message = `task is downloading, transferredFileSize: ${transferredFileSize}, totalFileSize: ${totalFileSize}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
-      console.log("task is completed");
+      console.info("task is completed");
     }
   } catch (err) {
     console.error(`queryCloudEnhancementTaskStateDemo failed with error: ${err.code}, ${err.message}`);
@@ -8936,7 +8936,7 @@ async function example(context: Context) {
     let taskInfo = cloudMediaAssetStatus.taskInfo;
     let errorCode = cloudMediaAssetStatus.errorCode;
     let message = `taskStatus: ${taskStatus}, taskInfo: ${taskInfo}, errorCode: ${errorCode}`;
-    console.log(message);
+    console.info(message);
   } catch (err) {
     console.error(`getCloudMediaAssetStatusDemo failed with error: ${err.code}, ${err.message}`);
   }
@@ -8977,7 +8977,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](./js-apis-photoAccessHelper.md#photoaccesshelpergetphotoaccesshelper).
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -9138,7 +9138,7 @@ Obtains custom user behavior recordings based on retrieval options. This API use
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | --- |
-| optionCheck | [FetchOptions](js-apis-photoAccessHelper.md#fetchoptions) | Yes| Retrieval options.|
+| optionCheck | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes| Retrieval options.|
 
 **Return value**
 
@@ -9246,7 +9246,7 @@ Removes custom user behavior recordings based on retrieval options. This API use
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | --- |
-| optionCheck | [FetchOptions](js-apis-photoAccessHelper.md#fetchoptions) | Yes| Retrieval options.|
+| optionCheck | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes| Retrieval options.|
 
 **Return value**
 
@@ -9675,6 +9675,8 @@ Enumerates the smart analysis types.
 | ANALYSIS\_BONE\_POSE<sup>12+</sup>        | 12 | Analysis of the position of skeletal elements (bones) in a human body. **System API**: This is a system API.   |
 | ANALYSIS\_VIDEO\_LABEL<sup>12+</sup>        | 13 | Video label analysis. **System API**: This is a system API.   |
 | ANALYSIS\_HIGHLIGHT<sup>12+</sup>        | 14 | Highlight label. **System API**: This is a system API.   |
+| ANALYSIS\_MULTI\_CROP<sup>12+</sup>        | 15 | Label for 2D panning detection boxes. **System API**: This is a system API.   |
+| ANALYSIS\_SEARCH\_INDEX<sup>18+</sup>        | 16 | Foreground index analysis. **System API**: This is a system API.   |
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -9814,13 +9816,13 @@ Represents the cloud enhancement task information, which includes the cloud enha
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|taskStage       |[CloudEnhancementTaskStage](#cloudenhancementtaskstage13)  |Yes| Cloud enhancement task state.|
-|transferredFileSize          |number  |No| Size of the file transferred. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
-|totalFileSize          |number  |No| Total file size. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
-|expectedDuration          |number  |No| Queuing time. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_EXECUTING**. |
-|statusCode          |number  |No| Status code. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_FAILED**. |
+| Name   | Type                       | Read-Only| Optional| Description                                                        |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskStage  | [CloudEnhancementTaskStage](#cloudenhancementtaskstage13)  | Yes| No| Cloud enhancement task state. |
+| transferredFileSize  | number  | Yes| Yes| Size of the file transferred. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
+| totalFileSize  | number  | Yes| Yes| Total file size. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
+| expectedDuration  | number  | Yes| Yes| Queuing time. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_EXECUTING**. |
+| statusCode  | number  | Yes| Yes| Status code. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_FAILED**. |
 
 ## VideoEnhancementType<sup>13+</sup>
 
@@ -9932,11 +9934,11 @@ Describes the details of a cloud media asset download task. It is the return val
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|taskStatus       |[CloudMediaAssetTaskStatus](#cloudmediaassettaskstatus14)  |Yes| Status of the download task.|
-|taskInfo          |string  |Yes| Total number of and size (measured in bytes) of the assets that have been downloaded, and the total number and size (also measured in bytes) of the assets remaining to be downloaded. |
-|errorCode       |[CloudMediaTaskPauseCause](#cloudmediataskpausecause14)  |Yes| Reason why the download task is suspended.|
+| Name   | Type                       | Read-Only| Optional| Description                                                        |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskStatus | [CloudMediaAssetTaskStatus](#cloudmediaassettaskstatus14)  | Yes| No| Status of the download task. |
+| taskInfo | string  | Yes| No| Total number of and size (measured in bytes) of the assets that have been downloaded, and the total number and size (also measured in bytes) of the assets remaining to be downloaded. |
+| errorCode | [CloudMediaTaskPauseCause](#cloudmediataskpausecause14)  | Yes| No| Reason why the download task is suspended. |
 
 ## RecommendationType<sup>11+</sup>
 

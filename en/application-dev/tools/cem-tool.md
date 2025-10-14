@@ -4,7 +4,7 @@ The Common Event Manager enables you to print common event information and publi
 
 ## Environment Requirements
 
-Before using this tool, you must obtain the <!--Del-->[<!--DelEnd-->hdc tool<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd--> and run the hdc shell command.
+Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the hdc shell command.
 
 ## cem Commands
 

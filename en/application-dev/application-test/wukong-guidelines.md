@@ -1,5 +1,10 @@
 # wukong User Guide
-
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @qkfg-->
+<!--Designer: @qkfg-->
+<!--Tester: @caixincen-->
+<!--Adviser: @Brilliantry_Rui-->
 ## Introduction
 
 wukong is a built-in command line tool that implements application stability test capabilities such as random event injection, component injection, exception capture, report generation, and data traversal of abilities. This tool allows you to conduct stability tests on the system or applications by simulating user behavior. wukong provides three types of testing: random testing, special testing, and focus testing.
@@ -26,11 +31,9 @@ The following figure shows the wukong component architecture and the responsibil
 
 1. The wukong tool is built in the system since API version 9.
 
-2. When the PC is connected to one or more target devices, you can run test commands.
-
-3. Enter the shell mode before running any command.
+2. Before running any command, configure the <!--RP1-->[hdc environment](../dfx/hdc.md)<!--RP1End--> and enter the shell mode.
 <!--Del-->
-4. In API versions earlier than 9, you need to build the tool and push it to the target device. The procedure is as follows:
+3. In API versions earlier than 9, you need to build the tool and push it to the target device. The procedure is as follows:
 
    ```bash
    # Build code
@@ -62,7 +65,7 @@ The following figure shows the wukong component architecture and the responsibil
   #If you are testing one device, run **hdc shell**.
   C:\Users>hdc shell
   $
-  #If you are testing multiple devices, run **hdc list targets** to obtain the SNs, and then run **hdc -t** open the shell.
+  #To connect to multiple devices at the same time, obtain the SNs first by running the hdc list targets command, and then enter the shell mode.
   C:\Users>hdc list targets
   15xxx424axxxx345209d94xxxx8fxx900
   C:\Users>hdc -t 15xxx424axxxx345209d94xxxx8fxx900 shell

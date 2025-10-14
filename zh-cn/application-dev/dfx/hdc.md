@@ -144,7 +144,7 @@ hdc -t connect-key shell echo "Hello world"
 | [kill](#终止服务) | 终止hdc服务进程。 |
 | [hilog](#打印设备端日志) | 打印设备端的日志信息。 |
 | [jpid](#显示设备已打开应用的进程pid) | 显示设备上已打开应用的进程pid。 |
-| track-jpid [-a\|-p] | 实时显示设备上已打开应用的进程pid和应用包名，其中只有debug标签的应用可以被调试。不加参数时只显示已打开应用的进程pid，使用-a参数会显示debug和release应用的进程标签，使用-p参数不显示debug和release的进程标签。 |
+| [track-jpid](#实时显示设备已打开应用的进程pid和应用名) | 实时显示设备上已打开应用的进程pid和应用包名，其中只有debug标签的应用可以被调试。不加参数时只显示已打开应用的进程pid，使用-a参数会显示debug和release应用的进程标签，使用-p参数不显示debug和release的进程标签。 |
 | [target boot](#重启目标设备) | 重启目标设备。 |
 | <!--DelRow--> [target mount](#以读写模式挂载系统分区) | 以读写模式挂载系统分区（非root的设备不可用）。 |
 | <!--DelRow--> [smode](#授予设备端hdc后台服务进程root权限) | 授予设备端hdc后台服务进程root权限，使用-r参数取消授权（非root的设备不可用）。 |
@@ -535,7 +535,7 @@ hdc tconn IP:port [-remove]
 | 返回信息 | 说明 |
 | -------- | -------- |
 | Connect OK. | 连接成功。 |
-| [Info]Target is connected, repeat opration. | 设备当前已连接。 |
+| [Info]Target is connected, repeat operation. | 设备当前已连接。 |
 | [Fail]Connect failed. | 连接失败。 |
 
 **使用方法**：

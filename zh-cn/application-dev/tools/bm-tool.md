@@ -66,8 +66,8 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
 | 参数 | 参数说明 |
 | -------- | -------- |
 | -h | 帮助信息。 |
-| -p | 可选参数，指定HAP路径，多HAP应用可指定多HAP所在文件夹路径。 |
-| -r | 可选参数，覆盖安装一个HAP。默认值为覆盖安装。 |
+| -p | 可选参数，指定HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。 |
+| -r | 可选参数，覆盖安装一个HAP/HSP。默认值为覆盖安装。 |
 | -s | 根据场景判断，安装应用间HSP时为必选参数，其他场景为可选参数。安装应用间共享库， 每个路径目录下只能存在一个同包名的HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为5s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
@@ -834,13 +834,11 @@ error: install parse profile prop check error.
 ### 9568305 依赖的模块不存在
 **错误信息**
 
-error: dependent module does not exist.
-
-![示例图](figures/zh-cn_image_0000001560338986.png)
+error: Failed to install the HAP or HSP because the dependent module does not exist.
 
 **错误描述**
 
-在启动调试或运行应用/服务时，安装HAP出现错误，提示“error: dependent module does not exist”错误信息。
+在启动调试或运行应用/服务时，安装HAP出现错误，提示“error: Failed to install the HAP or HSP because the dependent module does not exist.”错误信息。
 
 **可能原因**
 
@@ -848,6 +846,7 @@ error: dependent module does not exist.
 
 **处理步骤**
 
+场景一：依赖的HSP与HAP在同一工程内：
 1. 先安装依赖的动态共享包（SharedLibrary）模块，再在应用运行配置页勾选Keep Application Data，点击OK保存配置，再运行/调试。
 ![示例图](figures/zh-cn_image_0000001560201786.png)
 2. 在运行配置页，选择Deploy Multi Hap标签页，勾选Deploy Multi Hap Packages，选择依赖的模块，点击OK保存配置，再进行运行/调试。
@@ -855,6 +854,9 @@ error: dependent module does not exist.
 3. 单击Run > Edit Configurations，在General中，勾选Auto Dependencies。点击OK保存配置，再运行/调试。
 ![示例图](figures/zh-cn_image_9568305.png)
 
+场景二：依赖的HSP与HAP不在同一工程内：
+在安装HAP前，使用[bm install](#安装命令install)命令安装依赖的HSP。
+  
 ### 9568259 安装解析配置文件缺少字段
 **错误信息**
 
@@ -1075,13 +1077,13 @@ hdc shell df -h /data
 ### 9568289 权限请求失败导致安装失败
 **错误信息**
 
-error: install failed due to grant request permissions failed.
+error: install failed due to grant request permissions failed.<br>
 
-![示例图](figures/zh-cn_image_0000001585201996.png)
+![示例图](figures/zh-cn_image_9568289.png)
 
 **错误描述**
 
-在启动调试或运行应用/服务时，安装HAP出现错误，提示“error: install failed due to grant request permissions failed”错误信息。
+在启动调试或运行应用/服务时，安装HAP出现错误，提示授予请求权限失败。从API version 18开始，会在请求失败信息后打印具体的权限名称。
 
 **可能原因**
 
@@ -1089,7 +1091,7 @@ error: install failed due to grant request permissions failed.
 
 **处理步骤**
 
-根据[ACL签名指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section157591551175916)为应用申请受限ACL权限。
+根据[ACL签名指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section26216104250)为应用申请受限ACL权限。
 
 
 ### 9568290 更新HAP token失败导致安装失败
@@ -2272,7 +2274,7 @@ HAP包中需要安装的native软件包损坏。
 
 **处理步骤**
 
-1. 检查HAP包中的native软件包，替换正确的native软件包并重新签名打包。参考[Native软件包开发指南](https://gitee.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
+1. 检查HAP包中的native软件包，替换正确的native软件包并重新签名打包。参考[Native软件包开发指南](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
 
 ### 9568408 卸载应用失败，native软件包卸载失败
 **错误信息**
@@ -2289,7 +2291,7 @@ error: Failed to uninstall the HAP because uninstalling the native package faile
 
 **处理步骤**
 
-1. 检查是否存在进程占用相应的native软件包，若存在则结束进程后重新卸载。参考[Native软件包开发指南](https://gitee.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
+1. 检查是否存在进程占用相应的native软件包，若存在则结束进程后重新卸载。参考[Native软件包开发指南](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
 
 ### 9568409 安装失败，native软件包提取失败
 **错误信息**
@@ -2306,7 +2308,7 @@ HAP包中native软件包目录下不存在module.json5中配置的native软件�
 
 **处理步骤**
 
-1. 检查HAP包中的native软件包目录，重新打入需要安装的native软件包并完成签名或删除module.json5中缺失的native软件包配置信息。参考[Native软件包开发指南](https://gitee.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
+1. 检查HAP包中的native软件包目录，重新打入需要安装的native软件包并完成签名或删除module.json5中缺失的native软件包配置信息。参考[Native软件包开发指南](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
 
 ### 9568410 安装失败，设备受管控
 **错误信息**
@@ -2914,7 +2916,7 @@ error: install failed due to U1Enabled can not change.
 
 **处理步骤**
 
-方案一：重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section9786111152213)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section157591551175916)的使用ACL的签名配置指导进行配置，确保待安装应用与已安装应用配置一致。<br>
+方案一：重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，确保待安装应用与已安装应用配置一致。<br>
 方案二：先卸载设备上已安装的应用，再尝试安装待安装应用。
 
 ### 9568442 U1Enable配置不一致
@@ -2932,7 +2934,7 @@ error: Install failed due to the U1Enabled is not same in all haps.
 
 **处理步骤**
 
-重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section9786111152213)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section157591551175916)的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
+重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
 
 <!--Del-->
 ## 常见问题

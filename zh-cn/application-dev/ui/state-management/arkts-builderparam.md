@@ -24,7 +24,7 @@
 
 \@BuilderParam装饰的方法只能被自定义构建函数（\@Builder装饰的方法）初始化。
 
-- 使用所属自定义组件的自定义构建函数或者全局的自定义构建函数，在本地初始化\@BuilderParam。
+- 使用所属自定义组件的自定义构建函数或者全局的自定义构建函数，在本地初始化\@BuilderParam装饰的方法。
 
   ```ts
   @Builder
@@ -37,9 +37,9 @@
     doNothingBuilder() {
     }
   
-    // 使用自定义组件的自定义构建函数初始化@BuilderParam
+    // 使用自定义组件的自定义构建函数初始化@BuilderParam装饰的方法
     @BuilderParam customBuilderParam: () => void = this.doNothingBuilder;
-    // 使用全局自定义构建函数初始化@BuilderParam
+    // 使用全局自定义构建函数初始化@BuilderParam装饰的方法
     @BuilderParam customOverBuilderParam: () => void = overBuilder;
   
     build() {
@@ -147,11 +147,11 @@
 
 ## 限制条件
 
-- 使用\@BuilderParam装饰的变量只能通过\@Builder函数进行初始化。具体参见[@BuilderParam装饰器初始化的值必须为@Builder](#builderparam装饰器初始化的值必须为builder)。
+- 使用\@BuilderParam装饰的变量只能通过\@Builder函数进行初始化。具体参考[@BuilderParam装饰器初始化的值必须为@Builder](#builderparam装饰器初始化的值必须为builder)。
 
-- 当\@Require装饰器和\@BuilderParam装饰器一起使用时，必须初始化@BuilderParam装饰器。具体参见[@Require装饰器和@BuilderParam装饰器联合使用](#require装饰器和builderparam装饰器联合使用)。
+- 当\@Require装饰器和\@BuilderParam装饰器一起使用时，必须初始化\@BuilderParam装饰器。具体参考[@Require装饰器和@BuilderParam装饰器联合使用](#require装饰器和builderparam装饰器联合使用)。
 
-- 在自定义组件尾随闭包的场景下，子组件有且仅有一个\@BuilderParam用来接收此尾随闭包，且此\@BuilderParam装饰的方法不能有参数。详情见[尾随闭包初始化组件](#尾随闭包初始化组件)。
+- 在自定义组件尾随闭包的场景下，子组件有且仅有一个\@BuilderParam用来接收此尾随闭包，且此\@BuilderParam装饰的方法不能有参数。具体参考[尾随闭包初始化组件](#尾随闭包初始化组件)。
 
 ## 使用场景
 
@@ -167,7 +167,7 @@ class Tmp {
 @Builder
 function overBuilder($$: Tmp) {
   Text($$.label)
-    .width(400)
+    .width('100%')
     .height(50)
     .backgroundColor(Color.Green)
 }
@@ -226,7 +226,7 @@ struct Parent {
 > 
 >  - 此场景下自定义组件不支持通用属性。
 
-开发者可以将尾随闭包内的内容看作\@Builder装饰的函数传给\@BuilderParam。
+开发者可将尾随闭包内的内容看作\@Builder装饰的函数传给\@BuilderParam。
 
 示例1：
 
@@ -239,7 +239,7 @@ struct CustomContainer {
   closerBuilder() {
   }
 
-  // 使用父组件的尾随闭包{}(@Builder装饰的方法)初始化子组件@BuilderParam
+  // 使用父组件的尾随闭包{}(@Builder装饰的方法)初始化子组件@BuilderParam装饰的方法
   @BuilderParam closer: () => void = this.closerBuilder;
 
   build() {
@@ -286,7 +286,7 @@ struct CustomContainerUser {
 
 ![builderparam-demo4](figures/builderparam-demo4.png)
 
-可以使用全局\@Builder和局部\@Builder通过尾随闭包的形式对\@ComponentV2装饰的自定义组件中的\@BuilderParam进行初始化。
+可以使用全局或局部\@Builder通过尾随闭包的形式对\@ComponentV2装饰的自定义组件中的\@BuilderParam装饰的方法进行初始化。
 
 示例2：
 
@@ -339,7 +339,7 @@ struct ParentPage {
   build() {
     Column() {
       ChildPage({ message: this.label }) {
-        Column() { // 使用局部@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam
+        Column() { // 使用局部@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam装饰的方法
           this.componentBuilder();
         }
       }
@@ -348,7 +348,7 @@ struct ParentPage {
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      ChildPage({ message: this.label }) { // 使用全局@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam
+      ChildPage({ message: this.label }) { // 使用全局@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam装饰的方法
         Column() {
           overBuilder();
         }
@@ -470,8 +470,9 @@ struct HelloWorldPage {
 }
 ```
 
+**router_map.json**
+这个文件位于项目的`resources/base/profile`目录下。
 ```ts
-// router_map.json
 {
   "routerMap": [
     {
@@ -482,9 +483,10 @@ struct HelloWorldPage {
   ]
 }
 ```
+**module.json5**
+这个文件位于应用模块的根目录下，例如`entry/src/main/module.json5`。
 
 ```ts
-// module.json5
 {
   "module": {
     "routerMap": "$profile:router_map",
@@ -581,7 +583,7 @@ struct ParentPage {
 
 ### 在@ComponentV2装饰的自定义组件中使用@BuilderParam
 
-使用全局@Builder和局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
+使用全局或局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
 
 ```ts
 @ComponentV2
@@ -771,7 +773,7 @@ struct ParentPage {
 
 ### @Require装饰器和@BuilderParam装饰器联合使用
 
-由于\@Require装饰器所装饰的变量需进行初始化，若变量未初始化，编译时会输出报错信息。
+由于\@Require装饰器所装饰的变量需进行初始化，未初始化会导致编译报错。
 
 【反例】
 

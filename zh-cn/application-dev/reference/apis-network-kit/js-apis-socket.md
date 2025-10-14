@@ -87,7 +87,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 ```
 
@@ -134,7 +134,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
 });
@@ -192,7 +192,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
   address: '192.168.xx.xxx',  // 对端地址
@@ -207,7 +207,7 @@ udp.send(sendOptions, (err: BusinessError) => {
     console.error('send fail');
     return;
   }
-  console.log('send success');
+  console.info('send success');
 });
 ```
 
@@ -227,7 +227,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
   address: '192.168.xx.xxx',  // 对端地址
@@ -253,7 +253,7 @@ udp.send(sendOptions, (err: BusinessError) => {
     console.error('send fail');
     return;
   }
-  console.log('send success');
+  console.info('send success');
 });
 ```
 
@@ -310,7 +310,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
   return;
@@ -324,7 +324,7 @@ let sendOptions: socket.UDPSendOptions = {
   address: netAddress
 }
 udp.send(sendOptions).then(() => {
-  console.log('send success');
+  console.info('send success');
 }).catch((err: BusinessError) => {
   console.error('send fail');
 });
@@ -342,7 +342,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
   return;
@@ -367,7 +367,7 @@ let sendOptions: socket.UDPSendOptions = {
   proxy: proxyOptions,
 }
 udp.send(sendOptions).then(() => {
-  console.log('send success');
+  console.info('send success');
 }).catch((err: BusinessError) => {
   console.error('send fail');
 });
@@ -409,7 +409,7 @@ udp.close((err: BusinessError) => {
     console.error('close fail');
     return;
   }
-  console.log('close success');
+  console.info('close success');
 })
 ```
 
@@ -445,7 +445,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 udp.close().then(() => {
-  console.log('close success');
+  console.info('close success');
 }).catch((err: BusinessError) => {
   console.error('close fail');
 });
@@ -497,10 +497,10 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.error('bind success');
   udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
     if (err) {
-      console.log('getState fail');
+      console.error('getState fail');
       return;
     }
-    console.log('getState success:' + JSON.stringify(data));
+    console.info('getState success:' + JSON.stringify(data));
   })
 })
 ```
@@ -549,9 +549,9 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   udp.getState().then((data: socket.SocketStateBase) => {
-    console.log('getState success:' + JSON.stringify(data));
+    console.info('getState success:' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error('getState fail' + JSON.stringify(err));
   });
@@ -604,7 +604,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   let udpextraoptions: socket.UDPExtraOptions = {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
@@ -617,7 +617,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
       console.error('setExtraOptions fail');
       return;
     }
-    console.log('setExtraOptions success');
+    console.info('setExtraOptions success');
   })
 })
 ```
@@ -673,7 +673,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   let udpextraoptions: socket.UDPExtraOptions = {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
@@ -682,7 +682,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     broadcast: true
   }
   udp.setExtraOptions(udpextraoptions).then(() => {
-    console.log('setExtraOptions success');
+    console.info('setExtraOptions success');
   }).catch((err: BusinessError) => {
     console.error('setExtraOptions fail');
   });
@@ -771,8 +771,8 @@ udp.on('message', (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 });
 ```
 
@@ -806,8 +806,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 udp.on('message', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -838,10 +838,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 udp.on('listening', () => {
-  console.log("on listening success");
+  console.info("on listening success");
 });
 udp.on('close', () => {
-  console.log("on close success");
+  console.info("on close success");
 });
 ```
 
@@ -868,14 +868,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let callback1 = () => {
-  console.log("on listening, success");
+  console.info("on listening, success");
 }
 udp.on('listening', callback1);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 udp.off('listening', callback1);
 udp.off('listening');
 let callback2 = () => {
-  console.log("on close, success");
+  console.info("on close, success");
 }
 udp.on('close', callback2);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -1113,7 +1113,7 @@ multicast.addMembership(addr, (err: Object) => {
     console.error('add membership fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('add membership success');
+  console.info('add membership success');
 })
 ```
 
@@ -1165,7 +1165,7 @@ let addr: socket.NetAddress = {
   port: 8080
 }
 multicast.addMembership(addr).then(() => {
-  console.log('addMembership success');
+  console.info('addMembership success');
 }).catch((err: Object) => {
   console.error('addMembership fail');
 });
@@ -1218,7 +1218,7 @@ multicast.dropMembership(addr, (err: Object) => {
     console.error('drop membership fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('drop membership success');
+  console.info('drop membership success');
 })
 ```
 
@@ -1270,7 +1270,7 @@ let addr: socket.NetAddress = {
   port: 8080
 }
 multicast.dropMembership(addr).then(() => {
-  console.log('drop membership success');
+  console.info('drop membership success');
 }).catch((err: Object) => {
   console.error('drop membership fail');
 });
@@ -1319,7 +1319,7 @@ multicast.setMulticastTTL(ttl, (err: Object) => {
     console.error('set ttl fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('set ttl success');
+  console.info('set ttl success');
 })
 ```
 
@@ -1366,7 +1366,7 @@ import { socket } from '@kit.NetworkKit';
 
 let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
 multicast.setMulticastTTL(8).then(() => {
-  console.log('set ttl success');
+  console.info('set ttl success');
 }).catch((err: Object) => {
   console.error('set ttl failed');
 });
@@ -1412,7 +1412,7 @@ multicast.getMulticastTTL((err: Object, value: Number) => {
     console.error('set ttl fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('set ttl success, value: ' + JSON.stringify(value));
+  console.info('set ttl success, value: ' + JSON.stringify(value));
 })
 ```
 
@@ -1452,7 +1452,7 @@ import { socket } from '@kit.NetworkKit';
 
 let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
 multicast.getMulticastTTL().then((value: Number) => {
-  console.log('ttl: ', JSON.stringify(value));
+  console.info('ttl: ', JSON.stringify(value));
 }).catch((err: Object) => {
   console.error('set ttl failed');
 });
@@ -1498,7 +1498,7 @@ multicast.setLoopbackMode(false, (err: Object) => {
     console.error('set loopback mode fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('set loopback mode success');
+  console.info('set loopback mode success');
 })
 ```
 
@@ -1543,7 +1543,7 @@ import { socket } from '@kit.NetworkKit';
 
 let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
 multicast.setLoopbackMode(false).then(() => {
-  console.log('set loopback mode success');
+  console.info('set loopback mode success');
 }).catch((err: Object) => {
   console.error('set loopback mode failed');
 });
@@ -1588,7 +1588,7 @@ multicast.getLoopbackMode((err: Object, value: Boolean) => {
     console.error('get loopback mode fail, err: ' + JSON.stringify(err));
     return;
   }
-  console.log('get loopback mode success, value: ' + JSON.stringify(value));
+  console.info('get loopback mode success, value: ' + JSON.stringify(value));
 })
 ```
 
@@ -1627,7 +1627,7 @@ import { socket } from '@kit.NetworkKit';
 
 let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
 multicast.getLoopbackMode().then((value: Boolean) => {
-  console.log('loopback mode: ', JSON.stringify(value));
+  console.info('loopback mode: ', JSON.stringify(value));
 }).catch((err: Object) => {
   console.error('get loopback mode failed');
 });
@@ -1705,7 +1705,7 @@ tcp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 })
 ```
 
@@ -1757,7 +1757,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 tcp.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
 });
@@ -1820,7 +1820,7 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
     console.error('connect fail');
     return;
   }
-  console.log('connect success');
+  console.info('connect success');
 })
 ```
 
@@ -1855,7 +1855,7 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
     console.error('connect fail');
     return;
   }
-  console.log('connect success');
+  console.info('connect success');
 })
 ```
 
@@ -1917,7 +1917,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   timeout: 6000
 }
 tcp.connect(tcpconnectoptions).then(() => {
-  console.log('connect success')
+  console.info('connect success')
 }).catch((err: BusinessError) => {
   console.error('connect fail');
 });
@@ -1950,7 +1950,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   proxy: proxyOptions,
 }
 tcp.connect(tcpconnectoptions).then(() => {
-  console.log('connect success')
+  console.info('connect success')
 }).catch((err: BusinessError) => {
   console.error('connect fail');
 });
@@ -2001,7 +2001,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   timeout: 6000
 }
 tcp.connect(tcpconnectoptions, () => {
-  console.log('connect success');
+  console.info('connect success');
   let tcpSendOptions: socket.TCPSendOptions = {
     data: 'Hello, server!'
   }
@@ -2010,7 +2010,7 @@ tcp.connect(tcpconnectoptions, () => {
       console.error('send fail');
       return;
     }
-    console.log('send success');
+    console.info('send success');
   })
 })
 ```
@@ -2065,12 +2065,12 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   timeout: 6000
 }
 tcp.connect(tcpconnectoptions, () => {
-  console.log('connect success');
+  console.info('connect success');
   let tcpSendOptions: socket.TCPSendOptions = {
     data: 'Hello, server!'
   }
   tcp.send(tcpSendOptions).then(() => {
-    console.log('send success');
+    console.info('send success');
   }).catch((err: BusinessError) => {
     console.error('send fail');
   });
@@ -2114,7 +2114,7 @@ tcp.close((err: BusinessError) => {
     console.error('close fail');
     return;
   }
-  console.log('close success');
+  console.info('close success');
 })
 ```
 
@@ -2151,7 +2151,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 
 tcp.close().then(() => {
-  console.log('close success');
+  console.info('close success');
 }).catch((err: BusinessError) => {
   console.error('close fail');
 });
@@ -2200,13 +2200,13 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   timeout: 6000
 }
 tcp.connect(tcpconnectoptions, () => {
-  console.log('connect success');
+  console.info('connect success');
   tcp.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
     if (err) {
       console.error('getRemoteAddressfail');
       return;
     }
-    console.log('getRemoteAddresssuccess:' + JSON.stringify(data));
+    console.info('getRemoteAddresssuccess:' + JSON.stringify(data));
   })
 });
 ```
@@ -2254,9 +2254,9 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   timeout: 6000
 }
 tcp.connect(tcpconnectoptions).then(() => {
-  console.log('connect success');
+  console.info('connect success');
   tcp.getRemoteAddress().then(() => {
-    console.log('getRemoteAddress success');
+    console.info('getRemoteAddress success');
   }).catch((err: BusinessError) => {
     console.error('getRemoteAddressfail');
   });
@@ -2308,13 +2308,13 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   timeout: 6000
 }
 tcp.connect(tcpconnectoptions, () => {
-  console.log('connect success');
+  console.info('connect success');
   tcp.getState((err: BusinessError, data: socket.SocketStateBase) => {
     if (err) {
       console.error('getState fail');
       return;
     }
-    console.log('getState success:' + JSON.stringify(data));
+    console.info('getState success:' + JSON.stringify(data));
   });
 });
 ```
@@ -2362,9 +2362,9 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
   timeout: 6000
 }
 tcp.connect(tcpconnectoptions).then(() => {
-  console.log('connect success');
+  console.info('connect success');
   tcp.getState().then(() => {
-    console.log('getState success');
+    console.info('getState success');
   }).catch((err: BusinessError) => {
     console.error('getState fail');
   });
@@ -2411,7 +2411,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 }
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd((err: BusinessError, data: number) => {
-  console.info("getSocketFd failed: " + err);
+  console.error("getSocketFd failed: " + err);
   console.info("tunenlfd: " + data);
 })
 ```
@@ -2508,7 +2508,7 @@ interface SocketLinger {
 }
 
 tcp.connect(tcpconnectoptions, () => {
-  console.log('connect success');
+  console.info('connect success');
   let tcpExtraOptions: socket.TCPExtraOptions = {
     keepAlive: true,
     OOBInline: true,
@@ -2524,7 +2524,7 @@ tcp.connect(tcpconnectoptions, () => {
       console.error('setExtraOptions fail');
       return;
     }
-    console.log('setExtraOptions success');
+    console.info('setExtraOptions success');
   });
 });
 ```
@@ -2585,7 +2585,7 @@ interface SocketLinger {
 }
 
 tcp.connect(tcpconnectoptions, () => {
-  console.log('connect success');
+  console.info('connect success');
   let tcpExtraOptions: socket.TCPExtraOptions = {
     keepAlive: true,
     OOBInline: true,
@@ -2597,7 +2597,7 @@ tcp.connect(tcpconnectoptions, () => {
     socketTimeout: 3000
   }
   tcp.setExtraOptions(tcpExtraOptions).then(() => {
-    console.log('setExtraOptions success');
+    console.info('setExtraOptions success');
   }).catch((err: BusinessError) => {
     console.error('setExtraOptions fail');
   });
@@ -2684,8 +2684,8 @@ tcp.on('message', (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 });
 ```
 
@@ -2719,8 +2719,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 tcp.on('message', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -2751,10 +2751,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 tcp.on('connect', () => {
-  console.log("on connect success")
+  console.info("on connect success")
 });
 tcp.on('close', () => {
-  console.log("on close success")
+  console.info("on close success")
 });
 ```
 
@@ -2781,14 +2781,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let callback1 = () => {
-  console.log("on connect success");
+  console.info("on connect success");
 }
 tcp.on('connect', callback1);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 tcp.off('connect', callback1);
 tcp.off('connect');
 let callback2 = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 tcp.on('close', callback2);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -2966,7 +2966,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
 })
 ```
 
@@ -3022,7 +3022,7 @@ let listenAddr: socket.NetAddress = {
   family: 1
 }
 tcpServer.listen(listenAddr).then(() => {
-  console.log('listen success');
+  console.info('listen success');
 }).catch((err: BusinessError) => {
   console.error('listen fail');
 });
@@ -3075,14 +3075,14 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
 })
 tcpServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
   if (err) {
     console.error('getState fail');
     return;
   }
-  console.log('getState success:' + JSON.stringify(data));
+  console.info('getState success:' + JSON.stringify(data));
 })
 ```
 
@@ -3132,10 +3132,10 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
 })
 tcpServer.getState().then((data: socket.SocketStateBase) => {
-  console.log('getState success' + JSON.stringify(data));
+  console.info('getState success' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
   console.error('getState fail');
 });
@@ -3189,7 +3189,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
 })
 
 interface SocketLinger {
@@ -3212,7 +3212,7 @@ tcpServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
     console.error('setExtraOptions fail');
     return;
   }
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 });
 ```
 
@@ -3275,7 +3275,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
 })
 
 let tcpExtraOptions: socket.TCPExtraOptions = {
@@ -3289,7 +3289,7 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   socketTimeout: 3000
 }
 tcpServer.setExtraOptions(tcpExtraOptions).then(() => {
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 }).catch((err: BusinessError) => {
   console.error('setExtraOptions fail');
 });
@@ -3389,9 +3389,9 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
   tcpServer.on('connect', (data: socket.TCPSocketConnection) => {
-    console.log(JSON.stringify(data))
+    console.info(JSON.stringify(data))
   });
 })
 ```
@@ -3437,9 +3437,9 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
   let callback = (data: socket.TCPSocketConnection) => {
-    console.log('on connect message: ' + JSON.stringify(data));
+    console.info('on connect message: ' + JSON.stringify(data));
   }
   tcpServer.on('connect', callback);
   // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -3492,7 +3492,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
   tcpServer.on('error', (err: BusinessError) => {
     console.error("on error, err:" + JSON.stringify(err))
   });
@@ -3540,7 +3540,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
     console.error("listen fail");
     return;
   }
-  console.log("listen success");
+  console.info("listen success");
   let callback = (err: BusinessError) => {
     console.error("on error, err:" + JSON.stringify(err));
   }
@@ -3661,7 +3661,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
     data: 'Hello, client!'
   }
   client.send(tcpSendOption, () => {
-    console.log('send success');
+    console.info('send success');
   });
 });
 ```
@@ -3714,7 +3714,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
     data: 'Hello, client!'
   }
   client.send(tcpSendOption).then(() => {
-    console.log('send success');
+    console.info('send success');
   }).catch((err: BusinessError) => {
     console.error('send fail');
   });
@@ -3761,7 +3761,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
       console.error('close fail');
       return;
     }
-    console.log('close success');
+    console.info('close success');
   });
 });
 ```
@@ -3800,7 +3800,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.close().then(() => {
-  	console.log('close success');
+  	console.info('close success');
   }).catch((err: BusinessError) => {
   	console.error('close fail');
   });
@@ -3850,7 +3850,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
       console.error('getRemoteAddress fail');
       return;
     }
-    console.log('getRemoteAddress success:' + JSON.stringify(data));
+    console.info('getRemoteAddress success:' + JSON.stringify(data));
   });
 });
 ```
@@ -3893,7 +3893,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.getRemoteAddress().then(() => {
-    console.log('getRemoteAddress success');
+    console.info('getRemoteAddress success');
   }).catch((err: BusinessError) => {
     console.error('getRemoteAddress fail');
   });
@@ -4003,8 +4003,8 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
       let message = String.fromCharCode(messages);
       messageView += message;
     }
-    console.log('on message message: ' + JSON.stringify(messageView));
-    console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+    console.info('on message message: ' + JSON.stringify(messageView));
+    console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
   });
 });
 ```
@@ -4047,8 +4047,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.on('message', callback);
@@ -4090,7 +4090,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.on('close', () => {
-    console.log("on close success")
+    console.info("on close success")
   });
 });
 ```
@@ -4125,7 +4125,7 @@ import { socket } from '@kit.NetworkKit';
 
 let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
 let callback = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.on('close', callback);
@@ -4297,7 +4297,7 @@ let address : socket.LocalAddress = {
   address: sandboxPath
 }
 client.bind(address).then(() => {
-  console.log('bind success')
+  console.info('bind success')
 }).catch((err: Object) => {
   console.error('failed to bind: ' + JSON.stringify(err))
 })
@@ -4360,7 +4360,7 @@ let connectOpt: socket.LocalConnectOptions = {
   timeout: 6000
 }
 client.connect(connectOpt).then(() => {
-  console.log('connect success')
+  console.info('connect success')
 }).catch((err: Object) => {
   console.error('connect fail: ' + JSON.stringify(err));
 });
@@ -4420,7 +4420,7 @@ let connectOpt: socket.LocalConnectOptions = {
   timeout: 6000
 }
 client.connect(connectOpt).then(() => {
-  console.log('connect success')
+  console.info('connect success')
 }).catch((err: Object) => {
   console.error('connect failed: ' + JSON.stringify(err))
 })
@@ -4428,7 +4428,7 @@ let sendOpt: socket.LocalSendOptions = {
   data: 'Hello world!'
 }
 client.send(sendOpt).then(() => {
-  console.log('send success')
+  console.info('send success')
 }).catch((err: Object) => {
   console.error('send fail: ' + JSON.stringify(err))
 })
@@ -4464,7 +4464,7 @@ import { socket } from '@kit.NetworkKit';
 let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 
 client.close().then(() => {
-  console.log('close success');
+  console.info('close success');
 }).catch((err: Object) => {
   console.error('close fail: ' + JSON.stringify(err));
 });
@@ -4509,9 +4509,9 @@ let connectOpt: socket.LocalConnectOptions = {
   timeout: 6000
 }
 client.connect(connectOpt).then(() => {
-  console.log('connect success');
+  console.info('connect success');
   client.getState().then(() => {
-    console.log('getState success');
+    console.info('getState success');
   }).catch((err: Object) => {
     console.error('getState fail: ' + JSON.stringify(err))
   });
@@ -4560,7 +4560,7 @@ let connectOpt: socket.LocalConnectOptions = {
   timeout: 6000
 }
 client.connect(connectOpt).then(() => {
-  console.log('connect ok')
+  console.info('connect ok')
 }).catch((err: Object) => {
   console.error('connect fail: ' + JSON.stringify(err))
 })
@@ -4625,14 +4625,14 @@ let connectOpt: socket.LocalConnectOptions = {
   timeout: 6000
 }
 client.connect(connectOpt).then(() => {
-  console.log('connect success');
+  console.info('connect success');
   let options: socket.ExtraOptionsBase = {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
     socketTimeout: 3000
   }
   client.setExtraOptions(options).then(() => {
-    console.log('setExtraOptions success');
+    console.info('setExtraOptions success');
   }).catch((err: Object) => {
     console.error('setExtraOptions fail: ' + JSON.stringify(err));
   });
@@ -4688,9 +4688,9 @@ let connectOpt: socket.LocalConnectOptions = {
   timeout: 6000
 }
 client.connect(connectOpt).then(() => {
-  console.log('connect success');
+  console.info('connect success');
   client.getExtraOptions().then((options : socket.ExtraOptionsBase) => {
-    console.log('options: ' + JSON.stringify(options));
+    console.info('options: ' + JSON.stringify(options));
   }).catch((err: Object) => {
     console.error('setExtraOptions fail: ' + JSON.stringify(err));
   });
@@ -4791,8 +4791,8 @@ client.on('message', (value: socket.LocalSocketMessageInfo) => {
   for (let i = 0; i < uintArray.length; i++) {
     messageView += String.fromCharCode(uintArray[i]);
   }
-  console.log('total: ' + JSON.stringify(value));
-  console.log('message infomation: ' + messageView);
+  console.info('total: ' + JSON.stringify(value));
+  console.info('message infomation: ' + messageView);
 });
 ```
 
@@ -4832,8 +4832,8 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
   for (let i = 0; i < uintArray.length; i++) {
     messageView += String.fromCharCode(uintArray[i]);
   }
-  console.log('total: ' + JSON.stringify(value));
-  console.log('message infomation: ' + messageView);
+  console.info('total: ' + JSON.stringify(value));
+  console.info('message infomation: ' + messageView);
 }
 client.on('message', callback);
 client.off('message');
@@ -4869,7 +4869,7 @@ import { socket } from '@kit.NetworkKit';
 
 let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 client.on('connect', () => {
-  console.log("on connect success")
+  console.info("on connect success")
 });
 ```
 
@@ -4903,7 +4903,7 @@ import { socket } from '@kit.NetworkKit';
 
 let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 let callback = () => {
-  console.log("on connect success");
+  console.info("on connect success");
 }
 client.on('connect', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -4941,7 +4941,7 @@ import { socket } from '@kit.NetworkKit';
 
 let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 let callback = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 client.on('close', callback);
 ```
@@ -4976,7 +4976,7 @@ import { socket } from '@kit.NetworkKit';
 
 let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 let callback = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 client.on('close', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -5191,7 +5191,7 @@ let addr: socket.LocalAddress = {
   address: sandboxPath
 }
 server.listen(addr).then(() => {
-  console.log('listen success');
+  console.info('listen success');
 }).catch((err: Object) => {
   console.error('listen fail: ' + JSON.stringify(err));
 });
@@ -5233,12 +5233,12 @@ let listenAddr: socket.LocalAddress = {
   address: sandboxPath
 }
 server.listen(listenAddr).then(() => {
-  console.log("listen success");
+  console.info("listen success");
 }).catch((err: Object) => {
   console.error("listen fail: " + JSON.stringify(err));
 })
 server.getState().then((data: socket.SocketStateBase) => {
-  console.log('getState success: ' + JSON.stringify(data));
+  console.info('getState success: ' + JSON.stringify(data));
 }).catch((err: Object) => {
   console.error('getState fail: ' + JSON.stringify(err));
 });
@@ -5294,7 +5294,7 @@ let listenAddr: socket.NetAddress = {
   address: sandboxPath
 }
 server.listen(listenAddr).then(() => {
-  console.log("listen success");
+  console.info("listen success");
 }).catch((err: Object) => {
   console.error("listen fail: " + JSON.stringify(err));
 })
@@ -5305,7 +5305,7 @@ let options: socket.ExtraOptionsBase = {
   socketTimeout: 3000
 }
 server.setExtraOptions(options).then(() => {
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 }).catch((err: Object) => {
   console.error('setExtraOptions fail: ' + JSON.stringify(err));
 });
@@ -5354,12 +5354,12 @@ let listenAddr: socket.LocalAddress = {
   address: sandboxPath
 }
 server.listen(listenAddr).then(() => {
-  console.log("listen success");
+  console.info("listen success");
 }).catch((err: Object) => {
   console.error("listen fail: " + JSON.stringify(err));
 })
 server.getExtraOptions().then((options: socket.ExtraOptionsBase) => {
-  console.log('options: ' + JSON.stringify(options));
+  console.info('options: ' + JSON.stringify(options));
 }).catch((err: Object) => {
   console.error('getExtraOptions fail: ' + JSON.stringify(err));
 });
@@ -5457,7 +5457,7 @@ import { socket } from '@kit.NetworkKit';
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   if (connection) {
-    console.log('accept a client')
+    console.info('accept a client')
   }
 });
 ```
@@ -5493,7 +5493,7 @@ import { socket } from '@kit.NetworkKit';
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 let callback = (connection: socket.LocalSocketConnection) => {
   if (connection) {
-    console.log('accept a client')
+    console.info('accept a client')
   }
 }
 server.on('connect', callback);
@@ -5692,7 +5692,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
     data: 'Hello, client!'
   }
   connection.send(sendOptions).then(() => {
-    console.log('send success');
+    console.info('send success');
   }).catch((err: Object) => {
     console.error('send fail: ' + JSON.stringify(err));
   });
@@ -5729,7 +5729,7 @@ import { socket } from '@kit.NetworkKit';
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.close().then(() => {
-    console.log('close success');
+    console.info('close success');
   }).catch((err: Object) => {
     console.error('close fail: ' + JSON.stringify(err));
   });
@@ -5838,7 +5838,7 @@ let listenAddr: socket.LocalAddress = {
   address: sandboxPath
 }
 server.listen(listenAddr).then(() => {
-  console.log("listen success");
+  console.info("listen success");
 }).catch((err: Object) => {
   console.error("listen fail: " + JSON.stringify(err));
 });
@@ -5849,8 +5849,8 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
     for (let i = 0; i < uintArray.length; i++) {
       messageView += String.fromCharCode(uintArray[i]);
     }
-    console.log('total: ' + JSON.stringify(value));
-    console.log('message infomation: ' + messageView);
+    console.info('total: ' + JSON.stringify(value));
+    console.info('message infomation: ' + messageView);
   });
 });
 ```
@@ -5890,8 +5890,8 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
   for (let i = 0; i < uintArray.length; i++) {
     messageView += String.fromCharCode(uintArray[i]);
   }
-  console.log('total: ' + JSON.stringify(value));
-  console.log('message infomation: ' + messageView);
+  console.info('total: ' + JSON.stringify(value));
+  console.info('message infomation: ' + messageView);
 }
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.on('message', callback);
@@ -5932,7 +5932,7 @@ import { socket } from '@kit.NetworkKit';
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.on('close', () => {
-    console.log("on close success")
+    console.info("on close success")
   });
 });
 ```
@@ -5967,7 +5967,7 @@ import { socket } from '@kit.NetworkKit';
 
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 let callback = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.on('close', callback);
@@ -6136,7 +6136,7 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
     console.error('connect fail');
     return;
   }
-  console.log('connect success');
+  console.info('connect success');
 
   // 确保TCPSocket已连接后，再升级TLSSocket
   let tls: socket.TLSSocket = socket.constructTLSSocketInstance(tcp);
@@ -6194,7 +6194,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 ```
 
@@ -6246,7 +6246,7 @@ let bindAddr: socket.NetAddress = {
   port: 8080
 }
 tls.bind(bindAddr).then(() => {
-  console.log('bind success');
+  console.info('bind success');
 }).catch((err: BusinessError) => {
   console.error('bind fail');
 });
@@ -6291,14 +6291,14 @@ tls.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 tls.getState((err: BusinessError, data: socket.SocketStateBase) => {
   if (err) {
     console.error('getState fail');
     return;
   }
-  console.log('getState success:' + JSON.stringify(data));
+  console.info('getState success:' + JSON.stringify(data));
 });
 ```
 
@@ -6341,10 +6341,10 @@ tls.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 tls.getState().then(() => {
-  console.log('getState success');
+  console.info('getState success');
 }).catch((err: BusinessError) => {
   console.error('getState fail');
 });
@@ -6391,7 +6391,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 
 interface SocketLinger {
@@ -6414,7 +6414,7 @@ tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
     console.error('setExtraOptions fail');
     return;
   }
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 });
 ```
 
@@ -6464,7 +6464,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 
 interface SocketLinger {
@@ -6483,7 +6483,7 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   socketTimeout: 3000
 }
 tls.setExtraOptions(tcpExtraOptions).then(() => {
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 }).catch((err: BusinessError) => {
   console.error('setExtraOptions fail');
 });
@@ -6530,10 +6530,10 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.log('bind fail');
+    console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   tls.on('message', (value: socket.SocketMessageInfo) => {
     for (let i: number = 0; i < value.message.byteLength; i++) {
       let uint8Array = new Uint8Array(value.message) 
@@ -6541,8 +6541,8 @@ tls.bind(bindAddr, (err: BusinessError) => {
       let message = String.fromCharCode(messages);
       messageView += message;
     }
-    console.log('on message message: ' + JSON.stringify(messageView));
-    console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+    console.info('on message message: ' + JSON.stringify(messageView));
+    console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
   });
 });
 ```
@@ -6583,8 +6583,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 tls.on('message', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -6628,15 +6628,15 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.log('bind fail');
+    console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   tls.on('connect', () => {
-    console.log("on connect success")
+    console.info("on connect success")
   });
   tls.on('close', () => {
-    console.log("on close success")
+    console.info("on close success")
   });
 });
 ```
@@ -6670,14 +6670,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 let callback1 = () => {
-  console.log("on connect success");
+  console.info("on connect success");
 }
 tls.on('connect', callback1);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 tls.off('connect', callback1);
 tls.off('connect');
 let callback2 = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 tls.on('close', callback2);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -6722,10 +6722,10 @@ let bindAddr: socket.NetAddress = {
 }
 tls.bind(bindAddr, (err: BusinessError) => {
   if (err) {
-    console.log('bind fail');
+    console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
   tls.on('error', (err: BusinessError) => {
     console.error("on error, err:" + JSON.stringify(err))
   });
@@ -6826,7 +6826,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -6858,7 +6858,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -6892,7 +6892,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -6935,7 +6935,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7024,7 +7024,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7047,7 +7047,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 }
 
 tlsTwoWay.connect(tlsConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7058,7 +7058,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7073,7 +7073,7 @@ let tlsOneWayConnectOptions: socket.TLSConnectOptions = {
   secureOptions: oneWaySecureOptions
 }
 tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7094,7 +7094,7 @@ tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let twoWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7128,7 +7128,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 }
 
 tlsTwoWay.connect(tlsConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7139,7 +7139,7 @@ tlsOneWay.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 let oneWayNetAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
@@ -7161,7 +7161,7 @@ let tlsOneWayConnectOptions: socket.TLSConnectOptions = {
   proxy: oneWayProxyOptions,
 }
 tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
-  console.log("connect successfully");
+  console.info("connect successfully");
 }).catch((err: BusinessError) => {
   console.error("connect failed " + JSON.stringify(err));
 });
@@ -7200,7 +7200,7 @@ tls.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
     console.error('getRemoteAddress fail');
     return;
   }
-  console.log('getRemoteAddress success:' + JSON.stringify(data));
+  console.info('getRemoteAddress success:' + JSON.stringify(data));
 });
 ```
 
@@ -7233,7 +7233,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getRemoteAddress().then(() => {
-  console.log('getRemoteAddress success');
+  console.info('getRemoteAddress success');
 }).catch((err: BusinessError) => {
   console.error('getRemoteAddress fail');
 });
@@ -7272,7 +7272,7 @@ tls.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
   if (err) {
     console.error("getCertificate callback error = " + err);
   } else {
-    console.log("getCertificate callback = " + data);
+    console.info("getCertificate callback = " + data);
   }
 });
 ```
@@ -7310,7 +7310,7 @@ let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getCertificate().then((data: socket.X509CertRawData) => {
   const decoder = util.TextDecoder.create();
   const str = decoder.decodeToString(data.data);
-  console.log("getCertificate: " + str);
+  console.info("getCertificate: " + str);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7351,7 +7351,7 @@ tls.getRemoteCertificate((err: BusinessError, data: socket.X509CertRawData) => {
   } else {
     const decoder = util.TextDecoder.create();
     const str = decoder.decodeToString(data.data);
-    console.log("getRemoteCertificate callback = " + str);
+    console.info("getRemoteCertificate callback = " + str);
   }
 });
 ```
@@ -7388,7 +7388,7 @@ let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
   const decoder = util.TextDecoder.create();
   const str = decoder.decodeToString(data.data);
-  console.log("getRemoteCertificate:" + str);
+  console.info("getRemoteCertificate:" + str);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7427,7 +7427,7 @@ tls.getProtocol((err: BusinessError, data: string) => {
   if (err) {
     console.error("getProtocol callback error = " + err);
   } else {
-    console.log("getProtocol callback = " + data);
+    console.info("getProtocol callback = " + data);
   }
 });
 ```
@@ -7462,7 +7462,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getProtocol().then((data: string) => {
-  console.log(data);
+  console.info(data);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7502,7 +7502,7 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
   if (err) {
     console.error("getCipherSuite callback error = " + err);
   } else {
-    console.log("getCipherSuite callback = " + data);
+    console.info("getCipherSuite callback = " + data);
   }
 });
 ```
@@ -7538,7 +7538,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getCipherSuite().then((data: Array<string>) => {
-  console.log('getCipherSuite success:' + JSON.stringify(data));
+  console.info('getCipherSuite success:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7576,7 +7576,7 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
   if (err) {
     console.error("getSignatureAlgorithms callback error = " + err);
   } else {
-    console.log("getSignatureAlgorithms callback = " + data);
+    console.info("getSignatureAlgorithms callback = " + data);
   }
 });
 ```
@@ -7610,7 +7610,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.getSignatureAlgorithms().then((data: Array<string>) => {
-  console.log("getSignatureAlgorithms success" + data);
+  console.info("getSignatureAlgorithms success" + data);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7688,7 +7688,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.log('bind success');
+  console.info('bind success');
 });
 tls.getSocketFd().then((data: number) => {
   console.info("tls socket fd: " + data);
@@ -7732,7 +7732,7 @@ tls.send("xxxx", (err: BusinessError) => {
   if (err) {
     console.error("send callback error = " + err);
   } else {
-    console.log("send success");
+    console.info("send success");
   }
 });
 ```
@@ -7776,7 +7776,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.send("xxxx").then(() => {
-  console.log("send success");
+  console.info("send success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -7817,7 +7817,7 @@ tls.close((err: BusinessError) => {
   if (err) {
     console.error("close callback error = " + err);
   } else {
-    console.log("close success");
+    console.info("close success");
   }
 });
 ```
@@ -7854,7 +7854,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
 tls.close().then(() => {
-  console.log("close success");
+  console.info("close success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -8077,7 +8077,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   skipRemoteValidation: false
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8135,7 +8135,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8144,7 +8144,7 @@ tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
     console.error('getState fail');
     return;
   }
-  console.log('getState success:' + JSON.stringify(data));
+  console.info('getState success:' + JSON.stringify(data));
 });
 ```
 
@@ -8199,12 +8199,12 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.getState().then(() => {
-  console.log('getState success');
+  console.info('getState success');
 }).catch((err: BusinessError) => {
   console.error('getState fail');
 });
@@ -8263,7 +8263,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8288,7 +8288,7 @@ tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
     console.error('setExtraOptions fail');
     return;
   }
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 });
 ```
 
@@ -8350,7 +8350,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8371,7 +8371,7 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   socketTimeout: 3000
 }
 tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
-  console.log('setExtraOptions success');
+  console.info('setExtraOptions success');
 }).catch((err: BusinessError) => {
   console.error('setExtraOptions fail');
 });
@@ -8431,7 +8431,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8441,7 +8441,7 @@ tlsServer.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
   } else {
     const decoder = util.TextDecoder.create();
     const str = decoder.decodeToString(data.data);
-    console.log("getCertificate callback: " + str);
+    console.info("getCertificate callback: " + str);
   }
 });
 ```
@@ -8499,14 +8499,14 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
   const decoder = util.TextDecoder.create();
   const str = decoder.decodeToString(data.data);
-  console.log("getCertificate: " + str);
+  console.info("getCertificate: " + str);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -8565,7 +8565,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8573,7 +8573,7 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
   if (err) {
     console.error("getProtocol callback error = " + err);
   } else {
-    console.log("getProtocol callback = " + data);
+    console.info("getProtocol callback = " + data);
   }
 });
 ```
@@ -8630,12 +8630,12 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.getProtocol().then((data: string) => {
-  console.log(data);
+  console.info(data);
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -8731,12 +8731,12 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
-  console.log(JSON.stringify(data))
+  console.info(JSON.stringify(data))
 });
 ```
 
@@ -8792,13 +8792,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
 
 let callback = (data: socket.TLSSocketConnection) => {
-  console.log('on connect message: ' + JSON.stringify(data));
+  console.info('on connect message: ' + JSON.stringify(data));
 }
 tlsServer.on('connect', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -8857,7 +8857,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -8918,7 +8918,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
 });
@@ -9067,7 +9067,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9078,7 +9078,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       console.error('send fail');
       return;
     }
-    console.log('send success');
+    console.info('send success');
   });
 });
 ```
@@ -9141,14 +9141,14 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.send('Hello, client!').then(() => {
-    console.log('send success');
+    console.info('send success');
   }).catch((err: BusinessError) => {
     console.error('send fail');
   });
@@ -9206,7 +9206,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9217,7 +9217,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       console.error('close fail');
       return;
     }
-    console.log('close success');
+    console.info('close success');
   });
 });
 ```
@@ -9272,13 +9272,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.close().then(() => {
-    console.log('close success');
+    console.info('close success');
   }).catch((err: BusinessError) => {
     console.error('close fail');
   });
@@ -9334,7 +9334,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9344,7 +9344,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       console.error('getRemoteAddress fail');
       return;
     }
-    console.log('getRemoteAddress success:' + JSON.stringify(data));
+    console.info('getRemoteAddress success:' + JSON.stringify(data));
   });
 });
 ```
@@ -9397,13 +9397,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getRemoteAddress().then((data: socket.NetAddress) => {
-    console.log('getRemoteAddress success:' + JSON.stringify(data));
+    console.info('getRemoteAddress success:' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9460,7 +9460,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9471,7 +9471,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
     } else {
       const decoder = util.TextDecoder.create();
       const str = decoder.decodeToString(data.data);
-      console.log("getRemoteCertificate callback: " + str);
+      console.info("getRemoteCertificate callback: " + str);
     }
   });
 });
@@ -9526,7 +9526,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9534,7 +9534,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getRemoteCertificate().then((data: socket.X509CertRawData) => {
     const decoder = util.TextDecoder.create();
     const str = decoder.decodeToString(data.data);
-    console.log("getRemoteCertificate success: " + str);
+    console.info("getRemoteCertificate success: " + str);
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9592,7 +9592,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9601,7 +9601,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
     if (err) {
       console.error("getCipherSuite callback error = " + err);
     } else {
-      console.log("getCipherSuite callback = " + data);
+      console.info("getCipherSuite callback = " + data);
     }
   });
 });
@@ -9657,13 +9657,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getCipherSuite().then((data: Array<string>) => {
-    console.log('getCipherSuite success:' + JSON.stringify(data));
+    console.info('getCipherSuite success:' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9719,7 +9719,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9728,7 +9728,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
     if (err) {
       console.error("getSignatureAlgorithms callback error = " + err);
     } else {
-      console.log("getSignatureAlgorithms callback = " + data);
+      console.info("getSignatureAlgorithms callback = " + data);
     }
   });
 });
@@ -9782,13 +9782,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.getSignatureAlgorithms().then((data: Array<string>) => {
-    console.log("getSignatureAlgorithms success" + data);
+    console.info("getSignatureAlgorithms success" + data);
   }).catch((err: BusinessError) => {
     console.error("failed" + err);
   });
@@ -9909,7 +9909,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9923,8 +9923,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
       let message = String.fromCharCode(messages);
       messageView += message;
     }
-    console.log('on message message: ' + JSON.stringify(messageView));
-    console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+    console.info('on message message: ' + JSON.stringify(messageView));
+    console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
   });
 });
 ```
@@ -9977,7 +9977,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -9990,8 +9990,8 @@ let callback = (value: socket.SocketMessageInfo) => {
     let message = String.fromCharCode(messages);
     messageView += message;
   }
-  console.log('on message message: ' + JSON.stringify(messageView));
-  console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
 }
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('message', callback);
@@ -10049,13 +10049,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('close', () => {
-    console.log("on close success")
+    console.info("on close success")
   });
 });
 ```
@@ -10108,13 +10108,13 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
 
 let callback = () => {
-  console.log("on close success");
+  console.info("on close success");
 }
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('close', callback);
@@ -10172,7 +10172,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });
@@ -10232,7 +10232,7 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
   ALPNProtocols: ["spdy/1", "http/1.1"]
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
-  console.log("listen callback success");
+  console.info("listen callback success");
 }).catch((err: BusinessError) => {
   console.error("failed" + err);
 });

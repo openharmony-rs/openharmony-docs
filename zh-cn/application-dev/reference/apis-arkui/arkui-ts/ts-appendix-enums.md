@@ -119,13 +119,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明      |
-| ------- | ------- |
-| Press   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Release | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Move    | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| Hover   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| 名称      |  值  | 说明      |
+| ------- | ----- |  ------- |
+| Press   |   -   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
 
@@ -622,14 +622,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    |  值   |    说明   |
-| ------- | ----- | ----------- |
-| Lighter |  100  |   字体较细。 |
-| Normal  |  400  |   字体粗细正常。 |
-| Regular |  400  |   字体粗细正常，与Normal效果相同。 |
-| Medium  |  500  |   字体粗细适中。 |
-| Bold    |  700  |   字体较粗。   |
-| Bolder  |  900  |   字体非常粗。 |
+| 名称    |   值   |  说明   |
+| ------- | ----- |----------- |
+| Lighter | - |100字重，字体较细。 |
+| Normal  | - |400字重，字体粗细正常。 |
+| Regular | - |400字重，字体粗细正常，与Normal效果相同。 |
+| Medium  | - |500字重，字体粗细适中。 |
+| Bold    | - |700字重，字体较粗。   |
+| Bolder  | - |900字重，字体非常粗。 |
 
 ## TextAlign
 
@@ -739,7 +739,7 @@
 | ----------- | --- | -------- |
 | None        | 0 | 不支持复制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | InApp       | 1 | 支持仅在当前应用内复制粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LocalDevice | 2 | 支持复制后在当前设备内所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LocalDevice | 2 | 支持复制后在所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
 
 ## HitTestMode<sup>9+</sup>
@@ -1303,7 +1303,7 @@ type Nullable\<T> = T | undefined
 | ------  | ---- | -------------------- |
 | ROTATION | 0 | x、y、z方向的旋转角属性。该属性对应参数个数为3，属性的单位为度（°）。 |
 | TRANSLATION | 1 | x、y方向的平移属性。该属性对应参数个数为2，属性的单位为px。 |
-| SCALE | 2 | x、y方向的缩放属性。该属性对应参数个数为2。 |
+| SCALE | 2 | x、y方向的缩放属性。该属性对应参数个数为2，属性的取值范围为(-∞, +∞) 。|
 | OPACITY | 3 | 透明度属性。该属性对应参数个数为1，属性的取值范围为[0,1]。 |
 
 ## ColorSpace<sup>20+</sup>

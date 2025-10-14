@@ -1,6 +1,6 @@
 # @ohos.effectKit (Image Effects)
 
-The EffectKit module provides basic image processing capabilities, including brightness adjustment, blurring, grayscale adjustment, and color picker.
+This module provides basic image processing capabilities, including brightness adjustment, blurring, grayscale adjustment, and color picker. The effectKit module processes images (such as PixelMap, PNG, and JPEG) offline to obtain visual effects. The uiEffect module connects to the rendering service in real time and process the screen frame buffer to obtain dynamic visual effects.
 
 This module provides the following classes:
 
@@ -33,7 +33,7 @@ Creates a **Filter** instance based on a pixel map.
 
 | Name   | Type              | Mandatory| Description    |
 | ------- | ----------------- | ---- | -------- |
-| source  | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).  |
+| source  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md).  |
 
 **Return value**
 
@@ -77,7 +77,7 @@ Creates a **ColorPicker** instance based on a pixel map. This API uses a promise
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | ----------- | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).|
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md).|
 
 **Return value**
 
@@ -135,7 +135,7 @@ Creates a **ColorPicker** instance for the selected region based on a pixel map.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | ----------- | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).|
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md).|
 | region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to 0, and the rightmost and bottom positions correspond to 1. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
 
 **Return value**
@@ -194,7 +194,7 @@ Creates a **ColorPicker** instance based on a pixel map. This API uses an asynch
 
 | Name    | Type               | Mandatory| Description                      |
 | -------- | ------------------ | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md). |
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md). |
 | callback | AsyncCallback\<[ColorPicker](#colorpicker)> | Yes | Callback used to return the **ColorPicker** instance created.|
 
 **Error codes**
@@ -247,7 +247,7 @@ Creates a **ColorPicker** instance for the selected region based on a pixel map.
 
 | Name    | Type               | Mandatory| Description                      |
 | -------- | ------------------ | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md). |
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md). |
 | region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to 0, and the rightmost and bottom positions correspond to 1. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
 | callback | AsyncCallback\<[ColorPicker](#colorpicker)> | Yes | Callback used to return the **ColorPicker** instance created.|
 
@@ -295,12 +295,12 @@ A class that stores the color picked.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
-| Name  | Type  | Readable| Writable| Description             |
+| Name  | Type  | Read-Only| Optional| Description             |
 | ------ | ----- | ---- | ---- | ---------------- |
-| red   | number | Yes  | No  | Value of the red component. The value range is [0x0, 0xFF].          |
-| green | number | Yes  | No  | Value of the green component. The value range is [0x0, 0xFF].          |
-| blue  | number | Yes  | No  | Value of the blue component. The value range is [0x0, 0xFF].          |
-| alpha | number | Yes  | No  | Value of the alpha component. The value range is [0x0, 0xFF].      |
+| red   | number | No  | No  | Value of the red component. The value range is [0x0, 0xFF].          |
+| green | number | No  | No  | Value of the green component. The value range is [0x0, 0xFF].          |
+| blue  | number | No  | No  | Value of the blue component. The value range is [0x0, 0xFF].          |
+| alpha | number | No  | No  | Value of the alpha component. The value range is [0x0, 0xFF].      |
 
 ## TileMode<sup>14+</sup>
 
@@ -323,7 +323,7 @@ A class used to obtain the color from an image. Before calling any method of **C
 
 getMainColor(): Promise\<Color>
 
-Obtains the main color from the image and writes the result to a [Color](#color) instance. This API uses a promise to return the result.
+Obtains the main color from the image and writes the result to a [Color](#color) instance. This API uses a promise to return the result. This API uses the image scaling algorithm to calculate the weighted average of surrounding pixels and reduces the original image to one pixel to obtain the main color.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -371,7 +371,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getMainColorSync(): Color
 
-Obtains the main color from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously.
+Obtains the main color from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously. This API uses the image scaling algorithm to calculate the weighted average of surrounding pixels and reduces the original image to one pixel to obtain the main color.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -418,7 +418,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getLargestProportionColor(): Color
 
-Obtains the color with the largest proportion from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously.
+Obtains the color with the largest proportion from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously. This API uses the median split algorithm to divide the color space and obtain the average color of the color space with the largest proportion.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -515,7 +515,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![image_Largest_Proportion_Color.png](figures/image_Top_Proportion_Colors.png)
+![image_Top_Proportion_Colors.png](figures/image_Top_Proportion_Colors.png)
 
 ### getHighestSaturationColor<sup>10+</sup>
 
@@ -960,7 +960,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getEffectPixelMap(): Promise<image.PixelMap>
 
-Obtains **image.PixelMap** of the source image to which the filter linked list is added. This API uses a promise to return the result.
+Obtains **image.PixelMap** of the source image to which the filter linked list is added. This API uses a CPU for rendering and a promise to return the result.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -997,6 +997,53 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
+### getEffectPixelMap<sup>20+</sup>
+
+getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
+
+Obtains the **image.PixelMap** of the source image with the linked list effect. The rendering mode (CPU rendering or GPU rendering) can be specified. This API uses a promise to return the result.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name| Type       | Mandatory| Description                                                        |
+| ------ | ----------- | ---- | ------------------------------------------------------------ |
+|  useCpuRender   | boolean | Yes  | Rendering mode. **true**: CPU rendering. **false**: GPU rendering.|
+
+**Return value**
+
+| Type                  | Description          |
+| ---------------------- | -------------- |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise used to return **image.PixelMap** of the source image.|
+
+
+**Example**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap(false).then(data => {
+    console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
+  })
+})
+```
+
 ### getPixelMap<sup>(deprecated)</sup>
 
 getPixelMap(): image.PixelMap
@@ -1013,7 +1060,7 @@ Obtains **image.PixelMap** of the source image to which the filter linked list i
 
 | Type          | Description                                           |
 | :------------- | :---------------------------------------------- |
-| [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | **image.PixelMap** of the source image.|
+| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | **image.PixelMap** of the source image.|
 
 **Example**
 

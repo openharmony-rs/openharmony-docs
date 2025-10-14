@@ -7,7 +7,7 @@
 <!--Tester: @fenglili18-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。
+本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。开发指导请参考[长时任务开发指南](../../task-management/continuous-task.md)、[短时任务开发指南](../../task-management/transient-task.md)。
 
 >  **说明：**
 >
@@ -123,7 +123,7 @@ backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: numb
     if(error) {
         console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
     } else {
-        console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+        console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
     }
 })
 ```
@@ -171,7 +171,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
-    console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error: BusinessError) => {
     console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
 })
@@ -658,7 +658,7 @@ export default class EntryAbility extends UIAbility {
 
   // 应用更新进度
   updateProcess(process: number) {
-    // 应用定义下载类通知模版
+    // 定义通知类型，更新进度时的通知类型必须为实况窗
     let downLoadTemplate: notificationManager.NotificationTemplate = {
       name: 'downloadTemplate', // 当前只支持downloadTemplate，保持不变
       data: {
@@ -1191,12 +1191,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**原子化服务API：** 从API version 12开始，该属性支持在原子化服务中使用。
-
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| DATA_TRANSFER           | 1    | 数据传输。                  |
-| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
+| DATA_TRANSFER           | 1    | 数据传输。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
+| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。                 |
 | AUDIO_RECORDING         | 3    | 录制。                    |
 | LOCATION                | 4    | 定位导航。                  |
 | BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。                  |
@@ -1209,8 +1207,6 @@ export default class EntryAbility extends UIAbility {
 长时任务通知信息。
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-**原子化服务API：** 从API version 12开始，该属性支持在原子化服务中使用。
 
 | 名称             | 类型     | 只读     | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1321,7 +1317,7 @@ export default class EntryAbility extends UIAbility {
 | abilityName | string   | 否    | 否    | UIAbility名称。          |
 | uid         | number   | 否    | 否    | 应用的UID。               |
 | pid         | number   | 否    | 否    | 应用进程的PID。               |
-| isFromWebView | boolean  | 否    | 否    | 是否通过Webview方式申请，即通过系统代理应用申请长时任务。      |
+| isFromWebView | boolean  | 否    | 否    | 是否通过Webview方式申请，即通过系统代理应用申请长时任务。true表示通过Webview方式申请，false表示不通过Webview方式申请。|
 | [backgroundModes](#backgroundmode) | string[] | 否    | 否    | 长时任务类型。               |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | 否    | 否    | 长时任务子类型。              |
 | notificationId | number   | 否    | 否    | 通知 Id。                |
@@ -1329,4 +1325,4 @@ export default class EntryAbility extends UIAbility {
 | abilityId | number   | 否    | 否    | UIAbility Id。         |
 | wantAgentBundleName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的包名。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。        |
 | wantAgentAbilityName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的ability名称。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。 |
-| suspendState | boolean   | 否    | 否    | 申请的长时任务是否处于暂停状态。 |
+| suspendState | boolean   | 否    | 否    | 申请的长时任务是否处于暂停状态。true表示处于暂停状态，false表示处于激活状态。|

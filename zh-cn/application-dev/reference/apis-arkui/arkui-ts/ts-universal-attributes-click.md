@@ -1,7 +1,7 @@
 # 点击控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -25,7 +25,9 @@ touchable(value: boolean): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型| 必填 | 说明                    |
+**参数：**
+
+| 参数名      | 类型| 必填 | 说明                    |
 | ----------- | -------- | ----- | ------------------------ |
 | value   | boolean  |  否   |设置当前组件是否可以响应点击事件、触摸事件等手指交互事件。<br>默认值：true，可以响应交互事件。设置为false时，不可以响应交互事件。 |
 

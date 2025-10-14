@@ -1,6 +1,12 @@
 # @ohos.app.ability.EnvironmentCallback (System Environment Change Listener)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The EnvironmentCallback module provides APIs for the application context to listen for system environment changes.
+The EnvironmentCallback module provides capabilities to listen for system environment changes.
 
 > **NOTE**
 > 
@@ -15,12 +21,13 @@ The EnvironmentCallback module provides APIs for the application context to list
 import { EnvironmentCallback } from '@kit.AbilityKit';
 ```
 
+## EnvironmentCallback
 
-## EnvironmentCallback.onConfigurationUpdated
+### onConfigurationUpdated
 
 onConfigurationUpdated(config: Configuration): void
 
-Called when the system environment changes.
+Called when the system configuration changes, after [a listener has been registered for such events](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -36,11 +43,11 @@ Called when the system environment changes.
 
 See [Usage of EnvironmentCallback](#usage-of-environmentcallback).
 
-## EnvironmentCallback.onMemoryLevel
+### onMemoryLevel
 
 onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
-Called when the system memory level changes.
+Called when the system memory level changes, after [a listener has been registered for such events](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -50,7 +57,7 @@ Called when the system memory level changes.
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Memory level that indicates the memory usage status. When the specified memory level is reached, a callback will be invoked and the system will start adjustment.|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Memory level, indicating the available memory of the entire device.|
 
 **Example**
 
@@ -68,14 +75,14 @@ let callbackId: number;
 
 export default class MyAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let environmentCallback: EnvironmentCallback  =  {
       onConfigurationUpdated(config){
-        console.log(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
+        console.info(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
       },
 
       onMemoryLevel(level){
-        console.log(`onMemoryLevel level: ${JSON.stringify(level)}`);
+        console.info(`onMemoryLevel level: ${JSON.stringify(level)}`);
       }
     };
     // 1. Obtain an applicationContext object.
@@ -86,7 +93,7 @@ export default class MyAbility extends UIAbility {
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
-    console.log(`registerEnvironmentCallback number: ${JSON.stringify(callbackId)}`);
+    console.info(`registerEnvironmentCallback number: ${JSON.stringify(callbackId)}`);
   }
 
   onDestroy() {
@@ -96,7 +103,7 @@ export default class MyAbility extends UIAbility {
         if (error && error.code !== 0) {
           console.error(`unregisterEnvironmentCallback fail, error: ${JSON.stringify(error)}`);
         } else {
-          console.log(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
+          console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
         }
       });
     } catch (paramError) {

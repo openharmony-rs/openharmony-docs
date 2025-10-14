@@ -1731,18 +1731,6 @@
 
 **起始版本**：10
 
-## ohos.permission.sec.ACCESS_UDID
-
-允许系统应用获取UDID。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：7
-
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
 允许应用获取设备风险状态。
@@ -4313,24 +4301,6 @@
 
 **起始版本**：18
 
-## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
-
-允许扩展外设驱动访问SCSI DDK接口开发SCSI Peripheral扩展外设驱动。
-
-支持以下类型的外设扩展驱动开发：
-外设以USB总线接入主机，且满足：
-
-1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
-2. 外设能够以对操作系统透明的方式来模拟SCSI设备。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：18
-
 ## ohos.permission.ACCESS_DDK_USB_SERIAL
 
 允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
@@ -4532,20 +4502,6 @@
 **ACL使能**：true
 
 **起始版本**：19
-
-## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
-
-允许应用调用企业空间访问DLP文件的接口。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：PC/2in1
-
-**起始版本**：20
 
 ## ohos.permission.UNINSTALL_PLUGIN_BUNDLE
 
@@ -4815,7 +4771,7 @@
 
 ## ohos.permission.VIRUS_PROTECTION_SERVICE
 
-允许应用启动病毒查杀任务。
+允许应用启动病毒终止任务。
 
 **权限级别**：system_basic
 
@@ -5078,5 +5034,61 @@
 **ACL使能**：true
 
 **支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
+
+允许系统应用查询独立二进制程序的证书信息。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.SET_DEVICE_INDEPENDENT_BINARY_CERT_STATUS
+
+允许系统应用设置独立二进制程序的证书状态。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.GET_SCREEN_CONTENT
+
+允许应用获取屏幕上的内容。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.SIMULATE_USER_INPUT
+
+允许应用模拟用户操作。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
 
 **起始版本**：20

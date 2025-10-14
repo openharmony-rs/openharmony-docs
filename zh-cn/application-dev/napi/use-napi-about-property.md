@@ -78,8 +78,9 @@ export const getPropertyNames: (obj: Object) => Array<string> | undefined;
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -141,8 +142,9 @@ export const setProperty: (obj: Object, key: String, value: string) => Object | 
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -195,8 +197,9 @@ export const getProperty: (obj: Object, key: string) => string | undefined;
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -253,8 +256,9 @@ export const hasProperty: (obj: Object, key: number | string) => boolean | undef
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -321,8 +325,9 @@ export const deleteProperty: (obj: Object, key:string) => boolean;
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   first: number = 0;
 }
@@ -393,7 +398,7 @@ export const napiHasOwnProperty: (obj: Object, key:string) => boolean | undefine
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let myObj = { 'myProperty': 1 };
@@ -460,7 +465,7 @@ export const napiSetNamedProperty: (key: string) => Object | undefined;
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let obj = testNapi.napiSetNamedProperty('myProperty');
@@ -513,7 +518,7 @@ export const napiGetNamedProperty: (obj: Object, key: string) => boolean | numbe
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 interface NestedObj {
@@ -584,8 +589,9 @@ export const napiHasNamedProperty: (obj: Object, key:string) => boolean | undefi
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface NestedObj {
   nestedStr: string;
   nestedNum: number;
@@ -716,8 +722,9 @@ export const createStringWithGetterSetter: () => DefineGetterSetterObj;
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // 定义method类型的属性
 hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d', testNapi.defineMethodProperties()
   .defineMethodPropertiesExample());
@@ -774,8 +781,9 @@ export const getAllPropertyNames : (obj: Object) => Array<string> | undefined;
 ArkTS侧示例代码
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0

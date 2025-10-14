@@ -1,7 +1,13 @@
 # Context Switching
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-  | API in the FA Model| Corresponding .d.ts File in the Stage Model| Corresponding API or Field in the Stage Model| 
+  | API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API or Field in the Stage Model| 
 | -------- | -------- | -------- |
 | [getOrCreateLocalDir(callback:AsyncCallback&lt;string&gt;):void;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetorcreatelocaldir7)<br>[getOrCreateLocalDir():Promise&lt;string&gt;;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetorcreatelocaldir7-1) | There is no corresponding API in the stage model.| Applications developed on the stage model do not have the operation permission in the application root directory. Therefore, no corresponding API is provided.|
 | [verifyPermission(permission:string,options:PermissionOptions,callback:AsyncCallback&lt;number&gt;):void;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextverifypermission7)<br>[verifyPermission(permission:string,callback:AsyncCallback&lt;number&gt;):void;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextverifypermission7-1)<br>[verifyPermission(permission:string,options?:PermissionOptions):Promise&lt;number&gt;;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextverifypermission7-2) | \@ohos.abilityAccessCtrl.d.ts | [verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus;](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstokensync9)<br>[verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;;](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstoken9) |

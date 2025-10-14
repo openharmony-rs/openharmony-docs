@@ -57,7 +57,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 2、不支持collections.Set、collections.Map等类型。
 
-3、不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+3、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
 4、单个key支持数据大小约8k，过大会导致持久化失败。
 
@@ -94,7 +94,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
-11、如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。注意：不允许混用PersistenceV2和prefrence，因为Preferences存储的数据不会有状态变量信息，反序列化的数据不能触发PersistenceV2的自动化存储。
+11、如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。注意：不允许混用PersistenceV2和Preferences，因为Preferences存储的数据不会有状态变量信息，反序列化的数据不能触发PersistenceV2的自动化存储。
 
 ## 使用场景
 
@@ -382,7 +382,7 @@ struct Page1 {
         .fontSize(25)
       Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save(Sample);
           this.refresh += 1;
@@ -592,7 +592,7 @@ struct Page1 {
       // 非状态变量需要借助状态变量refresh才能刷新
       Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
           this.refresh += 1;
@@ -668,7 +668,7 @@ struct Page1 {
       // 非状态变量需要借助状态变量refresh才能刷新
       Text('save key connect2: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
           this.refresh += 1;

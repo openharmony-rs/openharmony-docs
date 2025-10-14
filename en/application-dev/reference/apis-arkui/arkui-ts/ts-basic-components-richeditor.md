@@ -1,4 +1,10 @@
 # RichEditor
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @carnivore233-->
+<!--Designer: @pssea-->
+<!--Tester: @mateng_Holtens-->
+<!--Adviser: @HelloCrease-->
 
 **RichEditor** is a component that supports interactive text editing and mixture of text and imagery.
 
@@ -329,7 +335,7 @@ Sets the maximum number of characters for text input.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number> | Yes  | Maximum number of characters for text input.<br>Default value: **Infinity**, which means unlimited input. The **undefined** type is supported.<br>**NOTE**<br>If this attribute is not set or is set to an invalid value, the default value is used. If a decimal number is specified, the integer part is used.|
+| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Maximum number of characters for text input.<br>Default value: **Infinity**, which means unlimited input. The **undefined** type is supported.<br>**NOTE**<br>If this attribute is not set or is set to an invalid value, the default value is used. If a decimal number is specified, the integer part is used.|
 
 ### maxLines<sup>18+</sup>
 
@@ -345,7 +351,7 @@ Sets the maximum number of lines that the rich text can display. When **maxLines
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number> | Yes  | Maximum number of lines that the rich text can display. When it is set, content that exceeds the specified number of lines can be scrolled to display. If both the component height and **maxLines** are set, the component height takes precedence.<br>Default value: **Infinity**, which means unlimited lines. The **undefined** type is supported.<br>Value range: (0, +∞)|
+| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Maximum number of lines that the rich text can display. When it is set, content that exceeds the specified number of lines can be scrolled to display. If both the component height and **maxLines** are set, the component height takes precedence.<br>Default value: **Infinity**, which means unlimited lines. The **undefined** type is supported.<br>Value range: (0, +∞)|
 
 ### enableHapticFeedback<sup>13+</sup>
 
@@ -375,7 +381,7 @@ Sets the keyboard appearance.
 
 | Name| Type| Mandatory| Description|
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15)\> | Yes  | Keyboard appearance.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE**|
+| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15)\> | Yes  | Keyboard appearance.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE**|
 
 ### stopBackPress<sup>18+</sup>
 
@@ -830,7 +836,7 @@ Provides the image information returned by the backend.
 | Name              | Type                                                               | Mandatory | Description              |
 |------------------|-------------------------------------------------------------------|-----|------------------|
 | spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | Yes  | Span position.|
-| valuePixelMap    | [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7)                    | No  | Image content.|
+| valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | No  | Image content.|
 | valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | No  | Image resource ID.|
 | imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | Yes| Image style.|
 | offsetInSpan     | [number, number] | Yes| Start and end positions of the image in the span.|
@@ -1010,7 +1016,7 @@ On non-2-in-1 devices, when **options** is set to **MenuPolicy.DEFAULT**, the fo
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | Yes   | Start position of the selection.|
 | selectionEnd   | number | Yes   | End position of the selection.|
-| options<sup>12+</sup>   | [SelectionOptions](ts-types.md#selectionoptions12) | No   | Configuration of options.|
+| options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12) | No   | Configuration of options.|
 
 ### isEditing<sup>12+</sup>
 
@@ -1052,7 +1058,7 @@ Obtains a **LayoutManager** object.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [LayoutManager](ts-text-common.md#LayoutManager12) | **LayoutManager** object.|
+| [LayoutManager](ts-text-common.md#layoutmanager12) | **LayoutManager** object.|
 
 ### getPreviewText<sup>12+</sup>
 
@@ -1135,7 +1141,7 @@ To avoid potential loading issues, do not directly add a network image.
 
 | Name    | Type                                    | Mandatory  | Description |
 | ------- | ---------------------------------------- | ---- | ----- |
-| value   | [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7)\|[ResourceStr](ts-types.md#resourcestr) | Yes   | Image content.|
+| value   | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](ts-types.md#resourcestr) | Yes   | Image content.|
 | options | [RichEditorImageSpanOptions](#richeditorimagespanoptions) | No   | Image options.|
 
 **Return value**
@@ -1248,7 +1254,7 @@ Updates the paragraph style.
 
 ### getSpans
 
-getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult| RichEditorTextSpanResult>
+getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorTextSpanResult>
 
 Obtains span information.
 
@@ -1576,7 +1582,7 @@ Describes the leading margin placeholder, which dictates the distance between th
 
 | Name      | Type                                      | Mandatory  | Description            |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| pixelMap | [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) | Yes   | Image content.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| pixelMap | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image content.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | size     | \[[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)\] | Yes   | Image size. This parameter cannot be set in percentage.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## RichEditorParagraphResult<sup>11+</sup>
@@ -1919,7 +1925,7 @@ Image span information.
 | Name              | Type                                                               | Mandatory | Description              |
 |------------------|-------------------------------------------------------------------|-----|------------------|
 | spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | Yes  | Span position.|
-| value            | [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7)\|[ResourceStr](ts-types.md#resourcestr)  | Yes  | Image content.|
+| value            | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](ts-types.md#resourcestr)  | Yes  | Image content.|
 | imageStyle       | [RichEditorImageSpanStyle](#richeditorimagespanstyle) | No| Image style.|
 
 ## RichEditorUrlStyle<sup>18+</sup>
@@ -5065,3 +5071,4 @@ struct RichEditorExample {
   }
 }
 ```
+<!--no_check-->

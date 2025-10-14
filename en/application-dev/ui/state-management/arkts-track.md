@@ -1,4 +1,10 @@
-# \@Track Decorator: Class Object Property-level Update
+# \@Track Decorator: Implementing Class Object Property-level Updates
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 
 \@Track is a decorator used to decorate properties of class objects. Any changes to the properties decorated by \@Track will trigger only updates to the UI associated with those properties.
@@ -9,11 +15,83 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 > **NOTE**
 >
 > This decorator is supported in ArkTS widgets since API version 11.
+>
+> This decorator can be used in atomic services since API version 12.
 
 
 ## Overview
 
 \@Track enables property-level update for the class object. When a class object is a state variable, the change of the \@Track decorated property triggers only the update of the property associated UI. If the class uses the \@Track decorator, the properties that are not decorated by \@Track cannot be used in the UI. Otherwise, a runtime error is reported.
+
+## Class Property-Level Update
+
+In state management V1, decorators such as \@State support the observation of the changes of the first-layer attributes by default. Although the changes of the first-layer attributes can trigger updates, the observation at the class attribute level cannot be implemented. The following example shows this limitation:
+
+```ts
+class Info {
+  name: string = 'Jack';
+  age: number = 12;
+}
+
+@Entry
+@Component
+struct Index {
+  @State info: Info = new Info();
+
+  // Use the log printing of getFontSize to determine which component triggers rendering.
+  getFontSize(id: number): number {
+    console.info(`Component ${id} render`);
+    return 30;
+  }
+
+  build() {
+    Column() {
+      Text(`name: ${this.info.name}`)
+        .fontSize(this.getFontSize(1))
+      Text(`age: ${this.info.age}`)
+        .fontSize(this.getFontSize(2))
+
+      // Click the current button. You can find that only the name attribute is changed.
+      // However, the two Text components are still refreshed.
+      // Text(`age: ${this.info.age}`) is redundant refresh.
+      Button('change name').onClick(() => {
+        this.info.name = 'Jane';
+      })
+
+      // Click the current button. You can find that only the age attribute is changed.
+      // However, the two Text components are still refreshed.
+      // Text(`name: ${this.info.name}`) is redundant refresh.
+      Button('change age').onClick(() => {
+        this.info.age++;
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+> **NOTE**
+>
+> When the UI is refreshed, the attribute setting method of the component is executed. You can determine whether the current component is refreshed by checking whether the getFontSize method is called.
+
+- After the UI is rendered for the first time, the following log is generated:
+```
+Component 1 render
+Component 2 render
+```
+- When you click Button('change name'), even if only info.name is modified, the two Text components are still rendered again. The Text(`age: ${this.info.age}`) component does not use the name attribute, but is still refreshed because info.name is changed. Therefore, the refresh is redundant. The output logs are as follows:
+```
+Component 1 render
+Component 2 render
+```
+-  Similarly, when you click Button('change age'), the Text(`name: ${this.info.name}`) component is refreshed. The output logs are as follows:
+```
+Component 1 render
+Component 2 render
+```
+
+The root cause of the preceding redundant refresh is that the \@State decorator in the status management V1 cannot accurately observe the access and change of class attributes. To accurately observe class object attributes, the \@Track decorator is introduced.
 
 
 ## Decorator Description
@@ -105,7 +183,7 @@ In the preceding example:
     Text 1 is rendered
     ```
 
-2. None of the properties in the **logNotTrack** class is decorated by \@Track. After the **change logTrack.str1** button is clicked, both **Text3** and **Text4** are updated, as indicated by that two log records are generated. Redundant updates occur.
+2. None of the properties in the **logNotTrack** class is decorated by \@Track. After the **change logNotTrack.str1** button is clicked, both **Text3** and **Text4** are updated, as indicated by that two log records are generated. Redundant updates occur.
     ```ts
     Text 3 is rendered
     Text 4 is rendered
@@ -115,7 +193,7 @@ In the preceding example:
 
 - If the \@Track decorator is used in a class, the non-\@Track decorated properties in the class cannot be used in the \@Component decorated UI. For example, these properties cannot be bound to components nor be used to initialize child components; otherwise, an error is reported during runtime. For details, see [Improperly Using Non-\@Track Decorated Properties Causes Errors](#improperly-using-non-track-decorated-properties-causes-errors). Non-\@Track decorated properties can be used in non-UI functions, such as event callback functions and lifecycle functions.
 
-- Since API version 18 and later, \@Track is used in the \@ComponentV2 decorated UI. In this case, an error is not reported during runtime, but the refresh is not responded. For details, see [Common Scenarios](./arkts-v1-v2-mixusage.md#observed-decorated-class).
+- In API version 19 and later, the \@Track decorator is used in the UI of [\@ComponentV2](./arkts-new-componentV2.md). No error is reported during running, but the UI is not refreshed. For details, see [Common Scenarios](./arkts-v1-v2-mixusage.md#observed-decorated-class).
 
 - Whenever possible, avoid any combination of class objects that contain \@Track and those that do not in, for example, union types and class inheritance.
 

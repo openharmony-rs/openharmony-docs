@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
@@ -24,9 +25,9 @@ Defines the configuration items of the event logging configuration function. If 
 
 ### Macros
 
-| Name                                       | Description                                                        |
-|-------------------------------------------|------------------------------------------------------------|
-| [DISABLE](#disable) "disable"             | Whether to disable event logging. The default value is **false**. The value **true** means to disable the event logging function, and the value **false** means the opposite.<br>**Since**: 8|
+| Name| Description|
+| -- | -- |
+| [DISABLE](#disable) "disable" | Whether to disable event logging. The default value is **false**. The value **true** means to disable the event logging function, and the value **false** means the opposite.<br>**Since**: 8|
 | [MAX_STORAGE](#max_storage) "max_storage" | Storage quota of the event file directory. The default value is **10M**.<br>**Since**: 8|
 
 

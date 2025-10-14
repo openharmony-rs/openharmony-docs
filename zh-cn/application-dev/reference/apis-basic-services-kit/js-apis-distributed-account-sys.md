@@ -67,7 +67,8 @@ try {
         console.info('distributed information: ' + JSON.stringify(data));
       }
     });
-} catch (err) {
+} catch (e) {
+  const err = e as BusinessError;
   console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -118,7 +119,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
   });
-} catch (err) {
+} catch (e) {
+  const err = e as BusinessError;
   console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -162,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 let accountInfo: distributedAccount.DistributedInfo =
-  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo, (err: BusinessError) => {
     if (err) {
@@ -171,8 +173,9 @@ try {
       console.info('setOsAccountDistributedInfoByLocalId successfully');
     }
   });
-} catch (err) {
-    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -220,14 +223,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 let accountInfo: distributedAccount.DistributedInfo =
-  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo).then(() => {
-      console.info('setOsAccountDistributedInfoByLocalId successfully');
+    console.info('setOsAccountDistributedInfoByLocalId successfully');
   }).catch((err: BusinessError) => {
-      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
     console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```

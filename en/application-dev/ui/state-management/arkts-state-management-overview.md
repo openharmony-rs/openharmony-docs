@@ -26,7 +26,7 @@ Custom components have variables. A variable must be decorated by a decorator wh
 
 Before implementing state management, you need to understand the basic syntax of the UI paradigm. A review of the following topics would be helpful: [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), [Creating a Custom Component](./arkts-create-custom-components.md).
 
-## Fundamental Concepts
+## Basic Concepts
 
 - State variable: a variable decorated by a state decorator. Its value change will trigger UI re-renders. Example: @State num: number = 1, where @State is a state decorator and **num** is a state variable.
 

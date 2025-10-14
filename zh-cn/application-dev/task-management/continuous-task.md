@@ -34,7 +34,7 @@
 
 - 在数据传输时，若应用使用[上传下载代理接口](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
-- 在数据传输时，应用需要更新进度。如果进度长时间（超过10分钟）不更新，数据传输的长时任务会被取消。更新进度实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
+- 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
 
 关于AUDIO_PLAYBACK（音视频播放）说明：
 
@@ -45,6 +45,8 @@
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务，无需接入AVSession。
 
 - 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
+
+- 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
 ### 约束与限制
 
@@ -64,7 +66,7 @@
 
 > **说明：**
 >
-> 应用按需求申请长时任务，当应用无需在后台运行（任务结束）时，要及时主动取消长时任务，否则系统会强行取消。例如用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。
+> 应用按需求申请长时任务，当应用无需在后台运行（任务结束）时，要及时主动取消长时任务，否则应用退至后台会被系统挂起。例如用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。
 >
 > 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
@@ -617,7 +619,7 @@
       }
 
       onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption) {
-        console.log('ServiceAbility onRemoteRequest called');
+        console.info('ServiceAbility onRemoteRequest called');
         // code 的具体含义用户自定义
         if (code === 1) {
           // 接收到申请长时任务的请求码
@@ -627,7 +629,7 @@
           // 接收到取消长时任务的请求码
           stopContinuousTask();
         } else {
-          console.log('ServiceAbility unknown request code');
+          console.info('ServiceAbility unknown request code');
         }
         return true;
       }
