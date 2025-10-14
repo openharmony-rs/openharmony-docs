@@ -163,7 +163,7 @@ WLAN热点信息。
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
 
-| 名称 | **值** | 说明 |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | WIFI_SEC_TYPE_INVALID | 0 | 无效加密类型。 |
 | WIFI_SEC_TYPE_OPEN | 1 | 开放加密类型。 |
