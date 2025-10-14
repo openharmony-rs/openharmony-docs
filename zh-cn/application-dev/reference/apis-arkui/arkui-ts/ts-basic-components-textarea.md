@@ -2495,6 +2495,8 @@ struct Index {
 从API version 22开始，该示例通过[showCounter](#showcounter10)属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
 
 ```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
 // xxx.ets
 @Entry
 @Component
