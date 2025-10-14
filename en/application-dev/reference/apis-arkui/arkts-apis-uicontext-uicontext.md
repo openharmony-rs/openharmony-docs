@@ -398,7 +398,7 @@ Applies a transition animation for state changes.
 > - When [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) is executed, the component is about to be destroyed. Therefore, animation cannot be performed in aboutToDisappear.
 > - When a component appears or disappears, you can add animation effects through [in-component transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md).
 > - If in-component transition does not support certain attributes, you can use animateTo to implement the effect of component disappearance after the animation is complete. For details, see [Example 2](./arkui-ts/ts-explicit-animation.md#example-2-enabling-a-component-to-disappear-after-the-animation) in [Explicit Animation](./arkui-ts/ts-explicit-animation.md).
-> - In certain scenarios, using animateTo with [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animationTo Failed in State Management V2](../../ui/state-management/arkts-new-local.md#using-animationto-failed-in-state-management-v2).
+> - In certain scenarios, using animateTo with [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
 
 **Parameters**
 
