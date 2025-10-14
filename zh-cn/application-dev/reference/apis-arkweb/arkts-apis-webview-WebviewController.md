@@ -10355,7 +10355,7 @@ setSiteIsolationMode(mode: SiteIsolationMode): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 |Init error . Possible causes:<br>1. Site Isolation mode is already set by the developer. <br>2. Site Isolation mode cannot be strict in single-render-process mode.<br>3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
+| 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
 
 **示例：**
 
