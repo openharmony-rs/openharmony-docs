@@ -1,4 +1,4 @@
-# 设置任务快照的图标和名称
+# 设置任务快照的图标和名称（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

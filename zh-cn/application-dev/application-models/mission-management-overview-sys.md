@@ -1,4 +1,4 @@
-# 任务（Mission）管理场景介绍
+# 任务（Mission）管理场景介绍（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
