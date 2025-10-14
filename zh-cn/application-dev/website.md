@@ -829,8 +829,13 @@
       - [代理提醒(ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
       - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request-sys.md)
       - 设备使用信息统计（ArkTS）<!--device-usage-statistics-->
+<<<<<<< HEAD
         - [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-overview-sys.md)
         - [设备使用信息统计开发指导（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
+=======
+        - [设备使用信息统计概述](device-usage-statistics/device-usage-statistics-overview-sys.md)
+        - [设备使用信息统计开发指导](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
+>>>>>>> d41da5e84315798fca2047bbe35f2c57f378e3a8
       <!--DelEnd-->
     - Core File Kit（文件基础服务）<!--core-file-kit-->
       - [Core File Kit简介](file-management/core-file-kit-intro.md)
@@ -890,7 +895,11 @@
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
             - [ArkTS卡片被动刷新](form/arkts-ui-widget-passive-refresh.md)
             <!--Del-->
+<<<<<<< HEAD
             - [卡片代理刷新（仅对系统应用开放）](form/arkts-ui-widget-update-by-proxy-sys.md)
+=======
+            - [卡片代理刷新](form/arkts-ui-widget-update-by-proxy-sys.md)
+>>>>>>> d41da5e84315798fca2047bbe35f2c57f378e3a8
             <!--DelEnd-->
             - [刷新本地图片和网络图片](form/arkts-ui-widget-image-update.md)
             - [根据卡片状态刷新不同内容](form/arkts-ui-widget-update-by-status.md)
@@ -1403,10 +1412,17 @@
         - [输入设备开发指导](device/input/inputdevice-guidelines.md)
         - [按键拦截监听开发指导](device/input/keypressed-guidelines.md)
         - [鼠标光标开发指导](device/input/pointerstyle-guidelines.md)<!--Del-->
+<<<<<<< HEAD
         - [输入监听开发指导（仅对系统应用开放）](device/input/inputmonitor-guidelines-sys.md)
         - [事件注入开发指导（仅对系统应用开放）](device/input/inputeventclient-guidelines-sys.md)
         - [全局快捷键开发指导（仅对系统应用开放）](device/input/inputconsumer-guidelines-sys.md)
         - [系统预置全局快捷键开发指导（仅对系统应用开放）](device/input/shortkey-guidelines-sys.md)<!--DelEnd-->
+=======
+        - [输入监听开发指导](device/input/inputmonitor-guidelines-sys.md)
+        - [事件注入开发指导](device/input/inputeventclient-guidelines-sys.md)
+        - [全局快捷键开发指导](device/input/inputconsumer-guidelines-sys.md)
+        - [系统预置全局快捷键开发指导](device/input/shortkey-guidelines-sys.md)<!--DelEnd-->
+>>>>>>> d41da5e84315798fca2047bbe35f2c57f378e3a8
         - [事件监听开发指导（C/C++）](device/input/monitor-guidelines.md)
         - [事件拦截开发指导（C/C++）](device/input/interceptor-guidelines.md)
       - MDM Kit（企业设备管理服务）<!--mdm-kit-->
