@@ -3538,6 +3538,8 @@
           - [OH_PixelmapNative](reference/apis-arkui/capi-struct.md)
           - [WindowManager_WindowProperties](reference/apis-arkui/capi-windowmanager-windowproperties.md)
           - [WindowManager_AvoidArea](reference/apis-arkui/capi-windowmanager-avoidarea.md)
+          - [WindowManager_MainWindowInfo](reference/apis-arkui/capi-windowmanager-windowmanager-mainwindowinfo.md)
+          - [WindowManager_WindowSnapshotConfig](reference/apis-arkui/capi-windowmanager-windowmanager-windowsnapshotconfig.md)
           - [NativeDisplayManager_Rect](reference/apis-arkui/capi-nativedisplaymanager-rect.md)
           - [NativeDisplayManager_WaterfallDisplayAreaRects](reference/apis-arkui/capi-nativedisplaymanager-waterfalldisplayarearects.md)
           - [NativeDisplayManager_CutoutInfo](reference/apis-arkui/capi-nativedisplaymanager-cutoutinfo.md)
