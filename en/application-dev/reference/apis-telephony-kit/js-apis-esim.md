@@ -48,7 +48,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-let isSupported: boolean = eSIM.isSupported(0);
+let isSupported: boolean = eSIM.isSupported(1);
 console.log(`the esim is Supported:` + isSupported);
 ```
 
@@ -105,7 +105,7 @@ let profile: eSIM.DownloadableProfile = {
 
 eSIM.addProfile(profile).then(() => {
     console.log(`addProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError<void>) => {
     console.error(`addProfile, promise: err->${JSON.stringify(err)}`);
 });
 ```
