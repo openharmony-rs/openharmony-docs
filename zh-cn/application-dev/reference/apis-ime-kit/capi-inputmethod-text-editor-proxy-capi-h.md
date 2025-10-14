@@ -306,7 +306,7 @@ typedef void (*OH_TextEditorProxy_GetRightTextOfCursorFunc)(InputMethod_TextEdit
 | [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | 指向即将被设置的[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)实例的指针。 |
 |  int32_t number | 目标获取文本的长度。 |
 | char16_t text[] | 光标右侧指定长度的文本内容，需要在函数实现中对它赋值。 |
-|  size_t *length | 表示游标左侧文本的长度。 |
+|  size_t *length | 表示游标右侧文本的长度，您需要传递此参数。 |
 
 ### OH_TextEditorProxy_GetTextIndexAtCursorFunc()
 
