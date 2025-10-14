@@ -555,7 +555,7 @@ typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_PixelmapNative](capi-windowmanager-struct.md)** snapshotPixelMapList | 窗口截图列表。 |
+| [const OH_PixelmapNative](capi-struct.md)** snapshotPixelMapList | 窗口截图列表。 |
 |  size_t snapshotListSize | 窗口截图列表的大小。 |
 
 ### OH_WindowManager_GetMainWindowSnapshot()
@@ -605,4 +605,4 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_PixelmapNative](capi-windowmanager-struct.md)* snapshotPixelMapList | 窗口截图列表。 |
+| [const OH_PixelmapNative](capi-struct.md)* snapshotPixelMapList | 窗口截图列表。 |
