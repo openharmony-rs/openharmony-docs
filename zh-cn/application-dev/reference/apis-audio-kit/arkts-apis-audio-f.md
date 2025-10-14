@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -74,12 +74,14 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   rendererInfo: audioRendererInfo
 };
 
+let audioRenderer: audio.AudioRenderer;
+
 audio.createAudioRenderer(audioRendererOptions,(err, data) => {
   if (err) {
     console.error(`AudioRenderer Created: Error: ${err}`);
   } else {
     console.info('AudioRenderer Created: SUCCESS');
-    let audioRenderer = data;
+    audioRenderer = data;
   }
 });
 ```
@@ -178,12 +180,14 @@ let audioCapturerOptions: audio.AudioCapturerOptions = {
   capturerInfo: audioCapturerInfo
 };
 
+let audioCapturer: audio.AudioCapturer;
+
 audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
   if (err) {
     console.error(`AudioCapturer Created : Error: ${err}`);
   } else {
     console.info('AudioCapturer Created : SUCCESS');
-    let audioCapturer = data;
+    audioCapturer = data;
   }
 });
 ```

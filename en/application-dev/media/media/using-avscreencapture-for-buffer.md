@@ -1,4 +1,10 @@
 # Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 Screen recording enables you to capture screen data for various applications like screen recording, conference sharing, and live streaming. The stream data captured through screen recording can be processed differently based on the use case. For example:
 - You can connect to NativeImage as the consumer to provide a surface associated with an OpenGL external texture. For details, see [Native Image Development (C/C++)](../../graphics/native-image-guidelines.md).
@@ -11,7 +17,7 @@ The AVScreenCapture, Window, and Graphics modules together implement the entire 
 
 By default, the main screen is captured, and the Graphics module generates the screen capture frame data based on the main screen and places the data to the display data buffer. The player framework obtains the data from the buffer for processing.
 
-The full screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
+The full-screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
 
 If you are in a call when screen capture starts or a call is coming during screen capture, screen capture automatically stops, and the **OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL** status is reported.
 
@@ -29,7 +35,7 @@ After an AVScreenCapture instance is created, different APIs can be called to sw
 
 If an API is called when the AVScreenCapture is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AVScreenCapture state before triggering state transition.
 
-**Linking the Dynamic Library in the CMake Script**
+**Linking the Dynamic Libraries in the CMake Script**
 
 ```c++
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so)
@@ -42,10 +48,9 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
     #include <multimedia/player_framework/native_avscreen_capture.h>
     #include <multimedia/player_framework/native_avscreen_capture_base.h>
     #include <multimedia/player_framework/native_avscreen_capture_errors.h>
+    #include <multimedia/player_framework/native_avbuffer.h>
     #include <native_buffer/native_buffer.h>
-    #include <fcntl.h>
-    #include "string"
-    #include "unistd.h"
+    #include <vector>
     ```
 
 2. Check whether there is a running screen capture service instance. If yes, wait until the instance is stopped and the resources are released.
@@ -61,8 +66,6 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
     After the capture instance is created, you can set the parameters required for screen capture. For details about how to set the audio and video parameters, see [Detailed Description](#detailed-description).
 
     ```c++
-    OH_AVScreenCaptureConfig config;
-
     OH_AudioInfo audioinfo = {
         .micCapInfo = miccapinfo,
         .innerCapInfo = innerCapInfo,
@@ -104,26 +107,26 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 7. (Optional) Set screen capture strategies.
 
-   7.1 (Optional) Set the privacy window masking mode for screen capture.
+    7.1 (Optional) Set the privacy window masking mode for screen capture.
 
-   The value **0** means that the full-screen masking mode is used, and **1** means that the window masking mode is used. The default value is full-screen masking mode.
-   
-   ```c++
-   int value = 0;
-   OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-   OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
-   OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-   ```
+    The value **0** means that the full-screen masking mode is used, and **1** means that the window masking mode is used. The default value is full-screen masking mode.
 
-   7.2 (Optional) Set the automatic rotation following configuration for screen capture.
+    ```c++
+    int value = 0;
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
+    OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+    ```
 
-   Set **StrategyForCanvasFollowRotation** to **true** to enable automatic rotation following. This will automatically adjust the virtual screen size after a rotation, ensuring the output follows the rotation promptly. After this setting, there is no need to manually call **OH_AVScreenCapture_ResizeCanvas** after rotation notifications.
-   
-   ```c++
-   OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-   OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
-   OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-   ```
+    7.2 (Optional) (Available from API version 20 onwards) Set the automatic rotation following configuration for screen capture.
+
+    Set **StrategyForCanvasFollowRotation** to **true** to enable automatic rotation following. This will automatically adjust the virtual screen size after a rotation, ensuring the output follows the rotation promptly. After this setting, there is no need to manually call **OH_AVScreenCapture_ResizeCanvas** after rotation notifications.
+
+    ```c++
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
+    OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+    ```
 
 8. Call **StartScreenCapture()** to start screen capture.
 
@@ -175,12 +178,17 @@ config_.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config_.videoInfo.videoCapInfo.displayId = 0;
 
 // (Optional) Pass a window ID if you want to capture a specific window.
-vector<int32_t> missionIds = {61}; // Window 61 is pre-selected in the picker.
-config_.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-config_.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+int32_t* missionIds = new int32_t[]{61}; // Window 61 is pre-selected in the picker.
+int32_t missionIdsLen = 1;
+config_.videoInfo.videoCapInfo.missionIDs = missionIds;
+config_.videoInfo.videoCapInfo.missionIDsLen = missionIdsLen;
+
+// Release the allocated memory after use.
+delete[] config_.videoInfo.videoCapInfo.missionIDs;
+config_.videoInfo.videoCapInfo.missionIDs = nullptr;
 ```
 
-The selection page is also compatible with the following screen capture modes:
+The selection page on the PC or 2-in-1 device is also compatible with the following screen capture modes:
 
 1. OH_CAPTURE_SPECIFIED_WINDOW mode, with multiple window IDs passed.
 
@@ -196,9 +204,14 @@ The selection page is also compatible with the following screen capture modes:
     config_.videoInfo.videoCapInfo.displayId = 0;
 
     // Pass multiple window IDs.
-    vector<int32_t> missionIds = {60, 61}; // Windows 60 and 61 are to be captured at the same time.
-    config_.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-    config_.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+    int32_t* missionIds = new int32_t[]{60, 61}; // Windows 60 and 61 are to be captured at the same time.
+    int32_t missionIdsLen = 2;
+    config_.videoInfo.videoCapInfo.missionIDs = missionIds;
+    config_.videoInfo.videoCapInfo.missionIDsLen = missionIdsLen;
+
+    // Release the allocated memory after use.
+    delete[] config_.videoInfo.videoCapInfo.missionIDs;
+    config_.videoInfo.videoCapInfo.missionIDs = nullptr;
     ```
 
 2. OH_CAPTURE_SPECIFIED_SCREEN mode.
@@ -220,12 +233,12 @@ The selection page is also compatible with the following screen capture modes:
     The PC or 2-in-1 device does not display a picker dialog box. Instead, it displays a privacy dialog box to ask for user approval.
 
     In this mode, the configured **videoCapInfo.displayId** does not take effect. The default display ID of the primary screen is used.
-    
+
     ```c++
     // Configure the screen capture width and height in config_ based on the PC's or 2-in-1 device's resolution.
     config_.videoInfo.videoCapInfo.videoFrameWidth = 2880;
-config_.videoInfo.videoCapInfo.videoFrameHeight = 1920;
-    
+    config_.videoInfo.videoCapInfo.videoFrameHeight = 1920;
+
     // Set the screen capture mode to OH_CAPTURE_HOME_SCREEN and pass a display ID.
     config_.captureMode = OH_CAPTURE_HOME_SCREEN;
     ```
@@ -265,7 +278,7 @@ This section describes how to set screen capture parameters, set callback functi
     ```
 
 2. Set callback functions.
-   
+
     Listeners are provided for error events, state changes, data obtained, and screen capture content changes involved in screen capture.
 
     ```c++
@@ -428,13 +441,13 @@ This section describes how to set screen capture parameters, set callback functi
     }
     ```
 
-## Development Example
+## Complete Sample Code
 
 Refer to the sample code below to implement screen capture using AVScreenCapture.
 
-For details about how to create an OH_AVBuffer instance, see [Buffer Output](../avcodec/video-decoding.md#buffer-output).
+For details about how to create an OH_AVBuffer instance, see [Buffer Mode](../avcodec/video-decoding.md#buffer-mode).
 
-For details about screen capture in surface mode, see [Surface Input](../avcodec/video-encoding.md#surface-input).
+For details about screen capture in surface mode, see [Surface Mode](../avcodec/video-encoding.md#surface-mode).
 
 Currently, the buffer holds original streams, which can be encoded and saved in MP4 format for playback.
 
@@ -449,9 +462,8 @@ Currently, the buffer holds original streams, which can be encoded and saved in 
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
 #include <multimedia/player_framework/native_avbuffer.h>
 #include <native_buffer/native_buffer.h>
-#include <fcntl.h>
-#include "string"
-#include "unistd.h"
+#include <vector>
+
 // OnError(), a callback function invoked when an error occurs.
 void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData) {
     (void)capture;
@@ -587,8 +599,8 @@ void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectio
     int* selectType = new int;
     uint64_t* displayId = new uint64_t;
     // Obtain the selection type and display ID through the API. OH_AVScreenCapture_UserSelectionInfo* selections is valid only in the OnUserSelected callback.
-    OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
-    OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
+    OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
+    OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
 }
 
 struct OH_AVScreenCapture *capture;
@@ -604,7 +616,7 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     uint32_t array_length;
     napi_get_array_length(env, args[0], &array_length);
     // Read the initial window ID.
-    for (int32_t i = 0; i < array_length; i++) {
+    for (uint32_t i = 0; i < array_length; i++) {
         napi_value temp;
         napi_get_element(env, args[0], i, &temp);
         uint32_t tempValue;
@@ -688,7 +700,7 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // Enable the microphone.
     OH_AVScreenCapture_SetMicrophoneEnabled(capture, true);
 
-    // (Optional) Transfer the IDs of the subwindows and main windows to skip from screen capture. Transfer an empty array to cancel the windows that has been configured for exemption.
+    // (Optional) Transfer the IDs of the subwindows and main windows to skip from screen capture. Transfer an empty array to cancel the windows that have been configured for exemption.
 	// std::vector<int> windowIdsSkipPrivacy = {};
     // OH_AVScreenCapture_SkipPrivacyMode(capture, &windowIdsSkipPrivacy[0],
     //     static_cast<int32_t>(windowIdsSkipPrivacy.size()));

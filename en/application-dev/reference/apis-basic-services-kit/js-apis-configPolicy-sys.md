@@ -18,7 +18,7 @@ The **configPolicy** module provides APIs for obtaining the custom configuration
 ## Modules to Import
 
 ```ts
-import configPolicy from '@ohos.configPolicy';
+import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
 ## getOneCfgFile
@@ -48,8 +48,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getOneCfgFile(relpath, (error: BusinessError, value: string) => {
@@ -92,8 +91,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchConfigFile() {
     try {
@@ -107,7 +105,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   }
 
-  fetchConfigFile()
+  fetchConfigFile();
   ```
 
 ## getCfgFiles
@@ -137,8 +135,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError, value: Array<string>) => {
     if (error == null) {
@@ -180,8 +177,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchCfgFiles() {
     try {
@@ -223,8 +219,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   configPolicy.getCfgDirList((error: BusinessError, value: Array<string>) => {
     if (error == null) {
@@ -252,8 +247,7 @@ Obtains the list of configuration level directories. This API uses a promise to 
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchCfgDirList() {
     try {
@@ -297,8 +291,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
@@ -341,8 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
@@ -370,7 +362,7 @@ Obtains the path of the configuration file with the highest priority based on th
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                            |
 | followMode | [FollowXMode](#followxmode11) | Yes  | Follow mode.                                              |
-| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to **USER_DEFINED**.|
+| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
 
 **Error codes**
 
@@ -389,8 +381,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchOneCfgFile() {
     try {
@@ -422,7 +413,7 @@ Obtains the path of the configuration file with the highest priority based on th
 | ---------- | ----------------------------- | ---- | ----------------------------------------------------|
 | relPath    | string                        | Yes  | Name of the configuration file.                                          |
 | followMode | [FollowXMode](#followxmode11) | No  | Follow mode. The default value is **DEFAULT**.                   |
-| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to **USER_DEFINED**.|
+| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
 
 **Error codes**
 
@@ -436,7 +427,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| string | Returns the path of the configuration file with the highest priority.|
+| string | Path of the configuration file with the highest priority obtained.|
 
 
 **Example**
@@ -484,8 +475,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
@@ -527,8 +517,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
@@ -556,7 +545,7 @@ Obtains a list of configuration files based on the specified file name and follo
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                            |
 | followMode | [FollowXMode](#followxmode11) | Yes  | Follow mode.                                              |
-| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to **USER_DEFINED**.|
+| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
 
 **Error codes**
 
@@ -575,8 +564,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchCfgFiles() {
     try {
@@ -608,7 +596,7 @@ Obtains a list of configuration files based on the specified file name and follo
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                            |
 | followMode | [FollowXMode](#followxmode11) | No  | Follow mode. The default value is **DEFAULT**.                   |
-| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to **USER_DEFINED**.|
+| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
 
 **Error codes**
 
@@ -622,7 +610,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Type               | Description    |
 | ------------------- | -------- |
-| Array&lt;string&gt; | Returns a list of configuration files.|
+| Array&lt;string&gt; | List of configuration files obtained.|
 
 
 **Example**

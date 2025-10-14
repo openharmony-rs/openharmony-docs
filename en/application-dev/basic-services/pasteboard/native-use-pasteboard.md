@@ -4,7 +4,7 @@
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -12,15 +12,15 @@ The pasteboard allows you to copy and paste data of the plain text, hypertext, a
 
 ## Basic Concepts
 
-- **OH_PasteboardObserver**: pasteboard observer object, which is used to listen for data changes on the pasteboard.
-- **OH_Pasteboard**: pasteboard object, which is used to query and write.
+- [**OH_PasteboardObserver**](../../reference/apis-basic-services-kit/capi-pasteboard-oh-pasteboardobserver.md): pasteboard observer object, which is used to listen for data changes on the pasteboard.
+- [**OH_Pasteboard**](../../reference/apis-basic-services-kit/capi-pasteboard-oh-pasteboard.md): pasteboard object, which is used to query and write data.
 - [**OH_UdmfData**](../../reference/apis-arkdata/capi-udmf-oh-udmfdata.md): unified data object.
 
 ## Constraints
 
 - The pasteboard content, including system service metadata and application settings, has a maximum size of 128 MB by default. For PCs/2-in-1 devices, the maximum size can be changed through system settings, with a valid range from 128 MB to 2 GB.
 - To ensure the accuracy of the pasteboard data, only one copy can be performed at a time.
-- Currently, supported data types include **OH_UdsPlainText** (plain text), **OH_UdsHtml** (hypertext markup language), **OH_UdsFileUri** (file URI). **OH_UdsPixelMap** (pixel map), **OH_UdsHyperlink** (hyperlink), **OH_UdsAppItem** (application icon), and custom type. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage. For details, see [Using the Pasteboard to Copy and Paste](../pasteboard/use_pasteboard_to_copy_and_paste.md).
+- Currently, supported data types include **OH_UdsPlainText** (plain text), **OH_UdsHtml** (hypertext markup language), **OH_UdsFileUri** (file URI). **OH_UdsPixelMap** (pixel map), **OH_UdsHyperlink** (hyperlink), **OH_UdsAppItem** (application icon), and custom type. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage. For details, see [Using the Pasteboard to Copy and Paste](../pasteboard/use-pasteboard-to-copy-and-paste.md).
 - When you copy and paste data of a custom type, the specified type name cannot be the same as an existing one.
 - Since API version 12, [permission control](get-pastedata-permission-guidelines.md) is added to the pasteboard reading API to enhance user privacy protection.
 - The copy and paste APIs, [setUnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddata12) and [getUnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12), added in API version 12 are independent of the **OH_Pasteboard_SetData** and **OH_Pasteboard_GetData** APIs mentioned in this topic. Use the corresponding APIs when writing and reading data.
@@ -104,6 +104,8 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
    // 2. Create an OH_UdmfRecord object and add text data to it.
    OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
    OH_UdsPlainText_SetContent(plainText, "Hello world!");
+   OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
+   OH_UdsHtml_SetContent(udsHtml, "hello world");
    OH_UdmfRecord* record = OH_UdmfRecord_Create();
    OH_UdmfRecord_AddPlainText(record, plainText);
    
@@ -138,7 +140,9 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
      OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
      OH_UdmfRecord_GetPlainText(record, plainText);
      const char* content = OH_UdsPlainText_GetContent(plainText);
-     printf("Get plain text success. content: %s", content);
+     if (content != nullptr){
+      printf("Get plain text success.");
+     }
      // 5. Destroy the pointer when the object is no longer required.
      OH_UdsPlainText_Destroy(plainText);
      OH_UdmfData_Destroy(udmfData);

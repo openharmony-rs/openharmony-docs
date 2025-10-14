@@ -1,5 +1,12 @@
 # @ohos.app.ability.appRecovery (应用故障恢复)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**

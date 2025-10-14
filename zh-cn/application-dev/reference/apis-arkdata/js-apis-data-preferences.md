@@ -1,8 +1,8 @@
 # @ohos.data.preferences (用户首选项)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -50,7 +50,7 @@ getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Prefer
 
 | 参数名   | 类型                                             | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context  | Context            | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。                                                 |
+| context  | Context            | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                                 |
 | name     | string                                           | 是   | Preferences实例的名称。                                      |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | 是   | 回调函数。当获取Preferences实例成功，err为undefined，返回Preferences实例；否则err为错误对象。 |
 
@@ -122,7 +122,7 @@ getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **返回值：**
@@ -198,7 +198,7 @@ getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Pr
 
 | 参数名   | 类型                                          | 必填 | 说明                                                                                                                                                                           |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                                       | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context  | Context                                       | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options  | [Options](#options10)                              | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | 是   | 回调函数。当获取Preferences实例成功，err为undefined，返回Preferences实例；否则err为错误对象。                                                                                    |
 
@@ -277,7 +277,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                                                                           |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 
 **返回值：**
@@ -358,7 +358,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                            |
 
 **返回值：**
@@ -429,7 +429,7 @@ deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;voi
 
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
-| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。                                         |
+| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
 | name     | string                                | 是   | Preferences实例的名称。                              |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
@@ -502,7 +502,7 @@ deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **返回值：**
@@ -578,7 +578,7 @@ deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt
 
 | 参数名   | 类型                      | 必填 | 说明                                                                                                                                                                           |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options  | [Options](#options10)          | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。                                                                                                                           |
 
@@ -657,7 +657,7 @@ deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                                                                           |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 
 **返回值：**
@@ -741,7 +741,7 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
-| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。                                         |
+| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
 | name     | string                                | 是   | Preferences实例的名称。                              |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
@@ -814,7 +814,7 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **返回值：**
@@ -890,7 +890,7 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **错误码：**
@@ -947,7 +947,7 @@ removePreferencesFromCache(context: Context, options: Options, callback: AsyncCa
 
 | 参数名   | 类型                      | 必填 | 说明                                                                                                                                                                           |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options  | [Options](#options10)          | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。                                                                                                                           |
 
@@ -1025,7 +1025,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                                                                           |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 
 **返回值：**
@@ -1106,7 +1106,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                            |
 
 **错误码：**
@@ -1214,11 +1214,11 @@ Preferences实例配置选项。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-| 名称        | 类型   | 必填 | 说明                                                         |
-| ----------- | ------ | ---- | ------------------------------------------------------------ |
-| name        | string | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/>                                    |
-| dataGroupId | string\|null\|undefined | 否   | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> |
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否  | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> |
+| 名称        | 类型   | 只读 | 可选| 说明                                                         |
+| ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
+| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/>                                    |
+| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> |
+| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> |
 
 
 ## Preferences
@@ -1242,7 +1242,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback&lt;ValueType&gt;):
 
 | 参数名   | 类型                                         | 必填 | 说明               |
 | -------- | -------------------------------------------- | ---- |---------------------------|
-| key      | string                                       | 是   | 要获取的存储Key名称，不能为空。   |
+| key      | string                                       | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。   |
 | defValue | [ValueType](#valuetype)                      | 是   | 默认返回值。 |
 | callback | AsyncCallback&lt;[ValueType](#valuetype)&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为键对应的值；否则err为错误对象。   |
 
@@ -1283,7 +1283,7 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 
 | 参数名   | 类型                    | 必填 | 说明  |
 | -------- | ----------------------- | ---- |--------|
-| key      | string                  | 是   | 要获取的存储Key名称，不能为空。  |
+| key      | string                  | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | defValue | [ValueType](#valuetype) | 是   | 默认返回值。 |
 
 **返回值：**
@@ -1328,7 +1328,7 @@ getSync(key: string, defValue: ValueType): ValueType
 
 | 参数名   | 类型                    | 必填 | 说明            |
 | -------- | ----------------------- | ---- |---------------------|
-| key      | string                  | 是   | 要获取的存储Key名称，不能为空。  |
+| key      | string                  | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | defValue | [ValueType](#valuetype) | 是   | 默认返回值。 |
 
 **返回值：**
@@ -1507,7 +1507,7 @@ put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                       |
 | -------- | ------------------------- | ---- |-------------------------|
-| key      | string                    | 是   | 要修改的存储的Key，不能为空。 |
+| key      | string                    | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 | value    | [ValueType](#valuetype)   | 是   | 存储的新值。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当数据写入成功，err为undefined；否则为错误对象。 |
 
@@ -1555,7 +1555,7 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
 
 | 参数名 | 类型                    | 必填 | 说明                         |
 | ------ | ----------------------- | ---- |--------------------------|
-| key    | string                  | 是   | 要修改的存储的Key，不能为空。  |
+| key    | string                  | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | value  | [ValueType](#valuetype) | 是   | 存储的新值。 |
 
 **返回值：**
@@ -1607,7 +1607,7 @@ putSync(key: string, value: ValueType): void
 
 | 参数名 | 类型                    | 必填 | 说明                                                         |
 | ------ | ----------------------- | ---- | ------------------------ |
-| key    | string                  | 是   | 要修改的存储的Key，不能为空。 |
+| key    | string                  | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 | value  | [ValueType](#valuetype) | 是   | 存储的新值。 |
 
 **错误码：**
@@ -1640,7 +1640,7 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | 是   | 要检查的存储key名称，不能为空。                              |
+| key      | string                       | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                              |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
@@ -1685,7 +1685,7 @@ has(key: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空。 |
+| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1734,7 +1734,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空。 |
+| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1777,7 +1777,7 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                 |
 | -------- | ------------------------- | ---- | ---------------------------------------------------- |
-| key      | string                    | 是   | 要删除的存储Key名称，不能为空。                      |
+| key      | string                    | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                      |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当删除成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -1818,7 +1818,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空。 |
+| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1863,7 +1863,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空。 |
+| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **错误码：**
 

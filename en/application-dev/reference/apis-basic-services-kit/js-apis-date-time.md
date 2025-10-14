@@ -475,7 +475,7 @@ Obtains the time elapsed since the Unix epoch. This API returns the result synch
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getTime(true)
+  let time: number = systemDateTime.getTime(true)
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
@@ -517,7 +517,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
+  let time: number = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
@@ -696,7 +696,7 @@ Obtains the system time zone in synchronous mode.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let timezone = systemDateTime.getTimezoneSync();
+  let timezone: string = systemDateTime.getTimezoneSync();
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
@@ -740,3 +740,38 @@ The following table lists the supported system time zones and the respective off
 | Pacific/Wake                   | 12                    |
 | America/New_York               | -4                    |
 | Asia/Tashkent                  | 5                     |
+
+## systemDateTime.getAutoTimeStatus<sup>21+</sup>
+
+getAutoTimeStatus(): boolean
+
+Obtains the switch status of the automatic time setting. This API returns the result synchronously.
+
+**System capability**: SystemCapability.MiscServices.Time
+
+**Return value**
+
+| Type  | Description                                                      |
+| ------ | ---------------------------------------------------------- |
+| boolean | Switch status of the automatic time setting.<br>- **true**: The automatic time setting is on.<br>- **false**: The automatic time setting is off. |
+
+**Error codes**
+
+For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                                                                   |
+|-------|-------------------------------------------------------------------------------------------------------------|
+| 13000001    | Network connection error or OS error. Possible causes: 1.System memory is insufficient; 2.Calls the underlying system interface failed.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let status: boolean = systemDateTime.getAutoTimeStatus();
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get autotime status. message: ${error.message}, code: ${error.code}`);
+}
+```

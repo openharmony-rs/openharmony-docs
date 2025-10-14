@@ -23,6 +23,8 @@
 
 - 应用在点击控件触发onClick()回调到调用媒体库特权接口的时间间隔不能大于一分钟。
 
+- 保存控件仅支持在[应用主窗口和子窗口](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)中使用，且不支持在[UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md)中使用。
+
 - 用户点击一次控件，仅获取一次授权调用。
 
 - 为了保障用户的隐私不被恶意应用获取，应用需确保安全控件是可见的且用户能够识别的。开发者需要合理的配置控件的尺寸、颜色等属性，避免视觉混淆的情况，如果发生因控件的样式不合法导致授权失败的情况，请检查设备错误日志。
@@ -50,6 +52,8 @@
    当前示例使用默认参数。具体请参见[SaveButton控件](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。此外，所有安全控件都继承了[安全控件通用属性](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md)，可用于定制样式。
    
    有关将图片保存到媒体库的详细信息，请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+
+  <!-- [use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->
 
    ```ts
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -89,8 +93,8 @@
          Column({ space: 10 }) {
            // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
            Image($r('app.media.startIcon'))
-             .height(400)
-             .width('100%')
+             .height(50)
+             .width(50)
    
            SaveButton()
              .padding({top: 12, bottom: 12, left: 24, right: 24})

@@ -1,4 +1,10 @@
 # Interface (AVScreenCaptureRecorder)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -35,6 +41,8 @@ Initializes screen capture and sets screen capture parameters. This API uses a p
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
@@ -45,9 +53,16 @@ Initializes screen capture and sets screen capture parameters. This API uses a p
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+public getFileFd(): number {
+    let filesDir = '/data/storage/el2/base/haps';
+    let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    return file.fd;
+}
 
 let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
-    fd: 0, // Before passing in an FD to this parameter, the file (generally an MP4 file) must be created by the caller and granted with the write permissions.
+    fd: this.getFileFd(), // Before passing in an FD to this parameter, the file (generally an MP4 file) must be created by the caller and granted with the write permissions.
     frameWidth: 640,
     frameHeight: 480
     // Add other parameters.
@@ -56,7 +71,7 @@ let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
 avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
     console.info('Succeeded in initing avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to init avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -64,7 +79,7 @@ avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
 
 startRecording(): Promise\<void>
 
-Starts screen capture. This API uses a promise to return the result.
+Starts screen recording. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -75,6 +90,8 @@ Starts screen capture. This API uses a promise to return the result.
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -89,7 +106,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 avScreenCaptureRecorder.startRecording().then(() => {
     console.info('Succeeded in starting avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to start avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -97,7 +114,7 @@ avScreenCaptureRecorder.startRecording().then(() => {
 
 stopRecording(): Promise\<void>
 
-Stops screen capture. This API uses a promise to return the result.
+Stops screen recording. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -108,6 +125,8 @@ Stops screen capture. This API uses a promise to return the result.
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -122,7 +141,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 avScreenCaptureRecorder.stopRecording().then(() => {
     console.info('Succeeded in stopping avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to stop avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -145,9 +164,11 @@ For example, if a user enters a password in this application during screen captu
 
 | Type          | Description                            |
 | -------------- | -------------------------------- |
-| Promise\<void> | Promise used to return the window IDs.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -163,7 +184,7 @@ let windowIDs = [];
 avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
     console.info('Succeeded in skipping privacy mode');
 }).catch((err: BusinessError) => {
-    console.info('Failed to skip privacy mode, error: ' + err.message);
+    console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -179,7 +200,7 @@ Enables or disables the microphone. This API uses a promise to return the result
 
 | Name| Type   | Mandatory| Description                                                     |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| enable | boolean | Yes  | Whether to enable or disable the microphone. The value **true** means to enable the microphone, and **false** means the opposite.|
+| enable | boolean | Yes  | Whether to enable the microphone. **true** to enable, **false** otherwise.|
 
 **Return value**
 
@@ -188,6 +209,8 @@ Enables or disables the microphone. This API uses a promise to return the result
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -202,7 +225,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 avScreenCaptureRecorder.setMicEnabled(true).then(() => {
     console.info('Succeeded in setMicEnabled avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to setMicEnabled avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to setMicEnabled avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -222,6 +245,8 @@ Releases this AVScreenCaptureRecorder instance. This API uses a promise to retur
 
 **Error codes**
 
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 5400103  | IO error. Return by promise.     |
@@ -235,7 +260,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 avScreenCaptureRecorder.release().then(() => {
     console.info('Succeeded in releasing avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Faile to release avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -252,7 +277,7 @@ Subscribes to screen capture state changes. An application can subscribe to only
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'stateChange'** in this case.           |
-| callback | function | Yes  | Callback invoked when the event is triggered. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state.|
+| callback | Callback\<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | Yes  | Callback invoked when the event is triggered. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state.|
 
 **Example**
 
@@ -279,6 +304,8 @@ Subscribes to AVScreenCaptureRecorder errors. You can handle the errors based on
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 201      | permission denied.     |
@@ -289,7 +316,7 @@ Subscribes to AVScreenCaptureRecorder errors. You can handle the errors based on
 
 ```ts
 avScreenCaptureRecorder.on('error', (err: BusinessError) => {
-    console.error('avScreenCaptureRecorder error:' + err.message);
+    console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -306,7 +333,7 @@ Unsubscribes from screen capture state changes. You can specify a callback to ca
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'stateChange'** in this case.           |
-| callback | function | No  | Callback used for unsubscription. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state. If this parameter is not specified, the last subscription is canceled.|
+| callback | Callback\<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | No  | Callback used for unsubscription. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state. If this parameter is not specified, the last subscription is canceled.|
 
 **Example**
 

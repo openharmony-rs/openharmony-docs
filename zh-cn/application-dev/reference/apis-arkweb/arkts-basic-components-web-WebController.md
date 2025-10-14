@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 通过WebController可以控制Web组件各种行为。一个WebController对象只能控制一个Web组件，且必须在Web组件和WebController绑定后，才能调用WebController上的方法。
 
@@ -340,7 +340,7 @@ getHitTest(): HitTestType
 
 | 类型                              | 说明          |
 | ------------------------------- | ----------- |
-| [HitTestType](./arkts-basic-components-web-e.md#hittesttype) | 被点击区域的元素类型。 |
+| [HitTestType](./arkts-basic-components-web-e.md#hittesttypedeprecated) | 被点击区域的元素类型。 |
 
 **示例：**
 

@@ -118,27 +118,6 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 ```ts
 import wifi from '@ohos.wifi';
 
-wifi.getScanInfos((err, result) => {
-    if (err) {
-        console.error("get scan info error");
-        return;
-    }
-
-    let len = result.length;
-    console.log("wifi received scan info: " + len);
-    for (let i = 0; i < len; ++i) {
-        console.info("ssid: " + result[i].ssid);
-        console.info("bssid: " + result[i].bssid);
-        console.info("capabilities: " + result[i].capabilities);
-        console.info("securityType: " + result[i].securityType);
-        console.info("rssi: " + result[i].rssi);
-        console.info("band: " + result[i].band);
-        console.info("frequency: " + result[i].frequency);
-        console.info("channelWidth: " + result[i].channelWidth);
-        console.info("timestamp: " + result[i].timestamp);
-    }
-});
-
 wifi.getScanInfos().then(result => {
     let len = result.length;
     console.log("wifi received scan info: " + len);
@@ -164,7 +143,7 @@ WLAN热点信息。
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 
-| **名称** | **类型** | **可读** | **可写** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 是 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
@@ -201,7 +180,7 @@ WLAN配置信息。
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 
-| **名称** | **类型** | **可读** | **可写** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 是 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
@@ -517,7 +496,7 @@ wifi.getLinkedInfo().then(data => {
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 是 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
@@ -640,7 +619,7 @@ IP信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-| **名称** | **类型** | **可读** | **可写** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | number | 是 | 否 | IP地址。 |
 | gateway | number | 是 | 否 | 网关。 |
@@ -704,7 +683,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate8) | 是 | 否 | P2P连接状态。 |
 | isGroupOwner | boolean | 是 | 否 | 是否是群主。true:是群主，false:不是群主。 |
@@ -862,7 +841,7 @@ wifi.getP2pPeerDevices().then(data => {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceName | string | 是 | 否 | 设备名称。 |
 | deviceAddress | string | 是 | 否 | 设备MAC地址。 |
@@ -933,7 +912,7 @@ try {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceAddress | string | 是 | 否 | 设备地址。 |
 | netId | number | 是 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 |
@@ -1029,7 +1008,7 @@ wifi.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
 
 let recvP2pPeerDeviceChangeFunc = (result:wifi.WifiP2pDevice[]) => {
     console.info("p2p peer device change receive event: " + JSON.stringify(result));
-    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice) => {
+    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice[]) => {
         if (err) {
             console.error('failed to get peer devices: ' + JSON.stringify(err));
             return;
@@ -1160,7 +1139,7 @@ try {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isP2pGo | boolean | 是 | 否 | 是否是群主。true:是群主，false:不是群主。 |
 | ownerInfo | [WifiP2pDevice](#wifip2pdevice8) | 是 | 否 | 群组的设备信息。 |

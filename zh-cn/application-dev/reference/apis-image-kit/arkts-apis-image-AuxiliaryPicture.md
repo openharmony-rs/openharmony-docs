@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { image } from '@kit.ImageKit';
 
 writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
-读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象，使用Promise形式返回。
+读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -52,7 +52,7 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 ```ts
 async function WritePixelsFromBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); //需要支持hdr的图片。
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // 需要支持hdr的图片。
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -74,7 +74,7 @@ async function WritePixelsFromBuffer(context: Context) {
 
 readPixelsToBuffer(): Promise\<ArrayBuffer>
 
-读取图像像素映射数据并将数据写入ArrayBuffer，使用Promise形式返回。
+读取图像像素映射数据并将数据写入ArrayBuffer。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -91,7 +91,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadPixelsToBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); //需要支持hdr的图片。
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // 需要支持hdr的图片。
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -142,7 +142,7 @@ async function GetAuxiliaryPictureType(auxPictureObj : image.AuxiliaryPicture) {
 
 setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
-设置辅助图元数据。
+设置辅助图元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -175,7 +175,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: image.AuxiliaryPicture) {
   const exifResourceMgr = exifContext.resourceManager;
-  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg");//图片包含exif metadata。
+  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg");// 图片包含exif metadata。
   let exifOps: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -206,7 +206,7 @@ async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: ima
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-从辅助图中获取元数据。
+从辅助图中获取元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -220,7 +220,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 | 类型                             | 说明             |
 | -------------------------------- | ---------------- |
-| Promise<[Metadata](arkts-apis-image-Metadata.md)> | 返回元数据对象。 |
+| Promise<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，返回元数据的Promise对象。 |
 
 **错误码：**
 
@@ -261,7 +261,7 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
 | 类型                                            | 说明                              |
 | ----------------------------------------------- | --------------------------------- |
-| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | Promise对象，返回辅助图图像信息。 |
+| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | 返回辅助图图像信息。 |
 
 **示例：**
 

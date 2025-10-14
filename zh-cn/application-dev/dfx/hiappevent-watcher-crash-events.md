@@ -44,7 +44,7 @@
 
 从**API version 20**开始支持设置崩溃日志规格自定义设置。
 
-当前系统提供了通用的NativeCrash崩溃日志生成功能。然而，一些应用对NativeCrash崩溃日志打印内容有个性化的需求，因此需要设置崩溃日志配置参数。
+系统提供通用的NativeCrash崩溃日志生成功能，同时给应用提供设置崩溃日志配置参数功能，以满足其对日志内容的个性化需求。
 
 ### **接口说明**
 
@@ -91,7 +91,11 @@ Timestamp:2025-05-17 19:17:07.000
 
 ### params字段说明
 
-崩溃事件信息中params属性的详细描述如下：
+params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventinfo)中事件参数对象，包含每个事件参数的参数名和参数值。
+
+系统事件中params包含的字段已由各系统事件定义。
+
+崩溃事件信息中系统预定义的通用信息如下：
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |

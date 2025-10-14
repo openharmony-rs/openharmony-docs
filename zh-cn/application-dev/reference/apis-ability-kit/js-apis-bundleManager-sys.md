@@ -1,4 +1,4 @@
-# @ohos.bundle.bundleManager (bundleManager模块)(系统接口)
+# @ohos.bundle.bundleManager (应用程序包管理模块)(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
@@ -487,7 +487,7 @@ getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promi
 
 | 类型                                                         | 说明                             |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | Promise对象，返回ApplicationInfo。 |
+| Promise\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | Promise对象。返回ApplicationInfo。 |
 
 **错误码：**
 
@@ -652,7 +652,7 @@ getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInf
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise对象，返回Array\<BundleInfo>。 |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise对象。返回Array\<BundleInfo>。 |
 
 **错误码：**
 
@@ -1919,7 +1919,7 @@ cleanAllBundleCache(): Promise\<void>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2028,7 +2028,7 @@ cleanBundleCacheFiles(bundleName: string): Promise\<void>
 
 | 类型           | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | 无返回结果的Promise对象。当清理应用缓存目录数据失败会抛出错误对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。当清理应用缓存目录数据失败会抛出错误对象。 |
 
 **错误码：**
 
@@ -2087,7 +2087,7 @@ cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
 
 | 类型           | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | 无返回结果的Promise对象。当清理应用缓存目录数据失败会抛出错误对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。当清理应用缓存目录数据失败会抛出错误对象。 |
 
 **错误码：**
 
@@ -5136,7 +5136,7 @@ getExtResource(bundleName: string): Promise\<Array\<string>>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<Array\<string>> | 以Promise方式返回接口运行结果及扩展资源对应的moduleNames。 |
+| Promise\<Array\<string>> | Promise对象，返回接口运行结果及扩展资源对应的moduleNames。 |
 
 **错误码：**
 
@@ -5195,7 +5195,7 @@ enableDynamicIcon(bundleName: string, moduleName: string): Promise\<void>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5261,7 +5261,7 @@ enableDynamicIcon(bundleName: string, moduleName: string, option?: BundleOptions
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5323,7 +5323,7 @@ disableDynamicIcon(bundleName: string): Promise\<void>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5385,7 +5385,7 @@ disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise\<void>
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5444,7 +5444,7 @@ getDynamicIcon(bundleName: string): Promise\<string>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<string> | 以Promise方式返回接口运行结果及动态图标对应的moduleName。 |
+| Promise\<string> | Promise对象。返回接口运行结果及动态图标对应的moduleName。 |
 
 **错误码：**
 
@@ -5498,7 +5498,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<AppCloneIdentity> | 以Promise方式返回\<AppCloneIdentity>。 |
+| Promise\<AppCloneIdentity> | Promise对象。返回\<AppCloneIdentity>。 |
 
 **错误码：**
 
@@ -5672,7 +5672,7 @@ getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number,
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<BundleInfo> | 以Promise方式返回应用包信息。 |
+| Promise\<BundleInfo> | Promise对象。返回应用包信息。 |
 
 **错误码：**
 
@@ -5736,7 +5736,7 @@ getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: numbe
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<Array\<BundleInfo>> | 以Promise方式返回应用包信息列表。 |
+| Promise\<Array\<BundleInfo>> | Promise对象。返回应用包信息列表。 |
 
 **错误码：**
 
@@ -5851,7 +5851,7 @@ migrateData(sourcePaths: Array&lt;string&gt;, destinationPath: string): Promise&
 
 | 类型       | 说明                 |
 | ---------- | -------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5917,7 +5917,7 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean): Promise\<void
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -5973,7 +5973,7 @@ deleteAbc(abcPath: string): Promise\<void>
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -6120,6 +6120,60 @@ try {
 } catch (err) {
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.setAbilityFileTypesForSelf<sup>22+</sup>
+
+setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fileTypes: Array\<string>): void
+
+设置当前应用支持打开的文件类型。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_SELF_SKILLS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**设备行为差异：** 该接口在PC/2in1中可正常调用，在其他设备类型中返回201错误码。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | ---------------------------- |
+| moduleName  | string | 是   | 表示模块的名称。 |
+| abilityName  | string | 是   | 表示UIAbility组件的名称。 |
+| fileTypes  | Array\<string> | 是   | 表示文件类型。fileTypes数组长度不能超过1024，每个元素不能超过512个字符，元素取值为[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)中的值，元素不能为空、通配符、general.object。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700002 | The specified moduleName is not found. |
+| 17700003 | The specified abilityName is not found. |
+| 17700351 | Invalid fileTypes. Possible causes:1. The array length exceeds 1024; 2. The array contains an empty item; 3. An item exceeds 512 characters; 4. The array contains wildcard or general.object. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let moduleName: string = "entry";
+let abilityName: string = "EntryAbility";
+let fileTypes: Array<string> = ["general.png", "general.jpeg"];
+
+try {
+    bundleManager.setAbilityFileTypesForSelf(moduleName, abilityName, fileTypes);
+    hilog.info(0x0000, 'testTag', 'setAbilityFileTypesForSelf successfully');
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'setAbilityFileTypesForSelf failed. Cause: %{public}s', message);
 }
 ```
 

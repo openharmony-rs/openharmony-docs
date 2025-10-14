@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
-<!--Designer: @yangfan229-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @HelloCrease-->
 
@@ -472,7 +472,7 @@ hueRotate(rotation: Optional\<number | string>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## colorBlend<sup>7+</sup>
+## colorBlend
 
 colorBlend(value: Color | string | Resource): T
 
@@ -500,7 +500,7 @@ colorBlend(value: Color | string | Resource): T
 
 colorBlend(color: Optional\<Color | string | Resource>): T
 
-为组件添加颜色叠加效果。取值可为string类型，如'0x000000'，'rgba(0,0,0,1)'。与[colorBlend<sup>7+</sup>](#colorblend7)相比，color参数新增了对undefined类型的支持。
+为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,7 +512,7 @@ colorBlend(color: Optional\<Color | string | Resource>): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | Optional\<[Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | 是   | 为当前组件添加颜色叠加效果，入参为叠加的颜色。<br/>当color的值为undefined时，恢复为无颜色叠加的效果。 |
+| color  | Optional\<[Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | 是   | 为当前组件添加颜色叠加效果，入参为叠加的颜色。取值可为string类型，如'0x000000'，'rgba(0,0,0,1)'。<br/>当color的值为undefined时，恢复为无颜色叠加的效果。 |
 
 **返回值：**
 
@@ -1002,8 +1002,7 @@ type FractionStop = [ number, number ]
 
 | 类型      | 说明                                                       |
 | ------------- | ---------------------------------------------------------- |
-| number        |   分数,值1表示不透明，0表示完全透明。<br/>取值范围：[0,1]      |
-| number        |   停止位置,值1表示区域结束位置，0表示区域开始位置。<br/> 取值范围:[0,1] |
+| [ number, number ]        |   第一个number表示分数，值1表示不透明，0表示完全透明。<br/>取值范围：[0, 1]  <br/>第二个number表示停止位置，值1表示区域结束位置，0表示区域开始位置。<br/> 取值范围：[0, 1]     |
 
 ## InvertOptions<sup>11+</sup>对象说明
 

@@ -1,8 +1,8 @@
 # 通过用户首选项实现数据持久化 (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -315,14 +315,14 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
 - [首选项（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences)
 
-- [首选项（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/Preferences)
+- [首选项（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/Preferences)
 
-- [用户首选项（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/PreferenceJS)
+- [用户首选项（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/PreferenceJS)
 
-- [备忘录（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/NotePadOpenHarmony)
+- [备忘录（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/NotePadOpenHarmony)
 
-- [应用的首次启动（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/FirstStartDemo)
+- [应用的首次启动（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/FirstStartDemo)
 
-- [应用内字体大小调节（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/SetAppFontSize)
+- [应用内字体大小调节（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/SetAppFontSize)
 
 <!--RP1--><!--RP1End-->

@@ -1,15 +1,20 @@
 # JSVM-API Overview
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
-The OpenHarmony JSVM-API provides a set of stable APIs based on the standard JavaScript (JS) engine. It provides complete JS engine capabilities, including creating and destroying a JS engine, executing JS code, and implementing interaction between JS and C/C++ modules.
+OpenHarmony JSVM-API provides a set of stable APIs based on the standard JavaScript (JS) engine. It supports key functionalities such as creating and destroying engines, executing JS code, and implementing interaction between JS and C/C++ modules.
 
 OpenHarmony JSVM-API provides a set of APIs written in C programming language that complies with C99.
 
-JSVM-API allows dynamically loaded JS code segment to be directly run during application runtime. With JSVM-API, you can also use C/C++ to implement core functionalities that demand high performance or closely rely on underlying system invocation, register C++ methods in JS code, and directly call the JS code to improve the execution speed.
+JSVM-API allows dynamically loaded JS code to be directly run during application runtime. With JSVM-API, you can also use C/C++ to implement core functionalities that demand high performance or closely rely on underlying system invocation, register C++ methods in JS code, and directly call the JS code to improve the execution speed.
 
 Unless otherwise specified, JSVM-API in this document refers to OpenHarmony JSVM-API.
-
 
 ## JSVM-API Architecture
 

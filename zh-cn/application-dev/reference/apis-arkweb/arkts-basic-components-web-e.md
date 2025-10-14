@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **说明：**
 >
@@ -13,6 +13,10 @@
 ## MessageLevel
 
 ConsoleMessage的信息级别。
+
+> **说明：**
+>
+> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,11 +40,15 @@ ConsoleMessage的信息级别。
 | Compatible | 1 | 兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。           |
 | None       | 2 | 严格模式：不允许加载HTTP和HTTPS混合内容。               |
 
-## HitTestType
+## HitTestType<sup>(deprecated)</sup>
 
 点击事件检测结果类型。
 
  **系统能力：** SystemCapability.Web.Webview.Core
+
+> **说明：**
+>
+> 从API version9开始支持，从API version 21开始废弃。建议使用[WebHitTestType](./arkts-apis-webview-e.md#webhittesttype)替代。
 
 | 名称            | 值 | 说明                       |
 | ------------- | -- | ------------------------ |
@@ -222,6 +230,19 @@ Web布局模式的配置。
 | None  | 0 | 其他非图片媒体类型。 |
 | Image | 1 | 图片类型。           |
 
+## ContextMenuDataMediaType<sup>22+</sup>
+触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称    | 值 | 说明            |
+| ----- | -- | ------------- |
+| NONE  | 0 | 默认值，表示当前上下文菜单不关联任何媒体类型（例如右键文本或空白区域）。|
+| IMAGE | 1 | 图片类型。           |
+| VIDEO | 2 | 视频类型。           |
+| AUDIO | 3 | 音频类型。           |
+| CANVAS| 4 | Canvas类型。           |
+
 ## ContextMenuInputFieldType<sup>9+</sup>
 
 输入框类型。
@@ -250,6 +271,18 @@ Web布局模式的配置。
 | DESTROY                       | 2 | 同层标签销毁。 |
 | ENTER_BFCACHE<sup>12+</sup>   | 3 | 同层标签进入BFCache。   |
 | LEAVE_BFCACHE<sup>12+</sup>   | 4 | 同层标签离开BFCache。 |
+
+## NativeEmbedParamStatus<sup>21+</sup>
+
+定义同层渲染object标签内嵌param元素的状态变化类型，当添加param元素时触发ADD，修改param元素属性触发UPDATE，删除param元素触发DELETE。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                           | 值 | 说明           |
+| ----------------------------- | -- | ------------ |
+| ADD                           | 0 | 添加param元素。   |
+| UPDATE                        | 1 | 更改param元素属性。   |
+| DELETE                        | 2 | 删除param元素。 |
 
 ## ContextMenuEditStateFlags<sup>9+</sup>
 
@@ -315,6 +348,7 @@ Web布局模式的配置。
 | RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
 | RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。 |
 | OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。   |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 2 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
 
 ## WebElementType<sup>13+</sup>
 
@@ -328,6 +362,7 @@ Web布局模式的配置。
 | --------- | -- | ----------------- |
 | IMAGE     | 1 | 网页元素为图像类型。 |
 | LINK<sup>20+</sup>     | 2 | 网页元素为超链接类型。 |
+| TEXT<sup>21+</sup>     | 3 | 网页元素为文本或可编辑区域类型。 |
 
 ## WebResponseType<sup>13+</sup>
 
@@ -340,6 +375,7 @@ Web布局模式的配置。
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
 | LONG_PRESS     | 1 | 通过长按触发菜单弹出。 |
+| RIGHT_CLICK<sup>21+</sup>    | 2 | 通过鼠标右键触发菜单弹出。 |
 
 ## AudioSessionType<sup>20+</sup>
 
@@ -363,6 +399,17 @@ Web布局模式的配置。
 | -------------------------- | -- | ------------- |
 | DEFAULT                    | 0 | 默认值，Web会在触摸按下屏幕时申请获焦，包括点击、长按、滑动、缩放等任何触摸屏幕的手势行为。 |
 | GESTURE_TAP_AND_LONG_PRESS | 1 | Web只会在点击和长按手势事件生成时申请获焦，点击和长按在触摸抬起之后生成，滑动和缩放等手势行为不会获焦。 |
+
+## WebRotateEffect<sup>21+</sup>
+
+组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                       | 值 | 说明           |
+| -------------------------- | -- | ------------- |
+| TOPLEFT_EFFECT                    | 0 | 默认值，组件旋转时，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。 |
+| RESIZE_COVER_EFFECT | 1 | 组件旋转时，保持动画终态内容的宽高比进行缩小或放大，使内容两边都大于或等于组件两边，且与组件保持中心对齐，显示内容的中间部分。 |
 
 ## WebBypassVsyncCondition<sup>20+</sup>
 
@@ -388,3 +435,25 @@ Web布局模式的配置。
 | PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
 | PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
 | PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+
+## DetectedBlankScreenReason<sup>22+</sup>
+
+白屏的具体原因。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| NO_CONTENTFUL_NODES        | 0 | 没有命中任何有内容的节点。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN时可能触发。         |
+| SUB_THRESHOLD_CONTENTFUL_NODES | 1 | 命中有内容节点的数量小于等于阈值。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN，且开发者设置了节点数量阈值contentfulNodesCountThreshold时可能触发。 |
+
+## BlankScreenDetectionMethod<sup>22+</sup>
+
+白屏检测使用的检测策略的方法。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
+

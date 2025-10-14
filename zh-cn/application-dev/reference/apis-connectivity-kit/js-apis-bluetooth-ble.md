@@ -7,11 +7,11 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-提供了基于低功耗蓝牙（Bluetooth Low Energy）技术的蓝牙能力，支持发起BLE扫描、发送BLE广播报文、以及基于通用属性协议（Generic Attribute Profile，GATT）的连接和传输数据。
+本模块提供了基于低功耗蓝牙（Bluetooth Low Energy，[BLE](../../connectivity/terminology.md#ble)）技术的蓝牙能力，支持发起BLE扫描、发送BLE广播报文、以及基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/terminology.md#gatt)）的连接和传输数据。
 
 > **说明：**
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 接口中涉及的UUID服务，可以通过工具函数[util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)生成。
+> - 接口中涉及的[UUID](../../connectivity/terminology.md#uuid)服务，可以通过工具函数[util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)生成。
 
 
 
@@ -122,7 +122,7 @@ getConnectedBLEDevices(): Array&lt;string&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
+| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 
 **错误码**：
 
@@ -142,6 +142,57 @@ getConnectedBLEDevices(): Array&lt;string&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let result: Array<string> = ble.getConnectedBLEDevices();
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## ble.getConnectedBLEDevices<sup>21+</sup>
+
+getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
+
+根据指定的本机设备Profile协议类型，获取和本机设备已连接GATT的BLE设备集合。
+- 若指定本机设备作为client端，则返回与本机设备连接的所有server端设备地址集合。
+- 若指定本机设备作为server端，则返回与本机设备连接的所有client端设备地址集合。
+- 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名     | 类型                                     | 必填   | 说明                                  |
+| ------- | -------------------------------------- | ---- | ----------------------------------- |
+| profile | [BleProfile](#bleprofile21) | 是    | 当前设备的Profile协议类型，表明该设备在GATT链路中的通信角色。<br>- GATT_CLIENT表示指定本机设备为client端角色，与其建立GATT连接的所有对端设备为server端角色。 |
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| Array&lt;string&gt; | 返回和本机设备已建立GATT连接的BLE设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 取消配对该设备或蓝牙关闭后，若重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let result: Array<string> = ble.getConnectedBLEDevices(ble.BleProfile.GATT_CLIENT);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -4377,7 +4428,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 | 名称       | 类型        | 只读 | 可选   | 说明                                 |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
+| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 | rssi     | number      | 否 | 否    | 扫描到的设备信号强度，单位：dBm。                    |
 | data     | ArrayBuffer | 否 | 否    | 扫描到的设备发送的广播报文内容。                    |
 | deviceName | string | 否 | 否    | 扫描到的设备名称。                    |
@@ -4670,6 +4721,20 @@ BLE扫描的配置参数。
 | CONN_TERMINATE_PEER_USER   | 2    | 对端设备主动断开连接。    |
 | CONN_TERMINATE_LOCAL_HOST   | 3    | 本端设备主动断开连接。    |
 | CONN_UNKNOWN   | 4    | 未知断连原因。    |
+
+## BleProfile<sup>21+</sup>
+
+枚举，指定当前设备的Profile协议类型。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 名称      | 值    | 说明                           |
+| --------  | ---- | ------------------------------ |
+| GATT   | 1    | 当前设备在GATT链路中同时作为client端和server端。       |
+| GATT_CLIENT   | 2    | 当前设备在GATT链路中作为client端。    |
+| GATT_SERVER   | 3    | 当前设备在GATT链路中作为server端。    |
 
 ## ScanReportMode<sup>15+</sup>
 

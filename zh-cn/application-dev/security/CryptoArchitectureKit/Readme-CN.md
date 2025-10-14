@@ -1,5 +1,12 @@
 # Crypto Architecture Kit（加解密算法框架服务）
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 - [Crypto Architecture Kit简介](crypto-architecture-kit-intro.md)
 - 密钥生成和转换<!--crypto-key-generation-conversion-->
   - [密钥生成与转换介绍](crypto-key-generation-conversion-overview.md)
@@ -61,6 +68,8 @@
     - [使用RSA非对称密钥（PKCS1_OAEP模式）加解密](crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md)
     - [使用SM2非对称密钥加解密(ArkTS)](crypto-sm2-asym-encrypt-decrypt.md)
     - [使用SM2非对称密钥加解密(C/C++)](crypto-sm2-asym-encrypt-decrypt-ndk.md)
+    - [使用AES-WRAP算法对对称密钥加解密(ArkTS)](crypto-aes-wrap-encrypt-decrypt.md)
+    - [使用AES-WRAP算法对对称密钥加解密(C/C++)](crypto-aes-wrap-encrypt-decrypt-ndk.md)
     - [使用SM2密文格式转换(ArkTS)](crypto-sm2-ciphertext-conversion.md)
     - [使用SM2密文格式转换(C/C++)](crypto-sm2-ciphertext-conversion-ndk.md)
 - 签名验签<!--crypto-sign-sig-verify-->
@@ -96,14 +105,19 @@
     - [消息摘要计算SHA256(C/C++)](crypto-generate-message-digest-ndk.md)
     - [消息摘要计算MD5(ArkTS)](crypto-generate-message-digest-md5.md)
     - [消息摘要计算MD5(C/C++)](crypto-generate-message-digest-md5-ndk.md)
+    - [消息摘要计算SHA3(ArkTS)](crypto-generate-message-digest-sha3.md)
+    - [消息摘要计算SHA3(C/C++)](crypto-generate-message-digest-sha3-ndk.md)
 - 消息认证码<!--crypto-compute-mac-->
   - [消息认证码计算介绍及算法规格](crypto-compute-mac-overview.md)
   - [消息认证码计算HMAC(ArkTS)](crypto-compute-hmac.md)
   - [消息认证码计算HMAC(C/C++)](crypto-compute-hmac-ndk.md)
   - [消息认证码计算CMAC(ArkTS)](crypto-compute-cmac.md)
   - [消息认证码计算CMAC(C/C++)](crypto-compute-cmac-ndk.md)
-- [安全随机数生成(ArkTS)](crypto-generate-random-number.md)
-- [安全随机数生成(C/C++)](crypto-generate-random-number-ndk.md)
+- 随机数<!--crypto-compute-rand-->
+  - [安全随机数生成(ArkTS)](crypto-generate-random-number.md)
+  - [安全随机数生成(C/C++)](crypto-generate-random-number-ndk.md)
+  - [使用硬件熵源生成安全随机数(ArkTS)](crypto-generate-random-number-hardware.md)
+  - [使用硬件熵源生成安全随机数(C/C++)](crypto-generate-random-number-hardware-ndk.md)
 - 密钥派生<!--crypto-key-derivation-->
   - [密钥派生介绍及算法规格](crypto-key-derivation-overview.md)
   - [使用PBKDF2进行密钥派生(ArkTS)](crypto-key-derivation-using-pbkdf2.md)
@@ -112,3 +126,5 @@
   - [使用HKDF进行密钥派生(C/C++)](crypto-key-derivation-using-hkdf-ndk.md)
   - [使用SCRYPT进行密钥派生(ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [使用SCRYPT进行密钥派生(C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
+  - [使用X963KDF进行密钥派生(ArkTS)](crypto-key-derivation-using-x963kdf.md)
+  - [使用X963KDF进行密钥派生(C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)

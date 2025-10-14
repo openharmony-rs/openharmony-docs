@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -251,6 +251,7 @@ setReverbPreset(preset: AudioLoopbackReverbPreset): boolean
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------|
 | 6800101 | Parameter verification failed. |
+
 **示例：**
 
 ```ts
@@ -314,6 +315,7 @@ setEqualizerPreset(preset: AudioLoopbackEqualizerPreset): boolean
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------|
 | 6800101 | Parameter verification failed. |
+
 **示例：**
 
 ```ts

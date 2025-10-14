@@ -1,5 +1,12 @@
 # @ohos.net.networkSecurity (网络安全校验)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块提供网络安全校验能力。应用可以通过证书校验API完成证书校验功能。
 
 > **说明：**
@@ -61,10 +68,10 @@ networkSecurity.certVerification(cert, caCert)
 
 **系统能力**: SystemCapability.Communication.NetStack
 
-| 名称  | 类型                   | 必填      | 说明           |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | 是      | 证书编码类型。  |
-| data  | string \| ArrayBuffer | 是       | 证书内容。      |
+| 名称  | 类型                   | 只读      |可选| 说明           |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | 否    |否 |证书编码类型。  |
+| data  | string \| ArrayBuffer | 否    | 否|证书内容。      |
 
 
 ## networkSecurity.certVerification

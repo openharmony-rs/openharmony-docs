@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 该模块基于[Sendable](../../arkts-utils/arkts-sendable.md)对象，提供相册管理功能，包括创建相册和访问、修改相册中的媒体数据。
 
@@ -514,7 +514,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let sendablePhotoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     let photoAsset: photoAccessHelper.PhotoAsset = sendablePhotoAsset.convertToPhotoAsset();
-    console.log(`get no sendable uri success : ${photoAsset.uri}`);
+    console.info(`get no sendable uri success : ${photoAsset.uri}`);
   } catch (err) {
     console.error(`convertToPhotoAsset failed. error: ${err.code}, ${err.message}`);
   }
@@ -567,6 +567,10 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
       predicates: predicates
     };
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    if (fetchResult === undefined) {
+      console.error('photoAssetGet fetchResult is undefined');
+      return;
+    }
     let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     let title: photoAccessHelper.PhotoKeys = photoAccessHelper.PhotoKeys.TITLE;
     let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title.toString());
@@ -740,6 +744,10 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   let size: image.Size = { width: 720, height: 720 };
   let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
+  if (asset === undefined) {
+    console.error('getThumbnailPromise albums is undefined');
+    return;
+  }
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnail(size).then((pixelMap) => {
     console.info('getThumbnail successful ' + pixelMap);

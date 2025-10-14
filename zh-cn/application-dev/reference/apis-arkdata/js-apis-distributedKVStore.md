@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
-<!--Designer: @dboy190; @houpengtao1-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -32,10 +32,10 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称     | 类型              | 必填 | 说明                                                         |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context    | BaseContext           | 是   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
-| bundleName | string                | 是   | 调用方的包名。                                               |
+| 名称     | 类型              | 只读 | 可选 | 说明                                                         |
+| ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
+| context    | BaseContext    | 否   | 否   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
+| bundleName | string          | 否   | 否   | 调用方的包名。                                               |
 
 ## Constants
 
@@ -73,10 +73,10 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称  | 类型   |必填  | 说明                    |
-| ----- | -------   |-----|------------------------ |
-| type | [ValueType](#valuetype) | 是|值类型。   |
-| value | Uint8Array \| string \| number \| boolean| 是|值。   |
+| 名称  | 类型   | 只读 | 可选 | 说明                    |
+| ----- | -------|-----|-----|------------------------ |
+| type | [ValueType](#valuetype) | 否    | 否   |值类型。   |
+| value | Uint8Array \| string \| number \| boolean| 否    | 否   |值。   |
 
 ## Entry
 
@@ -84,10 +84,10 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称  | 类型        | 必填 | 说明     |
-| ----- | --------------- | ---- | -------- |
-| key   | string          | 是   | 键值。   |
-| value | [Value](#value) | 是   | 值对象。 |
+| 名称  | 类型        | 只读 | 可选 | 说明     |
+| ----- | ---------- |-- | ---- | -------- |
+| key   | string          | 否    | 否   | 键值。   |
+| value | [Value](#value) | 否    | 否   | 值对象。 |
 
 ## ChangeNotification
 
@@ -95,12 +95,12 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称          | 类型          | 必填       | 说明                     |
-| ------------- | ----------------- | ---- | ------------------------ |
-| insertEntries | [Entry](#entry)[] | 是   | 数据添加记录。           |
-| updateEntries | [Entry](#entry)[] | 是   | 数据更新记录。           |
-| deleteEntries | [Entry](#entry)[] | 是    | 数据删除记录。           |
-| deviceId      | string            | 是    | 设备ID，此处为设备UUID。 |
+| 名称          | 类型          | 只读 | 可选       | 说明                     |
+| ------------- | ----------------- |---- | ---- | ------------------------ |
+| insertEntries | [Entry](#entry)[] | 否    | 否   | 数据添加记录。           |
+| updateEntries | [Entry](#entry)[] | 否    | 否   | 数据更新记录。           |
+| deleteEntries | [Entry](#entry)[] | 否    | 否    | 数据删除记录。           |
+| deviceId      | string            | 否    | 否    | 设备ID，此处为设备UUID。 |
 
 ## SyncMode
 
@@ -158,15 +158,15 @@ import { distributedKVStore } from '@kit.ArkData';
 
 用于提供创建数据库的配置信息。
 
-| 名称          | 类型                        | 必填 | 说明                                                         |
-| --------------- | -------------- | ---- | -------------------------|
-| createIfMissing | boolean                         | 否  | 当数据库文件不存在时是否创建数据库，默认为true，即创建。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| encrypt         | boolean                         | 否   | 设置数据库文件是否加密，默认为false，即不加密。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| backup          | boolean                         | 否   | 设置数据库文件是否备份，默认为true，即备份。 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| autoSync        | boolean                         | 否   | 设置数据库是否支持跨设备自动同步。默认为false，即只支持手动同步。配置为true，<!--RP1-->即只支持在[跨设备Call调用实现的多端协同](../../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)中生效，其他场景无法生效。<!--RP1End--><br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core<br>**需要权限**： ohos.permission.DISTRIBUTED_DATASYNC |
-| kvStoreType     | [KVStoreType](#kvstoretype)     | 否   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| securityLevel   | [SecurityLevel](#securitylevel) | 是   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| schema          | [Schema](#schema)               | 否   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
+| --------------- | -------------- | ---- | ----| -------------------------|
+| createIfMissing | boolean                         | 否    | 是  | 当数据库文件不存在时是否创建数据库，true为创建，false为不创建，默认为true。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| encrypt         | boolean                         | 否    | 是   | 设置数据库文件是否加密，true为加密，false为不加密，默认为false。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| backup          | boolean                         | 否    | 是   | 设置数据库文件是否备份，true为备份，false为不备份，默认为true。 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| autoSync        | boolean                         | 否    | 是   | 设置数据库是否支持跨设备自动同步。默认为false，即只支持手动同步。配置为true，<!--RP1-->即只支持在[跨设备Call调用实现的多端协同](../../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)中生效，其他场景无法生效。<!--RP1End--><br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core<br>**需要权限**： ohos.permission.DISTRIBUTED_DATASYNC |
+| kvStoreType     | [KVStoreType](#kvstoretype)     | 否    | 是   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
 
 ## Schema
 
@@ -964,6 +964,8 @@ try {
 
 提供获取数据库结果集的相关方法，包括查询和移动数据读取位置等。同时允许打开的结果集的最大数量为8个。
 
+KVStoreResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
+
 在调用KVStoreResultSet的方法前，需要先通过[getKVStore](#getkvstore)构建一个SingleKVStore或者DeviceKVStore实例。
 
 > **说明：**
@@ -1304,12 +1306,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
-  let isfirst: boolean;
+  let isFirst: boolean;
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    isfirst = resultSet.isFirst();
-    console.info("Check isFirst succeed:" + isfirst);
+    isFirst = resultSet.isFirst();
+    console.info("Check isFirst succeed:" + isFirst);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1339,12 +1341,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
-  let islast: boolean;
+  let isLast: boolean;
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    islast = resultSet.isLast();
-    console.info("Check isLast succeed: " + islast);
+    isLast = resultSet.isLast();
+    console.info("Check isLast succeed: " + isLast);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1377,8 +1379,8 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    let isbeforefirst = resultSet.isBeforeFirst();
-    console.info("Check isBeforeFirst succeed: " + isbeforefirst);
+    let isBeforeFirst = resultSet.isBeforeFirst();
+    console.info("Check isBeforeFirst succeed: " + isBeforeFirst);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1411,8 +1413,8 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    let isafterlast = resultSet.isAfterLast();
-    console.info("Check isAfterLast succeed:" + isafterlast);
+    let isAfterLast = resultSet.isAfterLast();
+    console.info("Check isAfterLast succeed:" + isAfterLast);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -5355,7 +5357,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 | 参数名       | 类型                                      | 必填 | 说明                                                       |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
 | event        | string                                        | 是   | 取消订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。  |
+| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。如果存在同一个数据库的多个ArkTS实例(通过[getKVStore](#getkvstore)接口获取)分别注册监听了同步完成事件，则对于任意一个ArkTS实例取消其所有已订阅的同步完成回调函数时，其余ArkTS实例已订阅的所有同步完成回调函数也会被取消。  |
 
 **错误码：**
 

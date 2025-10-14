@@ -2,8 +2,9 @@
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
-<!--SE: @liweilu1-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -89,10 +90,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaHandler();
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
-      console.info('fetchResult success');
-      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-      await photoAccessHelper.MediaAssetManager.requestImage(context, photoAsset, requestOptions, handler);
-      console.info('requestImage successfully');
+    console.info('fetchResult success');
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    await photoAccessHelper.MediaAssetManager.requestImage(context, photoAsset, requestOptions, handler);
+    console.info('requestImage successfully');
   });
 }
 ```
@@ -167,6 +172,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+      console.error('requestImageData photoAsset is undefined');
+      return;
+    }
       await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, handler);
       console.info('requestImageData successfully');
   });

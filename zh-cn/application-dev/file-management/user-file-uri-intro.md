@@ -1,8 +1,8 @@
 # 用户文件URI介绍
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -50,7 +50,7 @@ URI类型可以归纳为文档类URI和媒体文件URI两类
 
 ### 文档类URI的使用方式
 
-normal等级的应用使用此类URI的方式只能通过[fs模块](../reference/apis-core-file-kit/js-apis-file-fs.md)进行进一步处理，其他模块使用此URI时会报没有权限的错误。示例代码参见picker中的[选择文档类文件](./select-user-file.md#选择文档类文件)和[保存文档类文件](./save-user-file.md#保存文档类文件)。<!--Del-->
+normal等级的应用使用此类URI的方式只能通过[fs模块](../reference/apis-core-file-kit/js-apis-file-fs.md)进行进一步处理。示例代码参见picker中的[选择文档类文件](./select-user-file.md#选择文档类文件)和[保存文档类文件](./save-user-file.md#保存文档类文件)。<!--Del-->
 
 system_basic等级及以上的应用使用此类URI的方式除了上述通过fs模块外还可以通过[fileAccess模块](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md)进行进一步处理，使用此模块需要在配置文件module.json5中声明ohos.permission.FILE_ACCESS_MANAGER 和 ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 权限，此权限为system_basic权限，仅供系统应用使用。其他模块使用此URI会报没有权限的错误。下面示例为使用fileAccess模块创建文件得到URI后对其进行重命名操作：
 
@@ -142,7 +142,7 @@ async function example(context: common.UIAbilityContext) {
 
 ### 媒体文件URI获取方式
 
-1. 通过[PhotoAccessHelper的PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)选择媒体文件，返回选择的媒体文件文件的URI。
+1. 通过[PhotoAccessHelper的PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)选择媒体文件，返回选择的媒体文件的URI。
 
 2. 通过[photoAccessHelper模块](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)中的[getAssets](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)或[createAsset](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset)接口获取媒体文件对应文件的URI。<!--Del-->
 
@@ -189,7 +189,7 @@ let uris: Array<string> = [];
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
 
 // 调用PhotoViewPicker.select选择图片
-async function photoPickerGetUri(context: common.UIAbilityContext) {
+async function photoPickerGetUri() {
   try {  
     let PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     PhotoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -207,7 +207,7 @@ async function photoPickerGetUri(context: common.UIAbilityContext) {
   }
 }
 
-async function uriGetAssets() {
+async function uriGetAssets(context: common.UIAbilityContext) {
 try {
     let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();

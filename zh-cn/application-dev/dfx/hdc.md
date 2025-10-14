@@ -535,7 +535,7 @@ hdc tconn IP:port [-remove]
 | 返回信息 | 说明 |
 | -------- | -------- |
 | Connect OK. | 连接成功。 |
-| [Info]Target is connected, repeat opration. | 设备当前已连接。 |
+| [Info]Target is connected, repeat operation. | 设备当前已连接。 |
 | [Fail]Connect failed. | 连接失败。 |
 
 **使用方法**：
@@ -709,7 +709,7 @@ hdc file send [-a|-sync|-z|-m|-b bundlename] SOURCE DEST
 | 参数名 | 说明 |
 | -------- | -------- |
 | SOURCE | 本地待传输的文件路径。 |
-| DEST | 远程目标文件路径。 |
+| DEST | 远程目标文件路径。<br>从API version 21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>通过hdc对媒体库操作指导参见[mediatool](../tools/mediatool.md#hdc命令)。|
 | -a | 保留文件修改时间戳。 |
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
@@ -725,7 +725,16 @@ hdc file send [-a|-sync|-z|-m|-b bundlename] SOURCE DEST
 
 ```shell
 $ hdc file send test /test/
-FileTransfer finish, Size:10, File count = 1, time:0ms rate:100kB/s
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file send -b com.example.myapplication test /test/ # 导入test文件到com.example.myapplication应用沙箱
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file send D:\dest\相机 /mnt/data/100/media_fuse/Photo/ # 媒体库操作，导入“D:\dest\相机”的所有文件到/mnt/data/100/media_fuse/Photo/相机/
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file send D:\dest\新建目录 /mnt/data/100/media_fuse/Photo/相机/ # 媒体库操作，不支持创建目录
+[Fail][E005005] Error create directory: operation not permitted, path:/mnt/data/100/media_fuse/Photo/相机//新建目录
 ```
 
 ### 接收远端设备文件至本地
@@ -741,7 +750,7 @@ hdc file recv [-a|-sync|-z|-m|-b bundlename] DEST SOURCE
 | 参数名 | 说明 |
 | -------- | -------- |
 | SOURCE | 本地待接收的文件路径。 |
-| DEST | 远程待传输的文件路径。 |
+| DEST | 远程待传输的文件路径。 <br>从API version 21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>媒体库操作更多信息参见[mediatool](../tools/mediatool.md#hdc命令)。|
 | -a | 保留文件修改时间戳。 |
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
@@ -757,7 +766,16 @@ hdc file recv [-a|-sync|-z|-m|-b bundlename] DEST SOURCE
 
 ```shell
 $ hdc file recv /test/test ./
-FileTransfer finish, Size:10, File count = 1, time:0ms rate:100kB/s
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file recv -b com.example.myapplication /test/test # 导出com.example.myapplication应用沙箱文件/test/test
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file recv /mnt/data/100/media_fuse/Photo/相机/文件A # 导出文件A
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file recv /mnt/data/100/media_fuse/Photo/相机 # 导出相机目录及里面的文件
+FileTransfer finish, Size:xxx, File...
 ```
 
 > **说明：**
@@ -998,9 +1016,10 @@ hdc -m
 
 ```shell
 $ hdc -s 127.0.0.1:8710 -m # 指定当前服务进程的网络监听参数并启动服务进程
-[I][1970-01-01 00:00:00.000] Program running. Ver: 3.1.0e Pid:8236
+[I][1970-01-01 00:00:00.000][4f28][xxxx.xxx:123] Program running. Ver: 3.1.0e Pid:12345
+...
 $ hdc -e 0.0.0.0 -m # 指定端口转发本地监听IP地址为0.0.0.0并启动服务进程
-[I][1970-01-01 00:00:00.000] Program running. Ver: 3.1.0e Pid:8236
+[I][1970-01-01 00:00:00.000][4f28][xxxx.xxx:123] Program running. Ver: 3.2.0b Pid:12345
 ...
 ```
 

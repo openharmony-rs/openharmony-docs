@@ -96,7 +96,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 调测验证 
 
-1. 编译battery对应的hats测试用例，编译命令与框架搭建参考[XTS子系统](https://gitee.com/openharmony/xts_hats)。
+1. 编译battery对应的hats测试用例，编译命令与框架搭建参考[XTS子系统](https://gitcode.com/openharmony/xts_hats)。
 
 2. 用框架执行测试，输出测试报告。
 
