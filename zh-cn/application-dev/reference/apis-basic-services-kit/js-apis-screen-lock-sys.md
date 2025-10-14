@@ -1,10 +1,4 @@
 # @ohos.screenLock (锁屏管理)（系统接口）
-<!--Kit: ArkData-->
-<!--Subsystem: MiscServices-->
-<!--Owner: @jiayunpeng2-->
-<!--Designer: @starrylight; @jiayunpeng2-->
-<!--Tester: @yippo; @logic42-->
-<!--Adviser: @zhangaof-->
 
 锁屏管理服务是OpenHarmony中的系统服务，为锁屏应用提供注册亮屏、灭屏、开启屏幕、结束休眠、退出动画、请求解锁结果监听，并提供回调结果给锁屏应用。锁屏管理服务向三方应用提供请求解锁、查询锁屏状态、查询是否设置锁屏密码的能力。
 
