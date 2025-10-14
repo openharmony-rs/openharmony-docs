@@ -989,7 +989,7 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     let height = canvas.getHeight();
-    console.log('get canvas height:' + height);
+    console.info('get canvas height:' + height);
   }
 }
 ```
