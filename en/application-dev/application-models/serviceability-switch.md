@@ -1,7 +1,13 @@
 # ServiceAbility Switching
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The ServiceAbility component in the FA model corresponds to the ServiceExtensionAbility component in the stage model. The ServiceExtensionAbility class provides system APIs. Only system applications can create ServiceExtensionAbility instances. Therefore, ServiceAbility switching adopts different policies for system applications and third-party applications.  
+The ServiceAbility component in the [FA model](ability-terminology.md#fa-model) corresponds to the ServiceExtensionAbility component in the [stage model](ability-terminology.md#stage-model). The ServiceExtensionAbility class provides system APIs. Only system applications can create ServiceExtensionAbility instances. Therefore, ServiceAbility switching adopts different policies for system applications and third-party applications.  
 
 
 ## Switching a ServiceAbility for a System Application
@@ -11,7 +17,6 @@ The procedure for switching a ServiceAbility for a system application is similar
 1. [Create a ServiceExtensionAbility](serviceextensionability.md) in the stage model.
 
 2. Migrate the ServiceAbility code to the ServiceExtensionAbility.
-   
 
 The table below describes the lifecycle comparison of the ServiceAbility and ServiceExtensionAbility.
 

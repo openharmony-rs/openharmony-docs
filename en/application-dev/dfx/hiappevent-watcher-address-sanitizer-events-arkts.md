@@ -1,4 +1,10 @@
 # Subscribing to Address Sanitizer Events (ArkTS)
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @mlkgeek-->
+<!--Designer: @StevenLai1994-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Available APIs
 
@@ -50,7 +56,7 @@ The following describes how to subscribe an address sanitizer event for an array
      name: "watcher",
      // You can subscribe to system events that you are interested in. For example, the address sanitizer event.
      appEventFilters: [
-       
+       {
          domain: hiAppEvent.domain.OS,
          names: [hiAppEvent.event.ADDRESS_SANITIZER]
        }

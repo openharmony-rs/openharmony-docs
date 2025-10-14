@@ -409,10 +409,6 @@ on(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallSt
 
 Registers an observer for call status change events. This API uses an asynchronous callback to return the execution result.
 
-> **NOTE**
->
-> Before using this API, you must declare the **ohos.permission.READ_CALL_LOG** permission (a system permission).
-
 **System capability**: SystemCapability.Telephony.StateRegistry
 
 **Parameters**
@@ -421,7 +417,7 @@ Registers an observer for call status change events. This API uses an asynchrono
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | Call status change event. This field has a fixed value of **callStateChange**.              |
 | options  | [ObserverOptions](#observeroptions11)                        | Yes  | Event subscription parameters.                                 |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | Yes  | Callback used to return the result. For details, see [CallState](js-apis-call.md#callstate).<br>**number**: phone number.|
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | Yes  | Callback used to return the result,<br>which is the **CallStateInfo** object. In this object:<br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications.|
 
 **Error codes**
 
@@ -743,6 +739,10 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
 Registers an observer for SIM card status change events. This API uses an asynchronous callback to return the result.
 
+>**NOTE**
+>
+> The return result of this API does not contain the activation status of the SIM card. For details, see [sim.isSimActive](js-apis-sim.md#simissimactive7).
+
 **System capability**: SystemCapability.Telephony.StateRegistry
 
 **Parameters**
@@ -990,10 +990,10 @@ Defines information about the data connection status.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type                                           | Mandatory| Description        |
-| ------------------- | ---------------------------------------------------------------| ---- | ------------ |
-| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | Yes  | Data connection status.|
-| network             | [RatType](js-apis-radio.md#radiotechnology)                    | Yes  | Network type.    |
+| Name| Type                                  |  Read-Only| Optional| Description|
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  No |  No | Data connection status.|
+| network | [RatType](js-apis-radio.md#radiotechnology)  |  No |  No | Network type.|
 
 
 ## ObserverOptions<sup>11+</sup>

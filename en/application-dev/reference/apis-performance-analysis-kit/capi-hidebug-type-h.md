@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--SE: @kutcherzhou1-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
@@ -46,8 +47,8 @@ Defines the structs of the HiDebug module.
 
 ### Macros
 
-| Name                                                                                                                          | Description                |
-|------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| Name| Description|
+| -- | -- |
 | [HIDEBUG_TRACE_TAG_FFRT](#hidebug_trace_tag_ffrt) (1ULL << 13)                                                               | Indicates a function flow runtime (FFRT) task.<br>**Since**: 12     |
 | [HIDEBUG_TRACE_TAG_COMMON_LIBRARY](#hidebug_trace_tag_common_library) (1ULL << 16)                                           | Indicates the common library subsystem.<br>**Since**: 12         |
 | [HIDEBUG_TRACE_TAG_HDF](#hidebug_trace_tag_hdf) (1ULL << 18)                                                                 | Indicates the HDF subsystem.<br>**Since**: 12         |
@@ -103,7 +104,7 @@ Enumerates the error codes used in the HiDebug module.
 | HIDEBUG_NO_PERMISSION = 11400103 | No file write permission.|
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | Internal system error.|
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | No trace task is running.|
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 |  |
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | The PC address passed to the symbol parsing function is invalid.<br>**Since**: 20|
 
 ### HiDebug_TraceFlag
 

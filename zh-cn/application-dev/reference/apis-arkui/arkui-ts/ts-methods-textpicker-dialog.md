@@ -15,6 +15,8 @@
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
 >
 > - 本模块不支持深浅色模式热更新，如果需要进行深浅色模式切换，请重新打开弹窗。
+>
+> - 最大显示行数在横、竖屏模式下存在差异。竖屏时默认为5行，横屏时依赖系统配置，未配置时默认显示为3行。可通过如下参数查看具体配置值$r('sys.float.ohos_id_picker_show_count_landscape')。
 
 ## TextPickerDialog
 
@@ -47,6 +49,8 @@ static show(options?: TextPickerDialogOptions)
 文本选择器弹窗的参数继承自[TextPickerOptions](ts-basic-components-textpicker.md#textpickeroptions对象说明)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 类型 | 只读 | 可选 |  说明 |
 | -------- | -------- | -------- |  -------- |  -------- |
@@ -88,6 +92,8 @@ static show(options?: TextPickerDialogOptions)
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 类型 | 只读 | 可选 |  说明 |
 | -------- | -------- | -------- |  -------- |  -------- |
@@ -131,6 +137,8 @@ static show(options?: TextPickerDialogOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -534,9 +542,9 @@ struct TextPickerDialogExample {
 
 ![TextPickerDialog](figures/TextPickerDialogDemo7.gif)
 
-### 示例8（设置选中项背景样式）
+### 示例8（设置选中项的背景样式）
 
-该示例通过配置selectedBackgroundStyle实现文本选择器选中项的背景样式。
+该示例通过selectedBackgroundStyle属性设置文本选择器选中项的背景样式。
 
 ```ts
 // xxx.ets

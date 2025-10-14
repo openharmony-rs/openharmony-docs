@@ -17,14 +17,14 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 | API| Description|
 | -------- | -------- |
-| int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher \* watcher) | Adds a watcher to listen for application events.|
-| int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher \* watcher) | Removes a watcher for the specified application events.|
+| int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher) | Adds an event observer.|
+| int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher) | Removes an event observer.|
 
 **Event Logging APIs**
 
 | API| Description|
 | -------- | -------- |
-| int OH_HiAppEvent_Write(const char \* domain, const char \* name, enum EventType type, const ParamList list) | Logs application events whose parameters are of the list type.|
+| int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType type, const ParamList list) | Logs application events whose parameters are of the list type.|
 
 ## How to Develop
 
@@ -81,7 +81,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 
 ### Step 2: Subscribing to an Event
 
-1. Subscribe to the events using **OnReceive** and **OnTrigger**, respectively.
+1.  Subscribe to events using watchers of the OnReceive and OnTrigger types.
    - Subscribe to the crash event (system event) using **OnReceive**. After receiving the event, the watcher immediately triggers the **OnReceive** callback. In the **napi_init.cpp** file, define the methods related to the watcher of the **OnReceive** type.
 
       ```c++
@@ -127,7 +127,7 @@ The following describes how to subscribe to a crash event (system event) and a b
       }
       ```
 
-   - Subscribes to the button click event (application event) using **OnTrigger**. The **OnTrigger()** callback can be triggered only when the conditions specified by **OH_HiAppEvent_SetTriggerCondition()** are met. In the **napi_init.cpp** file, define the methods related to the watcher of the **OnTrigger** type.
+   - Subscribe to the button click event (application event) using **OnTrigger**. The **OnTrigger()** callback can be triggered only when the conditions specified by **OH_HiAppEvent_SetTriggerCondition()** are met. In the **napi_init.cpp** file, define the methods related to the watcher of the **OnTrigger** type.
 
       ```c++
       // Define a variable to cache the pointer to the created watcher.

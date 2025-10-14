@@ -22,8 +22,8 @@ import { usbManager } from '@kit.BasicServicesKit';
 ## How to Use
 
 Perform the following steps when using the APIs with the [USBDevicePipe](#usbdevicepipe) parameter:
-
-**Before use:**
+ 
+**Before use**:
 
 1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the list of USB devices.
 
@@ -31,7 +31,7 @@ Perform the following steps when using the APIs with the [USBDevicePipe](#usbdev
 
 3. Call [usbManager.connectDevice](#usbmanagerconnectdevice) to obtain **USBDevicePipe** as an input parameter.
 
-**After use:**
+**After use**:
 
 Call [usbManager.closePipe](#usbmanagerclosepipe) to close a USB device pipe.
 
@@ -158,8 +158,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -188,7 +189,7 @@ Checks whether the user, for example, the application or system, has the device 
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Returns **true** if the application has the permission to access the device; returns **false** otherwise. If this API fails to be called, the following error codes are returned:<br>- 88080385: This API is not initialized.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.|
+| boolean | Returns **true** if the application has the permission to access the device; returns **false** otherwise.|
 
 **Error codes**
 
@@ -203,8 +204,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -231,7 +233,7 @@ Requests the temporary device access permission for the application. This API us
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the temporary device access permissions are granted; and the value **false** indicates the opposite. If this API fails to be called, the following error codes are returned:<br>- 88080385: This API is not initialized.<br>- 88080392: An error occurs when the API data packet is written.<br>- 88080393: An error occurs when the API data packet is read.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the temporary device access permissions are granted; and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -246,8 +248,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -274,7 +277,7 @@ Removes the device access permission for the application. System applications ar
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Permission removal result. The value **true** indicates that the access permission is removed successfully; and the value **false** indicates the opposite. If this API fails to be called, the following error codes are returned:<br>- 88080382: An invalid value or parameter occurs during the API operation.<br>- 88080385: This API is not initialized.<br>- 88080392: An error occurs when the API data packet is written.<br>- 88080393: An error occurs when the API data packet is read.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.|
+| boolean | Permission removal result. The value **true** indicates that the access permission is removed successfully; and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -289,8 +292,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -339,8 +343,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -389,8 +394,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -436,8 +442,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -488,8 +495,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -534,8 +542,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 usbManager.requestRight(devicesList[0].name);
@@ -576,8 +585,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 usbManager.requestRight(devicesList[0].name);
@@ -644,8 +654,9 @@ let param: PARA = {
 };
 
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 usbManager.requestRight(devicesList[0].name);
@@ -709,8 +720,9 @@ let param: PARA = {
 };
 
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 usbManager.requestRight(devicesList[0].name);
@@ -769,8 +781,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 // Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
@@ -835,7 +848,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 // Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
   return;
 }
@@ -892,12 +905,6 @@ Cancels an asynchronous USB data transfer request.
 | -------- | -------- | -------- | -------- |
 | transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| Only **USBDevicePipe** and **endpoint** are required for canceling the transfer.|
 
-**Return value**
-
-| Type| Description|
-| -------- | -------- |
-| &lt;void&gt; | None.|
-
 **Error codes**
 
 For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
@@ -922,7 +929,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 // Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
   return;
 }
@@ -997,8 +1004,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.log(`device list is empty`);
+  return;
 }
 
 usbManager.requestRight(devicesList[0].name);
@@ -1314,8 +1322,9 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (devicesList.length == 0) {
+if (!devicesList || devicesList.length == 0) {
   console.error(`device list is empty`);
+  return;
 }
 
 usbManager.requestRight(devicesList[0].name);

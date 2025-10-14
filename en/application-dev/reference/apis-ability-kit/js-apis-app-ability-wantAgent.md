@@ -1,8 +1,15 @@
-# @ohos.app.ability.wantAgent (WantAgent)
+# @ohos.app.ability.wantAgent (WantAgent Module)
 
-WantAgent is a class that encapsulates a [Want](./js-apis-app-ability-want.md) object and allows the application to execute the Want at a future time point.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-This module provides the APIs for creating a WantAgent object, obtaining the bundle name and UID of the application to which a WantAgent object belongs, proactively triggering a WantAgent object, and checking whether two WantAgent objects are the same. A typical use scenario of WantAgent is notification processing. For example, when a user touches a notification, the [trigger](#wantagenttrigger) API of WantAgent is triggered and the target application is started. For details, see [Notification](../../notification/notification-with-wantagent.md).
+The WantAgent module encapsulates a [Want](./js-apis-app-ability-want.md) object, enabling an application to trigger a WantAgent object to perform specified operations (such as starting an ability or publishing a common event) at a future time.
+
+The module provides the APIs for creating a WantAgent object, obtaining the bundle name and UID of the application to which a WantAgent object belongs, proactively triggering a WantAgent object, and checking whether two WantAgent objects are the same. A typical use scenario of WantAgent is notification processing. For example, when a user touches a notification, the [trigger](#wantagenttrigger) API of WantAgent is triggered and the target application is started. For details, see [Notification](../../notification/notification-with-wantagent.md).
 
 > **NOTE**
 >
@@ -48,9 +55,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -78,7 +85,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -114,7 +121,7 @@ Obtains a WantAgent object. This API uses a promise to return the result. If the
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<WantAgent\> | Promise used to return the WantAgent object.|
+| Promise\<[WantAgent](#wantagent)\> | Promise used to return the WantAgent object.|
 
 **Error codes**
 
@@ -134,7 +141,7 @@ import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -209,9 +216,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -239,14 +246,14 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
     wantAgentData = data;
   }
-  // getBundleName callback
+  // getBundleName callback.
   let getBundleNameCallback = (err: BusinessError, data: string) => {
     if (err) {
       console.error(`getBundleName failed! ${err.code} ${err.message}`);
@@ -307,9 +314,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -337,7 +344,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -395,9 +402,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -425,14 +432,14 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}.`);
   } else {
     wantAgentData = data;
   }
-  // getUid callback
+  // getUid callback.
   let getUidCallback = (err: BusinessError, data: number) => {
     if (err) {
       console.error(`getUid failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -497,9 +504,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -527,7 +534,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -590,9 +597,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -620,14 +627,14 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
     wantAgentData = data;
   }
-  // cancel callback
+  // cancel callback.
   let cancelCallback = (err: BusinessError, data: void) => {
     if (err) {
       console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -673,7 +680,7 @@ Cancels a WantAgent object. This API uses a promise to return the result.
 
 | Type           | Description                           |
 | --------------- | ------------------------------- |
-| Promise\<void\> | Promise used to return the result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -692,9 +699,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -722,7 +729,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -755,7 +762,9 @@ try {
 
 trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback\<CompleteData\>): void
 
-Proactively triggers a WantAgent object. This API uses an asynchronous callback to return the result.
+Triggers a WantAgent object to perform the specified operation (such as starting an ability or publishing a common event). This API uses an asynchronous callback to return the result.
+
+The operation to perform is specified by the **actionType** property in the [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md) parameter passed for creating the WantAgent object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -857,6 +866,8 @@ equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback\<boolean\
 
 Checks whether two WantAgent objects are equal, so as to determine whether the same operation is from the same application. This API uses an asynchronous callback to return the result.
 
+Two WantAgent objects are considered equal if they are created by the same application under the current user using identical [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md) parameters, and neither of them has been canceled using [cancel](#wantagentcancel). In notification scenarios (where notifications carry WantAgent objects), when a notification is updated, the system compares the WantAgent objects from the old and new notifications. If they are not equal, the system removes the WantAgent object from the old notification.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -867,7 +878,7 @@ Checks whether two WantAgent objects are equal, so as to determine whether the s
 | ---------- | ------------------------ | ---- | --------------------------------------- |
 | agent      | WantAgent                | Yes  | The first WantAgent object.                          |
 | otherAgent | WantAgent                | Yes  | The second WantAgent object.                          |
-| callback   | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. **true** if equal, **false** otherwise.|
+| callback   | AsyncCallback\<boolean\> | Yes  | Callback used to return the result, indicating whether the two WantAgent objects are equal. **true** if equal, **false** otherwise.|
 
 **Error codes**
 
@@ -949,7 +960,9 @@ try {
 
 equal(agent: WantAgent, otherAgent: WantAgent): Promise\<boolean\>
 
-Checks whether two WantAgent object are equal, so as to determine whether the same operation is from the same application. This API uses a promise to return the result.
+Checks whether two WantAgent objects are equal, so as to determine whether the same operation is from the same application. This API uses a promise to return the result.
+
+Two WantAgent objects are considered equal if they are created by the same application under the current user using identical [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md) parameters, and neither of them has been canceled using [cancel](#wantagentcancel). In notification scenarios (where notifications carry WantAgent objects), when a notification is updated, the system compares the WantAgent objects from the old and new notifications. If they are not equal, the system removes the WantAgent object from the old notification.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -966,7 +979,7 @@ Checks whether two WantAgent object are equal, so as to determine whether the sa
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise used to return the result. **true** if equal, **false** otherwise.|
+| Promise\<boolean\> | Promise used to return the result, indicating whether the two WantAgent objects are equal. **true** if equal, **false** otherwise.|
 
 **Error codes**
 
@@ -1044,7 +1057,7 @@ try {
 
 getOperationType(agent: WantAgent, callback: AsyncCallback\<number>): void
 
-Obtains the operation type of a WantAgent object. This API uses an asynchronous callback to return the result.
+Obtains the [operation type](#operationtype) of a WantAgent object. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1138,7 +1151,7 @@ try {
 
 getOperationType(agent: WantAgent): Promise\<number>
 
-Obtains the operation type of a WantAgent object. This API uses a promise to return the result.
+Obtains the [operation type](#operationtype) of a WantAgent object. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1154,7 +1167,7 @@ Obtains the operation type of a WantAgent object. This API uses a promise to ret
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise used to return the operation type.|
+| Promise\<number> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1231,7 +1244,7 @@ try {
 
 ## WantAgentFlags
 
-Enumerates the flags used by the WantAgent objects.
+Enumerates the WantAgent behavior control flags, which are used to configure the creation and triggering behavior of WantAgent.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1239,7 +1252,7 @@ Enumerates the flags used by the WantAgent objects.
 
 | Name               | Value            | Description                                                                     |
 | ------------------- | -------------- |-------------------------------------------------------------------------|
-| ONE_TIME_FLAG       | 0 | The WantAgent object can be used only once.                                                       |
+| ONE_TIME_FLAG       | 0 | The WantAgent object can be used only once. Once triggered, it is automatically canceled.                                                       |
 | NO_BUILD_FLAG       | 1 | The WantAgent object does not exist and hence it is not created. In this case, **null** is returned.                                     |
 | CANCEL_PRESENT_FLAG | 2 | The existing WantAgent object should be canceled before a new object is generated.                                |
 | UPDATE_PRESENT_FLAG | 3 | Extra information of the existing WantAgent object is replaced with that of the new object.                               |
@@ -1254,7 +1267,7 @@ Enumerates the flags used by the WantAgent objects.
 
 ## OperationType
 
-Enumerates the operation types of the WantAgent objects.
+Enumerates the operation types supported by WantAgent objects.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1281,9 +1294,9 @@ Describes the data returned by the operation of proactive triggering a WantAgent
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | info           | WantAgent                       | No| No  | WantAgent object that is triggered.      |
-| want           | [Want](js-apis-app-ability-want.md)                            | No| No  | Existing Want that is triggered.    |
-| finalCode      | number                          | No| No  | Request code that triggers the WantAgent object.|
-| finalData      | string                          | No| No  | Final data collected by the common event. |
+| want           | [Want](js-apis-app-ability-want.md)         | No| No  | Want information used for triggering the WantAgent object.    |
+| finalCode      | number                          | No| No  | Return code returned for triggering the WantAgent object.|
+| finalData      | string                          | No| No  | Data returned for triggering the WantAgent object. If the return value is **canceled**, the triggering fails because the WantAgent object has been canceled. |
 | extraInfo      | Record\<string, Object>            | No|Yes  | Extra information.              |
 
 ## TriggerInfo

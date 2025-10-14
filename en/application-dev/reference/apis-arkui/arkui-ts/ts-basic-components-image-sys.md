@@ -24,7 +24,7 @@ Sets the AI image analysis types, including subject recognition and character re
 
 | Name| Type                                         | Mandatory| Description        |
 | ------ | --------------------------------------------- | ---- | ------------ |
-| config | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig) | Yes  | AI image analysis types.|
+| config | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | Yes  | AI image analysis types.|
 
 ### edgeAntialiasing<sup>11+</sup>
 

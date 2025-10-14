@@ -67,11 +67,12 @@ Activates a system account. This API uses an asynchronous callback to return the
       if (err) {
         console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('activateOsAccount successfully');
+        console.info('activateOsAccount successfully');
       }
     });
-  } catch (err) {
-    console.error('activateOsAccount failed, error:' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -120,12 +121,13 @@ Activates a system account. This API uses a promise to return the result.
   let localId: number = 100;
   try {
     accountManager.activateOsAccount(localId).then(() => {
-      console.log('activateOsAccount successfully');
+      console.info('activateOsAccount successfully');
     }).catch((err: BusinessError) => {
-      console.error('activateOsAccount failed, err:' + JSON.stringify(err));
+      console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('activateOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`activateOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -172,12 +174,13 @@ Deactivates (logs out of) a system account. This API uses a promise to return th
   let localId: number = 100;
   try {
     accountManager.deactivateOsAccount(localId).then(() => {
-      console.log('deactivateOsAccount successfully');
+      console.info('deactivateOsAccount successfully');
     }).catch((err: BusinessError) => {
-      console.error('deactivateOsAccount failed, err:' + JSON.stringify(err));
+      console.error(`deactivateOsAccount failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('deactivateOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`deactivateOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -223,12 +226,13 @@ Checks whether a system account is activated. This API uses a promise to return 
   let localId: number = 100;
   try {
     accountManager.isOsAccountActivated(localId).then((isActivated: boolean) => {
-      console.log('isOsAccountActivated successfully, isActivated: ' + isActivated);
+      console.info('isOsAccountActivated successfully, isActivated: ' + isActivated);
     }).catch((err: BusinessError) => {
-      console.error('isOsAccountActivated failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountActivated failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('isOsAccountActivated exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -276,12 +280,13 @@ Checks whether a constraint is enabled for a system account. This API uses a pro
   let constraint: string = 'constraint.wifi';
   try {
     accountManager.isOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {
-      console.log('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
-      console.error('isOsAccountConstraintEnabled failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('isOsAccountConstraintEnabled exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -327,12 +332,13 @@ Checks whether a system account has been verified. This API uses a promise to re
   let localId: number = 100;
   try {
     accountManager.isOsAccountUnlocked(localId).then((isVerified: boolean) => {
-      console.log('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
+      console.info('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
     }).catch((err: BusinessError) => {
-      console.error('isOsAccountUnlocked failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountUnlocked failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('isOsAccountUnlocked exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -379,14 +385,15 @@ Removes a system account. This API uses an asynchronous callback to return the r
       (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo) => {
         accountManager.removeOsAccount(osAccountInfo.localId, (err: BusinessError)=>{
           if (err) {
-            console.error('removeOsAccount failed, error: ' + JSON.stringify(err));
+            console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
           } else {
-            console.log('removeOsAccount successfully');
+            console.info('removeOsAccount successfully');
           }
       });
     });
-  } catch (err) {
-    console.error('removeOsAccount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -437,13 +444,14 @@ Removes a system account. This API uses a promise to return the result.
     accountManager.createOsAccount(accountName, osAccount.OsAccountType.NORMAL,
       (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
         accountManager.removeOsAccount(osAccountInfo.localId).then(() => {
-          console.log('removeOsAccount successfully');
+          console.info('removeOsAccount successfully');
         }).catch((err: BusinessError) => {
-            console.error('removeOsAccount failed, error: ' + JSON.stringify(err));
+            console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
         });
     });
-  } catch (err) {
-    console.error('removeOsAccount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -490,13 +498,14 @@ Sets or removes constraints for a system account. This API uses an asynchronous 
   try {
     accountManager.setOsAccountConstraints(localId, [constraint], true, (err: BusinessError) => {
       if (err) {
-        console.error('setOsAccountConstraints failed, error: ' + JSON.stringify(err));
+        console.error(`setOsAccountConstraints failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setOsAccountConstraints successfully');
+        console.info('setOsAccountConstraints successfully');
       }
     });
-  } catch (err) {
-    console.error('setOsAccountConstraints exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -548,10 +557,11 @@ Sets or removes constraints for a system account. This API uses a promise to ret
     accountManager.setOsAccountConstraints(localId, ['constraint.location.set'], false).then(() => {
       console.info('setOsAccountConstraints successfully');
     }).catch((err: BusinessError) => {
-      console.error('setOsAccountConstraints failed, error: ' + JSON.stringify(err));
+      console.error(`setOsAccountConstraints failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setOsAccountConstraints exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -597,13 +607,14 @@ Sets the name of a system account. This API uses an asynchronous callback to ret
   try {
     accountManager.setOsAccountName(localId, name, (err: BusinessError) => {
       if (err) {
-        console.error('setOsAccountName failed, error: ' + JSON.stringify(err));
+        console.error(`setOsAccountName failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setOsAccountName successfully');
+        console.info('setOsAccountName successfully');
       }
     });
-  } catch (err) {
-    console.error('setOsAccountName exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountName exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -653,12 +664,13 @@ Sets the name of a system account. This API uses a promise to return the result.
   let name: string = 'testName';
   try {
     accountManager.setOsAccountName(localId, name).then(() => {
-      console.log('setOsAccountName successfully');
+      console.info('setOsAccountName successfully');
     }).catch((err: BusinessError) => {
-      console.error('setOsAccountName failed, error: ' + JSON.stringify(err));
+      console.error(`setOsAccountName failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setOsAccountName exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountName exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -694,13 +706,14 @@ Queries the maximum number of system accounts that can be created. This API uses
   try {
     accountManager.queryMaxOsAccountNumber((err: BusinessError, maxCnt: number) => {
       if (err) {
-        console.error('queryMaxOsAccountNumber failed, error:' + JSON.stringify(err));
+        console.error(`queryMaxOsAccountNumber failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('queryMaxOsAccountNumber successfully, maxCnt:' + maxCnt);
+        console.info('queryMaxOsAccountNumber successfully, maxCnt:' + maxCnt);
       }
     });
-  } catch (err) {
-    console.error('queryMaxOsAccountNumber exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryMaxOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -734,12 +747,13 @@ Queries the maximum number of system accounts that can be created. This API uses
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxOsAccountNumber().then((maxCnt: number) => {
-      console.log('queryMaxOsAccountNumber successfully, maxCnt: ' + maxCnt);
+      console.info('queryMaxOsAccountNumber successfully, maxCnt: ' + maxCnt);
     }).catch((err: BusinessError) => {
-      console.error('queryMaxOsAccountNumber failed, error: ' + JSON.stringify(err));
+      console.error(`queryMaxOsAccountNumber failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('queryMaxOsAccountNumber exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryMaxOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -773,12 +787,13 @@ Queries the maximum number of system accounts allowed to log in to the system. T
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxLoggedInOsAccountNumber().then((maxNum: number) => {
-      console.log('queryMaxLoggedInOsAccountNumber successfully, maxNum: ' + maxNum);
+      console.info('queryMaxLoggedInOsAccountNumber successfully, maxNum: ' + maxNum);
     }).catch((err: BusinessError) => {
-      console.error('queryMaxLoggedInOsAccountNumber failed, error: ' + JSON.stringify(err));
+      console.error(`queryMaxLoggedInOsAccountNumber failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('queryMaxLoggedInOsAccountNumber exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryMaxLoggedInOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -824,12 +839,13 @@ Obtains all the enabled constraints of a system account. This API uses a promise
   let localId: number = 100;
   try {
     accountManager.getEnabledOsAccountConstraints(localId).then((constraints: string[]) => {
-      console.log('getEnabledOsAccountConstraints, constraints: ' + constraints);
+      console.info('getEnabledOsAccountConstraints, constraints: ' + constraints);
     }).catch((err: BusinessError) => {
-      console.error('getEnabledOsAccountConstraints err: ' + JSON.stringify(err));
+      console.error(`getEnabledOsAccountConstraints err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getEnabledOsAccountConstraints exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getEnabledOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -868,13 +884,14 @@ Queries information about all the system accounts created. This API uses an asyn
   try {
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
       if (err) {
-        console.error('queryAllCreatedOsAccounts exception:' + JSON.stringify(err));
+        console.error(`queryAllCreatedOsAccounts exception:code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
+        console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
       }
     });
   } catch (e) {
-    console.error('queryAllCreatedOsAccounts exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryAllCreatedOsAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -911,12 +928,13 @@ Queries information about all the system accounts created. This API uses a promi
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryAllCreatedOsAccounts().then((accountArr: osAccount.OsAccountInfo[]) => {
-      console.log('queryAllCreatedOsAccounts, accountArr: ' + JSON.stringify(accountArr));
+      console.info('queryAllCreatedOsAccounts, accountArr: ' + JSON.stringify(accountArr));
     }).catch((err: BusinessError) => {
-      console.error('queryAllCreatedOsAccounts err: ' + JSON.stringify(err));
+      console.error(`queryAllCreatedOsAccounts err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('queryAllCreatedOsAccounts exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryAllCreatedOsAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -963,13 +981,14 @@ Creates a system account. This API uses an asynchronous callback to return the r
     accountManager.createOsAccount('testName', osAccount.OsAccountType.NORMAL,
       (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
       if (err) {
-        console.error('createOsAccount exception:' + JSON.stringify(err));
+        console.error(`createOsAccount exception:code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
+        console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
       }
     });
   } catch (e) {
-    console.error('createOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`createOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1027,12 +1046,13 @@ Creates a system account. This API uses a promise to return the result.
   try {
     accountManager.createOsAccount('testAccountName', osAccount.OsAccountType.NORMAL, options).then(
       (accountInfo: osAccount.OsAccountInfo) => {
-      console.log('createOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+      console.info('createOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
     }).catch((err: BusinessError) => {
-      console.error('createOsAccount err: ' + JSON.stringify(err));
+      console.error(`createOsAccount err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('createOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`createOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1082,13 +1102,14 @@ Creates a system account and associates it with the specified domain account. Th
     accountManager.createOsAccountForDomain(osAccount.OsAccountType.NORMAL, domainInfo,
       (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
       if (err) {
-        console.error('createOsAccountForDomain exception:' + JSON.stringify(err));
+        console.error(`createOsAccountForDomain exception:code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('createOsAccountForDomain osAccountInfo:' + JSON.stringify(osAccountInfo));
+        console.info('createOsAccountForDomain osAccountInfo:' + JSON.stringify(osAccountInfo));
       }
     });
   } catch (e) {
-    console.error('createOsAccountForDomain exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1147,12 +1168,13 @@ Creates a system account and associates it with the specified domain account. Th
   try {
     accountManager.createOsAccountForDomain(osAccount.OsAccountType.NORMAL, domainInfo, options).then(
       (accountInfo: osAccount.OsAccountInfo) => {
-      console.log('createOsAccountForDomain, account info: ' + JSON.stringify(accountInfo));
+      console.info('createOsAccountForDomain, account info: ' + JSON.stringify(accountInfo));
     }).catch((err: BusinessError) => {
-      console.error('createOsAccountForDomain err: ' + JSON.stringify(err));
+      console.error(`createOsAccountForDomain err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('createOsAccountForDomain exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1189,12 +1211,13 @@ Obtains information about the system account to which the current process belong
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
-      console.log('queryOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+      console.info('queryOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
     }).catch((err: BusinessError) => {
-      console.error('queryOsAccount err: ' + JSON.stringify(err));
+      console.error(`queryOsAccount err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('queryOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1237,13 +1260,14 @@ Queries information about the system account of the given ID. This API uses an a
   try {
     accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osAccount.OsAccountInfo)=>{
       if (err) {
-        console.error('queryOsAccountById exception:' + JSON.stringify(err));
+        console.error(`queryOsAccountById exception:code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
+        console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
       }
     });
   } catch (e) {
-    console.error('queryOsAccountById exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryOsAccountById exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1290,12 +1314,13 @@ Queries information about the system account of the given ID. This API uses a pr
   let localId: number = 100;
   try {
     accountManager.queryOsAccountById(localId).then((accountInfo: osAccount.OsAccountInfo) => {
-      console.log('queryOsAccountById, accountInfo: ' + JSON.stringify(accountInfo));
+      console.info('queryOsAccountById, accountInfo: ' + JSON.stringify(accountInfo));
     }).catch((err: BusinessError) => {
-      console.error('queryOsAccountById err: ' + JSON.stringify(err));
+      console.error(`queryOsAccountById err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('queryOsAccountById exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryOsAccountById exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1338,13 +1363,14 @@ Obtains the profile photo of a system account. This API uses an asynchronous cal
   try {
     accountManager.getOsAccountProfilePhoto(localId, (err: BusinessError, photo: string)=>{
       if (err) {
-        console.error('getOsAccountProfilePhoto exception:' + JSON.stringify(err));
+        console.error(`getOsAccountProfilePhoto exception:code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('get photo:' + photo + ' by localId: ' + localId);
+        console.info('get photo:' + photo + ' by localId: ' + localId);
       }
     });
   } catch (e) {
-    console.error('getOsAccountProfilePhoto exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1391,12 +1417,13 @@ Obtains the profile photo of a system account. This API uses a promise to return
   let localId: number = 100;
   try {
     accountManager.getOsAccountProfilePhoto(localId).then((photo: string) => {
-      console.log('getOsAccountProfilePhoto: ' + photo);
+      console.info('getOsAccountProfilePhoto: ' + photo);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountProfilePhoto err: ' + JSON.stringify(err));
+      console.error(`getOsAccountProfilePhoto err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountProfilePhoto exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1445,13 +1472,14 @@ Sets a profile photo for a system account. This API uses an asynchronous callbac
   try {
     accountManager.setOsAccountProfilePhoto(localId, photo, (err: BusinessError)=>{
       if (err) {
-        console.error('setOsAccountProfilePhoto exception:' + JSON.stringify(err));
+        console.error(`setOsAccountProfilePhoto exception:code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setOsAccountProfilePhoto successful.');
+        console.info('setOsAccountProfilePhoto successful.');
       }
     });
   } catch (e) {
-    console.error('setOsAccountProfilePhoto exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`setOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1504,12 +1532,13 @@ Sets a profile photo for a system account. This API uses a promise to return the
   '+7q0mP0DZW9pNmoEFUzrQjp5cCnaen2kSJXLFD8ghbXyZCMQf/8e8Ns1XVAG/XAgqKzVnJFAAAAABJRU5ErkJggg=='
   try {
     accountManager.setOsAccountProfilePhoto(localId, photo).then(() => {
-      console.log('setOsAccountProfilePhoto success');
+      console.info('setOsAccountProfilePhoto success');
     }).catch((err: BusinessError) => {
-      console.error('setOsAccountProfilePhoto err: ' + JSON.stringify(err));
+      console.error(`setOsAccountProfilePhoto err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('setOsAccountProfilePhoto exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`setOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1548,12 +1577,13 @@ Subscribes to the system account activation states, including the states of the 
   ```ts
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   function onCallback(receiveLocalId: number){
-    console.log('receive localId:' + receiveLocalId);
+    console.info('receive localId:' + receiveLocalId);
   }
   try {
     accountManager.on('activating', 'osAccountOnOffNameA', onCallback);
   } catch (e) {
-    console.error('receive localId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`receive localId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1592,12 +1622,13 @@ Unsubscribes from the system account activation states, including the states of 
   ```ts
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   function offCallback(){
-    console.log('off enter')
+    console.info('off enter')
   }
   try {
     accountManager.off('activating', 'osAccountOnOffNameA', offCallback);
   } catch (e) {
-    console.error('off exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`off exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1635,12 +1666,13 @@ Subscribes to the switchover between a foreground system account and a backgroun
   ```ts
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   function onSwitchingCallback(eventData: osAccount.OsAccountSwitchEventData){
-    console.log('receive eventData:' + JSON.stringify(eventData));
+    console.info('receive eventData:' + JSON.stringify(eventData));
   }
   try {
     accountManager.on('switching', onSwitchingCallback);
   } catch (e) {
-    console.error('receive eventData exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`receive eventData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1680,7 +1712,8 @@ Unsubscribes from the switchover between a foreground system account and a backg
   try {
     accountManager.off('switching');
   } catch (e) {
-    console.error('off exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`off exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1718,12 +1751,13 @@ Subscribes to the end of a switchover between a foreground system account and a 
   ```ts
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   function onSwitchedCallback(eventData: osAccount.OsAccountSwitchEventData){
-    console.log('receive eventData:' + JSON.stringify(eventData));
+    console.info('receive eventData:' + JSON.stringify(eventData));
   }
   try {
     accountManager.on('switched', onSwitchedCallback);
   } catch (e) {
-    console.error('receive eventData exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`receive eventData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1763,7 +1797,8 @@ Unsubscribes from the end of a switchover between a foreground system account an
   try {
     accountManager.off('switched');
   } catch (e) {
-    console.error('off exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`off exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1802,13 +1837,14 @@ Obtains the bundle ID based on the UID. This API uses an asynchronous callback t
   try {
     accountManager.getBundleIdForUid(testUid, (err: BusinessError, bundleId: number) => {
       if (err) {
-        console.error('getBundleIdForUid errInfo:' + JSON.stringify(err));
+        console.error(`getBundleIdForUid errInfo:code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('getBundleIdForUid bundleId:' + JSON.stringify(bundleId));
       }
     });
   } catch (e) {
-    console.error('getBundleIdForUid exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getBundleIdForUid exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1853,10 +1889,11 @@ Obtains the bundle ID based on the UID. This API uses a promise to return the re
     accountManager.getBundleIdForUid(testUid).then((result: number) => {
       console.info('getBundleIdForUid bundleId:' + JSON.stringify(result));
     }).catch((err: BusinessError) => {
-      console.error('getBundleIdForUid errInfo:' + JSON.stringify(err));
+      console.error(`getBundleIdForUid errInfo:code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getBundleIdForUid exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getBundleIdForUid exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1899,7 +1936,8 @@ Obtains the bundle ID based on the specified UID. The API returns the result syn
     let bundleId : number = accountManager.getBundleIdForUidSync(testUid);
     console.info('getBundleIdForUidSync bundleId:' + bundleId);
   } catch (e) {
-    console.error('getBundleIdForUidSync exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getBundleIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1938,13 +1976,14 @@ Checks whether the current process belongs to the main system account. This API 
   try {
     accountManager.isMainOsAccount((err: BusinessError,result: boolean)=>{
       if (err) {
-        console.error('isMainOsAccount errInfo:' + JSON.stringify(err));
+        console.error(`isMainOsAccount errInfo:code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('isMainOsAccount result:' + JSON.stringify(result));
       }
     });
   } catch (e) {
-    console.error('isMainOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`isMainOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1983,10 +2022,11 @@ Checks whether the current process belongs to the main system account. This API 
     accountManager.isMainOsAccount().then((result: boolean) => {
       console.info('isMainOsAccount result:' + JSON.stringify(result));
     }).catch((err: BusinessError) => {
-      console.error('isMainOsAccount errInfo:' + JSON.stringify(err));
+      console.error(`isMainOsAccount errInfo:code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('isMainOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`isMainOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2030,13 +2070,14 @@ Obtains the constraint source information of a system account. This API uses an 
     accountManager.getOsAccountConstraintSourceTypes(100, 'constraint.wifi',
       (err: BusinessError,sourceTypeInfos: osAccount.ConstraintSourceTypeInfo[])=>{
       if (err) {
-        console.error('getOsAccountConstraintSourceTypes errInfo:' + JSON.stringify(err));
+        console.error(`getOsAccountConstraintSourceTypes errInfo:code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('getOsAccountConstraintSourceTypes sourceTypeInfos:' + JSON.stringify(sourceTypeInfos));
       }
     });
   } catch (e) {
-    console.error('getOsAccountConstraintSourceTypes exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraintSourceTypes exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2086,10 +2127,11 @@ Obtains the constraint source information of a system account. This API uses a p
       (result: osAccount.ConstraintSourceTypeInfo[]) => {
       console.info('getOsAccountConstraintSourceTypes sourceTypeInfos:' + JSON.stringify(result));
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountConstraintSourceTypes errInfo:' + JSON.stringify(err));
+      console.error(`getOsAccountConstraintSourceTypes errInfo:code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountConstraintSourceTypes exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraintSourceTypes exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2137,10 +2179,11 @@ Obtains the type of a system account. This API uses a promise to return the resu
     accountManager.getOsAccountType(localId).then((type: osAccount.OsAccountType) => {
       console.info('getOsAccountType Type:' + type);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountType errInfo:' + JSON.stringify(err));
+      console.error(`getOsAccountType errInfo:code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountType exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2201,7 +2244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`bindDomainAccount failed, errCode=${error.code}, errMsg=${error.message}`);
     });
   } catch (e) {
-    let error = e as BusinessError;
+    const err = e as BusinessError;
     console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
   }
   ```
@@ -2237,7 +2280,7 @@ A constructor used to create an instance for user authentication.
 
 getVersion(): number;
 
-Obtains version information.
+Obtains the version number.
 
 **System API**: This is a system API.
 
@@ -2247,7 +2290,7 @@ Obtains version information.
 
 | Type  | Description        |
 | :----- | :----------- |
-| number | Version information obtained.|
+| number | Version number obtained.|
 
 **Error codes**
 
@@ -2259,7 +2302,7 @@ Obtains version information.
   ```ts
   let userAuth = new osAccount.UserAuth();
   let version: number = userAuth.getVersion();
-  console.log('getVersion version = ' + version);
+  console.info('getVersion version = ' + version);
   ```
 
 ### getAvailableStatus<sup>8+</sup>
@@ -2304,9 +2347,10 @@ Obtains the available status of the authentication capability corresponding to t
   let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
   try {
     let status: number = userAuth.getAvailableStatus(authType, authTrustLevel);
-    console.log('getAvailableStatus status = ' + status);
+    console.info('getAvailableStatus status = ' + status);
   } catch (e) {
-    console.error('getAvailableStatus exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getAvailableStatus exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2356,13 +2400,14 @@ Obtains the executor property based on the request. This API uses an asynchronou
   try {
     userAuth.getProperty(request, (err: BusinessError, result: osAccount.ExecutorProperty) => {
       if (err) {
-        console.error('getProperty exception = ' + JSON.stringify(err));
+        console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getProperty result = ' + JSON.stringify(result));
+        console.info('getProperty result = ' + JSON.stringify(result));
       }
     });
   } catch (e) {
-    console.error('getProperty exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2416,12 +2461,13 @@ Obtains the executor property based on the request. This API uses a promise to r
   };
   try {
     userAuth.getProperty(request).then((result: osAccount.ExecutorProperty) => {
-      console.log('getProperty result = ' + JSON.stringify(result));
+      console.info('getProperty result = ' + JSON.stringify(result));
     }).catch((err: BusinessError) => {
-      console.error('getProperty error = ' + JSON.stringify(err));
+      console.error(`getProperty error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getProperty exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2470,11 +2516,12 @@ Obtains the specified property information of the associated executor based on t
     try {
       credInfo = await userIDM.getAuthInfo(osAccount.AuthType.PRIVATE_PIN);
     } catch (e) {
-      console.error('getAuthInfo exception = ' + JSON.stringify(e));
+      const err = e as BusinessError;
+      console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
       return;
     }
     if (credInfo.length == 0) {
-      console.log('no credential infos');
+      console.info('no credential infos');
       return;
     }
     let testCredentialId: Uint8Array = credInfo[0].credentialId;
@@ -2486,12 +2533,13 @@ Obtains the specified property information of the associated executor based on t
     try {
       let userAuth = new osAccount.UserAuth();
       userAuth.getPropertyByCredentialId(testCredentialId, keys).then((result: osAccount.ExecutorProperty) => {
-        console.log('getPropertyByCredentialId result = ' + JSON.stringify(result));
+        console.info('getPropertyByCredentialId result = ' + JSON.stringify(result));
       }).catch((err: BusinessError) => {
-        console.error('getPropertyByCredentialId error = ' + JSON.stringify(err));
+        console.error(`getPropertyByCredentialId error = code is ${err.code}, message is ${err.message}`);
       });
     } catch (e) {
-      console.error('getPropertyByCredentialId exception = ' + JSON.stringify(e));
+      const err = e as BusinessError;
+      console.error(`getPropertyByCredentialId exception = code is ${err.code}, message is ${err.message}`);
     }
   }
   ```
@@ -2537,13 +2585,14 @@ Sets the property for the initialization algorithm. This API uses an asynchronou
   try {
     userAuth.setProperty(request, (err: BusinessError) => {
       if (err) {
-        console.error('setProperty failed, error = ' + JSON.stringify(err));
+        console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setProperty successfully');
+        console.info('setProperty successfully');
       }
     });
   } catch (e) {
-    console.error('setProperty exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2592,12 +2641,13 @@ Sets the property for the initialization algorithm. This API uses a promise to r
   };
   try {
     userAuth.setProperty(request).then(() => {
-      console.log('setProperty successfully');
+      console.info('setProperty successfully');
     }).catch((err: BusinessError) => {
-      console.error('setProperty failed, error = ' + JSON.stringify(err));
+      console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('setProperty exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2649,13 +2699,14 @@ Prepares for remote authentication. This API uses a promise to return the result
       try {
         if (data.length > 0 && data[0].networkId != null) {
           userAuth.prepareRemoteAuth(data[0].networkId).then(() => {
-            console.log('prepareRemoteAuth successfully');
+            console.info('prepareRemoteAuth successfully');
           }).catch((err: BusinessError) => {
-            console.error('prepareRemoteAuth failed, error = ' + JSON.stringify(err));
+            console.error(`prepareRemoteAuth failed, error = code is ${err.code}, message is ${err.message}`);
           });
         }
       } catch (e) {
-        console.error('prepareRemoteAuth exception = ' + JSON.stringify(e));
+        const err = e as BusinessError;
+        console.error(`prepareRemoteAuth exception = code is ${err.code}, message is ${err.message}`);
       }
     }
   )
@@ -2724,12 +2775,13 @@ Performs authentication of the current user. This API uses an asynchronous callb
   try {
     userAuth.auth(challenge, authType, authTrustLevel, {
       onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-          console.log('auth result = ' + result);
-          console.log('auth extraInfo = ' + JSON.stringify(extraInfo));
+          console.info('auth result = ' + result);
+          console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
-    console.error('auth exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2801,12 +2853,13 @@ Starts user authentication based on the specified challenge value, authenticatio
   try {
     userAuth.auth(challenge, authType, authTrustLevel, options, {
       onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-          console.log('auth result = ' + result);
-          console.log('auth extraInfo = ' + JSON.stringify(extraInfo));
+          console.info('auth result = ' + result);
+          console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
-    console.error('auth exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2876,12 +2929,13 @@ Performs authentication of the specified user. This API uses an asynchronous cal
   try {
     userAuth.authUser(userID, challenge, authType, authTrustLevel, {
       onResult: (result,extraInfo) => {
-        console.log('authUser result = ' + result);
-        console.log('authUser extraInfo = ' + JSON.stringify(extraInfo));
+        console.info('authUser result = ' + result);
+        console.info('authUser extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
-    console.error('authUser exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`authUser exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2920,14 +2974,15 @@ Cancels an authentication.
   let challenge = new Uint8Array([0]);
   let contextId: Uint8Array = userAuth.auth(challenge, osAccount.AuthType.PIN, osAccount.AuthTrustLevel.ATL1, {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-      console.log('auth result = ' + result);
-      console.log('auth extraInfo = ' + JSON.stringify(extraInfo));
+      console.info('auth result = ' + result);
+      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
     }
   });
   try {
     userAuth.cancelAuth(contextId);
   } catch (e) {
-    console.error('cancelAuth exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`cancelAuth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2997,9 +3052,10 @@ Registers a PIN inputer.
           callback.onSetData(authSubType, password);
         }
     });
-    console.log('registerInputer success.');
+    console.info('registerInputer success.');
   } catch (e) {
-    console.error('registerInputer exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`registerInputer exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3073,9 +3129,10 @@ Registers a credential inputer.
           callback.onSetData(authSubType, password);
         }
     });
-    console.log('registerInputer success.');
+    console.info('registerInputer success.');
   } catch (e) {
-    console.error('registerInputer exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`registerInputer exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3111,9 +3168,9 @@ Unregisters this credential inputer.
   let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
   try {
     osAccount.InputerManager.unregisterInputer(authType);
-    console.log('unregisterInputer success.');
+    console.info('unregisterInputer success.');
   } catch(err) {
-    console.error('unregisterInputer err:' + JSON.stringify(err));
+    console.error(`unregisterInputer code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3179,12 +3236,13 @@ Authenticates a domain account.
   try {
     userAuth.auth(challenge, authType, authTrustLevel, {
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-          console.log('auth resultCode = ' + resultCode);
-          console.log('auth authResult = ' + JSON.stringify(authResult));
+          console.info('auth resultCode = ' + resultCode);
+          console.info('auth authResult = ' + JSON.stringify(authResult));
       }
     });
-  } catch (err) {
-    console.error('auth exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3653,9 +3711,9 @@ Registers a domain plug-in.
   }
   try {
     osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.log('registerPlugin success.');
+    console.info('registerPlugin success.');
   } catch(err) {
-    console.error('registerPlugin err:' + JSON.stringify(err));
+    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3683,9 +3741,9 @@ Unregisters this domain plug-in.
   ```ts
   try {
     osAccount.DomainAccountManager.unregisterPlugin();
-    console.log('unregisterPlugin success.');
+    console.info('unregisterPlugin success.');
   } catch(err) {
-    console.error('unregisterPlugin err:' + JSON.stringify(err));
+    console.error(`unregisterPlugin code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3740,12 +3798,13 @@ Authenticates a domain account.
   try {
     osAccount.DomainAccountManager.auth(domainAccountInfo, credential, {
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-        console.log('auth resultCode = ' + resultCode);
-        console.log('auth authResult = ' + JSON.stringify(authResult));
+        console.info('auth resultCode = ' + resultCode);
+        console.info('auth authResult = ' + JSON.stringify(authResult));
       }
     });
-  } catch (err) {
-    console.error('auth exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3794,12 +3853,13 @@ No permission is required since API version 11. Use the SDK of the latest versio
   try {
     osAccount.DomainAccountManager.authWithPopup({
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-        console.log('auth resultCode = ' + resultCode);
-        console.log('auth authResult = ' + JSON.stringify(authResult));
+        console.info('auth resultCode = ' + resultCode);
+        console.info('auth authResult = ' + JSON.stringify(authResult));
       }
     })
-  } catch (err) {
-    console.error('auth exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3850,12 +3910,13 @@ No permission is required since API version 11. Use the SDK of the latest versio
   try {
     osAccount.DomainAccountManager.authWithPopup(100, {
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-        console.log('authWithPopup resultCode = ' + resultCode);
-        console.log('authWithPopup authResult = ' + JSON.stringify(authResult));
+        console.info('authWithPopup resultCode = ' + resultCode);
+        console.info('authWithPopup authResult = ' + JSON.stringify(authResult));
       }
     })
-  } catch (err) {
-    console.error('authWithPopup exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`authWithPopup exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3904,13 +3965,14 @@ Checks whether a domain account exists.
   try {
     osAccount.DomainAccountManager.hasAccount(domainAccountInfo, (err: BusinessError, result: boolean) => {
       if (err) {
-        console.error('call hasAccount failed, error: ' + JSON.stringify(err));
+        console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('hasAccount result: ' + result);
+        console.info('hasAccount result: ' + result);
       }
     });
-  } catch (err) {
-    console.error('hasAccount exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3963,12 +4025,13 @@ Checks whether a domain account exists.
   }
   try {
     osAccount.DomainAccountManager.hasAccount(domainAccountInfo).then((result: boolean) => {
-      console.log('hasAccount result: ' + result);
+      console.info('hasAccount result: ' + result);
     }).catch((err: BusinessError) => {
-        console.error('call hasAccount failed, error: ' + JSON.stringify(err));
+        console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('hasAccount exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4015,13 +4078,14 @@ Updates the token of a domain account. An empty token means an invalid token. Th
   try {
     osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token, (err: BusinessError) => {
       if (err != null) {
-        console.error('updateAccountToken failed, error: ' + JSON.stringify(err));
+        console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('updateAccountToken successfully');
+        console.info('updateAccountToken successfully');
       }
     })
-  } catch (err) {
-    console.error('updateAccountToken exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4072,12 +4136,13 @@ Updates the token of a domain account. An empty token means an invalid token. Th
   let token = new Uint8Array([0])
   try {
     osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
-      console.log('updateAccountToken successfully');
+      console.info('updateAccountToken successfully');
     }).catch((err: BusinessError) => {
-        console.error('updateAccountToken failed, error: ' + JSON.stringify(err));
+        console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('updateAccountToken exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4127,13 +4192,14 @@ Obtains information about a specified domain account. This API uses an asynchron
     osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo,
       (err: BusinessError, result: osAccount.DomainAccountInfo) => {
       if (err) {
-        console.error('call getAccountInfo failed, error: ' + JSON.stringify(err));
+        console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAccountInfo result: ' + result);
+        console.info('getAccountInfo result: ' + result);
       }
     });
-  } catch (err) {
-    console.error('getAccountInfo exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4187,12 +4253,13 @@ Obtains information about a specified domain account. This API uses a promise to
   try {
     osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo)
       .then((result: osAccount.DomainAccountInfo) => {
-      console.log('getAccountInfo result: ' + result);
+      console.info('getAccountInfo result: ' + result);
     }).catch((err: BusinessError) => {
-      console.error('call getAccountInfo failed, error: ' + JSON.stringify(err));
+      console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAccountInfo exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4240,13 +4307,14 @@ Obtains the service access token of this domain account. This API uses an asynch
     osAccount.DomainAccountManager.getAccessToken(businessParams,
       (err: BusinessError, result: Uint8Array) => {
       if (err) {
-        console.error('getAccessToken failed, error: ' + JSON.stringify(err));
+        console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAccessToken result: ' + result);
+        console.info('getAccessToken result: ' + result);
       }
     });
-  } catch (err) {
-    console.error('getAccessToken exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4298,12 +4366,13 @@ Obtains the service access token of this domain account. This API uses a promise
   try {
     osAccount.DomainAccountManager.getAccessToken(businessParams)
       .then((result: Uint8Array) => {
-      console.log('getAccessToken result: ' + result);
+      console.info('getAccessToken result: ' + result);
     }).catch((err: BusinessError) => {
-      console.error('getAccessToken failed, error: ' + JSON.stringify(err));
+      console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAccessToken exception = ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4349,11 +4418,12 @@ Checks whether the authentication of a domain account has expired. This API uses
     {domain: 'testDomain', accountName: 'testAccountName'};
   try {
     osAccount.DomainAccountManager.isAuthenticationExpired(domainInfo).then((result: boolean) => {
-      console.log('isAuthenticationExpired, result: ' + result);
+      console.info('isAuthenticationExpired, result: ' + result);
     }).catch((err: BusinessError) => {
       console.error('isAuthenticationExpired err: ' + err);
     });
   } catch (e) {
+    const err = e as BusinessError;
     console.error('isAuthenticationExpired exception: ' + e);
   }
   ```
@@ -4419,13 +4489,14 @@ Opens a session to obtain the challenge value. This API uses an asynchronous cal
   try {
     userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
       if (err) {
-        console.error('openSession exception = ' + JSON.stringify(err));
+        console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('openSession challenge = ' + JSON.stringify(challenge));
+        console.info('openSession challenge = ' + JSON.stringify(challenge));
       }
     });
   } catch (e) {
-    console.error('openSession exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4473,10 +4544,11 @@ Opens a session. This API returns a challenge value, which can be used to determ
     userIDM.openSession(accountId).then((challenge: Uint8Array) => {
         console.info('openSession challenge = ' + JSON.stringify(challenge));
     }).catch((err: BusinessError) => {
-        console.error('openSession error = ' + JSON.stringify(err));
+        console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('openSession exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4537,12 +4609,13 @@ Adds credential information, including the credential type, subtype, and token (
     try {
     userIDM.addCredential(credentialInfo, {
       onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-        console.log('addCredential result = ' + result);
-        console.log('addCredential extraInfo = ' + extraInfo);
+        console.info('addCredential result = ' + result);
+        console.info('addCredential extraInfo = ' + extraInfo);
       }
     });
     } catch (e) {
-      console.error('addCredential exception = ' + JSON.stringify(e));
+      const err = e as BusinessError;
+      console.error(`addCredential exception = code is ${err.code}, message is ${err.message}`);
     }
   });
   ```
@@ -4612,12 +4685,13 @@ Updates credential information. This API uses an asynchronous callback to return
         try {
           userIDM.updateCredential(credentialInfo, {
             onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-                console.log('updateCredential result = ' + result);
-                console.log('updateCredential extraInfo = ' + extraInfo);
+                console.info('updateCredential result = ' + result);
+                console.info('updateCredential extraInfo = ' + extraInfo);
             }
           });
         } catch (e) {
-          console.error('updateCredential exception = ' + JSON.stringify(e));
+          const err = e as BusinessError;
+          console.error(`updateCredential exception = code is ${err.code}, message is ${err.message}`);
         }
       }
     });
@@ -4695,7 +4769,7 @@ Cancels an entry based on the challenge value.
   try {
     userIDM.cancel(challenge);
   } catch(err) {
-    console.error('cancel err:' + JSON.stringify(err));
+    console.error(`cancel code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4735,12 +4809,13 @@ Deletes a user based on the authentication token. This API uses a callback to re
   try {
     userIDM.delUser(token, {
       onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-        console.log('delUser result = ' + result);
-        console.log('delUser extraInfo = ' + JSON.stringify(extraInfo));
+        console.info('delUser result = ' + result);
+        console.info('delUser extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
-    console.error('delUser exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`delUser exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4784,12 +4859,13 @@ Deletes user credential information.
   try {
     userIDM.delCred(credentialId, token, {
       onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-          console.log('delCred result = ' + result);
-          console.log('delCred extraInfo = ' + JSON.stringify(extraInfo));
+          console.info('delCred result = ' + result);
+          console.info('delCred extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
-    console.error('delCred exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`delCred exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4827,13 +4903,14 @@ Obtains authentication information. This API uses an asynchronous callback to re
   try {
     userIDM.getAuthInfo((err: BusinessError, result: osAccount.EnrolledCredInfo[]) => {
       if (err) {
-        console.error('getAuthInfo exception = ' + JSON.stringify(err));
+        console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAuthInfo result = ' + JSON.stringify(result));
+        console.info('getAuthInfo result = ' + JSON.stringify(result));
       }
     });
   } catch (e) {
-    console.error('getAuthInfo exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4874,13 +4951,14 @@ Obtains authentication information of the specified type. This API uses an async
     userIDM.getAuthInfo(osAccount.AuthType.PIN,
       (err: BusinessError, result: osAccount.EnrolledCredInfo[]) => {
       if (err) {
-        console.error('getAuthInfo exception = ' + JSON.stringify(err));
+        console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAuthInfo result = ' + JSON.stringify(result));
+        console.info('getAuthInfo result = ' + JSON.stringify(result));
       }
     });
   } catch (e) {
-    console.error('getAuthInfo exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4924,12 +5002,13 @@ Obtains authentication information. This API uses a promise to return the result
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.getAuthInfo(osAccount.AuthType.PIN).then((result: osAccount.EnrolledCredInfo[]) => {
-      console.log('getAuthInfo result = ' + JSON.stringify(result))
+      console.info('getAuthInfo result = ' + JSON.stringify(result))
     }).catch((err: BusinessError) => {
-      console.error('getAuthInfo error = ' + JSON.stringify(err));
+      console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getAuthInfo exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4978,12 +5057,13 @@ Obtains authentication information. This API uses a promise to return the result
   };
   try {
     userIDM.getAuthInfo(options).then((result: osAccount.EnrolledCredInfo[]) => {
-      console.log('getAuthInfo result = ' + JSON.stringify(result))
+      console.info('getAuthInfo result = ' + JSON.stringify(result))
     }).catch((err: BusinessError) => {
-      console.error('getAuthInfo error = ' + JSON.stringify(err));
+      console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getAuthInfo exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -5035,10 +5115,11 @@ Obtains the ID of the enrolled credential based on the credential type and accou
     userIDM.getEnrolledId(authType, accountId).then((enrolledId: Uint8Array) => {
         console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
     }).catch((err: BusinessError) => {
-        console.error('getEnrolledId error = ' + JSON.stringify(err));
+        console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getEnrolledId exception = ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getEnrolledId exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -5110,7 +5191,7 @@ Called to notify the caller that data is obtained.
 | ---------- | --------------------------------------- | ---- | --------------- |
 | authSubType | [AuthSubType](#authsubtype8) | Yes| Authentication credential subtype.|
 | callback   | [IInputData](#iinputdata8)  | Yes  | Callback used to return the PIN data.|
-| options | [GetInputDataOptions](#getinputdataoptions-12) | Yes| Optional parameters for the callback function.|
+| options | [GetInputDataOptions](#getinputdataoptions12) | Yes| Optional parameters for the callback function.|
 
 **Example**
   ```ts
@@ -5128,7 +5209,7 @@ Called to notify the caller that data is obtained.
   };
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   let result = pinAuth.registerInputer(inputer);
-  console.log('registerInputer result: ' + result);
+  console.info('registerInputer result: ' + result);
   ```
 
 ## IUserAuthCallback<sup>8+</sup>
@@ -5158,8 +5239,8 @@ Called to return the result code and authentication result.
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-      console.log('auth result = ' + result);
-      console.log('auth extraInfo = ' + JSON.stringify(extraInfo));
+      console.info('auth result = ' + result);
+      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
     }
   };
   ```
@@ -5186,12 +5267,12 @@ Called to acquire identity authentication information.
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-      console.log('auth result = ' + result)
-      console.log('auth extraInfo = ' + JSON.stringify(extraInfo));
+      console.info('auth result = ' + result)
+      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
     },
     onAcquireInfo: (module: number, acquire: number, extraInfo: Uint8Array) => {
-      console.log('auth module = ' + module);
-      console.log('auth acquire = ' + acquire);
+      console.info('auth module = ' + module);
+      console.info('auth acquire = ' + acquire);
       console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
     }
   };
@@ -5224,7 +5305,7 @@ Called to return the result code and request result information.
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-      console.log('callback result = ' + result)
+      console.info('callback result = ' + result)
       console.info('callback extraInfo = ' + JSON.stringify(extraInfo));
     }
   };
@@ -5252,13 +5333,13 @@ Called to acquire IDM information.
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: Object) => {
-      console.log('callback result = ' + result)
-      console.log('callback onResult = ' + JSON.stringify(extraInfo));
+      console.info('callback result = ' + result)
+      console.info('callback onResult = ' + JSON.stringify(extraInfo));
     },
     onAcquireInfo: (module: number, acquire: number, extraInfo: Uint8Array) => {
-      console.log('callback module = ' + module);
-      console.log('callback acquire = ' + acquire);
-      console.log('callback onacquireinfo = ' + JSON.stringify(extraInfo));
+      console.info('callback module = ' + module);
+      console.info('callback acquire = ' + acquire);
+      console.info('callback onacquireinfo = ' + JSON.stringify(extraInfo));
     }
   };
   ```
@@ -5271,11 +5352,11 @@ Defines the request for obtaining property information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name   | Type                                                         | Mandatory  | Description                  |
-| -------- | ------------------------------------------------------------- | ----- | ----------------------- |
-| authType | [AuthType](#authtype8)                            | Yes   | Authentication credential type.       |
-| keys     | Array&lt;[GetPropertyType](#getpropertytype8)&gt; | Yes   | An array of the types of the properties to obtain.|
-| accountId<sup>12+</sup> | number | No| System account ID, which is **undefined** by default.|
+| Name   | Type                                                        | Read-Only | Optional| Description                  |
+| -------- | ------------------------------------------------------------ | ----- | ----- | ----------------------- |
+| authType | [AuthType](#authtype8)                            | No| No | Authentication credential type.       |
+| keys     | Array&lt;[GetPropertyType](#getpropertytype8)&gt; | No| No | An array of the types of the properties to obtain.|
+| accountId<sup>12+</sup> | number | No| Yes | System account ID, which is **undefined** by default.|
 
 ## SetPropertyRequest<sup>8+</sup>
 
@@ -5285,11 +5366,11 @@ Defines the request for setting property information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name   | Type                                            | Mandatory  | Description                |
-| -------- | ------------------------------------------------ | ----- | -------------------- |
-| authType | [AuthType](#authtype8)               | Yes   | Authentication credential type.    |
-| key     | [SetPropertyType](#setpropertytype8) | Yes   | Type of the property to set.|
-| setInfo  | Uint8Array                                       | Yes   | Information to set.    |
+| Name   | Type                                            | Read-Only | Optional| Description                |
+| -------- | ------------------------------------------------ | ----- | ----- | -------------------- |
+| authType | [AuthType](#authtype8)               | No| No | Authentication credential type.    |
+| key     | [SetPropertyType](#setpropertytype8) | No| No | Type of the property to set.|
+| setInfo  | Uint8Array                                       | No| No | Information to set.    |
 
 ## ExecutorProperty<sup>8+</sup>
 
@@ -5318,15 +5399,15 @@ Defines the authentication result information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name       | Type       | Mandatory  | Description             |
-| ------------ | ----------- | ----- | ----------------- |
-| token        | Uint8Array  | No   | Authentication token, which is left blank by default.     |
-| remainTimes  | number      | No   | Number of remaining authentication times, which is left blank by default.     |
-| freezingTime | number      | No   | Freezing time. By default, no value is passed in.     |
-| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Next freezing time, which is **undefined** by default.|
-| credentialId<sup>12+</sup> | Uint8Array  | No   | Credential ID, which is left blank by default.|
-| accountId<sup>12+</sup>         | number | No   | System account ID, which is **undefined** by default.|
-| pinValidityPeriod<sup>12+</sup> | number | No   | Authentication validity period, which is **undefined** by default.|
+| Name       | Type       |  Read-Only| Optional| Description             |
+| ------------ | ----------- | ----- | ----- | ----------------- |
+| token        | Uint8Array  | No   | Yes  | Authentication token, which is left blank by default.     |
+| remainTimes  | number      | No   | Yes  | Number of remaining authentication times, which is left blank by default.     |
+| freezingTime | number      | No   | Yes  | Freezing time. By default, no value is passed in.     |
+| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, which is **undefined** by default.|
+| credentialId<sup>12+</sup> | Uint8Array  | No   | Yes  | Credential ID, which is left blank by default.|
+| accountId<sup>12+</sup>         | number | No   | Yes  | System account ID, which is **undefined** by default.|
+| pinValidityPeriod<sup>12+</sup> | number | No   | Yes  | Authentication validity period, which is **undefined** by default.|
 
 ## CredentialInfo<sup>8+</sup>
 
@@ -5336,12 +5417,12 @@ Defines the credential information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name       | Type                                    | Mandatory  | Description             |
-| ------------ | ---------------------------------------- | ----- | ----------------- |
-| credType     | [AuthType](#authtype8)       | Yes   | Authentication credential type.    |
-| credSubType  | [AuthSubType](#authsubtype8) | Yes   | Authentication credential subtype.  |
-| token        | Uint8Array                           | Yes   | Authentication token.    |
-| accountId<sup>12+</sup>    | number | No   | System account ID, which is **undefined** by default.|
+| Name       | Type                                    |  Read-Only| Optional| Description             |
+| ------------ | ---------------------------------------- | ----- | ----- | ----------------- |
+| credType     | [AuthType](#authtype8)       | No   | No  | Authentication credential type.    |
+| credSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.  |
+| token        | Uint8Array                           | No   | No  | Authentication token.    |
+| accountId<sup>12+</sup>    | number | No   | Yes  | System account ID, which is **undefined** by default.|
 
 ## RequestResult<sup>8+</sup>
 
@@ -5351,9 +5432,9 @@ Defines the request result information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name       | Type       | Mandatory  | Description             |
-| ------------ | ----------- | ----- | ----------------- |
-| credentialId | Uint8Array  | No   | Credential ID, which is left blank by default.     |
+| Name       | Type       |  Read-Only| Optional| Description             |
+| ------------ | ----------- | ----- | ----- | ----------------- |
+| credentialId | Uint8Array  | No   | Yes  | Credential ID, which is left blank by default.     |
 
 ## EnrolledCredInfo<sup>8+</sup>
 
@@ -5363,14 +5444,14 @@ Defines enrolled credential information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name       | Type                                    | Mandatory  | Description             |
-| ------------ | ---------------------------------------- | ----- | ------------------- |
-| credentialId | Uint8Array                               | Yes   | Credential ID.      |
-| authType     | [AuthType](#authtype8)       | Yes   | Authentication credential type.  |
-| authSubType  | [AuthSubType](#authsubtype8) | Yes   | Credential subtype.|
-| templateId   | Uint8Array                               | Yes   | Authentication credential template ID.    |
-| isAbandoned<sup>20+</sup>   | boolean                      | No   | Whether the credential is abandoned, which is **undefined** by default. The abandoned credential may be stored as a backup credential for a period of time.    |
-| validityPeriod<sup>20+</sup>   | number                    | No   | Validity period of the credential. The default value is **undefined**.    |
+| Name       | Type                                    |  Read-Only| Optional| Description             |
+| ------------ | ---------------------------------------- | ----- | ----- | ------------------- |
+| credentialId | Uint8Array                               | No   | No  | Credential ID.      |
+| authType     | [AuthType](#authtype8)       | No   | No  | Authentication credential type.  |
+| authSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.|
+| templateId   | Uint8Array                               | No   | No  | Authentication credential template ID.    |
+| isAbandoned<sup>20+</sup>   | boolean                      | No   | Yes  | Whether the credential is abandoned, which is **undefined** by default. The abandoned credential may be stored as a backup credential for a period of time. The value **true** indicates that the credential is abandoned, and the value **false** indicates the opposite.    |
+| validityPeriod<sup>20+</sup>   | number                    | No   | Yes  | Validity period of the credential. The default value is **undefined**.    |
 
 ## GetPropertyType<sup>8+</sup>
 
@@ -5538,10 +5619,10 @@ Represents the system account information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| shortName<sup>12+</sup> | string | No  | Short name of the system account.<br>**System API**: This is a system API and is left blank by default.|
-| isLoggedIn<sup>12+</sup> | boolean | No  | Whether the system account is logged in. The value **true** means that the system account has logged in; the value **false** means the opposite.<br>**System API**: This is a system API. The default value is **false**.|
+| Name     | Type  | Read-Only | Optional | Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| shortName<sup>12+</sup> | string | No| Yes | Short name of the system account.<br>**System API**: This is a system API and is left blank by default.|
+| isLoggedIn<sup>12+</sup> | boolean | No| Yes | Whether the system account is logged in. The value **true** means that the system account has logged in; the value **false** means the opposite.<br>**System API**: This is a system API. The default value is **false**.|
 
 ## OsAccountType
 
@@ -5559,10 +5640,10 @@ Represents domain account information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| accountId<sup>10+</sup> | string | No  | Domain account ID.<br>**System API**: This is a system API and is **undefined** by default.|
-| isAuthenticated<sup>11+</sup>| boolean | No| Whether the domain account has been authenticated. The value **true** means that the specified domain account has been authenticated; the value **false** means the opposite.<br>**System API**: This is a system API. The default value is **false**.|
+| Name     | Type  | Read-Only | Optional | Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| accountId<sup>10+</sup> | string | No| Yes | Domain account ID.<br>**System API**: This is a system API and is **undefined** by default.|
+| isAuthenticated<sup>11+</sup>| boolean | No| Yes | Whether the domain account has been authenticated. The value **true** means that the specified domain account has been authenticated; the value **false** means the opposite.<br>**System API**: This is a system API. The default value is **false**.|
 
 ## ConstraintSourceTypeInfo<sup>9+</sup>
 
@@ -5572,10 +5653,10 @@ Defines the constraint source type.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| localId      | number | Yes  | ID of the target system account.    |
-| type | [ConstraintSourceType](#constraintsourcetype9) | Yes  | Type of the constrain source.|
+| Name     | Type  | Read-Only | Optional | Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| localId      | number | No| No | ID of the target system account.    |
+| type | [ConstraintSourceType](#constraintsourcetype9) | No| No | Type of the constrain source.|
 
 ## ConstraintSourceType<sup>9+</sup>
 
@@ -5600,10 +5681,10 @@ Presents the authentication status information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| remainTimes  | number | Yes  | Number of remaining times.  |
-| freezingTime | number | Yes  | Freezing time.|
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| remainTimes  | number | No| No | Number of remaining times.  |
+| freezingTime | number | No| No | Freezing time.|
 
 ## GetDomainAccessTokenOptions<sup>10+</sup>
 
@@ -5613,12 +5694,12 @@ Defines the options for obtaining a domain access token.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| domainAccountInfo  | [DomainAccountInfo](#domainaccountinfo8) | Yes  | Domain account information.  |
-| domainAccountToken | Uint8Array | Yes  | Token of the domain account.|
-| businessParams | Record<string, Object> | Yes  | Service parameters customized by the service party based on the request protocol.|
-| callerUid | number | Yes  | Unique identifier of the caller.|
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| domainAccountInfo  | [DomainAccountInfo](#domainaccountinfo8) | No| No | Domain account information.  |
+| domainAccountToken | Uint8Array | No| No | Token of the domain account.|
+| businessParams | Record<string, Object> | No| No | Service parameters customized by the service party based on the request protocol.|
+| callerUid | number | No| No | Unique identifier of the caller.|
 
 ## GetDomainAccountInfoOptions<sup>10+</sup>
 
@@ -5628,11 +5709,11 @@ Defines the options for obtaining domain account information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| accountName | string | Yes  | Domain account name.|
-| domain      | string | No  | Domain name, which is **undefined** by default.|
-| serverConfigId<sup>12+</sup>| string | No| ID of the server to which the domain account belongs, which is **undefined** by default.|
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| accountName | string | No| No | Domain account name.|
+| domain      | string | No| Yes | Domain name, which is **undefined** by default.|
+| serverConfigId<sup>12+</sup>| string | No| Yes | ID of the server to which the domain account belongs, which is **undefined** by default.|
 
 ## GetDomainAccountInfoPluginOptions<sup>10+</sup>
 
@@ -5642,9 +5723,9 @@ Defines the options for the domain plug-in to obtain the domain account informat
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| callerUid | number | Yes  | Unique identifier of the caller.|
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| callerUid | number | No| No | Unique identifier of the caller.|
 
 ## OsAccountSwitchEventData<sup>12+</sup>
 
@@ -5667,11 +5748,11 @@ Represents the optional parameter used to create a system account.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| shortName | string | Yes  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>Contain any of the following characters: \< \>\| : " * ? / \\<br>Contain any of the following: . or ..<br>Exceed 255 characters.|
-| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No  | Forbidden list of the preinstalled applications, which cannot be installed on the device. The value is empty by default.|
-| allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No  | Trustlist of the preinstalled applications, which can be installed on the device. The default value is **std::nullopt**.|
+| Name     | Type  | Read-Only | Optional  | Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| shortName | string | No| No  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>1. Contain any of the following characters: \< \>\| : " * ? / \\<br>2. Contain any of the following: . or ..<br>3. Exceed 255 characters.|
+| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Forbidden list of the preinstalled applications, which cannot be installed on the device. The value is empty by default.|
+| allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Trustlist of the preinstalled applications, which can be installed on the device. The default value is **std::nullopt**.|
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
@@ -5681,9 +5762,9 @@ Represents a set of optional parameters for creating a system account bound to t
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| shortName | string | Yes  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>Contain any of the following characters: \< \>\| : " * ? / \\<br>Contain any of the following: . or ..<br>Exceed 255 characters.|
+| Name     | Type  | Read-Only | Optional  | Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| shortName | string | No| No  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>1. Contain any of the following characters: \< \>\| : " * ? / \\<br>2. Contain any of the following: . or ..<br>3. Exceed 255 characters.|
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
@@ -5693,10 +5774,10 @@ Represents a set of optional parameters for [GetAuthInfo](#getauthinfo12).
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type                   | Mandatory| Description      |
-| --------- | ---------------------- | ---- | ---------- |
-| authType  | [AuthType](#authtype8) | No  | Authentication type, which is **undefined** by default.|
-| accountId | number                 | No  | System account ID, which is **undefined** by default.|
+| Name     | Type                   | Read-Only | Optional  | Description      |
+| --------- | ---------------------- | ---- | ---- | ---------- |
+| authType  | [AuthType](#authtype8) | No| Yes  | Authentication type, which is **undefined** by default.|
+| accountId | number                 | No| Yes  | System account ID, which is **undefined** by default.|
 
 ## AuthIntent<sup>12+</sup>
 
@@ -5721,11 +5802,11 @@ Represents a set of optional parameters for remote authentication.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name              | Type   | Mandatory| Description      |
-| ------------------ | ------ | ---- | ---------- |
-| verifierNetworkId  | string | No  | Network ID of the credential verifier, which is left blank by default.|
-| collectorNetworkId | string | No  | Network ID of the credential collector, which is left blank by default.|
-| collectorTokenId   | number | No  | Token ID of the credential collector, which is **undefined** by default.|
+| Name              | Type   | Read-Only | Optional| Description      |
+| ------------------ | ------ | ---- | ---- | ---------- |
+| verifierNetworkId  | string | No| Yes | Network ID of the credential verifier, which is left blank by default.|
+| collectorNetworkId | string | No| Yes | Network ID of the credential collector, which is left blank by default.|
+| collectorTokenId   | number | No| Yes | Token ID of the credential collector, which is **undefined** by default.|
 
 ## AuthOptions<sup>12+</sup>
 
@@ -5735,13 +5816,13 @@ Represents a set of optional parameters for [auth](#auth12).
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name              | Type   | Mandatory| Description      |
-| ------------------ | ------ | ---- | ---------- |
-| accountId          | number | No  | System account ID, which is **undefined** by default.|
-| authIntent         | [AuthIntent](#authintent12) | No  | Authentication intent, which is **undefined** by default.|
-| remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | No  | Remote authentication options, which is **undefined** by default.|
+| Name              | Type   | Read-Only | Optional| Description      |
+| ------------------ | ------ | ---- | ---- | ---------- |
+| accountId          | number | No| Yes | System account ID, which is **undefined** by default.|
+| authIntent         | [AuthIntent](#authintent12) | No| Yes | Authentication intent, which is **undefined** by default.|
+| remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | No| Yes | Remote authentication options, which is **undefined** by default.|
 
-## GetInputDataOptions <sup>12+</sup>
+## GetInputDataOptions<sup>12+</sup>
 
 Represents a set of optional parameters for [onGetData](#ongetdata8).
 
@@ -5749,6 +5830,6 @@ Represents a set of optional parameters for [onGetData](#ongetdata8).
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name              | Type   | Mandatory| Description      |
-| ------------------ | ------ | ---- | ---------- |
-| challenge          | Uint8Array | No  | Challenge value, which is **undefined** by default.|
+| Name              | Type   | Read-Only | Optional| Description      |
+| ------------------ | ------ | ---- | ---- | ---------- |
+| challenge          | Uint8Array | No| Yes | Challenge value, which is **undefined** by default.|

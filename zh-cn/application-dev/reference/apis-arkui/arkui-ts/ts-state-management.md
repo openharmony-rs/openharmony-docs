@@ -23,17 +23,13 @@
 
 AppStorage具体UI使用说明，详见[AppStorage(应用全局的UI状态存储)](../../../ui/state-management/arkts-appstorage.md)
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### ref<sup>12+</sup>
 
 static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
-如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应数据的引用。否则，返回undefined。
+如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应属性的引用。否则，返回undefined。
 
-与[link](#link10)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty)类型的变量。
+与[link](#link10)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -49,7 +45,7 @@ static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
 | 类型                                   | 说明                                                         |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) \| undefined | AppStorage中propName对应属性的引用，如果AppStorage中不存在对应的propName，则返回undefined。 |
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) \| undefined | AppStorage中propName对应属性的引用，如果AppStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 
@@ -64,11 +60,12 @@ refToPropA1?.set(48); // 同步修改AppStorage: refToPropA1.get() == refToPropA
 
 static setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
-与[ref](#ref12)接口类似，如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应数据的引用。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，并返回其引用。defaultValue须为T类型，可以为null或undefined。
+与[ref](#ref12)接口类似，如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应属性的引用。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，并返回其引用。defaultValue须为T类型，可以为null或undefined。
 
-与[setAndLink](#setandlink10)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty)类型的变量。
+与[setAndLink](#setandlink10)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
 
-> **说明：**<br/>
+> **说明：**
+>
 > 从API version 12开始，AppStorage支持[Map](../../../ui/state-management/arkts-appstorage.md#装饰map类型变量)、[Set](../../../ui/state-management/arkts-appstorage.md#装饰set类型变量)、[Date类型](../../../ui/state-management/arkts-appstorage.md#装饰date类型变量)，支持null、undefined以及[联合类型](../../../ui/state-management/arkts-appstorage.md#appstorage支持联合类型)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -80,13 +77,13 @@ static setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&l
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | AppStorage中的属性名。                                       |
-| defaultValue | T      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化对应的propName，defaultValue可以为null或undefined。 |
+| defaultValue | T      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化propName对应属性的值，defaultValue可以为null或undefined。 |
 
 **返回值：**
 
 | 类型                      | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) | AbstractProperty&lt;T&gt;的实例，为AppStorage中propName对应属性的引用。 |
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) | AbstractProperty&lt;T&gt;的实例，为AppStorage中propName对应属性的引用。 |
 
 **示例：**
 
@@ -136,7 +133,8 @@ static setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 
 与[link](#link10)接口类似，如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回该propName对应的属性的双向绑定数据。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，返回其双向绑定数据。defaultValue必须为T类型，从API version 12开始defaultValue可以为null或undefined。
 
-> **说明：**<br/>
+> **说明：**
+>
 > 从API version 12开始，AppStorage支持[Map](../../../ui/state-management/arkts-appstorage.md#装饰map类型变量)、[Set](../../../ui/state-management/arkts-appstorage.md#装饰set类型变量)、[Date类型](../../../ui/state-management/arkts-appstorage.md#装饰date类型变量)，支持null、undefined以及[联合类型](../../../ui/state-management/arkts-appstorage.md#appstorage支持联合类型)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -148,7 +146,7 @@ static setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | AppStorage中的属性名。                                       |
-| defaultValue | T      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化对应的propName，从API version 12开始，defaultValue可以为null或undefined。 |
+| defaultValue | T      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化propName对应属性的值，从API version 12开始，defaultValue可以为null或undefined。 |
 
 **返回值：**
 
@@ -200,7 +198,8 @@ static setAndProp&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 
 与[prop](#prop10)接口类似。如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回该propName对应的属性的单向绑定数据。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，返回其单向绑定数据。defaultValue必须为T类型，从API version 12开始defaultValue可以为null或undefined。
 
-> **说明：**<br/>
+> **说明：**
+>
 > 从API version 12开始，AppStorage支持[Map](../../../ui/state-management/arkts-appstorage.md#装饰map类型变量)、[Set](../../../ui/state-management/arkts-appstorage.md#装饰set类型变量)、[Date类型](../../../ui/state-management/arkts-appstorage.md#装饰date类型变量)，支持null、undefined以及[联合类型](../../../ui/state-management/arkts-appstorage.md#appstorage支持联合类型)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -212,7 +211,7 @@ static setAndProp&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | AppStorage中的属性名。                                       |
-| defaultValue | T      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化对应的propName，从API version 12开始，defaultValue可以为null或undefined。 |
+| defaultValue | T      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化propName对应属性的值，从API version 12开始，defaultValue可以为null或undefined。 |
 
 **返回值：**
 
@@ -287,7 +286,8 @@ static set&lt;T&gt;(propName: string, newValue: T): boolean
 
 在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值。如果newValue的值和propName对应属性的值相同，即不需要做赋值操作，状态变量不会通知UI刷新propName对应属性的值，从API version 12开始，newValue可以为null或undefined。
 
-> **说明：**<br/>
+> **说明：**
+>
 > 从API version 12开始，AppStorage支持[Map](../../../ui/state-management/arkts-appstorage.md#装饰map类型变量)、[Set](../../../ui/state-management/arkts-appstorage.md#装饰set类型变量)、[Date类型](../../../ui/state-management/arkts-appstorage.md#装饰date类型变量)，支持null、undefined以及[联合类型](../../../ui/state-management/arkts-appstorage.md#appstorage支持联合类型)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -321,7 +321,8 @@ static setOrCreate&lt;T&gt;(propName: string, newValue: T): void
 如果propName已经在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，并且newValue和propName对应属性的值不同，则设置propName对应属性的值为newValue，否则状态变量不会通知UI刷新propName对应属性的值。
 如果propName不存在，则创建propName属性，值为newValue。setOrCreate只可以创建单个AppStorage的键值对，如果想创建多个AppStorage键值对，可以多次调用此方法。从API version 12开始，newValue可以为null或undefined。
 
-> **说明：**<br/>
+> **说明：**
+>
 > 从API version 12开始，AppStorage支持[Map](../../../ui/state-management/arkts-appstorage.md#装饰map类型变量)、[Set](../../../ui/state-management/arkts-appstorage.md#装饰set类型变量)、[Date类型](../../../ui/state-management/arkts-appstorage.md#装饰date类型变量)，支持null、undefined以及[联合类型](../../../ui/state-management/arkts-appstorage.md#appstorage支持联合类型)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -464,8 +465,9 @@ static Link(propName: string): any
 
 如果AppStorage中不存在propName，则返回undefined。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[link10+](#link10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[link](#link10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -495,8 +497,9 @@ static SetAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 
 与[Link](#linkdeprecated)接口类似，如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回该propName对应的属性的双向绑定数据。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，并返回其双向绑定数据。defaultValue必须为T类型，且不能为null或undefined。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[setAndLink10+](#setandlink10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setAndLink](#setandlink10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -505,7 +508,7 @@ static SetAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | AppStorage中的属性名。                                       |
-| defaultValue | T      | 是   | 当propName在AppStorage中不存在，使用defaultValue在AppStorage中初始化对应的propName，defaultValue不能为null或undefined。 |
+| defaultValue | T      | 是   | 当propName在AppStorage中不存在，使用defaultValue在AppStorage中初始化propName对应属性的值，defaultValue不能为null或undefined。 |
 
 **返回值：**
 
@@ -526,9 +529,10 @@ static Prop(propName: string): any
 
 与[AppStorage](../../../ui/state-management/arkts-appstorage.md)中对应的propName建立单向属性绑定。如果给定的propName在AppStorage中存在，则返回与AppStorage中propName对应属性的单向绑定数据。如果AppStorage中不存在propName，则返回undefined。单向绑定数据的修改不会被同步回AppStorage中。
 
-> **说明：**<br/>
+> **说明：**
+>
 > Prop仅支持简单类型。
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[prop10+](#prop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[prop](#prop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -558,8 +562,9 @@ static SetAndProp&lt;S&gt;(propName: string, defaultValue: S): SubscribedAbstrac
 
 与[Prop](#propdeprecated)接口类似。如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回该propName对应的属性的单向绑定数据。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，返回其单向绑定数据。defaultValue必须为S类型，且不能为null或undefined。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[setAndProp10+](#setandprop10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setAndProp](#setandprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -568,7 +573,7 @@ static SetAndProp&lt;S&gt;(propName: string, defaultValue: S): SubscribedAbstrac
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | AppStorage中的属性名。                                       |
-| defaultValue | S      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化对应的propName，defaultValue不能为null或undefined。 |
+| defaultValue | S      | 是   | 当propName在AppStorage中不存在时，使用defaultValue在AppStorage中初始化propName对应属性的值，defaultValue不能为null或undefined。 |
 
 **返回值：**
 
@@ -588,8 +593,9 @@ static Has(propName: string): boolean
 
 判断propName对应的属性是否在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[has10+](#has10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[has](#has10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -616,8 +622,9 @@ static Get&lt;T&gt;(propName: string): T | undefined
 
 获取propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中对应的属性值。如果不存在则返回undefined。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[get10+](#get10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[get](#get10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -643,10 +650,11 @@ let value: number = AppStorage.Get('PropA') as number; // 47
 
 static Set&lt;T&gt;(propName: string, newValue: T): boolean
 
-在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值。
+在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值，如果newValue的值和propName对应属性的值相同，即不需要做赋值操作，状态变量不会通知UI刷新propName对应属性的值，从API version 12开始，newValue可以为null或undefined。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[set10+](#set10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[set](#set10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -655,13 +663,13 @@ static Set&lt;T&gt;(propName: string, newValue: T): boolean
 | 参数名   | 类型   | 必填 | 说明                        |
 | -------- | ------ | ---- | ------------------------------- |
 | propName | string | 是   | AppStorage中的属性名。          |
-| newValue | T      | 是   | 属性值，不能为null或undefined。 |
+| newValue | T      | 是   | 属性值，从API version 12开始可以为null或undefined。 |
 
 **返回值：**
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 如果AppStorage中不存在propName对应的属性，或者设置的newValue是undefined或者null，返回false。设置成功则返回true。 |
+| boolean | 如果AppStorage中不存在propName对应的属性，返回false。设置成功则返回true。 |
 
 **示例：**
 ```ts
@@ -678,8 +686,9 @@ static SetOrCreate&lt;T&gt;(propName: string, newValue: T): void
 
 newValue不能为null或undefined。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[setOrCreate10+](#setorcreate10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setOrCreate](#setorcreate10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -705,8 +714,9 @@ static Delete(propName: string): boolean
 
 属性的订阅者为[Link](#linkdeprecated)、[Prop](#propdeprecated)等接口绑定的propName，以及[\@StorageLink('propName')](../../../ui/state-management/arkts-appstorage.md#storagelink)和[\@StorageProp('propName')](../../../ui/state-management/arkts-appstorage.md#storageprop)。如果自定义组件中使用\@StorageLink('propName')和\@StorageProp('propName')或者SubscribedAbstractProperty实例依旧对propName有同步关系，则该属性不能从AppStorage中删除。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[delete10+](#delete10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[delete](#delete10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -738,8 +748,9 @@ static Keys(): IterableIterator&lt;string&gt;
 
 返回[AppStorage](../../../ui/state-management/arkts-appstorage.md)中所有的属性名。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[keys10+](#keys10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[keys](#keys10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -762,8 +773,9 @@ static staticClear(): boolean
 
 删除所有的属性。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 9 开始废弃，推荐使用[clear10+](#clear10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，推荐使用[clear](#clear10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -787,8 +799,9 @@ static Clear(): boolean
 
 订阅者的含义参考[delete](#delete10)。
 
-> **说明：**<br/>
-> 从API version 9 开始支持，从API version 10 开始废弃，推荐使用[clear10+](#clear10)替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，推荐使用[clear](#clear10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -811,8 +824,9 @@ static IsMutable(propName: string): boolean
 
 返回[AppStorage](../../../ui/state-management/arkts-appstorage.md)中propName对应的属性是否是可变的。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -831,7 +845,7 @@ static IsMutable(propName: string): boolean
 **示例：**
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
-let res: boolean = AppStorage.IsMutable('simpleProp');
+let res: boolean = AppStorage.IsMutable('PropA');
 ```
 
 
@@ -841,8 +855,9 @@ static Size(): number
 
 返回[AppStorage](../../../ui/state-management/arkts-appstorage.md)中的属性数量。
 
-> **说明：**<br/>
-> 从API version 7 开始支持，从API version 10 开始废弃，推荐使用[size10+](#size10)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[size](#size10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -864,12 +879,6 @@ let res: number = AppStorage.Size(); // 1
 
 LocalStorage具体UI使用说明，详见[LocalStorage(页面级UI状态存储)](../../../ui/state-management/arkts-localstorage.md)
 
-**卡片能力：** 从API version 9开始，支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### constructor<sup>9+</sup>
 
 constructor(initializingProperties?: Object)
@@ -886,7 +895,7 @@ constructor(initializingProperties?: Object)
 
 | 参数名                    | 类型     | 必填   | 说明                                     |
 | ---------------------- | ------ | ---- | ---------------------------------------- |
-| initializingProperties | Object | 否    | 用initializingProperties包含的属性和数值初始化LocalStorage。initializingProperties不能为undefined。 |
+| initializingProperties | Object | 否    | 用initializingProperties包含的属性和数值初始化LocalStorage。initializingProperties不能为undefined。默认值为空对象，即初始化时不在LocalStorage中新增属性。 |
 
 **示例：**
 ```ts
@@ -1068,9 +1077,9 @@ let res2: boolean = storage.setOrCreate('PropB', null); // true (API12及之后�
 
 ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
-如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应数据的引用。否则，返回undefined。
+如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应属性的引用。否则，返回undefined。
 
-与[link](#link9)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty)类型的变量。
+与[link](#link9)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1086,7 +1095,7 @@ ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
 | 类型                                   | 说明                                                         |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) \| undefined | LocalStorage中propName对应属性的引用，如果LocalStorage中不存在对应的propName，则返回undefined。 |
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) \| undefined | LocalStorage中propName对应属性的引用，如果LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 
@@ -1102,11 +1111,12 @@ refToPropA1?.set(48); // refToPropA1.get() == refToPropA2.get() == 48
 
 setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
-与[ref](#ref12-1)接口类似，如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应数据的引用。如果不存在，则使用defaultValue在LocalStorage中创建和初始化propName对应的属性，并返回其引用。defaultValue须为T类型，可以为null或undefined。
+与[ref](#ref12-1)接口类似，如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应属性的引用。如果不存在，则使用defaultValue在LocalStorage中创建和初始化propName对应的属性，并返回其引用。defaultValue须为T类型，可以为null或undefined。
 
-与[setAndLink](#setandlink9)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty)类型的变量。
+与[setAndLink](#setandlink9)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
 
-> **说明：**<br/>
+> **说明：**
+>
 > 从API version 12开始，LocalStorage支持[Map](../../../ui/state-management/arkts-localstorage.md#装饰map类型变量)、[Set](../../../ui/state-management/arkts-localstorage.md#装饰set类型变量)、[Date类型](../../../ui/state-management/arkts-localstorage.md#装饰date类型变量)，支持null、undefined以及[联合类型](../../../ui/state-management/arkts-localstorage.md#localstorage支持联合类型)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1118,13 +1128,13 @@ setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | LocalStorage中的属性名。                                     |
-| defaultValue | T      | 是   | 当propName在LocalStorage中不存在时，使用defaultValue在LocalStorage中初始化对应的propName，defaultValue可以为null或undefined。 |
+| defaultValue | T      | 是   | 当propName在LocalStorage中不存在时，使用defaultValue在LocalStorage中初始化propName对应属性的值，defaultValue可以为null或undefined。 |
 
 **返回值：**
 
 | 类型                      | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty) | AbstractProperty&lt;T&gt;的实例，为LocalStorage中propName对应属性的引用。 |
+| [AbstractProperty&lt;T&gt;](#abstractproperty12) | AbstractProperty&lt;T&gt;的实例，为LocalStorage中propName对应属性的引用。 |
 
 **示例：**
 
@@ -1194,7 +1204,7 @@ setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstractProper
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | LocalStorage中的属性名。                                     |
-| defaultValue | T      | 是   | 当propName在LocalStorage中不存在时，使用defaultValue在LocalStorage中初始化对应的propName，从API version 12开始defaultValue可以为null或undefined。 |
+| defaultValue | T      | 是   | 当propName在LocalStorage中不存在时，使用defaultValue在LocalStorage中初始化propName对应属性的值，从API version 12开始defaultValue可以为null或undefined。 |
 
 **返回值：**
 
@@ -1266,7 +1276,7 @@ setAndProp&lt;S&gt;(propName: string, defaultValue: S): SubscribedAbstractProper
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | 是   | LocalStorage中的属性名。                                     |
-| defaultValue | S      | 是   | 当propName在LocalStorage中不存在，使用defaultValue在LocalStorage中初始化对应的propName，从API version 12开始defaultValue可以为null或undefined。 |
+| defaultValue | S      | 是   | 当propName在LocalStorage中不存在，使用defaultValue在LocalStorage中初始化propName对应属性的值，从API version 12开始defaultValue可以为null或undefined。 |
 
 **返回值：**
 
@@ -1440,11 +1450,9 @@ static GetShared(): LocalStorage
 let storage: LocalStorage = LocalStorage.GetShared();
 ```
 
-## AbstractProperty
+## AbstractProperty<sup>12+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+AbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的引用。
 
 ### get<sup>12+</sup>
 
@@ -1477,7 +1485,7 @@ set(newValue: T): void
 
 更新[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中所引用属性的数据，newValue必须是T类型，可以为null或undefined。
 
-> **说明：**<br/>
+> **说明：**
 >
 > 从API version 12开始，AppStorage/LocalStorage支持Map、Set、Date类型，支持null、undefined以及联合类型。
 
@@ -1539,11 +1547,7 @@ ref1?.info(); //  ref1.info()='PropA'
 
 ## SubscribedAbstractProperty
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中同步的属性。
 
 ### get<sup>9+</sup>
 
@@ -1656,20 +1660,17 @@ info(): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型                                  | 必填 | 说明                                                     |
-| ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| key          | string                                | 是   | 属性名。                                                     |
-| defaultValue | number \| string \| boolean \| Object | 是   | 在PersistentStorage和AppStorage未查询到时，则使用默认值初始化它。从API version 12开始，defaultValue允许为null或undefined。 |
+| 名称       | 类型                                  | 只读                            | 可选 | 说明                                                     |
+| ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| key          | string                                | 否                               | 否  | 属性名。                                                     |
+| defaultValue | number \| string \| boolean \| Object | 否 | 否 | 在PersistentStorage和AppStorage未查询到时，则使用默认值初始化它。从API version 12开始，defaultValue允许为null或undefined。 |
 
 ## PersistentStorage
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储UI状态)](../../../ui/state-management/arkts-persiststorage.md)
 
-> **说明：**<br/>
+> **说明：**
+>
 > 从API version 12开始，PersistentStorage支持null、undefined。
 
 ### persistProp<sup>10+</sup>
@@ -1789,8 +1790,9 @@ static PersistProp&lt;T&gt;(key: string, defaultValue: T): void
 根据上述的初始化流程，如果AppStorage中有该属性，则会使用其值，覆盖掉PersistentStorage文件中的值。由于AppStorage是内存内数据，该行为会导致数据丧失持久化能力。
 
 
-> **说明：**<br/>
-> 从API version 10开始废弃，推荐使用[persistProp10+](#persistprop10)替代。
+> **说明：**
+>
+> 从API version 10开始废弃，推荐使用[persistProp](#persistprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1817,8 +1819,9 @@ static DeleteProp(key: string): void
 [PersistProp](#persistpropdeprecated)的逆向操作。将key对应的属性从[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续[AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作，对PersistentStorage不会再有影响。
 
 
-> **说明：**<br/>
-> 从API version 10开始废弃，推荐使用[deleteProp10+](#deleteprop10)替代。
+> **说明：**
+>
+> 从API version 10开始废弃，推荐使用[deleteProp](#deleteprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1840,8 +1843,9 @@ static PersistProps(properties: {key: string; defaultValue: any;}[]): void
 
 行为和[PersistProp](#persistpropdeprecated)类似，不同在于可以一次性持久化多个数据，适合在应用启动的时候初始化。
 
-> **说明：**<br/>
-> 从API version 10开始废弃，推荐使用[persistProps10+](#persistprops10)替代。
+> **说明：**
+>
+> 从API version 10开始废弃，推荐使用[persistProps](#persistprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1863,8 +1867,9 @@ static Keys(): Array&lt;string&gt;
 
 返回所有持久化属性的属性名的数组。
 
-> **说明：**<br/>
-> 从API version 10开始废弃，推荐使用[keys10+](#keys10-1)替代。
+> **说明：**
+>
+> 从API version 10开始废弃，推荐使用[keys](#keys10-1)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1886,18 +1891,14 @@ let keys: Array<string> = PersistentStorage.Keys();
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型                        | 必填 | 说明                                                     |
-| ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
-| key          | string                      | 是   | 环境变量名称，支持的范围详见[内置环境变量说明](#内置环境变量说明)。 |
-| defaultValue | number \| string \| boolean | 是   | 查询不到环境变量key，则使用defaultValue作为默认值存入AppStorage中。 |
+| 名称       | 类型                        | 只读             | 可选 | 说明                                                     |
+| ------------ | --------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| key          | string                      | 否                     | 否  | 环境变量名称，支持的范围详见[内置环境变量说明](#内置环境变量说明)。 |
+| defaultValue | number \| string \| boolean | 否 | 否  | 查询不到环境变量key，则使用defaultValue作为默认值存入AppStorage中。 |
 
 ## Environment
 
 Environment具体使用说明，详见[Environment(设备环境查询)](../../../ui/state-management/arkts-environment.md)
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### envProp<sup>10+</sup>
 
@@ -1993,8 +1994,9 @@ static EnvProp&lt;S&gt;(key: string, value: S): boolean
 
 在没有调用EnvProp的情况下，就使用AppStorage读取环境变量是错误的。
 
-> **说明：**<br/>
-> 从API version 10开始废弃，推荐使用[envProp10+](#envprop10)替代。
+> **说明：**
+>
+> 从API version 10开始废弃，推荐使用[envProp](#envprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2025,8 +2027,9 @@ static EnvProps(props: {key: string; defaultValue: any;}[]): void
 
 和[EnvProp](#envpropdeprecated)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。
 
-> **说明：**<br/>
-> 从API version 10开始废弃，推荐使用[envProps10+](#envprops10)替代。
+> **说明：**
+>
+> 从API version 10开始废弃，推荐使用[envProps](#envprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2051,8 +2054,9 @@ static Keys(): Array&lt;string&gt;
 
 返回环境变量的属性key的数组。
 
-> **说明：**<br/>
-> 从API version 10开始废弃，推荐使用[keys10+](#keys10-2)替代。
+> **说明：**
+>
+> 从API version 10开始废弃，推荐使用[keys](#keys10-2)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

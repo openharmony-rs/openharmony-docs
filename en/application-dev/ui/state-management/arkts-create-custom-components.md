@@ -83,7 +83,7 @@ The definition of a custom component must start with the \@Component struct foll
   
 ### \@Component
 
-The \@Component decorator can decorate only the structs declared by the **struct** keyword. When being decorated by \@Component, a struct has the componentization capability. You must implement the **build** function for it to describe the UI. Each struct can be decorated by only one \@Component. \@Component can accept an optional parameter of the Boolean type.
+The \@Component decorator can decorate only the structs declared by the **struct** keyword. The decorated struct has the componentization capability and needs to implement the build method to describe the UI. One struct can be decorated by only one \@Component. \@Component can accept an optional parameter of the Boolean type.
 
   > **NOTE**
   >
@@ -99,7 +99,7 @@ The \@Component decorator can decorate only the structs declared by the **struct
   }
   ```
 
- #### freezeWhenInactive<sup>11+</sup>
+ **freezeWhenInactive<sup>11+</sup>**
   Describes the [custom component freezing](arkts-custom-components-freeze.md) option.
 
   | Name  | Type  | Mandatory| Description                                                        |
@@ -143,7 +143,7 @@ The @Entry decorator marks a custom component as the entry point of a page. A si
   }
   ```
 
-#### EntryOptions<sup>10+</sup>
+**EntryOptions<sup>10+</sup>**
 
   Describes the named route options.
 
@@ -151,7 +151,7 @@ The @Entry decorator marks a custom component as the entry point of a page. A si
   | ------ | ------ | ---- | ------------------------------------------------------------ |
   | routeName | string | No| Name of the target named route.|
   | storage | [LocalStorage](arkts-localstorage.md) | No| Storage of the page-level UI state. If no value is passed, the framework creates a new LocalStorage instance as the default value.|
-  | useSharedStorage<sup>12+</sup> | boolean | No| Whether to use the LocalStorage instance passed by [LocalContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared [LocalStorage](arkts-localstorage.md) instance. **false**: Do not use the shared [LocalStorage](arkts-localstorage.md) instance.|
+  | useSharedStorage<sup>12+</sup> | boolean | No| Whether to use the LocalStorage instance passed by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared [LocalStorage](arkts-localstorage.md) instance. **false**: Do not use the shared [LocalStorage](arkts-localstorage.md) instance.|
 
   > **NOTE**
   >
@@ -194,7 +194,7 @@ A custom component can also implement member variables with the following restri
 
 ## Rules for Custom Component Parameters
 
-As can be seen from preceding examples, a custom component can be created using a **build** method. During the creation process, the custom component's parameters are initialized based on the decorator rules.
+The following example shows how to create a custom component in the build method and initialize the parameters of the custom component based on the rules of the decorator.
 
 ```ts
 @Component
@@ -344,7 +344,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   }
   ```
 
-- The **switch** syntax is not allowed. If conditional judgment is required, use the [if](./arkts-rendering-control-ifelse.md) statement. Refer to the code snippet below.
+- The switch syntax is not allowed. When condition judgment is required, use [if](../rendering-control/arkts-rendering-control-ifelse.md). Refer to the code snippet below.
 
   ```ts
   build() {
@@ -425,7 +425,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   Therefore, do not change any state variable in the **build()** or \@Builder decorated method of a custom component. Otherwise, loop rendering may result. Depending on the update mode (full update or minimum update), **Text('${this.count++}')** imposes different effects:
 
   - Full update (API version 8 or before): ArkUI may fall into an infinite re-rendering loop because each rendering of the **Text** component changes the application state and causes a new round of re-renders. When **this.columnColor** is changed, the entire **build** function is executed. As a result, the text bound to **Text(${this.count++})** is also changed. Each time **Text(${this.count++})** is re-rendered, the **this.count** state variable is updated, and a new round of **build** execution follows, resulting in an infinite loop.
-  - Minimized update (API version 9 or later): Changing **this.columnColor** updates the **Column** component, but not the **Text** component. The entire **Text** component is updated only when **this.textColor** changes. During the update, all of the component's attribute functions are executed. As a result, the value of **Text(${this.count++})** is incremented. Currently, the UI is updated by component. If an attribute of a component changes, the entire component is updated. Therefore, the overall update link is as follows: **this.textColor** = **Color.Pink** -> **Text** re-render -> **this.count++** -> **Text** re-render. It should be noted that this way of writing causes the **Text** component to be rendered twice during the initial render, which affects the performance.
+  - Minimum update (API version 9 or later): When this.columnColor is updated, only the Column component is updated, and the Text component is not updated. The entire **Text** component is updated only when **this.textColor** changes. During the update, all of the component's attribute functions are executed. As a result, the value of **Text(${this.count++})** is incremented. Currently, the UI is updated by component. If an attribute of a component changes, the entire component is updated. The overall link update is as follows: this.textColor = Color.Pink -&gt;Text component update -&gt;this.count++ -&gt;Text component update. It should be noted that this way of writing causes the **Text** component to be rendered twice during the initial render, which affects the performance.
 
   The behavior of changing the application state in the **build** function may be more covert than that in the preceding example. The following are some examples:
 
@@ -478,4 +478,35 @@ struct MyComponent {
 > **NOTE**
 >
 > When applying styles to a custom component (**ChildComponent** in this example), the ArkUI framework implicitly wraps **ChildComponent** with an invisible container component. These styles are actually applied to this container component instead of the **Button** component inside **ChildComponent**. This behavior can be observed in rendering results: The red background color is not applied directly to the **Button** component; instead, it is rendered on the invisible container component that wraps the **Button** component.
+
+## Constraints
+
+### V1 custom components do not support static code blocks.
+
+Static code blocks are used to initialize static attributes.
+- When you write static code blocks in a custom component decorated with \@Component or \@CustomDialog, the code will not be executed.
+
+  ```ts
+  @Component
+  struct MyComponent {
+    static a: string = '';
+    // The static code block does not take effect, and the value of a is still an empty string.
+    static {
+      this.a = 'hello world';
+    }
+  }
+  ```
+
+- It is supported in the custom component decorated with \@ComponentV2.
+
+  ```ts
+  @ComponentV2
+  struct MyComponentV2 {
+    static a: string = '';
+    // The static code block takes effect, and the value of a changes to hello world.
+    static {
+      this.a = 'hello world';
+    }
+  }
+  ```
 <!--no_check-->

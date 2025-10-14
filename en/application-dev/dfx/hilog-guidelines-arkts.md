@@ -25,8 +25,7 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 | warn(domain: number, tag: string, format: string, ...args: any[]) | Outputs WARN logs, which indicate issues that have little impact on the system.| 
 | error(domain: number, tag: string, format: string, ...args: any[]) | Outputs ERROR logs, which indicate program or functional errors.| 
 | fatal(domain: number, tag: string, format: string, ...args: any[]) | Outputs FATAL logs, which indicate program or functionality crashes that cannot be rectified.| 
-| setMinLogLevel(level: LogLevel) | Sets the minimum log level.<br>If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the setting does not take effect.<br>Note: This API is supported since API version 15.| 
-
+| setMinLogLevel(level: LogLevel) | Sets the minimum log level.<br>Note: This API is supported since API version 15.| 
 
 ### Parameters
 
@@ -51,6 +50,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
   | o/O | Prints logs of the **object**, **undefined**, and **null** types.<br>This flag is supported since API version 20.| { 'name': "Jack", 'age': 22 } | 
 
   You can set multiple parameters in the **format** string, for example, **%{public}s World**, where **%{public}s** indicates a variable of the string type and its value is defined by **args**. 
+
+  The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding privacy identifiers is used to print logs.
 
 - **args**: parameters of the types specified by **specifier** in **format**. This parameter can be left blank. The number and type of parameters must match **specifier**.
 
@@ -156,7 +157,7 @@ Add a click event in a button, which prints a log when the button is clicked.
 
 5. At the bottom of DevEco Studio, switch to the **Log** tab and set the filter criteria.
 
-   Specifically, select the current device and process, set the log level to **Verbose**, and enter **testTag** in the search box. Then, only the logs that meet the filter criteria are displayed.
+   Select the current device and process, set the log level to Verbose, and set the search content to testTag. Then, only the logs that meet the filter criteria are displayed.
 
 <!--RP3-->
    The log result is as follows:

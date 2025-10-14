@@ -1,10 +1,19 @@
 # log.h
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei; @buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 Defines the logging functions of the HiLog module. Before outputting logs, you must define the service domain, and log tag, use the API with the specified log type and level, and specify the privacy identifier.<br> **Service domain**: service domain of logs. You can define the value as required. Its value is a hexadecimal integer ranging from 0x0 to 0xFFFF. If the value exceeds the range, logs cannot be printed.<br> **Log tag**: a string used to identify the class, file, or service behavior.<br> **Log level**: DEBUG, INFO, WARN, ERROR, or FATAL.<br> **Parameter format**: printf format string, which starts with a % character, including a parameter type identifier and a variable parameter.<br> **Privacy identifier**: **{public}** or **{private}** added between the % character and the parameter type identifier in each parameter. **Note**: If no privacy identifier is added, the parameter is considered to be **private**.
 
-**Library**: libhilog.so
+**Reference file**: <hilog/log.h>
+
+**Library**: libhilog_ndk.z.so
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -21,6 +30,16 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 | [LogType](#logtype) | LogType | Enumerates the log types. You can use this function to specify the type of output logs. Currently, only **LOG_APP** is available.<br>|
 | [LogLevel](#loglevel) | LogLevel | Enumerates the log levels. You are advised to select log levels based on their respective use cases. Log levels:<br> **DEBUG**: provides more detailed process information than INFO logs to help developers analyze service processes and locate faults. DEBUG logs are not recorded in official versions by default. They are available in debug versions or in official versions with the debug function enabled.<br> **INFO**: indicates the key service process nodes and exceptions (for example, no network signal or login failure) that occur during service running. These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions.<br> **WARN**: indicates a severe, unexpected fault that has little impact on users and can be rectified by the programs themselves or through simple operations.<br> **ERROR**: indicates a program or functional error that affects the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data.<br> **FATAL**: indicates that a program or functionality is about to crash and the fault cannot be rectified.<br>|
 
+### Macros
+
+| Name| Description|
+| -- | -- |
+| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates DEBUG logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
+| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates INFO logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
+| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates WARN logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates ERROR logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates FATAL logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
+
 ### Functions
 
 | Name| typedef Keyword| Description|
@@ -30,14 +49,9 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 | [int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen,const char *message, size_t messageLen)](#oh_log_printmsgbylen) | - |  Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.|
 | [int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)](#oh_log_vprint) | - |  Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format. The variables are of the **va_list** type.|
 | [bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)](#oh_log_isloggable) | - | Checks whether logs of the specified service domain, tag, and level can be printed.|
-| [OH_LOG_DEBUG(type, ...)((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))](#oh_log_debug) | - | Indicates DEBUG logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>|
-| [OH_LOG_INFO(type, ...)((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))](#oh_log_info) | - | Indicates INFO logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>|
-| [OH_LOG_WARN(type, ...)((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))](#oh_log_warn) | - | Indicates WARN logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.|
-| [OH_LOG_ERROR(type, ...)((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))](#oh_log_error) | - | Indicates ERROR logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.|
-| [OH_LOG_FATAL(type, ...)((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))](#oh_log_fatal) | - | Indicates FATAL logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>|
 | [typedef void (\*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag,const char *msg)](#logcallback) | LogCallback | Defines a function for customizing the processing of logs in the callback.|
 | [void OH_LOG_SetCallback(LogCallback callback)](#oh_log_setcallback) | - | Registers a callback function. After this function is called, the customized callback can take over all logs of the current process.<br> Note that whether this API is called or not, it does not change the default log processing of the current process.|
-| [void OH_LOG_SetMinLogLevel(LogLevel level)](#oh_log_setminloglevel) | - | Sets the minimum log level. Note: If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.|
+| [void OH_LOG_SetMinLogLevel(LogLevel level)](#oh_log_setminloglevel) | - | Sets the minimum log level.|
 
 ## Enum Description
 
@@ -407,7 +421,7 @@ void OH_LOG_SetMinLogLevel(LogLevel level)
 
 **Description**
 
-Sets the minimum log level. If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+Sets the minimum log level.
 
 **Since**: 15
 
@@ -417,3 +431,4 @@ Sets the minimum log level. If the set log level is lower than the [global log l
 | Name| Description|
 | -- | -- |
 | [LogLevel](capi-log-h.md#loglevel) level | Log level.|
+

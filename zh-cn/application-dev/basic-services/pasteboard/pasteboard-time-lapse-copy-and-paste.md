@@ -4,7 +4,7 @@
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong2-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
@@ -116,6 +116,8 @@
    // 9. 获取OH_UdmfData中的所有OH_UdmfRecord。
    unsigned int recordCount = 0;
    OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
+   OH_UdsPlainText* udsText = nullptr;
+   OH_UdsHtml* udsHtml = nullptr;
 
    // 10. 遍历OH_UdmfRecord。
    for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
@@ -132,20 +134,24 @@
            // 纯文本类型
            if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
                // 创建纯文本类型的Uds对象
-               OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
-               // 从record中获取纯文本类型的Uds对象
-               OH_UdmfRecord_GetPlainText(record, udsText);
-               // 从Uds对象中获取内容
-               const char* content = OH_UdsPlainText_GetContent(udsText);
+               udsText = OH_UdsPlainText_Create();
+               if (udsText != nullptr) {
+                // 从record中获取纯文本类型的Uds对象
+                OH_UdmfRecord_GetPlainText(record, udsText);
+                // 从Uds对象中获取内容
+                const char* content = OH_UdsPlainText_GetContent(udsText);
+               }
            }
            // HTML类型
            else if (strcmp(recordType, UDMF_META_HTML) == 0) {
                // 创建HTML类型的Uds对象
-               OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-               // 从record中获取HTML类型的Uds对象
-               OH_UdmfRecord_GetHtml(record, udsHtml);
-               // 从Uds对象中获取内容
-               const char* content = OH_UdsHtml_GetContent(udsHtml);
+               udsHtml = OH_UdsHtml_Create();
+               if (udsHtml != nullptr) {
+                // 从record中获取HTML类型的Uds对象
+                OH_UdmfRecord_GetHtml(record, udsHtml);
+                // 从Uds对象中获取内容
+                const char* content = OH_UdsHtml_GetContent(udsHtml);
+               }
            }
        }
    }
@@ -208,7 +214,7 @@
 3. 向系统剪贴板中存入一条PlainText数据。
 
    ```ts
-   let SetDelayPlainText = (() => {
+   let SetDelayPlainText = () => {
      plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
      // 跨应用使用时设置为CROSS_APP，本应用内使用时设置为IN_APP
      plainTextData.properties.getDelayData = GetDelayPlainText;
@@ -217,7 +223,7 @@
      }).catch((error: BusinessError) => {
        // 处理异常场景
      });
-   })
+   }
    ```
 
 4. 从系统剪贴板中读取这条text数据。
@@ -229,8 +235,8 @@
        let records = outputData.getRecords();
        if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
          let record = records[0] as unifiedDataChannel.PlainText;
-         console.info('GetPlainText success, type:' + records[0].getType() + ', details:' +
-         JSON.stringify(record.details) + ', textContent:' + record.textContent + ', abstract:' + record.abstract);
+         console.info('GetPlainText success, type:' + records[0].getType() );
+         //注意：用户复制的数据内容属于敏感信息，禁止应用程序使用日志明文打印从剪贴板获取到的数据内容。
        } else {
          console.info('Get Plain Text Data No Success, Type is: ' + records[0].getType());
        }
@@ -243,12 +249,11 @@
 5. 应用设置本应用剪贴板数据的可粘贴范围。
 
    ```ts
-   let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    try {
        systemPasteboard.setAppShareOptions(pasteboard.ShareOption.INAPP);
        console.info('Set app share options success.');
    } catch (err) {
-       let error: BusinessError = err as BusinessError;
        //处理异常场景
    }
    ```
@@ -256,12 +261,11 @@
 6. 应用删除本应用设置的剪贴板数据可粘贴范围配置。
 
    ```ts
-   let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    try {
 	   systemPasteboard.removeAppShareOptions();
 	   console.info('Remove app share options success.');
    } catch (err) {
-	   let error: BusinessError = err as BusinessError;
        //处理异常场景
    }
    ```

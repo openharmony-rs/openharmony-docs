@@ -1,4 +1,10 @@
 # Displaying Web Page Dialog Boxes
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zourongchun-->
+<!--Designer: @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 In HTML, JavaScript can be used to create the following types of dialog boxes: **window.alert(message)**, **window.confirm(message)**, and **window.prompt(message, defaultValue)**. These dialog boxes can be used to convey information, confirm operations, or request input from users.
 
@@ -15,6 +21,7 @@ An application can listen for the **alert** method of a web page through the [on
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -36,7 +43,7 @@ An application can listen for the **alert** method of a web page through the [on
                 message: event.message,
                 confirm:{
                   value: "OK",
-                  action: ()=>{
+                  action: () => {
                     console.info('Alert confirmed.');
                     event.result.handleConfirm();
                   }
@@ -54,7 +61,8 @@ An application can listen for the **alert** method of a web page through the [on
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- test.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -84,7 +92,8 @@ An application can listen for the **alert** method of a web page through the [on
 - Create a dialog box using [CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog).
 
   ```ts
-  import { AlertDialog, router } from '@kit.ArkUI';
+  // xxx.ets
+  import { AlertDialog } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -109,7 +118,7 @@ An application can listen for the **alert** method of a web page through the [on
           }
         },
       }),
-      onWillDismiss: ()=>{
+      onWillDismiss: () => {
         this.result?.handleCancel();
         this.dialogControllerAlert.close();
       }
@@ -117,9 +126,6 @@ An application can listen for the **alert** method of a web page through the [on
 
     build() {
       Column() {
-        Button('back').onClick((event: ClickEvent) => {
-          this.getUIContext().getRouter().back();
-        })
         Web({ src: $rawfile('alert.html'), controller: this.webviewController })
           .onAlert((event) => {
             if (event) {
@@ -138,7 +144,8 @@ An application can listen for the **alert** method of a web page through the [on
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- alert.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -180,6 +187,7 @@ An application can listen for the **confirm** method of a web page through the [
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -225,7 +233,8 @@ An application can listen for the **confirm** method of a web page through the [
 
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- test.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -258,6 +267,7 @@ An application can listen for the **confirm** method of a web page through the [
 - Create a dialog box using [CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog).
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { ConfirmDialog } from '@kit.ArkUI';
 
@@ -327,7 +337,8 @@ An application can listen for the **confirm** method of a web page through the [
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- confirm.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -373,6 +384,7 @@ An application can listen for the **prompt** method of a web page through the [o
 - Create a dialog box using [CustomDialog-CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12).
 
   ```ts
+  // xxx.ets
   import { CustomContentDialog } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -450,7 +462,8 @@ An application can listen for the **prompt** method of a web page through the [o
   ```
   Loaded HTML:
   ```html
-  <!doctype html>
+  <!-- prompt.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">

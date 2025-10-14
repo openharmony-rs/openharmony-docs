@@ -7,6 +7,13 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需要导出模块中的接口或ArkUI组件，并将模块作为二方库、三方库共享给其他模块或应用，可以使用HAR。本文介绍如何通过配置项的变更将HAP工程变成HAR工程。
+
+>
+> **说明：**
+>
+> 部分组件和模块在HAP、HSP、HAR中集成使用时存在差异，例如[加载HAR中Worker线程文件相比HSP存在单独的使用约束](../arkts-utils/worker-introduction.md#文件路径注意事项)，因此按照如下步骤完成HAP转HAR后，请关注对应组件和模块介绍并进行适配。
+>
+
 ## HAP转HAR的操作步骤
 
 1. 修改HAP模块下的[module.json5](./module-configuration-file.md)文件，具体操作如下：
@@ -39,11 +46,11 @@ HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需
     }
     ```
 
-4. 修改项目级的配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)，在 `modules` 标签下找到HAP的配置信息，并删除HAP配置下的 `targets`。
-
-5. HAP转换为HAR后，如果需要导出ArkUI组件或接口，需要在模块的根目录下创建名为Index.ets的文件，并在模块的oh-package.json5文件中的main标签配置该文件。详细导出方法参见[HAR-开发](./har-package.md#开发)。
+4. 在HAP模块的根目录下创建名为Index.ets的文件，并在模块的oh-package.json5文件中的main标签配置该文件。Index.ets文件用于导出ArkUI组件或接口，详细导出方法参见[HAR-开发](./har-package.md#开发)。
     ```json
     {
         "main": "Index.ets"
     }
     ```
+
+5. 修改项目级的配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)，在 `modules` 标签下找到HAP的配置信息，并删除HAP配置下的 `targets`。

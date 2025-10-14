@@ -1,8 +1,14 @@
 # ArkWeb_JavaScriptValueAPI
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ## Overview
 
-Defines the native ArkWeb **JavaScriptValue** API. Before calling the API, you are advised to use **ARKWEB_MEMBER_MISSING** to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
+Defines the JavaScriptValue API of ArkWeb. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
 
 **Since**: 18
 
@@ -22,7 +28,7 @@ Defines the native ArkWeb **JavaScriptValue** API. Before calling the API, you a
 
 | Name                                                                                                                     | Description|
 |-------------------------------------------------------------------------------------------------------------------------|----|
-| [ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | Creates a JavaScript value to be returned to HTML.  |
+| [ArkWeb_JavaScriptValuePtr (\*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | Creates a JavaScript value to be returned to HTML.  |
 
 ## Member Function Description
 
@@ -34,9 +40,9 @@ ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType ty
 
 **Description**
 
-Creates a JavaScript value to be returned to HTML.
+Sets the mode for processing key events.
 
-**Since**: 15
+**Since**: 18
 
 **Parameters**
 
@@ -44,7 +50,7 @@ Creates a JavaScript value to be returned to HTML.
 |---------------------------------|----|
 | ArkWeb_JavaScriptValueType type | Type of the JavaScript value.  |
 | void* data                                | Pointer to the JavaScript value data.  |
-| size_t dataLength                               | Length of the JavaScript value data.  |
+| size_t dataLength                         | Data length of JavaScript values.  |
 
 **Returns**
 

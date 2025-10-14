@@ -36,12 +36,12 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| red | number | 是 | 是 | 表示红色值，范围为 0 到 255。 |
-| green | number | 是 | 是 | 表示绿色值，范围为 0 到 255。 |
-| blue | number | 是 | 是 | 表示蓝色值，范围为 0 到 255。 |
-| alpha | number | 是 | 是 | 表示 alpha 值，范围为 0 到 255。 |
+| red | number | 否 | 否 | 表示红色值，范围为 0 到 255。 |
+| green | number | 否 | 否 | 表示绿色值，范围为 0 到 255。 |
+| blue | number | 否 | 否 | 表示蓝色值，范围为 0 到 255。 |
+| alpha | number | 否 | 否 | 表示 alpha 值，范围为 0 到 255。 |
 
 
 ## wallpaper.on('colorChange')<sup>(deprecated)</sup>

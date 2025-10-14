@@ -27,6 +27,8 @@
 
 - \@Reusable装饰器仅用于自定义组件。
 
+- \@Reusable不支持跟[\@ComponentV2](./arkts-new-componentV2.md)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
+
 ```ts
 import { ComponentContent } from "@kit.ArkUI";
 
@@ -443,7 +445,7 @@ struct ReuseDemo {
 @Reusable
 @Component
 export struct CardView {
-  // 被\@State修饰的变量item才能更新，未被\@State修饰的变量不会更新。
+  // 被@State修饰的变量item才能更新，未被@State修饰的变量不会更新。
   @State item: string = '';
 
   aboutToReuse(params: Record<string, Object>): void {

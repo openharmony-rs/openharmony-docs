@@ -2,8 +2,9 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @liao_qian-->
-<!--SE: @ccfriend-->
-<!--TSE: @chenmingxi1_huawei-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Switching Call Output Devices
 
@@ -29,10 +30,14 @@ Currently, the system provides the default style and custom style for the **AVCa
       build() { 
         Column() {
             Text(this.message)
-              .onClick(()=>{
-                let context = this.getUIContext().getHostContext() as Context;
+              .onClick(async ()=> {
+                try {
+                  let context = this.getUIContext().getHostContext() as Context;
                 // Create an AVSession of the voice_call type.
                 let session: AVSessionManager.AVSession = await AVSessionManager.createAVSession(context, 'voiptest', 'voice_call');
+                } catch (err) {
+                  console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
+                }
               })
           }
         .width('100%')
@@ -63,38 +68,42 @@ Currently, the system provides the default style and custom style for the **AVCa
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   private audioRenderer: audio.AudioRenderer | undefined = undefined;
-   private audioStreamInfo: audio.AudioStreamInfo = {
-     // Set the parameters based on project requirements. The following parameters are for reference only.
-     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-     channels: audio.AudioChannel.CHANNEL_2, // Channel.
-     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-   }
-   private audioRendererInfo: audio.AudioRendererInfo = {
-     // Set the parameters related to the call scenario.
-     usage: audio.StreamUsage.STREAM_USAGE_VIDEO_COMMUNICATION, // Audio stream usage type: VoIP video call, speaker by default.
-     rendererFlags: 0 // AudioRenderer flag. The default value is 0.
-   }
-   private audioRendererOptions: audio.AudioRendererOptions = {
-     streamInfo: this.audioStreamInfo,
-     rendererInfo: this.audioRendererInfo
-   }
-
-   // Create an AudioRenderer instance, and set the events to listen for.
-   try {
-    this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
-   } catch (err) {
-    console.error(`audioRender create :  Error: ${JSON.stringify(err)}`);
-   }
-
-   this.audioRenderer?.start((err: BusinessError) => {
-    if (err) {
-      console.error(`audioRender start faild :  Error: ${JSON.stringify(err)}`);
-    } else {
-      console.info('audioRender start success');
+   export default class AudioRenderer {
+    private audioRenderer: audio.AudioRenderer | undefined = undefined;
+    private audioStreamInfo: audio.AudioStreamInfo = {
+      // Set the parameters based on project requirements. The following parameters are for reference only.
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+      channels: audio.AudioChannel.CHANNEL_2, // Channel.
+      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
     }
-   });
+    private audioRendererInfo: audio.AudioRendererInfo = {
+      // Set the parameters related to the call scenario.
+      usage: audio.StreamUsage.STREAM_USAGE_VIDEO_COMMUNICATION, // Audio stream usage type: VoIP video call, speaker by default.
+      rendererFlags: 0 // AudioRenderer flag. The default value is 0.
+    }
+    private audioRendererOptions: audio.AudioRendererOptions = {
+      streamInfo: this.audioStreamInfo,
+      rendererInfo: this.audioRendererInfo
+    }
+
+    start() {
+      // Create an AudioRenderer instance, and set the events to listen for.
+      try {
+        this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
+      } catch (err) {
+        console.error(`audioRender create :  Error: Code: ${err.code}, message: ${err.message}`);
+      }
+
+      this.audioRenderer?.start((err: BusinessError) => {
+        if (err) {
+          console.error(`audioRenderer start failed -Code : ${err.code}, Message ${err.message}`);
+        } else {
+          console.info('audioRender start success');
+        }
+      });
+    }
+   }
    ```
 
 4. (Optional) Subscribe to audio output device change events if you want to know the device change status.
@@ -126,7 +135,7 @@ Currently, the system provides the default style and custom style for the **AVCa
 
 ### Implementing a Custom Style
 
-You can customize a style by setting the **customPicker** parameter of the [CustomBuilder](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) type.
+You can customize a style by setting the [customPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker) parameter of the [CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) type.
 
 The procedure for implementing a custom style is similar to that for implementing the default style. You can create an AVSession and implement audio playback by referring to [Implementing the Default Style Implementation](#implementing-the-default-style).
 
@@ -153,7 +162,7 @@ The differences are as follows:
 
    // Custom content.
    @Builder
-   ImageBuilder(): void {
+   ImageBuilder() {
      Image(this.pickerImage)
        .size({ width: '100%', height: '100%' })
        .backgroundColor('#00000000')
@@ -181,6 +190,9 @@ The differences are as follows:
 
    // Refresh the custom resource pickerImage after the device is changed.
    private changePickerShow(desc: audio.AudioDeviceDescriptors) {
+     if(!desc || !desc.length || !desc[0]) {
+      return;
+     }
      if (desc[0].deviceType === 2) {
        this.pickerImage = $r('app.media.sound');
      } else if (desc[0].deviceType === 7) {
@@ -210,9 +222,9 @@ Currently, the system provides the default style and custom style for the **AVCa
 
    // (Optional) Callback for the device list state change.
    private onStateChange(state: AVCastPickerState) {
-     if (state == AVCastPickerState.STATE_APPEARING) {
+     if (state === AVCastPickerState.STATE_APPEARING) {
        console.info('The picker starts showing.');
-     } else if (state == AVCastPickerState.STATE_DISAPPEARING) {
+     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
        console.info('The picker finishes presenting.');
      }
    }
@@ -246,9 +258,9 @@ You can customize a style by setting the **customPicker** parameter of the [AVIn
 
    // (Optional) Callback for the device list state change.
    private onStateChange(state: AVCastPickerState) {
-     if (state == AVCastPickerState.STATE_APPEARING) {
+     if (state === AVCastPickerState.STATE_APPEARING) {
        console.info('The picker starts showing.');
-     } else if (state == AVCastPickerState.STATE_DISAPPEARING) {
+     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
        console.info('The picker finishes presenting.');
      }
    }
@@ -268,7 +280,7 @@ You can customize a style by setting the **customPicker** parameter of the [AVIn
 
    // Custom content.
    @Builder
-   ImageBuilder(): void {
+   ImageBuilder() {
      Image(this.pickerImage)
        .size({ width: '100%', height: '100%' })
        .backgroundColor('#00000000')

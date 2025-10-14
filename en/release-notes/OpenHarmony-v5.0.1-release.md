@@ -175,12 +175,12 @@ The VoIP continuous task type is introduced, allowing for audio and video call s
 
 **Table 1** Version mapping of software and tools
 
-| Software/Tool| Version| Remarks|
+| Software/Tool| Version| Remarks| 
 | -------- | -------- | -------- |
-| OpenHarmony | 5.0.1 Release | NA |
-| Public SDK | Ohos_sdk_public 5.0.1.111 (API Version 13 Release) | This toolkit is intended for application developers and does not contain system APIs that require system permissions. It is provided as standard in DevEco Studio.|
-| (Optional) HUAWEI DevEco Studio| 5.0.1 Release | Recommended for developing OpenHarmony applications|
-| (Optional) HUAWEI DevEco Device Tool| 4.0 Release | Recommended for developing OpenHarmony smart devices|
+| OpenHarmony | 5.0.1 Release | NA | 
+| Public SDK | Ohos_sdk_public 5.0.1.111 (API Version 13 Release) | This toolkit is intended for application developers and does not contain system APIs that require system permissions. It is provided as standard in DevEco Studio.| 
+| (Optional) HUAWEI DevEco Studio| 5.0.1 Release | Recommended for developing OpenHarmony applications| 
+| (Optional) HUAWEI DevEco Device Tool| 4.0 Release | Recommended for developing OpenHarmony smart devices| 
 
 
 ## Source Code Acquisition
@@ -266,33 +266,33 @@ Use the **repo** tool to download the source code over HTTPS.
 
 **Table 3** Resolved issues
 
-| Issue No.| Issue Description |
+| Issue No.| Issue Description | 
 | -------- | -------- |
-| I9S5ZN | There is a low probability that app freezing occurs in libunwind.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.|
-| I9S600 | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.settings process.|
-| IAB2U3<br>IAK2J2 | There is a low probability that a C++ crash occurs in libaudio_client.z.so of the OS_APAsyncRunne thread of the audio_server process.|
-| IAIRFB | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.|
-| IAKLLD | There is a low probability that a C++ crash occurs in libaudio_policy_service.z.so of the SaInit2 thread of the audio_server process.|
-| IA56CU | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.|
-| IA5AMJ | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.launcher process.|
-| IA5AIT | There is a low probability that system freezing occurs in render_service due to SERVICE_BLOCK.|
-| IA6RFX | There is a high probability that a C++ crash occurs in libbtservice.z.so of the OSaInit0 thread in the bluetooth_service process.|
-| IA8KGR | There is a low probability that a C++ crash occurs in libbluetooth_server.z.so of the OS_IPC_12_22172 thread of the bluetooth_service process.|
-| IAQC64 | Randomly open several applications and then open the Settings application. When you return to the home screen and repeatedly access the background interface, the Settings application may encounter a memory leakage of 32 KB for each operation.|
-| IASE04 | In the memory test of OpenHarmony on the RK3568 development board, the resident memory of the render_service process exceeds the baseline (31 MB).|
+| [206](https://gitcode.com/openharmony/communication_bluetooth/issues/206) | There is a low probability that app freezing occurs in libunwind.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.|
+| [205](https://gitcode.com/openharmony/communication_bluetooth/issues/205) | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.settings process.|
+| [1573](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1573)<br>[1114](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1114) | There is a low probability that a C++ crash occurs in libaudio_client.z.so of the OS_APAsyncRunne thread of the audio_server process.|
+| [615](https://gitcode.com/openharmony/web_webview/issues/615) | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.|
+| [1097](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1097) | There is a low probability that a C++ crash occurs in libaudio_policy_service.z.so of the SaInit2 thread of the audio_server process.|
+| [1616](https://gitcode.com/openharmony/web_webview/issues/1616) | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.|
+| [2207](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/2207) | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.launcher process.|
+| [9](https://gitcode.com/openharmony/device_soc_rockchip/issues/9) | There is a low probability that system freezing occurs in render_service due to SERVICE_BLOCK.|
+| [178](https://gitcode.com/openharmony/communication_bluetooth/issues/178) | There is a high probability that a C++ crash occurs in libbtservice.z.so of the OSaInit0 thread in the bluetooth_service process.|
+| [53](https://gitcode.com/openharmony/communication_bluetooth_service/issues/53) | There is a low probability that a C++ crash occurs in libbluetooth_server.z.so of the OS_IPC_12_22172 thread of the bluetooth_service process.|
+| [28](https://gitcode.com/openharmony/applications_settings/issues/28) | Randomly open several applications and then open the Settings application. When you return to the home screen and repeatedly access the background interface, the Settings application may encounter a memory leakage of 32 KB for each operation.|
+| [1202](https://gitcode.com/openharmony/graphic_graphic_2d/issues/1202) | In the memory test of OpenHarmony on the RK3568 development board, the resident memory of the render_service process exceeds the baseline (31 MB).|
 
 ## Known Issues
 
 **Table 4** Known issues
 
-| Issue No. | Issue Description | Impact| To Be Resolved By|
+| Issue No.| Issue Description | Impact| To Be Resolved By| 
 | -------- | -------- | -------- | -------- |
-| I9SXZ8 | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.contacts process.| The application freezes when you open the Contacts application to query call records. This issue can be resolved by restarting the Contacts application.| December 15|
-| IA6RH6 | There is a high probability that app freezing occurs in libbtframework.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings application might not respond. This issue can be resolved by restarting the Settings application.| December 15|
-| IASDWO | The sliding frame rate for accessing the Weibo home page through a browser is lower than the specification baseline.| Browsing experience is affected.| December 15|
-| IAZYOO | The RK3568 development board frequently encounters freezing issues during the WuKong comprehensive random pressure testing.| The SystemUI process fails to log main thread activities for a long period of time, and the absence of multi-modal event distributions on the lock screen side contributes to this problem. This issue can be resolved by pressing the power button. It has limited impact on users, and therefore no specific workaround is necessary.| December 15|
-| IANQF3 | There is a high probability that the system restarts during the WuKong pressure test.| This issue leads to the device restarting<br>and is currently not preventable.| December 15|
-| IB4L3E | There is a high probability that app freezing occurs in libcamera_framework.z.so due to LIFECYCLE_TIMEOUT in the com.ohos.camera process.| This issue is caused by the camera_host process. Restart the app to resolve the issue.| December 15|
-| IAP85P | There is a low probability that a process with a low startup priority is terminated preferentially, resulting in a system freeze.| This can lead to the application being shut down, but restarting the application can address the issue.| December 15|
-| I9SXZ8 | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.contacts process.| This issue occurs because the Contacts application is stuck in the **windowStage.loadContent()** API. Restarting the application can resolve the issue.| December 15|
-| IB36B2 | There is a low probability that a JS crash occurs in the com.ohos.mms process, and the problem stack is identified as close.| This issue may cause the Messaging application to exit unexpectedly. Restarting the application can resolve the issue.| December 15|
+| [33](https://gitcode.com/openharmony/applications_contacts/issues/33) | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.contacts process.| The application freezes when you open the Contacts application to query call records. This issue can be resolved by restarting the Contacts application.| December 15| 
+| [174](https://gitcode.com/openharmony/communication_bluetooth/issues/174) | There is a high probability that app freezing occurs in libbtframework.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings application might not respond. This issue can be resolved by restarting the Settings application.| December 15| 
+| [222](https://gitcode.com/openharmony/web_webview/issues/222) | The sliding frame rate for accessing the Weibo home page through a browser is lower than the specification baseline.| Browsing experience is affected.| December 15| 
+| [9](https://gitcode.com/openharmony/applications_screenlock/issues/9) | The RK3568 development board frequently encounters freezing issues during the WuKong comprehensive random pressure testing.| The SystemUI process fails to log main thread activities for a long period of time, and the absence of multi-modal event distributions on the lock screen side contributes to this problem. This issue can be resolved by pressing the power button. It has limited impact on users, and therefore no specific workaround is necessary.| December 15| 
+| [481](https://gitcode.com/openharmony/kernel_linux_5.10/issues/481) | There is a high probability that the system restarts during the WuKong pressure test.| This issue leads to the device restarting<br>and is currently not preventable.| December 15| 
+| [4740](https://gitcode.com/openharmony/drivers_peripheral/issues/4740) | There is a high probability that app freezing occurs in libcamera_framework.z.so due to LIFECYCLE_TIMEOUT in the com.ohos.camera process.| This issue is caused by the camera_host process. Restart the app to resolve the issue.| December 15| 
+| [11](https://gitcode.com/openharmony/resourceschedule_memmgr/issues/11) | There is a low probability that a process with a low startup priority is terminated preferentially, resulting in a system freeze.| This can lead to the application being shut down, but restarting the application can address the issue.| December 15| 
+| [33](https://gitcode.com/openharmony/applications_contacts/issues/33) | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.contacts process.| This issue occurs because the Contacts application is stuck in the **windowStage.loadContent()** API. Restarting the application can resolve the issue.| December 15| 
+| [231](https://gitcode.com/openharmony/applications_mms/issues/231) | There is a low probability that a JS crash occurs in the com.ohos.mms process, and the problem stack is identified as close.| This issue may cause the Messaging application to exit unexpectedly. Restarting the application can resolve the issue.| December 15| 

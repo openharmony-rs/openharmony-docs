@@ -64,7 +64,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the system time to 2021-01-20 02:36:25.
-let time = 1611081385000;
+let time: number = 1611081385000;
 try {
   systemDateTime.setTime(time, (error: BusinessError) => {
     if (error) {
@@ -119,7 +119,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the system time to 2021-01-20 02:36:25.
-let time = 1611081385000;
+let time: number = 1611081385000;
 try {
   systemDateTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
@@ -413,7 +413,7 @@ For details about the error codes, see [Time and Time Zone Service Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getNtpTime();
+  let time: number = systemDateTime.getNtpTime();
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);

@@ -200,11 +200,11 @@ requestFocus(value: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 参数类型 | 必填 | 描述 |
-| ---- | ---- | ---- | ---- |
-| margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 焦点框相对组件边缘的距离。<br/>正数代表外侧，负数代表内侧。不支持百分比。 |
-| strokeColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 焦点框颜色。 |
-| strokeWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 焦点框宽度。<br/>不支持负数与百分比。|
+| 名称 | 类型 |  只读 | 可选 | 说明  |
+| ---- | ---- | ---- |  ---- | ---- |
+| margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 |焦点框相对组件边缘的距离。<br/>正数代表外侧，负数代表内侧。不支持百分比。 |
+| strokeColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 |焦点框颜色。 |
+| strokeWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 |焦点框宽度。<br/>不支持负数与百分比。|
 
 ## focusScopePriority<sup>12+</sup>
 
@@ -368,6 +368,10 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 | left  | string | 否 | 是 | 通过方向键左键走焦到组件的id。<br/>默认值为重置left为空。 |
 | right  | string | 否 | 是 | 通过方向键右键走焦到组件的id。<br/>默认值为重置right为空。 |
 
+> **说明：**
+> 
+> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+
 ## 示例
 
 ### 示例1（设置组件获焦和走焦的效果）
@@ -524,10 +528,6 @@ struct FocusableExample {
 ### 示例2（设置指定组件获焦）
 
 该示例通过配置focusControl.requestFocus使指定组件获取焦点。
-
-> **说明：**
-> 
-> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
 
 ```ts
 // requestFocus.ets

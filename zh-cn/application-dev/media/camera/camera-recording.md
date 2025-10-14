@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zengyawen-->
 
-在开发相机应用时，需要先参考开发准备[申请相关权限](camera-preparation.md)。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 相机应用可通过调用和控制相机设备，完成预览、拍照和录像等基础操作。
 
@@ -33,23 +33,18 @@
    ```ts
    async function getVideoSurfaceId(aVRecorderConfig: media.AVRecorderConfig): Promise<string | undefined> {  // aVRecorderConfig可参考步骤3.创建录像输出流。
      let avRecorder: media.AVRecorder | undefined = undefined;
+     let videoSurfaceId: string | undefined = undefined;
      try {
        avRecorder = await media.createAVRecorder();
+       if (avRecorder === undefined) {
+         return videoSurfaceId;
+       }
+       await avRecorder.prepare(aVRecorderConfig);
+       videoSurfaceId = await avRecorder.getInputSurface();
      } catch (error) {
        let err = error as BusinessError;
        console.error(`createAVRecorder call failed. error code: ${err.code}`);
      }
-     if (avRecorder === undefined) {
-       return undefined;
-     }
-     await avRecorder.prepare(aVRecorderConfig, (err: BusinessError) => {
-       if (err == null) {
-         console.info('prepare success');
-       } else {
-         console.error('prepare failed and error is ' + err.message);
-       }
-     });
-     let videoSurfaceId = await avRecorder.getInputSurface();
      return videoSurfaceId;
    }
    ```
@@ -70,9 +65,12 @@
 
    ```ts
    async function getVideoOutput(cameraManager: camera.CameraManager, videoSurfaceId: string, cameraOutputCapability: camera.CameraOutputCapability): Promise<camera.VideoOutput | undefined> {
+     if (!cameraManager || !videoSurfaceId || !cameraOutputCapability || !cameraOutputCapability.videoProfiles) {
+       return;
+     }
      let videoProfilesArray: Array<camera.VideoProfile> = cameraOutputCapability.videoProfiles;
-     if (!videoProfilesArray) {
-       console.error("createOutput videoProfilesArray == null || undefined");
+     if (!videoProfilesArray || videoProfilesArray.length === 0) {
+       console.error("videoProfilesArray is null or []");
        return undefined;
      }
      // AVRecorderProfile。
@@ -95,13 +93,19 @@
        url: 'fd://35', // 此处为样例示范，需要根据开发需求填写实际的路径。
        metadata: avMetadata
      };
-     // 创建avRecorder。
+     // 创建avRecorder，设置视频录制的参数。
      let avRecorder: media.AVRecorder | undefined = undefined;
      try {
        avRecorder = await media.createAVRecorder();
+       if (avRecorder === undefined) {
+         return undefined;
+       }
+       await avRecorder.prepare(aVRecorderConfig);
      } catch (error) {
        let err = error as BusinessError;
        console.error(`createAVRecorder call failed. error code: ${err.code}`);
+       await avRecorder?.release();
+       return;
      }
      if (avRecorder === undefined) {
        return undefined;
@@ -116,13 +120,15 @@
      });
      if (!videoProfile) {
        console.error('videoProfile is not found');
-       return;
+       await avRecorder.release();
+       return undefined;
      }
      try {
        videoOutput = cameraManager.createVideoOutput(videoProfile, videoSurfaceId);
      } catch (error) {
        let err = error as BusinessError;
        console.error('Failed to create the videoOutput instance. errorCode = ' + err.code);
+       await avRecorder.release();
      }
      return videoOutput;
    }
@@ -130,17 +136,25 @@
 
 4. 开始录像。
 
+   > **说明：**
+   >
+   > - 在设置预览流帧率时，需要先通过[getActiveFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#getactiveframerate12)查询当前录像流的帧率。
+   >
+   > - 当录像流已设置过范围帧率时，预览流帧率必须设置与其相同的范围帧率。
+   >
+   > - 当录像流已设置过固定帧率时，预览流帧率要设置成录像帧率的约数，且必须也为固定帧率。
+
    先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1)方法启动录像输出流，再通过avRecorder的[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9)方法开始录像。
 
    ```ts
    async function startVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
     try {
-      videoOutput.start();
+      await videoOutput.start();
     } catch (error) {
       let err = error as BusinessError;
       console.error(`start videoOutput failed, error: ${err.code}`);
     }
-    await avRecorder.start(async (err: BusinessError) => {
+    avRecorder.start(async (err: BusinessError) => {
     if (err) {
       console.error(`Failed to start the video output ${err.message}`);
       return;
@@ -156,14 +170,14 @@
 
    ```ts
    async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-     await avRecorder.stop((err: BusinessError) => {
+     avRecorder.stop((err: BusinessError) => {
      if (err) {
        console.error(`Failed to stop the video output ${err.message}`);
        return;
      }
      console.info('Callback invoked to indicate the video output stop success.');
      });
-     videoOutput.stop();
+     await videoOutput.stop();
    }
    ```
 

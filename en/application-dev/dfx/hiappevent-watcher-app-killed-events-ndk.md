@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-## Event Specifications
+## Application Termination Event Specifications
 
 For details, see [Application Killed Event Overview](./hiappevent-watcher-app-killed-events.md).
 
@@ -185,7 +185,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 8. Click the **Run** button in DevEco Studio to run the project. After the leak is triggered, wait for 2 to 3 minutes and the application exits.
 
-9. After the application is killed, open the application again. The killed event is reported, and the system calls **onReceive()**. You can view the following event information in the **Log** window.
+9. After the application is terminated, open the application again. The termination event is reported, and the system calls **onReceive()**. You can view the following event information in the **Log** window.
 
     ```text
       HiAppEvent eventInfo.domain=OS
@@ -198,7 +198,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
     > **NOTE**
     >
-    > Based on the error log information, you can check the [specific cause of the killed event](./hiappevent-watcher-app-killed-events.md).
+    > Based on the error log information, you can check the [specific cause of the termination event](./hiappevent-watcher-app-killed-events.md).
 
 10. Remove the event watcher.
 

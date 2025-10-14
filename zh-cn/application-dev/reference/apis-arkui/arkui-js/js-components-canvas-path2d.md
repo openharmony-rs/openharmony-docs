@@ -6,11 +6,12 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @HelloCrease-->
 
->  **说明：**
->  从API version 6开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 路径对象，支持通过对象的接口进行路径的描述，并通过Canvas的stroke接口进行绘制。
 
+>  **说明：**
+>
+>  本模块首批接口从API version 4开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## addPath
 
@@ -212,7 +213,7 @@ export default {
 
 bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
 
-创建三次贝赛尔曲线的路径。
+创建三次贝塞尔曲线的路径。
 
 **参数：** 
 
@@ -255,7 +256,7 @@ export default {
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-创建二次贝赛尔曲线的路径。
+创建二次贝塞尔曲线的路径。
 
 **参数：**  
 

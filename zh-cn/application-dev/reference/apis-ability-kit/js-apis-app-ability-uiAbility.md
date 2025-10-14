@@ -92,7 +92,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class MyUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // 执行异步任务
-    hilog.info(0x0000, 'testTag', `onCreate, want: ${want.abilityName}, the launchReason is ${launchParam.launchReason}, the lastExitReason is ${launchParam.lastExitReason}`);
+    hilog.info(0x0000, 'testTag',
+      `onCreate, want: ${want.abilityName}, the launchReason is ${launchParam.launchReason}, the lastExitReason is ${launchParam.lastExitReason}`);
   }
 }
 ```
@@ -173,7 +174,7 @@ onWindowStageDestroy(): void
 
 当WindowStage销毁后，系统触发该回调。该回调用于通知开发者WindowStage对象已被销毁，不能再继续使用。
 
-仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存查杀）不会触发该回调。
+仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -238,7 +239,7 @@ onDestroy(): void | Promise&lt;void&gt;
 
 在执行完onDestroy生命周期回调后，应用可能会退出，从而可能导致onDestroy中的异步函数未能正确执行，比如异步写入数据库。推荐使用Promise异步回调，避免因应用退出导致onDestroy中的异步函数（比如异步写入数据库）未能正确执行。
 
-仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存查杀）不会触发该回调。
+仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -322,6 +323,7 @@ export default class EntryAbility extends UIAbility {
       hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
     });
   }
+
   // ...
 
   onDidForeground(): void {
@@ -484,6 +486,7 @@ import { audio } from '@kit.AudioKit';
 
 export default class MyUIAbility extends UIAbility {
   static audioRenderer: audio.AudioRenderer;
+
   // ...
   onForeground(): void {
     let audioStreamInfo: audio.AudioStreamInfo = {
@@ -518,7 +521,7 @@ export default class MyUIAbility extends UIAbility {
       if (err) {
         hilog.error(0x0000, 'testTag', `AudioRenderer release failed, error: ${JSON.stringify(err)}.`);
       } else {
-        hilog.info(0x0000, 'testTag',  `AudioRenderer released.`);
+        hilog.info(0x0000, 'testTag', `AudioRenderer released.`);
       }
     });
   }
@@ -730,7 +733,8 @@ onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record&lt;stri
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
-  async onSaveStateAsync(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) : Promise<AbilityConstant.OnSaveResult> {
+  async onSaveStateAsync(reason: AbilityConstant.StateType,
+    wantParam: Record<string, Object>): Promise<AbilityConstant.OnSaveResult> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
     });
@@ -810,13 +814,13 @@ export default class EntryAbility extends UIAbility {
       abilityName: "SecondAbility"
     }
     this.context.startAbilityForResult(want)
-      .then((result)=>{
+      .then((result) => {
         // 获取ability处理结果，当返回结果的resultCode为0关闭当前UIAbility
         console.info('startAbilityForResult success, resultCode is ' + result.resultCode);
         if (result.resultCode === 0) {
           this.context.terminateSelf();
         }
-      }).catch((err: BusinessError)=>{
+      }).catch((err: BusinessError) => {
       // 异常处理
       console.error('startAbilityForResult failed, err:' + JSON.stringify(err));
       this.context.terminateSelf();
@@ -923,7 +927,7 @@ UIAbility生命周期回调，在多设备协同场景下，协同方应用在�
 
 | 参数名    | 类型                              | 必填 | 说明                                                         |
 | --------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| wantParam | Record&lt;string,&nbsp;Object&gt; | 是   | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该key值可以可以获取到调用方传输的数据并进行相应的处理。|
+| wantParam | Record&lt;string,&nbsp;Object&gt; | 是   | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该key值可以获取到调用方传输的数据并进行相应的处理。|
 
 **返回值：**
 
@@ -991,16 +995,19 @@ class MyMessageAble implements rpc.Parcelable { // 自定义的Parcelable数据�
   name: string;
   str: string;
   num: number = 1;
+
   constructor(name: string, str: string) {
     this.name = name;
     this.str = str;
   }
+
   marshalling(messageSequence: rpc.MessageSequence) {
     messageSequence.writeInt(this.num);
     messageSequence.writeString(this.str);
     console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
     return true;
   }
+
   unmarshalling(messageSequence: rpc.MessageSequence) {
     this.num = messageSequence.readInt();
     this.str = messageSequence.readString();
@@ -1008,6 +1015,7 @@ class MyMessageAble implements rpc.Parcelable { // 自定义的Parcelable数据�
     return true;
   }
 }
+
 let method = 'call_Function'; // 约定的通知消息字符串
 
 export default class MainUIAbility extends UIAbility {
@@ -1098,6 +1106,7 @@ class MyMessageAble implements rpc.Parcelable {
     return true;
   }
 }
+
 let method = 'call_Function';
 let caller: Caller;
 
@@ -1480,23 +1489,27 @@ class MyMessageAble implements rpc.Parcelable {
   name: string
   str: string
   num: number = 1
+
   constructor(name: string, str: string) {
     this.name = name;
     this.str = str;
   }
+
   marshalling(messageSequence: rpc.MessageSequence) {
     messageSequence.writeInt(this.num);
     messageSequence.writeString(this.str);
     console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
     return true;
   }
+
   unmarshalling(messageSequence: rpc.MessageSequence) {
     this.num = messageSequence.readInt();
     this.str = messageSequence.readString();
     console.info(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
     return true;
   }
-};
+}
+
 let method = 'call_Function';
 
 function funcCallBack(pdata: rpc.MessageSequence) {
@@ -1504,6 +1517,7 @@ function funcCallBack(pdata: rpc.MessageSequence) {
   pdata.readParcelable(msg);
   return new MyMessageAble('test1', 'Callee test');
 }
+
 export default class MainUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info('Callee onCreate is called');

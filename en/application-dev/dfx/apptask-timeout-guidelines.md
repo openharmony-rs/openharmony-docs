@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @rr_cn-->
-<!--SE: @peterhuangyu-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
@@ -21,7 +22,8 @@ Task timeout detection includes main thread timeout detection and task execution
 ### Detection Principles
 
 1. Triggering process:
-   When the main thread experiences a timeout between 150 ms and 450 ms, it triggers a call stack sampling. If the timeout exceeds 450 ms, it triggers a trace sampling. 
+
+   If the main thread times out for 150 ms to 450 ms, the sampling call stack process is triggered and a stack file with the .txt extension is generated. If the main thread times out for 450 ms, the trace collection process is triggered and a stack file with the .trace extension is generated.
 
    150 ms < Main thread processing time < 450 ms: stack sampling is triggered by main thread timeout. For the processes with the same PID, the call stack sampling for a main thread timeout event can be triggered only once. If **Developer Options** is enabled, call stack sampling can be triggered once an hour. No timeout check is performed within 10s after the application starts.
 
@@ -31,7 +33,7 @@ Task timeout detection includes main thread timeout detection and task execution
 
    > **NOTE**
    >
-   > To enable the main thread checker to collect tracing data when a task times out, ensure that the nolog version is used and **Developer Options** is disabled
+   > Before starting the timeout detection and trace capturing of the main thread, **disable the [developer mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) and use the [nolog](performance-analysis-kit-terminology.md) version**.
    >
    > You can go to **Settings** > **About phone** to check the software version. The log version ends with **log**.
    >
@@ -64,11 +66,11 @@ Task timeout detection includes main thread timeout detection and task execution
 
 ### Obtaining Logs
 
-Main thread timeout logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
+Task execution timeout logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
 
-**Method 1: HiAppEvent APIs**
+**Subscribing to the main thread timeout event using HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the address sanitizer event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-crash-events.md#params) field in the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Timeout Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Timeout Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md) field in the event.
 
 ### Log Specifications 
 
@@ -133,9 +135,9 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
    ```
 
 3. Sampling trace specifications:
-   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [SmartPerf](https://gitee.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitee.com/openharmony/developtools_smartperf_host/releases).
+   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
 
-   For details about the trace file, see [Loading Trace Files on the Web Client](https://gitee.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md).
+   For details about the trace file, see [Loading Trace Files on the Web Client](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md).
 
 ## Task Execution Timeout Detection
 
@@ -151,12 +153,12 @@ The following figure shows the detection principles.
 
 ### Obtaining Logs
 
-Task execution timeout logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
+You can obtain the task execution timeout logs in either of the following ways:
 
-**Method 1: HiAppEvent APIs**
+**Subscribing to fault events using HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-crash-events.md#params) field in the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the task execution timeout event by referring to [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md), and read the fault log file name based on the [external_log](hiappevent-watcher-apphicollie-events.md) field of the event.
 
 ### Log Specifications
 
-For details, see [Log Specifications](appfreeze-guidelines.md#log-specifications).
+The log specifications of task execution timeout events are the same as those of app freeze logs. For details, see [App Freeze Log Specifications](appfreeze-guidelines.md).

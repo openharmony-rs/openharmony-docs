@@ -1,9 +1,15 @@
 # ArkWeb_WebMessageAPI
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 
 ## Overview
 
-Defines a native API for the post message. Before calling the API, you are advised to use **ARKWEB_MEMBER_MISSING** to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
+Defines a native API for the post message. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
 
 **Since**: 12
 
@@ -29,7 +35,7 @@ Defines a native API for the post message. Before calling the API, you are advis
 | [void (\*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)](#settype)    | Sets the message type.                    |
 | [ArkWeb_WebMessageType (\*getType)(ArkWeb_WebMessagePtr webMessage)](#gettype)               | Obtains the message type.                        |
 | [void (\*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)](#setdata) | Sets data.|
-| [void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)](#getdata)            | Obtains data.                                                                 |
+| [void* (\*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)](#getdata)           | Obtains data.                        |
 
 ## Member Function Description
 
@@ -58,6 +64,12 @@ void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 **Description**
 
 Destroys a message.
+
+**Parameters**
+
+| Name                                                                      | Description|
+|---------------------------------------------------------------------------|----|
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md)* webMessage            | Pointer to the message to destroy.  |
 
 ### setType()
 

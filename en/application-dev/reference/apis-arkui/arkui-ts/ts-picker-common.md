@@ -27,7 +27,7 @@ Defines the text style configuration for the picker component.
 
 ## PickerDialogButtonStyle<sup>12+</sup>
 
-Defines the picker button style.
+Defines the button style of the picker dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -45,7 +45,7 @@ Defines the picker button style.
 | fontFamily  |  [Resource](ts-types.md#resource) \| string  | No  | Yes  | Font family. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported.|
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Background color of the button.                    |
 | borderRadius  | [Length](ts-types.md#length) \| [BorderRadiuses](ts-types.md#borderradiuses9)| No  | Yes  | Corner radius of the button.|
-| primary  | boolean | No  | Yes  | Whether the button responds to the **Enter** key by default when the dialog box has focus and the **Tab** key is not pressed for sequential focus navigation.|
+| primary  | boolean | No  | Yes  | Whether the button responds to the **Enter** key by default when the dialog box is displayed and the **Tab** key is not used for sequential focus navigation.|
 
 ## DateRange<sup>19+</sup>
 

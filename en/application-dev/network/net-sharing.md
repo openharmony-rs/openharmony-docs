@@ -1,10 +1,17 @@
 # Network Sharing (For System Applications Only)
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
 
-## Introduction
+## Overview
 
 The Network Sharing module allows you to share your device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing. It also allows you to query the network sharing state and shared mobile data volume.
 
 > **NOTE**
+>
 > To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-sharing-sys.md).
 
 ## Basic Concepts
@@ -46,7 +53,7 @@ For the complete list of APIs and example code, see [Network Sharing](../referen
 | getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<string>>): void;  | Obtains regular expressions of NICs of a specified type. This API uses an asynchronous callback to return the result.|
 | on(type: 'sharingStateChange', callback: Callback\<boolean>): void;        | Subscribes to network sharing state changes.                                                               |
 | off(type: 'sharingStateChange', callback?: Callback\<boolean>): void;      | Unsubscribes from network sharing state changes.                                                               |
-| unction on(type: 'interfaceSharingStateChange', callback: Callback\<{ type: SharingIfaceType, iface: string, state: SharingIfaceState }>): void;    | Subscribes to network sharing state changes of the specified NIC.   |
+| function on(type: 'interfaceSharingStateChange', callback: Callback\<{ type: SharingIfaceType, iface: string, state: SharingIfaceState }>): void;    | Subscribes to network sharing state changes of the specified NIC.   |
 | off(type: 'interfaceSharingStateChange', callback?: Callback\<{ type: SharingIfaceType, iface: string, state: SharingIfaceState }>): void; | Unsubscribes from network sharing state changes of the specified NIC.            |
 | on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void;               | Subscribes to upstream NIC changes.                                                                        |
 | off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void;             | Unsubscribes from upstream NIC changes.                                                                        |
@@ -72,7 +79,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 sharing.startSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.log('start wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.log('start wifi sharing failed');
+  console.error('start wifi sharing failed');
 });
 ```
 
@@ -97,9 +104,9 @@ sharing.on('sharingStateChange', (data: boolean) => {
 
 // Call stopSharing to stop network sharing of the specified type.
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('start wifi sharing successful');
+  console.log('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.log('start wifi sharing failed');
+  console.error('start wifi sharing failed');
 });
 ```
 
@@ -121,27 +128,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing.startSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.log('start wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.log('start wifi sharing failed');
+  console.error('start wifi sharing failed');
 });
 
 // Call getStatsTotalBytes to obtain the data traffic generated during data sharing.
 sharing.getStatsTotalBytes().then((data: number) => {
   console.log(JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.log(JSON.stringify(error));
+  console.error(JSON.stringify(error));
 });
 
 // Call stopSharing to stop network sharing of the specified type and clear the data volume of network sharing.
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('start wifi sharing successful');
+  console.log('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.log('start wifi sharing failed');
+  console.error('start wifi sharing failed');
 });
 
 // Call getStatsTotalBytes again. The data volume of network sharing has been cleared.
 sharing.getStatsTotalBytes().then((data: number) => {
   console.log(JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.log(JSON.stringify(error));
+  console.error(JSON.stringify(error));
 });
 ```

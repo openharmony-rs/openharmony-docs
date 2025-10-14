@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @lyj_love_code-->
-<!--SE: @tangyyan-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @tangyyan-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 The **hiSysEvent** module provides the system event logging functions, such as configuring trace points, subscribing to system events, and querying system events written to the event file.
 
@@ -512,7 +513,7 @@ try {
     names: ["STACK"],
   } as hiSysEvent.QueryRule];
   let time = hiSysEvent.exportSysEvents(queryArg, queryRules);
-  console.log(`receive export task time is : ${time}`);
+  console.info(`receive export task time is : ${time}`);
 
   // Postpone reading of exported events.
   setTimeout(() => {
@@ -522,7 +523,7 @@ try {
       if (filenames[i].indexOf(time.toString()) != -1) {
         let res = fileIo.readTextSync(eventDir + '/' + filenames[i]);
         let events: string = JSON.parse('[' + res.slice(0, res.length - 1) + ']');
-        console.log("read file end, events is :" + JSON.stringify(events));
+        console.info("read file end, events is :" + JSON.stringify(events));
       }
     }
   }, 10000);
@@ -607,7 +608,7 @@ try {
     for (let i = 0; i < filenames.length; i++) {
       let res = fileIo.readTextSync(eventDir + '/' + filenames[i]);
       let events: string = JSON.parse('[' + res.slice(0, res.length - 1) + ']');
-      console.log("read file end, events is :" + JSON.stringify(events));
+      console.info("read file end, events is :" + JSON.stringify(events));
     }
   }, 10000);
 } catch (err) {

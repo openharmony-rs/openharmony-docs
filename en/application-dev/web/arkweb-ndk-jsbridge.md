@@ -1,4 +1,10 @@
 # Mutual Invoking Between the Application and the Frontend Page (C/C++)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
 For details about how to optimize the performance of JSBridge, see [JSBridge Optimization Solution] (https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section58781855115017).
@@ -41,7 +47,7 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
   ```js
   // Define a webTag and transfer it as an input parameter when WebviewController is created to establish the mapping between controller and webTag.
   webTag: string = 'ArkWeb1';
-  controller: web_webview.WebviewController = new web_webview.WebviewController(this.webTag);
+  controller: webview.WebviewController = new webview.WebviewController(this.webTag);
 
   // In the aboutToAppear method, pass webTag to the C++ side through the Node-API. The C++ side uses webTag to uniquely identify the Web component.
   aboutToAppear() {
@@ -71,6 +77,7 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
       // Save the webTag in the instance object.
       jsbridge_object_ptr = std::make_shared<JSBridgeObject>(webTagValue);
       // ...
+  }
   ```
 
 ### Obtaining API Struct Using the Native API
@@ -126,8 +133,8 @@ Use [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-control
   ```c++
   // Register an object.
   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk registerJavaScriptProxyEx begin");
-  ArkWeb_ProxyMethodWithResult method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
-  ArkWeb_ProxyMethodWithResult method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
+  ArkWeb_ProxyMethodWithResult method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  ArkWeb_ProxyMethodWithResult method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
   // Call the NDK API to register an object.
   // In this case, you can use proxy.method1 and proxy.method2 to call ProxyMethod1 and ProxyMethod2 in this file on HTML5 pages.
@@ -244,10 +251,6 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
               return "objName  test undefined"
         }
 
-        if (window.ndkProxy.method2 == undefined) {
-              document.getElementById("webDemo").innerHTML = "ndkProxy method2 undefined"
-              return "objName  test undefined"
-        }
         let retStr = window.ndkProxy.method1("hello", "world", [1.2, -3.4, 123.456], ["Saab", "Volvo", "BMW", undefined], 1.23456, 123789, true, false, 0,  undefined);
         console.log("ndkProxy and method1 is ok, " + retStr + ", type:" + typeof(retStr));
   }
@@ -256,11 +259,6 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
         if (window.ndkProxy == undefined) {
               document.getElementById("webDemo").innerHTML = "ndkProxy undefined"
               return "objName undefined"
-        }
-
-        if (window.ndkProxy.method1 == undefined) {
-              document.getElementById("webDemo").innerHTML = "ndkProxy method1 undefined"
-              return "objName  test undefined"
         }
 
         if (window.ndkProxy.method2 == undefined) {
@@ -517,7 +515,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
   }
 
   void DestroyCallback(const char *webTag, void *userData) {
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestoryCallback webTag: %{public}s", webTag);
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback webTag: %{public}s", webTag);
       if (!userData) {
           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback userData is nullptr");
           return;
@@ -597,6 +595,8 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
 
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit end");
 
+    delete[] webTagValue;
+
     return nullptr;
   }
 
@@ -629,6 +629,11 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
       ArkWeb_JavaScriptObject object = {(uint8_t *)jsCode, bufferSize, &JSBridgeObject::StaticRunJavaScriptCallback,
                                        static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
       controller->runJavaScript(webTagValue, &object);
+
+      delete[] webTagValue;
+
+      delete[] jsCode;
+
       return nullptr;
   }
 
@@ -757,7 +762,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
   ```js
   // Define a webTag and transfer it as an input parameter when WebviewController is created to establish the mapping between controller and webTag.
   webTag: string = 'ArkWeb1';
-  controller: web_webview.WebviewController = new web_webview.WebviewController(this.webTag);
+  controller: webview.WebviewController = new webview.WebviewController(this.webTag);
   // ...
   // Use aboutToAppear() to pass webTag to C++ through Node-API. The webTag uniquely identifies the C++ ArkWeb component.
   aboutToAppear() {
@@ -788,6 +793,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
       // Save the webTag in the instance object.
       jsbridge_object_ptr = std::make_shared<JSBridgeObject>(webTagValue);
       // ...
+  }
   ```
 
 ### Obtaining API Struct Using the Native API
@@ -843,8 +849,8 @@ Use [registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controlle
   ```c++
   // Register an object.
   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk RegisterJavaScriptProxy begin");
-  ArkWeb_ProxyMethod method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
-  ArkWeb_ProxyMethod method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
+  ArkWeb_ProxyMethod method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  ArkWeb_ProxyMethod method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethod methodList[2] = {method1, method2};
   // Call the NDK API to register an object.
   // In this case, you can use proxy.method1 and proxy.method2 to call ProxyMethod1 and ProxyMethod2 in this file on HTML5 pages.
@@ -858,7 +864,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
 
   ```c++
   // Construct a struct executed in runJS.
-  char* jsCode = "runJSRetStr()";
+  const char* jsCode = "runJSRetStr()";
   ArkWeb_JavaScriptObject object = {(uint8_t *)jsCode, bufferSize, &JSBridgeObject::StaticRunJavaScriptCallback,
                                        static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   // Call runJSRetStr() of the frontend page.
@@ -902,10 +908,6 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
               return "objName  test undefined"
         }
 
-        if (window.ndkProxy.method2 == undefined) {
-              document.getElementById("webDemo").innerHTML = "ndkProxy method2 undefined"
-              return "objName  test undefined"
-        }
         window.ndkProxy.method1("hello", "world", [1.2, -3.4, 123.456], ["Saab", "Volvo", "BMW", undefined], 1.23456, 123789, true, false, 0,  undefined);
   }
 
@@ -913,11 +915,6 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
         if (window.ndkProxy == undefined) {
               document.getElementById("webDemo").innerHTML = "ndkProxy undefined"
               return "objName undefined"
-        }
-
-        if (window.ndkProxy.method1 == undefined) {
-              document.getElementById("webDemo").innerHTML = "ndkProxy method1 undefined"
-              return "objName  test undefined"
         }
 
         if (window.ndkProxy.method2 == undefined) {
@@ -1166,7 +1163,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
   }
 
   void DestroyCallback(const char *webTag, void *userData) {
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestoryCallback webTag: %{public}s", webTag);
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback webTag: %{public}s", webTag);
       if (!userData) {
           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback userData is nullptr");
           return;
@@ -1233,6 +1230,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
       SetComponentCallback(component, webTagValue);
 
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit end");
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -1265,6 +1263,8 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
       ArkWeb_JavaScriptObject object = {(uint8_t *)jsCode, bufferSize, &JSBridgeObject::StaticRunJavaScriptCallback,
                                        static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
       controller->runJavaScript(webTagValue, &object);
+      delete[] webTagValue;
+      delete[] jsCode;
       return nullptr;
   }
 

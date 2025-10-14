@@ -1,4 +1,4 @@
-# @ohos.bundle.overlay (overlay)
+# @ohos.bundle.overlay (overlay Module)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
@@ -6,17 +6,15 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The module provides APIs for installing a module with the overlay feature, querying the [module information](js-apis-bundleManager-overlayModuleInfo.md), and disabling and enabling the module.
+The module provides APIs for querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of an application with the overlay feature, and disabling and enabling the feature.
 
-A module with the [overlay feature](../../quick-start/resource-categories-and-access.md#overlay-mechanism) generally provides additional resource files for modules without the overlay feature on the device, so that the target modules can use these resource files at runtime to display different colors, labels, themes, and the like.
-
-If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase.
+An application with the overlay feature contains an overlay resource package. For details about this package, see [Overlay Mechanism](../../quick-start/resource-categories-and-access.md#overlay-mechanism).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The overlay feature applies only to the stage model.
+> The APIs provided by this module apply only to the stage model and [static overlay](../../quick-start/resource-categories-and-access.md#using-overlay-in-static-mode) mode.
 
 
 ## Modules to Import
@@ -133,7 +131,7 @@ try {
 
 getOverlayModuleInfo(moduleName: string): Promise\<OverlayModuleInfo>
 
-Obtains the information about a module with the overlay feature in the current application. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -184,7 +182,7 @@ let moduleName = "feature";
 
 getOverlayModuleInfo(moduleName: string, callback: AsyncCallback\<OverlayModuleInfo>): void
 
-Obtains the information about a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result.
+Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -233,7 +231,7 @@ try {
 
 getTargetOverlayModuleInfos(targetModuleName: string): Promise\<Array\<OverlayModuleInfo>>
 
-Obtains the information about modules with the overlay feature in the current application based on the target module name. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -283,7 +281,7 @@ let targetModuleName = "feature";
 
 getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback\<Array\<OverlayModuleInfo>>): void
 
-Obtains the information about modules with the overlay feature in the current application based on the target module name. This API uses an asynchronous callback to return the result.
+Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 

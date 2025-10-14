@@ -349,7 +349,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     // 配置视频帧速率。
     double frameRate = 30.0;
     // 配置视频YUV值范围标志。
-    bool rangeFlag = false;
+    int32_t rangeFlag = 0;
     // 配置视频原色。
     int32_t primary = static_cast<int32_t>(OH_ColorPrimary::COLOR_PRIMARY_BT709);
     // 配置传输特性。
@@ -633,11 +633,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     // 调用OH_VideoEncoder_Destroy，注销编码器。
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoEnc != nullptr) {
-        ret = OH_VideoEncoder_Destroy(videoEnc);
+        OH_VideoEncoder_Destroy(videoEnc);
         videoEnc = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // 异常处理。
     }
     inQueue.Flush();
     outQueue.Flush();

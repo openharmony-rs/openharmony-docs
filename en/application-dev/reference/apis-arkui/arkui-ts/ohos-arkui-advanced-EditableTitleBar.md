@@ -1,4 +1,10 @@
 # EditableTitleBar
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @HelloCrease-->
 
 
 The editable title bar is a title bar that comes with button icons, typically **Cancel** on the left and **Confirm** on the right, on a multi-select or editing page.
@@ -103,8 +109,8 @@ type EditableTitleBarItem = EditableTitleBarMenuItem
 | -------- | -------- | -------- | -------- |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No| Background color of the title bar.<br>Default value: **'#00000000'**|
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No| Background blur style of the title bar.<br>Default value: **[BlurStyle.NONE]**|
-| safeAreaTypes | Array <[SafeAreaType](ts-types.md#safeareatype10)> | No  | Types of the expanded safe areas.<br>Default value: **[SafeAreaType.SYSTEM]**|
-| safeAreaEdges  | Array <[SafeAreaEdge](ts-types.md#safeareaedge10)> | No  | Edges for expanding the safe area.<br>Default value: **[SafeAreaEdge.TOP]**|
+| safeAreaTypes | Array <[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)> | No  | Types of the expanded safe areas.<br>Default value: **[SafeAreaType.SYSTEM]**|
+| safeAreaEdges  | Array <[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)> | No  | Edges for expanding the safe area.<br>Default value: **[SafeAreaEdge.TOP]**|
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
