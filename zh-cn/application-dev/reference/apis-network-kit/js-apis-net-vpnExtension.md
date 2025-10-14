@@ -577,24 +577,23 @@ protectProcessNet(): Promise\<void\>
 
 ```js
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
-import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let g_tunnelFd = -1;
-let context: vpnExtension.VpnExtensionContext;
-export default class MyVpnExtAbility extends VpnExtensionAbility {
+export default class MyVpnExtAbility  extends VpnExtensionAbility {
   private vpnServerIp: string = '192.168.31.13';
-  onCreate(want: Want) {
-    let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
     console.info("VPN createVpnConnection: " + JSON.stringify(vpnConnection));
     this.ProtectNetByProcess();
   }
   CreateTunnel() {
-      g_tunnelFd = 8888;
+    g_tunnelFd = 8888;
   }
   ProtectNetByProcess() {
     hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess');
-    this.VpnConnection.protectProcessNet().then(() => {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+    vpnConnection.protectProcessNet().then(() => {
       hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess Success');
       this.CreateTunnel();
     }).catch((err: Error) => {
