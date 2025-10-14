@@ -1,6 +1,6 @@
 # 应用包签名工具概述
 
-<!--Kit: Security-->
+<!--Kit: Common-->
 <!--Subsystem: Security-->
 <!--Owner: @scuteehuangjun-->
 <!--Designer: @scuteehuangjun; @liuchibin-->
