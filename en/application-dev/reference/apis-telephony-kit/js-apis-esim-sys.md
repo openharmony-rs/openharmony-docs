@@ -57,7 +57,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 try {
     let eid: string = eSIM.getEid(1);
-    console.log(`the EID is:` + eid);
+    console.info(`the EID is:` + eid);
 } catch (err) {
     console.err(`getEid, promise: err->${JSON.stringfy(err)}`)
 }
@@ -107,7 +107,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.getOsuStatus(1).then(() => {
-    console.log(`getOsuStatus invoking succeeded.`);
+    console.info(`getOsuStatus invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`getOsuStatus, promise: err->${JSON.stringify(err)}`);
 });
@@ -157,7 +157,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.startOsu(1).then(() => {
-    console.log(`startOsu invoking succeeded.`);
+    console.info(`startOsu invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`startOsu, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -221,7 +221,7 @@ let profile: eSIM.DownloadableProfile = {
 };
 
 eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDownloadableProfileMetadataResult) => {
-    console.log(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: data->${JSON.stringify(data)}`);
+    console.info(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError<void>) => {
     console.error(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: err->${JSON.stringify(err)}`);
 });
@@ -274,7 +274,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfilesResult) => {
-    console.log(`getDownloadableProfiles, GetDownloadableProfilesResult: data->${JSON.stringify(data)}`);
+    console.info(`getDownloadableProfiles, GetDownloadableProfilesResult: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError<void>) => {
     console.error(`getDownloadableProfiles, GetDownloadableProfilesResult: err->${JSON.stringify(err)}`);
 });
@@ -345,7 +345,7 @@ let configuration: eSIM.DownloadConfiguration = {
 };
 
 eSIM.downloadProfile(1, 0, profile, configuration).then((data: eSIM.DownloadProfileResult) => {
-    console.log(`downloadProfile, DownloadProfileResult: data->${JSON.stringify(data)}`);
+    console.info(`downloadProfile, DownloadProfileResult: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError<void>) => {
     console.error(`downloadProfile, DownloadProfileResult: err->${JSON.stringify(err)}`);
 });
@@ -395,7 +395,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.getEuiccProfileInfoList(1).then((data: eSIM.GetEuiccProfileInfoListResult) => {
-    console.log(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: data->${JSON.stringify(data)}`);
+    console.info(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError<void>) => {
     console.error(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: err->${JSON.stringify(err)}`);
 });
@@ -445,7 +445,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.getEuiccInfo(1).then((data: eSIM.EuiccInfo) => {
-    console.log(`getEuiccInfo, EuiccInfo: data->${JSON.stringify(data)}`);
+    console.info(`getEuiccInfo, EuiccInfo: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError<void>) => {
     console.error(`getEuiccInfo, EuiccInfo: err->${JSON.stringify(err)}`);
 });
@@ -495,8 +495,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.deleteProfile(1, testId).then(() => {
-    console.log(`deleteProfile invoking succeeded.`);
+eSIM.deleteProfile(1, 'testId').then(() => {
+    console.info(`deleteProfile invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`deleteProfile, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -549,8 +549,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.switchToProfile(1, 0, testId, true).then(() => {
-    console.log(`switchToProfile invoking succeeded.`);
+eSIM.switchToProfile(1, 0, 'testId', true).then(() => {
+    console.info(`switchToProfile invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`switchToProfile, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -601,8 +601,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.setProfileNickname(1, testId, testName).then(() => {
-    console.log(`setProfileNickname invoking succeeded.`);
+eSIM.setProfileNickname(1, 'testId', 'testName').then(() => {
+    console.info(`setProfileNickname invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`setProfileNickname, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -653,7 +653,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.resetMemory(1).then(() => {
-    console.log(`resetMemory invoking succeeded.`);
+    console.info(`resetMemory invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`resetMemory, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -703,7 +703,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.reserveProfilesForFactoryRestore(1).then(() => {
-    console.log(`reserveProfilesForFactoryRestore invoking succeeded.`);
+    console.info(`reserveProfilesForFactoryRestore invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`reserveProfilesForFactoryRestore, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -753,8 +753,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.setDefaultSmdpAddress(1, testAddress).then(() => {
-    console.log(`setDefaultSmdpAddress invoking succeeded.`);
+eSIM.setDefaultSmdpAddress(1, 'testAddress').then(() => {
+    console.info(`setDefaultSmdpAddress invoking succeeded.`);
 }).catch((err: BusinessError<void>) => {
     console.error(`setDefaultSmdpAddress, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -804,7 +804,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.getDefaultSmdpAddress(1).then((data: string) => {
-    console.log(`getDefaultSmdpAddress, result: data->${JSON.stringify(data)}`);
+    console.info(`getDefaultSmdpAddress, result: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError<void>) => {
     console.error(`getDefaultSmdpAddress, ErrorState: err->${JSON.stringify(err)}`);
 });
@@ -855,11 +855,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.cancelSession(1, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).then((data: string) => {
-    console.log(`cancelSession, result: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError<void>) => {
+let transactionId = '';
+eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_REJECTION)
+  .then((data: eSIM.ResultCode) => {
+    console.info(`cancelSession, result: data->${JSON.stringify(data)}`);
+  })
+  .catch((err: BusinessError<void>) => {
     console.error(`cancelSession execution failed: err->${JSON.stringify(err)}`);
-});
+  });
 ```
 
 ## AccessRule<sup>18+</sup>
