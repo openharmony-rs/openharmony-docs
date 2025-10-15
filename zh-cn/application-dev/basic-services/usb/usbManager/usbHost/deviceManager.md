@@ -150,13 +150,81 @@ import { JSON } from '@kit.ArkTS';
 
 <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+      console.error('deviceList is empty');
+      this.logInfo_ += '\n[ERROR] deviceList is empty';
+      return;
+    }
+    let deviceList: usbManager.USBDevice[] = this.deviceList_;
+    let deviceName: string = deviceList[0].name;
+    // 申请操作指定的device的操作权限。
+    usbManager.requestRight(deviceName).then((hasRight: boolean) => {
+      console.info('usb device request right result: ' + hasRight);
+      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
+    }).catch((error: BusinessError) => {
+      console.error(`usb device request right failed : ${error}`);
+      this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+    });
+```
+
+
 4. 打开Device设备。
 
 <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+      console.error('deviceList_ is empty');
+      this.logInfo_ += '\n[ERROR] deviceList is empty';
+      return;
+    }
+    let deviceList: usbManager.USBDevice[] = this.deviceList_;
+    if (!usbManager.hasRight(deviceList[0]?.name)) {
+      console.error('permission denied');
+      this.logInfo_ += '\n[ERROR] permission denied';
+      return;
+    }
+    // 打开设备，获取数据传输通道。
+    let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+    if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
+      console.error('invalid interface');
+      this.logInfo_ += '\n[ERROR] invalid interface';
+      return;
+    }
+    let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
+    /*
+     打开对应接口，在设备信息（deviceList）中选取对应的interface。
+    interface1为设备配置中的一个接口。
+    */
+    usbManager.claimInterface(pipe, interface1, true);
+    this.pipe_ = pipe;
+    this.interface_ = interface1;
+    console.info('open device success');
+    this.logInfo_ += '\n[INFO] open device success';
+```
+
+
 5. 释放接口，关闭设备。
 
 <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    if (this.pipe_ === undefined || this.interface_ === undefined) {
+      console.error('pipe_ or interface_ is null');
+      this.logInfo_ += '\n[ERROR] pipe_ or interface_ is null';
+      return;
+    }
+    let pipe: usbManager.USBDevicePipe = this.pipe_;
+    let interface1: usbManager.USBInterface = this.interface_;
+    usbManager.releaseInterface(pipe, interface1);
+    usbManager.closePipe(pipe);
+    this.pipe_ = undefined;
+    this.interface_ = undefined;
+    console.info('close device success');
+    this.logInfo_ += '\n[INFO] close device success';
+```
+
 
 ### 相关实例
 
