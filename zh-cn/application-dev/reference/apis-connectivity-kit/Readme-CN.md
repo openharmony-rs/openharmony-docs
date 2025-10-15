@@ -13,6 +13,7 @@
   - [@ohos.bluetooth.ble(蓝牙ble模块)(推荐)](js-apis-bluetooth-ble.md)
   - [@ohos.bluetooth.connection(蓝牙connection模块)(推荐)](js-apis-bluetooth-connection.md)
   - [@ohos.bluetooth.constant(蓝牙constant模块)(推荐)](js-apis-bluetooth-constant.md)
+  - [@ohos.bluetooth.common(蓝牙common模块)(推荐)](js-apis-bluetooth-common.md)
   - [@ohos.bluetooth.hfp(蓝牙hfp模块)(推荐)](js-apis-bluetooth-hfp.md)
   - [@ohos.bluetooth.hid(蓝牙hid模块)(推荐)](js-apis-bluetooth-hid.md)
   - [@ohos.bluetooth.pan(蓝牙pan模块)(推荐)](js-apis-bluetooth-pan.md)
