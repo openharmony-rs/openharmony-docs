@@ -6,7 +6,6 @@
 <!--Tester: @csp1992-->
 <!--Adviser: @luwy2025-->
 
-
 > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
 > 您必须先完成[监听设备上下线](game-controller-monitor-device.md)功能的开发，才能进行游戏手柄轴事件和按键事件的监听注册。
 
