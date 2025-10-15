@@ -141,6 +141,18 @@ import { JSON } from '@kit.ArkTS';
     ```
     <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let portId: number = this.portId_;
+    try {
+      serialManager.open(portId)
+      console.info(`open usbSerial success, portId: ${portId}`);
+      this.logInfo_ += '\n[INFO] open usbSerial success, portId: ' + JSON.stringify(portId);
+    } catch (error) {
+      console.error(`open usbSerial error： ${error}`);
+      this.logInfo_ += '\n[ERROR] open usbSerial error: ' + JSON.stringify(error);
+    }
+```
+
 5. 获取和修改串口配置。
 
     ```ts
