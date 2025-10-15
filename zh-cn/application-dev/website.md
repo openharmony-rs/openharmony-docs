@@ -4771,6 +4771,7 @@
             - [HiDebug_MallocDispatch](reference/apis-performance-analysis-kit/capi-hidebug-hidebug-mallocdispatch.md)
             - [HiDebug_GraphicsMemorySummary](reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md)
             - [HiDebug_Backtrace_Object__*](reference/apis-performance-analysis-kit/capi-hidebug-hidebug-backtrace-object--8h.md)
+            - [HiDebug_ProcessSamplerConfig](reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md)
             - [HiTraceId](reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md)
         - 错误码<!--performance-analysis-errcode-->
           - [Faultlogger错误码](reference/apis-performance-analysis-kit/errorcode-faultlogger.md)

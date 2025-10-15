@@ -503,7 +503,7 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config |  指向Perf采样配置结构体[HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)的指针 |
+| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config |  指向Perf采样配置结构体[HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)的指针。 |
 | [OH_HiDebug_ThreadLiteSamplingCallback](capi-hidebug-h.md#oh_hidebug_threadlitesamplingcallback) stacksCallback | 采样结束时的回调函数，用于返回采样结果。 |
 
 **返回：**
