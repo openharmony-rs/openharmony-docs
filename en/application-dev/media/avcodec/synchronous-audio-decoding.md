@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, audio decoding in synchronous mode is supported.
 
@@ -16,6 +16,7 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 **When to Use**
 
 Asynchronous mode is generally recommended for most use cases. For details, see [Audio Decoding](audio-decoding.md). Synchronous mode can be used if you need to actively request buffers for frame delivery.
+
 Decoding an audio/video file into a PCM stream typically involves the following steps: [media data demultiplexing](audio-video-demuxer.md) -> audio decoding.
 
 This guide outlines the audio decoding process: inputting audio frames and decoding them into PCM streams.
@@ -86,22 +87,22 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
 
-     Add the header files.
+    Add the header files.
 
     ```c++
-#include <multimedia/drm_framework/native_mediakeysystem.h>
+    #include <multimedia/drm_framework/native_mediakeysystem.h>
     #include <multimedia/drm_framework/native_mediakeysession.h>
     #include <multimedia/drm_framework/native_drm_err.h>
     #include <multimedia/drm_framework/native_drm_common.h>
     ```
     Link the dynamic libraries in the CMake script.
-    
+
     ``` cmake
-target_link_libraries(sample PUBLIC libnative_drm.so)
+    target_link_libraries(sample PUBLIC libnative_drm.so)
     ```
-    
+
     The sample code is as follows:
-```c++
+    ```c++
     // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
     MediaKeySystem *system = nullptr;
     int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
@@ -109,9 +110,9 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
         printf("create media key system failed");
         return;
     }
-    
+
     // Create a media key session.
-MediaKeySession *session = nullptr;
+    MediaKeySession *session = nullptr;
     DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
     ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
     if (ret != DRM_OK) {
@@ -128,7 +129,7 @@ MediaKeySession *session = nullptr;
     bool secureAudio = false;
     ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
     ```
-    
+
 4. Call **OH_AudioCodec_Configure()** to configure the decoder.
 
    Key values of configuration options are described as follows:

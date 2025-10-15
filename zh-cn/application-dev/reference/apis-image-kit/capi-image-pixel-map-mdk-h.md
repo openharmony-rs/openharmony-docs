@@ -4,7 +4,7 @@
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -12,7 +12,7 @@
 
 **引用文件：** <multimedia/image_framework/image_pixel_map_mdk.h>
 
-**库：** libpixelmapndk.z.so
+**库：** libpixelmap_ndk.z.so
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

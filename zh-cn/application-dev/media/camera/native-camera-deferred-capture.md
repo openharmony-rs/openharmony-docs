@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 分段式拍照是相机的最重要功能之一，相机输出低质量图用作快速显示，提升用户感知拍照速度，同时使用高质量图保证最后的成图质量达到系统相机的水平，既满足了后处理算法的需求，又不阻塞前台的拍照速度，构筑相机性能竞争力，提升了用户的体验。
 
@@ -23,6 +23,7 @@
    #include <cstdlib>
    #include <cstring>
    #include <memory>
+   #include <mutex>
    #include "hilog/log.h"
    #include "napi/native_api.h"
    #include <ohcamera/camera.h>
@@ -127,15 +128,13 @@
        auto buffer = std::make_unique<uint8_t[]>(bufferSize);
        imageErr = OH_ImagePackerNative_PackToDataFromPixelmap(imagePacker, options, pixelmapNative, buffer.get(), &bufferSize);
        OH_LOG_INFO(LOG_APP, "OnImageDataPrepared: packToData ret code:%{public}u outsize:%{public}zu", imageErr, bufferSize);
-       {
-           std::lock_guard<std::mutex> lock(g_mediaAssetMutex);
-           if (g_mediaAsset_ == nullptr) {
-               OH_LOG_ERROR(LOG_APP,  "OnImageDataPrepared: get current mediaAsset failed!");
-               return;
-           }
-           // 调用媒体库接口通过buffer存图。
-           OH_MediaAssetChangeRequest* changeRequest = OH_MediaAssetChangeRequest_Create(g_mediaAsset_);
+       std::lock_guard<std::mutex> lock(g_mediaAssetMutex);
+       if (g_mediaAsset_ == nullptr) {
+         OH_LOG_ERROR(LOG_APP,  "OnImageDataPrepared: get current mediaAsset failed!");
+         return;
        }
+       // 调用媒体库接口通过buffer存图。
+       OH_MediaAssetChangeRequest* changeRequest = OH_MediaAssetChangeRequest_Create(g_mediaAsset_);
        MediaLibrary_ErrorCode mediaErr = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest,
            MEDIA_LIBRARY_IMAGE_RESOURCE, buffer.get(), bufferSize);
        OH_LOG_INFO(LOG_APP,  "OnImageDataPrepared: AddResourceWithBuffer get errCode:%{public}d", mediaErr);

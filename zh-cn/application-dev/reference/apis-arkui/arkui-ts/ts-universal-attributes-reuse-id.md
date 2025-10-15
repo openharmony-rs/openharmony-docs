@@ -1,4 +1,10 @@
 # 复用标识
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 reuseId用于标记自定义组件复用组，当组件回收复用时，复用框架将根据组件的reuseId来划分组件的复用组。
 
@@ -71,11 +77,11 @@ struct ReusableChildComponent {
   @State type: string = ''
 
   aboutToAppear() {
-    console.log(`ReusableChildComponent Appear ${this.type}`)
+    console.info(`ReusableChildComponent Appear ${this.type}`)
   }
 
   aboutToReuse(params: ESObject) {
-    console.log(`ReusableChildComponent Reuse ${this.type}`)
+    console.info(`ReusableChildComponent Reuse ${this.type}`)
     this.type = params.type;
   }
 

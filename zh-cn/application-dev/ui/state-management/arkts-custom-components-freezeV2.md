@@ -46,7 +46,7 @@ export class Book {
 @Entry
 @ComponentV2({ freezeWhenInactive: true })
 export struct Page1 {
-  @Local bookTest: Book = new Book('A Midsummer Night’s Dream');
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
@@ -64,7 +64,7 @@ export struct Page1 {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
           setTimeout(() => {
-            this.bookTest = new Book('Jane Austen's Pride and Prejudice');
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 1000)
         })
     }
@@ -353,7 +353,7 @@ struct NavigationContentMsgStack {
 >
 > Repeat从API version 18开始支持自定义组件冻结。
 
-对Repeat缓存池中的自定义组件进行冻结，避免不必要的组件刷新。建议提前阅读[Repeat节点更新/复用能力说明](./arkts-new-rendering-control-repeat.md#节点更新复用能力说明)。
+对Repeat缓存池中的自定义组件进行冻结，避免不必要的组件刷新。建议提前阅读[Repeat节点更新/复用能力说明](../rendering-control/arkts-new-rendering-control-repeat.md#节点更新复用能力说明)。
 
 ```ts
 @Entry
@@ -489,7 +489,7 @@ struct Page1 {
 
 @ComponentV2({ freezeWhenInactive: true })
 export struct Child {
-  @Local bookTest: Book = new Book('A Midsummer Night's Dream');
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
@@ -508,7 +508,7 @@ export struct Child {
       Button('change BookName')
         .onClick(() => {
           setTimeout(() => {
-            this.bookTest = new Book('Jane Austen's Pride and Prejudice');
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 3000);
         })
     }

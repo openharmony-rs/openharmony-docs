@@ -142,6 +142,16 @@
   | CFB128 | 128 | [NoPadding\|PKCS5\|PKCS7] | 10+ | 
   | GCM | 128 | [NoPadding\|PKCS5\|PKCS7] | 12+ | 
 
+## AES-WRAP
+
+算法库提供AES-WRAP算法，该算法是一种基于[AES](crypto-sym-key-generation-conversion-spec.md#aes)的加密算法，用于安全地存储或传输对称密钥。它的主要目的是通过加密保护密钥，防止密钥在存储或传输过程中被泄露或篡改。
+
+| 算法名称 | 字符串参数 | API版本 | 
+| -------- | -------- | -------- |
+| AES128_WRAP | AES128_WRAP | 22+ | 
+| AES256_WRAP | AES256_WRAP | 22+ | 
+| AES384_WRAP | AES384_WRAP | 22+ | 
+
 ## 填充模式
 
 分组加密算法有固定的分组长度，在实际应用中，最后一组明文的数据量可能无法达到固定的长度要求，此时可以通过不同的填充模式进行数据填充。填充模式有：

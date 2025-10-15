@@ -3,7 +3,7 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @zhuangzhuang; @gsl_1234-->
+<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
@@ -24,12 +24,13 @@
   <!--Del-->
   - [@ohos.application.BackupExtensionAbility (备份恢复扩展能力)(系统接口)](js-apis-application-backupExtensionAbility-sys.md)
   - [@ohos.file.backup (备份恢复)(系统接口)](js-apis-file-backup-sys.md)
+  - [@ohos.file.cloudDiskManager (云盘管理)(系统接口)](js-apis-file-clouddiskmanager-sys.md)
   - [@ohos.file.cloudSync (端云同步能力)(系统接口)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (端云同步管理)(系统接口)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (目录环境能力)(系统接口)](js-apis-file-environment-sys.md)
   - [@ohos.file.fileAccess (公共文件访问与管理)(系统接口)](js-apis-fileAccess-sys.md)
   - [@ohos.file.fileExtensionInfo (公共文件访问与管理属性信息)(系统接口)](js-apis-fileExtensionInfo-sys.md)
-  - [@ohos.file.keyManager (用户秘钥管理)(系统接口)](js-apis-file-keymanager-sys.md)
+  - [@ohos.file.keyManager (用户密钥管理)(系统接口)](js-apis-file-keymanager-sys.md)
   - [@ohos.file.recent(最近访问列表)(系统接口)](js-apis-file-recent-sys.md)
   - [@ohos.file.picker (选择器)(系统接口)](js-apis-file-picker-sys.md)
   - [@ohos.file.storageStatistics (应用空间统计)(系统接口)](js-apis-file-storage-statistics-sys.md)
@@ -60,4 +61,7 @@
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
+  <!--Del-->
+  - [云盘管理错误码](errorcode-clouddiskmanager-sys.md)
+  <!--DelEnd-->
   

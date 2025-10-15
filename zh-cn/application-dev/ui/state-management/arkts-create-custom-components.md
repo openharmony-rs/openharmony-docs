@@ -151,7 +151,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   | ------ | ------ | ---- | ------------------------------------------------------------ |
   | routeName | string | 否 | 表示作为命名路由页面的名字。 |
   | storage | [LocalStorage](arkts-localstorage.md) | 否 | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。 |
-  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是否使用[LocalContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的[LocalStorage](arkts-localstorage.md)实例对象。false：不使用共享的[LocalStorage](arkts-localstorage.md)实例对象。 |
+  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是否使用[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的[LocalStorage](arkts-localstorage.md)实例对象。false：不使用共享的[LocalStorage](arkts-localstorage.md)实例对象。 |
 
   > **说明：**
   >
@@ -344,7 +344,7 @@ struct Son {
   }
   ```
 
-- 不允许使用switch语法，当需要使用条件判断时，请使用[if](./arkts-rendering-control-ifelse.md)。示例如下。
+- 不允许使用switch语法，当需要使用条件判断时，请使用[if](../rendering-control/arkts-rendering-control-ifelse.md)。示例如下。
 
   ```ts
   build() {
@@ -478,4 +478,35 @@ struct MyComponent {
 > **说明：**
 >
 > ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的Button组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
+
+## 限制条件
+
+### V1自定义组件不支持静态代码块
+
+静态代码块用于初始化静态属性。
+- 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。
+
+  ```ts
+  @Component
+  struct MyComponent {
+    static a: string = '';
+    // 静态代码块不生效，a的值仍为空字符串''
+    static {
+      this.a = 'hello world';
+    }
+  }
+  ```
+
+- 在\@ComponentV2装饰的自定义组件中支持使用。
+
+  ```ts
+  @ComponentV2
+  struct MyComponentV2 {
+    static a: string = '';
+    // 静态代码块生效，a的值变为'hello world'
+    static {
+      this.a = 'hello world';
+    }
+  }
+  ```
 <!--no_check-->

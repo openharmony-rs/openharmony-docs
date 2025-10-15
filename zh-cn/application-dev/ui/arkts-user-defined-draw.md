@@ -72,7 +72,7 @@ NDK提供了自定义绘制节点的能力，通过以下接口，开发者可�
     OH_Drawing_CanvasDrawPath(canvas, path);
     ```
 **内容绘制的完整示例：** 
-   
+
 ```c++
 #include <arkui/native_interface.h>
 #include <arkui/native_node.h>
@@ -153,190 +153,193 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI) {
 1. 按照[自定义布局容器](ndk-build-custom-components.md#自定义布局容器)章节准备前置工程。
 
 2. 创建自定义绘制组件封装对象。
-```c
-// ArkUICustomNode.h
-// 自定义绘制组件示例
 
-#ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
-#define MYAPPLICATION_ARKUICUSTOMNODE_H
+   ```c
+   // ArkUICustomNode.h
+   // 自定义绘制组件示例
+   
+   #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
+   #define MYAPPLICATION_ARKUICUSTOMNODE_H
+   
+   #include <native_drawing/drawing_brush.h>
+   #include <native_drawing/drawing_canvas.h>
+   #include <native_drawing/drawing_path.h>
+   
+   #include "ArkUINode.h"
+   
+   namespace NativeModule {
+   
+   class ArkUICustomNode : public ArkUINode {
+   public:
+       // 使用自定义组件类型ARKUI_NODE_CUSTOM创建组件。
+       ArkUICustomNode()
+           : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM)) {
+           // 注册自定义事件监听器。
+           nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+           // 声明自定义事件并转递自身作为自定义数据。
+           nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);        
+           nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
+           nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND , 0, this);
+           
+       }
+   
+       ~ArkUICustomNode() override {
+           // 反注册自定义事件监听器。
+           nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+           // 取消声明自定义事件。
+           nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT);        
+           nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW);
+           nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND);
+       }
+   
+   private:
+       static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event) {
+           // 获取组件实例对象，调用相关实例方法。
+           auto customNode = reinterpret_cast<ArkUICustomNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
+           auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
+           switch (type) {
+           case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND:
+               customNode->OnDrawBehind(event);
+               break;
+           case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW:
+               customNode->OnDraw(event);
+               break;
+           case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT:
+               customNode->OnDrawFront(event);
+               break;    
+           default:
+               break;
+           }
+       }
+   
+       // 自定义绘制逻辑。
+       void OnDrawBehind(ArkUI_NodeCustomEvent *event) {
+           auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
+           // 获取图形绘制对象。
+           auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
+           // 获取组件大小。
+           auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
+           // 绘制自定义内容。
+           auto path = OH_Drawing_PathCreate();
+           OH_Drawing_PathMoveTo(path, size.width / 5, size.height / 5);
+           OH_Drawing_PathLineTo(path, size.width * 4 / 5, size.height / 5);
+           OH_Drawing_PathLineTo(path, size.width * 4 / 5, size.height * 4 / 5);
+           OH_Drawing_PathLineTo(path, size.width / 5, size.height * 4 / 5);
+           OH_Drawing_PathLineTo(path, size.width / 5, size.height / 5);
+           OH_Drawing_PathClose(path);
+           auto brush = OH_Drawing_BrushCreate();
+           OH_Drawing_BrushSetColor(brush, 0xFFF0FAFF);// 蓝白色
+           OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
+           OH_Drawing_CanvasDrawPath(drawCanvas, path);
+           // 释放资源
+           OH_Drawing_BrushDestroy(brush);
+           OH_Drawing_PathDestroy(path);
+       }
+       
+       void OnDraw(ArkUI_NodeCustomEvent *event) {
+           auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
+           // 获取图形绘制对象。
+           auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
+           // 获取组件大小。
+           auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
+           // 绘制自定义内容。
+           auto path = OH_Drawing_PathCreate();
+           OH_Drawing_PathMoveTo(path, size.width / 4, size.height / 4);
+           OH_Drawing_PathLineTo(path, size.width * 3 / 4, size.height / 4);
+           OH_Drawing_PathLineTo(path, size.width * 3 / 4, size.height * 3 / 4);
+           OH_Drawing_PathLineTo(path, size.width / 4, size.height * 3 / 4);
+           OH_Drawing_PathLineTo(path, size.width / 4, size.height / 4);
+           OH_Drawing_PathClose(path);
+           auto brush = OH_Drawing_BrushCreate();
+           OH_Drawing_BrushSetColor(brush, 0xff2787D9);// 浅蓝色
+           OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
+           OH_Drawing_CanvasDrawPath(drawCanvas, path);
+           // 释放资源
+           OH_Drawing_BrushDestroy(brush);
+           OH_Drawing_PathDestroy(path);
+       }
+       
+       void OnDrawFront(ArkUI_NodeCustomEvent *event) {
+           auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
+           // 获取图形绘制对象。
+           auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
+           // 获取组件大小。
+           auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
+           // 绘制自定义内容。
+           auto path = OH_Drawing_PathCreate();
+           OH_Drawing_PathMoveTo(path, size.width / 3, size.height / 3);
+           OH_Drawing_PathLineTo(path, size.width * 2 / 3, size.height / 3);
+           OH_Drawing_PathLineTo(path, size.width * 2 / 3, size.height * 2 / 3);
+           OH_Drawing_PathLineTo(path, size.width / 3, size.height * 2 / 3);
+           OH_Drawing_PathLineTo(path, size.width / 3, size.height / 3);
+           OH_Drawing_PathClose(path);
+           auto brush = OH_Drawing_BrushCreate();
+           OH_Drawing_BrushSetColor(brush, 0xFF004AAF);// 深蓝色
+           OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
+           OH_Drawing_CanvasDrawPath(drawCanvas, path);
+           // 释放资源
+           OH_Drawing_BrushDestroy(brush);
+           OH_Drawing_PathDestroy(path);
+       }
+   };
+   
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_ARKUICUSTOMNODE_H
+   ```
 
-#include <native_drawing/drawing_brush.h>
-#include <native_drawing/drawing_canvas.h>
-#include <native_drawing/drawing_path.h>
+3. 使用自定义绘制组件和自定义容器创建示例界面。
 
-#include "ArkUINode.h"
+   ```c
+   // ArkUICustomNode.cpp
+   // 自定义NDK接口入口组件。
+   
+   #include <arkui/native_node_napi.h>
+   #include <arkui/native_type.h>
+   #include <js_native_api.h>
+   
+   #include "NativeEntry.h"
+   #include "ArkUICustomContainerNode.h"
+   #include "ArkUICustomNode.h"
+   
+   // 全局环境变量声明
+   static napi_env g_env = nullptr;
+   
+   namespace NativeModule {
+   
+   napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // 获取NodeContent
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+   
+       // 创建自定义容器和自定义绘制组件。
+       auto node = std::make_shared<ArkUICustomContainerNode>();
+       node->SetBackgroundColor(0xFFD5D5D5);// 浅灰色
+       auto customNode = std::make_shared<ArkUICustomNode>();
+       customNode->SetBackgroundColor(0xFF707070);// 深灰色
+       customNode->SetWidth(150);
+       customNode->SetHeight(150);
+       node->AddChild(customNode);
+   
+       // 保持Native侧对象到管理类中，维护生命周期。
+       NativeEntry::GetInstance()->SetRootNode(node);
+       g_env = env;
+       return nullptr;
+   }
+   
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info) {
+       // 从管理类中释放Native侧对象。
+       NativeEntry::GetInstance()->DisposeRootNode();
+       return nullptr;
+   }
+   
+   } // namespace NativeModule
+   ```
 
-namespace NativeModule {
-
-class ArkUICustomNode : public ArkUINode {
-public:
-    // 使用自定义组件类型ARKUI_NODE_CUSTOM创建组件。
-    ArkUICustomNode()
-        : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM)) {
-        // 注册自定义事件监听器。
-        nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-        // 声明自定义事件并转递自身作为自定义数据。
-        nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);        
-        nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
-        nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND , 0, this);
-        
-    }
-
-    ~ArkUICustomNode() override {
-        // 反注册自定义事件监听器。
-        nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-        // 取消声明自定义事件。
-        nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT);        
-        nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW);
-        nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND);
-    }
-
-private:
-    static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event) {
-        // 获取组件实例对象，调用相关实例方法。
-        auto customNode = reinterpret_cast<ArkUICustomNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
-        auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
-        switch (type) {
-        case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND:
-            customNode->OnDrawBehind(event);
-            break;
-        case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW:
-            customNode->OnDraw(event);
-            break;
-        case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT:
-            customNode->OnDrawFront(event);
-            break;    
-        default:
-            break;
-        }
-    }
-
-    // 自定义绘制逻辑。
-    void OnDrawBehind(ArkUI_NodeCustomEvent *event) {
-        auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
-        // 获取图形绘制对象。
-        auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
-        // 获取组件大小。
-        auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
-        // 绘制自定义内容。
-        auto path = OH_Drawing_PathCreate();
-        OH_Drawing_PathMoveTo(path, size.width / 5, size.height / 5);
-        OH_Drawing_PathLineTo(path, size.width * 4 / 5, size.height / 5);
-        OH_Drawing_PathLineTo(path, size.width * 4 / 5, size.height * 4 / 5);
-        OH_Drawing_PathLineTo(path, size.width / 5, size.height * 4 / 5);
-        OH_Drawing_PathLineTo(path, size.width / 5, size.height / 5);
-        OH_Drawing_PathClose(path);
-        auto brush = OH_Drawing_BrushCreate();
-        OH_Drawing_BrushSetColor(brush, 0xFFF0FAFF);// 蓝白色
-        OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
-        OH_Drawing_CanvasDrawPath(drawCanvas, path);
-        // 释放资源
-        OH_Drawing_BrushDestroy(brush);
-        OH_Drawing_PathDestroy(path);
-    }
-    
-    void OnDraw(ArkUI_NodeCustomEvent *event) {
-        auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
-        // 获取图形绘制对象。
-        auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
-        // 获取组件大小。
-        auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
-        // 绘制自定义内容。
-        auto path = OH_Drawing_PathCreate();
-        OH_Drawing_PathMoveTo(path, size.width / 4, size.height / 4);
-        OH_Drawing_PathLineTo(path, size.width * 3 / 4, size.height / 4);
-        OH_Drawing_PathLineTo(path, size.width * 3 / 4, size.height * 3 / 4);
-        OH_Drawing_PathLineTo(path, size.width / 4, size.height * 3 / 4);
-        OH_Drawing_PathLineTo(path, size.width / 4, size.height / 4);
-        OH_Drawing_PathClose(path);
-        auto brush = OH_Drawing_BrushCreate();
-        OH_Drawing_BrushSetColor(brush, 0xff2787D9);// 浅蓝色
-        OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
-        OH_Drawing_CanvasDrawPath(drawCanvas, path);
-        // 释放资源
-        OH_Drawing_BrushDestroy(brush);
-        OH_Drawing_PathDestroy(path);
-    }
-    
-    void OnDrawFront(ArkUI_NodeCustomEvent *event) {
-        auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
-        // 获取图形绘制对象。
-        auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
-        // 获取组件大小。
-        auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
-        // 绘制自定义内容。
-        auto path = OH_Drawing_PathCreate();
-        OH_Drawing_PathMoveTo(path, size.width / 3, size.height / 3);
-        OH_Drawing_PathLineTo(path, size.width * 2 / 3, size.height / 3);
-        OH_Drawing_PathLineTo(path, size.width * 2 / 3, size.height * 2 / 3);
-        OH_Drawing_PathLineTo(path, size.width / 3, size.height * 2 / 3);
-        OH_Drawing_PathLineTo(path, size.width / 3, size.height / 3);
-        OH_Drawing_PathClose(path);
-        auto brush = OH_Drawing_BrushCreate();
-        OH_Drawing_BrushSetColor(brush, 0xFF004AAF);// 深蓝色
-        OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
-        OH_Drawing_CanvasDrawPath(drawCanvas, path);
-        // 释放资源
-        OH_Drawing_BrushDestroy(brush);
-        OH_Drawing_PathDestroy(path);
-    }
-};
-
-} // namespace NativeModule
-
-#endif // MYAPPLICATION_ARKUICUSTOMNODE_H
-```
-
-3. 使用自定义绘制组件和自定义容器创建示例界面
-```c
-// ArkUICustomNode.cpp
-// 自定义NDK接口入口组件。
-
-#include <arkui/native_node_napi.h>
-#include <arkui/native_type.h>
-#include <js_native_api.h>
-
-#include "NativeEntry.h"
-#include "ArkUICustomContainerNode.h"
-#include "ArkUICustomNode.h"
-
-// 全局环境变量声明
-static napi_env g_env = nullptr;
-
-namespace NativeModule {
-
-napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    // 获取NodeContent
-    ArkUI_NodeContentHandle contentHandle;
-    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-    NativeEntry::GetInstance()->SetContentHandle(contentHandle);
-
-    // 创建自定义容器和自定义绘制组件。
-    auto node = std::make_shared<ArkUICustomContainerNode>();
-    node->SetBackgroundColor(0xFFD5D5D5);// 浅灰色
-    auto customNode = std::make_shared<ArkUICustomNode>();
-    customNode->SetBackgroundColor(0xFF707070);// 深灰色
-    customNode->SetWidth(150);
-    customNode->SetHeight(150);
-    node->AddChild(customNode);
-
-    // 保持Native侧对象到管理类中，维护生命周期。
-    NativeEntry::GetInstance()->SetRootNode(node);
-    g_env = env;
-    return nullptr;
-}
-
-napi_value DestroyNativeRoot(napi_env env, napi_callback_info info) {
-    // 从管理类中释放Native侧对象。
-    NativeEntry::GetInstance()->DisposeRootNode();
-    return nullptr;
-}
-
-} // namespace NativeModule
-```
 ![customDrawLayer](figures/capiDrawLayer.jpg)

@@ -2,8 +2,9 @@
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
-<!--SE: @leo_ysl-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 Metadata is the description and context of image information returned by the camera application. It provides detailed data for the image information, such as the coordinates of a viewfinder frame for identifying a portrait in a photo or video.
 
@@ -49,7 +50,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
        }
        Camera_MetadataObjectType* metaDataObjectType = nullptr;
        bool isSupported = false;
-       for (int index = 0; index < cameraOutputCapability->metadataProfilesSize; index++) {
+       for (uint32_t index = 0; index < cameraOutputCapability->metadataProfilesSize; index++) {
            if (cameraOutputCapability->supportedMetadataObjectTypes[index] != nullptr &&
                *cameraOutputCapability->supportedMetadataObjectTypes[index] == FACE_DETECTION) {
                metaDataObjectType = *cameraOutputCapability->supportedMetadataObjectTypes;
@@ -70,20 +71,69 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    }
    ```
 
-4. Call **start()** to start outputting metadata. If the call fails, an error code is returned.
-     
+4. Call [OH_CameraManager_CreateCaptureSession()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcapturesession) to create a session.
+
    ```c++
-   Camera_ErrorCode StartMetadataOutput(Camera_MetadataOutput* metadataOutput)
+   Camera_CaptureSession* CreateCaptureSession(Camera_Manager* cameraManager)
    {
-       Camera_ErrorCode ret = OH_MetadataOutput_Start(metadataOutput);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_MetadataOutput_Start failed.");
+       Camera_CaptureSession* captureSession = nullptr;
+       Camera_ErrorCode ret = OH_CameraManager_CreateCaptureSession(cameraManager, &captureSession);
+       if (captureSession == nullptr || ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateCaptureSession failed.");
        }
-       return ret;
+       return captureSession;
    }
    ```
 
-5. Call **stop()** to stop outputting metadata. If the call fails, an error code is returned.
+5. Configure the session. After the configuration, call [OH_CaptureSession_Start()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_start) to output metadata. If the call fails, an error code is returned. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
+
+    ```c++
+    Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
+        Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput, Camera_MetadataOutput* metadataOutput)
+    {
+        // Start session configuration.
+        Camera_ErrorCode ret = OH_CaptureSession_BeginConfig(captureSession);
+        if (ret != CAMERA_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_BeginConfig failed.");
+        }
+
+        // Add the camera input stream to the session.
+        Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+        if (ret != CAMERA_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
+            return ret;
+        }
+
+        // Add the preview output stream to the session.
+        ret = OH_CaptureSession_AddPreviewOutput(captureSession, previewOutput);
+        if (ret != CAMERA_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
+            return ret;
+        }
+
+        // Add the metadata stream to the session.
+        ret = OH_CaptureSession_AddMetadataOutput(captureSession, metadataOutput);
+        if (ret != CAMERA_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddMetadataOutput failed.");
+        }        
+
+        // Commit the session configuration.
+        ret = OH_CaptureSession_CommitConfig(captureSession);
+        if (ret != CAMERA_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
+            return ret;
+        }
+
+        // Start the session.
+        ret = OH_CaptureSession_Start(captureSession);
+        if (ret != CAMERA_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
+        }
+        return ret;
+    }
+    ```
+
+6. Call **stop()** to stop outputting metadata. If the call fails, an error code is returned.
      
    ```c++
    Camera_ErrorCode StopMetadataOutput(Camera_MetadataOutput* metadataOutput)
@@ -111,7 +161,7 @@ During camera application development, you can listen for the status of metadata
 
   > **NOTE**
   >
-  > Currently, only **FACE_DETECTION** is available for the metadata type. The metadata object is the rectangle of the recognized face, including the x-axis coordinate and y-axis coordinate of the upper left corner of the rectangle as well as the width and height of the rectangle.
+  > Currently, only **FACE_DETECTION** is available for the metadata type. The metadata object is the rectangle of the recognized face, including the x-axis coordinate and y-axis coordinate of the top-left corner of the rectangle as well as the width and height of the rectangle.
 
 - Register the **'error'** event to listen for metadata stream errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
 

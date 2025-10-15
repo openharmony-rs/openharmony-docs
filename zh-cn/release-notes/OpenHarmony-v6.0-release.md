@@ -18,7 +18,7 @@ OpenHarmony 6.0 Release版本进一步增强ArkUI组件能力，提供更安全�
 
 - 新增支持互动卡片。（[指南](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/form/arkts-ui-liveform-overview.md)）
 
-- 新增支持Kiosk模式。Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服务于特定的交互场景。（[指南](https://gitcode.com/RayShih/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager.md)）
+- 新增支持Kiosk模式。Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服务于特定的交互场景。（[指南](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager.md)）
 
 - 应用启动框架支持在feature类型的HAP中配置，以及支持添加任务匹配规则。（[指南](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/application-models/app-startup.md#%E6%94%AF%E6%8C%81%E7%9A%84%E8%8C%83%E5%9B%B4)）
 
@@ -103,7 +103,7 @@ OpenHarmony 6.0 Release版本进一步增强ArkUI组件能力，提供更安全�
 
 ### 分布式软总线
 
-新开放底层连接能力接口，实现连接能力提升。（[指南](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/distributedservice/linnkEnhance_development-guide.md)）
+新开放底层连接能力接口，实现连接能力提升。（[指南](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/distributedservice/linkEnhance_development-guide.md)）
 
 
 ### 分布式服务
@@ -159,7 +159,7 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 - 新增addProcessorFromConfig接口，支持异步添加数据处理者和及其配置信息。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddprocessorfromconfig20)）
 
-- HiAppEvent的C API新增EVENT_APP_KILLED接口，订阅应用查杀事件。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-event-h.md#event_app_killed)）
+- HiAppEvent的C API新增EVENT_APP_KILLED接口，订阅应用终止事件。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-event-h.md#event_app_killed)）
 
 ### 升级
 
@@ -186,9 +186,9 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 - 新增支持音频低时延耳返的能力，可将音频以更低时延的方式实时传输到有线耳机中。（[指南](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/media/audio/audio-ear-monitor-loopback.md)）
 
-- 新增星闪音频设备播放和录制能力，支持应用获取当前音频的输出类型为星闪设备类型。
+- 新增星闪音频设备播放和录制能力，支持应用获取当前音频的输出类型为星闪设备类型。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-e.md#devicetype)）
 
-- 新增为直播场景打造的高清AEC录音能力，支持应用使用新增的直播录音流类型。
+- 新增为直播场景打造的高清AEC录音能力，支持应用使用新增的直播录音流类型。（[API参考](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.0-Release/zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)）
 
 
 ### 安全
@@ -336,12 +336,12 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 | ISSUE单 | 问题描述 | 
 | ------- | ------- |
-| ICAWPJ | 执行XTS测试时，在之前的case注册了on的callback（其中callback是一个case的局部函数），之后没有通过off解除注册，在后面的case也触发了此callback，但是因其引用的js函数已经析构，导致执行结果出现失败项。 |
-| ICD55I | 执行XTS测试时，ActsTelephonyContactTest测试套因RK3568开发板因联系人服务获取datashare超时限制过长导致执行结果出现失败项。 |
-| ICENKX | 执行XTS测试时，创建资产接口业务码未做区分导致执行结果出现失败项。 |
-| ICE0E0 | 进程com.ohos.systemui有较大概率出现因INPUT_EVENT_SOCKET_TIMEOUT导致的sysfreeze问题。 |
-| ICCUL7 | 进程/system/bin/bootanimation下的OS_IPC_1_743线程有一定概率出现因libaccessibilityconfig.z.so崩溃导致的cppcrash。 |
-| ICCXYS | 进程foundation下的OS_IPC_6_979线程小概率出现因libhilog.so崩溃导致的cppcrash。 | 系统异常，重启可恢复。 | 2025年7月30日 | 
+| [7475](https://gitcode.com/openharmony/multimedia_audio_framework/issues/7475) | 执行XTS测试时，在之前的case注册了on的callback（其中callback是一个case的局部函数），之后没有通过off解除注册，在后面的case也触发了此callback，但是因其引用的js函数已经析构，导致执行结果出现失败项。 |
+| [1523](https://gitcode.com/openharmony/telephony_call_manager/issues/1523) | 执行XTS测试时，ActsTelephonyContactTest测试套因RK3568开发板因联系人服务获取datashare超时限制过长导致执行结果出现失败项。 |
+| [5686](https://gitcode.com/openharmony/multimedia_media_library/issues/5686) | 执行XTS测试时，创建资产接口业务码未做区分导致执行结果出现失败项。 |
+| [569](https://gitcode.com/openharmony/applications_systemui/issues/569) | 进程com.ohos.systemui有较大概率出现因INPUT_EVENT_SOCKET_TIMEOUT导致的sysfreeze问题。 |
+| [1514](https://gitcode.com/openharmony/accessibility/issues/1514) | 进程/system/bin/bootanimation下的OS_IPC_1_743线程有一定概率出现因libaccessibilityconfig.z.so崩溃导致的cppcrash。 |
+| [513](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/513) | 进程foundation下的OS_IPC_6_979线程小概率出现因libhilog.so崩溃导致的cppcrash。 | 系统异常，重启可恢复。 | 2025年7月30日 | 
 
 
 ## 遗留缺陷列表
@@ -350,10 +350,10 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 | 
 | -------- | -------- | -------- | -------- |
-| ICW13P | 仿抖音滑动评论区帧率43 FPS，不满足基线要求。 | 轻微影响使用体验。 | 2025年9月30日 |
-| ICW0P4 | 开机完成时延较前一版本稍有劣化。 | 轻微影响使用体验。 | 2025年9月30日 |
-| ICW129 | 联系人列表滑动帧率42 FPS，不满足基线要求。| 轻微影响使用体验。 | 2025年12月30日 |
-| ICV8O8 | 进程com.ohos.systemui在wukong压测下出现内存泄露。 | 系统异常，重启可恢复。 | 2025年9月30日 |
-| ICWA4N<br />ICWA56 | 进程com.ohos.mms小概率出现因anonymous或deleteAction导致的jscrash。 | 短信应用异常闪退，重启应用可恢复。 | 2025年9月30日 |
-| ICUCVF | 进程/system/bin/hilogd下的hilogd.server线程小概率出现cppcrash。 | 使用HiLog记录日志可能出现异常，重启可恢复。 | 2025年9月30日 |
-| ICW9XX | 进程com.ohos.contacts下的m.ohos.contacts线程小概率出现因libace_compatible.z.so导致的cppcrash。 | 联系人应用异常闪退，重启应用可恢复。 | 2025年9月30日 |
+| [19592](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19592) | 仿抖音滑动评论区帧率43 FPS，不满足基线要求。 | 轻微影响使用体验。 | 2025年9月30日 |
+| [19617](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19617) | 开机完成时延较前一版本稍有劣化。 | 轻微影响使用体验。 | 2025年9月30日 |
+| [329](https://gitcode.com/openharmony/applications_contacts/issues/329) | 联系人列表滑动帧率42 FPS，不满足基线要求。| 轻微影响使用体验。 | 2025年12月30日 |
+| [588](https://gitcode.com/openharmony/applications_systemui/issues/588) | 进程com.ohos.systemui在wukong压测下出现内存泄露。 | 系统异常，重启可恢复。 | 2025年9月30日 |
+| [296](https://gitcode.com/openharmony/applications_mms/issues/296)<br />[295](https://gitcode.com/openharmony/applications_mms/issues/295) | 进程com.ohos.mms小概率出现因anonymous或deleteAction导致的jscrash。 | 短信应用异常闪退，重启应用可恢复。 | 2025年9月30日 |
+| [527](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/527) | 进程/system/bin/hilogd下的hilogd.server线程小概率出现cppcrash。 | 使用HiLog记录日志可能出现异常，重启可恢复。 | 2025年9月30日 |
+| [63972](https://gitcode.com/openharmony/arkui_ace_engine/issues/63972) | 进程com.ohos.contacts下的m.ohos.contacts线程小概率出现因libace_compatible.z.so导致的cppcrash。 | 联系人应用异常闪退，重启应用可恢复。 | 2025年9月30日 |

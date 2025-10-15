@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 当前提供两种视频播放开发的方案：
 
@@ -129,14 +129,18 @@
     ```
 
 4. 设置窗口：获取并设置属性SurfaceID，用于设置显示画面。
-   应用需要从XComponent组件获取surfaceID，获取方式请参考[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)。
+   应用需要从XComponent组件获取surfaceID，获取方式请参考[getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。
 
     ```ts
-    let surfaceId = 'XComponent';
+    // 通过接口getXComponentSurfaceId获取surfaceId。
+    let surfaceId = '';
     if (avPlayer == null) {
         return;
     }
-    avPlayer.surfaceID = surfaceID;
+    if (surfaceId === '') {
+        return;
+    }
+    avPlayer.surfaceId = surfaceId;
     ```
 
 5. 准备播放：调用prepare()，AVPlayer进入prepared状态，此时可以获取duration，设置缩放模式、音量等。
@@ -248,4 +252,4 @@
 
 - [视频播放（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)
 
-- [视频播放器（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/VideoPlayer)
+- [视频播放器（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoPlayer)

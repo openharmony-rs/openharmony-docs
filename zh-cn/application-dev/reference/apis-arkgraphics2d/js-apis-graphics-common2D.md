@@ -1,4 +1,10 @@
 # @ohos.graphics.common2D (2D图形通用数据类型)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 本模块定义了一些2D图形领域的通用数据类型。
 

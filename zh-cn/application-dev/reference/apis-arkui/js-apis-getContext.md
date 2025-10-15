@@ -56,13 +56,13 @@ type Context = Context
 | ------ | ------------------------------- |
 | [Context](../../application-models/application-context-stage.md)  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
 
-**示例：**
-
-在UIAbility中通过windowStage.loadContent加载具体页面。
-
 > **说明：**
 > 
 > 直接使用getContext可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)调用绑定实例的getContext。
+
+**示例：**
+
+在UIAbility中通过windowStage.loadContent加载具体页面。
 
 ```ts
 // EntryAbility.ets

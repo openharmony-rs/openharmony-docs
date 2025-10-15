@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -551,4 +551,4 @@ Binds the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-
 | -- | -- |
 | [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | **VIDEO_PROCESSING_SUCCESS**: The binding is successful.<br> **VIDEO_PROCESSING_ERROR_INVALID_PARAMETER**: **callback** is null.|
 
-<!--no_check-->
+ <!--no_check--> 

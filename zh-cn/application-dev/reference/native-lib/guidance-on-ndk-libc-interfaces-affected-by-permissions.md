@@ -1,4 +1,10 @@
 # NDK涉及的musl libc接口使用限制的说明
+<!--Kit: NDK Development-->
+<!--Subsystem: commonlibrary-->
+<!--Owner: @liyiming13-->
+<!--Designer: @huang_huijin-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 

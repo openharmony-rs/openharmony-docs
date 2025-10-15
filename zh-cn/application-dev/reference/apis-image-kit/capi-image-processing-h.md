@@ -5,7 +5,7 @@
 <!--Owner: @xjtu_liushang-->
 <!--Designer: @yangwang01-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -259,7 +259,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* im
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。 |
-| const [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* parameter | 图片处理参数。 |
+| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* parameter | 图片处理参数。 |
 
 **返回：**
 
@@ -285,13 +285,13 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* im
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | 指向图片处理模块实例的指针。 |
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* parameter | 该图片处理模块实例使用的参数。 |
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* parameter | 该图片处理模块实例使用的参数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果获取参数不成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当参数为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果获取参数成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当参数为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。 |
 
 ### OH_ImageProcessing_ConvertColorSpace()
 

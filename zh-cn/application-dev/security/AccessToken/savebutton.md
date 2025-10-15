@@ -53,6 +53,8 @@
    
    有关将图片保存到媒体库的详细信息，请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
+  <!-- [use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->
+
    ```ts
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { fileIo } from '@kit.CoreFileKit';
@@ -91,8 +93,8 @@
          Column({ space: 10 }) {
            // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
            Image($r('app.media.startIcon'))
-             .height(400)
-             .width('100%')
+             .height(50)
+             .width(50)
    
            SaveButton()
              .padding({top: 12, bottom: 12, left: 24, right: 24})

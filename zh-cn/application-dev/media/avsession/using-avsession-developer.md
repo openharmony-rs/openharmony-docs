@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 音视频应用在实现音视频功能的同时，需要作为媒体会话提供方接入媒体会话，在媒体会话控制方（例如播控中心）中展示媒体相关信息，及响应媒体会话控制方下发的播控命令。
 
@@ -67,7 +67,7 @@
                   console.info(`session create done : sessionId : ${session.sessionId}`);
                 } catch (err) {
                   if (err) {
-                    console.error(`AVSession create Error: ${JSON.stringify(err)}`);
+                    console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
                   }
                 }
               })
@@ -421,7 +421,7 @@
                 });
               } catch (err) {
                 if (err) {
-                  console.error(`AVSession create Error: ${JSON.stringify(err)}`);
+                  console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
                 }
               }
             })
@@ -466,7 +466,7 @@
                   });
                 } catch (err) {
                   if (err) {
-                    console.error(`AVSession create or getController Error: ${JSON.stringify(err)}`);
+                    console.error(`AVSession create or getController Error: Code: ${err.code}, message: ${err.message}`);
                   }
                 }
               })

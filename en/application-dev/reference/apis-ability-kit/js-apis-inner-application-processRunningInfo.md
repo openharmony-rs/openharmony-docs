@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 <!--deprecated_code_no_check-->
 
-The module defines the running information of a process.
+The module defines the running information of a process. The information can be obtained through [getProcessRunningInfos](js-apis-application-appManager.md#appmanagergetprocessrunninginfosdeprecated) of appManager.
 
 > **NOTE**
 > - The APIs provided by this module are deprecated since API version 9. You are advised to use [ProcessInformation<sup>9+</sup>](js-apis-inner-application-processInformation.md) instead.
@@ -26,13 +26,9 @@ import appManager from '@ohos.application.appManager';
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | pid | number | No| No| Process ID.|
-| uid | number | No| No| User ID.|
+| uid | number | No| No| UID of the application.|
 | processName | string | No| No| Process name.|
 | bundleNames | Array&lt;string&gt; | No| No| Names of all running bundles in the process.|
-
-## Usage
-
-The process running information is obtained by using [getProcessRunningInfos](js-apis-application-appManager.md#appmanagergetprocessrunninginfosdeprecated) in appManager.
 
 **Example**
 ```ts

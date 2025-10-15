@@ -1,7 +1,7 @@
 # 自定义手势判定
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -26,7 +26,7 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 **参数：**
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11对象说明), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult12) | 是     | 自定义手势判定回调。当手势即将成功时，触发用户定义的回调获取结果。 |
+| callback      | (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11对象说明), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | 是     | 自定义手势判定回调。当手势即将成功时，触发用户定义的回调获取结果。 |
 
 **返回值：**
 
@@ -74,36 +74,6 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 **参数：**
 
-| 参数名  | 类型         | 必填 | 说明   |
-| ------- | ----------- | ---- | --------------------- |
-| keys | Array\<string> | 是    | 需要查询的功能键。 |
-
-**返回值：**
-
-| 类型              |       说明       |
-| ------- | --------------------------------- | 
-| boolean | 功能键的按压状态。true表示功能键被按下，false表示功能键未被按下。|
-
-**错误码**
-
-以下错误码详细介绍请参考[通用错误码](../../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
-
-### getModifierKeyState<sup>12+</sup>
-
-getModifierKeyState?(keys: Array&lt;string&gt;): boolean
-
-获取功能键按压状态。支持功能键 'Ctrl'\|'Alt'\|'Shift'。此接口不支持在手写笔场景下使用。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | keys  | Array&lt;string&gt; | 是   | 功能键列表。 |
@@ -126,7 +96,7 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置onGestureJudgeBegin实现了对长按、滑动和拖动手势的自定义判定。
+该示例通过配置onGestureJudgeBegin实现了对长按、快滑和滑动手势的自定义判定。
 
 ```ts
 // xxx.ets
@@ -147,7 +117,7 @@ struct Index {
     .borderWidth(2)
     .onDragStart(() => {
       this.message = 'drag'
-      console.log("Drag start.")
+      console.info("Drag start.")
     })
     .gesture(
       TapGesture()
@@ -165,14 +135,14 @@ struct Index {
     )
     .gesture(
       SwipeGesture()
-        .tag("swipe1")// 设置滑动手势标志
+        .tag("swipe1")// 设置快滑手势标志
         .onAction(() => {
           this.message = 'swipe1'
         })
     )
     .gesture(
       PanGesture()
-        .tag("pan1")// 设置拖动手势标志
+        .tag("pan1")// 设置滑动手势标志
         .onActionStart(() => {
           this.message = 'pan1'
         })
@@ -181,17 +151,17 @@ struct Index {
       // 若该手势类型为长按手势，转换为长按手势事件
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
         let longPressEvent = event as LongPressGestureEvent;
-        console.log("repeat " + longPressEvent.repeat)
+        console.info("repeat " + longPressEvent.repeat)
       }
-      // 若该手势类型为滑动手势，转换为滑动手势事件
+      // 若该手势类型为快滑手势，转换为快滑手势事件
       if (gestureInfo.type == GestureControl.GestureType.SWIPE_GESTURE) {
         let swipeEvent = event as SwipeGestureEvent;
-        console.log("angle " + swipeEvent.angle)
+        console.info("angle " + swipeEvent.angle)
       }
-      // 若该手势类型为拖动手势，转换为拖动手势事件
+      // 若该手势类型为滑动手势，转换为滑动手势事件
       if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
         let panEvent = event as PanGestureEvent;
-        console.log("velocity " + panEvent.velocity)
+        console.info("velocity " + panEvent.velocity)
       }
       // 自定义判定标准
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {
@@ -249,10 +219,10 @@ struct Index {
           .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
             // 确定 gestureInfo 的 tag 标志是否有值
             if (gestureInfo.tag) {
-              console.log("gestureInfo tag" + gestureInfo.tag.toString())
+              console.info("gestureInfo tag" + gestureInfo.tag.toString())
             }
-            console.log("gestureInfo Type " + gestureInfo.type.toString() + " isSystemGesture " + gestureInfo.isSystemGesture);
-            console.log("pressure " + event.pressure + " fingerList.length " + event.fingerList.length
+            console.info("gestureInfo Type " + gestureInfo.type.toString() + " isSystemGesture " + gestureInfo.isSystemGesture);
+            console.info("pressure " + event.pressure + " fingerList.length " + event.fingerList.length
             + " timeStamp " + event.timestamp + " sourceType " + event.source.toString() + " titleX " + event.tiltX + " titleY " + event.tiltY + " rollAngle " + event.rollAngle + " sourcePool " + event.sourceTool.toString());
             // 如果是长按类型手势，判断点击的位置是否在上半区
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
@@ -350,7 +320,7 @@ struct GestureDetectorExample {
             this.fingerDetails = event.fingerInfos.map(finger =>
             `ID：${finger.id}: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})`
             ).join('\n')
-            console.log('触点信息:', JSON.stringify(event.fingerInfos))
+            console.info('触点信息:', JSON.stringify(event.fingerInfos))
           }
           if (this.fingerCount > 2) {
             return GestureJudgeResult.REJECT

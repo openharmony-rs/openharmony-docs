@@ -1,10 +1,11 @@
 # Contact Error Codes
 
-<!--Kit: contacts-kit-->
-<!--Subsystem: contacts-->
+<!--Kit: Contacts Kit-->
+<!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--SE: @yanghaoqian-->
-<!--TSE: @shangzhijie-->
+<!--Designer: @yanghaoqian-->
+<!--Tester: @shangzhijie-->
+<!--Adviser: @zhang_yixin13-->
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).

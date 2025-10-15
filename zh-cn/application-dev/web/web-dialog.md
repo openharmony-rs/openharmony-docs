@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 在HTML中，可以使用JavaScript创建三种类型的弹框：警告框`window.alert(message)`、确认框`window.confirm(message)`和提示框`window.prompt(message, defaultValue)`。这些弹框可以用于向用户传递信息、确认操作或请求输入。
 
@@ -21,6 +21,7 @@
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -35,14 +36,14 @@
         Web({ src: $rawfile('test.html'), controller: this.webviewController })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: "来自" + event.url + "的警告",
                 message: event.message,
                 confirm:{
                   value: "确认",
-                  action: ()=>{
+                  action: () => {
                     console.info('Alert confirmed.');
                     event.result.handleConfirm();
                   }
@@ -60,7 +61,8 @@
   ```
   加载的html。
   ```html
-  <!doctype html>
+  <!-- test.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -90,7 +92,8 @@
 - 用[CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
 
   ```ts
-  import { AlertDialog, router } from '@kit.ArkUI';
+  // xxx.ets
+  import { AlertDialog } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -115,7 +118,7 @@
           }
         },
       }),
-      onWillDismiss: ()=>{
+      onWillDismiss: () => {
         this.result?.handleCancel();
         this.dialogControllerAlert.close();
       }
@@ -123,14 +126,11 @@
 
     build() {
       Column() {
-        Button('back').onClick((event: ClickEvent) => {
-          this.getUIContext().getRouter().back();
-        })
         Web({ src: $rawfile('alert.html'), controller: this.webviewController })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.title = "来自" + event.url + "的警告";
               this.message = event.message;
               this.result = event.result;
@@ -144,7 +144,8 @@
   ```
   加载的html。
   ```html
-  <!doctype html>
+  <!-- alert.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -186,6 +187,7 @@
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -200,8 +202,8 @@
         Web({ src: $rawfile('test.html'), controller: this.webviewController })
           .onConfirm((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: "来自" + event.url + "的消息",
                 message: event.message,
@@ -231,7 +233,8 @@
 
   加载的html。
   ```html
-  <!doctype html>
+  <!-- test.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -253,7 +256,7 @@
       function handleConfirm() {
           let message = document.getElementById("confirm-message").value;
           let result = window.confirm(message ? message : 'confirm');
-          console.log(result);
+          console.info(result);
           document.getElementById("confirmLabel").innerHTML=String(result);
       }
   </script>
@@ -264,6 +267,7 @@
 - 用[CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog)创建弹框。
 
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { ConfirmDialog } from '@kit.ArkUI';
 
@@ -317,8 +321,8 @@
               if (this.isChecked) {
                 event.result.handleCancel();
               } else {
-                console.log("event.url:" + event.url);
-                console.log("event.message:" + event.message);
+                console.info("event.url:" + event.url);
+                console.info("event.message:" + event.message);
                 this.title = "来自" + event.url + "的消息";
                 this.message = event.message;
                 this.result = event.result;
@@ -333,7 +337,8 @@
   ```
   加载的html。
   ```html
-  <!doctype html>
+  <!-- confirm.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -355,7 +360,7 @@
       function handleConfirm() {
           let message = document.getElementById("confirm-message").value;
           let result = window.confirm(message ? message : 'confirm');
-          console.log(result);
+          console.info(result);
           document.getElementById("confirmLabel").innerHTML=String(result);
       }
   </script>
@@ -379,6 +384,7 @@
 - 用[CustomDialog-CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12)创建弹框。
 
   ```ts
+  // xxx.ets
   import { CustomContentDialog } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -439,9 +445,9 @@
         Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
           .onPrompt((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
-              console.log("event.value:" + event.value);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.value:" + event.value);
               this.title = "来自" + event.url + "的消息";
               this.message = event.message;
               this.promptResult = event.value;
@@ -456,7 +462,8 @@
   ```
   加载的html。
   ```html
-  <!doctype html>
+  <!-- prompt.html -->
+  <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -480,7 +487,7 @@
           let message = document.getElementById("prompt-message").value;
           let defaultValue = document.getElementById("prompt-value").value;
           let result = window.prompt(message ? message : 'prompt', defaultValue);
-          console.log(result);
+          console.info(result);
           document.getElementById("promptLabel").innerHTML=result;
       }
   </script>

@@ -87,6 +87,42 @@ const mySet1: collections.Set<number|SharedClass> = new collections.Set<number|S
 let obj = new Object();
 const mySet2: collections.Set<number|SharedClass> = new collections.Set<number|Object>([1, obj]);
 ```
+## constructor
+
+constructor(iterable: Iterable\<T>)
+
+创建ArkTS Set对象的构造函数。
+
+**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                              |
+| ------ | ---- | ---- | ------------------------------- |
+| iterable | Iterable\<T> | 是 | 用于构造ArkTS Set的对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 401      | Parameter error.                                        |
+| 10200012 | The ArkTS Set's constructor cannot be directly invoked. |
+
+**示例：**
+
+```ts
+const mapper = new Map([
+  ['1', 'a'],
+  ['2', 'b'],
+]);
+let newSet = new collections.Set<string>(mapper.values());
+console.info(newSet.has('a').toString()); // 预期输出： true
+console.info(newSet.has('b').toString()); // 预期输出： true
+```
 
 ## entries
 entries(): IterableIterator<[T, T]>

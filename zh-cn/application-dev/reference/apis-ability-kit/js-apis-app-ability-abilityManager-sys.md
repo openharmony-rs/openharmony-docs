@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -38,7 +38,7 @@ import { abilityManager } from '@kit.AbilityKit';
 
 updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 
-通过传入修改的配置项来更新配置（callback形式）。
+通过传入修改的配置项来更新配置。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -98,7 +98,7 @@ try {
 
 updateConfiguration(config: Configuration): Promise\<void>
 
-通过修改配置来更新配置（Promise形式）。
+通过修改配置来更新配置。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -116,7 +116,7 @@ updateConfiguration(config: Configuration): Promise\<void>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | 以Promise方式返回接口运行结果息，可进行错误处理或其他自定义处理。 |
+| Promise\<void> | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -161,7 +161,7 @@ try {
 
 getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): void
 
-获取UIAbility运行相关信息（callback形式）。
+获取UIAbility运行相关信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -178,6 +178,10 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 **错误码**：
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+> **说明：**
+>
+> 从API version 14开始，调用该接口将不会抛202错误码。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
@@ -210,7 +214,7 @@ try {
 
 getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
 
-获取关于运行扩展能力的信息（callback形式）。
+获取关于运行扩展能力的信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -262,7 +266,7 @@ try {
 
 getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningInfo>>
 
-获取关于运行扩展能力的信息（Promise形式）。
+获取关于运行扩展能力的信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -280,7 +284,7 @@ getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningIn
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>> | 以Promise方式返回接口运行结果及运行中的extension信息，可进行错误处理或其他自定义处理。 |
+| Promise\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>> | Promise对象，返回接口运行结果及运行扩展能力的信息。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -317,7 +321,7 @@ try {
 
 getTopAbility(callback: AsyncCallback\<ElementName>): void
 
-获取窗口焦点的ability接口（callback形式）。
+获取窗口焦点所在的Ability。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -358,7 +362,7 @@ abilityManager.getTopAbility((err: BusinessError, data) => {
 
 getTopAbility(): Promise\<ElementName>
 
-获取窗口焦点的ability接口（Promise形式）。
+获取窗口焦点所在的Ability。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -368,7 +372,7 @@ getTopAbility(): Promise\<ElementName>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| 以Promise方式返回接口运行结果及应用名，可进行错误处理或其他自定义处理。 |
+| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及应用名。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -396,7 +400,7 @@ abilityManager.getTopAbility().then((data) => {
 
 acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Object>>): void
 
-系统弹框通过该接口发起原子化服务分享，调用到目标UIAbility的onShare，返回分享数据（callback形式）。
+系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](./js-apis-app-ability-uiAbility.md#onshare10)回调并返回分享数据。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -444,7 +448,7 @@ try {
 
 acquireShareData(missionId: number): Promise\<Record\<string, Object>>
 
-系统弹框通过该接口发起原子化服务分享，调用到目标UIAbility的onShare，返回分享数据（Promise形式）。
+系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](./js-apis-app-ability-uiAbility.md#onshare10)回调并返回分享数据。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -460,7 +464,7 @@ acquireShareData(missionId: number): Promise\<Record\<string, Object>>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<Record\<string, Object>>| 以Promise方式返回接口运行结果及分享数据，可进行错误处理或其他自定义处理。 |
+| Promise\<Record\<string, Object>>| Promise对象，返回接口运行结果及分享数据。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 

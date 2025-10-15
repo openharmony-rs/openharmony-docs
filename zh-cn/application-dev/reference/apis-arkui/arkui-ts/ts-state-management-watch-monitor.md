@@ -135,19 +135,15 @@ struct Index {
 
 当监听的变量变化时，状态管理框架侧将回调开发者注册的函数，并传入变化信息。变化信息的类型即为IMonitor类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### 属性
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                | 类型            | 必填 | 说明             |
-| ------------------- | --------------- | ---- | ---------------- |
-| dirty<sup>12+</sup> | Array\<string\> | 是   | 变化路径的数组。 |
+| 名称                | 类型            | 只读 | 可选 | 说明             |
+| ------------------- | --------------- | ---- | ---- | ---------------- |
+| dirty<sup>12+</sup> | Array\<string\> | 否   | 否   | 变化路径的数组。 |
 
 ### value<sup>12+</sup>
 
@@ -216,21 +212,17 @@ struct Index {
 
 @Monitor监听变量变化的具体信息，通过IMonitor的value接口获取。T为变量类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### 属性
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型   | 必填 | 说明             |
-| -------------------- | ------ | ---- | ---------------- |
-| before<sup>12+</sup> | T      | 是   | 变量变化前的值。 |
-| now<sup>12+</sup>    | T      | 是   | 变量当前的值。   |
-| path<sup>12+</sup>   | string | 是   | 变量的路径。     |
+| 名称                 | 类型   | 只读 | 可选 | 说明             |
+| -------------------- | ------ | ---- | ---- | ---------------- |
+| before<sup>12+</sup> | T      | 否   | 否   | 变量变化前的值。 |
+| now<sup>12+</sup>    | T      | 否   | 否   | 变量当前的值。   |
+| path<sup>12+</sup>   | string | 否   | 否   | 变量的路径。     |
 
 **示例：**
 
