@@ -82,19 +82,11 @@
 
 ## AvoidArea<sup>7+</sup>
 
-窗口内容的避让区域。如系统栏区域、挖孔区域、手势区域、固定态软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
+窗口内容的避让区域。
 
-可以调用[getWindowAvoidArea](../arkts-apis-window-Window.md#getwindowavoidarea9)或者[on('avoidAreaChange')](../arkts-apis-window-Window.md#onavoidareachange9)获取对应避让区域的类型枚举[AvoidAreaType](../arkts-apis-window-e.md#avoidareatype7)的避让区域。
+窗口内容需要做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，可以调用[getWindowAvoidArea](../arkts-apis-window-Window.md#getwindowavoidarea9)或者[on('avoidAreaChange')](../arkts-apis-window-Window.md#onavoidareachange9)获取对应避让区域的类型枚举[AvoidAreaType](../arkts-apis-window-e.md#avoidareatype7)的避让区域做窗口内容避让。
 
 在避让区域内，应用窗口内容被遮挡以及无法响应用户点击事件。
-
-除此之外还需注意避让区域的如下约束，具体为：
-
-- 底部手势区域中非底部导航条区域支持点击、长按事件透传，不支持拖入。
-
-- 左右侧边手势区域支持点击、长按以及上下滑动事件透传，不支持拖入。
-
-- 底部导航条区域支持长按、点击、拖入事件响应，不支持事件向下透传。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
