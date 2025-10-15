@@ -1,3 +1,11 @@
+# Image
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @baosiyuan-->
+<!--Designer: @shiyu-hu-->
+<!--Tester: @abec123-->
+<!--Adviser: @w_Machine_cc-->
+
 # MediaCachedImage（系统接口）
 
 MediaCachedImage继承自[Image](ts-basic-components-image.md)，新增了纹理资源的加载能力（仅限系统应用），常用于应用中显示图片。
