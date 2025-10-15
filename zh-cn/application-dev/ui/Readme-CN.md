@@ -31,7 +31,7 @@
       - [ChipGroup](arkts-v1.2-deprecated-chipgroup.md)
       - [@system.app](arkts-v1.2-deprecated-system-app.md)
   - ArkTS-Dyn与ArkTS-Sta的交互能力<!--ui-arkts-sta-interop-dyn-->
-    - [互操作概述](arkts-dyn-sta-ui-interop.md)
+    - [ArkTS-Sta与ArkTS-Dyn UI互操作指南](arkts-dyn-sta-ui-interop.md)
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
       - [ArkTS-Sta使用ArkTS-Dyn自定义组件](arkts-sta-interop-dyn-component.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](arkts-dyn-interop-sta-component.md)
@@ -96,7 +96,7 @@
           - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management/arkts-observed-and-objectlink.md)
           - [\@Watch装饰器：状态变量更改通知](state-management/arkts-watch.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
-          - [\@Observed装饰器和\@Track装饰器：class对象属性级更新](state-management/arkts-track.md)
+          - [\@Track装饰器：class对象属性级更新](state-management/arkts-track.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-->
           - [LocalStorage：页面级UI状态存储](state-management/arkts-localstorage.md)
           - [AppStorage：应用全局的UI状态存储](state-management/arkts-appstorage.md)
@@ -107,7 +107,7 @@
           - [\@Local装饰器：组件内部状态](state-management/arkts-new-local.md)
           - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
             - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
-          - [\@Event装饰器：组件输出](state-management/arkts-new-event.md)
+          - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
           - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
@@ -138,7 +138,7 @@
           - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management-static/arkts-static-observed-and-objectlink.md)
           - [\@Watch装饰器：状态变量更改通知](state-management-static/arkts-static-watch.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
-          - [\@Observed装饰器和\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
+          - [\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-->
           - [LocalStorage：页面级UI状态存储](state-management-static/arkts-static-localstorage.md)
           - [AppStorage：应用全局的UI状态存储](state-management-static/arkts-static-appstorage.md)
@@ -149,7 +149,7 @@
           - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
           - [\@Param装饰器：组件外部输入](state-management-static/arkts-static-new-param.md)
             - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
-          - [\@Event装饰器：组件输出](state-management-static/arkts-static-new-event.md)
+          - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
           - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
