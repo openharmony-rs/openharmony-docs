@@ -1111,7 +1111,7 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 
 ## SearchController
 
-Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 ### 导入对象
 ```ts
@@ -2115,3 +2115,69 @@ struct SearchExample {
 ```
 
 ![searchEnableAutoSpacing](figures/searchEnableAutoSpacing.png)
+
+### 示例22（设置placeholder富文本样式）
+
+从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SearchExample {
+  styledString: MutableStyledString =
+    new MutableStyledString("输入框富文本：文本",
+      [
+        {
+          start: 0,
+          length: 7,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({
+            fontColor: Color.Orange,
+            fontSize: LengthMetrics.fp(24)
+          })
+        },
+        {
+          start: 7,
+          length: 4,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({
+            fontColor: Color.Gray,
+            fontSize: LengthMetrics.fp(20),
+            strokeWidth: LengthMetrics.px(-5),
+            strokeColor: Color.Black,
+          })
+        },
+        {
+          start: 0,
+          length: 1,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: new ParagraphStyle({
+            textVerticalAlign: TextVerticalAlign.CENTER
+          })
+        }
+      ]);
+  controller: SearchController = new SearchController();
+
+  aboutToAppear() {
+    this.controller.setStyledPlaceholder(this.styledString)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Text("Search placeholder富文本")
+          .fontSize(8)
+        Search({
+          controller: this.controller
+        })
+          .textFont({ size: 24 })
+          .margin(10)
+      }
+      .width('100%')
+    }
+  }
+}
+```
+![searchPlaceholder](figures/searchPlaceholder.jpg)
