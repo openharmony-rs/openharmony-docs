@@ -783,6 +783,24 @@ onCopy(callback: Callback\<CopyEvent\>)
 | ----- | --------------------------------------- | ---- | ----------- |
 | callback |Callback\<[CopyEvent](#copyevent12)\> | 是    | 定义用户复制事件。 |
 
+### onWillAttachIME<sup>22+</sup>
+
+onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
+
+在组件绑定输入法前，触发回调。
+
+开发者可以调用IMEClient中的setExtraConfig()方法，给输入法传递自定义消息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| callback  | Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> \| undefined | 是   | 在组件绑定输入法前触发该回调。 |
+
 ## RichEditorInsertValue
 
 插入文本的信息。
@@ -6046,3 +6064,55 @@ struct Demo32 {
 }
 ```
 <!--RP2--><!--RP2End-->
+
+### 示例33（设置监听输入法绑定事件）
+从API version 22开始，该示例通过[onWillAttachIME](#onwillattachime22)事件监听输入法绑定事件。
+
+```ts
+@Entry
+@Component
+struct SetOnWillAttachIME {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State message: string = "RichEditor未绑定输入法"
+
+  build() {
+    Column() {
+     Text(this.message)
+       .fontSize(24)
+       .width("100%")
+       .textAlign(TextAlign.Center)
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan("RichEditor组件",
+            {
+              style:
+              {
+                fontColor: Color.Orange,
+                fontSize: 30
+              }
+            })
+        })
+        .onWillAttachIME((value:IMEClient) => {
+          // 给输入法传递自定义消息
+          const inputConfig: ExtraConfig = {
+            customSettings: {
+              component: 'RichEditor',
+              id: 8 as number,
+              isEnable: true
+            }
+          };
+          value.setExtraConfig(inputConfig);
+          this.message = "RichEditor已绑定输入法"
+        })
+        .borderWidth(1)
+        .borderColor(Color.Green)
+        .width("100%")
+        .height("20%")
+    }
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+![OnWillAttachIME](figures/richEditorOnWillAttachIME.gif)
