@@ -9620,6 +9620,14 @@ isInFreeWindowMode(): boolean
 | ------------------- | ------------------------- |
 | boolean | 返回true表示在自由窗口模式，false表示非自由窗口模式。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                                                                               |
+| 1300003  | This window manager service works abnormally.        
 
 **示例：**
 
