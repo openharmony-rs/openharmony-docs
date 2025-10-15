@@ -47,6 +47,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
     import { serialManager } from '@kit.BasicServicesKit';
     import { buffer } from '@kit.ArkTS';
     ``` 
+    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 2. 获取设备列表。
 
@@ -59,6 +60,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
       return;
     }
     ```
+    <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 获取设备操作权限。
 
@@ -78,6 +80,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
       }
     }
     ```
+    <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 4. 根据串口打开设备。
 
@@ -89,6 +92,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
       console.error(`open usbSerial error： ${error}`);
     }
     ```
+    <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 5. 通过串口读取数据。
 
@@ -110,6 +114,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
       console.error(`readSync usbSerial error: ${error}`);
     }
     ```
+    <!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 6. 通过串口写入数据。
 
@@ -131,6 +136,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
       console.error(`writeSync usbSerial error: ${error}`);
     }
     ```
+    <!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
 7. 关闭串口设备。
 
@@ -142,6 +148,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
       console.error(`close usbSerial error: ${error}`);
     }
     ```
+    <!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ### 调测验证
 

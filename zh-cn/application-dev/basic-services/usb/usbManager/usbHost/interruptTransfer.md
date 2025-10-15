@@ -61,6 +61,7 @@
     // 导入usbManager模块。
     import { usbManager } from '@kit.BasicServicesKit';
     ```
+    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
 2. 获取设备列表。
 
@@ -73,6 +74,7 @@
       return;
     }
     ```
+    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 获取设备操作权限。
 
@@ -92,6 +94,7 @@
         }
     }
     ```
+    <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 4. 获取通过中断传输读取数据的端点。
 
@@ -120,6 +123,7 @@
      return;
    }
    ```
+   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 5. 连接设备，注册通信接口。
 
@@ -131,6 +135,7 @@
       return;
     }
     ```
+    <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 6. 传输数据。
 
@@ -160,6 +165,7 @@
      console.error(`USB transfer failed: ${error}`);
    }
    ```
+   <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 7. 取消传输，释放接口，关闭设备消息控制通道。
 
@@ -168,6 +174,7 @@
     usbManager.releaseInterface(devicePipe, usbInterface);
     usbManager.closePipe(devicePipe);
     ```
+    <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
 ### 调测验证
 

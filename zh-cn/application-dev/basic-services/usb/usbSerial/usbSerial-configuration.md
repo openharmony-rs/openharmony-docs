@@ -62,6 +62,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
     // 导入serialManager模块。
     import { serialManager } from '@kit.BasicServicesKit';
     ``` 
+    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 2. 获取设备列表。
 
@@ -74,6 +75,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
       return;
     }
     ```
+    <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 获取设备操作权限。
 
@@ -93,6 +95,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
       }
     }
     ```
+    <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 4. 根据串口打开设备。
 
@@ -104,6 +107,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
       console.error(`open usbSerial error： ${error}`);
     }
     ```
+    <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 5. 获取和修改串口配置。
 
@@ -134,6 +138,8 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
       console.error(`setAttribute usbSerial error: ${error}`);
     }
     ```
+    <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ### 调测验证
 

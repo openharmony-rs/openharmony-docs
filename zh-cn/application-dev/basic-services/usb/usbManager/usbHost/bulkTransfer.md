@@ -61,6 +61,7 @@
    import { usbManager } from '@kit.BasicServicesKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
 2. 获取设备列表。
 
@@ -128,6 +129,7 @@
    ]
    */
    ```
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 获取设备操作权限。
 
@@ -140,6 +142,7 @@
      console.error(`usb device request right failed : ${error}`);
    });
    ```
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 4. 打开设备。
 
@@ -153,6 +156,7 @@
    */
    usbManager.claimInterface(pipe, interface1, true);
    ```
+   <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 5. 数据传输。
 
@@ -190,6 +194,7 @@
      console.error(`usb writeData error : ${error}`);
    });
    ```
+   <!-- @[bulkTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 6. 释放接口，关闭设备。
 
@@ -197,3 +202,4 @@
    usbManager.releaseInterface(pipe, interface1);
    usbManager.closePipe(pipe);
    ```
+   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
