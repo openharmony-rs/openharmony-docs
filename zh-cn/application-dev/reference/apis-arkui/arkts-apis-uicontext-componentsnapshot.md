@@ -520,7 +520,7 @@ struct SnapshotExample {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.log("error: " + err);
+                console.error("error: " + err);
               })
           } catch (error) {
             console.error('UniqueId get snapshot Error: ${JSON.stringify(error)}');
@@ -686,11 +686,11 @@ struct ReusableChildComponent {
   @Prop text: string | undefined | null = "";
 
   aboutToReuse(params: Record<string, object>) {
-    console.error('ReusableChildComponent Reusable ${JSON.stringify(error)}');
+    console.info(`ReusableChildComponent Reusable ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log("ReusableChildComponent aboutToRecycle " + this.text);
+    console.info("ReusableChildComponent aboutToRecycle " + this.text);
   }
 
   build() {
