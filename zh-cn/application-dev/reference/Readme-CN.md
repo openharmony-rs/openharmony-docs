@@ -1,4 +1,11 @@
 # 开发参考
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 - [开发说明](development-intro-api.md)
 - [系统能力SystemCapability使用指南](syscap.md)
 <!--Del-->
@@ -10,6 +17,7 @@
     - [Wearable](wearable-syscap-list.md)
 <!--DelEnd-->
 - [通用错误码](errorcode-universal.md)
+- [SDK编译校验错误码](errorcode-sdk-compile.md)
 - [Ability Kit API参考](apis-ability-kit/Readme-CN.md)
 - [Accessibility Kit API参考](apis-accessibility-kit/Readme-CN.md)
 - [Ads Kit API参考](apis-ads-kit/Readme-CN.md)
