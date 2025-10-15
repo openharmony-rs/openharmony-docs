@@ -150,6 +150,18 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
     ```
     <!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let portId: number = this.portId_;
+    try {
+      serialManager.close(portId);
+      console.info(`close usbSerial success, portId: ${portId}`);
+      this.logInfo_ += '\n[INFO] close usbSerial success, portId: ' + JSON.stringify(portId);
+    } catch (error) {
+      console.error(`close usbSerial error: ${error}`);
+      this.logInfo_ += '\n[ERROR] close usbSerial error: ' + JSON.stringify(error);
+    }
+```
+
 ### 调测验证
 
 1. 准备一根USB转串口线缆，线缆的USB接口连接到OpenHarmony设备USB端口（该端口需支持USB转串口），线缆的串口接口连接到目标设备的串口上。
