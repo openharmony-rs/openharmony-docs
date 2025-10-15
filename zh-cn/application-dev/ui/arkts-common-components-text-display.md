@@ -429,19 +429,28 @@ Text可通过以下两种方式来创建：
 - 从API version 20开始，支持通过[contentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#contenttransition20)属性设置数字翻牌效果。
 
   ```ts
-  @State number: number = 98;
-  @State numberTransition: NumericTextTransition = new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+  @Entry
+  @Component
+  struct demo {
+    @State number: number = 98;
+    @State numberTransition: NumericTextTransition =
+      new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
 
-  Column() {
-    Text(this.number + "")
-      .borderWidth(1)
-      .fontSize(40)
-      .contentTransition(this.numberTransition)
-    Button("chang number")
-      .onClick(() => {
-        this.number++
-      })
-      .margin(10)
+    build() {
+      Column() {
+        Text(this.number + "")
+          .borderWidth(1)
+          .fontSize(40)
+          .contentTransition(this.numberTransition)
+        Button("chang number")
+          .onClick(() => {
+            this.number++
+          })
+          .margin(10)
+      }
+      .width('100%')
+      .height('100%')
+    }
   }
   ```
   ![Text_content_transition](figures/Text_content_transition.gif)
@@ -542,25 +551,33 @@ Text可通过以下两种方式来创建：
   ```
   ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
-- 从API version 20开始，支持通过[ShaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
+- 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
 
   ```ts
-  @State message: string = 'Hello World';
-  @State linearGradientOptions: LinearGradientOptions =
-    {
-      direction: GradientDirection.LeftTop,
-      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
-      repeating: true,
-    };
+  @Entry
+  @Component
+  struct demo {
+    @State message: string = 'Hello World';
+    @State linearGradientOptions: LinearGradientOptions =
+      {
+        direction: GradientDirection.LeftTop,
+        colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+        repeating: true,
+      };
 
-  Column({ space: 5 }) {
-    Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
-      .margin({ top: 40, left: 40 })
-    Text(this.message)
-      .fontSize(50)
-      .width('80%')
-      .height(50)
-      .shaderStyle(this.linearGradientOptions)
+    build() {
+      Column({ space: 5 }) {
+        Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
+          .margin({ top: 40, left: 40 })
+        Text(this.message)
+          .fontSize(50)
+          .width('80%')
+          .height(50)
+          .shaderStyle(this.linearGradientOptions)
+      }
+      .height('100%')
+      .width('100%')
+    }
   }
   ```
   ![Text_shader_style](figures/Text_shader_style.png)

@@ -75,7 +75,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 基本输入模式（默认类型）。
 
   ```ts
-  TextInput()
+  TextInput({ text: 'aaa' })
     .type(InputType.Normal)
   ```
 
@@ -84,7 +84,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 密码输入模式。
 
   ```ts
-  TextInput()
+  TextInput({ text: '123' })
     .type(InputType.Password)
   ```
 
@@ -93,7 +93,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 邮箱地址输入模式。
 
   ```ts
-  TextInput()
+  TextInput({ text: '123456@example.com' })
     .type(InputType.Email)
   ```
 
@@ -102,7 +102,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 纯数字输入模式。
 
   ```ts
-  TextInput()
+  TextInput({ text: '123456789' })
     .type(InputType.Number)
   ```
 
@@ -111,7 +111,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 电话号码输入模式。
 
   ```ts
-  TextInput()
+  TextInput({ text: '+86 123-0123-0456' })
     .type(InputType.PhoneNumber)
   ```
 
@@ -120,7 +120,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 带小数点的数字输入模式。
 
   ```ts
-  TextInput()
+  TextInput({ text: '9.15' })
     .type(InputType.NUMBER_DECIMAL)
   ```
 
@@ -129,7 +129,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 带URL的输入模式。
 
   ```ts
-  TextInput()
+  TextInput({ text: 'https://www.example.com' })
     .type(InputType.URL)
   ```
 
