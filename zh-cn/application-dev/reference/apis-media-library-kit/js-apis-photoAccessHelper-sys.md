@@ -9856,7 +9856,7 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, Clou
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO
+**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
@@ -9909,7 +9909,7 @@ pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO
+**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
@@ -9962,7 +9962,7 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO
+**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
@@ -10015,7 +10015,7 @@ cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO
+**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
