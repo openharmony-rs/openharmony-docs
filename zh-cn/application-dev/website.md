@@ -3802,15 +3802,26 @@
           - [FileIO](reference/apis-core-file-kit/capi-fileio.md)
           - [fileShare](reference/apis-core-file-kit/capi-fileshare.md)
           - [fileUri](reference/apis-core-file-kit/capi-fileuri.md)
+          - [CloudDisk](reference/apis-core-file-kit/capi-clouddisk.md)
         - 头文件<!--core-file-headerfile-->
           - [oh_environment.h](reference/apis-core-file-kit/capi-oh-environment-h.md)
           - [error_code.h](reference/apis-core-file-kit/capi-error-code-h.md)
           - [oh_fileio.h](reference/apis-core-file-kit/capi-oh-fileio-h.md)
           - [oh_file_share.h](reference/apis-core-file-kit/capi-oh-file-share-h.md)
           - [oh_file_uri.h](reference/apis-core-file-kit/capi-oh-file-uri-h.md)
+          - [oh_cloud_disk_manager.h](reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md)
+          - [cloud_disk_error_code.h](reference/apis-core-file-kit/capi-cloud-disk-error-code-h.md)
         - 结构体<!--core-file-struct-->
           - [FileShare_PolicyErrorResult](reference/apis-core-file-kit/capi-fileshare-fileshare-policyerrorresult.md)
           - [FileShare_PolicyInfo](reference/apis-core-file-kit/capi-fileshare-fileshare-policyinfo.md)
+          - [CloudDisk_ChangeData](reference/apis-core-file-kit/capi-clouddisk-clouddisk-changedata.md)
+          - [CloudDisk_ChangesResult](reference/apis-core-file-kit/capi-clouddisk-clouddisk-changesresult.md)
+          - [CloudDisk_DisplayNameInfo](reference/apis-core-file-kit/capi-clouddisk-clouddisk-displaynameinfo.md)
+          - [CloudDisk_FailedList](reference/apis-core-file-kit/capi-clouddisk-clouddisk-failedlist.md)
+          - [CloudDisk_FileSyncState](reference/apis-core-file-kit/capi-clouddisk-clouddisk-filesyncstate.md)
+          - [CloudDisk_PathInfo](reference/apis-core-file-kit/capi-clouddisk-clouddisk-pathinfo.md)
+          - [CloudDisk_ResultList](reference/apis-core-file-kit/capi-clouddisk-clouddisk-resultlist.md)
+          - [CloudDisk_SyncFolder](reference/apis-core-file-kit/capi-clouddisk-clouddisk-syncfolder.md)
       - 错误码<!--core-file-arkts-errcode-->
         - [文件管理错误码](reference/apis-core-file-kit/errorcode-filemanagement.md)
         <!--Del-->
