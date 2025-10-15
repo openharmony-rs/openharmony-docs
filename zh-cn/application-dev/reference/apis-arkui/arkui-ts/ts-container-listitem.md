@@ -423,6 +423,7 @@ struct ListItemExample3 {
             }
           })
         }
+
         ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: number, index?: number) => {
           ListItem({ style: itemStyle }) {
             Text('' + index)
