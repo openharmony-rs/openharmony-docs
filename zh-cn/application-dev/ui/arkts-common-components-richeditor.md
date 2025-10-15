@@ -314,8 +314,6 @@ Button('getSpans', {
 
 ![alt text](figures/richeditor_image_getspan.gif)
 
-<!--RP1--><!--RP1End-->
-
 ### 设置无输入时的提示文本
 
 通过[placeholder](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#placeholder12)设置无输入时的提示文本。
@@ -1222,3 +1220,5 @@ Column() {
 ```
 
 ![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
+
+<!--RP1--><!--RP1End-->
