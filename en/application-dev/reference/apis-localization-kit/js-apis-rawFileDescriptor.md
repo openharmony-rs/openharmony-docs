@@ -1,5 +1,12 @@
 # RawFileDescriptor
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 Provides the descriptor of the HAP where the rawfile is located.
 
 > **NOTE**

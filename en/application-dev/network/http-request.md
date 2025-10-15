@@ -123,7 +123,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
             remoteFileName: 'example.txt' // Optional. This field is supported since API version 11.
           }, {
             name: "Part2", // Data name. This field is supported since API version 11.
-            contentType: 'text/plain', // Data type. This field is supported since API version 11. The data to be uploaded must be a common text file.
+            contentType: 'text/plain', // Data type. This field is supported since API version 11. The data to upload must be a common text file.
             // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.txt
             filePath: `${context.filesDir}/fileName.txt`, // File path, optional. This field is supported since API version 11.
             remoteFileName: 'fileName.txt' // Optional. This field is supported since API version 11.
@@ -155,13 +155,13 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
           // data.header carries the HTTP response header. Parse the content based on service requirements.
           console.info('header:' + JSON.stringify(data.header));
           console.info('cookies:' + JSON.stringify(data.cookies)); // 8+
-          // Call the destroy() method to release resources after the call is complete.
+          // Call destroy() to destroy the httpRequest object when it is no longer needed.
           httpRequest.destroy();
         } else {
           console.error('error:' + JSON.stringify(err));
           // Unsubscribe from HTTP Response Header events.
           httpRequest.off('headersReceive');
-          // Call the destroy() method to release resources after the call is complete.
+          // Call destroy() to destroy the httpRequest object when it is no longer needed.
           httpRequest.destroy();
         }
       }
@@ -190,7 +190,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 
 HTTP streaming refers to the process where, when handling an HTTP response, only a small chunk of the response content is processed at a time, rather than loading the entire response into memory all at once. This is particularly useful for scenarios such as processing large files and real-time data streams, among others.
 
-For the complete sample code, see [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case).
+Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
 
 1. Import the **http**, **BusinessError**, and **common** modules.
 
@@ -287,13 +287,13 @@ For the complete sample code, see [Http_case](https://gitcode.com/openharmony/ap
       httpRequest.off('dataReceiveProgress');
       // Unsubscribe from the events indicating completion of receiving HTTP streaming responses.
       httpRequest.off('dataEnd');
-      // Call destroy() to destroy the httpRequest object after usage.
+      // Call destroy() to destroy the httpRequest object when it is no longer needed.
       httpRequest.destroy();
     }
     
     ```
 
-## Is certificate verification configured?
+## Configuring Certificate Verification
 
 Certificate-related configurations are required for using the HTTPS protocol. The applications that provide services for Internet users only need to trust the system's prebuilt CA certificates. Currently, the HTTP module trusts the CA certificates preset in the system by default. No special setting is required. If an application needs to trust only the certificates specified by developers, or skip certificate verification, you can configure certificate pinning.
 
@@ -488,4 +488,3 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
-
