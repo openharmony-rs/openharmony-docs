@@ -44,7 +44,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 **起始版本：** 14
 
-**设备行为差异：** 在API version 14-20，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。在API version 21后添加Phone设备可正常调用。
+**设备行为差异：** 在API version 14-20，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。在API version 21开始添加Phone设备可正常调用。
 
 **参数：**
 

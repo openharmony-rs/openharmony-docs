@@ -44,7 +44,7 @@ import { screenshot } from '@kit.ArkUI';
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | displayId | number |  否   | 是 | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，默认为0，该参数应为大于或等于0的整数，非整数会报参数错误。 |
-| blackWindowIds<sup>21+</sup> | Array\<number>        | 否  | 是 | 表示截取图像时不显示的窗口ID列表。窗口ID应为大于0的整数，窗口ID为非整数或者小于等于0时不生效不报错。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。 |
+| blackWindowIds<sup>21+</sup> | Array\<number>        | 否  | 是 | 表示截取图像时不显示的窗口ID列表。窗口ID应为大于0的整数，窗口ID为非整数、小于等于0、或者不存在的窗口ID时不生效不报错。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。 |
 
 ## PickInfo
 
@@ -116,7 +116,7 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 在API version 14-20，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。在API version 21后添加Phone设备可正常调用。
+**设备行为差异：** 在API version 14-20，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。在API version 21开始添加Phone设备可正常调用。
 
 **需要权限**：ohos.permission.CUSTOM_SCREEN_CAPTURE
 
