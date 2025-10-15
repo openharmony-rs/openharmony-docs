@@ -22,7 +22,7 @@
 
 - 遵循语言[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)的规范。
 
-- 遵循ArkTS-Dyn自定义构建函数[参数传递规则](../quick-start/arkts-builder.md#参数传递规则)。
+- 遵循ArkTS-Dyn自定义构建函数[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
 
 - ArkTS-Dyn全局自定义构建函数的参数最多不超过10个。
 
@@ -61,7 +61,7 @@ export function showTextBuilder() {
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn全局自定义构建函数。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/MainPage.ets
 import { Entry, Component, Column } from '@ohos.arkui.component';

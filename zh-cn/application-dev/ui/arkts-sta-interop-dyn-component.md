@@ -117,7 +117,7 @@ export struct ChildComponentV2 {
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/MainPage.ets
 import { Entry, Component, Column } from '@ohos.arkui.component';
@@ -210,7 +210,7 @@ Column() {
 // 在ArkTS-Dyn组件中添加样式透传属性
 @Component
 export struct ChildComponent {
-  backgroundColor: Color = Color.Red;
+  backgroundColor: string = '';
 
   build() {
     Column() {}

@@ -2,7 +2,7 @@
 
 ## 概述
 
-应用间状态存储互操作适用于[ArkTS-Sta使用ArkTS-Dyn自定义组件](./interop-compatible-component.md)中应用间使用AppStorage，LocalStorage，PersistentStorage，Environment的场景。
+应用间状态存储互操作适用于[ArkTS-Sta使用ArkTS-Dyn自定义组件](./arkts-sta-interop-dyn-component.md)中应用间使用AppStorage，LocalStorage，PersistentStorage，Environment的场景。
 
 ## 架构原理
 
@@ -18,7 +18,7 @@
 
 ## 参数传递规则
 
-- 遵循ArkTS-Sta使用ArkTS-Dyn自定义组件[约束与限制](./interop-compatible-component.md#约束与限制)。
+- 遵循ArkTS-Sta使用ArkTS-Dyn自定义组件[约束与限制](./arkts-sta-interop-dyn-component.md#约束与限制)。
 
 - 遵循ArkTS-Dyn AppStorage[限制条件](./state-management/arkts-appstorage.md#限制条件)。
 
@@ -79,7 +79,7 @@ export struct MainPage {
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'har1_1';
@@ -163,7 +163,7 @@ export struct MainPage {
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'har1_1';
@@ -247,7 +247,7 @@ export struct MainPage {
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'har1_1';
@@ -333,7 +333,7 @@ export struct MainPage {
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'har1_1';
