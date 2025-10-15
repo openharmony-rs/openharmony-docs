@@ -21,6 +21,9 @@
 ### 变更详情
 
 #### BigIntConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(value: bigint | boolean | number | string): bigint`
 
@@ -82,6 +85,8 @@
 #### BooleanConstructor-构造函数签名变更
 - 参数类型any改为具体类型。
 
+**规则：** `arkts-no-any-unknown`
+
 **ArkTS1.1版本签名：**  
   `constructor(value?: any): Boolean`
 
@@ -112,6 +117,9 @@
   ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
 
 #### BooleanConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `<T>(value?: T): boolean`
 
@@ -166,6 +174,9 @@
 ### 变更详情
 
 #### DateConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(): string`
 
@@ -210,6 +221,9 @@
 ### 变更详情
 
 #### ErrorConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(message?: string): Error`
 
@@ -264,6 +278,9 @@
 ### 变更详情
 
 #### EvalErrorConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(message?: string): EvalError`
 
@@ -318,6 +335,9 @@
 ### 变更详情
 
 #### RangeErrorConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(message?: string): RangeError`
 
@@ -370,6 +390,9 @@
 ### 变更详情
 
 #### ReferenceErrorConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(message?: string): ReferenceError`
 
@@ -578,6 +601,9 @@
 ### 变更详情
 
 #### SyntaxErrorConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(message?: string): SyntaxError`
 
@@ -636,6 +662,9 @@
 ### 变更详情
 
 #### TypeErrorConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(message?: string): TypeError`
 
@@ -690,6 +719,9 @@
 ### 变更详情
 
 #### URIErrorConstructor-构造函数调用变更
+
+**规则：** `arkts-builtin-cotr`
+
 **ArkTS1.1版本签名：**  
   `(message?: string): URIError`
 

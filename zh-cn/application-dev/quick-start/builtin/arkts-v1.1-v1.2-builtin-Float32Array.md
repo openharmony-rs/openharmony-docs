@@ -1,4 +1,4 @@
-# Float64Array
+# Float32Array
 
 ## 变更梗概
 - [Symbol.iterator变更](#symboliterator变更)
@@ -15,17 +15,20 @@
 ## 变更详情
 
 ### Symbol.iterator变更
+
+**规则：** `arkts-builtin-symbol-iterator`
+
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<number>`
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `IterableIterator<number>` | Float64Array的迭代器。 |
+  | `IterableIterator<number>` | Float32Array的迭代器。 |
 
 **示例：**  
   ```typescript
-  let a = new Float64Array(3);
+  let a = new Float32Array(3);
   let iter = Reflect.get(a, Symbol.iterator);
   ```
 
@@ -35,11 +38,11 @@
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `IterableIterator<number>` | Float64Array的迭代器。 |
+  | `IterableIterator<number>` | Float32Array的迭代器。 |
 
 **示例：**  
   ```typescript
-  let a = new Float64Array(3);
+  let a = new Float32Array(3);
   let iter = a.$_iterator();
   ```
 
@@ -48,8 +51,11 @@
 
 
 ### every变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `every(predicate: (value: number, index: number, array: Float64Array) => unknown, thisArg?: any): boolean`
+  `every(predicate: (value: number, index: number, array: Float32Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -62,7 +68,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array对象。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array对象。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -77,7 +83,7 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   class C {
-    comp(element: number, index: number, array: Float64Array): boolean {
+    comp(element: number, index: number, array: Float32Array): boolean {
       return element > this.base;
     }
     base: number;
@@ -85,12 +91,12 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let result = arr.every(new C(1).comp, new C(2));
   ```
 
 **ArkTS1.2版本签名：**  
-  `every(predicate: (value: number, index: number, array: Float64Array) => boolean): boolean`
+  `every(predicate: (value: number, index: number, array: Float32Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -102,7 +108,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array对象。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array对象。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -121,12 +127,12 @@ predicate函数返回值说明：
       constructor(base:number) {
           this.base = base;
       }
-      callEvery(arr: Float64Array) {
-          return arr.every((value: number, index: number, arr: Float64Array)=>{return value < this.base})
+      callEvery(arr: Float32Array) {
+          return arr.every((value: number, index: number, arr: Float32Array)=>{return value < this.base})
       }
   }
   function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
+    let arr: Float32Array = new Float32Array([1, 2, 3]);
     let a = new C(2)
     let b = new C(4)
     a.callEvery(arr) // false
@@ -138,8 +144,11 @@ predicate函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### filter变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `filter(predicate: (value: number, index: number, array: Float64Array) => any, thisArg?: any): Float64Array`
+  `filter(predicate: (value: number, index: number, array: Float32Array) => any, thisArg?: any): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -152,7 +161,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -162,12 +171,12 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 包含所有满足`predicate`的元素的新数组。 |
+  | `Float32Array` | 包含所有满足`predicate`的元素的新数组。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: number, index: number, array: Float64Array): boolean {
+    comp(element: number, index: number, array: Float32Array): boolean {
       return element > this.base;
     }
     base: number;
@@ -175,12 +184,12 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let result = arr.filter(new C(1).comp, new C(2));
   ```
 
 **ArkTS1.2版本签名：**  
-  `filter(predicate: (value: number, index: number, array: Float64Array) => boolean): Float64Array`
+  `filter(predicate: (value: number, index: number, array: Float32Array) => boolean): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -192,7 +201,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -202,7 +211,7 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 包含所有满足`predicate`的元素的新数组。 |
+  | `Float32Array` | 包含所有满足`predicate`的元素的新数组。 |
 
 **示例：**  
   ```typescript
@@ -211,11 +220,11 @@ predicate函数返回值说明：
       constructor(base:number) {
           this.base = base;
       }
-      call(arr: Float64Array) {
-          return arr.filter((value: number, index: number, arr: Float64Array)=>{return value < this.base})
+      call(arr: Float32Array) {
+          return arr.filter((value: number, index: number, arr: Float32Array)=>{return value < this.base})
       }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let a = new C(2)
   let b = new C(3)
   a.call(arr) // [1]
@@ -227,8 +236,11 @@ predicate函数返回值说明：
 
 
 ### find变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `find(predicate: (value: number, index: number, array: Float64Array) => boolean, thisArg?: any): number | undefined`
+  `find(predicate: (value: number, index: number, obj: Float32Array) => boolean, thisArg?: any): number | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -241,7 +253,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -256,7 +268,7 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   class C {
-    comp(element: number, index: number, array: Float64Array): boolean {
+    comp(element: number, index: number, array: Float32Array): boolean {
       return element > this.base;
     }
     base: number;
@@ -264,12 +276,12 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let result = arr.find(new C(1).comp, new C(2));
   ```
 
 **ArkTS1.2版本签名：**  
-  `find(predicate: (value: number, index: number, array: Float64Array) => boolean): number | undefined`
+  `find(predicate: (value: number, index: number, obj: Float32Array) => boolean): number | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -281,7 +293,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -300,11 +312,11 @@ predicate函数返回值说明：
       constructor(base:number) {
           this.base = base;
       }
-      call(arr: Float64Array) {
-          return arr.find((value: number, index: number, arr: Float64Array)=>{return value >= this.base})
+      call(arr: Float32Array) {
+          return arr.find((value: number, index: number, arr: Float32Array)=>{return value >= this.base})
       }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let a = new C(2)
   let b = new C(3)
   a.call(arr) // 2
@@ -319,8 +331,11 @@ predicate函数返回值说明：
 
 
 ### findIndex变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `findIndex(predicate: (value: number, index: number, array: Float64Array) => boolean, thisArg?: any): number`
+  `findIndex(predicate: (value: number, index: number, array: Float32Array) => boolean, thisArg?: any): number`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -333,7 +348,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -348,7 +363,7 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   class C {
-    comp(element: number, index: number, array: Float64Array): boolean {
+    comp(element: number, index: number, array: Float32Array): boolean {
       return element > this.base;
     }
     base: number;
@@ -356,12 +371,12 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let result = arr.findIndex(new C(1).comp, new C(2));
   ```
 
 **ArkTS1.2版本签名：**  
-  `findIndex(predicate: (value: number, index: number, array: Float64Array) => boolean): number`
+  `findIndex(predicate: (value: number, index: number, array: Float32Array) => boolean): number`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -373,7 +388,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -392,11 +407,11 @@ predicate函数返回值说明：
       constructor(base:number) {
           this.base = base;
       }
-      call(arr: Float64Array) {
-          return arr.findIndex((value: number, index: number, arr: Float64Array)=>{return value >= this.base})
+      call(arr: Float32Array) {
+          return arr.findIndex((value: number, index: number, arr: Float32Array)=>{return value >= this.base})
       }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let a = new C(2)
   let b = new C(3)
   a.call(arr) // 1
@@ -408,8 +423,11 @@ predicate函数返回值说明：
 
 
 ### forEach变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `forEach(callbackfn: (value: number, index: number, array: Float64Array) => void, thisArg?: any): void`
+  `forEach(callbackfn: (value: number, index: number, array: Float32Array) => void, thisArg?: any): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -422,12 +440,13 @@ callbackfn函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
+
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: number, index: number, array: Float64Array): boolean {
+    comp(element: number, index: number, array: Float32Array): boolean {
       return element > this.base;
     }
     base: number;
@@ -435,12 +454,12 @@ callbackfn函数参数说明：
       this.base = base;
     }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let result = arr.forEach(new C(1).comp, new C(2));
   ```
 
 **ArkTS1.2版本签名：**  
-  `forEach(callbackfn: (value: number, index: number, array: Float64Array) => void): void`
+  `forEach(callbackfn: (value: number, index: number, array: Float32Array) => void): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -452,7 +471,7 @@ callbackfn函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 **示例：**  
   ```typescript
@@ -461,11 +480,11 @@ callbackfn函数参数说明：
       constructor(base:number) {
           this.base = base;
       }
-      call(arr: Float64Array) {
-          return arr.forEach((value: number, index: number, arr: Float64Array)=>{console.info(value + this.base)})
+      call(arr: Float32Array) {
+          return arr.forEach((value: number, index: number, arr: Float32Array)=>{console.info(value + this.base)})
       }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let a = new C(2)
   let b = new C(3)
   a.call(arr)
@@ -477,8 +496,11 @@ callbackfn函数参数说明：
 
 
 ### map变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `map(callbackfn: (value: number, index: number, array: Float64Array) => number, thisArg?: any): Float64Array`
+  `map(callbackfn: (value: number, index: number, array: Float32Array) => number, thisArg?: any): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -491,7 +513,7 @@ callbackfn函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 callbackfn函数返回值说明：
   | 类型 | 说明 |
@@ -501,12 +523,12 @@ callbackfn函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 一个新的 Float64Array，包含`callbackfn`对每个元素的调用结果。 |
+  | `Float32Array` | 一个新的 Float32Array，包含`callbackfn`对每个元素的调用结果。 |
 
 **示例：**  
   ```typescript
   class C {
-    map(element: number, index: number, array: Float64Array): number {
+    map(element: number, index: number, array: Float32Array): number {
       return this.base;
     }
     base: number;
@@ -514,12 +536,12 @@ callbackfn函数返回值说明：
       this.base = base;
     }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let result = arr.map(new C(1).map, new C(2));
   ```
 
 **ArkTS1.2版本签名：**  
-  `map(callbackfn: (value: number, index: number, array: Float64Array) => number): Float64Array`
+  `map(callbackfn: (value: number, index: number, array: Float32Array) => number): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -531,7 +553,7 @@ callbackfn函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 callbackfn函数返回值说明：
   | 类型 | 说明 |
@@ -541,7 +563,7 @@ callbackfn函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 一个新的Float64Array，包含`callbackfn`对每个元素的调用结果。 |
+  | `Float32Array` | 一个新的Float32Array，包含`callbackfn`对每个元素的调用结果。 |
 
 **示例：**  
   ```typescript
@@ -550,12 +572,12 @@ callbackfn函数返回值说明：
       constructor(base:number) {
           this.base = base;
       }
-      call(arr: Float64Array) {
-          return arr.map((value: number, index: number, arr: Float64Array)=>{return value + this.base})
+      call(arr: Float32Array) {
+          return arr.map((value: number, index: number, arr: Float32Array)=>{return value + this.base})
       }
   }
   function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
+    let arr: Float32Array = new Float32Array([1, 2, 3]);
     let a = new C(2)
     let b = new C(3)
     a.call(arr)
@@ -568,8 +590,11 @@ callbackfn函数返回值说明：
 
 
 ### some变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `some(predicate: (value: number, index: number, array: Float64Array) => unknown, thisArg?: any): boolean`
+  `some(predicate: (value: number, index: number, array: Float32Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -582,7 +607,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -597,7 +622,7 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   class C {
-    comp(element: number, index: number, array: Float64Array): boolean {
+    comp(element: number, index: number, array: Float32Array): boolean {
       return element > this.base;
     }
     base: number;
@@ -605,7 +630,7 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let result = arr.some(new C(1).comp, new C(2));
   ```
 
@@ -622,7 +647,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Float64Array | 是 | 调用的原始Float64Array数组。 |
+  | array | Float32Array | 是 | 调用的原始Float32Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -641,12 +666,12 @@ predicate函数返回值说明：
       constructor(base:number) {
           this.base = base;
       }
-      call(arr: Float64Array) {
-          return arr.some((value: number, index: number, arr: Float64Array)=>{return value > this.base})
+      call(arr: Float32Array) {
+          return arr.some((value: number, index: number, arr: Float32Array)=>{return value > this.base})
       }
   }
   function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
+    let arr: Float32Array = new Float32Array([1, 2, 3]);
     let a = new C(2)
     let b = new C(3)
     a.call(arr)
@@ -659,8 +684,11 @@ predicate函数返回值说明：
 
 
 ### from静态方法变更1
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Float64Array`
+  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -678,12 +706,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Float64Array的元素 |
+  | number | 返回的一个number类型值，作为新Float32Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 一个新的 Float64Array，包含`mapfn`对`arrayLike`中每个元素的调用结果。 |
+  | `Float32Array` | 一个新的 Float32Array，包含`mapfn`对`arrayLike`中每个元素的调用结果。 |
 
 **示例：**  
   ```typescript
@@ -697,15 +725,15 @@ mapfn函数返回值说明：
     }
   }
 
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
-  let arr2 = Float64Array.from(arr, a.foo, a)
-  let arr3 = Float64Array.from(arr, a.foo, b)
+  let arr2 = Float32Array.from(arr, a.foo, a)
+  let arr3 = Float32Array.from(arr, a.foo, b)
   ```
 
 **ArkTS1.2版本签名：**  
-  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number): Float64Array`
+  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -722,12 +750,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Float64Array的元素 |
+  | number | 返回的一个number类型值，作为新Float32Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 一个新的 Float64Array，包含`mapfn`对`arrayLike`中每个元素的调用结果。 |
+  | `Float32Array` | 一个新的 Float32Array，包含`mapfn`对`arrayLike`中每个元素的调用结果。 |
 
 **示例：**  
   ```typescript
@@ -736,12 +764,12 @@ mapfn函数返回值说明：
       constructor(base:number) {
           this.base = base;
       }
-      call(arr:Float64Array) {
+      call(arr:Float32Array) {
           return Array.from(arr, (value: number, index: number)=>{return value + this.base})
       }
   }
   function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
+    let arr: Float32Array = new Float32Array([1, 2, 3]);
     let a = new C(2)
     let b = new C(3)
     a.call(arr)
@@ -754,8 +782,11 @@ mapfn函数返回值说明：
 
 
 ### from静态方法变更2
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
-  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Float64Array`
+  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -773,12 +804,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Float64Array的元素 |
+  | number | 返回的一个number类型值，作为新Float32Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 从指定数据源创建的新的 64 位浮点型数组。 |
+  | `Float32Array` | 从指定数据源创建的新的 64 位浮点型数组。 |
 
 **示例：**  
   ```typescript
@@ -792,15 +823,15 @@ mapfn函数返回值说明：
     }
   }
 
-  let arr: Float64Array = new Float64Array([1, 2, 3]);
+  let arr: Float32Array = new Float32Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
-  let arr2 = Float64Array.from(arr, a.foo, a)
-  let arr3 = Float64Array.from(arr, a.foo, b)
+  let arr2 = Float32Array.from(arr, a.foo, a)
+  let arr3 = Float32Array.from(arr, a.foo, b)
   ```
 
 **ArkTS1.2版本签名：**  
-  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number): Float64Array`
+  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number): Float32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -817,12 +848,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Float64Array的元素 |
+  | number | 返回的一个number类型值，作为新Float32Array的元素 |
 
 **返回值：**
   |  类型  | 说明 |
   | -------- | -------- |
-  | `Float64Array` | 从指定数据源创建的新的 64 位浮点型数组。 |
+  | `Float32Array` | 从指定数据源创建的新的 64 位浮点型数组。 |
 
 **示例：**  
   ```typescript
@@ -831,12 +862,12 @@ mapfn函数返回值说明：
     constructor(base:number) {
         this.base = base;
     }
-    call(arr: Float64Array) {
+    call(arr: Float32Array) {
         return Array.from(arr, (value: number, index: number)=>{return value + this.base})
     }
   }
   function main() {
-    let arr: Float64Array = new Float64Array([1, 2, 3]);
+    let arr: Float32Array = new Float32Array([1, 2, 3]);
     let a = new C(2)
     let b = new C(3)
     a.call(arr)

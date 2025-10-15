@@ -22,6 +22,9 @@
 ### 变更详情
 
 #### configurable属性移除
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `configurable?: boolean`
 
@@ -38,6 +41,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   建议通过调整或创建新的类来达成效果。
 
 #### enumerable属性移除
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `enumerable?: boolean`
 
@@ -54,6 +60,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   建议通过调整或创建新的类来达成效果。
 
 #### value属性移除
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `value?: any`
 
@@ -70,6 +79,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   建议通过调整或创建新的类来达成效果。
 
 #### writable属性移除
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `writable?: boolean`
 
@@ -86,6 +98,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   建议通过调整或创建新的类来达成效果。
 
 #### get方法移除
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `get?(): any`
 
@@ -104,6 +119,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   建议通过调整或创建新的类来达成效果。
 
 #### set方法移除
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `set?(v: any): void`
 
@@ -129,6 +147,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 ### 变更详情
 
 #### RegExpExecArray-groups类型变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `groups?: { [key: string]: string }`
 
@@ -172,6 +193,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 ### 变更详情
 
 #### RegExpMatchArray-groups类型变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `groups?: { [key: string]: string }`
 
@@ -220,6 +244,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 ### 变更详情
 
 #### TypedPropertyDescriptor-configurable属性变更
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `configurable?: boolean`
 
@@ -242,6 +269,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   静态语言不支持修改属性，因此建议通过调整或创建新的类来达成效果。
 
 #### TypedPropertyDescriptor-enumerable属性变更
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `enumerable?: boolean`
 
@@ -264,6 +294,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   静态语言不支持修改属性，因此建议通过调整或创建新的类来达成效果。
 
 #### TypedPropertyDescriptor-get方法变更
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `get?: () => T`
 
@@ -286,6 +319,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   静态语言不支持修改属性，因此建议通过调整或创建新的类来达成效果。
 
 #### TypedPropertyDescriptor-set方法变更
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `set?: (value: T) => void`
 
@@ -308,6 +344,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   静态语言不支持修改属性，因此建议通过调整或创建新的类来达成效果。
 
 #### TypedPropertyDescriptor-value属性变更
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `value?: T`
 
@@ -330,6 +369,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   静态语言不支持修改属性，因此建议通过调整或创建新的类来达成效果。
 
 #### TypedPropertyDescriptor-writable属性变更
+
+**规则：** `arkts-builtin-no-property-descriptor`
+
 **ArkTS1.1版本签名：**  
   `writable?: boolean`
 
@@ -363,6 +405,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 ### 变更详情
 
 #### Reflect-get方法变更
+
+**规则：** ``
+
 **ArkTS1.1版本签名：**  
   `function get<T extends object, P extends PropertyKey>(target: T, propertyKey: P, receiver?: unknown): P extends keyof T ? T[P] : any`
 
@@ -415,6 +460,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   不使用泛型参数，属性名只能是字符串，不支持receiver参数。
 
 #### Reflect-has方法变更
+
+**规则：** `arkts-builtin-narrow-types`
+
 **ArkTS1.1版本签名：**  
   `function has(target: object, propertyKey: PropertyKey): boolean`
 
@@ -462,6 +510,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   只使用字符串作为属性名。
 
 #### Reflect-ownKeys方法变更
+
+**规则：** `arkts-builtin-narrow-types`
+
 **ArkTS1.1版本签名：**  
   `function ownKeys(target: object): (string | symbol)[]`
 
@@ -507,6 +558,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   只使用字符串作为属性名。
 
 #### Reflect-set方法变更
+
+**规则：** ``
+
 **ArkTS1.1版本签名：**  
   `function set<T extends object, P extends PropertyKey>(target: T, propertyKey: P, value: P extends keyof T ? T[P] : any, receiver?: any): boolean`
 
@@ -582,7 +636,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
   let tif: TestIface = { str: "strstr", num: 42, bl: false}
   let res: boolean = Reflect.isLiteralInitializedInterface(tif);
-  console.log(res); // True
+  console.info(res); // True
   ```
 
 ## TemplateStringsArray
@@ -593,6 +647,9 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 ### 变更详情
 
 #### TemplateStringsArray-raw属性变更
+
+**规则：** `arkts-builtin-disable-api`
+
 **ArkTS1.1版本签名：**  
   `readonly raw: readonly string[]`
 

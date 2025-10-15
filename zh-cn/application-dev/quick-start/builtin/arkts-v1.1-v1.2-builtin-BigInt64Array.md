@@ -14,6 +14,9 @@
 ## 变更详情
 
 ### Symbol.iterator变更
+
+**规则：** `arkts-builtin-symbol-iterator`
+
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<bigint>`
 
@@ -48,6 +51,9 @@
   建议仅使用for...of访问迭代器，不要显示访问迭代器。
 
 ### every方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean`
 
@@ -133,6 +139,9 @@ predicate函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### filter方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `filter(predicate: (value: bigint, index: number, array: BigInt64Array) => any, thisArg?: any): BigInt64Array`
 
@@ -218,6 +227,9 @@ predicate函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### find方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `find(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): bigint | undefined`
 
@@ -304,6 +316,9 @@ predicate函数返回值说明：
 
 
 ### findIndex方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `findIndex(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): number`
 
@@ -389,6 +404,9 @@ predicate函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### forEach方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `forEach(callbackfn: (value: bigint, index: number, array: BigInt64Array) => void, thisArg?: any): void`
 
@@ -457,6 +475,9 @@ callbackfn函数参数说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### map方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `map(callbackfn: (value: bigint, index: number, array: BigInt64Array) => bigint, thisArg?: any): BigInt64Array`
 
@@ -543,6 +564,9 @@ callbackfn函数返回值说明：
 
 
 ### some方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `some(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean`
 
@@ -629,6 +653,9 @@ predicate函数返回值说明：
 
 
 ### from静态方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `static from<U>(arrayLike: ArrayLike<U>, mapfn: (v: U, k: number) => bigint, thisArg?: any): BigInt64Array`
 

@@ -15,6 +15,9 @@
 ## 变更详情
 
 ### Symbol.iterator变更
+
+**规则：** `arkts-builtin-symbol-iterator`
+
 **ArkTS1.1版本签名：**  
   `[Symbol.iterator](): IterableIterator<number>`
 
@@ -46,6 +49,9 @@
 **适配建议：** 建议仅使用for...of访问迭代器，不要显示访问迭代器。
 
 ### every方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `every(predicate: (value: number, index: number, array: Int8Array) => unknown, thisArg?: any): boolean`
 
@@ -137,6 +143,9 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### filter方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `filter(predicate: (value: number, index: number, array: Int8Array) => any, thisArg?: any): Int8Array`
 
@@ -228,6 +237,9 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### find方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `find(predicate: (value: number, index: number, obj: Int8Array) => boolean, thisArg?: any): number | undefined`
 
@@ -319,6 +331,9 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### findIndex方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `findIndex(predicate: (value: number, index: number, obj: Int8Array) => boolean, thisArg?: any): number`
 
@@ -410,6 +425,9 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### forEach方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `forEach(callbackfn: (value: number, index: number, array: Int8Array) => void, thisArg?: any): void`
 
@@ -481,6 +499,9 @@ callbackfn函数参数说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### map方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `map(callbackfn: (value: number, index: number, array: Int8Array) => number, thisArg?: any): Int8Array`
 
@@ -572,6 +593,9 @@ callbackfn函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### some方法变更
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `some(predicate: (value: number, index: number, array: Int8Array) => unknown, thisArg?: any): boolean`
 
@@ -663,6 +687,9 @@ predicate函数返回值说明：
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### from静态方法变更1
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Int8Array`
 
@@ -755,6 +782,9 @@ mapfn函数返回值说明：
 
 
 ### from静态方法变更2
+
+**规则：** `arkts-builtin-thisArgs`
+
 **ArkTS1.1版本签名：**  
   `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Int8Array`
 
