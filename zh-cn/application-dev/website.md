@@ -1452,7 +1452,7 @@
         - [Mechanic Kit简介](mechanicManager/mechanic-kit-intro.md)
         - [智能拍摄跟踪开发指南](mechanicManager/camera-tracking-guide.md)
         <!--Del-->
-        - [设备转动控制开发指南](mechanicManager/rotation-control-guide.md)
+        - [设备转动控制开发指南（仅对系统应用开放）](mechanicManager/rotation-control-guide-sys.md)
         <!--DelEnd-->
     - 调测调优<!--system-debug-optimize-->
       - Performance Analysis Kit（性能分析服务）<!--performance-analysis-kit-->
