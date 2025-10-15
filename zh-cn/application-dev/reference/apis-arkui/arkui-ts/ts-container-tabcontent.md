@@ -227,6 +227,32 @@ indicator(value: IndicatorStyle): SubTabBarStyle
 | ------- | ------------------------------------------------------------ |
 | [SubTabBarStyle](#subtabbarstyle9) | 返回SubTabBarStyle对象本身。 |
 
+### indicator<sup>22+</sup>
+
+indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
+
+设置选中子页签的下划线风格。与[indicator](#indicator10)相比，新增了图片格式的下划线风格，图片的显示效果参照[ImageFit.Cover](ts-appendix-enums.md#imagefit)。子页签的下划线风格仅在水平模式下有效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                   | 必填 | 说明           |
+| ------- | ------------------------------------- | ---- | ------------- |
+| value | [IndicatorStyle](#indicatorstyle10对象说明) \| [DrawableTabBarIndicator](#drawabletabbarindicator22对象说明) | 是   | 选中子页签的下划线风格对象。<br />IndicatorStyle：一般形式的下划线样式。<br />DrawableTabBarIndicator：图片形式的下划线样式。 |
+
+> **说明：**
+> - 一般形式的下划线样式（IndicatorStyle）：为一条实线，切换页签时默认支持动画跳转效果。
+> - 图片形式的下划线样式（DrawableTabBarIndicator）：为一张图片，切换页签时默认无动画跳转效果。当传入无效图源时将显示一般形式的下划线。
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| [SubTabBarStyle](#subtabbarstyle9) | 返回SubTabBarStyle对象本身。 |
+
 ### selectedMode<sup>10+</sup>
 
 selectedMode(value: SelectedMode): SubTabBarStyle
@@ -374,6 +400,36 @@ id(value: string): SubTabBarStyle
 | width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：(0, +∞)。 <br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
 | borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 | marginTop | [Length](ts-types.md#length) | 否 | 是 | 下划线与文字的间距（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+
+## DrawableTabBarIndicator<sup>22+</sup>对象说明
+
+使用图片资源作为下划线的对象。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | --------- | ----------------------- |
+| drawable | [DrawableDescriptor](#drawabledescriptor22) | 否 | 是 | 下划线的图源。<br />支持[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)、[PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12)、[LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor)和[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型。当传入无效图源时将显示默认的实线型下划线。 |
+| height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：(0, +∞) |
+| width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：(0, +∞) <br />宽度设置为0时，按页签文本宽度显示。|
+| borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞) |
+| marginTop | [Length](ts-types.md#length) | 否 | 是 | 下划线与文字的间距（不支持百分比设置）。<br/>默认值：8.0<br/>单位：vp<br/>取值范围：[0, +∞) |
+
+## DrawableDescriptor<sup>22+</sup>
+
+type DrawableDescriptor = DrawableDescriptor
+
+作为DrawableTabBarIndicator对象中drawable属性的入参对象。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型     | 说明       |
+| ------ | ---------- |
+| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
 
 ## SelectedMode<sup>10+</sup>枚举说明
 
@@ -2077,3 +2133,71 @@ struct MyComponent {
 ```
 
 ![tabContent9](figures/tabContent10.gif)
+
+### 示例12（设置子页签indicator为图片）
+
+从API version 22开始，本示例通过SubTabBarStyle中的indicator属性，实现了图片格式的子页签下划线风格。
+
+```ts
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabsIndicatorExample {
+  @State isVertical: boolean = false;
+  @State text: string = '文本';
+  @State barMode: BarMode = BarMode.Fixed;
+  @State pixmapDesc: DrawableDescriptor | null = null;
+
+  async aboutToAppear() {
+    const resManager = this.getUIContext().getHostContext()?.resourceManager;
+    if (!resManager) {
+      return;
+    }
+    // $r('app.media.indicator')需要替换为开发者所需的图像资源文件。
+    let pixmapDescResult = resManager.getDrawableDescriptor($r('app.media.indicator').id);
+    if (pixmapDescResult) {
+      this.pixmapDesc = pixmapDescResult as DrawableDescriptor;
+    }
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar(SubTabBarStyle.of('TabBar 1')
+          .indicator({
+            drawable: this.pixmapDesc,
+            height: 10,
+            width: 70,
+            borderRadius: 5,
+            marginTop: 5
+          }))
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(SubTabBarStyle.of('TabBar 2')
+          .indicator({
+            drawable: this.pixmapDesc,
+            height: 10,
+            width: 70,
+            borderRadius: 5,
+            marginTop: 5
+          }))
+      }
+      .height('60%')
+      .backgroundColor(0xf1f3f5)
+      .barMode(BarMode.Fixed)
+      .barHeight(120)
+      .vertical(false)
+    }
+    .width('100%')
+    .height(500)
+    .padding('24vp')
+  }
+}
+
+```
+
+![tabContent12](figures/tabContent12.png)
