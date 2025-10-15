@@ -566,7 +566,7 @@ getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#
 | -------- | -------- | -------- | -------- |
 | displayId | number | No | 显示ID。如果未提供此参数，则表示默认displayId。 |
 
-**返回值：**s
+**返回值：**
 
 | 类型                                 | 描述                    |
 | ----------------------------------- | ---------------------- |
@@ -651,7 +651,7 @@ for (let window of windowList) {
 | windowId<sup>20+</sup>             | number        | 是  | 否  | 窗口 ID。<br>默认值：**-1**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | offset<sup>20+</sup>             | number              | 是  | 否  | 内容区域相对于可滚动组件（如 **List** 和 **Grid**）顶部坐标的像素偏移量。<br>默认值：**0**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | textType<sup>20+</sup>             | string         | 是  | 否  | 元素的无障碍文本类型，由组件的 **accessibilityTextHint** 属性配置。<br>**ArkTS-Dyn起始版本**：20|
-| accessibilityText | string     | 是  | 否  | 元素的无障碍文本信息。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| accessibilityText<sup>20+</sup> | string     | 是  | 否  | 元素的无障碍文本信息。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | hotArea<sup>20+</sup>             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#Rect)     | 是  | 否  | 元素的可触摸区域。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | customComponentType<sup>20+</sup>             | string       | 是  | 否  | 自定义组件类型。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | accessibilityNextFocusId<sup>20+</sup>             | number        | 是  | 否  | 下一个要获得焦点的组件的 ID。<br>默认值：**-1**。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
@@ -666,7 +666,7 @@ for (let window of windowList) {
 | spans<sup>20+</sup>             | AccessibilitySpan[]          | 是  | 否  | 组件的跨度数组。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | accessibilityVisible<sup>20+</sup>  | boolean        | 是  | 否  | 组件是否无障碍可见。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | mainWindowId<sup>20+</sup>             | number      | 是  | 否 | 组件的主窗口 ID。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
-| clip  | boolean          | 是  | 否  | 组件是否需要裁剪。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
+| clip<sup>20+</sup>  | boolean          | 是  | 否  | 组件是否需要裁剪。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | parentId<sup>20+</sup>             | number            | 是  | 否  | 组件的父元素 ID。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 | childrenIds<sup>20+</sup>             | Array\<number>        | 是  | 否  | 组件的子元素 ID 列表。<br>**ArkTS模式**：该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**：20|
 
