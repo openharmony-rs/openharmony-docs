@@ -812,7 +812,7 @@ statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
 
 getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
-获取指定时间段内，本应用在指定网络中的流量使用情况。使用 Promise 方式作为异步方法。
+获取指定时间段内，本应用在指定网络中的流量使用情况。使用Promise方式作为异步方法。
 
 > **说明：**
 >
