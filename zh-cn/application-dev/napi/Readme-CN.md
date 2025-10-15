@@ -72,7 +72,7 @@
       - [使用JSVM-API接口进行array相关开发](use-jsvm-about-array.md)
       - [使用JSVM-API接口进行ArrayBuffer相关开发](use-jsvm-about-arraybuffer.md)
       - [使用JSVM-API接口操作bigint类型值](use-jsvm-about-bigint.md)
-      - [使用JSVM进行class相关开发](use-jsvm-about-class.md)
+      - [使用JSVM-API接口进行class相关开发](use-jsvm-about-class.md)
       - [使用JSVM-API接口进行Date相关开发](use-jsvm-about-date.md)
       - [使用JSVM-API接口进行object相关开发](use-jsvm-about-object.md)
       - [使用JSVM-API接口进行primitive类相关开发](use-jsvm-about-primitive.md)
@@ -92,7 +92,7 @@
       - [使用JSVM-API接口进行Proxy相关开发](use-jsvm-about-proxy.md)
       - [使用JSVM-API接口进行Well-known symbols相关开发](use-jsvm-about-well-known-symbols.md)
       - [使用JSVM-API接口进行Wrapper object相关开发](use-jsvm-about-wrapper-object.md)
-      - [使用JSVM-API接口创建基本数据类型](use-jsvm-basic-data-types.md)
+      - [使用JSVM-API接口创建和获取数值](use-jsvm-basic-data-types.md)
     - JSVM-API典型使用场景指导<!--jsvm-scenarios-->
       - [JSVM-API调试&定位](jsvm-debugger-cpuprofiler-heapsnapshot.md)
       - [使用JSVM-API接口进行Trace相关开发](use-jsvm-about-trace.md)
@@ -100,8 +100,8 @@
       - [JSVM 坚盾守护模式](jsvm-secure-shield-mode.md)
       - JSVM-API调优&高性能使用示例<!--jsvm-usage-examples-->
         - [使用JSVM-API接口创建多个引擎执行JS代码并销毁](use-jsvm-runtime-task.md)
-        - [使用 code cache 加速编译](use-jsvm-about-code-cache.md)
-        - [JSVM 通用调优实践](jsvm-optimizations.md)
+        - [使用code cache加速编译](use-jsvm-about-code-cache.md)
+        - [JSVM通用调优实践](jsvm-optimizations.md)
   - OpenMP支持<!--openmp-->
     - [OpenMP简介](openmp-overview.md)
     - [OpenMP应用构建和运行指南](openmp-guideline.md)
