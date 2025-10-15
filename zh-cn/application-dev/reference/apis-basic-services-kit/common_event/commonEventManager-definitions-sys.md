@@ -379,6 +379,19 @@
 
 **取值：** "usual.event.RESTORE_START"
 
+### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+<sup>
+
+提示云盘同步根已更新。
+
+在同步根更新完成时，将会触发事件通知服务发布该系统公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
+**订阅者所需权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO（该权限仅系统应用可申请）
+
+**取值：** usual.event.CLOUD_DISK_STATE_CHANGED
 
 ## Media Kit
 
@@ -689,7 +702,6 @@
 **订阅者所需权限：** 无
 
 **取值：** usual.event.STK_ALPHA_IDENTIFIER
-
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+<sup>
 
