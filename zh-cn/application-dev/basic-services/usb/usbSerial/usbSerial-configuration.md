@@ -222,6 +222,25 @@ import { JSON } from '@kit.ArkTS';
 ```
     <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+    let portId: number = this.portId_;
+    // 设置串口配置
+    try {
+      let attribute: serialManager.SerialAttribute = {
+        baudRate: serialManager.BaudRates.BAUDRATE_9600,
+        dataBits: serialManager.DataBits.DATABIT_8,
+        parity: serialManager.Parity.PARITY_NONE,
+        stopBits: serialManager.StopBits.STOPBIT_1
+      }
+      serialManager.setAttribute(portId, attribute);
+      console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
+      this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
+    } catch (error) {
+      console.error(`setAttribute usbSerial error: ${error}`);
+      this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: ' + JSON.stringify(error);
+    }
+```
+
 ### 调测验证
 
 1. 准备一根USB转串口线缆，线缆的USB接口连接到OpenHarmony设备USB端口（该端口需支持USB转串口），线缆的串口接口连接到目标设备的串口上。
