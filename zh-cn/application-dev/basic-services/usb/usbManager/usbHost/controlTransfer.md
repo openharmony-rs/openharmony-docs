@@ -333,3 +333,19 @@ import { JSON } from '@kit.ArkTS';
    usbManager.closePipe(pipe);
    ```
    <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    if (this.pipe_ === undefined || this.interface_ === undefined) {
+      console.error('pipe_ or interface_ is null');
+      this.logInfo_ += '\n[ERROR] pipe_ or interface_ is null';
+      return;
+    }
+    let pipe: usbManager.USBDevicePipe = this.pipe_;
+    let interface1: usbManager.USBInterface = this.interface_;
+    usbManager.releaseInterface(pipe, interface1);
+    usbManager.closePipe(pipe);
+    this.pipe_ = undefined;
+    this.interface_ = undefined;
+    console.info('close device success');
+    this.logInfo_ += '\n[INFO] close device success';
+```
