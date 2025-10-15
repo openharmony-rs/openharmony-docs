@@ -39,8 +39,8 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| controller | [CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) | 否 | 是 | 输入法切换列表弹窗控制器。 |
-| patternOptions | [PatternOptions](#patternoptions) | 否 | 否 | 输入法模式选项（仅系统预置输入法支持）。 |
+| controller | [CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) | 否 | 否 | 输入法切换列表弹窗控制器。 |
+| patternOptions | [PatternOptions](#patternoptions) | 否 | 是 | 输入法模式选项（仅系统预置输入法支持）。 |
 
 ## PatternOptions
 
