@@ -202,6 +202,7 @@
 | [ArkUI_RouterPageState](#arkui_routerpagestate)                     | ArkUI_RouterPageState           | 定义Router Page的状态。                 |
 | [ArkUI_UIState](#arkui_uistate)                                     | ArkUI_UIState                   | 组件的UI状态枚举，用于处理状态样式。               |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode)                         | ArkUI_FocusWrapMode             | 组件走焦换行规则。                         |
+| [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy)                         | ArkUI_ItemFillPolicy             | 为不同响应式断点规格指定列数。                         |
 | [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | 定义矩形边方向。                         |
 | [ArkUI_CornerDirection](#arkui_cornerdirection)                     | ArkUI_CornerDirection           | 定义角度方向。                         |
 | [ArkUI_LayoutPolicy](#arkui_layoutpolicy)                         | ArkUI_LayoutPolicy             | 布局策略枚举。                         |
@@ -2933,6 +2934,25 @@ enum ArkUI_FocusWrapMode
 | -- | -- |
 | ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | 默认规则，使用方向键走焦不换行。 |
 | ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | 使用方向键走焦自动换行。 |
+
+### ArkUI_ItemFillPolicy
+
+```
+enum ArkUI_ItemFillPolicy
+```
+
+**描述：**
+
+
+为不同响应式断点规格指定列数。
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | 针对List和Swiper组件：在组件宽度相当于SM及更小的设备时显示1列，相当于MD设备时显示2列，相当于LG及更大的设备时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度相当于SM及更小的设备上显示2列，相当于MD设备时显示3列，相当于LG及更大的设备时显示5列。 |
+| ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1 | 在组件宽度相当于SM及更小的设备时显示1列，相当于MD设备时显示2列，相当于LG及更大的设备时显示3列。 |
+| ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2 | 在组件宽度相当于SM及更的设备时显示2列，相当于MD设备时显示3列，相当于LG及更大的设备时显示5列。 |
 
 ### ArkUI_ScrollSnapAnimationSpeed
 

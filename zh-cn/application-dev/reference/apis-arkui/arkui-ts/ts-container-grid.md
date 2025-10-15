@@ -117,6 +117,28 @@ auto-stretch模式只支持track-size为一个有效列宽值，并且track-size
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string | 是   | 当前网格布局列的数量或最小列宽值。 |
 
+### columnsTemplate<sup>22+</sup>
+
+columnsTemplate(value: string | ItemFillPolicy)
+
+设置当前网格组件布局列的数量，不设置时默认1列。
+
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+
+当value设置为ItemFillPolicy类型时，将根据Grid组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
+
+例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度相当于sm及更小的设备上显示2列，相当于md设备时显示3列，相当于lg及更大的设备时显示5列，且每列均为1fr。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                      |
+| ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
+| value  | string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前网格组件布局列的数量。 |
+
 ### rowsTemplate
 
 rowsTemplate(value: string)
@@ -2821,3 +2843,65 @@ struct Example {
 ```
 
 ![universal-drag-drop-GridItem](figures/universal-drag-drop-GridItem.gif)
+
+### 示例18（Grid组件基于断点配置列数）
+
+从API version 22开始，该示例展示了Grid组件支持基于断点配置列数效果。
+
+<!--code_no_check-->
+```ts
+// Index.ets
+// xxx.ets
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+
+  aboutToAppear() {
+    let list: string[] = [];
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        list.push(j.toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Grid(undefined) {
+        LazyForEach(this.numbers, (day: string) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        }, (index: number) => index.toString())
+      }
+      .columnsTemplate({fillType:PresetFillType.BREAKPOINT_SM2MD3LG5})
+      .columnsGap(10)
+      .rowsGap(10)
+      .scrollBar(BarState.Off)
+      .width('100%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').height('10%').justifyContent(FlexAlign.SpaceBetween)
+  }
+}
+```
+Grid宽度相当于sm及以下时显示2列。
+
+![sm_grid](figures/grid_itemFillPolicy_SM.png)
+
+Grid宽度相当于sm及以下时显示2列。
+
+![md_grid](figures/grid_itemFillPolicy_MD.png)
+
+Grid宽度相当于sm及以下时显示2列。
+
+![lg_grid](figures/grid_itemFillPolicy_LG.png)
