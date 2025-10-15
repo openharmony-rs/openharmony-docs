@@ -1482,10 +1482,10 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 类型   | 说明              |
-| ------ | ----------------- |
-| CONTINUOUS | 值为0，表示长振。 |
-| TRANSIENT | 值为1，表示短振。 |
+| 名称       | 值   | 说明              |
+| --------- | ------ | ----------------- |
+| CONTINUOUS | 0 | 表示长振。 |
+| TRANSIENT  | 1 | 表示短振。 |
 
 ## VibratorCurvePoint<sup>18+</sup>
 
