@@ -9,7 +9,7 @@
 webNativeMessagingExtensionManager模块提供基于Web标准的消息扩展管理能力。
 
 > **说明**
-> 
+>
 > 本模块首批接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
@@ -335,7 +335,7 @@ disconnectNative(connectionId: number): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 801 | Capability not supported. |
 | 16000011 | The context does not exist. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例:**
 ```ts
@@ -357,7 +357,7 @@ export default class EntryAbility extends UIAbility {
       let message = (err as BusinessError).message;
       console.error(`disconnectNative failed, code is ${code}, message is ${message}`);
     }
-  }  
+  }
   onForeground() {
     this.disconnect();
   }
