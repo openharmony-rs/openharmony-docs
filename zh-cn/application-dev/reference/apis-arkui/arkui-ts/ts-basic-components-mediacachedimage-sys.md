@@ -1,4 +1,4 @@
-# Image
+# MediaCachedImage
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @baosiyuan-->
