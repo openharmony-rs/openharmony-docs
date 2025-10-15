@@ -10,6 +10,7 @@ MediaCachedImage继承自[Image](ts-basic-components-image.md)，新增了纹理
 
 ## 接口
 
+### MediaCachedImage
 MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource)
 
 通过图片数据源获取图片，用于后续渲染展示。
@@ -20,9 +21,17 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 **参数：** 
 
-| 名称 | 类型                                                     | 只读 | 可选 | 说明                                                 |
-| ------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| src    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)&nbsp;\|&nbsp;[ASTCResource](#astcresource12) | 否 | 否 | 图片的数据源，支持媒体库资源，PixelMap、ResourceStr、DrawableDescriptor的引用方式可参考Image的[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)，ASTCResource为纹理资源，只支持系统应用。 |
+| 参数名 | 类型                                                     | 必填 | 说明                                                     |	
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
+| src    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)&nbsp;\|&nbsp;[ASTCResource](#astcresource12) | 是   | 图片的数据源，支持媒体库资源，PixelMap、ResourceStr、DrawableDescriptor的引用方式可参考Image的[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)，ASTCResource为纹理资源，只支持系统应用。 |
+
+## 属性
+
+支持[通用属性](ts-component-general-attributes.md)。
+
+## 事件
+
+支持[通用事件](ts-component-general-events.md)。
 
 ## ASTCResource<sup>12+</sup>
 
@@ -32,10 +41,10 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型 | 只读 | 可选 | 说明                                      |
-| ------- | --- | --- | --- |----------------------------------------- |
-| sources | Array&lt;string&gt; | 否 | 否 | uri资源数组，表示进行拼接的纹理资源信息。 |
-| column  | number | 否 | 否 | 列大小，表示每行要拼接的纹理资源个数。    |
+| 参数名    | 类型 | 必填 | 说明                                      |
+| ------- | --- | --- | ------------------------------------------ |
+| sources | Array&lt;string&gt; | 是 | uri资源数组，表示进行拼接的纹理资源信息。 |
+| column  | number | 是 | 列大小，表示每行要拼接的纹理资源个数。    |
 
 ## 示例
 
