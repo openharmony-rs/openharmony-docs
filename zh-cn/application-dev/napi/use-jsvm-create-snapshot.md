@@ -308,6 +308,8 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 ArkTS侧示例代码：
 
 ```ts
+import napitest from 'libentry.so';
+
 @Entry
 @Component
 struct Index {

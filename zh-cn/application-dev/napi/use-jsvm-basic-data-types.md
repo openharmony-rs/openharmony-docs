@@ -1,4 +1,4 @@
-# 使用JSVM-API接口创建基本数据类型
+# 使用JSVM-API接口创建和获取数值
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou; @string_sz-->
