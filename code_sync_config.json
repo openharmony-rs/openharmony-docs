@@ -318,5 +318,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/AccessToken/declare-permissions.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":101,
+						"name":"request_permission_json",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/AccessToken/request-user-authorization-second.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondpages/Index.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"second_request_permission",
+						"start_line":18
+					}
+				]
+			}
+		]
 	}
 ]
