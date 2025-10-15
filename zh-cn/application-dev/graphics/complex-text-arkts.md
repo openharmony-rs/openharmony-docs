@@ -473,9 +473,9 @@ struct Font08 {
 
 - **高对比度文字绘制：** 主要通过将深色文字变黑、浅色文字变白，增强文本的对比效果。
 
-- **行高调整：** 可以调整段落中文本的行高，更精准控制文本垂直分布情况。
+- **行高调整：** 调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
 
-- **行间距调整：** 可以额外增加段落文本行间距，优化阅读体验。
+- **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
 
 ### 装饰线
 
@@ -565,23 +565,52 @@ let superScriptStyle: text.TextStyle = {
 
 ### 行高调整
 
-调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
-
 当前行高调整方式包括两种：设置行高上限/下限和使用行高缩放系数。
 
-第一种行高调整方式：为文本行设置行高上限与下限，具体参考[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).maxLineHeight与[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).minLineHeight。
+**行高调整（方式一）**
 
-具体使用效果参考下文[示例六](#示例六行高调整方式一)。
+通过设置行高上限和下限调整行高，关键代码如下：
 
-第二种行高调整方式：直接调整行高缩放系数（[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textStyle).heightScale，并将heightOnly置为true），此外可以调整行高缩放模式，具体参考[LineHeightStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#lineHeightStyle21)。
+```ts
+let myTextStyle: text.TextStyle = {
+    // 设置行高上限
+    lineHeightMaximum: 65,
+    // 设置行高下限
+    lineHeightMinimum: 65
+};
+```
 
-具体使用效果参考下文[示例七](#示例七行高调整方式二)。
+使用效果参考下文[示例六](#示例六行高调整方式一)。
+
+**行高调整（方式二）**
+
+通过调整行高缩放系数调整行高，关键代码如下：
+
+```ts
+let myTextStyle: text.TextStyle = {
+    // 开启行高缩放开关
+    heightOnly: true,
+    // 设置行高缩放系数
+    heightScale: 1.5,
+    // 设置行高缩放风格
+    lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT
+};
+```
+
+使用效果参考下文[示例七](#示例七行高调整方式二)。
 
 ### 行间距调整
 
-调整行间距可以改善文本行之间的距离，提高阅读体验。
+调整行间距可以改善文本行之间的距离，提高阅读体验，关键代码如下：
 
-行间距设置在段落样式中，具体参考[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphStyle).lineSpacing。
+```ts
+let myParagraphStyle: text.ParagraphStyle = {
+  // 设置行间距
+  lineSpacing: 100,
+  // 关闭段落上升部和下降部
+  textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
+};
+```
 
 具体使用效果可参见下文[示例八](#示例八行间距调整)。
 

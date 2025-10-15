@@ -886,14 +886,14 @@ OH_Drawing_DestroyTypography(typography);
 
 当前行高调整方式包括两种：设置行高上限/下限和使用行高比例系数。
 
-#### 行高调整（方式一）
+**行高调整（方式一）**
 
-行高调整方式第一种：为文本行设置行高上限与下限。
+为文本行设置行高上限与下限。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid)。| 
-| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM。| 
+| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid)中枚举值：TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM。| 
+| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid)中枚举值：TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM。| 
 
 示例及效果如下所示：
 ```c++
@@ -926,16 +926,21 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png)
+具体效果如下所示：
 
-#### 行高调整（方式二）
+| 行高上限值 | 行高下限值 | 示意效果 |
+| -------- | -------- | -------- |
+| 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
+| 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
 
-行高调整方式第二种：直接调整行高缩放系数。
+**行高调整（方式二）**
+
+调整行高缩放系数。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight) | 使能行高缩放。具体可参考 [OH_Drawing_SetTextStyleFontHeight](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight).TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM。| 
-| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE。 | 
+| void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight) | 使能行高缩放。具体可参考 [OH_Drawing_SetTextStyleFontHeight](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight)。| 
+| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。具体可参考 [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid)中枚举值：TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE。 | 
 
 示例及效果如下所示：
 ```c++
@@ -968,7 +973,13 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png)
+具体效果如下所示：
+
+| 行高缩放样式 | 示意效果 |
+| -------- | -------- |
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
+
 
 ### 行间距调整
 
@@ -976,7 +987,7 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。具体参考[OH_Drawing_TypographyStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid).TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。具体参考[OH_Drawing_TypographyStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)中枚举值：TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING。 |
 
 示例及效果如下所示：
 ```c++
@@ -1009,7 +1020,13 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png)
+具体效果如下所示：
+
+| 上升部下降部开关 | 示意效果 |
+| -------- | -------- |
+| TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
+| TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+
 
 ## 样式的拷贝、绘制与显示
 支持拷贝文本样式、段落样式、阴影样式，以便快速复制相关样式作用到不同文字上。
