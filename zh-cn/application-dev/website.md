@@ -63,6 +63,7 @@
         - [互操作概述](quick-start/arkts-v1.1-v1.2-ui-interop.md)
         - [UI构建互操作](quick-start/arkts-v1.2-interop-v1.1-ui-build.md)
         - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
+        - [ArkTS-Sta与ArkTS-Dyn动态数据和@Observed数据的互操作](ui/arkts-sta-interop-dyn-observed.md)
         - 状态管理V2互操作
           - [ArkTS-Sta与ArkTS-Dyn应用间V2状态存储互操作](ui/arkts-sta-interop-dyn-storages-v2.md)
         - 状态管理V1V2混用互操作
