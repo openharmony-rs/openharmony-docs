@@ -1209,9 +1209,9 @@ struct ImageExample4 {
         .width(200)
         .height(200)
         .margin({bottom:10})
-      Button('getTypes')
-        .width(80)
-        .height(80)
+      Button('getTypes', { type: ButtonType.Circle, stateEffect: false })
+        .width(100)
+        .height(100)
         .onClick(() => {
           this.aiController.getImageAnalyzerSupportTypes();
         })
@@ -1556,8 +1556,8 @@ struct ImageContentExample {
       Image(this.imageSrcList[this.imageSrcIndex])
         .width(100)
         .height(100)
-      Button('点击切换Image的src')
-        .padding(20)
+      Button('点击切换Image的src', { type: ButtonType.Capsule, stateEffect: false })
+        .height(50)
         .onClick(() => {
           this.imageSrcIndex = (this.imageSrcIndex + 1) % this.imageSrcList.length;
         })
