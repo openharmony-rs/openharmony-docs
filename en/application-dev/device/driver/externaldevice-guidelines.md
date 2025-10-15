@@ -1,4 +1,10 @@
 # UI-based Driver Development
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## When to Use
 
@@ -37,7 +43,7 @@ You can use the APIs to query and bind peripheral devices so as to use the custo
 
 The following sample code is a demo that illustrates how to develop both the client and server and implement IPC.
 
-1. Create an OpenHarmony project. For details, see [Creating a Project] (https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-create-new-project).
+1. Create a project following instructions in [Creating a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-create-new-project).
 
     **NOTE**
 
@@ -107,7 +113,7 @@ The following sample code is a demo that illustrates how to develop both the cli
     try {
       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
         (err: BusinessError, id: number) => {
-        hilog.info(0, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}}`);
+        hilog.info(0, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
       });
       return remoteDeviceDriver.remote;
     } catch (error) {
@@ -143,14 +149,14 @@ The following sample code is a demo that illustrates how to develop both the cli
         await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
         // Obtain the "Hello world" information returned by the driver.
         this.message = reply.readString();
-        hilog.info(0, 'testTag', `sendMessageRequest, message: ${this.message}}`);
+        hilog.info(0, 'testTag', `sendMessageRequest, message: ${this.message}`);
       } catch (error) {
         hilog.error(0, 'testTag', `sendMessageRequest failed, err: ${JSON.stringify(error)}`);
       }
     }
     ```
 
-7. Render the UI. For details about UI development, see [UI Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/arkts-ui-development-V5).
+7. Render the UI. For details about UI development, see [UI Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-development).
 
     ```ts
     build() {
@@ -236,5 +242,5 @@ You need to configure a signature file for your application to run on a device. 
       }
       ```
 
-Automatic signing: [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V13/ide-signing-V13#section18815157237)
+Automatic signing: [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237)
 <!--RP1End-->
