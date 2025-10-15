@@ -2387,6 +2387,46 @@ inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMet
 })
 ```
 
+### setSystemPanelButtonColor<sup>22+</sup>
+
+setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string | undefined): Promise\<void>
+
+设置当前面板功能键颜色和功能键的背景颜色。使用Promise异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| fillColor | string\|undefined | 是   | 功能键的颜色，取值范围为[#01000000, #FFFFFFFF] 或 [#000000, #FFFFFF]，不支持具有完全透明Alpha通道（#00xxxxxx）的值。 |
+| backgroundColor | string\|undefined | 是   | 功能键的背景颜色，取值范围为[#01000000, #FFFFFFFF] 或 [#000000, #FFFFFF]，不支持具有完全透明Alpha通道（#00xxxxxx）的值。 |
+
+**返回值：**
+
+| 类型   | 说明                             |
+| ------- | ------------------------------ |
+| Promise\<void> | Promise对象。无返回结果。  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let fillColor = "#FFFF00";
+  let backgroundColor = "#0000FF";
+  this.panel.setSystemPanelButtonColor(fillColor, backgroundColor).then(() => {
+    console.info(`setSystemPanelButtonColor success.`);
+  }).catch((error: BusinessError) => {
+    console.error(`setSystemPanelButtonColor failed, code: ${error.code}, message: ${error.message}`);
+  })
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setSystemPanelButtonColor failed, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## KeyboardController
 
 下列API均需使用[on('inputStart')](#oninputstart9)获取到KeyboardController实例后，通过实例调用。
