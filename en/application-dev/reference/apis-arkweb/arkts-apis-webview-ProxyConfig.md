@@ -1,4 +1,10 @@
 # Class (ProxyConfig)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **ProxyConfig** object to configure proxies.
 
@@ -105,7 +111,7 @@ For details about the sample code, see [removeProxyOverride](./arkts-apis-webvie
 
 clearImplicitRules(): void
 
-Overrides the default behavior and forcibly sends the local host address or local IP address through the proxy. (By default, if host names are local IP addresses or local host addresses, they bypass the proxy.)
+Overrides the default behavior and forces local host or local IP address to be sent through the proxy. (By default, if host names are local IP addresses or local host addresses, they bypass the proxy.) This function is called to override the default behavior and force localhost or local IP addresses to be sent through the proxy.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

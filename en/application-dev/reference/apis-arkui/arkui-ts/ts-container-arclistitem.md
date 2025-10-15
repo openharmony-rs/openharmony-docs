@@ -1,12 +1,19 @@
 # ArcListItem
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
 The **ArcListItem** component is used to display individual child components in an [ArcList](ts-container-arclist.md) component and must be used in conjunction with **ArcList**.
 
 > **NOTE**
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component can be used only as a child of [ArcList](ts-container-arclist.md).
-> - When this component is used with [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md), or when the parent component is [ArcList](ts-container-arclist.md), its child components are created when it is laid out.
+> - When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is [ArcList](ts-container-arclist.md), its child components are created when it is laid out.
 
 ## Modules to Import
 
@@ -64,7 +71,7 @@ Sets the swipe action item displayed when the **ArcListItem** component is swipe
 
 | Name | Type                                                        | Mandatory| Description                   |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional\<SwipeActionOptions>](ts-container-listitem.md#swipeactionoptions9) | No  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
+| options | [Optional\<SwipeActionOptions>](ts-container-listitem.md#swipeactionoptions9) | Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
 
 ## Example
 
@@ -72,14 +79,14 @@ This example demonstrates the visual differences when auto-scaling is enabled or
 
 ```ts
 // xxx.ets
-import { LengthMetrics } from "@kit.ArkUI";
+import { LengthMetrics, CircleShape } from '@kit.ArkUI';
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct ArcListItemExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  private watchSize: string = '466px' // Default watch size: 466*466
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private watchSize: string = '466px'; // Default watch size: 466*466
   private itemSize: string = '414px' // Item width
 
   @Builder
@@ -89,7 +96,7 @@ struct ArcListItemExample {
       }
       .width(this.watchSize)
       .height(this.watchSize)
-      .clip(new Circle({ width: '100%', height: '100%' }))
+      .clipShape(new CircleShape({ width: '100%', height: '100%' }))
       .backgroundColor(0x707070)
 
       ArcList({ initialIndex: 3}) {
@@ -102,7 +109,7 @@ struct ArcListItemExample {
               .backgroundColor(0x17A98D)
           }
           .autoScale(item % 3 == 0 || item % 5 == 0)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .space(LengthMetrics.px(10))
       .borderRadius(this.watchSize)
@@ -113,7 +120,7 @@ struct ArcListItemExample {
 
   build() {
     Column() {
-      this.buildList()
+      this.buildList();
     }
     .width('100%')
     .height('100%')

@@ -25,7 +25,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 提示音参数选项。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -44,7 +44,7 @@ getTitle(): Promise&lt;string&gt;
 
 获取提示音标题。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -81,7 +81,7 @@ prepare(): Promise&lt;void&gt;
 
 准备播放提示音。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -119,7 +119,7 @@ start(toneOptions?: SystemToneOptions): Promise&lt;number&gt;
 
 开始播放提示音。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -172,7 +172,7 @@ stop(id: number): Promise&lt;void&gt;
 
 停止播放提示音。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -217,7 +217,7 @@ release(): Promise&lt;void&gt;
 
 释放提示音播放器。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -253,7 +253,7 @@ setAudioVolumeScale(scale: number): void
 
 设置音频音量大小，无返回结果。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -295,7 +295,7 @@ getAudioVolumeScale(): number
 
 获取当前音频音量大小，同步返回当前音量。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -334,7 +334,7 @@ getSupportedHapticsFeatures(): Promise&lt;Array&lt;systemSoundManager.ToneHaptic
 
 获取当前支持的振动风格。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -371,7 +371,7 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 
 调用本接口前，应该先调用[getSupportedHapticsFeatures](#getsupportedhapticsfeatures13)查询支持的振动风格，如果设置不支持的振动风格，则设置失败。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -413,7 +413,7 @@ getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 
 获取播放铃音时的振动风格，同步返回振动风格枚举值。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -454,6 +454,8 @@ on(type: 'playFinished', streamId: number, callback: Callback\<number>): void
 监听铃音播放完成事件（当铃音播放完成时触发）。使用callback异步回调。
 
 监听对象为传入的streamId对应音频流。当streamId传入0时，监听本播放器对应的所有音频流。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -500,6 +502,8 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 取消监听铃音播放完成事件。使用callback异步回调。
 
+**系统接口：** 该接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **参数：**
@@ -540,6 +544,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 监听铃音播放过程中的错误事件（当铃音播放过程中发生错误时触发）。使用callback异步回调。
 
+**系统接口：** 该接口为系统接口。
+
 **系统能力**：SystemCapability.Multimedia.SystemSound.Core
 
 **参数：**
@@ -573,6 +579,8 @@ systemTonePlayer.on('error', (err: BusinessError) => {
 off(type: 'error', callback?: ErrorCallback): void
 
 取消监听铃音播放过程中的错误事件。使用callback异步回调。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力**：SystemCapability.Multimedia.SystemSound.Core
 

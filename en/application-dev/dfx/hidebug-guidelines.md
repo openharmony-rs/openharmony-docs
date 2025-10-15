@@ -25,11 +25,11 @@ HiDebug can obtain the system memory, application process memory usage, applicat
 
 | Name| Description  |
 | -------- | -------- |
-| hidebug.getNativeHeapSize | Obtains the total number of bytes occupied by the total space (**uordblks** and **fordblks**, which are obtained through **mallinfo**) held by a process, which is measured by the memory allocator.|
-| hidebug.getNativeHeapAllocatedSize | Obtains the total number of bytes occupied by the total allocated space (**uordblks**, which is obtained through **mallinfo**) held by a process, which is measured by the memory allocator.|
-| hidebug.getNativeHeapFreeSize | Obtains the total number of bytes occupied by the total free space (**fordblks**, which is obtained from **mallinfo**) held by a process, which is measured by the memory allocator.|
-| hidebug.getPss | Obtains the size of the physical memory actually used by the application process. This API is implemented by reading and summing up the values of **Pss** and **SwapPss** in the **/proc/{pid}/smaps_rollup** node.|
-| hidebug.getVss | Obtains the virtual set size used by the application process. This API is implemented by reading the value of **size** (number of memory pages) from the **/proc/{pid}/statm** node and calculating the value using the following formula: **vss** = **size** × page size (4 KB/page).|
+| hidebug.getNativeHeapSize | Obtains the total number of bytes occupied by the total space held by a process, which is measured by the memory allocator. Sum of uordblks and fordblks obtained from the mallinfo API.|
+| hidebug.getNativeHeapAllocatedSize | Obtains the total number of bytes occupied by the total allocated space (**uordblks**, which is obtained from **mallinfo**) held by a process, which is measured by the memory allocator. Obtains the value of uordblks in the mallinfo API.|
+| hidebug.getNativeHeapFreeSize | Obtains the total number of bytes occupied by the total free space (**fordblks**, which is obtained from **mallinfo**) held by a process, which is measured by the memory allocator. fordblks obtained from the mallinfo API.|
+| hidebug.getPss | Obtains the size of the physical memory actually used by the application process. This API is implemented by reading and summing up the values of <b class="+ topic/ph hi-d/b " id="b7835135125313">Pss</b> and <b class="+ topic/ph hi-d/b " id="b188351351155317">SwapPss</b> in the <b class="+ topic/ph hi-d/b " id="b183595116532">/proc/{pid}/smaps_rollup</b> node.|
+| hidebug.getVss | Obtains the size of the virtual memory occupied by the application process. This API is implemented by reading the value of **size** (number of memory pages) from the **/proc/{pid}/statm** node and calculating the value using the following formula: **vss** = **size** × page size (4 KB/page).|
 | hidebug.getSharedDirty | Obtains the size of the shared dirty memory of a process. This API is implemented by reading the value of **Shared_Dirty** in **/proc/{pid}/smaps_rollup**.|
 | hidebug.getPrivateDirty | Obtains the size of the private dirty memory of a process. This API is implemented by reading the value of **Private_Dirty** in the **/proc/{pid}/smaps_rollup** node.|
 | hidebug.getAppNativeMemInfo | Obtains the memory information of the application process. This API is implemented by reading data from the **/proc/{pid}/smaps_rollup and /proc/{pid}/statm** node.|
@@ -46,7 +46,7 @@ HiDebug can obtain the system memory, application process memory usage, applicat
 | OH_HiDebug_GetSystemMemInfo | Obtains system memory information. This API is implemented by reading data from the **/proc/meminfo** node.|
 | OH_HiDebug_GetAppNativeMemInfo | Obtains the memory information of the application process. This API is implemented by reading data from the **/proc/{pid}/smaps_rollup and /proc/{pid}/statm** node.|
 | OH_HiDebug_GetAppNativeMemInfoWithCache | Obtains the memory information of an application process. This API has a cache mechanism to improve its performance.<br>**Note**: This API is supported since API version 20.|
-| OH_HiDebug_GetAppMemoryLimit | Obtains the memory limit of an application process. **rsslimit** and **vsslimit** are the values of **RLIMIT_RSS** and **RLIMIT_AS** obtained through the getrlimit API, respectively.|
+| OH_HiDebug_GetAppMemoryLimit | Obtains the memory limit of an application process. **rsslimit** and **vsslimit** are the values of **RLIMIT_RSS** and **RLIMIT_AS** obtained through the **getrlimit** API, respectively.|
 
 ## Obtaining GPU Memory Information
 
@@ -58,10 +58,10 @@ HiDebug can obtain the GPU memory information of an application. In graphics-int
 
 ### APIs (ArkTS)
 
-| Name| Description  |
-| -------- | -------- |
-| hidebug.getGraphicsMemory | Obtains the GPU memory size of an application in asynchronous mode.|
-| hidebug.getGraphicsMemorySync | Obtains the GPU memory size of an application in synchronous mode.|
+| Name| Description                                                |
+| -------- |----------------------------------------------------|
+| hidebug.getGraphicsMemory | Obtains the GPU memory size of an application (graph + gl) in asynchronous mode.                     |
+| hidebug.getGraphicsMemorySync | Obtains the GPU memory size of an application (graph + gl) in synchronous mode.|                   
 
 ### APIs (C/C++)
 
@@ -71,7 +71,7 @@ HiDebug can obtain the GPU memory information of an application. In graphics-int
 
 ## Obtaining CPU Usage
 
-Monitoring the CPU usage is critical to performance analysis during application development. It helps optimize application performance and ensure smooth running. HiDebug provides multiple APIs to obtain the CPU usage.
+Monitoring the CPU usage is critical to performance analysis during application development. To help developers optimize application performance and ensure smooth application running, the HiDebug module provides multiple APIs to obtain the CPU usage.
 
 ### Implementation Principles
 
@@ -79,37 +79,37 @@ The HiView process obtains and caches the running data of the current CPU every 
 
 1. System CPU usage data
 
-The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
+	The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
 
-```
-cat  /proc/stat
-cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
-...
-```
+	```
+	cat  /proc/stat
+	cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
+	...
+	```
 
-Fields in the CPU indicator:
+	Fields in the CPU indicator:
 
-The CPU statistics from left to right are as follows (**cpu** indicates the total running data of the CPU):
+	The CPU usage statistics from left to right indicate the following (cpu indicates the total running data of all CPUs, in jiffies):
 
-- **user**: user-mode time, in jiffies
+	- user: user-mode time occupied by non-low-priority processes (nice <= 0).
 
-- **nice**: nice user-mode time, in jiffies
+	- nice: user-mode time occupied by low-priority processes (nice > 0).
 
-- **system**: kernel-mode time, in jiffies
+	- system: kernel-mode time.
 
-- **idle**: idle time, in jiffies (excluding the I/O wait time)
+	- idle: idle time (excluding I/O wait time).
 
-- **iowait**: I/O wait time, in jiffies
+	- iowait: I/O wait time.
 
-- **irq**: hard interrupt time, in jiffies
+	- irq: hard interrupt time.
 
-- **softirq**: soft interrupt time, in jiffies
+	- softirq: soft interrupt time.
 
-- **steal**: stolen time (time spent running other operating systems in a virtual environment)
+	- steal: time of processes running in a virtualization environment but not on the VM.
 
-- **guest**: guest time (time spent running virtual CPUs by the operating system)
+	- guest: time for the OS to run non-low-priority processes (nice <= 0) in a VM (included in the user field).
 
-- **guest_nice**: nice guest time (time spent running a guest with a **nice** value)
+	- guest_nice: time for the OS to run low-priority processes (nice > 0) in a VM (included in the nice field).
 
 2. Process/Thread CPU usage data
 
@@ -176,7 +176,7 @@ HiDebug can obtain VM memory data, GC statistics, and VM heap dump data.
 | hidebug.getAppVMMemoryInfo | Obtains VM memory information.|
 | hidebug.getVMRuntimeStats | Obtains the system [GC](../arkts-utils/gc-introduction.md) statistics.|
 | hidebug.getVMRuntimeStat | Obtains the specified system [GC](../arkts-utils/gc-introduction.md) statistics based on parameters.|
-| hidebug.dumpJsRawHeapData | Dumps the original VM heap snapshot for the current thread in asynchronous mode. This API is used for [JavaScript memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).|
+| hidebug.dumpJsRawHeapData | Dumps the original VM heap snapshot for the current thread in asynchronous mode. This API is used for [JavaScript memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).<br>Note: This API is supported since API version 18.|
 | hidebug.dumpJsHeapData | Dumps the VM heap data in synchronous mode. This API is used for [JavaScript memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).|
 | hidebug.getAppMemoryLimit | Obtains the memory limit of an application process. **vmHeapLimit** is the VM heap size limit of the current thread, and **vmTotalHeapSize** is the total size limit of all VM heaps in the current process.|
 
@@ -247,17 +247,17 @@ HiDebug provides APIs for setting the threshold of system resource leak detectio
 | -------- | -------- |
 | hidebug.setAppResourceLimit | Sets the threshold for triggering resource leak detection based on the number of file descriptors (FDs), number of threads, JavaScript memory, or native memory of an application.|
 
-## Managing GWP-Asan
+## Managing GWP-ASan
 
-HiDebug provides the capabilities of enabling and disabling GWP-Asan and querying the number of days when GWP-Asan is enabled.
+HiDebug provides the capabilities of enabling and disabling GWP-ASan and querying the number of days when GWP-Asan is enabled.
 
 ### APIs (ArkTS)
 
 | Name| Description|
 | -------- | -------- |
-| hidebug.enableGwpAsanGrayscale | Enables GWP-Asan to detect illegal behaviors in heap memory usage.|
-| hidebug.disableGwpAsanGrayscale | Disables GWP-Asan.|
-| hidebug.getGwpAsanGrayscaleState | Obtains the number of remaining days for enabling GWP-Asan.|
+| hidebug.enableGwpAsanGrayscale | Enables GWP-ASan to detect invalid behaviors during heap memory usage.<br>**Note**: This API is supported since API version 20.|
+| hidebug.disableGwpAsanGrayscale | Disables GWP-ASan.<br>**Note**: This API is supported since API version 20.|
+| hidebug.getGwpAsanGrayscaleState | Obtains the remaining days for which GWP-ASan is enabled.<br>**Note**: This API is supported since API version 20.|
 
 ## Others
 

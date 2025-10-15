@@ -18,7 +18,7 @@
 ## 导入模块
 
 ```ts
-import configPolicy from '@ohos.configPolicy';
+import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
 ## getOneCfgFile
@@ -48,13 +48,12 @@ getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getOneCfgFile(relpath, (error: BusinessError, value: string) => {
     if (error == null) {
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } else {
       console.error('error: ' + error.code + ', ' + error.message);
     }
@@ -92,14 +91,13 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchConfigFile() {
     try {
       let relpath: string = 'etc/config.xml';
       let value: string = await configPolicy.getOneCfgFile(relpath);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -107,7 +105,7 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
     }
   }
 
-  fetchConfigFile()
+  fetchConfigFile();
   ```
 
 ## getCfgFiles
@@ -137,12 +135,11 @@ getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError, value: Array<string>) => {
     if (error == null) {
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } else {
       console.error('error: ' + error.code + ', ' + error.message);
     }
@@ -180,14 +177,13 @@ getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchCfgFiles() {
     try {
       let relpath: string = 'etc/config.xml';
       let value: Array<string> = await configPolicy.getCfgFiles(relpath);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -223,12 +219,11 @@ getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   configPolicy.getCfgDirList((error: BusinessError, value: Array<string>) => {
     if (error == null) {
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } else {
       console.error('error: ' + error.code + ', ' + error.message);
     }
@@ -252,13 +247,12 @@ getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchCfgDirList() {
     try {
       let value: Array<string> = await configPolicy.getCfgDirList();
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -297,14 +291,13 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
     (error: BusinessError, value: string) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -341,15 +334,14 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
     (error: BusinessError, value: string) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -389,15 +381,14 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchOneCfgFile() {
     try {
       let relpath: string = 'etc/config.xml';
       let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
       let value: string = await configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -442,13 +433,13 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let relpath: string = 'etc/config.xml';
     let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
     let result: string = configPolicy.getOneCfgFileSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
-    console.log('result is ' + result);
+    console.info('result is ' + result);
   } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
@@ -484,14 +475,13 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
     (error: BusinessError, value: Array<string>) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -527,15 +517,14 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra,
     (error: BusinessError, value: Array<string>) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -575,15 +564,14 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import configPolicy from '@ohos.configPolicy';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   async function fetchCfgFiles() {
     try {
       let relpath: string = 'etc/config.xml';
       let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
       let value: Array<string> = await configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -628,13 +616,13 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let relpath: string = 'etc/config.xml';
     let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
     let result: Array<string> = configPolicy.getCfgFilesSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
-    console.log('result is ' + result);
+    console.info('result is ' + result);
   } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
@@ -660,11 +648,11 @@ getCfgDirListSync(): Array&lt;string&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let result: Array<string> = configPolicy.getCfgDirListSync();
-    console.log('result is ' + result);
+    console.info('result is ' + result);
   } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;

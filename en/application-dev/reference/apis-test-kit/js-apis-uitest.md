@@ -1,5 +1,13 @@
 # @ohos.UiTest
 
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @inter515-->
+<!--Designer: @inter515-->
+<!--Tester: @laonie666-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 The **UiTest** module provides APIs that you can use to simulate UI actions during testing, such as clicks, double-clicks, long-clicks, and swipes.
 
 This module provides the following functions:
@@ -14,15 +22,13 @@ This module provides the following functions:
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->.
+> - The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/uitest-guidelines.md)<!--RP1End-->.
 > - The APIs of this module do not support concurrent calls.
-> - The APIs of this module are applicable to phones, tablets, PCs/2-in-1devices, wearables, smart visions, and head units.
-
 
 ## Modules to Import
 
 ```ts
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -197,13 +203,13 @@ Describes the text input mode.
 
 | Name      | Type  | Read-Only| Optional| Description                                                      |
 | ---------- | ------ |----|----|----------------------------------------------------------|
-| paste | boolean | No | Yes | Whether to copy and paste text. The value **true** means to copy and paste text, and **false** means to type text. Default value: **false**<br> **NOTE**<br>1. If the input text contains Chinese characters or special characters or contains more than 200 characters, the text is copied and pasted regardless of the value of this parameter.<br>2. For smart wearable devices, this API does not support input in copy and paste mode.|
-| addition       | boolean | No | Yes | Whether to input text in addition mode. The value **true** means to input text in addition mode, and **false** means the opposite. Default value: **false**|
+| paste | boolean | No | Yes | Whether to copy and paste text. The value **true** means to copy and paste text, and **false** means to type text. Default value: **false**<br> **Note**: If the text to be entered contains Chinese characters, special characters, or the text length exceeds 200 characters, the text is entered by copying and pasting regardless of the value of this parameter.|
+| addition       | boolean | No | Yes | Whether to input text in addition mode. The value **true** means to input text in addition mode, false: Do not add the text to the end of the existing text. Default value: **false**|
 
 
 ## On<sup>9+</sup>
 
-Since API version 9, the UiTest framework provides a wide range of UI component feature description APIs in the **On** class to filter and match components.<br>
+From API version 9, the UiTest framework provides various APIs of the On class to describe control features for filtering controls to match or find target controls.<br>
 The APIs provided by the **On** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [ON.isBefore](#isbefore9) and [ON.isAfter](#isafter9) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **On** class are synchronous. You are advised to use the static constructor **ON** to create an **On** object in chain mode.
 
 ```ts
@@ -230,7 +236,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 | Name | Type                         | Mandatory| Description                                               |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| txt     | string                        | Yes  | Component text, used to match the target component.               |
+| txt     | string                        | Yes  | Component text, used to match the target component.<!--RP2--><!--RP2End--> |
 | pattern | [MatchPattern](#matchpattern) | No  | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -268,7 +274,7 @@ Specifies the ID attribute of the target component.
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| id     | string | Yes  | Component ID.|
+| id     | string | Yes  | Component ID.<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -306,7 +312,7 @@ Specifies the ID attribute of the target component.
 
 | Name                  | Type  | Mandatory| Description                                   |
 |-----------------------| ------ |----|---------------------------------------|
-| id                    | string | Yes | Component ID.                            |
+| id                    | string | Yes | Component ID.<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | Yes | Text matching pattern.|
 
 **Return value**
@@ -337,10 +343,6 @@ type(tp: string): On
 
 Specifies the type attribute of the target component.
 
->**NOTE**
->
->You can define the type of the component. In addition, you can use [DevEco Testing](https://developer.huawei.com/consumer/en/download) to query the type information of the component.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
@@ -349,7 +351,7 @@ Specifies the type attribute of the target component.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| tp     | string | Yes  | Component type.|
+| tp     | string | Yes  | Component type.<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -378,10 +380,6 @@ type(tp: string, pattern: MatchPattern): On
 
 Specifies the type attribute of the target component.
 
->**NOTE**
->
->You can define the type of the component. In addition, you can use [DevEco Testing](https://developer.huawei.com/consumer/en/download) to query the type information of the component.
-
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Test.UiTest
@@ -390,7 +388,7 @@ Specifies the type attribute of the target component.
 
 | Name                  | Type  | Mandatory| Description                                   |
 |-----------------------| ------ |----|---------------------------------------|
-| tp                    | string | Yes | Component type.                              |
+| tp                    | string | Yes | Component type.<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | Yes | Text matching pattern.|
 
 **Return value**
@@ -410,8 +408,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
+import { On, ON, MatchPattern } from '@kit.TestKit';
+let on:On = ON.type('Button', MatchPattern.EQUALS); // Uses the static constructor ON to create an On object and specifies the clickable attribute of the target control.
 ```
 
 ### clickable<sup>9+</sup>
@@ -428,7 +426,7 @@ Specifies the clickable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Clickable status of the component. The value **true** indicates that the component is clickable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Clickable status of the component. **true**: yes **false**: no Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -465,7 +463,7 @@ Specifies the long-clickable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Long-clickable status of the component. The value **true** indicates that the component is long-clickable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Long-clickable status of the component. true: The target control can be long-pressed. false: The target control cannot be long-pressed. Default value: **true**<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -502,7 +500,7 @@ Specifies the scrollable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                       |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| b      | boolean | No  | Scrollable status of the component. The value **true** indicates that the component is scrollable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Scrollable status of the component. true: The control is scrollable. false: The control is not scrollable. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -539,7 +537,7 @@ Specifies the enabled attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                     |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| b      | boolean | No  | Enabled status of the component. The value **true** indicates that the component is enabled, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Enabled status of the component. true: This function is enabled. false: This function is disabled. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -576,7 +574,7 @@ Specifies the focused attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                 |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Focused status of the component. true: focused false: unfocused Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -613,7 +611,7 @@ Specifies the selected attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Selected status of the component. The value **true** indicates that the component is selected, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Selected status of the component. **true**: selected **false**: not selected Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -650,7 +648,7 @@ Specifies the checked attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Checked status of the component. The value **true** indicates that the component is checked, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Checked status of the component. true: checked. false: unchecked. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -687,7 +685,7 @@ Specifies the checkable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Checkable status of the component. The value **true** indicates that the component is checkable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Checkable status of the component. true: yes false: no Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -724,7 +722,7 @@ Specifies that the target component is located before the given attribute compon
 
 | Name| Type      | Mandatory| Description                |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | Yes  | Information about the attribute component.|
+| on     | [On](#on9) | Yes  | Information about the attribute component.<!--RP3--><!--RP3End-->  |
 
 **Return value**
 
@@ -763,13 +761,13 @@ Specifies that the target component is located after the given attribute compone
 
 | Name| Type      | Mandatory| Description                |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | Yes  | Information about the attribute component.|
+| on     | [On](#on9) | Yes  | Information about the attribute component.<!--RP3--><!--RP3End-->  |
 
 **Return value**
 
 | Type      | Description                                                |
 | ---------- | ---------------------------------------------------- |
-| [On](#on9) | **On** object.|
+| [On](#on9) | **On** object. |
 
 **Error codes**
 
@@ -802,7 +800,7 @@ Specifies that the target component is located within the given attribute compon
 
 | Name| Type      | Mandatory| Description                |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | Yes  | Information about the attribute component.|
+| on     | [On](#on9) | Yes  | Information about the attribute component.<!--RP3--><!--RP3End-->  |
 
 **Return value**
 
@@ -840,7 +838,7 @@ Specifies that the target component is located within the given application wind
 
 | Name    | Type  | Mandatory| Description            |
 | ---------- | ------ | ---- | ---------------- |
-| bundleName | string | Yes  | Bundle name of the application window.|
+| bundleName | string | Yes  | Bundle name of the application window.<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -877,7 +875,7 @@ Specifies the description of the target component. Multiple match patterns are s
 
 | Name | Type                         | Mandatory| Description                                               |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| val     | string                        | Yes  | Description of the component.                                   |
+| val     | string                        | Yes  | Description of the component.<!--RP2--><!--RP2End-->   |
 | pattern | [MatchPattern](#matchpattern) | No  | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -915,7 +913,7 @@ Obtains the component object of the specified hint text and returns the **On** o
 
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ |----|---------------------------------------|
-| val     | string | Yes | The specified hint text of the component.                             |
+| val     | string | Yes | The specified hint text of the component.<!--RP2--><!--RP2End-->   |
 | pattern | [MatchPattern](#matchpattern) | No | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -954,7 +952,7 @@ Obtains the component object on the specified display.
 
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ |----|---------------------------------------|
-| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.|
+| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -982,7 +980,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 originalText(text: string, pattern?: MatchPattern): On
 
-Specifies the text attribute of the target component. Multiple match patterns are supported.
+Specifies the text content and text matching mode of the control and returns the On object.
 
 > **NOTE**
 >
@@ -996,7 +994,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 | Name | Type                         | Mandatory| Description                                               |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| text     | string                        | Yes  | Component text, used to match the target component.               |
+| text     | string                        | Yes  | Component text, used to match the target component.<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | No  | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -1332,7 +1330,7 @@ Obtains the clickable attribute of a component object. This API uses a promise t
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component object is clickable. The value **true** indicates that the component is clickable, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component object is clickable. **true**: yes **false**: no|
 
 **Error codes**
 
@@ -1372,7 +1370,7 @@ Obtains the long-clickable attribute of a component object. This API uses a prom
 
 | Type             | Description                                              |
 | ----------------- |--------------------------------------------------|
-| Promise\<boolean> | Promise used to return whether the component object is long-clickable. The value **true** indicates that the component is long-clickable, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component object is long-clickable. true: yes false: no|
 
 **Error codes**
 
@@ -1412,7 +1410,7 @@ Obtains the checked status of a component object. This API uses a promise to ret
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return the checked status of the component object. The value **true** indicates that the component is checked, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return the checked status of the component object. true: selected false: not selected|
 
 **Error codes**
 
@@ -1452,7 +1450,7 @@ Obtains whether a component object is checkable. This API uses a promise to retu
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component object is checkable. The value **true** indicates that the component is checkable, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component object is checkable. true: The control object is selectable. false: The control object is not selectable.|
 
 **Error codes**
 
@@ -1492,7 +1490,7 @@ Obtains whether a component object is scrollable. This API uses a promise to ret
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component object is scrollable. The value **true** indicates that the component is scrollable, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component object is scrollable. true: yes false: no|
 
 **Error codes**
 
@@ -1533,7 +1531,7 @@ Obtains whether the component is enabled. This API uses a promise to return the 
 
 | Type             | Description                                                      |
 | ----------------- | ---------------------------------------------------------- |
-| Promise\<boolean> | Promise used to return whether the component is enabled. The value **true** indicates that the component is enabled, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is enabled. true: This function is enabled. false: disabled|
 
 **Error codes**
 
@@ -1573,7 +1571,7 @@ Checks whether the component is focused. This API uses a promise to return the r
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is focused. true: focused false: unfocused|
 
 **Error codes**
 
@@ -1613,7 +1611,7 @@ Obtains whether a component is selected. This API uses a promise to return the r
 
 | Type             | Description                                               |
 | ----------------- | --------------------------------------------------- |
-| Promise\<boolean> | Promise used to return whether the component is selected. The value **true** indicates that the component is selected, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is selected. **true**: selected false: not selected|
 
 **Error codes**
 
@@ -1643,7 +1641,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Inputs text in a text box component after clearing its original text. This API uses a promise to return the result.
+Clears the original text in a component and enters the specified text. This method takes effect only for editable text components. This method uses a promise for asynchronous callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1659,7 +1657,7 @@ Inputs text in a text box component after clearing its original text. This API u
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
+| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.|
 
 **Error codes**
 
@@ -1686,7 +1684,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-Inputs text to a text box component with a specified text input mode supported. This API uses a promise to return the result.
+Inputs text to a component and specifies the text input mode. This method takes effect only for editable text components. This method uses a promise to return the result asynchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1696,7 +1694,7 @@ Inputs text to a text box component with a specified text input mode supported. 
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
+| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.|
 | mode | [InputTextMode](#inputtextmode20)  | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **Note**: If **InputTextMode.addition** is set to **true**, the specified text is added to the end of the existing text in the component. Otherwise, the specified text overwrites the existing text of the component.|
 
 **Return value**
@@ -1714,7 +1712,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 17000002 | The async function is not called with await. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
 
 **Example**
 ```ts
@@ -1732,7 +1730,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-Clears the text in a text box component. This API uses a promise to return the result.
+Clears the text of a control. This method takes effect only for editable text components and uses a promise for asynchronous callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1944,13 +1942,11 @@ dragTo(target: Component): Promise\<void>
 
 Drags a component to the target component. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -2197,7 +2193,7 @@ Obtains the original text information of this component. This API uses a promise
 
 | Type            | Description                             |
 | ---------------- | --------------------------------- |
-| Promise\<string> | Promise used to return the original text information of the component.|
+| Promise\<string> | Promise used to return the text information of the component.|
 
 **Error codes**
 
@@ -2616,9 +2612,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(123);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK); // Back button
 }
 ```
 
@@ -2658,10 +2656,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(123, 0);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK, 0); // Return Key
 }
 ```
 
@@ -2712,7 +2711,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-Triggers a combination key event on the specified display based on the specified key values. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key that matches the value is found and clicked, for example, **Ctrl+C**.
+Triggers a combination key event on the specified display based on the specified key values. This API uses a promise to return the result. For example, if the key value is (2072, 2019), find the key combination corresponding to the key value and click Ctrl+c.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3067,7 +3066,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3101,13 +3100,11 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 Drags from the start coordinate point to the target coordinate point. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2in1 devices, and TVs.
 
 **Parameters**
 
@@ -3117,7 +3114,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3151,13 +3148,11 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 
 Drags from the start point to the target point. You can specify the drag speed and the click duration before dragging. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -3256,7 +3251,7 @@ Captures the specified screen and saves it as a PNG image to the specified path.
 
 | Type             | Description                                       |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the screen capture operation is successful, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. true: yes false: The rotation is not complete.|
 
 **Error codes**
 
@@ -3284,13 +3279,11 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 Sets the display rotation of the current scene to the specified direction. This API uses a promise to return the result. It applies to rotatable scenarios.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -3405,19 +3398,17 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 Sets whether to enable the screen rotation feature. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
 | Name | Type   | Mandatory| Description                                                   |
 | ------- | ------- | ---- | ------------------------------------------------------- |
-| enabled | boolean | Yes  | Whether the screen can be rotated. The value **true** indicates that the screen can be rotated, and **false** indicates the opposite.|
+| enabled | boolean | Yes  | Whether the screen can be rotated. true: The screen can be rotated. false: The screen cannot be rotated.|
 
 **Return value**
 
@@ -3637,13 +3628,11 @@ pressHome(): Promise\<void>
 
 Injects an operation of returning to the home screen on the device. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API takes effect only on phones, tablets, PCs/2in1s, and TVs.
 
 **Return value**
 
@@ -3675,13 +3664,11 @@ pressHome(displayId: number): Promise\<void>
 
 Injects the operation of returning to the home screen on the specified display. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -3753,7 +3740,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled:boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000,5000);
 }
 ```
 
@@ -3858,7 +3845,7 @@ async function demo() {
 
 ### fling<sup>10+</sup>
 
-fling(direction: UiDirection, speed: number): Promise\<void>;
+fling(direction: UiDirection, speed: number): Promise\<void>
 
 Simulates a fling operation with the specified direction and speed. This API uses a promise to return the result.
 
@@ -3944,7 +3931,7 @@ async function demo() {
 
 ### screenCapture<sup>10+</sup>
 
-screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
+screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 Captures the specified area of the current screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
@@ -3986,9 +3973,9 @@ async function demo() {
 
 ### mouseClick<sup>10+</sup>
 
-mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse click action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
+Injects a mouse click action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if Key is set to 2072, press Ctrl and click the mouse.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4030,9 +4017,9 @@ async function demo() {
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse scrolling action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
+Injects a mouse scrolling action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if Key is set to 2072, press Ctrl and perform the mouse wheel scrolling action.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4043,7 +4030,7 @@ Injects a mouse scrolling action at a specified coordinate point and presses the
 | Name| Type            | Mandatory| Description                                                       |
 | ------ | ---------------- | ---- | ----------------------------------------------------------- |
 | p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                           |
-| down   | boolean          | Yes  | Whether the scroll wheel scrolls downward. The value **true** indicates the scroll wheel scrolls downward, and **false** indicates the scroll wheel scrolls upward.|
+| down   | boolean          | Yes  | Whether the scroll wheel scrolls downward. true: down false: up|
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
 | key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
 | key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
@@ -4076,7 +4063,7 @@ async function demo() {
 
 ### mouseMoveTo<sup>10+</sup>
 
-mouseMoveTo(p: Point): Promise\<void>;
+mouseMoveTo(p: Point): Promise\<void>
 
 Moves the cursor to the target point. This API uses a promise to return the result.
 
@@ -4166,7 +4153,7 @@ Injects a mouse wheel scrolling action at the specified coordinate point. The co
 | Name| Type            | Mandatory| Description                                                        |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
 | p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                            |
-| down   | boolean          | Yes  | Whether the scroll wheel scrolls downward. The value **true** indicates the scroll wheel scrolls downward, and **false** indicates the scroll wheel scrolls upward. |
+| down   | boolean          | Yes  | Whether the scroll wheel scrolls downward. true: down false: up |
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.         |
 | key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
 | key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
@@ -4202,7 +4189,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse double-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
+Injects a mouse double-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if Key is set to 2072, press Ctrl and perform a double-click action.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4246,7 +4233,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the key value is 2072, press Ctrl and perform a mouse long press action.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4290,7 +4277,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time and the click duration can be specified. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time and the click duration can be specified. This API uses a promise to return the result. For example, if the key value is 2072, press Ctrl and hold down the mouse.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4382,13 +4369,11 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
 Drags the mouse from the start point to the end point with the left mouse button clicked. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -4430,13 +4415,11 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 
 Drags the mouse from the start point to the end point with the left mouse button clicked. You can specify the drag speed and click duration before dragging. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -4444,7 +4427,7 @@ Drags the mouse from the start point to the end point with the left mouse button
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed     | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed     | number           | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -4488,7 +4471,7 @@ Inputs text at a specified coordinate without clearing the original text in the 
 | Name| Type            | Mandatory| Description              |
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | Yes  | Coordinates of the end point.|
-| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
+| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.|
 
 **Return value**
 
@@ -4532,8 +4515,8 @@ Inputs text at a specified coordinate point in a specified input mode. This API 
 | Name| Type            | Mandatory| Description              |
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | Yes  | Coordinates of the end point.|
-| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
-| mode | [InputTextMode](#inputtextmode20) | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **Note**: If **InputTextMode.addition** is set to true, the cursor moves to the end of the text and the specified text is input. If the value is **false**, the specified text is input at the coordinate point.|
+| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.|
+| mode | [InputTextMode](#inputtextmode20) | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **NOTE**<br> If InputTextMode.addition is set to true, the cursor is moved to the end of the text and the specified text is entered. If the value is **false**, the specified text is input at the coordinate point.|
 
 **Return value**
 
@@ -4578,13 +4561,11 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API can be called on PCs and 2-in-1 devices. For other devices, the error code 17000005 is returned.
 
 **Parameters**
 
@@ -4803,7 +4784,7 @@ Simulates a continuous multi-point pen injection. This API uses a promise to ret
 
 | Name| Type                                           | Mandatory| Description                                                               |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory. Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to 1.|
+| pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only single-finger operations are supported. The value of fingers in PointerMatrix must be set to 1.|
 | speed      | number| No | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.           |
 | pressure      | number | No | Injection pressure. The value ranges from 0.0 to 1.0. The default value is **1.0**.                                |
 
@@ -4843,11 +4824,11 @@ crownRotate(d: number, speed?: number): Promise\<void>
 
 Injects a crown rotation event. You can specify the rotation speed. This API uses a promise to return the result.
 
-This API takes effect only on wearables.
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API can be called on wearables. If this API is called on other devices, error code 801 is returned.
 
 **Parameters**
 
@@ -5141,7 +5122,7 @@ Checks whether the window is focused. This API uses a promise to return the resu
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the window is focused. true: yes false: no|
 
 **Error codes**
 
@@ -5177,7 +5158,7 @@ This API is supported since API version 9 and deprecated since API version 11. Y
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the window is active. The value **true** indicates that the window is active, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the window is active. true: The window is the one that the user is interacting with. false: The window is not the one that the user is interacting with.|
 
 **Error codes**
 
@@ -5244,6 +5225,8 @@ Moves a window to the target point. This API uses a promise to return the result
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API can be called on PCs, 2-in-1 devices, and tablets. On other devices, the 17000005 error code is returned.
 
 **Parameters**
 
@@ -5332,13 +5315,11 @@ split(): Promise\<void>
 
 Switches to the split-screen mode. This API uses a promise to return the result. This API is applicable to windows that support screen splitting.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API can be called on PCs, 2-in-1 devices, and tablets. For other devices, the 17000005 error code is returned.
 
 **Return value**
 
@@ -5373,13 +5354,11 @@ maximize(): Promise\<void>
 
 Maximizes a window. This API uses a promise to return the result. This API is applicable to windows that can be maximized.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API can be called on PCs, 2-in-1 devices, and tablets. For other devices, the 17000005 error code is returned.
 
 **Return value**
 
@@ -5414,13 +5393,11 @@ minimize(): Promise\<void>
 
 Minimizes a window. This API uses a promise to return the result. This API is applicable to windows that can be minimized.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API can be called on PCs, 2-in-1 devices, and tablets. For other devices, the 17000005 error code is returned.
 
 **Return value**
 
@@ -5455,13 +5432,11 @@ resume(): Promise\<void>
 
 Restores a window to its previous mode. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API can be called on PCs, 2-in-1 devices, and tablets. For other devices, the 17000005 error code is returned.
 
 **Return value**
 
@@ -5496,13 +5471,11 @@ close(): Promise\<void>
 
 Closes a window. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: This API can be called on PCs, 2-in-1 devices, and tablets. For other devices, the 17000005 error code is returned.
 
 **Return value**
 
@@ -5545,7 +5518,7 @@ Checks whether this window is active. This API uses a promise to return the resu
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the window is active. The value **true** indicates that the window is active, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the window is active. true: The window is the one that the user is interacting with. false: The window is not the one that the user is interacting with.|
 
 **Error codes**
 
@@ -5608,9 +5581,9 @@ async function demo() {
 
 UI event listener.
 
-### once('toastShow')
+### once('toastShow')<sup>10+</sup>
 
-once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 Subscribes to events of the toast component. This API uses a callback to return the result.
 
@@ -5650,9 +5623,9 @@ async function demo() {
 }
 ```
 
-### once('dialogShow')
+### once('dialogShow')<sup>10+</sup>
 
-once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 Subscribes to events of the dialog component. This API uses a callback to return the result.
 
@@ -5839,7 +5812,7 @@ This API is deprecated since API version 9. You are advised to use [clickable<su
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Clickable status of the component. The value **true** indicates that the component is clickable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Clickable status of the component. **true**: yes **false**: no Default value: **true**|
 
 **Return value**
 
@@ -5869,7 +5842,7 @@ This API is deprecated since API version 9. You are advised to use [scrollable<s
 
 | Name| Type   | Mandatory| Description                                                       |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| b      | boolean | No  | Scrollable status of the component. The value **true** indicates that the component is scrollable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Scrollable status of the component. true: The control is scrollable. false: The control is not scrollable. Default value: **true**|
 
 **Return value**
 
@@ -5898,7 +5871,7 @@ This API is deprecated since API version 9. You are advised to use [enabled<sup>
 
 | Name| Type   | Mandatory| Description                                                     |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| b      | boolean | No  | Enabled status of the component. The value **true** indicates that the component is enabled, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Enabled status of the component. true: This function is enabled. false: This function is disabled. Default value: **true**|
 
 **Return value**
 
@@ -5927,7 +5900,7 @@ This API is deprecated since API version 9. You are advised to use [focused<sup>
 
 | Name| Type   | Mandatory| Description                                                 |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Focused status of the component. true: focused. false: unfocused. Default value: **true**|
 
 **Return value**
 
@@ -5956,7 +5929,7 @@ This API is deprecated since API version 9. You are advised to use [selected<sup
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Selected status of the component. The value **true** indicates that the component is selected, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Selected status of the component. **true**: selected **false**: not selected Default value: **true**|
 
 **Return value**
 
@@ -6050,6 +6023,12 @@ This API is deprecated since API version 9. You are advised to use [click<sup>9+
 
 **System capability**: SystemCapability.Test.UiTest
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
@@ -6071,6 +6050,12 @@ This API is deprecated since API version 9. You are advised to use [doubleClick<
 
 **System capability**: SystemCapability.Test.UiTest
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
@@ -6091,6 +6076,12 @@ Long-clicks this component.
 This API is deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
@@ -6225,7 +6216,7 @@ This API is deprecated since API version 9. You are advised to use [isClickable<
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is clickable. The value **true** indicates that the component is clickable, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is clickable. **true**: yes false: The control object is not clickable.|
 
 **Example**
 
@@ -6256,7 +6247,7 @@ This API is deprecated since API version 9. You are advised to use [isScrollable
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is scrollable. The value **true** indicates that the component is scrollable, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is scrollable. true: The control object is scrollable. false: The control object is not scrollable.|
 
 **Example**
 
@@ -6288,7 +6279,7 @@ This API is deprecated since API version 9. You are advised to use [isEnabled<su
 
 | Type             | Description                                                      |
 | ----------------- | ---------------------------------------------------------- |
-| Promise\<boolean> | Promise used to return whether the component is enabled. The value **true** indicates that the component is enabled, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is enabled. true: This function is enabled. false: disabled.|
 
 **Example**
 
@@ -6320,7 +6311,7 @@ This API is deprecated since API version 9. You are advised to use [isFocused<su
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is focused. true: focused. false: unfocused.|
 
 **Example**
 
@@ -6351,7 +6342,7 @@ This API is deprecated since API version 9. You are advised to use [isSelected<s
 
 | Type             | Description                                                 |
 | ----------------- | ----------------------------------------------------- |
-| Promise\<boolean> | Promise used to return whether the component is selected. The value **true** indicates that the component is selected, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is selected. **true**: selected false: not selected.|
 
 **Example**
 
@@ -6372,7 +6363,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Inputs text into a component (applicable to text box components).
+Enters text in a control. This method is valid only for editable text components.
 
 This API is deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
@@ -6383,6 +6374,12 @@ This API is deprecated since API version 9. You are advised to use [inputText<su
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
 | text   | string | Yes  | Text to enter.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
@@ -6476,6 +6473,12 @@ This API is deprecated since API version 9. You are advised to use [delayMs<sup>
 | -------- | ------ | ---- | ------------ |
 | duration | number | Yes  | Duration of time.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
@@ -6566,6 +6569,12 @@ This API is deprecated since API version 9. You are advised to use [assertCompon
 | ------ | ------------------- | ---- | -------------------- |
 | by     | [By](#bydeprecated) | Yes  | Attributes of the target component.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
@@ -6596,6 +6605,12 @@ This API is deprecated since API version 9. You are advised to use [pressBack<su
 
 **System capability**: SystemCapability.Test.UiTest
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
@@ -6622,13 +6637,21 @@ This API is deprecated since API version 9. You are advised to use [triggerKey<s
 | ------- | ------ | ---- | ------------- |
 | keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
 import { Driver, UiDriver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
-  await driver.triggerKey(123);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK); // Back button
 }
 ```
 
@@ -6649,6 +6672,12 @@ This API is deprecated since API version 9. You are advised to use [click<sup>9+
 | ------ | ------ | ---- | -------------------------------------- |
 | x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
@@ -6678,6 +6707,12 @@ This API is deprecated since API version 9. You are advised to use [doubleClick<
 | x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
@@ -6705,6 +6740,12 @@ This API is deprecated since API version 9. You are advised to use [longClick<su
 | ------ | ------ | ---- | -------------------------------------- |
 | x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
@@ -6734,6 +6775,12 @@ This API is deprecated since API version 9. You are advised to use [swipe<sup>9+
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.|
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 

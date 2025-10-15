@@ -72,7 +72,7 @@ function getActiveVideoStabilizationMode(videoSession: camera.VideoSession): cam
 
 setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
-设置视频防抖模式。需要先检查设备是否支持对应的防抖模式，可以通过[isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11)方法判断所设置的模式是否支持。
+设置视频防抖模式。需要先检查设备是否支持对应的防抖模式，可以通过[isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11)方法判断所设置的模式是否支持。建议在[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)与[Start](arkts-apis-camera-Session.md#start11-1)之间设置视频防抖。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 

@@ -14,7 +14,7 @@ Describes the notification contents.
 
 | Name          | Type                                                                       | Read-Only| Optional| Description              |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | No | Yes | Notification content type.<br>This API is deprecated since API version 11. You are advised to use **notificationContentType** instead.      |
+| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | No | Yes | Notification content type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use **notificationContentType** instead.      |
 | notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | No | Yes | Notification content type.      |
 | normal         | [NotificationBasicContent](#notificationbasiccontent)                      | No | Yes | Normal text.  |
 | longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | No | Yes | Long text.|
@@ -143,6 +143,7 @@ Describes the notification timing information.
 
 **Example**:
 
+<!--code_no_check-->
 ```ts
 // The notification counts down from three seconds and the time is displayed in the title.
 time: {

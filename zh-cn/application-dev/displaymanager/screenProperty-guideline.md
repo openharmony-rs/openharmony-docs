@@ -119,10 +119,10 @@ try {
    // 此处以监听显示设备的增加为例
    display.on("add", callback1);
    
-   // 如果通过on注册多个callback，同时关闭所有callback监听
-   display.off("add");
    // 关闭单个callback监听
    display.off('add', callback1);
+   // 如果通过on注册多个callback，同时关闭所有callback监听
+   display.off("add");
    ```
 
 2. 可以通过display.on('captureStatusChange')开启屏幕截屏、投屏或录屏状态变化的监听；可以通过display.off('captureStatusChange')关闭对应的监听。
@@ -138,7 +138,7 @@ try {
    display.off('captureStatusChange', callback2);
    ```
 
-3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过on('availableAreaChange')关闭对应的监听。
+3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过off('availableAreaChange')关闭对应的监听。
 
    ```ts
    import { Callback } from '@kit.BasicServicesKit';

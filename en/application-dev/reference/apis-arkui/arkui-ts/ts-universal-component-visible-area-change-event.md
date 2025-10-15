@@ -1,4 +1,10 @@
 # Visible Area Change Event
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 The visible area change event of a component refers to the change in the visual portion of the component on the screen. It can be used to determine whether the component is completely or partially displayed on the screen. It is usually applicable to scenarios such as advertisement exposure tracing.
 
@@ -21,7 +27,7 @@ Called when the visible area of the component changes.
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | ratios | Array&lt;number&gt;                                 | Yes  | Threshold array. Each threshold represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. This callback is invoked when the ratio of the component's visible area to its total area is greater than or less than the threshold. The value range of the threshold is [0.0, 1.0]. If the threshold set exceeds this range, the value **0.0** or **1.0** will be used.<br>**NOTE**<br>When the value is close to the boundary 0 or 1, it is rounded off with a round-off error not greater than 0.001. For example, 0.9997 is rounded off to 1.|
-| event  | [VisibleAreaChangeCallback](ts-types.md#visibleareachangecallback12) | Yes  | Callback for visible area changes of the component.|
+| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | Yes  | Callback for visible area changes of the component.|
 
 **Return value**
 
@@ -30,19 +36,19 @@ Called when the visible area of the component changes.
 | T | Current component.|
 
 > **NOTE**
->
+>- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 >
 >- This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
 > 
->- It does not support calculations for obstructions caused by sibling components or by sibling components of any ancestors, such as those managed by [Stack](ts-container-stack.md) or [z-order control](ts-universal-attributes-z-order.md).
+>- It does not support calculations for obstructions caused by sibling components or by sibling components of any ancestors, window obstruction, or component rotation, such as those managed by [Stack](ts-container-stack.md), [z-order control](ts-universal-attributes-z-order.md), or [rotate](ts-universal-attributes-transformation.md#rotate).
 >
->- It does not support visibility change calculations for nodes that are not in the component tree. For example, preloaded nodes or custom nodes mounted using the [overlay](ts-universal-attributes-overlay.md#overlay) capability.
+>- It does not support visibility change calculations for nodes that are not in the component tree. For example, preloaded nodes or custom nodes mounted using the [overlay](ts-universal-attributes-overlay.md#overlay-1) capability.
 
 ## onVisibleAreaApproximateChange<sup>17+</sup>
 
 onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
 
-Called to set the callback parameters for the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event to restrict its execution interval.
+Sets the callback parameters of the onVisibleAreaApproximateChange event and restricts the execution interval.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -52,16 +58,46 @@ Called to set the callback parameters for the [onVisibleAreaChange](./ts-univers
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| options  | [VisibleAreaEventOptions](./ts-types.md#visibleareaeventoptions12) | Yes  | Options of visible area changes.|
-| event  | [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)   \| undefined | Yes  | Callback for the **onVisibleAreaChange** event. This callback is triggered when the ratio of the component's visible area to its total area approaches the threshold set in **options**.|
+| options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | Yes  | Options of visible area changes.|
+| event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | Yes  | Callback for the **onVisibleAreaChange** event. This callback is triggered when the ratio of the component's visible area to its total area approaches the threshold set in **options**.|
 
 >**NOTE**
 >
-> This callback is not a real-time callback. The actual callback interval may differ from the expected interval.
+>- This interface is different from the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) interface in the following ways: The onVisibleAreaChange interface calculates the ratio of the visible area in each frame. If too many nodes are registered, the system power consumption deteriorates. This API reduces the frequency of calculating the visible area ratio. The calculation interval is determined by the expectedUpdateInterval parameter of [VisibleAreaEventOptions](#visibleareaeventoptions12).
 >
-> The interval between two visible area change callbacks will not be less than the expected update interval. If the provided expected interval is too short, the actual callback interval will be determined by the system load.
+>- By default, the interval threshold of the visible area change callback includes 0. This means that, if the provided threshold is [0.5], the effective threshold will be [0.0, 0.5].
 >
-> By default, the interval threshold of the visible area change callback includes 0. This means that, if the provided threshold is [0.5], the effective threshold will be [0.0, 0.5].
+>- Available since API version 18. This API can be called in custom components.
+
+## VisibleAreaEventOptions<sup>12+</sup>
+
+The **VisibleAreaEventOptions** type is used to describe visible area changes.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type                                               | Read-Only| Optional| Description                                                        |
+| ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
+| ratios | Array&lt;number&gt;                                 | No| No  | Threshold array. Each threshold represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. The value range of the threshold is [0.0, 1.0]. If the threshold set exceeds this range, the value **0.0** or **1.0** will be used.|
+| expectedUpdateInterval | number | No| Yes| Calculation interval (ms). Default value: 1000|
+
+## VisibleAreaChangeCallback<sup>12+</sup>
+
+The **VisibleAreaChangeCallback** type is used to represent a callback for visible area changes of the component.
+
+type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name           | Type              | Mandatory     | Description                                      |
+| ------------- | ------------------   | ------------- | ---------------------- |
+| isExpanding | boolean | Yes| Whether the ratio of the visible area of the component to the component area increases or decreases compared with the last callback. The value true indicates that the ratio increases, and the value false indicates that the ratio decreases.|
+| currentRatio | number | Yes| Ratio of the visible area of the component to the component area when the callback is triggered.|
 
 ## Example
 

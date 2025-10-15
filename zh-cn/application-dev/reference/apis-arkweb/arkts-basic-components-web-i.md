@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **说明：**
 >
@@ -23,7 +23,7 @@
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件(文件支持html和txt类型)，请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
-| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。 |
+| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。 |
 | sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。  |
 
 ## WebMediaOptions<sup>10+</sup>
@@ -47,7 +47,7 @@ Web媒体策略的配置。
 | 名称         | 类型           | 只读 | 可选   | 说明           |
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | 否  |  否    | 需要注入、执行的JavaScript脚本。 |
-| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议(自定义协议)，不支持使用精确匹配和模糊匹配，且必须以"://"结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
+| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议(自定义协议)，不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
@@ -133,15 +133,15 @@ Web同层渲染的配置。
 
 ## OnAlertEvent<sup>12+</sup>
 
-定义网页触发alert()告警弹窗时触发回调。
+定义网页触发 `alert()` 告警时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| url | string | 是 | 当前显示弹窗所在网页的URL。                       |
-| message | string | 是 | 弹窗中显示的信息。                       |
-| result | [JsResult](./arkts-basic-components-web-JsResult.md) | 是 | 通知Web组件用户操作行为。                       |
+| 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
+| ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
+| url     | string                                               | 否   | 否   | 当前显示弹窗的网页的URL。   |
+| message | string                                               | 否   | 否   | 显示在弹窗中的信息。        |
+| result  | [JsResult](./arkts-basic-components-web-JsResult.md) | 否   | 否   | 通知Web组件用户的操作结果。 |
 
 ## OnBeforeUnloadEvent<sup>12+</sup>
 
@@ -158,28 +158,28 @@ Web同层渲染的配置。
 
 ## OnConfirmEvent<sup>12+</sup>
 
-定义网页调用confirm()告警时触发此回调。
+定义网页触发 `confirm()` 弹窗时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| url | string | 是 | 当前显示弹窗所在网页的URL。                       |
-| message | string | 是 | 弹窗中显示的信息。                       |
-| result | [JsResult](./arkts-basic-components-web-JsResult.md) | 是 | 通知Web组件用户操作行为。                       |
+| 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
+| ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
+| url     | string                                               | 否   | 否   | 当前显示弹窗的网页的URL。   |
+| message | string                                               | 否   | 否   | 显示在弹窗中的信息。        |
+| result  | [JsResult](./arkts-basic-components-web-JsResult.md) | 否   | 否   | 通知Web组件用户的操作结果。 |
 
 ## OnPromptEvent<sup>12+</sup>
 
-定义网页调用prompt()告警时触发此回调。
+定义网页触发 `prompt()` 弹窗时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| url | string | 是 | 当前显示弹窗所在网页的URL。                       |
-| message | string | 是 | 弹窗中显示的信息。                       |
-| value | string | 是 | 提示对话框的信息。                       |
-| result | [JsResult](./arkts-basic-components-web-JsResult.md) | 是 | 通知Web组件用户操作行为。                       |
+| 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
+| ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
+| url     | string                                               | 否   | 否   | 当前显示弹窗的网页的URL。   |
+| message | string                                               | 否   | 否   | 显示在弹窗中的信息。        |
+| value   | string                                               | 否   | 否   | 对话框默认返回的信息。      |
+| result  | [JsResult](./arkts-basic-components-web-JsResult.md) | 否   | 否   | 通知Web组件用户的操作结果。 |
 
 ## OnConsoleEvent<sup>12+</sup>
 
@@ -254,10 +254,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| result       | [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md) | 是 | 用于通知Web组件文件选择的结果。 |
-| fileSelector | [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md) | 是 | 文件选择器的相关信息。       |
+| 名称         | 类型                                                                     | 只读 | 可选 | 说明                            |
+| ------------ | ------------------------------------------------------------------------ | ---- | ---- | ------------------------------- |
+| result       | [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md) | 否   | 否   | 用于通知Web组件文件选择的结果。 |
+| fileSelector | [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md)   | 否   | 否   | 文件选择器的相关信息。          |
 
 ## OnResourceLoadEvent<sup>12+</sup>
 
@@ -275,10 +275,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| oldScale | number | 是 | 变化前的显示比例百分比。 |
-| newScale | number | 是 | 变化后的显示比例百分比。 |
+| 名称     | 类型   | 只读 | 可选 | 说明                     |
+| -------- | ------ | ---- | ---- | ------------------------ |
+| oldScale | number | 否   | 否   | 变化前的显示比例百分比。 |
+| newScale | number | 否   | 否   | 变化后的显示比例百分比。 |
 
 ## OnHttpAuthRequestEvent<sup>12+</sup>
 
@@ -508,7 +508,7 @@ Web同层渲染的配置。
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否 | 是    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
-| permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
+| permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -677,7 +677,7 @@ Web组件进入全屏回调事件的详情。
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-提供网页绘制页面主要内容的详细信息。
+提供网页绘制页面最大内容的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

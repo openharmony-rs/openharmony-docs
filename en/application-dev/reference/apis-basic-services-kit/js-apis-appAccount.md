@@ -1,5 +1,12 @@
 # @ohos.account.appAccount (Application Account Management)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 The **appAccount** module provides APIs for adding, deleting, modifying, and querying application account information, and supports inter-application authentication and distributed data synchronization.
 
 > **NOTE**
@@ -26,7 +33,7 @@ Creates an **AppAccountManager** object.
 
 | Type               | Description          |
 | ----------------- | ------------ |
-| AppAccountManager | **AppAccountManager** object created.|
+| [AppAccountManager](#appaccountmanager) | **AppAccountManager** object created.|
 
 **Example**
   ```ts
@@ -35,7 +42,7 @@ Creates an **AppAccountManager** object.
 
 ## AppAccountManager
 
-Implements application account management.
+Defines the application account manager, which is used to manage account information of applications.
 
 ### createAccount<sup>9+</sup>
 
@@ -54,6 +61,8 @@ Creates an application account with the given name. This API uses an asynchronou
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -70,13 +79,14 @@ Creates an application account with the given name. This API uses an asynchronou
   try {
     appAccountManager.createAccount('WangWu', (err: BusinessError) => { 
       if (err) {
-        console.error('createAccount code: ' + JSON.stringify(err));
+        console.error(`createAccount code: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('createAccount successful.');
+        console.info('createAccount successful.');
       }
     });
-  } catch (err) {
-    console.error('createAccount err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`createAccount err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -97,6 +107,8 @@ Creates an application account with custom data. This API uses an asynchronous c
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | ------- |
@@ -119,13 +131,13 @@ Creates an application account with custom data. This API uses an asynchronous c
   try {
     appAccountManager.createAccount('LiSi', options, (err: BusinessError) => {
       if (err) {
-        console.error('createAccount failed, error: ' + JSON.stringify(err));
+        console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('createAccount successfully');
+        console.info('createAccount successfully');
       }
     });
   } catch(err) {
-    console.error('createAccount exception: ' + JSON.stringify(err));
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -152,6 +164,8 @@ Creates an application account with custom data. This API uses a promise to retu
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -172,12 +186,12 @@ Creates an application account with custom data. This API uses a promise to retu
   }
   try {
     appAccountManager.createAccount('LiSi', options).then(() => {
-      console.log('createAccount successfully');
+      console.info('createAccount successfully');
     }).catch((err: BusinessError) => {
-      console.error('createAccount failed, error: ' + JSON.stringify(err));
+      console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch(err) {
-    console.error('createAccount exception: ' + JSON.stringify(err));
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -197,6 +211,8 @@ Creates an application account implicitly based on the specified account owner. 
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------|
@@ -220,8 +236,8 @@ Creates an application account implicitly based on the specified account owner. 
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -232,9 +248,9 @@ Creates an application account implicitly based on the specified account owner. 
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -244,8 +260,9 @@ Creates an application account implicitly based on the specified account owner. 
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('createAccountImplicitly exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
@@ -270,6 +287,8 @@ Creates an application account implicitly based on the specified account owner a
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -292,8 +311,8 @@ Creates an application account implicitly based on the specified account owner a
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -304,9 +323,9 @@ Creates an application account implicitly based on the specified account owner a
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -320,8 +339,9 @@ Creates an application account implicitly based on the specified account owner a
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('createAccountImplicitly exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
@@ -345,6 +365,8 @@ Removes an application account. This API uses an asynchronous callback to return
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -360,13 +382,13 @@ Removes an application account. This API uses an asynchronous callback to return
   try {
     appAccountManager.removeAccount('ZhaoLiu', (err: BusinessError) => {
       if (err) {
-        console.error('removeAccount failed, error: ' + JSON.stringify(err));
+        console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('removeAccount successfully');
+        console.info('removeAccount successfully');
       }
    });
   } catch(err) {
-    console.error('removeAccount exception: ' + JSON.stringify(err));
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -392,6 +414,8 @@ Removes an application account. This API uses a promise to return the result.
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -406,12 +430,13 @@ Removes an application account. This API uses a promise to return the result.
 
   try {
     appAccountManager.removeAccount('Lisi').then(() => {
-      console.log('removeAccount successfully');
+      console.info('removeAccount successfully');
     }).catch((err: BusinessError) => {
-      console.error('removeAccount failed, error: ' + JSON.stringify(err));
+      console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('removeAccount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -434,6 +459,8 @@ Sets the access to the data of an account for an application. This API uses an a
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -450,13 +477,14 @@ Sets the access to the data of an account for an application. This API uses an a
   try {
     appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true, (err: BusinessError) => {
       if (err) {
-        console.error('setAppAccess failed: ' + JSON.stringify(err));
+        console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setAppAccess successfully');
+        console.info('setAppAccess successfully');
       }
     });
-  } catch (err) {
-    console.error('setAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -484,6 +512,8 @@ Sets the access to the data of an account for an application. This API uses a pr
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -499,12 +529,13 @@ Sets the access to the data of an account for an application. This API uses a pr
 
   try {
     appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true).then(() => {
-      console.log('setAppAccess successfully');
+      console.info('setAppAccess successfully');
     }).catch((err: BusinessError) => {
-      console.error('setAppAccess failed: ' + JSON.stringify(err));
+      console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -526,6 +557,8 @@ Checks whether an application can access the data of an account. This API uses a
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -542,13 +575,14 @@ Checks whether an application can access the data of an account. This API uses a
     appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo',
       (err: BusinessError, isAccessible: boolean) => {
         if (err) {
-          console.error('checkAppAccess failed, error: ' + JSON.stringify(err));
+          console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('checkAppAccess successfully');
+          console.info('checkAppAccess successfully');
         }
       });
-  } catch (err) {
-    console.error('checkAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -575,6 +609,8 @@ Checks whether an application can access the data of an account. This API uses a
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -589,12 +625,13 @@ Checks whether an application can access the data of an account. This API uses a
 
   try {
     appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo').then((isAccessible: boolean) => {
-      console.log('checkAppAccess successfully, isAccessible: ' + isAccessible);
+      console.info('checkAppAccess successfully, isAccessible: ' + isAccessible);
     }).catch((err: BusinessError) => {
-      console.error('checkAppAccess failed, error: ' + JSON.stringify(err));
+      console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -618,6 +655,8 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 201 | Permission denied.|
@@ -633,10 +672,11 @@ Sets data synchronization for an application account. This API uses an asynchron
   
   try {
       appAccountManager.setDataSyncEnabled('ZhangSan', true, (err: BusinessError) => { 
-          console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+          console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
       });
-  } catch (err) {
-      console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -665,6 +705,8 @@ Sets data synchronization for an application account. This API uses a promise to
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 201 | Permission denied.|
@@ -679,13 +721,14 @@ Sets data synchronization for an application account. This API uses a promise to
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-      appAccountManager .setDataSyncEnabled('ZhangSan', true).then(() => { 
-          console.log('setDataSyncEnabled Success');
+      appAccountManager.setDataSyncEnabled('ZhangSan', true).then(() => { 
+          console.info('setDataSyncEnabled Success');
       }).catch((err: BusinessError) => {
-          console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+          console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
       });
-  } catch (err) {
-      console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -708,6 +751,8 @@ Checks whether data synchronization is enabled for an application account. This 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 201 | Permission denied.|
@@ -724,13 +769,14 @@ Checks whether data synchronization is enabled for an application account. This 
   try {
     appAccountManager.checkDataSyncEnabled('ZhangSan', (err: BusinessError, isEnabled: boolean) => {
       if (err) {
-        console.error('checkDataSyncEnabled failed, err: ' + JSON.stringify(err));
+        console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
-  } catch (err) {
-    console.error('checkDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -758,6 +804,8 @@ Checks whether data synchronization is enabled for an application account. This 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 201 | Permission denied.|
@@ -773,12 +821,13 @@ Checks whether data synchronization is enabled for an application account. This 
 
   try {
     appAccountManager.checkDataSyncEnabled('ZhangSan').then((isEnabled: boolean) => {
-        console.log('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
-      console.error('checkDataSyncEnabled failed, err: ' + JSON.stringify(err));
+      console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -801,6 +850,8 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -816,13 +867,14 @@ Sets a credential for an application account. This API uses an asynchronous call
   try {
     appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx', (err: BusinessError) => {
       if (err) {
-        console.error('setCredential failed, error: ' + JSON.stringify(err));
+        console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setCredential successfully');
+        console.info('setCredential successfully');
       }
     });
-  } catch (err) {
-    console.error('setCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -850,6 +902,8 @@ Sets a credential for an application account. This API uses a promise to return 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -864,12 +918,13 @@ Sets a credential for an application account. This API uses a promise to return 
 
   try {
     appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx').then(() => {
-      console.log('setCredential successfully');
+      console.info('setCredential successfully');
     }).catch((err: BusinessError) => {
-      console.error('setCredential failed, error: ' + JSON.stringify(err));
+      console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -891,6 +946,8 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -907,13 +964,14 @@ Obtains the credential of an application account. This API uses an asynchronous 
   try {
       appAccountManager.getCredential('ZhangSan', 'PIN_SIX', (err: BusinessError, result: string) => { 
         if (err) {
-          console.error('getCredential failed, error: ' + JSON.stringify(err));
+          console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('getCredential successfully, result: ' + result);
+          console.info('getCredential successfully, result: ' + result);
         }
       });
-  } catch (err) {
-      console.error('getCredential err: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getCredential err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -940,6 +998,8 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -955,12 +1015,13 @@ Obtains the credential of an application account. This API uses a promise to ret
 
   try {
     appAccountManager.getCredential('ZhangSan', 'PIN_SIX').then((credential: string) => {
-        console.log('getCredential successfully, credential: ' + credential);
+        console.info('getCredential successfully, credential: ' + credential);
     }).catch((err: BusinessError) => {
-        console.error('getCredential failed, error: ' + JSON.stringify(err));
+        console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -983,6 +1044,8 @@ Sets custom data for an application account. This API uses an asynchronous callb
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -999,13 +1062,14 @@ Sets custom data for an application account. This API uses an asynchronous callb
   try {
     appAccountManager.setCustomData('ZhangSan', 'age', '12', (err: BusinessError) => {
       if (err) {
-        console.error('setCustomData failed, error: ' + JSON.stringify(err));
+        console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setCustomData successfully');
+        console.info('setCustomData successfully');
       }
     });
-  } catch (err) {
-    console.error('setCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1033,6 +1097,8 @@ Sets custom data for an application account. This API uses a promise to return t
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1048,12 +1114,13 @@ Sets custom data for an application account. This API uses a promise to return t
 
   try {
     appAccountManager.setCustomData('ZhangSan', 'age', '12').then(() => {
-      console.log('setCustomData successfully');
+      console.info('setCustomData successfully');
     }).catch((err: BusinessError) => {
-      console.error('setCustomData failed, error: ' + JSON.stringify(err));
+      console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1075,6 +1142,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1093,11 +1162,12 @@ Obtains the custom data of an application account based on the specified key. Th
       if (err) {
         console.error('getCustomData failed, error: ' + err);
       } else {
-        console.log('getCustomData successfully, data: ' + data);
+        console.info('getCustomData successfully, data: ' + data);
       }
     });
-  } catch (err) {
-    console.error('getCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1124,6 +1194,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1139,18 +1211,19 @@ Obtains the custom data of an application account based on the specified key. Th
 
   try {
     appAccountManager.getCustomData('ZhangSan', 'age').then((data: string) => {
-      console.log('getCustomData successfully, data: ' + data);
+      console.info('getCustomData successfully, data: ' + data);
     }).catch((err: BusinessError) => {
-      console.error('getCustomData failed, error: ' + JSON.stringify(err));
+      console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
 ### getCustomDataSync<sup>9+</sup>
 
-getCustomDataSync(name: string, key: string): string;
+getCustomDataSync(name: string, key: string): string
 
 Obtains the custom data of an application account based on the specified key. The API returns the result synchronously.
 
@@ -1171,6 +1244,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1184,9 +1259,10 @@ Obtains the custom data of an application account based on the specified key. Th
   ```ts
   try {
       let value = appAccountManager.getCustomDataSync('ZhangSan', 'age');
-      console.info('getCustomDataSync successfully, vaue: ' + value);
-  } catch (err) {
-    console.error('getCustomDataSync failed, error: ' + JSON.stringify(err));
+      console.info('getCustomDataSync successfully, value: ' + value);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCustomDataSync failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1206,6 +1282,8 @@ Obtains information about all accessible application accounts. This API uses an 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1219,13 +1297,14 @@ Obtains information about all accessible application accounts. This API uses an 
   try {
     appAccountManager.getAllAccounts((err: BusinessError, data: appAccount.AppAccountInfo[]) => {
       if (err) {
-        console.error('getAllAccounts failed, error: ' + JSON.stringify(err));
+        console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.debug('getAllAccounts successfully');
       }
     });
-  } catch (err) {
-      console.error('getAllAccounts exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1245,6 +1324,8 @@ Obtains information about all accessible application accounts. This API uses a p
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
@@ -1258,10 +1339,11 @@ Obtains information about all accessible application accounts. This API uses a p
     appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
       console.debug('getAllAccounts successfully');
     }).catch((err: BusinessError) => {
-      console.error('getAllAccounts failed, error: ' + JSON.stringify(err));
+      console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAllAccounts exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1282,6 +1364,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1297,13 +1381,14 @@ Obtains the application accounts that can be accessed by the invoker based on th
     appAccountManager.getAccountsByOwner('com.example.accountjsdemo2',
       (err: BusinessError, data: appAccount.AppAccountInfo[]) => {
         if (err) {
-          console.error('getAccountsByOwner failed, error:' + JSON.stringify(err));
+          console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
         } else {
           console.debug('getAccountsByOwner successfully, data:' + JSON.stringify(data));
         }
       });
-  } catch (err) {
-    console.error('getAccountsByOwner exception:' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception:code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1329,6 +1414,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1345,10 +1432,11 @@ Obtains the application accounts that can be accessed by the invoker based on th
       data: appAccount.AppAccountInfo[]) => {
       console.debug('getAccountsByOwner successfully, data: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('getAccountsByOwner failed, error: ' + JSON.stringify(err));
+      console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAccountsByOwner exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1370,6 +1458,8 @@ Subscribes to account information changes of apps.
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1380,12 +1470,12 @@ Subscribes to account information changes of apps.
 
   ```ts
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.log('receive change data:' + JSON.stringify(data));
+    console.info('receive change data:' + JSON.stringify(data));
   }
   try{
-  	appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
+    appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
   } catch(err) {
-  	console.error('on accountChange failed, error:' + JSON.stringify(err));
+    console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1406,6 +1496,8 @@ Unsubscribes from account information changes.
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1416,18 +1508,18 @@ Unsubscribes from account information changes.
 
   ```ts
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.log('receive change data:' + JSON.stringify(data));
+    console.info('receive change data:' + JSON.stringify(data));
   }
   try{
-  	appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
+    appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
   } catch(err) {
-  	console.error('on accountChange failed, error:' + JSON.stringify(err));
+    console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   try{
-  	appAccountManager.off('accountChange', changeOnCallback);
+    appAccountManager.off('accountChange', changeOnCallback);
   }
   catch(err){
-  	console.error('off accountChange failed, error:' + JSON.stringify(err));
+    console.error(`off accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1449,6 +1541,8 @@ Authenticates an application account. This API uses an asynchronous callback to 
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------|
@@ -1472,8 +1566,8 @@ Authenticates an application account. This API uses an asynchronous callback to 
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, authResult?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('authResult: ' + JSON.stringify(authResult));
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -1484,9 +1578,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -1496,8 +1590,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('auth exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
@@ -1524,6 +1619,8 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1546,8 +1643,8 @@ Authenticates an application account. This API uses an asynchronous callback to 
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, authResult?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('authResult: ' + JSON.stringify(authResult));
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -1558,9 +1655,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -1573,8 +1670,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('auth exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
@@ -1600,6 +1698,8 @@ Obtains the authorization token of the specified authentication type for an appl
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1617,13 +1717,14 @@ Obtains the authorization token of the specified authentication type for an appl
     appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
       (err: BusinessError, token: string) => {
         if (err) {
-          console.error('getAuthToken failed, error: ' + JSON.stringify(err));
+          console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('getAuthToken successfully, token: ' + token);
+          console.info('getAuthToken successfully, token: ' + token);
         }
       });
-  } catch (err) {
-      console.error('getAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1651,6 +1752,8 @@ Obtains the authorization token of the specified authentication type for an appl
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1666,12 +1769,13 @@ Obtains the authorization token of the specified authentication type for an appl
   
   try {
     appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((token: string) => {
-      console.log('getAuthToken successfully, token: ' + token);
+      console.info('getAuthToken successfully, token: ' + token);
     }).catch((err: BusinessError) => {
-      console.error('getAuthToken failed, error: ' + JSON.stringify(err));
+      console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-      console.error('getAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1694,6 +1798,8 @@ Sets an authorization token of the specific authentication type for an applicati
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1710,13 +1816,14 @@ Sets an authorization token of the specific authentication type for an applicati
   try {
     appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError) => {
       if (err) {
-        console.error('setAuthToken failed, error: ' + JSON.stringify(err));
+        console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setAuthToken successfully');
+        console.info('setAuthToken successfully');
       }
     });
-  } catch (err) {
-    console.error('setAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1744,6 +1851,8 @@ Sets an authorization token of the specific authentication type for an applicati
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1759,12 +1868,13 @@ Sets an authorization token of the specific authentication type for an applicati
   
   try {
     appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
-        console.log('setAuthToken successfully');
+        console.info('setAuthToken successfully');
     }).catch((err: BusinessError) => {
-        console.error('setAuthToken failed, error: ' + JSON.stringify(err));
+        console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1788,6 +1898,8 @@ Deletes the authorization token of the specified authentication type for an appl
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1805,13 +1917,14 @@ Deletes the authorization token of the specified authentication type for an appl
     appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
       (err: BusinessError) => {
         if (err) {
-          console.error('deleteAuthToken failed, error: ' + JSON.stringify(err));
+          console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('deleteAuthToken successfully');
+          console.info('deleteAuthToken successfully');
         }
       });
-  } catch (err) {
-    console.error('deleteAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1840,6 +1953,8 @@ Deletes the authorization token of the specified authentication type for an appl
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1855,12 +1970,13 @@ Deletes the authorization token of the specified authentication type for an appl
   
   try {
     appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
-      console.log('deleteAuthToken successfully');
+      console.info('deleteAuthToken successfully');
     }).catch((err: BusinessError) => {
-      console.error('deleteAuthToken failed, error: ' + JSON.stringify(err));
+      console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('deleteAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1884,6 +2000,8 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1902,13 +2020,14 @@ Sets the visibility of an authorization token to an application. This API uses a
     appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
       (err: BusinessError) => {
         if (err) {
-          console.error('setAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+          console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('setAuthTokenVisibility successfully');
+          console.info('setAuthTokenVisibility successfully');
         }
       });
-  } catch (err) {
-      console.error('setAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1937,6 +2056,8 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1953,12 +2074,13 @@ Sets the visibility of an authorization token to an application. This API uses a
   
   try {
     appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
-      console.log('setAuthTokenVisibility successfully');
+      console.info('setAuthTokenVisibility successfully');
     }).catch((err: BusinessError) => {
-      console.error('setAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+      console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1981,6 +2103,8 @@ Checks the visibility of an authorization token of the specified authentication 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1998,13 +2122,14 @@ Checks the visibility of an authorization token of the specified authentication 
     appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
       (err: BusinessError, isVisible: boolean) => {
         if (err) {
-          console.error('checkAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+          console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+          console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
         }
       });
-  } catch (err) {
-    console.error('checkAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2032,6 +2157,8 @@ Checks the visibility of an authorization token of the specified authentication 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2048,12 +2175,13 @@ Checks the visibility of an authorization token of the specified authentication 
   try {
     appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
       isVisible: boolean) => {
-      console.log('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+      console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
     }).catch((err: BusinessError) => {
-      console.error('checkAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+      console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2075,6 +2203,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2091,13 +2221,14 @@ Obtains all tokens visible to the invoker for an application account. This API u
     appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo',
       (err: BusinessError, tokenArr: appAccount.AuthTokenInfo[]) => {
         if (err) {
-          console.error('getAllAuthTokens failed, error: ' + JSON.stringify(err));
+          console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('getAllAuthTokens successfully, tokenArr: ' + tokenArr);
+          console.info('getAllAuthTokens successfully, tokenArr: ' + tokenArr);
         }
       });
-  } catch (err) {
-    console.error('getAllAuthTokens exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2124,6 +2255,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2139,12 +2272,13 @@ Obtains all tokens visible to the invoker for an application account. This API u
   try {
     appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo').then((
       tokenArr: appAccount.AuthTokenInfo[]) => {
-      console.log('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
+      console.info('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
     }).catch((err: BusinessError) => {
-      console.error('getAllAuthTokens failed, error: ' + JSON.stringify(err));
+      console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAllAuthTokens exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2166,6 +2300,8 @@ Obtains the authorization list of the specified authentication type for an appli
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2182,13 +2318,14 @@ Obtains the authorization list of the specified authentication type for an appli
   try {
     appAccountManager.getAuthList('LiSi', 'getSocialData', (err: BusinessError, authList: string[]) => {
       if (err) {
-        console.error('getAuthList failed, error: ' + JSON.stringify(err));
+        console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAuthList successfully, authList: ' + authList);
+        console.info('getAuthList successfully, authList: ' + authList);
       }
     });
-  } catch (err) {
-    console.error('getAuthList exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2215,6 +2352,8 @@ Obtains the authorization list of the specified authentication type for an appli
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2230,12 +2369,13 @@ Obtains the authorization list of the specified authentication type for an appli
   
   try {
     appAccountManager.getAuthList('LiSi', 'getSocialData').then((authList: string[]) => {
-        console.log('getAuthList successfully, authList: ' + authList);
+        console.info('getAuthList successfully, authList: ' + authList);
     }).catch((err: BusinessError) => {
-        console.error('getAuthList failed, error: ' + JSON.stringify(err));
+        console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAuthList exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2256,6 +2396,8 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2275,7 +2417,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
       try {
         appAccountManager.getAuthCallback(sessionId, (err: BusinessError, callback: appAccount.AuthCallback) => {
           if (err != null) {
-              console.error('getAuthCallback err: ' + JSON.stringify(err));
+              console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
               return;
           }
           let result: appAccount.AuthResult = {
@@ -2290,8 +2432,9 @@ Obtains the authenticator callback for an authentication session. This API uses 
           }; 
           callback.onResult(0, result);
         });
-      } catch (err) {
-          console.error('getAuthCallback exception: ' + JSON.stringify(err));
+      } catch (e) {
+          const err = e as BusinessError;
+          console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
       }
     }
   }
@@ -2318,6 +2461,8 @@ Obtains the authenticator callback for an authentication session. This API uses 
 | Promise&lt;[AuthCallback](#authcallback9)&gt; | Promise used to return the authenticator callback obtained.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | ------- |
@@ -2349,10 +2494,11 @@ Obtains the authenticator callback for an authentication session. This API uses 
         };
         callback.onResult(0, result);
         }).catch((err: BusinessError) => {
-          console.error('getAuthCallback err: ' + JSON.stringify(err));
+          console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
         });
-      } catch (err) {
-        console.error('getAuthCallback exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
       }
     }
   }
@@ -2375,6 +2521,8 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2391,13 +2539,14 @@ Obtains the authenticator information of an application. This API uses an asynch
     appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo',
       (err: BusinessError, info: appAccount.AuthenticatorInfo) => {
         if (err) {
-          console.error('queryAuthenticatorInfo failed, error: ' + JSON.stringify(err));
+          console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+          console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
         }
       });
-  } catch (err) {
-    console.error('queryAuthenticatorInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2423,6 +2572,8 @@ Obtains the authenticator information of an application. This API uses a promise
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2438,12 +2589,13 @@ Obtains the authenticator information of an application. This API uses a promise
   try {
     appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo').then((
       info: appAccount.AuthenticatorInfo) => { 
-      console.log('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+      console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
     }).catch((err: BusinessError) => {
-      console.error('queryAuthenticatorInfo failed, error: ' + JSON.stringify(err));
+      console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('queryAuthenticatorInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2466,6 +2618,8 @@ Checks whether an application account has specific labels. This API uses an asyn
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2486,13 +2640,14 @@ Checks whether an application account has specific labels. This API uses an asyn
     appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels,
       (err: BusinessError, hasAllLabels: boolean) => {
         if (err) {
-          console.error('checkAccountLabels failed, error: ' + JSON.stringify(err));
+          console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('checkAccountLabels successfully, hasAllLabels: ' + hasAllLabels);
+          console.info('checkAccountLabels successfully, hasAllLabels: ' + hasAllLabels);
         }
       });
-  } catch (err) {
-    console.error('checkAccountLabels exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2520,6 +2675,8 @@ Checks whether an application account has specific labels. This API uses a promi
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2539,12 +2696,13 @@ Checks whether an application account has specific labels. This API uses a promi
   try {
     appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels).then((
       hasAllLabels: boolean) => {
-      console.log('checkAccountLabels successfully: ' + hasAllLabels);
+      console.info('checkAccountLabels successfully: ' + hasAllLabels);
     }).catch((err: BusinessError) => {
-      console.error('checkAccountLabels failed, error: ' + JSON.stringify(err));
+      console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkAccountLabels exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2566,6 +2724,8 @@ Deletes the credential of the specified type from an application account. This A
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2582,13 +2742,14 @@ Deletes the credential of the specified type from an application account. This A
   try {
     appAccountManager.deleteCredential('zhangsan', 'PIN_SIX', (err: BusinessError) => {
       if (err) {
-        console.error('deleteCredential failed, error: ' + JSON.stringify(err));
+        console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('deleteCredential successfully');
+        console.info('deleteCredential successfully');
       }
     });
-  } catch (err) {
-    console.error('deleteCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2615,6 +2776,8 @@ Deletes the credential of the specified type from an application account. This A
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2630,12 +2793,13 @@ Deletes the credential of the specified type from an application account. This A
   
   try {
     appAccountManager.deleteCredential('zhangsan', 'PIN_SIX').then(() => {
-      console.log('deleteCredential successfully');
+      console.info('deleteCredential successfully');
     }).catch((err: BusinessError) => {
-      console.error('deleteCredential failed, error: ' + JSON.stringify(err));
+      console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('deleteCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2655,6 +2819,8 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 | callback       | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of accounts selected. Otherwise, **err** is an error object. |
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | ------- |
@@ -2677,13 +2843,14 @@ Selects the accounts that can be accessed by the invoker based on the options. T
     appAccountManager.selectAccountsByOptions(options,
       (err: BusinessError, accountArr: appAccount.AppAccountInfo[]) => {
         if (err) {
-          console.error('selectAccountsByOptions failed, error: ' + JSON.stringify(err));
+          console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+          console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
         }
       });
-  } catch (err) {
-    console.error('selectAccountsByOptions exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2705,9 +2872,11 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 | Type               | Description                             |
 | ------------------- | -------------------------------- |
-| Promise&lt;[AppAccountInfo](#appaccountinfo)&gt; | Promise used to return the accounts selected.|
+| Promise&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Promise used to return the accounts selected.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | ------- |
@@ -2727,12 +2896,13 @@ Selects the accounts that can be accessed by the invoker based on the options. T
   };
   try {
     appAccountManager.selectAccountsByOptions(options).then((accountArr: appAccount.AppAccountInfo[]) => {
-      console.log('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+      console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
     }).catch((err: BusinessError) => {
-      console.error('selectAccountsByOptions failed, error: ' + JSON.stringify(err));
+      console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('selectAccountsByOptions exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2754,6 +2924,8 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2772,15 +2944,16 @@ Verifies the credential of an application account. This API uses an asynchronous
   try {
       appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', {
           onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-              console.log('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
-              console.log('verifyCredential onResult, result: ' + JSON.stringify(result));
+              console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+              console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
           },
           onRequestRedirected: (request: Want) => {
-              console.log('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+              console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
           }
       });
-  } catch (err) {
-      console.error('verifyCredential err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2802,6 +2975,8 @@ Verifies the user credential. This API uses an asynchronous callback to return t
 | callback | [AuthCallback](#authcallback9)   | Yes   | Callback used to return the result.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------|
@@ -2825,15 +3000,16 @@ Verifies the user credential. This API uses an asynchronous callback to return t
   try {
     appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', options, {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-        console.log('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
-        console.log('verifyCredential onResult, result: ' + JSON.stringify(result));
+        console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+        console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
       },
       onRequestRedirected: (request: Want) => {
-        console.log('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+        console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
       }
     });
-  } catch (err) {
-    console.error('verifyCredential err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2854,6 +3030,8 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2871,15 +3049,16 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
   try {
     appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-        console.log('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
-        console.log('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+        console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+        console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
       },
       onRequestRedirected: (request: Want) => {
-        console.log('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+        console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
       }
     });
-  } catch (err) {
-    console.error('setAuthenticatorProperties err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2901,6 +3080,8 @@ Sets the authenticator properties. This API uses an asynchronous callback to ret
 
 **Error codes**
 
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2921,15 +3102,16 @@ Sets the authenticator properties. This API uses an asynchronous callback to ret
   try {
     appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', options, {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-        console.log('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
-        console.log('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+        console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+        console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
       },
       onRequestRedirected: (request: Want) => {
-        console.log('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+        console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
       }
     });
-  } catch (err) {
-    console.error('setAuthenticatorProperties err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
   } 
 
   ```
@@ -2951,7 +3133,7 @@ Adds an application account with the given name. This API uses an asynchronous c
 
 | Name     | Type                       | Mandatory  | Description                  |
 | -------- | ------------------------- | ---- | -------------------- |
-| name     | string                    | Yes   | Name of the application account to create.         |
+| name     | string                    | Yes   | Name of the target application account.         |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -2960,7 +3142,7 @@ Adds an application account with the given name. This API uses an asynchronous c
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.addAccount('WangWu', (err: BusinessError) => { 
-      console.error('addAccount err: ' + JSON.stringify(err));
+      console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2971,6 +3153,7 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 Adds an application account name and additional information. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
@@ -2979,7 +3162,7 @@ Adds an application account name and additional information. This API uses an as
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | Yes   | Name of the application account to create.                             |
+| name      | string                    | Yes   | Name of the target application account.                             |
 | extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
@@ -2989,7 +3172,7 @@ Adds an application account name and additional information. This API uses an as
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => { 
-    console.error('addAccount err: ' + JSON.stringify(err));
+    console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3008,7 +3191,7 @@ Adds an application account name and additional information. This API uses an as
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | Yes   | Name of the application account to create.                           |
+| name      | string | Yes   | Name of the target application account.                           |
 | extraInfo | string | No   | Additional information (information that can be converted to the string type). <br>The additional information cannot be sensitive information (such as the password and token) of the application account.<br>By default, no value is passed, which means no additional information needs to be added for the account.|
 
 **Return value**
@@ -3023,9 +3206,9 @@ Adds an application account name and additional information. This API uses an as
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.addAccount('LiSi', 'token101').then(()=> { 
-    console.log('addAccount Success');
+    console.info('addAccount Success');
   }).catch((err: BusinessError) => {
-    console.error('addAccount err: ' + JSON.stringify(err));
+    console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3035,7 +3218,7 @@ addAccountImplicitly(owner: string, authType: string, options: {[key: string]: a
 
 Adds an application account implicitly based on the specified owner. This API uses an asynchronous callback to return the result.
 
-> **NOTE** 
+> **NOTE**
 >
 > This enum is supported since API version 8 and deprecated since API version 9. Use [createAccountImplicitly](#createaccountimplicitly9) instead.
 
@@ -3062,8 +3245,8 @@ Adds an application account implicitly based on the specified owner. This API us
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result: Record<string, Object>): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -3074,9 +3257,9 @@ Adds an application account implicitly based on the specified owner. This API us
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -3115,7 +3298,7 @@ Deletes an application account. This API uses an asynchronous callback to return
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => { 
-      console.error('deleteAccount err: ' + JSON.stringify(err));
+      console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
    });
   ```
 
@@ -3149,9 +3332,9 @@ Deletes an application account. This API uses a promise to return the result.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   appAccountManager.deleteAccount('ZhaoLiu').then(() => { 
-        console.log('deleteAccount Success');
+        console.info('deleteAccount Success');
    }).catch((err: BusinessError) => {
-      console.error('deleteAccount err: ' + JSON.stringify(err));
+      console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 ### disableAppAccess<sup>(deprecated)</sup>
@@ -3180,7 +3363,7 @@ Disables an application account from accessing an application. This API uses an 
   import { BusinessError } from '@kit.BasicServicesKit';
 
   appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => { 
-      console.error('disableAppAccess err: ' + JSON.stringify(err));
+      console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3215,9 +3398,9 @@ Disables an application account from accessing an application. This API uses a p
   import { BusinessError } from '@kit.BasicServicesKit';
 
   appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-      console.log('disableAppAccess Success');
+      console.info('disableAppAccess Success');
   }).catch((err: BusinessError) => {
-      console.error('disableAppAccess err: ' + JSON.stringify(err));
+      console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3248,9 +3431,9 @@ Enables an application account to access an application. This API uses an asynch
   
   appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => {
       if (err) {
-        console.error('enableAppAccess err: ' + JSON.stringify(err));
+        console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('enableAppAccess successful.');
+        console.info('enableAppAccess successful.');
       }
    });
   ```
@@ -3286,9 +3469,9 @@ Enables an application account to access an application. This API uses a promise
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-       console.log('enableAppAccess Success');
+       console.info('enableAppAccess Success');
   }).catch((err: BusinessError) => {
-      console.error('enableAppAccess err: ' + JSON.stringify(err));
+      console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3320,9 +3503,9 @@ Checks whether data synchronization is enabled for an application account. This 
   
   appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, result: boolean) => { 
     if (err) {
-      console.error('checkAppAccountSyncEnable code: ' + JSON.stringify(err));
+      console.error(`checkAppAccountSyncEnable code: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('checkAppAccountSyncEnable result: ' + result);
+      console.info('checkAppAccountSyncEnable result: ' + result);
     }
   });
   ```
@@ -3359,9 +3542,9 @@ Checks whether data synchronization is enabled for an application account. This 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => { 
-      console.log('checkAppAccountSyncEnable, result: ' + data);
+      console.info('checkAppAccountSyncEnable, result: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('checkAppAccountSyncEnable err: ' + JSON.stringify(err));
+      console.error(`checkAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3393,9 +3576,9 @@ Sets a credential for an application account. This API uses an asynchronous call
   
   appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001', (err: BusinessError) => { 
     if (err) {
-      console.error('setAccountCredential err: ' + JSON.stringify(err));
+      console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAccountCredential successful.');
+      console.info('setAccountCredential successful.');
     }
   });
   ```
@@ -3432,9 +3615,9 @@ Sets a credential for an application account. This API uses a promise to return 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001').then(() => { 
-      console.log('setAccountCredential Success');
+      console.info('setAccountCredential Success');
   }).catch((err: BusinessError) => {
-      console.error('setAccountCredential err: ' + JSON.stringify(err));
+      console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3466,9 +3649,9 @@ Sets additional information for an application account. This API uses an asynchr
   
   appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) => { 
     if (err) {
-      console.error('setAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAccountExtraInfo successful.');
+      console.info('setAccountExtraInfo successful.');
     }
   });
   ```
@@ -3505,9 +3688,9 @@ Sets additional information for an application account. This API uses a promise 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => { 
-      console.log('setAccountExtraInfo Success');
+      console.info('setAccountExtraInfo Success');
   }).catch((err: BusinessError) => {
-      console.error('setAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3540,9 +3723,9 @@ Sets data synchronization for an application account. This API uses an asynchron
   
   appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError) => {
     if (err) {
-      console.error('setAppAccountSyncEnable err: ' + JSON.stringify(err));
+      console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAppAccountSyncEnable successful.');
+      console.info('setAppAccountSyncEnable successful.');
     }
   });
   ```
@@ -3579,10 +3762,10 @@ Sets data synchronization for an application account. This API uses a promise to
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
-  appAccountManager .setAppAccountSyncEnable('ZhangSan', true).then(() => { 
-      console.log('setAppAccountSyncEnable Success');
+  appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => { 
+      console.info('setAppAccountSyncEnable Success');
   }).catch((err: BusinessError) => {
-      console.error('setAppAccountSyncEnable err: ' + JSON.stringify(err));
+      console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3615,9 +3798,9 @@ Sets data to be associated with an application account. This API uses an asynchr
   
   appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessError) => {
     if (err) {
-      console.error('setAssociatedData err: ' + JSON.stringify(err));
+      console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAssociatedData successful.');
+      console.info('setAssociatedData successful.');
     }
   });
   ```
@@ -3655,9 +3838,9 @@ Sets data to be associated with an application account. This API uses a promise 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => { 
-      console.log('setAssociatedData Success');
+      console.info('setAssociatedData Success');
   }).catch((err: BusinessError) => {
-      console.error('setAssociatedData err: ' + JSON.stringify(err));
+      console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3687,8 +3870,8 @@ Obtains information about all accessible application accounts. This API uses an 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount.AppAccountInfo[])=>{
-  	console.debug('getAllAccessibleAccounts err: ' + JSON.stringify(err));
-  	console.debug('getAllAccessibleAccounts data: ' + JSON.stringify(data));
+    console.debug(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
+    console.debug('getAllAccessibleAccounts data: ' + JSON.stringify(data));
   });
   ```
 
@@ -3718,9 +3901,9 @@ Obtains information about all accessible application accounts. This API uses a p
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountInfo[]) => { 
-       console.log('getAllAccessibleAccounts: ' + data);
+       console.info('getAllAccessibleAccounts: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAllAccessibleAccounts err: ' + JSON.stringify(err));
+      console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3752,8 +3935,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
   
   const selfBundle = 'com.example.actsgetallaaccounts';
   appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccount.AppAccountInfo[])=>{
-  	console.debug('getAllAccounts err: ' + JSON.stringify(err));
-  	console.debug('getAllAccounts data:' + JSON.stringify(data));
+    console.debug(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
+    console.debug('getAllAccounts data:' + JSON.stringify(data));
   });
   ```
 
@@ -3790,9 +3973,9 @@ Obtains the application accounts that can be accessed by the invoker based on th
   
   const selfBundle = 'com.example.actsgetallaaccounts';
   appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountInfo[]) => { 
-       console.log('getAllAccounts: ' + data);
+       console.info('getAllAccounts: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAllAccounts err: ' + JSON.stringify(err));
+      console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3823,9 +4006,9 @@ Obtains the credential of an application account. This API uses an asynchronous 
   
   appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: BusinessError, result: string) => { 
     if (err) {
-      console.error('getAccountCredential err: ' + JSON.stringify(err));
+      console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getAccountCredential result: ' + result);
+      console.info('getAccountCredential result: ' + result);
     }
   });
   ```
@@ -3861,9 +4044,9 @@ Obtains the credential of an application account. This API uses a promise to ret
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((data: string) => { 
-      console.log('getAccountCredential, result: ' + data);
+      console.info('getAccountCredential, result: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAccountCredential err: ' + JSON.stringify(err));
+      console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3893,9 +4076,9 @@ Obtains additional information of an application account. Additional information
   
   appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: string) => { 
     if (err) {
-      console.error('getAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getAccountExtraInfo result: ' + result);
+      console.info('getAccountExtraInfo result: ' + result);
     }
   });
   ```
@@ -3930,9 +4113,9 @@ Obtains additional information of an application account. Additional information
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => { 
-      console.log('getAccountExtraInfo, result: ' + data);
+      console.info('getAccountExtraInfo, result: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3963,9 +4146,9 @@ Obtains data associated with an application account. This API uses an asynchrono
   
   appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, result: string) => { 
     if (err) {
-      console.error('getAssociatedData err: ' + JSON.stringify(err));
+      console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getAssociatedData result: ' + result);
+      console.info('getAssociatedData result: ' + result);
     }
   });
   ```
@@ -4001,9 +4184,9 @@ Obtains data associated with an application account. This API uses a promise to 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => { 
-       console.log('getAssociatedData: ' + data);
+       console.info('getAssociatedData: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAssociatedData err: ' + JSON.stringify(err));
+      console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4031,13 +4214,13 @@ Subscribes to account information changes of apps.
 
   ```ts
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.debug('receive change data:' + JSON.stringify(data));
+    console.debug('receive change data:' + JSON.stringify(data));
   }
   try{
-  	appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
+    appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
   }
   catch(err){
-  	console.error('on accountOnOffDemo err:' + JSON.stringify(err));
+    console.error(`on accountOnOffDemo code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4064,16 +4247,16 @@ Unsubscribes from account information changes.
 
   ```ts
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.debug('receive change data: ' + JSON.stringify(data));
-  	appAccountManager.off('change', () => {
-  		console.debug('off finish');
-  	})
+    console.debug('receive change data: ' + JSON.stringify(data));
+    appAccountManager.off('change', () => {
+        console.debug('off finish');
+    })
   }
   try{
-  	appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
+    appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
   }
   catch(err){
-  	console.error('on accountOnOffDemo err: ' + JSON.stringify(err));
+    console.error(`on accountOnOffDemo err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4111,8 +4294,8 @@ Authenticates an application account. This API uses an asynchronous callback to 
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result: Record<string, Object>): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -4123,9 +4306,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -4168,9 +4351,9 @@ Obtains the authorization token of the specified authentication type for an appl
   appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
     (err: BusinessError, data: string) => {
       if (err) {
-        console.error('getOAuthToken err: ' + JSON.stringify(err));
+        console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOAuthToken token: ' + data);
+        console.info('getOAuthToken token: ' + data);
       }
     });
   ```
@@ -4207,9 +4390,9 @@ Obtains the authorization token of the specified authentication type for an appl
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((data: string) => {
-       console.log('getOAuthToken token: ' + data);
+       console.info('getOAuthToken token: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getOAuthToken err: ' + JSON.stringify(err));
+      console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4241,9 +4424,9 @@ Sets an authorization token of the specific authentication type for an applicati
   
   appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError) => {
     if (err) {
-      console.error('setOAuthToken err: ' + JSON.stringify(err));
+      console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setOAuthToken successful.');
+      console.info('setOAuthToken successful.');
     }
   });
   ```
@@ -4280,9 +4463,9 @@ Sets an authorization token of the specific authentication type for an applicati
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
-      console.log('setOAuthToken successfully');
+      console.info('setOAuthToken successfully');
   }).catch((err: BusinessError) => {
-      console.error('setOAuthToken err: ' + JSON.stringify(err));
+      console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4316,9 +4499,9 @@ Deletes the authorization token of the specified authentication type for an appl
   appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
     (err: BusinessError) => {
       if (err) {
-        console.error('deleteOAuthToken err: ' + JSON.stringify(err));
+        console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('deleteOAuthToken successful.');
+        console.info('deleteOAuthToken successful.');
       }
     });
   ```
@@ -4356,9 +4539,9 @@ Deletes the authorization token of the specified authentication type for an appl
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
-       console.log('deleteOAuthToken successfully');
+       console.info('deleteOAuthToken successfully');
   }).catch((err: BusinessError) => {
-      console.error('deleteOAuthToken err: ' + JSON.stringify(err));
+      console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4392,9 +4575,9 @@ Sets the visibility of an authorization token to an application. This API uses a
   appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
     (err: BusinessError) => {
       if (err) {
-        console.error('setOAuthTokenVisibility err: ' + JSON.stringify(err));
+        console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setOAuthTokenVisibility successful.');
+        console.info('setOAuthTokenVisibility successful.');
       }
     });
   ```
@@ -4432,9 +4615,9 @@ Sets the visibility of an authorization token to an application. This API uses a
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
-      console.log('setOAuthTokenVisibility successfully');
+      console.info('setOAuthTokenVisibility successfully');
   }).catch((err: BusinessError) => {
-      console.error('setOAuthTokenVisibility err: ' + JSON.stringify(err));
+      console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4467,9 +4650,9 @@ Checks the visibility of an authorization token of the specified authentication 
   appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
     (err: BusinessError, data: boolean) => {
       if (err) {
-        console.error('checkOAuthTokenVisibility err: ' + JSON.stringify(err));
+        console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOAuthTokenVisibility isVisible: ' + data);
+        console.info('checkOAuthTokenVisibility isVisible: ' + data);
       }
     });
   ```
@@ -4507,9 +4690,9 @@ Checks the visibility of an authorization token of the specified authentication 
   
   appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
     data: boolean) => {
-    console.log('checkOAuthTokenVisibility isVisible: ' + data);
+    console.info('checkOAuthTokenVisibility isVisible: ' + data);
   }).catch((err: BusinessError) => {
-    console.error('checkOAuthTokenVisibility err: ' + JSON.stringify(err));
+    console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4541,9 +4724,9 @@ Obtains all tokens visible to the invoker for an application account. This API u
   appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
     (err: BusinessError, data: appAccount.OAuthTokenInfo[]) => {
       if (err) {
-        console.error('getAllOAuthTokens err: ' + JSON.stringify(err));
+        console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAllOAuthTokens data: ' + JSON.stringify(data));
+        console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
       }
     });
   ```
@@ -4580,9 +4763,9 @@ Obtains all tokens visible to the invoker for an application account. This API u
   
   appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
     data: appAccount.OAuthTokenInfo[]) => {
-    console.log('getAllOAuthTokens data: ' + JSON.stringify(data));
+    console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error('getAllOAuthTokens err: ' + JSON.stringify(err));
+    console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4613,9 +4796,9 @@ Obtains the authorization list of the specified authentication type for an appli
   
   appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, data: string[]) => {
     if (err) {
-      console.error('getOAuthList err: ' + JSON.stringify(err));
+      console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOAuthList data: ' + JSON.stringify(data));
+      console.info('getOAuthList data: ' + JSON.stringify(data));
     }
   });
   ```
@@ -4651,9 +4834,9 @@ Obtains the authorization list of the specified authentication type for an appli
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) => {
-       console.log('getOAuthList data: ' + JSON.stringify(data));
+       console.info('getOAuthList data: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-      console.error('getOAuthList err: ' + JSON.stringify(err));
+      console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4688,7 +4871,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
       appAccountManager.getAuthenticatorCallback(sessionId,
           (err: BusinessError, callback: appAccount.AuthenticatorCallback) => {
           if (err.code != appAccount.ResultCode.SUCCESS) {
-              console.error('getAuthenticatorCallback err: ' + JSON.stringify(err));
+              console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
               return;
           }
           callback.onResult(appAccount.ResultCode.SUCCESS, {
@@ -4744,7 +4927,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
           token: 'xxxxxx'}
         );
       }).catch((err: BusinessError) => {
-        console.error('getAuthenticatorCallback err: ' + JSON.stringify(err));
+        console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
       });
     }
   }
@@ -4777,9 +4960,9 @@ Obtains the authenticator information of an application. This API uses an asynch
   appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
     (err: BusinessError, data: appAccount.AuthenticatorInfo) => {
       if (err) {
-        console.error('getAuthenticatorInfo err: ' + JSON.stringify(err));
+        console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAuthenticatorInfo data: ' + JSON.stringify(data));
+        console.info('getAuthenticatorInfo data: ' + JSON.stringify(data));
       }
     });
   ```
@@ -4815,9 +4998,9 @@ Obtains the authenticator information of an application. This API uses a promise
   
   appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
     data: appAccount.AuthenticatorInfo) => { 
-    console.log('getAuthenticatorInfo: ' + JSON.stringify(data));
+    console.info('getAuthenticatorInfo: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error('getAuthenticatorInfo err: ' + JSON.stringify(err));
+    console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4827,10 +5010,10 @@ Defines application account information.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name  | Type    | Mandatory  | Description         |
-| ----- | ------ | ---- | ----------- |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| name  | string | Yes   | Name of the target application account.   |
+| Name  | Type    | Read-Only | Optional  | Description         |
+| ----- | ------ | ---- | ---- | ----------- |
+| owner | string | No| No   | Owner of the application account. The value is the bundle name of the application.|
+| name  | string | No| No   | Name of the application account.   |
 
 ## AuthTokenInfo<sup>9+</sup>
 
@@ -4838,11 +5021,11 @@ Defines authorization token information.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name              | Type           | Mandatory | Description             |
-| -------------------- | -------------- | ----- | ---------------- |
-| authType<sup>9+</sup>             | string         | Yes   | Authentication type.  |
-| token<sup>9+</sup>                | string         | Yes   | Value of the authorization token.      |
-| account<sup>9+</sup> | [AppAccountInfo](#appaccountinfo) | No   | Information about the account to which the token belongs. By default, no value is passed in.|
+| Name              | Type           | Read-Only | Optional  | Description             |
+| -------------------- | -------------- | -----| ----- | ---------------- |
+| authType            | string         | No| No   | Authentication type.  |
+| token               | string         | No| No   | Value of the authorization token.      |
+| account | [AppAccountInfo](#appaccountinfo) | No| Yes   | Information about the account to which the token belongs. By default, no value is passed in.|
 
 ## OAuthTokenInfo<sup>(deprecated)</sup>
 
@@ -4854,10 +5037,10 @@ Defines authorization token information.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name              | Type           | Mandatory | Description             |
-| -------------------- | -------------- | ----- | ---------------- |
-| authType             | string         | Yes   | Authentication type.  |
-| token                | string         | Yes   | Value of the authorization token.      |
+| Name              | Type           | Read-Only | Optional  | Description             |
+| -------------------- | -------------- | ----- | ----- | ---------------- |
+| authType             | string         | No| No   | Authentication type.  |
+| token                | string         | No| No   | Value of the authorization token.      |
 
 ## AuthenticatorInfo<sup>8+</sup>
 
@@ -4865,11 +5048,11 @@ Defines OAuth authenticator information.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name    | Type    | Mandatory  | Description        |
-| ------- | ------ | ---- | ---------- |
-| owner   | string | Yes   | Owner of the authenticator. The value is the bundle name of the application.|
-| iconId  | number | Yes   | ID of the authenticator icon. |
-| labelId | number | Yes   | ID of the authenticator label. |
+| Name    | Type    | Read-Only | Optional  | Description        |
+| ------- | ------ | ---- | ---- | ---------- |
+| owner   | string | No| No   | Owner of the authenticator. The value is the bundle name of the application.|
+| iconId  | number | No| No   | ID of the authenticator icon. |
+| labelId | number | No| No   | ID of the authenticator label. |
 
 ## AuthResult<sup>9+</sup>
 
@@ -4877,10 +5060,10 @@ Defines the authentication result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name    | Type    | Mandatory  | Description        |
-| ------- | ------ | ---- | ---------- |
-| account   | [AppAccountInfo](#appaccountinfo) | No   | Information about the account to which the token belongs. By default, no value is passed in.|
-| tokenInfo  | [AuthTokenInfo](#authtokeninfo9) | No   | Token information. By default, no value is passed in. |
+| Name    | Type    | Read-Only | Optional  | Description        |
+| ------- | ------ | ---- | ---- | ---------- |
+| account   | [AppAccountInfo](#appaccountinfo) | No| Yes   | Information about the account to which the token belongs. By default, no value is passed in.|
+| tokenInfo  | [AuthTokenInfo](#authtokeninfo9) | No| Yes   | Token information. By default, no value is passed in. |
 
 ## CreateAccountOptions<sup>9+</sup>
 
@@ -4888,9 +5071,9 @@ Defines the options for creating an application account.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name    | Type    | Mandatory  | Description        |
-| ------- | ------ | ---- | ---------- |
-| customData   | Record<string, string> | No   | Custom data. By default, no value is passed in.|
+| Name    | Type    | Read-Only | Optional  | Description        |
+| ------- | ------ | ---- | ---- | ---------- |
+| customData   | Record<string, string> | No| Yes   | Custom data. By default, no value is passed in.|
 
 ## CreateAccountImplicitlyOptions<sup>9+</sup>
 
@@ -4898,22 +5081,23 @@ Defines the options for implicitly creating an application account.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name    | Type    | Mandatory  | Description        |
-| ------- | ------ | ---- | ---------- |
-| requiredLabels   | Array&lt;string&gt; | No   | Required labels. By default, no value is passed in.|
-| authType   | string | No   | Authentication type. By default, no value is passed in.|
-| parameters   | Record<string, Object> | No   | Custom parameter object. By default, no value is passed in.|
+| Name    | Type    | Read-Only | Optional  | Description        |
+| ------- | ------ | ---- | ---- | ---------- |
+| requiredLabels   | Array&lt;string&gt; | No| Yes   | Required labels. By default, no value is passed in.|
+| authType   | string | No| Yes   | Authentication type. By default, no value is passed in.|
+| parameters   | Record<string, Object> | No| Yes   | Custom parameter object. By default, no value is passed in.|
+
 ## SelectAccountsOptions<sup>9+</sup>
 
 Defines the options for selecting accounts.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name         | Type                        | Mandatory | Description               |
-| --------------- | --------------------------- | ----- | ------------------- |
-| allowedAccounts | Array&lt;[AppAccountInfo](#appaccountinfo)&gt; | No   | Array of allowed accounts. By default, no value is passed in.    |
-| allowedOwners   | Array&lt;string&gt;         | No   | Array of the owners of the allowed accounts. By default, no value is passed in.|
-| requiredLabels  | Array&lt;string&gt;         | No   | Labels of the authenticator. By default, no value is passed in. |
+| Name         | Type                        | Read-Only | Optional  | Description               |
+| --------------- | --------------------------- | ----- | ----- | ------------------- |
+| allowedAccounts | Array&lt;[AppAccountInfo](#appaccountinfo)&gt; | No| Yes   | Array of allowed accounts. By default, no value is passed in.    |
+| allowedOwners   | Array&lt;string&gt;         | No| Yes   | Array of the owners of the allowed accounts. By default, no value is passed in.|
+| requiredLabels  | Array&lt;string&gt;         | No| Yes   | Labels of the authenticator. By default, no value is passed in. |
 
 ## VerifyCredentialOptions<sup>9+</sup>
 
@@ -4921,11 +5105,11 @@ Represents the options for verifying the user credential.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name         | Type                  | Mandatory | Description          |
-| -------------- | ---------------------- | ----- | -------------- |
-| credentialType | string                 | No   | Credential type. By default, no value is passed in.     |
-| credential     | string                 | No   | Credential value. By default, no value is passed in.     |
-| parameters     | Record<string, Object> | No   | Custom parameter object. By default, no value is passed in.|
+| Name         | Type                  | Read-Only | Optional  | Description          |
+| -------------- | ---------------------- | ----- | ----- | -------------- |
+| credentialType | string                 | No| Yes   | Credential type. By default, no value is passed in.     |
+| credential     | string                 | No| Yes   | Credential value. By default, no value is passed in.     |
+| parameters     | Record<string, Object> | No| Yes   | Custom parameter object. By default, no value is passed in.|
 
 
 ## SetPropertiesOptions<sup>9+</sup>
@@ -4934,10 +5118,10 @@ Represents the options for setting authenticator properties.
 
 **System capability**: SystemCapability.Account.AppAccount
 
-| Name    | Type                   | Mandatory | Description          |
-| ---------- | ---------------------- | ----- | -------------- |
-| properties | Record<string, Object> | No   | Property object. By default, no value is passed in.     |
-| parameters | Record<string, Object> | No   | Custom parameter object. By default, no value is passed in.|
+| Name    | Type                   | Read-Only | Optional  | Description          |
+| ---------- | ---------------------- | ----- | ----- | -------------- |
+| properties | Record<string, Object> | No| Yes   | Property object. By default, no value is passed in.     |
+| parameters | Record<string, Object> | No| Yes   | Custom parameter object. By default, no value is passed in.|
 
 ## Constants<sup>8+</sup>
 
@@ -5035,7 +5219,7 @@ Called to return the result of an authentication request.
       };
       callback.onResult(appAccount.ResultCode.SUCCESS, result);
   }).catch((err: BusinessError) => {
-      console.error('getAuthCallback err: ' + JSON.stringify(err));
+      console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -5105,7 +5289,7 @@ Called to continue to process the request.
       callback.onRequestContinued();
     }
   }).catch((err: BusinessError) => {
-    console.error('getAuthCallback err: ' + JSON.stringify(err));
+    console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -5117,11 +5301,15 @@ Provides OAuth authenticator callbacks.
 >
 > This enum is supported since API version 8 and deprecated since API version 9. Use [AuthCallback](#authcallback9) instead.
 
-### onResult<sup>8+</sup>
+### onResult<sup>(deprecated)</sup>
 
 onResult: (code: number, result: {[key: string]: any;}) =&gt; void
 
 Called to return the result of an authentication request.
+
+> **NOTE**
+>
+> This enum is supported since API version 8 and deprecated since API version 9. You are advised to use [onResult](#onresult9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5147,15 +5335,19 @@ Called to return the result of an authentication request.
         token: 'xxxxxx'}
       );
   }).catch((err: BusinessError) => {
-      console.error('getAuthenticatorCallback err: ' + JSON.stringify(err));
+      console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
-### onRequestRedirected<sup>8+</sup>
+### onRequestRedirected<sup>(deprecated)</sup>
 
 onRequestRedirected: (request: Want) =&gt; void
 
 Called to redirect a request.
+
+> **NOTE**
+>
+> This enum is supported since API version 8 and deprecated since API version 9. You are advised to use [onRequestRedirected](#onrequestredirected9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5235,7 +5427,7 @@ Adds an application account implicitly based on the specified authentication typ
 
 auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
 
-Authenticates an application account to obtain the authorization token. This API uses an asynchronous callback to return the result.
+Authenticates an application account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5252,7 +5444,7 @@ Authenticates an application account to obtain the authorization token. This API
 
 authenticate(name: string, authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
 
-Authenticates an application account to obtain the authorization token. This API uses an asynchronous callback to return the result.
+Authenticates an application account to obtain the OAuth token. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -5286,6 +5478,10 @@ Verifies the credential of an application account. This API uses an asynchronous
 | options   | [VerifyCredentialOptions](#verifycredentialoptions9)  | Yes   | Options for credential verification.           |
 | callback  | [AuthCallback](#authcallback9)    | Yes   | Authenticator callback used to return the result.|
 
+**Example**
+
+This API must be used together with the **getRemoteObject** API. For details, see the example of the [getRemoteObject](#getremoteobject9) API.
+
 ### setProperties<sup>9+</sup>
 
 setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
@@ -5300,6 +5496,10 @@ Sets the authenticator properties. This API uses an asynchronous callback to ret
 | ---------------- | --------------------- | ---- | --------------- |
 | options   | [SetPropertiesOptions](#setpropertiesoptions9)  | Yes   | Authenticator properties to set.           |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
+
+**Example**
+
+This API must be used together with the **getRemoteObject** API. For details, see the example of the [getRemoteObject](#getremoteobject9) API.
 
 ### checkAccountLabels<sup>9+</sup>
 
@@ -5317,6 +5517,10 @@ Checks the account labels. This API uses an asynchronous callback to return the 
 | labels    | Array&lt;string&gt;          | Yes   | Labels to check.                  |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
+**Example**
+
+This API must be used together with the **getRemoteObject** API. For details, see the example of the [getRemoteObject](#getremoteobject9) API.
+
 ### checkAccountRemovable<sup>9+</sup>
 
 checkAccountRemovable(name: string, callback: AuthCallback): void
@@ -5332,9 +5536,13 @@ Checks whether an application account can be deleted. This API uses an asynchron
 | name      | string                | Yes   | Name of the target application account.             |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
+**Example**
+
+This API must be used together with the **getRemoteObject** API. For details, see the example of the [getRemoteObject](#getremoteobject9) API.
+
 ### getRemoteObject<sup>9+</sup>
 
-getRemoteObject(): rpc.RemoteObject;
+getRemoteObject(): rpc.RemoteObject
 
 Obtains the remote object of an authenticator. This API cannot be overloaded.
 
@@ -5344,7 +5552,11 @@ Obtains the remote object of an authenticator. This API cannot be overloaded.
 
 | Type            | Description                                                  |
 | ---------------- | ----------------------------------------------------- |
-| rpc.RemoteObject | Remote object of the authenticator, which is used for inter-process communication.         |
+| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | Remote object of the authenticator, which is used for inter-process communication.         |
+
+**Example**
+
+This API must be used together with the **getRemoteObject** API. For details, see the example of the [getRemoteObject](#getremoteobject9) API.
 
 **Example**
 

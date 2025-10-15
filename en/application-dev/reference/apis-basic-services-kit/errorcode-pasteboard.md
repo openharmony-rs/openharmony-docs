@@ -1,4 +1,10 @@
 # Pasteboard Error Codes
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @yangxiaodong41-->
+<!--Designer: @guo867-->
+<!--Tester: @maxiaorong2-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -182,11 +188,11 @@ System error occurred during paste execution.
 
 **Description**
 
-This error code is reported when the copied data fails to be obtained.
+This error code is reported when the data to be pasted fails to be obtained.
 
 **Possible Causes**
 
-The copied data fails to be obtained.
+The data to be pasted fails to be obtained.
 
 **Solution**
 

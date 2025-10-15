@@ -6,7 +6,6 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-
 ## Introduction
 The Wi-Fi STA mode (that is, station mode) enables wireless devices to connect to a wireless local area network (WLAN) as clients. In this mode, devices such as mobile phones, computers, and tablets can access the network by connecting to an access point (AP) or wireless router.
 
@@ -45,7 +44,7 @@ The following table describes the related APIs.
 4. Enable Wi-Fi on the device.
 5. Sample code:
 
-```ts
+   ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
    try {
    let recvPowerNotifyFunc = (result:number) => {
@@ -81,7 +80,7 @@ The following table describes the related APIs.
    } catch (error) {
      console.error(`WiFi state monitor failed. ${error.message}`);
    }
-```
+   ```
 
 ### Establishing a Wi-Fi Connection
 1. Import the required Wi-Fi module.

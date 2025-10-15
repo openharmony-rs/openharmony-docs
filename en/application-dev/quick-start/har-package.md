@@ -16,10 +16,13 @@ A Harmony Archive (HAR) is a static shared package that can contain code, C++ li
 ## Constraints
 
 - A HAR can only be referenced as a dependency of an application module. It cannot be installed or run independently on a device.
-- A HAR does not support the declaration of the [ExtensionAbility](../application-models/extensionability-overview.md) component in the configuration file. Since API version 14, the declaration of the [UIAbility](../application-models/uiability-overview.md) component in the configuration file is supported. For details about how to configure UIAbility, see [Adding a UIAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18658758104318). Starting UIAbility in HAR is the same as [in an application](../application-models/uiability-intra-device-interaction.md).
+- Since API version 14, the declaration of the [UIAbility](../application-models/uiability-overview.md) component in the configuration file is supported. For details about how to configure UIAbility, see [Adding a UIAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18658758104318). Starting UIAbility in HAR is the same as [in an application](../application-models/uiability-intra-device-interaction.md).
+
 > **NOTE**
 >
 > If the [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) API is used to start the UIAbility in the HAR, the value of **moduleName** in the API parameter must be the module name of the [HAP](hap-package.md) or [HSP](in-app-hsp.md) that depends on the HAR.
+
+- Since API version 18, HAR supports the declaration of the [ExtensionAbility](../application-models/extensionability-overview.md) component in the configuration file. However, ExtensionAbility with entry capabilities (that is, **entity.system.home** and **ohos.want.action.home** are configured for the **skill** tag) is not supported. For details about how to configure an ExtensionAbility in a HAR, see [Adding an ExtensionAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18891639459). For API version 17 and earlier versions, the [ExtensionAbility](../application-models/extensionability-overview.md) component cannot be declared in the configuration file.
 - A HAR does not support the declaration of the [pages](./module-configuration-file.md#pages) tag in the configuration file. Still, it can include pages, which can be redirected through [routing operations](../ui/arkts-navigation-navigation.md#routing-operations).
 - A HAR does not support referencing resources in the **AppScope** folder. This is because the content in the **AppScope** folder is not packaged into the HAR during building.
 - As the HSP supports only intra-application sharing, a HAR that depends on any HSP can be shared only within the same application. Do not release such a HAR to a second-party or third-party repository for other applications to use; otherwise, build failures will occur.
@@ -113,9 +116,7 @@ export function func2() {
 In the **Index.ets** file, declare the APIs that the HAR exposes to external systems. The code snippet is as follows:
 ```ts
 // library/Index.ets
-export { Log } from './src/main/ets/test';
-export { func } from './src/main/ets/test';
-export { func2 } from './src/main/ets/test';
+export { Log, func, func2 } from './src/main/ets/test';
 ```
 
 ### Exporting Native Methods
@@ -161,7 +162,7 @@ Before referencing the HAR, you need to configure the dependency on it. For deta
 
 ### Referencing ArkUI Components
 
-After configuring the dependency on the HAR, you can reference ArkUI components exported from the HAR by using **import**. The code snippet is as follows:
+After configuring the dependency on the HAR, you can use **import** to import the ArkUI component exported from HAR. The following is an example:
 ```ts
 // entry/src/main/ets/pages/IndexSec.ets
 import { MainPage } from 'library';

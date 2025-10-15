@@ -48,8 +48,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.isSharingSupported((error: BusinessError, data: boolean) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -90,10 +90,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .isSharingSupported()
   .then((data: boolean) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -132,8 +132,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.isSharing((error: BusinessError, data: boolean) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -174,10 +174,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .isSharing()
   .then((data: boolean) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -224,7 +224,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.startSharing(SHARING_WIFI, (error: BusinessError) => {
-  console.log(JSON.stringify(error));
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -278,10 +278,10 @@ let SHARING_WIFI = 0;
 sharing
   .startSharing(SHARING_WIFI)
   .then(() => {
-    console.log('start wifi sharing successful');
+    console.info('start wifi sharing successful');
   })
   .catch((error: BusinessError) => {
-    console.log('start wifi sharing failed');
+    console.error('start wifi sharing failed');
   });
 ```
 
@@ -327,7 +327,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.stopSharing(SHARING_WIFI, (error: BusinessError) => {
-  console.log(JSON.stringify(error));
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -380,10 +380,10 @@ let SHARING_WIFI = 0;
 sharing
   .stopSharing(SHARING_WIFI)
   .then(() => {
-    console.log('stop wifi sharing successful');
+    console.info('stop wifi sharing successful');
   })
   .catch((error: BusinessError) => {
-    console.log('stop wifi sharing failed');
+    console.error('stop wifi sharing failed');
   });
 ```
 
@@ -422,8 +422,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.getStatsRxBytes((error: BusinessError, data: number) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -464,10 +464,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .getStatsRxBytes()
   .then((data: number) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -506,8 +506,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.getStatsTxBytes((error: BusinessError, data: number) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -548,10 +548,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .getStatsTxBytes()
   .then((data: number) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -590,8 +590,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.getStatsTotalBytes((error: BusinessError, data: number) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -632,10 +632,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .getStatsTotalBytes()
   .then((data: number) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -677,8 +677,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_BLUETOOTH = 2;
 sharing.getSharingIfaces(SHARING_BLUETOOTH, (error: BusinessError, data: string[]) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -727,10 +727,10 @@ let SHARING_BLUETOOTH = 2;
 sharing
   .getSharingIfaces(SHARING_BLUETOOTH)
   .then((data: string[]) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -772,8 +772,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.getSharingState(SHARING_WIFI, (error: BusinessError, data: sharing.SharingIfaceState) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -822,10 +822,10 @@ let SHARING_WIFI = 0;
 sharing
   .getSharingState(SHARING_WIFI)
   .then((data: sharing.SharingIfaceState) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -867,8 +867,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.getSharableRegexes(SHARING_WIFI, (error: BusinessError, data: string[]) => {
-  console.log(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -917,10 +917,10 @@ let SHARING_WIFI = 0;
 sharing
   .getSharableRegexes(SHARING_WIFI)
   .then((data: string[]) => {
-    console.log(JSON.stringify(data));
+    console.info(JSON.stringify(data));
   })
   .catch((error: BusinessError) => {
-    console.log(JSON.stringify(error));
+    console.error(JSON.stringify(error));
   });
 ```
 
@@ -940,7 +940,7 @@ Subscribes to network sharing state changes. This API uses an asynchronous callb
 
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
-| type     | string                  | Yes  | Event name.                  |
+| type     | string                  | Yes  | Event type. The value **sharingStateChange** indicates a network sharing status change event.                  |
 | callback | AsyncCallback\<boolean> | Yes  | Callback invoked when the network sharing state changes.|
 
 **Error codes**
@@ -957,7 +957,7 @@ Subscribes to network sharing state changes. This API uses an asynchronous callb
 import { sharing } from '@kit.NetworkKit';
 
 sharing.on('sharingStateChange', (data: boolean) => {
-  console.log('on sharingStateChange: ' + JSON.stringify(data));
+  console.info('on sharingStateChange: ' + JSON.stringify(data));
 });
 ```
 
@@ -977,7 +977,7 @@ Unsubscribes from network sharing state changes. This API uses an asynchronous c
 
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
-| type     | string                  | Yes  | Event name.                  |
+| type     | string                  | Yes  | Event type. The value **sharingStateChange** indicates a network sharing status change event.                  |
 | callback | AsyncCallback\<boolean> | No  | Callback invoked when the network sharing state changes.|
 
 **Error codes**
@@ -994,7 +994,7 @@ Unsubscribes from network sharing state changes. This API uses an asynchronous c
 import { sharing } from '@kit.NetworkKit';
 
 sharing.off('sharingStateChange', (data: boolean) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -1014,7 +1014,7 @@ Subscribes to network sharing state changes of a specified NIC. This API uses an
 
 | Name  | Type                                                                  | Mandatory| Description                                 |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------- |
-| type     | string                                                                | Yes  | Event name.                           |
+| type     | string                                                                | Yes  | Event type. The value **interfaceSharingStateChange** indicates a network sharing status change event of the NIC.                           |
 | callback | AsyncCallback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | Yes  | Callback used to return the result. It is called when the network sharing state of a specified NIC changes.|
 
 **Error codes**
@@ -1031,7 +1031,7 @@ Subscribes to network sharing state changes of a specified NIC. This API uses an
 import { sharing } from '@kit.NetworkKit';
 
 sharing.on('interfaceSharingStateChange', (data: object) => {
-  console.log('on interfaceSharingStateChange:' + JSON.stringify(data));
+  console.info('on interfaceSharingStateChange:' + JSON.stringify(data));
 });
 ```
 
@@ -1051,7 +1051,7 @@ Unsubscribes from network sharing status changes of a specified NIC. This API us
 
 | Name  | Type                                                                       | Mandatory| Description                                    |
 | -------- | --------------------------------------------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                                                     | Yes  | Event name.                              |
+| type     | string                                                                     | Yes  | Event type. The value **interfaceSharingStateChange** indicates a network sharing status change event of the NIC.                              |
 | callback | AsyncCallback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | No  | Callback used to return the result.|
 
 **Error codes**
@@ -1068,7 +1068,7 @@ Unsubscribes from network sharing status changes of a specified NIC. This API us
 import { sharing } from '@kit.NetworkKit';
 
 sharing.off('interfaceSharingStateChange', (data: object) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -1088,7 +1088,7 @@ Subscribes to upstream network changes. This API uses an asynchronous callback t
 
 | Name  | Type                     | Mandatory| Description                          |
 | -------- | ------------------------- | ---- | ------------------------------ |
-| type     | string                    | Yes  | Event name.                    |
+| type     | string                    | Yes  | Event type. The value **sharingUpstreamChange** indicates an upstream network change event.                    |
 | callback | AsyncCallback\<NetHandle> | Yes  | Callback invoked when the upstream network changes.|
 
 **Error codes**
@@ -1105,7 +1105,7 @@ Subscribes to upstream network changes. This API uses an asynchronous callback t
 import { sharing } from '@kit.NetworkKit';
 
 sharing.on('sharingUpstreamChange', (data: object) => {
-  console.log('on sharingUpstreamChange:' + JSON.stringify(data));
+  console.info('on sharingUpstreamChange:' + JSON.stringify(data));
 });
 ```
 
@@ -1125,7 +1125,7 @@ Unsubscribes from upstream network changes. This API uses an asynchronous callba
 
 | Name  | Type                     | Mandatory| Description                            |
 | -------- | ------------------------- | ---- | -------------------------------- |
-| type     | string                    | Yes  | Event name.                      |
+| type     | string                    | Yes  | Event type. The value **sharingUpstreamChange** indicates an upstream network change event.                      |
 | callback | AsyncCallback\<NetHandle> | No  | Callback used for unsubscription from upstream network changes.|
 
 **Error codes**
@@ -1142,7 +1142,7 @@ Unsubscribes from upstream network changes. This API uses an asynchronous callba
 import { sharing } from '@kit.NetworkKit';
 
 sharing.off('sharingUpstreamChange', (data: object) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 

@@ -1,5 +1,12 @@
 # Managing Application Accounts
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 You can use the [application account SDK](../../reference/apis-basic-services-kit/js-apis-appAccount.md) to manage application accounts.
 
 When an application is uninstalled, the account data of the application will be automatically deleted. When a local account is deleted, the account data of all applications of the local account will be automatically deleted.
@@ -39,10 +46,10 @@ Create an application account for an application user.
 
    ```ts
    appAccountManager.createAccount(name, options).then(()=>{
-    console.log('createAccount successfully');
-  }).catch((err: BusinessError)=>{
-    console.error('createAccount failed, error: ' + JSON.stringify(err));
-  });
+       console.info('createAccount successfully');
+   }).catch((err: BusinessError)=>{
+       console.error(`createAccount failed, error: code is ${err.code}, message is ${err.message}`);
+   });
    ```
 
 ## Obtaining Application Account List
@@ -54,9 +61,9 @@ Use [getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.
 
    ```ts
    appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
-       console.log('getAllAccounts successfully, data: ' + JSON.stringify(data));
+       console.info('getAllAccounts successfully, data: ' + JSON.stringify(data));
    }).catch((err: BusinessError) => {
-       console.error('getAllAccounts failed, error: ' + JSON.stringify(err));
+       console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -76,9 +83,9 @@ Use [getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.
 
    ```ts
    appAccountManager.getCredential(name, credentialType).then((data: string) => {
-       console.log('getCredential successfully, data: ' + data);
+       console.info('getCredential successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getCredential failed, error: ' + JSON.stringify(err));
+       console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -86,9 +93,9 @@ Use [getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.
 
    ```ts
    appAccountManager.setCredential(name, credentialType, credential).then(() => {
-       console.log('setCredential successfully');
+       console.info('setCredential successfully');
    }).catch((err: BusinessError) => {
-       console.error('setCredential failed: ' + JSON.stringify(err));
+       console.error(`setCredential failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -108,9 +115,9 @@ Use [getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.
 
    ```ts
    appAccountManager.setCustomData(name, key, value).then(() => {
-       console.log('setCustomData successfully');
+       console.info('setCustomData successfully');
    }).catch((err: BusinessError) => {
-       console.error('setCustomData failed: ' + JSON.stringify(err));
+       console.error(`setCustomData failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -118,9 +125,9 @@ Use [getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.
 
    ```ts
    appAccountManager.getCustomData(name, key).then((data: string) => {
-       console.log('getCustomData successfully, data: ' + data);
+       console.info('getCustomData successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getCustomData failed, error: ' + JSON.stringify(err));
+       console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -141,9 +148,9 @@ Use [getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.
 
    ```ts
    appAccountManager.setAuthToken(name, authType, token).then(() => {
-       console.log('setAuthToken successfully');
+       console.info('setAuthToken successfully');
    }).catch((err: BusinessError) => {
-       console.error('setAuthToken failed: ' + JSON.stringify(err));
+       console.error(`setAuthToken failed: code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -151,9 +158,9 @@ Use [getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.
 
    ```ts
    appAccountManager.getAuthToken(name, owner, authType).then((data: string) => {
-       console.log('getAuthToken successfully, data: ' + data);
+       console.info('getAuthToken successfully, data: ' + data);
    }).catch((err: BusinessError) => {
-       console.error('getAuthToken failed, error: ' + JSON.stringify(err));
+       console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -166,11 +173,11 @@ Remove the application account after the user logs out of the system.
 Use [removeAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md#removeaccount9) to remove the application account.
 
    ```ts
-   let name: string = 'Zhangsan';
+   let name: string = 'ZhangSan';
    appAccountManager.removeAccount(name).then(() => {
-       console.log('removeAccount successfully');
+       console.info('removeAccount successfully');
    }).catch((err: BusinessError) => {
-       console.error('removeAccount failed, error: ' + JSON.stringify(err));
+       console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 

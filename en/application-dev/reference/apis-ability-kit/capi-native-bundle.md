@@ -8,11 +8,11 @@
 
 ## Overview
 
-The module provides capabilities for querying the application information, including the bundle name and fingerprint information.
+The module provides capabilities for querying the application information, including the bundle name, fingerprint information, and appId.
 
 **Since**: 9
 ## Files
 
 | Name| Description|
 | -- | -- |
-| [native_interface_bundle.h](capi-native-interface-bundle-h.md) | Provides capabilities for querying the application information, including the bundle name and fingerprint information.|
+| [native_interface_bundle.h](capi-native-interface-bundle-h.md) | Declares the APIs for obtaining the application information, including the bundle name, fingerprint information, and appId.|

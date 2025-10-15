@@ -2,8 +2,8 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
-<!--Designer: @Maplestory91-->
-<!--Tester: @gcw_KuLfPSbe-->
+<!--Designer: @Maplestory-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -24,6 +24,18 @@ After a process crashes, the system detects the crash, captures crash informatio
 
   Program Counter (PC) stores the address of the instruction that is being executed by the program.
 
+- **lr**
+
+  Link register, which stores the return address of a subprogram.
+
+- **sp**
+
+  Stack pointer register, which stores the address of the top of the stack frame of the current function.
+
+- **fp**
+
+  Frame pointer register, which stores the address of the bottom of the stack frame of the current function.
+
 - **Call stack**
 
   Records the sequence of function calls for each thread, from its start up to the current point (such as the crash site).
@@ -42,7 +54,7 @@ The system detects a process crash as follows:
 
 3. The **ProcessDump** process writes the crash log data to a temporary directory for storage.
 
-4. After collecting crash logs, the **ProcessDump** process reports the logs to the HiView process, supplements some information (such as the system memory status) that can be obtained only by HiView, stores the crash logs in the **/data/log/faultlog/faultlogger** directory, and generates a fault event.
+4. After collecting crash logs, the **ProcessDump** process reports the logs to the HiView process, supplements some information (such as the system memory status and application page switching history) that can be obtained only by HiView, stores the crash logs in the **/data/log/faultlog/faultlogger** directory, and generates a fault event.
 
 ### Crash Signals
 
@@ -126,7 +138,7 @@ The **SIGFPE** signal indicates a floating-point exception or an arithmetic exce
 
 ### Signal Causes
 
-In addition to the preceding classification by **signo**, signals can also be classified by causes as follows.
+In addition to the preceding classification by **signo**, signals can also be classified by causes. The code values classified by causes are as follows.
 
 | Error Code (**code**)| Value| Description| Trigger Cause|
 | -------- | -------- | -------- | -------- |
@@ -173,12 +185,13 @@ The following table describes the fields in a fault log.
 | Device info | Device information.| 8 | Yes| - |
 | Build info | Build information.| 8 | Yes| - |
 | Fingerprint | Fault feature, which is a hash value for faults of the same type.| 8 | Yes| - |
-| Enabled app log configs | List of enabled configuration parameters.| 20 | No| This field is displayed when only when it is configured by users. For details, see [Application Crash Log Configured by HiAppEvent](#application-crash-log-configured-by-hiappevent). |
+| Enabled app log configs | List of enabled configuration parameters.| 20 | No| This field is displayed when only when it is configured by users. For details, see [Application Crash Log Configured by HiAppEvent](#application-crash-log-configured-by-hiappevent).|
 | Module name | Module name.| 8 | Yes| - |
 | Version | Application version (in dotted format).| 8 | No| This field is displayed only for application processes.|
-| Version Code | Application version (in integer format).| 8 | No| This field is displayed only for application processes.|
+| VersionCode | Application version (in integer format).| 8 | No| This field is displayed only for application processes.|
 | PreInstalled | Whether the application is pre-installed.| 8 | No| This field is displayed only for application processes.|
 | Foreground | Foreground/Background status.| 8 | No| This field is displayed only for application processes.|
+| Page switch history | Page switching history.| 20 | No| If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed. For details, see [Implementation Principles](#implementation-principles).|
 | Timestamp | Fault occurrence timestamp.| 8 | Yes| - |
 | Pid | Process ID.| 8 | Yes| - |
 | Uid | User ID.| 8 | Yes| - |
@@ -191,7 +204,7 @@ The following table describes the fields in a fault log.
 | LastFatalMessage | Last **Fatal** log recorded by the application.| 8 | No| This field is displayed when the process is aborted and the last **Fatal** log is printed in HiLog.|
 | Fault thread info | Fault thread information.| 8 | Yes| - |
 | SubmitterStacktrace | Submitter thread stack.| 12 | No| The asynchronous thread stack tracing functionality is enabled only for debug-type applications in the ARM 64-bit system.|
-| Register | Fault register.| 8 | Yes| - |
+| Registers | Fault register.| 8 | Yes| - |
 | Other thread info | Other thread information.| 8 | Yes| - |
 | Memory near registers | Memory value near the fault register.| 8 | Yes| - |
 | FaultStack | Fault thread stack memory information.| 8 | Yes| - |
@@ -200,7 +213,11 @@ The following table describes the fields in a fault log.
 | HiLog | HiLog logs printed before the fault occurs. A maximum of 1000 lines can be printed.| 8 | Yes| - |
 | [truncated] | Fault log truncation flag.| 20 | No| This field is displayed when the fault log truncation size is configured and truncation occurs.|
 
-The log specifications vary slightly according to different fault scenarios. The following lists log specifications of six scenarios:
+> **NOTE**
+>
+> From **API version 20**,<!--Del--> the cpsr status register is added to the fault scene register of the arm32 architecture, and the pstate and esr status registers are added to the fault scene register of the aarch64 architecture.<!--DelEnd-->
+
+The log specifications vary slightly according to different fault scenarios. The following lists log specifications of seven scenarios:
 
 - [Common Faults](cppcrash-guidelines.md#common-faults)
 
@@ -213,6 +230,8 @@ The log specifications vary slightly according to different fault scenarios. The
 - [Asynchronous Thread Stack Tracing Faults](#asynchronous-thread-stack-tracing-faults)
 
 - [Application Crash Log Configured by HiAppEvent](#application-crash-log-configured-by-hiappevent)
+
+- [Faults with Page Switching History](#faults-with-page-switching-history)
 
 > **NOTE**
 >
@@ -310,7 +329,7 @@ pc(/system/lib/ld-musl-arm.so.1):
     f7bb0404 e59f1024
     ...
 FaultStack: <- Stack of the crashed thread
-    ffc09810 00000001 
+    ffc09810 00000001
     ffc09814 00000001
     ...
 sp0:ffc09850 7467a186 <- #00 stack
@@ -406,7 +425,7 @@ The following describes the content of a three-layer call stack in detail:
 >
 >   - The length of the function name saved in the binary file exceeds 256 bytes.
 >
-> - If **BuildID** is not printed, you can run the **readelf -n xxx.so** command to check whether the binary file has **BuildID**. If not, add the compilation parameter **--enable-linker-build-id** to the compilation options. Do not add **--build-id=none**.
+> - If **BuildID** is not printed, you can run the **readelf -n xxx.so** command to check whether the binary file has **BuildID**. If not, add the compilation parameter <b class="+ topic/ph hi-d/b " id="b0166624191214">--enable-linker-build-id</b> to the compilation options. Do not add <b class="+ topic/ph hi-d/b " id="b1911913393125">--build-id=none</b>.
 
 **JS hybrid stack frame**
 
@@ -627,7 +646,7 @@ pc(/system/lib/ld-musl-arm.so.1): <- Memory value near the PC.
     f7f19938 e3a03008 <- When extend_pc_lr_printing is set to false, the memory value is printed forward to this point.
     f7f1993c ef000000
     f7f19940 e51b0014 <- Memory value (e51b0014) of the PC (f7f19940).
-    ... 
+    ...
     f7f199b4 e2b52000 <- When extend_pc_lr_printing is set to false, the memory value is printed backward to this point.
     f7f199b8 03530000
     f7f199bc 0a000003
@@ -643,3 +662,41 @@ OpenFiles:
 ...
 [truncated] <- Log truncation flag, indicating that the log is truncated.
 ```
+
+### Faults with Page Switching History
+
+Since API version 20, the maintenance and debugging process records the application switching history for applications that involve page switching. After an application fault occurs, the generated fault file contains the page switching history.
+
+A maximum of 10 latest history records can be recorded in a fault log file.
+
+```text
+...
+Foreground:Yes
+Page switch history:
+  14:08:30:327 /ets/pages/Index:JsError
+  14:08:28:986 /ets/pages/Index
+  14:08:07:606 :leaves foreground
+  14:08:06:246 /ets/pages/Index:AppFreeze
+  14:08:01:955 :enters foreground
+Timestamp:2025-08-20 14:08:30:327
+Pid:10208
+Uid:0
+...
+```
+
+The format of a record is as follows:
+```text
+  14:08:30:327 /ets/pages/Index:JsError
+       ^             ^            ^
+    Switching time   Page URL   Page name
+```
+
+> **NOTE**
+>
+> The child page's name is available only when it is navigated to through **Navigation**. The page name is defined in the [system routing table](../ui/arkts-navigation-navigation.md#system-routing-table).
+>
+> When the application switches between the foreground and background, the corresponding page URL is empty, but **enters foreground** and **leaves foreground** are displayed as special page names.
+>
+> **enters foreground**: The application runs in the foreground.
+>
+> **leaves foreground**: The application runs in the background.

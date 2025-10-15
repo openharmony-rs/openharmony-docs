@@ -1,5 +1,12 @@
 # RunningAppClone (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @altay-->
+<!--Designer: @altay-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The RunningAppClone module defines the information of an application clone in the running state.
 
 > **NOTE**

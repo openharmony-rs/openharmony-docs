@@ -739,6 +739,10 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
 订阅sim状态更改事件，使用callback方式作为异步方法。
 
+>**说明：**
+>
+> 此接口不包含sim卡的激活状态，具体请参见[sim.isSimActive](js-apis-sim.md#simissimactive7)接口。
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **参数：**
@@ -986,10 +990,10 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                                            | 必填 | 说明         |
-| ------------------- | ---------------------------------------------------------------| ---- | ------------ |
-| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | 是   | 数据连接状态。 |
-| network             | [RatType](js-apis-radio.md#radiotechnology)                    | 是   | 网络类型。     |
+| 名称 | 类型                                   |  只读 | 可选 | 说明 |
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  否  |  否  | 数据连接状态。 |
+| network | [RatType](js-apis-radio.md#radiotechnology)  |  否  |  否  | 网络类型。 |
 
 
 ## ObserverOptions<sup>11+</sup>
@@ -998,7 +1002,7 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |         类型      | 必填  | 说明                                    |
-| ------------------- | ------------------| ---- | --------------------------------------- |
-| slotId              | number            | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|     名称            |         类型      | 只读 | 可选 | 说明                                    |
+| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
+| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
 

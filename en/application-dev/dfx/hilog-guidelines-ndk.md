@@ -27,8 +27,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 | \#define OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | Outputs WARN logs. This is a function-like macro.|
 | \#define OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | Outputs ERROR logs. This is a function-like macro.|
 | \#define OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | Outputs FATAL logs. This is a function-like macro.|
-| void OH_LOG_SetCallback(LogCallback callback) | Registers a callback function to return all logs for the process.|
-| void OH_LOG_SetMinLogLevel(LogLevel level) | Sets the minimum log level.<br>Note: This API is supported since API version 15.<br>Note: If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the setting does not take effect.|
+| void OH_LOG_SetCallback(LogCallback callback) | Registers a function. After the registration, the HiLog logs of the current process can be obtained through the LogCallback callback. If the OH_LOG_IsLoggable API returns true, the callback function can obtain the log.|
+| void OH_LOG_SetMinLogLevel(LogLevel level) | Sets the minimum log level.<br>Note: This API is supported since API version 15.|
 
 ### Parameters
 
@@ -52,6 +52,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
   | s | The char\* type can be printed.| "123" |
 
   You can set multiple parameters in the **format** string, for example, **%s World**, where **%s** is a variable of the string type and its value is defined by **args**. 
+
+  The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding privacy flags is used to print logs.
 
 - **args**: parameters of the types specified by **specifier** in **format**. This parameter can be left blank. The number and type of parameters must match **specifier**.
 
@@ -114,7 +116,9 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
 
 > **NOTE**
 >
-> Do not call the HiLog API recursively in the callback function. Otherwise, a cyclic call issue occurs.
+> 1. Do not call the HiLog API recursively in the callback function. Otherwise, a loop call occurs.
+> 
+> 2. Register the callback function only once for a process. If the callback function is registered multiple times, the last registered callback function takes effect.
 
 ```c++
 #include "hilog/log.h"

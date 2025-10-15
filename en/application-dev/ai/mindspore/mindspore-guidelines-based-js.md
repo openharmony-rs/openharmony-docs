@@ -1,10 +1,17 @@
 # Using MindSpore Lite for Image Classification (ArkTS)
 
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
 ## When to Use
 
 You can use [@ohos.ai.mindSporeLite](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md) to quickly deploy AI algorithms into your application to perform AI model inference for image classification.
 
-Image classification can be used to recognize objects in images and is widely used in medical image analysis, auto driving, e-commerce, and facial recognition.
+Image classification can be used to recognize objects in images and is widely used in areas such as medical image analysis, auto driving, e-commerce, and facial recognition.
 
 ## Basic Concepts
 
@@ -45,9 +52,7 @@ This sample application uses [mobilenetv2.ms](https://download.mindspore.cn/mode
 
 If you have other pre-trained models for image classification, convert the original model into the .ms format by referring to [Using MindSpore Lite for Model Conversion](mindspore-lite-converter-guidelines.md).
 
-### Writing Code
-
-#### Image Input and Preprocessing
+### Writing the Code for Image Input and Preprocessing
 
 1. Call [@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) to pick up the desired image in the album.
 
@@ -85,6 +90,10 @@ If you have other pre-trained models for image classification, convert the origi
            .height('5%')
            .onClick(() => {
              let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
+             if (resMgr === null || resMgr === undefined){
+               console.error('MS_LITE_ERR: get resMgr failed.');
+               return
+             }
              resMgr?.getRawFileContent(this.modelName).then(modelBuffer => {
                // Obtain images in an album.
                // 1. Create an image picker instance.
@@ -120,6 +129,10 @@ If you have other pre-trained models for image classification, convert the origi
    
                    // 3. Perform image preprocessing through PixelMap.
                    let imageSource = image.createImageSource(file.fd);
+                   if (imageSource == undefined) {
+                     console.error('MS_LITE_ERR: createImageSource failed.')
+                     return
+                   }
                    imageSource.createPixelMap().then((pixelMap) => {
                      pixelMap.getImageInfo().then((info) => {
                        console.info('MS_LITE_LOG: info.width = ' + info.size.width);
@@ -177,7 +190,7 @@ If you have other pre-trained models for image classification, convert the origi
    }
    ```
 
-#### Writing Inference Code
+### Writing Inference Code
 
 1. If the capability set defined by the project does not contain MindSpore Lite, create the **syscap.json** file in the **entry/src/main** directory of the DevEco Studio project. The file content is as follows:
 
@@ -238,13 +251,14 @@ If you have other pre-trained models for image classification, convert the origi
    }
    ```
 
-#### Executing Inference
+### Executing Inference
 
 Load the model file and call the inference function to perform inference on the selected image, and process the inference result.
 
 ```ts
 // Index.ets
 import modelPredict from './model';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -274,6 +288,10 @@ struct Index {
         .height('5%')
         .onClick(() => {
           let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
+          if (resMgr === null || resMgr === undefined){
+            console.error('MS_LITE_ERR: get resMgr failed.');
+            return
+          }
           resMgr?.getRawFileContent(this.modelName).then(modelBuffer => {
             // Image input and preprocessing
             // The buffer data of the input image is stored in float32View after preprocessing. For details, see Image Input and Preprocessing.
@@ -314,7 +332,9 @@ struct Index {
               }
               console.info('=========MS_LITE_LOG END=========');
             })
-          })
+          }).catch((error: BusinessError) => {
+            console.error("getRawFileContent promise error is " + error);
+          });
         })
       }
       .width('100%')
@@ -361,6 +381,7 @@ Touch the **photo** button on the device screen, select an image, and touch **OK
 ![step1](figures/step1.png)         ![step2](figures/step2.png)  
 
 ![step3](figures/step3.png)         ![step4](figures/step4.png) 
+
 
 
 <!--RP1--><!--RP1End-->

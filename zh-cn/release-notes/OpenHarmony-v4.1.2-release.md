@@ -97,14 +97,14 @@ repo forall -c 'git lfs pull'
 | [IB7KDL](https://gitee.com/openharmony/applications_screenlock/issues/IB7KDL?from=project-issue) | 【RK3568】锁屏密码取消后再次锁屏解锁还是要输入密码，且输入上次密码失效 |
 | [IB7KDI](https://gitee.com/openharmony/applications_screenlock/issues/IB7KDI?from=project-issue) | 【RK3568】混合密码解锁界面，输入的第一个字符显示不完整       |
 | [IB7KGX](https://gitee.com/openharmony/applications_launcher/issues/IB7KGX?from=project-issue) | 【RK3568】正常刷机桌面图标布局混乱                           |
-| [IB8YCY](https://gitee.com/openharmony/xts_acts/issues/IB8YCY?from=project-issue) | 【RK3568】ACTS套件ActsNetManagerHttpEtsTest套件执行失败      |
+| [IB8YCY](https://gitcode.com/openharmony/xts_acts/issues/IB8YCY?from=project-issue) | 【RK3568】ACTS套件ActsNetManagerHttpEtsTest套件执行失败      |
 | [IAPYJN](https://gitee.com/openharmony/multimedia_media_lite/issues/IAPYJN?from=project-issue) | 【小型系统liteos】相册中视频播放完毕后重新点击播放会出现蓝屏 |
-| [IB21XU](https://gitee.com/openharmony/xts_hats/issues/IB21XU?from=project-issue) | 【RK3568】HATS执行HatsHdfAudioIdlRenderAdditionalTest&HatsHdfAudioIdlCaptureAdditionalTest套件执行失败 |
-| [IB68WS](https://gitee.com/openharmony/xts_acts/issues/IB68WS?from=project-issue) | 【RK3568】ACTS套件ActsAceWebEnhancedTestTwo执行有一个fail |
+| [IB21XU](https://gitcode.com/openharmony/xts_hats/issues/IB21XU?from=project-issue) | 【RK3568】HATS执行HatsHdfAudioIdlRenderAdditionalTest&HatsHdfAudioIdlCaptureAdditionalTest套件执行失败 |
+| [IB68WS](https://gitcode.com/openharmony/xts_acts/issues/IB68WS?from=project-issue) | 【RK3568】ACTS套件ActsAceWebEnhancedTestTwo执行有一个fail |
 | [I90N04](https://gitee.com/openharmony/applications_settings/issues/I90N04?from=project-issue) | 【RK3568】设置-系统-恢复出厂设置，点击进入恢复出厂设置页面，页面文本错乱，无重置按钮 |
-| [IAX7SV](https://gitee.com/openharmony/xts_acts/issues/IAX7SV?from=project-issue) | 【RK3568】acts执行ActsAceWebEnhancedTestTwo套件有一个用例fail |
+| [IAX7SV](https://gitcode.com/openharmony/xts_acts/issues/IAX7SV?from=project-issue) | 【RK3568】acts执行ActsAceWebEnhancedTestTwo套件有一个用例fail |
 | [I9PQ6I](https://gitee.com/openharmony-sig/ability_form_runtime/issues/I9PQ6I?from=project-issue) | 【RK3568】添加静态卡片，几秒后透明 |
-| [IATPGW](https://gitee.com/openharmony/xts_acts/issues/IATPGW?from=project-issue) | 【RK3568】acts执行ActsRequestAuthorityTest套件有6个用例fail |
+| [IATPGW](https://gitcode.com/openharmony/xts_acts/issues/IATPGW?from=project-issue) | 【RK3568】acts执行ActsRequestAuthorityTest套件有6个用例fail |
 | [I9NDZE](https://gitee.com/openharmony/accessibility/issues/I9NDZE?from=project-issue) | 【RK3568】重启手机、升级应用 切换账号等操作,已开启的服务不能重新自动拉起 |
 | [I9SI9E](https://gitee.com/openharmony/web_webview/issues/I9SI9E?from=project-issue) | 【RK3568】过滚动功能失效 |
 | [I9PQFE](https://gitee.com/openharmony/window_window_manager/issues/I9PQFE?from=project-issue) | 【RK3568】配置装饰栏后，点击分屏按钮，点击待分屏的快照，不能组成分屏 |
@@ -133,7 +133,7 @@ repo forall -c 'git lfs pull'
 | [IAF5SS](https://gitee.com/openharmony/security_privacy_center/issues/IAF5SS?from=project-issue) | 【RK3568】用户证书弹窗，点击启用/禁用开关，弹窗会右移一部分，超出界面显示 |
 | [I9GLKF](https://gitee.com/openharmony/applications_app_samples/issues/I9GLKF?from=project-issue) | 【RK3568】【Sample】手机拨打电话通话中，详细信息。通话状态，没有显示电话号码 |
 | [I9OZC2](https://gitee.com/openharmony/multimodalinput_input/issues/I9OZC2?from=project-issue) | 【RK3568】设置鼠标光标样式值为41(对应pointer.PointerStyle.CURSOR_CIRCLE)时，鼠标光标不可见 |
-| [IA5EDU](https://gitee.com/openharmony/xts_acts/issues/IA5EDU?from=project-issue) | 【RK3568】4.1执行XTS测试ActsNativeAVScreenCaptureTest套件执行失败 |
+| [IA5EDU](https://gitcode.com/openharmony/xts_acts/issues/IA5EDU?from=project-issue) | 【RK3568】4.1执行XTS测试ActsNativeAVScreenCaptureTest套件执行失败 |
 | [I9UKT8](https://gitee.com/openharmony/ability_dmsfwk/issues/I9UKT8?from=project-issue) | 【RK3568】版本兼容性DctsDmsHapTest测试套用例failed |
 | [I9VJLA](https://gitee.com/openharmony/multimedia_audio_framework/issues/I9VJLA?from=project-issue) | 【RK3568】系统内录读取资源失败 |
 | [I9F8M0](https://gitee.com/openharmony/applications_app_samples/issues/I9F8M0?from=project-issue) | 【RK3568】CertificateFramework,文本框最大输入字符限制为100，存在生成的数据长度大于100如592/100，显示不太友好 |
@@ -141,13 +141,13 @@ repo forall -c 'git lfs pull'
 | [I93ONW](https://gitee.com/openharmony/drivers_peripheral/issues/I93ONW?from=project-issue) | 【RK3568】rkusb相机dumper出来的图片命名的分辨率与实际不符 |
 | [I9SSRV](https://gitee.com/openharmony/arkcompiler_runtime_core/issues/I9SSRV?from=project-issue) | 【RK3568】runtime_core_host_unittest UT测试存在失败项 |
 | [I9PIQK](https://gitee.com/openharmony/applications_notes/issues/I9PIQK?from=project-issue) | 【RK3568】备忘录更改文本缩进后保存退出，再次打开文本无缩进 |
-| [I9QC3M](https://gitee.com/openharmony/xts_acts/issues/I9QC3M?from=project-issue) | 【RK3568】acts测试套优化 |
+| [I9QC3M](https://gitcode.com/openharmony/xts_acts/issues/I9QC3M?from=project-issue) | 【RK3568】acts测试套优化 |
 | [I9R5MJ](https://gitee.com/openharmony/bundlemanager_bundle_framework/issues/I9R5MJ?from=project-issue) | 【RK3568】调用verifyAbc接口放置非法abc文件后，安装目录下存在abc文件 |
 | [I934K9](https://gitee.com/openharmony/testfwk_arkxtest/issues/I934K9?from=project-issue) | 【RK3568】assertPromiseIs相关断言功能异常 |
 | [I9PPPN](https://gitee.com/openharmony/systemabilitymgr_samgr/issues/I9PPPN?from=project-issue) | 【RK3568】打开日志落盘重启设备，重启后打印日志"SystemWaitParameter failed!" |
-| [I9Q6OD](https://gitee.com/openharmony/xts_dcts/issues/I9Q6OD?from=project-issue) | 【RK3568】4.1release测试套概率性出现测试套失败问题 |
+| [I9Q6OD](https://gitcode.com/openharmony/xts_dcts/issues/I9Q6OD?from=project-issue) | 【RK3568】4.1release测试套概率性出现测试套失败问题 |
 | [I9NCRP](https://gitee.com/openharmony/drivers_hdf_core/issues/I9NCRP?from=project-issue) | 【RK3568】执行命令 ./hdf_dbg -q -1 回显异常 |
-| [I9OWYO](https://gitee.com/openharmony/xts_acts/issues/I9OWYO?from=project-issue) | 【RK3568】安全控件部分用例存在失败情况 |
+| [I9OWYO](https://gitcode.com/openharmony/xts_acts/issues/I9OWYO?from=project-issue) | 【RK3568】安全控件部分用例存在失败情况 |
 
 **表4** 修复安全问题列表
 

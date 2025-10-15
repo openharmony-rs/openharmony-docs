@@ -40,9 +40,9 @@ The application model consists of the following elements:
 
 Along its evolution, the system has provided two application models:
 
-- Feature Ability (FA) model: This model is supported by API versions 7 and 8, and no longer recommended.
+- [Feature Ability (FA) model](ability-terminology.md#fa-model): This model has been supported since API version 7, and is no longer recommended.
 
-- Stage model: This model is supported since API version 9. It is the mainstream model with a long evolution plan. In this model, classes such as **AbilityStage** and **WindowStage** are provided as the stage of application components and windows. That's why it is named stage model.
+- [Stage model](ability-terminology.md#stage-model): This model is supported since API version 9. It is the mainstream model with a long evolution plan. In this model, classes such as **AbilityStage** and **WindowStage** are provided as the stage of application components and windows. That's why it is named stage model.
 
 
 ## Differences Between the FA Model and Stage Model

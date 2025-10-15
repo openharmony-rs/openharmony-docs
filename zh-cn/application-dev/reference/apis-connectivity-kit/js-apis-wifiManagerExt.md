@@ -1,4 +1,11 @@
 # @ohos.wifiManagerExt (WLAN扩展接口)
+
+<!--Kit: Connectivity Kit-->	
+<!--Subsystem: Communication-->	
+<!--Owner: @qq_43802146-->	
+<!--Designer: @qq_43802146-->	
+<!--Tester: @furryfurry123-->	
+<!--Adviser: @zhang_yixin13-->	
 该模块主要提供WLAN扩展接口，供非通用类型产品使用。
 
 > **说明：**
@@ -149,21 +156,15 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 **示例：**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
-  wifiManagerExt.getSupportedPowerMode((err, data:wifiManagerExt.PowerMode[]) => {
-      if (err) {
-          console.error("get supported power mode info error");
-          return;
-      }
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  });
-
-  wifiManagerExt.getSupportedPowerMode().then(data => {
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  }).catch((error:number) => {
-      console.error("get supported power mode error");
-  });
+wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => {
+    if (err) {
+        console.error("get supported power mode info error: ", err);
+        return;
+    }
+    console.info("get supported power mode info: " + JSON.stringify(data));
+});
 ```
 
 ## wifiManagerExt.getPowerMode<sup>9+</sup>

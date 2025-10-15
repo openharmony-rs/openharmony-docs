@@ -66,7 +66,7 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
   if (error) {
     console.error("setIfaceConfig callback error = " + JSON.stringify(error));
   } else {
-    console.log("setIfaceConfig callback ok");
+    console.info("setIfaceConfig callback ok");
   }
 });
 ```
@@ -129,7 +129,7 @@ let config: ethernet.InterfaceConfiguration = {
 const setConfigPromise = ethernet.setIfaceConfig("eth0", config);
 
 setConfigPromise.then(() => {
-  console.log("setIfaceConfig promise ok");
+  console.info("setIfaceConfig promise ok");
 }).catch((error: BusinessError)  => {
   console.error("setIfaceConfig promise error = " + JSON.stringify(error));
 });
@@ -176,12 +176,12 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
   if (error) {
     console.error("getIfaceConfig  callback error = " + JSON.stringify(error));
   } else {
-    console.log("getIfaceConfig callback mode = " + JSON.stringify(value.mode));
-    console.log("getIfaceConfig callback ipAddr = " + JSON.stringify(value.ipAddr));
-    console.log("getIfaceConfig callback route = " + JSON.stringify(value.route));
-    console.log("getIfaceConfig callback gateway = " + JSON.stringify(value.gateway));
-    console.log("getIfaceConfig callback netMask = " + JSON.stringify(value.netMask));
-    console.log("getIfaceConfig callback dnsServers = " + JSON.stringify(value.dnsServers));
+    console.info("getIfaceConfig callback mode = " + JSON.stringify(value.mode));
+    console.info("getIfaceConfig callback ipAddr = " + JSON.stringify(value.ipAddr));
+    console.info("getIfaceConfig callback route = " + JSON.stringify(value.route));
+    console.info("getIfaceConfig callback gateway = " + JSON.stringify(value.gateway));
+    console.info("getIfaceConfig callback netMask = " + JSON.stringify(value.netMask));
+    console.info("getIfaceConfig callback dnsServers = " + JSON.stringify(value.dnsServers));
   }
 });
 ```
@@ -229,12 +229,12 @@ import { ethernet } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => {
-  console.log("getIfaceConfig promise mode = " + JSON.stringify(data.mode));
-  console.log("getIfaceConfig promise ipAddr = " + JSON.stringify(data.ipAddr));
-  console.log("getIfaceConfig promise route = " + JSON.stringify(data.route));
-  console.log("getIfaceConfig promise gateway = " + JSON.stringify(data.gateway));
-  console.log("getIfaceConfig promise netMask = " + JSON.stringify(data.netMask));
-  console.log("getIfaceConfig promise dnsServers = " + JSON.stringify(data.dnsServers));
+  console.info("getIfaceConfig promise mode = " + JSON.stringify(data.mode));
+  console.info("getIfaceConfig promise ipAddr = " + JSON.stringify(data.ipAddr));
+  console.info("getIfaceConfig promise route = " + JSON.stringify(data.route));
+  console.info("getIfaceConfig promise gateway = " + JSON.stringify(data.gateway));
+  console.info("getIfaceConfig promise netMask = " + JSON.stringify(data.netMask));
+  console.info("getIfaceConfig promise dnsServers = " + JSON.stringify(data.dnsServers));
 }).catch((error: BusinessError) => {
   console.error("getIfaceConfig promise error = " + JSON.stringify(error));
 });
@@ -281,7 +281,7 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
   if (error) {
     console.error("whether2Activate callback error = " + JSON.stringify(error));
   } else {
-    console.log("whether2Activate callback = " + JSON.stringify(value));
+    console.info("whether2Activate callback = " + JSON.stringify(value));
   }
 });
 ```
@@ -329,7 +329,7 @@ import { ethernet } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 ethernet.isIfaceActive("eth0").then((data: number) => {
-  console.log("isIfaceActive promise = " + JSON.stringify(data));
+  console.info("isIfaceActive promise = " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
   console.error("isIfaceActive promise error = " + JSON.stringify(error));
 });
@@ -372,9 +372,9 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
   if (error) {
     console.error("getAllActiveIfaces callback error = " + JSON.stringify(error));
   } else {
-    console.log("getAllActiveIfaces callback value.length = " + JSON.stringify(value.length));
+    console.info("getAllActiveIfaces callback value.length = " + JSON.stringify(value.length));
     for (let i = 0; i < value.length; i++) {
-      console.log("getAllActiveIfaces callback = " + JSON.stringify(value[i]));
+      console.info("getAllActiveIfaces callback = " + JSON.stringify(value[i]));
     }
   }
 });
@@ -414,9 +414,9 @@ import { ethernet } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 ethernet.getAllActiveIfaces().then((data: string[]) => {
-  console.log("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
+  console.info("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
   for (let i = 0; i < data.length; i++) {
-    console.log("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
+    console.info("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
   }
 }).catch((error:BusinessError) => {
   console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
@@ -456,7 +456,7 @@ on(type: 'interfaceStateChange', callback: Callback\<InterfaceStateInfo>): void
 import { ethernet } from '@kit.NetworkKit';
 
 ethernet.on('interfaceStateChange', (data: object) => {
-  console.log('on interfaceSharingStateChange：' + JSON.stringify(data));
+  console.info('on interfaceSharingStateChange：' + JSON.stringify(data));
 });
 ```
 
@@ -548,15 +548,15 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 
 **系统能力**：SystemCapability.Communication.NetManager.Ethernet
 
-| 名称          | 类型                    | 必填 | 说明                                                         |
-| ------------ | ----------------------- | ---|------------------------------------------------------------ |
-| mode         | [IPSetMode](#ipsetmode9) | 是 | 以太网连接配置模式。 |
-| ipAddr       | string                  | 是 | 以太网连接静态配置ip信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| route        | string                  | 是 | 以太网连接静态配置路由信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| gateway      | string                  | 是 | 以太网连接配置网关信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| netMask      | string                  | 是 | 以太网连接配置子网掩码，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| dnsServers   | string                  | 是 | 以太网连接配置dns服务地址，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）多地址间用“,”隔开。 |
-| httpProxy<sup>10+</sup> | [HttpProxy](js-apis-net-connection.md#httpproxy10) | 否 | 以太网连接代理配置信息，默认情况下不配置任何代理信息。 |
+| 名称          | 类型                    | 只读 |可选| 说明                                                         |
+| ------------ | ----------------------- | ---|-----|------------------------------------------------------- |
+| mode         | [IPSetMode](#ipsetmode9) | 否 |否 |以太网连接配置模式。 |
+| ipAddr       | string                  | 否 |否 |以太网连接静态配置ip信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| route        | string                  | 否 |否 |以太网连接静态配置路由信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| gateway      | string                  | 否 |否 |以太网连接配置网关信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| netMask      | string                  | 否 |否 |以太网连接配置子网掩码，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| dnsServers   | string                  | 否 |否 |以太网连接配置dns服务地址，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）多地址间用“,”隔开。 |
+| httpProxy<sup>10+</sup> | [HttpProxy](js-apis-net-connection.md#httpproxy10) | 否 |是 |以太网连接代理配置信息，默认情况下不配置任何代理信息。 |
 
 ## InterfaceStateInfo<sup>11+</sup>
 
@@ -566,10 +566,10 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 
 **系统能力**：SystemCapability.Communication.NetManager.Ethernet
 
-| 名称         | 类型                    | 必填 | 说明                                                 |
-| ------------ | ----------------------- | --- | ---------------------------------------------------- |
-| iface        | string                  |  是 | 以太网卡名称。                                        |
-| active       | boolean                 |  是 | 以太网卡是否处于激活状态（true：激活；false：未激活）。 |
+| 名称         | 类型                    | 只读 |可选| 说明                                                 |
+| ------------ | ----------------------- | --- | ---|------------------------------------------------- |
+| iface        | string                  |  否 |否 |以太网卡名称。                                        |
+| active       | boolean                 |  否 |否 |以太网卡是否处于激活状态（true：激活；false：未激活）。 |
 
 ## IPSetMode<sup>9+</sup>
 

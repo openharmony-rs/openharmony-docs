@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 此类用于为应用程序设置代理。
 
@@ -119,7 +119,7 @@ struct WebComponent {
           }
           this.proxyRules = proxyConfig.getProxyRules();
           for (let i = 0; i < this.proxyRules.length; i++) {
-            console.info("SchemeFiletr: " + this.proxyRules[i].getSchemeFilter());
+            console.info("SchemeFilter: " + this.proxyRules[i].getSchemeFilter());
             console.info("Url: " + this.proxyRules[i].getUrl());
           }
           let isReverseBypassRule = proxyConfig.isReverseBypassEnabled();

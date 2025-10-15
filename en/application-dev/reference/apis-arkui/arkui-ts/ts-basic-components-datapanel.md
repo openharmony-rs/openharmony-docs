@@ -1,4 +1,10 @@
 # DataPanel
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **DataPanel** component is used to display proportions in a chart.
 
@@ -162,7 +168,7 @@ Creates a content modifier.
 
 ## DataPanelShadowOptions<sup>10+</sup>
 
-Inherits from [MultiShadowOptions](ts-types.md#multishadowoptions10) and has all attributes of **MultiShadowOptions**.
+Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowoptions) and has all attributes of **MultiShadowOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -400,7 +406,7 @@ function buildDataPanel(config: DataPanelConfiguration) {
     Column() {
       ForEach(config.values, (item: number, index: number) => {
         ChildItem({ item: item, index: index, max: config.maxValue })
-      }, (item: string) => item)
+      }, (item: number, index: number) => item.toString())
     }.padding(10)
 
     Column() {
@@ -460,7 +466,8 @@ struct ChildItem {
         Rect()
           .height(25)
           .width(this.item * 600 / this.max)
-          .foregroundColor(this.colorArray[this.index])
+          .foregroundColor((this.index < 0 || this.index >= this.colorArray.length) ? this.colorArray[0] :
+                            this.colorArray[this.index])
           .radius(5)
           .align(Alignment.Start)
         Text(" " + this.item)

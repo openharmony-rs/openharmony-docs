@@ -22,16 +22,11 @@ Enumerates the blend modes. A blend mode combines two colors (source color and d
 
 For brevity, the following abbreviations are used:
 
-- **s**: source.
-- **d**: destination.
-- **sa**: source alpha.
-- **da**: destination alpha.
+**s**: source. **d**: destination. **sa**: source alpha. **da**: destination alpha.
 
 The following abbreviations are used in the calculation result:
 
-- **r**: used when the calculation method is the same for the four channels (alpha, red, green, and blue channels). 
-- **ra**: used when only the alpha channel is manipulated.
-- **rc**: used when the other three color channels are manipulated.
+**r**: used when the calculation method is the same for the four channels (alpha, red, green, and blue channels). **ra**: used when only the alpha channel is manipulated. **rc**: used when the other three color channels are manipulated.
 
 The table below shows the effect of each blend mode, where the yellow rectangle is the source and the blue circle is the destination.
 
@@ -174,7 +169,7 @@ Retrieves the next operation in this path and moves the iterator to that operati
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| points | Array\<[common2D.Point](js-apis-graphics-common2D.md#point)>   | Yes  | Array of coordinate points. The array length must be at least the offset plus 4 to ensure that the array can hold all types of path data. After the operation is executed, this array is overwritten. The number of coordinate points to be filled depends on the operation type. Specifically, for **MOVE**, fill one coordinate; for **LINE**, fill two coordinates; for **QUAD**, fill three coordinates; for **CONIC**, fill three coordinates and one weight value (a total of 3.5 groups); for **CUBIC**, fill four coordinates; for **CLOSE** and **DONE**, do not fill any coordinate points.|
+| points | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>   | Yes  | Array of coordinate points. The array length must be at least the offset plus 4 to ensure that the array can hold all types of path data. After the operation is executed, this array is overwritten. The number of coordinate points to be filled depends on the operation type. Specifically, for **MOVE**, fill one coordinate; for **LINE**, fill two coordinates; for **QUAD**, fill three coordinates; for **CONIC**, fill three coordinates and one weight value (a total of 3.5 groups); for **CUBIC**, fill four coordinates; for **CLOSE** and **DONE**, do not fill any coordinate points.|
 | offset | number   | No  | Offset from the start of the array where writing begins. The default value is **0**. The value range is [0, size - 4], where **size** is the length of the coordinate point array.|
 
 **Return value**
@@ -1045,7 +1040,7 @@ Adds a polygon to this path.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| points | Array\<[common2D.Point](js-apis-graphics-common2D.md#point)>   | Yes  | Array that holds the vertex coordinates of the polygon.|
+| points | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>   | Yes  | Array that holds the vertex coordinates of the polygon.|
 | close  | boolean                                                        | Yes  | Whether to close the path, that is, whether to add a line segment from the start point to the end point of the path. The value **true** means to close the path, and **false** means the opposite.|
 
 **Error codes**
@@ -1237,8 +1232,8 @@ Obtains the coordinates and tangent at a distance from the start point of this p
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | forceClosed | boolean | Yes  | Whether the path is measured as a closed path. The value **true** means that the path is considered closed during measurement, and **false** means that the path is measured based on the actual closed status.                |
 | distance | number | Yes  | Distance from the start point. If a negative number is passed in, the value **0** is used. If a value greater than the path length is passed in, the path length is used. The value is a floating point number.              |
-| position | [common2D.Point](js-apis-graphics-common2D.md#point) | Yes  | Coordinates obtained.                 |
-| tangent | [common2D.Point](js-apis-graphics-common2D.md#point) | Yes  | Tangent obtained, where **tangent.x** and **tangent.y** represent the cosine and sine of the tangent of the point, respectively.                |
+| position | [common2D.Point](js-apis-graphics-common2D.md#point12) | Yes  | Coordinates obtained.                 |
+| tangent | [common2D.Point](js-apis-graphics-common2D.md#point12) | Yes  | Tangent obtained, where **tangent.x** and **tangent.y** represent the cosine and sine of the tangent of the point, respectively.                |
 
 **Return value**
 
@@ -2493,7 +2488,7 @@ Draws a group of points, line segments, or polygons on the canvas, with the spec
 
 | Name | Type                                      | Mandatory  | Description       |
 | ---- | ---------------------------------------- | ---- | --------- |
-| points  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point)> | Yes   | Array that holds the points to draw. The length cannot be 0.  |
+| points  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes   | Array that holds the points to draw. The length cannot be 0.  |
 | mode | [PointMode](#pointmode12)                  | No   | Mode in which the points are drawn. The default value is **drawing.PointMode.POINTS**.|
 
 **Error codes**
@@ -3690,8 +3685,7 @@ class DrawingRenderNode extends RenderNode {
 
 drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D.Rect, filterMode: FilterMode): void
 
-Splits an image into nine sections using two horizontal and two vertical lines: four edge sections, four corner sections, and a central section.
-
+Splits an image into nine sections using two horizontal and two vertical lines: four edge sections, four corner sections, and a central section.<br>
 If the four corner sections are smaller than the target rectangle, they will be drawn in the target rectangle without scaling. Otherwise, they will be scaled to fit the target rectangle. Any remaining space will be filled by stretching or compressing the other five sections to cover the entire target rectangle.
 
 **System capability**: SystemCapability.Graphics.Drawing
@@ -3739,8 +3733,7 @@ class DrawingRenderNode extends RenderNode {
 
 drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.Rect, filterMode: FilterMode): void
 
-Splits an image into multiple sections based on the lattice object's configuration and draws each section into the specified target rectangle on the canvas.
-
+Splits an image into multiple sections based on the lattice object's configuration and draws each section into the specified target rectangle on the canvas.<br>
 The intersections of even-numbered rows and columns (starting from 0) are fixed points. If the fixed lattice area fits within the target rectangle, it will be drawn without scaling. Otherwise, it will be scaled proportionally to fit the target rectangle. Any remaining space will be filled by stretching or compressing the remaining sections to cover the entire target rectangle.
 
 **System capability**: SystemCapability.Graphics.Drawing
@@ -3943,9 +3936,8 @@ Enumerates the fill types of a path.
 | INVERSE_WINDING  | 2    | Same as **WINDING**, but draws outside of the path, rather than inside.|
 | INVERSE_EVEN_ODD  | 3    | Same as **EVEN_ODD**, but draws outside of the path, rather than inside.|
 
-> **NOTE**
->
-> ![WINDING&EVEN_ODD](./figures/image_PathFillType_Winding_Even_Odd.png)
+> **NOTE**<br>
+> ![WINDING&EVEN_ODD](./figures/image_PathFillType_Winding_Even_Odd.png)<br>
 > As shown in the above figure, the path is a circle, the arrow indicates the path direction, **p** is any point "inside" the path, the blue line is the ray emitted from **p**, and the black arrow indicates the fill result using blue under the corresponding fill type. Under the **WINDING** fill rule, the number of intersection points of the ray and path is 2 (not 0), and therefore **p** is colored. Under the **EVEN_ODD** filling rule, the number of intersection points of the ray and path is 2 (an even number), and therefore **p** is not colored.
 
 ## PointMode<sup>12+</sup>
@@ -4003,7 +3995,7 @@ Creates a **TextBlob** object from the text. The coordinates of each font in the
 | -------- | ----------------------------- | ---- | -------------------------------------- |
 | text     | string             | Yes  | Content to be used for drawing the text blob.                  |
 | len      | number             | Yes  | Number of fonts. The value is an integer and is obtained from [countText](#counttext12).|
-| points   |[common2D.Point](js-apis-graphics-common2D.md#point)[]     | Yes  |Array of points, which are used to specify the coordinates of each font. The array length must be the same as the value of **len**.|
+| points   |[common2D.Point](js-apis-graphics-common2D.md#point12)[]     | Yes  |Array of points, which are used to specify the coordinates of each font. The array length must be the same as the value of **len**.|
 | font     | [Font](#font)      | Yes  | **Font** object.|
 
 **Return value**
@@ -4721,7 +4713,7 @@ Measures the text width.
 
 > **NOTE**
 >
-> This API is used to measure the text width of the original string. To measure the text width after typesetting, call [measure.measureText](../apis-arkui/js-apis-measure.md#measuretextmeasuretext).
+> This API is used to measure the text width of the original string. To measure the text width after typesetting, call [measure.measureText](../apis-arkui/arkts-apis-uicontext-measureutils.md#measuretext12).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -8455,13 +8447,13 @@ Maps a source point array to a destination point array by means of matrix transf
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point)> | Yes  | Array of source points.|
+| src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes  | Array of source points.|
 
 **Return value**
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| Array\<[common2D.Point](js-apis-graphics-common2D.md#point)> | Array of points obtained.|
+| Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Array of points obtained.|
 
 **Error codes**
 
@@ -8609,8 +8601,8 @@ Sets this matrix to a transformation matrix that maps the source point array to 
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point)> | Yes  | Array of source points. The array length must be the same as the value of **count**.|
-| dst | Array\<[common2D.Point](js-apis-graphics-common2D.md#point)> | Yes  | Array of destination points. The array length must be the same as the value of **count**.|
+| src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes  | Array of source points. The array length must be the same as the value of **count**.|
+| dst | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes  | Array of destination points. The array length must be the same as the value of **count**.|
 | count | number | Yes  | Number of points in each array. The value is an integer.|
 
 **Return value**
@@ -8727,7 +8719,7 @@ Obtains the radii of the specified rounded corner in this rounded rectangle.
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [common2D.Point](js-apis-graphics-common2D.md#point)  | Point. The horizontal coordinate indicates the radius of the rounded corner on the X axis, and the vertical coordinate indicates the radius on the Y axis.|
+| [common2D.Point](js-apis-graphics-common2D.md#point12)  | Point. The horizontal coordinate indicates the radius of the rounded corner on the X axis, and the vertical coordinate indicates the radius on the Y axis.|
 
 **Error codes**
 
@@ -9178,8 +9170,8 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| startPt  | [common2D.Point](js-apis-graphics-common2D.md#point)  | Yes  | Start point.|
-| endPt   | [common2D.Point](js-apis-graphics-common2D.md#point)  | Yes  | End point.|
+| startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes  | Start point.|
+| endPt   | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes  | End point.|
 | colors | Array\<number> | Yes  | Array of colors to distribute between the two points. The values in the array are 32-bit (ARGB) unsigned integers.|
 | mode  | [TileMode](#tilemode12) | Yes  | Tile mode of the shader effect.|
 | pos | Array\<number> \|null| No  | Relative position of each color in the color array. The array length must be the same as that of **colors**. The first element in the array must be 0.0, the last element must be 1.0, and the middle elements must be between 0.0 and 1.0 and increase by index. The default value is null, indicating that colors are evenly distributed between the two points.|
@@ -9225,7 +9217,7 @@ Creates a **ShaderEffect** object that generates a radial gradient based on the 
 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point)  | Yes  | Center of the circle.|
+| centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes  | Center of the circle.|
 | radius   | number  | Yes  | Radius of the gradient. A negative number is invalid. The value is a floating point number.|
 | colors | Array\<number> | Yes  | Array of colors to distribute between the center and ending shape of the circle. The values in the array are 32-bit (ARGB) unsigned integers.|
 | mode  | [TileMode](#tilemode12) | Yes  | Tile mode of the shader effect.|
@@ -9273,7 +9265,7 @@ Creates a **ShaderEffect** object that generates a color sweep gradient around a
 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point)  | Yes  | Center of the circle.|
+| centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes  | Center of the circle.|
 | colors | Array\<number> | Yes  | Array of colors to distribute between the start angle and end angle. The values in the array are 32-bit (ARGB) unsigned integers.|
 | mode  | [TileMode](#tilemode12) | Yes  | Tile mode of the shader effect.|
 | startAngle | number | Yes  | Start angle of the sweep gradient, in degrees. The value 0 indicates the positive direction of the X axis. A positive number indicates an offset towards the positive direction, and a negative number indicates an offset towards the negative direction. The value is a floating point number.|
@@ -9321,9 +9313,9 @@ Creates a **ShaderEffect** object that generates a conical gradient between two 
 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| startPt  | [common2D.Point](js-apis-graphics-common2D.md#point)  | Yes  |Center of the start circle of the gradient.|
+| startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes  |Center of the start circle of the gradient.|
 | startRadius | number | Yes  | Radius of the start circle of the gradient. A negative number is invalid. The value is a floating point number.|
-| endPt  | [common2D.Point](js-apis-graphics-common2D.md#point)  | Yes  | Center of the end circle of the gradient.|
+| endPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes  | Center of the end circle of the gradient.|
 | endRadius | number | Yes  | Radius of the end circle of the gradient. A negative value is invalid. The value is a floating point number.|
 | colors | Array\<number> | Yes  | Array of colors to distribute between the start circle and end circle. The values in the array are 32-bit (ARGB) unsigned integers.|
 | mode  | [TileMode](#tilemode12) | Yes  | Tile mode of the shader effect.|

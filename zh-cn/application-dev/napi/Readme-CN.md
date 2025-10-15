@@ -27,7 +27,7 @@
       - [使用Node-API接口创建基本数据类型](use-napi-basic-data-types.md)
       - [使用Node-API进行class相关开发](use-napi-about-class.md)
       - [使用Node-API接口注册和使用环境清理钩子](use-napi-about-cleanuphook.md)
-      - [使用Node-API接口进行date相关开发](use-napi-about-date.md)
+      - [使用Node-API接口进行Date相关开发](use-napi-about-date.md)
       - [使用Node-API接口进行错误处理开发](use-napi-about-error.md)
       - [使用Node-API接口关联数据，使其生命周期与当前环境的生命周期相关联](use-napi-about-environmental-life-cycle.md)
       - [使用Node-API接口进行函数创建和调用](use-napi-about-function.md)
@@ -123,7 +123,6 @@
     - [NativeBundle开发指导](native-bundle-guidelines.md)
 - 调试和性能分析<!--debugging-profiling-->
   - [调试和性能分析概述](debug-performance-profiling-overview.md)
-  - [通过DevEco Studio调试](debug-ide.md)
   - [C/C++内存错误检测](debug-asan.md)
 - 硬件兼容性<!--hardware-compatibility-->
   - [硬件兼容性简介](hw-guide.md)
