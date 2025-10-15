@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @li-weifeng2-->
-<!--Designer: @li-weifeng2-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -24,7 +24,7 @@ import { application } from '@kit.AbilityKit';
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在元服务中使用。
 
@@ -82,7 +82,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContext(): ApplicationContext
 
-获取应用上下文。开发者使用该接口时，无需依赖Context基类。
+获取应用上下文。开发者使用该接口时，无需依赖Context基类。重复调用会生成新的ApplicationContext对象。
 
 **原子化服务API**：从API version 14开始，该接口支持在元服务中使用。
 
@@ -185,11 +185,16 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 	- 对于UIAbility组件，系统将创建新的空进程作为主控进程。
 	- 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
 
-<!--Del-->
 > **说明：**
+> 
+> 如果当前进程已经是[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)，调用该接口无效并且不会抛出错误码。
 >
+> 当前进程只有运行了isolationProcess字段设为true的组件，或曾经成为过主控进程，开发者才可将其设置为备选主控进程。
+>
+> <!--Del-->
 > 当前仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
 <!--DelEnd-->
+
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -214,7 +219,7 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 | 错误码ID | 错误信息        |
 | -------- | --------------- |
 | 801 | Capability not supported.|
-| 16000115 | The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process. |
+| 16000115 | The current process cannot be set as a candidate master process. |
 
 
 **示例：**

@@ -45,8 +45,8 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId)](#oh_medialibrary_ondataprepared) | OH_MediaLibrary_OnDataPrepared | 当所请求的媒体资源准备完成时会触发回调。 |
-| [typedef void (\*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)](#oh_medialibrary_onimagedataprepared) | OH_MediaLibrary_OnImageDataPrepared | 当请求的图像源准备就绪时会触发回调。 |
-| [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | 当请求的动态照片准备就绪时会触发回调。 |
+| [typedef void (\*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)](#oh_medialibrary_onimagedataprepared) | OH_MediaLibrary_OnImageDataPrepared | 当请求的图像源准备就绪时会触发回调。 |
+| [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | 当请求的动态照片准备就绪时会触发回调。 |
 
 ### 变量
 
@@ -212,8 +212,8 @@ enum MediaLibrary_MediaContentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_COMPRESSED = 1 | 压缩媒体内容类型。 |
-| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | 图片对象媒体内容类型。 |
+| MEDIA_LIBRARY_COMPRESSED = 1 | 压缩媒体内容类型，指经过JPEG等格式编码后的图片资源。 |
+| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | 图片对象媒体内容类型，相关操作详见[OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)。 |
 
 
 ## 函数说明

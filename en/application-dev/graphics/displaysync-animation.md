@@ -1,4 +1,10 @@
 # Requesting Frame Rates for Animations
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 During application development, you can use the optional parameter [ExpectedFrameRateRange](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11) to set an expected frame rate range for a [property animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) or an [explicit animation](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md).
 
@@ -24,7 +30,8 @@ The code snippet below defines an explicit animation for the **Button** componen
    ```ts
    Button()
     .onClick(() => {
-      animateTo({
+      // uiContext must be obtained by calling getUIContext. For details, see the following sample.
+      this.uiContext?.animateTo({
         duration: 1200,
         iterations: 10,
         expectedFrameRateRange: { // Set the frame rate range of the explicit animation.
@@ -48,6 +55,15 @@ struct AnimationToAnimationDemo {
   @State translateX1: number = -100;
   @State translateX2: number = -100;
   @State translateX3: number = -100;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    if (!this.uiContext) {
+      console.warn('no uiContext');
+      return;
+    }
+  }
 
   build() {
     Column() {
@@ -114,7 +130,7 @@ struct AnimationToAnimationDemo {
             this.isAnimation = !this.isAnimation;
             this.translateX3 = this.isAnimation ? 100 : -100;
 
-            animateTo({
+            this.uiContext?.animateTo({
               duration: 1200,
               iterations: 10,
               playMode: PlayMode.AlternateReverse,
@@ -127,7 +143,7 @@ struct AnimationToAnimationDemo {
               this.translateX1 = this.isAnimation ? 100 : -100;
             })
 
-            animateTo({
+            this.uiContext?.animateTo({
               duration: 1200,
               iterations: 10,
               playMode: PlayMode.AlternateReverse,
@@ -157,3 +173,9 @@ struct AnimationToAnimationDemo {
   }
 }
 ```
+
+<!--RP1-->
+## Samples
+
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySync)
+<!--RP1End-->

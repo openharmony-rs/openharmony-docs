@@ -3,6 +3,7 @@
 ### Change History
 | Change Description                                                                | Date        |
 | ----------------------------------------------------------------------- | ------------ |
+| Added the writing requirements for kit-specific support of the Emulator.|  2025/07  |
 | The development guide is provided by kit, and therefore this template is updated accordingly.|  March 2024 |
 
 
@@ -215,7 +216,21 @@ _**[Key Writing Points]**_
 
 ***[Example]***
 
-- Device constraints: XXX (the official device category name, such as 2-in-1) devices do not support using this kit. or  This kit is only applicable to (the official device category name, such as 2-in-1) devices. or  Only XXX devices of version XXXXXX and above can use this kit.
+####  Device Constraints
+
+XXX (the official device category name, such as 2-in-1) devices do not support using this kit. or  This kit is only applicable to (the official device category name, such as 2-in-1) devices. or  Only XXX devices of version XXXXXX and above can use this kit.
+
+####  Emulator Support
+_Choose the appropriate fixed sentence structure based on the actual Emulator support of the Kit. The first option is for kits that do not support the Emulator; the second is for kits that fully support the Emulator; the third is for kits with partial Emulator support.
+Note: For OpenHarmony kits, this section will be replaced with tags. The approach to handling differences between domestic and international versions is still to be determined._
+
+- This kit does not support development with the Emulator.
+
+- This kit supports development with the Emulator.
+
+- This kit supports development with the Emulator, but there are some differences in capabilities compared to real devices. For more information, refer to "Differences Between the Emulator and the Real Device" (link to the relevant section in DevEco Studio as precisely as possible).
+
+####  Specification Limitations
 
 - Data synchronization can be implemented across devices only for the applications with the same bundleName.
 

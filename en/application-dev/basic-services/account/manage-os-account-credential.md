@@ -1,5 +1,12 @@
 # Managing System Account Credentials (for System Application Only)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 Credentials can be used to authenticate users. This topic walks you through on how to add, update, obtain, and delete credentials for a system account and authenticate the system account using the enrolled credentials.
 
 ## Credential Type
@@ -105,8 +112,8 @@ Use [addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sy
    ```ts
    userIDM.addCredential(credentialInfo, {
      onResult: (code: number, result: osAccount.RequestResult) => {
-       console.log('addCredential code = ' + code);
-       console.log('addCredential result = ' + result);
+       console.info('addCredential code = ' + code);
+       console.info('addCredential result = ' + result);
      }
    });
    ```
@@ -131,8 +138,8 @@ Use [auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth
    let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
    userAuth.auth(challenge, authType, authTrustLevel, {
      onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-       console.log('pin auth result = ' + result);
-       console.log('pin auth extraInfo = ' + JSON.stringify(extraInfo));
+       console.info('pin auth result = ' + result);
+       console.info('pin auth extraInfo = ' + JSON.stringify(extraInfo));
        let authToken = extraInfo.token;
      }
    });
@@ -161,8 +168,8 @@ Biometric credentials such as face and fingerprint can be enrolled after the PIN
    ```ts
    userIDM.addCredential(faceCredInfo, {
      onResult: (code: number, result: osAccount.RequestResult) => {
-       console.log('add face credential, resultCode: ' + code);
-       console.log('add face credential, request result: ' + result);
+       console.info('add face credential, resultCode: ' + code);
+       console.info('add face credential, request result: ' + result);
      }
    });
    ```
@@ -182,8 +189,8 @@ Biometric credentials such as face and fingerprint can be enrolled after the PIN
    ```ts
    userIDM.addCredential(fingerprintCredInfo, {
      onResult: (code: number, result: osAccount.RequestResult) => {
-       console.log('add fingerprint credential, resultCode: ' + code);
-       console.log('add fingerprint credential, request result: ' + result);
+       console.info('add fingerprint credential, resultCode: ' + code);
+       console.info('add fingerprint credential, request result: ' + result);
      }
    });
    ```
@@ -208,8 +215,8 @@ Biometric authentication can be performed after the biometric credentials are en
    let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
    userAuth.auth(challenge, authType, authTrustLevel, {
      onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-       console.log('face auth result = ' + result);
-       console.log('face auth extraInfo = ' + JSON.stringify(extraInfo));
+       console.info('face auth result = ' + result);
+       console.info('face auth extraInfo = ' + JSON.stringify(extraInfo));
      }
    });
    ```
@@ -237,8 +244,8 @@ The user can update credentials as required. You can use [updateCredential](../.
    ```ts
    userIDM.updateCredential(credentialInfo, {
      onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-       console.log('updateCredential result = ' + result);
-       console.log('updateCredential extraInfo = ' + extraInfo);
+       console.info('updateCredential result = ' + result);
+       console.info('updateCredential extraInfo = ' + extraInfo);
      }
    });
    ```
@@ -271,7 +278,7 @@ For example, delete a fingerprint, do as follows:
 
    ```ts
    let credentialId: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]);
-   let token: Uint8Array = new Uint8Array([1, 2, 3, 4, 5])
+   let token: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]);
    let credInfoList: osAccount.EnrolledCredInfo[] = await userIDM.getAuthInfo(osAccount.AuthType.FINGERPRINT);
    if (credInfoList.length != 0) {
      credentialId = credInfoList[0].credentialId;
@@ -285,8 +292,8 @@ For example, delete a fingerprint, do as follows:
    ```ts
    userIDM.delCred(credentialId, token, {
      onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-       console.log('delCred result = ' + result);
-       console.log('delCred extraInfo = ' + JSON.stringify(extraInfo));
+       console.info('delCred result = ' + result);
+       console.info('delCred extraInfo = ' + JSON.stringify(extraInfo));
      }
    });
    ```
@@ -310,4 +317,3 @@ Use [closeSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys
 ```ts
 userIDM.closeSession();
 ```
-

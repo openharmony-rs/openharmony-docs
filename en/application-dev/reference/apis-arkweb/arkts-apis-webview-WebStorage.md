@@ -1,4 +1,10 @@
 # Class (WebStorage)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yuzhouhang1-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebStorage** object to manage the Web SQL database and HTML5 Web Storage APIs. All **Web** components in an application share a **WebStorage** object.
 
@@ -34,7 +40,7 @@ Deletes all data in the specified origin.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -66,7 +72,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -82,31 +87,77 @@ HTML file to be loaded:
     <title>test</title>
     <script type="text/javascript">
 
-      var db = openDatabase('mydb','1.0','Test DB',2 * 1024 * 1024);
-      var msg;
+        // Open or create a database.
+        var request = indexedDB.open('myDatabase', 1);
 
-      db.transaction(function(tx){
-        tx.executeSql('INSERT INTO LOGS (id,log) VALUES(1,"test1")');
-        tx.executeSql('INSERT INTO LOGS (id,log) VALUES(2,"test2")');
-        msg = '<p>Data table created, with two data records inserted.</p>';
+        // Triggered when the database version changes or the database is created for the first time.
+        request.onupgradeneeded = function(event) {
+            var db = event.target.result;
 
-        document.querySelector('#status').innerHTML = msg;
-      });
+            // Create an object store (table) and set the primary key to id.
+            var objectStore = db.createObjectStore('customers', { keyPath: 'id' });
 
-      db.transaction(function(tx){
-        tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
-          var len = results.rows.length,i;
-          msg = "<p>Number of records: " + len + "</p>";
+            // Create an index for name.
+            objectStore.createIndex('name', 'name', { unique: false });
+        };
 
-          document.querySelector('#status').innerHTML += msg;
+        // Called when the database is successfully opened.
+        request.onsuccess = function(event) {
+            var db = event.target.result;
 
-              for(i = 0; i < len; i++){
-                msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+            const customerData = [
+                {id: 1, name: 'John Doe', email: 'john@example.com'},
+                {id: 2, name: 'John Doe', email: 'john@example.com'},
+            ]
 
-          document.querySelector('#status').innerHTML += msg;
-          }
-        },null);
-      });
+            // Insert data.
+            var transaction = db.transaction('customers', 'readwrite');
+            var objectStore = transaction.objectStore('customers');
+
+            customerData.forEach((customer) => {
+                objectStore.add(customer);
+            });
+
+            transaction.oncomplete = function () {
+                console.info('Transaction completed: data added');
+            }
+            
+            transaction.onerror = function (event) {
+                console.error("Transaction failed", event);
+            }
+            
+            // Query data.
+            var queryTransaction = db.transaction(['customers']);
+            var queryObjectStore = queryTransaction.objectStore('customers');
+            var query = queryObjectStore.get(2);
+            
+            query.onsuccess = function (event) {
+                console.info('query succ');
+                console.info('Customer:', event.target.result);
+                console.info('Customer id:', event.target.result.id);
+                console.info('Customer name:', event.target.result.name);
+                console.info('Customer email:', event.target.result.email);
+            };
+            
+            queryObjectStore.openCursor().onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    var msg = "<p>Query record: " + cursor.key + "</p>";
+                    document.querySelector("#status").innerHTML += msg;
+                    var msg = "<p><b>" + cursor.value.name + "</b></p>";
+                    document.querySelector("#status").innerHTML += msg;
+                    console.info(`SSN ${cursor.key} corresponds to ${cursor.value.name}`);
+                    cursor.continue();
+                } else {
+                    console.info("No more records")
+                }
+            }
+        };
+
+        // Error handling.
+        request.onerror = function(event) {
+            console.error('Database error:', event.target.error);
+        };
 
       </script>
   </head>
@@ -132,7 +183,7 @@ Obtains information about all origins that are currently using the Web SQL Datab
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -162,9 +213,9 @@ struct WebComponent {
                 return;
               }
               for (let i = 0; i < origins.length; i++) {
-                console.log('origin: ' + origins[i].origin);
-                console.log('usage: ' + origins[i].usage);
-                console.log('quota: ' + origins[i].quota);
+                console.info('origin: ' + origins[i].origin);
+                console.info('usage: ' + origins[i].usage);
+                console.info('quota: ' + origins[i].quota);
               }
             })
           } catch (error) {
@@ -173,7 +224,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -197,7 +247,7 @@ Obtains information about all origins that are currently using the Web SQL Datab
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -224,13 +274,13 @@ struct WebComponent {
             webview.WebStorage.getOrigins()
               .then(origins => {
                 for (let i = 0; i < origins.length; i++) {
-                  console.log('origin: ' + origins[i].origin);
-                  console.log('usage: ' + origins[i].usage);
-                  console.log('quota: ' + origins[i].quota);
+                  console.info('origin: ' + origins[i].origin);
+                  console.info('usage: ' + origins[i].usage);
+                  console.info('quota: ' + origins[i].quota);
                 }
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -238,7 +288,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -263,7 +312,7 @@ Obtains the storage quota of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -293,7 +342,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('quota: ' + quota);
+              console.info('quota: ' + quota);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -301,7 +350,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -331,7 +379,7 @@ Obtains the storage quota of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -358,10 +406,10 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginQuota(this.origin)
               .then(quota => {
-                console.log('quota: ' + quota);
+                console.info('quota: ' + quota);
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -369,7 +417,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -394,7 +441,7 @@ Obtains the storage usage of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -424,7 +471,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('usage: ' + usage);
+              console.info('usage: ' + usage);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -432,7 +479,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -462,7 +508,7 @@ Obtains the storage usage of an origin in the Web SQL Database, in bytes. This A
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                             |
 | -------- | ----------------------------------------------------- |
@@ -489,7 +535,7 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginUsage(this.origin)
               .then(usage => {
-                console.log('usage: ' + usage);
+                console.info('usage: ' + usage);
               }).catch((e: BusinessError) => {
               console.error('error: ' + JSON.stringify(e));
             })
@@ -498,7 +544,6 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -518,7 +563,7 @@ Deletes all data in the Web SQL Database.
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | No  | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If this parameter is set to undefined or null, the default value false is used.|
 
 **Example**
 
@@ -543,7 +588,6 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }

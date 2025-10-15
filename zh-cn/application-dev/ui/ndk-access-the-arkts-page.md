@@ -144,11 +144,11 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 |    |——NativeEntry.cpp 桥接方法的Native侧实现。
 |    |——NativeEntry.h 桥接方法的Native侧定义。
 |    |——CMakeList.txt C语言库引用文件。
-|    |——ArkuiBaseNode.h 节点封装扩展类。
-|    |——ArkuiNode.h 节点封装扩展类。
-|    |——ArkuiListNode.h 节点封装扩展类。
-|    |——ArkuiListItemNode.h 节点封装扩展类。
-|    |——ArkuiTextNode.h 节点封装扩展类。
+|    |——ArkUIBaseNode.h 节点封装扩展类。
+|    |——ArkUINode.h 节点封装扩展类。
+|    |——ArkUIListNode.h 节点封装扩展类。
+|    |——ArkUIListItemNode.h 节点封装扩展类。
+|    |——ArkUITextNode.h 节点封装扩展类。
 |    |——NormalTextListExample.h 示例代码文件。
 | 
 |——ets
@@ -330,8 +330,11 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
    
    
    使用NDK 提供的C接口需要在CMakeLists.txt 中增加libace_ndk.z.so 的引用，如下所示，其中entry为工程导出的动态库名称，如当前示例使用的是默认的名称 libentry.so。
+   新增cpp文件后，同样需要在CMakeLists.txt中添加对应cpp文件，如果未配置，对应文件将不会参与编译。
    
    ```
+   add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
+   
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so)
    ```
 

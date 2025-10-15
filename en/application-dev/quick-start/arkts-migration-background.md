@@ -152,7 +152,7 @@ ArkTS supports efficient interoperability with TS/JS. In the current version, Ar
 ```typescript
 // lib.ts
 export class C {
-  v: string; // Compile-time error reported: Property 'v' has no initializer
+  v: string; // Compile-time error in TS strict mode: Property 'v' has no initializer
 }
 
 export let c = new C()

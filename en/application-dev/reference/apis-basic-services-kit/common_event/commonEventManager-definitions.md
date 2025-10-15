@@ -3,6 +3,8 @@
 This document provides a list of common events defined by the system.
 Common event types are defined in [Support](../js-apis-commonEventManager.md#support) of the **ohos.commonEventManager** module.
 
+
+
 ## Ability Kit
 
 
@@ -12,17 +14,31 @@ Indicates that the user has restarted the application package and killed all its
 
 When the specified user restarts the application and kills all its processes, the event notification service is triggered to publish this event.
 
+> **NOTE**
+> 
+> <!--Del-->System applications can listen for the restart event of themselves and other applications.<!--DelEnd-->
+> 
+> Third-party applications can only listen for the restart event of themselves.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
 **Value**: "usual.event.PACKAGE_RESTARTED"
 
+
+
 ### COMMON_EVENT_PACKAGE_DATA_CLEARED
 
 Indicates the common event that the user has cleared the application package data.
 
 When the specified user clears the application package data on the device, the event notification service is triggered to publish this event.
+
+> **NOTE**
+> 
+> <!--Del-->System applications can listen for the data clearance event of themselves and other applications.<!--DelEnd-->
+> 
+> Third-party applications can only listen for the data clearance event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -37,11 +53,19 @@ Indicates the result of applying a quick fix to the application.
 
 When the specified user applies a quick fix to the application on the device, the event notification service is triggered to publish this event.
 
+> **NOTE**
+> 
+> <!--Del-->System applications can listen for the quick fix event of themselves and other applications.<!--DelEnd-->
+> 
+> Third-party applications can only listen for the quick fix event of themselves.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
 **Value**: "usual.event.QUICK_FIX_APPLY_RESULT"
+
+
 
 ### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+</sup>
 
@@ -55,11 +79,19 @@ When a quick fix to the application is revoked on the device, the event notifica
 
 **Value**: "usual.event.QUICK_FIX_REVOKE_RESULT"
 
+
+
 ### COMMON_EVENT_PACKAGE_ADDED
 
 Indicates that a new application package has been installed on the device.
 
 When a new application is installed by a specified user on the device, the event notification service is triggered to publish this event.
+
+> **NOTE**
+> 
+> <!--Del-->System applications can listen for the installation event of themselves and other applications.<!--DelEnd-->
+> 
+> Third-party applications can only listen for the installation event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -73,6 +105,12 @@ When a new application is installed by a specified user on the device, the event
 Indicates the common event that an installed application has been uninstalled from the device with the application data retained.
 
 When a specified application package is removed by a specified user on the device, the event notification service is triggered to publish this event.
+
+> **NOTE**
+> 
+> <!--Del-->System applications can listen for the uninstallation event of themselves and other applications.<!--DelEnd-->
+> 
+> Third-party applications can only listen for the uninstallation event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -109,6 +147,12 @@ Indicates that an application package has been changed (for example, an ability 
 
 When an application package installed on the device is updated or an ability in the package is enabled or disabled, the event notification service is triggered to publish this event.
 
+> **NOTE**
+> 
+> <!--Del-->System applications can listen for the change event of themselves and other applications.<!--DelEnd-->
+> 
+> Third-party applications can only listen for the change event of themselves.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
@@ -121,6 +165,12 @@ When an application package installed on the device is updated or an ability in 
 Indicates that the user cleared the application package cache.
 
 When the cache of an application package installed on the device is cleared, the event notification service is triggered to publish this event.
+
+> **NOTE**
+> 
+> <!--Del-->System applications can listen for the cache clearance event of themselves and other applications.<!--DelEnd-->
+> 
+> Third-party applications can only listen for the cache clearance event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -138,6 +188,8 @@ Indicates the common event that application packages have been suspended.
 **Required permissions**: none
 
 **Value**: "usual.event.PACKAGES_SUSPENDED"
+
+
 
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
 
@@ -159,6 +211,10 @@ Sent to a package that has been unsuspended by the system.
 **Required permissions**: none
 
 **Value**: "usual.event.MY_PACKAGE_UNSUSPENDED"
+
+
+
+
 
 ### COMMON_EVENT_MANAGE_PACKAGE_STORAGE
 
@@ -188,6 +244,8 @@ When the minor mode is enabled on the device, the event notification service is 
 
 **Value**: "usual.event.MINORSMODE_ON"
 
+
+
 ### COMMON_EVENT_MINORSMODE_OFF<sup>12+</sup>
 
 Indicates that the minor mode is disabled.
@@ -203,6 +261,21 @@ When the minor mode is disabled on the device, the event notification service is
 **Value**: "usual.event.MINORSMODE_OFF"
 
 
+## ArkData
+
+
+### COMMON_EVENT_DATA_SHARE_READY<sup>12+</sup>
+
+Indicates that the DataShare service is available.
+
+After the DataShare service is started, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.DATA_SHARE_READY"
+
 
 ## ArkUI
 
@@ -214,11 +287,11 @@ When any of the following actions is performed, the event notification service i
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.RECEIVER_SPLIT_SCREEN
+**Required permissions**: none
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: "usual.event.SPLIT_SCREEN"
+**Value**: "common.event.SPLIT_SCREEN"
 
 
 
@@ -237,8 +310,6 @@ When any of the following actions is performed, the event notification service i
 **Value**: "usual.event.SLOT_CHANGE"
 
 
-
-
 ## Background Tasks Kit
 
 
@@ -252,8 +323,6 @@ When the user does not use the device for the specified period of time and the s
 **Required permissions**: none
 
 **Value**: "usual.event.DEVICE_IDLE_MODE_CHANGED"
-
-
 
 
 ## Basic Services Kit
@@ -348,6 +417,10 @@ When the system time zone changes, the event notification service is triggered t
 
 **Value**: "usual.event.TIMEZONE_CHANGED"
 
+
+
+
+
 ### COMMON_EVENT_USER_INFO_UPDATED
 
 Indicates that the user information has been updated.
@@ -426,6 +499,8 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 **Value**: "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
 
+
+
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF
 
 Indicates that a distributed account is deregistered.
@@ -442,6 +517,8 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 **Value**: "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
 
+
+
 ### COMMON_EVENT_SCREEN_LOCKED
 
 Indicates that the screen has been locked.
@@ -454,6 +531,8 @@ When the screen is locked, the event notification service is triggered to publis
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Value**: usual.event.SCREEN_LOCKED
+
+
 
 ### COMMON_EVENT_SCREEN_UNLOCKED
 
@@ -472,7 +551,7 @@ When the screen is unlocked, the event notification service is triggered to publ
 ### COMMON_EVENT_USER_PRESENT<sup>(deprecated)</sup>
 Indicates the action of a common event that the user unlocks the device.
 
-  > Notes:
+  > **NOTE**
   >
   > This API is deprecated since API Version 10 and replaced by [COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked).
 
@@ -573,6 +652,8 @@ When the system starts charging the battery, the event notification service is t
 **Required permissions**: none
 
 **Value**: "usual.event.CHARGING"
+
+
 
 ### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+</sup>
 
@@ -705,7 +786,86 @@ When the device exits the hibernation mode, the event notification service is tr
 
 
 
+
+
 ## Connectivity Kit
+
+### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE<sup>20+</sup>
+
+Indicates that the Bluetooth HFP AG connection state changes.
+
+When the Bluetooth HFP AG connection state changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE<sup>20+</sup>
+
+Indicates that the Bluetooth A2DP source connection state changes.
+
+When the Bluetooth A2DP source connection state changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE<sup>20+</sup>
+
+Indicates that the Bluetooth AVRCP connection state changes.
+
+When the Bluetooth AVRCP connection state changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE<sup>20+</sup>
+
+Indicates that the Bluetooth media codec changes.
+
+When the Bluetooth media codec changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE<sup>20+</sup>
+
+Indicates that the Bluetooth ACL connection state changes.
+
+When the Bluetooth ACL connection state changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE<sup>20+</sup>
+
+Indicates that the Bluetooth pairing state changes.
+
+When the Bluetooth pairing state changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE"
 
 
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
@@ -787,11 +947,13 @@ When the Wi-Fi access point state changes, the event notification service is tri
 
 **Value**: "usual.event.wifi.SCAN_STATE"
 
+
+
 ### COMMON_EVENT_WIFI_RSSI_VALUE
 
-Indicates that the Wi-Fi signal strength (RSSI) has changed.
+  Indicates that the Wi-Fi signal strength (RSSI) has changed.
 
-When the Wi-Fi signal strength (RSSI) changes, the event notification service is triggered to publish this event.
+  When the Wi-Fi signal strength (RSSI) changes, the event notification service is triggered to publish this event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -799,11 +961,13 @@ When the Wi-Fi signal strength (RSSI) changes, the event notification service is
 
 **Value**: "usual.event.wifi.RSSI_VALUE"
 
+
+
 ### COMMON_EVENT_WIFI_CONN_STATE
 
-Indicates that the Wi-Fi connection state has changed.
+  Indicates that the Wi-Fi connection state has changed.
 
-When the Wi-Fi connection state changes, the event notification service is triggered to publish this event.
+  When the Wi-Fi connection state changes, the event notification service is triggered to publish this event.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -950,8 +1114,6 @@ When the Wi-Fi P2P group information changes, the event notification service is 
 **Value**: "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
 
 
-
-
 ## MDM Kit
 
 ### COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED
@@ -967,8 +1129,6 @@ When the browser hosting policy changes, the event notification service is trigg
 **Value**: "usual.event.MANAGED_BROWSER_POLICY_CHANGED"
 
 
-
-
 ## Localization Kit
 
 ### COMMON_EVENT_LOCALE_CHANGED
@@ -981,8 +1141,6 @@ When the system language is set, the event notification service is triggered to 
 **Required permissions**: none
 
 **Value**: usual.event.LOCALE_CHANGED
-
-
 
 
 ## Network Kit
@@ -1053,6 +1211,8 @@ When there is a change in the SIM card status of the device, the event notificat
 
 **Value**: usual.event.SIM_STATE_CHANGED
 
+
+
 ### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+</sup>
 
 Indicates that the call state has been updated.
@@ -1064,6 +1224,8 @@ When the call state of the device is updated, the event notification service is 
 **Required permissions**: ohos.permission.GET_TELEPHONY_STATE (for system apps only)
 
 **Value**: usual.event.CALL_STATE_CHANGED
+
+
 
 ### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+</sup>
 
@@ -1092,8 +1254,8 @@ When the signal information of the device is updated, the event notification ser
 
 
 
-## Store Kit
-This document lists the common system events provided by the Store Kit to applications.
+## AppGallery Kit
+This document lists the common system events provided by the AppGallery Kit to applications.
 
 ### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
 Indicates the privacy signature result.
@@ -1187,6 +1349,8 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.CLOSE_SYSTEM_DIALOGS"
 
+
+
 ### COMMON_EVENT_UID_REMOVED
 
 (Reserved, not supported yet) Indicates the common event that a user ID has been removed from the system.
@@ -1230,6 +1394,8 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.CONFIGURATION_CHANGED"
 
+
+
 ### COMMON_EVENT_DRIVE_MODE
 (Reserved, not supported yet) Indicates the common event that the system is in driving mode.
 
@@ -1238,6 +1404,8 @@ Below are reserved common events that are not supported yet.
 **Required permissions**: none
 
 **Value**: "common.event.DRIVE_MODE"
+
+
 
 ### COMMON_EVENT_HOME_MODE
 (Reserved, not supported yet) Indicates the common event that the system is in home mode.
@@ -1248,6 +1416,8 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "common.event.HOME_MODE"
 
+
+
 ### COMMON_EVENT_OFFICE_MODE
 (Reserved, not supported yet) Indicates the common event that the system is in office mode.
 
@@ -1256,6 +1426,8 @@ Below are reserved common events that are not supported yet.
 **Required permissions**: none
 
 **Value**: "common.event.OFFICE_MODE"
+
+
 
 ### COMMON_EVENT_USER_STARTED
 
@@ -1287,6 +1459,8 @@ Below are reserved common events that are not supported yet.
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
 
 **Value**: "usual.event.USER_STARTING"
+
+
 
 ### COMMON_EVENT_USER_STOPPING
 (Reserved, not supported yet) Indicates the common event that the user is going to be stopped.
@@ -1339,6 +1513,8 @@ Below are reserved common events that are not supported yet.
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
 **Value**: "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
+
+
 
 ### COMMON_EVENT_DISK_BAD_REMOVAL
 
@@ -1404,8 +1580,12 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.data.DISK_MOUNTED"
 
-### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE
+### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the connection state of Bluetooth handsfree communication.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE](#common_event_bluetooth_handsfree_ag_connect_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1413,8 +1593,14 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE"
 
-### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the device connected to the Bluetooth handsfree is active.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1423,8 +1609,12 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE
+### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the connection state of Bluetooth A2DP has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1433,8 +1623,14 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the connection state of Bluetooth A2DP.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_connect_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1443,8 +1639,14 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the device connected using Bluetooth A2DP is active.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1452,8 +1654,14 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
 
-### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the AVRCP connection state of Bluetooth A2DP has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_avrcp_connect_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1461,8 +1669,14 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE"
 
-### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the playing state of Bluetooth A2DP has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1470,14 +1684,22 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
 
-### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the audio codec state of Bluetooth A2DP has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE](#common_event_bluetooth_a2dpsource_codec_value_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
 **Value**: "usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE"
+
+
 
 
 ### COMMON_EVENT_USER_FOREGROUND
@@ -1491,8 +1713,14 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.USER_FOREGROUND"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED
+
+
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that a remote Bluetooth device is discovered.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1501,8 +1729,14 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.remotedevice.DISCOVERED"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the Bluetooth class of a remote Bluetooth device has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1511,9 +1745,12 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that a low-ACL connection has been established with a remote Bluetooth device.
 
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1522,8 +1759,12 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that a low-ACL connection has been disconnected from a remote Bluetooth device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1532,9 +1773,13 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.remotedevice.ACL_DISCONNECTED"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE<sup>(deprecated)</sup>
 
 (Reserved, not supported yet) Indicates the common event that the friendly name of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1543,8 +1788,12 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.remotedevice.NAME_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the connection state of a remote Bluetooth device has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE](#common_event_bluetooth_remotedevice_pair_state_change20) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1552,8 +1801,14 @@ Below are reserved common events that are not supported yet.
 
 **Value**: "usual.event.bluetooth.remotedevice.PAIR_STATE"
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE
+
+
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the battery level of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1562,8 +1817,12 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the SDP state of a remote Bluetooth device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1572,8 +1831,12 @@ Below are reserved common events that are not supported yet.
 **Value**: "usual.event.bluetooth.remotedevice.SDP_RESULT"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE<sup>(deprecated)</sup>
 Indicates the action of a common event about the UUID connection state of a remote Bluetooth device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1582,8 +1845,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.remotedevice.UUID_VALUE"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the pairing request from a remote Bluetooth device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1592,8 +1859,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.remotedevice.PAIRING_REQ"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that Bluetooth pairing is canceled.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1602,8 +1873,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the connection request from a remote Bluetooth device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1612,8 +1887,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.remotedevice.CONNECT_REQ"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the response to the connection request from a remote Bluetooth device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1622,8 +1901,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
 
 
-### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL
+### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the connection to a remote Bluetooth device has been canceled.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1632,8 +1915,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.remotedevice.CONNECT_CANCEL"
 
 
-### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE
+### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the connection state of a Bluetooth handsfree has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1642,8 +1929,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE
+### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the audio state of a Bluetooth handsfree has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1652,8 +1943,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT
+### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the audio gateway state of a Bluetooth handsfree has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1662,8 +1957,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT"
 
 
-### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE
+### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the calling state of a Bluetooth handsfree has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1672,8 +1971,12 @@ Indicates the action of a common event about the UUID connection state of a remo
 **Value**: "usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE
+### COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE<sup>(deprecated)</sup>
 Indicates the common event that the state of a Bluetooth adapter has been changed, for example, Bluetooth has been enabled or disabled.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1682,7 +1985,12 @@ Indicates the common event that the state of a Bluetooth adapter has been change
 **Value**: "usual.event.bluetooth.host.STATE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE
+### COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE<sup>(deprecated)</sup>
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
+
 (Reserved, not supported yet) Indicates the common event about the request for the user to allow Bluetooth device scanning.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -1692,8 +2000,12 @@ Indicates the common event that the state of a Bluetooth adapter has been change
 **Value**: "usual.event.bluetooth.host.REQ_DISCOVERABLE"
 
 
-### COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE
+### COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the request for the user to enable Bluetooth.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1701,8 +2013,14 @@ Indicates the common event that the state of a Bluetooth adapter has been change
 
 **Value**: "usual.event.bluetooth.host.REQ_ENABLE"
 
-### COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE
+
+
+### COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the request for the user to disable Bluetooth.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1711,8 +2029,12 @@ Indicates the common event that the state of a Bluetooth adapter has been change
 **Value**: "usual.event.bluetooth.host.REQ_DISABLE"
 
 
-### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE
+### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the Bluetooth scanning mode of a device has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1721,8 +2043,14 @@ Indicates the common event that the state of a Bluetooth adapter has been change
 **Value**: "usual.event.bluetooth.host.SCAN_MODE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED
+
+
+### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED<sup>(deprecated)</sup>
 Indicates the common event that the Bluetooth scanning has been started on the device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1731,8 +2059,12 @@ Indicates the common event that the Bluetooth scanning has been started on the d
 **Value**: "usual.event.bluetooth.host.DISCOVERY_STARTED"
 
 
-### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED
+### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED<sup>(deprecated)</sup>
 Indicates the common event that the Bluetooth scanning is finished on the device.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1741,8 +2073,12 @@ Indicates the common event that the Bluetooth scanning is finished on the device
 **Value**: "usual.event.bluetooth.host.DISCOVERY_FINISHED"
 
 
-### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE
+### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE<sup>(deprecated)</sup>
 Indicates the common event that the Bluetooth adapter name of the device has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1751,8 +2087,12 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 **Value**: "usual.event.bluetooth.host.NAME_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE
-(Reserved, not supported yet) Indicates the common event that the connection state of Bluetooth A2DP Sink has changed.
+### COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
+(Reserved, not supported yet) Indicates the common event that the connection state of Bluetooth A2DP has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1760,8 +2100,14 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 **Value**: "usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE"
 
-### COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE
-(Reserved, not supported yet) Indicates the common event that the playing state of Bluetooth A2DP Sink has changed.
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE<sup>(deprecated)</sup>
+(Reserved, not supported yet) Indicates the common event that the playing state of Bluetooth A2DP has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1770,8 +2116,12 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 **Value**: "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
 
 
-### COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE
+### COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event that the audio state of Bluetooth A2DP Sink has changed.
+
+  > **NOTE**
+  >
+  > This API is supported since API version 9 and deprecated since API version 20.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1798,6 +2148,8 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 **Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
 
 **Value**: "usual.event.ABILITY_REMOVED"
+
+
 
 ### COMMON_EVENT_ABILITY_UPDATED
 (Reserved, not supported yet) Indicates the common event that an ability has been updated.
@@ -1838,6 +2190,8 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 **Required permissions**: none
 
 **Value**: "common.event.IVI_PAUSE"
+
+
 
 ### COMMON_EVENT_IVI_STANDBY
 (Reserved, not supported yet) Indicates the common event that a third-party application is instructed to pause the current work.
@@ -1889,6 +2243,8 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 **Value**: "common.event.IVI_EXTREME_TEMPERATURE"
 
+
+
 ### COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
 (Reserved, not supported yet) Indicates the common event that the IVI system has an extreme temperature.
 
@@ -1929,6 +2285,8 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 **Value**: "common.event.IVI_ACTIVE"
 
+
+
 ### COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED
 (Reserved, not supported yet) Indicates the common event that the account visibility changed.
 
@@ -1948,6 +2306,8 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 **Value**: "usual.event.data.ACCOUNT_DELETED"
 
+
+
 ### COMMON_EVENT_FOUNDATION_READY
 (Reserved, not supported yet) Indicates the common event that the foundation is ready.
 
@@ -1956,6 +2316,8 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 **Required permissions**: ohos.permission.RECEIVER_STARTUP_COMPLETED (for system applications only)
 
 **Value**: "usual.event.data.FOUNDATION_READY"
+
+
 
 ### COMMON_EVENT_SPN_INFO_CHANGED 
 Indicates the common event of that the SPN information had changed.
@@ -1966,4 +2328,3 @@ Indicates the common event of that the SPN information had changed.
 
 **Value**: "usual.event.SPN_INFO_CHANGED"
 
- <!--no_check--> 

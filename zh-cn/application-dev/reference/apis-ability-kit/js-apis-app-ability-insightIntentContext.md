@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhangyafei-echo; @linjunjie6-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -70,9 +70,10 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
       let want: Want = {
-        bundleName: 'com.ohos.intentexecutedemo',
+        bundleName: 'com.ohos.intentExecuteDemo',
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };
@@ -154,9 +155,10 @@ startAbility(want: Want): Promise\<void\>
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
+    async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
       let want: Want = {
-        bundleName: 'com.ohos.intentexecutedemo',
+        bundleName: 'com.ohos.intentExecuteDemo',
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };

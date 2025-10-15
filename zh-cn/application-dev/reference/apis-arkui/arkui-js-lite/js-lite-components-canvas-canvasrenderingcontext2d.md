@@ -13,9 +13,10 @@
 
 ```html
 <!-- xxx.hml -->
-<canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
-<input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
-
+<div>
+    <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
+    <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
+</div>
 ```
 
 

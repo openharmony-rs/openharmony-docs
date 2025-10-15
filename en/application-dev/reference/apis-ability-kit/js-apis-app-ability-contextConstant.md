@@ -2,11 +2,11 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @wangkailong; @yangxuguang-huawei; @Luobniz21-->
-<!--Designer: @ccllee1; @li-weifeng2-->
+<!--Designer: @ccllee1; @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The ContextConstant module defines context-related enums. Currently, it defines only the enum of encryption levels.
+The ContextConstant module defines context-related enums, including the file encryption partition level and process mode of the UIAbility after it is started.
 
 > **NOTE**
 > 
@@ -22,7 +22,7 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## AreaMode
 
-Enumerates the data encryption levels.
+Enumerates the file encryption levels, which are used to ensure data security for applications across different scenarios. You can select the appropriate encryption level based on the application requirements to protect user data.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -37,11 +37,13 @@ Enumerates the data encryption levels.
 
 ## ProcessMode<sup>12+</sup>
 
-Enumerates the process modes of the UIAbility after it is started. It takes effect only on 2-in-1 devices and tablets.
+Enumerates the process modes of the UIAbility after it is started.
 
 As a property of [StartOptions](js-apis-app-ability-startOptions.md), **ProcessMode** takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1) and is used to specify the process mode of the target UIAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
 
 | Name | Value| Description                                                                                                                  |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
@@ -89,11 +91,15 @@ As a property of [StartOptions](js-apis-app-ability-startOptions.md), **ProcessM
 
 ## StartupVisibility<sup>12+</sup>
 
-Enumerates the visibility statuses of the UIAbility after it is started. It takes effect only on 2-in-1 devices and tablets.
+Enumerates the visibility statuses of the UIAbility after it is started.
+
+If the target UIAbility is set to invisible, the window of the target UIAbility is not displayed in the foreground, there is no icon in the dock, and the **onForeground** lifecycle of the target UIAbility is not triggered.
 
 As a property of [StartOptions](js-apis-app-ability-startOptions.md), **StartupVisibility** takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1) and specifies the visibility of the target UIAbility after it is started.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This value takes effect only on 2-in-1 devices and tablets. If it is used on other devices, error code 801 is returned.
 
 | Name | Value| Description                                                                                                                  |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|

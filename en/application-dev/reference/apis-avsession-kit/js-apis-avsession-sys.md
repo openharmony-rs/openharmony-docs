@@ -1,4 +1,10 @@
 # @ohos.multimedia.avsession (AVSession Management) (System API)
+<!--Kit: AVSession Kit-->
+<!--Subsystem:Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester:@chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 The AVSession module provides APIs for media playback control so that applications can access the system's Media Controller.
 
@@ -41,11 +47,12 @@ Obtains the descriptors of all sessions that have set media information and regi
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 6600101  | Session service exception. |
 
 **Example**
@@ -85,11 +92,12 @@ Obtains the descriptors of all sessions that have set media information and regi
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 6600101  |Session service exception. |
 
 **Example**
@@ -137,10 +145,12 @@ Obtains the descriptors of all historical sessions. This API uses a promise to r
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -151,7 +161,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
   console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
-  if (descriptors.length > 0 ) {
+  if (descriptors.length > 0 && descriptors[0]) {
     console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
     console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
     console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
@@ -184,11 +194,13 @@ Obtains the descriptors of all historical sessions. This API uses an asynchronou
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
-| ID| Error Message|
+| ID| Error Message
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 201 |  permission denied. |
+| 202 |  Not System App.  |
+| 401 |  parameter check failed. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  |Session service exception. |
 
 **Example**
@@ -239,7 +251,7 @@ Obtains all the historical playlists. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -280,7 +292,7 @@ Obtains all the historical playlists. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -325,15 +337,16 @@ Creates a session controller based on the session ID. Multiple session controlle
 
 | Type                                                 | Description                                                        |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | Promise used to return the session controller created, which can be used to obtain the session ID, send commands and events to sessions, and obtain metadata and playback state information.|
+| Promise<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | Promise used to return the session controller created, which can be used to obtain the session ID,<br>send commands and events to sessions, and obtain metadata and playback state information.|
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
@@ -369,15 +382,16 @@ Creates a session controller based on the session ID. Multiple session controlle
 | Name   | Type                                                       | Mandatory| Description                                                        |
 | --------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | sessionId | string                                                      | Yes  | Session ID. If the value is set to **'default'**, the system creates a default controller to control the system default session.                                                    |
-| callback  | AsyncCallback<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | Yes  | Callback used to return the session controller created, which can be used to obtain the session ID, send commands and events to sessions, and obtain metadata and playback state information.|
+| callback  | AsyncCallback<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | Yes  | Callback used to return the session controller created, which can be used to obtain the session ID,<br>send commands and events to sessions, and obtain metadata and playback state information.|
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
@@ -427,11 +441,12 @@ Before calling this API, import the **ohos.multimedia.audio** module to obtain t
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
@@ -486,11 +501,12 @@ Before calling this API, import the **ohos.multimedia.audio** module to obtain t
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
@@ -508,19 +524,18 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
+  if (audioDevices !== undefined) {
+    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError) => {
+      if (err) {
+        console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('CastAudio : SUCCESS ');
+      }
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
-
-if (audioDevices !== undefined) {
-  avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError) => {
-    if (err) {
-      console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('CastAudio : SUCCESS ');
-    }
-  });
-}
 ```
 
 ## avSession.startAVPlayback<sup>11+</sup>
@@ -550,7 +565,7 @@ Starts an application to play a media asset. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -598,12 +613,12 @@ Obtains remote distributed session controllers based on the remote session type.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID  | Error Message                                                                                                 |
 |---------|-------------------------------------------------------------------------------------------------------|
 | 201     | permission denied.                                                                                    |
-| 202     | Not System App. Interface caller is not a system app.                                                                                       |
+| 202     | Not System App. |
 | 6600101 | Session service exception.                                                                            |
 | 6600109 | The remote connection is not established.                                                             |
 
@@ -611,6 +626,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {
   console.info(`getDistributedSessionController : SUCCESS : sessionControllers.length : ${sessionControllers.length}`);
@@ -657,11 +673,11 @@ Subscribes to session creation events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -697,11 +713,11 @@ Subscribes to session destruction events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -736,11 +752,11 @@ Subscribes to top session change events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -775,11 +791,11 @@ Unsubscribes from session creation events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -810,11 +826,11 @@ Unsubscribes from session destruction events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -845,11 +861,11 @@ Unsubscribes from top session change events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -878,11 +894,11 @@ Subscribes to session service death events. Upon receiving this event, the appli
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -913,11 +929,11 @@ Unsubscribes from session service death events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
@@ -950,11 +966,11 @@ Subscribes to the latest distributed remote session change events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID  | Error Message                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------|
-| 202     | Not System App. Interface caller is not a system app.                                                                                   |
+| 202     | Not System App. |
 | 6600101 | Session service exception.                                                                        |
 
 **Example**
@@ -988,11 +1004,11 @@ Unsubscribes from the latest distributed remote session change events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID  | Error Message                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------|
-| 202     | Not System App. Interface caller is not a system app.                                                                                   |
+| 202     | Not System App. |
 | 6600101 | Session service exception.                                                                        |
 
 **Example**
@@ -1022,11 +1038,12 @@ Sends a system key event to the top session. This API uses an asynchronous callb
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
@@ -1037,8 +1054,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 import { KeyEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyItem: keyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
-let event: keyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
+let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
+let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event, (err: BusinessError) => {
   if (err) {
@@ -1075,11 +1092,12 @@ Sends a system key event to the top session. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
@@ -1090,8 +1108,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 import { KeyEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyItem: keyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
-let event: keyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
+let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
+let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event).then(() => {
   console.info('SendSystemAVKeyEvent Successfully');
@@ -1121,11 +1139,12 @@ Sends a system control command to the top session. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
@@ -1185,11 +1204,12 @@ Sends a system control command to the top session. This API uses a promise to re
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
@@ -1268,13 +1288,13 @@ avSession.startCastDeviceDiscovery((err: BusinessError) => {
 
 Enumerates the session types supported by the remote distributed device.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**System capability**: SystemCapability.Multimedia.AVSession.Message
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System API**: This is a system API.
 
 | Name                                    | Value| Description                       |
 |----------------------------------------|---|---------------------------|
-| TYPE_SESSION_REMOTE      | 0 | Session on the remote device.      |
+| TYPE_SESSION_REMOTE      | 0 | Session on the remote device.|
 | TYPE_SESSION_MIGRATE_IN  | 1 | Session migrated to the local device.|
 | TYPE_SESSION_MIGRATE_OUT | 2 | Session migrated to the remote device.|
 
@@ -1297,10 +1317,11 @@ Starts cast-enabled device discovery with filter criteria specified. This API us
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -1343,7 +1364,7 @@ Starts cast-enabled device discovery. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1380,6 +1401,13 @@ Stops cast-enabled device discovery. This API uses an asynchronous callback to r
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If device discovery stops, **err** is **undefined**; otherwise, **err** is an error object.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Not System App. |
 
 **Example**
 
@@ -1410,6 +1438,14 @@ Stops cast-enabled device discovery. This API uses a promise to return the resul
 | Type          | Description                         |
 | -------------- | ----------------------------- |
 | Promise\<void> | Promise used to return the result. If device discovery stops, no value is returned; otherwise, an error object is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Not System App. |
 
 **Example**
 
@@ -1442,10 +1478,11 @@ Sets whether to allow the device discoverable. A discoverable device can be used
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -1480,10 +1517,11 @@ Sets whether to allow the device discoverable. A discoverable device can be used
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Return value**
@@ -1523,11 +1561,11 @@ Subscribes to device discovery events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
@@ -1559,11 +1597,11 @@ Unsubscribes from device discovery events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
@@ -1591,11 +1629,11 @@ Subscribes to device offline events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
@@ -1629,11 +1667,10 @@ Unsubscribes from device offline events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
@@ -1666,11 +1703,12 @@ This API can be called on both the local and remote devices. You can use the API
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception |
 | 6600102  | session does not exist |
@@ -1739,11 +1777,12 @@ This API can be called on both the local and remote devices. You can use the API
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | server exception |
 | 6600102  | The session does not exist |
@@ -1804,11 +1843,12 @@ Starts casting. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600108 | Device connection failed.       |
@@ -1825,16 +1865,16 @@ let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
 avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   castDevice = device;
   console.info(`on deviceAvailable  : ${device} `);
+  if (castDevice !== undefined) {
+    avSession.startCasting(myToken, castDevice, (err: BusinessError) => {
+      if (err) {
+        console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('startCasting successfully');
+      }
+    });
+  }
 });
-if (castDevice !== undefined) {
-  avSession.startCasting(myToken, castDevice, (err: BusinessError) => {
-    if (err) {
-      console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('startCasting successfully');
-    }
-  });
-}
 ```
 
 
@@ -1865,11 +1905,12 @@ Starts casting. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600108 | Device connection failed.       |
@@ -1886,14 +1927,14 @@ let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
 avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   castDevice = device;
   console.info(`on deviceAvailable  : ${device} `);
+  if (castDevice !== undefined) {
+    avSession.startCasting(myToken, castDevice).then(() => {
+      console.info('startCasting successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+    });
+  }
 });
-if (castDevice !== undefined) {
-  avSession.startCasting(myToken, castDevice).then(() => {
-    console.info('startCasting successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-  });
-}
 ```
 
 ## avSession.stopCasting<sup>10+</sup>
@@ -1915,10 +1956,11 @@ Stops castings. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600109  | The remote connection is not established. |
 
@@ -1963,10 +2005,11 @@ Stops castings. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600109  | The remote connection is not established. |
 
@@ -2010,7 +2053,7 @@ Starts to write device logs to a file. This API uses a promise to return the res
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2052,7 +2095,7 @@ Stops device logging. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2091,7 +2134,7 @@ Subscribes to device log events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2127,7 +2170,7 @@ Unsubscribes from device log events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2256,10 +2299,11 @@ Sets the surface ID for playback, which is used at the cast receiver (sink). Thi
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600109  | The remote connection is not established. |
 
@@ -2273,14 +2317,16 @@ media.createAVRecorder().then((avRecorder) => {
     if (err == null) {
       console.info('getInputSurface success');
       surfaceID = surfaceId;
+      if (surfaceID) {
+        aVCastController.setDisplaySurface(surfaceID).then(() => {
+          console.info('setDisplaySurface : SUCCESS');
+        });
+      }
     } else {
       console.error('getInputSurface failed and error is ' + err.message);
     }
   });
 })
-aVCastController.setDisplaySurface(surfaceID).then(() => {
-  console.info('setDisplaySurface : SUCCESS');
-});
 ```
 
 ### setDisplaySurface<sup>10+</sup>
@@ -2303,10 +2349,11 @@ Sets the surface ID for playback, which is used at the cast receiver (sink). Thi
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
+| 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600109  | The remote connection is not established. |
 
@@ -2321,18 +2368,20 @@ media.createAVRecorder().then((avRecorder) => {
     if (err == null) {
       console.info('getInputSurface success');
       surfaceID = surfaceId;
+      if (surfaceID) {
+        aVCastController.setDisplaySurface(surfaceID, (err: BusinessError) => {
+          if (err) {
+            console.error(`setDisplaySurface BusinessError: code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info('setDisplaySurface : SUCCESS');
+          }
+        });
+      }
     } else {
       console.error('getInputSurface failed and error is ' + err.message);
     }
   });
 })
-aVCastController.setDisplaySurface(surfaceID, (err: BusinessError) => {
-  if (err) {
-    console.error(`setDisplaySurface BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('setDisplaySurface : SUCCESS');
-  }
-});
 ```
 
 ### on('videoSizeChange')<sup>12+</sup>
@@ -2354,7 +2403,7 @@ Subscribes to video size change events.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------- |
@@ -2388,7 +2437,7 @@ Unsubscribes from video size changes.
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------- |

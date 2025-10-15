@@ -1,4 +1,10 @@
 # Enums
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yp99ustc; @aohui; @zourongchun-->
+<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -319,7 +325,7 @@ Enumerates the schemes that use the proxy.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-| Name         | Value| Description                                     |
+| Name         | Value| Description                                    |
 | ------------- | -- |----------------------------------------- |
 | MATCH_ALL_SCHEMES | 0 |All schemes use proxies.|
 | MATCH_HTTP        | 1 |HTTP requests use proxies.|
@@ -350,3 +356,21 @@ Enumerates the error codes of the blankless loading.
 | ERR_CONTROLLER_NOT_INITED   | -3 | **WebViewController** is not bound to any component.|
 | ERR_KEY_NOT_MATCH   | -4 | No key value is matched. [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) must be used with [getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20) and their key values must be the same. Otherwise, this error code is returned.|
 | ERR_SIGNIFICANT_CHANGE   | -5 | The similarity is low, and the system determines that the scene change is too large. As a result, the [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) API does not enable frame interpolation.|
+
+## ArkWebEngineVersion<sup>20+</sup>
+
+For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name         | Value| Description                                     |
+| ------------- | -- |----------------------------------------- |
+| SYSTEM_DEFAULT   | 0     | Default system kernel. For OpenHarmony 6.0, the default kernel is M132.|
+| M114             | 1     | Legacy kernel of OpenHarmony 6.0. You can select this legacy kernel. If it does not exist, the setting is invalid.|
+| M132             | 2     | Evergreen kernel of OpenHarmony 6.0, which is M132 by default. If it does not exist, the setting is invalid.|
+
+>**Table 1** Description of evergreen and legacy kernels
+>**Kernel Type** | **Name** | **Description**
+>| ----------- | -------- | -------- |
+>Evergreen kernel | EVERGREEN WebCore | The latest web kernel of the current system. The system uses this kernel to implement complete functions. Recommended for apps.|
+>Legacy kernel | LEGACY WebCore | Reuses the kernel of the previous version. Only security patches and public opinion issues are fixed. It is used only for compatibility rollback, and the support for the legacy kernel is time-limited. |

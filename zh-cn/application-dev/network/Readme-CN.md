@@ -9,7 +9,6 @@
 
 - [Network Kit简介](net-mgmt-overview.md)
 
-- [术语](network-terminology.md)
 
 - 访问网络<!--network-kit-data-transmission-->
     - [使用HTTP访问网络](http-request.md)
@@ -29,7 +28,8 @@
     - [扩展认证](net-eap.md)
   
     <!--Del-->
-    - [网络共享（仅对系统应用开放）](net-sharing.md)
-    - [以太网连接管理（仅对系统应用开放）](net-ethernet.md)   
-    - [VPN管理（仅对系统应用开放）](net-vpn.md)
+    - [网络共享（仅对系统应用开放）](net-sharing-sys.md)
+    - [以太网连接管理（仅对系统应用开放）](net-ethernet-sys.md)   
+    - [VPN管理（仅对系统应用开放）](net-vpn-sys.md)
     <!--DelEnd-->
+- [Network Kit术语](network-terminology.md)

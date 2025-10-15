@@ -4,7 +4,7 @@
 <!--Owner: @gzweioh-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Picture API在网页中创建浮动窗口以播放视频，使用户在浏览其他网页或与其他应用交互时，可通过该画中画窗口继续观看视频。  
 
 若使用线上视频资源，则需在配置文件中设置网络权限。权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
@@ -21,6 +21,7 @@ Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Pic
 ## 约束与限制
 1. 当前H264/H265/HLS格式的视频可在创建的画中画窗口中播放。  
 2. 画中画窗口的大小调整依据系统能力，具体参照设计指南中的系统特性与能力部分。
+3. Web组件在OpenHarmony6.0及之后的系统版本，支持画中画能力。
 
 ## 进入画中画
 

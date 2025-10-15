@@ -13,7 +13,15 @@ Crash detection is an important monitoring capability in ArkTS applications, whi
 
 ## Detection Principles
 
-When an application exits unexpectedly due to an uncaught exception or error during code execution, it crashes at the point the unhandled exception is thrown, generates a corresponding JS crash log file, and reports the crash event. You can use HiAppEvent to subscribe to [crash events](hiappevent-watcher-crash-events.md). For details about how to analyze JS crash issues, see [Analyzing JS Crashes](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-app-crash-js-way) 
+ArkCompiler runtime captures process exceptions. The fault log generation process is as follows:
+
+1. During code execution, if the application crashes due to uncaptured exceptions or errors, ArkCompiler runtime will capture these exceptions.
+
+2. ArkCompiler runtime collects fault information and reports it to HiView.
+
+3. HiView supplements only the information (such as the device memory status and application page switching history) that it has permission to obtain, generates the corresponding crash log file, and stores the file in the **/data/log/faultlog/faultlogger** directory.
+
+4. To report a crash event, you can use HiAppEvent to subscribe to the [crash event](hiappevent-watcher-crash-events.md).  
 
 
 ## Constraints
@@ -45,6 +53,26 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 ## Log Specifications
 
 
+|Field|Description|Initial API Version|Mandatory|Optional|
+|---|---|---|---|---|
+| Device info | Device information.| 8 | Yes| - |
+| Build info | Version information.| 8 | Yes| - |
+| Fingerprint | Fault feature, which is a hash value for faults of the same type.| 8 | Yes| - |
+| Timestamp | Timestamp.| 8 | Yes| - |
+| Module name | Bundle name or Process name.| 8 | Yes| - |
+| Version | HAP version.| 8 | Yes| - |
+| Version Code | Version code.| 8 | Yes| - |
+| Pid | ID of the faulty process.| 8 | Yes| - |
+| Uid | User ID.| 8 | Yes| - |
+| Process Memory(kB) | Process memory usage.| 20 | Yes| - |
+| Device Memory(kB) | Device memory information.| 20 | No| This field depends on the maintenance and debugging service process. If the maintenance and debugging service process stops or the device restarts when a fault occurs, this field does not exist. For details, see [Detection Principles](#detection-principles).|
+| Page switch history | Page switching history.| 20 | No| If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed.|
+| Reason | Fault cause.| 8 | Yes| - |
+| Error name | Fault type.| 8 | Yes| - |
+| Error message | Error message.| 8 | Yes| - |
+| Stacktrace | Fault stack.| 8 | Yes| - |
+| HiLog | HiLog logs printed before the fault occurs. A maximum of 1000 lines can be printed.| 20 | Yes| - |
+
 Example of the JS crash log specifications:
 ```text
 Device info:XXX <- Device information
@@ -58,6 +86,12 @@ Pid:579 <- Faulty process ID
 Uid:0 <- User ID
 Process Memory(kB): 1897(Rss) <- Process memory usage
 Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- Device memory information
+Page switch history: <- Page switch history
+  14:08:30:327 /ets/pages/Index:JsError
+  14:08:28:986 /ets/pages/Index
+  14:08:07:606 :leaves foreground
+  14:08:06:246 /ets/pages/Index:AppFreeze
+  14:08:01:955 :enters foreground
 Reason:TypeError <- Fault cause
 Error name:TypeError <- Fault type
 Error message:Cannot read property c of undefined <- Error message
@@ -73,6 +107,27 @@ HiLog:
 
 ```
 
+
+### Page switch history
+
+From API version 20, the page switch history segment is used to record the page switch history. A maximum of 10 latest historical tracks can be recorded in the fault log. The format of a record is as follows:
+```text
+  14:08:30:327 /ets/pages/Index:JsError
+       ^             ^            ^
+    Switching time   Page URL   Page name
+```
+
+> **NOTE**
+>
+> The child page's name is available only when it is navigated to through **Navigation**. The page name is defined in the [system routing table](../ui/arkts-navigation-navigation.md#system-routing-table).
+>
+> When the application switches between the foreground and background, the corresponding page URL is empty, but **enters foreground** and **leaves foreground** are displayed as special page names.
+>
+> **enters foreground**: The application runs in the foreground.
+>
+> **leaves foreground**: The application runs in the background.
+
+### Reason
 
 JS crashes are classified into the following types in the **Reason** field based on exception scenarios:
 
@@ -136,7 +191,8 @@ Format description:
 2. Execution method name: **onPageShow** indicates the name of the calling method that triggers an exception.
 
 3. The structure of the compilation product is as follows:
-   - Compilation product path: For details, see [Sourcemap Format](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713).
+   - For details, see the key field in [Exception Stack Trace Analysis: Sourcemap Format](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713).
+
    - File type: The file name extension is **.ts**. (For .js files, the exception can be located directly without SourceMap mapping.)
 
 4. Row and column number: Colons (:\) are used to separate row and column numbers of the exception.

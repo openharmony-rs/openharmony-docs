@@ -1547,10 +1547,11 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 ```ts
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
 class MyDeathRecipient {
   onRemoteDied() {
-    console.log('server died');
+    console.info('server died');
   }
 }
 
@@ -1571,33 +1572,36 @@ class TestRemoteObject extends rpc.RemoteObject {
     return false;
   }
 }
-
-let token: TestRemoteObject = new TestRemoteObject('testObject');
-let config: window.Configuration = { name: "test", windowType: window.WindowType.TYPE_DIALOG, ctx: getContext() };
-try {
-  window.createWindow(config, (err: BusinessError, data) => {
-    let errCode: number = err?.code;
-    if (errCode) {
-      console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
-      return;
+export default class ServiceExtAbility extends ServiceExtensionAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let token: TestRemoteObject = new TestRemoteObject('testObject');
+    let config: window.Configuration = { name: "test", windowType: window.WindowType.TYPE_DIALOG, ctx: this.context };
+    try {
+      window.createWindow(config, (err: BusinessError, data) => {
+        let errCode: number = err?.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        if (!data) {
+          console.error('data is null');
+          return;
+        }
+        data.bindDialogTarget(token, () => {
+          console.info('Dialog Window Need Destroy.');
+          }, (err: BusinessError) => {
+          let errCode: number = err?.code;
+          if (errCode) {
+            console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+            return;
+          }
+          console.info('Succeeded in binding dialog target.');
+        });
+      });
+    } catch (exception) {
+      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-    if (!data) {
-      console.error('data is null');
-      return;
-    }
-    data.bindDialogTarget(token, () => {
-      console.info('Dialog Window Need Destroy.');
-      }, (err: BusinessError) => {
-      let errCode: number = err?.code;
-      if (errCode) {
-        console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      console.info('Succeeded in binding dialog target.');
-    });
-  });
-} catch (exception) {
-  console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -1640,10 +1644,11 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 ```ts
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
 class MyDeathRecipient {
   onRemoteDied() {
-    console.log('server died');
+    console.info('server died');
   }
 }
 
@@ -1665,34 +1670,38 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 
-let token: TestRemoteObject = new TestRemoteObject('testObject');
-let config: window.Configuration = {
-  name: "test",
-  windowType: window.WindowType.TYPE_DIALOG,
-  ctx: getContext()
-};
-try {
-  window.createWindow(config, (err: BusinessError, data) => {
-    const errCode: number = err?.code;
-    if (errCode) {
-      console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
-      return;
+export default class ServiceExtAbility extends ServiceExtensionAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let token: TestRemoteObject = new TestRemoteObject('testObject');
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError, data) => {
+        const errCode: number = err?.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        if (!data) {
+          console.error('data is null');
+          return;
+        }
+        let promise = data.bindDialogTarget(token, () => {
+          console.info('Dialog Window Need Destroy.');
+        });
+        promise.then(() => {
+          console.info('Succeeded in binding dialog target.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+        });
+      });
+    } catch (exception) {
+      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-    if (!data) {
-      console.error('data is null');
-      return;
-    }
-    let promise = data.bindDialogTarget(token, () => {
-      console.info('Dialog Window Need Destroy.');
-    });
-    promise.then(() => {
-      console.info('Succeeded in binding dialog target.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
-    });
-  });
-} catch (exception) {
-  console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -2052,7 +2061,7 @@ export default class EntryAbility extends UIAbility {
 
 opacity(opacity: number): void
 
-设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2089,7 +2098,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2132,7 +2141,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2176,7 +2185,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3086,9 +3095,9 @@ export default class EntryAbility extends UIAbility {
 
 hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置是否隐藏非系统级悬浮窗口，使用callback异步回调。
+设置是否隐藏非系统级悬浮窗口（[windowType](arkts-apis-window-e.md#windowtype7)类型为TYPE_FLOAT），使用callback异步回调。
 
-非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡了。
+非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3165,13 +3174,15 @@ export default class EntryAbility extends UIAbility {
 
 hideNonSystemFloatingWindows(shouldHide: boolean): Promise&lt;void&gt;
 
-设置是否隐藏非系统级悬浮窗口，仅在非2in1设备生效。使用callback异步回调。
+设置是否隐藏非系统级悬浮窗口（[windowType](arkts-apis-window-e.md#windowtype7)类型为TYPE_FLOAT），使用Promise异步回调。
 
-非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡了。
+非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备中调用不生效也不报错，在其他设备中可正常调用。
 
 **参数：**
 
@@ -3417,7 +3428,7 @@ try {
 }
 ```
 
-## setWindowContainerModalColor<sup>20+</sup>
+### setWindowContainerModalColor<sup>20+</sup>
 
 setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
@@ -3850,7 +3861,7 @@ export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    console.log('disableWindowDecor');
+    console.info('disableWindowDecor');
     windowStage.disableWindowDecor();
   }
 };
@@ -3895,7 +3906,7 @@ export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    console.log('onWindowStageCreate');
+    console.info('onWindowStageCreate');
     try {
       windowStage.setShowOnLockScreen(true);
     } catch (exception) {
@@ -4027,7 +4038,7 @@ completeTransition(isCompleted: boolean): void
       y: 0.0,
       z: 0.0
     };
-    toWindow.translate(obj);
+    toWindow?.translate(obj);
     console.info('toWindow translate end');
   }
   );
@@ -4096,8 +4107,8 @@ animationForShown(context: TransitionContext): void
 ```ts
 // xxx.ts
 export class AnimationConfig {
-  private animationForShownCallFunc_: Function = undefined;
-  ShowWindowWithCustomAnimation(windowClass: window.Window, callback) {
+  private animationForShownCallFunc_: ((context : window.TransitionContext) => void) | undefined = undefined;
+  ShowWindowWithCustomAnimation(windowClass: window.Window, callback: (context : window.TransitionContext) => void) {
     if (!windowClass) {
       console.error('windowClass is undefined');
       return false;
@@ -4139,7 +4150,7 @@ try {
         y : 0.0,
         z : 0.0
       };
-      toWindow.translate(obj); // 设置动画过程中的属性转换
+      toWindow?.translate(obj); // 设置动画过程中的属性转换
       console.info('toWindow translate end in animation');
     });
     console.info('complete transition end');
@@ -4179,8 +4190,8 @@ animationForHidden(context: TransitionContext): void
 ```ts
 // xxx.ts
 export class AnimationConfig {
-  private animationForHiddenCallFunc_: Function = undefined;
-  HideWindowWithCustomAnimation(windowClass: window.Window, callback) {
+  private animationForHiddenCallFunc_: ((context : window.TransitionContext) => void) | undefined = undefined;
+  HideWindowWithCustomAnimation(windowClass: window.Window, callback: (context : window.TransitionContext) => void) {
     if (!windowClass) {
       console.error('windowClass is undefined');
       return false;
@@ -4222,7 +4233,7 @@ try {
         y : 0.0,
         z : 0.0
       };
-      toWindow.translate(obj); // 设置动画过程中的属性转换
+      toWindow?.translate(obj); // 设置动画过程中的属性转换
       console.info('toWindow translate end in animation');
     });
     console.info('complete transition end');

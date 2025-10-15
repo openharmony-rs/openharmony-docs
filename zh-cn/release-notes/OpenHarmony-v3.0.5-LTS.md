@@ -113,7 +113,7 @@ repo forall -c 'git lfs pull'
 | [I4YB87](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YB87) | 小型系统3516DV300-Linux在系统相机拍照录像后，图库中无显示。 | 
 | [I4YAGS](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | 小型系统3516DV300-Linux进入系统相机，画面蓝屏。 | 
 | [I59FZ7](https://gitee.com/openharmony/telephony_core_service/issues/I59FZ7) | 标准系统电话测试用例无法进行测试验证。 | 
-| [I4Z2MI](https://gitee.com/openharmony/xts_acts/issues/I4Z2MI) | 标准系统执行acts测试用例异常，actsWifiJSApiTest、ActsHotSpotJSApiTest、ActsP2PJSApiTest模块用例全部失败。 | 
+| [I4Z2MI](https://gitcode.com/openharmony/xts_acts/issues/I4Z2MI) | 标准系统执行acts测试用例异常，actsWifiJSApiTest、ActsHotSpotJSApiTest、ActsP2PJSApiTest模块用例全部失败。 | 
 
 
 ## <sup>修复安全漏洞列表</sup>

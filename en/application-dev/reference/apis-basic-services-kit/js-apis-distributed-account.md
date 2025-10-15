@@ -1,5 +1,12 @@
 # @ohos.account.distributedAccount (Distributed Account Management)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 The **distributedAccount** module provides APIs for managing distributed accounts, including querying and updating account login states.
 
 > **NOTE**
@@ -22,9 +29,9 @@ Obtains a **DistributedAccountAbility** instance.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| [DistributedAccountAbility](#distributedaccountability) | **DistributedAccountAbility** instance obtained. This instance provides APIs for querying and updating the login state of a distributed account.||
+  | Type| Description|
+  | -------- | -------- |
+  | [DistributedAccountAbility](#distributedaccountability) | **DistributedAccountAbility** instance obtained. This instance provides APIs for querying and updating the login state of a distributed account.||
 
 **Example**
   ```ts
@@ -47,11 +54,13 @@ Obtains distributed account information. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;[DistributedInfo](#distributedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;[DistributedInfo](#distributedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ------------------- |
@@ -68,13 +77,14 @@ Obtains distributed account information. This API uses an asynchronous callback 
     accountAbility.getOsAccountDistributedInfo(
       (err: BusinessError, data: distributedAccount.DistributedInfo) => {
         if (err) {
-          console.error('getOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+          console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('distributed information: ' + JSON.stringify(data));
+          console.info('distributed information: ' + JSON.stringify(data));
         }
       });
-  } catch (err) {
-    console.error('getOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -82,7 +92,7 @@ Obtains distributed account information. This API uses an asynchronous callback 
 
 getOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 
-Obtains distributed account information. This API uses a promise to return the result.
+Obtains the distributed account information. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -90,11 +100,13 @@ Obtains distributed account information. This API uses a promise to return the r
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[DistributedInfo](#distributedinfo)&gt; | Promise used to return the distributed account information obtained.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[DistributedInfo](#distributedinfo)&gt; | Promise used to return the distributed account information obtained.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ------------------- |
@@ -108,12 +120,13 @@ Obtains distributed account information. This API uses a promise to return the r
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   try {
     accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-        console.log('distributed information: ' + JSON.stringify(data));
+        console.info('distributed information: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-        console.error('getOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+        console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -121,7 +134,7 @@ Obtains distributed account information. This API uses a promise to return the r
 
 queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
-Queries distributed account information. This API uses an asynchronous callback to return the result.
+Queries the distributed account information. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9) instead.
@@ -132,9 +145,9 @@ Queries distributed account information. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;[DistributedInfo](#distributedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;[DistributedInfo](#distributedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
 
 **Example**
   ```ts
@@ -144,9 +157,9 @@ Queries distributed account information. This API uses an asynchronous callback 
   accountAbility.queryOsAccountDistributedInfo(
     (err: BusinessError, data: distributedAccount.DistributedInfo) => {
       if (err) {
-        console.error('queryOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+        console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('distributed information: ' + JSON.stringify(data));
+        console.info('distributed information: ' + JSON.stringify(data));
       }
     });
   ```
@@ -155,7 +168,7 @@ Queries distributed account information. This API uses an asynchronous callback 
 
 queryOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 
-Queries distributed account information. This API uses a promise to return the result.
+Queries the distributed account information. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -167,9 +180,9 @@ Queries distributed account information. This API uses a promise to return the r
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[DistributedInfo](#distributedinfo)&gt; | Promise used to return the distributed account information obtained.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[DistributedInfo](#distributedinfo)&gt; | Promise used to return the distributed account information obtained.|
 
 **Example**
   ```ts
@@ -177,9 +190,9 @@ Queries distributed account information. This API uses a promise to return the r
   
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-      console.log('distributed information: ' + JSON.stringify(data));
+      console.info('distributed information: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-      console.error('queryOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+      console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -195,12 +208,14 @@ Sets the distributed account information. This API uses an asynchronous callback
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to set.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the distributed account information is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to set.|
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the distributed account information is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ------------------- |
@@ -220,13 +235,14 @@ Sets the distributed account information. This API uses an asynchronous callback
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
       if (err) {
-        console.error('setOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+        console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setOsAccountDistributedInfo successfully');
+        console.info('setOsAccountDistributedInfo successfully');
       }
     });
-  } catch (err) {
-      console.error('setOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -242,17 +258,19 @@ Sets the distributed account information. This API uses a promise to return the 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to set.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to set.|
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ------------------- |
@@ -271,12 +289,13 @@ Sets the distributed account information. This API uses a promise to return the 
     {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
-        console.log('setOsAccountDistributedInfo successfully');
+        console.info('setOsAccountDistributedInfo successfully');
     }).catch((err: BusinessError) => {
-        console.error('setOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+        console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-      console.error('setOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -296,10 +315,10 @@ Updates the distributed account information. This API uses an asynchronous callb
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to update. |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the distributed account information is updated successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to update.|
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the distributed account information is updated successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Example**
   ```ts
@@ -310,9 +329,9 @@ Updates the distributed account information. This API uses an asynchronous callb
     {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
   accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
     if (err) {
-      console.error('queryOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+      console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('queryOsAccountDistributedInfo successfully');
+      console.info('updateOsAccountDistributedInfo successfully');
     }
   });
   ```
@@ -332,15 +351,15 @@ Updates the distributed account information. This API uses a promise to return t
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to update. |
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | accountInfo | [DistributedInfo](#distributedinfo) | Yes| Distributed account information to update.|
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
   ```ts
@@ -350,9 +369,9 @@ Updates the distributed account information. This API uses a promise to return t
   let accountInfo: distributedAccount.DistributedInfo =
     {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
   accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
-      console.log('updateOsAccountDistributedInfo successfully');
+      console.info('updateOsAccountDistributedInfo successfully');
    }).catch((err: BusinessError) => {
-      console.error('updateOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+      console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -362,15 +381,15 @@ Represents the distributed information about a system account.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| name | string |Yes| Name of the distributed account. It must be a non-null string.|
-| id | string |Yes| UID of the distributed account. It must be a non-null string.|
-| event | string |Yes| Login state of the distributed account. The state can be login, logout, token invalid, or logoff, which correspond to the following strings respectively:<br>-&nbsp;Ohos.account.event.LOGIN<br>-&nbsp;Ohos.account.event.LOGOUT<br>-&nbsp;Ohos.account.event.TOKEN_INVALID<br>-&nbsp;Ohos.account.event.LOGOFF |
-| nickname<sup>9+</sup> | string |No| Nickname of the distributed account. By default, no value is passed in.|
-| avatar<sup>9+</sup> | string |No| Avatar of the distributed account. By default, no value is passed in.|
-| status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) |No| Status of the distributed account. The value is of the enumerated type. The default status is unlogged.|
-| scalableData<sup>8+</sup> | object |No| Additional information about the distributed account, in the form of KV pairs. This parameter is left empty by default.|
+| Name| Type| Read-Only | Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| name | string | No| No | Name of the distributed account. It must be a non-null string.|
+| id | string | No| No | UID of the distributed account. It must be a non-null string.|
+| event | string | No| No | Login state of the distributed account. The state can be login, logout, token invalid, or logoff, which correspond to the following strings respectively:<br>-&nbsp;Ohos.account.event.LOGIN<br>-&nbsp;Ohos.account.event.LOGOUT<br>-&nbsp;Ohos.account.event.TOKEN_INVALID<br>-&nbsp;Ohos.account.event.LOGOFF |
+| nickname<sup>9+</sup> | string | No| Yes | Nickname of the distributed account. By default, no value is passed in.|
+| avatar<sup>9+</sup> | string | No| Yes | Avatar of the distributed account. By default, no value is passed in.|
+| status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) | Yes| Yes | Status of the distributed account. The value is of the enumerated type. The default status is unlogged.|
+| scalableData<sup>8+</sup> | object | No| Yes | Additional information about the distributed account, in the form of KV pairs. This parameter is left empty by default.|
 
 ## DistributedAccountStatus<sup>10+</sup>
 

@@ -1,5 +1,12 @@
 # @ohos.power (Power Management)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: PowerManager-->
+<!--Owner: @zhang-yinglie; @volcano_wang-->
+<!--Designer: @wangyantian0-->
+<!--Tester: @alien0208-->
+<!--Adviser: @w_Machine_cc-->
+
 The **power** module provides APIs for rebooting and shutting down the system, as well as querying the screen status. You can use these APIs to obtain the device activity status, power mode, and screen on/off status.
 > **NOTE**
 >
@@ -38,7 +45,7 @@ console.info('power is active: ' + isActive);
 
 rebootDevice(reason: string): void
 
-> **NOTE**<br>This API is supported since API version 7 and is deprecated since API version 9. The substitute API is available only for system applications.
+> **NOTE**<br>This API is supported since API version 7 and is deprecated since API version 9. You are advised to use **power.reboot** instead. The substitute API is available only for system applications.
 
 Reboots a device.
 
@@ -180,3 +187,4 @@ Enumerates power modes.
 | MODE_POWER_SAVE         | 601  | Power saving mode.        |
 | MODE_PERFORMANCE        | 602  | Performance mode.        |
 | MODE_EXTREME_POWER_SAVE | 603  | Ultra power saving mode.    |
+| MODE_CUSTOM_POWER_SAVE<sup>20+</sup>  | 650  | Custom power saving mode.    |

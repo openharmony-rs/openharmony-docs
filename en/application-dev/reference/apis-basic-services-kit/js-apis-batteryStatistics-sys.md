@@ -1,5 +1,12 @@
 # @ohos.batteryStatistics (Battery Statistics) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: PowerManager-->
+<!--Owner: @zhang-yinglie; @volcano_wang-->
+<!--Designer: @wangyantian0-->
+<!--Tester: @alien0208-->
+<!--Adviser: @w_Machine_cc-->
+
 The **batteryStatistics** module provides APIs for querying software and hardware power consumption statistics.
 
 > **NOTE**
@@ -273,9 +280,9 @@ Describes the device power consumption information.
 
 | Name | Type                               | Read-Only| Optional| Description                  |
 | ----- | ----------------------------------- | ---- | ---- | ---------------------- |
-| uid   | number                              | Yes  | No  | UID related to power consumption information.   |
-| type  | [ConsumptionType](#consumptiontype) | Yes  | No  | Power consumption type.  |
-| power | number                              | Yes  | No  | Power consumption, in unit of mAh.|
+| uid   | number                              | No  | No  | UID related to power consumption information.   |
+| type  | [ConsumptionType](#consumptiontype) | No  | No  | Power consumption type.  |
+| power | number                              | No  | No  | Power consumption, in unit of mAh.|
 
 ## ConsumptionType
 

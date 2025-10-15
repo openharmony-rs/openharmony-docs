@@ -1,5 +1,12 @@
 # @ohos.batteryInfo (Battery Information) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: PowerManager-->
+<!--Owner: @zhang-yinglie; @volcano_wang-->
+<!--Designer: @wangyantian0-->
+<!--Tester: @alien0208-->
+<!--Adviser: @w_Machine_cc-->
+
 The **batteryInfo** module provides APIs for querying the charger type, battery health status, and battery charging status.
 
 > **NOTE**
@@ -146,17 +153,17 @@ For details about the error codes, see [Battery Info Error Codes](errorcode-batt
   console.info("The result is: " + result);
   ```
 
-## Properties
+## Constants
 
 Describes battery information.
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
-| Name     | Type       | Read-Only| Optional|  Description    |
-| --------------- | ------------------- | ---- | ---- | ---------------------|
-| estimatedRemainingChargeTime<sup>9+</sup> | number                                         | Yes  | No  | Estimated time for fully charging the current device, in unit of milliseconds. This is a system API.         |
-| totalEnergy<sup>9+</sup>                  | number                                         | Yes  | No  | Total battery capacity of the device, in unit of mAh. This is a system API.  |
-| remainingEnergy<sup>9+</sup>              | number                                         | Yes  | No  | Remaining battery capacity of the device, in unit of mAh. This is a system API.|
+| Name     | Type       | Read-Only|  Description    |
+| --------------- | ------------------- | ---- | ---------------------|
+| estimatedRemainingChargeTime<sup>9+</sup> | number                                         | Yes  | Estimated time for fully charging the current device, in unit of milliseconds. This is a system API.         |
+| totalEnergy<sup>9+</sup>                  | number                                         | Yes  | Total battery capacity of the device, in unit of mAh. This is a system API.  |
+| remainingEnergy<sup>9+</sup>              | number                                         | Yes  | Remaining battery capacity of the device, in unit of mAh. This is a system API.|
 
 **Example**
   ```ts

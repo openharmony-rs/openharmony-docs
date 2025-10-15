@@ -56,8 +56,8 @@
     - [匿名密钥证明(ArkTS)](huks-key-anon-attestation-arkts.md)
     - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)
     <!--Del-->
-    - [非匿名密钥证明(ArkTS)](huks-key-attestation-arkts.md)
-    - [非匿名密钥证明(C/C++)](huks-key-attestation-ndk.md)
+    - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](huks-key-attestation-arkts-sys.md)
+    - [非匿名密钥证明(仅对系统应用开放)(C/C++)](huks-key-attestation-ndk-sys.md)
     <!--DelEnd-->
 - 其他操作<!--huks-other-operations-->
   - 查询密钥是否存在<!--huks-check-key-->
