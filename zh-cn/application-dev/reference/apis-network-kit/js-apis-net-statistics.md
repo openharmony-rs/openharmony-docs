@@ -814,7 +814,9 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 获取指定时间段内，本应用在指定网络中的流量使用情况。使用 Promise 方式作为异步方法。
 
-**注意：** 本接口只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于31天，会抛出错误码2103019。
+> **说明：**
+>
+>本接口只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于31天，会抛出错误码2103019。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -828,7 +830,7 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<[NetStatsInfo](#netstatsinfo22)> | 以 Promise 形式返回获取结果，返回应用历史流量统计信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo22)> | Promise对象，返回应用历史流量统计信息。 |
 
 **错误码：**
 
@@ -883,9 +885,9 @@ type NetBearType = connection.NetBearType
 | 名称        | 类型                                                   | 只读 |可选| 说明           |
 |-----------|------------------------------------------------------|----|---|--------------|
 | type      | [NetBearType](#netbeartype12) | 否  | 否|网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
-| startTime | int                                               | 否  |否| 开始时间戳(单位：秒)。 |
-| endTime   | int                                               | 否  |否 |结束时间戳(单位：秒)。 |
-| simId     | int                                               | 否  | 是|SIM 卡 ID。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
+| startTime | number                                               | 否  |否| 开始时间戳(单位：秒)。 |
+| endTime   | number                                               | 否  |否 |结束时间戳(单位：秒)。 |
+| simId     | number                                               | 否  | 是|SIM 卡 ID。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
 
 ## NetStatsInfo<sup>22+</sup>
 
@@ -895,7 +897,7 @@ type NetBearType = connection.NetBearType
 
 | 名称      | 类型   | 只读 |可选| 说明                      |
 | --------- | ------ | ---- |---| ------------------------ |
-| rxBytes   | long | 否   |否 |流量下行数据(单位：字节)。 |
-| txBytes   | long | 否   |否 |流量上行数据(单位：字节)。 |
-| rxPackets | long | 否   |否 |流量下行包个数。          |
-| txPackets | long | 否   |否 |流量上行包个数。          |
+| rxBytes   | number | 否   |否 |流量下行数据(单位：字节)。 |
+| txBytes   | number | 否   |否 |流量上行数据(单位：字节)。 |
+| rxPackets | number | 否   |否 |流量下行包个数。          |
+| txPackets | number | 否   |否 |流量上行包个数。          |
