@@ -57,134 +57,31 @@
 
 1. 导入模块。
 
-    ```ts
-    // 导入usbManager模块。
-    import { usbManager } from '@kit.BasicServicesKit';
-    ``` 
-    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 2. 获取设备列表。
 
-    ```ts
-    // 获取连接主设备的USB设备列表
-    let usbDevices: Array<usbManager.USBDevice> = usbManager.getDevices();
-    console.info(`usbDevices: ${usbDevices}`);
-    if(usbDevices.length === 0) {
-      console.error('usbDevices is empty');
-      return;
-    }
-    ```
-    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 获取设备操作权限。
 
-    ```ts
-    // 此处对列表中的第一台USB设备判断是否拥有访问权限
-    // 函数名仅作为示例，实际需要与业务结合命名
-    async function transferDefault() {
-        let usbDevice: usbManager.USBDevice = usbDevices[0];
-        if(!usbManager.hasRight(usbDevice.name)) {
-          await usbManager.requestRight(usbDevice.name).then(result => {
-            if(!result) {
-              // 没有访问设备的权限且用户不授权则退出
-              console.error('The user does not have permission to perform this operation');
-              return;
-            }
-          });
-        }
-    }
-    ```
-    <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 4. 获取通过实时传输读取数据的端点。
 
-   ```ts
-   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(usbDevice);
-   let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
-   let usbInterfaces: usbManager.USBInterface[] = [];
-   let usbInterface: usbManager.USBInterface | undefined = undefined
-   let usbEndpoints: usbManager.USBEndpoint[] = [];
-   let usbEndpoint: usbManager.USBEndpoint | undefined = undefined
-   for (let i = 0; i < usbConfigs.length; i++) {
-     usbInterfaces = usbConfigs[i].interfaces;
-     for (let j = 0; j < usbInterfaces.length; j++) {
-       usbEndpoints = usbInterfaces[j].endpoints;
-       usbEndpoint = usbEndpoints.find((value) => {
-         // direction为请求方向，0表示写入数据，128表示读取数据
-         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-       })
-       if (usbEndpoint !== undefined) {
-         usbInterface = usbInterfaces[j];
-         break;
-       }
-     }
-   }
-   if (usbEndpoint === undefined) {
-     console.error(`get usbEndpoint error`)
-     return;
-   }
-   ```
-   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
 5. 连接设备，注册通信接口。
 
-    ```ts
-    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-    let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-    if (claimInterfaceResult !== 0) {
-      console.error(`claimInterface error = ${claimInterfaceResult}`)
-      return;
-    }
-
-    // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
-    if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
-      let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
-      if (setInterfaceResult !== 0) {
-        console.error(`setInterfaceResult error = ${setInterfaceResult}`)
-        return;
-      }
-    }
-    ```
-    <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 6. 传输数据。
 
-   ```ts
-   try {
-     // 通信接口注册成功，传输数据
-     let transferParams: usbManager.UsbDataTransferParams = {
-       devPipe: devicePipe,
-       flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-       endpoint: usbEndpoint.address,
-       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
-       timeout: 2000,
-       length: 10,
-       callback: () => {},
-       userData: new Uint8Array(10),
-       buffer: new Uint8Array(10),
-       isoPacketCount: 2,
-     };
-   
-     transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
-       console.info(`callBackData = ${callBackData}`);
-       console.info('transfer success，result = ' + transferParams.buffer.toString());
-     }
-     usbManager.usbSubmitTransfer(transferParams);
-     console.info('USB transfer request submitted.');
-   } catch (error) {
-     console.error(`USB transfer failed: ${error}`);
-   }
-   ```
-   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 7. 取消传输，释放接口，关闭设备消息控制通道。
 
-    ```ts
-    usbManager.usbCancelTransfer(transferParams);
-    usbManager.releaseInterface(devicePipe, usbInterface);
-    usbManager.closePipe(devicePipe);
-    ```
-    <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ### 调测验证
 

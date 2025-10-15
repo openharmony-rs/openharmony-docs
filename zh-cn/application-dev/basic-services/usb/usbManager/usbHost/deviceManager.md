@@ -68,12 +68,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
 1. 导入模块。
 
-   ```ts
-   // 导入usbManager模块。
-   import { usbManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 导入usbManager模块
@@ -85,67 +80,7 @@ import { JSON } from '@kit.ArkTS';
 
 2. 获取设备列表。
 
-   ```ts
-   // 获取设备列表。
-   let deviceList : Array<usbManager.USBDevice> = usbManager.getDevices();
-   console.info(`deviceList: ${deviceList}`);
-   if(deviceList.length === 0) {
-     console.error('deviceList is empty');
-     return;
-   }
-   /*
-   deviceList结构示例
-   [
-     {
-       name: "1-1",
-       serial: "",
-       manufacturerName: "",
-       productName: "",
-       version: "",
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: "1-1",
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: "1-1",
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 3,
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
-   */
-   ```
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     // 获取设备列表。
@@ -213,38 +148,15 @@ import { JSON } from '@kit.ArkTS';
 
 3. 获取设备操作权限。
 
-   ```ts
-   let deviceName : string = deviceList[0].name;
-   // 申请操作指定的device的操作权限。
-   usbManager.requestRight(deviceName).then((hasRight : boolean) => {
-     console.info("usb device request right result: " + hasRight);
-   }).catch((error : BusinessError)=> {
-     console.error(`usb device request right failed : ${error}`);
-   });
-   ```
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 4. 打开Device设备。
 
-   ```ts
-   // 打开设备，获取数据传输通道。
-   let pipe : usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
-   let interface1 : usbManager.USBInterface = deviceList[0].configs[0].interfaces[0];
-   /*
-    打开对应接口，在设备信息（deviceList）中选取对应的interface。
-   interface1为设备配置中的一个接口。
-   */
-   usbManager.claimInterface(pipe, interface1, true);
-   ```
-   <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 5. 释放接口，关闭设备。
 
-   ```ts
-   usbManager.releaseInterface(pipe, interface1);
-   usbManager.closePipe(pipe);
-   ```
-   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
 ### 相关实例
 

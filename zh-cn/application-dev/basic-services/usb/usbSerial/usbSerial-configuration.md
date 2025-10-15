@@ -58,11 +58,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 1. 导入模块。
 
-    ```ts
-    // 导入serialManager模块。
-    import { serialManager } from '@kit.BasicServicesKit';
-    ``` 
-    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 导入usbManager模块
@@ -75,36 +71,11 @@ import { JSON } from '@kit.ArkTS';
 
 2. 获取设备列表。
 
-    ```ts
-    // 获取连接主设备的USB设备列表
-    let portList: serialManager.SerialPort[] = serialManager.getPortList();
-    console.info(`usbSerial portList: ${portList}`);
-    if (portList === undefined || portList.length === 0) {
-      console.error('usbSerial portList is empty');
-      return;
-    }
-    ```
-    <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 获取设备操作权限。
 
-    ```ts
-    // 此处对列表中的第一台USB设备判断是否拥有访问权限
-    // 函数名仅作为示例，实际需要与业务结合命名
-    async function serialDefault() {
-      let portId: number = portList[0].portId;
-      if (!serialManager.hasSerialRight(portId)) {
-        await serialManager.requestSerialRight(portId).then(result => {
-          if(!result) {
-            // 没有访问设备的权限且用户不授权则退出
-            console.error('The user does not have permission to perform this operation');
-            return;
-          }
-        });
-      }
-    }
-    ```
-    <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     if (this.portList_ === undefined || this.portList_.length === 0) {
@@ -131,15 +102,7 @@ import { JSON } from '@kit.ArkTS';
 
 4. 根据串口打开设备。
 
-    ```ts
-    try {
-      serialManager.open(portId)
-      console.info(`open usbSerial success, portId: ${portId}`);
-    } catch (error) {
-      console.error(`open usbSerial error： ${error}`);
-    }
-    ```
-    <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let portId: number = this.portId_;
@@ -155,54 +118,8 @@ import { JSON } from '@kit.ArkTS';
 
 5. 获取和修改串口配置。
 
-    ```ts
-    // 获取串口配置
-    try {
-      let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
-      if (attribute === undefined) {
-        console.error('getAttribute usbSerial error, attribute is undefined');
-      } else {
-        console.info(`getAttribute usbSerial success, attribute: ${attribute}`);
-      }
-    } catch (error) {
-      console.error(`getAttribute usbSerial error: ${error}`);
-    }
-   
-    // 设置串口配置
-    try {
-      let attribute: serialManager.SerialAttribute = {
-        baudRate: serialManager.BaudRates.BAUDRATE_9600,
-        dataBits: serialManager.DataBits.DATABIT_8,
-        parity: serialManager.Parity.PARITY_NONE,
-        stopBits: serialManager.StopBits.STOPBIT_1
-      }
-      serialManager.setAttribute(portId, attribute);
-      console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
-    } catch (error) {
-      console.error(`setAttribute usbSerial error: ${error}`);
-    }
-    ```
-    <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-    <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-    let portId: number = this.portId_;
-    // 设置串口配置
-    try {
-      let attribute: serialManager.SerialAttribute = {
-        baudRate: serialManager.BaudRates.BAUDRATE_9600,
-        dataBits: serialManager.DataBits.DATABIT_8,
-        parity: serialManager.Parity.PARITY_NONE,
-        stopBits: serialManager.StopBits.STOPBIT_1
-      }
-      serialManager.setAttribute(portId, attribute);
-      console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
-      this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
-    } catch (error) {
-      console.error(`setAttribute usbSerial error: ${error}`);
-      this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: ' + JSON.stringify(error);
-    }
-```
 ``` TypeScript
     let portId: number = this.portId_;
     // 获取串口配置
@@ -220,7 +137,8 @@ import { JSON } from '@kit.ArkTS';
       this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
     }
 ```
-    <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+
+<!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
     let portId: number = this.portId_;
