@@ -11740,23 +11740,21 @@ isInFreeWindowMode(): boolean;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| boolean; | 返回true表示在自由窗口模式，false表示非自由窗口模式 |
+| boolean | 返回true表示在自由窗口模式，false表示非自由窗口模式。 |
 
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-boolean isInFreeWindowMode = windowClass.isInFreeWindowMode();
-console.info('isInFreeWindowMode: ' + isInFreeWindowMode);
+let isInFreeWindowMode: boolean = windowClass.isInFreeWindowMode();
+console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
 ```
 
 ## on('freeWindowModeChange')<sup>22+</sup>
 
 on(type:  'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
-开启是否为自由窗口模式的监听。
+开启自由窗口模式变化的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11766,12 +11764,12 @@ on(type:  'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | 是   | 监听事件，固定为'freeWindowModeChange'，即窗口是否为自由窗口模式变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前窗口是否为自由窗口模式。                           |
+| type     | string                         | 是   | 监听事件，固定为'freeWindowModeChange'，即自由窗口模式变化事件。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前窗口是否在自由窗口模式，true表示是自由窗口模式，false表示非自由窗口模式。                           |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -11794,7 +11792,7 @@ try {
 
 off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭是否为自由窗口模式的监听。
+关闭自由窗口模式变化的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11804,12 +11802,12 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
-| type     | string                        | 是   | 监听事件，固定为'freeWindowModeChange'，即窗口是否为自由窗口模式变化事件。 |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否为自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化的监听。                           |
+| type     | string                        | 是   | 监听事件，固定为'freeWindowModeChange'，即自由窗口模式变化事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否在自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化的监听。                           |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
