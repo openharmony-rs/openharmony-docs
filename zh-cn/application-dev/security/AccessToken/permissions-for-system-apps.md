@@ -5136,3 +5136,17 @@
 **支持设备**：PC/2in1 | Phone | Tablet | TV | Car
 
 **起始版本**：21
+
+## ohos.permission.CAPTURE_SCREEN_ALL
+
+允许应用截取屏幕图像，包括隐私窗口。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：13
