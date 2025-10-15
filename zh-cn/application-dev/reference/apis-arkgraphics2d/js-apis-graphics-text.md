@@ -731,11 +731,36 @@ struct Index {
 }
 ```
 
+### getLocalInstance<sup>22+</sup>
+
+static getLocalInstance(): FontCollection
+
+获取本地FontCollection实例，推荐卡片场景使用。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型   | 说明                |
+| ------ | ------------------ |
+| [FontCollection](#fontcollection) | FontCollection对象。|
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+let fontCollection = text.FontCollection.getLocalInstance();
+```
+
 ### loadFontSync
 
 loadFontSync(name: string, path: string | Resource): void
 
 同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -787,6 +812,8 @@ struct RenderTest {
 loadFont(name: string, path: string | Resource): Promise\<void>
 
 异步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -851,6 +878,8 @@ unloadFontSync(name: string): void
 - 此操作仅影响后续字体使用。
 - 卸载正在使用的字体可能导致文本渲染异常（如乱码或字形缺失）。
 
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -904,6 +933,8 @@ unloadFont(name: string): Promise\<void>
 - 此操作仅影响后续字体使用。
 - 卸载正在使用的字体可能导致文本渲染异常（如乱码或字形缺失）。
 
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -955,6 +986,8 @@ struct UnloadFontTest {
 clearCaches(): void
 
 清理字体排版缓存（字体排版缓存本身设有内存上限和清理机制，所占内存有限，如无内存要求，不建议清理）。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 

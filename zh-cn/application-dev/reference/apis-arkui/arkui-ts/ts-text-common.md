@@ -226,6 +226,14 @@ equals(id: TextMenuItemId): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### 属性
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型   | 只读 | 可选   | 说明  |
+| ------- | ------ | ---- | ----- | ----- |
+| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。 </br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+
 ### onCreateMenu<sup>12+</sup>
 
 onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem>
@@ -270,22 +278,6 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 | 类型              |       说明       |
 | ------- | --------------------------------- |
 | boolean | 菜单项的执行逻辑。<br/>返回为true，拦截系统默认逻辑，仅执行自定义逻辑。<br/>返回为false，先执行自定义逻辑，再执行系统逻辑。 |
-
-### onPrepareMenu<sup>20+</sup>
-
-onPrepareMenu?: OnPrepareMenuCallback
-
-当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型                              | 说明   |
-| --------------------------------- | --------------------------------- |
-| [OnPrepareMenuCallback](#onpreparemenucallback20) | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。|
 
 ## OnPrepareMenuCallback<sup>20+</sup>
 

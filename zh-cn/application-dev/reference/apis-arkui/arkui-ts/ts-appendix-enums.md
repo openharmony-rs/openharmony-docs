@@ -1222,11 +1222,11 @@ type Nullable\<T> = T | undefined
 | END    | 3    | 轴事件结束。 |
 | CANCEL | 4    | 轴事件取消。 |
 
-## AxisType<sup>21+</sup>
+## AxisType<sup>22+</sup>
 
 定义轴事件的轴类型。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 

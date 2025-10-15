@@ -287,6 +287,7 @@ Unexpected permission.
 
 1. [再次拉起权限设置弹框](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)时，传入了manual_settings授权方式的权限。
 2. 授权或取消授权时，传入了非user_grant和manual_settings授权方式的权限。
+3. [拉起跳转设置页弹窗](js-apis-abilityAccessCtrl.md#openpermissiononsetting22)时，传入了非manual_settings授权方式的权限。
 
 **处理步骤**
 

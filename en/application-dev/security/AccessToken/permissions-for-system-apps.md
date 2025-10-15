@@ -5076,6 +5076,20 @@ Allows an application to access the sandbox directories of other extended applic
 
 **Valid since**: 19
 
+## ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+Allows a system application to inject playback audio into the capture stream.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 22
+
 ## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
 
 Allows an HAP to load independent binary .so files with different owner IDs.

@@ -844,7 +844,7 @@ setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise&lt
 
 | 错误码 ID | 错误信息                                                                                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
 | 1300003   | This window manager service works abnormally.                                                                             |
 | 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
 

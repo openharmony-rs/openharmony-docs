@@ -1509,6 +1509,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -1601,6 +1606,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -1725,6 +1735,11 @@ struct WebComponent {
           this.controller.runJavaScriptExt('test()')
             .then((result) => {
               try {
+                if (result.getErrorDescription()) {
+                  // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  return;
+                }
                 let type = result.getType();
                 switch (type) {
                   case webview.JsMessageType.STRING: {
@@ -1806,6 +1821,11 @@ struct WebComponent {
             this.controller.runJavaScriptExt(arrayBuffer)
               .then((result) => {
                 try {
+                  if (result.getErrorDescription()) {
+                    // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    return;
+                  }
                   let type = result.getType();
                   switch (type) {
                     case webview.JsMessageType.STRING: {
@@ -10355,7 +10375,7 @@ setSiteIsolationMode(mode: SiteIsolationMode): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 |Init error .  |
+| 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
 
 **示例：**
 

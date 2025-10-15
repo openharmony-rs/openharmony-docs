@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @HelloCrease-->
 
@@ -297,6 +297,20 @@ TabContent页面的切换信息。
 | id           | string                                       | 否   | 否   | Tabs组件的id。                                |
 | uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。                          |
 | lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[tabChange](#uiobserverontabchange22)的回调函数中存在。     |
+
+## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
+
+窗口尺寸布局断点变化回调的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
+| -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
+| widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | 否   | 否   | 窗口宽度所在的布局断点枚举。        |
+| heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| 否   | 否   | 窗口高度所在的布局断点枚举。        |
+
 
 ## uiObserver.on('navDestinationUpdate')
 

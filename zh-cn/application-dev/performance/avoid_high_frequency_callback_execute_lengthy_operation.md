@@ -37,7 +37,6 @@ aboutToReuse(params: Record<string, number>) {
 在aboutToReuse中进行耗时操作。
 
 ```ts
-...
 // 这里用循环函数模拟耗时操作
 count(): number {
   let temp: number = 0;

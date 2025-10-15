@@ -80,10 +80,10 @@
             - [UIAbility备份恢复](application-models/ability-recover-guideline.md)
           - [ExtensionAbility组件](application-models/extensionability-overview.md)
             <!--Del-->
-            - [ServiceExtensionAbility（仅对系统应用开放）](application-models/serviceextensionability.md)
+            - [ServiceExtensionAbility（仅对系统应用开放）](application-models/serviceextensionability-sys.md)
             - [UIServiceExtension（仅对系统应用开放）](application-models/uiserviceextension-sys.md)
-            - [UIExtensionAbility（仅对系统应用开放）](application-models/uiextensionability.md)
-            - [使用AutoFillExtensionAbility实现自动填充功能（仅对系统应用开放）](application-models/autofillextensionability-guide.md)
+            - [UIExtensionAbility（仅对系统应用开放）](application-models/uiextensionability-sys.md)
+            - [使用AutoFillExtensionAbility实现自动填充功能（仅对系统应用开放）](application-models/autofillextensionability-guide-sys.md)
             - [使用通过UIServiceExtensionAbility实现的系统悬浮窗](application-models/uiserviceextension.md)
             <!--DelEnd-->
             - [EmbeddedUIExtensionAbility](application-models/embeddeduiextensionability.md)
@@ -132,10 +132,10 @@
         - [线程模型](application-models/thread-model-stage.md)
         <!--Del-->
         - 任务（Mission）管理（仅对系统应用开放）<!--mission-management-->
-          - [任务（Mission）管理场景介绍](application-models/mission-management-overview.md)
-          - [任务（Mission）与启动模式](application-models/mission-management-launch-type.md)
-          - [页面栈及任务链](application-models/page-mission-stack.md)
-          - [设置任务快照的图标和名称](application-models/mission-set-icon-name-for-task-snapshot.md)
+          - [任务（Mission）管理场景介绍（仅对系统应用开放）](application-models/mission-management-overview-sys.md)
+          - [任务（Mission）与启动模式（仅对系统应用开放）](application-models/mission-management-launch-type-sys.md)
+          - [页面栈及任务链（仅对系统应用开放）](application-models/page-mission-stack-sys.md)
+          - [设置任务快照的图标和名称（仅对系统应用开放）](application-models/mission-set-icon-name-for-task-snapshot-sys.md)
         <!--DelEnd-->
         - [Stage模型应用配置文件](application-models/config-file-stage.md)
         - 意图框架开发指导<!--insight-intent-->
@@ -159,7 +159,7 @@
             - [启动本地PageAbility](application-models/start-local-pageability.md)
             - [停止PageAbility](application-models/stop-pageability.md)
             <!--Del-->
-            - [启动远程PageAbility（仅对系统应用开放）](application-models/start-remote-pageability.md)
+            - [启动远程PageAbility（仅对系统应用开放）](application-models/start-remote-pageability-sys.md)
             <!--DelEnd-->
             - [启动指定页面](application-models/start-page.md)
             - [窗口属性](application-models/window-properties.md)
@@ -186,7 +186,7 @@
         - [进程模型](application-models/process-model-fa.md)
         - [线程模型](application-models/thread-model-fa.md)
         <!--Del-->
-        - [任务管理（仅对系统应用开放）](application-models/mission-management-fa.md)
+        - [任务管理（仅对系统应用开放）](application-models/mission-management-fa-sys.md)
         <!--DelEnd-->
         - [FA模型应用配置文件](application-models/config-file-fa.md)
       <!--Del-->
@@ -264,6 +264,8 @@
         - [跨应用数据共享概述](database/data-share-overview.md)
         - 一对多跨应用数据共享<!--one-to-many-data-share-->
           <!--Del-->
+          - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
+          - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
           - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
@@ -619,8 +621,8 @@
             - [全屏启动原子化服务 (FullScreenLaunchComponent)](ui/arkts-FullScreenComponent.md)
             - [同应用进程嵌入式组件 (EmbeddedComponent)](ui/arkts-embedded-components.md)
           <!--Del-->
-          - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](ui/arkts-ui-extension-components.md)
-          - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](ui/arkts-isolated-components.md)
+          - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](ui/arkts-ui-extension-components-sys.md)
+          - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](ui/arkts-isolated-components-sys.md)
           <!--DelEnd-->
       - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
         - [基于NDK构建UI概述](ui/ndk-build-ui-overview.md)
@@ -830,10 +832,10 @@
       - [长时任务(ArkTS)](task-management/continuous-task.md)
       - [延迟任务(ArkTS)](task-management/work-scheduler.md)
       - [代理提醒(ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
-      - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request.md)
+      - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request-sys.md)
       - 设备使用信息统计（仅对系统应用开放）<!--device-usage-statistics-->
-        - [设备使用信息统计概述](device-usage-statistics/device-usage-statistics-overview.md)
-        - [设备使用信息统计开发指导](device-usage-statistics/device-usage-statistics-use-guide.md)
+        - [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-overview-sys.md)
+        - [设备使用信息统计开发指导（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
       <!--DelEnd-->
     - Core File Kit（文件基础服务）<!--core-file-kit-->
       - [Core File Kit简介](file-management/core-file-kit-intro.md)
@@ -893,7 +895,7 @@
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
             - [ArkTS卡片被动刷新](form/arkts-ui-widget-passive-refresh.md)
             <!--Del-->
-            - [卡片代理刷新](form/arkts-ui-widget-update-by-proxy.md)
+            - [卡片代理刷新（仅对系统应用开放）](form/arkts-ui-widget-update-by-proxy-sys.md)
             <!--DelEnd-->
             - [刷新本地图片和网络图片](form/arkts-ui-widget-image-update.md)
             - [根据卡片状态刷新不同内容](form/arkts-ui-widget-update-by-status.md)
@@ -909,7 +911,7 @@
           - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
             - [应用内拉起卡片管理加桌](form/arkts-ui-widget-open-formmanager.md)
         <!--Del-->
-        - [ArkTS卡片使用方开发指导（仅对系统应用开放）](form/widget-host-development-guide.md)
+        - [ArkTS卡片使用方开发指导（仅对系统应用开放）](form/widget-host-development-guide-sys.md)
         <!--DelEnd-->
         - 互动卡片开发<!--arkts-ui-liveform-->
           - [互动卡片概述](form/arkts-ui-liveform-overview.md)
@@ -918,7 +920,7 @@
             - [场景动效类型互动卡片概述](form/arkts-ui-liveform-sceneanimation-overview.md)
             - [场景动效类型互动卡片开发指导](form/arkts-ui-liveform-sceneanimation-development.md)
             <!--Del-->
-            - [场景动效类型互动卡片开发指导（系统应用）](form/arkts-ui-liveform-sceneanimation-development-sys.md)
+            - [场景动效类型互动卡片开发指导（仅对系统应用开放）](form/arkts-ui-liveform-sceneanimation-development-sys.md)
             <!--DelEnd-->
       - JS卡片开发<!--form-js-ui-->
         - [JS卡片概述](form/js-ui-widget-overview.md)
@@ -1092,6 +1094,8 @@
             - [使用RSA非对称密钥（PKCS1_OAEP模式）加解密](security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md)
             - [使用SM2非对称密钥加解密(ArkTS)](security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt.md)
             - [使用SM2非对称密钥加解密(C/C++)](security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt-ndk.md)
+            - [使用AES-WRAP算法对对称密钥加解密(ArkTS)](security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt.md)
+            - [使用AES-WRAP算法对对称密钥加解密(C/C++)](security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt-ndk.md)
             - [使用SM2密文格式转换(ArkTS)](security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion.md)
             - [使用SM2密文格式转换(C/C++)](security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion-ndk.md)
         - 签名验签<!--crypto-sign-sig-verify-->
@@ -1127,6 +1131,8 @@
             - [消息摘要计算SHA256(C/C++)](security/CryptoArchitectureKit/crypto-generate-message-digest-ndk.md)
             - [消息摘要计算MD5(ArkTS)](security/CryptoArchitectureKit/crypto-generate-message-digest-md5.md)
             - [消息摘要计算MD5(C/C++)](security/CryptoArchitectureKit/crypto-generate-message-digest-md5-ndk.md)
+            - [消息摘要计算SHA3(ArkTS)](security/CryptoArchitectureKit/crypto-generate-message-digest-sha3.md)
+            - [消息摘要计算SHA3(C/C++)](security/CryptoArchitectureKit/crypto-generate-message-digest-sha3-ndk.md)
         - 消息认证码<!--crypto-compute-mac-->
           - [消息认证码计算介绍及算法规格](security/CryptoArchitectureKit/crypto-compute-mac-overview.md)
           - [消息认证码计算HMAC(ArkTS)](security/CryptoArchitectureKit/crypto-compute-hmac.md)
@@ -1146,6 +1152,8 @@
           - [使用HKDF进行密钥派生(C/C++)](security/CryptoArchitectureKit/crypto-key-derivation-using-hkdf-ndk.md)
           - [使用SCRYPT进行密钥派生(ArkTS)](security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt.md)
           - [使用SCRYPT进行密钥派生(C/C++)](security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt-ndk.md)
+          - [使用X963KDF进行密钥派生(ArkTS)](security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf.md)
+          - [使用X963KDF进行密钥派生(C/C++)](security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf-ndk.md)
       - Data Protection Kit（数据保护服务）<!--data-protection-kit-->
         - 数据防泄漏服务<!--dlp-->
           - [数据防泄漏服务简介](security/DataProtectionKit/dlp-overview.md)
@@ -1309,9 +1317,9 @@
             - [使用网络防火墙](network/net-netfirewall.md)
             - [扩展认证](network/net-eap.md)
             <!--Del-->
-            - [网络共享（仅对系统应用开放）](network/net-sharing.md)
-            - [以太网连接管理（仅对系统应用开放）](network/net-ethernet.md)
-            - [VPN管理（仅对系统应用开放）](network/net-vpn.md)
+            - [网络共享（仅对系统应用开放）](network/net-sharing-sys.md)
+            - [以太网连接管理（仅对系统应用开放）](network/net-ethernet-sys.md)
+            - [VPN管理（仅对系统应用开放）](network/net-vpn-sys.md)
             <!--DelEnd-->
         - [Network Kit术语](network/network-terminology.md)
       - Telephony Kit（蜂窝通信服务）<!--telephony-kit-->
@@ -1411,10 +1419,10 @@
         - [按键拦截监听开发指导](device/input/keypressed-guidelines.md)
         - [鼠标光标开发指导](device/input/pointerstyle-guidelines.md)
         <!--Del-->
-        - [输入监听开发指导](device/input/inputmonitor-guidelines.md)
-        - [事件注入开发指导](device/input/inputeventclient-guidelines.md)
-        - [全局快捷键开发指导](device/input/inputconsumer-guidelines.md)
-        - [系统预置全局快捷键开发指导](device/input/shortkey-guidelines.md)
+        - [输入监听开发指导（仅对系统应用开放）](device/input/inputmonitor-guidelines-sys.md)
+        - [事件注入开发指导（仅对系统应用开放）](device/input/inputeventclient-guidelines-sys.md)
+        - [全局快捷键开发指导（仅对系统应用开放）](device/input/inputconsumer-guidelines-sys.md)
+        - [系统预置全局快捷键开发指导（仅对系统应用开放）](device/input/shortkey-guidelines-sys.md)
         <!--DelEnd-->
         - [事件监听开发指导（C/C++）](device/input/monitor-guidelines.md)
         - [事件拦截开发指导（C/C++）](device/input/interceptor-guidelines.md)
@@ -1453,6 +1461,12 @@
           - [振动开发概述](device/sensor/vibrator-overview.md)
           - [振动开发指导(ArkTS)](device/sensor/vibrator-guidelines.md)
           - [振动开发指导(C/C++)](device/sensor/vibrator-guidelines-capi.md)
+      - Mechanic Kit（机械体设备管理服务）<!--mechanic-kit-->
+        - [Mechanic Kit简介](mechanicManager/mechanic-kit-intro.md)
+        - [智能拍摄跟踪开发指南](mechanicManager/camera-tracking-guide.md)
+        <!--Del-->
+        - [设备转动控制开发指南](mechanicManager/rotation-control-guide.md)
+        <!--DelEnd-->
     - 调测调优<!--system-debug-optimize-->
       - Performance Analysis Kit（性能分析服务）<!--performance-analysis-kit-->
         - [Performance Analysis Kit简介](dfx/performance-analysis-kit-overview.md)
@@ -1534,7 +1548,8 @@
         - 命令行工具<!--perform-command-line-utilities-->
           - [hdc](dfx/hdc.md)
           - [hilog](dfx/hilog.md)
-          - [hidumper](dfx/hidumper.md)
+          - hidumper<!--hidumper-tool-->
+            - [hidumper](dfx/hidumper.md)
           - [hitrace](dfx/hitrace.md)
           - [hiperf](dfx/hiperf.md)
           - [hiprofiler](dfx/hiprofiler.md)
@@ -1562,7 +1577,7 @@
         - [edm工具](tools/edm-tool.md)
         - [restool工具](tools/restool.md)
         <!--Del-->
-        - [LLDB工具](tools/lldb-tool.md)
+        - [LLDB工具（仅对系统应用开放）](tools/lldb-tool-sys.md)
         <!--DelEnd-->
         - [param工具](tools/param-tool.md)
         - [power-shell工具](tools/power-shell.md)
@@ -1592,7 +1607,7 @@
         - [使用AudioRenderer开发音频播放功能](media/audio/using-audiorenderer-for-playback.md)
         - [响应音频流输出设备变更](media/audio/audio-output-device-change.md)
         <!--Del-->
-        - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](media/audio/using-toneplayer-for-playback.md)
+        - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
         - [使用OHAudio开发音频播放功能(C/C++)](media/audio/using-ohaudio-for-playback.md)
         - [使用AudioHaptic开发音振协同播放功能](media/audio/using-audiohaptic-for-playback.md)
@@ -1603,12 +1618,12 @@
         - [音效管理](media/audio/audio-effect-management.md)
         - [空间音频管理](media/audio/public-audio-spatialization-management.md)
         <!--Del-->
-        - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management.md)
+        - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
         - [音频播放流管理](media/audio/audio-playback-stream-management.md)
         - [管理全局音频输出设备](media/audio/audio-output-device-management.md)
         <!--Del-->
-        - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback.md)
+        - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
       - 音频录制<!--audio-recording-->
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
@@ -1658,12 +1673,12 @@
         - [应用接入AVSession场景介绍](media/avsession/avsession-access-scene.md)
         - [后台播放](media/avsession/avsession-background-scene.md)
         <!--Del-->
-        - [媒体会话控制方(仅对系统应用开放)](media/avsession/using-avsession-controller.md)
+        - [媒体会话控制方(仅对系统应用开放)](media/avsession/using-avsession-controller-sys.md)
         <!--DelEnd-->
       - 分布式媒体会话<!--distributed-avsession-->
         <!--Del-->
-        - [分布式媒体会话概述(仅对系统应用开放)](media/avsession/distributed-avsession-overview.md)
-        - [使用分布式媒体会话(仅对系统应用开放)](media/avsession/using-distributed-avsession.md)
+        - [分布式媒体会话概述(仅对系统应用开放)](media/avsession/distributed-avsession-overview-sys.md)
+        - [使用分布式媒体会话(仅对系统应用开放)](media/avsession/using-distributed-avsession-sys.md)
         <!--DelEnd-->
         - [使用通话设备切换组件](media/avsession/using-switch-call-devices.md)
     - Camera Kit（相机服务）<!--camera-kit-->
@@ -1695,10 +1710,10 @@
         - [压力管控(ArkTS)](media/camera/camera-system-pressure.md)
         - [相机控制器(ArkTS)](media/camera/camera-control-center.md)
         <!--Del-->
-        - [高性能拍照(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo.md)
-        - [高性能拍照实践(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-case.md)
-        - [深度信息(仅对系统应用开放)(ArkTS)](media/camera/camera-depth-data.md)
-        - [性能提升实践(仅对系统应用开放)(ArkTS)](media/camera/camera-performance-improvement.md)
+        - [高性能拍照(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-sys.md)
+        - [高性能拍照实践(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-case-sys.md)
+        - [深度信息(仅对系统应用开放)(ArkTS)](media/camera/camera-depth-data-sys.md)
+        - [性能提升实践(仅对系统应用开放)(ArkTS)](media/camera/camera-performance-improvement-sys.md)
         <!--DelEnd-->
       - 开发相机应用必选能力(C/C++)<!--camera-dev-native-mandatory-->
         - [相机管理(C/C++)](media/camera/native-camera-device-management.md)
@@ -3532,6 +3547,8 @@
           - [OH_PixelmapNative](reference/apis-arkui/capi-struct.md)
           - [WindowManager_WindowProperties](reference/apis-arkui/capi-windowmanager-windowproperties.md)
           - [WindowManager_AvoidArea](reference/apis-arkui/capi-windowmanager-avoidarea.md)
+          - [WindowManager_MainWindowInfo](reference/apis-arkui/capi-windowmanager-windowmanager-mainwindowinfo.md)
+          - [WindowManager_WindowSnapshotConfig](reference/apis-arkui/capi-windowmanager-windowmanager-windowsnapshotconfig.md)
           - [NativeDisplayManager_Rect](reference/apis-arkui/capi-nativedisplaymanager-rect.md)
           - [NativeDisplayManager_WaterfallDisplayAreaRects](reference/apis-arkui/capi-nativedisplaymanager-waterfalldisplayarearects.md)
           - [NativeDisplayManager_CutoutInfo](reference/apis-arkui/capi-nativedisplaymanager-cutoutinfo.md)
@@ -3558,6 +3575,7 @@
           - [ArkUI_Vector2AnimatablePropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
           - [ArkUI_ContentTransitionEffect](reference/apis-arkui/capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
+          - [ArkUI_SelectedDataDetectorConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [动画错误码](reference/apis-arkui/errorcode-animator.md)
@@ -3760,6 +3778,7 @@
         <!--Del-->
         - [@ohos.application.BackupExtensionAbility (备份恢复扩展能力)(系统接口)](reference/apis-core-file-kit/js-apis-application-backupExtensionAbility-sys.md)
         - [@ohos.file.backup (备份恢复)(系统接口)](reference/apis-core-file-kit/js-apis-file-backup-sys.md)
+        - [@ohos.file.cloudDiskManager (云盘管理)(系统接口)](reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md)
         - [@ohos.file.cloudSync (端云同步能力)(系统接口)](reference/apis-core-file-kit/js-apis-file-cloudsync-sys.md)
         - [@ohos.file.cloudSyncManager (端云同步管理)(系统接口)](reference/apis-core-file-kit/js-apis-file-cloudsyncmanager-sys.md)
         - [@ohos.file.environment (目录环境能力)(系统接口)](reference/apis-core-file-kit/js-apis-file-environment-sys.md)
@@ -3796,6 +3815,9 @@
           - [FileShare_PolicyInfo](reference/apis-core-file-kit/capi-fileshare-fileshare-policyinfo.md)
       - 错误码<!--core-file-arkts-errcode-->
         - [文件管理错误码](reference/apis-core-file-kit/errorcode-filemanagement.md)
+        <!--Del-->
+        - [云盘管理错误码](reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md)
+        <!--DelEnd-->
     - Form Kit（卡片开发服务）<!--form-api-->
       - ArkTS API<!--form-arkts-->
         - [@ohos.app.form.formBindingData (卡片数据绑定类)](reference/apis-form-kit/js-apis-app-form-formBindingData.md)
@@ -3818,6 +3840,7 @@
           - [LiveFormExtensionContext](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)
           <!--Del-->
           - [FormExtensionContext(系统接口)](reference/apis-form-kit/js-apis-inner-application-formExtensionContext-sys.md)
+          - [LiveFormExtensionContext(仅对系统应用开放)](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext-sys.md)
           <!--DelEnd-->
       - 已停止维护的接口<!--form-arkts-dep-->
         - [@ohos.application.formBindingData (卡片数据绑定类)](reference/apis-form-kit/js-apis-application-formBindingData.md)
@@ -4165,7 +4188,7 @@
           - [键鼠穿越管理错误码](reference/apis-distributedservice-kit/errorcode-devicestatus.md)
           <!--DelEnd-->
           - [增强连接错误码](reference/apis-distributedservice-kit/errorcode-link-enhance.md)
-          - [代理通道管理错误码](reference/apis-distributedservice-kit/errorcode_proxyChannelManager.md)
+          - [代理通道管理错误码](reference/apis-distributedservice-kit/errorcode-proxyChannelManager.md)
         - C API<!--distributed-service-c-->
           - 模块<!--distributed-service-module-->
             - [DeviceManager](reference/apis-distributedservice-kit/capi-devicemanager.md)
@@ -4693,6 +4716,14 @@
         - 错误码<!--sensor-service-arkts-errcode-->
           - [Sensor错误码](reference/apis-sensor-service-kit/errorcode-sensor.md)
           - [Vibrator错误码](reference/apis-sensor-service-kit/errorcode-vibrator.md)
+      - Mechanic Kit（机械体设备控制服务）<!--mechanic-api-->
+        - ArkTS API<!--mechanic-arkts-->
+          - [@ohos.distributedHardware.mechanicManager (机械体控制模块)](reference/apis-mechanic-kit/js-apis-mechanicManager.md)
+          <!--Del-->
+          - [@ohos.distributedHardware.mechanicManager (机械体控制模块)(系统接口)](reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md)
+          <!--DelEnd-->
+        - 错误码<!--mechanic-service-arkts-errcode-->
+          - [Mechanic错误码](reference/apis-mechanic-kit/errorcode-mechanic.md)
     - 调测调优<!--system-debug-optimize-api-->
 
       - Performance Analysis Kit（性能分析服务）<!--performance-analysis-api-->
@@ -4853,7 +4884,7 @@
         - 模块<!--avcodec-module-->
           - [AVCapability](reference/apis-avcodec-kit/capi-avcapability.md)
           - [AudioCodec](reference/apis-avcodec-kit/capi-audiocodec.md)
-          - [CodecBase](reference/apis-avcodec-kit/_codec_base.md)
+          - [CodecBase](reference/apis-avcodec-kit/capi-codecbase.md)
           - [Core](reference/apis-avcodec-kit/capi-core.md)
           - [VideoDecoder](reference/apis-avcodec-kit/capi-videodecoder.md)
           - [VideoEncoder](reference/apis-avcodec-kit/capi-videoencoder.md)
@@ -4864,6 +4895,7 @@
         - 头文件<!--avcodec-headerfile-->
           - [native_avcapability.h](reference/apis-avcodec-kit/capi-native-avcapability-h.md)
           - [native_avcodec_audiocodec.h](reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)
+          - [native_avcodec_base.h](reference/apis-avcodec-kit/capi-native-avcodec-base-h.md)
           - [media_types.h](reference/apis-avcodec-kit/capi-media-types-h.md)
           - [native_audio_channel_layout.h](reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md)
           - [native_avbuffer.h](reference/apis-avcodec-kit/capi-native-avbuffer-h.md)
@@ -4871,7 +4903,6 @@
           - [native_averrors.h](reference/apis-avcodec-kit/capi-native-averrors-h.md)
           - [native_avformat.h](reference/apis-avcodec-kit/capi-native-avformat-h.md)
           - [native_avmemory.h](reference/apis-avcodec-kit/capi-native-avmemory-h.md)
-          - [native_avcodec_base.h](reference/apis-avcodec-kit/native__avcodec__base_8h.md)
           - [native_avcodec_videodecoder.h](reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md)
           - [native_avcodec_videoencoder.h](reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)
           - [native_avdemuxer.h](reference/apis-avcodec-kit/capi-native-avdemuxer-h.md)
@@ -4881,15 +4912,17 @@
         - 结构体<!--avcodec-struct-->
           - [OH_AVRange](reference/apis-avcodec-kit/capi-avcapability-oh-avrange.md)
           - [OH_AVCapability](reference/apis-avcodec-kit/capi-avcapability-oh-avcapability.md)
-          - [OH_AVCodecAsyncCallback](reference/apis-avcodec-kit/_o_h___a_v_codec_async_callback.md)
+          - [OH_AVCodecAsyncCallback](reference/apis-avcodec-kit/capi-codecbase-oh-avcodecasynccallback.md)
+          - [OH_AVCodecCallback](reference/apis-avcodec-kit/capi-codecbase-oh-avcodeccallback.md)
+          - [OH_AVDataSource](reference/apis-avcodec-kit/capi-codecbase-oh-avdatasource.md)
+          - [OH_AVDataSourceExt](reference/apis-avcodec-kit/capi-codecbase-oh-avdatasourceext.md)
+          - [NativeWindow](reference/apis-avcodec-kit/capi-codecbase-nativewindow.md)
+          - [OH_AVCodec](reference/apis-avcodec-kit/capi-codecbase-oh-avcodec.md)
           - [OH_AVBuffer](reference/apis-avcodec-kit/capi-core-oh-avbuffer.md)
           - [OH_NativeBuffer](reference/apis-avcodec-kit/capi-core-oh-nativebuffer.md)
           - [OH_AVCodecBufferAttr](reference/apis-avcodec-kit/capi-core-oh-avcodecbufferattr.md)
           - [OH_AVFormat](reference/apis-avcodec-kit/capi-core-oh-avformat.md)
           - [OH_AVMemory](reference/apis-avcodec-kit/capi-core-oh-avmemory.md)
-          - [OH_AVCodecCallback](reference/apis-avcodec-kit/_o_h___a_v_codec_callback.md)
-          - [OH_AVDataSource](reference/apis-avcodec-kit/_o_h___a_v_data_source.md)
-          - [OH_AVDataSourceExt](reference/apis-avcodec-kit/_o_h___a_v_data_source_ext.md)
           - [OH_AVDemuxer](reference/apis-avcodec-kit/capi-avdemuxer-oh-avdemuxer.md)
           - [DRM_MediaKeySystemInfo](reference/apis-avcodec-kit/capi-avdemuxer-drm-mediakeysysteminfo.md)
           - [OH_AVMuxer](reference/apis-avcodec-kit/capi-avmuxer-oh-avmuxer.md)
@@ -4901,7 +4934,7 @@
             - [AudioDecoder](reference/apis-avcodec-kit/_audio_decoder.md)
             - [AudioEncoder](reference/apis-avcodec-kit/_audio_encoder.md)
           - 头文件<!--avcodec-headerfile-arkts-dep-->
-            - [avcodec_audio_channel_layout.h](reference/apis-avcodec-kit/avcodec__audio__channel__layout_8h.md)
+            - [avcodec_audio_channel_layout.h](reference/apis-avcodec-kit/capi-avcodec-audio-channel-layout-h.md)
             - [native_avcodec_audiodecoder.h](reference/apis-avcodec-kit/native__avcodec__audiodecoder_8h.md)
             - [native_avcodec_audioencoder.h](reference/apis-avcodec-kit/native__avcodec__audioencoder_8h.md)
     - AVSession Kit（音视频播控服务）<!--avsession-api-->
