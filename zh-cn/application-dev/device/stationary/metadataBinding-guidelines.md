@@ -76,7 +76,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
    ```
    try {
-     metadataBinding.off('operationSubmitMetadata', bundleName, this.callback);
+     metadataBinding.off('operationSubmitMetadata', bundleName, callback);
      console.info("off succeeded");
    } catch (err) {
      let error = err as BusinessError;
