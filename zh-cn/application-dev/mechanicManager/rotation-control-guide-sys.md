@@ -1,4 +1,4 @@
-# 设备转动控制开发指南
+# 设备转动控制开发指南（仅对系统应用开放）
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @hobbycao-->
