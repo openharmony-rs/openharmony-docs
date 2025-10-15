@@ -1,5 +1,3 @@
-
-
 # MediaCachedImage（系统接口）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
