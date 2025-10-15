@@ -32,6 +32,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | number | 4   | 通知铃声类别。 |
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | number | 8   | 闹钟铃声类别。 |
 | TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | 联系人铃声类别。 |
+| TONE_CATEGORY_NOTIFICATION_APP<sup>22+</sup>     | number | 32  | 应用级通知铃声类别。 |
 
 ## RingtoneType
 
@@ -540,7 +541,7 @@ getUri(): string
 
 | 类型    | 说明  |
 |--------|-----|
-| string | uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 |
+| string | uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。|
 
 **错误码：**
 
@@ -614,6 +615,95 @@ getFileName(): string
 
 ```ts
 toneHapticsAttrs.getFileName();
+```
+### getGentleUri<sup>22+</sup>
+
+getGentleUri(): string | null
+
+获取柔和振动资源路径。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**返回值：**
+
+| 类型    | 说明  |
+|--------|-----|
+| string \| null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则uri为空。 柔和振动是指马达振动强度较标准较弱。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息              |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**示例：**
+
+```ts
+toneHapticsAttrs.getGentleUri();
+```
+
+### getGentleTitle<sup>22+</sup>
+
+getGentleTitle(): string | null
+
+获取柔和振动标题。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**返回值：**
+
+| 类型    | 说明  |
+|--------|-----|
+| string \| null | 柔和振动的标题。如果不存在柔和振动，则振动标题为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息              |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**示例：**
+
+```ts
+toneHapticsAttrs.getGentleTitle();
+```
+
+### getGentleFileName<sup>22+</sup>
+
+getGentleFileName(): string | null
+
+获取柔和振动文件名。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**返回值：**
+
+| 类型    | 说明  |
+|--------|-----|
+| string \| null | 柔和振动文件名，振动文件为Json格式。如果不存在柔和振动，则振动文件名为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息              |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**示例：**
+
+```ts
+toneHapticsAttrs.getGentleFileName();
 ```
 
 ## ToneHapticsAttrsArray<sup>14+</sup>
