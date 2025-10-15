@@ -11723,9 +11723,9 @@ promise.then(() => {
 });
 ```
 
-## isInFreeWindowMode<sup>(deprecated)</sup>
+## isInFreeWindowMode<sup>22+</sup>
 
-isInFreeWindowMode(): boolean;
+isInFreeWindowMode(): boolean
 
 查询是否为自由窗口模式。
 
