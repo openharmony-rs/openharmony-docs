@@ -4120,7 +4120,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 
 ```ts
 try {
-  let callback: Callback<OcclusionState> = (data: OcclusionState) => {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
   windowClass.on('occlusionStateChanged', callback);
@@ -4158,7 +4158,7 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 
 ```ts
 try {
-  let callback: Callback<OcclusionState> = (data: OcclusionState) => {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
   // 通过on接口开启监听
