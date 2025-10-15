@@ -1,8 +1,36 @@
-# 弹窗类组件
+# UI组件适配（表单与弹窗）
 
-## Popup控制
+以下接口在ArkTS-Dyn中已废弃，在ArkTS-Sta中需使用替代接口来实现能力。
 
-以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
+## 表单类组件
+
+### minLabel
+
+ArkTS-Dyn接口声明：[minLabel(value: string)](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#minlabeldeprecated)
+
+替代的ArkTS-Sta接口声明：[min?: number](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions对象说明)
+
+### maxLabel
+
+ArkTS-Dyn接口声明：[maxLabel(value: string)](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#maxlabeldeprecated)
+
+替代的ArkTS-Sta接口声明：[max?: number](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions对象说明)
+
+
+
+ArkTS-Dyn示例：
+
+```ts
+Slider({value: 50}).minLabel('0').maxLabel('100')
+```
+
+ArkTS-Sta示例：
+
+```ts
+Slider({value: 50, min: 0, max: 100})
+```
+
+## 弹窗类组件
 
 ### placementOnTop
 
@@ -12,7 +40,7 @@ ArkTS-Dyn接口声明：[placementOnTop?: boolean](../reference/apis-arkui/arkui
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -30,7 +58,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -71,7 +99,7 @@ ArkTS-Dyn接口声明：[maskColor?: Resource | string | number | Color](../refe
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -96,7 +124,7 @@ struct Example {
 
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -135,17 +163,13 @@ struct Example {
 }
 ```
 
-## 菜单组件
-
-以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
-
 ### fontSize
 
 ArkTS-Dyn接口声明：[fontSize(value: Length)](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md#fontsizedeprecated)
 
 替代的ArkTS-Sta接口声明：[font(value: Font)](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md#font10)
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -171,7 +195,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -220,7 +244,7 @@ ArkTS-Dyn接口声明：[static close()](../reference/apis-arkui/arkui-ts/ts-met
 
 替代的ArkTS-Sta接口声明：[引用@ohos.arkui.UIContext的close(): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#contextmenucontroller12)
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -260,7 +284,7 @@ struct Index {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -317,11 +341,7 @@ struct Index {
 }
 ```
 
-## Toast组件（即时反馈）
-
 ### showToast
-
-由@ohos.prompt、@system.prompt、@ohos.promptAction提供的showToast接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
 ArkTS-Dyn接口声明：
 
@@ -337,7 +357,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 引用@ohos.prompt的showToast
 
@@ -403,7 +423,7 @@ struct Example {
 ```
 
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 改用UIContext下的showToast方法
 
@@ -436,10 +456,6 @@ struct Example {
 }
 ```
 
-## 弹出框组件
-
-以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
-
 ### ActionSheet.show
 
 ArkTS-Dyn接口声明：[static show(value: ActionSheetOptions)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)
@@ -448,7 +464,7 @@ ArkTS-Dyn接口声明：[static show(value: ActionSheetOptions)](../reference/ap
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -519,7 +535,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -609,7 +625,7 @@ ArkTS-Dyn接口声明：[static show(value: AlertDialogParamWithConfirm | AlertD
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -763,7 +779,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -942,7 +958,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -984,7 +1000,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -1039,8 +1055,6 @@ struct Example {
 ```
 
 ### showActionMenu
-
-由@ohos.prompt、@ohos.promptAction提供的showActionMenu接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
 
 ArkTS-Dyn接口声明：
 
@@ -1054,7 +1068,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 引用@ohos.prompt的showActionMenu。
 
@@ -1142,7 +1156,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -1198,8 +1212,6 @@ struct Example {
 
 ### showActionMenu
 
-由@ohos.prompt、@ohos.promptAction提供的showActionMenu接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
-
 ArkTS-Dyn接口声明：
 
 引用@ohos.prompt的[showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;](../reference/apis-arkui/js-apis-prompt.md#promptshowactionmenu-1)
@@ -1212,7 +1224,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 引用@ohos.prompt的showActionMenu。
 
@@ -1292,7 +1304,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -1342,8 +1354,6 @@ struct Example {
 
 ### showDialog
 
-由@ohos.prompt、@ohos.promptAction提供的showDialog接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
-
 ArkTS-Dyn接口声明：
 
 引用@ohos.prompt的[showDialog(options: ShowDialogOptions, callback: AsyncCallback&lt;ShowDialogSuccessResponse&gt;):void](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog-1)
@@ -1356,7 +1366,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 引用@ohos.prompt的showDialog。
 
@@ -1446,7 +1456,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -1503,8 +1513,6 @@ struct Example {
 
 ### showDialog
 
-由@ohos.prompt、@ohos.promptAction提供的showDialog接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
-
 ArkTS-Dyn接口声明：
 
 引用@ohos.prompt的[showDialog(options: ShowDialogOptions): Promise\<ShowDialogSuccessResponse>](../reference/apis-arkui/js-apis-prompt.md#promptshowdialog)
@@ -1517,7 +1525,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 引用@ohos.prompt的showActionMenu。
 
@@ -1599,7 +1607,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -1650,8 +1658,6 @@ struct Example {
 
 ### openCustomDialog
 
-由@ohos.promptAction提供的openCustomDialog接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
-
 ArkTS-Dyn接口声明：
 
 引用@ohos.promptAction的[openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)
@@ -1662,7 +1668,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 引用@ohos.promptAction的openCustomDialog。
 
@@ -1711,7 +1717,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {
@@ -1781,7 +1787,7 @@ ArkTS-Dyn接口声明：
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 引用@ohos.promptAction的closeCustomDialog。
 
@@ -1830,7 +1836,7 @@ struct Example {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 import {

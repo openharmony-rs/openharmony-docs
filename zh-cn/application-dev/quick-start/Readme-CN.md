@@ -75,7 +75,6 @@
     - [ArkTS1.2互操作类型映射规则](arkts-interop-type-mapping.md)
     - [ArkTS1.2互操作场景](arkts-interop-more.md)
     - [ArkTS1.2互操作特性规范](arkts-interop-spec.md)
-    - [ArkTS1.2UI迁移规则](arkts-v1.1-v1.2-ui.md)
   - [ArkTS高性能编程实践](arkts-high-performance-programming.md)
   - 面向其他语言的ArkTS迁移指导
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)

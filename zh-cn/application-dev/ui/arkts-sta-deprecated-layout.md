@@ -1,17 +1,17 @@
-# 布局类组件
+# UI组件适配（布局）
 
-以下接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+以下接口在ArkTS-Dyn中已废弃，在ArkTS-Sta中需使用替代接口来实现能力。
 
 ## @ohos.mediaquery
 
 ### matchMediaSync
 
-ArkTS1.1接口声明：[matchMediaSync(condition: string): MediaQueryListener](../reference/apis-arkui/js-apis-mediaquery.md#mediaquerymatchmediasyncdeprecated)
+ArkTS-Dyn接口声明：[matchMediaSync(condition: string): MediaQueryListener](../reference/apis-arkui/js-apis-mediaquery.md#mediaquerymatchmediasyncdeprecated)
 
-替代的ArkTS1.2接口声明：[matchMediaSync(condition: string): mediaQuery.MediaQueryListener](../reference/apis-arkui/js-apis-arkui-UIContext.md#matchmediasync)
+替代的ArkTS-Sta接口声明：[matchMediaSync(condition: string): mediaQuery.MediaQueryListener](../reference/apis-arkui/js-apis-arkui-UIContext.md#matchmediasync)
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 <!--deprecated_code_no_check-->
 ```ts
 import { mediaquery } from '@kit.ArkUI';
@@ -19,7 +19,7 @@ import { mediaquery } from '@kit.ArkUI';
 let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 ```ts
 'use static'
 import mediaquery from '@kit.ArkUI';
@@ -29,13 +29,13 @@ let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery(
 
 ## GridContainer
 
-ArkTS1.1接口声明：[GridContainer(value?: GridContainerOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcontainer.md#接口)
+ArkTS-Dyn接口声明：[GridContainer(value?: GridContainerOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcontainer.md#接口)
 
-替代的ArkTS1.2接口声明：[GridCol(option?: GridColOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#接口)和[GridRow(option?: GridRowOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#接口)
+替代的ArkTS-Sta接口声明：[GridCol(option?: GridColOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#接口)和[GridRow(option?: GridRowOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#接口)
 
 ### GridContainerOptions
 
-ArkTS1.1接口声明：[
+ArkTS-Dyn接口声明：[
     GridContainerOptions{
         columns?: number | "auto";
         sizeType?: SizeType;
@@ -43,7 +43,7 @@ ArkTS1.1接口声明：[
         margin?: number | string;
     }](../reference/apis-arkui/arkui-ts/ts-container-gridcontainer.md#gridcontaineroptions对象说明)
 
-替代的ArkTS1.2接口声明：[
+替代的ArkTS-Sta接口声明：[
     GridColOptions{
         span?: number | GridColColumnOption;
         offset?: number | GridColColumnOption;
@@ -58,25 +58,25 @@ ArkTS1.1接口声明：[
 
 ### gridSpan
 
-ArkTS1.1接口声明：[gridSpan(value: number): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)
+ArkTS-Dyn接口声明：[gridSpan(value: number): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)
 
-替代的ArkTS1.2接口声明：[GridCol(option?: GridColOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#接口)和[GridRow(option?: GridRowOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#接口)
+替代的ArkTS-Sta接口声明：[GridCol(option?: GridColOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#接口)和[GridRow(option?: GridRowOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#接口)
 
 ### gridOffset
 
-ArkTS1.1接口声明：[gridOffset(value: number): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)
+ArkTS-Dyn接口声明：[gridOffset(value: number): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)
 
-替代的ArkTS1.2接口声明：[GridCol(option?: GridColOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#接口)和[GridRow(option?: GridRowOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#接口)
+替代的ArkTS-Sta接口声明：[GridCol(option?: GridColOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#接口)和[GridRow(option?: GridRowOptions)](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#接口)
 
 ### SizeType
 
-ArkTS1.1接口声明：[enum SizeType {Auto, XS, SM, MD, LG}](../reference/apis-arkui/arkui-ts/ts-container-gridcontainer.md#sizetype枚举说明)
+ArkTS-Dyn接口声明：[enum SizeType {Auto, XS, SM, MD, LG}](../reference/apis-arkui/arkui-ts/ts-container-gridcontainer.md#sizetype枚举说明)
 
-替代的ArkTS1.2接口声明：[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)
+替代的ArkTS-Sta接口声明：[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)
 
 ### useSizeType
 
-ArkTS1.1接口声明：[
+ArkTS-Dyn接口声明：[
     useSizeType(value: {
         xs?: number | { span: number; offset: number };
         sm?: number | { span: number; offset: number };
@@ -84,10 +84,10 @@ ArkTS1.1接口声明：[
         lg?: number | { span: number; offset: number };
     }): T](../reference/apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)
 
-替代的ArkTS1.2接口声明：[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)
+替代的ArkTS-Sta接口声明：[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 <!--deprecated_code_no_check-->
 ```ts
 // xxx.ets
@@ -168,7 +168,7 @@ struct GridContainerExample1 {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 ```ts
 'use static'
 
@@ -215,7 +215,7 @@ struct GridColExample {
 
 ### LayoutChild
 
-ArkTS1.1接口声明：[
+ArkTS-Dyn接口声明：[
     LayoutChild {
         name: string,
         id: string,
@@ -226,34 +226,34 @@ ArkTS1.1接口声明：[
         layout(childLayoutInfo: LayoutInfo),
     }](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#layoutchilddeprecated)
 
-替代的ArkTS1.2接口声明：ArkTS1.2暂无替代接口。
+替代的ArkTS-Sta接口声明：ArkTS-Sta暂无替代接口。
 
 ### LayoutInfo
 
-ArkTS1.1接口声明：[LayoutInfo { position: Position, constraint: ConstraintSizeOptions}](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#layoutinfodeprecated)
+ArkTS-Dyn接口声明：[LayoutInfo { position: Position, constraint: ConstraintSizeOptions}](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#layoutinfodeprecated)
 
-替代的ArkTS1.2接口声明：ArkTS1.2暂无替代接口。
+替代的ArkTS-Sta接口声明：ArkTS-Sta暂无替代接口。
 
 ### LayoutBorderInfo
 
-ArkTS1.1接口声明：[LayoutBorderInfo { borderWidth: EdgeWidths; margin: Margin, padding: Padding,}](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#layoutborderinfodeprecated)
+ArkTS-Dyn接口声明：[LayoutBorderInfo { borderWidth: EdgeWidths; margin: Margin, padding: Padding,}](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#layoutborderinfodeprecated)
 
-替代的ArkTS1.2接口声明：ArkTS1.2暂无替代接口。
+替代的ArkTS-Sta接口声明：ArkTS-Sta暂无替代接口。
 
 ### onMeasure
 
-ArkTS1.1接口声明：[onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onmeasuredeprecated)
+ArkTS-Dyn接口声明：[onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onmeasuredeprecated)
 
-替代的ArkTS1.2接口声明：[onMeasureSize?(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions): SizeResult](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onmeasuresize10)
+替代的ArkTS-Sta接口声明：[onMeasureSize?(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions): SizeResult](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onmeasuresize10)
 
 ### onLayout
 
-ArkTS1.1接口声明：[onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onlayoutdeprecated)
+ArkTS-Dyn接口声明：[onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onlayoutdeprecated)
 
-替代的ArkTS1.2接口声明：[onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions):void](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onplacechildren10)
+替代的ArkTS-Sta接口声明：[onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions):void](../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onplacechildren10)
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 <!--deprecated_code_no_check-->
 ```ts
 // xxx.ets
@@ -304,7 +304,7 @@ struct CustomLayout {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 ```ts
 'use static'
 

@@ -1,6 +1,6 @@
-# 路由和导航类接口
+# UI组件适配（路由与导航）
 
-以下接口在ArkTS-Dyn中已标记为废弃，并在ArkTS-Sta中不再支持。
+以下接口在ArkTS-Dyn中已废弃，在ArkTS-Sta中需使用替代接口来实现能力。
 
 ## @ohos.router
 
@@ -11,13 +11,13 @@ ArkTS-Dyn接口声明：[push(options: RouterOptions): void](../reference/apis-a
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.push({url: "url"})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"})
@@ -31,13 +31,13 @@ ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions): Promise<void>](../refe
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushUrl({url: "url"})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"})
@@ -51,13 +51,13 @@ ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, callback: AsyncCallback
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushUrl({url: "url"}, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
@@ -71,13 +71,13 @@ ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode): Prom
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushUrl({url: "url"}, router.RouterMode.Standard)
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard)
@@ -91,13 +91,13 @@ ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode, callb
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
@@ -111,12 +111,12 @@ ArkTS-Dyn接口声明：[back(options?: RouterOptions):void](../reference/apis-a
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.back({url: "url"})
 ```
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().back({url: "url"})
@@ -130,13 +130,13 @@ ArkTS-Dyn接口声明：[back(index: number, params?: Object): void](../referenc
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.back(1)
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().back(1)
@@ -150,13 +150,13 @@ ArkTS-Dyn接口声明：[replace(options: RouterOptions): void](../reference/api
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replace({url: "url"})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"})
@@ -170,13 +170,13 @@ ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions): Promise<void>](../r
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceUrl({url: "url"})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"})
@@ -190,13 +190,13 @@ ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, callback: AsyncCallb
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceUrl({url: "url"}, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"}, ()=>{})
@@ -210,13 +210,13 @@ ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode): P
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceUrl({url: "url"}, router.RouterMode.Standard)
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard)
@@ -230,13 +230,13 @@ ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode, ca
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
@@ -250,13 +250,13 @@ ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions): Promise<vo
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushNamedRoute({name: "路由名"})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"})
@@ -270,13 +270,13 @@ ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions, callback: A
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushNamedRoute({name: "路由名"}, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, ()=>{})
@@ -290,13 +290,13 @@ ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: Route
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard)
@@ -310,13 +310,13 @@ ArkTS-Dyn接口声明：[pushNamedRoute(options: NamedRouterOptions, mode: Route
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.pushNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
@@ -330,13 +330,13 @@ ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions): Promise
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceNamedRoute({name: "路由名"})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"})
@@ -350,13 +350,13 @@ ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, callback
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceNamedRoute({name: "路由名"}, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, ()=>{})
@@ -370,13 +370,13 @@ ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: Ro
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard)
@@ -390,13 +390,13 @@ ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: Ro
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
@@ -410,13 +410,13 @@ ArkTS-Dyn接口声明：[getParams(): Object](../reference/apis-arkui/js-apis-ro
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.getParams()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().getParams()
@@ -430,13 +430,13 @@ ArkTS-Dyn接口声明：[getStateByUrl(url: string): Array\<RouterState>](../ref
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.getStateByUrl("url")
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().getStateByUrl("url")
@@ -450,13 +450,13 @@ ArkTS-Dyn接口声明：[getStateByIndex(index: number): RouterState | undefined
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.getStateByIndex(1)
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().getStateByIndex(1)
@@ -470,13 +470,13 @@ ArkTS-Dyn接口声明：[getState():RouterState](../reference/apis-arkui/js-apis
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.getState()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().getState()
@@ -490,13 +490,13 @@ ArkTS-Dyn接口声明：[getLength():string](../reference/apis-arkui/js-apis-rou
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.getLength()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().getLength()
@@ -510,13 +510,13 @@ ArkTS-Dyn接口声明：[clear():void](../reference/apis-arkui/js-apis-router.md
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.clear()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().clear()
@@ -530,13 +530,13 @@ ArkTS-Dyn接口声明：[enableAlertBeforeBackPage(options: EnableAlertOptions):
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "1111" })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
@@ -550,13 +550,13 @@ ArkTS-Dyn接口声明：[showAlertBeforeBackPage(options: EnableAlertOptions):vo
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.showAlertBeforeBackPage({message: "1111"})
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
@@ -570,13 +570,13 @@ ArkTS-Dyn接口声明：[disableAlertBeforeBackPage(): void](../reference/apis-a
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.disableAlertBeforeBackPage()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
@@ -590,13 +590,13 @@ ArkTS-Dyn接口声明：[hideAlertBeforeBackPage():void](../reference/apis-arkui
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.hideAlertBeforeBackPage()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
@@ -612,13 +612,13 @@ ArkTS-Dyn接口声明：[export default class Router](../reference/apis-arkui/js
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 import router from '@system.router'
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter()
@@ -632,13 +632,13 @@ ArkTS-Dyn接口声明：[static push(options: RouterOptions): void](../reference
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.push({ uri: "url" })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
@@ -652,13 +652,13 @@ ArkTS-Dyn接口声明：[static back(options?: BackRouterOptions): void](../refe
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.back() 
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().back()
@@ -672,13 +672,13 @@ ArkTS-Dyn接口声明：[static replace(options: RouterOptions): void](../refere
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.replace({ uri: "url" })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().replaceUrl({ url: "url" }, ()=>{})
@@ -692,13 +692,13 @@ ArkTS-Dyn接口声明：[static clear(): void](../reference/apis-arkui/js-apis-s
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.clear()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().clear()
@@ -712,13 +712,13 @@ ArkTS-Dyn接口声明：[static enableAlertBeforeBackPage(options: EnableAlertBe
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "" })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
@@ -732,13 +732,13 @@ ArkTS-Dyn接口声明：[static disableAlertBeforeBackPage(options?: DisableAler
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.disableAlertBeforeBackPage()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
@@ -752,13 +752,13 @@ ArkTS-Dyn接口声明：[static getLength(): string](../reference/apis-arkui/js-
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let length: string = router.getLength()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let length: string = this.getUIContext().getRouter().getLength()
@@ -772,13 +772,13 @@ ArkTS-Dyn接口声明：[static getParams(): ParamsInterface](../reference/apis-
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.getParams()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().getParams()
@@ -792,13 +792,13 @@ ArkTS-Dyn接口声明：[static getState(): RouterState](../reference/apis-arkui
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.getState()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().getState()
@@ -814,13 +814,13 @@ ArkTS-Dyn接口声明：[export interface BackRouterOptions](../reference/apis-a
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let options: BackRouterOptions = { uri: "url" }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -834,13 +834,13 @@ ArkTS-Dyn接口声明：[uri: string ](../reference/apis-arkui/js-apis-system-ro
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let options: BackRouterOptions = { uri: "url" }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -854,13 +854,13 @@ ArkTS-Dyn接口声明：[params?: Object](../reference/apis-arkui/js-apis-system
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let options: BackRouterOptions = {uri: "url", params: ""}
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let options: router.RouterOptions = {uri: "url", params: ""}
@@ -876,13 +876,13 @@ ArkTS-Dyn接口声明：[export interface RouterOptions](../reference/apis-arkui
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let options: RouterOptions = { uri: "url" }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -896,13 +896,13 @@ ArkTS-Dyn接口声明：[uri: string](../reference/apis-arkui/js-apis-system-rou
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let options: RouterOptions = { uri: "url" }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let options: router.RouterOptions = { url: "url" }
@@ -916,13 +916,13 @@ ArkTS-Dyn接口声明：[params?: Object](../reference/apis-arkui/js-apis-system
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let options: RouterOptions = {url: "url", params: ""}
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let options: router.RouterOptions = {url: "url", params: ""}
@@ -938,13 +938,13 @@ ArkTS-Dyn接口声明：[export interface RouterState](../reference/apis-arkui/j
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let state: RouterState = { uri: "url" }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let state: router.RouterState = { url: "url" }
@@ -958,14 +958,14 @@ ArkTS-Dyn接口声明：[index: number](../reference/apis-arkui/js-apis-system-r
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let state: RouterState = router.getState()
 let index: number = state.index
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let state: router.RouterState = this.getUIContext().getRouter().getState()
@@ -980,14 +980,14 @@ ArkTS-Dyn接口声明：[name: string](../reference/apis-arkui/js-apis-system-ro
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let state: RouterState = router.getState()
 let name: string = state.name
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let state: router.RouterState = this.getUIContext().getRouter().getState()
@@ -1002,14 +1002,14 @@ ArkTS-Dyn接口声明：[path: string](../reference/apis-arkui/js-apis-system-ro
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let state: RouterState = router.getState()
 let path: string = state.path
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let state: router.RouterState = this.getUIContext().getRouter().getState()
@@ -1026,13 +1026,13 @@ ArkTS-Dyn接口声明：[export interface EnableAlertBeforeBackPageOptions](../r
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let options: EnableAlertBeforeBackPageOptions = { message: "" }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let options: EnableAlertOptions = { message: "" }
@@ -1046,13 +1046,13 @@ ArkTS-Dyn接口声明：[message: string ](../reference/apis-arkui/js-apis-syste
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "" })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
@@ -1066,13 +1066,13 @@ ArkTS-Dyn接口声明：[success?: (errMsg: string) => void](../reference/apis-a
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "", success: (err: string)=>{} })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
@@ -1087,13 +1087,13 @@ ArkTS-Dyn接口声明：[cancel?: (errMsg: string) => void](../reference/apis-ar
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "", cancel: (err: string)=>{} })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
@@ -1108,13 +1108,13 @@ ArkTS-Dyn接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.enableAlertBeforeBackPage({ message: "", complete: ()=>{} })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
@@ -1136,13 +1136,13 @@ ArkTS-Dyn接口声明：[success?: (errMsg: string) => void](../reference/apis-a
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.disableAlertBeforeBackPage({ success: (err: string)=>{} })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
@@ -1157,13 +1157,13 @@ ArkTS-Dyn接口声明：[cancel?: (errMsg: string) => void](../reference/apis-ar
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.disableAlertBeforeBackPage({ cancel: (err: string)=>{} })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
@@ -1178,13 +1178,13 @@ ArkTS-Dyn接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 router.disableAlertBeforeBackPage({ complete: ()=>{} })
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
@@ -1201,13 +1201,13 @@ ArkTS-Dyn接口声明：[type ParamsInterface = {[key: string]: Object}](../refe
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 let params: ParamsInterface = router.getParams()
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 let params: Object = this.getUIContext().getRouter().getParams()
@@ -1224,7 +1224,7 @@ ArkTS-Dyn接口声明：[toolBar(value: object | CustomBuilder): NavigationAttri
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 @Builder
@@ -1236,7 +1236,7 @@ build(){
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 @Builder
@@ -1257,13 +1257,13 @@ ArkTS-Dyn接口声明：[subTitle(value: string): NavigationAttribute](../refere
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 Navigation().subTitle("子标题")
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 ```ts
 Navigation().title({main: "标题", sub: "子标题"})
 ```
@@ -1277,7 +1277,7 @@ ArkTS-Dyn接口声明：[Navigator(value?: {target: string, type?: NavigationTyp
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 Navigator({ target: "url", type: NavigationType.Push}){
@@ -1291,7 +1291,7 @@ Navigator({ target: "url", type: NavigationType.Replace}){
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本Navigator组件全面废弃，将由router进行替代
@@ -1315,7 +1315,7 @@ ArkTS-Dyn接口声明：[NavRouter()](../reference/apis-arkui/arkui-ts/ts-basic-
 
 
 
-ArkTS-Dyn
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -1348,7 +1348,7 @@ struct Index {
 }
 ```
 
-ArkTS-Sta
+ArkTS-Sta示例：
 
 ```ts
 // ArkTS-Sta版本NavRouter组件全面废弃，将由Navigation进行替代

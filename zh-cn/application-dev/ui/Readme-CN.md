@@ -2,34 +2,6 @@
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
-  - 从ArkTS1.1到ArkTS1.2的UI适配指导<!--ui-arkts-migration-guide-->
-    - ArkTS1.2不再支持的UI接口<!--ui-deprecated-apis-->
-      - [滚动与滑动](arkts-v1.2-deprecated-scrollable-apis.md)
-      - [像素单位转换](arkts-v1.2-deprecated-ts-pixel-units-apis.md)
-      - [页面上下文](arkts-v1.2-deprecated-ts-context-apis.md)
-      - [绘制组件](arkts-v1.2-deprecated-drawing-apis.md)
-      - [Picker类组件](arkts-v1.2-deprecated-picker-apis.md)
-      - [渲染控制](arkts-v1.2-deprecated-rendering-control-apis.md)
-      - [弹窗类组件](arkts-v1.2-deprecated-dialog-apis.md)
-      - [表单类组件](arkts-v1.2-deprecated-form-apis.md)
-      - [文本类组件](arkts-v1.2-deprecated-text-apis.md)
-      - [布局类组件](arkts-v1.2-deprecated-layout-apis.md)
-      - [布局回调](arkts-v1.2-deprecated-inspector.md)
-      - [路由和导航类接口](arkts-v1.2-deprecated-router-navigation.md)
-      - [动效类接口](arkts-v1.2-deprecated-animation.md)
-      - [视效类接口](arkts-v1.2-deprecated-visual-effect.md)
-      - [Swiper](arkts-v1.2-deprecated-swiper.md)
-      - [Panel](arkts-v1.2-deprecated-panel.md)
-      - [AlphabetIndexer](arkts-v1.2-deprecated-alphabet-indexer.md)
-      - [状态管理](arkts-v1.2-deprecated-state-management-apis.md)
-      - [@ohos.arkui.dragController](arkts-v1.2-deprecated-dragController-apis.md)
-      - [@ohos.arkui.componentSnapshot](arkts-v1.2-deprecated-componentSnapshot-apis.md)
-      - [@ohos.arkui.componentUtils](arkts-v1.2-deprecated-componentUtils-apis.md)
-      - [交互事件字段](arkts-v1.2-deprecated-event-object-apis.md)
-      - [UIExtensionComponent (系统接口)](arkts-v1.2-deprecated-uiextension.md)
-      - [AbilityComponent (系统接口)](arkts-v1.2-deprecated-abilitycomponent.md)
-      - [ChipGroup](arkts-v1.2-deprecated-chipgroup.md)
-      - [@system.app](arkts-v1.2-deprecated-system-app.md)
   - ArkTS-Dyn与ArkTS-Sta的交互能力<!--ui-arkts-sta-interop-dyn-->
     - [ArkTS-Sta与ArkTS-Dyn UI互操作指南](arkts-dyn-sta-ui-interop.md)
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
@@ -329,6 +301,21 @@
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components.md)
     - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)(ArkTS1.1)](arkts-isolated-components.md)
     <!--DelEnd-->
+  - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
+    - [从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](arkts-dyn-sta-ui-rules.md)
+    - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
+      - [UI接口适配](arkts-sta-deprecated-ui-apis.md)
+      - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
+      - [UI组件适配（路由与导航）](arkts-sta-deprecated-router-and-navigation.md)
+      - [UI组件适配（滚动与滑动）](arkts-sta-deprecated-scroll-and-swipe.md)
+      - [UI组件适配（布局）](arkts-sta-deprecated-layout.md)
+      - [UI组件适配（文本）](arkts-sta-deprecated-text.md)
+      - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
+      - [UI组件适配（表单与弹窗）](arkts-sta-deprecated-form-and-dialog.md)
+      - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
+      - [UI组件适配（XComponent）](arkts-sta-deprecated-xcomponent.md)
+      - [UI组件适配（状态管理与渲染控制）](arkts-sta-deprecated-state-management-and-rendering-control.md)
+      - [UI组件适配（系统接口）](arkts-sta-deprecated-system.md)
   - 使用NDK接口构建UI<!--arkts-use-ndk-->
     - [NDK接口概述](ndk-build-ui-overview.md)
     - [接入ArkTS页面](ndk-access-the-arkts-page.md)

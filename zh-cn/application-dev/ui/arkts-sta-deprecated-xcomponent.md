@@ -1,16 +1,16 @@
-# 绘制组件
+# UI组件适配（XComponent）
 
-以下接口在ArkTS1.1中已标记为废弃，并在ArkTS1.2中不再支持。
+以下接口在ArkTS-Dyn中已废弃，在ArkTS-Sta中需使用替代接口来实现能力。
 
 ## setXComponentSurfaceSize
 
-ArkTS1.1接口声明：[setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setXComponentSurfaceSizedeprecated)
+ArkTS-Dyn接口声明：[setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setXComponentSurfaceSizedeprecated)
 
-替代的ArkTS1.2接口声明：[setXComponentSurfaceRect(rect: SurfaceRect): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12)
+替代的ArkTS-Sta接口声明：[setXComponentSurfaceRect(rect: SurfaceRect): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -32,7 +32,7 @@ struct XComponentExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 @Entry
@@ -56,13 +56,13 @@ struct XComponentExample {
 
 ## XComponent
 
-ArkTS1.1接口声明：[XComponent(value: {id: string, type: string, libraryname?: string, controller?: XComponentController})](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponentdeprecated)
+ArkTS-Dyn接口声明：[XComponent(value: {id: string, type: string, libraryname?: string, controller?: XComponentController})](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponentdeprecated)
 
-替代的ArkTS1.2接口声明：[XComponent(options: XComponentOptions)](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponent12)
+替代的ArkTS-Sta接口声明：[XComponent(options: XComponentOptions)](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponent12)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -79,7 +79,7 @@ struct XComponentExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 @Entry
@@ -100,13 +100,13 @@ struct XComponentExample {
 
 ### XComponentType.COMPONENT
 
-ArkTS1.1接口声明：[XComponentType.COMPONENT](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10)
+ArkTS-Dyn接口声明：[XComponentType.COMPONENT](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10)
 
-替代的ArkTS1.2接口声明：[Column(options?: ColumnOptions)](../reference/apis-arkui/arkui-ts/ts-container-column.md#column-1)
+替代的ArkTS-Sta接口声明：[Column(options?: ColumnOptions)](../reference/apis-arkui/arkui-ts/ts-container-column.md#column-1)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -122,7 +122,7 @@ struct XComponentExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 @Entry
@@ -140,13 +140,13 @@ struct XComponentExample {
 
 ### XComponentType.NODE
 
-ArkTS1.1接口声明：[XComponentType.NODE](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10)
+ArkTS-Dyn接口声明：[XComponentType.NODE](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10)
 
-替代的ArkTS1.2接口声明：[ArkTS侧接口：ContentSlot(content: Content)](state-management/arkts-rendering-control-contentslot.md#arkts侧接口)
+替代的ArkTS-Sta接口声明：[ArkTS侧接口：ContentSlot(content: Content)](state-management/arkts-rendering-control-contentslot.md#arkts侧接口)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -160,7 +160,7 @@ struct XComponentExample {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 import { NodeContent } from '@kit.ArkUI';
@@ -180,17 +180,15 @@ struct XComponentExample {
 
 ## XComponentNode
 
-在ArkTS1.2中，不再支持`XComponentNode`及其相关接口。
-
 ### constructor
 
-ArkTS1.1接口声明：[constructor(uiContext: UIContext, options: RenderOptions, id: string, type: XComponentType, libraryName?: string)](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#constructor)
+ArkTS-Dyn接口声明：[constructor(uiContext: UIContext, options: RenderOptions, id: string, type: XComponentType, libraryName?: string)](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#constructor)
 
-替代的ArkTS1.2接口声明：[createNode(context: UIContext, nodeType: 'XComponent'): XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodexcomponent12)
+替代的ArkTS-Sta接口声明：[createNode(context: UIContext, nodeType: 'XComponent'): XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodexcomponent12)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 import { XComponentNode, NodeController } from '@kit.ArkUI';
@@ -209,7 +207,7 @@ class MyXComponentNode extends XComponentNode {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 import { NodeController, typeNode } from '@kit.ArkUI';
@@ -226,13 +224,13 @@ class XComponentNodeController extends NodeController {
 
 ### onCreate
 
-ArkTS1.1接口声明：[onCreate(event?: Object): void](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#oncreate)
+ArkTS-Dyn接口声明：[onCreate(event?: Object): void](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#oncreate)
 
-替代的ArkTS1.2接口声明：[onSurfaceCreated(surfaceId: string): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#onsurfacecreated12)
+替代的ArkTS-Sta接口声明：[onSurfaceCreated(surfaceId: string): void](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#onsurfacecreated12)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 import { XComponentNode, NodeController } from '@kit.ArkUI';
@@ -254,7 +252,7 @@ class MyXComponentNode extends XComponentNode {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 import { NodeController, typeNode } from '@kit.ArkUI';
@@ -277,13 +275,13 @@ class XComponentNodeController extends NodeController {
 
 ### onDestroy
 
-ArkTS1.1接口声明：[onDestroy(): void](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#ondestroy)
+ArkTS-Dyn接口声明：[onDestroy(): void](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#ondestroy)
 
-替代的ArkTS1.2接口声明：[onDestroy(event: VoidCallback): XComponentAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#ondestroy)
+替代的ArkTS-Sta接口声明：[onDestroy(event: VoidCallback): XComponentAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#ondestroy)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 import { XComponentNode, NodeController } from '@kit.ArkUI';
@@ -305,7 +303,7 @@ class MyXComponentNode extends XComponentNode {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 import { NodeController, typeNode } from '@kit.ArkUI';
@@ -325,13 +323,13 @@ class XComponentNodeController extends NodeController {
 
 ### changeRenderType
 
-ArkTS1.1接口声明：[changeRenderType(type: NodeRenderType): boolean](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#changeRenderType)
+ArkTS-Dyn接口声明：[changeRenderType(type: NodeRenderType): boolean](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md#changeRenderType)
 
-替代的ArkTS1.2接口声明：[constructor(uiContext: UIContext, options?: RenderOptions)](../reference/apis-arkui/js-apis-arkui-builderNode.md#constructor)
+替代的ArkTS-Sta接口声明：[constructor(uiContext: UIContext, options?: RenderOptions)](../reference/apis-arkui/js-apis-arkui-builderNode.md#constructor)
 
 
 
-ArkTS1.1
+ArkTS-Dyn示例：
 
 ```ts
 import { XComponentNode, NodeRenderType, UIContext } from '@kit.ArkUI';
@@ -344,7 +342,7 @@ class MyNodeController {
 }
 ```
 
-ArkTS1.2
+ArkTS-Sta示例：
 
 ```ts
 import { BuilderNode, RenderOptions, NodeRenderType, UIContext } from '@kit.ArkUI';
