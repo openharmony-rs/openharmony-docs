@@ -587,6 +587,43 @@ enableAutoFill(value: boolean)
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
 
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true，同时不设置[selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明)属性时，默认识别所有类型的实体。
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。设置为undefined时恢复为true。 |
+
+### selectedDataDetectorConfig<sup>22+</sup>
+
+selectedDataDetectorConfig(config: SelectDataDetectorConfig | undefined)
+
+设置选中文本的识别配置，可配置识别类型。
+
+需配合[enableSelectedDataDetector](#enableselecteddatadetector22)一起使用，设置enableSelectedDataDetector为true时，selectedDataDetectorConfig的配置才能生效。相关示例可以参考[示例7设置文本识别](ts-basic-components-text.md#示例7设置文本识别)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| config | [SelectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 选中文本识别配置。设置为undefined时恢复默认行为，默认行为是识别所有类型。|
+
 ### passwordRules<sup>11+</sup>
 
 passwordRules(value: string)
