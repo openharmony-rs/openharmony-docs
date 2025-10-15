@@ -4394,6 +4394,7 @@
             - [@ohos.ai.intelligentVoice (智能语音)(系统接口)](reference/apis-basic-services-kit/js-apis-intelligentVoice-sys.md)
             <!--DelEnd-->
             - [@ohos.base (公共回调信息)](reference/apis-basic-services-kit/js-apis-base.md)
+            - [@ohos.annotation (系统注解)](reference/apis-basic-services-kit/js-apis-annotation.md)
             - [@ohos.customization.customConfig (定制配置)](reference/apis-basic-services-kit/js-apis-customization-customConfig.md)
             - [@ohos.settings (设置数据项名称)](reference/apis-basic-services-kit/js-apis-settings.md)
             - [@ohos.wallpaper (壁纸)](reference/apis-basic-services-kit/js-apis-wallpaper.md)
