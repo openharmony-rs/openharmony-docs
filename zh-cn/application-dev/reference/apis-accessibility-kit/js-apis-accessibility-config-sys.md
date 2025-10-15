@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从 API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口为系统接口。
 
@@ -19,25 +20,25 @@ import { config } from '@kit.AccessibilityKit';
 
 | 名称                                 | 类型                                                                                     | 只读 | 可选 | 说明                         |
 |------------------------------------|--------------------------------------------------------------------------------------------| -------- | -------- |-----------------------------------------------------------|
-| highContrastText                   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示高对比度文字功能启用状态。true表示已启用高对比度文字功能，false表示未启用高对比度文字功能，默认值为false。                                           |
-| invertColor                        | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色反转功能启用状态。true表示已启用颜色反转功能，false表示未启用颜色反转功能，默认值为false。                                             |
-| daltonizationState<sup>11+</sup>   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色滤镜功能启动状态。配合daltonizationColorFilter使用。true表示已启用颜色滤镜功能，false表示未启用颜色滤镜功能，默认值为false。                |
-| daltonizationColorFilter           | [Config](#config)&lt;[DaltonizationColorFilter](#daltonizationcolorfilter)&gt;             | 否 | 否 | 表示颜色滤镜功能配置。                                               |
-| contentTimeout                     | [Config](#config)\<number>                                                                 | 否 | 否 | 表示内容显示建议时长配置。取值范围为0~5000，单位为毫秒。默认值为0。                             |
-| animationOff                       | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示关闭动画功能启用状态。true表示已启用关闭动画功能，false表示未启用关闭动画功能，默认值为false。                                             |
-| brightnessDiscount                 | [Config](#config)\<number>                                                                 | 否 | 否 | 表示亮度折扣系统配置。取值范围为0~1.0。默认值为0.0。                                      |
-| mouseKey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示鼠标键功能启用状态。true表示已启用鼠标键功能，false表示未启用鼠标键功能，默认值为false。                                              |
-| mouseAutoClick                     | [Config](#config)\<number>                                                                 | 否 | 否 | 表示鼠标自动点击操作的配置。取值范围0-5000，单位为毫秒，0表示不生效，其他值表示鼠标悬停相应的时长即触发自动点击操作，默认值为0，即默认不生效。                |
-| shortkey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助扩展快捷键功能启用状态。true表示已启用辅助扩展快捷键功能，false表示未启用辅助扩展快捷键功能，默认值为false。                                          |
-| shortkeyTarget                     | [Config](#config)\<string>                                                                 | 否 | 否 | 表示辅助扩展快捷键的目标配置。取值为辅助应用的名称，格式为：'bundleName/abilityName'。   |
-| captions                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助字幕功能启用状态。true表示已启用辅助字幕功能，false表示未启用辅助字幕功能，默认值为false。                                             |
-| captionsStyle                      | [Config](#config)\<[accessibility.CaptionsStyle](js-apis-accessibility.md#captionsstyle8)> | 否 | 否 | 表示辅助字幕的配置。                                                |
-| audioMono<sup>10+</sup>            | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示单声道音频的配置。true表示已启用单声道音频，false表示未启用单声道音频，默认值为false。                                            |
-| audioBalance<sup>10+</sup>         | [Config](#config)\<number>                                                                 | 否 | 否 | 表示左右声道音量平衡的配置。取值范围为-1.0~1.0。默认值为0.0。                                |
-| shortkeyMultiTargets<sup>11+</sup> | [Config](#config)&lt;Array\<string>&gt;                                                    | 否 | 否 | 表示辅助扩展快捷键的列表配置。取值为辅助应用的名称，格式为：['bundleName/abilityName']。 |
-| clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | 否 | 否 | 表示点击持续时间功能配置。                                             |
-| ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。                   |
-| repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。                                             |
+| highContrastText                   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示高对比度文字功能启用状态。true表示已启用高对比度文字功能，false表示未启用高对比度文字功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20                   |
+| invertColor                        | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色反转功能启用状态。true表示已启用颜色反转功能，false表示未启用颜色反转功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20       |
+| daltonizationState<sup>11+</sup>   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色滤镜功能启动状态。配合daltonizationColorFilter使用。true表示已启用颜色滤镜功能，false表示未启用颜色滤镜功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20   |
+| daltonizationColorFilter           | [Config](#config)&lt;[DaltonizationColorFilter](#daltonizationcolorfilter)&gt;             | 否 | 否 | 表示颜色滤镜功能配置。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20            |
+| contentTimeout                     | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<int>                | 否 | 否 | 表示内容显示建议时长配置。取值范围为0~5000，单位为毫秒。默认值为0。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20      |
+| animationOff                       | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示关闭动画功能启用状态。true表示已启用关闭动画功能，false表示未启用关闭动画功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20                 |
+| brightnessDiscount                 | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<double>             | 否 | 否 | 表示亮度折扣系统配置。取值范围为0~1.0。默认值为1.0。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20          |
+| mouseKey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示鼠标键功能启用状态。true表示已启用鼠标键功能，false表示未启用鼠标键功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20                  |
+| mouseAutoClick                     | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<int>                | 否 | 否 | 表示鼠标自动点击操作的配置。取值范围0-5000，单位为毫秒，0表示不生效，其他值表示鼠标悬停相应的时长即触发自动点击操作，默认值为0，即默认不生效。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20     |
+| shortkey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助扩展快捷键功能启用状态。true表示已启用辅助扩展快捷键功能，false表示未启用辅助扩展快捷键功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20               |
+| shortkeyTarget                     | [Config](#config)\<string>                                                                 | 否 | 否 | 表示辅助扩展快捷键的目标配置。取值为辅助应用的名称，格式为：'bundleName/abilityName'。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20  |
+| captions                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助字幕功能启用状态。true表示已启用辅助字幕功能，false表示未启用辅助字幕功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20          |
+| captionsStyle                      | [Config](#config)\<[accessibility.CaptionsStyle](js-apis-accessibility.md#captionsstyle8)> | 否 | 否 | 表示辅助字幕的配置。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20            |
+| audioMono<sup>10+</sup>            | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示单声道音频的配置。true表示已启用单声道音频，false表示未启用单声道音频，默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20               |
+| audioBalance<sup>10+</sup>         | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<double>             | 否 | 否 | 表示左右声道音量平衡的配置。取值范围为-1.0~1.0。默认值为0.0。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20         |
+| shortkeyMultiTargets<sup>11+</sup> | [Config](#config)&lt;Array\<string>&gt;                                                    | 否 | 否 | 表示辅助扩展快捷键的列表配置。取值为辅助应用的名称，格式为：['bundleName/abilityName']。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20 |
+| clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | 否 | 否 | 表示点击持续时间功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20             |
+| ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20    |
+| repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20          |
 
 boolean返回值的含义：True表示开启，False表示关闭。
 []()
@@ -52,6 +53,10 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): 
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -106,6 +111,10 @@ enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-a
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型                                                                              | 必填 | 说明 |
@@ -128,6 +137,8 @@ enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-a
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { accessibility, config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,6 +148,24 @@ let capability: accessibility.Capability[] = ['retrieve'];
 
 config.enableAbility(name, capability, (err: BusinessError) => {
   if (err) {
+    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`); 
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { accessibility, config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let name: string = 'com.ohos.example/axExtension';
+let capability: accessibility.Capability[] = ['retrieve'];
+
+config.enableAbility(name, capability, (err: BusinessError | null) => {
+  if (err?.code) {
     console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
@@ -155,6 +184,10 @@ disableAbility(name: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -206,6 +239,10 @@ disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -226,6 +263,8 @@ disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { accessibility, config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -234,6 +273,23 @@ let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name, (err: BusinessError) => {
   if (err) {
+    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in disable, name is ${name}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { accessibility, config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let name: string = 'com.ohos.example/axExtension';
+
+config.disableAbility(name, (err: BusinessError | null) => {
+  if (err?.code) {
     console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
@@ -251,7 +307,13 @@ on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&g
 
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onEnabledAccessibilityExtensionListChange](#onenabledaccessibilityextensionlistchange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -275,9 +337,80 @@ on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&g
 ```ts
 import { config } from '@kit.AccessibilityKit';
 
-config.on('enabledAccessibilityExtensionListChange', () => {
-  console.info('subscribe enabled accessibility extension list change state success');
-});
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`enabled accessibility extension list change`);
+  }
+
+  aboutToAppear(): void {
+    config.on('enabledAccessibilityExtensionListChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## onEnabledAccessibilityExtensionListChange<sup>22+</sup>
+
+onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
+
+添加启用的辅助扩展的列表变化监听。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('enabledAccessibilityExtensionListChange')](#onenabledaccessibilityextensionlistchange)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，在启用的辅助扩展的列表变化时通过此函数进行通知。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`enabled accessibility extension list change`);
+  }
+
+  aboutToAppear(): void {
+    config.onEnabledAccessibilityExtensionListChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ## off('enabledAccessibilityExtensionListChange')
@@ -290,7 +423,13 @@ off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void
 
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offEnabledAccessibilityExtensionListChange](#offenabledaccessibilityextensionlistchange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -314,9 +453,88 @@ off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void
 ```ts
 import { config } from '@kit.AccessibilityKit';
 
-config.off('enabledAccessibilityExtensionListChange', () => {
-  console.info('Unsubscribe enabled accessibility extension list change state success');
-});
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`enabled accessibility extension list change`);
+  }
+
+  aboutToAppear(): void {
+    config.on('enabledAccessibilityExtensionListChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    config.off('enabledAccessibilityExtensionListChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## offEnabledAccessibilityExtensionListChange
+
+offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): void
+
+取消启用的辅助扩展的列表变化监听。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('enabledAccessibilityExtensionListChange')](#offenabledaccessibilityextensionlistchange)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 否 | 取消指定callback对象的事件响应。需与onEnabledAccessibilityExtensionListChange的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`enabled accessibility extension list change`);
+  }
+
+  aboutToAppear(): void {
+    config.onEnabledAccessibilityExtensionListChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    config.offEnabledAccessibilityExtensionListChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ## on('installedAccessibilityListChange')<sup>12+</sup>
@@ -329,7 +547,13 @@ on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): vo
 
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onInstalledAccessibilityListChange](#oninstalledaccessibilitylistchange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -353,9 +577,80 @@ on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): vo
 ```ts
 import { config } from '@kit.AccessibilityKit';
 
-config.on('installedAccessibilityListChange', () => {
-  console.info('subscribe installed accessibility extension list change state success');
-});
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`installed accessibility list change`);
+  }
+
+  aboutToAppear(): void {
+    config.on('installedAccessibilityListChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## onInstalledAccessibilityListChange<sup>22+</sup>
+
+onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
+
+添加已安装的辅助扩展的列表变化监听。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('installedAccessibilityListChange')](#oninstalledaccessibilitylistchange12)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，在已安装的辅助扩展的列表变化时通过此函数进行通知。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`installed accessibility list change`);
+  }
+
+  aboutToAppear(): void {
+    config.onInstalledAccessibilityListChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ## off('installedAccessibilityListChange')<sup>12+</sup>
@@ -368,7 +663,13 @@ off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): 
 
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offInstalledAccessibilityListChange](#offinstalledaccessibilitylistchange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -392,10 +693,90 @@ off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): 
 ```ts
 import { config } from '@kit.AccessibilityKit';
 
-config.off('installedAccessibilityListChange', () => {
-  console.info('Unsubscribe installed accessibility extension list change state success');
-});
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`installed accessibility list change`);
+  }
+
+  aboutToAppear(): void {
+    config.on('installedAccessibilityListChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    config.off('installedAccessibilityListChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
+
+## offInstalledAccessibilityListChange<sup>22+</sup>
+
+offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
+
+取消已安装的辅助扩展的列表变化监听。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('installedAccessibilityListChange')](#offinstalledaccessibilitylistchange12)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 否 | 取消指定callback对象的事件响应。需与onInstalledAccessibilityListChange的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: () => void = this.eventCallback;
+  eventCallback(): void {
+    console.info(`installed accessibility list change`);
+  }
+
+  aboutToAppear(): void {
+    config.onInstalledAccessibilityListChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    config.offInstalledAccessibilityListChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## setMagnificationState<sup>20+</sup>
 
 setMagnificationState(state: boolean): void
@@ -406,7 +787,11 @@ setMagnificationState(state: boolean): void
 
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -451,6 +836,10 @@ set(value: T): Promise&lt;void&gt;
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -501,6 +890,10 @@ set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -520,6 +913,8 @@ set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -528,6 +923,23 @@ let value: boolean = true;
 
 config.highContrastText.set(value, (err: BusinessError) => {
   if (err) {
+    console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in set highContrastText, value is ${value}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value: boolean = true;
+
+config.highContrastText.set(value, (err: BusinessError | null) => {
+  if (err?.code) {
     console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
@@ -544,6 +956,10 @@ get(): Promise&lt;T&gt;
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -583,6 +999,10 @@ get(callback: AsyncCallback&lt;T&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -599,12 +1019,29 @@ get(callback: AsyncCallback&lt;T&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 config.highContrastText.get((err: BusinessError, data: boolean) => {
   if (err) {
+    console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in get highContrastText, data is ${data}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+config.highContrastText.get((err: BusinessError | null, data: boolean | undefined) => {
+  if (err?.code) {
     console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
@@ -623,6 +1060,10 @@ on(callback: Callback&lt;T&gt;): void
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -662,6 +1103,10 @@ off(callback?: Callback&lt;T&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -694,6 +1139,10 @@ config.highContrastText.off((data: boolean) => {
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 | 名称 | 说明 |
 | -------- | -------- |
 | Normal | 表示正常类型。 |
@@ -707,6 +1156,10 @@ config.highContrastText.off((data: boolean) => {
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | 名称          | 说明         |
 |-------------|------------|
 | Short       | 表示短 (默认)。  |
@@ -719,6 +1172,10 @@ config.highContrastText.off((data: boolean) => {
 忽略重复点击功能开启时（[ignoreRepeatClick](#属性)设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时（[ignoreRepeatClick](#属性)设置为false)，显示为正常类型。
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 | 名称       | 说明    |
 |----------|-------|
