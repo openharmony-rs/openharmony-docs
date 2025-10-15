@@ -35,7 +35,29 @@ type Position = Vector2
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+| 类型                | 说明                                |
+| ------------------- | ----------------------------------- |
+| [Vector2](#vector2) | 包含x和y两个值的向量。<br/>单位：vp |
+
+## NodePosition<sup>20+</sup>
+
+type NodePosition = Vector2
+
+用于设置或返回组件的位置。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型                | 说明                                |
 | ------------------- | ----------------------------------- |
