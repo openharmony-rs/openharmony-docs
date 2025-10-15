@@ -1,4 +1,4 @@
-# ServiceExtensionAbility
+# ServiceExtensionAbility（仅对系统应用开放）
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
@@ -516,7 +516,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
   };
   ```
 
-- 直接使用[sendMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9)接口向服务端发送消息（不推荐）。
+- 直接使用[sendMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9)接口向服务端发送消息（不建议）。
 
   ```ts
   import { common } from '@kit.AbilityKit';
