@@ -727,7 +727,7 @@ struct Index {
       Button('Deserialize')
         .onClick((e) => {
           // 反序列化生成@Observed类并赋值
-          this.source = JSON.parse<Source>('{'source': 123}', Type.from<Source>())!;
+          this.source = JSON.parse<Source>('{"source": 123}', Type.from<Source>())!;
         })
     }
   }
@@ -777,7 +777,7 @@ struct Index {
       Button('Deserialize')
         .onClick((e) => {
           // 使用JSON.parseJsonElement反序列生成JSONElement，再传入静态方法构建实例
-          this.source = Source.FromJSON(JSON.parseJsonElement('{'source': 123}'));
+          this.source = Source.FromJSON(JSON.parseJsonElement('{"source": 123}'));
         })
     }
   }
