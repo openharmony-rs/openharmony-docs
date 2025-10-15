@@ -824,7 +824,7 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| networkInfo | NetworkInfo | 是   | 指定查询的网络信息，参见[NetworkInfo](#networkinfo22)。 |
+| networkInfo | [NetworkInfo](#networkinfo22) | 是   | 指定查询的网络信息。 |
 
 **返回值：**
 
