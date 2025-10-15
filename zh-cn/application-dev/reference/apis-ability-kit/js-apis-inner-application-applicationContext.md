@@ -910,7 +910,11 @@ export default class MyAbility extends UIAbility {
 
 restartApp(want: Want): void
 
-应用重启并拉起自身指定UIAbility。重启时不会收到onDestroy回调。仅支持主线程调用，且待重启的应用需要处于获焦状态。
+应用重启并拉起自身指定UIAbility。仅支持主线程调用，且待重启的应用需要处于获焦状态。
+
+> **说明：**
+>
+> 通过该接口重启应用时，不会触发应用中Ability的onDestroy生命周期回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -919,7 +923,7 @@ restartApp(want: Want): void
 **参数：**
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的UIAbility的信息，Bundle名称不做校验。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的UIAbility信息，校验abilityName，不校验bundleName。 |
 
 **错误码**：
 
@@ -936,20 +940,43 @@ restartApp(want: Want): void
 **示例：**
 
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
 
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    let applicationContext = this.context.getApplicationContext();
-    let want: Want = {
-      bundleName: 'com.example.myapp',
-      abilityName: 'EntryAbility'
-    };
-    try {
-      applicationContext.restartApp(want);
-    } catch (error) {
-      console.error(`restartApp fail, error: ${JSON.stringify(error)}`);
+@Entry
+@Component
+struct Index {
+  @State message: string = 'restartApp';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let want: Want = {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility'
+          };
+          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
+          if (appcontext) {
+            try {
+              appcontext.restartApp(want);
+            } catch (err) {
+              hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
+            }
+          } else {
+            hilog.error(0x0000, 'testTag', "%{public}s", 'AppContext is null');
+          }
+        })
     }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
