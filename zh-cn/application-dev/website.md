@@ -2162,6 +2162,7 @@
         - [Wearable](reference/wearable-syscap-list.md)
     <!--DelEnd-->
     - [通用错误码](reference/errorcode-universal.md)
+    - [SDK编译校验错误码](reference/errorcode-sdk-compile.md)
   - 应用框架<!--app-framework-api-->
     - Ability Kit（程序框架服务）<!--ability-api-->
       - ArkTS API<!--ability-arkts-->
