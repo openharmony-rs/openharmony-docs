@@ -3577,6 +3577,7 @@
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
           - [ArkUI_ContentTransitionEffect](reference/apis-arkui/capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
           - [ArkUI_SelectedDataDetectorConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)
+          - [ArkUI_CoastingAxisEvent](reference/apis-arkui/capi-arkui-nativemodule-arkui-coastingaxisevent.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [动画错误码](reference/apis-arkui/errorcode-animator.md)
