@@ -1,5 +1,5 @@
 # @ohos.screenLock (锁屏管理)（系统接口）
-<!--Kit: BasicServicesKit-->
+<!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @jiayunpeng2-->
 <!--Designer: @starrylight; @jiayunpeng2-->
