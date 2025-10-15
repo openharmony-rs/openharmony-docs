@@ -12,7 +12,7 @@
 ## 导入模块
 
 ```ts
-import reminderAgentManager from '@ohos.reminderAgentManager';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## ActionButtonType
