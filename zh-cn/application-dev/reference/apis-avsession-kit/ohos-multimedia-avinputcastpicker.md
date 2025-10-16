@@ -79,7 +79,7 @@ import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 @Component
 struct Index {
 
-  @State pickerImage: ResourceStr = $r('app.media.castPicker'); // 自定义资源。
+  @State pickerImage: ResourceStr = $r('app.media.layered_image'); // 自定义资源。
 
   private onStateChange(state: AVCastPickerState) {
     if (state == AVCastPickerState.STATE_APPEARING) {
