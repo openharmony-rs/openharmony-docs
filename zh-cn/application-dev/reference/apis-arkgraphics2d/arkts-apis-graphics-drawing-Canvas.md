@@ -32,6 +32,8 @@ constructor(pixelmap: image.PixelMap)
 
 创建一个以PixelMap作为绘制目标的Canvas对象。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
