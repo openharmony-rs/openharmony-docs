@@ -32,29 +32,25 @@
 
 ### 注意事项
 
-1. 流类型使用[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或[STREAM_USAGE_AUDIOBOOK](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)。
-
-   > **说明：**
-   > 普通渲染器指定音乐流与听书流类型，系统默认是低功耗渲染器。
+1. 流类型使用[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_AUDIOBOOK](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[AUDIOSTREAM_USAGE_MUSIC](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)或[AUDIOSTREAM_USAGE_AUDIOBOOK](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)，系统默认是低功耗渲染器。
 
 2. 数据写入周期变化，亮屏场景最大1000ms周期，熄屏场景最大10000ms周期。
 
     > **注意：**
     > - 应用感知周期内未请求数据属于正常情况，无需主动停流。系统感知应用长时间未送数据，也会自决策停流；当应用再次送数据，系统会恢复流状态。
     > - 熄屏场景写满缓存后，主处理器会休眠，应用会被冻结。若应用需要后台播放或熄屏播放，具体参考[后台播放或熄屏播放开发须知](audio-playback-overview.md#后台播放或熄屏播放开发须知)。
-    > - 低功耗渲染器每次请求数据长度同普通渲染器一致，仅通过增大请求频率来填满缓存。预计1ms左右请求1次，具体受应用与硬件影响。若应用无法快速提供数据，最差降级到普通渲染器周期。
-    > - 应用数据不足一次回调长度时，不要填空数据；否则会导致卡顿，除非数据到达EOS。具体参考[AudioRenderer音频数据回调](using-audiorenderer-for-playback.md#开发步骤及注意事项)和[OHAudio音频数据回调](using-ohaudio-for-playback.md#开发步骤及注意事项)。
+    > - 低功耗渲染器每次请求数据长度同普通渲染器一致，仅通过增大请求频率来填满缓存。预计1ms左右请求1次，具体时长受应用与硬件的影响会存在差异。若应用无法快速提供数据，最差降级到普通渲染器周期。**若普通渲染器周期无法保证数据及时性，应用需要进行数据处理优化。**
+    > - 应用数据不足一次回调长度时，除非数据到达EOS，否则不要填空数据。空数据会导致音频播放卡顿现象。建议数据不足时，阻塞等数据充足；或使用返回错误码接口返回错误码。具体参考[AudioRenderer音频数据回调](using-audiorenderer-for-playback.md#开发步骤及注意事项)和[OHAudio音频数据回调](using-ohaudio-for-playback.md#开发步骤及注意事项)。
 
-3. 低功耗渲染器不支持并发，仅先启动的低功耗渲染器生效，后启动的降级普通渲染器。低功耗渲染器与低时延渲染器也不支持并发，以先使用优先原则。
+3. 低功耗渲染器不支持并发，仅先启动的低功耗渲染器生效，后启动的降级普通渲染器。低功耗渲染器与低时延渲染器也不支持并发，以先使用优先原则。具体示例如下：
 
-    > **注意：**
-    > - 先起低功耗渲染器A，再起低功耗渲染器B，则B降级普通渲染器。
-    > - 先起低功耗渲染器，再起低时延渲染器，则低时延降级普通渲染器。
-    > - 先起低时延渲染器，再起低功耗渲染器，则低功耗降级普通渲染器。
+    >- 先起低功耗渲染器A，再起低功耗渲染器B，则B降级普通渲染器。
+    >- 先起低功耗渲染器，再起低时延渲染器，则低时延降级普通渲染器。
+    >- 先起低时延渲染器，再起低功耗渲染器，则低功耗降级普通渲染器。
 
 4. 应用数据写完，不代表数据已经播完。应用需要调用获取音频时间戳接口[getAudioTimestampInfo()<sup>19+<sup>](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19 "从API version 19开始支持")或[OH_AudioRenderer_GetAudioTimestampInfo()<sup>15+<sup>](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo "从API version 19开始支持")，来判断数据实际播放进度。
 
     > **注意：**
     > - 获取时间戳接口调用频率不要过高，建议大于200ms一次；否则会影响系统性能。
     > - 调取接口[flush()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#flush11)或[OH_AudioRenderer_Flush()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_flush)后，播放的数据量会重置为0。
-    > - 播放数据量均会小于写入数据量。由于系统帧长与时延机制，播完的播放数据量可能不会等于写入数据量。当写完数据后获取时间戳周期内，2次时间戳不变，即为播完。或者，当写完数据后获取时间戳，应用根据设置的倍速推算还有多少播放时长，过了相应时长后，即为播完。（如：记总写入数据量$p_1$，写完后获取时间戳$p_2$，设置的倍速$\alpha$且$\alpha>0$，音频采样率$f_s$且$f_s>0$，剩余可播时长$t$。公式：$t = \frac{1}{{\alpha}f_s}(p_1-p_2)；p_1 > p_2，\alpha > 0，f_s > 0$。）
+    > - 播放数据量均会小于写入数据量。由于系统帧长与时延机制，播完的播放数据量可能不会等于写入数据量。当写完数据后获取时间戳，2个周期内时间戳不变，即为播完。或应用可以在写完数据后获取时间戳，根据设置的倍速推算还有多少播放时长，超过相应时长后，即为播完。（如：记总写入数据量$p_1$，写完后获取时间戳$p_2$，设置的倍速$\alpha$且$\alpha>0$，音频采样率$f_s$且$f_s>0$，剩余可播时长$t$。公式：$t = \frac{1}{{\alpha}f_s}(p_1-p_2)；p_1 > p_2，\alpha > 0，f_s > 0$。）
