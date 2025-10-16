@@ -315,7 +315,10 @@
       - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
       - [UI组件适配（XComponent）](arkts-sta-deprecated-xcomponent.md)
       - [UI组件适配（状态管理与渲染控制）](arkts-sta-deprecated-state-management-and-rendering-control.md)
-      - [UI组件适配（系统接口）](arkts-sta-deprecated-system.md)
+      - [UI组件适配（特殊场景）](arkts-sta-deprecated-special-scene.md)
+      <!--Del-->
+      - [UI组件适配（系统接口）](arkts-sta-deprecated-sys.md)
+      <!--DelEnd-->
   - 使用NDK接口构建UI<!--arkts-use-ndk-->
     - [NDK接口概述](ndk-build-ui-overview.md)
     - [接入ArkTS页面](ndk-access-the-arkts-page.md)
