@@ -114,11 +114,11 @@ import { scan } from '@kit.BasicServicesKit';
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |
-| minValue | number | 是 | 范围的最小值。 |
-| maxValue | number | 是 | 范围的最大值。 |
-| quantValue | number | 是 | 范围的量化值。 |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| minValue | number | 否 | 否 | 范围的最小值。 |
+| maxValue | number | 否 | 否 | 范围的最大值。 |
+| quantValue | number | 否 | 否 | 范围的量化值。 |
 
 ## ScannerParameter
 
@@ -127,18 +127,18 @@ import { scan } from '@kit.BasicServicesKit';
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |
-| optionName | string | 是 | 选项名称。 |
-| optionIndex | number | 是 | 选项索引。 |
-| optionTitle | string | 是 | 选项标题。 |
-| optionDesc | string | 是 | 选项描述。 |
-| optionType | [OptionValueType](#optionvaluetype) | 是 | 选项值类型。 |
-| optionUnit | [PhysicalUnit](#physicalunit) | 是 | 选项物理单位。 |
-| optionConstraintType | [ConstraintType](#constrainttype) | 是 | 选项约束类型。 |
-| optionConstraintString | string[] | 否 | 选项字符串约束。 |
-| optionConstraintInt | number[] | 否 | 选项整数约束。 |
-| optionConstraintRange | [Range](#range) | 否 | 选项范围约束。 |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| optionName | string | 否 | 否 | 选项名称。 |
+| optionIndex | number | 否 | 否 | 选项索引。 |
+| optionTitle | string | 否 | 否 | 选项标题。 |
+| optionDesc | string | 否 | 否 | 选项描述。 |
+| optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。 |
+| optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。 |
+| optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型。 |
+| optionConstraintString | string[] | 否 | 是 | 选项字符串约束。 |
+| optionConstraintInt | number[] | 否 | 是 | 选项整数约束。 |
+| optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束。 |
 
 ## ScannerOptionValue
 
@@ -147,12 +147,12 @@ import { scan } from '@kit.BasicServicesKit';
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |
-| valueType | [OptionValueType](#optionvaluetype) | 是 | 值类型。 |
-| numValue | number | 否 | 数值。 |
-| strValue | string | 否 | 字符串值。 |
-| boolValue | boolean | 否 | 布尔值。 |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型。 |
+| numValue | number | 否 | 是 | 数值。 |
+| strValue | string | 否 | 是 | 字符串值。 |
+| boolValue | boolean | 否 | 是 | 布尔值。 |
 
 ## PictureScanProgress
 
@@ -161,11 +161,11 @@ import { scan } from '@kit.BasicServicesKit';
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |
-| progress | number | 是 | 当前进度百分比，范围从0~100。 |
-| pictureFd | number | 是 | 扫描图片的文件描述符。 |
-| isFinal | boolean | 是 | 是否是本次扫描的最后一张图片。 |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| progress | number | 否 | 否 | 当前进度百分比，范围从0~100。 |
+| pictureFd | number | 否 | 否 | 扫描图片的文件描述符。 |
+| isFinal | boolean | 否 | 否 | 是否是本次扫描的最后一张图片。true表示是最后一张图片，false表示不是最后一张图片。 |
 
 ## ScannerDevice
 
@@ -174,14 +174,14 @@ import { scan } from '@kit.BasicServicesKit';
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 扫描仪的唯一标识符。 |
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 是 | 扫描仪的发现模式。 |
-| uniqueId | string | 是 | 扫描仪的唯一ID。 |
-| manufacturer | string | 是 | 扫描仪的制造商。 |
-| model | string | 是 | 扫描仪的型号。 |
-| deviceName | string | 是 | 扫描仪的设备名称。 |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| scannerId | string | 否 | 否 | 扫描仪的唯一标识符。 |
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式。 |
+| uniqueId | string | 否 | 否 | 扫描仪的唯一ID。 |
+| manufacturer | string | 否 | 否 | 扫描仪的制造商。 |
+| model | string | 否 | 否 | 扫描仪的型号。 |
+| deviceName | string | 否 | 否 | 扫描仪的设备名称。 |
 
 ## ScannerSyncDevice
 
@@ -190,19 +190,19 @@ import { scan } from '@kit.BasicServicesKit';
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 扫描仪ID。 |
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 是 | 发现模式。 |
-| uniqueId | string | 是 | 唯一ID。 |
-| syncMode | [ScannerSyncMode](#scannersyncmode) | 是 | 同步模式。 |
-| oldScannerId | string | 否 | 旧的扫描仪ID，仅在syncMode为"update"时有效。 |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| scannerId | string | 否 | 否 | 扫描仪ID。 |
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 发现模式。 |
+| uniqueId | string | 否 | 否 | 唯一ID。 |
+| syncMode | [ScannerSyncMode](#scannersyncmode) | 否 | 否 | 同步模式。 |
+| oldScannerId | string | 否 | 是 | 旧的扫描仪ID，仅在syncMode为"update"时有效。 |
 
 ## scan.init
 
 init(): Promise&lt;void&gt;
 
-初始化扫描服务，使用Promise异步回调。
+初始化扫描服务。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -211,13 +211,13 @@ init(): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 初始化扫描服务完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -226,7 +226,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 scan.init().then(() => {
-    console.log('scan init success');
+    console.info('scan init success');
 }).catch((error: BusinessError) => {
     console.error('scan init failed: ' + JSON.stringify(error));
 })
@@ -236,7 +236,7 @@ scan.init().then(() => {
 
 exit(): Promise&lt;void&gt;
 
-退出扫描服务，使用Promise异步回调。
+退出扫描服务。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -245,13 +245,13 @@ exit(): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 退出扫描服务完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -260,7 +260,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 scan.exit().then(() => {
-    console.log('scan exit success');
+    console.info('scan exit success');
 }).catch((error: BusinessError) => {
     console.error('scan exit failed: ' + JSON.stringify(error));
 })
@@ -270,7 +270,7 @@ scan.exit().then(() => {
 
 startScannerDiscovery(): Promise&lt;void&gt;
 
-开始发现扫描仪，使用Promise异步回调。
+开始发现扫描仪。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -279,13 +279,13 @@ startScannerDiscovery(): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 开始发现扫描仪完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -294,7 +294,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 scan.startScannerDiscovery().then(() => {
-    console.log('start scanner discovery success');
+    console.info('start scanner discovery success');
 }).catch((error: BusinessError) => {
     console.error('start scanner discovery failed: ' + JSON.stringify(error));
 })
@@ -304,7 +304,7 @@ scan.startScannerDiscovery().then(() => {
 
 openScanner(scannerId: string): Promise&lt;void&gt;
 
-打开扫描仪，使用Promise异步回调。
+打开扫描仪。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -318,13 +318,13 @@ openScanner(scannerId: string): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 打开扫描仪完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -334,7 +334,7 @@ import { BusinessError } from '@ohos.base';
 
 let scannerId: string = 'scanner_001';
 scan.openScanner(scannerId).then(() => {
-    console.log('open scanner success');
+    console.info('open scanner success');
 }).catch((error: BusinessError) => {
     console.error('open scanner failed: ' + JSON.stringify(error));
 })
@@ -344,7 +344,7 @@ scan.openScanner(scannerId).then(() => {
 
 closeScanner(scannerId: string): Promise&lt;void&gt;
 
-关闭扫描仪，使用Promise异步回调。
+关闭扫描仪。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -358,13 +358,13 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 关闭扫描仪完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -374,7 +374,7 @@ import { BusinessError } from '@ohos.base';
 
 let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
-    console.log('close scanner success');
+    console.info('close scanner success');
 }).catch((error: BusinessError) => {
     console.error('close scanner failed: ' + JSON.stringify(error));
 })
@@ -384,7 +384,7 @@ scan.closeScanner(scannerId).then(() => {
 
 getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 
-获取扫描仪参数，使用Promise异步回调。
+获取扫描仪参数。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -398,13 +398,13 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;[ScannerParameter](#scannerparameter)[]&gt; | 获取扫描仪参数完成结果。 |
+| Promise&lt;[ScannerParameter](#scannerparameter)[]&gt; | Promise对象，返回扫描仪参数数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -414,7 +414,7 @@ import { BusinessError } from '@ohos.base';
 
 let scannerId: string = 'scanner_001';
 scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) => {
-    console.log('get scanner parameters success: ' + JSON.stringify(parameters));
+    console.info('get scanner parameters success: ' + JSON.stringify(parameters));
 }).catch((error: BusinessError) => {
     console.error('get scanner parameters failed: ' + JSON.stringify(error));
 })
@@ -424,7 +424,7 @@ scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) =
 
 setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise&lt;void&gt;
 
-设置扫描仪参数，使用Promise异步回调。
+设置扫描仪参数。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -440,13 +440,13 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 设置扫描仪参数完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -461,7 +461,7 @@ let value: scan.ScannerOptionValue = {
     numValue: 100
 };
 scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
-    console.log('set scanner parameter success');
+    console.info('set scanner parameter success');
 }).catch((error: BusinessError) => {
     console.error('set scanner parameter failed: ' + JSON.stringify(error));
 })
@@ -471,7 +471,7 @@ scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
 
 setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 
-设置扫描选项为自动模式，使用Promise异步回调。
+设置扫描选项为自动模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -486,13 +486,13 @@ setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 设置扫描选项为自动完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -503,7 +503,7 @@ import { BusinessError } from '@ohos.base';
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.setScanAutoOption(scannerId, optionIndex).then(() => {
-    console.log('set scan auto option success');
+    console.info('set scan auto option success');
 }).catch((error: BusinessError) => {
     console.error('set scan auto option failed: ' + JSON.stringify(error));
 })
@@ -513,7 +513,7 @@ scan.setScanAutoOption(scannerId, optionIndex).then(() => {
 
 getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;ScannerOptionValue&gt;
 
-获取当前扫描仪设置，使用Promise异步回调。
+获取当前扫描仪设置。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -528,13 +528,13 @@ getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;Sca
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;[ScannerOptionValue](#scanneroptionvalue)&gt; | 获取当前扫描仪设置完成结果。 |
+| Promise&lt;[ScannerOptionValue](#scanneroptionvalue)&gt; | Promise对象，返回扫描仪选项值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -545,7 +545,7 @@ import { BusinessError } from '@ohos.base';
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.getScannerCurrentSetting(scannerId, optionIndex).then((value: scan.ScannerOptionValue) => {
-    console.log('get scanner current setting success: ' + JSON.stringify(value));
+    console.info('get scanner current setting success: ' + JSON.stringify(value));
 }).catch((error: BusinessError) => {
     console.error('get scanner current setting failed: ' + JSON.stringify(error));
 })
@@ -555,7 +555,7 @@ scan.getScannerCurrentSetting(scannerId, optionIndex).then((value: scan.ScannerO
 
 startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 
-开始扫描，使用Promise异步回调。
+开始扫描。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -570,13 +570,13 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 开始扫描完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -587,7 +587,7 @@ import { BusinessError } from '@ohos.base';
 let scannerId: string = 'scanner_001';
 let batchMode: boolean = true;
 scan.startScan(scannerId, batchMode).then(() => {
-    console.log('start scan success');
+    console.info('start scan success');
 }).catch((error: BusinessError) => {
     console.error('start scan failed: ' + JSON.stringify(error));
 })
@@ -597,7 +597,7 @@ scan.startScan(scannerId, batchMode).then(() => {
 
 cancelScan(scannerId: string): Promise&lt;void&gt;
 
-取消扫描，使用Promise异步回调。
+取消扫描。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -611,13 +611,13 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 取消扫描完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -627,7 +627,7 @@ import { BusinessError } from '@ohos.base';
 
 let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
-    console.log('cancel scan success');
+    console.info('cancel scan success');
 }).catch((error: BusinessError) => {
     console.error('cancel scan failed: ' + JSON.stringify(error));
 })
@@ -637,7 +637,7 @@ scan.cancelScan(scannerId).then(() => {
 
 getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 
-获取图片扫描进度，使用Promise异步回调。
+获取图片扫描进度。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -651,13 +651,13 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;[PictureScanProgress](#picturescanprogress)&gt; | 获取图片扫描进度完成结果。 |
+| Promise&lt;[PictureScanProgress](#picturescanprogress)&gt; | Promise对象，返回图片扫描进度信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -667,7 +667,7 @@ import { BusinessError } from '@ohos.base';
 
 let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
-    console.log('get picture scan progress success: ' + JSON.stringify(progress));
+    console.info('get picture scan progress success: ' + JSON.stringify(progress));
 }).catch((error: BusinessError) => {
     console.error('get picture scan progress failed: ' + JSON.stringify(error));
 })
@@ -677,7 +677,7 @@ scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress)
 
 on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 
-注册扫描仪设备发现事件回调，使用callback回调。
+注册扫描仪设备发现事件回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -693,7 +693,7 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -701,7 +701,7 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
-    console.log('scan device found: ' + JSON.stringify(device));
+    console.info('scan device found: ' + JSON.stringify(device));
 })
 ```
 
@@ -709,7 +709,7 @@ scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 
-取消注册扫描仪设备发现事件回调，使用callback回调。
+取消注册扫描仪设备发现事件回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -725,7 +725,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -733,7 +733,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.log('scan device found: ' + JSON.stringify(device));
+    console.info('scan device found: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceFound', callback);
 // 取消注册
@@ -744,7 +744,7 @@ scan.off('scanDeviceFound', callback);
 
 on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 
-注册扫描仪设备同步事件回调，使用callback回调。
+注册扫描仪设备同步事件回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -760,7 +760,7 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -768,7 +768,7 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
-    console.log('scan device sync: ' + JSON.stringify(device));
+    console.info('scan device sync: ' + JSON.stringify(device));
 })
 ```
 
@@ -776,7 +776,7 @@ scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
 
 off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 
-取消注册扫描仪设备同步事件回调，使用callback回调。
+取消注册扫描仪设备同步事件回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -792,7 +792,7 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -800,7 +800,7 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerSyncDevice) => {
-    console.log('scan device sync: ' + JSON.stringify(device));
+    console.info('scan device sync: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceSync', callback);
 // 取消注册

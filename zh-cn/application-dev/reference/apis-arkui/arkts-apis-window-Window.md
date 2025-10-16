@@ -5409,7 +5409,11 @@ try {
 
 setWindowBackgroundColor(color: string | ColorMetrics): void
 
-设置窗口的背景色。Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+设置窗口的背景色。
+
+未调用该接口时，窗口在浅色模式默认背景色为`'#FFF0F0F0'`，在深色模式默认背景色为`'#FF1A1A1A'`。
+
+Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5445,7 +5449,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
     return;
   }
   console.info('Succeeded in loading the content.');
-  let color1: string = '#00ff33';
+  let color1: string = '#00FF33';
   let color2: ColorMetrics = ColorMetrics.numeric(0xff112233);
   try {
     windowClass?.setWindowBackgroundColor(color1);
@@ -5875,7 +5879,11 @@ try {
 
 setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口是否为隐私模式，使用callback异步回调。设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置窗口是否为隐私模式，使用callback异步回调。
+
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+
+未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5887,7 +5895,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------- | ------------------------- | -- | ------------------------------------------------------ |
-| isPrivacyMode | boolean                   | 是 | 窗口是否为隐私模式。true表示模式开启；false表示模式关闭。  |
+| isPrivacyMode | boolean                   | 是 | 窗口是否为隐私模式。true表示为隐私模式，false表示为非隐私模式。  |
 | callback      | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                              |
 
 **错误码：**
@@ -5924,7 +5932,11 @@ try {
 
 setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
-设置窗口是否为隐私模式，使用Promise异步回调。设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置窗口是否为隐私模式，使用Promise异步回调。
+
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+
+未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5936,7 +5948,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------- | ------- | -- | ----------------------------------------------------- |
-| isPrivacyMode | boolean | 是 | 窗口是否为隐私模式。true表示模式开启；false表示模式关闭。 |
+| isPrivacyMode | boolean | 是 | 窗口是否为隐私模式。true表示为隐私模式，false表示为非隐私模式。 |
 
 **返回值：**
 

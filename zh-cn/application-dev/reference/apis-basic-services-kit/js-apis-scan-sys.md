@@ -22,7 +22,7 @@ import { scan } from '@kit.BasicServicesKit';
 
 addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;void&gt;
 
-添加扫描仪（系统API），使用Promise异步回调。
+添加扫描仪（系统API）。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -39,14 +39,14 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 添加扫描仪完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **示例：**
 
@@ -57,7 +57,7 @@ import { BusinessError } from '@ohos.base';
 let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
 scan.addScanner(uniqueId, discoveryMode).then(() => {
-    console.log('add scanner success');
+    console.info('add scanner success');
 }).catch((error: BusinessError) => {
     console.error('add scanner failed: ' + JSON.stringify(error));
 })
@@ -67,7 +67,7 @@ scan.addScanner(uniqueId, discoveryMode).then(() => {
 
 deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;void&gt;
 
-删除扫描仪（系统API），使用Promise异步回调。
+删除扫描仪（系统API）。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -84,14 +84,14 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 删除扫描仪完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **示例：**
 
@@ -102,7 +102,7 @@ import { BusinessError } from '@ohos.base';
 let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
 scan.deleteScanner(uniqueId, discoveryMode).then(() => {
-    console.log('delete scanner success');
+    console.info('delete scanner success');
 }).catch((error: BusinessError) => {
     console.error('delete scanner failed: ' + JSON.stringify(error));
 })
@@ -112,7 +112,7 @@ scan.deleteScanner(uniqueId, discoveryMode).then(() => {
 
 getAddedScanners(): Promise&lt;ScannerDevice[]&gt;
 
-获取已添加的扫描仪（系统API），使用Promise异步回调。
+获取已添加的扫描仪（系统API）。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -123,14 +123,14 @@ getAddedScanners(): Promise&lt;ScannerDevice[]&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)[]&gt; | 获取已添加的扫描仪完成结果。 |
+| Promise&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)[]&gt; | Promise对象，返回已添加的扫描仪设备数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **示例：**
 
@@ -139,7 +139,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
-    console.log('get added scanners success: ' + JSON.stringify(scanners));
+    console.info('get added scanners success: ' + JSON.stringify(scanners));
 }).catch((error: BusinessError) => {
     console.error('get added scanners failed: ' + JSON.stringify(error));
 })
@@ -149,7 +149,7 @@ scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
 
 on(type: 'scanDeviceAdd', callback: Callback&lt;ScannerDevice&gt;): void
 
-注册扫描仪设备添加事件回调（系统API），使用callback回调。
+注册扫描仪设备添加事件回调（系统API）。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -167,8 +167,8 @@ on(type: 'scanDeviceAdd', callback: Callback&lt;ScannerDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **示例：**
 
@@ -176,7 +176,7 @@ on(type: 'scanDeviceAdd', callback: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
-    console.log('scan device add: ' + JSON.stringify(device));
+    console.info('scan device add: ' + JSON.stringify(device));
 })
 ```
 
@@ -184,7 +184,7 @@ scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceAdd', callback?: Callback&lt;ScannerDevice&gt;): void
 
-取消注册扫描仪设备添加事件回调（系统API），使用callback回调。
+取消注册扫描仪设备添加事件回调（系统API）。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -194,16 +194,16 @@ off(type: 'scanDeviceAdd', callback?: Callback&lt;ScannerDevice&gt;): void
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |
-| type | 'scanDeviceAdd' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 否 | 要取消注册的回调函数。 |
+| -------- | -------- | -------- | -------- |	
+| type | 'scanDeviceAdd' | 是 | 事件类型。 |	
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 扫描仪设备添加事件的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **示例：**
 
@@ -211,7 +211,7 @@ off(type: 'scanDeviceAdd', callback?: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.log('scan device add: ' + JSON.stringify(device));
+    console.info('scan device add: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceAdd', callback);
 // 取消注册
@@ -222,7 +222,7 @@ scan.off('scanDeviceAdd', callback);
 
 on(type: 'scanDeviceDel', callback: Callback&lt;ScannerDevice&gt;): void
 
-注册扫描仪设备删除事件回调（系统API），使用callback回调。
+注册扫描仪设备删除事件回调（系统API）。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -230,7 +230,6 @@ on(type: 'scanDeviceDel', callback: Callback&lt;ScannerDevice&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceDel' | 是 | 事件类型。 |
@@ -240,8 +239,8 @@ on(type: 'scanDeviceDel', callback: Callback&lt;ScannerDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **示例：**
 
@@ -249,7 +248,7 @@ on(type: 'scanDeviceDel', callback: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
-    console.log('scan device delete: ' + JSON.stringify(device));
+    console.info('scan device delete: ' + JSON.stringify(device));
 })
 ```
 
@@ -257,7 +256,7 @@ scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceDel', callback?: Callback&lt;ScannerDevice&gt;): void
 
-取消注册扫描仪设备删除事件回调（系统API），使用callback回调。
+取消注册扫描仪设备删除事件回调（系统API）。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -275,8 +274,8 @@ off(type: 'scanDeviceDel', callback?: Callback&lt;ScannerDevice&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **示例：**
 
@@ -284,7 +283,7 @@ off(type: 'scanDeviceDel', callback?: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.log('scan device delete: ' + JSON.stringify(device));
+    console.info('scan device delete: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceDel', callback);
 // 取消注册

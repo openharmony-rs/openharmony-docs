@@ -10,8 +10,8 @@
 - [Application Window Development (FA Model)](application-window-fa.md)
 - [Window Metadata Configuration](window-config-m.md)
 <!--Del-->
-- [System Window Development (Stage Model Only)](system-window-stage.md)
-- [WindowExtensionAbility (for System Applications Only)](windowextensionability.md)
+- [System Window Development (Stage Model Only)](system-window-stage-sys.md)
+- [WindowExtensionAbility (for System Applications Only)](windowextensionability-sys.md)
 <!--DelEnd-->
 - [Using WindowManager to Manage Multimodal Input Events (C/C++)](native-window-event-filter.md)
 - Configuring and Using the Application Starting Window<!--launch-page-->

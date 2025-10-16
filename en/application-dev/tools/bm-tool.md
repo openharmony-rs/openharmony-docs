@@ -1079,7 +1079,7 @@ hdc shell df -h /data
 
 error: install failed due to grant request permissions failed.<br>
 
-! [Example](figures/en-us_image_9568289.png)
+![Example](figures/en-us_image_9568289.png)
 
 **Symptom**
 

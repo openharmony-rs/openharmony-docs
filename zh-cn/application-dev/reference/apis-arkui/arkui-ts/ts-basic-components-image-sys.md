@@ -82,7 +82,7 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| imageQuality | [ResolutionQuality](#resolutionquality12) | 是   | 图像解码分辨率质量。 |
+| imageQuality | [ResolutionQuality](#resolutionquality12) | 是   | 图像解码分辨率质量。<br/>默认值为1。 |
 
 ## ResolutionQuality<sup>12+</sup>
 

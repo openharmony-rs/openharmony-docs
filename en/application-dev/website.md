@@ -80,10 +80,10 @@
             - [UIAbility Backup and Restore](application-models/ability-recover-guideline.md)
           - [ExtensionAbility Component](application-models/extensionability-overview.md)
             <!--Del-->
-            - [ServiceExtensionAbility (for System Applications Only)](application-models/serviceextensionability.md)
+            - [ServiceExtensionAbility (for System Applications Only)](application-models/serviceextensionability-sys.md)
             - [UIServiceExtensionAbility (for System Applications Only)](application-models/uiserviceextension-sys.md)
-            - [UIExtensionAbility (for System Applications Only)](application-models/uiextensionability.md)
-            - [Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)](application-models/autofillextensionability-guide.md)
+            - [UIExtensionAbility (for System Applications Only)](application-models/uiextensionability-sys.md)
+            - [Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)](application-models/autofillextensionability-guide-sys.md)
             - [Using UIServiceExtensionAbility for System Floating Windows](application-models/uiserviceextension.md)
             <!--DelEnd-->
             - [EmbeddedUIExtensionAbility](application-models/embeddeduiextensionability.md)
@@ -132,10 +132,10 @@
         - [Thread Model (Stage Model)](application-models/thread-model-stage.md)
         <!--Del-->
         - Mission Management (for System Applications Only)<!--mission-management-->
-          - [Mission Management Scenarios](application-models/mission-management-overview.md)
-          - [Mission Management and Launch Type](application-models/mission-management-launch-type.md)
-          - [Page Stack and Mission List](application-models/page-mission-stack.md)
-          - [Setting the Icon and Name of a Mission Snapshot](application-models/mission-set-icon-name-for-task-snapshot.md)
+          - [Mission Management Scenarios (for System Applications Only)](application-models/mission-management-overview-sys.md)
+          - [Mission Management and Launch Type (for System Applications Only)](application-models/mission-management-launch-type-sys.md)
+          - [Page Stack and MissionList (for System Applications Only)](application-models/page-mission-stack-sys.md)
+          - [Setting the Icon and Name of a Mission Snapshot (for System Applications Only)](application-models/mission-set-icon-name-for-task-snapshot-sys.md)
         <!--DelEnd-->
         - [Application Configuration File (Stage Model)](application-models/config-file-stage.md)
         - InsightIntent Framework Development<!--insight-intent-->
@@ -159,7 +159,7 @@
             - [Starting a Local PageAbility](application-models/start-local-pageability.md)
             - [Stopping a PageAbility](application-models/stop-pageability.md)
             <!--Del-->
-            - [Starting a Remote PageAbility (for System Applications Only)](application-models/start-remote-pageability.md)
+            - [Starting a Remote PageAbility (for System Applications Only)](application-models/start-remote-pageability-sys.md)
             <!--DelEnd-->
             - [Starting a Specified Page](application-models/start-page.md)
             - [Window Properties](application-models/window-properties.md)
@@ -186,7 +186,7 @@
         - [Process Model (FA Model)](application-models/process-model-fa.md)
         - [Thread Model (FA Model)](application-models/thread-model-fa.md)
         <!--Del-->
-        - [Mission Management (for System Applications Only)](application-models/mission-management-fa.md)
+        - [Mission Management (for System Applications Only)](application-models/mission-management-fa-sys.md)
         <!--DelEnd-->
         - [Application Configuration File (FA Model)](application-models/config-file-fa.md)
       <!--Del-->
@@ -264,8 +264,10 @@
         - [Data Sharing Overview](database/data-share-overview.md)
         - One-to-Many Data Sharing<!--one-to-many-data-share-->
           <!--Del-->
-          - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](database/share-data-by-datashareextensionability.md)
-          - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](database/share-data-by-silent-access.md)
+          - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](database/share-data-by-datashareextensionability-sys.md)
+          - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](database/share-data-by-silent-access-sys.md)
+          - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](database/share-data-by-datashareextensionability-sys.md)
+          - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
           - [Sharing Configurations Between Applications (ArkTS)](database/share-config.md)
         - Many-to-Many Data Sharing<!--many-to-many-data-share-->
@@ -619,8 +621,8 @@
             - [Atomic Service Full Screen Launch Component (FullScreenLaunchComponent)](ui/arkts-FullScreenComponent.md)
             - [In-Application Embedded Component (EmbeddedComponent)](ui/arkts-embedded-components.md)
           <!--Del-->
-          - [Cross-Process Application Capability Extension (UIExtension, for System Applications Only)](ui/arkts-ui-extension-components.md)
-          - [Cross-Thread Embedded Component (IsolatedComponent, for System Applications Only)](ui/arkts-isolated-components.md)
+          - [Cross-Process Application Capability Extension (UIExtension, for System Applications Only)](ui/arkts-ui-extension-components-sys.md)
+          - [Cross-Thread Embedded Component (IsolatedComponent, for System Applications Only)](ui/arkts-isolated-components-sys.md)
           <!--DelEnd-->
       - Using NDK APIs to Build UIs<!--arkts-use-ndk-->
         - [NDK API Overview](ui/ndk-build-ui-overview.md)
@@ -735,8 +737,8 @@
         - [Application Window Development (FA Model)](windowmanager/application-window-fa.md)
         - [Window Metadata Configuration](windowmanager/window-config-m.md)
         <!--Del-->
-        - [System Window Development (Stage Model Only)](windowmanager/system-window-stage.md)
-        - [WindowExtensionAbility (for System Applications Only)](windowmanager/windowextensionability.md)
+        - [System Window Development (Stage Model Only) (for System Applications Only)](windowmanager/system-window-stage-sys.md)
+        - [WindowExtensionAbility (for System Applications Only)](windowmanager/windowextensionability-sys.md)
         <!--DelEnd-->
         - [Using WindowManager to Manage Multimodal Input Events (C/C++)](windowmanager/native-window-event-filter.md)
         - Configuring and Using the Application Starting Window<!--launch-page-->
@@ -749,7 +751,7 @@
         - [Using OH_DisplayManager to Obtain Basic Display Information and Listen for Status Changes (C/C++)](displaymanager/native-display-manager.md)
         - [Using Display to Obtain Display Properties and Listen for Status Changes (ArkTS)](displaymanager/screenProperty-guideline.md)
         <!--Del-->
-        - [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](displaymanager/virtualScreen-guideline.md)
+        - [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
     - ArkWeb<!--arkweb-->
       - [Introduction to ArkWeb](web/web-component-overview.md)
@@ -825,10 +827,10 @@
       - [Continuous Task (ArkTS)](task-management/continuous-task.md)
       - [Deferred Task (ArkTS)](task-management/work-scheduler.md)
       - [Agent-powered Reminder (ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
-      - [Requesting Efficiency Resources (ArkTS) (for Privileged System Applications Only)](task-management/efficiency-resource-request.md)
+      - [Requesting Efficiency Resources (ArkTS) (for Privileged System Applications Only)](task-management/efficiency-resource-request-sys.md)
       - Device Usage Statistics (ArkTS)<!--device-usage-statistics-->
-        - [Device Usage Statistics Overview](device-usage-statistics/device-usage-statistics-overview.md)
-        - [Device Usage Statistics Development](device-usage-statistics/device-usage-statistics-use-guide.md)
+        - [Device Usage Statistics Overview (for System Applications Only)](device-usage-statistics/device-usage-statistics-overview-sys.md)
+        - [Device Usage Statistics Development (for System Applications Only)](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
       <!--DelEnd-->
     - Core File Kit<!--core-file-kit-->
       - [Introduction to Core File Kit](file-management/core-file-kit-intro.md)
@@ -847,7 +849,7 @@
           - [Application Data Backup and Restore Overview](file-management/app-file-backup-overview.md)
           - [Accessing Backup and Restore](file-management/app-file-backup-extension.md)
           <!--Del-->
-          - [Triggering Backup and Restore (for System Applications Only)](file-management/app-file-backup-sys.md)
+          - [Backup and Restore Triggered by System Applications (for System Applications Only)](file-management/app-file-backup-sys.md)
           <!--DelEnd-->
       - User Files<!--user-files-->
         - [User File Overview](file-management/user-file-overview.md)
@@ -887,7 +889,7 @@
             - [Active Update of ArkTS Widgets](form/arkts-ui-widget-active-refresh.md)
             - [Passive Update of ArkTS Widgets](form/arkts-ui-widget-passive-refresh.md)
             <!--Del-->
-            - [Updating Widget Content Through a Proxy](form/arkts-ui-widget-update-by-proxy.md)
+            - [Updating Widget Content Through a Proxy (for System Applications Only)](form/arkts-ui-widget-update-by-proxy-sys.md)
             <!--DelEnd-->
             - [Updating Local and Online Images in the Widget](form/arkts-ui-widget-image-update.md)
             - [Updating Widget Content by State](form/arkts-ui-widget-update-by-status.md)
@@ -903,7 +905,7 @@
           - Widget Addition to Home Screen<!--arkts-ui-widget-add-->
             - [Adding Widgets to the Home Screen](form/arkts-ui-widget-open-formmanager.md)
         <!--Del--> 
-        - [ArkTS Widget Host Development (for System Applications Only)](form/widget-host-development-guide.md)
+        - [ArkTS Widget Host Development (for System Applications Only)](form/widget-host-development-guide-sys.md)
         <!--DelEnd-->
         - Interactive Widget Development<!--arkts-ui-liveform-->
           - [Overview of Interactive Widgets](form/arkts-ui-liveform-overview.md)
@@ -1298,9 +1300,9 @@
             - [Using the Network Firewall](network/net-netfirewall.md)
             - [Extensible Authentication](network/net-eap.md)
             <!--Del-->
-            - [Network Sharing (for System Applications Only)](network/net-sharing.md)
-            - [Ethernet Connection Management (for System Applications Only)](network/net-ethernet.md)  
-            - [VPN Management (for System Applications Only)](network/net-vpn.md)
+            - [Network Sharing (for System Applications Only)](network/net-sharing-sys.md)
+            - [Ethernet Connection Management (for System Applications Only)](network/net-ethernet-sys.md)  
+            - [VPN Management (for System Applications Only)](network/net-vpn-sys.md)
             <!--DelEnd-->
         - [Network Kit Terminology](network/network-terminology.md)
       - Telephony Kit<!--telephony-kit-->
@@ -1328,17 +1330,17 @@
           - [Using Emitter for Inter-Thread Communication](basic-services/common-event/itc-with-emitter.md)
         - Account Management<!--account-management-->
           <!--Del-->
-          - [Account Management Overview](basic-services/account/account-overview.md)
+          - [Account Management Overview](basic-services/account/account-overview-sys.md)
           - System Accounts<!--os-account-->
-            - [Managing System Accounts](basic-services/account/manage-os-account.md)
-            - [Applying Constraints for System Accounts](basic-services/account/control-os-account-by-constraints.md)
-            - [Managing System Account Credentials](basic-services/account/manage-os-account-credential.md)
+            - [Managing System Accounts](basic-services/account/manage-os-account-sys.md)
+            - [Applying Constraints for System Accounts](basic-services/account/control-os-account-by-constraints-sys.md)
+            - [Managing System Account Credentials](basic-services/account/manage-os-account-credential-sys.md)
           - Domain Account (for System Applications Only)<!--domain-account-->
-            - [Managing Domain Accounts](basic-services/account/manage-domain-account.md)
-            - [Authenticating Domain Accounts](basic-services/account/auth-domain-account.md)
-            - [Managing Domain Account Plugins](basic-services/account/manage-domain-plugin.md)
+            - [Managing Domain Accounts](basic-services/account/manage-domain-account-sys.md)
+            - [Authenticating Domain Accounts](basic-services/account/auth-domain-account-sys.md)
+            - [Managing Domain Account Plugins](basic-services/account/manage-domain-plugin-sys.md)
           - Distributed Account (for System Applications Only)<!--distributed-account-->
-            - [Managing Distributed Accounts](basic-services/account/manage-distributed-account.md)
+            - [Managing Distributed Accounts](basic-services/account/manage-distributed-account-sys.md)
           <!--DelEnd-->
           - App Account<!--application-account-->
             - [Managing App Accounts](basic-services/account/manage-application-account.md)
@@ -1377,8 +1379,8 @@
           - [Compressing and Decompressing Files](basic-services/compress/deflate-and-inflate.md)
         <!--Del-->
         - Word Selection Service<!--selectioninput-->
-          - [Overview of Word Selection Service (for System Applications Only)](basic-services/selectionInput/selection-services-intro.md)
-          - [Developing a Word Selection Application (for System Applications Only)](basic-services/selectionInput/selection-services-application-guide.md)
+          - [Overview of Word Selection Service (for System Applications Only)](basic-services/selectionInput/selection-services-intro-sys.md)
+          - [Developing a Word Selection Application (for System Applications Only)](basic-services/selectionInput/selection-services-application-guide-sys.md)
         <!--DelEnd-->
       - Function Flow Runtime Kit<!--ffrt-kit-->
         - [Introduction to Function Flow Runtime Kit](ffrt/ffrt-overview.md)
@@ -1398,10 +1400,10 @@
         - [Input Device Development](device/input/inputdevice-guidelines.md)
         - [Key Press Event Listening Development](device/input/keypressed-guidelines.md)
         - [Mouse Pointer Development](device/input/pointerstyle-guidelines.md)<!--Del-->
-        - [Input Monitor Development](device/input/inputmonitor-guidelines.md)
-        - [Event Injection Development](device/input/inputeventclient-guidelines.md)
-        - [Combination Key Development](device/input/inputconsumer-guidelines.md)
-        - [Shortcut Key Development](device/input/shortkey-guidelines.md)<!--DelEnd-->
+        - [Input Monitor Development (for System Applications Only)](device/input/inputmonitor-guidelines-sys.md)
+        - [Event Injection Development (for System Applications Only)](device/input/inputeventclient-guidelines-sys.md)
+        - [Global Hotkey Development (for System Applications Only)](device/input/inputconsumer-guidelines-sys.md)
+        - [Preset Global Hotkey Development (for System Applications Only)](device/input/shortkey-guidelines-sys.md)<!--DelEnd-->
         - [Event Listening Development (C/C++)](device/input/monitor-guidelines.md)
         - [Event Interception Development (C/C++)](device/input/interceptor-guidelines.md)
       - MDM Kit<!--mdm-kit-->
@@ -1439,6 +1441,12 @@
           - [Vibrator Overview](device/sensor/vibrator-overview.md)
           - [Vibrator Development (ArkTS)](device/sensor/vibrator-guidelines.md)
           - [Vibrator Development (C/C++)](device/sensor/vibrator-guidelines-capi.md)
+      - Mechanic Kit<!--mechanic-kit-->
+        - [Introduction to Mechanic Kit](mechanicManager/mechanic-kit-intro.md)
+        - [Intelligent Tracking Photography](mechanicManager/camera-tracking-guide.md)
+        <!--Del-->
+        - [Device Rotation Control (for System Applications Only)](mechanicManager/rotation-control-guide-sys.md)
+        <!--DelEnd-->
     - Debugging Tools<!--system-debug-optimize-->
       - Performance Analysis Kit<!--performance-analysis-kit-->
         - [Introduction to Performance Analysis Kit](dfx/performance-analysis-kit-overview.md)
@@ -1485,7 +1493,7 @@
               - Task Execution Timeout Events<!--app-hicollie-events-->
                 - [Task Execution Timeout Event Overview](dfx/hiappevent-watcher-apphicollie-events.md)
                 - [Subscribing to Task Execution Timeout Events (C/C++)](dfx/hiappevent-watcher-apphicollie-events-ndk.md)
-              - App Killed Events<!--app-killed-events-->
+              - Application Killed Events<!--app-killed-events-->
                 - [Application Killed Event Overview](dfx/hiappevent-watcher-app-killed-events.md)
                 - [Subscribing to Application Killed Events (ArkTS)](dfx/hiappevent-watcher-app-killed-events-arkts.md)
                 - [Subscribing to Application Killed Events (C/C++)](dfx/hiappevent-watcher-app-killed-events-ndk.md)
@@ -1546,7 +1554,7 @@
         - [Enterprise Device Manager](tools/edm-tool.md)
         - [restool](tools/restool.md)
         <!--Del-->
-        - [LLDB](tools/lldb-tool.md)
+        - [LLDB (for System Applications Only)](tools/lldb-tool-sys.md)
         <!--DelEnd-->
         - [param](tools/param-tool.md)
         - [power-shell](tools/power-shell.md)
@@ -1574,7 +1582,7 @@
         - [Using AudioRenderer for Audio Playback](media/audio/using-audiorenderer-for-playback.md)
         - [Responding to Audio Output Device Changes](media/audio/audio-output-device-change.md)
         <!--Del-->
-        - [Using TonePlayer for Audio Playback (for System Applications Only)](media/audio/using-toneplayer-for-playback.md)
+        - [Using TonePlayer for Audio Playback (for System Applications Only)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
         - [Using OHAudio for Audio Playback (C/C++)](media/audio/using-ohaudio-for-playback.md)
         - [Using AudioHaptic for Audio-Haptic Playback](media/audio/using-audiohaptic-for-playback.md)
@@ -1585,12 +1593,12 @@
         - [Audio Effect Management](media/audio/audio-effect-management.md)
         - [Spatial Audio Management](media/audio/public-audio-spatialization-management.md)
         <!--Del-->
-        - [Spatial Audio Management (for System Applications Only)](media/audio/audio-spatialization-management.md)
+        - [Spatial Audio Management (for System Applications Only)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
         - [Audio Playback Stream Management](media/audio/audio-playback-stream-management.md)
         - [Global Audio Output Device Management](media/audio/audio-output-device-management.md)
         <!--Del-->
-        - [Distributed Audio Playback (for System Applications Only)](media/audio/distributed-audio-playback.md)
+        - [Distributed Audio Playback (for System Applications Only)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
       - Audio Recording<!--audio-recording-->
         - [Audio Recording Overview](media/audio/audio-recording-overview.md)
@@ -1640,12 +1648,12 @@
         - [Accessing AVSession](media/avsession/avsession-access-scene.md)
         - [Background Playback](media/avsession/avsession-background-scene.md)
         <!--Del-->
-        - [AVSession Controller (for System Applications Only)](media/avsession/using-avsession-controller.md)
+        - [AVSession Controller (for System Applications Only)](media/avsession/using-avsession-controller-sys.md)
         <!--DelEnd-->
       - Distributed AVSession<!--distributed-avsession-->
         <!--Del-->
-        - [Distributed AVSession Overview (for System Applications Only)](media/avsession/distributed-avsession-overview.md)
-        - [Using Distributed AVSession (for System Applications Only)](media/avsession/using-distributed-avsession.md)
+        - [Distributed AVSession Overview (for System Applications Only)](media/avsession/distributed-avsession-overview-sys.md)
+        - [Using Distributed AVSession (for System Applications Only)](media/avsession/using-distributed-avsession-sys.md)
         <!--DelEnd-->
         - [Using the Call Device Switching Component](media/avsession/using-switch-call-devices.md)
     - Camera Kit<!--camera-kit-->
@@ -1677,10 +1685,10 @@
         - [Pressure Management (ArkTS)](media/camera/camera-system-pressure.md)
         - [Camera Controller (ArkTS)](media/camera/camera-control-center.md)
         <!--Del-->
-        - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo.md)
-        - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-case.md)
-        - [Depth Data (for System Applications Only) (ArkTS)](media/camera/camera-depth-data.md)
-        - [Performance Optimization Practices (for System Applications Only) (ArkTS)](media/camera/camera-performance-improvement.md)
+        - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-sys.md)
+        - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-case-sys.md)
+        - [Depth Data (for System Applications Only) (ArkTS)](media/camera/camera-depth-data-sys.md)
+        - [Performance Optimization Practices (for System Applications Only) (ArkTS)](media/camera/camera-performance-improvement-sys.md)
         <!--DelEnd-->
       - Mandatory Capabilities for Camera Application Development (C/C++)<!--camera-dev-native-mandatory-->
         - [Camera Device Management (C/C++)](media/camera/native-camera-device-management.md)
@@ -1776,7 +1784,7 @@
         - Recording<!--media-recording-c-->
           - [Using AVRecorder to Record Audio (C/C++)](media/media/using-ndk-avrecorder-for-audio-recording.md)
           - [Using AVRecorder to Record Videos (C/C++)](media/media/using-ndk-avrecorder-for-video-recording.md)
-          - [Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)](media/media/using-avscreencapture-for-buffer.md)
+          - Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)<!--using-avscreencapture-for-buffer-->
           - [Using AVScreenCapture to Capture Screens and Write Them to Files (C/C++)](media/media/using-avscreencapture-for-file.md)
           - [Capturing the Specified Area on a Screen (C/C++)](media/media/video-supports-rectangular-area-recording.md)
         - Media Information Query<!--media-info-c-->
@@ -2060,7 +2068,7 @@
   - API Reference Overview<!--ref-overview-api-->
     - [Development Description](reference/development-intro-api.md)
     - [SystemCapability](reference/syscap.md)
-    <!--Del-->	
+    	<!--Del-->	
     - SystemCapability List<!--syscap-list-->
         - [Phone](reference/phone-syscap-list.md)
         - [Tablet](reference/tablet-syscap-list.md)
@@ -4577,6 +4585,14 @@
         - Error Codes<!--sensor-service-arkts-errcode-->
           - [Sensor Error Codes](reference/apis-sensor-service-kit/errorcode-sensor.md)
           - [Vibrator Error Codes](reference/apis-sensor-service-kit/errorcode-vibrator.md)
+      - Mechanic Kit<!--mechanic-api-->
+        - ArkTS API<!--mechanic-arkts-->
+          - [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](reference/apis-mechanic-kit/js-apis-mechanicManager.md)
+          <!--Del-->
+          - [@ohos.distributedHardware.mechanicManager (Mechanic Manager) (System API)](reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md)
+          <!--DelEnd-->
+        - Error Codes<!--mechanic-service-arkts-errcode-->
+          - [Mechanic Manager Error Codes](reference/apis-mechanic-kit/errorcode-mechanic.md)
     - Debugging Tools<!--system-debug-optimize-api-->
       - Performance Analysis Kit<!--performance-analysis-api-->
         - ArkTS APIs<!--performance-analysis-arkts-->
@@ -5569,6 +5585,7 @@
   - Common Basic Capability<!--common-basic-api-->
     - ArkTS APIs<!--common-basic-arkts-->
       - [Console](reference/common/js-apis-logs.md)
+      - [loadNativeModule (Synchronously and Dynamically Loading a System Library)](reference/common/js-apis-common-load-native-module.md)
       - [SysCap](reference/common/js-apis-syscap.md)
       - [Timer](reference/common/js-apis-timer.md)
     - C APIs<!--common-basic-c-->
