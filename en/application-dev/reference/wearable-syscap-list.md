@@ -1,11 +1,5 @@
-# SystemCapability List
+# Wearable
 
-<!--Kit: Common-->
-<!--Subsystem: Common-->
-<!--Owner: @fang-jinxu-->
-<!--Designer: @lingminghw-->
-<!--Tester: @RayShih-->
-<!--Adviser: @fang-jinxu-->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
