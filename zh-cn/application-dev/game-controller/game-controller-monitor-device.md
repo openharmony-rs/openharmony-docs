@@ -1,5 +1,10 @@
 # 监听设备上下线（C/C++）
-
+<!--Kit: Game Controller Kit-->
+<!--Subsystem: Game-->
+<!--Owner: @zhaoshuhao123-->
+<!--Designer: @wudejun2025-->
+<!--Tester: @csp1992-->
+<!--Adviser: @luwy2025-->
 
 ## 功能介绍
 
