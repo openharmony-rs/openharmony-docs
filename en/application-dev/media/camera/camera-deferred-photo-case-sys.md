@@ -10,7 +10,7 @@ Before developing a camera application, you must [request required permissions](
 
 This topic provides sample code that covers the complete high-performance photo capture process to help you understand the complete API calling sequence.
 
-Before referring to the sample code, you are advised to read [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo.md), [Device Input Management](camera-device-input.md), [Camera Session Management](camera-session-management.md), and [Photo Capture](camera-shooting.md).
+Before referring to the sample code, you are advised to read [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-sys.md), [Device Input Management](camera-device-input.md), [Camera Session Management](camera-session-management.md), and [Photo Capture](camera-shooting.md).
 
 ## Development Process
 
