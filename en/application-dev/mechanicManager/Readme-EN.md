@@ -9,5 +9,5 @@
 - [Introduction to Mechanic Kit](mechanic-kit-intro.md)
 - [Intelligent Tracking Photography](camera-tracking-guide.md)
 <!--Del-->
-- [Device Rotation Control](rotation-control-guide.md)
+- [Device Rotation Control (for System Applications Only)](rotation-control-guide-sys.md)
 <!--DelEnd-->

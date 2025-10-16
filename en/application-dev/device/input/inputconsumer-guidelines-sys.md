@@ -1,4 +1,4 @@
-# Global Hotkey Development
+# Global Hotkey Development (for System Applications Only)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->

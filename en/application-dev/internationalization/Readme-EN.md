@@ -1,11 +1,18 @@
 # Localization Kit<!--localization-kit-->
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 - [Introduction to Localization Kit](i18n-l10n.md)
 - Application Internationalization<!--i18n-->
     - [UI Design for Internationalization](i18n-ui-design.md)
     - [Locale and Cultural Habit Division](i18n-locale-culture.md)
     - Language and User Preferences<!--i18n-language-user-preferences-->
-        - [System Language and Locale](i18n-system-language-region.md)
+        - [System Language and Region](i18n-system-language-region.md)
         - [Preferred Language](i18n-preferred-language.md)
         - [User Preferences](i18n-user-preferences.md)
     - [Date and Time Formatting](i18n-time-date.md)

@@ -7,16 +7,6 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
-## Basic Concepts
-
-- MindSpore Lite: a built-in AI inference engine of OpenHarmony that provides inference deployment for deep learning models.
-
-- Neural Network Runtime (NNRt): a bridge that connects the upper-layer AI inference framework to the bottom-layer acceleration chip to implement cross-chip inference and computing of AI models.
-
-- Common neural network model: network models commonly used for AI applications, including MindSpore, ONNX, TensorFlow, and CAFFE.
-
-- Offline models: network models obtained using the offline model conversion tool of the AI hardware vendor. The hardware vendor is responsible for parsing and inference of offline models.
-
 ## When to Use
 
 The deployment process is as follows:
@@ -118,7 +108,7 @@ This indicates that the CAFFE model is successfully converted to the MindSpore L
 
 ## (Optional) Offline Model Conversion
 
-If you want to reduce the loading delay to meet the requirements of the deployment scenario, you can use offline model-based inference as an alternative. The operation procedure is as follows:
+If you want to reduce the loading delay to meet the requirements of the deployment scenario, you can use offline model-based inference as an alternative. Offline models are network models obtained using the offline model conversion tool of the AI hardware vendor. The hardware vendor is responsible for parsing and inference of offline models.
 
 During inference, MindSpore Lite directly sends the offline model to the AI hardware connected to NNRt. This way, the model can be loaded without the need for online image composition, greatly reducing the model loading delay. In addition, MindSpore Lite can provide additional hardware-specific information to assist the AI hardware in model inference.
 

@@ -72,6 +72,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let displayCountry: string = i18n.System.getDisplayCountry('CN', 'en-GB'); // displayCountry = 'China'
@@ -117,6 +118,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // Obtain the display name of Chinese in English.
@@ -147,6 +149,8 @@ Since API version 11, this API is supported in ArkTS widgets.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // systemLanguages = [ 'ug', 'bo', 'zh-Hant', 'en-Latn-US', 'zh-Hans' ]
   let systemLanguages: Array<string> = i18n.System.getSystemLanguages();
   ```
@@ -189,6 +193,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // systemCountries = [ 'ZW', 'YT', 'YE', ..., 'ER', 'CN', 'DE' ]
@@ -239,6 +244,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let isSuggestedCountry: boolean = i18n.System.isSuggested('zh', 'CN'); // isSuggestedCountry = true
@@ -269,6 +275,8 @@ Obtains the current system language. To listen for system language changes, enab
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLanguage: string = i18n.System.getSystemLanguage(); // If the system language is simplified Chinese, then systemLanguage is 'zh-Hans'.
   ```
 
@@ -290,6 +298,8 @@ Obtains the current system country/region. To listen for system region changes, 
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemRegion: string = i18n.System.getSystemRegion(); // If the system region is China, then systemRegion is CN.
   ```
 
@@ -313,6 +323,8 @@ Obtains the current system locale.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLocale: string = i18n.System.getSystemLocale(); // If the system language is simplified Chinese and the system region is China, then systemLocale is zh-Hans-CN.
   ```
 
@@ -358,6 +370,8 @@ Checks whether the 24-hour clock is used. To listen for system time format chang
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let is24HourClock: boolean = i18n.System.is24HourClock(); // If the 24-hour clock is used, then is24HourClock is true.
   ```
 
@@ -380,6 +394,8 @@ Obtains the list of preferred languages.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let preferredLanguageList: Array<string> = i18n.System.getPreferredLanguageList();
   ```
 
@@ -401,6 +417,8 @@ Obtains the first language in the preferred language list.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let firstPreferredLanguage: string = i18n.System.getFirstPreferredLanguage();
   ```
 
@@ -432,6 +450,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setAppPreferredLanguage('zh');
@@ -459,6 +478,8 @@ Obtains the preferred language of an application.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let appPreferredLanguage: string = i18n.System.getAppPreferredLanguage();
   ```
 
@@ -481,6 +502,8 @@ Checks whether use of local digits is enabled.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
   ```
 
@@ -518,6 +541,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // simplifiedLanguage = 'zh'
@@ -548,6 +572,8 @@ Obtains the temperature unit of the system.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let temperatureType: i18n.TemperatureType = i18n.System.getTemperatureType();
   ```
 
@@ -589,6 +615,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // temperatureName = 'celsius'
@@ -617,6 +644,8 @@ Obtains the first day of a week in the system settings.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let firstDayOfWeek: i18n.WeekDay = i18n.System.getFirstDayOfWeek();
   ```
 
@@ -677,6 +706,8 @@ Checks whether a language is an RTL language. For an RTL language, [UI mirroring
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isZhRTL: boolean = i18n.isRTL('zh-CN'); // Since Chinese is not written from right to left, false is returned.
   let isArRTL: boolean = i18n.isRTL('ar-EG'); // Since Arabic is written from right to left, true is returned.
   ```
@@ -706,6 +737,8 @@ Obtains the **Calendar** object for the specified locale and calendar type.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese'); // Obtain the Calendar object for the Chinese lunar calendar.
   ```
 
@@ -745,6 +778,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let entityRecognizer: i18n.EntityRecognizer = new i18n.EntityRecognizer('zh-CN');
@@ -787,6 +821,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let entityRecognizer: i18n.EntityRecognizer = new i18n.EntityRecognizer('zh-CN');
@@ -842,6 +877,8 @@ Sets the date and time for a **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
   let date: Date = new Date(2021, 10, 7, 8, 0, 0); // The date and time is 2021.11.07 08:00:00.
   calendar.setTime(date);
@@ -866,6 +903,8 @@ Sets the date and time for a **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
   calendar.setTime(10540800000);
   ```
@@ -893,6 +932,8 @@ Sets the year, month, day, hour, minute, and second for this **Calendar** object
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.set(2021, 10, 1, 8, 0, 0); // Set the date and time to 2021.11.1 08:00:00.
   ```
@@ -915,6 +956,8 @@ Sets the time zone of this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setTimeZone('Asia/Shanghai');
   ```
@@ -938,6 +981,8 @@ Obtains the time zone ID of this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setTimeZone('Asia/Shanghai');
   let timezone: string = calendar.getTimeZone(); // timezone = 'Asia/Shanghai'
@@ -962,6 +1007,8 @@ Obtains the first day of a week for this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
   let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 1
   ```
@@ -985,6 +1032,8 @@ Sets the first day of a week for this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setFirstDayOfWeek(3);
   let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 3
@@ -1008,6 +1057,8 @@ Obtains the minimum number of days in the first week for this **Calendar** objec
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 1
   ```
@@ -1031,6 +1082,8 @@ Sets the minimum number of days in the first week for this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setMinimalDaysInFirstWeek(3);
   let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 3
@@ -1066,7 +1119,7 @@ Obtains the values of the calendar attributes in this **Calendar** object.
 | second | Second.|
 | millisecond | Millisecond.|
 | week_of_year | Week of year. Note that the algorithm for calculating the first week of a year varies according to regions. For example, the first seven days in a year are the first week.|
-| year_woy | Year used with the **week_of_year** field. |
+| year_woy | Year used with the week of year field. |
 | week_of_month | Week of month.|
 | day_of_week_in_month | Day of week in month.|
 | day_of_year | Day of year.|
@@ -1087,6 +1140,8 @@ Obtains the values of the calendar attributes in this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.set(2021, 10, 1, 8, 0, 0); // Set the date and time to 2021.11.1 08:00:00.
   let hourOfDay: number = calendar.get('hour_of_day'); // hourOfDay = 8
@@ -1117,6 +1172,8 @@ Obtains calendar display name in the specified language.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'buddhist');
   let calendarName: string = calendar.getDisplayName('zh'); // calendarName = 'Buddhist'
   ```
@@ -1146,6 +1203,8 @@ Checks whether a given date is a weekend in this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.set(2021, 11, 11, 8, 0, 0); // Set the time to 2021.12.11 08:00:00.
   let isWeekend: boolean = calendar.isWeekend(); // isWeekend = true
@@ -1183,6 +1242,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
@@ -1214,6 +1274,8 @@ Obtains the timestamp of this **Calendar** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setTime(5000);
   let millisecond: number = calendar.getTimeInMillis(); // millisecond = 5000
@@ -1253,6 +1315,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
@@ -1292,6 +1355,8 @@ Creates a **PhoneNumberFormat** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let option: i18n.PhoneNumberFormatOptions = { type: 'E164' };
   let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
   ```
@@ -1320,6 +1385,8 @@ Checks whether the phone number is valid for the country/region in the **PhoneNu
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let formatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   let isValidNumber: boolean = formatter.isValidNumber('158****2312'); // isValidNumber = true
   ```
@@ -1352,6 +1419,8 @@ Formats a phone number.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let formatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   // formattedPhoneNumber = '158 **** 2312'
   let formattedPhoneNumber: string = formatter.format('158****2312');
@@ -1392,6 +1461,8 @@ Obtains the home location of a phone number.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let phonenumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   let locationName: string = phonenumberFormat.getLocationName('158****2345', 'zh-CN'); // locationName = 'Zhanjiang, Guangdong Province'
   let locName: string = phonenumberFormat.getLocationName('0039312****789', 'zh-CN'); // locName = 'Italy'
@@ -1449,6 +1520,8 @@ Creates an **IndexUtil** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   ```
 
@@ -1479,6 +1552,8 @@ Obtains the index list of the current locale.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   // indexList = [ '...', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
   //              'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
@@ -1504,6 +1579,8 @@ Adds the index list of a new locale to the index list of the current locale to f
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   indexUtil.addLocale('en-US');
   ```
@@ -1532,6 +1609,8 @@ Obtains the index of the **text** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   let index: string = indexUtil.getIndex('hi'); // index = 'H'
   ```
@@ -1561,6 +1640,8 @@ Obtains a **BreakIterator** object. The **BreakIterator** object maintains an in
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   ```
 
@@ -1591,6 +1672,8 @@ Sets the text to be processed by the **BreakIterator** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.'); // Set the text to be processed.
   ```
@@ -1614,6 +1697,8 @@ Obtains the text processed by the **BreakIterator** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let breakText: string = iterator.getLineBreakText(); // breakText = 'Apple is my favorite fruit.'
@@ -1624,7 +1709,7 @@ Obtains the text processed by the **BreakIterator** object.
 
 current(): number
 
-Obtains the position of the **BreakIterator** object in the text.
+Obtains the position of the break iterator in the text.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1634,10 +1719,12 @@ Obtains the position of the **BreakIterator** object in the text.
 
 | Type    | Description                         |
 | ------ | --------------------------- |
-| number | Position of the **BreakIterator** object in the text.|
+| number | Position of the break iterator in the text.|
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let currentPos: number = iterator.current(); // currentPos = 0
@@ -1648,7 +1735,7 @@ Obtains the position of the **BreakIterator** object in the text.
 
 first(): number
 
-Moves the **BreakIterator** object to the first line break point, which is always at the beginning of the processed text.
+Moves the break iterator to the first line break point, which is always at the beginning of the processed text.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1662,6 +1749,8 @@ Moves the **BreakIterator** object to the first line break point, which is alway
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let firstPos: number = iterator.first(); // firstPos = 0
@@ -1672,7 +1761,7 @@ Moves the **BreakIterator** object to the first line break point, which is alway
 
 last(): number
 
-Moves the **BreakIterator** object to the last line break point, which is always the next position after the end of the processed text.
+Moves the break iterator to the last line break point, which is always the next position after the end of the processed text.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1686,6 +1775,8 @@ Moves the **BreakIterator** object to the last line break point, which is always
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let lastPos: number = iterator.last(); // lastPos = 27
@@ -1696,7 +1787,7 @@ Moves the **BreakIterator** object to the last line break point, which is always
 
 next(index?: number): number
 
-Moves the **BreakIterator** object backward by the specified number of line break points.
+Moves the break iterator backward by the specified number of line break points.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1706,16 +1797,18 @@ Moves the **BreakIterator** object backward by the specified number of line brea
 
 | Name  | Type    | Mandatory  | Description                                      |
 | ----- | ------ | ---- | ---------------------------------------- |
-| index | number | No   | Number of line break points for moving the **BreakIterator** object. The value is an integer.<br>A positive number means to move the **BreakIterator** object backward, and a negative number means to move the **BreakIterator** object forward.<br>The default value is **1**.|
+| index | number | No   | Number of line break points for moving the break iterator. The value is an integer.<br>A positive number means to move the break iterator backward, and a negative number means to move the break iterator forward.<br>The default value is **1**.|
 
 **Return value**
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Position of the **BreakIterator** object in the text after movement.<br>The value **-1** is returned if the position of the **BreakIterator** object is outside of the processed text after movement.|
+| number | Position of the break iterator in the text after movement.<br>The value **-1** is returned if the position of the break iterator is outside of the processed text after movement.|
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let pos: number = iterator.first(); // pos = 0
@@ -1728,7 +1821,7 @@ Moves the **BreakIterator** object backward by the specified number of line brea
 
 previous(): number
 
-Moves the **BreakIterator** object foreward by one line break point.
+Moves the break iterator foreward by one line break point.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1738,10 +1831,12 @@ Moves the **BreakIterator** object foreward by one line break point.
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Position of the **BreakIterator** object in the text after movement.<br>The value **-1** is returned if the position of the **BreakIterator** object is outside of the processed text after movement.|
+| number | Position of the break iterator in the text after movement.<br>The value **-1** is returned if the position of the break iterator is outside of the processed text after movement.|
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let pos: number = iterator.first(); // pos = 0
@@ -1770,10 +1865,12 @@ Moves the line break iterator to the line break point after the specified positi
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Position of the **BreakIterator** object in the text after movement. The value **-1** is returned if the position of the **BreakIterator** object is outside of the processed text after movement.|
+| number | Position of the break iterator in the text after movement. The value **-1** is returned if the position of the break iterator is outside of the processed text after movement.|
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let pos: number = iterator.following(0); // pos = 6
@@ -1802,10 +1899,12 @@ Checks whether the specified position is a line break point.
 
 | Type     | Description                             |
 | ------- | ------------------------------- |
-| boolean | Whether the specified position is a line break point. The value **true** indicates that the specified position is a line break point, and the value **false** indicates the opposite.<br>If **true** is returned, the **BreakIterator** object is moved to the position specified by **offset**. Otherwise, the **BreakIterator** object is moved to the text line break point after the position specified by **offset**, which is equivalent to calling **following**.|
+| boolean | Whether the specified position is a line break point. The value **true** indicates that the specified position is a line break point, and the value **false** indicates the opposite.<br>If **true** is returned, the break iterator is moved to the position specified by **offset**. Otherwise, the break iterator is moved to the text line break point after the position specified by **offset**, which is equivalent to calling **following**.|
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let isBoundary: boolean = iterator.isBoundary(0); // isBoundary = true;
@@ -1837,6 +1936,8 @@ Obtains the **TimeZone** object corresponding to the specified time zone ID.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   ```
 
@@ -1866,6 +1967,8 @@ Obtains the ID of the specified **TimeZone** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let timezoneID: string = timezone.getID(); // timezoneID = 'Asia/Shanghai'
   ```
@@ -1896,6 +1999,8 @@ Obtains time zone display name in the specified language.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let timezoneName: string = timezone.getDisplayName('zh-CN', false); // timezoneName = 'China Standard Time'
   ```
@@ -1919,6 +2024,8 @@ Obtains the raw offset of the specified time zone.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let offset: number = timezone.getRawOffset(); // offset = 28800000
   ```
@@ -1948,6 +2055,8 @@ Obtains the offset of the specified time zone at the specified time.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let offset: number = timezone.getOffset(1234567890); // offset = 28800000
   ```
@@ -1971,6 +2080,8 @@ Obtains the list of time zone IDs supported by the system.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // ids = ['America/Adak', 'America/Anchorage', 'America/Bogota', 'America/Denver', 'America/Los_Angeles', 'America/Montevideo', 'America/Santiago', 'America/Sao_Paulo', 'Asia/Ashgabat', 'Asia/Hovd', 'Asia/Jerusalem', 'Asia/Magadan', 'Asia/Omsk', 'Asia/Shanghai', 'Asia/Tokyo', 'Asia/Yerevan', 'Atlantic/Cape_Verde', 'Australia/Lord_Howe', 'Europe/Dublin', 'Europe/London', 'Europe/Moscow', 'Pacific/Auckland', 'Pacific/Easter', 'Pacific/Pago-Pago']
   let ids: Array<string> = i18n.TimeZone.getAvailableIDs();
   ```
@@ -1994,6 +2105,8 @@ Obtains the list of time zone city IDs supported by the system.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // cityIDs = ['Auckland', 'Magadan', 'Lord Howe Island', 'Tokyo', 'Shanghai', 'Hovd', 'Omsk', 'Ashgabat', 'Yerevan', 'Moscow', 'Tel Aviv', 'Dublin', 'London', 'Praia', 'Montevideo', 'Brasília', 'Santiago', 'Bogotá', 'Easter Island', 'Salt Lake City', 'Los Angeles', 'Anchorage', 'Adak', 'Pago Pago']
   let cityIDs: Array<string> = i18n.TimeZone.getAvailableZoneCityIDs();
   ```
@@ -2023,6 +2136,8 @@ Obtains time zone city display name in the specified language.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let displayName: string = i18n.TimeZone.getCityDisplayName('Shanghai', 'zh-CN'); // displayName = 'Shanghai (China)'
   ```
 
@@ -2051,6 +2166,8 @@ Creates a **TimeZone** object corresponding to the specified time zone city.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity('Shanghai');
   ```
 
@@ -2094,6 +2211,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let timezoneArray: Array<i18n.TimeZone> = i18n.TimeZone.getTimezonesByLocation(-118.1, 34.0);
@@ -2305,6 +2423,8 @@ Obtains a list of IDs supported by the **Transliterator** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // A total of 742 IDs are supported. One ID is comprised of two parts separated by a hyphen (-) in the format of source-destination. For example, in **ids = ["Han-Latin","Latin-ASCII", "Amharic-Latin/BGN","Accents-Any", ...]**, **Han-Latin** indicates conversion from Chinese to Latin, and **Amharic-Latin** indicates conversion from Amharic to Latin.
   // For more information, see ISO-15924.
   let ids: string[] = i18n.Transliterator.getAvailableIDs();
@@ -2335,6 +2455,8 @@ Creates a **Transliterator** object based on the specified ID.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
   ```
 
@@ -2353,7 +2475,7 @@ Converts the input text from the source format to the target format.
 
 | Name | Type    | Mandatory  | Description    |
 | ---- | ------ | ---- | ------ |
-| text | string | Yes   | Input text.|
+| text | string | Yes   | **text** object.|
 
 **Return value**
 
@@ -2363,6 +2485,8 @@ Converts the input text from the source format to the target format.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
   let wordArray: string[] = ['中国', '德国', '美国', '法国']
   for (let i = 0; i < wordArray.length; i++) {
@@ -2413,6 +2537,8 @@ Checks whether the input character is a digit.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isDigit: boolean = i18n.Unicode.isDigit('1'); // isDigit = true
   ```
 
@@ -2441,6 +2567,8 @@ Checks whether the input character is a space.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isSpacechar: boolean = i18n.Unicode.isSpaceChar('a'); // isSpacechar = false
   ```
 
@@ -2469,6 +2597,8 @@ Checks whether the input character is a whitespace.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isWhitespace: boolean = i18n.Unicode.isWhitespace('a'); // isWhitespace = false
   ```
 
@@ -2497,6 +2627,8 @@ Checks whether the input character is of the right to left (RTL) language.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isRtl: boolean = i18n.Unicode.isRTL('a'); // isRtl = false
   ```
 
@@ -2525,6 +2657,8 @@ Checks whether the input character is an ideographic character.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isIdeograph: boolean = i18n.Unicode.isIdeograph('a'); // isIdeograph = false
   ```
 
@@ -2553,6 +2687,8 @@ Checks whether the input character is a letter.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isLetter: boolean = i18n.Unicode.isLetter('a'); // isLetter = true
   ```
 
@@ -2581,6 +2717,8 @@ Checks whether the input character is a lowercase letter.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isLowercase: boolean = i18n.Unicode.isLowerCase('a'); // isLowercase = true
   ```
 
@@ -2609,6 +2747,8 @@ Checks whether the input character is an uppercase letter.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isUppercase: boolean = i18n.Unicode.isUpperCase('a'); // isUppercase = false
   ```
 
@@ -2673,6 +2813,8 @@ The following table lists only the common types. For more details, see the Unico
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let unicodeType: string = i18n.Unicode.getType('a'); // unicodeType = 'U_LOWERCASE_LETTER'
   ```
 
@@ -2712,6 +2854,8 @@ Converts one measurement unit into another and formats the unit based on the spe
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let fromUnit: i18n.UnitInfo = { unit: 'cup', measureSystem: 'US' };
   let toUnit: i18n.UnitInfo = { unit: 'liter', measureSystem: 'SI' };
   let convertResult: string =
@@ -2742,6 +2886,8 @@ Obtains the sequence of the year, month, and day in the specified locale.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let order: string = i18n.I18NUtil.getDateOrder('zh-CN'); // order = 'y-L-d'
   ```
 
@@ -2781,6 +2927,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let name: string = i18n.I18NUtil.getTimePeriodName(2, 'zh-CN'); // name = 'a.m.'
@@ -2826,6 +2973,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let matchedLocaleId: string = i18n.I18NUtil.getBestMatchLocale('zh-Hans-CN',
@@ -2840,7 +2988,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 static getThreeLetterLanguage(locale: string): string
 
-Converts a language code from two letters to three letters. For details, see [ISO 639](https://www.iso.org/iso-639-language-code).<br>For example, the two-letter language code of Chinese is **zh**, and the corresponding three-letter language code is **zho**.
+Converts a language code from two letters to three letters.  <br>For example, the two-letter language code of Chinese is **zh**, and the corresponding three-letter language code is **zho**. For details, see [ISO 639](https://www.iso.org/iso-639-language-code).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2871,6 +3019,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let language: string = i18n.I18NUtil.getThreeLetterLanguage('zh') // language = 'zho'
@@ -2884,7 +3033,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 static getThreeLetterRegion(locale: string): string
 
-Converts a region code from two letters to three letters. For details, see [ISO 3166](https://www.iso.org/iso-3166-country-codes.html).<br>For example, the two-letter region code of China is **CN**, and the corresponding three-letter region code is **CHN**.
+Converts a region code from two letters to three letters.  <br>For example, the two-letter region code of China is **CN**, and the corresponding three-letter region code is **CHN**. For details, see [ISO 3166](https://www.iso.org/iso-3166-country-codes.html).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2915,6 +3064,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let region: string = i18n.I18NUtil.getThreeLetterRegion('CN') // region = 'CHN'
@@ -2960,6 +3110,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let path: string = '/data/out/tmp';
@@ -3011,7 +3162,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let path: string = '/data/out/tmp';
@@ -3066,6 +3217,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let normalizer: i18n.Normalizer = i18n.Normalizer.getInstance(i18n.NormalizerMode.NFC);
@@ -3090,7 +3242,7 @@ Normalizes input strings.
 
 | Name   | Type    | Mandatory  | Description                       |
 | ------ | ------ | ---- | ------------------------- |
-| text | string | Yes   | Input text.|
+| text | string | Yes   | **text** object.|
 
 **Return value**
 
@@ -3109,6 +3261,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let normalizer: i18n.Normalizer = i18n.Normalizer.getInstance(i18n.NormalizerMode.NFC);
@@ -3171,6 +3324,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // Replace /system/lib/US.ics with the actual ICS file path.
@@ -3214,6 +3368,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // Replace /system/lib/US.ics with the actual ICS file path.
@@ -3261,6 +3416,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // Replace /system/lib/US.ics with the actual ICS file path.
@@ -3336,6 +3492,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3382,7 +3539,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
@@ -3427,6 +3584,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3473,7 +3631,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
@@ -3517,6 +3675,7 @@ Formats the date and time.
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let locale : Intl.Locale = new Intl.Locale("zh-Hans-CN");
@@ -3572,6 +3731,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3618,7 +3778,7 @@ For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
@@ -3662,6 +3822,7 @@ Formats a number.
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3703,7 +3864,7 @@ Creates a **NumberFormat** object for rich text display.
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { intl } from '@kit.LocalizationKit';
+  import { i18n, intl } from '@kit.LocalizationKit';
 
   try {
     let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
@@ -3755,6 +3916,7 @@ Creates a **NumberFormat** object for rich text display.
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
@@ -3811,6 +3973,7 @@ Formats a number as a rich text object.
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
@@ -3887,6 +4050,8 @@ Obtains the localized name of the specified country/region.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let countryName: string = i18n.getDisplayCountry('zh-CN', 'en-GB', true); // countryName = 'China'
   countryName = i18n.getDisplayCountry('zh-CN', 'en-GB'); // countryName = 'China'
   ```
@@ -3917,6 +4082,8 @@ Obtains the localized script for the specified language.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let languageName: string = i18n.getDisplayLanguage('zh', 'en-GB', true); // languageName = 'Chinese'
   languageName = i18n.getDisplayLanguage('zh', 'en-GB'); // languageName = 'Chinese'
   ```
@@ -3940,6 +4107,8 @@ Obtains the system language.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLanguage: string = i18n.getSystemLanguage();
   ```
 
@@ -3962,6 +4131,8 @@ Obtains the system region.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let region: string = i18n.getSystemRegion();
   ```
 
@@ -3984,6 +4155,8 @@ Obtains the system locale.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let locale: string = i18n.getSystemLocale();
   ```
 
@@ -4006,6 +4179,8 @@ Checks whether the 24-hour clock is used.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let is24HourClock: boolean = i18n.is24HourClock();
   ```
 
@@ -4036,6 +4211,8 @@ Sets the 24-hour clock.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // Set the system time to the 24-hour clock.
   let success: boolean = i18n.set24HourClock(true);
   ```
@@ -4068,6 +4245,8 @@ Adds a preferred language to the specified position on the preferred language li
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // Add zh-CN to the preferred language list.
   let language: string = 'zh-CN';
   let index: number = 0;
@@ -4101,6 +4280,8 @@ Removes a preferred language from the specified position on the preferred langua
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // Delete the first preferred language from the preferred language list.
   let index: number = 0;
   let success: boolean = i18n.removePreferredLanguage(index);
@@ -4125,6 +4306,8 @@ Obtains the list of preferred languages.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let preferredLanguageList: Array<string> = i18n.getPreferredLanguageList();
   ```
 
@@ -4147,6 +4330,8 @@ Obtains the first language in the preferred language list.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let firstPreferredLanguage: string = i18n.getFirstPreferredLanguage();
   ```
 

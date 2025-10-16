@@ -940,7 +940,7 @@ Subscribes to network sharing state changes. This API uses an asynchronous callb
 
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
-| type     | string                  | Yes  | Event type. The value **sharingStateChange** indicates a network sharing status change event.                  |
+| type     | string                  | Yes  | Event type.<br/> The value **sharingStateChange** indicates a network sharing status change event.                  |
 | callback | AsyncCallback\<boolean> | Yes  | Callback invoked when the network sharing state changes.|
 
 **Error codes**
@@ -1014,7 +1014,7 @@ Subscribes to network sharing state changes of a specified NIC. This API uses an
 
 | Name  | Type                                                                  | Mandatory| Description                                 |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------- |
-| type     | string                                                                | Yes  | Event type. The value **interfaceSharingStateChange** indicates a network sharing status change event of the NIC.                           |
+| type     | string                                                                | Yes  | Event type.<br/> The value **interfaceSharingStateChange** indicates a network sharing status change event of the NIC.                           |
 | callback | AsyncCallback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | Yes  | Callback used to return the result. It is called when the network sharing state of a specified NIC changes.|
 
 **Error codes**
@@ -1088,7 +1088,7 @@ Subscribes to upstream network changes. This API uses an asynchronous callback t
 
 | Name  | Type                     | Mandatory| Description                          |
 | -------- | ------------------------- | ---- | ------------------------------ |
-| type     | string                    | Yes  | Event type. The value **sharingUpstreamChange** indicates an upstream network change event.                    |
+| type     | string                    | Yes  | Event type.<br/> The value **sharingUpstreamChange** indicates an upstream network change event.                    |
 | callback | AsyncCallback\<NetHandle> | Yes  | Callback invoked when the upstream network changes.|
 
 **Error codes**
@@ -1154,11 +1154,11 @@ Wakes up the listener for network sharing state changes of an NIC.
 
 **System capability**: SystemCapability.Communication.NetManager.NetSharing
 
-| Name    | Type                                             | Mandatory| Description                |
-| -------- | ------------------------------------------------- | ---- | ------------------- |
-| type     | [SharingIfaceType](#sharingifacetype)             | Yes  | Enumerates the network sharing types of an NIC.      |
-| iface    | string                                            | Yes  | NIC name.|
-| state    | [SharingIfaceState](#sharingifacestate)           | Yes  | Network sharing state of the NIC.      |
+| Name    | Type                                             | Read-Only|Optional| Description                |
+| -------- | ------------------------------------------------- | ---- | ----|--------------- |
+| type     | [SharingIfaceType](#sharingifacetype)             | No |No|Enumerates the network sharing types of an NIC.      |
+| iface    | string                                            | No  |No|NIC name.|
+| state    | [SharingIfaceState](#sharingifacestate)           | No |No|Network sharing state of the NIC.      |
 
 ## SharingIfaceState
 

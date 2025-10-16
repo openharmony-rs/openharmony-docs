@@ -118,7 +118,7 @@ The following table describes the APIs used in this topic.
 		   console.info("get peer devices: " + JSON.stringify(data));
 		   let len = data.length;
 		   for (let i = 0; i < len; ++i) {
-			   // Select the peer P2P device that meets the conditions.
+			   // Select the peer device that meets the conditions.
 			   if (data[i].deviceName === "my_test_device") {
 				   console.info("p2p connect to test device: " + data[i].deviceAddress);
 				   let config:wifiManager.WifiP2PConfig = {
@@ -145,3 +145,13 @@ The following table describes the APIs used in this topic.
    ```
 
 7. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
+
+### Obtain the IP address of the peer device.
+1. Import the Wi-Fi module.
+2. Enable Wi-Fi on the device.
+3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
+4. Obtain the P2P connection status, and check whether **ConnectSate** is **1**.
+5. Obtain the IP address of the peer device from **goIpAddress()** and **gcIpAddress()** in **wifiP2pGroupInfo**.
+
+### Socket Communication
+1. For details about socket communication, see [Socket Connection](../../reference/apis-network-kit/js-apis-socket.md).

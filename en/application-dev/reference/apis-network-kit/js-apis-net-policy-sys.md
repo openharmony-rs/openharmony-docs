@@ -474,7 +474,7 @@ Obtains the network quota policies. This API uses an asynchronous callback to re
 
 | Name  | Type                                                       | Mandatory| Description                    |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------ |
-| callback | AsyncCallback\<Array\<[NetQuotaPolicy](#netquotapolicy10)>> | Yes  | Callback used to return the result.  |
+| callback | AsyncCallback\<Array\<[NetQuotaPolicy](#netquotapolicy10)>> | Yes  | Callback used to return the result.  .|
 
 **Error codes**
 
@@ -961,7 +961,7 @@ Obtains the UIDs of applications that are on the device idle allowlist. This API
 
 | Name  | Type                          | Mandatory| Description                    |
 | -------- | ------------------------------ | ---- | ------------------------ |
-| callback | AsyncCallback\<Array\<number>> | Yes  | Callback used to return the result.  |
+| callback | AsyncCallback\<Array\<number>> | Yes  | Callback used to return the result.  .|
 
 **Error codes**
 
@@ -1045,7 +1045,7 @@ Obtains the background network policy for the application specified by a given U
 | Name  | Type                                                         | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------- | ---- | ------------------------ |
 | uid      | number                                                        | Yes  | The app unique identifier, which is a positive integer within the range of int32_t.          |
-| callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy10)> | Yes  | Callback used to return the result.  |
+| callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy10)> | Yes  | Callback used to return the result.  .|
 
 **Error codes**
 
@@ -1422,7 +1422,7 @@ Obtains the UID array of applications that are on the power-saving allowlist. Th
 
 | Name  | Type                          | Mandatory| Description                    |
 | -------- | ------------------------------ | ---- | ------------------------ |
-| callback | AsyncCallback\<Array\<number>> | Yes  | Callback used to return the result.  |
+| callback | AsyncCallback\<Array\<number>> | Yes  | Callback used to return the result.  .|
 
 **Error codes**
 
@@ -1674,7 +1674,7 @@ Subscribes to policy changes. This API uses an asynchronous callback to return t
 
 | Name  | Type                                                               | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------------- | ---- | -------------------------------------- |
-| type     | string                                                              | Yes  | Type of the event to unsubscribe from. The value **netUidPolicyChange** indicates a policy change event.                 |
+| type     | string                                                              | Yes  | Event type.<br/> The value **netUidPolicyChange** indicates a policy change event.                 |
 | callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | Yes  | Callback used to return the result. It is called when the network policy changes.|
 
 **Error codes**
@@ -1780,7 +1780,7 @@ Subscribes to rule changes. This API uses an asynchronous callback to return the
 
 | Name  | Type                                                         | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------- | ---- | -------------------------------------- |
-| type     | string                                                        | Yes  | Type of the event to unsubscribe from. The value **netUidRuleChange** indicates a rule change event.                   |
+| type     | string                                                        | Yes  | Event type.<br/> The value **netUidRuleChange** indicates a rule change event.                   |
 | callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | Yes  | Callback used to return the result. It is called when the rule changes.|
 
 **Error codes**
@@ -1886,7 +1886,7 @@ Subscribes to metered **iface** changes. This API uses an asynchronous callback 
 
 | Name  | Type                     | Mandatory| Description                                     |
 | -------- | ------------------------- | ---- | ----------------------------------------- |
-| type     | string                    | Yes  | Type of the event to unsubscribe from. The value **netMeteredIfacesChange** indicates a metered **iface** change event.                |
+| type     | string                    | Yes  | Event type.<br/> The value **netMeteredIfacesChange** indicates a metered **iface** change event.                |
 | callback | Callback\<Array\<string>> | Yes  | Callback used to return the result. It is called when the registered metered **iface** changes.|
 
 **Error codes**
@@ -1982,7 +1982,7 @@ Subscribes to network quota policy changes. This API uses an asynchronous callba
 
 | Name  | Type                                                  | Mandatory| Description                                      |
 | -------- | ------------------------------------------------------ | ---- | ------------------------------------------ |
-| type     | string                                                 | Yes  | Type of the event to unsubscribe from. The value **netQuotaPolicyChange** indicates a network quota policy change event.                |
+| type     | string                                                 | Yes  | Event type.<br/> The value **netQuotaPolicyChange** indicates a network quota policy change event.                |
 | callback | Callback\<Array\<[NetQuotaPolicy](#netquotapolicy10)>> | Yes  | Callback used to return the result. It is called when the registered network quota policy changes.|
 
 **Error codes**
@@ -2083,7 +2083,7 @@ Subscribes to background network policy changes. This API uses an asynchronous c
 
 | Name  | Type              | Mandatory| Description                                      |
 | -------- | ------------------ | ---- | ------------------------------------------ |
-| type     | string             | Yes  | Type of the event to unsubscribe from. The value **netBackgroundPolicyChange** indicates a background network policy change event.                |
+| type     | string             | Yes  | Event type.<br/> The value **netBackgroundPolicyChange** indicates a background network policy change event.                |
 | callback | Callback\<boolean> | Yes  | Callback used to return the result. It is called when the registered background network policy changes.|
 
 **Error codes**
@@ -2186,10 +2186,10 @@ Defines the quota policy for the specified network.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name            | Type                                   | Mandatory| Description                            |
-| ---------------- | --------------------------------------- | ---- | -------------------------------- |
-| networkMatchRule | [NetworkMatchRule](#networkmatchrule10) | Yes  | Network for which the quota policy is set.|
-| quotaPolicy      | [QuotaPolicy](#quotapolicy10)           | Yes  | Network quota policy.              |
+| Name            | Type                                   | Read-Only|Optional| Description                            |
+| ---------------- | --------------------------------------- | ---- | ----|---------------------------- |
+| networkMatchRule | [NetworkMatchRule](#networkmatchrule10) | No  |No|Network for which the quota policy is set.|
+| quotaPolicy      | [QuotaPolicy](#quotapolicy10)           | No | No|Network quota policy.              |
 
 ## NetworkMatchRule<sup>10+</sup>
 
@@ -2199,11 +2199,11 @@ Defines the network for which the quota policy is set.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name    | Type                                                | Mandatory| Description                                                                        |
-| -------- | ---------------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
-| netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | Yes  | Network type.                                                                  |
-| simId    | string                                               | Yes  | Identifier of the SIM card on the metered cellular network. It is not used for Wi-Fi networks.                    |
-| identity | string                                               | Yes  | ID of the SIM card on the metered cellular network. It is used for Wi-Fi networks. It is used together with **iccid**.|
+| Name    | Type                                                | Read-Only|Optional| Description                                                                        |
+| -------- | ---------------------------------------------------- | ---- | ------|---------------------------------------------------------------------- |
+| netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | No  |No|Network type.                                                                  |
+| simId    | string                                               | No   |No|Identifier of the SIM card on the metered cellular network. It is not used for Wi-Fi networks.                    |
+| identity | string                                               | No  |No|ID of the SIM card on the metered cellular network. It is used for Wi-Fi networks. It is used together with **iccid**.|
 
 ## QuotaPolicy<sup>10+</sup>
 
@@ -2213,15 +2213,15 @@ Defines the network quota policy.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name             | Type                           | Mandatory| Description                                                 |
-| ----------------- |-------------------------------| ---- |-----------------------------------------------------|
-| periodDuration    | string                        | Yes  | Metering period for the quota limit. **D1**, **M1**, and **Y1** indicate one day, one month, and one year, respectively. If the specified metering period is exceeded, the quota is not limited.|
-| warningBytes      | number                        | Yes  | Data volume threshold for generating an alarm.                                         |
-| limitBytes        | number                        | Yes  | Data volume quota.                                           |
-| metered           | boolean                       | Yes  | Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite.                                           |
-| limitAction       | [LimitAction](#limitaction10) | Yes  | Action to take when the data volume quota is reached.                                        |
-| lastWarningRemind | number                        | No  | Last time when an alarm was generated. Default value: **-1**                                 |
-| lastLimitRemind   | number                        | No  | Last time when the quota was exhausted. Default value: **-1**                                       |
+| Name             | Type                           | Read-Only|Optional| Description                                                 |
+| ----------------- |-------------------------------| ---- |----|-------------------------------------------------|
+| periodDuration    | string                        | No  |No|Metering period for the quota limit. **D1**, **M1**, and **Y1** indicate one day, one month, and one year, respectively. If the specified metering period is exceeded, the quota is not limited.|
+| warningBytes      | number                        | No  |No|Data volume threshold for generating an alarm.                                         |
+| limitBytes        | number                        | No  |No|Data volume quota.                                           |
+| metered           | boolean                       | No  |No|Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite.                                           |
+| limitAction       | [LimitAction](#limitaction10) | No  | No|Action to take when the data volume quota is reached.                                        |
+| lastWarningRemind | number                        | No  |Yes|Last time when an alarm was generated. Default value: **-1**                                 |
+| lastLimitRemind   | number                        | No  |Yes|Last time when the quota was exhausted. Default value: **-1**                                       |
 
 ## LimitAction<sup>10+</sup>
 
@@ -2262,10 +2262,10 @@ Defines a unique network ID.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name             | Type                          | Mandatory| Description                                     |
-| ----------------- | ----------------------------- | ---- | ----------------------------------------- |
-| uid               | number                        | Yes  | Traffic alarm threshold. The default value is **DATA_USAGE_UNKNOWN**.|
-| rule              | [NetUidRule](#netuidrule10)   | Yes  | Rule that specifies whether the application specified by a given UID is allowed to access a metered or non-metered network.    |
+| Name             | Type                          | Read-Only|Optional| Description                                     |
+| ----------------- | ----------------------------- | ---- | ------|----------------------------------- |
+| uid               | number                        | No  |No|Traffic alarm threshold. The default value is **DATA_USAGE_UNKNOWN**.|
+| rule              | [NetUidRule](#netuidrule10)   | No |No|Rule that specifies whether the application specified by a given UID is allowed to access a metered or non-metered network.    |
 
 ## NetUidPolicyInfo<sup>11+</sup>
 
@@ -2275,10 +2275,10 @@ Defines the network policy information for an application.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name             | Type                           | Mandatory| Description                                   |
-| ----------------- | ------------------------------- | ---- | -------------------------------------- |
-| uid               | number                          | Yes  | Traffic alarm threshold. The default value is **DATA_USAGE_UNKNOWN**.|
-| policy            | [NetUidPolicy](#netuidpolicy10) | Yes  | Policy that specifies whether the application specified by a given UID is allowed to access the network when running in the background.   |
+| Name             | Type                           | Read-Only|Optional| Description                                   |
+| ----------------- | ------------------------------- | ---- | ----|---------------------------------- |
+| uid               | number                          | No  |No|Traffic alarm threshold. The default value is **DATA_USAGE_UNKNOWN**.|
+| policy            | [NetUidPolicy](#netuidpolicy10) | No  | No|Policy that specifies whether the application specified by a given UID is allowed to access the network when running in the background.   |
 
 ## RemindType<sup>10+</sup>
 
@@ -2315,10 +2315,10 @@ Network access policy.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name             | Type      | Mandatory| Description                         |
-| ----------------- | --------- | ---- | ----------------------------- |
-| allowWiFi         | boolean   | Yes  | Whether to allow access to the Wi-Fi network. The value **true** means to allow access to the Wi-Fi network, and the value **false** means the opposite.|
-| allowCellular     | boolean   | Yes  | Whether to allow access to the cellular network. The value **true** means to allow access to the cellular network, and the value **false** means the opposite.|
+| Name             | Type      | Read-Only| Optional|Description                         |
+| ----------------- | --------- | ---- | ------|----------------------- |
+| allowWiFi         | boolean   | No  |No|Whether to allow access to the Wi-Fi network. The value **true** means to allow access to the Wi-Fi network, and the value **false** means the opposite.|
+| allowCellular     | boolean   | No |No|Whether to allow access to the cellular network. The value **true** means to allow access to the cellular network, and the value **false** means the opposite.|
 
 ## UidNetworkAccessPolicy<sup>12+</sup>
 
@@ -2328,6 +2328,6 @@ Defines the network policy for an application with the specified UID.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name      | Type                                                        | Mandatory| Description                |
-| --------- | -----------------------------------------------------------  | ---- | ------------------- |
-| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | No  | Network policy. The data type is key-value pair.     |
+| Name      | Type                                                        | Read-Only|Optional|Description                |
+| --------- | -----------------------------------------------------------  | ---- | ---|---------------- |
+| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | No  |Yes|Network policy. The data type is key-value pair.     |

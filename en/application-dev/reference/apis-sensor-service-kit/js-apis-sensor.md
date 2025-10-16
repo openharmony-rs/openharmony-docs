@@ -6280,8 +6280,6 @@ Enumerates the sensor types.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 | Name                       | Value  | Description                                                        |
 | --------------------------- | ---- | ------------------------------------------------------------ |
 | ACCELEROMETER               | 1    | Acceleration sensor.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -6547,8 +6545,8 @@ Describes the ambient light sensor data. It extends from [Response](#response).
 | Name                           | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | intensity                       | number | No  | No  | Illumination, in lux.                                      |
-| colorTemperature<sup>12+</sup>  | number | No  | No  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
-| infraredLuminance<sup>12+</sup> | number | No  | No  | IR luminance, in cd/m2. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
+| colorTemperature<sup>12+</sup>  | number | No  | Yes  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
+| infraredLuminance<sup>12+</sup> | number | No  | Yes  | IR luminance, in cd/m2. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
 
 
 ## HallResponse

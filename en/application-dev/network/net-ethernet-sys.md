@@ -14,12 +14,12 @@ The Ethernet Connection module allows a device to access the Internet through a 
 >
 > To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-ethernet-sys.md).
 
-## **Constraints**
+## Constraint
 
 - Programming language: JS
 - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-## Scenario
+## When to Use
 
 Typical application scenarios of Ethernet connection are as follows:
 
@@ -43,7 +43,7 @@ For the complete list of APIs and example code, see [Ethernet Connection](../ref
 
 ## Ethernet Connection – DHCP Mode
 
-1. Use a network cable to connect the device to a network port.
+1. Use a network cable to connect the device to the **eth** network port.
 2. Import the **ethernet** namespace from **@kit.NetworkKit**.
 3. Call **getAllActiveIfaces** to obtain the list of all active network ports, for example, **eth0** and **eth1**.
 4. Call **isIfaceActive** in user mode to check whether the **eth0** port is active.
@@ -88,7 +88,7 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
 
 ### How to Develop
 
-1. Use a network cable to connect the device to a network port.
+1. Use a network cable to connect the device to the **eth** network port.
 2. Import the **ethernet** namespace from **@kit.NetworkKit**.
 3. Call **getAllActiveIfaces** in user mode to obtain the list of all active network ports, for example, **eth0** and **eth1**.
 4. Call **isIfaceActive** in user mode to check whether the **eth0** port is active.

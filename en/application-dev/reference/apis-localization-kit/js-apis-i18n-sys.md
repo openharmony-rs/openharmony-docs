@@ -58,6 +58,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Set the system language
   try {
@@ -101,6 +102,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setSystemRegion('CN'); // Set the current system region to CN.
@@ -147,6 +149,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setSystemLocale('zh-CN'); // Set the system locale to zh-CN.
@@ -188,6 +191,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Set the system time to the 24-hour clock.
   try {
@@ -230,6 +234,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Add zh-CN to the preferred language list.
   let language = 'zh-CN';
@@ -273,6 +278,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Delete the first preferred language from the preferred language list.
   let index: number = 0;
@@ -315,6 +321,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setUsingLocalDigit(true); // Enable the local digit switch.
@@ -360,6 +367,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setTemperatureType(i18n.TemperatureType.CELSIUS); //: Set the temperature unit to °C.
@@ -404,6 +412,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setFirstDayOfWeek (i18n.WeekDay.MON); // Set the preferred start day of a week to Monday.
@@ -967,6 +976,8 @@ Creates a **SystemLocaleManager** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
   ```
 
@@ -986,13 +997,13 @@ Obtains the list of languages after sorting.
 |   Name |      Type     | Mandatory|     Description     |
 | --------- | ------------- | ---- | ------------- |
 | languages | Array&lt;string&gt; | Yes  | List of [valid language IDs](../../internationalization/i18n-locale-culture.md#how-it-works).|
-| options   | [SortOptions](#sortoptions10)   | No  | Language sorting options.|
+| options   | [SortOptions](#sortoptions10)   | No  | Language sorting option.|
 
 **Return value**
 
 |       Type       |         Description         |
 | ----------------- | -------------------- |
-| Array&lt;[LocaleItem](#localeitem10)&gt; | List of languages after sorting.|
+| Array&lt;[LocaleItem](#localeitem10)&gt; | Language list after sorting.|
 
 **Error codes**
 
@@ -1007,6 +1018,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Assume that the system language is zh-Hans, the system region is CN, and the system locale is zh-Hans-CN.
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
@@ -1026,7 +1038,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 getRegionInfoArray(regions: Array&lt;string&gt;, options?: SortOptions): Array&lt;LocaleItem&gt;
 
-Obtains the IDs of the countries/regions after sorting.
+Obtains the IDs of the countries or regions after sorting.
 
 **System API**: This is a system API.
 
@@ -1036,14 +1048,14 @@ Obtains the IDs of the countries/regions after sorting.
 
 |   Name |      Type     | Mandatory|     Description     |
 | --------- | ------------- | ---- | ------------- |
-| regions   | Array&lt;string&gt; | Yes  | Valid IDs of the countries/regions to be sorted.|
+| regions   | Array&lt;string&gt; | Yes  | Valid IDs of the countries or regions to be sorted.|
 | options   | [SortOptions](#sortoptions10)   | No  | Country/region sorting option.<br>By default, **locale** is the current system locale, **isUseLocalName** is **false**, and **isSuggestedFirst** is **true**.|
 
 **Return value**
 
 |       Type       |         Description         |
 | ----------------- | -------------------- |
-| Array&lt;[LocaleItem](#localeitem10)&gt; | IDs of the countries/regions after sorting.|
+| Array&lt;[LocaleItem](#localeitem10)&gt; | IDs of the countries or regions after sorting.|
 
 **Error codes**
 
@@ -1058,6 +1070,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Assume that the system language is zh-Hans, the system region is CN, and the system locale is zh-Hans-CN.
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
@@ -1099,6 +1112,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();

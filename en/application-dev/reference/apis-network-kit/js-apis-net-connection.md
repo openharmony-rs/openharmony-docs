@@ -1705,7 +1705,7 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-Sets the URL of the current PAC script. You can obtain the proxy information by parsing the URL.
+Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **http://127.0.0.1:21998/PacProxyScript.pac**. You can obtain the proxy information by parsing the URL.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 
