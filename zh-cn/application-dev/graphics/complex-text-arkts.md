@@ -569,7 +569,7 @@ let superScriptStyle: text.TextStyle = {
 
 **行高调整（方式一）**
 
-通过设置行高上限和下限调整行高，关键代码如下：
+从API version 21开始，支持通过设置行高上限和下限调整行高，关键代码如下：
 
 ```ts
 let myTextStyle: text.TextStyle = {
@@ -584,7 +584,7 @@ let myTextStyle: text.TextStyle = {
 
 **行高调整（方式二）**
 
-通过调整行高缩放系数调整行高，关键代码如下：
+通过设置行高缩放系数调整行高，关键代码如下：
 
 ```ts
 let myTextStyle: text.TextStyle = {
@@ -601,7 +601,7 @@ let myTextStyle: text.TextStyle = {
 
 ### 行间距调整
 
-调整行间距可以改善文本行之间的距离，提高阅读体验，关键代码如下：
+从API version 21开始，支持设置行间距改善文本行之间的距离，提高阅读体验，关键代码如下：
 
 ```ts
 let myParagraphStyle: text.ParagraphStyle = {
@@ -1644,7 +1644,7 @@ struct Font08 {
 | FontHeight | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
 
 ### 示例八（行间距调整）
-这里以设置行间距并关闭段落上升部下降部为例，呈现行间距增加后的文本绘制与显示。
+这里以关闭段落上升部下降部并设置行间距为例，呈现行间距增加后的文本绘制与显示。
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'

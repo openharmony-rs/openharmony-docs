@@ -893,12 +893,12 @@ OH_Drawing_DestroyTypography(typography);
 
 **行高调整（方式一）**
 
-为文本行设置行高上限与下限。
+从API version 21开始，支持为文本行设置行高上限与下限。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_ErrorCode [OH_Drawing_SetTextStyleAttributeDouble](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble)(OH_Drawing_TextStyle* style, [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。|
-| OH_Drawing_ErrorCode [OH_Drawing_SetTextStyleAttributeDouble](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble)(OH_Drawing_TextStyle* style, [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
 
 示例及效果如下所示：
 ```c++
@@ -940,12 +940,12 @@ OH_Drawing_DestroyTypography(typography);
 
 **行高调整（方式二）**
 
-调整行高缩放系数。
+设置行高缩放系数。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| void [OH_Drawing_SetTextStyleFontHeight](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight)(OH_Drawing_TextStyle* style, double fontHeight) | 使能行高缩放。|
-| OH_Drawing_ErrorCode [OH_Drawing_SetTextStyleAttributeInt](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint)(OH_Drawing_TextStyle* style, [OH_Drawing_TextStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
+| [void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) | 使能行高缩放。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
 
 示例及效果如下所示：
 ```c++
@@ -988,11 +988,11 @@ OH_Drawing_DestroyTypography(typography);
 
 ### 行间距调整
 
-调整行间距可以改善文本行之间的距离，提高阅读体验。
+从API version 21开始，支持设置行间距可以改善文本行之间的距离，提高阅读体验。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_ErrorCode [OH_Drawing_SetTypographyStyleAttributeDouble](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble)(OH_Drawing_TypographyStyle* style, [OH_Drawing_TypographyStyleAttributeId](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id, double value) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
 
 示例及效果如下所示：
 ```c++
