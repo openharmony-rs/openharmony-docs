@@ -291,14 +291,16 @@ try {
 这个接口用于获取给定ArkTS value的ArkTS Type。
 
 **注：**napi_typeof可以判断的类型包含：   
-undefined  
-null  
-boolean  
-number  
-string  
-object  
-function  
-bigint
+|类型 | 
+|-----|
+|undefined|
+|null|  
+|boolean|  
+|number|  
+|string  
+|object|  
+|function|  
+|bigint|
 
 cpp部分代码
 
