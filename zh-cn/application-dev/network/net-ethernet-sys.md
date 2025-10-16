@@ -32,7 +32,7 @@
 完整的JS API说明以及实例代码请参考：[以太网连接](../reference/apis-network-kit/js-apis-net-ethernet-sys.md)。
 
 | 接口名 | 描述 |
- | ---- | ---- |
+| ---- | ---- |
 | setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void | 配置指定以太网的网络属性，iface为网口名称，ic为配置信息，调用callback。 | 
 | getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void | 获取指定以太网的网络属性，iface为网口名称，调用callback。 | 
 | isIfaceActive(iface: string, callback: AsyncCallback\<number>): void | 判断指定网口是否已激活，iface为网卡名称（无参为是否有激活网口），调用callback。 | 
