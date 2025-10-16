@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to read data from the pasteboard without any prompt information.
 
@@ -42,6 +43,8 @@ The following procedure shows how to make entering a verification code easier: A
 
    The following example uses the default parameters. For details, see [PasteButton](../../reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md). In addition, all security components inherit the [Security Component Universal Attributes](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md), which can be used to customize styles.
    
+  <!-- [use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->
+
    ```ts
    import { pasteboard, BusinessError } from '@kit.BasicServicesKit';
    

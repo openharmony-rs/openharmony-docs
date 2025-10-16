@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 All the permissions in this topic are available to all applications and granted by the system.
 
@@ -578,7 +579,7 @@ With this permission, the application can be started when the screen is locked. 
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 21
+**Since**: 21
 
 ## ohos.permission.kernel.IGNORE_LIBRARY_VALIDATION
 
@@ -604,4 +605,4 @@ With this permission, the application can lock the mouse cursor within the windo
 
 **Authorization mode**: system_grant
 
-**Valid since**: 22
+**Since**: 22
