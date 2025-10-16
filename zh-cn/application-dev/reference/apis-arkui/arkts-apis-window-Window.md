@@ -5450,7 +5450,7 @@ setWindowBackgroundColor(color: string | ColorMetrics): void
 
 设置窗口的背景色。
 
-未调用该接口时，窗口在浅色模式默认背景色为`'#fff0f0f0'`，在深色模式默认背景色为`'#ff1a1a1a'`。
+未调用该接口时，窗口在浅色模式默认背景色为`'#FFF0F0F0'`，在深色模式默认背景色为`'#FF1A1A1A'`。
 
 Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
@@ -5488,7 +5488,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
     return;
   }
   console.info('Succeeded in loading the content.');
-  let color1: string = '#00ff33';
+  let color1: string = '#00FF33';
   let color2: ColorMetrics = ColorMetrics.numeric(0xff112233);
   try {
     windowClass?.setWindowBackgroundColor(color1);
