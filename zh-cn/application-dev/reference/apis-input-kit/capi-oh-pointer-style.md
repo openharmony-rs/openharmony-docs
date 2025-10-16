@@ -95,7 +95,7 @@ enum Input_PointerStyle
 | AECH_DEVELOPER_DEFINED_ICON         | 47   | 圆形自定义光标 |![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR        | 48   | 录屏光标  |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
 | LASER_CURSOR        | 49   | 悬浮光标  |![Laser_Cursor.png](./figures/Laser_Cursor.png)<br>HUAWEI M-Pen 3进入空鼠模式时使用该光标，无法直接使用|
-| LASER_CURSOR_DOT        | 50   | 点击光标  |![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)<br>HUAWEI M-Pen 3进入空鼠模式时使用该光标，，无法直接使用|
+| LASER_CURSOR_DOT        | 50   | 点击光标  |![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)<br>HUAWEI M-Pen 3进入空鼠模式时使用该光标，无法直接使用|
 | LASER_CURSOR_DOT_RED        | 51   | 激光笔光标  |![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)<br>HUAWEI M-Pen 3进入空鼠模式时使用该光标，无法直接使用|
 | DEVELOPER_DEFINED_ICON        | -100   | 自定义光标  |自定义光标样式，通过接口设置|
 
