@@ -28,7 +28,7 @@
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | - | 否 | 组件的唯一标识。 |
-| d | string | - | 否 | 设置路径的形状。包含一组字符指令，大写字母为绝对路径，小写字符为相对路径。<br/>字母指令表示的意义如下：<br/>-&nbsp;M/m&nbsp;=&nbsp;moveto<br/>-&nbsp;L/l&nbsp;=&nbsp;lineto<br/>-&nbsp;H/h&nbsp;=&nbsp;horizontal&nbsp;lineto<br/>-&nbsp;V/v&nbsp;=&nbsp;vertical&nbsp;lineto<br/>-&nbsp;C/c&nbsp;=&nbsp;curveto<br/>-&nbsp;S/s&nbsp;=&nbsp;smooth&nbsp;curveto<br/>-&nbsp;Q/q&nbsp;=&nbsp;quadratic&nbsp;Belzier&nbsp;curve<br/>-&nbsp;T/t&nbsp;=&nbsp;smooth&nbsp;quadratic&nbsp;Belzier&nbsp;curveto<br/>-&nbsp;A/a&nbsp;=&nbsp;elliptical&nbsp;Arc<br/>-&nbsp;Z/z&nbsp;=&nbsp;closepath |
+| d | string | - | 否 | 设置路径的形状。包含一组字符指令，大写字母为绝对路径，小写字符为相对路径。<br/>字母指令表示的意义如下：<br/>-&nbsp;M/m&nbsp;=&nbsp;moveto<br/>-&nbsp;L/l&nbsp;=&nbsp;lineto<br/>-&nbsp;H/h&nbsp;=&nbsp;horizontal&nbsp;lineto<br/>-&nbsp;V/v&nbsp;=&nbsp;vertical&nbsp;lineto<br/>-&nbsp;C/c&nbsp;=&nbsp;curveto<br/>-&nbsp;S/s&nbsp;=&nbsp;smooth&nbsp;curveto<br/>-&nbsp;Q/q&nbsp;=&nbsp;quadratic&nbsp;Bezier&nbsp;curve<br/>-&nbsp;T/t&nbsp;=&nbsp;smooth&nbsp;quadratic&nbsp;Bezier&nbsp;curveto<br/>-&nbsp;A/a&nbsp;=&nbsp;elliptical&nbsp;Arc<br/>-&nbsp;Z/z&nbsp;=&nbsp;closepath |
 
 
 ## 示例
