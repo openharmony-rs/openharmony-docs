@@ -157,7 +157,7 @@ if (resultSet != undefined) {
 
 getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
-Obtains the column data type based on the specified column index or column name. This API uses a promise to return the result.
+Obtains the column type based on the specified column index or column name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -221,7 +221,7 @@ if (resultSet != undefined) {
 
 getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
-Obtains the column data type based on the specified column index or column name. This API returns the result synchronously.
+Obtains the column type based on the specified column index or column name. This API returns the result synchronously.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
