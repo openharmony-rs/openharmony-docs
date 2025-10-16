@@ -47,72 +47,8 @@
 
 3. 拉起证书管理界面。
 
-   ```ts
-   /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
-   async function certificateManagerDialogSample() {
-     /* pageType为页面类型，此处赋值PAGE_MAIN，即拉起证书管理主界面。 */
-     let pageType: certificateManagerDialog.CertificateDialogPageType = certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
-     try {
-       certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
-         console.info('Succeeded in opening certificate manager dialog.');
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
-       })
-     } catch (error) {
-       console.error(`Failed to open certificate manager dialog. Code: ${error.code}, message: ${error.message}`);
-     }
-   }
-   ```
+<!-- @[certificate_management_dialog_box_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets) -->
+
 4. 调用安装证书对话框接口进行证书安装、调用删除证书对话框接口进行证书删除、调用查看证书详情的对话框接口、展示证书的详情。以上场景仅2in1设备支持。
 
-   ```ts
-   /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
-   async function userCADialogSample() {
-     let certUri: string = '';
-     let certType = certificateManagerDialog.CertificateType.CA_CERT;
-     /* 用户CA证书数据需要业务赋值。 */
-     let cert = new Uint8Array([
-       0x30, 0x82, 0x01, 0x2E, 0x30, 0x81, 0xD5, 0x02, 0x14, 0x28, 0x75, 0x71, 0x22, 0xDF, 0xDC, 0xCB,
-     ]);
-
-     try {
-       /* 安装证书。 */
-       let certScope = certificateManagerDialog.CertificateScope.CURRENT_USER; /* 安装在当前用户下。 */
-       certificateManagerDialog.openInstallCertificateDialog(context, certType, certScope, cert).then((result) => {
-         console.info('Succeeded in opening install ca dialog.');
-         certUri = result;
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to open install ca dialog. Code: ${err.code}, message: ${err.message}`);
-       })
-     } catch (error) {
-       console.error(`Failed to open install ca dialog. Code: ${error.code}, message: ${error.message}`);
-     }
-
-     try {
-       /* 删除证书。 */
-       certificateManagerDialog.openUninstallCertificateDialog(context, certType, certUri).then(() => {
-         console.info('Succeeded in opening uninstall ca dialog.');
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to open uninstall ca dialog. Code: ${err.code}, message: ${err.message}`);
-       })
-     } catch (error) {
-       console.error(`Failed to open uninstall ca dialog. Code: ${error.code}, message: ${error.message}`);
-     }
-
-     try {
-       let property: certificateManagerDialog.CertificateDialogProperty = {
-         showInstallButton: false    /* 不显示安装按钮。 */
-       };
-       /* 显示证书详情。 */
-       certificateManagerDialog.openCertificateDetailDialog(context, cert, property).then(() => {
-         console.info('Succeeded in opening show ca detail dialog.');
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to open show ca detail dialog. Code: ${err.code}, message: ${err.message}`);
-       })
-     } catch (error) {
-       console.error(`Failed to open show ca detail dialog. Code: ${error.code}, message: ${error.message}`);
-     }
-   }
-   ```
+<!-- @[certificate_management_ca_dialog_development_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerCaDialogSample.ets) -->
