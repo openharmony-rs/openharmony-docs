@@ -1069,7 +1069,7 @@ struct Font08 {
           .height('100%')
           .width('100%')
         Text("Test for vertical alignment")
-          .onApper(() => {
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1080,7 +1080,7 @@ struct Font08 {
 ```
 
 具体示意效果如下所示：
-| 样式设置（垂直对齐） | 示意效果 | 
+| 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
 | 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
 | 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
@@ -1219,7 +1219,7 @@ struct Font08 {
           .height('100%')
           .width('100%')
         Text("Test for superscript and subscript")
-          .onApper(() => {
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1230,7 +1230,7 @@ struct Font08 {
 ```
 
 具体示意效果如下所示：
-| 样式设置（上下标) | 示意效果 | 
+| 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
 | 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
 | 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
@@ -1368,7 +1368,7 @@ struct Font08 {
 | 开启高对比度 | ![zh-cn_image_complexArkTsDemo5_2](figures/zh-cn_image_complexArkTsDemo5_2.png) | 
 
 ### 示例六（行高调整方式一）
-这里以行高上限与行高下限设置相同值为例，呈现固定行高时绘制表现。
+这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1487,7 +1487,7 @@ struct Font08 {
           .height('100%')
           .width('100%')
         Text("Test for line height limit")
-          .onApper(() => {
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1499,13 +1499,13 @@ struct Font08 {
 
 具体效果如下所示：
 
-| 行高上限值 | 行高下限值 | 示意效果 |
+| 行高上限值 | 行高下限值 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- | -------- |
 | 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
 | 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
 
 ### 示例七（行高调整方式二）
-这里以行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
+这里以行高缩放且行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1626,7 +1626,7 @@ struct Font08 {
           .height('100%')
           .width('100%')
         Text("Test for line height limit")
-          .onApper(() => {
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1638,13 +1638,13 @@ struct Font08 {
 
 具体效果如下所示：
 
-| 行高缩放样式 | 示意效果 |
+| 行高缩放样式 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- |
 | FontSize | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
 | FontHeight | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
 
 ### 示例八（行间距调整）
-这里以设置行间距并关闭段落上升部下降部为例，呈现行间距增加后文本绘制与显示。
+这里以设置行间距并关闭段落上升部下降部为例，呈现行间距增加后的文本绘制与显示。
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1763,7 +1763,7 @@ struct Font08 {
           .height('100%')
           .width('100%')
         Text("Test for lineSpacing and height behavior")
-          .onApper(() => {
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1775,7 +1775,7 @@ struct Font08 {
 
 具体效果如下所示：
 
-| 上升部下降部开关 | 示意效果 |
+| 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- |
 | DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
