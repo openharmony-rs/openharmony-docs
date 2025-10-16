@@ -248,7 +248,7 @@ deviceStandby.releaseExemptionResource(resRequest);
 
 
 |名称  |类型   | 只读   | 可选   |说明   |
-| ------------ | ------------ |------------ | ------------ |
+| ------------ | ------------ |------------ |------------ | ------------ |
 |resourceTypes   | int  | 否   | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
 |name   |string   | 否   | 否   |  应用名。  |
 |duration   | int  | 否   | 否   | 豁免时长。 |
@@ -261,7 +261,7 @@ deviceStandby.releaseExemptionResource(resRequest);
 
 
 |名称   |类型   | 只读  | 可选   |说明   |
-| ------------ | ------------ |------------| ------------ |
+| ------------ | ------------ |------------ |------------| ------------ |
 |resourceTypes   | int  | 否 | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
 |uid   | int  | 否  | 否   |应用uid。   |
 |name   |string   | 否 | 否    | 应用名称。  |
