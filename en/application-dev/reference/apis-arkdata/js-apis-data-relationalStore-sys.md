@@ -35,8 +35,8 @@ Defines the configuration of an RDB store.
 
 | Name       | Type         | Mandatory| Description                                                     |
 | ------------- | ------------- | ---- | --------------------------------------------------------- |
-| isSearchable<sup>11+</sup> | boolean | No| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11. |
-| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12. |
+| isSearchable<sup>11+</sup> | boolean | No| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
+| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.|
 
 ## HAMode<sup>12+</sup>
 
@@ -85,7 +85,7 @@ In addition, use [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12
 
 update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;number&gt;):void
 
-Updates data based on the specified **DataSharePredicates** object. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data based on the specified **DataSharePredicates** object. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -166,7 +166,7 @@ predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates, (err, rows) => {
     if (err) {
-      console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Updated row count: ${rows}`);
@@ -178,7 +178,7 @@ if (store != undefined) {
 
 update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates):Promise&lt;number&gt;
 
-Updates data based on the specified **DataSharePredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Updates data based on the specified **DataSharePredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -266,7 +266,7 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
-    console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -329,7 +329,7 @@ predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates, (err, rows) => {
     if (err) {
-      console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Delete rows: ${rows}`);
@@ -402,7 +402,7 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates).then((rows: number) => {
     console.info(`Delete rows: ${rows}`);
   }).catch((err: BusinessError) => {
-    console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -411,7 +411,7 @@ if (store != undefined) {
 
 query(table: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -449,7 +449,7 @@ predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
   (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -471,7 +471,7 @@ if (store != undefined) {
 
 query(table: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -510,7 +510,7 @@ predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
   (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -532,7 +532,7 @@ if (store != undefined) {
 
 query(table: string, predicates: dataSharePredicates.DataSharePredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
-Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. Due to the limit of the shared memory (max. 2 MB), a single data record cannot exceed 2 MB. Otherwise, the query operation will fail.
+Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -588,7 +588,7 @@ if (store != undefined) {
     // Release the dataset memory.
     resultSet.close();
   }).catch((err: BusinessError) => {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -755,7 +755,7 @@ if (store != undefined) {
   }).then(() => {
     console.info('Cloud sync succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`cloudSync failed, code is ${err.code},message is ${err.message}}`);
+    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
   });
 };
 ```
@@ -828,7 +828,7 @@ if (store != undefined) {
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
   }).catch((err: BusinessError) => {
-    console.error(`query sharing resource failed, code is ${err.code},message is ${err.message}`);
+    console.error(`query sharing resource failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -887,7 +887,7 @@ predicates.equalTo('data', 'data_test');
 if (store != undefined) {
   (store as relationalStore.RdbStore).querySharingResource(predicates, (err, resultSet) => {
     if (err) {
-      console.error(`sharing resource failed, code is ${err.code},message is ${err.message}`);
+      console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     if (!resultSet.goToFirstRow()) {
@@ -956,7 +956,7 @@ predicates.equalTo('data', 'data_test');
 if (store != undefined) {
   (store as relationalStore.RdbStore).querySharingResource(predicates, ['uuid', 'data'], (err, resultSet) => {
     if (err) {
-      console.error(`sharing resource failed, code is ${err.code},message is ${err.message}`);
+      console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     if (!resultSet.goToFirstRow()) {
@@ -1008,7 +1008,7 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).lockCloudContainer().then((time: number) => {
     console.info('lockCloudContainer succeeded time:' + time);
   }).catch((err: BusinessError) => {
-    console.error(`lockCloudContainer failed, code is ${err.code},message is ${err.message}`);
+    console.error(`lockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -1046,7 +1046,7 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).unlockCloudContainer().then(() => {
     console.info('unlockCloudContainer succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`unlockCloudContainer failed, code is ${err.code},message is ${err.message}`);
+    console.error(`unlockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -1104,7 +1104,7 @@ if (store != undefined) {
   promiseRestore.then(() => {
     console.info('Succeeded in restoring.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to restore, code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to restore, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```

@@ -31,7 +31,7 @@ The **DatamgrService** can serve as a proxy to access the following data:
 
 
 
-| Data Type | Location     | Data Format       | Validity Period         | Usage                             |
+| Type | Location     | Data Format       | Validity Period         | Scenario                             |
 | ----- | --------- | ----------- | ------------ | --------------------------------- |
 | Persistent data| Sandbox directory of the data provider | Database tables   | Permanent        | RDB data used for schedules and meetings.     |
 | Process data | DatamgrService sandbox directory| JSON or byte| Automatically deleted 10 days after no subscription| Time-sensitive data in simple format used for step count, weather, and heart rate monitoring.|
@@ -120,8 +120,8 @@ The following walks you through on how to share an RDB store.
    | Name                   | Description                                    | Mandatory  |
    | ----------------------- | ---------------------------------------- | ---- |
    | uri                     | URI of the data proxy, which is the unique identifier for cross-application data access.                 | Yes   |
-   | requiredReadPermission  | Permission required for reading data from the data proxy. If this parameter is not set, other applications are not allowed to access data. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for **DataShareExtensionAbility**. It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability.md).           | No   |
-   | requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other applications are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for **DataShareExtensionAbility**. It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability.md).         | No   |
+   | requiredReadPermission  | Permission required for reading data from the data proxy. If this parameter is not set, other applications are not allowed to access data. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for **DataShareExtensionAbility**. It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).           | No   |
+   | requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other applications are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for **DataShareExtensionAbility**. It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).         | No   |
    | metadata                | Metadata of the data source, including the **name** and **resource** fields.<br> The **name** field identifies the configuration, which has a fixed value of **dataProperties**.<br> The value of **resource** is **$profile:{fileName}**, indicating that the name of the configuration file is **{fileName}.json**.| Yes   |
 
    A data table contains all the data accessible through a URI. Ensure that all data in a table falls under the same permission scope. To effectively implement data isolation at the table level, you are advised to store data with different scopes in separate tables and configure appropriate permission constraints for each table. For security-critical data, you are advised to configure an allowlist of data consumers to prevent unauthorized access. For details, see the **allowLists** field in the **my_config.json** example.
@@ -209,7 +209,7 @@ The following walks you through on how to share an RDB store.
    }
    ```
 
-4. After obtaining the **DataShareHelper** object, use the APIs provided by the object to access the services provided by the provider, for example, **insert()**, **delete()**, **update()**, or **query()** to add, delete, modify, and query data.
+4. After obtaining the **DataShareHelper** object, use the APIs provided by the object (such as **insert()**, **delete()**, **update()**, or **query()**) to access the provider data.
 
    ```ts
    // Construct a piece of data.
@@ -241,7 +241,7 @@ The following walks you through on how to share an RDB store.
      (dsHelper as dataShare.DataShareHelper).query(dseUri, predicates, valArray, (err, data) => {
        console.info(`dsHelper query result:${data}`);
      });
-     // Delete data.
+     // Delete specified data.
      (dsHelper as dataShare.DataShareHelper).delete(dseUri, predicates, (err, data) => {
        console.info(`dsHelper delete result:${data}`);
      });
@@ -301,8 +301,8 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 | Name                   | Description                         | Mandatory  |
 | ----------------------- | ----------------------------- | ---- |
 | uri                     | URI of the data proxy, which is the unique identifier for cross-application data access.      | Yes   |
-| requiredReadPermission  | Permission required for reading data from the data proxy. If this parameter is not set, other applications are not allowed to access data. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability.md).| No   |
-| requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other applications are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability.md).| No   |
+| requiredReadPermission  | Permission required for reading data from the data proxy. If this parameter is not set, other applications are not allowed to access data. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).| No   |
+| requiredWritePermission | Permission required for writing data to the data proxy. If this parameter is not set, other applications are not allowed to write data to the data proxy. For details about the permissions, see [Application Permissions](../security/AccessToken/app-permissions.md).<br>Note: The permission constraints for silent access are different from that for [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md). It is important to understand the difference and prevent confusion. For details, see [DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md).| No   |
 
 **module.json5 example**
 
@@ -335,7 +335,7 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
    let dseUri = ('datashareproxy://com.acts.ohos.data.datasharetest/weather');
    ```
 
-3. Create a **DataShareHelper** instance.
+3. Create a **DataAbilityHelper** instance.
 
    ```ts
    let dsHelper: dataShare.DataShareHelper | undefined = undefined;
@@ -389,7 +389,7 @@ Only the data provider is involved. The following walks you through on how to dy
 
 ### Data Provider Application Development
 
-The data provider calls the **enableSilentProxy** API to dynamically enable silent access. This API must be used with the **isSilentProxyEnable** field in the **data_share_config.json** file. For details, see [Sharing Data Using DataShareExtensionAbility](./share-data-by-datashareextensionability.md).
+The data provider calls the **enableSilentProxy** API to dynamically enable silent access. This API must be used with the **isSilentProxyEnable** field in the **data_share_config.json** file. For details, see [Sharing Data Using DataShareExtensionAbility](./share-data-by-datashareextensionability-sys.md).
 
 > **NOTE**
 >
@@ -412,7 +412,7 @@ The data provider calls the **enableSilentProxy** API to dynamically enable sile
    let dseUri = ('datashare:///com.ohos.settingsdata/entry/DB00/TBL00');
    ```
 
-3. Create a **DataShareHelper** instance.
+3. Create a **DataAbilityHelper** instance.
 
    ```ts
    let abilityContext: Context;

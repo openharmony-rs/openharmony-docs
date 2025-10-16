@@ -634,7 +634,7 @@ Obtains the length of the float array in an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetFloatVector()
 

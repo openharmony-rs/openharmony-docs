@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
-<!--Designer: @dboy190; @houpengtao1-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -964,6 +964,8 @@ try {
 
 Provides APIs for obtaining the distributed KV store result sets. A maximum of eight result sets can be opened at a time.
 
+The **KVStoreResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
+
 Before calling any API in **KVStoreResultSet**, you must use **[getKVStore](#getkvstore)** to construct a **SingleKVStore** or **DeviceKVStore** instance.
 
 > **NOTE**
@@ -1304,12 +1306,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
-  let isfirst: boolean;
+  let isFirst: boolean;
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    isfirst = resultSet.isFirst();
-    console.info("Check isFirst succeed:" + isfirst);
+    isFirst = resultSet.isFirst();
+    console.info("Check isFirst succeed:" + isFirst);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1339,12 +1341,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
-  let islast: boolean;
+  let isLast: boolean;
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    islast = resultSet.isLast();
-    console.info("Check isLast succeed: " + islast);
+    isLast = resultSet.isLast();
+    console.info("Check isLast succeed: " + isLast);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1377,8 +1379,8 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    let isbeforefirst = resultSet.isBeforeFirst();
-    console.info("Check isBeforeFirst succeed: " + isbeforefirst);
+    let isBeforeFirst = resultSet.isBeforeFirst();
+    console.info("Check isBeforeFirst succeed: " + isBeforeFirst);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1411,8 +1413,8 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    let isafterlast = resultSet.isAfterLast();
-    console.info("Check isAfterLast succeed:" + isafterlast);
+    let isAfterLast = resultSet.isAfterLast();
+    console.info("Check isAfterLast succeed:" + isAfterLast);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -5355,7 +5357,7 @@ Unsubscribes from the cross-device data sync completion events.
 | Name      | Type                                     | Mandatory| Description                                                      |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
 | event        | string                                        | Yes  | Event type. The value is **syncComplete**, which indicates a sync completion event.|
-| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes. |
+| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | No  | Callback to unregister. If this parameter is not set, all callbacks used to listen for the data sync completion event are unregistered. When multiple ArkTS instances (obtained through the [getKVStore](#getkvstore) API) of the same database all register the callback used to listen for the sync completion event, if all these callbacks are unregistered by one of the ArkTS instances, then the callbacks of the others are also unregistered. |
 
 **Error codes**
 

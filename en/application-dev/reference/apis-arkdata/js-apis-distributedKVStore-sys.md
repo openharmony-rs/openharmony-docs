@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
-<!--Designer: @dboy190; @houpengtao1-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -321,7 +321,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.                     |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -390,7 +390,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.                     |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -450,7 +450,7 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic. |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.             |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | Yes  | Callback used to return the **KVStoreResultSet** object obtained.|
 
 **Error codes**
@@ -461,7 +461,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.                     |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -514,7 +514,7 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 
 | Name    | Type                                                        | Mandatory| Description                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic. |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.|
 
 **Return value**
 
@@ -530,7 +530,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.                     |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -584,7 +584,7 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 | Name    | Type                                                    | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | deviceId  | string                                                       | Yes  | ID of the target device.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic. |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.             |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | Yes  | Callback used to return the **KVStoreResultSet** object obtained.|
 
 **Error codes**
@@ -595,7 +595,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.                     |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -653,7 +653,7 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 | Name    | Type                                                    | Mandatory| Description                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
 | deviceId  | string                                                       | Yes  | ID of the target device.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic. |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.|
 
 **Return value**
 
@@ -669,7 +669,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.                     |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
