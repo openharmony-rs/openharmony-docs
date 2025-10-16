@@ -33,7 +33,7 @@ UI状态管理互操作适用于主模块使用ArkTS-Sta、子模块使用ArkTS-
 - 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
@@ -150,7 +150,7 @@ export struct MainPage {
 
 ```TypeScript
 // library/index.ets
-export { MainPage } from from './src/main/ets/components/MainPage';
+export { MainPage } from './src/main/ets/components/MainPage';
 ```
 
 - 在ArkTS-Dyn模块`library`的`oh-package.json5`文件中配置子模块依赖。
@@ -166,9 +166,9 @@ export { MainPage } from from './src/main/ets/components/MainPage';
 - 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录创建并导出静态数据。
 
 ```TypeScript
-// library2/src/main/ets/components/MainPage.ets
+'use static'
 
-'use static';
+// library2/src/main/ets/components/MainPage.ets
 import { Observed, Track } from '@ohos.arkui.stateManagement';
 
 @Observed
@@ -186,7 +186,7 @@ export class Info {
 
 ```TypeScript
 // library/index.ets
-export { StaticClass, Info } from from './src/main/ets/components/MainPage';
+export { StaticClass, Info } from './src/main/ets/components/MainPage';
 ```
 
 
@@ -199,7 +199,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── MainPage.ets
+│                   └── Index.ets
 │
 │── library/         # ArkTS-Dyn子模块
 │   └── src/

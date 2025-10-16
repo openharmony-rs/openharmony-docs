@@ -22,7 +22,7 @@
 
 - 遵循语言[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)的规范。
 
-- 遵循ArkTS-Dyn自定义构建函数[参数传递规则](../quick-start/arkts-builder.md#参数传递规则)。
+- 遵循ArkTS-Dyn自定义构建函数[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
 
 
 ## 开发场景
@@ -69,7 +69,7 @@ export struct CustomContainer {
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn动态模块的自定义组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/MainPage.ets
 import { Entry, Component, Builder, Column, Text, ClickEvent, Color } from '@ohos.arkui.component';

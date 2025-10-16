@@ -17,7 +17,7 @@ ArkTS-Sta使用ArkTS-Dyn自定义组件时，涉及状态管理V1交互的场景
 如下示例展示了相关用法。
 
 
-- 创建ArkTS-Dyn子模块dynamic_module，并在动态模块中创建和导出自定义组件。如何创建子模块参考共享包（[HAR](har-package.md)）说明。
+- 创建ArkTS-Dyn子模块dynamic_module，并在动态模块中创建和导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
   ```
   @Component

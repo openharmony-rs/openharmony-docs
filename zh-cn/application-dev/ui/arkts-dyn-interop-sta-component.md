@@ -28,12 +28,11 @@ ArkUI互操作能力支持动态上下文调用静态模块的自定义组件，
 - 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录创建并导出自定义组件。
 
   ```TypeScript
-  // library/src/main/ets/components/ChildComponent.ets
-  
   'use static'
-  
+
+  // library/src/main/ets/components/ChildComponent.ets
   import { Text, Column, Component, ComponentV2, Color } from '@ohos.arkui.component';
-  
+
   @Component
   export struct ChildComponentV1 {
     message: string = 'Hello World V1!';
@@ -48,7 +47,7 @@ ArkUI互操作能力支持动态上下文调用静态模块的自定义组件，
       .backgroundColor('#F1E666')
     }
   }
-  
+
   @ComponentV2
   export struct ChildComponentV2 {
     message: string = 'Hello World V2!';
@@ -80,7 +79,7 @@ ArkUI互操作能力支持动态上下文调用静态模块的自定义组件，
   ```TypeScript
   // entry/src/main/ets/pages/MainPage.ets
   import { ChildComponentV1, ChildComponentV2 } from 'library';
-  
+
   @Entry
   @Component
   struct MainPageV1 {
@@ -96,7 +95,7 @@ ArkUI互操作能力支持动态上下文调用静态模块的自定义组件，
       .backgroundColor('#FFF3F5')
     }
   }
-  
+
   @ComponentV2
   struct MainPageV2 {
     build() {
