@@ -473,6 +473,10 @@ struct Font08 {
 
 - **高对比度文字绘制：** 主要通过将深色文字变黑、浅色文字变白，增强文本的对比效果。
 
+- **行高调整：** 调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
+
+- **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
+
 ### 装饰线
 
 装饰线（[Decoration](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#decoration)）是指在文本上方、下方或中间添加的装饰性线条，当前支持上划线、下划线、删除线。
@@ -558,6 +562,57 @@ let superScriptStyle: text.TextStyle = {
 高对比度模式有3种，具体参考[TextHighContrast](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#texthighcontrast20)。
 
 具体使用效果可参见下文[示例五](#示例五高对比度)。
+
+### 行高调整
+
+当前行高调整方式包括两种：设置行高上限/下限和使用行高缩放系数。
+
+**行高调整（方式一）**
+
+从API version 21开始，支持通过设置行高上限和下限调整行高，关键代码如下：
+
+```ts
+let myTextStyle: text.TextStyle = {
+    // 设置行高上限
+    lineHeightMaximum: 65,
+    // 设置行高下限
+    lineHeightMinimum: 65
+};
+```
+
+使用效果参考下文[示例六](#示例六行高调整方式一)。
+
+**行高调整（方式二）**
+
+通过设置行高缩放系数调整行高，关键代码如下：
+
+```ts
+let myTextStyle: text.TextStyle = {
+    // 开启行高缩放开关
+    heightOnly: true,
+    // 设置行高缩放系数
+    heightScale: 1.5,
+    // 设置行高缩放风格
+    lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT
+};
+```
+
+使用效果参考下文[示例七](#示例七行高调整方式二)。
+
+### 行间距调整
+
+从API version 21开始，支持设置行间距改善文本行之间的距离，提高阅读体验，关键代码如下：
+
+```ts
+let myParagraphStyle: text.ParagraphStyle = {
+  // 设置行间距
+  lineSpacing: 100,
+  // 关闭段落上升部和下降部
+  textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
+};
+```
+
+具体使用效果可参见下文[示例八](#示例八行间距调整)。
 
 ### 示例一（装饰线、字体特征）
 这里以文本样式中的装饰线和字体特征为例，呈现多样式文本的绘制与显示。
@@ -1014,7 +1069,7 @@ struct Font08 {
           .height('100%')
           .width('100%')
         Text("Test for vertical alignment")
-          .onApper(() => {
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1025,7 +1080,7 @@ struct Font08 {
 ```
 
 具体示意效果如下所示：
-| 样式设置（垂直对齐） | 示意效果 | 
+| 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
 | 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
 | 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
@@ -1164,7 +1219,7 @@ struct Font08 {
           .height('100%')
           .width('100%')
         Text("Test for superscript and subscript")
-          .onApper(() => {
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1175,7 +1230,7 @@ struct Font08 {
 ```
 
 具体示意效果如下所示：
-| 样式设置（上下标) | 示意效果 | 
+| 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
 | 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
 | 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
@@ -1311,3 +1366,416 @@ struct Font08 {
 | -------- | -------- |
 | 不开启高对比度 | ![zh-cn_image_complexArkTsDemo5_1](figures/zh-cn_image_complexArkTsDemo5_1.png) | 
 | 开启高对比度 | ![zh-cn_image_complexArkTsDemo5_2](figures/zh-cn_image_complexArkTsDemo5_2.png) | 
+
+### 示例六（行高调整方式一）
+这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
+
+```ts
+import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+import { drawing, text, common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+
+// 创建一个MyRenderNode类，并绘制文本。
+class MyRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    let canvas = context.canvas;
+
+    let myTextStyle: text.TextStyle = {
+      color: {
+        alpha: 255,
+        red: 255,
+        green: 0,
+        blue: 0
+      },
+      fontSize: 50,
+      // 设置行高上限
+      lineHeightMaximum: 65,
+      // 设置行高下限
+      lineHeightMinimum: 65,
+    };
+
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+    };
+
+    let fontCollection = text.FontCollection.getGlobalInstance();
+    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+    // 设置待排版文本要应用的样式
+    paragraphBuilder.pushStyle(myTextStyle);
+    // 添加文本
+    paragraphBuilder.addText("Hello World!");
+
+    // 生成段落
+    let paragraph = paragraphBuilder.build();
+    // 布局
+    paragraph.layoutSync(1000);
+    // 绘制文本
+    paragraph.paint(canvas, 0, 0);
+  }
+}
+
+// 创建一个MyRenderNode对象
+const textNode = new MyRenderNode()
+// 定义newNode的像素格式
+textNode.frame = {
+  x: 0,
+  y: 0,
+  width: 400,
+  height: 600
+}
+textNode.pivot = { x: 0.2, y: 0.8 }
+textNode.scale = { x: 1, y: 1 }
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext)
+    if (this.rootNode == null) {
+      return this.rootNode
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.frame = {
+        x: 0,
+        y: 0,
+        width: 10,
+        height: 500
+      }
+      renderNode.pivot = { x: 50, y: 50 }
+    }
+    return this.rootNode
+  }
+
+  addNode(node: RenderNode): void {
+    if (this.rootNode == null) {
+      return
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.appendChild(node)
+    }
+  }
+
+  clearNodes(): void {
+    if (this.rootNode == null) {
+      return
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.clearChildren()
+    }
+  }
+}
+
+let myNodeController: MyNodeController = new MyNodeController()
+
+async function performTask() {
+  myNodeController.clearNodes()
+  myNodeController.addNode(textNode)
+}
+
+@Entry
+@Component
+struct Font08 {
+  @State src: Resource = $r('app.media.startIcon')
+  build() {
+    Column() {
+      Row() {
+        NodeContainer(myNodeController)
+          .height('100%')
+          .width('100%')
+        Text("Test for line height limit")
+          .onAppear(() => {
+            performTask();
+          })
+      }
+    }
+      .width('100%')
+  }
+}
+```
+
+具体效果如下所示：
+
+| 行高上限值 | 行高下限值 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- | -------- |
+| 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
+| 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
+
+### 示例七（行高调整方式二）
+这里以行高缩放且行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
+
+```ts
+import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+import { drawing, text, common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+
+// 创建一个MyRenderNode类，并绘制文本。
+class MyRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    let canvas = context.canvas;
+
+    let myTextStyle: text.TextStyle = {
+      color: {
+        alpha: 255,
+        red: 255,
+        green: 0,
+        blue: 0
+      },
+      fontSize: 50,
+      // 开启行高缩放开关
+      heightOnly: true,
+      // 设置行高缩放系数
+      heightScale: 1.5,
+      // 设置行高缩放风格
+      lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT,
+    };
+
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+    };
+
+    let fontCollection = text.FontCollection.getGlobalInstance();
+    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+    // 设置待排版文本要应用的样式
+    paragraphBuilder.pushStyle(myTextStyle);
+    // 添加文本
+    paragraphBuilder.addText("Hello World!");
+
+    // 生成段落
+    let paragraph = paragraphBuilder.build();
+    // 布局
+    paragraph.layoutSync(1000);
+    // 绘制文本
+    paragraph.paint(canvas, 0, 0);
+  }
+}
+
+// 创建一个MyRenderNode对象
+const textNode = new MyRenderNode()
+// 定义newNode的像素格式
+textNode.frame = {
+  x: 0,
+  y: 0,
+  width: 400,
+  height: 600
+}
+textNode.pivot = { x: 0.2, y: 0.8 }
+textNode.scale = { x: 1, y: 1 }
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext)
+    if (this.rootNode == null) {
+      return this.rootNode
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.frame = {
+        x: 0,
+        y: 0,
+        width: 10,
+        height: 500
+      }
+      renderNode.pivot = { x: 50, y: 50 }
+    }
+    return this.rootNode
+  }
+
+  addNode(node: RenderNode): void {
+    if (this.rootNode == null) {
+      return
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.appendChild(node)
+    }
+  }
+
+  clearNodes(): void {
+    if (this.rootNode == null) {
+      return
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.clearChildren()
+    }
+  }
+}
+
+let myNodeController: MyNodeController = new MyNodeController()
+
+async function performTask() {
+  myNodeController.clearNodes()
+  myNodeController.addNode(textNode)
+}
+
+@Entry
+@Component
+struct Font08 {
+  @State src: Resource = $r('app.media.startIcon')
+  build() {
+    Column() {
+      Row() {
+        NodeContainer(myNodeController)
+          .height('100%')
+          .width('100%')
+        Text("Test for line height limit")
+          .onAppear(() => {
+            performTask();
+          })
+      }
+    }
+      .width('100%')
+  }
+}
+```
+
+具体效果如下所示：
+
+| 行高缩放样式 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- |
+| FontSize | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
+| FontHeight | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
+
+### 示例八（行间距调整）
+这里以关闭段落上升部下降部并设置行间距为例，呈现行间距增加后的文本绘制与显示。
+
+```ts
+import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+import { drawing, text, common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+
+// 创建一个MyRenderNode类，并绘制文本。
+class MyRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    let canvas = context.canvas;
+
+    let myTextStyle: text.TextStyle = {
+      color: {
+        alpha: 255,
+        red: 255,
+        green: 0,
+        blue: 0
+      },
+      fontSize: 50,
+    };
+
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+      // 设置行间距
+      lineSpacing: 100,
+      // 关闭段落上升部和下降部
+      textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
+    };
+
+    let fontCollection = text.FontCollection.getGlobalInstance();
+    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+    // 设置待排版文本要应用的样式
+    paragraphBuilder.pushStyle(myTextStyle);
+    // 添加文本
+    paragraphBuilder.addText("Hello World!");
+
+    // 生成段落
+    let paragraph = paragraphBuilder.build();
+    // 布局
+    paragraph.layoutSync(200);
+    // 绘制文本
+    paragraph.paint(canvas, 0, 0);
+  }
+}
+
+// 创建一个MyRenderNode对象
+const textNode = new MyRenderNode()
+// 定义newNode的像素格式
+textNode.frame = {
+  x: 0,
+  y: 0,
+  width: 400,
+  height: 600
+}
+textNode.pivot = { x: 0.2, y: 0.8 }
+textNode.scale = { x: 1, y: 1 }
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext)
+    if (this.rootNode == null) {
+      return this.rootNode
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.frame = {
+        x: 0,
+        y: 0,
+        width: 10,
+        height: 500
+      }
+      renderNode.pivot = { x: 50, y: 50 }
+    }
+    return this.rootNode
+  }
+
+  addNode(node: RenderNode): void {
+    if (this.rootNode == null) {
+      return
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.appendChild(node)
+    }
+  }
+
+  clearNodes(): void {
+    if (this.rootNode == null) {
+      return
+    }
+    const renderNode = this.rootNode.getRenderNode()
+    if (renderNode != null) {
+      renderNode.clearChildren()
+    }
+  }
+}
+
+let myNodeController: MyNodeController = new MyNodeController()
+
+async function performTask() {
+  myNodeController.clearNodes()
+  myNodeController.addNode(textNode)
+}
+
+@Entry
+@Component
+struct Font08 {
+  @State src: Resource = $r('app.media.startIcon')
+  build() {
+    Column() {
+      Row() {
+        NodeContainer(myNodeController)
+          .height('100%')
+          .width('100%')
+        Text("Test for lineSpacing and height behavior")
+          .onAppear(() => {
+            performTask();
+          })
+      }
+    }
+      .width('100%')
+  }
+}
+```
+
+具体效果如下所示：
+
+| 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- |
+| DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
+| ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
