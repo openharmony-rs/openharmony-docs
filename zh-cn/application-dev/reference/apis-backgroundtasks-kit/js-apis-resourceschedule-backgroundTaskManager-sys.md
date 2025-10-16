@@ -220,11 +220,11 @@ try {
 | uid                            | number  | 否    | 否    | 应用的UID。     |
 | pid                            | number  | 否    | 否    | 应用进程的PID。   |
 
-## ContinuousTaskMode<sup>21+</sup>
+## BackgroundTaskMode<sup>21+</sup>
 
 长时任务主类型。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.BackgroundTaskMode
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **系统API**: 此接口为系统接口。
 
