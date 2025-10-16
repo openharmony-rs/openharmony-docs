@@ -224,7 +224,7 @@ try {
 
 长时任务主类型。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.BackgroundTaskMode
 
 **系统API**: 此接口为系统接口。
 
