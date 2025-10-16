@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  API version 12开始，Radio选中默认样式由RadioIndicatorType.DOT变为RadioIndicatorType.TICK。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - API version 12开始，Radio选中默认样式由RadioIndicatorType.DOT变为RadioIndicatorType.TICK。
+>
+>  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -80,15 +82,41 @@ checked(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | 是   | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
+### checked<sup>22+</sup>
+
+checked(isChecked: boolean | undefined | Bindable\<boolean>)
+
+设置单选框的选中状态。与[checked](#checked)相比，isChecked参数新增了对undefined类型的支持。
+
+该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| isChecked | boolean \| undefined \|Bindable\<boolean> | 是   | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+
 ### checked<sup>18+</sup>
 
-checked(isChecked: Optional\<boolean>)
+ArkTS-Dyn: checked(isChecked: Optional\<boolean>)
+
+ArkTS-Sta: checked(isChecked: boolean | undefined | Bindable<boolean>)
 
 设置单选框的选中状态。与[checked](#checked)相比，isChecked参数新增了对undefined类型的支持。
 
@@ -100,15 +128,21 @@ checked(isChecked: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+| isChecked | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined \|Bindable<boolean>| 是   | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
 ### radioStyle<sup>10+</sup>
 
-radioStyle(value?: RadioStyle)
+ArkTS-Dyn: radioStyle(value?: RadioStyle)
+
+ArkTS-Sta: radioStyle(value?: RadioStyle | undefined)
 
 设置单选框选中状态和非选中状态的样式。 
 
@@ -118,15 +152,21 @@ radioStyle(value?: RadioStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明                               |
 | ------ | ----------------------------------- | ---- | ---------------------------------- |
-| value  | [RadioStyle](#radiostyle10对象说明) | 否   | 单选框选中状态和非选中状态的样式。 |
+| value  | ArkTS-Dyn: [RadioStyle](#radiostyle10对象说明)<br/>ArkTS-Sta: [RadioStyle](#radiostyle10对象说明) \| undefined | 否   | 单选框选中状态和非选中状态的样式。 |
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<RadioConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<RadioConfiguration>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<RadioConfiguration> | undefined)
 
 定制Radio内容区的方法。
 
@@ -134,15 +174,21 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明) | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明) \| undefined | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置值为undefined时，不使用内容修改器。 |
 
 ### contentModifier<sup>18+</sup>
 
-contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
+ArkTS-Dyn: contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier<RadioConfiguration> | undefined)
 
 定制Radio内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。
 
@@ -150,11 +196,15 @@ contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)><br/>ArkTS-Sta: [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明) \| undefined | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ## 事件
 

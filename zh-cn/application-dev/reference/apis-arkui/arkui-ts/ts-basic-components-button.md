@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -85,7 +87,9 @@ Button()
 
 ### type
 
-type(value: ButtonType)
+ArkTS-Dyn: type(value: ButtonType)
+
+ArkTS-Sta: type(value: ButtonType | undefined)
 
 设置Button样式。
 
@@ -95,15 +99,21 @@ type(value: ButtonType)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                              | 必填 | 说明                                        |
 | ------ | --------------------------------- | ---- | ------------------------------------------- |
-| value  | [ButtonType](#buttontype枚举说明) | 是   | Button样式。<br/>从API version 18及之后，ButtonType的默认值修改为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。 |
+| value  | ArkTS-Dyn: [ButtonType](#buttontype枚举说明) <br/>ArkTS-Sta: [ButtonType](#buttontype枚举说明) \| undefined  | 是   | Button样式。<br/>从API version 18及之后，ButtonType的默认值修改为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。 |
 
 ### fontSize
 
-fontSize(value: Length)
+ArkTS-Dyn: fontSize(value: Length)
+
+ArkTS-Sta: fontSize(value: Length | undefined)
 
 设置文本显示字号。
 
@@ -113,15 +123,21 @@ fontSize(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 文本显示字号。<br/>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br/>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br/>**说明**：设置string类型时，不支持百分比。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本显示字号。<br/>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br/>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br/>**说明**：设置string类型时，不支持百分比。 |
 
 ### fontColor
 
-fontColor(value: ResourceColor)
+ArkTS-Dyn: fontColor(value: ResourceColor)
+
+ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 设置文本显示颜色。
 
@@ -131,15 +147,21 @@ fontColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本显示颜色。<br/>默认值：$r('sys.color.font_on_primary')，显示为白色字体。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本显示颜色。<br/>默认值：$r('sys.color.font_on_primary')，显示为白色字体。 |
 
 ### fontWeight
 
-fontWeight(value: number&nbsp;|&nbsp;FontWeight&nbsp;|&nbsp;string)
+ArkTS-Dyn: fontWeight(value: number&nbsp;|&nbsp;FontWeight&nbsp;|&nbsp;string)
+
+ArkTS-Sta: fontWeight(value: int&nbsp;|&nbsp;FontWeight&nbsp;|&nbsp;string | undefined)
 
 设置文本的字体粗细。
 
@@ -149,15 +171,21 @@ fontWeight(value: number&nbsp;|&nbsp;FontWeight&nbsp;|&nbsp;string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br>默认值：500<br/>string类型仅支持number类型取值的字符串形式，例如'400'，以及'bold'、'bolder'、'lighter'、'regular'、'medium'，分别对应FontWeight中相应的枚举值。<br/>当值为异常值或非法值时，字体粗细取值为400。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string \| undefined | 是   | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br>默认值：500<br/>string类型仅支持number类型取值的字符串形式，例如'400'，以及'bold'、'bolder'、'lighter'、'regular'、'medium'，分别对应FontWeight中相应的枚举值。<br/>当值为异常值或非法值时，字体粗细取值为400。 |
 
 ### fontStyle<sup>8+</sup>
 
-fontStyle(value: FontStyle)
+ArkTS-Dyn: fontStyle(value: FontStyle)
+
+ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 设置文本的字体样式。
 
@@ -167,15 +195,21 @@ fontStyle(value: FontStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                            |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 文本的字体样式。<br/>默认值：FontStyle.Normal |
+| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle) <br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined| 是   | 文本的字体样式。<br/>默认值：FontStyle.Normal |
 
 ### stateEffect
 
-stateEffect(value: boolean)
+ArkTS-Dyn: stateEffect(value: boolean)
+
+ArkTS-Sta: stateEffect(value: boolean | undefined)
 
 设置是否开启按压态显示效果。
 
@@ -185,11 +219,15 @@ stateEffect(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。设置为true时，开启按压效果。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。设置为true时，开启按压效果。<br/>默认值：true |
 
 >  **说明：**
 > 
@@ -197,7 +235,9 @@ stateEffect(value: boolean)
 
 ### fontFamily<sup>8+</sup>
 
-fontFamily(value: string | Resource)
+ArkTS-Dyn: fontFamily(value: string | Resource)
+
+ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 设置字体列表。
 
@@ -207,15 +247,21 @@ fontFamily(value: string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体列表。默认字体'HarmonyOS Sans'，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。 |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  <br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。默认字体'HarmonyOS Sans'，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。 |
 
 ### labelStyle<sup>10+</sup>
 
-labelStyle(value: LabelStyle)
+ArkTS-Dyn: labelStyle(value: LabelStyle)
+
+ArkTS-Sta: labelStyle(value: ButtonLabelStyle | undefined)
 
 设置Button组件label文本和字体的样式。
 
@@ -223,15 +269,21 @@ labelStyle(value: LabelStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明                              |
 | ------ | ----------------------------------- | ---- | --------------------------------- |
-| value  | [LabelStyle](#labelstyle10对象说明) | 是   | Button组件label文本和字体的样式。 |
+| value  | ArkTS-Dyn: [LabelStyle](#labelstyle10对象说明)<br/>ArkTS-Sta: [ButtonLabelStyle](#buttonlabelstyle10对象说明) \| undefined | 是   | Button组件label文本和字体的样式。 |
 
 ### buttonStyle<sup>11+</sup>
 
-buttonStyle(value: ButtonStyleMode)
+ArkTS-Dyn: buttonStyle(value: ButtonStyleMode)
+
+ArkTS-Sta: buttonStyle(value: ButtonStyleMode | undefined)
 
 设置Button组件的样式和重要程度。
 
@@ -241,15 +293,21 @@ buttonStyle(value: ButtonStyleMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ButtonStyleMode](#buttonstylemode11枚举说明) | 是   | Button组件的样式和重要程度。<br/>默认值：ButtonStyleMode.EMPHASIZED |
+| value  | ArkTS-Dyn: [ButtonStyleMode](#buttonstylemode11枚举说明) <br/>ArkTS-Sta: [ButtonStyleMode](#buttonstylemode11枚举说明) \| undefined | 是   | Button组件的样式和重要程度。<br/>默认值：ButtonStyleMode.EMPHASIZED |
 
 ### controlSize<sup>11+</sup>
 
-controlSize(value: ControlSize)
+ArkTS-Dyn: controlSize(value: ControlSize)
+
+ArkTS-Sta: controlSize(value: ControlSize | undefined)
 
 设置Button组件的尺寸。
 
@@ -259,15 +317,21 @@ controlSize(value: ControlSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                  | 必填 | 说明                                              |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------- |
-| value  | [ControlSize](#controlsize11枚举说明) | 是   | Button组件的尺寸。<br/>默认值：ControlSize.NORMAL |
+| value  |  ArkTS-Dyn: [ControlSize](#controlsize11枚举说明) <br/>ArkTS-Sta: [ControlSize](#controlsize11枚举说明) \| undefined| 是   | Button组件的尺寸。<br/>默认值：ControlSize.NORMAL |
 
 ### role<sup>12+</sup>
 
-role(value: ButtonRole)
+ArkTS-Dyn: role(value: ButtonRole)
+
+ArkTS-Sta: role(value: ButtonRole | undefined)
 
 设置Button组件的角色。
 
@@ -277,15 +341,21 @@ role(value: ButtonRole)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明                                                 |
 | ------ | ----------------------------------- | ---- | ---------------------------------------------------- |
-| value  | [ButtonRole](#buttonrole12枚举说明) | 是   | 设置Button组件的角色。<br/>默认值：ButtonRole.NORMAL |
+| value  | ArkTS-Dyn: [ButtonRole](#buttonrole12枚举说明) <br/>ArkTS-Sta: [ButtonRole](#buttonrole12枚举说明) \| undefined| 是   | 设置Button组件的角色。<br/>默认值：ButtonRole.NORMAL |
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<ButtonConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<ButtonConfiguration>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<ButtonConfiguration> | undefined)
 
 定制Button内容区的方法。
 
@@ -293,15 +363,21 @@ contentModifier(modifier: ContentModifier\<ButtonConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<ButtonConfiguration>](#buttonconfiguration12对象说明) | 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier\<ButtonConfiguration>](#buttonconfiguration12对象说明) <br/>ArkTS-Sta: [ContentModifier\<ButtonConfiguration>](#buttonconfiguration12对象说明) \| undefined| 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### minFontScale<sup>18+</sup>
 
-minFontScale(scale: number | Resource)
+ArkTS-Dyn: minFontScale(scale: number | Resource)
+
+ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 设置文本最小的字体缩放倍数。
 
@@ -309,15 +385,21 @@ minFontScale(scale: number | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最小的字体缩放倍数。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理，设置的值大于1，按值为1处理，异常值默认不生效。 |
+| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined| 是   | 文本最小的字体缩放倍数。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理，设置的值大于1，按值为1处理，异常值默认不生效。 |
 
 ### maxFontScale<sup>18+</sup>
 
-maxFontScale(scale: number | Resource)
+ArkTS-Dyn: maxFontScale(scale: number | Resource)
+
+ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 设置文本最大的字体缩放倍数。
 
@@ -325,11 +407,15 @@ maxFontScale(scale: number | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。<br/>未设置最大缩放倍数时，圆形按钮最大缩放倍数为1倍，胶囊型按钮、普通按钮、圆角矩形按钮最大缩放倍数跟随系统设置。 |
+| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined| 是   | 文本最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。<br/>未设置最大缩放倍数时，圆形按钮最大缩放倍数为1倍，胶囊型按钮、普通按钮、圆角矩形按钮最大缩放倍数跟随系统设置。 |
 
 ## ButtonType枚举说明
 
@@ -368,6 +454,25 @@ maxFontScale(scale: number | Resource)
 | maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 |
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
 | font                 | [Font](ts-types.md#font)                                     | 否   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 |
+
+## ButtonLabelStyle<sup>22+</sup>对象说明
+
+按钮中文本的显示样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称                 | 类型                                                         | 只读 | 必填 | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否   | 否   | 设置label文本超长时的显示方式。文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格。<br>默认值：TextOverflow.Ellipsis |
+| maxLines             | int                                                       | 否   | 否   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过overflow来指定截断方式。<br>默认值：1 |
+| minFontSize          | double \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 否   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。 |
+| maxFontSize          | double \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 否   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 |
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否 | 否   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
+| font                 | [Font](ts-types.md#font)                                     | 否   | 否   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 |
 
 ## ButtonStyleMode<sup>11+</sup>枚举说明
 

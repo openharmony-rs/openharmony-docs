@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - CustomBuilder不支持使用bindMenu和bindContextMenu弹出菜单。可以使用[Menu组件](ts-basic-components-menu.md)来实现多级菜单。
@@ -26,7 +28,9 @@
 
 ## bindMenu
 
-bindMenu(content: Array<MenuElement&gt; | CustomBuilder, options?: MenuOptions): T
+ArkTS-Dyn: bindMenu(content: Array<MenuElement&gt; | CustomBuilder, options?: MenuOptions): T
+
+ArkTS-Sta: bindMenu(content: Array<MenuElement&gt; | CustomBuilder | undefined, options?: MenuOptions): this
 
 给组件绑定菜单，点击后弹出菜单。弹出的菜单项支持图标+文本排列以及自定义组件两种功能。
 
@@ -34,22 +38,28 @@ bindMenu(content: Array<MenuElement&gt; | CustomBuilder, options?: MenuOptions):
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                                         |
 | ------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| content | Array<[MenuElement](#menuelement)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置菜单项图标和文本的数组，或者自定义组件。 |
+| content | ArkTS-Dyn: Array<[MenuElement](#menuelement)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array<[MenuElement](#menuelement)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置菜单项图标和文本的数组，或者自定义组件。 |
 | options | [MenuOptions](#menuoptions10)                                | 否   | 配置弹出菜单的参数。                         |
 
 **返回值：** 
 
 |类型|说明|
 |---|---|
-|T|返回当前组件。|
+|ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
 ## bindMenu<sup>11+</sup>
 
-bindMenu(isShow: boolean, content: Array<MenuElement&gt; | CustomBuilder, options?: MenuOptions): T
+ArkTS-Dyn: bindMenu(isShow: boolean, content: Array<MenuElement&gt; | CustomBuilder, options?: MenuOptions): T
+
+ArkTS-Sta: bindMenu(isShow: boolean | undefined, content: Array<MenuElement&gt; | CustomBuilder | undefined, options?: MenuOptions): this
 
 给组件绑定菜单，点击后弹出菜单。弹出的菜单项支持图标+文本排列以及自定义组件两种功能。
 
@@ -57,23 +67,29 @@ bindMenu(isShow: boolean, content: Array<MenuElement&gt; | CustomBuilder, option
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isShow<sup>11+</sup> | boolean                                                      | 是   | 支持开发者通过状态变量控制显隐，值为true时弹出菜单，值为false时关闭菜单，默认值为false。菜单必须等待页面全部构建才能展示，因此不能在页面构建中设置为true，否则会导致显示位置及形状错误，该参数从API version13开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
-| content              | Array<[MenuElement](#menuelement)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置菜单项图标和文本的数组，或者自定义组件。                 |
+| isShow<sup>11+</sup> | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined                                                      | 是   | 支持开发者通过状态变量控制显隐，值为true时弹出菜单，值为false时关闭菜单，默认值为false。菜单必须等待页面全部构建才能展示，因此不能在页面构建中设置为true，否则会导致显示位置及形状错误，该参数从API version13开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| content              | ArkTS-Dyn: Array<[MenuElement](#menuelement)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array<[MenuElement](#menuelement)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置菜单项图标和文本的数组，或者自定义组件。                 |
 | options              | [MenuOptions](#menuoptions10)                                | 否   | 配置弹出菜单的参数。                                         |
 
 **返回值：** 
 
 |类型|说明|
 |---|---|
-|T|返回当前组件。|
+|ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
 ## bindContextMenu<sup>8+</sup>
 
-bindContextMenu(content: CustomBuilder, responseType: ResponseType, options?: ContextMenuOptions): T
+ArkTS-Dyn: bindContextMenu(content: CustomBuilder, responseType: ResponseType, options?: ContextMenuOptions): T
+
+ArkTS-Sta: bindContextMenu(content: CustomBuilder | undefined, responseType: ResponseType | undefined, options?: ContextMenuOptions | undefined): this
 
 给组件绑定菜单，控制菜单显隐的触发方式为长按或右键点击，弹出的菜单项需自定义。若需通过代码逻辑控制菜单显隐，请使用[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)。
 
@@ -81,23 +97,29 @@ bindContextMenu(content: CustomBuilder, responseType: ResponseType, options?: Co
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                                               | 必填 | 说明                             |
 | ------------ | -------------------------------------------------- | ---- | -------------------------------- |
-| content      | [CustomBuilder](ts-types.md#custombuilder8)        | 是   | 自定义菜单内容构造器。           |
-| responseType | [ResponseType](ts-appendix-enums.md#responsetype8) | 是   | 菜单弹出条件，长按或者右键点击。不支持鼠标长按。 |
-| options      | [ContextMenuOptions](#contextmenuoptions10)        | 否   | 配置弹出菜单的参数。             |
+| content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined        | 是   | 自定义菜单内容构造器。           |
+| responseType | ArkTS-Dyn: [ResponseType](ts-appendix-enums.md#responsetype8)<br/>ArkTS-Sta: [ResponseType](ts-appendix-enums.md#responsetype8) \| undefined | 是   | 菜单弹出条件，长按或者右键点击。不支持鼠标长按。 |
+| options      | ArkTS-Dyn: [ContextMenuOptions](#contextmenuoptions10)<br/>ArkTS-Sta: [ContextMenuOptions](#contextmenuoptions10) \| undefined        | 否   | 配置弹出菜单的参数。             |
 
 **返回值：** 
 
 |类型|说明|
 |---|---|
-|T|返回当前组件。|
+|ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
 ## bindContextMenu<sup>12+</sup>
 
-bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuOptions): T
+ArkTS-Dyn: bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuOptions): T
+
+ArkTS-Sta: bindContextMenu(isShown: boolean | undefined, content: CustomBuilder | undefined, options?: ContextMenuOptions): this
 
 给组件绑定菜单，菜单的显隐通过控制绑定的isShown触发。
 
@@ -105,24 +127,27 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 
 菜单弹出位置仅有placement设置决定，与点击位置无关。
 
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名       | 类型                                               | 必填 | 说明                                         |
 | ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| isShown | boolean | 是   | 支持开发者通过状态变量控制显隐，值为true时弹出菜单，值为false时关闭菜单，默认值为false。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数从API version13开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
-| content      | [CustomBuilder](ts-types.md#custombuilder8)        | 是   | 自定义菜单内容构造器。 |
+| isShown | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 支持开发者通过状态变量控制显隐，值为true时弹出菜单，值为false时关闭菜单，默认值为false。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数从API version13开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined        | 是   | 自定义菜单内容构造器。 |
 | options      | [ContextMenuOptions](#contextmenuoptions10)                      | 否   | 配置弹出菜单的参数。                         |
 
 **返回值：** 
 
 |类型|说明|
 |---|---|
-|T|返回当前组件。|
+|ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
 ## MenuElement
 

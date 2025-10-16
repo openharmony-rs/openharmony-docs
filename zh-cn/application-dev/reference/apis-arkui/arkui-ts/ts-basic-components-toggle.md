@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -67,7 +69,9 @@ Toggle的样式。
 
 ### selectedColor
 
-selectedColor(value: ResourceColor)
+ArkTS-Dyn: selectedColor(value: ResourceColor)
+
+ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 设置组件在打开状态下的背景颜色。
 
@@ -77,15 +81,21 @@ selectedColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 组件打开状态的背景颜色。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_color_text_highlight_bg')`的透明度。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 组件打开状态的背景颜色。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_color_text_highlight_bg')`的透明度。 |
 
 ### switchPointColor
 
-switchPointColor(color: ResourceColor)
+ArkTS-Dyn: switchPointColor(color: ResourceColor)
+
+ArkTS-Sta: switchPointColor(color: ResourceColor | undefined)
 
 设置Switch类型的圆形滑块颜色。仅对type为ToggleType.Switch生效。
 
@@ -95,15 +105,21 @@ switchPointColor(color: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                       |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary') |
+| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary') |
 
 ### switchStyle<sup>12+</sup>
 
-switchStyle(value: SwitchStyle)
+ArkTS-Dyn: switchStyle(value: SwitchStyle)
+
+ArkTS-Sta: switchStyle(value: SwitchStyle | undefined)
 
 设置Switch类型的样式。仅对type为ToggleType.Switch生效。
 
@@ -111,15 +127,21 @@ switchStyle(value: SwitchStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                  | 必填 | 说明             |
 | ------ | ------------------------------------- | ---- | ---------------- |
-| value  | [SwitchStyle](#switchstyle12对象说明) | 是   | Switch样式风格。 |
+| value  | ArkTS-Dyn: [SwitchStyle](#switchstyle12对象说明)<br/>ArkTS-Sta: [SwitchStyle](#switchstyle12对象说明) \| undefined | 是   | Switch样式风格。 |
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration> | undefined)
 
 定制Toggle内容区的方法。
 
@@ -127,11 +149,15 @@ contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<ToggleConfiguration>](#toggleconfiguration12对象说明) | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier\<ToggleConfiguration>](#toggleconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier\<ToggleConfiguration>](#toggleconfiguration12对象说明) \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## SwitchStyle<sup>12+</sup>对象说明
 

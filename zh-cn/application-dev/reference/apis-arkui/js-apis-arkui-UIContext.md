@@ -4,11 +4,11 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 导入模块
 
@@ -8479,7 +8479,9 @@ struct Index {
 
 ### getTopOrder<sup>18+</sup>
 
-getTopOrder(): LevelOrder
+ArkTS-Dyn: getTopOrder(): LevelOrder
+
+ArkTS-Sta: getTopOrder(): LevelOrder | undefined
 
 返回最顶层显示的弹窗的顺序。
 
@@ -8489,11 +8491,15 @@ getTopOrder(): LevelOrder
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | 返回弹窗层级信息。 |
+| ArkTS-Dyn: [LevelOrder](js-apis-promptAction.md#levelorder18) <br/>ArkTS-Sta: [LevelOrder](js-apis-promptAction.md#levelorder18) \| undefined| 返回弹窗层级信息。 |
 
 **示例：**
 
@@ -8559,7 +8565,9 @@ struct Index {
 
 ### getBottomOrder<sup>18+</sup>
 
-getBottomOrder(): LevelOrder
+ArkTS-Dyn: getBottomOrder(): LevelOrder
+
+ArkTS-Sta: getBottomOrder(): LevelOrder | undefined
 
 返回最底层显示的弹窗的顺序。
 
@@ -8573,7 +8581,7 @@ getBottomOrder(): LevelOrder
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | 返回弹窗层级信息。 |
+| ArkTS-Dyn: [LevelOrder](js-apis-promptAction.md#levelorder18) <br/>ArkTS-Sta: [LevelOrder](js-apis-promptAction.md#levelorder18) \| undefined| 返回弹窗层级信息。 |
 
 **示例：**
 

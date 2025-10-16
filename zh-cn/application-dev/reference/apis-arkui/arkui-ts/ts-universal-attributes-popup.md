@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - Popup气泡的显示状态在onStateChange事件回调中反馈，其显隐与组件的创建或销毁无强对应关系。
@@ -16,7 +18,9 @@
 
 ## bindPopup
 
-bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
+ArkTS-Dyn: bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
+
+ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopupOptions | undefined): this
 
 为组件绑定Popup气泡。
 
@@ -24,18 +28,22 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show   | boolean                                                      | 是   | 气泡显示状态，值为true时弹出气泡，值为false时关闭气泡，默认值为false，隐藏气泡。Popup气泡必须等待页面全部构建完成才能展示，因此show不能在页面构建中设置为true，否则会导致Popup气泡显示位置及形状错误。该参数从API version 13开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
-| popup  | [PopupOptions](#popupoptions类型说明)&nbsp;\|&nbsp;[CustomPopupOptions](#custompopupoptions8类型说明)<sup>8+</sup> | 是   | 配置弹出气泡的参数。                                         |
+| show   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined                                                      | 是   | 气泡显示状态，值为true时弹出气泡，值为false时关闭气泡，默认值为false，隐藏气泡。Popup气泡必须等待页面全部构建完成才能展示，因此show不能在页面构建中设置为true，否则会导致Popup气泡显示位置及形状错误。该参数从API version 13开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| popup  | ArkTS-Dyn: [PopupOptions](#popupoptions类型说明)&nbsp;\|&nbsp;[CustomPopupOptions](#custompopupoptions8类型说明)<sup>8+</sup><br/>ArkTS-Sta: [PopupOptions](#popupoptions类型说明)&nbsp;\|&nbsp;[CustomPopupOptions](#custompopupoptions8类型说明) \| undefined | 是   | 配置弹出气泡的参数。                                         |
 
 **返回值：** 
 
 |类型|说明|
 |---|---|
-|T|返回当前组件。|
+|ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
 ## PopupOptions类型说明
 

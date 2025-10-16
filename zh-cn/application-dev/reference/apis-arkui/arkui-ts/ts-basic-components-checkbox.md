@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  API version 11开始，Checkbox默认样式由圆角方形变为圆形。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - API version 11开始，Checkbox默认样式由圆角方形变为圆形。
+>
+>  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -62,11 +64,37 @@ select(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | 是   | 多选框是否选中。<br/>默认值：false<br/>值为true时，多选框被选中。值为false时，多选框未选中。 |
+
+### select<sup>22+</sup>
+
+select(isSelected: boolean | undefined | Bindable\<boolean>)
+
+设置多选框选中状态。
+
+从API version 20开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+
+从API version 20开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| isSelected  | boolean \| undefined \| Bindable<boolean>| 是   | 多选框是否选中。<br/>true：多选框被选中；false：多选框未选中。<br/>默认值：false |
 
 ### select<sup>18+</sup>
 
@@ -82,6 +110,10 @@ select(isSelected: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
@@ -90,7 +122,9 @@ select(isSelected: Optional\<boolean>)
 
 ### selectedColor
 
-selectedColor(value: ResourceColor)
+ArkTS-Dyn: selectedColor(value: ResourceColor)
+
+ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 设置多选框选中状态颜色。
 
@@ -100,11 +134,15 @@ selectedColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 多选框选中状态颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary_activated')<br/>异常值按照默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 多选框选中状态颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary_activated')<br/>异常值按照默认值处理。 |
 
 ### selectedColor<sup>18+</sup>
 
@@ -118,15 +156,39 @@ selectedColor(resColor: Optional\<ResourceColor>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 多选框选中状态颜色。<br/>当resColor的值为undefined时取默认值$r('sys.color.ohos_id_color_text_primary_activated')。<br/>异常值按照默认值处理。 |
 
+### selectedColor<sup>22+</sup>
+
+selectedColor(value: ResourceColor | undefined)
+
+设置多选框选中状态颜色。与[selectedColor](#selectedcolor)相比，resColor参数新增了对undefined类型的支持。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 多选框选中状态颜色。<br/>当resColor的值为undefined时取默认值$r('sys.color.ohos_id_color_text_primary_activated')。<br/>异常值按照默认值处理。 |
+
 ### unselectedColor<sup>10+</sup>
 
-unselectedColor(value: ResourceColor)
+ArkTS-Dyn: unselectedColor(value: ResourceColor)
+
+ArkTS-Sta: unselectedColor(value: ResourceColor | undefined)
 
 设置多选框非选中状态的边框颜色。
 
@@ -134,11 +196,15 @@ unselectedColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                     |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 多选框非选中状态边框颜色。<br/>默认值：$r('sys.color.ohos_id_color_switch_outline_off') |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 多选框非选中状态边框颜色。<br/>默认值：$r('sys.color.ohos_id_color_switch_outline_off') |
 
 ### unselectedColor<sup>18+</sup>
 
@@ -150,15 +216,39 @@ unselectedColor(resColor: Optional\<ResourceColor>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 多选框非选中状态边框颜色。<br/>当resColor的值为undefined时取默认值$r('sys.color.ohos_id_color_switch_outline_off')|
 
+### unselectedColor<sup>22+</sup>
+
+unselectedColor(value: ResourceColor | undefined)
+
+设置多选框非选中状态的边框颜色。与[unselectedColor](#unselectedcolor10)<sup>10+</sup>相比，resColor参数新增了对undefined类型的支持。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 多选框非选中状态边框颜色。<br/>当resColor的值为undefined时取默认值$r('sys.color.ohos_id_color_switch_outline_off')|
+
 ### mark<sup>10+</sup>
 
-mark(value: MarkStyle)
+ArkTS-Dyn: mark(value: MarkStyle)
+
+ArkTS-Sta: mark(value: MarkStyle | undefined)
 
 设置多选框内部图标的样式。
 
@@ -166,11 +256,15 @@ mark(value: MarkStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [MarkStyle](ts-types.md#markstyle10对象说明) | 是   | 多选框内部图标样式。 从API version 12开始，设置了indicatorBuilder时，按照indicatorBuilder中的内容显示。<br/>默认值：{<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
+| value  | ArkTS-Dyn: [MarkStyle](ts-types.md#markstyle10对象说明) <br/>ArkTS-Sta: [MarkStyle](ts-types.md#markstyle10对象说明) \| undefined| 是   | 多选框内部图标样式。 从API version 12开始，设置了indicatorBuilder时，按照indicatorBuilder中的内容显示。<br/>默认值：{<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
 
 ### mark<sup>18+</sup>
 
@@ -182,15 +276,39 @@ mark(style: Optional\<MarkStyle>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[MarkStyle](ts-types.md#markstyle10对象说明)> | 是   | 多选框内部图标样式。 设置了indicatorBuilder时，按照indicatorBuilder中的内容显示。<br/>当style的值为undefined时，默认值：{<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
 
+### mark<sup>22+</sup>
+
+mark(value: MarkStyle | undefined)
+
+设置多选框内部图标的样式。与[mark](#mark10)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+|  value  | [MarkStyle](ts-types.md#markstyle10对象说明) \| undefined| 是   | 多选框内部图标样式。 从API version 12开始，设置了indicatorBuilder时，按照indicatorBuilder中的内容显示。<br/>默认值：{<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
+
 ### shape<sup>11+</sup>
 
-shape(value: CheckBoxShape)
+ArkTS-Dyn: shape(value: CheckBoxShape)
+
+ArkTS-Sta: shape(value: CheckBoxShape | undefined)
 
 设置CheckBox组件形状，包括圆形和圆角方形。如果想要调整当前CheckBox的样式，需使用[contentModifier](#contentmodifier12)属性自定义CheckBox样式。
 
@@ -200,11 +318,15 @@ shape(value: CheckBoxShape)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | 是   | CheckBox组件形状，包括圆形和圆角方形。<br/>默认值：CheckBoxShape.CIRCLE |
+| value  | ArkTS-Dyn: [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) <br/>ArkTS-Sta: [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) \| undefined  | 是   | CheckBox组件形状，包括圆形和圆角方形。<br/>默认值：CheckBoxShape.CIRCLE |
 
 ### shape<sup>18+</sup>
 
@@ -218,15 +340,39 @@ shape(shape: Optional\<CheckBoxShape>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | shape  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | 是   | CheckBox组件形状，包括圆形和圆角方形。<br/>当shape的值为undefined时，默认值为CheckBoxShape.CIRCLE。 |
 
+### shape<sup>22+</sup>
+
+shape(value: CheckBoxShape | undefined)
+
+设置CheckBox组件形状，包括圆形和圆角方形。如果想要调整当前CheckBox的样式，需使用[contentModifier](#contentmodifier12)属性自定义CheckBox样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+|  value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) \| undefined | 是   | CheckBox组件形状，包括圆形和圆角方形。<br/>当shape的值为undefined时，默认值为CheckBoxShape.CIRCLE。 |
+
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<CheckBoxConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<CheckBoxConfiguration>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<CheckBoxConfiguration> | undefined)
 
 定制CheckBox内容区的方法。设置该属性时，会导致其他属性设置失效。
 
@@ -234,15 +380,21 @@ contentModifier(modifier: ContentModifier\<CheckBoxConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明) | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明) <br/>ArkTS-Sta: [ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明) \| undefined | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### contentModifier<sup>18+</sup>
 
-contentModifier(modifier: Optional<ContentModifier\<CheckBoxConfiguration>>)
+ArkTS-Dyn: contentModifier(modifier: Optional<ContentModifier\<CheckBoxConfiguration>>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<CheckBoxConfiguration> | undefined)
 
 定制CheckBox内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。设置该属性时，会导致其他属性设置失效。
 
@@ -250,11 +402,15 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxConfiguration>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明)> | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明)>ArkTS-Sta: [ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明) \| undefined | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ## 事件
 
