@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -26,7 +28,9 @@ Divider()
 
 ### vertical
 
-vertical(value: boolean)
+ArkTS-Dyn: vertical(value: boolean)
+
+ArkTS-Sta: vertical(value: boolean | undefined)
 
 设置分割线的方向。
 
@@ -36,15 +40,21 @@ vertical(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 使用水平分割线还是垂直分割线。<br/>false：水平分割线；true：垂直分割线。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 使用水平分割线还是垂直分割线。<br/>false：水平分割线；true：垂直分割线。<br/>默认值：false |
 
 ### color
 
-color(value: ResourceColor)
+ArkTS-Dyn: color(value: ResourceColor)
+
+ArkTS-Sta: color(value: ResourceColor| undefined)
 
 设置分割线的颜色。
 
@@ -54,15 +64,21 @@ color(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                  |
 | ------ | ------------------------------------------ | ---- | ------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 分割线颜色。<br/>默认值：'\#33182431' <br/>支持通过[WithTheme](ts-container-with-theme.md)设置通用分割线颜色。|
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 分割线颜色。<br/>默认值：'\#33182431' <br/>支持通过[WithTheme](ts-container-with-theme.md)设置通用分割线颜色。|
 
 ### strokeWidth
 
-strokeWidth(value: number | string)
+ArkTS-Dyn: strokeWidth(value: number | string)
+
+ArkTS-Sta: strokeWidth(value: double | string | undefined)
 
 设置分割线的宽度。
 
@@ -72,15 +88,21 @@ strokeWidth(value: number | string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | 是   | 分割线宽度。<br/>默认值：1px<br/>单位：vp<br/>**说明：**  <br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是   | 分割线宽度。<br/>默认值：1px<br/>单位：vp<br/>**说明：**  <br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
 
 ### lineCap
 
-lineCap(value: LineCapStyle)
+ArkTS-Dyn: lineCap(value: LineCapStyle)
+
+ArkTS-Sta: lineCap(value: LineCapStyle | undefined)
 
 设置分割线的端点样式。
 
@@ -90,11 +112,15 @@ lineCap(value: LineCapStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                              | 必填 | 说明                                             |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | 是   | 分割线的端点样式。<br/>默认值：LineCapStyle.Butt |
+| value  | ArkTS-Dyn: [LineCapStyle](ts-appendix-enums.md#linecapstyle)<br/>ArkTS-Sta: [LineCapStyle](ts-appendix-enums.md#linecapstyle) \| undefined | 是   | 分割线的端点样式。<br/>默认值：LineCapStyle.Butt |
 
 
 ## 示例

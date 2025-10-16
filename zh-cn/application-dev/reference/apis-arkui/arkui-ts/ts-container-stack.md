@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -53,7 +55,9 @@ Stack(options?: StackOptions)
 
 ### alignContent
 
-alignContent(value: Alignment)
+ArkTS-Dyn: alignContent(value: Alignment)
+
+ArkTS-Sta: alignContent(value: Alignment | undefined)
 
 设置子组件在容器内的对齐方式。该属性与[通用属性align](ts-universal-attributes-location.md#align)同时设置时，后设置的属性生效。该属性与接口的构造入参同时设置时，生效属性上的设置效果。
 
@@ -63,11 +67,15 @@ alignContent(value: Alignment)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                        |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
-| value  | [Alignment](ts-appendix-enums.md#alignment) | 是   | 所有子组件在容器内的对齐方式。<br/>默认值：Alignment.Center |
+| value  | ArkTS-Dyn: [Alignment](ts-appendix-enums.md#alignment)<br/>ArkTS-Sta: [Alignment](ts-appendix-enums.md#alignment) \| undefined | 是   | 所有子组件在容器内的对齐方式。<br/>默认值：Alignment.Center |
 
 
 ## 示例

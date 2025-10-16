@@ -4,13 +4,15 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 在自定义组件内实现onMeasureSize, onPlaceChildren任一方法即视为实现自定义布局，推荐同时实现两种方法，具体参数说明可见对应接口参数说明。
+> - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API version 20开始，在自定义布局的自定义组件中，子组件若设置了[LayoutPolicy](ts-types.md#layoutpolicy15)对象的fixAtIdealSize属性，表示尺寸将不受父组件约束，完全按照开发者自定义的尺寸范围布局。
-> 
-> 自定义布局内不支持使用懒加载(包含[Repeat](../../../ui/state-management/arkts-new-rendering-control-repeat.md)和[LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md))。
+> - 在自定义组件内实现onMeasureSize, onPlaceChildren任一方法即视为实现自定义布局，推荐同时实现两种方法，具体参数说明可见对应接口参数说明。
+>
+> - 从API version 20开始，在自定义布局的自定义组件中，子组件若设置了[LayoutPolicy](ts-types.md#layoutpolicy15)对象的fixAtIdealSize属性，表示尺寸将不受父组件约束，完全按照开发者自定义的尺寸范围布局。
+>
+> - 自定义布局内不支持使用懒加载(包含[Repeat](../../../ui/state-management/arkts-new-rendering-control-repeat.md)和[LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md))。
 
 ## onMeasureSize<sup>10+</sup>
 
@@ -103,7 +105,9 @@ layout(position: Position)
 
 ### getMargin<sup>12+</sup>
 
-getMargin() : DirectionalEdgesT\<number>
+ArkTS-Dyn: getMargin() : DirectionalEdgesT\<number>
+
+ArkTS-Sta: getMargin() : DirectionalEdgesT\<double> | undefined
 
 调用此方法获取子组件的margin信息。
 
@@ -111,31 +115,43 @@ getMargin() : DirectionalEdgesT\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  |  子组件的margin信息。   |
+| ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](#directionaledgestt12) \| undefined  |  子组件的margin信息。   |
 
  ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number>
+ArkTS-Dyn: getPadding() : DirectionalEdgesT\<number>
 
- 调用此方法获取子组件的padding信息。
+ArkTS-Sta: getPadding() : DirectionalEdgesT\<double> | undefined
+
+调用此方法获取子组件的padding信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
  **返回值：**
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  |  子组件的padding信息。  |
+| ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](#directionaledgestt12) \| undefined  |  子组件的padding信息。  |
 
 ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number>
+ArkTS-Dyn: getBorderWidth() : DirectionalEdgesT\<number>
+
+ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 调用此方法获取子组件的borderWidth信息。
 
@@ -143,11 +159,15 @@ getBorderWidth() : DirectionalEdgesT\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  |  子组件的borderWidth信息。  |
+| ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](#directionaledgestt12) \| undefined  |  子组件的borderWidth信息。  |
 
 ## Measurable<sup>10+</sup>
 
@@ -167,16 +187,21 @@ getBorderWidth() : DirectionalEdgesT\<number>
 |--------------|---------------------------------- | -----------------------------------------------|---------------------|
 | uniqueId<sup>18+</sup>| number | 否 | 系统为子组件分配的唯一标识UniqueID。|
 
-### measure
+### measure<sup>10+</sup>
 
- measure(constraint: ConstraintSizeOptions) : MeasureResult
+ArkTS-Dyn: measure(constraint: ConstraintSizeOptions) : MeasureResult
 
- 调用此方法限制子组件的尺寸范围。
+ArkTS-Sta: measure(constraint: ConstraintSizeOptions) : MeasureResult | undefined
 
- **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+调用此方法限制子组件的尺寸范围。
 
- **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -188,27 +213,35 @@ getBorderWidth() : DirectionalEdgesT\<number>
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[MeasureResult](#measureresult10)   | 测量后的组件布局信息。   |
+ |ArkTS-Dyn: [MeasureResult](#measureresult10)<br/>ArkTS-Sta: [MeasureResult](#measureresult10) \| undefined   | 测量后的组件布局信息。   |
 
  ### getMargin<sup>12+</sup>
 
- getMargin() : DirectionalEdgesT\<number\>
+ArkTS-Dyn: getMargin() : DirectionalEdgesT\<number\>
 
- 获取子组件的margin信息。
+ArkTS-Sta: getMargin() : DirectionalEdgesT\<double\> | undefined
+
+获取子组件的margin信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  | 子组件的margin信息。   |
+ |ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](#directionaledgestt12) \| undefined  | 子组件的margin信息。   |
 
 ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number\>
+ArkTS-Dyn: getPadding() : DirectionalEdgesT\<number\>
+
+ArkTS-Sta: getPadding() : DirectionalEdgesT\<double\> | undefined
 
 获取子组件的padding信息。
 
@@ -216,15 +249,21 @@ getPadding() : DirectionalEdgesT\<number\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：**
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+ **返回值：**
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  | 子组件的padding信息。   |
+ |ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](#directionaledgestt12) \| undefined  | 子组件的padding信息。   |
 
  ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number\>
+ArkTS-Dyn: getBorderWidth() : DirectionalEdgesT\<number\>
+
+ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 获取子组件的borderWidth信息。
 
@@ -232,11 +271,15 @@ getBorderWidth() : DirectionalEdgesT\<number\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)  | 子组件的borderWidth信息。|
+ |ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](#directionaledgestt12) \| undefined  | 子组件的borderWidth信息。|
 
 
 ## MeasureResult<sup>10+</sup>

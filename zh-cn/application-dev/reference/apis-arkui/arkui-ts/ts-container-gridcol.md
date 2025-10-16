@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。  
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。  
 
 ## 子组件
 
@@ -50,7 +52,9 @@ GridCol(option?: GridColOptions)
 
 ### span
 
-span(value: number | GridColColumnOption)
+ArkTS-Dyn: span(value: number | GridColColumnOption)
+
+ArkTS-Sta: span(value: int | GridColColumnOption | undefined)
 
 设置占用列数。span为0，意味着该元素不参与布局计算，即不会被渲染。
 
@@ -60,15 +64,21 @@ span(value: number | GridColColumnOption)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| value  | number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) | 是   | 占用列数。<br/>取值为非负整数，默认值为1。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) \| undefined | 是   | 占用列数。<br/>取值为非负整数，默认值为1。 |
 
 ### gridColOffset
 
-gridColOffset(value: number | GridColColumnOption)
+ArkTS-Dyn: gridColOffset(value: number | GridColColumnOption)
+
+ArkTS-Sta: gridColOffset(value: int | GridColColumnOption | undefined)
 
 设置相对于前一个栅格子组件偏移的列数。
 
@@ -78,15 +88,21 @@ gridColOffset(value: number | GridColColumnOption)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                             |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) | 是   | 相对于前一个栅格子组件偏移的列数。<br/>取值为非负整数，默认值：0 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) \| undefined | 是   | 相对于前一个栅格子组件偏移的列数。<br/>取值为非负整数，默认值：0 |
 
 ### order
 
-order(value: number | GridColColumnOption)
+ArkTS-Dyn: order(value: number | GridColColumnOption)
+
+ArkTS-Sta: order(value: int | GridColColumnOption | undefined)
 
 设置栅格子组件的序号，根据序号从小到大对栅格子组件进行排序。
 
@@ -96,11 +112,15 @@ order(value: number | GridColColumnOption)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) | 是   | 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br/>取值为非负整数，默认值：0 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) \| undefined | 是   | 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br/>取值为非负整数，默认值：0 |
 
 ## GridColColumnOption
 

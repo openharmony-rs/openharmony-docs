@@ -4,9 +4,7 @@
 
 >  **说明：**
 >
->  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
->  - 该组件从API version 10开始支持。后续版本新增内容，采用上角标单独标记该内容的起始版本。
+>  该组件从API version 10开始支持。后续版本新增内容，采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -1808,7 +1806,9 @@ ArkTS-Sta: getSelection(): RichEditorRange | undefined
 
 ### setStyledString<sup>12+</sup>
 
-setStyledString(styledString: StyledString): void
+ArkTS-Dyn: setStyledString(styledString: StyledString): void
+
+ArkTS-Sta: setStyledString(styledString: StyledString | undefined)
 
 设置富文本组件显示的属性字符串。
 
@@ -1816,11 +1816,15 @@ setStyledString(styledString: StyledString): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                |
 | ----- | ------ | ---- | ------------------- |
-| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是    | 属性字符串。<br/>**说明：** <br/>StyledString的子类[MutableStyledString](ts-universal-styled-string.md#mutablestyledstring)也可以作为入参值。 |
+| styledString | ArkTS-Dyn: [StyledString](ts-universal-styled-string.md#styledstring)<br/>ArkTS-Sta: [StyledString](ts-universal-styled-string.md#styledstring) \| undefined | 是    | 属性字符串。<br/>**说明：** <br/>StyledString的子类[MutableStyledString](ts-universal-styled-string.md#mutablestyledstring)也可以作为入参值。 |
 
 ### getStyledString<sup>12+</sup>
 
@@ -1846,7 +1850,9 @@ ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 ### onContentChanged<sup>12+</sup>
 
-onContentChanged(listener: StyledStringChangedListener): void
+ArkTS-Dyn: onContentChanged(listener: StyledStringChangedListener): void
+
+ArkTS-Sta: onContentChanged(listener: StyledStringChangedListener | undefined)
 
 注册文本内容变化回调，该回调会在后端程序导致文本内容变更时触发。
 
@@ -1854,11 +1860,15 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                |
 | ----- | ------ | ---- | ------------------- |
-| listener | [StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12) | 是    | 文本内容变化回调监听器。 |
+| listener | ArkTS-Dyn: [StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12)<br/>ArkTS-Sta:  [StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12) \| undefined | 是    | 文本内容变化回调监听器。 |
 
 ## RichEditorSelection
 

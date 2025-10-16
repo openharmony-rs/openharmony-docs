@@ -4,12 +4,16 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## border
 
-border(value: BorderOptions): T
+ArkTS-Dyn: border(value: BorderOptions): T
+
+ArkTS-Sta: border(value: BorderOptions | undefined): this
 
 设置边框样式。
 
@@ -19,21 +23,27 @@ border(value: BorderOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [BorderOptions](#borderoptions对象说明) | 是   | 统一边框样式设置接口。<br/>**说明：** <br/>边框宽度默认值为0，即不显示边框。<br/>从API version 9开始，父节点的border显示在子节点内容之上。 |
+| value  | ArkTS-Dyn: [BorderOptions](#borderoptions对象说明)<br/>ArkTS-Sta: [BorderOptions](#borderoptions对象说明) \| undefined | 是   | 统一边框样式设置接口。<br/>**说明：** <br/>边框宽度默认值为0，即不显示边框。<br/>从API version 9开始，父节点的border显示在子节点内容之上。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## borderStyle
 
-borderStyle(value: BorderStyle | EdgeStyles): T
+ArkTS-Dyn: borderStyle(value: BorderStyle | EdgeStyles): T
+
+ArkTS-Sta: borderStyle(value: BorderStyle | EdgeStyles | undefined): this
 
 设置元素的边框线条样式。
 
@@ -43,21 +53,27 @@ borderStyle(value: BorderStyle | EdgeStyles): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                               |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](#edgestyles9对象说明)<sup>9+</sup> | 是   | 设置元素的边框样式。<br/>默认值：BorderStyle.Solid |
+| value  | ArkTS-Dyn: [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](#edgestyles9对象说明)<sup>9+</sup><br/>ArkTS-Sta: [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](#edgestyles9对象说明) \| undefined | 是   | 设置元素的边框样式。<br/>默认值：BorderStyle.Solid |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## borderWidth
 
-borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T
+ArkTS-Dyn: borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T
+
+ArkTS-Sta: borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths | undefined): this
 
 设置边框的宽度。
 
@@ -67,21 +83,27 @@ borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                               |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[EdgeWidths](#edgewidths9对象说明)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12对象说明)<sup>12+</sup> | 是   | 设置元素的边框宽度，不支持百分比。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;[EdgeWidths](#edgewidths9对象说明)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12对象说明)<sup>12+</sup><br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;[EdgeWidths](#edgewidths9对象说明)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12对象说明) \| undefined | 是   | 设置元素的边框宽度，不支持百分比。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## borderColor
 
-borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
+ArkTS-Dyn: borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
+
+ArkTS-Sta: borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors | undefined): this
 
 设置边框的颜色。
 
@@ -91,21 +113,27 @@ borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                         |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9对象说明)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12对象说明)<sup>12+</sup> | 是   | 设置元素的边框颜色。<br/>默认值：Color.Black |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9对象说明)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12对象说明)<sup>12+</sup><br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9对象说明)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12对象说明) \| undefined | 是   | 设置元素的边框颜色。<br/>默认值：Color.Black |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## borderRadius
 
-borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
+ArkTS-Dyn: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
+
+ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses | undefined): this
 
 设置边框的圆角。圆角大小受组件尺寸限制，最大值为组件宽或高的一半。
 
@@ -115,17 +143,21 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](#borderradiuses9对象说明)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](#localizedborderradiuses12对象说明)<sup>12+</sup> | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[.clip属性](./ts-universal-attributes-sharp-clipping.md#clip12)进行裁剪，避免子组件超出组件自身。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](#borderradiuses9对象说明)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](#localizedborderradiuses12对象说明)<sup>12+</sup><br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](#borderradiuses9对象说明)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](#localizedborderradiuses12对象说明) \| undefined |是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[.clip属性](./ts-universal-attributes-sharp-clipping.md#clip12)进行裁剪，避免子组件超出组件自身。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## BorderOptions对象说明
 

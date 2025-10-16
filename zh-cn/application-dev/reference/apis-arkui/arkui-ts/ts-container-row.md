@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -90,7 +92,9 @@ Row(options?: RowOptions | RowOptionsV2)
 
 ### alignItems
 
-alignItems(value: VerticalAlign)
+ArkTS-Dyn: alignItems(value: VerticalAlign)
+
+ArkTS-Sta: alignItems(value: VerticalAlign | undefined)
 
 设置子组件在垂直方向上的对齐格式。
 
@@ -100,15 +104,21 @@ alignItems(value: VerticalAlign)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [VerticalAlign](ts-appendix-enums.md#verticalalign) | 是   | 子组件在垂直方向上的对齐格式。<br/>默认值：VerticalAlign.Center |
+| value  | ArkTS-Dyn: [VerticalAlign](ts-appendix-enums.md#verticalalign)<br/>ArkTS-Sta: [VerticalAlign](ts-appendix-enums.md#verticalalign) \| undefined | 是   | 子组件在垂直方向上的对齐格式。<br/>默认值：VerticalAlign.Center |
 
 ### justifyContent<sup>8+</sup>
 
-justifyContent(value: FlexAlign)
+ArkTS-Dyn: justifyContent(value: FlexAlign)
+
+ArkTS-Sta: justifyContent(value: FlexAlign | undefined)
 
 设置子组件在水平方向上的对齐格式。
 
@@ -118,11 +128,15 @@ justifyContent(value: FlexAlign)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | [FlexAlign](ts-appendix-enums.md#flexalign) | 是   | 子组件在水平方向上的对齐格式。<br/>默认值：FlexAlign.Start |
+| value  | ArkTS-Dyn: [FlexAlign](ts-appendix-enums.md#flexalign)<br/>ArkTS-Sta: [FlexAlign](ts-appendix-enums.md#flexalign) \| undefined | 是   | 子组件在水平方向上的对齐格式。<br/>默认值：FlexAlign.Start |
 
 >  **说明：**
 >
@@ -130,7 +144,9 @@ justifyContent(value: FlexAlign)
 
 ### reverse<sup>12+</sup>
 
-reverse(isReversed: Optional\<boolean\>)
+ArkTS-Dyn: reverse(isReversed: Optional\<boolean\>)
+
+ArkTS-Sta: reverse(isReversed: boolean | undefined)
 
 设置子组件在水平方向上的排列是否反转。
 
@@ -140,11 +156,15 @@ reverse(isReversed: Optional\<boolean\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | 是   | 子组件在水平方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在水平方向上反转排列，设置false表示子组件在水平方向上正序排列。 |
+| isReversed  | ArkTS-Dyn: Optional\<boolean\><br/>ArkTS-Sta: boolean \| undefined | 是   | 子组件在水平方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在水平方向上反转排列，设置false表示子组件在水平方向上正序排列。 |
 
 >  **说明：**
 >
