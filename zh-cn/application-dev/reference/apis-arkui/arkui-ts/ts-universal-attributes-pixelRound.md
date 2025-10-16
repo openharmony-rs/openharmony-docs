@@ -120,7 +120,6 @@ struct PixelRoundExample {
       }
       .onClick((): void => {
         this.curWidth += 0.1;
-        console.log("sqf:curWidth:",  this.curWidth )
       })
       .height(200)
       .width(200)

@@ -820,7 +820,7 @@ struct Example4 {
               .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) } as LocalizedEdges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -828,7 +828,7 @@ struct Example4 {
               .position({ left:'200px', top: '100px' } as Edges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
               Row() {
@@ -836,7 +836,7 @@ struct Example4 {
               .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) } as LocalizedEdges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -844,7 +844,7 @@ struct Example4 {
               .offset({ left: 100, top: 200  } as Edges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
               Row() {
@@ -852,7 +852,7 @@ struct Example4 {
               .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) } as LocalizedPosition)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -860,7 +860,7 @@ struct Example4 {
               .markAnchor({ x: '100fp', y: '-350fp' } as Position)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
             }
