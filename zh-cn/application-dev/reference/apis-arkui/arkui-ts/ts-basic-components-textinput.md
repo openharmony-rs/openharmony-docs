@@ -330,7 +330,7 @@ textAlign(value: TextAlign)
 
 设置文本在输入框中的水平对齐方式。
 
-支持TextAlign.Start、TextAlign.Center和TextAlign.End。从API version 11开始，新增TextAlign.JUSTIFY选项。
+支持TextAlign.Start、TextAlign.Center和TextAlign.End。TextAlign.JUSTIFY的对齐方式按照TextAlign.Start处理。
 
 可通过[align](ts-universal-attributes-location.md#align)属性控制文本段落在垂直方向上的位置。此组件中不可使用align属性控制文本段落在水平方向上的位置。
 
