@@ -107,7 +107,7 @@
      }
      //动画重复播放时执行方法
      this.animatorOptions.onRepeat = () => {
-       console.log("动画重复播放");
+       console.info("动画重复播放");
      }
    }
    ```
@@ -178,7 +178,7 @@ struct Index {
       this.animatorStatus = '完成';
     }
     this.animatorOptions.onRepeat = () => {
-      console.log("动画重复播放");
+      console.info("动画重复播放");
     }
   }
 
