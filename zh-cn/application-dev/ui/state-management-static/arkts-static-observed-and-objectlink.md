@@ -28,7 +28,7 @@ import { ObjectLink, Observed } from '@ohos.arkui.stateManagement';
 | \@ObjectLink变量装饰器 | 说明                                       |
 | ----------------- | ---------------------------------------- |
 | 装饰器参数             | 无。                                       |
-| 允许装饰的变量类型         | 必须为被\@Observed装饰的class实例。<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用\@PropRef。<br/>\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB, ClassA \| undefined 或者 ClassA \| null, 示例见[@ObjectLink支持联合类型](#objectlink支持联合类型)。|
+| 允许装饰的变量类型         | 必须为class类型或interface字面量类型，其中未被\@Observed装饰的class类型无法被观测。<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用\@PropRef。<br/>\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB, ClassA \| undefined 或者 ClassA \| null, 示例见[@ObjectLink支持联合类型](#objectlink支持联合类型)。|
 | 初始化规则         | 不允许定义本地默认值。<br/>初始化\@ObjectLink装饰的变量必须同时满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是\@State，\@Link，\@Provide，\@Consume或者\@ObjectLink装饰的数据。<br/>初始化的class的示例请参考[嵌套对象](#嵌套对象)。                                     |
 | 同步规则           | **在子组件使用时：**<br/>与父组件中的源对象双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、[\@State](arkts-static-state.md)、[\@Link](arkts-static-link.md)、[\@PropRef](arkts-static-propref.md)、[\@Provide](arkts-static-provide-and-consume.md)。|
 
@@ -100,7 +100,9 @@ this.parent.child.num = 5;
 
 1. \@ObjectLink装饰器不能在\@Entry装饰的自定义组件中使用。
 
-2. \@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译期会报错。
+2. \@ObjectLink装饰的变量必须是class类型或interface字面量类型，否则会有编译时报错。
+
+3. \@ObjectLink装饰的变量必须要指定类型，否则会有编译时报错。
 
     ```ts
     'use static'
@@ -129,8 +131,6 @@ this.parent.child.num = 5;
     struct Child {
       // 错误写法，count未指定类型，编译报错
       @ObjectLink count;
-      // 错误写法，Test未被@Observed装饰，编译报错
-      @ObjectLink test: Test;
   
       // 正确写法
       @ObjectLink count: Info;
@@ -141,7 +141,7 @@ this.parent.child.num = 5;
     }
     ```
   
-3. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译期会报错。
+4. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译时会报错。
 
     ```ts
     'use static'
@@ -184,7 +184,7 @@ this.parent.child.num = 5;
     }
     ```
 
-4. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示Cannot assign to this property because it is readonly。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
+5. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示`Cannot assign to this property because it is readonly`。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
 
     【反例】
   
