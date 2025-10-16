@@ -202,7 +202,7 @@ libnative_rdb_ndk.z.so
 
 3. Modify or delete data based on the conditions specified by **OH_Predicates**.
 
-   <br>Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
+   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
 
    ```c
    // Create a valueBucket object to store the new data to be updated.
