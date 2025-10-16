@@ -40,10 +40,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_persistpermission) | 对所选择的多个文件或目录URI持久化授权。 |
-| [FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_revokepermission) | 对所选择的多个文件或目录URI取消持久化授权。 |
-| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | 使能多个已经持久化授权的文件或目录。 |
-| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | 取消使能持久化授权过的多个文件或目录。 |
+| [FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_persistpermission) | 对所选择的多个文件或目录URI持久化授权。 |
+| [FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_revokepermission) | 对所选择的多个文件或目录URI取消持久化授权。 |
+| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | 使能多个已经持久化授权的文件或目录。 |
+| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | 取消使能持久化授权过的多个文件或目录。 |
 | [FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)](#oh_fileshare_checkpersistentpermission) | 校验所选择的多个文件或目录URI的持久化授权。 |
 | [void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)](#oh_fileshare_releasepolicyerrorresult) | 释放FileShare_PolicyErrorResult指针指向的内存资源。 |
 
@@ -91,7 +91,7 @@ enum FileShare_PolicyErrorCode
 ### OH_FileShare_PersistPermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -101,7 +101,6 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -121,7 +120,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 ### OH_FileShare_RevokePermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -131,7 +130,6 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -151,7 +149,7 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 ### OH_FileShare_ActivatePermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -161,7 +159,6 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -181,7 +178,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 ### OH_FileShare_DeactivatePermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -191,7 +188,6 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -222,7 +218,6 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -249,7 +244,6 @@ void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorRes
 释放FileShare_PolicyErrorResult指针指向的内存资源。
 
 **起始版本：** 12
-
 
 **参数：**
 
