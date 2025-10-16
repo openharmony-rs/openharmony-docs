@@ -1408,9 +1408,9 @@ function CreateScaledPixelMapSync(pixelMap:image.PixelMap) {
 
 ## createCroppedAndScaledPixelMap<sup>22+</sup>
 
-ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise<PixelMap>
+ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
 
-ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise<PixelMap>
+ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise\<PixelMap>
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。使用Promise异步回调。
 
