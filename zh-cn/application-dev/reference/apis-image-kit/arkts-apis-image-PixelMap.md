@@ -1607,9 +1607,9 @@ async function CreateScaledPixelMapSync() {
 
 ## createCroppedAndScaledPixelMap<sup>22+</sup>
 
-ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise<PixelMap>
+ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
 
-ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise<PixelMap>
+ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise\<PixelMap>
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。使用Promise异步回调。
 
@@ -1742,7 +1742,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
+function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -1752,7 +1752,7 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 2.0;
   try {
-    const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
+    const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
   } catch (e) {
     const error = e as BusinessError;
     console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
@@ -1765,7 +1765,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
+function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -1775,7 +1775,7 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 2.0;
   try {
-    const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
+    const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
   } catch (e) {
     const error = e as BusinessError;
     console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
@@ -1806,8 +1806,8 @@ clone(): Promise\<PixelMap>
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -1849,7 +1849,7 @@ cloneSync(): PixelMap
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
 | 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -3237,7 +3237,7 @@ ArkTS-Dyn: getUniqueId(): number
 
 ArkTS-Sta: getUniqueId(): int
 
-获取PixelMap的唯一生成ID。
+获取PixelMap的唯一标识符(ID)。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3249,7 +3249,7 @@ ArkTS-Sta: getUniqueId(): int
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 唯一生成ID。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 唯一标识符(ID)。 |
 
 **错误码：**
 
@@ -3281,7 +3281,7 @@ function DemoGetUniqueId(pixelMap: PixelMap) {
 
 isReleased(): boolean
 
-检查PixelMap的内存持有关系是否已断开，即是否成功调用了[release](#release7)接口。
+检查PixelMap的内存持有关系是否已断开。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
