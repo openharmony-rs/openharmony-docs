@@ -31,7 +31,7 @@ The **DatamgrService** can serve as a proxy to access the following data:
 
 
 
-| Data Type | Location     | Data Format       | Validity Period         | Usage                             |
+| Type | Location     | Data Format       | Validity Period         | Scenario                             |
 | ----- | --------- | ----------- | ------------ | --------------------------------- |
 | Persistent data| Sandbox directory of the data provider | Database tables   | Permanent        | RDB data used for schedules and meetings.     |
 | Process data | DatamgrService sandbox directory| JSON or byte| Automatically deleted 10 days after no subscription| Time-sensitive data in simple format used for step count, weather, and heart rate monitoring.|
@@ -209,7 +209,7 @@ The following walks you through on how to share an RDB store.
    }
    ```
 
-4. After obtaining the **DataShareHelper** object, use the APIs provided by the object to access the services provided by the provider, for example, **insert()**, **delete()**, **update()**, or **query()** to add, delete, modify, and query data.
+4. After obtaining the **DataShareHelper** object, use the APIs provided by the object (such as **insert()**, **delete()**, **update()**, or **query()**) to access the provider data.
 
    ```ts
    // Construct a piece of data.
@@ -241,7 +241,7 @@ The following walks you through on how to share an RDB store.
      (dsHelper as dataShare.DataShareHelper).query(dseUri, predicates, valArray, (err, data) => {
        console.info(`dsHelper query result:${data}`);
      });
-     // Delete data.
+     // Delete specified data.
      (dsHelper as dataShare.DataShareHelper).delete(dseUri, predicates, (err, data) => {
        console.info(`dsHelper delete result:${data}`);
      });

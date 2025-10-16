@@ -22,7 +22,7 @@ In addition, use [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12
 import { relationalStore } from '@kit.ArkData';
 ```
 
-## Property
+## Properties
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5379,7 +5379,7 @@ The **attach** API cannot be called concurrently. Concurrent calls may cause the
 | ----------- | ------ | --- | ------------ |
 | fullPath | string | Yes  | Path of the database file to attach.|
 | attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: 2|
+| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -5452,7 +5452,7 @@ The **attach** API cannot be called concurrently. Concurrent calls may cause the
 | context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 | attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: 2|
+| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -5563,7 +5563,7 @@ Before calling **detach()**, ensure that all database operations are complete an
 | Name       | Type    | Mandatory | Description          |
 | ----------- | ------ | --- | ------------ |
 | attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for detaching the RDB store. <br>Value range: 1 to 300<br>Default value: 2|
+| waitTime | number | No  | Maximum time period (in seconds) allowed for detaching the RDB store. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 

@@ -323,7 +323,7 @@ Obtains the uniform data types based on the MIME types.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the uniform data types obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
+| const char** | Returns a double pointer to the uniform data types obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs. |
 
 ### OH_Utd_BelongsTo()
 

@@ -124,7 +124,7 @@ libnative_rdb_ndk.z.so
    // Create an OH_Rdb_ConfigV2 object.
    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
    // The path is the application sandbox path.
-   // The database file will be created in the sandbox path /data/storage/el3/database/rdb/RdbTest.db.
+   // The database file will be created in the sandbox path: /data/storage/el3/database/rdb/RdbTest.db.
    OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
    // Secure path where database files are stored, which corresponds to the el path in the databaseDir parameter.
    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
@@ -202,7 +202,7 @@ libnative_rdb_ndk.z.so
 
 3. Modify or delete data based on the conditions specified by **OH_Predicates**.
 
-   <br>Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
+   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
 
    ```c
    // Create a valueBucket object to store the new data to be updated.
@@ -273,7 +273,7 @@ libnative_rdb_ndk.z.so
 
 4. Query data based on the conditions specified by **OH_Predicates**.
 
-   <br>Call **OH_Rdb_Query** to query data. The data obtained is returned in an **OH_Cursor** object. <br>Example:
+   Call **OH_Rdb_Query** to query data. The data obtained is returned in an **OH_Cursor** object. <br>Example:
 
    ```c
    OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
