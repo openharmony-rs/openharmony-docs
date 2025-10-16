@@ -71,7 +71,7 @@ function sleep(time: number) {
 export default function abilityTest() {
   describe('ActsAbilityTest', () =>{
   // 测试套名称为ActsAbilityTest
-    // 可根据此处设置的测试类型、测试大小、测试级别进行用例筛选
+    // 可根据此处设置的用例类型、用例规模、用例级别进行用例筛选
     it('testExample',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
     // 测试用例名称为testExample
       console.info("unitTest: TestExample begin");
