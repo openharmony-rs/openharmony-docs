@@ -1706,7 +1706,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data -relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
+Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1763,7 +1763,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data -relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
+Queries data from the RDB store based on specified conditions. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1821,7 +1821,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
-Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data -relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
+Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2110,7 +2110,7 @@ if (store != undefined && deviceId != undefined) {
 
 querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data -relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
@@ -2187,7 +2187,7 @@ let resultSet2 = await store.querySql(querySql2);
 
 querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data -relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
@@ -2247,7 +2247,7 @@ if (store != undefined) {
 
 querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt;
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data -relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
