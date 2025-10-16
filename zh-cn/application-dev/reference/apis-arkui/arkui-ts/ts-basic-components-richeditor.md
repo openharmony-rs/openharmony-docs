@@ -199,6 +199,8 @@ AI菜单功能启用时，在组件中选中文本后，文本选择菜单能够
 
 AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
 
+本功能仅在[copyOptions](#copyoptions)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时生效。
+
 该接口依赖设备底层具有文本识别能力，否则设置不会生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
