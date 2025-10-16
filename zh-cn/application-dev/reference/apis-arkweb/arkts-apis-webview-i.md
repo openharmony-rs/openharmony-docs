@@ -224,9 +224,13 @@ WebViewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称           | 类型       | 只读 | 可选 | 说明                         |
 | -------------- | --------- | ---- | ---- | ---------------------------- |
-| x  | number   | 否   | 否   | 矩形区域左上角x坐标。    |
-| y  | number   | 否   | 否   | 矩形区域左上角y坐标。    |
-| width  | number   | 否   | 否   | 矩形的宽度。    |
-| height  | number   | 否   | 否   | 矩形的高度。    |
+| x  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域左上角x坐标。    |
+| y  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域左上角y坐标。    |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形的宽度。    |
+| height  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形的高度。    |
