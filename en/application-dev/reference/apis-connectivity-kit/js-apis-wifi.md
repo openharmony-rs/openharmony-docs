@@ -5,7 +5,7 @@ The **WLAN** module provides basic wireless local area network (WLAN) functions,
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module are no longer maintained since API version 9. You are advised to use [`@ohos.wifiManager (WLAN)`](js-apis-wifiManager.md).
+> The APIs of this module are no longer maintained since API version 9. You are advised to use [@ohos.wifiManager (WLAN)](js-apis-wifiManager.md).
 
 
 ## Modules to Import
@@ -137,7 +137,7 @@ Represents WLAN hotspot information.
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
 | bssid | string | Yes| No| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.|
@@ -174,7 +174,7 @@ Represents the WLAN configuration.
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
 | bssid | string | Yes| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
@@ -490,7 +490,7 @@ Represents the WLAN connection information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
 | bssid | string | Yes| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
@@ -613,7 +613,7 @@ Represents IP information.
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Core
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | number | Yes| No| IP address.|
 | gateway | number | Yes| No| Gateway.|
@@ -677,7 +677,7 @@ Represents the P2P link information obtained.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate8) | Yes| No| P2P connection state.|
 | isGroupOwner | boolean | Yes| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
@@ -835,7 +835,7 @@ Represents the P2P device information.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | deviceName | string | Yes| No| Device name.|
 | deviceAddress | string | Yes| No| MAC address of the device.|
@@ -906,7 +906,7 @@ Represents P2P group configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | deviceAddress | string | Yes| No| Device address.|
 | netId | number | Yes| No| Network ID. The value **-1** indicates a temporary group, and **-2** indicates a persistent group.|
@@ -1133,7 +1133,7 @@ Represents the P2P group information.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | isP2pGo | boolean | Yes| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
 | ownerInfo | [WifiP2pDevice](#wifip2pdevice8) | Yes| No| Device information of the group.|

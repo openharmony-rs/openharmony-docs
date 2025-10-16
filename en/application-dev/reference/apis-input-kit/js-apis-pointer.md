@@ -23,7 +23,7 @@ import { pointer } from '@kit.InputKit';
 
 setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the visible status of the mouse pointer. This API uses an asynchronous callback to return the result.
+Sets whether the mouse pointer is visible in the current window. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -31,7 +31,7 @@ Sets the visible status of the mouse pointer. This API uses an asynchronous call
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| visible  | boolean                   | Yes   | Whether the mouse pointer is visible. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
+| visible  | boolean                   | Yes   | Whether the mouse pointer is visible in the current window. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -76,7 +76,7 @@ struct Index {
 
 setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
-Sets the visible status of the mouse pointer. This API uses a promise to return the result.
+Sets whether the mouse pointer is visible in the current window. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -84,7 +84,7 @@ Sets the visible status of the mouse pointer. This API uses a promise to return 
 
 | Name     | Type     | Mandatory  | Description                                      |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | Yes   | Whether the mouse pointer is visible. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
+| visible | boolean | Yes   | Whether the mouse pointer is visible in the current window. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
 
 **Return value**
 
@@ -130,7 +130,7 @@ struct Index {
 
 setPointerVisibleSync(visible: boolean): void
 
-Sets the visible status of the mouse pointer. This API returns the result synchronously.
+Sets whether the mouse pointer is visible in the current window. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -138,7 +138,7 @@ Sets the visible status of the mouse pointer. This API returns the result synchr
 
 | Name     | Type     | Mandatory  | Description                                      |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | Yes   | Whether the mouse pointer is visible. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
+| visible | boolean | Yes   | Whether the mouse pointer is visible in the current window. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -266,7 +266,7 @@ struct Index {
 
 isPointerVisibleSync(): boolean
 
-Obtains the visible status of the mouse pointer. This API returns the result synchronously.
+Checks whether the mouse pointer is visible in the current window. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -304,7 +304,7 @@ struct Index {
 
 getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void
 
-Obtains the mouse pointer style. This API uses an asynchronous callback to return the result.
+Obtains the mouse pointer style of the specified window. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -312,7 +312,7 @@ Obtains the mouse pointer style. This API uses an asynchronous callback to retur
 
 | Name      | Type                                      | Mandatory  | Description            |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | number                                   | Yes   | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window.   |
+| windowId | number                                   | Yes   | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window is returned.<br>If the window ID is valid but the window does not exist, the global mouse pointer style is returned by default.<br>If the mouse pointer style is set for a non-existent window through [setPointerStyle](#pointersetpointerstyle), this API can obtain the mouse pointer style properly.|
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | Yes   | Callback used to return the mouse pointer style.|
 
 **Error codes**
@@ -373,7 +373,7 @@ Obtains the mouse pointer style. This API uses a promise to return the result.
 
 | Name    | Type  | Mandatory| Description    |
 | -------- | ------ | ---- | -------- |
-| windowId | number | Yes  | Window ID.|
+| windowId | number | Yes  | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window is returned.<br>If the window ID is valid but the window does not exist, the global mouse pointer style is returned by default.<br>If the mouse pointer style is set for a non-existent window through [setPointerStyle](#pointersetpointerstyle-1), this API can obtain the mouse pointer style properly.|
 
 **Return value**
 
@@ -431,7 +431,7 @@ struct Index {
 
 getPointerStyleSync(windowId: number): PointerStyle
 
-Obtains the mouse pointer style, such as the east arrow, west arrow, south arrow, and north arrow. This API returns the result synchronously.
+Obtains the mouse pointer style, such as the east arrow, west arrow, south arrow, and north arrow, of the specified window. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -439,7 +439,7 @@ Obtains the mouse pointer style, such as the east arrow, west arrow, south arrow
 
 | Name    | Type  | Mandatory| Description    |
 | -------- | ------ | ---- | -------- |
-| windowId | number | Yes  | Window ID.<br>The default value is **-1**, indicating the global mouse pointer style.|
+| windowId | number | Yes  | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window is returned.<br>If the window ID is valid but the window does not exist, the global mouse pointer style is returned by default.<br>If the mouse pointer style is set for a non-existent window through [setPointerStyleSync](#pointersetpointerstylesync10), this API can obtain the mouse pointer style properly.|
 
 **Return value**
 
@@ -484,7 +484,7 @@ struct Index {
 
 setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the mouse pointer style. This API uses an asynchronous callback to return the result.
+Sets the mouse pointer style of the specified window. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -492,7 +492,7 @@ Sets the mouse pointer style. This API uses an asynchronous callback to return t
 
 | Name          | Type                            | Mandatory  | Description                                 |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
-| windowId     | number                         | Yes   | Window ID.                         |
+| windowId     | number                         | Yes   | Window ID. The value is an integer greater than or equal to 0.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window can be set properly.<br>If the window ID is valid but the window does not exist, the mouse pointer style can also be set properly.<br>The result can be obtained through [getPointerStyle](#pointergetpointerstyle).|
 | pointerStyle | [PointerStyle](#pointerstyle) | Yes   | Pointer style.                            |
 | callback     | AsyncCallback&lt;void&gt;      | Yes   | Callback used to return the result.|
 
@@ -545,7 +545,7 @@ struct Index {
 
 setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;
 
-Sets the mouse pointer style. This API uses a promise to return the result.
+Sets the mouse pointer style of the specified window. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -553,7 +553,7 @@ Sets the mouse pointer style. This API uses a promise to return the result.
 
 | Name                 | Type                            | Mandatory  | Description              |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | Yes   | Window ID.      |
+| windowId            | number                         | Yes   | Window ID. The value is an integer greater than or equal to 0.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window can be set properly.<br>If the window ID is valid but the window does not exist, the mouse pointer style can also be set properly.<br>The result can be obtained through [getPointerStyle](#pointergetpointerstyle-1).      |
 | pointerStyle        | [PointerStyle](#pointerstyle) | Yes   | Pointer style.         |
 
 **Return value**
@@ -612,7 +612,7 @@ struct Index {
 
 setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
-Sets the mouse pointer style. This API returns the result synchronously.
+Sets the mouse pointer style of the specified window. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -620,7 +620,7 @@ Sets the mouse pointer style. This API returns the result synchronously.
 
 | Name                 | Type                            | Mandatory  | Description              |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | Yes   | Window ID.      |
+| windowId            | number                         | Yes   | Window ID. The value is an integer greater than or equal to 0.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window can be set properly.<br>If the window ID is valid but the window does not exist, the mouse pointer style can also be set properly.<br>The result can be obtained through [getPointerStyleSync](#pointergetpointerstylesync10).      |
 | pointerStyle        | [PointerStyle](#pointerstyle) | Yes   | Pointer style.         |
 
 **Error codes**
@@ -751,7 +751,7 @@ Enumerates mouse pointer styles.
 
 setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): Promise&lt;void&gt;
 
-Sets the custom cursor style. This API uses a promise to return the result.
+Sets the custom mouse pointer style of the specified window. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -824,7 +824,7 @@ Pixel map resource.
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 | Name    | Type    | Read-Only    | Optional    | Description    |
 | -------- | ------- | -------- | -------- | ------- |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Custom cursor. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Defines a custom cursor. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
 | focusX  | number | No  | Yes  | Horizontal coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum width of the image. The default value is **0** if the parameter is left empty.|
 | focusY  | number | No  | Yes  | Vertical coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum height of the image. The default value is **0** if the parameter is left empty.|
 
@@ -842,7 +842,7 @@ Defines the custom cursor configuration.
 
 setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
-Sets the custom cursor style. This API uses a promise to return the result.
+Sets the custom mouse pointer style of the specified window. This API uses a promise to return the result.
 The cursor may be switched back to the system style in the following cases: application window layout change, hot zone switching, page redirection, moving of the cursor out of the window and then back to the window, or moving of the cursor in different areas of the window. In this case, you need to reset the cursor style.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
@@ -915,7 +915,7 @@ struct Index {
 
 setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
-Sets a custom cursor. This API returns the result synchronously.
+Sets the custom mouse pointer style of the specified window. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 

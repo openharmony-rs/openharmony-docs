@@ -1,5 +1,12 @@
 # NFC Tag Read/Write Development
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 ## Introduction
 Near Field Communication (NFC) is a high-frequency radio technology that enables communication between devices over a distance less than 10 cm. NFC operates at 13.56 MHz. With NFC technologies, electronic devices can read and write NFC tags.<br>
 NFC tags support one or more communications technologies listed as follows:
@@ -110,25 +117,25 @@ import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit
 let nfcTagElementName: bundleManager.ElementName;
 let foregroundRegister: boolean;
 
-async function readerModeCb(error : BusinessError, tagInfo : tag.TagInfo) {
+async function readerModeCb(error: BusinessError, tagInfo: tag.TagInfo) {
   if (!error) {
     // Obtain an NFC tag object of the specific technology type.
-    if (tagInfo == null || tagInfo == undefined) {
+    if (tagInfo == null) {
       hilog.error(0x0000, 'testTag', 'readerModeCb tagInfo is invalid');
       return;
     }
-    if (tagInfo.uid == null || tagInfo.uid == undefined) {
+    if (tagInfo.uid == null) {
       hilog.error(0x0000, 'testTag', 'readerModeCb uid is invalid');
       return;
     }
-    if (tagInfo.technology == null || tagInfo.technology == undefined || tagInfo.technology.length == 0) {
+    if (tagInfo.technology == null || tagInfo.technology.length == 0) {
       hilog.error(0x0000, 'testTag', 'readerModeCb technology is invalid');
       return;
     }
 
     // The NFC tag may support multiple technology types. Select a specific technology type to read or write tag data.
     // The following sample code is based on the IsoDep technology.
-    let isoDep : tag.IsoDepTag | null = null;
+    let isoDep: tag.IsoDepTag | null = null;
     for (let i = 0; i < tagInfo.technology.length; i++) {
       if (tagInfo.technology[i] == tag.ISO_DEP) {
         try {
@@ -140,17 +147,17 @@ async function readerModeCb(error : BusinessError, tagInfo : tag.TagInfo) {
       }
       // You can also use other technology types as required.
     }
-    if (isoDep == undefined) {
+    if (isoDep == null) {
       hilog.error(0x0000, 'testTag', 'readerModeCb getIsoDep is invalid');
       return;
     }
 
     // Connect to the NFC tag via IsoDep.
     try {
-        isoDep.connect(); 
+      isoDep.connect();
     } catch (error) {
-        hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.connect() error = %{public}s', JSON.stringify(error));
-        return;
+      hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.connect() error = %{public}s', JSON.stringify(error));
+      return;
     }
     if (!isoDep.isConnected()) {
       hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.isConnected() false.');
@@ -160,9 +167,9 @@ async function readerModeCb(error : BusinessError, tagInfo : tag.TagInfo) {
     // Send a command to the connected NFC tag to obtain the response data.
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // Modify the command data as required.
     try {
-      isoDep.transmit(cmdData).then((response : number[]) => {
+      isoDep.transmit(cmdData).then((response: number[]) => {
         hilog.info(0x0000, 'testTag', 'readerModeCb isoDep.transmit() response = %{public}s.', JSON.stringify(response));
-      }).catch((err : BusinessError)=> {
+      }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', 'readerModeCb isoDep.transmit() err = %{public}s.', JSON.stringify(err));
         return;
       });
@@ -198,7 +205,7 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     if (nfcTagElementName != undefined) {
       // Select an appropriate technology type based on service requirements.
-      let techList : number[] = [tag.NFC_A, tag.NFC_B, tag.NFC_F, tag.NFC_V];
+      let techList: number[] = [tag.NFC_A, tag.NFC_B, tag.NFC_F, tag.NFC_V];
       try {
         tag.on('readerMode', nfcTagElementName, techList, readerModeCb);
         foregroundRegister = true;
@@ -287,7 +294,7 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
 
     // Obtain an NFC tag object of the specific technology type.
-    let tagInfo : tag.TagInfo;
+    let tagInfo: tag.TagInfo;
     try {
       tagInfo = tag.getTagInfo(want);
     } catch (error) {
@@ -295,22 +302,22 @@ export default class EntryAbility extends UIAbility {
       return;
     }
 
-    if (tagInfo == null || tagInfo == undefined) {
+    if (tagInfo == null) {
       hilog.error(0x0000, 'testTag', 'tagInfo is invalid');
       return;
     }
-    if (tagInfo.uid == null || tagInfo.uid == undefined) {
+    if (tagInfo.uid == null) {
       hilog.error(0x0000, 'testTag', 'uid is invalid');
       return;
     }
-    if (tagInfo.technology == null || tagInfo.technology == undefined || tagInfo.technology.length == 0) {
+    if (tagInfo.technology == null || tagInfo.technology.length == 0) {
       hilog.error(0x0000, 'testTag', 'technology is invalid');
       return;
     }
 
     // The NFC tag may support multiple technology types. Select a specific technology type to read or write tag data.
     // The following sample code is based on the IsoDep technology.
-    let isoDep : tag.IsoDepTag | null = null;
+    let isoDep: tag.IsoDepTag | null = null;
     for (let i = 0; i < tagInfo.technology.length; i++) {
       if (tagInfo.technology[i] == tag.ISO_DEP) {
         try {
@@ -322,17 +329,17 @@ export default class EntryAbility extends UIAbility {
       }
       // You can also use other technology types as required.
     }
-    if (isoDep == undefined) {
+    if (isoDep == null) {
       hilog.error(0x0000, 'testTag', 'getIsoDep is invalid');
       return;
     }
 
     // Connect to the NFC tag via IsoDep.
     try {
-        isoDep.connect(); 
+      isoDep.connect();
     } catch (error) {
-        hilog.error(0x0000, 'testTag', 'isoDep.connect() error = %{public}s', JSON.stringify(error));
-        return;
+      hilog.error(0x0000, 'testTag', 'isoDep.connect() error = %{public}s', JSON.stringify(error));
+      return;
     }
     if (!isoDep.isConnected()) {
       hilog.error(0x0000, 'testTag', 'isoDep.isConnected() false.');
@@ -342,9 +349,9 @@ export default class EntryAbility extends UIAbility {
     // Send a command to the connected NFC tag to obtain the response data.
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // Modify the command data as required.
     try {
-      isoDep.transmit(cmdData).then((response : number[]) => {
+      isoDep.transmit(cmdData).then((response: number[]) => {
         hilog.info(0x0000, 'testTag', 'isoDep.transmit() response = %{public}s.', JSON.stringify(response));
-      }).catch((err : BusinessError)=> {
+      }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', 'isoDep.transmit() err = %{public}s.', JSON.stringify(err));
         return;
       });

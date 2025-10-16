@@ -4,7 +4,7 @@
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 With the **Web** component, you can print HTML pages through W3C standards-compliant APIs or application APIs.
 

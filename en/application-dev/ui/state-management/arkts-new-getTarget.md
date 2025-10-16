@@ -94,7 +94,7 @@ let observedClass: ObservedClass = new ObservedClass(); // Proxied.
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // Not proxied.
 ```
 
-2. Complex-type objects decorated with state variable decorators Proxies are added to objects of the Class, Map, Set, Date, or Array type decorated with \@State, \@Prop, or other state variable decorators. If the object is already a proxy, no new proxy is added.
+2. Complex-type objects decorated with state variable decorators Proxies are added to objects of the Class, Map, Set, Date, or Array type decorated with \@State, [\@Prop](./arkts-prop.md), or other state variable decorators. If the object is already a proxy, no new proxy is added.
 
 ```ts
 @Observed

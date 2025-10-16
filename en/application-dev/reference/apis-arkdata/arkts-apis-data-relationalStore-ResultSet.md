@@ -26,17 +26,17 @@ import { relationalStore } from '@kit.ArkData';
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name        | Type           | Mandatory| Description                            |
-| ------------ | ------------------- | ---- | -------------------------------- |
-| columnNames  | Array&lt;string&gt; | Yes  | Names of all columns in the result set.      |
-| columnCount  | number              | Yes  | Number of columns in the result set.            |
-| rowCount     | number              | Yes  | Number of rows in the result set.            |
-| rowIndex     | number              | Yes  | Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
-| isAtFirstRow | boolean             | Yes  | Whether the result set pointer is in the first row (the row index is **0**). The value **true** means the result set pointer is in the first row.|
-| isAtLastRow  | boolean             | Yes  | Whether the result set pointer is in the last row. The value **true** means the pointer is in the last row.|
-| isEnded      | boolean             | Yes  | Whether the result set pointer is after the last row. The value **true** means the pointer is after the last row.|
-| isStarted    | boolean             | Yes  | Whether the result set pointer is moved. The value **true** means the pointer is moved.            |
-| isClosed     | boolean             | Yes  | Whether the result set is closed. The value **true** means the result set is closed.        |
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set.|
+| columnCount | number | Yes| No| Number of columns in the result set.|
+| rowCount | number | Yes| No| Number of rows in the result set.|
+| rowIndex | number | Yes| No| Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
+| isAtFirstRow | boolean | Yes| No| Whether the result set pointer is in the first row (the row index is **0**). The value **true** means the result set pointer is in the first row.|
+| isAtLastRow | boolean | Yes| No| Whether the result set pointer is in the last row. The value **true** means the pointer is in the last row.|
+| isEnded | boolean | Yes| No| Whether the result set pointer is after the last row. The value **true** means the pointer is after the last row.|
+| isStarted | boolean | Yes| No| Whether the result set pointer is moved. The value **true** means the pointer is moved.|
+| isClosed | boolean | Yes| No| Whether the result set is closed. The value **true** means the result set is closed.|
 
 ## getColumnIndex
 
@@ -221,7 +221,7 @@ if (resultSet != undefined) {
 
 getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
-Obtains the column type based on the specified column index or column name. This API returns the result synchronously.
+Obtains the column data type based on the specified column index or column name. This API returns the result synchronously.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

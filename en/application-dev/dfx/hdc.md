@@ -1212,7 +1212,7 @@ hdc keygen FILE
 **Usage**
 
 ```shell
-# Generate the **key** and **key.pub** files in the current directory.
+# Generate the key and key.pub files in the current directory.
 $ hdc keygen key 
 ```
 
@@ -2174,7 +2174,7 @@ The parameter is missing, correct your input by referring below: Usage...
 
 **Symptom**
 
-The** hdc shell xxx** command is not supported on the device.
+The **hdc shell xxx** command is not supported on the device.
 
 **Possible Causes**
 

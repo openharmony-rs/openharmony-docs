@@ -10,7 +10,7 @@
 本模块提供管理分布式账号的一些基础功能，主要包括查询和更新账号登录状态。
 
 > **说明：**
-> 
+>
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -34,6 +34,7 @@ getDistributedAccountAbility(): DistributedAccountAbility
   | [DistributedAccountAbility](#distributedaccountability) | 返回一个实例，实例提供查询和更新分布式账号登录状态方法。 |
 
 **示例：**
+
   ```ts
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   ```
@@ -69,6 +70,7 @@ getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): voi
 | 12300001 | System service exception. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -114,15 +116,16 @@ getOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 | 12300001 | System service exception. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   try {
     accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-        console.info('distributed information: ' + JSON.stringify(data));
+      console.info('distributed information: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-        console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+      console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -135,7 +138,7 @@ getOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
 获取分布式账号信息。使用callback异步回调。
-> **说明：** 
+> **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9)。
 
@@ -150,9 +153,10 @@ queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): v
   | callback | AsyncCallback&lt;[DistributedInfo](#distributedinfo)&gt; | 是 | 回调函数。当获取分布式账号信息成功，err为undefined，data为获取到的分布式账号信息对象；否则为错误对象。 |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   accountAbility.queryOsAccountDistributedInfo(
     (err: BusinessError, data: distributedAccount.DistributedInfo) => {
@@ -170,7 +174,7 @@ queryOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 
 获取分布式账号信息。使用Promise异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1)。
 
@@ -185,14 +189,15 @@ queryOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
   | Promise&lt;[DistributedInfo](#distributedinfo)&gt; | Promise对象，返回分布式账号信息对象。 |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-      console.info('distributed information: ' + JSON.stringify(data));
+    console.info('distributed information: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-      console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -226,12 +231,13 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
 | 12300003 | Account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
       if (err) {
@@ -281,17 +287,18 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
-        console.info('setOsAccountDistributedInfo successfully');
+      console.info('setOsAccountDistributedInfo successfully');
     }).catch((err: BusinessError) => {
-        console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+      console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -305,7 +312,7 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 
 更新分布式账号信息。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9)。
 
@@ -321,12 +328,13 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
   | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当更新分布式账号信息成功时，err为undefined，否则为错误对象。 |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
     if (err) {
       console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
@@ -341,7 +349,7 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
 
 更新分布式账号信息。使用Promise异步回调。
-> **说明：** 
+> **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1)。
 
@@ -362,16 +370,17 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
   | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
-      console.info('updateOsAccountDistributedInfo successfully');
-   }).catch((err: BusinessError) => {
-      console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    console.info('updateOsAccountDistributedInfo successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 

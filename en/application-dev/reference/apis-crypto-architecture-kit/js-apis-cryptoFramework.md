@@ -3227,7 +3227,7 @@ try {
 
 Provides APIs for cipher operations. The [init()](#init-1), [update()](#update), and [doFinal()](#dofinal) APIs in this class are called in sequence to implement symmetric encryption or decryption and asymmetric encryption or decryption.
 
-For details about the encryption and decryption process, see [Encryption and Decryption Overview] (../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md).
+For details about the encryption and decryption process, see [Encryption and Decryption Overview](../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md).
 
 A complete symmetric encryption/decryption process is slightly different from the asymmetric encryption/decryption process.
 

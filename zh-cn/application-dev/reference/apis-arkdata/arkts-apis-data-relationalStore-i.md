@@ -69,13 +69,13 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称     | 类型                               | 必填 | 说明                                                         |
-| -------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| table    | string                             | 是   | 表示发生变化的表的名称。                                     |
-| type     | [ChangeType](arkts-apis-data-relationalStore-e.md#changetype10)        | 是   | 表示发生变化的数据的类型，数据或者资产附件发生变化。         |
-| inserted | Array\<string\> \| Array\<number\> | 是   | 记录插入数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示插入数据的行号。 |
-| updated  | Array\<string\> \| Array\<number\> | 是   | 记录更新数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示更新数据的行号。 |
-| deleted  | Array\<string\> \| Array\<number\> | 是   | 记录删除数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示删除数据的行号。 |
+| 名称     | 类型                               | 只读 | 可选  | 说明                                                         |
+| -------- | ---------------------------------- | ---- | ---- |------------------------------------------------------------ |
+| table    | string                             | 否   |   否   | 表示发生变化的表的名称。                                     |
+| type     | [ChangeType](arkts-apis-data-relationalStore-e.md#changetype10)        | 否   |   否   | 表示发生变化的数据的类型，数据或者资产附件发生变化。         |
+| inserted | Array\<string\> \| Array\<number\> | 否   |   否   | 记录插入数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示插入数据的行号。 |
+| updated  | Array\<string\> \| Array\<number\> | 否   |   否   | 记录更新数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示更新数据的行号。 |
+| deleted  | Array\<string\> \| Array\<number\> | 否   |   否   | 记录删除数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示删除数据的行号。 |
 
 ## DistributedConfig<sup>10+</sup>
 
@@ -95,12 +95,12 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称       | 类型   | 必填 | 说明                                     |
-| ---------- | ------ | ---- | ---------------------------------------- |
-| total      | number | 是   | 表示数据库表中需要端云同步的总行数。     |
-| successful | number | 是   | 表示数据库表中端云同步成功的行数。       |
-| failed     | number | 是   | 表示数据库表中端云同步失败的行数。       |
-| remained   | number | 是   | 表示数据库表中端云同步剩余未执行的行数。 |
+| 名称       | 类型   | 只读 | 可选  | 说明                                     |
+| ---------- | ------ | ---- | ---- |---------------------------------------- |
+| total      | number | 否   |   否   | 表示数据库表中需要端云同步的总行数。     |
+| successful | number | 否   |   否   | 表示数据库表中端云同步成功的行数。       |
+| failed     | number | 否   |   否   | 表示数据库表中端云同步失败的行数。       |
+| remained   | number | 否   |   否   | 表示数据库表中端云同步剩余未执行的行数。 |
 
 ## TableDetails<sup>10+</sup>
 
@@ -108,10 +108,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称     | 类型                      | 必填 | 说明                                       |
-| -------- | ------------------------- | ---- | ------------------------------------------ |
-| upload   | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 是   | 表示数据库表中端云同步上传过程的统计信息。 |
-| download | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 是   | 表示数据库表中端云同步下载过程的统计信息。 |
+| 名称     | 类型                      | 只读 | 可选  | 说明                                       |
+| -------- | ------------------------- | ---- | ---- |------------------------------------------ |
+| upload   | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 否   |   否   | 表示数据库表中端云同步上传过程的统计信息。 |
+| download | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 否   |   否   | 表示数据库表中端云同步下载过程的统计信息。 |
 
 ## ProgressDetails<sup>10+</sup>
 
@@ -119,11 +119,11 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称     | 类型                                              | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | 是   | 表示端云同步过程。                                           |
-| code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | 是   | 表示端云同步过程的状态。                                     |
-| details  | Record<string, [TableDetails](#tabledetails10)> | 是   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
+| 名称     | 类型                                              | 只读 | 可选  | 说明                                                         |
+| -------- | ------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | 否   |   否   | 表示端云同步过程。                                           |
+| code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | 否   |   否   | 表示端云同步过程的状态。                                     |
+| details  | Record<string, [TableDetails](#tabledetails10)> | 否   |   否   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
 
 ## SqlExecutionInfo<sup>12+</sup>
 

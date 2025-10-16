@@ -2082,7 +2082,7 @@ register(callback: AsyncCallback\<void>): void
 
 Registers a listener for network status changes. To listen for a specific type of events, call **on** to enable listening and then call **register** to register an event listener.
 
-**Note**: After using this API, you need to call **unregister** to remove the listener in a timely manner.
+**Note**: After using this API, you need to call **unregister** to cancel the registration in a timely manner.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -2196,7 +2196,7 @@ netCon.register((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });
 
-// Use the unregister API to remove the listener for netAvailable events.
+// Use the unregister API to unsubscribe from netAvailable events.
 netCon.unregister((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });
@@ -2418,9 +2418,9 @@ Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandl
 
 ### Attributes
 
-| Name   | Type  | Mandatory| Description                     |
-| ------ | ------ | --- |------------------------- |
-| netId  | number | Yes |  Network ID. The value **0** indicates no default network. Any other value must be greater than or equal to 100.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netId  | number | No| No |  Network ID. The value **0** indicates no default network. Any other value must be greater than or equal to 100.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ### bindSocket<sup>9+</sup>
 
@@ -2858,10 +2858,10 @@ Provides an instance that bears data network capabilities.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name                    | Type                               | Mandatory | Description                                                        |
-| ----------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| netCapabilities         | [NetCapabilities](#netcapabilities) |  Yes | Network transmission capabilities and bearer types of the data network.                               |
-| bearerPrivateIdentifier | string                              |  No |  Network identifier. The identifier of the cellular network is **slot0** for SIM card 1 and **slot1** for SIM card 2. Since API version 12, you can pass the registered WLAN hotspot to the API to specify the WLAN network to be activated.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netCapabilities         | [NetCapabilities](#netcapabilities) |  No| No | Network transmission capabilities and bearer types of the data network.                               |
+| bearerPrivateIdentifier | string                              |  No| Yes |  Network identifier. The identifier of the cellular network is **slot0** for SIM card 1 and **slot1** for SIM card 2. Since API version 12, you can pass the registered WLAN hotspot to the API to specify the WLAN network to be activated.|
 
 **Example**
 
@@ -2897,10 +2897,10 @@ Provides an instance that bears data network capabilities.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name                   | Type                                | Mandatory | Description                                                        |
-| ----------------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| netHandle               | [NetHandle](#nethandle)              |  Yes | Handle of the data network.                                               |
-| netCap                  |  [NetCapabilities](#netcapabilities) |  Yes |  Network transmission capabilities and bearer types of the data network.                           |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle               | [NetHandle](#nethandle)              |  No| No | Handle of the data network.                                               |
+| netCap                  |  [NetCapabilities](#netcapabilities) |  No| No |  Network transmission capabilities and bearer types of the data network.                           |
 
 ## NetCapabilities
 
@@ -2908,12 +2908,12 @@ Defines the network capability set.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name                 | Type                               | Mandatory| Description                    |
-| --------------------- | ---------------------------------- | --- | ------------------------ |
-| linkUpBandwidthKbps   | number                             |  No|  Uplink (device-to-network) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
-| linkDownBandwidthKbps | number                             |  No|  Downlink (network-to-device) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
-| networkCap            | Array\<[NetCap](#netcap)>           |  No|  Network capability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
-| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  Yes|  Network type. The array contains only one network type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| linkUpBandwidthKbps   | number                             |  No| Yes |  Uplink (device-to-network) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
+| linkDownBandwidthKbps | number                             |  No| Yes|  Downlink (network-to-device) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
+| networkCap            | Array\<[NetCap](#netcap)>           |  No| Yes|  Network capability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
+| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  No| No|  Network type. The array contains only one network type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 
 ## NetConnectionPropertyInfo<sup>11+</sup>
 
@@ -2923,10 +2923,10 @@ Defines the network connection properties.
 
 ### Attributes
 
-| Name                |                          Type                       | Mandatory|         Description          |
-| -------------------- | --------------------------------------------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | Yes  |Data network handle.|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | Yes  |Network connection properties.          |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)                             | No| No  |Data network handle.|
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | No| No  |Network connection properties.          |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -2936,10 +2936,10 @@ Obtains the network block status information.
 
 ### Attributes
 
-| Name                | Type                                 | Mandatory|            Description           |
-| -------------------- | ------------------------------------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | Yes  |Data network handle.  |
-| blocked              | boolean                               | Yes  |The value **true** indicates that the network is congested, and the value **false** indicates the opposite.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)               | No| No  |Data network handle.  |
+| blocked              | boolean                               | No| No  | Whether the current network is blocked. The value **true** indicates that the network is congested, and the value **false** indicates the opposite.|
 
 ## ConnectionProperties
 
@@ -2947,14 +2947,14 @@ Defines the network connection properties.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name         |                Type                | Mandatory|               Description                    |
-| ------------- | ----------------------------------- | ----|--------------------------------------- |
-| interfaceName | string                              | Yes|Network interface card (NIC) name.                               |
-| domains       | string                              | Yes|Domain name.                                   |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | Yes|Network link information.                               |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | Yes|Network route information.                               |
-| dnses         | Array\<[NetAddress](#netaddress)>   | Yes|Network address. For details, see [NetAddress](#netaddress).|
-| mtu           | number                              | Yes|Maximum transmission unit (MTU).                           |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| interfaceName | string                              | No| No|Network interface card (NIC) name.                               |
+| domains       | string                              | No| No|Domain name.                                   |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No|Network link information.                               |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No|Network route information.                               |
+| dnses         | Array\<[NetAddress](#netaddress)>   | No| No|Network address. For details, see [NetAddress](#netaddress).|
+| mtu           | number                              | No| No|Maximum transmission unit (MTU).                           |
 
 ## RouteInfo
 
@@ -2962,14 +2962,14 @@ Defines network route information.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name          | Type                       | Mandatory|     Description     |
-| -------------- | --------------------------- | --- |-------------- |
-| interface      | string                      | Yes|NIC name.      |
-| destination    | [LinkAddress](#linkaddress) | Yes|Destination address.      |
-| gateway        | [NetAddress](#netaddress)   | Yes|Gateway address.      |
-| hasGateway     | boolean                     | Yes|Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
-| isDefaultRoute | boolean                     | Yes|Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.|
-| isExcludedRoute<sup>20+</sup>| boolean                     | No|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| interface      | string                      | No| No|NIC name.      |
+| destination    | [LinkAddress](#linkaddress) | No| No|Destination address.      |
+| gateway        | [NetAddress](#netaddress)   | No| No|Gateway address.      |
+| hasGateway     | boolean                     | No| No| Whether a gateway is present. Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
+| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.|
+| isExcludedRoute<sup>20+</sup>| boolean                     | No| Yes|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
 
 ## LinkAddress
 
@@ -2977,10 +2977,10 @@ Defines network link information.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name        |           Type           | Mandatory|        Description        |
-| ------------ | ------------------------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | Yes | Link address.          |
-| prefixLength | number                    | Yes |Length of the link address prefix. |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| address      | [NetAddress](#netaddress) | No| No | Link address.          |
+| prefixLength | number                    | No| No |Length of the link address prefix. |
 
 ## NetAddress
 
@@ -2990,11 +2990,11 @@ Defines a network address.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-|  Name  | Type  |Mandatory|            Description             |
-| ------- | ------ | -- |---------------------------- |
-| address | string | Yes|Network address.                      |
-| family  | number | No|Address family identifier. The value is **1** for IPv4 and **2** for IPv6. The default value is **1**.|
-| port    | number | No|Port number. The value range is \[0, 65535]. The default value is **0**. |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| address | string | No| No|Network address.                      |
+| family  | number | No| Yes|Address family identifier. The value is **1** for IPv4 and **2** for IPv6. The default value is **1**.|
+| port    | number | No| Yes|Port number. The value range is \[0, 65535]. The default value is **0**. |
 
 ## HttpRequest
 

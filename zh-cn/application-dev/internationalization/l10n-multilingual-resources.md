@@ -1,5 +1,11 @@
 # 提供多语言资源
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 功能介绍
 
@@ -24,7 +30,7 @@
 
    > **说明：**
    >   
-   > - 应用本地化的推荐作法是将本地化的内容与核心功能尽可能分开，本地化内容放置在资源目录下。
+   > - 应用本地化的推荐做法是将本地化的内容与核心功能尽可能分开，本地化内容放置在资源目录下。
    > 
    > - 创建资源目录、资源组目录和资源文件的具体操作请参考[资源分类与访问](../quick-start/resource-categories-and-access.md)。
 

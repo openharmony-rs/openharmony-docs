@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.metadataBinding (Metadata Binding)
+# @ohos.multimodalAwareness.metadataBinding (Metadata Binding) (System API)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->
@@ -88,7 +88,7 @@ Decodes the information carried in the image.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise used to return the encoded metadata of the image.|
+  | Promise&lt;string&gt; | Promise used to return the result. used to return the encoded metadata of the image.|
 
 **Error codes** 
 

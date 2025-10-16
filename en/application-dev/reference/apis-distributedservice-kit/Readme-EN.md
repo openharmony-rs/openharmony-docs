@@ -28,7 +28,7 @@
   
   <!--DelEnd-->
   - [Enhanced Connection Error Codes](errorcode-link-enhance.md)
-  - [Proxy Channel Management Error Codes](errorcode_proxyChannelManager.md)
+  - [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md)
 - C API<!--distributed-service-c-->
   - Modules<!--distributed-service-module-->
     - [DeviceManager](capi-devicemanager.md)

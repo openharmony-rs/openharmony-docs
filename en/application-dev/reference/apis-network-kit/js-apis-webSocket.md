@@ -58,6 +58,8 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 > **NOTE**
 >
 > You can listen to **error** events to obtain the operation result. 
+>
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -115,6 +117,8 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 > **NOTE**
 >
 > You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
+>
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -181,6 +185,8 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 > **NOTE**
 >
 > You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
+>
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -248,7 +254,7 @@ Sends data through a WebSocket connection. This API uses an asynchronous callbac
 
 | Name  | Type                    | Mandatory| Description        |
 | -------- | ------------------------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later.|
+| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 | callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.  |
 
 **Error codes**
@@ -311,7 +317,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later.|
+| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 
 **Return value**
 
@@ -512,7 +518,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-Enables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Enables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect6) is called to initiate a connection request.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -559,7 +565,7 @@ Disables listening for the **open** events of a WebSocket connection. This API u
 
 | Name  | Type                   | Mandatory| Description                         |
 | -------- | ----------------------- | ---- | ----------------------------- |
-| type     | string                  | Yes  | Event type. <br /> **open**: event indicating that a WebSocket connection has been opened.|
+| type     | string                  | Yes  | Type of the event to unsubscribe from. Event type. <br />**open**: event indicating that a WebSocket connection has been opened.|
 | callback | AsyncCallback\<Object\> | No  | Callback used to return the result.                   |
 
 **Example**
@@ -660,7 +666,7 @@ Enables listening for the **close** events of a WebSocket connection. This API u
 | Name  | Type                                           | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
 | type     | string                                          | Yes  | Event type.<br/> **close**: event indicating that a WebSocket connection has been closed.|
-| callback | AsyncCallback\<CloseResult\> | Yes  | Callback used to return the result.<br>**close** and **reason** indicate the error code and reason for closing the connection, respectively.|
+| callback | AsyncCallback\<CloseResult\> | Yes  | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
 
 **Example**
 
@@ -692,8 +698,8 @@ Disables listening for the **close** events of a WebSocket connection. This API 
 
 | Name  | Type                                           | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                          | Yes  | Event type. <br /> **close**: event indicating that a WebSocket connection has been closed.|
-| callback | AsyncCallback\<CloseResult\> | No  | Callback used to return the result.<br>**close** and **reason** indicate the error code and reason for closing the connection, respectively.|
+| type     | string                                          | Yes  | Type of the event to unsubscribe from. Event type. <br />**close**: event indicating that a WebSocket connection has been closed.|
+| callback | AsyncCallback\<CloseResult\> | No  | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
 
 **Example**
 
@@ -978,7 +984,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Name | Type                   | Mandatory| Description                                                    |
 | ---------- | ---------------------- | --------------------- | ------------------------------------------------ |
-| data       | string \| ArrayBuffer                       | Yes | Data to send, which can be of the string or ArrayBuffer type.|
+| data       | string \| ArrayBuffer                       | Yes | Data to send, which can be of the string or ArrayBuffer type. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 | connection | [WebSocketConnection](#websocketconnection19) | Yes | Client information.                             |
 
 **Return value**
@@ -1347,7 +1353,7 @@ Enables listening for the **close** events of a WebSocketServer connection. This
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------------------------------- | ---- | ----------------------------------- |
 | type     | string                                          | Yes | Event type, which has a fixed value of **close**. Successful calling of **onclose()** indicates that the connection is closed successfully.|
-| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | Yes | Callback used to return the result.<br>**close** and **reason** indicate the error code and reason for closing the connection, respectively.|
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | Yes | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
 
 **Example**
 
@@ -1378,7 +1384,7 @@ Disables listening for the **close** events of a WebSocketServer connection. Thi
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                          | Yes | Event type, which has a fixed value of **close**. Successful calling of **offclose()** indicates that listening for the **close** events is canceled successfully.|
-| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | No | Callback used to return the result.<br>**close** and **reason** indicate the error code and reason for closing the connection, respectively.|
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | No | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
 
 **Example**
 

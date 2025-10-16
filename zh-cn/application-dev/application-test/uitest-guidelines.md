@@ -9,7 +9,7 @@
 
 ## 概述
 
-UI测试框架（UITest）为开发者提供UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者高效实现可靠的界面自动化测试。
+UI测试框架（UITest）为开发者提供UI界面查找和操作模拟能力，可覆盖UI自动化测试的关键场景，包括界面控件精准查找、UI交互操作（如点击、滑动、文本输入等）、外设行为模拟（如键盘输入、鼠标操作、触控板手势、手写笔动作等），助力开发者开发高效可靠的界面自动化测试用例。
 
 ## 功能全景
 
@@ -49,8 +49,8 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
 开发步骤如下:
 
-1. 在main>ets>pages文件夹下编写Index.ets页面代码，作为被测示例demo。
-  ```ts
+1. 在main > ets > pages文件夹下编写Index.ets页面代码，作为被测示例demo。
+    ```ts
     @Entry
     @Component
     struct Index {
@@ -78,10 +78,9 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
         .height('100%')
         }
     }
-  ```
-
+    ```
 2. 在ohosTest > ets > test文件夹下新建uitest.test.ets文件，并编写具体测试代码。
-  ```ts
+    ```ts
     import { describe, it, expect, Level } from '@ohos/hypium';
     // 导入测试依赖kit
     import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
@@ -121,7 +120,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
         })
       })
     }
-  ```
+    ```
 
 ### 控件查找与操作
 
@@ -156,7 +155,7 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
       })
 
       /**
-       * 查找类型为'Image'的控件，并进行对其进行双指放大操作。
+       * 查找类型为'Image'的控件，并进行对其进行双指放大操作
        */
       it("componentPinch", TestType.FUNCTION, async () => {
         let driver: Driver = Driver.create();
@@ -328,7 +327,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
-  import display from '@ohos.display';
+  import { display } from '@kit.ArkUI';
 
   export default function abilityTest() {
     describe('screenCaptureTest', () => {
@@ -338,7 +337,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
       it('screenCapture', TestType.FUNCTION, async () => {
         let driver = Driver.create();
         // 应用沙箱路径，el2为用户级加密区，base为应用在本设备上存放持久化数据的子目录
-        // 请开发者使用时替换为实际的路径。
+        // 请开发者使用时替换为实际的路径
         let savePath = '/data/storage/el2/base/cache/1.png';
         let res = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100});
       })
@@ -435,9 +434,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
   ```ts
   // ohosTest/ets/test/uitest.test.ets
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
+  import { describe, it, TestType, expect } from '@ohos/hypium';
   // 导入测试依赖kit
-  import { Driver, Component, ON, On } from '@kit.TestKit';
+  import { Driver } from '@kit.TestKit';
   const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
@@ -470,7 +469,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
   export default function abilityTest() {
     describe('touchPadOperationTest', () => {
-      // PC场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
+      // PC/2in1场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
       it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
         try {
@@ -577,9 +576,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 在开发阶段，如果需要快速执行截图、界面操作录制、UI模拟操作注入、控件树获取等测试相关操作，可借助命令行实现，提升测试效率。
 
-> **环境要求：**
->
-> 根据hdc命令行工具指导，完成<!--RP10-->[环境准备](../dfx/hdc.md#环境准备)<!--RP10End-->。确保设备已成功连接，并执行hdc shell。
+### 环境要求
+
+根据hdc命令行工具指导，完成<!--RP10-->[环境准备](../dfx/hdc.md#环境准备)<!--RP10End-->。确保设备已成功连接，并执行hdc shell。
 
 ### 命令列表
 | 命令            | 参数   |说明                              |
@@ -613,7 +612,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -i | - | 不过滤不可见控件，也不做窗口合并。|
 | -a | - | 保存控件的BackgroundColor、Content、FontColor、FontSize、extraAttrs属性数据。<br>**说明** ：默认不保存上述属性数据， **-a和-i不可同时使用。** | 
 | -b | \<bundleName\> | 获取指定包名对应目标窗口的控件树信息。|
-| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明:**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的WinId。|
+| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明:**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的id。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
 | -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
 
@@ -730,7 +729,7 @@ hdc shell uitest uiInput longClick 100 100
 | to_x   | 是                | 滑动终点x坐标。 |
 | to_y   | 是                | 滑动终点y坐标。 |
 | swipeVelocityPps_   | 否      | 滑动速度，单位：px/s，取值范围：200-40000。<br> 默认值：600。取值超出限定范围时，取默认值。 | 
-| stepLength_   | 否 | 滑动步长。默认值：滑动距离/50。<br>  **为实现更好的模拟效果，推荐参数缺省/使用默认值。**  | 
+| stepLength_   | 否 | 滑动步长，单位：px。默认值：滑动距离/50。 <br> **说明：** <br> 滑动距离根据入参给出的滑动起止坐标点计算得出。 <br> **为实现更好的模拟效果，推荐参数缺省/使用默认值。**  | 
 
 
 ```shell  
@@ -760,9 +759,9 @@ hdc shell uitest uiInput drag 10 10 100 100 500
 
 | 参数             | 必填       | 说明 |
 |-------------------|-------------|----------|
-| direction         | 否 | 滑动方向，取值范围：[0,1,2,3]，默认值为0。<br> 0代表向左滑动，1代表向右滑动，2代表向上滑动，3代表向下滑动。    | 
-| swipeVelocityPps_ | 否| 滑动速度，单位：px/s，取值范围：200-40000。<br> **默认值**: 600。取值超出限定范围时，取默认值。    | 
-| stepLength        | 否        | 滑动步长。<br> **默认值**： 滑动距离/50。为更好的模拟效果，推荐参数缺省/使用默认值。 |
+| direction         | 否  | 滑动方向，取值范围：[0,1,2,3]，默认值为0。<br> 0代表向左滑动，1代表向右滑动，2代表向上滑动，3代表向下滑动。    | 
+| swipeVelocityPps_ | 否  | 滑动速度，单位：px/s，取值范围：200-40000。<br> **默认值**: 600。取值超出限定范围时，取默认值。    | 
+| stepLength        | 否  | 滑动步长，单位：px。<br> **默认值**： 如果滑动方向为0、1，默认值为屏幕宽度/200； 如果滑动方向为2、3，默认值为屏幕高度/200。为更好的模拟效果，推荐参数缺省/使用默认值。 |
 
 ```shell  
 # 执行左滑操作。

@@ -4,7 +4,7 @@
 <!--Owner: @qq_42700029-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **PermissionRequest** object. For details about the sample code, see [onPermissionRequest](./arkts-basic-components-web-events.md#onpermissionrequest9).
 

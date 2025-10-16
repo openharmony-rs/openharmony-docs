@@ -106,7 +106,7 @@ factorial(n3)  //  1
 factorial(n4)  //  9.33262154439441e+157 
 ```
 
-`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
+`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
 
 ```typescript
 
@@ -897,7 +897,7 @@ ArkTS要求所有字段在声明时或构造函数中显式初始化，与标准
 class Person {
   name: string; // undefined
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -919,7 +919,7 @@ jack.getName().length; // 运行时异常：name is undefined
 class Person {
   name: string = '';
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -941,7 +941,7 @@ jack.getName().length; // 0, 没有运行时异常
 class Person {
   name?: string; // 可能为`undefined`
 
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
 
@@ -1315,7 +1315,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-类型`K`可以是字符串类型或数值类型(不包括bigint)，而`V`可以是任何类型。
+类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
 
 ```typescript
 interface PersonInfo {
@@ -1969,7 +1969,7 @@ class MyClass {
 >**说明：**
 >
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持bigint。
+> - 注解字段类型不支持BigInt。
 
 注解字段的默认值必须使用常量表达式来指定。<br>常量表达式的场景如下所示：
 * 数字字面量
@@ -2016,7 +2016,7 @@ class Position { // 编译错误：注解的名称不能与注解定义所在作
 }
 
 @interface ClassAuthor { // 编译错误：注解的名称不能与注解定义所在作用域内可见的其他实体名称相同
-  data: sting;
+  data: string;
 }
 ```
 注解不是类型，把注解当类型使用时会出现编译报错（例如：对注解使用类型别名）。

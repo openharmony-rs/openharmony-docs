@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Represents a **WebSchemeHandler** object used to intercept requests for a specific scheme.
 
@@ -26,7 +26,7 @@ import { webview } from '@kit.ArkWeb';
 
 onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void
 
-Called when a request starts. In this callback, you can determine whether to intercept the request. If **false** is returned, the request is not intercepted and the handler is invalid. If **true** is returned, the request is intercepted.
+Called when a request starts. In this callback, you can determine whether to intercept the request. If false is returned, the request is not intercepted and the handler becomes invalid. If true is returned, the request is intercepted.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -38,7 +38,7 @@ Called when a request starts. In this callback, you can determine whether to int
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
@@ -145,7 +145,7 @@ struct WebComponent {
 
 onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 
-Called when a request is complete, under the prerequisite that the request is indicated as intercepted in the **onRequestStart** callback. Specifically, this callback is invoked in the following cases:
+Called when the request is complete. This callback is triggered only when the [onRequestStart](#onrequeststart12) callback intercepts the request. Specifically, this callback is invoked in the following cases:
 
 1. The **WebResourceHandler** object calls **didFail** or **didFinish**.
 
@@ -161,7 +161,7 @@ Called when a request is complete, under the prerequisite that the request is in
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |

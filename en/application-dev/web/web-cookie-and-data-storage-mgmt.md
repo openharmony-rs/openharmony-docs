@@ -4,11 +4,11 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Cookies are data sent from the server to the client. The client holds cookies so that the server can quickly identify its identity and status.
 
-For cookies, the default value of **SameSite** is **Lax**, indicating that cookies are sent only when a user navigates to the source site and are not sent in cross-site requests.
+The default value of **SameSite** is **Lax**, In this setting, cookies are sent only when a user navigates to the source site and are not sent in cross-site requests.
 
 ## Cookie Management
 

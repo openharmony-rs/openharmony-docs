@@ -1580,7 +1580,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | **ID**| **Error Message**|
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled.|
