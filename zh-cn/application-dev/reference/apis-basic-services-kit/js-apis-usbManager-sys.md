@@ -808,8 +808,8 @@ USB设备端口。
 | 名称           | 类型                            | 只读 | 可选 | 说明                                |
 | -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
 | id             | number                          | 否   | 否   | USB端口唯一标识。                   |
-| supportedModes | [PortModeType](#portmodetype)   | 是   | 否   | USB端口所支持的模式的数字组合掩码。 |
-| status         | [USBPortStatus](#usbportstatus) | 是   | 否   | USB端口角色。                       |
+| supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。 |
+| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。                       |
 
 ## USBPortStatus
 
