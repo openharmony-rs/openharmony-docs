@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @oh_create_jiawei-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123;-->
+<!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
 ## 概述
