@@ -21,8 +21,7 @@ WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文�
 通过WorkSchedulerExtensionAbility子类实例来获取。
 
 ```ts
-import WorkSchedulerExtensionAbility from '@ohos.WorkSchedulerExtensionAbility';
-import workScheduler from '@ohos.resourceschedule.workScheduler';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
     onWorkStart(workInfo: workScheduler.WorkInfo) {
