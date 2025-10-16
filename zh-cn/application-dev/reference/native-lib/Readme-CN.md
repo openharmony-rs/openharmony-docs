@@ -25,6 +25,8 @@
     - [VkSurfaceCreateInfoOHOS](_vk_surface_create_info_o_h_o_s.md)
 - ArkTS1.2 builtin变更文档<!--arkts1.1-to-arkts1.2-migration-->
     - [jsonx](arkts1.2-jsonx.md)
+    - [Mutex （互斥锁)](arkts1.2-mutex.md)
+    - [RWLock (读写锁)](arkts1.2-rwlock.md)
 - EAWorker
   - [EAWorker 独占线程任务执行器（ArkTS）](eaworker_managed.md)
   - [EAWorker 独占线程任务执行器（C/C++）](eaworker_native.md)

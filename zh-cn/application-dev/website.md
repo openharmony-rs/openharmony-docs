@@ -5454,6 +5454,8 @@
     - [EGL](reference/native-lib/egl.md)
     - [ICU4C](reference/native-lib/icu4c.md)
     - [Zlib](reference/native-lib/zlib.md)
+    - [Mutex (互斥锁)](reference/native-lib/arkts1.2-mutex.md)
+    - [RWLock (读写锁)](reference/native-lib/arkts1.2-rwlock.md)
     - Vulkan<!--vulkan-guide-->
       - [Vulkan开发指导](reference/native-lib/vulkan-guidelines.md)
       - [Vulkan支持能力](reference/native-lib/vulkan.md)
