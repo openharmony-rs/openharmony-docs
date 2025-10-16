@@ -60,7 +60,7 @@
 下面提供一个简单示例，测试场景：启动被测试页面，检查设备当前显示的页面是否为预期启动的页面。
 
 ```ts
-import { describe, it, expect, Level } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
 
@@ -145,7 +145,7 @@ export default function abilityTest() {
 | level        | 筛选执行方式，指定筛选执行的用例级别。取值为0，1，2，3，4。                                              | -s level 0                                |
 | size         | 筛选执行方式，指定筛选执行的用例规模。取值为small，medium，large。                                        | -s size small        |
 | stress       | 压力执行方式，指定执行用例的执行次数，设置后框架按照设置次数重复执行。取值为正整数。<br> **说明**：从@ohos/hypium 1.0.5版本开始支持。                  | -s stress 1000                            |
-| skipMessage       | 控制显示待执行的测试用例信息全集中是否包含被设置跳过执行的测试套和用例的信息。取值为true（不显示相关信息）/false（显示相关信息），默认为false。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。 | -s skipMessage true                            |
+| skipMessage       | 控制显示待执行的测试用例信息全集中，是否包含被设置跳过执行的测试套和用例的信息。取值为true（不显示相关信息）/false（显示相关信息），默认为false。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。 | -s skipMessage true                            |
 | runSkipped       | 跳过执行方式，指定要执行的跳过测试套&跳过用例。取值为all，skipped，describeName#itName。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。 | -s runSkipped all                            |
 
 * 执行测试脚本
