@@ -1,8 +1,8 @@
 # oh_preferences.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -381,7 +381,7 @@ Unsubscribes from data changes of the specified keys.
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
 | void *context                                                | Pointer to the application context.                                          |
-| [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to unregister.|
+| [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to be invoked when data changes.|
 | const char *keys[]                                           | Pointer to the keys whose changes are not observed.                                     |
 | uint32_t keyCount                                            | Number of keys.                                   |
 
