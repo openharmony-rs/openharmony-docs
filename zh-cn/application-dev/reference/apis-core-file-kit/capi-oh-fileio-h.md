@@ -33,7 +33,7 @@ fileio模块接口定义，使用fileio提供的native接口，进行文件基�
 
 | 名称 | 描述 |
 | -- | -- |
-| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | 获取文件存储位置。 |
+| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | 获取文件存储位置。 |
 
 ## 枚举类型说明
 
@@ -61,7 +61,7 @@ enum FileIO_FileLocation
 ### OH_FileIO_GetFileLocation()
 
 ```
-FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)
+FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 
 **描述**
@@ -69,7 +69,6 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO
 获取文件存储位置。
 
 **起始版本：** 12
-
 
 **参数：**
 
