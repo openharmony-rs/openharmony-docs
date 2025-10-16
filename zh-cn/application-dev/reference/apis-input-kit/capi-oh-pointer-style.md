@@ -1,4 +1,4 @@
-# oh_pointer.h
+# oh_pointer_style.h
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -42,8 +42,6 @@ enum Input_PointerStyle
 鼠标光标样式。
 
 **起始版本：** 22
-
-鼠标光标样式类型。
 
 | 名称                               | 值    | 说明     |图示 |
 | -------------------------------- | ---- | ------ |------ |

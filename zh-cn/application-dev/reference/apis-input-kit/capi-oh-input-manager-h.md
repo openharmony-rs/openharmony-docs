@@ -4416,7 +4416,7 @@ Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_PixelmapNative* pixelMap | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) 自定义鼠标光标像素图。最小限制为资源图本身的最小限制。最大限制为256 x 256px。|
+| OH_PixelmapNative* pixelMap | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)自定义鼠标光标像素图。最小限制为资源图本身的最小限制。最大限制为256 x 256px。|
 | int32_t anchorX | 自定义鼠标光标焦点的水平坐标。该坐标受自定义鼠标光标大小的限制。最小值为0，最大值为资源图的宽度最大值，单位为px。 |
 | int32_t anchorY | 自定义鼠标光标焦点的垂直坐标。该坐标受自定义鼠标光标大小的限制。最小值为0，最大值为资源图的高度最大值，单位为px。 |
 
@@ -4462,7 +4462,7 @@ Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor,
 | 参数项 | 描述 |
 | -- | -- |
 | Input_CustomCursor* customCursor | 自定义鼠标光标资源[Input_CustomCursor](./capi-input-input-customcursor.md)。 |
-| OH_PixelmapNative** pixelMap | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) 自定义鼠标光标像素图。|
+| OH_PixelmapNative** pixelMap | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)自定义鼠标光标像素图。|
 
 **返回：**
 

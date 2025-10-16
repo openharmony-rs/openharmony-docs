@@ -231,7 +231,7 @@ enum Input_KeyCode
 | KEYCODE_FILE = 2627 | 文件按键<br/>**起始版本：** 22 |
 | KEYCODE_BOOKMARKS = 2628 | 书签键<br/>**起始版本：** 22 |
 | KEYCODE_NEXT = 2629 | Page Down键<br/>**起始版本：** 22 |
-| KEYCODE_PLAYPAUSE = 2630 | 多媒体键：播放/暂停。<br/>**起始版本：** 22<br/>与KEYCODE_MEDIA_PLAY_PAUSE的区别为：<br/>KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备 |
+| KEYCODE_PLAYPAUSE = 2630 | 多媒体键：播放/暂停。<br/>**起始版本：** 22<br/>与KEYCODE_MEDIA_PLAY_PAUSE的区别为：<br/>KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。 |
 | KEYCODE_PREVIOUS = 2631 | Page Up键<br/>**起始版本：** 22 |
 | KEYCODE_STOPCD = 2632 | CD停止键<br/>**起始版本：** 22 |
 | KEYCODE_CONFIG = 2634 | 配置键<br/>**起始版本：** 22 |
