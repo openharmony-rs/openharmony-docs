@@ -37,13 +37,7 @@ MDM Kit为企业MDM应用提供设备管理能力，包括企业设备管理与�
 
 在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后在工程Module对应的[module.json5](../quick-start/module-configuration-file.md)配置文件中"requestPermissions"标签下声明要使用的接口所需的权限。例如：
 
-```ts
-"requestPermissions": [
-  {
-    "name": "ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS"
-  },
-]
-```
+<!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
 
 > **说明**
 > 
@@ -55,27 +49,11 @@ MDM Kit为企业MDM应用提供设备管理能力，包括企业设备管理与�
 
 1. 导包。MDM Kit目前包含应用管理、通信管理、安全管理、限制策略、系统内管理、设备设置和查询、设备控制等多种类型的API，请根据业务需求导入使用。以下为导入adminManager和restrictions的示例。
 
-   ```ts
-   import { adminManager, restrictions } from '@kit.MDMKit';
-   ```
+<!-- @[import_mdm_kit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
 
 2. 调用接口，实现相应的功能。以下为禁用设备Wi-Fi的示例。
 
-   ```ts
-   import { Want } from '@kit.AbilityKit';
-   import { restrictions } from '@kit.MDMKit';
-
-   let wantTemp: Want = {
-     bundleName: 'com.example.xxx',
-     abilityName: 'EnterpriseAdminAbility',
-   };
-   try {
-     restrictions.setDisallowedPolicy(wantTemp, "wifi", true);
-     console.info("disable wifi success.");
-   } catch (error) {
-     console.error("disable wifi fail.");
-   }
-   ```
+<!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
 
 ### 调试说明
 
