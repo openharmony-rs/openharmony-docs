@@ -23,7 +23,6 @@ struct loadFontSyncCard {
   
   aboutToDisappear(): void {
     this.fc.unloadFontSync("custom")
-    this.content = "默认字体"
   }
 
   build() {
@@ -36,7 +35,3 @@ struct loadFontSyncCard {
   }
 }
 ```
-
-
-运行效果如下图所示。  
-![WidgetCustomFontDemo](figures/WidgetCustomFontDemo.jpeg)
