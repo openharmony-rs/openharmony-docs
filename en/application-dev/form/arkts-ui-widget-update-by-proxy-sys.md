@@ -45,7 +45,7 @@ The update-through-proxy configuration varies by the type of shared data.
 <!--Del-->
 ## Data Provider Development
 
-For details, see [Data Management](../database/share-data-by-silent-access.md).
+For details, see [Data Management](../database/share-data-by-silent-access-sys.md).
 <!--DelEnd-->
 ## Widget Provider Development (Ephemeral Data)
 

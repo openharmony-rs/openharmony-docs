@@ -7,4 +7,4 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-For details, see [Mission Management](mission-management-overview.md) in the [stage model](ability-terminology.md#stage-model).
+For details, see [Mission Management](mission-management-overview-sys.md) in the [stage model](ability-terminology.md#stage-model).
