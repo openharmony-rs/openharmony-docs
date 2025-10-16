@@ -476,7 +476,7 @@
 
 2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
-3. 如果已有后台服务，请直接进入下一步；如果没有，则[实现一个后台服务（仅对系统应用开放）](serviceextensionability.md#实现一个后台服务仅对系统应用开放)。
+3. 如果已有后台服务，请直接进入下一步；如果没有，则[实现一个后台服务（仅对系统应用开放）](serviceextensionability-sys.md#实现一个后台服务仅对系统应用开放)。
 
 4. 连接一个后台服务。
    - 实现IAbilityConnection接口。IAbilityConnection提供了以下方法供开发者实现：[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)是用来处理连接Service成功的回调，[onDisconnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect)是用来处理Service异常终止的回调，[onFailed()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed)是用来处理连接Service失败的回调。

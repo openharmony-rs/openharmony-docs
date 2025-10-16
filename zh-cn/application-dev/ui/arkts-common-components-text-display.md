@@ -907,7 +907,7 @@ struct Index {
 
 ### 默认菜单支持自定义刷新能力
 
-从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#onpreparemenu20)回调，可在该回调中进行菜单数据设置。
+从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
 ```ts
 // xxx.ets
@@ -1166,8 +1166,7 @@ struct Index {
 
 **参考链接**
 
-[属性字符串转Paragraph数组](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)
-<!--RP3--><!--RP3End-->
+[属性字符串转Paragraph数组](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP3--><!--RP3End-->
 
 ### Text组件如何实现不设置maxLines在固定布局约束下内容超出仍显示省略样式
 

@@ -160,6 +160,10 @@ The device name contains non-compliant content.
 
 Only one stream can be created for the current session.
 
+**错误描述**
+
+每个会话只能创建一个传输流。
+
 **可能原因**
 
 每个会话只能创建一个传输流。当前会话已存在传输流。
@@ -173,6 +177,10 @@ Only one stream can be created for the current session.
 **错误信息**
 
 The stream at the receive end is not started.
+
+**错误描述**
+
+接收端的传输流未启动。
 
 **可能原因**
 
@@ -188,6 +196,10 @@ The stream at the receive end is not started.
 
 Bitrate not supported.
 
+**错误描述**
+
+比特率未支持。
+
 **可能原因**
 
 配置的比特率与设备支持的比特率不匹配。
@@ -201,6 +213,10 @@ Bitrate not supported.
 **错误信息**
 
 Color space not supported.
+
+**错误描述**
+
+色彩空间未支持。
 
 **可能原因**
 

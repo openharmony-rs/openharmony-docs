@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio and Video Session (AVSession) Kit provides the audio and video management service, which manages the playback behavior of all audio and video applications in the system in a unified manner. You can use the kit to quickly build unified audio and video display and control capabilities.
 
@@ -26,7 +26,7 @@ Audio and Video Session (AVSession) Kit provides the audio and video management 
 
   Through the controller, the background playback of applications is visible and controllable.
 
-  The system enforces strict control over background playback. For applications that have not integrated with AVSession or do not have a valid AVSession instance when they move to the background, their audio playback are forcibly paused. This prevents malicious applications from playing audio in the background.
+  The system enforces strict control over background playback. For applications that have not integrated with AVSession or for applications that have integrated with AVSession but do not have a valid AVSession instance when they move to the background, their audio playback are forcibly paused. This addresses the issue of applications playing audio maliciously in the background, making it difficult for users to locate and close the offending application.
 
 ## Basic Concepts
 

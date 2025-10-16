@@ -1,4 +1,10 @@
 # Attribute Modifier
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 With the attribute modifier, you can dynamically set component attributes, complete with the **if/else** syntax and polymorphic style.
 
@@ -7,6 +13,8 @@ With the attribute modifier, you can dynamically set component attributes, compl
 > This feature is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > Ensure that the attributes set in **attributeModifier** are different from those set in other methods. Otherwise, **attributeModifier** does not take effect when the page is refreshed.
+>
+> For simple scenarios requiring conditional assignment of a single component attribute, [ternary operators](../../../ui/state-management/arkts-declarative-ui-description.md#configuring-attributes) provide a concise alternative. Example: **.width(isFullScreen ? 200 : 100)**.
 >
 > **attributeModifier** supports custom components since API version 20.
 
@@ -45,7 +53,7 @@ You need a custom class to implement the **AttributeModifier** API.
 >  In the following APIs, setting the same value or object for the same attribute of the **instance** object will not trigger an update.
 
 ### applyNormalAttribute
-applyNormalAttribute(instance: T) : void
+applyNormalAttribute?(instance: T) : void
 
 Applies the style of a component in the normal state.
 
@@ -53,39 +61,16 @@ Applies the style of a component in the normal state.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                                                                                                        |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | Yes    | Component attribute class, which identifies the type of component to which attributes will be applied, for example, [ButtonAttribute](ts-basic-components-button.md#attributes) for the [Button](ts-basic-components-button.md) component and [TextAttribute](ts-basic-components-text.md#attributes) for the [Text](ts-basic-components-text.md) component.|
+
 ### applyPressedAttribute
-applyPressedAttribute(instance: T) : void
+applyPressedAttribute?(instance: T) : void
 
-Applies the style of a component in the pressed state.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### applyFocusedAttribute
-applyFocusedAttribute(instance: T) : void
-
-Applies the style of a component in the focused state.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### applyDisabledAttribute
-applyDisabledAttribute(instance: T) : void
-
-Applies the style of a component in the disabled state.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### applySelectedAttribute
-applySelectedAttribute(instance: T) : void
-
-Applies the style of a component in the selected state.
-
-In the preceding APIs, **instance** indicates the component type. You can customize these APIs and use them with the **if/else **syntax.
+Applies the style of a component in the pressed state. For implementation examples, see [Example 2: Implementing the Pressed State Effect with a Modifier](#example-2-implementing-the-pressed-state-effect-with-a-modifier) and [Example 8: Implementing the Pressed State Effect for a Custom Component with a Modifier](#example-8-implementing-the-pressed-state-effect-for-a-custom-component-with-a-modifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -93,13 +78,60 @@ In the preceding APIs, **instance** indicates the component type. You can custom
 
 **Parameters**
 
-| Name    | Description                                                                                                        |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| instance | Component attribute class, which identifies the type of component to which attributes will be applied, for example, **ButtonAttribute** for the **Button** component and **TextAttribute** for the **Text** component.|
+| Name   | Type  | Mandatory  | Description                                                                                                        |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | Yes    | Component attribute class, which identifies the type of component to which attributes will be applied, for example, [ButtonAttribute](ts-basic-components-button.md#attributes) for the [Button](ts-basic-components-button.md) component and [TextAttribute](ts-basic-components-text.md#attributes) for the [Text](ts-basic-components-text.md) component.|
+
+### applyFocusedAttribute
+applyFocusedAttribute?(instance: T) : void
+
+Applies the style of a component in the focused state. For the implementation example, see [Example 5: Setting the Focused State Style with a Modifier](#example-5-setting-the-focused-state-style-with-a-modifier).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                                                                                                        |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | Yes    | Component attribute class, which identifies the type of component to which attributes will be applied, for example, [ButtonAttribute](ts-basic-components-button.md#attributes) for the [Button](ts-basic-components-button.md) component and [TextAttribute](ts-basic-components-text.md#attributes) for the [Text](ts-basic-components-text.md) component.|
+
+### applyDisabledAttribute
+applyDisabledAttribute?(instance: T) : void
+
+Applies the style of a component in the disabled state. For the implementation example, see [Example 6: Setting the Disabled State Style with a Modifier](#example-6-setting-the-disabled-state-style-with-a-modifier).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                                                                                                        |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | Yes    | Component attribute class, which identifies the type of component to which attributes will be applied, for example, [ButtonAttribute](ts-basic-components-button.md#attributes) for the [Button](ts-basic-components-button.md) component and [TextAttribute](ts-basic-components-text.md#attributes) for the [Text](ts-basic-components-text.md) component.|
+
+### applySelectedAttribute
+applySelectedAttribute?(instance: T) : void
+
+Applies the style of a component in the selected state.
+
+In the preceding APIs, **instance** indicates the component type. You can customize these APIs and use them with the **if/else **syntax. For the implementation example, see [Example 7: Setting the Selected State Style with a Modifier](#example-7-setting-the-selected-state-style-with-a-modifier).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                                                                                                        |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | Yes    | Component attribute class, which identifies the type of component to which attributes will be applied, for example, [ButtonAttribute](ts-basic-components-button.md#attributes) for the [Button](ts-basic-components-button.md) component and [TextAttribute](ts-basic-components-text.md#attributes) for the [Text](ts-basic-components-text.md) component.|
 
 **Value range of the instance parameter**
 
-AlphabetIndexerAttribute, BadgeAttribute, BlankAttribute, ButtonAttribute, CalendarPickerAttribute, CanvasAttribute, CheckboxAttribute, CheckboxGroupAttribute, CircleAttribute, ColumnAttribute, ColumnSplitAttribute, ShapeAttribute, CommonAttribute, CounterAttribute, DataPanelAttribute, DatePickerAttribute, DividerAttribute, EllipseAttribute, FlexAttribute, FlowItemAttribute, FormLinkAttribute, GaugeAttribute, GridAttribute, GridColAttribute, ColumnAttribute, GridItemAttribute, GridRowAttribute, HyperlinkAttribute, IndicatorComponentAttribute, ImageAttribute, ImageAnimatorAttribute, ImageSpanAttribute, LineAttribute, LinearIndicatorAttribute, ListAttribute, ListItemAttribute, ListItemGroupAttribute, LoadingProgressAttribute, MarqueeAttribute, MenuAttribute, MenuItemAttribute, MenuItemGroupAttribute, NavDestinationAttribute, NavigationAttribute, NavigatorAttribute, NavRouterAttribute, PanelAttribute, PathAttribute, PatternLockAttribute, PolygonAttribute, PolylineAttribute, ProgressAttribute, QRCodeAttribute, RadioAttribute, RatingAttribute, RectAttribute, RefreshAttribute, RelativeContainerAttribute, RichEditorAttribute, RichTextAttribute, RowAttribute, RowSplitAttribute, ScrollAttribute, ScrollBarAttribute, SearchAttribute, SelectAttribute, ShapeAttribute, SideBarContainerAttribute, SliderAttribute, SpanAttribute, StackAttribute, StepperAttribute, StepperItemAttribute, SwiperAttribute, SymbolGlyphAttribute, TabContentAttribute, TabsAttribute, TextAttribute, TextAreaAttribute, TextClockAttribute, TextInputAttribute, TextPickerAttribute, TextTimerAttribute, TimePickerAttribute, ToggleAttribute, VideoAttribute, WaterFlowAttribute, XComponentAttribute, ParticleAttribute<!--Del-->, EffectComponentAttribute, FormComponentAttribute, PluginComponentAttribute, RemoteWindowAttribute, UIExtensionComponentAttribute<!--DelEnd-->
+[AlphabetIndexerAttribute](ts-container-alphabet-indexer.md#attributes), [BadgeAttribute](ts-container-badge.md#attributes), [BlankAttribute](ts-basic-components-blank.md#attributes), [ButtonAttribute](ts-basic-components-button.md#attributes), [CalendarPickerAttribute](ts-basic-components-calendarpicker.md#attributes), [CanvasAttribute](ts-components-canvas-canvas.md#attributes), [CheckboxAttribute](ts-basic-components-checkbox.md#attributes), [CheckboxGroupAttribute](ts-basic-components-checkboxgroup.md#attributes), [CircleAttribute](ts-drawing-components-circle.md#attributes), [ColumnAttribute](ts-container-column.md#attributes), [ColumnSplitAttribute](ts-container-columnsplit.md#attributes), [ShapeAttribute](ts-drawing-components-shape.md#attributes), [CommonAttribute](ts-component-general-attributes.md), [CounterAttribute](ts-container-counter.md#attributes), [DataPanelAttribute](ts-basic-components-datapanel.md#attributes), [DatePickerAttribute](ts-basic-components-datepicker.md#attributes), [DividerAttribute](ts-basic-components-divider.md#attributes), [EllipseAttribute](ts-drawing-components-ellipse.md#attributes), [FlexAttribute](ts-container-flex.md#attributes), [FlowItemAttribute](ts-container-flowitem.md#attributes), [FormLinkAttribute](ts-container-formlink.md#attributes), [GaugeAttribute](ts-basic-components-gauge.md#attributes), [GridAttribute](ts-container-grid.md#attributes), [GridColAttribute](ts-container-gridcol.md#attributes), [ColumnAttribute](ts-container-column.md#attributes), [GridItemAttribute](ts-container-griditem.md#attributes), [GridRowAttribute](ts-container-gridrow.md#attributes), [HyperlinkAttribute](ts-container-hyperlink.md#attributes), [IndicatorComponentAttribute](ts-swiper-components-indicator.md#attributes), [ImageAttribute](ts-basic-components-image.md#attributes), [ImageAnimatorAttribute](ts-basic-components-imageanimator.md#attributes), [ImageSpanAttribute](ts-basic-components-imagespan.md#attributes), [LineAttribute](ts-drawing-components-line.md#attributes), LinearIndicatorAttribute, [ListAttribute](ts-container-list.md#attributes), [ListItemAttribute](ts-container-listitem.md#attributes), [ListItemGroupAttribute](ts-container-listitemgroup.md#attributes), [LoadingProgressAttribute](ts-basic-components-loadingprogress.md#attributes), [MarqueeAttribute](ts-basic-components-marquee.md#attributes), [MenuAttribute](ts-basic-components-menu.md#attributes), [MenuItemAttribute](ts-basic-components-menuitem.md#attributes), MenuItemGroupAttribute, [NavDestinationAttribute](ts-basic-components-navdestination.md#attributes), [NavigationAttribute](ts-basic-components-navigation.md#attributes), [NavigatorAttribute](ts-container-navigator.md#attributes), [NavRouterAttribute](ts-basic-components-navrouter.md#attributes), [PanelAttribute](ts-container-panel.md#attributes), [PathAttribute](ts-drawing-components-path.md#attributes), [PatternLockAttribute](ts-basic-components-patternlock.md#attributes), [PolygonAttribute](ts-drawing-components-polygon.md#attributes), [PolylineAttribute](ts-drawing-components-polyline.md#attributes), [ProgressAttribute](ts-basic-components-progress.md#attributes), [QRCodeAttribute](ts-basic-components-qrcode.md#attributes), [RadioAttribute](ts-basic-components-radio.md#attributes), [RatingAttribute](ts-basic-components-rating.md#attributes), [RectAttribute](ts-drawing-components-rect.md#attributes), [RefreshAttribute](ts-container-refresh.md#attributes), [RelativeContainerAttribute](ts-container-relativecontainer.md#attributes), [RichEditorAttribute](ts-basic-components-richeditor.md#attributes), [RichTextAttribute](ts-basic-components-richtext.md#attributes), [RowAttribute](ts-container-row.md#attributes), [RowSplitAttribute](ts-container-rowsplit.md#attributes), [ScrollAttribute](ts-container-scroll.md#attributes), [ScrollBarAttribute](ts-basic-components-scrollbar.md#attributes), [SearchAttribute](ts-basic-components-search.md#attributes), [SelectAttribute](ts-basic-components-select.md#attributes), [ShapeAttribute](ts-drawing-components-shape.md#attributes), [SideBarContainerAttribute](ts-container-sidebarcontainer.md#attributes), [SliderAttribute](ts-basic-components-slider.md#attributes), [SpanAttribute](ts-basic-components-span.md#attributes), [StackAttribute](ts-container-stack.md#attributes), [StepperAttribute](ts-basic-components-stepper.md#attributes), [StepperItemAttribute](ts-basic-components-stepperitem.md#attributes), [SwiperAttribute](ts-container-swiper.md#attributes), [SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md#attributes), [TabContentAttribute](ts-container-tabcontent.md#attributes), [TabsAttribute](ts-container-tabs.md#attributes), [TextAttribute](ts-basic-components-text.md#attributes), [TextAreaAttribute](ts-basic-components-textarea.md#attributes), [TextClockAttribute](ts-basic-components-textclock.md#attributes), [TextInputAttribute](ts-basic-components-textinput.md#attributes), [TextPickerAttribute](ts-basic-components-textpicker.md#attributes), [TextTimerAttribute](ts-basic-components-texttimer.md#attributes), [TimePickerAttribute](ts-basic-components-timepicker.md#attributes), [ToggleAttribute](ts-basic-components-toggle.md#attributes), [VideoAttribute](ts-media-components-video.md#attributes), [WaterFlowAttribute](ts-container-waterflow.md#attributes), [XComponentAttribute](ts-basic-components-xcomponent.md#attributes), [ParticleAttribute](ts-particle-animation.md#attributes)<!--Del-->, [EffectComponentAttribute](ts-container-effectcomponent-sys.md#attributes), [FormComponentAttribute](ts-basic-components-formcomponent-sys.md#attributes), [PluginComponentAttribute](ts-basic-components-plugincomponent-sys.md#attributes), [RemoteWindowAttribute](ts-basic-components-remotewindow-sys.md#attributes), [UIExtensionComponentAttribute](../js-apis-arkui-uiExtension.md#properties)<!--DelEnd-->
 
 **Supported attributes**
 
@@ -137,6 +169,7 @@ This example demonstrates how to switch the background color of a **Button** com
 
 ```ts
 // xxx.ets
+// Set the custom AttributeModifier of the Button component.
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   public isDark: boolean = false;
 
@@ -173,10 +206,11 @@ struct attributeDemo {
 
 ### Example 2: Implementing the Pressed State Effect with a Modifier
 
-This example demonstrates how to implement a pressed state effect for a **Button** component by binding it to a modifier. For details about how to use the attribute modifier with state management V2, see [Modifier and makeObserved](../../../ui/state-management/arkts-v1-v2-migration.md#modifier).
+This example demonstrates how to implement a pressed state effect for a **Button** component by binding it to a modifier. For details about how to use the attribute modifier with state management V2, see [Modifiers](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#modifiers).
 
 ```ts
 // xxx.ets
+// Set the custom AttributeModifier of the Button component.
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.backgroundColor(Color.Black);
@@ -214,6 +248,7 @@ This example shows how to set the width of a custom modifier using state data. C
 import { CommonModifier } from "@kit.ArkUI";
 
 const TEST_TAG : string = "AttributeModifier";
+// Set the custom AttributeModifier for the common component attributes.
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
     super.applyNormalAttribute?.(instance);
@@ -248,7 +283,7 @@ struct Index {
             this.width1 = 10;
             console.log(TEST_TAG, "setGroup1");
           } else {
-            this.width1 = 10;
+            this.height1 = 10;
             console.log(TEST_TAG, "setGroup2");
           }
         })
@@ -262,13 +297,14 @@ struct Index {
 
 ### Example 4: Combining Modifier and Custom Modifier Attributes
 
-In this example, the custom modifier sets the **width** and **height** attributes, and the **borderStyle** and **borderWidth** attributes are set through a button click. In this case, all the four attributes take effect when the button is clicked.
+In this example, the width and height are set by using a custom Modifier. When the button is clicked, [borderStyle](ts-appendix-enums.md#borderstyle) and [borderWidth](ts-universal-attributes-border.md#borderwidth) are set, and the four attributes take effect at the same time.
 
 ```ts
 import { CommonModifier } from "@kit.ArkUI";
 
 const TEST_TAG: string = "AttributeModifier";
 
+// Set the custom AttributeModifier for the common component attributes.
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
     super.applyNormalAttribute?.(instance);
@@ -328,6 +364,7 @@ struct Index {
 This example demonstrates how to implement a focused state style for a **Button** component by binding it to a modifier. After **Button2** is clicked, the **Button** component displays the focused style when it has focus.
 
 ```ts
+// Set the custom AttributeModifier of the Button component.
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
   applyNormalAttribute(instance: ButtonAttribute): void {
@@ -371,6 +408,7 @@ struct attributeDemo {
 This example demonstrates how to implement a disabled state style for a **Button** component by binding it to a modifier. After **Button2** is clicked, the **Button** component displays the disabled style when it is disabled.
 
 ```ts
+// Set the custom AttributeModifier of the Button component.
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyDisabledAttribute(instance: ButtonAttribute): void {
     instance.width(200);
@@ -408,6 +446,7 @@ struct attributeDemo {
 This example demonstrates how to implement a selected state style for a **Radio** component by binding it to a modifier.
 
 ```ts
+// Set the custom AttributeModifier for the Radio component.
 class MyRadioModifier implements AttributeModifier<RadioAttribute> {
   applyNormalAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Blue);
@@ -453,6 +492,7 @@ This example demonstrates how to implement a pressed state effect for a custom c
 
 ```ts
 // xxx.ets
+// Set the custom AttributeModifier for the custom component attribute.
 class CustomModifier implements AttributeModifier<CommonAttribute> {
   applyNormalAttribute(instance: CommonAttribute): void {
     instance.backgroundColor(Color.Blue)
@@ -471,7 +511,7 @@ struct attributePressedDemo {
   build() {
     Row() {
       Column() {
-        ChildCompoent()
+        ChildComponent()
           .attributeModifier(this.modifier)
       }
       .width('100%')
@@ -480,8 +520,9 @@ struct attributePressedDemo {
   }
 }
 
+// Custom component
 @Component
-struct ChildCompoent {
+struct ChildComponent {
   build() {
     Text("common").fontColor(Color.Green).fontSize(28).textAlign(TextAlign.Center)
       .width('35%')
@@ -499,32 +540,37 @@ Attributes not listed in the table below are supported by default.
 
 | Attribute                    | Supported/Unsupported| Error Message                 | Remarks                                     |
 | ------------------------ | -------- | ------------------------- | ----------------------------------------- |
-| accessibilityChecked     | Not supported  | is not callable           | -                                         |
-| accessibilitySelected    | Not supported  | is not callable           | -                                         |
-| accessibilityTextHint    | Not supported  | is not callable           | -                                         |
-| accessibilityVirtualNode | Not supported  | is not callable           | Attributes that accept a CustomBuilder are not supported.              |
-| animation                | Not supported  | Method not implemented.   | Animation-related attributes are not supported.                |
-| attributeModifier        | Not supported  | -                         | **attributeModifier** does not take effect when nested.|
-| background               | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| backgroundFilter         | Not supported  | is not callable           | -                                         |
-| bindContentCover         | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| bindContextMenu          | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| bindPopup                | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| bindSheet                | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
-| chainWeight              | Not supported  | is not callable           | -                                         |
-| compositingFilter        | Not supported  | is not callable           | -                                         |
-| drawModifier             | Not supported  | is not callable           | Modifier-related attributes are not supported.               |
-| foregroundFilter         | Not supported  | is not callable           | -                                         |
-| freeze                   | Not supported  | is not callable           | -                                         |
-| gesture                  | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
-| gestureModifier          | Not supported  | is not callable           | Modifier-related attributes are not supported.               |
-| onAccessibilityHover     | Not supported  | is not callable           | -                                         |
-| onDragStart              | Not supported  | Method not implemented.   | Attributes that return a CustomBuilder are not supported.            |
-| parallelGesture          | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
-| priorityGesture          | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
-| reuseId                  | Not supported  | Method not implemented.   | -                                         |
-| stateStyles              | Not supported  | Method not implemented.   | **stateStyles**-related attributes are not supported.            |
-| useSizeType              | Not supported  | Method not implemented.   | Deprecated attributes are not supported.                       |
-| visualEffect             | Not supported  | is not callable           | -                                         |
-| bindMenu                 | Partially supported| -                         | Attributes that accept a CustomBuilder are not supported.              |
-| dragPreview              | Partially supported| Builder is not supported. | Attributes that accept a CustomBuilder are not supported.              |
+| [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)     | Not supported  | is not callable           | -                                         |
+| [accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)    | Not supported  | is not callable           | -                                         |
+| [accessibilityTextHint](ts-universal-attributes-accessibility.md#accessibilitytexthint12)    | Not supported  | is not callable           | -                                         |
+| [accessibilityVirtualNode](ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)  | Not supported  | is not callable           | Attributes that accept a CustomBuilder are not supported.              |
+| [animation](ts-animatorproperty.md#animation)                | Not supported  | Method not implemented.   | Animation-related attributes are not supported.                |
+| [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)        | Not supported  | -                         | **attributeModifier** does not take effect when nested.|
+| [background](ts-universal-attributes-background.md#background10)                 | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
+| [backgroundFilter](ts-universal-attributes-filter-effect.md#backgroundfilter)         | Not supported  | is not callable           | -                                         |
+| [bindContentCover](ts-universal-attributes-modal-transition.md#bindcontentcover)           | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
+| [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)          | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
+| [bindPopup](ts-universal-attributes-popup.md#bindpopup)               | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
+| [bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)                | Not supported  | Method not implemented.   | Attributes that accept a CustomBuilder are not supported.              |
+| [chainWeight](ts-universal-attributes-location.md#chainweight14)              | Not supported  | is not callable           | -                                         |
+| [compositingFilter](ts-universal-attributes-filter-effect.md#compositingfilter)        | Not supported  | is not callable           | -                                         |
+| [drawModifier](ts-universal-attributes-draw-modifier.md#drawmodifier)             | Not supported  | is not callable           | Modifier-related attributes are not supported.               |
+| [foregroundFilter](ts-universal-attributes-filter-effect.md#foregroundfilter)         | Not supported  | is not callable           | -                                         |
+| [freeze](ts-universal-attributes-image-effect.md#freeze18)                   | Not supported  | is not callable           | -                                         |
+| [gesture](ts-gesture-settings.md#gesture)                   | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
+| [gestureModifier](ts-universal-attributes-gesture-modifier.md#gesturemodifier)          | Not supported  | is not callable           | Modifier-related attributes are not supported.               |
+| [onAccessibilityHover](ts-universal-accessibility-hover-event.md#onaccessibilityhover)      | Not supported  | is not callable           | -                                         |
+| [onDigitalCrown](ts-universal-events-crown.md#ondigitalcrown)            | Not supported  | is not callable.          | -                                       |
+| [onDragStart](ts-universal-events-drag-drop.md#ondragstart)              | Not supported  | Method not implemented.   | Attributes that return a CustomBuilder are not supported.            |
+| [parallelGesture](ts-gesture-settings.md#parallelgesture)          | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
+| [priorityGesture](ts-gesture-settings.md#prioritygesture)          | Not supported  | Method not implemented.   | Gesture-related attributes are not supported.                |
+| [reuseId](ts-universal-attributes-reuse-id.md#reuseid)                  | Not supported  | Method not implemented.   | -                                         |
+| [stateStyles](ts-universal-attributes-polymorphic-style.md#statestyles)              | Not supported  | Method not implemented.   | **stateStyles**-related attributes are not supported.            |
+| useSizeType<sup>deprecated</sup>             | Not supported  | Method not implemented.   | Deprecated attributes are not supported.                       |
+| [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect)             | Not supported  | is not callable           | -                                         |
+| [bindMenu](ts-universal-attributes-menu.md#bindmenu11)                 | Partially supported| -                         | Attributes that accept a CustomBuilder are not supported.              |
+| [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview15)              | Partially supported| Builder is not supported. | Attributes that accept a CustomBuilder are not supported.              |
+| [onVisibleAreaChange](ts-universal-component-visible-area-change-event.md#onvisibleareachange)              | Partially supported| Method not implemented. | Supported since API version 20.             |
+| [onTouchIntercept](ts-universal-attributes-on-touch-intercept.md#ontouchintercept)              | Partially supported| is not callable. | Supported since API version 20.             |
+| [onPreDrag](ts-universal-events-drag-drop.md#onpredrag12)              | Partially supported| Method not implemented. | Supported since API version 20.             |
+| [onChildTouchTest](ts-universal-attributes-on-child-touch-test.md#onchildtouchtest11)              | Partially supported| is not callable. | Supported since API version 20.             |

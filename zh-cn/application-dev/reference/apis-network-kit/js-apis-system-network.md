@@ -60,7 +60,7 @@ export default class Network {
   getType() {
     network.getType({
       success: (data) => {
-        console.log('success get network type:' + data.type);
+        console.info('success get network type:' + data.type);
       }
     });
   }
@@ -100,7 +100,7 @@ export default class Network {
   subscribe() {
     network.subscribe({
       success: (data) => {
-        console.log('success get network type:' + data.type);
+        console.info('success get network type:' + data.type);
       }
     });
   }

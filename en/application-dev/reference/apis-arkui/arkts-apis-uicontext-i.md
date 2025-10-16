@@ -1,7 +1,7 @@
 # Interfaces (Others)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92; @liyi0903; @mayaolll-->
+<!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
 <!--Designer: @piggyguy; @liyi0903; @jiangdayuan-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @HelloCrease-->
@@ -57,12 +57,12 @@ Defines the information provided when a specific gesture callback is triggered.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory      |Description      |
-| ------ | ---- | ---------- |---------- |
-| event | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-settings.md#gestureevent)  |Yes      |Gesture event object.|
-| current | [GestureRecognizer](arkui-ts/ts-gesture-blocking-enhancement.md#gesturerecognizer)    |Yes     |Gesture recognizer object. Detailed gesture information can be obtained from this object. However, avoid retaining this object locally as it may become invalid after the node is released.|
-| currentPhase  | [GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20) |Yes     | Phase of the gesture action callback.|
-| node  | [FrameNode](js-apis-arkui-frameNode.md) |No     |Node that triggers the gesture. The default value is **null**, indicating that no specific node triggers the gesture.|
+| Name  | Type  | Read Only  |   Optional   |Description      |
+| ------ | ---- | ---------- |---------- |---------- |
+| event | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent)   |No |  No      |Gesture event object.|
+| current | [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12)    |No |  No     |Gesture recognizer object. Detailed gesture information can be obtained from this object. However, avoid retaining this object locally as it may become invalid after the node is released.|
+| currentPhase  | [GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20) |No |  No     | Phase of the gesture action callback.|
+| node  | [FrameNode](js-apis-arkui-frameNode.md) |No  |  Yes  |Node that triggers the gesture. The default value is **null**, indicating that no specific node triggers the gesture.|
 
 ## GestureObserverConfigs<sup>20+</sup>
 
@@ -72,6 +72,6 @@ Specifies the gesture callback phases to listen for (passing an empty array will
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory      |Description      |
-| ------ | ---- | ---------- |---------- |
-|  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |Yes      |Gesture event object.|
+| Name  | Type  | Read-Only |  Optional      |Description      |
+| ------ | ---- | ---------- |---------- |---------- |
+|  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |No |  No      |Gesture event object.|

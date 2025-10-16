@@ -58,6 +58,7 @@ static setSystemLanguage(language: string): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // 设置系统语言
   try {
@@ -101,6 +102,7 @@ static setSystemRegion(region: string): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setSystemRegion('CN');  // 设置系统当前地区为 "CN"
@@ -147,6 +149,7 @@ static setSystemLocale(locale: string): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setSystemLocale('zh-CN');  // 设置系统当前区域ID为 "zh-CN"
@@ -188,6 +191,7 @@ static set24HourClock(option: boolean): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // 将系统时制设置为24小时制
   try {
@@ -230,6 +234,7 @@ static addPreferredLanguage(language: string, index?: number): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // 将语言zh-CN添加到系统偏好语言列表中
   let language = 'zh-CN';
@@ -273,6 +278,7 @@ static removePreferredLanguage(index: number): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // 删除系统偏好语言列表中的第一个偏好语言
   let index: number = 0;
@@ -315,6 +321,7 @@ static setUsingLocalDigit(flag: boolean): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setUsingLocalDigit(true); // 打开本地化数字开关
@@ -360,6 +367,7 @@ static setTemperatureType(type: TemperatureType): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setTemperatureType(i18n.TemperatureType.CELSIUS); // 设置温度单位为摄氏度
@@ -404,6 +412,7 @@ static setFirstDayOfWeek(type: WeekDay): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setFirstDayOfWeek(i18n.WeekDay.MON); // 设置用户偏好的周起始日为周一
@@ -967,6 +976,8 @@ constructor()
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
   ```
 
@@ -1007,6 +1018,7 @@ getLanguageInfoArray(languages: Array&lt;string&gt;, options?: SortOptions): Arr
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // 当系统语言为zh-Hans，系统地区为CN，系统区域为zh-Hans-CN时
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
@@ -1058,6 +1070,7 @@ getRegionInfoArray(regions: Array&lt;string&gt;, options?: SortOptions): Array&l
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // 当系统语言为zh-Hans，系统地区为CN，系统区域为zh-Hans-CN时
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
@@ -1099,6 +1112,7 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();

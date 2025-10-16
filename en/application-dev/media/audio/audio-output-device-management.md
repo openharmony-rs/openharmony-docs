@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 Applications can manage global audio output devices in either of the following ways:
 - Typically, applications can [manage global audio output devices using AudioRoutingManager](#managing-global-audio-output-devices-with-audioroutingmanager).
 - Starting from API version 20, AudioSessionManager offers certain APIs for managing output devices. Applications can now [manage global audio output devices using AudioSession](#managing-global-audio-output-devices-with-audiosession). This is useful for simultaneously managing audio focus and output.
@@ -28,15 +28,15 @@ let audioRoutingManager = audioManager.getRoutingManager();  // Call an API of A
 
 The table below lists the supported output devices.
 
-| Name| Value| Description|
+| Name| Value| Description| 
 | -------- | -------- | -------- |
-| EARPIECE | 1 | Earpiece.|
-| SPEAKER | 2 | Speaker.|
-| WIRED_HEADSET | 3 | Wired headset with a microphone.|
-| WIRED_HEADPHONES | 4 | Wired headset without microphone.|
-| BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.|
-| BLUETOOTH_A2DP | 8 | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.|
-| USB_HEADSET | 22 | USB Type-C headset.|
+| EARPIECE | 1 | Earpiece.| 
+| SPEAKER | 2 | Speaker.| 
+| WIRED_HEADSET | 3 | Wired headset with a microphone.| 
+| WIRED_HEADPHONES | 4 | Wired headset without microphone.| 
+| BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.| 
+| BLUETOOTH_A2DP | 8 | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.| 
+| USB_HEADSET | 22 | USB Type-C headset.| 
 
 ### Obtaining Output Device Information
 
@@ -177,7 +177,7 @@ let audioSessionManager = audioManager.getSessionManager();  // Call an API of A
 Call [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) to set the default output device.
 > **NOTE**
 >- As AudioSession is an application-level setting, calling this API to set the default audio output device will override the audio output device information set by the **setDefaultOutputDevice** API of AudioRenderer.
->- To cancel the default output device set by calling **setDefaultOutputDevice**, you can set the parameter to **audio.DeviceType.DEFAULT**, which returns the device selection to the system. Otherwise, each time **activateAudioSession** is called, the default output device selected by the application takes effect.
+> - To cancel the default output device set by calling **setDefaultOutputDevice**, you can set the parameter to **audio.DeviceType.DEFAULT**, which returns the device selection to the system. Otherwise, each time **activateAudioSession** is called, the default output device selected by the application takes effect.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

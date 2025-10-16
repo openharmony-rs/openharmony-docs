@@ -159,7 +159,7 @@ struct Page {
       return this.count * 2;
     }
   
-    // @Computed装饰的属性是只读的，开发者自己实现的setter不生效，且产生编译时报错
+    // @Computed装饰的属性是只读的，开发者自己实现的setter不生效，编译时报错。
     set double(newValue : number) {
       this.count = newValue / 2;
     }
@@ -168,7 +168,7 @@ struct Page {
       Scroll() {
         Column({ space: 3 }) {
           Text(`${this.count}`)
-          // 错误写法，@Computed装饰的属性是只读的，无法与双向绑定连用。
+          // 错误写法，@Computed装饰的属性是只读的，无法与双向绑定连用，编译时报错。
           Child({ double: this.double!! })
         }
       }

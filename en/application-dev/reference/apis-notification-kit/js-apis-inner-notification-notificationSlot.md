@@ -4,9 +4,9 @@
 <!--Owner: @michael_woo888-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
-The **NotificationSlot** module provides APIs for defining the notification slot.
+Describes notification slots. The notification reminder modes vary according to notification slots.
 
 > **NOTE**
 >
@@ -18,9 +18,9 @@ The **NotificationSlot** module provides APIs for defining the notification slot
 
 | Name                | Type                | Read-Only| Optional| Description                  |
 | -------------------- | ---------------------|---- | --- |----------------------|
-| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | No| Yes | Notification slot type.<br>This API is deprecated since API version 11. You are advised to use **notificationType** instead.               |
+| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | No| Yes | Notification slot type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use **notificationType** instead.               |
 | notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | No| Yes | Notification slot type.               |
-| level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | No| Yes | Notification level.<br>This API is deprecated since API version 20. You are advised to use **notificationLevel** instead.|
+| level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | No| Yes | Notification level.<br>This attribute is supported since API version 7 and deprecated since API version 20. You are advised to use **notificationLevel** instead.|
 | notificationLevel<sup>20+</sup>                 | [notificationManager.SlotLevel](js-apis-notificationManager.md#slotlevel) | No| Yes | Notification level.               |
 | desc                 | string                | No| Yes | Notification slot description.           |
 | badgeFlag            | boolean               | No| Yes | Whether to display the badge.<br> - **true**: Yes.<br> - **false**: No.             |

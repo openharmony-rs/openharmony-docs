@@ -4,7 +4,7 @@
 <!--Owner: @xuchangda-->
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The AlbumPickerComponent embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
 

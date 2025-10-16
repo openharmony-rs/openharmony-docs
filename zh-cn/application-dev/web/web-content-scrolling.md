@@ -52,3 +52,65 @@
   ```javascript
   window.scrollTo(0, 500); //滚动到某个固定像素位置（如：500px)
   ```
+
+## 点击状态栏回顶
+
+当网页处于非顶部状态或向下抛滑时，此时若需返回网页顶部，可以使用[backToTop](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#backtotop22)方法，开启后通过点击状态栏，打断抛滑并将网页滚动到网页顶部。
+
++ 示例代码：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .backToTop(true)
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+          .blue {
+            background-color: lightblue;
+          }
+          .green {
+            background-color: lightgreen;
+          }
+          .blue, .green {
+           font-size:16px;
+           height:200px;
+           text-align: center;       /* 水平居中 */
+           line-height: 200px;       /* 垂直居中（值等于容器高度） */
+          }
+      </style>
+  </head>
+  <body>
+  <div class="blue" >webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  </body>
+  </html>
+  ```
+
++ 效果展示：<br>
+![backToTop](figures/backToTop.gif)

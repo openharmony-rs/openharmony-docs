@@ -47,6 +47,7 @@ import { config } from '@kit.AccessibilityKit';
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | No| No| Interval between repeated clicks.                                            |
 
 For a boolean return value, **True** means that the feature is enabled, and **False** means the opposite.
+ 
 ## enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
@@ -303,7 +304,7 @@ Cancels a listener for changes in the list of enabled accessibility extension ab
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type |  string | Yes| Listening type. The value is fixed at **'enabledAccessibilityExtensionListChange'**, indicating listening for changes in the list of enabled accessibility extension abilities.|
-| callback | Callback&lt;void&gt; | No| Callback for the event. The value must be the same as the value of **callback** in **on('enabledAccessibilityExtensionListChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;void&gt; | No| Callback used to unregister. The value must be the same as the value of **callback** in **on('enabledAccessibilityExtensionListChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 
@@ -381,7 +382,7 @@ Cancels a listener for changes in the list of installed accessibility extension 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type |  string | Yes| Listening type. The value is fixed at **'installedAccessibilityListChange'**, indicating listening for changes in the list of installed accessibility extension abilities.|
-| callback | Callback&lt;void&gt; | No| Callback for the event. The value must be the same as the value of **callback** in **on('installedAccessibilityListChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;void&gt; | No| Callback used to unregister. The value must be the same as the value of **callback** in **on('installedAccessibilityListChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 
@@ -673,7 +674,7 @@ Cancels the listener for property changes. This API uses an asynchronous callbac
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;T&gt; | No| Callback for the event. The value must be the same as the value of **callback** in **on()**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;T&gt; | No| Callback used to unregister. The value must be the same as the value of **callback** in **on()**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 

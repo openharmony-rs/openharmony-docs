@@ -888,3 +888,51 @@ struct Index {
 }
 ```
 ![DrawingCanvas示例图](./figures/DrawingCanvas.PNG)
+
+### 示例4（XComponent实现沉浸式效果）
+
+从API version 20开始，在示例3的基础上，调用setXComponentSurfaceRect接口主动设置Surface显示区域达到沉浸式效果。
+
+```ts
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+import { display } from '@kit.ArkUI'
+@Entry
+@Component
+struct Index {
+  private xcController: XComponentController = new XComponentController();
+  private mCanvas: DrawingCanvas | null = null;
+  @State screenWidth: number = 0;
+  @State screenHeight:number = 0;
+  aboutToAppear() {
+    try {
+      const displayClass = display.getDefaultDisplaySync();
+      this.screenWidth = displayClass.width;
+      this.screenHeight = displayClass.height;
+    } catch (error) {
+      console.error(`失败代码: ${error.code}，信息: ${error.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      XComponent({ type: XComponentType.SURFACE, controller: this.xcController })
+        .width("100%")
+        .height("100%")
+        .onLoad(() => {
+          // 请在此处设置Surface大小，过大可能会导致绘制时间长
+          this.xcController.setXComponentSurfaceRect({surfaceWidth: this.screenWidth, surfaceHeight: this.screenHeight, offsetX: 0, offsetY: 0});
+          this.mCanvas = this.xcController.lockCanvas();
+          if (this.mCanvas) {
+            this.mCanvas.drawColor(255, 39, 135, 217); // 每次绘制前必须完全重绘整个XComponent区域，可以调用此方法实现
+            this.xcController.unlockCanvasAndPost(this.mCanvas);
+          }
+        })
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]);
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+![setXComponentSurfaceRect示例图](./figures/setXComponentSurfaceRect04.jpeg)

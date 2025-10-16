@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 When an application performs image decoding, it needs to allocate the corresponding memory. This guide describes different types of memory and how to allocate them.
 
@@ -42,7 +42,6 @@ You can call [OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference
 
   - SHARE_MEMORY time consumption: Single-frame rendering of a 4K image takes about 20 ms.
   - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
-
 - **Reduced CPU load**
 
   DMA_ALLOC allows the GPU to directly access decoded data, reducing the load caused by memory copying.

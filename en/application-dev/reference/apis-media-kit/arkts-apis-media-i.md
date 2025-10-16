@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -126,17 +126,17 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
-| Name           | Type                                    | Mandatory| Description                                                        |
-| --------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)     | No  | Type of the audio source to record. This parameter is mandatory for audio recording.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)     | No  | Type of the video source to record. This parameter is mandatory for video recording.                  |
-| profile         | [AVRecorderProfile](#avrecorderprofile9) | Yes  | Recording profile. This parameter is mandatory.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| url             | string                                   | Yes  | Recording output URL: fd://xx (fd number).<br>![img](figures/en-us_image_url.png)<br>This parameter is mandatory.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-|fileGenerationMode<sup>12+</sup> | [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12)  | No  |  Mode for creating the file, which is used together with [on('photoAssetAvailable')](arkts-apis-media-AVRecorder.md#onphotoassetavailable12).|
-| rotation<sup>(deprecated)</sup>        | number                                   | No  | Rotation angle of the recorded video. The value can be 0 (default), 90, 180, or 270 for MP4 videos.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).videoOrientation** instead. If both parameters are set, **[AVMetadata](#avmetadata11).videoOrientation** is used.    |
-| location<sup>(deprecated)</sup>        | [Location](#location)                    | No  | Geographical location of the recorded video. By default, the geographical location information is not recorded.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).location** instead. If both parameters are set, **[AVMetadata](#avmetadata11).location** is used.|
-| metadata<sup>12+</sup>        | [AVMetadata](#avmetadata11)              | No  | Metadata. For details, see [AVMetadata](#avmetadata11).                 |
-| maxDuration<sup>18+</sup>        | number             | No  | Maximum recording duration, in seconds. The value range is [1, 2^31-1]. If an invalid value is provided, it is reset to the maximum allowed duration. Once the recording reaches the specified duration, it stops automatically and notifies via the stateChange callback that the recording has stopped: [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) = 'stopped', [StateChangeReason](arkts-apis-media-e.md#statechangereason9) = BACKGROUND.|
+| Name           | Type                                    | Read-Only| Optional| Description                                                        |
+| --------------- | ---------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)     | No  | Yes  | Type of the audio source to record. This parameter is mandatory for audio recording.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)     | No  | Yes  | Type of the video source to record. This parameter is mandatory for video recording.                  |
+| profile         | [AVRecorderProfile](#avrecorderprofile9) | No  | No  | Recording profile. This parameter is mandatory.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| url             | string                                   | No  | No  | Recording output URL: fd://xx (fd number).<br>![img](figures/en-us_image_url.png)<br>This parameter is mandatory.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+|fileGenerationMode<sup>12+</sup> | [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12)  | No  |  Yes  |  Mode for creating the file, which is used together with [on('photoAssetAvailable')](arkts-apis-media-AVRecorder.md#onphotoassetavailable12).|
+| rotation<sup>(deprecated)</sup>        | number                                   | No  | Yes  | Rotation angle of the recorded video. The value can be 0 (default), 90, 180, or 270 for MP4 videos.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).videoOrientation** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).videoOrientation** is used.    |
+| location<sup>(deprecated)</sup>        | [Location](#location)                    | No  | Yes  | Geographical location of the recorded video. By default, the geographical location information is not recorded.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).location** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).location** is used.|
+| metadata<sup>12+</sup>        | [AVMetadata](#avmetadata11)              | No  | Yes  | Metadata. For details, see [AVMetadata](#avmetadata11).                 |
+| maxDuration<sup>18+</sup>        | number             | No  | Yes  | Maximum recording duration, in seconds. The value range is [1, 2^31-1]. If an invalid value is provided, it is reset to the maximum allowed duration. Once the recording reaches the specified duration, it stops automatically and notifies via the stateChange callback that the recording has stopped: [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) = 'stopped', [StateChangeReason](arkts-apis-media-e.md#statechangereason9) = BACKGROUND.|
 
 ## AVRecorderProfile<sup>9+</sup>
 
@@ -144,21 +144,21 @@ Describes the audio and video recording profile.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
-| Name            | Type                                        | Mandatory| Description                                                        |
-| ---------------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| audioBitrate     | number                                       | No  | Audio encoding bit rate. This parameter is mandatory for audio recording.<br>Supported bit rate ranges:<br>- Range [32000 - 500000] for the AAC encoding format.<br>- Range [64000] for the G.711 μ-law encoding format.<br>- Range [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000] for the MP3 encoding format.<br>When the MP3 encoding format is used, the mapping between the sample rate and bit rate is as follows:<br>- When the sample rate is lower than 16 kHZ, the bit rate range is [8000 - 64000].<br>- When the sample rate ranges from 16 kHz to 32 kHz, the bit rate range is [8000 - 160000].<br>- When the sample rate is greater than 32 kHz, the bit rate range is [32000 - 320000].<br>- Range [4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200] for the AMR-NB encoding format.<br>- Range [6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850] for the AMR-WB encoding format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| audioChannels    | number                                       | No  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1 - 8] for the AAC encoding format.<br>- Range [1] for the G.711 μ-law encoding format.<br>- Range [1 - 2] for the MP3 encoding format.<br>- Range [1] for the AMR-NB and AMR-WB encoding formats.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Audio encoding format. This parameter is mandatory for audio recording. Currently, AUDIO_AAC, AUDIO_MP3, AUDIO_G711MU, AUDIO_AMR_NB, and AUDIO_AMR_WB are supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| audioSampleRate  | number                                       | No  | Audio sample rate. This parameter is mandatory for audio recording.<br>Supported sample rate ranges:<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000] for the AAC encoding format.<br>- Range [8000] for the G.711 μ-law encoding format.<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000] for the MP3 encoding format.<br>- Range [8000] for the AMR-NB encoding format.<br>- Range [16000] for the AMR-WB encoding format.<br>Variable bit rate. The bit rate is for reference only.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | Yes  | Container format of a file. This parameter is mandatory. Currently, the MP4, M4A, MP3, WAV, AMR, and AAC container formats are supported. The default container format for AAC audio is ADTS frame format. The AUDIO_MP3 encoding format is not supported within the MP4 container format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| videoBitrate     | number                                       | No  | Video encoding bit rate. This parameter is mandatory for video recording. The value range is [10000 - 100000000]. |
-| videoCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Video encoding format. This parameter is mandatory for video recording. Currently, **VIDEO_AVC** and **VIDEO_HEVC** are supported.|
-| videoFrameWidth  | number                                       | No  | Width of a video frame. This parameter is mandatory for video recording. The value range is [176 - 4096].        |
-| videoFrameHeight | number                                       | No  | Height of a video frame. This parameter is mandatory for video recording. The value range is [144 - 4096].        |
-| videoFrameRate   | number                                       | No  | Video frame rate. This parameter is mandatory for video recording. The recommended value range is [1 - 60].            |
-| isHdr<sup>11+</sup>            | boolean                        | No  | HDR encoding. This parameter is optional for video recording. The default value is **false**, and there is no requirement on the encoding format. When **isHdr** is set to **true**, the encoding format must be **video/hevc**.|
-| enableTemporalScale<sup>12+</sup>            | boolean                        | No  | Whether temporal layered encoding is supported. This parameter is optional for video recording. The default value is **false**. If this parameter is set to **true**, some frames in the video output streams can be skipped without being encoded.|
-| enableBFrame<sup>20+</sup>            | boolean                        | No  | Whether B-frame encoding is enabled for video recording. **true** if enabled (valid only when the video encoding format is H.265 and the device hardware supports B-frame encoding), **false** otherwise.<br>This parameter is optional in video recording scenarios. The default value is **false**.|
+| Name            | Type                                        | Read-Only| Optional| Description                                                        |
+| ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| audioBitrate     | number                                       | No  | Yes  | Audio encoding bit rate. This parameter is mandatory for audio recording.<br>Supported bit rate ranges:<br>- Range [32000, 500000] for the AAC encoding format.<br>- 64000 for the G.711 μ-law encoding format.<br>- Range [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000] for the MP3 encoding format.<br>When the MP3 encoding format is used, the mapping between the sample rate and bit rate is as follows:<br>- When the sample rate is lower than 16 kHZ, the bit rate range is [8000 - 64000].<br>- When the sample rate ranges from 16 kHz to 32 kHz, the bit rate range is [8000, 160000].<br>- When the sample rate is greater than 32 kHz, the bit rate range is [32000, 320000].<br>- Range [4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200] for the AMR-NB encoding format.<br>- Range [6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850] for the AMR-WB encoding format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 8] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
+| audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Audio encoding format. This parameter is mandatory for audio recording.<br>Currently, AUDIO_AAC, AUDIO_MP3, AUDIO_G711MU, AUDIO_AMR_NB, and AUDIO_AMR_WB are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
+| audioSampleRate  | number                                       | No  | Yes  | Audio sample rate. This parameter is mandatory for audio recording.<br>Supported sample rate ranges:<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000] for the AAC encoding format.<br>- 8000 for the G.711 μ-law encoding format.<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000] for the MP3 encoding format.<br>- 8000 for the AMR-NB encoding format.<br>- 16000 for the AMR-WB encoding format.<br>Variable bit rate. The bit rate is for reference only.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No  | No  | Container format of a file. This parameter is mandatory. Currently, the MP4, M4A, MP3, WAV, AMR, and AAC container formats are supported. The default container format for AAC audio is ADTS frame format. The AUDIO_MP3 encoding format is not supported within the MP4 container format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| videoBitrate     | number                                       | No  | Yes  | Video encoding bit rate. This parameter is mandatory for video recording. The value range is [10000, 100000000]. |
+| videoCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Video encoding format. This parameter is mandatory for video recording. Currently, **VIDEO_AVC** and **VIDEO_HEVC** are supported.|
+| videoFrameWidth  | number                                       | No  | Yes  | Width of a video frame. This parameter is mandatory for video recording. The value range is [176, 4096].        |
+| videoFrameHeight | number                                       | No  | Yes  | Height of a video frame. This parameter is mandatory for video recording. The value range is [144, 4096].        |
+| videoFrameRate   | number                                       | No  | Yes  | Video frame rate. This parameter is mandatory for video recording. The recommended value range is [1, 60].            |
+| isHdr<sup>11+</sup>            | boolean                        | No  | Yes  | HDR encoding. This parameter is optional for video recording. The default value is **false**, and there is no requirement on the encoding format. When **isHdr** is set to **true**, the encoding format must be **video/hevc**.|
+| enableTemporalScale<sup>12+</sup>            | boolean                        | No  | Yes  | Whether temporal layered encoding is supported. This parameter is optional for video recording. The default value is **false**. If this parameter is set to **true**, some frames in the video output streams can be skipped without being encoded.|
+| enableBFrame<sup>20+</sup>            | boolean                        | No  | Yes  | Whether B-frame encoding is enabled for video recording. **true** if enabled (valid only when the video encoding format is H.265 and the device hardware supports B-frame encoding), **false** otherwise.<br>This parameter is optional in video recording scenarios. The default value is **false**.|
 
 ### Audio Parameters
 
@@ -190,16 +190,16 @@ Describes the information about an encoder.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
-| Name      | Type                            | Readable| Writable| Description                                                        |
+| Name      | Type                            | Read-Only| Optional| Description                                                        |
 | ---------- | -------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| mimeType   | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | Yes  | No  | MIME type of the encoder.                                          |
-| type       | string                           | Yes  | No  | Encoder type. The value **audio** means an audio encoder, and **video** means a video encoder.        |
-| bitRate    | [Range](#range11)                | Yes  | No  | Bit rate range of the encoder, with the minimum and maximum bit rates specified.                          |
-| frameRate  | [Range](#range11)                | Yes  | No  | Video frame rate range, with the minimum and maximum frame rates specified. This parameter is available only for video encoders.         |
-| width      | [Range](#range11)                | Yes  | No  | Video frame width range, with the minimum and maximum widths specified. This parameter is available only for video encoders.      |
-| height     | [Range](#range11)                | Yes  | No  | Video frame height range, with the minimum and maximum heights specified. This parameter is available only for video encoders.      |
-| channels   | [Range](#range11)                | Yes  | No  | Audio channel count for the audio capturer, with the minimum and maximum numbers of audio channels specified. This parameter is available only for audio encoders.  |
-| sampleRate | Array\<number>                    | Yes  | No  | Audio sample rate, including all available audio sample rates. The value depends on the encoder type, and this parameter is available only for audio encoders.|
+| mimeType   | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No  | No  | MIME type of the encoder.                                          |
+| type       | string                           | No  | No  | Encoder type. The value **audio** means an audio encoder, and **video** means a video encoder.        |
+| bitRate    | [Range](#range11)                | No  | Yes  | Bit rate range of the encoder, with the minimum and maximum bit rates specified.                          |
+| frameRate  | [Range](#range11)                | No  | Yes  | Video frame rate range, with the minimum and maximum frame rates specified. This parameter is available only for video encoders.         |
+| width      | [Range](#range11)                | No  | Yes  | Video frame width range, with the minimum and maximum widths specified. This parameter is available only for video encoders.      |
+| height     | [Range](#range11)                | No  | Yes  | Video frame height range, with the minimum and maximum heights specified. This parameter is available only for video encoders.      |
+| channels   | [Range](#range11)                | No  | Yes  | Audio channel count for the audio capturer, with the minimum and maximum numbers of audio channels specified. This parameter is available only for audio encoders.  |
+| sampleRate | Array\<number>                    | No  | Yes  | Audio sample rate, including all available audio sample rates. The value depends on the encoder type, and this parameter is available only for audio encoders.|
 
 ## Range<sup>11+</sup>
 
@@ -207,10 +207,10 @@ Describes a range.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
-| Name| Type  | Readable| Writable| Description        |
+| Name| Type  | Read-Only| Optional| Description        |
 | ---- | ------ | ---- | ---- | ------------ |
-| min  | number | Yes  | No  | Minimum value.|
-| max  | number | Yes  | No  | Maximum value.|
+| min  | number | No  | No  | Minimum value.|
+| max  | number | No  | No  | Maximum value.|
 
 ## AVTranscoderConfig<sup>12+</sup>
 
@@ -232,34 +232,34 @@ Describes the video transcoding parameters.
 
 ## AVMetadata<sup>11+</sup>
 
-Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](#avrecorderconfig9) can be used as input parameters for recording of [AVRecorder](arkts-apis-media-AVRecorder.md).
+Defines the audio and video metadata.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
-| Name  | Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| album     | string | No  | Title of the album. This parameter is read-only in the current version.    |
-| albumArtist | string | No  | Artist of the album. This parameter is read-only in the current version.|
-| artist | string | No  | Artist of the media asset. This parameter is read-only in the current version.|
-| author | string | No  | Author of the media asset. This parameter is read-only in the current version.|
-| dateTime | string | No  | Time when the media asset is created. This parameter is read-only in the current version.|
-| dateTimeFormat | string | No  | Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. This parameter is read-only in the current version.|
-| composer | string | No  | Composer of the media asset. This parameter is read-only in the current version.|
-| duration | string | No  | Duration of the media asset. This parameter is read-only in the current version.|
-| genre | string | No  | Type or genre of the media asset.|
-| hasAudio | string | No  | Whether the media asset contains audio. This parameter is read-only in the current version.|
-| hasVideo | string | No  | Whether the media asset contains a video. This parameter is read-only in the current version.|
-| mimeType | string | No  | MIME type of the media asset. This parameter is read-only in the current version.|
-| trackCount | string | No  | Number of tracks of the media asset. This parameter is read-only in the current version.|
-| sampleRate | string | No  | Audio sample rate, in Hz. This parameter is read-only in the current version.|
-| title | string | No  | Title of the media asset. This parameter is read-only in the current version. This parameter is read-only in the current version.|
-| videoHeight | string | No  | Video height, in px. This parameter is read-only in the current version.|
-| videoWidth | string | No  | Video width, in px. This parameter is read-only in the current version.|
-| videoOrientation | string | No  | Video rotation direction, in degrees.|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No  | HDR type of the media asset. This parameter is read-only in the current version.|
-| location<sup>12+</sup> | [Location](#location) | No| Geographical location of the media asset.|
-| customInfo<sup>12+</sup> | Record<string, string> | No| Custom key-value mappings obtained from **moov.meta.list**.|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Track information of the media asset. This parameter is read-only in the current version.|
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- |------------------------------------------------------------ |
+| album     | string | No| Yes| Title of the album. Currently, the AVRecorder does not support the setting of this property.    |
+| albumArtist | string | No| Yes| Artist of the album. Currently, the AVRecorder does not support the setting of this property.|
+| artist | string | No| Yes| Artist of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| author | string | No| Yes| Author of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| dateTime | string | No| Yes| Time when the media asset is created. Currently, the AVRecorder does not support the setting of this property.|
+| dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. Currently, the AVRecorder does not support the setting of this property.|
+| composer | string | No| Yes| Composer of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| duration | string | No| Yes| Duration of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| genre | string | No| Yes| Type or genre of the media asset.|
+| hasAudio | string | No| Yes| Whether the media asset contains audio. Currently, the AVRecorder does not support the setting of this property.|
+| hasVideo | string | No| Yes| Whether the media asset contains a video. Currently, the AVRecorder does not support the setting of this property.|
+| mimeType | string | No| Yes| MIME type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| trackCount | string | No| Yes| Number of tracks of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| sampleRate | string | No| Yes| Audio sample rate, in Hz. Currently, the AVRecorder does not support the setting of this property.|
+| title | string | No| Yes| Title of the media asset. This parameter is read-only in the current version. Currently, the AVRecorder does not support the setting of this property.|
+| videoHeight | string | No| Yes| Video height, in px. Currently, the AVRecorder does not support the setting of this property.|
+| videoWidth | string | No| Yes| Video width, in px. Currently, the AVRecorder does not support the setting of this property.|
+| videoOrientation | string | No| Yes| Video rotation direction, in degrees.|
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | No| Yes| HDR type of the media asset. Currently, the AVRecorder does not support the setting of this property.|
+| location<sup>12+</sup> | [Location](#location) | No| Yes| Geographical location of the media asset.|
+| customInfo<sup>12+</sup> | Record<string, string> | No| Yes| Custom key-value mappings obtained from **moov.meta.list**.|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. Currently, the AVRecorder does not support the setting of this property.|
 
 ### Description of MediaDescriptionKey supported by AVMetadata.tracks
 
@@ -276,6 +276,10 @@ The following table lists the values of [MediaDescriptionKey](arkts-apis-media-e
 | MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio|
 | MD_KEY_AUD_SAMPLE_RATE | 'sample_rate' | Audio|
 | MD_KEY_HDR_TYPE | 'hdr_type' | Video|
+| MD_KEY_ORIGINAL_WIDTH | 'original_width' | Video|
+| MD_KEY_ORIGINAL_HEIGHT | 'original_height' | Video|
+| MD_KEY_BITRATE | 'bitrate' | Audio|
+| MD_KEY_AUD_SAMPLE_DEPTH | 'sample_depth' | Audio|
 
 ## PixelMapParams<sup>12+</sup>
 
@@ -283,10 +287,10 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 **System capability**: SystemCapability.Multimedia.Media.AVImageGenerator
 
-| Name  | Type  | Readable| Writable| Description                                                                           |
+| Name  | Type  | Read-Only| Optional| Description                                                                           |
 |--------|--------|------|------|---------------------------------------------------------------------------------|
-| width  | number | Yes  | Yes  | Width of the thumbnail. The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
-| height | number | Yes  | Yes  | Height of the thumbnail. The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| width  | number | No  | Yes  | Width of the thumbnail. The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| height | number | No  | Yes  | Height of the thumbnail. The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
 
 ## OutputSize<sup>20+</sup>
 
@@ -405,19 +409,19 @@ Defines the screen capture parameters.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
-| Name             | Type                                                        | Mandatory| Description                                                        |
-| ----------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| fd                | number                                                       | Yes  | FD of the file output.                                          |
-| frameWidth        | number                                                       | No  | Video width, in px. The default value varies according to the display in use.|
-| frameHeight       | number                                                       | No  | Video height, in px. The default value varies according to the display in use.|
-| videoBitrate      | number                                                       | No  | Video bit rate. The default value is **10000000**.                            |
-| audioSampleRate   | number                                                       | No  | Audio sample rate. This value is used for both internal capture and external capture (using microphones). Only **48000** (default value) and **16000** are supported.|
-| audioChannelCount | number                                                       | No  | Audio channel count. This value is used for both internal capture and external capture (using microphones). Only **1** and **2** (default) are supported.|
-| audioBitrate      | number                                                       | No  | Audio bit rate. This value is used for both internal capture and external capture (using microphones). The default value is **96000**.|
-| preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | No  | Encoding and container format used. The default value is **SCREEN_RECORD_PRESET_H264_AAC_MP4**.|
-| displayId<sup>15+</sup>            | number | No  | ID of the display used for screen capture. By default, the main screen is captured.|
-| fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| No  | Video fill mode during screen capture.|
-| strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| No  | Screen capture strategy.|
+| Name             | Type                                                        | Read-Only| Optional| Description                                                        |
+| ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| fd                | number                                                       | No  | No  | FD of the file output.                                          |
+| frameWidth        | number                                                       | No  | Yes  | Video width, in px. The default value varies according to the display in use.|
+| frameHeight       | number                                                       | No  | Yes  | Video height, in px. The default value varies according to the display in use.|
+| videoBitrate      | number                                                       | No  | Yes  | Video bit rate. The default value is **10000000**.                            |
+| audioSampleRate   | number                                                       | No  | Yes  | Audio sample rate. This value is used for both internal capture and external capture (using microphones). Only **48000** (default value) and **16000** are supported.|
+| audioChannelCount | number                                                       | No  | Yes  | Audio channel count. This value is used for both internal capture and external capture (using microphones). Only **1** and **2** (default) are supported.|
+| audioBitrate      | number                                                       | No  | Yes  | Audio bit rate. This value is used for both internal capture and external capture (using microphones). The default value is **96000**.|
+| preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | No  | Yes  | Encoding and container format used. The default value is **SCREEN_RECORD_PRESET_H264_AAC_MP4**.|
+| displayId<sup>15+</sup>            | number | No  | Yes  | ID of the display used for screen capture. By default, the main screen is captured.|
+| fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| No  | Yes  | Video fill mode during screen capture.|
+| strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| No  | Yes  | Screen capture strategy.|
 
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
@@ -429,14 +433,14 @@ Describes audio recording configurations.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
 
-| Name                               | Type                                        | Mandatory| Description                                                        |
-| ----------------------------------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| audioEncoder                        | [AudioEncoder](arkts-apis-media-e.md#audioencoderdeprecated)                | No  | Audio encoding format. The default value is **AAC_LC**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 8. You are advised to use **audioEncoderMime** instead.|
-| audioEncodeBitRate                  | number                                       | No  | Audio encoding bit rate. The default value is **48000**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **audioBitrate** in [AVRecorderProfile](#avrecorderprofile9) instead.|
-| audioSampleRate                     | number                                       | No  | Audio sample rate. The default value is **48000**.<br>Variable bit rate. The bit rate is for reference only.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **audioSampleRate** in [AVRecorderProfile](#avrecorderprofile9) instead.|
-| numberOfChannels                    | number                                       | No  | Audio channel count. The default value is **2**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **audioChannels** in [AVRecorderProfile](#avrecorderprofile9) instead.|
-| format                              | [AudioOutputFormat](arkts-apis-media-e.md#audiooutputformatdeprecated)      | No  | Audio output format. The default value is **MPEG_4**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 8. You are advised to use **fileFormat** instead.|
-| location                            | [Location](#location)                        | No  | Geographical location of the recorded audio.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **location** in [AVMetadata](#avmetadata11) instead.|
-| uri                                 | string                                       | Yes  | Audio output URI. Supported: fd://xx (fd number)<br>![](figures/en-us_image_url.png) <br>The file must be created by the caller and granted with proper permissions.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **url** in [AVRecorderConfig](#avrecorderconfig9) instead.|
-| audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Container encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **audioCodec** in [AVRecorderProfile](#avrecorderprofile9) instead.|
-| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No  | Audio encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **fileFormat** in [AVRecorderProfile](#avrecorderprofile9) instead.|
+| Name                               | Type                                        | Read-Only| Optional| Description                                                        |
+| ----------------------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| audioEncoder                        | [AudioEncoder](arkts-apis-media-e.md#audioencoderdeprecated)                | No  | Yes  | Audio encoding format. The default value is **AAC_LC**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 8. You are advised to use **audioEncoderMime** instead.|
+| audioEncodeBitRate                  | number                                       | No  | Yes  | Audio encoding bit rate. The default value is **48000**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **audioBitrate** in [AVRecorderProfile](#avrecorderprofile9) instead.|
+| audioSampleRate                     | number                                       | No  | Yes  | Audio sample rate. The default value is **48000**.<br>Variable bit rate. The bit rate is for reference only.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **audioSampleRate** in [AVRecorderProfile](#avrecorderprofile9) instead.|
+| numberOfChannels                    | number                                       | No  | Yes  | Audio channel count. The default value is **2**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **audioChannels** in [AVRecorderProfile](#avrecorderprofile9) instead.|
+| format                              | [AudioOutputFormat](arkts-apis-media-e.md#audiooutputformatdeprecated)      | No  | Yes  | Audio output format. The default value is **MPEG_4**.<br>Note: This parameter is supported since API version 6 and deprecated since API version 8. You are advised to use **fileFormat** instead.|
+| location                            | [Location](#location)                        | No  | Yes  | Geographical location of the recorded audio.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **location** in [AVMetadata](#avmetadata11) instead.|
+| uri                                 | string                                       | No  | No  | Audio output URI. Supported: fd://xx (fd number)<br>![](figures/en-us_image_url.png) <br>The file must be created by the caller and granted with proper permissions.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **url** in [AVRecorderConfig](#avrecorderconfig9) instead.|
+| audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Container encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **audioCodec** in [AVRecorderProfile](#avrecorderprofile9) instead.|
+| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No  | Yes  | Audio encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **fileFormat** in [AVRecorderProfile](#avrecorderprofile9) instead.|

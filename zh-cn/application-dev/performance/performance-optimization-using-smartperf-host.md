@@ -32,32 +32,33 @@ SmartPerf-Host提供FrameTimeline帧率分析功能，可以抓取记录每一�
 如下场景代码使用了Grid来实现了一个网格布局，在应用界面上下滑动时发现有卡顿掉帧现象。下文基于这个场景来介绍FrameTimeline帧率分析功能的使用方式。
 
 ```
-@Entry  
-@Component  
-struct Index {  
-  @State children: number[] = Array.from<undefined, number>(Array(2000).fill(undefined), (_v: undefined, k) => k);  
-  build() {  
-    Scroll() {  
-      Grid() {  
-       ForEach(this.children, (item: number) => {  
-          GridItem() {  
-            Stack() {  
-              Stack() {  
-                Stack() {  
-                  Text(item.toString())  
-                    .fontSize(32)  
-                }  
-              }  
-            }  
-          }  
-        }, (item: number) => item.toString())  
-      }  
-      .columnsTemplate('1fr 1fr 1fr 1fr')  
-      .columnsGap(0)  
-      .rowsGap(0)  
-      .size({ width: "100%", height: "100%" })  
-    }  
-  }  
+@Entry
+@Component
+struct Index {
+  @State children: number[] = Array.from<undefined, number>(Array(2000).fill(undefined), (_v: undefined, k) => k);
+
+  build() {
+    Scroll() {
+      Grid() {
+        ForEach(this.children, (item: number) => {
+          GridItem() {
+            Stack() {
+              Stack() {
+                Stack() {
+                  Text(item.toString())
+                    .fontSize(32)
+                }
+              }
+            }
+          }
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr')
+      .columnsGap(0)
+      .rowsGap(0)
+      .size({ width: "100%", height: "100%" })
+    }
+  }
 }
 ```
 
@@ -79,7 +80,7 @@ struct Index {
 
 3. 点击右上角Record开始抓取，同时在设备上复现应用掉帧或卡顿的操作过程，抓取完成后页面会自动加载trace数据。
 
-**说明：** 
+**说明：**
 
 - 在数据抓取和分析的过程中，请不要主动退出应用或者设备，否则可能导致分析任务失败。
 
@@ -93,17 +94,17 @@ struct Index {
 
 **图4** UI + RenderService总耗时
 
-![](./figures/smartperf-host-using-4.png) 
+![](./figures/smartperf-host-using-4.png)
 
 
 **图5** UI耗时
 
-![](./figures/smartperf-host-using-5.png) 
+![](./figures/smartperf-host-using-5.png)
 
 
 **图6** RenderService耗时
 
-![](./figures/smartperf-host-using-6.png) 
+![](./figures/smartperf-host-using-6.png)
 
 - Expected Timeline是理想帧泳道图，Actual Timeline是真实帧泳道图。
 
@@ -135,60 +136,63 @@ struct Index {
 
 **图8** 应用布局绘制trace数据
 
-![](./figures/smartperf-host-using-8.png) 
+![](./figures/smartperf-host-using-8.png)
 
 定位到Grid布局代码段，经过分析，去除了冗余的3层stack容器，并将源数据提前处理为布局中需要的string类型，减少布局消耗。同时给Grid添加cachedCount参数结合LazyForEach进行预加载，cachedCount的值设定为一屏能够渲染的GridItem数量。优化后采用同样的方式抓取数据，得到的FrameTimeline泳道数据如图9，并且滑动过程中无卡顿丢帧现象。
 
 **图9** 优化后FrameTimeline泳道图
 
-![](./figures/smartperf-host-using-9.png) 
+![](./figures/smartperf-host-using-9.png)
 
 优化后的示例代码如下：
 
 ```
-class MyDataSource implements IDataSource { // LazyForEach的数据源  
-  private list: string[] = [];  
-  
-  constructor(list: string[]) {  
-    this.list = list;  
-  }  
-  
-  totalCount(): number {  
-    return this.list.length;  
-  }  
-  
-  getData(index: number): string {  
-    return this.list[index];  
-  }  
-  
-  registerDataChangeListener(_: DataChangeListener): void {  
-  }  
-  
-  unregisterDataChangeListener(): void {  
-  }  
-}  
-@Entry  
-@Component  
-struct Index {  
-  @State children: string[] = Array.from<undefined, string>(Array(2000).fill(undefined), (_v: undefined, k) => k.toString());  
-  @State data: MyDataSource = new MyDataSource(this.children)  
-  build() {  
-    Scroll() {  
-      Grid() {  
-        LazyForEach(this.data, (item: string) => {  
-          GridItem() {  
-            Text(item)  
-              .fontSize(32)  
-          }  
-        }, (item: string) => item)  
-      }  
-      .cachedCount(80)  
-      .columnsTemplate('1fr 1fr 1fr 1fr')  
-      .columnsGap(0)  
-      .rowsGap(0)  
-      .size({ width: "100%", height: "100%" })  
-    }  
-  }  
+class MyDataSource implements IDataSource { // LazyForEach的数据源
+  private list: string[] = [];
+
+  constructor(list: string[]) {
+    this.list = list;
+  }
+
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  getData(index: number): string {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(_: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(): void {
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State children: string[] =
+    Array.from<undefined, string>(Array(2000).fill(undefined), (_v: undefined, k) => k.toString());
+  @State data: MyDataSource = new MyDataSource(this.children)
+
+  build() {
+    Scroll() {
+      Grid() {
+        LazyForEach(this.data, (item: string) => {
+          GridItem() {
+            Text(item)
+              .fontSize(32)
+          }
+        }, (item: string) => item)
+      }
+      .cachedCount(80)
+      .columnsTemplate('1fr 1fr 1fr 1fr')
+      .columnsGap(0)
+      .rowsGap(0)
+      .size({ width: "100%", height: "100%" })
+    }
+  }
 }
 ```
 
@@ -201,31 +205,31 @@ SmartPerf-Host提供了AppStartup功能，以便于分析应用启动时各个�
 以下示例代码展示AppStartup功能。
 
 ```
-@Entry  
-@Component  
-struct Index {  
-  @State private text: string = "hello world";  
-  private count: number = 0;  
-  
-  aboutToAppear() {  
-    this.computeTask();  
-  }  
-  
-  build() {  
-    Column({space: 10}) {  
-      Text(this.text).fontSize(50)  
-    }  
-    .width('100%')  
-    .height('100%')  
-    .padding(10)  
-  }  
-  
-  computeTask() {  
-    this.count = 0;  
-    while (this.count < 10000000) {  
-      this.count++;  
-    }  
-  }  
+@Entry
+@Component
+struct Index {
+  @State private text: string = "hello world";
+  private count: number = 0;
+
+  aboutToAppear() {
+    this.computeTask();
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(this.text).fontSize(50)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(10)
+  }
+
+  computeTask() {
+    this.count = 0;
+    while (this.count < 10000000) {
+      this.count++;
+    }
+  }
 }
 ```
 
@@ -237,25 +241,25 @@ struct Index {
 
 	**图10** AppStartup特性开关
 
-	![](./figures/smartperf-host-using-10.png) 
+	![](./figures/smartperf-host-using-10.png)
 
 2. 切换到Record template页面，点击Trace template，开启AppStartup。
 
 	**图11** AppStartup模板配置
 
-	![](./figures/smartperf-host-using-11.png) 
+	![](./figures/smartperf-host-using-11.png)
 
 3. Record setting内设置文件名、大小以及抓取时长。
 
 	**图12** 抓取配置项
 
-	![](./figures/smartperf-host-using-12.png) 
+	![](./figures/smartperf-host-using-12.png)
 
 4. 点击右上角Record开始抓取，同时在设备上打开目标应用。可提前点击StopRecord完成抓取，或者等待时间自动完成抓取。抓取完成后会页面会自动加载trace数据。
 
 	**图13** 停止抓取选项
 
-	![](./figures/smartperf-host-using-13.png) 
+	![](./figures/smartperf-host-using-13.png)
 
 **分析数据**
 
@@ -263,13 +267,13 @@ struct Index {
 
 **图14** 模板数据筛选
 
-![](./figures/smartperf-host-using-14.png) 
+![](./figures/smartperf-host-using-14.png)
 
 展开对应应用的泳道，找到应用启动时的时间段。选中AppStartup泳道全部阶段，可以在下方详情内看到具体阶段的耗时情况。
 
 **图15** AppStartup各阶段耗时情况——优化前
 
-![](./figures/smartperf-host-using-15.png) 
+![](./figures/smartperf-host-using-15.png)
 
 - ProcessTouchEvent：点击事件输入及处理
 
@@ -291,46 +295,46 @@ struct Index {
 
 **图16** UI Ability OnForeground阶段耗时——优化前
 
-![](./figures/smartperf-host-using-16.png) 
+![](./figures/smartperf-host-using-16.png)
 
 在这个阶段里，通过阶段内下方泳道可以发现生命周期aboutToAppear耗时较长，点击该泳道内容可以看到具体耗时Duration，为268ms，占整个UI Ability OnForeground阶段的82%。
 
 **图17** aboutToAppear耗时——优化前
 
-![](./figures/smartperf-host-using-17.png) 
+![](./figures/smartperf-host-using-17.png)
 
 查看代码后发现，在aboutToAppear生命周期函数内执行了耗时的计算任务，导致应用冷启动耗时长。
 
 随后对aboutToAppear内容进行异步延迟处理。优化后代码如下：
 
 ```
-@Entry  
-@Component  
-struct Index {  
-  @State private text: string = "hello world";  
-  private count: number = 0;  
-  
-  aboutToAppear() {  
-    setTimeout(() => {  
-      this.computeTask();  
-    }, 0)  
-  }  
-  
-  build() {  
-    Column({space: 10}) {  
-      Text(this.text).fontSize(10)  
-    }  
-    .width('100%')  
-    .height('100%')  
-    .padding(10)  
-  }  
-  
-  computeTask() {  
-    this.count = 0;  
-    while (this.count < 10000000) {  
-      this.count++;  
-    }  
-  }  
+@Entry
+@Component
+struct Index {
+  @State private text: string = "hello world";
+  private count: number = 0;
+
+  aboutToAppear() {
+    setTimeout(() => {
+      this.computeTask();
+    }, 0)
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(this.text).fontSize(10)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(10)
+  }
+
+  computeTask() {
+    this.count = 0;
+    while (this.count < 10000000) {
+      this.count++;
+    }
+  }
 }
 ```
 
@@ -344,7 +348,7 @@ struct Index {
 
 **图19** UI Ability OnForeground阶段耗时——优化后
 
-![](./figures/smartperf-host-using-19.png) 
+![](./figures/smartperf-host-using-19.png)
 
 在这个阶段里，通过阶段内下方泳道可以发现需要查看的生命周期aboutToAppear，点击该泳道内容可以看到具体耗时Duration，为2ms，目前只占整个UI Ability OnForeground阶段的2.5%。
 

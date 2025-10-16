@@ -2928,6 +2928,56 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### isCompatibleDuplicateSupported<sup>21+</sup>
+
+isCompatibleDuplicateSupported(bundleName: string): Promise&lt;boolean&gt;
+
+检查是否要为指定应用创建JPEG格式的临时副本。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| bundleName | string | 是   | 需查询的应用包名。 |
+
+**返回值：**
+
+| 类型                  | 说明                        |
+| --------------------- | --------------------------- |
+| Promise&lt;boolean&gt; | 检查是否要为指定应用创建JPEG格式的临时副本。true表示创建，false表示不创建。 |
+
+**错误码：**
+
+错误码详情请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2.system running error.|
+
+**示例：**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('isCompatibleDuplicateSupportedPromiseDemo')
+    let isSupport: boolean = await phAccessHelper.isCompatibleDuplicateSupported('com.example.helloworld');
+    console.info(`isCompatibleDuplicateSupported: ${isSupport}`);
+  } catch (err) {
+    console.error(`isCompatibleDuplicateSupportedPromiseDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### getPhotoAlbums<sup>20+</sup> 
 
 getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
@@ -3128,6 +3178,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }).catch((err: BusinessError) => {
     console.error(`setPhotoAlbumOrderPromise failed with err: ${err.code}, ${err.message}`);
   });
+}
+```
+
+### query<sup>22+</sup>
+
+query(sql: string): Promise&lt;ResultSet&gt;
+
+根据指定的SQL语句查询数据库数据，不支持写操作和多级查询。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明 |
+| ------- | ----- | ----- | ---- |
+| sql | string | 是 | 指定要执行的SQL语句。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ---- |
+| Promise&lt;[ResultSet](#resultset22)&gt; | Promise对象，如果操作成功，则返回ResultSet对象。如果操作失败，则抛出异常。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Called by non-system application.                            |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The SQL statement is abnormal. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out.|
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('query');
+  try {
+    let ret: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    while (ret.goToNextRow()) {
+      let row = ret.getRow();
+      Object.entries(row).forEach((entry) => {
+        const key = entry[0];
+        const value = entry[1];
+      });
+    }
+    ret.close();
+  } catch (err) {
+    console.error(`query failed with error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -4377,6 +4485,58 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('edit data is ' + data);
   } catch (err) {
     console.error(`getEditDataDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### createTemporaryCompatibleDuplicate<sup>21+</sup>
+
+createTemporaryCompatibleDuplicate(): Promise&lt;void&gt;
+
+为不支持HEIF/HEIC图片编码格式的第三方应用创建JPEG格式的兼容副本。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+|Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.        |
+| 202   | Called by non-system application.         |
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being editted.|
+| 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
+
+**示例：**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('createTemporaryCompatibleDuplicatePromiseDemo')
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    await photoAsset.createTemporaryCompatibleDuplicate();
+  } catch (err) {
+    console.error(`createTemporaryCompatibleDuplicatePromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -6342,7 +6502,7 @@ async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType
       assetChangeRequest.setHasAppLink(hasAppLink);
       await phAccessHelper.applyChanges(assetChangeRequest);
     } catch (error) {
-      Log.error(TAG, 'set hasAppLink error: ' + error);
+      console.error('set hasAppLink error: ' + error);
       return;
     }
 }
@@ -6386,10 +6546,10 @@ async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string)
         photoAccessHelper.getPhotoAccessHelper(getContext());
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
-      assetChangeRequest.setHasAppLink(appLinkInfo);
+      assetChangeRequest.setAppLinkInfo(appLinkInfo);
       await phAccessHelper.applyChanges(assetChangeRequest);
     } catch (error) {
-      Log.error(TAG, 'set appLinkInfo error: ' + error);
+      console.error('set appLinkInfo error: ' + error);
       return;
     }
 }
@@ -10842,3 +11002,301 @@ async function example(context: Context) {
 | orderSection | number | 否   | 否  | 相册排序区域。|
 | orderType    | number | 否   | 否  | 相册排序类型。|
 | orderStatus  | number | 否   | 否  | 相册排序状态。|
+
+## ValueType<sup>22+</sup>
+
+type ValueType =  number | string | boolean | Uint8Array | null
+
+用于表示允许的数据字段类型，接口参数的具体类型根据其功能而定。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 类型 | 说明 |
+|------|------|
+| number | 表示值类型为数字。 |
+| string | 表示值类型为字符串。 |
+| boolean | 表示值类型为布尔值。 |
+| Uint8Array | 表示值类型为Uint8类型的数组。 |
+| null | 表示值类型为空。 |
+
+## ValuesBucket<sup>22+</sup>
+
+type ValuesBucket = Record&lt;string, ValueType&gt;
+
+用于存储键值对的类型。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 类型| 说明 |
+| ---- | ---- |
+| Record&lt;string, [ValueType](#valuetype22)&gt; | 表示键值对类型。键的类型为string，值的类型为ValueType。 |
+
+## ResultSet<sup>22+</sup>
+
+提供通过查询数据库生成的数据库结果集的访问方法。
+
+下列API示例中，需先使用[query](#query22)方法获取ResultSet实例，再调用对应方法。
+
+### 属性
+
+​**系统能力**​：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----- | ---- | ----- | ---- | ----- |
+| columnCount | number | 否 | 否 | 获取结果集的列数。<br>**系统接口**：此接口为系统接口。 |
+| rowCount | number | 否 | 否 | 获取结果集的行数。<br>**系统接口**：此接口为系统接口。 |
+| rowIndex | number | 否 | 否 | 获取结果集的当前行索引。<br>**系统接口**：此接口为系统接口。 |
+| isAtLastRow | boolean | 否 | 否 | 检查游标是否位于最后一行。true表示位于最后一行，false表示不位于最后一行。<br>**系统接口**：此接口为系统接口。 |
+
+### goToRow<sup>22+</sup>
+
+goToRow(position: number): boolean
+
+转到结果集的指定行。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | ---- | ----- | ----- |
+| position | number | 是 | 指定行的索引，从0开始。取值范围为0到结果集行数减1。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----- |
+| boolean | 如果成功转到结果集的指定行，则为true；否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800151 | Scene parameters validate failed, possible causes: position invalid. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToRow(0);
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### goToFirstRow<sup>22+</sup>
+
+goToFirstRow(): boolean
+
+转到结果集的第一行。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ---- |
+| boolean | 如果成功转到结果集的第一行，则为true；否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToFirstRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToFirstRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### goToNextRow<sup>22+</sup>
+
+goToNextRow(): boolean
+
+转到结果集的下一行。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ---- |
+| boolean | 如果成功转到结果集的下一行，则为true；否则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToNextRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToNextRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToNextRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getValue<sup>22+</sup>
+
+getValue(columnIndex: number): ValueType
+
+获取当前行中指定列的值。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | ---- | ----- | ----- |
+| columnIndex | number | 是 | 指定的列索引，从0开始。取值范围为0到结果集列数减1。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----- |
+| [ValueType](#valuetype22) | 表示允许的数据字段类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800151 | Scene parameters validate failed, possible causes: columnIndex invalid. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getValue');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    const codes = resultSet.getValue(0);
+    resultSet.close();
+  } catch (err) {
+    console.error(`getValue failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getRow<sup>22+</sup>
+
+getRow(): ValuesBucket
+
+获取指定行的所有列值。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----- |
+| [ValuesBucket](#valuesbucket22) | 返回指定行的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    const row = resultSet.getRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`getRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### close<sup>22+</sup>
+
+close(): void
+
+关闭结果集，若不关闭可能会引起内存泄漏。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+
+| 错误码ID | 错误信息  |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('close');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.close();
+  } catch (err) {
+    console.error(`close failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```

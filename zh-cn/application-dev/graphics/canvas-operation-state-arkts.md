@@ -65,6 +65,7 @@
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为蓝色
@@ -74,7 +75,7 @@ canvas.attachBrush(brush);
 // 创建矩形对象
 let rect: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
 // 裁剪矩形区域
-canvas.clipRect(rect); 
+canvas.clipRect(rect);
 // 绘制圆形
 canvas.drawCircle(300, 300, 300);
 // 去除填充效果
@@ -121,6 +122,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -128,9 +130,9 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 执行平移操作
-canvas.translate(300, 300); 
+canvas.translate(300, 300);
 // 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 }); 
+canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
 // 去除填充效果
 canvas.detachBrush();
 ```
@@ -151,6 +153,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -181,6 +184,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -222,6 +226,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置颜色为红色

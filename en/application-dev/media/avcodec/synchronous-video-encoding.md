@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, video encoding in synchronous mode is supported.
 
@@ -22,9 +22,7 @@ Asynchronous mode is generally recommended for most use cases. Synchronous mode 
 
 ## How to Develop
 
-Read [VideoEncoder](../../reference/apis-avcodec-kit/_video_encoder.md) for the API reference.
-
-The figure below shows the call relationship of synchronous video encoding.
+Read [VideoEncoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md) for the API reference.
 
 - The dotted line indicates an optional operation.
 
@@ -118,7 +116,7 @@ The following walks you through how to implement the entire video encoding proce
 2. Call **OH_VideoEncoder_Configure()** to configure the encoder.
 
     - For details about the configurable options, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
-    - For details about the parameter verification rules, see [OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_configure).
+    - For details about the parameter verification rules, see [OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure).
     - The parameter value ranges can be obtained through the capability query interface. For details, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
     Currently, the following options must be configured for all supported formats: video frame width, video frame height, and video pixel format.
@@ -148,11 +146,12 @@ The following walks you through how to implement the entire video encoding proce
     > To use synchronous mode, do not call **OH_VideoEncoder_RegisterCallback** or **OH_VideoEncoder_RegisterParameterCallback** in prior to **OH_VideoEncoder_Configure**. Otherwise, the encoder will run in asynchronous mode instead.
     >
     > Synchronous mode is not supported for frame-specific channels in surface mode.
+    >
 
 3. Set the surface.
 
    In the code snippet below, the following variables are used:
-   
+
    - **nativeWindow**: For details about how to obtain the native window, see step 6 in [Surface Mode](video-encoding.md#surface-mode).
 
     ```c++
@@ -190,9 +189,9 @@ The following walks you through how to implement the entire video encoding proce
 
 6. Obtain an available buffer and release the encoded frame.
 
-   - Call [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_queryoutputbuffer) to obtain the index of the next available output buffer.
-   - Based on this index, call [OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_getoutputbuffer) to obtain the buffer instance.
-   - Call [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_freeoutputbuffer) to release the encoded frame.
+   - Call [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer) to obtain the index of the next available output buffer.
+   - Based on this index, call [OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer) to obtain the buffer instance.
+   - Call [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer) to release the encoded frame.
 
     ```c++
     bool EncoderOutput(OH_AVCodec *videoEnc, int64_t timeoutUs)
@@ -289,7 +288,7 @@ The following walks you through how to implement the entire video encoding proce
 
     After **OH_VideoEncoder_Flush** is called, the encoder remains in the Running state, but the input and output data and parameter set (such as the H.264 PPS/SPS) buffered in the encoder are cleared.
     
-    To continue encoding, you must call [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_start) again.
+    To continue encoding, you must call [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) again.
 
     ```c++
     // Use codecMutex to avoid the problem where the encoding thread keeps running and exits the loop after the Flush API is called and the state is changed.
@@ -309,7 +308,7 @@ The following walks you through how to implement the entire video encoding proce
 
 10. (Optional) Call **OH_VideoEncoder_Reset()** to reset the encoder.
 
-    After **OH_VideoEncoder_Reset** is called, the encoder returns to the initialized state. To continue encoding, you must call **[OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_configure)** and then **[OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_prepare)**.
+    After **OH_VideoEncoder_Reset** is called, the encoder returns to the initialized state. To continue encoding, you must call [OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure) and [OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare).
 
     ```c++
     // Reset the encoder.
@@ -360,11 +359,8 @@ The following walks you through how to implement the entire video encoding proce
     std::unique_lock<std::shared_mutex> lock(codecMutex);
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoEnc != nullptr) {
-        ret = OH_VideoEncoder_Destroy(videoEnc);
+        OH_VideoEncoder_Destroy(videoEnc);
         videoEnc = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
     }
     ```
 
@@ -452,9 +448,10 @@ The following walks you through how to implement the entire video encoding proce
 
 5. Obtain an available buffer and write the bitstream to the encoder.
 
-    - Call [OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_queryinputbuffer) to obtain the index of the next available input buffer.
-    - Based on this index, call [OH_VideoEncoder_GetInputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_getinputbuffer) to obtain the buffer instance.
-    - Write the data to be encoded to the buffer, and call [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_pushinputbuffer) to push it into the encoding input queue for encoding. When all the data to be processed has been passed to the encoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the encoder that the input is complete.
+    - Call [OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer) to obtain the index of the next available input buffer.
+    - Based on this index, call [OH_VideoEncoder_GetInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputbuffer) to obtain the buffer instance.
+    - Write the data to be encoded to the buffer, and call [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer) to push it into the encoding input queue for encoding. When all the data to be processed has been passed to the encoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the encoder that the input is complete.
+
 
     The meanings of the variables **size**, **offset**, **pts**, **frameData**, and **flags** in the example are the same as those in surface mode.
 
@@ -540,9 +537,10 @@ The following walks you through how to implement the entire video encoding proce
 
 6. Obtain an available buffer and release the encoded frame.
 
-   - Call [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_queryoutputbuffer) to obtain the index of the next available output buffer.
-   - Based on this index, call [OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_getoutputbuffer) to obtain the buffer instance.
-   - Call [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_freeoutputbuffer) to release the encoded frame.
+   - Call [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer) to obtain the index of the next available output buffer.
+   - Based on this index, call [OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer) to obtain the buffer instance.
+   - Call [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer) to release the encoded frame.
+  
 
     ```c++
     bool EncoderOutput(OH_AVCodec *videoEnc, int64_t timeoutUs)

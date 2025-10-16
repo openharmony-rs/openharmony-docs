@@ -56,7 +56,7 @@ Extension生命周期回调，在执行备份数据时回调，由开发者提�
   ```ts
   class BackupExt extends BackupExtensionAbility {
     async onBackup() {
-      console.log('onBackup');
+      console.info('onBackup');
     }
   }
   ```
@@ -104,7 +104,7 @@ class BackupExt extends BackupExtensionAbility {
         //当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -141,7 +141,7 @@ class BackupExt extends BackupExtensionAbility {
         //当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
-      console.log(`onBackupEx ok`);
+      console.info(`onBackupEx ok`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -177,7 +177,7 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者提�
 
   class BackupExt extends BackupExtensionAbility {
     async onRestore(bundleVersion : BundleVersion) {
-      console.log(`onRestore ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestore ok ${JSON.stringify(bundleVersion)}`);
     }
   }
   ```
@@ -227,7 +227,7 @@ class BackupExt extends BackupExtensionAbility {
         //当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -264,7 +264,7 @@ class BackupExt extends BackupExtensionAbility {
         //当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
-      console.log(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
       let errorInfo: ErrorInfo = {
         type: "ErrorInfo",
         errorCode: 0,
@@ -330,7 +330,7 @@ onProcess(): string
 
     // 如下代码中，appJob方法为模拟的实际业务代码，args为appJob方法的参数，用于提交到taskpool中，开启子线程进行工作
     async onBackup() {
-      console.log(`onBackup begin`);
+      console.info(`onBackup begin`);
       let args = 100; // args为appJob方法的参数
       let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
@@ -339,11 +339,11 @@ onProcess(): string
         console.error("onBackup error." + error.message);
       }
       taskpool.terminateTask(jobTask); // 需要手动销毁
-      console.log(`onBackup end`);
+      console.info(`onBackup end`);
     }
 
     async onRestore() {
-      console.log(`onRestore begin`);
+      console.info(`onRestore begin`);
       let args = 100; // args为appJob方法的参数
       let jobTask: taskpool.Task = new taskpool.LongTask(appJob, this.progressInfo, args);
       try {
@@ -352,19 +352,19 @@ onProcess(): string
         console.error("onRestore error." + error.message);
       }
       taskpool.terminateTask(jobTask); // 需要手动销毁
-      console.log(`onRestore end`);
+      console.info(`onRestore end`);
     }
  
 
     onProcess(): string {
-      console.log(`onProcess begin`);
+      console.info(`onProcess begin`);
       return this.progressInfo.getMigrateProgress();
     }
   }
 
   @Concurrent
   function appJob(progressInfo: MigrateProgressInfo, args: number) : string {
-    console.log(`appJob begin, args is: ` + args);
+    console.info(`appJob begin, args is: ` + args);
     // 在业务执行时刷新已处理进度
     let currentProcessed: number = 0;
     // 模拟业务实际逻辑

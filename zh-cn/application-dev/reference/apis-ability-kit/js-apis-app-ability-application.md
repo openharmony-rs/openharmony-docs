@@ -20,6 +20,19 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+## AppPreloadType<sup>22+</sup>
+
+表示应用当前进程的预加载类型枚举。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称                 | 值  | 说明                               |
+| -------------------- | --- | --------------------------------- |
+| UNSPECIFIED    | 0   |    未发生预加载或预加载数据已被清除。       |
+| TYPE_CREATE_PROCESS          | 1   |    进程最终预加载到进程创建完成阶段。      |
+| TYPE_CREATE_ABILITY_STAGE  | 2   |     进程最终预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
+| TYPE_CREATE_WINDOW_STAGE        | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
+
 ## application.createModuleContext<sup>12+</sup>
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
@@ -185,11 +198,16 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 	- 对于UIAbility组件，系统将创建新的空进程作为主控进程。
 	- 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
 
-<!--Del-->
 > **说明：**
+> 
+> 如果当前进程已经是[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)，调用该接口无效并且不会抛出错误码。
 >
+> 当前进程只有运行了isolationProcess字段设为true的组件，或曾经成为过主控进程，开发者才可将其设置为备选主控进程。
+>
+> <!--Del-->
 > 当前仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
 <!--DelEnd-->
+
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -214,7 +232,7 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 | 错误码ID | 错误信息        |
 | -------- | --------------- |
 | 801 | Capability not supported.|
-| 16000115 | The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process. |
+| 16000115 | The current process cannot be set as a candidate master process. |
 
 
 **示例：**
@@ -317,7 +335,7 @@ exitMasterProcessRole(): Promise\<void>
 | -------- | --------------- |
 | 801 | Capability not supported.|
 | 16000118 | Not a master process. |
-| 16000119 | Cannot exit because there is an unfinished onNewProcessRequest. |
+| 16000119 | Cannot exit because there is an unfinished request. |
 
 **示例：**
 
@@ -340,6 +358,37 @@ export default class EntryAbility extends UIAbility {
       let message: string = (error as BusinessError).message;
       console.error(`exitMasterProcessRole failed, error.code: ${code}, error.message: ${message}`);
     }
+  }
+}
+```
+
+## application.getAppPreloadType<sup>22+</sup>
+
+getAppPreloadType(): AppPreloadType
+
+获取应用当前进程的预加载类型。
+
+> **说明：**
+>
+> - 只有当进程创建完成并首次执行[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)时，调用该接口，才可以返回真实的预加载类型。
+> - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+	
+**返回值：**
+
+| 类型            | 说明            |
+| --------------- | --------------- |
+|[AppPreloadType](#apppreloadtype22)  | 应用当前进程的预加载类型。     |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let appPreloadType = application.getAppPreloadType();
   }
 }
 ```

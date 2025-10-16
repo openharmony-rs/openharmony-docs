@@ -235,6 +235,18 @@
 | FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
 | PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。 |
 
+## OcclusionState<sup>22+</sup>
+
+窗口可见性状态枚举。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称   | 值 | 说明                   |
+| ------ | ---- | --------------------- |
+| NO_OCCLUSION | 0 | 窗口完全可见（没有任何部分被其他非透明窗口遮挡）。|
+| PARTIAL_OCCLUSION | 1 | 窗口部分可见（部分被其他非透明窗口遮挡）。|
+| FULL_OCCLUSION | 2 | 窗口完全不可见（完全被其他非透明窗口遮挡，或窗口最小化，或窗口隐藏）。|
+
 ## WindowStageEventType<sup>9+</sup>
 
 WindowStage生命周期。

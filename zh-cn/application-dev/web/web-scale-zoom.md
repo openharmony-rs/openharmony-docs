@@ -79,6 +79,26 @@ struct WebComponent {
 }
 ```
 
+或者通过属性[zoomControlAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#zoomcontrolaccess22)设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .zoomControlAccess(false)
+    }
+  }
+}
+```
+
 ## 监听页面缩放比例变化
 
 应用可以通过[onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9)接口监听页面缩放比例的变化。

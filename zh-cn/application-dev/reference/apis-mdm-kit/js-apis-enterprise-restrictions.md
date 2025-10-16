@@ -74,7 +74,8 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |appClone<sup>21+</sup>|[应用分身能力](../../quick-start/app-clone.md)，禁用后无法创建应用分身。对已创建的应用分身无效。|
 |externalStorageCard<sup>21+</sup> |外置存储能力，禁用后设备无法使用外置存储，并且当前已连接的外置存储会被卸载。如果外置存储卸载时有文件正在被使用，可能会导致卸载失败，返回9200013错误码。<br/>外置存储禁用后重新启用，需要手动重新连接外置存储。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力，设置禁用后，连接Wi-Fi仅能使用设备物理MAC。|
-|hdcRemote<sup>22+</sup>|设备HDC 上位机能力。|
+|unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
+|hdcRemote<sup>22+</sup>|设备HDC 上位机能力（调试其他设备的能力）。|
 <!--RP1--><!--RP1End-->
 
 **错误码**：
@@ -111,7 +112,7 @@ try {
 
 ## restrictions.getDisallowedPolicy
 
-getDisallowedPolicy(admin: Want, feature: string): boolean
+getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 
 查询某特性是否被禁用。 
 
@@ -125,7 +126,7 @@ getDisallowedPolicy(admin: Want, feature: string): boolean
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。                                       |
 | feature | string                                                  | 是   | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、usb、wifi、tethering、camera<!--RP4--><!--RP4End-->。 |
 
 **表2 支持查询的特性清单：**
@@ -160,7 +161,8 @@ getDisallowedPolicy(admin: Want, feature: string): boolean
 |appClone<sup>21+</sup>|[应用分身能力](../../quick-start/app-clone.md)，禁用后无法创建应用分身。|
 |externalStorageCard<sup>21+</sup> |外置存储能力。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力。|
-|hdcRemote<sup>22+</sup>|设备HDC 上位机能力。|
+|unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
+|hdcRemote<sup>22+</sup>|设备HDC 上位机能力（调试其他设备的能力）。|
 <!--RP2--><!--RP2End-->
 
 **返回值：**

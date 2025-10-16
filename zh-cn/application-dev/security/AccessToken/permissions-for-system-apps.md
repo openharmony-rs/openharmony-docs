@@ -1731,18 +1731,6 @@
 
 **起始版本**：10
 
-## ohos.permission.sec.ACCESS_UDID
-
-允许系统应用获取UDID。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：7
-
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
 允许应用获取设备风险状态。
@@ -4765,6 +4753,20 @@
 
 **起始版本**：20
 
+## ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+允许系统应用将播放音频注入到录制音频。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：22
+
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
 允许系统应用或系统服务调用内核接口进行代码解密。
@@ -5077,6 +5079,34 @@
 
 **起始版本**：20
 
+## ohos.permission.GET_SCREEN_CONTENT
+
+允许应用获取屏幕上的内容。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.SIMULATE_USER_INPUT
+
+允许应用模拟用户操作。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
 ## ohos.permission.MANAGE_SELF_SKILLS
 
 允许应用管理本应用的skills配置。
@@ -5106,3 +5136,17 @@
 **支持设备**：PC/2in1 | Phone | Tablet | TV | Car
 
 **起始版本**：21
+
+## ohos.permission.CAPTURE_SCREEN_ALL
+
+允许应用截取屏幕图像，包括隐私窗口。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：13

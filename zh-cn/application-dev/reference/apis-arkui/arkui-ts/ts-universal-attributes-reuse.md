@@ -41,15 +41,15 @@ reuse(options: ReuseOptions): T
 
 复用选项信息。
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 属性
-
-| 名称    | 类型                                | 只读 | 可选 | 说明                                                         |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| reuseId | [ReuseIdCallback](#reuseidcallback) | 否   | 是   | 复用标识id，相同复用标识id的V2自定义组件会被互相复用。默认的复用标识id为自定义组件名。 |
+| reuseId | [ReuseIdCallback](#reuseidcallback) | 否 | 是 | 复用标识id，相同复用标识id的V2自定义组件会被互相复用。默认的复用标识id为自定义组件名。 |
 
 ## ReuseIdCallback
 

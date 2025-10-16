@@ -199,22 +199,15 @@ struct updaterDemo2 {
 ```
 ![attributeUpdater2](figures/attribute-updater2.gif)
 
-### updateConstructorParams
-updateConstructorParams: C
-
-用来更改组件的构造入参。C代表组件的构造函数类型。
-
-其中C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。
+### 属性
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：**
-
-| 类型             | 说明                                                         |
-| -------------------- | ------------------------------------------------------------ |
-| C   |C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | 否 | 否 | C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。用于更改组件的构造函数入参。 |
 
 **示例：** 
 

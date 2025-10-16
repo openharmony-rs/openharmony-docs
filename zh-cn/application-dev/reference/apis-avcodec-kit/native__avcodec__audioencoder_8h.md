@@ -30,7 +30,7 @@
 | OH_AVCodec \* [OH_AudioEncoder_CreateByMime](_audio_encoder.md#oh_audioencoder_createbymime) (const char \*mime) | 根据MIME类型创建音频编码器实例。 | 
 | OH_AVCodec \* [OH_AudioEncoder_CreateByName](_audio_encoder.md#oh_audioencoder_createbyname) (const char \*name) | 通过音频编码器名称创建音频编码器实例。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioEncoder_Destroy](_audio_encoder.md#oh_audioencoder_destroy) (OH_AVCodec \*codec) | 清理编码器内部资源，销毁编码器实例。 | 
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioEncoder_SetCallback](_audio_encoder.md#oh_audioencoder_setcallback) (OH_AVCodec \*codec, [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) callback, void \*userData) | 设置异步回调函数，使应用可以响应音频编码器生成的事件。 | 
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioEncoder_SetCallback](_audio_encoder.md#oh_audioencoder_setcallback) (OH_AVCodec \*codec, [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) callback, void \*userData) | 设置异步回调函数，使应用可以响应音频编码器生成的事件。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioEncoder_Configure](_audio_encoder.md#oh_audioencoder_configure) (OH_AVCodec \*codec, OH_AVFormat \*format) | 要配置音频编码器，通常需要配置编码后的音轨的描述信息。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioEncoder_Prepare](_audio_encoder.md#oh_audioencoder_prepare) (OH_AVCodec \*codec) | 准备编码器的内部资源。 | 
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) [OH_AudioEncoder_Start](_audio_encoder.md#oh_audioencoder_start) (OH_AVCodec \*codec) | 调用此接口启动编码器，在Prepare成功后执行。 | 

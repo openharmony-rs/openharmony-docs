@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can manage the audio effect of a specific playback instance, for example, obtaining or setting the audio effect mode of the current audio playback stream. You can obtain the global audio effect, that is, the audio effect mode corresponding to a specific audio stream usage, which is specified by [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage).
 

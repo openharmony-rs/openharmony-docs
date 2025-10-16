@@ -86,7 +86,7 @@ The provided member must be a property name of PhotoKey.
 
 **可能原因**
 
-参数不在[PhotoKeys](js-apis-photoAccessHelper-sys.md#photokeys)枚举范围之内。
+参数不在[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)枚举范围之内。
 
 
 **处理步骤**

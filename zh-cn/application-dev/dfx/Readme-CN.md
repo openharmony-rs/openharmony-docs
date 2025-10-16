@@ -86,11 +86,12 @@
 - 命令行工具<!--perform-command-line-utilities-->
   - [hdc](hdc.md)
   - [hilog](hilog.md)
-  - [hidumper](hidumper.md)
+  - hidumper<!--hidumper-tool-->
+    - [hidumper](hidumper.md)
   - [hitrace](hitrace.md)
   - [hiperf](hiperf.md)
   - [hiprofiler](hiprofiler.md)
   - [uinput](uinput.md)
   <!--Del-->
-  - [hisysevent](hisysevent.md)
+  - [hisysevent（仅对系统应用开放）](hisysevent-sys.md)
   <!--DelEnd-->

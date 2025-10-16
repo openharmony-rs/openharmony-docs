@@ -105,6 +105,7 @@ function layerMask(): void {
 | GEOMETRY | 2 | 几何类型结点。 |
 | CAMERA | 3 | 相机类型结点。 |
 | LIGHT | 4 | 灯光类型结点。 |
+| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。 |
 
 ## Container\<T>
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
@@ -415,7 +416,9 @@ function getNode(): void {
 | farPlane | number | 否 | 否 | 远平面，取值大于nearPlane。 |
 | enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。 |
+| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | 是 | 否 | 应用于相机输出的后处理特效。 |
 | clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。） |
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>

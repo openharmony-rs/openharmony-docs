@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, video decoding in synchronous mode is supported.
 
@@ -22,9 +22,7 @@ Asynchronous mode is generally recommended for most use cases. Synchronous mode 
 
 ## How to Develop
 
-Read [VideoDecoder](../../reference/apis-avcodec-kit/_video_decoder.md) for the API reference.
-
-The figure below shows the call relationship of synchronous video decoding.
+Read [VideoDecoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md) for the API reference.
 
 - The dotted line indicates an optional operation.
 
@@ -114,7 +112,7 @@ The following walks you through how to implement the entire video decoding proce
 2. Call **OH_VideoDecoder_Configure()** to configure the decoder.
 
     - For details about the configurable options, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
-    - For details about the parameter verification rules, see [OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_configure).
+    - For details about the parameter verification rules, see [OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure).
     - The parameter value ranges can be obtained through the capability query interface. For details, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
     Currently, the following options must be configured for all supported formats: video frame width and height.
@@ -142,7 +140,6 @@ The following walks you through how to implement the entire video decoding proce
     > To enable video decoding in synchronous mode, **OH_MD_KEY_ENABLE_SYNC_MODE** must be set to **1**.
     >
     > To use synchronous mode, do not call **OH_VideoDecoder_RegisterCallback** in prior to **OH_VideoDecoder_Configure**. Otherwise, the decoder will run in asynchronous mode instead.
-
 
 3. Set the surface.
 
@@ -180,13 +177,13 @@ The following walks you through how to implement the entire video decoding proce
 
 6. Obtain an available buffer and write the bitstream to the decoder.
 
-    - Call [OH_VideoDecoder_QueryInputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_queryinputbuffer) to obtain the index of the next available input buffer.
-    - Based on this index, call [OH_VideoDecoder_GetInputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_getinputbuffer) to obtain the buffer instance.
-    - Write the data to be decoded into the buffer, and call [OH_VideoDecoder_PushInputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_pushinputbuffer) to push it to the decoder for decoding. When all the data to be processed has been passed to the decoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the decoder that the input is complete.
+    - Call [OH_VideoDecoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_queryinputbuffer) to obtain the index of the next available input buffer.
+    - Based on this index, call [OH_VideoDecoder_GetInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getinputbuffer) to obtain the buffer instance.
+    - Write the data to be decoded into the buffer, and call [OH_VideoDecoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_pushinputbuffer) to push it to the decoder for decoding. When all the data to be processed has been passed to the decoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the decoder that the input is complete.
 
     Send the input queue for decoding. In the code snippet below, the following variables are used:
     - **size**, **offset**, **pts**, and **frameData**: size, offset, timestamp, and frame data. For details about how to obtain such information, see step 9 in [Media Data Demultiplexing](./audio-video-demuxer.md#how-to-develop).
-    - **flags**: type of the buffer flag. For details, see [OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/_core.md#oh_avcodecbufferflags).
+    - **flags**: type of the buffer flag. For details, see [OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags).
 
     ```c++
     bool DecoderInput(OH_AVCodec *videoDec, int64_t timeoutUs)
@@ -255,9 +252,9 @@ The following walks you through how to implement the entire video decoding proce
 
 7. Obtain an available buffer and release the decoded frame.
 
-   - Call [OH_VideoDecoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_queryoutputbuffer) to obtain the index of the next available input buffer.
-   - Bsed on this index, call [OH_VideoDecoder_GetOutputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_getoutputbuffer) to obtain the buffer instance.
-   - Determine the subsequent operations based on the **isRender** flag. If the decoded frame does not need to be rendered, call [OH_VideoDecoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_freeoutputbuffer) to release the decoded frame. If the decoded frame needs to be rendered, you can call [OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_renderoutputbuffer) to display the decoded frame and automatically release it, or call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_renderoutputbufferattime) to display the decoded frame at a specified time and then release it.
+   - Call [OH_VideoDecoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_queryoutputbuffer) to obtain the index of the next available output buffer.
+   - Based on this index, call [OH_VideoDecoder_GetOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputbuffer) to obtain the buffer instance.
+   - Determine the subsequent operations based on the **isRender** flag. If the decoded frame does not need to be rendered, call [OH_VideoDecoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_freeoutputbuffer) to release the decoded frame. If the decoded frame needs to be rendered, you can call [OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer) to display the decoded frame and automatically release it, or call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime) to display the decoded frame at a specified time and then release it.
 
     ```c++
     bool DecoderOutput(OH_AVCodec *videoDec, int64_t timeoutUs)
@@ -355,7 +352,7 @@ The following walks you through how to implement the entire video decoding proce
 
     After **OH_VideoDecoder_Flush** is called, the decoder remains in the Running state, but the input and output data and parameter set (such as the H.264 PPS/SPS) buffered in the decoder are cleared.
 
-    In this case, you need to call [OH_VideoDecoder_Start](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_start) to start decoding again.
+    To continue decoding, you must call [OH_VideoDecoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_start) again.
 
     ```c++
     // Use codecMutex to avoid the problem where the decoding thread keeps running and exits the loop after the Flush API is called and the state is changed.
@@ -375,7 +372,7 @@ The following walks you through how to implement the entire video decoding proce
 
 10. (Optional) Call **OH_VideoDecoder_Reset()** to reset the decoder.
 
-    After **OH_VideoDecoder_Reset** is called, the decoder returns to the Initialized state. To continue decoding, you must call [OH_VideoDecoder_Configure](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_configure), [OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_setsurface), and [OH_VideoDecoder_Prepare](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_prepare) in sequence.
+    After **OH_VideoDecoder_Reset** is called, the decoder returns to the Initialized state. To continue decoding, you must call [OH_VideoDecoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure), [OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface), and [OH_VideoDecoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_prepare).
 
     ```c++
     // Reset the decoder.
@@ -431,11 +428,8 @@ The following walks you through how to implement the entire video decoding proce
     std::unique_lock<std::shared_mutex> lock(codecMutex);
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoDec != nullptr) {
-        ret = OH_VideoDecoder_Destroy(videoDec);
+        OH_VideoDecoder_Destroy(videoDec);
         videoDec = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
     }
     ```
 
@@ -492,13 +486,13 @@ The following walks you through how to implement the entire video decoding proce
 
 3. Call **OH_VideoDecoder_Prepare()** to prepare internal resources for the decoder.
 
-   ```c++
-OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
+    ```c++
+    OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     if (ret != AV_ERR_OK) {
         // Handle exceptions.
     }
     ```
-    
+
 4. Call **OH_VideoDecoder_Start()** to start the decoder.
 
     ```c++
@@ -515,9 +509,9 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
 
 5. Obtain an available buffer and write the bitstream to the decoder.
 
-    - Call [OH_VideoDecoder_QueryInputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_queryinputbuffer) to obtain the index of the next available input buffer.
-    - Based on this index, call [OH_VideoDecoder_GetInputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_getinputbuffer) to obtain the buffer instance.
-    - Write the data to be decoded into the buffer, and call [OH_VideoDecoder_PushInputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_pushinputbuffer) to push it to the decoder for decoding. When all the data to be processed has been passed to the decoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the decoder that the input is complete.
+    - Call [OH_VideoDecoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_queryinputbuffer) to obtain the index of the next available input buffer.
+    - Based on this index, call [OH_VideoDecoder_GetInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getinputbuffer) to obtain the buffer instance.
+    - Write the data to be decoded into the buffer, and call [OH_VideoDecoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_pushinputbuffer) to push it to the decoder for decoding. When all the data to be processed has been passed to the decoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the decoder that the input is complete.
 
     The meanings of the variables **size**, **offset**, **pts**, **frameData**, and **flags** in the example are the same as those in surface mode.
 
@@ -588,9 +582,9 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
 
 6. Obtain an available buffer and release the decoded frame.
 
-   - Call [OH_VideoDecoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_queryoutputbuffer) to obtain the index of the next available input buffer.
-   - Based on this index, call [OH_VideoDecoder_GetOutputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_getoutputbuffer) to obtain the buffer instance.
-   - Call [OH_VideoDecoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_freeoutputbuffer) to release the decoded frame.
+   - Call [OH_VideoDecoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_queryoutputbuffer) to obtain the index of the next available output buffer.
+   - Based on this index, call [OH_VideoDecoder_GetOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputbuffer) to obtain the buffer instance.
+   - Call [OH_VideoDecoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_freeoutputbuffer) to release the decoded frame.
 
     ```c++
     bool DecoderOutput(OH_AVCodec *videoDec, int64_t timeoutUs)

@@ -451,7 +451,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>单位：vp <br/>设置为负数时，按默认值处理。|
+| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>单位：vp <br/>设置异常值如负数、非数字Resource时，按默认值处理。|
 
 ### contentEndOffset<sup>11+</sup>
 
@@ -487,7 +487,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>单位：vp <br/>设置为负数时，按默认值处理。|
+| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>单位：vp <br/>设置异常值如负数、非数字Resource时，按默认值处理。|
 
 ### childrenMainSize<sup>12+</sup>
 
@@ -860,6 +860,8 @@ onItemMove(event: (from: number, to: number) => boolean)
 onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) \| void))
 
 开始拖拽列表元素时触发。
+
+不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例12（使用OnMove进行拖拽）](#示例12使用onmove进行拖拽)。但需注意[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口不支持跨ListItemGroup拖拽。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1960,7 +1962,7 @@ struct ListExample {
                   .offset({ left: 5 })
               }
             }
-          }, (item: string) => item)
+          }, (item: string, index?: number) => item)
         }
         .lanes(2)
         .contentStartOffset(20)
@@ -2052,7 +2054,7 @@ struct ListScrollBarMarginExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: string, index?: number) => item)
       }
       .contentStartOffset(20)
       .contentEndOffset(20)
@@ -2069,3 +2071,47 @@ struct ListScrollBarMarginExample {
 ```
 
 ![list_contentStartOffset](figures/list_contentStartOffset.gif)
+
+### 示例12（使用OnMove进行拖拽）
+
+从API version 12开始，该示例展示了使用ForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到List边缘时触发List的自动滚动。
+
+```ts
+@Entry
+@Component
+struct ForEachSort {
+  @State arr: Array<string> = [];
+
+  build() {
+    Row() {
+      List() {
+        ForEach(this.arr, (item: string) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .size({ height: 100, width: '100%' })
+          }.margin(10)
+          .borderRadius(10)
+          .backgroundColor('#FFFFFFFF')
+        }, (item: string) => item)
+          .onMove((from: number, to: number) => {
+            let tmp = this.arr.splice(from, 1);
+            this.arr.splice(to, 0, tmp[0]);
+          })
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor('#FFDCDCDC')
+    }
+  }
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.arr.push(i.toString());
+    }
+  }
+}
+```
+
+![list_onMove](figures/list_onMove.gif)
