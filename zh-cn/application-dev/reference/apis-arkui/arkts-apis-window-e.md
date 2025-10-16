@@ -28,7 +28,7 @@
 
 窗口内容的避让区域的类型枚举。
 
-窗口内容需要做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，可以调用[getWindowAvoidArea](../arkts-apis-window-Window.md#getwindowavoidarea9)或者[on('avoidAreaChange')](../arkts-apis-window-Window.md#onavoidareachange9)获取对应避让区域的类型枚举值的避让区域[AvoidArea](../arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
+窗口内容需要做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，可以调用[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)或者[on('avoidAreaChange')](arkts-apis-window-Window.md#onavoidareachange9)获取对应避让区域的类型的避让区域[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
