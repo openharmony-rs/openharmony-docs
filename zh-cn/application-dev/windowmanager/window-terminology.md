@@ -6,7 +6,6 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-
 ## 窗口类型
 
 窗口有系统窗口、应用窗口两种分类。
