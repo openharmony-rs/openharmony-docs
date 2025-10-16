@@ -327,7 +327,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
-  import display from '@kit.ArkUI';
+  import { display } from '@kit.ArkUI';
 
   export default function abilityTest() {
     describe('screenCaptureTest', () => {
@@ -434,9 +434,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
   ```ts
   // ohosTest/ets/test/uitest.test.ets
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
+  import { describe, it, TestType, expect } from '@ohos/hypium';
   // 导入测试依赖kit
-  import { Driver, Component } from '@kit.TestKit';
+  import { Driver } from '@kit.TestKit';
   const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
