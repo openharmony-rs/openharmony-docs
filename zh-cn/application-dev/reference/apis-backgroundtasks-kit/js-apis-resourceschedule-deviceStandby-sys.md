@@ -17,12 +17,12 @@
 ## 导入模块
 
 ```ts
-import deviceStandby from '@ohos.resourceschedule.deviceStandby';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 ```
 
 ## deviceStandby.getExemptedApps
 
-getExemptedApps(resourceTypes: number, callback: AsyncCallback<Array&lt;ExemptedAppInfo&gt;>): void
+getExemptedApps(resourceTypes: int, callback: AsyncCallback<Array&lt;ExemptedAppInfo&gt;>): void
 
 获取进入待机模式的应用名单，使用Callback异步回调。
 
@@ -35,7 +35,7 @@ getExemptedApps(resourceTypes: number, callback: AsyncCallback<Array&lt;Exempted
 
 | 参数名      | 类型                   | 必填   | 说明                             |
 | -------- | -------------------- | ---- | ------------------------------ |
-| ResourceTypes|number | 是    | 资源类型，类型具体说明请参考[ResourceType](#resourcetype)。 |
+| ResourceTypes|int | 是    | 资源类型，类型具体说明请参考[ResourceType](#resourcetype)。 |
 | callback | AsyncCallback<Array&lt;[ExemptedAppInfo](#exemptedappinfo)&gt;> | 是    |豁免应用信息。|
 
 **错误码**：
@@ -56,7 +56,8 @@ getExemptedApps(resourceTypes: number, callback: AsyncCallback<Array&lt;Exempted
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resourceTypes: deviceStandby.ResourceType  = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
 deviceStandby.getExemptedApps(resourceTypes, (err: BusinessError, res: Array<deviceStandby.ExemptedAppInfo>) => {
@@ -73,7 +74,7 @@ deviceStandby.getExemptedApps(resourceTypes, (err: BusinessError, res: Array<dev
 
 ## deviceStandby.getExemptedApps
 
-getExemptedApps(resourceTypes: number): Promise<Array&lt;ExemptedAppInfo&gt;>
+getExemptedApps(resourceTypes: int): Promise<Array&lt;ExemptedAppInfo&gt;>
 
 获取进入待机模式的应用名单，使用Promise异步回调。
 
@@ -86,7 +87,7 @@ getExemptedApps(resourceTypes: number): Promise<Array&lt;ExemptedAppInfo&gt;>
 
 | 参数名      | 类型                   | 必填   | 说明                             |
 | -------- | -------------------- | ---- | ------------------------------ |
-| ResourceTypes|number | 是    |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。|
+| ResourceTypes|int | 是    |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。|
 
 **返回值**：
 
@@ -112,7 +113,8 @@ getExemptedApps(resourceTypes: number): Promise<Array&lt;ExemptedAppInfo&gt;>
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resourceTypes: deviceStandby.ResourceType = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
 deviceStandby.getExemptedApps(resourceTypes).then( (res: Array<deviceStandby.ExemptedAppInfo>) => {
@@ -160,6 +162,9 @@ requestExemptionResource(request: ResourceRequest): void
 **示例**：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
 let resRequest: deviceStandby.ResourceRequest = {
   resourceTypes: deviceStandby.ResourceType.TIMER,
   uid:10003,
@@ -205,6 +210,9 @@ releaseExemptionResource(request: ResourceRequest): void
 **示例**：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
 let resRequest: deviceStandby.ResourceRequest = {
   resourceTypes: deviceStandby.ResourceType.TIMER,
   uid:10003,
@@ -239,11 +247,11 @@ deviceStandby.releaseExemptionResource(resRequest);
 **系统能力:** SystemCapability.ResourceSchedule.DeviceStandby
 
 
-|名称  |类型   | 必填   |说明   |
+|名称  |类型   | 只读   | 可选   |说明   |
 | ------------ | ------------ |------------ | ------------ |
-|resourceTypes   | number  | 是   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
-|name   |string   | 是   |  应用名。  |
-|duration   | number  | 是   | 豁免时长。 |
+|resourceTypes   | int  | 否   | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
+|name   |string   | 否   | 否   |  应用名。  |
+|duration   | int  | 否   | 否   | 豁免时长。 |
 
 ## ResourceRequest
 
@@ -252,10 +260,10 @@ deviceStandby.releaseExemptionResource(resRequest);
 **系统能力:** SystemCapability.ResourceSchedule.DeviceStandby
 
 
-|名称   |类型   | 必填   |说明   |
+|名称   |类型   | 只读  | 可选   |说明   |
 | ------------ | ------------ |------------| ------------ |
-|resourceTypes   | number  | 是   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
-|uid   | number  | 是   |应用uid。   |
-|name   |string   | 是   | 应用名称。  |
-|duration   | number  | 是   | 豁免时长。 |
-|reason   |string   | 是   |  申请原因。  |
+|resourceTypes   | int  | 否 | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
+|uid   | int  | 否  | 否   |应用uid。   |
+|name   |string   | 否 | 否    | 应用名称。  |
+|duration   | int    | 否 | 否    | 豁免时长。 |
+|reason   |string   | 否  | 否   |  申请原因。  |
