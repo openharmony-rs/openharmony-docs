@@ -24,7 +24,7 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 点击动作触发该回调。
 
-当触发点击事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown。
+当触发点击事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
 
 新增distanceThreshold参数，设置点击手势移动阈值。手指移动超出阈值时，点击手势识别失败。
 对于无手指移动距离限制的点击场景，建议使用原有接口。若需限制点击时手指移动范围，建议使用该接口。
@@ -64,7 +64,7 @@ onClick(event: (event: ClickEvent) => void): T
 
 点击动作触发该回调。
 
-触发点击事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown。
+触发点击事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -154,6 +154,7 @@ struct ClickExample {
                 + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
                 + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
                 + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
+              console.info('sourcetype:' + event.source);
             }
           }, 20)
         Button('Click').width(200).height(50).id('click2')
@@ -164,6 +165,7 @@ struct ClickExample {
                 + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
                 + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
                 + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
+              console.info('sourcetype:' + event.source);
             }
           }, 20)
       }.margin(20)
