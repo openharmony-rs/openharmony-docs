@@ -2,9 +2,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -12,7 +12,7 @@
 
 ## 导入模块
 
-```js
+```ts
 import { installer } from '@kit.AbilityKit';
 ```
 
@@ -25,6 +25,10 @@ getBundleInstaller(callback: AsyncCallback\<BundleInstaller>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -43,12 +47,31 @@ getBundleInstaller(callback: AsyncCallback\<BundleInstaller>): void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller((err: BusinessError, data: installer.BundleInstaller) => {
+        if (err) {
+            console.error('getBundleInstaller failed:' + err.message);
+        } else {
+            console.info('getBundleInstaller successfully');
+        }
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed:' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    installer.getBundleInstaller((err: BusinessError | null, data: installer.BundleInstaller | undefined) => {
         if (err) {
             console.error('getBundleInstaller failed:' + err.message);
         } else {
@@ -71,6 +94,10 @@ getBundleInstaller(): Promise\<BundleInstaller>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
@@ -86,15 +113,32 @@ getBundleInstaller(): Promise\<BundleInstaller>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
         console.info('getBundleInstaller successfully.');
     }).catch((error: BusinessError) => {
         console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        console.info('getBundleInstaller successfully.');
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
     });
 } catch (error) {
     let message = (error as BusinessError).message;
@@ -111,6 +155,10 @@ getBundleInstallerSync(): BundleInstaller
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 | 类型                                                         | 说明                                 |
@@ -129,7 +177,7 @@ getBundleInstallerSync(): BundleInstaller
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstallerSync();
@@ -141,7 +189,7 @@ try {
 ```
 
 ## BundleInstaller.install
-install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
+install(hapFilePaths: Array\<string>, installParam: InstallParam, callback: AsyncCallback\<void>): void
 
 安装应用，使用callback异步回调。
 
@@ -162,13 +210,17 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名           | 类型                                                 | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array\<string>                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
 | installParam           | [InstallParam](#installparam)                        | 是   | 指定安装所需的其他参数。                                     |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -207,9 +259,10 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -235,8 +288,38 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hapFilePaths和userId。
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.install(hapFilePaths, installParam, (err: BusinessError | null) => {
+            if (err) {
+                console.error('install failed:' + err.message);
+            } else {
+                console.info('install successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
 ## BundleInstaller.install
-install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+install(hapFilePaths: Array\<string>, callback: AsyncCallback\<void>): void
 
 安装应用，使用callback异步回调。
 
@@ -257,12 +340,16 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名           | 类型                                                 | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
+| hapFilePaths | Array\<string>                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -300,9 +387,10 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -317,6 +405,30 @@ try {
         });
     }).catch((error: BusinessError) => {
         console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hapFilePaths。
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.install(hapFilePaths, (err: BusinessError | null) => {
+            if (err) {
+                console.error('install failed:' + err.message);
+            } else {
+                console.info('install successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
     });
 } catch (error) {
     let message = (error as BusinessError).message;
@@ -346,6 +458,10 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 > 安装开发者内测构建应用需要ohos.permission.INSTALL_INTERNALTESTING_BUNDLE权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -397,9 +513,10 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -424,10 +541,37 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hapFilePaths和userId。
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.install(hapFilePaths, installParam).then(() => {
+            console.info('install successfully');
+        }).catch((error: Error) => {
+            console.error('install failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.uninstall
 
-uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
+uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback\<void>): void
 
 卸载应用，使用callback异步回调。
 
@@ -437,13 +581,17 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                                                 | 必填 | 说明                                           |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | 是   | 待卸载应用的包名。                                           |
 | installParam      | [InstallParam](#installparam)                        | 是   | 指定安装所需的其他参数。                       |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，卸载应用成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，卸载应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -465,9 +613,10 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -493,10 +642,39 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和userId。
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(bundleName, installParam, (err: BusinessError | null) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.uninstall
 
-uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
+uninstall(bundleName: string, callback: AsyncCallback\<void>): void
 
 卸载应用，使用callback异步回调。
 
@@ -506,12 +684,16 @@ uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                                                 | 必填 | 说明                                           |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | 是   | 待卸载应用的包名。                                           |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，卸载应用成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，卸载应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -531,9 +713,10 @@ uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -554,6 +737,31 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = 'com.ohos.demo';
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(bundleName, (err: BusinessError | null) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
 ## BundleInstaller.uninstall
 
 uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
@@ -565,6 +773,10 @@ uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.UNINSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -599,9 +811,10 @@ uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -626,10 +839,37 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和userId。
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(bundleName, installParam).then(() => {
+            console.info('uninstall successfully');
+        }).catch((error: Error) => {
+            console.error('uninstall failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.recover
 
-recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
+recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback\<void>): void
 
 回滚应用到初次安装时的状态，使用callback异步回调。
 
@@ -639,13 +879,17 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                                                 | 必填 | 说明                                           |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | 是   | 待恢复应用的包名。                                           |
 | installParam      | [InstallParam](#installparam)                        | 是   | 指定安装所需的其他参数。                       |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，回滚应用成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，回滚应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -663,9 +907,10 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -691,11 +936,40 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和userId。
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.recover(bundleName, installParam, (err: BusinessError | null) => {
+            if (err) {
+                console.error('recover failed:' + err.message);
+            } else {
+                console.info('recover successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 
 ## BundleInstaller.recover
 
-recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
+recover(bundleName: string, callback: AsyncCallback\<void>): void
 
 回滚应用到初次安装时的状态，使用callback异步回调。
 
@@ -705,12 +979,16 @@ recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                                                 | 必填 | 说明                                           |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | 是   | 待恢复应用的包名。                               |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，回滚应用成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，回滚应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -727,9 +1005,10 @@ recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -750,6 +1029,30 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = 'com.ohos.demo';
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.recover(bundleName, (err: BusinessError | null) => {
+            if (err) {
+                console.error('recover failed:' + err.message);
+            } else {
+                console.info('recover successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.recover
 
@@ -762,6 +1065,10 @@ recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.RECOVER_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -791,9 +1098,11 @@ recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 | 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
 
 **示例：**
+
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -818,6 +1127,33 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和userId。
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.recover(bundleName, installParam).then(() => {
+            console.info('recover successfully');
+        }).catch((error: Error) => {
+            console.error('recover failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.uninstall<sup>10+</sup>
 
@@ -831,12 +1167,16 @@ uninstall(uninstallParam: UninstallParam, callback : AsyncCallback\<void\>) : vo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名         | 类型                                | 必填 | 说明                                                     |
 | -------------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | uninstallParam | [UninstallParam](#uninstallparam10) | 是   | 共享包卸载需指定的参数信息。                             |
-| callback       | AsyncCallback&lt;void&gt;           | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，卸载应用成功，err为null，否则为错误对象。 |
+| callback       | AsyncCallback\<void>           | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，卸载应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -853,9 +1193,10 @@ uninstall(uninstallParam: UninstallParam, callback : AsyncCallback\<void\>) : vo
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -878,6 +1219,32 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName。
+let uninstallParam: installer.UninstallParam = {
+    bundleName: "com.ohos.demo",
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(uninstallParam, (err: BusinessError | null) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.uninstall<sup>10+</sup>
 
@@ -890,6 +1257,10 @@ uninstall(uninstallParam: UninstallParam) : Promise\<void>
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.UNINSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -918,9 +1289,10 @@ uninstall(uninstallParam: UninstallParam) : Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -943,6 +1315,32 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName。
+let uninstallParam: installer.UninstallParam = {
+    bundleName: "com.ohos.demo",
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(uninstallParam, (err: BusinessError | null) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.addExtResource<sup>12+</sup>
 
@@ -955,6 +1353,10 @@ addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -983,10 +1385,11 @@ addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let filePaths : Array<string> = ['/data/storage/el2/base/a.hsp'];
@@ -1005,6 +1408,29 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和filePaths。
+let bundleName : string = 'com.ohos.demo';
+let filePaths : Array<string> = ['/data/storage/el2/base/a.hsp'];
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.addExtResource(bundleName, filePaths).then(() => {
+            hilog.info(0x0000, 'testTag', 'addExtResource successfully');
+        }).catch((err: Error) => {
+            hilog.error(0x0000, 'testTag', 'addExtResource failed. Cause: %{public}s', (err as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.removeExtResource<sup>12+</sup>
 
@@ -1017,6 +1443,10 @@ removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<voi
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1045,10 +1475,11 @@ removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<voi
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let moduleNames : Array<string> = ['moduleTest'];
@@ -1061,6 +1492,29 @@ try {
         });
     }).catch((error: BusinessError) => {
         console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和moduleNames。
+let bundleName : string = 'com.ohos.demo';
+let moduleNames : Array<string> = ['moduleTest'];
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.removeExtResource(bundleName, moduleNames).then(() => {
+            hilog.info(0x0000, 'testTag', 'removeExtResource successfully');
+        }).catch((err: Error) => {
+            hilog.error(0x0000, 'testTag', 'removeExtResource failed. Cause: %{public}s', (err as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
     });
 } catch (error) {
     let message = (error as BusinessError).message;
@@ -1080,13 +1534,17 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, c
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名           | 类型                                                 | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array\<string>                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
 | installParam           | [InstallParam](#installparam)                        | 是   | 指定安装所需的其他参数。                                     |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -1118,9 +1576,10 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, c
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1146,6 +1605,35 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hapFilePaths和userId。
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.updateBundleForSelf(hapFilePaths, installParam, (err: BusinessError | null) => {
+            if (err) {
+                console.error('updateBundleForSelf failed:' + err.message);
+            } else {
+                console.info('updateBundleForSelf successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.updateBundleForSelf<sup>10+</sup>
 
@@ -1159,12 +1647,16 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名           | 类型                                                 | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
+| hapFilePaths | Array\<string>                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| callback | AsyncCallback\<void> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -1195,9 +1687,10 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -1218,6 +1711,30 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hapFilePaths。
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.updateBundleForSelf(hapFilePaths, (err: BusinessError | null) => {
+            if (err) {
+                console.error('updateBundleForSelf failed:' + err.message);
+            } else {
+                console.info('updateBundleForSelf successfully.');
+            }
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.updateBundleForSelf<sup>10+</sup>
 
@@ -1231,11 +1748,15 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam):
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名           | 类型                                                 | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array\<string>                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
 | installParam | [InstallParam](#installparam) | 否   | 指定安装所需的其他参数，默认值：参照[InstallParam](#installparam)的默认值。                                     |
 
 **返回值：**
@@ -1274,9 +1795,10 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam):
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1301,6 +1823,33 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hapFilePaths和userId。
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.updateBundleForSelf(hapFilePaths, installParam).then(() => {
+            console.info('updateBundleForSelf successfully');
+        }).catch((error: Error) => {
+            console.error('updateBundleForSelf failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.uninstallUpdates<sup>12+</sup>
 
@@ -1313,6 +1862,10 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void
 **需要权限：** ohos.permission.INSTALL_BUNDLE 或 ohos.permission.RECOVER_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1345,9 +1898,10 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let installParam: installer.InstallParam = {
@@ -1371,6 +1925,32 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = 'com.ohos.camera';
+let installParam: installer.InstallParam = {
+    isKeepData: true,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstallUpdates(bundleName, installParam) .then(() => {
+            console.info('uninstallUpdates successfully.');
+        }).catch((error: Error) => {
+            console.error('uninstallUpdates failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('getBundleInstaller failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.createAppClone<sup>12+</sup>
 
@@ -1384,6 +1964,10 @@ ArkTS-Sta: createAppClone(bundleName: string, createAppCloneParam?: CreateAppClo
 **需要权限：** ohos.permission.INSTALL_CLONE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1416,7 +2000,7 @@ ArkTS-Sta: createAppClone(bundleName: string, createAppCloneParam?: CreateAppClo
 ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let createAppCloneParam: installer.CreateAppCloneParam = {
@@ -1443,7 +2027,7 @@ try {
 ArkTS-Sta:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 代码中使用的bundleName、appIndex、useId需为应用实际的包名、应用分身索引、用户ID。
 let bundleName = 'com.ohos.camera';
@@ -1471,14 +2055,20 @@ try {
 
 ## BundleInstaller.destroyAppClone<sup>12+</sup>
 
-ArkTS-Dyn: destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>
+destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>
 删除应用分身，使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[destroyAppClone](#bundleinstallerdestroyappclone20)。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1508,9 +2098,10 @@ ArkTS-Dyn: destroyAppClone(bundleName: string, appIndex: number, userId?: number
 | 17700061 | The appIndex is invalid. |
 
 **示例：**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1535,15 +2126,21 @@ try {
 
 ## BundleInstaller.destroyAppClone<sup>15+</sup>
 
-ArkTS-Dyn: destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>
+destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>
 
 删除应用分身，使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[destroyAppClone](#bundleinstallerdestroyappclone20)。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1574,9 +2171,10 @@ ArkTS-Dyn: destroyAppClone(bundleName: string, appIndex: number, destroyAppClone
 | 17700062 | Failed to uninstall the app because the app is locked. |
 
 **示例：**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1609,15 +2207,21 @@ try {
 
 ## BundleInstaller.destroyAppClone<sup>20+</sup>
 
-ArkTS-Sta: destroyAppClone(bundleName: string, appIndex: int, options?: int | DestroyAppCloneParam): Promise\<void>
+destroyAppClone(bundleName: string, appIndex: int, options?: int | DestroyAppCloneParam): Promise\<void>
 
 删除应用分身，使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[destroyAppClone](#bundleinstallerdestroyappclone12)和[destroyAppClone](#bundleinstallerdestroyappclone15)。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1648,9 +2252,10 @@ ArkTS-Sta: destroyAppClone(bundleName: string, appIndex: int, options?: int | De
 | 17700062 | Failed to uninstall the app because the app is locked. |
 
 **示例：**
+
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 代码中使用的bundleName、appIndex、useId需为应用实际的包名、应用分身索引、用户ID。
 let bundleName = 'com.ohos.camera';
@@ -1711,6 +2316,10 @@ ArkTS-Sta: installPreexistingApp(bundleName: string, userId?: int): Promise\<voi
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                                                          |
@@ -1742,7 +2351,7 @@ ArkTS-Sta: installPreexistingApp(bundleName: string, userId?: int): Promise\<voi
 ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let userId = 100;
@@ -1766,7 +2375,7 @@ try {
 ArkTS-Sta:
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
 let bundleName = 'com.ohos.camera';
@@ -1800,6 +2409,10 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array\<string\>, pluginPa
 **需要权限：** ohos.permission.INSTALL_PLUGIN_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1841,6 +2454,8 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array\<string\>, pluginPa
 | 17700091 | Failed to install the plugin because the plugin name is same as host bundle name. |
 
 **示例：**
+
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1867,6 +2482,32 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hostBundleName、pluginFilePaths和userId。
+let hostBundleName = 'com.example.application';
+let pluginFilePaths = ['/data/bms_app_install/test.hsp'];
+let pluginParam : installer.PluginParam = {
+    userId : 100,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.installPlugin(hostBundleName, pluginFilePaths, pluginParam).then(() => {
+            console.info('installPlugin successfully.');
+        }).catch((error: Error) => {
+            console.error('installPlugin failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('installPlugin failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## BundleInstaller.uninstallPlugin<sup>19+</sup>
 
@@ -1879,6 +2520,10 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 **需要权限：** ohos.permission.UNINSTALL_PLUGIN_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1907,6 +2552,8 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 | 17700092 | Failed to uninstall the plugin because the specified plugin is not found. |
 
 **示例：**
+
+ArkTS-Dyn:
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1933,12 +2580,42 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新hostBundleName、pluginBundleName和userId。
+let hostBundleName = 'com.example.application';
+let pluginBundleName = 'com.ohos.pluginDemo';
+let pluginParam : installer.PluginParam = {
+    userId : 100,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstallPlugin(hostBundleName, pluginBundleName, pluginParam).then(() => {
+            console.info('uninstallPlugin successfully.');
+        }).catch((error: Error) => {
+            console.error('uninstallPlugin failed:' + (error as BusinessError).message);
+        });
+    }).catch((error: Error) => {
+        console.error('uninstallPlugin failed. Cause: ' + (error as BusinessError).message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
 
 ## HashParam
 
 应用程序安装卸载哈希参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：** 此接口为系统接口。
 
@@ -1952,6 +2629,10 @@ try {
 应用程序安装、卸载或恢复需指定的参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：** 此接口为系统接口。
 
@@ -1973,6 +2654,10 @@ try {
 共享包卸载需指定的参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：** 此接口为系统接口。
 
@@ -2002,6 +2687,10 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：** 此接口为系统接口。
 
 | 名称     | 类型   | 只读  |  可选   | 说明             |
@@ -2014,6 +2703,10 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 扩展参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：** 此接口为系统接口。
 
@@ -2028,6 +2721,10 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：** 此接口为系统接口。
 
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
@@ -2041,6 +2738,10 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：** 此接口为系统接口。
 
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
@@ -2053,6 +2754,10 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 插件应用安装、卸载的参数信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：** 此接口为系统接口。
 

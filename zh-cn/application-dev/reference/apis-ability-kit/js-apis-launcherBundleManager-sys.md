@@ -4,16 +4,16 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
 ## 导入模块
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
+import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
 
@@ -29,6 +29,10 @@ ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int, callback: Asy
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -55,8 +59,8 @@ ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int, callback: Asy
 
 ArkTS-Dyn:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
@@ -75,8 +79,8 @@ try {
 ```
 ArkTS-Sta:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
 try {
@@ -106,6 +110,10 @@ ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Ar
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -137,8 +145,8 @@ ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Ar
 
 ArkTS-Dyn:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
@@ -155,8 +163,8 @@ try {
 ```
 ArkTS-Sta:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
 try {
@@ -186,6 +194,10 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明         |
@@ -209,8 +221,8 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array
 
 ArkTS-Dyn:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100,
@@ -229,8 +241,8 @@ try {
 ```
 ArkTS-Sta:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 代码中使用的useId需为应用实际的用户ID。
 try {
@@ -261,6 +273,10 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbil
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明         |
@@ -289,8 +305,8 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbil
 
 ArkTS-Dyn:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100)
@@ -307,8 +323,8 @@ try {
 ```
 ArkTS-Sta:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 代码中使用的useId需为应用实际的用户ID。
 try {
@@ -339,6 +355,10 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
@@ -360,13 +380,35 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo",
         (errData: BusinessError, data: launcherBundleManager.ShortcutInfo[]) => {
+        if (errData !== null) {
+            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+        } else {
+            console.info('data is ' + JSON.stringify(data));
+        }
+    });
+} catch (errData) {
+    let code = (errData as BusinessError).code;
+    let message = (errData as BusinessError).message;
+    console.error(`errData is errCode:${code}  message:${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+// 开发者需传入实际工程的bundleName。
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    launcherBundleManager.getShortcutInfo("com.example.demo",
+        (errData: BusinessError | null, data: launcherBundleManager.ShortcutInfo[] | undefined) => {
         if (errData !== null) {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
         } else {
@@ -394,6 +436,10 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
@@ -420,9 +466,10 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo")
@@ -430,6 +477,25 @@ try {
         console.info('data is ' + JSON.stringify(data));
     }).catch ((errData: BusinessError) => {
         console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+    });
+} catch (errData) {
+    let code = (errData as BusinessError).code;
+    let message = (errData as BusinessError).message;
+    console.error(`errData is errCode:${code}  message:${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+// 开发者需传入实际工程的bundleName。
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    launcherBundleManager.getShortcutInfo("com.example.demo")
+        .then((data: launcherBundleManager.ShortcutInfo[]) => {
+        console.info('data is ' + JSON.stringify(data));
+    }).catch ((errData: Error) => {
+        console.error(`errData is errCode:${(errData as BusinessError).code}  message:${(errData as BusinessError).message}`);
     });
 } catch (errData) {
     let code = (errData as BusinessError).code;
@@ -451,6 +517,10 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -479,8 +549,8 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 **示例：**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
@@ -506,6 +576,10 @@ ArkTS-Sta: getShortcutInfoSync(bundleName: string, userId: int): Array\<Shortcut
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -536,8 +610,8 @@ ArkTS-Sta: getShortcutInfoSync(bundleName: string, userId: int): Array\<Shortcut
 **示例：**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
@@ -560,6 +634,10 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -589,8 +667,8 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 **示例：**
 
 ```ts
-import launcherBundleManager from '@ohos.bundle.launcherBundleManager';
-import { BusinessError } from '@ohos.base';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");
@@ -629,6 +707,10 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -701,6 +783,10 @@ ArkTS-Sta: getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array\<
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
