@@ -80,7 +80,7 @@ on(type: 'layout', callback: () => void): void
 
 ### onLayout<sup>22+<sup>
 
-onLayout(callback: Callback\<void>): void
+onLayout(callback: VoidCallback): void
 
 通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
 
@@ -94,7 +94,7 @@ onLayout(callback: Callback\<void>): void
 
 | 参数名   | 类型   | 必填 | 说明|
 | -------- | ------ | ---- | -------------------------------------|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 是   | 监听layout的回调。|
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听layout的回调。|
 
 ### off('layout')
 
@@ -119,7 +119,7 @@ off(type: 'layout', callback?: () => void): void
 
 ### offLayout<sup>22+<sup>
 
-offLayout(callback?: Callback\<void>): void
+offLayout(callback?: VoidCallback): void
 
 通过句柄向对应的查询条件取消注册回调，当组件布局完成时不再触发指定的回调。
 
@@ -133,7 +133,7 @@ offLayout(callback?: Callback\<void>): void
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | -------------------------------------------- |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayout](#onlayout22)方法中的callback为相同对象时才能取消回调成功。|
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayout](#onlayout22)方法中的callback为相同对象时才能取消回调成功。|
 
 ### on('draw')
 
@@ -158,7 +158,7 @@ on(type: 'draw', callback: () => void): void
 
 ### onDraw<sup>22+<sup>
 
-onDraw(callback: Callback\<void>): void
+onDraw(callback: VoidCallback): void
 
 通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
 
@@ -172,7 +172,7 @@ onDraw(callback: Callback\<void>): void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 是   | 监听draw的回调。                                     |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听draw的回调。                                     |
 
 ### off('draw')
 
@@ -197,7 +197,7 @@ off(type: 'draw', callback?: () => void): void
 
 ### offDraw<sup>22+<sup>
 
-offDraw(callback?: Callback\<void>): void
+offDraw(callback?: VoidCallback): void
 
 通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
 
@@ -211,7 +211,7 @@ offDraw(callback?: Callback\<void>): void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDraw](#ondraw22)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDraw](#ondraw22)方法中的callback为相同对象时才能取消回调成功。 |
 
 ### on('drawChildren')<sup>20+<sup>
 
@@ -236,7 +236,7 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 
 ### onDrawChildren<sup>22+<sup>
 
-onDrawChildren(callback: Callback\<void\>): void
+onDrawChildren(callback: VoidCallback): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
 
@@ -250,7 +250,7 @@ onDrawChildren(callback: Callback\<void\>): void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>  | 是   | 监听drawChildren的回调。                                     |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听drawChildren的回调。                                     |
 
 ### off('drawChildren')<sup>20+<sup>
 
@@ -275,7 +275,7 @@ off(type: 'drawChildren', callback?: Callback\<void\>): void
 
 ### offDrawChildren<sup>22+<sup>
 
-offDrawChildren(callback?: Callback\<void\>): void
+offDrawChildren(callback?: VoidCallback): void
 
 通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
 
@@ -289,7 +289,7 @@ offDrawChildren(callback?: Callback\<void\>): void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren](#ondrawchildren22)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren](#ondrawchildren22)方法中的callback为相同对象时才能取消回调成功。 |
 
 **示例：**
 
