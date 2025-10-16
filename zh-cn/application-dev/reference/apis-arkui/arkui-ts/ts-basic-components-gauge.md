@@ -1,8 +1,8 @@
 # Gauge
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @HelloCrease-->
 
