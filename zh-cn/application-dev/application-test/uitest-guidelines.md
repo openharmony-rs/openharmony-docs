@@ -49,78 +49,78 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
 开发步骤如下:
 
-1. 在main>ets>pages文件夹下编写Index.ets页面代码，作为被测示例demo。
-  ```ts
-  @Entry
-  @Component
-  struct Index {
-      @State message: string = 'Hello World';
-      @State text: string = '';
-      build() {
-      Row() {
-          Column() {
-          Text(this.message)
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
-          Text("Next")
-              .fontSize(50)
-              .margin({top:20})
-              .fontWeight(FontWeight.Bold)          
-              .onClick((event?: ClickEvent) => {
-                  if(event){
-                      this.text = "after click";
-                  }
-              })
-          .width('100%')
-          Text(this.text).margin(15)
-          }
-      }
-      .height('100%')
-      }
-  }
-  ```
-2. 在ohosTest > ets > test文件夹下新建uitest.test.ets文件，并编写具体测试代码。
-  ```ts
-  import { describe, it, expect, Level } from '@ohos/hypium';
-  // 导入测试依赖kit
-  import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-  import { UIAbility, Want } from '@kit.AbilityKit';
-
-  const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-  export default function abilityTest() {
-    describe('ActsAbilityTest', () => {
-      it('testUiExample',Level.LEVEL3, async (done: Function) => {
-        console.info("uitest: TestUiExample begin");        
-        // 初始化Driver对象
-        const driver = Driver.create();
-        const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-        // 指定被测应用包名、ability名，请开发者替换为被测应用包名和ability名
-        const want: Want = {
-            bundleName: bundleName,
-            abilityName: 'EntryAbility'
+1. 在main > ets > pages文件夹下编写Index.ets页面代码，作为被测示例demo。
+    ```ts
+    @Entry
+    @Component
+    struct Index {
+        @State message: string = 'Hello World';
+        @State text: string = '';
+        build() {
+        Row() {
+            Column() {
+            Text(this.message)
+                .fontSize(50)
+                .fontWeight(FontWeight.Bold)
+            Text("Next")
+                .fontSize(50)
+                .margin({top:20})
+                .fontWeight(FontWeight.Bold)          
+                .onClick((event?: ClickEvent) => {
+                    if(event){
+                        this.text = "after click";
+                    }
+                })
+            .width('100%')
+            Text(this.text).margin(15)
+            }
         }
-        // 拉起被测应用
-        await delegator.startAbility(want);
-        // 等待应用拉起完成
-        await driver.waitForIdle(4000,5000);
-        // 确认当前应用顶部Ability为指定的ability
-        const ability: UIAbility = await delegator.getCurrentTopAbility();
-        console.info("get top ability");
-        expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
+        .height('100%')
+        }
+    }
+    ```
+2. 在ohosTest > ets > test文件夹下新建uitest.test.ets文件，并编写具体测试代码。
+    ```ts
+    import { describe, it, expect, Level } from '@ohos/hypium';
+    // 导入测试依赖kit
+    import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+    import { UIAbility, Want } from '@kit.AbilityKit';
 
-        // 依据指定文本“Next”查找目标控件
-        const next = await driver.findComponent(ON.text('Next'));
-        // 点击目标控件
-        await next.click();
-        await driver.waitForIdle(4000,5000);
-        // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期
-        await driver.assertComponentExist(ON.text('after click'));
-        await driver.pressBack();
-        done();
+    const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+    export default function abilityTest() {
+      describe('ActsAbilityTest', () => {
+        it('testUiExample',Level.LEVEL3, async (done: Function) => {
+          console.info("uitest: TestUiExample begin");        
+          // 初始化Driver对象
+          const driver = Driver.create();
+          const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
+          // 指定被测应用包名、ability名，请开发者替换为被测应用包名和ability名
+          const want: Want = {
+              bundleName: bundleName,
+              abilityName: 'EntryAbility'
+          }
+          // 拉起被测应用
+          await delegator.startAbility(want);
+          // 等待应用拉起完成
+          await driver.waitForIdle(4000,5000);
+          // 确认当前应用顶部Ability为指定的ability
+          const ability: UIAbility = await delegator.getCurrentTopAbility();
+          console.info("get top ability");
+          expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
+
+          // 依据指定文本“Next”查找目标控件
+          const next = await driver.findComponent(ON.text('Next'));
+          // 点击目标控件
+          await next.click();
+          await driver.waitForIdle(4000,5000);
+          // 通过断言文本为“after click”的控件存在，确认操作后页面变化符合预期
+          await driver.assertComponentExist(ON.text('after click'));
+          await driver.pressBack();
+          done();
+        })
       })
-    })
-  }
-  ```
+    }
+    ```
 
 ### 控件查找与操作
 
@@ -327,7 +327,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
-  import display from '@ohos.display';
+  import display from '@kit.ArkUI';
 
   export default function abilityTest() {
     describe('screenCaptureTest', () => {
@@ -729,7 +729,7 @@ hdc shell uitest uiInput longClick 100 100
 | to_x   | 是                | 滑动终点x坐标。 |
 | to_y   | 是                | 滑动终点y坐标。 |
 | swipeVelocityPps_   | 否      | 滑动速度，单位：px/s，取值范围：200-40000。<br> 默认值：600。取值超出限定范围时，取默认值。 | 
-| stepLength_   | 否 | 滑动步长。默认值：滑动距离/50。 <br> **说明：**滑动距离根据入参给出的滑动起止坐标点计算得出。 <br> **为实现更好的模拟效果，推荐参数缺省/使用默认值。**  | 
+| stepLength_   | 否 | 滑动步长。默认值：滑动距离/50。 <br> **说明：** <br> 滑动距离根据入参给出的滑动起止坐标点计算得出。 <br> **为实现更好的模拟效果，推荐参数缺省/使用默认值。**  | 
 
 
 ```shell  
@@ -761,7 +761,7 @@ hdc shell uitest uiInput drag 10 10 100 100 500
 |-------------------|-------------|----------|
 | direction         | 否  | 滑动方向，取值范围：[0,1,2,3]，默认值为0。<br> 0代表向左滑动，1代表向右滑动，2代表向上滑动，3代表向下滑动。    | 
 | swipeVelocityPps_ | 否  | 滑动速度，单位：px/s，取值范围：200-40000。<br> **默认值**: 600。取值超出限定范围时，取默认值。    | 
-| stepLength        | 否  | 滑动步长。<br> **默认值**： 滑动方向为0、1时，屏幕宽度/200； 滑动方向为2、3时，屏幕高度/200。为更好的模拟效果，推荐参数缺省/使用默认值。 |
+| stepLength        | 否  | 滑动步长。<br> **默认值**： 如果滑动方向为0、1，默认值为屏幕宽度/200； 如果滑动方向为2、3，默认值为屏幕高度/200。为更好的模拟效果，推荐参数缺省/使用默认值。 |
 
 ```shell  
 # 执行左滑操作。
