@@ -27,7 +27,7 @@
 
 ## 窗口旋转与屏幕方向的关系
 
-通常说的窗口旋转是指应用调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window#setpreferredorientation9-1)接口设置旋转策略，来改变应用在屏幕上的显示方向。更准确的说法是，应用通过旋转策略改变了屏幕的显示方向，系统通过屏幕显示方向变化，来改变屏幕上应用和系统组件（桌面、状态栏、下拉控制中心、下拉通知中心等）的显示方向和布局。这里的关键点是应用设置旋转策略后，影响的不仅是应用自身，还会影响屏幕上所有可见元素，也包括后台不可见的元素。这些元素最终通过一个旋转动画，从一个方向过渡到另外一个方向。
+通常说的窗口旋转是指应用调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window.md#setpreferredorientation9-1)接口设置旋转策略，来改变应用在屏幕上的显示方向。更准确的说法是，应用通过旋转策略改变了屏幕的显示方向，系统通过屏幕显示方向变化，来改变屏幕上应用和系统组件（桌面、状态栏、下拉控制中心、下拉通知中心等）的显示方向和布局。这里的关键点是应用设置旋转策略后，影响的不仅是应用自身，还会影响屏幕上所有可见元素，也包括后台不可见的元素。这些元素最终通过一个旋转动画，从一个方向过渡到另外一个方向。
 
 系统提供了屏幕属性[@ohos.display](../reference/apis-arkui/js-apis-display.md)来获取屏幕的基本信息，其中[Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)即表示当前设备屏幕的显示方向。窗口旋转后屏幕属性对应的Orientation也会相应改变。需要注意，旋转策略的[Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)与屏幕属性的[Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考[窗口方向](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction)。
 
@@ -35,7 +35,7 @@
 
 ## 旋转接口的行为限制
 
-应用在前台时，调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window#setpreferredorientation9-1)接口设置旋转策略，系统会立刻判断当前屏幕的显示方向是否满足应用设置的旋转策略。
+应用在前台时，调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window.md#setpreferredorientation9-1)接口设置旋转策略，系统会立刻判断当前屏幕的显示方向是否满足应用设置的旋转策略。
 
 - 如果不满足，一般情况下系统会立刻触发一次旋转动效，调整应用的方向以满足旋转策略要求。例如：
 
@@ -49,12 +49,12 @@
 
   场景2：在自由多窗模式下，应用都会被强制成小窗显示。此时，若应用修改旋转策略，均不会触发旋转。
 
-此外，应用的显示方向跟sensor强相关，在无sensor的设备上，设置旋转策略同样不会生效。比如：TV等设备没有sensor，可正常调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window#setpreferredorientation9-1)接口，但实际应用方向不会变化。
+此外，应用的显示方向跟sensor强相关，在无sensor的设备上，设置旋转策略同样不会生效。比如：TV等设备没有sensor，可正常调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window.md#setpreferredorientation9-1)接口，但实际应用方向不会变化。
 
 
 ## 旋转策略及设备差异性
 
-应用可以通过在[model.json5配置文件](../quick-start/module-configuration-file.md)中配置"orientation"字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window#setpreferredorientation9-1)接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的[orientation字段](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
+应用可以通过在[model.json5配置文件](../quick-start/module-configuration-file.md)中配置"orientation"字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-window.md#setpreferredorientation9-1)接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的[orientation字段](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
 
 系统提供了18种的方向类型枚举，以应对不同场景的需要。根据使用场景的不同，这些方向类型可分为：固定方向类型、自动旋转方向类型、临时方向类型和其他方向类型。
 
