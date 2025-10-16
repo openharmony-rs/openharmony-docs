@@ -418,6 +418,7 @@
     - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)
     - [transferCompatibleBuilder (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-builder.md)
     - [compatibleWrappedBuilder (ArkTS-Sta)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
+    - [enableCompatibleObservedV2ForStatic\<T\> (ArkTS-Sta)](arkui-ts/ts-interop-compatible-ObservedV2.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
     - [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)
     - [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)
