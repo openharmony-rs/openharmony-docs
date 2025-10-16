@@ -1,5 +1,12 @@
 # 公共基础能力<!--common-basic-api-->
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
+
 - ArkTS API<!--common-basic-arkts-->
   - [Console (控制台)](js-apis-logs.md)
   - [loadNativeModule (同步动态加载系统库接口)](js-apis-common-load-native-module.md)
@@ -8,11 +15,11 @@
 - C API<!--common-basic-c-->
   - 模块<!--common-basic-module-->
     - [Init](init.md)
-    - [Memory](memory.md)
+    - [Memory](capi-memory.md)
     - [JSVM](capi-jsvm.md)
   - 头文件<!--common-basic-headerfile-->
     - [syscap_ndk.h](syscap__ndk_8h.md)
-    - [purgeable_memory.h](purgeable__memory_8h.md)
+    - [purgeable_memory.h](capi-purgeable-memory-h.md)
     - [jsvm.h](capi-jsvm-h.md)
     - [jsvm_types.h](capi-jsvm-types-h.md)
   - 结构体<!--common-basic-struct-->
@@ -43,3 +50,4 @@
     - [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md)
     - [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)
     - [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+    - [PurgMem*](capi-memory-purgmem.md)
