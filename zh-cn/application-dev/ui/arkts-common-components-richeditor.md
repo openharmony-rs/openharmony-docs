@@ -37,29 +37,7 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 相比于使用controller提供的接口进行内容样式更新，使用起来更加灵活便捷。同时属性字符串对象可以设置到各类支持属性字符串的文本组件中，可以快速实现内容的迁移。
 
-```ts
-fontStyle: TextStyle = new TextStyle({
-  fontColor: Color.Pink
-});
-// 定义字体样式对象
-
-mutableStyledString: MutableStyledString = new MutableStyledString("创建使用属性字符串构建的RichEditor组件。",
-  [{
-    start: 0,
-    length: 5,
-    styledKey: StyledStringKey.FONT,
-    styledValue: this.fontStyle
-  }]);
-// 创建属性字符串
-
-controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-options: RichEditorStyledStringOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.setStyledString(this.mutableStyledString);
-  })
-```
+<!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
 
@@ -67,30 +45,7 @@ RichEditor(this.options)
 
 使用RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditoroptions))接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过RichEditorController提供的接口实现内容、样式的管理。
 
-```ts
-@Entry
-@Component
-struct create_rich_editor {
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-
-  build() {
-    Column() {
-      Column() {
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan('创建不使用属性字符串构建的RichEditor组件。', {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
-          })
-      }.width('100%')
-    }.height('100%')
-  }
-}
-```
+<!-- @[richEditor_create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
 ![alt text](figures/richeditor_image_options.gif)
 
@@ -106,42 +61,7 @@ struct create_rich_editor {
 
 如果组件是获焦状态并且光标在闪烁，那么通过addTextSpan添加文本内容后，光标位置会更新，在新添加文本内容的右侧闪烁。
 
-```ts
-@Entry
-@Component
-struct add_text_span {
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-
-  build() {
-    Column() {
-      RichEditor(this.options)
-        .onReady(() => {
-          this.controller.addTextSpan('点击按钮在此处添加text。', {
-            style: {
-              fontColor: Color.Black,
-              fontSize: 15
-            }
-          })
-        })
-        .border({ width: 1, color: Color.Gray })
-        .constraintSize({
-          maxHeight: 100
-        })
-        .width(300)
-        .margin(10)
-      Button('addTextSpan', {
-        buttonStyle: ButtonStyleMode.NORMAL
-      })
-        .height(30)
-        .fontSize(13)
-        .onClick(() => {
-          this.controller.addTextSpan('新添加一段文字。')
-        })
-    }
-  }
-}
-```
+<!-- @[richEditor_addText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets) -->
 
 ![alt text](figures/richeditor_image_add_text.gif)
 
@@ -153,34 +73,7 @@ struct add_text_span {
 
 如果组件是获焦状态并且光标在闪烁，那么通过addImageSpan添加图片内容后，光标位置会更新，在新添加图片内容的右侧闪烁。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('点击按钮在此处添加image。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(100)
-Button('addImageSpan', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.addImageSpan($r("app.media.startIcon"), {
-      imageStyle: {
-        size: ["57px", "57px"]
-      }
-    })
-  })
-```
+<!-- @[richEditor_addImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets) -->
 
 ![alt text](figures/richeditor_image_add_image.gif)
 
@@ -192,37 +85,7 @@ Button('addImageSpan', {
 
 该接口内可通过[RichEditorBuilderSpanOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorbuilderspanoptions11)设置在组件中添加builder的位置，省略或者为异常值时，则添加builder到所有内容的最后位置。
 
-```ts
-private my_builder: CustomBuilder = undefined
-
-@Builder
-TextBuilder() {
-  Row() {
-    Image($r('app.media.startIcon')).width(50).height(50).margin(16)
-    Column() {
-      Text("文本文档.txt").fontWeight(FontWeight.Bold).fontSize(16)
-      Text("123.45KB").fontColor('#8a8a8a').fontSize(12)
-    }.alignItems(HorizontalAlign.Start)
-  }.backgroundColor('#f4f4f4')
-  .borderRadius("20")
-  .width(220)
-}
-
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-Button('addBuilderSpan', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.my_builder = () => {
-      this.TextBuilder()
-    }
-    this.controller.addBuilderSpan(this.my_builder)
-  })
-```
+<!-- @[richEditor_addBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets) -->
 
 ![alt text](figures/richeditor_image_add_builder_span2.0.gif)
 
@@ -234,34 +97,7 @@ Button('addBuilderSpan', {
 
 Symbol内容暂不支持手势、复制、拖拽处理。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('点击按钮在此处添加symbol。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(100)
-Button('addSymbolSpan', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.addSymbolSpan($r("sys.symbol.basketball_fill"), {
-      style: {
-        fontSize: 30
-      }
-    })
-  })
-```
+<!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) -->
 
 ![alt text](figures/richeditor_image_add_SymbolSpan.gif)
 
@@ -275,42 +111,7 @@ Button('addSymbolSpan', {
 
 此接口适用于已有的内容样式获取与检查，例如在模板应用场景下，可利用此接口获取文本样式。此外，它还适用于内容解析与处理，例如在文本分析应用中，此接口能够获取特定范围内的文本信息。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller }
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController }
-// 创建两个富文本组件
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('点击按钮获取此处span信息。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(50)
-Text('查看getSpans返回值：').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.infoShowOptions)
-  .width(300)
-  .height(50)
-Button('getSpans', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.infoShowController.addTextSpan(JSON.stringify(this.controller.getSpans()), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-```
+<!-- @[richEditor_getSpans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets) -->
 
 ![alt text](figures/richeditor_image_getspan.gif)
 
@@ -320,23 +121,7 @@ Button('getSpans', {
 
 例如，在用户登录界面采用提示文本，有助于用户区分用户名与密码的输入框。又如，在文本编辑框中，使用提示文本明确输入要求，如“限输入100字以内”，以此指导用户正确操作。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .placeholder("此处为提示文本...", {
-    fontColor: Color.Gray,
-    font: {
-      size: 15,
-      weight: FontWeight.Normal,
-      family: "HarmonyOS Sans",
-      style: FontStyle.Normal
-    }
-  })
-  .width(300)
-  .height(50)
-```
+<!-- @[richEditor_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![alt text](figures/richeditor_image_placeholder.gif)
 
@@ -344,15 +129,7 @@ RichEditor(this.options)
 
 通过[maxLength](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlength18)可以设置富文本的最大可输入字符数。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .placeholder('组件设置了最大字符数：7')
-  .onReady(() => {})
-  .maxLength(7)
-```
+<!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![max Length](figures/RichEditor_maxLength.gif)
 
@@ -368,47 +145,7 @@ RichEditor(this.options)
 
 使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)构建的RichEditor组件不支持上述两种回调。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('组件内图文变化前，触发回调。\n图文变化后，触发回调。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onWillChange((value: RichEditorChangeValue) => {
-    this.infoShowController.addTextSpan('组件内图文变化前，触发回调：\n' + JSON.stringify(value), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-    return true;
-  })
-  .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
-    this.infoShowController.addTextSpan('\n图文变化后，触发回调：\nrangeBefore:' + JSON.stringify(rangeBefore) +
-      '\nrangeAfter：' + JSON.stringify(rangeAfter), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(50)
-Text('查看回调内容：').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.infoShowOptions)
-  .width(300)
-  .height(70)
-```
+<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ![alt text](figures/richeditor_image_ondid.gif)
 
@@ -422,46 +159,7 @@ RichEditor(this.infoShowOptions)
 
 使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)构建的组件不支持上述两种回调功能。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('输入法输入内容前，触发回调。\n输入法完成输入后，触发回调。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .aboutToIMEInput((value: RichEditorInsertValue) => {
-    this.infoShowController.addTextSpan('输入法输入内容前，触发aboutToIMEInput回调：\n' + JSON.stringify(value), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-    return true;
-  })
-  .onDidIMEInput((value: TextRange) => {
-    this.infoShowController.addTextSpan('输入法完成输入后，触发onDidIMEInput回调：\n' + JSON.stringify(value), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-        })
-  .width(300)
-  .height(50)
-Text('查看回调内容：').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.infoShowOptions)
-  .width(300)
-  .height(70)
-```
+<!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ![alt text](figures/richeditor_image_aboutToIMEInput4.gif)
 
@@ -473,80 +171,7 @@ RichEditor(this.infoShowOptions)
 
 由于组件默认的粘贴行为仅限于纯文本，无法处理图片粘贴，开发者可利用此方法实现图文并茂的粘贴功能，从而替代组件原有的粘贴行为。
 
-```ts
-import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct on_cut_copy_paste {
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller }
-  infoShowController: RichEditorController = new RichEditorController();
-  infoShowOptions: RichEditorOptions = { controller: this.infoShowController }
-
-  popDataFromPasteboard() {
-    let selection = this.controller.getSelection();
-    let start = selection.selection[0];
-    let end = selection.selection[1];
-    if (start == end) {
-      start = this.controller.getCaretOffset();
-      end = start;
-    }
-    let moveOffset = 0;
-    let sysBoard = pasteboard.getSystemPasteboard();
-    sysBoard.getData((err, data) => {
-      if (err) {
-        return;
-      }
-      if (start != end) {
-        this.controller.deleteSpans({ start: start, end: end })
-      }
-      let count = data.getRecordCount();
-      for (let i = 0; i < count; i++) {
-        const element = data.getRecord(i);
-        if (element && element.plainText && element.mimeType === pasteboard.MIMETYPE_TEXT_PLAIN) {
-          this.controller.addTextSpan(element.plainText,
-            {
-              style: { fontSize: 26, fontColor: Color.Red },
-              offset: start + moveOffset
-            }
-          )
-          moveOffset += element.plainText.length;
-        }
-      }
-      this.controller.setCaretOffset(start + moveOffset)
-    })
-  }
-
-  build() {
-    Column() {
-      Column({ space: 3 }) {
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan('对此处文本进行复制粘贴操作可触发对应回调。',
-              { style: { fontColor: Color.Black, fontSize: 15 } })
-          })
-          .onPaste((event) => {
-            this.infoShowController.addTextSpan('触发onPaste回调\n', { style: { fontColor: Color.Gray, fontSize: 10 } })
-            if (event != undefined && event.preventDefault) {
-              event.preventDefault();
-            }
-            console.info('RichEditor onPaste')
-            this.popDataFromPasteboard()
-          })
-          .width(300)
-          .height(70)
-        Text('查看回调内容：').fontSize(10).fontColor(Color.Gray).width(300)
-          .width(300)
-          .height(70)
-        RichEditor(this.infoShowOptions)
-          .width(300)
-          .height(70) 
-      }.width('100%').alignItems(HorizontalAlign.Start)
-    }.height('100%')
-  }
-}
-```
+<!-- @[richEditor_eventPaste](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ### 添加完成剪切前可触发的回调
 
@@ -556,36 +181,7 @@ struct on_cut_copy_paste {
 
 由于组件默认的剪切行为仅限于纯文本，无法处理图片剪切，开发者可利用此方法实现图文并茂的剪切功能，从而替代组件原有的剪切行为。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('对此处文本进行复制粘贴操作可触发对应回调。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onCut(() => {
-    this.infoShowController.addTextSpan('触发onCut回调\n', {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(70)
-RichEditor(this.infoShowOptions)
-  .width(300)
-  .height(70) 
-```
+<!-- @[richEditor_eventCut](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ### 添加完成复制前可触发的回调
 
@@ -595,36 +191,7 @@ RichEditor(this.infoShowOptions)
 
 组件默认的复制行为仅限于纯文本，无法处理图片。开发者可利用此方法实现图文并茂的复制功能，替代组件的默认行为。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('对此处文本进行复制粘贴操作可触发对应回调。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onCopy(() => {
-    this.infoShowController.addTextSpan('触发onCopy回调\n', {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(70)
-RichEditor(this.infoShowOptions)
-  .width(300)
-  .height(70) 
-```
+<!-- @[richEditor_eventCopy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ![alt text](figures/richeditor_image_oncut_paste_copy.gif)
 
@@ -640,23 +207,7 @@ RichEditor(this.infoShowOptions)
 
 设置不同颜色的光标和手柄可以提高视觉辨识度，特别是在包含多个输入区域的复杂界面中，独特的光标颜色能帮助快速定位当前操作的输入区域。这一特性也可以提升用户体验，使光标颜色与应用页面整体的风格相协调。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('组件设置了光标手柄颜色。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .caretColor(Color.Orange)
-  .width(300)
-  .height(300)
-```
+<!-- @[richEditor_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![alt text](figures/richeditor_image_caretcolor.gif)
 
@@ -666,38 +217,7 @@ RichEditor(this.options)
 
 该回调可用于实时监听组件内容选中区域变化，例如实现实时更新工具栏状态（显示字体、段落格式等）、统计选中内容长度或生成选中内容摘要。实时响应选中状态，动态联动交互元素，提升富文本编辑的操作反馈体验和功能的灵活性。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('改变内容选择区域或编辑状态下的光标位置，触发onSelectionChange回调。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onSelectionChange((value: RichEditorRange) => {
-    this.infoShowController.addTextSpan("\n" + "触发了onSelectionChange回调，起始范围信息为：(" + value.start + "," +
-    value.end + ")", {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(50)
-Text('查看回调内容：').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.infoShowOptions)
-  .width(300)
-  .height(70)
-```
+<!-- @[richEditor_eventSelectChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ![alt text](figures/richeditor_image_onSelectionChange.gif)
 
@@ -709,30 +229,7 @@ RichEditor(this.infoShowOptions)
 
 当组件内未获焦出现光标时，调用该接口不产生选中效果。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('点击按钮在此处选中0-2位置的文本。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(60)
-Button('setSelection(0,2)', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.setSelection(0, 2)
-  })
-```
+<!-- @[richEditor_selection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets) -->
 
 ![alt text](figures/richeditor_image_set_selection.gif)
 
@@ -744,91 +241,7 @@ Button('setSelection(0,2)', {
 
 当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct RichEditorExample {
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-  @State endIndex: number | undefined = 0;
-  onCreateMenu = (menuItems: Array<TextMenuItem>) => {
-    const idsToFilter = [
-      TextMenuItemId.TRANSLATE,
-      TextMenuItemId.SHARE,
-      TextMenuItemId.SEARCH,
-      TextMenuItemId.AI_WRITER
-    ]
-    const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
-    let item1: TextMenuItem = {
-      content: 'create1',
-      icon: $r('app.media.startIcon'),
-      id: TextMenuItemId.of('create1'),
-    };
-    let item2: TextMenuItem = {
-      content: 'create2',
-      id: TextMenuItemId.of('create2'),
-      icon: $r('app.media.startIcon'),
-    };
-    items.push(item1);
-    items.unshift(item2);
-    return items;
-  }
-  onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
-    if (menuItem.id.equals(TextMenuItemId.of("create2"))) {
-      console.info("拦截 id: create2 start:" + textRange.start + "; end:" + textRange.end);
-      return true;
-    }
-    if (menuItem.id.equals(TextMenuItemId.of("prepare1"))) {
-      console.info("拦截 id: prepare1 start:" + textRange.start + "; end:" + textRange.end);
-      return true;
-    }
-    if (menuItem.id.equals(TextMenuItemId.COPY)) {
-      console.info("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
-      return true;
-    }
-    if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-      console.info("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
-      return false;
-    }
-    return false;
-  }
-  onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
-    let item1: TextMenuItem = {
-      content: 'prepare1_' + this.endIndex,
-      icon: $r('app.media.startIcon'),
-      id: TextMenuItemId.of('prepare1'),
-    };
-    menuItems.unshift(item1);
-    return menuItems;
-  }
-  @State editMenuOptions: EditMenuOptions = {
-    onCreateMenu: this.onCreateMenu,
-    onMenuItemClick: this.onMenuItemClick,
-    onPrepareMenu: this.onPrepareMenu
-  };
-
-  build() {
-    Column() {
-      RichEditor(this.options)
-        .onReady(() => {
-          this.controller.addTextSpan("RichEditor editMenuOptions");
-        })
-        .editMenuOptions(this.editMenuOptions)
-        .onSelectionChange((range: RichEditorRange) => {
-          console.info("onSelectionChange, (" + range.start + "," + range.end + ")");
-          this.endIndex = range.end;
-        })
-        .height(50)
-        .margin({ top: 100 })
-        .borderWidth(1)
-        .borderColor(Color.Red)
-    }
-    .width("90%")
-    .margin("5%")
-  }
-}
-```
+<!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![alt text](figures/richeditor_on_prepare_menu.gif)
 
@@ -839,54 +252,7 @@ struct RichEditorExample {
 此接口保护内容安全，适用于限制文本操作的场景，例如展示保密内容或禁止复制的版权文本。屏蔽系统服务菜单项，防止用户通过系统服务菜单复制、分享文本，降低内容泄露风险。
 
 
-  ```ts
-  import { TextMenuController } from '@kit.ArkUI';
-
-  // xxx.ets
-  @Entry
-  @Component
-  struct Index {
-    controller: RichEditorController = new RichEditorController();
-    options: RichEditorOptions = { controller: this.controller };
-
-    aboutToAppear(): void {
-      // 禁用所有系统服务菜单
-      TextMenuController.disableSystemServiceMenuItems(true);
-    }
-
-    aboutToDisappear(): void {
-      // 页面消失恢复系统服务菜单
-      TextMenuController.disableSystemServiceMenuItems(false);
-    }
-
-    build() {
-      Row() {
-        Column() {
-          RichEditor(this.options).onReady(() => {
-            this.controller.addTextSpan("这是一个RichEditor",
-              {
-                style:
-                {
-                  fontSize: 30
-                }
-              })
-          })
-            .height(60)
-            .editMenuOptions({
-              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                // menuItems不包含被屏蔽的系统菜单项
-                return menuItems;
-              },
-              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                return false;
-              }
-            })
-        }.width('100%')
-      }
-      .height('100%')
-    }
-  }
-  ```
+<!-- @[richEditor_disableSystemMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets) -->
 
 ![RichEditor_disable_system_service_menuItems](figures/RichEditor_disable_system_service_menuItems.gif)
 
@@ -894,54 +260,8 @@ struct RichEditorExample {
 
 此接口可精确屏蔽指定的系统服务菜单项，保留应用所需的系统菜单功能，使菜单更贴合实际交互设计。
 
-  ```ts
-  import { TextMenuController } from '@kit.ArkUI';
-
-  // xxx.ets
-  @Entry
-  @Component
-  struct Index {
-    controller: RichEditorController = new RichEditorController();
-    options: RichEditorOptions = { controller: this.controller };
-
-    aboutToAppear(): void {
-      // 禁用搜索和翻译菜单
-      TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE])
-    }
-
-    aboutToDisappear(): void {
-      // 恢复系统服务菜单
-      TextMenuController.disableMenuItems([])
-    }
-
-    build() {
-      Row() {
-        Column() {
-          RichEditor(this.options).onReady(() => {
-            this.controller.addTextSpan("这是一个RichEditor",
-              {
-                style:
-                {
-                  fontSize: 30
-                }
-              })
-          })
-            .height(60)
-            .editMenuOptions({
-              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                // menuItems不包含搜索和翻译
-                return menuItems;
-              },
-              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                return false
-              }
-            })
-        }.width('100%')
-      }
-      .height('100%')
-    }
-  }
-  ```
+  
+<!-- @[richEditor_disableMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableMenuItem.ets) -->
 
   ![alt text](figures/richEditor_disable_menuItems.gif)
 
@@ -953,60 +273,7 @@ struct RichEditorExample {
 
 当自定义菜单超长时，建议内部嵌套Scroll组件使用，避免键盘被遮挡。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('组件设置了自定义菜单，长按可触发。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 18
-      }
-    })
-  })
-  .bindSelectionMenu(RichEditorSpanType.TEXT, this.SystemMenu, ResponseType.LongPress, {
-    onDisappear: () => {
-      this.sliderShow = false
-    }
-  })
-// 绑定自定义菜单
-  .width(300)
-  .height(300)
-
-@Builder
-SystemMenu() {
-  Column() {
-    Menu() {
-      if (this.controller) {
-        MenuItemGroup() {
-          MenuItem({
-            startIcon: $r("sys.media.ohos_ic_public_cut"),
-            content: "剪切",
-            labelInfo: "Ctrl+X"
-          })
-          MenuItem({
-            startIcon: $r("sys.media.ohos_ic_public_copy"),
-            content: "复制",
-            labelInfo: "Ctrl+C"
-          })
-          MenuItem({
-            startIcon: $r("sys.media.ohos_ic_public_paste"),
-            content: "粘贴",
-            labelInfo: "Ctrl+V"
-          })
-        }
-      }
-    }
-    .radius(this.theme.containerBorderRadius)
-    .clip(true)
-    .backgroundColor(Color.White)
-    .width(this.theme.defaultMenuWidth)
-  }
-  .width(this.theme.defaultMenuWidth)
-}
-```
+<!-- @[richEditor_bindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![alt text](figures/richeditor_image_bindselectionmenu.gif)
 
@@ -1020,21 +287,7 @@ SystemMenu() {
 
 此接口控制组件内文本的显示范围，防止文本过长影响页面布局，确保不同设备和场景下的文本显示效果一致，提升界面兼容性和美观度。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('组件设置了最大行数\n超出内容将会以滚动显示\n超出1行\n超出2行\n超出3行\n超出4行', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .maxLines(2)
-```
+<!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![max lines](figures/RichEditor_maxLines.gif)
 
@@ -1048,39 +301,7 @@ RichEditor(this.options)
 
 此接口可用于个性化的写作体验，例如可以使用此接口让输入的不同层级标题自动应用相应格式（如一级、二级标题）。
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('点击按钮，改变预设文本样式。', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(60)
-Button('setTypingStyle', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.setTypingStyle({
-      fontWeight: 'medium',
-      fontColor: Color.Pink,
-      fontSize: 15,
-      fontStyle: FontStyle.Italic,
-      decoration: {
-        type: TextDecorationType.Underline,
-        color: Color.Gray
-      }
-    })
-  })
-```
+<!-- @[richEditor_setTypingStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets) -->
 
 ![alt text](figures/richeditor_image_setTypingStyle.gif)
 
@@ -1090,23 +311,7 @@ Button('setTypingStyle', {
 
 设置文本装饰线可突出关键信息、区分文本状态、增强视觉层次。例如，为重要标题或关键词添加装饰线，帮助用户快速获取信息。
 
-  ```ts
-  private controller: RichEditorController = new RichEditorController();
-  RichEditor({ controller: this.controller })
-    .onReady(() => {
-      this.controller.addTextSpan('一段预置的文本', {
-        style: {
-          fontSize: 25,
-          decoration: {
-            type: TextDecorationType.LineThrough,
-            color: Color.Blue,
-            // 设置装饰线粗细比例为6
-            thicknessScale: 6
-          }
-        }
-      })
-    })
-  ```
+<!-- @[richEditor_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
@@ -1114,50 +319,7 @@ Button('setTypingStyle', {
 
 此接口适用于复杂业务场景，满足文本装饰的多样化需求。在文档协作过程中，多人编辑时，可以通过使用不同的装饰线组合来区分文本状态，从而提高协作效率。
 
-  ```ts
-  RichEditor({ controller: this.styledStringController })
-  Button('多装饰线文本')
-    .fontSize(20)
-    .onClick(() => {
-      let mutString: MutableStyledString = new MutableStyledString('设置富文本多装饰线', [
-        {
-          start: 0,
-          length: 9,
-          styledKey: StyledStringKey.FONT,
-          styledValue: new TextStyle({ fontSize: LengthMetrics.vp(25) })
-        },
-        {
-          start: 0,
-          length: 5,
-          styledKey: StyledStringKey.DECORATION,
-          styledValue: new DecorationStyle(
-            {
-              type: TextDecorationType.Underline,
-            },
-            {
-              // 开启多装饰线
-              enableMultiType: true
-            }
-          )
-        },
-        {
-          start: 2,
-          length: 4,
-          styledKey: StyledStringKey.DECORATION,
-          styledValue: new DecorationStyle(
-           {
-              type: TextDecorationType.LineThrough,
-            },
-            {
-              // 开启多装饰线
-              enableMultiType: true
-            }
-          )
-        },
-      ])
-      this.styledStringController.setStyledString(mutString);
-    })
-  ```
+<!-- @[richEditor_decorationOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![RichEditor_decoration_multi_type](figures/RichEditor_decoration_multi_type.jpg)
 
@@ -1167,32 +329,7 @@ Button('setTypingStyle', {
 
 此接口优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
 
-  ```ts
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-
-  Column({ space: 5 }) {
-    RichEditor(this.options)
-      .onReady(() => {
-        this.controller.addImageSpan($r('app.media.startIcon'), {
-          imageStyle: {
-            size: [100, 100]
-          }
-        })
-        this.controller.addTextSpan("这是一段富文本，展示了文本垂直居中的效果。", {
-          style: {
-            fontColor: Color.Pink,
-            fontSize: "32"
-          },
-          paragraphStyle: {
-            textAlign: TextAlign.Start,
-            textVerticalAlign: TextVerticalAlign.CENTER,
-            leadingMargin: 16
-          }
-        })
-      })
-  }
-  ```
+<!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![RichEditor_text_vertical_align](figures/RichEditor_text_vertical_align.jpg)
 
@@ -1202,22 +339,7 @@ Button('setTypingStyle', {
 
 此接口优化文本排版，提升组件内文本的可读性。设置自动间距后，中文与西文间产生适当空隙，便于区分不同语种，减少视觉干扰。
 
-```ts
-Column() {
-  RichEditor(this.options)
-    .onReady(() => {
-      this.controller.addTextSpan("中西文Auto Spacing自动间距",
-        {
-          style:
-          {
-            fontColor: Color.Orange,
-            fontSize: 20
-          }
-        })
-    })
-    .enableAutoSpacing(this.enableAutoSpace)
-}
-```
+<!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
 
