@@ -146,7 +146,7 @@ The following table describes the APIs used in this topic.
 
 7. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
 
-### Obtain the IP address of the peer device.
+### Obtaining the IP Address of the Peer Device
 1. Import the Wi-Fi module.
 2. Enable Wi-Fi on the device.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
