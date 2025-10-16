@@ -1,8 +1,8 @@
 # Persisting User Preferences (C/C++)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @yanhuii-->
+<!--Designer: @houpengtao1-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 

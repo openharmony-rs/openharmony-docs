@@ -1,8 +1,8 @@
 # Application Data Persistence Overview
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @baijidong; @ding_dong_dong; @cuile44-->
-<!--Designer: @ding_dong_dong; @widecode; @htt1997-->
+<!--Owner: @baijidong; @yanhuii; @cuile44-->
+<!--Designer: @houpengtao1; @widecode; @htt1997-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 

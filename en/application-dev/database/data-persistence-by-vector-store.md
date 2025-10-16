@@ -1,8 +1,8 @@
 # Persisting Vector Store Data (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @htt1997-->
-<!--Designer: @widecode-->
+<!--Owner: @cuile44; @baijidong-->
+<!--Designer: @houpengtao1-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 

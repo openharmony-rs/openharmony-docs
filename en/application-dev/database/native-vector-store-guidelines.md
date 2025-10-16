@@ -1,8 +1,8 @@
 # Persisting Vector Store Data (C/C++)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @htt1997-->
-<!--Designer: @widecode-->
+<!--Owner: @cuile44; @baijidong-->
+<!--Designer: @houpengtao1-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
