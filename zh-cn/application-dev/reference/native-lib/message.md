@@ -149,7 +149,7 @@ console.info("message type is: ", msg.getWhat());// message type is: 1
 ```
 
 ## getObject
-getObject(): Object
+getObject(): Object | undefined
 
 获取消息携带的数据对象。
 
@@ -158,7 +158,7 @@ getObject(): Object
 **返回值：**
 | 类型       | 说明                 |
 | -------- | ------------------ |
-| Object   | 返回消息携带的数据对象。 |
+| Object \| undefined  | 返回消息携带的数据对象。 |
 
 **示例：**
 ```ts
