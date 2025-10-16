@@ -1649,7 +1649,7 @@ cloneSync(): PixelMap
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
