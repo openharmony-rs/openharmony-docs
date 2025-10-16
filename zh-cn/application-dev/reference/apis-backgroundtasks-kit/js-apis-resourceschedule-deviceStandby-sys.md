@@ -22,7 +22,7 @@ import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 ## deviceStandby.getExemptedApps
 
-getExemptedApps(resourceTypes: int, callback: AsyncCallback<Array&lt;ExemptedAppInfo&gt;>): void
+getExemptedApps(resourceTypes: number, callback: AsyncCallback<Array&lt;ExemptedAppInfo&gt;>): void
 
 获取进入待机模式的应用名单，使用Callback异步回调。
 
@@ -35,7 +35,7 @@ getExemptedApps(resourceTypes: int, callback: AsyncCallback<Array&lt;ExemptedApp
 
 | 参数名      | 类型                   | 必填   | 说明                             |
 | -------- | -------------------- | ---- | ------------------------------ |
-| ResourceTypes|int | 是    | 资源类型，类型具体说明请参考[ResourceType](#resourcetype)。 |
+| ResourceTypes|number | 是    | 资源类型，类型具体说明请参考[ResourceType](#resourcetype)。 |
 | callback | AsyncCallback<Array&lt;[ExemptedAppInfo](#exemptedappinfo)&gt;> | 是    |豁免应用信息。|
 
 **错误码**：
@@ -74,7 +74,7 @@ deviceStandby.getExemptedApps(resourceTypes, (err: BusinessError, res: Array<dev
 
 ## deviceStandby.getExemptedApps
 
-getExemptedApps(resourceTypes: int): Promise<Array&lt;ExemptedAppInfo&gt;>
+getExemptedApps(resourceTypes: number): Promise<Array&lt;ExemptedAppInfo&gt;>
 
 获取进入待机模式的应用名单，使用Promise异步回调。
 
@@ -87,7 +87,7 @@ getExemptedApps(resourceTypes: int): Promise<Array&lt;ExemptedAppInfo&gt;>
 
 | 参数名      | 类型                   | 必填   | 说明                             |
 | -------- | -------------------- | ---- | ------------------------------ |
-| ResourceTypes|int | 是    |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。|
+| ResourceTypes|number | 是    |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。|
 
 **返回值**：
 
@@ -247,9 +247,9 @@ deviceStandby.releaseExemptionResource(resRequest);
 
 |名称  |类型   | 只读   | 可选   |说明   |
 | ------------ | ------------ |------------ |------------ | ------------ |
-|resourceTypes   | int  | 否   | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
+|resourceTypes   | number  | 否   | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
 |name   |string   | 否   | 否   |  应用名。  |
-|duration   | int  | 否   | 否   | 豁免时长。 |
+|duration   | number  | 否   | 否   | 豁免时长。 |
 
 ## ResourceRequest
 
@@ -260,8 +260,8 @@ deviceStandby.releaseExemptionResource(resRequest);
 
 |名称   |类型   | 只读  | 可选   |说明   |
 | ------------ | ------------ |------------ |------------| ------------ |
-|resourceTypes   | int  | 否 | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
-|uid   | int  | 否  | 否   |应用uid。   |
+|resourceTypes   | number  | 否 | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
+|uid   | number  | 否  | 否   |应用uid。   |
 |name   |string   | 否 | 否    | 应用名称。  |
-|duration   | int    | 否 | 否    | 豁免时长。 |
+|duration   | number    | 否 | 否    | 豁免时长。 |
 |reason   |string   | 否  | 否   |  申请原因。  |
