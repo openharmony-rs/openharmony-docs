@@ -162,7 +162,6 @@ requestExemptionResource(request: ResourceRequest): void
 **示例**：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resRequest: deviceStandby.ResourceRequest = {
@@ -210,7 +209,6 @@ releaseExemptionResource(request: ResourceRequest): void
 **示例**：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resRequest: deviceStandby.ResourceRequest = {
