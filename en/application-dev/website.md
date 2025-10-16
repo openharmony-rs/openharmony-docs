@@ -1485,7 +1485,7 @@
               - Task Execution Timeout Events<!--app-hicollie-events-->
                 - [Task Execution Timeout Event Overview](dfx/hiappevent-watcher-apphicollie-events.md)
                 - [Subscribing to Task Execution Timeout Events (C/C++)](dfx/hiappevent-watcher-apphicollie-events-ndk.md)
-              - App Killed Events<!--app-killed-events-->
+              - Application Killed Events<!--app-killed-events-->
                 - [Application Killed Event Overview](dfx/hiappevent-watcher-app-killed-events.md)
                 - [Subscribing to Application Killed Events (ArkTS)](dfx/hiappevent-watcher-app-killed-events-arkts.md)
                 - [Subscribing to Application Killed Events (C/C++)](dfx/hiappevent-watcher-app-killed-events-ndk.md)
@@ -2060,7 +2060,7 @@
   - API Reference Overview<!--ref-overview-api-->
     - [Development Description](reference/development-intro-api.md)
     - [SystemCapability](reference/syscap.md)
-    <!--Del-->	
+    	<!--Del-->	
     - SystemCapability List<!--syscap-list-->
         - [Phone](reference/phone-syscap-list.md)
         - [Tablet](reference/tablet-syscap-list.md)
