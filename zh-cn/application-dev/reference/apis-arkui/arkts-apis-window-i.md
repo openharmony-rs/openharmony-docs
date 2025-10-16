@@ -86,7 +86,7 @@
 
 窗口内容需要做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，可以调用[getWindowAvoidArea](../arkts-apis-window-Window.md#getwindowavoidarea9)或者[on('avoidAreaChange')](../arkts-apis-window-Window.md#onavoidareachange9)获取对应避让区域的类型枚举[AvoidAreaType](../arkts-apis-window-e.md#avoidareatype7)的避让区域做窗口内容避让。
 
-在避让区域内，应用窗口内容被遮挡以及无法响应用户点击事件。
+在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
