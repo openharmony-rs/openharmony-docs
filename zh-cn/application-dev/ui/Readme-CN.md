@@ -3,7 +3,7 @@
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
   - ArkTS-Dyn与ArkTS-Sta的交互能力<!--ui-arkts-sta-interop-dyn-->
-    - [ArkTS-Sta与ArkTS-Dyn UI互操作指南](arkts-dyn-sta-ui-interop.md)
+    - [互操作概述](arkts-dyn-sta-ui-interop.md)
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
       - [ArkTS-Sta使用ArkTS-Dyn自定义组件](arkts-sta-interop-dyn-component.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](arkts-dyn-interop-sta-component.md)
@@ -95,7 +95,6 @@
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
           - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-monitor-interface.md)
-      - 状态管理V1和V2对比<!--arkts-state-management-v1-v2-compare-->
       - [状态管理V1向V2迁移指导](state-management/arkts-v1-v2-migration.md)
       - 状态管理V1和V2混合使用<!--arkts-state-management-v1-v2-migration-->
         - [自定义组件混用场景指导](state-management/arkts-custom-component-mixed-scenarios.md)
@@ -137,7 +136,6 @@
           - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
           - [memorizeUpdatedState接口：并行化UI创建场景下的状态变量拷贝接口](state-management-static/arkts-static-memorizeUpdatedState.md)
           - addMonitor/clearMonitor接口：动态添加/取消监听
-      - 状态管理V1和V2对比<!--arkts-state-management-v1-v2-compare-->
       - 状态管理V1向V2迁移指导
       - 状态管理V1和V2混合使用
       - 优秀实践
