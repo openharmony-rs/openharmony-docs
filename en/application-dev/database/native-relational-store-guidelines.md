@@ -271,9 +271,7 @@ libnative_rdb_ndk.z.so
    predicates->destroy(predicates);
    ```
 
-4. Query data based on the conditions specified by **OH_Predicates**.
-
-   <br>Call **OH_Rdb_Query** to query data. The data obtained is returned in an **OH_Cursor** object. <br>Example:
+4. Query data based on the conditions specified by **OH_Predicates**.<br>Call **OH_Rdb_Query** to query data. The data obtained is returned in an **OH_Cursor** object. <br>Example:
 
    ```c
    OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");

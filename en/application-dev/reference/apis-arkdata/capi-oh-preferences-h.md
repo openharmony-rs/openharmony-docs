@@ -381,7 +381,7 @@ Unsubscribes from data changes of the specified keys.
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
 | void *context                                                | Pointer to the application context.                                          |
-| [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to be invoked when data changes.|
+| [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to unregister.|
 | const char *keys[]                                           | Pointer to the keys whose changes are not observed.                                     |
 | uint32_t keyCount                                            | Number of keys.                                   |
 
