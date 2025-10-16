@@ -17,6 +17,7 @@
       - [ArkTS-Sta与ArkTS-Dyn应用间状态存储互操作](arkts-sta-interop-dyn-storages.md)
     - 状态管理V2互操作
       - [ArkTS-Sta与ArkTS-Dyn应用间V2状态存储互操作](arkts-sta-interop-dyn-storages-v2.md)
+      - [ArkTS-Sta与ArkTS-Dyn组件内V2状态管理互操作](arkts-sta-interop-dyn-statemanagement-v2.md)
     - 状态管理V1V2混用互操作
     - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
