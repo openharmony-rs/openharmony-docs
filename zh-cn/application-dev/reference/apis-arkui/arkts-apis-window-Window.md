@@ -9626,8 +9626,8 @@ isInFreeWindowMode(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.        
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
 
 **示例：**
 
@@ -9638,7 +9638,7 @@ console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
 
 ## on('freeWindowModeChange')<sup>22+</sup>
 
-on(type:  'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
+on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 开启自由窗口模式变化的监听。
 
@@ -9659,8 +9659,8 @@ on(type:  'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.        
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
 
 **示例：**
 
@@ -9678,7 +9678,7 @@ try {
 
 off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭自由窗口模式变化的监听。
+关闭自由窗口模式变化事件的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -9689,7 +9689,7 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                          | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
 | type     | string                        | 是   | 监听事件，固定为'freeWindowModeChange'，即自由窗口模式变化事件。 |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否在自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化的监听。                           |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否在自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化事件的监听。                           |
 
 **错误码：**
 
@@ -9697,8 +9697,8 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.        
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
 
 **示例：**
 
@@ -9711,7 +9711,7 @@ try {
   windowClass.on('freeWindowModeChange', callback);
   // 关闭指定callback的监听
   windowClass.off('freeWindowModeChange', callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听
   windowClass.off('freeWindowModeChange');
 } catch (exception) {
   console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
