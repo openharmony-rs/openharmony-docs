@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @yangfan229-->
 <!--Tester: @lxl007-->
 <!--Adviser: @HelloCrease-->
 
@@ -30,11 +30,11 @@ Describes the layout constraints of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           |  Type | Read Only  | Optional  | Description                                      |
+| Name           |  Type | Read-Only  | Optional  | Description                                      |
 | -------------- | ------ | ----- | ----------|-------------------------------- |
-| maxSize           | [Size](./js-apis-arkui-graphics.md#size) |No| Yes   | Maximum size.             |
-| minSize            | [Size](./js-apis-arkui-graphics.md#size) |No| Yes   | Minimum size.                 |
-| percentReference      | [Size](./js-apis-arkui-graphics.md#size) |No| Yes   | Size reference for calculating the percentage of a child node.|
+| maxSize           | [Size](./js-apis-arkui-graphics.md#size) |No| No   | Maximum size.             |
+| minSize            | [Size](./js-apis-arkui-graphics.md#size) |No| No   | Minimum size.                 |
+| percentReference      | [Size](./js-apis-arkui-graphics.md#size) |No| No   | Size reference for calculating the percentage of a child node.|
 
 ## CrossLanguageOptions<sup>15+</sup>
 
@@ -44,7 +44,7 @@ Provides options for configuring or querying the cross-language access permissio
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only| Optional| Description                  |
+| Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | attributeSetting  | boolean | No  | Yes  | Whether the FrameNode supports cross-language settings.<br>The value **true** means the FrameNode supports cross-language settings, and **false** means the opposite.<br>Default value: **false**.|
 
@@ -70,7 +70,7 @@ Represents detailed information of interaction event binding on the current node
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only| Optional| Description                  |
+| Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | baseEventRegistered  | boolean |  No  | No  | Whether the event is bound declaratively.<br>**true** means that the event is bound declaratively, and **false** means the opposite.|
 | nodeEventRegistered  | boolean | No  | No  | Whether the event is bound through a custom component node. For the implementation example, see [Basic Event Example](#basic-event-example).<br>The value **true** means that the event is bound through a custom component node, and **false** means the opposite.|
@@ -193,7 +193,7 @@ Checks whether this FrameNode is modifiable.
 
 | Type   | Description                                                                                                                                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | Whether the current FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>false if the node is a system component proxy node in the ../../ui/arkts-user-defined-node.md# Custom Component Node-framenode or the node has been disposed.<br>If false is returned, the current FrameNode does not support [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20) or [cancelAnimations](#cancelanimations20).|
+| boolean | Whether the current FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
 
 **Example**
 
@@ -2237,213 +2237,7 @@ Obtains the attribute value of a FrameNode.
 
 **Example**
 
-For details, see [Example of Creating and Canceling an Animation](#example-of-creating-and-canceling-an-animation).
-
-### invalidateAttributes<sup>21+</sup>
-
-invalidateAttributes(): void
-
-Updates the node attribute in the current frame.
-
-The attribute of the current node is modified after the build phase. The modification does not take effect immediately. Instead, the modification is delayed until the next frame.
-
-This function forces the node to be updated in the current frame to ensure that the rendering effect is synchronized with the application.
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-  Since API version 21, two nodes can be dynamically switched using if else, and invalidateAttributes is called when a node is created to update node attributes in real time, preventing flicker during component switching.
- 
- ```ts
- //index.ets
-import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
-
-// Inherit NodeController to implement a custom NodeAdapter controller.
-class MyNodeAdapterController extends NodeController {
-  rootNode: FrameNode | null = null;
-  imageUrl: string = "";
-  constructor(imageUrl:string) {
-    super();
-    this.imageUrl = imageUrl;
-  }
-  makeNode(uiContext: UIContext): FrameNode | null {
-    let imageNode = typeNode.createNode(uiContext, "Image");
-    imageNode.initialize($r(this.imageUrl))
-    imageNode.attribute.syncLoad(true).width(100).height(100);
-    // Update the node in the current frame to avoid flicker.
-    imageNode.invalidateAttributes();
-    return imageNode;
-  }
-}
-// Custom component for mounting events. Sample images are loaded before mounting.
-@Component
-struct NodeComponent3 {
-  private rootSlot: NodeContent = new NodeContent();
-  aboutToAppear(): void {
-    const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
-    imageNode.initialize($r('app.media.startIcon'))
-    imageNode.attribute.syncLoad(true).width(100).height(100);
-    imageNode.invalidateAttributes();
-    this.rootSlot.addFrameNode(imageNode);
-  }
-  build() {
-    ContentSlot(this.rootSlot)
-  }
-}
-// Custom component for mounting events. Sample images are loaded before mounting.
-@Component
-struct NodeComponent4 {
-  private rootSlot: NodeContent = new NodeContent();
-  aboutToAppear(): void {
-    const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
-    imageNode.initialize($r('app.media.startIcon'))
-    imageNode.attribute.syncLoad(true).width(100).height(100);
-    imageNode.invalidateAttributes();
-    this.rootSlot.addFrameNode(imageNode);
-  }
-  build() {
-    ContentSlot(this.rootSlot)
-  }
-}
-@Entry
-@Component
-struct ListNodeTest {
-  @State flag: boolean = true;
-  adapterController: MyNodeAdapterController = new MyNodeAdapterController('app.media.startIcon');
-  build() {
-    Column() {
-      Text("ListNode Adapter");
-      if (this.flag) {
-        NodeComponent3()
-      } else {
-        NodeComponent4()
-      }
-      if (this.flag) {
-        NodeContainer(this.adapterController)
-          .width(300).height(300)
-          .borderWidth(1).borderColor(Color.Black)
-      } else {
-        NodeContainer(this.adapterController)
-          .width(300).height(300)
-          .borderWidth(1).borderColor(Color.Black)
-      }
-      if (this.flag) {
-        Image($r('app.media.startIcon')).width(100).height(100).syncLoad(true)
-      } else {
-        Image($r('app.media.startIcon')).width(100).height(100).syncLoad(true)
-      }
-      Button('change').onClick(() => {
-        this.flag = !this.flag;
-      })
-    }.borderWidth(1)
-    .width("100%")
-  }
-}
- ```
- 
- ### convertPoint<sup>22+</sup>
-
-convertPoint(position: Position, targetNode: FrameNode): Position
-
-Converts the coordinates of a point from the coordinate system of the current node to that of the target node.
-
-Atomic service API: This API can be used by atomic services since API version 22.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name | Type| Mandatory| Description                                                    |
-| ------- | -------- | ---- | ------------------------------------------------------------ |
-| position | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Coordinates of a point in the local coordinate system of the current node.|
-| targetNode  | [FrameNode](#framenode-1) | Yes  | Target node for coordinate conversion. The converted point coordinates are in the local coordinate system of the target node.|
-
-**Return value**
-
-| Type              | Description              |
-| ------------------ | ------------------ |
-| [Position](./js-apis-arkui-graphics.md#position) | Coordinates of the point in the local coordinate system of the target node.|
-
-**Error codes**
-
-For details about the error codes, see Custom Node Error Codes.
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 100024   | The current FrameNode and the target FrameNode do not have a common ancestor node. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
-
-**Example**
-
-```ts
-
-@Entry
-@Component
-struct ConvertPointTestOnly {
-  private uiContext: UIContext = this.getUIContext();
-  @State message: string = 'Hello World';
-  @State nodeAOk: boolean = false;
-  @State nodeBOK: boolean = false;
-
-  build() {
-    Column() {
-      Text(this.message)
-        .id('testNodeA')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        .onAppear(()=>{this.nodeAOk = true})
-      Column() {
-        Text('testNodeB')
-          .id('testNodeB')
-          .fontSize($r('app.float.page_text_font_size'))
-          .fontWeight(FontWeight.Bold)
-          .onAppear(()=>{this.nodeBOK = true})
-
-      }
-      Button ('Run convertPoint test')
-        .onClick(() => {
-          this.runBasicTest();
-        })
-        .margin(20)
-
-    }
-    .width('100%')
-    .height('100%')
-  }
-
-  private runBasicTest() {
-    if(!this.nodeAOk||!this.nodeBOK) {
-      return
-    }
-
-    //Wait until the UI rendering is complete.
-    if (!this.uiContext) {
-      return
-    }
-    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
-    const nodeB = this.uiContext.getAttachedFrameNodeById('testNodeB');
-
-    if (!nodeA || !nodeB) {
-      console.info ('Failed to obtain the test node.');
-      return;
-    }
-
-    const testPoint:Position = { x: 10, y: 10 };
-    const result: Position | undefined = nodeA.convertPoint({x:30,y:10}, nodeB); // Explicitly Declares That undefined May Be Returned
-    if (result === undefined) {
-      console.info("convertPoint conversion failed. undefined is returned.");
-      return;
-    }
-    console.info(`Output: (${result.x}, ${result.y})`);
-
-  }
-}
-```
+See [Example of Creating and Canceling an Animation](#example-of-creating-and-canceling-an-animation).
 
 ## TypedFrameNode<sup>12+</sup>
 
@@ -2455,7 +2249,7 @@ TypedFrameNode is inherited from [FrameNode](#framenode-1) and is used to declar
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type| Read Only| Optional| Description                                                        |
+| Name      | Type| Read-Only| Optional| Description                                                        |
 | ---------- | ---- | ---- | ---- | ------------------------------------------------------------ |
 | initialize | C    | No  | No  | Creates construction parameters of a component to set or update the initial value of the component.|
 | attribute  | T    | Yes  | No  | Obtains the attribute setting object of a component to set or update the common and private attributes of the component.|
@@ -2516,7 +2310,6 @@ Creates a FrameNode of the **Text** type.
 ```ts
 import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
 
-// Inherit NodeController to implement a custom UI controller.
 class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     let node = new FrameNode(uiContext);
@@ -2631,7 +2424,7 @@ Bind the text controller [TextController](arkui-ts/ts-basic-components-text.md#t
 
 **Error codes**
 
-For details about the error codes listed in the following table, see Custom Node Error Codes.
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -2675,8 +2468,8 @@ struct FrameNodeTypeTest {
     Column({ space: 5 }) {
       Text('Text bindController Sample')
       NodeContainer(this.myNodeController)
-      Text (`Number of lines in the text, ${this.line}`)
-      Button (`Click to obtain the number of lines.`)
+      Text(`Number of lines in the text, ${this.line}`)
+      Button(`Click to obtain the number of lines.`)
         .onClick(() => {
           this.line = this.myNodeController.controller.getLayoutManager().getLineCount()
         })
@@ -2785,6 +2578,7 @@ Obtains the attributes of a Column node. If the node is not created using ArkTS,
 ```ts
 import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
 
+// Inherit NodeController to implement a custom UI controller.
 class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     let node = new FrameNode(uiContext);
@@ -3505,7 +3299,7 @@ Obtains the attributes of the swiper node. If the node is not created using ArkT
 
 **Example**
 
-For details, see createNode('Swiper')<sup>12+</sup> Example (#createnodeswiper12).
+See the example for [createNode('Swiper')<sup>12+</sup>](#createnodeswiper12).
 
 ### bindController('Swiper')<sup>20+</sup>
 
@@ -3536,7 +3330,7 @@ For details about the error codes, see Custom Node Error Codes.
 
 **Example**
 
-For details, see createNode('Swiper')<sup>12+</sup> example (#createnodeswiper12).
+See the example for [createNode('Swiper')<sup>12+</sup>](#createnodeswiper12).
 
 ### Progress<sup>12+</sup>
 
@@ -3588,7 +3382,6 @@ class MyProgressNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
-    // Create a Progress.
     let node = typeNode.createNode(uiContext, 'Progress');
     node.initialize({
       value: 15,
@@ -3649,6 +3442,7 @@ class MyProgressNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
+    // Create a Progress.
     let node = typeNode.createNode(uiContext, 'Progress');
     node.initialize({
       value: 15,
@@ -4114,7 +3908,6 @@ class MyLoadingProgressNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
-    // Create LoadingProgress.
     let node = typeNode.createNode(uiContext, 'LoadingProgress');
     node.initialize()
       .width(100)
@@ -4173,6 +3966,7 @@ class MyLoadingProgressNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
+    // Create LoadingProgress.
     let node = typeNode.createNode(uiContext, 'LoadingProgress');
     node.initialize()
       .width(100)
@@ -4399,7 +4193,6 @@ class MyImageController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
-    // Create an image.
     let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode
       // $r('app.media.img') needs to be replaced with the image resource file required by the developer.
@@ -4469,9 +4262,10 @@ class MyImageController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
     this.rootNode = new FrameNode(uiContext);
+    // Create an image.
     let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode
-      // Replace $r('app.media.img') with the image resource file required by the developer.
+      // Replace $r('app.media.img') with the image resource file you use.
       .initialize($r('app.media.img'))
       .width(100)
       .height(100)
@@ -5002,7 +4796,6 @@ class MyButtonController extends NodeController {
       .width('100%')
       .height('100%')
     node.appendChild(col)
-    // Create a Button node.
     let button = typeNode.createNode(uiContext, 'Button')
     button.initialize("This is Button")
       .onClick(() => {
@@ -5067,12 +4860,12 @@ class MyButtonController extends NodeController {
       .width('100%')
       .height('100%')
     node.appendChild(col)
+    // Create a Button node.
     let button = typeNode.createNode(uiContext, 'Button')
     button.initialize("This is Button")
       .onClick(() => {
         uiContext.getPromptAction().showToast({ message: "Button clicked" })
       })
-    // Obtain the button attributes.
     typeNode.getAttribute(button,'Button')?.buttonStyle(ButtonStyleMode.TEXTUAL)
     col.appendChild(button)
 
@@ -5170,7 +4963,7 @@ typeNode.getAttribute(node, 'ListItemGroup');
 
 type WaterFlow = TypedFrameNode&lt;WaterFlowInterface, WaterFlowAttribute&gt;
 
-Represents a FrameNode of the **WaterFlow** type. Only FlowItem child components can be added.
+Represents a FrameNode of the **WaterFlow** type. Only [FlowItem](./arkui-ts/ts-container-flowitem.md) child components can be added.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5975,7 +5768,7 @@ Creates a FrameNode of the **GridItem** type.
 
 **Example**
 
-For details, see the example of createNode('Grid').
+See the example for [createNode('Grid')](#createnodegrid14).
 
 ### getAttribute('GridItem')<sup>20+</sup>
 
@@ -6002,7 +5795,7 @@ Obtains the attributes of a GridItem node. If the node is not created using ArkT
 
 **Example**
 
-For details, see the example of createNode('Grid').
+See the example for [createNode('Grid')](#createnodegrid14).
 
 ### TextClock<sup>14+</sup>
 
@@ -7245,7 +7038,7 @@ struct FrameNodeTypeTest {
 
 ## NodeAdapter<sup>12+</sup>
 
-Provides the lazy loading capability for the FrameNodes.
+The NodeAdapter provides the lazy loading capability of FrameNode data. The [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) API implements the interface function.
 
 > **NOTE**
 >
@@ -7309,7 +7102,7 @@ Obtains the total number of items in this node.
 
 reloadAllItems(): void
 
-Reloads all items in this node.
+Reloads all items in this node. This method calls the [OnDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded) API in LazyForEach to notify the component of reloading all items.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7387,7 +7180,7 @@ Moves items from the starting index to the ending index.
 
 getAllAvailableItems(): Array&lt;FrameNode&gt;
 
-Obtains all available items.
+Obtains all available items. Valid node data includes nodes displayed on the screen and preloaded nodes. The number of preloaded nodes can be configured by adjusting the **cachedCount** property of the parent container, following the [usage constraints](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#constraints) of **LazyForEach**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7429,7 +7222,7 @@ Called when detachment occurs.
 
 onGetChildId?(index: number): number
 
-Called when this node is loaded for the first time or a new child node is detected. This API is used to generate custom IDs. You must ensure the uniqueness of the IDs.
+Called when this node is loaded for the first time or a new child node is detected. The index parameter passed to this method is used to customize the ID. You need to ensure that the ID generated based on different indexes is unique.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7451,7 +7244,7 @@ Called when this node is loaded for the first time or a new child node is detect
 
 onCreateChild?(index: number): FrameNode
 
-Called when this node is loaded for the first time or a new child node is detected. It is recommended that you comply with the restrictions on child components in declarative components when adding child components. For example, WaterFlow supports the addition of FlowItem child nodes.
+Called when this node is loaded for the first time or a new child node is detected. It is recommended that you comply with the restrictions on child components in declarative components when adding child components. For example, WaterFlow supports the addition of FlowItem child nodes. The parent node determines whether the node is loaded for the first time or a new node slides in based on the index and key value of the child node.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7473,7 +7266,7 @@ Called when this node is loaded for the first time or a new child node is detect
 
 onDisposeChild?(id: number, node: FrameNode): void
 
-Called when a child node is about to be disposed of.
+Called when a child node is about to be disposed of. Nodes that are not displayed on the screen and are not within the preloading range are about to be disposed of.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7490,7 +7283,7 @@ Called when a child node is about to be disposed of.
 
 onUpdateChild?(id: number, node: FrameNode): void
 
-Called when a loaded node is reused.
+Called when a loaded node is reused. Reuses the node if the key value of the cached node is the same as that of the reused node.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

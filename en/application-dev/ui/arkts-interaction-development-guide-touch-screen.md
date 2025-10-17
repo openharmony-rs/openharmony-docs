@@ -1,4 +1,10 @@
 # Handling Touchscreen Input Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 ![touch devices](figures/touch-devices.png)
 

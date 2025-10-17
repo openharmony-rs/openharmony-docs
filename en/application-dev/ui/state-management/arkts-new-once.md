@@ -1,8 +1,12 @@
 # \@Once: Implementing Initialization Once
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 To initialize data only once and deny subsequent changes, you can use \@Once decorator together with \@Param decorator.
-
 
 Before reading this topic, you are advised to read [\@Param](./arkts-new-param.md).
 
@@ -10,6 +14,7 @@ Before reading this topic, you are advised to read [\@Param](./arkts-new-param.m
 >
 > The \@Once decorator is supported in custom components decorated by \@ComponentV2 since API version 12.
 >
+> This decorator can be used in atomic services since API version 12.
 
 ## Overview
 
@@ -26,24 +31,24 @@ As an auxiliary decorator, the \@Once decorator does not have requirements on th
 
 | \@Once Variable Decorator| Description                                     |
 | ---------------- | ----------------------------------------- |
-| Decorator parameters      | None.                                     |
+| Parameters      | None                                     |
 | Condition        | It cannot be used independently and must be used together with the \@Param decorator.|
 
 
 ## Constraints
 
-- \@Once can be used only in custom components decorated by \@ComponentV2 and can be used only with \@Param.
+- \@Once can be used together with \@Param only in custom components decorated with [\@ComponentV2](arkts-new-componentV2.md).
 
   ```ts
   @ComponentV2
   struct MyComponent {
-    @Param @Once onceParam: string = "onceParam"; // Correct usage.
-    @Once onceStr: string = "Once"; // Incorrect usage. @Once cannot be used independently.
-    @Local @Once onceLocal: string = "onceLocal"; // Incorrect usage. @Once cannot be used with @Local.
+    @Param @Once onceParam: string = 'onceParam'; // Correct usage.
+    @Once onceStr: string = 'Once'; // Incorrect usage. @Once cannot be used independently.
+    @Local @Once onceLocal: string = 'onceLocal'; // Incorrect usage. @Once cannot be used with @Local.
   }
   @Component
   struct Index {
-    @Once @Param onceParam: string = "onceParam"; // Incorrect usage.
+    @Once @Param onceParam: string = 'onceParam'; // Incorrect usage.
   }
   ```
 
@@ -66,7 +71,7 @@ As an auxiliary decorator, the \@Once decorator does not have requirements on th
 ```ts
 @ComponentV2
 struct ChildComponent {
-  @Param @Once onceParam: string = "";
+  @Param @Once onceParam: string = '';
   build() {
   	Column() {
   	  Text(`onceParam: ${this.onceParam}`)
@@ -76,13 +81,13 @@ struct ChildComponent {
 @Entry
 @ComponentV2
 struct MyComponent {
-  @Local message: string = "Hello World";
+  @Local message: string = 'Hello World';
   build() {
   	Column() {
       Text(`Parent message: ${this.message}`)
-      Button("change message")
+      Button('change message')
         .onClick(() => {
-          this.message = "Hello Tomorrow";
+          this.message = 'Hello Tomorrow';
         })
       ChildComponent({ onceParam: this.message })
   	}
@@ -92,7 +97,7 @@ struct MyComponent {
 
 ### Changing the \@Param Variables Locally
 
-When \@Once is used together with \@Param, the constraint that \@Param cannot be changed locally can be removed, and this change triggers UI re-rendering. In this case, using \@Param and \@Once is equivalent to using \@Local. The difference is that \@Param and \@Once can accept the external initialization passed in.
+When \@Once is used together with \@Param, it can lift the restriction that \@Param cannot be modified locally and can trigger UI re-rendering. In this case, the effect of using \@Param and \@Once is similar to that of [ \@Local ](arkts-new-local.md), but \@Param and \@Once can also receive initial values transferred from external systems.
 
 ```ts
 @ObservedV2
@@ -111,13 +116,13 @@ struct Child {
     Column() {
       Text(`Child onceParamNum: ${this.onceParamNum}`)
       Text(`Child onceParamInfo: ${this.onceParamInfo.name}`)
-      Button("changeOnceParamNum")
+      Button('changeOnceParamNum')
         .onClick(() => {
           this.onceParamNum++;
         })
-      Button("changeParamInfo")
+      Button('changeParamInfo')
         .onClick(() => {
-          this.onceParamInfo = new Info("Cindy");
+          this.onceParamInfo = new Info('Cindy');
         })
     }
   }
@@ -126,19 +131,19 @@ struct Child {
 @ComponentV2
 struct Index {
   @Local localNum: number = 10;
-  @Local localInfo: Info = new Info("Tom");
+  @Local localInfo: Info = new Info('Tom');
 
   build() {
     Column() {
       Text(`Parent localNum: ${this.localNum}`)
       Text(`Parent localInfo: ${this.localInfo.name}`)
-      Button("changeLocalNum")
+      Button('changeLocalNum')
         .onClick(() => {
           this.localNum++;
         })
-      Button("changeLocalInfo")
+      Button('changeLocalInfo')
         .onClick(() => {
-          this.localInfo = new Info("Cindy");
+          this.localInfo = new Info('Cindy');
         })
       Child({
         onceParamNum: this.localNum,

@@ -100,7 +100,7 @@ Sets the page title.
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup> \| [CustomBuilder](ts-types.md#custombuilder8) \| [NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup> \| [NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | Yes  | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect. When the title string is too long: (1) If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped. (2) If a subtitle is set, the subtitle is scaled down and then clipped.|
-| options | [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> | No  | Title bar options.                                                |
+| options | [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> | No  | Title bar options. Includes the title bar background color, blur style and options, title bar background attributes, title bar layout mode, inner spacing at the start and end of the title bar, title attributes, subtitle attributes, and whether to respond to the hover state.                                                |
 
 ### menus
 
@@ -180,8 +180,8 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   |  Array&lt;[ToolbarItem](#toolbaritem10)&gt;  \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar. When configured with Array&lt;[ToolbarItem](#toolbaritem10)&gt;, the toolbar follows the rules below:<br>Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>- If any item contains overlong text and there are fewer than five items, the toolbar will: 1. Increase the item width to accommodate the text until the toolbar spans the screen width; 2. Reduce the text size progressively; 3. Wrap the text over two lines; 4. Clip the text.<br>In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated **More** icon. In landscape mode, the behavior of the toolbar is determined by the display mode: (1) If the display mode is [Split](#navigationmode9), the toolbar follows the same rules as in portrait mode. (2) If the display mode is [Stack](#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules, except for evenly distributing items at the bottom of the toolbar.|
-| options | [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup> | No  | Toolbar options.                                               |
+| value   |  Array&lt;[ToolbarItem](#toolbaritem10)&gt;  \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar. When configured with Array&lt;[ToolbarItem](#toolbaritem10)&gt;, the toolbar follows the rules below:<br>Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated **More** icon. In landscape mode, the behavior of the toolbar is determined by the display mode: (1) If the display mode is [Split](#navigationmode9), the toolbar follows the same rules as in portrait mode. (2) If the display mode is [Stack](#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules, except for evenly distributing items at the bottom of the toolbar.|
+| options | [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup> | No  | Toolbar options. Includes the toolbar background color, toolbar background blur style and blur option, toolbar background attribute, toolbar layout mode, whether to hide the toolbar text, and more icons on the toolbar.                                               |
 
 ### hideToolBar
 
@@ -486,7 +486,7 @@ Sets the style of the system status bar when the home page of the **Navigation**
 > 6. The **systemBarStyle** attribute is effective only for the main page of the main window.
 > 7. The set style will only take effect if the **Navigation** component spans the entire page. If it does not, and there is a previously saved style available, the saved style will be used instead.
 > 8. When different styles are set for pages, the new style takes effect at the start of the page transition.
-> 9. The status bar style set by **Navigation** or **NavDestination** does not apply in non-full-screen windows.
+> 9. The status bar style set by **Navigation** or **NavDestination** does not apply in non-fullscreen windows.
 
 ### recoverable<sup>14+</sup>
 
@@ -512,7 +512,7 @@ Sets whether the **Navigation** component is recoverable. If set to recoverable,
 
 enableDragBar(isEnabled: Optional&lt;boolean&gt;)
 
-Sets whether to display a drag bar in split-column scenarios.
+Sets whether to display a drag bar in split-column scenarios. This attribute has no effect on PCs/2-in-1 devices.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -571,6 +571,22 @@ Sets a default placeholder page for the right column in the **Navigation** compo
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
 | placeholder  |[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | Yes  |Default placeholder page for the right column in the **Navigation** component's split-column mode.|
+
+### enableVisibilityLifecycleWithContentCover<sup>21+</sup>
+
+enableVisibilityLifecycleWithContentCover(isEnabled: Optional&lt;boolean&gt;)
+
+Whether to enable the linkage between the [onHidden](./ts-basic-components-navdestination.md#onhidden10) and [onShown](./ts-basic-components-navdestination.md#onshown10) life cycles on the [NavDestination](./ts-basic-components-navdestination.md) page and the full-modal triggering.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type        | Mandatory| Description              |
+| ------ | -------------- | ---- | ------------------ |
+| isEnabled  | Optional&lt;boolean&gt; | Yes  |Indicates whether to enable the linkage between the onShown and onHidden lifecycles of the NavDestination page and the full-modal triggering.<br>Default value: **true**.<br>true: When the full-modal mode is started, the onHidden lifecycle of the current NavDestination page is triggered. When the full-modal mode is disabled, the onShown lifecycle of the current NavDestination page is triggered.<br>false: The onHidden and onShown lifecycles of the NavDestination page are not triggered by full-modal startup and shutdown.|
 
 ### subTitle<sup>(deprecated)</sup>
 
@@ -684,11 +700,12 @@ Defines the callback of the custom transition animation.
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [NavigationAnimatedTransition](#navigationanimatedtransition11) \| undefined | <br>**NavigationAnimatedTransition**: protocol object for custom transition animations.<br>**undefined**: undefined, executing the default transition animation effect.|
+| [NavigationAnimatedTransition](#navigationanimatedtransition11) \| undefined | **NavigationAnimatedTransition**: protocol object for custom transition animations.<br>**undefined**: undefined, executing the default transition animation effect.|
 
 ## NavPathStack<sup>10+</sup>
 
-Defines the navigation controller for **Navigation**. Since API version 12, **NavPathStack** can be inherited. You can add new properties and methods in derived classes, or you can override the methods of the base **NavPathStack** class. Objects of the derived class can be used in place of objects of the base **NavPathStack** class. **NavDestination** pages within **Navigation** are managed in a stack structure within **NavPathStack**, referred to as the routing stack. For details, see [Example 10](#example-10-defining-a-derived-class-of-navpathstack).
+Navigation controller, which manages all child pages in Navigation using the stack data structure and provides stack operation methods to control the switching between child pages.
+Since API version 12, NavPathStack can be inherited. Derived class objects can replace base class NavPathStack objects. For details, see [Example 10](#example-10-defining-a-derived-class-of-navpathstack).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -954,7 +971,7 @@ Replaces the top of the routing stack with the navigation destination page speci
 | Name  | Type                           | Mandatory  | Description                  |
 | ---- | ----------------------------- | ---- | -------------------- |
 | info | [NavPathInfo](#navpathinfo10) | Yes   | Parameters for the new top page of the routing stack.|
-| animated<sup>11+</sup> | boolean | No   | Whether to enable the transition animation.<br>Default value: **true**.<br>**true**: Enable the transition animation.<br>**false**: Disable the transition animation.|
+| animated | boolean | No   | Whether to enable the transition animation.<br>Default value: **true**.<br>**true**: Enable the transition animation.<br>**false**: Disable the transition animation.|
 
 ### replacePath<sup>12+</sup>
 
@@ -1600,19 +1617,18 @@ Updates the progress of this interactive transition animation. (Non-interactive 
 
 Describes the object to be intercepted during navigation redirection.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type    | Mandatory| Description   |
 | ---- | ----- | ----- | ----   |
-| willShow | [InterceptionShowCallback](#interceptionshowcallback12) | No| Interception before page redirection, allowing for stack operations. The setting takes effect in the current redirection.|
-| didShow | [InterceptionShowCallback](#interceptionshowcallback12) | No| Callback after page redirection. The setting takes effect in the next redirection.|
-| modeChange | [InterceptionModeCallback](#interceptionmodecallback12) | No| Callback invoked when the display mode of the **Navigation** component switches between single-column and dual-column.|
+| willShow | [InterceptionShowCallback](#interceptionshowcallback12) | No| Callback before page redirection, which allows stack operations and takes effect in the current redirection. The intercepted page will be created.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| didShow | [InterceptionShowCallback](#interceptionshowcallback12) | No| Callback after page redirection. The setting takes effect in the next redirection.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| modeChange | [InterceptionModeCallback](#interceptionmodecallback12) | No| Callback invoked when the display mode of the **Navigation** component switches between single-column and dual-column.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| interception<sup>22+</sup> | [InterceptionCallback](#interceptioncallback22) | No| Callback before page redirection, which allows stack operations and takes effect in the current redirection. The blocked page will not be created.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ### InterceptionShowCallback<sup>12+</sup>
 
-type InterceptionShowCallback = (from: NavDestinationContext|NavBar, to: NavDestinationContext|NavBar, operation: NavigationOperation, isAnimated: boolean) => void
+type InterceptionShowCallback = (from: NavDestinationContext | NavBar, to: NavDestinationContext | NavBar, operation: NavigationOperation, isAnimated: boolean) => void
 
 Represents the interception callback before and after the navigation page.
 
@@ -1620,10 +1636,12 @@ Represents the interception callback before and after the navigation page.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name | Type   | Mandatory| Description             |
 | ------ | ------ | ---- | ---------------- |
-| from | [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) \|[NavBar](#navbar12) | Yes|  Information about the top page in the routing stack before page redirection. The value **navBar** indicates that the top page is the home page.|
-| to | [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) \|[NavBar](#navbar12) | Yes| Information about the top page in the routing stack after page redirection. The value **navBar** indicates that the top page is the home page.|
+| from | [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) \| [NavBar](#navbar12) | Yes|  Information about the top page in the routing stack before page redirection. The value **navBar** indicates that the top page is the home page.|
+| to | [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) \| [NavBar](#navbar12) | Yes| Information about the top page in the routing stack after page redirection. The value **navBar** indicates that the top page is the home page.|
 | operation | [NavigationOperation](#navigationoperation11) | Yes| Current page redirection type.|
 | isAnimated | boolean | Yes| Whether to enable the transition animation.<br>**true**: Enable the transition animation.<br>**false**: Disable the transition animation.|
 
@@ -1637,9 +1655,31 @@ Implements an interception callback triggered when the display mode of the **Nav
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name | Type   | Mandatory| Description             |
 | ------ | ------ | ---- | ---------------- |
 | mode | [NavigationMode](#navigationmode9) | Yes|  Display mode of the navigation bar.|
+
+### InterceptionCallback<sup>22+</sup>
+
+type InterceptionCallback = (from: NavPathInfo | NavBar, to: NavPathInfo | NavBar, pathStack: NavPathStack, operation: NavigationOperation, isAnimated: boolean) => void
+
+Interception callback before the navigation page is redirected.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description             |
+| ------ | ------ | ---- | ---------------- |
+| from | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | Yes|  Information about the exit page. The value **navBar** indicates that the top page is the home page.|
+| to | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | Yes| Information about the enter page. The value **navBar** indicates that the top page is the home page.|
+| pathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | Yes| Page Stack|
+| operation | [NavigationOperation](#navigationoperation11) | Yes| Current page redirection type.|
+| isAnimated | boolean | Yes| Whether to enable the transition animation.<br>**true**: Enable the transition animation.<br>**false**: Disable the transition animation.|
 
 ## NavBar<sup>12+</sup>
 
@@ -1763,8 +1803,24 @@ Enumerates the display modes of the navigation bar. When **Navigation** is displ
 | Name | Description                                                        |
 | ----- | ------------------------------------------------------------ |
 | Stack | The navigation bar and content area are displayed independently of each other, which are equivalent to two pages.                    |
-| Split | The navigation bar and content area are displayed in different columns.<br>The values of **navBarWidthRange** are represented by [minNavBarWidth,maxNavBarWidth].<br>**1.** When the value of **navBarWidth** is beyond the value range specified by **navBarWidthRange**, **navBarWidth** is set according to the following rules:<br>Value of **navBarWidth** < Value of **minNavBarWidth**: The value of **navBarWidth** is changed to that of **minNavBarWidth**.<br>Value of **navBarWidth** > Value of **maxNavBarWidth** and Result of [Component width - Value of **minContentWidth** - Divider width (1 vp)] > Value of **maxNavBarWidth**: The value of **navBarWidth** is changed to that of **maxNavBarWidth**.<br>Value of **navBarWidth** > Value of **maxNavBarWidth** and Result of [Component width - Value of **minContentWidth** - Divider width (1 vp)] < Value of **maxNavBarWidth**: The value of **navBarWidth** is changed to that of **minNavBarWidth**.<br>Value of **navBarWidth** > Value of **maxNavBarWidth** and Component width - Value of **minContentWidth** - Divider width (1 vp) is within the value range specified by **navBarWidthRange**: The value of **navBarWidth** is changed to Component width - Value of **minContentWidth** - Divider width (1 vp).<br>**2.** When the value of **navBarWidth** is within the value range specified by **navBarWidthRange**, **navBarWidth** is set according to the following rules:<br>Value of **minNavBarWidth** + Value of **minContentWidth** + Divider width (1 vp) > = Component width: The value of **navBarWidth** is changed to that of **minNavBarWidth**.<br>Value of **minNavBarWidth** + Value of **minContentWidth** + Divider width (1 vp) < Component width and Value of **navBarWidth** + Value of **minContentWidth** + Divider width (1 vp) > = Component width: The value of **navBarWidth** is changed to Component width - Value of **minContentWidth** - Divider width (1 vp).<br>Value of **minNavBarWidth** + Value of **minContentWidth** + Divider width (1 vp) < Component width and Value of **navBarWidth** + Value of **minContentWidth** + Divider width (1 vp) < Component width: The value of **navBarWidth** is the set value. <br>**3.** When the component size is decreased, the content area is shrunk until its width reaches the value defined by **minContentWidth**, and then the navigation bar is shrunk until its width reaches the value defined by **minNavBarWidth**. if the component size is further decreased, the content area is further shrunk until it disappears, and then navigation bar is shrunk.<br>**4.** When the navigation bar is set to a fixed size and the component size is continuously decreased, the navigation bar is shrunk.<br>**5.** If only **navBarWidth** is set, the width of the navigation bar is fixed at the value of **navBarWidth**, and the divider cannot be dragged.<br>**6.** The touch target of the divider is 2 vp on each side (left and right). Therefore, it is recommended that you keep a minimum distance of 4 vp from this area to avoid unintended interactions.<br>**7.** In Split mode, if there is only one page in the content area, the back button will not be displayed in the upper left corner of the page.|
+| Split | The navigation bar and content area are displayed in different columns.<br>**1.** Table 1 describes the relationship between the final value of navBarWidth and the value set by the developer.<br>**2.** When the component size is decreased, the content area is shrunk until its width reaches the value defined by **minContentWidth**, and then the navigation bar is shrunk until its width reaches the value defined by **minNavBarWidth**. if the component size is further decreased, the content area is further shrunk until it disappears, and then navigation bar is shrunk.<br>**3.** When the navigation bar is set to a fixed size and the component size is continuously decreased, the navigation bar is shrunk.<br>**4.** If only **navBarWidth** is set, the width of the navigation bar is fixed at the value of **navBarWidth**, and the divider cannot be dragged.<br>**5.** The touch target of the divider is 2 vp on each side (left and right). Therefore, it is recommended that you keep a minimum distance of 4 vp from this area to avoid unintended interactions.<br>**6.** In Split mode, if there is only one page in the content area, the back button will not be displayed in the upper left corner of the page.|
 | Auto  | In API version 9 and earlier versions: If the window width is greater than or equal to 520 vp, the Split mode is used; otherwise, the Stack mode is used.<br>In API version 10 and later versions: If the window width is greater than or equal to 600 vp, the Split mode is used; otherwise, the Stack mode is used. 600 vp = minNavBarWidth (240 vp) + minContentWidth (360 vp).|
+
+**Table 1** Relationship between the final value of navBarWidth and the value set by the developer
+
+| navBarWidth Value Set by the Developer| calcNavBarWidth Value| Final Value of navBarWidth|
+| --- | --- | --- |
+| navBarWidth < minNavBarWidth | NA | minNavBarWidth |
+| navBarWidth > maxNavBarWidth | calcNavBarWidth > maxNavBarWidth | maxNavBarWidth |
+| navBarWidth > maxNavBarWidth | calcNavBarWidth < minNavBarWidth | minNavBarWidth |
+| navBarWidth > maxNavBarWidth | minNavBarWidth ≤ calcNavBarWidth ≤ maxNavBarWidth | calcNavBarWidth |
+| minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth ≤ minNavBarWidth | minNavBarWidth |
+| minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | minNavBarWidth < calcNavBarWidth <= navBarWidth | calcNavBarWidth |
+| minNavBarWidth ≤ navBarWidth ≤ maxNavBarWidth | calcNavBarWidth > navBarWidth | navBarWidth |
+
+> **NOTE**
+>
+> For simplicity, the component width – minContentWidth – split line width (1 vp) is referred to as calcNavBarWidth.
 
 ## NavigationOperation<sup>11+</sup>
 
@@ -1910,7 +1966,7 @@ Defines the home page **NavDestination** information.
 
 ## Example
 
-The outcome of the sample code may vary depending on the actual device used. The system routing table does not work with DevEco Studio Previewer, cross-platform functionality, or emulators.
+The outcome of the sample code may vary depending on the actual device used. The system route table does not support the DevEco Studio Previewer or Emulator.
 
 ### Example 1: Implementing a Navigation Page Layout
 
@@ -1949,13 +2005,16 @@ struct NavigationExample {
   @Builder
   NavigationMenus() {
     Row() {
+      // Replace 'resources/base/media/ic_public_add.svg' with the resource file you use.
       Image('resources/base/media/ic_public_add.svg')
         .width(24)
         .height(24)
+      // Replace 'resources/base/media/ic_public_add.svg' with the resource file you use.
       Image('resources/base/media/ic_public_add.svg')
         .width(24)
         .height(24)
         .margin({ left: 24 })
+      // Replace 'resources/base/media/ic_public_add.svg' with the resource file you use.
       Image('common/ic_public_more.svg')
         .width(24)
         .height(24)
@@ -1995,14 +2054,17 @@ struct NavigationExample {
       .titleMode(NavigationTitleMode.Full)
       .toolbarConfiguration([
         {
+          // Replace $r("app.string.navigation_toolbar_add") and $r("app.media.ic_public_highlights_ed") with the image resource file you use.
           value: $r("app.string.navigation_toolbar_add"),
-          icon: $r("app.media.ic_public_highlightsed")
+          icon: $r("app.media.ic_public_highlights_ed")
         },
         {
+          // Replace $r("app.string.navigation_toolbar_app") and $r("app.media.ic_public_highlights") with the image resource file you use.
           value: $r("app.string.navigation_toolbar_app"),
           icon: $r("app.media.ic_public_highlights")
         },
         {
+          // Replace $r("app.string.navigation_toolbar_collect") and $r("app.media.ic_public_highlights") with the image resource file you use.
           value: $r("app.string.navigation_toolbar_collect"),
           icon: $r("app.media.ic_public_highlights")
         }
@@ -2146,7 +2208,7 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.popToName('pageTwo'); // Pop the first navigation destination page that matches the value of name to the top of the routing stack.
-            console.info('popToName' + JSON.stringify(this.pageInfos),
+            console.info(`popToName ${JSON.stringify(this.pageInfos)}, ` +
               'Return value' + JSON.stringify(this.pageInfos.popToName('pageTwo')));
           })
         Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
@@ -2155,7 +2217,7 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.popToIndex(1); // Return the routing stack to the navigation destination page that matches the value of index.
-            console.info('popToIndex' + JSON.stringify(this.pageInfos));
+            console.info(`popToIndex ${JSON.stringify(this.pageInfos)}`);
           })
         Button('moveToTop', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2163,8 +2225,8 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.moveToTop('pageTwo'); // Move to the top of the routing stack the first navigation destination page that matches the value of name.
-            console.info('moveToTop' + JSON.stringify(this.pageInfos),
-              'Return value' + JSON.stringify(this.pageInfos.moveToTop('pageTwo')));
+            console.info(`moveToTop ${JSON.stringify(this.pageInfos)}, ` +
+              'Return value' + JSON.stringify(this.pageInfos.popToName('pageTwo')));
           })
         Button('moveIndexToTop', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2172,7 +2234,7 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.moveIndexToTop(1); // Move to the top of the routing stack the navigation destination page that matches the value of index.
-            console.info('moveIndexToTop' + JSON.stringify(this.pageInfos));
+            console.info(`moveIndexToTop ${JSON.stringify(this.pageInfos)}`);
           })
         Button('clear', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2188,19 +2250,16 @@ export struct PageOne {
           .onClick(() => {
             console.info('-------------------');
             console.info('Obtain names of all NavDestination pages in the stack', JSON.stringify(this.pageInfos.getAllPathName()));
-            console.info('Obtain parameter information of the NavDestination page at the specified index',
-              JSON.stringify(this.pageInfos.getParamByIndex(1)));
-            console.info('Obtain the parameter information of all NavDestination pages with the specified name',
-              JSON.stringify(this.pageInfos.getParamByName('pageTwo')));
-            console.info('Obtain the position indexes of all NavDestination pages with the specified name',
-              JSON.stringify(this.pageInfos.getIndexByName('pageOne')));
+            console.info(`Obtain the parameter information of the NavDestination page specified by index.${JSON.stringify(this.pageInfos.getParamByIndex(1))}`);
+            console.info(`Obtain the parameter information of all NavDestination pages named name.${JSON.stringify(this.pageInfos.getParamByName('pageTwo'))}`);
+            console.info(`Obtain the location index of all NavDestination pages named name.${JSON.stringify(this.pageInfos.getIndexByName('pageOne'))}`);
             console.info('Obtain the stack size', JSON.stringify(this.pageInfos.size()));
           })
       }.width('100%').height('100%')
     }.title('pageOne')
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop(); // Pop the top element out of the routing stack.
-      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      console.info(`pop return value ${JSON.stringify(popDestinationInfo)}`);
       return true;
     }).onReady((context: NavDestinationContext) => {
       this.pageInfos = context.pathStack;
@@ -2220,15 +2279,18 @@ export struct PageTwo {
   pathStack: NavPathStack = new NavPathStack();
   private menuItems: Array<NavigationMenuItem> = [
     {
+      // Replace 'resources/base/media/undo.svg' with the image resource file you use.
       value: "1",
       icon: 'resources/base/media/undo.svg',
     },
     {
+      // Replace 'resources/base/media/redo.svg' with the image resource file you use.
       value: "2",
       icon: 'resources/base/media/redo.svg',
       isEnabled: false,
     },
     {
+      // Replace 'resources/base/media/ic_public_ok.svg' with the image resource file you use.
       value: "3",
       icon: 'resources/base/media/ic_public_ok.svg',
       isEnabled: true,
@@ -2254,16 +2316,14 @@ export struct PageTwo {
     })
     .onReady((context: NavDestinationContext) => {
       this.pathStack = context.pathStack;
-      console.info("current page config info is " + JSON.stringify(context.getConfigInRouteMap()));
+      console.info(`current page config info is ${JSON.stringify(context.getConfigInRouteMap())}`);
     })
   }
 }
 ```
 
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
-
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -2744,9 +2804,8 @@ export class CustomTransition {
   }
 }
 ```
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -2832,7 +2891,7 @@ export struct PageOne {
             this.pageInfo.pushPath({
               name: 'pageTwo', param: new ParamWithOp(), onPop: (popInfo: PopInfo) => {
                 this.message =
-                  '[pushPath]last page is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result);
+                  `[pushPath]last page is: ${popInfo.info.name},result: ${JSON.stringify(popInfo.result)}`;
               }
             }); // Push the navigation destination page specified by name, with the data specified by param, to the routing stack. Use the onPop callback to receive the page processing result.
           })
@@ -2845,7 +2904,7 @@ export struct PageOne {
             let tmp = new TmpClass();
             this.pageInfo.pushPathByName('pageTwo', tmp, (popInfo) => {
               this.message =
-                '[pushPathByName]last page is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result);
+                `[pushPathByName]last page is: ${popInfo.info.name}, result: ${JSON.stringify(popInfo.result)}`;
             }); // Push the navigation destination page specified by name, with the data specified by param, to the routing stack. Use the onPop callback to receive the page processing result.
           })
 
@@ -2859,7 +2918,7 @@ export struct PageOne {
             this.pageInfo.pushDestination({
               name: 'pageTwo', param: new ParamWithOp(), onPop: (popInfo: PopInfo) => {
                 this.message =
-                  '[pushDestination]last page is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result);
+                  `[pushDestination]last page is: ${popInfo.info.name}, result: ${JSON.stringify(popInfo.result)}`;
               }
             }).catch((error: BusinessError) => {
               console.error(`[pushDestination]failed, error code = ${error.code}, error.message = ${error.message}.`);
@@ -2876,8 +2935,8 @@ export struct PageOne {
             let tmp = new TmpClass();
             // Push the navigation destination page specified by name, with the data specified by param, to the routing stack. Use the onPop callback to receive the page processing result.
             this.pageInfo.pushDestinationByName('pageTwo', tmp, (popInfo) => {
-              this.message = '[pushDestinationByName]last page is: ' + popInfo.info.name + ', result: ' +
-              JSON.stringify(popInfo.result);
+              this.message = 
+                `[pushDestinationByName]last page is: ${popInfo.info.name}, result: ${JSON.stringify(popInfo.result)}`;
             }).catch((error: BusinessError) => {
               console.error(`[pushDestinationByName]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
@@ -3031,9 +3090,8 @@ export struct PageTwo {
   }
 }
 ```
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -3059,41 +3117,115 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 This example demonstrates how to set the background color and background blur effect for the title bar of the home page in **Navigation**, as well as for the toolbar and the title bars on the **NavDestination** pages.
 
 ```ts
-const COLOR1: string = "#80004AAF";
-const COLOR2: string = "#802787D9";
-const BLUR_STYLE_1: BlurStyle = BlurStyle.BACKGROUND_THIN;
-const BLUR_STYLE_2: BlurStyle = BlurStyle.BACKGROUND_THICK;
-const BLUR_STYLE_OPTION_1: BackgroundBlurStyleOptions = {
-  colorMode: ThemeColorMode.DARK,
-  adaptiveColor: AdaptiveColor.DEFAULT,
-  blurOptions: { grayscale: [20, 20] },
-  scale: 1
-};
-const BLUR_STYLE_OPTION_2: BackgroundBlurStyleOptions = {
-  colorMode: ThemeColorMode.LIGHT,
-  adaptiveColor: AdaptiveColor.AVERAGE,
-  blurOptions: { grayscale: [20, 20] },
-  scale: 1
-};
-const EFFECT_OPTION_1: BackgroundEffectOptions = {
-  radius: 20,
-  saturation: 10,
-  brightness: 0,
-  color: '#66FFFFFF',
-  adaptiveColor: AdaptiveColor.DEFAULT,
-  blurOptions: { grayscale: [0, 0] },
-};
-const EFFECT_OPTION_2: BackgroundEffectOptions = {
-  radius: 60,
-  saturation: 40,
-  brightness: 1,
-  color: '#661A1A1A',
-  adaptiveColor: AdaptiveColor.AVERAGE,
-  blurOptions: { grayscale: [20, 20] },
-};
+// Index
+import {
+  COLOR1,
+  COLOR2,
+  BLUR_STYLE_1,
+  BLUR_STYLE_2,
+  BLUR_STYLE_OPTION_1,
+  BLUR_STYLE_OPTION_2,
+} from './Utils';
+
+@Entry
+@Component
+struct Index {
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
+  @State useColor1: boolean = true;
+  @State useBlur1: boolean = true;
+  @State useBlurOption1: boolean = true;
+
+  build() {
+    Navigation(this.navPathStack) {
+      Stack({ alignContent: Alignment.Center }) {
+        BackComponent()
+          .width('100%')
+          .height('100%')
+        Column() {
+          Stack({ alignContent: Alignment.Center }) {
+            Button("switch color")
+              .onClick(() => {
+                this.useColor1 = !this.useColor1;
+              })
+          }
+          .width('100%')
+          .layoutWeight(1)
+
+          Stack({ alignContent: Alignment.Center }) {
+            Button("switch blur")
+              .onClick(() => {
+                this.useBlur1 = !this.useBlur1;
+              })
+          }
+          .width('100%')
+          .layoutWeight(1)
+
+          Stack({ alignContent: Alignment.Center }) {
+            Button("switch blurOption")
+              .onClick(() => {
+                this.useBlurOption1 = !this.useBlurOption1;
+              })
+          }
+          .width('100%')
+          .layoutWeight(1)
+
+          Stack({ alignContent: Alignment.Center }) {
+            Button("push page")
+              .onClick(() => {
+                this.navPathStack.pushPathByName('NavigationMenu', null);
+              })
+          }
+          .width('100%')
+          .layoutWeight(1)
+        }
+        .width('100%')
+        .height('80%')
+      }.width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    // You can set the background color and background blur style of the title bar.
+    .title("NavTitle", {
+      backgroundColor: this.useColor1 ? COLOR1 : COLOR2,
+      backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
+      barStyle: BarStyle.STACK,
+      backgroundBlurStyleOptions: this.useBlurOption1 ? BLUR_STYLE_OPTION_1 : BLUR_STYLE_OPTION_2,
+    })
+    // You can set the background color and background blur style for the menu
+    .menus([
+      { value: "A" },
+      { value: "B" },
+      { value: "C" },
+      { value: "D" },
+    ], {
+      moreButtonOptions: {
+        backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
+        backgroundBlurStyleOptions: this.useBlurOption1 ? BLUR_STYLE_OPTION_1 : BLUR_STYLE_OPTION_2,
+      }
+    })
+    // You can set the background color and background blur style of the toolbar.
+    .toolbarConfiguration([
+      { value: "A" },
+      { value: "B" },
+      { value: "C" },
+      { value: "D" },
+      { value: "E" },
+      { value: "F" }
+    ], {
+      backgroundColor: this.useColor1 ? COLOR1 : COLOR2,
+      backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
+      // You can set the background color and background blur style for the menu in the toolbar.
+      moreButtonOptions: {
+        backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
+        backgroundBlurStyleOptions: this.useBlurOption1 ? BLUR_STYLE_OPTION_1 : BLUR_STYLE_OPTION_2,
+      }
+    })
+  }
+}
 
 @Component
-struct BackComponent {
+export struct BackComponent {
   build() {
     Row() {
       Column() {
@@ -3117,6 +3249,23 @@ struct BackComponent {
     .height('100%')
     .width('100%')
   }
+}
+```
+```ts
+// PageOne.ets
+import {
+  COLOR1,
+  COLOR2,
+  BLUR_STYLE_1,
+  BLUR_STYLE_2,
+  EFFECT_OPTION_1,
+  EFFECT_OPTION_2
+} from './Utils';
+import { BackComponent } from './Index';
+
+@Builder
+export function PageBuilder(name: string, param?: Object) {
+  ColorAndBlur();
 }
 
 @Component
@@ -3201,112 +3350,62 @@ struct ColorAndBlur {
     })
   }
 }
+```
 
-@Entry
-@Component
-struct Index {
-  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
-  @State useColor1: boolean = true;
-  @State useBlur1: boolean = true;
-  @State useBlurOption1: boolean = true;
+```ts
+// Utils.ets
+export const COLOR1: string = "#80004AAF";
+export const COLOR2: string = "#802787D9";
+export const BLUR_STYLE_1: BlurStyle = BlurStyle.BACKGROUND_THIN;
+export const BLUR_STYLE_2: BlurStyle = BlurStyle.BACKGROUND_THICK;
+export const BLUR_STYLE_OPTION_1: BackgroundBlurStyleOptions = {
+  colorMode: ThemeColorMode.DARK,
+  adaptiveColor: AdaptiveColor.DEFAULT,
+  blurOptions: { grayscale: [20, 20] },
+  scale: 1
+};
+export const BLUR_STYLE_OPTION_2: BackgroundBlurStyleOptions = {
+  colorMode: ThemeColorMode.LIGHT,
+  adaptiveColor: AdaptiveColor.AVERAGE,
+  blurOptions: { grayscale: [20, 20] },
+  scale: 1
+};
+export const EFFECT_OPTION_1: BackgroundEffectOptions = {
+  radius: 20,
+  saturation: 10,
+  brightness: 0,
+  color: '#66FFFFFF',
+  adaptiveColor: AdaptiveColor.DEFAULT,
+  blurOptions: { grayscale: [0, 0] },
+};
+export const EFFECT_OPTION_2: BackgroundEffectOptions = {
+  radius: 60,
+  saturation: 40,
+  brightness: 1,
+  color: '#661A1A1A',
+  adaptiveColor: AdaptiveColor.AVERAGE,
+  blurOptions: { grayscale: [20, 20] },
+};
 
-  @Builder
-  PageBuilder(name: string, param?: Object) {
-    if (name === 'NavigationMenu') {
-      ColorAndBlur();
-    }
-  }
+```
 
-  build() {
-    Navigation(this.navPathStack) {
-      Stack({ alignContent: Alignment.Center }) {
-        BackComponent()
-          .width('100%')
-          .height('100%')
-        Column() {
-          Stack({ alignContent: Alignment.Center }) {
-            Button("switch color")
-              .onClick(() => {
-                this.useColor1 = !this.useColor1;
-              })
-          }
-          .width('100%')
-          .layoutWeight(1)
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 
-          Stack({ alignContent: Alignment.Center }) {
-            Button("switch blur")
-              .onClick(() => {
-                this.useBlur1 = !this.useBlur1;
-              })
-          }
-          .width('100%')
-          .layoutWeight(1)
-
-          Stack({ alignContent: Alignment.Center }) {
-            Button("switch blurOption")
-              .onClick(() => {
-                this.useBlurOption1 = !this.useBlurOption1;
-              })
-          }
-          .width('100%')
-          .layoutWeight(1)
-
-          Stack({ alignContent: Alignment.Center }) {
-            Button("push page")
-              .onClick(() => {
-                this.navPathStack.pushPathByName('NavigationMenu', null);
-              })
-          }
-          .width('100%')
-          .layoutWeight(1)
-        }
-        .width('100%')
-        .height('80%')
-      }.width('100%')
-      .height('100%')
-    }
-    .width('100%')
-    .height('100%')
-    .navDestination(this.PageBuilder)
-    // You can set the background color and background blur style of the title bar.
-    .title("NavTitle", {
-      backgroundColor: this.useColor1 ? COLOR1 : COLOR2,
-      backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
-      barStyle: BarStyle.STACK,
-      backgroundBlurStyleOptions: this.useBlurOption1 ? BLUR_STYLE_OPTION_1 : BLUR_STYLE_OPTION_2,
-    })
-    // You can set the background color and background blur style for the menu
-    .menus([
-      { value: "A" },
-      { value: "B" },
-      { value: "C" },
-      { value: "D" },
-    ], {
-      moreButtonOptions: {
-        backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
-        backgroundBlurStyleOptions: this.useBlurOption1 ? BLUR_STYLE_OPTION_1 : BLUR_STYLE_OPTION_2,
+```json
+{
+  "routerMap": [
+    {
+      "name": "NavigationMenu",
+      "pageSourceFile": "src/main/ets/pages/PageOne.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "this is pageOne"
       }
-    })
-    // You can set the background color and background blur style of the toolbar.
-    .toolbarConfiguration([
-      { value: "A" },
-      { value: "B" },
-      { value: "C" },
-      { value: "D" },
-      { value: "E" },
-      { value: "F" }
-    ], {
-      backgroundColor: this.useColor1 ? COLOR1 : COLOR2,
-      backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
-      // You can set the background color and background blur style for the menu in the toolbar.
-      moreButtonOptions: {
-        backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
-        backgroundBlurStyleOptions: this.useBlurOption1 ? BLUR_STYLE_OPTION_1 : BLUR_STYLE_OPTION_2,
-      }
-    })
-  }
+    }
+  ]
 }
 ```
+
 ![navigationColorBlur.gif](figures/navigationColorBlur.gif)
 
 ### Example 6: Obtaining the Outer Stack for a Nested Navigation Component
@@ -3359,9 +3458,8 @@ export function PageOneBuilder(name: string) {
   .title(name)
 }
 ```
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -3470,9 +3568,8 @@ struct NavigationExample2 {
   }
 }
 ```
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -3589,9 +3686,8 @@ struct NavigationExample3 {
   }
 }
 ```
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -3626,6 +3722,7 @@ struct NavigationExample {
         Column() {
           Scroll(this.scrollerForScroll) {
             Column() {
+              // $r('app.media.image_1') Replace it with the resource file required by the developer.
               Image($r('app.media.image_1'))// Set the height to be the same as that of the title bar to observe the STACK effect.
                 .height(138)
                 .width('100%')
@@ -3652,7 +3749,7 @@ struct NavigationExample {
                     .backgroundColor(Color.Orange)
                     .margin({ top: 12 })
                 }
-              }, (item: string) => item)
+              }, (item: number) => item.toString())
             }
           }
         }
@@ -3684,50 +3781,8 @@ struct NavigationExample {
 This example demonstrates how to define a derived class of **NavPathStack** and the basic usage of the derived class in **Navigation**.
 
 ```ts
-class DerivedNavPathStack extends NavPathStack {
-  // usr defined property 'id'
-  id: string = "__default__";
-
-  // new function in derived class
-  setId(id: string) {
-    this.id = id;
-  }
-
-  // new function in derived class
-  getInfo(): string {
-    return "this page used Derived NavPathStack, id: " + this.id;
-  }
-
-  // overwrite function of NavPathStack
-  pushPath(info: NavPathInfo, animated?: boolean): void
-  pushPath(info: NavPathInfo, options?: NavigationOptions): void
-  pushPath(info: NavPathInfo, secArg?: boolean | NavigationOptions): void {
-    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
-    if (typeof secArg === 'boolean') {
-      super.pushPath(info, secArg);
-    } else {
-      super.pushPath(info, secArg);
-    }
-  }
-
-  // overwrite and overload function of NavPathStack
-  pop(animated?: boolean | undefined): NavPathInfo | undefined
-  pop(result: Object, animated?: boolean | undefined): NavPathInfo | undefined
-  pop(result?: Object, animated?: boolean | undefined): NavPathInfo | undefined {
-    console.info('[derive-test] reached DerivedNavPathStack\'s pop');
-    return super.pop(result, animated);
-  }
-
-  // other function of base class...
-}
-
-class NewParam {
-  info: string = "__default_param__";
-
-  constructor(info: string) {
-    this.info = info;
-  }
-}
+// Index.ets
+import { DerivedNavPathStack, NewParam } from './Utils';
 
 @Entry
 @Component
@@ -3737,12 +3792,7 @@ struct Index {
   aboutToAppear(): void {
     this.derivedStack.setId('origin stack');
   }
-
-  @Builder
-  pageMap(name: string) {
-    PageOne();
-  }
-
+  
   build() {
     Navigation(this.derivedStack) {
       Button('to Page One').margin(20).onClick(() => {
@@ -3751,9 +3801,18 @@ struct Index {
           param: new NewParam('push pageOne in homePage when stack size: ' + this.derivedStack.size())
         });
       })
-    }.navDestination(this.pageMap)
+    }
     .title('Home Page')
   }
+}
+```
+```ts
+// PageOne.ets
+import { DerivedNavPathStack, NewParam } from './Utils';
+
+@Builder
+export function pageMap(name: string) {
+  PageOne();
 }
 
 @Component
@@ -3789,7 +3848,7 @@ struct PageOne {
     }.title('Page One')
     .onReady((context: NavDestinationContext) => {
       console.info('[derive-test] reached PageOne\'s onReady');
-      // get derived stack from navdestinationContext
+      // Obtain the derived stack from navdestinationContext.
       this.derivedStack = context.pathStack as DerivedNavPathStack;
       console.info('[derive-test] -- got derivedStack: ' + this.derivedStack.id);
       this.curStringifyParam = JSON.stringify(context.pathInfo.param);
@@ -3798,6 +3857,72 @@ struct PageOne {
   }
 }
 ```
+
+```ts
+// Utils.ets
+export class DerivedNavPathStack extends NavPathStack {
+  // User-defined attribute 'id'
+  id: string = "__default__";
+
+  // New functions in the derived class
+  setId(id: string) {
+    this.id = id;
+  }
+
+  //New functions in the derived class
+  getInfo(): string {
+    return "this page used Derived NavPathStack, id: " + this.id;
+  }
+
+  //Overload the functions of NavPathStack
+  pushPath(info: NavPathInfo, animated?: boolean): void
+  pushPath(info: NavPathInfo, options?: NavigationOptions): void
+  pushPath(info: NavPathInfo, secArg?: boolean | NavigationOptions): void {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
+    if (typeof secArg === 'boolean') {
+      super.pushPath(info, secArg);
+    } else {
+      super.pushPath(info, secArg);
+    }
+  }
+
+  //Rewrite and overload the functions of NavPathStack
+  pop(animated?: boolean | undefined): NavPathInfo | undefined
+  pop(result: Object, animated?: boolean | undefined): NavPathInfo | undefined
+  pop(result?: Object, animated?: boolean | undefined): NavPathInfo | undefined {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pop');
+    return super.pop(result, animated);
+  }
+
+  //Other functions of the base class...
+}
+
+export class NewParam {
+  info: string = "__default_param__";
+
+  constructor(info: string) {
+    this.info = info;
+  }
+}
+```
+
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
+
+```json
+{
+  "routerMap": [
+    {
+      "name": "pageOne",
+      "pageSourceFile": "src/main/ets/pages/PageOne.ets",
+      "buildFunction": "pageMap",
+      "data": {
+        "description": "this is pageOne"
+      }
+    }
+  ]
+}
+```
+
 ![derive_stack.gif](figures/derive_stack.gif)
 
 ### Example 11: Using Symbol Icons
@@ -3805,6 +3930,7 @@ struct PageOne {
 This example shows how to use symbol icons in **Navigation** and **NavDestination**.
 
 ```ts
+// Index.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
 @Entry
@@ -3813,10 +3939,12 @@ struct NavigationExample {
   @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   @State menuItems: Array<NavigationMenuItem> = [
     {
+      // Replace 'resources/base/media/ic_public_ok.svg' with the image resource file you use.
       value: 'menuItem1',
       icon: 'resources/base/media/ic_public_ok.svg' // Icon resource path.
     },
     {
+      // Replace 'resources/base/media/ic_public_ok.svg' with the image resource file you use.
       value: 'menuItem2',
       icon: 'resources/base/media/ic_public_ok.svg', // Icon resource path.
       symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus')).fontColor([Color.Red, Color.Green])
@@ -3829,6 +3957,7 @@ struct NavigationExample {
   ];
   @State toolItems: Array<ToolbarItem> = [
     {
+      // Replace 'resources/base/media/ic_public_ok.svg' with the image resource file you use.
       value: 'toolItem1',
       icon: 'resources/base/media/ic_public_ok.svg', // Icon resource path.
       symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
@@ -3839,6 +3968,7 @@ struct NavigationExample {
       }
     },
     {
+      // Replace 'resources/base/media/ic_public_more.svg' with the image resource file you use.
       value: 'toolItem2',
       symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star')),
       status: ToolbarItemStatus.ACTIVE,
@@ -3856,13 +3986,6 @@ struct NavigationExample {
     }
   ];
 
-  @Builder
-  myRouter(name: string, param?: Object) {
-    if (name === 'NavigationMenu') {
-      NavigationMenu();
-    }
-  }
-
   build() {
     Navigation(this.navPathStack) {
       Column() {
@@ -3876,8 +3999,16 @@ struct NavigationExample {
     .menus(this.menuItems)
     .toolbarConfiguration(this.toolItems)
     .title('Level-1 page')
-    .navDestination(this.myRouter)
   }
+}
+```
+```ts
+// PageOne.ets
+import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Builder
+export function myRouter(name: string, param?: Object) {
+  NavigationMenu();
 }
 
 @Component
@@ -3885,6 +4016,7 @@ export struct NavigationMenu {
   @Consume('navPathStack') navPathStack: NavPathStack;
   @State menuItems: Array<NavigationMenuItem> = [
     {
+      // Replace 'resources/base/media/ic_public_ok.svg' with the image resource file you use.
       value: 'menuItem1',
       icon: 'resources/base/media/ic_public_ok.svg', // Icon resource path.
       action: () => {
@@ -3917,11 +4049,30 @@ export struct NavigationMenu {
     .hideTitleBar(false)
     .title('NavDestination title')
     .backgroundColor($r('sys.color.ohos_id_color_titlebar_sub_bg'))
-    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Blue]))
+    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
+      .fontColor([Color.Blue]))
     .menus(this.menuItems)
   }
 }
 ```
+
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
+
+```json
+{
+  "routerMap": [
+    {
+      "name": "NavigationMenu",
+      "pageSourceFile": "src/main/ets/pages/PageOne.ets",
+      "buildFunction": "myRouter",
+      "data": {
+        "description": "this is pageOne"
+      }
+    }
+  ]
+}
+```
+
 ![navigation_symbol.gif](figures/navigation_symbol.gif)
 
 ### Example 12: Setting the Custom Title Bar Margin
@@ -3929,53 +4080,9 @@ export struct NavigationMenu {
 This example demonstrates how to set custom title bar padding in **Navigation** and **NavDestination**, and how to modify the main title and subtitle text styles through **TextModifier**.
 
 ```ts
+// Index.ets
 import { LengthMetrics } from '@kit.ArkUI';
-import { TextModifier } from '@ohos.arkui.modifier';
-
-class MainTitleTextModifier extends TextModifier {
-  useStyle1: boolean = true;
-
-  applyNormalAttribute(instance: TextModifier): void {
-    if (this.useStyle1) {
-      console.info(`testTag mainTitle use style1`);
-      instance.fontColor('#FFFFC000');
-      instance.fontSize(35);
-      instance.fontWeight(FontWeight.Bolder);
-      instance.fontStyle(FontStyle.Normal);
-      instance.textShadow({ radius: 5, offsetX: 9 });
-    } else {
-      console.info(`testTag mainTitle use style2`);
-      instance.fontColor('#FF23A98D');
-      instance.fontSize(20);
-      instance.heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST);
-      instance.fontWeight(FontWeight.Lighter);
-      instance.fontStyle(FontStyle.Italic);
-      instance.textShadow({ radius: 3, offsetX: 3 });
-    }
-  }
-}
-
-class SubTitleTextModifier extends TextModifier {
-  useStyle1: boolean = true;
-
-  applyNormalAttribute(instance: TextModifier): void {
-    if (this.useStyle1) {
-      console.info(`testTag subTitle use style1`);
-      instance.fontColor('#FFFFC000');
-      instance.fontSize(15);
-      instance.fontWeight(FontWeight.Bolder);
-      instance.fontStyle(FontStyle.Normal);
-      instance.textShadow({ radius: 5, offsetX: 9 });
-    } else {
-      console.info(`testTag subTitle use style2`);
-      instance.fontColor('#FF23A98D');
-      instance.fontSize(10);
-      instance.fontWeight(FontWeight.Lighter);
-      instance.fontStyle(FontStyle.Italic);
-      instance.textShadow({ radius: 3, offsetX: 3 });
-    }
-  }
-}
+import { MainTitleTextModifier, SubTitleTextModifier } from './Utils';
 
 @Entry
 @Component
@@ -3991,13 +4098,6 @@ struct NavigationExample {
   @State subTitleModifier: SubTitleTextModifier = new SubTitleTextModifier();
   @State applyModifier: boolean = false;
   @State useStyle1: boolean = true;
-
-  @Builder
-  myRouter(name: string, param?: Object) {
-    if (name === 'NavDestinationExample') {
-      NavDestinationExample();
-    }
-  }
 
   build() {
     Navigation(this.navPathStack) {
@@ -4061,14 +4161,23 @@ struct NavigationExample {
         paddingStart: this.paddingStart,
         paddingEnd: this.paddingEnd
       })
-    .navDestination(this.myRouter)
   }
 }
+```
+```ts
+// PageOne.ets
+import { LengthMetrics } from '@kit.ArkUI';
+import { MainTitleTextModifier, SubTitleTextModifier } from './Utils';
 
+@Builder
+export function myRouter(name: string, param?: Object) {
+  NavDestinationExample();
+}
 @Component
 export struct NavDestinationExample {
   @State menuItems: Array<NavigationMenuItem> = [
     {
+      // Replace 'resources/base/media/ic_public_ok.svg' with the image resource file you use.
       value: 'menuItem1',
       icon: 'resources/base/media/ic_public_ok.svg', // Icon resource path.
       action: () => {
@@ -4144,6 +4253,75 @@ export struct NavDestinationExample {
   }
 }
 ```
+```ts
+// Utils.ets
+import { TextModifier } from '@kit.ArkUI';
+
+export class MainTitleTextModifier extends TextModifier {
+  useStyle1: boolean = true;
+
+  applyNormalAttribute(instance: TextModifier): void {
+    if (this.useStyle1) {
+      console.info(`testTag mainTitle use style1`);
+      instance.fontColor('#FFFFC000');
+      instance.fontSize(35);
+      instance.fontWeight(FontWeight.Bolder);
+      instance.fontStyle(FontStyle.Normal);
+      instance.textShadow({ radius: 5, offsetX: 9 });
+    } else {
+      console.info(`testTag mainTitle use style2`);
+      instance.fontColor('#FF23A98D');
+      instance.fontSize(20);
+      instance.heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST);
+      instance.fontWeight(FontWeight.Lighter);
+      instance.fontStyle(FontStyle.Italic);
+      instance.textShadow({ radius: 3, offsetX: 3 });
+    }
+  }
+}
+
+export class SubTitleTextModifier extends TextModifier {
+  useStyle1: boolean = true;
+
+  applyNormalAttribute(instance: TextModifier): void {
+    if (this.useStyle1) {
+      console.info(`testTag subTitle use style1`);
+      instance.fontColor('#FFFFC000');
+      instance.fontSize(15);
+      instance.fontWeight(FontWeight.Bolder);
+      instance.fontStyle(FontStyle.Normal);
+      instance.textShadow({ radius: 5, offsetX: 9 });
+    } else {
+      console.info(`testTag subTitle use style2`);
+      instance.fontColor('#FF23A98D');
+      instance.fontSize(10);
+      instance.fontWeight(FontWeight.Lighter);
+      instance.fontStyle(FontStyle.Italic);
+      instance.textShadow({ radius: 3, offsetX: 3 });
+    }
+  }
+}
+```
+
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
+
+```json
+{
+  "routerMap": [
+    {
+      "name": "NavDestinationExample",
+      "pageSourceFile": "src/main/ets/pages/PageOne.ets",
+      "buildFunction": "myRouter",
+      "data": {
+        "description": "this is pageOne"
+      }
+    }
+  ]
+}
+```
+
+![navigation_symbol.gif](figures/navigation_symbol.gif)
+
 ![titlebarPaddingAndModifier.gif](figures/titlebarPaddingAndModifier.gif)
 
 ### Example 13: Implementing a Custom Transition Animation
@@ -4369,9 +4547,8 @@ export class CustomTransition {
   }
 }
 ```
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -4436,13 +4613,16 @@ struct NavigationExample {
   @Builder
   NavigationMenus() {
     Row() {
+      // Replace 'resources/base/media/ic_public_add.svg' with the resource file required by the developer.
       Image('resources/base/media/ic_public_add.svg')
         .width(24)
         .height(24)
+      // Replace 'resources/base/media/ic_public_add.svg' with the resource file required by the developer.
       Image('resources/base/media/ic_public_add.svg')
         .width(24)
         .height(24)
         .margin({ left: 24 })
+      // Replace 'common/ic_public_more.svg' with the image resource file you use.
       Image('common/ic_public_more.svg')
         .width(24)
         .height(24)
@@ -4482,14 +4662,17 @@ struct NavigationExample {
       .titleMode(NavigationTitleMode.Full)
       .toolbarConfiguration([
         {
+          // Replace $r("app.string.navigation_toolbar_add") and $r("app.media.startIcon") with the image resource file you use.
           value: $r("app.string.navigation_toolbar_add"),
           icon: $r("app.media.startIcon")
         },
         {
+          // Replace $r("app.string.navigation_toolbar_app") and $r("app.media.startIcon") with the image resource file you use.
           value: $r("app.string.navigation_toolbar_app"),
           icon: $r("app.media.startIcon")
         },
         {
+          // Replace $r("app.string.navigation_toolbar_collect") and $r("app.media.startIcon") with the image resource file you use.
           value: $r("app.string.navigation_toolbar_collect"),
           icon: $r("app.media.startIcon")
         }
@@ -4512,7 +4695,7 @@ struct NavigationExample {
 
 This example demonstrates how to enable and disable the toolbar adaptation capability of **Navigation**.
 
-Configure **{"orientation": "landscape"}** in the project configuration file [module.json5](../../../quick-start/module-configuration-file.md).
+Configure "orientation": "landscape" in the abilities field in the project configuration file [module.json5](../../../quick-start/module-configuration-file.md).
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
@@ -4523,7 +4706,6 @@ struct NavigationExample {
   @State enable: boolean = false
   @State menuItems:Array<NavigationMenuItem> = [
     {
-      value:'menuItem1',
       symbolIcon: new SymbolGlyphModifier($r('sys.symbol.card_writer')),
     },
     {
@@ -4574,7 +4756,7 @@ struct NavigationExample {
 }
 ```
 
-
+![en-us_image_navigation_toolbar_adaptation_landscape](figures/en-us_image_navigation_toolbar_adaptation_landscape.gif)
 
 ### Example 16: Using NavDestination as a Navigation Bar in Navigation
 
@@ -4633,9 +4815,8 @@ struct Index {
   }
 }
 ```
-Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, and add the **router_map.json** file to the **src/main/resources/base/profile** directory. The following is an example of **router_map.json**:
 ```json
-// src/main/resources/base/profile/router_map.json
 {
   "routerMap": [
     {
@@ -4659,3 +4840,268 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 ```
 
 ![en-us_image_navigation_home_NavDestination](figures/en-us_image_navigation_home_NavDestination.gif)
+
+### Example 17 (Using the New Navigation Controller Method)
+
+This example demonstrates how to use the route interception function and obtain the mode in [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11).
+
+```ts
+// Index.ets
+@Entry
+@Component
+struct NavigationExample {
+  pageInfos: NavPathStack = new NavPathStack();
+  isUseInterception: boolean = false;
+
+  registerInterception() {
+    this.pageInfos.setInterception({
+      //Intercept before page creation. The operation stack is allowed and takes effect in the current redirection.
+      interception: (from: NavPathInfo | "navBar", to: NavPathInfo | NavBar, navStack: NavPathStack,
+        operation: NavigationOperation, animated: boolean) => {
+        if (!this.isUseInterception) {
+          return;
+        }
+        if (typeof to === "string") {
+          return;
+        }
+        // Redirect the target page from pageTwo to pageOne.
+        let target: NavPathInfo = to as NavPathInfo;
+        let navStacktarget: NavPathStack = navStack as NavPathStack;
+        if (target.name === 'pageTwo') {
+          navStacktarget.pop();
+          navStacktarget.pushPathByName('pageOne', null);
+        }
+      },
+      // Callback invoked after the page is navigated. Stack operations in this callback are effective in the next navigation.
+      didShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
+        operation: NavigationOperation, isAnimated: boolean) => {
+        if (!this.isUseInterception) {
+          return;
+        }
+        if (typeof from === "string") {
+          console.info("current transition is from navigation home");
+        } else {
+          console.info(`current transition is from  ${(from as NavDestinationContext).pathInfo.name}`);
+          console.info(`current transition mode is to ${(to as NavDestinationContext).mode?.toString()}`);
+        }
+        if (typeof to === "string") {
+          console.info("current transition to is navBar");
+        } else {
+          console.info(`current transition is to ${(to as NavDestinationContext).pathInfo.name}`);
+          console.info(`current transition mode is to ${(to as NavDestinationContext).mode?.toString()}`);
+        }
+      },
+      // Callback invoked when the display mode of the Navigation component switches between single-column and dual-column.
+      modeChange: (mode: NavigationMode) => {
+        if (!this.isUseInterception) {
+          return;
+        }
+        console.info(`current navigation mode is ${mode}`);
+      }
+    })
+  }
+
+  build() {
+    Navigation(this.pageInfos) {
+      Column() {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.pushPath({ name: 'pageOne' }); // Push the navigation destination page specified by name to the navigation stack.
+          })
+        Button('use interception', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.isUseInterception = !this.isUseInterception;
+            if (this.isUseInterception) {
+              this.registerInterception();
+            } else {
+              this.pageInfos.setInterception(undefined);
+            }
+          })
+      }
+    }.title('NavIndex')
+  }
+}
+```
+```ts
+// PageOne.ets
+class TmpClass {
+  count: number = 10;
+}
+
+@Builder
+export function PageOneBuilder(name: string, param: Object) {
+  PageOne()
+}
+
+@Component
+export struct PageOne {
+  pageInfos: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('pushPathByName', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            let tmp = new TmpClass();
+            this.pageInfos.pushPathByName('pageTwo', tmp); // Push the navigation destination page specified by name, with the data specified by param, to the routing stack.
+          })
+        Button('singletonLaunchMode', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.pushPath({ name: 'pageOne' },
+              { launchMode: LaunchMode.MOVE_TO_TOP_SINGLETON }); // Search from the bottom to the top of the stack. If the page with the specified name exists, move that page to the top of the stack.
+          })
+        Button('popToname', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.popToName('pageTwo'); // Pop the first navigation destination page that matches the value of name to the top of the routing stack.
+            console.info('popToName' + JSON.stringify(this.pageInfos),
+              'Return value' + JSON.stringify(this.pageInfos.popToName('pageTwo')));
+          })
+        Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.popToIndex(1); // Return the routing stack to the navigation destination page that matches the value of index.
+            console.info('popToIndex' + JSON.stringify(this.pageInfos));
+          })
+        Button('moveToTop', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.moveToTop('pageTwo'); // Move to the top of the routing stack the first navigation destination page that matches the value of name.
+            console.info('moveToTop' + JSON.stringify(this.pageInfos),
+              'Return value' + JSON.stringify(this.pageInfos.moveToTop('pageTwo')));
+          })
+        Button('moveIndexToTop', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.moveIndexToTop(1); // Move to the top of the routing stack the navigation destination page that matches the value of index.
+            console.info('moveIndexToTop' + JSON.stringify(this.pageInfos));
+          })
+        Button('clear', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.clear(); // Clear the routing stack.
+          })
+        Button('get', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            console.info('-------------------');
+            console.info('Obtain names of all NavDestination pages in the stack', JSON.stringify(this.pageInfos.getAllPathName()));
+            console.info('Obtain parameter information of the NavDestination page at the specified index',
+              JSON.stringify(this.pageInfos.getParamByIndex(1)));
+            console.info('Obtain the parameter information of all NavDestination pages with the specified name',
+              JSON.stringify(this.pageInfos.getParamByName('pageTwo')));
+            console.info('Obtain the position indexes of all NavDestination pages with the specified name',
+              JSON.stringify(this.pageInfos.getIndexByName('pageOne')));
+            console.info('Obtain the stack size', JSON.stringify(this.pageInfos.size()));
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // Pop the top element out of the routing stack.
+      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      return true;
+    }).onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+    })
+  }
+}
+```
+```ts
+// PageTwo.ets
+@Builder
+export function PageTwoBuilder(name: string, param: Object) {
+  PageTwo()
+}
+
+@Component
+export struct PageTwo {
+  pathStack: NavPathStack = new NavPathStack();
+  private menuItems: Array<NavigationMenuItem> = [
+    {
+      value: "1",
+      icon: 'resources/base/media/undo.svg',
+    },
+    {
+      value: "2",
+      icon: 'resources/base/media/redo.svg',
+      isEnabled: false,
+    },
+    {
+      value: "3",
+      icon: 'resources/base/media/ic_public_ok.svg',
+      isEnabled: true,
+    }
+  ];
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('pushPathByName', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pathStack.pushPathByName('pageOne', null);
+          })
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .menus(this.menuItems)
+    .onBackPressed(() => {
+      this.pathStack.pop();
+      return true;
+    })
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+      console.info("current page config info is " + JSON.stringify(context.getConfigInRouteMap()));
+    })
+  }
+}
+```
+
+Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
+
+```json
+// src/main/resources/base/profile/router_map.json
+{
+  "routerMap": [
+    {
+      "name": "pageOne",
+      "pageSourceFile": "src/main/ets/pages/PageOne.ets",
+      "buildFunction": "PageOneBuilder",
+      "data": {
+        "description": "this is pageOne"
+      }
+    },
+    {
+      "name": "pageTwo",
+      "pageSourceFile": "src/main/ets/pages/PageTwo.ets",
+      "buildFunction": "PageTwoBuilder"
+    }
+  ]
+}
+```
+![navigation_interception.gif](figures/navigation_interception.gif)

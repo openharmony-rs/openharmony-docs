@@ -1,30 +1,16 @@
 # Content Modifier
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309; @liyujie43-->
+<!--Designer: @liyi0309; @weixin_52725220-->
+<!--Tester: @lxl007; @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 You can apply a content modifier to a component to customize its content area using a style builder.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
-
-## contentModifier
-
-contentModifier(modifier: ContentModifier\<T>): T
-
-Creates a content modifier.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type              | Mandatory| Description                                                        |
-| -------- | ------------------ | ---- | ------------------------------------------------------------ |
-| modifier | ContentModifier\<T> | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
-
-**Return value**
-
-| Type| Description|
-| --- | --- |
-| T | Current component.|
 
 ## ContentModifier\<T>
 
@@ -40,11 +26,11 @@ Builder of the custom content area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Return value**
 
-| Name| Description                                                        |
-| ---- | ------------------------------------------------------------ |
-| T    | Component attribute class, which is used to distinguish different information required by different components after content areas are customized, for example, **ButtonConfiguration** for the **Button** component and **CheckBoxConfiguration** of the **Checkbox** component.|
+| Type                                                        | Description                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [WrappedBuilder\<[T]>](../../../ui/state-management/arkts-wrapBuilder.md) | Component attribute class, which is used to distinguish different information required by different components after content areas are customized, for example, **ButtonConfiguration** for the **Button** component and **CheckBoxConfiguration** of the **Checkbox** component.|
 
 **Value range of the T parameter:**
 
@@ -53,7 +39,7 @@ ButtonConfiguration, CheckBoxConfiguration, DataPanelConfiguration, TextClockCon
 **Supported attributes**
 
 The universal attribute **enabled** and **contentModifier** are supported.
-## CommonConfiguration\<T><sup>12+</sup>
+## CommonConfiguration\<T>
 
 You need a custom class to implement the **ContentModifier** API.
 
@@ -61,10 +47,10 @@ You need a custom class to implement the **ContentModifier** API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Description             |
-| ------ | ------ | ---------------- |
-| enabled | boolean | Whether to enable the content modifier and respond to operations such as **triggerChange**. The value **true** means to enable the content modifier and respond to operations such as **triggerChange**, and **false** means the opposite.|
-| contentModifier | ContentModifier\<T> | Content modifier that sends the component information required by users to the custom content area.|
+| Name| Type   | Read-Only | Optional | Description             |
+| ------ | ------ | ---------------- | ---------------- | ---------------- |
+| enabled | boolean | No| No| Whether to enable the content modifier and respond to operations such as **triggerChange**. The value **true** means to enable the content modifier and respond to operations such as **triggerChange**, and **false** means the opposite.|
+| contentModifier | [ContentModifier\<T>](#contentmodifiert) | No| No| Content modifier that sends the component information required by users to the custom content area.|
 
 
 ## Example

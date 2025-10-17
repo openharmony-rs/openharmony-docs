@@ -1,10 +1,16 @@
 # CanvasPattern
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 **CanvasPattern** represents an object, created by the [createPattern](ts-canvasrenderingcontext2d.md#createpattern) API, describing an image filling pattern based on the image and repetition mode.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Methods
 
@@ -24,7 +30,7 @@ Uses a **Matrix2D** object as a parameter to perform matrix transformation on th
 
 | Name     | Type | Mandatory| Description  |
 | --------- | -------------- | ------ | ---------- |
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md#Matrix2D) | No | Transformation matrix.<br>Default value: **null**|
+| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No | Transformation matrix.<br>The **undefined** and **null** values are treated as invalid.<br>Default value: **null**.|
 
 ## Example
 
@@ -35,11 +41,11 @@ This example demonstrates how to apply matrix transformations to a **CanvasPatte
 @Entry
 @Component
 struct CanvasPatternPage {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
-  private img: ImageBitmap = new ImageBitmap("common/pattern.jpg")
-  private pattern: CanvasPattern | null = null
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
+  private img: ImageBitmap = new ImageBitmap("common/pattern.jpg");
+  private pattern: CanvasPattern | null = null;
 
   build() {
       Column() {

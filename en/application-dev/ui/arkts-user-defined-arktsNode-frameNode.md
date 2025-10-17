@@ -227,7 +227,7 @@ struct Index {
                 // Add, delete, and modify the BuilderNode proxy node to generate an exception.
                 this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.buttonNode?.getFrameNode());
               })
-            Button ("Performing Operations on Proxy Nodes in System Components")
+            Button("Performing Operations on Proxy Nodes in System Components")
               .fontSize(16)
               .width(400)
               .onClick(() => {
@@ -248,7 +248,7 @@ struct Index {
                 buttonNode.build(wrapBuilder<[Params]>(buttonBuilder), { text: "BUTTON" })
                 this.myNodeController.checkAppendChild(this.myNodeController?.frameNode, buttonNode?.getFrameNode());
               })
-            Button ("Add System Component Proxy Node")
+            Button("Add System Component Proxy Node")
               .fontSize(16)
               .width(400)
               .onClick(() => {
@@ -287,7 +287,7 @@ struct Index {
                 this.result =
                   this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
               })
-            Button ("Perform operations on the proxy node in the system component.")
+            Button("Perform operations on the proxy node in the system component.")
               .fontSize(16)
               .width(400)
               .onClick(() => {
