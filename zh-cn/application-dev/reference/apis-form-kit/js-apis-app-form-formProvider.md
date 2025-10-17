@@ -861,7 +861,7 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)：
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -878,6 +878,114 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
     console.info(`formProvider getPublishedRunningFormInfos, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+## formProvider.reloadForms<sup>22+</sup>
+
+reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
+
+对于当前应用程序相同moduleName、abilityName、formName的卡片，多次加桌后会每张卡片会有不同的卡片id。卡片提供方可以通过本接口批量更新不同的卡片id但moduleName、abilityName、formName相同的卡片。在应用主进程通过本接口通知FormExtension进程进行批量更新，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------  |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，做校验使用。     |
+| moduleName | string | 是   | 指定卡片的moduleName。   |
+| abilityName | string | 是 | 指定卡片的abilityName。  |
+| formName | string | 是 | 指定卡片在[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的卡片名称。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  //请开发者替换为实际请求更新的卡片信息
+  let moduleName: string = 'entry';
+  let abilityName: string = 'EntryFormAbility';
+  let formName: string = 'formName';
+  formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
+    console.info(`reloadForms success, reload number: ${reloadNum}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+## formProvider.reloadAllForms<sup>22+</sup>
+
+reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
+
+在应用主进程通过本接口可以通知FormExtension进程批量更新当前应用程序下已经加桌的所有卡片，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------  |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，做校验使用。     |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  formProvider.reloadAllForms(context).then((reloadNum: number) => {
+    console.info(`reloadAllForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
