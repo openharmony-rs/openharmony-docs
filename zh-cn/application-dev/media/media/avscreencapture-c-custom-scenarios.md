@@ -117,6 +117,8 @@ OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 
 ## 设置捕获光标
 
+从API 15开始支持设置捕获光标。
+
 使用[OH_AVScreenCapture_ShowCursor](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_showcursor)设置光标显示开关，开始录屏前后均可调用。
 
 ```c++
