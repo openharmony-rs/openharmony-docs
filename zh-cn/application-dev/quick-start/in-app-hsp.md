@@ -63,17 +63,70 @@ MyApplication
 ### 导出ArkUI组件
 ArkUI组件可以通过`export`导出，例如：
 <!-- @[in_app_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/components/MyTitleBar.ets) -->
+
+``` TypeScript
+// library/src/main/ets/components/MyTitleBar.ets
+@Component
+export struct MyTitleBar {
+  build() {
+    Row() {
+      Text($r('app.string.library_title'))
+        .id('library')
+        .fontFamily('HarmonyHeiTi')
+        .fontWeight(FontWeight.Bold)
+        .fontSize(32)
+        .fontColor($r('app.color.text_color'))
+    }
+    .width('100%')
+  }
+}
+```
+
 在入口文件 `index.ets` 中声明对外暴露的接口。
 <!-- @[in_app_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
+// library/index.ets
+// [EndExclude in_app_hsp_010]
+export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+// [StartExclude in_app_hsp_010]
+```
+
 
 
 ### 导出类和方法
 通过`export`导出类和方法，例如：
 
 <!-- @[in_app_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/test.ets) -->
+
+``` TypeScript
+// library/src/main/ets/utils/test.ets
+export class Log {
+  static info(msg: string): void {
+    console.info(msg);
+  }
+}
+
+export function add(a: number, b: number): number {
+  return a + b;
+}
+
+export function minus(a: number, b: number): number {
+  return a - b;
+}
+```
+
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
 <!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
+// library/index.ets
+// [EndExclude in_app_hsp_010]
+export { Log, add, minus } from './src/main/ets/utils/test';
+// [StartExclude in_app_hsp_010]
+```
+
 ### 导出native方法
 在HSP中也可以包含C++编写的`so`。对于`so`中的`native`方法，HSP通过间接的方式导出，以导出`liblibrary.so`的乘法接口`multi`为例：
 
@@ -433,24 +486,5 @@ export struct Library_Menu {
 在library模块下的配置文件（library/src/main/module.json5）中配置json文件。
 
 <!-- @[in_app_hsp_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    "name": "library",
-    "type": "shared",
-    "description": "$string:shared_desc",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1"
-    ],
-    "deliveryWithInstall": true,
-    "pages": "$profile:main_pages",
-    "routerMap": "$profile:route_map" //新增配置，指向route_map.json文件
-  }
-}
-```
-
 
 页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)。
