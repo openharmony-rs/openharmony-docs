@@ -34,9 +34,53 @@
 
 <!-- @[enterprise_admin_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
 
+``` TypeScript
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+// ···
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+// ···
+
+  // 设备管理器应用激活回调方法，应用可在此回调函数中进行初始化策略设置。
+  onAdminEnabled() {
+    console.info('onAdminEnabled');
+	// ···
+  }
+
+  // 设备管理器应用去激活回调方法，应用可在此回调函数中通知企业管理员设备已脱管。
+  onAdminDisabled() {
+    console.info('onAdminDisabled');
+	// ···
+  }
+
+  // 应用安装回调方法，应用可在此回调函数中进行事件上报，通知企业管理员。
+  onBundleAdded(bundleName: string) {
+    console.info('EnterpriseAdminAbility onBundleAdded bundleName:' + bundleName);
+  }
+
+  // 应用卸载回调方法，应用可在此回调函数中进行事件上报，通知企业管理员。
+  onBundleRemoved(bundleName: string) {
+    console.info('EnterpriseAdminAbility onBundleRemoved bundleName' + bundleName);
+  }
+};
+```
+
+
 最后，在工程Module对应的[module.json5](../quick-start/module-configuration-file.md)配置文件中将EnterpriseAdminAbility注册为ExtensionAbility，type标签需要设置为“enterpriseAdmin”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
 <!-- @[extension_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
+
+``` JSON5
+    "extensionAbilities": [
+      {
+        "name": "EnterpriseAdminAbility",
+        "type": "enterpriseAdmin",
+        "exported": true,
+        "srcEntry": "./ets/enterpriseadminability/EnterpriseAdminAbility.ets"
+      }
+    ],
+```
+
 
 ## 相关实例
 
