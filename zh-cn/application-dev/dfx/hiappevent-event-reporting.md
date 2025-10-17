@@ -142,6 +142,36 @@ struct Index {
 
    <!-- @[Button_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+        Button('writeTest')
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('40%')
+          .height('5%')
+          .onClick(() => {
+            // 在按钮点击函数中进行事件打点，以记录按钮点击事件
+            let eventParams: Record<string, number> = { 'click_time': 100 };
+            let eventInfo: hiAppEvent.AppEventInfo = {
+              // 事件领域定义
+              domain: "button",
+              // 事件名称定义
+              name: "click",
+              // 事件类型定义
+              eventType: hiAppEvent.EventType.BEHAVIOR,
+              // 事件参数定义
+              params: eventParams,
+            };
+            hiAppEvent.write(eventInfo).then(() => {
+              hilog.info(0x0000, 'testTag', `HiAppEvent success to write event`)
+            }).catch((err: BusinessError) => {
+              hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`)
+            });
+          })
+```
+
 5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者(第二步已完成数据处理者添加)。完整示例代码如下：
 
    <!-- @[Button_Remove_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->
