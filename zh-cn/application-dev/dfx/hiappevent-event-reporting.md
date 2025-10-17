@@ -96,6 +96,25 @@ struct Index {
 
    <!-- @[Button_Add_ID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+        Button('userIdTest')
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('40%')
+          .height('5%')
+          .onClick(() => {
+            // 在按钮点击函数中设置用户ID
+            hiAppEvent.setUserId('testUserIdName', '123456');
+
+            // 在按钮点击函数中获取刚设置的用户ID
+            let userId = hiAppEvent.getUserId('testUserIdName');
+            hilog.info(0x0000, 'testTag', `userId: ${userId}`)
+          })
+```
+
 3. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加并查看用户属性。完整示例代码如下：
 
    <!-- @[Button_Add_Property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->
