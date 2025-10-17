@@ -187,6 +187,7 @@
                        auto memory =  writer.write(eventInfo["memory"]);
                       auto externalLog = writer.write(eventInfo["external_log"]);
                       auto logOverLimit = eventInfo["log_over_limit"].asBool();
+                      auto process_life_time = eventInfo["process_life_time"].asString();
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
@@ -205,6 +206,7 @@
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}s", process_life_time.c_str());
                   }
               }
           }
@@ -300,9 +302,10 @@
    HiAppEvent eventInfo.params.event_handler_6s.size=16
    HiAppEvent eventInfo.params.peer_binder.size=0
    HiAppEvent eventInfo.params.threads.size=28
-   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vss":0}
+   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1502049185239_1587.log"]
    HiAppEvent eventInfo.params.log_over_limit=0
+   HiAppEvent eventInfo.params.process_life_time=18
    ```
 
 2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
