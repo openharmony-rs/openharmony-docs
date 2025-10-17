@@ -139,13 +139,15 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 	// ···
       logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
       value= ${JSON.stringify(this.deviceManager)}`);
-    } catch (error) {
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
       logger.error(`[DeviceManager.RemoteDeviceModel] createDeviceManager throw error,
       error=${error} message=${error.message}`);
     }
     logger.info('[DeviceManager.RemoteDeviceModel] distributedDeviceManager.createDeviceManager end');
   }
 ```
+
 
 
 5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
@@ -244,12 +246,14 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
           }
           logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice succeed:' + JSON.stringify(data));
         })
-      } catch (e) {
+      } catch (err) {
+        let e: BusinessError = err as BusinessError;
         logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice failed err: ' + e.toString());
       }
     }
   }
 ```
+
 
 
 ## 设备信息查询开发指导
@@ -290,7 +294,8 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
     try {
       this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
 	// ···
-    } catch (error) {
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
       logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
       promptAction.showToast({
         message: 'getTrustedDeviceList failed'
@@ -298,6 +303,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
     }
   }
 ```
+
 
 
 ## 设备上下线监听开发指导
@@ -344,23 +350,29 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
     }
 
 	// ···
-    this.deviceManager.on('deviceStateChange', (data: dataType) => {
-      if (data == null) {
-        return;
-      }
-      logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange data=' + JSON.stringify(data));
-      switch (data.action) {
-        case distributedDeviceManager.DeviceStateChange.AVAILABLE:
-          logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange ONLINE');
-		// ···
-          break;
-        case distributedDeviceManager.DeviceStateChange.UNAVAILABLE:
-          logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange OFFLINE');
-		// ···
-          break;
-        default:
-          break;
-      }
-    })
+    try {
+      this.deviceManager.on('deviceStateChange', (data: dataType) => {
+        if (data == null) {
+          return;
+        }
+        logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange data=' + JSON.stringify(data));
+        switch (data.action) {
+          case distributedDeviceManager.DeviceStateChange.AVAILABLE:
+            logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange ONLINE');
+			// ···
+            break;
+          case distributedDeviceManager.DeviceStateChange.UNAVAILABLE:
+            logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange OFFLINE');
+			// ···
+            break;
+          default:
+            break;
+        }
+      })
+    } catch(err) {
+      let e: BusinessError = err as BusinessError;
+      logger.error('[DeviceManager.RemoteDeviceModel] deviceStateChange failed err: ' + e.toString());
+    }
   }
 ```
+
