@@ -17,11 +17,43 @@ target_link_libraries(entry PUBLIC libasset_ndk.z.so)
 引用头文件。
 <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
+
+
 ## 新增支持同步的关键资产
 
 新增密码demo_pwd（别名demo_alias），附属信息为demo_label，支持同步的关键资产。
 
 <!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value AddSyncAsset(napi_env env, napi_callback_info info)
+{
+    char *secretStr = "demo_pwd";
+    char *aliasStr = "demo_alias";
+    char *labelStr = "demo_label";
+
+    Asset_Blob secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_SECRET, .value.blob = secret},
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
+        {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
+        {.tag = ASSET_TAG_SYNC_TYPE, .value.u32 = ASSET_SYNC_TYPE_TRUSTED_DEVICE}, // 需指定在可信设备间同步（如新旧设备间克隆）。
+    };
+
+    int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
+    napi_value ret;
+    napi_create_int32(env, addResult, &ret);
+    return ret;
+}
+```
+
 
 ## 接入备份恢复扩展能力
 
@@ -44,6 +76,18 @@ target_link_libraries(entry PUBLIC libasset_ndk.z.so)
 ### 代码示例
 
 <!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value QuerySyncResult(napi_env env, napi_callback_info info)
+{
+    Asset_SyncResult syncResult = {0};
+    int32_t queryResult = OH_Asset_QuerySyncResult(NULL, 0, &syncResult);
+    napi_value ret;
+    napi_create_int32(env, queryResult, &ret);
+    return ret;
+}
+```
+
 
 ## 约束和限制
 
