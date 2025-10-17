@@ -33,6 +33,7 @@ The key management service specifications include mandatory specifications and o
 | <!--DelRow-->ECC/NoDigest | The signature is in the ASN1 format.<br>**TAG HuksKeyDigest.HUKS_DIGEST_NONE** must be specified with **NoDigest**.| 9+ | No|
 | ED25519/NoDigest | **TAG HuksKeyDigest.HUKS_DIGEST_NONE** must be specified with **NoDigest**.| 8+ | Yes|
 | SM2/SM3 | The signature is in the ASN1 format.| 9+ | Yes|
+| SM2/NoDigest | The signature is in the ASN1 format.<br>**TAG HuksKeyDigest.HUKS_DIGEST_NONE** must be specified with **NoDigest**. The service side hashes the plaintext using SM3 and passes in the hashed data. The length of the hashed data must meet the MD algorithm specifications supported by SM2 signing and signature verification.| 22+ | Yes|
 
 **Specifications****<!--RP4--> for mini-system devices<!--RP4End-->**
 
