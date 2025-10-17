@@ -9856,7 +9856,7 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, Clou
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
@@ -9909,13 +9909,13 @@ pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的uri列表，传空或空列表表示已有的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
 
 **返回值：**
 
@@ -9962,13 +9962,13 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的uri列表，传空或空列表表示已有的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
 
 **返回值：**
 
@@ -10015,13 +10015,13 @@ cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**需要权限**：ohos.permission.READ_IMAGEVIDEO ohos.permission.CLOUDFILE_SYNC_MANAGER
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[] \| null | 是   | 需要取消下载的原图和视频的uri列表，传空或空列表表示已有的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要取消下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
 
 **返回值：**
 
