@@ -290,7 +290,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
-例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度相当于sm及更小的设备上显示2列，相当于md设备时显示3列，相当于lg及更大的设备时显示5列，且每列均为1fr。
+例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1921,14 +1921,14 @@ struct WaterFlowDemo {
   }
 }
 ```
-WaterFlow宽度相当于sm及以下时显示2列。
+WaterFlow宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_waterflow](figures/waterFlow_itemFillPolicy_SM.png)
 
-WaterFlow宽度相当于md时显示3列。
+WaterFlow宽度属于md断点区间时显示3列。
 
 ![md_waterflow](figures/waterFlow_itemFillPolicy_MD.png)
 
-WaterFlow宽度相当于lg及以上时显示5列。
+WaterFlow宽度属于lg及更大的断点区间时显示5列。
 
 ![lg_waterflow](figures/waterFlow_itemFillPolicy_LG.png)
