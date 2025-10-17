@@ -49,6 +49,10 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+```
+
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets” 文件，在onCreate函数中添加对崩溃事件、按钮点击事件的订阅。
 
    订阅崩溃事件，采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“EntryAbility.ets”文件，定义OnReceive类型观察者相关方法：
