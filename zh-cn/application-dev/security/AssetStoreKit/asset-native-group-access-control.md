@@ -144,8 +144,72 @@ static napi_value UpdateGroupAsset(napi_env env, napi_callback_info info)
 
 <!-- @[query_group_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+static napi_value QueryGroupAssetPlaintext(napi_env env, napi_callback_info info)
+{
+    const char *aliasStr = "demo_alias";
+    const char *groupIdStr = "demo_group_id";
+    
+    Asset_Blob alias = { (uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr };
+    Asset_Blob group_id = { (uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr };
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了群组关键资产别名，最多查询到一条满足条件的群组关键资产。
+        {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // 此处表示需要返回群组关键资产的所有信息，即属性+明文。
+        {.tag = ASSET_TAG_GROUP_ID, .value.blob = group_id},
+    };
+
+    Asset_ResultSet resultSet = {0};
+    int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+    if (queryResult == ASSET_SUCCESS) {
+        // 解析resultSet。
+        for (uint32_t i = 0; i < resultSet.count; i++) {
+            // 解析secret属性：其中data数据对应是secret->blob.data，长度对应是secret->blob.size。
+            Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_SECRET);
+        }
+    }
+    OH_Asset_FreeResultSet(&resultSet);
+    
+    napi_value ret;
+    napi_create_int32(env, queryResult, &ret);
+    return ret;
+}
+```
+
+
 ## 查询单条群组关键资产属性
 
 查询别名为demo_alias的关键资产属性。
 
 <!-- @[query_group_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value QueryGroupAssetAttribute(napi_env env, napi_callback_info info)
+{
+    const char *aliasStr = "demo_alias";
+    const char *groupIdStr = "demo_group_id";
+    
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob group_id = {(uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr};
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了群组关键资产别名，最多查询到一条满足条件的群组关键资产。
+        {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // 此处表示仅返回群组关键资产属性，不包含群组关键资产明文。
+        {.tag = ASSET_TAG_GROUP_ID, .value.blob = group_id},
+    };
+
+    Asset_ResultSet resultSet = {0};
+    int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+    if (queryResult == ASSET_SUCCESS) {
+        // 解析结果。
+        for (uint32_t i = 0; i < resultSet.count; i++) {
+            // 解析数据标签：其中数据是label->blob.data，长度对应是label->blob.size。
+            Asset_Attr *label = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_DATA_LABEL_NORMAL_1);
+        }
+    }
+    OH_Asset_FreeResultSet(&resultSet);
+    
+    napi_value ret;
+    napi_create_int32(env, queryResult, &ret);
+    return ret;
+}
+```
+
