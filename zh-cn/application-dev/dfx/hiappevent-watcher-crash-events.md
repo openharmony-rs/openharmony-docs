@@ -109,6 +109,8 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
 | exception | object | 异常信息, 详见[exception字段说明](#exception字段说明)。包含故障简要信息，全量故障信息见external_log文件。 |
 | hilog | string[] | 日志信息，最多显示100行hilog日志。更多日志见故障日志文件。 |
+| process_life_time | number | 故障进程存活时间，单位为s。<br>**说明**：从API version 22开始支持。 |
+| memory | object | 内存信息，详见[memory字段说明](#memory字段说明)。<br>**说明**：从API version 22开始支持。 |
 | threads | object[] | 全量线程调用栈，详见[thread字段说明](#thread字段说明)。仅在NativeCrash类型的崩溃事件提供。 |
 | external_log<sup></sup> | string[] | 故障日志文件[应用沙箱路径](../file-management/app-sandbox-directory.md)。开发者可通过路径读取故障日志文件内容。**为避免目录空间超限导致新生成的日志文件写入失败，日志文件处理完后请及时删除，超限规格请参考log_over_limit字段。** |
 | log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
@@ -174,6 +176,15 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | symbol | string | 函数名称。 |
 | line | number | 代码行号。 |
 | column | number | 代码列号。 |
+
+### memory字段说明
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | -------- |
+| rss | number | 进程实际占用内存大小，单位KB。 |
+| sys_free_mem | number | 空闲内存大小，单位KB。 |
+| sys_avail_mem | number | 可用内存大小，单位KB。 |
+| sys_total_mem | number | 总内存大小，单位KB。 |
 
 ## 崩溃事件自定义参数设置
 

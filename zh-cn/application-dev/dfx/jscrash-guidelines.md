@@ -64,6 +64,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | Version Code | 版本编码 | 8 | 是 | - |
 | Pid | 故障进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
+| Process life time | 故障进程存活时间 | 22 | 是 | - |
 | Process Memory(kB) | 进程占用内存 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[检测原理](#检测原理)。 |
 | Page switch history | 页面切换轨迹 | 20 | 否 | 如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段。 |
@@ -85,6 +86,7 @@ Version:1.0.0 <- hap版本
 VersionCode:1000000 <- 版本编码
 Pid:579 <- 故障进程号
 Uid:0 <- 用户ID
+Process life time:1s  <- 进程存活时间
 Process Memory(kB): 1897(Rss) <- 进程占用内存
 Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息
 Page switch history: <- 页面切换轨迹
