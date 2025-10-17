@@ -4391,7 +4391,7 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 窗口Id。取值范围为大于等于0的整数。<br> 仅支持传入当前窗口的光标样式，传入其他窗口id本接口可以运行成功但设置不生效，当前窗口Id可以通过[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。|
-| int32_t pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](capi-oh-pointer-style.md#input_pointerstyle)的枚举值。 |
+| int32_t pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)的枚举值。 |
 
 **返回：**
 
