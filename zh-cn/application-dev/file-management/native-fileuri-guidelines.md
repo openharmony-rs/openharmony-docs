@@ -50,89 +50,20 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 1. 调用OH_FileUri_GetUriFromPath接口，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存。示例代码如下所示：
 
-    ```c
-    #include <cstring>
-
-    void OH_FileUri_GetUriFromPathExample() {
-        char *path = "/data/storage/el2/base/files/test.txt";
-        unsigned int length = strlen(path);
-        char *uriResult = NULL;
-        FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length ,&uriResult); 
-        if (ret == 0 && uriResult !=NULL) {
-            printf("pathUri=%s", uriResult); // 应用a获取到的URI为：file://com.example.demo/data/storage/el2/base/files/test.txt
-        }
-        if (uriResult != NULL) {
-            free(uriResult);
-        }
-    }    
-    ```
+<!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
 
 2. 调用OH_FileUri_GetPathFromUri通过URI转成对应的路径，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存。示例代码如下所示。
 
-    ```c
-    #include <cstring>
-
-    void OH_FileUri_GetPathFromUriExample() {
-        char *uri = "file://com.example.demo/data/storage/el2/base/files/test.txt";
-        unsigned int length = strlen(uri);
-        char *pathResult = NULL;
-        FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
-        if (ret == 0 && pathResult != NULL) {
-            printf("pathResult=%s", pathResult); // PathResult值为：/data/storage/el2/base/files/test.txt
-        }
-        if (pathResult != NULL) {
-            free(pathResult);
-        }
-    }
-    ```
+<!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
 
 3. 调用OH_FileUri_GetFullDirectoryUri获取URI所在路径的URI，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存。示例代码如下所示。
 
-    ```c
-    #include <cstring>
-    
-    void OH_FileUri_GetFullDirectoryUriExample() {
-        char *uri = "file://com.example.demo/data/storage/el2/base/files/test.txt";
-        unsigned int length = strlen(uri);
-        char *uriResult = NULL;
-        FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
-        if (ret == 0 && uriResult != NULL) {
-            printf("pathUri=%s",uriResult);//URI所在路径的URI：file://com.example.demo/data/storage/el2/base/files/
-        }
-        if (uriResult != NULL) {
-            free(uriResult);
-        }
-    }
-    ```
+<!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
 
 4. 可以调用OH_FileUri_IsValidUri接口进行URI格式验证。 示例代码如下所示。
 
-   ```c
-    #include <cstring>
-    
-    void OH_FileUri_IsValidUriExample() {
-        char *uri = "file://com.example.demo/data/storage/el2/base/files/test.txt";
-        unsigned int length = strlen(uri);
-        bool flags = OH_FileUri_IsValidUri(uri, length);
-        printf("The URI is valid? flags=%d", flags);
-    }
-   ```
+<!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
 
 5. 调用OH_FileUri_GetFileName获取URI中的文件名称，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存。示例代码如下所示。
 
-    ```c
-    #include <cstring>
-    
-    void OH_FileUri_GetFileNameExample() {
-        char *uri = "file://com.example.demo/data/storage/el2/base/files/test.txt";
-        unsigned int length = strlen(uri);
-        char *uriResult = NULL;
-        FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
-        if (ret == 0 && uriResult != NULL) {
-            printf("pathUri=%s",uriResult);//获取到URI中的文件名：test.txt
-        }
-        if (uriResult != NULL) {
-            free(uriResult);
-        }
-    }
-    ```
+<!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->

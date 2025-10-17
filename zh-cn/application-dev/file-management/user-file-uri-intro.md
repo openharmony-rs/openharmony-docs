@@ -57,54 +57,7 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过fs
 1. 通过[fileAccess模块](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md)获取文件URI。
 2. 使用获取到的文件URI进行重命名操作。
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { common } from '@kit.AbilityKit';
-import { fileAccess } from '@kit.CoreFileKit';
-// context 是EntryAbility 传过来的context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-
-async function example(context: common.UIAbilityContext) {
-    let fileAccessHelper: fileAccess.FileAccessHelper;
-    // wantInfos 从getFileAccessAbilityInfo()获取
-    let wantInfos: Array<Want> = [
-      {
-        bundleName: "com.ohos.UserFile.ExternalFileManager",
-        abilityName: "FileExtensionAbility",
-      },
-    ]
-    try {
-      fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
-      if (!fileAccessHelper) {
-        console.error("createFileAccessHelper interface returns an undefined object");
-      }
-      // 以内置存储目录为例
-      // 示例代码sourceUri表示Download目录，该URI是对应的fileInfo中URI
-      // 开发者应根据自己实际获取的URI进行开发
-      let sourceUri: string = "file://docs/storage/Users/currentUser/Download";
-      let displayName: string = "file1.txt";
-      let fileUri: string;
-      try {
-        // 创建文件返回该文件的URI
-        fileUri = await fileAccessHelper.createFile(sourceUri, displayName);
-        if (!fileUri) {
-          console.error("createFile return undefined object");
-        }
-        console.info("createFile success, fileUri: " + JSON.stringify(fileUri));
-        // 将刚创建的文件进行重命名，返回新文件的URI
-        let renameUri = await fileAccessHelper.rename(fileUri, "renameFile.txt");
-        console.info("rename success, renameUri: " + JSON.stringify(renameUri));
-      } catch (err) {
-        let error: BusinessError = err as BusinessError;
-        console.error("createFile failed, errCode:" + error.code + ", errMessage:" + error.message);
-      }
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
-    }
-  }
-```
+<!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
 <!--DelEnd-->
 
 ## 媒体文件URI
@@ -177,68 +130,7 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过ph
 
 下面为通过临时授权方式使用媒体文件URI进行获取缩略图和读取文件部分信息的示例代码：
 
-```ts
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { dataSharePredicates } from '@kit.ArkData';
-import { common } from '@kit.AbilityKit';
-
-// 定义一个URI数组，用于接收PhotoViewPicker选择图片返回的URI
-let uris: Array<string> = [];
-// context 是EntryAbility 传过来的context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-
-// 调用PhotoViewPicker.select选择图片
-async function photoPickerGetUri() {
-  try {  
-    let PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-    PhotoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-    PhotoSelectOptions.maxSelectNumber = 1;
-    let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(PhotoSelectOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
-      uris = PhotoSelectResult.photoUris;
-    }).catch((err: BusinessError) => {
-      console.error(`PhotoViewPicker.select failed with err, code is ${err.code}, message is ${err.message}`);
-    });
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`PhotoViewPicker failed with err, code is ${err.code}, message is ${err.message}`);
-  }
-}
-
-async function uriGetAssets(context: common.UIAbilityContext) {
-try {
-    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    // 配置查询条件，使用PhotoViewPicker选择图片返回的uri进行查询
-    predicates.equalTo('uri', uris[0]);
-    let fetchOption: photoAccessHelper.FetchOptions = {
-      fetchColumns: [photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT, photoAccessHelper.PhotoKeys.TITLE, photoAccessHelper.PhotoKeys.DURATION],
-      predicates: predicates
-    };
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-    // 得到URI对应的PhotoAsset对象，读取文件的部分信息
-    const asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    console.info('asset displayName: ', asset.displayName);
-    console.info('asset uri: ', asset.uri);
-    console.info('asset photoType: ', asset.photoType);
-    console.info('asset width: ', asset.get(photoAccessHelper.PhotoKeys.WIDTH));
-    console.info('asset height: ', asset.get(photoAccessHelper.PhotoKeys.HEIGHT));
-    console.info('asset title: ' + asset.get(photoAccessHelper.PhotoKeys.TITLE));
-    // 获取缩略图
-    asset.getThumbnail((err, pixelMap) => {
-      if (err == undefined) {
-        console.info('getThumbnail successful ' + JSON.stringify(pixelMap));
-      } else {
-        console.error('getThumbnail fail', err);
-      }
-    });
-  } catch (error){
-    console.error(`uriGetAssets failed with err, code is ${error.code}, message is ${error.message}`);
-  }
-}
-```
+<!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
 <!--Del-->
 ## 通过URI复制文件（仅对系统应用开放）
 
@@ -256,53 +148,5 @@ try {
 
 复制文件代码示例：
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { common } from '@kit.AbilityKit';
-import { fileAccess } from '@kit.CoreFileKit';
-
-// context 是EntryAbility 传过来的context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-async function example(context: common.UIAbilityContext) {
-    let fileAccessHelper: fileAccess.FileAccessHelper;
-    // wantInfos 从getFileAccessAbilityInfo()获取
-    let wantInfos: Array<Want> = [
-      {
-        bundleName: "com.ohos.UserFile.ExternalFileManager",
-        abilityName: "FileExtensionAbility",
-      },
-    ]
-    try {
-      fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
-      if (!fileAccessHelper) {
-        console.error("createFileAccessHelper interface returns an undefined object");
-      }
-      // 以内置存储目录为例
-      // 示例代码sourceUri表示Download目录，该URI是对应的fileInfo中URI
-      // 开发者应根据自己实际获取的URI进行开发
-      let sourceUri: string = "file://docs/storage/Users/currentUser/Download/one.txt";
-      // 将文件复制到的位置URI
-      let destUri: string = "file://docs/storage/Users/currentUser/Documents";
-      // 如果文件名冲突，要使用的文件名
-      let displayName: string = "file1.txt";
-      // 存放返回的URI
-      let fileUri: string;
-      try {
-        // 复制文件返回该文件的URI
-        fileUri = await fileAccessHelper.copyFile(sourceUri, destUri, displayName);
-        if (!fileUri) {
-          console.error("copyFile return undefined object");
-        }
-        console.info("copyFile success, fileUri: " + JSON.stringify(fileUri));
-      } catch (err) {
-        let error: BusinessError = err as BusinessError;
-        console.error("copyFile failed, errCode:" + error.code + ", errMessage:" + error.message);
-      }
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
-    }
-  }
-```
+<!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
 <!--DelEnd-->
