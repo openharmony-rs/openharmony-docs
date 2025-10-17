@@ -1410,6 +1410,7 @@
         - [Introduction to MDM Kit](mdm/mdm-kit-intro.md)
         - [MDM Kit Development](mdm/mdm-kit-guide.md)
         - [EnterpriseAdminExtensionAbility Development](mdm/mdm-kit-admin.md)
+        - [MDM Kit Terms](mdm/mdm-kit-term.md)
     - Hardware<!--system-hardware-->
       - Driver Development Kit<!--driver-development-kit-->
         - [Introduction to Driver Development Kit](device/driver/driverdevelopment-overview.md)
@@ -1785,6 +1786,7 @@
           - [Using AVRecorder to Record Audio (C/C++)](media/media/using-ndk-avrecorder-for-audio-recording.md)
           - [Using AVRecorder to Record Videos (C/C++)](media/media/using-ndk-avrecorder-for-video-recording.md)
           - Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)<!--using-avscreencapture-for-buffer-->
+            - [AVScreenCapture Custom Scenarios](media/media/avscreencapture-c-custom-scenarios.md)
           - [Using AVScreenCapture to Capture Screens and Write Them to Files (C/C++)](media/media/using-avscreencapture-for-file.md)
           - [Capturing the Specified Area on a Screen (C/C++)](media/media/video-supports-rectangular-area-recording.md)
         - Media Information Query<!--media-info-c-->

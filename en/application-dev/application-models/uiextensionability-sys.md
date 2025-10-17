@@ -1,4 +1,4 @@
-# UIExtensionAbility
+# UIExtensionAbility (for System Applications Only)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

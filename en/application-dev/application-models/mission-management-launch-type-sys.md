@@ -1,4 +1,4 @@
-# Mission Management and Launch Type
+# Mission Management and Launch Type (for System Applications Only)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

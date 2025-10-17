@@ -1,4 +1,4 @@
-# Mission Management (FA Model)
+# Mission Management (for System Applications Only)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
