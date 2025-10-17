@@ -700,7 +700,7 @@ clearMission(missionId: number): Promise&lt;void&gt;
 
 clearAllMissions(callback: AsyncCallback&lt;void&gt;): void
 
-清理所有未锁定的任务，使用callback异步回调。
+清理所有未锁定的任务。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
