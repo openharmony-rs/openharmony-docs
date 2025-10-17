@@ -79,9 +79,8 @@ OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 
 ## 隐私设置
 
-从API 20开始支持隐私设置。
+从API 20开始，支持使用[OH_AVScreenCapture_StrategyForPrivacyMaskMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforprivacymaskmode)设置屏幕录制隐私窗口屏蔽模式。
 
-使用[OH_AVScreenCapture_StrategyForPrivacyMaskMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforprivacymaskmode)设置屏幕录制隐私窗口屏蔽模式。
 
 ```c++
 //  value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。
@@ -91,7 +90,7 @@ OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-使用[OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode)设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
+在API 12时，支持使用[OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode)设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
 
 ```c++
 std::vector<int> windowIdsSkipPrivacy = {};
