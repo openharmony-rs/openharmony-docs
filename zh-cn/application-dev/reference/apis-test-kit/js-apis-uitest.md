@@ -331,7 +331,7 @@ let on:On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目
 
 id(id: string): On
 
-指定目标控件id属性，返回On对象自身。
+指定目标控件id属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -369,7 +369,7 @@ let on:On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目�
 
 id(id: string, pattern: MatchPattern): On
 
-指定目标控件id属性，返回On对象自身。
+指定目标控件id属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -445,7 +445,7 @@ let on:On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定
 
 type(tp: string, pattern: MatchPattern): On
 
-指定目标控件的控件类型属性，返回On对象自身。
+指定目标控件的控件类型属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1876,7 +1876,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2246,7 +2246,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
+当前组件不可被无障碍辅助服务所识别时，通过改接口获取控件对象的文本信息，使用Promise异步回调。
 
 > **说明**
 >
@@ -3956,7 +3956,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向、速度和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
