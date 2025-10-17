@@ -9613,6 +9613,7 @@ isInFreeWindowMode(): boolean
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
