@@ -262,14 +262,14 @@ export default function abilityTest() {
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
-  | 日志输出字段               | 日志输出字段含义           |
-  | ------------------| -------------------------|
-  | run    | 当前测试包用例总数。 |
-  | Failure | 当前测试失败用例数量。 |
-  | Error | 当前执行用例发生错误用例数量。  |
-  | Pass | 当前执行用例通过用例数量。|
-  | Ignore | 当前未执行用例数量。 |
-  | taskconsuming| 执行当前测试用例总耗时（ms）。 |
+    | 日志输出字段               | 日志输出字段含义           |
+    | ------------------| -------------------------|
+    | run    | 当前测试包用例总数。 |
+    | Failure | 当前测试失败用例数量。 |
+    | Error | 当前执行用例发生错误用例数量。  |
+    | Pass | 当前执行用例通过用例数量。|
+    | Ignore | 当前未执行用例数量。 |
+    | taskconsuming| 执行当前测试用例总耗时（ms）。 |
 
   > **说明：**
   >
