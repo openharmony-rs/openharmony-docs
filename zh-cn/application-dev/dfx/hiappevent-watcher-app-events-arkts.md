@@ -130,6 +130,11 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
    <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+```
+
 4. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，新增“WatchAppCrash ArkTS&C++”按钮触发崩溃事件；新增“writeEvent ArkTS”按钮，在按钮点击的函数中进行事件打点。示例代码如下：
 
    触发崩溃事件。
