@@ -4,7 +4,8 @@
 
 >**说明：**
 >
->本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkT-Dyn。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -24,6 +25,8 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -47,6 +50,8 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称 | 值| 说明            |
 | ------ | ------ | --------------- |
 | DEFAULT   | 0 |不支持BigInt。|
@@ -61,6 +66,8 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
 | 名称 | 类型| 必填 |说明            |
 | ------ | ------ | ---- | --------------- |
 | bigIntMode   | [BigIntMode](#bigintmode) | 是 |定义处理BigInt的模式。|
@@ -74,6 +81,8 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -143,6 +152,8 @@ stringify(value: Object, replacer?: (number | string)[] | null, space?: string |
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -218,6 +229,8 @@ stringify(value: Object, replacer?: Transformer, space?: string | number): strin
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -283,6 +296,8 @@ has(obj: object, property: string): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -326,6 +341,8 @@ remove(obj: object, property: string): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
