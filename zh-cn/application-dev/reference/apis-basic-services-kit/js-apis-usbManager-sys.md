@@ -783,9 +783,11 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
+
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+  let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
   let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
   let tokenId: number = bundleInfo.appInfo.accessTokenId
   usbManager.addAccessoryRight(tokenId, accList[0])
@@ -803,11 +805,11 @@ USB设备端口。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称           | 类型                            | 必填 | 说明                                |
-| -------------- | ------------------------------- | ---- | ----------------------------------- |
-| id             | number                          | 是   | USB端口唯一标识。                   |
-| supportedModes | [PortModeType](#portmodetype)   | 是   | USB端口所支持的模式的数字组合掩码。 |
-| status         | [USBPortStatus](#usbportstatus) | 是   | USB端口角色。                       |
+| 名称           | 类型                            | 只读 | 可选 | 说明                                |
+| -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
+| id             | number                          | 否   | 否   | USB端口唯一标识。                   |
+| supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。 |
+| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。                       |
 
 ## USBPortStatus
 
@@ -817,11 +819,11 @@ USB设备端口角色信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称             | 类型   | 必填 | 说明                   |
-| ---------------- | ------ | ---- | ---------------------- |
-| currentMode      | number | 是   | 当前的USB模式。        |
-| currentPowerRole | number | 是   | 当前设备充电模式。     |
-| currentDataRole  | number | 是   | 当前设备数据传输模式。 |
+| 名称             | 类型   |只读 | 可选 | 说明                   |
+| ---------------- | ------ | ---- | ---- | ---------------------- |
+| currentMode      | number | 否   | 否   | 当前的USB模式。        |
+| currentPowerRole | number | 否   | 否   | 当前设备充电模式。     |
+| currentDataRole  | number | 否   | 否   | 当前设备数据传输模式。 |
 
 ## FunctionType
 
