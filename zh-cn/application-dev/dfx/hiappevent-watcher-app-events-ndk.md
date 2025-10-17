@@ -309,3 +309,16 @@ import testNapi from 'libentry.so';
 5. 销毁应用的事件观察者：
 
    <!-- @[AppEvent_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
+{
+    // 销毁创建的观察者，并置eventWatcher为nullptr。
+	// ···
+    OH_HiAppEvent_DestroyWatcher(eventWatcherT1);
+    OH_HiAppEvent_DestroyWatcher(eventWatcherR1);
+    eventWatcherT1 = nullptr;
+    eventWatcherR1 = nullptr;
+    return {};
+}
+```
