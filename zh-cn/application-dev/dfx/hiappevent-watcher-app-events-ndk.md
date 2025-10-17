@@ -89,6 +89,59 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 
     <!-- @[AppEvent_Crash_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// 定义变量，用来缓存创建的观察者的指针。
+static HiAppEvent_Watcher *eventWatcherR1;
+
+static void OnReceive1(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen)
+{
+    OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onReceive callback form C API \n");
+    for (int i = 0; i < groupLen; ++i) {
+        for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
+            OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.domain=%{public}s",
+                appEventGroups[i].appEventInfos[j].domain);
+            OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.name=%{public}s",
+                appEventGroups[i].appEventInfos[j].name);
+            OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.eventType=%{public}d",
+                appEventGroups[i].appEventInfos[j].type);
+            if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) != 0 ||
+                strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_CRASH) != 0) {
+                continue;
+            }
+            Json::Value params;
+            Json::Reader reader(Json::Features::strictMode());
+            Json::FastWriter writer;
+            if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
+                // 开发者可以获取到崩溃事件发生的时间戳
+                OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.params.time=%{public}lld",
+                    params["time"].asInt64());
+                // 开发者可以获取到崩溃应用的包名
+                OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.params.bundle_name=%{public}s",
+                    params["bundle_name"].asString().c_str());
+                auto external_log = writer.write(params["external_log"]);
+                // 开发者可以获取到崩溃事件发生时的故障日志文件
+                OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.params.external_log=%{public}s",
+                    external_log.c_str());
+            }
+        }
+    }
+}
+static napi_value RegisterWatcherCrash(napi_env env, napi_callback_info info)
+{
+    // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
+    eventWatcherR1 = OH_HiAppEvent_CreateWatcher("AppCrashWatcher1");
+    // 设置订阅的事件名称为EVENT_APP_CRASH，即崩溃事件。
+    const char *names[] = {EVENT_APP_CRASH};
+    // 开发者订阅感兴趣的事件，此处订阅了系统事件。
+    OH_HiAppEvent_SetAppEventFilter(eventWatcherR1, DOMAIN_OS, 0, names, 1);
+    // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive1回调。
+    OH_HiAppEvent_SetWatcherOnReceive(eventWatcherR1, OnReceive1);
+    // 使观察者开始监听订阅的事件。
+    OH_HiAppEvent_AddWatcher(eventWatcherR1);
+    return {};
+}
+```
+
    - 订阅按钮点击事件（应用事件），采用OnTrigger类型观察者的订阅方式。需满足OH_HiAppEvent_SetTriggerCondition()设置的条件，才能触发OnTrigger()回调。编辑 “napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
     <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
