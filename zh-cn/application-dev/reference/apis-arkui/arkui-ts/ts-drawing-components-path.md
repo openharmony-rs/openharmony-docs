@@ -245,7 +245,7 @@ strokeOpacity(value: number | string | Resource)
 
 strokeWidth(value: Length)
 
-设置线条宽度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。该属性若为string类型, 暂不支持百分比，百分比按照1px处理。
+设置线条宽度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。该属性若为string类型，暂不支持百分比，百分比按照1px处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -394,21 +394,21 @@ width、height、commands属性分别使用不同的长度类型绘制图形。
 struct PathTypeExample {
   build() {
     Column({ space: 10 }) {
-      // 宽、高、命令字符串使用string类型，绘制一条直线
+      // 宽、高、命令字符串使用string类型，绘制一条直线。
       Path({ width: '600px', height: '10px' })
         .commands('M0 0 L600 0')
         .fillOpacity(0)
         .stroke(Color.Black)
         .strokeWidth(3)
-      // 宽、高使用number类型，绘制一个弧线图形
-      Path({ width: 200, height: 200 })
-        .commands('M0 0 H200 V200 H0 Z')
+      // 宽、高使用number类型，绘制一个矩形图形。
+      Path({ width: 200, height: 100 })
+        .commands('M200 0 H400 V200 H200 Z')
         .fillOpacity(0)
         .stroke(Color.Black)
         .strokeWidth(3)
-      // 宽、高、命令字符串使用Resource类型（需用户自定义），绘制一个弧线图形
-      Path({ width: $r('app.string.PathWidth'), height: $r('app.string.PathHeight') })
-        .commands($r('app.string.PathCommands'))
+      // 宽、高、命令字符串使用Resource类型（需用户自定义），绘制一个弧线图形。
+      Path({ width: $r('app.string.PathWidth'), height: $r('app.string.PathHeight') }) // 本示例中PathWidth和PathHeight均定义为"200"。
+        .commands($r('app.string.PathCommands')) // 本示例中PathCommands定义为"M150 300 Q300 0 450 300 Z"。
         .fillOpacity(0)
         .stroke(Color.Black)
         .strokeWidth(3)
