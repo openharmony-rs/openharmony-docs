@@ -1,4 +1,10 @@
 # Enterprise Device Management Error Codes
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -224,6 +230,33 @@ The specified application is a delegated or authorized device administrator appl
 2. Call [disableAdmin](js-apis-enterprise-adminManager.md#adminmanagerdisableadmin) to disable the common device management permission of a specified application.
 <!--DelEnd-->
 
+## 9200012 Parameter Verification Failed
+
+**Error Message**
+
+Parameter verification failed.
+
+**Description**
+
+This error code is returned when the parameter verification fails.
+
+**Possible Causes**
+
+The possible causes are as follows:
+1. The passed **EnterpriseAdminExtensionAbility** component does not belong to the current application.
+2. The length of the input parameter exceeds the upper limit.
+3. The length of the input array exceeds the upper limit.
+4. The parameter value is out of the value range.
+5. The blocklist or trustlist that has not been set is removed.
+
+**Solution**
+
+1. Check whether the input **EnterpriseAdminExtensionAbility** belongs to the current application.
+2. Check whether the length of the input parameter exceeds the upper limit.
+3. Check whether the length of the input array exceeds the upper limit.
+4. Check whether the input parameter value is within the supported value range.
+5. Before removing the list, check whether the corresponding list is set.
+
 ## 9201001 Failed to Manage the Certificate
 
 **Error Message**
@@ -242,7 +275,7 @@ The user certificate is incorrect.
 
 Check that the user certificate is correct.
 
-## 9201002 Failed to Install the Application
+## 9201002 Failed to Install the Enterprise Application
 
 **Error Message**
 
@@ -321,7 +354,7 @@ The possible causes are as follows:
 
 **Error Message**
 
-1. Add keep alive applications failed.
+Add keep alive applications failed.
 
 **Description**
 
