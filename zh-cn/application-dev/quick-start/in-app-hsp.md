@@ -79,9 +79,27 @@ ArkUI组件可以通过`export`导出，例如：
 
 <!-- @[in_app_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/nativeTest.ets) -->
 
+``` TypeScript
+// library/src/main/ets/utils/nativeTest.ets
+import native from 'liblibrary.so';
+
+export function nativeMulti(a: number, b: number): number {
+  let result: number = native.multi(a, b);
+  return result;
+}
+```
+
+
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
 <!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
+// library/index.ets
+// [EndExclude in_app_hsp_010]
+export { nativeMulti } from './src/main/ets/utils/nativeTest';
+```
+
 
 ### 通过$r访问HSP中的资源
 在组件中，经常需要使用字符串、图片等资源。HSP中的组件需要使用资源时，一般将其所用资源放在HSP包内，而非放在HSP的使用方处，以符合高内聚低耦合的原则。
@@ -94,6 +112,19 @@ ArkUI组件可以通过`export`导出，例如：
 
 <!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+        // library/src/main/ets/pages/Index.ets
+        // 正确用例
+        Image($r('app.media.example'))
+          .id('example')
+          .borderRadius('48px')
+        // // 错误用例
+        Image("../../resources/base/media/example.png")
+          .id('example')
+          .borderRadius('48px')
+```
+
+
 ### 导出HSP中的资源
 跨包访问HSP内资源时，推荐实现一个资源管理类，以封装对外导出的资源。采用这种方式，具有如下优点：
 - HSP开发者可以控制自己需要导出的资源，不需要对外暴露的资源可以不用导出。
@@ -105,9 +136,30 @@ ArkUI组件可以通过`export`导出，例如：
 
 <!-- @[in_app_hsp_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/ResManager.ets) -->
 
+``` TypeScript
+// library/src/main/ets/ResManager.ets
+export class ResManager{
+  static getPic(): Resource{
+    return $r('app.media.pic');
+  }
+  static getDesc(): Resource{
+    return $r('app.string.shared_desc');
+  }
+}
+```
+
+
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
 <!-- @[in_app_hsp_009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
+// library/index.ets
+// [EndExclude in_app_hsp_010]
+export { ResManager } from './src/main/ets/ResManager';
+// [StartExclude in_app_hsp_010]
+```
+
 
 
 ## 使用
@@ -126,9 +178,146 @@ export { ResManager } from './src/main/ets/ResManager';
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
 <!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
+// library/index.ets
+// ···
+export { Log, add, minus } from './src/main/ets/utils/test';
+// ···
+export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+// ···
+export { ResManager } from './src/main/ets/ResManager';
+// ···
+export { nativeMulti } from './src/main/ets/utils/nativeTest';
+// [End in_app_hsp_006]
+```
+
 在使用方的代码中，可以这样使用：
 
 <!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/index.ets
+import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';
+import { BusinessError } from "@kit.BasicServicesKit";
+import { application} from '@kit.AbilityKit';
+
+const TAG = 'Index';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '';
+
+  build() {
+    Column() {
+      List() {
+        ListItem() {
+          MyTitleBar()
+        }
+        .margin({ left: '35px', top: '32px' })
+
+        ListItem() {
+          Text(this.message)
+            .fontFamily('HarmonyHeiTi')
+            .fontSize(18)
+            .textAlign(TextAlign.Start)
+            .width('100%')
+            .fontWeight(FontWeight.Bold)
+        }
+        .width('685px')
+        .margin({ top: 30, bottom: 10 })
+
+        ListItem() {
+          // ResManager返回的Resource对象，可以传给组件直接使用，也可以从中取出资源来使用
+          Image(ResManager.getPic())
+            .id('image')
+            .borderRadius('48px')
+        }
+        .width('685px')
+        .margin({ top: 10, bottom: 10 })
+        .padding({ left: 12, right: 12, top: 4, bottom: 4 })
+
+        ListItem() {
+          Text($r('app.string.add'))
+            .fontSize(18)
+            .textAlign(TextAlign.Start)
+            .width('100%')
+            .fontWeight(500)
+            .height('100%')
+        }
+        .id('add')
+        .borderRadius(24)
+        .width('685px')
+        .height('84px')
+        .backgroundColor($r('sys.color.ohos_id_color_foreground_contrary'))
+        .margin({ top: 10, bottom: 10 })
+        .padding({ left: 12, right: 12, top: 4, bottom: 4 })
+        .onClick(() => {
+          Log.info('add button click!');
+          this.message = 'result: ' + add(1, 2);
+        })
+
+        ListItem() {
+          Text(ResManager.getDesc())
+            .fontSize(18)
+            .textAlign(TextAlign.Start)
+            .width('100%')
+            .fontWeight(500)
+            .height('100%')
+        }
+        .id('getStringValue')
+        .borderRadius(24)
+        .width('685px')
+        .height('84px')
+        .backgroundColor($r('sys.color.ohos_id_color_foreground_contrary'))
+        .margin({ top: 10, bottom: 10 })
+        .padding({ left: 12, right: 12, top: 4, bottom: 4 })
+        .onClick(() => {
+          // 先通过当前application.createModuleContext获取hsp模块的上下文，再获取hsp模块的resourceManager，然后再调用resourceManager的接口获取资源
+          application.createModuleContext(this.getUIContext()?.getHostContext(), "library").then((context:Context)=>{
+            context.resourceManager.getStringValue(ResManager.getDesc().id)
+              .then(value => {
+                console.info('getStringValue is ' + value);
+                this.message = 'getStringValue is ' + value;
+              })
+              .catch((err: BusinessError) => {
+                console.error('getStringValue promise error is ' + err);
+              });
+          }).catch((err: BusinessError) => {
+            console.error('createModuleContext promise error is ' + err);
+          });
+        })
+
+        ListItem() {
+          Text($r('app.string.native_multi'))
+            .fontSize(18)
+            .textAlign(TextAlign.Start)
+            .width('100%')
+            .fontWeight(500)
+            .height('100%')
+        }
+        .id('nativeMulti')
+        .borderRadius(24)
+        .width('685px')
+        .height('84px')
+        .backgroundColor($r('sys.color.ohos_id_color_foreground_contrary'))
+        .margin({ top: 10, bottom: 10 })
+        .padding({ left: 12, right: 12, top: 4, bottom: 4 })
+        .onClick(() => {
+          Log.info('nativeMulti button click!');
+          this.message = 'result: ' + nativeMulti(3, 4);
+        })
+      }
+      .alignListItem(ListItemAlign.Center)
+    }
+    .width('100%')
+    .backgroundColor($r('app.color.page_background'))
+    .height('100%')
+  }
+}
+```
+
 
 ### 页面跳转和返回
 
@@ -136,9 +325,94 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 
 <!-- @[in_app_hsp_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State message: string = '';
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pathStack) {
+      Column() {
+        List() {
+          ListItem() {
+            Text($r('app.string.click_to_menu'))
+              .fontSize(18)
+              .textAlign(TextAlign.Start)
+              .width('100%')
+              .fontWeight(500)
+              .height('100%')
+          }
+          .id('clickToMenu')
+          .borderRadius(24)
+          .width('685px')
+          .height('84px')
+          .backgroundColor($r('sys.color.ohos_id_color_foreground_contrary'))
+          .margin({ top: 10, bottom: 10 })
+          .padding({
+            left: 12,
+            right: 12,
+            top: 4,
+            bottom: 4
+          })
+          .onClick(() => {
+            this.pathStack.pushPathByName('library_menu', null)
+          })
+        }
+        .alignListItem(ListItemAlign.Center)
+      }
+      .width('100%')
+      .backgroundColor($r('app.color.page_background'))
+      .height('100%')
+    }.title("Navigation_Index")
+    .mode(NavigationMode.Stack)
+  }
+}
+```
+
+
 在library下新增page文件（library/src/main/ets/pages/library_menu.ets），其中'back_to_index'的按钮返回上一页。
 
 <!-- @[in_app_hsp_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/ets/pages/library_menu.ets) -->
+
+``` TypeScript
+@Builder
+export function PageOneBuilder() {
+  Library_Menu()
+}
+
+@Entry
+@Component
+export struct Library_Menu {
+  @State message: string = 'Hello World';
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Row() {
+        Column() {
+          Text(this.message)
+            .fontSize($r('app.float.page_text_font_size'))
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+              this.message = 'Welcome';
+            })
+          Button('back_to_index').fontSize(50).onClick(() => {
+            this.pathStack.pop();
+          })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }.title('Library_Menu')
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
+
 
 需要在library模块下新增route_map.json文件（library/src/main/resources/base/profile/route_map.json）。
 ```
@@ -159,5 +433,24 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 在library模块下的配置文件（library/src/main/module.json5）中配置json文件。
 
 <!-- @[in_app_hsp_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1"
+    ],
+    "deliveryWithInstall": true,
+    "pages": "$profile:main_pages",
+    "routerMap": "$profile:route_map" //新增配置，指向route_map.json文件
+  }
+}
+```
+
 
 页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)。
