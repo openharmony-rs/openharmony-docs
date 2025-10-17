@@ -291,6 +291,25 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 | value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | 是   | List组件的布局列数或行数。<br/>默认值：1 <br/>取值范围：[1, +∞)|
 | gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0 <br/>取值范围：[0, +∞)|
 
+### lanes<sup>22+</sup>
+
+lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
+
+设置List组件布局列的数量和列的间距，默认按固定一列显示。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名               | 类型                                                         | 必填 | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应断点类型确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
+| gutter | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0 <br/>取值范围：[0, +∞)   
+
 ### alignListItem<sup>9+</sup>
 
 alignListItem(value: ListItemAlign)
@@ -2115,3 +2134,50 @@ struct ForEachSort {
 ```
 
 ![list_onMove](figures/list_onMove.gif)
+
+### 示例13（基于断点配置lanes）
+
+从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
+
+```ts
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: string) => item)
+      }
+      .lanes({ fillType: PresetFillType.BREAKPOINT_SM2MD3LG5}, 10)
+      .width('90%').height(600)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
+  }
+}
+```
+List宽度相当于sm及以下时显示2列。
+
+![sm_list](figures/list_itemFillPolicy_SM.png)
+
+List宽度相当于md及以下时显示3列。
+
+![md_list](figures/list_itemFillPolicy_MD.png)
+
+List宽度相当于lg及以下时显示5列。
+
+![lg_list](figures/list_itemFillPolicy_LG.png)
