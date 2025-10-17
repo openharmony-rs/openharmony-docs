@@ -122,9 +122,9 @@ async function avCastPicker(context: common.Context) {
 }
 ```
 
-## restoreDefaultCommunicationDevice<sup>21+</sup>
+## resetCommunicationDevice<sup>21+</sup>
 
-restoreDefaultCommunicationDevice(): Promise\<void>
+resetCommunicationDevice(): Promise\<void>
 
 将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
 
@@ -146,8 +146,8 @@ import { avSession } from '@kit.AVSessionKit';
 
 async function avCastPicker(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
-  avCastPicker.restoreDefaultCommunicationDevice().then(() => {
-    console.info('restoreDefaultCommunicationDevice successfully');
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
   });
 }
 ```
