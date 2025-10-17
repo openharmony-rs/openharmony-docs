@@ -93,6 +93,39 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
    <!-- @[AppEvent_Click_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+    hiAppEvent.addWatcher({
+      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+      name: 'ButtonClickWatcher',
+      // 开发者可以订阅感兴趣的应用事件，此处是订阅了按钮事件
+      appEventFilters: [{ domain: 'button' }],
+      // 开发者可以设置订阅回调触发的条件，此处是设置为事件打点数量满足1个
+      triggerCondition: { row: 1 },
+      // 开发者可以自行实现订阅回调函数，以便对订阅获取到的事件打点数据进行自定义处理
+      onTrigger: (curRow: number, curSize: number, holder: hiAppEvent.AppEventPackageHolder) => {
+        // 如果返回的holder对象为null，表示订阅过程发生异常。因此，在记录错误日志后直接返回
+        if (holder == null) {
+          hilog.error(0x0000, 'testTag', 'AppEvents HiAppEvent holder is null');
+          return;
+        }
+        hilog.info(0x0000, 'testTag', 'AppEvents HiAppEvent success to read event with onTrigger callback from ArkTS');
+        hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent onTrigger: curRow=%{public}d, curSize=%{public}d`, curRow, curSize);
+        let eventPkg: hiAppEvent.AppEventPackage | null = null;
+        // 根据设置阈值大小（默认为1条事件）去获取订阅事件包，直到将订阅数据全部取出
+        // 返回的事件包对象为null，表示当前订阅数据已被全部取出，此次订阅回调触发结束
+        while ((eventPkg = holder.takeNext()) != null) {
+          // 开发者可以对事件包中的事件打点数据进行自定义处理，此处是将事件打点数据打印在日志中
+          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.packageId=%{public}d`, eventPkg.packageId);
+          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.row=%{public}d`, eventPkg.row);
+          hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.size=%{public}d`, eventPkg.size);
+          for (const eventInfo of eventPkg.data) {
+            hilog.info(0x0000, 'testTag', `AppEvents HiAppEvent eventPkg.info=%{public}s`, eventInfo);
+          }
+        }
+      }
+    });
+```
+
 3. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，导入依赖模块：
 
    <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
