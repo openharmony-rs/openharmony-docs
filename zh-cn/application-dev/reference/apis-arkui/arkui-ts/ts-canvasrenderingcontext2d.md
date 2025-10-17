@@ -4327,7 +4327,7 @@ constructor(antialias?: boolean)
 
 | 参数名       | 类型    | 必填   | 说明                          |
 | --------- | ------- | ---- | ----------------------------- |
-| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>默认值：false，表示不开启抗锯齿功能。 |
+| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |
 
 ### 属性
 
@@ -4339,4 +4339,4 @@ constructor(antialias?: boolean)
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>默认值：false，表示不开启抗锯齿功能。 |
+| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |
