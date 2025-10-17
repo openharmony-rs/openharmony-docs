@@ -1,4 +1,10 @@
 # MDM Kit<!--mdm-api-->
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - ArkTS APIs<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager (Account Management)](js-apis-enterprise-accountManager.md)
