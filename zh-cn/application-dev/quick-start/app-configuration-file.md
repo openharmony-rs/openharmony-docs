@@ -11,49 +11,8 @@
 
 先通过一个示例，整体认识一下app.json5配置文件。
 
-```json
-{
-  "app": {
-    "bundleName": "com.application.myapplication",
-    "vendor": "example",
-    "versionCode": 1000000,
-    "versionName": "1.0.0",
-    "icon": "$media:layered_image",
-    "label": "$string:app_name",
-    "description": "$string:description_application",
-    "minAPIVersion": 9,
-    "targetAPIVersion": 9,
-    "debug": false,
-    "car": {
-      "minAPIVersion": 8
-    },
-    "targetBundleName": "com.application.test",
-    "targetPriority": 50,
-    "appEnvironments": [
-      {
-        "name":"name1",
-        "value": "value1"
-      }
-    ],
-    "maxChildProcess": 5,
-    "multiAppMode": {
-      "multiAppModeType": "multiInstance",
-      "maxCount": 5
-    },
-    "hwasanEnabled": false,
-    "ubsanEnabled": false,
-    "cloudFileSyncEnabled": false,
-    "cloudStructuredDataSyncEnabled": false,
-    "configuration": "$profile:configuration",
-    "assetAccessGroups": [
-      "com.ohos.photos",
-      "com.ohos.screenshot",
-      "com.ohos.note"
-    ],
-    "startMode": "mainTask"
-  }
-}
-```
+<!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
 ## 配置文件标签
 
 app.json5配置文件包含以下标签。
@@ -113,18 +72,7 @@ app.json5配置文件包含以下标签。
 
 appEnvironments标签示例：
 
-```json
-{
-  "app": {
-    "appEnvironments": [
-      {
-        "name":"name1",
-        "value": "value1"
-      }
-    ]
-  }
-}
-```
+<!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ## multiAppMode标签
 
@@ -139,16 +87,7 @@ appEnvironments标签示例：
 
 multiAppMode标签示例：
 
-```json
-{
-  "app": {
-    "multiAppMode": {
-      "multiAppModeType": "appClone",
-      "maxCount": 5
-    }
-  }
-}
-```
+<!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ## configuration标签
 
@@ -156,13 +95,7 @@ multiAppMode标签示例：
 
 configuration标签示例：
 
-```json
-{
-  "app": {
-    "configuration": "$profile:configuration"  
-  }
-}
-```
+<!-- @[app_json5_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 在开发视图的AppScope/resources/base/profile下面定义配置文件configuration.json，其中文件名"configuration"可自定义，需要和configuration标签指定的文件资源对应。配置文件中列举了设置当前应用字体大小跟随系统变化所需要的属性。
 
