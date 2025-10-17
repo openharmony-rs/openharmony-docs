@@ -475,10 +475,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| navigationStartTick    | number | 是 | 启动页面加载开始的时间，单位以微秒表示。          |
-| firstContentfulPaintMs | number | 是 | 从启动页面加载开始到第一次绘制内容的时间，单位是以毫秒表示。 |
+| navigationStartTick    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 启动页面加载开始的时间，单位以微秒表示。          |
+| firstContentfulPaintMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 从启动页面加载开始到第一次绘制内容的时间，单位是以毫秒表示。 |
 
 ## OnLoadInterceptEvent<sup>12+</sup>
 
@@ -636,13 +640,17 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                | 类型                                  | 必填   | 说明                        |
 |-------------------| ------------------------------------ | ---- |---------------------------|
 | id                | string             | 否    | 同层标签的id信息。             |
 | type              | string                              | 否    | 同层标签的type信息，统一为小写字符。   |
 | src               | string                              | 否    | 同层标签的src信息。            |
-| width             | number  | 否    | 同层标签的宽，单位为px。          |
-| height            | number                              | 否    | 同层标签的高，单位为px。          |
+| width             | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 同层标签的宽，单位为px。          |
+| height            | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 否    | 同层标签的高，单位为px。          |
 | url               | string                              | 否    | 同层标签的url信息。            |
 | tag<sup>12+</sup> | string              | 否    | 标签名，统一为大写字符。              |
 | params<sup>12+</sup>            | Map<string, string> | 否    | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即embed.info?.param?.["name"]。  |
@@ -693,10 +701,14 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
-| navigationStartTime      | number | 否  | 导航条加载时间，单位以微秒表示。       |
-| firstMeaningfulPaintTime | number | 否   | 绘制页面主要内容时间，单位以毫秒表示。 |
+| navigationStartTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 导航条加载时间，单位以微秒表示。       |
+| firstMeaningfulPaintTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 绘制页面主要内容时间，单位以毫秒表示。 |
 
 ## LargestContentfulPaint<sup>12+</sup>
 
@@ -704,14 +716,18 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                      | 类型   | 必填 | 说明                                     |
 | ------------------------- | ------ | ---- | ---------------------------------------- |
-| navigationStartTime       | number | 否   | 导航条加载时间，单位以微秒表示。         |
-| largestImagePaintTime     | number | 否   | 最大图片加载的时间，单位是以毫秒表示。   |
-| largestTextPaintTime      | number | 否   | 最大文本加载时间，单位是以毫秒表示。     |
-| largestImageLoadStartTime | number | 否   | 最大图片开始加载时间，单位是以毫秒表示。 |
-| largestImageLoadEndTime   | number | 否   | 最大图片结束记载时间，单位是以毫秒表示。 |
-| imageBPP                  | number | 否   | 最大图片像素位数。                           |
+| navigationStartTime       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 导航条加载时间，单位以微秒表示。         |
+| largestImagePaintTime     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大图片加载的时间，单位是以毫秒表示。   |
+| largestTextPaintTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大文本加载时间，单位是以毫秒表示。     |
+| largestImageLoadStartTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大图片开始加载时间，单位是以毫秒表示。 |
+| largestImageLoadEndTime   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大图片结束记载时间，单位是以毫秒表示。 |
+| imageBPP                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 最大图片像素位数。                           |
 
 ## NativeEmbedDataInfo<sup>11+</sup>
 
