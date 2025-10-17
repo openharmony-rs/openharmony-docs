@@ -603,7 +603,7 @@ Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |
 | verify | 验证函数在对应参数下的执行行为是否符合预期，返回一个VerificationMode类。 |
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
-| clear | 用例执行完毕后，对数据被Mock的对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
+| clear | 用例执行完毕后，对被Mock对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
 | clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |  
 
 **VerificationMode**
@@ -1143,7 +1143,7 @@ export default function staticTest() {
 
 **示例代码**
 
-Stage模型在测试工程中的TestAbility目录下TestAbility.ets文件中导入data.json(FA模型在测试工程中的TestAbility目录下的app.js或app.ets文件中导入data.json)，并在文件中的Hypium.hypiumTest()函数执行前设置参数数据，参考下面示例代码。
+Stage模型在测试工程中的TestAbility目录下TestAbility.ets文件中导入data.json（FA模型在测试工程中的TestAbility目录下的app.js或app.ets文件中导入data.json），并在文件中的Hypium.hypiumTest()函数执行前设置参数数据，参考下面示例代码。
 
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
