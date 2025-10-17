@@ -23,11 +23,36 @@ HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需
 
     <!-- @[hap_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    "name": "har",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1"
+    ]
+  }
+}
+```
+
+
 2. 在HAP模块的src\main\resource\base\profile文件夹下，删除main_pages.json文件。
 
 3. 修改HAP模块的hvigorfile.ts文件，将内容替换为以下内容：
 
     <!-- @[hap_to_har_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/hvigorfile.ts) -->
+
+``` TypeScript
+import { harTasks } from '@ohos/hvigor-ohos-plugin';
+
+export default {
+  system: harTasks,  // 修改成har编译任务
+  plugins:[]
+}
+```
+
 
 4. 在HAP模块的根目录下创建名为Index.ets的文件，并在模块的oh-package.json5文件中的main标签配置该文件。Index.ets文件用于导出ArkUI组件或接口，详细导出方法参见[HAR-开发](./har-package.md#开发)。
 
