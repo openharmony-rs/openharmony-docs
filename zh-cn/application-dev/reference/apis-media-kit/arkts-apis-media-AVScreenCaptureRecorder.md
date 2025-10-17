@@ -229,6 +229,92 @@ avScreenCaptureRecorder.setMicEnabled(true).then(() => {
 });
 ```
 
+## setPickerMode<sup>22+</sup>
+
+setPickerMode(pickerMode: PickerMode): Promise\<void>
+
+设置Picker显示模式。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                      |
+| ------ | ------- | ---- | --------------------------------------------------------- |
+| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | 是   | Picker显示模式。 |
+
+**返回值：**
+
+| 类型           | 说明                                    |
+| -------------- | --------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
+    console.info('Succeeded in setPickerMode');
+}).catch((err: BusinessError) => {
+    console.error(`Failed to setPickerMode, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## excludePickerWindows<sup>22+</sup>
+
+excludePickerWindows(excludedWindows: Array\<int>): Promise\<void>
+
+设置Picker显示模式。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                      |
+| ------ | ------- | ---- | --------------------------------------------------------- |
+| excludedWindows | Array\<int> | 是   | 需要在Picker中隐藏的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[窗口API引用](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+
+**返回值：**
+
+| 类型           | 说明                                    |
+| -------------- | --------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let excludedWindows: Array<number> = [101, 102, 103];
+
+avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
+    console.info('Succeeded in excludePickerWindows');
+}).catch((err: BusinessError) => {
+    console.error(`Failed to excludePickerWindows, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## release<sup>12+</sup>
 
 release(): Promise\<void>
