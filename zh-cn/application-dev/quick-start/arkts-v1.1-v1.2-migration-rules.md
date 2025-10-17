@@ -722,11 +722,11 @@ if (100 < a.length) {
 
 **规则解释：**
 
-ArkTS1.2中数组和元组是不同的类型。
+ArkTS1.2中数组和元组是不同的类型，元组不支持Array拥有的接口和属性。
 
 **变更原因：**
  
-ArkTS1.2中数组和元组是不同的类型。运行时使用元组类型可以获得更好的性能。
+ArkTS1.2中数组和元组是不同的类型，运行时使用元组类型可以获得更好的性能。
 
 **适配建议：**
 
@@ -738,34 +738,42 @@ ArkTS1.2中数组和元组是不同的类型。运行时使用元组类型可以
 
 ```typescript
 const tuple1: [number, number, boolean] = [1, 3.14, true];
-const array: (number|boolean) [] = tuple1;
+const array: (number | boolean) [] = tuple1;
 
-const tuple2: Array<number | boolean> = [1, 3.14, true];  // 违反规则
+const tuple2: Array<number | boolean> = [1, 3.14, true]; // 违反规则
 
-function getTuple(input: (number | boolean)[]): (number | boolean)[] {  // 违反规则
+function getTuple(input: (number | boolean)[]): (number | boolean)[] { // 违反规则
   return input;
 }
-getTuple([1, 3.14, true]);  // 传入元组
 
-type Point = (number | boolean)[];  // 违反规则
+getTuple([1, 3.14, true]); // 传入元组
+
+type Point = (number | boolean)[]; // 违反规则
 const p: Point = [3, 5, true];
+
+let a: [number, string] = [1, "a"];
+console.info("length=" + a.length); // 可以通过.length获取元组长度
 ```
 
 **ArkTS1.2**
 
 ```typescript
 const tuple1: [number, number, boolean] = [1, 3.14, true];
-const array:  [number, number, boolean] = tuple1;
+const array: [number, number, boolean] = tuple1;
 
-const tuple2: [number, number, boolean] = [1, 3.14, true];  // 正确使用元组
+const tuple2: [number, number, boolean] = [1, 3.14, true]; // 正确使用元组
 
-function getTuple(input: [number, number, boolean]): [number, number, boolean] {  // 正确使用元组
+function getTuple(input: [number, number, boolean]): [number, number, boolean] { // 正确使用元组
   return input;
 }
+
 getTuple([1, 3.14, true]);
 
-type Point = [number, number, boolean];  // 使用元组
+type Point = [number, number, boolean]; // 使用元组
 const p: Point = [3, 5, true];
+
+let a: [number, string] = [1, "a"];
+console.info("length=" + 2); // 元组不支持.length接口，元组长度固定，直接输入长度
 ```
 
 ## 函数类型转换及兼容原则
@@ -4176,6 +4184,161 @@ export { num as default };
 import * as AAA from "./tt";
 
 this.stateVar += AAA.default; // 在ArkTS1.2中报错
+```
+
+## ArkT1.2多个剩余参数不能同时传入一个函数
+
+**场景描述：**
+
+在ArkTS1.2中，多个剩余参数不能同时传入一个函数。
+
+**适配建议：**
+
+把多个元组参数合并后再传入。
+
+**示例：**
+
+**ArkTS1.1**
+
+```typescript
+const arr1: number[] = [1, 2, 3];
+const arr2: number[] = [4, 5, 6];
+const arr3: number[] = [7, 8, 9];
+
+let testRestParameter = (...args: number[]) => {
+  return args.toString();
+}
+
+testRestParameter(...arr1, ...arr2, ...arr3); 
+```
+
+**ArkTS1.2**
+
+```typescript
+const arr1: number[] = [1, 2, 3];
+const arr2: number[] = [4, 5, 6];
+const arr3: number[] = [7, 8, 9];
+
+function testRestParameter(...args: number[]) {
+  return args.toString();
+};
+
+testRestParameter(...arr1.concat(arr2, arr3)); // 将多个参数合并再传入
+```
+
+## ArkTS1.2在数字相乘超过int时会溢出
+
+**场景描述：**
+
+在ArkTS1.2中，当int数值相乘结果太大，超出int最大值（-2147483648, 2147483647）时会溢出。
+
+**适配建议：**
+
+将int类型改为long类型。
+
+**示例：**
+
+**ArkTS1.1**
+
+```typescript
+let a = (24 * 60 * 60 * 1000) * (52 * 365 + 9 * 30 + 23);
+console.info(a.toString()); // dynamic ： 1665187200000   static  ：-1260110848
+```
+
+**ArkTS1.2**
+
+```typescript
+let tempa: long = 1000;
+let a = (24 * 60 * 60 * tempa) * (52 * 365 + 9 * 30 + 23);
+console.info(a.toString());
+```
+
+## 泛型上不存在.toString方法
+
+**场景描述：**
+
+在ArkTS1.2中，如果泛型没有约束，会在编译时当成Any类型处理，Any类型不存在`.toString()`方法。
+
+**适配建议：**
+
+泛型加上`extends object`，继承object就有`.toString()`方法。
+
+**示例：**
+
+**ArkTS1.1**
+
+```typescript
+class Tp<T> {
+  t: T;
+
+  constructor(t: T) {
+    this.t = t;
+  }
+
+  toString(): string {
+    return "Tp: " + this.t?.toString();
+  }
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+class Tp<T extends object> {
+  t: T;
+
+  constructor(t: T) {
+    this.t = t;
+  }
+
+  toString(): string {
+    return "Tp: " + this.t?.toString();
+  }
+}
+```
+
+## 不支持Record中使用enum作为key
+
+**场景描述：**
+
+在ArkTS1.2中：
+
+1.不允许将字符串隐式转换成enum的值。
+
+2.不支持计算属性的方式定义对象字面量。
+
+**适配建议：**
+
+在Record类型中，使用string作为key。
+
+**示例：**
+
+**ArkTS1.1**
+
+```typescript
+enum E {
+  A = 'a',
+  B = 'b'
+}
+
+let s1: Record<E, number> = {
+  'a': 0,
+  'b': 1
+}
+```
+
+**ArkTS1.2**
+
+```typescript
+enum E {
+  A = 'a',
+  B = 'b'
+}
+
+let s1: Record<string, number> = {
+  'a': 0,
+  'b': 1
+}
 ```
 
 ## 逆变和协变
