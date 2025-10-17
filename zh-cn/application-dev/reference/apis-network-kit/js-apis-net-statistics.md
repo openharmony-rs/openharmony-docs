@@ -816,7 +816,7 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 > **说明：**
 >
->本接口只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于31天，会抛出错误码2103019。
+>本接口只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于当前系统时间31天以上，会抛出错误码2103019。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
