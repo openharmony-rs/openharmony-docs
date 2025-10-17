@@ -245,6 +245,10 @@ export const writeAppEvent: () => void;
 5. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：
 
    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import testNapi from 'libentry.so';
+```
    
    <!-- @[AppEvent_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
