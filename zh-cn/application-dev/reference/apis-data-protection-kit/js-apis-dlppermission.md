@@ -817,7 +817,7 @@ try {
 
 getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void
 
-查询指定应用的保留沙箱信息列表。使用callback方式异步返回结果。
+查询当前应用的保留沙箱信息列表。使用callback方式异步返回结果。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1362,7 +1362,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
 | 19100014 | Account not logged in. |
-  
+
 **示例：**
 
 ```ts
@@ -1546,7 +1546,7 @@ async function ExampleFunction(dlpFilePath: string) {
 | -------- | -------- | -------- |
 | NOT_OPEN | 0 | 表示超过权限管控时间后，用户无权限打开DLP文件。 |
 | OPEN | 1 | 表示超过权限管控时间后，登录账号的用户拥有编辑权限。 |
-  
+
 ## AccountType<sup>21+</sup>
 
 表示授权账号类型的枚举。
@@ -1590,7 +1590,7 @@ async function ExampleFunction(dlpFilePath: string) {
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效。 |
 | fileId | string | 否 | 是 | 表示文件的标识。不超过255字节。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数。 |
- 
+
 ## AuthUser<sup>21+</sup>
 
 表示授权用户数据。
@@ -1614,7 +1614,7 @@ async function ExampleFunction(dlpFilePath: string) {
 
 ### connectServer<sup>21+</sup>
 connectServer(requestId: string, requestData: string, callback: Callback\<string\>): void
-  
+
 该函数提供给SA（System Ability）侧调用，待该函数处理完连云能力后，通过callback调用回SA（System Ability）中。
 
 >**说明：**
@@ -1624,7 +1624,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
-  
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1642,9 +1642,9 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 | 201 | Permission denied. |
 | 19100011 | The system ability works abnormally. |
 
- 
+
 ## DlpConnManager<sup>21+</sup>
-  
+
 用于调用registerPlugin和unregisterPlugin接口，将回调能力在SA（System Ability）中注册/注销。
 
 >**说明：**
@@ -1656,9 +1656,9 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 constructor()
 
 [DlpConnManager](#dlpconnmanager21) 实例化时的构造函数。
- 
+
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
- 
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **错误码：**
@@ -1671,7 +1671,7 @@ constructor()
 
 ### registerPlugin<sup>21+</sup>
 static registerPlugin(plugin: DlpConnPlugin): number
-  
+
 该接口提供将回调注册到SA（System Ability）侧的功能。
 
 >**说明：**
@@ -1708,13 +1708,13 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 ### unregisterPlugin<sup>21+</sup>
 static unregisterPlugin(): void
-  
+
 提供将回调从SA（System Ability）侧注销的能力。
 
 >**说明：**
 >
 > unregisterPlugin将plugin从SA（System Ability）侧注销注册。
-  
+
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
