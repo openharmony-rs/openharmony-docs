@@ -1,4 +1,10 @@
 # KioskStatus (Kiosk Status Information)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The module provides the kiosk status information, including whether the system is in kiosk mode and the information about the application in kiosk mode.
 

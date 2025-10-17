@@ -1,5 +1,11 @@
 # PageAbility Lifecycle
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The PageAbility lifecycle defines all states of a PageAbility, such as **INACTIVE**, **ACTIVE**, and **BACKGROUND**. The figure below shows the lifecycle state transition.
 

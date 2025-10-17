@@ -1,5 +1,12 @@
 # Overview of Application Redirection
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Application redirection enables users to jump from one application to another to transfer data or perform a specific action. It improves the convenience and smoothness of user interactions.
 
 ## Use Cases
