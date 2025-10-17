@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-This topic walks you through on how to derive a 256-bit key using HKDF. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-generation-overview.md#supported-algorithms).
+This topic walks you through on how to derive a 256-bit key using HKDF. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-derivation-overview.md#supported-algorithms).
 
 ## Add the dynamic library in the CMake script.
 ```txt
@@ -171,7 +171,8 @@ static napi_value DeriveKey(napi_env env, napi_callback_info info)
         }
 
         // finish paramset
-        ohResult = InitParamSet(&hkdfFinishParamSet, g_hkdfFinishParams, sizeof(g_hkdfFinishParams) / sizeof(OH_Huks_Param));
+        ohResult = InitParamSet(&hkdfFinishParamSet, g_hkdfFinishParams,
+            sizeof(g_hkdfFinishParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
