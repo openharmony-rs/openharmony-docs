@@ -13,6 +13,8 @@ AVScreenCapture支持应用完成场景化的自定义配置，具体配置可�
 
 ### 蜂窝通话设置
 
+从API 20开始支持蜂窝通话设置。
+
 使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置蜂窝通话时是否保持录屏。
 
 ```c++
@@ -22,6 +24,8 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
 ### 设置B帧编码
+
+从API 20开始支持设置B帧编码。
 
 使用[OH_AVScreenCapture_StrategyForBFramesEncoding](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforbframesencoding)设置是否使用B帧编码，用于减小录制文件的大小。
 
@@ -33,6 +37,8 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ### 设置屏幕捕获Picker
 
+从API 20开始支持设置屏幕捕获Picker。
+
 使用[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置是否弹出屏幕捕获Picker。
 
 ```c++
@@ -42,6 +48,8 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
 ## 设置旋转适配
+
+从API 20开始支持设置旋转适配。
 
 使用[OH_AVScreenCapture_StrategyForCanvasFollowRotation](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)，可设置录屏时是否自动跟随屏幕旋转。
 
@@ -70,6 +78,8 @@ OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 ```
 
 ## 隐私设置
+
+从API 20开始支持隐私设置。
 
 使用[OH_AVScreenCapture_StrategyForPrivacyMaskMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforprivacymaskmode)设置屏幕录制隐私窗口屏蔽模式。
 
@@ -107,6 +117,8 @@ OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 
 ## 设置捕获光标
 
+从API 15开始支持设置捕获光标。
+
 使用[OH_AVScreenCapture_ShowCursor](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_showcursor)设置光标显示开关，开始录屏前后均可调用。
 
 ```c++
@@ -114,6 +126,8 @@ OH_AVScreenCapture_ShowCursor(capture, false);
 ```
 
 ## 设置最大帧率
+
+从API 14开始支持设置最大帧率。
 
 使用[OH_AVScreenCapture_SetMaxVideoFrameRate](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmaxvideoframerate)设置录屏时的最大帧率，需在录屏启动后被调用。
 
