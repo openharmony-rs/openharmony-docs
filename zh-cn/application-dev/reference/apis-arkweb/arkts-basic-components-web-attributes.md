@@ -2453,10 +2453,10 @@ textAutosizing(textAutosizing: boolean)
 > **说明：**
 >
 > - 文本字体大小自动调整生效需要满足的前置条件：
-> - 1. 设备形态为：Phone、Tablet、Wearable、TV。
-> - 2. Web组件视口宽度 < 980px。
-> - 3. 页面文本量大，页面文本的字号*字符数 ≥ 3920。
-> - 4. 前端无metaViewport设置，或metaViewport设置中无"width"和"initial-scale"属性。
+>   - 设备形态为：Phone、Tablet、Wearable、TV。
+>   - Web组件视口宽度 < 980px。
+>   - 页面文本量大，页面文本的字号*字符数 ≥ 3920。
+>   - 前端无metaViewport设置，或metaViewport设置中无"width"和"initial-scale"属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
