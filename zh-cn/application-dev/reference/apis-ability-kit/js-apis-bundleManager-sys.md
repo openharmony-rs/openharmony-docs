@@ -6127,7 +6127,7 @@ try {
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-删除指定用户下指定应用的备份数据。该方法使用Promise异步回调。
+恢复指定用户下指定应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6151,7 +6151,7 @@ recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
@@ -6189,7 +6189,7 @@ try {
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-删除指定用户下指定应用的备份数据。该方法使用Promise异步回调。
+删除指定用户下指定应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6213,7 +6213,7 @@ removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
