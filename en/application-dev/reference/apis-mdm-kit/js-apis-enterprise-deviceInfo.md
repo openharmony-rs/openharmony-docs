@@ -1,4 +1,10 @@
 # @ohos.enterprise.deviceInfo (Device Information Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **deviceInfo** module provides APIs for enterprise device information management, including obtaining device serial numbers and device names.
 
@@ -25,6 +31,8 @@ Obtains device information.
 **Required permissions**: ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -53,14 +61,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace with actual values.
   let result: string = deviceInfo.getDeviceInfo(wantTemp, 'deviceName');
   console.info(`Succeeded in getting device name, result : ${result}`);
 } catch (err) {
