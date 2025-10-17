@@ -160,6 +160,36 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
    <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+        Button('writeEvent ArkTS')
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('80%')
+          .height('5%')
+          .onClick(() => {
+            // 在按钮点击函数中进行事件打点，以记录按钮点击事件
+            let eventParams: Record<string, number> = {'clickTime': 100};
+            let eventInfo: hiAppEvent.AppEventInfo = {
+              // 事件领域定义
+              domain: 'button',
+              // 事件名称定义
+              name: 'click',
+              // 事件类型定义
+              eventType: hiAppEvent.EventType.BEHAVIOR,
+              // 事件参数定义
+              params: eventParams,
+            };
+            hiAppEvent.write(eventInfo).then(() => {
+              hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
+            }).catch((err: BusinessError) => {
+              hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+            });
+          })
+```
+
 ## 调测验证
 
 1. 点击DevEco Studio界面中的运行按钮，运行应用工程。在应用界面中点击“WatchAppCrash ArkTS&C++”按钮，触发崩溃事件。应用退出后，重新打开应用。
