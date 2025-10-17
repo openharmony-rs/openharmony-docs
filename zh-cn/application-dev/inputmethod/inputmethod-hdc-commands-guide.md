@@ -22,7 +22,7 @@ hdc shell ime [选项] [参数]
 
 ## 通过ime工具管理输入法示例代码
 
-1. 启用输入法，支持启用三方输入法到基础模式或者全量模式。
+1. 启用输入法，支持启用三方输入法到基础模式或者完整体验模式。
 
    ```shell
     # 输入：hdc命令启用输入法。
@@ -30,7 +30,7 @@ hdc shell ime [选项] [参数]
     # 输出：效果等同于启用API调用。
     # 基础模式
     hdc shell ime -e com.xxx.yyy 
-    # 全量模式
+    # 完整体验模式
     hdc shell ime -e com.xxx.yyy -f
    ```
 
