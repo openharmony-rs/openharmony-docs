@@ -22,7 +22,7 @@
 |  [断言能力](#断言能力)   | 判断用例实际结果值与预期值是否相符。                         |
 |  [Mock能力](#mock能力) | 支持函数级Mock能力，对定义的函数进行Mock并修改函数的行为，使其返回指定的值或者执行指定操作。 |
 |  [数据驱动能力](#数据驱动) | 提供数据驱动能力，支持复用同一个测试脚本，使用不同输入数据驱动测试脚本执行。 |
-| [专项能力](#命令行执行测试脚本) | 支持测试套与用例筛选、随机执行、压力测试、超时设置、遇错即停模式和跳过执行模式。 |
+|  [专项能力](#命令行执行测试脚本) | 支持测试套与用例筛选、随机执行、压力测试、超时设置、遇错即停模式和跳过执行模式。 |
 
   **图1.单元测试框架主要功能**
 
@@ -60,7 +60,7 @@
 下面提供一个简单示例，测试场景：启动被测试页面，检查设备当前显示的页面是否为预期启动的页面。
 
 ```ts
-import { describe, it, expect, Level } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
 
@@ -70,20 +70,21 @@ function sleep(time: number) {
 }
 export default function abilityTest() {
   describe('ActsAbilityTest', () =>{
-  //测试套名称为ActsAbilityTest
-    it('testExample',Level.LEVEL1, async (done: Function) => {
-    //测试用例名称为testExample
+  // 测试套名称为ActsAbilityTest
+    // 可根据此处设置的用例类型、用例规模、用例级别进行用例筛选
+    it('testExample',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    // 测试用例名称为testExample
       console.info("unitTest: TestExample begin");
       await sleep(500);
       const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-      //启动被测试Ability
+      // 启动被测试Ability
       const want: Want = {
         bundleName: bundleName,
         abilityName: 'EntryAbility'
       }
       await delegator.startAbility(want);
       await sleep(500);
-      //获取设备上前台显示的页面并断言检查
+      // 获取设备上前台显示的页面并断言检查
       const ability: UIAbility = await delegator.getCurrentTopAbility();
       console.info("get top ability");
       expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
@@ -134,8 +135,8 @@ export default function abilityTest() {
 | 参数     | 参数含义及取值                                             | 示例                              |
 | ------------ | -----------------------------------------------------------------------------     | ----------------------------------------- |
 | unittest     | 用例执行所使用OpenHarmonyTestRunner对象，取值可为OpenHarmonyTestRunner或用户自定义runner名称。                  | -s unittest OpenHarmonyTestRunner        |
-| class        | 筛选执行方式，即指定要执行的测试套或测试用例。取值为describeName，describeName#itName。                   | -s class attributeTest#testAttributeIt    |
-| notClass     | 排除执行方式，即指定不需要执行的测试套或测试用例。取值为describeName，describeName#itName。                     | -s notClass attributeTest#testAttributeIt |
+| class        | 筛选执行方式，即指定要执行的测试套或测试用例。取值为describeName，describeName#itName，其中describeName为测试套名称、itName为测试用例名称。 | -s class attributeTest#testAttributeIt    |
+| notClass     | 排除执行方式，即指定不需要执行的测试套或测试用例。取值为describeName，describeName#itName，其中describeName为测试套名称、itName为测试用例名称。| -s notClass attributeTest#testAttributeIt |
 | itName       |筛选执行方式， 指定要执行的测试用例。取值为itName。                              | -s itName testAttributeIt                 |
 | timeout      | 设置测试用例执行的超时时间。取值为正整数（单位ms），默认值：5000。                      | -s timeout 15000                          |
 | breakOnError | 遇错即停方式，设置是否在用例失败时立即停止测试。取值为true（停止）/false（继续），默认为false。<br> **说明**：从@ohos/hypium 1.0.6版本开始支持。 | -s breakOnError true                      |
@@ -144,7 +145,7 @@ export default function abilityTest() {
 | level        | 筛选执行方式，指定筛选执行的用例级别。取值为0，1，2，3，4。                                              | -s level 0                                |
 | size         | 筛选执行方式，指定筛选执行的用例规模。取值为small，medium，large。                                        | -s size small        |
 | stress       | 压力执行方式，指定执行用例的执行次数，设置后框架按照设置次数重复执行。取值为正整数。<br> **说明**：从@ohos/hypium 1.0.5版本开始支持。                  | -s stress 1000                            |
-| skipMessage       | 控制是否显示跳过测试套和跳过用例的信息。取值为true（跳过）/false（不跳过），默认为false。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。 | -s skipMessage true                            |
+| skipMessage       | 控制显示待执行的测试用例信息全集中，是否包含被设置跳过执行的测试套和用例的信息。取值为true（不显示相关信息）/false（显示相关信息），默认为false。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。 | -s skipMessage true                            |
 | runSkipped       | 跳过执行方式，指定要执行的跳过测试套&跳过用例。取值为all，skipped，describeName#itName。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。 | -s runSkipped all                            |
 
 * 执行测试脚本
@@ -225,60 +226,54 @@ export default function abilityTest() {
 * 查看测试结果
 
 1. 在命令行模式执行过程中，框架会打印如下日志信息。
+    ```
+    OHOS_REPORT_STATUS: class=ActsAbilityTest
+    OHOS_REPORT_STATUS: current=1
+    OHOS_REPORT_STATUS: id=JS
+    OHOS_REPORT_STATUS: numtests=447
+    OHOS_REPORT_STATUS: stream=
+    OHOS_REPORT_STATUS: test=testExample
+    OHOS_REPORT_STATUS_CODE: 1
 
- ```
-  OHOS_REPORT_STATUS: class=testStop
-  OHOS_REPORT_STATUS: current=1
-  OHOS_REPORT_STATUS: id=JS
-  OHOS_REPORT_STATUS: numtests=447
-  OHOS_REPORT_STATUS: stream=
-  OHOS_REPORT_STATUS: test=stop_0
-  OHOS_REPORT_STATUS_CODE: 1
-
-  OHOS_REPORT_STATUS: class=testStop
-  OHOS_REPORT_STATUS: current=1
-  OHOS_REPORT_STATUS: id=JS
-  OHOS_REPORT_STATUS: numtests=447
-  OHOS_REPORT_STATUS: stream=
-  OHOS_REPORT_STATUS: test=stop_0
-  OHOS_REPORT_STATUS_CODE: 0
-  OHOS_REPORT_STATUS: consuming=4
- ```
-
-| 日志输出字段               | 日志输出字段含义       |
-| -------           | -------------------------|
-| OHOS_REPORT_SUM    | 当前执行的测试套中用例总数。 |
-| OHOS_REPORT_STATUS: class | 当前执行用例所属测试套名称。|
-| OHOS_REPORT_STATUS: id | 当前用例执行语言，默认JS。  |
-| OHOS_REPORT_STATUS: numtests | 当前测试包中测试用例总数。|
-| OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
-| OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
-| OHOS_REPORT_STATUS_CODE | 当前用例执行结果状态。0表示通过，1表示错误，2表示失败。|
-| OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
-
+    OHOS_REPORT_STATUS: class=ActsAbilityTest
+    OHOS_REPORT_STATUS: current=1
+    OHOS_REPORT_STATUS: id=JS
+    OHOS_REPORT_STATUS: numtests=447
+    OHOS_REPORT_STATUS: stream=
+    OHOS_REPORT_STATUS: test=testExample
+    OHOS_REPORT_STATUS_CODE: 0
+    OHOS_REPORT_STATUS: consuming=4
+    ```
+    | 日志输出字段               | 日志输出字段含义       |
+    | -------           | -------------------------|
+    | OHOS_REPORT_SUM    | 当前执行的测试套中用例总数。 |
+    | OHOS_REPORT_STATUS: class | 当前执行用例所属测试套名称。|
+    | OHOS_REPORT_STATUS: id | 当前用例执行语言，默认JS。  |
+    | OHOS_REPORT_STATUS: numtests | 当前测试包中测试用例总数。|
+    | OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
+    | OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
+    | OHOS_REPORT_STATUS_CODE | 当前用例执行结果状态。0表示通过，1表示错误，2表示失败。|
+    | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
 2. 命令行执行完成后，框架会打印如下相关日志信息。
+    ```
+    OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
+    OHOS_REPORT_CODE: 0
 
- ```
-  OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
-  OHOS_REPORT_CODE: 0
+    OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
+    OHOS_REPORT_STATUS: taskconsuming=16029
+    ```
+    | 日志输出字段               | 日志输出字段含义           |
+    | ------------------| -------------------------|
+    | run    | 当前测试包用例总数。 |
+    | Failure | 当前测试失败用例数量。 |
+    | Error | 当前执行用例发生错误用例数量。  |
+    | Pass | 当前执行用例通过用例数量。|
+    | Ignore | 当前未执行用例数量。 |
+    | taskconsuming| 执行当前测试用例总耗时（ms）。 |
 
-  OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
-  OHOS_REPORT_STATUS: taskconsuming=16029
-
- ```
-
-| 日志输出字段               | 日志输出字段含义           |
-| ------------------| -------------------------|
-| run    | 当前测试包用例总数。 |
-| Failure | 当前测试失败用例数量。 |
-| Error | 当前执行用例发生错误用例数量。  |
-| Pass | 当前执行用例通过用例数量。|
-| Ignore | 当前未执行用例数量。 |
-| taskconsuming| 执行当前测试用例总耗时（ms）。 |
-
-> **说明：**
->
-> 当按照遇错即停方式执行时，用例发生错误时，注意查看Ignore字段以及错误中断时的提示信息。
+    > **说明：**
+    >
+    > 当按照遇错即停方式执行时，用例发生错误时，注意查看Ignore字段以及错误中断时的提示信息。
 
 ## 单元测试框架能力使用说明
 ### 基础流程能力
@@ -608,7 +603,7 @@ Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |
 | verify | 验证函数在对应参数下的执行行为是否符合预期，返回一个VerificationMode类。 |
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
-| clear | 用例执行完毕后，对数据mocker实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
+| clear | 用例执行完毕后，对被Mock对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
 | clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |  
 
 **VerificationMode**
@@ -682,7 +677,7 @@ export default function afterReturnTest() {
       console.info("it1 begin");
       // 创建一个Mock能力的对象MockKit
       let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
+      // 初始化ClassName的对象claser，作为被Mock的对象实例
       let claser: ClassName = new ClassName();
       // 进行Mock操作，对ClassName类的method_1函数进行Mock
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
@@ -1043,7 +1038,7 @@ export default function verifyTimesTest() {
       let func_1: Function = mocker.mockFunc(claser, claser.method_1);
       // 期望被Mock后的函数返回结果'4'
       when(func_1)('123').afterReturn('4');
-      // 5.函数调用
+      // 函数调用
       claser.method_1('123', 'ppp');
       claser.method_1('abc');
       claser.method_1('xyz');
@@ -1060,7 +1055,7 @@ export default function verifyTimesTest() {
 }
 ```
 
-**示例代码11**：Mock静态函数（从1.0.16版本开始支持）
+**示例代码11**：Mock静态函数（从@ohos/hypium 1.0.16版本开始支持）
 
 ```ts
 import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
@@ -1098,7 +1093,7 @@ export default function staticTest() {
 
 ### 数据驱动
 
-单元测试框架的数据驱动能力从[1.0.2版本](https://ohpm.openharmony.cn/#/cn/detail/@ohos%2Fhypium)开始支持。开发者可以复用测试用例代码，通过数据配置文件配置输入数据和预期结果数据，在用例实现中获取数据进行相应实现和断言处理，减少冗余测试代码。
+单元测试框架的数据驱动能力从[@ohos/hypium 1.0.2版本](https://ohpm.openharmony.cn/#/cn/detail/@ohos%2Fhypium)开始支持。开发者可以复用测试用例代码，通过数据配置文件配置输入数据和预期结果数据，在用例实现中获取数据进行相应实现和断言处理，减少冗余测试代码。
 
 数据驱动能力可以根据测试数据配置来驱动测试用例的执行次数和每次执行时传入的参数，使用时依赖data.json配置文件，文件内容如下：
 
@@ -1110,28 +1105,28 @@ export default function staticTest() {
 
 ```json
 {
-	"suites": [{
-		"describe": ["AbilityTest"],
-		"stress": 2,
-		"params": {
-			"suiteParams1": "suiteParams001",
-			"suiteParams2": "suiteParams002"
-		},
-		"items": [{
-			"it": "testDataDriverAsync",
-			"stress": 2,
-			"params": [{
-				"name": "tom",
-				"value": 5
-			}, {
-				"name": "jerry",
-				"value": 4
-			}]
-		}, {
-			"it": "testDataDriver",
-			"stress": 3
-		}]
-	}]
+  "suites": [{
+    "describe": ["AbilityTest"],
+    "stress": 2,
+    "params": {
+      "suiteParams1": "suiteParams001",
+      "suiteParams2": "suiteParams002"
+    },
+    "items": [{
+      "it": "testDataDriverAsync",
+      "stress": 2,
+      "params": [{
+        "name": "tom",
+        "value": 5
+      }, {
+        "name": "jerry",
+        "value": 4
+      }]
+    }, {
+      "it": "testDataDriver",
+      "stress": 3
+    }]
+  }]
 }
 ```
 
@@ -1148,13 +1143,7 @@ export default function staticTest() {
 
 **示例代码**
 
-- Stage模型
-
-在测试工程中的TestAbility目录下TestAbility.ets文件中导入data.json，并在文件中的Hypium.hypiumTest()函数执行前设置参数数据，参考下面示例代码。
-
-- FA模型
-
-在测试工程中的TestAbility目录下的app.js或app.ets文件中导入data.json，并在文件中Hypium.hypiumTest()函数执行前设置参数数据，参考下面示例代码。
+Stage模型在测试工程中的TestAbility目录下TestAbility.ets文件中导入data.json（FA模型在测试工程中的TestAbility目录下的app.js或app.ets文件中导入data.json），并在文件中的Hypium.hypiumTest()函数执行前设置参数数据，参考下面示例代码。
 
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -1193,7 +1182,7 @@ Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
 ```
 >**说明:** 
 >
->若要使用数据驱动传入参数功能，测试用例 `it` 的 `func` 必须传入两个参数：`done` 定义在前面，`data` 定义在后面。若不使用数据驱动传入参数功能，`func` 可以不传参或仅传入 `done`。
+>若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
 
 ### 专项能力
 专项能力提供脚本执行配置能力，包括筛选执行、压力执行、随机执行等，通过命令行方式执行，具体用法请参考[命令行执行测试脚本](#命令行执行测试脚本)章节介绍。
