@@ -98,12 +98,15 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
    export default class EntryAbility extends UIAbility {
      async onWindowStageCreate(windowStage: window.WindowStage): Promise<void> {
        let store: relationalStore.RdbStore | null = null;
-
-       store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
-       await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-       // Set the created table as a distributed table.
-       await store.setDistributedTables(['EMPLOYEE']);
-       // Perform related operations.
+       try {
+         store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
+         await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+         // Set the created table as a distributed table.
+         await store.setDistributedTables(['EMPLOYEE']);
+         // Perform related operations.
+       } catch (err) {
+         console.error(`Failed to set distributed tables. code: ${err.code}, message: ${err.message}`);
+       }
      }
    }
    ```
@@ -213,7 +216,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        try {
          // Call the sync API to pull data changes from other devices to the current device.
          const result = await store.sync(relationalStore.SyncMode.SYNC_MODE_PULL, predicates);
-         console.info('Push data success.');
+         console.info('Pull data success.');
          // Obtain the sync result.
          for (let i = 0; i < result.length; i++) {
            const deviceId = result[i][0];
@@ -225,7 +228,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
            }
          }
        } catch (e) {
-         console.error('Push data failed, code: ' + e.code + ', message: ' + e.message);
+         console.error('Pull data failed, code: ' + e.code + ', message: ' + e.message);
        }
      }
    }
@@ -252,7 +255,6 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        try {
          // Query the distributed table on the specified device in the network cluster.
          const resultSet = await store.remoteQuery(devices[0], 'EMPLOYEE', predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
-         console.info('Remote query success, row cout: ' + resultSet.rowCount);
          console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
        } catch (e) {
          console.error('Remote query failed, code: ' + e.code + ', message: ' + e.message);

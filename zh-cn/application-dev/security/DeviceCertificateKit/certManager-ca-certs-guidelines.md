@@ -52,115 +52,124 @@
 
 2. 导入相关模块。
 
-   ```ts
-   import { certificateManager } from '@kit.DeviceCertificateKit';
-   ```
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+```
 
 3. 安装用户CA证书、获取用户CA证书列表、获取用户证书详情、删除用户CA证书。
 
-   ```ts
-   async function userCASample() {
-     /* 安装的用户CA证书数据需要业务赋值。 */
-     let userCAData: Uint8Array = new Uint8Array([
-       0x30, 0x82, 0x01, 0x2E, 0x30, 0x81, 0xD5, 0x02, 0x14, 0x28, 0x75, 0x71, 0x22, 0xDF, 0xDC, 0xCB,
-       0xD4, 0xE5, 0x6B, 0x6B, 0x89, 0xEB, 0x77, 0x97, 0xF6, 0x1D, 0xF4, 0x62, 0x81, 0x30, 0x0A, 0x06,
-       0x08, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x04, 0x03, 0x02, 0x30, 0x1A, 0x31, 0x18, 0x30, 0x16, 0x06,
-       0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78, 0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F,
-       0x6F, 0x74, 0x20, 0x43, 0x41, 0x30, 0x1E, 0x17, 0x0D, 0x32, 0x35, 0x30, 0x32, 0x32, 0x37, 0x31,
-       0x31, 0x35, 0x38, 0x30, 0x34, 0x5A, 0x17, 0x0D, 0x32, 0x37, 0x31, 0x31, 0x32, 0x33, 0x31, 0x31,
-       0x35, 0x38, 0x30, 0x34, 0x5A, 0x30, 0x1A, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03,
-       0x0C, 0x0F, 0x45, 0x78, 0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43,
-       0x41, 0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x02, 0x01, 0x06, 0x08,
-       0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00, 0x04, 0x39, 0xCC, 0xE1, 0x3F,
-       0x36, 0x57, 0x73, 0x82, 0x28, 0x56, 0xBB, 0xE7, 0x97, 0x6C, 0xA9, 0x66, 0x3E, 0xD7, 0x2C, 0xF2,
-       0x7B, 0x05, 0x81, 0xE8, 0xA4, 0x57, 0x90, 0x5D, 0x64, 0x6A, 0xAD, 0x30, 0x2F, 0x1D, 0x6F, 0x31,
-       0x31, 0xCB, 0x35, 0x84, 0x7F, 0xF6, 0xE4, 0xD5, 0x7B, 0x66, 0xDD, 0x93, 0x2B, 0x0C, 0x1B, 0x42,
-       0xA4, 0x68, 0xE3, 0xC6, 0x9C, 0xF5, 0xFE, 0x66, 0x78, 0xF7, 0xBD, 0x9C, 0x30, 0x0A, 0x06, 0x08,
-       0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x04, 0x03, 0x02, 0x03, 0x48, 0x00, 0x30, 0x45, 0x02, 0x21, 0x00,
-       0xCC, 0xA7, 0x34, 0xC5, 0xC0, 0x31, 0x36, 0x19, 0x3F, 0xA4, 0x34, 0x48, 0xC3, 0x2C, 0x7D, 0x33,
-       0x1F, 0x0A, 0xCF, 0xB0, 0x73, 0x58, 0x6B, 0xB7, 0xC9, 0xAE, 0x16, 0x34, 0xF1, 0x8F, 0xAF, 0xC8,
-       0x02, 0x20, 0x70, 0x9C, 0x64, 0xC2, 0xE2, 0x60, 0x26, 0x01, 0x5F, 0xF2, 0x0B, 0x8C, 0x9F, 0x7D,
-       0x18, 0x6E, 0x91, 0xA6, 0xB3, 0x5E, 0x2C, 0xF0, 0x68, 0x45, 0x11, 0x1D, 0xA0, 0xCB, 0x83, 0xEB,
-       0xE6, 0x25,
-     ]);
-   
-     let certUri: string = '';
-     let certScope = certificateManager.CertScope.CURRENT_USER;
-     try {
-       /* 在当前用户下，安装用户CA证书。 */
-       let result = certificateManager.installUserTrustedCertificateSync(userCAData, certScope);
-       certUri = (result.uri != undefined) ? result.uri : '';
-       console.info(`Succeeded in install user ca cert, certUri is ${certUri}`);
-     } catch (err) {
-       console.error(`Failed to install user ca cert. Code: ${err.code}, message: ${err.message}`);
-     }
-   
-     try {
-       /* 获取用户CA证书详情。 */
-       let result = await certificateManager.getUserTrustedCertificate(certUri);
-       if (result === undefined || result.certInfo == undefined) {
-         console.error('The result of getting user ca cert is undefined.');
-       } else {
-         let certInfo = result.certInfo;
-         console.info('Succeeded in getting user ca cert.');
-       }
-     } catch (err) {
-       console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
-     }
-   
-     try {
-       /* 获取当前用户下的用户CA证书列表。 */
-       let result = await certificateManager.getAllUserTrustedCertificates(certScope);
-       if (result == undefined) { /* 用户根CA证书个数为0时，返回result为undefined。 */
-         console.info('the count of the user trusted certificates is 0');
-       } else if (result.certList == undefined) {
-         console.error('The result of getting current user trusted certificates is undefined.');
-       } else {
-         let list = result.certList;
-         console.info('Succeeded in getting user ca cert list.');
-       }
-     } catch (err) {
-       console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
-     }
-   
-     try {
-       /* 删除安装的用户CA证书。 */
-       certificateManager.uninstallUserTrustedCertificateSync(certUri);
-     } catch (err) {
-       console.error(`Failed to uninstall user ca certificate. Code: ${err.code}, message: ${err.message}`);
-     }
-   }
-   ```
+<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets) -->
+
+``` TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { util } from '@kit.ArkTS';
+
+async function userCASample() {
+  /* 安装的用户CA证书数据需要业务赋值。 */
+  let userCAData: Uint8Array = new util.TextEncoder().encodeInto('-----BEGIN CERTIFICATE-----\n' +
+    'MIIDSTCCAjECFFRZKkiBuiZ+zqfjJOg05yeTePM9MA0GCSqGSIb3DQEBCwUAMGEx\n' +
+    'CzAJBgNVBAYTAmNuMQ0wCwYDVQQIDARvaG9zMQswCQYDVQQHDAJjbTEhMB8GA1UE\n' +
+    'CgwYSW50ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMRMwEQYDVQQDDApUZXN0Um9vdENB\n' +
+    'MB4XDTI1MTAxNTA3MzE0MloXDTI2MTAxNTA3MzE0MlowYTELMAkGA1UEBhMCY24x\n' +
+    'DTALBgNVBAgMBG9ob3MxCzAJBgNVBAcMAmNtMSEwHwYDVQQKDBhJbnRlcm5ldCBX\n' +
+    'aWRnaXRzIFB0eSBMdGQxEzARBgNVBAMMClRlc3RSb290Q0EwggEiMA0GCSqGSIb3\n' +
+    'DQEBAQUAA4IBDwAwggEKAoIBAQC5p4eoQJyTBvn01M8SwEi8dguTIPGmD3a8SGIj\n' +
+    'KXaB6ltv742H5EBjgk+zC8+Gis0ehEqwk3pVnnmByeYvrERxsUqDt69/FndlfTxI\n' +
+    'C2/2MxWVk97g/6TpJ5Lt2mTrH+rSOgUDyU27aPn12ZnDF1mLsT+U+CBmfj4+J4tW\n' +
+    'yzdFNj7kcKMQQok+L1dtFlDNMNpMA1UqADzoC3XgFl49CpDtoFId9DVsgUPkPfX1\n' +
+    '89cCunomgJe1b17FzxfNu2yhbl5cnUEjeHGbmBgBIB7uG8tjGstnDPx7fl3Xrj+Q\n' +
+    'fRrwCpVKD9RxoyUBFbHttixxY5bHFUdvHRB251sxD+JfxxxLAgMBAAEwDQYJKoZI\n' +
+    'hvcNAQELBQADggEBAEGbNqcMU7C/lrIytI/OTtzYbkWDsfnRSPxlCUoZ2Xh3S83A\n' +
+    'SNQ9Ze5tDwWdW9Hlde9May6hzvuQSYeMLLnyM8WGResXCs7UbnSQe7fGfUu+xDGb\n' +
+    'h4tamnRFtZydxCCgDT9lIdHeutlPwOuxlR4HXpeowGeGJX0iFrdo6D0iXAY34hic\n' +
+    'yLQzuBqE/1s3PLA83Fi4EOOOV7P/ahmOLtBFlHbySHV68i9PNeNr9SDykH9/RgI9\n' +
+    '5G8ZTZj8oSmbTGGtfNuVXybMyJMRlz6BkxG++kYcg7STRBqHGX7RrWHiupguNreO\n' +
+    '4sJBdSpWBq172ZEyOvTqC4xX9lLYqwwBQ++TFoo=\n' +
+    '-----END CERTIFICATE-----');
+
+  let certUri: string = '';
+  let certScope = certificateManager.CertScope.CURRENT_USER;
+  try {
+    /* 在当前用户下，安装用户CA证书。 */
+    let result = certificateManager.installUserTrustedCertificateSync(userCAData, certScope);
+    certUri = (result.uri != undefined) ? result.uri : '';
+    console.info(`Succeeded in install user ca cert, certUri is ${certUri}`);
+  } catch (err) {
+    console.error(`Failed to install user ca cert. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  try {
+    /* 获取用户CA证书详情。 */
+    let result = await certificateManager.getUserTrustedCertificate(certUri);
+    if (result === undefined || result.certInfo == undefined) {
+      console.error('The result of getting user ca cert is undefined.');
+    } else {
+      let certInfo = result.certInfo;
+      console.info('Succeeded in getting user ca cert.');
+    }
+  } catch (err) {
+    console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  try {
+    /* 获取当前用户下的用户CA证书列表。 */
+    let result = await certificateManager.getAllUserTrustedCertificates(certScope);
+    if (result == undefined) { /* 用户根CA证书个数为0时，返回result为undefined。 */
+      console.info('the count of the user trusted certificates is 0');
+    } else if (result.certList == undefined) {
+      console.error('The result of getting current user trusted certificates is undefined.');
+    } else {
+      let list = result.certList;
+      console.info('Succeeded in getting user ca cert list.');
+    }
+  } catch (err) {
+    console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  try {
+    /* 删除安装的用户CA证书。 */
+    certificateManager.uninstallUserTrustedCertificateSync(certUri);
+  } catch (err) {
+    console.error(`Failed to uninstall user ca certificate. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 
 4. 获取系统CA证书路径、用户CA证书路径。应用可以直接通过该路径访问CA证书。
 
-   ```ts
-   function getUserCAPath() {
-     try {
-       /* 获取系统CA的存储位置。 */
-       let property1: certificateManager.CertStoreProperty = {
-         certType: certificateManager.CertType.CA_CERT_SYSTEM,
-       }
-       let systemCAPath = certificateManager.getCertificateStorePath(property1);
-       console.info(`Success to get system ca path: ${systemCAPath}`);
-   
-       /* 获取当前用户的用户CA存储位置。 */
-       let property2: certificateManager.CertStoreProperty = {
-         certType: certificateManager.CertType.CA_CERT_USER,
-         certScope: certificateManager.CertScope.CURRENT_USER,
-       }
-       let userCACurrentPath = certificateManager.getCertificateStorePath(property2);
-       console.info(`Success to get current user's user ca path: ${userCACurrentPath}`);
-   
-       /* 获取设备公共的用户CA存储位置。 */
-       let property3: certificateManager.CertStoreProperty = {
-         certType: certificateManager.CertType.CA_CERT_USER,
-         certScope: certificateManager.CertScope.GLOBAL_USER,
-       }
-       let globalCACurrentPath = certificateManager.getCertificateStorePath(property3);
-       console.info(`Success to get global user's user ca path: ${globalCACurrentPath}`);
-     } catch (error) {
-       console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
-     }
-   }
-   ```
+<!-- @[certificate_management_get_ca_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerGetCAPathSample.ets) -->
+
+``` TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+
+function getUserCaPathSample() {
+  try {
+    /* 获取系统CA的存储位置。 */
+    let property1: certificateManager.CertStoreProperty = {
+      certType: certificateManager.CertType.CA_CERT_SYSTEM,
+    }
+    let systemCAPath = certificateManager.getCertificateStorePath(property1);
+    console.info(`Success to get system ca path: ${systemCAPath}`);
+
+    /* 获取当前用户的用户CA存储位置。 */
+    let property2: certificateManager.CertStoreProperty = {
+      certType: certificateManager.CertType.CA_CERT_USER,
+      certScope: certificateManager.CertScope.CURRENT_USER,
+    }
+    let userCACurrentPath = certificateManager.getCertificateStorePath(property2);
+    console.info(`Success to get current user's user ca path: ${userCACurrentPath}`);
+
+    /* 获取设备公共的用户CA存储位置。 */
+    let property3: certificateManager.CertStoreProperty = {
+      certType: certificateManager.CertType.CA_CERT_USER,
+      certScope: certificateManager.CertScope.GLOBAL_USER,
+    }
+    let globalCACurrentPath = certificateManager.getCertificateStorePath(property3);
+    console.info(`Success to get global user's user ca path: ${globalCACurrentPath}`);
+  } catch (error) {
+    console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+

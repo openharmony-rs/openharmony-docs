@@ -739,6 +739,7 @@
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
         - [管理应用窗口（FA模型）](windowmanager/application-window-fa.md)
+        - [窗口旋转](windowmanager/window-rotation.md)
         - [窗口元数据配置](windowmanager/window-config-m.md)
         <!--Del-->
         - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](windowmanager/system-window-stage-sys.md)
@@ -3812,15 +3813,26 @@
           - [FileIO](reference/apis-core-file-kit/capi-fileio.md)
           - [fileShare](reference/apis-core-file-kit/capi-fileshare.md)
           - [fileUri](reference/apis-core-file-kit/capi-fileuri.md)
+          - [CloudDisk](reference/apis-core-file-kit/capi-clouddisk.md)
         - 头文件<!--core-file-headerfile-->
           - [oh_environment.h](reference/apis-core-file-kit/capi-oh-environment-h.md)
           - [error_code.h](reference/apis-core-file-kit/capi-error-code-h.md)
           - [oh_fileio.h](reference/apis-core-file-kit/capi-oh-fileio-h.md)
           - [oh_file_share.h](reference/apis-core-file-kit/capi-oh-file-share-h.md)
           - [oh_file_uri.h](reference/apis-core-file-kit/capi-oh-file-uri-h.md)
+          - [oh_cloud_disk_manager.h](reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md)
+          - [cloud_disk_error_code.h](reference/apis-core-file-kit/capi-cloud-disk-error-code-h.md)
         - 结构体<!--core-file-struct-->
           - [FileShare_PolicyErrorResult](reference/apis-core-file-kit/capi-fileshare-fileshare-policyerrorresult.md)
           - [FileShare_PolicyInfo](reference/apis-core-file-kit/capi-fileshare-fileshare-policyinfo.md)
+          - [CloudDisk_ChangeData](reference/apis-core-file-kit/capi-clouddisk-clouddisk-changedata.md)
+          - [CloudDisk_ChangesResult](reference/apis-core-file-kit/capi-clouddisk-clouddisk-changesresult.md)
+          - [CloudDisk_DisplayNameInfo](reference/apis-core-file-kit/capi-clouddisk-clouddisk-displaynameinfo.md)
+          - [CloudDisk_FailedList](reference/apis-core-file-kit/capi-clouddisk-clouddisk-failedlist.md)
+          - [CloudDisk_FileSyncState](reference/apis-core-file-kit/capi-clouddisk-clouddisk-filesyncstate.md)
+          - [CloudDisk_PathInfo](reference/apis-core-file-kit/capi-clouddisk-clouddisk-pathinfo.md)
+          - [CloudDisk_ResultList](reference/apis-core-file-kit/capi-clouddisk-clouddisk-resultlist.md)
+          - [CloudDisk_SyncFolder](reference/apis-core-file-kit/capi-clouddisk-clouddisk-syncfolder.md)
       - 错误码<!--core-file-arkts-errcode-->
         - [文件管理错误码](reference/apis-core-file-kit/errorcode-filemanagement.md)
         <!--Del-->
@@ -4437,8 +4449,8 @@
             - [DeviceInfo](reference/apis-basic-services-kit/capi-deviceinfo.md)
             - [OsAccount](reference/apis-basic-services-kit/capi-osaccount.md)
             - [OH_BatteryInfo](reference/apis-basic-services-kit/capi-oh-batteryinfo.md)
-            - [OH_Scan](reference/apis-basic-services-kit/c-apis-scan.md)
-            - [OH_Print](reference/apis-basic-services-kit/_o_h___print.md)
+            - [OH_Scan](reference/apis-basic-services-kit/capi-oh-scan.md)
+            - [OH_Print](reference/apis-basic-services-kit/capi-oh-print.md)
             - [Pasteboard](reference/apis-basic-services-kit/capi-pasteboard.md)
             - [TimeService](reference/apis-basic-services-kit/capi-timeservice.md)
           - 头文件<!--basic-services-headerfile-->
@@ -4450,15 +4462,10 @@
             - [oh_pasteboard_err_code.h](reference/apis-basic-services-kit/capi-oh-pasteboard-err-code-h.md)
             - [os_account.h](reference/apis-basic-services-kit/capi-os-account-h.md)
             - [os_account_common.h](reference/apis-basic-services-kit/capi-os-account-common-h.md)
-            - [ohprint.h](reference/apis-basic-services-kit/ohprint_8h.md)
-            - [ohscan.h](reference/apis-basic-services-kit/c-apis-scan.md)
+            - [ohprint.h](reference/apis-basic-services-kit/capi-ohprint-h.md)
+            - [ohscan.h](reference/apis-basic-services-kit/capi-ohscan-h.md)
             - [time_service.h](reference/apis-basic-services-kit/capi-time-service-h.md)
           - 结构体<!--basic-services-struct-->
-            - [Print_Margin](reference/apis-basic-services-kit/_print___margin.md)
-            - [Print_PageSize](reference/apis-basic-services-kit/_print___page_size.md)
-            - [Print_PrintAttributes](reference/apis-basic-services-kit/_print___print_attributes.md)
-            - [Print_PrintDocCallback](reference/apis-basic-services-kit/_print___print_doc_callback.md)
-            - [Print_Range](reference/apis-basic-services-kit/_print___range.md)
             - [CommonEvent_SubscribeInfo](reference/apis-basic-services-kit/capi-oh-commonevent-commonevent-subscribeinfo.md)
             - [CommonEvent_PublishInfo](reference/apis-basic-services-kit/capi-oh-commonevent-commonevent-publishinfo.md)
             - [CommonEvent_RcvData](reference/apis-basic-services-kit/capi-oh-commonevent-commonevent-rcvdata.md)
@@ -4466,6 +4473,14 @@
             - [Pasteboard_GetDataParams](reference/apis-basic-services-kit/capi-pasteboard-getdataparams.md)
             - [OH_PasteboardObserver](reference/apis-basic-services-kit/capi-pasteboard-oh-pasteboardobserver.md)
             - [OH_Pasteboard](reference/apis-basic-services-kit/capi-pasteboard-oh-pasteboard.md)
+            - [Print_Margin](reference/apis-basic-services-kit/capi-oh-print-print-margin.md)
+            - [Print_PageSize](reference/apis-basic-services-kit/capi-oh-print-print-pagesize.md)
+            - [Print_Range](reference/apis-basic-services-kit/capi-oh-print-print-range.md)
+            - [Print_PrintAttributes](reference/apis-basic-services-kit/capi-oh-print-print-printattributes.md)
+            - [Print_PrintDocCallback](reference/apis-basic-services-kit/capi-oh-print-print-printdoccallback.md)
+            - [Scan_ScannerDevice](reference/apis-basic-services-kit/capi-oh-scan-scan-scannerdevice.md)
+            - [Scan_PictureScanProgress](reference/apis-basic-services-kit/capi-oh-scan-scan-picturescanprogress.md)
+            - [Scan_ScannerOptions](reference/apis-basic-services-kit/capi-oh-scan-scan-scanneroptions.md)
         - 错误码<!--basic-services-arkts-errcode-->
           - [USB服务错误码](reference/apis-basic-services-kit/errorcode-usb.md)
           - [RunningLock锁错误码](reference/apis-basic-services-kit/errorcode-runninglock.md)
@@ -5747,11 +5762,11 @@
     - C API<!--common-basic-c-->
       - 模块<!--common-basic-module-->
         - [Init](reference/common/init.md)
-        - [Memory](reference/common/memory.md)
+        - [Memory](reference/common/capi-memory.md)
         - [JSVM](reference/common/capi-jsvm.md)
       - 头文件<!--common-basic-headerfile-->
         - [syscap_ndk.h](reference/common/syscap__ndk_8h.md)
-        - [purgeable_memory.h](reference/common/purgeable__memory_8h.md)
+        - [purgeable_memory.h](reference/common/capi-purgeable-memory-h.md)
         - [jsvm.h](reference/common/capi-jsvm-h.md)
         - [jsvm_types.h](reference/common/capi-jsvm-types-h.md)
       - 结构体<!--common-basic-struct-->
@@ -5782,6 +5797,7 @@
         - [JSVM_Deferred__*](reference/common/capi-jsvm-jsvm-deferred--8h.md)
         - [JSVM_CallbackStruct*](reference/common/capi-jsvm-jsvm-callbackstruct8h.md)
         - [JSVM_PropertyHandlerConfigurationStruct*](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+        - [PurgMem*](reference/common/capi-memory-purgmem.md)
   - 标准库<!--standard-library-->
     - [libc标准库](reference/native-lib/musl.md)
     - [c++标准库](reference/native-lib/cpp.md)

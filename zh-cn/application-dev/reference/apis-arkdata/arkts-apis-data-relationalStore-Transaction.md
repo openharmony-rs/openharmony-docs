@@ -70,7 +70,7 @@ import { relationalStore } from '@kit.ArkData';
 
 commit(): Promise&lt;void&gt;
 
-提交已执行的SQL语句。如果是使用异步接口执行sql语句，请确保异步接口执行完成之后再调用commit接口，否则可能会丢失SQL操作。调用commit接口之后，该Transaction对象及创建的ResultSet对象都将被关闭。
+提交已执行的SQL语句，使用Promise异步回调。如果是使用异步接口执行sql语句，请确保异步接口执行完成之后再调用commit接口，否则可能会丢失SQL操作。调用commit接口之后，该Transaction对象及创建的ResultSet对象都将被关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -121,7 +121,7 @@ if (store != undefined) {
 
 rollback(): Promise&lt;void&gt;
 
-回滚已经执行的SQL语句。调用rollback接口之后，该Transaction对象及创建的ResultSet对象都会被关闭。
+回滚已经执行的SQL语句，使用Promise异步回调。调用rollback接口之后，该Transaction对象及创建的ResultSet对象都会被关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

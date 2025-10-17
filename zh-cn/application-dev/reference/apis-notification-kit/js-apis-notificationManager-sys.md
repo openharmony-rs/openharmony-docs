@@ -4056,6 +4056,77 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 });
 ```
 
+## notificationManager.setDistributedEnableByBundles<sup>20+</sup>
+
+setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
+
+批量设置应用是否支持跨设备协同。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                       |
+| -------- | ------------------------ | ---- | -------------------------- |
+| bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](js-apis-inner-notification-notificationRequest-sys.md#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
+| deviceType | string | 是   | 设备类型。|
+
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----|
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                          |
+| 1600002  | Marshalling or unmarshalling error.      |
+| 1600003  | Failed to connect to the service.               |
+| 1600010  | Distributed operation failed.            |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle1: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName1",
+    uid: 1,
+    enable: true
+};
+let bundle2: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName2",
+    uid: 2,
+    enable: true
+};
+let bunles: Array<notificationManager.DistributedBundleEnableInfo> = [
+    bundle1,bundle2
+]
+
+let deviceType: string = "liteWearable";
+notificationManager.setDistributedEnableByBundles(bunles, deviceType).then(() => {
+    console.info("setDistributedEnableByBundles success");
+}).catch((err: BusinessError) => {
+    console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.isDistributedEnabledByBundle<sup>12+</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
@@ -5135,6 +5206,138 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## notificationManager.setRingtoneInfoByBundle<sup>22+</sup>
+
+setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
+
+设置应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo22) | 是   | 自定义铃声信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      let ringtoneInfo: notificationManager.RingtoneInfo = {
+        ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+        ringtoneTitle: "ringtoneName",
+        ringtoneFileName: "ringtonePath",
+        ringtoneUri: "ringtoneUri",
+      }
+      notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+        hilog.info(0x0000, 'testTag', 'setRingtoneInfoByBundle ,bundle:' + JSON.stringify(bundle) + 'ringtoneInfoJSON' + JSON.stringify(ringtoneInfo));
+      }).catch((err: BusinessError) => {
+        console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## notificationManager.getRingtoneInfoByBundle<sup>22+</sup>
+
+getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
+
+获取应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[RingtoneInfo](#ringtoneinfo22)\> | Promise对象，返回应用自定义铃声信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+| 1600024  | The specified bundle has no custom ringtone information.  |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      notificationManager.getRingtoneInfoByBundle(bundle)
+        .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+          hilog.info(0x0000, 'testTag', 'getRingtoneInfoByBundle success：' + this.ringtoneInfo);
+        }).catch((err: BusinessError) => {
+          console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
 ## DoNotDisturbDate
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -5312,3 +5515,33 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | USER_MODIFIED_ON    | 1   | 表示用户设置的开启状态。                 |
 | SYSTEM_DEFAULT_OFF  | 2   | 表示在用户设置前的初始关闭状态。            |
 | SYSTEM_DEFAULT_ON   | 3   | 表示在用户设置前的初始开启状态。                 |
+
+## RingtoneType<sup>22+</sup>
+
+描述自定义铃声类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| RINGTONE_TYPE_SYSTEM   | 0   | 表示系统自定义铃声。            |
+| RINGTONE_TYPE_LOCAL    | 1   | 表示本地自定义铃声。                 |
+| RINGTONE_TYPE_ONLINE  | 2   | 表示在线自定义铃声。            |
+| RINGTONE_TYPE_NONE   | 3   | 表示非自定义铃声。                 |
+
+## RingtoneInfo<sup>22+</sup>
+
+描述自定义铃声信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称    | 类型     | 只读 | 可选 | 说明                     |
+| ------- | ------- | ---- | ---- | ----------------------- |
+| ringtoneType | [ringtoneType](#ringtonetype22)  |  否  | 否   | 铃声的类型。|
+| ringtoneTitle | string  |  否  | 是   | 铃声的标题。  |
+| ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。  |
+| ringtoneUri | string  |  否  | 是   | 铃声的URI。  |

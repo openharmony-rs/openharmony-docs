@@ -3388,7 +3388,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startSelfUIAbilityInCurrentProcess<sup>21+</sup>
+### startSelfUIAbilityInCurrentProcess<sup>22+</sup>
 
 startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise\<void>
 

@@ -42,6 +42,8 @@
 
 1. 引用对应的头文件
 
+   <!-- @[napi_image_classification_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+   
    ```c++
    #include <iostream>
    #include <sstream>
@@ -56,9 +58,9 @@
    #include "napi/native_api.h"
    ```
 
-   <!-- @[napi_image_classification_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
-
 2. 读取模型文件
+
+   <!-- @[napi_image_classification_log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    #define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
@@ -67,7 +69,7 @@
    #define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    ```
 
-   <!-- @[napi_image_classification_log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+   <!-- @[napi_image_classification_ReadModelFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    void *ReadModelFile(NativeResourceManager *nativeResourceManager, const std::string &modelName, size_t *modelSize)
@@ -98,9 +100,9 @@
    }
    ```
 
-   <!-- @[napi_image_classification_ReadModelFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
-
 3. 创建上下文，设置线程数、设备类型等参数，并加载模型。本样例模型，不支持使用NNRt推理。
+
+   <!-- @[napi_image_classification_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    void DestroyModelBuffer(void **buffer)
@@ -154,15 +156,15 @@
    }
    ```
 
-   <!-- @[napi_image_classification_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
-
 4. 设置模型输入数据，执行模型推理。
+
+   <!-- @[napi_image_classification_print_num](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    constexpr int K_NUM_PRINT_OF_OUT_DATA = 20;
    ```
 
-   <!-- @[napi_image_classification_print_num](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+   <!-- @[napi_image_classification_FillInputTensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    // 设置模型输入数据
@@ -180,7 +182,7 @@
    }
    ```
 
-   <!-- @[napi_image_classification_FillInputTensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+   <!-- @[napi_image_classification_RunMSLiteModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    // 执行模型推理
@@ -225,9 +227,9 @@
    }
    ```
 
-   <!-- @[napi_image_classification_RunMSLiteModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
-
 5. 调用以上方法，实现完整的模型推理流程。
+
+   <!-- @[napi_image_classification_RunDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    static napi_value RunDemo(napi_env env, napi_callback_info info)
@@ -305,8 +307,6 @@
    }
    ```
 
-   <!-- @[napi_image_classification_RunDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
-
 6. 编写CMake脚本，链接MindSpore Lite动态库。
 
    ```cmake
@@ -334,11 +334,11 @@
 
 1. 在 entry/src/main/cpp/types/libentry/Index.d.ts，定义ArkTS接口`runDemo()` 。内容如下：
 
-   ```ts
+   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/index.d.ts) -->
+   
+   ```typescript
    export const runDemo: (a: number[], b:Object) => Array<number>;
    ```
-
-   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 2. 在 oh-package.json5 文件，将API与so相关联，成为一个完整的ArkTS模块：
 
@@ -357,7 +357,9 @@
 2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 3. 在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
 
-```ts
+<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
 // Index.ets
 import msliteNapi from 'libentry.so';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -547,8 +549,6 @@ struct Index {
   }
 }
 ```
-
-<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) -->
 
 ### 调测验证
 
