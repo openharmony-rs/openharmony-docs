@@ -78,19 +78,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 3. 分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
 
-   ```ts
-   let context = this.getUIContext().getHostContext();
-   let atManager = abilityAccessCtrl.createAtManager();
-   try {
-     atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((data) => {
-       console.info('data: ' + JSON.stringify(data));
-     }).catch((err: object) => {
-       console.error('err: ' + JSON.stringify(err));
-     })
-   } catch (err) {
-     console.error('catch err->' + JSON.stringify(err));
-   }
-   ```
+   <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ## 设备发现开发指导
 
@@ -121,45 +109,13 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口，并注册发现设备的回调。
+4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
-   ```ts
-   try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-     dmInstance.on('discoverSuccess', data => console.info('discoverSuccess on:' + JSON.stringify(data)));
-     dmInstance.on('discoverFailure', data => console.info('discoverFailure on:' + JSON.stringify(data)));
-   } catch(err) {
-     let e: BusinessError = err as BusinessError;
-     console.error('createDeviceManager errCode:' + e.code + ',errMessage:' + e.message);
-   }
-   ``` 
+   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
 
-5. 发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
+5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
    
-   ```ts
-   interface DiscoverParam {
-     discoverTargetType: number;
-   }
-   interface FilterOptions {
-     availableStatus: number;
-     discoverDistance: number;
-     authenticationStatus: number;
-     authorizationType: number;
-   }
-   let discoverParam: Record<string, number> = {
-     'discoverTargetType': 1
-   };
-   let filterOptions: Record<string, number> = {
-     'availableStatus': 0
-   };
-   try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-     dmInstance.startDiscovering(discoverParam, filterOptions);
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error('startDiscovering errCode:' + e.code + ',errMessage:' + e.message);
-   }
-   ```
+   <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
 
 ## 设备绑定开发指导
 
@@ -181,35 +137,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
    
 3. 选择不可信设备id，发起设备绑定。
 
-   ```ts
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   class Data {
-     deviceId: string = '';
-   }
-   let deviceId = 'XXXXXXXX';
-   let bindParam: Record<string, string | number> = {
-     'bindType': 1, 
-     'targetPkgName': 'xxxx',
-     'appName': 'xxxx',
-     'appOperation': 'xxxx',
-     'customDescription': 'xxxx'
-   };
-   try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-     dmInstance.bindTarget(deviceId, bindParam, (err: BusinessError, data: Data) => {
-       if (err) {
-         console.error('bindTarget errCode:' + err.code + ',errMessage:' + err.message);
-         return;
-       }
-       console.info('bindTarget result:' + JSON.stringify(data));
-     });
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error('bindTarget errCode:' + e.code + ',errMessage:' + e.message);
-   }
-   ``` 
+   <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
 
 ## 设备信息查询开发指导
 
@@ -233,18 +161,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 4. 查询周围上线并且可信的设备。
 
-   ```ts
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-     let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error('getAvailableDeviceListSync errCode:' + e.code + ',errMessage:' + e.message);
-   }
-   ``` 
+   <!-- @[get_available_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
 
 ## 设备上下线监听开发指导
 
@@ -276,12 +193,4 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口，并注册设备上下线回调。
 
-   ```ts
-   try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-     dmInstance.on('deviceStateChange', data => console.info('deviceStateChange on:' + JSON.stringify(data)));
-   } catch(err) {
-     let e: BusinessError = err as BusinessError;
-     console.error('createDeviceManager errCode:' + e.code + ',errMessage:' + e.message);
-   }
-   ``` 
+   <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
