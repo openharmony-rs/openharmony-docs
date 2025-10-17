@@ -75,7 +75,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |externalStorageCard<sup>21+</sup> |外置存储能力，禁用后设备无法使用外置存储，并且当前已连接的外置存储会被卸载。如果外置存储卸载时有文件正在被使用，可能会导致卸载失败，返回9200013错误码。<br/>外置存储禁用后重新启用，需要手动重新连接外置存储。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力，设置禁用后，连接Wi-Fi仅能使用设备物理MAC。|
 |unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
-|hdcRemote<sup>22+</sup>|设备HDC 上位机能力（调试其他设备的能力），当前仅支持PC/2in1设备使用。设置禁用后，无法调试手机、平板、电脑等其他设备。|
+|hdcRemote<sup>22+</sup>|设备通过hdc调试其他设备的能力，当前仅支持PC/2in1设备设置。设置禁用后，无法通过hdc调试手机、平板、PC、智能手表等设备。|
 <!--RP1--><!--RP1End-->
 
 **错误码**：
@@ -162,7 +162,7 @@ getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 |externalStorageCard<sup>21+</sup> |外置存储能力。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力。|
 |unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
-|hdcRemote<sup>22+</sup>|设备HDC 上位机能力（调试其他设备的能力），当前仅支持PC/2in1设备使用。|
+|hdcRemote<sup>22+</sup>|设备通过hdc调试其他设备的能力，当前仅支持PC/2in1设备设置。|
 <!--RP2--><!--RP2End-->
 
 **返回值：**
