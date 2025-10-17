@@ -1,4 +1,4 @@
-# Input_CustomCursor
+# Input_CursorConfig
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
