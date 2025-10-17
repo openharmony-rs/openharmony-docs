@@ -119,6 +119,25 @@ struct Index {
 
    <!-- @[Button_Add_Property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+        Button('userPropertyTest')
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .onClick(() => {
+            // 在按钮点击函数中设置用户属性值
+            hiAppEvent.setUserProperty('testUserPropertyName', '123456');
+
+            // 在按钮点击函数中获取刚设置的用户属性值
+            let userProperty = hiAppEvent.getUserProperty('testUserPropertyName');
+            hilog.info(0x0000, 'testTag', `userProperty: ${userProperty}`)
+          })
+```
+
 4. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中进行事件打点，以记录按钮点击事件。完整示例代码如下：
 
    <!-- @[Button_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->
