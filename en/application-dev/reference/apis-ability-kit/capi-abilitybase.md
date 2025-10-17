@@ -1,5 +1,12 @@
 # AbilityBase
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 As the basic definition module of Ability Kit, AbilityBase provides definitions and APIs for [Want](capi-want-h.md), which can be used to transfer information between application components.

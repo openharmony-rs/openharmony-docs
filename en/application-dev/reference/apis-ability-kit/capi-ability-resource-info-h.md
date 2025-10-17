@@ -35,7 +35,7 @@ The file declares the APIs for obtaining the following ability resource informat
 | [BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)](#oh_nativebundle_getbundlename) | Obtains the bundle name of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)](#oh_nativebundle_getmodulename) | Obtains the module name of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)](#oh_nativebundle_getabilityname) | Obtains the ability name. After using this function, you must manually release the pointer returned to prevent memory leakage.|
-| [BundleManager_ErrorCode OH_NativeBundle_GetIcon(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** icon)](#oh_nativebundle_geticon) | Obtains the icon of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.|
+| [BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)](#oh_nativebundle_getdrawabledescriptor) | Obtains the [DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) object of the ability icon resource. After using this function, you must manually call [OH_AbilityResourceInfo_Destroy](#oh_abilityresourceinfo_destroy) to release the pointer returned to prevent memory leakage.|
 | [BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)](#oh_nativebundle_getlabel) | Obtains the application name of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)](#oh_nativebundle_getappindex) | Obtains the clone index of the ability.|
 | [BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)](#oh_nativebundle_checkdefaultapp) | Checks whether the application to which the ability belongs is a default application.|
@@ -68,7 +68,7 @@ Obtains the bundle name of the ability. After using this function, you must manu
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval fails because the **abilityResourceInfo** parameter is nullptr.|
 
 ### OH_NativeBundle_GetModuleName()
 
@@ -94,7 +94,7 @@ Obtains the module name of the ability. After using this function, you must manu
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval fails because the **abilityResourceInfo** parameter is nullptr.|
 
 ### OH_NativeBundle_GetAbilityName()
 
@@ -120,17 +120,17 @@ Obtains the ability name. After using this function, you must manually release t
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval fails because the **abilityResourceInfo** parameter is nullptr.|
 
-### OH_NativeBundle_GetIcon()
+### OH_NativeBundle_GetDrawableDescriptor()
 
 ```
-BundleManager_ErrorCode OH_NativeBundle_GetIcon(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** icon)
+BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
 ```
 
 **Description**
 
-Obtains the icon of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.
+Obtains the [DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) object of the ability icon resource. After using this function, you must manually call [OH_AbilityResourceInfo_Destroy](#oh_abilityresourceinfo_destroy) to release the pointer returned to prevent memory leakage.
 
 **Since**: 21
 
@@ -140,13 +140,13 @@ Obtains the icon of the ability. After using this function, you must manually re
 | Name| Description|
 | -- | -- |
 | OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo | Pointer to the ability resource information.|
-| char** icon | Double pointer to the Base64-encoded icon resource.|
+| ArkUI_DrawableDescriptor** drawableIcon | Double pointer to the [DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval fails because the **abilityResourceInfo** parameter is nullptr.|
 
 ### OH_NativeBundle_GetLabel()
 
@@ -172,7 +172,7 @@ Obtains the application name of the ability. After using this function, you must
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval fails because the **abilityResourceInfo** parameter is nullptr.|
 
 ### OH_NativeBundle_GetAppIndex()
 
@@ -198,7 +198,7 @@ Obtains the clone index of the ability.
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The retrieval fails because the **abilityResourceInfo** parameter is nullptr.|
 
 ### OH_NativeBundle_CheckDefaultApp()
 
@@ -224,7 +224,7 @@ Checks whether the application to which the ability belongs is a default applica
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The query is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The query fails because the **abilityResourceInfo** parameter is nullptr.|
 
 ### OH_AbilityResourceInfo_Destroy()
 
@@ -250,7 +250,7 @@ Releases memory allocated for ability resource information.
 
 | Type| Description|
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The operation is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The **abilityResourceInfo** parameter is nullptr.|
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | One of the following operation results:<br>         [BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The release is successful.<br>         [BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode): The release fails because the **abilityResourceInfo** parameter is nullptr.|
 
 ### OH_NativeBundle_GetSize()
 
