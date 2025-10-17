@@ -34,7 +34,10 @@ import { socket } from '@kit.ConnectivityKit';
 
 sppListen(name: string, options: SppOptions, callback: AsyncCallback&lt;number&gt;): void
 
-Creates an SPP listening socket for the server. This API uses an asynchronous callback to return the result.
+Creates a server listening socket. This API uses an asynchronous callback to return the result.
+- To adapt to different use cases, you can create server sockets for different link types by setting the **type** parameter in [socket.SppOptions](#sppoptions). This operation registers the corresponding service with the Bluetooth subsystem to indicate the capabilities supported by the server.
+- The client can send a connection request to the server by calling [socket.sppConnect](#socketsppconnect).
+- If the server socket is no longer needed, the application needs to proactively close the socket by calling [socket.sppCloseServerSocket](#socketsppcloseserversocket). The Bluetooth subsystem then deletes the corresponding service registered earlier. If the client initiates a connection at this time, the connection fails.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -45,8 +48,8 @@ Creates an SPP listening socket for the server. This API uses an asynchronous ca
 | Name     | Type                         | Mandatory  | Description                     |
 | -------- | --------------------------- | ---- | ----------------------- |
 | name     | string                      | Yes   | Service name, which is a string of 0 to 256 characters.                 |
-| options   | [SppOptions](#sppoptions)     | Yes   | SPP listening configuration.             |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the ID of the server socket. Otherwise, **err** is an error object.|
+| options   | [SppOptions](#sppoptions)     | Yes   | Socket configuration parameters.             |
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the server socket is created successfully, **err** is **undefined**, and **data** is the ID (a non-negative number) of the server socket. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -78,7 +81,8 @@ let serverSocket = (code: BusinessError, number: number) => {
   }
 }
 
-let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+// Use the RFCOMM socket as an example.
+let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: socket.SppType.SPP_RFCOMM};
 try {
     socket.sppListen('server1', sppOption, serverSocket);
 } catch (err) {
@@ -126,7 +130,11 @@ try {
 
 sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 
-Accepts a connection request from the client over a socket of the server. This API uses an asynchronous callback to return the result.
+Accepts the socket connection request from the client. This API uses an asynchronous callback to return the result.
+- This API can be called to listen for the client connection request only after the server socket is created by calling [socket.sppListen](#socketspplisten).
+- The client can send a connection request to the server by calling [socket.sppConnect](#socketsppconnect).
+- After the connection is established, the server can send data to the client by calling APIs such as [socket.sppWrite](#socketsppwrite), [socket.sppWriteAsync](#socketsppwriteasync18) and [socket.sppReadAsync](#socketsppreadasync18).
+- If the connection is no longer needed, the server can call [socket.sppCloseClientSocket](#socketsppcloseclientsocket) to disconnect the specified client socket.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -134,9 +142,8 @@ Accepts a connection request from the client over a socket of the server. This A
 
 | Name         | Type                         | Mandatory  | Description                     |
 | ------------ | --------------------------- | ---- | ----------------------- |
-| serverSocket | number                      | Yes   | Server socket ID.<br>You can obtain the value from the asynchronous callback returned after [sppListen](#socketspplisten) is called.          |
-| callback     | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the ID of the client socket. Otherwise, **err** is an error object.|
-
+| serverSocket | number                      | Yes   | ID of the server socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppListen](#socketspplisten) is called.          |
+| callback     | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the connection is established successfully, **err** is **undefined**, and **data** is the ID (a non-negative number) of the client socket that initiates the connection request. Otherwise, **err** is an error object.|
 **Error codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
@@ -178,7 +185,11 @@ try {
 
 sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback&lt;number&gt;): void
 
-Initiates an SPP connection to a remote device from the client. This API uses an asynchronous callback to return the result.
+Creates a client socket and sends a connection request to the specific service of the server.
+- The **type** parameter in [SppOptions](#sppoptions) indicates the type of the service to be connected.
+- Ensure that the service to be connected is available on the server. The server can use [socket.sppListen](#socketspplisten) to subscribe to connection requests from the client.
+- After the connection is established, the client can call [socket.sppWrite](#socketsppwrite) or [socket.sppWriteAsync](#socketsppwriteasync18) to transmit data with the server.
+- If the connection is no longer needed, the client can call [socket.sppCloseclientSocket](#socketsppcloseclientsocket) to disconnect the connection.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -189,8 +200,8 @@ Initiates an SPP connection to a remote device from the client. This API uses an
 | Name     | Type                         | Mandatory  | Description                            |
 | -------- | --------------------------- | ---- | ------------------------------ |
 | deviceId | string                      | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| options   | [SppOptions](#sppoptions)     | Yes   | SPP listening configuration for client.                 |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the ID of the client socket. Otherwise, **err** is an error object.       |
+| options   | [SppOptions](#sppoptions)     | Yes   | Socket configuration parameters.                 |
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the connection is successfully initiated by the client, **err** is **undefined**, and data is the ID (a non-negative number) of the current client socket. Otherwise, **err** is an error object.       |
 
 **Error codes**
 
@@ -220,7 +231,9 @@ let clientSocket = (code: BusinessError, number: number) => {
     console.info('bluetooth clientSocket Number: ' + number);
   }
 }
-let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+
+// Use the RFCOMM socket as an example.
+let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: socket.SppType.SPP_RFCOMM};
 try {
     socket.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 } catch (err) {
@@ -263,7 +276,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // The server obtains the address of the client.
-let clientSocket = -1; // clientSocket is obtained from the sppAccept callback. Before calling getDeviceId, update the clientSocket.
+let clientSocket = 1; // clientSocket is obtained from the sppAccept callback. Before calling getDeviceId, update the clientSocket.
 try {
     let deviceAddr: string = socket.getDeviceId(clientSocket);
 } catch (err) {

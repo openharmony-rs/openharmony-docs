@@ -20,7 +20,7 @@ The Network Sharing module allows you to share your device's Internet connection
 - Bluetooth sharing: Shares the network through Bluetooth.
 - USB tethering: Shares the network using a USB flash drive.
 
-## **Constraints**
+## Constraint
 
 - Programming language: JS
 - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -29,7 +29,7 @@ The Network Sharing module allows you to share your device's Internet connection
 
 Typical network sharing scenarios are as follows:
 
-- Enabling Network Sharing
+- Enabling network sharing
 - Disabling network sharing
 - Obtaining the data traffic of the shared network
 
@@ -39,7 +39,7 @@ The following describes the development procedure specific to each application s
 
 For the complete list of APIs and example code, see [Network Sharing](../reference/apis-network-kit/js-apis-net-sharing-sys.md).
 
-| API                                                                  | Description                                                                                                   |
+| Name                                                                  | Description                                                                                                   |
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | isSharingSupported(callback: AsyncCallback\<boolean>): void;    | Checks whether the system supports network sharing. This API uses an asynchronous callback to return the result.                                                      |
 | isSharing(callback: AsyncCallback\<boolean>): void;             | Checks whether network sharing is active. This API uses an asynchronous callback to return the result.                                                                  |
@@ -83,7 +83,7 @@ sharing.startSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
 });
 ```
 
-## Disabling network sharing
+## Disabling Network Sharing
 
 ### How to Develop
 
@@ -110,7 +110,7 @@ sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
 });
 ```
 
-## Obtaining the data traffic of the shared network
+## Obtaining the Data Traffic of the Shared Network
 
 ### How to Develop
 

@@ -1473,11 +1473,11 @@ Defines the client certificate type.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name| Type  | Mandatory| Description               |
-| ------ | ------ | ---- |-------------------|
-| certPath   | string  | Yes  | Path of the certificate file.            |
-| keyPath | string | Yes  | Path of the certificate key file.         |
-| keyPassword | string | No  | Password of the certificate key file. The default value is an empty string.|
+| Name| Type  | Read Only|Optional| Description               |
+| ------ | ------ | ---- |---|----------------|
+| certPath   | string  | No  |No|Path of the certificate file.            |
+| keyPath | string | Yes  |No| Path of the certificate key file.         |
+| keyPassword | string | No  |Yes| Password of the certificate key file. The default value is an empty string.|
 
 ## ProxyConfiguration<sup>12+</sup>
 type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
@@ -1500,10 +1500,10 @@ Defines the optional parameters carried in the request for closing a WebSocket c
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | No  | Error code. Set this parameter based on the actual situation. The input value must be a positive integer. The default value is **1000**.|
-| reason | string | No  | Error cause. Set this parameter based on the actual situation. The default value is an empty string ("").|
+| Name| Type  | Read Only|Optional| Description                                                        |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | No  |Yes|Error code. Set this parameter based on the actual situation. The input value must be a positive integer. The default value is **1000**.|
+| reason | string | No  | Yes|Error cause. Set this parameter based on the actual situation. The default value is an empty string ("").|
 
 ## CloseResult<sup>10+</sup>
 
@@ -1513,10 +1513,10 @@ Represents the result obtained from the **close** event reported when the WebSoc
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | Yes  | Error code for closing the connection.|
-| reason | string | Yes  | Error cause for closing the connection.|
+| Name| Type  | Read Only|Optional| Description                                                        |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | No  |No|Error code for closing the connection.|
+| reason | string | No  |No|Error cause for closing the connection.|
 
 ## ResponseHeaders<sup>12+</sup>
 type ResponseHeaders = {

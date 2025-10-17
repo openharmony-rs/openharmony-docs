@@ -1,4 +1,4 @@
-# Preset Global Hotkey Development
+# Preset Global Hotkey Development (for System Applications Only)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -9,7 +9,7 @@
 
 ## When to Use
 
-You can use the preset global hotkeys to set the delay time for starting an ability. An example is to take a screenshot 5 seconds after the shortcut key is pressed.
+You can use the preset global hotkeys to set the delay time for starting an ability. An example is to take a screenshot 5 seconds after the hotkey is pressed.
 
 ## Modules to Import
 
@@ -23,11 +23,11 @@ The following table lists the common APIs provided by the **shortKey** module. F
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
-| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void |Sets the delay for starting an ability using the shortcut key.|
+| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void |Sets the delay for starting an ability using the hotkey.|
 
 ## How to Develop
 
-The following describes how to take a screenshot five seconds after the shortcut key is pressed.
+The following describes how to take a screenshot five seconds after the hotkey is pressed.
 
 ```js
 import { shortKey } from '@kit.InputKit';

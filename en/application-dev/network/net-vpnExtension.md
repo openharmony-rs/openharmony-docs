@@ -51,7 +51,7 @@ To enable your application to support the VPN functionality, you need to create 
 
 > **NOTE**
 >
-> If the DevEco Studio tool displays a message indicating unrecognizable **"type": "vpn"**, you need to manually add **vpn** to the **type** enums corresponding to **extensionAbilities** in the **toolchains\modulecheck\module.json** file of the SDK and clear the build cache.
+> If the DevEco Studio tool displays a message indicating unrecognizable **"type": "vpn"**, you need to manually add **vpn** to the **type** enums corresponding to **extensionAbilities** in the **toolchains\modulecheck\module.json** file of the SDK, clear the build cache, and restart DevEco Studio.
 
 Next, you need to configure, start, and stop the VPN in the created **VpnExtensionAbility**.
 

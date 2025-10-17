@@ -20,7 +20,7 @@ The following describes the development procedure specific to each application s
 
 For the complete list of APIs and example code, see [API Reference](../reference/apis-network-kit/js-apis-net-vpn-sys.md).
 
-| API                                                           | Description                                         |
+| Name                                                           | Description                                         |
 | ----------------------------------------------------------------- | --------------------------------------------------- |
 | setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void | Establishes a VPN. This API uses an asynchronous callback to return the result.|
 | protect(socketFd: number, callback: AsyncCallback\<void\>): void  | Enables VPN tunnel protection. This API uses an asynchronous callback to return the result.  |

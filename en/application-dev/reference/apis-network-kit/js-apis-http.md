@@ -503,7 +503,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | Name  | Type                                          | Mandatory| Description                                           |
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | Yes  | URL for initiating an HTTP request.                        |
-| callback | AsyncCallback\<number\>       | Yes  | Callback used to return the result.                                     |
+| callback | AsyncCallback\<number\>       | Yes  | Callback used to return the result. If the request is successful, **err** is **undefined**, and the HTTP result code is returned. Otherwise, **err** is an error object.                                     |
 
 **Error codes**
 
@@ -580,7 +580,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | Yes  | URL for initiating an HTTP request.                        |
 | options  | HttpRequestOptions                             | Yes  | Request options. For details, see [HttpRequestOptions](#httprequestoptions).|
-| callback | AsyncCallback\<[number](#responsecode)\>       | Yes  | Callback used to return the result.                                     |
+| callback | AsyncCallback\<[number](#responsecode)\>       | Yes  | Callback used to return the result. If the request is successful, **err** is **undefined**, and the HTTP result code is returned. Otherwise, **err** is an error object.                                   |
 
 **Error codes**
 

@@ -1,4 +1,4 @@
-# Device Rotation Control
+# Device Rotation Control (for System Applications Only)
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @hobbycao-->
@@ -26,7 +26,7 @@ For details about how to use the system APIs of Mechanic Manager, see [@ohos.dis
 |getCameraTrackingLayout(): CameraTrackingLayout | Obtains the camera tracking layout of the mechanic device.<br>**Note**: This API is supported since API version 20.|
 |rotate(mechId: number, angles: RotationAngles, duration: number): Promise\<Result> | Rotates a mechanic device to the relative angles.<br>**Note**: This API is supported since API version 20.|
 |rotateToEulerAngles(mechId: number, angles: EulerAngles, duration: number): Promise\<Result> | Rotates a mechanic device to the absolute angles.<br>**Note**: This API is supported since API version 20.|
-|getMaxRotationTime(mechId: number): number | Obtains the maximum duration for continuous rotation of a mechanic device.<br>Note: This API is supported since API version 20.|
+|getMaxRotationTime(mechId: number): number | Obtains the maximum duration for continuous rotation of a mechanic device.<br>**Note**: This API is supported since API version 20.|
 |getMaxRotationSpeed(mechId: number): RotationSpeed | Obtains the maximum rotation speed of a mechanic device.<br>**Note**: This API is supported since API version 20.|
 |stopMoving(mechId: number): Promise\<void> | Stops movement of a mechanic device.<br>**Note**: This API is supported since API version 20.|
 |getCurrentAngles(mechId: number): EulerAngles | Obtains the current angles of a mechanic device.<br>**Note**: This API is supported since API version 20.|
@@ -97,7 +97,7 @@ Dynamic device connection status management helps to ensure that the application
     }
     };
 
-    // Register a callback listener.
+    // Register a listener for attachStateChange events.
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
@@ -285,7 +285,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
     }
     };
 
-    // Register a callback listener.
+    // Register a listener for attachStateChange events.
     mechanicManager.on('rotationAxesStatusChange', rotationAxesCallback);
     ```
 

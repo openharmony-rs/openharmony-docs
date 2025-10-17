@@ -14,12 +14,12 @@ The Ethernet Connection module allows a device to access the Internet through a 
 >
 > To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-ethernet-sys.md).
 
-## **Constraints**
+## Constraint
 
 - Programming language: JS
 - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-## Scenario
+## When to Use
 
 Typical application scenarios of Ethernet connection are as follows:
 
@@ -32,18 +32,18 @@ The following describes the development procedure specific to each application s
 
 For the complete list of APIs and example code, see [Ethernet Connection](../reference/apis-network-kit/js-apis-net-ethernet-sys.md).
 
-| Type| API| Description|
-| ---- | ---- | ---- |
-| setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void | Configures the network attributes of the specified Ethernet network. This API uses an asynchronous callback to return the result.| Sets the network interface configuration.|
-| getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void | Obtains the network attributes of the specified Ethernet network. This API uses an asynchronous callback to return the result.| Obtains the network interface configuration.|
-| isIfaceActive(iface: string, callback: AsyncCallback\<number>): void | Checks whether the specified network port is active. This API uses an asynchronous callback to return the result.| Checks whether the specified network port is active.|
-| getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void | Obtains the list of all active network ports. This API uses an asynchronous callback to return the result.| Obtains the list of all active network ports.|
-| on(type: 'interfaceStateChange', callback: Callback\<{ iface: string, active: boolean }\>): void | Subscribes to interface state change events.| Subscribes to NIC hot swap events.|
-| off(type: 'interfaceStateChange', callback?: Callback\<{ iface: string, active: boolean }\>): void | Unsubscribes from interface state change events.| Unsubscribes from NIC hot swap events.|
+| Name | Description |
+| ---- | ---- |
+| setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void | Configures the network attributes of the specified Ethernet network. This API uses an asynchronous callback to return the result.|
+| getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void | Obtains the network attributes of the specified Ethernet network. This API uses an asynchronous callback to return the result.|
+| isIfaceActive(iface: string, callback: AsyncCallback\<number>): void | Checks whether the specified network port is active. This API uses an asynchronous callback to return the result.|
+| getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void | Obtains the list of all active network ports. This API uses an asynchronous callback to return the result.|
+| on(type: 'interfaceStateChange', callback: Callback\<{ iface: string, active: boolean }\>): void | Subscribes to interface state change events.|
+| off(type: 'interfaceStateChange', callback?: Callback\<{ iface: string, active: boolean }\>): void | Unsubscribes from interface state change events.|
 
 ## Ethernet Connection – DHCP Mode
 
-1. Use a network cable to connect the device to a network port.
+1. Use a network cable to connect the device to the **eth** network port.
 2. Import the **ethernet** namespace from **@kit.NetworkKit**.
 3. Call **getAllActiveIfaces** to obtain the list of all active network ports, for example, **eth0** and **eth1**.
 4. Call **isIfaceActive** in user mode to check whether the **eth0** port is active.
@@ -88,7 +88,7 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
 
 ### How to Develop
 
-1. Use a network cable to connect the device to a network port.
+1. Use a network cable to connect the device to the **eth** network port.
 2. Import the **ethernet** namespace from **@kit.NetworkKit**.
 3. Call **getAllActiveIfaces** in user mode to obtain the list of all active network ports, for example, **eth0** and **eth1**.
 4. Call **isIfaceActive** in user mode to check whether the **eth0** port is active.
@@ -148,7 +148,7 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
 });
 ```
 
-## Subscribes the status change of network device interfaces.
+## Subscribing to Status Changes of Network Device Interfaces
 
 ### How to Develop
 

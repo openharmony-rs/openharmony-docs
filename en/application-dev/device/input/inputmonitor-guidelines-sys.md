@@ -1,4 +1,4 @@
-# Input Monitor Development
+# Input Monitor Development (for System Applications Only)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->

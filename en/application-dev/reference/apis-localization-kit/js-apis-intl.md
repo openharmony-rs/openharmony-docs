@@ -65,12 +65,14 @@ Creates a **Locale** object.
 **System capability**: SystemCapability.Global.I18n
 
 **Example**
-  ```ts
-  // The current system locale is used by the default constructor.
-  let locale = new intl.Locale();
-  // Return the current system locale ID.
-  let localeID = locale.toString();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// The current system locale is used by the default constructor.
+let locale = new intl.Locale();
+// Return the current system locale ID.
+let localeID = locale.toString();
+```
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -94,11 +96,13 @@ Creates a **Locale** object.
 | options             | [LocaleOptions](#localeoptionsdeprecated) | No   | Options for creating the **Locale** object.|
 
 **Example**
-  ```ts
-  // Create a zh-CN locale object.
-  let locale = new intl.Locale("zh-CN");
-  let localeID = locale.toString(); // localeID = "zh-CN"
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// Create a zh-CN locale object.
+let locale = new intl.Locale('zh-CN');
+let localeID = locale.toString(); // localeID = 'zh-CN'
+```
 
 
 ### toString<sup>(deprecated)</sup>
@@ -122,10 +126,12 @@ Obtains the string that represents a **Locale** object.
 | string | String that represents the **Locale** object.|
 
 **Example**
-  ```ts
-  // Create an en-GB locale object.
-  let locale = new intl.Locale("en-GB");
-  let localeID = locale.toString(); // localeID = "en-GB"
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// Create an en-GB locale object.
+let locale = new intl.Locale('en-GB');
+let localeID = locale.toString(); // localeID = 'en-GB'
   ```
 
 ### maximize<sup>(deprecated)</sup>
@@ -149,19 +155,21 @@ Maximizes locale information by supplementing the missing script and country/reg
 | [Locale](#localedeprecated) | **Locale** object with the script and country/region information.|
 
 **Example**
-  ```ts
-  // Create a zh locale object.
-  let locale = new intl.Locale("zh");
-  // Supplement the locale object's script and region.
-  let maximizedLocale = locale.maximize();
-  let localeID = maximizedLocale.toString(); // localeID = "zh-Hans-CN"
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // Create an en-US locale object.
-  locale = new intl.Locale("en-US");
-  // Supplement the locale object's script.
-  maximizedLocale = locale.maximize();
-  localeID = maximizedLocale.toString(); // localeID = "en-Latn-US"
-  ```
+// Create a zh locale object.
+let locale = new intl.Locale('zh');
+// Supplement the locale object's script and region.
+let maximizedLocale = locale.maximize();
+let localeID = maximizedLocale.toString(); // localeID = 'zh-Hans-CN'
+
+// Create an en-US locale object.
+locale = new intl.Locale('en-US');
+// Supplement the locale object's script.
+maximizedLocale = locale.maximize();
+localeID = maximizedLocale.toString(); // localeID = 'en-Latn-US'
+```
 
 
 ### minimize<sup>(deprecated)</sup>
@@ -185,19 +193,21 @@ Minimizes locale information by removing the script and country/region informati
 | [Locale](#localedeprecated) | **Locale** object without the script and country/region information.|
 
 **Example**
-  ```ts
-  // Create a zh-Hans-CN locale object.
-  let locale = new intl.Locale("zh-Hans-CN");
-  // Remove the locale object's script and region.
-  let minimizedLocale = locale.minimize();
-  let localeID = minimizedLocale.toString(); // localeID = "zh"
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // Create an en-US locale object.
-  locale = new intl.Locale("en-US");
-  // Remove locale object's region.
-  minimizedLocale = locale.minimize();
-  localeID = minimizedLocale.toString(); // localeID = "en"
-  ```
+// Create a zh-Hans-CN locale object.
+let locale = new intl.Locale('zh-Hans-CN');
+// Remove the locale object's script and region.
+let minimizedLocale = locale.minimize();
+let localeID = minimizedLocale.toString(); // localeID = 'zh'
+
+// Create an en-US locale object.
+locale = new intl.Locale('en-US');
+// Remove locale object's region.
+minimizedLocale = locale.minimize();
+localeID = minimizedLocale.toString(); // localeID = 'en'
+```
 
 ## LocaleOptions<sup>(deprecated)</sup>
 
@@ -250,6 +260,8 @@ Creates a **DateTimeOptions** object for the specified locale.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a DateTimeFormat object using the current system locale ID.
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
@@ -277,6 +289,8 @@ Creates a **DateTimeOptions** object for the specified locale.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a DateTimeFormat object with locale ID being zh-CN, dateStyle being full, and timeStyle being medium.
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('zh-CN', { dateStyle: 'full', timeStyle: 'medium' });
 
@@ -312,6 +326,8 @@ Formats the date and time.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let date: Date = new Date(2021, 11, 17, 3, 24, 0); // The date and time is 2021.12.17 03:24:00.
 // Create a DateTimeFormat object with the locale ID being en-GB.
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB');
@@ -351,11 +367,13 @@ Formats date and time ranges.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let startDate: Date = new Date(2021, 11, 17, 3, 24, 0); // The date and time is 2021.12.17 03:24:00.
 let endDate: Date = new Date(2021, 11, 18, 3, 24, 0);
 // Create a DateTimeFormat object with the locale ID being en-GB.
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB');
-let formattedDateRange: string = formatter.formatRange(startDate, endDate); // formattedDateRange = "17/12/2021 - 18/12/2021"
+let formattedDateRange: string = formatter.formatRange(startDate, endDate); // formattedDateRange = '17/12/2021 - 18/12/2021'
 ```
 
 ### resolvedOptions<sup>(deprecated)</sup>
@@ -380,7 +398,9 @@ Obtains the options for creating a **DateTimeOptions** object.
 
 **Example**
 ```ts
-let formatter: intl.DateTimeFormat = new intl.DateTimeFormat("en-GB", { dateStyle: 'full', timeStyle: 'medium' });
+import { intl } from '@kit.LocalizationKit';
+
+let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'medium' });
 // Obtain the options of the DateTimeFormat object.
 let options: intl.DateTimeOptions = formatter.resolvedOptions();
 let dateStyle: string | undefined = options.dateStyle; // dateStyle = 'full'
@@ -442,6 +462,8 @@ Creates a **NumberFormat** object for the specified locale.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a NumberFormat object using the current system locale ID.
 let formatter: intl.NumberFormat = new intl.NumberFormat();
 ```
@@ -466,6 +488,8 @@ Creates a **NumberFormat** object for the specified locale.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a NumberFormat object with locale ID being en-GB, style being decimal, and notation being scientific.
 let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'decimal', notation: 'scientific' });
 ```
@@ -495,11 +519,13 @@ Formats a number.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a NumberFormat object with a locale ID array. The locale ID en-GB is valid and therefore is used.
 let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 let formattedNumber: string = formatter.format(1223); // formattedNumber = 1.223E3
-let options : intl.NumberOptions = {
-  roundingPriority: "lessPrecision",
+let options: intl.NumberOptions = {
+  roundingPriority: 'lessPrecision',
   maximumFractionDigits: 3,
   maximumSignificantDigits: 3
 }
@@ -533,6 +559,8 @@ Formats a number range.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let formatter: intl.NumberFormat = new intl.NumberFormat('en-US', { style: 'unit', unit: 'meter' });
 let formattedRange: string = formatter.formatRange(0, 3); // formattedRange: 0–3 m
 ```
@@ -557,6 +585,8 @@ Obtains the options for creating a **NumberFormat** object.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 // Obtain the options of the NumberFormat object.
 let options: intl.NumberOptions = formatter.resolvedOptions();
@@ -616,10 +646,12 @@ Creates a **Collator** object.
 **System capability**: SystemCapability.Global.I18n
 
 **Example**
-  ```ts
-  // Create a Collator object using the current system locale ID.
-  let collator = new intl.Collator();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// Create a Collator object using the current system locale ID.
+let collator = new intl.Collator();
+```
 
 
 ### constructor<sup>8+</sup>
@@ -640,10 +672,12 @@ Creates a **Collator** object.
 | options              | [CollatorOptions](#collatoroptions8) | No   | Options for creating a **Collator** object.      |
 
 **Example**
-  ```ts
-  // Create a Collator object with the locale ID being zh-CN, localeMatcher being lookup, and usage being sort.
-  let collator = new intl.Collator("zh-CN", {localeMatcher: "lookup", usage: "sort"});
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// Create a Collator object with the locale ID being zh-CN, localeMatcher being lookup, and usage being sort.
+let collator = new intl.Collator('zh-CN', {localeMatcher: 'lookup', usage: 'sort'});
+```
 
 
 ### compare<sup>8+</sup>
@@ -670,12 +704,14 @@ Compares two strings based on the specified collation rules.
 | number | Comparison result.<br>- If the value is a negative number, the first string comes before the second string.<br>- If the value is **0**, the first and second strings are in the same sequence.<br>- If the value is a positive number, the first string is comes after the second string.|
 
 **Example**
-  ```ts
-  // Create a Collator object with the locale ID being en-GB.
-  let collator = new intl.Collator("en-GB");
-  // Compare the sequence of the first and second strings.
-  let compareResult = collator.compare("first", "second"); // compareResult = -1
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// Create a Collator object with the locale ID being en-GB.
+let collator = new intl.Collator('en-GB');
+// Compare the sequence of the first and second strings.
+let compareResult = collator.compare('first', 'second'); // compareResult = -1
+```
 
 
 ### resolvedOptions<sup>8+</sup>
@@ -695,13 +731,15 @@ Obtains the options for creating a **Collator** object.
 | [CollatorOptions](#collatoroptions8) | Options for creating a **Collator** object.|
 
 **Example**
-  ```ts
-  let collator = new intl.Collator("zh-Hans", { usage: 'sort', ignorePunctuation: true });
-  // Obtain the options of the Collator object.
-  let options = collator.resolvedOptions();
-  let usage = options.usage; // usage = "sort"
-  let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+let collator = new intl.Collator('zh-Hans', { usage: 'sort', ignorePunctuation: true });
+// Obtain the options of the Collator object.
+let options = collator.resolvedOptions();
+let usage = options.usage; // usage = 'sort'
+let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
+```
 
 
 ## CollatorOptions<sup>8+</sup>
@@ -748,10 +786,12 @@ Creates a **PluralRules** object to obtain the singular-plural type of numbers.
 **System capability**: SystemCapability.Global.I18n
 
 **Example**
-  ```ts
-  // Create a PluralRules object using the current system locale ID.
-  let pluralRules = new intl.PluralRules();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// Create a PluralRules object using the current system locale ID.
+let pluralRules = new intl.PluralRules();
+```
 
 
 ### constructor<sup>(deprecated)</sup>
@@ -775,6 +815,8 @@ Creates a **PluralRules** object to obtain the singular-plural type of numbers.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a PluralRules object with the locale ID being zh-CN, localeMatcher being lookup, and type being cardinal.
 let pluralRules: intl.PluralRules = new intl.PluralRules('zh-CN', { localeMatcher: 'lookup', type: 'cardinal' });
 ```
@@ -804,17 +846,19 @@ Obtains the singular-plural type of the specified number.
 | string | Singular-plural type. The value can be any of the following: **zero**, **one**, **two**, **few**, **many**, **others**.<br>For details about the meanings of different values, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Example**
-  ```ts
-  // Create a PluralRules object with the locale ID being zh-Hans.
-  let zhPluralRules = new intl.PluralRules("zh-Hans");
-  // Determine the singular-plural type corresponding to number 1 in locale zh-Hans.
-  let plural = zhPluralRules.select(1); // plural = other
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // Create a PluralRules object with the locale ID being en-US.
-  let enPluralRules = new intl.PluralRules("en-US");
-  // Determine the singular-plural type corresponding to number 1 in locale en-US.
-  plural = enPluralRules.select(1); // plural = one
-  ```
+// Create a PluralRules object with the locale ID being zh-Hans.
+let zhPluralRules = new intl.PluralRules('zh-Hans');
+// Determine the singular-plural type corresponding to number 1 in locale zh-Hans.
+let plural = zhPluralRules.select(1); // plural = 'other'
+
+// Create a PluralRules object with the locale ID being en-US.
+let enPluralRules = new intl.PluralRules('en-US');
+// Determine the singular-plural type corresponding to number 1 in locale en-US.
+plural = enPluralRules.select(1); // plural = 'one'
+```
 
 
 ## PluralRulesOptions<sup>(deprecated)</sup>
@@ -862,6 +906,8 @@ Creates a **RelativeTimeFormat** object.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a RelativeTimeFormat object using the current system locale ID.
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
@@ -888,6 +934,8 @@ Creates a **RelativeTimeFormat** object.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a RelativeTimeFormat object with the locale ID being zh-CN, localeMatcher being lookup, and style being long.
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN', {
   localeMatcher: 'lookup',
@@ -924,6 +972,8 @@ Formats a relative time.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a RelativeTimeFormat object with the locale ID being zh-CN.
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN');
 // Obtain the localized representation (in unit of quarter) of number 3 in locale zh-CN.
@@ -958,6 +1008,8 @@ Formats the relative time
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a RelativeTimeFormat object with the locale ID being en and numeric being auto.
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('en', { numeric: 'auto' });
 let parts: Array<object> = formatter.formatToParts(10, 'seconds'); // parts = [ {type: 'literal', value: 'in'}, {type: 'integer', value: 10, unit: 'second'}, {type: 'literal', value: 'seconds'} ]
@@ -984,6 +1036,8 @@ Defines the formatting options for a **RelativeTimeFormat** object.
 
 **Example**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // Create a RelativeTimeFormat object with the locale ID being en-GB.
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('en-GB', { style: 'short' });
 // Obtain the options of the RelativeTimeFormat object.

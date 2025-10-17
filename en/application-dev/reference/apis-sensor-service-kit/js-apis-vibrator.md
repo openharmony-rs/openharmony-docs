@@ -1114,10 +1114,10 @@ Defines the vibrator status change event.
 
 | Name              | Type     | Read-Only| Optional| Description                              |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | Yes | No | Event timestamp.                       |
-| deviceId         | number  | Yes | No | Device ID.                          |
-| vibratorCount    | number  | Yes | No | Number of vibrators on the device.                      |
-| isVibratorOnline | boolean | Yes | No | Vibrator status. The value **true** indicates that the device is online, and the value **false** indicates the opposite.|
+| timestamp        | number  | No | No | Event timestamp.                       |
+| deviceId         | number  | No | No | Device ID.                          |
+| vibratorCount    | number  | No | No | Number of vibrators on the device.                      |
+| isVibratorOnline | boolean | No | No | Vibrator status. The value **true** indicates that the device is online, and the value **false** indicates the opposite.|
 
 
 ## VibratorInfoParam<sup>19+</sup>
@@ -1143,7 +1143,7 @@ Defines the preset effect.
 
 | Name               | Type     | Read-Only| Optional| Description                           |
 |-------------------|---------|----|----|-------------------------------|
-| isEffectSupported | boolean | Yes | No | Whether the preset effect is supported. The value **true** indicates that the preset effect is supported, and the value **false** indicates the opposite.|
+| isEffectSupported | boolean | No | No | Whether the preset effect is supported. The value **true** indicates that the preset effect is supported, and the value **false** indicates the opposite.|
 
 
 ## VibratorInfo<sup>19+</sup>
@@ -1154,11 +1154,11 @@ Defines the vibrator information.
 
 | Name                 | Type     | Read-Only| Optional| Description       |
 |---------------------|---------|----|----|-----------|
-| deviceId            | number  | Yes | No | Device ID.    |
-| vibratorId          | number  | Yes | No | Vibrator ID.    |
-| deviceName          | string  | Yes | No | Device name.    |
-| isHdHapticSupported | boolean | Yes | No | Whether HD vibration is supported.|
-| isLocalVibrator     | boolean | Yes | No | Whether the device is a local device. |
+| deviceId            | number  | No | No | Device ID.    |
+| vibratorId          | number  | No | No | Vibrator ID.    |
+| deviceName          | string  | No | No | Device name.    |
+| isHdHapticSupported | boolean | No | No | Whether HD vibration is supported.|
+| isLocalVibrator     | boolean | No | No | Whether the device is a local device. |
 
 
 ## vibrator.isHdHapticSupported<sup>12+</sup>
@@ -1215,7 +1215,7 @@ Adds a long vibration event as a **VibratorPattern** object.
 | Name  | Type                                 | Mandatory| Description                                                        |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
 | time     | number                                | Yes  | Start time of the long vibration event, in ms. The value range is [0, 1800000].|
-| duration | number                                | Yes  | Duration of the long vibration event, in ms. The value range is (0, 5000].|
+| duration | number                                | Yes  | Duration of the long vibration event, in ms. The value range is (0,5000].|
 | options  | [ContinuousParam](#continuousparam18) | No  | Optional parameters.                                    |
 
 **Return value**
@@ -1414,7 +1414,9 @@ Enumerates vibration stop modes. This parameter is required for [vibrator.stopVi
 
 ## VibrateEffect<sup>9+</sup>
 
-Defines the vibration effect. This parameter is required for [vibrator.startVibration9+](#vibratorstartvibration9) or [vibrator.startVibration9+](#vibratorstartvibration9-1).
+type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFromPattern
+
+Enumerates vibration effects of the vibrator. You can specify the vibration effect when calling [vibrator.startVibration9+](#vibratorstartvibration9) or [vibrator.startVibration9+](#vibratorstartvibration9-1).
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1433,10 +1435,10 @@ Represents vibration of the specified duration.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name    | Type  | Mandatory| Description                                                       |
-| -------- | ------ | ---- | ----------------------------------------------------------- |
-| type     | 'time' | Yes  | The value is **time**, indicating vibration of the specified duration.                     |
-| duration | number | Yes  | Vibration duration, in ms. The value range is (0,1800000].|
+| Name    | Type  | Read-Only| Optional| Description                                                       |
+| -------- | ------ | ---- | ---- | ----------------------------------------------------------- |
+| type     | 'time' | No  | No  | The value is **time**, indicating vibration of the specified duration.                     |
+| duration | number | No  | No  | Vibration duration, in ms. The value range is (0,1800000].|
 
 ## VibratePreset<sup>9+</sup>
 
@@ -1444,12 +1446,12 @@ Represents the preset vibration effect. You can pass this value to [VibrateEffec
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name                   | Type    | Mandatory| Description                                                        |
-| ----------------------- | -------- | ---- | ------------------------------------------------------------ |
-| type                    | 'preset' | Yes  | The value **preset** means vibration with the specified effect.                |
-| effectId                | string   | Yes  | Effect ID. The value is a string of a maximum of 64 characters. If the length exceeds 64 characters, the first 64 characters are used.                                          |
-| count                   | number   | No  | Number of repeated vibrations. This parameter is optional. The default value is **1**.                        |
-| intensity<sup>12+</sup> | number   | No  | Vibration intensity. This parameter is optional. The value range is [0, 100]. The default value is **100**. If vibration intensity adjustment is not supported, the default vibration intensity will be used.|
+| Name                   | Type    | Read-Only| Optional| Description                                                        |
+| ----------------------- | -------- | ---- | ---- | ------------------------------------------------------------ |
+| type                    | 'preset' | No  | No  | The value **preset** means vibration with the specified effect.                |
+| effectId                | string   | No  | No  | Effect ID. The value is a string of a maximum of 64 characters. If the length exceeds 64 characters, the first 64 characters are used.                            |
+| count                   | number   | No  | Yes  | Number of repeated vibrations. This parameter is optional. The default value is **1**.                        |
+| intensity<sup>12+</sup> | number   | No  | Yes  | Vibration intensity. This parameter is optional. The value range is [0, 100]. The default value is **100**. If vibration intensity adjustment is not supported, the default vibration intensity will be used.|
 
 ## VibrateFromFile<sup>10+</sup>
 
@@ -1457,10 +1459,10 @@ Represents a custom vibration pattern. It is supported only by certain devices. 
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name    | Type                                                        | Mandatory| Description                                      |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| type     | 'file'                                                       | Yes  | The value **file** means vibration according to a vibration configuration file.|
-| hapticFd | [HapticFileDescriptor](#hapticfiledescriptor10)<sup>10+</sup> | Yes  | File descriptor (FD) of the vibration configuration file.                    |
+| Name    | Type                                                        | Read-Only| Optional| Description                                      |
+| -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
+| type     | 'file'                                                       | No  | No  | The value **file** means vibration according to a vibration configuration file.|
+| hapticFd | [HapticFileDescriptor](#hapticfiledescriptor10)<sup>10+</sup> | No  | No  | File descriptor (FD) of the vibration configuration file.                    |
 
 ## HapticFileDescriptor<sup>10+</sup>
 
@@ -1468,11 +1470,11 @@ Describes the FD of a custom vibration configuration file. Ensure that the file 
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name  | Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| fd     | number | Yes  | FD of the custom vibration configuration file.                                            |
-| offset | number | No  | Offset from the start position of the file, in bytes. The default value is the start position of the file, and the value cannot exceed the valid range of the file.|
-| length | number | No  | Resource length, in bytes. The default value is the length from the offset position to the end of the file, and the value cannot exceed the valid range of the file.|
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| fd     | number | No  | No  | FD of the custom vibration configuration file.                                            |
+| offset | number | No  | Yes  | Offset from the start position of the file, in bytes. The default value is the start position of the file, and the value cannot exceed the valid range of the file.|
+| length | number | No  | Yes  | Resource length, in bytes. The default value is the length from the offset position to the end of the file, and the value cannot exceed the valid range of the file.|
 
 ## VibratorEventType<sup>18+</sup>
 
@@ -1480,10 +1482,10 @@ Vibration event type.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name      | Type  | Mandatory| Description             |
-| ---------- | ------ | ---- | ----------------- |
-| CONTINUOUS | number | Yes  | The value **0** indicates long vibration.|
-| TRANSIENT  | number | Yes  | The value **1** indicates short vibration.|
+| Name      | Value  | Description             |
+| --------- | ------ | ----------------- |
+| CONTINUOUS | 0 | Long vibration.|
+| TRANSIENT  | 1 | Short vibration.|
 
 ## VibratorCurvePoint<sup>18+</sup>
 
@@ -1491,11 +1493,11 @@ Defines the gain relative to the vibration intensity.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name     | Type  | Mandatory| Description                                                        |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| time      | number | Yes  | Start time offset.                                              |
-| intensity | number | No  | Gain relative to the vibration intensity. This parameter is optional. The value range is [0,100%]. If this parameter is left empty, the default value is **1**.|
-| frequency | number | No  | Change relative to the vibration frequency. This parameter is optional. The value range is [-100,100]. If this parameter is left empty, the default value is **0**.|
+| Name     | Type  | Read-Only| Optional| Description                                                        |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| time      | number | No  | No  | Start time offset.                                              |
+| intensity | number | No  | Yes  | Gain relative to the vibration intensity. This parameter is optional. The value range is [0,100%]. If this parameter is left empty, the default value is **1**.|
+| frequency | number | No  | Yes  | Change relative to the vibration frequency. This parameter is optional. The value range is [-100,100]. If this parameter is left empty, the default value is **0**.|
 
 ## VibratorEvent<sup>18+</sup>
 
@@ -1503,15 +1505,15 @@ Vibration event.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name     | Type                           | Mandatory| Description                                                        |
-| --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| eventType | VibratorEventType               | Yes  | Vibration event type.                                              |
-| time      | number                          | Yes  | Vibration start time, in ms. The value range is [0,1800000].   |
-| duration  | number                          | No  | Vibration duration. This parameter is optional. The value range is (0,5000]. The default value is **48** for short vibration and **1000** for long vibration.|
-| intensity | number                          | No  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
-| frequency | number                          | No  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
-| index     | number                          | No  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.       |
-| points    | Array&lt;[VibratorCurvePoint](#vibratorcurvepoint18)&gt; | No  | Adjustment points of the vibration curve.                            |
+| Name     | Type                           | Read-Only| Optional| Description                                                        |
+| --------- | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| eventType | VibratorEventType               | No  | No  | Vibration event type.                                              |
+| time      | number                          | No  | No  | Vibration start time, in ms. The value range is [0,1800000].   |
+| duration  | number                          | No  | Yes  | Vibration duration. This parameter is optional. The value range is (0,5000]. The default value is **48** for short vibration and **1000** for long vibration.|
+| intensity | number                          | No  | Yes  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
+| frequency | number                          | No  | Yes  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
+| index     | number                          | No  | Yes  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.       |
+| points    | Array&lt;[VibratorCurvePoint](#vibratorcurvepoint18)&gt; | No  | Yes  | Adjustment points of the vibration curve.                            |
 
 ## VibratorPattern<sup>18+</sup>
 
@@ -1519,10 +1521,10 @@ Defines the vibration sequence.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name  | Type                      | Mandatory| Description                                                |
-| ------ | -------------------------- | ---- | ---------------------------------------------------- |
-| time   | number                     | Yes  | Absolute vibration start time.                                  |
-| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | Yes  | Vibration event array, which is the **VibratorPattern** object returned by **build() **.|
+| Name  | Type                      | Read-Only| Optional| Description                                                |
+| ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
+| time   | number                     | No  | No  | Absolute vibration start time.                                  |
+| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | No  | No  | Vibration event array, which is the **VibratorPattern** object returned by **build() **.|
 
 ## ContinuousParam<sup>18+</sup>
 
@@ -1530,12 +1532,12 @@ Defines the parameters for continuous vibration.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name     | Type                | Mandatory| Description                                                        |
-| --------- | -------------------- | ---- | ------------------------------------------------------------ |
-| intensity | number               | No  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
-| frequency | number               | No  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
-| points    | [VibratorCurvePoint](#vibratorcurvepoint18)[] | No  | Adjustment points of the vibration curve.                            |
-| index     | number               | No  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.                   |
+| Name     | Type                | Read-Only| Optional| Description                                                        |
+| --------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
+| intensity | number               | No  | Yes  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
+| frequency | number               | No  | Yes  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
+| points    | [VibratorCurvePoint](#vibratorcurvepoint18)[] | No  | Yes  | Adjustment points of the vibration curve.                            |
+| index     | number               | No  | Yes  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.                   |
 
 ## TransientParam<sup>18+</sup>
 
@@ -1543,11 +1545,11 @@ Defines the parameters for transient vibration.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name     | Type  | Mandatory| Description                                                        |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| intensity | number | No  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
-| frequency | number | No  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
-| index     | number | No  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.                   |
+| Name     | Type  | Read-Only| Optional| Description                                                        |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| intensity | number | No  | Yes  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
+| frequency | number | No  | Yes  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
+| index     | number | No  | Yes  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.                   |
 
 ## VibrateFromPattern<sup>18+</sup>
 
@@ -1555,10 +1557,10 @@ Defines the custom vibration effect.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name   | Type           | Mandatory| Description                                                |
-| ------- | --------------- | ---- | ---------------------------------------------------- |
-| type    | 'pattern'       | Yes  | If the value is **pattern**, the vibrator vibrates based on the specified pattern.           |
-| pattern | VibratorPattern | Yes  | Vibration event array, which is the **VibratorPattern** object returned by **build() **.|
+| Name   | Type           | Read-Only| Optional| Description                                                |
+| ------- | --------------- | ---- | ---- | ---------------------------------------------------- |
+| type    | 'pattern'       | No  | No  | If the value is **pattern**, the vibrator vibrates based on the specified pattern.           |
+| pattern | VibratorPattern | No  | No  | Vibration event array, which is the **VibratorPattern** object returned by **build() **.|
 
 ## VibrateAttribute<sup>9+</sup>
 
@@ -1568,11 +1570,11 @@ Describes the vibration attribute.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
-| Name                  | Type            | Mandatory| Description                                                        |
-| ---------------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| id                     | number           | No  | Vibrator ID. The default value is **0**.                                        |
-| deviceId<sup>19+</sup> | number           | No  | Device ID. The default value is **-1**, indicating the local device. Since API version 19, you can use [getVibratorInfoSync](#vibratorgetvibratorinfosync19) or [on](#vibratoron19) to query the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| usage                  | [Usage](#usage9) | Yes  | Vibration scenario. The default value is **unknown**. The value must be an enum defined in [Usage](#usage9).|
+| Name                  | Type            | Read-Only| Optional| Description                                                        |
+| ---------------------- | ---------------- | ---- | ---- | ------------------------------------------------------------ |
+| id                     | number           | No  | Yes  | Vibrator ID. The default value is **0**.                                        |
+| deviceId<sup>19+</sup> | number           | No  | Yes  | Device ID. The default value is **-1**, indicating the local device. Since API version 19, you can use [getVibratorInfoSync](#vibratorgetvibratorinfosync19) or [on](#vibratoron19) to query the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| usage                  | [Usage](#usage9) | No  | No  | Vibration scenario. The default value is **unknown**. The value must be an enum defined in [Usage](#usage9).|
 
 ## Usage<sup>9+</sup>
 
