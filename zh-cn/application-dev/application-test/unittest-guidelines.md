@@ -603,7 +603,7 @@ Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |
 | verify | 验证函数在对应参数下的执行行为是否符合预期，返回一个VerificationMode类。 |
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
-| clear | 用例执行完毕后，对数据MockKit对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
+| clear | 用例执行完毕后，对数据被Mock的对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
 | clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |  
 
 **VerificationMode**
@@ -677,7 +677,7 @@ export default function afterReturnTest() {
       console.info("it1 begin");
       // 创建一个Mock能力的对象MockKit
       let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
+      // 初始化ClassName的对象claser，作为被Mock的对象实例
       let claser: ClassName = new ClassName();
       // 进行Mock操作，对ClassName类的method_1函数进行Mock
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
