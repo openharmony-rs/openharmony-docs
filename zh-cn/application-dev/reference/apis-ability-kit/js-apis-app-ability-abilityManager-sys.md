@@ -740,7 +740,7 @@ try {
 
 getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): void
 
-获取前台正在运行的应用Ability的信息。
+获取前台正在运行的应用Ability的信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -784,7 +784,7 @@ abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<ability
 
 getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
-获取前台正在运行的应用Ability的信息。
+获取前台正在运行的应用Ability的信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
