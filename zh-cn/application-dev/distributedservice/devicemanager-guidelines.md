@@ -184,7 +184,8 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
       } else {
         this.deviceManager.startDiscovering(discoverParam, filterOptions);
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       logger.error('[DeviceManager.RemoteDeviceModel] startDeviceDiscovery failed err: ' + e.toString());
     }
   }
