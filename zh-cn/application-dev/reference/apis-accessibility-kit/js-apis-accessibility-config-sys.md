@@ -973,7 +973,6 @@ get(): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**

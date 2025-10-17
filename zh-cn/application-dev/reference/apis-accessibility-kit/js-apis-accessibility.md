@@ -199,11 +199,11 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕配置管理，在调用CaptionsManager的方法前，需要先通过 [accessibility.getCaptionsManager() ](#accessibilitygetcaptionsmanagerdeprecated)获取 CaptionsManager实例。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：以下各项对应的系统能力均为SystemCapability.BarrierFree.Accessibility.Hearing
 
 **ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
 
 ### 属性
 
@@ -214,15 +214,21 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 ### on('enableChange')<sup>(deprecated)</sup>
 
-on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
+on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 
-监听字幕配置启用状态变化事件，使用callback异步回调。
+监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
 > 从API version 12开始废弃。系统不再开放相关功能。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onEnableChange](#onenablechange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -250,17 +256,68 @@ captionsManager.on('enableChange', (data: boolean) => {
 })
 ```
 
+### onEnableChange<sup>22+</sup>
+
+onEnableChange(callback: Callback&lt;boolean&gt;): void
+
+监听字幕配置启用状态变化事件。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('enableChange')](#onenablechangedeprecated)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名      | 类型                      | 必填   | 说明                                      |
+| -------- | ----------------------- | ---- | --------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在启用状态变化时将状态通过此函数进行通知。              |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`caption state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.onEnableChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ### on('styleChange')<sup>(deprecated)</sup>
 
-on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
+on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 
-监听字幕风格变化事件，使用callback异步回调。
+监听字幕风格变化事件。使用callback异步回调。
 
 > **说明：**
 >
 > 从API version 12开始废弃。系统不再开放相关功能。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onStyleChange](#onstylechange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -289,17 +346,68 @@ captionsManager.on('styleChange', (data: accessibility.CaptionsStyle) => {
 });
 ```
 
+### onStyleChange<sup>22+</sup>
+
+onStyleChange(callback: Callback&lt;CaptionsStyle&gt;): void
+
+监听字幕风格变化事件。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('styleChange')](#onstylechangedeprecated)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                 |
+| -------- | ---------------------------------------- | ---- | ---------------------------------- |
+| callback | Callback&lt;[CaptionsStyle](#captionsstyle8)&gt; | 是    | 回调函数，在字幕风格变化时通过此函数进行通知。            |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: accessibility.CaptionsStyle) => void = this.eventCallback;
+  eventCallback(data: accessibility.CaptionsStyle): void {
+    console.info(`caption style change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.onStyleChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ### off('enableChange')<sup>(deprecated)</sup>
 
-off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
+off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听字幕配置启用状态变化事件，使用callback异步回调。
+取消监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
 > 从API version 12开始废弃。系统不再开放相关功能。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offEnableChange](#offenablechange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -328,17 +436,73 @@ captionsManager.off('enableChange', (data: boolean) => {
 });
 ```
 
+### offEnableChange<sup>22+</sup>
+
+offEnableChange(callback?: Callback&lt;boolean&gt;): void
+
+取消监听字幕配置启用状态变化事件。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('enableChange')](#offenablechangedeprecated)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与onEnableChange的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`caption state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.onEnableChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.offEnableChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ### off('styleChange')<sup>(deprecated)</sup>
 
-off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void;
+off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
-取消字幕风格变化监听事件，使用callback异步回调。
+取消字幕风格变化监听事件。使用callback异步回调。
 
 > **说明：**
 >
 > 从API version 12开始废弃。系统不再开放相关功能。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offStyleChange](#offstylechange22)。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -365,6 +529,56 @@ let captionsManager = accessibility.getCaptionsManager();
 captionsManager.off('styleChange', (data: accessibility.CaptionsStyle) => {
   console.info(`Unsubscribe caption manager style state change, result: ${JSON.stringify(data)}`);
 });
+```
+
+### offStyleChange<sup>22+</sup>
+
+ooffStyleChange(callback?: Callback&lt;CaptionsStyle&gt;): void
+
+取消字幕风格变化监听事件。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('styleChange')](#offstylechangedeprecated)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名   | 类型                                             | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[CaptionsStyle](#captionsstyle8)&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与onStyleChange的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: accessibility.CaptionsStyle) => void = this.eventCallback;
+  eventCallback(data: accessibility.CaptionsStyle): void {
+    console.info(`caption style change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.onStyleChange(this.callback);
+  }
+
+  aboutToDisppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.offStyleChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ## EventInfo
@@ -815,11 +1029,11 @@ getCaptionsManager(): CaptionsManager
 >
 > 从API version 12开始废弃。系统不再开放相关功能。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 **ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：22
 
 **返回值：**
 
